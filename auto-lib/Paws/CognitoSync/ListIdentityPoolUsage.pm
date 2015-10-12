@@ -37,33 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-  
-
-The maximum number of results to be returned.
-
-
-
-
-
-
-
-
-
+  The maximum number of results to be returned.
 
 =head2 NextToken => Str
 
-  
-
-A pagination token for obtaining the next page of results.
-
-
-
-
-
-
-
-
-
+  A pagination token for obtaining the next page of results.
 
 
 

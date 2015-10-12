@@ -36,41 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> arn => Str
 
-  
-
-The Run, Job, Suite, or Test ARN.
-
-
-
-
-
-
-
-
-
+  The Run, Job, Suite, or Test ARN.
 
 =head2 nextToken => Str
 
-  
-
-An identifier that was returned from the previous call to this
+  An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the
 list.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> type => Str
 
-  
-
-The artifacts' type.
+  The artifacts' type.
 
 Allowed values include:
 
@@ -83,15 +59,6 @@ Allowed values include:
 =item * SCREENSHOT: The artifacts are screenshots.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

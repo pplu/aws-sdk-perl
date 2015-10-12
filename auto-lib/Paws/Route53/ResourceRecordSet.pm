@@ -43,25 +43,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Re
 
 =head2 AliasTarget => Paws::Route53::AliasTarget
 
-  
-
-I<Alias resource record sets only:> Information about the AWS resource
+  I<Alias resource record sets only:> Information about the AWS resource
 to which you are redirecting traffic.
-
-
-
-
-
-
-
-
-
 
 =head2 Failover => Str
 
-  
-
-I<Failover resource record sets only:> Among resource record sets that
+  I<Failover resource record sets only:> Among resource record sets that
 have the same combination of DNS name and type, a value that indicates
 whether the current resource record set is a primary or secondary
 resource record set. A failover set may contain at most one resource
@@ -79,161 +66,53 @@ resource record set.
 
 Valid values: C<PRIMARY> | C<SECONDARY>
 
-
-
-
-
-
-
-
-
-
 =head2 GeoLocation => Paws::Route53::GeoLocation
 
-  
-
-I<Geo location resource record sets only:> Among resource record sets
+  I<Geo location resource record sets only:> Among resource record sets
 that have the same combination of DNS name and type, a value that
 specifies the geo location for the current resource record set.
 
-
-
-
-
-
-
-
-
-
 =head2 HealthCheckId => Str
 
-  
-
-I<Health Check resource record sets only, not required for alias
+  I<Health Check resource record sets only, not required for alias
 resource record sets:> An identifier that is used to identify health
 check associated with the resource record set.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The domain name of the current resource record set.
-
-
-
-
-
-
-
-
-
+  The domain name of the current resource record set.
 
 =head2 Region => Str
 
-  
-
-I<Latency-based resource record sets only:> Among resource record sets
+  I<Latency-based resource record sets only:> Among resource record sets
 that have the same combination of DNS name and type, a value that
 specifies the AWS region for the current resource record set.
 
-
-
-
-
-
-
-
-
-
 =head2 ResourceRecords => ArrayRef[Paws::Route53::ResourceRecord]
 
-  
-
-A complex type that contains the resource records for the current
+  A complex type that contains the resource records for the current
 resource record set.
-
-
-
-
-
-
-
-
-
 
 =head2 SetIdentifier => Str
 
-  
-
-I<Weighted, Latency, Geo, and Failover resource record sets only:> An
+  I<Weighted, Latency, Geo, and Failover resource record sets only:> An
 identifier that differentiates among multiple resource record sets that
 have the same combination of DNS name and type.
 
-
-
-
-
-
-
-
-
-
 =head2 TTL => Int
 
-  
-
-The cache time to live for the current resource record set.
-
-
-
-
-
-
-
-
-
+  The cache time to live for the current resource record set.
 
 =head2 B<REQUIRED> Type => Str
 
-  
-
-The type of the current resource record set.
-
-
-
-
-
-
-
-
-
+  The type of the current resource record set.
 
 =head2 Weight => Int
 
-  
-
-I<Weighted resource record sets only:> Among resource record sets that
+  I<Weighted resource record sets only:> Among resource record sets that
 have the same combination of DNS name and type, a value that determines
 what portion of traffic for the current resource record set is routed
 to the associated location.
-
-
-
-
-
-
-
-
-
 
 
 

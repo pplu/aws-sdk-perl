@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 repositoryDescription => Str
 
-  
-
-The new comment or description for the specified repository.
-
-
-
-
-
-
-
-
-
+  The new comment or description for the specified repository.
 
 =head2 B<REQUIRED> repositoryName => Str
 
-  
-
-The name of the repository to set or change the comment or description
+  The name of the repository to set or change the comment or description
 for.
-
-
-
-
-
-
-
-
-
 
 
 

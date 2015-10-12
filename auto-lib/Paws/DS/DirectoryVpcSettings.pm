@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Directo
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
-  
-
-The identifiers of the subnets for the directory servers. The two
+  The identifiers of the subnets for the directory servers. The two
 subnets must be in different Availability Zones. AWS Directory Service
 creates a directory server and a DNS server in each of these subnets.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VpcId => Str
 
-  
-
-The identifier of the VPC to create the Simple AD directory in.
-
-
-
-
-
-
-
-
-
+  The identifier of the VPC to create the Simple AD directory in.
 
 
 

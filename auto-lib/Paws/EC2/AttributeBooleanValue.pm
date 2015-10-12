@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Attrib
 
 =head2 Value => Bool
 
-  
-
-Valid values are C<true> or C<false>.
-
-
-
-
-
-
-
-
-
+  Valid values are C<true> or C<false>.
 
 
 

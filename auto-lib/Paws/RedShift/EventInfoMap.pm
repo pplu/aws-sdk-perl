@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::E
 
 =head2 EventCategories => ArrayRef[Str]
 
-  
-
-The category of an Amazon Redshift event.
-
-
-
-
-
-
-
-
-
+  The category of an Amazon Redshift event.
 
 =head2 EventDescription => Str
 
-  
-
-The description of an Amazon Redshift event.
-
-
-
-
-
-
-
-
-
+  The description of an Amazon Redshift event.
 
 =head2 EventId => Str
 
-  
-
-The identifier of an Amazon Redshift event.
-
-
-
-
-
-
-
-
-
+  The identifier of an Amazon Redshift event.
 
 =head2 Severity => Str
 
-  
-
-The severity of the event.
+  The severity of the event.
 
 Values: ERROR, INFO
-
-
-
-
-
-
-
-
-
 
 
 

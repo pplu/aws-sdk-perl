@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpcPee
 
 =head2 CidrBlock => Str
 
-  
-
-The CIDR block for the VPC.
-
-
-
-
-
-
-
-
-
+  The CIDR block for the VPC.
 
 =head2 OwnerId => Str
 
-  
-
-The AWS account ID of the VPC owner.
-
-
-
-
-
-
-
-
-
+  The AWS account ID of the VPC owner.
 
 =head2 VpcId => Str
 
-  
-
-The ID of the VPC.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC.
 
 
 

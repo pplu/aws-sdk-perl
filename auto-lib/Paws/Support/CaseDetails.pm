@@ -44,193 +44,61 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Ca
 
 =head2 caseId => Str
 
-  
-
-The AWS Support case ID requested or returned in the call. The case ID
+  The AWS Support case ID requested or returned in the call. The case ID
 is an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
-
-
-
-
-
-
-
-
-
 =head2 categoryCode => Str
 
-  
-
-The category of problem for the AWS Support case.
-
-
-
-
-
-
-
-
-
+  The category of problem for the AWS Support case.
 
 =head2 ccEmailAddresses => ArrayRef[Str]
 
-  
-
-The email addresses that receive copies of communication about the
+  The email addresses that receive copies of communication about the
 case.
-
-
-
-
-
-
-
-
-
 
 =head2 displayId => Str
 
-  
-
-The ID displayed for the case in the AWS Support Center. This is a
+  The ID displayed for the case in the AWS Support Center. This is a
 numeric string.
-
-
-
-
-
-
-
-
-
 
 =head2 language => Str
 
-  
-
-The ISO 639-1 code for the language in which AWS provides support. AWS
+  The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.
 
-
-
-
-
-
-
-
-
-
 =head2 recentCommunications => Paws::Support::RecentCaseCommunications
 
-  
-
-The five most recent communications between you and AWS Support Center,
+  The five most recent communications between you and AWS Support Center,
 including the IDs of any attachments to the communications. Also
 includes a C<nextToken> that you can use to retrieve earlier
 communications.
 
-
-
-
-
-
-
-
-
-
 =head2 serviceCode => Str
 
-  
-
-The code for the AWS service returned by the call to DescribeServices.
-
-
-
-
-
-
-
-
-
+  The code for the AWS service returned by the call to DescribeServices.
 
 =head2 severityCode => Str
 
-  
-
-The code for the severity level returned by the call to
+  The code for the severity level returned by the call to
 DescribeSeverityLevels.
-
-
-
-
-
-
-
-
-
 
 =head2 status => Str
 
-  
-
-The status of the case.
-
-
-
-
-
-
-
-
-
+  The status of the case.
 
 =head2 subject => Str
 
-  
-
-The subject line for the case in the AWS Support Center.
-
-
-
-
-
-
-
-
-
+  The subject line for the case in the AWS Support Center.
 
 =head2 submittedBy => Str
 
-  
-
-The email address of the account that submitted the case.
-
-
-
-
-
-
-
-
-
+  The email address of the account that submitted the case.
 
 =head2 timeCreated => Str
 
-  
-
-The time that the case was case created in the AWS Support Center.
-
-
-
-
-
-
-
-
-
+  The time that the case was case created in the AWS Support Center.
 
 
 

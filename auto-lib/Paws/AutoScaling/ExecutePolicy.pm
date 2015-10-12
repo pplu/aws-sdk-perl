@@ -38,42 +38,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoScalingGroupName => Str
 
-  
-
-The name or Amazon Resource Name (ARN) of the Auto Scaling group.
-
-
-
-
-
-
-
-
-
+  The name or Amazon Resource Name (ARN) of the Auto Scaling group.
 
 =head2 BreachThreshold => Num
 
-  
-
-The breach threshold for the alarm.
+  The breach threshold for the alarm.
 
 This parameter is required if the policy type is C<StepScaling> and not
 supported otherwise.
 
-
-
-
-
-
-
-
-
-
 =head2 HonorCooldown => Bool
 
-  
-
-If this parameter is true, Auto Scaling waits for the cooldown period
+  If this parameter is true, Auto Scaling waits for the cooldown period
 to complete before executing the policy. Otherwise, Auto Scaling
 executes the policy without waiting for the cooldown period to
 complete.
@@ -83,20 +59,9 @@ This parameter is not supported if the policy type is C<StepScaling>.
 For more information, see Understanding Auto Scaling Cooldowns in the
 I<Auto Scaling Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 MetricValue => Num
 
-  
-
-The metric value to compare to C<BreachThreshold>. This enables you to
+  The metric value to compare to C<BreachThreshold>. This enables you to
 execute a policy of type C<StepScaling> and determine which step
 adjustment to use. For example, if the breach threshold is 50 and you
 want to use a step adjustment with a lower bound of 0 and an upper
@@ -108,29 +73,9 @@ adjustment for the policy, the call returns an error.
 This parameter is required if the policy type is C<StepScaling> and not
 supported otherwise.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The name or ARN of the policy.
-
-
-
-
-
-
-
-
-
+  The name or ARN of the policy.
 
 
 

@@ -33,20 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::HostVo
 
 =head2 sourcePath => Str
 
-  
-
-The path on the host container instance that is presented to the
+  The path on the host container instance that is presented to the
 container. If this parameter is empty, then the Docker daemon has
 assigned a host path for you.
-
-
-
-
-
-
-
-
-
 
 
 

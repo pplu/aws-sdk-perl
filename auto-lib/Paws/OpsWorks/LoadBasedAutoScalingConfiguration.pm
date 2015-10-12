@@ -36,67 +36,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::L
 
 =head2 DownScaling => Paws::OpsWorks::AutoScalingThresholds
 
-  
-
-An C<AutoScalingThresholds> object that describes the downscaling
+  An C<AutoScalingThresholds> object that describes the downscaling
 configuration, which defines how and when AWS OpsWorks reduces the
 number of instances.
 
-
-
-
-
-
-
-
-
-
 =head2 Enable => Bool
 
-  
-
-Whether load-based auto scaling is enabled for the layer.
-
-
-
-
-
-
-
-
-
+  Whether load-based auto scaling is enabled for the layer.
 
 =head2 LayerId => Str
 
-  
-
-The layer ID.
-
-
-
-
-
-
-
-
-
+  The layer ID.
 
 =head2 UpScaling => Paws::OpsWorks::AutoScalingThresholds
 
-  
-
-An C<AutoScalingThresholds> object that describes the upscaling
+  An C<AutoScalingThresholds> object that describes the upscaling
 configuration, which defines how and when AWS OpsWorks increases the
 number of instances.
-
-
-
-
-
-
-
-
-
 
 
 

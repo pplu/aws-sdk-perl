@@ -38,18 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head2 Database => Paws::MachineLearning::RDSDatabase
 
-  
-
-The database details required to connect to an Amazon RDS.
-
-
-
-
-
-
-
-
-
+  The database details required to connect to an Amazon RDS.
 
 =head2 DatabaseUserName => Str
 
@@ -57,70 +46,26 @@ The database details required to connect to an Amazon RDS.
 
 =head2 DataPipelineId => Str
 
-  
-
-The ID of the Data Pipeline instance that is used to carry to copy data
+  The ID of the Data Pipeline instance that is used to carry to copy data
 from Amazon RDS to Amazon S3. You can use the ID to find details about
 the instance in the Data Pipeline console.
 
-
-
-
-
-
-
-
-
-
 =head2 ResourceRole => Str
 
-  
-
-The role (DataPipelineDefaultResourceRole) assumed by an Amazon EC2
+  The role (DataPipelineDefaultResourceRole) assumed by an Amazon EC2
 instance to carry out the copy task from Amazon RDS to Amazon S3. For
 more information, see Role templates for data pipelines.
 
-
-
-
-
-
-
-
-
-
 =head2 SelectSqlQuery => Str
 
-  
-
-The SQL query that is supplied during CreateDataSourceFromRDS. Returns
+  The SQL query that is supplied during CreateDataSourceFromRDS. Returns
 only if C<Verbose> is true in C<GetDataSourceInput>.
-
-
-
-
-
-
-
-
-
 
 =head2 ServiceRole => Str
 
-  
-
-The role (DataPipelineDefaultRole) assumed by the Data Pipeline service
+  The role (DataPipelineDefaultRole) assumed by the Data Pipeline service
 to monitor the progress of the copy task from Amazon RDS to Amazon S3.
 For more information, see Role templates for data pipelines.
-
-
-
-
-
-
-
-
-
 
 
 

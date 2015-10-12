@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepTi
 
 =head2 CreationDateTime => Str
 
-  
-
-The date and time when the cluster step was created.
-
-
-
-
-
-
-
-
-
+  The date and time when the cluster step was created.
 
 =head2 EndDateTime => Str
 
-  
-
-The date and time when the cluster step execution completed or failed.
-
-
-
-
-
-
-
-
-
+  The date and time when the cluster step execution completed or failed.
 
 =head2 StartDateTime => Str
 
-  
-
-The date and time when the cluster step execution started.
-
-
-
-
-
-
-
-
-
+  The date and time when the cluster step execution started.
 
 
 

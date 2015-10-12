@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Launch
 
 =head2 Group => Str
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
-
+  The name of the group.
 
 =head2 UserId => Str
 
-  
-
-The AWS account ID.
-
-
-
-
-
-
-
-
-
+  The AWS account ID.
 
 
 

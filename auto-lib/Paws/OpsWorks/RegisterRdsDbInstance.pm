@@ -37,63 +37,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DbPassword => Str
 
-  
-
-The database password.
-
-
-
-
-
-
-
-
-
+  The database password.
 
 =head2 B<REQUIRED> DbUser => Str
 
-  
-
-The database's master user name.
-
-
-
-
-
-
-
-
-
+  The database's master user name.
 
 =head2 B<REQUIRED> RdsDbInstanceArn => Str
 
-  
-
-The Amazon RDS instance's ARN.
-
-
-
-
-
-
-
-
-
+  The Amazon RDS instance's ARN.
 
 =head2 B<REQUIRED> StackId => Str
 
-  
-
-The stack ID.
-
-
-
-
-
-
-
-
-
+  The stack ID.
 
 
 

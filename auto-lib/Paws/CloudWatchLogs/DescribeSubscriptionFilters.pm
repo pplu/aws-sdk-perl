@@ -37,20 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 filterNamePrefix => Str
 
-  
-
-Will only return subscription filters that match the provided
+  Will only return subscription filters that match the provided
 filterNamePrefix. If you don't specify a value, no prefix filter is
 applied.
-
-
-
-
-
-
-
-
-
 
 =head2 limit => Int
 
@@ -58,18 +47,7 @@ applied.
 
 =head2 B<REQUIRED> logGroupName => Str
 
-  
-
-The log group name for which subscription filters are to be listed.
-
-
-
-
-
-
-
-
-
+  The log group name for which subscription filters are to be listed.
 
 =head2 nextToken => Str
 

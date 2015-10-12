@@ -15,18 +15,7 @@ Paws::EC2::DescribeInternetGatewaysResult
 
 =head2 InternetGateways => ArrayRef[Paws::EC2::InternetGateway]
 
-  
-
-Information about one or more Internet gateways.
-
-
-
-
-
-
-
-
-
+  Information about one or more Internet gateways.
 
 
 =cut

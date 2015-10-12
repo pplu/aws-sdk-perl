@@ -39,33 +39,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::S
 
 =head2 SubnetIdentifier => Str
 
-  
-
-The identifier of the subnet.
-
-
-
-
-
-
-
-
-
+  The identifier of the subnet.
 
 =head2 SubnetStatus => Str
 
-  
-
-The status of the subnet.
-
-
-
-
-
-
-
-
-
+  The status of the subnet.
 
 
 

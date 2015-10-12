@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 Key => Str
 
-  
-
-The key for the tag.
-
-
-
-
-
-
-
-
-
+  The key for the tag.
 
 =head2 Value => Str
 
-  
-
-The tag's value. May not be null.
-
-
-
-
-
-
-
-
-
+  The tag's value. May not be null.
 
 
 

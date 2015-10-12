@@ -29,19 +29,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HealthCheck => Paws::Route53::HealthCheck
 
-  
-
-A complex type that contains the information about the specified health
+  A complex type that contains the information about the specified health
 check.
-
-
-
-
-
-
-
-
-
 
 
 

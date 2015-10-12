@@ -37,25 +37,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The identifier of the pipeline for which you want to change
+  The identifier of the pipeline for which you want to change
 notification settings.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Notifications => Paws::ElasticTranscoder::Notifications
 
-  
-
-The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
+  The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
 topic that you want to notify to report job status.
 
 To receive notifications, you must also subscribe to the new topic in
@@ -82,15 +69,6 @@ to notify when Elastic Transcoder encounters an error condition. This
 is the ARN that Amazon SNS returned when you created the topic.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

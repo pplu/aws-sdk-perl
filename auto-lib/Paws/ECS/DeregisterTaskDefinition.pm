@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> taskDefinition => Str
 
-  
-
-The C<family> and C<revision> (C<family:revision>) or full Amazon
+  The C<family> and C<revision> (C<family:revision>) or full Amazon
 Resource Name (ARN) of the task definition to deregister. You must
 specify a C<revision>.
-
-
-
-
-
-
-
-
-
 
 
 

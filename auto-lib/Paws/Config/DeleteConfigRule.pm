@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConfigRuleName => Str
 
-  
-
-The name of the AWS Config rule that you want to delete.
-
-
-
-
-
-
-
-
-
+  The name of the AWS Config rule that you want to delete.
 
 
 

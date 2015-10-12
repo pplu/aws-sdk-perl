@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
 =head2 ComplianceSummary => Paws::Config::ComplianceSummary
 
-  
-
-The number of AWS resources that are compliant or noncompliant, up to a
+  The number of AWS resources that are compliant or noncompliant, up to a
 maximum of 100 for each compliance.
-
-
-
-
-
-
-
-
-
 
 =head2 ResourceType => Str
 
-  
-
-The type of AWS resource.
-
-
-
-
-
-
-
-
-
+  The type of AWS resource.
 
 
 

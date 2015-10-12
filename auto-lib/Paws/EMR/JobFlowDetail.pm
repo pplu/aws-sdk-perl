@@ -44,195 +44,63 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::JobFlo
 
 =head2 AmiVersion => Str
 
-  
-
-The version of the AMI used to initialize Amazon EC2 instances in the
+  The version of the AMI used to initialize Amazon EC2 instances in the
 job flow. For a list of AMI versions currently supported by Amazon
 ElasticMapReduce, go to AMI Versions Supported in Elastic MapReduce in
 the I<Amazon Elastic MapReduce Developer Guide.>
 
-
-
-
-
-
-
-
-
-
 =head2 BootstrapActions => ArrayRef[Paws::EMR::BootstrapActionDetail]
 
-  
-
-A list of the bootstrap actions run by the job flow.
-
-
-
-
-
-
-
-
-
+  A list of the bootstrap actions run by the job flow.
 
 =head2 B<REQUIRED> ExecutionStatusDetail => Paws::EMR::JobFlowExecutionStatusDetail
 
-  
-
-Describes the execution status of the job flow.
-
-
-
-
-
-
-
-
-
+  Describes the execution status of the job flow.
 
 =head2 B<REQUIRED> Instances => Paws::EMR::JobFlowInstancesDetail
 
-  
-
-Describes the Amazon EC2 instances of the job flow.
-
-
-
-
-
-
-
-
-
+  Describes the Amazon EC2 instances of the job flow.
 
 =head2 B<REQUIRED> JobFlowId => Str
 
-  
-
-The job flow identifier.
-
-
-
-
-
-
-
-
-
+  The job flow identifier.
 
 =head2 JobFlowRole => Str
 
-  
-
-The IAM role that was specified when the job flow was launched. The EC2
+  The IAM role that was specified when the job flow was launched. The EC2
 instances of the job flow assume this role.
-
-
-
-
-
-
-
-
-
 
 =head2 LogUri => Str
 
-  
-
-The location in Amazon S3 where log files for the job are stored.
-
-
-
-
-
-
-
-
-
+  The location in Amazon S3 where log files for the job are stored.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the job flow.
-
-
-
-
-
-
-
-
-
+  The name of the job flow.
 
 =head2 ServiceRole => Str
 
-  
-
-The IAM role that will be assumed by the Amazon EMR service to access
+  The IAM role that will be assumed by the Amazon EMR service to access
 AWS resources on your behalf.
-
-
-
-
-
-
-
-
-
 
 =head2 Steps => ArrayRef[Paws::EMR::StepDetail]
 
-  
-
-A list of steps run by the job flow.
-
-
-
-
-
-
-
-
-
+  A list of steps run by the job flow.
 
 =head2 SupportedProducts => ArrayRef[Str]
 
-  
-
-A list of strings set by third party software when the job flow is
+  A list of strings set by third party software when the job flow is
 launched. If you are not using third party software to manage the job
 flow this value is empty.
 
-
-
-
-
-
-
-
-
-
 =head2 VisibleToAllUsers => Bool
 
-  
-
-Specifies whether the job flow is visible to all IAM users of the AWS
+  Specifies whether the job flow is visible to all IAM users of the AWS
 account associated with the job flow. If this value is set to C<true>,
 all IAM users of that AWS account can view and (if they have the proper
 policy permissions set) manage the job flow. If it is set to C<false>,
 only the IAM user that created the job flow can view and manage it.
 This value can be changed using the SetVisibleToAllUsers action.
-
-
-
-
-
-
-
-
-
 
 
 

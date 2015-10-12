@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Unsucc
 
 =head2 B<REQUIRED> Error => Paws::EC2::UnsuccessfulItemError
 
-  
-
-Information about the error.
-
-
-
-
-
-
-
-
-
+  Information about the error.
 
 =head2 ResourceId => Str
 
-  
-
-The ID of the resource.
-
-
-
-
-
-
-
-
-
+  The ID of the resource.
 
 
 

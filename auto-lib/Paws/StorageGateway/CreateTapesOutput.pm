@@ -14,19 +14,8 @@ Paws::StorageGateway::CreateTapesOutput
 
 =head2 TapeARNs => ArrayRef[Str]
 
-  
-
-A list of unique Amazon Resource Named (ARN) that represents the
+  A list of unique Amazon Resource Named (ARN) that represents the
 virtual tapes that were created.
-
-
-
-
-
-
-
-
-
 
 
 =cut

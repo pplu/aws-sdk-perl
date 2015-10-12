@@ -37,80 +37,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 DefaultValue => Str
 
-  
-
-A value to use for the field if the field isn't specified for a
+  A value to use for the field if the field isn't specified for a
 document.
-
-
-
-
-
-
-
-
-
 
 =head2 FacetEnabled => Bool
 
-  
-
-Whether facet information can be returned for the field.
-
-
-
-
-
-
-
-
-
+  Whether facet information can be returned for the field.
 
 =head2 ReturnEnabled => Bool
 
-  
-
-Whether the contents of the field can be returned in the search
+  Whether the contents of the field can be returned in the search
 results.
-
-
-
-
-
-
-
-
-
 
 =head2 SearchEnabled => Bool
 
-  
-
-Whether the contents of the field are searchable.
-
-
-
-
-
-
-
-
-
+  Whether the contents of the field are searchable.
 
 =head2 SourceFields => Str
 
-  
-
-A list of source fields to map to the field.
-
-
-
-
-
-
-
-
-
+  A list of source fields to map to the field.
 
 
 

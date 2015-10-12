@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Access
 
 =head2 AccessKeyId => Str
 
-  
-
-The ID for this access key.
-
-
-
-
-
-
-
-
-
+  The ID for this access key.
 
 =head2 CreateDate => Str
 
-  
-
-The date when the access key was created.
-
-
-
-
-
-
-
-
-
+  The date when the access key was created.
 
 =head2 Status => Str
 
-  
-
-The status of the access key. C<Active> means the key is valid for API
+  The status of the access key. C<Active> means the key is valid for API
 calls; C<Inactive> means it is not.
-
-
-
-
-
-
-
-
-
 
 =head2 UserName => Str
 
-  
-
-The name of the IAM user that the key is associated with.
-
-
-
-
-
-
-
-
-
+  The name of the IAM user that the key is associated with.
 
 
 

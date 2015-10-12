@@ -34,39 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Tag ob
 
 =head2 Key => Str
 
-  
-
-The key of the tag.
+  The key of the tag.
 
 Constraints: Tag keys are case-sensitive and accept a maximum of 127
 Unicode characters. May not begin with C<aws:>
 
-
-
-
-
-
-
-
-
-
 =head2 Value => Str
 
-  
-
-The value of the tag.
+  The value of the tag.
 
 Constraints: Tag values are case-sensitive and accept a maximum of 255
 Unicode characters.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,51 +35,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 encryptionKey => Paws::CodePipeline::EncryptionKey
 
-  
-
-The AWS Key Management Service (AWS KMS) key used to encrypt the data
+  The AWS Key Management Service (AWS KMS) key used to encrypt the data
 in the artifact store. If this is undefined, the default key for Amazon
 S3 is used.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> location => Str
 
-  
-
-The location for storing the artifacts for a pipeline, such as an S3
+  The location for storing the artifacts for a pipeline, such as an S3
 bucket or folder.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> type => Str
 
-  
-
-The type of the artifact store, such as S3.
-
-
-
-
-
-
-
-
-
+  The type of the artifact store, such as S3.
 
 
 

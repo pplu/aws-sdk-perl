@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 CacheNodeType => Str
 
-  
-
-The cache node type for which this value applies.
-
-
-
-
-
-
-
-
-
+  The cache node type for which this value applies.
 
 =head2 Value => Str
 
-  
-
-The value for the cache node type.
-
-
-
-
-
-
-
-
-
+  The value for the cache node type.
 
 
 

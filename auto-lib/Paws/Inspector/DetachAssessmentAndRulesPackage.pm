@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 assessmentArn => Str
 
-  
-
-The ARN specifying the assessment from which you want to detach a rules
+  The ARN specifying the assessment from which you want to detach a rules
 package.
-
-
-
-
-
-
-
-
-
 
 =head2 rulesPackageArn => Str
 
-  
-
-The ARN specifying the rules package that you want to detach from the
+  The ARN specifying the rules package that you want to detach from the
 assessment.
-
-
-
-
-
-
-
-
-
 
 
 

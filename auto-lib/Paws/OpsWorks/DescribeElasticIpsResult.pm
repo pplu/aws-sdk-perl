@@ -14,19 +14,8 @@ Paws::OpsWorks::DescribeElasticIpsResult
 
 =head2 ElasticIps => ArrayRef[Paws::OpsWorks::ElasticIp]
 
-  
-
-An C<ElasticIps> object that describes the specified Elastic IP
+  An C<ElasticIps> object that describes the specified Elastic IP
 addresses.
-
-
-
-
-
-
-
-
-
 
 
 =cut

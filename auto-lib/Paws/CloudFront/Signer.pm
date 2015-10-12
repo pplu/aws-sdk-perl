@@ -34,37 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 AwsAccountNumber => Str
 
-  
-
-Specifies an AWS account that can create signed URLs. Values: self,
+  Specifies an AWS account that can create signed URLs. Values: self,
 which indicates that the AWS account that was used to create the
 distribution can created signed URLs, or an AWS account number. Omit
 the dashes in the account number.
 
-
-
-
-
-
-
-
-
-
 =head2 KeyPairIds => Paws::CloudFront::KeyPairIds
 
-  
-
-A complex type that lists the active CloudFront key pairs, if any, that
+  A complex type that lists the active CloudFront key pairs, if any, that
 are associated with AwsAccountNumber.
-
-
-
-
-
-
-
-
-
 
 
 

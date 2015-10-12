@@ -37,79 +37,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> activityType => Paws::SimpleWorkflow::ActivityType
 
-  
-
-The ActivityType type structure representing the activity type.
-
-
-
-
-
-
-
-
-
+  The ActivityType type structure representing the activity type.
 
 =head2 B<REQUIRED> creationDate => Str
 
-  
-
-The date and time this activity type was created through
+  The date and time this activity type was created through
 RegisterActivityType.
-
-
-
-
-
-
-
-
-
 
 =head2 deprecationDate => Str
 
-  
-
-If DEPRECATED, the date and time DeprecateActivityType was called.
-
-
-
-
-
-
-
-
-
+  If DEPRECATED, the date and time DeprecateActivityType was called.
 
 =head2 description => Str
 
-  
-
-The description of the activity type provided in RegisterActivityType.
-
-
-
-
-
-
-
-
-
+  The description of the activity type provided in RegisterActivityType.
 
 =head2 B<REQUIRED> status => Str
 
-  
-
-The current status of the activity type.
-
-
-
-
-
-
-
-
-
+  The current status of the activity type.
 
 
 

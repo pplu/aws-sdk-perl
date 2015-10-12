@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 B<REQUIRED> maximumCount => Int
 
-  
-
-The maximum number of artifacts allowed for the action type.
-
-
-
-
-
-
-
-
-
+  The maximum number of artifacts allowed for the action type.
 
 =head2 B<REQUIRED> minimumCount => Int
 
-  
-
-The minimum number of artifacts allowed for the action type.
-
-
-
-
-
-
-
-
-
+  The minimum number of artifacts allowed for the action type.
 
 
 

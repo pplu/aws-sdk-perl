@@ -35,54 +35,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head2 name => Str
 
-  
-
-The name of the recorder. By default, AWS Config automatically assigns
+  The name of the recorder. By default, AWS Config automatically assigns
 the name "default" when creating the configuration recorder. You cannot
 change the assigned name.
 
-
-
-
-
-
-
-
-
-
 =head2 recordingGroup => Paws::Config::RecordingGroup
 
-  
-
-The recording group specifies either to record configurations for all
+  The recording group specifies either to record configurations for all
 supported resources or to provide a list of resource types to record.
 The list of resource types must be a subset of supported resource
 types.
 
-
-
-
-
-
-
-
-
-
 =head2 roleARN => Str
 
-  
-
-Amazon Resource Name (ARN) of the IAM role used to describe the AWS
+  Amazon Resource Name (ARN) of the IAM role used to describe the AWS
 resources associated with the account.
-
-
-
-
-
-
-
-
-
 
 
 

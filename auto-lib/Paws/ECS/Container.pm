@@ -39,109 +39,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Contai
 
 =head2 containerArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the container.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the container.
 
 =head2 exitCode => Int
 
-  
-
-The exit code returned from the container.
-
-
-
-
-
-
-
-
-
+  The exit code returned from the container.
 
 =head2 lastStatus => Str
 
-  
-
-The last known status of the container.
-
-
-
-
-
-
-
-
-
+  The last known status of the container.
 
 =head2 name => Str
 
-  
-
-The name of the container.
-
-
-
-
-
-
-
-
-
+  The name of the container.
 
 =head2 networkBindings => ArrayRef[Paws::ECS::NetworkBinding]
 
-  
-
-The network bindings associated with the container.
-
-
-
-
-
-
-
-
-
+  The network bindings associated with the container.
 
 =head2 reason => Str
 
-  
-
-A short (255 max characters) human-readable string to provide
+  A short (255 max characters) human-readable string to provide
 additional detail about a running or stopped container.
-
-
-
-
-
-
-
-
-
 
 =head2 taskArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the task.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the task.
 
 
 

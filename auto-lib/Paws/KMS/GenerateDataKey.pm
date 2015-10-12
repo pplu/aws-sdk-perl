@@ -38,42 +38,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EncryptionContext => Paws::KMS::EncryptionContextType
 
-  
-
-Name/value pair that contains additional data to be authenticated
+  Name/value pair that contains additional data to be authenticated
 during the encryption and decryption processes that use the key. This
 value is logged by AWS CloudTrail to provide context around the data
 encrypted by the key.
 
-
-
-
-
-
-
-
-
-
 =head2 GrantTokens => ArrayRef[Str]
 
-  
-
-For more information, see Grant Tokens.
-
-
-
-
-
-
-
-
-
+  For more information, see Grant Tokens.
 
 =head2 B<REQUIRED> KeyId => Str
 
-  
-
-A unique identifier for the customer master key. This value can be a
+  A unique identifier for the customer master key. This value can be a
 globally unique identifier, a fully specified ARN to either an alias or
 a key, or an alias name prefixed by "alias/".
 
@@ -92,47 +68,16 @@ arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 KeySpec => Str
 
-  
-
-Value that identifies the encryption algorithm and key size to generate
+  Value that identifies the encryption algorithm and key size to generate
 a data key for. Currently this can be AES_128 or AES_256.
-
-
-
-
-
-
-
-
-
 
 =head2 NumberOfBytes => Int
 
-  
-
-Integer that contains the number of bytes to generate. Common values
+  Integer that contains the number of bytes to generate. Common values
 are 128, 256, 512, and 1024. 1024 is the current limit. We recommend
 that you use the C<KeySpec> parameter instead.
-
-
-
-
-
-
-
-
-
 
 
 

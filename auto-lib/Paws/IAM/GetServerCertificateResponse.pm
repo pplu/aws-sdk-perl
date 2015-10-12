@@ -15,18 +15,7 @@ Paws::IAM::GetServerCertificateResponse
 
 =head2 B<REQUIRED> ServerCertificate => Paws::IAM::ServerCertificate
 
-  
-
-Information about the server certificate.
-
-
-
-
-
-
-
-
-
+  Information about the server certificate.
 
 
 =cut

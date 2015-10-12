@@ -14,18 +14,7 @@ Paws::KMS::CreateKeyResponse
 
 =head2 KeyMetadata => Paws::KMS::KeyMetadata
 
-  
-
-Metadata associated with the key.
-
-
-
-
-
-
-
-
-
+  Metadata associated with the key.
 
 
 =cut

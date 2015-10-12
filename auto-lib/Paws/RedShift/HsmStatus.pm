@@ -35,54 +35,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::H
 
 =head2 HsmClientCertificateIdentifier => Str
 
-  
-
-Specifies the name of the HSM client certificate the Amazon Redshift
+  Specifies the name of the HSM client certificate the Amazon Redshift
 cluster uses to retrieve the data encryption keys stored in an HSM.
-
-
-
-
-
-
-
-
-
 
 =head2 HsmConfigurationIdentifier => Str
 
-  
-
-Specifies the name of the HSM configuration that contains the
+  Specifies the name of the HSM configuration that contains the
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
 
-
-
-
-
-
-
-
-
-
 =head2 Status => Str
 
-  
-
-Reports whether the Amazon Redshift cluster has finished applying any
+  Reports whether the Amazon Redshift cluster has finished applying any
 HSM settings changes specified in a modify cluster command.
 
 Values: active, applying
-
-
-
-
-
-
-
-
-
 
 
 

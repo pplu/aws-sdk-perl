@@ -14,18 +14,7 @@ Paws::EMR::DescribeClusterOutput
 
 =head2 Cluster => Paws::EMR::Cluster
 
-  
-
-This output contains the details for the requested cluster.
-
-
-
-
-
-
-
-
-
+  This output contains the details for the requested cluster.
 
 
 =cut

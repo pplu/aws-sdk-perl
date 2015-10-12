@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Tag obj
 
 =head2 B<REQUIRED> Key => Str
 
-  
-
-Name of the tag.
-
-
-
-
-
-
-
-
-
+  Name of the tag.
 
 =head2 B<REQUIRED> Value => Str
 
-  
-
-Value of the tag.
-
-
-
-
-
-
-
-
-
+  Value of the tag.
 
 
 

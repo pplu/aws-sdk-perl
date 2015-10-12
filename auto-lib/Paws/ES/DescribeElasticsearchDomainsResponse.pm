@@ -15,19 +15,8 @@ Paws::ES::DescribeElasticsearchDomainsResponse
 
 =head2 B<REQUIRED> DomainStatusList => ArrayRef[Paws::ES::ElasticsearchDomainStatus]
 
-  
-
-The status of the domains requested in the
+  The status of the domains requested in the
 C<DescribeElasticsearchDomains> request.
-
-
-
-
-
-
-
-
-
 
 
 =cut

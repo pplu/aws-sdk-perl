@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 B<REQUIRED> accessKeyId => Str
 
-  
-
-The access key for the session.
-
-
-
-
-
-
-
-
-
+  The access key for the session.
 
 =head2 B<REQUIRED> secretAccessKey => Str
 
-  
-
-The secret access key for the session.
-
-
-
-
-
-
-
-
-
+  The secret access key for the session.
 
 =head2 B<REQUIRED> sessionToken => Str
 
-  
-
-The token for the session.
-
-
-
-
-
-
-
-
-
+  The token for the session.
 
 
 

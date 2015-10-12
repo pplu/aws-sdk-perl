@@ -34,37 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::ByteMa
 
 =head2 B<REQUIRED> Action => Str
 
-  
-
-Specifies whether to insert or delete a ByteMatchTuple.
-
-
-
-
-
-
-
-
-
+  Specifies whether to insert or delete a ByteMatchTuple.
 
 =head2 B<REQUIRED> ByteMatchTuple => Paws::WAF::ByteMatchTuple
 
-  
-
-Information about the part of a web request that you want AWS WAF to
+  Information about the part of a web request that you want AWS WAF to
 inspect and the value that you want AWS WAF to search for. If you
 specify C<DELETE> for the value of C<Action>, the C<ByteMatchTuple>
 values must exactly match the values in the C<ByteMatchTuple> that you
 want to delete from the C<ByteMatchSet>.
-
-
-
-
-
-
-
-
-
 
 
 

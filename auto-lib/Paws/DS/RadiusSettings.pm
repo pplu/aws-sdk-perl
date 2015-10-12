@@ -40,129 +40,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::RadiusS
 
 =head2 AuthenticationProtocol => Str
 
-  
-
-The protocol specified for your RADIUS endpoints.
-
-
-
-
-
-
-
-
-
+  The protocol specified for your RADIUS endpoints.
 
 =head2 DisplayLabel => Str
 
-  
-
-Not currently used.
-
-
-
-
-
-
-
-
-
+  Not currently used.
 
 =head2 RadiusPort => Int
 
-  
-
-The port that your RADIUS server is using for communications. Your
+  The port that your RADIUS server is using for communications. Your
 on-premises network must allow inbound traffic over this port from the
 AWS Directory Service servers.
 
-
-
-
-
-
-
-
-
-
 =head2 RadiusRetries => Int
 
-  
-
-The maximum number of times that communication with the RADIUS server
+  The maximum number of times that communication with the RADIUS server
 is attempted.
-
-
-
-
-
-
-
-
-
 
 =head2 RadiusServers => ArrayRef[Str]
 
-  
-
-An array of strings that contains the IP addresses of the RADIUS server
+  An array of strings that contains the IP addresses of the RADIUS server
 endpoints, or the IP addresses of your RADIUS server load balancer.
-
-
-
-
-
-
-
-
-
 
 =head2 RadiusTimeout => Int
 
-  
-
-The amount of time, in seconds, to wait for the RADIUS server to
+  The amount of time, in seconds, to wait for the RADIUS server to
 respond.
-
-
-
-
-
-
-
-
-
 
 =head2 SharedSecret => Str
 
-  
-
-The shared secret code that was specified when your RADIUS endpoints
+  The shared secret code that was specified when your RADIUS endpoints
 were created.
-
-
-
-
-
-
-
-
-
 
 =head2 UseSameUsername => Bool
 
-  
-
-Not currently used.
-
-
-
-
-
-
-
-
-
+  Not currently used.
 
 
 

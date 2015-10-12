@@ -36,71 +36,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 details => Str
 
-  
-
-Details of the cancellation (if any).
-
-
-
-
-
-
-
-
-
+  Details of the cancellation (if any).
 
 =head2 latestCancelRequestedEventId => Int
 
-  
-
-If set, contains the ID of the last C<ActivityTaskCancelRequested>
+  If set, contains the ID of the last C<ActivityTaskCancelRequested>
 event recorded for this activity task. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> scheduledEventId => Int
 
-  
-
-The ID of the C<ActivityTaskScheduled> event that was recorded when
+  The ID of the C<ActivityTaskScheduled> event that was recorded when
 this activity task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> startedEventId => Int
 
-  
-
-The ID of the C<ActivityTaskStarted> event recorded when this activity
+  The ID of the C<ActivityTaskStarted> event recorded when this activity
 task was started. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
-
-
-
-
-
-
-
-
-
 
 
 

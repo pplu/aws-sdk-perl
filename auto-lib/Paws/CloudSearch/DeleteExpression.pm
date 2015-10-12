@@ -39,18 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ExpressionName => Str
 
-  
-
-The name of the C<Expression> to delete.
-
-
-
-
-
-
-
-
-
+  The name of the C<Expression> to delete.
 
 
 

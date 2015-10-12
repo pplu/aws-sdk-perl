@@ -48,39 +48,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Reques
 
 =head2 AddressingType => Str
 
-  
-
-Deprecated.
-
-
-
-
-
-
-
-
-
+  Deprecated.
 
 =head2 BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping]
 
-  
-
-One or more block device mapping entries.
-
-
-
-
-
-
-
-
-
+  One or more block device mapping entries.
 
 =head2 EbsOptimized => Bool
 
-  
-
-Indicates whether the instance is optimized for EBS I/O. This
+  Indicates whether the instance is optimized for EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal EBS I/O performance.
 This optimization isn't available with all instance types. Additional
@@ -88,89 +64,25 @@ usage charges apply when using an EBS Optimized instance.
 
 Default: C<false>
 
-
-
-
-
-
-
-
-
-
 =head2 IamInstanceProfile => Paws::EC2::IamInstanceProfileSpecification
 
-  
-
-The IAM instance profile.
-
-
-
-
-
-
-
-
-
+  The IAM instance profile.
 
 =head2 ImageId => Str
 
-  
-
-The ID of the AMI.
-
-
-
-
-
-
-
-
-
+  The ID of the AMI.
 
 =head2 InstanceType => Str
 
-  
-
-The instance type.
-
-
-
-
-
-
-
-
-
+  The instance type.
 
 =head2 KernelId => Str
 
-  
-
-The ID of the kernel.
-
-
-
-
-
-
-
-
-
+  The ID of the kernel.
 
 =head2 KeyName => Str
 
-  
-
-The name of the key pair.
-
-
-
-
-
-
-
-
-
+  The name of the key pair.
 
 =head2 Monitoring => Paws::EC2::RunInstancesMonitoringEnabled
 
@@ -178,48 +90,15 @@ The name of the key pair.
 
 =head2 NetworkInterfaces => ArrayRef[Paws::EC2::InstanceNetworkInterfaceSpecification]
 
-  
-
-One or more network interfaces.
-
-
-
-
-
-
-
-
-
+  One or more network interfaces.
 
 =head2 Placement => Paws::EC2::SpotPlacement
 
-  
-
-The placement information for the instance.
-
-
-
-
-
-
-
-
-
+  The placement information for the instance.
 
 =head2 RamdiskId => Str
 
-  
-
-The ID of the RAM disk.
-
-
-
-
-
-
-
-
-
+  The ID of the RAM disk.
 
 =head2 SecurityGroupIds => ArrayRef[Str]
 
@@ -231,33 +110,11 @@ The ID of the RAM disk.
 
 =head2 SubnetId => Str
 
-  
-
-The ID of the subnet in which to launch the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the subnet in which to launch the instance.
 
 =head2 UserData => Str
 
-  
-
-The Base64-encoded MIME user data to make available to the instances.
-
-
-
-
-
-
-
-
-
+  The Base64-encoded MIME user data to make available to the instances.
 
 
 

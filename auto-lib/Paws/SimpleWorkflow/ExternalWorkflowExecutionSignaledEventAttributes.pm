@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> initiatedEventId => Int
 
-  
-
-The ID of the C<SignalExternalWorkflowExecutionInitiated> event
+  The ID of the C<SignalExternalWorkflowExecutionInitiated> event
 corresponding to the C<SignalExternalWorkflowExecution> decision to
 request this signal. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> workflowExecution => Paws::SimpleWorkflow::WorkflowExecution
 
-  
-
-The external workflow execution that the signal was delivered to.
-
-
-
-
-
-
-
-
-
+  The external workflow execution that the signal was delivered to.
 
 
 

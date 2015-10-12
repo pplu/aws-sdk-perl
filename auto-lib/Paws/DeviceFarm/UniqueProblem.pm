@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 message => Str
 
-  
-
-A message about the unique problems' result.
-
-
-
-
-
-
-
-
-
+  A message about the unique problems' result.
 
 =head2 problems => ArrayRef[Paws::DeviceFarm::Problem]
 
-  
-
-Information about the problems.
-
-
-
-
-
-
-
-
-
+  Information about the problems.
 
 
 

@@ -40,125 +40,37 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
 =head2 DBSecurityGroupMemberships => ArrayRef[Paws::RDS::DBSecurityGroupMembership]
 
-  
-
-If the option requires access to a port, then this DB security group
+  If the option requires access to a port, then this DB security group
 allows access to the port.
-
-
-
-
-
-
-
-
-
 
 =head2 OptionDescription => Str
 
-  
-
-The description of the option.
-
-
-
-
-
-
-
-
-
+  The description of the option.
 
 =head2 OptionName => Str
 
-  
-
-The name of the option.
-
-
-
-
-
-
-
-
-
+  The name of the option.
 
 =head2 OptionSettings => ArrayRef[Paws::RDS::OptionSetting]
 
-  
-
-The option settings for this option.
-
-
-
-
-
-
-
-
-
+  The option settings for this option.
 
 =head2 Permanent => Bool
 
-  
-
-Indicate if this option is permanent.
-
-
-
-
-
-
-
-
-
+  Indicate if this option is permanent.
 
 =head2 Persistent => Bool
 
-  
-
-Indicate if this option is persistent.
-
-
-
-
-
-
-
-
-
+  Indicate if this option is persistent.
 
 =head2 Port => Int
 
-  
-
-If required, the port configured for this option to use.
-
-
-
-
-
-
-
-
-
+  If required, the port configured for this option to use.
 
 =head2 VpcSecurityGroupMemberships => ArrayRef[Paws::RDS::VpcSecurityGroupMembership]
 
-  
-
-If the option requires access to a port, then this VPC security group
+  If the option requires access to a port, then this VPC security group
 allows access to the port.
-
-
-
-
-
-
-
-
-
 
 
 

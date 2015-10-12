@@ -38,94 +38,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
 =head2 CloudTrailEvent => Str
 
-  
-
-A JSON string that contains a representation of the event returned.
-
-
-
-
-
-
-
-
-
+  A JSON string that contains a representation of the event returned.
 
 =head2 EventId => Str
 
-  
-
-The CloudTrail ID of the event returned.
-
-
-
-
-
-
-
-
-
+  The CloudTrail ID of the event returned.
 
 =head2 EventName => Str
 
-  
-
-The name of the event returned.
-
-
-
-
-
-
-
-
-
+  The name of the event returned.
 
 =head2 EventTime => Str
 
-  
-
-The date and time of the event returned.
-
-
-
-
-
-
-
-
-
+  The date and time of the event returned.
 
 =head2 Resources => ArrayRef[Paws::CloudTrail::Resource]
 
-  
-
-A list of resources referenced by the event returned.
-
-
-
-
-
-
-
-
-
+  A list of resources referenced by the event returned.
 
 =head2 Username => Str
 
-  
-
-A user name or role name of the requester that called the API in the
+  A user name or role name of the requester that called the API in the
 event returned.
-
-
-
-
-
-
-
-
-
 
 
 

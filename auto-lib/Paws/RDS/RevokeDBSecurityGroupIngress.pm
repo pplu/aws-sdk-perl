@@ -38,90 +38,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CIDRIP => Str
 
-  
-
-The IP range to revoke access from. Must be a valid CIDR range. If
+  The IP range to revoke access from. Must be a valid CIDR range. If
 C<CIDRIP> is specified, C<EC2SecurityGroupName>, C<EC2SecurityGroupId>
 and C<EC2SecurityGroupOwnerId> cannot be provided.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DBSecurityGroupName => Str
 
-  
-
-The name of the DB security group to revoke ingress from.
-
-
-
-
-
-
-
-
-
+  The name of the DB security group to revoke ingress from.
 
 =head2 EC2SecurityGroupId => Str
 
-  
-
-The id of the EC2 security group to revoke access from. For VPC DB
+  The id of the EC2 security group to revoke access from. For VPC DB
 security groups, C<EC2SecurityGroupId> must be provided. Otherwise,
 EC2SecurityGroupOwnerId and either C<EC2SecurityGroupName> or
 C<EC2SecurityGroupId> must be provided.
-
-
-
-
-
-
-
-
-
 
 =head2 EC2SecurityGroupName => Str
 
-  
-
-The name of the EC2 security group to revoke access from. For VPC DB
+  The name of the EC2 security group to revoke access from. For VPC DB
 security groups, C<EC2SecurityGroupId> must be provided. Otherwise,
 EC2SecurityGroupOwnerId and either C<EC2SecurityGroupName> or
 C<EC2SecurityGroupId> must be provided.
 
-
-
-
-
-
-
-
-
-
 =head2 EC2SecurityGroupOwnerId => Str
 
-  
-
-The AWS Account Number of the owner of the EC2 security group specified
+  The AWS Account Number of the owner of the EC2 security group specified
 in the C<EC2SecurityGroupName> parameter. The AWS Access Key ID is not
 an acceptable value. For VPC DB security groups, C<EC2SecurityGroupId>
 must be provided. Otherwise, EC2SecurityGroupOwnerId and either
 C<EC2SecurityGroupName> or C<EC2SecurityGroupId> must be provided.
-
-
-
-
-
-
-
-
-
 
 
 

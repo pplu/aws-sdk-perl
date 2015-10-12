@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Transit
 
 =head2 Date => Str
 
-  
-
-Indicates at what date the object is to be moved or deleted. Should be
+  Indicates at what date the object is to be moved or deleted. Should be
 in GMT ISO 8601 Format.
-
-
-
-
-
-
-
-
-
 
 =head2 Days => Int
 
-  
-
-Indicates the lifetime, in days, of the objects that are subject to the
+  Indicates the lifetime, in days, of the objects that are subject to the
 rule. The value must be a non-zero positive integer.
-
-
-
-
-
-
-
-
-
 
 =head2 StorageClass => Str
 
-  
-
-The class of storage used to store the object.
-
-
-
-
-
-
-
-
-
+  The class of storage used to store the object.
 
 
 

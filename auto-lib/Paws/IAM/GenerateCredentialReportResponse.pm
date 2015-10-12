@@ -16,32 +16,10 @@ Paws::IAM::GenerateCredentialReportResponse
 
 =head2 Description => Str
 
-  
-
-Information about the credential report.
-
-
-
-
-
-
-
-
-
+  Information about the credential report.
 =head2 State => Str
 
-  
-
-Information about the state of the credential report.
-
-
-
-
-
-
-
-
-
+  Information about the state of the credential report.
 
 
 =cut

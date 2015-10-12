@@ -34,38 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> initiatedEventId => Int
 
-  
-
-The ID of the C<RequestCancelExternalWorkflowExecutionInitiated> event
+  The ID of the C<RequestCancelExternalWorkflowExecutionInitiated> event
 corresponding to the C<RequestCancelExternalWorkflowExecution> decision
 to cancel this external workflow execution. This information can be
 useful for diagnosing problems by tracing back the chain of events
 leading up to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> workflowExecution => Paws::SimpleWorkflow::WorkflowExecution
 
-  
-
-The external workflow execution to which the cancellation request was
+  The external workflow execution to which the cancellation request was
 delivered.
-
-
-
-
-
-
-
-
-
 
 
 

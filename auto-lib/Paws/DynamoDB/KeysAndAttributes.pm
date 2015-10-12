@@ -37,44 +37,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::K
 
 =head2 AttributesToGet => ArrayRef[Str]
 
-  
-
-One or more attributes to retrieve from the table or index. If no
+  One or more attributes to retrieve from the table or index. If no
 attribute names are specified then all attributes will be returned. If
 any of the specified attributes are not found, they will not appear in
 the result.
 
-
-
-
-
-
-
-
-
-
 =head2 ConsistentRead => Bool
 
-  
-
-The consistency of a read operation. If set to C<true>, then a strongly
+  The consistency of a read operation. If set to C<true>, then a strongly
 consistent read is used; otherwise, an eventually consistent read is
 used.
 
-
-
-
-
-
-
-
-
-
 =head2 ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap
 
-  
-
-One or more substitution tokens for attribute names in an expression.
+  One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
@@ -138,36 +114,14 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Keys => ArrayRef[Paws::DynamoDB::Key]
 
-  
-
-The primary key attribute values that define the items and the
+  The primary key attribute values that define the items and the
 attributes associated with the items.
-
-
-
-
-
-
-
-
-
 
 =head2 ProjectionExpression => Str
 
-  
-
-A string that identifies one or more attributes to retrieve from the
+  A string that identifies one or more attributes to retrieve from the
 table. These attributes can include scalars, sets, or elements of a
 JSON document. The attributes in the I<ProjectionExpression> must be
 separated by commas.
@@ -181,15 +135,6 @@ DynamoDB Developer Guide>.
 
 I<ProjectionExpression> replaces the legacy I<AttributesToGet>
 parameter.
-
-
-
-
-
-
-
-
-
 
 
 

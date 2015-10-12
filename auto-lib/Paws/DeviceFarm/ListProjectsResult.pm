@@ -15,35 +15,13 @@ Paws::DeviceFarm::ListProjectsResult
 
 =head2 nextToken => Str
 
-  
-
-If the number of items that are returned is significantly large, this
+  If the number of items that are returned is significantly large, this
 is an identifier that is also returned, which can be used in a
 subsequent call to this operation to return the next set of items in
 the list.
-
-
-
-
-
-
-
-
-
 =head2 projects => ArrayRef[Paws::DeviceFarm::Project]
 
-  
-
-Information about the projects.
-
-
-
-
-
-
-
-
-
+  Information about the projects.
 
 
 =cut

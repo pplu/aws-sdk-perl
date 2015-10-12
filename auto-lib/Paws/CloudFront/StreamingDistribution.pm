@@ -38,9 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> ActiveTrustedSigners => Paws::CloudFront::ActiveTrustedSigners
 
-  
-
-CloudFront automatically adds this element to the response only if
+  CloudFront automatically adds this element to the response only if
 you've set up the distribution to serve private content with signed
 URLs. The element lists the key pair IDs that CloudFront is aware of
 for each trusted signer. The Signer child element lists the AWS account
@@ -50,93 +48,29 @@ associated with the trusted signer's AWS account. If no KeyPairId
 element appears for a Signer, that signer can't create working signed
 URLs.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The domain name corresponding to the streaming distribution. For
+  The domain name corresponding to the streaming distribution. For
 example: s5c39gqb8ow64r.cloudfront.net.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The identifier for the streaming distribution. For example:
+  The identifier for the streaming distribution. For example:
 EGTXBD79H29TRA8.
-
-
-
-
-
-
-
-
-
 
 =head2 LastModifiedTime => Str
 
-  
-
-The date and time the distribution was last modified.
-
-
-
-
-
-
-
-
-
+  The date and time the distribution was last modified.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The current status of the streaming distribution. When the status is
+  The current status of the streaming distribution. When the status is
 Deployed, the distribution's information is fully propagated throughout
 the Amazon CloudFront system.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StreamingDistributionConfig => Paws::CloudFront::StreamingDistributionConfig
 
-  
-
-The current configuration information for the streaming distribution.
-
-
-
-
-
-
-
-
-
+  The current configuration information for the streaming distribution.
 
 
 

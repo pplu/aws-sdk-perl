@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Bootst
 
 =head2 BootstrapActionConfig => Paws::EMR::BootstrapActionConfig
 
-  
-
-A description of the bootstrap action.
-
-
-
-
-
-
-
-
-
+  A description of the bootstrap action.
 
 
 

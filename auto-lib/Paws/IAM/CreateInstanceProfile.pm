@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceProfileName => Str
 
-  
-
-The name of the instance profile to create.
-
-
-
-
-
-
-
-
-
+  The name of the instance profile to create.
 
 =head2 Path => Str
 
-  
-
-The path to the instance profile. For more information about paths, see
+  The path to the instance profile. For more information about paths, see
 IAM Identifiers in the I<Using IAM> guide.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
 =head2 B<REQUIRED> AttributeKey => Str
 
-  
-
-Specifies an attribute on which to filter the events returned.
-
-
-
-
-
-
-
-
-
+  Specifies an attribute on which to filter the events returned.
 
 =head2 B<REQUIRED> AttributeValue => Str
 
-  
-
-Specifies a value for the specified AttributeKey.
-
-
-
-
-
-
-
-
-
+  Specifies a value for the specified AttributeKey.
 
 
 

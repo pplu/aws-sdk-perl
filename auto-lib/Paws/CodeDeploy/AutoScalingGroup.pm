@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 hook => Str
 
-  
-
-An Auto Scaling lifecycle event hook name.
-
-
-
-
-
-
-
-
-
+  An Auto Scaling lifecycle event hook name.
 
 =head2 name => Str
 
-  
-
-The Auto Scaling group name.
-
-
-
-
-
-
-
-
-
+  The Auto Scaling group name.
 
 
 

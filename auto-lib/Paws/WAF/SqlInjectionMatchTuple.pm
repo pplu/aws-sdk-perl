@@ -38,9 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::SqlInj
 
 =head2 B<REQUIRED> TextTransformation => Str
 
-  
-
-Text transformations eliminate some of the unusual formatting that
+  Text transformations eliminate some of the unusual formatting that
 attackers use in web requests in an effort to bypass AWS WAF. If you
 specify a transformation, AWS WAF performs the transformation on
 C<TargetString> before inspecting a request for a match.
@@ -124,15 +122,6 @@ Use this option to decode a URL-encoded value.
 B<NONE>
 
 Specify C<NONE> if you don't want to perform any text transformations.
-
-
-
-
-
-
-
-
-
 
 
 

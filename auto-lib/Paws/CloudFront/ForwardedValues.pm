@@ -35,51 +35,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> Cookies => Paws::CloudFront::CookiePreference
 
-  
-
-A complex type that specifies how CloudFront handles cookies.
-
-
-
-
-
-
-
-
-
+  A complex type that specifies how CloudFront handles cookies.
 
 =head2 Headers => Paws::CloudFront::Headers
 
-  
-
-A complex type that specifies the Headers, if any, that you want
+  A complex type that specifies the Headers, if any, that you want
 CloudFront to vary upon for this cache behavior.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> QueryString => Bool
 
-  
-
-Indicates whether you want CloudFront to forward query strings to the
+  Indicates whether you want CloudFront to forward query strings to the
 origin that is associated with this cache behavior. If so, specify
 true; if not, specify false.
-
-
-
-
-
-
-
-
-
 
 
 

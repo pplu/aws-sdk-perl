@@ -36,69 +36,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Fun
 
 =head2 S3Bucket => Str
 
-  
-
-Amazon S3 bucket name where the .zip file containing your deployment
+  Amazon S3 bucket name where the .zip file containing your deployment
 package is stored. This bucket must reside in the same AWS region where
 you are creating the Lambda function.
 
-
-
-
-
-
-
-
-
-
 =head2 S3Key => Str
 
-  
-
-The Amazon S3 object (the deployment package) key name you want to
+  The Amazon S3 object (the deployment package) key name you want to
 upload.
-
-
-
-
-
-
-
-
-
 
 =head2 S3ObjectVersion => Str
 
-  
-
-The Amazon S3 object (the deployment package) version you want to
+  The Amazon S3 object (the deployment package) version you want to
 upload.
-
-
-
-
-
-
-
-
-
 
 =head2 ZipFile => Str
 
-  
-
-A base64-encoded .zip file containing your deployment package. For more
+  A base64-encoded .zip file containing your deployment package. For more
 information about creating a .zip file, go to Execution Permissions in
 the I<AWS Lambda Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

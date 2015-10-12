@@ -36,9 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 errorCode => Str
 
-  
-
-The associated error code:
+  The associated error code:
 
 =over
 
@@ -60,59 +58,17 @@ reason.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 logTail => Str
 
-  
-
-The last portion of the associated diagnostic log.
-
-
-
-
-
-
-
-
-
+  The last portion of the associated diagnostic log.
 
 =head2 message => Str
 
-  
-
-The message associated with the error.
-
-
-
-
-
-
-
-
-
+  The message associated with the error.
 
 =head2 scriptName => Str
 
-  
-
-The name of the script.
-
-
-
-
-
-
-
-
-
+  The name of the script.
 
 
 

@@ -14,18 +14,7 @@ Paws::ECS::DescribeTaskDefinitionResponse
 
 =head2 taskDefinition => Paws::ECS::TaskDefinition
 
-  
-
-The full task definition description.
-
-
-
-
-
-
-
-
-
+  The full task definition description.
 
 
 =cut

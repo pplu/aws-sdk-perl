@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> jobId => Str
 
-  
-
-The unique system-generated ID for the job.
-
-
-
-
-
-
-
-
-
+  The unique system-generated ID for the job.
 
 
 

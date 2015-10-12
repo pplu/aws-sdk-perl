@@ -37,9 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Filter => ArrayRef[Paws::EC2::Filter]
 
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -66,64 +64,22 @@ C<traffic-type> - The type of traffic (C<ACCEPT> | C<REJECT> | C<ALL>)
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 FlowLogIds => ArrayRef[Str]
 
-  
-
-One or more flow log IDs.
-
-
-
-
-
-
-
-
-
+  One or more flow log IDs.
 
 =head2 MaxResults => Int
 
-  
-
-The maximum number of results to return for the request in a single
+  The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
 the returned C<NextToken> value. This value can be between 5 and 1000;
 if C<MaxResults> is given a value larger than 1000, only 1000 results
 are returned. You cannot specify this parameter and the flow log IDs
 parameter in the same request.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The token to retrieve the next page of results.
-
-
-
-
-
-
-
-
-
+  The token to retrieve the next page of results.
 
 
 

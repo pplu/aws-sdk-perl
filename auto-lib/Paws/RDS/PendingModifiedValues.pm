@@ -43,175 +43,54 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Pendin
 
 =head2 AllocatedStorage => Int
 
-  
-
-Contains the new C<AllocatedStorage> size for the DB instance that will
+  Contains the new C<AllocatedStorage> size for the DB instance that will
 be applied or is in progress.
-
-
-
-
-
-
-
-
-
 
 =head2 BackupRetentionPeriod => Int
 
-  
-
-Specifies the pending number of days for which automated backups are
+  Specifies the pending number of days for which automated backups are
 retained.
-
-
-
-
-
-
-
-
-
 
 =head2 CACertificateIdentifier => Str
 
-  
-
-Specifies the identifier of the CA certificate for the DB instance.
-
-
-
-
-
-
-
-
-
+  Specifies the identifier of the CA certificate for the DB instance.
 
 =head2 DBInstanceClass => Str
 
-  
-
-Contains the new C<DBInstanceClass> for the DB instance that will be
+  Contains the new C<DBInstanceClass> for the DB instance that will be
 applied or is in progress.
-
-
-
-
-
-
-
-
-
 
 =head2 DBInstanceIdentifier => Str
 
-  
-
-Contains the new C<DBInstanceIdentifier> for the DB instance that will
+  Contains the new C<DBInstanceIdentifier> for the DB instance that will
 be applied or is in progress.
-
-
-
-
-
-
-
-
-
 
 =head2 EngineVersion => Str
 
-  
-
-Indicates the database engine version.
-
-
-
-
-
-
-
-
-
+  Indicates the database engine version.
 
 =head2 Iops => Int
 
-  
-
-Specifies the new Provisioned IOPS value for the DB instance that will
+  Specifies the new Provisioned IOPS value for the DB instance that will
 be applied or is being applied.
-
-
-
-
-
-
-
-
-
 
 =head2 MasterUserPassword => Str
 
-  
-
-Contains the pending or in-progress change of the master credentials
+  Contains the pending or in-progress change of the master credentials
 for the DB instance.
-
-
-
-
-
-
-
-
-
 
 =head2 MultiAZ => Bool
 
-  
-
-Indicates that the Single-AZ DB instance is to change to a Multi-AZ
+  Indicates that the Single-AZ DB instance is to change to a Multi-AZ
 deployment.
-
-
-
-
-
-
-
-
-
 
 =head2 Port => Int
 
-  
-
-Specifies the pending port for the DB instance.
-
-
-
-
-
-
-
-
-
+  Specifies the pending port for the DB instance.
 
 =head2 StorageType => Str
 
-  
-
-Specifies the storage type to be associated with the DB instance.
-
-
-
-
-
-
-
-
-
+  Specifies the storage type to be associated with the DB instance.
 
 
 

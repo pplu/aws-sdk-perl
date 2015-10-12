@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Noncurr
 
 =head2 NoncurrentDays => Int
 
-  
-
-Specifies the number of days an object is noncurrent before Amazon S3
+  Specifies the number of days an object is noncurrent before Amazon S3
 can perform the associated action. For information about the noncurrent
 days calculations, see How Amazon S3 Calculates When an Object Became
 Noncurrent in the Amazon Simple Storage Service Developer Guide.
 
-
-
-
-
-
-
-
-
-
 =head2 StorageClass => Str
 
-  
-
-The class of storage used to store the object.
-
-
-
-
-
-
-
-
-
+  The class of storage used to store the object.
 
 
 

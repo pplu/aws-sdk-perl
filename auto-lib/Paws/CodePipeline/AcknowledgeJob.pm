@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> jobId => Str
 
-  
-
-The unique system-generated ID of the job for which you want to confirm
+  The unique system-generated ID of the job for which you want to confirm
 receipt.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> nonce => Str
 
-  
-
-A system-generated random number that AWS CodePipeline uses to ensure
+  A system-generated random number that AWS CodePipeline uses to ensure
 that the job is being worked on by only one job worker. This number
 must be returned in the response.
-
-
-
-
-
-
-
-
-
 
 
 

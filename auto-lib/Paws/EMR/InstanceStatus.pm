@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
 =head2 State => Str
 
-  
-
-The current state of the instance.
-
-
-
-
-
-
-
-
-
+  The current state of the instance.
 
 =head2 StateChangeReason => Paws::EMR::InstanceStateChangeReason
 
-  
-
-The details of the status change reason for the instance.
-
-
-
-
-
-
-
-
-
+  The details of the status change reason for the instance.
 
 =head2 Timeline => Paws::EMR::InstanceTimeline
 
-  
-
-The timeline of the instance status over time.
-
-
-
-
-
-
-
-
-
+  The timeline of the instance status over time.
 
 
 

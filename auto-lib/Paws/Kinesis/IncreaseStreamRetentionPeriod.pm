@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RetentionPeriodHours => Int
 
-  
-
-The new retention period of the stream, in hours. Must be more than the
+  The new retention period of the stream, in hours. Must be more than the
 current retention period.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> StreamName => Str
 
-  
-
-The name of the stream to modify.
-
-
-
-
-
-
-
-
-
+  The name of the stream to modify.
 
 
 

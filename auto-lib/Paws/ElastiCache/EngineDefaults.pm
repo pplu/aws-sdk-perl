@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 CacheNodeTypeSpecificParameters => ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificParameter]
 
-  
-
-A list of parameters specific to a particular cache node type. Each
+  A list of parameters specific to a particular cache node type. Each
 element in the list contains detailed information about one parameter.
-
-
-
-
-
-
-
-
-
 
 =head2 CacheParameterGroupFamily => Str
 
-  
-
-Specifies the name of the cache parameter group family to which the
+  Specifies the name of the cache parameter group family to which the
 engine default parameters apply.
-
-
-
-
-
-
-
-
-
 
 =head2 Marker => Str
 
-  
-
-Provides an identifier to allow retrieval of paginated results.
-
-
-
-
-
-
-
-
-
+  Provides an identifier to allow retrieval of paginated results.
 
 =head2 Parameters => ArrayRef[Paws::ElastiCache::Parameter]
 
-  
-
-Contains a list of engine default parameters.
-
-
-
-
-
-
-
-
-
+  Contains a list of engine default parameters.
 
 
 

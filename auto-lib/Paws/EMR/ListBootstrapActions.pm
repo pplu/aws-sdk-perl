@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterId => Str
 
-  
-
-The cluster identifier for the bootstrap actions to list .
-
-
-
-
-
-
-
-
-
+  The cluster identifier for the bootstrap actions to list .
 
 =head2 Marker => Str
 
-  
-
-The pagination token that indicates the next set of results to retrieve
+  The pagination token that indicates the next set of results to retrieve
 .
-
-
-
-
-
-
-
-
-
 
 
 

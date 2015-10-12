@@ -38,93 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpnGat
 
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone where the virtual private gateway was created.
-
-
-
-
-
-
-
-
-
+  The Availability Zone where the virtual private gateway was created.
 
 =head2 State => Str
 
-  
-
-The current state of the virtual private gateway.
-
-
-
-
-
-
-
-
-
+  The current state of the virtual private gateway.
 
 =head2 Tags => ArrayRef[Paws::EC2::Tag]
 
-  
-
-Any tags assigned to the virtual private gateway.
-
-
-
-
-
-
-
-
-
+  Any tags assigned to the virtual private gateway.
 
 =head2 Type => Str
 
-  
-
-The type of VPN connection the virtual private gateway supports.
-
-
-
-
-
-
-
-
-
+  The type of VPN connection the virtual private gateway supports.
 
 =head2 VpcAttachments => ArrayRef[Paws::EC2::VpcAttachment]
 
-  
-
-Any VPCs attached to the virtual private gateway.
-
-
-
-
-
-
-
-
-
+  Any VPCs attached to the virtual private gateway.
 
 =head2 VpnGatewayId => Str
 
-  
-
-The ID of the virtual private gateway.
-
-
-
-
-
-
-
-
-
+  The ID of the virtual private gateway.
 
 
 

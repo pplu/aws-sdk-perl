@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> clientToken => Str
 
-  
-
-The clientToken portion of the clientId and clientToken pair used to
+  The clientToken portion of the clientId and clientToken pair used to
 verify that the calling entity is allowed access to the job and its
 details.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> jobId => Str
 
-  
-
-The unique system-generated ID used for identifying the job.
-
-
-
-
-
-
-
-
-
+  The unique system-generated ID used for identifying the job.
 
 
 

@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Create
 
 =head2 Add => ArrayRef[Paws::EC2::CreateVolumePermission]
 
-  
-
-Adds a specific AWS account ID or group to a volume's list of create
+  Adds a specific AWS account ID or group to a volume's list of create
 volume permissions.
-
-
-
-
-
-
-
-
-
 
 =head2 Remove => ArrayRef[Paws::EC2::CreateVolumePermission]
 
-  
-
-Removes a specific AWS account ID or group from a volume's list of
+  Removes a specific AWS account ID or group from a volume's list of
 create volume permissions.
-
-
-
-
-
-
-
-
-
 
 
 

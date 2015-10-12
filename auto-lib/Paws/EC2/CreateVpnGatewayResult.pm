@@ -15,18 +15,7 @@ Paws::EC2::CreateVpnGatewayResult
 
 =head2 VpnGateway => Paws::EC2::VpnGateway
 
-  
-
-Information about the virtual private gateway.
-
-
-
-
-
-
-
-
-
+  Information about the virtual private gateway.
 
 
 =cut

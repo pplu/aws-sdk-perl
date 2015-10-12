@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head2 Name => Str
 
-  
-
-The name of the account limit. Currently, the only account limit is
+  The name of the account limit. Currently, the only account limit is
 C<StackLimit>.
-
-
-
-
-
-
-
-
-
 
 =head2 Value => Int
 
-  
-
-The value that is associated with the account limit name.
-
-
-
-
-
-
-
-
-
+  The value that is associated with the account limit name.
 
 
 

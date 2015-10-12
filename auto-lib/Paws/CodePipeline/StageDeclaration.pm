@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 B<REQUIRED> actions => ArrayRef[Paws::CodePipeline::ActionDeclaration]
 
-  
-
-The actions included in a stage.
-
-
-
-
-
-
-
-
-
+  The actions included in a stage.
 
 =head2 blockers => ArrayRef[Paws::CodePipeline::BlockerDeclaration]
 
-  
-
-The gates included in a stage.
-
-
-
-
-
-
-
-
-
+  The gates included in a stage.
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of the stage.
-
-
-
-
-
-
-
-
-
+  The name of the stage.
 
 
 

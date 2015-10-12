@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Compute
 
 =head2 ComputerAttributes => ArrayRef[Paws::DS::Attribute]
 
-  
-
-An array of Attribute objects that contain the LDAP attributes that
+  An array of Attribute objects that contain the LDAP attributes that
 belong to the computer account.
-
-
-
-
-
-
-
-
-
 
 =head2 ComputerId => Str
 
-  
-
-The identifier of the computer.
-
-
-
-
-
-
-
-
-
+  The identifier of the computer.
 
 =head2 ComputerName => Str
 
-  
-
-The computer name.
-
-
-
-
-
-
-
-
-
+  The computer name.
 
 
 

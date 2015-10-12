@@ -36,66 +36,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head2 attemptId => Str
 
-  
-
-The ID of the pipeline task attempt object. AWS Data Pipeline uses this
+  The ID of the pipeline task attempt object. AWS Data Pipeline uses this
 value to track how many times a task is attempted.
-
-
-
-
-
-
-
-
-
 
 =head2 objects => Paws::DataPipeline::PipelineObjectMap
 
-  
-
-Connection information for the location where the task runner will
+  Connection information for the location where the task runner will
 publish the output of the task.
-
-
-
-
-
-
-
-
-
 
 =head2 pipelineId => Str
 
-  
-
-The ID of the pipeline that provided the task.
-
-
-
-
-
-
-
-
-
+  The ID of the pipeline that provided the task.
 
 =head2 taskId => Str
 
-  
-
-An internal identifier for the task. This ID is passed to the
+  An internal identifier for the task. This ID is passed to the
 SetTaskStatus and ReportTaskProgress actions.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,25 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
 =head2 ComplianceContributorCount => Paws::Config::ComplianceContributorCount
 
-  
-
-The number of AWS resources or AWS Config rules that cause a result of
+  The number of AWS resources or AWS Config rules that cause a result of
 C<NON_COMPLIANT>, up to a maximum of 25.
-
-
-
-
-
-
-
-
-
 
 =head2 ComplianceType => Str
 
-  
-
-Indicates whether an AWS resource or AWS Config rule is compliant.
+  Indicates whether an AWS resource or AWS Config rule is compliant.
 
 A resource is compliant if it complies with all of the AWS Config rules
 that evaluate it, and it is noncompliant if it does not comply with one
@@ -61,15 +48,6 @@ or more of these rules.
 A rule is compliant if all of the resources that the rule evaluates
 comply with it, and it is noncompliant if any of these resources do not
 comply.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -36,49 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterSubnetGroupName => Str
 
-  
-
-The name of the subnet group to be modified.
-
-
-
-
-
-
-
-
-
+  The name of the subnet group to be modified.
 
 =head2 Description => Str
 
-  
-
-A text description of the subnet group to be modified.
-
-
-
-
-
-
-
-
-
+  A text description of the subnet group to be modified.
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
-  
-
-An array of VPC subnet IDs. A maximum of 20 subnets can be modified in
+  An array of VPC subnet IDs. A maximum of 20 subnets can be modified in
 a single request.
-
-
-
-
-
-
-
-
-
 
 
 

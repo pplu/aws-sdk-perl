@@ -41,143 +41,44 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Task o
 
 =head2 clusterArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the of the cluster that hosts the
+  The Amazon Resource Name (ARN) of the of the cluster that hosts the
 task.
-
-
-
-
-
-
-
-
-
 
 =head2 containerInstanceArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the container instances that host the
+  The Amazon Resource Name (ARN) of the container instances that host the
 task.
-
-
-
-
-
-
-
-
-
 
 =head2 containers => ArrayRef[Paws::ECS::Container]
 
-  
-
-The containers associated with the task.
-
-
-
-
-
-
-
-
-
+  The containers associated with the task.
 
 =head2 desiredStatus => Str
 
-  
-
-The desired status of the task.
-
-
-
-
-
-
-
-
-
+  The desired status of the task.
 
 =head2 lastStatus => Str
 
-  
-
-The last known status of the task.
-
-
-
-
-
-
-
-
-
+  The last known status of the task.
 
 =head2 overrides => Paws::ECS::TaskOverride
 
-  
-
-One or more container overrides.
-
-
-
-
-
-
-
-
-
+  One or more container overrides.
 
 =head2 startedBy => Str
 
-  
-
-The tag specified when a task is started. If the task is started by an
+  The tag specified when a task is started. If the task is started by an
 Amazon ECS service, then the C<startedBy> parameter contains the
 deployment ID of the service that starts it.
 
-
-
-
-
-
-
-
-
-
 =head2 taskArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the task.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the task.
 
 =head2 taskDefinitionArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the of the task definition that
+  The Amazon Resource Name (ARN) of the of the task definition that
 creates the task.
-
-
-
-
-
-
-
-
-
 
 
 

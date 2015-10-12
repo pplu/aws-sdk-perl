@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 B<REQUIRED> latitude => Num
 
-  
-
-The latitude.
-
-
-
-
-
-
-
-
-
+  The latitude.
 
 =head2 B<REQUIRED> longitude => Num
 
-  
-
-The longitude.
-
-
-
-
-
-
-
-
-
+  The longitude.
 
 
 

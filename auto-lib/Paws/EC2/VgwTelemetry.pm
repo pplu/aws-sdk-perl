@@ -37,79 +37,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VgwTel
 
 =head2 AcceptedRouteCount => Int
 
-  
-
-The number of accepted routes.
-
-
-
-
-
-
-
-
-
+  The number of accepted routes.
 
 =head2 LastStatusChange => Str
 
-  
-
-The date and time of the last change in status.
-
-
-
-
-
-
-
-
-
+  The date and time of the last change in status.
 
 =head2 OutsideIpAddress => Str
 
-  
-
-The Internet-routable IP address of the virtual private gateway's
+  The Internet-routable IP address of the virtual private gateway's
 outside interface.
-
-
-
-
-
-
-
-
-
 
 =head2 Status => Str
 
-  
-
-The status of the VPN tunnel.
-
-
-
-
-
-
-
-
-
+  The status of the VPN tunnel.
 
 =head2 StatusMessage => Str
 
-  
-
-If an error occurs, a description of the error.
-
-
-
-
-
-
-
-
-
+  If an error occurs, a description of the error.
 
 
 

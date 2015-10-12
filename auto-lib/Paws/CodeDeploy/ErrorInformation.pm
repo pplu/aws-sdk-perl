@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 code => Str
 
-  
-
-The error code:
+  The error code:
 
 =over
 
@@ -82,29 +80,9 @@ the deployment is created but before it starts.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 message => Str
 
-  
-
-An accompanying error message.
-
-
-
-
-
-
-
-
-
+  An accompanying error message.
 
 
 

@@ -36,70 +36,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> initiatedEventId => Int
 
-  
-
-The ID of the C<StartChildWorkflowExecutionInitiated> event
+  The ID of the C<StartChildWorkflowExecutionInitiated> event
 corresponding to the C<StartChildWorkflowExecution> decision to start
 this child workflow execution. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> startedEventId => Int
 
-  
-
-The ID of the C<ChildWorkflowExecutionStarted> event recorded when this
+  The ID of the C<ChildWorkflowExecutionStarted> event recorded when this
 child workflow execution was started. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> workflowExecution => Paws::SimpleWorkflow::WorkflowExecution
 
-  
-
-The child workflow execution that was terminated.
-
-
-
-
-
-
-
-
-
+  The child workflow execution that was terminated.
 
 =head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
 
-  
-
-The type of the child workflow execution.
-
-
-
-
-
-
-
-
-
+  The type of the child workflow execution.
 
 
 

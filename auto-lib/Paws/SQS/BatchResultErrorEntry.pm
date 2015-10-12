@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::BatchR
 
 =head2 B<REQUIRED> Code => Str
 
-  
-
-An error code representing why the action failed on this entry.
-
-
-
-
-
-
-
-
-
+  An error code representing why the action failed on this entry.
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The id of an entry in a batch request.
-
-
-
-
-
-
-
-
-
+  The id of an entry in a batch request.
 
 =head2 Message => Str
 
-  
-
-A message explaining why the action failed on this entry.
-
-
-
-
-
-
-
-
-
+  A message explaining why the action failed on this entry.
 
 =head2 B<REQUIRED> SenderFault => Bool
 
-  
-
-Whether the error happened due to the sender's fault.
-
-
-
-
-
-
-
-
-
+  Whether the error happened due to the sender's fault.
 
 
 

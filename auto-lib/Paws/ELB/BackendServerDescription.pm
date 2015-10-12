@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Backen
 
 =head2 InstancePort => Int
 
-  
-
-The port on which the back-end server is listening.
-
-
-
-
-
-
-
-
-
+  The port on which the back-end server is listening.
 
 =head2 PolicyNames => ArrayRef[Str]
 
-  
-
-The names of the policies enabled for the back-end server.
-
-
-
-
-
-
-
-
-
+  The names of the policies enabled for the back-end server.
 
 
 

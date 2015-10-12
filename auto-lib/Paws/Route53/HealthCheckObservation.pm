@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::He
 
 =head2 IPAddress => Str
 
-  
-
-The IP address of the Route 53 health checker that performed the health
+  The IP address of the Route 53 health checker that performed the health
 check.
-
-
-
-
-
-
-
-
-
 
 =head2 StatusReport => Paws::Route53::StatusReport
 
-  
-
-A complex type that contains information about the health check status
+  A complex type that contains information about the health check status
 for the current observation.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoSync
 
 =head2 DeviceLastModifiedDate => Str
 
-  
-
-The last modified date of the client device.
-
-
-
-
-
-
-
-
-
+  The last modified date of the client device.
 
 =head2 B<REQUIRED> Key => Str
 
-  
-
-The key associated with the record patch.
-
-
-
-
-
-
-
-
-
+  The key associated with the record patch.
 
 =head2 B<REQUIRED> Op => Str
 
-  
-
-An operation, either replace or remove.
-
-
-
-
-
-
-
-
-
+  An operation, either replace or remove.
 
 =head2 B<REQUIRED> SyncCount => Int
 
-  
-
-Last known server sync count for this record. Set to 0 if unknown.
-
-
-
-
-
-
-
-
-
+  Last known server sync count for this record. Set to 0 if unknown.
 
 =head2 Value => Str
 
-  
-
-The value associated with the record patch.
-
-
-
-
-
-
-
-
-
+  The value associated with the record patch.
 
 
 

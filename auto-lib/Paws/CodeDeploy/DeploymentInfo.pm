@@ -46,54 +46,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 applicationName => Str
 
-  
-
-The application name.
-
-
-
-
-
-
-
-
-
+  The application name.
 
 =head2 completeTime => Str
 
-  
-
-A timestamp indicating when the deployment was completed.
-
-
-
-
-
-
-
-
-
+  A timestamp indicating when the deployment was completed.
 
 =head2 createTime => Str
 
-  
-
-A timestamp indicating when the deployment was created.
-
-
-
-
-
-
-
-
-
+  A timestamp indicating when the deployment was created.
 
 =head2 creator => Str
 
-  
-
-How the deployment was created:
+  How the deployment was created:
 
 =over
 
@@ -103,110 +68,33 @@ How the deployment was created:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 deploymentConfigName => Str
 
-  
-
-The deployment configuration name.
-
-
-
-
-
-
-
-
-
+  The deployment configuration name.
 
 =head2 deploymentGroupName => Str
 
-  
-
-The deployment group name.
-
-
-
-
-
-
-
-
-
+  The deployment group name.
 
 =head2 deploymentId => Str
 
-  
-
-The deployment ID.
-
-
-
-
-
-
-
-
-
+  The deployment ID.
 
 =head2 deploymentOverview => Paws::CodeDeploy::DeploymentOverview
 
-  
-
-A summary of the deployment status of the instances in the deployment.
-
-
-
-
-
-
-
-
-
+  A summary of the deployment status of the instances in the deployment.
 
 =head2 description => Str
 
-  
-
-A comment about the deployment.
-
-
-
-
-
-
-
-
-
+  A comment about the deployment.
 
 =head2 errorInformation => Paws::CodeDeploy::ErrorInformation
 
-  
-
-Information about any error associated with this deployment.
-
-
-
-
-
-
-
-
-
+  Information about any error associated with this deployment.
 
 =head2 ignoreApplicationStopFailures => Bool
 
-  
-
-If true, then if the deployment causes the ApplicationStop deployment
+  If true, then if the deployment causes the ApplicationStop deployment
 lifecycle event to fail to a specific instance, the deployment will not
 be considered to have failed to that instance at that point and will
 continue on to the BeforeInstall deployment lifecycle event.
@@ -216,36 +104,14 @@ ApplicationStop deployment lifecycle event to fail to a specific
 instance, the deployment will stop to that instance, and the deployment
 to that instance will be considered to have failed.
 
-
-
-
-
-
-
-
-
-
 =head2 revision => Paws::CodeDeploy::RevisionLocation
 
-  
-
-Information about the location of application artifacts that are stored
+  Information about the location of application artifacts that are stored
 and the service to retrieve them from.
-
-
-
-
-
-
-
-
-
 
 =head2 startTime => Str
 
-  
-
-A timestamp indicating when the deployment began deploying to the
+  A timestamp indicating when the deployment began deploying to the
 deployment group.
 
 Note that in some cases, the reported value of the start time may be
@@ -253,29 +119,9 @@ later than the complete time. This is due to differences in the clock
 settings of various back-end servers that participate in the overall
 deployment process.
 
-
-
-
-
-
-
-
-
-
 =head2 status => Str
 
-  
-
-The current state of the deployment as a whole.
-
-
-
-
-
-
-
-
-
+  The current state of the deployment as a whole.
 
 
 

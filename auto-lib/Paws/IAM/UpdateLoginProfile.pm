@@ -36,48 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Password => Str
 
-  
-
-The new password for the specified user.
-
-
-
-
-
-
-
-
-
+  The new password for the specified user.
 
 =head2 PasswordResetRequired => Bool
 
-  
-
-Require the specified user to set a new password on next sign-in.
-
-
-
-
-
-
-
-
-
+  Require the specified user to set a new password on next sign-in.
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user whose password you want to update.
-
-
-
-
-
-
-
-
-
+  The name of the user whose password you want to update.
 
 
 

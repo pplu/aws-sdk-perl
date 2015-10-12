@@ -22,18 +22,7 @@ Paws::CloudFront::CreateDistributionResult
 
 =head2 B<REQUIRED> DistributionConfig => Paws::CloudFront::DistributionConfig
 
-  
-
-The distribution's configuration information.
-
-
-
-
-
-
-
-
-
+  The distribution's configuration information.
 
 
 =cut

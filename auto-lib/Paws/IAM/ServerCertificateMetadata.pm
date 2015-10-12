@@ -38,98 +38,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Server
 
 =head2 B<REQUIRED> Arn => Str
 
-  
-
-The Amazon Resource Name (ARN) specifying the server certificate. For
+  The Amazon Resource Name (ARN) specifying the server certificate. For
 more information about ARNs and how to use them in policies, see IAM
 Identifiers in the I<Using IAM> guide.
 
-
-
-
-
-
-
-
-
-
 =head2 Expiration => Str
 
-  
-
-The date on which the certificate is set to expire.
-
-
-
-
-
-
-
-
-
+  The date on which the certificate is set to expire.
 
 =head2 B<REQUIRED> Path => Str
 
-  
-
-The path to the server certificate. For more information about paths,
+  The path to the server certificate. For more information about paths,
 see IAM Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ServerCertificateId => Str
 
-  
-
-The stable and unique string identifying the server certificate. For
+  The stable and unique string identifying the server certificate. For
 more information about IDs, see IAM Identifiers in the I<Using IAM>
 guide.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ServerCertificateName => Str
 
-  
-
-The name that identifies the server certificate.
-
-
-
-
-
-
-
-
-
+  The name that identifies the server certificate.
 
 =head2 UploadDate => Str
 
-  
-
-The date when the server certificate was uploaded.
-
-
-
-
-
-
-
-
-
+  The date when the server certificate was uploaded.
 
 
 

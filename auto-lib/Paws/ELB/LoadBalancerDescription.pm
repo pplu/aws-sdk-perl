@@ -48,178 +48,55 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::LoadBa
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  
-
-The Availability Zones for the load balancer.
-
-
-
-
-
-
-
-
-
+  The Availability Zones for the load balancer.
 
 =head2 BackendServerDescriptions => ArrayRef[Paws::ELB::BackendServerDescription]
 
-  
-
-Information about the back-end servers.
-
-
-
-
-
-
-
-
-
+  Information about the back-end servers.
 
 =head2 CanonicalHostedZoneName => Str
 
-  
-
-The Amazon Route 53 hosted zone associated with the load balancer.
+  The Amazon Route 53 hosted zone associated with the load balancer.
 
 For more information, see Using Domain Names With Elastic Load
 Balancing in the I<Elastic Load Balancing Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 CanonicalHostedZoneNameID => Str
 
-  
-
-The ID of the Amazon Route 53 hosted zone name associated with the load
+  The ID of the Amazon Route 53 hosted zone name associated with the load
 balancer.
-
-
-
-
-
-
-
-
-
 
 =head2 CreatedTime => Str
 
-  
-
-The date and time the load balancer was created.
-
-
-
-
-
-
-
-
-
+  The date and time the load balancer was created.
 
 =head2 DNSName => Str
 
-  
-
-The external DNS name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The external DNS name of the load balancer.
 
 =head2 HealthCheck => Paws::ELB::HealthCheck
 
-  
-
-Information about the health checks conducted on the load balancer.
-
-
-
-
-
-
-
-
-
+  Information about the health checks conducted on the load balancer.
 
 =head2 Instances => ArrayRef[Paws::ELB::Instance]
 
-  
-
-The IDs of the instances for the load balancer.
-
-
-
-
-
-
-
-
-
+  The IDs of the instances for the load balancer.
 
 =head2 ListenerDescriptions => ArrayRef[Paws::ELB::ListenerDescription]
 
-  
-
-The listeners for the load balancer.
-
-
-
-
-
-
-
-
-
+  The listeners for the load balancer.
 
 =head2 LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 =head2 Policies => Paws::ELB::Policies
 
-  
-
-The policies defined for the load balancer.
-
-
-
-
-
-
-
-
-
+  The policies defined for the load balancer.
 
 =head2 Scheme => Str
 
-  
-
-The type of load balancer. Valid only for load balancers in a VPC.
+  The type of load balancer. Valid only for load balancers in a VPC.
 
 If C<Scheme> is C<internet-facing>, the load balancer has a public DNS
 name that resolves to a public IP address.
@@ -227,79 +104,26 @@ name that resolves to a public IP address.
 If C<Scheme> is C<internal>, the load balancer has a public DNS name
 that resolves to a private IP address.
 
-
-
-
-
-
-
-
-
-
 =head2 SecurityGroups => ArrayRef[Str]
 
-  
-
-The security groups for the load balancer. Valid only for load
+  The security groups for the load balancer. Valid only for load
 balancers in a VPC.
-
-
-
-
-
-
-
-
-
 
 =head2 SourceSecurityGroup => Paws::ELB::SourceSecurityGroup
 
-  
-
-The security group that you can use as part of your inbound rules for
+  The security group that you can use as part of your inbound rules for
 your load balancer's back-end application instances. To only allow
 traffic from load balancers, add a security group rule to your back end
 instance that specifies this source security group as the inbound
 source.
 
-
-
-
-
-
-
-
-
-
 =head2 Subnets => ArrayRef[Str]
 
-  
-
-The IDs of the subnets for the load balancer.
-
-
-
-
-
-
-
-
-
+  The IDs of the subnets for the load balancer.
 
 =head2 VPCId => Str
 
-  
-
-The ID of the VPC for the load balancer.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC for the load balancer.
 
 
 

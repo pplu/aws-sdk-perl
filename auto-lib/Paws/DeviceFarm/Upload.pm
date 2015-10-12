@@ -41,101 +41,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 arn => Str
 
-  
-
-The upload's ARN.
-
-
-
-
-
-
-
-
-
+  The upload's ARN.
 
 =head2 contentType => Str
 
-  
-
-The upload's content type (for example, "application/octet-stream").
-
-
-
-
-
-
-
-
-
+  The upload's content type (for example, "application/octet-stream").
 
 =head2 created => Str
 
-  
-
-When the upload was created.
-
-
-
-
-
-
-
-
-
+  When the upload was created.
 
 =head2 message => Str
 
-  
-
-A message about the upload's result.
-
-
-
-
-
-
-
-
-
+  A message about the upload's result.
 
 =head2 metadata => Str
 
-  
-
-The upload's metadata. For example, for Android, this contains
+  The upload's metadata. For example, for Android, this contains
 information that is parsed from the manifest and is displayed in the
 AWS Device Farm console after the associated app is uploaded.
 
-
-
-
-
-
-
-
-
-
 =head2 name => Str
 
-  
-
-The upload's file name.
-
-
-
-
-
-
-
-
-
+  The upload's file name.
 
 =head2 status => Str
 
-  
-
-The upload's status.
+  The upload's status.
 
 Must be one of the following values:
 
@@ -159,20 +91,9 @@ SUCCEEDED: A succeeded status.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 type => Str
 
-  
-
-The upload's type.
+  The upload's type.
 
 Must be one of the following values:
 
@@ -218,30 +139,10 @@ XCTEST_TEST_PACKAGE: An XCode test package upload.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 url => Str
 
-  
-
-The pre-signed Amazon S3 URL that was used to store a file through a
+  The pre-signed Amazon S3 URL that was used to store a file through a
 corresponding PUT request.
-
-
-
-
-
-
-
-
-
 
 
 

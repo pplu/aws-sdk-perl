@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The DNS name of the S3 origin.
-
-
-
-
-
-
-
-
-
+  The DNS name of the S3 origin.
 
 =head2 B<REQUIRED> OriginAccessIdentity => Str
 
-  
-
-Your S3 origin's origin access identity.
-
-
-
-
-
-
-
-
-
+  Your S3 origin's origin access identity.
 
 
 

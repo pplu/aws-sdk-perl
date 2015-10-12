@@ -39,19 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TapeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the virtual tape for which you want
+  The Amazon Resource Name (ARN) of the virtual tape for which you want
 to retrieve the recovery point.
-
-
-
-
-
-
-
-
-
 
 
 

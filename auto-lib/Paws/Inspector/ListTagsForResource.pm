@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 resourceArn => Str
 
-  
-
-The ARN specifying the resource whose tags you want to list.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the resource whose tags you want to list.
 
 
 

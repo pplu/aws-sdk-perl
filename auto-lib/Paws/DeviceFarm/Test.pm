@@ -42,84 +42,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 arn => Str
 
-  
-
-The test's ARN.
-
-
-
-
-
-
-
-
-
+  The test's ARN.
 
 =head2 counters => Paws::DeviceFarm::Counters
 
-  
-
-The test's result counters.
-
-
-
-
-
-
-
-
-
+  The test's result counters.
 
 =head2 created => Str
 
-  
-
-When the test was created.
-
-
-
-
-
-
-
-
-
+  When the test was created.
 
 =head2 message => Str
 
-  
-
-A message about the test's result.
-
-
-
-
-
-
-
-
-
+  A message about the test's result.
 
 =head2 name => Str
 
-  
-
-The test's name.
-
-
-
-
-
-
-
-
-
+  The test's name.
 
 =head2 result => Str
 
-  
-
-The test's result.
+  The test's result.
 
 Allowed values include:
 
@@ -155,35 +98,13 @@ WARNED: A warning condition.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 started => Str
 
-  
-
-The test's start time.
-
-
-
-
-
-
-
-
-
+  The test's start time.
 
 =head2 status => Str
 
-  
-
-The test's status.
+  The test's status.
 
 Allowed values include:
 
@@ -211,35 +132,13 @@ SCHEDULING: A scheduling status.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 stopped => Str
 
-  
-
-The test's stop time.
-
-
-
-
-
-
-
-
-
+  The test's stop time.
 
 =head2 type => Str
 
-  
-
-The test's type.
+  The test's type.
 
 Must be one of the following values:
 
@@ -284,15 +183,6 @@ UIAUTOMATOR: The uiautomator type.
 XCTEST: The XCode test type.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

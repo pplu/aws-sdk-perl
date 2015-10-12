@@ -15,18 +15,7 @@ Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage
 
 =head2 ApplicationVersions => ArrayRef[Paws::ElasticBeanstalk::ApplicationVersionDescription]
 
-  
-
-A list of ApplicationVersionDescription .
-
-
-
-
-
-
-
-
-
+  A list of ApplicationVersionDescription .
 
 
 =cut

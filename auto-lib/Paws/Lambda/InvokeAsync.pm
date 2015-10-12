@@ -37,33 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-The Lambda function name.
-
-
-
-
-
-
-
-
-
+  The Lambda function name.
 
 =head2 B<REQUIRED> InvokeArgs => Str
 
-  
-
-JSON that you want to provide to your Lambda function as input.
-
-
-
-
-
-
-
-
-
+  JSON that you want to provide to your Lambda function as input.
 
 
 

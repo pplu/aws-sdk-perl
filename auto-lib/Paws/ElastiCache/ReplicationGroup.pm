@@ -40,9 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 AutomaticFailover => Str
 
-  
-
-Indicates the status of Multi-AZ for this replication group.
+  Indicates the status of Multi-AZ for this replication group.
 
 ElastiCache Multi-AZ replication groups are not supported on:
 
@@ -54,124 +52,38 @@ ElastiCache Multi-AZ replication groups are not supported on:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
-
-The description of the replication group.
-
-
-
-
-
-
-
-
-
+  The description of the replication group.
 
 =head2 MemberClusters => ArrayRef[Str]
 
-  
-
-The names of all the cache clusters that are part of this replication
+  The names of all the cache clusters that are part of this replication
 group.
-
-
-
-
-
-
-
-
-
 
 =head2 NodeGroups => ArrayRef[Paws::ElastiCache::NodeGroup]
 
-  
-
-A single element list with information about the nodes in the
+  A single element list with information about the nodes in the
 replication group.
-
-
-
-
-
-
-
-
-
 
 =head2 PendingModifiedValues => Paws::ElastiCache::ReplicationGroupPendingModifiedValues
 
-  
-
-A group of settings to be applied to the replication group, either
+  A group of settings to be applied to the replication group, either
 immediately or during the next maintenance window.
-
-
-
-
-
-
-
-
-
 
 =head2 ReplicationGroupId => Str
 
-  
-
-The identifier for the replication group.
-
-
-
-
-
-
-
-
-
+  The identifier for the replication group.
 
 =head2 SnapshottingClusterId => Str
 
-  
-
-The cache cluster ID that is used as the daily snapshot source for the
+  The cache cluster ID that is used as the daily snapshot source for the
 replication group.
-
-
-
-
-
-
-
-
-
 
 =head2 Status => Str
 
-  
-
-The current state of this replication group - I<creating>,
+  The current state of this replication group - I<creating>,
 I<available>, etc.
-
-
-
-
-
-
-
-
-
 
 
 

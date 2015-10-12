@@ -15,18 +15,7 @@ Paws::ES::DeleteElasticsearchDomainResponse
 
 =head2 DomainStatus => Paws::ES::ElasticsearchDomainStatus
 
-  
-
-The status of the Elasticsearch domain being deleted.
-
-
-
-
-
-
-
-
-
+  The status of the Elasticsearch domain being deleted.
 
 
 =cut

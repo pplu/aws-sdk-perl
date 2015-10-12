@@ -14,18 +14,7 @@ Paws::OpsWorks::DescribeStackSummaryResult
 
 =head2 StackSummary => Paws::OpsWorks::StackSummary
 
-  
-
-A C<StackSummary> object that contains the results.
-
-
-
-
-
-
-
-
-
+  A C<StackSummary> object that contains the results.
 
 
 =cut

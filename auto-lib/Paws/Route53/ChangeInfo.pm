@@ -36,75 +36,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ch
 
 =head2 Comment => Str
 
-  
-
-A complex type that describes change information about changes made to
+  A complex type that describes change information about changes made to
 your hosted zone.
 
 This element contains an ID that you use when performing a GetChange
 action to get detailed information about the change.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The ID of the request. Use this ID to track when the change has
+  The ID of the request. Use this ID to track when the change has
 completed across all Amazon Route 53 DNS servers.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The current state of the request. C<PENDING> indicates that this
+  The current state of the request. C<PENDING> indicates that this
 request has not yet been applied to all Amazon Route 53 DNS servers.
 
 Valid Values: C<PENDING> | C<INSYNC>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SubmittedAt => Str
 
-  
-
-The date and time the change was submitted, in the format
+  The date and time the change was submitted, in the format
 C<YYYY-MM-DDThh:mm:ssZ>, as specified in the ISO 8601 standard (for
 example, 2009-11-19T19:37:58Z). The C<Z> after the time indicates that
 the time is listed in Coordinated Universal Time (UTC), which is
 synonymous with Greenwich Mean Time in this context.
-
-
-
-
-
-
-
-
-
 
 
 

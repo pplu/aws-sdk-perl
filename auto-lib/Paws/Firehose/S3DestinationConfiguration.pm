@@ -38,104 +38,38 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::S
 
 =head2 B<REQUIRED> BucketARN => Str
 
-  
-
-The ARN of the S3 bucket.
-
-
-
-
-
-
-
-
-
+  The ARN of the S3 bucket.
 
 =head2 BufferingHints => Paws::Firehose::BufferingHints
 
-  
-
-The buffering option. If no value is specified, C<BufferingHints>
+  The buffering option. If no value is specified, C<BufferingHints>
 object default values are used.
-
-
-
-
-
-
-
-
-
 
 =head2 CompressionFormat => Str
 
-  
-
-The compression format. If no value is specified, the default is
+  The compression format. If no value is specified, the default is
 C<UNCOMPRESSED>.
 
 The compression formats C<SNAPPY> or C<ZIP> cannot be specified for
 Amazon Redshift destinations because they are not supported by the
 Amazon Redshift C<COPY> operation that reads from the S3 bucket.
 
-
-
-
-
-
-
-
-
-
 =head2 EncryptionConfiguration => Paws::Firehose::EncryptionConfiguration
 
-  
-
-The encryption configuration. If no value is specified, the default is
+  The encryption configuration. If no value is specified, the default is
 no encryption.
-
-
-
-
-
-
-
-
-
 
 =head2 Prefix => Str
 
-  
-
-The "YYYY/MM/DD/HH" time format prefix is automatically used for
+  The "YYYY/MM/DD/HH" time format prefix is automatically used for
 delivered S3 files. You can specify an extra prefix to be added in
 front of the time format prefix. Note that if the prefix ends with a
 slash, it appears as a folder in the S3 bucket. For more information,
 see Amazon S3 Object Name Format in the guide-fh-dev.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> RoleARN => Str
 
-  
-
-The ARN of the AWS credentials.
-
-
-
-
-
-
-
-
-
+  The ARN of the AWS credentials.
 
 
 

@@ -48,9 +48,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head2 Algorithm => Str
 
-  
-
-The algorithm used to train the C<MLModel>. The following algorithm is
+  The algorithm used to train the C<MLModel>. The following algorithm is
 supported:
 
 =over
@@ -60,131 +58,43 @@ minimize the gradient of the loss function.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 CreatedAt => Str
 
-  
-
-The time that the C<MLModel> was created. The time is expressed in
+  The time that the C<MLModel> was created. The time is expressed in
 epoch time.
-
-
-
-
-
-
-
-
-
 
 =head2 CreatedByIamUser => Str
 
-  
-
-The AWS user account from which the C<MLModel> was created. The account
+  The AWS user account from which the C<MLModel> was created. The account
 type can be either an AWS root account or an AWS Identity and Access
 Management (IAM) user account.
 
-
-
-
-
-
-
-
-
-
 =head2 EndpointInfo => Paws::MachineLearning::RealtimeEndpointInfo
 
-  
-
-The current endpoint of the C<MLModel>.
-
-
-
-
-
-
-
-
-
+  The current endpoint of the C<MLModel>.
 
 =head2 InputDataLocationS3 => Str
 
-  
-
-The location of the data file or directory in Amazon Simple Storage
+  The location of the data file or directory in Amazon Simple Storage
 Service (Amazon S3).
-
-
-
-
-
-
-
-
-
 
 =head2 LastUpdatedAt => Str
 
-  
-
-The time of the most recent edit to the C<MLModel>. The time is
+  The time of the most recent edit to the C<MLModel>. The time is
 expressed in epoch time.
-
-
-
-
-
-
-
-
-
 
 =head2 Message => Str
 
-  
-
-A description of the most recent details about accessing the
+  A description of the most recent details about accessing the
 C<MLModel>.
-
-
-
-
-
-
-
-
-
 
 =head2 MLModelId => Str
 
-  
-
-The ID assigned to the C<MLModel> at creation.
-
-
-
-
-
-
-
-
-
+  The ID assigned to the C<MLModel> at creation.
 
 =head2 MLModelType => Str
 
-  
-
-Identifies the C<MLModel> category. The following are the available
+  Identifies the C<MLModel> category. The following are the available
 types:
 
 =over
@@ -200,29 +110,9 @@ example, "Is this a HIGH, LOW or MEDIUM risk trade?".
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Name => Str
 
-  
-
-A user-supplied name or description of the C<MLModel>.
-
-
-
-
-
-
-
-
-
+  A user-supplied name or description of the C<MLModel>.
 
 =head2 ScoreThreshold => Num
 
@@ -230,19 +120,8 @@ A user-supplied name or description of the C<MLModel>.
 
 =head2 ScoreThresholdLastUpdatedAt => Str
 
-  
-
-The time of the most recent edit to the C<ScoreThreshold>. The time is
+  The time of the most recent edit to the C<ScoreThreshold>. The time is
 expressed in epoch time.
-
-
-
-
-
-
-
-
-
 
 =head2 SizeInBytes => Int
 
@@ -250,9 +129,7 @@ expressed in epoch time.
 
 =head2 Status => Str
 
-  
-
-The current status of an C<MLModel>. This element can have one of the
+  The current status of an C<MLModel>. This element can have one of the
 following values:
 
 =over
@@ -272,36 +149,14 @@ usable.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 TrainingDataSourceId => Str
 
-  
-
-The ID of the training C<DataSource>. The CreateMLModel operation uses
+  The ID of the training C<DataSource>. The CreateMLModel operation uses
 the C<TrainingDataSourceId>.
-
-
-
-
-
-
-
-
-
 
 =head2 TrainingParameters => Paws::MachineLearning::TrainingParameters
 
-  
-
-A list of the training parameters in the C<MLModel>. The list is
+  A list of the training parameters in the C<MLModel>. The list is
 implemented as a map of key/value pairs.
 
 The following is the current set of training parameters:
@@ -346,15 +201,6 @@ The value is an integer that ranges from 100000 to 2147483648. The
 default value is 33554432.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

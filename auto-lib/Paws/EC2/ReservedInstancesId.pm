@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Reserv
 
 =head2 ReservedInstancesId => Str
 
-  
-
-The ID of the Reserved Instance.
-
-
-
-
-
-
-
-
-
+  The ID of the Reserved Instance.
 
 
 

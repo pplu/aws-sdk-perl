@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of the domain for which to display the metadata of.
-
-
-
-
-
-
-
-
-
+  The name of the domain for which to display the metadata of.
 
 
 

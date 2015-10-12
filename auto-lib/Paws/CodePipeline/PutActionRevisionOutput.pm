@@ -15,33 +15,11 @@ Paws::CodePipeline::PutActionRevisionOutput
 
 =head2 newRevision => Bool
 
-  
-
-The new revision number or ID for the revision after the action
+  The new revision number or ID for the revision after the action
 completes.
-
-
-
-
-
-
-
-
-
 =head2 pipelineExecutionId => Str
 
-  
-
-The ID of the current workflow state of the pipeline.
-
-
-
-
-
-
-
-
-
+  The ID of the current workflow state of the pipeline.
 
 
 =cut

@@ -37,9 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 maximumPageSize => Int
 
-  
-
-The maximum number of results that will be returned per call.
+  The maximum number of results that will be returned per call.
 C<nextPageToken> can be used to obtain futher pages of results. The
 default is 1000, which is the maximum allowed page size. You can,
 however, specify a page size I<smaller> than the maximum.
@@ -47,20 +45,9 @@ however, specify a page size I<smaller> than the maximum.
 This is an upper limit only; the actual number of results returned per
 call may be fewer than the specified maximum.
 
-
-
-
-
-
-
-
-
-
 =head2 nextPageToken => Str
 
-  
-
-If a C<NextPageToken> was returned by a previous call, there are more
+  If a C<NextPageToken> was returned by a previous call, there are more
 results available. To retrieve the next page of results, make the call
 again using the returned token in C<nextPageToken>. Keep all other
 arguments unchanged.
@@ -68,46 +55,15 @@ arguments unchanged.
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> registrationStatus => Str
 
-  
-
-Specifies the registration status of the domains to list.
-
-
-
-
-
-
-
-
-
+  Specifies the registration status of the domains to list.
 
 =head2 reverseOrder => Bool
 
-  
-
-When set to C<true>, returns the results in reverse order. By default,
+  When set to C<true>, returns the results in reverse order. By default,
 the results are returned in ascending alphabetical order by C<name> of
 the domains.
-
-
-
-
-
-
-
-
-
 
 
 

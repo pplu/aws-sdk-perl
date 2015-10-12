@@ -36,74 +36,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 entityUrlTemplate => Str
 
-  
-
-The URL returned to the AWS CodePipeline console that provides a deep
+  The URL returned to the AWS CodePipeline console that provides a deep
 link to the resources of the external system, such as the configuration
 page for an AWS CodeDeploy deployment group. This link is provided as
 part of the action display within the pipeline.
 
-
-
-
-
-
-
-
-
-
 =head2 executionUrlTemplate => Str
 
-  
-
-The URL returned to the AWS CodePipeline console that contains a link
+  The URL returned to the AWS CodePipeline console that contains a link
 to the top-level landing page for the external system, such as console
 page for AWS CodeDeploy. This link is shown on the pipeline view page
 in the AWS CodePipeline console and provides a link to the execution
 entity of the external action.
 
-
-
-
-
-
-
-
-
-
 =head2 revisionUrlTemplate => Str
 
-  
-
-The URL returned to the AWS CodePipeline console that contains a link
+  The URL returned to the AWS CodePipeline console that contains a link
 to the page where customers can update or change the configuration of
 the external action.
 
-
-
-
-
-
-
-
-
-
 =head2 thirdPartyConfigurationUrl => Str
 
-  
-
-The URL of a sign-up page where users can sign up for an external
+  The URL of a sign-up page where users can sign up for an external
 service and perform initial configuration of the action provided by
 that service.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  
-
-Specifies whether you want to require end users to use signed URLs to
+  Specifies whether you want to require end users to use signed URLs to
 access the files specified by PathPattern and TargetOriginId.
-
-
-
-
-
-
-
-
-
 
 =head2 Items => ArrayRef[Str]
 
-  
-
-Optional: A complex type that contains trusted signers for this cache
+  Optional: A complex type that contains trusted signers for this cache
 behavior. If Quantity is 0, you can omit Items.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Quantity => Int
 
-  
-
-The number of trusted signers for this cache behavior.
-
-
-
-
-
-
-
-
-
+  The number of trusted signers for this cache behavior.
 
 
 

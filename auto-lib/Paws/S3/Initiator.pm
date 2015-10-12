@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Initiat
 
 =head2 DisplayName => Str
 
-  
-
-Name of the Principal.
-
-
-
-
-
-
-
-
-
+  Name of the Principal.
 
 =head2 ID => Str
 
-  
-
-If the principal is an AWS account, it provides the Canonical User ID.
+  If the principal is an AWS account, it provides the Canonical User ID.
 If the principal is an IAM User, it provides a user ARN value.
-
-
-
-
-
-
-
-
-
 
 
 

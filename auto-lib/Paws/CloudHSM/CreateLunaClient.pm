@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Certificate => Str
 
-  
-
-The contents of a Base64-Encoded X.509 v3 certificate to be installed
+  The contents of a Base64-Encoded X.509 v3 certificate to be installed
 on the HSMs used by this client.
-
-
-
-
-
-
-
-
-
 
 =head2 Label => Str
 
-  
-
-The label for the client.
-
-
-
-
-
-
-
-
-
+  The label for the client.
 
 
 

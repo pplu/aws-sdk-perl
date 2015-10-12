@@ -22,19 +22,8 @@ Paws::Route53::GetHealthCheckStatusResponse
 
 =head2 B<REQUIRED> HealthCheckId => Str
 
-  
-
-The ID of the health check for which you want to retrieve the most
+  The ID of the health check for which you want to retrieve the most
 recent status.
-
-
-
-
-
-
-
-
-
 
 
 =cut

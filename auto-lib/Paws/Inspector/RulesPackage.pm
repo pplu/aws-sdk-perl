@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 description => Paws::Inspector::LocalizedText
 
-  
-
-The description of the rules package.
-
-
-
-
-
-
-
-
-
+  The description of the rules package.
 
 =head2 provider => Str
 
-  
-
-The provider of the rules package.
-
-
-
-
-
-
-
-
-
+  The provider of the rules package.
 
 =head2 rulesPackageArn => Str
 
-  
-
-The ARN of the rules package.
-
-
-
-
-
-
-
-
-
+  The ARN of the rules package.
 
 =head2 rulesPackageName => Str
 
-  
-
-The name of the rules package.
-
-
-
-
-
-
-
-
-
+  The name of the rules package.
 
 =head2 version => Str
 
-  
-
-The version id of the rules package.
-
-
-
-
-
-
-
-
-
+  The version id of the rules package.
 
 
 

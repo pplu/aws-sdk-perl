@@ -41,141 +41,42 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head2 destination => Str
 
-  
-
-Name of Amazon S3 bucket to which the log data was exported.
-
-
-
-
-
-
-
-
-
+  Name of Amazon S3 bucket to which the log data was exported.
 
 =head2 destinationPrefix => Str
 
-  
-
-Prefix that was used as the start of Amazon S3 key for every object
+  Prefix that was used as the start of Amazon S3 key for every object
 exported.
-
-
-
-
-
-
-
-
-
 
 =head2 executionInfo => Paws::CloudWatchLogs::ExportTaskExecutionInfo
 
-  
-
-Execution info about the export task.
-
-
-
-
-
-
-
-
-
+  Execution info about the export task.
 
 =head2 from => Int
 
-  
-
-A unix timestamp indicating the start time of the range for the
+  A unix timestamp indicating the start time of the range for the
 request. Events with a timestamp prior to this time were not exported.
-
-
-
-
-
-
-
-
-
 
 =head2 logGroupName => Str
 
-  
-
-The name of the log group from which logs data was exported.
-
-
-
-
-
-
-
-
-
+  The name of the log group from which logs data was exported.
 
 =head2 status => Paws::CloudWatchLogs::ExportTaskStatus
 
-  
-
-Status of the export task.
-
-
-
-
-
-
-
-
-
+  Status of the export task.
 
 =head2 taskId => Str
 
-  
-
-Id of the export task.
-
-
-
-
-
-
-
-
-
+  Id of the export task.
 
 =head2 taskName => Str
 
-  
-
-The name of the export task.
-
-
-
-
-
-
-
-
-
+  The name of the export task.
 
 =head2 to => Int
 
-  
-
-A unix timestamp indicating the end time of the range for the request.
+  A unix timestamp indicating the end time of the range for the request.
 Events with a timestamp later than this time were not exported.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterSecurityGroupName => Str
 
-  
-
-The name of the cluster security group to be deleted.
-
-
-
-
-
-
-
-
-
+  The name of the cluster security group to be deleted.
 
 
 

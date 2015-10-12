@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::K
 
 =head2 B<REQUIRED> AWSKMSKeyARN => Str
 
-  
-
-The ARN of the encryption key. Must belong to the same region as the
+  The ARN of the encryption key. Must belong to the same region as the
 destination Amazon S3 bucket.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -45,9 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeUpdates => Paws::DynamoDB::AttributeUpdates
 
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I<UpdateExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -178,20 +176,9 @@ If you provide any attributes that are part of an index key, then the
 data types for those attributes must match those of the schema in the
 table's attribute definition.
 
-
-
-
-
-
-
-
-
-
 =head2 ConditionalOperator => Str
 
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I<ConditionExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -218,20 +205,9 @@ The operation will succeed only if the entire map evaluates to true.
 
 This parameter does not support attributes of type List or Map.
 
-
-
-
-
-
-
-
-
-
 =head2 ConditionExpression => Str
 
-  
-
-A condition that must be satisfied in order for a conditional update to
+  A condition that must be satisfied in order for a conditional update to
 succeed.
 
 An expression can contain any of the following:
@@ -262,20 +238,9 @@ Conditions in the I<Amazon DynamoDB Developer Guide>.
 I<ConditionExpression> replaces the legacy I<ConditionalOperator> and
 I<Expected> parameters.
 
-
-
-
-
-
-
-
-
-
 =head2 Expected => Paws::DynamoDB::ExpectedAttributeMap
 
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I< ConditionExpression > instead. Do not
 combine legacy parameters and expression parameters in a single API
 call; otherwise, DynamoDB will return a I<ValidationException>
@@ -546,20 +511,9 @@ I<ValidationException> exception.
 
 This parameter does not support attributes of type List or Map.
 
-
-
-
-
-
-
-
-
-
 =head2 ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap
 
-  
-
-One or more substitution tokens for attribute names in an expression.
+  One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
@@ -623,20 +577,9 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap
 
-  
-
-One or more values that can be substituted in an expression.
+  One or more values that can be substituted in an expression.
 
 Use the B<:> (colon) character in an expression to dereference an
 attribute value. For example, suppose that you wanted to check whether
@@ -657,20 +600,9 @@ C<ProductStatus IN (:avail, :back, :disc)>
 For more information on expression attribute values, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Key => Paws::DynamoDB::Key
 
-  
-
-The primary key of the item to be updated. Each element consists of an
+  The primary key of the item to be updated. Each element consists of an
 attribute name and a value for that attribute.
 
 For the primary key, you must provide all of the attributes. For
@@ -678,42 +610,20 @@ example, with a hash type primary key, you only need to provide the
 hash attribute. For a hash-and-range type primary key, you must provide
 both the hash attribute and the range attribute.
 
-
-
-
-
-
-
-
-
-
 =head2 ReturnConsumedCapacity => Str
 
   
 
 =head2 ReturnItemCollectionMetrics => Str
 
-  
-
-Determines whether item collection metrics are returned. If set to
+  Determines whether item collection metrics are returned. If set to
 C<SIZE>, the response includes statistics about item collections, if
 any, that were modified during the operation are returned in the
 response. If set to C<NONE> (the default), no statistics are returned.
 
-
-
-
-
-
-
-
-
-
 =head2 ReturnValues => Str
 
-  
-
-Use I<ReturnValues> if you want to get the item attributes as they
+  Use I<ReturnValues> if you want to get the item attributes as they
 appeared either before or after they were updated. For I<UpdateItem>,
 the valid values are:
 
@@ -747,35 +657,13 @@ returned.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TableName => Str
 
-  
-
-The name of the table containing the item to update.
-
-
-
-
-
-
-
-
-
+  The name of the table containing the item to update.
 
 =head2 UpdateExpression => Str
 
-  
-
-An expression that defines one or more attributes to be updated, the
+  An expression that defines one or more attributes to be updated, the
 action to be performed on them, and new value(s) for them.
 
 The following action values are available for I<UpdateExpression>.
@@ -882,15 +770,6 @@ For more information on update expressions, see Modifying Items and
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 I<UpdateExpression> replaces the legacy I<AttributeUpdates> parameter.
-
-
-
-
-
-
-
-
-
 
 
 

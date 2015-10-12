@@ -37,63 +37,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AuthenticationCode1 => Str
 
-  
-
-An authentication code emitted by the device.
-
-
-
-
-
-
-
-
-
+  An authentication code emitted by the device.
 
 =head2 B<REQUIRED> AuthenticationCode2 => Str
 
-  
-
-A subsequent authentication code emitted by the device.
-
-
-
-
-
-
-
-
-
+  A subsequent authentication code emitted by the device.
 
 =head2 B<REQUIRED> SerialNumber => Str
 
-  
-
-Serial number that uniquely identifies the MFA device.
-
-
-
-
-
-
-
-
-
+  Serial number that uniquely identifies the MFA device.
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user whose MFA device you want to resynchronize.
-
-
-
-
-
-
-
-
-
+  The name of the user whose MFA device you want to resynchronize.
 
 
 

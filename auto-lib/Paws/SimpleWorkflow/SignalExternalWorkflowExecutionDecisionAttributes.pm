@@ -37,83 +37,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 control => Str
 
-  
-
-I<Optional.> Data attached to the event that can be used by the decider
+  I<Optional.> Data attached to the event that can be used by the decider
 in subsequent decision tasks.
-
-
-
-
-
-
-
-
-
 
 =head2 input => Str
 
-  
-
-I<Optional.> Input data to be provided with the signal. The target
+  I<Optional.> Input data to be provided with the signal. The target
 workflow execution will use the signal name and input data to process
 the signal.
 
-
-
-
-
-
-
-
-
-
 =head2 runId => Str
 
-  
-
-The C<runId> of the workflow execution to be signaled.
-
-
-
-
-
-
-
-
-
+  The C<runId> of the workflow execution to be signaled.
 
 =head2 B<REQUIRED> signalName => Str
 
-  
-
-B<Required.> The name of the signal.The target workflow execution will
+  B<Required.> The name of the signal.The target workflow execution will
 use the signal name and input to process the signal.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> workflowId => Str
 
-  
-
-B<Required.> The C<workflowId> of the workflow execution to be
+  B<Required.> The C<workflowId> of the workflow execution to be
 signaled.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 found => Int
 
-  
-
-The number of documents that were found to match the query string.
-
-
-
-
-
-
-
-
-
+  The number of documents that were found to match the query string.
 
 =head2 query => Str
 
-  
-
-The query string specified in the suggest request.
-
-
-
-
-
-
-
-
-
+  The query string specified in the suggest request.
 
 =head2 suggestions => ArrayRef[Paws::CloudSearchDomain::SuggestionMatch]
 
-  
-
-The documents that match the query string.
-
-
-
-
-
-
-
-
-
+  The documents that match the query string.
 
 
 

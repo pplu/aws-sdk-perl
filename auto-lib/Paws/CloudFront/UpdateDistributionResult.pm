@@ -30,33 +30,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Distribution => Paws::CloudFront::Distribution
 
-  
-
-The distribution's information.
-
-
-
-
-
-
-
-
-
+  The distribution's information.
 
 =head2 ETag => Str
 
-  
-
-The current version of the configuration. For example: E2QWRUHAPOMQZL.
-
-
-
-
-
-
-
-
-
+  The current version of the configuration. For example: E2QWRUHAPOMQZL.
 
 
 

@@ -15,18 +15,7 @@ Paws::EC2::RegisterImageResult
 
 =head2 ImageId => Str
 
-  
-
-The ID of the newly registered AMI.
-
-
-
-
-
-
-
-
-
+  The ID of the newly registered AMI.
 
 
 =cut

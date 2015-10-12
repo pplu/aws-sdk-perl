@@ -34,25 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::S
 
 =head2 StreamEnabled => Bool
 
-  
-
-Indicates whether DynamoDB Streams is enabled (true) or disabled
+  Indicates whether DynamoDB Streams is enabled (true) or disabled
 (false) on the table.
-
-
-
-
-
-
-
-
-
 
 =head2 StreamViewType => Str
 
-  
-
-The DynamoDB Streams settings for the table. These settings consist of:
+  The DynamoDB Streams settings for the table. These settings consist of:
 
 =over
 
@@ -92,15 +79,6 @@ item are written to the stream.
 =back
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

@@ -22,18 +22,7 @@ Paws::CloudFront::CreateStreamingDistributionResult
 
 =head2 B<REQUIRED> StreamingDistributionConfig => Paws::CloudFront::StreamingDistributionConfig
 
-  
-
-The streaming distribution's configuration information.
-
-
-
-
-
-
-
-
-
+  The streaming distribution's configuration information.
 
 
 =cut

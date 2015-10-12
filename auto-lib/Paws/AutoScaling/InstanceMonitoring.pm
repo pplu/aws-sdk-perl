@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 Enabled => Bool
 
-  
-
-If C<True>, instance monitoring is enabled.
-
-
-
-
-
-
-
-
-
+  If C<True>, instance monitoring is enabled.
 
 
 

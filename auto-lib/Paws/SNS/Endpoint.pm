@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SNS::Endpoi
 
 =head2 Attributes => Paws::SNS::MapStringToString
 
-  
-
-Attributes for endpoint.
-
-
-
-
-
-
-
-
-
+  Attributes for endpoint.
 
 =head2 EndpointArn => Str
 
-  
-
-EndpointArn for mobile app and device.
-
-
-
-
-
-
-
-
-
+  EndpointArn for mobile app and device.
 
 
 

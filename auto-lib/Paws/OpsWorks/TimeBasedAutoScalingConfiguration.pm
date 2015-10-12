@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::T
 
 =head2 AutoScalingSchedule => Paws::OpsWorks::WeeklyAutoScalingSchedule
 
-  
-
-A C<WeeklyAutoScalingSchedule> object with the instance schedule.
-
-
-
-
-
-
-
-
-
+  A C<WeeklyAutoScalingSchedule> object with the instance schedule.
 
 =head2 InstanceId => Str
 
-  
-
-The instance ID.
-
-
-
-
-
-
-
-
-
+  The instance ID.
 
 
 

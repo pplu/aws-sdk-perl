@@ -43,75 +43,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DBInstanceClass => Str
 
-  
-
-The DB instance class filter value. Specify this parameter to show only
+  The DB instance class filter value. Specify this parameter to show only
 those reservations matching the specified DB instances class.
-
-
-
-
-
-
-
-
-
 
 =head2 Duration => Str
 
-  
-
-The duration filter value, specified in years or seconds. Specify this
+  The duration filter value, specified in years or seconds. Specify this
 parameter to show only reservations for this duration.
 
 Valid Values: C<1 | 3 | 31536000 | 94608000>
 
-
-
-
-
-
-
-
-
-
 =head2 Filters => ArrayRef[Paws::RDS::Filter]
 
-  
-
-This parameter is not currently supported.
-
-
-
-
-
-
-
-
-
+  This parameter is not currently supported.
 
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous request. If this
+  An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of records to include in the response. If more than
+  The maximum number of records to include in the response. If more than
 the C<MaxRecords> value is available, a pagination token called a
 marker is included in the response so that the following results can be
 retrieved.
@@ -120,97 +74,33 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.
 
-
-
-
-
-
-
-
-
-
 =head2 MultiAZ => Bool
 
-  
-
-The Multi-AZ filter value. Specify this parameter to show only those
+  The Multi-AZ filter value. Specify this parameter to show only those
 reservations matching the specified Multi-AZ parameter.
-
-
-
-
-
-
-
-
-
 
 =head2 OfferingType => Str
 
-  
-
-The offering type filter value. Specify this parameter to show only the
+  The offering type filter value. Specify this parameter to show only the
 available offerings matching the specified offering type.
 
 Valid Values: C<"Partial Upfront" | "All Upfront" | "No Upfront">
 
-
-
-
-
-
-
-
-
-
 =head2 ProductDescription => Str
 
-  
-
-The product description filter value. Specify this parameter to show
+  The product description filter value. Specify this parameter to show
 only those reservations matching the specified product description.
-
-
-
-
-
-
-
-
-
 
 =head2 ReservedDBInstanceId => Str
 
-  
-
-The reserved DB instance identifier filter value. Specify this
+  The reserved DB instance identifier filter value. Specify this
 parameter to show only the reservation that matches the specified
 reservation ID.
 
-
-
-
-
-
-
-
-
-
 =head2 ReservedDBInstancesOfferingId => Str
 
-  
-
-The offering identifier filter value. Specify this parameter to show
+  The offering identifier filter value. Specify this parameter to show
 only purchased reservations matching the specified offering identifier.
-
-
-
-
-
-
-
-
-
 
 
 

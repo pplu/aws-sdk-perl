@@ -14,19 +14,8 @@ Paws::OpsWorks::DescribeServiceErrorsResult
 
 =head2 ServiceErrors => ArrayRef[Paws::OpsWorks::ServiceError]
 
-  
-
-An array of C<ServiceError> objects that describe the specified service
+  An array of C<ServiceError> objects that describe the specified service
 errors.
-
-
-
-
-
-
-
-
-
 
 
 =cut

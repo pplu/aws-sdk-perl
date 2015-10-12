@@ -34,38 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::TimeWi
 
 =head2 B<REQUIRED> EndTime => Str
 
-  
-
-The end of the time range from which you want C<GetSampledRequests> to
+  The end of the time range from which you want C<GetSampledRequests> to
 return a sample of the requests that your AWS resource received. You
 can specify any time range in the previous three hours.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StartTime => Str
 
-  
-
-The beginning of the time range from which you want
+  The beginning of the time range from which you want
 C<GetSampledRequests> to return a sample of the requests that your AWS
 resource received. You can specify any time range in the previous three
 hours.
-
-
-
-
-
-
-
-
-
 
 
 

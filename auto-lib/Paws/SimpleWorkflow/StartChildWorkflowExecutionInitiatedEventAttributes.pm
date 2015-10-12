@@ -44,9 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> childPolicy => Str
 
-  
-
-The policy to use for the child workflow executions if this execution
+  The policy to use for the child workflow executions if this execution
 gets terminated by explicitly calling the TerminateWorkflowExecution
 action or due to an expired timeout.
 
@@ -66,136 +64,48 @@ continue to run.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 control => Str
 
-  
-
-I<Optional.> Data attached to the event that can be used by the decider
+  I<Optional.> Data attached to the event that can be used by the decider
 in subsequent decision tasks. This data is not sent to the activity.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> decisionTaskCompletedEventId => Int
 
-  
-
-The ID of the C<DecisionTaskCompleted> event corresponding to the
+  The ID of the C<DecisionTaskCompleted> event corresponding to the
 decision task that resulted in the C<StartChildWorkflowExecution>
 decision to request this child workflow execution. This information can
 be useful for diagnosing problems by tracing back the cause of events.
 
-
-
-
-
-
-
-
-
-
 =head2 executionStartToCloseTimeout => Str
 
-  
-
-The maximum duration for the child workflow execution. If the workflow
+  The maximum duration for the child workflow execution. If the workflow
 execution is not closed within this duration, it will be timed out and
 force terminated.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-
-
-
-
-
-
-
-
-
 =head2 input => Str
 
-  
-
-The inputs provided to the child workflow execution (if any).
-
-
-
-
-
-
-
-
-
+  The inputs provided to the child workflow execution (if any).
 
 =head2 lambdaRole => Str
 
-  
-
-The IAM role attached to this workflow execution to use when invoking
+  The IAM role attached to this workflow execution to use when invoking
 AWS Lambda functions.
-
-
-
-
-
-
-
-
-
 
 =head2 tagList => ArrayRef[Str]
 
-  
-
-The list of tags to associated with the child workflow execution.
-
-
-
-
-
-
-
-
-
+  The list of tags to associated with the child workflow execution.
 
 =head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
 
-  
-
-The name of the task list used for the decision tasks of the child
+  The name of the task list used for the decision tasks of the child
 workflow execution.
-
-
-
-
-
-
-
-
-
 
 =head2 taskPriority => Str
 
-  
-
-I<Optional.> The priority assigned for the decision tasks for this
+  I<Optional.> The priority assigned for the decision tasks for this
 workflow execution. Valid values are integers that range from Java's
 C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 (2147483647). Higher numbers indicate higher priority.
@@ -203,63 +113,21 @@ C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 taskStartToCloseTimeout => Str
 
-  
-
-The maximum duration allowed for the decision tasks for this workflow
+  The maximum duration allowed for the decision tasks for this workflow
 execution.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> workflowId => Str
 
-  
-
-The C<workflowId> of the child workflow execution.
-
-
-
-
-
-
-
-
-
+  The C<workflowId> of the child workflow execution.
 
 =head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
 
-  
-
-The type of the child workflow execution.
-
-
-
-
-
-
-
-
-
+  The type of the child workflow execution.
 
 
 

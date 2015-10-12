@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 rid => Str
 
-  
-
-The encrypted resource ID for the request.
-
-
-
-
-
-
-
-
-
+  The encrypted resource ID for the request.
 
 =head2 timems => Int
 
-  
-
-How long it took to process the request, in milliseconds.
-
-
-
-
-
-
-
-
-
+  How long it took to process the request, in milliseconds.
 
 
 

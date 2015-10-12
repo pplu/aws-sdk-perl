@@ -15,18 +15,7 @@ Paws::IoT::GetTopicRuleResponse
 
 =head2 rule => Paws::IoT::TopicRule
 
-  
-
-The rule.
-
-
-
-
-
-
-
-
-
+  The rule.
 
 
 =cut

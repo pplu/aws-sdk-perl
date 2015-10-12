@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::A
 
 =head2 ConfigurationManager => Paws::OpsWorks::StackConfigurationManager
 
-  
-
-The configuration manager.
-
-
-
-
-
-
-
-
-
+  The configuration manager.
 
 =head2 Version => Str
 
-  
-
-The agent version.
-
-
-
-
-
-
-
-
-
+  The agent version.
 
 
 

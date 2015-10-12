@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Moving
 
 =head2 MoveStatus => Str
 
-  
-
-The status of the Elastic IP address that's being moved to the EC2-VPC
+  The status of the Elastic IP address that's being moved to the EC2-VPC
 platform, or restored to the EC2-Classic platform.
-
-
-
-
-
-
-
-
-
 
 =head2 PublicIp => Str
 
-  
-
-The Elastic IP address.
-
-
-
-
-
-
-
-
-
+  The Elastic IP address.
 
 
 

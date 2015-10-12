@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 RecurringChargeAmount => Num
 
-  
-
-The monetary amount of the recurring charge.
-
-
-
-
-
-
-
-
-
+  The monetary amount of the recurring charge.
 
 =head2 RecurringChargeFrequency => Str
 
-  
-
-The frequency of the recurring charge.
-
-
-
-
-
-
-
-
-
+  The frequency of the recurring charge.
 
 
 

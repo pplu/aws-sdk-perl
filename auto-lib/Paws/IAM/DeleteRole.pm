@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RoleName => Str
 
-  
-
-The name of the role to delete.
-
-
-
-
-
-
-
-
-
+  The name of the role to delete.
 
 
 

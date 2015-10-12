@@ -35,38 +35,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DataSourceId => Str
 
-  
-
-The ID assigned to the C<DataSource> at creation.
-
-
-
-
-
-
-
-
-
+  The ID assigned to the C<DataSource> at creation.
 
 =head2 Verbose => Bool
 
-  
-
-Specifies whether the C<GetDataSource> operation should return
+  Specifies whether the C<GetDataSource> operation should return
 C<DataSourceSchema>.
 
 If true, C<DataSourceSchema> is returned.
 
 If false, C<DataSourceSchema> is not returned.
-
-
-
-
-
-
-
-
-
 
 
 

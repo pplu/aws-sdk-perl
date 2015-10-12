@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glacier::Va
 
 =head2 Events => ArrayRef[Str]
 
-  
-
-A list of one or more events for which Amazon Glacier will send a
+  A list of one or more events for which Amazon Glacier will send a
 notification to the specified Amazon SNS topic.
-
-
-
-
-
-
-
-
-
 
 =head2 SNSTopic => Str
 
-  
-
-The Amazon Simple Notification Service (Amazon SNS) topic Amazon
+  The Amazon Simple Notification Service (Amazon SNS) topic Amazon
 Resource Name (ARN).
-
-
-
-
-
-
-
-
-
 
 
 

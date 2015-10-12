@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  
-
-Specifies that the number of virtual tapes descried be limited to the
+  Specifies that the number of virtual tapes descried be limited to the
 specified number.
-
-
-
-
-
-
-
-
-
 
 =head2 Marker => Str
 
-  
-
-An opaque string that indicates the position at which to begin
+  An opaque string that indicates the position at which to begin
 describing virtual tapes.
-
-
-
-
-
-
-
-
-
 
 =head2 TapeARNs => ArrayRef[Str]
 
-  
-
-Specifies one or more unique Amazon Resource Names (ARNs) that
+  Specifies one or more unique Amazon Resource Names (ARNs) that
 represent the virtual tapes you want to describe.
-
-
-
-
-
-
-
-
-
 
 
 

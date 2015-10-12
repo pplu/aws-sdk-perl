@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::K
 
 =head2 B<REQUIRED> AttributeName => Str
 
-  
-
-The name of a key attribute.
-
-
-
-
-
-
-
-
-
+  The name of a key attribute.
 
 =head2 B<REQUIRED> KeyType => Str
 
-  
-
-The attribute data, consisting of the data type and the attribute value
+  The attribute data, consisting of the data type and the attribute value
 itself.
-
-
-
-
-
-
-
-
-
 
 
 

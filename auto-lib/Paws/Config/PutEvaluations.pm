@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Evaluations => ArrayRef[Paws::Config::Evaluation]
 
-  
-
-The assessments that the AWS Lambda function performs. Each evaluation
+  The assessments that the AWS Lambda function performs. Each evaluation
 identifies an AWS resource and indicates whether it complies with the
 AWS Config rule that invokes the AWS Lambda function.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ResultToken => Str
 
-  
-
-An encrypted token that associates an evaluation with an AWS Config
+  An encrypted token that associates an evaluation with an AWS Config
 rule. Identifies the rule and the event that triggered the evaluation
-
-
-
-
-
-
-
-
-
 
 
 

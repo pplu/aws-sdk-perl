@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> logGroupName => Str
 
-  
-
-The name of the log group under which the log stream is to be created.
-
-
-
-
-
-
-
-
-
+  The name of the log group under which the log stream is to be created.
 
 =head2 B<REQUIRED> logStreamName => Str
 
-  
-
-The name of the log stream to create.
-
-
-
-
-
-
-
-
-
+  The name of the log stream to create.
 
 
 

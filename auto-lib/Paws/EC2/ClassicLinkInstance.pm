@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Classi
 
 =head2 Groups => ArrayRef[Paws::EC2::GroupIdentifier]
 
-  
-
-A list of security groups.
-
-
-
-
-
-
-
-
-
+  A list of security groups.
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 Tags => ArrayRef[Paws::EC2::Tag]
 
-  
-
-Any tags assigned to the instance.
-
-
-
-
-
-
-
-
-
+  Any tags assigned to the instance.
 
 =head2 VpcId => Str
 
-  
-
-The ID of the VPC.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC.
 
 
 

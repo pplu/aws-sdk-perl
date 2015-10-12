@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BatchPredictionId => Str
 
-  
-
-The ID assigned to the C<BatchPrediction> during creation.
-
-
-
-
-
-
-
-
-
+  The ID assigned to the C<BatchPrediction> during creation.
 
 =head2 B<REQUIRED> BatchPredictionName => Str
 
-  
-
-A new user-supplied name or description of the C<BatchPrediction>.
-
-
-
-
-
-
-
-
-
+  A new user-supplied name or description of the C<BatchPrediction>.
 
 
 

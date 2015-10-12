@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::Advance
 
 =head2 B<REQUIRED> Options => Paws::ES::AdvancedOptions
 
-  
-
-Specifies the status of advanced options for the specified
+  Specifies the status of advanced options for the specified
 Elasticsearch domain.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Status => Paws::ES::OptionStatus
 
-  
-
-Specifies the status of C<OptionStatus> for advanced options for the
+  Specifies the status of C<OptionStatus> for advanced options for the
 specified Elasticsearch domain.
-
-
-
-
-
-
-
-
-
 
 
 

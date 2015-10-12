@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::HTTPHe
 
 =head2 Name => Str
 
-  
-
-The name of one of the headers in the sampled web request.
-
-
-
-
-
-
-
-
-
+  The name of one of the headers in the sampled web request.
 
 =head2 Value => Str
 
-  
-
-The value of one of the headers in the sampled web request.
-
-
-
-
-
-
-
-
-
+  The value of one of the headers in the sampled web request.
 
 
 

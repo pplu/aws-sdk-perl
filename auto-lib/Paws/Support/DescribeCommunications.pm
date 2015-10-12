@@ -38,83 +38,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 afterTime => Str
 
-  
-
-The start date for a filtered date search on support case
+  The start date for a filtered date search on support case
 communications. Case communications are available for 12 months after
 creation.
 
-
-
-
-
-
-
-
-
-
 =head2 beforeTime => Str
 
-  
-
-The end date for a filtered date search on support case communications.
+  The end date for a filtered date search on support case communications.
 Case communications are available for 12 months after creation.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> caseId => Str
 
-  
-
-The AWS Support case ID requested or returned in the call. The case ID
+  The AWS Support case ID requested or returned in the call. The case ID
 is an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
-
-
-
-
-
-
-
-
-
 =head2 maxResults => Int
 
-  
-
-The maximum number of results to return before paginating.
-
-
-
-
-
-
-
-
-
+  The maximum number of results to return before paginating.
 
 =head2 nextToken => Str
 
-  
-
-A resumption point for pagination.
-
-
-
-
-
-
-
-
-
+  A resumption point for pagination.
 
 
 

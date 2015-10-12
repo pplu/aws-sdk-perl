@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GatewayId => Str
 
-  
-
-The ID of the virtual private gateway.
-
-
-
-
-
-
-
-
-
+  The ID of the virtual private gateway.
 
 =head2 B<REQUIRED> RouteTableId => Str
 
-  
-
-The ID of the route table.
-
-
-
-
-
-
-
-
-
+  The ID of the route table.
 
 
 

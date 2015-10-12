@@ -15,18 +15,7 @@ Paws::RedShift::EventCategoriesMessage
 
 =head2 EventCategoriesMapList => ArrayRef[Paws::RedShift::EventCategoriesMap]
 
-  
-
-A list of event categories descriptions.
-
-
-
-
-
-
-
-
-
+  A list of event categories descriptions.
 
 
 =cut

@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Re
 
 =head2 communications => ArrayRef[Paws::Support::Communication]
 
-  
-
-The five most recent communications associated with the case.
-
-
-
-
-
-
-
-
-
+  The five most recent communications associated with the case.
 
 =head2 nextToken => Str
 
-  
-
-A resumption point for pagination.
-
-
-
-
-
-
-
-
-
+  A resumption point for pagination.
 
 
 

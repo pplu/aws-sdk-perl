@@ -35,26 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LogicalResourceId => Str
 
-  
-
-The logical name of the resource as specified in the template.
+  The logical name of the resource as specified in the template.
 
 Default: There is no default value.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StackName => Str
 
-  
-
-The name or the unique stack ID that is associated with the stack,
+  The name or the unique stack ID that is associated with the stack,
 which are not always interchangeable:
 
 =over
@@ -67,15 +54,6 @@ unique stack ID.
 =back
 
 Default: There is no default value.
-
-
-
-
-
-
-
-
-
 
 
 

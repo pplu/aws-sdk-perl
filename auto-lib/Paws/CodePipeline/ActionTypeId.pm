@@ -36,68 +36,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 B<REQUIRED> category => Str
 
-  
-
-A category defines what kind of action can be taken in the stage, and
+  A category defines what kind of action can be taken in the stage, and
 constrains the provider type for the action. Valid categories are
 limited to one of the values below.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> owner => Str
 
-  
-
-The creator of the action being called.
-
-
-
-
-
-
-
-
-
+  The creator of the action being called.
 
 =head2 B<REQUIRED> provider => Str
 
-  
-
-The provider of the service being called by the action. Valid providers
+  The provider of the service being called by the action. Valid providers
 are determined by the action category. For example, an action in the
 Deploy category type might have a provider of AWS CodeDeploy, which
 would be specified as CodeDeploy.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> version => Str
 
-  
-
-A string that identifies the action type.
-
-
-
-
-
-
-
-
-
+  A string that identifies the action type.
 
 
 

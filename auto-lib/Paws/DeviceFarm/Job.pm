@@ -43,48 +43,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 arn => Str
 
-  
-
-The job's ARN.
-
-
-
-
-
-
-
-
-
+  The job's ARN.
 
 =head2 counters => Paws::DeviceFarm::Counters
 
-  
-
-The job's result counters.
-
-
-
-
-
-
-
-
-
+  The job's result counters.
 
 =head2 created => Str
 
-  
-
-When the job was created.
-
-
-
-
-
-
-
-
-
+  When the job was created.
 
 =head2 device => Paws::DeviceFarm::Device
 
@@ -92,39 +59,15 @@ When the job was created.
 
 =head2 message => Str
 
-  
-
-A message about the job's result.
-
-
-
-
-
-
-
-
-
+  A message about the job's result.
 
 =head2 name => Str
 
-  
-
-The job's name.
-
-
-
-
-
-
-
-
-
+  The job's name.
 
 =head2 result => Str
 
-  
-
-The job's result.
+  The job's result.
 
 Allowed values include:
 
@@ -160,35 +103,13 @@ WARNED: A warning condition.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 started => Str
 
-  
-
-The job's start time.
-
-
-
-
-
-
-
-
-
+  The job's start time.
 
 =head2 status => Str
 
-  
-
-The job's status.
+  The job's status.
 
 Allowed values include:
 
@@ -216,35 +137,13 @@ SCHEDULING: A scheduling status.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 stopped => Str
 
-  
-
-The job's stop time.
-
-
-
-
-
-
-
-
-
+  The job's stop time.
 
 =head2 type => Str
 
-  
-
-The job's type.
+  The job's type.
 
 Allowed values include the following:
 
@@ -289,15 +188,6 @@ UIAUTOMATOR: The uiautomator type.
 XCTEST: The XCode test type.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

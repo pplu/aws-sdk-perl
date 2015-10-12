@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepSt
 
 =head2 Code => Str
 
-  
-
-The programmable code for the state change reason. Note: Currently, the
+  The programmable code for the state change reason. Note: Currently, the
 service provides no code for the state change.
-
-
-
-
-
-
-
-
-
 
 =head2 Message => Str
 
-  
-
-The descriptive message for the state change reason.
-
-
-
-
-
-
-
-
-
+  The descriptive message for the state change reason.
 
 
 

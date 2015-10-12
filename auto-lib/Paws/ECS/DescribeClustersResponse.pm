@@ -15,32 +15,10 @@ Paws::ECS::DescribeClustersResponse
 
 =head2 clusters => ArrayRef[Paws::ECS::Cluster]
 
-  
-
-The list of clusters.
-
-
-
-
-
-
-
-
-
+  The list of clusters.
 =head2 failures => ArrayRef[Paws::ECS::Failure]
 
-  
-
-Any failures associated with the call.
-
-
-
-
-
-
-
-
-
+  Any failures associated with the call.
 
 
 =cut

@@ -38,95 +38,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head2 BundleId => Str
 
-  
-
-The bundle identifier.
-
-
-
-
-
-
-
-
-
+  The bundle identifier.
 
 =head2 ComputeType => Paws::WorkSpaces::ComputeType
 
-  
-
-A ComputeType object that specifies the compute type for the bundle.
-
-
-
-
-
-
-
-
-
+  A ComputeType object that specifies the compute type for the bundle.
 
 =head2 Description => Str
 
-  
-
-The bundle description.
-
-
-
-
-
-
-
-
-
+  The bundle description.
 
 =head2 Name => Str
 
-  
-
-The name of the bundle.
-
-
-
-
-
-
-
-
-
+  The name of the bundle.
 
 =head2 Owner => Str
 
-  
-
-The owner of the bundle. This contains the owner's account identifier,
+  The owner of the bundle. This contains the owner's account identifier,
 or C<AMAZON> if the bundle is provided by AWS.
-
-
-
-
-
-
-
-
-
 
 =head2 UserStorage => Paws::WorkSpaces::UserStorage
 
-  
-
-A UserStorage object that specifies the amount of user storage that the
+  A UserStorage object that specifies the amount of user storage that the
 bundle contains.
-
-
-
-
-
-
-
-
-
 
 
 

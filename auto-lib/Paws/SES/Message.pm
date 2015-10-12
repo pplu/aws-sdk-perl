@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Messag
 
 =head2 B<REQUIRED> Body => Paws::SES::Body
 
-  
-
-The message body.
-
-
-
-
-
-
-
-
-
+  The message body.
 
 =head2 B<REQUIRED> Subject => Paws::SES::Content
 
-  
-
-The subject of the message: A short summary of the content, which will
+  The subject of the message: A short summary of the content, which will
 appear in the recipient's inbox.
-
-
-
-
-
-
-
-
-
 
 
 

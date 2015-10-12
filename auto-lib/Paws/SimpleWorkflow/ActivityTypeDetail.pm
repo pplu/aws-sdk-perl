@@ -15,23 +15,10 @@ Paws::SimpleWorkflow::ActivityTypeDetail
 
 =head2 B<REQUIRED> configuration => Paws::SimpleWorkflow::ActivityTypeConfiguration
 
-  
-
-The configuration settings registered with the activity type.
-
-
-
-
-
-
-
-
-
+  The configuration settings registered with the activity type.
 =head2 B<REQUIRED> typeInfo => Paws::SimpleWorkflow::ActivityTypeInfo
 
-  
-
-General information about the activity type.
+  General information about the activity type.
 
 The status of activity type (returned in the ActivityTypeInfo
 structure) can be one of the following.
@@ -46,15 +33,6 @@ DeprecateActivityType, but is still in use. You should keep workers
 supporting this type running. You cannot create new tasks of this type.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 =cut

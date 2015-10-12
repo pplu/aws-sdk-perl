@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DataSourceId => Str
 
-  
-
-The ID assigned to the C<DataSource> during creation.
-
-
-
-
-
-
-
-
-
+  The ID assigned to the C<DataSource> during creation.
 
 =head2 B<REQUIRED> DataSourceName => Str
 
-  
-
-A new user-supplied name or description of the C<DataSource> that will
+  A new user-supplied name or description of the C<DataSource> that will
 replace the current description.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoSync
 
 =head2 ApplicationArns => ArrayRef[Str]
 
-  
-
-List of SNS platform application ARNs that could be used by clients.
-
-
-
-
-
-
-
-
-
+  List of SNS platform application ARNs that could be used by clients.
 
 =head2 RoleArn => Str
 
-  
-
-A role configured to allow Cognito to call SNS on behalf of the
+  A role configured to allow Cognito to call SNS on behalf of the
 developer.
-
-
-
-
-
-
-
-
-
 
 
 

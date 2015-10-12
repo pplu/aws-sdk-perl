@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CopyPar
 
 =head2 ETag => Str
 
-  
-
-Entity tag of the object.
-
-
-
-
-
-
-
-
-
+  Entity tag of the object.
 
 =head2 LastModified => Str
 
-  
-
-Date and time at which the object was uploaded.
-
-
-
-
-
-
-
-
-
+  Date and time at which the object was uploaded.
 
 
 

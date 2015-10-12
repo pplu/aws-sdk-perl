@@ -35,56 +35,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoSync
 
 =head2 RoleArn => Str
 
-  
-
-The ARN of the role Amazon Cognito can assume in order to publish to
+  The ARN of the role Amazon Cognito can assume in order to publish to
 the stream. This role must grant access to Amazon Cognito
 (cognito-sync) to invoke PutRecord on your Cognito stream.
 
-
-
-
-
-
-
-
-
-
 =head2 StreamingStatus => Str
 
-  
-
-Status of the Cognito streams. Valid values are:
+  Status of the Cognito streams. Valid values are:
 
 ENABLED - Streaming of updates to identity pool is enabled.
 
 DISABLED - Streaming of updates to identity pool is disabled. Bulk
 publish will also fail if StreamingStatus is DISABLED.
 
-
-
-
-
-
-
-
-
-
 =head2 StreamName => Str
 
-  
-
-The name of the Cognito stream to receive updates. This stream must be
+  The name of the Cognito stream to receive updates. This stream must be
 in the developers account and in the same region as the identity pool.
-
-
-
-
-
-
-
-
-
 
 
 

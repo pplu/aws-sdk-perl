@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head2 id => Str
 
-  
-
-The ID of the pipeline that was assigned by AWS Data Pipeline. This is
+  The ID of the pipeline that was assigned by AWS Data Pipeline. This is
 a string of the form C<df-297EG78HU43EEXAMPLE>.
-
-
-
-
-
-
-
-
-
 
 =head2 name => Str
 
-  
-
-The name of the pipeline.
-
-
-
-
-
-
-
-
-
+  The name of the pipeline.
 
 
 

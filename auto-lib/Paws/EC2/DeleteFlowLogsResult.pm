@@ -15,18 +15,7 @@ Paws::EC2::DeleteFlowLogsResult
 
 =head2 Unsuccessful => ArrayRef[Paws::EC2::UnsuccessfulItem]
 
-  
-
-Information about the flow logs that could not be deleted successfully.
-
-
-
-
-
-
-
-
-
+  Information about the flow logs that could not be deleted successfully.
 
 
 =cut

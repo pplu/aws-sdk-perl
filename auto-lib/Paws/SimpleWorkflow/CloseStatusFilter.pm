@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> status => Str
 
-  
-
-B<Required.> The close status that must match the close status of an
+  B<Required.> The close status that must match the close status of an
 execution for it to meet the criteria of this filter.
-
-
-
-
-
-
-
-
-
 
 
 

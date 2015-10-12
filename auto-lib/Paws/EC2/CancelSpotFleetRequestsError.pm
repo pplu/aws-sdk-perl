@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Cancel
 
 =head2 B<REQUIRED> Code => Str
 
-  
-
-The error code.
-
-
-
-
-
-
-
-
-
+  The error code.
 
 =head2 B<REQUIRED> Message => Str
 
-  
-
-The description for the error code.
-
-
-
-
-
-
-
-
-
+  The description for the error code.
 
 
 

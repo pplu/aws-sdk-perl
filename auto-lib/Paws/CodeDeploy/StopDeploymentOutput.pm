@@ -15,9 +15,7 @@ Paws::CodeDeploy::StopDeploymentOutput
 
 =head2 status => Str
 
-  
-
-The status of the stop deployment operation:
+  The status of the stop deployment operation:
 
 =over
 
@@ -26,29 +24,9 @@ The status of the stop deployment operation:
 =item * Succeeded: The stop operation succeeded.
 
 =back
-
-
-
-
-
-
-
-
-
 =head2 statusMessage => Str
 
-  
-
-An accompanying status message.
-
-
-
-
-
-
-
-
-
+  An accompanying status message.
 
 
 =cut

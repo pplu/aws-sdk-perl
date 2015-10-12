@@ -15,18 +15,7 @@ Paws::EC2::DescribeRouteTablesResult
 
 =head2 RouteTables => ArrayRef[Paws::EC2::RouteTable]
 
-  
-
-Information about one or more route tables.
-
-
-
-
-
-
-
-
-
+  Information about one or more route tables.
 
 
 =cut

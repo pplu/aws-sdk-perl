@@ -48,19 +48,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::QueueCo
 
 =head2 B<REQUIRED> QueueArn => Str
 
-  
-
-Amazon SQS queue ARN to which Amazon S3 will publish a message when it
+  Amazon SQS queue ARN to which Amazon S3 will publish a message when it
 detects events of specified type.
-
-
-
-
-
-
-
-
-
 
 
 

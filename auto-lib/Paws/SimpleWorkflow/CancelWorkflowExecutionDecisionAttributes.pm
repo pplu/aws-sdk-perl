@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 details => Str
 
-  
-
-I<Optional.> details of the cancellation.
-
-
-
-
-
-
-
-
-
+  I<Optional.> details of the cancellation.
 
 
 

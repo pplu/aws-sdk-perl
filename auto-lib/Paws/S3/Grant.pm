@@ -38,18 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Grant o
 
 =head2 Permission => Str
 
-  
-
-Specifies the permission given to the grantee.
-
-
-
-
-
-
-
-
-
+  Specifies the permission given to the grantee.
 
 
 

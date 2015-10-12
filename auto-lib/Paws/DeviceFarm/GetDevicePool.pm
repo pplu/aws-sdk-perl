@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> arn => Str
 
-  
-
-The device pool's ARN.
-
-
-
-
-
-
-
-
-
+  The device pool's ARN.
 
 
 

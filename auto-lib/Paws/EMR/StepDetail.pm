@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepDe
 
 =head2 B<REQUIRED> ExecutionStatusDetail => Paws::EMR::StepExecutionStatusDetail
 
-  
-
-The description of the step status.
-
-
-
-
-
-
-
-
-
+  The description of the step status.
 
 =head2 B<REQUIRED> StepConfig => Paws::EMR::StepConfig
 
-  
-
-The step configuration.
-
-
-
-
-
-
-
-
-
+  The step configuration.
 
 
 

@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 HsmArn => Str
 
-  
-
-The ARN of the HSM. Either the I<HsmArn> or the I<SerialNumber>
+  The ARN of the HSM. Either the I<HsmArn> or the I<SerialNumber>
 parameter must be specified.
-
-
-
-
-
-
-
-
-
 
 =head2 HsmSerialNumber => Str
 
-  
-
-The serial number of the HSM. Either the I<HsmArn> or the
+  The serial number of the HSM. Either the I<HsmArn> or the
 I<HsmSerialNumber> parameter must be specified.
-
-
-
-
-
-
-
-
-
 
 
 

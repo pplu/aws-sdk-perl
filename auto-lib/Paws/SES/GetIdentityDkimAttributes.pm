@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Identities => ArrayRef[Str]
 
-  
-
-A list of one or more verified identities - email addresses, domains,
+  A list of one or more verified identities - email addresses, domains,
 or both.
-
-
-
-
-
-
-
-
-
 
 
 

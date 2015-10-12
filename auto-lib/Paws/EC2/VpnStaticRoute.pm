@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpnSta
 
 =head2 DestinationCidrBlock => Str
 
-  
-
-The CIDR block associated with the local subnet of the customer data
+  The CIDR block associated with the local subnet of the customer data
 center.
-
-
-
-
-
-
-
-
-
 
 =head2 Source => Str
 
-  
-
-Indicates how the routes were provided.
-
-
-
-
-
-
-
-
-
+  Indicates how the routes were provided.
 
 =head2 State => Str
 
-  
-
-The current state of the static route.
-
-
-
-
-
-
-
-
-
+  The current state of the static route.
 
 
 

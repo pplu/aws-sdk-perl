@@ -37,79 +37,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::U
 
 =head2 AllowSelfManagement => Bool
 
-  
-
-Whether users can specify their own SSH public key through the My
+  Whether users can specify their own SSH public key through the My
 Settings page. For more information, see Managing User Permissions.
-
-
-
-
-
-
-
-
-
 
 =head2 IamUserArn => Str
 
-  
-
-The user's IAM ARN.
-
-
-
-
-
-
-
-
-
+  The user's IAM ARN.
 
 =head2 Name => Str
 
-  
-
-The user's name.
-
-
-
-
-
-
-
-
-
+  The user's name.
 
 =head2 SshPublicKey => Str
 
-  
-
-The user's SSH public key.
-
-
-
-
-
-
-
-
-
+  The user's SSH public key.
 
 =head2 SshUsername => Str
 
-  
-
-The user's SSH user name.
-
-
-
-
-
-
-
-
-
+  The user's SSH user name.
 
 
 

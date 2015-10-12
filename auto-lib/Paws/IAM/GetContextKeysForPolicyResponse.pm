@@ -15,19 +15,8 @@ Paws::IAM::GetContextKeysForPolicyResponse
 
 =head2 ContextKeyNames => ArrayRef[Str]
 
-  
-
-The list of context keys that are used in the C<Condition> elements of
+  The list of context keys that are used in the C<Condition> elements of
 the input policies.
-
-
-
-
-
-
-
-
-
 
 
 =cut

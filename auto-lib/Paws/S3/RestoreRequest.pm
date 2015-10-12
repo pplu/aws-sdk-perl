@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Restore
 
 =head2 B<REQUIRED> Days => Int
 
-  
-
-Lifetime of the active copy in days
-
-
-
-
-
-
-
-
-
+  Lifetime of the active copy in days
 
 
 

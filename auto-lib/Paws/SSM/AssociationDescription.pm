@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Associ
 
 =head2 Date => Str
 
-  
-
-The date when the association was made.
-
-
-
-
-
-
-
-
-
+  The date when the association was made.
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 Name => Str
 
-  
-
-The name of the configuration document.
-
-
-
-
-
-
-
-
-
+  The name of the configuration document.
 
 =head2 Status => Paws::SSM::AssociationStatus
 
-  
-
-The association status.
-
-
-
-
-
-
-
-
-
+  The association status.
 
 
 

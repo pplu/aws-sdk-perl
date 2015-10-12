@@ -39,18 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> logEventMessages => ArrayRef[Str]
 
-  
-
-A list of log event messages to test.
-
-
-
-
-
-
-
-
-
+  A list of log event messages to test.
 
 
 

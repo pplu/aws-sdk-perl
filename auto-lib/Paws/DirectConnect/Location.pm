@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head2 locationCode => Str
 
-  
-
-The code used to indicate the AWS Direct Connect location.
-
-
-
-
-
-
-
-
-
+  The code used to indicate the AWS Direct Connect location.
 
 =head2 locationName => Str
 
-  
-
-The name of the AWS Direct Connect location. The name includes the
+  The name of the AWS Direct Connect location. The name includes the
 colocation partner name and the physical site of the lit building.
-
-
-
-
-
-
-
-
-
 
 
 

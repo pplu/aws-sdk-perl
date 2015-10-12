@@ -15,18 +15,7 @@ Paws::IAM::CreateVirtualMFADeviceResponse
 
 =head2 B<REQUIRED> VirtualMFADevice => Paws::IAM::VirtualMFADevice
 
-  
-
-A newly created virtual MFA device.
-
-
-
-
-
-
-
-
-
+  A newly created virtual MFA device.
 
 
 =cut

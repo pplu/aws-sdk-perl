@@ -38,41 +38,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Receip
 
 =head2 Actions => ArrayRef[Paws::SES::ReceiptAction]
 
-  
-
-An ordered list of actions to perform on messages that match at least
+  An ordered list of actions to perform on messages that match at least
 one of the recipient email addresses or domains specified in the
 receipt rule.
 
-
-
-
-
-
-
-
-
-
 =head2 Enabled => Bool
 
-  
-
-If C<true>, the receipt rule is active. The default value is true.
-
-
-
-
-
-
-
-
-
+  If C<true>, the receipt rule is active. The default value is true.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the receipt rule. The name must:
+  The name of the receipt rule. The name must:
 
 =over
 
@@ -85,65 +61,23 @@ The name of the receipt rule. The name must:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Recipients => ArrayRef[Str]
 
-  
-
-The recipient domains and email addresses to which the receipt rule
+  The recipient domains and email addresses to which the receipt rule
 applies. If this field is not specified, this rule will match all
 recipients under all verified domains.
 
-
-
-
-
-
-
-
-
-
 =head2 ScanEnabled => Bool
 
-  
-
-If C<true>, then messages to which this receipt rule applies are
+  If C<true>, then messages to which this receipt rule applies are
 scanned for spam and viruses. The default value is C<true>.
-
-
-
-
-
-
-
-
-
 
 =head2 TlsPolicy => Str
 
-  
-
-Specifies whether Amazon SES should require that incoming email is
+  Specifies whether Amazon SES should require that incoming email is
 delivered over a connection encrypted with Transport Layer Security
 (TLS). If this parameter is set to C<Require>, Amazon SES will bounce
 emails that are not received over TLS. The default is C<Optional>.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -39,113 +39,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
 =head2 BidPrice => Str
 
-  
-
-Bid price for each Amazon EC2 instance in the instance group when
+  Bid price for each Amazon EC2 instance in the instance group when
 launching nodes as Spot Instances, expressed in USD.
-
-
-
-
-
-
-
-
-
 
 =head2 Configurations => ArrayRef[Paws::EMR::Configuration]
 
-  
-
-Amazon EMR releases 4.x or later.
+  Amazon EMR releases 4.x or later.
 
 The list of configurations supplied for an EMR cluster instance group.
 You can specify a separate configuration for each instance group
 (master, core, and task).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> InstanceCount => Int
 
-  
-
-Target number of instances for the instance group.
-
-
-
-
-
-
-
-
-
+  Target number of instances for the instance group.
 
 =head2 B<REQUIRED> InstanceRole => Str
 
-  
-
-The role of the instance group in the cluster.
-
-
-
-
-
-
-
-
-
+  The role of the instance group in the cluster.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-  
-
-The Amazon EC2 instance type for all instances in the instance group.
-
-
-
-
-
-
-
-
-
+  The Amazon EC2 instance type for all instances in the instance group.
 
 =head2 Market => Str
 
-  
-
-Market type of the Amazon EC2 instances used to create a cluster node.
-
-
-
-
-
-
-
-
-
+  Market type of the Amazon EC2 instances used to create a cluster node.
 
 =head2 Name => Str
 
-  
-
-Friendly name given to the instance group.
-
-
-
-
-
-
-
-
-
+  Friendly name given to the instance group.
 
 
 

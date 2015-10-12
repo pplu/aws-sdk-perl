@@ -46,9 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Doma
 
 =head2 AddressLine1 => Str
 
-  
-
-First line of the contact's address.
+  First line of the contact's address.
 
 Type: String
 
@@ -60,20 +58,9 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 AddressLine2 => Str
 
-  
-
-Second line of contact's address, if any.
+  Second line of contact's address, if any.
 
 Type: String
 
@@ -85,20 +72,9 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: No
 
-
-
-
-
-
-
-
-
-
 =head2 City => Str
 
-  
-
-The city of the contact's address.
+  The city of the contact's address.
 
 Type: String
 
@@ -110,20 +86,9 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 ContactType => Str
 
-  
-
-Indicates whether the contact is a person, company, association, or
+  Indicates whether the contact is a person, company, association, or
 public organization. If you choose an option other than C<PERSON>, you
 must enter an organization name, and you can't enable privacy
 protection for the contact.
@@ -140,20 +105,9 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 CountryCode => Str
 
-  
-
-Code for the country of the contact's address.
+  Code for the country of the contact's address.
 
 Type: String
 
@@ -165,20 +119,9 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 Email => Str
 
-  
-
-Email address of the contact.
+  Email address of the contact.
 
 Type: String
 
@@ -190,20 +133,9 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 ExtraParams => ArrayRef[Paws::Route53Domains::ExtraParam]
 
-  
-
-A list of name-value pairs for parameters required by certain top-level
+  A list of name-value pairs for parameters required by certain top-level
 domains.
 
 Type: Complex
@@ -216,20 +148,9 @@ Children: C<Name>, C<Value>
 
 Required: No
 
-
-
-
-
-
-
-
-
-
 =head2 Fax => Str
 
-  
-
-Fax number of the contact.
+  Fax number of the contact.
 
 Type: String
 
@@ -243,20 +164,9 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: No
 
-
-
-
-
-
-
-
-
-
 =head2 FirstName => Str
 
-  
-
-First name of contact.
+  First name of contact.
 
 Type: String
 
@@ -267,21 +177,10 @@ Constraints: Maximum 255 characters.
 Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
-
-
-
-
-
-
-
-
-
 
 =head2 LastName => Str
 
-  
-
-Last name of contact.
+  Last name of contact.
 
 Type: String
 
@@ -293,20 +192,9 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 OrganizationName => Str
 
-  
-
-Name of the organization for contact types other than C<PERSON>.
+  Name of the organization for contact types other than C<PERSON>.
 
 Type: String
 
@@ -319,20 +207,9 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: No
 
-
-
-
-
-
-
-
-
-
 =head2 PhoneNumber => Str
 
-  
-
-The phone number of the contact.
+  The phone number of the contact.
 
 Type: String
 
@@ -346,20 +223,9 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 State => Str
 
-  
-
-The state or province of the contact's city.
+  The state or province of the contact's city.
 
 Type: String
 
@@ -370,21 +236,10 @@ Constraints: Maximum 255 characters.
 Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: No
-
-
-
-
-
-
-
-
-
 
 =head2 ZipCode => Str
 
-  
-
-The zip or postal code of the contact's address.
+  The zip or postal code of the contact's address.
 
 Type: String
 
@@ -395,15 +250,6 @@ Constraints: Maximum 255 characters.
 Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: No
-
-
-
-
-
-
-
-
-
 
 
 

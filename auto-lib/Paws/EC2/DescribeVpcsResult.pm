@@ -15,18 +15,7 @@ Paws::EC2::DescribeVpcsResult
 
 =head2 Vpcs => ArrayRef[Paws::EC2::Vpc]
 
-  
-
-Information about one or more VPCs.
-
-
-
-
-
-
-
-
-
+  Information about one or more VPCs.
 
 
 =cut

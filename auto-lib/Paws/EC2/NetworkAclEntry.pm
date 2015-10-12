@@ -39,110 +39,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Networ
 
 =head2 CidrBlock => Str
 
-  
-
-The network range to allow or deny, in CIDR notation.
-
-
-
-
-
-
-
-
-
+  The network range to allow or deny, in CIDR notation.
 
 =head2 Egress => Bool
 
-  
-
-Indicates whether the rule is an egress rule (applied to traffic
+  Indicates whether the rule is an egress rule (applied to traffic
 leaving the subnet).
-
-
-
-
-
-
-
-
-
 
 =head2 IcmpTypeCode => Paws::EC2::IcmpTypeCode
 
-  
-
-ICMP protocol: The ICMP type and code.
-
-
-
-
-
-
-
-
-
+  ICMP protocol: The ICMP type and code.
 
 =head2 PortRange => Paws::EC2::PortRange
 
-  
-
-TCP or UDP protocols: The range of ports the rule applies to.
-
-
-
-
-
-
-
-
-
+  TCP or UDP protocols: The range of ports the rule applies to.
 
 =head2 Protocol => Str
 
-  
-
-The protocol. A value of C<-1> means all protocols.
-
-
-
-
-
-
-
-
-
+  The protocol. A value of C<-1> means all protocols.
 
 =head2 RuleAction => Str
 
-  
-
-Indicates whether to allow or deny the traffic that matches the rule.
-
-
-
-
-
-
-
-
-
+  Indicates whether to allow or deny the traffic that matches the rule.
 
 =head2 RuleNumber => Int
 
-  
-
-The rule number for the entry. ACL entries are processed in ascending
+  The rule number for the entry. ACL entries are processed in ascending
 order by rule number.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Import
 
 =head2 Description => Str
 
-  
-
-A description of the import snapshot task.
-
-
-
-
-
-
-
-
-
+  A description of the import snapshot task.
 
 =head2 ImportTaskId => Str
 
-  
-
-The ID of the import snapshot task.
-
-
-
-
-
-
-
-
-
+  The ID of the import snapshot task.
 
 =head2 SnapshotTaskDetail => Paws::EC2::SnapshotTaskDetail
 
-  
-
-Describes an import snapshot task.
-
-
-
-
-
-
-
-
-
+  Describes an import snapshot task.
 
 
 

@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::KeyVal
 
 =head2 name => Str
 
-  
-
-The name of the key value pair. For environment variables, this is the
+  The name of the key value pair. For environment variables, this is the
 name of the environment variable.
-
-
-
-
-
-
-
-
-
 
 =head2 value => Str
 
-  
-
-The value of the key value pair. For environment variables, this is the
+  The value of the key value pair. For environment variables, this is the
 value of the environment variable.
-
-
-
-
-
-
-
-
-
 
 
 

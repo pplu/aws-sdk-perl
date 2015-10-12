@@ -35,51 +35,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 DesiredInstanceType => Str
 
-  
-
-The instance type that you want to preconfigure for your domain. For
+  The instance type that you want to preconfigure for your domain. For
 example, C<search.m1.small>.
-
-
-
-
-
-
-
-
-
 
 =head2 DesiredPartitionCount => Int
 
-  
-
-The number of partitions you want to preconfigure for your domain. Only
+  The number of partitions you want to preconfigure for your domain. Only
 valid when you select C<m2.2xlarge> as the desired instance type.
-
-
-
-
-
-
-
-
-
 
 =head2 DesiredReplicationCount => Int
 
-  
-
-The number of replicas you want to preconfigure for each index
+  The number of replicas you want to preconfigure for each index
 partition.
-
-
-
-
-
-
-
-
-
 
 
 

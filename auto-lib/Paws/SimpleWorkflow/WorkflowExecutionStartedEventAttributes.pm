@@ -44,9 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> childPolicy => Str
 
-  
-
-The policy to use for the child workflow executions if this workflow
+  The policy to use for the child workflow executions if this workflow
 execution is terminated, by calling the TerminateWorkflowExecution
 action explicitly or due to an expired timeout.
 
@@ -66,150 +64,53 @@ continue to run.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 continuedExecutionRunId => Str
 
-  
-
-If this workflow execution was started due to a
+  If this workflow execution was started due to a
 C<ContinueAsNewWorkflowExecution> decision, then it contains the
 C<runId> of the previous workflow execution that was closed and
 continued as this execution.
 
-
-
-
-
-
-
-
-
-
 =head2 executionStartToCloseTimeout => Str
 
-  
-
-The maximum duration for this workflow execution.
+  The maximum duration for this workflow execution.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-
-
-
-
-
-
-
-
-
 =head2 input => Str
 
-  
-
-The input provided to the workflow execution (if any).
-
-
-
-
-
-
-
-
-
+  The input provided to the workflow execution (if any).
 
 =head2 lambdaRole => Str
 
-  
-
-The IAM role attached to this workflow execution to use when invoking
+  The IAM role attached to this workflow execution to use when invoking
 AWS Lambda functions.
-
-
-
-
-
-
-
-
-
 
 =head2 parentInitiatedEventId => Int
 
-  
-
-The ID of the C<StartChildWorkflowExecutionInitiated> event
+  The ID of the C<StartChildWorkflowExecutionInitiated> event
 corresponding to the C<StartChildWorkflowExecution> decision to start
 this workflow execution. The source event with this ID can be found in
 the history of the source workflow execution. This information can be
 useful for diagnosing problems by tracing back the chain of events
 leading up to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 parentWorkflowExecution => Paws::SimpleWorkflow::WorkflowExecution
 
-  
-
-The source workflow execution that started this workflow execution. The
+  The source workflow execution that started this workflow execution. The
 member is not set if the workflow execution was not started by a
 workflow.
 
-
-
-
-
-
-
-
-
-
 =head2 tagList => ArrayRef[Str]
 
-  
-
-The list of tags associated with this workflow execution. An execution
+  The list of tags associated with this workflow execution. An execution
 can have up to 5 tags.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
 
-  
-
-The name of the task list for scheduling the decision tasks for this
+  The name of the task list for scheduling the decision tasks for this
 workflow execution.
-
-
-
-
-
-
-
-
-
 
 =head2 taskPriority => Str
 
@@ -217,36 +118,14 @@ workflow execution.
 
 =head2 taskStartToCloseTimeout => Str
 
-  
-
-The maximum duration of decision tasks for this workflow type.
+  The maximum duration of decision tasks for this workflow type.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
 
-  
-
-The workflow type of this execution.
-
-
-
-
-
-
-
-
-
+  The workflow type of this execution.
 
 
 

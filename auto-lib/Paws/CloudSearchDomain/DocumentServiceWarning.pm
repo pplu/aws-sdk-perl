@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 message => Str
 
-  
-
-The description for a warning returned by the document service.
-
-
-
-
-
-
-
-
-
+  The description for a warning returned by the document service.
 
 
 

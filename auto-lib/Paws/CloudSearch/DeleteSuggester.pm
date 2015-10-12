@@ -39,18 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SuggesterName => Str
 
-  
-
-Specifies the name of the suggester you want to delete.
-
-
-
-
-
-
-
-
-
+  Specifies the name of the suggester you want to delete.
 
 
 

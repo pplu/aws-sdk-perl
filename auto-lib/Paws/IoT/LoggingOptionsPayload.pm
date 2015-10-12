@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Loggin
 
 =head2 logLevel => Str
 
-  
-
-The logging level.
-
-
-
-
-
-
-
-
-
+  The logging level.
 
 =head2 B<REQUIRED> roleArn => Str
 
-  
-
-The ARN of the IAM role that grants access.
-
-
-
-
-
-
-
-
-
+  The ARN of the IAM role that grants access.
 
 
 

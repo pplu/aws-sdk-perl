@@ -34,25 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Receip
 
 =head2 B<REQUIRED> IpFilter => Paws::SES::ReceiptIpFilter
 
-  
-
-A structure that provides the IP addresses to block or allow, and
+  A structure that provides the IP addresses to block or allow, and
 whether to block or allow incoming mail from them.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the IP address filter. The name must:
+  The name of the IP address filter. The name must:
 
 =over
 
@@ -64,15 +51,6 @@ The name of the IP address filter. The name must:
 =item * Contain less than 64 characters.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Version
 
 =head2 MFADelete => Str
 
-  
-
-Specifies whether MFA delete is enabled in the bucket versioning
+  Specifies whether MFA delete is enabled in the bucket versioning
 configuration. This element is only returned if the bucket has been
 configured with MFA delete. If the bucket has never been so configured,
 this element is not returned.
 
-
-
-
-
-
-
-
-
-
 =head2 Status => Str
 
-  
-
-The versioning state of the bucket.
-
-
-
-
-
-
-
-
-
+  The versioning state of the bucket.
 
 
 

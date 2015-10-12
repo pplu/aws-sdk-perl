@@ -38,84 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::St
 
 =head2 B<REQUIRED> HasMoreShards => Bool
 
-  
-
-If set to C<true>, more shards in the stream are available to describe.
-
-
-
-
-
-
-
-
-
+  If set to C<true>, more shards in the stream are available to describe.
 
 =head2 B<REQUIRED> RetentionPeriodHours => Int
 
-  
-
-The current retention period, in hours.
-
-
-
-
-
-
-
-
-
+  The current retention period, in hours.
 
 =head2 B<REQUIRED> Shards => ArrayRef[Paws::Kinesis::Shard]
 
-  
-
-The shards that comprise the stream.
-
-
-
-
-
-
-
-
-
+  The shards that comprise the stream.
 
 =head2 B<REQUIRED> StreamARN => Str
 
-  
-
-The Amazon Resource Name (ARN) for the stream being described.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) for the stream being described.
 
 =head2 B<REQUIRED> StreamName => Str
 
-  
-
-The name of the stream being described.
-
-
-
-
-
-
-
-
-
+  The name of the stream being described.
 
 =head2 B<REQUIRED> StreamStatus => Str
 
-  
-
-The current status of the stream being described.
+  The current status of the stream being described.
 
 The stream status is one of the following states:
 
@@ -137,15 +80,6 @@ Read and write operations continue to work while the stream is in the
 C<UPDATING> state.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

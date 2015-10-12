@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Ha
 
 =head2 B<REQUIRED> EndingHashKey => Str
 
-  
-
-The ending hash key of the hash key range.
-
-
-
-
-
-
-
-
-
+  The ending hash key of the hash key range.
 
 =head2 B<REQUIRED> StartingHashKey => Str
 
-  
-
-The starting hash key of the hash key range.
-
-
-
-
-
-
-
-
-
+  The starting hash key of the hash key range.
 
 
 

@@ -14,19 +14,8 @@ Paws::WorkSpaces::TerminateWorkspacesResult
 
 =head2 FailedRequests => ArrayRef[Paws::WorkSpaces::FailedWorkspaceChangeRequest]
 
-  
-
-An array of structures that represent any WorkSpaces that could not be
+  An array of structures that represent any WorkSpaces that could not be
 terminated.
-
-
-
-
-
-
-
-
-
 
 
 =cut

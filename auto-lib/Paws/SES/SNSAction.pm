@@ -33,21 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::SNSAct
 
 =head2 B<REQUIRED> TopicArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon SNS topic to notify. An
+  The Amazon Resource Name (ARN) of the Amazon SNS topic to notify. An
 example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
 about Amazon SNS topics, see the Amazon SNS Developer Guide.
-
-
-
-
-
-
-
-
-
 
 
 

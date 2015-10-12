@@ -37,39 +37,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 B<REQUIRED> CreationDate => Str
 
-  
-
-A timestamp for when this option was created.
-
-
-
-
-
-
-
-
-
+  A timestamp for when this option was created.
 
 =head2 PendingDeletion => Bool
 
-  
-
-Indicates that the option will be deleted once processing is complete.
-
-
-
-
-
-
-
-
-
+  Indicates that the option will be deleted once processing is complete.
 
 =head2 B<REQUIRED> State => Str
 
-  
-
-The state of processing a change to an option. Possible values:
+  The state of processing a change to an option. Possible values:
 
 =over
 
@@ -88,44 +64,13 @@ modify the option value or update or remove the incompatible documents.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> UpdateDate => Str
 
-  
-
-A timestamp for when this option was last updated.
-
-
-
-
-
-
-
-
-
+  A timestamp for when this option was last updated.
 
 =head2 UpdateVersion => Int
 
-  
-
-A unique integer that indicates when this option was last updated.
-
-
-
-
-
-
-
-
-
+  A unique integer that indicates when this option was last updated.
 
 
 

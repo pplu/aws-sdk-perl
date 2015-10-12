@@ -15,18 +15,7 @@ Paws::EC2::CreateRouteTableResult
 
 =head2 RouteTable => Paws::EC2::RouteTable
 
-  
-
-Information about the route table.
-
-
-
-
-
-
-
-
-
+  Information about the route table.
 
 
 =cut

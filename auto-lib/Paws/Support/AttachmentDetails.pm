@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::At
 
 =head2 attachmentId => Str
 
-  
-
-The ID of the attachment.
-
-
-
-
-
-
-
-
-
+  The ID of the attachment.
 
 =head2 fileName => Str
 
-  
-
-The file name of the attachment.
-
-
-
-
-
-
-
-
-
+  The file name of the attachment.
 
 
 

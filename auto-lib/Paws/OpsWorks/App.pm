@@ -46,130 +46,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::A
 
 =head2 AppId => Str
 
-  
-
-The app ID.
-
-
-
-
-
-
-
-
-
+  The app ID.
 
 =head2 AppSource => Paws::OpsWorks::Source
 
-  
-
-A C<Source> object that describes the app repository.
-
-
-
-
-
-
-
-
-
+  A C<Source> object that describes the app repository.
 
 =head2 Attributes => Paws::OpsWorks::AppAttributes
 
-  
-
-The stack attributes.
-
-
-
-
-
-
-
-
-
+  The stack attributes.
 
 =head2 CreatedAt => Str
 
-  
-
-When the app was created.
-
-
-
-
-
-
-
-
-
+  When the app was created.
 
 =head2 DataSources => ArrayRef[Paws::OpsWorks::DataSource]
 
-  
-
-The app's data sources.
-
-
-
-
-
-
-
-
-
+  The app's data sources.
 
 =head2 Description => Str
 
-  
-
-A description of the app.
-
-
-
-
-
-
-
-
-
+  A description of the app.
 
 =head2 Domains => ArrayRef[Str]
 
-  
-
-The app vhost settings with multiple domains separated by commas. For
+  The app vhost settings with multiple domains separated by commas. For
 example: C<'www.example.com, example.com'>
-
-
-
-
-
-
-
-
-
 
 =head2 EnableSsl => Bool
 
-  
-
-Whether to enable SSL for the app.
-
-
-
-
-
-
-
-
-
+  Whether to enable SSL for the app.
 
 =head2 Environment => ArrayRef[Paws::OpsWorks::EnvironmentVariable]
 
-  
-
-An array of C<EnvironmentVariable> objects that specify environment
+  An array of C<EnvironmentVariable> objects that specify environment
 variables to be associated with the app. After you deploy the app,
 these variables are defined on the associated app server instances. For
 more information, see Environment Variables.
@@ -181,89 +91,25 @@ KB (10240 Bytes). This limit should accommodate most if not all use
 cases, but if you do exceed it, you will cause an exception (API) with
 an "Environment: is too large (maximum is 10KB)" message.
 
-
-
-
-
-
-
-
-
-
 =head2 Name => Str
 
-  
-
-The app name.
-
-
-
-
-
-
-
-
-
+  The app name.
 
 =head2 Shortname => Str
 
-  
-
-The app's short name.
-
-
-
-
-
-
-
-
-
+  The app's short name.
 
 =head2 SslConfiguration => Paws::OpsWorks::SslConfiguration
 
-  
-
-An C<SslConfiguration> object with the SSL configuration.
-
-
-
-
-
-
-
-
-
+  An C<SslConfiguration> object with the SSL configuration.
 
 =head2 StackId => Str
 
-  
-
-The app stack ID.
-
-
-
-
-
-
-
-
-
+  The app stack ID.
 
 =head2 Type => Str
 
-  
-
-The app type.
-
-
-
-
-
-
-
-
-
+  The app type.
 
 
 

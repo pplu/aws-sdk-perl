@@ -40,126 +40,38 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 accountId => Str
 
-  
-
-AWS account of the EC2 instance where the agent is installed.
-
-
-
-
-
-
-
-
-
+  AWS account of the EC2 instance where the agent is installed.
 
 =head2 agentHealth => Str
 
-  
-
-The current health state of the agent. Values can be set to I<HEALTHY>
+  The current health state of the agent. Values can be set to I<HEALTHY>
 or I<UNHEALTHY>.
-
-
-
-
-
-
-
-
-
 
 =head2 agentHealthCode => Str
 
-  
-
-The detailed health state of the agent. Values can be set to
+  The detailed health state of the agent. Values can be set to
 I<RUNNING>, I<HEALTHY>, I<UNHEALTHY>, I<UNKNOWN>, I<BLACKLISTED>,
 I<SHUTDOWN>, I<THROTTLED>.
 
-
-
-
-
-
-
-
-
-
 =head2 agentHealthDetails => Str
 
-  
-
-The description for the agent health code.
-
-
-
-
-
-
-
-
-
+  The description for the agent health code.
 
 =head2 agentId => Str
 
-  
-
-The EC2 instance ID where the agent is installed.
-
-
-
-
-
-
-
-
-
+  The EC2 instance ID where the agent is installed.
 
 =head2 assessmentArn => Str
 
-  
-
-The ARN of the assessment that is associated with the agent.
-
-
-
-
-
-
-
-
-
+  The ARN of the assessment that is associated with the agent.
 
 =head2 autoScalingGroup => Str
 
-  
-
-This data type property is currently not used.
-
-
-
-
-
-
-
-
-
+  This data type property is currently not used.
 
 =head2 telemetry => ArrayRef[Paws::Inspector::Telemetry]
 
-  
-
-The Inspector application data metrics collected by the agent.
-
-
-
-
-
-
-
-
-
+  The Inspector application data metrics collected by the agent.
 
 
 

@@ -36,53 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 InstanceId => Str
 
-  
-
-The instance ID. If you use this parameter, C<DescribeServiceErrors>
+  The instance ID. If you use this parameter, C<DescribeServiceErrors>
 returns descriptions of the errors associated with the specified
 instance.
 
-
-
-
-
-
-
-
-
-
 =head2 ServiceErrorIds => ArrayRef[Str]
 
-  
-
-An array of service error IDs. If you use this parameter,
+  An array of service error IDs. If you use this parameter,
 C<DescribeServiceErrors> returns descriptions of the specified errors.
 Otherwise, it returns a description of every error.
 
-
-
-
-
-
-
-
-
-
 =head2 StackId => Str
 
-  
-
-The stack ID. If you use this parameter, C<DescribeServiceErrors>
+  The stack ID. If you use this parameter, C<DescribeServiceErrors>
 returns descriptions of the errors associated with the specified stack.
-
-
-
-
-
-
-
-
-
 
 
 

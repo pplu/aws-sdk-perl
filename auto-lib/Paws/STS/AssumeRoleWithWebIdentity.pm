@@ -39,26 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DurationSeconds => Int
 
-  
-
-The duration, in seconds, of the role session. The value can range from
+  The duration, in seconds, of the role session. The value can range from
 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the
 value is set to 3600 seconds.
 
-
-
-
-
-
-
-
-
-
 =head2 Policy => Str
 
-  
-
-An IAM policy in JSON format.
+  An IAM policy in JSON format.
 
 The policy parameter is optional. If you pass a policy, the temporary
 security credentials that are returned by the operation have the
@@ -76,20 +63,9 @@ separate limit. The PackedPolicySize response element indicates by
 percentage how close to the upper size limit the policy is, with 100%
 equaling the maximum allowed size.
 
-
-
-
-
-
-
-
-
-
 =head2 ProviderId => Str
 
-  
-
-The fully qualified host component of the domain name of the identity
+  The fully qualified host component of the domain name of the identity
 provider.
 
 Specify this value only for OAuth 2.0 access tokens. Currently
@@ -99,68 +75,26 @@ schemes and port numbers.
 
 Do not specify this value for OpenID Connect ID tokens.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> RoleArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the role that the caller is assuming.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the role that the caller is assuming.
 
 =head2 B<REQUIRED> RoleSessionName => Str
 
-  
-
-An identifier for the assumed role session. Typically, you pass the
+  An identifier for the assumed role session. Typically, you pass the
 name or identifier that is associated with the user who is using your
 application. That way, the temporary security credentials that your
 application will use are associated with that user. This session name
 is included as part of the ARN and assumed role ID in the
 C<AssumedRoleUser> response element.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> WebIdentityToken => Str
 
-  
-
-The OAuth 2.0 access token or OpenID Connect ID token that is provided
+  The OAuth 2.0 access token or OpenID Connect ID token that is provided
 by the identity provider. Your application must get this token by
 authenticating the user who is using your application with a web
 identity provider before the application makes an
 C<AssumeRoleWithWebIdentity> call.
-
-
-
-
-
-
-
-
-
 
 
 

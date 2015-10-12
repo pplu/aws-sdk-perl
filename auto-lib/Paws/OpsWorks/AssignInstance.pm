@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The instance ID.
-
-
-
-
-
-
-
-
-
+  The instance ID.
 
 =head2 B<REQUIRED> LayerIds => ArrayRef[Str]
 
-  
-
-The layer ID, which must correspond to a custom layer. You cannot
+  The layer ID, which must correspond to a custom layer. You cannot
 assign a registered instance to a built-in layer.
-
-
-
-
-
-
-
-
-
 
 
 

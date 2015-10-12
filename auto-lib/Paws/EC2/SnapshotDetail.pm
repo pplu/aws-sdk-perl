@@ -42,138 +42,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Snapsh
 
 =head2 Description => Str
 
-  
-
-A description for the snapshot.
-
-
-
-
-
-
-
-
-
+  A description for the snapshot.
 
 =head2 DeviceName => Str
 
-  
-
-The block device mapping for the snapshot.
-
-
-
-
-
-
-
-
-
+  The block device mapping for the snapshot.
 
 =head2 DiskImageSize => Num
 
-  
-
-The size of the disk in the snapshot, in GiB.
-
-
-
-
-
-
-
-
-
+  The size of the disk in the snapshot, in GiB.
 
 =head2 Format => Str
 
-  
-
-The format of the disk image from which the snapshot is created.
-
-
-
-
-
-
-
-
-
+  The format of the disk image from which the snapshot is created.
 
 =head2 Progress => Str
 
-  
-
-The percentage of progress for the task.
-
-
-
-
-
-
-
-
-
+  The percentage of progress for the task.
 
 =head2 SnapshotId => Str
 
-  
-
-The snapshot ID of the disk being imported.
-
-
-
-
-
-
-
-
-
+  The snapshot ID of the disk being imported.
 
 =head2 Status => Str
 
-  
-
-A brief status of the snapshot creation.
-
-
-
-
-
-
-
-
-
+  A brief status of the snapshot creation.
 
 =head2 StatusMessage => Str
 
-  
-
-A detailed status message for the snapshot creation.
-
-
-
-
-
-
-
-
-
+  A detailed status message for the snapshot creation.
 
 =head2 Url => Str
 
-  
-
-The URL used to access the disk image.
-
-
-
-
-
-
-
-
-
+  The URL used to access the disk image.
 
 =head2 UserBucket => Paws::EC2::UserBucketDetails
 

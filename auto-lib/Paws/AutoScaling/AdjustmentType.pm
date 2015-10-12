@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 AdjustmentType => Str
 
-  
-
-The policy adjustment type. The valid values are C<ChangeInCapacity>,
+  The policy adjustment type. The valid values are C<ChangeInCapacity>,
 C<ExactCapacity>, and C<PercentChangeInCapacity>.
-
-
-
-
-
-
-
-
-
 
 
 

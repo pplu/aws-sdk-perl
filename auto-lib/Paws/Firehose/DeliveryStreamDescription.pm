@@ -40,127 +40,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::D
 
 =head2 CreateTimestamp => Str
 
-  
-
-The date and time that the delivery stream was created.
-
-
-
-
-
-
-
-
-
+  The date and time that the delivery stream was created.
 
 =head2 B<REQUIRED> DeliveryStreamARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the delivery stream.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the delivery stream.
 
 =head2 B<REQUIRED> DeliveryStreamName => Str
 
-  
-
-The name of the delivery stream.
-
-
-
-
-
-
-
-
-
+  The name of the delivery stream.
 
 =head2 B<REQUIRED> DeliveryStreamStatus => Str
 
-  
-
-The status of the delivery stream.
-
-
-
-
-
-
-
-
-
+  The status of the delivery stream.
 
 =head2 B<REQUIRED> Destinations => ArrayRef[Paws::Firehose::DestinationDescription]
 
-  
-
-The destinations.
-
-
-
-
-
-
-
-
-
+  The destinations.
 
 =head2 B<REQUIRED> HasMoreDestinations => Bool
 
-  
-
-Indicates whether there are more destinations available to list.
-
-
-
-
-
-
-
-
-
+  Indicates whether there are more destinations available to list.
 
 =head2 LastUpdateTimestamp => Str
 
-  
-
-The date and time that the delivery stream was last updated.
-
-
-
-
-
-
-
-
-
+  The date and time that the delivery stream was last updated.
 
 =head2 B<REQUIRED> VersionId => Str
 
-  
-
-Used when calling the UpdateDestination operation. Each time the
+  Used when calling the UpdateDestination operation. Each time the
 destination is updated for the delivery stream, the VersionId is
 changed, and the current VersionId is required when updating the
 destination. This is so that the service knows it is applying the
 changes to the correct version of the delivery stream.
-
-
-
-
-
-
-
-
-
 
 
 

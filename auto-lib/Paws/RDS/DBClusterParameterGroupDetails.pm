@@ -16,35 +16,13 @@ Paws::RDS::DBClusterParameterGroupDetails
 
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous
+  An optional pagination token provided by a previous
 DescribeDBClusterParameters request. If this parameter is specified,
 the response includes only records beyond the marker, up to the value
 specified by C<MaxRecords> .
-
-
-
-
-
-
-
-
-
 =head2 Parameters => ArrayRef[Paws::RDS::Parameter]
 
-  
-
-Provides a list of parameters for the DB cluster parameter group.
-
-
-
-
-
-
-
-
-
+  Provides a list of parameters for the DB cluster parameter group.
 
 
 =cut

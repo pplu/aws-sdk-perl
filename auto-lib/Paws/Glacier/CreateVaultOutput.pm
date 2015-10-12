@@ -15,18 +15,7 @@ Paws::Glacier::CreateVaultOutput
 
 =head2 location => Str
 
-  
-
-The URI of the vault that was created.
-
-
-
-
-
-
-
-
-
+  The URI of the vault that was created.
 
 
 =cut

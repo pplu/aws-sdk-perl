@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Doma
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-Name of the additional parameter required by the top-level domain.
+  Name of the additional parameter required by the top-level domain.
 
 Type: String
 
@@ -53,20 +51,9 @@ Parent: C<ExtraParams>
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Value => Str
 
-  
-
-Values corresponding to the additional parameter names required by some
+  Values corresponding to the additional parameter names required by some
 top-level domains.
 
 Type: String
@@ -78,15 +65,6 @@ Constraints: Maximum 2048 characters.
 Parent: C<ExtraParams>
 
 Required: Yes
-
-
-
-
-
-
-
-
-
 
 
 

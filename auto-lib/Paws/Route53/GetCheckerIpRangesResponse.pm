@@ -29,19 +29,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CheckerIpRanges => ArrayRef[Str]
 
-  
-
-A complex type that contains sorted list of IP ranges in CIDR format
+  A complex type that contains sorted list of IP ranges in CIDR format
 for Amazon Route 53 health checkers.
-
-
-
-
-
-
-
-
-
 
 
 

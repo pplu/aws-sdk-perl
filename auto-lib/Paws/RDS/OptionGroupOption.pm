@@ -43,175 +43,54 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
 =head2 DefaultPort => Int
 
-  
-
-If the option requires a port, specifies the default port for the
+  If the option requires a port, specifies the default port for the
 option.
-
-
-
-
-
-
-
-
-
 
 =head2 Description => Str
 
-  
-
-The description of the option.
-
-
-
-
-
-
-
-
-
+  The description of the option.
 
 =head2 EngineName => Str
 
-  
-
-The name of the engine that this option can be applied to.
-
-
-
-
-
-
-
-
-
+  The name of the engine that this option can be applied to.
 
 =head2 MajorEngineVersion => Str
 
-  
-
-Indicates the major engine version that the option is available for.
-
-
-
-
-
-
-
-
-
+  Indicates the major engine version that the option is available for.
 
 =head2 MinimumRequiredMinorEngineVersion => Str
 
-  
-
-The minimum required engine version for the option to be applied.
-
-
-
-
-
-
-
-
-
+  The minimum required engine version for the option to be applied.
 
 =head2 Name => Str
 
-  
-
-The name of the option.
-
-
-
-
-
-
-
-
-
+  The name of the option.
 
 =head2 OptionGroupOptionSettings => ArrayRef[Paws::RDS::OptionGroupOptionSetting]
 
-  
-
-Specifies the option settings that are available (and the default
+  Specifies the option settings that are available (and the default
 value) for each option in an option group.
-
-
-
-
-
-
-
-
-
 
 =head2 OptionsDependedOn => ArrayRef[Str]
 
-  
-
-List of all options that are prerequisites for this option.
-
-
-
-
-
-
-
-
-
+  List of all options that are prerequisites for this option.
 
 =head2 Permanent => Bool
 
-  
-
-A permanent option cannot be removed from the option group once the
+  A permanent option cannot be removed from the option group once the
 option group is used, and it cannot be removed from the db instance
 after assigning an option group with this permanent option.
 
-
-
-
-
-
-
-
-
-
 =head2 Persistent => Bool
 
-  
-
-A persistent option cannot be removed from the option group once the
+  A persistent option cannot be removed from the option group once the
 option group is used, but this option can be removed from the db
 instance while modifying the related data and assigning another option
 group without this option.
 
-
-
-
-
-
-
-
-
-
 =head2 PortRequired => Bool
 
-  
-
-Specifies whether the option requires a port.
-
-
-
-
-
-
-
-
-
+  Specifies whether the option requires a port.
 
 
 

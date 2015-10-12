@@ -37,80 +37,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::E
 
 =head2 DeleteOnTermination => Bool
 
-  
-
-Whether the volume is deleted on instance termination.
-
-
-
-
-
-
-
-
-
+  Whether the volume is deleted on instance termination.
 
 =head2 Iops => Int
 
-  
-
-The number of I/O operations per second (IOPS) that the volume
+  The number of I/O operations per second (IOPS) that the volume
 supports. For more information, see EbsBlockDevice.
-
-
-
-
-
-
-
-
-
 
 =head2 SnapshotId => Str
 
-  
-
-The snapshot ID.
-
-
-
-
-
-
-
-
-
+  The snapshot ID.
 
 =head2 VolumeSize => Int
 
-  
-
-The volume size, in GiB. For more information, see EbsBlockDevice.
-
-
-
-
-
-
-
-
-
+  The volume size, in GiB. For more information, see EbsBlockDevice.
 
 =head2 VolumeType => Str
 
-  
-
-The volume type. C<gp2> for General Purpose (SSD) volumes, C<io1> for
+  The volume type. C<gp2> for General Purpose (SSD) volumes, C<io1> for
 Provisioned IOPS (SSD) volumes, and C<standard> for Magnetic volumes.
-
-
-
-
-
-
-
-
-
 
 
 

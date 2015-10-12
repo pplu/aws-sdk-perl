@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
 =head2 OptionGroupName => Str
 
-  
-
-The name of the option group that the instance belongs to.
-
-
-
-
-
-
-
-
-
+  The name of the option group that the instance belongs to.
 
 =head2 Status => Str
 
-  
-
-The status of the DB instance's option group membership (e.g. in-sync,
+  The status of the DB instance's option group membership (e.g. in-sync,
 pending, pending-maintenance, applying).
-
-
-
-
-
-
-
-
-
 
 
 

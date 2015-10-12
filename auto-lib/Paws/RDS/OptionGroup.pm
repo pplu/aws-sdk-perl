@@ -39,116 +39,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
 =head2 AllowsVpcAndNonVpcInstanceMemberships => Bool
 
-  
-
-Indicates whether this option group can be applied to both VPC and
+  Indicates whether this option group can be applied to both VPC and
 non-VPC instances. The value C<true> indicates the option group can be
 applied to both VPC and non-VPC instances.
 
-
-
-
-
-
-
-
-
-
 =head2 EngineName => Str
 
-  
-
-Indicates the name of the engine that this option group can be applied
+  Indicates the name of the engine that this option group can be applied
 to.
-
-
-
-
-
-
-
-
-
 
 =head2 MajorEngineVersion => Str
 
-  
-
-Indicates the major engine version associated with this option group.
-
-
-
-
-
-
-
-
-
+  Indicates the major engine version associated with this option group.
 
 =head2 OptionGroupDescription => Str
 
-  
-
-Provides a description of the option group.
-
-
-
-
-
-
-
-
-
+  Provides a description of the option group.
 
 =head2 OptionGroupName => Str
 
-  
-
-Specifies the name of the option group.
-
-
-
-
-
-
-
-
-
+  Specifies the name of the option group.
 
 =head2 Options => ArrayRef[Paws::RDS::Option]
 
-  
-
-Indicates what options are available in the option group.
-
-
-
-
-
-
-
-
-
+  Indicates what options are available in the option group.
 
 =head2 VpcId => Str
 
-  
-
-If B<AllowsVpcAndNonVpcInstanceMemberships> is C<false>, this field is
+  If B<AllowsVpcAndNonVpcInstanceMemberships> is C<false>, this field is
 blank. If B<AllowsVpcAndNonVpcInstanceMemberships> is C<true> and this
 field is blank, then this option group can be applied to both VPC and
 non-VPC instances. If this field contains a value, then this option
 group can only be applied to instances that are in the VPC indicated by
 this field.
-
-
-
-
-
-
-
-
-
 
 
 

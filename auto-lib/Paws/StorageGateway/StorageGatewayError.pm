@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 =head2 errorCode => Str
 
-  
-
-Additional information about the error.
-
-
-
-
-
-
-
-
-
+  Additional information about the error.
 
 =head2 errorDetails => Paws::StorageGateway::errorDetails
 
-  
-
-Human-readable text that provides detail about the error that occurred.
-
-
-
-
-
-
-
-
-
+  Human-readable text that provides detail about the error that occurred.
 
 
 

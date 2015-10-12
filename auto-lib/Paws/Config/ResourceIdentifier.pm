@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Res
 
 =head2 resourceDeletionTime => Str
 
-  
-
-The time that the resource was deleted.
-
-
-
-
-
-
-
-
-
+  The time that the resource was deleted.
 
 =head2 resourceId => Str
 
-  
-
-The ID of the resource (for example., C<sg-xxxxxx>).
-
-
-
-
-
-
-
-
-
+  The ID of the resource (for example., C<sg-xxxxxx>).
 
 =head2 resourceName => Str
 
-  
-
-The custom name of the resource (if available).
-
-
-
-
-
-
-
-
-
+  The custom name of the resource (if available).
 
 =head2 resourceType => Str
 
-  
-
-The type of resource.
-
-
-
-
-
-
-
-
-
+  The type of resource.
 
 
 

@@ -22,19 +22,8 @@ Paws::Route53::GetHealthCheckLastFailureReasonResponse
 
 =head2 B<REQUIRED> HealthCheckId => Str
 
-  
-
-The ID of the health check for which you want to retrieve the reason
+  The ID of the health check for which you want to retrieve the reason
 for the most recent failure.
-
-
-
-
-
-
-
-
-
 
 
 =cut

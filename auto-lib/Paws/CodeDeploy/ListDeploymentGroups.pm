@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> applicationName => Str
 
-  
-
-The name of an existing AWS CodeDeploy application associated with the
+  The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
-
-
-
-
-
-
-
-
-
 
 =head2 nextToken => Str
 
-  
-
-An identifier that was returned from the previous list deployment
+  An identifier that was returned from the previous list deployment
 groups call, which can be used to return the next set of deployment
 groups in the list.
-
-
-
-
-
-
-
-
-
 
 
 

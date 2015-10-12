@@ -47,161 +47,51 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> Aliases => Paws::CloudFront::Aliases
 
-  
-
-A complex type that contains information about CNAMEs (alternate domain
+  A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this distribution.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> CacheBehaviors => Paws::CloudFront::CacheBehaviors
 
-  
-
-A complex type that contains zero or more CacheBehavior elements.
-
-
-
-
-
-
-
-
-
+  A complex type that contains zero or more CacheBehavior elements.
 
 =head2 B<REQUIRED> Comment => Str
 
-  
-
-The comment originally specified when this distribution was created.
-
-
-
-
-
-
-
-
-
+  The comment originally specified when this distribution was created.
 
 =head2 B<REQUIRED> CustomErrorResponses => Paws::CloudFront::CustomErrorResponses
 
-  
-
-A complex type that contains zero or more CustomErrorResponses
+  A complex type that contains zero or more CustomErrorResponses
 elements.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> DefaultCacheBehavior => Paws::CloudFront::DefaultCacheBehavior
 
-  
-
-A complex type that describes the default cache behavior if you do not
+  A complex type that describes the default cache behavior if you do not
 specify a CacheBehavior element or if files don't match any of the
 values of PathPattern in CacheBehavior elements.You must create exactly
 one default cache behavior.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The domain name corresponding to the distribution. For example:
+  The domain name corresponding to the distribution. For example:
 d604721fxaaqy9.cloudfront.net.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  
-
-Whether the distribution is enabled to accept end user requests for
+  Whether the distribution is enabled to accept end user requests for
 content.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The identifier for the distribution. For example: EDFDVBD632BHDS5.
-
-
-
-
-
-
-
-
-
+  The identifier for the distribution. For example: EDFDVBD632BHDS5.
 
 =head2 B<REQUIRED> LastModifiedTime => Str
 
-  
-
-The date and time the distribution was last modified.
-
-
-
-
-
-
-
-
-
+  The date and time the distribution was last modified.
 
 =head2 B<REQUIRED> Origins => Paws::CloudFront::Origins
 
-  
-
-A complex type that contains information about origins for this
+  A complex type that contains information about origins for this
 distribution.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> PriceClass => Str
 
@@ -213,20 +103,9 @@ distribution.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-This response element indicates the current status of the distribution.
+  This response element indicates the current status of the distribution.
 When the status is Deployed, the distribution's information is fully
 propagated throughout the Amazon CloudFront system.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ViewerCertificate => Paws::CloudFront::ViewerCertificate
 
@@ -234,18 +113,7 @@ propagated throughout the Amazon CloudFront system.
 
 =head2 B<REQUIRED> WebACLId => Str
 
-  
-
-The Web ACL Id (if any) associated with the distribution.
-
-
-
-
-
-
-
-
-
+  The Web ACL Id (if any) associated with the distribution.
 
 
 

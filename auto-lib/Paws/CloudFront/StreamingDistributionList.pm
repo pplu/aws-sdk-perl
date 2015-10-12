@@ -38,100 +38,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
-  
-
-A flag that indicates whether more streaming distributions remain to be
+  A flag that indicates whether more streaming distributions remain to be
 listed. If your results were truncated, you can make a follow-up
 pagination request using the Marker request parameter to retrieve more
 distributions in the list.
 
-
-
-
-
-
-
-
-
-
 =head2 Items => ArrayRef[Paws::CloudFront::StreamingDistributionSummary]
 
-  
-
-A complex type that contains one StreamingDistributionSummary element
+  A complex type that contains one StreamingDistributionSummary element
 for each distribution that was created by the current AWS account.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Marker => Str
 
-  
-
-The value you provided for the Marker request parameter.
-
-
-
-
-
-
-
-
-
+  The value you provided for the Marker request parameter.
 
 =head2 B<REQUIRED> MaxItems => Int
 
-  
-
-The value you provided for the MaxItems request parameter.
-
-
-
-
-
-
-
-
-
+  The value you provided for the MaxItems request parameter.
 
 =head2 NextMarker => Str
 
-  
-
-If IsTruncated is true, this element is present and contains the value
+  If IsTruncated is true, this element is present and contains the value
 you can use for the Marker request parameter to continue listing your
 streaming distributions where they left off.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Quantity => Int
 
-  
-
-The number of streaming distributions that were created by the current
+  The number of streaming distributions that were created by the current
 AWS account.
-
-
-
-
-
-
-
-
-
 
 
 

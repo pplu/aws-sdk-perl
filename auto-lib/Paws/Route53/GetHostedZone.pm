@@ -22,19 +22,8 @@ Paws::Route53::GetHostedZoneResponse
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The ID of the hosted zone for which you want to get a list of the name
+  The ID of the hosted zone for which you want to get a list of the name
 servers in the delegation set.
-
-
-
-
-
-
-
-
-
 
 
 =cut

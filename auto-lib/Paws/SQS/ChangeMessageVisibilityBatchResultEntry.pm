@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Change
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-Represents a message whose visibility timeout has been changed
+  Represents a message whose visibility timeout has been changed
 successfully.
-
-
-
-
-
-
-
-
-
 
 
 

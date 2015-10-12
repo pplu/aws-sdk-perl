@@ -14,18 +14,7 @@ Paws::DeviceFarm::ScheduleRunResult
 
 =head2 run => Paws::DeviceFarm::Run
 
-  
-
-Information about the scheduled run.
-
-
-
-
-
-
-
-
-
+  Information about the scheduled run.
 
 
 =cut

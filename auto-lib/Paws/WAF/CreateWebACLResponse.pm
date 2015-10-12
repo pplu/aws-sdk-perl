@@ -15,34 +15,12 @@ Paws::WAF::CreateWebACLResponse
 
 =head2 ChangeToken => Str
 
-  
-
-The C<ChangeToken> that you used to submit the C<CreateWebACL> request.
+  The C<ChangeToken> that you used to submit the C<CreateWebACL> request.
 You can also use this value to query the status of the request. For
 more information, see GetChangeTokenStatus.
-
-
-
-
-
-
-
-
-
 =head2 WebACL => Paws::WAF::WebACL
 
-  
-
-The WebACL returned in the C<CreateWebACL> response.
-
-
-
-
-
-
-
-
-
+  The WebACL returned in the C<CreateWebACL> response.
 
 
 =cut

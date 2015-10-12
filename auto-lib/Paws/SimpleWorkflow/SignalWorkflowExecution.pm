@@ -38,80 +38,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> domain => Str
 
-  
-
-The name of the domain containing the workflow execution to signal.
-
-
-
-
-
-
-
-
-
+  The name of the domain containing the workflow execution to signal.
 
 =head2 input => Str
 
-  
-
-Data to attach to the C<WorkflowExecutionSignaled> event in the target
+  Data to attach to the C<WorkflowExecutionSignaled> event in the target
 workflow execution's history.
-
-
-
-
-
-
-
-
-
 
 =head2 runId => Str
 
-  
-
-The runId of the workflow execution to signal.
-
-
-
-
-
-
-
-
-
+  The runId of the workflow execution to signal.
 
 =head2 B<REQUIRED> signalName => Str
 
-  
-
-The name of the signal. This name must be meaningful to the target
+  The name of the signal. This name must be meaningful to the target
 workflow.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> workflowId => Str
 
-  
-
-The workflowId of the workflow execution to signal.
-
-
-
-
-
-
-
-
-
+  The workflowId of the workflow execution to signal.
 
 
 

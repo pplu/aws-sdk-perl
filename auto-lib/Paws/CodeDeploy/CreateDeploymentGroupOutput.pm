@@ -14,18 +14,7 @@ Paws::CodeDeploy::CreateDeploymentGroupOutput
 
 =head2 deploymentGroupId => Str
 
-  
-
-A unique deployment group ID.
-
-
-
-
-
-
-
-
-
+  A unique deployment group ID.
 
 
 =cut

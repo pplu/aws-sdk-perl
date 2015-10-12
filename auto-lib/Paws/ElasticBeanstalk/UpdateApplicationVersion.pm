@@ -36,54 +36,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of the application associated with this version.
+  The name of the application associated with this version.
 
 If no application is found with this name, C<UpdateApplication> returns
 an C<InvalidParameterValue> error.
 
-
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
-
-A new description for this release.
-
-
-
-
-
-
-
-
-
+  A new description for this release.
 
 =head2 B<REQUIRED> VersionLabel => Str
 
-  
-
-The name of the version to update.
+  The name of the version to update.
 
 If no application version is found with this label,
 C<UpdateApplication> returns an C<InvalidParameterValue> error.
-
-
-
-
-
-
-
-
-
 
 
 

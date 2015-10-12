@@ -38,9 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> destinationArn => Str
 
-  
-
-The ARN of the destination to deliver matching log events to.
+  The ARN of the destination to deliver matching log events to.
 Currently, the supported destinations are:
 
 =over
@@ -53,78 +51,25 @@ belonging to a different account, for cross-account delivery.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> filterName => Str
 
-  
-
-A name for the subscription filter.
-
-
-
-
-
-
-
-
-
+  A name for the subscription filter.
 
 =head2 B<REQUIRED> filterPattern => Str
 
-  
-
-A valid CloudWatch Logs filter pattern for subscribing to a filtered
+  A valid CloudWatch Logs filter pattern for subscribing to a filtered
 stream of log events.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> logGroupName => Str
 
-  
-
-The name of the log group to associate the subscription filter with.
-
-
-
-
-
-
-
-
-
+  The name of the log group to associate the subscription filter with.
 
 =head2 roleArn => Str
 
-  
-
-The ARN of an IAM role that grants Amazon CloudWatch Logs permissions
+  The ARN of an IAM role that grants Amazon CloudWatch Logs permissions
 to deliver ingested log events to the destination stream. You don't
 need to provide the ARN when you are working with a logical destination
 (used via an ARN of C<Destination>) for cross-account delivery.
-
-
-
-
-
-
-
-
-
 
 
 

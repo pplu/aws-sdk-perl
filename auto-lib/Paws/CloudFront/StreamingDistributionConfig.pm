@@ -40,25 +40,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 Aliases => Paws::CloudFront::Aliases
 
-  
-
-A complex type that contains information about CNAMEs (alternate domain
+  A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this streaming distribution.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  
-
-A unique number that ensures the request can't be replayed. If the
+  A unique number that ensures the request can't be replayed. If the
 CallerReference is new (no matter the content of the
 StreamingDistributionConfig object), a new streaming distribution is
 created. If the CallerReference is a value you already sent in a
@@ -71,100 +58,34 @@ but the content of the StreamingDistributionConfig is different from
 the original request, CloudFront returns a DistributionAlreadyExists
 error.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Comment => Str
 
-  
-
-Any comments you want to include about the streaming distribution.
-
-
-
-
-
-
-
-
-
+  Any comments you want to include about the streaming distribution.
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  
-
-Whether the streaming distribution is enabled to accept end user
+  Whether the streaming distribution is enabled to accept end user
 requests for content.
-
-
-
-
-
-
-
-
-
 
 =head2 Logging => Paws::CloudFront::StreamingLoggingConfig
 
-  
-
-A complex type that controls whether access logs are written for the
+  A complex type that controls whether access logs are written for the
 streaming distribution.
-
-
-
-
-
-
-
-
-
 
 =head2 PriceClass => Str
 
-  
-
-A complex type that contains information about price class for this
+  A complex type that contains information about price class for this
 streaming distribution.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> S3Origin => Paws::CloudFront::S3Origin
 
-  
-
-A complex type that contains information about the Amazon S3 bucket
+  A complex type that contains information about the Amazon S3 bucket
 from which you want CloudFront to get your media files for
 distribution.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TrustedSigners => Paws::CloudFront::TrustedSigners
 
-  
-
-A complex type that specifies the AWS accounts, if any, that you want
+  A complex type that specifies the AWS accounts, if any, that you want
 to allow to create signed URLs for private content. If you want to
 require signed URLs in requests for objects in the target origin that
 match the PathPattern for this cache behavior, specify true for
@@ -176,15 +97,6 @@ false for Enabled and 0 for Quantity. Omit Items. To add, change, or
 remove one or more trusted signers, change Enabled to true (if it's
 currently false), change Quantity as applicable, and specify all of the
 trusted signers that you want to include in the updated distribution.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -15,18 +15,7 @@ Paws::EC2::DescribeVpcClassicLinkResult
 
 =head2 Vpcs => ArrayRef[Paws::EC2::VpcClassicLink]
 
-  
-
-The ClassicLink status of one or more VPCs.
-
-
-
-
-
-
-
-
-
+  The ClassicLink status of one or more VPCs.
 
 
 =cut

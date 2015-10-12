@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CertificateFingerprint => Str
 
-  
-
-The certificate fingerprint.
-
-
-
-
-
-
-
-
-
+  The certificate fingerprint.
 
 =head2 ClientArn => Str
 
-  
-
-The ARN of the client.
-
-
-
-
-
-
-
-
-
+  The ARN of the client.
 
 
 

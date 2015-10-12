@@ -39,97 +39,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  
-
-A textual description for the directory.
-
-
-
-
-
-
-
-
-
+  A textual description for the directory.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The fully qualified name for the directory, such as
+  The fully qualified name for the directory, such as
 C<corp.example.com>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Password => Str
 
-  
-
-The password for the directory administrator. The directory creation
+  The password for the directory administrator. The directory creation
 process creates a directory administrator account with the username
 C<Administrator> and this password.
 
-
-
-
-
-
-
-
-
-
 =head2 ShortName => Str
 
-  
-
-The short name of the directory, such as C<CORP>.
-
-
-
-
-
-
-
-
-
+  The short name of the directory, such as C<CORP>.
 
 =head2 B<REQUIRED> Size => Str
 
-  
-
-The size of the directory.
-
-
-
-
-
-
-
-
-
+  The size of the directory.
 
 =head2 VpcSettings => Paws::DS::DirectoryVpcSettings
 
-  
-
-A DirectoryVpcSettings object that contains additional information for
+  A DirectoryVpcSettings object that contains additional information for
 the operation.
-
-
-
-
-
-
-
-
-
 
 
 

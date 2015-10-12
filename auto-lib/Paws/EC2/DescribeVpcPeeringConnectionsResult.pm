@@ -15,18 +15,7 @@ Paws::EC2::DescribeVpcPeeringConnectionsResult
 
 =head2 VpcPeeringConnections => ArrayRef[Paws::EC2::VpcPeeringConnection]
 
-  
-
-Information about the VPC peering connections.
-
-
-
-
-
-
-
-
-
+  Information about the VPC peering connections.
 
 
 =cut

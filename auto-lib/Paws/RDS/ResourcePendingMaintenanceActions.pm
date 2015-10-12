@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Resour
 
 =head2 PendingMaintenanceActionDetails => ArrayRef[Paws::RDS::PendingMaintenanceAction]
 
-  
-
-A list that provides details about the pending maintenance actions for
+  A list that provides details about the pending maintenance actions for
 the resource.
-
-
-
-
-
-
-
-
-
 
 =head2 ResourceIdentifier => Str
 
-  
-
-The ARN of the resource that has pending maintenance actions.
-
-
-
-
-
-
-
-
-
+  The ARN of the resource that has pending maintenance actions.
 
 
 

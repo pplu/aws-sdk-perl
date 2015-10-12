@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
 =head2 DBClusterParameterGroupStatus => Str
 
-  
-
-Specifies the status of the DB cluster parameter group for this member
+  Specifies the status of the DB cluster parameter group for this member
 of the DB cluster.
-
-
-
-
-
-
-
-
-
 
 =head2 DBInstanceIdentifier => Str
 
-  
-
-Specifies the instance identifier for this member of the DB cluster.
-
-
-
-
-
-
-
-
-
+  Specifies the instance identifier for this member of the DB cluster.
 
 =head2 IsClusterWriter => Bool
 
-  
-
-Value that is C<true> if the cluster member is the primary instance for
+  Value that is C<true> if the cluster member is the primary instance for
 the DB cluster and C<false> otherwise.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -48,19 +48,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::TopicCo
 
 =head2 B<REQUIRED> TopicArn => Str
 
-  
-
-Amazon SNS topic ARN to which Amazon S3 will publish a message when it
+  Amazon SNS topic ARN to which Amazon S3 will publish a message when it
 detects events of specified type.
-
-
-
-
-
-
-
-
-
 
 
 

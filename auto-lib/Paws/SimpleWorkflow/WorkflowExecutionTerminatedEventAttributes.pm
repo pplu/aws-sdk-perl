@@ -36,27 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 cause => Str
 
-  
-
-If set, indicates that the workflow execution was automatically
+  If set, indicates that the workflow execution was automatically
 terminated, and specifies the cause. This happens if the parent
 workflow execution times out or is terminated and the child policy is
 set to terminate child executions.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> childPolicy => Str
 
-  
-
-The policy used for the child workflow executions of this workflow
+  The policy used for the child workflow executions of this workflow
 execution.
 
 The supported child policies are:
@@ -75,44 +62,13 @@ continue to run.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 details => Str
 
-  
-
-The details provided for the termination (if any).
-
-
-
-
-
-
-
-
-
+  The details provided for the termination (if any).
 
 =head2 reason => Str
 
-  
-
-The reason provided for the termination (if any).
-
-
-
-
-
-
-
-
-
+  The reason provided for the termination (if any).
 
 
 

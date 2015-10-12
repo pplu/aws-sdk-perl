@@ -39,56 +39,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head2 B<REQUIRED> DatabaseCredentials => Paws::MachineLearning::RedshiftDatabaseCredentials
 
-  
-
-Describes AWS Identity and Access Management (IAM) credentials that are
+  Describes AWS Identity and Access Management (IAM) credentials that are
 used connect to the Amazon Redshift database.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> DatabaseInformation => Paws::MachineLearning::RedshiftDatabase
 
-  
-
-Describes the C<DatabaseName> and C<ClusterIdentifier> for an Amazon
+  Describes the C<DatabaseName> and C<ClusterIdentifier> for an Amazon
 Redshift C<DataSource>.
-
-
-
-
-
-
-
-
-
 
 =head2 DataRearrangement => Str
 
-  
-
-Describes the splitting specifications for a C<DataSource>.
-
-
-
-
-
-
-
-
-
+  Describes the splitting specifications for a C<DataSource>.
 
 =head2 DataSchema => Str
 
-  
-
-A JSON string that represents the schema for an Amazon Redshift
+  A JSON string that represents the schema for an Amazon Redshift
 C<DataSource>. The C<DataSchema> defines the structure of the
 observation data in the data file(s) referenced in the C<DataSource>.
 
@@ -122,61 +87,19 @@ value. Use the following format to define your C<DataSchema>.
 
 "excludedVariableNames": [ "F6" ] }
 
-
-
-
-
-
-
-
-
-
 =head2 DataSchemaUri => Str
 
-  
-
-Describes the schema location for an Amazon Redshift C<DataSource>.
-
-
-
-
-
-
-
-
-
+  Describes the schema location for an Amazon Redshift C<DataSource>.
 
 =head2 B<REQUIRED> S3StagingLocation => Str
 
-  
-
-Describes an Amazon S3 location to store the result set of the
+  Describes an Amazon S3 location to store the result set of the
 C<SelectSqlQuery> query.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> SelectSqlQuery => Str
 
-  
-
-Describes the SQL Query to execute on an Amazon Redshift database for
+  Describes the SQL Query to execute on an Amazon Redshift database for
 an Amazon Redshift C<DataSource>.
-
-
-
-
-
-
-
-
-
 
 
 

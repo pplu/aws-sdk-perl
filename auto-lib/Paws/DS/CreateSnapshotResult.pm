@@ -14,18 +14,7 @@ Paws::DS::CreateSnapshotResult
 
 =head2 SnapshotId => Str
 
-  
-
-The identifier of the snapshot that was created.
-
-
-
-
-
-
-
-
-
+  The identifier of the snapshot that was created.
 
 
 =cut

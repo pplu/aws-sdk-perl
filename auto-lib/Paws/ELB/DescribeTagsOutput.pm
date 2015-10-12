@@ -15,18 +15,7 @@ Paws::ELB::DescribeTagsOutput
 
 =head2 TagDescriptions => ArrayRef[Paws::ELB::TagDescription]
 
-  
-
-Information about the tags.
-
-
-
-
-
-
-
-
-
+  Information about the tags.
 
 
 =cut

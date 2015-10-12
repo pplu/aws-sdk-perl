@@ -35,52 +35,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Contai
 
 =head2 command => ArrayRef[Str]
 
-  
-
-The command to send to the container that overrides the default command
+  The command to send to the container that overrides the default command
 from the Docker image or the task definition.
-
-
-
-
-
-
-
-
-
 
 =head2 environment => ArrayRef[Paws::ECS::KeyValuePair]
 
-  
-
-The environment variables to send to the container. You can add new
+  The environment variables to send to the container. You can add new
 environment variables, which are added to the container at launch, or
 you can override the existing environment variables from the Docker
 image or the task definition.
 
-
-
-
-
-
-
-
-
-
 =head2 name => Str
 
-  
-
-The name of the container that receives the override.
-
-
-
-
-
-
-
-
-
+  The name of the container that receives the override.
 
 
 

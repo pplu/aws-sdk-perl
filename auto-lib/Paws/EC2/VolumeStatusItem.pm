@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Volume
 
 =head2 Actions => ArrayRef[Paws::EC2::VolumeStatusAction]
 
-  
-
-The details of the operation.
-
-
-
-
-
-
-
-
-
+  The details of the operation.
 
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone of the volume.
-
-
-
-
-
-
-
-
-
+  The Availability Zone of the volume.
 
 =head2 Events => ArrayRef[Paws::EC2::VolumeStatusEvent]
 
-  
-
-A list of events associated with the volume.
-
-
-
-
-
-
-
-
-
+  A list of events associated with the volume.
 
 =head2 VolumeId => Str
 
-  
-
-The volume ID.
-
-
-
-
-
-
-
-
-
+  The volume ID.
 
 =head2 VolumeStatus => Paws::EC2::VolumeStatusInfo
 
-  
-
-The volume status.
-
-
-
-
-
-
-
-
-
+  The volume status.
 
 
 

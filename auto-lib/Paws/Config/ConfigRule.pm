@@ -41,55 +41,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head2 ConfigRuleArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the AWS Config rule.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the AWS Config rule.
 
 =head2 ConfigRuleId => Str
 
-  
-
-The ID of the AWS Config rule.
-
-
-
-
-
-
-
-
-
+  The ID of the AWS Config rule.
 
 =head2 ConfigRuleName => Str
 
-  
-
-The name that you assign to the AWS Config rule. The name is required
+  The name that you assign to the AWS Config rule. The name is required
 if you are adding a new rule.
-
-
-
-
-
-
-
-
-
 
 =head2 ConfigRuleState => Str
 
-  
-
-Indicates whether the AWS Config rule is active or currently being
+  Indicates whether the AWS Config rule is active or currently being
 deleted by AWS Config.
 
 AWS Config sets the state of a rule to C<DELETING> temporarily after
@@ -101,51 +66,18 @@ You cannot add a rule to AWS Config that has the state set to
 C<DELETING>. If you want to delete a rule, you must use the
 C<DeleteConfigRule> request.
 
-
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
-
-The description that you provide for the AWS Config rule.
-
-
-
-
-
-
-
-
-
+  The description that you provide for the AWS Config rule.
 
 =head2 InputParameters => Str
 
-  
-
-A string in JSON format that is passed to the AWS Config rule Lambda
+  A string in JSON format that is passed to the AWS Config rule Lambda
 function.
-
-
-
-
-
-
-
-
-
 
 =head2 MaximumExecutionFrequency => Str
 
-  
-
-The maximum frequency at which the AWS Config rule runs evaluations.
+  The maximum frequency at which the AWS Config rule runs evaluations.
 
 If your rule is periodic, meaning it runs an evaluation when AWS Config
 delivers a configuration snapshot, then it cannot run evaluations more
@@ -156,50 +88,19 @@ of C<ConfigSnapshotDeliveryProperties>. To update the frequency with
 which AWS Config delivers your snapshots, use the C<PutDeliveryChannel>
 action.
 
-
-
-
-
-
-
-
-
-
 =head2 Scope => Paws::Config::Scope
 
-  
-
-Defines which resources the AWS Config rule evaluates. The scope can
+  Defines which resources the AWS Config rule evaluates. The scope can
 include one or more resource types, a combination of a tag key and
 value, or a combination of one resource type and one or more resource
 IDs. Specify a scope to constrain the resources that are evaluated. If
 you do not specify a scope, the AWS Config Rule evaluates all resources
 in the recording group.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Source => Paws::Config::Source
 
-  
-
-Provides the rule owner (AWS or customer), the rule identifier, and the
+  Provides the rule owner (AWS or customer), the rule identifier, and the
 events that cause the function to evaluate your AWS resources.
-
-
-
-
-
-
-
-
-
 
 
 

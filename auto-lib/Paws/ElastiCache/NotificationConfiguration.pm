@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 TopicArn => Str
 
-  
-
-The Amazon Resource Name (ARN) that identifies the topic.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) that identifies the topic.
 
 =head2 TopicStatus => Str
 
-  
-
-The current state of the topic.
-
-
-
-
-
-
-
-
-
+  The current state of the topic.
 
 
 

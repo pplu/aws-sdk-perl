@@ -34,21 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheParameterGroupName => Str
 
-  
-
-The name of the cache parameter group to delete.
+  The name of the cache parameter group to delete.
 
 The specified cache security group must not be associated with any
 cache clusters.
-
-
-
-
-
-
-
-
-
 
 
 

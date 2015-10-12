@@ -35,52 +35,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head2 ParameterKey => Str
 
-  
-
-The key associated with the parameter. If you don't specify a key and
+  The key associated with the parameter. If you don't specify a key and
 value for a particular parameter, AWS CloudFormation uses the default
 value that is specified in your template.
 
-
-
-
-
-
-
-
-
-
 =head2 ParameterValue => Str
 
-  
-
-The value associated with the parameter.
-
-
-
-
-
-
-
-
-
+  The value associated with the parameter.
 
 =head2 UsePreviousValue => Bool
 
-  
-
-During a stack update, use the existing parameter value that the stack
+  During a stack update, use the existing parameter value that the stack
 is using for a given parameter key. If you specify C<true>, do not
 specify a parameter value.
-
-
-
-
-
-
-
-
-
 
 
 

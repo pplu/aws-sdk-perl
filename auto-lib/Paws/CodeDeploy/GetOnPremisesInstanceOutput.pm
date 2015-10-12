@@ -14,18 +14,7 @@ Paws::CodeDeploy::GetOnPremisesInstanceOutput
 
 =head2 instanceInfo => Paws::CodeDeploy::InstanceInfo
 
-  
-
-Information about the on-premises instance.
-
-
-
-
-
-
-
-
-
+  Information about the on-premises instance.
 
 
 =cut

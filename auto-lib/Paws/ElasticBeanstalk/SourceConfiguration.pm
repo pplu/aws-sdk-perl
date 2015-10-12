@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 ApplicationName => Str
 
-  
-
-The name of the application associated with the configuration.
-
-
-
-
-
-
-
-
-
+  The name of the application associated with the configuration.
 
 =head2 TemplateName => Str
 
-  
-
-The name of the configuration template.
-
-
-
-
-
-
-
-
-
+  The name of the configuration template.
 
 
 

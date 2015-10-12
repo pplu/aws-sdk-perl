@@ -42,168 +42,58 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotFl
 
 =head2 AllocationStrategy => Str
 
-  
-
-Indicates how to allocate the target capacity across the Spot pools
+  Indicates how to allocate the target capacity across the Spot pools
 specified by the Spot fleet request. The default is C<lowestPrice>.
-
-
-
-
-
-
-
-
-
 
 =head2 ClientToken => Str
 
-  
-
-A unique, case-sensitive identifier you provide to ensure idempotency
+  A unique, case-sensitive identifier you provide to ensure idempotency
 of your listings. This helps avoid duplicate listings. For more
 information, see Ensuring Idempotency.
 
-
-
-
-
-
-
-
-
-
 =head2 ExcessCapacityTerminationPolicy => Str
 
-  
-
-Indicates whether running Spot instances should be terminated if the
+  Indicates whether running Spot instances should be terminated if the
 target capacity of the Spot fleet request is decreased below the
 current size of the Spot fleet.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> IamFleetRole => Str
 
-  
-
-Grants the Spot fleet permission to terminate Spot instances on your
+  Grants the Spot fleet permission to terminate Spot instances on your
 behalf when you cancel its Spot fleet request using
 CancelSpotFleetRequests or when the Spot fleet request expires, if you
 set C<terminateInstancesWithExpiration>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> LaunchSpecifications => ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]
 
-  
-
-Information about the launch specifications for the Spot fleet request.
-
-
-
-
-
-
-
-
-
+  Information about the launch specifications for the Spot fleet request.
 
 =head2 B<REQUIRED> SpotPrice => Str
 
-  
-
-The bid price per unit hour.
-
-
-
-
-
-
-
-
-
+  The bid price per unit hour.
 
 =head2 B<REQUIRED> TargetCapacity => Int
 
-  
-
-The number of units to request. You can choose to set the target
+  The number of units to request. You can choose to set the target
 capacity in terms of instances or a performance characteristic that is
 important to your application workload, such as vCPUs, memory, or I/O.
 
-
-
-
-
-
-
-
-
-
 =head2 TerminateInstancesWithExpiration => Bool
 
-  
-
-Indicates whether running Spot instances should be terminated when the
+  Indicates whether running Spot instances should be terminated when the
 Spot fleet request expires.
-
-
-
-
-
-
-
-
-
 
 =head2 ValidFrom => Str
 
-  
-
-The start date and time of the request, in UTC format (for example,
+  The start date and time of the request, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). The default is to start
 fulfilling the request immediately.
 
-
-
-
-
-
-
-
-
-
 =head2 ValidUntil => Str
 
-  
-
-The end date and time of the request, in UTC format (for example,
+  The end date and time of the request, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). At this point, no new Spot
 instance requests are placed or enabled to fulfill the request.
-
-
-
-
-
-
-
-
-
 
 
 

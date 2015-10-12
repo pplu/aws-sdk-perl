@@ -38,99 +38,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Resour
 
 =head2 doubleValue => Num
 
-  
-
-When the C<doubleValue> type is set, the value of the resource must be
+  When the C<doubleValue> type is set, the value of the resource must be
 a double precision floating-point type.
-
-
-
-
-
-
-
-
-
 
 =head2 integerValue => Int
 
-  
-
-When the C<integerValue> type is set, the value of the resource must be
+  When the C<integerValue> type is set, the value of the resource must be
 an integer.
-
-
-
-
-
-
-
-
-
 
 =head2 longValue => Int
 
-  
-
-When the C<longValue> type is set, the value of the resource must be an
+  When the C<longValue> type is set, the value of the resource must be an
 extended precision floating-point type.
-
-
-
-
-
-
-
-
-
 
 =head2 name => Str
 
-  
-
-The name of the resource, such as C<CPU>, C<MEMORY>, C<PORTS>, or a
+  The name of the resource, such as C<CPU>, C<MEMORY>, C<PORTS>, or a
 user-defined resource.
-
-
-
-
-
-
-
-
-
 
 =head2 stringSetValue => ArrayRef[Str]
 
-  
-
-When the C<stringSetValue> type is set, the value of the resource must
+  When the C<stringSetValue> type is set, the value of the resource must
 be a string type.
-
-
-
-
-
-
-
-
-
 
 =head2 type => Str
 
-  
-
-The type of the resource, such as C<INTEGER>, C<DOUBLE>, C<LONG>, or
+  The type of the resource, such as C<INTEGER>, C<DOUBLE>, C<LONG>, or
 C<STRINGSET>.
-
-
-
-
-
-
-
-
-
 
 
 

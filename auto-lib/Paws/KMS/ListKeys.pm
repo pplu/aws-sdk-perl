@@ -35,39 +35,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  
-
-Specify this parameter only when paginating results to indicate the
+  Specify this parameter only when paginating results to indicate the
 maximum number of keys you want listed in the response. If there are
 additional keys beyond the maximum you specify, the C<Truncated>
 response element will be set to C<true.>
 
-
-
-
-
-
-
-
-
-
 =head2 Marker => Str
 
-  
-
-Use this parameter only when paginating results, and only in a
+  Use this parameter only when paginating results, and only in a
 subsequent request after you've received a response where the results
 are truncated. Set it to the value of the C<NextMarker> in the response
 you just received.
-
-
-
-
-
-
-
-
-
 
 
 

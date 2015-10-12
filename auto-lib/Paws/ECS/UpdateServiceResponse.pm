@@ -14,18 +14,7 @@ Paws::ECS::UpdateServiceResponse
 
 =head2 service => Paws::ECS::Service
 
-  
-
-The full description of your service following the update call.
-
-
-
-
-
-
-
-
-
+  The full description of your service following the update call.
 
 
 =cut

@@ -38,48 +38,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> policyDocument => Str
 
-  
-
-The JSON document that describes the policy.
-
-
-
-
-
-
-
-
-
+  The JSON document that describes the policy.
 
 =head2 B<REQUIRED> policyName => Str
 
-  
-
-The policy name.
-
-
-
-
-
-
-
-
-
+  The policy name.
 
 =head2 setAsDefault => Bool
 
-  
-
-Specifies whether the policy version is set as the default.
-
-
-
-
-
-
-
-
-
+  Specifies whether the policy version is set as the default.
 
 
 

@@ -36,68 +36,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 B<REQUIRED> DeviceName => Str
 
-  
-
-The device name exposed to the EC2 instance (for example, C</dev/sdh>
+  The device name exposed to the EC2 instance (for example, C</dev/sdh>
 or C<xvdh>).
-
-
-
-
-
-
-
-
-
 
 =head2 Ebs => Paws::AutoScaling::Ebs
 
-  
-
-The information about the Amazon EBS volume.
-
-
-
-
-
-
-
-
-
+  The information about the Amazon EBS volume.
 
 =head2 NoDevice => Bool
 
-  
-
-Suppresses a device mapping.
+  Suppresses a device mapping.
 
 If this parameter is true for the root device, the instance might fail
 the EC2 health check. Auto Scaling launches a replacement instance if
 the instance fails the health check.
 
-
-
-
-
-
-
-
-
-
 =head2 VirtualName => Str
 
-  
-
-The name of the virtual device, C<ephemeral0> to C<ephemeral3>.
-
-
-
-
-
-
-
-
-
+  The name of the virtual device, C<ephemeral0> to C<ephemeral3>.
 
 
 

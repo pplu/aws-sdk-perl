@@ -14,19 +14,8 @@ Paws::Support::RefreshTrustedAdvisorCheckResponse
 
 =head2 B<REQUIRED> status => Paws::Support::TrustedAdvisorCheckRefreshStatus
 
-  
-
-The current refresh status for a check, including the amount of time
+  The current refresh status for a check, including the amount of time
 until the check is eligible for refresh.
-
-
-
-
-
-
-
-
-
 
 
 =cut

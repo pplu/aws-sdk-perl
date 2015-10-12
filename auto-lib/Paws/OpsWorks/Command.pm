@@ -42,129 +42,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::C
 
 =head2 AcknowledgedAt => Str
 
-  
-
-Date and time when the command was acknowledged.
-
-
-
-
-
-
-
-
-
+  Date and time when the command was acknowledged.
 
 =head2 CommandId => Str
 
-  
-
-The command ID.
-
-
-
-
-
-
-
-
-
+  The command ID.
 
 =head2 CompletedAt => Str
 
-  
-
-Date when the command completed.
-
-
-
-
-
-
-
-
-
+  Date when the command completed.
 
 =head2 CreatedAt => Str
 
-  
-
-Date and time when the command was run.
-
-
-
-
-
-
-
-
-
+  Date and time when the command was run.
 
 =head2 DeploymentId => Str
 
-  
-
-The command deployment ID.
-
-
-
-
-
-
-
-
-
+  The command deployment ID.
 
 =head2 ExitCode => Int
 
-  
-
-The command exit code.
-
-
-
-
-
-
-
-
-
+  The command exit code.
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance where the command was executed.
-
-
-
-
-
-
-
-
-
+  The ID of the instance where the command was executed.
 
 =head2 LogUrl => Str
 
-  
-
-The URL of the command log.
-
-
-
-
-
-
-
-
-
+  The URL of the command log.
 
 =head2 Status => Str
 
-  
-
-The command status:
+  The command status:
 
 =over
 
@@ -178,20 +88,9 @@ The command status:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Type => Str
 
-  
-
-The command type:
+  The command type:
 
 =over
 
@@ -216,15 +115,6 @@ The command type:
 =item * C<execute_recipes>
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

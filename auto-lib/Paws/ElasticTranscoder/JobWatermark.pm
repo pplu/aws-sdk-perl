@@ -35,25 +35,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 Encryption => Paws::ElasticTranscoder::Encryption
 
-  
-
-The encryption settings, if any, that you want Elastic Transcoder to
+  The encryption settings, if any, that you want Elastic Transcoder to
 apply to your watermarks.
-
-
-
-
-
-
-
-
-
 
 =head2 InputKey => Str
 
-  
-
-The name of the .png or .jpg file that you want to use for the
+  The name of the .png or .jpg file that you want to use for the
 watermark. To determine which Amazon S3 bucket contains the specified
 file, Elastic Transcoder checks the pipeline specified by C<Pipeline>;
 the C<Input Bucket> object in that pipeline identifies the bucket.
@@ -62,32 +49,12 @@ If the file name includes a prefix, for example, B<logos/128x64.png>,
 include the prefix in the key. If the file isn't in the specified
 bucket, Elastic Transcoder returns an error.
 
-
-
-
-
-
-
-
-
-
 =head2 PresetWatermarkId => Str
 
-  
-
-The ID of the watermark settings that Elastic Transcoder uses to add
+  The ID of the watermark settings that Elastic Transcoder uses to add
 watermarks to the video during transcoding. The settings are in the
 preset specified by Preset for the current output. In that preset, the
 value of Watermarks Id tells Elastic Transcoder which settings to use.
-
-
-
-
-
-
-
-
-
 
 
 

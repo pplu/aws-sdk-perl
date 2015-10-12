@@ -14,18 +14,7 @@ Paws::Inspector::DeleteAssessmentResponse
 
 =head2 message => Str
 
-  
-
-Confirmation details of the action performed.
-
-
-
-
-
-
-
-
-
+  Confirmation details of the action performed.
 
 
 =cut

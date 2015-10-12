@@ -39,110 +39,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 errorDetails => Paws::CodePipeline::ErrorDetails
 
-  
-
-The details of an error returned by a URL external to AWS.
-
-
-
-
-
-
-
-
-
+  The details of an error returned by a URL external to AWS.
 
 =head2 externalExecutionId => Str
 
-  
-
-The external ID of the run of the action.
-
-
-
-
-
-
-
-
-
+  The external ID of the run of the action.
 
 =head2 externalExecutionUrl => Str
 
-  
-
-The URL of a resource external to AWS that will be used when running
+  The URL of a resource external to AWS that will be used when running
 the action, for example an external repository URL.
-
-
-
-
-
-
-
-
-
 
 =head2 lastStatusChange => Str
 
-  
-
-The last status change of the action.
-
-
-
-
-
-
-
-
-
+  The last status change of the action.
 
 =head2 percentComplete => Int
 
-  
-
-A percentage of completeness of the action as it runs.
-
-
-
-
-
-
-
-
-
+  A percentage of completeness of the action as it runs.
 
 =head2 status => Str
 
-  
-
-The status of the action, or for a completed action, the last status of
+  The status of the action, or for a completed action, the last status of
 the action.
-
-
-
-
-
-
-
-
-
 
 =head2 summary => Str
 
-  
-
-A summary of the run of the action.
-
-
-
-
-
-
-
-
-
+  A summary of the run of the action.
 
 
 

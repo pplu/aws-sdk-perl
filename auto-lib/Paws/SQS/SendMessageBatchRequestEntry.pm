@@ -36,66 +36,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::SendMe
 
 =head2 DelaySeconds => Int
 
-  
-
-The number of seconds for which the message has to be delayed.
-
-
-
-
-
-
-
-
-
+  The number of seconds for which the message has to be delayed.
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-An identifier for the message in this batch. This is used to
+  An identifier for the message in this batch. This is used to
 communicate the result. Note that the C<Id>s of a batch request need to
 be unique within the request.
 
-
-
-
-
-
-
-
-
-
 =head2 MessageAttributes => Paws::SQS::MessageAttributeMap
 
-  
-
-Each message attribute consists of a Name, Type, and Value. For more
+  Each message attribute consists of a Name, Type, and Value. For more
 information, see Message Attribute Items.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> MessageBody => Str
 
-  
-
-Body of the message.
-
-
-
-
-
-
-
-
-
+  Body of the message.
 
 
 

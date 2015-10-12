@@ -35,54 +35,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Sou
 
 =head2 Owner => Str
 
-  
-
-Indicates whether AWS or the customer owns and manages the AWS Config
+  Indicates whether AWS or the customer owns and manages the AWS Config
 rule.
-
-
-
-
-
-
-
-
-
 
 =head2 SourceDetails => ArrayRef[Paws::Config::SourceDetail]
 
-  
-
-Provides the source and type of the event that causes AWS Config to
+  Provides the source and type of the event that causes AWS Config to
 evaluate your AWS resources.
-
-
-
-
-
-
-
-
-
 
 =head2 SourceIdentifier => Str
 
-  
-
-For AWS managed Config rules, a pre-defined identifier from a list. To
+  For AWS managed Config rules, a pre-defined identifier from a list. To
 reference the list, see Using AWS Managed Config Rules.
 
 For customer managed Config rules, the identifier is the Amazon
 Resource Name (ARN) of the rule's AWS Lambda function.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::S
 
 =head2 DelayUntilElbConnectionsDrained => Bool
 
-  
-
-Whether to enable Elastic Load Balancing connection draining. For more
+  Whether to enable Elastic Load Balancing connection draining. For more
 information, see Connection Draining
-
-
-
-
-
-
-
-
-
 
 =head2 ExecutionTimeout => Int
 
-  
-
-The time, in seconds, that AWS OpsWorks will wait after triggering a
+  The time, in seconds, that AWS OpsWorks will wait after triggering a
 Shutdown event before shutting down an instance.
-
-
-
-
-
-
-
-
-
 
 
 

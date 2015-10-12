@@ -38,94 +38,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 deregisterTime => Str
 
-  
-
-If the on-premises instance was deregistered, the time that the
+  If the on-premises instance was deregistered, the time that the
 on-premises instance was deregistered.
-
-
-
-
-
-
-
-
-
 
 =head2 iamUserArn => Str
 
-  
-
-The IAM user ARN associated with the on-premises instance.
-
-
-
-
-
-
-
-
-
+  The IAM user ARN associated with the on-premises instance.
 
 =head2 instanceArn => Str
 
-  
-
-The ARN of the on-premises instance.
-
-
-
-
-
-
-
-
-
+  The ARN of the on-premises instance.
 
 =head2 instanceName => Str
 
-  
-
-The name of the on-premises instance.
-
-
-
-
-
-
-
-
-
+  The name of the on-premises instance.
 
 =head2 registerTime => Str
 
-  
-
-The time that the on-premises instance was registered.
-
-
-
-
-
-
-
-
-
+  The time that the on-premises instance was registered.
 
 =head2 tags => ArrayRef[Paws::CodeDeploy::Tag]
 
-  
-
-The tags that are currently associated with the on-premises instance.
-
-
-
-
-
-
-
-
-
+  The tags that are currently associated with the on-premises instance.
 
 
 

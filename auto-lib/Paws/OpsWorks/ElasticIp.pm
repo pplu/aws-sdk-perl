@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::E
 
 =head2 Domain => Str
 
-  
-
-The domain.
-
-
-
-
-
-
-
-
-
+  The domain.
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance that the address is attached to.
-
-
-
-
-
-
-
-
-
+  The ID of the instance that the address is attached to.
 
 =head2 Ip => Str
 
-  
-
-The IP address.
-
-
-
-
-
-
-
-
-
+  The IP address.
 
 =head2 Name => Str
 
-  
-
-The name.
-
-
-
-
-
-
-
-
-
+  The name.
 
 =head2 Region => Str
 
-  
-
-The AWS region. For more information, see Regions and Endpoints.
-
-
-
-
-
-
-
-
-
+  The AWS region. For more information, see Regions and Endpoints.
 
 
 

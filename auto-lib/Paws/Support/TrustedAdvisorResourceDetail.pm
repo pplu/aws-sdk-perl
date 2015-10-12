@@ -37,85 +37,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
 =head2 isSuppressed => Bool
 
-  
-
-Specifies whether the AWS resource was ignored by Trusted Advisor
+  Specifies whether the AWS resource was ignored by Trusted Advisor
 because it was marked as suppressed by the user.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> metadata => ArrayRef[Str]
 
-  
-
-Additional information about the identified resource. The exact
+  Additional information about the identified resource. The exact
 metadata and its order can be obtained by inspecting the
 TrustedAdvisorCheckDescription object returned by the call to
 DescribeTrustedAdvisorChecks. B<Metadata> contains all the data that is
 shown in the Excel download, even in those cases where the UI shows
 just summary data.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> region => Str
 
-  
-
-The AWS region in which the identified resource is located.
-
-
-
-
-
-
-
-
-
+  The AWS region in which the identified resource is located.
 
 =head2 B<REQUIRED> resourceId => Str
 
-  
-
-The unique identifier for the identified resource.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the identified resource.
 
 =head2 B<REQUIRED> status => Str
 
-  
-
-The status code for the resource identified in the Trusted Advisor
+  The status code for the resource identified in the Trusted Advisor
 check.
-
-
-
-
-
-
-
-
-
 
 
 

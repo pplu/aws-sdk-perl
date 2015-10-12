@@ -34,21 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> VolumeARNs => ArrayRef[Str]
 
-  
-
-An array of strings where each string represents the Amazon Resource
+  An array of strings where each string represents the Amazon Resource
 Name (ARN) of a stored volume. All of the specified stored volumes must
 from the same gateway. Use ListVolumes to get volume ARNs for a
 gateway.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -15,18 +15,7 @@ Paws::CloudSearch::DeleteAnalysisSchemeResponse
 
 =head2 B<REQUIRED> AnalysisScheme => Paws::CloudSearch::AnalysisSchemeStatus
 
-  
-
-The status of the analysis scheme being deleted.
-
-
-
-
-
-
-
-
-
+  The status of the analysis scheme being deleted.
 
 
 =cut

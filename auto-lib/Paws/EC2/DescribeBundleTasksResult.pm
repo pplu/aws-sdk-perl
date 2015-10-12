@@ -15,18 +15,7 @@ Paws::EC2::DescribeBundleTasksResult
 
 =head2 BundleTasks => ArrayRef[Paws::EC2::BundleTask]
 
-  
-
-Information about one or more bundle tasks.
-
-
-
-
-
-
-
-
-
+  Information about one or more bundle tasks.
 
 
 =cut

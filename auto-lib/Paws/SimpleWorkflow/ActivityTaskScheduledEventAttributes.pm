@@ -43,169 +43,57 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> activityId => Str
 
-  
-
-The unique ID of the activity task.
-
-
-
-
-
-
-
-
-
+  The unique ID of the activity task.
 
 =head2 B<REQUIRED> activityType => Paws::SimpleWorkflow::ActivityType
 
-  
-
-The type of the activity task.
-
-
-
-
-
-
-
-
-
+  The type of the activity task.
 
 =head2 control => Str
 
-  
-
-I<Optional.> Data attached to the event that can be used by the decider
+  I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks. This data is not sent to the activity.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> decisionTaskCompletedEventId => Int
 
-  
-
-The ID of the C<DecisionTaskCompleted> event corresponding to the
+  The ID of the C<DecisionTaskCompleted> event corresponding to the
 decision that resulted in the scheduling of this activity task. This
 information can be useful for diagnosing problems by tracing back the
 chain of events leading up to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 heartbeatTimeout => Str
 
-  
-
-The maximum time before which the worker processing this task must
+  The maximum time before which the worker processing this task must
 report progress by calling RecordActivityTaskHeartbeat. If the timeout
 is exceeded, the activity task is automatically timed out. If the
 worker subsequently attempts to record a heartbeat or return a result,
 it will be ignored.
 
-
-
-
-
-
-
-
-
-
 =head2 input => Str
 
-  
-
-The input provided to the activity task.
-
-
-
-
-
-
-
-
-
+  The input provided to the activity task.
 
 =head2 scheduleToCloseTimeout => Str
 
-  
-
-The maximum amount of time for this activity task.
-
-
-
-
-
-
-
-
-
+  The maximum amount of time for this activity task.
 
 =head2 scheduleToStartTimeout => Str
 
-  
-
-The maximum amount of time the activity task can wait to be assigned to
+  The maximum amount of time the activity task can wait to be assigned to
 a worker.
-
-
-
-
-
-
-
-
-
 
 =head2 startToCloseTimeout => Str
 
-  
-
-The maximum amount of time a worker may take to process the activity
+  The maximum amount of time a worker may take to process the activity
 task.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
 
-  
-
-The task list in which the activity task has been scheduled.
-
-
-
-
-
-
-
-
-
+  The task list in which the activity task has been scheduled.
 
 =head2 taskPriority => Str
 
-  
-
-I<Optional.> The priority to assign to the scheduled activity task. If
+  I<Optional.> The priority to assign to the scheduled activity task. If
 set, this will override any default priority value that was assigned
 when the activity type was registered.
 
@@ -215,15 +103,6 @@ indicate higher priority.
 
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

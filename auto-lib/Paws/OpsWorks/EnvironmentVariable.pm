@@ -35,57 +35,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::E
 
 =head2 B<REQUIRED> Key => Str
 
-  
-
-(Required) The environment variable's name, which can consist of up to
+  (Required) The environment variable's name, which can consist of up to
 64 characters and must be specified. The name can contain upper- and
 lowercase letters, numbers, and underscores (_), but it must start with
 a letter or underscore.
 
-
-
-
-
-
-
-
-
-
 =head2 Secure => Bool
 
-  
-
-(Optional) Whether the variable's value will be returned by the
+  (Optional) Whether the variable's value will be returned by the
 DescribeApps action. To conceal an environment variable's value, set
 C<Secure> to C<true>. C<DescribeApps> then returns
 C<*****FILTERED*****> instead of the actual value. The default value
 for C<Secure> is C<false>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Value => Str
 
-  
-
-(Optional) The environment variable's value, which can be left empty.
+  (Optional) The environment variable's value, which can be left empty.
 If you specify a value, it can contain up to 256 characters, which must
 all be printable.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Propag
 
 =head2 GatewayId => Str
 
-  
-
-The ID of the virtual private gateway (VGW).
-
-
-
-
-
-
-
-
-
+  The ID of the virtual private gateway (VGW).
 
 
 

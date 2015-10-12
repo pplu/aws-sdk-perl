@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::LoginP
 
 =head2 B<REQUIRED> CreateDate => Str
 
-  
-
-The date when the password for the user was created.
-
-
-
-
-
-
-
-
-
+  The date when the password for the user was created.
 
 =head2 PasswordResetRequired => Bool
 
-  
-
-Specifies whether the user is required to set a new password on next
+  Specifies whether the user is required to set a new password on next
 sign-in.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user, which can be used for signing in to the AWS
+  The name of the user, which can be used for signing in to the AWS
 Management Console.
-
-
-
-
-
-
-
-
-
 
 
 

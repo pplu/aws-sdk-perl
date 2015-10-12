@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 Items => ArrayRef[Str]
 
-  
-
-Optional: A complex type that contains whitelisted cookies for this
+  Optional: A complex type that contains whitelisted cookies for this
 cache behavior. If Quantity is 0, you can omit Items.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Quantity => Int
 
-  
-
-The number of whitelisted cookies for this cache behavior.
-
-
-
-
-
-
-
-
-
+  The number of whitelisted cookies for this cache behavior.
 
 
 

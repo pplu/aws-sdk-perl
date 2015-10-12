@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> VolumeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
+  The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
 operation to return a list of gateway volumes for the gateway.
-
-
-
-
-
-
-
-
-
 
 
 

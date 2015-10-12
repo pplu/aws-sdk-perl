@@ -34,21 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Tags => ArrayRef[Paws::AutoScaling::Tag]
 
-  
-
-Each tag should be defined by its resource type, resource ID, key,
+  Each tag should be defined by its resource type, resource ID, key,
 value, and a propagate flag. Valid values are: Resource type =
 I<auto-scaling-group>, Resource ID = I<AutoScalingGroupName>,
 key=I<value>, value=I<value>, propagate=I<true> or I<false>.
-
-
-
-
-
-
-
-
-
 
 
 

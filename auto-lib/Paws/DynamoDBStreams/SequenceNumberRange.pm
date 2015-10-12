@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
 =head2 EndingSequenceNumber => Str
 
-  
-
-The last sequence number.
-
-
-
-
-
-
-
-
-
+  The last sequence number.
 
 =head2 StartingSequenceNumber => Str
 
-  
-
-The first sequence number.
-
-
-
-
-
-
-
-
-
+  The first sequence number.
 
 
 

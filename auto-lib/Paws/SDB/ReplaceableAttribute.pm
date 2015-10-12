@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SDB::Replac
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the replaceable attribute.
-
-
-
-
-
-
-
-
-
+  The name of the replaceable attribute.
 
 =head2 Replace => Bool
 
-  
-
-A flag specifying whether or not to replace the attribute/value pair or
+  A flag specifying whether or not to replace the attribute/value pair or
 to add a new attribute/value pair. The default setting is C<false>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Value => Str
 
-  
-
-The value of the replaceable attribute.
-
-
-
-
-
-
-
-
-
+  The value of the replaceable attribute.
 
 
 

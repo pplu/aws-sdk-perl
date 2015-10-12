@@ -36,49 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GroupName => Str
 
-  
-
-Name of the group to update. If you're changing the name of the group,
+  Name of the group to update. If you're changing the name of the group,
 this is the original name.
-
-
-
-
-
-
-
-
-
 
 =head2 NewGroupName => Str
 
-  
-
-New name for the group. Only include this if changing the group's name.
-
-
-
-
-
-
-
-
-
+  New name for the group. Only include this if changing the group's name.
 
 =head2 NewPath => Str
 
-  
-
-New path for the group. Only include this if changing the group's path.
-
-
-
-
-
-
-
-
-
+  New path for the group. Only include this if changing the group's path.
 
 
 

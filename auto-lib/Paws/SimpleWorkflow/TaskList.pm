@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of the task list.
-
-
-
-
-
-
-
-
-
+  The name of the task list.
 
 
 

@@ -35,51 +35,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::LoadBa
 
 =head2 containerName => Str
 
-  
-
-The name of the container to associate with the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the container to associate with the load balancer.
 
 =head2 containerPort => Int
 
-  
-
-The port on the container to associate with the load balancer. This
+  The port on the container to associate with the load balancer. This
 port must correspond to a C<containerPort> in the service's task
 definition. Your container instances must allow ingress traffic on the
 C<hostPort> of the port mapping.
 
-
-
-
-
-
-
-
-
-
 =head2 loadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 
 

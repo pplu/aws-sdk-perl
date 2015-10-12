@@ -15,9 +15,7 @@ Paws::RDS::DBClusterParameterGroupNameMessage
 
 =head2 DBClusterParameterGroupName => Str
 
-  
-
-The name of the DB cluster parameter group.
+  The name of the DB cluster parameter group.
 
 Constraints:
 
@@ -32,15 +30,6 @@ Constraints:
 =back
 
 This value is stored as a lowercase string.
-
-
-
-
-
-
-
-
-
 
 
 =cut

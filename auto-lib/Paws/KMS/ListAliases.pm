@@ -35,39 +35,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  
-
-Specify this parameter when paginating results to indicate the maximum
+  Specify this parameter when paginating results to indicate the maximum
 number of aliases you want in each response. If there are additional
 aliases beyond the maximum you specify, the C<Truncated> response
 element will be set to C<true.>
 
-
-
-
-
-
-
-
-
-
 =head2 Marker => Str
 
-  
-
-Use this parameter when paginating results, and only in a subsequent
+  Use this parameter when paginating results, and only in a subsequent
 request after you've received a response where the results are
 truncated. Set it to the value of the C<NextMarker> element in the
 response you just received.
-
-
-
-
-
-
-
-
-
 
 
 

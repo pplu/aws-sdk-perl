@@ -37,69 +37,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllowSelfManagement => Bool
 
-  
-
-Whether users can specify their own SSH public key through the My
+  Whether users can specify their own SSH public key through the My
 Settings page. For more information, see Setting an IAM User's Public
 SSH Key.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> IamUserArn => Str
 
-  
-
-The user's IAM ARN.
-
-
-
-
-
-
-
-
-
+  The user's IAM ARN.
 
 =head2 SshPublicKey => Str
 
-  
-
-The user's public SSH key.
-
-
-
-
-
-
-
-
-
+  The user's public SSH key.
 
 =head2 SshUsername => Str
 
-  
-
-The user's SSH user name. The allowable characters are [a-z], [A-Z],
+  The user's SSH user name. The allowable characters are [a-z], [A-Z],
 [0-9], '-', and '_'. If the specified name includes other punctuation
 marks, AWS OpsWorks removes them. For example, C<my.name> will be
 changed to C<myname>. If you do not specify an SSH user name, AWS
 OpsWorks generates one from the IAM user name.
-
-
-
-
-
-
-
-
-
 
 
 

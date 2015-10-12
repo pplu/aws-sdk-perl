@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head2 completionTime => Int
 
-  
-
-A point in time when the export task got completed.
-
-
-
-
-
-
-
-
-
+  A point in time when the export task got completed.
 
 =head2 creationTime => Int
 
-  
-
-A point in time when the export task got created.
-
-
-
-
-
-
-
-
-
+  A point in time when the export task got created.
 
 
 

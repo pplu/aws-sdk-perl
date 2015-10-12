@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotIn
 
 =head2 Code => Str
 
-  
-
-The status code.
-
-
-
-
-
-
-
-
-
+  The status code.
 
 =head2 Message => Str
 
-  
-
-The description for the status code.
-
-
-
-
-
-
-
-
-
+  The description for the status code.
 
 =head2 UpdateTime => Str
 
-  
-
-The date and time of the most recent status update, in UTC format (for
+  The date and time of the most recent status update, in UTC format (for
 example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
-
-
-
-
-
-
-
-
-
 
 
 

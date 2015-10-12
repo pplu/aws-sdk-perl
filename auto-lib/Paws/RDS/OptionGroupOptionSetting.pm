@@ -38,94 +38,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
 =head2 AllowedValues => Str
 
-  
-
-Indicates the acceptable values for the option group option.
-
-
-
-
-
-
-
-
-
+  Indicates the acceptable values for the option group option.
 
 =head2 ApplyType => Str
 
-  
-
-The DB engine specific parameter type for the option group option.
-
-
-
-
-
-
-
-
-
+  The DB engine specific parameter type for the option group option.
 
 =head2 DefaultValue => Str
 
-  
-
-The default value for the option group option.
-
-
-
-
-
-
-
-
-
+  The default value for the option group option.
 
 =head2 IsModifiable => Bool
 
-  
-
-Boolean value where true indicates that this option group option can be
+  Boolean value where true indicates that this option group option can be
 changed from the default value.
-
-
-
-
-
-
-
-
-
 
 =head2 SettingDescription => Str
 
-  
-
-The description of the option group option.
-
-
-
-
-
-
-
-
-
+  The description of the option group option.
 
 =head2 SettingName => Str
 
-  
-
-The name of the option group option.
-
-
-
-
-
-
-
-
-
+  The name of the option group option.
 
 
 

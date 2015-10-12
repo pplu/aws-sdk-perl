@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
 =head2 Description => Str
 
-  
-
-The description of the parameter group.
-
-
-
-
-
-
-
-
-
+  The description of the parameter group.
 
 =head2 ParameterGroupFamily => Str
 
-  
-
-The name of the cluster parameter group family that this cluster
+  The name of the cluster parameter group family that this cluster
 parameter group is compatible with.
-
-
-
-
-
-
-
-
-
 
 =head2 ParameterGroupName => Str
 
-  
-
-The name of the cluster parameter group.
-
-
-
-
-
-
-
-
-
+  The name of the cluster parameter group.
 
 =head2 Tags => ArrayRef[Paws::RedShift::Tag]
 
-  
-
-The list of tags for the cluster parameter group.
-
-
-
-
-
-
-
-
-
+  The list of tags for the cluster parameter group.
 
 
 

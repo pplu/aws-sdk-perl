@@ -37,69 +37,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone for the subnet.
+  The Availability Zone for the subnet.
 
 Default: Amazon EC2 selects one for you (recommended).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> CidrBlock => Str
 
-  
-
-The network range for the subnet, in CIDR notation. For example,
+  The network range for the subnet, in CIDR notation. For example,
 C<10.0.0.0/24>.
-
-
-
-
-
-
-
-
-
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VpcId => Str
 
-  
-
-The ID of the VPC.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC.
 
 
 

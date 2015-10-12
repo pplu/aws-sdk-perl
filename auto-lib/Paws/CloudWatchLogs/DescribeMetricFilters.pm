@@ -37,68 +37,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 filterNamePrefix => Str
 
-  
-
-Will only return metric filters that match the provided
+  Will only return metric filters that match the provided
 filterNamePrefix. If you don't specify a value, no prefix filter is
 applied.
 
-
-
-
-
-
-
-
-
-
 =head2 limit => Int
 
-  
-
-The maximum number of items returned in the response. If you don't
+  The maximum number of items returned in the response. If you don't
 specify a value, the request would return up to 50 items.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> logGroupName => Str
 
-  
-
-The log group name for which metric filters are to be listed.
-
-
-
-
-
-
-
-
-
+  The log group name for which metric filters are to be listed.
 
 =head2 nextToken => Str
 
-  
-
-A string token used for pagination that points to the next page of
+  A string token used for pagination that points to the next page of
 results. It must be a value obtained from the response of the previous
 C<DescribeMetricFilters> request.
-
-
-
-
-
-
-
-
-
 
 
 

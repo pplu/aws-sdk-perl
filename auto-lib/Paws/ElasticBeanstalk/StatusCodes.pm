@@ -36,67 +36,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Status2xx => Int
 
-  
-
-The percentage of requests over the last 10 seconds that resulted in a
+  The percentage of requests over the last 10 seconds that resulted in a
 2xx (200, 201, etc.) status code.
-
-
-
-
-
-
-
-
-
 
 =head2 Status3xx => Int
 
-  
-
-The percentage of requests over the last 10 seconds that resulted in a
+  The percentage of requests over the last 10 seconds that resulted in a
 3xx (300, 301, etc.) status code.
-
-
-
-
-
-
-
-
-
 
 =head2 Status4xx => Int
 
-  
-
-The percentage of requests over the last 10 seconds that resulted in a
+  The percentage of requests over the last 10 seconds that resulted in a
 4xx (400, 401, etc.) status code.
-
-
-
-
-
-
-
-
-
 
 =head2 Status5xx => Int
 
-  
-
-The percentage of requests over the last 10 seconds that resulted in a
+  The percentage of requests over the last 10 seconds that resulted in a
 5xx (500, 501, etc.) status code.
-
-
-
-
-
-
-
-
-
 
 
 

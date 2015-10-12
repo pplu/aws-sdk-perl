@@ -37,70 +37,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 diagnostics => Paws::CodeDeploy::Diagnostics
 
-  
-
-Diagnostic information about the deployment lifecycle event.
-
-
-
-
-
-
-
-
-
+  Diagnostic information about the deployment lifecycle event.
 
 =head2 endTime => Str
 
-  
-
-A timestamp indicating when the deployment lifecycle event ended.
-
-
-
-
-
-
-
-
-
+  A timestamp indicating when the deployment lifecycle event ended.
 
 =head2 lifecycleEventName => Str
 
-  
-
-The deployment lifecycle event name, such as ApplicationStop,
+  The deployment lifecycle event name, such as ApplicationStop,
 BeforeInstall, AfterInstall, ApplicationStart, or ValidateService.
-
-
-
-
-
-
-
-
-
 
 =head2 startTime => Str
 
-  
-
-A timestamp indicating when the deployment lifecycle event started.
-
-
-
-
-
-
-
-
-
+  A timestamp indicating when the deployment lifecycle event started.
 
 =head2 status => Str
 
-  
-
-The deployment lifecycle event status:
+  The deployment lifecycle event status:
 
 =over
 
@@ -117,15 +71,6 @@ The deployment lifecycle event status:
 =item * Unknown: The deployment lifecycle event is unknown.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

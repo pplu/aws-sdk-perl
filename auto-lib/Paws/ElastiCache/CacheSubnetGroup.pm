@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 CacheSubnetGroupDescription => Str
 
-  
-
-The description of the cache subnet group.
-
-
-
-
-
-
-
-
-
+  The description of the cache subnet group.
 
 =head2 CacheSubnetGroupName => Str
 
-  
-
-The name of the cache subnet group.
-
-
-
-
-
-
-
-
-
+  The name of the cache subnet group.
 
 =head2 Subnets => ArrayRef[Paws::ElastiCache::Subnet]
 
-  
-
-A list of subnets associated with the cache subnet group.
-
-
-
-
-
-
-
-
-
+  A list of subnets associated with the cache subnet group.
 
 =head2 VpcId => Str
 
-  
-
-The Amazon Virtual Private Cloud identifier (VPC ID) of the cache
+  The Amazon Virtual Private Cloud identifier (VPC ID) of the cache
 subnet group.
-
-
-
-
-
-
-
-
-
 
 
 

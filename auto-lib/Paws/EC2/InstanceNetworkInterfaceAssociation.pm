@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head2 IpOwnerId => Str
 
-  
-
-The ID of the owner of the Elastic IP address.
-
-
-
-
-
-
-
-
-
+  The ID of the owner of the Elastic IP address.
 
 =head2 PublicDnsName => Str
 
-  
-
-The public DNS name.
-
-
-
-
-
-
-
-
-
+  The public DNS name.
 
 =head2 PublicIp => Str
 
-  
-
-The public IP address or Elastic IP address bound to the network
+  The public IP address or Elastic IP address bound to the network
 interface.
-
-
-
-
-
-
-
-
-
 
 
 

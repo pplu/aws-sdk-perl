@@ -36,49 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IdentityId => Str
 
-  
-
-A unique identifier in the format REGION:GUID.
-
-
-
-
-
-
-
-
-
+  A unique identifier in the format REGION:GUID.
 
 =head2 B<REQUIRED> Logins => Paws::CognitoIdentity::LoginsMap
 
-  
-
-A set of optional name-value pairs that map provider names to provider
+  A set of optional name-value pairs that map provider names to provider
 tokens.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> LoginsToRemove => ArrayRef[Str]
 
-  
-
-Provider names to unlink from this identity.
-
-
-
-
-
-
-
-
-
+  Provider names to unlink from this identity.
 
 
 

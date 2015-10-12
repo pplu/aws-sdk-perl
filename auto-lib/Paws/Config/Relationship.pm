@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Rel
 
 =head2 relationshipName => Str
 
-  
-
-The type of relationship with the related resource.
-
-
-
-
-
-
-
-
-
+  The type of relationship with the related resource.
 
 =head2 resourceId => Str
 
-  
-
-The ID of the related resource (for example, C<sg-xxxxxx>).
-
-
-
-
-
-
-
-
-
+  The ID of the related resource (for example, C<sg-xxxxxx>).
 
 =head2 resourceName => Str
 
-  
-
-The custom name of the related resource, if available.
-
-
-
-
-
-
-
-
-
+  The custom name of the related resource, if available.
 
 =head2 resourceType => Str
 
-  
-
-The resource type of the related resource.
-
-
-
-
-
-
-
-
-
+  The resource type of the related resource.
 
 
 

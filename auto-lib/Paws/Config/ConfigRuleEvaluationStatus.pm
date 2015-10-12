@@ -40,125 +40,37 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head2 ConfigRuleArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the AWS Config rule.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the AWS Config rule.
 
 =head2 ConfigRuleId => Str
 
-  
-
-The ID of the AWS Config rule.
-
-
-
-
-
-
-
-
-
+  The ID of the AWS Config rule.
 
 =head2 ConfigRuleName => Str
 
-  
-
-The name of the AWS Config rule.
-
-
-
-
-
-
-
-
-
+  The name of the AWS Config rule.
 
 =head2 FirstActivatedTime => Str
 
-  
-
-The time that you first activated the AWS Config rule.
-
-
-
-
-
-
-
-
-
+  The time that you first activated the AWS Config rule.
 
 =head2 LastErrorCode => Str
 
-  
-
-The error code that AWS Config returned when the rule last failed.
-
-
-
-
-
-
-
-
-
+  The error code that AWS Config returned when the rule last failed.
 
 =head2 LastErrorMessage => Str
 
-  
-
-The error message that AWS Config returned when the rule last failed.
-
-
-
-
-
-
-
-
-
+  The error message that AWS Config returned when the rule last failed.
 
 =head2 LastFailedInvocationTime => Str
 
-  
-
-The time that AWS Config last failed to invoke the AWS Config rule to
+  The time that AWS Config last failed to invoke the AWS Config rule to
 evaluate your AWS resources.
-
-
-
-
-
-
-
-
-
 
 =head2 LastSuccessfulInvocationTime => Str
 
-  
-
-The time that AWS Config last successfully invoked the AWS Config rule
+  The time that AWS Config last successfully invoked the AWS Config rule
 to evaluate your AWS resources.
-
-
-
-
-
-
-
-
-
 
 
 

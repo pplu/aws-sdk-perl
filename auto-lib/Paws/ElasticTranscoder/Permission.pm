@@ -35,9 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 Access => ArrayRef[Str]
 
-  
-
-The permission that you want to give to the AWS user that is listed in
+  The permission that you want to give to the AWS user that is listed in
 Grantee. Valid values include:
 
 =over
@@ -57,39 +55,17 @@ Amazon S3 bucket.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Grantee => Str
 
-  
-
-The AWS user or group that you want to have access to transcoded files
+  The AWS user or group that you want to have access to transcoded files
 and playlists. To identify the user or group, you can specify the
 canonical user ID for an AWS account, an origin access identity for a
 CloudFront distribution, the registered email address of an AWS
 account, or a predefined Amazon S3 group.
 
-
-
-
-
-
-
-
-
-
 =head2 GranteeType => Str
 
-  
-
-The type of value that appears in the Grantee object:
+  The type of value that appears in the Grantee object:
 
 =over
 
@@ -103,15 +79,6 @@ canonical user ID is not the same as an AWS account number.
 C<AllUsers>, C<AuthenticatedUsers>, or C<LogDelivery>.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

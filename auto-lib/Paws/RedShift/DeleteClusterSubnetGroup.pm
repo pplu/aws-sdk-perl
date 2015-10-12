@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterSubnetGroupName => Str
 
-  
-
-The name of the cluster subnet group name to be deleted.
-
-
-
-
-
-
-
-
-
+  The name of the cluster subnet group name to be deleted.
 
 
 

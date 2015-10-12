@@ -14,18 +14,7 @@ Paws::DirectConnect::VirtualGateways
 
 =head2 virtualGateways => ArrayRef[Paws::DirectConnect::VirtualGateway]
 
-  
-
-A list of virtual private gateways.
-
-
-
-
-
-
-
-
-
+  A list of virtual private gateways.
 
 
 =cut

@@ -15,18 +15,7 @@ Paws::IAM::CreateRoleResponse
 
 =head2 B<REQUIRED> Role => Paws::IAM::Role
 
-  
-
-Information about the role.
-
-
-
-
-
-
-
-
-
+  Information about the role.
 
 
 =cut

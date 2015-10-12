@@ -15,18 +15,7 @@ Paws::EC2::CreateSpotDatafeedSubscriptionResult
 
 =head2 SpotDatafeedSubscription => Paws::EC2::SpotDatafeedSubscription
 
-  
-
-The Spot instance data feed subscription.
-
-
-
-
-
-
-
-
-
+  The Spot instance data feed subscription.
 
 
 =cut

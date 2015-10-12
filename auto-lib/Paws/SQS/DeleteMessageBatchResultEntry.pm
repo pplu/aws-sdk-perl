@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Delete
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-Represents a successfully deleted message.
-
-
-
-
-
-
-
-
-
+  Represents a successfully deleted message.
 
 
 

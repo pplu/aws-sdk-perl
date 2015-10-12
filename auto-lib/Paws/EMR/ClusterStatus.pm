@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Cluste
 
 =head2 State => Str
 
-  
-
-The current state of the cluster.
-
-
-
-
-
-
-
-
-
+  The current state of the cluster.
 
 =head2 StateChangeReason => Paws::EMR::ClusterStateChangeReason
 
-  
-
-The reason for the cluster status change.
-
-
-
-
-
-
-
-
-
+  The reason for the cluster status change.
 
 =head2 Timeline => Paws::EMR::ClusterTimeline
 
-  
-
-A timeline that represents the status of a cluster over the lifetime of
+  A timeline that represents the status of a cluster over the lifetime of
 the cluster.
-
-
-
-
-
-
-
-
-
 
 
 

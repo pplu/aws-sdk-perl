@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EvaluationId => Str
 
-  
-
-A user-supplied ID that uniquely identifies the C<Evaluation> to
+  A user-supplied ID that uniquely identifies the C<Evaluation> to
 delete.
-
-
-
-
-
-
-
-
-
 
 
 

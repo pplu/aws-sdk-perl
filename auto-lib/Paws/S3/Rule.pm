@@ -43,19 +43,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Rule ob
 
 =head2 ID => Str
 
-  
-
-Unique identifier for the rule. The value cannot be longer than 255
+  Unique identifier for the rule. The value cannot be longer than 255
 characters.
-
-
-
-
-
-
-
-
-
 
 =head2 NoncurrentVersionExpiration => Paws::S3::NoncurrentVersionExpiration
 
@@ -67,34 +56,12 @@ characters.
 
 =head2 B<REQUIRED> Prefix => Str
 
-  
-
-Prefix identifying one or more objects to which the rule applies.
-
-
-
-
-
-
-
-
-
+  Prefix identifying one or more objects to which the rule applies.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-If 'Enabled', the rule is currently being applied. If 'Disabled', the
+  If 'Enabled', the rule is currently being applied. If 'Disabled', the
 rule is not currently being applied.
-
-
-
-
-
-
-
-
-
 
 =head2 Transition => Paws::S3::Transition
 

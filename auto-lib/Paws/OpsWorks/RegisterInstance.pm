@@ -40,109 +40,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Hostname => Str
 
-  
-
-The instance's hostname.
-
-
-
-
-
-
-
-
-
+  The instance's hostname.
 
 =head2 InstanceIdentity => Paws::OpsWorks::InstanceIdentity
 
-  
-
-An InstanceIdentity object that contains the instance's identity.
-
-
-
-
-
-
-
-
-
+  An InstanceIdentity object that contains the instance's identity.
 
 =head2 PrivateIp => Str
 
-  
-
-The instance's private IP address.
-
-
-
-
-
-
-
-
-
+  The instance's private IP address.
 
 =head2 PublicIp => Str
 
-  
-
-The instance's public IP address.
-
-
-
-
-
-
-
-
-
+  The instance's public IP address.
 
 =head2 RsaPublicKey => Str
 
-  
-
-The instances public RSA key. This key is used to encrypt communication
+  The instances public RSA key. This key is used to encrypt communication
 between the instance and the service.
-
-
-
-
-
-
-
-
-
 
 =head2 RsaPublicKeyFingerprint => Str
 
-  
-
-The instances public RSA key fingerprint.
-
-
-
-
-
-
-
-
-
+  The instances public RSA key fingerprint.
 
 =head2 B<REQUIRED> StackId => Str
 
-  
-
-The ID of the stack that the instance is to be registered with.
-
-
-
-
-
-
-
-
-
+  The ID of the stack that the instance is to be registered with.
 
 
 

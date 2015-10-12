@@ -16,33 +16,11 @@ Paws::EC2::DescribeReservedInstancesOfferingsResult
 
 =head2 NextToken => Str
 
-  
-
-The token to use to retrieve the next page of results. This value is
+  The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
-
-
-
-
-
-
-
-
-
 =head2 ReservedInstancesOfferings => ArrayRef[Paws::EC2::ReservedInstancesOffering]
 
-  
-
-A list of Reserved Instances offerings.
-
-
-
-
-
-
-
-
-
+  A list of Reserved Instances offerings.
 
 
 =cut

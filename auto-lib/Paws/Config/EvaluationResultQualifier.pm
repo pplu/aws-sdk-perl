@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Eva
 
 =head2 ConfigRuleName => Str
 
-  
-
-The name of the AWS Config rule that was used in the evaluation.
-
-
-
-
-
-
-
-
-
+  The name of the AWS Config rule that was used in the evaluation.
 
 =head2 ResourceId => Str
 
-  
-
-The ID of the evaluated AWS resource.
-
-
-
-
-
-
-
-
-
+  The ID of the evaluated AWS resource.
 
 =head2 ResourceType => Str
 
-  
-
-The type of AWS resource that was evaluated.
-
-
-
-
-
-
-
-
-
+  The type of AWS resource that was evaluated.
 
 
 

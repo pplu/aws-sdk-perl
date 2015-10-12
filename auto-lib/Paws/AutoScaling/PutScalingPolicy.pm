@@ -44,43 +44,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AdjustmentType => Str
 
-  
-
-The adjustment type. Valid values are C<ChangeInCapacity>,
+  The adjustment type. Valid values are C<ChangeInCapacity>,
 C<ExactCapacity>, and C<PercentChangeInCapacity>.
 
 For more information, see Dynamic Scaling in the I<Auto Scaling
 Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name or ARN of the group.
-
-
-
-
-
-
-
-
-
+  The name or ARN of the group.
 
 =head2 Cooldown => Int
 
-  
-
-The amount of time, in seconds, after a scaling activity completes and
+  The amount of time, in seconds, after a scaling activity completes and
 before the next scaling activity can start. If this parameter is not
 specified, the default cooldown period for the group applies.
 
@@ -90,156 +66,59 @@ C<SimpleScaling>.
 For more information, see Understanding Auto Scaling Cooldowns in the
 I<Auto Scaling Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 EstimatedInstanceWarmup => Int
 
-  
-
-The estimated time, in seconds, until a newly launched instance can
+  The estimated time, in seconds, until a newly launched instance can
 contribute to the CloudWatch metrics. The default is to use the value
 specified for the default cooldown period for the group.
 
 This parameter is not supported if the policy type is C<SimpleScaling>.
 
-
-
-
-
-
-
-
-
-
 =head2 MetricAggregationType => Str
 
-  
-
-The aggregation type for the CloudWatch metrics. Valid values are
+  The aggregation type for the CloudWatch metrics. Valid values are
 C<Minimum>, C<Maximum>, and C<Average>. If the aggregation type is
 null, the value is treated as C<Average>.
 
 This parameter is not supported if the policy type is C<SimpleScaling>.
 
-
-
-
-
-
-
-
-
-
 =head2 MinAdjustmentMagnitude => Int
 
-  
-
-The minimum number of instances to scale. If the value of
+  The minimum number of instances to scale. If the value of
 C<AdjustmentType> is C<PercentChangeInCapacity>, the scaling policy
 changes the C<DesiredCapacity> of the Auto Scaling group by at least
 this many instances. Otherwise, the error is C<ValidationError>.
 
-
-
-
-
-
-
-
-
-
 =head2 MinAdjustmentStep => Int
 
-  
-
-Available for backward compatibility. Use C<MinAdjustmentMagnitude>
+  Available for backward compatibility. Use C<MinAdjustmentMagnitude>
 instead.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The name of the policy.
-
-
-
-
-
-
-
-
-
+  The name of the policy.
 
 =head2 PolicyType => Str
 
-  
-
-The policy type. Valid values are C<SimpleScaling> and C<StepScaling>.
+  The policy type. Valid values are C<SimpleScaling> and C<StepScaling>.
 If the policy type is null, the value is treated as C<SimpleScaling>.
-
-
-
-
-
-
-
-
-
 
 =head2 ScalingAdjustment => Int
 
-  
-
-The amount by which to scale, based on the specified adjustment type. A
+  The amount by which to scale, based on the specified adjustment type. A
 positive value adds to the current capacity while a negative number
 removes from the current capacity.
 
 This parameter is required if the policy type is C<SimpleScaling> and
 not supported otherwise.
 
-
-
-
-
-
-
-
-
-
 =head2 StepAdjustments => ArrayRef[Paws::AutoScaling::StepAdjustment]
 
-  
-
-A set of adjustments that enable you to scale based on the size of the
+  A set of adjustments that enable you to scale based on the size of the
 alarm breach.
 
 This parameter is required if the policy type is C<StepScaling> and not
 supported otherwise.
-
-
-
-
-
-
-
-
-
 
 
 

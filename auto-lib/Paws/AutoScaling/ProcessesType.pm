@@ -15,18 +15,7 @@ Paws::AutoScaling::ProcessesType
 
 =head2 Processes => ArrayRef[Paws::AutoScaling::ProcessType]
 
-  
-
-The names of the process types.
-
-
-
-
-
-
-
-
-
+  The names of the process types.
 
 
 =cut

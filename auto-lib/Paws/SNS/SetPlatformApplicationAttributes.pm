@@ -35,9 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Attributes => Paws::SNS::MapStringToString
 
-  
-
-A map of the platform application attributes. Attributes in this map
+  A map of the platform application attributes. Attributes in this map
 include the following:
 
 =over
@@ -67,29 +65,9 @@ event notifications should be sent upon Direct Publish delivery failure
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PlatformApplicationArn => Str
 
-  
-
-PlatformApplicationArn for SetPlatformApplicationAttributes action.
-
-
-
-
-
-
-
-
-
+  PlatformApplicationArn for SetPlatformApplicationAttributes action.
 
 
 

@@ -52,19 +52,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 continuationToken => Str
 
-  
-
-A system-generated token, such as a AWS CodeDeploy deployment ID, that
+  A system-generated token, such as a AWS CodeDeploy deployment ID, that
 a job requires in order to continue the job asynchronously.
-
-
-
-
-
-
-
-
-
 
 =head2 encryptionKey => Paws::CodePipeline::EncryptionKey
 
@@ -72,33 +61,11 @@ a job requires in order to continue the job asynchronously.
 
 =head2 inputArtifacts => ArrayRef[Paws::CodePipeline::Artifact]
 
-  
-
-The artifact supplied to the job.
-
-
-
-
-
-
-
-
-
+  The artifact supplied to the job.
 
 =head2 outputArtifacts => ArrayRef[Paws::CodePipeline::Artifact]
 
-  
-
-The output of the job.
-
-
-
-
-
-
-
-
-
+  The output of the job.
 
 =head2 pipelineContext => Paws::CodePipeline::PipelineContext
 

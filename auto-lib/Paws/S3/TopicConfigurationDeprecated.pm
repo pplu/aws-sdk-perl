@@ -36,18 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::TopicCo
 
 =head2 Event => Str
 
-  
-
-Bucket event for which to send notifications.
-
-
-
-
-
-
-
-
-
+  Bucket event for which to send notifications.
 
 =head2 Events => ArrayRef[Str]
 
@@ -59,19 +48,8 @@ Bucket event for which to send notifications.
 
 =head2 Topic => Str
 
-  
-
-Amazon SNS topic to which Amazon S3 will publish a message to report
+  Amazon SNS topic to which Amazon S3 will publish a message to report
 the specified events for the bucket.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -37,74 +37,30 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CIDRIP => Str
 
-  
-
-The IP range for which to revoke access. This range must be a valid
+  The IP range for which to revoke access. This range must be a valid
 Classless Inter-Domain Routing (CIDR) block of IP addresses. If
 C<CIDRIP> is specified, C<EC2SecurityGroupName> and
 C<EC2SecurityGroupOwnerId> cannot be provided.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ClusterSecurityGroupName => Str
 
-  
-
-The name of the security Group from which to revoke the ingress rule.
-
-
-
-
-
-
-
-
-
+  The name of the security Group from which to revoke the ingress rule.
 
 =head2 EC2SecurityGroupName => Str
 
-  
-
-The name of the EC2 Security Group whose access is to be revoked. If
+  The name of the EC2 Security Group whose access is to be revoked. If
 C<EC2SecurityGroupName> is specified, C<EC2SecurityGroupOwnerId> must
 also be provided and C<CIDRIP> cannot be provided.
 
-
-
-
-
-
-
-
-
-
 =head2 EC2SecurityGroupOwnerId => Str
 
-  
-
-The AWS account number of the owner of the security group specified in
+  The AWS account number of the owner of the security group specified in
 the C<EC2SecurityGroupName> parameter. The AWS access key ID is not an
 acceptable value. If C<EC2SecurityGroupOwnerId> is specified,
 C<EC2SecurityGroupName> must also be provided. and C<CIDRIP> cannot be
 provided.
 
 Example: C<111122223333>
-
-
-
-
-
-
-
-
-
 
 
 

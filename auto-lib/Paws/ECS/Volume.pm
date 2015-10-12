@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Volume
 
 =head2 host => Paws::ECS::HostVolumeProperties
 
-  
-
-The path on the host container instance that is presented to the
+  The path on the host container instance that is presented to the
 containers which access the volume. If this parameter is empty, then
 the Docker daemon assigns a host path for you.
 
-
-
-
-
-
-
-
-
-
 =head2 name => Str
 
-  
-
-The name of the volume. This name is referenced in the C<sourceVolume>
+  The name of the volume. This name is referenced in the C<sourceVolume>
 parameter of container definition C<mountPoints>.
-
-
-
-
-
-
-
-
-
 
 
 

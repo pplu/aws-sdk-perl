@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glacier::Pa
 
 =head2 RangeInBytes => Str
 
-  
-
-The byte range of a part, inclusive of the upper value of the range.
-
-
-
-
-
-
-
-
-
+  The byte range of a part, inclusive of the upper value of the range.
 
 =head2 SHA256TreeHash => Str
 
-  
-
-The SHA256 tree hash value that Amazon Glacier calculated for the part.
+  The SHA256 tree hash value that Amazon Glacier calculated for the part.
 This field is never C<null>.
-
-
-
-
-
-
-
-
-
 
 
 

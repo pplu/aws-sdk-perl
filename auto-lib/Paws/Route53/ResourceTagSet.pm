@@ -35,52 +35,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Re
 
 =head2 ResourceId => Str
 
-  
-
-The ID for the specified resource.
-
-
-
-
-
-
-
-
-
+  The ID for the specified resource.
 
 =head2 ResourceType => Str
 
-  
-
-The type of the resource.
+  The type of the resource.
 
 - The resource type for health checks is C<healthcheck>.
 
 - The resource type for hosted zones is C<hostedzone>.
 
-
-
-
-
-
-
-
-
-
 =head2 Tags => ArrayRef[Paws::Route53::Tag]
 
-  
-
-The tags associated with the specified resource.
-
-
-
-
-
-
-
-
-
+  The tags associated with the specified resource.
 
 
 

@@ -40,9 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 CacheNodeType => Str
 
-  
-
-The cache node type for the reserved cache node.
+  The cache node type for the reserved cache node.
 
 Valid node types are as follows:
 
@@ -96,119 +94,33 @@ Amazon ElastiCache Product Features and Details and Cache Node
 Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
-
-
-
-
-
-
-
-
-
 =head2 Duration => Int
 
-  
-
-The duration of the offering. in seconds.
-
-
-
-
-
-
-
-
-
+  The duration of the offering. in seconds.
 
 =head2 FixedPrice => Num
 
-  
-
-The fixed price charged for this offering.
-
-
-
-
-
-
-
-
-
+  The fixed price charged for this offering.
 
 =head2 OfferingType => Str
 
-  
-
-The offering type.
-
-
-
-
-
-
-
-
-
+  The offering type.
 
 =head2 ProductDescription => Str
 
-  
-
-The cache engine used by the offering.
-
-
-
-
-
-
-
-
-
+  The cache engine used by the offering.
 
 =head2 RecurringCharges => ArrayRef[Paws::ElastiCache::RecurringCharge]
 
-  
-
-The recurring price charged to run this reserved cache node.
-
-
-
-
-
-
-
-
-
+  The recurring price charged to run this reserved cache node.
 
 =head2 ReservedCacheNodesOfferingId => Str
 
-  
-
-A unique identifier for the reserved cache node offering.
-
-
-
-
-
-
-
-
-
+  A unique identifier for the reserved cache node offering.
 
 =head2 UsagePrice => Num
 
-  
-
-The hourly price charged for this offering.
-
-
-
-
-
-
-
-
-
+  The hourly price charged for this offering.
 
 
 

@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Policy
 
 =head2 PolicyDocument => Str
 
-  
-
-The policy document.
-
-
-
-
-
-
-
-
-
+  The policy document.
 
 =head2 PolicyName => Str
 
-  
-
-The name of the policy.
-
-
-
-
-
-
-
-
-
+  The name of the policy.
 
 
 

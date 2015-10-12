@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::P
 
 =head2 ErrorCode => Str
 
-  
-
-The error code for an individual record result.
-
-
-
-
-
-
-
-
-
+  The error code for an individual record result.
 
 =head2 ErrorMessage => Str
 
-  
-
-The error message for an individual record result.
-
-
-
-
-
-
-
-
-
+  The error message for an individual record result.
 
 =head2 RecordId => Str
 
-  
-
-The ID of the record.
-
-
-
-
-
-
-
-
-
+  The ID of the record.
 
 
 

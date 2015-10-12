@@ -41,99 +41,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Route 
 
 =head2 DestinationCidrBlock => Str
 
-  
-
-The CIDR block used for the destination match.
-
-
-
-
-
-
-
-
-
+  The CIDR block used for the destination match.
 
 =head2 DestinationPrefixListId => Str
 
-  
-
-The prefix of the AWS service.
-
-
-
-
-
-
-
-
-
+  The prefix of the AWS service.
 
 =head2 GatewayId => Str
 
-  
-
-The ID of a gateway attached to your VPC.
-
-
-
-
-
-
-
-
-
+  The ID of a gateway attached to your VPC.
 
 =head2 InstanceId => Str
 
-  
-
-The ID of a NAT instance in your VPC.
-
-
-
-
-
-
-
-
-
+  The ID of a NAT instance in your VPC.
 
 =head2 InstanceOwnerId => Str
 
-  
-
-The AWS account ID of the owner of the instance.
-
-
-
-
-
-
-
-
-
+  The AWS account ID of the owner of the instance.
 
 =head2 NetworkInterfaceId => Str
 
-  
-
-The ID of the network interface.
-
-
-
-
-
-
-
-
-
+  The ID of the network interface.
 
 =head2 Origin => Str
 
-  
-
-Describes how the route was created.
+  Describes how the route was created.
 
 =over
 
@@ -148,47 +80,16 @@ propagated by route propagation.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 State => Str
 
-  
-
-The state of the route. The C<blackhole> state indicates that the
+  The state of the route. The C<blackhole> state indicates that the
 route's target isn't available (for example, the specified gateway
 isn't attached to the VPC, or the specified NAT instance has been
 terminated).
 
-
-
-
-
-
-
-
-
-
 =head2 VpcPeeringConnectionId => Str
 
-  
-
-The ID of the VPC peering connection.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC peering connection.
 
 
 

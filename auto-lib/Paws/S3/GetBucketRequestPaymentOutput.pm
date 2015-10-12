@@ -29,18 +29,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Payer => Str
 
-  
-
-Specifies who pays for the download and request fees.
-
-
-
-
-
-
-
-
-
+  Specifies who pays for the download and request fees.
 
 
 

@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Placem
 
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone of the instance.
-
-
-
-
-
-
-
-
-
+  The Availability Zone of the instance.
 
 =head2 GroupName => Str
 
-  
-
-The name of the placement group the instance is in (for cluster compute
+  The name of the placement group the instance is in (for cluster compute
 instances).
-
-
-
-
-
-
-
-
-
 
 =head2 Tenancy => Str
 
-  
-
-The tenancy of the instance (if the instance is running in a VPC). An
+  The tenancy of the instance (if the instance is running in a VPC). An
 instance with a tenancy of C<dedicated> runs on single-tenant hardware.
-
-
-
-
-
-
-
-
-
 
 
 

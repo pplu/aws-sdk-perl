@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Networ
 
 =head2 Association => Paws::EC2::NetworkInterfaceAssociation
 
-  
-
-The association information for an Elastic IP address associated with
+  The association information for an Elastic IP address associated with
 the network interface.
-
-
-
-
-
-
-
-
-
 
 =head2 Primary => Bool
 
-  
-
-Indicates whether this IP address is the primary private IP address of
+  Indicates whether this IP address is the primary private IP address of
 the network interface.
-
-
-
-
-
-
-
-
-
 
 =head2 PrivateDnsName => Str
 
-  
-
-The private DNS name.
-
-
-
-
-
-
-
-
-
+  The private DNS name.
 
 =head2 PrivateIpAddress => Str
 
-  
-
-The private IP address.
-
-
-
-
-
-
-
-
-
+  The private IP address.
 
 
 

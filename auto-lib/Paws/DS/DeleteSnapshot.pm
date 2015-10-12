@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SnapshotId => Str
 
-  
-
-The identifier of the directory snapshot to be deleted.
-
-
-
-
-
-
-
-
-
+  The identifier of the directory snapshot to be deleted.
 
 
 

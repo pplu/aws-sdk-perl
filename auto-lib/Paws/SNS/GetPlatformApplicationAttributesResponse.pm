@@ -15,9 +15,7 @@ Paws::SNS::GetPlatformApplicationAttributesResponse
 
 =head2 Attributes => Paws::SNS::MapStringToString
 
-  
-
-Attributes include the following:
+  Attributes include the following:
 
 =over
 
@@ -35,15 +33,6 @@ event notifications should be sent upon Direct Publish delivery failure
 (permanent) to one of the application's endpoints.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 =cut

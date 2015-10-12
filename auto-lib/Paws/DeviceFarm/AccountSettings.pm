@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 awsAccountNumber => Str
 
-  
-
-The AWS account number specified in the C<AccountSettings> container.
-
-
-
-
-
-
-
-
-
+  The AWS account number specified in the C<AccountSettings> container.
 
 =head2 unmeteredDevices => Paws::DeviceFarm::PurchasedDevicesMap
 
-  
-
-Returns the unmetered devices you have purchased.
-
-
-
-
-
-
-
-
-
+  Returns the unmetered devices you have purchased.
 
 
 

@@ -38,48 +38,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> query => Str
 
-  
-
-Specifies the string for which you want to get suggestions.
-
-
-
-
-
-
-
-
-
+  Specifies the string for which you want to get suggestions.
 
 =head2 size => Int
 
-  
-
-Specifies the maximum number of suggestions to return.
-
-
-
-
-
-
-
-
-
+  Specifies the maximum number of suggestions to return.
 
 =head2 B<REQUIRED> suggester => Str
 
-  
-
-Specifies the name of the suggester to use to find suggested matches.
-
-
-
-
-
-
-
-
-
+  Specifies the name of the suggester to use to find suggested matches.
 
 
 

@@ -44,49 +44,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ObjectV
 
 =head2 IsLatest => Bool
 
-  
-
-Specifies whether the object is (true) or is not (false) the latest
+  Specifies whether the object is (true) or is not (false) the latest
 version of an object.
-
-
-
-
-
-
-
-
-
 
 =head2 Key => Str
 
-  
-
-The object key.
-
-
-
-
-
-
-
-
-
+  The object key.
 
 =head2 LastModified => Str
 
-  
-
-Date and time the object was last modified.
-
-
-
-
-
-
-
-
-
+  Date and time the object was last modified.
 
 =head2 Owner => Paws::S3::Owner
 
@@ -94,48 +61,15 @@ Date and time the object was last modified.
 
 =head2 Size => Int
 
-  
-
-Size in bytes of the object.
-
-
-
-
-
-
-
-
-
+  Size in bytes of the object.
 
 =head2 StorageClass => Str
 
-  
-
-The class of storage used to store the object.
-
-
-
-
-
-
-
-
-
+  The class of storage used to store the object.
 
 =head2 VersionId => Str
 
-  
-
-Version ID of an object.
-
-
-
-
-
-
-
-
-
+  Version ID of an object.
 
 
 

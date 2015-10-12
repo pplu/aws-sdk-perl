@@ -16,33 +16,11 @@ Paws::AutoScaling::AutoScalingGroupsType
 
 =head2 B<REQUIRED> AutoScalingGroups => ArrayRef[Paws::AutoScaling::AutoScalingGroup]
 
-  
-
-The groups.
-
-
-
-
-
-
-
-
-
+  The groups.
 =head2 NextToken => Str
 
-  
-
-The token to use when requesting the next set of items. If there are no
+  The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
-
-
-
-
-
-
-
-
-
 
 
 =cut

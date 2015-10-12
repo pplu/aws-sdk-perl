@@ -42,9 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 HorizontalAlign => Str
 
-  
-
-The horizontal position of the watermark unless you specify a non-zero
+  The horizontal position of the watermark unless you specify a non-zero
 value for C<HorizontalOffset>:
 
 =over
@@ -60,20 +58,9 @@ borders.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 HorizontalOffset => Str
 
-  
-
-The amount by which you want the horizontal position of the watermark
+  The amount by which you want the horizontal position of the watermark
 to be offset from the position specified by HorizontalAlign:
 
 =over
@@ -101,36 +88,14 @@ Use the value of C<Target> to specify whether you want to include the
 black bars that are added by Elastic Transcoder, if any, in the offset
 calculation.
 
-
-
-
-
-
-
-
-
-
 =head2 Id => Str
 
-  
-
-A unique identifier for the settings for one watermark. The value of
+  A unique identifier for the settings for one watermark. The value of
 C<Id> can be up to 40 characters long.
-
-
-
-
-
-
-
-
-
 
 =head2 MaxHeight => Str
 
-  
-
-The maximum height of the watermark in one of the following formats:
+  The maximum height of the watermark in one of the following formats:
 
 =over
 
@@ -147,20 +112,9 @@ Transcoder, if any, in the calculation.
 If you specify the value in pixels, it must be less than or equal to
 the value of C<MaxHeight>.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxWidth => Str
 
-  
-
-The maximum width of the watermark in one of the following formats:
+  The maximum width of the watermark in one of the following formats:
 
 =over
 
@@ -177,20 +131,9 @@ the value of C<MaxWidth>.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Opacity => Str
 
-  
-
-A percentage that indicates how much you want a watermark to obscure
+  A percentage that indicates how much you want a watermark to obscure
 the video in the location where it appears. Valid values are 0 (the
 watermark is invisible) to 100 (the watermark completely obscures the
 video in the specified location). The datatype of C<Opacity> is float.
@@ -200,20 +143,9 @@ transparent .png, the transparent portion of the video appears as if
 you had specified a value of 0 for C<Opacity>. The .jpg file format
 doesn't support transparency.
 
-
-
-
-
-
-
-
-
-
 =head2 SizingPolicy => Str
 
-  
-
-A value that controls scaling of the watermark:
+  A value that controls scaling of the watermark:
 
 =over
 
@@ -234,20 +166,9 @@ watermark up.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Target => Str
 
-  
-
-A value that determines how Elastic Transcoder interprets values that
+  A value that determines how Elastic Transcoder interprets values that
 you specified for C<HorizontalOffset>, C<VerticalOffset>, C<MaxWidth>,
 and C<MaxHeight>:
 
@@ -270,20 +191,9 @@ black bars added by Elastic Transcoder, if any.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 VerticalAlign => Str
 
-  
-
-The vertical position of the watermark unless you specify a non-zero
+  The vertical position of the watermark unless you specify a non-zero
 value for C<VerticalOffset>:
 
 =over
@@ -299,20 +209,9 @@ borders.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 VerticalOffset => Str
 
-  
-
-C<VerticalOffset>
+  C<VerticalOffset>
 
 The amount by which you want the vertical position of the watermark to
 be offset from the position specified by VerticalAlign:
@@ -342,15 +241,6 @@ beyond the black bars, it is cropped.
 Use the value of C<Target> to specify whether you want Elastic
 Transcoder to include the black bars that are added by Elastic
 Transcoder, if any, in the offset calculation.
-
-
-
-
-
-
-
-
-
 
 
 

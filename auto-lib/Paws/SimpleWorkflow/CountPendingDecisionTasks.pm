@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> domain => Str
 
-  
-
-The name of the domain that contains the task list.
-
-
-
-
-
-
-
-
-
+  The name of the domain that contains the task list.
 
 =head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
 
-  
-
-The name of the task list.
-
-
-
-
-
-
-
-
-
+  The name of the task list.
 
 
 

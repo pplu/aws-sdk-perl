@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 Key => Str
 
-  
-
-The tag's key.
-
-
-
-
-
-
-
-
-
+  The tag's key.
 
 =head2 Value => Str
 
-  
-
-The tag's value.
-
-
-
-
-
-
-
-
-
+  The tag's value.
 
 
 

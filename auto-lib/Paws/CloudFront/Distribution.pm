@@ -39,9 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> ActiveTrustedSigners => Paws::CloudFront::ActiveTrustedSigners
 
-  
-
-CloudFront automatically adds this element to the response only if
+  CloudFront automatically adds this element to the response only if
 you've set up the distribution to serve private content with signed
 URLs. The element lists the key pair IDs that CloudFront is aware of
 for each trusted signer. The Signer child element lists the AWS account
@@ -51,107 +49,32 @@ associated with the trusted signer's AWS account. If no KeyPairId
 element appears for a Signer, that signer can't create working signed
 URLs.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DistributionConfig => Paws::CloudFront::DistributionConfig
 
-  
-
-The current configuration information for the distribution.
-
-
-
-
-
-
-
-
-
+  The current configuration information for the distribution.
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The domain name corresponding to the distribution. For example:
+  The domain name corresponding to the distribution. For example:
 d604721fxaaqy9.cloudfront.net.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The identifier for the distribution. For example: EDFDVBD632BHDS5.
-
-
-
-
-
-
-
-
-
+  The identifier for the distribution. For example: EDFDVBD632BHDS5.
 
 =head2 B<REQUIRED> InProgressInvalidationBatches => Int
 
-  
-
-The number of invalidation batches currently in progress.
-
-
-
-
-
-
-
-
-
+  The number of invalidation batches currently in progress.
 
 =head2 B<REQUIRED> LastModifiedTime => Str
 
-  
-
-The date and time the distribution was last modified.
-
-
-
-
-
-
-
-
-
+  The date and time the distribution was last modified.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-This response element indicates the current status of the distribution.
+  This response element indicates the current status of the distribution.
 When the status is Deployed, the distribution's information is fully
 propagated throughout the Amazon CloudFront system.
-
-
-
-
-
-
-
-
-
 
 
 

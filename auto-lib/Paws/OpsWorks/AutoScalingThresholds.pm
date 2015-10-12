@@ -39,9 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::A
 
 =head2 Alarms => ArrayRef[Str]
 
-  
-
-Custom Cloudwatch auto scaling alarms, to be used as thresholds. This
+  Custom Cloudwatch auto scaling alarms, to be used as thresholds. This
 parameter takes a list of up to five alarm names, which are case
 sensitive and must be in the same region as the stack.
 
@@ -51,35 +49,13 @@ the role for you when you first use this feature or you can edit the
 role manually. For more information, see Allowing AWS OpsWorks to Act
 on Your Behalf.
 
-
-
-
-
-
-
-
-
-
 =head2 CpuThreshold => Num
 
-  
-
-The CPU utilization threshold, as a percent of the available CPU.
-
-
-
-
-
-
-
-
-
+  The CPU utilization threshold, as a percent of the available CPU.
 
 =head2 IgnoreMetricsTime => Int
 
-  
-
-The amount of time (in minutes) after a scaling event occurs that AWS
+  The amount of time (in minutes) after a scaling event occurs that AWS
 OpsWorks should ignore metrics and suppress additional scaling events.
 For example, AWS OpsWorks adds new instances following an upscaling
 event but the instances won't start reducing the load until they have
@@ -88,77 +64,24 @@ scaling events during that operation, which typically takes several
 minutes. C<IgnoreMetricsTime> allows you to direct AWS OpsWorks to
 suppress scaling events long enough to get the new instances online.
 
-
-
-
-
-
-
-
-
-
 =head2 InstanceCount => Int
 
-  
-
-The number of instances to add or remove when the load exceeds a
+  The number of instances to add or remove when the load exceeds a
 threshold.
-
-
-
-
-
-
-
-
-
 
 =head2 LoadThreshold => Num
 
-  
-
-The load threshold. For more information about how load is computed,
+  The load threshold. For more information about how load is computed,
 see Load (computing).
-
-
-
-
-
-
-
-
-
 
 =head2 MemoryThreshold => Num
 
-  
-
-The memory utilization threshold, as a percent of the available memory.
-
-
-
-
-
-
-
-
-
+  The memory utilization threshold, as a percent of the available memory.
 
 =head2 ThresholdsWaitTime => Int
 
-  
-
-The amount of time, in minutes, that the load must exceed a threshold
+  The amount of time, in minutes, that the load must exceed a threshold
 before more instances are added or removed.
-
-
-
-
-
-
-
-
-
 
 
 

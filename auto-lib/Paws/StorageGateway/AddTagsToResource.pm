@@ -35,38 +35,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the resource you want to add tags to.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the resource you want to add tags to.
 
 =head2 B<REQUIRED> Tags => ArrayRef[Paws::StorageGateway::Tag]
 
-  
-
-The key-value pair that represents the tag you want to add to the
+  The key-value pair that represents the tag you want to add to the
 resource. The value can be an empty string.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: +
 - = . _ : / @.
-
-
-
-
-
-
-
-
-
 
 
 

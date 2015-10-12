@@ -15,18 +15,7 @@ Paws::IoTData::GetThingShadowResponse
 
 =head2 payload => Str
 
-  
-
-The state information, in JSON format.
-
-
-
-
-
-
-
-
-
+  The state information, in JSON format.
 
 
 =cut

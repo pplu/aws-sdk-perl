@@ -35,9 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 Bucket => Str
 
-  
-
-The Amazon S3 bucket in which you want Elastic Transcoder to save the
+  The Amazon S3 bucket in which you want Elastic Transcoder to save the
 transcoded files. Specify this value when all of the following are
 true:
 
@@ -63,20 +61,9 @@ transcoded files or the permissions the users have, or change the
 Amazon S3 storage class, omit OutputBucket and specify values for
 C<ContentConfig> and C<ThumbnailConfig> instead.
 
-
-
-
-
-
-
-
-
-
 =head2 Permissions => ArrayRef[Paws::ElasticTranscoder::Permission]
 
-  
-
-Optional. The C<Permissions> object specifies which users and/or
+  Optional. The C<Permissions> object specifies which users and/or
 predefined Amazon S3 groups you want to have access to transcoded files
 and playlists, and the type of access you want them to have. You can
 grant permissions to a maximum of 30 users and/or predefined Amazon S3
@@ -91,31 +78,11 @@ If you omit C<Permissions>, Elastic Transcoder grants full control over
 the transcoded files and playlists to the owner of the role specified
 by C<Role>, and grants no other permissions to any other user or group.
 
-
-
-
-
-
-
-
-
-
 =head2 StorageClass => Str
 
-  
-
-The Amazon S3 storage class, C<Standard> or C<ReducedRedundancy>, that
+  The Amazon S3 storage class, C<Standard> or C<ReducedRedundancy>, that
 you want Elastic Transcoder to assign to the video files and playlists
 that it stores in your Amazon S3 bucket.
-
-
-
-
-
-
-
-
-
 
 
 

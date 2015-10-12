@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoScalingGroupName => Str
 
-  
-
-The name of the Auto Scaling group.
-
-
-
-
-
-
-
-
-
+  The name of the Auto Scaling group.
 
 =head2 B<REQUIRED> ScheduledActionName => Str
 
-  
-
-The name of the action to delete.
-
-
-
-
-
-
-
-
-
+  The name of the action to delete.
 
 
 

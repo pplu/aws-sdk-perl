@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> workflowId => Str
 
-  
-
-The workflowId to pass of match the criteria of this filter.
-
-
-
-
-
-
-
-
-
+  The workflowId to pass of match the criteria of this filter.
 
 
 

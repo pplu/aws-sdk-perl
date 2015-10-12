@@ -36,18 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainNames => ArrayRef[Str]
 
-  
-
-The Elasticsearch domains for which you want information.
-
-
-
-
-
-
-
-
-
+  The Elasticsearch domains for which you want information.
 
 
 

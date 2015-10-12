@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RequestItems => Paws::DynamoDB::BatchWriteItemRequestMap
 
-  
-
-A map of one or more table names and, for each table, a list of
+  A map of one or more table names and, for each table, a list of
 operations to be performed (I<DeleteRequest> or I<PutRequest>). Each
 element in the map consists of the following:
 
@@ -87,36 +85,16 @@ table's attribute definition.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 ReturnConsumedCapacity => Str
 
   
 
 =head2 ReturnItemCollectionMetrics => Str
 
-  
-
-Determines whether item collection metrics are returned. If set to
+  Determines whether item collection metrics are returned. If set to
 C<SIZE>, the response includes statistics about item collections, if
 any, that were modified during the operation are returned in the
 response. If set to C<NONE> (the default), no statistics are returned.
-
-
-
-
-
-
-
-
-
 
 
 

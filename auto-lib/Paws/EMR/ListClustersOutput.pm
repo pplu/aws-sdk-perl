@@ -15,33 +15,11 @@ Paws::EMR::ListClustersOutput
 
 =head2 Clusters => ArrayRef[Paws::EMR::ClusterSummary]
 
-  
-
-The list of clusters for the account based on the given filters.
-
-
-
-
-
-
-
-
-
+  The list of clusters for the account based on the given filters.
 =head2 Marker => Str
 
-  
-
-The pagination token that indicates the next set of results to
+  The pagination token that indicates the next set of results to
 retrieve.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
-
-The value returned by the most recent call to GetChangeToken.
-
-
-
-
-
-
-
-
-
+  The value returned by the most recent call to GetChangeToken.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-A friendly name or description of the IPSet. You can't change C<Name>
+  A friendly name or description of the IPSet. You can't change C<Name>
 after you create the C<IPSet>.
-
-
-
-
-
-
-
-
-
 
 
 

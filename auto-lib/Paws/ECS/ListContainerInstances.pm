@@ -36,26 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster that
+  The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container instances to list. If you do not specify a cluster,
 the default cluster is assumed..
 
-
-
-
-
-
-
-
-
-
 =head2 maxResults => Int
 
-  
-
-The maximum number of container instance results returned by
+  The maximum number of container instance results returned by
 C<ListContainerInstances> in paginated output. When this parameter is
 used, C<ListContainerInstances> only returns C<maxResults> results in a
 single page along with a C<nextToken> response element. The remaining
@@ -65,33 +52,13 @@ This value can be between 1 and 100. If this parameter is not used,
 then C<ListContainerInstances> returns up to 100 results and a
 C<nextToken> value if applicable.
 
-
-
-
-
-
-
-
-
-
 =head2 nextToken => Str
 
-  
-
-The C<nextToken> value returned from a previous paginated
+  The C<nextToken> value returned from a previous paginated
 C<ListContainerInstances> request where C<maxResults> was used and the
 results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<nextToken> value.
 This value is C<null> when there are no more results to return.
-
-
-
-
-
-
-
-
-
 
 
 

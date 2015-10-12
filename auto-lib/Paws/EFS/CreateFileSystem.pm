@@ -36,19 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CreationToken => Str
 
-  
-
-String of up to 64 ASCII characters. Amazon EFS uses this to ensure
+  String of up to 64 ASCII characters. Amazon EFS uses this to ensure
 idempotent creation.
-
-
-
-
-
-
-
-
-
 
 
 

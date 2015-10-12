@@ -39,108 +39,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 AutoScalingGroups => ArrayRef[Paws::ElasticBeanstalk::AutoScalingGroup]
 
-  
-
-The C<AutoScalingGroups> used by this environment.
-
-
-
-
-
-
-
-
-
+  The C<AutoScalingGroups> used by this environment.
 
 =head2 EnvironmentName => Str
 
-  
-
-The name of the environment.
-
-
-
-
-
-
-
-
-
+  The name of the environment.
 
 =head2 Instances => ArrayRef[Paws::ElasticBeanstalk::Instance]
 
-  
-
-The Amazon EC2 instances used by this environment.
-
-
-
-
-
-
-
-
-
+  The Amazon EC2 instances used by this environment.
 
 =head2 LaunchConfigurations => ArrayRef[Paws::ElasticBeanstalk::LaunchConfiguration]
 
-  
-
-The Auto Scaling launch configurations in use by this environment.
-
-
-
-
-
-
-
-
-
+  The Auto Scaling launch configurations in use by this environment.
 
 =head2 LoadBalancers => ArrayRef[Paws::ElasticBeanstalk::LoadBalancer]
 
-  
-
-The LoadBalancers in use by this environment.
-
-
-
-
-
-
-
-
-
+  The LoadBalancers in use by this environment.
 
 =head2 Queues => ArrayRef[Paws::ElasticBeanstalk::Queue]
 
-  
-
-The queues used by this environment.
-
-
-
-
-
-
-
-
-
+  The queues used by this environment.
 
 =head2 Triggers => ArrayRef[Paws::ElasticBeanstalk::Trigger]
 
-  
-
-The C<AutoScaling> triggers in use by this environment.
-
-
-
-
-
-
-
-
-
+  The C<AutoScaling> triggers in use by this environment.
 
 
 

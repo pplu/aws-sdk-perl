@@ -42,157 +42,47 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 applicationArn => Str
 
-  
-
-The ARN of the application that corresponds to this assessment.
-
-
-
-
-
-
-
-
-
+  The ARN of the application that corresponds to this assessment.
 
 =head2 assessmentArn => Str
 
-  
-
-The ARN of the assessment.
-
-
-
-
-
-
-
-
-
+  The ARN of the assessment.
 
 =head2 assessmentName => Str
 
-  
-
-The name of the assessment.
-
-
-
-
-
-
-
-
-
+  The name of the assessment.
 
 =head2 assessmentState => Str
 
-  
-
-The state of the assessment. Values can be set to I<Created>,
+  The state of the assessment. Values can be set to I<Created>,
 I<Collecting Data>, I<Stopping>, and I<Completed>.
-
-
-
-
-
-
-
-
-
 
 =head2 dataCollected => Bool
 
-  
-
-Boolean value (true or false) specifying whether the data collection
+  Boolean value (true or false) specifying whether the data collection
 process is completed.
-
-
-
-
-
-
-
-
-
 
 =head2 durationInSeconds => Int
 
-  
-
-The assessment duration in seconds. The default value is 3600 seconds
+  The assessment duration in seconds. The default value is 3600 seconds
 (one hour). The maximum value is 86400 seconds (one day).
-
-
-
-
-
-
-
-
-
 
 =head2 endTime => Str
 
-  
-
-The assessment end time.
-
-
-
-
-
-
-
-
-
+  The assessment end time.
 
 =head2 failureMessage => Str
 
-  
-
-This data type property is not currently used.
-
-
-
-
-
-
-
-
-
+  This data type property is not currently used.
 
 =head2 startTime => Str
 
-  
-
-The assessment start time.
-
-
-
-
-
-
-
-
-
+  The assessment start time.
 
 =head2 userAttributesForFindings => ArrayRef[Paws::Inspector::Attribute]
 
-  
-
-The user-defined attributes that are assigned to every generated
+  The user-defined attributes that are assigned to every generated
 finding.
-
-
-
-
-
-
-
-
-
 
 
 

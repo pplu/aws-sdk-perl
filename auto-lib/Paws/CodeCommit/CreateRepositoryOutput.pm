@@ -14,18 +14,7 @@ Paws::CodeCommit::CreateRepositoryOutput
 
 =head2 repositoryMetadata => Paws::CodeCommit::RepositoryMetadata
 
-  
-
-Information about the newly created repository.
-
-
-
-
-
-
-
-
-
+  Information about the newly created repository.
 
 
 =cut

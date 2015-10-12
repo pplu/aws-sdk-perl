@@ -37,81 +37,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::R
 
 =head2 Configure => ArrayRef[Str]
 
-  
-
-An array of custom recipe names to be run following a C<configure>
+  An array of custom recipe names to be run following a C<configure>
 event.
-
-
-
-
-
-
-
-
-
 
 =head2 Deploy => ArrayRef[Str]
 
-  
-
-An array of custom recipe names to be run following a C<deploy> event.
-
-
-
-
-
-
-
-
-
+  An array of custom recipe names to be run following a C<deploy> event.
 
 =head2 Setup => ArrayRef[Str]
 
-  
-
-An array of custom recipe names to be run following a C<setup> event.
-
-
-
-
-
-
-
-
-
+  An array of custom recipe names to be run following a C<setup> event.
 
 =head2 Shutdown => ArrayRef[Str]
 
-  
-
-An array of custom recipe names to be run following a C<shutdown>
+  An array of custom recipe names to be run following a C<shutdown>
 event.
-
-
-
-
-
-
-
-
-
 
 =head2 Undeploy => ArrayRef[Str]
 
-  
-
-An array of custom recipe names to be run following a C<undeploy>
+  An array of custom recipe names to be run following a C<undeploy>
 event.
-
-
-
-
-
-
-
-
-
 
 
 

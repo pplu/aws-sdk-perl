@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::SendDa
 
 =head2 Bounces => Int
 
-  
-
-Number of emails that have bounced.
-
-
-
-
-
-
-
-
-
+  Number of emails that have bounced.
 
 =head2 Complaints => Int
 
-  
-
-Number of unwanted emails that were rejected by recipients.
-
-
-
-
-
-
-
-
-
+  Number of unwanted emails that were rejected by recipients.
 
 =head2 DeliveryAttempts => Int
 
-  
-
-Number of emails that have been enqueued for sending.
-
-
-
-
-
-
-
-
-
+  Number of emails that have been enqueued for sending.
 
 =head2 Rejects => Int
 
-  
-
-Number of emails rejected by Amazon SES.
-
-
-
-
-
-
-
-
-
+  Number of emails rejected by Amazon SES.
 
 =head2 Timestamp => Str
 
-  
-
-Time of the data point.
-
-
-
-
-
-
-
-
-
+  Time of the data point.
 
 
 

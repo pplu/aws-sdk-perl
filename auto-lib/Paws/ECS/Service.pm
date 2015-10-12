@@ -44,198 +44,66 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Servic
 
 =head2 clusterArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the of the cluster that hosts the
+  The Amazon Resource Name (ARN) of the of the cluster that hosts the
 service.
-
-
-
-
-
-
-
-
-
 
 =head2 deployments => ArrayRef[Paws::ECS::Deployment]
 
-  
-
-The current state of deployments for the service.
-
-
-
-
-
-
-
-
-
+  The current state of deployments for the service.
 
 =head2 desiredCount => Int
 
-  
-
-The desired number of instantiations of the task definition to keep
+  The desired number of instantiations of the task definition to keep
 running on the service. This value is specified when the service is
 created with CreateService, and it can be modified with UpdateService.
 
-
-
-
-
-
-
-
-
-
 =head2 events => ArrayRef[Paws::ECS::ServiceEvent]
 
-  
-
-The event stream for your service. A maximum of 100 of the latest
+  The event stream for your service. A maximum of 100 of the latest
 events are displayed.
-
-
-
-
-
-
-
-
-
 
 =head2 loadBalancers => ArrayRef[Paws::ECS::LoadBalancer]
 
-  
-
-A list of load balancer objects, containing the load balancer name, the
+  A list of load balancer objects, containing the load balancer name, the
 container name (as it appears in a container definition), and the
 container port to access from the load balancer.
 
-
-
-
-
-
-
-
-
-
 =head2 pendingCount => Int
 
-  
-
-The number of tasks in the cluster that are in the C<PENDING> state.
-
-
-
-
-
-
-
-
-
+  The number of tasks in the cluster that are in the C<PENDING> state.
 
 =head2 roleArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the IAM role associated with the
+  The Amazon Resource Name (ARN) of the IAM role associated with the
 service that allows the Amazon ECS container agent to register
 container instances with a load balancer.
 
-
-
-
-
-
-
-
-
-
 =head2 runningCount => Int
 
-  
-
-The number of tasks in the cluster that are in the C<RUNNING> state.
-
-
-
-
-
-
-
-
-
+  The number of tasks in the cluster that are in the C<RUNNING> state.
 
 =head2 serviceArn => Str
 
-  
-
-The Amazon Resource Name (ARN) that identifies the service. The ARN
+  The Amazon Resource Name (ARN) that identifies the service. The ARN
 contains the C<arn:aws:ecs> namespace, followed by the region of the
 service, the AWS account ID of the service owner, the C<service>
 namespace, and then the service name. For example,
 arn:aws:ecs:I<region>:I<012345678910>:service/I<my-service>.
 
-
-
-
-
-
-
-
-
-
 =head2 serviceName => Str
 
-  
-
-A user-generated string that you can use to identify your service.
-
-
-
-
-
-
-
-
-
+  A user-generated string that you can use to identify your service.
 
 =head2 status => Str
 
-  
-
-The status of the service. The valid values are C<ACTIVE>, C<DRAINING>,
+  The status of the service. The valid values are C<ACTIVE>, C<DRAINING>,
 or C<INACTIVE>.
-
-
-
-
-
-
-
-
-
 
 =head2 taskDefinition => Str
 
-  
-
-The task definition to use for tasks in the service. This value is
+  The task definition to use for tasks in the service. This value is
 specified when the service is created with CreateService, and it can be
 modified with UpdateService.
-
-
-
-
-
-
-
-
-
 
 
 

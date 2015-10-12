@@ -37,9 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  
-
-The customer-assigned name of the DB instance that contains the log
+  The customer-assigned name of the DB instance that contains the log
 files you want to list.
 
 Constraints:
@@ -54,52 +52,19 @@ Constraints:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> LogFileName => Str
 
-  
-
-The name of the log file to be downloaded.
-
-
-
-
-
-
-
-
-
+  The name of the log file to be downloaded.
 
 =head2 Marker => Str
 
-  
-
-The pagination token provided in the previous request or "0". If the
+  The pagination token provided in the previous request or "0". If the
 Marker parameter is specified the response includes only records beyond
 the marker until the end of the file or up to NumberOfLines.
 
-
-
-
-
-
-
-
-
-
 =head2 NumberOfLines => Int
 
-  
-
-The number of lines to download. If the number of lines specified
+  The number of lines to download. If the number of lines specified
 results in a file over 1 MB in size, the file will be truncated at 1 MB
 in size.
 
@@ -134,15 +99,6 @@ next request, continuing until the AdditionalDataPending response
 element returns false.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

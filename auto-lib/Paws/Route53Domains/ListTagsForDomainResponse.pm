@@ -14,9 +14,7 @@ Paws::Route53Domains::ListTagsForDomainResponse
 
 =head2 B<REQUIRED> TagList => ArrayRef[Paws::Route53Domains::Tag]
 
-  
-
-A list of the tags that are associated with the specified domain.
+  A list of the tags that are associated with the specified domain.
 
 Type: A complex type containing a list of tags
 
@@ -41,15 +39,6 @@ The value of a tag.
 Type: String
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 =cut

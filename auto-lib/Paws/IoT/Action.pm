@@ -40,18 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Action
 
 =head2 dynamoDB => Paws::IoT::DynamoDBAction
 
-  
-
-Write to a DynamoDB table.
-
-
-
-
-
-
-
-
-
+  Write to a DynamoDB table.
 
 =head2 firehose => Paws::IoT::FirehoseAction
 
@@ -59,93 +48,27 @@ Write to a DynamoDB table.
 
 =head2 kinesis => Paws::IoT::KinesisAction
 
-  
-
-Write data to a Kinesis stream.
-
-
-
-
-
-
-
-
-
+  Write data to a Kinesis stream.
 
 =head2 lambda => Paws::IoT::LambdaAction
 
-  
-
-Invoke a Lambda function.
-
-
-
-
-
-
-
-
-
+  Invoke a Lambda function.
 
 =head2 republish => Paws::IoT::RepublishAction
 
-  
-
-Publish to another MQTT topic.
-
-
-
-
-
-
-
-
-
+  Publish to another MQTT topic.
 
 =head2 s3 => Paws::IoT::S3Action
 
-  
-
-Write to an S3 bucket.
-
-
-
-
-
-
-
-
-
+  Write to an S3 bucket.
 
 =head2 sns => Paws::IoT::SnsAction
 
-  
-
-Publish to an SNS topic.
-
-
-
-
-
-
-
-
-
+  Publish to an SNS topic.
 
 =head2 sqs => Paws::IoT::SqsAction
 
-  
-
-Publish to an SQS queue.
-
-
-
-
-
-
-
-
-
+  Publish to an SQS queue.
 
 
 

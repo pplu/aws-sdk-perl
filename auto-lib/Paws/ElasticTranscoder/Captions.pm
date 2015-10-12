@@ -35,41 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 CaptionFormats => ArrayRef[Paws::ElasticTranscoder::CaptionFormat]
 
-  
-
-The array of file formats for the output captions. If you leave this
+  The array of file formats for the output captions. If you leave this
 value blank, Elastic Transcoder returns an error.
-
-
-
-
-
-
-
-
-
 
 =head2 CaptionSources => ArrayRef[Paws::ElasticTranscoder::CaptionSource]
 
-  
-
-Source files for the input sidecar captions used during the transcoding
+  Source files for the input sidecar captions used during the transcoding
 process. To omit all sidecar captions, leave C<CaptionSources> blank.
-
-
-
-
-
-
-
-
-
 
 =head2 MergePolicy => Str
 
-  
-
-A policy that determines how Elastic Transcoder handles the existence
+  A policy that determines how Elastic Transcoder handles the existence
 of multiple captions.
 
 =over
@@ -99,15 +75,6 @@ that you specify in C<CaptionSources>.
 =back
 
 C<MergePolicy> cannot be null.
-
-
-
-
-
-
-
-
-
 
 
 

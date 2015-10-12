@@ -14,18 +14,7 @@ Paws::ECS::RegisterTaskDefinitionResponse
 
 =head2 taskDefinition => Paws::ECS::TaskDefinition
 
-  
-
-The full description of the registered task definition.
-
-
-
-
-
-
-
-
-
+  The full description of the registered task definition.
 
 
 =cut

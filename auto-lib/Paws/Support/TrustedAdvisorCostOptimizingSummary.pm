@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
 =head2 B<REQUIRED> estimatedMonthlySavings => Num
 
-  
-
-The estimated monthly savings that might be realized if the recommended
+  The estimated monthly savings that might be realized if the recommended
 actions are taken.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> estimatedPercentMonthlySavings => Num
 
-  
-
-The estimated percentage of savings that might be realized if the
+  The estimated percentage of savings that might be realized if the
 recommended actions are taken.
-
-
-
-
-
-
-
-
-
 
 
 

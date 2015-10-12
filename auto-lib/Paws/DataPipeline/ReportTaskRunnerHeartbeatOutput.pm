@@ -14,18 +14,7 @@ Paws::DataPipeline::ReportTaskRunnerHeartbeatOutput
 
 =head2 B<REQUIRED> terminate => Bool
 
-  
-
-Indicates whether the calling task runner should terminate.
-
-
-
-
-
-
-
-
-
+  Indicates whether the calling task runner should terminate.
 
 
 =cut

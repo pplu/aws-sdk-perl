@@ -14,18 +14,7 @@ Paws::CodeDeploy::BatchGetOnPremisesInstancesOutput
 
 =head2 instanceInfos => ArrayRef[Paws::CodeDeploy::InstanceInfo]
 
-  
-
-Information about the on-premises instances.
-
-
-
-
-
-
-
-
-
+  Information about the on-premises instances.
 
 
 =cut

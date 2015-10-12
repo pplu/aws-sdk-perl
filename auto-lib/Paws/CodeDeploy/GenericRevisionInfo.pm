@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 deploymentGroups => ArrayRef[Str]
 
-  
-
-A list of deployment groups that use this revision.
-
-
-
-
-
-
-
-
-
+  A list of deployment groups that use this revision.
 
 =head2 description => Str
 
-  
-
-A comment about the revision.
-
-
-
-
-
-
-
-
-
+  A comment about the revision.
 
 =head2 firstUsedTime => Str
 
-  
-
-When the revision was first used by AWS CodeDeploy.
-
-
-
-
-
-
-
-
-
+  When the revision was first used by AWS CodeDeploy.
 
 =head2 lastUsedTime => Str
 
-  
-
-When the revision was last used by AWS CodeDeploy.
-
-
-
-
-
-
-
-
-
+  When the revision was last used by AWS CodeDeploy.
 
 =head2 registerTime => Str
 
-  
-
-When the revision was registered with AWS CodeDeploy.
-
-
-
-
-
-
-
-
-
+  When the revision was registered with AWS CodeDeploy.
 
 
 

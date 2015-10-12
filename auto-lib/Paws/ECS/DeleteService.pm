@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 cluster => Str
 
-  
-
-The name of the cluster that hosts the service to delete. If you do not
+  The name of the cluster that hosts the service to delete. If you do not
 specify a cluster, the default cluster is assumed.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> service => Str
 
-  
-
-The name of the service to delete.
-
-
-
-
-
-
-
-
-
+  The name of the service to delete.
 
 
 

@@ -38,98 +38,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::R
 
 =head2 ClusterJDBCURL => Str
 
-  
-
-The database connection string.
-
-
-
-
-
-
-
-
-
+  The database connection string.
 
 =head2 CopyCommand => Paws::Firehose::CopyCommand
 
-  
-
-The C<COPY> command.
-
-
-
-
-
-
-
-
-
+  The C<COPY> command.
 
 =head2 Password => Str
 
-  
-
-The user password.
-
-
-
-
-
-
-
-
-
+  The user password.
 
 =head2 RoleARN => Str
 
-  
-
-The ARN of the AWS credentials.
-
-
-
-
-
-
-
-
-
+  The ARN of the AWS credentials.
 
 =head2 S3Update => Paws::Firehose::S3DestinationUpdate
 
-  
-
-The Amazon S3 destination.
+  The Amazon S3 destination.
 
 The compression formats C<SNAPPY> or C<ZIP> cannot be specified in
 C<RedshiftDestinationUpdate.S3Update> because the Amazon Redshift
 C<COPY> operation that reads from the S3 bucket doesn't support these
 compression formats.
 
-
-
-
-
-
-
-
-
-
 =head2 Username => Str
 
-  
-
-The name of the user.
-
-
-
-
-
-
-
-
-
+  The name of the user.
 
 
 

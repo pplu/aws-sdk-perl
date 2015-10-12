@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
 =head2 NodeRole => Str
 
-  
-
-Whether the node is a leader node or a compute node.
-
-
-
-
-
-
-
-
-
+  Whether the node is a leader node or a compute node.
 
 =head2 PrivateIPAddress => Str
 
-  
-
-The private IP address of a node within a cluster.
-
-
-
-
-
-
-
-
-
+  The private IP address of a node within a cluster.
 
 =head2 PublicIPAddress => Str
 
-  
-
-The public IP address of a node within a cluster.
-
-
-
-
-
-
-
-
-
+  The public IP address of a node within a cluster.
 
 
 

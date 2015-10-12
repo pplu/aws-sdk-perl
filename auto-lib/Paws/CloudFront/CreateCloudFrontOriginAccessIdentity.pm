@@ -22,18 +22,7 @@ Paws::CloudFront::CreateCloudFrontOriginAccessIdentityResult
 
 =head2 B<REQUIRED> CloudFrontOriginAccessIdentityConfig => Paws::CloudFront::CloudFrontOriginAccessIdentityConfig
 
-  
-
-The origin access identity's configuration information.
-
-
-
-
-
-
-
-
-
+  The origin access identity's configuration information.
 
 
 =cut

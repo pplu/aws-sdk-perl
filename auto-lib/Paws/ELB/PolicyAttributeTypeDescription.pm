@@ -37,39 +37,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Policy
 
 =head2 AttributeName => Str
 
-  
-
-The name of the attribute.
-
-
-
-
-
-
-
-
-
+  The name of the attribute.
 
 =head2 AttributeType => Str
 
-  
-
-The type of the attribute. For example, C<Boolean> or C<Integer>.
-
-
-
-
-
-
-
-
-
+  The type of the attribute. For example, C<Boolean> or C<Integer>.
 
 =head2 Cardinality => Str
 
-  
-
-The cardinality of the attribute.
+  The cardinality of the attribute.
 
 Valid values:
 
@@ -85,44 +61,13 @@ Valid values:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 DefaultValue => Str
 
-  
-
-The default value of the attribute, if applicable.
-
-
-
-
-
-
-
-
-
+  The default value of the attribute, if applicable.
 
 =head2 Description => Str
 
-  
-
-A description of the attribute.
-
-
-
-
-
-
-
-
-
+  A description of the attribute.
 
 
 

@@ -35,52 +35,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
 =head2 ClusterParameterStatusList => ArrayRef[Paws::RedShift::ClusterParameterStatus]
 
-  
-
-The list of parameter statuses.
+  The list of parameter statuses.
 
 For more information about parameters and parameter groups, go to
 Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
 Management Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 ParameterApplyStatus => Str
 
-  
-
-The status of parameter updates.
-
-
-
-
-
-
-
-
-
+  The status of parameter updates.
 
 =head2 ParameterGroupName => Str
 
-  
-
-The name of the cluster parameter group.
-
-
-
-
-
-
-
-
-
+  The name of the cluster parameter group.
 
 
 

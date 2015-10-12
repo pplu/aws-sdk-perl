@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::MountP
 
 =head2 containerPath => Str
 
-  
-
-The path on the container to mount the host volume at.
-
-
-
-
-
-
-
-
-
+  The path on the container to mount the host volume at.
 
 =head2 readOnly => Bool
 
-  
-
-If this value is C<true>, the container has read-only access to the
+  If this value is C<true>, the container has read-only access to the
 volume. If this value is C<false>, then the container can write to the
 volume. The default value is C<false>.
 
-
-
-
-
-
-
-
-
-
 =head2 sourceVolume => Str
 
-  
-
-The name of the volume to mount.
-
-
-
-
-
-
-
-
-
+  The name of the volume to mount.
 
 
 

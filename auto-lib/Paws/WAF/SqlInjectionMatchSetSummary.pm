@@ -34,24 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::SqlInj
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the C<SqlInjectionMatchSet>, if any, specified by C<Id>.
-
-
-
-
-
-
-
-
-
+  The name of the C<SqlInjectionMatchSet>, if any, specified by C<Id>.
 
 =head2 B<REQUIRED> SqlInjectionMatchSetId => Str
 
-  
-
-A unique identifier for a C<SqlInjectionMatchSet>. You use
+  A unique identifier for a C<SqlInjectionMatchSet>. You use
 C<SqlInjectionMatchSetId> to get information about a
 C<SqlInjectionMatchSet> (see GetSqlInjectionMatchSet), update a
 C<SqlInjectionMatchSet> (see UpdateSqlInjectionMatchSet, insert a
@@ -61,15 +48,6 @@ C<SqlInjectionMatchSet> into a C<Rule> or delete one from a C<Rule>
 
 C<SqlInjectionMatchSetId> is returned by CreateSqlInjectionMatchSet and
 by ListSqlInjectionMatchSets.
-
-
-
-
-
-
-
-
-
 
 
 

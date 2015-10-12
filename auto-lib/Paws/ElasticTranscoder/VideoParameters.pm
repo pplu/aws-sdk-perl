@@ -47,9 +47,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 AspectRatio => Str
 
-  
-
-To better control resolution and aspect ratio of output videos, we
+  To better control resolution and aspect ratio of output videos, we
 recommend that you use the values C<MaxWidth>, C<MaxHeight>,
 C<SizingPolicy>, C<PaddingPolicy>, and C<DisplayAspectRatio> instead of
 C<Resolution> and C<AspectRatio>. The two groups of settings are
@@ -68,20 +66,9 @@ aspect ratio of the input file, Elastic Transcoder adds pillarboxing
 (black bars on the sides) or letterboxing (black bars on the top and
 bottom) to maintain the aspect ratio of the active region of the video.
 
-
-
-
-
-
-
-
-
-
 =head2 BitRate => Str
 
-  
-
-The bit rate of the video stream in the output file, in
+  The bit rate of the video stream in the output file, in
 kilobits/second. Valid values depend on the values of C<Level> and
 C<Profile>. If you specify C<auto>, Elastic Transcoder uses the
 detected bit rate of the input source. If you specify a value other
@@ -117,38 +104,16 @@ Profile) : maximum video bit rate in kilobits/second (high Profile)>
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Codec => Str
 
-  
-
-The video codec for the output file. Valid values include C<gif>,
+  The video codec for the output file. Valid values include C<gif>,
 C<H.264>, C<mpeg2>, and C<vp8>. You can only specify C<vp8> when the
 container type is C<webm>, C<gif> when the container type is C<gif>,
 and C<mpeg2> when the container type is C<mpg>.
 
-
-
-
-
-
-
-
-
-
 =head2 CodecOptions => Paws::ElasticTranscoder::CodecOptions
 
-  
-
-B<Profile (H.264/VP8 Only)>
+  B<Profile (H.264/VP8 Only)>
 
 The H.264 profile that you want to use for the output file. Elastic
 Transcoder supports the following profiles:
@@ -312,36 +277,14 @@ B<LoopCount (Gif Only)>
 The number of times you want the output gif to loop. Valid values
 include C<Infinite> and integers between C<0> and C<100>, inclusive.
 
-
-
-
-
-
-
-
-
-
 =head2 DisplayAspectRatio => Str
 
-  
-
-The value that Elastic Transcoder adds to the metadata in the output
+  The value that Elastic Transcoder adds to the metadata in the output
 file.
-
-
-
-
-
-
-
-
-
 
 =head2 FixedGOP => Str
 
-  
-
-Applicable only when the value of Video:Codec is one of C<H.264>,
+  Applicable only when the value of Video:Codec is one of C<H.264>,
 C<MPEG2>, or C<VP8>.
 
 Whether to use a fixed value for C<FixedGOP>. Valid values are C<true>
@@ -359,20 +302,9 @@ frames in a group of pictures, or GOP).
 
 C<FixedGOP> must be set to C<true> for C<fmp4> containers.
 
-
-
-
-
-
-
-
-
-
 =head2 FrameRate => Str
 
-  
-
-The frames per second for the video stream in the output file. Valid
+  The frames per second for the video stream in the output file. Valid
 values include:
 
 C<auto>, C<10>, C<15>, C<23.97>, C<24>, C<25>, C<29.97>, C<30>, C<60>
@@ -430,20 +362,9 @@ level is described in the following list (I<Level - Decoding speed>):
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 KeyframesMaxDist => Str
 
-  
-
-Applicable only when the value of Video:Codec is one of C<H.264>,
+  Applicable only when the value of Video:Codec is one of C<H.264>,
 C<MPEG2>, or C<VP8>.
 
 The maximum number of frames between key frames. Key frames are fully
@@ -465,94 +386,39 @@ C<KeyframesMaxDist> of 90, 75, and 30, respectively.
 Alternately, this can be achieved by setting C<FrameRate> to auto and
 having the same values for C<MaxFrameRate> and C<KeyframesMaxDist>.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxFrameRate => Str
 
-  
-
-If you specify C<auto> for C<FrameRate>, Elastic Transcoder uses the
+  If you specify C<auto> for C<FrameRate>, Elastic Transcoder uses the
 frame rate of the input video for the frame rate of the output video.
 Specify the maximum frame rate that you want Elastic Transcoder to use
 when the frame rate of the input video is greater than the desired
 maximum frame rate of the output video. Valid values include: C<10>,
 C<15>, C<23.97>, C<24>, C<25>, C<29.97>, C<30>, C<60>.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxHeight => Str
 
-  
-
-The maximum height of the output video in pixels. If you specify
+  The maximum height of the output video in pixels. If you specify
 C<auto>, Elastic Transcoder uses 1080 (Full HD) as the default value.
 If you specify a numeric value, enter an even integer between 96 and
 3072.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxWidth => Str
 
-  
-
-The maximum width of the output video in pixels. If you specify
+  The maximum width of the output video in pixels. If you specify
 C<auto>, Elastic Transcoder uses 1920 (Full HD) as the default value.
 If you specify a numeric value, enter an even integer between 128 and
 4096.
 
-
-
-
-
-
-
-
-
-
 =head2 PaddingPolicy => Str
 
-  
-
-When you set C<PaddingPolicy> to C<Pad>, Elastic Transcoder may add
+  When you set C<PaddingPolicy> to C<Pad>, Elastic Transcoder may add
 black bars to the top and bottom and/or left and right sides of the
 output video to make the total size of the output video match the
 values that you specified for C<MaxWidth> and C<MaxHeight>.
 
-
-
-
-
-
-
-
-
-
 =head2 Resolution => Str
 
-  
-
-To better control resolution and aspect ratio of output videos, we
+  To better control resolution and aspect ratio of output videos, we
 recommend that you use the values C<MaxWidth>, C<MaxHeight>,
 C<SizingPolicy>, C<PaddingPolicy>, and C<DisplayAspectRatio> instead of
 C<Resolution> and C<AspectRatio>. The two groups of settings are
@@ -625,20 +491,9 @@ value in the following list (I<List - Max width x height value>):
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 SizingPolicy => Str
 
-  
-
-Specify one of the following values to control scaling of the output
+  Specify one of the following values to control scaling of the output
 video:
 
 =over
@@ -677,20 +532,9 @@ the video up.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Watermarks => ArrayRef[Paws::ElasticTranscoder::PresetWatermark]
 
-  
-
-Settings for the size, location, and opacity of graphics that you want
+  Settings for the size, location, and opacity of graphics that you want
 Elastic Transcoder to overlay over videos that are transcoded using
 this preset. You can specify settings for up to four watermarks.
 Watermarks appear in the specified size and location, and with the
@@ -705,15 +549,6 @@ When you create a job that uses this preset, you specify the .png or
 transcoded videos. You can specify fewer graphics in the job than you
 specify watermark settings in the preset, which allows you to use the
 same preset for up to four watermarks that have different dimensions.
-
-
-
-
-
-
-
-
-
 
 
 

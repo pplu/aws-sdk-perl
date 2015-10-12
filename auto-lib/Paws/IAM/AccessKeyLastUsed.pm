@@ -35,9 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Access
 
 =head2 B<REQUIRED> LastUsedDate => Str
 
-  
-
-The date and time, in ISO 8601 date-time format, when the access key
+  The date and time, in ISO 8601 date-time format, when the access key
 was most recently used. This field is null when:
 
 =over
@@ -57,20 +55,9 @@ There is no sign-in data associated with the user
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Region => Str
 
-  
-
-The AWS region where this access key was most recently used. This field
+  The AWS region where this access key was most recently used. This field
 is null when:
 
 =over
@@ -93,20 +80,9 @@ There is no sign-in data associated with the user
 For more information about AWS regions, see Regions and Endpoints in
 the Amazon Web Services General Reference.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ServiceName => Str
 
-  
-
-The name of the AWS service with which this access key was most
+  The name of the AWS service with which this access key was most
 recently used. This field is null when:
 
 =over
@@ -125,15 +101,6 @@ started tracking this information on April 22nd, 2015.
 There is no sign-in data associated with the user
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

@@ -40,131 +40,43 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Deploy
 
 =head2 createdAt => Str
 
-  
-
-The Unix time in seconds and milliseconds when the service was created.
-
-
-
-
-
-
-
-
-
+  The Unix time in seconds and milliseconds when the service was created.
 
 =head2 desiredCount => Int
 
-  
-
-The most recent desired count of tasks that was specified for the
+  The most recent desired count of tasks that was specified for the
 service to deploy or maintain.
-
-
-
-
-
-
-
-
-
 
 =head2 id => Str
 
-  
-
-The ID of the deployment.
-
-
-
-
-
-
-
-
-
+  The ID of the deployment.
 
 =head2 pendingCount => Int
 
-  
-
-The number of tasks in the deployment that are in the C<PENDING>
+  The number of tasks in the deployment that are in the C<PENDING>
 status.
-
-
-
-
-
-
-
-
-
 
 =head2 runningCount => Int
 
-  
-
-The number of tasks in the deployment that are in the C<RUNNING>
+  The number of tasks in the deployment that are in the C<RUNNING>
 status.
-
-
-
-
-
-
-
-
-
 
 =head2 status => Str
 
-  
-
-The status of the deployment. Valid values are C<PRIMARY> (for the most
+  The status of the deployment. Valid values are C<PRIMARY> (for the most
 recent deployment), C<ACTIVE> (for previous deployments that still have
 tasks running, but are being replaced with the C<PRIMARY> deployment),
 and C<INACTIVE> (for deployments that have been completely replaced).
 
-
-
-
-
-
-
-
-
-
 =head2 taskDefinition => Str
 
-  
-
-The most recent task definition that was specified for the service to
+  The most recent task definition that was specified for the service to
 use.
-
-
-
-
-
-
-
-
-
 
 =head2 updatedAt => Str
 
-  
-
-The Unix time in seconds and milliseconds when the service was last
+  The Unix time in seconds and milliseconds when the service was last
 updated.
-
-
-
-
-
-
-
-
-
 
 
 

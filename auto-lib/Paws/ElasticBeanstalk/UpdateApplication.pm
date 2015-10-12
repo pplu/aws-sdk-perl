@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of the application to update. If no such application is found,
+  The name of the application to update. If no such application is found,
 C<UpdateApplication> returns an C<InvalidParameterValue> error.
-
-
-
-
-
-
-
-
-
 
 =head2 Description => Str
 
-  
-
-A new description for the application.
+  A new description for the application.
 
 Default: If not specified, AWS Elastic Beanstalk does not update the
 description.
-
-
-
-
-
-
-
-
-
 
 
 

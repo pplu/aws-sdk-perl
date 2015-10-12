@@ -39,111 +39,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 B<REQUIRED> actionTypeId => Paws::CodePipeline::ActionTypeId
 
-  
-
-The configuration information for the action type.
-
-
-
-
-
-
-
-
-
+  The configuration information for the action type.
 
 =head2 configuration => Paws::CodePipeline::ActionConfigurationMap
 
-  
-
-The action declaration's configuration.
-
-
-
-
-
-
-
-
-
+  The action declaration's configuration.
 
 =head2 inputArtifacts => ArrayRef[Paws::CodePipeline::InputArtifact]
 
-  
-
-The name or ID of the artifact consumed by the action, such as a test
+  The name or ID of the artifact consumed by the action, such as a test
 or build artifact.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The action declaration's name.
-
-
-
-
-
-
-
-
-
+  The action declaration's name.
 
 =head2 outputArtifacts => ArrayRef[Paws::CodePipeline::OutputArtifact]
 
-  
-
-The name or ID of the result of the action declaration, such as a test
+  The name or ID of the result of the action declaration, such as a test
 or build artifact.
-
-
-
-
-
-
-
-
-
 
 =head2 roleArn => Str
 
-  
-
-The ARN of the IAM service role that will perform the declared action.
+  The ARN of the IAM service role that will perform the declared action.
 This is assumed through the roleArn for the pipeline.
-
-
-
-
-
-
-
-
-
 
 =head2 runOrder => Int
 
-  
-
-The order in which actions are run.
-
-
-
-
-
-
-
-
-
+  The order in which actions are run.
 
 
 

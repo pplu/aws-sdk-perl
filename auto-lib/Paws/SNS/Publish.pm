@@ -39,9 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Message => Str
 
-  
-
-The message you want to send to the topic.
+  The message you want to send to the topic.
 
 If you want to send the same message to all transport protocols,
 include the text of the message as a String value.
@@ -86,35 +84,13 @@ delivery).
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 MessageAttributes => Paws::SNS::MessageAttributeMap
 
-  
-
-Message attributes for Publish action.
-
-
-
-
-
-
-
-
-
+  Message attributes for Publish action.
 
 =head2 MessageStructure => Str
 
-  
-
-Set C<MessageStructure> to C<json> if you want to send a different
+  Set C<MessageStructure> to C<json> if you want to send a different
 message for each protocol. For example, using one publish action, you
 can send a short message to your SMS subscribers and a longer message
 to your email subscribers. If you set C<MessageStructure> to C<json>,
@@ -139,20 +115,9 @@ Started Guide>.
 
 Valid value: C<json>
 
-
-
-
-
-
-
-
-
-
 =head2 Subject => Str
 
-  
-
-Optional parameter to be used as the "Subject" line when the message is
+  Optional parameter to be used as the "Subject" line when the message is
 delivered to email endpoints. This field will also be included, if
 present, in the standard JSON messages delivered to other endpoints.
 
@@ -160,44 +125,13 @@ Constraints: Subjects must be ASCII text that begins with a letter,
 number, or punctuation mark; must not include line breaks or control
 characters; and must be less than 100 characters long.
 
-
-
-
-
-
-
-
-
-
 =head2 TargetArn => Str
 
-  
-
-Either TopicArn or EndpointArn, but not both.
-
-
-
-
-
-
-
-
-
+  Either TopicArn or EndpointArn, but not both.
 
 =head2 TopicArn => Str
 
-  
-
-The topic you want to publish to.
-
-
-
-
-
-
-
-
-
+  The topic you want to publish to.
 
 
 

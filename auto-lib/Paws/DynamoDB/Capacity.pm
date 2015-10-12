@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 
 =head2 CapacityUnits => Num
 
-  
-
-The total number of capacity units consumed on a table or an index.
-
-
-
-
-
-
-
-
-
+  The total number of capacity units consumed on a table or an index.
 
 
 

@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Pricin
 
 =head2 Count => Int
 
-  
-
-The number of instances available for the price.
-
-
-
-
-
-
-
-
-
+  The number of instances available for the price.
 
 =head2 Price => Num
 
-  
-
-The price per instance.
-
-
-
-
-
-
-
-
-
+  The price per instance.
 
 
 

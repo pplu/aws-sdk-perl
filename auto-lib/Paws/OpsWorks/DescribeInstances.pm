@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 InstanceIds => ArrayRef[Str]
 
-  
-
-An array of instance IDs to be described. If you use this parameter,
+  An array of instance IDs to be described. If you use this parameter,
 C<DescribeInstances> returns a description of the specified instances.
 Otherwise, it returns a description of every instance.
 
-
-
-
-
-
-
-
-
-
 =head2 LayerId => Str
 
-  
-
-A layer ID. If you use this parameter, C<DescribeInstances> returns
+  A layer ID. If you use this parameter, C<DescribeInstances> returns
 descriptions of the instances associated with the specified layer.
-
-
-
-
-
-
-
-
-
 
 =head2 StackId => Str
 
-  
-
-A stack ID. If you use this parameter, C<DescribeInstances> returns
+  A stack ID. If you use this parameter, C<DescribeInstances> returns
 descriptions of the instances associated with the specified stack.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -36,70 +36,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Identi
 
 =head2 BounceTopic => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES
+  The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES
 will publish bounce notifications.
-
-
-
-
-
-
-
-
-
 
 =head2 ComplaintTopic => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES
+  The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES
 will publish complaint notifications.
-
-
-
-
-
-
-
-
-
 
 =head2 DeliveryTopic => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES
+  The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES
 will publish delivery notifications.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ForwardingEnabled => Bool
 
-  
-
-Describes whether Amazon SES will forward bounce and complaint
+  Describes whether Amazon SES will forward bounce and complaint
 notifications as email. C<true> indicates that Amazon SES will forward
 bounce and complaint notifications as email, while C<false> indicates
 that bounce and complaint notifications will be published only to the
 specified bounce and complaint Amazon SNS topics.
-
-
-
-
-
-
-
-
-
 
 
 

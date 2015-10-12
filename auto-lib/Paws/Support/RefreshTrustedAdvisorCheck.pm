@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> checkId => Str
 
-  
-
-The unique identifier for the Trusted Advisor check.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the Trusted Advisor check.
 
 
 

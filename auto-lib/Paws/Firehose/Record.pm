@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::R
 
 =head2 B<REQUIRED> Data => Str
 
-  
-
-The data blob, which is base64-encoded when the blob is serialized. The
+  The data blob, which is base64-encoded when the blob is serialized. The
 maximum size of the data blob, before base64-encoding, is 1,000 KB.
-
-
-
-
-
-
-
-
-
 
 
 

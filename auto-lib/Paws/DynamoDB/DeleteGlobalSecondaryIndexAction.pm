@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::D
 
 =head2 B<REQUIRED> IndexName => Str
 
-  
-
-The name of the global secondary index to be deleted.
-
-
-
-
-
-
-
-
-
+  The name of the global secondary index to be deleted.
 
 
 

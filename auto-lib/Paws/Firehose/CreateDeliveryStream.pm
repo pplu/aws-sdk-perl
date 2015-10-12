@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeliveryStreamName => Str
 
-  
-
-The name of the delivery stream.
-
-
-
-
-
-
-
-
-
+  The name of the delivery stream.
 
 =head2 RedshiftDestinationConfiguration => Paws::Firehose::RedshiftDestinationConfiguration
 
-  
-
-The destination in Amazon Redshift. This value cannot be specified if
+  The destination in Amazon Redshift. This value cannot be specified if
 Amazon S3 is the desired destination (see restrictions listed above).
-
-
-
-
-
-
-
-
-
 
 =head2 S3DestinationConfiguration => Paws::Firehose::S3DestinationConfiguration
 
-  
-
-The destination in Amazon S3. This value must be specified if
+  The destination in Amazon S3. This value must be specified if
 C<RedshiftDestinationConfiguration> is specified (see restrictions
 listed above).
-
-
-
-
-
-
-
-
-
 
 
 

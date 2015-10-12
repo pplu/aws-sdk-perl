@@ -14,18 +14,7 @@ Paws::OpsWorks::DescribeLayersResult
 
 =head2 Layers => ArrayRef[Paws::OpsWorks::Layer]
 
-  
-
-An array of C<Layer> objects that describe the layers.
-
-
-
-
-
-
-
-
-
+  An array of C<Layer> objects that describe the layers.
 
 
 =cut

@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 messageTypeTelemetries => ArrayRef[Paws::Inspector::MessageTypeTelemetry]
 
-  
-
-Counts of individual metrics received by Inspector from the agent.
-
-
-
-
-
-
-
-
-
+  Counts of individual metrics received by Inspector from the agent.
 
 =head2 status => Str
 
-  
-
-The category of the individual metrics that together constitute the
+  The category of the individual metrics that together constitute the
 telemetry that Inspector received from the agent.
-
-
-
-
-
-
-
-
-
 
 
 

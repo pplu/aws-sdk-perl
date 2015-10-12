@@ -36,68 +36,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::B
 
 =head2 DeviceName => Str
 
-  
-
-The device name that is exposed to the instance, such as C</dev/sdh>.
+  The device name that is exposed to the instance, such as C</dev/sdh>.
 For the root device, you can use the explicit device name or you can
 set this parameter to C<ROOT_DEVICE> and AWS OpsWorks will provide the
 correct device name.
 
-
-
-
-
-
-
-
-
-
 =head2 Ebs => Paws::OpsWorks::EbsBlockDevice
 
-  
-
-An C<EBSBlockDevice> that defines how to configure an Amazon EBS volume
+  An C<EBSBlockDevice> that defines how to configure an Amazon EBS volume
 when the instance is launched.
-
-
-
-
-
-
-
-
-
 
 =head2 NoDevice => Str
 
-  
-
-Suppresses the specified device included in the AMI's block device
+  Suppresses the specified device included in the AMI's block device
 mapping.
-
-
-
-
-
-
-
-
-
 
 =head2 VirtualName => Str
 
-  
-
-The virtual device name. For more information, see BlockDeviceMapping.
-
-
-
-
-
-
-
-
-
+  The virtual device name. For more information, see BlockDeviceMapping.
 
 
 

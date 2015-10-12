@@ -44,59 +44,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of the application that contains the version to be deployed.
+  The name of the application that contains the version to be deployed.
 
 If no application is found with this name, C<CreateEnvironment> returns
 an C<InvalidParameterValue> error.
 
-
-
-
-
-
-
-
-
-
 =head2 CNAMEPrefix => Str
 
-  
-
-If specified, the environment attempts to use this value as the prefix
+  If specified, the environment attempts to use this value as the prefix
 for the CNAME. If not specified, the CNAME is generated automatically
 by appending a random alphanumeric string to the environment name.
 
-
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
-
-Describes this environment.
-
-
-
-
-
-
-
-
-
+  Describes this environment.
 
 =head2 B<REQUIRED> EnvironmentName => Str
 
-  
-
-A unique name for the deployment environment. Used in the application
+  A unique name for the deployment environment. Used in the application
 URL.
 
 Constraint: Must be from 4 to 23 characters in length. The name can
@@ -109,54 +74,21 @@ Default: If the CNAME parameter is not specified, the environment name
 becomes part of the CNAME, and therefore part of the visible URL for
 your application.
 
-
-
-
-
-
-
-
-
-
 =head2 OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]
 
-  
-
-If specified, AWS Elastic Beanstalk sets the specified configuration
+  If specified, AWS Elastic Beanstalk sets the specified configuration
 options to the requested value in the configuration set for the new
 environment. These override the values obtained from the solution stack
 or the configuration template.
 
-
-
-
-
-
-
-
-
-
 =head2 OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]
 
-  
-
-A list of custom user-defined configuration options to remove from the
+  A list of custom user-defined configuration options to remove from the
 configuration set for this new environment.
-
-
-
-
-
-
-
-
-
 
 =head2 SolutionStackName => Str
 
-  
-
-This is an alternative to specifying a template name. If specified, AWS
+  This is an alternative to specifying a template name. If specified, AWS
 Elastic Beanstalk sets the configuration values to the default values
 associated with the specified solution stack.
 
@@ -165,35 +97,13 @@ both. If you specify both, AWS Elastic Beanstalk returns an
 C<InvalidParameterCombination> error. If you do not specify either, AWS
 Elastic Beanstalk returns a C<MissingRequiredParameter> error.
 
-
-
-
-
-
-
-
-
-
 =head2 Tags => ArrayRef[Paws::ElasticBeanstalk::Tag]
 
-  
-
-This specifies the tags applied to resources in the environment.
-
-
-
-
-
-
-
-
-
+  This specifies the tags applied to resources in the environment.
 
 =head2 TemplateName => Str
 
-  
-
-The name of the configuration template to use in deployment. If no
+  The name of the configuration template to use in deployment. If no
 configuration template is found with this name, AWS Elastic Beanstalk
 returns an C<InvalidParameterValue> error.
 
@@ -203,35 +113,13 @@ Beanstalk returns an C<InvalidParameterCombination> error. If you do
 not specify either, AWS Elastic Beanstalk returns a
 C<MissingRequiredParameter> error.
 
-
-
-
-
-
-
-
-
-
 =head2 Tier => Paws::ElasticBeanstalk::EnvironmentTier
 
-  
-
-This specifies the tier to use for creating this environment.
-
-
-
-
-
-
-
-
-
+  This specifies the tier to use for creating this environment.
 
 =head2 VersionLabel => Str
 
-  
-
-The name of the application version to deploy.
+  The name of the application version to deploy.
 
 If the specified application has no associated application versions,
 AWS Elastic Beanstalk C<UpdateEnvironment> returns an
@@ -239,15 +127,6 @@ C<InvalidParameterValue> error.
 
 Default: If not specified, AWS Elastic Beanstalk attempts to launch the
 sample application in the container.
-
-
-
-
-
-
-
-
-
 
 
 

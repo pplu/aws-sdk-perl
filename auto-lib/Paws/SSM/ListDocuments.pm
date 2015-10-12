@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DocumentFilterList => ArrayRef[Paws::SSM::DocumentFilter]
 
-  
-
-One or more filters. Use a filter to return a more specific list of
+  One or more filters. Use a filter to return a more specific list of
 results.
-
-
-
-
-
-
-
-
-
 
 =head2 MaxResults => Int
 
-  
-
-The maximum number of items to return for this call. The call also
+  The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
 next set of results.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The token for the next set of items to return. (You received this token
+  The token for the next set of items to return. (You received this token
 from a previous call.)
-
-
-
-
-
-
-
-
-
 
 
 

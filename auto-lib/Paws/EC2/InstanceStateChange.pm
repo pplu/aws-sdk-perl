@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head2 CurrentState => Paws::EC2::InstanceState
 
-  
-
-The current state of the instance.
-
-
-
-
-
-
-
-
-
+  The current state of the instance.
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 PreviousState => Paws::EC2::InstanceState
 
-  
-
-The previous state of the instance.
-
-
-
-
-
-
-
-
-
+  The previous state of the instance.
 
 
 

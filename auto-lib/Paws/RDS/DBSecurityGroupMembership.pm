@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSecu
 
 =head2 DBSecurityGroupName => Str
 
-  
-
-The name of the DB security group.
-
-
-
-
-
-
-
-
-
+  The name of the DB security group.
 
 =head2 Status => Str
 
-  
-
-The status of the DB security group.
-
-
-
-
-
-
-
-
-
+  The status of the DB security group.
 
 
 

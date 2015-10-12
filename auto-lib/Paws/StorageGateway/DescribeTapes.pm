@@ -41,57 +41,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  
-
-Specifies that the number of virtual tapes described be limited to the
+  Specifies that the number of virtual tapes described be limited to the
 specified number.
 
 Amazon Web Services may impose its own limit, if this field is not set.
 
-
-
-
-
-
-
-
-
-
 =head2 Marker => Str
 
-  
-
-A marker value, obtained in a previous call to C<DescribeTapes>. This
+  A marker value, obtained in a previous call to C<DescribeTapes>. This
 marker indicates which page of results to retrieve.
 
 If not specified, the first page of results is retrieved.
 
-
-
-
-
-
-
-
-
-
 =head2 TapeARNs => ArrayRef[Str]
 
-  
-
-Specifies one or more unique Amazon Resource Names (ARNs) that
+  Specifies one or more unique Amazon Resource Names (ARNs) that
 represent the virtual tapes you want to describe. If this parameter is
 not specified, AWS Storage Gateway returns a description of all virtual
 tapes associated with the specified gateway.
-
-
-
-
-
-
-
-
-
 
 
 

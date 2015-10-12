@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head2 DeviceName => Str
 
-  
-
-The device name exposed to the instance (for example, C</dev/sdh> or
+  The device name exposed to the instance (for example, C</dev/sdh> or
 C<xvdh>).
-
-
-
-
-
-
-
-
-
 
 =head2 Ebs => Paws::EC2::EbsInstanceBlockDeviceSpecification
 
-  
-
-Parameters used to automatically set up EBS volumes when the instance
+  Parameters used to automatically set up EBS volumes when the instance
 is launched.
-
-
-
-
-
-
-
-
-
 
 =head2 NoDevice => Str
 
-  
-
-suppress the specified device included in the block device mapping.
-
-
-
-
-
-
-
-
-
+  suppress the specified device included in the block device mapping.
 
 =head2 VirtualName => Str
 
-  
-
-The virtual device name.
-
-
-
-
-
-
-
-
-
+  The virtual device name.
 
 
 

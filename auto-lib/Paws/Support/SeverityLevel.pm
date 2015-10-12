@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Se
 
 =head2 code => Str
 
-  
-
-One of four values: "low," "medium," "high," and "urgent". These values
+  One of four values: "low," "medium," "high," and "urgent". These values
 correspond to response times returned to the caller in
 C<SeverityLevel.name>.
 
-
-
-
-
-
-
-
-
-
 =head2 name => Str
 
-  
-
-The name of the severity level that corresponds to the severity level
+  The name of the severity level that corresponds to the severity level
 code.
-
-
-
-
-
-
-
-
-
 
 
 

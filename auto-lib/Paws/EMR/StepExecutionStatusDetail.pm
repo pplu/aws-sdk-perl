@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepEx
 
 =head2 B<REQUIRED> CreationDateTime => Str
 
-  
-
-The creation date and time of the step.
-
-
-
-
-
-
-
-
-
+  The creation date and time of the step.
 
 =head2 EndDateTime => Str
 
-  
-
-The completion date and time of the step.
-
-
-
-
-
-
-
-
-
+  The completion date and time of the step.
 
 =head2 LastStateChangeReason => Str
 
-  
-
-A description of the step's current state.
-
-
-
-
-
-
-
-
-
+  A description of the step's current state.
 
 =head2 StartDateTime => Str
 
-  
-
-The start date and time of the step.
-
-
-
-
-
-
-
-
-
+  The start date and time of the step.
 
 =head2 B<REQUIRED> State => Str
 
-  
-
-The state of the job flow step.
-
-
-
-
-
-
-
-
-
+  The state of the job flow step.
 
 
 

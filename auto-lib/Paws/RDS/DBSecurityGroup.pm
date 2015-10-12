@@ -38,93 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSecu
 
 =head2 DBSecurityGroupDescription => Str
 
-  
-
-Provides the description of the DB security group.
-
-
-
-
-
-
-
-
-
+  Provides the description of the DB security group.
 
 =head2 DBSecurityGroupName => Str
 
-  
-
-Specifies the name of the DB security group.
-
-
-
-
-
-
-
-
-
+  Specifies the name of the DB security group.
 
 =head2 EC2SecurityGroups => ArrayRef[Paws::RDS::EC2SecurityGroup]
 
-  
-
-Contains a list of EC2SecurityGroup elements.
-
-
-
-
-
-
-
-
-
+  Contains a list of EC2SecurityGroup elements.
 
 =head2 IPRanges => ArrayRef[Paws::RDS::IPRange]
 
-  
-
-Contains a list of IPRange elements.
-
-
-
-
-
-
-
-
-
+  Contains a list of IPRange elements.
 
 =head2 OwnerId => Str
 
-  
-
-Provides the AWS ID of the owner of a specific DB security group.
-
-
-
-
-
-
-
-
-
+  Provides the AWS ID of the owner of a specific DB security group.
 
 =head2 VpcId => Str
 
-  
-
-Provides the VpcId of the DB security group.
-
-
-
-
-
-
-
-
-
+  Provides the VpcId of the DB security group.
 
 
 

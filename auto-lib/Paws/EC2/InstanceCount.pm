@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head2 InstanceCount => Int
 
-  
-
-The number of listed Reserved Instances in the state specified by the
+  The number of listed Reserved Instances in the state specified by the
 C<state>.
-
-
-
-
-
-
-
-
-
 
 =head2 State => Str
 
-  
-
-The states of the listed Reserved Instances.
-
-
-
-
-
-
-
-
-
+  The states of the listed Reserved Instances.
 
 
 

@@ -35,53 +35,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Se
 
 =head2 categories => ArrayRef[Paws::Support::Category]
 
-  
-
-A list of categories that describe the type of support issue a case
+  A list of categories that describe the type of support issue a case
 describes. Categories consist of a category name and a category code.
 Category names and codes are passed to AWS Support when you call
 CreateCase.
 
-
-
-
-
-
-
-
-
-
 =head2 code => Str
 
-  
-
-The code for an AWS service returned by the DescribeServices response.
+  The code for an AWS service returned by the DescribeServices response.
 The C<Name> element contains the corresponding friendly name.
-
-
-
-
-
-
-
-
-
 
 =head2 name => Str
 
-  
-
-The friendly name for an AWS service. The C<Code> element contains the
+  The friendly name for an AWS service. The C<Code> element contains the
 corresponding code.
-
-
-
-
-
-
-
-
-
 
 
 

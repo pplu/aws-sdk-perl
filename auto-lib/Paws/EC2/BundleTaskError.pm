@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Bundle
 
 =head2 Code => Str
 
-  
-
-The error code.
-
-
-
-
-
-
-
-
-
+  The error code.
 
 =head2 Message => Str
 
-  
-
-The error message.
-
-
-
-
-
-
-
-
-
+  The error message.
 
 
 

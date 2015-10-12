@@ -36,24 +36,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::S3Acti
 
 =head2 B<REQUIRED> BucketName => Str
 
-  
-
-The name of the Amazon S3 bucket to which to save the received email.
-
-
-
-
-
-
-
-
-
+  The name of the Amazon S3 bucket to which to save the received email.
 
 =head2 KmsKeyArn => Str
 
-  
-
-The customer master key that Amazon SES should use to encrypt your
+  The customer master key that Amazon SES should use to encrypt your
 emails before saving them to the Amazon S3 bucket. You can use the
 default master key or a custom master key you created in AWS KMS as
 follows:
@@ -90,49 +77,18 @@ available with the AWS Java SDK and AWS Ruby SDK only. For more
 information about client-side encryption using AWS KMS master keys, see
 the Amazon S3 Developer Guide.
 
-
-
-
-
-
-
-
-
-
 =head2 ObjectKeyPrefix => Str
 
-  
-
-The key prefix of the Amazon S3 bucket. The key prefix is similar to a
+  The key prefix of the Amazon S3 bucket. The key prefix is similar to a
 directory name that enables you to store similar data under the same
 directory in a bucket.
 
-
-
-
-
-
-
-
-
-
 =head2 TopicArn => Str
 
-  
-
-The ARN of the Amazon SNS topic to notify when the message is saved to
+  The ARN of the Amazon SNS topic to notify when the message is saved to
 the Amazon S3 bucket. An example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
 about Amazon SNS topics, see the Amazon SNS Developer Guide.
-
-
-
-
-
-
-
-
-
 
 
 

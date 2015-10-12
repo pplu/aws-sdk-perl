@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 findingArn => Str
 
-  
-
-The ARN specifying the finding that you want to describe.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the finding that you want to describe.
 
 
 

@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head2 B<REQUIRED> fields => ArrayRef[Paws::DataPipeline::Field]
 
-  
-
-Key-value pairs that define the properties of the object.
-
-
-
-
-
-
-
-
-
+  Key-value pairs that define the properties of the object.
 
 =head2 B<REQUIRED> id => Str
 
-  
-
-The ID of the object.
-
-
-
-
-
-
-
-
-
+  The ID of the object.
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of the object.
-
-
-
-
-
-
-
-
-
+  The name of the object.
 
 
 

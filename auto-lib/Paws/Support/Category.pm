@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Ca
 
 =head2 code => Str
 
-  
-
-The category code for the support case.
-
-
-
-
-
-
-
-
-
+  The category code for the support case.
 
 =head2 name => Str
 
-  
-
-The category name for the support case.
-
-
-
-
-
-
-
-
-
+  The category name for the support case.
 
 
 

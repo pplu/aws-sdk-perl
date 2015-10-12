@@ -34,38 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> Forward => Str
 
-  
-
-Use this element to specify whether you want CloudFront to forward
+  Use this element to specify whether you want CloudFront to forward
 cookies to the origin that is associated with this cache behavior. You
 can specify all, none or whitelist. If you choose All, CloudFront
 forwards all cookies regardless of how many your application uses.
 
-
-
-
-
-
-
-
-
-
 =head2 WhitelistedNames => Paws::CloudFront::CookieNames
 
-  
-
-A complex type that specifies the whitelisted cookies, if any, that you
+  A complex type that specifies the whitelisted cookies, if any, that you
 want CloudFront to forward to your origin that is associated with this
 cache behavior.
-
-
-
-
-
-
-
-
-
 
 
 

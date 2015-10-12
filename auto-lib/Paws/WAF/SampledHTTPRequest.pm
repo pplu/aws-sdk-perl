@@ -36,68 +36,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Sample
 
 =head2 Action => Str
 
-  
-
-The action for the C<Rule> that the request matched: C<ALLOW>,
+  The action for the C<Rule> that the request matched: C<ALLOW>,
 C<BLOCK>, or C<COUNT>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Request => Paws::WAF::HTTPRequest
 
-  
-
-A complex type that contains detailed information about the request.
-
-
-
-
-
-
-
-
-
+  A complex type that contains detailed information about the request.
 
 =head2 Timestamp => Str
 
-  
-
-The time at which AWS WAF received the request from your AWS resource,
+  The time at which AWS WAF received the request from your AWS resource,
 in Unix time format (in seconds).
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Weight => Int
 
-  
-
-A value that indicates how one result in the response relates
+  A value that indicates how one result in the response relates
 proportionally to other results in the response. A result that has a
 weight of C<2> represents roughly twice as many CloudFront web requests
 as a result that has a weight of C<1>.
-
-
-
-
-
-
-
-
-
 
 
 

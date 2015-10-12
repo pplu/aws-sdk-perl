@@ -36,33 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AverageDownloadRateLimitInBitsPerSec => Int
 
-  
-
-The average download bandwidth rate limit in bits per second.
-
-
-
-
-
-
-
-
-
+  The average download bandwidth rate limit in bits per second.
 
 =head2 AverageUploadRateLimitInBitsPerSec => Int
 
-  
-
-The average upload bandwidth rate limit in bits per second.
-
-
-
-
-
-
-
-
-
+  The average upload bandwidth rate limit in bits per second.
 
 =head2 B<REQUIRED> GatewayARN => Str
 

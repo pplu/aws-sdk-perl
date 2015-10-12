@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ServerCertificateName => Str
 
-  
-
-The name of the server certificate you want to retrieve information
+  The name of the server certificate you want to retrieve information
 about.
-
-
-
-
-
-
-
-
-
 
 
 

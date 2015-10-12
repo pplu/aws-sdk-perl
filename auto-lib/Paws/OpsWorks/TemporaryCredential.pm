@@ -36,66 +36,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::T
 
 =head2 InstanceId => Str
 
-  
-
-The instance's AWS OpsWorks ID.
-
-
-
-
-
-
-
-
-
+  The instance's AWS OpsWorks ID.
 
 =head2 Password => Str
 
-  
-
-The password.
-
-
-
-
-
-
-
-
-
+  The password.
 
 =head2 Username => Str
 
-  
-
-The user name.
-
-
-
-
-
-
-
-
-
+  The user name.
 
 =head2 ValidForInMinutes => Int
 
-  
-
-The length of time (in minutes) that the grant is valid. When the grant
+  The length of time (in minutes) that the grant is valid. When the grant
 expires, at the end of this period, the user will no longer be able to
 use the credentials to log in. If they are logged in at the time, they
 will be automatically logged out.
-
-
-
-
-
-
-
-
-
 
 
 

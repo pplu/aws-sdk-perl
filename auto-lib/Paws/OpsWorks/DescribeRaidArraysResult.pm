@@ -14,18 +14,7 @@ Paws::OpsWorks::DescribeRaidArraysResult
 
 =head2 RaidArrays => ArrayRef[Paws::OpsWorks::RaidArray]
 
-  
-
-A C<RaidArrays> object that describes the specified RAID arrays.
-
-
-
-
-
-
-
-
-
+  A C<RaidArrays> object that describes the specified RAID arrays.
 
 
 =cut

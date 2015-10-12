@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceName => Str
 
-  
-
-The Amazon Resource Name (ARN) from which you want to remove the tag or
+  The Amazon Resource Name (ARN) from which you want to remove the tag or
 tags. For example, C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
-  
-
-The tag key that you want to delete.
-
-
-
-
-
-
-
-
-
+  The tag key that you want to delete.
 
 
 

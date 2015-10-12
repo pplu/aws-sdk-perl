@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Region
 
 =head2 Endpoint => Str
 
-  
-
-The region service endpoint.
-
-
-
-
-
-
-
-
-
+  The region service endpoint.
 
 =head2 RegionName => Str
 
-  
-
-The name of the region.
-
-
-
-
-
-
-
-
-
+  The name of the region.
 
 
 

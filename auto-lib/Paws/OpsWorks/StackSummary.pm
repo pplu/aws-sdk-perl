@@ -38,94 +38,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::S
 
 =head2 AppsCount => Int
 
-  
-
-The number of apps.
-
-
-
-
-
-
-
-
-
+  The number of apps.
 
 =head2 Arn => Str
 
-  
-
-The stack's ARN.
-
-
-
-
-
-
-
-
-
+  The stack's ARN.
 
 =head2 InstancesCount => Paws::OpsWorks::InstancesCount
 
-  
-
-An C<InstancesCount> object with the number of instances in each
+  An C<InstancesCount> object with the number of instances in each
 status.
-
-
-
-
-
-
-
-
-
 
 =head2 LayersCount => Int
 
-  
-
-The number of layers.
-
-
-
-
-
-
-
-
-
+  The number of layers.
 
 =head2 Name => Str
 
-  
-
-The stack name.
-
-
-
-
-
-
-
-
-
+  The stack name.
 
 =head2 StackId => Str
 
-  
-
-The stack ID.
-
-
-
-
-
-
-
-
-
+  The stack ID.
 
 
 

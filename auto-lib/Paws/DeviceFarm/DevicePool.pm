@@ -37,69 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 arn => Str
 
-  
-
-The device pool's ARN.
-
-
-
-
-
-
-
-
-
+  The device pool's ARN.
 
 =head2 description => Str
 
-  
-
-The device pool's description.
-
-
-
-
-
-
-
-
-
+  The device pool's description.
 
 =head2 name => Str
 
-  
-
-The device pool's name.
-
-
-
-
-
-
-
-
-
+  The device pool's name.
 
 =head2 rules => ArrayRef[Paws::DeviceFarm::Rule]
 
-  
-
-Information about the device pool's rules.
-
-
-
-
-
-
-
-
-
+  Information about the device pool's rules.
 
 =head2 type => Str
 
-  
-
-The device pool's type.
+  The device pool's type.
 
 Allowed values include:
 
@@ -115,15 +69,6 @@ PRIVATE: A device pool that is created and managed by the device pool
 developer.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

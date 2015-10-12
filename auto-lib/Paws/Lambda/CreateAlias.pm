@@ -39,63 +39,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  
-
-Description of the alias.
-
-
-
-
-
-
-
-
-
+  Description of the alias.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-Name of the Lambda function for which you want to create an alias.
-
-
-
-
-
-
-
-
-
+  Name of the Lambda function for which you want to create an alias.
 
 =head2 B<REQUIRED> FunctionVersion => Str
 
-  
-
-Lambda function version for which you are creating the alias.
-
-
-
-
-
-
-
-
-
+  Lambda function version for which you are creating the alias.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-Name for the alias your creating.
-
-
-
-
-
-
-
-
-
+  Name for the alias your creating.
 
 
 

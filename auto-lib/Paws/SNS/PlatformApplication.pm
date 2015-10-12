@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SNS::Platfo
 
 =head2 Attributes => Paws::SNS::MapStringToString
 
-  
-
-Attributes for platform application object.
-
-
-
-
-
-
-
-
-
+  Attributes for platform application object.
 
 =head2 PlatformApplicationArn => Str
 
-  
-
-PlatformApplicationArn for platform application object.
-
-
-
-
-
-
-
-
-
+  PlatformApplicationArn for platform application object.
 
 
 

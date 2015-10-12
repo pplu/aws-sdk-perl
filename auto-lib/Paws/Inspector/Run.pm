@@ -39,112 +39,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 assessmentArn => Str
 
-  
-
-The ARN of the assessment that is associated with the run.
-
-
-
-
-
-
-
-
-
+  The ARN of the assessment that is associated with the run.
 
 =head2 completionTime => Str
 
-  
-
-Run completion time that corresponds to the rules packages evaluation
+  Run completion time that corresponds to the rules packages evaluation
 completion time or failure.
-
-
-
-
-
-
-
-
-
 
 =head2 creationTime => Str
 
-  
-
-Run creation time that corresponds to the data collection completion
+  Run creation time that corresponds to the data collection completion
 time or failure.
-
-
-
-
-
-
-
-
-
 
 =head2 rulesPackages => ArrayRef[Str]
 
-  
-
-Rules packages selected for the run of the assessment.
-
-
-
-
-
-
-
-
-
+  Rules packages selected for the run of the assessment.
 
 =head2 runArn => Str
 
-  
-
-The ARN of the run.
-
-
-
-
-
-
-
-
-
+  The ARN of the run.
 
 =head2 runName => Str
 
-  
-
-The auto-generated name for the run.
-
-
-
-
-
-
-
-
-
+  The auto-generated name for the run.
 
 =head2 runState => Str
 
-  
-
-The state of the run. Values can be set to I<DataCollectionComplete>,
+  The state of the run. Values can be set to I<DataCollectionComplete>,
 I<EvaluatingPolicies>, I<EvaluatingPoliciesErrorCanRetry>,
 I<Completed>, I<Failed>, I<TombStoned>.
-
-
-
-
-
-
-
-
-
 
 
 

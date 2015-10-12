@@ -34,41 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Rec
 
 =head2 allSupported => Bool
 
-  
-
-Records all supported resource types in the recording group. For a list
+  Records all supported resource types in the recording group. For a list
 of supported resource types, see Supported resource types. If you
 specify B<allSupported>, you cannot enumerate a list of
 B<resourceTypes>.
 
-
-
-
-
-
-
-
-
-
 =head2 resourceTypes => ArrayRef[Str]
 
-  
-
-A comma-separated list of strings representing valid AWS resource types
+  A comma-separated list of strings representing valid AWS resource types
 (for example, C<AWS::EC2::Instance> or C<AWS::CloudTrail::Trail>).
 B<resourceTypes> is only valid if you have chosen not to select
 B<allSupported>. For a list of valid B<resourceTypes> values, see the
 B<resourceType Value> column in the following topic: Supported AWS
 Resource Types.
-
-
-
-
-
-
-
-
-
 
 
 

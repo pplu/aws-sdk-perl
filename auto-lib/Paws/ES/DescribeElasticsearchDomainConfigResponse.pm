@@ -15,19 +15,8 @@ Paws::ES::DescribeElasticsearchDomainConfigResponse
 
 =head2 B<REQUIRED> DomainConfig => Paws::ES::ElasticsearchDomainConfig
 
-  
-
-The configuration information of the domain requested in the
+  The configuration information of the domain requested in the
 C<DescribeElasticsearchDomainConfig> request.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -38,106 +38,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Pendin
 
 =head2 Action => Str
 
-  
-
-The type of pending maintenance action that is available for the
+  The type of pending maintenance action that is available for the
 resource.
-
-
-
-
-
-
-
-
-
 
 =head2 AutoAppliedAfterDate => Str
 
-  
-
-The date of the maintenance window when the action will be applied. The
+  The date of the maintenance window when the action will be applied. The
 maintenance action will be applied to the resource during its first
 maintenance window after this date. If this date is specified, any
 C<next-maintenance> opt-in requests are ignored.
 
-
-
-
-
-
-
-
-
-
 =head2 CurrentApplyDate => Str
 
-  
-
-The effective date when the pending maintenance action will be applied
+  The effective date when the pending maintenance action will be applied
 to the resource. This date takes into account opt-in requests received
 from the ApplyPendingMaintenanceAction API, the
 C<AutoAppliedAfterDate>, and the C<ForcedApplyDate>. This value is
 blank if an opt-in request has not been received and nothing has been
 specified as C<AutoAppliedAfterDate> or C<ForcedApplyDate>.
 
-
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
-
-A description providing more detail about the maintenance action.
-
-
-
-
-
-
-
-
-
+  A description providing more detail about the maintenance action.
 
 =head2 ForcedApplyDate => Str
 
-  
-
-The date when the maintenance action will be automatically applied. The
+  The date when the maintenance action will be automatically applied. The
 maintenance action will be applied to the resource on this date
 regardless of the maintenance window for the resource. If this date is
 specified, any C<immediate> opt-in requests are ignored.
 
-
-
-
-
-
-
-
-
-
 =head2 OptInStatus => Str
 
-  
-
-Indicates the type of opt-in request that has been received for the
+  Indicates the type of opt-in request that has been received for the
 resource.
-
-
-
-
-
-
-
-
-
 
 
 

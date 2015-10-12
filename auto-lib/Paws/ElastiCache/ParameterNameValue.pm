@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 ParameterName => Str
 
-  
-
-The name of the parameter.
-
-
-
-
-
-
-
-
-
+  The name of the parameter.
 
 =head2 ParameterValue => Str
 
-  
-
-The value of the parameter.
-
-
-
-
-
-
-
-
-
+  The value of the parameter.
 
 
 

@@ -38,90 +38,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> domain => Str
 
-  
-
-The name of the domain containing the workflow executions to count.
-
-
-
-
-
-
-
-
-
+  The name of the domain containing the workflow executions to count.
 
 =head2 executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter
 
-  
-
-If specified, only workflow executions matching the C<WorkflowId> in
+  If specified, only workflow executions matching the C<WorkflowId> in
 the filter are counted.
 
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter
 
-  
-
-Specifies the start time criteria that workflow executions must meet in
+  Specifies the start time criteria that workflow executions must meet in
 order to be counted.
-
-
-
-
-
-
-
-
-
 
 =head2 tagFilter => Paws::SimpleWorkflow::TagFilter
 
-  
-
-If specified, only executions that have a tag that matches the filter
+  If specified, only executions that have a tag that matches the filter
 are counted.
 
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
 
-
-
-
-
-
-
-
-
-
 =head2 typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter
 
-  
-
-Specifies the type of the workflow executions to be counted.
+  Specifies the type of the workflow executions to be counted.
 
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
-
-
-
-
-
-
-
-
-
 
 
 

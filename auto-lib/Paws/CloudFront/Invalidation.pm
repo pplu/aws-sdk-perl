@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> CreateTime => Str
 
-  
-
-The date and time the invalidation request was first made.
-
-
-
-
-
-
-
-
-
+  The date and time the invalidation request was first made.
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The identifier for the invalidation request. For example:
+  The identifier for the invalidation request. For example:
 IDFDVBD632BHDS5.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> InvalidationBatch => Paws::CloudFront::InvalidationBatch
 
-  
-
-The current invalidation information for the batch request.
-
-
-
-
-
-
-
-
-
+  The current invalidation information for the batch request.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The status of the invalidation request. When the invalidation batch is
+  The status of the invalidation request. When the invalidation batch is
 finished, the status is Completed.
-
-
-
-
-
-
-
-
-
 
 
 

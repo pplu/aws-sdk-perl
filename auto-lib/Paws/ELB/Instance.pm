@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Instan
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 
 

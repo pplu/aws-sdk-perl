@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 assessmentArn => Str
 
-  
-
-The ARN of the assessment for which you want to start the data
+  The ARN of the assessment for which you want to start the data
 collection process.
-
-
-
-
-
-
-
-
-
 
 
 

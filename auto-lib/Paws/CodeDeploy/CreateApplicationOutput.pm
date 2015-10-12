@@ -14,18 +14,7 @@ Paws::CodeDeploy::CreateApplicationOutput
 
 =head2 applicationId => Str
 
-  
-
-A unique application ID.
-
-
-
-
-
-
-
-
-
+  A unique application ID.
 
 
 =cut

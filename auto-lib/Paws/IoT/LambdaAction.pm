@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Lambda
 
 =head2 B<REQUIRED> functionArn => Str
 
-  
-
-The ARN of the Lambda function.
-
-
-
-
-
-
-
-
-
+  The ARN of the Lambda function.
 
 
 

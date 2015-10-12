@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::I
 
 =head2 CIDRIP => Str
 
-  
-
-The IP range in Classless Inter-Domain Routing (CIDR) notation.
-
-
-
-
-
-
-
-
-
+  The IP range in Classless Inter-Domain Routing (CIDR) notation.
 
 =head2 Status => Str
 
-  
-
-The status of the IP range, for example, "authorized".
-
-
-
-
-
-
-
-
-
+  The status of the IP range, for example, "authorized".
 
 =head2 Tags => ArrayRef[Paws::RedShift::Tag]
 
-  
-
-The list of tags for the IP range.
-
-
-
-
-
-
-
-
-
+  The list of tags for the IP range.
 
 
 

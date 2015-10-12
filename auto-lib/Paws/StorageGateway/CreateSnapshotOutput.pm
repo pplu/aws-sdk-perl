@@ -15,36 +15,14 @@ Paws::StorageGateway::CreateSnapshotOutput
 
 =head2 SnapshotId => Str
 
-  
-
-The snapshot ID that is used to refer to the snapshot in future
+  The snapshot ID that is used to refer to the snapshot in future
 operations such as describing snapshots (Amazon Elastic Compute Cloud
 API C<DescribeSnapshots>) or creating a volume from a snapshot
 (CreateStorediSCSIVolume).
-
-
-
-
-
-
-
-
-
 =head2 VolumeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the volume of which the snapshot was
+  The Amazon Resource Name (ARN) of the volume of which the snapshot was
 taken.
-
-
-
-
-
-
-
-
-
 
 
 =cut

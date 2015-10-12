@@ -15,18 +15,7 @@ Paws::CloudSearch::DeleteIndexFieldResponse
 
 =head2 B<REQUIRED> IndexField => Paws::CloudSearch::IndexFieldStatus
 
-  
-
-The status of the index field being deleted.
-
-
-
-
-
-
-
-
-
+  The status of the index field being deleted.
 
 
 =cut

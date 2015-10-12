@@ -46,116 +46,37 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 arn => Str
 
-  
-
-The run's ARN.
-
-
-
-
-
-
-
-
-
+  The run's ARN.
 
 =head2 billingMethod => Str
 
-  
-
-Specifies the billing method for a test run: C<metered> or
+  Specifies the billing method for a test run: C<metered> or
 C<unmetered>. If the parameter is not specified, the default value is
 C<unmetered>.
 
-
-
-
-
-
-
-
-
-
 =head2 completedJobs => Int
 
-  
-
-The total number of completed jobs.
-
-
-
-
-
-
-
-
-
+  The total number of completed jobs.
 
 =head2 counters => Paws::DeviceFarm::Counters
 
-  
-
-The run's result counters.
-
-
-
-
-
-
-
-
-
+  The run's result counters.
 
 =head2 created => Str
 
-  
-
-When the run was created.
-
-
-
-
-
-
-
-
-
+  When the run was created.
 
 =head2 message => Str
 
-  
-
-A message about the run's result.
-
-
-
-
-
-
-
-
-
+  A message about the run's result.
 
 =head2 name => Str
 
-  
-
-The run's name.
-
-
-
-
-
-
-
-
-
+  The run's name.
 
 =head2 platform => Str
 
-  
-
-The run's platform.
+  The run's platform.
 
 Allowed values include:
 
@@ -171,20 +92,9 @@ IOS: The iOS platform.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 result => Str
 
-  
-
-The run's result.
+  The run's result.
 
 Allowed values include:
 
@@ -220,35 +130,13 @@ WARNED: A warning condition.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 started => Str
 
-  
-
-The run's start time.
-
-
-
-
-
-
-
-
-
+  The run's start time.
 
 =head2 status => Str
 
-  
-
-The run's status.
+  The run's status.
 
 Allowed values include:
 
@@ -276,50 +164,17 @@ SCHEDULING: A scheduling status.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 stopped => Str
 
-  
-
-The run's stop time.
-
-
-
-
-
-
-
-
-
+  The run's stop time.
 
 =head2 totalJobs => Int
 
-  
-
-The total number of jobs for the run.
-
-
-
-
-
-
-
-
-
+  The total number of jobs for the run.
 
 =head2 type => Str
 
-  
-
-The run's type.
+  The run's type.
 
 Must be one of the following values:
 
@@ -364,15 +219,6 @@ UIAUTOMATOR: The uiautomator type.
 XCTEST: The XCode test type.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

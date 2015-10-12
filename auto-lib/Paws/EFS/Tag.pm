@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EFS::Tag ob
 
 =head2 B<REQUIRED> Key => Str
 
-  
-
-Tag key, a string. The key must not start with "aws:".
-
-
-
-
-
-
-
-
-
+  Tag key, a string. The key must not start with "aws:".
 
 =head2 B<REQUIRED> Value => Str
 
-  
-
-Value of the tag key.
-
-
-
-
-
-
-
-
-
+  Value of the tag key.
 
 
 

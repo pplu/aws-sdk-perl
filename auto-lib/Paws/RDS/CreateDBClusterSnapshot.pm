@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-  
-
-The identifier of the DB cluster to create a snapshot for. This
+  The identifier of the DB cluster to create a snapshot for. This
 parameter is not case-sensitive.
 
 Constraints:
@@ -55,20 +53,9 @@ Constraints:
 
 Example: C<my-cluster1>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DBClusterSnapshotIdentifier => Str
 
-  
-
-The identifier of the DB cluster snapshot. This parameter is stored as
+  The identifier of the DB cluster snapshot. This parameter is stored as
 a lowercase string.
 
 Constraints:
@@ -85,29 +72,9 @@ Constraints:
 
 Example: C<my-cluster1-snapshot1>
 
-
-
-
-
-
-
-
-
-
 =head2 Tags => ArrayRef[Paws::RDS::Tag]
 
-  
-
-The tags to be assigned to the DB cluster snapshot.
-
-
-
-
-
-
-
-
-
+  The tags to be assigned to the DB cluster snapshot.
 
 
 

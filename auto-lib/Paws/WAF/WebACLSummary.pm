@@ -34,38 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::WebACL
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-A friendly name or description of the WebACL. You can't change the name
+  A friendly name or description of the WebACL. You can't change the name
 of a C<WebACL> after you create it.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> WebACLId => Str
 
-  
-
-A unique identifier for a C<WebACL>. You use C<WebACLId> to get
+  A unique identifier for a C<WebACL>. You use C<WebACLId> to get
 information about a C<WebACL> (see GetWebACL), update a C<WebACL> (see
 UpdateWebACL, and delete a C<WebACL> from AWS WAF (see DeleteWebACL).
 
 C<WebACLId> is returned by CreateWebACL and by ListWebACLs.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -15,18 +15,7 @@ Paws::SES::GetIdentityPoliciesResponse
 
 =head2 B<REQUIRED> Policies => Paws::SES::PolicyMap
 
-  
-
-A map of policy names to policies.
-
-
-
-
-
-
-
-
-
+  A map of policy names to policies.
 
 
 =cut

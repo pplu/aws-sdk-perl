@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceName => Str
 
-  
-
-The name of the resource to which the tags are to be added, for example
+  The name of the resource to which the tags are to be added, for example
 C<arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Tags => ArrayRef[Paws::ElastiCache::Tag]
 
-  
-
-A list of cost allocation tags to be added to this resource. A tag is a
+  A list of cost allocation tags to be added to this resource. A tag is a
 key-value pair. A tag key must be accompanied by a tag value.
-
-
-
-
-
-
-
-
-
 
 
 

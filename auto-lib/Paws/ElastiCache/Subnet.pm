@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 SubnetAvailabilityZone => Paws::ElastiCache::AvailabilityZone
 
-  
-
-The Availability Zone associated with the subnet.
-
-
-
-
-
-
-
-
-
+  The Availability Zone associated with the subnet.
 
 =head2 SubnetIdentifier => Str
 
-  
-
-The unique identifier for the subnet.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the subnet.
 
 
 

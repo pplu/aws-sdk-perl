@@ -38,109 +38,43 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 assessmentNamePatterns => ArrayRef[Str]
 
-  
-
-For a record to match a filter, an explicit value or a string
+  For a record to match a filter, an explicit value or a string
 containing a wildcard specified for this data type property must match
 the value of the B<assessmentName> property of the Assessment data
 type.
 
-
-
-
-
-
-
-
-
-
 =head2 assessmentStates => ArrayRef[Str]
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<assessmentState>
 property of the Assessment data type.
 
-
-
-
-
-
-
-
-
-
 =head2 dataCollected => Bool
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<dataCollected>
 property of the Assessment data type.
 
-
-
-
-
-
-
-
-
-
 =head2 durationRange => Paws::Inspector::DurationRange
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<durationInSeconds> property of the
 Assessment data type.
 
-
-
-
-
-
-
-
-
-
 =head2 endTimeRange => Paws::Inspector::TimestampRange
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<endTime> property of the Assessment data
 type.
 
-
-
-
-
-
-
-
-
-
 =head2 startTimeRange => Paws::Inspector::TimestampRange
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<startTime> property of the Assessment data
 type.
-
-
-
-
-
-
-
-
-
 
 
 

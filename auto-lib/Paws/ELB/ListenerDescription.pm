@@ -38,18 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Listen
 
 =head2 PolicyNames => ArrayRef[Str]
 
-  
-
-The policies. If there are no policies enabled, the list is empty.
-
-
-
-
-
-
-
-
-
+  The policies. If there are no policies enabled, the list is empty.
 
 
 

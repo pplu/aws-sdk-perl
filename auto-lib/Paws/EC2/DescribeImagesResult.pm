@@ -15,18 +15,7 @@ Paws::EC2::DescribeImagesResult
 
 =head2 Images => ArrayRef[Paws::EC2::Image]
 
-  
-
-Information about one or more images.
-
-
-
-
-
-
-
-
-
+  Information about one or more images.
 
 
 =cut

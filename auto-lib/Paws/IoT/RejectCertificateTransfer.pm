@@ -36,18 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> certificateId => Str
 
-  
-
-The ID of the certificate.
-
-
-
-
-
-
-
-
-
+  The ID of the certificate.
 
 
 

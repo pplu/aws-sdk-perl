@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::IpRang
 
 =head2 CidrIp => Str
 
-  
-
-The CIDR range. You can either specify a CIDR range or a source
+  The CIDR range. You can either specify a CIDR range or a source
 security group, not both.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -37,83 +37,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Group 
 
 =head2 B<REQUIRED> Arn => Str
 
-  
-
-The Amazon Resource Name (ARN) specifying the group. For more
+  The Amazon Resource Name (ARN) specifying the group. For more
 information about ARNs and how to use them in policies, see IAM
 Identifiers in the I<Using IAM> guide.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> CreateDate => Str
 
-  
-
-The date and time, in ISO 8601 date-time format, when the group was
+  The date and time, in ISO 8601 date-time format, when the group was
 created.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> GroupId => Str
 
-  
-
-The stable and unique string identifying the group. For more
+  The stable and unique string identifying the group. For more
 information about IDs, see IAM Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> GroupName => Str
 
-  
-
-The friendly name that identifies the group.
-
-
-
-
-
-
-
-
-
+  The friendly name that identifies the group.
 
 =head2 B<REQUIRED> Path => Str
 
-  
-
-The path to the group. For more information about paths, see IAM
+  The path to the group. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 
 

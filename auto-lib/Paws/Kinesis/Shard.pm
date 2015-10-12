@@ -37,79 +37,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Sh
 
 =head2 AdjacentParentShardId => Str
 
-  
-
-The shard Id of the shard adjacent to the shard's parent.
-
-
-
-
-
-
-
-
-
+  The shard Id of the shard adjacent to the shard's parent.
 
 =head2 B<REQUIRED> HashKeyRange => Paws::Kinesis::HashKeyRange
 
-  
-
-The range of possible hash key values for the shard, which is a set of
+  The range of possible hash key values for the shard, which is a set of
 ordered contiguous positive integers.
-
-
-
-
-
-
-
-
-
 
 =head2 ParentShardId => Str
 
-  
-
-The shard Id of the shard's parent.
-
-
-
-
-
-
-
-
-
+  The shard Id of the shard's parent.
 
 =head2 B<REQUIRED> SequenceNumberRange => Paws::Kinesis::SequenceNumberRange
 
-  
-
-The range of possible sequence numbers for the shard.
-
-
-
-
-
-
-
-
-
+  The range of possible sequence numbers for the shard.
 
 =head2 B<REQUIRED> ShardId => Str
 
-  
-
-The unique identifier of the shard within the Amazon Kinesis stream.
-
-
-
-
-
-
-
-
-
+  The unique identifier of the shard within the Amazon Kinesis stream.
 
 
 

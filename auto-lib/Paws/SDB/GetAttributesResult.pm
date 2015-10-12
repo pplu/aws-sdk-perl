@@ -15,18 +15,7 @@ Paws::SDB::GetAttributesResult
 
 =head2 Attributes => ArrayRef[Paws::SDB::Attribute]
 
-  
-
-The list of attributes returned by the operation.
-
-
-
-
-
-
-
-
-
+  The list of attributes returned by the operation.
 
 
 =cut

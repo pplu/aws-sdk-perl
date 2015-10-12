@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> accessPolicy => Str
 
-  
-
-An IAM policy document that authorizes cross-account users to deliver
+  An IAM policy document that authorizes cross-account users to deliver
 their log events to associated destination.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> destinationName => Str
 
-  
-
-A name for an existing destination.
-
-
-
-
-
-
-
-
-
+  A name for an existing destination.
 
 
 

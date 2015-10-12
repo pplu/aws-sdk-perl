@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Filter
 
 =head2 Name => Str
 
-  
-
-The name of the filter. Filter names are case-sensitive.
-
-
-
-
-
-
-
-
-
+  The name of the filter. Filter names are case-sensitive.
 
 =head2 Values => ArrayRef[Str]
 
-  
-
-One or more filter values. Filter values are case-sensitive.
-
-
-
-
-
-
-
-
-
+  One or more filter values. Filter values are case-sensitive.
 
 
 

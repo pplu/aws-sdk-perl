@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 =head2 B<REQUIRED> Subnets => ArrayRef[Str]
 
-  
-
-The IDs of the subnets.
-
-
-
-
-
-
-
-
-
+  The IDs of the subnets.
 
 
 

@@ -61,9 +61,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 B<REQUIRED> IndexFieldName => Str
 
-  
-
-A string that represents the name of an index field. CloudSearch
+  A string that represents the name of an index field. CloudSearch
 supports regular index fields as well as dynamic fields. A dynamic
 field's name defines a pattern that begins or ends with a wildcard. Any
 document fields that don't map to a regular index field but do match a
@@ -78,15 +76,6 @@ wildcards embedded within a string are not supported.
 
 The name C<score> is reserved and cannot be used as a field name. To
 reference a document's ID, you can use the name C<_id>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> IndexFieldType => Str
 

@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head2 logStreamName => Str
 
-  
-
-The name of the log stream.
-
-
-
-
-
-
-
-
-
+  The name of the log stream.
 
 =head2 searchedCompletely => Bool
 
-  
-
-Indicates whether all the events in this log stream were searched or
+  Indicates whether all the events in this log stream were searched or
 more data exists to search by paginating further.
-
-
-
-
-
-
-
-
-
 
 
 

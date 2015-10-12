@@ -14,18 +14,7 @@ Paws::CodeDeploy::GetDeploymentOutput
 
 =head2 deploymentInfo => Paws::CodeDeploy::DeploymentInfo
 
-  
-
-Information about the deployment.
-
-
-
-
-
-
-
-
-
+  Information about the deployment.
 
 
 =cut

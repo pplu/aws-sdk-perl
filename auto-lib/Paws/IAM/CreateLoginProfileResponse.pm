@@ -15,18 +15,7 @@ Paws::IAM::CreateLoginProfileResponse
 
 =head2 B<REQUIRED> LoginProfile => Paws::IAM::LoginProfile
 
-  
-
-The user name and password create date.
-
-
-
-
-
-
-
-
-
+  The user name and password create date.
 
 
 =cut

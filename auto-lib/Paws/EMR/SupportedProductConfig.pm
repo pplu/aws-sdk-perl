@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Suppor
 
 =head2 Args => ArrayRef[Str]
 
-  
-
-The list of user-supplied arguments.
-
-
-
-
-
-
-
-
-
+  The list of user-supplied arguments.
 
 =head2 Name => Str
 
-  
-
-The name of the product configuration.
-
-
-
-
-
-
-
-
-
+  The name of the product configuration.
 
 
 

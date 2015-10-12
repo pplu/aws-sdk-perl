@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Servic
 
 =head2 createdAt => Str
 
-  
-
-The Unix time in seconds and milliseconds when the event was triggered.
-
-
-
-
-
-
-
-
-
+  The Unix time in seconds and milliseconds when the event was triggered.
 
 =head2 id => Str
 
-  
-
-The ID string of the event.
-
-
-
-
-
-
-
-
-
+  The ID string of the event.
 
 =head2 message => Str
 
-  
-
-The event message.
-
-
-
-
-
-
-
-
-
+  The event message.
 
 
 

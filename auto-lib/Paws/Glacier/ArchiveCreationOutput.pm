@@ -17,47 +17,14 @@ Paws::Glacier::ArchiveCreationOutput
 
 =head2 archiveId => Str
 
-  
-
-The ID of the archive. This value is also included as part of the
+  The ID of the archive. This value is also included as part of the
 location.
-
-
-
-
-
-
-
-
-
 =head2 checksum => Str
 
-  
-
-The checksum of the archive computed by Amazon Glacier.
-
-
-
-
-
-
-
-
-
+  The checksum of the archive computed by Amazon Glacier.
 =head2 location => Str
 
-  
-
-The relative URI path of the newly added archive resource.
-
-
-
-
-
-
-
-
-
+  The relative URI path of the newly added archive resource.
 
 
 =cut

@@ -36,26 +36,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::ByteMa
 
 =head2 B<REQUIRED> FieldToMatch => Paws::WAF::FieldToMatch
 
-  
-
-The part of a web request that you want AWS WAF to search, such as a
+  The part of a web request that you want AWS WAF to search, such as a
 specified header or a query string. For more information, see
 FieldToMatch.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PositionalConstraint => Str
 
-  
-
-Within the portion of a web request that you want to search (for
+  Within the portion of a web request that you want to search (for
 example, in the query string, if any), specify where you want AWS WAF
 to search. Valid values include the following:
 
@@ -105,20 +92,9 @@ B<ENDS_WITH>
 The value of C<TargetString> must appear at the end of the specified
 part of the web request.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TargetString => Str
 
-  
-
-The value that you want AWS WAF to search for. AWS WAF searches for the
+  The value that you want AWS WAF to search for. AWS WAF searches for the
 specified string in the part of web requests that you specified in
 C<FieldToMatch>. The maximum length of the value is 50 bytes.
 
@@ -165,20 +141,9 @@ B<If you're using the AWS CLI or one of the AWS SDKs>
 The value that you want AWS WAF to search for. The SDK automatically
 base64 encodes the value.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TextTransformation => Str
 
-  
-
-Text transformations eliminate some of the unusual formatting that
+  Text transformations eliminate some of the unusual formatting that
 attackers use in web requests in an effort to bypass AWS WAF. If you
 specify a transformation, AWS WAF performs the transformation on
 C<TargetString> before inspecting a request for a match.
@@ -262,15 +227,6 @@ Use this option to decode a URL-encoded value.
 B<NONE>
 
 Specify C<NONE> if you don't want to perform any text transformations.
-
-
-
-
-
-
-
-
-
 
 
 

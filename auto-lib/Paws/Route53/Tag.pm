@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ta
 
 =head2 Key => Str
 
-  
-
-The key for a C<Tag>.
-
-
-
-
-
-
-
-
-
+  The key for a C<Tag>.
 
 =head2 Value => Str
 
-  
-
-The value for a C<Tag>.
-
-
-
-
-
-
-
-
-
+  The value for a C<Tag>.
 
 
 

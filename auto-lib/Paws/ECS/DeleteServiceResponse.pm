@@ -14,18 +14,7 @@ Paws::ECS::DeleteServiceResponse
 
 =head2 service => Paws::ECS::Service
 
-  
-
-The full description of the deleted service.
-
-
-
-
-
-
-
-
-
+  The full description of the deleted service.
 
 
 =cut

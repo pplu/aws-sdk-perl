@@ -33,20 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 agentHealthList => ArrayRef[Str]
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<agentHealth>
 property of the Agent data type.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> timerId => Str
 
-  
-
-B<Required.> The unique ID of the timer to cancel.
-
-
-
-
-
-
-
-
-
+  B<Required.> The unique ID of the timer to cancel.
 
 
 

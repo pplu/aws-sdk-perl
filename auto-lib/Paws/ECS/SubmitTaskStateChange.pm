@@ -37,65 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster that
+  The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the task.
-
-
-
-
-
-
-
-
-
 
 =head2 reason => Str
 
-  
-
-The reason for the state change request.
-
-
-
-
-
-
-
-
-
+  The reason for the state change request.
 
 =head2 status => Str
 
-  
-
-The status of the state change request.
-
-
-
-
-
-
-
-
-
+  The status of the state change request.
 
 =head2 task => Str
 
-  
-
-The task ID or full Amazon Resource Name (ARN) of the task in the state
+  The task ID or full Amazon Resource Name (ARN) of the task in the state
 change request.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,57 +35,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 control => Str
 
-  
-
-I<Optional.> Data attached to the event that can be used by the decider
+  I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> startToFireTimeout => Str
 
-  
-
-B<Required.> The duration to wait before firing the timer.
+  B<Required.> The duration to wait before firing the timer.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> timerId => Str
 
-  
-
-B<Required.> The unique ID of the timer.
+  B<Required.> The unique ID of the timer.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 s3Location => Paws::CodePipeline::S3ArtifactLocation
 
-  
-
-The Amazon S3 bucket that contains the artifact.
-
-
-
-
-
-
-
-
-
+  The Amazon S3 bucket that contains the artifact.
 
 =head2 type => Str
 
-  
-
-The type of artifact in the location.
-
-
-
-
-
-
-
-
-
+  The type of artifact in the location.
 
 
 

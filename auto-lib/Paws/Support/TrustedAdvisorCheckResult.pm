@@ -38,49 +38,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
 =head2 B<REQUIRED> categorySpecificSummary => Paws::Support::TrustedAdvisorCategorySpecificSummary
 
-  
-
-Summary information that relates to the category of the check. Cost
+  Summary information that relates to the category of the check. Cost
 Optimizing is the only category that is currently supported.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> checkId => Str
 
-  
-
-The unique identifier for the Trusted Advisor check.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the Trusted Advisor check.
 
 =head2 B<REQUIRED> flaggedResources => ArrayRef[Paws::Support::TrustedAdvisorResourceDetail]
 
-  
-
-The details about each resource listed in the check result.
-
-
-
-
-
-
-
-
-
+  The details about each resource listed in the check result.
 
 =head2 B<REQUIRED> resourcesSummary => Paws::Support::TrustedAdvisorResourcesSummary
 
@@ -88,34 +55,12 @@ The details about each resource listed in the check result.
 
 =head2 B<REQUIRED> status => Str
 
-  
-
-The alert status of the check: "ok" (green), "warning" (yellow),
+  The alert status of the check: "ok" (green), "warning" (yellow),
 "error" (red), or "not_available".
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> timestamp => Str
 
-  
-
-The time of the last refresh of the check.
-
-
-
-
-
-
-
-
-
+  The time of the last refresh of the check.
 
 
 

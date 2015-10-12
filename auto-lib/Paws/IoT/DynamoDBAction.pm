@@ -39,108 +39,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Dynamo
 
 =head2 B<REQUIRED> hashKeyField => Str
 
-  
-
-The hash key name.
-
-
-
-
-
-
-
-
-
+  The hash key name.
 
 =head2 B<REQUIRED> hashKeyValue => Str
 
-  
-
-The hash key value.
-
-
-
-
-
-
-
-
-
+  The hash key value.
 
 =head2 payloadField => Str
 
-  
-
-The action payload.
-
-
-
-
-
-
-
-
-
+  The action payload.
 
 =head2 B<REQUIRED> rangeKeyField => Str
 
-  
-
-The range key name.
-
-
-
-
-
-
-
-
-
+  The range key name.
 
 =head2 B<REQUIRED> rangeKeyValue => Str
 
-  
-
-The range key value.
-
-
-
-
-
-
-
-
-
+  The range key value.
 
 =head2 B<REQUIRED> roleArn => Str
 
-  
-
-The ARN of the IAM role that grants access.
-
-
-
-
-
-
-
-
-
+  The ARN of the IAM role that grants access.
 
 =head2 B<REQUIRED> tableName => Str
 
-  
-
-The name of the DynamoDB table.
-
-
-
-
-
-
-
-
-
+  The name of the DynamoDB table.
 
 
 

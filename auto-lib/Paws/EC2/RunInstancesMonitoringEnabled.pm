@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::RunIns
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  
-
-Indicates whether monitoring is enabled for the instance.
-
-
-
-
-
-
-
-
-
+  Indicates whether monitoring is enabled for the instance.
 
 
 

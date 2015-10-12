@@ -39,108 +39,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::W
 
 =head2 Friday => Paws::OpsWorks::DailyAutoScalingSchedule
 
-  
-
-The schedule for Friday.
-
-
-
-
-
-
-
-
-
+  The schedule for Friday.
 
 =head2 Monday => Paws::OpsWorks::DailyAutoScalingSchedule
 
-  
-
-The schedule for Monday.
-
-
-
-
-
-
-
-
-
+  The schedule for Monday.
 
 =head2 Saturday => Paws::OpsWorks::DailyAutoScalingSchedule
 
-  
-
-The schedule for Saturday.
-
-
-
-
-
-
-
-
-
+  The schedule for Saturday.
 
 =head2 Sunday => Paws::OpsWorks::DailyAutoScalingSchedule
 
-  
-
-The schedule for Sunday.
-
-
-
-
-
-
-
-
-
+  The schedule for Sunday.
 
 =head2 Thursday => Paws::OpsWorks::DailyAutoScalingSchedule
 
-  
-
-The schedule for Thursday.
-
-
-
-
-
-
-
-
-
+  The schedule for Thursday.
 
 =head2 Tuesday => Paws::OpsWorks::DailyAutoScalingSchedule
 
-  
-
-The schedule for Tuesday.
-
-
-
-
-
-
-
-
-
+  The schedule for Tuesday.
 
 =head2 Wednesday => Paws::OpsWorks::DailyAutoScalingSchedule
 
-  
-
-The schedule for Wednesday.
-
-
-
-
-
-
-
-
-
+  The schedule for Wednesday.
 
 
 

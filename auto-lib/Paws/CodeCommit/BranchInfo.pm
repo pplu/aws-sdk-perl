@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit:
 
 =head2 branchName => Str
 
-  
-
-The name of the branch.
-
-
-
-
-
-
-
-
-
+  The name of the branch.
 
 =head2 commitId => Str
 
-  
-
-The ID of the last commit made to the branch.
-
-
-
-
-
-
-
-
-
+  The ID of the last commit made to the branch.
 
 
 

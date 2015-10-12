@@ -15,18 +15,7 @@ Paws::Glacier::GetDataRetrievalPolicyOutput
 
 =head2 Policy => Paws::Glacier::DataRetrievalPolicy
 
-  
-
-Contains the returned data retrieval policy in JSON format.
-
-
-
-
-
-
-
-
-
+  Contains the returned data retrieval policy in JSON format.
 
 
 =cut

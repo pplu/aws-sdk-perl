@@ -36,19 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of the Elasticsearch domain that you want to permanently
+  The name of the Elasticsearch domain that you want to permanently
 delete.
-
-
-
-
-
-
-
-
-
 
 
 

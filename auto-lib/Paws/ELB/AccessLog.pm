@@ -36,68 +36,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Access
 
 =head2 EmitInterval => Int
 
-  
-
-The interval for publishing the access logs. You can specify an
+  The interval for publishing the access logs. You can specify an
 interval of either 5 minutes or 60 minutes.
 
 Default: 60 minutes
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Enabled => Bool
 
-  
-
-Specifies whether access log is enabled for the load balancer.
-
-
-
-
-
-
-
-
-
+  Specifies whether access log is enabled for the load balancer.
 
 =head2 S3BucketName => Str
 
-  
-
-The name of the Amazon S3 bucket where the access logs are stored.
-
-
-
-
-
-
-
-
-
+  The name of the Amazon S3 bucket where the access logs are stored.
 
 =head2 S3BucketPrefix => Str
 
-  
-
-The logical hierarchy you created for your Amazon S3 bucket, for
+  The logical hierarchy you created for your Amazon S3 bucket, for
 example C<my-bucket-prefix/prod>. If the prefix is not provided, the
 log is placed at the root level of the bucket.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head2 AllowedValues => ArrayRef[Str]
 
-  
-
-A list of values that are permitted for a parameter.
-
-
-
-
-
-
-
-
-
+  A list of values that are permitted for a parameter.
 
 
 

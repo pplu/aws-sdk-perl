@@ -15,32 +15,10 @@ Paws::ECS::DescribeServicesResponse
 
 =head2 failures => ArrayRef[Paws::ECS::Failure]
 
-  
-
-Any failures associated with the call.
-
-
-
-
-
-
-
-
-
+  Any failures associated with the call.
 =head2 services => ArrayRef[Paws::ECS::Service]
 
-  
-
-The list of services described.
-
-
-
-
-
-
-
-
-
+  The list of services described.
 
 
 =cut

@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::A
 
 =head2 Action => Str
 
-  
-
-Specifies how to perform the update. Valid values are C<PUT> (default),
+  Specifies how to perform the update. Valid values are C<PUT> (default),
 C<DELETE>, and C<ADD>. The behavior depends on whether the specified
 primary key already exists in the table.
 
@@ -131,15 +129,6 @@ allowed are number and number set; no other data types can be
 specified.
 
 =back
-
-
-
-
-
-
-
-
-
 
 =head2 Value => Paws::DynamoDB::AttributeValue
 

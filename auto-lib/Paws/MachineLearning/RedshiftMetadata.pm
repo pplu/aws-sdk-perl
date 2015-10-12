@@ -43,19 +43,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head2 SelectSqlQuery => Str
 
-  
-
-The SQL query that is specified during CreateDataSourceFromRedshift.
+  The SQL query that is specified during CreateDataSourceFromRedshift.
 Returns only if C<Verbose> is true in GetDataSourceInput.
-
-
-
-
-
-
-
-
-
 
 
 

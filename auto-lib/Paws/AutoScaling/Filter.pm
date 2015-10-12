@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 Name => Str
 
-  
-
-The name of the filter. The valid values are: C<"auto-scaling-group">,
+  The name of the filter. The valid values are: C<"auto-scaling-group">,
 C<"key">, C<"value">, and C<"propagate-at-launch">.
-
-
-
-
-
-
-
-
-
 
 =head2 Values => ArrayRef[Str]
 
-  
-
-The value of the filter.
-
-
-
-
-
-
-
-
-
+  The value of the filter.
 
 
 

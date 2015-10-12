@@ -15,33 +15,11 @@ Paws::MachineLearning::DescribeMLModelsOutput
 
 =head2 NextToken => Str
 
-  
-
-The ID of the next page in the paginated results that indicates at
+  The ID of the next page in the paginated results that indicates at
 least one more page follows.
-
-
-
-
-
-
-
-
-
 =head2 Results => ArrayRef[Paws::MachineLearning::MLModel]
 
-  
-
-A list of MLModel that meet the search criteria.
-
-
-
-
-
-
-
-
-
+  A list of MLModel that meet the search criteria.
 
 
 =cut

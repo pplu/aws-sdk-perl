@@ -30,34 +30,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Invalidation => Paws::CloudFront::Invalidation
 
-  
-
-The invalidation's information.
-
-
-
-
-
-
-
-
-
+  The invalidation's information.
 
 =head2 Location => Str
 
-  
-
-The fully qualified URI of the distribution and invalidation batch
+  The fully qualified URI of the distribution and invalidation batch
 request, including the Invalidation ID.
-
-
-
-
-
-
-
-
-
 
 
 

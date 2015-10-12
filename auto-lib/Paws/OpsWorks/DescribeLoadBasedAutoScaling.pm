@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LayerIds => ArrayRef[Str]
 
-  
-
-An array of layer IDs.
-
-
-
-
-
-
-
-
-
+  An array of layer IDs.
 
 
 

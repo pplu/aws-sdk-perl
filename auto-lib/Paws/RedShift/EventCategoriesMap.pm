@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::E
 
 =head2 Events => ArrayRef[Paws::RedShift::EventInfoMap]
 
-  
-
-The events in the event category.
-
-
-
-
-
-
-
-
-
+  The events in the event category.
 
 =head2 SourceType => Str
 
-  
-
-The Amazon Redshift source type, such as cluster or cluster-snapshot,
+  The Amazon Redshift source type, such as cluster or cluster-snapshot,
 that the returned categories belong to.
-
-
-
-
-
-
-
-
-
 
 
 

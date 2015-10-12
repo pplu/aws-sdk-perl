@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::DhcpOp
 
 =head2 DhcpConfigurations => ArrayRef[Paws::EC2::DhcpConfiguration]
 
-  
-
-One or more DHCP options in the set.
-
-
-
-
-
-
-
-
-
+  One or more DHCP options in the set.
 
 =head2 DhcpOptionsId => Str
 
-  
-
-The ID of the set of DHCP options.
-
-
-
-
-
-
-
-
-
+  The ID of the set of DHCP options.
 
 =head2 Tags => ArrayRef[Paws::EC2::Tag]
 
-  
-
-Any tags assigned to the DHCP options set.
-
-
-
-
-
-
-
-
-
+  Any tags assigned to the DHCP options set.
 
 
 

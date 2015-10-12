@@ -35,9 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Marker => Str
 
-  
-
-For an initial request for a list of domains, omit this element. If the
+  For an initial request for a list of domains, omit this element. If the
 number of domains that are associated with the current AWS account is
 greater than the value that you specified for C<MaxItems>, you can use
 C<Marker> to return additional domains. Get the value of
@@ -54,20 +52,9 @@ request.
 
 Required: No
 
-
-
-
-
-
-
-
-
-
 =head2 MaxItems => Int
 
-  
-
-Number of domains to be returned.
+  Number of domains to be returned.
 
 Type: Integer
 
@@ -76,15 +63,6 @@ Default: 20
 Constraints: A numeral between 1 and 100.
 
 Required: No
-
-
-
-
-
-
-
-
-
 
 
 

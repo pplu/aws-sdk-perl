@@ -34,39 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Sou
 
 =head2 EventSource => Str
 
-  
-
-The source of the event, such as an AWS service, that triggers AWS
+  The source of the event, such as an AWS service, that triggers AWS
 Config to evaluate your AWS resources.
-
-
-
-
-
-
-
-
-
 
 =head2 MessageType => Str
 
-  
-
-The type of SNS message that triggers AWS Config to run an evaluation.
+  The type of SNS message that triggers AWS Config to run an evaluation.
 For evaluations that are initiated when AWS Config delivers a
 configuration item change notification, you must use
 C<ConfigurationItemChangeNotification>. For evaluations that are
 initiated when AWS Config delivers a configuration snapshot, you must
 use C<ConfigurationSnapshotDeliveryCompleted>.
-
-
-
-
-
-
-
-
-
 
 
 

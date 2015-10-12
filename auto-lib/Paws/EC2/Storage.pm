@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Storag
 
 =head2 S3 => Paws::EC2::S3Storage
 
-  
-
-An Amazon S3 storage location.
-
-
-
-
-
-
-
-
-
+  An Amazon S3 storage location.
 
 
 

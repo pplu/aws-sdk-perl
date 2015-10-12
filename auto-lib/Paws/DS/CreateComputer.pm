@@ -38,82 +38,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ComputerAttributes => ArrayRef[Paws::DS::Attribute]
 
-  
-
-An array of Attribute objects that contain any LDAP attributes to apply
+  An array of Attribute objects that contain any LDAP attributes to apply
 to the computer account.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ComputerName => Str
 
-  
-
-The name of the computer account.
-
-
-
-
-
-
-
-
-
+  The name of the computer account.
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-  
-
-The identifier of the directory to create the computer account in.
-
-
-
-
-
-
-
-
-
+  The identifier of the directory to create the computer account in.
 
 =head2 OrganizationalUnitDistinguishedName => Str
 
-  
-
-The fully-qualified distinguished name of the organizational unit to
+  The fully-qualified distinguished name of the organizational unit to
 place the computer account in.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Password => Str
 
-  
-
-A one-time password that is used to join the computer to the directory.
+  A one-time password that is used to join the computer to the directory.
 You should generate a random, strong password to use for this
 parameter.
-
-
-
-
-
-
-
-
-
 
 
 

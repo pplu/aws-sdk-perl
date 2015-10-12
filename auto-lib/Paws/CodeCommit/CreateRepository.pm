@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 repositoryDescription => Str
 
-  
-
-A comment or description about the new repository.
-
-
-
-
-
-
-
-
-
+  A comment or description about the new repository.
 
 =head2 B<REQUIRED> repositoryName => Str
 
-  
-
-The name of the new repository to be created.
+  The name of the new repository to be created.
 
 The repository name must be unique across the calling AWS account. In
 addition, repository names are restricted to alphanumeric characters.
 The suffix ".git" is prohibited.
-
-
-
-
-
-
-
-
-
 
 
 

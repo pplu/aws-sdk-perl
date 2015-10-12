@@ -38,94 +38,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 ApplicationName => Str
 
-  
-
-The name of the application associated with this release.
-
-
-
-
-
-
-
-
-
+  The name of the application associated with this release.
 
 =head2 DateCreated => Str
 
-  
-
-The creation date of the application version.
-
-
-
-
-
-
-
-
-
+  The creation date of the application version.
 
 =head2 DateUpdated => Str
 
-  
-
-The last modified date of the application version.
-
-
-
-
-
-
-
-
-
+  The last modified date of the application version.
 
 =head2 Description => Str
 
-  
-
-The description of this application version.
-
-
-
-
-
-
-
-
-
+  The description of this application version.
 
 =head2 SourceBundle => Paws::ElasticBeanstalk::S3Location
 
-  
-
-The location where the source bundle is located for this version.
-
-
-
-
-
-
-
-
-
+  The location where the source bundle is located for this version.
 
 =head2 VersionLabel => Str
 
-  
-
-A label uniquely identifying the version for the associated
+  A label uniquely identifying the version for the associated
 application.
-
-
-
-
-
-
-
-
-
 
 
 

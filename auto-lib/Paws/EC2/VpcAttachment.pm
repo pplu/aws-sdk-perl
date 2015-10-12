@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpcAtt
 
 =head2 State => Str
 
-  
-
-The current state of the attachment.
-
-
-
-
-
-
-
-
-
+  The current state of the attachment.
 
 =head2 VpcId => Str
 
-  
-
-The ID of the VPC.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC.
 
 
 

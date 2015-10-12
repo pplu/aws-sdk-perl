@@ -40,122 +40,45 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 clientToken => Str
 
-  
-
-Unique, case-sensitive identifier you provide to ensure the idempotency
+  Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. Up to 32 ASCII characters are allowed.
-
-
-
-
-
-
-
-
-
 
 =head2 cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster on
+  The short name or full Amazon Resource Name (ARN) of the cluster on
 which to run your service. If you do not specify a cluster, the default
 cluster is assumed.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> desiredCount => Int
 
-  
-
-The number of instantiations of the specified task definition to place
+  The number of instantiations of the specified task definition to place
 and keep running on your cluster.
-
-
-
-
-
-
-
-
-
 
 =head2 loadBalancers => ArrayRef[Paws::ECS::LoadBalancer]
 
-  
-
-A list of load balancer objects, containing the load balancer name, the
+  A list of load balancer objects, containing the load balancer name, the
 container name (as it appears in a container definition), and the
 container port to access from the load balancer.
 
-
-
-
-
-
-
-
-
-
 =head2 role => Str
 
-  
-
-The name or full Amazon Resource Name (ARN) of the IAM role that allows
+  The name or full Amazon Resource Name (ARN) of the IAM role that allows
 your Amazon ECS container agent to make calls to your load balancer on
 your behalf. This parameter is only required if you are using a load
 balancer with your service.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> serviceName => Str
 
-  
-
-The name of your service. Up to 255 letters (uppercase and lowercase),
+  The name of your service. Up to 255 letters (uppercase and lowercase),
 numbers, hyphens, and underscores are allowed. Service names must be
 unique within a cluster, but you can have similarly named services in
 multiple clusters within a region or across multiple regions.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> taskDefinition => Str
 
-  
-
-The C<family> and C<revision> (C<family:revision>) or full Amazon
+  The C<family> and C<revision> (C<family:revision>) or full Amazon
 Resource Name (ARN) of the task definition to run in your service. If a
 C<revision> is not specified, the latest C<ACTIVE> revision is used.
-
-
-
-
-
-
-
-
-
 
 
 

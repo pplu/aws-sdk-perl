@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
 =head2 ParentShardId => Str
 
-  
-
-The shard ID of the current shard's parent.
-
-
-
-
-
-
-
-
-
+  The shard ID of the current shard's parent.
 
 =head2 SequenceNumberRange => Paws::DynamoDBStreams::SequenceNumberRange
 
-  
-
-The range of possible sequence numbers for the shard.
-
-
-
-
-
-
-
-
-
+  The range of possible sequence numbers for the shard.
 
 =head2 ShardId => Str
 
-  
-
-The system-generated identifier for this shard.
-
-
-
-
-
-
-
-
-
+  The system-generated identifier for this shard.
 
 
 

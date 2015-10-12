@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Produc
 
 =head2 ProductCodeId => Str
 
-  
-
-The product code.
-
-
-
-
-
-
-
-
-
+  The product code.
 
 =head2 ProductCodeType => Str
 
-  
-
-The type of product code.
-
-
-
-
-
-
-
-
-
+  The type of product code.
 
 
 

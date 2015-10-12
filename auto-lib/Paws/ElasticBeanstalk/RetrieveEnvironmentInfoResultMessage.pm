@@ -15,18 +15,7 @@ Paws::ElasticBeanstalk::RetrieveEnvironmentInfoResultMessage
 
 =head2 EnvironmentInfo => ArrayRef[Paws::ElasticBeanstalk::EnvironmentInfoDescription]
 
-  
-
-The EnvironmentInfoDescription of the environment.
-
-
-
-
-
-
-
-
-
+  The EnvironmentInfoDescription of the environment.
 
 
 =cut

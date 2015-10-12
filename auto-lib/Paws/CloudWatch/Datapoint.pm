@@ -39,113 +39,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head2 Average => Num
 
-  
-
-The average of metric values that correspond to the datapoint.
-
-
-
-
-
-
-
-
-
+  The average of metric values that correspond to the datapoint.
 
 =head2 Maximum => Num
 
-  
-
-The maximum of the metric value used for the datapoint.
-
-
-
-
-
-
-
-
-
+  The maximum of the metric value used for the datapoint.
 
 =head2 Minimum => Num
 
-  
-
-The minimum metric value used for the datapoint.
-
-
-
-
-
-
-
-
-
+  The minimum metric value used for the datapoint.
 
 =head2 SampleCount => Num
 
-  
-
-The number of metric values that contributed to the aggregate value of
+  The number of metric values that contributed to the aggregate value of
 this datapoint.
-
-
-
-
-
-
-
-
-
 
 =head2 Sum => Num
 
-  
-
-The sum of metric values used for the datapoint.
-
-
-
-
-
-
-
-
-
+  The sum of metric values used for the datapoint.
 
 =head2 Timestamp => Str
 
-  
-
-The time stamp used for the datapoint. Amazon CloudWatch uses
+  The time stamp used for the datapoint. Amazon CloudWatch uses
 Coordinated Universal Time (UTC) when returning time stamps, which do
 not accommodate seasonal adjustments such as daylight savings time. For
 more information, see Time stamps in the I<Amazon CloudWatch Developer
 Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 Unit => Str
 
-  
-
-The standard unit used for the datapoint.
-
-
-
-
-
-
-
-
-
+  The standard unit used for the datapoint.
 
 
 

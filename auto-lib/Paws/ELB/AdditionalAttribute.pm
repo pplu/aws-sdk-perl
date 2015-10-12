@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Additi
 
 =head2 Key => Str
 
-  
-
-This parameter is reserved.
-
-
-
-
-
-
-
-
-
+  This parameter is reserved.
 
 =head2 Value => Str
 
-  
-
-This parameter is reserved.
-
-
-
-
-
-
-
-
-
+  This parameter is reserved.
 
 
 

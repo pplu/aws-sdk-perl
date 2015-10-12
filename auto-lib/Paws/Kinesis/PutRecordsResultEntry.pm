@@ -36,68 +36,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Pu
 
 =head2 ErrorCode => Str
 
-  
-
-The error code for an individual record result. C<ErrorCodes> can be
+  The error code for an individual record result. C<ErrorCodes> can be
 either C<ProvisionedThroughputExceededException> or C<InternalFailure>.
-
-
-
-
-
-
-
-
-
 
 =head2 ErrorMessage => Str
 
-  
-
-The error message for an individual record result. An C<ErrorCode>
+  The error message for an individual record result. An C<ErrorCode>
 value of C<ProvisionedThroughputExceededException> has an error message
 that includes the account ID, stream name, and shard ID. An
 C<ErrorCode> value of C<InternalFailure> has the error message
 C<"Internal Service Failure">.
 
-
-
-
-
-
-
-
-
-
 =head2 SequenceNumber => Str
 
-  
-
-The sequence number for an individual record result.
-
-
-
-
-
-
-
-
-
+  The sequence number for an individual record result.
 
 =head2 ShardId => Str
 
-  
-
-The shard ID for an individual record result.
-
-
-
-
-
-
-
-
-
+  The shard ID for an individual record result.
 
 
 

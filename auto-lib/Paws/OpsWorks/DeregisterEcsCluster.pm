@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EcsClusterArn => Str
 
-  
-
-The cluster's ARN.
-
-
-
-
-
-
-
-
-
+  The cluster's ARN.
 
 
 

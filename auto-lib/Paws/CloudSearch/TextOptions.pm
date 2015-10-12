@@ -38,80 +38,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 AnalysisScheme => Str
 
-  
-
-The name of an analysis scheme for a C<text> field.
-
-
-
-
-
-
-
-
-
+  The name of an analysis scheme for a C<text> field.
 
 =head2 DefaultValue => Str
 
-  
-
-A value to use for the field if the field isn't specified for a
+  A value to use for the field if the field isn't specified for a
 document.
-
-
-
-
-
-
-
-
-
 
 =head2 HighlightEnabled => Bool
 
-  
-
-Whether highlights can be returned for the field.
-
-
-
-
-
-
-
-
-
+  Whether highlights can be returned for the field.
 
 =head2 ReturnEnabled => Bool
 
-  
-
-Whether the contents of the field can be returned in the search
+  Whether the contents of the field can be returned in the search
 results.
-
-
-
-
-
-
-
-
-
 
 =head2 SortEnabled => Bool
 
-  
-
-Whether the field can be used to sort the search results.
-
-
-
-
-
-
-
-
-
+  Whether the field can be used to sort the search results.
 
 =head2 SourceField => Str
 

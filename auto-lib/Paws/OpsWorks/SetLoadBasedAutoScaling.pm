@@ -37,67 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DownScaling => Paws::OpsWorks::AutoScalingThresholds
 
-  
-
-An C<AutoScalingThresholds> object with the downscaling threshold
+  An C<AutoScalingThresholds> object with the downscaling threshold
 configuration. If the load falls below these thresholds for a specified
 amount of time, AWS OpsWorks stops a specified number of instances.
 
-
-
-
-
-
-
-
-
-
 =head2 Enable => Bool
 
-  
-
-Enables load-based auto scaling for the layer.
-
-
-
-
-
-
-
-
-
+  Enables load-based auto scaling for the layer.
 
 =head2 B<REQUIRED> LayerId => Str
 
-  
-
-The layer ID.
-
-
-
-
-
-
-
-
-
+  The layer ID.
 
 =head2 UpScaling => Paws::OpsWorks::AutoScalingThresholds
 
-  
-
-An C<AutoScalingThresholds> object with the upscaling threshold
+  An C<AutoScalingThresholds> object with the upscaling threshold
 configuration. If the load exceeds these thresholds for a specified
 amount of time, AWS OpsWorks starts a specified number of instances.
-
-
-
-
-
-
-
-
-
 
 
 

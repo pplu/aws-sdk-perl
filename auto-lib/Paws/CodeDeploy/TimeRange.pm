@@ -34,37 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 end => Str
 
-  
-
-The time range's end time.
+  The time range's end time.
 
 Specify null to leave the time range's end time open-ended.
 
-
-
-
-
-
-
-
-
-
 =head2 start => Str
 
-  
-
-The time range's start time.
+  The time range's start time.
 
 Specify null to leave the time range's start time open-ended.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -38,84 +38,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplicationName => Str
 
-  
-
-The name of the application associated with the configuration template
+  The name of the application associated with the configuration template
 or environment. Only needed if you want to describe the configuration
 options associated with either the configuration template or
 environment.
 
-
-
-
-
-
-
-
-
-
 =head2 EnvironmentName => Str
 
-  
-
-The name of the environment whose configuration options you want to
+  The name of the environment whose configuration options you want to
 describe.
-
-
-
-
-
-
-
-
-
 
 =head2 Options => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]
 
-  
-
-If specified, restricts the descriptions to only the specified options.
-
-
-
-
-
-
-
-
-
+  If specified, restricts the descriptions to only the specified options.
 
 =head2 SolutionStackName => Str
 
-  
-
-The name of the solution stack whose configuration options you want to
+  The name of the solution stack whose configuration options you want to
 describe.
-
-
-
-
-
-
-
-
-
 
 =head2 TemplateName => Str
 
-  
-
-The name of the configuration template whose configuration options you
+  The name of the configuration template whose configuration options you
 want to describe.
-
-
-
-
-
-
-
-
-
 
 
 

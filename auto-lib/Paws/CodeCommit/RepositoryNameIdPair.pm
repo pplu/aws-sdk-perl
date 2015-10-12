@@ -34,18 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit:
 
 =head2 repositoryId => Str
 
-  
-
-The ID associated with the repository name.
-
-
-
-
-
-
-
-
-
+  The ID associated with the repository name.
 
 =head2 repositoryName => Str
 

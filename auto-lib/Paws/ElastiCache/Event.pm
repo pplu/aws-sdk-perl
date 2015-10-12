@@ -36,66 +36,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 Date => Str
 
-  
-
-The date and time when the event occurred.
-
-
-
-
-
-
-
-
-
+  The date and time when the event occurred.
 
 =head2 Message => Str
 
-  
-
-The text of the event.
-
-
-
-
-
-
-
-
-
+  The text of the event.
 
 =head2 SourceIdentifier => Str
 
-  
-
-The identifier for the source of the event. For example, if the event
+  The identifier for the source of the event. For example, if the event
 occurred at the cache cluster level, the identifier would be the name
 of the cache cluster.
 
-
-
-
-
-
-
-
-
-
 =head2 SourceType => Str
 
-  
-
-Specifies the origin of this event - a cache cluster, a parameter
+  Specifies the origin of this event - a cache cluster, a parameter
 group, a security group, etc.
-
-
-
-
-
-
-
-
-
 
 
 

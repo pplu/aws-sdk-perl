@@ -654,7 +654,10 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
       warn "No documentation for $param_name in " . $self->api;
       return '';
     }
-    return $self->html_to_pod($doc);
+    my $pod = $self->html_to_pod($doc);
+    $pod =~ s/^(?:\s*\n)*//;
+    $pod =~ s/(?:\s*\n)*$//;
+    return $pod;
   }
 
   sub doc_for_service {

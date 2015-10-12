@@ -35,25 +35,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 Encryption => Paws::ElasticTranscoder::Encryption
 
-  
-
-The encryption settings, if any, that you want Elastic Transcoder to
+  The encryption settings, if any, that you want Elastic Transcoder to
 apply to your caption formats.
-
-
-
-
-
-
-
-
-
 
 =head2 Format => Str
 
-  
-
-The format you specify determines whether Elastic Transcoder generates
+  The format you specify determines whether Elastic Transcoder generates
 an embedded or sidecar caption for this output.
 
 =over
@@ -112,20 +99,9 @@ C<fmp4> captions have an extension of C<.ismt>
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Pattern => Str
 
-  
-
-The prefix for caption filenames, in the form
+  The prefix for caption filenames, in the form
 I<description>-C<{language}>, where:
 
 =over
@@ -147,15 +123,6 @@ For example, suppose you're transcoding into srt format. When you enter
 "Sydney-{language}-sunrise", and the language of the captions is
 English (en), the name of the first caption file will be
 Sydney-en-sunrise00000.srt.
-
-
-
-
-
-
-
-
-
 
 
 

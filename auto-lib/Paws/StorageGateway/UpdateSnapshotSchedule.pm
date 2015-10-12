@@ -37,67 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  
-
-Optional description of the snapshot that overwrites the existing
+  Optional description of the snapshot that overwrites the existing
 description.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> RecurrenceInHours => Int
 
-  
-
-Frequency of snapshots. Specify the number of hours between snapshots.
-
-
-
-
-
-
-
-
-
+  Frequency of snapshots. Specify the number of hours between snapshots.
 
 =head2 B<REQUIRED> StartAt => Int
 
-  
-
-The hour of the day at which the snapshot schedule begins represented
+  The hour of the day at which the snapshot schedule begins represented
 as I<hh>, where I<hh> is the hour (0 to 23). The hour of the day is in
 the time zone of the gateway.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VolumeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
+  The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
 operation to return a list of gateway volumes.
-
-
-
-
-
-
-
-
-
 
 
 

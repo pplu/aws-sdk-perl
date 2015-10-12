@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::C
 
 =head2 BerkshelfVersion => Str
 
-  
-
-The Berkshelf version.
-
-
-
-
-
-
-
-
-
+  The Berkshelf version.
 
 =head2 ManageBerkshelf => Bool
 
-  
-
-Whether to enable Berkshelf.
-
-
-
-
-
-
-
-
-
+  Whether to enable Berkshelf.
 
 
 

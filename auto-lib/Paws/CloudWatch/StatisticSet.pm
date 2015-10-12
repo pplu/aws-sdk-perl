@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head2 B<REQUIRED> Maximum => Num
 
-  
-
-The maximum value of the sample set.
-
-
-
-
-
-
-
-
-
+  The maximum value of the sample set.
 
 =head2 B<REQUIRED> Minimum => Num
 
-  
-
-The minimum value of the sample set.
-
-
-
-
-
-
-
-
-
+  The minimum value of the sample set.
 
 =head2 B<REQUIRED> SampleCount => Num
 
-  
-
-The number of samples used for the statistic set.
-
-
-
-
-
-
-
-
-
+  The number of samples used for the statistic set.
 
 =head2 B<REQUIRED> Sum => Num
 
-  
-
-The sum of values for the sample set.
-
-
-
-
-
-
-
-
-
+  The sum of values for the sample set.
 
 
 

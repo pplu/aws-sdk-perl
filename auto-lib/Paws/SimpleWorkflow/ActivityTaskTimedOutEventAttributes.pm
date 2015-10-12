@@ -36,69 +36,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 details => Str
 
-  
-
-Contains the content of the C<details> parameter for the last call made
+  Contains the content of the C<details> parameter for the last call made
 by the activity to C<RecordActivityTaskHeartbeat>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> scheduledEventId => Int
 
-  
-
-The ID of the C<ActivityTaskScheduled> event that was recorded when
+  The ID of the C<ActivityTaskScheduled> event that was recorded when
 this activity task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> startedEventId => Int
 
-  
-
-The ID of the C<ActivityTaskStarted> event recorded when this activity
+  The ID of the C<ActivityTaskStarted> event recorded when this activity
 task was started. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> timeoutType => Str
 
-  
-
-The type of the timeout that caused this event.
-
-
-
-
-
-
-
-
-
+  The type of the timeout that caused this event.
 
 
 

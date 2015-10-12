@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Comman
 
 =head2 Args => ArrayRef[Str]
 
-  
-
-Arguments for Amazon EMR to pass to the command for execution.
-
-
-
-
-
-
-
-
-
+  Arguments for Amazon EMR to pass to the command for execution.
 
 =head2 Name => Str
 
-  
-
-The name of the command.
-
-
-
-
-
-
-
-
-
+  The name of the command.
 
 =head2 ScriptPath => Str
 
-  
-
-The Amazon S3 location of the command script.
-
-
-
-
-
-
-
-
-
+  The Amazon S3 location of the command script.
 
 
 

@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EvaluationId => Str
 
-  
-
-The ID of the C<Evaluation> to retrieve. The evaluation of each
+  The ID of the C<Evaluation> to retrieve. The evaluation of each
 C<MLModel> is recorded and cataloged. The ID provides the means to
 access the information.
-
-
-
-
-
-
-
-
-
 
 
 

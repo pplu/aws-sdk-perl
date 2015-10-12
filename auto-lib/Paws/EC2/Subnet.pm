@@ -41,140 +41,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Subnet
 
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone of the subnet.
-
-
-
-
-
-
-
-
-
+  The Availability Zone of the subnet.
 
 =head2 AvailableIpAddressCount => Int
 
-  
-
-The number of unused IP addresses in the subnet. Note that the IP
+  The number of unused IP addresses in the subnet. Note that the IP
 addresses for any stopped instances are considered unavailable.
-
-
-
-
-
-
-
-
-
 
 =head2 CidrBlock => Str
 
-  
-
-The CIDR block assigned to the subnet.
-
-
-
-
-
-
-
-
-
+  The CIDR block assigned to the subnet.
 
 =head2 DefaultForAz => Bool
 
-  
-
-Indicates whether this is the default subnet for the Availability Zone.
-
-
-
-
-
-
-
-
-
+  Indicates whether this is the default subnet for the Availability Zone.
 
 =head2 MapPublicIpOnLaunch => Bool
 
-  
-
-Indicates whether instances launched in this subnet receive a public IP
+  Indicates whether instances launched in this subnet receive a public IP
 address.
-
-
-
-
-
-
-
-
-
 
 =head2 State => Str
 
-  
-
-The current state of the subnet.
-
-
-
-
-
-
-
-
-
+  The current state of the subnet.
 
 =head2 SubnetId => Str
 
-  
-
-The ID of the subnet.
-
-
-
-
-
-
-
-
-
+  The ID of the subnet.
 
 =head2 Tags => ArrayRef[Paws::EC2::Tag]
 
-  
-
-Any tags assigned to the subnet.
-
-
-
-
-
-
-
-
-
+  Any tags assigned to the subnet.
 
 =head2 VpcId => Str
 
-  
-
-The ID of the VPC the subnet is in.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC the subnet is in.
 
 
 

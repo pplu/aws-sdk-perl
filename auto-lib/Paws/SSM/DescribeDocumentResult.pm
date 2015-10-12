@@ -14,18 +14,7 @@ Paws::SSM::DescribeDocumentResult
 
 =head2 Document => Paws::SSM::DocumentDescription
 
-  
-
-Information about the configuration document.
-
-
-
-
-
-
-
-
-
+  Information about the configuration document.
 
 
 =cut

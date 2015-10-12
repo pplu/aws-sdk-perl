@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 =head2 ChapEnabled => Bool
 
-  
-
-Indicates whether mutual CHAP is enabled for the iSCSI target.
-
-
-
-
-
-
-
-
-
+  Indicates whether mutual CHAP is enabled for the iSCSI target.
 
 =head2 LunNumber => Int
 
-  
-
-The logical disk number.
-
-
-
-
-
-
-
-
-
+  The logical disk number.
 
 =head2 NetworkInterfaceId => Str
 
-  
-
-The network interface identifier.
-
-
-
-
-
-
-
-
-
+  The network interface identifier.
 
 =head2 NetworkInterfacePort => Int
 
-  
-
-The port used to communicate with iSCSI targets.
-
-
-
-
-
-
-
-
-
+  The port used to communicate with iSCSI targets.
 
 =head2 TargetARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the volume target.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the volume target.
 
 
 

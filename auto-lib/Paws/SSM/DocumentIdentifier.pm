@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Docume
 
 =head2 Name => Str
 
-  
-
-The name of the configuration document.
-
-
-
-
-
-
-
-
-
+  The name of the configuration document.
 
 
 

@@ -17,46 +17,13 @@ Paws::EC2::DescribeVolumeAttributeResult
 
 =head2 AutoEnableIO => Paws::EC2::AttributeBooleanValue
 
-  
-
-The state of C<autoEnableIO> attribute.
-
-
-
-
-
-
-
-
-
+  The state of C<autoEnableIO> attribute.
 =head2 ProductCodes => ArrayRef[Paws::EC2::ProductCode]
 
-  
-
-A list of product codes.
-
-
-
-
-
-
-
-
-
+  A list of product codes.
 =head2 VolumeId => Str
 
-  
-
-The ID of the volume.
-
-
-
-
-
-
-
-
-
+  The ID of the volume.
 
 
 =cut

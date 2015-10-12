@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConfigRuleNames => ArrayRef[Str]
 
-  
-
-The names of the AWS Config rules for which you want details. If you do
+  The names of the AWS Config rules for which you want details. If you do
 not specify any names, AWS Config returns details for all your rules.
-
-
-
-
-
-
-
-
-
 
 =head2 NextToken => Str
 
-  
-
-The C<nextToken> string returned on a previous page that you use to get
+  The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
-
-
-
-
-
-
-
-
-
 
 
 

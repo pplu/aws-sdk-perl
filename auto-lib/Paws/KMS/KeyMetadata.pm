@@ -39,108 +39,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::KeyMet
 
 =head2 Arn => Str
 
-  
-
-Key ARN (Amazon Resource Name).
-
-
-
-
-
-
-
-
-
+  Key ARN (Amazon Resource Name).
 
 =head2 AWSAccountId => Str
 
-  
-
-Account ID number.
-
-
-
-
-
-
-
-
-
+  Account ID number.
 
 =head2 CreationDate => Str
 
-  
-
-Date the key was created.
-
-
-
-
-
-
-
-
-
+  Date the key was created.
 
 =head2 Description => Str
 
-  
-
-The description of the key.
-
-
-
-
-
-
-
-
-
+  The description of the key.
 
 =head2 Enabled => Bool
 
-  
-
-Value that specifies whether the key is enabled.
-
-
-
-
-
-
-
-
-
+  Value that specifies whether the key is enabled.
 
 =head2 B<REQUIRED> KeyId => Str
 
-  
-
-Unique identifier for the key.
-
-
-
-
-
-
-
-
-
+  Unique identifier for the key.
 
 =head2 KeyUsage => Str
 
-  
-
-A value that specifies what operation(s) the key can perform.
-
-
-
-
-
-
-
-
-
+  A value that specifies what operation(s) the key can perform.
 
 
 

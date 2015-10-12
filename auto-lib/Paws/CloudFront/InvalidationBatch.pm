@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  
-
-A unique name that ensures the request can't be replayed. If the
+  A unique name that ensures the request can't be replayed. If the
 CallerReference is new (no matter the content of the Path object), a
 new distribution is created. If the CallerReference is a value you
 already sent in a previous request to create an invalidation batch, and
@@ -47,35 +45,15 @@ previous request to create a distribution but the content of any Path
 is different from the original request, CloudFront returns an
 InvalidationBatchAlreadyExists error.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Paths => Paws::CloudFront::Paths
 
-  
-
-The path of the object to invalidate. The path is relative to the
+  The path of the object to invalidate. The path is relative to the
 distribution and must begin with a slash (/). You must enclose each
 invalidation object with the Path element tags. If the path includes
 non-ASCII characters or unsafe characters as defined in RFC 1783
 (http://www.ietf.org/rfc/rfc1738.txt), URL encode those characters. Do
 not URL encode any other characters in the path, or CloudFront will not
 invalidate the old version of the updated object.
-
-
-
-
-
-
-
-
-
 
 
 

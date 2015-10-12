@@ -38,9 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 defaultChildPolicy => Str
 
-  
-
-I<Optional.> The default policy to use for the child workflow
+  I<Optional.> The default policy to use for the child workflow
 executions when a workflow execution of this type is terminated, by
 calling the TerminateWorkflowExecution action explicitly or due to an
 expired timeout. This default can be overridden when starting a
@@ -63,20 +61,9 @@ continue to run.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 defaultExecutionStartToCloseTimeout => Str
 
-  
-
-I<Optional.> The default maximum duration, specified when registering
+  I<Optional.> The default maximum duration, specified when registering
 the workflow type, for executions of this workflow type. This default
 can be overridden when starting a workflow execution using the
 StartWorkflowExecution action or the C<StartChildWorkflowExecution>
@@ -85,55 +72,22 @@ decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-
-
-
-
-
-
-
-
-
 =head2 defaultLambdaRole => Str
 
-  
-
-The default IAM role to use when a workflow execution invokes a AWS
+  The default IAM role to use when a workflow execution invokes a AWS
 Lambda function.
-
-
-
-
-
-
-
-
-
 
 =head2 defaultTaskList => Paws::SimpleWorkflow::TaskList
 
-  
-
-I<Optional.> The default task list, specified when registering the
+  I<Optional.> The default task list, specified when registering the
 workflow type, for decisions tasks scheduled for workflow executions of
 this type. This default can be overridden when starting a workflow
 execution using the StartWorkflowExecution action or the
 C<StartChildWorkflowExecution> decision.
 
-
-
-
-
-
-
-
-
-
 =head2 defaultTaskPriority => Str
 
-  
-
-I<Optional.> The default task priority, specified when registering the
+  I<Optional.> The default task priority, specified when registering the
 workflow type, for all decision tasks of this workflow type. This
 default can be overridden when starting a workflow execution using the
 StartWorkflowExecution action or the C<StartChildWorkflowExecution>
@@ -146,20 +100,9 @@ indicate higher priority.
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 defaultTaskStartToCloseTimeout => Str
 
-  
-
-I<Optional.> The default maximum duration, specified when registering
+  I<Optional.> The default maximum duration, specified when registering
 the workflow type, that a decision task for executions of this workflow
 type might take before returning completion or failure. If the task
 does not close in the specified time then the task is automatically
@@ -170,15 +113,6 @@ action or the C<StartChildWorkflowExecution> decision.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
-
-
-
-
-
-
-
-
-
 
 
 

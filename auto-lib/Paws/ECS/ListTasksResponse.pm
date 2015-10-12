@@ -15,36 +15,14 @@ Paws::ECS::ListTasksResponse
 
 =head2 nextToken => Str
 
-  
-
-The C<nextToken> value to include in a future C<ListTasks> request.
+  The C<nextToken> value to include in a future C<ListTasks> request.
 When the results of a C<ListTasks> request exceed C<maxResults>, this
 value can be used to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
-
-
-
-
-
-
-
-
-
 =head2 taskArns => ArrayRef[Str]
 
-  
-
-The list of task Amazon Resource Name (ARN) entries for the
+  The list of task Amazon Resource Name (ARN) entries for the
 C<ListTasks> request.
-
-
-
-
-
-
-
-
-
 
 
 =cut

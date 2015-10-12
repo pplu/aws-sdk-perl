@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The dimension name to be matched.
-
-
-
-
-
-
-
-
-
+  The dimension name to be matched.
 
 =head2 Value => Str
 
-  
-
-The value of the dimension to be matched.
-
-
-
-
-
-
-
-
-
+  The value of the dimension to be matched.
 
 
 

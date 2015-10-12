@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::KeyLis
 
 =head2 KeyArn => Str
 
-  
-
-ARN of the key.
-
-
-
-
-
-
-
-
-
+  ARN of the key.
 
 =head2 KeyId => Str
 
-  
-
-Unique identifier of the key.
-
-
-
-
-
-
-
-
-
+  Unique identifier of the key.
 
 
 

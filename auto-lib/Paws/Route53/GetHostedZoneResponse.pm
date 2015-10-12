@@ -31,51 +31,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DelegationSet => Paws::Route53::DelegationSet
 
-  
-
-A complex type that contains information about the name servers for the
+  A complex type that contains information about the name servers for the
 specified hosted zone.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> HostedZone => Paws::Route53::HostedZone
 
-  
-
-A complex type that contains the information about the specified hosted
+  A complex type that contains the information about the specified hosted
 zone.
-
-
-
-
-
-
-
-
-
 
 =head2 VPCs => ArrayRef[Paws::Route53::VPC]
 
-  
-
-A complex type that contains information about VPCs associated with the
+  A complex type that contains information about VPCs associated with the
 specified hosted zone.
-
-
-
-
-
-
-
-
-
 
 
 

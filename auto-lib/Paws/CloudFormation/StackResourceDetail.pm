@@ -42,157 +42,47 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head2 Description => Str
 
-  
-
-User defined description associated with the resource.
-
-
-
-
-
-
-
-
-
+  User defined description associated with the resource.
 
 =head2 B<REQUIRED> LastUpdatedTimestamp => Str
 
-  
-
-Time the status was updated.
-
-
-
-
-
-
-
-
-
+  Time the status was updated.
 
 =head2 B<REQUIRED> LogicalResourceId => Str
 
-  
-
-The logical name of the resource specified in the template.
-
-
-
-
-
-
-
-
-
+  The logical name of the resource specified in the template.
 
 =head2 Metadata => Str
 
-  
-
-The JSON format content of the C<Metadata> attribute declared for the
+  The JSON format content of the C<Metadata> attribute declared for the
 resource. For more information, see Metadata Attribute in the AWS
 CloudFormation User Guide.
 
-
-
-
-
-
-
-
-
-
 =head2 PhysicalResourceId => Str
 
-  
-
-The name or unique identifier that corresponds to a physical instance
+  The name or unique identifier that corresponds to a physical instance
 ID of a resource supported by AWS CloudFormation.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ResourceStatus => Str
 
-  
-
-Current status of the resource.
-
-
-
-
-
-
-
-
-
+  Current status of the resource.
 
 =head2 ResourceStatusReason => Str
 
-  
-
-Success/failure message associated with the resource.
-
-
-
-
-
-
-
-
-
+  Success/failure message associated with the resource.
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  
-
-Type of resource. ((For more information, go to AWS Resource Types
+  Type of resource. ((For more information, go to AWS Resource Types
 Reference in the AWS CloudFormation User Guide.)
-
-
-
-
-
-
-
-
-
 
 =head2 StackId => Str
 
-  
-
-Unique identifier of the stack.
-
-
-
-
-
-
-
-
-
+  Unique identifier of the stack.
 
 =head2 StackName => Str
 
-  
-
-The name associated with the stack.
-
-
-
-
-
-
-
-
-
+  The name associated with the stack.
 
 
 

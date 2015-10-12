@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Entries => ArrayRef[Paws::SQS::DeleteMessageBatchRequestEntry]
 
-  
-
-A list of receipt handles for the messages to be deleted.
-
-
-
-
-
-
-
-
-
+  A list of receipt handles for the messages to be deleted.
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-  
-
-The URL of the Amazon SQS queue to take action on.
-
-
-
-
-
-
-
-
-
+  The URL of the Amazon SQS queue to take action on.
 
 
 

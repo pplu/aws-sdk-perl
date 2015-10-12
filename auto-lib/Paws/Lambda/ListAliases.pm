@@ -39,68 +39,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-Lambda function name for which the alias is created.
-
-
-
-
-
-
-
-
-
+  Lambda function name for which the alias is created.
 
 =head2 FunctionVersion => Str
 
-  
-
-If you specify this optional parameter, the API returns only the
+  If you specify this optional parameter, the API returns only the
 aliases pointing to the specific Lambda function version, otherwise
 returns all aliases created for the Lambda function.
 
-
-
-
-
-
-
-
-
-
 =head2 Marker => Str
 
-  
-
-Optional string. An opaque pagination token returned from a previous
+  Optional string. An opaque pagination token returned from a previous
 ListAliases operation. If present, indicates where to continue the
 listing.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxItems => Int
 
-  
-
-Optional integer. Specifies the maximum number of aliases to return in
+  Optional integer. Specifies the maximum number of aliases to return in
 response. This parameter value must be greater than 0.
-
-
-
-
-
-
-
-
-
 
 
 

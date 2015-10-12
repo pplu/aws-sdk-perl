@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 Monitoring => Paws::EC2::Monitoring
 
-  
-
-The monitoring information.
-
-
-
-
-
-
-
-
-
+  The monitoring information.
 
 
 

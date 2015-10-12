@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of the application to delete.
-
-
-
-
-
-
-
-
-
+  The name of the application to delete.
 
 =head2 TerminateEnvByForce => Bool
 
-  
-
-When set to true, running environments will be terminated before
+  When set to true, running environments will be terminated before
 deleting the application.
-
-
-
-
-
-
-
-
-
 
 
 

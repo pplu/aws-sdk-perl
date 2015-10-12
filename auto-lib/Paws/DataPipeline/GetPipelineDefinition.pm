@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> pipelineId => Str
 
-  
-
-The ID of the pipeline.
-
-
-
-
-
-
-
-
-
+  The ID of the pipeline.
 
 =head2 version => Str
 
-  
-
-The version of the pipeline definition to retrieve. Set this parameter
+  The version of the pipeline definition to retrieve. Set this parameter
 to C<latest> (default) to use the last definition saved to the pipeline
 or C<active> to use the last definition that was activated.
-
-
-
-
-
-
-
-
-
 
 
 

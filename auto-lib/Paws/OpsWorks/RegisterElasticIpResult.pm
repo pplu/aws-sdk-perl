@@ -14,18 +14,7 @@ Paws::OpsWorks::RegisterElasticIpResult
 
 =head2 ElasticIp => Str
 
-  
-
-The Elastic IP address.
-
-
-
-
-
-
-
-
-
+  The Elastic IP address.
 
 
 =cut

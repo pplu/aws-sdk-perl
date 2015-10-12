@@ -38,9 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 AudioPackingMode => Str
 
-  
-
-The method of organizing audio channels and tracks. Use
+  The method of organizing audio channels and tracks. Use
 C<Audio:Channels> to specify the number of channels in your output, and
 C<Audio:AudioPackingMode> to specify the number of tracks and their
 relation to the channels. If you do not specify an
@@ -164,36 +162,14 @@ eight tracks in all
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 BitRate => Str
 
-  
-
-The bit rate of the audio stream in the output file, in
+  The bit rate of the audio stream in the output file, in
 kilobits/second. Enter an integer between 64 and 320, inclusive.
-
-
-
-
-
-
-
-
-
 
 =head2 Channels => Str
 
-  
-
-The number of audio channels in the output file. The following values
+  The number of audio channels in the output file. The following values
 are valid:
 
 C<auto>, C<0>, C<1>, C<2>
@@ -227,36 +203,14 @@ C<Audio:AudioPackingMode.>
 For more information about how Elastic Transcoder organizes channels
 and tracks, see C<Audio:AudioPackingMode>.
 
-
-
-
-
-
-
-
-
-
 =head2 Codec => Str
 
-  
-
-The audio codec for the output file. Valid values include C<aac>,
+  The audio codec for the output file. Valid values include C<aac>,
 C<flac>, C<mp2>, C<mp3>, C<pcm>, and C<vorbis>.
-
-
-
-
-
-
-
-
-
 
 =head2 CodecOptions => Paws::ElasticTranscoder::AudioCodecOptions
 
-  
-
-If you specified C<AAC> for C<Audio:Codec>, this is the C<AAC>
+  If you specified C<AAC> for C<Audio:Codec>, this is the C<AAC>
 compression profile to use. Valid values include:
 
 C<auto>, C<AAC-LC>, C<HE-AAC>, C<HE-AACv2>
@@ -264,35 +218,15 @@ C<auto>, C<AAC-LC>, C<HE-AAC>, C<HE-AACv2>
 If you specify C<auto>, Elastic Transcoder chooses a profile based on
 the bit rate of the output file.
 
-
-
-
-
-
-
-
-
-
 =head2 SampleRate => Str
 
-  
-
-The sample rate of the audio stream in the output file, in Hertz. Valid
+  The sample rate of the audio stream in the output file, in Hertz. Valid
 values include:
 
 C<auto>, C<22050>, C<32000>, C<44100>, C<48000>, C<96000>
 
 If you specify C<auto>, Elastic Transcoder automatically detects the
 sample rate.
-
-
-
-
-
-
-
-
-
 
 
 

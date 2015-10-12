@@ -33,20 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Connec
 
 =head2 B<REQUIRED> IdleTimeout => Int
 
-  
-
-The time, in seconds, that the connection is allowed to be idle (no
+  The time, in seconds, that the connection is allowed to be idle (no
 data has been sent over the connection) before it is closed by the load
 balancer.
-
-
-
-
-
-
-
-
-
 
 
 

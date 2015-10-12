@@ -36,39 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AccountId => Str
 
-  
-
-A standard AWS account ID (9+ digits).
-
-
-
-
-
-
-
-
-
+  A standard AWS account ID (9+ digits).
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-An identity pool ID in the format REGION:GUID.
-
-
-
-
-
-
-
-
-
+  An identity pool ID in the format REGION:GUID.
 
 =head2 Logins => Paws::CognitoIdentity::LoginsMap
 
-  
-
-A set of optional name-value pairs that map provider names to provider
+  A set of optional name-value pairs that map provider names to provider
 tokens.
 
 The available provider names for C<Logins> are as follows:
@@ -86,15 +62,6 @@ The available provider names for C<Logins> are as follows:
 =item * Digits: C<www.digits.com>
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

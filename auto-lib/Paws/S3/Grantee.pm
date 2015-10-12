@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Grantee
 
 =head2 DisplayName => Str
 
-  
-
-Screen name of the grantee.
-
-
-
-
-
-
-
-
-
+  Screen name of the grantee.
 
 =head2 EmailAddress => Str
 
-  
-
-Email address of the grantee.
-
-
-
-
-
-
-
-
-
+  Email address of the grantee.
 
 =head2 ID => Str
 
-  
-
-The canonical user ID of the grantee.
-
-
-
-
-
-
-
-
-
+  The canonical user ID of the grantee.
 
 =head2 B<REQUIRED> Type => Str
 
-  
-
-Type of grantee
-
-
-
-
-
-
-
-
-
+  Type of grantee
 
 =head2 URI => Str
 
-  
-
-URI of the grantee group.
-
-
-
-
-
-
-
-
-
+  URI of the grantee group.
 
 
 

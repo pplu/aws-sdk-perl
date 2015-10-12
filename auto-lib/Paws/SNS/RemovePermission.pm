@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Label => Str
 
-  
-
-The unique label of the statement you want to remove.
-
-
-
-
-
-
-
-
-
+  The unique label of the statement you want to remove.
 
 =head2 B<REQUIRED> TopicArn => Str
 
-  
-
-The ARN of the topic whose access control policy you wish to modify.
-
-
-
-
-
-
-
-
-
+  The ARN of the topic whose access control policy you wish to modify.
 
 
 

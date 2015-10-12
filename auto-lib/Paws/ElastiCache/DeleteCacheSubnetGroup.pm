@@ -34,21 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheSubnetGroupName => Str
 
-  
-
-The name of the cache subnet group to delete.
+  The name of the cache subnet group to delete.
 
 Constraints: Must contain no more than 255 alphanumeric characters or
 hyphens.
-
-
-
-
-
-
-
-
-
 
 
 

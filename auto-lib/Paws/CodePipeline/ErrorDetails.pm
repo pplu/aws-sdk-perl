@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 code => Str
 
-  
-
-The system ID or error number code of the error.
-
-
-
-
-
-
-
-
-
+  The system ID or error number code of the error.
 
 =head2 message => Str
 
-  
-
-The text of the error message.
-
-
-
-
-
-
-
-
-
+  The text of the error message.
 
 
 

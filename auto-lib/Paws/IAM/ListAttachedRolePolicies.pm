@@ -37,27 +37,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Marker => Str
 
-  
-
-Use this parameter only when paginating results and only after you
+  Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
 the value of the C<Marker> element in the response you received to
 inform the next call about where to start.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxItems => Int
 
-  
-
-Use this only when paginating results to indicate the maximum number of
+  Use this only when paginating results to indicate the maximum number of
 items you want in the response. If there are additional items beyond
 the maximum you specify, the C<IsTruncated> response element is
 C<true>.
@@ -68,47 +55,16 @@ results available. If this is the case, the C<IsTruncated> response
 element returns C<true> and C<Marker> contains a value to include in
 the subsequent call that tells the service where to continue from.
 
-
-
-
-
-
-
-
-
-
 =head2 PathPrefix => Str
 
-  
-
-The path prefix for filtering the results. This parameter is optional.
+  The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all
 policies.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> RoleName => Str
 
-  
-
-The name (friendly name, not ARN) of the role to list attached policies
+  The name (friendly name, not ARN) of the role to list attached policies
 for.
-
-
-
-
-
-
-
-
-
 
 
 

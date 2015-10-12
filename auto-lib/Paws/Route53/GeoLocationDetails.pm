@@ -38,103 +38,37 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ge
 
 =head2 ContinentCode => Str
 
-  
-
-The code for a continent geo location. Note: only continent locations
+  The code for a continent geo location. Note: only continent locations
 have a continent code.
-
-
-
-
-
-
-
-
-
 
 =head2 ContinentName => Str
 
-  
-
-The name of the continent. This element is only present if
+  The name of the continent. This element is only present if
 C<ContinentCode> is also present.
-
-
-
-
-
-
-
-
-
 
 =head2 CountryCode => Str
 
-  
-
-The code for a country geo location. The default location uses '*' for
+  The code for a country geo location. The default location uses '*' for
 the country code and will match all locations that are not matched by a
 geo location.
 
 The default geo location uses a C<*> for the country code. All other
 country codes follow the ISO 3166 two-character code.
 
-
-
-
-
-
-
-
-
-
 =head2 CountryName => Str
 
-  
-
-The name of the country. This element is only present if C<CountryCode>
+  The name of the country. This element is only present if C<CountryCode>
 is also present.
-
-
-
-
-
-
-
-
-
 
 =head2 SubdivisionCode => Str
 
-  
-
-The code for a country's subdivision (e.g., a province of Canada). A
+  The code for a country's subdivision (e.g., a province of Canada). A
 subdivision code is only valid with the appropriate country code.
-
-
-
-
-
-
-
-
-
 
 =head2 SubdivisionName => Str
 
-  
-
-The name of the subdivision. This element is only present if
+  The name of the subdivision. This element is only present if
 C<SubdivisionCode> is also present.
-
-
-
-
-
-
-
-
-
 
 
 

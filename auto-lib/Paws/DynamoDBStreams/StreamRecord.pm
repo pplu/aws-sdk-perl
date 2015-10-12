@@ -38,84 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
 =head2 Keys => Paws::DynamoDBStreams::AttributeMap
 
-  
-
-The primary key attribute(s) for the DynamoDB item that was modified.
-
-
-
-
-
-
-
-
-
+  The primary key attribute(s) for the DynamoDB item that was modified.
 
 =head2 NewImage => Paws::DynamoDBStreams::AttributeMap
 
-  
-
-The item in the DynamoDB table as it appeared after it was modified.
-
-
-
-
-
-
-
-
-
+  The item in the DynamoDB table as it appeared after it was modified.
 
 =head2 OldImage => Paws::DynamoDBStreams::AttributeMap
 
-  
-
-The item in the DynamoDB table as it appeared before it was modified.
-
-
-
-
-
-
-
-
-
+  The item in the DynamoDB table as it appeared before it was modified.
 
 =head2 SequenceNumber => Str
 
-  
-
-The sequence number of the stream record.
-
-
-
-
-
-
-
-
-
+  The sequence number of the stream record.
 
 =head2 SizeBytes => Int
 
-  
-
-The size of the stream record, in bytes.
-
-
-
-
-
-
-
-
-
+  The size of the stream record, in bytes.
 
 =head2 StreamViewType => Str
 
-  
-
-The type of data from the modified DynamoDB item that was captured in
+  The type of data from the modified DynamoDB item that was captured in
 this stream record:
 
 =over
@@ -138,15 +81,6 @@ C<NEW_AND_OLD_IMAGES> E<mdash> both the new and the old item images of
 the item.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

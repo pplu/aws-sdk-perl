@@ -29,18 +29,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HealthCheckCount => Int
 
-  
-
-The number of health checks associated with the current AWS account.
-
-
-
-
-
-
-
-
-
+  The number of health checks associated with the current AWS account.
 
 
 

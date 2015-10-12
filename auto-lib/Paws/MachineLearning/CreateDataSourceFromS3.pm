@@ -37,58 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ComputeStatistics => Bool
 
-  
-
-The compute statistics for a C<DataSource>. The statistics are
+  The compute statistics for a C<DataSource>. The statistics are
 generated from the observation data referenced by a C<DataSource>.
 Amazon ML uses the statistics internally during an C<MLModel> training.
 This parameter must be set to C<true> if the C<>DataSourceC<> needs to
 be used for C<MLModel> training
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DataSourceId => Str
 
-  
-
-A user-supplied identifier that uniquely identifies the C<DataSource>.
-
-
-
-
-
-
-
-
-
+  A user-supplied identifier that uniquely identifies the C<DataSource>.
 
 =head2 DataSourceName => Str
 
-  
-
-A user-supplied name or description of the C<DataSource>.
-
-
-
-
-
-
-
-
-
+  A user-supplied name or description of the C<DataSource>.
 
 =head2 B<REQUIRED> DataSpec => Paws::MachineLearning::S3DataSpec
 
-  
-
-The data specification of a C<DataSource>:
+  The data specification of a C<DataSource>:
 
 =over
 
@@ -114,15 +79,6 @@ requirement of a C<Datasource>.
 Sample - C< "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}">
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

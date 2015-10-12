@@ -36,35 +36,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 NodeGroupId => Str
 
-  
-
-The identifier for the node group. A replication group contains only
+  The identifier for the node group. A replication group contains only
 one node group; therefore, the node group ID is 0001.
-
-
-
-
-
-
-
-
-
 
 =head2 NodeGroupMembers => ArrayRef[Paws::ElastiCache::NodeGroupMember]
 
-  
-
-A list containing information about individual nodes within the node
+  A list containing information about individual nodes within the node
 group.
-
-
-
-
-
-
-
-
-
 
 =head2 PrimaryEndpoint => Paws::ElastiCache::Endpoint
 
@@ -72,19 +50,8 @@ group.
 
 =head2 Status => Str
 
-  
-
-The current state of this replication group - I<creating>,
+  The current state of this replication group - I<creating>,
 I<available>, etc.
-
-
-
-
-
-
-
-
-
 
 
 

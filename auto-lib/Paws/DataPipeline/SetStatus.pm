@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> objectIds => ArrayRef[Str]
 
-  
-
-The IDs of the objects. The corresponding objects can be either
+  The IDs of the objects. The corresponding objects can be either
 physical or components, but not a mix of both types.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> pipelineId => Str
 
-  
-
-The ID of the pipeline that contains the objects.
-
-
-
-
-
-
-
-
-
+  The ID of the pipeline that contains the objects.
 
 =head2 B<REQUIRED> status => Str
 
-  
-
-The status to be set on all the objects specified in C<objectIds>. For
+  The status to be set on all the objects specified in C<objectIds>. For
 components, use C<PAUSE> or C<RESUME>. For instances, use
 C<TRY_CANCEL>, C<RERUN>, or C<MARK_FINISHED>.
-
-
-
-
-
-
-
-
-
 
 
 

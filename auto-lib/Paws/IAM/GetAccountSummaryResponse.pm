@@ -15,9 +15,7 @@ Paws::IAM::GetAccountSummaryResponse
 
 =head2 SummaryMap => Paws::IAM::summaryMapType
 
-  
-
-A set of key value pairs containing information about IAM entity usage
+  A set of key value pairs containing information about IAM entity usage
 and IAM quotas.
 
 C<SummaryMap> contains the following keys:
@@ -235,15 +233,6 @@ B<VersionsPerPolicyQuota>
 The maximum number of policy versions allowed for each managed policy.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 =cut

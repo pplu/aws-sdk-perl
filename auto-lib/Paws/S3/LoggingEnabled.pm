@@ -35,23 +35,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Logging
 
 =head2 TargetBucket => Str
 
-  
-
-Specifies the bucket where you want Amazon S3 to store server access
+  Specifies the bucket where you want Amazon S3 to store server access
 logs. You can have your logs delivered to any bucket that you own,
 including the same bucket that is being logged. You can also configure
 multiple buckets to deliver their logs to the same target bucket. In
 this case you should choose a different TargetPrefix for each source
 bucket so that the delivered log files can be distinguished by key.
-
-
-
-
-
-
-
-
-
 
 =head2 TargetGrants => ArrayRef[Paws::S3::TargetGrant]
 
@@ -59,19 +48,8 @@ bucket so that the delivered log files can be distinguished by key.
 
 =head2 TargetPrefix => Str
 
-  
-
-This element lets you specify a prefix for the keys that the log files
+  This element lets you specify a prefix for the keys that the log files
 will be stored under.
-
-
-
-
-
-
-
-
-
 
 
 

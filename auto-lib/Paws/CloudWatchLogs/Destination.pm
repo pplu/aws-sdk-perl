@@ -38,96 +38,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head2 accessPolicy => Str
 
-  
-
-An IAM policy document that governs which AWS accounts can create
+  An IAM policy document that governs which AWS accounts can create
 subscription filters against this destination.
-
-
-
-
-
-
-
-
-
 
 =head2 arn => Str
 
-  
-
-ARN of this destination.
-
-
-
-
-
-
-
-
-
+  ARN of this destination.
 
 =head2 creationTime => Int
 
-  
-
-A point in time expressed as the number of milliseconds since Jan 1,
+  A point in time expressed as the number of milliseconds since Jan 1,
 1970 00:00:00 UTC specifying when this destination was created.
-
-
-
-
-
-
-
-
-
 
 =head2 destinationName => Str
 
-  
-
-Name of the destination.
-
-
-
-
-
-
-
-
-
+  Name of the destination.
 
 =head2 roleArn => Str
 
-  
-
-A role for impersonation for delivering log events to the target.
-
-
-
-
-
-
-
-
-
+  A role for impersonation for delivering log events to the target.
 
 =head2 targetArn => Str
 
-  
-
-ARN of the physical target where the log events will be delivered (eg.
+  ARN of the physical target where the log events will be delivered (eg.
 ARN of a Kinesis stream).
-
-
-
-
-
-
-
-
-
 
 
 

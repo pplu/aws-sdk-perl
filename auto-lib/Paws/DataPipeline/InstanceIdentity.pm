@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head2 document => Str
 
-  
-
-A description of an EC2 instance that is generated when the instance is
+  A description of an EC2 instance that is generated when the instance is
 launched and exposed to the instance via the instance metadata service
 in the form of a JSON representation of an object.
 
-
-
-
-
-
-
-
-
-
 =head2 signature => Str
 
-  
-
-A signature which can be used to verify the accuracy and authenticity
+  A signature which can be used to verify the accuracy and authenticity
 of the information provided in the instance identity document.
-
-
-
-
-
-
-
-
-
 
 
 

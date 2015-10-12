@@ -34,24 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSetD
 
 =head2 B<REQUIRED> Type => Str
 
-  
-
-Specify C<IPV4>.
-
-
-
-
-
-
-
-
-
+  Specify C<IPV4>.
 
 =head2 B<REQUIRED> Value => Str
 
-  
-
-Specify an IPv4 address by using CIDR notation. For example:
+  Specify an IPv4 address by using CIDR notation. For example:
 
 =over
 
@@ -68,15 +55,6 @@ AWS WAF supports only /8, /16, /24, and /32 IP addresses.
 
 For more information about CIDR notation, see the Wikipedia entry
 Classless Inter-Domain Routing.
-
-
-
-
-
-
-
-
-
 
 
 

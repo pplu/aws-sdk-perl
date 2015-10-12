@@ -34,9 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> KeyId => Str
 
-  
-
-A unique identifier for the customer master key. This value can be a
+  A unique identifier for the customer master key. This value can be a
 globally unique identifier, a fully specified ARN to either an alias or
 a key, or an alias name prefixed by "alias/".
 
@@ -54,15 +52,6 @@ arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 =item * Alias Name Example - alias/MyAliasName
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

@@ -38,93 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Export
 
 =head2 Description => Str
 
-  
-
-A description of the resource being exported.
-
-
-
-
-
-
-
-
-
+  A description of the resource being exported.
 
 =head2 ExportTaskId => Str
 
-  
-
-The ID of the export task.
-
-
-
-
-
-
-
-
-
+  The ID of the export task.
 
 =head2 ExportToS3Task => Paws::EC2::ExportToS3Task
 
-  
-
-Information about the export task.
-
-
-
-
-
-
-
-
-
+  Information about the export task.
 
 =head2 InstanceExportDetails => Paws::EC2::InstanceExportDetails
 
-  
-
-Information about the instance to export.
-
-
-
-
-
-
-
-
-
+  Information about the instance to export.
 
 =head2 State => Str
 
-  
-
-The state of the export task.
-
-
-
-
-
-
-
-
-
+  The state of the export task.
 
 =head2 StatusMessage => Str
 
-  
-
-The status message related to the export task.
-
-
-
-
-
-
-
-
-
+  The status message related to the export task.
 
 
 

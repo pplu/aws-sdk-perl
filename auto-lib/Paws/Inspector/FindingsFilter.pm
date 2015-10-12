@@ -37,88 +37,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 attributes => ArrayRef[Paws::Inspector::Attribute]
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<attributes>
 property of the Finding data type.
 
-
-
-
-
-
-
-
-
-
 =head2 ruleNames => ArrayRef[Str]
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<ruleName>
 property of the Finding data type.
 
-
-
-
-
-
-
-
-
-
 =head2 rulesPackageArns => ArrayRef[Str]
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<rulesPackageArn>
 property of the Finding data type.
 
-
-
-
-
-
-
-
-
-
 =head2 severities => ArrayRef[Str]
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<severity>
 property of the Finding data type.
 
-
-
-
-
-
-
-
-
-
 =head2 userAttributes => ArrayRef[Paws::Inspector::Attribute]
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<userAttributes>
 property of the Finding data type.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DhcpOptionsId => Str
 
-  
-
-The ID of the DHCP options set, or C<default> to associate no DHCP
+  The ID of the DHCP options set, or C<default> to associate no DHCP
 options with the VPC.
-
-
-
-
-
-
-
-
-
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VpcId => Str
 
-  
-
-The ID of the VPC.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC.
 
 
 

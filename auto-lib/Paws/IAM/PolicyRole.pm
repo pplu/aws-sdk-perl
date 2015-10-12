@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Policy
 
 =head2 RoleName => Str
 
-  
-
-The name (friendly name, not ARN) identifying the role.
-
-
-
-
-
-
-
-
-
+  The name (friendly name, not ARN) identifying the role.
 
 
 

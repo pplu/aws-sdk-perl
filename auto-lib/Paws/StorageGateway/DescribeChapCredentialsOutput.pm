@@ -14,9 +14,7 @@ Paws::StorageGateway::DescribeChapCredentialsOutput
 
 =head2 ChapCredentials => ArrayRef[Paws::StorageGateway::ChapInfo]
 
-  
-
-An array of ChapInfo objects that represent CHAP credentials. Each
+  An array of ChapInfo objects that represent CHAP credentials. Each
 object in the array contains CHAP credential information for one
 target-initiator pair. If no CHAP credentials are set, an empty array
 is returned. CHAP credential information is provided in a JSON object
@@ -45,15 +43,6 @@ client).
 B<TargetARN>: The Amazon Resource Name (ARN) of the storage volume.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 =cut

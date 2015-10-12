@@ -37,41 +37,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Health
 
 =head2 B<REQUIRED> HealthyThreshold => Int
 
-  
-
-The number of consecutive health checks successes required before
+  The number of consecutive health checks successes required before
 moving the instance to the C<Healthy> state.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Interval => Int
 
-  
-
-The approximate interval, in seconds, between health checks of an
+  The approximate interval, in seconds, between health checks of an
 individual instance.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Target => Str
 
-  
-
-The instance being checked. The protocol is either TCP, HTTP, HTTPS, or
+  The instance being checked. The protocol is either TCP, HTTP, HTTPS, or
 SSL. The range of valid ports is one (1) through 65535.
 
 TCP is the default, specified as a TCP: port pair, for example
@@ -90,48 +66,17 @@ than "200 OK" within the timeout period is considered unhealthy.
 The total length of the HTTP ping target must be 1024 16-bit Unicode
 characters or less.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Timeout => Int
 
-  
-
-The amount of time, in seconds, during which no response means a failed
+  The amount of time, in seconds, during which no response means a failed
 health check.
 
 This value must be less than the C<Interval> value.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> UnhealthyThreshold => Int
 
-  
-
-The number of consecutive health check failures required before moving
+  The number of consecutive health check failures required before moving
 the instance to the C<Unhealthy> state.
-
-
-
-
-
-
-
-
-
 
 
 

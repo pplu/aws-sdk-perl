@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 cluster => Str
 
-  
-
-The name of the cluster that hosts the service to describe. If you do
+  The name of the cluster that hosts the service to describe. If you do
 not specify a cluster, the default cluster is assumed.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> services => ArrayRef[Str]
 
-  
-
-A list of services to describe.
-
-
-
-
-
-
-
-
-
+  A list of services to describe.
 
 
 

@@ -37,18 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 actionConfigurationProperties => ArrayRef[Paws::CodePipeline::ActionConfigurationProperty]
 
-  
-
-The configuration properties for the action type.
-
-
-
-
-
-
-
-
-
+  The configuration properties for the action type.
 
 =head2 B<REQUIRED> id => Paws::CodePipeline::ActionTypeId
 
@@ -56,50 +45,17 @@ The configuration properties for the action type.
 
 =head2 B<REQUIRED> inputArtifactDetails => Paws::CodePipeline::ArtifactDetails
 
-  
-
-The details of the input artifact for the action, such as its commit
+  The details of the input artifact for the action, such as its commit
 ID.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> outputArtifactDetails => Paws::CodePipeline::ArtifactDetails
 
-  
-
-The details of the output artifact of the action, such as its commit
+  The details of the output artifact of the action, such as its commit
 ID.
-
-
-
-
-
-
-
-
-
 
 =head2 settings => Paws::CodePipeline::ActionTypeSettings
 
-  
-
-The settings for the action type.
-
-
-
-
-
-
-
-
-
+  The settings for the action type.
 
 
 

@@ -38,70 +38,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::GrantL
 
 =head2 Constraints => Paws::KMS::GrantConstraints
 
-  
-
-Specifies the conditions under which the actions specified by the
+  Specifies the conditions under which the actions specified by the
 C<Operations> parameter are allowed.
-
-
-
-
-
-
-
-
-
 
 =head2 GranteePrincipal => Str
 
-  
-
-The principal that receives the grant permission.
-
-
-
-
-
-
-
-
-
+  The principal that receives the grant permission.
 
 =head2 GrantId => Str
 
-  
-
-Unique grant identifier.
-
-
-
-
-
-
-
-
-
+  Unique grant identifier.
 
 =head2 IssuingAccount => Str
 
-  
-
-The account under which the grant was issued.
-
-
-
-
-
-
-
-
-
+  The account under which the grant was issued.
 
 =head2 Operations => ArrayRef[Str]
 
-  
-
-List of operations permitted by the grant. This can be any combination
+  List of operations permitted by the grant. This can be any combination
 of one or more of the following values:
 
 =over
@@ -122,29 +76,9 @@ of one or more of the following values:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 RetiringPrincipal => Str
 
-  
-
-The principal that can retire the account.
-
-
-
-
-
-
-
-
-
+  The principal that can retire the account.
 
 
 

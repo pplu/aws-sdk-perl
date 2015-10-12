@@ -14,19 +14,8 @@ Paws::DS::GetSnapshotLimitsResult
 
 =head2 SnapshotLimits => Paws::DS::SnapshotLimits
 
-  
-
-A SnapshotLimits object that contains the manual snapshot limits for
+  A SnapshotLimits object that contains the manual snapshot limits for
 the specified directory.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -36,70 +36,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Sco
 
 =head2 ComplianceResourceId => Str
 
-  
-
-The IDs of only those AWS resources that you want AWS Config to
+  The IDs of only those AWS resources that you want AWS Config to
 evaluate against the rule. If you specify a resource ID, you must
 specify one resource type for C<ComplianceResourceTypes>.
 
-
-
-
-
-
-
-
-
-
 =head2 ComplianceResourceTypes => ArrayRef[Str]
 
-  
-
-The resource types of only those AWS resources that you want AWS Config
+  The resource types of only those AWS resources that you want AWS Config
 to evaluate against the rule. You can specify only one type if you also
 specify resource IDs for C<ComplianceResourceId>.
 
-
-
-
-
-
-
-
-
-
 =head2 TagKey => Str
 
-  
-
-The tag key that is applied to only those AWS resources that you want
+  The tag key that is applied to only those AWS resources that you want
 AWS Config to evaluate against the rule.
-
-
-
-
-
-
-
-
-
 
 =head2 TagValue => Str
 
-  
-
-The tag value applied to only those AWS resources that you want AWS
+  The tag value applied to only those AWS resources that you want AWS
 Config to evaluate against the rule. If you specify a value for
 C<TagValue>, you must also specify a value for C<TagKey>.
-
-
-
-
-
-
-
-
-
 
 
 

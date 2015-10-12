@@ -38,41 +38,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::EbsBlo
 
 =head2 DeleteOnTermination => Bool
 
-  
-
-Indicates whether the EBS volume is deleted on instance termination.
-
-
-
-
-
-
-
-
-
+  Indicates whether the EBS volume is deleted on instance termination.
 
 =head2 Encrypted => Bool
 
-  
-
-Indicates whether the EBS volume is encrypted. Encrypted Amazon EBS
+  Indicates whether the EBS volume is encrypted. Encrypted Amazon EBS
 volumes may only be attached to instances that support Amazon EBS
 encryption.
 
-
-
-
-
-
-
-
-
-
 =head2 Iops => Int
 
-  
-
-The number of I/O operations per second (IOPS) that the volume
+  The number of I/O operations per second (IOPS) that the volume
 supports. For Provisioned IOPS (SSD) volumes, this represents the
 number of IOPS that are provisioned for the volume. For General Purpose
 (SSD) volumes, this represents the baseline performance of the volume
@@ -88,35 +64,13 @@ Condition: This parameter is required for requests to create C<io1>
 volumes; it is not used in requests to create C<standard> or C<gp2>
 volumes.
 
-
-
-
-
-
-
-
-
-
 =head2 SnapshotId => Str
 
-  
-
-The ID of the snapshot.
-
-
-
-
-
-
-
-
-
+  The ID of the snapshot.
 
 =head2 VolumeSize => Int
 
-  
-
-The size of the volume, in GiB.
+  The size of the volume, in GiB.
 
 Constraints: C<1-1024> for C<standard> volumes, C<1-16384> for C<gp2>
 volumes, and C<4-16384> for C<io1> volumes. If you specify a snapshot,
@@ -125,32 +79,12 @@ the volume size must be equal to or larger than the snapshot size.
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
 
-
-
-
-
-
-
-
-
-
 =head2 VolumeType => Str
 
-  
-
-The volume type. C<gp2> for General Purpose (SSD) volumes, C<io1> for
+  The volume type. C<gp2> for General Purpose (SSD) volumes, C<io1> for
 Provisioned IOPS (SSD) volumes, and C<standard> for Magnetic volumes.
 
 Default: C<standard>
-
-
-
-
-
-
-
-
-
 
 
 

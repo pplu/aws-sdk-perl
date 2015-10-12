@@ -15,18 +15,7 @@ Paws::EC2::CreateVpnConnectionResult
 
 =head2 VpnConnection => Paws::EC2::VpnConnection
 
-  
-
-Information about the VPN connection.
-
-
-
-
-
-
-
-
-
+  Information about the VPN connection.
 
 
 =cut

@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EncodedMessage => Str
 
-  
-
-The encoded message that was returned with the response.
-
-
-
-
-
-
-
-
-
+  The encoded message that was returned with the response.
 
 
 

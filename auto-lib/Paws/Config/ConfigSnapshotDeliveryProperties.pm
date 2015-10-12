@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head2 deliveryFrequency => Str
 
-  
-
-The frequency with which a AWS Config recurringly delivers
+  The frequency with which a AWS Config recurringly delivers
 configuration snapshots.
-
-
-
-
-
-
-
-
-
 
 
 

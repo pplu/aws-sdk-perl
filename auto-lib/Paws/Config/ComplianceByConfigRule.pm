@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
 =head2 Compliance => Paws::Config::Compliance
 
-  
-
-Indicates whether the AWS Config rule is compliant.
-
-
-
-
-
-
-
-
-
+  Indicates whether the AWS Config rule is compliant.
 
 =head2 ConfigRuleName => Str
 
-  
-
-The name of the AWS Config rule.
-
-
-
-
-
-
-
-
-
+  The name of the AWS Config rule.
 
 
 

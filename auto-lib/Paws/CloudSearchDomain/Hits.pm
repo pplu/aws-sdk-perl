@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 cursor => Str
 
-  
-
-A cursor that can be used to retrieve the next set of matching
+  A cursor that can be used to retrieve the next set of matching
 documents when you want to page through a large result set.
-
-
-
-
-
-
-
-
-
 
 =head2 found => Int
 
-  
-
-The total number of documents that match the search request.
-
-
-
-
-
-
-
-
-
+  The total number of documents that match the search request.
 
 =head2 hit => ArrayRef[Paws::CloudSearchDomain::Hit]
 
-  
-
-A document that matches the search request.
-
-
-
-
-
-
-
-
-
+  A document that matches the search request.
 
 =head2 start => Int
 
-  
-
-The index of the first matching document.
-
-
-
-
-
-
-
-
-
+  The index of the first matching document.
 
 
 

@@ -14,19 +14,8 @@ Paws::DataPipeline::CreatePipelineOutput
 
 =head2 B<REQUIRED> pipelineId => Str
 
-  
-
-The ID that AWS Data Pipeline assigns the newly created pipeline. For
+  The ID that AWS Data Pipeline assigns the newly created pipeline. For
 example, C<df-06372391ZG65EXAMPLE>.
-
-
-
-
-
-
-
-
-
 
 
 =cut

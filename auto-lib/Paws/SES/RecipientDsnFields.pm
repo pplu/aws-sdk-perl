@@ -39,57 +39,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Recipi
 
 =head2 B<REQUIRED> Action => Str
 
-  
-
-The action performed by the reporting mail transfer agent (MTA) as a
+  The action performed by the reporting mail transfer agent (MTA) as a
 result of its attempt to deliver the message to the recipient address.
 This is required by RFC 3464.
 
-
-
-
-
-
-
-
-
-
 =head2 DiagnosticCode => Str
 
-  
-
-An extended explanation of what went wrong; this is usually an SMTP
+  An extended explanation of what went wrong; this is usually an SMTP
 response. See RFC 3463 for the correct formatting of this parameter.
-
-
-
-
-
-
-
-
-
 
 =head2 ExtensionFields => ArrayRef[Paws::SES::ExtensionField]
 
-  
-
-Additional X-headers to include in the DSN.
-
-
-
-
-
-
-
-
-
+  Additional X-headers to include in the DSN.
 
 =head2 FinalRecipient => Str
 
-  
-
-The email address to which the message was ultimately delivered. This
+  The email address to which the message was ultimately delivered. This
 corresponds to the C<Final-Recipient> in the DSN. If not specified,
 C<FinalRecipient> will be set to the C<Recipient> specified in the
 C<BouncedRecipientInfo> structure. Either C<FinalRecipient> or the
@@ -99,63 +64,21 @@ original bounced message.
 Do not prepend the C<FinalRecipient> email address with C<rfc 822;>, as
 described in RFC 3798.
 
-
-
-
-
-
-
-
-
-
 =head2 LastAttemptDate => Str
 
-  
-
-The time the final delivery attempt was made, in RFC 822 date-time
+  The time the final delivery attempt was made, in RFC 822 date-time
 format.
-
-
-
-
-
-
-
-
-
 
 =head2 RemoteMta => Str
 
-  
-
-The MTA to which the remote MTA attempted to deliver the message,
+  The MTA to which the remote MTA attempted to deliver the message,
 formatted as specified in RFC 3464 (C<mta-name-type; mta-name>). This
 parameter typically applies only to propagating synchronous bounces.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The status code that indicates what went wrong. This is required by RFC
+  The status code that indicates what went wrong. This is required by RFC
 3464.
-
-
-
-
-
-
-
-
-
 
 
 

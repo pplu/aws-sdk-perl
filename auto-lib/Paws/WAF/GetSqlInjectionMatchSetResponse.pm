@@ -14,9 +14,7 @@ Paws::WAF::GetSqlInjectionMatchSetResponse
 
 =head2 SqlInjectionMatchSet => Paws::WAF::SqlInjectionMatchSet
 
-  
-
-Information about the SqlInjectionMatchSet that you specified in the
+  Information about the SqlInjectionMatchSet that you specified in the
 C<GetSqlInjectionMatchSet> request. For more information, see the
 following topics:
 
@@ -32,15 +30,6 @@ contains C<FieldToMatch> and C<TextTransformation>
 =item * FieldToMatch: Contains C<Data> and C<Type>
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 =cut

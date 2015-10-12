@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Script
 
 =head2 Args => ArrayRef[Str]
 
-  
-
-A list of command line arguments to pass to the bootstrap action
+  A list of command line arguments to pass to the bootstrap action
 script.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Path => Str
 
-  
-
-Location of the script to run during a bootstrap action. Can be either
+  Location of the script to run during a bootstrap action. Can be either
 a location in Amazon S3 or on a local file system.
-
-
-
-
-
-
-
-
-
 
 
 

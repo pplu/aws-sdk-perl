@@ -39,21 +39,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MultiAZ => Bool
 
-  
-
-You expand an existing search domain to a second Availability Zone by
+  You expand an existing search domain to a second Availability Zone by
 setting the Multi-AZ option to true. Similarly, you can turn off the
 Multi-AZ option to downgrade the domain to a single Availability Zone
 by setting the Multi-AZ option to C<false>.
-
-
-
-
-
-
-
-
-
 
 
 

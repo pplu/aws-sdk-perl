@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 TimeSpan => Paws::ElasticTranscoder::TimeSpan
 
-  
-
-Settings that determine when a clip begins and how long it lasts.
-
-
-
-
-
-
-
-
-
+  Settings that determine when a clip begins and how long it lasts.
 
 
 

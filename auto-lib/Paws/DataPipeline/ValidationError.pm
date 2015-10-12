@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head2 errors => ArrayRef[Str]
 
-  
-
-A description of the validation error.
-
-
-
-
-
-
-
-
-
+  A description of the validation error.
 
 =head2 id => Str
 
-  
-
-The identifier of the object that contains the validation error.
-
-
-
-
-
-
-
-
-
+  The identifier of the object that contains the validation error.
 
 
 

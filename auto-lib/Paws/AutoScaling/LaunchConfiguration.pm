@@ -51,301 +51,92 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 AssociatePublicIpAddress => Bool
 
-  
-
-Specifies whether the instances are associated with a public IP address
+  Specifies whether the instances are associated with a public IP address
 (C<true>) or not (C<false>).
-
-
-
-
-
-
-
-
-
 
 =head2 BlockDeviceMappings => ArrayRef[Paws::AutoScaling::BlockDeviceMapping]
 
-  
-
-A block device mapping, which specifies the block devices for the
+  A block device mapping, which specifies the block devices for the
 instance.
-
-
-
-
-
-
-
-
-
 
 =head2 ClassicLinkVPCId => Str
 
-  
-
-The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
+  The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
 to. This parameter can only be used if you are launching EC2-Classic
 instances. For more information, see ClassicLink in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str]
 
-  
-
-The IDs of one or more security groups for the VPC specified in
+  The IDs of one or more security groups for the VPC specified in
 C<ClassicLinkVPCId>. This parameter is required if C<ClassicLinkVPCId>
 is specified, and cannot be used otherwise. For more information, see
 ClassicLink in the I<Amazon Elastic Compute Cloud User Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> CreatedTime => Str
 
-  
-
-The creation date and time for the launch configuration.
-
-
-
-
-
-
-
-
-
+  The creation date and time for the launch configuration.
 
 =head2 EbsOptimized => Bool
 
-  
-
-Controls whether the instance is optimized for EBS I/O (C<true>) or not
+  Controls whether the instance is optimized for EBS I/O (C<true>) or not
 (C<false>).
-
-
-
-
-
-
-
-
-
 
 =head2 IamInstanceProfile => Str
 
-  
-
-The name or Amazon Resource Name (ARN) of the instance profile
+  The name or Amazon Resource Name (ARN) of the instance profile
 associated with the IAM role for the instance.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ImageId => Str
 
-  
-
-The ID of the Amazon Machine Image (AMI).
-
-
-
-
-
-
-
-
-
+  The ID of the Amazon Machine Image (AMI).
 
 =head2 InstanceMonitoring => Paws::AutoScaling::InstanceMonitoring
 
-  
-
-Controls whether instances in this group are launched with detailed
+  Controls whether instances in this group are launched with detailed
 monitoring.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> InstanceType => Str
 
-  
-
-The instance type for the instances.
-
-
-
-
-
-
-
-
-
+  The instance type for the instances.
 
 =head2 KernelId => Str
 
-  
-
-The ID of the kernel associated with the AMI.
-
-
-
-
-
-
-
-
-
+  The ID of the kernel associated with the AMI.
 
 =head2 KeyName => Str
 
-  
-
-The name of the key pair.
-
-
-
-
-
-
-
-
-
+  The name of the key pair.
 
 =head2 LaunchConfigurationARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the launch configuration.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the launch configuration.
 
 =head2 B<REQUIRED> LaunchConfigurationName => Str
 
-  
-
-The name of the launch configuration.
-
-
-
-
-
-
-
-
-
+  The name of the launch configuration.
 
 =head2 PlacementTenancy => Str
 
-  
-
-The tenancy of the instance, either C<default> or C<dedicated>. An
+  The tenancy of the instance, either C<default> or C<dedicated>. An
 instance with C<dedicated> tenancy runs in an isolated, single-tenant
 hardware and can only be launched into a VPC.
 
-
-
-
-
-
-
-
-
-
 =head2 RamdiskId => Str
 
-  
-
-The ID of the RAM disk associated with the AMI.
-
-
-
-
-
-
-
-
-
+  The ID of the RAM disk associated with the AMI.
 
 =head2 SecurityGroups => ArrayRef[Str]
 
-  
-
-The security groups to associate with the instances.
-
-
-
-
-
-
-
-
-
+  The security groups to associate with the instances.
 
 =head2 SpotPrice => Str
 
-  
-
-The price to bid when launching Spot Instances.
-
-
-
-
-
-
-
-
-
+  The price to bid when launching Spot Instances.
 
 =head2 UserData => Str
 
-  
-
-The user data available to the instances.
-
-
-
-
-
-
-
-
-
+  The user data available to the instances.
 
 
 

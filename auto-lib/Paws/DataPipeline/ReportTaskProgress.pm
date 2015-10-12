@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 fields => ArrayRef[Paws::DataPipeline::Field]
 
-  
-
-Key-value pairs that define the properties of the
+  Key-value pairs that define the properties of the
 ReportTaskProgressInput object.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> taskId => Str
 
-  
-
-The ID of the task assigned to the task runner. This value is provided
+  The ID of the task assigned to the task runner. This value is provided
 in the response for PollForTask.
-
-
-
-
-
-
-
-
-
 
 
 

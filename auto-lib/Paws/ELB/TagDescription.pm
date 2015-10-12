@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::TagDes
 
 =head2 LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 =head2 Tags => ArrayRef[Paws::ELB::Tag]
 
-  
-
-The tags.
-
-
-
-
-
-
-
-
-
+  The tags.
 
 
 

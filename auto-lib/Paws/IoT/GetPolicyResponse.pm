@@ -18,60 +18,16 @@ Paws::IoT::GetPolicyResponse
 
 =head2 defaultVersionId => Str
 
-  
-
-The default policy version ID.
-
-
-
-
-
-
-
-
-
+  The default policy version ID.
 =head2 policyArn => Str
 
-  
-
-The policy ARN.
-
-
-
-
-
-
-
-
-
+  The policy ARN.
 =head2 policyDocument => Str
 
-  
-
-The JSON document that describes the policy.
-
-
-
-
-
-
-
-
-
+  The JSON document that describes the policy.
 =head2 policyName => Str
 
-  
-
-The policy name.
-
-
-
-
-
-
-
-
-
+  The policy name.
 
 
 =cut

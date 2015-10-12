@@ -15,18 +15,7 @@ Paws::IoT::ListPolicyVersionsResponse
 
 =head2 policyVersions => ArrayRef[Paws::IoT::PolicyVersion]
 
-  
-
-The policy versions.
-
-
-
-
-
-
-
-
-
+  The policy versions.
 
 
 =cut

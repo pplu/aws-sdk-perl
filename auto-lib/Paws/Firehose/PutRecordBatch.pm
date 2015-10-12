@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeliveryStreamName => Str
 
-  
-
-The name of the delivery stream.
-
-
-
-
-
-
-
-
-
+  The name of the delivery stream.
 
 =head2 B<REQUIRED> Records => ArrayRef[Paws::Firehose::Record]
 
-  
-
-One or more records.
-
-
-
-
-
-
-
-
-
+  One or more records.
 
 
 

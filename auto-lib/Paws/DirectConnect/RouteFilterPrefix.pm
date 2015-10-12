@@ -33,21 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
 =head2 cidr => Str
 
-  
-
-CIDR notation for the advertised route. Multiple routes are separated
+  CIDR notation for the advertised route. Multiple routes are separated
 by commas.
 
 Example: 10.10.10.0/24,10.10.11.0/24
-
-
-
-
-
-
-
-
-
 
 
 

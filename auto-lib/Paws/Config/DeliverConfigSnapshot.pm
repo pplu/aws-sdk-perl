@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> deliveryChannelName => Str
 
-  
-
-The name of the delivery channel through which the snapshot is
+  The name of the delivery channel through which the snapshot is
 delivered.
-
-
-
-
-
-
-
-
-
 
 
 

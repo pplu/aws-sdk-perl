@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Part ob
 
 =head2 ETag => Str
 
-  
-
-Entity tag returned when the part was uploaded.
-
-
-
-
-
-
-
-
-
+  Entity tag returned when the part was uploaded.
 
 =head2 LastModified => Str
 
-  
-
-Date and time at which the part was uploaded.
-
-
-
-
-
-
-
-
-
+  Date and time at which the part was uploaded.
 
 =head2 PartNumber => Int
 
-  
-
-Part number identifying the part. This is a positive integer between 1
+  Part number identifying the part. This is a positive integer between 1
 and 10,000.
-
-
-
-
-
-
-
-
-
 
 =head2 Size => Int
 
-  
-
-Size of the uploaded part data.
-
-
-
-
-
-
-
-
-
+  Size of the uploaded part data.
 
 
 

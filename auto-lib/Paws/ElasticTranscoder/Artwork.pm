@@ -39,40 +39,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 AlbumArtFormat => Str
 
-  
-
-The format of album art, if any. Valid formats are C<.jpg> and C<.png>.
-
-
-
-
-
-
-
-
-
+  The format of album art, if any. Valid formats are C<.jpg> and C<.png>.
 
 =head2 Encryption => Paws::ElasticTranscoder::Encryption
 
-  
-
-The encryption settings, if any, that you want Elastic Transcoder to
+  The encryption settings, if any, that you want Elastic Transcoder to
 apply to your artwork.
-
-
-
-
-
-
-
-
-
 
 =head2 InputKey => Str
 
-  
-
-The name of the file to be used as album art. To determine which Amazon
+  The name of the file to be used as album art. To determine which Amazon
 S3 bucket contains the specified file, Elastic Transcoder checks the
 pipeline specified by C<PipelineId>; the C<InputBucket> object in that
 pipeline identifies the bucket.
@@ -81,74 +57,30 @@ If the file name includes a prefix, for example, C<cooking/pie.jpg>,
 include the prefix in the key. If the file isn't in the specified
 bucket, Elastic Transcoder returns an error.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxHeight => Str
 
-  
-
-The maximum height of the output album art in pixels. If you specify
+  The maximum height of the output album art in pixels. If you specify
 C<auto>, Elastic Transcoder uses 600 as the default value. If you
 specify a numeric value, enter an even integer between 32 and 3072,
 inclusive.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxWidth => Str
 
-  
-
-The maximum width of the output album art in pixels. If you specify
+  The maximum width of the output album art in pixels. If you specify
 C<auto>, Elastic Transcoder uses 600 as the default value. If you
 specify a numeric value, enter an even integer between 32 and 4096,
 inclusive.
 
-
-
-
-
-
-
-
-
-
 =head2 PaddingPolicy => Str
 
-  
-
-When you set C<PaddingPolicy> to C<Pad>, Elastic Transcoder may add
+  When you set C<PaddingPolicy> to C<Pad>, Elastic Transcoder may add
 white bars to the top and bottom and/or left and right sides of the
 output album art to make the total size of the output art match the
 values that you specified for C<MaxWidth> and C<MaxHeight>.
 
-
-
-
-
-
-
-
-
-
 =head2 SizingPolicy => Str
 
-  
-
-Specify one of the following values to control scaling of the output
+  Specify one of the following values to control scaling of the output
 album art:
 
 =over
@@ -185,15 +117,6 @@ value. If you specify this option, Elastic Transcoder does not scale
 the art up.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

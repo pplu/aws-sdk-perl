@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::E
 
 =head2 EcsClusterArn => Str
 
-  
-
-The cluster's ARN.
-
-
-
-
-
-
-
-
-
+  The cluster's ARN.
 
 =head2 EcsClusterName => Str
 
-  
-
-The cluster name.
-
-
-
-
-
-
-
-
-
+  The cluster name.
 
 =head2 RegisteredAt => Str
 
-  
-
-The time and date that the cluster was registered with the stack.
-
-
-
-
-
-
-
-
-
+  The time and date that the cluster was registered with the stack.
 
 =head2 StackId => Str
 
-  
-
-The stack ID.
-
-
-
-
-
-
-
-
-
+  The stack ID.
 
 
 

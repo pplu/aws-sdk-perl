@@ -16,33 +16,11 @@ Paws::IoT::ListPoliciesResponse
 
 =head2 nextMarker => Str
 
-  
-
-The marker for the next set of results, or null if there are no
+  The marker for the next set of results, or null if there are no
 additional results.
-
-
-
-
-
-
-
-
-
 =head2 policies => ArrayRef[Paws::IoT::Policy]
 
-  
-
-The descriptions of the policies.
-
-
-
-
-
-
-
-
-
+  The descriptions of the policies.
 
 
 =cut

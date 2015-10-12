@@ -18,19 +18,8 @@ Paws::DynamoDB::GetItemOutput
   
 =head2 Item => Paws::DynamoDB::AttributeMap
 
-  
-
-A map of attribute names to I<AttributeValue> objects, as specified by
+  A map of attribute names to I<AttributeValue> objects, as specified by
 I<AttributesToGet>.
-
-
-
-
-
-
-
-
-
 
 
 =cut

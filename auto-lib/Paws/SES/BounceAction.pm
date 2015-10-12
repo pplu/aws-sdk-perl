@@ -37,82 +37,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Bounce
 
 =head2 B<REQUIRED> Message => Str
 
-  
-
-Human-readable text to include in the bounce message.
-
-
-
-
-
-
-
-
-
+  Human-readable text to include in the bounce message.
 
 =head2 B<REQUIRED> Sender => Str
 
-  
-
-The email address of the sender of the bounced email. This is the
+  The email address of the sender of the bounced email. This is the
 address from which the bounce message will be sent.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> SmtpReplyCode => Str
 
-  
-
-The SMTP reply code, as defined by RFC 5321.
-
-
-
-
-
-
-
-
-
+  The SMTP reply code, as defined by RFC 5321.
 
 =head2 StatusCode => Str
 
-  
-
-The SMTP enhanced status code, as defined by RFC 3463.
-
-
-
-
-
-
-
-
-
+  The SMTP enhanced status code, as defined by RFC 3463.
 
 =head2 TopicArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when
+  The Amazon Resource Name (ARN) of the Amazon SNS topic to notify when
 the bounce action is taken. An example of an Amazon SNS topic ARN is
 C<arn:aws:sns:us-west-2:123456789012:MyTopic>. For more information
 about Amazon SNS topics, see the Amazon SNS Developer Guide.
-
-
-
-
-
-
-
-
-
 
 
 

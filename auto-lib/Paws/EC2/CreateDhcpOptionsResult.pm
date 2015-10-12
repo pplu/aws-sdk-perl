@@ -15,18 +15,7 @@ Paws::EC2::CreateDhcpOptionsResult
 
 =head2 DhcpOptions => Paws::EC2::DhcpOptions
 
-  
-
-A set of DHCP options.
-
-
-
-
-
-
-
-
-
+  A set of DHCP options.
 
 
 =cut

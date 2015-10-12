@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
-
-The Amazon S3 bucket in which to store the Spot instance data feed.
-
-
-
-
-
-
-
-
-
+  The Amazon S3 bucket in which to store the Spot instance data feed.
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 Prefix => Str
 
-  
-
-A prefix for the data feed file names.
-
-
-
-
-
-
-
-
-
+  A prefix for the data feed file names.
 
 
 

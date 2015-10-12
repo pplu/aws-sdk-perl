@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::UserBu
 
 =head2 S3Bucket => Str
 
-  
-
-The S3 bucket from which the disk image was created.
-
-
-
-
-
-
-
-
-
+  The S3 bucket from which the disk image was created.
 
 =head2 S3Key => Str
 
-  
-
-The key from which the disk image was created.
-
-
-
-
-
-
-
-
-
+  The key from which the disk image was created.
 
 
 

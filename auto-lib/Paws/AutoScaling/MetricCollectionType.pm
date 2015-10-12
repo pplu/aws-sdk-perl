@@ -33,9 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 Metric => Str
 
-  
-
-The metric.
+  The metric.
 
 =over
 
@@ -72,15 +70,6 @@ C<GroupTerminatingInstances>
 C<GroupTotalInstances>
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

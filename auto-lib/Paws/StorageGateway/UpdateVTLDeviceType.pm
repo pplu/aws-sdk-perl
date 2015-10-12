@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeviceType => Str
 
-  
-
-The type of medium changer you want to select.
+  The type of medium changer you want to select.
 
 I<Valid Values>: "STK-L700", "AWS-Gateway-VTL"
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VTLDeviceARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the medium changer you want to
+  The Amazon Resource Name (ARN) of the medium changer you want to
 select.
-
-
-
-
-
-
-
-
-
 
 
 

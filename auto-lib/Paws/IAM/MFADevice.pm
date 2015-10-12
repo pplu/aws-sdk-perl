@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::MFADev
 
 =head2 B<REQUIRED> EnableDate => Str
 
-  
-
-The date when the MFA device was enabled for the user.
-
-
-
-
-
-
-
-
-
+  The date when the MFA device was enabled for the user.
 
 =head2 B<REQUIRED> SerialNumber => Str
 
-  
-
-The serial number that uniquely identifies the MFA device. For virtual
+  The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the device ARN.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The user with whom the MFA device is associated.
-
-
-
-
-
-
-
-
-
+  The user with whom the MFA device is associated.
 
 
 

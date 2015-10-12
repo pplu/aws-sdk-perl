@@ -23,34 +23,12 @@ Paws::Route53::ChangeResourceRecordSetsResponse
 
 =head2 B<REQUIRED> ChangeBatch => Paws::Route53::ChangeBatch
 
-  
-
-A complex type that contains an optional comment and the C<Changes>
+  A complex type that contains an optional comment and the C<Changes>
 element.
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> HostedZoneId => Str
 
-  
-
-The ID of the hosted zone that contains the resource record sets that
+  The ID of the hosted zone that contains the resource record sets that
 you want to change.
-
-
-
-
-
-
-
-
-
 
 
 =cut

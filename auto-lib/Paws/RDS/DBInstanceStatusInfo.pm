@@ -36,66 +36,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBInst
 
 =head2 Message => Str
 
-  
-
-Details of the error if there is an error for the instance. If the
+  Details of the error if there is an error for the instance. If the
 instance is not in an error state, this value is blank.
-
-
-
-
-
-
-
-
-
 
 =head2 Normal => Bool
 
-  
-
-Boolean value that is true if the instance is operating normally, or
+  Boolean value that is true if the instance is operating normally, or
 false if the instance is in an error state.
-
-
-
-
-
-
-
-
-
 
 =head2 Status => Str
 
-  
-
-Status of the DB instance. For a StatusType of read replica, the values
+  Status of the DB instance. For a StatusType of read replica, the values
 can be replicating, error, stopped, or terminated.
-
-
-
-
-
-
-
-
-
 
 =head2 StatusType => Str
 
-  
-
-This value is currently "read replication."
-
-
-
-
-
-
-
-
-
+  This value is currently "read replication."
 
 
 

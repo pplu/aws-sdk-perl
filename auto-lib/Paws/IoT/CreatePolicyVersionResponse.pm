@@ -18,60 +18,16 @@ Paws::IoT::CreatePolicyVersionResponse
 
 =head2 isDefaultVersion => Bool
 
-  
-
-Specifies whether the policy version is the default.
-
-
-
-
-
-
-
-
-
+  Specifies whether the policy version is the default.
 =head2 policyArn => Str
 
-  
-
-The policy ARN.
-
-
-
-
-
-
-
-
-
+  The policy ARN.
 =head2 policyDocument => Str
 
-  
-
-The JSON document that describes the policy.
-
-
-
-
-
-
-
-
-
+  The JSON document that describes the policy.
 =head2 policyVersionId => Str
 
-  
-
-The policy version ID.
-
-
-
-
-
-
-
-
-
+  The policy version ID.
 
 
 =cut

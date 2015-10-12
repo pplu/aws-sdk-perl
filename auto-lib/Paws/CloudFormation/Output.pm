@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head2 Description => Str
 
-  
-
-User defined description associated with the output.
-
-
-
-
-
-
-
-
-
+  User defined description associated with the output.
 
 =head2 OutputKey => Str
 
-  
-
-The key associated with the output.
-
-
-
-
-
-
-
-
-
+  The key associated with the output.
 
 =head2 OutputValue => Str
 
-  
-
-The value associated with the output.
-
-
-
-
-
-
-
-
-
+  The value associated with the output.
 
 
 

@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 Granularity => Str
 
-  
-
-The granularity. The only valid value is C<1Minute>.
-
-
-
-
-
-
-
-
-
+  The granularity. The only valid value is C<1Minute>.
 
 
 

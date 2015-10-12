@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Privat
 
 =head2 Primary => Bool
 
-  
-
-Indicates whether the private IP address is the primary private IP
+  Indicates whether the private IP address is the primary private IP
 address. Only one IP address can be designated as primary.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> PrivateIpAddress => Str
 
-  
-
-The private IP addresses.
-
-
-
-
-
-
-
-
-
+  The private IP addresses.
 
 
 

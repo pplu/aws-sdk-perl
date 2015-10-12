@@ -36,44 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DhcpOptionsIds => ArrayRef[Str]
 
-  
-
-The IDs of one or more DHCP options sets.
+  The IDs of one or more DHCP options sets.
 
 Default: Describes all your DHCP options sets.
 
-
-
-
-
-
-
-
-
-
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -110,15 +86,6 @@ C<tag-value> - The value of a tag assigned to the resource. This filter
 is independent of the C<tag-key> filter.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

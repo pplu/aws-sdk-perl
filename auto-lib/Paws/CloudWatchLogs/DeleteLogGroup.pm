@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> logGroupName => Str
 
-  
-
-The name of the log group to delete.
-
-
-
-
-
-
-
-
-
+  The name of the log group to delete.
 
 
 

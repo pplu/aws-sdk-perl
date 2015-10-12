@@ -34,39 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-B<Required.> The name of the workflow type.
+  B<Required.> The name of the workflow type.
 
 The combination of workflow type name and version must be unique with
 in a domain.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> version => Str
 
-  
-
-B<Required.> The version of the workflow type.
+  B<Required.> The version of the workflow type.
 
 The combination of workflow type name and version must be unique with
 in a domain.
-
-
-
-
-
-
-
-
-
 
 
 

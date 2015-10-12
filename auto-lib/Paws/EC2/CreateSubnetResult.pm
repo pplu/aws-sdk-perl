@@ -15,18 +15,7 @@ Paws::EC2::CreateSubnetResult
 
 =head2 Subnet => Paws::EC2::Subnet
 
-  
-
-Information about the subnet.
-
-
-
-
-
-
-
-
-
+  Information about the subnet.
 
 
 =cut

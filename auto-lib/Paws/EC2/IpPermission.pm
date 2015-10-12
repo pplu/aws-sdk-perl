@@ -38,25 +38,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::IpPerm
 
 =head2 FromPort => Int
 
-  
-
-The start of port range for the TCP and UDP protocols, or an ICMP type
+  The start of port range for the TCP and UDP protocols, or an ICMP type
 number. A value of C<-1> indicates all ICMP types.
-
-
-
-
-
-
-
-
-
 
 =head2 IpProtocol => Str
 
-  
-
-The protocol.
+  The protocol.
 
 When you call DescribeSecurityGroups, the protocol value returned is
 the number. Exception: For TCP, UDP, and ICMP, the value returned is
@@ -64,79 +51,26 @@ the name (for example, C<tcp>, C<udp>, or C<icmp>). For a list of
 protocol numbers, see Protocol Numbers. (VPC only) When you call
 AuthorizeSecurityGroupIngress, you can use C<-1> to specify all.
 
-
-
-
-
-
-
-
-
-
 =head2 IpRanges => ArrayRef[Paws::EC2::IpRange]
 
-  
-
-One or more IP ranges.
-
-
-
-
-
-
-
-
-
+  One or more IP ranges.
 
 =head2 PrefixListIds => ArrayRef[Paws::EC2::PrefixListId]
 
-  
-
-(Valid for AuthorizeSecurityGroupEgress, RevokeSecurityGroupEgress and
+  (Valid for AuthorizeSecurityGroupEgress, RevokeSecurityGroupEgress and
 DescribeSecurityGroups only) One or more prefix list IDs for an AWS
 service. In an AuthorizeSecurityGroupEgress request, this is the AWS
 service that you want to access through a VPC endpoint from instances
 associated with the security group.
 
-
-
-
-
-
-
-
-
-
 =head2 ToPort => Int
 
-  
-
-The end of port range for the TCP and UDP protocols, or an ICMP code. A
+  The end of port range for the TCP and UDP protocols, or an ICMP code. A
 value of C<-1> indicates all ICMP codes for the specified ICMP type.
-
-
-
-
-
-
-
-
-
 
 =head2 UserIdGroupPairs => ArrayRef[Paws::EC2::UserIdGroupPair]
 
-  
-
-One or more security group and AWS account ID pairs.
-
-
-
-
-
-
-
-
-
+  One or more security group and AWS account ID pairs.
 
 
 

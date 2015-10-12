@@ -33,21 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 applicationNamePatterns => ArrayRef[Str]
 
-  
-
-For a record to match a filter, an explicit value or a string
+  For a record to match a filter, an explicit value or a string
 containing a wildcard specified for this data type property must match
 the value of the B<applicationName> property of the Application data
 type.
-
-
-
-
-
-
-
-
-
 
 
 

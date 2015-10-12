@@ -37,67 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the group for the lifecycle hook.
-
-
-
-
-
-
-
-
-
+  The name of the group for the lifecycle hook.
 
 =head2 B<REQUIRED> LifecycleActionResult => Str
 
-  
-
-The action for the group to take. This parameter can be either
+  The action for the group to take. This parameter can be either
 C<CONTINUE> or C<ABANDON>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> LifecycleActionToken => Str
 
-  
-
-A universally unique identifier (UUID) that identifies a specific
+  A universally unique identifier (UUID) that identifies a specific
 lifecycle action associated with an instance. Auto Scaling sends this
 token to the notification target you specified when you created the
 lifecycle hook.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> LifecycleHookName => Str
 
-  
-
-The name of the lifecycle hook.
-
-
-
-
-
-
-
-
-
+  The name of the lifecycle hook.
 
 
 

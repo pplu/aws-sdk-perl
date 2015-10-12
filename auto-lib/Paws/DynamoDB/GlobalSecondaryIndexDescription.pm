@@ -41,9 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::G
 
 =head2 Backfilling => Bool
 
-  
-
-Indicates whether the index is currently backfilling. I<Backfilling> is
+  Indicates whether the index is currently backfilling. I<Backfilling> is
 the process of reading items from the table and determining whether
 they can be added to the index. (Not all items will qualify: For
 example, a hash key attribute cannot have any duplicates.) If an item
@@ -55,67 +53,23 @@ For indexes that were created during a I<CreateTable> operation, the
 I<Backfilling> attribute does not appear in the I<DescribeTable>
 output.
 
-
-
-
-
-
-
-
-
-
 =head2 IndexArn => Str
 
-  
-
-The Amazon Resource Name (ARN) that uniquely identifies the index.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) that uniquely identifies the index.
 
 =head2 IndexName => Str
 
-  
-
-The name of the global secondary index.
-
-
-
-
-
-
-
-
-
+  The name of the global secondary index.
 
 =head2 IndexSizeBytes => Int
 
-  
-
-The total size of the specified index, in bytes. DynamoDB updates this
+  The total size of the specified index, in bytes. DynamoDB updates this
 value approximately every six hours. Recent changes might not be
 reflected in this value.
 
-
-
-
-
-
-
-
-
-
 =head2 IndexStatus => Str
 
-  
-
-The current state of the global secondary index:
+  The current state of the global secondary index:
 
 =over
 
@@ -137,48 +91,17 @@ I<ACTIVE> - The index is ready for use.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 ItemCount => Int
 
-  
-
-The number of items in the specified index. DynamoDB updates this value
+  The number of items in the specified index. DynamoDB updates this value
 approximately every six hours. Recent changes might not be reflected in
 this value.
 
-
-
-
-
-
-
-
-
-
 =head2 KeySchema => ArrayRef[Paws::DynamoDB::KeySchemaElement]
 
-  
-
-The complete key schema for the global secondary index, consisting of
+  The complete key schema for the global secondary index, consisting of
 one or more pairs of attribute names and key types (C<HASH> or
 C<RANGE>).
-
-
-
-
-
-
-
-
-
 
 =head2 Projection => Paws::DynamoDB::Projection
 

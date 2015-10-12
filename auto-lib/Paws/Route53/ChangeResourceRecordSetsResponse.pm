@@ -29,22 +29,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeInfo => Paws::Route53::ChangeInfo
 
-  
-
-A complex type that contains information about changes made to your
+  A complex type that contains information about changes made to your
 hosted zone.
 
 This element contains an ID that you use when performing a GetChange
 action to get detailed information about the change.
-
-
-
-
-
-
-
-
-
 
 
 

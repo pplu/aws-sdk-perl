@@ -37,80 +37,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotPr
 
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone.
-
-
-
-
-
-
-
-
-
+  The Availability Zone.
 
 =head2 InstanceType => Str
 
-  
-
-The instance type.
-
-
-
-
-
-
-
-
-
+  The instance type.
 
 =head2 ProductDescription => Str
 
-  
-
-A general description of the AMI.
-
-
-
-
-
-
-
-
-
+  A general description of the AMI.
 
 =head2 SpotPrice => Str
 
-  
-
-The maximum price (bid) that you are willing to pay for a Spot
+  The maximum price (bid) that you are willing to pay for a Spot
 instance.
-
-
-
-
-
-
-
-
-
 
 =head2 Timestamp => Str
 
-  
-
-The date and time the request was created, in UTC format (for example,
+  The date and time the request was created, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
-
-
-
-
-
-
-
-
-
 
 
 

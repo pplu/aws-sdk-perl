@@ -15,18 +15,7 @@ Paws::SQS::GetQueueAttributesResult
 
 =head2 Attributes => Paws::SQS::QueueAttributeMap
 
-  
-
-A map of attributes to the respective values.
-
-
-
-
-
-
-
-
-
+  A map of attributes to the respective values.
 
 
 =cut

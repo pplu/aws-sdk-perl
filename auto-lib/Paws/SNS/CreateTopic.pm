@@ -34,22 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the topic you want to create.
+  The name of the topic you want to create.
 
 Constraints: Topic names must be made up of only uppercase and
 lowercase ASCII letters, numbers, underscores, and hyphens, and must be
 between 1 and 256 characters long.
-
-
-
-
-
-
-
-
-
 
 
 

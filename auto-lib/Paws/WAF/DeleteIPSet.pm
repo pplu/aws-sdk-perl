@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
-
-The value returned by the most recent call to GetChangeToken.
-
-
-
-
-
-
-
-
-
+  The value returned by the most recent call to GetChangeToken.
 
 =head2 B<REQUIRED> IPSetId => Str
 
-  
-
-The C<IPSetId> of the IPSet that you want to delete. C<IPSetId> is
+  The C<IPSetId> of the IPSet that you want to delete. C<IPSetId> is
 returned by CreateIPSet and by ListIPSets.
-
-
-
-
-
-
-
-
-
 
 
 

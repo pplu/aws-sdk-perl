@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
 =head2 ClusterSecurityGroupName => Str
 
-  
-
-The name of the cluster security group.
-
-
-
-
-
-
-
-
-
+  The name of the cluster security group.
 
 =head2 Status => Str
 
-  
-
-The status of the cluster security group.
-
-
-
-
-
-
-
-
-
+  The status of the cluster security group.
 
 
 

@@ -37,79 +37,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 CacheEngineDescription => Str
 
-  
-
-The description of the cache engine.
-
-
-
-
-
-
-
-
-
+  The description of the cache engine.
 
 =head2 CacheEngineVersionDescription => Str
 
-  
-
-The description of the cache engine version.
-
-
-
-
-
-
-
-
-
+  The description of the cache engine version.
 
 =head2 CacheParameterGroupFamily => Str
 
-  
-
-The name of the cache parameter group family associated with this cache
+  The name of the cache parameter group family associated with this cache
 engine.
-
-
-
-
-
-
-
-
-
 
 =head2 Engine => Str
 
-  
-
-The name of the cache engine.
-
-
-
-
-
-
-
-
-
+  The name of the cache engine.
 
 =head2 EngineVersion => Str
 
-  
-
-The version number of the cache engine.
-
-
-
-
-
-
-
-
-
+  The version number of the cache engine.
 
 
 

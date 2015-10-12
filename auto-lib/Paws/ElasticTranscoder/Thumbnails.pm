@@ -40,9 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 AspectRatio => Str
 
-  
-
-To better control resolution and aspect ratio of thumbnails, we
+  To better control resolution and aspect ratio of thumbnails, we
 recommend that you use the values C<MaxWidth>, C<MaxHeight>,
 C<SizingPolicy>, and C<PaddingPolicy> instead of C<Resolution> and
 C<AspectRatio>. The two groups of settings are mutually exclusive. Do
@@ -55,106 +53,40 @@ C<auto>, C<1:1>, C<4:3>, C<3:2>, C<16:9>
 If you specify C<auto>, Elastic Transcoder tries to preserve the aspect
 ratio of the video in the output file.
 
-
-
-
-
-
-
-
-
-
 =head2 Format => Str
 
-  
-
-The format of thumbnails, if any. Valid values are C<jpg> and C<png>.
+  The format of thumbnails, if any. Valid values are C<jpg> and C<png>.
 
 You specify whether you want Elastic Transcoder to create thumbnails
 when you create a job.
 
-
-
-
-
-
-
-
-
-
 =head2 Interval => Str
 
-  
-
-The approximate number of seconds between thumbnails. Specify an
+  The approximate number of seconds between thumbnails. Specify an
 integer value.
-
-
-
-
-
-
-
-
-
 
 =head2 MaxHeight => Str
 
-  
-
-The maximum height of thumbnails in pixels. If you specify auto,
+  The maximum height of thumbnails in pixels. If you specify auto,
 Elastic Transcoder uses 1080 (Full HD) as the default value. If you
 specify a numeric value, enter an even integer between 32 and 3072.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxWidth => Str
 
-  
-
-The maximum width of thumbnails in pixels. If you specify auto, Elastic
+  The maximum width of thumbnails in pixels. If you specify auto, Elastic
 Transcoder uses 1920 (Full HD) as the default value. If you specify a
 numeric value, enter an even integer between 32 and 4096.
 
-
-
-
-
-
-
-
-
-
 =head2 PaddingPolicy => Str
 
-  
-
-When you set C<PaddingPolicy> to C<Pad>, Elastic Transcoder may add
+  When you set C<PaddingPolicy> to C<Pad>, Elastic Transcoder may add
 black bars to the top and bottom and/or left and right sides of
 thumbnails to make the total size of the thumbnails match the values
 that you specified for thumbnail C<MaxWidth> and C<MaxHeight> settings.
 
-
-
-
-
-
-
-
-
-
 =head2 Resolution => Str
 
-  
-
-To better control resolution and aspect ratio of thumbnails, we
+  To better control resolution and aspect ratio of thumbnails, we
 recommend that you use the values C<MaxWidth>, C<MaxHeight>,
 C<SizingPolicy>, and C<PaddingPolicy> instead of C<Resolution> and
 C<AspectRatio>. The two groups of settings are mutually exclusive. Do
@@ -165,20 +97,9 @@ the format C<I<width>> x C<I<height>> where both values are even
 integers. The values cannot exceed the width and height that you
 specified in the C<Video:Resolution> object.
 
-
-
-
-
-
-
-
-
-
 =head2 SizingPolicy => Str
 
-  
-
-Specify one of the following values to control scaling of thumbnails:
+  Specify one of the following values to control scaling of thumbnails:
 
 =over
 
@@ -215,15 +136,6 @@ value. If you specify this option, Elastic Transcoder does not scale
 thumbnails up.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

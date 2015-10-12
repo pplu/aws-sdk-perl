@@ -35,53 +35,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SDB::Update
 
 =head2 Exists => Bool
 
-  
-
-A value specifying whether or not the specified attribute must exist
+  A value specifying whether or not the specified attribute must exist
 with the specified value in order for the update condition to be
 satisfied. Specify C<true> if the attribute must exist for the update
 condition to be satisfied. Specify C<false> if the attribute should not
 exist in order for the update condition to be satisfied.
 
-
-
-
-
-
-
-
-
-
 =head2 Name => Str
 
-  
-
-The name of the attribute involved in the condition.
-
-
-
-
-
-
-
-
-
+  The name of the attribute involved in the condition.
 
 =head2 Value => Str
 
-  
-
-The value of an attribute. This value can only be specified when the
+  The value of an attribute. This value can only be specified when the
 C<Exists> parameter is equal to C<true>.
-
-
-
-
-
-
-
-
-
 
 
 

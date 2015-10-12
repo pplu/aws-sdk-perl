@@ -36,40 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name or ARN of the Auto Scaling group.
-
-
-
-
-
-
-
-
-
+  The name or ARN of the Auto Scaling group.
 
 =head2 B<REQUIRED> Granularity => Str
 
-  
-
-The granularity to associate with the metrics to collect. The only
+  The granularity to associate with the metrics to collect. The only
 valid value is C<1Minute>.
-
-
-
-
-
-
-
-
-
 
 =head2 Metrics => ArrayRef[Str]
 
-  
-
-One or more metrics. If you omit this parameter, all metrics are
+  One or more metrics. If you omit this parameter, all metrics are
 enabled.
 
 =over
@@ -110,15 +86,6 @@ C<GroupTotalInstances>
 
 Note that the C<GroupStandbyInstances> metric is not enabled by
 default. You must explicitly request this metric.
-
-
-
-
-
-
-
-
-
 
 
 

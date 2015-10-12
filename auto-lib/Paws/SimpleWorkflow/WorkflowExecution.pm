@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> runId => Str
 
-  
-
-A system-generated unique identifier for the workflow execution.
-
-
-
-
-
-
-
-
-
+  A system-generated unique identifier for the workflow execution.
 
 =head2 B<REQUIRED> workflowId => Str
 
-  
-
-The user defined identifier associated with the workflow execution.
-
-
-
-
-
-
-
-
-
+  The user defined identifier associated with the workflow execution.
 
 
 

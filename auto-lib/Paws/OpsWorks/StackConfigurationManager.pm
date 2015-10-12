@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::S
 
 =head2 Name => Str
 
-  
-
-The name. This parameter must be set to "Chef".
-
-
-
-
-
-
-
-
-
+  The name. This parameter must be set to "Chef".
 
 =head2 Version => Str
 
-  
-
-The Chef version. This parameter must be set to 0.9, 11.4, or 11.10.
+  The Chef version. This parameter must be set to 0.9, 11.4, or 11.10.
 The default value is 11.4.
-
-
-
-
-
-
-
-
-
 
 
 

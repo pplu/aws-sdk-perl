@@ -14,18 +14,7 @@ Paws::Inspector::CreateAssessmentResponse
 
 =head2 assessmentArn => Str
 
-  
-
-The ARN specifying the assessment that is created.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the assessment that is created.
 
 
 =cut

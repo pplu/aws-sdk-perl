@@ -44,161 +44,49 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::R
 
 =head2 CurrencyCode => Str
 
-  
-
-The currency code for the reserved cluster.
-
-
-
-
-
-
-
-
-
+  The currency code for the reserved cluster.
 
 =head2 Duration => Int
 
-  
-
-The duration of the node reservation in seconds.
-
-
-
-
-
-
-
-
-
+  The duration of the node reservation in seconds.
 
 =head2 FixedPrice => Num
 
-  
-
-The fixed cost Amazon Redshift charges you for this reserved node.
-
-
-
-
-
-
-
-
-
+  The fixed cost Amazon Redshift charges you for this reserved node.
 
 =head2 NodeCount => Int
 
-  
-
-The number of reserved compute nodes.
-
-
-
-
-
-
-
-
-
+  The number of reserved compute nodes.
 
 =head2 NodeType => Str
 
-  
-
-The node type of the reserved node.
-
-
-
-
-
-
-
-
-
+  The node type of the reserved node.
 
 =head2 OfferingType => Str
 
-  
-
-The anticipated utilization of the reserved node, as defined in the
+  The anticipated utilization of the reserved node, as defined in the
 reserved node offering.
-
-
-
-
-
-
-
-
-
 
 =head2 RecurringCharges => ArrayRef[Paws::RedShift::RecurringCharge]
 
-  
-
-The recurring charges for the reserved node.
-
-
-
-
-
-
-
-
-
+  The recurring charges for the reserved node.
 
 =head2 ReservedNodeId => Str
 
-  
-
-The unique identifier for the reservation.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the reservation.
 
 =head2 ReservedNodeOfferingId => Str
 
-  
-
-The identifier for the reserved node offering.
-
-
-
-
-
-
-
-
-
+  The identifier for the reserved node offering.
 
 =head2 StartTime => Str
 
-  
-
-The time the reservation started. You purchase a reserved node offering
+  The time the reservation started. You purchase a reserved node offering
 for a duration. This is the start time of that duration.
-
-
-
-
-
-
-
-
-
 
 =head2 State => Str
 
-  
-
-The state of the reserved compute node.
+  The state of the reserved compute node.
 
 Possible Values:
 
@@ -214,29 +102,9 @@ available for use.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 UsagePrice => Num
 
-  
-
-The hourly rate Amazon Redshift charges you for this reserved node.
-
-
-
-
-
-
-
-
-
+  The hourly rate Amazon Redshift charges you for this reserved node.
 
 
 

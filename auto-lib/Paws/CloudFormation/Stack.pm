@@ -46,54 +46,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head2 Capabilities => ArrayRef[Str]
 
-  
-
-The capabilities allowed in the stack.
-
-
-
-
-
-
-
-
-
+  The capabilities allowed in the stack.
 
 =head2 B<REQUIRED> CreationTime => Str
 
-  
-
-The time at which the stack was created.
-
-
-
-
-
-
-
-
-
+  The time at which the stack was created.
 
 =head2 Description => Str
 
-  
-
-A user-defined description associated with the stack.
-
-
-
-
-
-
-
-
-
+  A user-defined description associated with the stack.
 
 =head2 DisableRollback => Bool
 
-  
-
-Boolean to enable or disable rollback on stack creation failures:
+  Boolean to enable or disable rollback on stack creation failures:
 
 =over
 
@@ -103,166 +68,47 @@ Boolean to enable or disable rollback on stack creation failures:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 LastUpdatedTime => Str
 
-  
-
-The time the stack was last updated. This field will only be returned
+  The time the stack was last updated. This field will only be returned
 if the stack has been updated at least once.
-
-
-
-
-
-
-
-
-
 
 =head2 NotificationARNs => ArrayRef[Str]
 
-  
-
-SNS topic ARNs to which stack related events are published.
-
-
-
-
-
-
-
-
-
+  SNS topic ARNs to which stack related events are published.
 
 =head2 Outputs => ArrayRef[Paws::CloudFormation::Output]
 
-  
-
-A list of output structures.
-
-
-
-
-
-
-
-
-
+  A list of output structures.
 
 =head2 Parameters => ArrayRef[Paws::CloudFormation::Parameter]
 
-  
-
-A list of C<Parameter> structures.
-
-
-
-
-
-
-
-
-
+  A list of C<Parameter> structures.
 
 =head2 StackId => Str
 
-  
-
-Unique identifier of the stack.
-
-
-
-
-
-
-
-
-
+  Unique identifier of the stack.
 
 =head2 B<REQUIRED> StackName => Str
 
-  
-
-The name associated with the stack.
-
-
-
-
-
-
-
-
-
+  The name associated with the stack.
 
 =head2 B<REQUIRED> StackStatus => Str
 
-  
-
-Current status of the stack.
-
-
-
-
-
-
-
-
-
+  Current status of the stack.
 
 =head2 StackStatusReason => Str
 
-  
-
-Success/failure message associated with the stack status.
-
-
-
-
-
-
-
-
-
+  Success/failure message associated with the stack status.
 
 =head2 Tags => ArrayRef[Paws::CloudFormation::Tag]
 
-  
-
-A list of C<Tag>s that specify cost allocation information for the
+  A list of C<Tag>s that specify cost allocation information for the
 stack.
-
-
-
-
-
-
-
-
-
 
 =head2 TimeoutInMinutes => Int
 
-  
-
-The amount of time within which stack creation should complete.
-
-
-
-
-
-
-
-
-
+  The amount of time within which stack creation should complete.
 
 
 

@@ -35,39 +35,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  
-
-String that identifies the start of the next list of stacks, if there
+  String that identifies the start of the next list of stacks, if there
 is one.
 
 Default: There is no default value.
 
-
-
-
-
-
-
-
-
-
 =head2 StackStatusFilter => ArrayRef[Str]
 
-  
-
-Stack status to use as a filter. Specify one or more stack status codes
+  Stack status to use as a filter. Specify one or more stack status codes
 to list only stacks with the specified status codes. For a complete
 list of stack status codes, see the C<StackStatus> parameter of the
 Stack data type.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -39,63 +39,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 attributeName => Str
 
-  
-
-The attribute name.
-
-
-
-
-
-
-
-
-
+  The attribute name.
 
 =head2 attributeValue => Str
 
-  
-
-The attribute value.
-
-
-
-
-
-
-
-
-
+  The attribute value.
 
 =head2 maxResults => Int
 
-  
-
-The maximum number of results.
-
-
-
-
-
-
-
-
-
+  The maximum number of results.
 
 =head2 nextToken => Str
 
-  
-
-The token for the next value.
-
-
-
-
-
-
-
-
-
+  The token for the next value.
 
 
 

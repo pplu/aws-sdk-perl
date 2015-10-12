@@ -34,24 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Receip
 
 =head2 CreatedTimestamp => Str
 
-  
-
-The date and time the receipt rule set was created.
-
-
-
-
-
-
-
-
-
+  The date and time the receipt rule set was created.
 
 =head2 Name => Str
 
-  
-
-The name of the receipt rule set. The name must:
+  The name of the receipt rule set. The name must:
 
 =over
 
@@ -63,15 +50,6 @@ The name of the receipt rule set. The name must:
 =item * Contain less than 64 characters.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

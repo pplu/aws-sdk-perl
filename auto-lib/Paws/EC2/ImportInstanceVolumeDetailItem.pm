@@ -39,108 +39,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Import
 
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-  
-
-The Availability Zone where the resulting instance will reside.
-
-
-
-
-
-
-
-
-
+  The Availability Zone where the resulting instance will reside.
 
 =head2 B<REQUIRED> BytesConverted => Int
 
-  
-
-The number of bytes converted so far.
-
-
-
-
-
-
-
-
-
+  The number of bytes converted so far.
 
 =head2 Description => Str
 
-  
-
-A description of the task.
-
-
-
-
-
-
-
-
-
+  A description of the task.
 
 =head2 B<REQUIRED> Image => Paws::EC2::DiskImageDescription
 
-  
-
-The image.
-
-
-
-
-
-
-
-
-
+  The image.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The status of the import of this particular disk image.
-
-
-
-
-
-
-
-
-
+  The status of the import of this particular disk image.
 
 =head2 StatusMessage => Str
 
-  
-
-The status information or errors related to the disk image.
-
-
-
-
-
-
-
-
-
+  The status information or errors related to the disk image.
 
 =head2 B<REQUIRED> Volume => Paws::EC2::DiskImageVolumeDescription
 
-  
-
-The volume.
-
-
-
-
-
-
-
-
-
+  The volume.
 
 
 

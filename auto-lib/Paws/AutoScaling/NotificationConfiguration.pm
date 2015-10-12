@@ -35,24 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 AutoScalingGroupName => Str
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
-
+  The name of the group.
 
 =head2 NotificationType => Str
 
-  
-
-The types of events for an action to start.
+  The types of events for an action to start.
 
 =over
 
@@ -78,30 +65,10 @@ C<autoscaling:TEST_NOTIFICATION>
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 TopicARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon Simple Notification
+  The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) topic.
-
-
-
-
-
-
-
-
-
 
 
 

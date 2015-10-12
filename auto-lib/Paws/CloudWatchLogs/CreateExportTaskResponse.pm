@@ -14,18 +14,7 @@ Paws::CloudWatchLogs::CreateExportTaskResponse
 
 =head2 taskId => Str
 
-  
-
-Id of the export task that got created.
-
-
-
-
-
-
-
-
-
+  Id of the export task that got created.
 
 
 =cut

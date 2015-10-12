@@ -50,34 +50,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EncodingType => Str
 
-  
-
-Encoding type used by Amazon S3 to encode object keys in the response.
-
-
-
-
-
-
-
-
-
+  Encoding type used by Amazon S3 to encode object keys in the response.
 
 =head2 IsTruncated => Bool
 
-  
-
-A flag that indicates whether or not Amazon S3 returned all of the
+  A flag that indicates whether or not Amazon S3 returned all of the
 results that satisfied the search criteria.
-
-
-
-
-
-
-
-
-
 
 =head2 Marker => Str
 
@@ -93,9 +71,7 @@ results that satisfied the search criteria.
 
 =head2 NextMarker => Str
 
-  
-
-When response is truncated (the IsTruncated element value in the
+  When response is truncated (the IsTruncated element value in the
 response is true), you can use the key name in this field as marker in
 the subsequent request to get next set of objects. Amazon S3 lists
 objects in alphabetical order Note: This element is returned only if
@@ -103,15 +79,6 @@ you have delimiter request parameter specified. If response does not
 include the NextMaker and it is truncated, you can use the value of the
 last Key in the response as the marker in the subsequent request to get
 the next set of object keys.
-
-
-
-
-
-
-
-
-
 
 =head2 Prefix => Str
 

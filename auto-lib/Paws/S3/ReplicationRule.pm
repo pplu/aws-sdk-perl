@@ -40,51 +40,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Replica
 
 =head2 ID => Str
 
-  
-
-Unique identifier for the rule. The value cannot be longer than 255
+  Unique identifier for the rule. The value cannot be longer than 255
 characters.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Prefix => Str
 
-  
-
-Object keyname prefix identifying one or more objects to which the rule
+  Object keyname prefix identifying one or more objects to which the rule
 applies. Maximum prefix length can be up to 1,024 characters.
 Overlapping prefixes are not supported.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The rule is ignored if status is not Enabled.
-
-
-
-
-
-
-
-
-
+  The rule is ignored if status is not Enabled.
 
 
 

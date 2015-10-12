@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 accountId => Str
 
-  
-
-The ID of the AWS account to use when performing the job.
-
-
-
-
-
-
-
-
-
+  The ID of the AWS account to use when performing the job.
 
 =head2 data => Paws::CodePipeline::JobData
 
-  
-
-Additional data about a job.
-
-
-
-
-
-
-
-
-
+  Additional data about a job.
 
 =head2 id => Str
 
-  
-
-The unique system-generated ID of the job.
-
-
-
-
-
-
-
-
-
+  The unique system-generated ID of the job.
 
 =head2 nonce => Str
 
-  
-
-A system-generated random number that AWS CodePipeline uses to ensure
+  A system-generated random number that AWS CodePipeline uses to ensure
 that the job is being worked on by only one job worker. This number
 must be returned in the response.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -33,23 +33,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::P
 
 =head2 B<REQUIRED> Item => Paws::DynamoDB::PutItemInputAttributeMap
 
-  
-
-A map of attribute name to attribute values, representing the primary
+  A map of attribute name to attribute values, representing the primary
 key of an item to be processed by I<PutItem>. All of the table's
 primary key attributes must be specified, and their data types must
 match those of the table's key schema. If any attributes are present in
 the item which are part of an index key schema for the table, their
 types must match the index key schema.
-
-
-
-
-
-
-
-
-
 
 
 

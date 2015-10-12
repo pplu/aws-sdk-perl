@@ -15,18 +15,7 @@ Paws::ElastiCache::TagListMessage
 
 =head2 TagList => ArrayRef[Paws::ElastiCache::Tag]
 
-  
-
-A list of cost allocation tags as key-value pairs.
-
-
-
-
-
-
-
-
-
+  A list of cost allocation tags as key-value pairs.
 
 
 =cut

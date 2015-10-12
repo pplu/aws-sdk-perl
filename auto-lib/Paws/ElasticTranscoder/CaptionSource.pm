@@ -37,58 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 Encryption => Paws::ElasticTranscoder::Encryption
 
-  
-
-The encryption settings, if any, that you want Elastic Transcoder to
+  The encryption settings, if any, that you want Elastic Transcoder to
 apply to your caption sources.
-
-
-
-
-
-
-
-
-
 
 =head2 Key => Str
 
-  
-
-The name of the sidecar caption file that you want Elastic Transcoder
+  The name of the sidecar caption file that you want Elastic Transcoder
 to include in the output file.
-
-
-
-
-
-
-
-
-
 
 =head2 Label => Str
 
-  
-
-The label of the caption shown in the player when choosing a language.
+  The label of the caption shown in the player when choosing a language.
 We recommend that you put the caption language name here, in the
 language of the captions.
 
-
-
-
-
-
-
-
-
-
 =head2 Language => Str
 
-  
-
-A string that specifies the language of the caption. Specify this as
+  A string that specifies the language of the caption. Specify this as
 one of:
 
 =over
@@ -106,33 +71,13 @@ one of:
 For more information on ISO language codes and language names, see the
 List of ISO 639-1 codes.
 
-
-
-
-
-
-
-
-
-
 =head2 TimeOffset => Str
 
-  
-
-For clip generation or captions that do not start at the same time as
+  For clip generation or captions that do not start at the same time as
 the associated video file, the C<TimeOffset> tells Elastic Transcoder
 how much of the video to encode before including captions.
 
 Specify the TimeOffset in the form [+-]SS.sss or [+-]HH:mm:SS.ss.
-
-
-
-
-
-
-
-
-
 
 
 

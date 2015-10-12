@@ -14,18 +14,7 @@ Paws::Inspector::DescribeAssessmentResponse
 
 =head2 assessment => Paws::Inspector::Assessment
 
-  
-
-Information about the assessment.
-
-
-
-
-
-
-
-
-
+  Information about the assessment.
 
 
 =cut

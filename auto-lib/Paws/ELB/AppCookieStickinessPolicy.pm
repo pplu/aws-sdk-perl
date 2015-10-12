@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::AppCoo
 
 =head2 CookieName => Str
 
-  
-
-The name of the application cookie used for stickiness.
-
-
-
-
-
-
-
-
-
+  The name of the application cookie used for stickiness.
 
 =head2 PolicyName => Str
 
-  
-
-The mnemonic name for the policy being created. The name must be unique
+  The mnemonic name for the policy being created. The name must be unique
 within a set of policies for this load balancer.
-
-
-
-
-
-
-
-
-
 
 
 

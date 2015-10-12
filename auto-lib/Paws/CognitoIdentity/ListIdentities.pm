@@ -37,65 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 HideDisabled => Bool
 
-  
-
-An optional boolean parameter that allows you to hide disabled
+  An optional boolean parameter that allows you to hide disabled
 identities. If omitted, the ListIdentities API will include disabled
 identities in the response.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-An identity pool ID in the format REGION:GUID.
-
-
-
-
-
-
-
-
-
+  An identity pool ID in the format REGION:GUID.
 
 =head2 B<REQUIRED> MaxResults => Int
 
-  
-
-The maximum number of identities to return.
-
-
-
-
-
-
-
-
-
+  The maximum number of identities to return.
 
 =head2 NextToken => Str
 
-  
-
-A pagination token.
-
-
-
-
-
-
-
-
-
+  A pagination token.
 
 
 

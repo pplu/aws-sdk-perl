@@ -35,58 +35,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 startToCloseTimeout => Str
 
-  
-
-The maximum duration for this decision task. The task is considered
+  The maximum duration for this decision task. The task is considered
 timed out if it does not completed within this duration.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
 
-  
-
-The name of the task list in which the decision task was scheduled.
-
-
-
-
-
-
-
-
-
+  The name of the task list in which the decision task was scheduled.
 
 =head2 taskPriority => Str
 
-  
-
-I<Optional.> A task priority that, if set, specifies the priority for
+  I<Optional.> A task priority that, if set, specifies the priority for
 this decision task. Valid values are integers that range from Java's
 C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 (2147483647). Higher numbers indicate higher priority.
 
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

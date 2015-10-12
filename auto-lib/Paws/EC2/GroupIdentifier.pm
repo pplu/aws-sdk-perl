@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::GroupI
 
 =head2 GroupId => Str
 
-  
-
-The ID of the security group.
-
-
-
-
-
-
-
-
-
+  The ID of the security group.
 
 =head2 GroupName => Str
 
-  
-
-The name of the security group.
-
-
-
-
-
-
-
-
-
+  The name of the security group.
 
 
 

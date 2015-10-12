@@ -36,69 +36,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Duration => Int
 
-  
-
-The amount of time that the metrics cover (usually 10 seconds). For
+  The amount of time that the metrics cover (usually 10 seconds). For
 example, you might have 5 requests (C<request_count>) within the most
 recent time slice of 10 seconds (C<duration>).
 
-
-
-
-
-
-
-
-
-
 =head2 Latency => Paws::ElasticBeanstalk::Latency
 
-  
-
-Represents the average latency for the slowest X percent of requests
+  Represents the average latency for the slowest X percent of requests
 over the last 10 seconds. Latencies are in seconds with one milisecond
 resolution.
 
-
-
-
-
-
-
-
-
-
 =head2 RequestCount => Int
 
-  
-
-Average number of requests handled by the web server per second over
+  Average number of requests handled by the web server per second over
 the last 10 seconds.
-
-
-
-
-
-
-
-
-
 
 =head2 StatusCodes => Paws::ElasticBeanstalk::StatusCodes
 
-  
-
-Represents the percentage of requests over the last 10 seconds that
+  Represents the percentage of requests over the last 10 seconds that
 resulted in each type of status code response.
-
-
-
-
-
-
-
-
-
 
 
 

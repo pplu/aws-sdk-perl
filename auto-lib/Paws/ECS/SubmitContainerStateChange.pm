@@ -40,110 +40,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster that
+  The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container.
-
-
-
-
-
-
-
-
-
 
 =head2 containerName => Str
 
-  
-
-The name of the container.
-
-
-
-
-
-
-
-
-
+  The name of the container.
 
 =head2 exitCode => Int
 
-  
-
-The exit code returned for the state change request.
-
-
-
-
-
-
-
-
-
+  The exit code returned for the state change request.
 
 =head2 networkBindings => ArrayRef[Paws::ECS::NetworkBinding]
 
-  
-
-The network bindings of the container.
-
-
-
-
-
-
-
-
-
+  The network bindings of the container.
 
 =head2 reason => Str
 
-  
-
-The reason for the state change request.
-
-
-
-
-
-
-
-
-
+  The reason for the state change request.
 
 =head2 status => Str
 
-  
-
-The status of the state change request.
-
-
-
-
-
-
-
-
-
+  The status of the state change request.
 
 =head2 task => Str
 
-  
-
-The task ID or full Amazon Resource Name (ARN) of the task that hosts
+  The task ID or full Amazon Resource Name (ARN) of the task that hosts
 the container.
-
-
-
-
-
-
-
-
-
 
 
 

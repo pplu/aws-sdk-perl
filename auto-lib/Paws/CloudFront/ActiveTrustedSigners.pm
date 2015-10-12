@@ -35,53 +35,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  
-
-Each active trusted signer.
-
-
-
-
-
-
-
-
-
+  Each active trusted signer.
 
 =head2 Items => ArrayRef[Paws::CloudFront::Signer]
 
-  
-
-A complex type that contains one Signer complex type for each unique
+  A complex type that contains one Signer complex type for each unique
 trusted signer that is specified in the TrustedSigners complex type,
 including trusted signers in the default cache behavior and in all of
 the other cache behaviors.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Quantity => Int
 
-  
-
-The number of unique trusted signers included in all cache behaviors.
+  The number of unique trusted signers included in all cache behaviors.
 For example, if three cache behaviors all list the same three AWS
 accounts, the value of Quantity for ActiveTrustedSigners will be 3.
-
-
-
-
-
-
-
-
-
 
 
 

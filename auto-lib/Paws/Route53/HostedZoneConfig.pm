@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ho
 
 =head2 Comment => Str
 
-  
-
-An optional comment about your hosted zone. If you don't want to
+  An optional comment about your hosted zone. If you don't want to
 specify a comment, you can omit the C<HostedZoneConfig> and C<Comment>
 elements from the XML document.
 
-
-
-
-
-
-
-
-
-
 =head2 PrivateZone => Bool
 
-  
-
-A value that indicates whether this is a private hosted zone. The value
+  A value that indicates whether this is a private hosted zone. The value
 is returned in the response; do not specify it in the request.
-
-
-
-
-
-
-
-
-
 
 
 

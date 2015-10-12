@@ -15,36 +15,14 @@ Paws::WAF::ListRulesResponse
 
 =head2 NextMarker => Str
 
-  
-
-If you have more C<Rules> than the number that you specified for
+  If you have more C<Rules> than the number that you specified for
 C<Limit> in the request, the response includes a C<NextMarker> value.
 To list more C<Rules>, submit another C<ListRules> request, and specify
 the C<NextMarker> value from the response in the C<NextMarker> value in
 the next request.
-
-
-
-
-
-
-
-
-
 =head2 Rules => ArrayRef[Paws::WAF::RuleSummary]
 
-  
-
-An array of RuleSummary objects.
-
-
-
-
-
-
-
-
-
+  An array of RuleSummary objects.
 
 
 =cut

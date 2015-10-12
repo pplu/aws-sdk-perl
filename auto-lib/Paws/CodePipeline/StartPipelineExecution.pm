@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of the pipeline to start.
-
-
-
-
-
-
-
-
-
+  The name of the pipeline to start.
 
 
 

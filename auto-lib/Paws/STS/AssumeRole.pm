@@ -40,26 +40,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DurationSeconds => Int
 
-  
-
-The duration, in seconds, of the role session. The value can range from
+  The duration, in seconds, of the role session. The value can range from
 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the
 value is set to 3600 seconds.
 
-
-
-
-
-
-
-
-
-
 =head2 ExternalId => Str
 
-  
-
-A unique identifier that is used by third parties when assuming roles
+  A unique identifier that is used by third parties when assuming roles
 in their customers' accounts. For each role that the third party can
 assume, they should instruct their customers to ensure the role's trust
 policy checks for the external ID that the third party generated. Each
@@ -69,20 +56,9 @@ bind a role to the customer who created it. For more information about
 the external ID, see How to Use External ID When Granting Access to
 Your AWS Resources in I<Using Temporary Security Credentials>.
 
-
-
-
-
-
-
-
-
-
 =head2 Policy => Str
 
-  
-
-An IAM policy in JSON format.
+  An IAM policy in JSON format.
 
 This parameter is optional. If you pass a policy, the temporary
 security credentials that are returned by the operation have the
@@ -101,35 +77,13 @@ separate limit. The PackedPolicySize response element indicates by
 percentage how close to the upper size limit the policy is, with 100%
 equaling the maximum allowed size.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> RoleArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the role to assume.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the role to assume.
 
 =head2 B<REQUIRED> RoleSessionName => Str
 
-  
-
-An identifier for the assumed role session.
+  An identifier for the assumed role session.
 
 Use the role session name to uniquely identity a session when the same
 role is assumed by different principals or for different reasons. In
@@ -140,20 +94,9 @@ subsequent cross-account API requests using the temporary security
 credentials will expose the role session name to the external account
 in their CloudTrail logs.
 
-
-
-
-
-
-
-
-
-
 =head2 SerialNumber => Str
 
-  
-
-The identification number of the MFA device that is associated with the
+  The identification number of the MFA device that is associated with the
 user who is making the C<AssumeRole> call. Specify this value if the
 trust policy of the role being assumed includes a condition that
 requires MFA authentication. The value is either the serial number for
@@ -161,33 +104,13 @@ a hardware device (such as C<GAHT12345678>) or an Amazon Resource Name
 (ARN) for a virtual device (such as
 C<arn:aws:iam::123456789012:mfa/user>).
 
-
-
-
-
-
-
-
-
-
 =head2 TokenCode => Str
 
-  
-
-The value provided by the MFA device, if the trust policy of the role
+  The value provided by the MFA device, if the trust policy of the role
 being assumed requires MFA (that is, if the policy includes a condition
 that tests for MFA). If the role being assumed requires MFA and if the
 C<TokenCode> value is missing or expired, the C<AssumeRole> call
 returns an "access denied" error.
-
-
-
-
-
-
-
-
-
 
 
 

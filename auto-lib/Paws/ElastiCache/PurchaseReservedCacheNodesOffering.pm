@@ -36,54 +36,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CacheNodeCount => Int
 
-  
-
-The number of cache node instances to reserve.
+  The number of cache node instances to reserve.
 
 Default: C<1>
 
-
-
-
-
-
-
-
-
-
 =head2 ReservedCacheNodeId => Str
 
-  
-
-A customer-specified identifier to track this reservation.
+  A customer-specified identifier to track this reservation.
 
 Example: myreservationID
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ReservedCacheNodesOfferingId => Str
 
-  
-
-The ID of the reserved cache node offering to purchase.
+  The ID of the reserved cache node offering to purchase.
 
 Example: 438012d3-4052-4cc7-b2e3-8d3372e0e706
-
-
-
-
-
-
-
-
-
 
 
 

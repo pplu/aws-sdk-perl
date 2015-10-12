@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> bandwidth => Str
 
-  
-
-The port bandwidth
+  The port bandwidth
 
 Example: 1Gbps
 
@@ -46,52 +44,21 @@ Default: None
 
 Available values: 1Gbps,10Gbps
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> interconnectName => Str
 
-  
-
-The name of the interconnect.
+  The name of the interconnect.
 
 Example: "I<1G Interconnect to AWS>"
 
 Default: None
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> location => Str
 
-  
-
-Where the interconnect is located
+  Where the interconnect is located
 
 Example: EqSV5
 
 Default: None
-
-
-
-
-
-
-
-
-
 
 
 

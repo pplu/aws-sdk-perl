@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Associ
 
 =head2 AdditionalInfo => Str
 
-  
-
-A user-defined string.
-
-
-
-
-
-
-
-
-
+  A user-defined string.
 
 =head2 B<REQUIRED> Date => Str
 
-  
-
-The date when the status changed.
-
-
-
-
-
-
-
-
-
+  The date when the status changed.
 
 =head2 B<REQUIRED> Message => Str
 
-  
-
-The reason for the status.
-
-
-
-
-
-
-
-
-
+  The reason for the status.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The status.
-
-
-
-
-
-
-
-
-
+  The status.
 
 
 

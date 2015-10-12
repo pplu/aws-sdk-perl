@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Policy
 
 =head2 Description => Str
 
-  
-
-A description of the policy type.
-
-
-
-
-
-
-
-
-
+  A description of the policy type.
 
 =head2 PolicyAttributeTypeDescriptions => ArrayRef[Paws::ELB::PolicyAttributeTypeDescription]
 
-  
-
-The description of the policy attributes associated with the policies
+  The description of the policy attributes associated with the policies
 defined by Elastic Load Balancing.
-
-
-
-
-
-
-
-
-
 
 =head2 PolicyTypeName => Str
 
-  
-
-The name of the policy type.
-
-
-
-
-
-
-
-
-
+  The name of the policy type.
 
 
 

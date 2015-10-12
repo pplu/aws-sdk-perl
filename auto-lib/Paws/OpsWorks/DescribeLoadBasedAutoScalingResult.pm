@@ -14,19 +14,8 @@ Paws::OpsWorks::DescribeLoadBasedAutoScalingResult
 
 =head2 LoadBasedAutoScalingConfigurations => ArrayRef[Paws::OpsWorks::LoadBasedAutoScalingConfiguration]
 
-  
-
-An array of C<LoadBasedAutoScalingConfiguration> objects that describe
+  An array of C<LoadBasedAutoScalingConfiguration> objects that describe
 each layer's configuration.
-
-
-
-
-
-
-
-
-
 
 
 =cut

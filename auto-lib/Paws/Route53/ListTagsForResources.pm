@@ -22,22 +22,11 @@ Paws::Route53::ListTagsForResourcesResponse
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  
-
-The type of the resources.
+  The type of the resources.
 
 - The resource type for health checks is C<healthcheck>.
 
 - The resource type for hosted zones is C<hostedzone>.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -41,9 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 childPolicy => Str
 
-  
-
-If set, specifies the policy to use for the child workflow executions
+  If set, specifies the policy to use for the child workflow executions
 of the new execution if it is terminated by calling the
 TerminateWorkflowExecution action explicitly or due to an expired
 timeout. This policy overrides the default child policy specified when
@@ -70,20 +68,9 @@ a default for the workflow type or through this parameter. If neither
 this parameter is set nor a default child policy was specified at
 registration time then a fault will be returned.
 
-
-
-
-
-
-
-
-
-
 =head2 executionStartToCloseTimeout => Str
 
-  
-
-If set, specifies the total duration for this workflow execution. This
+  If set, specifies the total duration for this workflow execution. This
 overrides the C<defaultExecutionStartToCloseTimeout> specified when
 registering the workflow type.
 
@@ -96,67 +83,25 @@ field. If neither this field is set nor a default execution
 start-to-close timeout was specified at registration time then a fault
 will be returned.
 
-
-
-
-
-
-
-
-
-
 =head2 input => Str
 
-  
-
-The input provided to the new workflow execution.
-
-
-
-
-
-
-
-
-
+  The input provided to the new workflow execution.
 
 =head2 lambdaRole => Str
 
-  
-
-The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda
+  The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda
 functions.
 
 In order for this workflow execution to invoke AWS Lambda functions, an
 appropriate IAM role must be specified either as a default for the
 workflow type or through this field.
 
-
-
-
-
-
-
-
-
-
 =head2 tagList => ArrayRef[Str]
 
-  
-
-The list of tags to associate with the new workflow execution. A
+  The list of tags to associate with the new workflow execution. A
 maximum of 5 tags can be specified. You can list workflow executions
 with a specific tag by calling ListOpenWorkflowExecutions or
 ListClosedWorkflowExecutions and specifying a TagFilter.
-
-
-
-
-
-
-
-
-
 
 =head2 taskList => Paws::SimpleWorkflow::TaskList
 
@@ -164,9 +109,7 @@ ListClosedWorkflowExecutions and specifying a TagFilter.
 
 =head2 taskPriority => Str
 
-  
-
-I<Optional.> The task priority that, if set, specifies the priority for
+  I<Optional.> The task priority that, if set, specifies the priority for
 the decision tasks for this workflow execution. This overrides the
 defaultTaskPriority specified when registering the workflow type. Valid
 values are integers that range from Java's C<Integer.MIN_VALUE>
@@ -176,20 +119,9 @@ indicate higher priority.
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 taskStartToCloseTimeout => Str
 
-  
-
-Specifies the maximum duration of decision tasks for the new workflow
+  Specifies the maximum duration of decision tasks for the new workflow
 execution. This parameter overrides the
 C<defaultTaskStartToCloseTimout> specified when registering the
 workflow type using RegisterWorkflowType.
@@ -202,15 +134,6 @@ specified either as a default for the workflow type or through this
 parameter. If neither this parameter is set nor a default task
 start-to-close timeout was specified at registration time then a fault
 will be returned.
-
-
-
-
-
-
-
-
-
 
 =head2 workflowTypeVersion => Str
 

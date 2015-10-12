@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
 =head2 Code => Str
 
-  
-
-The programmable code for the state change reason.
-
-
-
-
-
-
-
-
-
+  The programmable code for the state change reason.
 
 =head2 Message => Str
 
-  
-
-The status change reason description.
-
-
-
-
-
-
-
-
-
+  The status change reason description.
 
 
 

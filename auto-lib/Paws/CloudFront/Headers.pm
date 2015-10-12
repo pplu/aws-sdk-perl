@@ -34,41 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 Items => ArrayRef[Str]
 
-  
-
-Optional: A complex type that contains a Name element for each header
+  Optional: A complex type that contains a Name element for each header
 that you want CloudFront to forward to the origin and to vary on for
 this cache behavior. If Quantity is 0, omit Items.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Quantity => Int
 
-  
-
-The number of different headers that you want CloudFront to forward to
+  The number of different headers that you want CloudFront to forward to
 the origin and to vary on for this cache behavior. The maximum number
 of headers that you can specify by name is 10. If you want CloudFront
 to forward all headers to the origin and vary on all of them, specify 1
 for Quantity and * for Name. If you don't want CloudFront to forward
 any additional headers to the origin or to vary on any headers, specify
 0 for Quantity and omit Items.
-
-
-
-
-
-
-
-
-
 
 
 

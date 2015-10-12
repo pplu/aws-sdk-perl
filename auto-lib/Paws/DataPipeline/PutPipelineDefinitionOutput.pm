@@ -16,51 +16,18 @@ Paws::DataPipeline::PutPipelineDefinitionOutput
 
 =head2 B<REQUIRED> errored => Bool
 
-  
-
-Indicates whether there were validation errors, and the pipeline
+  Indicates whether there were validation errors, and the pipeline
 definition is stored but cannot be activated until you correct the
 pipeline and call C<PutPipelineDefinition> to commit the corrected
 pipeline.
-
-
-
-
-
-
-
-
-
 =head2 validationErrors => ArrayRef[Paws::DataPipeline::ValidationError]
 
-  
-
-The validation errors that are associated with the objects defined in
+  The validation errors that are associated with the objects defined in
 C<pipelineObjects>.
-
-
-
-
-
-
-
-
-
 =head2 validationWarnings => ArrayRef[Paws::DataPipeline::ValidationWarning]
 
-  
-
-The validation warnings that are associated with the objects defined in
+  The validation warnings that are associated with the objects defined in
 C<pipelineObjects>.
-
-
-
-
-
-
-
-
-
 
 
 =cut

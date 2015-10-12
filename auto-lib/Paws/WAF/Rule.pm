@@ -40,57 +40,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Rule o
 
 =head2 Name => Str
 
-  
-
-The friendly name or description for the C<Rule>. You can't change the
+  The friendly name or description for the C<Rule>. You can't change the
 name of a C<Rule> after you create it.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Predicates => ArrayRef[Paws::WAF::Predicate]
 
-  
-
-The C<Predicates> object contains one C<Predicate> element for each
+  The C<Predicates> object contains one C<Predicate> element for each
 ByteMatchSet, IPSet, or SqlInjectionMatchSet object that you want to
 include in a C<Rule>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> RuleId => Str
 
-  
-
-A unique identifier for a C<Rule>. You use C<RuleId> to get more
+  A unique identifier for a C<Rule>. You use C<RuleId> to get more
 information about a C<Rule> (see GetRule), update a C<Rule> (see
 UpdateRule), insert a C<Rule> into a C<WebACL> or delete a one from a
 C<WebACL> (see UpdateWebACL), or delete a C<Rule> from AWS WAF (see
 DeleteRule).
 
 C<RuleId> is returned by CreateRule and by ListRules.
-
-
-
-
-
-
-
-
-
 
 
 

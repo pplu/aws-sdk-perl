@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::D
 
 =head2 B<REQUIRED> DestinationId => Str
 
-  
-
-The ID of the destination.
-
-
-
-
-
-
-
-
-
+  The ID of the destination.
 
 =head2 RedshiftDestinationDescription => Paws::Firehose::RedshiftDestinationDescription
 
-  
-
-The destination in Amazon Redshift.
-
-
-
-
-
-
-
-
-
+  The destination in Amazon Redshift.
 
 =head2 S3DestinationDescription => Paws::Firehose::S3DestinationDescription
 
-  
-
-The Amazon S3 destination.
-
-
-
-
-
-
-
-
-
+  The Amazon S3 destination.
 
 
 

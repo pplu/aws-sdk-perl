@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
 =head2 Fingerprint => Str
 
-  
-
-The fingerprint of the public key.
-
-
-
-
-
-
-
-
-
+  The fingerprint of the public key.
 
 =head2 ValidityEndTime => Str
 
-  
-
-The ending time of validity of the public key.
-
-
-
-
-
-
-
-
-
+  The ending time of validity of the public key.
 
 =head2 ValidityStartTime => Str
 
-  
-
-The starting time of validity of the public key.
-
-
-
-
-
-
-
-
-
+  The starting time of validity of the public key.
 
 =head2 Value => Str
 
-  
-
-The DER encoded public key value in PKCS
-
-
-
-
-
-
-
-
-
+  The DER encoded public key value in PKCS
 
 
 

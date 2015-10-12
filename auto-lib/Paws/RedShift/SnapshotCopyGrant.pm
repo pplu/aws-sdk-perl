@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::S
 
 =head2 KmsKeyId => Str
 
-  
-
-The unique identifier of the customer master key (CMK) in AWS KMS to
+  The unique identifier of the customer master key (CMK) in AWS KMS to
 which Amazon Redshift is granted permission.
-
-
-
-
-
-
-
-
-
 
 =head2 SnapshotCopyGrantName => Str
 
-  
-
-The name of the snapshot copy grant.
-
-
-
-
-
-
-
-
-
+  The name of the snapshot copy grant.
 
 =head2 Tags => ArrayRef[Paws::RedShift::Tag]
 
-  
-
-A list of tag instances.
-
-
-
-
-
-
-
-
-
+  A list of tag instances.
 
 
 

@@ -15,32 +15,10 @@ Paws::Support::ResolveCaseResponse
 
 =head2 finalCaseStatus => Str
 
-  
-
-The status of the case after the ResolveCase request was processed.
-
-
-
-
-
-
-
-
-
+  The status of the case after the ResolveCase request was processed.
 =head2 initialCaseStatus => Str
 
-  
-
-The status of the case when the ResolveCase request was sent.
-
-
-
-
-
-
-
-
-
+  The status of the case when the ResolveCase request was sent.
 
 
 =cut

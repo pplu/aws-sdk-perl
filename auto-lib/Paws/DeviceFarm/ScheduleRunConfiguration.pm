@@ -39,112 +39,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 auxiliaryApps => ArrayRef[Str]
 
-  
-
-A list of auxiliary apps for the run.
-
-
-
-
-
-
-
-
-
+  A list of auxiliary apps for the run.
 
 =head2 billingMethod => Str
 
-  
-
-Specifies the billing method for a test run: C<metered> or
+  Specifies the billing method for a test run: C<metered> or
 C<unmetered>. If the parameter is not specified, the default value is
 C<unmetered>.
 
-
-
-
-
-
-
-
-
-
 =head2 extraDataPackageArn => Str
 
-  
-
-The ARN of the extra data for the run. The extra data is a .zip file
+  The ARN of the extra data for the run. The extra data is a .zip file
 that AWS Device Farm will extract to external data for Android or the
 app's sandbox for iOS.
 
-
-
-
-
-
-
-
-
-
 =head2 locale => Str
 
-  
-
-Information about the locale that is used for the run.
-
-
-
-
-
-
-
-
-
+  Information about the locale that is used for the run.
 
 =head2 location => Paws::DeviceFarm::Location
 
-  
-
-Information about the location that is used for the run.
-
-
-
-
-
-
-
-
-
+  Information about the location that is used for the run.
 
 =head2 networkProfileArn => Str
 
-  
-
-Reserved for internal use.
-
-
-
-
-
-
-
-
-
+  Reserved for internal use.
 
 =head2 radios => Paws::DeviceFarm::Radios
 
-  
-
-Information about the radio states for the run.
-
-
-
-
-
-
-
-
-
+  Information about the radio states for the run.
 
 
 

@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIden
 
 =head2 AccessKeyId => Str
 
-  
-
-The Access Key portion of the credentials.
-
-
-
-
-
-
-
-
-
+  The Access Key portion of the credentials.
 
 =head2 Expiration => Str
 
-  
-
-The date at which these credentials will expire.
-
-
-
-
-
-
-
-
-
+  The date at which these credentials will expire.
 
 =head2 SecretKey => Str
 
-  
-
-The Secret Access Key portion of the credentials
-
-
-
-
-
-
-
-
-
+  The Secret Access Key portion of the credentials
 
 =head2 SessionToken => Str
 
-  
-
-The Session Token portion of the credentials
-
-
-
-
-
-
-
-
-
+  The Session Token portion of the credentials
 
 
 

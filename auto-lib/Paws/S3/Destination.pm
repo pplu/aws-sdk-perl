@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Destina
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
-
-Amazon resource name (ARN) of the bucket where you want Amazon S3 to
+  Amazon resource name (ARN) of the bucket where you want Amazon S3 to
 store replicas of the object identified by the rule.
-
-
-
-
-
-
-
-
-
 
 =head2 StorageClass => Str
 
-  
-
-The class of storage used to store the object.
-
-
-
-
-
-
-
-
-
+  The class of storage used to store the object.
 
 
 

@@ -15,18 +15,7 @@ Paws::IoT::DescribeEndpointResponse
 
 =head2 endpointAddress => Str
 
-  
-
-The address.
-
-
-
-
-
-
-
-
-
+  The address.
 
 
 =cut

@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Volume
 
 =head2 B<REQUIRED> Size => Int
 
-  
-
-The size of the volume, in GiB.
-
-
-
-
-
-
-
-
-
+  The size of the volume, in GiB.
 
 
 

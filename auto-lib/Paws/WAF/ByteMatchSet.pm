@@ -35,9 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::ByteMa
 
 =head2 B<REQUIRED> ByteMatchSetId => Str
 
-  
-
-The C<ByteMatchSetId> for a C<ByteMatchSet>. You use C<ByteMatchSetId>
+  The C<ByteMatchSetId> for a C<ByteMatchSet>. You use C<ByteMatchSetId>
 to get information about a C<ByteMatchSet> (see GetByteMatchSet),
 update a C<ByteMatchSet> (see UpdateByteMatchSet, insert a
 C<ByteMatchSet> into a C<Rule> or delete one from a C<Rule> (see
@@ -47,48 +45,17 @@ DeleteByteMatchSet).
 C<ByteMatchSetId> is returned by CreateByteMatchSet and by
 ListByteMatchSets.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ByteMatchTuples => ArrayRef[Paws::WAF::ByteMatchTuple]
 
-  
-
-Specifies the bytes (typically a string that corresponds with ASCII
+  Specifies the bytes (typically a string that corresponds with ASCII
 characters) that you want AWS WAF to search for in web requests, the
 location in requests that you want AWS WAF to search, and other
 settings.
 
-
-
-
-
-
-
-
-
-
 =head2 Name => Str
 
-  
-
-A friendly name or description of the ByteMatchSet. You can't change
+  A friendly name or description of the ByteMatchSet. You can't change
 C<Name> after you create a C<ByteMatchSet>.
-
-
-
-
-
-
-
-
-
 
 
 

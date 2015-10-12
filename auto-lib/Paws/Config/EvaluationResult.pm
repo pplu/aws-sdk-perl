@@ -38,97 +38,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Eva
 
 =head2 Annotation => Str
 
-  
-
-Supplementary information about how the evaluation determined the
+  Supplementary information about how the evaluation determined the
 compliance.
-
-
-
-
-
-
-
-
-
 
 =head2 ComplianceType => Str
 
-  
-
-Indicates whether the AWS resource complies with the AWS Config rule
+  Indicates whether the AWS resource complies with the AWS Config rule
 that evaluated it.
-
-
-
-
-
-
-
-
-
 
 =head2 ConfigRuleInvokedTime => Str
 
-  
-
-The time when the AWS Config rule evaluated the AWS resource.
-
-
-
-
-
-
-
-
-
+  The time when the AWS Config rule evaluated the AWS resource.
 
 =head2 EvaluationResultIdentifier => Paws::Config::EvaluationResultIdentifier
 
-  
-
-Uniquely identifies the evaluation result.
-
-
-
-
-
-
-
-
-
+  Uniquely identifies the evaluation result.
 
 =head2 ResultRecordedTime => Str
 
-  
-
-The time when AWS Config recorded the evaluation result.
-
-
-
-
-
-
-
-
-
+  The time when AWS Config recorded the evaluation result.
 
 =head2 ResultToken => Str
 
-  
-
-An encrypted token that associates an evaluation with an AWS Config
+  An encrypted token that associates an evaluation with an AWS Config
 rule. The token identifies the rule, the AWS resource being evaluated,
 and the event that triggered the evaluation.
-
-
-
-
-
-
-
-
-
 
 
 

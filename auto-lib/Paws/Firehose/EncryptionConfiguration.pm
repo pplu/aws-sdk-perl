@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::E
 
 =head2 KMSEncryptionConfig => Paws::Firehose::KMSEncryptionConfig
 
-  
-
-The encryption key.
-
-
-
-
-
-
-
-
-
+  The encryption key.
 
 =head2 NoEncryptionConfig => Str
 
-  
-
-Specifically override existing encryption information to ensure no
+  Specifically override existing encryption information to ensure no
 encryption is used.
-
-
-
-
-
-
-
-
-
 
 
 

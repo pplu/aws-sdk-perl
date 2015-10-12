@@ -14,18 +14,7 @@ Paws::EMR::DescribeStepOutput
 
 =head2 Step => Paws::EMR::Step
 
-  
-
-The step details for the requested step identifier.
-
-
-
-
-
-
-
-
-
+  The step details for the requested step identifier.
 
 
 =cut

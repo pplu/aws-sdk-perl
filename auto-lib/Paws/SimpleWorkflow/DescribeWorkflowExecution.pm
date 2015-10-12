@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> domain => Str
 
-  
-
-The name of the domain containing the workflow execution.
-
-
-
-
-
-
-
-
-
+  The name of the domain containing the workflow execution.
 
 =head2 B<REQUIRED> execution => Paws::SimpleWorkflow::WorkflowExecution
 
-  
-
-The workflow execution to describe.
-
-
-
-
-
-
-
-
-
+  The workflow execution to describe.
 
 
 

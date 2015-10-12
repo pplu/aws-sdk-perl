@@ -19,18 +19,7 @@ Paws::ELB::ModifyLoadBalancerAttributesOutput
   
 =head2 LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 
 =cut

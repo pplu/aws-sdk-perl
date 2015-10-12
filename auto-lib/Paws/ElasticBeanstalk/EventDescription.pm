@@ -40,124 +40,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 ApplicationName => Str
 
-  
-
-The application associated with the event.
-
-
-
-
-
-
-
-
-
+  The application associated with the event.
 
 =head2 EnvironmentName => Str
 
-  
-
-The name of the environment associated with this event.
-
-
-
-
-
-
-
-
-
+  The name of the environment associated with this event.
 
 =head2 EventDate => Str
 
-  
-
-The date when the event occurred.
-
-
-
-
-
-
-
-
-
+  The date when the event occurred.
 
 =head2 Message => Str
 
-  
-
-The event message.
-
-
-
-
-
-
-
-
-
+  The event message.
 
 =head2 RequestId => Str
 
-  
-
-The web service request ID for the activity of this event.
-
-
-
-
-
-
-
-
-
+  The web service request ID for the activity of this event.
 
 =head2 Severity => Str
 
-  
-
-The severity level of this event.
-
-
-
-
-
-
-
-
-
+  The severity level of this event.
 
 =head2 TemplateName => Str
 
-  
-
-The name of the configuration associated with this event.
-
-
-
-
-
-
-
-
-
+  The name of the configuration associated with this event.
 
 =head2 VersionLabel => Str
 
-  
-
-The release label for the application version associated with this
+  The release label for the application version associated with this
 event.
-
-
-
-
-
-
-
-
-
 
 
 

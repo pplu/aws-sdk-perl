@@ -37,81 +37,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glacier::Up
 
 =head2 ArchiveDescription => Str
 
-  
-
-The description of the archive that was specified in the Initiate
+  The description of the archive that was specified in the Initiate
 Multipart Upload request.
-
-
-
-
-
-
-
-
-
 
 =head2 CreationDate => Str
 
-  
-
-The UTC time at which the multipart upload was initiated.
-
-
-
-
-
-
-
-
-
+  The UTC time at which the multipart upload was initiated.
 
 =head2 MultipartUploadId => Str
 
-  
-
-The ID of a multipart upload.
-
-
-
-
-
-
-
-
-
+  The ID of a multipart upload.
 
 =head2 PartSizeInBytes => Int
 
-  
-
-The part size, in bytes, specified in the Initiate Multipart Upload
+  The part size, in bytes, specified in the Initiate Multipart Upload
 request. This is the size of all the parts in the upload except the
 last part, which may be smaller than this size.
 
-
-
-
-
-
-
-
-
-
 =head2 VaultARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the vault that contains the archive.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the vault that contains the archive.
 
 
 

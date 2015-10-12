@@ -39,101 +39,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 includeDeletedResources => Bool
 
-  
-
-Specifies whether AWS Config includes deleted resources in the results.
+  Specifies whether AWS Config includes deleted resources in the results.
 By default, deleted resources are not included.
-
-
-
-
-
-
-
-
-
 
 =head2 limit => Int
 
-  
-
-The maximum number of resource identifiers returned on each page. The
+  The maximum number of resource identifiers returned on each page. The
 default is 100. You cannot specify a limit greater than 100. If you
 specify 0, AWS Config uses the default.
 
-
-
-
-
-
-
-
-
-
 =head2 nextToken => Str
 
-  
-
-The C<nextToken> string returned on a previous page that you use to get
+  The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
-
-
-
-
-
-
-
-
-
 
 =head2 resourceIds => ArrayRef[Str]
 
-  
-
-The IDs of only those resources that you want AWS Config to list in the
+  The IDs of only those resources that you want AWS Config to list in the
 response. If you do not specify this parameter, AWS Config lists all
 resources of the specified type that it has discovered.
 
-
-
-
-
-
-
-
-
-
 =head2 resourceName => Str
 
-  
-
-The custom name of only those resources that you want AWS Config to
+  The custom name of only those resources that you want AWS Config to
 list in the response. If you do not specify this parameter, AWS Config
 lists all resources of the specified type that it has discovered.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> resourceType => Str
 
-  
-
-The type of resources that you want AWS Config to list in the response.
-
-
-
-
-
-
-
-
-
+  The type of resources that you want AWS Config to list in the response.
 
 
 

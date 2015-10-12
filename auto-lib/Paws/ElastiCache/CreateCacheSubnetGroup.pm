@@ -36,24 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheSubnetGroupDescription => Str
 
-  
-
-A description for the cache subnet group.
-
-
-
-
-
-
-
-
-
+  A description for the cache subnet group.
 
 =head2 B<REQUIRED> CacheSubnetGroupName => Str
 
-  
-
-A name for the cache subnet group. This value is stored as a lowercase
+  A name for the cache subnet group. This value is stored as a lowercase
 string.
 
 Constraints: Must contain no more than 255 alphanumeric characters or
@@ -61,29 +48,9 @@ hyphens.
 
 Example: C<mysubnetgroup>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
-  
-
-A list of VPC subnet IDs for the cache subnet group.
-
-
-
-
-
-
-
-
-
+  A list of VPC subnet IDs for the cache subnet group.
 
 
 

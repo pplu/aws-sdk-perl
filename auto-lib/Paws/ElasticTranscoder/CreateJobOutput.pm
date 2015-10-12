@@ -43,27 +43,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 AlbumArt => Paws::ElasticTranscoder::JobAlbumArt
 
-  
-
-Information about the album art that you want Elastic Transcoder to add
+  Information about the album art that you want Elastic Transcoder to add
 to the file during transcoding. You can specify up to twenty album
 artworks for each output. Settings for each artwork must be defined in
 the job for the current output.
 
-
-
-
-
-
-
-
-
-
 =head2 Captions => Paws::ElasticTranscoder::Captions
 
-  
-
-You can configure Elastic Transcoder to transcode captions, or
+  You can configure Elastic Transcoder to transcode captions, or
 subtitles, from one format to another. All captions must be in UTF-8.
 Elastic Transcoder supports two types of captions:
 
@@ -121,112 +108,46 @@ page.
 For more information on sidecar files, see the Extensible Metadata
 Platform and Sidecar file Wikipedia pages.
 
-
-
-
-
-
-
-
-
-
 =head2 Composition => ArrayRef[Paws::ElasticTranscoder::Clip]
 
-  
-
-You can create an output file that contains an excerpt from the input
+  You can create an output file that contains an excerpt from the input
 file. This excerpt, called a clip, can come from the beginning, middle,
 or end of the file. The Composition object contains settings for the
 clips that make up an output file. For the current release, you can
 only specify settings for a single clip per output file. The
 Composition object cannot be null.
 
-
-
-
-
-
-
-
-
-
 =head2 Encryption => Paws::ElasticTranscoder::Encryption
 
-  
-
-You can specify encryption settings for any output files that you want
+  You can specify encryption settings for any output files that you want
 to use for a transcoding job. This includes the output file and any
 watermarks, thumbnails, album art, or captions that you want to use.
 You must specify encryption settings for each file individually.
 
-
-
-
-
-
-
-
-
-
 =head2 Key => Str
 
-  
-
-The name to assign to the transcoded file. Elastic Transcoder saves the
+  The name to assign to the transcoded file. Elastic Transcoder saves the
 file in the Amazon S3 bucket specified by the C<OutputBucket> object in
 the pipeline that is specified by the pipeline ID. If a file with the
 specified name already exists in the output bucket, the job fails.
 
-
-
-
-
-
-
-
-
-
 =head2 PresetId => Str
 
-  
-
-The C<Id> of the preset to use for this job. The preset determines the
+  The C<Id> of the preset to use for this job. The preset determines the
 audio, video, and thumbnail settings that Elastic Transcoder uses for
 transcoding.
 
-
-
-
-
-
-
-
-
-
 =head2 Rotate => Str
 
-  
-
-The number of degrees clockwise by which you want Elastic Transcoder to
+  The number of degrees clockwise by which you want Elastic Transcoder to
 rotate the output relative to the input. Enter one of the following
 values: C<auto>, C<0>, C<90>, C<180>, C<270>. The value C<auto>
 generally works only if the file that you're transcoding contains
 rotation metadata.
 
-
-
-
-
-
-
-
-
-
 =head2 SegmentDuration => Str
 
-  
-
-(Outputs in Fragmented MP4 or MPEG-TS format only.If you specify a
+  (Outputs in Fragmented MP4 or MPEG-TS format only.If you specify a
 preset in C<PresetId> for which the value of C<Container> is C<fmp4>
 (Fragmented MP4) or C<ts> (MPEG-TS), C<SegmentDuration> is the target
 maximum duration of each segment in seconds. For C<HLSv3> format
@@ -245,36 +166,14 @@ C<HLS> output that you specify in OutputKeys. To add an output to the
 master playlist for this job, include it in the C<OutputKeys> of the
 associated playlist.
 
-
-
-
-
-
-
-
-
-
 =head2 ThumbnailEncryption => Paws::ElasticTranscoder::Encryption
 
-  
-
-The encryption settings, if any, that you want Elastic Transcoder to
+  The encryption settings, if any, that you want Elastic Transcoder to
 apply to your thumbnail.
-
-
-
-
-
-
-
-
-
 
 =head2 ThumbnailPattern => Str
 
-  
-
-Whether you want Elastic Transcoder to create thumbnails for your
+  Whether you want Elastic Transcoder to create thumbnails for your
 videos and, if so, how you want Elastic Transcoder to name the files.
 
 If you don't want Elastic Transcoder to create thumbnails, specify "".
@@ -318,32 +217,12 @@ files in the format (.jpg or .png) that appears in the preset that you
 specified in the C<PresetID> value of C<CreateJobOutput>. Elastic
 Transcoder also appends the applicable file name extension.
 
-
-
-
-
-
-
-
-
-
 =head2 Watermarks => ArrayRef[Paws::ElasticTranscoder::JobWatermark]
 
-  
-
-Information about the watermarks that you want Elastic Transcoder to
+  Information about the watermarks that you want Elastic Transcoder to
 add to the video during transcoding. You can specify up to four
 watermarks for each output. Settings for each watermark must be defined
 in the preset for the current output.
-
-
-
-
-
-
-
-
-
 
 
 

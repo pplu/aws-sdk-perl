@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head2 id => Str
 
-  
-
-The identifier of the object that contains the validation warning.
-
-
-
-
-
-
-
-
-
+  The identifier of the object that contains the validation warning.
 
 =head2 warnings => ArrayRef[Str]
 
-  
-
-A description of the validation warning.
-
-
-
-
-
-
-
-
-
+  A description of the validation warning.
 
 
 

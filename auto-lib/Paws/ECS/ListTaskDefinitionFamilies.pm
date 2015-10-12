@@ -36,27 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 familyPrefix => Str
 
-  
-
-The C<familyPrefix> is a string that is used to filter the results of
+  The C<familyPrefix> is a string that is used to filter the results of
 C<ListTaskDefinitionFamilies>. If you specify a C<familyPrefix>, only
 task definition family names that begin with the C<familyPrefix> string
 are returned.
 
-
-
-
-
-
-
-
-
-
 =head2 maxResults => Int
 
-  
-
-The maximum number of task definition family results returned by
+  The maximum number of task definition family results returned by
 C<ListTaskDefinitionFamilies> in paginated output. When this parameter
 is used, C<ListTaskDefinitions> only returns C<maxResults> results in a
 single page along with a C<nextToken> response element. The remaining
@@ -66,33 +53,13 @@ value. This value can be between 1 and 100. If this parameter is not
 used, then C<ListTaskDefinitionFamilies> returns up to 100 results and
 a C<nextToken> value if applicable.
 
-
-
-
-
-
-
-
-
-
 =head2 nextToken => Str
 
-  
-
-The C<nextToken> value returned from a previous paginated
+  The C<nextToken> value returned from a previous paginated
 C<ListTaskDefinitionFamilies> request where C<maxResults> was used and
 the results exceeded the value of that parameter. Pagination continues
 from the end of the previous results that returned the C<nextToken>
 value. This value is C<null> when there are no more results to return.
-
-
-
-
-
-
-
-
-
 
 
 

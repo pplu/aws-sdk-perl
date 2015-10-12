@@ -35,9 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::C
 
 =head2 CopyOptions => Str
 
-  
-
-Optional parameters to use with the Amazon Redshift C<COPY> command.
+  Optional parameters to use with the Amazon Redshift C<COPY> command.
 For more information, see the "Optional Parameters" section of Amazon
 Redshift COPY command. Some possible examples that would apply to
 Amazon Kinesis Firehose are as follows.
@@ -60,45 +58,14 @@ path specified is the format of the data.
 
 For more examples, see and Amazon Redshift COPY command exmaples.
 
-
-
-
-
-
-
-
-
-
 =head2 DataTableColumns => Str
 
-  
-
-A comma-separated list of column names.
-
-
-
-
-
-
-
-
-
+  A comma-separated list of column names.
 
 =head2 B<REQUIRED> DataTableName => Str
 
-  
-
-The name of the target table. The table must already exist in the
+  The name of the target table. The table must already exist in the
 database.
-
-
-
-
-
-
-
-
-
 
 
 

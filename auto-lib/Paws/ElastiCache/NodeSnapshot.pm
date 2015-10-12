@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 CacheNodeCreateTime => Str
 
-  
-
-The date and time when the cache node was created in the source cache
+  The date and time when the cache node was created in the source cache
 cluster.
-
-
-
-
-
-
-
-
-
 
 =head2 CacheNodeId => Str
 
-  
-
-The cache node identifier for the node in the source cache cluster.
-
-
-
-
-
-
-
-
-
+  The cache node identifier for the node in the source cache cluster.
 
 =head2 CacheSize => Str
 
-  
-
-The size of the cache on the source cache node.
-
-
-
-
-
-
-
-
-
+  The size of the cache on the source cache node.
 
 =head2 SnapshotCreateTime => Str
 
-  
-
-The date and time when the source node's metadata and cache data set
+  The date and time when the source node's metadata and cache data set
 was obtained for the snapshot.
-
-
-
-
-
-
-
-
-
 
 
 

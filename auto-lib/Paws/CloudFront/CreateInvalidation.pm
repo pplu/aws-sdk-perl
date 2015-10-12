@@ -23,32 +23,10 @@ Paws::CloudFront::CreateInvalidationResult
 
 =head2 B<REQUIRED> DistributionId => Str
 
-  
-
-The distribution's id.
-
-
-
-
-
-
-
-
-
+  The distribution's id.
 =head2 B<REQUIRED> InvalidationBatch => Paws::CloudFront::InvalidationBatch
 
-  
-
-The batch information for the invalidation.
-
-
-
-
-
-
-
-
-
+  The batch information for the invalidation.
 
 
 =cut

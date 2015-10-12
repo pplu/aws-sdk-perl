@@ -38,96 +38,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Custom
 
 =head2 BgpAsn => Str
 
-  
-
-The customer gateway's Border Gateway Protocol (BGP) Autonomous System
+  The customer gateway's Border Gateway Protocol (BGP) Autonomous System
 Number (ASN).
-
-
-
-
-
-
-
-
-
 
 =head2 CustomerGatewayId => Str
 
-  
-
-The ID of the customer gateway.
-
-
-
-
-
-
-
-
-
+  The ID of the customer gateway.
 
 =head2 IpAddress => Str
 
-  
-
-The Internet-routable IP address of the customer gateway's outside
+  The Internet-routable IP address of the customer gateway's outside
 interface.
-
-
-
-
-
-
-
-
-
 
 =head2 State => Str
 
-  
-
-The current state of the customer gateway (C<pending | available |
+  The current state of the customer gateway (C<pending | available |
 deleting | deleted>).
-
-
-
-
-
-
-
-
-
 
 =head2 Tags => ArrayRef[Paws::EC2::Tag]
 
-  
-
-Any tags assigned to the customer gateway.
-
-
-
-
-
-
-
-
-
+  Any tags assigned to the customer gateway.
 
 =head2 Type => Str
 
-  
-
-The type of VPN connection the customer gateway supports (C<ipsec.1>).
-
-
-
-
-
-
-
-
-
+  The type of VPN connection the customer gateway supports (C<ipsec.1>).
 
 
 

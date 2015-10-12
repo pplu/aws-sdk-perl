@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Volume
 
 =head2 Name => Str
 
-  
-
-The name of the volume status.
-
-
-
-
-
-
-
-
-
+  The name of the volume status.
 
 =head2 Status => Str
 
-  
-
-The intended status of the volume status.
-
-
-
-
-
-
-
-
-
+  The intended status of the volume status.
 
 
 

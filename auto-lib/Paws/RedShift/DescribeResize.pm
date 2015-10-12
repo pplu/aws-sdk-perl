@@ -34,22 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  
-
-The unique identifier of a cluster whose resize progress you are
+  The unique identifier of a cluster whose resize progress you are
 requesting. This parameter is case-sensitive.
 
 By default, resize operations for all clusters defined for an AWS
 account are returned.
-
-
-
-
-
-
-
-
-
 
 
 

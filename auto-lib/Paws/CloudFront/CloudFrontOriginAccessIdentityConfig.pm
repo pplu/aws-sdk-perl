@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  
-
-A unique number that ensures the request can't be replayed. If the
+  A unique number that ensures the request can't be replayed. If the
 CallerReference is new (no matter the content of the
 CloudFrontOriginAccessIdentityConfig object), a new origin access
 identity is created. If the CallerReference is a value you already sent
@@ -49,29 +47,9 @@ but the content of the CloudFrontOriginAccessIdentityConfig is
 different from the original request, CloudFront returns a
 CloudFrontOriginAccessIdentityAlreadyExists error.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Comment => Str
 
-  
-
-Any comments you want to include about the origin access identity.
-
-
-
-
-
-
-
-
-
+  Any comments you want to include about the origin access identity.
 
 
 

@@ -15,18 +15,7 @@ Paws::CognitoSync::GetCognitoEventsResponse
 
 =head2 Events => Paws::CognitoSync::Events
 
-  
-
-The Cognito Events returned from the GetCognitoEvents request
-
-
-
-
-
-
-
-
-
+  The Cognito Events returned from the GetCognitoEvents request
 
 
 =cut

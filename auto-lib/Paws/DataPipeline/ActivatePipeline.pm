@@ -36,49 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]
 
-  
-
-A list of parameter values to pass to the pipeline at activation.
-
-
-
-
-
-
-
-
-
+  A list of parameter values to pass to the pipeline at activation.
 
 =head2 B<REQUIRED> pipelineId => Str
 
-  
-
-The ID of the pipeline.
-
-
-
-
-
-
-
-
-
+  The ID of the pipeline.
 
 =head2 startTimestamp => Str
 
-  
-
-The date and time to resume the pipeline. By default, the pipeline
+  The date and time to resume the pipeline. By default, the pipeline
 resumes from the last completed execution.
-
-
-
-
-
-
-
-
-
 
 
 

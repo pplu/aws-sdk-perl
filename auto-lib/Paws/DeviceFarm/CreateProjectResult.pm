@@ -14,18 +14,7 @@ Paws::DeviceFarm::CreateProjectResult
 
 =head2 project => Paws::DeviceFarm::Project
 
-  
-
-The newly created project.
-
-
-
-
-
-
-
-
-
+  The newly created project.
 
 
 =cut

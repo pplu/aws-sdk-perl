@@ -34,39 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of this activity.
+  The name of this activity.
 
 The combination of activity type name and version must be unique within
 a domain.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> version => Str
 
-  
-
-The version of this activity.
+  The version of this activity.
 
 The combination of activity type name and version must be unique with
 in a domain.
-
-
-
-
-
-
-
-
-
 
 
 

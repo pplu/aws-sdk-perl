@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::EbsIns
 
 =head2 DeleteOnTermination => Bool
 
-  
-
-Indicates whether the volume is deleted on instance termination.
-
-
-
-
-
-
-
-
-
+  Indicates whether the volume is deleted on instance termination.
 
 =head2 VolumeId => Str
 
-  
-
-The ID of the EBS volume.
-
-
-
-
-
-
-
-
-
+  The ID of the EBS volume.
 
 
 

@@ -15,18 +15,7 @@ Paws::CloudSearch::DescribeSuggestersResponse
 
 =head2 B<REQUIRED> Suggesters => ArrayRef[Paws::CloudSearch::SuggesterStatus]
 
-  
-
-The suggesters configured for the domain specified in the request.
-
-
-
-
-
-
-
-
-
+  The suggesters configured for the domain specified in the request.
 
 
 =cut

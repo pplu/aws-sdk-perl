@@ -14,18 +14,7 @@ Paws::Inspector::CreateApplicationResponse
 
 =head2 applicationArn => Str
 
-  
-
-The ARN specifying the application that is created.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the application that is created.
 
 
 =cut

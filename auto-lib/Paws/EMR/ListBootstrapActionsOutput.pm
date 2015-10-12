@@ -15,33 +15,11 @@ Paws::EMR::ListBootstrapActionsOutput
 
 =head2 BootstrapActions => ArrayRef[Paws::EMR::Command]
 
-  
-
-The bootstrap actions associated with the cluster .
-
-
-
-
-
-
-
-
-
+  The bootstrap actions associated with the cluster .
 =head2 Marker => Str
 
-  
-
-The pagination token that indicates the next set of results to retrieve
+  The pagination token that indicates the next set of results to retrieve
 .
-
-
-
-
-
-
-
-
-
 
 
 =cut

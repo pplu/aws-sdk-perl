@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Versio
 
 =head2 agentHash => Str
 
-  
-
-The Git commit hash for the Amazon ECS container agent build on the
+  The Git commit hash for the Amazon ECS container agent build on the
 amazon-ecs-agent GitHub repository.
-
-
-
-
-
-
-
-
-
 
 =head2 agentVersion => Str
 
-  
-
-The version number of the Amazon ECS container agent.
-
-
-
-
-
-
-
-
-
+  The version number of the Amazon ECS container agent.
 
 =head2 dockerVersion => Str
 
-  
-
-The Docker version running on the container instance.
-
-
-
-
-
-
-
-
-
+  The Docker version running on the container instance.
 
 
 

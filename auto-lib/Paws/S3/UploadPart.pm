@@ -38,19 +38,8 @@ Paws::S3::UploadPartOutput
   
 =head2 ContentLength => Int
 
-  
-
-Size of the body in bytes. This parameter is useful when the size of
+  Size of the body in bytes. This parameter is useful when the size of
 the body cannot be determined automatically.
-
-
-
-
-
-
-
-
-
 =head2 ContentMD5 => Str
 
   
@@ -59,88 +48,33 @@ the body cannot be determined automatically.
   
 =head2 B<REQUIRED> PartNumber => Int
 
-  
-
-Part number of part being uploaded. This is a positive integer between
+  Part number of part being uploaded. This is a positive integer between
 1 and 10,000.
-
-
-
-
-
-
-
-
-
 =head2 RequestPayer => Str
 
   
 =head2 SSECustomerAlgorithm => Str
 
-  
-
-Specifies the algorithm to use to when encrypting the object (e.g.,
+  Specifies the algorithm to use to when encrypting the object (e.g.,
 AES256).
-
-
-
-
-
-
-
-
-
 =head2 SSECustomerKey => Str
 
-  
-
-Specifies the customer-provided encryption key for Amazon S3 to use in
+  Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
 discarded; Amazon does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
 x-amz-server-side-encryption-customer-algorithm header. This must be
 the same encryption key specified in the initiate multipart upload
 request.
-
-
-
-
-
-
-
-
-
 =head2 SSECustomerKeyMD5 => Str
 
-  
-
-Specifies the 128-bit MD5 digest of the encryption key according to RFC
+  Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
 ensure the encryption key was transmitted without error.
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> UploadId => Str
 
-  
-
-Upload ID identifying the multipart upload whose part is being
+  Upload ID identifying the multipart upload whose part is being
 uploaded.
-
-
-
-
-
-
-
-
-
 
 
 =cut

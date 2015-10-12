@@ -38,93 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Directo
 
 =head2 CloudOnlyDirectoriesCurrentCount => Int
 
-  
-
-The current number of cloud directories in the region.
-
-
-
-
-
-
-
-
-
+  The current number of cloud directories in the region.
 
 =head2 CloudOnlyDirectoriesLimit => Int
 
-  
-
-The maximum number of cloud directories allowed in the region.
-
-
-
-
-
-
-
-
-
+  The maximum number of cloud directories allowed in the region.
 
 =head2 CloudOnlyDirectoriesLimitReached => Bool
 
-  
-
-Indicates if the cloud directory limit has been reached.
-
-
-
-
-
-
-
-
-
+  Indicates if the cloud directory limit has been reached.
 
 =head2 ConnectedDirectoriesCurrentCount => Int
 
-  
-
-The current number of connected directories in the region.
-
-
-
-
-
-
-
-
-
+  The current number of connected directories in the region.
 
 =head2 ConnectedDirectoriesLimit => Int
 
-  
-
-The maximum number of connected directories allowed in the region.
-
-
-
-
-
-
-
-
-
+  The maximum number of connected directories allowed in the region.
 
 =head2 ConnectedDirectoriesLimitReached => Bool
 
-  
-
-Indicates if the connected directory limit has been reached.
-
-
-
-
-
-
-
-
-
+  Indicates if the connected directory limit has been reached.
 
 
 

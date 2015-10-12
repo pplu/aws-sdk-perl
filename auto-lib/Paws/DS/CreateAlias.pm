@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Alias => Str
 
-  
-
-The requested alias.
+  The requested alias.
 
 The alias must be unique amongst all aliases in AWS. This operation
 will throw an C<EntityAlreadyExistsException> if this alias already
 exists.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DirectoryId => Str
 
-  
-
-The identifier of the directory to create the alias for.
-
-
-
-
-
-
-
-
-
+  The identifier of the directory to create the alias for.
 
 
 

@@ -49,148 +49,47 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head2 accountId => Str
 
-  
-
-The 12 digit AWS account ID associated with the resource.
-
-
-
-
-
-
-
-
-
+  The 12 digit AWS account ID associated with the resource.
 
 =head2 arn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the resource.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the resource.
 
 =head2 availabilityZone => Str
 
-  
-
-The Availability Zone associated with the resource.
-
-
-
-
-
-
-
-
-
+  The Availability Zone associated with the resource.
 
 =head2 awsRegion => Str
 
-  
-
-The region where the resource resides.
-
-
-
-
-
-
-
-
-
+  The region where the resource resides.
 
 =head2 configuration => Str
 
-  
-
-The description of the resource configuration.
-
-
-
-
-
-
-
-
-
+  The description of the resource configuration.
 
 =head2 configurationItemCaptureTime => Str
 
-  
-
-The time when the configuration recording was initiated.
-
-
-
-
-
-
-
-
-
+  The time when the configuration recording was initiated.
 
 =head2 configurationItemMD5Hash => Str
 
-  
-
-Unique MD5 hash that represents the configuration item's state.
+  Unique MD5 hash that represents the configuration item's state.
 
 You can use MD5 hash to compare the states of two or more configuration
 items that are associated with the same resource.
 
-
-
-
-
-
-
-
-
-
 =head2 configurationItemStatus => Str
 
-  
-
-The configuration item status.
-
-
-
-
-
-
-
-
-
+  The configuration item status.
 
 =head2 configurationStateId => Str
 
-  
-
-An identifier that indicates the ordering of the configuration items of
+  An identifier that indicates the ordering of the configuration items of
 a resource.
-
-
-
-
-
-
-
-
-
 
 =head2 relatedEvents => ArrayRef[Str]
 
-  
-
-A list of CloudTrail event IDs.
+  A list of CloudTrail event IDs.
 
 A populated field indicates that the current configuration was
 initiated by the events recorded in the CloudTrail log. For more
@@ -199,119 +98,33 @@ information about CloudTrail, see What is AWS CloudTrail?.
 An empty field indicates that the current configuration was not
 initiated by any event.
 
-
-
-
-
-
-
-
-
-
 =head2 relationships => ArrayRef[Paws::Config::Relationship]
 
-  
-
-A list of related AWS resources.
-
-
-
-
-
-
-
-
-
+  A list of related AWS resources.
 
 =head2 resourceCreationTime => Str
 
-  
-
-The time stamp when the resource was created.
-
-
-
-
-
-
-
-
-
+  The time stamp when the resource was created.
 
 =head2 resourceId => Str
 
-  
-
-The ID of the resource (for example., C<sg-xxxxxx>).
-
-
-
-
-
-
-
-
-
+  The ID of the resource (for example., C<sg-xxxxxx>).
 
 =head2 resourceName => Str
 
-  
-
-The custom name of the resource, if available.
-
-
-
-
-
-
-
-
-
+  The custom name of the resource, if available.
 
 =head2 resourceType => Str
 
-  
-
-The type of AWS resource.
-
-
-
-
-
-
-
-
-
+  The type of AWS resource.
 
 =head2 tags => Paws::Config::Tags
 
-  
-
-A mapping of key value tags associated with the resource.
-
-
-
-
-
-
-
-
-
+  A mapping of key value tags associated with the resource.
 
 =head2 version => Str
 
-  
-
-The version number of the resource configuration.
-
-
-
-
-
-
-
-
-
+  The version number of the resource configuration.
 
 
 

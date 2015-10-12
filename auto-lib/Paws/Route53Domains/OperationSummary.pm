@@ -36,73 +36,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Doma
 
 =head2 B<REQUIRED> OperationId => Str
 
-  
-
-Identifier returned to track the requested action.
+  Identifier returned to track the requested action.
 
 Type: String
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The current status of the requested operation in the system.
+  The current status of the requested operation in the system.
 
 Type: String
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SubmittedDate => Str
 
-  
-
-The date when the request was submitted.
-
-
-
-
-
-
-
-
-
+  The date when the request was submitted.
 
 =head2 B<REQUIRED> Type => Str
 
-  
-
-Type of the action requested.
+  Type of the action requested.
 
 Type: String
 
 Valid values: C<REGISTER_DOMAIN> | C<DELETE_DOMAIN> |
 C<TRANSFER_IN_DOMAIN> | C<UPDATE_DOMAIN_CONTACT> | C<UPDATE_NAMESERVER>
 | C<CHANGE_PRIVACY_PROTECTION> | C<DOMAIN_LOCK>
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIden
 
 =head2 IdentityPoolId => Str
 
-  
-
-An identity pool ID in the format REGION:GUID.
-
-
-
-
-
-
-
-
-
+  An identity pool ID in the format REGION:GUID.
 
 =head2 IdentityPoolName => Str
 
-  
-
-A string that you provide.
-
-
-
-
-
-
-
-
-
+  A string that you provide.
 
 
 

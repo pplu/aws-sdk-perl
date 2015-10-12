@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 count => Int
 
-  
-
-The number of times that the behavioral data is collected by the agent
+  The number of times that the behavioral data is collected by the agent
 during an assessment.
-
-
-
-
-
-
-
-
-
 
 =head2 dataSize => Int
 
-  
-
-The total size of the behavioral data that is collected by the agent
+  The total size of the behavioral data that is collected by the agent
 during an assessment.
-
-
-
-
-
-
-
-
-
 
 =head2 messageType => Str
 
-  
-
-A specific type of behavioral data that is collected by the agent.
-
-
-
-
-
-
-
-
-
+  A specific type of behavioral data that is collected by the agent.
 
 
 

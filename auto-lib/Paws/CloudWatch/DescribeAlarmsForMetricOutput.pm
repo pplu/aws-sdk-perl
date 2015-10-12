@@ -15,18 +15,7 @@ Paws::CloudWatch::DescribeAlarmsForMetricOutput
 
 =head2 MetricAlarms => ArrayRef[Paws::CloudWatch::MetricAlarm]
 
-  
-
-A list of information for each alarm with the specified metric.
-
-
-
-
-
-
-
-
-
+  A list of information for each alarm with the specified metric.
 
 
 =cut

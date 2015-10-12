@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 B<REQUIRED> changeIdentifier => Str
 
-  
-
-The change identifier for the current revision.
-
-
-
-
-
-
-
-
-
+  The change identifier for the current revision.
 
 =head2 B<REQUIRED> revision => Str
 
-  
-
-The revision ID of the current version of an artifact.
-
-
-
-
-
-
-
-
-
+  The revision ID of the current version of an artifact.
 
 
 

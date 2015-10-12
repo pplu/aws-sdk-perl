@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Active
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 InstanceType => Str
 
-  
-
-The instance type.
-
-
-
-
-
-
-
-
-
+  The instance type.
 
 =head2 SpotInstanceRequestId => Str
 
-  
-
-The ID of the Spot instance request.
-
-
-
-
-
-
-
-
-
+  The ID of the Spot instance request.
 
 
 

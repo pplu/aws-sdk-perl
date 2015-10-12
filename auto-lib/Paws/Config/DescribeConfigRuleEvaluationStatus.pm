@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConfigRuleNames => ArrayRef[Str]
 
-  
-
-The name of the AWS managed Config rules for which you want status
+  The name of the AWS managed Config rules for which you want status
 information. If you do not specify any names, AWS Config returns status
 information for all AWS managed Config rules that you use.
-
-
-
-
-
-
-
-
-
 
 
 

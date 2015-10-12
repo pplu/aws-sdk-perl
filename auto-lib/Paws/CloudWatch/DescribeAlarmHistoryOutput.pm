@@ -16,32 +16,10 @@ Paws::CloudWatch::DescribeAlarmHistoryOutput
 
 =head2 AlarmHistoryItems => ArrayRef[Paws::CloudWatch::AlarmHistoryItem]
 
-  
-
-A list of alarm histories in JSON format.
-
-
-
-
-
-
-
-
-
+  A list of alarm histories in JSON format.
 =head2 NextToken => Str
 
-  
-
-A string that marks the start of the next batch of returned results.
-
-
-
-
-
-
-
-
-
+  A string that marks the start of the next batch of returned results.
 
 
 =cut

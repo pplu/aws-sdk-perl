@@ -36,67 +36,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Hadoop
 
 =head2 Args => ArrayRef[Str]
 
-  
-
-A list of command line arguments passed to the JAR file's main function
+  A list of command line arguments passed to the JAR file's main function
 when executed.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Jar => Str
 
-  
-
-A path to a JAR file run during the step.
-
-
-
-
-
-
-
-
-
+  A path to a JAR file run during the step.
 
 =head2 MainClass => Str
 
-  
-
-The name of the main class in the specified Java file. If not
+  The name of the main class in the specified Java file. If not
 specified, the JAR file should specify a Main-Class in its manifest
 file.
 
-
-
-
-
-
-
-
-
-
 =head2 Properties => ArrayRef[Paws::EMR::KeyValue]
 
-  
-
-A list of Java properties that are set when the step runs. You can use
+  A list of Java properties that are set when the step runs. You can use
 these properties to pass key value pairs to your main function.
-
-
-
-
-
-
-
-
-
 
 
 

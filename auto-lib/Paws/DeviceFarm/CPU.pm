@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 architecture => Str
 
-  
-
-The CPU's architecture, for example x86 or ARM.
-
-
-
-
-
-
-
-
-
+  The CPU's architecture, for example x86 or ARM.
 
 =head2 clock => Num
 
-  
-
-The clock speed of the device's CPU, expressed in hertz (Hz). For
+  The clock speed of the device's CPU, expressed in hertz (Hz). For
 example, a 1.2 GHz CPU is expressed as 1200000000.
-
-
-
-
-
-
-
-
-
 
 =head2 frequency => Str
 
-  
-
-The CPU's frequency.
-
-
-
-
-
-
-
-
-
+  The CPU's frequency.
 
 
 

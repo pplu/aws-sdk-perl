@@ -14,18 +14,7 @@ Paws::ECS::DeregisterTaskDefinitionResponse
 
 =head2 taskDefinition => Paws::ECS::TaskDefinition
 
-  
-
-The full description of the deregistered task.
-
-
-
-
-
-
-
-
-
+  The full description of the deregistered task.
 
 
 =cut

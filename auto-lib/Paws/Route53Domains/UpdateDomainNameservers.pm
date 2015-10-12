@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of a domain.
+  The name of a domain.
 
 Type: String
 
@@ -50,50 +48,19 @@ are not supported.
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 FIAuthKey => Str
 
-  
-
-The authorization key for .fi domains
-
-
-
-
-
-
-
-
-
+  The authorization key for .fi domains
 
 =head2 B<REQUIRED> Nameservers => ArrayRef[Paws::Route53Domains::Nameserver]
 
-  
-
-A list of new name servers for the domain.
+  A list of new name servers for the domain.
 
 Type: Complex
 
 Children: C<Name>, C<GlueIps>
 
 Required: Yes
-
-
-
-
-
-
-
-
-
 
 
 

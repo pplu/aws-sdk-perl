@@ -38,94 +38,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::TopicR
 
 =head2 actions => ArrayRef[Paws::IoT::Action]
 
-  
-
-The actions associated with the rule.
-
-
-
-
-
-
-
-
-
+  The actions associated with the rule.
 
 =head2 createdAt => Str
 
-  
-
-The date and time the rule was created.
-
-
-
-
-
-
-
-
-
+  The date and time the rule was created.
 
 =head2 description => Str
 
-  
-
-The description of the rule.
-
-
-
-
-
-
-
-
-
+  The description of the rule.
 
 =head2 ruleDisabled => Bool
 
-  
-
-Specifies whether the rule is disabled.
-
-
-
-
-
-
-
-
-
+  Specifies whether the rule is disabled.
 
 =head2 ruleName => Str
 
-  
-
-The name of the rule.
-
-
-
-
-
-
-
-
-
+  The name of the rule.
 
 =head2 sql => Str
 
-  
-
-The SQL statement used to query the topic. When using a SQL query with
+  The SQL statement used to query the topic. When using a SQL query with
 multiple lines, be sure to escape the newline characters properly.
-
-
-
-
-
-
-
-
-
 
 
 

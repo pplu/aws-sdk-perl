@@ -34,38 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 commitId => Str
 
-  
-
-The SHA1 commit ID of the GitHub commit that references the that
+  The SHA1 commit ID of the GitHub commit that references the that
 represents the bundled artifacts for the application revision.
-
-
-
-
-
-
-
-
-
 
 =head2 repository => Str
 
-  
-
-The GitHub account and repository pair that stores a reference to the
+  The GitHub account and repository pair that stores a reference to the
 commit that represents the bundled artifacts for the application
 revision.
 
 Specified as account/repository.
-
-
-
-
-
-
-
-
-
 
 
 

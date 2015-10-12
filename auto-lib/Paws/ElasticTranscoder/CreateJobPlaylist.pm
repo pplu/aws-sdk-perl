@@ -37,41 +37,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 Format => Str
 
-  
-
-The format of the output playlist. Valid formats include C<HLSv3>,
+  The format of the output playlist. Valid formats include C<HLSv3>,
 C<HLSv4>, and C<Smooth>.
-
-
-
-
-
-
-
-
-
 
 =head2 HlsContentProtection => Paws::ElasticTranscoder::HlsContentProtection
 
-  
-
-The HLS content protection settings, if any, that you want Elastic
+  The HLS content protection settings, if any, that you want Elastic
 Transcoder to apply to the output files associated with this playlist.
-
-
-
-
-
-
-
-
-
 
 =head2 Name => Str
 
-  
-
-The name that you want Elastic Transcoder to assign to the master
+  The name that you want Elastic Transcoder to assign to the master
 playlist, for example, nyc-vacation.m3u8. If the name includes a C</>
 character, the section of the name before the last C</> must be
 identical for all C<Name> objects. If you create more than one master
@@ -83,20 +59,9 @@ playlists, and C<.ism> and C<.ismc> for C<Smooth> playlists). If you
 include a file extension in C<Name>, the file name will have two
 extensions.
 
-
-
-
-
-
-
-
-
-
 =head2 OutputKeys => ArrayRef[Str]
 
-  
-
-For each output in this job that you want to include in a master
+  For each output in this job that you want to include in a master
 playlist, the value of the C<Outputs:Key> object.
 
 =over
@@ -146,30 +111,10 @@ outputs in the playlist. For C<Smooth> playlists, the C<Audio:Profile>,
 C<Video:Profile>, and C<Video:FrameRate> to C<Video:KeyframesMaxDist>
 ratio must be the same for all outputs.
 
-
-
-
-
-
-
-
-
-
 =head2 PlayReadyDrm => Paws::ElasticTranscoder::PlayReadyDrm
 
-  
-
-The DRM settings, if any, that you want Elastic Transcoder to apply to
+  The DRM settings, if any, that you want Elastic Transcoder to apply to
 the output files associated with this playlist.
-
-
-
-
-
-
-
-
-
 
 
 

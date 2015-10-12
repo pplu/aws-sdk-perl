@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Prefix
 
 =head2 PrefixListId => Str
 
-  
-
-The ID of the prefix.
-
-
-
-
-
-
-
-
-
+  The ID of the prefix.
 
 
 

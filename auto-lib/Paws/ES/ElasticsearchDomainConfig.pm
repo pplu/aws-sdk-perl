@@ -37,80 +37,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::Elastic
 
 =head2 AccessPolicies => Paws::ES::AccessPoliciesStatus
 
-  
-
-IAM access policy as a JSON-formatted string.
-
-
-
-
-
-
-
-
-
+  IAM access policy as a JSON-formatted string.
 
 =head2 AdvancedOptions => Paws::ES::AdvancedOptionsStatus
 
-  
-
-Specifies the C<AdvancedOptions> for the domain. See Configuring
+  Specifies the C<AdvancedOptions> for the domain. See Configuring
 Advanced Options for more information.
-
-
-
-
-
-
-
-
-
 
 =head2 EBSOptions => Paws::ES::EBSOptionsStatus
 
-  
-
-Specifies the C<EBSOptions> for the Elasticsearch domain.
-
-
-
-
-
-
-
-
-
+  Specifies the C<EBSOptions> for the Elasticsearch domain.
 
 =head2 ElasticsearchClusterConfig => Paws::ES::ElasticsearchClusterConfigStatus
 
-  
-
-Specifies the C<ElasticsearchClusterConfig> for the Elasticsearch
+  Specifies the C<ElasticsearchClusterConfig> for the Elasticsearch
 domain.
-
-
-
-
-
-
-
-
-
 
 =head2 SnapshotOptions => Paws::ES::SnapshotOptionsStatus
 
-  
-
-Specifies the C<SnapshotOptions> for the Elasticsearch domain.
-
-
-
-
-
-
-
-
-
+  Specifies the C<SnapshotOptions> for the Elasticsearch domain.
 
 
 

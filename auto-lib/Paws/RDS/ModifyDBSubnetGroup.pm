@@ -36,24 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DBSubnetGroupDescription => Str
 
-  
-
-The description for the DB subnet group.
-
-
-
-
-
-
-
-
-
+  The description for the DB subnet group.
 
 =head2 B<REQUIRED> DBSubnetGroupName => Str
 
-  
-
-The name for the DB subnet group. This value is stored as a lowercase
+  The name for the DB subnet group. This value is stored as a lowercase
 string.
 
 Constraints: Must contain no more than 255 alphanumeric characters or
@@ -61,29 +48,9 @@ hyphens. Must not be "Default".
 
 Example: C<mySubnetgroup>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
-  
-
-The EC2 subnet IDs for the DB subnet group.
-
-
-
-
-
-
-
-
-
+  The EC2 subnet IDs for the DB subnet group.
 
 
 

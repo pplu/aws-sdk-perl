@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceName => Str
 
-  
-
-The Amazon RDS resource the tags will be added to. This value is an
+  The Amazon RDS resource the tags will be added to. This value is an
 Amazon Resource Name (ARN). For information about creating an ARN, see
 Constructing an RDS Amazon Resource Name (ARN).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Tags => ArrayRef[Paws::RDS::Tag]
 
-  
-
-The tags to be assigned to the Amazon RDS resource.
-
-
-
-
-
-
-
-
-
+  The tags to be assigned to the Amazon RDS resource.
 
 
 

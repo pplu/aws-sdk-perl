@@ -39,95 +39,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ActionPrefix => Str
 
-  
-
-The action name prefix.
-
-
-
-
-
-
-
-
-
+  The action name prefix.
 
 =head2 AlarmNamePrefix => Str
 
-  
-
-The alarm name prefix. C<AlarmNames> cannot be specified if this
+  The alarm name prefix. C<AlarmNames> cannot be specified if this
 parameter is specified.
-
-
-
-
-
-
-
-
-
 
 =head2 AlarmNames => ArrayRef[Str]
 
-  
-
-A list of alarm names to retrieve information for.
-
-
-
-
-
-
-
-
-
+  A list of alarm names to retrieve information for.
 
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of alarm descriptions to retrieve.
-
-
-
-
-
-
-
-
-
+  The maximum number of alarm descriptions to retrieve.
 
 =head2 NextToken => Str
 
-  
-
-The token returned by a previous call to indicate that there is more
+  The token returned by a previous call to indicate that there is more
 data available.
-
-
-
-
-
-
-
-
-
 
 =head2 StateValue => Str
 
-  
-
-The state value to be used in matching alarms.
-
-
-
-
-
-
-
-
-
+  The state value to be used in matching alarms.
 
 
 

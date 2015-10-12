@@ -35,9 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 attribute => Str
 
-  
-
-The rule's attribute.
+  The rule's attribute.
 
 Allowed values include:
 
@@ -61,20 +59,9 @@ PLATFORM: The platform (for example, Android or iOS).
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 operator => Str
 
-  
-
-The rule's operator.
+  The rule's operator.
 
 =over
 
@@ -100,29 +87,9 @@ NOT_IN: The not-in operator.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 value => Str
 
-  
-
-The rule's value.
-
-
-
-
-
-
-
-
-
+  The rule's value.
 
 
 

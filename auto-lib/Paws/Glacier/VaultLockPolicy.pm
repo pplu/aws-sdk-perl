@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glacier::Va
 
 =head2 Policy => Str
 
-  
-
-The vault lock policy.
-
-
-
-
-
-
-
-
-
+  The vault lock policy.
 
 
 

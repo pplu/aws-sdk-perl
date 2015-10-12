@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Networ
 
 =head2 bindIP => Str
 
-  
-
-The IP address that the container is bound to on the container
+  The IP address that the container is bound to on the container
 instance.
-
-
-
-
-
-
-
-
-
 
 =head2 containerPort => Int
 
-  
-
-The port number on the container that is be used with the network
+  The port number on the container that is be used with the network
 binding.
-
-
-
-
-
-
-
-
-
 
 =head2 hostPort => Int
 
-  
-
-The port number on the host that is used with the network binding.
-
-
-
-
-
-
-
-
-
+  The port number on the host that is used with the network binding.
 
 =head2 protocol => Str
 
-  
-
-The protocol used for the network binding.
-
-
-
-
-
-
-
-
-
+  The protocol used for the network binding.
 
 
 

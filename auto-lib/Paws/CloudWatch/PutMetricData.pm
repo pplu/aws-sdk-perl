@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MetricData => ArrayRef[Paws::CloudWatch::MetricDatum]
 
-  
-
-A list of data describing the metric.
-
-
-
-
-
-
-
-
-
+  A list of data describing the metric.
 
 =head2 B<REQUIRED> Namespace => Str
 
-  
-
-The namespace for the metric data.
-
-
-
-
-
-
-
-
-
+  The namespace for the metric data.
 
 
 

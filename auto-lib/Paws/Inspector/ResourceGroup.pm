@@ -34,39 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 resourceGroupArn => Str
 
-  
-
-The ARN of the resource group.
-
-
-
-
-
-
-
-
-
+  The ARN of the resource group.
 
 =head2 resourceGroupTags => Str
 
-  
-
-The tags (key and value pairs) of the resource group.
+  The tags (key and value pairs) of the resource group.
 
 This data type property is used in the CreateResourceGroup action.
 
 A collection of keys and an array of possible values in JSON format.
 
 For example, [{ "key1" : ["Value1","Value2"]},{"Key2": ["Value3"]}]
-
-
-
-
-
-
-
-
-
 
 
 

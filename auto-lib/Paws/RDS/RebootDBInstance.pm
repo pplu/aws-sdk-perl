@@ -35,9 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  
-
-The DB instance identifier. This parameter is stored as a lowercase
+  The DB instance identifier. This parameter is stored as a lowercase
 string.
 
 Constraints:
@@ -52,32 +50,12 @@ Constraints:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 ForceFailover => Bool
 
-  
-
-When C<true>, the reboot will be conducted through a MultiAZ failover.
+  When C<true>, the reboot will be conducted through a MultiAZ failover.
 
 Constraint: You cannot specify C<true> if the instance is not
 configured for MultiAZ.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -39,108 +39,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
 =head2 Ec2InstanceId => Str
 
-  
-
-The unique identifier of the instance in Amazon EC2.
-
-
-
-
-
-
-
-
-
+  The unique identifier of the instance in Amazon EC2.
 
 =head2 Id => Str
 
-  
-
-The unique identifier for the instance in Amazon EMR.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the instance in Amazon EMR.
 
 =head2 PrivateDnsName => Str
 
-  
-
-The private DNS name of the instance.
-
-
-
-
-
-
-
-
-
+  The private DNS name of the instance.
 
 =head2 PrivateIpAddress => Str
 
-  
-
-The private IP address of the instance.
-
-
-
-
-
-
-
-
-
+  The private IP address of the instance.
 
 =head2 PublicDnsName => Str
 
-  
-
-The public DNS name of the instance.
-
-
-
-
-
-
-
-
-
+  The public DNS name of the instance.
 
 =head2 PublicIpAddress => Str
 
-  
-
-The public IP address of the instance.
-
-
-
-
-
-
-
-
-
+  The public IP address of the instance.
 
 =head2 Status => Paws::EMR::InstanceStatus
 
-  
-
-The current status of the instance.
-
-
-
-
-
-
-
-
-
+  The current status of the instance.
 
 
 

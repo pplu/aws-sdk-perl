@@ -36,67 +36,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
 =head2 B<REQUIRED> resourcesFlagged => Int
 
-  
-
-The number of AWS resources that were flagged (listed) by the Trusted
+  The number of AWS resources that were flagged (listed) by the Trusted
 Advisor check.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> resourcesIgnored => Int
 
-  
-
-The number of AWS resources ignored by Trusted Advisor because
+  The number of AWS resources ignored by Trusted Advisor because
 information was unavailable.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> resourcesProcessed => Int
 
-  
-
-The number of AWS resources that were analyzed by the Trusted Advisor
+  The number of AWS resources that were analyzed by the Trusted Advisor
 check.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> resourcesSuppressed => Int
 
-  
-
-The number of AWS resources ignored by Trusted Advisor because they
+  The number of AWS resources ignored by Trusted Advisor because they
 were marked as suppressed by the user.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  
-
-The maximum number of records to return from the shard. The upper limit
+  The maximum number of records to return from the shard. The upper limit
 is 1000.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ShardIterator => Str
 
-  
-
-A shard iterator that was retrieved from a previous GetShardIterator
+  A shard iterator that was retrieved from a previous GetShardIterator
 operation. This iterator can be used to access the stream records in
 this shard.
-
-
-
-
-
-
-
-
-
 
 
 

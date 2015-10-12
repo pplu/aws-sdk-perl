@@ -14,21 +14,10 @@ Paws::CodePipeline::GetJobDetailsOutput
 
 =head2 jobDetails => Paws::CodePipeline::JobDetails
 
-  
-
-The details of the job.
+  The details of the job.
 
 If AWSSessionCredentials is used, a long-running job can call
 GetJobDetails again to obtain new credentials.
-
-
-
-
-
-
-
-
-
 
 
 =cut

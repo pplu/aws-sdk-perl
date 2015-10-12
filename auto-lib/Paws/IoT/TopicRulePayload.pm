@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::TopicR
 
 =head2 B<REQUIRED> actions => ArrayRef[Paws::IoT::Action]
 
-  
-
-The actions associated with the rule.
-
-
-
-
-
-
-
-
-
+  The actions associated with the rule.
 
 =head2 description => Str
 
-  
-
-The description of the rule.
-
-
-
-
-
-
-
-
-
+  The description of the rule.
 
 =head2 ruleDisabled => Bool
 
-  
-
-Specifies whether the rule is disabled.
-
-
-
-
-
-
-
-
-
+  Specifies whether the rule is disabled.
 
 =head2 B<REQUIRED> sql => Str
 
-  
-
-The SQL statement used to query the topic. For more information, see
+  The SQL statement used to query the topic. For more information, see
 AWS IoT SQL Reference in the I<AWS IoT Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

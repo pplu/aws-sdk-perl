@@ -42,153 +42,43 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::A
 
 =head2 B => Str
 
-  
-
-A Binary data type.
-
-
-
-
-
-
-
-
-
+  A Binary data type.
 
 =head2 BOOL => Bool
 
-  
-
-A Boolean data type.
-
-
-
-
-
-
-
-
-
+  A Boolean data type.
 
 =head2 BS => ArrayRef[Str]
 
-  
-
-A Binary Set data type.
-
-
-
-
-
-
-
-
-
+  A Binary Set data type.
 
 =head2 L => ArrayRef[Paws::DynamoDB::AttributeValue]
 
-  
-
-A List of attribute values.
-
-
-
-
-
-
-
-
-
+  A List of attribute values.
 
 =head2 M => Paws::DynamoDB::MapAttributeValue
 
-  
-
-A Map of attribute values.
-
-
-
-
-
-
-
-
-
+  A Map of attribute values.
 
 =head2 N => Str
 
-  
-
-A Number data type.
-
-
-
-
-
-
-
-
-
+  A Number data type.
 
 =head2 NS => ArrayRef[Str]
 
-  
-
-A Number Set data type.
-
-
-
-
-
-
-
-
-
+  A Number Set data type.
 
 =head2 NULL => Bool
 
-  
-
-A Null data type.
-
-
-
-
-
-
-
-
-
+  A Null data type.
 
 =head2 S => Str
 
-  
-
-A String data type.
-
-
-
-
-
-
-
-
-
+  A String data type.
 
 =head2 SS => ArrayRef[Str]
 
-  
-
-A String Set data type.
-
-
-
-
-
-
-
-
-
+  A String Set data type.
 
 
 

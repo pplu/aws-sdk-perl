@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Attributes => Paws::SNS::MapStringToString
 
-  
-
-For a list of attributes, see SetPlatformApplicationAttributes
-
-
-
-
-
-
-
-
-
+  For a list of attributes, see SetPlatformApplicationAttributes
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-Application names must be made up of only uppercase and lowercase ASCII
+  Application names must be made up of only uppercase and lowercase ASCII
 letters, numbers, underscores, hyphens, and periods, and must be
 between 1 and 256 characters long.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Platform => Str
 
-  
-
-The following platforms are supported: ADM (Amazon Device Messaging),
+  The following platforms are supported: ADM (Amazon Device Messaging),
 APNS (Apple Push Notification Service), APNS_SANDBOX, and GCM (Google
 Cloud Messaging).
-
-
-
-
-
-
-
-
-
 
 
 

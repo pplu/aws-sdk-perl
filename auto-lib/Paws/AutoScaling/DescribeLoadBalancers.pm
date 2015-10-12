@@ -36,49 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
-
+  The name of the group.
 
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of items to return with this call.
-
-
-
-
-
-
-
-
-
+  The maximum number of items to return with this call.
 
 =head2 NextToken => Str
 
-  
-
-The token for the next set of items to return. (You received this token
+  The token for the next set of items to return. (You received this token
 from a previous call.)
-
-
-
-
-
-
-
-
-
 
 
 

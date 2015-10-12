@@ -15,18 +15,7 @@ Paws::CloudSearch::DeleteExpressionResponse
 
 =head2 B<REQUIRED> Expression => Paws::CloudSearch::ExpressionStatus
 
-  
-
-The status of the expression being deleted.
-
-
-
-
-
-
-
-
-
+  The status of the expression being deleted.
 
 
 =cut

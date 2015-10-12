@@ -34,37 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> Items => ArrayRef[Str]
 
-  
-
-A complex type that contains the HTTP methods that you want CloudFront
+  A complex type that contains the HTTP methods that you want CloudFront
 to cache responses to.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Quantity => Int
 
-  
-
-The number of HTTP methods for which you want CloudFront to cache
+  The number of HTTP methods for which you want CloudFront to cache
 responses. Valid values are 2 (for caching responses to GET and HEAD
 requests) and 3 (for caching responses to GET, HEAD, and OPTIONS
 requests).
-
-
-
-
-
-
-
-
-
 
 
 

@@ -23,35 +23,13 @@ Paws::Route53::ListHealthChecksResponse
 
 =head2 Marker => Str
 
-  
-
-If the request returned more than one page of results, submit another
+  If the request returned more than one page of results, submit another
 request and specify the value of C<NextMarker> from the last response
 in the C<marker> parameter to get the next page of results.
-
-
-
-
-
-
-
-
-
 =head2 MaxItems => Str
 
-  
-
-Specify the maximum number of health checks to return per page of
+  Specify the maximum number of health checks to return per page of
 results.
-
-
-
-
-
-
-
-
-
 
 
 =cut

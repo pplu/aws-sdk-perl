@@ -15,18 +15,7 @@ Paws::ES::CreateElasticsearchDomainResponse
 
 =head2 DomainStatus => Paws::ES::ElasticsearchDomainStatus
 
-  
-
-The status of the newly created Elasticsearch domain.
-
-
-
-
-
-
-
-
-
+  The status of the newly created Elasticsearch domain.
 
 
 =cut

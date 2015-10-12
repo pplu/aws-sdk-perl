@@ -35,53 +35,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 result => Str
 
-  
-
-The results of the activity task (if any).
-
-
-
-
-
-
-
-
-
+  The results of the activity task (if any).
 
 =head2 B<REQUIRED> scheduledEventId => Int
 
-  
-
-The ID of the C<ActivityTaskScheduled> event that was recorded when
+  The ID of the C<ActivityTaskScheduled> event that was recorded when
 this activity task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> startedEventId => Int
 
-  
-
-The ID of the C<ActivityTaskStarted> event recorded when this activity
+  The ID of the C<ActivityTaskStarted> event recorded when this activity
 task was started. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
-
-
-
-
-
-
-
-
-
 
 
 

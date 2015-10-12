@@ -36,43 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CidrBlock => Str
 
-  
-
-The network range for the VPC, in CIDR notation. For example,
+  The network range for the VPC, in CIDR notation. For example,
 C<10.0.0.0/16>.
-
-
-
-
-
-
-
-
-
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 InstanceTenancy => Str
 
-  
-
-The supported tenancy options for instances launched into the VPC. A
+  The supported tenancy options for instances launched into the VPC. A
 value of C<default> means that instances can be launched with any
 tenancy; a value of C<dedicated> means all instances launched into the
 VPC are launched as dedicated tenancy instances regardless of the
@@ -80,15 +56,6 @@ tenancy assigned to the instance at launch. Dedicated tenancy instances
 run on single-tenant hardware.
 
 Default: C<default>
-
-
-
-
-
-
-
-
-
 
 
 

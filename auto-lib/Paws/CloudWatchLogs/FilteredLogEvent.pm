@@ -37,18 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head2 eventId => Str
 
-  
-
-A unique identifier for this event.
-
-
-
-
-
-
-
-
-
+  A unique identifier for this event.
 
 =head2 ingestionTime => Int
 
@@ -56,33 +45,11 @@ A unique identifier for this event.
 
 =head2 logStreamName => Str
 
-  
-
-The name of the log stream this event belongs to.
-
-
-
-
-
-
-
-
-
+  The name of the log stream this event belongs to.
 
 =head2 message => Str
 
-  
-
-The data contained in the log event.
-
-
-
-
-
-
-
-
-
+  The data contained in the log event.
 
 =head2 timestamp => Int
 

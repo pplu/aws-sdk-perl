@@ -14,18 +14,7 @@ Paws::OpsWorks::DescribeMyUserProfileResult
 
 =head2 UserProfile => Paws::OpsWorks::SelfUserProfile
 
-  
-
-A C<UserProfile> object that describes the user's SSH information.
-
-
-
-
-
-
-
-
-
+  A C<UserProfile> object that describes the user's SSH information.
 
 
 =cut

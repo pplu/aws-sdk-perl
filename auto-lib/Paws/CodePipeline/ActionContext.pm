@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 name => Str
 
-  
-
-The name of the action within the context of a job.
-
-
-
-
-
-
-
-
-
+  The name of the action within the context of a job.
 
 
 

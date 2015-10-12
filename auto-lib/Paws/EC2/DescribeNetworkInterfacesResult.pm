@@ -15,18 +15,7 @@ Paws::EC2::DescribeNetworkInterfacesResult
 
 =head2 NetworkInterfaces => ArrayRef[Paws::EC2::NetworkInterface]
 
-  
-
-Information about one or more network interfaces.
-
-
-
-
-
-
-
-
-
+  Information about one or more network interfaces.
 
 
 =cut

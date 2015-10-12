@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head2 Name => Str
 
-  
-
-The name of the compute type for the bundle.
-
-
-
-
-
-
-
-
-
+  The name of the compute type for the bundle.
 
 
 

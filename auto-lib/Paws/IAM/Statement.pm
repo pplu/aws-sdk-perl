@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Statem
 
 =head2 EndPosition => Paws::IAM::Position
 
-  
-
-The row and column of the end of a C<Statement> in an IAM policy.
-
-
-
-
-
-
-
-
-
+  The row and column of the end of a C<Statement> in an IAM policy.
 
 =head2 SourcePolicyId => Str
 
-  
-
-The identifier of the policy that was provided as an input.
-
-
-
-
-
-
-
-
-
+  The identifier of the policy that was provided as an input.
 
 =head2 SourcePolicyType => Str
 
-  
-
-The type of the policy.
-
-
-
-
-
-
-
-
-
+  The type of the policy.
 
 =head2 StartPosition => Paws::IAM::Position
 
-  
-
-The row and column of the beginning of the C<Statement> in an IAM
+  The row and column of the beginning of the C<Statement> in an IAM
 policy.
-
-
-
-
-
-
-
-
-
 
 
 

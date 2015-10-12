@@ -34,37 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head2 B<REQUIRED> key => Str
 
-  
-
-The key name of a tag defined by a user. For more information, see
+  The key name of a tag defined by a user. For more information, see
 Controlling User Access to Pipelines in the I<AWS Data Pipeline
 Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> value => Str
 
-  
-
-The optional value portion of a tag defined by a user. For more
+  The optional value portion of a tag defined by a user. For more
 information, see Controlling User Access to Pipelines in the I<AWS Data
 Pipeline Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

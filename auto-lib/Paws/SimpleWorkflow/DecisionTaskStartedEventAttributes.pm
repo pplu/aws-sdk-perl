@@ -34,37 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 identity => Str
 
-  
-
-Identity of the decider making the request. This enables diagnostic
+  Identity of the decider making the request. This enables diagnostic
 tracing when problems arise. The form of this identity is user defined.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> scheduledEventId => Int
 
-  
-
-The ID of the C<DecisionTaskScheduled> event that was recorded when
+  The ID of the C<DecisionTaskScheduled> event that was recorded when
 this decision task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
-
-
-
-
-
-
-
-
-
 
 
 

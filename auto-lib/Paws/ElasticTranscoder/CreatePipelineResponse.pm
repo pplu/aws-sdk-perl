@@ -16,38 +16,16 @@ Paws::ElasticTranscoder::CreatePipelineResponse
 
 =head2 Pipeline => Paws::ElasticTranscoder::Pipeline
 
-  
-
-A section of the response body that provides information about the
+  A section of the response body that provides information about the
 pipeline that is created.
-
-
-
-
-
-
-
-
-
 =head2 Warnings => ArrayRef[Paws::ElasticTranscoder::Warning]
 
-  
-
-Elastic Transcoder returns a warning if the resources used by your
+  Elastic Transcoder returns a warning if the resources used by your
 pipeline are not in the same region as the pipeline.
 
 Using resources in the same region, such as your Amazon S3 buckets,
 Amazon SNS notification topics, and AWS KMS key, reduces processing
 time and prevents cross-regional charges.
-
-
-
-
-
-
-
-
-
 
 
 =cut

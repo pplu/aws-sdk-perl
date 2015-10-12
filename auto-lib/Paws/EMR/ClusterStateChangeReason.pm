@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Cluste
 
 =head2 Code => Str
 
-  
-
-The programmatic code for the state change reason.
-
-
-
-
-
-
-
-
-
+  The programmatic code for the state change reason.
 
 =head2 Message => Str
 
-  
-
-The descriptive message for the state change reason.
-
-
-
-
-
-
-
-
-
+  The descriptive message for the state change reason.
 
 
 

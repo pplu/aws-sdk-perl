@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 actionStates => ArrayRef[Paws::CodePipeline::ActionState]
 
-  
-
-The state of the stage.
-
-
-
-
-
-
-
-
-
+  The state of the stage.
 
 =head2 inboundTransitionState => Paws::CodePipeline::TransitionState
 
-  
-
-The state of the inbound transition, which is either enabled or
+  The state of the inbound transition, which is either enabled or
 disabled.
-
-
-
-
-
-
-
-
-
 
 =head2 stageName => Str
 
-  
-
-The name of the stage.
-
-
-
-
-
-
-
-
-
+  The name of the stage.
 
 
 

@@ -16,32 +16,10 @@ Paws::Glacier::InitiateJobOutput
 
 =head2 jobId => Str
 
-  
-
-The ID of the job.
-
-
-
-
-
-
-
-
-
+  The ID of the job.
 =head2 location => Str
 
-  
-
-The relative URI path of the job.
-
-
-
-
-
-
-
-
-
+  The relative URI path of the job.
 
 
 =cut

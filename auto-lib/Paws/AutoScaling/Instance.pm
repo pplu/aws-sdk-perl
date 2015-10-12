@@ -37,79 +37,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-  
-
-The Availability Zone in which the instance is running.
-
-
-
-
-
-
-
-
-
+  The Availability Zone in which the instance is running.
 
 =head2 B<REQUIRED> HealthStatus => Str
 
-  
-
-The health status of the instance.
-
-
-
-
-
-
-
-
-
+  The health status of the instance.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 LaunchConfigurationName => Str
 
-  
-
-The launch configuration associated with the instance.
-
-
-
-
-
-
-
-
-
+  The launch configuration associated with the instance.
 
 =head2 B<REQUIRED> LifecycleState => Str
 
-  
-
-A description of the current lifecycle state. Note that the
+  A description of the current lifecycle state. Note that the
 C<Quarantined> state is not used.
-
-
-
-
-
-
-
-
-
 
 
 

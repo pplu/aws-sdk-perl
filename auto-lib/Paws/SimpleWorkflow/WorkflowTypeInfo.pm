@@ -37,79 +37,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> creationDate => Str
 
-  
-
-The date when this type was registered.
-
-
-
-
-
-
-
-
-
+  The date when this type was registered.
 
 =head2 deprecationDate => Str
 
-  
-
-If the type is in deprecated state, then it is set to the date when the
+  If the type is in deprecated state, then it is set to the date when the
 type was deprecated.
-
-
-
-
-
-
-
-
-
 
 =head2 description => Str
 
-  
-
-The description of the type registered through RegisterWorkflowType.
-
-
-
-
-
-
-
-
-
+  The description of the type registered through RegisterWorkflowType.
 
 =head2 B<REQUIRED> status => Str
 
-  
-
-The current status of the workflow type.
-
-
-
-
-
-
-
-
-
+  The current status of the workflow type.
 
 =head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
 
-  
-
-The workflow type this information is about.
-
-
-
-
-
-
-
-
-
+  The workflow type this information is about.
 
 
 

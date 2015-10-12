@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster that
+  The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the task to describe. If you do not specify a cluster, the
 default cluster is assumed.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> tasks => ArrayRef[Str]
 
-  
-
-A space-separated list of task IDs or full Amazon Resource Name (ARN)
+  A space-separated list of task IDs or full Amazon Resource Name (ARN)
 entries.
-
-
-
-
-
-
-
-
-
 
 
 

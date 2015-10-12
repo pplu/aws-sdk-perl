@@ -35,9 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Al
 
 =head2 B<REQUIRED> DNSName => Str
 
-  
-
-I<Alias resource record sets only:> The external DNS name associated
+  I<Alias resource record sets only:> The external DNS name associated
 with the AWS Resource.
 
 For more information and an example, see Creating Alias Resource Record
@@ -45,20 +43,9 @@ Sets in the I<Amazon Route 53 Developer Guide>
 
 .
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> EvaluateTargetHealth => Bool
 
-  
-
-I<Alias resource record sets only:> A boolean value that indicates
+  I<Alias resource record sets only:> A boolean value that indicates
 whether this Resource Record Set should respect the health status of
 any health checks associated with the ALIAS target record which it is
 linked to.
@@ -68,35 +55,15 @@ Sets in the I<Amazon Route 53 Developer Guide>
 
 .
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> HostedZoneId => Str
 
-  
-
-I<Alias resource record sets only:> The value of the hosted zone ID for
+  I<Alias resource record sets only:> The value of the hosted zone ID for
 the AWS resource.
 
 For more information and an example, see Creating Alias Resource Record
 Sets in the I<Amazon Route 53 Developer Guide>
 
 .
-
-
-
-
-
-
-
-
-
 
 
 

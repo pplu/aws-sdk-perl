@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 count => Int
 
-  
-
-The number of hits that contain the facet value in the specified facet
+  The number of hits that contain the facet value in the specified facet
 field.
-
-
-
-
-
-
-
-
-
 
 =head2 value => Str
 
-  
-
-The facet value being counted.
-
-
-
-
-
-
-
-
-
+  The facet value being counted.
 
 
 

@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 CacheParameterGroupFamily => Str
 
-  
-
-The name of the cache parameter group family that this cache parameter
+  The name of the cache parameter group family that this cache parameter
 group is compatible with.
-
-
-
-
-
-
-
-
-
 
 =head2 CacheParameterGroupName => Str
 
-  
-
-The name of the cache parameter group.
-
-
-
-
-
-
-
-
-
+  The name of the cache parameter group.
 
 =head2 Description => Str
 
-  
-
-The description for this cache parameter group.
-
-
-
-
-
-
-
-
-
+  The description for this cache parameter group.
 
 
 

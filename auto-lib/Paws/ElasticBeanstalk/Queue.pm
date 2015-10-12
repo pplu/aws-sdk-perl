@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Name => Str
 
-  
-
-The name of the queue.
-
-
-
-
-
-
-
-
-
+  The name of the queue.
 
 =head2 URL => Str
 
-  
-
-The URL of the queue.
-
-
-
-
-
-
-
-
-
+  The URL of the queue.
 
 
 

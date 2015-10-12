@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Associ
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 Name => Str
 
-  
-
-The name of the configuration document.
-
-
-
-
-
-
-
-
-
+  The name of the configuration document.
 
 
 

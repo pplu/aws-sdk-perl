@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 id => Str
 
-  
-
-The document ID of the suggested document.
-
-
-
-
-
-
-
-
-
+  The document ID of the suggested document.
 
 =head2 score => Int
 
-  
-
-The relevance score of a suggested match.
-
-
-
-
-
-
-
-
-
+  The relevance score of a suggested match.
 
 =head2 suggestion => Str
 
-  
-
-The string that matches the query string specified in the
+  The string that matches the query string specified in the
 C<SuggestRequest>.
-
-
-
-
-
-
-
-
-
 
 
 

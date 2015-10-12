@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  
-
-The DB instance identifier for the DB instance to be deleted. This
+  The DB instance identifier for the DB instance to be deleted. This
 parameter isn't case-sensitive.
 
 Constraints:
@@ -53,20 +51,9 @@ Constraints:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 FinalDBSnapshotIdentifier => Str
 
-  
-
-The DBSnapshotIdentifier of the new DBSnapshot created when
+  The DBSnapshotIdentifier of the new DBSnapshot created when
 SkipFinalSnapshot is set to C<false>.
 
 Specifying this parameter and also setting the SkipFinalShapshot
@@ -86,20 +73,9 @@ Constraints:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 SkipFinalSnapshot => Bool
 
-  
-
-Determines whether a final DB snapshot is created before the DB
+  Determines whether a final DB snapshot is created before the DB
 instance is deleted. If C<true> is specified, no DBSnapshot is created.
 If C<false> is specified, a DB snapshot is created before the DB
 instance is deleted.
@@ -114,15 +90,6 @@ The FinalDBSnapshotIdentifier parameter must be specified if
 SkipFinalSnapshot is C<false>.
 
 Default: C<false>
-
-
-
-
-
-
-
-
-
 
 
 

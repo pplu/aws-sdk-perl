@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-  
-
-The identifier of the directory to enable MFA for.
-
-
-
-
-
-
-
-
-
+  The identifier of the directory to enable MFA for.
 
 =head2 B<REQUIRED> RadiusSettings => Paws::DS::RadiusSettings
 
-  
-
-A RadiusSettings object that contains information about the RADIUS
+  A RadiusSettings object that contains information about the RADIUS
 server.
-
-
-
-
-
-
-
-
-
 
 
 

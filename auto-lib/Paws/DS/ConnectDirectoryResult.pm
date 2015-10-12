@@ -14,18 +14,7 @@ Paws::DS::ConnectDirectoryResult
 
 =head2 DirectoryId => Str
 
-  
-
-The identifier of the new directory.
-
-
-
-
-
-
-
-
-
+  The identifier of the new directory.
 
 
 =cut

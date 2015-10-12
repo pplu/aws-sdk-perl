@@ -35,52 +35,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SNS::Messag
 
 =head2 BinaryValue => Str
 
-  
-
-Binary type attributes can store any binary data, for example,
+  Binary type attributes can store any binary data, for example,
 compressed data, encrypted data, or images.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> DataType => Str
 
-  
-
-Amazon SNS supports the following logical data types: String, Number,
+  Amazon SNS supports the following logical data types: String, Number,
 and Binary. For more information, see Message Attribute Data Types.
-
-
-
-
-
-
-
-
-
 
 =head2 StringValue => Str
 
-  
-
-Strings are Unicode with UTF8 binary encoding. For a list of code
+  Strings are Unicode with UTF8 binary encoding. For a list of code
 values, see
 http://en.wikipedia.org/wiki/ASCII
-
-
-
-
-
-
-
-
-
 
 
 

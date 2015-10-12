@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MLModelId => Str
 
-  
-
-The ID assigned to the C<MLModel> at creation.
-
-
-
-
-
-
-
-
-
+  The ID assigned to the C<MLModel> at creation.
 
 =head2 Verbose => Bool
 
-  
-
-Specifies whether the C<GetMLModel> operation should return C<Recipe>.
+  Specifies whether the C<GetMLModel> operation should return C<Recipe>.
 
 If true, C<Recipe> is returned.
 
 If false, C<Recipe> is not returned.
-
-
-
-
-
-
-
-
-
 
 
 

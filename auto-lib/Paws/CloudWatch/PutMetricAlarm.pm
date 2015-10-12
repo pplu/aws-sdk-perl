@@ -48,243 +48,78 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ActionsEnabled => Bool
 
-  
-
-Indicates whether or not actions should be executed during any changes
+  Indicates whether or not actions should be executed during any changes
 to the alarm's state.
-
-
-
-
-
-
-
-
-
 
 =head2 AlarmActions => ArrayRef[Str]
 
-  
-
-The list of actions to execute when this alarm transitions into an
+  The list of actions to execute when this alarm transitions into an
 C<ALARM> state from any other state. Each action is specified as an
 Amazon Resource Number (ARN). Currently the only action supported is
 publishing to an Amazon SNS topic or an Amazon Auto Scaling policy.
 
-
-
-
-
-
-
-
-
-
 =head2 AlarmDescription => Str
 
-  
-
-The description for the alarm.
-
-
-
-
-
-
-
-
-
+  The description for the alarm.
 
 =head2 B<REQUIRED> AlarmName => Str
 
-  
-
-The descriptive name for the alarm. This name must be unique within the
+  The descriptive name for the alarm. This name must be unique within the
 user's AWS account
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ComparisonOperator => Str
 
-  
-
-The arithmetic operation to use when comparing the specified
+  The arithmetic operation to use when comparing the specified
 C<Statistic> and C<Threshold>. The specified C<Statistic> value is used
 as the first operand.
 
-
-
-
-
-
-
-
-
-
 =head2 Dimensions => ArrayRef[Paws::CloudWatch::Dimension]
 
-  
-
-The dimensions for the alarm's associated metric.
-
-
-
-
-
-
-
-
-
+  The dimensions for the alarm's associated metric.
 
 =head2 B<REQUIRED> EvaluationPeriods => Int
 
-  
-
-The number of periods over which data is compared to the specified
+  The number of periods over which data is compared to the specified
 threshold.
-
-
-
-
-
-
-
-
-
 
 =head2 InsufficientDataActions => ArrayRef[Str]
 
-  
-
-The list of actions to execute when this alarm transitions into an
+  The list of actions to execute when this alarm transitions into an
 C<INSUFFICIENT_DATA> state from any other state. Each action is
 specified as an Amazon Resource Number (ARN). Currently the only action
 supported is publishing to an Amazon SNS topic or an Amazon Auto
 Scaling policy.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> MetricName => Str
 
-  
-
-The name for the alarm's associated metric.
-
-
-
-
-
-
-
-
-
+  The name for the alarm's associated metric.
 
 =head2 B<REQUIRED> Namespace => Str
 
-  
-
-The namespace for the alarm's associated metric.
-
-
-
-
-
-
-
-
-
+  The namespace for the alarm's associated metric.
 
 =head2 OKActions => ArrayRef[Str]
 
-  
-
-The list of actions to execute when this alarm transitions into an
+  The list of actions to execute when this alarm transitions into an
 C<OK> state from any other state. Each action is specified as an Amazon
 Resource Number (ARN). Currently the only action supported is
 publishing to an Amazon SNS topic or an Amazon Auto Scaling policy.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Period => Int
 
-  
-
-The period in seconds over which the specified statistic is applied.
-
-
-
-
-
-
-
-
-
+  The period in seconds over which the specified statistic is applied.
 
 =head2 B<REQUIRED> Statistic => Str
 
-  
-
-The statistic to apply to the alarm's associated metric.
-
-
-
-
-
-
-
-
-
+  The statistic to apply to the alarm's associated metric.
 
 =head2 B<REQUIRED> Threshold => Num
 
-  
-
-The value against which the specified statistic is compared.
-
-
-
-
-
-
-
-
-
+  The value against which the specified statistic is compared.
 
 =head2 Unit => Str
 
-  
-
-The unit for the alarm's associated metric.
-
-
-
-
-
-
-
-
-
+  The unit for the alarm's associated metric.
 
 
 

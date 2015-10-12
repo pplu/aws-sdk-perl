@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Name => Str
 
-  
-
-The name of this environment tier.
-
-
-
-
-
-
-
-
-
+  The name of this environment tier.
 
 =head2 Type => Str
 
-  
-
-The type of this environment tier.
-
-
-
-
-
-
-
-
-
+  The type of this environment tier.
 
 =head2 Version => Str
 
-  
-
-The version of this environment tier.
-
-
-
-
-
-
-
-
-
+  The version of this environment tier.
 
 
 

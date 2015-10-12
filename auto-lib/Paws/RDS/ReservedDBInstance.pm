@@ -46,213 +46,59 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Reserv
 
 =head2 CurrencyCode => Str
 
-  
-
-The currency code for the reserved DB instance.
-
-
-
-
-
-
-
-
-
+  The currency code for the reserved DB instance.
 
 =head2 DBInstanceClass => Str
 
-  
-
-The DB instance class for the reserved DB instance.
-
-
-
-
-
-
-
-
-
+  The DB instance class for the reserved DB instance.
 
 =head2 DBInstanceCount => Int
 
-  
-
-The number of reserved DB instances.
-
-
-
-
-
-
-
-
-
+  The number of reserved DB instances.
 
 =head2 Duration => Int
 
-  
-
-The duration of the reservation in seconds.
-
-
-
-
-
-
-
-
-
+  The duration of the reservation in seconds.
 
 =head2 FixedPrice => Num
 
-  
-
-The fixed price charged for this reserved DB instance.
-
-
-
-
-
-
-
-
-
+  The fixed price charged for this reserved DB instance.
 
 =head2 MultiAZ => Bool
 
-  
-
-Indicates if the reservation applies to Multi-AZ deployments.
-
-
-
-
-
-
-
-
-
+  Indicates if the reservation applies to Multi-AZ deployments.
 
 =head2 OfferingType => Str
 
-  
-
-The offering type of this reserved DB instance.
-
-
-
-
-
-
-
-
-
+  The offering type of this reserved DB instance.
 
 =head2 ProductDescription => Str
 
-  
-
-The description of the reserved DB instance.
-
-
-
-
-
-
-
-
-
+  The description of the reserved DB instance.
 
 =head2 RecurringCharges => ArrayRef[Paws::RDS::RecurringCharge]
 
-  
-
-The recurring price charged to run this reserved DB instance.
-
-
-
-
-
-
-
-
-
+  The recurring price charged to run this reserved DB instance.
 
 =head2 ReservedDBInstanceId => Str
 
-  
-
-The unique identifier for the reservation.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the reservation.
 
 =head2 ReservedDBInstancesOfferingId => Str
 
-  
-
-The offering identifier.
-
-
-
-
-
-
-
-
-
+  The offering identifier.
 
 =head2 StartTime => Str
 
-  
-
-The time the reservation started.
-
-
-
-
-
-
-
-
-
+  The time the reservation started.
 
 =head2 State => Str
 
-  
-
-The state of the reserved DB instance.
-
-
-
-
-
-
-
-
-
+  The state of the reserved DB instance.
 
 =head2 UsagePrice => Num
 
-  
-
-The hourly price charged for this reserved DB instance.
-
-
-
-
-
-
-
-
-
+  The hourly price charged for this reserved DB instance.
 
 
 

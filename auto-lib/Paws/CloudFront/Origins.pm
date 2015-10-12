@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 Items => ArrayRef[Paws::CloudFront::Origin]
 
-  
-
-A complex type that contains origins for this distribution.
-
-
-
-
-
-
-
-
-
+  A complex type that contains origins for this distribution.
 
 =head2 B<REQUIRED> Quantity => Int
 
-  
-
-The number of origins for this distribution.
-
-
-
-
-
-
-
-
-
+  The number of origins for this distribution.
 
 
 

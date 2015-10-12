@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster that
+  The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the task to stop. If you do not specify a cluster, the default
 cluster is assumed..
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> task => Str
 
-  
-
-The task ID or full Amazon Resource Name (ARN) entry of the task to
+  The task ID or full Amazon Resource Name (ARN) entry of the task to
 stop.
-
-
-
-
-
-
-
-
-
 
 
 

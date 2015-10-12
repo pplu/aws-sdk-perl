@@ -38,83 +38,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::L
 
 =head2 IndexArn => Str
 
-  
-
-The Amazon Resource Name (ARN) that uniquely identifies the index.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) that uniquely identifies the index.
 
 =head2 IndexName => Str
 
-  
-
-Represents the name of the local secondary index.
-
-
-
-
-
-
-
-
-
+  Represents the name of the local secondary index.
 
 =head2 IndexSizeBytes => Int
 
-  
-
-The total size of the specified index, in bytes. DynamoDB updates this
+  The total size of the specified index, in bytes. DynamoDB updates this
 value approximately every six hours. Recent changes might not be
 reflected in this value.
 
-
-
-
-
-
-
-
-
-
 =head2 ItemCount => Int
 
-  
-
-The number of items in the specified index. DynamoDB updates this value
+  The number of items in the specified index. DynamoDB updates this value
 approximately every six hours. Recent changes might not be reflected in
 this value.
 
-
-
-
-
-
-
-
-
-
 =head2 KeySchema => ArrayRef[Paws::DynamoDB::KeySchemaElement]
 
-  
-
-The complete index key schema, which consists of one or more pairs of
+  The complete index key schema, which consists of one or more pairs of
 attribute names and key types (C<HASH> or C<RANGE>).
-
-
-
-
-
-
-
-
-
 
 =head2 Projection => Paws::DynamoDB::Projection
 

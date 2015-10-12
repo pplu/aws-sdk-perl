@@ -15,35 +15,13 @@ Paws::CodeDeploy::ListApplicationRevisionsOutput
 
 =head2 nextToken => Str
 
-  
-
-If the amount of information that is returned is significantly large,
+  If the amount of information that is returned is significantly large,
 an identifier will also be returned, which can be used in a subsequent
 list application revisions call to return the next set of application
 revisions in the list.
-
-
-
-
-
-
-
-
-
 =head2 revisions => ArrayRef[Paws::CodeDeploy::RevisionLocation]
 
-  
-
-A list of revision locations that contain the matching revisions.
-
-
-
-
-
-
-
-
-
+  A list of revision locations that contain the matching revisions.
 
 
 =cut

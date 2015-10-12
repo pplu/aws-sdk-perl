@@ -37,24 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ShardId => Str
 
-  
-
-The shard ID of the shard to get the iterator for.
-
-
-
-
-
-
-
-
-
+  The shard ID of the shard to get the iterator for.
 
 =head2 B<REQUIRED> ShardIteratorType => Str
 
-  
-
-Determines how the shard iterator is used to start reading data records
+  Determines how the shard iterator is used to start reading data records
 from the shard.
 
 The following are the valid shard iterator types:
@@ -75,45 +62,14 @@ shard, so that you always read the most recent data in the shard.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 StartingSequenceNumber => Str
 
-  
-
-The sequence number of the data record in the shard from which to start
+  The sequence number of the data record in the shard from which to start
 reading from.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> StreamName => Str
 
-  
-
-The name of the stream.
-
-
-
-
-
-
-
-
-
+  The name of the stream.
 
 
 

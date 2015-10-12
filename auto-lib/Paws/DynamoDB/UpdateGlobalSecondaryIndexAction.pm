@@ -34,18 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::U
 
 =head2 B<REQUIRED> IndexName => Str
 
-  
-
-The name of the global secondary index to be updated.
-
-
-
-
-
-
-
-
-
+  The name of the global secondary index to be updated.
 
 =head2 B<REQUIRED> ProvisionedThroughput => Paws::DynamoDB::ProvisionedThroughput
 

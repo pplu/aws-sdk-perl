@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MapPublicIpOnLaunch => Paws::EC2::AttributeBooleanValue
 
-  
-
-Specify C<true> to indicate that instances launched into the specified
+  Specify C<true> to indicate that instances launched into the specified
 subnet should be assigned public IP address.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> SubnetId => Str
 
-  
-
-The ID of the subnet.
-
-
-
-
-
-
-
-
-
+  The ID of the subnet.
 
 
 

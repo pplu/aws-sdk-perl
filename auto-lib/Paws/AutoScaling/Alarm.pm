@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 AlarmARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the alarm.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the alarm.
 
 =head2 AlarmName => Str
 
-  
-
-The name of the alarm.
-
-
-
-
-
-
-
-
-
+  The name of the alarm.
 
 
 

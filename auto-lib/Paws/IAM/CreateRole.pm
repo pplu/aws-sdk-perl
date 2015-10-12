@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssumeRolePolicyDocument => Str
 
-  
-
-The policy that grants an entity permission to assume the role.
-
-
-
-
-
-
-
-
-
+  The policy that grants an entity permission to assume the role.
 
 =head2 Path => Str
 
-  
-
-The path to the role. For more information about paths, see IAM
+  The path to the role. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> RoleName => Str
 
-  
-
-The name of the role to create.
-
-
-
-
-
-
-
-
-
+  The name of the role to create.
 
 
 

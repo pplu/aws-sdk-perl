@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::TopicR
 
 =head2 createdAt => Str
 
-  
-
-The date and time the rule was created.
-
-
-
-
-
-
-
-
-
+  The date and time the rule was created.
 
 =head2 ruleDisabled => Bool
 
-  
-
-Specifies whether the rule is disabled.
-
-
-
-
-
-
-
-
-
+  Specifies whether the rule is disabled.
 
 =head2 ruleName => Str
 
-  
-
-The name of the rule.
-
-
-
-
-
-
-
-
-
+  The name of the rule.
 
 =head2 topicPattern => Str
 
-  
-
-The pattern for the topic names that apply.
-
-
-
-
-
-
-
-
-
+  The pattern for the topic names that apply.
 
 
 

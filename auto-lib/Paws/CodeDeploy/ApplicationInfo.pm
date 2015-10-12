@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 applicationId => Str
 
-  
-
-The application ID.
-
-
-
-
-
-
-
-
-
+  The application ID.
 
 =head2 applicationName => Str
 
-  
-
-The application name.
-
-
-
-
-
-
-
-
-
+  The application name.
 
 =head2 createTime => Str
 
-  
-
-The time that the application was created.
-
-
-
-
-
-
-
-
-
+  The time that the application was created.
 
 =head2 linkedToGitHub => Bool
 
-  
-
-True if the user has authenticated with GitHub for the specified
+  True if the user has authenticated with GitHub for the specified
 application; otherwise, false.
-
-
-
-
-
-
-
-
-
 
 
 

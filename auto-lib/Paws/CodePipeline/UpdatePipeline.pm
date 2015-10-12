@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> pipeline => Paws::CodePipeline::PipelineDeclaration
 
-  
-
-The name of the pipeline to be updated.
-
-
-
-
-
-
-
-
-
+  The name of the pipeline to be updated.
 
 
 

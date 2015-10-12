@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::E
 
 =head2 ElasticIp => Str
 
-  
-
-The elastic IP (EIP) address for the cluster.
-
-
-
-
-
-
-
-
-
+  The elastic IP (EIP) address for the cluster.
 
 =head2 Status => Str
 
-  
-
-Describes the status of the elastic IP (EIP) address.
-
-
-
-
-
-
-
-
-
+  Describes the status of the elastic IP (EIP) address.
 
 
 

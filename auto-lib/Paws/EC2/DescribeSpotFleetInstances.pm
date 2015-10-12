@@ -37,69 +37,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxResults => Int
 
-  
-
-The maximum number of results to return in a single call. Specify a
+  The maximum number of results to return in a single call. Specify a
 value between 1 and 1000. The default value is 1000. To retrieve the
 remaining results, make another call with the returned C<NextToken>
 value.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The token for the next set of results.
-
-
-
-
-
-
-
-
-
+  The token for the next set of results.
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-  
-
-The ID of the Spot fleet request.
-
-
-
-
-
-
-
-
-
+  The ID of the Spot fleet request.
 
 
 

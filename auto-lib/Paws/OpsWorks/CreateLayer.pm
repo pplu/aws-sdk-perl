@@ -50,139 +50,49 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Attributes => Paws::OpsWorks::LayerAttributes
 
-  
-
-One or more user-defined key-value pairs to be added to the stack
+  One or more user-defined key-value pairs to be added to the stack
 attributes.
 
 To create a cluster layer, set the C<EcsClusterArn> attribute to the
 cluster's ARN.
 
-
-
-
-
-
-
-
-
-
 =head2 AutoAssignElasticIps => Bool
 
-  
-
-Whether to automatically assign an Elastic IP address to the layer's
+  Whether to automatically assign an Elastic IP address to the layer's
 instances. For more information, see How to Edit a Layer.
-
-
-
-
-
-
-
-
-
 
 =head2 AutoAssignPublicIps => Bool
 
-  
-
-For stacks that are running in a VPC, whether to automatically assign a
+  For stacks that are running in a VPC, whether to automatically assign a
 public IP address to the layer's instances. For more information, see
 How to Edit a Layer.
 
-
-
-
-
-
-
-
-
-
 =head2 CustomInstanceProfileArn => Str
 
-  
-
-The ARN of an IAM profile to be used for the layer's EC2 instances. For
+  The ARN of an IAM profile to be used for the layer's EC2 instances. For
 more information about IAM ARNs, see Using Identifiers.
-
-
-
-
-
-
-
-
-
 
 =head2 CustomJson => Str
 
-  
-
-A JSON-formatted string containing custom stack configuration and
+  A JSON-formatted string containing custom stack configuration and
 deployment attributes to be installed on the layer's instances. For
 more information, see Using Custom JSON.
 
-
-
-
-
-
-
-
-
-
 =head2 CustomRecipes => Paws::OpsWorks::Recipes
 
-  
-
-A C<LayerCustomRecipes> object that specifies the layer custom recipes.
-
-
-
-
-
-
-
-
-
+  A C<LayerCustomRecipes> object that specifies the layer custom recipes.
 
 =head2 CustomSecurityGroupIds => ArrayRef[Str]
 
-  
-
-An array containing the layer custom security group IDs.
-
-
-
-
-
-
-
-
-
+  An array containing the layer custom security group IDs.
 
 =head2 EnableAutoHealing => Bool
 
-  
-
-Whether to disable auto healing for the layer.
-
-
-
-
-
-
-
-
-
+  Whether to disable auto healing for the layer.
 
 =head2 InstallUpdatesOnBoot => Bool
 
-  
-
-Whether to install operating system and package updates when the
+  Whether to install operating system and package updates when the
 instance boots. The default value is C<true>. To control when updates
 are installed, set this value to C<false>. You must then update your
 instances manually by using CreateDeployment to run the
@@ -192,67 +102,23 @@ C<update_dependencies> stack command or by manually running C<yum>
 To ensure that your instances have the latest security updates, we
 strongly recommend using the default value of C<true>.
 
-
-
-
-
-
-
-
-
-
 =head2 LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration
 
-  
-
-A C<LifeCycleEventConfiguration> object that you can use to configure
+  A C<LifeCycleEventConfiguration> object that you can use to configure
 the Shutdown event to specify an execution timeout and enable or
 disable Elastic Load Balancer connection draining.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The layer name, which is used by the console.
-
-
-
-
-
-
-
-
-
+  The layer name, which is used by the console.
 
 =head2 Packages => ArrayRef[Str]
 
-  
-
-An array of C<Package> objects that describes the layer packages.
-
-
-
-
-
-
-
-
-
+  An array of C<Package> objects that describes the layer packages.
 
 =head2 B<REQUIRED> Shortname => Str
 
-  
-
-For custom layers only, use this parameter to specify the layer's short
+  For custom layers only, use this parameter to specify the layer's short
 name, which is used internally by AWS OpsWorks and by Chef recipes. The
 short name is also used as the name for the directory where your app
 files are installed. It can have a maximum of 200 characters, which are
@@ -261,76 +127,23 @@ limited to the alphanumeric characters, '-', '_', and '.'.
 The built-in layers' short names are defined by AWS OpsWorks. For more
 information, see the Layer Reference.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StackId => Str
 
-  
-
-The layer stack ID.
-
-
-
-
-
-
-
-
-
+  The layer stack ID.
 
 =head2 B<REQUIRED> Type => Str
 
-  
-
-The layer type. A stack cannot have more than one built-in layer of the
+  The layer type. A stack cannot have more than one built-in layer of the
 same type. It can have any number of custom layers.
-
-
-
-
-
-
-
-
-
 
 =head2 UseEbsOptimizedInstances => Bool
 
-  
-
-Whether to use Amazon EBS-optimized instances.
-
-
-
-
-
-
-
-
-
+  Whether to use Amazon EBS-optimized instances.
 
 =head2 VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration]
 
-  
-
-A C<VolumeConfigurations> object that describes the layer's Amazon EBS
+  A C<VolumeConfigurations> object that describes the layer's Amazon EBS
 volumes.
-
-
-
-
-
-
-
-
-
 
 
 

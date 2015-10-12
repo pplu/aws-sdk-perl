@@ -39,33 +39,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Subnet
 
 =head2 SubnetIdentifier => Str
 
-  
-
-Specifies the identifier of the subnet.
-
-
-
-
-
-
-
-
-
+  Specifies the identifier of the subnet.
 
 =head2 SubnetStatus => Str
 
-  
-
-Specifies the status of the subnet.
-
-
-
-
-
-
-
-
-
+  Specifies the status of the subnet.
 
 
 

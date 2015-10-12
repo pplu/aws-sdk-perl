@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::EC2Sec
 
 =head2 EC2SecurityGroupId => Str
 
-  
-
-Specifies the id of the EC2 security group.
-
-
-
-
-
-
-
-
-
+  Specifies the id of the EC2 security group.
 
 =head2 EC2SecurityGroupName => Str
 
-  
-
-Specifies the name of the EC2 security group.
-
-
-
-
-
-
-
-
-
+  Specifies the name of the EC2 security group.
 
 =head2 EC2SecurityGroupOwnerId => Str
 
-  
-
-Specifies the AWS ID of the owner of the EC2 security group specified
+  Specifies the AWS ID of the owner of the EC2 security group specified
 in the C<EC2SecurityGroupName> field.
-
-
-
-
-
-
-
-
-
 
 =head2 Status => Str
 
-  
-
-Provides the status of the EC2 security group. Status can be
+  Provides the status of the EC2 security group. Status can be
 "authorizing", "authorized", "revoking", and "revoked".
-
-
-
-
-
-
-
-
-
 
 
 

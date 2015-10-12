@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 applicationArn => Str
 
-  
-
-The ARN specifying the Inspector application.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the Inspector application.
 
 =head2 applicationName => Str
 
-  
-
-The name of the Inspector application.
-
-
-
-
-
-
-
-
-
+  The name of the Inspector application.
 
 =head2 resourceGroupArn => Str
 
-  
-
-The ARN specifying the resource group that is associated with the
+  The ARN specifying the resource group that is associated with the
 application.
-
-
-
-
-
-
-
-
-
 
 
 

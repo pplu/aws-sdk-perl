@@ -36,73 +36,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glacier::In
 
 =head2 EndDate => Str
 
-  
-
-The end of the date range in UTC for vault inventory retrieval that
+  The end of the date range in UTC for vault inventory retrieval that
 includes archives created before this date. A string representation of
 ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
 
-
-
-
-
-
-
-
-
-
 =head2 Limit => Str
 
-  
-
-Specifies the maximum number of inventory items returned per vault
+  Specifies the maximum number of inventory items returned per vault
 inventory retrieval request. Valid values are greater than or equal to
 1.
 
-
-
-
-
-
-
-
-
-
 =head2 Marker => Str
 
-  
-
-An opaque string that represents where to continue pagination of the
+  An opaque string that represents where to continue pagination of the
 vault inventory retrieval results. You use the marker in a new
 B<InitiateJob> request to obtain additional inventory items. If there
 are no more inventory items, this value is C<null>.
 
-
-
-
-
-
-
-
-
-
 =head2 StartDate => Str
 
-  
-
-The start of the date range in UTC for vault inventory retrieval that
+  The start of the date range in UTC for vault inventory retrieval that
 includes archives created on or after this date. A string
 representation of ISO 8601 date format, for example,
 2013-03-20T17:03:43Z.
-
-
-
-
-
-
-
-
-
 
 
 

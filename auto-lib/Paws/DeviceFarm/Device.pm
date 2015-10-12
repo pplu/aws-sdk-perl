@@ -46,54 +46,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 arn => Str
 
-  
-
-The device's ARN.
-
-
-
-
-
-
-
-
-
+  The device's ARN.
 
 =head2 carrier => Str
 
-  
-
-The device's carrier.
-
-
-
-
-
-
-
-
-
+  The device's carrier.
 
 =head2 cpu => Paws::DeviceFarm::CPU
 
-  
-
-Information about the device's CPU.
-
-
-
-
-
-
-
-
-
+  Information about the device's CPU.
 
 =head2 formFactor => Str
 
-  
-
-The device's form factor.
+  The device's form factor.
 
 Allowed values include:
 
@@ -109,125 +74,37 @@ TABLET: The tablet form factor.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 heapSize => Int
 
-  
-
-The device's heap size, expressed in bytes.
-
-
-
-
-
-
-
-
-
+  The device's heap size, expressed in bytes.
 
 =head2 image => Str
 
-  
-
-The device's image name.
-
-
-
-
-
-
-
-
-
+  The device's image name.
 
 =head2 manufacturer => Str
 
-  
-
-The device's manufacturer name.
-
-
-
-
-
-
-
-
-
+  The device's manufacturer name.
 
 =head2 memory => Int
 
-  
-
-The device's total memory size, expressed in bytes.
-
-
-
-
-
-
-
-
-
+  The device's total memory size, expressed in bytes.
 
 =head2 model => Str
 
-  
-
-The device's model name.
-
-
-
-
-
-
-
-
-
+  The device's model name.
 
 =head2 name => Str
 
-  
-
-The device's display name.
-
-
-
-
-
-
-
-
-
+  The device's display name.
 
 =head2 os => Str
 
-  
-
-The device's operating system type.
-
-
-
-
-
-
-
-
-
+  The device's operating system type.
 
 =head2 platform => Str
 
-  
-
-The device's platform.
+  The device's platform.
 
 Allowed values include:
 
@@ -243,29 +120,9 @@ IOS: The iOS platform.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 radio => Str
 
-  
-
-The device's radio.
-
-
-
-
-
-
-
-
-
+  The device's radio.
 
 =head2 resolution => Paws::DeviceFarm::Resolution
 

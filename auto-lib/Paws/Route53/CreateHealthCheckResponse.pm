@@ -30,34 +30,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HealthCheck => Paws::Route53::HealthCheck
 
-  
-
-A complex type that contains identifying information about the health
+  A complex type that contains identifying information about the health
 check.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Location => Str
 
-  
-
-The unique URL representing the new health check.
-
-
-
-
-
-
-
-
-
+  The unique URL representing the new health check.
 
 
 

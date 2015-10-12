@@ -14,18 +14,7 @@ Paws::DeviceFarm::CreateUploadResult
 
 =head2 upload => Paws::DeviceFarm::Upload
 
-  
-
-The newly created upload.
-
-
-
-
-
-
-
-
-
+  The newly created upload.
 
 
 =cut

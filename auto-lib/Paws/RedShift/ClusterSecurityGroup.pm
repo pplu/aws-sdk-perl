@@ -37,81 +37,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
 =head2 ClusterSecurityGroupName => Str
 
-  
-
-The name of the cluster security group to which the operation was
+  The name of the cluster security group to which the operation was
 applied.
-
-
-
-
-
-
-
-
-
 
 =head2 Description => Str
 
-  
-
-A description of the security group.
-
-
-
-
-
-
-
-
-
+  A description of the security group.
 
 =head2 EC2SecurityGroups => ArrayRef[Paws::RedShift::EC2SecurityGroup]
 
-  
-
-A list of EC2 security groups that are permitted to access clusters
+  A list of EC2 security groups that are permitted to access clusters
 associated with this cluster security group.
-
-
-
-
-
-
-
-
-
 
 =head2 IPRanges => ArrayRef[Paws::RedShift::IPRange]
 
-  
-
-A list of IP ranges (CIDR blocks) that are permitted to access clusters
+  A list of IP ranges (CIDR blocks) that are permitted to access clusters
 associated with this cluster security group.
-
-
-
-
-
-
-
-
-
 
 =head2 Tags => ArrayRef[Paws::RedShift::Tag]
 
-  
-
-The list of tags for the cluster security group.
-
-
-
-
-
-
-
-
-
+  The list of tags for the cluster security group.
 
 
 

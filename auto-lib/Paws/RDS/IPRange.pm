@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::IPRang
 
 =head2 CIDRIP => Str
 
-  
-
-Specifies the IP range.
-
-
-
-
-
-
-
-
-
+  Specifies the IP range.
 
 =head2 Status => Str
 
-  
-
-Specifies the status of the IP range. Status can be "authorizing",
+  Specifies the status of the IP range. Status can be "authorizing",
 "authorized", "revoking", and "revoked".
-
-
-
-
-
-
-
-
-
 
 
 

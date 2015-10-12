@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::VpcSec
 
 =head2 Status => Str
 
-  
-
-The status of the VPC security group.
-
-
-
-
-
-
-
-
-
+  The status of the VPC security group.
 
 =head2 VpcSecurityGroupId => Str
 
-  
-
-The name of the VPC security group.
-
-
-
-
-
-
-
-
-
+  The name of the VPC security group.
 
 
 

@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GatewayARN => Str
 
-  
-
-The unique Amazon Resource Name (ARN) of the gateway that the virtual
+  The unique Amazon Resource Name (ARN) of the gateway that the virtual
 tape to delete is associated with. Use the ListGateways operation to
 return a list of gateways for your account and region.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TapeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the virtual tape to delete.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the virtual tape to delete.
 
 
 

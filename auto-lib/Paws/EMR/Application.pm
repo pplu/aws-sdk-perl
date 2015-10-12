@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Applic
 
 =head2 AdditionalInfo => Paws::EMR::StringMap
 
-  
-
-This option is for advanced users only. This is meta information about
+  This option is for advanced users only. This is meta information about
 third-party applications that third-party vendors use for testing
 purposes.
 
-
-
-
-
-
-
-
-
-
 =head2 Args => ArrayRef[Str]
 
-  
-
-Arguments for Amazon EMR to pass to the application.
-
-
-
-
-
-
-
-
-
+  Arguments for Amazon EMR to pass to the application.
 
 =head2 Name => Str
 
-  
-
-The name of the application.
-
-
-
-
-
-
-
-
-
+  The name of the application.
 
 =head2 Version => Str
 
-  
-
-The version of the application.
-
-
-
-
-
-
-
-
-
+  The version of the application.
 
 
 

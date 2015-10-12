@@ -14,18 +14,7 @@ Paws::CodePipeline::AcknowledgeJobOutput
 
 =head2 status => Str
 
-  
-
-Whether the job worker has received the specified job.
-
-
-
-
-
-
-
-
-
+  Whether the job worker has received the specified job.
 
 
 =cut

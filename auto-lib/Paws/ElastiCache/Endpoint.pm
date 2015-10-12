@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 Address => Str
 
-  
-
-The DNS hostname of the cache node.
-
-
-
-
-
-
-
-
-
+  The DNS hostname of the cache node.
 
 =head2 Port => Int
 
-  
-
-The port number that the cache engine is listening on.
-
-
-
-
-
-
-
-
-
+  The port number that the cache engine is listening on.
 
 
 

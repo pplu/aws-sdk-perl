@@ -36,55 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 filter => Str
 
-  
-
-The test's filter.
-
-
-
-
-
-
-
-
-
+  The test's filter.
 
 =head2 parameters => Paws::DeviceFarm::TestParameters
 
-  
-
-The test's parameters, such as test framework parameters and fixture
+  The test's parameters, such as test framework parameters and fixture
 settings.
-
-
-
-
-
-
-
-
-
 
 =head2 testPackageArn => Str
 
-  
-
-The ARN of the uploaded test that will be run.
-
-
-
-
-
-
-
-
-
+  The ARN of the uploaded test that will be run.
 
 =head2 B<REQUIRED> type => Str
 
-  
-
-The test's type.
+  The test's type.
 
 Must be one of the following values:
 
@@ -129,15 +94,6 @@ UIAUTOMATOR: The uiautomator type.
 XCTEST: The XCode test type.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

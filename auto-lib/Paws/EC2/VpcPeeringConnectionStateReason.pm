@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpcPee
 
 =head2 Code => Str
 
-  
-
-The status of the VPC peering connection.
-
-
-
-
-
-
-
-
-
+  The status of the VPC peering connection.
 
 =head2 Message => Str
 
-  
-
-A message that provides more information about the status, if
+  A message that provides more information about the status, if
 applicable.
-
-
-
-
-
-
-
-
-
 
 
 

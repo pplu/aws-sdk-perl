@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::H
 
 =head2 HsmClientCertificateIdentifier => Str
 
-  
-
-The identifier of the HSM client certificate.
-
-
-
-
-
-
-
-
-
+  The identifier of the HSM client certificate.
 
 =head2 HsmClientCertificatePublicKey => Str
 
-  
-
-The public key that the Amazon Redshift cluster will use to connect to
+  The public key that the Amazon Redshift cluster will use to connect to
 the HSM. You must register the public key in the HSM.
-
-
-
-
-
-
-
-
-
 
 =head2 Tags => ArrayRef[Paws::RedShift::Tag]
 
-  
-
-The list of tags for the HSM client certificate.
-
-
-
-
-
-
-
-
-
+  The list of tags for the HSM client certificate.
 
 
 

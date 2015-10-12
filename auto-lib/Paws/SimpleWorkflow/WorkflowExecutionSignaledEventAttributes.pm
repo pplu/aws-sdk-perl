@@ -36,9 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 externalInitiatedEventId => Int
 
-  
-
-The ID of the C<SignalExternalWorkflowExecutionInitiated> event
+  The ID of the C<SignalExternalWorkflowExecutionInitiated> event
 corresponding to the C<SignalExternalWorkflow> decision to signal this
 workflow execution.The source event with this ID can be found in the
 history of the source workflow execution. This information can be
@@ -46,62 +44,20 @@ useful for diagnosing problems by tracing back the chain of events
 leading up to this event. This field is set only if the signal was
 initiated by another workflow execution.
 
-
-
-
-
-
-
-
-
-
 =head2 externalWorkflowExecution => Paws::SimpleWorkflow::WorkflowExecution
 
-  
-
-The workflow execution that sent the signal. This is set only of the
+  The workflow execution that sent the signal. This is set only of the
 signal was sent by another workflow execution.
-
-
-
-
-
-
-
-
-
 
 =head2 input => Str
 
-  
-
-Inputs provided with the signal (if any). The decider can use the
+  Inputs provided with the signal (if any). The decider can use the
 signal name and inputs to determine how to process the signal.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> signalName => Str
 
-  
-
-The name of the signal received. The decider can use the signal name
+  The name of the signal received. The decider can use the signal name
 and inputs to determine how to the process the signal.
-
-
-
-
-
-
-
-
-
 
 
 

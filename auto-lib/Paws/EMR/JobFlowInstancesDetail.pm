@@ -45,211 +45,68 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::JobFlo
 
 =head2 Ec2KeyName => Str
 
-  
-
-The name of an Amazon EC2 key pair that can be used to ssh to the
+  The name of an Amazon EC2 key pair that can be used to ssh to the
 master node of job flow.
-
-
-
-
-
-
-
-
-
 
 =head2 Ec2SubnetId => Str
 
-  
-
-For job flows launched within Amazon Virtual Private Cloud, this value
+  For job flows launched within Amazon Virtual Private Cloud, this value
 specifies the identifier of the subnet where the job flow was launched.
-
-
-
-
-
-
-
-
-
 
 =head2 HadoopVersion => Str
 
-  
-
-The Hadoop version for the job flow.
-
-
-
-
-
-
-
-
-
+  The Hadoop version for the job flow.
 
 =head2 B<REQUIRED> InstanceCount => Int
 
-  
-
-The number of Amazon EC2 instances in the cluster. If the value is 1,
+  The number of Amazon EC2 instances in the cluster. If the value is 1,
 the same instance serves as both the master and slave node. If the
 value is greater than 1, one instance is the master node and all others
 are slave nodes.
 
-
-
-
-
-
-
-
-
-
 =head2 InstanceGroups => ArrayRef[Paws::EMR::InstanceGroupDetail]
 
-  
-
-Details about the job flow's instance groups.
-
-
-
-
-
-
-
-
-
+  Details about the job flow's instance groups.
 
 =head2 KeepJobFlowAliveWhenNoSteps => Bool
 
-  
-
-Specifies whether the job flow should terminate after completing all
+  Specifies whether the job flow should terminate after completing all
 steps.
-
-
-
-
-
-
-
-
-
 
 =head2 MasterInstanceId => Str
 
-  
-
-The Amazon EC2 instance identifier of the master node.
-
-
-
-
-
-
-
-
-
+  The Amazon EC2 instance identifier of the master node.
 
 =head2 B<REQUIRED> MasterInstanceType => Str
 
-  
-
-The Amazon EC2 master node instance type.
-
-
-
-
-
-
-
-
-
+  The Amazon EC2 master node instance type.
 
 =head2 MasterPublicDnsName => Str
 
-  
-
-The DNS name of the master node.
-
-
-
-
-
-
-
-
-
+  The DNS name of the master node.
 
 =head2 NormalizedInstanceHours => Int
 
-  
-
-An approximation of the cost of the job flow, represented in
+  An approximation of the cost of the job flow, represented in
 m1.small/hours. This value is incremented once for every hour an
 m1.small runs. Larger instances are weighted more, so an Amazon EC2
 instance that is roughly four times more expensive would result in the
 normalized instance hours being incremented by four. This result is
 only an approximation and does not reflect the actual billing rate.
 
-
-
-
-
-
-
-
-
-
 =head2 Placement => Paws::EMR::PlacementType
 
-  
-
-The Amazon EC2 Availability Zone for the job flow.
-
-
-
-
-
-
-
-
-
+  The Amazon EC2 Availability Zone for the job flow.
 
 =head2 B<REQUIRED> SlaveInstanceType => Str
 
-  
-
-The Amazon EC2 slave node instance type.
-
-
-
-
-
-
-
-
-
+  The Amazon EC2 slave node instance type.
 
 =head2 TerminationProtected => Bool
 
-  
-
-Specifies whether the Amazon EC2 instances in the cluster are protected
+  Specifies whether the Amazon EC2 instances in the cluster are protected
 from termination by API calls, user intervention, or in the event of a
 job flow error.
-
-
-
-
-
-
-
-
-
 
 
 

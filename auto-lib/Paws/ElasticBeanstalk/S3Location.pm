@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 S3Bucket => Str
 
-  
-
-The Amazon S3 bucket where the data is located.
-
-
-
-
-
-
-
-
-
+  The Amazon S3 bucket where the data is located.
 
 =head2 S3Key => Str
 
-  
-
-The Amazon S3 key where the data is located.
-
-
-
-
-
-
-
-
-
+  The Amazon S3 key where the data is located.
 
 
 

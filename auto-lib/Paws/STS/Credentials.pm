@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::STS::Creden
 
 =head2 B<REQUIRED> AccessKeyId => Str
 
-  
-
-The access key ID that identifies the temporary security credentials.
-
-
-
-
-
-
-
-
-
+  The access key ID that identifies the temporary security credentials.
 
 =head2 B<REQUIRED> Expiration => Str
 
-  
-
-The date on which the current credentials expire.
-
-
-
-
-
-
-
-
-
+  The date on which the current credentials expire.
 
 =head2 B<REQUIRED> SecretAccessKey => Str
 
-  
-
-The secret access key that can be used to sign requests.
-
-
-
-
-
-
-
-
-
+  The secret access key that can be used to sign requests.
 
 =head2 B<REQUIRED> SessionToken => Str
 
-  
-
-The token that users must pass to the service API to use the temporary
+  The token that users must pass to the service API to use the temporary
 credentials.
-
-
-
-
-
-
-
-
-
 
 
 

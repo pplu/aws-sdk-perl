@@ -15,18 +15,7 @@ Paws::SES::SendBounceResponse
 
 =head2 MessageId => Str
 
-  
-
-The message ID of the bounce message.
-
-
-
-
-
-
-
-
-
+  The message ID of the bounce message.
 
 
 =cut

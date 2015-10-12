@@ -37,66 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Egress => Bool
 
-  
-
-Indicates whether the rule is an egress rule.
-
-
-
-
-
-
-
-
-
+  Indicates whether the rule is an egress rule.
 
 =head2 B<REQUIRED> NetworkAclId => Str
 
-  
-
-The ID of the network ACL.
-
-
-
-
-
-
-
-
-
+  The ID of the network ACL.
 
 =head2 B<REQUIRED> RuleNumber => Int
 
-  
-
-The rule number of the entry to delete.
-
-
-
-
-
-
-
-
-
+  The rule number of the entry to delete.
 
 
 

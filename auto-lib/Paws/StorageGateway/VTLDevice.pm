@@ -37,34 +37,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 =head2 DeviceiSCSIAttributes => Paws::StorageGateway::DeviceiSCSIAttributes
 
-  
-
-A list of iSCSI information about a VTL device.
-
-
-
-
-
-
-
-
-
+  A list of iSCSI information about a VTL device.
 
 =head2 VTLDeviceARN => Str
 
-  
-
-Specifies the unique Amazon Resource Name (ARN) of the device (tape
+  Specifies the unique Amazon Resource Name (ARN) of the device (tape
 drive or media changer).
-
-
-
-
-
-
-
-
-
 
 =head2 VTLDeviceProductIdentifier => Str
 

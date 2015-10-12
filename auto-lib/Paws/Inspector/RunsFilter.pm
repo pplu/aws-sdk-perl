@@ -37,90 +37,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 completionTime => Paws::Inspector::TimestampRange
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<completionTime> property of the Run data
 type.
 
-
-
-
-
-
-
-
-
-
 =head2 creationTime => Paws::Inspector::TimestampRange
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<creationTime> property of the Run data
 type.
 
-
-
-
-
-
-
-
-
-
 =head2 rulesPackages => ArrayRef[Str]
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must match a list of values of the B<rulesPackages> property
 of the Run data type.
 
-
-
-
-
-
-
-
-
-
 =head2 runNamePatterns => ArrayRef[Str]
 
-  
-
-For a record to match a filter, an explicit value or a string
+  For a record to match a filter, an explicit value or a string
 containing a wildcard specified for this data type property must match
 the value of the B<runName> property of the Run data type.
 
-
-
-
-
-
-
-
-
-
 =head2 runStates => ArrayRef[Str]
 
-  
-
-For a record to match a filter, the value specified for this data type
+  For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<runState>
 property of the Run data type.
-
-
-
-
-
-
-
-
-
 
 
 

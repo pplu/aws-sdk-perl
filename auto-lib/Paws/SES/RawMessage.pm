@@ -33,9 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::RawMes
 
 =head2 B<REQUIRED> Data => Str
 
-  
-
-The raw data of the message. The client must ensure that the message
+  The raw data of the message. The client must ensure that the message
 format complies with Internet email standards regarding email header
 fields, MIME types, MIME encoding, and base64 encoding (if necessary).
 
@@ -51,15 +49,6 @@ Do not include these X-headers in the DKIM signature, because they are
 removed by Amazon SES before sending the email.
 
 For more information, go to the Amazon SES Developer Guide.
-
-
-
-
-
-
-
-
-
 
 
 

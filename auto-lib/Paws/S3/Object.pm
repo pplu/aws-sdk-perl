@@ -58,18 +58,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Object 
 
 =head2 StorageClass => Str
 
-  
-
-The class of storage used to store the object.
-
-
-
-
-
-
-
-
-
+  The class of storage used to store the object.
 
 
 

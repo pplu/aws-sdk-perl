@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AttributeName => Str
 
-  
-
-The name of the attribute you want to set. Only a subset of the
+  The name of the attribute you want to set. Only a subset of the
 subscriptions attributes are mutable.
 
 Valid values: C<DeliveryPolicy> | C<RawMessageDelivery>
 
-
-
-
-
-
-
-
-
-
 =head2 AttributeValue => Str
 
-  
-
-The new value for the attribute in JSON format.
-
-
-
-
-
-
-
-
-
+  The new value for the attribute in JSON format.
 
 =head2 B<REQUIRED> SubscriptionArn => Str
 
-  
-
-The ARN of the subscription to modify.
-
-
-
-
-
-
-
-
-
+  The ARN of the subscription to modify.
 
 
 

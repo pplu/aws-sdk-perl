@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Fun
 
 =head2 Location => Str
 
-  
-
-The presigned URL you can use to download the function's .zip file that
+  The presigned URL you can use to download the function's .zip file that
 you previously uploaded. The URL is valid for up to 10 minutes.
-
-
-
-
-
-
-
-
-
 
 =head2 RepositoryType => Str
 
-  
-
-The repository from which you can download the function.
-
-
-
-
-
-
-
-
-
+  The repository from which you can download the function.
 
 
 

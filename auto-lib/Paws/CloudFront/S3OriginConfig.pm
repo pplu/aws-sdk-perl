@@ -33,9 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> OriginAccessIdentity => Str
 
-  
-
-The CloudFront origin access identity to associate with the origin. Use
+  The CloudFront origin access identity to associate with the origin. Use
 an origin access identity to configure the origin so that end users can
 only access objects in an Amazon S3 bucket through CloudFront. If you
 want end users to be able to access objects using either the CloudFront
@@ -48,15 +46,6 @@ origin access identity. Use the format
 origin-access-identity/cloudfront/Id where Id is the value that
 CloudFront returned in the Id element when you created the origin
 access identity.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,27 +35,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::PortMa
 
 =head2 containerPort => Int
 
-  
-
-The port number on the container that is bound to the user-specified or
+  The port number on the container that is bound to the user-specified or
 automatically assigned host port. If you specify a container port and
 not a host port, your container automatically receives a host port in
 the ephemeral port range (for more information, see C<hostPort>).
 
-
-
-
-
-
-
-
-
-
 =head2 hostPort => Int
 
-  
-
-The port number on the container instance to reserve for your
+  The port number on the container instance to reserve for your
 container. You can specify a non-reserved host port for your container
 port mapping, or you can omit the C<hostPort> (or set it to C<0>) while
 specifying a C<containerPort> and your container automatically receives
@@ -80,30 +67,10 @@ DescribeContainerInstances output, and a container instance may have up
 to 50 reserved ports at a time, including the default reserved ports
 (automatically assigned ports do not count toward this limit).
 
-
-
-
-
-
-
-
-
-
 =head2 protocol => Str
 
-  
-
-The protocol used for the port mapping. Valid values are C<tcp> and
+  The protocol used for the port mapping. Valid values are C<tcp> and
 C<udp>. The default is C<tcp>.
-
-
-
-
-
-
-
-
-
 
 
 

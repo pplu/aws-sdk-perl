@@ -37,69 +37,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 PeerOwnerId => Str
 
-  
-
-The AWS account ID of the owner of the peer VPC.
+  The AWS account ID of the owner of the peer VPC.
 
 Default: Your AWS account ID
 
-
-
-
-
-
-
-
-
-
 =head2 PeerVpcId => Str
 
-  
-
-The ID of the VPC with which you are creating the VPC peering
+  The ID of the VPC with which you are creating the VPC peering
 connection.
-
-
-
-
-
-
-
-
-
 
 =head2 VpcId => Str
 
-  
-
-The ID of the requester VPC.
-
-
-
-
-
-
-
-
-
+  The ID of the requester VPC.
 
 
 

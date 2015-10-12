@@ -35,24 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 Key => Str
 
-  
-
-The on-premises instance tag filter key.
-
-
-
-
-
-
-
-
-
+  The on-premises instance tag filter key.
 
 =head2 Type => Str
 
-  
-
-The on-premises instance tag filter type:
+  The on-premises instance tag filter type:
 
 =over
 
@@ -64,29 +51,9 @@ The on-premises instance tag filter type:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Value => Str
 
-  
-
-The on-premises instance tag filter value.
-
-
-
-
-
-
-
-
-
+  The on-premises instance tag filter value.
 
 
 

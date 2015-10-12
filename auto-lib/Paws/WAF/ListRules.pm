@@ -35,41 +35,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Limit => Int
 
-  
-
-Specifies the number of C<Rules> that you want AWS WAF to return for
+  Specifies the number of C<Rules> that you want AWS WAF to return for
 this request. If you have more C<Rules> than the number that you
 specify for C<Limit>, the response includes a C<NextMarker> value that
 you can use to get another batch of C<Rules>.
 
-
-
-
-
-
-
-
-
-
 =head2 NextMarker => Str
 
-  
-
-If you specify a value for C<Limit> and you have more C<Rules> than the
+  If you specify a value for C<Limit> and you have more C<Rules> than the
 value of C<Limit>, AWS WAF returns a C<NextMarker> value in the
 response that allows you to list another group of C<Rules>. For the
 second and subsequent C<ListRules> requests, specify the value of
 C<NextMarker> from the previous response to get information about
 another batch of C<Rules>.
-
-
-
-
-
-
-
-
-
 
 
 

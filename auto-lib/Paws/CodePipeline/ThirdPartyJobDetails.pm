@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 data => Paws::CodePipeline::ThirdPartyJobData
 
-  
-
-The data to be returned by the third party job worker.
-
-
-
-
-
-
-
-
-
+  The data to be returned by the third party job worker.
 
 =head2 id => Str
 
-  
-
-The identifier used to identify the job details in AWS CodePipeline.
-
-
-
-
-
-
-
-
-
+  The identifier used to identify the job details in AWS CodePipeline.
 
 =head2 nonce => Str
 
-  
-
-A system-generated random number that AWS CodePipeline uses to ensure
+  A system-generated random number that AWS CodePipeline uses to ensure
 that the job is being worked on by only one job worker. This number
 must be returned in the response.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -45,50 +45,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::RoleDe
 
 =head2 AssumeRolePolicyDocument => Str
 
-  
-
-The trust policy that grants permission to assume the role.
-
-
-
-
-
-
-
-
-
+  The trust policy that grants permission to assume the role.
 
 =head2 AttachedManagedPolicies => ArrayRef[Paws::IAM::AttachedPolicy]
 
-  
-
-A list of managed policies attached to the role. These policies are the
+  A list of managed policies attached to the role. These policies are the
 role's access (permissions) policies.
-
-
-
-
-
-
-
-
-
 
 =head2 CreateDate => Str
 
-  
-
-The date and time, in ISO 8601 date-time format, when the role was
+  The date and time, in ISO 8601 date-time format, when the role was
 created.
-
-
-
-
-
-
-
-
-
 
 =head2 InstanceProfileList => ArrayRef[Paws::IAM::InstanceProfile]
 
@@ -96,66 +63,22 @@ created.
 
 =head2 Path => Str
 
-  
-
-The path to the role. For more information about paths, see IAM
+  The path to the role. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 =head2 RoleId => Str
 
-  
-
-The stable and unique string identifying the role. For more information
+  The stable and unique string identifying the role. For more information
 about IDs, see IAM Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 =head2 RoleName => Str
 
-  
-
-The friendly name that identifies the role.
-
-
-
-
-
-
-
-
-
+  The friendly name that identifies the role.
 
 =head2 RolePolicyList => ArrayRef[Paws::IAM::PolicyDetail]
 
-  
-
-A list of inline policies embedded in the role. These policies are the
+  A list of inline policies embedded in the role. These policies are the
 role's access (permissions) policies.
-
-
-
-
-
-
-
-
-
 
 
 

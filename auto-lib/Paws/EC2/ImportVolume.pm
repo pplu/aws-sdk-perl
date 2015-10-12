@@ -38,81 +38,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-  
-
-The Availability Zone for the resulting EBS volume.
-
-
-
-
-
-
-
-
-
+  The Availability Zone for the resulting EBS volume.
 
 =head2 Description => Str
 
-  
-
-A description of the volume.
-
-
-
-
-
-
-
-
-
+  A description of the volume.
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Image => Paws::EC2::DiskImageDetail
 
-  
-
-The disk image.
-
-
-
-
-
-
-
-
-
+  The disk image.
 
 =head2 B<REQUIRED> Volume => Paws::EC2::VolumeDetail
 
-  
-
-The volume size.
-
-
-
-
-
-
-
-
-
+  The volume size.
 
 
 

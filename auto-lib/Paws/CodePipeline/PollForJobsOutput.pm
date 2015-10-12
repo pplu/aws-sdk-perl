@@ -14,18 +14,7 @@ Paws::CodePipeline::PollForJobsOutput
 
 =head2 jobs => ArrayRef[Paws::CodePipeline::Job]
 
-  
-
-Information about the jobs to take action on.
-
-
-
-
-
-
-
-
-
+  Information about the jobs to take action on.
 
 
 =cut

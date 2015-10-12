@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 type => Str
 
-  
-
-The minimum healthy instances type:
+  The minimum healthy instances type:
 
 =over
 
@@ -61,29 +59,9 @@ type of MOST_CONCURRENCY and a value of 1. This means a deployment to
 only one instances at a time. (You cannot set the type to
 MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.)
 
-
-
-
-
-
-
-
-
-
 =head2 value => Int
 
-  
-
-The minimum healthy instances value.
-
-
-
-
-
-
-
-
-
+  The minimum healthy instances value.
 
 
 

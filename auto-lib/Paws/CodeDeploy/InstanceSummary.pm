@@ -37,69 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 deploymentId => Str
 
-  
-
-The deployment ID.
-
-
-
-
-
-
-
-
-
+  The deployment ID.
 
 =head2 instanceId => Str
 
-  
-
-The instance ID.
-
-
-
-
-
-
-
-
-
+  The instance ID.
 
 =head2 lastUpdatedAt => Str
 
-  
-
-A timestamp indicating when the instance information was last updated.
-
-
-
-
-
-
-
-
-
+  A timestamp indicating when the instance information was last updated.
 
 =head2 lifecycleEvents => ArrayRef[Paws::CodeDeploy::LifecycleEvent]
 
-  
-
-A list of lifecycle events for this instance.
-
-
-
-
-
-
-
-
-
+  A list of lifecycle events for this instance.
 
 =head2 status => Str
 
-  
-
-The deployment status for this instance:
+  The deployment status for this instance:
 
 =over
 
@@ -116,15 +70,6 @@ The deployment status for this instance:
 =item * Unknown: The deployment status is unknown for this instance.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

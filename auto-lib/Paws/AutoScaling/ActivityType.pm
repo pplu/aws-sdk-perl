@@ -15,18 +15,7 @@ Paws::AutoScaling::ActivityType
 
 =head2 Activity => Paws::AutoScaling::Activity
 
-  
-
-A scaling activity.
-
-
-
-
-
-
-
-
-
+  A scaling activity.
 
 
 =cut

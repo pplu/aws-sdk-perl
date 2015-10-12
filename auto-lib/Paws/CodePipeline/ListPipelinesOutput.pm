@@ -15,34 +15,12 @@ Paws::CodePipeline::ListPipelinesOutput
 
 =head2 nextToken => Str
 
-  
-
-If the amount of returned information is significantly large, an
+  If the amount of returned information is significantly large, an
 identifier is also returned which can be used in a subsequent list
 pipelines call to return the next set of pipelines in the list.
-
-
-
-
-
-
-
-
-
 =head2 pipelines => ArrayRef[Paws::CodePipeline::PipelineSummary]
 
-  
-
-The list of pipelines.
-
-
-
-
-
-
-
-
-
+  The list of pipelines.
 
 
 =cut

@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Snapsho
 
 =head2 ManualSnapshotsCurrentCount => Int
 
-  
-
-The current number of manual snapshots of the directory.
-
-
-
-
-
-
-
-
-
+  The current number of manual snapshots of the directory.
 
 =head2 ManualSnapshotsLimit => Int
 
-  
-
-The maximum number of manual snapshots allowed.
-
-
-
-
-
-
-
-
-
+  The maximum number of manual snapshots allowed.
 
 =head2 ManualSnapshotsLimitReached => Bool
 
-  
-
-Indicates if the manual snapshot limit has been reached.
-
-
-
-
-
-
-
-
-
+  Indicates if the manual snapshot limit has been reached.
 
 
 

@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Id => Str
 
-  
-
-The ID of the Amazon EC2 instance.
-
-
-
-
-
-
-
-
-
+  The ID of the Amazon EC2 instance.
 
 
 

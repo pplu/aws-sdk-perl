@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 maximum => Int
 
-  
-
-The maximum value of the duration range. Must be less than or equal to
+  The maximum value of the duration range. Must be less than or equal to
 604800 seconds (1 week).
-
-
-
-
-
-
-
-
-
 
 =head2 minimum => Int
 
-  
-
-The minimum value of the duration range. Must be greater than zero.
-
-
-
-
-
-
-
-
-
+  The minimum value of the duration range. Must be greater than zero.
 
 
 

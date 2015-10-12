@@ -14,18 +14,7 @@ Paws::Config::PutEvaluationsResponse
 
 =head2 FailedEvaluations => ArrayRef[Paws::Config::Evaluation]
 
-  
-
-Requests that failed because of a client or server error.
-
-
-
-
-
-
-
-
-
+  Requests that failed because of a client or server error.
 
 
 =cut

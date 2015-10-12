@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::IamIns
 
 =head2 Arn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the instance profile.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the instance profile.
 
 =head2 Id => Str
 
-  
-
-The ID of the instance profile.
-
-
-
-
-
-
-
-
-
+  The ID of the instance profile.
 
 
 

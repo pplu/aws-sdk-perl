@@ -36,68 +36,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 =head2 InitiatorName => Str
 
-  
-
-The iSCSI initiator that connects to the target.
-
-
-
-
-
-
-
-
-
+  The iSCSI initiator that connects to the target.
 
 =head2 SecretToAuthenticateInitiator => Str
 
-  
-
-The secret key that the initiator (for example, the Windows client)
+  The secret key that the initiator (for example, the Windows client)
 must provide to participate in mutual CHAP with the target.
-
-
-
-
-
-
-
-
-
 
 =head2 SecretToAuthenticateTarget => Str
 
-  
-
-The secret key that the target must provide to participate in mutual
+  The secret key that the target must provide to participate in mutual
 CHAP with the initiator (e.g. Windows client).
-
-
-
-
-
-
-
-
-
 
 =head2 TargetARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the volume.
+  The Amazon Resource Name (ARN) of the volume.
 
 I<Valid Values>: 50 to 500 lowercase letters, numbers, periods (.), and
 hyphens (-).
-
-
-
-
-
-
-
-
-
 
 
 

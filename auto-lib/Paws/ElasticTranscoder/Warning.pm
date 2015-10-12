@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 Code => Str
 
-  
-
-The code of the cross-regional warning.
-
-
-
-
-
-
-
-
-
+  The code of the cross-regional warning.
 
 =head2 Message => Str
 
-  
-
-The message explaining what resources are in a different region from
+  The message explaining what resources are in a different region from
 the pipeline.
 
 B<Note:> AWS KMS keys must be in the same region as the pipeline.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 B<REQUIRED> bucketName => Str
 
-  
-
-The name of the Amazon S3 bucket.
-
-
-
-
-
-
-
-
-
+  The name of the Amazon S3 bucket.
 
 =head2 B<REQUIRED> objectKey => Str
 
-  
-
-The key of the object in the Amazon S3 bucket, which uniquely
+  The key of the object in the Amazon S3 bucket, which uniquely
 identifies the object in the bucket.
-
-
-
-
-
-
-
-
-
 
 
 

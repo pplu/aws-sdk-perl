@@ -35,18 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 compatible => Bool
 
-  
-
-Whether the result was compatible with the device pool.
-
-
-
-
-
-
-
-
-
+  Whether the result was compatible with the device pool.
 
 =head2 device => Paws::DeviceFarm::Device
 
@@ -54,18 +43,7 @@ Whether the result was compatible with the device pool.
 
 =head2 incompatibilityMessages => ArrayRef[Paws::DeviceFarm::IncompatibilityMessage]
 
-  
-
-Information about the compatibility.
-
-
-
-
-
-
-
-
-
+  Information about the compatibility.
 
 
 

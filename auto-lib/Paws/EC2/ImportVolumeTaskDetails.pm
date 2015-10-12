@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Import
 
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-  
-
-The Availability Zone where the resulting volume will reside.
-
-
-
-
-
-
-
-
-
+  The Availability Zone where the resulting volume will reside.
 
 =head2 B<REQUIRED> BytesConverted => Int
 
-  
-
-The number of bytes converted so far.
-
-
-
-
-
-
-
-
-
+  The number of bytes converted so far.
 
 =head2 Description => Str
 
-  
-
-The description you provided when starting the import volume task.
-
-
-
-
-
-
-
-
-
+  The description you provided when starting the import volume task.
 
 =head2 B<REQUIRED> Image => Paws::EC2::DiskImageDescription
 
-  
-
-The image.
-
-
-
-
-
-
-
-
-
+  The image.
 
 =head2 B<REQUIRED> Volume => Paws::EC2::DiskImageVolumeDescription
 
-  
-
-The volume.
-
-
-
-
-
-
-
-
-
+  The volume.
 
 
 

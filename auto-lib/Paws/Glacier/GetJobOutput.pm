@@ -39,71 +39,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> accountId => Str
 
-  
-
-The C<AccountId> value is the AWS account ID of the account that owns
+  The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> jobId => Str
 
-  
-
-The job ID whose data is downloaded.
-
-
-
-
-
-
-
-
-
+  The job ID whose data is downloaded.
 
 =head2 range => Str
 
-  
-
-The range of bytes to retrieve from the output. For example, if you
+  The range of bytes to retrieve from the output. For example, if you
 want to download the first 1,048,576 bytes, specify "Range:
 bytes=0-1048575". By default, this operation downloads the entire
 output.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> vaultName => Str
 
-  
-
-The name of the vault.
-
-
-
-
-
-
-
-
-
+  The name of the vault.
 
 
 

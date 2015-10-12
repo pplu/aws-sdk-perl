@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepSt
 
 =head2 State => Str
 
-  
-
-The execution state of the cluster step.
-
-
-
-
-
-
-
-
-
+  The execution state of the cluster step.
 
 =head2 StateChangeReason => Paws::EMR::StepStateChangeReason
 
-  
-
-The reason for the step execution status change.
-
-
-
-
-
-
-
-
-
+  The reason for the step execution status change.
 
 =head2 Timeline => Paws::EMR::StepTimeline
 
-  
-
-The timeline of the cluster step status over time.
-
-
-
-
-
-
-
-
-
+  The timeline of the cluster step status over time.
 
 
 

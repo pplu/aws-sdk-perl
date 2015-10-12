@@ -40,18 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head2 predictedLabel => Str
 
-  
-
-The prediction label for either a BINARY or MULTICLASS C<MLModel>.
-
-
-
-
-
-
-
-
-
+  The prediction label for either a BINARY or MULTICLASS C<MLModel>.
 
 =head2 predictedScores => Paws::MachineLearning::ScoreValuePerLabelMap
 
@@ -59,18 +48,7 @@ The prediction label for either a BINARY or MULTICLASS C<MLModel>.
 
 =head2 predictedValue => Num
 
-  
-
-The prediction value for REGRESSION C<MLModel>.
-
-
-
-
-
-
-
-
-
+  The prediction value for REGRESSION C<MLModel>.
 
 
 

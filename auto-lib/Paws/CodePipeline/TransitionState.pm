@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 disabledReason => Str
 
-  
-
-The user-specified reason why the transition between two stages of a
+  The user-specified reason why the transition between two stages of a
 pipeline was disabled.
-
-
-
-
-
-
-
-
-
 
 =head2 enabled => Bool
 
-  
-
-Whether the transition between stages is enabled (true) or disabled
+  Whether the transition between stages is enabled (true) or disabled
 (false).
-
-
-
-
-
-
-
-
-
 
 =head2 lastChangedAt => Str
 
-  
-
-The timestamp when the transition state was last changed.
-
-
-
-
-
-
-
-
-
+  The timestamp when the transition state was last changed.
 
 =head2 lastChangedBy => Str
 
-  
-
-The ID of the user who last changed the transition state.
-
-
-
-
-
-
-
-
-
+  The ID of the user who last changed the transition state.
 
 
 

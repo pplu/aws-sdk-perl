@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 height => Int
 
-  
-
-The screen resolution's height, expressed in pixels.
-
-
-
-
-
-
-
-
-
+  The screen resolution's height, expressed in pixels.
 
 =head2 width => Int
 
-  
-
-The screen resolution's width, expressed in pixels.
-
-
-
-
-
-
-
-
-
+  The screen resolution's width, expressed in pixels.
 
 
 

@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Cancel
 
 =head2 B<REQUIRED> CurrentSpotFleetRequestState => Str
 
-  
-
-The current state of the Spot fleet request.
-
-
-
-
-
-
-
-
-
+  The current state of the Spot fleet request.
 
 =head2 B<REQUIRED> PreviousSpotFleetRequestState => Str
 
-  
-
-The previous state of the Spot fleet request.
-
-
-
-
-
-
-
-
-
+  The previous state of the Spot fleet request.
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-  
-
-The ID of the Spot fleet request.
-
-
-
-
-
-
-
-
-
+  The ID of the Spot fleet request.
 
 
 

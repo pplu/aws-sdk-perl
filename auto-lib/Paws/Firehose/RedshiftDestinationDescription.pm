@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::R
 
 =head2 B<REQUIRED> ClusterJDBCURL => Str
 
-  
-
-The database connection string.
-
-
-
-
-
-
-
-
-
+  The database connection string.
 
 =head2 B<REQUIRED> CopyCommand => Paws::Firehose::CopyCommand
 
-  
-
-The C<COPY> command.
-
-
-
-
-
-
-
-
-
+  The C<COPY> command.
 
 =head2 B<REQUIRED> RoleARN => Str
 
-  
-
-The ARN of the AWS credentials.
-
-
-
-
-
-
-
-
-
+  The ARN of the AWS credentials.
 
 =head2 B<REQUIRED> S3DestinationDescription => Paws::Firehose::S3DestinationDescription
 
-  
-
-The Amazon S3 destination.
-
-
-
-
-
-
-
-
-
+  The Amazon S3 destination.
 
 =head2 B<REQUIRED> Username => Str
 
-  
-
-The name of the user.
-
-
-
-
-
-
-
-
-
+  The name of the user.
 
 
 

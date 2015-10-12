@@ -37,42 +37,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EncryptionContext => Paws::KMS::EncryptionContextType
 
-  
-
-Name/value pair that specifies the encryption context to be used for
+  Name/value pair that specifies the encryption context to be used for
 authenticated encryption. If used here, the same value must be supplied
 to the C<Decrypt> API or decryption will fail. For more information,
 see Encryption Context.
 
-
-
-
-
-
-
-
-
-
 =head2 GrantTokens => ArrayRef[Str]
 
-  
-
-For more information, see Grant Tokens.
-
-
-
-
-
-
-
-
-
+  For more information, see Grant Tokens.
 
 =head2 B<REQUIRED> KeyId => Str
 
-  
-
-A unique identifier for the customer master key. This value can be a
+  A unique identifier for the customer master key. This value can be a
 globally unique identifier, a fully specified ARN to either an alias or
 a key, or an alias name prefixed by "alias/".
 
@@ -91,29 +67,9 @@ arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Plaintext => Str
 
-  
-
-Data to be encrypted.
-
-
-
-
-
-
-
-
-
+  Data to be encrypted.
 
 
 

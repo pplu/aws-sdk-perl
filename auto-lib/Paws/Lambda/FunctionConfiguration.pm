@@ -26,178 +26,46 @@ Paws::Lambda::FunctionConfiguration
 
 =head2 CodeSha256 => Str
 
-  
-
-It is the SHA256 hash of your function deployment package.
-
-
-
-
-
-
-
-
-
+  It is the SHA256 hash of your function deployment package.
 =head2 CodeSize => Int
 
-  
-
-The size, in bytes, of the function .zip file you uploaded.
-
-
-
-
-
-
-
-
-
+  The size, in bytes, of the function .zip file you uploaded.
 =head2 Description => Str
 
-  
-
-The user-provided description.
-
-
-
-
-
-
-
-
-
+  The user-provided description.
 =head2 FunctionArn => Str
 
-  
-
-The Amazon Resource Name (ARN) assigned to the function.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) assigned to the function.
 =head2 FunctionName => Str
 
-  
-
-The name of the function.
-
-
-
-
-
-
-
-
-
+  The name of the function.
 =head2 Handler => Str
 
-  
-
-The function Lambda calls to begin executing your function.
-
-
-
-
-
-
-
-
-
+  The function Lambda calls to begin executing your function.
 =head2 LastModified => Str
 
-  
-
-The timestamp of the last time you updated the function.
-
-
-
-
-
-
-
-
-
+  The timestamp of the last time you updated the function.
 =head2 MemorySize => Int
 
-  
-
-The memory size, in MB, you configured for the function. Must be a
+  The memory size, in MB, you configured for the function. Must be a
 multiple of 64 MB.
-
-
-
-
-
-
-
-
-
 =head2 Role => Str
 
-  
-
-The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when
+  The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when
 it executes your function to access any other Amazon Web Services (AWS)
 resources.
-
-
-
-
-
-
-
-
-
 =head2 Runtime => Str
 
-  
-
-The runtime environment for the Lambda function.
-
-
-
-
-
-
-
-
-
+  The runtime environment for the Lambda function.
 =head2 Timeout => Int
 
-  
-
-The function execution time at which Lambda should terminate the
+  The function execution time at which Lambda should terminate the
 function. Because the execution time has cost implications, we
 recommend you set this value based on your expected execution time. The
 default is 3 seconds.
-
-
-
-
-
-
-
-
-
 =head2 Version => Str
 
-  
-
-The version of the Lambda function.
-
-
-
-
-
-
-
-
-
+  The version of the Lambda function.
 
 
 =cut

@@ -15,18 +15,7 @@ Paws::EC2::CopyImageResult
 
 =head2 ImageId => Str
 
-  
-
-The ID of the new AMI.
-
-
-
-
-
-
-
-
-
+  The ID of the new AMI.
 
 
 =cut

@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::DiskIm
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The volume identifier.
-
-
-
-
-
-
-
-
-
+  The volume identifier.
 
 =head2 Size => Int
 
-  
-
-The size of the volume, in GiB.
-
-
-
-
-
-
-
-
-
+  The size of the volume, in GiB.
 
 
 

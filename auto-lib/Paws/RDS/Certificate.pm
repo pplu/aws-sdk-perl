@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Certif
 
 =head2 CertificateIdentifier => Str
 
-  
-
-The unique key that identifies a certificate.
-
-
-
-
-
-
-
-
-
+  The unique key that identifies a certificate.
 
 =head2 CertificateType => Str
 
-  
-
-The type of the certificate.
-
-
-
-
-
-
-
-
-
+  The type of the certificate.
 
 =head2 Thumbprint => Str
 
-  
-
-The thumbprint of the certificate.
-
-
-
-
-
-
-
-
-
+  The thumbprint of the certificate.
 
 =head2 ValidFrom => Str
 
-  
-
-The starting date from which the certificate is valid.
-
-
-
-
-
-
-
-
-
+  The starting date from which the certificate is valid.
 
 =head2 ValidTill => Str
 
-  
-
-The final date that the certificate continues to be valid.
-
-
-
-
-
-
-
-
-
+  The final date that the certificate continues to be valid.
 
 
 

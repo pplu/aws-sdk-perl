@@ -36,25 +36,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Directo
 
 =head2 B<REQUIRED> CustomerDnsIps => ArrayRef[Str]
 
-  
-
-A list of one or more IP addresses of DNS servers or domain controllers
+  A list of one or more IP addresses of DNS servers or domain controllers
 in the on-premises directory.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> CustomerUserName => Str
 
-  
-
-The username of an account in the on-premises directory that is used to
+  The username of an account in the on-premises directory that is used to
 connect to the directory. This account must have the following
 privileges:
 
@@ -68,45 +55,14 @@ privileges:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
-  
-
-A list of subnet identifiers in the VPC that the AD Connector is
+  A list of subnet identifiers in the VPC that the AD Connector is
 created in.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> VpcId => Str
 
-  
-
-The identifier of the VPC that the AD Connector is created in.
-
-
-
-
-
-
-
-
-
+  The identifier of the VPC that the AD Connector is created in.
 
 
 

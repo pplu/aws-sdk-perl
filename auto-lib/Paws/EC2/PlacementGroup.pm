@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Placem
 
 =head2 GroupName => Str
 
-  
-
-The name of the placement group.
-
-
-
-
-
-
-
-
-
+  The name of the placement group.
 
 =head2 State => Str
 
-  
-
-The state of the placement group.
-
-
-
-
-
-
-
-
-
+  The state of the placement group.
 
 =head2 Strategy => Str
 
-  
-
-The placement strategy.
-
-
-
-
-
-
-
-
-
+  The placement strategy.
 
 
 

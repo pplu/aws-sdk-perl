@@ -35,51 +35,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> scheduledEventId => Int
 
-  
-
-The ID of the C<LambdaFunctionScheduled> event that was recorded when
+  The ID of the C<LambdaFunctionScheduled> event that was recorded when
 this AWS Lambda function was scheduled. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> startedEventId => Int
 
-  
-
-The ID of the C<LambdaFunctionStarted> event recorded in the history.
-
-
-
-
-
-
-
-
-
+  The ID of the C<LambdaFunctionStarted> event recorded in the history.
 
 =head2 timeoutType => Str
 
-  
-
-The type of the timeout that caused this event.
-
-
-
-
-
-
-
-
-
+  The type of the timeout that caused this event.
 
 
 

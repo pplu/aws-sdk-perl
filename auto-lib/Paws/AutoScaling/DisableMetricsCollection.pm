@@ -35,24 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name or Amazon Resource Name (ARN) of the group.
-
-
-
-
-
-
-
-
-
+  The name or Amazon Resource Name (ARN) of the group.
 
 =head2 Metrics => ArrayRef[Str]
 
-  
-
-One or more metrics. If you omit this parameter, all metrics are
+  One or more metrics. If you omit this parameter, all metrics are
 disabled.
 
 =over
@@ -90,15 +77,6 @@ C<GroupTerminatingInstances>
 C<GroupTotalInstances>
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

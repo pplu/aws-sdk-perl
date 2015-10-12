@@ -34,24 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 =head2 State => Str
 
-  
-
-The state of the load balancer.
+  The state of the load balancer.
 
 =over
 
@@ -78,15 +65,6 @@ waits for in-flight requests to complete before deregistering the
 instances.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

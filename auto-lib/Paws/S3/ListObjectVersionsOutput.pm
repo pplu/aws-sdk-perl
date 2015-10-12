@@ -53,52 +53,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EncodingType => Str
 
-  
-
-Encoding type used by Amazon S3 to encode object keys in the response.
-
-
-
-
-
-
-
-
-
+  Encoding type used by Amazon S3 to encode object keys in the response.
 
 =head2 IsTruncated => Bool
 
-  
-
-A flag that indicates whether or not Amazon S3 returned all of the
+  A flag that indicates whether or not Amazon S3 returned all of the
 results that satisfied the search criteria. If your results were
 truncated, you can make a follow-up paginated request using the
 NextKeyMarker and NextVersionIdMarker response parameters as a starting
 place in another request to return the rest of the results.
 
-
-
-
-
-
-
-
-
-
 =head2 KeyMarker => Str
 
-  
-
-Marks the last Key returned in a truncated response.
-
-
-
-
-
-
-
-
-
+  Marks the last Key returned in a truncated response.
 
 =head2 MaxKeys => Int
 
@@ -110,35 +77,13 @@ Marks the last Key returned in a truncated response.
 
 =head2 NextKeyMarker => Str
 
-  
-
-Use this value for the key marker request parameter in a subsequent
+  Use this value for the key marker request parameter in a subsequent
 request.
-
-
-
-
-
-
-
-
-
 
 =head2 NextVersionIdMarker => Str
 
-  
-
-Use this value for the next version id marker parameter in a subsequent
+  Use this value for the next version id marker parameter in a subsequent
 request.
-
-
-
-
-
-
-
-
-
 
 =head2 Prefix => Str
 

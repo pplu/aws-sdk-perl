@@ -15,18 +15,7 @@ Paws::SQS::ReceiveMessageResult
 
 =head2 Messages => ArrayRef[Paws::SQS::Message]
 
-  
-
-A list of messages.
-
-
-
-
-
-
-
-
-
+  A list of messages.
 
 
 =cut

@@ -16,33 +16,11 @@ Paws::AutoScaling::ActivitiesType
 
 =head2 B<REQUIRED> Activities => ArrayRef[Paws::AutoScaling::Activity]
 
-  
-
-The scaling activities.
-
-
-
-
-
-
-
-
-
+  The scaling activities.
 =head2 NextToken => Str
 
-  
-
-The token to use when requesting the next set of items. If there are no
+  The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
-
-
-
-
-
-
-
-
-
 
 
 =cut

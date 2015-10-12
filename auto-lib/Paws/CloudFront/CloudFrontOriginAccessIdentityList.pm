@@ -38,101 +38,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
-  
-
-A flag that indicates whether more origin access identities remain to
+  A flag that indicates whether more origin access identities remain to
 be listed. If your results were truncated, you can make a follow-up
 pagination request using the Marker request parameter to retrieve more
 items in the list.
 
-
-
-
-
-
-
-
-
-
 =head2 Items => ArrayRef[Paws::CloudFront::CloudFrontOriginAccessIdentitySummary]
 
-  
-
-A complex type that contains one CloudFrontOriginAccessIdentitySummary
+  A complex type that contains one CloudFrontOriginAccessIdentitySummary
 element for each origin access identity that was created by the current
 AWS account.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Marker => Str
 
-  
-
-The value you provided for the Marker request parameter.
-
-
-
-
-
-
-
-
-
+  The value you provided for the Marker request parameter.
 
 =head2 B<REQUIRED> MaxItems => Int
 
-  
-
-The value you provided for the MaxItems request parameter.
-
-
-
-
-
-
-
-
-
+  The value you provided for the MaxItems request parameter.
 
 =head2 NextMarker => Str
 
-  
-
-If IsTruncated is true, this element is present and contains the value
+  If IsTruncated is true, this element is present and contains the value
 you can use for the Marker request parameter to continue listing your
 origin access identities where they left off.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Quantity => Int
 
-  
-
-The number of CloudFront origin access identities that were created by
+  The number of CloudFront origin access identities that were created by
 the current AWS account.
-
-
-
-
-
-
-
-
-
 
 
 

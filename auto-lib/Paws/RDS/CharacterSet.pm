@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Charac
 
 =head2 CharacterSetDescription => Str
 
-  
-
-The description of the character set.
-
-
-
-
-
-
-
-
-
+  The description of the character set.
 
 =head2 CharacterSetName => Str
 
-  
-
-The name of the character set.
-
-
-
-
-
-
-
-
-
+  The name of the character set.
 
 
 

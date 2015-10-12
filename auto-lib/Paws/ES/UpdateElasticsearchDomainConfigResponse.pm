@@ -15,18 +15,7 @@ Paws::ES::UpdateElasticsearchDomainConfigResponse
 
 =head2 B<REQUIRED> DomainConfig => Paws::ES::ElasticsearchDomainConfig
 
-  
-
-The status of the updated Elasticsearch domain.
-
-
-
-
-
-
-
-
-
+  The status of the updated Elasticsearch domain.
 
 
 =cut

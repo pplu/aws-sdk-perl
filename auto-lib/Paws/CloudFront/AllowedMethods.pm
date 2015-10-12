@@ -39,37 +39,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> Items => ArrayRef[Str]
 
-  
-
-A complex type that contains the HTTP methods that you want CloudFront
+  A complex type that contains the HTTP methods that you want CloudFront
 to process and forward to your origin.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Quantity => Int
 
-  
-
-The number of HTTP methods that you want CloudFront to forward to your
+  The number of HTTP methods that you want CloudFront to forward to your
 origin. Valid values are 2 (for GET and HEAD requests), 3 (for GET,
 HEAD and OPTIONS requests) and 7 (for GET, HEAD, OPTIONS, PUT, PATCH,
 POST, and DELETE requests).
-
-
-
-
-
-
-
-
-
 
 
 

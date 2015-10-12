@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> repositoryName => Str
 
-  
-
-The name of the repository to get information about.
-
-
-
-
-
-
-
-
-
+  The name of the repository to get information about.
 
 
 

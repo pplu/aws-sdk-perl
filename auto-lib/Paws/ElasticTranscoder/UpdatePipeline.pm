@@ -43,9 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AwsKmsKeyArn => Str
 
-  
-
-The AWS Key Management Service (AWS KMS) key that you want to use with
+  The AWS Key Management Service (AWS KMS) key that you want to use with
 this pipeline.
 
 If you use either C<S3> or C<S3-AWS-KMS> as your C<Encryption:Mode>,
@@ -55,20 +53,9 @@ provide an AWS-KMS key only if you want to use a non-default AWS-KMS
 key, or if you are using an C<Encryption:Mode> of C<AES-PKCS7>,
 C<AES-CTR>, or C<AES-GCM>.
 
-
-
-
-
-
-
-
-
-
 =head2 ContentConfig => Paws::ElasticTranscoder::PipelineOutputConfig
 
-  
-
-The optional C<ContentConfig> object specifies information about the
+  The optional C<ContentConfig> object specifies information about the
 Amazon S3 bucket in which you want Elastic Transcoder to save
 transcoded files and playlists: which bucket to use, which users you
 want to have access to the files, the type of access you want users to
@@ -148,63 +135,21 @@ video files and playlists that it stores in your Amazon S3 bucket.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The ID of the pipeline that you want to update.
-
-
-
-
-
-
-
-
-
+  The ID of the pipeline that you want to update.
 
 =head2 InputBucket => Str
 
-  
-
-The Amazon S3 bucket in which you saved the media files that you want
+  The Amazon S3 bucket in which you saved the media files that you want
 to transcode and the graphics that you want to use as watermarks.
-
-
-
-
-
-
-
-
-
 
 =head2 Name => Str
 
-  
-
-The name of the pipeline. We recommend that the name be unique within
+  The name of the pipeline. We recommend that the name be unique within
 the AWS account, but uniqueness is not enforced.
 
 Constraints: Maximum 40 characters
-
-
-
-
-
-
-
-
-
 
 =head2 Notifications => Paws::ElasticTranscoder::Notifications
 
@@ -212,25 +157,12 @@ Constraints: Maximum 40 characters
 
 =head2 Role => Str
 
-  
-
-The IAM Amazon Resource Name (ARN) for the role that you want Elastic
+  The IAM Amazon Resource Name (ARN) for the role that you want Elastic
 Transcoder to use to transcode jobs for this pipeline.
-
-
-
-
-
-
-
-
-
 
 =head2 ThumbnailConfig => Paws::ElasticTranscoder::PipelineOutputConfig
 
-  
-
-The C<ThumbnailConfig> object specifies several values, including the
+  The C<ThumbnailConfig> object specifies several values, including the
 Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail
 files, which users you want to have access to the files, the type of
 access you want users to have, and the storage class that you want to
@@ -306,15 +238,6 @@ C<ReducedRedundancy>, that you want Elastic Transcoder to assign to the
 thumbnails that it stores in your Amazon S3 bucket.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

@@ -43,96 +43,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::GroupD
 
 =head2 AttachedManagedPolicies => ArrayRef[Paws::IAM::AttachedPolicy]
 
-  
-
-A list of the managed policies attached to the group.
-
-
-
-
-
-
-
-
-
+  A list of the managed policies attached to the group.
 
 =head2 CreateDate => Str
 
-  
-
-The date and time, in ISO 8601 date-time format, when the group was
+  The date and time, in ISO 8601 date-time format, when the group was
 created.
-
-
-
-
-
-
-
-
-
 
 =head2 GroupId => Str
 
-  
-
-The stable and unique string identifying the group. For more
+  The stable and unique string identifying the group. For more
 information about IDs, see IAM Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 =head2 GroupName => Str
 
-  
-
-The friendly name that identifies the group.
-
-
-
-
-
-
-
-
-
+  The friendly name that identifies the group.
 
 =head2 GroupPolicyList => ArrayRef[Paws::IAM::PolicyDetail]
 
-  
-
-A list of the inline policies embedded in the group.
-
-
-
-
-
-
-
-
-
+  A list of the inline policies embedded in the group.
 
 =head2 Path => Str
 
-  
-
-The path to the group. For more information about paths, see IAM
+  The path to the group. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 
 

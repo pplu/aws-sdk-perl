@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> workflowExecutionRetentionPeriodInDays => Str
 
-  
-
-The retention period for workflow executions in this domain.
-
-
-
-
-
-
-
-
-
+  The retention period for workflow executions in this domain.
 
 
 

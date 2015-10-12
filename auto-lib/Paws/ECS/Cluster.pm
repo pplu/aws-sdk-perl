@@ -39,116 +39,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Cluste
 
 =head2 activeServicesCount => Int
 
-  
-
-The number of services that are running on the cluster in an C<ACTIVE>
+  The number of services that are running on the cluster in an C<ACTIVE>
 state. You can view these services with ListServices.
-
-
-
-
-
-
-
-
-
 
 =head2 clusterArn => Str
 
-  
-
-The Amazon Resource Name (ARN) that identifies the cluster. The ARN
+  The Amazon Resource Name (ARN) that identifies the cluster. The ARN
 contains the C<arn:aws:ecs> namespace, followed by the region of the
 cluster, the AWS account ID of the cluster owner, the C<cluster>
 namespace, and then the cluster name. For example,
 arn:aws:ecs:I<region>:I<012345678910>:cluster/I<test>.
 
-
-
-
-
-
-
-
-
-
 =head2 clusterName => Str
 
-  
-
-A user-generated string that you use to identify your cluster.
-
-
-
-
-
-
-
-
-
+  A user-generated string that you use to identify your cluster.
 
 =head2 pendingTasksCount => Int
 
-  
-
-The number of tasks in the cluster that are in the C<PENDING> state.
-
-
-
-
-
-
-
-
-
+  The number of tasks in the cluster that are in the C<PENDING> state.
 
 =head2 registeredContainerInstancesCount => Int
 
-  
-
-The number of container instances registered into the cluster.
-
-
-
-
-
-
-
-
-
+  The number of container instances registered into the cluster.
 
 =head2 runningTasksCount => Int
 
-  
-
-The number of tasks in the cluster that are in the C<RUNNING> state.
-
-
-
-
-
-
-
-
-
+  The number of tasks in the cluster that are in the C<RUNNING> state.
 
 =head2 status => Str
 
-  
-
-The status of the cluster. The valid values are C<ACTIVE> or
+  The status of the cluster. The valid values are C<ACTIVE> or
 C<INACTIVE>. C<ACTIVE> indicates that you can register container
 instances with the cluster and the associated instances can accept
 tasks.
-
-
-
-
-
-
-
-
-
 
 
 

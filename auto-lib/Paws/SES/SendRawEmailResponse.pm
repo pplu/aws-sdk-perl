@@ -15,18 +15,7 @@ Paws::SES::SendRawEmailResponse
 
 =head2 B<REQUIRED> MessageId => Str
 
-  
-
-The unique message identifier returned from the C<SendRawEmail> action.
-
-
-
-
-
-
-
-
-
+  The unique message identifier returned from the C<SendRawEmail> action.
 
 
 =cut

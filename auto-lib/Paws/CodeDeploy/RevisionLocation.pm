@@ -39,9 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 revisionType => Str
 
-  
-
-The application revision's type:
+  The application revision's type:
 
 =over
 
@@ -50,15 +48,6 @@ The application revision's type:
 =item * GitHub: An application revision stored in GitHub.
 
 =back
-
-
-
-
-
-
-
-
-
 
 =head2 s3Location => Paws::CodeDeploy::S3Location
 

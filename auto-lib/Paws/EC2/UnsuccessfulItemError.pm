@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Unsucc
 
 =head2 B<REQUIRED> Code => Str
 
-  
-
-The error code.
-
-
-
-
-
-
-
-
-
+  The error code.
 
 =head2 B<REQUIRED> Message => Str
 
-  
-
-The error message accompanying the error code.
-
-
-
-
-
-
-
-
-
+  The error message accompanying the error code.
 
 
 

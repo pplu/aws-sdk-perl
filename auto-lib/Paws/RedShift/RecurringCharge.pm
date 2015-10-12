@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::R
 
 =head2 RecurringChargeAmount => Num
 
-  
-
-The amount charged per the period of time specified by the recurring
+  The amount charged per the period of time specified by the recurring
 charge frequency.
-
-
-
-
-
-
-
-
-
 
 =head2 RecurringChargeFrequency => Str
 
-  
-
-The frequency at which the recurring charge amount is applied.
-
-
-
-
-
-
-
-
-
+  The frequency at which the recurring charge amount is applied.
 
 
 

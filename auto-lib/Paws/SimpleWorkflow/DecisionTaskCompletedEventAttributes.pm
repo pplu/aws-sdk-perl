@@ -35,53 +35,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 executionContext => Str
 
-  
-
-User defined context for the workflow execution.
-
-
-
-
-
-
-
-
-
+  User defined context for the workflow execution.
 
 =head2 B<REQUIRED> scheduledEventId => Int
 
-  
-
-The ID of the C<DecisionTaskScheduled> event that was recorded when
+  The ID of the C<DecisionTaskScheduled> event that was recorded when
 this decision task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> startedEventId => Int
 
-  
-
-The ID of the C<DecisionTaskStarted> event recorded when this decision
+  The ID of the C<DecisionTaskStarted> event recorded when this decision
 task was started. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Instances => ArrayRef[Paws::ELB::Instance]
 
-  
-
-The IDs of the instances.
-
-
-
-
-
-
-
-
-
+  The IDs of the instances.
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 
 

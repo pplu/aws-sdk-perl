@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::D
 
 =head2 Args => Paws::OpsWorks::DeploymentCommandArgs
 
-  
-
-The arguments of those commands that take arguments. It should be set
+  The arguments of those commands that take arguments. It should be set
 to a JSON object with the following format:
 
 C<{"arg_name1" : ["value1", "value2", ...], "arg_name2" : ["value1",
@@ -63,20 +61,9 @@ C<Args> to the following.
 C<{ "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"]
 }>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Name => Str
 
-  
-
-Specifies the operation. You can specify only one command.
+  Specifies the operation. You can specify only one command.
 
 For stacks, the following commands are available:
 
@@ -122,15 +109,6 @@ as many as four versions.
 =item * C<undeploy>: Undeploy the app.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

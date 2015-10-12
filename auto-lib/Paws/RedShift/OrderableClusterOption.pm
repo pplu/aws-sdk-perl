@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::O
 
 =head2 AvailabilityZones => ArrayRef[Paws::RedShift::AvailabilityZone]
 
-  
-
-A list of availability zones for the orderable cluster.
-
-
-
-
-
-
-
-
-
+  A list of availability zones for the orderable cluster.
 
 =head2 ClusterType => Str
 
-  
-
-The cluster type, for example C<multi-node>.
-
-
-
-
-
-
-
-
-
+  The cluster type, for example C<multi-node>.
 
 =head2 ClusterVersion => Str
 
-  
-
-The version of the orderable cluster.
-
-
-
-
-
-
-
-
-
+  The version of the orderable cluster.
 
 =head2 NodeType => Str
 
-  
-
-The node type for the orderable cluster.
-
-
-
-
-
-
-
-
-
+  The node type for the orderable cluster.
 
 
 

@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> activityId => Str
 
-  
-
-The C<activityId> of the activity task to be canceled.
-
-
-
-
-
-
-
-
-
+  The C<activityId> of the activity task to be canceled.
 
 
 

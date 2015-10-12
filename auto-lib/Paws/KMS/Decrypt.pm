@@ -36,50 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CiphertextBlob => Str
 
-  
-
-Ciphertext to be decrypted. The blob includes metadata.
-
-
-
-
-
-
-
-
-
+  Ciphertext to be decrypted. The blob includes metadata.
 
 =head2 EncryptionContext => Paws::KMS::EncryptionContextType
 
-  
-
-The encryption context. If this was specified in the Encrypt function,
+  The encryption context. If this was specified in the Encrypt function,
 it must be specified here or the decryption operation will fail. For
 more information, see Encryption Context.
 
-
-
-
-
-
-
-
-
-
 =head2 GrantTokens => ArrayRef[Str]
 
-  
-
-For more information, see Grant Tokens.
-
-
-
-
-
-
-
-
-
+  For more information, see Grant Tokens.
 
 
 

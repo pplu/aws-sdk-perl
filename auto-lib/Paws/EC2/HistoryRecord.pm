@@ -35,24 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Histor
 
 =head2 B<REQUIRED> EventInformation => Paws::EC2::EventInformation
 
-  
-
-Information about the event.
-
-
-
-
-
-
-
-
-
+  Information about the event.
 
 =head2 B<REQUIRED> EventType => Str
 
-  
-
-The event type.
+  The event type.
 
 =over
 
@@ -72,30 +59,10 @@ terminated.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Timestamp => Str
 
-  
-
-The date and time of the event, in UTC format (for example,
+  The date and time of the event, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
-
-
-
-
-
-
-
-
-
 
 
 

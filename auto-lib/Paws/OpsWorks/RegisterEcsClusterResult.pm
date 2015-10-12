@@ -14,18 +14,7 @@ Paws::OpsWorks::RegisterEcsClusterResult
 
 =head2 EcsClusterArn => Str
 
-  
-
-The cluster's ARN.
-
-
-
-
-
-
-
-
-
+  The cluster's ARN.
 
 
 =cut

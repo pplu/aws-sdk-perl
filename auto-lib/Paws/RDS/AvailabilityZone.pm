@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Availa
 
 =head2 Name => Str
 
-  
-
-The name of the availability zone.
-
-
-
-
-
-
-
-
-
+  The name of the availability zone.
 
 
 

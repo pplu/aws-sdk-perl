@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Attrib
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of the container instance attribute.
-
-
-
-
-
-
-
-
-
+  The name of the container instance attribute.
 
 =head2 value => Str
 
-  
-
-The value of the container instance attribute.
-
-
-
-
-
-
-
-
-
+  The value of the container instance attribute.
 
 
 

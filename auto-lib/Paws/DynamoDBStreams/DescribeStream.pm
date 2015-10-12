@@ -36,50 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ExclusiveStartShardId => Str
 
-  
-
-The shard ID of the first item that this operation will evaluate. Use
+  The shard ID of the first item that this operation will evaluate. Use
 the value that was returned for C<LastEvaluatedShardId> in the previous
 operation.
 
-
-
-
-
-
-
-
-
-
 =head2 Limit => Int
 
-  
-
-The maximum number of shard objects to return. The upper limit is 100.
-
-
-
-
-
-
-
-
-
+  The maximum number of shard objects to return. The upper limit is 100.
 
 =head2 B<REQUIRED> StreamArn => Str
 
-  
-
-The Amazon Resource Name (ARN) for the stream.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) for the stream.
 
 
 

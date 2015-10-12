@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 details => Str
 
-  
-
-I<Optional.> details of the marker.
-
-
-
-
-
-
-
-
-
+  I<Optional.> details of the marker.
 
 =head2 B<REQUIRED> markerName => Str
 
-  
-
-B<Required.> The name of the marker.
-
-
-
-
-
-
-
-
-
+  B<Required.> The name of the marker.
 
 
 

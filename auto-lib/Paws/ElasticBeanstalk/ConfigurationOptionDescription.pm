@@ -43,9 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 ChangeSeverity => Str
 
-  
-
-An indication of which action is required if the value for this
+  An indication of which action is required if the value for this
 configuration option changes:
 
 NoInterruption - There is no interruption to the environment or
@@ -74,129 +72,41 @@ application servers on the running Amazon EC2 instances are restarted.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 DefaultValue => Str
 
-  
-
-The default value for this configuration option.
-
-
-
-
-
-
-
-
-
+  The default value for this configuration option.
 
 =head2 MaxLength => Int
 
-  
-
-If specified, the configuration option must be a string value no longer
+  If specified, the configuration option must be a string value no longer
 than this value.
-
-
-
-
-
-
-
-
-
 
 =head2 MaxValue => Int
 
-  
-
-If specified, the configuration option must be a numeric value less
+  If specified, the configuration option must be a numeric value less
 than this value.
-
-
-
-
-
-
-
-
-
 
 =head2 MinValue => Int
 
-  
-
-If specified, the configuration option must be a numeric value greater
+  If specified, the configuration option must be a numeric value greater
 than this value.
-
-
-
-
-
-
-
-
-
 
 =head2 Name => Str
 
-  
-
-The name of the configuration option.
-
-
-
-
-
-
-
-
-
+  The name of the configuration option.
 
 =head2 Namespace => Str
 
-  
-
-A unique namespace identifying the option's associated AWS resource.
-
-
-
-
-
-
-
-
-
+  A unique namespace identifying the option's associated AWS resource.
 
 =head2 Regex => Paws::ElasticBeanstalk::OptionRestrictionRegex
 
-  
-
-If specified, the configuration option must be a string value that
+  If specified, the configuration option must be a string value that
 satisfies this regular expression.
-
-
-
-
-
-
-
-
-
 
 =head2 UserDefined => Bool
 
-  
-
-An indication of whether the user defined this configuration option:
+  An indication of whether the user defined this configuration option:
 
 C<true> : This configuration option was defined by the user. It is a
 valid choice for specifying this as an Option to Remove when updating
@@ -221,36 +131,14 @@ configuration.
 
 Valid Values: C<true> | C<false>
 
-
-
-
-
-
-
-
-
-
 =head2 ValueOptions => ArrayRef[Str]
 
-  
-
-If specified, values for the configuration option are selected from
+  If specified, values for the configuration option are selected from
 this list.
-
-
-
-
-
-
-
-
-
 
 =head2 ValueType => Str
 
-  
-
-An indication of which type of values this option has and whether it is
+  An indication of which type of values this option has and whether it is
 allowable to select one or more than one of the possible values:
 
 C<Scalar> : Values for this option are a single selection from the
@@ -281,15 +169,6 @@ C<false> .
 C<ConfigDocument>.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

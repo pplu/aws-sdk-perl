@@ -43,140 +43,50 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::E
 
 =head2 CustomerAwsId => Str
 
-  
-
-The AWS customer account associated with the Amazon Redshift event
+  The AWS customer account associated with the Amazon Redshift event
 notification subscription.
-
-
-
-
-
-
-
-
-
 
 =head2 CustSubscriptionId => Str
 
-  
-
-The name of the Amazon Redshift event notification subscription.
-
-
-
-
-
-
-
-
-
+  The name of the Amazon Redshift event notification subscription.
 
 =head2 Enabled => Bool
 
-  
-
-A Boolean value indicating whether the subscription is enabled. C<true>
+  A Boolean value indicating whether the subscription is enabled. C<true>
 indicates the subscription is enabled.
-
-
-
-
-
-
-
-
-
 
 =head2 EventCategoriesList => ArrayRef[Str]
 
-  
-
-The list of Amazon Redshift event categories specified in the event
+  The list of Amazon Redshift event categories specified in the event
 notification subscription.
 
 Values: Configuration, Management, Monitoring, Security
 
-
-
-
-
-
-
-
-
-
 =head2 Severity => Str
 
-  
-
-The event severity specified in the Amazon Redshift event notification
+  The event severity specified in the Amazon Redshift event notification
 subscription.
 
 Values: ERROR, INFO
 
-
-
-
-
-
-
-
-
-
 =head2 SnsTopicArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon SNS topic used by the
+  The Amazon Resource Name (ARN) of the Amazon SNS topic used by the
 event notification subscription.
-
-
-
-
-
-
-
-
-
 
 =head2 SourceIdsList => ArrayRef[Str]
 
-  
-
-A list of the sources that publish events to the Amazon Redshift event
+  A list of the sources that publish events to the Amazon Redshift event
 notification subscription.
-
-
-
-
-
-
-
-
-
 
 =head2 SourceType => Str
 
-  
-
-The source type of the events returned the Amazon Redshift event
+  The source type of the events returned the Amazon Redshift event
 notification, such as cluster, or cluster-snapshot.
-
-
-
-
-
-
-
-
-
 
 =head2 Status => Str
 
-  
-
-The status of the Amazon Redshift event notification subscription.
+  The status of the Amazon Redshift event notification subscription.
 
 Constraints:
 
@@ -192,45 +102,14 @@ subscription was created.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 SubscriptionCreationTime => Str
 
-  
-
-The date and time the Amazon Redshift event notification subscription
+  The date and time the Amazon Redshift event notification subscription
 was created.
-
-
-
-
-
-
-
-
-
 
 =head2 Tags => ArrayRef[Paws::RedShift::Tag]
 
-  
-
-The list of tags for the event subscription.
-
-
-
-
-
-
-
-
-
+  The list of tags for the event subscription.
 
 
 

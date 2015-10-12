@@ -38,94 +38,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 ApplicationName => Str
 
-  
-
-The name of the application.
-
-
-
-
-
-
-
-
-
+  The name of the application.
 
 =head2 ConfigurationTemplates => ArrayRef[Str]
 
-  
-
-The names of the configuration templates associated with this
+  The names of the configuration templates associated with this
 application.
-
-
-
-
-
-
-
-
-
 
 =head2 DateCreated => Str
 
-  
-
-The date when the application was created.
-
-
-
-
-
-
-
-
-
+  The date when the application was created.
 
 =head2 DateUpdated => Str
 
-  
-
-The date when the application was last modified.
-
-
-
-
-
-
-
-
-
+  The date when the application was last modified.
 
 =head2 Description => Str
 
-  
-
-User-defined description of the application.
-
-
-
-
-
-
-
-
-
+  User-defined description of the application.
 
 =head2 Versions => ArrayRef[Str]
 
-  
-
-The names of the versions for this application.
-
-
-
-
-
-
-
-
-
+  The names of the versions for this application.
 
 
 

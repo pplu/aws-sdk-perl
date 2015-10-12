@@ -14,18 +14,7 @@ Paws::DataPipeline::EvaluateExpressionOutput
 
 =head2 B<REQUIRED> evaluatedExpression => Str
 
-  
-
-The evaluated expression.
-
-
-
-
-
-
-
-
-
+  The evaluated expression.
 
 
 =cut

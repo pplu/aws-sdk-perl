@@ -37,65 +37,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 CacheClusterId => Str
 
-  
-
-The ID of the cache cluster to which the node belongs.
-
-
-
-
-
-
-
-
-
+  The ID of the cache cluster to which the node belongs.
 
 =head2 CacheNodeId => Str
 
-  
-
-The ID of the node within its cache cluster. A node ID is a numeric
+  The ID of the node within its cache cluster. A node ID is a numeric
 identifier (0001, 0002, etc.).
-
-
-
-
-
-
-
-
-
 
 =head2 CurrentRole => Str
 
-  
-
-The role that is currently assigned to the node - I<primary> or
+  The role that is currently assigned to the node - I<primary> or
 I<replica>.
-
-
-
-
-
-
-
-
-
 
 =head2 PreferredAvailabilityZone => Str
 
-  
-
-The name of the Availability Zone in which the node is located.
-
-
-
-
-
-
-
-
-
+  The name of the Availability Zone in which the node is located.
 
 =head2 ReadEndpoint => Paws::ElastiCache::Endpoint
 

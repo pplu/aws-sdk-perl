@@ -36,53 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Resources => ArrayRef[Str]
 
-  
-
-The IDs of one or more resources to tag. For example, ami-1a2b3c4d.
-
-
-
-
-
-
-
-
-
+  The IDs of one or more resources to tag. For example, ami-1a2b3c4d.
 
 =head2 B<REQUIRED> Tags => ArrayRef[Paws::EC2::Tag]
 
-  
-
-One or more tags. The C<value> parameter is required, but if you don't
+  One or more tags. The C<value> parameter is required, but if you don't
 want the tag to have a value, specify the parameter with no value, and
 we set the value to an empty string.
-
-
-
-
-
-
-
-
-
 
 
 

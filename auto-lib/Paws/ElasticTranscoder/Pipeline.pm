@@ -43,24 +43,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 Arn => Str
 
-  
-
-The Amazon Resource Name (ARN) for the pipeline.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) for the pipeline.
 
 =head2 AwsKmsKeyArn => Str
 
-  
-
-The AWS Key Management Service (AWS KMS) key that you want to use with
+  The AWS Key Management Service (AWS KMS) key that you want to use with
 this pipeline.
 
 If you use either C<S3> or C<S3-AWS-KMS> as your C<Encryption:Mode>,
@@ -70,20 +57,9 @@ provide an AWS-KMS key only if you want to use a non-default AWS-KMS
 key, or if you are using an C<Encryption:Mode> of C<AES-PKCS7>,
 C<AES-CTR>, or C<AES-GCM>.
 
-
-
-
-
-
-
-
-
-
 =head2 ContentConfig => Paws::ElasticTranscoder::PipelineOutputConfig
 
-  
-
-Information about the Amazon S3 bucket in which you want Elastic
+  Information about the Amazon S3 bucket in which you want Elastic
 Transcoder to save transcoded files and playlists. Either you specify
 both C<ContentConfig> and C<ThumbnailConfig>, or you specify
 C<OutputBucket>.
@@ -145,72 +121,28 @@ video files and playlists that it stores in your Amazon S3 bucket.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Id => Str
 
-  
-
-The identifier for the pipeline. You use this value to identify the
+  The identifier for the pipeline. You use this value to identify the
 pipeline in which you want to perform a variety of operations, such as
 creating a job or a preset.
 
-
-
-
-
-
-
-
-
-
 =head2 InputBucket => Str
 
-  
-
-The Amazon S3 bucket from which Elastic Transcoder gets media files for
+  The Amazon S3 bucket from which Elastic Transcoder gets media files for
 transcoding and the graphics files, if any, that you want to use for
 watermarks.
 
-
-
-
-
-
-
-
-
-
 =head2 Name => Str
 
-  
-
-The name of the pipeline. We recommend that the name be unique within
+  The name of the pipeline. We recommend that the name be unique within
 the AWS account, but uniqueness is not enforced.
 
 Constraints: Maximum 40 characters
 
-
-
-
-
-
-
-
-
-
 =head2 Notifications => Paws::ElasticTranscoder::Notifications
 
-  
-
-The Amazon Simple Notification Service (Amazon SNS) topic that you want
+  The Amazon Simple Notification Service (Amazon SNS) topic that you want
 to notify to report job status.
 
 To receive notifications, you must also subscribe to the new topic in
@@ -233,53 +165,20 @@ notify when Elastic Transcoder encounters an error condition.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 OutputBucket => Str
 
-  
-
-The Amazon S3 bucket in which you want Elastic Transcoder to save
+  The Amazon S3 bucket in which you want Elastic Transcoder to save
 transcoded files, thumbnails, and playlists. Either you specify this
 value, or you specify both C<ContentConfig> and C<ThumbnailConfig>.
 
-
-
-
-
-
-
-
-
-
 =head2 Role => Str
 
-  
-
-The IAM Amazon Resource Name (ARN) for the role that Elastic Transcoder
+  The IAM Amazon Resource Name (ARN) for the role that Elastic Transcoder
 uses to transcode jobs for this pipeline.
-
-
-
-
-
-
-
-
-
 
 =head2 Status => Str
 
-  
-
-The current status of the pipeline:
+  The current status of the pipeline:
 
 =over
 
@@ -289,20 +188,9 @@ The current status of the pipeline:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 ThumbnailConfig => Paws::ElasticTranscoder::PipelineOutputConfig
 
-  
-
-Information about the Amazon S3 bucket in which you want Elastic
+  Information about the Amazon S3 bucket in which you want Elastic
 Transcoder to save thumbnail files. Either you specify both
 C<ContentConfig> and C<ThumbnailConfig>, or you specify
 C<OutputBucket>.
@@ -364,15 +252,6 @@ C<ReducedRedundancy>, that you want Elastic Transcoder to assign to the
 thumbnails that it stores in your Amazon S3 bucket.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

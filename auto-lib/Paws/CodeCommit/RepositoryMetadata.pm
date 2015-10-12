@@ -42,154 +42,44 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit:
 
 =head2 accountId => Str
 
-  
-
-The ID of the AWS account associated with the repository.
-
-
-
-
-
-
-
-
-
+  The ID of the AWS account associated with the repository.
 
 =head2 Arn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the repository.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the repository.
 
 =head2 cloneUrlHttp => Str
 
-  
-
-The URL to use for cloning the repository over HTTPS.
-
-
-
-
-
-
-
-
-
+  The URL to use for cloning the repository over HTTPS.
 
 =head2 cloneUrlSsh => Str
 
-  
-
-The URL to use for cloning the repository over SSH.
-
-
-
-
-
-
-
-
-
+  The URL to use for cloning the repository over SSH.
 
 =head2 creationDate => Str
 
-  
-
-The date and time the repository was created, in timestamp format.
-
-
-
-
-
-
-
-
-
+  The date and time the repository was created, in timestamp format.
 
 =head2 defaultBranch => Str
 
-  
-
-The repository's default branch name.
-
-
-
-
-
-
-
-
-
+  The repository's default branch name.
 
 =head2 lastModifiedDate => Str
 
-  
-
-The date and time the repository was last modified, in timestamp
+  The date and time the repository was last modified, in timestamp
 format.
-
-
-
-
-
-
-
-
-
 
 =head2 repositoryDescription => Str
 
-  
-
-A comment or description about the repository.
-
-
-
-
-
-
-
-
-
+  A comment or description about the repository.
 
 =head2 repositoryId => Str
 
-  
-
-The ID of the repository.
-
-
-
-
-
-
-
-
-
+  The ID of the repository.
 
 =head2 repositoryName => Str
 
-  
-
-The repository's name.
-
-
-
-
-
-
-
-
-
+  The repository's name.
 
 
 

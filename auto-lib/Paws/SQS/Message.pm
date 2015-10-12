@@ -39,120 +39,43 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Messag
 
 =head2 Attributes => Paws::SQS::AttributeMap
 
-  
-
-C<SenderId>, C<SentTimestamp>, C<ApproximateReceiveCount>, and/or
+  C<SenderId>, C<SentTimestamp>, C<ApproximateReceiveCount>, and/or
 C<ApproximateFirstReceiveTimestamp>. C<SentTimestamp> and
 C<ApproximateFirstReceiveTimestamp> are each returned as an integer
 representing the epoch time in milliseconds.
 
-
-
-
-
-
-
-
-
-
 =head2 Body => Str
 
-  
-
-The message's contents (not URL-encoded).
-
-
-
-
-
-
-
-
-
+  The message's contents (not URL-encoded).
 
 =head2 MD5OfBody => Str
 
-  
-
-An MD5 digest of the non-URL-encoded message body string.
-
-
-
-
-
-
-
-
-
+  An MD5 digest of the non-URL-encoded message body string.
 
 =head2 MD5OfMessageAttributes => Str
 
-  
-
-An MD5 digest of the non-URL-encoded message attribute string. This can
+  An MD5 digest of the non-URL-encoded message attribute string. This can
 be used to verify that Amazon SQS received the message correctly.
 Amazon SQS first URL decodes the message before creating the MD5
 digest. For information about MD5, go to
 http://www.faqs.org/rfcs/rfc1321.html.
 
-
-
-
-
-
-
-
-
-
 =head2 MessageAttributes => Paws::SQS::MessageAttributeMap
 
-  
-
-Each message attribute consists of a Name, Type, and Value. For more
+  Each message attribute consists of a Name, Type, and Value. For more
 information, see Message Attribute Items.
-
-
-
-
-
-
-
-
-
 
 =head2 MessageId => Str
 
-  
-
-A unique identifier for the message. Message IDs are considered unique
+  A unique identifier for the message. Message IDs are considered unique
 across all AWS accounts for an extended period of time.
-
-
-
-
-
-
-
-
-
 
 =head2 ReceiptHandle => Str
 
-  
-
-An identifier associated with the act of receiving the message. A new
+  An identifier associated with the act of receiving the message. A new
 receipt handle is returned every time you receive a message. When
 deleting a message, you provide the last received receipt handle to
 delete the message.
-
-
-
-
-
-
-
-
-
 
 
 

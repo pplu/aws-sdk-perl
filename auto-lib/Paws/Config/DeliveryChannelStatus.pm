@@ -36,66 +36,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Del
 
 =head2 configHistoryDeliveryInfo => Paws::Config::ConfigExportDeliveryInfo
 
-  
-
-A list that contains the status of the delivery of the configuration
+  A list that contains the status of the delivery of the configuration
 history to the specified Amazon S3 bucket.
-
-
-
-
-
-
-
-
-
 
 =head2 configSnapshotDeliveryInfo => Paws::Config::ConfigExportDeliveryInfo
 
-  
-
-A list containing the status of the delivery of the snapshot to the
+  A list containing the status of the delivery of the snapshot to the
 specified Amazon S3 bucket.
-
-
-
-
-
-
-
-
-
 
 =head2 configStreamDeliveryInfo => Paws::Config::ConfigStreamDeliveryInfo
 
-  
-
-A list containing the status of the delivery of the configuration
+  A list containing the status of the delivery of the configuration
 stream notification to the specified Amazon SNS topic.
-
-
-
-
-
-
-
-
-
 
 =head2 name => Str
 
-  
-
-The name of the delivery channel.
-
-
-
-
-
-
-
-
-
+  The name of the delivery channel.
 
 
 

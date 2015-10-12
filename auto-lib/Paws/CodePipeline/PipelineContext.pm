@@ -39,35 +39,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 pipelineName => Str
 
-  
-
-The name of the pipeline. This is a user-specified value. Pipeline
+  The name of the pipeline. This is a user-specified value. Pipeline
 names must be unique across all pipeline names under an Amazon Web
 Services account.
 
-
-
-
-
-
-
-
-
-
 =head2 stage => Paws::CodePipeline::StageContext
 
-  
-
-The stage of the pipeline.
-
-
-
-
-
-
-
-
-
+  The stage of the pipeline.
 
 
 

@@ -35,24 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
 =head2 StreamArn => Str
 
-  
-
-The Amazon Resource Name (ARN) for the stream.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) for the stream.
 
 =head2 StreamLabel => Str
 
-  
-
-A timestamp, in ISO 8601 format, for this stream.
+  A timestamp, in ISO 8601 format, for this stream.
 
 Note that I<LatestStreamLabel> is not a unique identifier for the
 stream, because it is possible that a stream from another table might
@@ -75,29 +62,9 @@ the I<StreamLabel>
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 TableName => Str
 
-  
-
-The DynamoDB table with which the stream is associated.
-
-
-
-
-
-
-
-
-
+  The DynamoDB table with which the stream is associated.
 
 
 

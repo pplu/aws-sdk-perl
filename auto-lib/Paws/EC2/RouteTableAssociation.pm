@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::RouteT
 
 =head2 Main => Bool
 
-  
-
-Indicates whether this is the main route table.
-
-
-
-
-
-
-
-
-
+  Indicates whether this is the main route table.
 
 =head2 RouteTableAssociationId => Str
 
-  
-
-The ID of the association between a route table and a subnet.
-
-
-
-
-
-
-
-
-
+  The ID of the association between a route table and a subnet.
 
 =head2 RouteTableId => Str
 
-  
-
-The ID of the route table.
-
-
-
-
-
-
-
-
-
+  The ID of the route table.
 
 =head2 SubnetId => Str
 
-  
-
-The ID of the subnet. A subnet ID is not returned for an implicit
+  The ID of the subnet. A subnet ID is not returned for an implicit
 association.
-
-
-
-
-
-
-
-
-
 
 
 

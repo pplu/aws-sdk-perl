@@ -15,18 +15,7 @@ Paws::IAM::CreateAccessKeyResponse
 
 =head2 B<REQUIRED> AccessKey => Paws::IAM::AccessKey
 
-  
-
-Information about the access key.
-
-
-
-
-
-
-
-
-
+  Information about the access key.
 
 
 =cut

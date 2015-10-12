@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::R
 
 =head2 Family => Str
 
-  
-
-The operating system family.
-
-
-
-
-
-
-
-
-
+  The operating system family.
 
 =head2 Name => Str
 
-  
-
-The operating system name.
-
-
-
-
-
-
-
-
-
+  The operating system name.
 
 =head2 Version => Str
 
-  
-
-The operating system version.
-
-
-
-
-
-
-
-
-
+  The operating system version.
 
 
 

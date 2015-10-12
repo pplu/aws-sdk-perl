@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> applicationName => Str
 
-  
-
-The name of the application. This name must be unique with the
+  The name of the application. This name must be unique with the
 applicable IAM user or AWS account.
-
-
-
-
-
-
-
-
-
 
 
 

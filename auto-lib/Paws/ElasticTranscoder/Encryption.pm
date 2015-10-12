@@ -36,28 +36,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 InitializationVector => Str
 
-  
-
-The series of random bits created by a random bit generator, unique for
+  The series of random bits created by a random bit generator, unique for
 every encryption operation, that you used to encrypt your input files
 or that you want Elastic Transcoder to use to encrypt your output
 files. The initialization vector must be base64-encoded, and it must be
 exactly 16 bytes long before being base64-encoded.
 
-
-
-
-
-
-
-
-
-
 =head2 Key => Str
 
-  
-
-The data encryption key that you want Elastic Transcoder to use to
+  The data encryption key that you want Elastic Transcoder to use to
 encrypt your output file, or that was used to encrypt your input file.
 The key must be base64-encoded and it must be one of the following bit
 lengths before being base64-encoded:
@@ -67,39 +54,17 @@ C<128>, C<192>, or C<256>.
 The key must also be encrypted by using the Amazon Key Management
 Service.
 
-
-
-
-
-
-
-
-
-
 =head2 KeyMd5 => Str
 
-  
-
-The MD5 digest of the key that you used to encrypt your input file, or
+  The MD5 digest of the key that you used to encrypt your input file, or
 that you want Elastic Transcoder to use to encrypt your output file.
 Elastic Transcoder uses the key digest as a checksum to make sure your
 key was not corrupted in transit. The key MD5 must be base64-encoded,
 and it must be exactly 16 bytes long before being base64-encoded.
 
-
-
-
-
-
-
-
-
-
 =head2 Mode => Str
 
-  
-
-The specific server-side encryption mode that you want Elastic
+  The specific server-side encryption mode that you want Elastic
 Transcoder to use when decrypting your input files or encrypting your
 output files. Elastic Transcoder supports the following options:
 
@@ -158,15 +123,6 @@ For the AES modes, your private encryption keys and your unencrypted
 data are never stored by AWS; therefore, it is important that you
 safely manage your encryption keys. If you lose them, you won't be able
 to unencrypt your data.
-
-
-
-
-
-
-
-
-
 
 
 

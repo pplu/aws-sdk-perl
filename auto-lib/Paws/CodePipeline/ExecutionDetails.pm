@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 externalExecutionId => Str
 
-  
-
-The system-generated unique ID of this action used to identify this job
+  The system-generated unique ID of this action used to identify this job
 worker in any external systems, such as AWS CodeDeploy.
-
-
-
-
-
-
-
-
-
 
 =head2 percentComplete => Int
 
-  
-
-The percentage of work completed on the action, represented on a scale
+  The percentage of work completed on the action, represented on a scale
 of zero to one hundred percent.
-
-
-
-
-
-
-
-
-
 
 =head2 summary => Str
 
-  
-
-The summary of the current status of the actions.
-
-
-
-
-
-
-
-
-
+  The summary of the current status of the actions.
 
 
 

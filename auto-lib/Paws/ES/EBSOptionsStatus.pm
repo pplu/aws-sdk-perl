@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::EBSOpti
 
 =head2 B<REQUIRED> Options => Paws::ES::EBSOptions
 
-  
-
-Specifies the EBS options for the specified Elasticsearch domain.
-
-
-
-
-
-
-
-
-
+  Specifies the EBS options for the specified Elasticsearch domain.
 
 =head2 B<REQUIRED> Status => Paws::ES::OptionStatus
 
-  
-
-Specifies the status of the EBS options for the specified Elasticsearch
+  Specifies the status of the EBS options for the specified Elasticsearch
 domain.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -37,80 +37,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Co
 
 =head2 attachmentSet => ArrayRef[Paws::Support::AttachmentDetails]
 
-  
-
-Information about the attachments to the case communication.
-
-
-
-
-
-
-
-
-
+  Information about the attachments to the case communication.
 
 =head2 body => Str
 
-  
-
-The text of the communication between the customer and AWS Support.
-
-
-
-
-
-
-
-
-
+  The text of the communication between the customer and AWS Support.
 
 =head2 caseId => Str
 
-  
-
-The AWS Support case ID requested or returned in the call. The case ID
+  The AWS Support case ID requested or returned in the call. The case ID
 is an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
-
-
-
-
-
-
-
-
-
 =head2 submittedBy => Str
 
-  
-
-The email address of the account that submitted the AWS Support case.
-
-
-
-
-
-
-
-
-
+  The email address of the account that submitted the AWS Support case.
 
 =head2 timeCreated => Str
 
-  
-
-The time the communication was created.
-
-
-
-
-
-
-
-
-
+  The time the communication was created.
 
 
 

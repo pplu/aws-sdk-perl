@@ -14,18 +14,7 @@ Paws::DS::CreateComputerResult
 
 =head2 Computer => Paws::DS::Computer
 
-  
-
-A Computer object the represents the computer account.
-
-
-
-
-
-
-
-
-
+  A Computer object the represents the computer account.
 
 
 =cut

@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 SourceSnapshotClusterIdentifier => Str
 
-  
-
-The identifier of the cluster the source snapshot was created from.
+  The identifier of the cluster the source snapshot was created from.
 This parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.
@@ -51,20 +49,9 @@ Constraints:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SourceSnapshotIdentifier => Str
 
-  
-
-The identifier for the source snapshot.
+  The identifier for the source snapshot.
 
 Constraints:
 
@@ -75,20 +62,9 @@ state is C<available>.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TargetSnapshotIdentifier => Str
 
-  
-
-The identifier given to the new manual snapshot.
+  The identifier given to the new manual snapshot.
 
 Constraints:
 
@@ -105,15 +81,6 @@ Constraints:
 =item * Must be unique for the AWS account that is making the request.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SerialNumber => Str
 
-  
-
-The serial number that uniquely identifies the MFA device. For virtual
+  The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the same as the ARN.
-
-
-
-
-
-
-
-
-
 
 
 

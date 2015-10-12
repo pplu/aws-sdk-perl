@@ -22,23 +22,12 @@ Paws::DirectConnect::Connection
 
 =head2 bandwidth => Str
 
-  
-
-Bandwidth of the connection.
+  Bandwidth of the connection.
 
 Example: 1Gbps (for regular connections), or 500Mbps (for hosted
 connections)
 
 Default: None
-
-
-
-
-
-
-
-
-
 =head2 connectionId => Str
 
   

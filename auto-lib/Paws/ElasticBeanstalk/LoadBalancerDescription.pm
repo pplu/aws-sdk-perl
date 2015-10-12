@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Domain => Str
 
-  
-
-The domain name of the LoadBalancer.
-
-
-
-
-
-
-
-
-
+  The domain name of the LoadBalancer.
 
 =head2 Listeners => ArrayRef[Paws::ElasticBeanstalk::Listener]
 
-  
-
-A list of Listeners used by the LoadBalancer.
-
-
-
-
-
-
-
-
-
+  A list of Listeners used by the LoadBalancer.
 
 =head2 LoadBalancerName => Str
 
-  
-
-The name of the LoadBalancer.
-
-
-
-
-
-
-
-
-
+  The name of the LoadBalancer.
 
 
 

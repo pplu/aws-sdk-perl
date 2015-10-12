@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 GrantId => Str
 
-  
-
-Unique identifier of the grant to be retired. The grant ID is returned
+  Unique identifier of the grant to be retired. The grant ID is returned
 by the C<CreateGrant> function.
 
 =over
@@ -48,35 +46,13 @@ by the C<CreateGrant> function.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 GrantToken => Str
 
-  
-
-Token that identifies the grant to be retired.
-
-
-
-
-
-
-
-
-
+  Token that identifies the grant to be retired.
 
 =head2 KeyId => Str
 
-  
-
-A unique identifier for the customer master key associated with the
+  A unique identifier for the customer master key associated with the
 grant. This value can be a globally unique identifier or a fully
 specified ARN of the key.
 
@@ -89,15 +65,6 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 12345678-1234-1234-1234-123456789012
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

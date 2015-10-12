@@ -35,26 +35,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Predic
 
 =head2 B<REQUIRED> DataId => Str
 
-  
-
-A unique identifier for a predicate in a C<Rule>, such as
+  A unique identifier for a predicate in a C<Rule>, such as
 C<ByteMatchSetId> or C<IPSetId>. The ID is returned by the
 corresponding C<Create> or C<List> command.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Negated => Bool
 
-  
-
-Set C<Negated> to C<False> if you want AWS WAF to allow, block, or
+  Set C<Negated> to C<False> if you want AWS WAF to allow, block, or
 count requests based on the settings in the specified ByteMatchSet,
 IPSet, or SqlInjectionMatchSet. For example, if an C<IPSet> includes
 the IP address C<192.0.2.44>, AWS WAF will allow or block requests
@@ -66,30 +53,10 @@ IPSet, or SqlInjectionMatchSet. For example, if an C<IPSet> includes
 the IP address C<192.0.2.44>, AWS WAF will allow, block, or count
 requests based on all IP addresses I<except> C<192.0.2.44>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Type => Str
 
-  
-
-The type of predicate in a C<Rule>, such as C<ByteMatchSet> or
+  The type of predicate in a C<Rule>, such as C<ByteMatchSet> or
 C<IPSet>.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -44,186 +44,54 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 agentId => Str
 
-  
-
-The EC2 instance ID where the agent is installed that is used during
+  The EC2 instance ID where the agent is installed that is used during
 the assessment that generates the finding.
-
-
-
-
-
-
-
-
-
 
 =head2 attributes => ArrayRef[Paws::Inspector::Attribute]
 
-  
-
-The system-defined attributes for the finding.
-
-
-
-
-
-
-
-
-
+  The system-defined attributes for the finding.
 
 =head2 autoScalingGroup => Str
 
-  
-
-The autoscaling group of the EC2 instance where the agent is installed
+  The autoscaling group of the EC2 instance where the agent is installed
 that is used during the assessment that generates the finding.
-
-
-
-
-
-
-
-
-
 
 =head2 description => Paws::Inspector::LocalizedText
 
-  
-
-The description of the finding.
-
-
-
-
-
-
-
-
-
+  The description of the finding.
 
 =head2 finding => Paws::Inspector::LocalizedText
 
-  
-
-A short description that identifies the finding.
-
-
-
-
-
-
-
-
-
+  A short description that identifies the finding.
 
 =head2 findingArn => Str
 
-  
-
-The ARN specifying the finding.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the finding.
 
 =head2 recommendation => Paws::Inspector::LocalizedText
 
-  
-
-The recommendation for the finding.
-
-
-
-
-
-
-
-
-
+  The recommendation for the finding.
 
 =head2 ruleName => Str
 
-  
-
-The rule name that is used to generate the finding.
-
-
-
-
-
-
-
-
-
+  The rule name that is used to generate the finding.
 
 =head2 rulesPackageArn => Str
 
-  
-
-The ARN of the rules package that is used to generate the finding.
-
-
-
-
-
-
-
-
-
+  The ARN of the rules package that is used to generate the finding.
 
 =head2 runArn => Str
 
-  
-
-The ARN of the assessment run that generated the finding.
-
-
-
-
-
-
-
-
-
+  The ARN of the assessment run that generated the finding.
 
 =head2 severity => Str
 
-  
-
-The finding severity. Values can be set to I<High>, I<Medium>, I<Low>,
+  The finding severity. Values can be set to I<High>, I<Medium>, I<Low>,
 and I<Informational>.
-
-
-
-
-
-
-
-
-
 
 =head2 userAttributes => ArrayRef[Paws::Inspector::Attribute]
 
-  
-
-The user-defined attributes that are assigned to the finding.
-
-
-
-
-
-
-
-
-
+  The user-defined attributes that are assigned to the finding.
 
 
 

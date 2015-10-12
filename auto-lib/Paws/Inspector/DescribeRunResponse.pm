@@ -14,18 +14,7 @@ Paws::Inspector::DescribeRunResponse
 
 =head2 run => Paws::Inspector::Run
 
-  
-
-Information about the assessment run.
-
-
-
-
-
-
-
-
-
+  Information about the assessment run.
 
 
 =cut

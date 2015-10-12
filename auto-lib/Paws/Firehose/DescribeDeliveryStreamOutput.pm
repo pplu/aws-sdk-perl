@@ -14,18 +14,7 @@ Paws::Firehose::DescribeDeliveryStreamOutput
 
 =head2 B<REQUIRED> DeliveryStreamDescription => Paws::Firehose::DeliveryStreamDescription
 
-  
-
-Information about the delivery stream.
-
-
-
-
-
-
-
-
-
+  Information about the delivery stream.
 
 
 =cut

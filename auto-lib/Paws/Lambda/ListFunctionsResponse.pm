@@ -16,32 +16,10 @@ Paws::Lambda::ListFunctionsResponse
 
 =head2 Functions => ArrayRef[Paws::Lambda::FunctionConfiguration]
 
-  
-
-A list of Lambda functions.
-
-
-
-
-
-
-
-
-
+  A list of Lambda functions.
 =head2 NextMarker => Str
 
-  
-
-A string, present if there are more functions.
-
-
-
-
-
-
-
-
-
+  A string, present if there are more functions.
 
 
 =cut

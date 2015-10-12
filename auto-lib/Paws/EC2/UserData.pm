@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::UserDa
 
 =head2 Data => Str
 
-  
-
-The Base64-encoded MIME user data for the instance.
-
-
-
-
-
-
-
-
-
+  The Base64-encoded MIME user data for the instance.
 
 
 

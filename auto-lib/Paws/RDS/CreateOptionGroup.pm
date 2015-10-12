@@ -38,56 +38,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EngineName => Str
 
-  
-
-Specifies the name of the engine that this option group should be
+  Specifies the name of the engine that this option group should be
 associated with.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> MajorEngineVersion => Str
 
-  
-
-Specifies the major version of the engine that this option group should
+  Specifies the major version of the engine that this option group should
 be associated with.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> OptionGroupDescription => Str
 
-  
-
-The description of the option group.
-
-
-
-
-
-
-
-
-
+  The description of the option group.
 
 =head2 B<REQUIRED> OptionGroupName => Str
 
-  
-
-Specifies the name of the option group to be created.
+  Specifies the name of the option group to be created.
 
 Constraints:
 
@@ -102,15 +67,6 @@ Constraints:
 =back
 
 Example: C<myoptiongroup>
-
-
-
-
-
-
-
-
-
 
 =head2 Tags => ArrayRef[Paws::RDS::Tag]
 

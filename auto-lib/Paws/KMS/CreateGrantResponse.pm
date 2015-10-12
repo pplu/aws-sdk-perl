@@ -15,33 +15,11 @@ Paws::KMS::CreateGrantResponse
 
 =head2 GrantId => Str
 
-  
-
-Unique grant identifier. You can use the I<GrantId> value to revoke a
+  Unique grant identifier. You can use the I<GrantId> value to revoke a
 grant.
-
-
-
-
-
-
-
-
-
 =head2 GrantToken => Str
 
-  
-
-For more information, see Grant Tokens.
-
-
-
-
-
-
-
-
-
+  For more information, see Grant Tokens.
 
 
 =cut

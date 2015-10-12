@@ -35,26 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AliasName => Str
 
-  
-
-String that contains the display name. The name must start with the
+  String that contains the display name. The name must start with the
 word "alias" followed by a forward slash (alias/). Aliases that begin
 with "alias/AWS" are reserved.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TargetKeyId => Str
 
-  
-
-An identifier of the key for which you are creating the alias. This
+  An identifier of the key for which you are creating the alias. This
 value cannot be another alias but can be a globally unique identifier
 or a fully specified ARN to a key.
 
@@ -67,15 +54,6 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 12345678-1234-1234-1234-123456789012
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

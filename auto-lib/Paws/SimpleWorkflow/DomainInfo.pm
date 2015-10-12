@@ -35,39 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 description => Str
 
-  
-
-The description of the domain provided through RegisterDomain.
-
-
-
-
-
-
-
-
-
+  The description of the domain provided through RegisterDomain.
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of the domain. This name is unique within the account.
-
-
-
-
-
-
-
-
-
+  The name of the domain. This name is unique within the account.
 
 =head2 B<REQUIRED> status => Str
 
-  
-
-The status of the domain:
+  The status of the domain:
 
 =over
 
@@ -80,15 +56,6 @@ but is still in use. You should not create new workflow executions in
 this domain.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

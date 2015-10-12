@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::SqsAct
 
 =head2 B<REQUIRED> queueUrl => Str
 
-  
-
-The URL of the Amazon SQS queue.
-
-
-
-
-
-
-
-
-
+  The URL of the Amazon SQS queue.
 
 =head2 B<REQUIRED> roleArn => Str
 
-  
-
-The ARN of the IAM role that grants access.
-
-
-
-
-
-
-
-
-
+  The ARN of the IAM role that grants access.
 
 =head2 useBase64 => Bool
 
-  
-
-Specifies whether to use Base64 encoding.
-
-
-
-
-
-
-
-
-
+  Specifies whether to use Base64 encoding.
 
 
 

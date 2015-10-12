@@ -16,32 +16,10 @@ Paws::AutoScaling::DescribeMetricCollectionTypesAnswer
 
 =head2 Granularities => ArrayRef[Paws::AutoScaling::MetricGranularityType]
 
-  
-
-The granularities for the metrics.
-
-
-
-
-
-
-
-
-
+  The granularities for the metrics.
 =head2 Metrics => ArrayRef[Paws::AutoScaling::MetricCollectionType]
 
-  
-
-One or more metrics.
-
-
-
-
-
-
-
-
-
+  One or more metrics.
 
 
 =cut

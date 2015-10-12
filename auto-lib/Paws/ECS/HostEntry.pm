@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::HostEn
 
 =head2 B<REQUIRED> hostname => Str
 
-  
-
-The hostname to use in the C</etc/hosts> entry.
-
-
-
-
-
-
-
-
-
+  The hostname to use in the C</etc/hosts> entry.
 
 =head2 B<REQUIRED> ipAddress => Str
 
-  
-
-The IP address to use in the C</etc/hosts> entry.
-
-
-
-
-
-
-
-
-
+  The IP address to use in the C</etc/hosts> entry.
 
 
 

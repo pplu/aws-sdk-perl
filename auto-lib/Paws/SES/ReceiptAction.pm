@@ -39,114 +39,37 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Receip
 
 =head2 AddHeaderAction => Paws::SES::AddHeaderAction
 
-  
-
-Adds a header to the received email.
-
-
-
-
-
-
-
-
-
+  Adds a header to the received email.
 
 =head2 BounceAction => Paws::SES::BounceAction
 
-  
-
-Rejects the received email by returning a bounce response to the sender
+  Rejects the received email by returning a bounce response to the sender
 and, optionally, publishes a notification to Amazon Simple Notification
 Service (Amazon SNS).
 
-
-
-
-
-
-
-
-
-
 =head2 LambdaAction => Paws::SES::LambdaAction
 
-  
-
-Calls an AWS Lambda function, and optionally, publishes a notification
+  Calls an AWS Lambda function, and optionally, publishes a notification
 to Amazon SNS.
-
-
-
-
-
-
-
-
-
 
 =head2 S3Action => Paws::SES::S3Action
 
-  
-
-Saves the received message to an Amazon Simple Storage Service (Amazon
+  Saves the received message to an Amazon Simple Storage Service (Amazon
 S3) bucket and, optionally, publishes a notification to Amazon SNS.
-
-
-
-
-
-
-
-
-
 
 =head2 SNSAction => Paws::SES::SNSAction
 
-  
-
-Publishes the email content within a notification to Amazon SNS.
-
-
-
-
-
-
-
-
-
+  Publishes the email content within a notification to Amazon SNS.
 
 =head2 StopAction => Paws::SES::StopAction
 
-  
-
-Terminates the evaluation of the receipt rule set and optionally
+  Terminates the evaluation of the receipt rule set and optionally
 publishes a notification to Amazon SNS.
-
-
-
-
-
-
-
-
-
 
 =head2 WorkmailAction => Paws::SES::WorkmailAction
 
-  
-
-Calls Amazon WorkMail and, optionally, publishes a notification to
+  Calls Amazon WorkMail and, optionally, publishes a notification to
 Amazon SNS.
-
-
-
-
-
-
-
-
-
 
 
 

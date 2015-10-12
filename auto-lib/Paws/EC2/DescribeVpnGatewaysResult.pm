@@ -15,18 +15,7 @@ Paws::EC2::DescribeVpnGatewaysResult
 
 =head2 VpnGateways => ArrayRef[Paws::EC2::VpnGateway]
 
-  
-
-Information about one or more virtual private gateways.
-
-
-
-
-
-
-
-
-
+  Information about one or more virtual private gateways.
 
 
 =cut

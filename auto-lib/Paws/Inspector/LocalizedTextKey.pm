@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 facility => Str
 
-  
-
-The module response source of the text.
-
-
-
-
-
-
-
-
-
+  The module response source of the text.
 
 =head2 id => Str
 
-  
-
-Part of the module response source of the text.
-
-
-
-
-
-
-
-
-
+  Part of the module response source of the text.
 
 
 

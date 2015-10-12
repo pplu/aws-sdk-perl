@@ -38,106 +38,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head2 Dimensions => ArrayRef[Paws::CloudWatch::Dimension]
 
-  
-
-A list of dimensions associated with the metric. Note, when using the
+  A list of dimensions associated with the metric. Note, when using the
 Dimensions value in a query, you need to append .member.N to it (e.g.,
 Dimensions.member.N).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> MetricName => Str
 
-  
-
-The name of the metric.
-
-
-
-
-
-
-
-
-
+  The name of the metric.
 
 =head2 StatisticValues => Paws::CloudWatch::StatisticSet
 
-  
-
-A set of statistical values describing the metric.
-
-
-
-
-
-
-
-
-
+  A set of statistical values describing the metric.
 
 =head2 Timestamp => Str
 
-  
-
-The time stamp used for the metric. If not specified, the default value
+  The time stamp used for the metric. If not specified, the default value
 is set to the time the metric data was received. Amazon CloudWatch uses
 Coordinated Universal Time (UTC) when returning time stamps, which do
 not accommodate seasonal adjustments such as daylight savings time. For
 more information, see Time stamps in the I<Amazon CloudWatch Developer
 Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 Unit => Str
 
-  
-
-The unit of the metric.
-
-
-
-
-
-
-
-
-
+  The unit of the metric.
 
 =head2 Value => Num
 
-  
-
-The value for the metric.
+  The value for the metric.
 
 Although the C<Value> parameter accepts numbers of type C<Double>,
 Amazon CloudWatch truncates values with very large exponents. Values
 with base-10 exponents greater than 126 (1 x 10^126) are truncated.
 Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
 are also truncated.
-
-
-
-
-
-
-
-
-
 
 
 

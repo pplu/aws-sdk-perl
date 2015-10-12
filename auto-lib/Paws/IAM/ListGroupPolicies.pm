@@ -36,42 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GroupName => Str
 
-  
-
-The name of the group to list policies for.
-
-
-
-
-
-
-
-
-
+  The name of the group to list policies for.
 
 =head2 Marker => Str
 
-  
-
-Use this parameter only when paginating results and only after you
+  Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
 the value of the C<Marker> element in the response you received to
 inform the next call about where to start.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxItems => Int
 
-  
-
-Use this only when paginating results to indicate the maximum number of
+  Use this only when paginating results to indicate the maximum number of
 items you want in the response. If there are additional items beyond
 the maximum you specify, the C<IsTruncated> response element is
 C<true>.
@@ -81,15 +57,6 @@ This parameter is optional. If you do not include it, it defaults to
 results available. If this is the case, the C<IsTruncated> response
 element returns C<true> and C<Marker> contains a value to include in
 the subsequent call that tells the service where to continue from.
-
-
-
-
-
-
-
-
-
 
 
 

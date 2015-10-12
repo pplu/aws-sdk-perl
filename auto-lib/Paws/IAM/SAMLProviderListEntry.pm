@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::SAMLPr
 
 =head2 Arn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the SAML provider.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the SAML provider.
 
 =head2 CreateDate => Str
 
-  
-
-The date and time when the SAML provider was created.
-
-
-
-
-
-
-
-
-
+  The date and time when the SAML provider was created.
 
 =head2 ValidUntil => Str
 
-  
-
-The expiration date and time for the SAML provider.
-
-
-
-
-
-
-
-
-
+  The expiration date and time for the SAML provider.
 
 
 

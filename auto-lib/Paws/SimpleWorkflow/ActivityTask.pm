@@ -19,92 +19,26 @@ Paws::SimpleWorkflow::ActivityTask
 
 =head2 B<REQUIRED> activityId => Str
 
-  
-
-The unique ID of the task.
-
-
-
-
-
-
-
-
-
+  The unique ID of the task.
 =head2 B<REQUIRED> activityType => Paws::SimpleWorkflow::ActivityType
 
-  
-
-The type of this activity task.
-
-
-
-
-
-
-
-
-
+  The type of this activity task.
 =head2 input => Str
 
-  
-
-The inputs provided when the activity task was scheduled. The form of
+  The inputs provided when the activity task was scheduled. The form of
 the input is user defined and should be meaningful to the activity
 implementation.
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> startedEventId => Int
 
-  
-
-The ID of the C<ActivityTaskStarted> event recorded in the history.
-
-
-
-
-
-
-
-
-
+  The ID of the C<ActivityTaskStarted> event recorded in the history.
 =head2 B<REQUIRED> taskToken => Str
 
-  
-
-The opaque string used as a handle on the task. This token is used by
+  The opaque string used as a handle on the task. This token is used by
 workers to communicate progress and response information back to the
 system about the task.
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> workflowExecution => Paws::SimpleWorkflow::WorkflowExecution
 
-  
-
-The workflow execution that started this activity task.
-
-
-
-
-
-
-
-
-
+  The workflow execution that started this activity task.
 
 
 =cut

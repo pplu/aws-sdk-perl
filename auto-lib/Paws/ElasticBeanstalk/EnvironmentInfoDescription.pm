@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Ec2InstanceId => Str
 
-  
-
-The Amazon EC2 Instance ID for this information.
-
-
-
-
-
-
-
-
-
+  The Amazon EC2 Instance ID for this information.
 
 =head2 InfoType => Str
 
-  
-
-The type of information retrieved.
-
-
-
-
-
-
-
-
-
+  The type of information retrieved.
 
 =head2 Message => Str
 
-  
-
-The retrieved information.
-
-
-
-
-
-
-
-
-
+  The retrieved information.
 
 =head2 SampleTimestamp => Str
 
-  
-
-The time stamp when this information was retrieved.
-
-
-
-
-
-
-
-
-
+  The time stamp when this information was retrieved.
 
 
 

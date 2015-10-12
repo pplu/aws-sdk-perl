@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> pipelineIds => ArrayRef[Str]
 
-  
-
-The IDs of the pipelines to describe. You can pass as many as 25
+  The IDs of the pipelines to describe. You can pass as many as 25
 identifiers in a single call. To obtain pipeline IDs, call
 ListPipelines.
-
-
-
-
-
-
-
-
-
 
 
 

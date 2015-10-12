@@ -38,42 +38,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::User o
 
 =head2 B<REQUIRED> Arn => Str
 
-  
-
-The Amazon Resource Name (ARN) that identifies the user. For more
+  The Amazon Resource Name (ARN) that identifies the user. For more
 information about ARNs and how to use ARNs in policies, see IAM
 Identifiers in the I<Using IAM> guide.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> CreateDate => Str
 
-  
-
-The date and time, in ISO 8601 date-time format, when the user was
+  The date and time, in ISO 8601 date-time format, when the user was
 created.
-
-
-
-
-
-
-
-
-
 
 =head2 PasswordLastUsed => Str
 
-  
-
-The date and time, in ISO 8601 date-time format, when the user's
+  The date and time, in ISO 8601 date-time format, when the user's
 password was last used to sign in to an AWS website. For a list of AWS
 websites that capture a user's last sign-in time, see the Credential
 Reports topic in the I<Using IAM> guide. If a password is used more
@@ -99,61 +75,19 @@ there is no sign-in data associated with the user
 
 This value is returned only in the GetUser and ListUsers actions.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Path => Str
 
-  
-
-The path to the user. For more information about paths, see IAM
+  The path to the user. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> UserId => Str
 
-  
-
-The stable and unique string identifying the user. For more information
+  The stable and unique string identifying the user. For more information
 about IDs, see IAM Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The friendly name identifying the user.
-
-
-
-
-
-
-
-
-
+  The friendly name identifying the user.
 
 
 

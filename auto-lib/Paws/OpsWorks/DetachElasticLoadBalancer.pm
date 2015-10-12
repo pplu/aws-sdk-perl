@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ElasticLoadBalancerName => Str
 
-  
-
-The Elastic Load Balancing instance's name.
-
-
-
-
-
-
-
-
-
+  The Elastic Load Balancing instance's name.
 
 =head2 B<REQUIRED> LayerId => Str
 
-  
-
-The ID of the layer that the Elastic Load Balancing instance is
+  The ID of the layer that the Elastic Load Balancing instance is
 attached to.
-
-
-
-
-
-
-
-
-
 
 
 

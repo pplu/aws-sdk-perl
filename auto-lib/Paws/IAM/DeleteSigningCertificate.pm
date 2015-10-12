@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateId => Str
 
-  
-
-The ID of the signing certificate to delete.
-
-
-
-
-
-
-
-
-
+  The ID of the signing certificate to delete.
 
 =head2 UserName => Str
 
-  
-
-The name of the user the signing certificate belongs to.
-
-
-
-
-
-
-
-
-
+  The name of the user the signing certificate belongs to.
 
 
 

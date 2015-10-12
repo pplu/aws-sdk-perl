@@ -14,19 +14,8 @@ Paws::Config::DescribeConfigurationRecordersResponse
 
 =head2 ConfigurationRecorders => ArrayRef[Paws::Config::ConfigurationRecorder]
 
-  
-
-A list that contains the descriptions of the specified configuration
+  A list that contains the descriptions of the specified configuration
 recorders.
-
-
-
-
-
-
-
-
-
 
 
 =cut

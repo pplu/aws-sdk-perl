@@ -38,9 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 defaultTaskHeartbeatTimeout => Str
 
-  
-
-I<Optional.> The default maximum time, in seconds, before which a
+  I<Optional.> The default maximum time, in seconds, before which a
 worker processing a task must report progress by calling
 RecordActivityTaskHeartbeat.
 
@@ -55,39 +53,17 @@ activity worker should clean up the activity task.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-
-
-
-
-
-
-
-
-
 =head2 defaultTaskList => Paws::SimpleWorkflow::TaskList
 
-  
-
-I<Optional.> The default task list specified for this activity type at
+  I<Optional.> The default task list specified for this activity type at
 registration. This default is used if a task list is not provided when
 a task is scheduled through the C<ScheduleActivityTask> decision. You
 can override the default registered task list when scheduling a task
 through the C<ScheduleActivityTask> decision.
 
-
-
-
-
-
-
-
-
-
 =head2 defaultTaskPriority => Str
 
-  
-
-I<Optional.> The default task priority for tasks of this activity type,
+  I<Optional.> The default task priority for tasks of this activity type,
 specified at registration. If not set, then "0" will be used as the
 default priority. This default can be overridden when scheduling an
 activity task.
@@ -99,20 +75,9 @@ indicate higher priority.
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 defaultTaskScheduleToCloseTimeout => Str
 
-  
-
-I<Optional.> The default maximum duration, specified when registering
+  I<Optional.> The default maximum duration, specified when registering
 the activity type, for tasks of this activity type. You can override
 this default when scheduling a task through the C<ScheduleActivityTask>
 decision.
@@ -120,20 +85,9 @@ decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-
-
-
-
-
-
-
-
-
 =head2 defaultTaskScheduleToStartTimeout => Str
 
-  
-
-I<Optional.> The default maximum duration, specified when registering
+  I<Optional.> The default maximum duration, specified when registering
 the activity type, that a task of an activity type can wait before
 being assigned to a worker. You can override this default when
 scheduling a task through the C<ScheduleActivityTask> decision.
@@ -141,35 +95,15 @@ scheduling a task through the C<ScheduleActivityTask> decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-
-
-
-
-
-
-
-
-
 =head2 defaultTaskStartToCloseTimeout => Str
 
-  
-
-I<Optional.> The default maximum duration for tasks of an activity type
+  I<Optional.> The default maximum duration for tasks of an activity type
 specified when registering the activity type. You can override this
 default when scheduling a task through the C<ScheduleActivityTask>
 decision.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,53 +35,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 CacheNodeIdsToRemove => ArrayRef[Str]
 
-  
-
-A list of cache node IDs that are being removed (or will be removed)
+  A list of cache node IDs that are being removed (or will be removed)
 from the cache cluster. A node ID is a numeric identifier (0001, 0002,
 etc.).
 
-
-
-
-
-
-
-
-
-
 =head2 EngineVersion => Str
 
-  
-
-The new cache engine version that the cache cluster will run.
-
-
-
-
-
-
-
-
-
+  The new cache engine version that the cache cluster will run.
 
 =head2 NumCacheNodes => Int
 
-  
-
-The new number of cache nodes for the cache cluster.
+  The new number of cache nodes for the cache cluster.
 
 For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
-
-
-
-
-
-
-
-
-
 
 
 

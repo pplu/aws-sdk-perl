@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EFS::FileSy
 
 =head2 Timestamp => Str
 
-  
-
-The time at which the size of data, returned in the C<Value> field, was
+  The time at which the size of data, returned in the C<Value> field, was
 determined. The value is the integer number of seconds since
 1970-01-01T00:00:00Z.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Value => Int
 
-  
-
-The latest known metered size, in bytes, of data stored in the file
+  The latest known metered size, in bytes, of data stored in the file
 system.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -15,18 +15,7 @@ Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage
 
 =head2 Environments => ArrayRef[Paws::ElasticBeanstalk::EnvironmentDescription]
 
-  
-
-Returns an EnvironmentDescription list.
-
-
-
-
-
-
-
-
-
+  Returns an EnvironmentDescription list.
 
 
 =cut

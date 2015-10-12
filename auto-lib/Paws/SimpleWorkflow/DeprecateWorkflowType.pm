@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> domain => Str
 
-  
-
-The name of the domain in which the workflow type is registered.
-
-
-
-
-
-
-
-
-
+  The name of the domain in which the workflow type is registered.
 
 =head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
 
-  
-
-The workflow type to deprecate.
-
-
-
-
-
-
-
-
-
+  The workflow type to deprecate.
 
 
 

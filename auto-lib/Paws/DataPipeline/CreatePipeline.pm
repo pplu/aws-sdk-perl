@@ -37,58 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 description => Str
 
-  
-
-The description for the pipeline.
-
-
-
-
-
-
-
-
-
+  The description for the pipeline.
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name for the pipeline. You can use the same name for multiple
+  The name for the pipeline. You can use the same name for multiple
 pipelines associated with your AWS account, because AWS Data Pipeline
 assigns each pipeline a unique pipeline identifier.
 
-
-
-
-
-
-
-
-
-
 =head2 tags => ArrayRef[Paws::DataPipeline::Tag]
 
-  
-
-A list of tags to associate with the pipeline at creation. Tags let you
+  A list of tags to associate with the pipeline at creation. Tags let you
 control access to pipelines. For more information, see Controlling User
 Access to Pipelines in the I<AWS Data Pipeline Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> uniqueId => Str
 
-  
-
-A unique identifier. This identifier is not the same as the pipeline
+  A unique identifier. This identifier is not the same as the pipeline
 identifier assigned by AWS Data Pipeline. You are responsible for
 defining the format and ensuring the uniqueness of this identifier. You
 use this parameter to ensure idempotency during repeated calls to
@@ -100,15 +65,6 @@ same name and unique identifier, a new pipeline is not created.
 Instead, you'll receive the pipeline identifier from the previous
 attempt. The uniqueness of the name and unique identifier combination
 is scoped to the AWS account or IAM user credentials.
-
-
-
-
-
-
-
-
-
 
 
 

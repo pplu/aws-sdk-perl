@@ -14,9 +14,7 @@ Paws::WAF::GetRuleResponse
 
 =head2 Rule => Paws::WAF::Rule
 
-  
-
-Information about the Rule that you specified in the C<GetRule>
+  Information about the Rule that you specified in the C<GetRule>
 request. For more information, see the following topics:
 
 =over
@@ -28,15 +26,6 @@ objects, and C<RuleId>
 C<Negated>, and C<Type>
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 =cut

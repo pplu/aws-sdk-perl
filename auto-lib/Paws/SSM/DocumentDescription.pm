@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Docume
 
 =head2 CreatedDate => Str
 
-  
-
-The date when the configuration document was created.
-
-
-
-
-
-
-
-
-
+  The date when the configuration document was created.
 
 =head2 Name => Str
 
-  
-
-The name of the configuration document.
-
-
-
-
-
-
-
-
-
+  The name of the configuration document.
 
 =head2 Sha1 => Str
 
-  
-
-The SHA1 hash of the document, which you can use for verification
+  The SHA1 hash of the document, which you can use for verification
 purposes.
-
-
-
-
-
-
-
-
-
 
 =head2 Status => Str
 
-  
-
-The status of the configuration document.
-
-
-
-
-
-
-
-
-
+  The status of the configuration document.
 
 
 

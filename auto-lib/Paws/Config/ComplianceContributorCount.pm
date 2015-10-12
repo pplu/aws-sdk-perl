@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
 =head2 CapExceeded => Bool
 
-  
-
-Indicates whether the maximum count is reached.
-
-
-
-
-
-
-
-
-
+  Indicates whether the maximum count is reached.
 
 =head2 CappedCount => Int
 
-  
-
-The number of AWS resources or AWS Config rules responsible for the
+  The number of AWS resources or AWS Config rules responsible for the
 current compliance of the item.
-
-
-
-
-
-
-
-
-
 
 
 

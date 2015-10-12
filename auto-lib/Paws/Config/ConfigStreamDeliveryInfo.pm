@@ -36,67 +36,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head2 lastErrorCode => Str
 
-  
-
-The error code from the last attempted delivery.
-
-
-
-
-
-
-
-
-
+  The error code from the last attempted delivery.
 
 =head2 lastErrorMessage => Str
 
-  
-
-The error message from the last attempted delivery.
-
-
-
-
-
-
-
-
-
+  The error message from the last attempted delivery.
 
 =head2 lastStatus => Str
 
-  
-
-Status of the last attempted delivery.
+  Status of the last attempted delivery.
 
 B<Note> Providing an SNS topic on a DeliveryChannel for AWS Config is
 optional. If the SNS delivery is turned off, the last status will be
 B<Not_Applicable>.
 
-
-
-
-
-
-
-
-
-
 =head2 lastStatusChangeTime => Str
 
-  
-
-The time from the last status change.
-
-
-
-
-
-
-
-
-
+  The time from the last status change.
 
 
 

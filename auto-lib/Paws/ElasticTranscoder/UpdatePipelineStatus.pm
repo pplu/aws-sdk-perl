@@ -37,24 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The identifier of the pipeline to update.
-
-
-
-
-
-
-
-
-
+  The identifier of the pipeline to update.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The desired status of the pipeline:
+  The desired status of the pipeline:
 
 =over
 
@@ -63,15 +50,6 @@ The desired status of the pipeline:
 =item * C<Paused>: The pipeline is not currently processing jobs.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

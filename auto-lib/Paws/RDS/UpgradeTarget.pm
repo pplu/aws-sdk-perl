@@ -37,81 +37,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Upgrad
 
 =head2 AutoUpgrade => Bool
 
-  
-
-A value that indicates whether the target version will be applied to
+  A value that indicates whether the target version will be applied to
 any source DB instances that have AutoMinorVersionUpgrade set to true.
-
-
-
-
-
-
-
-
-
 
 =head2 Description => Str
 
-  
-
-The version of the database engine that a DB instance can be upgraded
+  The version of the database engine that a DB instance can be upgraded
 to.
-
-
-
-
-
-
-
-
-
 
 =head2 Engine => Str
 
-  
-
-The name of the upgrade target database engine.
-
-
-
-
-
-
-
-
-
+  The name of the upgrade target database engine.
 
 =head2 EngineVersion => Str
 
-  
-
-The version number of the upgrade target database engine.
-
-
-
-
-
-
-
-
-
+  The version number of the upgrade target database engine.
 
 =head2 IsMajorVersionUpgrade => Bool
 
-  
-
-A value that indicates whether a database engine will be upgraded to a
+  A value that indicates whether a database engine will be upgraded to a
 major version.
-
-
-
-
-
-
-
-
-
 
 
 

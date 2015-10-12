@@ -36,69 +36,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> id => Str
 
-  
-
-B<Required.> The SWF C<id> of the AWS Lambda task.
+  B<Required.> The SWF C<id> of the AWS Lambda task.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
-
-
-
-
-
-
-
-
-
 =head2 input => Str
 
-  
-
-The input provided to the AWS Lambda function.
-
-
-
-
-
-
-
-
-
+  The input provided to the AWS Lambda function.
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-B<Required.> The name of the AWS Lambda function to invoke.
-
-
-
-
-
-
-
-
-
+  B<Required.> The name of the AWS Lambda function to invoke.
 
 =head2 startToCloseTimeout => Str
 
-  
-
-If set, specifies the maximum duration the function may take to
+  If set, specifies the maximum duration the function may take to
 execute.
-
-
-
-
-
-
-
-
-
 
 
 

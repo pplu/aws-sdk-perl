@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Path => Str
 
-  
-
-The path for the user name. For more information about paths, see IAM
+  The path for the user name. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user to create.
-
-
-
-
-
-
-
-
-
+  The name of the user to create.
 
 
 

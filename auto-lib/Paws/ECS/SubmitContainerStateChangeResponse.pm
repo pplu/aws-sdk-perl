@@ -14,18 +14,7 @@ Paws::ECS::SubmitContainerStateChangeResponse
 
 =head2 acknowledgment => Str
 
-  
-
-Acknowledgement of the state change.
-
-
-
-
-
-
-
-
-
+  Acknowledgement of the state change.
 
 
 =cut

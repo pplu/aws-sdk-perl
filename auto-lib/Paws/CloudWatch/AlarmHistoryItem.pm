@@ -37,82 +37,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head2 AlarmName => Str
 
-  
-
-The descriptive name for the alarm.
-
-
-
-
-
-
-
-
-
+  The descriptive name for the alarm.
 
 =head2 HistoryData => Str
 
-  
-
-Machine-readable data about the alarm in JSON format.
-
-
-
-
-
-
-
-
-
+  Machine-readable data about the alarm in JSON format.
 
 =head2 HistoryItemType => Str
 
-  
-
-The type of alarm history item.
-
-
-
-
-
-
-
-
-
+  The type of alarm history item.
 
 =head2 HistorySummary => Str
 
-  
-
-A human-readable summary of the alarm history.
-
-
-
-
-
-
-
-
-
+  A human-readable summary of the alarm history.
 
 =head2 Timestamp => Str
 
-  
-
-The time stamp for the alarm history item. Amazon CloudWatch uses
+  The time stamp for the alarm history item. Amazon CloudWatch uses
 Coordinated Universal Time (UTC) when returning time stamps, which do
 not accommodate seasonal adjustments such as daylight savings time. For
 more information, see Time stamps in the I<Amazon CloudWatch Developer
 Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

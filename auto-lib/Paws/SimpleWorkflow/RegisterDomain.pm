@@ -36,24 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 description => Str
 
-  
-
-A text description of the domain.
-
-
-
-
-
-
-
-
-
+  A text description of the domain.
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-Name of the domain to register. The name must be unique in the region
+  Name of the domain to register. The name must be unique in the region
 that the domain is registered in.
 
 The specified string must not start or end with whitespace. It must not
@@ -61,20 +48,9 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> workflowExecutionRetentionPeriodInDays => Str
 
-  
-
-The duration (in days) that records and histories of workflow
+  The duration (in days) that records and histories of workflow
 executions on the domain should be kept by the service. After the
 retention period, the workflow execution is not available in the
 results of visibility calls.
@@ -86,15 +62,6 @@ execution completes, the execution record and its history are deleted.
 The maximum workflow execution retention period is 90 days. For more
 information about Amazon SWF service limits, see: Amazon SWF Service
 Limits in the I<Amazon SWF Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

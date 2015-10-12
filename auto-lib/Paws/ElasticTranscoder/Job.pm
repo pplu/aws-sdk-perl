@@ -43,56 +43,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 Arn => Str
 
-  
-
-The Amazon Resource Name (ARN) for the job.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) for the job.
 
 =head2 Id => Str
 
-  
-
-The identifier that Elastic Transcoder assigned to the job. You use
+  The identifier that Elastic Transcoder assigned to the job. You use
 this value to get settings for the job or to delete the job.
-
-
-
-
-
-
-
-
-
 
 =head2 Input => Paws::ElasticTranscoder::JobInput
 
-  
-
-A section of the request or response body that provides information
+  A section of the request or response body that provides information
 about the file that is being transcoded.
-
-
-
-
-
-
-
-
-
 
 =head2 Output => Paws::ElasticTranscoder::JobOutput
 
-  
-
-If you specified one output for a job, information about that output.
+  If you specified one output for a job, information about that output.
 If you specified multiple outputs for a job, the Output object lists
 information about the first output. This duplicates the information
 that is listed for the first output in the Outputs object.
@@ -100,38 +65,16 @@ that is listed for the first output in the Outputs object.
 Outputs recommended instead. A section of the request or response body
 that provides information about the transcoded (target) file.
 
-
-
-
-
-
-
-
-
-
 =head2 OutputKeyPrefix => Str
 
-  
-
-The value, if any, that you want Elastic Transcoder to prepend to the
+  The value, if any, that you want Elastic Transcoder to prepend to the
 names of all files that this job creates, including output files,
 thumbnails, and playlists. We recommend that you add a / or some other
 delimiter to the end of the C<OutputKeyPrefix>.
 
-
-
-
-
-
-
-
-
-
 =head2 Outputs => ArrayRef[Paws::ElasticTranscoder::JobOutput]
 
-  
-
-Information about the output files. We recommend that you use the
+  Information about the output files. We recommend that you use the
 C<Outputs> syntax for all jobs, even when you want Elastic Transcoder
 to transcode a file into only one format. Do not use both the
 C<Outputs> and C<Output> syntaxes in the same request. You can create a
@@ -141,90 +84,35 @@ If you specify more than one output for a job, Elastic Transcoder
 creates the files for each output in the order in which you specify
 them in the job.
 
-
-
-
-
-
-
-
-
-
 =head2 PipelineId => Str
 
-  
-
-The C<Id> of the pipeline that you want Elastic Transcoder to use for
+  The C<Id> of the pipeline that you want Elastic Transcoder to use for
 transcoding. The pipeline determines several settings, including the
 Amazon S3 bucket from which Elastic Transcoder gets the files to
 transcode and the bucket into which Elastic Transcoder puts the
 transcoded files.
 
-
-
-
-
-
-
-
-
-
 =head2 Playlists => ArrayRef[Paws::ElasticTranscoder::Playlist]
 
-  
-
-Outputs in Fragmented MP4 or MPEG-TS format only.If you specify a
+  Outputs in Fragmented MP4 or MPEG-TS format only.If you specify a
 preset in C<PresetId> for which the value of C<Container> is fmp4
 (Fragmented MP4) or ts (MPEG-TS), C<Playlists> contains information
 about the master playlists that you want Elastic Transcoder to create.
 
 The maximum number of master playlists in a job is 30.
 
-
-
-
-
-
-
-
-
-
 =head2 Status => Str
 
-  
-
-The status of the job: C<Submitted>, C<Progressing>, C<Complete>,
+  The status of the job: C<Submitted>, C<Progressing>, C<Complete>,
 C<Canceled>, or C<Error>.
-
-
-
-
-
-
-
-
-
 
 =head2 Timing => Paws::ElasticTranscoder::Timing
 
-  
-
-Details about the timing of a job.
-
-
-
-
-
-
-
-
-
+  Details about the timing of a job.
 
 =head2 UserMetadata => Paws::ElasticTranscoder::UserMetadata
 
-  
-
-User-defined metadata that you want to associate with an Elastic
+  User-defined metadata that you want to associate with an Elastic
 Transcoder job. You specify metadata in C<key/value> pairs, and you can
 add up to 10 C<key/value> pairs per job. Elastic Transcoder does not
 guarantee that C<key/value> pairs will be returned in the same order in
@@ -252,15 +140,6 @@ C<Space>
 The following symbols: C<_.:/=+-%@>
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

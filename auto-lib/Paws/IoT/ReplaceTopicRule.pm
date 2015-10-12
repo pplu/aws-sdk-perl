@@ -37,33 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ruleName => Str
 
-  
-
-The name of the rule.
-
-
-
-
-
-
-
-
-
+  The name of the rule.
 
 =head2 B<REQUIRED> topicRulePayload => Paws::IoT::TopicRulePayload
 
-  
-
-The rule payload.
-
-
-
-
-
-
-
-
-
+  The rule payload.
 
 
 

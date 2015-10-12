@@ -39,33 +39,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The unique ID for an invalidation request.
-
-
-
-
-
-
-
-
-
+  The unique ID for an invalidation request.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The status of an invalidation request.
-
-
-
-
-
-
-
-
-
+  The status of an invalidation request.
 
 
 

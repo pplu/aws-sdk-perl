@@ -37,36 +37,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Marker => Str
 
-  
-
-Optional string. An opaque pagination token returned from a previous
+  Optional string. An opaque pagination token returned from a previous
 C<ListFunctions> operation. If present, indicates where to continue the
 listing.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxItems => Int
 
-  
-
-Optional integer. Specifies the maximum number of AWS Lambda functions
+  Optional integer. Specifies the maximum number of AWS Lambda functions
 to return in response. This parameter value must be greater than 0.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -41,145 +41,46 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 Arn => Str
 
-  
-
-The Amazon Resource Name (ARN) for the preset.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) for the preset.
 
 =head2 Audio => Paws::ElasticTranscoder::AudioParameters
 
-  
-
-A section of the response body that provides information about the
+  A section of the response body that provides information about the
 audio preset values.
-
-
-
-
-
-
-
-
-
 
 =head2 Container => Str
 
-  
-
-The container type for the output file. Valid values include C<flac>,
+  The container type for the output file. Valid values include C<flac>,
 C<flv>, C<fmp4>, C<gif>, C<mp3>, C<mp4>, C<mpg>, C<mxf>, C<oga>,
 C<ogg>, C<ts>, and C<webm>.
 
-
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
-
-A description of the preset.
-
-
-
-
-
-
-
-
-
+  A description of the preset.
 
 =head2 Id => Str
 
-  
-
-Identifier for the new preset. You use this value to get settings for
+  Identifier for the new preset. You use this value to get settings for
 the preset or to delete it.
-
-
-
-
-
-
-
-
-
 
 =head2 Name => Str
 
-  
-
-The name of the preset.
-
-
-
-
-
-
-
-
-
+  The name of the preset.
 
 =head2 Thumbnails => Paws::ElasticTranscoder::Thumbnails
 
-  
-
-A section of the response body that provides information about the
+  A section of the response body that provides information about the
 thumbnail preset values, if any.
-
-
-
-
-
-
-
-
-
 
 =head2 Type => Str
 
-  
-
-Whether the preset is a default preset provided by Elastic Transcoder
+  Whether the preset is a default preset provided by Elastic Transcoder
 (C<System>) or a preset that you have defined (C<Custom>).
-
-
-
-
-
-
-
-
-
 
 =head2 Video => Paws::ElasticTranscoder::VideoParameters
 
-  
-
-A section of the response body that provides information about the
+  A section of the response body that provides information about the
 video preset values.
-
-
-
-
-
-
-
-
-
 
 
 

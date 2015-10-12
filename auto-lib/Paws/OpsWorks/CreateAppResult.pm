@@ -14,18 +14,7 @@ Paws::OpsWorks::CreateAppResult
 
 =head2 AppId => Str
 
-  
-
-The app ID.
-
-
-
-
-
-
-
-
-
+  The app ID.
 
 
 =cut

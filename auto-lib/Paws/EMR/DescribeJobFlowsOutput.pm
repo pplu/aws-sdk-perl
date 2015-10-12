@@ -14,18 +14,7 @@ Paws::EMR::DescribeJobFlowsOutput
 
 =head2 JobFlows => ArrayRef[Paws::EMR::JobFlowDetail]
 
-  
-
-A list of job flows matching the parameters supplied.
-
-
-
-
-
-
-
-
-
+  A list of job flows matching the parameters supplied.
 
 
 =cut

@@ -38,19 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 LoadAverage => ArrayRef[Num]
 
-  
-
-Load average in the last 1-minute and 5-minute periods. For more
+  Load average in the last 1-minute and 5-minute periods. For more
 information, see Operating System Metrics.
-
-
-
-
-
-
-
-
-
 
 
 

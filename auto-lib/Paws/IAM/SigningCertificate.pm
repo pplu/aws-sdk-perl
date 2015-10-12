@@ -37,79 +37,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Signin
 
 =head2 B<REQUIRED> CertificateBody => Str
 
-  
-
-The contents of the signing certificate.
-
-
-
-
-
-
-
-
-
+  The contents of the signing certificate.
 
 =head2 B<REQUIRED> CertificateId => Str
 
-  
-
-The ID for the signing certificate.
-
-
-
-
-
-
-
-
-
+  The ID for the signing certificate.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The status of the signing certificate. C<Active> means the key is valid
+  The status of the signing certificate. C<Active> means the key is valid
 for API calls, while C<Inactive> means it is not.
-
-
-
-
-
-
-
-
-
 
 =head2 UploadDate => Str
 
-  
-
-The date when the signing certificate was uploaded.
-
-
-
-
-
-
-
-
-
+  The date when the signing certificate was uploaded.
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user the signing certificate is associated with.
-
-
-
-
-
-
-
-
-
+  The name of the user the signing certificate is associated with.
 
 
 

@@ -34,37 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> decisionTaskCompletedEventId => Int
 
-  
-
-The ID of the C<DecisionTaskCompleted> event corresponding to the
+  The ID of the C<DecisionTaskCompleted> event corresponding to the
 decision task that resulted in the C<CancelWorkflowExecution> decision
 for this cancellation request. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
-
-
-
-
-
-
-
-
-
 =head2 details => Str
 
-  
-
-Details for the cancellation (if any).
-
-
-
-
-
-
-
-
-
+  Details for the cancellation (if any).
 
 
 

@@ -38,93 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::S
 
 =head2 CreatedAt => Str
 
-  
-
-When the error occurred.
-
-
-
-
-
-
-
-
-
+  When the error occurred.
 
 =head2 InstanceId => Str
 
-  
-
-The instance ID.
-
-
-
-
-
-
-
-
-
+  The instance ID.
 
 =head2 Message => Str
 
-  
-
-A message that describes the error.
-
-
-
-
-
-
-
-
-
+  A message that describes the error.
 
 =head2 ServiceErrorId => Str
 
-  
-
-The error ID.
-
-
-
-
-
-
-
-
-
+  The error ID.
 
 =head2 StackId => Str
 
-  
-
-The stack ID.
-
-
-
-
-
-
-
-
-
+  The stack ID.
 
 =head2 Type => Str
 
-  
-
-The error type.
-
-
-
-
-
-
-
-
-
+  The error type.
 
 
 

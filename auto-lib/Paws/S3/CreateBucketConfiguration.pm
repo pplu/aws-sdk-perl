@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CreateB
 
 =head2 LocationConstraint => Str
 
-  
-
-Specifies the region where the bucket will be created. If you don't
+  Specifies the region where the bucket will be created. If you don't
 specify a region, the bucket will be created in US Standard.
-
-
-
-
-
-
-
-
-
 
 
 

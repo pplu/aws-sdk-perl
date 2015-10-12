@@ -44,111 +44,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::UserDe
 
 =head2 AttachedManagedPolicies => ArrayRef[Paws::IAM::AttachedPolicy]
 
-  
-
-A list of the managed policies attached to the user.
-
-
-
-
-
-
-
-
-
+  A list of the managed policies attached to the user.
 
 =head2 CreateDate => Str
 
-  
-
-The date and time, in ISO 8601 date-time format, when the user was
+  The date and time, in ISO 8601 date-time format, when the user was
 created.
-
-
-
-
-
-
-
-
-
 
 =head2 GroupList => ArrayRef[Str]
 
-  
-
-A list of IAM groups that the user is in.
-
-
-
-
-
-
-
-
-
+  A list of IAM groups that the user is in.
 
 =head2 Path => Str
 
-  
-
-The path to the user. For more information about paths, see IAM
+  The path to the user. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 =head2 UserId => Str
 
-  
-
-The stable and unique string identifying the user. For more information
+  The stable and unique string identifying the user. For more information
 about IDs, see IAM Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 =head2 UserName => Str
 
-  
-
-The friendly name identifying the user.
-
-
-
-
-
-
-
-
-
+  The friendly name identifying the user.
 
 =head2 UserPolicyList => ArrayRef[Paws::IAM::PolicyDetail]
 
-  
-
-A list of the inline policies embedded in the user.
-
-
-
-
-
-
-
-
-
+  A list of the inline policies embedded in the user.
 
 
 

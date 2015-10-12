@@ -15,18 +15,7 @@ Paws::EC2::DescribeVpnConnectionsResult
 
 =head2 VpnConnections => ArrayRef[Paws::EC2::VpnConnection]
 
-  
-
-Information about one or more VPN connections.
-
-
-
-
-
-
-
-
-
+  Information about one or more VPN connections.
 
 
 =cut

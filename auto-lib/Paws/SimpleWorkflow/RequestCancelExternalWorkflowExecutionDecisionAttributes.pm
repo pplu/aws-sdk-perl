@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 control => Str
 
-  
-
-I<Optional.> Data attached to the event that can be used by the decider
+  I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks.
-
-
-
-
-
-
-
-
-
 
 =head2 runId => Str
 
-  
-
-The C<runId> of the external workflow execution to cancel.
-
-
-
-
-
-
-
-
-
+  The C<runId> of the external workflow execution to cancel.
 
 =head2 B<REQUIRED> workflowId => Str
 
-  
-
-B<Required.> The C<workflowId> of the external workflow execution to
+  B<Required.> The C<workflowId> of the external workflow execution to
 cancel.
-
-
-
-
-
-
-
-
-
 
 
 

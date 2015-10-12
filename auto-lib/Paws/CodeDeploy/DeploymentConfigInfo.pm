@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 createTime => Str
 
-  
-
-The time that the deployment configuration was created.
-
-
-
-
-
-
-
-
-
+  The time that the deployment configuration was created.
 
 =head2 deploymentConfigId => Str
 
-  
-
-The deployment configuration ID.
-
-
-
-
-
-
-
-
-
+  The deployment configuration ID.
 
 =head2 deploymentConfigName => Str
 
-  
-
-The deployment configuration name.
-
-
-
-
-
-
-
-
-
+  The deployment configuration name.
 
 =head2 minimumHealthyHosts => Paws::CodeDeploy::MinimumHealthyHosts
 
-  
-
-Information about the number or percentage of minimum healthy
+  Information about the number or percentage of minimum healthy
 instances.
-
-
-
-
-
-
-
-
-
 
 
 

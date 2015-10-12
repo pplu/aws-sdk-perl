@@ -16,32 +16,10 @@ Paws::IoT::ListTopicRulesResponse
 
 =head2 nextToken => Str
 
-  
-
-A token used to retrieve the next value.
-
-
-
-
-
-
-
-
-
+  A token used to retrieve the next value.
 =head2 rules => ArrayRef[Paws::IoT::TopicRuleListItem]
 
-  
-
-The rules.
-
-
-
-
-
-
-
-
-
+  The rules.
 
 
 =cut

@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
-
+  The name of the group.
 
 =head2 InstanceIds => ArrayRef[Str]
 
-  
-
-One or more EC2 instance IDs.
-
-
-
-
-
-
-
-
-
+  One or more EC2 instance IDs.
 
 
 

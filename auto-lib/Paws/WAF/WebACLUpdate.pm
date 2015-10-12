@@ -34,19 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::WebACL
 
 =head2 B<REQUIRED> Action => Str
 
-  
-
-Specifies whether to insert a C<Rule> into or delete a C<Rule> from a
+  Specifies whether to insert a C<Rule> into or delete a C<Rule> from a
 C<WebACL>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ActivatedRule => Paws::WAF::ActivatedRule
 

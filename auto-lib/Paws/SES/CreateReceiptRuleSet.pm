@@ -34,9 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-  
-
-The name of the rule set to create. The name must:
+  The name of the rule set to create. The name must:
 
 =over
 
@@ -48,15 +46,6 @@ The name of the rule set to create. The name must:
 =item * Contain less than 64 characters.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

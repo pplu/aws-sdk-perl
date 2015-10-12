@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::LBCook
 
 =head2 CookieExpirationPeriod => Int
 
-  
-
-The time period, in seconds, after which the cookie should be
+  The time period, in seconds, after which the cookie should be
 considered stale. If this parameter is not specified, the stickiness
 session lasts for the duration of the browser session.
 
-
-
-
-
-
-
-
-
-
 =head2 PolicyName => Str
 
-  
-
-The name for the policy being created. The name must be unique within
+  The name for the policy being created. The name must be unique within
 the set of policies for this load balancer.
-
-
-
-
-
-
-
-
-
 
 
 

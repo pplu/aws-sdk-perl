@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoScalingGroupName => Str
 
-  
-
-The name of the Auto Scaling group.
-
-
-
-
-
-
-
-
-
+  The name of the Auto Scaling group.
 
 =head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The name or Amazon Resource Name (ARN) of the policy.
-
-
-
-
-
-
-
-
-
+  The name or Amazon Resource Name (ARN) of the policy.
 
 
 

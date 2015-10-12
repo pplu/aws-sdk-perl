@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Prefix
 
 =head2 Cidrs => ArrayRef[Str]
 
-  
-
-The IP address range of the AWS service.
-
-
-
-
-
-
-
-
-
+  The IP address range of the AWS service.
 
 =head2 PrefixListId => Str
 
-  
-
-The ID of the prefix.
-
-
-
-
-
-
-
-
-
+  The ID of the prefix.
 
 =head2 PrefixListName => Str
 
-  
-
-The name of the prefix.
-
-
-
-
-
-
-
-
-
+  The name of the prefix.
 
 
 

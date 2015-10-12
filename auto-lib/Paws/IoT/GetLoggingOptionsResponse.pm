@@ -16,32 +16,10 @@ Paws::IoT::GetLoggingOptionsResponse
 
 =head2 logLevel => Str
 
-  
-
-The logging level.
-
-
-
-
-
-
-
-
-
+  The logging level.
 =head2 roleArn => Str
 
-  
-
-The ARN of the IAM role that grants access.
-
-
-
-
-
-
-
-
-
+  The ARN of the IAM role that grants access.
 
 
 =cut

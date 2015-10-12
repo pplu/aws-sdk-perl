@@ -29,18 +29,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Invalidation => Paws::CloudFront::Invalidation
 
-  
-
-The invalidation's information.
-
-
-
-
-
-
-
-
-
+  The invalidation's information.
 
 
 

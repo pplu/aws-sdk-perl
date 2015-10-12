@@ -17,50 +17,17 @@ Paws::IoT::DescribeThingResponse
 
 =head2 attributes => Paws::IoT::Attributes
 
-  
-
-The attributes which are name/value pairs in JSON format. For example:
+  The attributes which are name/value pairs in JSON format. For example:
 
 {\"attributes\":{\"some-name1\":\"some-value1\E<rdquo>},
 {\"some-name2\":\"some-value2\E<rdquo>},
 {\"some-name3\":\"some-value3\E<rdquo>}}
-
-
-
-
-
-
-
-
-
 =head2 defaultClientId => Str
 
-  
-
-The default client ID.
-
-
-
-
-
-
-
-
-
+  The default client ID.
 =head2 thingName => Str
 
-  
-
-The name of the thing.
-
-
-
-
-
-
-
-
-
+  The name of the thing.
 
 
 =cut

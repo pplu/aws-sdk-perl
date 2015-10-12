@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 created => Str
 
-  
-
-The date and time the pipeline was created, in timestamp format.
-
-
-
-
-
-
-
-
-
+  The date and time the pipeline was created, in timestamp format.
 
 =head2 name => Str
 
-  
-
-The name of the pipeline.
-
-
-
-
-
-
-
-
-
+  The name of the pipeline.
 
 =head2 updated => Str
 
-  
-
-The date and time of the last update to the pipeline, in timestamp
+  The date and time of the last update to the pipeline, in timestamp
 format.
-
-
-
-
-
-
-
-
-
 
 =head2 version => Int
 
-  
-
-The version number of the pipeline.
-
-
-
-
-
-
-
-
-
+  The version number of the pipeline.
 
 
 

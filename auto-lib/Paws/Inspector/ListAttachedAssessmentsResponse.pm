@@ -15,35 +15,13 @@ Paws::Inspector::ListAttachedAssessmentsResponse
 
 =head2 assessmentArnList => ArrayRef[Str]
 
-  
-
-A list of ARNs specifying the assessments returned by the action.
-
-
-
-
-
-
-
-
-
+  A list of ARNs specifying the assessments returned by the action.
 =head2 nextToken => Str
 
-  
-
-When a response is generated, if there is more data to be listed, this
+  When a response is generated, if there is more data to be listed, this
 parameter is present in the response and contains the value to use for
 the B<nextToken> parameter in a subsequent pagination request. If there
 is no more data to be listed, this parameter is set to 'null'.
-
-
-
-
-
-
-
-
-
 
 
 =cut

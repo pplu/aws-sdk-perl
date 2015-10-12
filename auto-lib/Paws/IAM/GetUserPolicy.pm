@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The name of the policy document to get.
-
-
-
-
-
-
-
-
-
+  The name of the policy document to get.
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user who the policy is associated with.
-
-
-
-
-
-
-
-
-
+  The name of the user who the policy is associated with.
 
 
 

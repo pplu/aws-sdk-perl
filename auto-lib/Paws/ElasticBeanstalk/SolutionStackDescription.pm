@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 PermittedFileTypes => ArrayRef[Str]
 
-  
-
-The permitted file types allowed for a solution stack.
-
-
-
-
-
-
-
-
-
+  The permitted file types allowed for a solution stack.
 
 =head2 SolutionStackName => Str
 
-  
-
-The name of the solution stack.
-
-
-
-
-
-
-
-
-
+  The name of the solution stack.
 
 
 

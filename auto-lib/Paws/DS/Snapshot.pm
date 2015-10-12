@@ -38,93 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Snapsho
 
 =head2 DirectoryId => Str
 
-  
-
-The directory identifier.
-
-
-
-
-
-
-
-
-
+  The directory identifier.
 
 =head2 Name => Str
 
-  
-
-The descriptive name of the snapshot.
-
-
-
-
-
-
-
-
-
+  The descriptive name of the snapshot.
 
 =head2 SnapshotId => Str
 
-  
-
-The snapshot identifier.
-
-
-
-
-
-
-
-
-
+  The snapshot identifier.
 
 =head2 StartTime => Str
 
-  
-
-The date and time that the snapshot was taken.
-
-
-
-
-
-
-
-
-
+  The date and time that the snapshot was taken.
 
 =head2 Status => Str
 
-  
-
-The snapshot status.
-
-
-
-
-
-
-
-
-
+  The snapshot status.
 
 =head2 Type => Str
 
-  
-
-The snapshot type.
-
-
-
-
-
-
-
-
-
+  The snapshot type.
 
 
 

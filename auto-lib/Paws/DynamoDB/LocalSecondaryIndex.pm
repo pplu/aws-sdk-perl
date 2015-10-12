@@ -35,36 +35,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::L
 
 =head2 B<REQUIRED> IndexName => Str
 
-  
-
-The name of the local secondary index. The name must be unique among
+  The name of the local secondary index. The name must be unique among
 all other indexes on this table.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> KeySchema => ArrayRef[Paws::DynamoDB::KeySchemaElement]
 
-  
-
-The complete key schema for the local secondary index, consisting of
+  The complete key schema for the local secondary index, consisting of
 one or more pairs of attribute names and key types (C<HASH> or
 C<RANGE>).
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Projection => Paws::DynamoDB::Projection
 

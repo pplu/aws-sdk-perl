@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConfigurationRecorderNames => ArrayRef[Str]
 
-  
-
-The name(s) of the configuration recorder. If the name is not
+  The name(s) of the configuration recorder. If the name is not
 specified, the action returns the current status of all the
 configuration recorders associated with the account.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -16,9 +16,7 @@ Paws::DynamoDB::BatchWriteItemOutput
 
 =head2 ConsumedCapacity => ArrayRef[Paws::DynamoDB::ConsumedCapacity]
 
-  
-
-The capacity units consumed by the operation.
+  The capacity units consumed by the operation.
 
 Each element consists of:
 
@@ -33,20 +31,9 @@ I<TableName> - The table that consumed the provisioned throughput.
 I<CapacityUnits> - The total number of capacity units consumed.
 
 =back
-
-
-
-
-
-
-
-
-
 =head2 ItemCollectionMetrics => Paws::DynamoDB::ItemCollectionMetricsPerTable
 
-  
-
-A list of tables that were processed by I<BatchWriteItem> and, for each
+  A list of tables that were processed by I<BatchWriteItem> and, for each
 table, information about any item collections that were affected by
 individual I<DeleteItem> or I<PutItem> operations.
 
@@ -72,20 +59,9 @@ The estimate is subject to change over time; therefore, do not rely on
 the precision or accuracy of the estimate.
 
 =back
-
-
-
-
-
-
-
-
-
 =head2 UnprocessedItems => Paws::DynamoDB::BatchWriteItemRequestMap
 
-  
-
-A map of tables and requests against those tables that were not
+  A map of tables and requests against those tables that were not
 processed. The I<UnprocessedItems> value is in the same form as
 I<RequestItems>, so you can provide this value directly to a subsequent
 I<BatchGetItem> operation. For more information, see I<RequestItems> in
@@ -138,15 +114,6 @@ table's attribute definition.
 
 If there are no unprocessed items remaining, the response contains an
 empty I<UnprocessedItems> map.
-
-
-
-
-
-
-
-
-
 
 
 =cut

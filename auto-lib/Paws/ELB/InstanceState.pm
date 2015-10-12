@@ -36,9 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Instan
 
 =head2 Description => Str
 
-  
-
-A description of the instance state. This string can contain one or
+  A description of the instance state. This string can contain one or
 more of the following messages.
 
 =over
@@ -96,64 +94,22 @@ C<Instance is in terminated state.>
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 ReasonCode => Str
 
-  
-
-Information about the cause of C<OutOfService> instances. Specifically,
+  Information about the cause of C<OutOfService> instances. Specifically,
 whether the cause is Elastic Load Balancing or the instance.
 
 Valid values: C<ELB> | C<Instance> | C<N/A>
 
-
-
-
-
-
-
-
-
-
 =head2 State => Str
 
-  
-
-The current state of the instance.
+  The current state of the instance.
 
 Valid values: C<InService> | C<OutOfService> | C<Unknown>
-
-
-
-
-
-
-
-
-
 
 
 

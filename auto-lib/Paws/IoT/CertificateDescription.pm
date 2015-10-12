@@ -39,108 +39,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Certif
 
 =head2 certificateArn => Str
 
-  
-
-The ARN of the certificate.
-
-
-
-
-
-
-
-
-
+  The ARN of the certificate.
 
 =head2 certificateId => Str
 
-  
-
-The ID of the certificate.
-
-
-
-
-
-
-
-
-
+  The ID of the certificate.
 
 =head2 certificatePem => Str
 
-  
-
-The certificate data, in PEM format.
-
-
-
-
-
-
-
-
-
+  The certificate data, in PEM format.
 
 =head2 creationDate => Str
 
-  
-
-The date and time the certificate was created.
-
-
-
-
-
-
-
-
-
+  The date and time the certificate was created.
 
 =head2 lastModifiedDate => Str
 
-  
-
-The date and time the certificate was last modified.
-
-
-
-
-
-
-
-
-
+  The date and time the certificate was last modified.
 
 =head2 ownedBy => Str
 
-  
-
-The ID of the AWS account that owns the certificate.
-
-
-
-
-
-
-
-
-
+  The ID of the AWS account that owns the certificate.
 
 =head2 status => Str
 
-  
-
-The status of the certificate.
-
-
-
-
-
-
-
-
-
+  The status of the certificate.
 
 
 

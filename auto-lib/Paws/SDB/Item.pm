@@ -37,44 +37,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SDB::Item o
 
   
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Attributes => ArrayRef[Paws::SDB::Attribute]
 
-  
-
-A list of attributes.
-
-
-
-
-
-
-
-
-
+  A list of attributes.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the item.
-
-
-
-
-
-
-
-
-
+  The name of the item.
 
 
 

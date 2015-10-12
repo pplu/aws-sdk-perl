@@ -37,69 +37,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 evaluateExpressions => Bool
 
-  
-
-Indicates whether any expressions in the object should be evaluated
+  Indicates whether any expressions in the object should be evaluated
 when the object descriptions are returned.
-
-
-
-
-
-
-
-
-
 
 =head2 marker => Str
 
-  
-
-The starting point for the results to be returned. For the first call,
+  The starting point for the results to be returned. For the first call,
 this value should be empty. As long as there are more results, continue
 to call C<DescribeObjects> with the marker value from the previous call
 to retrieve the next set of results.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> objectIds => ArrayRef[Str]
 
-  
-
-The IDs of the pipeline objects that contain the definitions to be
+  The IDs of the pipeline objects that contain the definitions to be
 described. You can pass as many as 25 identifiers in a single call to
 C<DescribeObjects>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> pipelineId => Str
 
-  
-
-The ID of the pipeline that contains the object definitions.
-
-
-
-
-
-
-
-
-
+  The ID of the pipeline that contains the object definitions.
 
 
 

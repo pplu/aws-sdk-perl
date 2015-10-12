@@ -16,34 +16,12 @@ Paws::RDS::DBParameterGroupsMessage
 
 =head2 DBParameterGroups => ArrayRef[Paws::RDS::DBParameterGroup]
 
-  
-
-A list of DBParameterGroup instances.
-
-
-
-
-
-
-
-
-
+  A list of DBParameterGroup instances.
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous request. If this
+  An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
-
-
-
-
-
-
-
-
-
 
 
 =cut

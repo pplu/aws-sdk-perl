@@ -39,108 +39,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 errored => Int
 
-  
-
-The number of errored entities.
-
-
-
-
-
-
-
-
-
+  The number of errored entities.
 
 =head2 failed => Int
 
-  
-
-The number of failed entities.
-
-
-
-
-
-
-
-
-
+  The number of failed entities.
 
 =head2 passed => Int
 
-  
-
-The number of passed entities.
-
-
-
-
-
-
-
-
-
+  The number of passed entities.
 
 =head2 skipped => Int
 
-  
-
-The number of skipped entities.
-
-
-
-
-
-
-
-
-
+  The number of skipped entities.
 
 =head2 stopped => Int
 
-  
-
-The number of stopped entities.
-
-
-
-
-
-
-
-
-
+  The number of stopped entities.
 
 =head2 total => Int
 
-  
-
-The total number of entities.
-
-
-
-
-
-
-
-
-
+  The total number of entities.
 
 =head2 warned => Int
 
-  
-
-The number of warned entities.
-
-
-
-
-
-
-
-
-
+  The number of warned entities.
 
 
 

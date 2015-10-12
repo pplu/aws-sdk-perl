@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Republ
 
 =head2 B<REQUIRED> roleArn => Str
 
-  
-
-The ARN of the IAM role that grants access.
-
-
-
-
-
-
-
-
-
+  The ARN of the IAM role that grants access.
 
 =head2 B<REQUIRED> topic => Str
 
-  
-
-The name of the MQTT topic.
-
-
-
-
-
-
-
-
-
+  The name of the MQTT topic.
 
 
 

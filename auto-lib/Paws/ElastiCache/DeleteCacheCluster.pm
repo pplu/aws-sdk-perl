@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheClusterId => Str
 
-  
-
-The cache cluster identifier for the cluster to be deleted. This
+  The cache cluster identifier for the cluster to be deleted. This
 parameter is not case sensitive.
-
-
-
-
-
-
-
-
-
 
 =head2 FinalSnapshotIdentifier => Str
 
-  
-
-The user-supplied name of a final cache cluster snapshot. This is the
+  The user-supplied name of a final cache cluster snapshot. This is the
 unique name that identifies the snapshot. ElastiCache creates the
 snapshot, and then deletes the cache cluster immediately afterward.
-
-
-
-
-
-
-
-
-
 
 
 

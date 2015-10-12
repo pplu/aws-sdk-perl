@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 cancelActive => Bool
 
-  
-
-Indicates whether to cancel any running objects. The default is true,
+  Indicates whether to cancel any running objects. The default is true,
 which sets the state of any running objects to C<CANCELED>. If this
 value is false, the pipeline is deactivated after all running objects
 finish.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> pipelineId => Str
 
-  
-
-The ID of the pipeline.
-
-
-
-
-
-
-
-
-
+  The ID of the pipeline.
 
 
 

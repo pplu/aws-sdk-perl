@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::I
 
 =head2 Document => Str
 
-  
-
-A JSON document that contains the metadata.
-
-
-
-
-
-
-
-
-
+  A JSON document that contains the metadata.
 
 =head2 Signature => Str
 
-  
-
-A signature that can be used to verify the document's accuracy and
+  A signature that can be used to verify the document's accuracy and
 authenticity.
-
-
-
-
-
-
-
-
-
 
 
 

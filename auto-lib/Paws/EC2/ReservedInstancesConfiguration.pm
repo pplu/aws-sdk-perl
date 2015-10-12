@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Reserv
 
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone for the modified Reserved Instances.
-
-
-
-
-
-
-
-
-
+  The Availability Zone for the modified Reserved Instances.
 
 =head2 InstanceCount => Int
 
-  
-
-The number of modified Reserved Instances.
-
-
-
-
-
-
-
-
-
+  The number of modified Reserved Instances.
 
 =head2 InstanceType => Str
 
-  
-
-The instance type for the modified Reserved Instances.
-
-
-
-
-
-
-
-
-
+  The instance type for the modified Reserved Instances.
 
 =head2 Platform => Str
 
-  
-
-The network platform of the modified Reserved Instances, which is
+  The network platform of the modified Reserved Instances, which is
 either EC2-Classic or EC2-VPC.
-
-
-
-
-
-
-
-
-
 
 
 

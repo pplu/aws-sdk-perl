@@ -35,53 +35,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> decisionTaskCompletedEventId => Int
 
-  
-
-The ID of the C<DecisionTaskCompleted> event corresponding to the
+  The ID of the C<DecisionTaskCompleted> event corresponding to the
 decision task that resulted in the C<CancelTimer> decision to cancel
 this timer. This information can be useful for diagnosing problems by
 tracing back the chain of events leading up to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> startedEventId => Int
 
-  
-
-The ID of the C<TimerStarted> event that was recorded when this timer
+  The ID of the C<TimerStarted> event that was recorded when this timer
 was started. This information can be useful for diagnosing problems by
 tracing back the chain of events leading up to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> timerId => Str
 
-  
-
-The unique ID of the timer that was canceled.
-
-
-
-
-
-
-
-
-
+  The unique ID of the timer that was canceled.
 
 
 

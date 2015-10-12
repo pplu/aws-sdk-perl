@@ -41,24 +41,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 cancelRequested => Bool
 
-  
-
-Set to true if a cancellation is requested for this workflow execution.
-
-
-
-
-
-
-
-
-
+  Set to true if a cancellation is requested for this workflow execution.
 
 =head2 closeStatus => Str
 
-  
-
-If the execution status is closed then this specifies how the execution
+  If the execution status is closed then this specifies how the execution
 was closed:
 
 =over
@@ -81,123 +68,37 @@ started to carry on the workflow.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 closeTimestamp => Str
 
-  
-
-The time when the workflow execution was closed. Set only if the
+  The time when the workflow execution was closed. Set only if the
 execution status is CLOSED.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> execution => Paws::SimpleWorkflow::WorkflowExecution
 
-  
-
-The workflow execution this information is about.
-
-
-
-
-
-
-
-
-
+  The workflow execution this information is about.
 
 =head2 B<REQUIRED> executionStatus => Str
 
-  
-
-The current status of the execution.
-
-
-
-
-
-
-
-
-
+  The current status of the execution.
 
 =head2 parent => Paws::SimpleWorkflow::WorkflowExecution
 
-  
-
-If this workflow execution is a child of another execution then
+  If this workflow execution is a child of another execution then
 contains the workflow execution that started this execution.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> startTimestamp => Str
 
-  
-
-The time when the execution was started.
-
-
-
-
-
-
-
-
-
+  The time when the execution was started.
 
 =head2 tagList => ArrayRef[Str]
 
-  
-
-The list of tags associated with the workflow execution. Tags can be
+  The list of tags associated with the workflow execution. Tags can be
 used to identify and list workflow executions of interest through the
 visibility APIs. A workflow execution can have a maximum of 5 tags.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
 
-  
-
-The type of the workflow execution.
-
-
-
-
-
-
-
-
-
+  The type of the workflow execution.
 
 
 

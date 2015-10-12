@@ -15,21 +15,10 @@ Paws::IAM::GetPolicyVersionResponse
 
 =head2 PolicyVersion => Paws::IAM::PolicyVersion
 
-  
-
-Information about the policy version.
+  Information about the policy version.
 
 For more information about managed policy versions, see Versioning for
 Managed Policies in the I<IAM User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =cut

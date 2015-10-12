@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBPara
 
 =head2 DBParameterGroupFamily => Str
 
-  
-
-Provides the name of the DB parameter group family that this DB
+  Provides the name of the DB parameter group family that this DB
 parameter group is compatible with.
-
-
-
-
-
-
-
-
-
 
 =head2 DBParameterGroupName => Str
 
-  
-
-Provides the name of the DB parameter group.
-
-
-
-
-
-
-
-
-
+  Provides the name of the DB parameter group.
 
 =head2 Description => Str
 
-  
-
-Provides the customer-specified description for this DB parameter
+  Provides the customer-specified description for this DB parameter
 group.
-
-
-
-
-
-
-
-
-
 
 
 

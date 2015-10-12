@@ -16,50 +16,17 @@ Paws::CloudWatchLogs::FilterLogEventsResponse
 
 =head2 events => ArrayRef[Paws::CloudWatchLogs::FilteredLogEvent]
 
-  
-
-A list of C<FilteredLogEvent> objects representing the matched events
+  A list of C<FilteredLogEvent> objects representing the matched events
 from the request.
-
-
-
-
-
-
-
-
-
 =head2 nextToken => Str
 
-  
-
-A pagination token obtained from a C<FilterLogEvents> response to
+  A pagination token obtained from a C<FilterLogEvents> response to
 continue paginating the FilterLogEvents results.
-
-
-
-
-
-
-
-
-
 =head2 searchedLogStreams => ArrayRef[Paws::CloudWatchLogs::SearchedLogStream]
 
-  
-
-A list of C<SearchedLogStream> objects indicating which log streams
+  A list of C<SearchedLogStream> objects indicating which log streams
 have been searched in this request and whether each has been searched
 completely or still has more to be paginated.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -39,9 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 childPolicy => Str
 
-  
-
-If set, specifies the policy to use for the child workflow executions
+  If set, specifies the policy to use for the child workflow executions
 of the workflow execution being terminated. This policy overrides the
 child policy specified for the workflow execution at registration time
 or when starting the execution.
@@ -67,90 +65,26 @@ a default for the workflow type or through this parameter. If neither
 this parameter is set nor a default child policy was specified at
 registration time then a fault will be returned.
 
-
-
-
-
-
-
-
-
-
 =head2 details => Str
 
-  
-
-I<Optional.> Details for terminating the workflow execution.
-
-
-
-
-
-
-
-
-
+  I<Optional.> Details for terminating the workflow execution.
 
 =head2 B<REQUIRED> domain => Str
 
-  
-
-The domain of the workflow execution to terminate.
-
-
-
-
-
-
-
-
-
+  The domain of the workflow execution to terminate.
 
 =head2 reason => Str
 
-  
-
-I<Optional.> A descriptive reason for terminating the workflow
+  I<Optional.> A descriptive reason for terminating the workflow
 execution.
-
-
-
-
-
-
-
-
-
 
 =head2 runId => Str
 
-  
-
-The runId of the workflow execution to terminate.
-
-
-
-
-
-
-
-
-
+  The runId of the workflow execution to terminate.
 
 =head2 B<REQUIRED> workflowId => Str
 
-  
-
-The workflowId of the workflow execution to terminate.
-
-
-
-
-
-
-
-
-
+  The workflowId of the workflow execution to terminate.
 
 
 

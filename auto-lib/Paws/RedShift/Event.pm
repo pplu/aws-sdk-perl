@@ -39,112 +39,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::E
 
 =head2 Date => Str
 
-  
-
-The date and time of the event.
-
-
-
-
-
-
-
-
-
+  The date and time of the event.
 
 =head2 EventCategories => ArrayRef[Str]
 
-  
-
-A list of the event categories.
+  A list of the event categories.
 
 Values: Configuration, Management, Monitoring, Security
 
-
-
-
-
-
-
-
-
-
 =head2 EventId => Str
 
-  
-
-The identifier of the event.
-
-
-
-
-
-
-
-
-
+  The identifier of the event.
 
 =head2 Message => Str
 
-  
-
-The text of this event.
-
-
-
-
-
-
-
-
-
+  The text of this event.
 
 =head2 Severity => Str
 
-  
-
-The severity of the event.
+  The severity of the event.
 
 Values: ERROR, INFO
 
-
-
-
-
-
-
-
-
-
 =head2 SourceIdentifier => Str
 
-  
-
-The identifier for the source of the event.
-
-
-
-
-
-
-
-
-
+  The identifier for the source of the event.
 
 =head2 SourceType => Str
 
-  
-
-The source type for this event.
-
-
-
-
-
-
-
-
-
+  The source type for this event.
 
 
 

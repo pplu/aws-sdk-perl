@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Ec2VolumeId => Str
 
-  
-
-The Amazon EBS volume ID.
-
-
-
-
-
-
-
-
-
+  The Amazon EBS volume ID.
 
 =head2 B<REQUIRED> StackId => Str
 
-  
-
-The stack ID.
-
-
-
-
-
-
-
-
-
+  The stack ID.
 
 
 

@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head2 ErrorCode => Str
 
-  
-
-The error code.
-
-
-
-
-
-
-
-
-
+  The error code.
 
 =head2 ErrorMessage => Str
 
-  
-
-The textual error message.
-
-
-
-
-
-
-
-
-
+  The textual error message.
 
 =head2 WorkspaceId => Str
 
-  
-
-The identifier of the WorkSpace.
-
-
-
-
-
-
-
-
-
+  The identifier of the WorkSpace.
 
 
 

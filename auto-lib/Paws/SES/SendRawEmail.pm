@@ -39,25 +39,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Destinations => ArrayRef[Str]
 
-  
-
-A list of destinations for the message, consisting of To:, CC:, and
+  A list of destinations for the message, consisting of To:, CC:, and
 BCC: addresses.
-
-
-
-
-
-
-
-
-
 
 =head2 FromArn => Str
 
-  
-
-This parameter is used only for sending authorization. It is the ARN of
+  This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
 that permits you to specify a particular "From" address in the header
 of the raw email.
@@ -71,20 +58,9 @@ For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer
 Guide.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> RawMessage => Paws::SES::RawMessage
 
-  
-
-The raw text of the message. The client is responsible for ensuring the
+  The raw text of the message. The client is responsible for ensuring the
 following:
 
 =over
@@ -104,20 +80,9 @@ For more information, go to the Amazon SES Developer Guide.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 ReturnPathArn => Str
 
-  
-
-This parameter is used only for sending authorization. It is the ARN of
+  This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
 that permits you to use the email address specified in the
 C<ReturnPath> parameter.
@@ -138,20 +103,9 @@ For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer
 Guide.
 
-
-
-
-
-
-
-
-
-
 =head2 Source => Str
 
-  
-
-The identity's email address. If you do not provide a value for this
+  The identity's email address. If you do not provide a value for this
 parameter, you must specify a "From" address in the raw text of the
 message. (You can also specify both.)
 
@@ -166,20 +120,9 @@ enabled, then bounces and complaints will be sent to this email
 address. This takes precedence over any I<Return-Path> header that you
 might include in the raw text of the message.
 
-
-
-
-
-
-
-
-
-
 =head2 SourceArn => Str
 
-  
-
-This parameter is used only for sending authorization. It is the ARN of
+  This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
 that permits you to send for the email address specified in the
 C<Source> parameter.
@@ -199,15 +142,6 @@ uses the value of the C<SourceArn> parameter.
 For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer
 Guide.
-
-
-
-
-
-
-
-
-
 
 
 

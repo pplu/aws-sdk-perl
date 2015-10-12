@@ -17,46 +17,13 @@ Paws::CognitoSync::ListDatasetsResponse
 
 =head2 Count => Int
 
-  
-
-Number of datasets returned.
-
-
-
-
-
-
-
-
-
+  Number of datasets returned.
 =head2 Datasets => ArrayRef[Paws::CognitoSync::Dataset]
 
-  
-
-A set of datasets.
-
-
-
-
-
-
-
-
-
+  A set of datasets.
 =head2 NextToken => Str
 
-  
-
-A pagination token for obtaining the next page of results.
-
-
-
-
-
-
-
-
-
+  A pagination token for obtaining the next page of results.
 
 
 =cut

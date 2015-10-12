@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSetS
 
 =head2 B<REQUIRED> IPSetId => Str
 
-  
-
-The C<IPSetId> for an IPSet. You can use C<IPSetId> in a GetIPSet
+  The C<IPSetId> for an IPSet. You can use C<IPSetId> in a GetIPSet
 request to get detailed information about an IPSet.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-A friendly name or description of the IPSet. You can't change the name
+  A friendly name or description of the IPSet. You can't change the name
 of an C<IPSet> after you create it.
-
-
-
-
-
-
-
-
-
 
 
 

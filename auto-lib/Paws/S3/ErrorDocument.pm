@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ErrorDo
 
 =head2 B<REQUIRED> Key => Str
 
-  
-
-The object key name to use when a 4XX class error occurs.
-
-
-
-
-
-
-
-
-
+  The object key name to use when a 4XX class error occurs.
 
 
 

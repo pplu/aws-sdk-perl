@@ -17,46 +17,13 @@ Paws::CloudSearchDomain::SearchResponse
 
 =head2 facets => Paws::CloudSearchDomain::Facets
 
-  
-
-The requested facet information.
-
-
-
-
-
-
-
-
-
+  The requested facet information.
 =head2 hits => Paws::CloudSearchDomain::Hits
 
-  
-
-The documents that match the search criteria.
-
-
-
-
-
-
-
-
-
+  The documents that match the search criteria.
 =head2 status => Paws::CloudSearchDomain::SearchStatus
 
-  
-
-The status information returned for the search request.
-
-
-
-
-
-
-
-
-
+  The status information returned for the search request.
 
 
 =cut

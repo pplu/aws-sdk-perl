@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Monito
 
 =head2 State => Str
 
-  
-
-Indicates whether monitoring is enabled for the instance.
-
-
-
-
-
-
-
-
-
+  Indicates whether monitoring is enabled for the instance.
 
 
 

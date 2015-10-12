@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 AutomaticFailoverStatus => Str
 
-  
-
-Indicates the status of Multi-AZ for this replication group.
+  Indicates the status of Multi-AZ for this replication group.
 
 ElastiCache Multi-AZ replication groups are not supported on:
 
@@ -48,31 +46,11 @@ ElastiCache Multi-AZ replication groups are not supported on:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 PrimaryClusterId => Str
 
-  
-
-The primary cluster ID which will be applied immediately (if
+  The primary cluster ID which will be applied immediately (if
 C<--apply-immediately> was specified), or during the next maintenance
 window.
-
-
-
-
-
-
-
-
-
 
 
 

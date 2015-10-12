@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
 =head2 Compliance => Paws::Config::Compliance
 
-  
-
-Indicates whether the AWS resource complies with all of the AWS Config
+  Indicates whether the AWS resource complies with all of the AWS Config
 rules that evaluated it.
-
-
-
-
-
-
-
-
-
 
 =head2 ResourceId => Str
 
-  
-
-The ID of the AWS resource that was evaluated.
-
-
-
-
-
-
-
-
-
+  The ID of the AWS resource that was evaluated.
 
 =head2 ResourceType => Str
 
-  
-
-The type of the AWS resource that was evaluated.
-
-
-
-
-
-
-
-
-
+  The type of the AWS resource that was evaluated.
 
 
 

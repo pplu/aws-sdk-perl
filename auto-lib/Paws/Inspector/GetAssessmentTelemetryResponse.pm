@@ -14,18 +14,7 @@ Paws::Inspector::GetAssessmentTelemetryResponse
 
 =head2 telemetry => ArrayRef[Paws::Inspector::Telemetry]
 
-  
-
-Telemetry details.
-
-
-
-
-
-
-
-
-
+  Telemetry details.
 
 
 =cut

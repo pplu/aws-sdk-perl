@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 bluetooth => Bool
 
-  
-
-True if Bluetooth is enabled at the beginning of the test; otherwise,
+  True if Bluetooth is enabled at the beginning of the test; otherwise,
 false.
-
-
-
-
-
-
-
-
-
 
 =head2 gps => Bool
 
-  
-
-True if GPS is enabled at the beginning of the test; otherwise, false.
-
-
-
-
-
-
-
-
-
+  True if GPS is enabled at the beginning of the test; otherwise, false.
 
 =head2 nfc => Bool
 
-  
-
-True if NFC is enabled at the beginning of the test; otherwise, false.
-
-
-
-
-
-
-
-
-
+  True if NFC is enabled at the beginning of the test; otherwise, false.
 
 =head2 wifi => Bool
 
-  
-
-True if Wi-Fi is enabled at the beginning of the test; otherwise,
+  True if Wi-Fi is enabled at the beginning of the test; otherwise,
 false.
-
-
-
-
-
-
-
-
-
 
 
 

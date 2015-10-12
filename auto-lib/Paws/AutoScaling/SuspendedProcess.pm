@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 ProcessName => Str
 
-  
-
-The name of the suspended process.
-
-
-
-
-
-
-
-
-
+  The name of the suspended process.
 
 =head2 SuspensionReason => Str
 
-  
-
-The reason that the process was suspended.
-
-
-
-
-
-
-
-
-
+  The reason that the process was suspended.
 
 
 

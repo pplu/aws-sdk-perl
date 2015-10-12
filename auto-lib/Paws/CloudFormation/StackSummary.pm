@@ -40,124 +40,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head2 B<REQUIRED> CreationTime => Str
 
-  
-
-The time the stack was created.
-
-
-
-
-
-
-
-
-
+  The time the stack was created.
 
 =head2 DeletionTime => Str
 
-  
-
-The time the stack was deleted.
-
-
-
-
-
-
-
-
-
+  The time the stack was deleted.
 
 =head2 LastUpdatedTime => Str
 
-  
-
-The time the stack was last updated. This field will only be returned
+  The time the stack was last updated. This field will only be returned
 if the stack has been updated at least once.
-
-
-
-
-
-
-
-
-
 
 =head2 StackId => Str
 
-  
-
-Unique stack identifier.
-
-
-
-
-
-
-
-
-
+  Unique stack identifier.
 
 =head2 B<REQUIRED> StackName => Str
 
-  
-
-The name associated with the stack.
-
-
-
-
-
-
-
-
-
+  The name associated with the stack.
 
 =head2 B<REQUIRED> StackStatus => Str
 
-  
-
-The current status of the stack.
-
-
-
-
-
-
-
-
-
+  The current status of the stack.
 
 =head2 StackStatusReason => Str
 
-  
-
-Success/Failure message associated with the stack status.
-
-
-
-
-
-
-
-
-
+  Success/Failure message associated with the stack status.
 
 =head2 TemplateDescription => Str
 
-  
-
-The template description of the template used to create the stack.
-
-
-
-
-
-
-
-
-
+  The template description of the template used to create the stack.
 
 
 

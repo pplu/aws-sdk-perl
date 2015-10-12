@@ -31,50 +31,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CloudFrontOriginAccessIdentity => Paws::CloudFront::CloudFrontOriginAccessIdentity
 
-  
-
-The origin access identity's information.
-
-
-
-
-
-
-
-
-
+  The origin access identity's information.
 
 =head2 ETag => Str
 
-  
-
-The current version of the origin access identity created.
-
-
-
-
-
-
-
-
-
+  The current version of the origin access identity created.
 
 =head2 Location => Str
 
-  
-
-The fully qualified URI of the new origin access identity just created.
+  The fully qualified URI of the new origin access identity just created.
 For example:
 https://cloudfront.amazonaws.com/2010-11-01/origin-access-identity/cloudfront/E74FTE3AJFJ256A.
-
-
-
-
-
-
-
-
-
 
 
 

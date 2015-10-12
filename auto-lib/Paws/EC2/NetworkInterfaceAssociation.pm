@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Networ
 
 =head2 AllocationId => Str
 
-  
-
-The allocation ID.
-
-
-
-
-
-
-
-
-
+  The allocation ID.
 
 =head2 AssociationId => Str
 
-  
-
-The association ID.
-
-
-
-
-
-
-
-
-
+  The association ID.
 
 =head2 IpOwnerId => Str
 
-  
-
-The ID of the Elastic IP address owner.
-
-
-
-
-
-
-
-
-
+  The ID of the Elastic IP address owner.
 
 =head2 PublicDnsName => Str
 
-  
-
-The public DNS name.
-
-
-
-
-
-
-
-
-
+  The public DNS name.
 
 =head2 PublicIp => Str
 
-  
-
-The address of the Elastic IP address bound to the network interface.
-
-
-
-
-
-
-
-
-
+  The address of the Elastic IP address bound to the network interface.
 
 
 

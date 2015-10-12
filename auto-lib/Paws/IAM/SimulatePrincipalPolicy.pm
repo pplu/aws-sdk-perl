@@ -40,62 +40,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ActionNames => ArrayRef[Str]
 
-  
-
-A list of names of API actions to evaluate in the simulation. Each
+  A list of names of API actions to evaluate in the simulation. Each
 action is evaluated for each resource. Each action must include the
 service identifier, such as C<iam:CreateUser>.
 
-
-
-
-
-
-
-
-
-
 =head2 ContextEntries => ArrayRef[Paws::IAM::ContextEntry]
 
-  
-
-A list of context keys and corresponding values that are used by the
+  A list of context keys and corresponding values that are used by the
 simulation. Whenever a context key is evaluated by a C<Condition>
 element in one of the simulated IAM permission policies, the
 corresponding value is supplied.
 
-
-
-
-
-
-
-
-
-
 =head2 Marker => Str
 
-  
-
-Use this parameter only when paginating results and only after you
+  Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
 the value of the C<Marker> element in the response you received to
 inform the next call about where to start.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxItems => Int
 
-  
-
-Use this only when paginating results to indicate the maximum number of
+  Use this only when paginating results to indicate the maximum number of
 items you want in the response. If there are additional items beyond
 the maximum you specify, the C<IsTruncated> response element is
 C<true>.
@@ -106,69 +71,27 @@ results available. If this is the case, the C<IsTruncated> response
 element returns C<true> and C<Marker> contains a value to include in
 the subsequent call that tells the service where to continue from.
 
-
-
-
-
-
-
-
-
-
 =head2 PolicyInputList => ArrayRef[Str]
 
-  
-
-An optional list of additional policy documents to include in the
+  An optional list of additional policy documents to include in the
 simulation. Each document is specified as a string containing the
 complete, valid JSON text of an IAM policy.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PolicySourceArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of a user, group, or role whose policies
+  The Amazon Resource Name (ARN) of a user, group, or role whose policies
 you want to include in the simulation. If you specify a user, group, or
 role, the simulation includes all policies associated with that entity.
 If you specify a user, the simulation also includes all policies
 attached to any groups the user is a member of.
 
-
-
-
-
-
-
-
-
-
 =head2 ResourceArns => ArrayRef[Str]
 
-  
-
-A list of ARNs of AWS resources to include in the simulation. If this
+  A list of ARNs of AWS resources to include in the simulation. If this
 parameter is not provided then the value defaults to C<*> (all
 resources). Each API in the C<ActionNames> parameter is evaluated for
 each resource in this list. The simulation determines the access result
 (allowed or denied) of each combination and reports it in the response.
-
-
-
-
-
-
-
-
-
 
 
 

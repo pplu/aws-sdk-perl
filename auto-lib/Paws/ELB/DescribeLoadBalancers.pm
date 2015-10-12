@@ -36,50 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LoadBalancerNames => ArrayRef[Str]
 
-  
-
-The names of the load balancers.
-
-
-
-
-
-
-
-
-
+  The names of the load balancers.
 
 =head2 Marker => Str
 
-  
-
-The marker for the next set of results. (You received this marker from
+  The marker for the next set of results. (You received this marker from
 a previous call.)
-
-
-
-
-
-
-
-
-
 
 =head2 PageSize => Int
 
-  
-
-The maximum number of results to return with this call (a number from 1
+  The maximum number of results to return with this call (a number from 1
 to 400). The default is 400.
-
-
-
-
-
-
-
-
-
 
 
 

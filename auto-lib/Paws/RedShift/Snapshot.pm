@@ -60,386 +60,120 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::S
 
 =head2 AccountsWithRestoreAccess => ArrayRef[Paws::RedShift::AccountWithRestoreAccess]
 
-  
-
-A list of the AWS customer accounts authorized to restore the snapshot.
+  A list of the AWS customer accounts authorized to restore the snapshot.
 Returns C<null> if no accounts are authorized. Visible only to the
 snapshot owner.
 
-
-
-
-
-
-
-
-
-
 =head2 ActualIncrementalBackupSizeInMegaBytes => Num
 
-  
-
-The size of the incremental backup.
-
-
-
-
-
-
-
-
-
+  The size of the incremental backup.
 
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone in which the cluster was created.
-
-
-
-
-
-
-
-
-
+  The Availability Zone in which the cluster was created.
 
 =head2 BackupProgressInMegaBytes => Num
 
-  
-
-The number of megabytes that have been transferred to the snapshot
+  The number of megabytes that have been transferred to the snapshot
 backup.
-
-
-
-
-
-
-
-
-
 
 =head2 ClusterCreateTime => Str
 
-  
-
-The time (UTC) when the cluster was originally created.
-
-
-
-
-
-
-
-
-
+  The time (UTC) when the cluster was originally created.
 
 =head2 ClusterIdentifier => Str
 
-  
-
-The identifier of the cluster for which the snapshot was taken.
-
-
-
-
-
-
-
-
-
+  The identifier of the cluster for which the snapshot was taken.
 
 =head2 ClusterVersion => Str
 
-  
-
-The version ID of the Amazon Redshift engine that is running on the
+  The version ID of the Amazon Redshift engine that is running on the
 cluster.
-
-
-
-
-
-
-
-
-
 
 =head2 CurrentBackupRateInMegaBytesPerSecond => Num
 
-  
-
-The number of megabytes per second being transferred to the snapshot
+  The number of megabytes per second being transferred to the snapshot
 backup. Returns C<0> for a completed backup.
-
-
-
-
-
-
-
-
-
 
 =head2 DBName => Str
 
-  
-
-The name of the database that was created when the cluster was created.
-
-
-
-
-
-
-
-
-
+  The name of the database that was created when the cluster was created.
 
 =head2 ElapsedTimeInSeconds => Int
 
-  
-
-The amount of time an in-progress snapshot backup has been running, or
+  The amount of time an in-progress snapshot backup has been running, or
 the amount of time it took a completed backup to finish.
-
-
-
-
-
-
-
-
-
 
 =head2 Encrypted => Bool
 
-  
-
-If C<true>, the data in the snapshot is encrypted at rest.
-
-
-
-
-
-
-
-
-
+  If C<true>, the data in the snapshot is encrypted at rest.
 
 =head2 EncryptedWithHSM => Bool
 
-  
-
-A boolean that indicates whether the snapshot data is encrypted using
+  A boolean that indicates whether the snapshot data is encrypted using
 the HSM keys of the source cluster. C<true> indicates that the data is
 encrypted using HSM keys.
 
-
-
-
-
-
-
-
-
-
 =head2 EstimatedSecondsToCompletion => Int
 
-  
-
-The estimate of the time remaining before the snapshot backup will
+  The estimate of the time remaining before the snapshot backup will
 complete. Returns C<0> for a completed backup.
-
-
-
-
-
-
-
-
-
 
 =head2 KmsKeyId => Str
 
-  
-
-The AWS Key Management Service (KMS) key ID of the encryption key that
+  The AWS Key Management Service (KMS) key ID of the encryption key that
 was used to encrypt data in the cluster from which the snapshot was
 taken.
 
-
-
-
-
-
-
-
-
-
 =head2 MasterUsername => Str
 
-  
-
-The master user name for the cluster.
-
-
-
-
-
-
-
-
-
+  The master user name for the cluster.
 
 =head2 NodeType => Str
 
-  
-
-The node type of the nodes in the cluster.
-
-
-
-
-
-
-
-
-
+  The node type of the nodes in the cluster.
 
 =head2 NumberOfNodes => Int
 
-  
-
-The number of nodes in the cluster.
-
-
-
-
-
-
-
-
-
+  The number of nodes in the cluster.
 
 =head2 OwnerAccount => Str
 
-  
-
-For manual snapshots, the AWS customer account used to create or copy
+  For manual snapshots, the AWS customer account used to create or copy
 the snapshot. For automatic snapshots, the owner of the cluster. The
 owner can perform all snapshot actions, such as sharing a manual
 snapshot.
 
-
-
-
-
-
-
-
-
-
 =head2 Port => Int
 
-  
-
-The port that the cluster is listening on.
-
-
-
-
-
-
-
-
-
+  The port that the cluster is listening on.
 
 =head2 RestorableNodeTypes => ArrayRef[Str]
 
-  
-
-The list of node types that this cluster snapshot is able to restore
+  The list of node types that this cluster snapshot is able to restore
 into.
-
-
-
-
-
-
-
-
-
 
 =head2 SnapshotCreateTime => Str
 
-  
-
-The time (UTC) when Amazon Redshift began the snapshot. A snapshot
+  The time (UTC) when Amazon Redshift began the snapshot. A snapshot
 contains a copy of the cluster data as of this exact time.
-
-
-
-
-
-
-
-
-
 
 =head2 SnapshotIdentifier => Str
 
-  
-
-The snapshot identifier that is provided in the request.
-
-
-
-
-
-
-
-
-
+  The snapshot identifier that is provided in the request.
 
 =head2 SnapshotType => Str
 
-  
-
-The snapshot type. Snapshots created using CreateClusterSnapshot and
+  The snapshot type. Snapshots created using CreateClusterSnapshot and
 CopyClusterSnapshot will be of type "manual".
-
-
-
-
-
-
-
-
-
 
 =head2 SourceRegion => Str
 
-  
-
-The source region from which the snapshot was copied.
-
-
-
-
-
-
-
-
-
+  The source region from which the snapshot was copied.
 
 =head2 Status => Str
 
-  
-
-The snapshot status. The value of the status depends on the API
+  The snapshot status. The value of the status depends on the API
 operation used.
 
 =over
@@ -454,61 +188,19 @@ operation used.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Tags => ArrayRef[Paws::RedShift::Tag]
 
-  
-
-The list of tags for the cluster snapshot.
-
-
-
-
-
-
-
-
-
+  The list of tags for the cluster snapshot.
 
 =head2 TotalBackupSizeInMegaBytes => Num
 
-  
-
-The size of the complete set of backup data that would be used to
+  The size of the complete set of backup data that would be used to
 restore the cluster.
-
-
-
-
-
-
-
-
-
 
 =head2 VpcId => Str
 
-  
-
-The VPC identifier of the cluster if the snapshot is from a cluster in
+  The VPC identifier of the cluster if the snapshot is from a cluster in
 a VPC. Otherwise, this field is not in the output.
-
-
-
-
-
-
-
-
-
 
 
 

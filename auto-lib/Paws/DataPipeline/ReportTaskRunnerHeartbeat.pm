@@ -36,57 +36,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 hostname => Str
 
-  
-
-The public DNS name of the task runner.
-
-
-
-
-
-
-
-
-
+  The public DNS name of the task runner.
 
 =head2 B<REQUIRED> taskrunnerId => Str
 
-  
-
-The ID of the task runner. This value should be unique across your AWS
+  The ID of the task runner. This value should be unique across your AWS
 account. In the case of AWS Data Pipeline Task Runner launched on a
 resource managed by AWS Data Pipeline, the web service provides a
 unique identifier when it launches the application. If you have written
 a custom task runner, you should assign a unique identifier for the
 task runner.
 
-
-
-
-
-
-
-
-
-
 =head2 workerGroup => Str
 
-  
-
-The type of task the task runner is configured to accept and process.
+  The type of task the task runner is configured to accept and process.
 The worker group is set as a field on objects in the pipeline when they
 are created. You can only specify a single value for C<workerGroup>.
 There are no wildcard values permitted in C<workerGroup>; the string
 must be an exact, case-sensitive, match.
-
-
-
-
-
-
-
-
-
 
 
 

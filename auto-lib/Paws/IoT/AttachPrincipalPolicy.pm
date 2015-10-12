@@ -37,34 +37,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> policyName => Str
 
-  
-
-The policy name.
-
-
-
-
-
-
-
-
-
+  The policy name.
 
 =head2 B<REQUIRED> principal => Str
 
-  
-
-The principal which can be a certificate ARN (as returned from the
+  The principal which can be a certificate ARN (as returned from the
 CreateCertificate operation) or a Cognito ID.
-
-
-
-
-
-
-
-
-
 
 
 

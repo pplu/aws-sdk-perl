@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head2 type => Str
 
-  
-
-The logical operation to be performed: equal (C<EQ>), equal reference
+  The logical operation to be performed: equal (C<EQ>), equal reference
 (C<REF_EQ>), less than or equal (C<LE>), greater than or equal (C<GE>),
 or between (C<BETWEEN>). Equal reference (C<REF_EQ>) can be used only
 with reference fields. The other comparison types can be used only with
@@ -90,29 +88,9 @@ containing only alpha-numeric values, as symbols may be reserved by AWS
 Data Pipeline. User-defined fields that you add to a pipeline should
 prefix their name with the string "my".
 
-
-
-
-
-
-
-
-
-
 =head2 values => ArrayRef[Str]
 
-  
-
-The value that the actual field value will be compared with.
-
-
-
-
-
-
-
-
-
+  The value that the actual field value will be compared with.
 
 
 

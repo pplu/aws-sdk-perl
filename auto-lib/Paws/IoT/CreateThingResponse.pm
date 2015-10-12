@@ -16,32 +16,10 @@ Paws::IoT::CreateThingResponse
 
 =head2 thingArn => Str
 
-  
-
-The thing ARN.
-
-
-
-
-
-
-
-
-
+  The thing ARN.
 =head2 thingName => Str
 
-  
-
-The name of the thing.
-
-
-
-
-
-
-
-
-
+  The name of the thing.
 
 
 =cut

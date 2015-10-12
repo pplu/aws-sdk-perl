@@ -15,18 +15,7 @@ Paws::SQS::CreateQueueResult
 
 =head2 QueueUrl => Str
 
-  
-
-The URL for the created Amazon SQS queue.
-
-
-
-
-
-
-
-
-
+  The URL for the created Amazon SQS queue.
 
 
 =cut

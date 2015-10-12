@@ -46,9 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 DefaultTTL => Int
 
-  
-
-If you don't configure your origin to add a Cache-Control max-age
+  If you don't configure your origin to add a Cache-Control max-age
 directive or an Expires header, DefaultTTL is the default amount of
 time (in seconds) that an object is in a CloudFront cache before
 CloudFront forwards another request to your origin to determine whether
@@ -57,74 +55,30 @@ when your origin does not add HTTP headers such as Cache-Control
 max-age, Cache-Control s-maxage, and Expires to objects. You can
 specify a value from 0 to 3,153,600,000 seconds (100 years).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ForwardedValues => Paws::CloudFront::ForwardedValues
 
-  
-
-A complex type that specifies how CloudFront handles query strings,
+  A complex type that specifies how CloudFront handles query strings,
 cookies and headers.
-
-
-
-
-
-
-
-
-
 
 =head2 MaxTTL => Int
 
-  
-
-The maximum amount of time (in seconds) that an object is in a
+  The maximum amount of time (in seconds) that an object is in a
 CloudFront cache before CloudFront forwards another request to your
 origin to determine whether the object has been updated. The value that
 you specify applies only when your origin adds HTTP headers such as
 Cache-Control max-age, Cache-Control s-maxage, and Expires to objects.
 You can specify a value from 0 to 3,153,600,000 seconds (100 years).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> MinTTL => Int
 
-  
-
-The minimum amount of time that you want objects to stay in CloudFront
+  The minimum amount of time that you want objects to stay in CloudFront
 caches before CloudFront queries your origin to see whether the object
 has been updated.You can specify a value from 0 to 3,153,600,000
 seconds (100 years).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PathPattern => Str
 
-  
-
-The pattern (for example, images/*.jpg) that specifies which requests
+  The pattern (for example, images/*.jpg) that specifies which requests
 you want this cache behavior to apply to. When CloudFront receives an
 end-user request, the requested path is compared with path patterns in
 the order in which cache behaviors are listed in the distribution. The
@@ -133,54 +87,21 @@ If the request for an object does not match the path pattern for any
 cache behaviors, CloudFront applies the behavior in the default cache
 behavior.
 
-
-
-
-
-
-
-
-
-
 =head2 SmoothStreaming => Bool
 
-  
-
-Indicates whether you want to distribute media files in Microsoft
+  Indicates whether you want to distribute media files in Microsoft
 Smooth Streaming format using the origin that is associated with this
 cache behavior. If so, specify true; if not, specify false.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TargetOriginId => Str
 
-  
-
-The value of ID for the origin that you want CloudFront to route
+  The value of ID for the origin that you want CloudFront to route
 requests to when a request matches the path pattern either for a cache
 behavior or for the default cache behavior.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TrustedSigners => Paws::CloudFront::TrustedSigners
 
-  
-
-A complex type that specifies the AWS accounts, if any, that you want
+  A complex type that specifies the AWS accounts, if any, that you want
 to allow to create signed URLs for private content. If you want to
 require signed URLs in requests for objects in the target origin that
 match the PathPattern for this cache behavior, specify true for
@@ -193,20 +114,9 @@ remove one or more trusted signers, change Enabled to true (if it's
 currently false), change Quantity as applicable, and specify all of the
 trusted signers that you want to include in the updated distribution.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ViewerProtocolPolicy => Str
 
-  
-
-Use this element to specify the protocol that users can use to access
+  Use this element to specify the protocol that users can use to access
 the files in the origin specified by TargetOriginId when a request
 matches the path pattern in PathPattern. If you want CloudFront to
 allow end users to use any available protocol, specify allow-all. If
@@ -214,15 +124,6 @@ you want CloudFront to require HTTPS, specify https. If you want
 CloudFront to respond to an HTTP request with an HTTP status code of
 301 (Moved Permanently) and the HTTPS URL, specify redirect-to-https.
 The viewer then resubmits the request using the HTTPS URL.
-
-
-
-
-
-
-
-
-
 
 
 

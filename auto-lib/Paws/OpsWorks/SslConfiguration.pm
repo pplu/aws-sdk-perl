@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::S
 
 =head2 B<REQUIRED> Certificate => Str
 
-  
-
-The contents of the certificate's domain.crt file.
-
-
-
-
-
-
-
-
-
+  The contents of the certificate's domain.crt file.
 
 =head2 Chain => Str
 
-  
-
-Optional. Can be used to specify an intermediate certificate authority
+  Optional. Can be used to specify an intermediate certificate authority
 key or client authentication.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> PrivateKey => Str
 
-  
-
-The private key; the contents of the certificate's domain.kex file.
-
-
-
-
-
-
-
-
-
+  The private key; the contents of the certificate's domain.kex file.
 
 
 

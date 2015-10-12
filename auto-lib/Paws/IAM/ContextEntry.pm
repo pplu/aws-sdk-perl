@@ -35,52 +35,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Contex
 
 =head2 ContextKeyName => Str
 
-  
-
-The full name of a condition context key, including the service prefix.
+  The full name of a condition context key, including the service prefix.
 For example, C<aws:SourceIp> or C<s3:VersionId>.
-
-
-
-
-
-
-
-
-
 
 =head2 ContextKeyType => Str
 
-  
-
-The data type of the value (or values) specified in the
+  The data type of the value (or values) specified in the
 C<ContextKeyValues> parameter.
-
-
-
-
-
-
-
-
-
 
 =head2 ContextKeyValues => ArrayRef[Str]
 
-  
-
-The value (or values, if the condition context key supports multiple
+  The value (or values, if the condition context key supports multiple
 values) to provide to the simulation for use when the key is referenced
 by a C<Condition> element in an input policy.
-
-
-
-
-
-
-
-
-
 
 
 

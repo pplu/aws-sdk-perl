@@ -47,42 +47,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone in which the Reserved Instance can be used.
-
-
-
-
-
-
-
-
-
+  The Availability Zone in which the Reserved Instance can be used.
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -138,201 +114,71 @@ C<usage-price> - The usage price of the Reserved Instance, per hour
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 IncludeMarketplace => Bool
 
-  
-
-Include Marketplace offerings in the response.
-
-
-
-
-
-
-
-
-
+  Include Marketplace offerings in the response.
 
 =head2 InstanceTenancy => Str
 
-  
-
-The tenancy of the Reserved Instance offering. A Reserved Instance with
+  The tenancy of the Reserved Instance offering. A Reserved Instance with
 C<dedicated> tenancy runs on single-tenant hardware and can only be
 launched within a VPC.
 
 Default: C<default>
 
-
-
-
-
-
-
-
-
-
 =head2 InstanceType => Str
 
-  
-
-The instance type on which the Reserved Instance can be used. For more
+  The instance type on which the Reserved Instance can be used. For more
 information, see Instance Types in the I<Amazon Elastic Compute Cloud
 User Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxDuration => Int
 
-  
-
-The maximum duration (in seconds) to filter when searching for
+  The maximum duration (in seconds) to filter when searching for
 offerings.
 
 Default: 94608000 (3 years)
 
-
-
-
-
-
-
-
-
-
 =head2 MaxInstanceCount => Int
 
-  
-
-The maximum number of instances to filter when searching for offerings.
+  The maximum number of instances to filter when searching for offerings.
 
 Default: 20
 
-
-
-
-
-
-
-
-
-
 =head2 MaxResults => Int
 
-  
-
-The maximum number of results to return for the request in a single
+  The maximum number of results to return for the request in a single
 page. The remaining results of the initial request can be seen by
 sending another request with the returned C<NextToken> value. The
 maximum is 100.
 
 Default: 100
 
-
-
-
-
-
-
-
-
-
 =head2 MinDuration => Int
 
-  
-
-The minimum duration (in seconds) to filter when searching for
+  The minimum duration (in seconds) to filter when searching for
 offerings.
 
 Default: 2592000 (1 month)
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The token to retrieve the next page of results.
-
-
-
-
-
-
-
-
-
+  The token to retrieve the next page of results.
 
 =head2 OfferingType => Str
 
-  
-
-The Reserved Instance offering type. If you are using tools that
+  The Reserved Instance offering type. If you are using tools that
 predate the 2011-11-01 API version, you only have access to the
 C<Medium Utilization> Reserved Instance offering type.
 
-
-
-
-
-
-
-
-
-
 =head2 ProductDescription => Str
 
-  
-
-The Reserved Instance product platform description. Instances that
+  The Reserved Instance product platform description. Instances that
 include C<(Amazon VPC)> in the description are for use with Amazon VPC.
-
-
-
-
-
-
-
-
-
 
 =head2 ReservedInstancesOfferingIds => ArrayRef[Str]
 
-  
-
-One or more Reserved Instances offering IDs.
-
-
-
-
-
-
-
-
-
+  One or more Reserved Instances offering IDs.
 
 
 

@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Ulimit
 
 =head2 B<REQUIRED> hardLimit => Int
 
-  
-
-The hard limit for the ulimit type.
-
-
-
-
-
-
-
-
-
+  The hard limit for the ulimit type.
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The C<type> of the C<ulimit>.
-
-
-
-
-
-
-
-
-
+  The C<type> of the C<ulimit>.
 
 =head2 B<REQUIRED> softLimit => Int
 
-  
-
-The soft limit for the ulimit type.
-
-
-
-
-
-
-
-
-
+  The soft limit for the ulimit type.
 
 
 

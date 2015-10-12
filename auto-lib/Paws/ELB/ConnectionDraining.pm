@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Connec
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  
-
-Specifies whether connection draining is enabled for the load balancer.
-
-
-
-
-
-
-
-
-
+  Specifies whether connection draining is enabled for the load balancer.
 
 =head2 Timeout => Int
 
-  
-
-The maximum time, in seconds, to keep the existing connections open
+  The maximum time, in seconds, to keep the existing connections open
 before deregistering the instances.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::DomainI
 
 =head2 DomainName => Str
 
-  
-
-Specifies the C<DomainName>.
-
-
-
-
-
-
-
-
-
+  Specifies the C<DomainName>.
 
 
 

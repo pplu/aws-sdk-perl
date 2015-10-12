@@ -41,43 +41,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> domain => Str
 
-  
-
-The name of the domain that contains the workflow executions to list.
-
-
-
-
-
-
-
-
-
+  The name of the domain that contains the workflow executions to list.
 
 =head2 executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter
 
-  
-
-If specified, only workflow executions matching the workflow ID
+  If specified, only workflow executions matching the workflow ID
 specified in the filter are returned.
 
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
 
-
-
-
-
-
-
-
-
-
 =head2 maximumPageSize => Int
 
-  
-
-The maximum number of results that will be returned per call.
+  The maximum number of results that will be returned per call.
 C<nextPageToken> can be used to obtain futher pages of results. The
 default is 1000, which is the maximum allowed page size. You can,
 however, specify a page size I<smaller> than the maximum.
@@ -85,20 +61,9 @@ however, specify a page size I<smaller> than the maximum.
 This is an upper limit only; the actual number of results returned per
 call may be fewer than the specified maximum.
 
-
-
-
-
-
-
-
-
-
 =head2 nextPageToken => Str
 
-  
-
-If a C<NextPageToken> was returned by a previous call, there are more
+  If a C<NextPageToken> was returned by a previous call, there are more
 results available. To retrieve the next page of results, make the call
 again using the returned token in C<nextPageToken>. Keep all other
 arguments unchanged.
@@ -106,85 +71,32 @@ arguments unchanged.
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
 
-
-
-
-
-
-
-
-
-
 =head2 reverseOrder => Bool
 
-  
-
-When set to C<true>, returns the results in reverse order. By default
+  When set to C<true>, returns the results in reverse order. By default
 the results are returned in descending order of the start time of the
 executions.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter
 
-  
-
-Workflow executions are included in the returned results based on
+  Workflow executions are included in the returned results based on
 whether their start times are within the range specified by this
 filter.
 
-
-
-
-
-
-
-
-
-
 =head2 tagFilter => Paws::SimpleWorkflow::TagFilter
 
-  
-
-If specified, only executions that have the matching tag are listed.
+  If specified, only executions that have the matching tag are listed.
 
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
 
-
-
-
-
-
-
-
-
-
 =head2 typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter
 
-  
-
-If specified, only executions of the type specified in the filter are
+  If specified, only executions of the type specified in the filter are
 returned.
 
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,9 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Marker => Str
 
-  
-
-For an initial request for a list of operations, omit this element. If
+  For an initial request for a list of operations, omit this element. If
 the number of operations that are not yet complete is greater than the
 value that you specified for C<MaxItems>, you can use C<Marker> to
 return additional operations. Get the value of C<NextPageMarker> from
@@ -50,20 +48,9 @@ Default: None
 
 Required: No
 
-
-
-
-
-
-
-
-
-
 =head2 MaxItems => Int
 
-  
-
-Number of domains to be returned.
+  Number of domains to be returned.
 
 Type: Integer
 
@@ -72,15 +59,6 @@ Default: 20
 Constraints: A value between 1 and 100.
 
 Required: No
-
-
-
-
-
-
-
-
-
 
 
 

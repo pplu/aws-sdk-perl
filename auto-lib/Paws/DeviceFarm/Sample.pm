@@ -35,24 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 arn => Str
 
-  
-
-The sample's ARN.
-
-
-
-
-
-
-
-
-
+  The sample's ARN.
 
 =head2 type => Str
 
-  
-
-The sample's type.
+  The sample's type.
 
 Must be one of the following values:
 
@@ -134,30 +121,10 @@ received, by app process.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 url => Str
 
-  
-
-The pre-signed Amazon S3 URL that can be used with a corresponding GET
+  The pre-signed Amazon S3 URL that can be used with a corresponding GET
 request to download the sample's file.
-
-
-
-
-
-
-
-
-
 
 
 

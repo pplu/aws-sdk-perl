@@ -35,51 +35,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Engine
 
 =head2 DBParameterGroupFamily => Str
 
-  
-
-Specifies the name of the DB parameter group family that the engine
+  Specifies the name of the DB parameter group family that the engine
 default parameters apply to.
-
-
-
-
-
-
-
-
-
 
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous EngineDefaults
+  An optional pagination token provided by a previous EngineDefaults
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by C<MaxRecords> .
 
-
-
-
-
-
-
-
-
-
 =head2 Parameters => ArrayRef[Paws::RDS::Parameter]
 
-  
-
-Contains a list of engine default parameters.
-
-
-
-
-
-
-
-
-
+  Contains a list of engine default parameters.
 
 
 

@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 
 =head2 AttributeValueList => ArrayRef[Paws::DynamoDB::AttributeValue]
 
-  
-
-One or more values to evaluate against the supplied attribute. The
+  One or more values to evaluate against the supplied attribute. The
 number of values in the list depends on the I<ComparisonOperator> being
 used.
 
@@ -50,20 +48,9 @@ http://en.wikipedia.org/wiki/ASCII
 For Binary, DynamoDB treats each byte of the binary data as unsigned
 when it compares binary values.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ComparisonOperator => Str
 
-  
-
-A comparator for evaluating attributes. For example, equals, greater
+  A comparator for evaluating attributes. For example, equals, greater
 than, less than, etc.
 
 The following comparison operators are available:
@@ -239,15 +226,6 @@ C<{"N":"6"}> does not compare to C<{"NS":["6", "2", "1"]}>
 For usage examples of I<AttributeValueList> and I<ComparisonOperator>,
 see Legacy Conditional Parameters in the I<Amazon DynamoDB Developer
 Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

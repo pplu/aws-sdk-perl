@@ -46,55 +46,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::JobFlo
 
 =head2 AdditionalMasterSecurityGroups => ArrayRef[Str]
 
-  
-
-A list of additional Amazon EC2 security group IDs for the master node.
-
-
-
-
-
-
-
-
-
+  A list of additional Amazon EC2 security group IDs for the master node.
 
 =head2 AdditionalSlaveSecurityGroups => ArrayRef[Str]
 
-  
-
-A list of additional Amazon EC2 security group IDs for the slave nodes.
-
-
-
-
-
-
-
-
-
+  A list of additional Amazon EC2 security group IDs for the slave nodes.
 
 =head2 Ec2KeyName => Str
 
-  
-
-The name of the Amazon EC2 key pair that can be used to ssh to the
+  The name of the Amazon EC2 key pair that can be used to ssh to the
 master node as the user called "hadoop."
-
-
-
-
-
-
-
-
-
 
 =head2 Ec2SubnetId => Str
 
-  
-
-To launch the job flow in Amazon Virtual Private Cloud (Amazon VPC),
+  To launch the job flow in Amazon Virtual Private Cloud (Amazon VPC),
 set this parameter to the identifier of the Amazon VPC subnet where you
 want the job flow to launch. If you do not specify this value, the job
 flow is launched in the normal Amazon Web Services cloud, outside of an
@@ -104,174 +69,55 @@ Amazon VPC currently does not support cluster compute quadruple extra
 large (cc1.4xlarge) instances. Thus you cannot specify the cc1.4xlarge
 instance type for nodes of a job flow launched in a Amazon VPC.
 
-
-
-
-
-
-
-
-
-
 =head2 EmrManagedMasterSecurityGroup => Str
 
-  
-
-The identifier of the Amazon EC2 security group (managed by Amazon
+  The identifier of the Amazon EC2 security group (managed by Amazon
 ElasticMapReduce) for the master node.
-
-
-
-
-
-
-
-
-
 
 =head2 EmrManagedSlaveSecurityGroup => Str
 
-  
-
-The identifier of the Amazon EC2 security group (managed by Amazon
+  The identifier of the Amazon EC2 security group (managed by Amazon
 ElasticMapReduce) for the slave nodes.
-
-
-
-
-
-
-
-
-
 
 =head2 HadoopVersion => Str
 
-  
-
-The Hadoop version for the job flow. Valid inputs are "0.18"
+  The Hadoop version for the job flow. Valid inputs are "0.18"
 (deprecated), "0.20" (deprecated), "0.20.205" (deprecated), "1.0.3",
 "2.2.0", or "2.4.0". If you do not set this value, the default of 0.18
 is used, unless the AmiVersion parameter is set in the RunJobFlow call,
 in which case the default version of Hadoop for that AMI version is
 used.
 
-
-
-
-
-
-
-
-
-
 =head2 InstanceCount => Int
 
-  
-
-The number of Amazon EC2 instances used to execute the job flow.
-
-
-
-
-
-
-
-
-
+  The number of Amazon EC2 instances used to execute the job flow.
 
 =head2 InstanceGroups => ArrayRef[Paws::EMR::InstanceGroupConfig]
 
-  
-
-Configuration for the job flow's instance groups.
-
-
-
-
-
-
-
-
-
+  Configuration for the job flow's instance groups.
 
 =head2 KeepJobFlowAliveWhenNoSteps => Bool
 
-  
-
-Specifies whether the job flow should be kept alive after completing
+  Specifies whether the job flow should be kept alive after completing
 all steps.
-
-
-
-
-
-
-
-
-
 
 =head2 MasterInstanceType => Str
 
-  
-
-The EC2 instance type of the master node.
-
-
-
-
-
-
-
-
-
+  The EC2 instance type of the master node.
 
 =head2 Placement => Paws::EMR::PlacementType
 
-  
-
-The Availability Zone the job flow will run in.
-
-
-
-
-
-
-
-
-
+  The Availability Zone the job flow will run in.
 
 =head2 SlaveInstanceType => Str
 
-  
-
-The EC2 instance type of the slave nodes.
-
-
-
-
-
-
-
-
-
+  The EC2 instance type of the slave nodes.
 
 =head2 TerminationProtected => Bool
 
-  
-
-Specifies whether to lock the job flow to prevent the Amazon EC2
+  Specifies whether to lock the job flow to prevent the Amazon EC2
 instances from being terminated by API call, user intervention, or in
 the event of a job flow error.
-
-
-
-
-
-
-
-
-
 
 
 

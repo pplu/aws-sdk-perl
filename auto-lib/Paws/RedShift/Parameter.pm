@@ -41,140 +41,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::P
 
 =head2 AllowedValues => Str
 
-  
-
-The valid range of values for the parameter.
-
-
-
-
-
-
-
-
-
+  The valid range of values for the parameter.
 
 =head2 ApplyType => Str
 
-  
-
-Specifies how to apply the parameter. Supported value: C<static>.
-
-
-
-
-
-
-
-
-
+  Specifies how to apply the parameter. Supported value: C<static>.
 
 =head2 DataType => Str
 
-  
-
-The data type of the parameter.
-
-
-
-
-
-
-
-
-
+  The data type of the parameter.
 
 =head2 Description => Str
 
-  
-
-A description of the parameter.
-
-
-
-
-
-
-
-
-
+  A description of the parameter.
 
 =head2 IsModifiable => Bool
 
-  
-
-If C<true>, the parameter can be modified. Some parameters have
+  If C<true>, the parameter can be modified. Some parameters have
 security or operational implications that prevent them from being
 changed.
 
-
-
-
-
-
-
-
-
-
 =head2 MinimumEngineVersion => Str
 
-  
-
-The earliest engine version to which the parameter can apply.
-
-
-
-
-
-
-
-
-
+  The earliest engine version to which the parameter can apply.
 
 =head2 ParameterName => Str
 
-  
-
-The name of the parameter.
-
-
-
-
-
-
-
-
-
+  The name of the parameter.
 
 =head2 ParameterValue => Str
 
-  
-
-The value of the parameter.
-
-
-
-
-
-
-
-
-
+  The value of the parameter.
 
 =head2 Source => Str
 
-  
-
-The source of the parameter value, such as "engine-default" or "user".
-
-
-
-
-
-
-
-
-
+  The source of the parameter value, such as "engine-default" or "user".
 
 
 

@@ -42,158 +42,48 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 AutoScalingGroupName => Str
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
-
+  The name of the group.
 
 =head2 DesiredCapacity => Int
 
-  
-
-The number of instances you prefer to maintain in the group.
-
-
-
-
-
-
-
-
-
+  The number of instances you prefer to maintain in the group.
 
 =head2 EndTime => Str
 
-  
-
-The date and time that the action is scheduled to end. This date and
+  The date and time that the action is scheduled to end. This date and
 time can be up to one month in the future.
-
-
-
-
-
-
-
-
-
 
 =head2 MaxSize => Int
 
-  
-
-The maximum size of the group.
-
-
-
-
-
-
-
-
-
+  The maximum size of the group.
 
 =head2 MinSize => Int
 
-  
-
-The minimum size of the group.
-
-
-
-
-
-
-
-
-
+  The minimum size of the group.
 
 =head2 Recurrence => Str
 
-  
-
-The recurring schedule for the action.
-
-
-
-
-
-
-
-
-
+  The recurring schedule for the action.
 
 =head2 ScheduledActionARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the scheduled action.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the scheduled action.
 
 =head2 ScheduledActionName => Str
 
-  
-
-The name of the scheduled action.
-
-
-
-
-
-
-
-
-
+  The name of the scheduled action.
 
 =head2 StartTime => Str
 
-  
-
-The date and time that the action is scheduled to begin. This date and
+  The date and time that the action is scheduled to begin. This date and
 time can be up to one month in the future.
 
 When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
 form the boundaries of when the recurring action will start and stop.
 
-
-
-
-
-
-
-
-
-
 =head2 Time => Str
 
-  
-
-This parameter is deprecated; use C<StartTime> instead.
-
-
-
-
-
-
-
-
-
+  This parameter is deprecated; use C<StartTime> instead.
 
 
 

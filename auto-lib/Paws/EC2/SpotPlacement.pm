@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotPl
 
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone.
-
-
-
-
-
-
-
-
-
+  The Availability Zone.
 
 =head2 GroupName => Str
 
-  
-
-The name of the placement group (for cluster instances).
-
-
-
-
-
-
-
-
-
+  The name of the placement group (for cluster instances).
 
 
 

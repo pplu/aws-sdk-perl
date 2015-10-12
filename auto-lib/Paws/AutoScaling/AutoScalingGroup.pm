@@ -52,313 +52,93 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 AutoScalingGroupARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the group.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the group.
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
-
+  The name of the group.
 
 =head2 B<REQUIRED> AvailabilityZones => ArrayRef[Str]
 
-  
-
-One or more Availability Zones for the group.
-
-
-
-
-
-
-
-
-
+  One or more Availability Zones for the group.
 
 =head2 B<REQUIRED> CreatedTime => Str
 
-  
-
-The date and time the group was created.
-
-
-
-
-
-
-
-
-
+  The date and time the group was created.
 
 =head2 B<REQUIRED> DefaultCooldown => Int
 
-  
-
-The number of seconds after a scaling activity completes before any
+  The number of seconds after a scaling activity completes before any
 further scaling activities can start.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> DesiredCapacity => Int
 
-  
-
-The desired size of the group.
-
-
-
-
-
-
-
-
-
+  The desired size of the group.
 
 =head2 EnabledMetrics => ArrayRef[Paws::AutoScaling::EnabledMetric]
 
-  
-
-The metrics enabled for the group.
-
-
-
-
-
-
-
-
-
+  The metrics enabled for the group.
 
 =head2 HealthCheckGracePeriod => Int
 
-  
-
-The amount of time that Auto Scaling waits before checking an
+  The amount of time that Auto Scaling waits before checking an
 instance's health status. The grace period begins when an instance
 comes into service.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> HealthCheckType => Str
 
-  
-
-The service of interest for the health status check, which can be
+  The service of interest for the health status check, which can be
 either C<EC2> for Amazon EC2 or C<ELB> for Elastic Load Balancing.
-
-
-
-
-
-
-
-
-
 
 =head2 Instances => ArrayRef[Paws::AutoScaling::Instance]
 
-  
-
-The EC2 instances associated with the group.
-
-
-
-
-
-
-
-
-
+  The EC2 instances associated with the group.
 
 =head2 LaunchConfigurationName => Str
 
-  
-
-The name of the associated launch configuration.
-
-
-
-
-
-
-
-
-
+  The name of the associated launch configuration.
 
 =head2 LoadBalancerNames => ArrayRef[Str]
 
-  
-
-One or more load balancers associated with the group.
-
-
-
-
-
-
-
-
-
+  One or more load balancers associated with the group.
 
 =head2 B<REQUIRED> MaxSize => Int
 
-  
-
-The maximum size of the group.
-
-
-
-
-
-
-
-
-
+  The maximum size of the group.
 
 =head2 B<REQUIRED> MinSize => Int
 
-  
-
-The minimum size of the group.
-
-
-
-
-
-
-
-
-
+  The minimum size of the group.
 
 =head2 PlacementGroup => Str
 
-  
-
-The name of the placement group into which you'll launch your
+  The name of the placement group into which you'll launch your
 instances, if any. For more information, see Placement Groups.
-
-
-
-
-
-
-
-
-
 
 =head2 Status => Str
 
-  
-
-The current state of the group when DeleteAutoScalingGroup is in
+  The current state of the group when DeleteAutoScalingGroup is in
 progress.
-
-
-
-
-
-
-
-
-
 
 =head2 SuspendedProcesses => ArrayRef[Paws::AutoScaling::SuspendedProcess]
 
-  
-
-The suspended processes associated with the group.
-
-
-
-
-
-
-
-
-
+  The suspended processes associated with the group.
 
 =head2 Tags => ArrayRef[Paws::AutoScaling::TagDescription]
 
-  
-
-The tags for the group.
-
-
-
-
-
-
-
-
-
+  The tags for the group.
 
 =head2 TerminationPolicies => ArrayRef[Str]
 
-  
-
-The termination policies for the group.
-
-
-
-
-
-
-
-
-
+  The termination policies for the group.
 
 =head2 VPCZoneIdentifier => Str
 
-  
-
-One or more subnet IDs, if applicable, separated by commas.
+  One or more subnet IDs, if applicable, separated by commas.
 
 If you specify C<VPCZoneIdentifier> and C<AvailabilityZones>, ensure
 that the Availability Zones of the subnets match the values for
 C<AvailabilityZones>.
-
-
-
-
-
-
-
-
-
 
 
 

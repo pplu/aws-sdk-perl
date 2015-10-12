@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 Key => Str
 
-  
-
-The tag key.
-
-
-
-
-
-
-
-
-
+  The tag key.
 
 =head2 Value => Str
 
-  
-
-The value assigned to a tag key.
-
-
-
-
-
-
-
-
-
+  The value assigned to a tag key.
 
 
 

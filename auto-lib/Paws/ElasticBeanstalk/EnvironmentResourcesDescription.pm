@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 LoadBalancer => Paws::ElasticBeanstalk::LoadBalancerDescription
 
-  
-
-Describes the LoadBalancer.
-
-
-
-
-
-
-
-
-
+  Describes the LoadBalancer.
 
 
 

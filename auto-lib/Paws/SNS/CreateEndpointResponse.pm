@@ -15,18 +15,7 @@ Paws::SNS::CreateEndpointResponse
 
 =head2 EndpointArn => Str
 
-  
-
-EndpointArn returned from CreateEndpoint action.
-
-
-
-
-
-
-
-
-
+  EndpointArn returned from CreateEndpoint action.
 
 
 =cut

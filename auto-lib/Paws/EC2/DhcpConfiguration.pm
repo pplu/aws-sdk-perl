@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::DhcpCo
 
 =head2 Key => Str
 
-  
-
-The name of a DHCP option.
-
-
-
-
-
-
-
-
-
+  The name of a DHCP option.
 
 =head2 Values => ArrayRef[Paws::EC2::AttributeValue]
 
-  
-
-One or more values for the DHCP option.
-
-
-
-
-
-
-
-
-
+  One or more values for the DHCP option.
 
 
 

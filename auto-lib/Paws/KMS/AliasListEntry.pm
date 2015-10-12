@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::AliasL
 
 =head2 AliasArn => Str
 
-  
-
-String that contains the key ARN.
-
-
-
-
-
-
-
-
-
+  String that contains the key ARN.
 
 =head2 AliasName => Str
 
-  
-
-String that contains the alias.
-
-
-
-
-
-
-
-
-
+  String that contains the alias.
 
 =head2 TargetKeyId => Str
 
-  
-
-String that contains the key identifier pointed to by the alias.
-
-
-
-
-
-
-
-
-
+  String that contains the key identifier pointed to by the alias.
 
 
 

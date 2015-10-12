@@ -36,48 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssociationStatus => Paws::SSM::AssociationStatus
 
-  
-
-The association status.
-
-
-
-
-
-
-
-
-
+  The association status.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the configuration document.
-
-
-
-
-
-
-
-
-
+  The name of the configuration document.
 
 
 

@@ -43,169 +43,48 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Ordera
 
 =head2 AvailabilityZones => ArrayRef[Paws::RDS::AvailabilityZone]
 
-  
-
-A list of Availability Zones for the orderable DB instance.
-
-
-
-
-
-
-
-
-
+  A list of Availability Zones for the orderable DB instance.
 
 =head2 DBInstanceClass => Str
 
-  
-
-The DB instance class for the orderable DB instance.
-
-
-
-
-
-
-
-
-
+  The DB instance class for the orderable DB instance.
 
 =head2 Engine => Str
 
-  
-
-The engine type of the orderable DB instance.
-
-
-
-
-
-
-
-
-
+  The engine type of the orderable DB instance.
 
 =head2 EngineVersion => Str
 
-  
-
-The engine version of the orderable DB instance.
-
-
-
-
-
-
-
-
-
+  The engine version of the orderable DB instance.
 
 =head2 LicenseModel => Str
 
-  
-
-The license model for the orderable DB instance.
-
-
-
-
-
-
-
-
-
+  The license model for the orderable DB instance.
 
 =head2 MultiAZCapable => Bool
 
-  
-
-Indicates whether this orderable DB instance is multi-AZ capable.
-
-
-
-
-
-
-
-
-
+  Indicates whether this orderable DB instance is multi-AZ capable.
 
 =head2 ReadReplicaCapable => Bool
 
-  
-
-Indicates whether this orderable DB instance can have a Read Replica.
-
-
-
-
-
-
-
-
-
+  Indicates whether this orderable DB instance can have a Read Replica.
 
 =head2 StorageType => Str
 
-  
-
-Indicates the storage type for this orderable DB instance.
-
-
-
-
-
-
-
-
-
+  Indicates the storage type for this orderable DB instance.
 
 =head2 SupportsIops => Bool
 
-  
-
-Indicates whether this orderable DB instance supports provisioned IOPS.
-
-
-
-
-
-
-
-
-
+  Indicates whether this orderable DB instance supports provisioned IOPS.
 
 =head2 SupportsStorageEncryption => Bool
 
-  
-
-Indicates whether this orderable DB instance supports encrypted
+  Indicates whether this orderable DB instance supports encrypted
 storage.
-
-
-
-
-
-
-
-
-
 
 =head2 Vpc => Bool
 
-  
-
-Indicates whether this is a VPC orderable DB instance.
-
-
-
-
-
-
-
-
-
+  Indicates whether this is a VPC orderable DB instance.
 
 
 

@@ -37,83 +37,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::CORSRul
 
 =head2 AllowedHeaders => ArrayRef[Str]
 
-  
-
-Specifies which headers are allowed in a pre-flight OPTIONS request.
-
-
-
-
-
-
-
-
-
+  Specifies which headers are allowed in a pre-flight OPTIONS request.
 
 =head2 B<REQUIRED> AllowedMethods => ArrayRef[Str]
 
-  
-
-Identifies HTTP methods that the domain/origin specified in the rule is
+  Identifies HTTP methods that the domain/origin specified in the rule is
 allowed to execute.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> AllowedOrigins => ArrayRef[Str]
 
-  
-
-One or more origins you want customers to be able to access the bucket
+  One or more origins you want customers to be able to access the bucket
 from.
-
-
-
-
-
-
-
-
-
 
 =head2 ExposeHeaders => ArrayRef[Str]
 
-  
-
-One or more headers in the response that you want customers to be able
+  One or more headers in the response that you want customers to be able
 to access from their applications (for example, from a JavaScript
 XMLHttpRequest object).
 
-
-
-
-
-
-
-
-
-
 =head2 MaxAgeSeconds => Int
 
-  
-
-The time in seconds that your browser is to cache the preflight
+  The time in seconds that your browser is to cache the preflight
 response for the specified resource.
-
-
-
-
-
-
-
-
-
 
 
 

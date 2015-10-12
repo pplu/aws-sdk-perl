@@ -38,93 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head2 lastAttemptTime => Str
 
-  
-
-The time of the last attempted delivery.
-
-
-
-
-
-
-
-
-
+  The time of the last attempted delivery.
 
 =head2 lastErrorCode => Str
 
-  
-
-The error code from the last attempted delivery.
-
-
-
-
-
-
-
-
-
+  The error code from the last attempted delivery.
 
 =head2 lastErrorMessage => Str
 
-  
-
-The error message from the last attempted delivery.
-
-
-
-
-
-
-
-
-
+  The error message from the last attempted delivery.
 
 =head2 lastStatus => Str
 
-  
-
-Status of the last attempted delivery.
-
-
-
-
-
-
-
-
-
+  Status of the last attempted delivery.
 
 =head2 lastSuccessfulTime => Str
 
-  
-
-The time of the last successful delivery.
-
-
-
-
-
-
-
-
-
+  The time of the last successful delivery.
 
 =head2 nextDeliveryTime => Str
 
-  
-
-The time that the next delivery occurs.
-
-
-
-
-
-
-
-
-
+  The time that the next delivery occurs.
 
 
 

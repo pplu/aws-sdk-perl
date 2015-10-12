@@ -37,82 +37,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> decisionTaskCompletedEventId => Int
 
-  
-
-The ID of the C<DecisionTaskCompleted> event for the decision that
+  The ID of the C<DecisionTaskCompleted> event for the decision that
 resulted in the scheduling of this AWS Lambda function. This
 information can be useful for diagnosing problems by tracing back the
 chain of events leading up to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> id => Str
 
-  
-
-The unique Amazon SWF ID for the AWS Lambda task.
-
-
-
-
-
-
-
-
-
+  The unique Amazon SWF ID for the AWS Lambda task.
 
 =head2 input => Str
 
-  
-
-Input provided to the AWS Lambda function.
-
-
-
-
-
-
-
-
-
+  Input provided to the AWS Lambda function.
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of the scheduled AWS Lambda function.
-
-
-
-
-
-
-
-
-
+  The name of the scheduled AWS Lambda function.
 
 =head2 startToCloseTimeout => Str
 
-  
-
-The maximum time, in seconds, that the AWS Lambda function can take to
+  The maximum time, in seconds, that the AWS Lambda function can take to
 execute from start to close before it is marked as failed.
-
-
-
-
-
-
-
-
-
 
 
 

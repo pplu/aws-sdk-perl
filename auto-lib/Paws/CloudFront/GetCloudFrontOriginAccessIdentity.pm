@@ -22,18 +22,7 @@ Paws::CloudFront::GetCloudFrontOriginAccessIdentityResult
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The identity's id.
-
-
-
-
-
-
-
-
-
+  The identity's id.
 
 
 =cut

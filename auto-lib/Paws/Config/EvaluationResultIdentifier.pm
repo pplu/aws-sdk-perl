@@ -34,38 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Eva
 
 =head2 EvaluationResultQualifier => Paws::Config::EvaluationResultQualifier
 
-  
-
-Identifies an AWS Config rule used to evaluate an AWS resource, and
+  Identifies an AWS Config rule used to evaluate an AWS resource, and
 provides the type and ID of the evaluated resource.
-
-
-
-
-
-
-
-
-
 
 =head2 OrderingTimestamp => Str
 
-  
-
-The time of the event that triggered the evaluation of your AWS
+  The time of the event that triggered the evaluation of your AWS
 resources. The time can indicate when AWS Config delivered a
 configuration item change notification, or it can indicate when AWS
 Config delivered the configuration snapshot, depending on which event
 triggered the evaluation.
-
-
-
-
-
-
-
-
-
 
 
 

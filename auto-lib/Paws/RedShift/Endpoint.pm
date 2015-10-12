@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::E
 
 =head2 Address => Str
 
-  
-
-The DNS address of the Cluster.
-
-
-
-
-
-
-
-
-
+  The DNS address of the Cluster.
 
 =head2 Port => Int
 
-  
-
-The port that the database engine is listening on.
-
-
-
-
-
-
-
-
-
+  The port that the database engine is listening on.
 
 
 

@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Associ
 
 =head2 B<REQUIRED> key => Str
 
-  
-
-The name of the filter.
-
-
-
-
-
-
-
-
-
+  The name of the filter.
 
 =head2 B<REQUIRED> value => Str
 
-  
-
-The filter value.
-
-
-
-
-
-
-
-
-
+  The filter value.
 
 
 

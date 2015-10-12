@@ -37,54 +37,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 arn => Str
 
-  
-
-The artifact's ARN.
-
-
-
-
-
-
-
-
-
+  The artifact's ARN.
 
 =head2 extension => Str
 
-  
-
-The artifact's file extension.
-
-
-
-
-
-
-
-
-
+  The artifact's file extension.
 
 =head2 name => Str
 
-  
-
-The artifact's name.
-
-
-
-
-
-
-
-
-
+  The artifact's name.
 
 =head2 type => Str
 
-  
-
-The artifact's type.
+  The artifact's type.
 
 Allowed values include the following:
 
@@ -157,30 +122,10 @@ UNKNOWN: An unknown type.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 url => Str
 
-  
-
-The pre-signed Amazon S3 URL that can be used with a corresponding GET
+  The pre-signed Amazon S3 URL that can be used with a corresponding GET
 request to download the artifact's file.
-
-
-
-
-
-
-
-
-
 
 
 

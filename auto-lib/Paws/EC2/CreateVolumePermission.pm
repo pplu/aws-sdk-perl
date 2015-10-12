@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Create
 
 =head2 Group => Str
 
-  
-
-The specific group that is to be added or removed from a volume's list
+  The specific group that is to be added or removed from a volume's list
 of create volume permissions.
-
-
-
-
-
-
-
-
-
 
 =head2 UserId => Str
 
-  
-
-The specific AWS account ID that is to be added or removed from a
+  The specific AWS account ID that is to be added or removed from a
 volume's list of create volume permissions.
-
-
-
-
-
-
-
-
-
 
 
 

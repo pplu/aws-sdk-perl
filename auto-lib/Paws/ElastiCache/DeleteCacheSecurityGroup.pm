@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheSecurityGroupName => Str
 
-  
-
-The name of the cache security group to delete.
+  The name of the cache security group to delete.
 
 You cannot delete the default security group.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -41,127 +41,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> applicationName => Str
 
-  
-
-The application name corresponding to the deployment group to update.
-
-
-
-
-
-
-
-
-
+  The application name corresponding to the deployment group to update.
 
 =head2 autoScalingGroups => ArrayRef[Str]
 
-  
-
-The replacement list of Auto Scaling groups to be included in the
+  The replacement list of Auto Scaling groups to be included in the
 deployment group, if you want to change them.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> currentDeploymentGroupName => Str
 
-  
-
-The current name of the existing deployment group.
-
-
-
-
-
-
-
-
-
+  The current name of the existing deployment group.
 
 =head2 deploymentConfigName => Str
 
-  
-
-The replacement deployment configuration name to use, if you want to
+  The replacement deployment configuration name to use, if you want to
 change it.
-
-
-
-
-
-
-
-
-
 
 =head2 ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter]
 
-  
-
-The replacement set of Amazon EC2 tags to filter on, if you want to
+  The replacement set of Amazon EC2 tags to filter on, if you want to
 change them.
-
-
-
-
-
-
-
-
-
 
 =head2 newDeploymentGroupName => Str
 
-  
-
-The new name of the deployment group, if you want to change it.
-
-
-
-
-
-
-
-
-
+  The new name of the deployment group, if you want to change it.
 
 =head2 onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]
 
-  
-
-The replacement set of on-premises instance tags for filter on, if you
+  The replacement set of on-premises instance tags for filter on, if you
 want to change them.
-
-
-
-
-
-
-
-
-
 
 =head2 serviceRoleArn => Str
 
-  
-
-A replacement service role's ARN, if you want to change it.
-
-
-
-
-
-
-
-
-
+  A replacement service role's ARN, if you want to change it.
 
 
 

@@ -44,196 +44,64 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::Elastic
 
 =head2 AccessPolicies => Str
 
-  
-
-IAM access policy as a JSON-formatted string.
-
-
-
-
-
-
-
-
-
+  IAM access policy as a JSON-formatted string.
 
 =head2 AdvancedOptions => Paws::ES::AdvancedOptions
 
-  
-
-Specifies the status of the C<AdvancedOptions>
-
-
-
-
-
-
-
-
-
+  Specifies the status of the C<AdvancedOptions>
 
 =head2 B<REQUIRED> ARN => Str
 
-  
-
-The Amazon resource name (ARN) of an Elasticsearch domain. See
+  The Amazon resource name (ARN) of an Elasticsearch domain. See
 Identifiers for IAM Entities in I<Using AWS Identity and Access
 Management> for more information.
 
-
-
-
-
-
-
-
-
-
 =head2 Created => Bool
 
-  
-
-The domain creation status. C<True> if the creation of an Elasticsearch
+  The domain creation status. C<True> if the creation of an Elasticsearch
 domain is complete. C<False> if domain creation is still in progress.
-
-
-
-
-
-
-
-
-
 
 =head2 Deleted => Bool
 
-  
-
-The domain deletion status. C<True> if a delete request has been
+  The domain deletion status. C<True> if a delete request has been
 received for the domain but resource cleanup is still in progress.
 C<False> if the domain has not been deleted. Once domain deletion is
 complete, the status of the domain is no longer returned.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DomainId => Str
 
-  
-
-The unique identifier for the specified Elasticsearch domain.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the specified Elasticsearch domain.
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of an Elasticsearch domain. Domain names are unique across the
+  The name of an Elasticsearch domain. Domain names are unique across the
 domains owned by an account within an AWS region. Domain names start
 with a letter or number and can contain the following characters: a-z
 (lowercase), 0-9, and - (hyphen).
 
-
-
-
-
-
-
-
-
-
 =head2 EBSOptions => Paws::ES::EBSOptions
 
-  
-
-The C<EBSOptions> for the specified domain. See Configuring EBS-based
+  The C<EBSOptions> for the specified domain. See Configuring EBS-based
 Storage for more information.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ElasticsearchClusterConfig => Paws::ES::ElasticsearchClusterConfig
 
-  
-
-The type and number of instances in the domain cluster.
-
-
-
-
-
-
-
-
-
+  The type and number of instances in the domain cluster.
 
 =head2 Endpoint => Str
 
-  
-
-The Elasticsearch domain endpoint that you use to submit index and
+  The Elasticsearch domain endpoint that you use to submit index and
 search requests.
-
-
-
-
-
-
-
-
-
 
 =head2 Processing => Bool
 
-  
-
-The status of the Elasticsearch domain configuration. C<True> if Amazon
+  The status of the Elasticsearch domain configuration. C<True> if Amazon
 Elasticsearch Service is processing configuration changes. C<False> if
 the configuration is active.
 
-
-
-
-
-
-
-
-
-
 =head2 SnapshotOptions => Paws::ES::SnapshotOptions
 
-  
-
-Specifies the status of the C<SnapshotOptions>
-
-
-
-
-
-
-
-
-
+  Specifies the status of the C<SnapshotOptions>
 
 
 

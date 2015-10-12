@@ -39,19 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IndexFieldName => Str
 
-  
-
-The name of the index field your want to remove from the domain's
+  The name of the index field your want to remove from the domain's
 indexing options.
-
-
-
-
-
-
-
-
-
 
 
 

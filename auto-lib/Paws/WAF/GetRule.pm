@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RuleId => Str
 
-  
-
-The C<RuleId> of the Rule that you want to get. C<RuleId> is returned
+  The C<RuleId> of the Rule that you want to get. C<RuleId> is returned
 by CreateRule and by ListRules.
-
-
-
-
-
-
-
-
-
 
 
 

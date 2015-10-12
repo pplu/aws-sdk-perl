@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::STS::Federa
 
 =head2 B<REQUIRED> Arn => Str
 
-  
-
-The ARN that specifies the federated user that is associated with the
+  The ARN that specifies the federated user that is associated with the
 credentials. For more information about ARNs and how to use them in
 policies, see IAM Identifiers in I<Using IAM>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> FederatedUserId => Str
 
-  
-
-The string that identifies the federated user associated with the
+  The string that identifies the federated user associated with the
 credentials, similar to the unique ID of an IAM user.
-
-
-
-
-
-
-
-
-
 
 
 

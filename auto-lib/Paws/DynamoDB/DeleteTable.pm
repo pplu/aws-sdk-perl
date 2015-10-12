@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TableName => Str
 
-  
-
-The name of the table to delete.
-
-
-
-
-
-
-
-
-
+  The name of the table to delete.
 
 
 

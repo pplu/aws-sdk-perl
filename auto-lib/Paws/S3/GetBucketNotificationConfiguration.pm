@@ -22,18 +22,7 @@ Paws::S3::NotificationConfiguration
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
-
-Name of the buket to get the notification configuration for.
-
-
-
-
-
-
-
-
-
+  Name of the buket to get the notification configuration for.
 
 
 =cut

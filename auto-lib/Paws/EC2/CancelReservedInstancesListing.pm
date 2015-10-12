@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ReservedInstancesListingId => Str
 
-  
-
-The ID of the Reserved Instance listing.
-
-
-
-
-
-
-
-
-
+  The ID of the Reserved Instance listing.
 
 
 

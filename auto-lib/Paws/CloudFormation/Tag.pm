@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head2 Key => Str
 
-  
-
-I<Required>. A string used to identify this tag. You can specify a
+  I<Required>. A string used to identify this tag. You can specify a
 maximum of 128 characters for a tag key. Tags owned by Amazon Web
 Services (AWS) have the reserved prefix: C<aws:>.
 
-
-
-
-
-
-
-
-
-
 =head2 Value => Str
 
-  
-
-I<Required>. A string containing the value for this tag. You can
+  I<Required>. A string containing the value for this tag. You can
 specify a maximum of 256 characters for a tag value.
-
-
-
-
-
-
-
-
-
 
 
 

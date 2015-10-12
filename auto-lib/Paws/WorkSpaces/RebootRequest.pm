@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head2 B<REQUIRED> WorkspaceId => Str
 
-  
-
-The identifier of the WorkSpace to reboot.
-
-
-
-
-
-
-
-
-
+  The identifier of the WorkSpace to reboot.
 
 
 

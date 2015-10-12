@@ -15,34 +15,12 @@ Paws::SimpleWorkflow::WorkflowExecutionCount
 
 =head2 B<REQUIRED> count => Int
 
-  
-
-The number of workflow executions.
-
-
-
-
-
-
-
-
-
+  The number of workflow executions.
 =head2 truncated => Bool
 
-  
-
-If set to true, indicates that the actual count was more than the
+  If set to true, indicates that the actual count was more than the
 maximum supported by this API and the count returned is the truncated
 value.
-
-
-
-
-
-
-
-
-
 
 
 =cut

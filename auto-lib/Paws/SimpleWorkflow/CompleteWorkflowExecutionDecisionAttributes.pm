@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 result => Str
 
-  
-
-The result of the workflow execution. The form of the result is
+  The result of the workflow execution. The form of the result is
 implementation defined.
-
-
-
-
-
-
-
-
-
 
 
 

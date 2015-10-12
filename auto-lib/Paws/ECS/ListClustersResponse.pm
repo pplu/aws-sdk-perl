@@ -15,36 +15,14 @@ Paws::ECS::ListClustersResponse
 
 =head2 clusterArns => ArrayRef[Str]
 
-  
-
-The list of full Amazon Resource Name (ARN) entries for each cluster
+  The list of full Amazon Resource Name (ARN) entries for each cluster
 associated with your account.
-
-
-
-
-
-
-
-
-
 =head2 nextToken => Str
 
-  
-
-The C<nextToken> value to include in a future C<ListClusters> request.
+  The C<nextToken> value to include in a future C<ListClusters> request.
 When the results of a C<ListClusters> request exceed C<maxResults>,
 this value can be used to retrieve the next page of results. This value
 is C<null> when there are no more results to return.
-
-
-
-
-
-
-
-
-
 
 
 =cut

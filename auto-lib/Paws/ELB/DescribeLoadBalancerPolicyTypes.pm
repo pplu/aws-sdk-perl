@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 PolicyTypeNames => ArrayRef[Str]
 
-  
-
-The names of the policy types. If no names are specified, describes all
+  The names of the policy types. If no names are specified, describes all
 policy types defined by Elastic Load Balancing.
-
-
-
-
-
-
-
-
-
 
 
 

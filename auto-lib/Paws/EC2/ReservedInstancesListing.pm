@@ -42,155 +42,45 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Reserv
 
 =head2 ClientToken => Str
 
-  
-
-A unique, case-sensitive key supplied by the client to ensure that the
+  A unique, case-sensitive key supplied by the client to ensure that the
 request is idempotent. For more information, see Ensuring Idempotency.
-
-
-
-
-
-
-
-
-
 
 =head2 CreateDate => Str
 
-  
-
-The time the listing was created.
-
-
-
-
-
-
-
-
-
+  The time the listing was created.
 
 =head2 InstanceCounts => ArrayRef[Paws::EC2::InstanceCount]
 
-  
-
-The number of instances in this state.
-
-
-
-
-
-
-
-
-
+  The number of instances in this state.
 
 =head2 PriceSchedules => ArrayRef[Paws::EC2::PriceSchedule]
 
-  
-
-The price of the Reserved Instance listing.
-
-
-
-
-
-
-
-
-
+  The price of the Reserved Instance listing.
 
 =head2 ReservedInstancesId => Str
 
-  
-
-The ID of the Reserved Instance.
-
-
-
-
-
-
-
-
-
+  The ID of the Reserved Instance.
 
 =head2 ReservedInstancesListingId => Str
 
-  
-
-The ID of the Reserved Instance listing.
-
-
-
-
-
-
-
-
-
+  The ID of the Reserved Instance listing.
 
 =head2 Status => Str
 
-  
-
-The status of the Reserved Instance listing.
-
-
-
-
-
-
-
-
-
+  The status of the Reserved Instance listing.
 
 =head2 StatusMessage => Str
 
-  
-
-The reason for the current status of the Reserved Instance listing. The
+  The reason for the current status of the Reserved Instance listing. The
 response can be blank.
-
-
-
-
-
-
-
-
-
 
 =head2 Tags => ArrayRef[Paws::EC2::Tag]
 
-  
-
-Any tags assigned to the resource.
-
-
-
-
-
-
-
-
-
+  Any tags assigned to the resource.
 
 =head2 UpdateDate => Str
 
-  
-
-The last modified timestamp of the listing.
-
-
-
-
-
-
-
-
-
+  The last modified timestamp of the listing.
 
 
 

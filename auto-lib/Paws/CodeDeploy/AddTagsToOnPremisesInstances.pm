@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> instanceNames => ArrayRef[Str]
 
-  
-
-The names of the on-premises instances to add tags to.
-
-
-
-
-
-
-
-
-
+  The names of the on-premises instances to add tags to.
 
 =head2 B<REQUIRED> tags => ArrayRef[Paws::CodeDeploy::Tag]
 
-  
-
-The tag key-value pairs to add to the on-premises instances.
+  The tag key-value pairs to add to the on-premises instances.
 
 Keys and values are both required. Keys cannot be nulls or empty
 strings. Value-only tags are not allowed.
-
-
-
-
-
-
-
-
-
 
 
 

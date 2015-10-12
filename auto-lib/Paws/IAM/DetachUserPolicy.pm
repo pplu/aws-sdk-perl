@@ -39,19 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name (friendly name, not ARN) of the user to detach the policy
+  The name (friendly name, not ARN) of the user to detach the policy
 from.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Complet
 
 =head2 ETag => Str
 
-  
-
-Entity tag returned when the part was uploaded.
-
-
-
-
-
-
-
-
-
+  Entity tag returned when the part was uploaded.
 
 =head2 PartNumber => Int
 
-  
-
-Part number that identifies the part. This is a positive integer
+  Part number that identifies the part. This is a positive integer
 between 1 and 10,000.
-
-
-
-
-
-
-
-
-
 
 
 

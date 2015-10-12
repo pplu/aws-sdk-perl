@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Server
 
 =head2 B<REQUIRED> CertificateBody => Str
 
-  
-
-The contents of the public key certificate.
-
-
-
-
-
-
-
-
-
+  The contents of the public key certificate.
 
 =head2 CertificateChain => Str
 
-  
-
-The contents of the public key certificate chain.
-
-
-
-
-
-
-
-
-
+  The contents of the public key certificate chain.
 
 =head2 B<REQUIRED> ServerCertificateMetadata => Paws::IAM::ServerCertificateMetadata
 
-  
-
-The meta information of the server certificate, such as its name, path,
+  The meta information of the server certificate, such as its name, path,
 ID, and ARN.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SerialNumber => Str
 
-  
-
-The serial number that uniquely identifies the MFA device. For virtual
+  The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the device ARN.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user whose MFA device you want to deactivate.
-
-
-
-
-
-
-
-
-
+  The name of the user whose MFA device you want to deactivate.
 
 
 

@@ -38,98 +38,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::R
 
 =head2 CurrentRestoreRateInMegaBytesPerSecond => Num
 
-  
-
-The number of megabytes per second being transferred from the backup
+  The number of megabytes per second being transferred from the backup
 storage. Returns the average rate for a completed backup.
-
-
-
-
-
-
-
-
-
 
 =head2 ElapsedTimeInSeconds => Int
 
-  
-
-The amount of time an in-progress restore has been running, or the
+  The amount of time an in-progress restore has been running, or the
 amount of time it took a completed restore to finish.
-
-
-
-
-
-
-
-
-
 
 =head2 EstimatedTimeToCompletionInSeconds => Int
 
-  
-
-The estimate of the time remaining before the restore will complete.
+  The estimate of the time remaining before the restore will complete.
 Returns 0 for a completed restore.
-
-
-
-
-
-
-
-
-
 
 =head2 ProgressInMegaBytes => Int
 
-  
-
-The number of megabytes that have been transferred from snapshot
+  The number of megabytes that have been transferred from snapshot
 storage.
-
-
-
-
-
-
-
-
-
 
 =head2 SnapshotSizeInMegaBytes => Int
 
-  
-
-The size of the set of snapshot data used to restore the cluster.
-
-
-
-
-
-
-
-
-
+  The size of the set of snapshot data used to restore the cluster.
 
 =head2 Status => Str
 
-  
-
-The status of the restore action. Returns starting, restoring,
+  The status of the restore action. Returns starting, restoring,
 completed, or failed.
-
-
-
-
-
-
-
-
-
 
 
 

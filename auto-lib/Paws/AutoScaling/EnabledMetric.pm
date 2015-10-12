@@ -34,24 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 Granularity => Str
 
-  
-
-The granularity of the metric. The only valid value is C<1Minute>.
-
-
-
-
-
-
-
-
-
+  The granularity of the metric. The only valid value is C<1Minute>.
 
 =head2 Metric => Str
 
-  
-
-The name of the metric.
+  The name of the metric.
 
 =over
 
@@ -88,15 +75,6 @@ C<GroupTerminatingInstances>
 C<GroupTotalInstances>
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

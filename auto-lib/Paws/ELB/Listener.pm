@@ -37,24 +37,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Listen
 
 =head2 B<REQUIRED> InstancePort => Int
 
-  
-
-The port on which the instance is listening.
-
-
-
-
-
-
-
-
-
+  The port on which the instance is listening.
 
 =head2 InstanceProtocol => Str
 
-  
-
-The protocol to use for routing traffic to back-end instances: HTTP,
+  The protocol to use for routing traffic to back-end instances: HTTP,
 HTTPS, TCP, or SSL.
 
 If the front-end protocol is HTTP, HTTPS, TCP, or SSL,
@@ -68,61 +55,19 @@ If there is another listener with the same C<InstancePort> whose
 C<InstanceProtocol> is HTTP or TCP, the listener's C<InstanceProtocol>
 must be HTTP or TCP.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> LoadBalancerPort => Int
 
-  
-
-The port on which the load balancer is listening. The supported ports
+  The port on which the load balancer is listening. The supported ports
 are: 25, 80, 443, 465, 587, and 1024-65535.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Protocol => Str
 
-  
-
-The load balancer transport protocol to use for routing: HTTP, HTTPS,
+  The load balancer transport protocol to use for routing: HTTP, HTTPS,
 TCP, or SSL.
-
-
-
-
-
-
-
-
-
 
 =head2 SSLCertificateId => Str
 
-  
-
-The Amazon Resource Name (ARN) of the server certificate.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the server certificate.
 
 
 

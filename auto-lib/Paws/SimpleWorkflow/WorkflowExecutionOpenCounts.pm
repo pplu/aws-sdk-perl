@@ -37,80 +37,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> openActivityTasks => Int
 
-  
-
-The count of activity tasks whose status is OPEN.
-
-
-
-
-
-
-
-
-
+  The count of activity tasks whose status is OPEN.
 
 =head2 B<REQUIRED> openChildWorkflowExecutions => Int
 
-  
-
-The count of child workflow executions whose status is OPEN.
-
-
-
-
-
-
-
-
-
+  The count of child workflow executions whose status is OPEN.
 
 =head2 B<REQUIRED> openDecisionTasks => Int
 
-  
-
-The count of decision tasks whose status is OPEN. A workflow execution
+  The count of decision tasks whose status is OPEN. A workflow execution
 can have at most one open decision task.
-
-
-
-
-
-
-
-
-
 
 =head2 openLambdaFunctions => Int
 
-  
-
-The count of AWS Lambda functions that are currently executing.
-
-
-
-
-
-
-
-
-
+  The count of AWS Lambda functions that are currently executing.
 
 =head2 B<REQUIRED> openTimers => Int
 
-  
-
-The count of timers started by this workflow execution that have not
+  The count of timers started by this workflow execution that have not
 fired yet.
-
-
-
-
-
-
-
-
-
 
 
 

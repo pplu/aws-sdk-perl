@@ -39,109 +39,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Vpc ob
 
 =head2 CidrBlock => Str
 
-  
-
-The CIDR block for the VPC.
-
-
-
-
-
-
-
-
-
+  The CIDR block for the VPC.
 
 =head2 DhcpOptionsId => Str
 
-  
-
-The ID of the set of DHCP options you've associated with the VPC (or
+  The ID of the set of DHCP options you've associated with the VPC (or
 C<default> if the default options are associated with the VPC).
-
-
-
-
-
-
-
-
-
 
 =head2 InstanceTenancy => Str
 
-  
-
-The allowed tenancy of instances launched into the VPC.
-
-
-
-
-
-
-
-
-
+  The allowed tenancy of instances launched into the VPC.
 
 =head2 IsDefault => Bool
 
-  
-
-Indicates whether the VPC is the default VPC.
-
-
-
-
-
-
-
-
-
+  Indicates whether the VPC is the default VPC.
 
 =head2 State => Str
 
-  
-
-The current state of the VPC.
-
-
-
-
-
-
-
-
-
+  The current state of the VPC.
 
 =head2 Tags => ArrayRef[Paws::EC2::Tag]
 
-  
-
-Any tags assigned to the VPC.
-
-
-
-
-
-
-
-
-
+  Any tags assigned to the VPC.
 
 =head2 VpcId => Str
 
-  
-
-The ID of the VPC.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC.
 
 
 

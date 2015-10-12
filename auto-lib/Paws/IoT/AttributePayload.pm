@@ -33,20 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Attrib
 
 =head2 attributes => Paws::IoT::Attributes
 
-  
-
-A JSON string containing up to three key-value pair in JSON format.
+  A JSON string containing up to three key-value pair in JSON format.
 
 For example: {\"attributes\":{\"string1\":\"string2\E<rdquo>}}
-
-
-
-
-
-
-
-
-
 
 
 

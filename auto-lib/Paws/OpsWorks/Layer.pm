@@ -53,9 +53,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::L
 
 =head2 Attributes => Paws::OpsWorks::LayerAttributes
 
-  
-
-The layer attributes.
+  The layer attributes.
 
 For the C<HaproxyStatsPassword>, C<MysqlRootPassword>, and
 C<GangliaPassword> attributes, AWS OpsWorks returns
@@ -64,125 +62,39 @@ C<*****FILTERED*****> instead of the actual value
 For an ECS Cluster layer, AWS OpsWorks the C<EcsClusterArn> attribute
 is set to the cluster's ARN.
 
-
-
-
-
-
-
-
-
-
 =head2 AutoAssignElasticIps => Bool
 
-  
-
-Whether to automatically assign an Elastic IP address to the layer's
+  Whether to automatically assign an Elastic IP address to the layer's
 instances. For more information, see How to Edit a Layer.
-
-
-
-
-
-
-
-
-
 
 =head2 AutoAssignPublicIps => Bool
 
-  
-
-For stacks that are running in a VPC, whether to automatically assign a
+  For stacks that are running in a VPC, whether to automatically assign a
 public IP address to the layer's instances. For more information, see
 How to Edit a Layer.
 
-
-
-
-
-
-
-
-
-
 =head2 CreatedAt => Str
 
-  
-
-Date when the layer was created.
-
-
-
-
-
-
-
-
-
+  Date when the layer was created.
 
 =head2 CustomInstanceProfileArn => Str
 
-  
-
-The ARN of the default IAM profile to be used for the layer's EC2
+  The ARN of the default IAM profile to be used for the layer's EC2
 instances. For more information about IAM ARNs, see Using Identifiers.
-
-
-
-
-
-
-
-
-
 
 =head2 CustomJson => Str
 
-  
-
-A JSON formatted string containing the layer's custom stack
+  A JSON formatted string containing the layer's custom stack
 configuration and deployment attributes.
-
-
-
-
-
-
-
-
-
 
 =head2 CustomRecipes => Paws::OpsWorks::Recipes
 
-  
-
-A C<LayerCustomRecipes> object that specifies the layer's custom
+  A C<LayerCustomRecipes> object that specifies the layer's custom
 recipes.
-
-
-
-
-
-
-
-
-
 
 =head2 CustomSecurityGroupIds => ArrayRef[Str]
 
-  
-
-An array containing the layer's custom security group IDs.
-
-
-
-
-
-
-
-
-
+  An array containing the layer's custom security group IDs.
 
 =head2 DefaultRecipes => Paws::OpsWorks::Recipes
 
@@ -190,39 +102,15 @@ An array containing the layer's custom security group IDs.
 
 =head2 DefaultSecurityGroupNames => ArrayRef[Str]
 
-  
-
-An array containing the layer's security group names.
-
-
-
-
-
-
-
-
-
+  An array containing the layer's security group names.
 
 =head2 EnableAutoHealing => Bool
 
-  
-
-Whether auto healing is disabled for the layer.
-
-
-
-
-
-
-
-
-
+  Whether auto healing is disabled for the layer.
 
 =head2 InstallUpdatesOnBoot => Bool
 
-  
-
-Whether to install operating system and package updates when the
+  Whether to install operating system and package updates when the
 instance boots. The default value is C<true>. If this value is set to
 C<false>, you must then update your instances manually by using
 CreateDeployment to run the C<update_dependencies> stack command or
@@ -232,151 +120,43 @@ instances.
 We strongly recommend using the default value of C<true>, to ensure
 that your instances have the latest security updates.
 
-
-
-
-
-
-
-
-
-
 =head2 LayerId => Str
 
-  
-
-The layer ID.
-
-
-
-
-
-
-
-
-
+  The layer ID.
 
 =head2 LifecycleEventConfiguration => Paws::OpsWorks::LifecycleEventConfiguration
 
-  
-
-A C<LifeCycleEventConfiguration> object that specifies the Shutdown
+  A C<LifeCycleEventConfiguration> object that specifies the Shutdown
 event configuration.
-
-
-
-
-
-
-
-
-
 
 =head2 Name => Str
 
-  
-
-The layer name.
-
-
-
-
-
-
-
-
-
+  The layer name.
 
 =head2 Packages => ArrayRef[Str]
 
-  
-
-An array of C<Package> objects that describe the layer's packages.
-
-
-
-
-
-
-
-
-
+  An array of C<Package> objects that describe the layer's packages.
 
 =head2 Shortname => Str
 
-  
-
-The layer short name.
-
-
-
-
-
-
-
-
-
+  The layer short name.
 
 =head2 StackId => Str
 
-  
-
-The layer stack ID.
-
-
-
-
-
-
-
-
-
+  The layer stack ID.
 
 =head2 Type => Str
 
-  
-
-The layer type.
-
-
-
-
-
-
-
-
-
+  The layer type.
 
 =head2 UseEbsOptimizedInstances => Bool
 
-  
-
-Whether the layer uses Amazon EBS-optimized instances.
-
-
-
-
-
-
-
-
-
+  Whether the layer uses Amazon EBS-optimized instances.
 
 =head2 VolumeConfigurations => ArrayRef[Paws::OpsWorks::VolumeConfiguration]
 
-  
-
-A C<VolumeConfigurations> object that describes the layer's Amazon EBS
+  A C<VolumeConfigurations> object that describes the layer's Amazon EBS
 volumes.
-
-
-
-
-
-
-
-
-
 
 
 

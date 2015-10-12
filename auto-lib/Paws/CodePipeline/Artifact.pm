@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 location => Paws::CodePipeline::ArtifactLocation
 
-  
-
-The location of an artifact.
-
-
-
-
-
-
-
-
-
+  The location of an artifact.
 
 =head2 name => Str
 
-  
-
-The artifact's name.
-
-
-
-
-
-
-
-
-
+  The artifact's name.
 
 =head2 revision => Str
 
-  
-
-The artifact's revision ID. Depending on the type of object, this could
+  The artifact's revision ID. Depending on the type of object, this could
 be a commit ID (GitHub) or a revision ID (Amazon S3).
-
-
-
-
-
-
-
-
-
 
 
 

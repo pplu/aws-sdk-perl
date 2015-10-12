@@ -38,98 +38,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Role o
 
 =head2 B<REQUIRED> Arn => Str
 
-  
-
-The Amazon Resource Name (ARN) specifying the role. For more
+  The Amazon Resource Name (ARN) specifying the role. For more
 information about ARNs and how to use them in policies, see IAM
 Identifiers in the I<Using IAM> guide.
 
-
-
-
-
-
-
-
-
-
 =head2 AssumeRolePolicyDocument => Str
 
-  
-
-The policy that grants an entity permission to assume the role.
-
-
-
-
-
-
-
-
-
+  The policy that grants an entity permission to assume the role.
 
 =head2 B<REQUIRED> CreateDate => Str
 
-  
-
-The date and time, in ISO 8601 date-time format, when the role was
+  The date and time, in ISO 8601 date-time format, when the role was
 created.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Path => Str
 
-  
-
-The path to the role. For more information about paths, see IAM
+  The path to the role. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> RoleId => Str
 
-  
-
-The stable and unique string identifying the role. For more information
+  The stable and unique string identifying the role. For more information
 about IDs, see IAM Identifiers in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> RoleName => Str
 
-  
-
-The friendly name that identifies the role.
-
-
-
-
-
-
-
-
-
+  The friendly name that identifies the role.
 
 
 

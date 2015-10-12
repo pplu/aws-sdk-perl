@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 RuleSetName => Str
 
-  
-
-The name of the receipt rule set to make active. Setting this value to
+  The name of the receipt rule set to make active. Setting this value to
 null disables all email receiving.
-
-
-
-
-
-
-
-
-
 
 
 

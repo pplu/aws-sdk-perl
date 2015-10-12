@@ -15,18 +15,7 @@ Paws::EC2::StopInstancesResult
 
 =head2 StoppingInstances => ArrayRef[Paws::EC2::InstanceStateChange]
 
-  
-
-Information about one or more stopped instances.
-
-
-
-
-
-
-
-
-
+  Information about one or more stopped instances.
 
 
 =cut

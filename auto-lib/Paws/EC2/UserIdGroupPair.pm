@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::UserId
 
 =head2 GroupId => Str
 
-  
-
-The ID of the security group.
-
-
-
-
-
-
-
-
-
+  The ID of the security group.
 
 =head2 GroupName => Str
 
-  
-
-The name of the security group. In a request, use this parameter for a
+  The name of the security group. In a request, use this parameter for a
 security group in EC2-Classic or a default VPC only. For a security
 group in a nondefault VPC, use C<GroupId>.
 
-
-
-
-
-
-
-
-
-
 =head2 UserId => Str
 
-  
-
-The ID of an AWS account. EC2-Classic only.
-
-
-
-
-
-
-
-
-
+  The ID of an AWS account. EC2-Classic only.
 
 
 

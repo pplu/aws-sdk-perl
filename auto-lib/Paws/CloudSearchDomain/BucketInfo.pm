@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 buckets => ArrayRef[Paws::CloudSearchDomain::Bucket]
 
-  
-
-A list of the calculated facet values and counts.
-
-
-
-
-
-
-
-
-
+  A list of the calculated facet values and counts.
 
 
 

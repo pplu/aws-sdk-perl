@@ -42,146 +42,47 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 afterTime => Str
 
-  
-
-The start date for a filtered date search on support case
+  The start date for a filtered date search on support case
 communications. Case communications are available for 12 months after
 creation.
 
-
-
-
-
-
-
-
-
-
 =head2 beforeTime => Str
 
-  
-
-The end date for a filtered date search on support case communications.
+  The end date for a filtered date search on support case communications.
 Case communications are available for 12 months after creation.
-
-
-
-
-
-
-
-
-
 
 =head2 caseIdList => ArrayRef[Str]
 
-  
-
-A list of ID numbers of the support cases you want returned. The
+  A list of ID numbers of the support cases you want returned. The
 maximum number of cases is 100.
-
-
-
-
-
-
-
-
-
 
 =head2 displayId => Str
 
-  
-
-The ID displayed for a case in the AWS Support Center user interface.
-
-
-
-
-
-
-
-
-
+  The ID displayed for a case in the AWS Support Center user interface.
 
 =head2 includeCommunications => Bool
 
-  
-
-Specifies whether communications should be included in the
+  Specifies whether communications should be included in the
 DescribeCases results. The default is I<true>.
-
-
-
-
-
-
-
-
-
 
 =head2 includeResolvedCases => Bool
 
-  
-
-Specifies whether resolved support cases should be included in the
+  Specifies whether resolved support cases should be included in the
 DescribeCases results. The default is I<false>.
-
-
-
-
-
-
-
-
-
 
 =head2 language => Str
 
-  
-
-The ISO 639-1 code for the language in which AWS provides support. AWS
+  The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.
 
-
-
-
-
-
-
-
-
-
 =head2 maxResults => Int
 
-  
-
-The maximum number of results to return before paginating.
-
-
-
-
-
-
-
-
-
+  The maximum number of results to return before paginating.
 
 =head2 nextToken => Str
 
-  
-
-A resumption point for pagination.
-
-
-
-
-
-
-
-
-
+  A resumption point for pagination.
 
 
 

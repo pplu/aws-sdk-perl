@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Kinesi
 
 =head2 partitionKey => Str
 
-  
-
-The partition key.
-
-
-
-
-
-
-
-
-
+  The partition key.
 
 =head2 B<REQUIRED> roleArn => Str
 
-  
-
-The ARN of the IAM role that grants access.
-
-
-
-
-
-
-
-
-
+  The ARN of the IAM role that grants access.
 
 =head2 B<REQUIRED> streamName => Str
 
-  
-
-The name of the Kinesis stream.
-
-
-
-
-
-
-
-
-
+  The name of the Kinesis stream.
 
 
 

@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Policy
 
 =head2 createDate => Str
 
-  
-
-The date and time the policy was created.
-
-
-
-
-
-
-
-
-
+  The date and time the policy was created.
 
 =head2 isDefaultVersion => Bool
 
-  
-
-Specifies whether the policy version is the default.
-
-
-
-
-
-
-
-
-
+  Specifies whether the policy version is the default.
 
 =head2 versionId => Str
 
-  
-
-The policy version ID.
-
-
-
-
-
-
-
-
-
+  The policy version ID.
 
 
 

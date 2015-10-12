@@ -37,82 +37,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoSync
 
 =head2 DatasetCount => Int
 
-  
-
-Number of datasets for the identity.
-
-
-
-
-
-
-
-
-
+  Number of datasets for the identity.
 
 =head2 DataStorage => Int
 
-  
-
-Total data storage for this identity.
-
-
-
-
-
-
-
-
-
+  Total data storage for this identity.
 
 =head2 IdentityId => Str
 
-  
-
-A name-spaced GUID (for example,
+  A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
-
-
-
-
-
-
-
-
-
 
 =head2 IdentityPoolId => Str
 
-  
-
-A name-spaced GUID (for example,
+  A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
 
-
-
-
-
-
-
-
-
-
 =head2 LastModifiedDate => Str
 
-  
-
-Date on which the identity was last modified.
-
-
-
-
-
-
-
-
-
+  Date on which the identity was last modified.
 
 
 

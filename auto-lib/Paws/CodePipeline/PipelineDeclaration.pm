@@ -41,67 +41,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of the action to be performed.
-
-
-
-
-
-
-
-
-
+  The name of the action to be performed.
 
 =head2 B<REQUIRED> roleArn => Str
 
-  
-
-The Amazon Resource Name (ARN) for AWS CodePipeline to use to either
+  The Amazon Resource Name (ARN) for AWS CodePipeline to use to either
 perform actions with no actionRoleArn, or to use to assume roles for
 actions with an actionRoleArn.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> stages => ArrayRef[Paws::CodePipeline::StageDeclaration]
 
-  
-
-The stage in which to perform the action.
-
-
-
-
-
-
-
-
-
+  The stage in which to perform the action.
 
 =head2 version => Int
 
-  
-
-The version number of the pipeline. A new pipeline always has a version
+  The version number of the pipeline. A new pipeline always has a version
 number of 1. This number is automatically incremented when a pipeline
 is updated.
-
-
-
-
-
-
-
-
-
 
 
 

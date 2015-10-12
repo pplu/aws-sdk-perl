@@ -16,33 +16,11 @@ Paws::RDS::DBClusterMessage
 
 =head2 DBClusters => ArrayRef[Paws::RDS::DBCluster]
 
-  
-
-Contains a list of DB clusters for the user.
-
-
-
-
-
-
-
-
-
+  Contains a list of DB clusters for the user.
 =head2 Marker => Str
 
-  
-
-A pagination token that can be used in a subsequent DescribeDBClusters
+  A pagination token that can be used in a subsequent DescribeDBClusters
 request.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
 =head2 EC2InstanceIdsToTerminate => ArrayRef[Str]
 
-  
-
-The EC2 InstanceIds to terminate. For advanced users only. Once you
+  The EC2 InstanceIds to terminate. For advanced users only. Once you
 terminate the instances, the instance group will not return to its
 original requested size.
 
-
-
-
-
-
-
-
-
-
 =head2 InstanceCount => Int
 
-  
-
-Target size for the instance group.
-
-
-
-
-
-
-
-
-
+  Target size for the instance group.
 
 =head2 B<REQUIRED> InstanceGroupId => Str
 
-  
-
-Unique ID of the instance group to expand or shrink.
-
-
-
-
-
-
-
-
-
+  Unique ID of the instance group to expand or shrink.
 
 
 

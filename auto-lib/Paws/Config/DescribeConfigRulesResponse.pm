@@ -15,33 +15,11 @@ Paws::Config::DescribeConfigRulesResponse
 
 =head2 ConfigRules => ArrayRef[Paws::Config::ConfigRule]
 
-  
-
-The details about your AWS Config rules.
-
-
-
-
-
-
-
-
-
+  The details about your AWS Config rules.
 =head2 NextToken => Str
 
-  
-
-The string that you use in a subsequent request to get the next page of
+  The string that you use in a subsequent request to get the next page of
 results in a paginated response.
-
-
-
-
-
-
-
-
-
 
 
 =cut

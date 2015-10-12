@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Attrib
 
 =head2 Value => Str
 
-  
-
-Valid values are case-sensitive and vary by action.
-
-
-
-
-
-
-
-
-
+  Valid values are case-sensitive and vary by action.
 
 
 

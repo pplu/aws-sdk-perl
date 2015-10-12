@@ -15,18 +15,7 @@ Paws::EC2::CancelBundleTaskResult
 
 =head2 BundleTask => Paws::EC2::BundleTask
 
-  
-
-Information about the bundle task.
-
-
-
-
-
-
-
-
-
+  Information about the bundle task.
 
 
 =cut

@@ -14,18 +14,7 @@ Paws::CodeDeploy::CreateDeploymentConfigOutput
 
 =head2 deploymentConfigId => Str
 
-  
-
-A unique deployment configuration ID.
-
-
-
-
-
-
-
-
-
+  A unique deployment configuration ID.
 
 
 =cut

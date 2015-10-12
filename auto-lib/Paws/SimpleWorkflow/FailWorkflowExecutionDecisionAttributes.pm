@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 details => Str
 
-  
-
-I<Optional.> Details of the failure.
-
-
-
-
-
-
-
-
-
+  I<Optional.> Details of the failure.
 
 =head2 reason => Str
 
-  
-
-A descriptive reason for the failure that may help in diagnostics.
-
-
-
-
-
-
-
-
-
+  A descriptive reason for the failure that may help in diagnostics.
 
 
 

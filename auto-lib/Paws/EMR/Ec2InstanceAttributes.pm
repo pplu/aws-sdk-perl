@@ -40,70 +40,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Ec2Ins
 
 =head2 AdditionalMasterSecurityGroups => ArrayRef[Str]
 
-  
-
-A list of additional Amazon EC2 security group IDs for the master node.
-
-
-
-
-
-
-
-
-
+  A list of additional Amazon EC2 security group IDs for the master node.
 
 =head2 AdditionalSlaveSecurityGroups => ArrayRef[Str]
 
-  
-
-A list of additional Amazon EC2 security group IDs for the slave nodes.
-
-
-
-
-
-
-
-
-
+  A list of additional Amazon EC2 security group IDs for the slave nodes.
 
 =head2 Ec2AvailabilityZone => Str
 
-  
-
-The Availability Zone in which the cluster will run.
-
-
-
-
-
-
-
-
-
+  The Availability Zone in which the cluster will run.
 
 =head2 Ec2KeyName => Str
 
-  
-
-The name of the Amazon EC2 key pair to use when connecting with SSH
+  The name of the Amazon EC2 key pair to use when connecting with SSH
 into the master node as a user named "hadoop".
-
-
-
-
-
-
-
-
-
 
 =head2 Ec2SubnetId => Str
 
-  
-
-To launch the job flow in Amazon VPC, set this parameter to the
+  To launch the job flow in Amazon VPC, set this parameter to the
 identifier of the Amazon VPC subnet where you want the job flow to
 launch. If you do not specify this value, the job flow is launched in
 the normal AWS cloud, outside of a VPC.
@@ -112,62 +66,20 @@ Amazon VPC currently does not support cluster compute quadruple extra
 large (cc1.4xlarge) instances. Thus, you cannot specify the cc1.4xlarge
 instance type for nodes of a job flow launched in a VPC.
 
-
-
-
-
-
-
-
-
-
 =head2 EmrManagedMasterSecurityGroup => Str
 
-  
-
-The identifier of the Amazon EC2 security group (managed by Amazon
+  The identifier of the Amazon EC2 security group (managed by Amazon
 Elastic MapReduce) for the master node.
-
-
-
-
-
-
-
-
-
 
 =head2 EmrManagedSlaveSecurityGroup => Str
 
-  
-
-The identifier of the Amazon EC2 security group (managed by Amazon
+  The identifier of the Amazon EC2 security group (managed by Amazon
 Elastic MapReduce) for the slave nodes.
-
-
-
-
-
-
-
-
-
 
 =head2 IamInstanceProfile => Str
 
-  
-
-The IAM role that was specified when the job flow was launched. The EC2
+  The IAM role that was specified when the job flow was launched. The EC2
 instances of the job flow assume this role.
-
-
-
-
-
-
-
-
-
 
 
 

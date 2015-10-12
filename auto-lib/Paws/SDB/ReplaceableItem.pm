@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SDB::Replac
 
 =head2 B<REQUIRED> Attributes => ArrayRef[Paws::SDB::ReplaceableAttribute]
 
-  
-
-The list of attributes for a replaceable item.
-
-
-
-
-
-
-
-
-
+  The list of attributes for a replaceable item.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the replaceable item.
-
-
-
-
-
-
-
-
-
+  The name of the replaceable item.
 
 
 

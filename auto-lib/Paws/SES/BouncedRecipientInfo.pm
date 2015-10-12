@@ -36,70 +36,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Bounce
 
 =head2 BounceType => Str
 
-  
-
-The reason for the bounce. You must provide either this parameter or
+  The reason for the bounce. You must provide either this parameter or
 C<RecipientDsnFields>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Recipient => Str
 
-  
-
-The email address of the recipient of the bounced email.
-
-
-
-
-
-
-
-
-
+  The email address of the recipient of the bounced email.
 
 =head2 RecipientArn => Str
 
-  
-
-This parameter is used only for sending authorization. It is the ARN of
+  This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
 that permits you to receive email for the recipient of the bounced
 email. For more information about sending authorization, see the Amazon
 SES Developer Guide.
 
-
-
-
-
-
-
-
-
-
 =head2 RecipientDsnFields => Paws::SES::RecipientDsnFields
 
-  
-
-Recipient-related DSN fields, most of which would normally be filled in
+  Recipient-related DSN fields, most of which would normally be filled in
 automatically when provided with a C<BounceType>. You must provide
 either this parameter or C<BounceType>.
-
-
-
-
-
-
-
-
-
 
 
 

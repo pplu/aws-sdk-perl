@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Namespace => Str
 
-  
-
-A unique namespace identifying the option's associated AWS resource.
-
-
-
-
-
-
-
-
-
+  A unique namespace identifying the option's associated AWS resource.
 
 =head2 OptionName => Str
 
-  
-
-The name of the configuration option.
-
-
-
-
-
-
-
-
-
+  The name of the configuration option.
 
 =head2 ResourceName => Str
 
-  
-
-A unique resource name for a time-based scaling configuration option.
-
-
-
-
-
-
-
-
-
+  A unique resource name for a time-based scaling configuration option.
 
 =head2 Value => Str
 
-  
-
-The current value for the configuration option.
-
-
-
-
-
-
-
-
-
+  The current value for the configuration option.
 
 
 

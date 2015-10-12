@@ -39,56 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Constraints => Paws::KMS::GrantConstraints
 
-  
-
-Specifies the conditions under which the actions specified by the
+  Specifies the conditions under which the actions specified by the
 C<Operations> parameter are allowed.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> GranteePrincipal => Str
 
-  
-
-Principal given permission by the grant to use the key identified by
+  Principal given permission by the grant to use the key identified by
 the C<keyId> parameter.
-
-
-
-
-
-
-
-
-
 
 =head2 GrantTokens => ArrayRef[Str]
 
-  
-
-For more information, see Grant Tokens.
-
-
-
-
-
-
-
-
-
+  For more information, see Grant Tokens.
 
 =head2 B<REQUIRED> KeyId => Str
 
-  
-
-A unique identifier for the customer master key. This value can be a
+  A unique identifier for the customer master key. This value can be a
 globally unique identifier or the fully specified ARN to a key.
 
 =over
@@ -101,20 +66,9 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Operations => ArrayRef[Str]
 
-  
-
-List of operations permitted by the grant. This can be any combination
+  List of operations permitted by the grant. This can be any combination
 of one or more of the following values:
 
 =over
@@ -137,30 +91,10 @@ of one or more of the following values:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 RetiringPrincipal => Str
 
-  
-
-Principal given permission to retire the grant. For more information,
+  Principal given permission to retire the grant. For more information,
 see RetireGrant.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Cancel
 
 =head2 SpotInstanceRequestId => Str
 
-  
-
-The ID of the Spot instance request.
-
-
-
-
-
-
-
-
-
+  The ID of the Spot instance request.
 
 =head2 State => Str
 
-  
-
-The state of the Spot instance request.
-
-
-
-
-
-
-
-
-
+  The state of the Spot instance request.
 
 
 

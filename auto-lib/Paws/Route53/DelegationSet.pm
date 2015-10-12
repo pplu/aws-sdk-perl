@@ -43,21 +43,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::De
 
 =head2 B<REQUIRED> NameServers => ArrayRef[Str]
 
-  
-
-A complex type that contains the authoritative name servers for the
+  A complex type that contains the authoritative name servers for the
 hosted zone. Use the method provided by your domain registrar to add an
 NS record to your domain for each C<NameServer> that is assigned to
 your hosted zone.
-
-
-
-
-
-
-
-
-
 
 
 

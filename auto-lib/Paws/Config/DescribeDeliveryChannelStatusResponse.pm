@@ -14,18 +14,7 @@ Paws::Config::DescribeDeliveryChannelStatusResponse
 
 =head2 DeliveryChannelsStatus => ArrayRef[Paws::Config::DeliveryChannelStatus]
 
-  
-
-A list that contains the status of a specified delivery channel.
-
-
-
-
-
-
-
-
-
+  A list that contains the status of a specified delivery channel.
 
 
 =cut

@@ -36,9 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::E
 
 =head2 AttributeValueList => ArrayRef[Paws::DynamoDB::AttributeValue]
 
-  
-
-One or more values to evaluate against the supplied attribute. The
+  One or more values to evaluate against the supplied attribute. The
 number of values in the list depends on the I<ComparisonOperator> being
 used.
 
@@ -55,20 +53,9 @@ when it compares binary values.
 For information on specifying data types in JSON, see JSON Data Format
 in the I<Amazon DynamoDB Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 ComparisonOperator => Str
 
-  
-
-A comparator for evaluating attributes in the I<AttributeValueList>.
+  A comparator for evaluating attributes in the I<AttributeValueList>.
 For example, equals, greater than, less than, etc.
 
 The following comparison operators are available:
@@ -241,20 +228,9 @@ C<{"N":"6"}> does not compare to C<{"NS":["6", "2", "1"]}>
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Exists => Bool
 
-  
-
-Causes DynamoDB to evaluate the value before attempting a conditional
+  Causes DynamoDB to evaluate the value before attempting a conditional
 operation:
 
 =over
@@ -296,15 +272,6 @@ expect an attribute to have a value, while also expecting it not to
 exist.)
 
 =back
-
-
-
-
-
-
-
-
-
 
 =head2 Value => Paws::DynamoDB::AttributeValue
 

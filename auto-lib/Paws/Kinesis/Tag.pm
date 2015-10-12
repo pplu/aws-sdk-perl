@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Ta
 
 =head2 B<REQUIRED> Key => Str
 
-  
-
-A unique identifier for the tag. Maximum length: 128 characters. Valid
+  A unique identifier for the tag. Maximum length: 128 characters. Valid
 characters: Unicode letters, digits, white space, _ . / = + - % @
-
-
-
-
-
-
-
-
-
 
 =head2 Value => Str
 
-  
-
-An optional string, typically used to describe or define the tag.
+  An optional string, typically used to describe or define the tag.
 Maximum length: 256 characters. Valid characters: Unicode letters,
 digits, white space, _ . / = + - % @
-
-
-
-
-
-
-
-
-
 
 
 

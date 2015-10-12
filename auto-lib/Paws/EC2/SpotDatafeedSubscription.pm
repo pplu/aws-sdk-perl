@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotDa
 
 =head2 Bucket => Str
 
-  
-
-The Amazon S3 bucket where the Spot instance data feed is located.
-
-
-
-
-
-
-
-
-
+  The Amazon S3 bucket where the Spot instance data feed is located.
 
 =head2 Fault => Paws::EC2::SpotInstanceStateFault
 
-  
-
-The fault codes for the Spot instance request, if any.
-
-
-
-
-
-
-
-
-
+  The fault codes for the Spot instance request, if any.
 
 =head2 OwnerId => Str
 
-  
-
-The AWS account ID of the account.
-
-
-
-
-
-
-
-
-
+  The AWS account ID of the account.
 
 =head2 Prefix => Str
 
-  
-
-The prefix that is prepended to data feed files.
-
-
-
-
-
-
-
-
-
+  The prefix that is prepended to data feed files.
 
 =head2 State => Str
 
-  
-
-The state of the Spot instance data feed subscription.
-
-
-
-
-
-
-
-
-
+  The state of the Spot instance data feed subscription.
 
 
 

@@ -15,18 +15,7 @@ Paws::EC2::CreateVpcResult
 
 =head2 Vpc => Paws::EC2::Vpc
 
-  
-
-Information about the VPC.
-
-
-
-
-
-
-
-
-
+  Information about the VPC.
 
 
 =cut

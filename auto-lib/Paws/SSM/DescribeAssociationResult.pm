@@ -14,18 +14,7 @@ Paws::SSM::DescribeAssociationResult
 
 =head2 AssociationDescription => Paws::SSM::AssociationDescription
 
-  
-
-Information about the association.
-
-
-
-
-
-
-
-
-
+  Information about the association.
 
 
 =cut

@@ -36,42 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 BundleIds => ArrayRef[Str]
 
-  
-
-An array of strings that contains the identifiers of the bundles to
+  An array of strings that contains the identifiers of the bundles to
 retrieve. This parameter cannot be combined with any other filter
 parameter.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The C<NextToken> value from a previous call to this operation. Pass
+  The C<NextToken> value from a previous call to this operation. Pass
 null if this is the first call.
-
-
-
-
-
-
-
-
-
 
 =head2 Owner => Str
 
-  
-
-The owner of the bundles to retrieve. This parameter cannot be combined
+  The owner of the bundles to retrieve. This parameter cannot be combined
 with any other filter parameter.
 
 This contains one of the following values:
@@ -84,15 +60,6 @@ the call.
 =item * C<AMAZON> - Retrieves the bundles that are provided by AWS.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

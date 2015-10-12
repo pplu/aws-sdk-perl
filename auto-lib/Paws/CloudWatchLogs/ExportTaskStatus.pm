@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head2 code => Str
 
-  
-
-Status code of the export task.
-
-
-
-
-
-
-
-
-
+  Status code of the export task.
 
 =head2 message => Str
 
-  
-
-Status message related to the C<code>.
-
-
-
-
-
-
-
-
-
+  Status message related to the C<code>.
 
 
 

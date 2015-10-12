@@ -34,18 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 B<REQUIRED> Options => Bool
 
-  
-
-The availability options configured for the domain.
-
-
-
-
-
-
-
-
-
+  The availability options configured for the domain.
 
 =head2 B<REQUIRED> Status => Paws::CloudSearch::OptionStatus
 

@@ -29,18 +29,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HostedZoneCount => Int
 
-  
-
-The number of hosted zones associated with the current AWS account.
-
-
-
-
-
-
-
-
-
+  The number of hosted zones associated with the current AWS account.
 
 
 

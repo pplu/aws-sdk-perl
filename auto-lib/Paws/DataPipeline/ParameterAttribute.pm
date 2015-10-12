@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head2 B<REQUIRED> key => Str
 
-  
-
-The field identifier.
-
-
-
-
-
-
-
-
-
+  The field identifier.
 
 =head2 B<REQUIRED> stringValue => Str
 
-  
-
-The field value, expressed as a String.
-
-
-
-
-
-
-
-
-
+  The field value, expressed as a String.
 
 
 

@@ -36,73 +36,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Policy
 
 =head2 CreateDate => Str
 
-  
-
-The date and time, in ISO 8601 date-time format, when the policy
+  The date and time, in ISO 8601 date-time format, when the policy
 version was created.
-
-
-
-
-
-
-
-
-
 
 =head2 Document => Str
 
-  
-
-The policy document.
+  The policy document.
 
 The policy document is returned in the response to the GetPolicyVersion
 and GetAccountAuthorizationDetails operations. It is not returned in
 the response to the CreatePolicyVersion or ListPolicyVersions
 operations.
 
-
-
-
-
-
-
-
-
-
 =head2 IsDefaultVersion => Bool
 
-  
-
-Specifies whether the policy version is set as the policy's default
+  Specifies whether the policy version is set as the policy's default
 version.
-
-
-
-
-
-
-
-
-
 
 =head2 VersionId => Str
 
-  
-
-The identifier for the policy version.
+  The identifier for the policy version.
 
 Policy version identifiers always begin with C<v> (always lowercase).
 When a policy is created, the first policy version is C<v1>.
-
-
-
-
-
-
-
-
-
 
 
 

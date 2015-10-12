@@ -37,81 +37,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 
 =head2 CapacityUnits => Num
 
-  
-
-The total number of capacity units consumed by the operation.
-
-
-
-
-
-
-
-
-
+  The total number of capacity units consumed by the operation.
 
 =head2 GlobalSecondaryIndexes => Paws::DynamoDB::SecondaryIndexesCapacityMap
 
-  
-
-The amount of throughput consumed on each global index affected by the
+  The amount of throughput consumed on each global index affected by the
 operation.
-
-
-
-
-
-
-
-
-
 
 =head2 LocalSecondaryIndexes => Paws::DynamoDB::SecondaryIndexesCapacityMap
 
-  
-
-The amount of throughput consumed on each local index affected by the
+  The amount of throughput consumed on each local index affected by the
 operation.
-
-
-
-
-
-
-
-
-
 
 =head2 Table => Paws::DynamoDB::Capacity
 
-  
-
-The amount of throughput consumed on the table affected by the
+  The amount of throughput consumed on the table affected by the
 operation.
-
-
-
-
-
-
-
-
-
 
 =head2 TableName => Str
 
-  
-
-The name of the table that was affected by the operation.
-
-
-
-
-
-
-
-
-
+  The name of the table that was affected by the operation.
 
 
 

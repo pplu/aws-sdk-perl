@@ -15,18 +15,7 @@ Paws::CloudSearch::DescribeExpressionsResponse
 
 =head2 B<REQUIRED> Expressions => ArrayRef[Paws::CloudSearch::ExpressionStatus]
 
-  
-
-The expressions configured for the domain.
-
-
-
-
-
-
-
-
-
+  The expressions configured for the domain.
 
 
 =cut

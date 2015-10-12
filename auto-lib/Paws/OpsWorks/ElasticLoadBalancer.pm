@@ -41,139 +41,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::E
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  
-
-A list of Availability Zones.
-
-
-
-
-
-
-
-
-
+  A list of Availability Zones.
 
 =head2 DnsName => Str
 
-  
-
-The instance's public DNS name.
-
-
-
-
-
-
-
-
-
+  The instance's public DNS name.
 
 =head2 Ec2InstanceIds => ArrayRef[Str]
 
-  
-
-A list of the EC2 instances that the Elastic Load Balancing instance is
+  A list of the EC2 instances that the Elastic Load Balancing instance is
 managing traffic for.
-
-
-
-
-
-
-
-
-
 
 =head2 ElasticLoadBalancerName => Str
 
-  
-
-The Elastic Load Balancing instance's name.
-
-
-
-
-
-
-
-
-
+  The Elastic Load Balancing instance's name.
 
 =head2 LayerId => Str
 
-  
-
-The ID of the layer that the instance is attached to.
-
-
-
-
-
-
-
-
-
+  The ID of the layer that the instance is attached to.
 
 =head2 Region => Str
 
-  
-
-The instance's AWS region.
-
-
-
-
-
-
-
-
-
+  The instance's AWS region.
 
 =head2 StackId => Str
 
-  
-
-The ID of the stack that the instance is associated with.
-
-
-
-
-
-
-
-
-
+  The ID of the stack that the instance is associated with.
 
 =head2 SubnetIds => ArrayRef[Str]
 
-  
-
-A list of subnet IDs, if the stack is running in a VPC.
-
-
-
-
-
-
-
-
-
+  A list of subnet IDs, if the stack is running in a VPC.
 
 =head2 VpcId => Str
 
-  
-
-The VPC ID.
-
-
-
-
-
-
-
-
-
+  The VPC ID.
 
 
 

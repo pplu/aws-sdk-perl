@@ -46,162 +46,52 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 cancelTimerDecisionAttributes => Paws::SimpleWorkflow::CancelTimerDecisionAttributes
 
-  
-
-Provides details of the C<CancelTimer> decision. It is not set for
+  Provides details of the C<CancelTimer> decision. It is not set for
 other decision types.
-
-
-
-
-
-
-
-
-
 
 =head2 cancelWorkflowExecutionDecisionAttributes => Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes
 
-  
-
-Provides details of the C<CancelWorkflowExecution> decision. It is not
+  Provides details of the C<CancelWorkflowExecution> decision. It is not
 set for other decision types.
-
-
-
-
-
-
-
-
-
 
 =head2 completeWorkflowExecutionDecisionAttributes => Paws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes
 
-  
-
-Provides details of the C<CompleteWorkflowExecution> decision. It is
+  Provides details of the C<CompleteWorkflowExecution> decision. It is
 not set for other decision types.
-
-
-
-
-
-
-
-
-
 
 =head2 continueAsNewWorkflowExecutionDecisionAttributes => Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes
 
-  
-
-Provides details of the C<ContinueAsNewWorkflowExecution> decision. It
+  Provides details of the C<ContinueAsNewWorkflowExecution> decision. It
 is not set for other decision types.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> decisionType => Str
 
-  
-
-Specifies the type of the decision.
-
-
-
-
-
-
-
-
-
+  Specifies the type of the decision.
 
 =head2 failWorkflowExecutionDecisionAttributes => Paws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes
 
-  
-
-Provides details of the C<FailWorkflowExecution> decision. It is not
+  Provides details of the C<FailWorkflowExecution> decision. It is not
 set for other decision types.
-
-
-
-
-
-
-
-
-
 
 =head2 recordMarkerDecisionAttributes => Paws::SimpleWorkflow::RecordMarkerDecisionAttributes
 
-  
-
-Provides details of the C<RecordMarker> decision. It is not set for
+  Provides details of the C<RecordMarker> decision. It is not set for
 other decision types.
-
-
-
-
-
-
-
-
-
 
 =head2 requestCancelActivityTaskDecisionAttributes => Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes
 
-  
-
-Provides details of the C<RequestCancelActivityTask> decision. It is
+  Provides details of the C<RequestCancelActivityTask> decision. It is
 not set for other decision types.
-
-
-
-
-
-
-
-
-
 
 =head2 requestCancelExternalWorkflowExecutionDecisionAttributes => Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes
 
-  
-
-Provides details of the C<RequestCancelExternalWorkflowExecution>
+  Provides details of the C<RequestCancelExternalWorkflowExecution>
 decision. It is not set for other decision types.
-
-
-
-
-
-
-
-
-
 
 =head2 scheduleActivityTaskDecisionAttributes => Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes
 
-  
-
-Provides details of the C<ScheduleActivityTask> decision. It is not set
+  Provides details of the C<ScheduleActivityTask> decision. It is not set
 for other decision types.
-
-
-
-
-
-
-
-
-
 
 =head2 scheduleLambdaFunctionDecisionAttributes => Paws::SimpleWorkflow::ScheduleLambdaFunctionDecisionAttributes
 
@@ -209,51 +99,18 @@ for other decision types.
 
 =head2 signalExternalWorkflowExecutionDecisionAttributes => Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes
 
-  
-
-Provides details of the C<SignalExternalWorkflowExecution> decision. It
+  Provides details of the C<SignalExternalWorkflowExecution> decision. It
 is not set for other decision types.
-
-
-
-
-
-
-
-
-
 
 =head2 startChildWorkflowExecutionDecisionAttributes => Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes
 
-  
-
-Provides details of the C<StartChildWorkflowExecution> decision. It is
+  Provides details of the C<StartChildWorkflowExecution> decision. It is
 not set for other decision types.
-
-
-
-
-
-
-
-
-
 
 =head2 startTimerDecisionAttributes => Paws::SimpleWorkflow::StartTimerDecisionAttributes
 
-  
-
-Provides details of the C<StartTimer> decision. It is not set for other
+  Provides details of the C<StartTimer> decision. It is not set for other
 decision types.
-
-
-
-
-
-
-
-
-
 
 
 

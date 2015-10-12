@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Doma
 
 =head2 Key => Str
 
-  
-
-The key (name) of a tag.
+  The key (name) of a tag.
 
 Type: String
 
@@ -48,20 +46,9 @@ Constraints: Each key can be 1-128 characters long.
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 Value => Str
 
-  
-
-The value of a tag.
+  The value of a tag.
 
 Type: String
 
@@ -72,15 +59,6 @@ Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
 Constraints: Each value can be 0-256 characters long.
 
 Required: Yes
-
-
-
-
-
-
-
-
-
 
 
 

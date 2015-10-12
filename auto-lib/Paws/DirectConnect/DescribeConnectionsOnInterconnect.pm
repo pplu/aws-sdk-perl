@@ -34,22 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> interconnectId => Str
 
-  
-
-ID of the interconnect on which a list of connection is provisioned.
+  ID of the interconnect on which a list of connection is provisioned.
 
 Example: dxcon-abc123
 
 Default: None
-
-
-
-
-
-
-
-
-
 
 
 

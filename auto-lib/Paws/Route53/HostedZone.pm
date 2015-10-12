@@ -37,54 +37,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ho
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  
-
-A unique string that identifies the request to create the hosted zone.
-
-
-
-
-
-
-
-
-
+  A unique string that identifies the request to create the hosted zone.
 
 =head2 Config => Paws::Route53::HostedZoneConfig
 
-  
-
-A complex type that contains the C<Comment> element.
-
-
-
-
-
-
-
-
-
+  A complex type that contains the C<Comment> element.
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The ID of the specified hosted zone.
-
-
-
-
-
-
-
-
-
+  The ID of the specified hosted zone.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the domain. This must be a fully-specified domain, for
+  The name of the domain. This must be a fully-specified domain, for
 example, www.example.com. The trailing dot is optional; Route 53
 assumes that the domain name is fully qualified. This means that Route
 53 treats www.example.com (without a trailing dot) and www.example.com.
@@ -95,29 +60,9 @@ should ask your registrar to change the authoritative name servers for
 your domain to the set of C<NameServers> elements returned in
 C<DelegationSet>.
 
-
-
-
-
-
-
-
-
-
 =head2 ResourceRecordSetCount => Int
 
-  
-
-Total number of resource record sets in the hosted zone.
-
-
-
-
-
-
-
-
-
+  Total number of resource record sets in the hosted zone.
 
 
 

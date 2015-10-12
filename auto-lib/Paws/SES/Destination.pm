@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Destin
 
 =head2 BccAddresses => ArrayRef[Str]
 
-  
-
-The BCC: field(s) of the message.
-
-
-
-
-
-
-
-
-
+  The BCC: field(s) of the message.
 
 =head2 CcAddresses => ArrayRef[Str]
 
-  
-
-The CC: field(s) of the message.
-
-
-
-
-
-
-
-
-
+  The CC: field(s) of the message.
 
 =head2 ToAddresses => ArrayRef[Str]
 
-  
-
-The To: field(s) of the message.
-
-
-
-
-
-
-
-
-
+  The To: field(s) of the message.
 
 
 

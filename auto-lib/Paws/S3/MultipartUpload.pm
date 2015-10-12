@@ -38,48 +38,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Multipa
 
 =head2 Initiated => Str
 
-  
-
-Date and time at which the multipart upload was initiated.
-
-
-
-
-
-
-
-
-
+  Date and time at which the multipart upload was initiated.
 
 =head2 Initiator => Paws::S3::Initiator
 
-  
-
-Identifies who initiated the multipart upload.
-
-
-
-
-
-
-
-
-
+  Identifies who initiated the multipart upload.
 
 =head2 Key => Str
 
-  
-
-Key of the object for which the multipart upload was initiated.
-
-
-
-
-
-
-
-
-
+  Key of the object for which the multipart upload was initiated.
 
 =head2 Owner => Paws::S3::Owner
 
@@ -87,33 +54,11 @@ Key of the object for which the multipart upload was initiated.
 
 =head2 StorageClass => Str
 
-  
-
-The class of storage used to store the object.
-
-
-
-
-
-
-
-
-
+  The class of storage used to store the object.
 
 =head2 UploadId => Str
 
-  
-
-Upload ID that identifies the multipart upload.
-
-
-
-
-
-
-
-
-
+  Upload ID that identifies the multipart upload.
 
 
 

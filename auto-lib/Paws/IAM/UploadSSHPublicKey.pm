@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SSHPublicKeyBody => Str
 
-  
-
-The SSH public key. The public key must be encoded in ssh-rsa format or
+  The SSH public key. The public key must be encoded in ssh-rsa format or
 PEM format.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the IAM user to associate the SSH public key with.
-
-
-
-
-
-
-
-
-
+  The name of the IAM user to associate the SSH public key with.
 
 
 

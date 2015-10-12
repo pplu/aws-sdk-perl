@@ -14,18 +14,7 @@ Paws::Inspector::RunAssessmentResponse
 
 =head2 runArn => Str
 
-  
-
-The ARN specifying the run of the assessment.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the run of the assessment.
 
 
 =cut

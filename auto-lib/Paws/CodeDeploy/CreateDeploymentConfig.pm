@@ -35,24 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> deploymentConfigName => Str
 
-  
-
-The name of the deployment configuration to create.
-
-
-
-
-
-
-
-
-
+  The name of the deployment configuration to create.
 
 =head2 minimumHealthyHosts => Paws::CodeDeploy::MinimumHealthyHosts
 
-  
-
-The minimum number of healthy instances that should be available at any
+  The minimum number of healthy instances that should be available at any
 time during the deployment. There are two parameters expected in the
 input: type and value.
 
@@ -75,15 +62,6 @@ The value parameter takes an integer.
 
 For example, to set a minimum of 95% healthy instances, specify a type
 of FLEET_PERCENT and a value of 95.
-
-
-
-
-
-
-
-
-
 
 
 

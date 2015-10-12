@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::T
 
 =head2 Key => Str
 
-  
-
-The key, or name, for the resource tag.
-
-
-
-
-
-
-
-
-
+  The key, or name, for the resource tag.
 
 =head2 Value => Str
 
-  
-
-The value for the resource tag.
-
-
-
-
-
-
-
-
-
+  The value for the resource tag.
 
 
 

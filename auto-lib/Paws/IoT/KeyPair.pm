@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::KeyPai
 
 =head2 PrivateKey => Str
 
-  
-
-The private key.
-
-
-
-
-
-
-
-
-
+  The private key.
 
 =head2 PublicKey => Str
 
-  
-
-The public key.
-
-
-
-
-
-
-
-
-
+  The public key.
 
 
 

@@ -47,177 +47,56 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head2 ComputeStatistics => Bool
 
-  
-
-The parameter is C<true> if statistics need to be generated from the
+  The parameter is C<true> if statistics need to be generated from the
 observation data.
-
-
-
-
-
-
-
-
-
 
 =head2 CreatedAt => Str
 
-  
-
-The time that the C<DataSource> was created. The time is expressed in
+  The time that the C<DataSource> was created. The time is expressed in
 epoch time.
-
-
-
-
-
-
-
-
-
 
 =head2 CreatedByIamUser => Str
 
-  
-
-The AWS user account from which the C<DataSource> was created. The
+  The AWS user account from which the C<DataSource> was created. The
 account type can be either an AWS root account or an AWS Identity and
 Access Management (IAM) user account.
 
-
-
-
-
-
-
-
-
-
 =head2 DataLocationS3 => Str
 
-  
-
-The location and name of the data in Amazon Simple Storage Service
+  The location and name of the data in Amazon Simple Storage Service
 (Amazon S3) that is used by a C<DataSource>.
-
-
-
-
-
-
-
-
-
 
 =head2 DataRearrangement => Str
 
-  
-
-A JSON string that represents the splitting requirement of a
+  A JSON string that represents the splitting requirement of a
 C<Datasource>.
-
-
-
-
-
-
-
-
-
 
 =head2 DataSizeInBytes => Int
 
-  
-
-The total number of observations contained in the data files that the
+  The total number of observations contained in the data files that the
 C<DataSource> references.
-
-
-
-
-
-
-
-
-
 
 =head2 DataSourceId => Str
 
-  
-
-The ID that is assigned to the C<DataSource> during creation.
-
-
-
-
-
-
-
-
-
+  The ID that is assigned to the C<DataSource> during creation.
 
 =head2 LastUpdatedAt => Str
 
-  
-
-The time of the most recent edit to the C<BatchPrediction>. The time is
+  The time of the most recent edit to the C<BatchPrediction>. The time is
 expressed in epoch time.
-
-
-
-
-
-
-
-
-
 
 =head2 Message => Str
 
-  
-
-A description of the most recent details about creating the
+  A description of the most recent details about creating the
 C<DataSource>.
-
-
-
-
-
-
-
-
-
 
 =head2 Name => Str
 
-  
-
-A user-supplied name or description of the C<DataSource>.
-
-
-
-
-
-
-
-
-
+  A user-supplied name or description of the C<DataSource>.
 
 =head2 NumberOfFiles => Int
 
-  
-
-The number of data files referenced by the C<DataSource>.
-
-
-
-
-
-
-
-
-
+  The number of data files referenced by the C<DataSource>.
 
 =head2 RDSMetadata => Paws::MachineLearning::RDSMetadata
 
@@ -233,9 +112,7 @@ The number of data files referenced by the C<DataSource>.
 
 =head2 Status => Str
 
-  
-
-The current status of the C<DataSource>. This element can have one of
+  The current status of the C<DataSource>. This element can have one of
 the following values:
 
 =over
@@ -254,15 +131,6 @@ completion. It is not usable.
 usable.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

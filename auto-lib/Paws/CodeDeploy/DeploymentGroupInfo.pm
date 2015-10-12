@@ -41,139 +41,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 applicationName => Str
 
-  
-
-The application name.
-
-
-
-
-
-
-
-
-
+  The application name.
 
 =head2 autoScalingGroups => ArrayRef[Paws::CodeDeploy::AutoScalingGroup]
 
-  
-
-A list of associated Auto Scaling groups.
-
-
-
-
-
-
-
-
-
+  A list of associated Auto Scaling groups.
 
 =head2 deploymentConfigName => Str
 
-  
-
-The deployment configuration name.
-
-
-
-
-
-
-
-
-
+  The deployment configuration name.
 
 =head2 deploymentGroupId => Str
 
-  
-
-The deployment group ID.
-
-
-
-
-
-
-
-
-
+  The deployment group ID.
 
 =head2 deploymentGroupName => Str
 
-  
-
-The deployment group name.
-
-
-
-
-
-
-
-
-
+  The deployment group name.
 
 =head2 ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter]
 
-  
-
-The Amazon EC2 tags to filter on.
-
-
-
-
-
-
-
-
-
+  The Amazon EC2 tags to filter on.
 
 =head2 onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]
 
-  
-
-The on-premises instance tags to filter on.
-
-
-
-
-
-
-
-
-
+  The on-premises instance tags to filter on.
 
 =head2 serviceRoleArn => Str
 
-  
-
-A service role ARN.
-
-
-
-
-
-
-
-
-
+  A service role ARN.
 
 =head2 targetRevision => Paws::CodeDeploy::RevisionLocation
 
-  
-
-Information about the deployment group's target revision, including the
+  Information about the deployment group's target revision, including the
 revision's type and its location.
-
-
-
-
-
-
-
-
-
 
 
 

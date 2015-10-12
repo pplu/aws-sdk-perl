@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> taskDefinition => Str
 
-  
-
-The C<family> for the latest C<ACTIVE> revision, C<family> and
+  The C<family> for the latest C<ACTIVE> revision, C<family> and
 C<revision> (C<family:revision>) for a specific revision in the family,
 or full Amazon Resource Name (ARN) of the task definition to describe.
-
-
-
-
-
-
-
-
-
 
 
 

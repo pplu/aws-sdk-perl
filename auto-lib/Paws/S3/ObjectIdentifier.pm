@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::ObjectI
 
 =head2 B<REQUIRED> Key => Str
 
-  
-
-Key name of the object to delete.
-
-
-
-
-
-
-
-
-
+  Key name of the object to delete.
 
 =head2 VersionId => Str
 
-  
-
-VersionId for the specific version of the object to delete.
-
-
-
-
-
-
-
-
-
+  VersionId for the specific version of the object to delete.
 
 
 

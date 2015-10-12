@@ -39,115 +39,38 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Idle => Num
 
-  
-
-Percentage of time that the CPU has spent in the C<Idle> state over the
+  Percentage of time that the CPU has spent in the C<Idle> state over the
 last 10 seconds.
-
-
-
-
-
-
-
-
-
 
 =head2 IOWait => Num
 
-  
-
-Percentage of time that the CPU has spent in the C<I/O Wait> state over
+  Percentage of time that the CPU has spent in the C<I/O Wait> state over
 the last 10 seconds.
-
-
-
-
-
-
-
-
-
 
 =head2 IRQ => Num
 
-  
-
-Percentage of time that the CPU has spent in the C<IRQ> state over the
+  Percentage of time that the CPU has spent in the C<IRQ> state over the
 last 10 seconds.
-
-
-
-
-
-
-
-
-
 
 =head2 Nice => Num
 
-  
-
-Percentage of time that the CPU has spent in the C<Nice> state over the
+  Percentage of time that the CPU has spent in the C<Nice> state over the
 last 10 seconds.
-
-
-
-
-
-
-
-
-
 
 =head2 SoftIRQ => Num
 
-  
-
-Percentage of time that the CPU has spent in the C<SoftIRQ> state over
+  Percentage of time that the CPU has spent in the C<SoftIRQ> state over
 the last 10 seconds.
-
-
-
-
-
-
-
-
-
 
 =head2 System => Num
 
-  
-
-Percentage of time that the CPU has spent in the C<System> state over
+  Percentage of time that the CPU has spent in the C<System> state over
 the last 10 seconds.
-
-
-
-
-
-
-
-
-
 
 =head2 User => Num
 
-  
-
-Percentage of time that the CPU has spent in the C<User> state over the
+  Percentage of time that the CPU has spent in the C<User> state over the
 last 10 seconds.
-
-
-
-
-
-
-
-
-
 
 
 

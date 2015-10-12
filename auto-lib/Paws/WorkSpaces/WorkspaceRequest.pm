@@ -38,101 +38,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head2 B<REQUIRED> BundleId => Str
 
-  
-
-The identifier of the bundle to create the WorkSpace from. You can use
+  The identifier of the bundle to create the WorkSpace from. You can use
 the DescribeWorkspaceBundles operation to obtain a list of the bundles
 that are available.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DirectoryId => Str
 
-  
-
-The identifier of the AWS Directory Service directory to create the
+  The identifier of the AWS Directory Service directory to create the
 WorkSpace in. You can use the DescribeWorkspaceDirectories operation to
 obtain a list of the directories that are available.
 
-
-
-
-
-
-
-
-
-
 =head2 RootVolumeEncryptionEnabled => Bool
 
-  
-
-Specifies whether the data stored on the root volume, or C: drive, is
+  Specifies whether the data stored on the root volume, or C: drive, is
 encrypted.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The username that the WorkSpace is assigned to. This username must
+  The username that the WorkSpace is assigned to. This username must
 exist in the AWS Directory Service directory specified by the
 C<DirectoryId> member.
 
-
-
-
-
-
-
-
-
-
 =head2 UserVolumeEncryptionEnabled => Bool
 
-  
-
-Specifies whether the data stored on the user volume, or D: drive, is
+  Specifies whether the data stored on the user volume, or D: drive, is
 encrypted.
-
-
-
-
-
-
-
-
-
 
 =head2 VolumeEncryptionKey => Str
 
-  
-
-The KMS key used to encrypt data stored on your WorkSpace.
-
-
-
-
-
-
-
-
-
+  The KMS key used to encrypt data stored on your WorkSpace.
 
 
 

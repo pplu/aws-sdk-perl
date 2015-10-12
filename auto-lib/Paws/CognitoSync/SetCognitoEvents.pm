@@ -37,33 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Events => Paws::CognitoSync::Events
 
-  
-
-The events to configure
-
-
-
-
-
-
-
-
-
+  The events to configure
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-The Cognito Identity Pool to use when configuring Cognito Events
-
-
-
-
-
-
-
-
-
+  The Cognito Identity Pool to use when configuring Cognito Events
 
 
 

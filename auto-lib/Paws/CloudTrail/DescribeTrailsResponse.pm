@@ -14,18 +14,7 @@ Paws::CloudTrail::DescribeTrailsResponse
 
 =head2 trailList => ArrayRef[Paws::CloudTrail::Trail]
 
-  
-
-The list of trail objects.
-
-
-
-
-
-
-
-
-
+  The list of trail objects.
 
 
 =cut

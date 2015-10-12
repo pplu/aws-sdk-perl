@@ -14,18 +14,7 @@ Paws::DirectConnect::Interconnects
 
 =head2 interconnects => ArrayRef[Paws::DirectConnect::Interconnect]
 
-  
-
-A list of interconnects.
-
-
-
-
-
-
-
-
-
+  A list of interconnects.
 
 
 =cut

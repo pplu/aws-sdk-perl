@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
 =head2 DBClusterOptionGroupName => Str
 
-  
-
-Specifies the name of the DB cluster option group.
-
-
-
-
-
-
-
-
-
+  Specifies the name of the DB cluster option group.
 
 =head2 Status => Str
 
-  
-
-Specifies the status of the DB cluster option group.
-
-
-
-
-
-
-
-
-
+  Specifies the status of the DB cluster option group.
 
 
 

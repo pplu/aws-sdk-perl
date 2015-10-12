@@ -43,82 +43,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Causes => ArrayRef[Str]
 
-  
-
-Represents the causes, which provide more information about the current
+  Represents the causes, which provide more information about the current
 health status.
-
-
-
-
-
-
-
-
-
 
 =head2 Color => Str
 
-  
-
-Represents the color indicator that gives you information about the
+  Represents the color indicator that gives you information about the
 health of the EC2 instance. For more information, see Health Colors and
 Statuses.
 
-
-
-
-
-
-
-
-
-
 =head2 HealthStatus => Str
 
-  
-
-Returns the health status of the specified instance. For more
+  Returns the health status of the specified instance. For more
 information, see Health Colors and Statuses.
-
-
-
-
-
-
-
-
-
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the Amazon EC2 instance.
-
-
-
-
-
-
-
-
-
+  The ID of the Amazon EC2 instance.
 
 =head2 LaunchedAt => Str
 
-  
-
-The time at which the EC2 instance was launched.
-
-
-
-
-
-
-
-
-
+  The time at which the EC2 instance was launched.
 
 =head2 System => Paws::ElasticBeanstalk::SystemStatus
 

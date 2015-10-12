@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::RuleUp
 
 =head2 B<REQUIRED> Action => Str
 
-  
-
-Specify C<INSERT> to add a C<Predicate> to a C<Rule>. Use C<DELETE> to
+  Specify C<INSERT> to add a C<Predicate> to a C<Rule>. Use C<DELETE> to
 remove a C<Predicate> from a C<Rule>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Predicate => Paws::WAF::Predicate
 
-  
-
-The ID of the C<Predicate> (such as an C<IPSet>) that you want to add
+  The ID of the C<Predicate> (such as an C<IPSet>) that you want to add
 to a C<Rule>.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -36,29 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DurationSeconds => Int
 
-  
-
-The duration, in seconds, that the credentials should remain valid.
+  The duration, in seconds, that the credentials should remain valid.
 Acceptable durations for IAM user sessions range from 900 seconds (15
 minutes) to 129600 seconds (36 hours), with 43200 seconds (12 hours) as
 the default. Sessions for AWS account owners are restricted to a
 maximum of 3600 seconds (one hour). If the duration is longer than one
 hour, the session for AWS account owners defaults to one hour.
 
-
-
-
-
-
-
-
-
-
 =head2 SerialNumber => Str
 
-  
-
-The identification number of the MFA device that is associated with the
+  The identification number of the MFA device that is associated with the
 IAM user who is making the C<GetSessionToken> call. Specify this value
 if the IAM user has a policy that requires MFA authentication. The
 value is either the serial number for a hardware device (such as
@@ -67,34 +54,14 @@ C<GAHT12345678>) or an Amazon Resource Name (ARN) for a virtual device
 device for an IAM user by going to the AWS Management Console and
 viewing the user's security credentials.
 
-
-
-
-
-
-
-
-
-
 =head2 TokenCode => Str
 
-  
-
-The value provided by the MFA device, if MFA is required. If any policy
+  The value provided by the MFA device, if MFA is required. If any policy
 requires the IAM user to submit an MFA code, specify this value. If MFA
 authentication is required, and the user does not provide a code when
 requesting a set of temporary security credentials, the user will
 receive an "access denied" response when requesting resources that
 require MFA authentication.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -33,9 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 B<REQUIRED> ProcessName => Str
 
-  
-
-The name of the process.
+  The name of the process.
 
 =over
 
@@ -72,15 +70,6 @@ C<ReplaceUnhealthy>
 C<ScheduledActions>
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

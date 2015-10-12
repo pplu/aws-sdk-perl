@@ -58,240 +58,75 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Body => Str
 
-  
-
-Object data.
-
-
-
-
-
-
-
-
-
+  Object data.
 
 =head2 CacheControl => Str
 
-  
-
-Specifies caching behavior along the request/reply chain.
-
-
-
-
-
-
-
-
-
+  Specifies caching behavior along the request/reply chain.
 
 =head2 ContentDisposition => Str
 
-  
-
-Specifies presentational information for the object.
-
-
-
-
-
-
-
-
-
+  Specifies presentational information for the object.
 
 =head2 ContentEncoding => Str
 
-  
-
-Specifies what content encodings have been applied to the object and
+  Specifies what content encodings have been applied to the object and
 thus what decoding mechanisms must be applied to obtain the media-type
 referenced by the Content-Type header field.
 
-
-
-
-
-
-
-
-
-
 =head2 ContentLanguage => Str
 
-  
-
-The language the content is in.
-
-
-
-
-
-
-
-
-
+  The language the content is in.
 
 =head2 ContentLength => Int
 
-  
-
-Size of the body in bytes.
-
-
-
-
-
-
-
-
-
+  Size of the body in bytes.
 
 =head2 ContentRange => Str
 
-  
-
-The portion of the object returned in the response.
-
-
-
-
-
-
-
-
-
+  The portion of the object returned in the response.
 
 =head2 ContentType => Str
 
-  
-
-A standard MIME type describing the format of the object data.
-
-
-
-
-
-
-
-
-
+  A standard MIME type describing the format of the object data.
 
 =head2 DeleteMarker => Bool
 
-  
-
-Specifies whether the object retrieved was (true) or was not (false) a
+  Specifies whether the object retrieved was (true) or was not (false) a
 Delete Marker. If false, this response header does not appear in the
 response.
 
-
-
-
-
-
-
-
-
-
 =head2 ETag => Str
 
-  
-
-An ETag is an opaque identifier assigned by a web server to a specific
+  An ETag is an opaque identifier assigned by a web server to a specific
 version of a resource found at a URL
-
-
-
-
-
-
-
-
-
 
 =head2 Expiration => Str
 
-  
-
-If the object expiration is configured (see PUT Bucket lifecycle), the
+  If the object expiration is configured (see PUT Bucket lifecycle), the
 response includes this header. It includes the expiry-date and rule-id
 key value pairs providing object expiration information. The value of
 the rule-id is URL encoded.
 
-
-
-
-
-
-
-
-
-
 =head2 Expires => Str
 
-  
-
-The date and time at which the object is no longer cacheable.
-
-
-
-
-
-
-
-
-
+  The date and time at which the object is no longer cacheable.
 
 =head2 LastModified => Str
 
-  
-
-Last modified date of the object
-
-
-
-
-
-
-
-
-
+  Last modified date of the object
 
 =head2 Metadata => Paws::S3::Metadata
 
-  
-
-A map of metadata to store with the object in S3.
-
-
-
-
-
-
-
-
-
+  A map of metadata to store with the object in S3.
 
 =head2 MissingMeta => Int
 
-  
-
-This is set to the number of metadata entries not returned in
+  This is set to the number of metadata entries not returned in
 x-amz-meta headers. This can happen if you create metadata using an API
 like SOAP that supports more flexible metadata than the REST API. For
 example, using SOAP, you can create metadata whose values are not legal
 HTTP headers.
-
-
-
-
-
-
-
-
-
 
 =head2 ReplicationStatus => Str
 
@@ -303,85 +138,30 @@ HTTP headers.
 
 =head2 Restore => Str
 
-  
-
-Provides information about object restoration operation and expiration
+  Provides information about object restoration operation and expiration
 time of the restored object copy.
-
-
-
-
-
-
-
-
-
 
 =head2 ServerSideEncryption => Str
 
-  
-
-The Server-side encryption algorithm used when storing this object in
+  The Server-side encryption algorithm used when storing this object in
 S3 (e.g., AES256, aws:kms).
-
-
-
-
-
-
-
-
-
 
 =head2 SSECustomerAlgorithm => Str
 
-  
-
-If server-side encryption with a customer-provided encryption key was
+  If server-side encryption with a customer-provided encryption key was
 requested, the response will include this header confirming the
 encryption algorithm used.
 
-
-
-
-
-
-
-
-
-
 =head2 SSECustomerKeyMD5 => Str
 
-  
-
-If server-side encryption with a customer-provided encryption key was
+  If server-side encryption with a customer-provided encryption key was
 requested, the response will include this header to provide round trip
 message integrity verification of the customer-provided encryption key.
 
-
-
-
-
-
-
-
-
-
 =head2 SSEKMSKeyId => Str
 
-  
-
-If present, specifies the ID of the AWS Key Management Service (KMS)
+  If present, specifies the ID of the AWS Key Management Service (KMS)
 master encryption key that was used for the object.
-
-
-
-
-
-
-
-
-
 
 =head2 StorageClass => Str
 
@@ -389,35 +169,13 @@ master encryption key that was used for the object.
 
 =head2 VersionId => Str
 
-  
-
-Version of the object.
-
-
-
-
-
-
-
-
-
+  Version of the object.
 
 =head2 WebsiteRedirectLocation => Str
 
-  
-
-If the bucket is configured as a website, redirects requests for this
+  If the bucket is configured as a website, redirects requests for this
 object to another object in the same bucket or to an external URL.
 Amazon S3 stores the value of this header in the object metadata.
-
-
-
-
-
-
-
-
-
 
 
 

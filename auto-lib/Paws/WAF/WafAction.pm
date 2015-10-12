@@ -33,9 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::WafAct
 
 =head2 B<REQUIRED> Type => Str
 
-  
-
-Specifies how you want AWS WAF to respond to requests that match the
+  Specifies how you want AWS WAF to respond to requests that match the
 settings in a C<Rule>. Valid settings include the following:
 
 =over
@@ -50,15 +48,6 @@ inspect the web request based on the remaining rules in the web ACL.
 You can't specify C<COUNT> for the default action for a C<WebACL>.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

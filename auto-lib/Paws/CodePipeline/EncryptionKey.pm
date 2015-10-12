@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 B<REQUIRED> id => Str
 
-  
-
-The ID of the AWS KMS key.
-
-
-
-
-
-
-
-
-
+  The ID of the AWS KMS key.
 
 =head2 B<REQUIRED> type => Str
 
-  
-
-The type of AWS KMS key, such as a customer master key.
-
-
-
-
-
-
-
-
-
+  The type of AWS KMS key, such as a customer master key.
 
 
 

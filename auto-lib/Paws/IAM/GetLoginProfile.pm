@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user whose login profile you want to retrieve.
-
-
-
-
-
-
-
-
-
+  The name of the user whose login profile you want to retrieve.
 
 
 

@@ -15,33 +15,11 @@ Paws::ECS::StartTaskResponse
 
 =head2 failures => ArrayRef[Paws::ECS::Failure]
 
-  
-
-Any failures associated with the call.
-
-
-
-
-
-
-
-
-
+  Any failures associated with the call.
 =head2 tasks => ArrayRef[Paws::ECS::Task]
 
-  
-
-A full description of the tasks that were started. Each task that was
+  A full description of the tasks that were started. Each task that was
 successfully placed on your container instances are described here.
-
-
-
-
-
-
-
-
-
 
 
 =cut

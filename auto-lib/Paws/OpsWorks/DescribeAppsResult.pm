@@ -14,18 +14,7 @@ Paws::OpsWorks::DescribeAppsResult
 
 =head2 Apps => ArrayRef[Paws::OpsWorks::App]
 
-  
-
-An array of C<App> objects that describe the specified apps.
-
-
-
-
-
-
-
-
-
+  An array of C<App> objects that describe the specified apps.
 
 
 =cut

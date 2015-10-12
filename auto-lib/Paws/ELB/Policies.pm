@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Polici
 
 =head2 AppCookieStickinessPolicies => ArrayRef[Paws::ELB::AppCookieStickinessPolicy]
 
-  
-
-The stickiness policies created using CreateAppCookieStickinessPolicy.
-
-
-
-
-
-
-
-
-
+  The stickiness policies created using CreateAppCookieStickinessPolicy.
 
 =head2 LBCookieStickinessPolicies => ArrayRef[Paws::ELB::LBCookieStickinessPolicy]
 
-  
-
-The stickiness policies created using CreateLBCookieStickinessPolicy.
-
-
-
-
-
-
-
-
-
+  The stickiness policies created using CreateLBCookieStickinessPolicy.
 
 =head2 OtherPolicies => ArrayRef[Str]
 
-  
-
-The policies other than the stickiness policies.
-
-
-
-
-
-
-
-
-
+  The policies other than the stickiness policies.
 
 
 

@@ -35,24 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> virtualGatewayId => Str
 
-  
-
-ID of the virtual private gateway that will be attached to the virtual
+  ID of the virtual private gateway that will be attached to the virtual
 interface.
 
 A virtual private gateway can be managed via the Amazon Virtual Private
 Cloud (VPC) console or the EC2 CreateVpnGateway action.
 
 Default: None
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> virtualInterfaceId => Str
 

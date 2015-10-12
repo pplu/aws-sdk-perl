@@ -37,33 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> certificateSigningRequest => Str
 
-  
-
-The certificate signing request (CSR).
-
-
-
-
-
-
-
-
-
+  The certificate signing request (CSR).
 
 =head2 setAsActive => Bool
 
-  
-
-Specifies whether the certificate is active.
-
-
-
-
-
-
-
-
-
+  Specifies whether the certificate is active.
 
 
 

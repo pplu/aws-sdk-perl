@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::ThingA
 
 =head2 attributes => Paws::IoT::Attributes
 
-  
-
-The attributes.
-
-
-
-
-
-
-
-
-
+  The attributes.
 
 =head2 thingName => Str
 
-  
-
-The name of the thing.
-
-
-
-
-
-
-
-
-
+  The name of the thing.
 
 
 

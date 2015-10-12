@@ -35,9 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSet 
 
 =head2 B<REQUIRED> IPSetDescriptors => ArrayRef[Paws::WAF::IPSetDescriptor]
 
-  
-
-The IP address type (C<IPV4>) and the IP address range (in CIDR
+  The IP address type (C<IPV4>) and the IP address range (in CIDR
 notation) that web requests originate from. If the C<WebACL> is
 associated with a CloudFront distribution, this is the value of one of
 the following fields in CloudFront access logs:
@@ -52,50 +50,19 @@ load balancer to send the request
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> IPSetId => Str
 
-  
-
-The C<IPSetId> for an C<IPSet>. You use C<IPSetId> to get information
+  The C<IPSetId> for an C<IPSet>. You use C<IPSetId> to get information
 about an C<IPSet> (see GetIPSet), update an C<IPSet> (see UpdateIPSet),
 insert an C<IPSet> into a C<Rule> or delete one from a C<Rule> (see
 UpdateRule), and delete an C<IPSet> from AWS WAF (see DeleteIPSet).
 
 C<IPSetId> is returned by CreateIPSet and by ListIPSets.
 
-
-
-
-
-
-
-
-
-
 =head2 Name => Str
 
-  
-
-A friendly name or description of the IPSet. You can't change the name
+  A friendly name or description of the IPSet. You can't change the name
 of an C<IPSet> after you create it.
-
-
-
-
-
-
-
-
-
 
 
 

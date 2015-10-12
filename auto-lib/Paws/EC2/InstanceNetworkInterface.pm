@@ -46,215 +46,61 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head2 Association => Paws::EC2::InstanceNetworkInterfaceAssociation
 
-  
-
-The association information for an Elastic IP associated with the
+  The association information for an Elastic IP associated with the
 network interface.
-
-
-
-
-
-
-
-
-
 
 =head2 Attachment => Paws::EC2::InstanceNetworkInterfaceAttachment
 
-  
-
-The network interface attachment.
-
-
-
-
-
-
-
-
-
+  The network interface attachment.
 
 =head2 Description => Str
 
-  
-
-The description.
-
-
-
-
-
-
-
-
-
+  The description.
 
 =head2 Groups => ArrayRef[Paws::EC2::GroupIdentifier]
 
-  
-
-One or more security groups.
-
-
-
-
-
-
-
-
-
+  One or more security groups.
 
 =head2 MacAddress => Str
 
-  
-
-The MAC address.
-
-
-
-
-
-
-
-
-
+  The MAC address.
 
 =head2 NetworkInterfaceId => Str
 
-  
-
-The ID of the network interface.
-
-
-
-
-
-
-
-
-
+  The ID of the network interface.
 
 =head2 OwnerId => Str
 
-  
-
-The ID of the AWS account that created the network interface.
-
-
-
-
-
-
-
-
-
+  The ID of the AWS account that created the network interface.
 
 =head2 PrivateDnsName => Str
 
-  
-
-The private DNS name.
-
-
-
-
-
-
-
-
-
+  The private DNS name.
 
 =head2 PrivateIpAddress => Str
 
-  
-
-The IP address of the network interface within the subnet.
-
-
-
-
-
-
-
-
-
+  The IP address of the network interface within the subnet.
 
 =head2 PrivateIpAddresses => ArrayRef[Paws::EC2::InstancePrivateIpAddress]
 
-  
-
-The private IP addresses associated with the network interface.
-
-
-
-
-
-
-
-
-
+  The private IP addresses associated with the network interface.
 
 =head2 SourceDestCheck => Bool
 
-  
-
-Indicates whether to validate network traffic to or from this network
+  Indicates whether to validate network traffic to or from this network
 interface.
-
-
-
-
-
-
-
-
-
 
 =head2 Status => Str
 
-  
-
-The status of the network interface.
-
-
-
-
-
-
-
-
-
+  The status of the network interface.
 
 =head2 SubnetId => Str
 
-  
-
-The ID of the subnet.
-
-
-
-
-
-
-
-
-
+  The ID of the subnet.
 
 =head2 VpcId => Str
 
-  
-
-The ID of the VPC.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC.
 
 
 

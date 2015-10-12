@@ -40,125 +40,37 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Addres
 
 =head2 AllocationId => Str
 
-  
-
-The ID representing the allocation of the address for use with EC2-VPC.
-
-
-
-
-
-
-
-
-
+  The ID representing the allocation of the address for use with EC2-VPC.
 
 =head2 AssociationId => Str
 
-  
-
-The ID representing the association of the address with an instance in
+  The ID representing the association of the address with an instance in
 a VPC.
-
-
-
-
-
-
-
-
-
 
 =head2 Domain => Str
 
-  
-
-Indicates whether this Elastic IP address is for use with instances in
+  Indicates whether this Elastic IP address is for use with instances in
 EC2-Classic (C<standard>) or instances in a VPC (C<vpc>).
-
-
-
-
-
-
-
-
-
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance that the address is associated with (if any).
-
-
-
-
-
-
-
-
-
+  The ID of the instance that the address is associated with (if any).
 
 =head2 NetworkInterfaceId => Str
 
-  
-
-The ID of the network interface.
-
-
-
-
-
-
-
-
-
+  The ID of the network interface.
 
 =head2 NetworkInterfaceOwnerId => Str
 
-  
-
-The ID of the AWS account that owns the network interface.
-
-
-
-
-
-
-
-
-
+  The ID of the AWS account that owns the network interface.
 
 =head2 PrivateIpAddress => Str
 
-  
-
-The private IP address associated with the Elastic IP address.
-
-
-
-
-
-
-
-
-
+  The private IP address associated with the Elastic IP address.
 
 =head2 PublicIp => Str
 
-  
-
-The Elastic IP address.
-
-
-
-
-
-
-
-
-
+  The Elastic IP address.
 
 
 

@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Accoun
 
 =head2 AccountQuotaName => Str
 
-  
-
-The name of the Amazon RDS quota for this AWS account.
-
-
-
-
-
-
-
-
-
+  The name of the Amazon RDS quota for this AWS account.
 
 =head2 Max => Int
 
-  
-
-The maximum allowed value for the quota.
-
-
-
-
-
-
-
-
-
+  The maximum allowed value for the quota.
 
 =head2 Used => Int
 
-  
-
-The amount currently used toward the quota maximum.
-
-
-
-
-
-
-
-
-
+  The amount currently used toward the quota maximum.
 
 
 

@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 latestDate => Str
 
-  
-
-Specifies the latest start or close date and time to return.
-
-
-
-
-
-
-
-
-
+  Specifies the latest start or close date and time to return.
 
 =head2 B<REQUIRED> oldestDate => Str
 
-  
-
-Specifies the oldest start or close date and time to return.
-
-
-
-
-
-
-
-
-
+  Specifies the oldest start or close date and time to return.
 
 
 

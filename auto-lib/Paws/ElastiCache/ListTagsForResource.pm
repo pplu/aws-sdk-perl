@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceName => Str
 
-  
-
-The name of the resource for which you want the list of tags, for
+  The name of the resource for which you want the list of tags, for
 example C<arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster>.
-
-
-
-
-
-
-
-
-
 
 
 

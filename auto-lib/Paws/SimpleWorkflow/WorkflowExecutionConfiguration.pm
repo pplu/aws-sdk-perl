@@ -38,9 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> childPolicy => Str
 
-  
-
-The policy to use for the child workflow executions if this workflow
+  The policy to use for the child workflow executions if this workflow
 execution is terminated, by calling the TerminateWorkflowExecution
 action explicitly or due to an expired timeout.
 
@@ -60,70 +58,26 @@ continue to run.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> executionStartToCloseTimeout => Str
 
-  
-
-The total duration for this workflow execution.
+  The total duration for this workflow execution.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-
-
-
-
-
-
-
-
-
 =head2 lambdaRole => Str
 
-  
-
-The IAM role used by this workflow execution when invoking AWS Lambda
+  The IAM role used by this workflow execution when invoking AWS Lambda
 functions.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
 
-  
-
-The task list used for the decision tasks generated for this workflow
+  The task list used for the decision tasks generated for this workflow
 execution.
-
-
-
-
-
-
-
-
-
 
 =head2 taskPriority => Str
 
-  
-
-The priority assigned to decision tasks for this workflow execution.
+  The priority assigned to decision tasks for this workflow execution.
 Valid values are integers that range from Java's C<Integer.MIN_VALUE>
 (-2147483648) to C<Integer.MAX_VALUE> (2147483647). Higher numbers
 indicate higher priority.
@@ -131,33 +85,13 @@ indicate higher priority.
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> taskStartToCloseTimeout => Str
 
-  
-
-The maximum duration allowed for decision tasks for this workflow
+  The maximum duration allowed for decision tasks for this workflow
 execution.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -43,9 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> childPolicy => Str
 
-  
-
-The policy to use for the child workflow executions of the new
+  The policy to use for the child workflow executions of the new
 execution if it is terminated by calling the TerminateWorkflowExecution
 action explicitly or due to an expired timeout.
 
@@ -65,112 +63,37 @@ continue to run.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> decisionTaskCompletedEventId => Int
 
-  
-
-The ID of the C<DecisionTaskCompleted> event corresponding to the
+  The ID of the C<DecisionTaskCompleted> event corresponding to the
 decision task that resulted in the C<ContinueAsNewWorkflowExecution>
 decision that started this execution. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 executionStartToCloseTimeout => Str
 
-  
-
-The total duration allowed for the new workflow execution.
+  The total duration allowed for the new workflow execution.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-
-
-
-
-
-
-
-
-
 =head2 input => Str
 
-  
-
-The input provided to the new workflow execution.
-
-
-
-
-
-
-
-
-
+  The input provided to the new workflow execution.
 
 =head2 lambdaRole => Str
 
-  
-
-The IAM role attached to this workflow execution to use when invoking
+  The IAM role attached to this workflow execution to use when invoking
 AWS Lambda functions.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> newExecutionRunId => Str
 
-  
-
-The C<runId> of the new workflow execution.
-
-
-
-
-
-
-
-
-
+  The C<runId> of the new workflow execution.
 
 =head2 tagList => ArrayRef[Str]
 
-  
-
-The list of tags associated with the new workflow execution.
-
-
-
-
-
-
-
-
-
+  The list of tags associated with the new workflow execution.
 
 =head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
 
@@ -182,21 +105,10 @@ The list of tags associated with the new workflow execution.
 
 =head2 taskStartToCloseTimeout => Str
 
-  
-
-The maximum duration of decision tasks for the new workflow execution.
+  The maximum duration of decision tasks for the new workflow execution.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
 

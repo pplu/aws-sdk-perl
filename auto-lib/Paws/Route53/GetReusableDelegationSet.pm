@@ -22,19 +22,8 @@ Paws::Route53::GetReusableDelegationSetResponse
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The ID of the reusable delegation set for which you want to get a list
+  The ID of the reusable delegation set for which you want to get a list
 of the name server.
-
-
-
-
-
-
-
-
-
 
 
 =cut

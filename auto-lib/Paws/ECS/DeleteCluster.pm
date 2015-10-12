@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster to
+  The short name or full Amazon Resource Name (ARN) of the cluster to
 delete.
-
-
-
-
-
-
-
-
-
 
 
 

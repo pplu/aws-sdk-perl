@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Cancel
 
 =head2 B<REQUIRED> Error => Paws::EC2::CancelSpotFleetRequestsError
 
-  
-
-The error.
-
-
-
-
-
-
-
-
-
+  The error.
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-  
-
-The ID of the Spot fleet request.
-
-
-
-
-
-
-
-
-
+  The ID of the Spot fleet request.
 
 
 

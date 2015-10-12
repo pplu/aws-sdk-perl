@@ -37,63 +37,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 description => Str
 
-  
-
-The device pool's description.
-
-
-
-
-
-
-
-
-
+  The device pool's description.
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The device pool's name.
-
-
-
-
-
-
-
-
-
+  The device pool's name.
 
 =head2 B<REQUIRED> projectArn => Str
 
-  
-
-The ARN of the project for the device pool.
-
-
-
-
-
-
-
-
-
+  The ARN of the project for the device pool.
 
 =head2 B<REQUIRED> rules => ArrayRef[Paws::DeviceFarm::Rule]
 
-  
-
-The device pool's rules.
-
-
-
-
-
-
-
-
-
+  The device pool's rules.
 
 
 

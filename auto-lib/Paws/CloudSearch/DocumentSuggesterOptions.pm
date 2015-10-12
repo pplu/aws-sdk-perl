@@ -35,28 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 FuzzyMatching => Str
 
-  
-
-The level of fuzziness allowed when suggesting matches for a string:
+  The level of fuzziness allowed when suggesting matches for a string:
 C<none>, C<low>, or C<high>. With none, the specified string is treated
 as an exact prefix. With low, suggestions must differ from the
 specified string by no more than one character. With high, suggestions
 can differ by up to two characters. The default is none.
 
-
-
-
-
-
-
-
-
-
 =head2 SortExpression => Str
 
-  
-
-An expression that computes a score for each suggestion to control how
+  An expression that computes a score for each suggestion to control how
 they are sorted. The scores are rounded to the nearest integer, with a
 floor of 0 and a ceiling of 2^31-1. A document's relevance score is not
 computed for suggestions, so sort expressions cannot reference the
@@ -65,29 +52,9 @@ expression, simply specify the name of the field or expression. If no
 expression is configured for the suggester, the suggestions are sorted
 with the closest matches listed first.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SourceField => Str
 
-  
-
-The name of the index field you want to use for suggestions.
-
-
-
-
-
-
-
-
-
+  The name of the index field you want to use for suggestions.
 
 
 

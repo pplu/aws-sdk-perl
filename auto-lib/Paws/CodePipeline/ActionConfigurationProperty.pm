@@ -39,55 +39,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 description => Str
 
-  
-
-The description of the action configuration property that will be
+  The description of the action configuration property that will be
 displayed to users.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> key => Bool
 
-  
-
-Whether the configuration property is a key.
-
-
-
-
-
-
-
-
-
+  Whether the configuration property is a key.
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of the action configuration property.
-
-
-
-
-
-
-
-
-
+  The name of the action configuration property.
 
 =head2 queryable => Bool
 
-  
-
-Indicates that the proprety will be used in conjunction with
+  Indicates that the proprety will be used in conjunction with
 PollForJobs. When creating a custom action, an action can have up to
 one queryable property. If it has one, that property must be both
 required and not secret.
@@ -98,64 +63,22 @@ property is subject to additional restrictions. The value must be less
 than or equal to twenty (20) characters. The value can contain only
 alphanumeric characters, underscores, and hyphens.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> required => Bool
 
-  
-
-Whether the configuration property is a required value.
-
-
-
-
-
-
-
-
-
+  Whether the configuration property is a required value.
 
 =head2 B<REQUIRED> secret => Bool
 
-  
-
-Whether the configuration property is secret. Secrets are hidden from
+  Whether the configuration property is secret. Secrets are hidden from
 all calls except for GetJobDetails, GetThirdPartyJobDetails,
 PollForJobs, and PollForThirdPartyJobs.
 
 When updating a pipeline, passing * * * * * without changing any other
 values of the action will preserve the prior value of the secret.
 
-
-
-
-
-
-
-
-
-
 =head2 type => Str
 
-  
-
-The type of the configuration property.
-
-
-
-
-
-
-
-
-
+  The type of the configuration property.
 
 
 

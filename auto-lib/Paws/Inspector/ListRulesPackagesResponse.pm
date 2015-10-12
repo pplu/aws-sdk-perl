@@ -15,35 +15,13 @@ Paws::Inspector::ListRulesPackagesResponse
 
 =head2 nextToken => Str
 
-  
-
-When a response is generated, if there is more data to be listed, this
+  When a response is generated, if there is more data to be listed, this
 parameter is present in the response and contains the value to use for
 the B<nextToken> parameter in a subsequent pagination request. If there
 is no more data to be listed, this parameter is set to 'null'.
-
-
-
-
-
-
-
-
-
 =head2 rulesPackageArnList => ArrayRef[Str]
 
-  
-
-The list of ARNs specifying the rules packages returned by the action.
-
-
-
-
-
-
-
-
-
+  The list of ARNs specifying the rules packages returned by the action.
 
 
 =cut

@@ -38,19 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Delete 
 
 =head2 Quiet => Bool
 
-  
-
-Element to enable quiet mode for the request. When you add this
+  Element to enable quiet mode for the request. When you add this
 element, you must set its value to true.
-
-
-
-
-
-
-
-
-
 
 
 

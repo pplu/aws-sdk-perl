@@ -16,32 +16,10 @@ Paws::CloudWatch::GetMetricStatisticsOutput
 
 =head2 Datapoints => ArrayRef[Paws::CloudWatch::Datapoint]
 
-  
-
-The datapoints for the specified metric.
-
-
-
-
-
-
-
-
-
+  The datapoints for the specified metric.
 =head2 Label => Str
 
-  
-
-A label describing the specified metric.
-
-
-
-
-
-
-
-
-
+  A label describing the specified metric.
 
 
 =cut

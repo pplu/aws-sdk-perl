@@ -15,32 +15,10 @@ Paws::ECS::DescribeTasksResponse
 
 =head2 failures => ArrayRef[Paws::ECS::Failure]
 
-  
-
-Any failures associated with the call.
-
-
-
-
-
-
-
-
-
+  Any failures associated with the call.
 =head2 tasks => ArrayRef[Paws::ECS::Task]
 
-  
-
-The list of tasks.
-
-
-
-
-
-
-
-
-
+  The list of tasks.
 
 
 =cut

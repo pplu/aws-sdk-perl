@@ -35,25 +35,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::T
 
 =head2 ResourceName => Str
 
-  
-
-The Amazon Resource Name (ARN) with which the tag is associated. For
+  The Amazon Resource Name (ARN) with which the tag is associated. For
 example, C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
-
-
-
-
-
-
-
-
-
 
 =head2 ResourceType => Str
 
-  
-
-The type of resource with which the tag is associated. Valid resource
+  The type of resource with which the tag is associated. Valid resource
 types are:
 
 =over
@@ -82,29 +69,9 @@ For more information about Amazon Redshift resource types and
 constructing ARNs, go to Constructing an Amazon Redshift Amazon
 Resource Name (ARN) in the Amazon Redshift Cluster Management Guide.
 
-
-
-
-
-
-
-
-
-
 =head2 Tag => Paws::RedShift::Tag
 
-  
-
-The tag for the resource.
-
-
-
-
-
-
-
-
-
+  The tag for the resource.
 
 
 

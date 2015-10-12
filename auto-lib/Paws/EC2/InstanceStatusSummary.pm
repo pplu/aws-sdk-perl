@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head2 Details => ArrayRef[Paws::EC2::InstanceStatusDetails]
 
-  
-
-The system instance health or application instance health.
-
-
-
-
-
-
-
-
-
+  The system instance health or application instance health.
 
 =head2 Status => Str
 
-  
-
-The status.
-
-
-
-
-
-
-
-
-
+  The status.
 
 
 

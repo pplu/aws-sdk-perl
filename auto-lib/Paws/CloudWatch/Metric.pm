@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head2 Dimensions => ArrayRef[Paws::CloudWatch::Dimension]
 
-  
-
-A list of dimensions associated with the metric.
-
-
-
-
-
-
-
-
-
+  A list of dimensions associated with the metric.
 
 =head2 MetricName => Str
 
-  
-
-The name of the metric.
-
-
-
-
-
-
-
-
-
+  The name of the metric.
 
 =head2 Namespace => Str
 
-  
-
-The namespace of the metric.
-
-
-
-
-
-
-
-
-
+  The namespace of the metric.
 
 
 

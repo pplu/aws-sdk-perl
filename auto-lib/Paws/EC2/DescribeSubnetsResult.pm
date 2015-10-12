@@ -15,18 +15,7 @@ Paws::EC2::DescribeSubnetsResult
 
 =head2 Subnets => ArrayRef[Paws::EC2::Subnet]
 
-  
-
-Information about one or more subnets.
-
-
-
-
-
-
-
-
-
+  Information about one or more subnets.
 
 
 =cut

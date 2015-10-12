@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Change
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-An identifier for this particular receipt handle. This is used to
+  An identifier for this particular receipt handle. This is used to
 communicate the result. Note that the C<Id>s of a batch request need to
 be unique within the request.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ReceiptHandle => Str
 
-  
-
-A receipt handle.
-
-
-
-
-
-
-
-
-
+  A receipt handle.
 
 =head2 VisibilityTimeout => Int
 
-  
-
-The new value (in seconds) for the message's visibility timeout.
-
-
-
-
-
-
-
-
-
+  The new value (in seconds) for the message's visibility timeout.
 
 
 

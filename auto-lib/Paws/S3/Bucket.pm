@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Bucket 
 
 =head2 CreationDate => Str
 
-  
-
-Date the bucket was created.
-
-
-
-
-
-
-
-
-
+  Date the bucket was created.
 
 =head2 Name => Str
 
-  
-
-The name of the bucket.
-
-
-
-
-
-
-
-
-
+  The name of the bucket.
 
 
 

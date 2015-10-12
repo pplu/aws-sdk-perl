@@ -36,57 +36,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::BlockD
 
 =head2 DeviceName => Str
 
-  
-
-The device name exposed to the instance (for example, C</dev/sdh> or
+  The device name exposed to the instance (for example, C</dev/sdh> or
 C<xvdh>).
-
-
-
-
-
-
-
-
-
 
 =head2 Ebs => Paws::EC2::EbsBlockDevice
 
-  
-
-Parameters used to automatically set up EBS volumes when the instance
+  Parameters used to automatically set up EBS volumes when the instance
 is launched.
-
-
-
-
-
-
-
-
-
 
 =head2 NoDevice => Str
 
-  
-
-Suppresses the specified device included in the block device mapping of
+  Suppresses the specified device included in the block device mapping of
 the AMI.
-
-
-
-
-
-
-
-
-
 
 =head2 VirtualName => Str
 
-  
-
-The virtual device name (C<ephemeral>N). Instance store volumes are
+  The virtual device name (C<ephemeral>N). Instance store volumes are
 numbered starting from 0. An instance type with 2 available instance
 store volumes can specify mappings for C<ephemeral0> and
 C<ephemeral1>.The number of available instance store volumes depends on
@@ -97,15 +62,6 @@ Constraints: For M3 instances, you must specify instance store volumes
 in the block device mapping for the instance. When you launch an M3
 instance, we ignore any instance store volumes specified in the block
 device mapping for the AMI.
-
-
-
-
-
-
-
-
-
 
 
 

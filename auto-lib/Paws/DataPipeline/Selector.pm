@@ -34,21 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head2 fieldName => Str
 
-  
-
-The name of the field that the operator will be applied to. The field
+  The name of the field that the operator will be applied to. The field
 name is the "key" portion of the field definition in the pipeline
 definition syntax that is used by the AWS Data Pipeline API. If the
 field is not set on the object, the condition fails.
-
-
-
-
-
-
-
-
-
 
 =head2 operator => Paws::DataPipeline::Operator
 

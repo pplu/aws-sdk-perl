@@ -15,18 +15,7 @@ Paws::IAM::CreateGroupResponse
 
 =head2 B<REQUIRED> Group => Paws::IAM::Group
 
-  
-
-Information about the group.
-
-
-
-
-
-
-
-
-
+  Information about the group.
 
 
 =cut

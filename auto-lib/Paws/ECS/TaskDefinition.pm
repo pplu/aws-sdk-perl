@@ -39,118 +39,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::TaskDe
 
 =head2 containerDefinitions => ArrayRef[Paws::ECS::ContainerDefinition]
 
-  
-
-A list of container definitions in JSON format that describe the
+  A list of container definitions in JSON format that describe the
 different containers that make up your task. For more information about
 container definition parameters and defaults, see Amazon ECS Task
 Definitions in the I<Amazon EC2 Container Service Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 family => Str
 
-  
-
-The family of your task definition, used as the definition name.
-
-
-
-
-
-
-
-
-
+  The family of your task definition, used as the definition name.
 
 =head2 requiresAttributes => ArrayRef[Paws::ECS::Attribute]
 
-  
-
-The container instance attributes required by your task.
-
-
-
-
-
-
-
-
-
+  The container instance attributes required by your task.
 
 =head2 revision => Int
 
-  
-
-The revision of the task in a particular family. The revision is a
+  The revision of the task in a particular family. The revision is a
 version number of a task definition in a family. When you register a
 task definition for the first time, the revision is C<1>; each time you
 register a new revision of a task definition in the same family, the
 revision value always increases by one (even if you have deregistered
 previous revisions in this family).
 
-
-
-
-
-
-
-
-
-
 =head2 status => Str
 
-  
-
-The status of the task definition.
-
-
-
-
-
-
-
-
-
+  The status of the task definition.
 
 =head2 taskDefinitionArn => Str
 
-  
-
-The full Amazon Resource Name (ARN) of the of the task definition.
-
-
-
-
-
-
-
-
-
+  The full Amazon Resource Name (ARN) of the of the task definition.
 
 =head2 volumes => ArrayRef[Paws::ECS::Volume]
 
-  
-
-The list of volumes in a task. For more information about volume
+  The list of volumes in a task. For more information about volume
 definition parameters and defaults, see Amazon ECS Task Definitions in
 the I<Amazon EC2 Container Service Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EndpointArn => Str
 
-  
-
-EndpointArn of endpoint to delete.
-
-
-
-
-
-
-
-
-
+  EndpointArn of endpoint to delete.
 
 
 

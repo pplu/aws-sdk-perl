@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Conten
 
 =head2 Charset => Str
 
-  
-
-The character set of the content.
-
-
-
-
-
-
-
-
-
+  The character set of the content.
 
 =head2 B<REQUIRED> Data => Str
 
-  
-
-The textual data of the content.
-
-
-
-
-
-
-
-
-
+  The textual data of the content.
 
 
 

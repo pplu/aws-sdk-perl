@@ -36,53 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConsistentRead => Bool
 
-  
-
-Determines whether or not strong consistency should be enforced when
+  Determines whether or not strong consistency should be enforced when
 data is read from SimpleDB. If C<true>, any data previously written to
 SimpleDB will be returned. Otherwise, results will be consistent
 eventually, and the client may not see data that was written
 immediately before your read.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-A string informing Amazon SimpleDB where to start the next list of
+  A string informing Amazon SimpleDB where to start the next list of
 C<ItemNames>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> SelectExpression => Str
 
-  
-
-The expression used to query the domain.
-
-
-
-
-
-
-
-
-
+  The expression used to query the domain.
 
 
 

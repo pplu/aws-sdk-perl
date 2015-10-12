@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheParameterGroupName => Str
 
-  
-
-The name of the cache parameter group to modify.
-
-
-
-
-
-
-
-
-
+  The name of the cache parameter group to modify.
 
 =head2 B<REQUIRED> ParameterNameValues => ArrayRef[Paws::ElastiCache::ParameterNameValue]
 
-  
-
-An array of parameter names and values for the parameter update. You
+  An array of parameter names and values for the parameter update. You
 must supply at least one parameter name and value; subsequent arguments
 are optional. A maximum of 20 parameters may be modified per request.
-
-
-
-
-
-
-
-
-
 
 
 

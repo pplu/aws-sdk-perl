@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Re
 
 =head2 B<REQUIRED> Value => Str
 
-  
-
-The value of the C<Value> element for the current resource record set.
-
-
-
-
-
-
-
-
-
+  The value of the C<Value> element for the current resource record set.
 
 
 

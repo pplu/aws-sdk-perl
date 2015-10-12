@@ -36,27 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 Filters => ArrayRef[Paws::EC2::Filter]
 
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -70,31 +57,11 @@ C<key-name> - The name of the key pair.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 KeyNames => ArrayRef[Str]
 
-  
-
-One or more key pair names.
+  One or more key pair names.
 
 Default: Describes all your key pairs.
-
-
-
-
-
-
-
-
-
 
 
 

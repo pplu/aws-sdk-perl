@@ -39,108 +39,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpcEnd
 
 =head2 CreationTimestamp => Str
 
-  
-
-The date and time the VPC endpoint was created.
-
-
-
-
-
-
-
-
-
+  The date and time the VPC endpoint was created.
 
 =head2 PolicyDocument => Str
 
-  
-
-The policy document associated with the endpoint.
-
-
-
-
-
-
-
-
-
+  The policy document associated with the endpoint.
 
 =head2 RouteTableIds => ArrayRef[Str]
 
-  
-
-One or more route tables associated with the endpoint.
-
-
-
-
-
-
-
-
-
+  One or more route tables associated with the endpoint.
 
 =head2 ServiceName => Str
 
-  
-
-The name of the AWS service to which the endpoint is associated.
-
-
-
-
-
-
-
-
-
+  The name of the AWS service to which the endpoint is associated.
 
 =head2 State => Str
 
-  
-
-The state of the VPC endpoint.
-
-
-
-
-
-
-
-
-
+  The state of the VPC endpoint.
 
 =head2 VpcEndpointId => Str
 
-  
-
-The ID of the VPC endpoint.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC endpoint.
 
 =head2 VpcId => Str
 
-  
-
-The ID of the VPC to which the endpoint is associated.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC to which the endpoint is associated.
 
 
 

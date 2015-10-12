@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SnapshotCopyGrantName => Str
 
-  
-
-The name of the snapshot copy grant to delete.
-
-
-
-
-
-
-
-
-
+  The name of the snapshot copy grant to delete.
 
 
 

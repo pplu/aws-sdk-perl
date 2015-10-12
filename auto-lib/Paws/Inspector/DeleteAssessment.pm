@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 assessmentArn => Str
 
-  
-
-The ARN specifying the assessment that you want to delete.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the assessment that you want to delete.
 
 
 

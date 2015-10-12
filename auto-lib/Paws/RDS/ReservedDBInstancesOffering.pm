@@ -42,153 +42,43 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Reserv
 
 =head2 CurrencyCode => Str
 
-  
-
-The currency code for the reserved DB instance offering.
-
-
-
-
-
-
-
-
-
+  The currency code for the reserved DB instance offering.
 
 =head2 DBInstanceClass => Str
 
-  
-
-The DB instance class for the reserved DB instance.
-
-
-
-
-
-
-
-
-
+  The DB instance class for the reserved DB instance.
 
 =head2 Duration => Int
 
-  
-
-The duration of the offering in seconds.
-
-
-
-
-
-
-
-
-
+  The duration of the offering in seconds.
 
 =head2 FixedPrice => Num
 
-  
-
-The fixed price charged for this offering.
-
-
-
-
-
-
-
-
-
+  The fixed price charged for this offering.
 
 =head2 MultiAZ => Bool
 
-  
-
-Indicates if the offering applies to Multi-AZ deployments.
-
-
-
-
-
-
-
-
-
+  Indicates if the offering applies to Multi-AZ deployments.
 
 =head2 OfferingType => Str
 
-  
-
-The offering type.
-
-
-
-
-
-
-
-
-
+  The offering type.
 
 =head2 ProductDescription => Str
 
-  
-
-The database engine used by the offering.
-
-
-
-
-
-
-
-
-
+  The database engine used by the offering.
 
 =head2 RecurringCharges => ArrayRef[Paws::RDS::RecurringCharge]
 
-  
-
-The recurring price charged to run this reserved DB instance.
-
-
-
-
-
-
-
-
-
+  The recurring price charged to run this reserved DB instance.
 
 =head2 ReservedDBInstancesOfferingId => Str
 
-  
-
-The offering identifier.
-
-
-
-
-
-
-
-
-
+  The offering identifier.
 
 =head2 UsagePrice => Num
 
-  
-
-The hourly price charged for this offering.
-
-
-
-
-
-
-
-
-
+  The hourly price charged for this offering.
 
 
 

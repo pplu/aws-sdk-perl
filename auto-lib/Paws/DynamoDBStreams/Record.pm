@@ -38,56 +38,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
 =head2 awsRegion => Str
 
-  
-
-The region in which the I<GetRecords> request was received.
-
-
-
-
-
-
-
-
-
+  The region in which the I<GetRecords> request was received.
 
 =head2 dynamodb => Paws::DynamoDBStreams::StreamRecord
 
-  
-
-The main body of the stream record, containing all of the
+  The main body of the stream record, containing all of the
 DynamoDB-specific fields.
-
-
-
-
-
-
-
-
-
 
 =head2 eventID => Str
 
-  
-
-A globally unique identifier for the event that was recorded in this
+  A globally unique identifier for the event that was recorded in this
 stream record.
-
-
-
-
-
-
-
-
-
 
 =head2 eventName => Str
 
-  
-
-The type of data modification that was performed on the DynamoDB table:
+  The type of data modification that was performed on the DynamoDB table:
 
 =over
 
@@ -105,46 +70,15 @@ C<REMOVE> - the item was deleted from the table
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 eventSource => Str
 
-  
-
-The AWS service from which the stream record originated. For DynamoDB
+  The AWS service from which the stream record originated. For DynamoDB
 Streams, this is I<aws:dynamodb>.
-
-
-
-
-
-
-
-
-
 
 =head2 eventVersion => Str
 
-  
-
-The version number of the stream record format. Currently, this is
+  The version number of the stream record format. Currently, this is
 I<1.0>.
-
-
-
-
-
-
-
-
-
 
 
 

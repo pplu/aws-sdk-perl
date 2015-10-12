@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> filterName => Str
 
-  
-
-The name of the metric filter to delete.
-
-
-
-
-
-
-
-
-
+  The name of the metric filter to delete.
 
 =head2 B<REQUIRED> logGroupName => Str
 
-  
-
-The name of the log group that is associated with the metric filter to
+  The name of the log group that is associated with the metric filter to
 delete.
-
-
-
-
-
-
-
-
-
 
 
 

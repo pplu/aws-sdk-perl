@@ -36,35 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ETag => Str
 
-  
-
-Entity tag for the uploaded object.
-
-
-
-
-
-
-
-
-
+  Entity tag for the uploaded object.
 
 =head2 Expiration => Str
 
-  
-
-If the object expiration is configured, this will contain the
+  If the object expiration is configured, this will contain the
 expiration date (expiry-date) and rule ID (rule-id). The value of
 rule-id is URL encoded.
-
-
-
-
-
-
-
-
-
 
 =head2 RequestCharged => Str
 
@@ -72,84 +50,29 @@ rule-id is URL encoded.
 
 =head2 ServerSideEncryption => Str
 
-  
-
-The Server-side encryption algorithm used when storing this object in
+  The Server-side encryption algorithm used when storing this object in
 S3 (e.g., AES256, aws:kms).
-
-
-
-
-
-
-
-
-
 
 =head2 SSECustomerAlgorithm => Str
 
-  
-
-If server-side encryption with a customer-provided encryption key was
+  If server-side encryption with a customer-provided encryption key was
 requested, the response will include this header confirming the
 encryption algorithm used.
 
-
-
-
-
-
-
-
-
-
 =head2 SSECustomerKeyMD5 => Str
 
-  
-
-If server-side encryption with a customer-provided encryption key was
+  If server-side encryption with a customer-provided encryption key was
 requested, the response will include this header to provide round trip
 message integrity verification of the customer-provided encryption key.
 
-
-
-
-
-
-
-
-
-
 =head2 SSEKMSKeyId => Str
 
-  
-
-If present, specifies the ID of the AWS Key Management Service (KMS)
+  If present, specifies the ID of the AWS Key Management Service (KMS)
 master encryption key that was used for the object.
-
-
-
-
-
-
-
-
-
 
 =head2 VersionId => Str
 
-  
-
-Version of the object.
-
-
-
-
-
-
-
-
-
+  Version of the object.
 
 
 

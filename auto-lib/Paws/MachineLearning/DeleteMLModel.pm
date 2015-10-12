@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MLModelId => Str
 
-  
-
-A user-supplied ID that uniquely identifies the C<MLModel>.
-
-
-
-
-
-
-
-
-
+  A user-supplied ID that uniquely identifies the C<MLModel>.
 
 
 

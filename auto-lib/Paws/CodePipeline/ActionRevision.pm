@@ -35,51 +35,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 B<REQUIRED> created => Str
 
-  
-
-The date and time when the most recent version of the action was
+  The date and time when the most recent version of the action was
 created, in timestamp format.
-
-
-
-
-
-
-
-
-
 
 =head2 revisionChangeId => Str
 
-  
-
-The unique identifier of the change that set the state to this
+  The unique identifier of the change that set the state to this
 revision, for example a deployment ID or timestamp.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> revisionId => Str
 
-  
-
-The system-generated unique ID that identifies the revision number of
+  The system-generated unique ID that identifies the revision number of
 the action.
-
-
-
-
-
-
-
-
-
 
 
 

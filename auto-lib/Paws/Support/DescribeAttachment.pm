@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> attachmentId => Str
 
-  
-
-The ID of the attachment to return. Attachment IDs are returned by the
+  The ID of the attachment to return. Attachment IDs are returned by the
 DescribeCommunications operation.
-
-
-
-
-
-
-
-
-
 
 
 

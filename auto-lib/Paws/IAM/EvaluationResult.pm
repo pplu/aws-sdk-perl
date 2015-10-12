@@ -37,73 +37,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Evalua
 
 =head2 B<REQUIRED> EvalActionName => Str
 
-  
-
-The name of the API action tested on the indicated resource.
-
-
-
-
-
-
-
-
-
+  The name of the API action tested on the indicated resource.
 
 =head2 B<REQUIRED> EvalDecision => Str
 
-  
-
-The result of the simulation.
-
-
-
-
-
-
-
-
-
+  The result of the simulation.
 
 =head2 B<REQUIRED> EvalResourceName => Str
 
-  
-
-The ARN of the resource that the indicated API action was tested on.
-
-
-
-
-
-
-
-
-
+  The ARN of the resource that the indicated API action was tested on.
 
 =head2 MatchedStatements => ArrayRef[Paws::IAM::Statement]
 
-  
-
-A list of the statements in the input policies that determine the
+  A list of the statements in the input policies that determine the
 result for this scenario. Remember that even if multiple statements
 allow the action on the resource, if only one statement denies that
 action, then the explicit deny overrides any allow, and the deny
 statement is the only entry included in the result.
 
-
-
-
-
-
-
-
-
-
 =head2 MissingContextValues => ArrayRef[Str]
 
-  
-
-A list of context keys that are required by the included input policies
+  A list of context keys that are required by the included input policies
 but that were not provided by one of the input parameters. To discover
 the context keys used by a set of policies, you can call
 GetContextKeysForCustomPolicy or GetContextKeysForPrincipalPolicy.
@@ -112,15 +66,6 @@ If the response includes any keys in this list, then the reported
 results might be untrustworthy because the simulation could not
 completely evaluate all of the conditions specified in the policies
 that would occur in a real world request.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -38,9 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-Lambda function whose resource policy you want to remove a permission
+  Lambda function whose resource policy you want to remove a permission
 from.
 
 You can specify an unqualified function name (for example, "Thumbnail")
@@ -51,48 +49,17 @@ example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
-
-
-
-
-
-
-
-
-
 =head2 Qualifier => Str
 
-  
-
-You can specify this optional parameter to remove permission associated
+  You can specify this optional parameter to remove permission associated
 with a specific function version or function alias. The value of this
 paramter is the function version or alias name. If you don't specify
 this parameter, the API removes permission associated with the
 unqualified function ARN.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StatementId => Str
 
-  
-
-Statement ID of the permission to remove.
-
-
-
-
-
-
-
-
-
+  Statement ID of the permission to remove.
 
 
 

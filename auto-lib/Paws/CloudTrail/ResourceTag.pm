@@ -34,18 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
 =head2 ResourceId => Str
 
-  
-
-Specifies the ARN of the resource.
-
-
-
-
-
-
-
-
-
+  Specifies the ARN of the resource.
 
 =head2 TagsList => ArrayRef[Paws::CloudTrail::Tag]
 

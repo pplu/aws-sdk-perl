@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 IamUserArns => ArrayRef[Str]
 
-  
-
-An array of IAM user ARNs that identify the users to be described.
-
-
-
-
-
-
-
-
-
+  An array of IAM user ARNs that identify the users to be described.
 
 
 

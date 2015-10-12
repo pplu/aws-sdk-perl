@@ -34,38 +34,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::P
 
 =head2 B<REQUIRED> ReadCapacityUnits => Int
 
-  
-
-The maximum number of strongly consistent reads consumed per second
+  The maximum number of strongly consistent reads consumed per second
 before DynamoDB returns a I<ThrottlingException>. For more information,
 see Specifying Read and Write Requirements in the I<Amazon DynamoDB
 Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> WriteCapacityUnits => Int
 
-  
-
-The maximum number of writes consumed per second before DynamoDB
+  The maximum number of writes consumed per second before DynamoDB
 returns a I<ThrottlingException>. For more information, see Specifying
 Read and Write Requirements in the I<Amazon DynamoDB Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

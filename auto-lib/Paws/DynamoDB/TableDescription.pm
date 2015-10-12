@@ -46,9 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::T
 
 =head2 AttributeDefinitions => ArrayRef[Paws::DynamoDB::AttributeDefinition]
 
-  
-
-An array of I<AttributeDefinition> objects. Each of these objects
+  An array of I<AttributeDefinition> objects. Each of these objects
 describes one attribute in the table and index key schema.
 
 Each I<AttributeDefinition> object in this array is composed of:
@@ -65,36 +63,14 @@ I<AttributeType> - The data type for the attribute.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 CreationDateTime => Str
 
-  
-
-The date and time when the table was created, in UNIX epoch time
+  The date and time when the table was created, in UNIX epoch time
 format.
-
-
-
-
-
-
-
-
-
 
 =head2 GlobalSecondaryIndexes => ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexDescription]
 
-  
-
-The global secondary indexes, if any, on the table. Each index is
+  The global secondary indexes, if any, on the table. Each index is
 scoped to a given hash key value. Each element is composed of:
 
 =over
@@ -208,37 +184,15 @@ along with data about increases and decreases.
 If the table is in the C<DELETING> state, no information about indexes
 will be returned.
 
-
-
-
-
-
-
-
-
-
 =head2 ItemCount => Int
 
-  
-
-The number of items in the specified table. DynamoDB updates this value
+  The number of items in the specified table. DynamoDB updates this value
 approximately every six hours. Recent changes might not be reflected in
 this value.
 
-
-
-
-
-
-
-
-
-
 =head2 KeySchema => ArrayRef[Paws::DynamoDB::KeySchemaElement]
 
-  
-
-The primary key structure for the table. Each I<KeySchemaElement>
+  The primary key structure for the table. Each I<KeySchemaElement>
 consists of:
 
 =over
@@ -257,36 +211,14 @@ C<RANGE>.
 For more information about primary keys, see Primary Key in the
 I<Amazon DynamoDB Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 LatestStreamArn => Str
 
-  
-
-The Amazon Resource Name (ARN) that uniquely identifies the latest
+  The Amazon Resource Name (ARN) that uniquely identifies the latest
 stream for this table.
-
-
-
-
-
-
-
-
-
 
 =head2 LatestStreamLabel => Str
 
-  
-
-A timestamp, in ISO 8601 format, for this stream.
+  A timestamp, in ISO 8601 format, for this stream.
 
 Note that I<LatestStreamLabel> is not a unique identifier for the
 stream, because it is possible that a stream from another table might
@@ -309,20 +241,9 @@ the I<StreamLabel>.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 LocalSecondaryIndexes => ArrayRef[Paws::DynamoDB::LocalSecondaryIndexDescription]
 
-  
-
-Represents one or more local secondary indexes on the table. Each index
+  Represents one or more local secondary indexes on the table. Each index
 is scoped to a given hash key value. Tables with one or more local
 secondary indexes are subject to an item collection size limit, where
 the amount of data within a given item collection cannot exceed 10 GB.
@@ -400,99 +321,33 @@ not be reflected in this value.
 If the table is in the C<DELETING> state, no information about indexes
 will be returned.
 
-
-
-
-
-
-
-
-
-
 =head2 ProvisionedThroughput => Paws::DynamoDB::ProvisionedThroughputDescription
 
-  
-
-The provisioned throughput settings for the table, consisting of read
+  The provisioned throughput settings for the table, consisting of read
 and write capacity units, along with data about increases and
 decreases.
 
-
-
-
-
-
-
-
-
-
 =head2 StreamSpecification => Paws::DynamoDB::StreamSpecification
 
-  
-
-The current DynamoDB Streams configuration for the table.
-
-
-
-
-
-
-
-
-
+  The current DynamoDB Streams configuration for the table.
 
 =head2 TableArn => Str
 
-  
-
-The Amazon Resource Name (ARN) that uniquely identifies the table.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) that uniquely identifies the table.
 
 =head2 TableName => Str
 
-  
-
-The name of the table.
-
-
-
-
-
-
-
-
-
+  The name of the table.
 
 =head2 TableSizeBytes => Int
 
-  
-
-The total size of the specified table, in bytes. DynamoDB updates this
+  The total size of the specified table, in bytes. DynamoDB updates this
 value approximately every six hours. Recent changes might not be
 reflected in this value.
 
-
-
-
-
-
-
-
-
-
 =head2 TableStatus => Str
 
-  
-
-The current state of the table:
+  The current state of the table:
 
 =over
 
@@ -513,15 +368,6 @@ I<DELETING> - The table is being deleted.
 I<ACTIVE> - The table is ready for use.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

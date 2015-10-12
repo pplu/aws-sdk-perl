@@ -69,574 +69,167 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head2 AmiLaunchIndex => Int
 
-  
-
-The AMI launch index, which can be used to find this instance in the
+  The AMI launch index, which can be used to find this instance in the
 launch group.
-
-
-
-
-
-
-
-
-
 
 =head2 Architecture => Str
 
-  
-
-The architecture of the image.
-
-
-
-
-
-
-
-
-
+  The architecture of the image.
 
 =head2 BlockDeviceMappings => ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]
 
-  
-
-Any block device mapping entries for the instance.
-
-
-
-
-
-
-
-
-
+  Any block device mapping entries for the instance.
 
 =head2 ClientToken => Str
 
-  
-
-The idempotency token you provided when you launched the instance.
-
-
-
-
-
-
-
-
-
+  The idempotency token you provided when you launched the instance.
 
 =head2 EbsOptimized => Bool
 
-  
-
-Indicates whether the instance is optimized for EBS I/O. This
+  Indicates whether the instance is optimized for EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal I/O performance. This
 optimization isn't available with all instance types. Additional usage
 charges apply when using an EBS Optimized instance.
 
-
-
-
-
-
-
-
-
-
 =head2 Hypervisor => Str
 
-  
-
-The hypervisor type of the instance.
-
-
-
-
-
-
-
-
-
+  The hypervisor type of the instance.
 
 =head2 IamInstanceProfile => Paws::EC2::IamInstanceProfile
 
-  
-
-The IAM instance profile associated with the instance.
-
-
-
-
-
-
-
-
-
+  The IAM instance profile associated with the instance.
 
 =head2 ImageId => Str
 
-  
-
-The ID of the AMI used to launch the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the AMI used to launch the instance.
 
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 InstanceLifecycle => Str
 
-  
-
-Indicates whether this is a Spot Instance.
-
-
-
-
-
-
-
-
-
+  Indicates whether this is a Spot Instance.
 
 =head2 InstanceType => Str
 
-  
-
-The instance type.
-
-
-
-
-
-
-
-
-
+  The instance type.
 
 =head2 KernelId => Str
 
-  
-
-The kernel associated with this instance.
-
-
-
-
-
-
-
-
-
+  The kernel associated with this instance.
 
 =head2 KeyName => Str
 
-  
-
-The name of the key pair, if this instance was launched with an
+  The name of the key pair, if this instance was launched with an
 associated key pair.
-
-
-
-
-
-
-
-
-
 
 =head2 LaunchTime => Str
 
-  
-
-The time the instance was launched.
-
-
-
-
-
-
-
-
-
+  The time the instance was launched.
 
 =head2 Monitoring => Paws::EC2::Monitoring
 
-  
-
-The monitoring information for the instance.
-
-
-
-
-
-
-
-
-
+  The monitoring information for the instance.
 
 =head2 NetworkInterfaces => ArrayRef[Paws::EC2::InstanceNetworkInterface]
 
-  
-
-[EC2-VPC] One or more network interfaces for the instance.
-
-
-
-
-
-
-
-
-
+  [EC2-VPC] One or more network interfaces for the instance.
 
 =head2 Placement => Paws::EC2::Placement
 
-  
-
-The location where the instance launched.
-
-
-
-
-
-
-
-
-
+  The location where the instance launched.
 
 =head2 Platform => Str
 
-  
-
-The value is C<Windows> for Windows instances; otherwise blank.
-
-
-
-
-
-
-
-
-
+  The value is C<Windows> for Windows instances; otherwise blank.
 
 =head2 PrivateDnsName => Str
 
-  
-
-The private DNS name assigned to the instance. This DNS name can only
+  The private DNS name assigned to the instance. This DNS name can only
 be used inside the Amazon EC2 network. This name is not available until
 the instance enters the C<running> state.
 
-
-
-
-
-
-
-
-
-
 =head2 PrivateIpAddress => Str
 
-  
-
-The private IP address assigned to the instance.
-
-
-
-
-
-
-
-
-
+  The private IP address assigned to the instance.
 
 =head2 ProductCodes => ArrayRef[Paws::EC2::ProductCode]
 
-  
-
-The product codes attached to this instance.
-
-
-
-
-
-
-
-
-
+  The product codes attached to this instance.
 
 =head2 PublicDnsName => Str
 
-  
-
-The public DNS name assigned to the instance. This name is not
+  The public DNS name assigned to the instance. This name is not
 available until the instance enters the C<running> state.
-
-
-
-
-
-
-
-
-
 
 =head2 PublicIpAddress => Str
 
-  
-
-The public IP address assigned to the instance.
-
-
-
-
-
-
-
-
-
+  The public IP address assigned to the instance.
 
 =head2 RamdiskId => Str
 
-  
-
-The RAM disk associated with this instance.
-
-
-
-
-
-
-
-
-
+  The RAM disk associated with this instance.
 
 =head2 RootDeviceName => Str
 
-  
-
-The root device name (for example, C</dev/sda1> or C</dev/xvda>).
-
-
-
-
-
-
-
-
-
+  The root device name (for example, C</dev/sda1> or C</dev/xvda>).
 
 =head2 RootDeviceType => Str
 
-  
-
-The root device type used by the AMI. The AMI can use an EBS volume or
+  The root device type used by the AMI. The AMI can use an EBS volume or
 an instance store volume.
-
-
-
-
-
-
-
-
-
 
 =head2 SecurityGroups => ArrayRef[Paws::EC2::GroupIdentifier]
 
-  
-
-One or more security groups for the instance.
-
-
-
-
-
-
-
-
-
+  One or more security groups for the instance.
 
 =head2 SourceDestCheck => Bool
 
-  
-
-Specifies whether to enable an instance launched in a VPC to perform
+  Specifies whether to enable an instance launched in a VPC to perform
 NAT. This controls whether source/destination checking is enabled on
 the instance. A value of C<true> means checking is enabled, and
 C<false> means checking is disabled. The value must be C<false> for the
 instance to perform NAT. For more information, see NAT Instances in the
 I<Amazon Virtual Private Cloud User Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 SpotInstanceRequestId => Str
 
-  
-
-The ID of the Spot Instance request.
-
-
-
-
-
-
-
-
-
+  The ID of the Spot Instance request.
 
 =head2 SriovNetSupport => Str
 
-  
-
-Specifies whether enhanced networking is enabled.
-
-
-
-
-
-
-
-
-
+  Specifies whether enhanced networking is enabled.
 
 =head2 State => Paws::EC2::InstanceState
 
-  
-
-The current state of the instance.
-
-
-
-
-
-
-
-
-
+  The current state of the instance.
 
 =head2 StateReason => Paws::EC2::StateReason
 
-  
-
-The reason for the most recent state transition.
-
-
-
-
-
-
-
-
-
+  The reason for the most recent state transition.
 
 =head2 StateTransitionReason => Str
 
-  
-
-The reason for the most recent state transition. This might be an empty
+  The reason for the most recent state transition. This might be an empty
 string.
-
-
-
-
-
-
-
-
-
 
 =head2 SubnetId => Str
 
-  
-
-The ID of the subnet in which the instance is running.
-
-
-
-
-
-
-
-
-
+  The ID of the subnet in which the instance is running.
 
 =head2 Tags => ArrayRef[Paws::EC2::Tag]
 
-  
-
-Any tags assigned to the instance.
-
-
-
-
-
-
-
-
-
+  Any tags assigned to the instance.
 
 =head2 VirtualizationType => Str
 
-  
-
-The virtualization type of the instance.
-
-
-
-
-
-
-
-
-
+  The virtualization type of the instance.
 
 =head2 VpcId => Str
 
-  
-
-The ID of the VPC in which the instance is running.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC in which the instance is running.
 
 
 

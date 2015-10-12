@@ -43,173 +43,52 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Import
 
 =head2 AdditionalInfo => Str
 
-  
-
-Reserved.
-
-
-
-
-
-
-
-
-
+  Reserved.
 
 =head2 Architecture => Str
 
-  
-
-The architecture of the instance.
-
-
-
-
-
-
-
-
-
+  The architecture of the instance.
 
 =head2 GroupIds => ArrayRef[Str]
 
-  
-
-One or more security group IDs.
-
-
-
-
-
-
-
-
-
+  One or more security group IDs.
 
 =head2 GroupNames => ArrayRef[Str]
 
-  
-
-One or more security group names.
-
-
-
-
-
-
-
-
-
+  One or more security group names.
 
 =head2 InstanceInitiatedShutdownBehavior => Str
 
-  
-
-Indicates whether an instance stops or terminates when you initiate
+  Indicates whether an instance stops or terminates when you initiate
 shutdown from the instance (using the operating system command for
 system shutdown).
 
-
-
-
-
-
-
-
-
-
 =head2 InstanceType => Str
 
-  
-
-The instance type. For more information about the instance types that
+  The instance type. For more information about the instance types that
 you can import, see Before You Get Started in the Amazon Elastic
 Compute Cloud User Guide.
 
-
-
-
-
-
-
-
-
-
 =head2 Monitoring => Bool
 
-  
-
-Indicates whether monitoring is enabled.
-
-
-
-
-
-
-
-
-
+  Indicates whether monitoring is enabled.
 
 =head2 Placement => Paws::EC2::Placement
 
-  
-
-The placement information for the instance.
-
-
-
-
-
-
-
-
-
+  The placement information for the instance.
 
 =head2 PrivateIpAddress => Str
 
-  
-
-[EC2-VPC] An available IP address from the IP address range of the
+  [EC2-VPC] An available IP address from the IP address range of the
 subnet.
-
-
-
-
-
-
-
-
-
 
 =head2 SubnetId => Str
 
-  
-
-[EC2-VPC] The ID of the subnet in which to launch the instance.
-
-
-
-
-
-
-
-
-
+  [EC2-VPC] The ID of the subnet in which to launch the instance.
 
 =head2 UserData => Paws::EC2::UserData
 
-  
-
-The Base64-encoded MIME user data to be made available to the instance.
-
-
-
-
-
-
-
-
-
+  The Base64-encoded MIME user data to be made available to the instance.
 
 
 

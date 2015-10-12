@@ -34,40 +34,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::RuleSu
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-A friendly name or description of the Rule. You can't change the name
+  A friendly name or description of the Rule. You can't change the name
 of a C<Rule> after you create it.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> RuleId => Str
 
-  
-
-A unique identifier for a C<Rule>. You use C<RuleId> to get more
+  A unique identifier for a C<Rule>. You use C<RuleId> to get more
 information about a C<Rule> (see GetRule), update a C<Rule> (see
 UpdateRule), insert a C<Rule> into a C<WebACL> or delete one from a
 C<WebACL> (see UpdateWebACL), or delete a C<Rule> from AWS WAF (see
 DeleteRule).
 
 C<RuleId> is returned by CreateRule and by ListRules.
-
-
-
-
-
-
-
-
-
 
 
 

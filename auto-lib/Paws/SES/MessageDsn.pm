@@ -35,51 +35,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Messag
 
 =head2 ArrivalDate => Str
 
-  
-
-When the message was received by the reporting mail transfer agent
+  When the message was received by the reporting mail transfer agent
 (MTA), in RFC 822 date-time format.
-
-
-
-
-
-
-
-
-
 
 =head2 ExtensionFields => ArrayRef[Paws::SES::ExtensionField]
 
-  
-
-Additional X-headers to include in the DSN.
-
-
-
-
-
-
-
-
-
+  Additional X-headers to include in the DSN.
 
 =head2 B<REQUIRED> ReportingMta => Str
 
-  
-
-The reporting MTA that attempted to deliver the message, formatted as
+  The reporting MTA that attempted to deliver the message, formatted as
 specified in RFC 3464 (C<mta-name-type; mta-name>). The default value
 is C<dns; inbound-smtp.[region].amazonaws.com>.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 Items => ArrayRef[Str]
 
-  
-
-A complex type that lists the active CloudFront key pairs, if any, that
+  A complex type that lists the active CloudFront key pairs, if any, that
 are associated with AwsAccountNumber.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Quantity => Int
 
-  
-
-The number of active CloudFront key pairs for AwsAccountNumber.
-
-
-
-
-
-
-
-
-
+  The number of active CloudFront key pairs for AwsAccountNumber.
 
 
 

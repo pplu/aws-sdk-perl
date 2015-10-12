@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 B<REQUIRED> HTTPPort => Int
 
-  
-
-The HTTP port the custom origin listens on.
-
-
-
-
-
-
-
-
-
+  The HTTP port the custom origin listens on.
 
 =head2 B<REQUIRED> HTTPSPort => Int
 
-  
-
-The HTTPS port the custom origin listens on.
-
-
-
-
-
-
-
-
-
+  The HTTPS port the custom origin listens on.
 
 =head2 B<REQUIRED> OriginProtocolPolicy => Str
 
-  
-
-The origin protocol policy to apply to your origin.
-
-
-
-
-
-
-
-
-
+  The origin protocol policy to apply to your origin.
 
 
 

@@ -23,36 +23,14 @@ Paws::Route53::ListTagsForResourceResponse
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  
-
-The ID of the resource for which you want to retrieve tags.
-
-
-
-
-
-
-
-
-
+  The ID of the resource for which you want to retrieve tags.
 =head2 B<REQUIRED> ResourceType => Str
 
-  
-
-The type of the resource.
+  The type of the resource.
 
 - The resource type for health checks is C<healthcheck>.
 
 - The resource type for hosted zones is C<hostedzone>.
-
-
-
-
-
-
-
-
-
 
 
 =cut

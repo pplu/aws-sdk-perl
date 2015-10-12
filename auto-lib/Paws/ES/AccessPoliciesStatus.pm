@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::AccessP
 
 =head2 B<REQUIRED> Options => Str
 
-  
-
-The access policy configured for the Elasticsearch domain. Access
+  The access policy configured for the Elasticsearch domain. Access
 policies may be resource-based, IP-based, or IAM-based. See Configuring
 Access Policiesfor more information.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Status => Paws::ES::OptionStatus
 
-  
-
-The status of the access policy for the Elasticsearch domain. See
+  The status of the access policy for the Elasticsearch domain. See
 C<OptionStatus> for the status information that's included.
-
-
-
-
-
-
-
-
-
 
 
 

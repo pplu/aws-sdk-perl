@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Identi
 
 =head2 B<REQUIRED> VerificationStatus => Str
 
-  
-
-The verification status of the identity: "Pending", "Success",
+  The verification status of the identity: "Pending", "Success",
 "Failed", or "TemporaryFailure".
-
-
-
-
-
-
-
-
-
 
 =head2 VerificationToken => Str
 
-  
-
-The verification token for a domain identity. Null for email address
+  The verification token for a domain identity. Null for email address
 identities.
-
-
-
-
-
-
-
-
-
 
 
 

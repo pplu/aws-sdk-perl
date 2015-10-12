@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RuleName => Str
 
-  
-
-The name of the receipt rule to delete.
-
-
-
-
-
-
-
-
-
+  The name of the receipt rule to delete.
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-  
-
-The name of the receipt rule set that contains the receipt rule to
+  The name of the receipt rule set that contains the receipt rule to
 delete.
-
-
-
-
-
-
-
-
-
 
 
 

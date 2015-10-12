@@ -15,18 +15,7 @@ Paws::EC2::DescribeDhcpOptionsResult
 
 =head2 DhcpOptions => ArrayRef[Paws::EC2::DhcpOptions]
 
-  
-
-Information about one or more DHCP options sets.
-
-
-
-
-
-
-
-
-
+  Information about one or more DHCP options sets.
 
 
 =cut

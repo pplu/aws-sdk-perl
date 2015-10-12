@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::ByteMa
 
 =head2 B<REQUIRED> ByteMatchSetId => Str
 
-  
-
-The C<ByteMatchSetId> for a C<ByteMatchSet>. You use C<ByteMatchSetId>
+  The C<ByteMatchSetId> for a C<ByteMatchSet>. You use C<ByteMatchSetId>
 to get information about a C<ByteMatchSet>, update a C<ByteMatchSet>,
 remove a C<ByteMatchSet> from a C<Rule>, and delete a C<ByteMatchSet>
 from AWS WAF.
@@ -44,30 +42,10 @@ from AWS WAF.
 C<ByteMatchSetId> is returned by CreateByteMatchSet and by
 ListByteMatchSets.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Name => Str
 
-  
-
-A friendly name or description of the ByteMatchSet. You can't change
+  A friendly name or description of the ByteMatchSet. You can't change
 C<Name> after you create a C<ByteMatchSet>.
-
-
-
-
-
-
-
-
-
 
 
 

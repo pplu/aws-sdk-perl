@@ -14,19 +14,8 @@ Paws::StorageGateway::DeleteTapeArchiveOutput
 
 =head2 TapeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the virtual tape that was deleted
+  The Amazon Resource Name (ARN) of the virtual tape that was deleted
 from the virtual tape shelf (VTS).
-
-
-
-
-
-
-
-
-
 
 
 =cut

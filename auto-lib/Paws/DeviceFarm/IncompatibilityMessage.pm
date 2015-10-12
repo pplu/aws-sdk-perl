@@ -34,24 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 message => Str
 
-  
-
-A message about the incompatibility.
-
-
-
-
-
-
-
-
-
+  A message about the incompatibility.
 
 =head2 type => Str
 
-  
-
-The type of incompatibility.
+  The type of incompatibility.
 
 Allowed values include:
 
@@ -74,15 +61,6 @@ MANUFACTURER: The manufacturer.
 PLATFORM: The platform (for example, Android or iOS).
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

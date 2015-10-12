@@ -36,67 +36,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Re
 
 =head2 ApproximateArrivalTimestamp => Str
 
-  
-
-The approximate time that the record was inserted into the stream.
-
-
-
-
-
-
-
-
-
+  The approximate time that the record was inserted into the stream.
 
 =head2 B<REQUIRED> Data => Str
 
-  
-
-The data blob. The data in the blob is both opaque and immutable to the
+  The data blob. The data in the blob is both opaque and immutable to the
 Amazon Kinesis service, which does not inspect, interpret, or change
 the data in the blob in any way. When the data blob (the payload before
 base64-encoding) is added to the partition key size, the total size
 must not exceed the maximum record size (1 MB).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PartitionKey => Str
 
-  
-
-Identifies which shard in the stream the data record is assigned to.
-
-
-
-
-
-
-
-
-
+  Identifies which shard in the stream the data record is assigned to.
 
 =head2 B<REQUIRED> SequenceNumber => Str
 
-  
-
-The unique identifier of the record in the stream.
-
-
-
-
-
-
-
-
-
+  The unique identifier of the record in the stream.
 
 
 

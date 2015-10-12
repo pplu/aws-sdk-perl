@@ -36,48 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> expression => Str
 
-  
-
-The expression to evaluate.
-
-
-
-
-
-
-
-
-
+  The expression to evaluate.
 
 =head2 B<REQUIRED> objectId => Str
 
-  
-
-The ID of the object.
-
-
-
-
-
-
-
-
-
+  The ID of the object.
 
 =head2 B<REQUIRED> pipelineId => Str
 
-  
-
-The ID of the pipeline.
-
-
-
-
-
-
-
-
-
+  The ID of the pipeline.
 
 
 

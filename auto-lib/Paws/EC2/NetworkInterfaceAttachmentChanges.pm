@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Networ
 
 =head2 AttachmentId => Str
 
-  
-
-The ID of the network interface attachment.
-
-
-
-
-
-
-
-
-
+  The ID of the network interface attachment.
 
 =head2 DeleteOnTermination => Bool
 
-  
-
-Indicates whether the network interface is deleted when the instance is
+  Indicates whether the network interface is deleted when the instance is
 terminated.
-
-
-
-
-
-
-
-
-
 
 
 

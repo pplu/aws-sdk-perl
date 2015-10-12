@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::CrossZ
 
 =head2 B<REQUIRED> Enabled => Bool
 
-  
-
-Specifies whether cross-zone load balancing is enabled for the load
+  Specifies whether cross-zone load balancing is enabled for the load
 balancer.
-
-
-
-
-
-
-
-
-
 
 
 

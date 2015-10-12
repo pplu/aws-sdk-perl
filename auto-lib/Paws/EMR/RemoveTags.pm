@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  
-
-The Amazon EMR resource identifier from which tags will be removed.
+  The Amazon EMR resource identifier from which tags will be removed.
 This value must be a cluster identifier.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
-  
-
-A list of tag keys to remove from a resource.
-
-
-
-
-
-
-
-
-
+  A list of tag keys to remove from a resource.
 
 
 

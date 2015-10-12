@@ -15,18 +15,7 @@ Paws::EC2::MonitorInstancesResult
 
 =head2 InstanceMonitorings => ArrayRef[Paws::EC2::InstanceMonitoring]
 
-  
-
-Monitoring information for one or more instances.
-
-
-
-
-
-
-
-
-
+  Monitoring information for one or more instances.
 
 
 =cut

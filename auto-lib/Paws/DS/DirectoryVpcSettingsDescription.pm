@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Directo
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  
-
-The list of Availability Zones that the directory is in.
-
-
-
-
-
-
-
-
-
+  The list of Availability Zones that the directory is in.
 
 =head2 SecurityGroupId => Str
 
-  
-
-The security group identifier for the directory.
-
-
-
-
-
-
-
-
-
+  The security group identifier for the directory.
 
 =head2 SubnetIds => ArrayRef[Str]
 
-  
-
-The identifiers of the subnets for the directory servers.
-
-
-
-
-
-
-
-
-
+  The identifiers of the subnets for the directory servers.
 
 =head2 VpcId => Str
 
-  
-
-The identifier of the VPC that the directory is in.
-
-
-
-
-
-
-
-
-
+  The identifier of the VPC that the directory is in.
 
 
 

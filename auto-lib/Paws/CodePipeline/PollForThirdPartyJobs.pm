@@ -39,18 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 maxBatchSize => Int
 
-  
-
-The maximum number of jobs to return in a poll for jobs call.
-
-
-
-
-
-
-
-
-
+  The maximum number of jobs to return in a poll for jobs call.
 
 
 

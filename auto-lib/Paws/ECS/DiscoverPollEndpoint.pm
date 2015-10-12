@@ -35,38 +35,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 cluster => Str
 
-  
-
-The cluster that the container instance belongs to.
-
-
-
-
-
-
-
-
-
+  The cluster that the container instance belongs to.
 
 =head2 containerInstance => Str
 
-  
-
-The container instance ID or full Amazon Resource Name (ARN) of the
+  The container instance ID or full Amazon Resource Name (ARN) of the
 container instance. The ARN contains the C<arn:aws:ecs> namespace,
 followed by the region of the container instance, the AWS account ID of
 the container instance owner, the C<container-instance> namespace, and
 then the container instance ID. For example,
 arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>.
-
-
-
-
-
-
-
-
-
 
 
 

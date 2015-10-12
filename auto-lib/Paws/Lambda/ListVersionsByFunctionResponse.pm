@@ -16,32 +16,10 @@ Paws::Lambda::ListVersionsByFunctionResponse
 
 =head2 NextMarker => Str
 
-  
-
-A string, present if there are more function versions.
-
-
-
-
-
-
-
-
-
+  A string, present if there are more function versions.
 =head2 Versions => ArrayRef[Paws::Lambda::FunctionConfiguration]
 
-  
-
-A list of Lambda function versions.
-
-
-
-
-
-
-
-
-
+  A list of Lambda function versions.
 
 
 =cut

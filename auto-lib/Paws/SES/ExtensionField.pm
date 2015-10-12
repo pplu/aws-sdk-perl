@@ -34,36 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Extens
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the header to add. Must be between 1 and 50 characters,
+  The name of the header to add. Must be between 1 and 50 characters,
 inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and
 dashes only.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Value => Str
 
-  
-
-The value of the header to add. Must be less than 2048 characters, and
+  The value of the header to add. Must be less than 2048 characters, and
 must not contain newline characters ("\r" or "\n").
-
-
-
-
-
-
-
-
-
 
 
 

@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of the pipeline for which you want to get information.
+  The name of the pipeline for which you want to get information.
 Pipeline names must be unique under an Amazon Web Services (AWS) user
 account.
 
-
-
-
-
-
-
-
-
-
 =head2 version => Int
 
-  
-
-The version number of the pipeline. If you do not specify a version,
+  The version number of the pipeline. If you do not specify a version,
 defaults to the most current version.
-
-
-
-
-
-
-
-
-
 
 
 

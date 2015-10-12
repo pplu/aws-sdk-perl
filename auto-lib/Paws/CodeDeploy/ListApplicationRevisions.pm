@@ -40,25 +40,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> applicationName => Str
 
-  
-
-The name of an existing AWS CodeDeploy application associated with the
+  The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
-
-
-
-
-
-
-
-
-
 
 =head2 deployed => Str
 
-  
-
-Whether to list revisions based on whether the revision is the target
+  Whether to list revisions based on whether the revision is the target
 revision of an deployment group:
 
 =over
@@ -74,70 +61,26 @@ target revisions of a deployment group.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 nextToken => Str
 
-  
-
-An identifier that was returned from the previous list application
+  An identifier that was returned from the previous list application
 revisions call, which can be used to return the next set of
 applications in the list.
 
-
-
-
-
-
-
-
-
-
 =head2 s3Bucket => Str
 
-  
-
-A specific Amazon S3 bucket name to limit the search for revisions.
+  A specific Amazon S3 bucket name to limit the search for revisions.
 
 If set to null, then all of the user's buckets will be searched.
 
-
-
-
-
-
-
-
-
-
 =head2 s3KeyPrefix => Str
 
-  
-
-A specific key prefix for the set of Amazon S3 objects to limit the
+  A specific key prefix for the set of Amazon S3 objects to limit the
 search for revisions.
-
-
-
-
-
-
-
-
-
 
 =head2 sortBy => Str
 
-  
-
-The column name to sort the list results by:
+  The column name to sort the list results by:
 
 =over
 
@@ -155,20 +98,9 @@ last used in a deployment.
 If not specified or set to null, the results will be returned in an
 arbitrary order.
 
-
-
-
-
-
-
-
-
-
 =head2 sortOrder => Str
 
-  
-
-The order to sort the list results by:
+  The order to sort the list results by:
 
 =over
 
@@ -181,15 +113,6 @@ The order to sort the list results by:
 If not specified, the results will be sorted in ascending order.
 
 If set to null, the results will be sorted in an arbitrary order.
-
-
-
-
-
-
-
-
-
 
 
 

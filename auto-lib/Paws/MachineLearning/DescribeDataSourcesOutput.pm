@@ -15,33 +15,11 @@ Paws::MachineLearning::DescribeDataSourcesOutput
 
 =head2 NextToken => Str
 
-  
-
-An ID of the next page in the paginated results that indicates at least
+  An ID of the next page in the paginated results that indicates at least
 one more page follows.
-
-
-
-
-
-
-
-
-
 =head2 Results => ArrayRef[Paws::MachineLearning::DataSource]
 
-  
-
-A list of C<DataSource> that meet the search criteria.
-
-
-
-
-
-
-
-
-
+  A list of C<DataSource> that meet the search criteria.
 
 
 =cut

@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::P
 
 =head2 NonKeyAttributes => ArrayRef[Str]
 
-  
-
-Represents the non-key attribute names which will be projected into the
+  Represents the non-key attribute names which will be projected into the
 index.
 
 For local secondary indexes, the total count of I<NonKeyAttributes>
@@ -44,20 +42,9 @@ summed across all of the local secondary indexes, must not exceed 20.
 If you project the same attribute into two different indexes, this
 counts as two distinct attributes when determining the total.
 
-
-
-
-
-
-
-
-
-
 =head2 ProjectionType => Str
 
-  
-
-The set of attributes that are projected into the index:
+  The set of attributes that are projected into the index:
 
 =over
 
@@ -76,15 +63,6 @@ index. The list of projected attributes are in I<NonKeyAttributes>.
 C<ALL> - All of the table attributes are projected into the index.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

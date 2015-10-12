@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 CacheSecurityGroupName => Str
 
-  
-
-The name of the cache security group.
-
-
-
-
-
-
-
-
-
+  The name of the cache security group.
 
 =head2 Description => Str
 
-  
-
-The description of the cache security group.
-
-
-
-
-
-
-
-
-
+  The description of the cache security group.
 
 =head2 EC2SecurityGroups => ArrayRef[Paws::ElastiCache::EC2SecurityGroup]
 
-  
-
-A list of Amazon EC2 security groups that are associated with this
+  A list of Amazon EC2 security groups that are associated with this
 cache security group.
-
-
-
-
-
-
-
-
-
 
 =head2 OwnerId => Str
 
-  
-
-The AWS account ID of the cache security group owner.
-
-
-
-
-
-
-
-
-
+  The AWS account ID of the cache security group owner.
 
 
 

@@ -34,41 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::LogCon
 
 =head2 B<REQUIRED> logDriver => Str
 
-  
-
-The log driver to use for the container. This parameter requires
+  The log driver to use for the container. This parameter requires
 version 1.18 of the Docker Remote API or greater on your container
 instance. To check the Docker Remote API version on your container
 instance, log into your container instance and run the following
 command: C<sudo docker version | grep "Server API version">
 
-
-
-
-
-
-
-
-
-
 =head2 options => Paws::ECS::LogConfigurationOptionsMap
 
-  
-
-The configuration options to send to the log driver. This parameter
+  The configuration options to send to the log driver. This parameter
 requires version 1.19 of the Docker Remote API or greater on your
 container instance. To check the Docker Remote API version on your
 container instance, log into your container instance and run the
 following command: C<sudo docker version | grep "Server API version">
-
-
-
-
-
-
-
-
-
 
 
 

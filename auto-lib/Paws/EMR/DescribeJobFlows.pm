@@ -37,63 +37,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CreatedAfter => Str
 
-  
-
-Return only job flows created after this date and time.
-
-
-
-
-
-
-
-
-
+  Return only job flows created after this date and time.
 
 =head2 CreatedBefore => Str
 
-  
-
-Return only job flows created before this date and time.
-
-
-
-
-
-
-
-
-
+  Return only job flows created before this date and time.
 
 =head2 JobFlowIds => ArrayRef[Str]
 
-  
-
-Return only job flows whose job flow ID is contained in this list.
-
-
-
-
-
-
-
-
-
+  Return only job flows whose job flow ID is contained in this list.
 
 =head2 JobFlowStates => ArrayRef[Str]
 
-  
-
-Return only job flows whose state is contained in this list.
-
-
-
-
-
-
-
-
-
+  Return only job flows whose state is contained in this list.
 
 
 

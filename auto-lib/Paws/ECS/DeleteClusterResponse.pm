@@ -14,18 +14,7 @@ Paws::ECS::DeleteClusterResponse
 
 =head2 cluster => Paws::ECS::Cluster
 
-  
-
-The full description of the deleted cluster.
-
-
-
-
-
-
-
-
-
+  The full description of the deleted cluster.
 
 
 =cut

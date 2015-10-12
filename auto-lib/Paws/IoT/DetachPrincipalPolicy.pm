@@ -37,36 +37,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> policyName => Str
 
-  
-
-The name of the policy to detach.
-
-
-
-
-
-
-
-
-
+  The name of the policy to detach.
 
 =head2 B<REQUIRED> principal => Str
 
-  
-
-The principal
+  The principal
 
 If the principal is a certificate, specify the certificate ARN. If the
 principal is a Cognito identity specify the identity ID.
-
-
-
-
-
-
-
-
-
 
 
 

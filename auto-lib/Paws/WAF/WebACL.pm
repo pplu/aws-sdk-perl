@@ -37,19 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::WebACL
 
 =head2 B<REQUIRED> DefaultAction => Paws::WAF::WafAction
 
-  
-
-The action to perform if none of the C<Rules> contained in the
+  The action to perform if none of the C<Rules> contained in the
 C<WebACL> match. The action is specified by the WafAction object.
-
-
-
-
-
-
-
-
-
 
 =head2 MetricName => Str
 
@@ -57,54 +46,21 @@ C<WebACL> match. The action is specified by the WafAction object.
 
 =head2 Name => Str
 
-  
-
-A friendly name or description of the C<WebACL>. You can't change the
+  A friendly name or description of the C<WebACL>. You can't change the
 name of a C<WebACL> after you create it.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Rules => ArrayRef[Paws::WAF::ActivatedRule]
 
-  
-
-An array that contains the action for each C<Rule> in a C<WebACL>, the
+  An array that contains the action for each C<Rule> in a C<WebACL>, the
 priority of the C<Rule>, and the ID of the C<Rule>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> WebACLId => Str
 
-  
-
-A unique identifier for a C<WebACL>. You use C<WebACLId> to get
+  A unique identifier for a C<WebACL>. You use C<WebACLId> to get
 information about a C<WebACL> (see GetWebACL), update a C<WebACL> (see
 UpdateWebACL, and delete a C<WebACL> from AWS WAF (see DeleteWebACL).
 
 C<WebACLId> is returned by CreateWebACL and by ListWebACLs.
-
-
-
-
-
-
-
-
-
 
 
 

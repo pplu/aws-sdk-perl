@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Recurr
 
 =head2 Amount => Num
 
-  
-
-The amount of the recurring charge.
-
-
-
-
-
-
-
-
-
+  The amount of the recurring charge.
 
 =head2 Frequency => Str
 
-  
-
-The frequency of the recurring charge.
-
-
-
-
-
-
-
-
-
+  The frequency of the recurring charge.
 
 
 

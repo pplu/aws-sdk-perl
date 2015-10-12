@@ -38,94 +38,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
 =head2 ClusterSubnetGroupName => Str
 
-  
-
-The name of the cluster subnet group.
-
-
-
-
-
-
-
-
-
+  The name of the cluster subnet group.
 
 =head2 Description => Str
 
-  
-
-The description of the cluster subnet group.
-
-
-
-
-
-
-
-
-
+  The description of the cluster subnet group.
 
 =head2 SubnetGroupStatus => Str
 
-  
-
-The status of the cluster subnet group. Possible values are
+  The status of the cluster subnet group. Possible values are
 C<Complete>, C<Incomplete> and C<Invalid>.
-
-
-
-
-
-
-
-
-
 
 =head2 Subnets => ArrayRef[Paws::RedShift::Subnet]
 
-  
-
-A list of the VPC Subnet elements.
-
-
-
-
-
-
-
-
-
+  A list of the VPC Subnet elements.
 
 =head2 Tags => ArrayRef[Paws::RedShift::Tag]
 
-  
-
-The list of tags for the cluster subnet group.
-
-
-
-
-
-
-
-
-
+  The list of tags for the cluster subnet group.
 
 =head2 VpcId => Str
 
-  
-
-The VPC ID of the cluster subnet group.
-
-
-
-
-
-
-
-
-
+  The VPC ID of the cluster subnet group.
 
 
 

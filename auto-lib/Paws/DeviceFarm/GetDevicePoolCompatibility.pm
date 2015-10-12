@@ -36,39 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> appArn => Str
 
-  
-
-The ARN of the app that is associated with the specified device pool.
-
-
-
-
-
-
-
-
-
+  The ARN of the app that is associated with the specified device pool.
 
 =head2 B<REQUIRED> devicePoolArn => Str
 
-  
-
-The device pool's ARN.
-
-
-
-
-
-
-
-
-
+  The device pool's ARN.
 
 =head2 testType => Str
 
-  
-
-The test type for the specified device pool.
+  The test type for the specified device pool.
 
 Allowed values include the following:
 
@@ -113,15 +89,6 @@ UIAUTOMATOR: The uiautomator type.
 XCTEST: The XCode test type.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

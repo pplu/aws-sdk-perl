@@ -37,78 +37,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
 =head2 DBSecurityGroupMemberships => ArrayRef[Str]
 
-  
-
-A list of DBSecurityGroupMemebrship name strings used for this option.
-
-
-
-
-
-
-
-
-
+  A list of DBSecurityGroupMemebrship name strings used for this option.
 
 =head2 B<REQUIRED> OptionName => Str
 
-  
-
-The configuration of options to include in a group.
-
-
-
-
-
-
-
-
-
+  The configuration of options to include in a group.
 
 =head2 OptionSettings => ArrayRef[Paws::RDS::OptionSetting]
 
-  
-
-The option settings to include in an option group.
-
-
-
-
-
-
-
-
-
+  The option settings to include in an option group.
 
 =head2 Port => Int
 
-  
-
-The optional port for the option.
-
-
-
-
-
-
-
-
-
+  The optional port for the option.
 
 =head2 VpcSecurityGroupMemberships => ArrayRef[Str]
 
-  
-
-A list of VpcSecurityGroupMemebrship name strings used for this option.
-
-
-
-
-
-
-
-
-
+  A list of VpcSecurityGroupMemebrship name strings used for this option.
 
 
 

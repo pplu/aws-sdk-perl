@@ -15,18 +15,7 @@ Paws::ElasticBeanstalk::ApplicationDescriptionMessage
 
 =head2 Application => Paws::ElasticBeanstalk::ApplicationDescription
 
-  
-
-The ApplicationDescription of the application.
-
-
-
-
-
-
-
-
-
+  The ApplicationDescription of the application.
 
 
 =cut

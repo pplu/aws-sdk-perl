@@ -38,84 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::V
 
 =head2 Iops => Int
 
-  
-
-For PIOPS volumes, the IOPS per disk.
-
-
-
-
-
-
-
-
-
+  For PIOPS volumes, the IOPS per disk.
 
 =head2 B<REQUIRED> MountPoint => Str
 
-  
-
-The volume mount point. For example "/dev/sdh".
-
-
-
-
-
-
-
-
-
+  The volume mount point. For example "/dev/sdh".
 
 =head2 B<REQUIRED> NumberOfDisks => Int
 
-  
-
-The number of disks in the volume.
-
-
-
-
-
-
-
-
-
+  The number of disks in the volume.
 
 =head2 RaidLevel => Int
 
-  
-
-The volume RAID level.
-
-
-
-
-
-
-
-
-
+  The volume RAID level.
 
 =head2 B<REQUIRED> Size => Int
 
-  
-
-The volume size.
-
-
-
-
-
-
-
-
-
+  The volume size.
 
 =head2 VolumeType => Str
 
-  
-
-The volume type:
+  The volume type:
 
 =over
 
@@ -126,15 +69,6 @@ The volume type:
 =item * C<gp2> - General Purpose (SSD)
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

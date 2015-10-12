@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Descri
 
 =head2 LastWritten => Int
 
-  
-
-A POSIX timestamp when the last log entry was written.
-
-
-
-
-
-
-
-
-
+  A POSIX timestamp when the last log entry was written.
 
 =head2 LogFileName => Str
 
-  
-
-The name of the log file for the specified DB instance.
-
-
-
-
-
-
-
-
-
+  The name of the log file for the specified DB instance.
 
 =head2 Size => Int
 
-  
-
-The size, in bytes, of the log file for the specified DB instance.
-
-
-
-
-
-
-
-
-
+  The size, in bytes, of the log file for the specified DB instance.
 
 
 

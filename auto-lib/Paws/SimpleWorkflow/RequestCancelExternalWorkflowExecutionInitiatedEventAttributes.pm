@@ -36,68 +36,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 control => Str
 
-  
-
-I<Optional.> Data attached to the event that can be used by the decider
+  I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> decisionTaskCompletedEventId => Int
 
-  
-
-The ID of the C<DecisionTaskCompleted> event corresponding to the
+  The ID of the C<DecisionTaskCompleted> event corresponding to the
 decision task that resulted in the
 C<RequestCancelExternalWorkflowExecution> decision for this
 cancellation request. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 runId => Str
 
-  
-
-The C<runId> of the external workflow execution to be canceled.
-
-
-
-
-
-
-
-
-
+  The C<runId> of the external workflow execution to be canceled.
 
 =head2 B<REQUIRED> workflowId => Str
 
-  
-
-The C<workflowId> of the external workflow execution to be canceled.
-
-
-
-
-
-
-
-
-
+  The C<workflowId> of the external workflow execution to be canceled.
 
 
 

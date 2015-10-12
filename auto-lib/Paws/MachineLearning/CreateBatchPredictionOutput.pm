@@ -14,20 +14,9 @@ Paws::MachineLearning::CreateBatchPredictionOutput
 
 =head2 BatchPredictionId => Str
 
-  
-
-A user-supplied ID that uniquely identifies the C<BatchPrediction>.
+  A user-supplied ID that uniquely identifies the C<BatchPrediction>.
 This value is identical to the value of the C<BatchPredictionId> in the
 request.
-
-
-
-
-
-
-
-
-
 
 
 =cut

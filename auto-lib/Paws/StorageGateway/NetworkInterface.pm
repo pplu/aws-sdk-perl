@@ -35,51 +35,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 =head2 Ipv4Address => Str
 
-  
-
-The Internet Protocol version 4 (IPv4) address of the interface.
-
-
-
-
-
-
-
-
-
+  The Internet Protocol version 4 (IPv4) address of the interface.
 
 =head2 Ipv6Address => Str
 
-  
-
-The Internet Protocol version 6 (IPv6) address of the interface.
+  The Internet Protocol version 6 (IPv6) address of the interface.
 I<Currently not supported>.
-
-
-
-
-
-
-
-
-
 
 =head2 MacAddress => Str
 
-  
-
-The Media Access Control (MAC) address of the interface.
+  The Media Access Control (MAC) address of the interface.
 
 This is currently unsupported and will not be returned in output.
-
-
-
-
-
-
-
-
-
 
 
 

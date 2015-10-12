@@ -36,46 +36,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 CloudFrontDefaultCertificate => Bool
 
-  
-
-If you want viewers to use HTTPS to request your objects and you're
+  If you want viewers to use HTTPS to request your objects and you're
 using the CloudFront domain name of your distribution in your object
 URLs (for example, https://d111111abcdef8.cloudfront.net/logo.jpg), set
 to true. Omit this value if you are setting an IAMCertificateId.
 
-
-
-
-
-
-
-
-
-
 =head2 IAMCertificateId => Str
 
-  
-
-If you want viewers to use HTTPS to request your objects and you're
+  If you want viewers to use HTTPS to request your objects and you're
 using an alternate domain name in your object URLs (for example,
 https://example.com/logo.jpg), specify the IAM certificate identifier
 of the custom viewer certificate for this distribution. Specify either
 this value or CloudFrontDefaultCertificate.
 
-
-
-
-
-
-
-
-
-
 =head2 MinimumProtocolVersion => Str
 
-  
-
-Specify the minimum version of the SSL protocol that you want
+  Specify the minimum version of the SSL protocol that you want
 CloudFront to use, SSLv3 or TLSv1, for HTTPS connections. CloudFront
 will serve your objects only to browsers or devices that support at
 least the SSL version that you specify. The TLSv1 protocol is more
@@ -88,20 +64,9 @@ using a custom certificate (if you specify a value for
 IAMCertificateId) and if you're using SNI (if you specify sni-only for
 SSLSupportMethod), you must specify TLSv1 for MinimumProtocolVersion.
 
-
-
-
-
-
-
-
-
-
 =head2 SSLSupportMethod => Str
 
-  
-
-If you specify a value for IAMCertificateId, you must also specify how
+  If you specify a value for IAMCertificateId, you must also specify how
 you want CloudFront to serve HTTPS requests. Valid values are vip and
 sni-only. If you specify vip, CloudFront uses dedicated IP addresses
 for your content and can respond to HTTPS requests from any viewer.
@@ -112,15 +77,6 @@ Indication (SNI). All modern browsers support SNI, but some browsers
 still in use don't support SNI. Do not specify a value for
 SSLSupportMethod if you specified true for
 CloudFrontDefaultCertificate.
-
-
-
-
-
-
-
-
-
 
 
 

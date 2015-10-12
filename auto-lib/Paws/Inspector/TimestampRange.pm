@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 maximum => Str
 
-  
-
-The maximum value of the timestamp range.
-
-
-
-
-
-
-
-
-
+  The maximum value of the timestamp range.
 
 =head2 minimum => Str
 
-  
-
-The minimum value of the timestamp range.
-
-
-
-
-
-
-
-
-
+  The minimum value of the timestamp range.
 
 
 

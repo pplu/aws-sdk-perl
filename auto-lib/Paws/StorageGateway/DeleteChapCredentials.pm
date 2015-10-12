@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InitiatorName => Str
 
-  
-
-The iSCSI initiator that connects to the target.
-
-
-
-
-
-
-
-
-
+  The iSCSI initiator that connects to the target.
 
 =head2 B<REQUIRED> TargetARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
+  The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
 DescribeStorediSCSIVolumes operation to return to retrieve the
 TargetARN for specified VolumeARN.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheParameterGroupFamily => Str
 
-  
-
-The name of the cache parameter group family the cache parameter group
+  The name of the cache parameter group family the cache parameter group
 can be used with.
 
 Valid values are: C<memcached1.4> | C<redis2.6> | C<redis2.8>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> CacheParameterGroupName => Str
 
-  
-
-A user-specified name for the cache parameter group.
-
-
-
-
-
-
-
-
-
+  A user-specified name for the cache parameter group.
 
 =head2 B<REQUIRED> Description => Str
 
-  
-
-A user-specified description for the cache parameter group.
-
-
-
-
-
-
-
-
-
+  A user-specified description for the cache parameter group.
 
 
 

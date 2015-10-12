@@ -35,50 +35,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
 =head2 B<REQUIRED> checkId => Str
 
-  
-
-The unique identifier for the Trusted Advisor check.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the Trusted Advisor check.
 
 =head2 B<REQUIRED> millisUntilNextRefreshable => Int
 
-  
-
-The amount of time, in milliseconds, until the Trusted Advisor check is
+  The amount of time, in milliseconds, until the Trusted Advisor check is
 eligible for refresh.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> status => Str
 
-  
-
-The status of the Trusted Advisor check for which a refresh has been
+  The status of the Trusted Advisor check for which a refresh has been
 requested: "none", "enqueued", "processing", "success", or "abandoned".
-
-
-
-
-
-
-
-
-
 
 
 

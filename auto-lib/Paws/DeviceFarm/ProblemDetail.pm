@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 arn => Str
 
-  
-
-The problem detail's ARN.
-
-
-
-
-
-
-
-
-
+  The problem detail's ARN.
 
 =head2 name => Str
 
-  
-
-The problem detail's name.
-
-
-
-
-
-
-
-
-
+  The problem detail's name.
 
 
 

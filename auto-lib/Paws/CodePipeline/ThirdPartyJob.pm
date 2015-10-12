@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 clientId => Str
 
-  
-
-The clientToken portion of the clientId and clientToken pair used to
+  The clientToken portion of the clientId and clientToken pair used to
 verify that the calling entity is allowed access to the job and its
 details.
 
-
-
-
-
-
-
-
-
-
 =head2 jobId => Str
 
-  
-
-The identifier used to identify the job in AWS CodePipeline.
-
-
-
-
-
-
-
-
-
+  The identifier used to identify the job in AWS CodePipeline.
 
 
 

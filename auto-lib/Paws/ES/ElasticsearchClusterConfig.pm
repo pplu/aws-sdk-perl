@@ -38,96 +38,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::Elastic
 
 =head2 DedicatedMasterCount => Int
 
-  
-
-Total number of dedicated master nodes, active and on standby, for the
+  Total number of dedicated master nodes, active and on standby, for the
 cluster.
-
-
-
-
-
-
-
-
-
 
 =head2 DedicatedMasterEnabled => Bool
 
-  
-
-A boolean value to indicate whether a dedicated master node is enabled.
+  A boolean value to indicate whether a dedicated master node is enabled.
 See About Dedicated Master Nodes for more information.
-
-
-
-
-
-
-
-
-
 
 =head2 DedicatedMasterType => Str
 
-  
-
-The instance type for a dedicated master node.
-
-
-
-
-
-
-
-
-
+  The instance type for a dedicated master node.
 
 =head2 InstanceCount => Int
 
-  
-
-The number of instances in the specified domain cluster.
-
-
-
-
-
-
-
-
-
+  The number of instances in the specified domain cluster.
 
 =head2 InstanceType => Str
 
-  
-
-The instance type for an Elasticsearch cluster.
-
-
-
-
-
-
-
-
-
+  The instance type for an Elasticsearch cluster.
 
 =head2 ZoneAwarenessEnabled => Bool
 
-  
-
-A boolean value to indicate whether zone awareness is enabled. See
+  A boolean value to indicate whether zone awareness is enabled. See
 About Zone Awareness for more information.
-
-
-
-
-
-
-
-
-
 
 
 

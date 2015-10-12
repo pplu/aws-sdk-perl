@@ -14,18 +14,7 @@ Paws::Config::DeliverConfigSnapshotResponse
 
 =head2 configSnapshotId => Str
 
-  
-
-The ID of the snapshot that is being created.
-
-
-
-
-
-
-
-
-
+  The ID of the snapshot that is being created.
 
 
 =cut

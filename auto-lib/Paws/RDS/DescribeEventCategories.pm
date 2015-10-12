@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Filters => ArrayRef[Paws::RDS::Filter]
 
-  
-
-This parameter is not currently supported.
-
-
-
-
-
-
-
-
-
+  This parameter is not currently supported.
 
 =head2 SourceType => Str
 
-  
-
-The type of source that will be generating the events.
+  The type of source that will be generating the events.
 
 Valid values: db-instance | db-parameter-group | db-security-group |
 db-snapshot
-
-
-
-
-
-
-
-
-
 
 
 

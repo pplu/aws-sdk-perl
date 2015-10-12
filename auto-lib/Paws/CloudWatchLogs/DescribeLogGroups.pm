@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 limit => Int
 
-  
-
-The maximum number of items returned in the response. If you don't
+  The maximum number of items returned in the response. If you don't
 specify a value, the request would return up to 50 items.
-
-
-
-
-
-
-
-
-
 
 =head2 logGroupNamePrefix => Str
 
-  
-
-Will only return log groups that match the provided logGroupNamePrefix.
+  Will only return log groups that match the provided logGroupNamePrefix.
 If you don't specify a value, no prefix filter is applied.
-
-
-
-
-
-
-
-
-
 
 =head2 nextToken => Str
 
-  
-
-A string token used for pagination that points to the next page of
+  A string token used for pagination that points to the next page of
 results. It must be a value obtained from the response of the previous
 C<DescribeLogGroups> request.
-
-
-
-
-
-
-
-
-
 
 
 

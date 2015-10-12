@@ -16,51 +16,18 @@ Paws::DataPipeline::ListPipelinesOutput
 
 =head2 hasMoreResults => Bool
 
-  
-
-Indicates whether there are more results that can be obtained by a
+  Indicates whether there are more results that can be obtained by a
 subsequent call.
-
-
-
-
-
-
-
-
-
 =head2 marker => Str
 
-  
-
-The starting point for the next page of results. To view the next page
+  The starting point for the next page of results. To view the next page
 of results, call C<ListPipelinesOutput> again with this marker value.
 If the value is null, there are no more results.
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> pipelineIdList => ArrayRef[Paws::DataPipeline::PipelineIdName]
 
-  
-
-The pipeline identifiers. If you require additional information about
+  The pipeline identifiers. If you require additional information about
 the pipelines, you can use these identifiers to call DescribePipelines
 and GetPipelineDefinition.
-
-
-
-
-
-
-
-
-
 
 
 =cut

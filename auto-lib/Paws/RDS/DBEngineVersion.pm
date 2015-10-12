@@ -40,127 +40,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBEngi
 
 =head2 DBEngineDescription => Str
 
-  
-
-The description of the database engine.
-
-
-
-
-
-
-
-
-
+  The description of the database engine.
 
 =head2 DBEngineVersionDescription => Str
 
-  
-
-The description of the database engine version.
-
-
-
-
-
-
-
-
-
+  The description of the database engine version.
 
 =head2 DBParameterGroupFamily => Str
 
-  
-
-The name of the DB parameter group family for the database engine.
-
-
-
-
-
-
-
-
-
+  The name of the DB parameter group family for the database engine.
 
 =head2 DefaultCharacterSet => Paws::RDS::CharacterSet
 
-  
-
-The default character set for new instances of this engine version, if
+  The default character set for new instances of this engine version, if
 the C<CharacterSetName> parameter of the CreateDBInstance API is not
 specified.
 
-
-
-
-
-
-
-
-
-
 =head2 Engine => Str
 
-  
-
-The name of the database engine.
-
-
-
-
-
-
-
-
-
+  The name of the database engine.
 
 =head2 EngineVersion => Str
 
-  
-
-The version number of the database engine.
-
-
-
-
-
-
-
-
-
+  The version number of the database engine.
 
 =head2 SupportedCharacterSets => ArrayRef[Paws::RDS::CharacterSet]
 
-  
-
-A list of the character sets supported by this engine for the
+  A list of the character sets supported by this engine for the
 C<CharacterSetName> parameter of the CreateDBInstance API.
-
-
-
-
-
-
-
-
-
 
 =head2 ValidUpgradeTarget => ArrayRef[Paws::RDS::UpgradeTarget]
 
-  
-
-A list of engine versions that this database engine version can be
+  A list of engine versions that this database engine version can be
 upgraded to.
-
-
-
-
-
-
-
-
-
 
 
 

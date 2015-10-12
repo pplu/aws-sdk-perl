@@ -37,18 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 actionName => Str
 
-  
-
-The name of the action.
-
-
-
-
-
-
-
-
-
+  The name of the action.
 
 =head2 currentRevision => Paws::CodePipeline::ActionRevision
 
@@ -56,19 +45,8 @@ The name of the action.
 
 =head2 entityUrl => Str
 
-  
-
-A URL link for more information about the state of the action, such as
+  A URL link for more information about the state of the action, such as
 a deployment group details page.
-
-
-
-
-
-
-
-
-
 
 =head2 latestExecution => Paws::CodePipeline::ActionExecution
 
@@ -76,19 +54,8 @@ a deployment group details page.
 
 =head2 revisionUrl => Str
 
-  
-
-A URL link for more information about the revision, such as a commit
+  A URL link for more information about the revision, such as a commit
 details page.
-
-
-
-
-
-
-
-
-
 
 
 

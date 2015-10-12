@@ -15,42 +15,20 @@ Paws::Route53Domains::ListOperationsResponse
 
 =head2 NextPageMarker => Str
 
-  
-
-If there are more operations than you specified for C<MaxItems> in the
+  If there are more operations than you specified for C<MaxItems> in the
 request, submit another request and include the value of
 C<NextPageMarker> in the value of C<Marker>.
 
 Type: String
 
 Parent: C<Operations>
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Operations => ArrayRef[Paws::Route53Domains::OperationSummary]
 
-  
-
-Lists summaries of the operations.
+  Lists summaries of the operations.
 
 Type: Complex type containing a list of operation summaries
 
 Children: C<OperationId>, C<Status>, C<SubmittedDate>, C<Type>
-
-
-
-
-
-
-
-
-
 
 
 =cut

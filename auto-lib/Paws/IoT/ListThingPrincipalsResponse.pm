@@ -15,18 +15,7 @@ Paws::IoT::ListThingPrincipalsResponse
 
 =head2 principals => ArrayRef[Str]
 
-  
-
-The principals.
-
-
-
-
-
-
-
-
-
+  The principals.
 
 
 =cut

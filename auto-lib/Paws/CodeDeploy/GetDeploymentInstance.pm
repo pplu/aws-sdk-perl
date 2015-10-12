@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> deploymentId => Str
 
-  
-
-The unique ID of a deployment.
-
-
-
-
-
-
-
-
-
+  The unique ID of a deployment.
 
 =head2 B<REQUIRED> instanceId => Str
 
-  
-
-The unique ID of an instance in the deployment's deployment group.
-
-
-
-
-
-
-
-
-
+  The unique ID of an instance in the deployment's deployment group.
 
 
 

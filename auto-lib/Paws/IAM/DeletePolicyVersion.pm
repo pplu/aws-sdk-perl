@@ -39,21 +39,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> VersionId => Str
 
-  
-
-The policy version to delete.
+  The policy version to delete.
 
 For more information about managed policy versions, see Versioning for
 Managed Policies in the I<IAM User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

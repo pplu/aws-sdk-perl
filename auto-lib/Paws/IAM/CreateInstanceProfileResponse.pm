@@ -15,18 +15,7 @@ Paws::IAM::CreateInstanceProfileResponse
 
 =head2 B<REQUIRED> InstanceProfile => Paws::IAM::InstanceProfile
 
-  
-
-Information about the instance profile.
-
-
-
-
-
-
-
-
-
+  Information about the instance profile.
 
 
 =cut

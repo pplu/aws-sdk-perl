@@ -37,56 +37,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::P
 
 =head2 AllowSsh => Bool
 
-  
-
-Whether the user can use SSH.
-
-
-
-
-
-
-
-
-
+  Whether the user can use SSH.
 
 =head2 AllowSudo => Bool
 
-  
-
-Whether the user can use B<sudo>.
-
-
-
-
-
-
-
-
-
+  Whether the user can use B<sudo>.
 
 =head2 IamUserArn => Str
 
-  
-
-The Amazon Resource Name (ARN) for an AWS Identity and Access
+  The Amazon Resource Name (ARN) for an AWS Identity and Access
 Management (IAM) role. For more information about IAM ARNs, see Using
 Identifiers.
 
-
-
-
-
-
-
-
-
-
 =head2 Level => Str
 
-  
-
-The user's permission level, which must be the following:
+  The user's permission level, which must be the following:
 
 =over
 
@@ -105,29 +70,9 @@ The user's permission level, which must be the following:
 For more information on the permissions associated with these levels,
 see Managing User Permissions
 
-
-
-
-
-
-
-
-
-
 =head2 StackId => Str
 
-  
-
-A stack ID.
-
-
-
-
-
-
-
-
-
+  A stack ID.
 
 
 

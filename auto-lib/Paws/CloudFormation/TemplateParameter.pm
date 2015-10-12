@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head2 DefaultValue => Str
 
-  
-
-The default value associated with the parameter.
-
-
-
-
-
-
-
-
-
+  The default value associated with the parameter.
 
 =head2 Description => Str
 
-  
-
-User defined description associated with the parameter.
-
-
-
-
-
-
-
-
-
+  User defined description associated with the parameter.
 
 =head2 NoEcho => Bool
 
-  
-
-Flag indicating whether the parameter should be displayed as plain text
+  Flag indicating whether the parameter should be displayed as plain text
 in logs and UIs.
-
-
-
-
-
-
-
-
-
 
 =head2 ParameterKey => Str
 
-  
-
-The name associated with the parameter.
-
-
-
-
-
-
-
-
-
+  The name associated with the parameter.
 
 
 

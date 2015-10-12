@@ -38,97 +38,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 control => Str
 
-  
-
-I<Optional.> data attached to the event that can be used by the decider
+  I<Optional.> data attached to the event that can be used by the decider
 in subsequent decision tasks.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> decisionTaskCompletedEventId => Int
 
-  
-
-The ID of the C<DecisionTaskCompleted> event corresponding to the
+  The ID of the C<DecisionTaskCompleted> event corresponding to the
 decision task that resulted in the C<SignalExternalWorkflowExecution>
 decision for this signal. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 input => Str
 
-  
-
-Input provided to the signal (if any).
-
-
-
-
-
-
-
-
-
+  Input provided to the signal (if any).
 
 =head2 runId => Str
 
-  
-
-The C<runId> of the external workflow execution to send the signal to.
-
-
-
-
-
-
-
-
-
+  The C<runId> of the external workflow execution to send the signal to.
 
 =head2 B<REQUIRED> signalName => Str
 
-  
-
-The name of the signal.
-
-
-
-
-
-
-
-
-
+  The name of the signal.
 
 =head2 B<REQUIRED> workflowId => Str
 
-  
-
-The C<workflowId> of the external workflow execution.
-
-
-
-
-
-
-
-
-
+  The C<workflowId> of the external workflow execution.
 
 
 

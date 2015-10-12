@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> destinationName => Str
 
-  
-
-The name of destination to delete.
-
-
-
-
-
-
-
-
-
+  The name of destination to delete.
 
 
 

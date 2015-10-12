@@ -14,18 +14,7 @@ Paws::Inspector::DescribeFindingResponse
 
 =head2 finding => Paws::Inspector::Finding
 
-  
-
-Information about the finding.
-
-
-
-
-
-
-
-
-
+  Information about the finding.
 
 
 =cut

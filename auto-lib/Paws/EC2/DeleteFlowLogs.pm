@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FlowLogIds => ArrayRef[Str]
 
-  
-
-One or more flow log IDs.
-
-
-
-
-
-
-
-
-
+  One or more flow log IDs.
 
 
 

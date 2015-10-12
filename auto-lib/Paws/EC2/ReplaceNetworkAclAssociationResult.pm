@@ -15,18 +15,7 @@ Paws::EC2::ReplaceNetworkAclAssociationResult
 
 =head2 NewAssociationId => Str
 
-  
-
-The ID of the new association.
-
-
-
-
-
-
-
-
-
+  The ID of the new association.
 
 
 =cut

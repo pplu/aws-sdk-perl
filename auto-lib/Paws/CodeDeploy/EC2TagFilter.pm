@@ -35,24 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 Key => Str
 
-  
-
-The tag filter key.
-
-
-
-
-
-
-
-
-
+  The tag filter key.
 
 =head2 Type => Str
 
-  
-
-The tag filter type:
+  The tag filter type:
 
 =over
 
@@ -64,29 +51,9 @@ The tag filter type:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Value => Str
 
-  
-
-The tag filter value.
-
-
-
-
-
-
-
-
-
+  The tag filter value.
 
 
 

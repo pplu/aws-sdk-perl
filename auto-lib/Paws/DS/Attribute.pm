@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Attribu
 
 =head2 Name => Str
 
-  
-
-The name of the attribute.
-
-
-
-
-
-
-
-
-
+  The name of the attribute.
 
 =head2 Value => Str
 
-  
-
-The value of the attribute.
-
-
-
-
-
-
-
-
-
+  The value of the attribute.
 
 
 

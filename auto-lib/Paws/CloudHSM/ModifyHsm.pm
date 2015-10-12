@@ -39,94 +39,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EniIp => Str
 
-  
-
-The new IP address for the elastic network interface attached to the
+  The new IP address for the elastic network interface attached to the
 HSM.
-
-
-
-
-
-
-
-
-
 
 =head2 ExternalId => Str
 
-  
-
-The new external ID.
-
-
-
-
-
-
-
-
-
+  The new external ID.
 
 =head2 B<REQUIRED> HsmArn => Str
 
-  
-
-The ARN of the HSM to modify.
-
-
-
-
-
-
-
-
-
+  The ARN of the HSM to modify.
 
 =head2 IamRoleArn => Str
 
-  
-
-The new IAM role ARN.
-
-
-
-
-
-
-
-
-
+  The new IAM role ARN.
 
 =head2 SubnetId => Str
 
-  
-
-The new identifier of the subnet that the HSM is in.
-
-
-
-
-
-
-
-
-
+  The new identifier of the subnet that the HSM is in.
 
 =head2 SyslogIp => Str
 
-  
-
-The new IP address for the syslog monitoring server.
-
-
-
-
-
-
-
-
-
+  The new IP address for the syslog monitoring server.
 
 
 

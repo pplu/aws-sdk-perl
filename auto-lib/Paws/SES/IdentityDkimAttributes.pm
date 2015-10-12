@@ -35,25 +35,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Identi
 
 =head2 B<REQUIRED> DkimEnabled => Bool
 
-  
-
-True if DKIM signing is enabled for email sent from the identity; false
+  True if DKIM signing is enabled for email sent from the identity; false
 otherwise.
-
-
-
-
-
-
-
-
-
 
 =head2 DkimTokens => ArrayRef[Str]
 
-  
-
-A set of character strings that represent the domain's identity. Using
+  A set of character strings that represent the domain's identity. Using
 these tokens, you will need to create DNS CNAME records that point to
 DKIM public keys hosted by Amazon SES. Amazon Web Services will
 eventually detect that you have updated your DNS records; this
@@ -65,31 +52,11 @@ identities.)
 For more information about creating DNS records using DKIM tokens, go
 to the Amazon SES Developer Guide.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DkimVerificationStatus => Str
 
-  
-
-Describes whether Amazon SES has successfully verified the DKIM DNS
+  Describes whether Amazon SES has successfully verified the DKIM DNS
 records (tokens) published in the domain name's DNS. (This only applies
 to domain identities, not email address identities.)
-
-
-
-
-
-
-
-
-
 
 
 

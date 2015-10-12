@@ -37,80 +37,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::H
 
 =head2 Description => Str
 
-  
-
-A text description of the HSM configuration.
-
-
-
-
-
-
-
-
-
+  A text description of the HSM configuration.
 
 =head2 HsmConfigurationIdentifier => Str
 
-  
-
-The name of the Amazon Redshift HSM configuration.
-
-
-
-
-
-
-
-
-
+  The name of the Amazon Redshift HSM configuration.
 
 =head2 HsmIpAddress => Str
 
-  
-
-The IP address that the Amazon Redshift cluster must use to access the
+  The IP address that the Amazon Redshift cluster must use to access the
 HSM.
-
-
-
-
-
-
-
-
-
 
 =head2 HsmPartitionName => Str
 
-  
-
-The name of the partition in the HSM where the Amazon Redshift clusters
+  The name of the partition in the HSM where the Amazon Redshift clusters
 will store their database encryption keys.
-
-
-
-
-
-
-
-
-
 
 =head2 Tags => ArrayRef[Paws::RedShift::Tag]
 
-  
-
-The list of tags for the HSM configuration.
-
-
-
-
-
-
-
-
-
+  The list of tags for the HSM configuration.
 
 
 

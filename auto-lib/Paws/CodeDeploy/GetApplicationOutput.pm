@@ -14,18 +14,7 @@ Paws::CodeDeploy::GetApplicationOutput
 
 =head2 application => Paws::CodeDeploy::ApplicationInfo
 
-  
-
-Information about the application.
-
-
-
-
-
-
-
-
-
+  Information about the application.
 
 
 =cut

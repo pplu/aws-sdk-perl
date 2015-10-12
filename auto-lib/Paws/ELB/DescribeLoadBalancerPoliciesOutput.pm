@@ -15,18 +15,7 @@ Paws::ELB::DescribeLoadBalancerPoliciesOutput
 
 =head2 PolicyDescriptions => ArrayRef[Paws::ELB::PolicyDescription]
 
-  
-
-Information about the policies.
-
-
-
-
-
-
-
-
-
+  Information about the policies.
 
 
 =cut

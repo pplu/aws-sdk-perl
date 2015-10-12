@@ -34,37 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::St
 
 =head2 CheckedTime => Str
 
-  
-
-The date and time the health check status was observed, in the format
+  The date and time the health check status was observed, in the format
 C<YYYY-MM-DDThh:mm:ssZ>, as specified in the ISO 8601 standard (for
 example, 2009-11-19T19:37:58Z). The C<Z> after the time indicates that
 the time is listed in Coordinated Universal Time (UTC), which is
 synonymous with Greenwich Mean Time in this context.
 
-
-
-
-
-
-
-
-
-
 =head2 Status => Str
 
-  
-
-The observed health check status.
-
-
-
-
-
-
-
-
-
+  The observed health check status.
 
 
 

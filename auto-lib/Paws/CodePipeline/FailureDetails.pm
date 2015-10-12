@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 externalExecutionId => Str
 
-  
-
-The external ID of the run of the action that failed.
-
-
-
-
-
-
-
-
-
+  The external ID of the run of the action that failed.
 
 =head2 B<REQUIRED> message => Str
 
-  
-
-The message about the failure.
-
-
-
-
-
-
-
-
-
+  The message about the failure.
 
 =head2 B<REQUIRED> type => Str
 
-  
-
-The type of the failure.
-
-
-
-
-
-
-
-
-
+  The type of the failure.
 
 
 

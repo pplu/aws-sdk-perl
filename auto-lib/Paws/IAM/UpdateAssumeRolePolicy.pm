@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PolicyDocument => Str
 
-  
-
-The policy that grants an entity permission to assume the role.
-
-
-
-
-
-
-
-
-
+  The policy that grants an entity permission to assume the role.
 
 =head2 B<REQUIRED> RoleName => Str
 
-  
-
-The name of the role to update.
-
-
-
-
-
-
-
-
-
+  The name of the role to update.
 
 
 

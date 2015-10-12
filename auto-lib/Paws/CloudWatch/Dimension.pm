@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the dimension.
-
-
-
-
-
-
-
-
-
+  The name of the dimension.
 
 =head2 B<REQUIRED> Value => Str
 
-  
-
-The value representing the dimension measurement
-
-
-
-
-
-
-
-
-
+  The value representing the dimension measurement
 
 
 

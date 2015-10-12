@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::EBSOpti
 
 =head2 EBSEnabled => Bool
 
-  
-
-Specifies whether EBS-based storage is enabled.
-
-
-
-
-
-
-
-
-
+  Specifies whether EBS-based storage is enabled.
 
 =head2 Iops => Int
 
-  
-
-Specifies the IOPD for a Provisioned IOPS EBS volume (SSD).
-
-
-
-
-
-
-
-
-
+  Specifies the IOPD for a Provisioned IOPS EBS volume (SSD).
 
 =head2 VolumeSize => Int
 
-  
-
-Integer to specify the size of an EBS volume.
-
-
-
-
-
-
-
-
-
+  Integer to specify the size of an EBS volume.
 
 =head2 VolumeType => Str
 
-  
-
-Specifies the volume type for EBS-based storage.
-
-
-
-
-
-
-
-
-
+  Specifies the volume type for EBS-based storage.
 
 
 

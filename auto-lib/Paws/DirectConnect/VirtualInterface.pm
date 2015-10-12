@@ -43,18 +43,7 @@ Paws::DirectConnect::VirtualInterface
   
 =head2 customerRouterConfig => Str
 
-  
-
-Information for generating the customer router configuration.
-
-
-
-
-
-
-
-
-
+  Information for generating the customer router configuration.
 =head2 location => Str
 
   

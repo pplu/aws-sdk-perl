@@ -41,140 +41,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Reserv
 
 =head2 ClientToken => Str
 
-  
-
-A unique, case-sensitive key supplied by the client to ensure that the
+  A unique, case-sensitive key supplied by the client to ensure that the
 request is idempotent. For more information, see Ensuring Idempotency.
-
-
-
-
-
-
-
-
-
 
 =head2 CreateDate => Str
 
-  
-
-The time when the modification request was created.
-
-
-
-
-
-
-
-
-
+  The time when the modification request was created.
 
 =head2 EffectiveDate => Str
 
-  
-
-The time for the modification to become effective.
-
-
-
-
-
-
-
-
-
+  The time for the modification to become effective.
 
 =head2 ModificationResults => ArrayRef[Paws::EC2::ReservedInstancesModificationResult]
 
-  
-
-Contains target configurations along with their corresponding new
+  Contains target configurations along with their corresponding new
 Reserved Instance IDs.
-
-
-
-
-
-
-
-
-
 
 =head2 ReservedInstancesIds => ArrayRef[Paws::EC2::ReservedInstancesId]
 
-  
-
-The IDs of one or more Reserved Instances.
-
-
-
-
-
-
-
-
-
+  The IDs of one or more Reserved Instances.
 
 =head2 ReservedInstancesModificationId => Str
 
-  
-
-A unique ID for the Reserved Instance modification.
-
-
-
-
-
-
-
-
-
+  A unique ID for the Reserved Instance modification.
 
 =head2 Status => Str
 
-  
-
-The status of the Reserved Instances modification request.
-
-
-
-
-
-
-
-
-
+  The status of the Reserved Instances modification request.
 
 =head2 StatusMessage => Str
 
-  
-
-The reason for the status.
-
-
-
-
-
-
-
-
-
+  The reason for the status.
 
 =head2 UpdateDate => Str
 
-  
-
-The time when the modification request was last updated.
-
-
-
-
-
-
-
-
-
+  The time when the modification request was last updated.
 
 
 

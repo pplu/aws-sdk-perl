@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIden
 
 =head2 ErrorCode => Str
 
-  
-
-The error code indicating the type of error that occurred.
-
-
-
-
-
-
-
-
-
+  The error code indicating the type of error that occurred.
 
 =head2 IdentityId => Str
 
-  
-
-A unique identifier in the format REGION:GUID.
-
-
-
-
-
-
-
-
-
+  A unique identifier in the format REGION:GUID.
 
 
 

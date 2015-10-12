@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 BackupRetentionPeriod => Int
 
-  
-
-The number of days to retain automated backups. Setting this parameter
+  The number of days to retain automated backups. Setting this parameter
 to a positive number enables backups. Setting this parameter to 0
 disables automated backups.
 
@@ -52,20 +50,9 @@ Constraints:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  
-
-The DB instance identifier. This value is stored as a lowercase string.
+  The DB instance identifier. This value is stored as a lowercase string.
 
 Constraints:
 
@@ -83,20 +70,9 @@ Constraints:
 
 Example: C<mydbinstance>
 
-
-
-
-
-
-
-
-
-
 =head2 PreferredBackupWindow => Str
 
-  
-
-The daily time range during which automated backups are created if
+  The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter.
 
@@ -117,15 +93,6 @@ Constraints:
 =item * Must be at least 30 minutes.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

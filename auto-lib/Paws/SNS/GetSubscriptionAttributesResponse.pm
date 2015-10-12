@@ -15,9 +15,7 @@ Paws::SNS::GetSubscriptionAttributesResponse
 
 =head2 Attributes => Paws::SNS::SubscriptionAttributesMap
 
-  
-
-A map of the subscription's attributes. Attributes in this map include
+  A map of the subscription's attributes. Attributes in this map include
 the following:
 
 =over
@@ -40,15 +38,6 @@ effective delivery policy that takes into account the topic delivery
 policy and account system defaults
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 =cut

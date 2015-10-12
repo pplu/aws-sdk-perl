@@ -36,65 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
 =head2 exprs => Paws::CloudSearchDomain::Exprs
 
-  
-
-The expressions returned from a document that matches the search
+  The expressions returned from a document that matches the search
 request.
-
-
-
-
-
-
-
-
-
 
 =head2 fields => Paws::CloudSearchDomain::Fields
 
-  
-
-The fields returned from a document that matches the search request.
-
-
-
-
-
-
-
-
-
+  The fields returned from a document that matches the search request.
 
 =head2 highlights => Paws::CloudSearchDomain::Highlights
 
-  
-
-The highlights returned from a document that matches the search
+  The highlights returned from a document that matches the search
 request.
-
-
-
-
-
-
-
-
-
 
 =head2 id => Str
 
-  
-
-The document ID of a document that matches the search request.
-
-
-
-
-
-
-
-
-
+  The document ID of a document that matches the search request.
 
 
 

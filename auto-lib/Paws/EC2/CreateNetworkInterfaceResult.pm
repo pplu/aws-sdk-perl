@@ -15,18 +15,7 @@ Paws::EC2::CreateNetworkInterfaceResult
 
 =head2 NetworkInterface => Paws::EC2::NetworkInterface
 
-  
-
-Information about the network interface.
-
-
-
-
-
-
-
-
-
+  Information about the network interface.
 
 
 =cut

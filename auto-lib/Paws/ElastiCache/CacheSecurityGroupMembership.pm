@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 CacheSecurityGroupName => Str
 
-  
-
-The name of the cache security group.
-
-
-
-
-
-
-
-
-
+  The name of the cache security group.
 
 =head2 Status => Str
 
-  
-
-The membership status in the cache security group. The status changes
+  The membership status in the cache security group. The status changes
 when a cache security group is modified, or when the cache security
 groups assigned to a cache cluster are modified.
-
-
-
-
-
-
-
-
-
 
 
 

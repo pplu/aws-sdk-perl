@@ -15,18 +15,7 @@ Paws::IAM::CreatePolicyVersionResponse
 
 =head2 PolicyVersion => Paws::IAM::PolicyVersion
 
-  
-
-Information about the policy version.
-
-
-
-
-
-
-
-
-
+  Information about the policy version.
 
 
 =cut

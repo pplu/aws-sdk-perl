@@ -42,155 +42,45 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head2 B<REQUIRED> EventId => Str
 
-  
-
-The unique ID of this event.
-
-
-
-
-
-
-
-
-
+  The unique ID of this event.
 
 =head2 LogicalResourceId => Str
 
-  
-
-The logical name of the resource specified in the template.
-
-
-
-
-
-
-
-
-
+  The logical name of the resource specified in the template.
 
 =head2 PhysicalResourceId => Str
 
-  
-
-The name or unique identifier associated with the physical instance of
+  The name or unique identifier associated with the physical instance of
 the resource.
-
-
-
-
-
-
-
-
-
 
 =head2 ResourceProperties => Str
 
-  
-
-BLOB of the properties used to create the resource.
-
-
-
-
-
-
-
-
-
+  BLOB of the properties used to create the resource.
 
 =head2 ResourceStatus => Str
 
-  
-
-Current status of the resource.
-
-
-
-
-
-
-
-
-
+  Current status of the resource.
 
 =head2 ResourceStatusReason => Str
 
-  
-
-Success/failure message associated with the resource.
-
-
-
-
-
-
-
-
-
+  Success/failure message associated with the resource.
 
 =head2 ResourceType => Str
 
-  
-
-Type of resource. (For more information, go to AWS Resource Types
+  Type of resource. (For more information, go to AWS Resource Types
 Reference in the AWS CloudFormation User Guide.)
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> StackId => Str
 
-  
-
-The unique ID name of the instance of the stack.
-
-
-
-
-
-
-
-
-
+  The unique ID name of the instance of the stack.
 
 =head2 B<REQUIRED> StackName => Str
 
-  
-
-The name associated with a stack.
-
-
-
-
-
-
-
-
-
+  The name associated with a stack.
 
 =head2 B<REQUIRED> Timestamp => Str
 
-  
-
-Time the status was updated.
-
-
-
-
-
-
-
-
-
+  Time the status was updated.
 
 
 

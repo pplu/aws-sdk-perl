@@ -40,62 +40,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 BatchSize => Int
 
-  
-
-The largest number of records that AWS Lambda will retrieve from your
+  The largest number of records that AWS Lambda will retrieve from your
 event source at the time of invoking your function. Your function
 receives an event with all the retrieved records. The default is 100
 records.
 
-
-
-
-
-
-
-
-
-
 =head2 Enabled => Bool
 
-  
-
-Indicates whether AWS Lambda should begin polling the event source. By
+  Indicates whether AWS Lambda should begin polling the event source. By
 default, C<Enabled> is true.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> EventSourceArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon
+  The Amazon Resource Name (ARN) of the Amazon Kinesis or the Amazon
 DynamoDB stream that is the event source. Any record added to this
 stream could cause AWS Lambda to invoke your Lambda function, it
 depends on the C<BatchSize>. AWS Lambda POSTs the Amazon Kinesis event,
 containing records, to your Lambda function as JSON.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-The Lambda function to invoke when AWS Lambda detects an event on the
+  The Lambda function to invoke when AWS Lambda detects an event on the
 stream.
 
 You can specify an unqualified function name (for example, "Thumbnail")
@@ -106,31 +71,11 @@ example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StartingPosition => Str
 
-  
-
-The position in the stream where AWS Lambda should start reading. For
+  The position in the stream where AWS Lambda should start reading. For
 more information, go to ShardIteratorType in the I<Amazon Kinesis API
 Reference>.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -15,32 +15,10 @@ Paws::DeviceFarm::GetDevicePoolCompatibilityResult
 
 =head2 compatibleDevices => ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]
 
-  
-
-Information about compatible devices.
-
-
-
-
-
-
-
-
-
+  Information about compatible devices.
 =head2 incompatibleDevices => ArrayRef[Paws::DeviceFarm::DevicePoolCompatibilityResult]
 
-  
-
-Information about incompatible devices.
-
-
-
-
-
-
-
-
-
+  Information about incompatible devices.
 
 
 =cut

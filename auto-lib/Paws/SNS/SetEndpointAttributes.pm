@@ -35,9 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Attributes => Paws::SNS::MapStringToString
 
-  
-
-A map of the endpoint attributes. Attributes in this map include the
+  A map of the endpoint attributes. Attributes in this map include the
 following:
 
 =over
@@ -58,29 +56,9 @@ the notification service.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> EndpointArn => Str
 
-  
-
-EndpointArn used for SetEndpointAttributes action.
-
-
-
-
-
-
-
-
-
+  EndpointArn used for SetEndpointAttributes action.
 
 
 

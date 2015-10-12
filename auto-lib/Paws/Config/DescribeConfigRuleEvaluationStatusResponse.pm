@@ -14,18 +14,7 @@ Paws::Config::DescribeConfigRuleEvaluationStatusResponse
 
 =head2 ConfigRulesEvaluationStatus => ArrayRef[Paws::Config::ConfigRuleEvaluationStatus]
 
-  
-
-Status information about your AWS managed Config rules.
-
-
-
-
-
-
-
-
-
+  Status information about your AWS managed Config rules.
 
 
 =cut

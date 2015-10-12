@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::A
 
 =head2 AccountId => Str
 
-  
-
-The identifier of an AWS customer account authorized to restore a
+  The identifier of an AWS customer account authorized to restore a
 snapshot.
-
-
-
-
-
-
-
-
-
 
 
 

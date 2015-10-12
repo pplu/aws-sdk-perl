@@ -43,173 +43,52 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Import
 
 =head2 Architecture => Str
 
-  
-
-The architecture of the virtual machine.
+  The architecture of the virtual machine.
 
 Valid values: C<i386> | C<x86_64>
 
-
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
-
-A description of the import task.
-
-
-
-
-
-
-
-
-
+  A description of the import task.
 
 =head2 Hypervisor => Str
 
-  
-
-The target hypervisor for the import task.
+  The target hypervisor for the import task.
 
 Valid values: C<xen>
 
-
-
-
-
-
-
-
-
-
 =head2 ImageId => Str
 
-  
-
-The ID of the Amazon Machine Image (AMI) of the imported virtual
+  The ID of the Amazon Machine Image (AMI) of the imported virtual
 machine.
-
-
-
-
-
-
-
-
-
 
 =head2 ImportTaskId => Str
 
-  
-
-The ID of the import image task.
-
-
-
-
-
-
-
-
-
+  The ID of the import image task.
 
 =head2 LicenseType => Str
 
-  
-
-The license type of the virtual machine.
-
-
-
-
-
-
-
-
-
+  The license type of the virtual machine.
 
 =head2 Platform => Str
 
-  
-
-The description string for the import image task.
-
-
-
-
-
-
-
-
-
+  The description string for the import image task.
 
 =head2 Progress => Str
 
-  
-
-The percentage of progress of the import image task.
-
-
-
-
-
-
-
-
-
+  The percentage of progress of the import image task.
 
 =head2 SnapshotDetails => ArrayRef[Paws::EC2::SnapshotDetail]
 
-  
-
-Information about the snapshots.
-
-
-
-
-
-
-
-
-
+  Information about the snapshots.
 
 =head2 Status => Str
 
-  
-
-A brief status for the import image task.
-
-
-
-
-
-
-
-
-
+  A brief status for the import image task.
 
 =head2 StatusMessage => Str
 
-  
-
-A descriptive status message for the import image task.
-
-
-
-
-
-
-
-
-
+  A descriptive status message for the import image task.
 
 
 

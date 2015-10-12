@@ -38,9 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::HTTPRe
 
 =head2 ClientIP => Str
 
-  
-
-The IP address that the request originated from. If the C<WebACL> is
+  The IP address that the request originated from. If the C<WebACL> is
 associated with a CloudFront distribution, this is the value of one of
 the following fields in CloudFront access logs:
 
@@ -54,96 +52,32 @@ load balancer to send the request
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Country => Str
 
-  
-
-The two-letter country code for the country that the request originated
+  The two-letter country code for the country that the request originated
 from. For a current list of country codes, see the Wikipedia entry ISO
 3166-1 alpha-2.
 
-
-
-
-
-
-
-
-
-
 =head2 Headers => ArrayRef[Paws::WAF::HTTPHeader]
 
-  
-
-A complex type that contains two values for each header in the sampled
+  A complex type that contains two values for each header in the sampled
 web request: the name of the header and the value of the header.
-
-
-
-
-
-
-
-
-
 
 =head2 HTTPVersion => Str
 
-  
-
-The HTTP version specified in the sampled web request, for example,
+  The HTTP version specified in the sampled web request, for example,
 C<HTTP/1.1>.
-
-
-
-
-
-
-
-
-
 
 =head2 Method => Str
 
-  
-
-The HTTP method specified in the sampled web request. CloudFront
+  The HTTP method specified in the sampled web request. CloudFront
 supports the following methods: C<DELETE>, C<GET>, C<HEAD>, C<OPTIONS>,
 C<PATCH>, C<POST>, and C<PUT>.
 
-
-
-
-
-
-
-
-
-
 =head2 URI => Str
 
-  
-
-The part of a web request that identifies the resource, for example,
+  The part of a web request that identifies the resource, for example,
 C</images/daily-ad.jpg>.
-
-
-
-
-
-
-
-
-
 
 
 

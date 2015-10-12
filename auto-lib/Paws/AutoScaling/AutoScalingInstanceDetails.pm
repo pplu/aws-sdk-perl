@@ -38,96 +38,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the Auto Scaling group associated with the instance.
-
-
-
-
-
-
-
-
-
+  The name of the Auto Scaling group associated with the instance.
 
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-  
-
-The Availability Zone for the instance.
-
-
-
-
-
-
-
-
-
+  The Availability Zone for the instance.
 
 =head2 B<REQUIRED> HealthStatus => Str
 
-  
-
-The health status of this instance. "Healthy" means that the instance
+  The health status of this instance. "Healthy" means that the instance
 is healthy and should remain in service. "Unhealthy" means that the
 instance is unhealthy and Auto Scaling should terminate and replace it.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 LaunchConfigurationName => Str
 
-  
-
-The launch configuration associated with the instance.
-
-
-
-
-
-
-
-
-
+  The launch configuration associated with the instance.
 
 =head2 B<REQUIRED> LifecycleState => Str
 
-  
-
-The lifecycle state for the instance. For more information, see Auto
+  The lifecycle state for the instance. For more information, see Auto
 Scaling Instance States in the I<Auto Scaling Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 InstanceId => Str
 
-  
-
-The instance ID. If you use this parameter, C<DescribeRaidArrays>
+  The instance ID. If you use this parameter, C<DescribeRaidArrays>
 returns descriptions of the RAID arrays associated with the specified
 instance.
 
-
-
-
-
-
-
-
-
-
 =head2 RaidArrayIds => ArrayRef[Str]
 
-  
-
-An array of RAID array IDs. If you use this parameter,
+  An array of RAID array IDs. If you use this parameter,
 C<DescribeRaidArrays> returns descriptions of the specified arrays.
 Otherwise, it returns a description of every array.
 
-
-
-
-
-
-
-
-
-
 =head2 StackId => Str
 
-  
-
-The stack ID.
-
-
-
-
-
-
-
-
-
+  The stack ID.
 
 
 

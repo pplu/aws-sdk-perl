@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 FinishTimeMillis => Int
 
-  
-
-The time the job finished transcoding, in epoch milliseconds.
-
-
-
-
-
-
-
-
-
+  The time the job finished transcoding, in epoch milliseconds.
 
 =head2 StartTimeMillis => Int
 
-  
-
-The time the job began transcoding, in epoch milliseconds.
-
-
-
-
-
-
-
-
-
+  The time the job began transcoding, in epoch milliseconds.
 
 =head2 SubmitTimeMillis => Int
 
-  
-
-The time the job was submitted to Elastic Transcoder, in epoch
+  The time the job was submitted to Elastic Transcoder, in epoch
 milliseconds.
-
-
-
-
-
-
-
-
-
 
 
 

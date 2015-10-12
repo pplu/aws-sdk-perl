@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> childPolicy => Str
 
-  
-
-The policy used for the child workflow executions of this workflow
+  The policy used for the child workflow executions of this workflow
 execution.
 
 The supported child policies are:
@@ -55,29 +53,9 @@ continue to run.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> timeoutType => Str
 
-  
-
-The type of timeout that caused this event.
-
-
-
-
-
-
-
-
-
+  The type of timeout that caused this event.
 
 
 

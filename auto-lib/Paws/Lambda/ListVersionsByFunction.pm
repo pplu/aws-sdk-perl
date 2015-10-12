@@ -38,9 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-Function name whose versions to list. You can specify an unqualified
+  Function name whose versions to list. You can specify an unqualified
 function name (for example, "Thumbnail") or you can specify Amazon
 Resource Name (ARN) of the function (for example,
 "arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS Lambda
@@ -49,48 +47,17 @@ also allows you to specify only the account ID qualifier (for example,
 to the ARN. If you specify only the function name, it is limited to 64
 character in length.
 
-
-
-
-
-
-
-
-
-
 =head2 Marker => Str
 
-  
-
-Optional string. An opaque pagination token returned from a previous
+  Optional string. An opaque pagination token returned from a previous
 C<ListVersionsByFunction> operation. If present, indicates where to
 continue the listing.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxItems => Int
 
-  
-
-Optional integer. Specifies the maximum number of AWS Lambda function
+  Optional integer. Specifies the maximum number of AWS Lambda function
 versions to return in response. This parameter value must be greater
 than 0.
-
-
-
-
-
-
-
-
-
 
 
 

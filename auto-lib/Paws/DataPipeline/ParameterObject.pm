@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
 =head2 B<REQUIRED> attributes => ArrayRef[Paws::DataPipeline::ParameterAttribute]
 
-  
-
-The attributes of the parameter object.
-
-
-
-
-
-
-
-
-
+  The attributes of the parameter object.
 
 =head2 B<REQUIRED> id => Str
 
-  
-
-The ID of the parameter object.
-
-
-
-
-
-
-
-
-
+  The ID of the parameter object.
 
 
 

@@ -45,202 +45,59 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Reserv
 
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone in which the Reserved Instance can be used.
-
-
-
-
-
-
-
-
-
+  The Availability Zone in which the Reserved Instance can be used.
 
 =head2 CurrencyCode => Str
 
-  
-
-The currency of the Reserved Instance offering you are purchasing. It's
+  The currency of the Reserved Instance offering you are purchasing. It's
 specified using ISO 4217 standard currency codes. At this time, the
 only supported currency is C<USD>.
 
-
-
-
-
-
-
-
-
-
 =head2 Duration => Int
 
-  
-
-The duration of the Reserved Instance, in seconds.
-
-
-
-
-
-
-
-
-
+  The duration of the Reserved Instance, in seconds.
 
 =head2 FixedPrice => Num
 
-  
-
-The purchase price of the Reserved Instance.
-
-
-
-
-
-
-
-
-
+  The purchase price of the Reserved Instance.
 
 =head2 InstanceTenancy => Str
 
-  
-
-The tenancy of the reserved instance.
-
-
-
-
-
-
-
-
-
+  The tenancy of the reserved instance.
 
 =head2 InstanceType => Str
 
-  
-
-The instance type on which the Reserved Instance can be used.
-
-
-
-
-
-
-
-
-
+  The instance type on which the Reserved Instance can be used.
 
 =head2 Marketplace => Bool
 
-  
-
-Indicates whether the offering is available through the Reserved
+  Indicates whether the offering is available through the Reserved
 Instance Marketplace (resale) or AWS. If it's a Reserved Instance
 Marketplace offering, this is C<true>.
 
-
-
-
-
-
-
-
-
-
 =head2 OfferingType => Str
 
-  
-
-The Reserved Instance offering type.
-
-
-
-
-
-
-
-
-
+  The Reserved Instance offering type.
 
 =head2 PricingDetails => ArrayRef[Paws::EC2::PricingDetail]
 
-  
-
-The pricing details of the Reserved Instance offering.
-
-
-
-
-
-
-
-
-
+  The pricing details of the Reserved Instance offering.
 
 =head2 ProductDescription => Str
 
-  
-
-The Reserved Instance product platform description.
-
-
-
-
-
-
-
-
-
+  The Reserved Instance product platform description.
 
 =head2 RecurringCharges => ArrayRef[Paws::EC2::RecurringCharge]
 
-  
-
-The recurring charge tag assigned to the resource.
-
-
-
-
-
-
-
-
-
+  The recurring charge tag assigned to the resource.
 
 =head2 ReservedInstancesOfferingId => Str
 
-  
-
-The ID of the Reserved Instance offering.
-
-
-
-
-
-
-
-
-
+  The ID of the Reserved Instance offering.
 
 =head2 UsagePrice => Num
 
-  
-
-The usage price of the Reserved Instance, per hour.
-
-
-
-
-
-
-
-
-
+  The usage price of the Reserved Instance, per hour.
 
 
 

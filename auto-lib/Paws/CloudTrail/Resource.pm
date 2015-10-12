@@ -34,41 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
 =head2 ResourceName => Str
 
-  
-
-The name of the resource referenced by the event returned. These are
+  The name of the resource referenced by the event returned. These are
 user-created names whose values will depend on the environment. For
 example, the resource name might be "auto-scaling-test-group" for an
 Auto Scaling Group or "i-1234567" for an EC2 Instance.
 
-
-
-
-
-
-
-
-
-
 =head2 ResourceType => Str
 
-  
-
-The type of a resource referenced by the event returned. When the
+  The type of a resource referenced by the event returned. When the
 resource type cannot be determined, null is returned. Some examples of
 resource types are: B<Instance> for EC2, B<Trail> for CloudTrail,
 B<DBInstance> for RDS, and B<AccessKey> for IAM. For a list of resource
 types supported for event lookup, see Resource Types Supported for
 Event Lookup.
-
-
-
-
-
-
-
-
-
 
 
 

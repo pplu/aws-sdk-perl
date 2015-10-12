@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Key => Str
 
-  
-
-The key of the tag.
-
-
-
-
-
-
-
-
-
+  The key of the tag.
 
 =head2 Value => Str
 
-  
-
-The value of the tag.
-
-
-
-
-
-
-
-
-
+  The value of the tag.
 
 
 

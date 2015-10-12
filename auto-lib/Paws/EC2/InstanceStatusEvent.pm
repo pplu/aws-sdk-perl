@@ -36,67 +36,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head2 Code => Str
 
-  
-
-The event code.
-
-
-
-
-
-
-
-
-
+  The event code.
 
 =head2 Description => Str
 
-  
-
-A description of the event.
+  A description of the event.
 
 After a scheduled event is completed, it can still be described for up
 to a week. If the event has been completed, this description starts
 with the following text: [Completed].
 
-
-
-
-
-
-
-
-
-
 =head2 NotAfter => Str
 
-  
-
-The latest scheduled end time for the event.
-
-
-
-
-
-
-
-
-
+  The latest scheduled end time for the event.
 
 =head2 NotBefore => Str
 
-  
-
-The earliest scheduled start time for the event.
-
-
-
-
-
-
-
-
-
+  The earliest scheduled start time for the event.
 
 
 

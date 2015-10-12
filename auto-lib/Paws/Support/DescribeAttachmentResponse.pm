@@ -14,18 +14,7 @@ Paws::Support::DescribeAttachmentResponse
 
 =head2 attachment => Paws::Support::Attachment
 
-  
-
-The attachment content and file name.
-
-
-
-
-
-
-
-
-
+  The attachment content and file name.
 
 
 =cut

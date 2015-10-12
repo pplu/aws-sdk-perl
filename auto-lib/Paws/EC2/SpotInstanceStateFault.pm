@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotIn
 
 =head2 Code => Str
 
-  
-
-The reason code for the Spot instance state change.
-
-
-
-
-
-
-
-
-
+  The reason code for the Spot instance state change.
 
 =head2 Message => Str
 
-  
-
-The message for the Spot instance state change.
-
-
-
-
-
-
-
-
-
+  The message for the Spot instance state change.
 
 
 

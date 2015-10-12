@@ -14,18 +14,7 @@ Paws::OpsWorks::DescribeDeploymentsResult
 
 =head2 Deployments => ArrayRef[Paws::OpsWorks::Deployment]
 
-  
-
-An array of C<Deployment> objects that describe the deployments.
-
-
-
-
-
-
-
-
-
+  An array of C<Deployment> objects that describe the deployments.
 
 
 =cut

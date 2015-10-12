@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GroupName => Str
 
-  
-
-The name of the group to create. Do not include the path in this value.
-
-
-
-
-
-
-
-
-
+  The name of the group to create. Do not include the path in this value.
 
 =head2 Path => Str
 
-  
-
-The path to the group. For more information about paths, see IAM
+  The path to the group. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
-
-
-
-
-
-
-
-
-
 
 
 

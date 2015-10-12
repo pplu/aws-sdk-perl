@@ -38,48 +38,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 payload => Str
 
-  
-
-The state information, in JSON format.
-
-
-
-
-
-
-
-
-
+  The state information, in JSON format.
 
 =head2 qos => Int
 
-  
-
-The Quality of Service (QoS) level.
-
-
-
-
-
-
-
-
-
+  The Quality of Service (QoS) level.
 
 =head2 B<REQUIRED> topic => Str
 
-  
-
-The name of the MQTT topic.
-
-
-
-
-
-
-
-
-
+  The name of the MQTT topic.
 
 
 

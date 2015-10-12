@@ -39,54 +39,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 device => Paws::DeviceFarm::Device
 
-  
-
-Information about the associated device.
-
-
-
-
-
-
-
-
-
+  Information about the associated device.
 
 =head2 job => Paws::DeviceFarm::ProblemDetail
 
-  
-
-Information about the associated job.
-
-
-
-
-
-
-
-
-
+  Information about the associated job.
 
 =head2 message => Str
 
-  
-
-A message about the problem's result.
-
-
-
-
-
-
-
-
-
+  A message about the problem's result.
 
 =head2 result => Str
 
-  
-
-The problem's result.
+  The problem's result.
 
 Allowed values include:
 
@@ -122,59 +87,17 @@ WARNED: A warning condition.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 run => Paws::DeviceFarm::ProblemDetail
 
-  
-
-Information about the associated run.
-
-
-
-
-
-
-
-
-
+  Information about the associated run.
 
 =head2 suite => Paws::DeviceFarm::ProblemDetail
 
-  
-
-Information about the associated suite.
-
-
-
-
-
-
-
-
-
+  Information about the associated suite.
 
 =head2 test => Paws::DeviceFarm::ProblemDetail
 
-  
-
-Information about the associated test.
-
-
-
-
-
-
-
-
-
+  Information about the associated test.
 
 
 

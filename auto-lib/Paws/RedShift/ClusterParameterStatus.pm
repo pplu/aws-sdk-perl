@@ -35,25 +35,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
 =head2 ParameterApplyErrorDescription => Str
 
-  
-
-The error that prevented the parameter from being applied to the
+  The error that prevented the parameter from being applied to the
 database.
-
-
-
-
-
-
-
-
-
 
 =head2 ParameterApplyStatus => Str
 
-  
-
-The status of the parameter that indicates whether the parameter is in
+  The status of the parameter that indicates whether the parameter is in
 sync with the database, waiting for a cluster reboot, or encountered an
 error when being applied.
 
@@ -83,29 +70,9 @@ The change will be applied after the cluster reboots.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 ParameterName => Str
 
-  
-
-The name of the parameter.
-
-
-
-
-
-
-
-
-
+  The name of the parameter.
 
 
 

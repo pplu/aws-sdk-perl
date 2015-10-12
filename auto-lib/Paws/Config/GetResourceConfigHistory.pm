@@ -40,115 +40,38 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 chronologicalOrder => Str
 
-  
-
-The chronological order for configuration items listed. By default the
+  The chronological order for configuration items listed. By default the
 results are listed in reverse chronological order.
-
-
-
-
-
-
-
-
-
 
 =head2 earlierTime => Str
 
-  
-
-The time stamp that indicates an earlier time. If not specified, the
+  The time stamp that indicates an earlier time. If not specified, the
 action returns paginated results that contain configuration items that
 start from when the first configuration item was recorded.
 
-
-
-
-
-
-
-
-
-
 =head2 laterTime => Str
 
-  
-
-The time stamp that indicates a later time. If not specified, current
+  The time stamp that indicates a later time. If not specified, current
 time is taken.
-
-
-
-
-
-
-
-
-
 
 =head2 limit => Int
 
-  
-
-The maximum number of configuration items returned on each page. The
+  The maximum number of configuration items returned on each page. The
 default is 10. You cannot specify a limit greater than 100. If you
 specify 0, AWS Config uses the default.
 
-
-
-
-
-
-
-
-
-
 =head2 nextToken => Str
 
-  
-
-The C<nextToken> string returned on a previous page that you use to get
+  The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> resourceId => Str
 
-  
-
-The ID of the resource (for example., C<sg-xxxxxx>).
-
-
-
-
-
-
-
-
-
+  The ID of the resource (for example., C<sg-xxxxxx>).
 
 =head2 B<REQUIRED> resourceType => Str
 
-  
-
-The resource type.
-
-
-
-
-
-
-
-
-
+  The resource type.
 
 
 

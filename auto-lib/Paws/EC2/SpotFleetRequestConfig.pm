@@ -36,63 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotFl
 
 =head2 B<REQUIRED> CreateTime => Str
 
-  
-
-The creation date and time of the request.
-
-
-
-
-
-
-
-
-
+  The creation date and time of the request.
 
 =head2 B<REQUIRED> SpotFleetRequestConfig => Paws::EC2::SpotFleetRequestConfigData
 
-  
-
-Information about the configuration of the Spot fleet request.
-
-
-
-
-
-
-
-
-
+  Information about the configuration of the Spot fleet request.
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-  
-
-The ID of the Spot fleet request.
-
-
-
-
-
-
-
-
-
+  The ID of the Spot fleet request.
 
 =head2 B<REQUIRED> SpotFleetRequestState => Str
 
-  
-
-The state of the Spot fleet request.
-
-
-
-
-
-
-
-
-
+  The state of the Spot fleet request.
 
 
 

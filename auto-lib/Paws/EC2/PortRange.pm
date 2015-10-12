@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::PortRa
 
 =head2 From => Int
 
-  
-
-The first port in the range.
-
-
-
-
-
-
-
-
-
+  The first port in the range.
 
 =head2 To => Int
 
-  
-
-The last port in the range.
-
-
-
-
-
-
-
-
-
+  The last port in the range.
 
 
 

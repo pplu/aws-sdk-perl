@@ -35,49 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
 =head2 CreationDateTime => Str
 
-  
-
-The creation date and time of the instance group.
-
-
-
-
-
-
-
-
-
+  The creation date and time of the instance group.
 
 =head2 EndDateTime => Str
 
-  
-
-The date and time when the instance group terminated.
-
-
-
-
-
-
-
-
-
+  The date and time when the instance group terminated.
 
 =head2 ReadyDateTime => Str
 
-  
-
-The date and time when the instance group became ready to perform
+  The date and time when the instance group became ready to perform
 tasks.
-
-
-
-
-
-
-
-
-
 
 
 

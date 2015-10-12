@@ -14,18 +14,7 @@ Paws::CodeDeploy::GetDeploymentConfigOutput
 
 =head2 deploymentConfigInfo => Paws::CodeDeploy::DeploymentConfigInfo
 
-  
-
-Information about the deployment configuration.
-
-
-
-
-
-
-
-
-
+  Information about the deployment configuration.
 
 
 =cut

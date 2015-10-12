@@ -14,9 +14,7 @@ Paws::Route53Domains::CheckDomainAvailabilityResponse
 
 =head2 B<REQUIRED> Availability => Str
 
-  
-
-Whether the domain name is available for registering.
+  Whether the domain name is available for registering.
 
 You can only register domains designated as C<AVAILABLE>.
 
@@ -51,15 +49,6 @@ Route 53 can return this response for a variety of reasons, for
 example, the registry is performing maintenance. Try again later.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 =cut

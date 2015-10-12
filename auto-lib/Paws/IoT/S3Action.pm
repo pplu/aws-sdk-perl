@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::S3Acti
 
 =head2 B<REQUIRED> bucketName => Str
 
-  
-
-The S3 bucket.
-
-
-
-
-
-
-
-
-
+  The S3 bucket.
 
 =head2 B<REQUIRED> key => Str
 
-  
-
-The object key.
-
-
-
-
-
-
-
-
-
+  The object key.
 
 =head2 B<REQUIRED> roleArn => Str
 
-  
-
-The ARN of the IAM role that grants access.
-
-
-
-
-
-
-
-
-
+  The ARN of the IAM role that grants access.
 
 
 

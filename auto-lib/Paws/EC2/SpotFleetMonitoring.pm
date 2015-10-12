@@ -33,20 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::SpotFl
 
 =head2 Enabled => Bool
 
-  
-
-Enables monitoring for the instance.
+  Enables monitoring for the instance.
 
 Default: C<false>
-
-
-
-
-
-
-
-
-
 
 
 

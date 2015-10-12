@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Policy
 
 =head2 policyArn => Str
 
-  
-
-The policy ARN.
-
-
-
-
-
-
-
-
-
+  The policy ARN.
 
 =head2 policyName => Str
 
-  
-
-The policy name.
-
-
-
-
-
-
-
-
-
+  The policy name.
 
 
 

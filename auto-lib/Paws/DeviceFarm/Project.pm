@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head2 arn => Str
 
-  
-
-The project's ARN.
-
-
-
-
-
-
-
-
-
+  The project's ARN.
 
 =head2 created => Str
 
-  
-
-When the project was created.
-
-
-
-
-
-
-
-
-
+  When the project was created.
 
 =head2 name => Str
 
-  
-
-The project's name.
-
-
-
-
-
-
-
-
-
+  The project's name.
 
 
 

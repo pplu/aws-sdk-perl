@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 attributes => ArrayRef[Paws::Inspector::Attribute]
 
-  
-
-The array of attributes that you want to assign to specified findings.
-
-
-
-
-
-
-
-
-
+  The array of attributes that you want to assign to specified findings.
 
 =head2 findingArns => ArrayRef[Str]
 
-  
-
-The ARNs specifying the findings that you want to assign attributes to.
-
-
-
-
-
-
-
-
-
+  The ARNs specifying the findings that you want to assign attributes to.
 
 
 

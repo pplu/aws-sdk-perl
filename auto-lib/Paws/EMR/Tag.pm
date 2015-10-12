@@ -34,35 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Tag ob
 
 =head2 Key => Str
 
-  
-
-A user-defined key, which is the minimum required information for a
+  A user-defined key, which is the minimum required information for a
 valid tag. For more information, see Tagging Amazon EMR Resources.
-
-
-
-
-
-
-
-
-
 
 =head2 Value => Str
 
-  
-
-A user-defined value, which is optional in a tag. For more information,
+  A user-defined value, which is optional in a tag. For more information,
 see Tagging Amazon EMR Resources.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Endpoi
 
 =head2 Address => Str
 
-  
-
-Specifies the DNS address of the DB instance.
-
-
-
-
-
-
-
-
-
+  Specifies the DNS address of the DB instance.
 
 =head2 Port => Int
 
-  
-
-Specifies the port that the database engine is listening on.
-
-
-
-
-
-
-
-
-
+  Specifies the port that the database engine is listening on.
 
 
 

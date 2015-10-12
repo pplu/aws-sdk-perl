@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Instan
 
 =head2 Code => Int
 
-  
-
-The low byte represents the state. The high byte is an opaque internal
+  The low byte represents the state. The high byte is an opaque internal
 value and should be ignored.
 
 =over
@@ -67,29 +65,9 @@ C<80> : C<stopped>
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 Name => Str
 
-  
-
-The current state of the instance.
-
-
-
-
-
-
-
-
-
+  The current state of the instance.
 
 
 

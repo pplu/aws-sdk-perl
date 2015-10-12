@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceGroups => ArrayRef[Paws::EMR::InstanceGroupConfig]
 
-  
-
-Instance Groups to add.
-
-
-
-
-
-
-
-
-
+  Instance Groups to add.
 
 =head2 B<REQUIRED> JobFlowId => Str
 
-  
-
-Job flow in which to add the instance groups.
-
-
-
-
-
-
-
-
-
+  Job flow in which to add the instance groups.
 
 
 

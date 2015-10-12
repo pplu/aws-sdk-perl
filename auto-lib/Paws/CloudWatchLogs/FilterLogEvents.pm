@@ -41,135 +41,47 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 endTime => Int
 
-  
-
-A unix timestamp indicating the end time of the range for the request.
+  A unix timestamp indicating the end time of the range for the request.
 If provided, events with a timestamp later than this time will not be
 returned.
 
-
-
-
-
-
-
-
-
-
 =head2 filterPattern => Str
 
-  
-
-A valid CloudWatch Logs filter pattern to use for filtering the
+  A valid CloudWatch Logs filter pattern to use for filtering the
 response. If not provided, all the events are matched.
-
-
-
-
-
-
-
-
-
 
 =head2 interleaved => Bool
 
-  
-
-If provided, the API will make a best effort to provide responses that
+  If provided, the API will make a best effort to provide responses that
 contain events from multiple log streams within the log group
 interleaved in a single response. If not provided, all the matched log
 events in the first log stream will be searched first, then those in
 the next log stream, etc.
 
-
-
-
-
-
-
-
-
-
 =head2 limit => Int
 
-  
-
-The maximum number of events to return in a page of results. Default is
+  The maximum number of events to return in a page of results. Default is
 10,000 events.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> logGroupName => Str
 
-  
-
-The name of the log group to query.
-
-
-
-
-
-
-
-
-
+  The name of the log group to query.
 
 =head2 logStreamNames => ArrayRef[Str]
 
-  
-
-Optional list of log stream names within the specified log group to
+  Optional list of log stream names within the specified log group to
 search. Defaults to all the log streams in the log group.
-
-
-
-
-
-
-
-
-
 
 =head2 nextToken => Str
 
-  
-
-A pagination token obtained from a C<FilterLogEvents> response to
+  A pagination token obtained from a C<FilterLogEvents> response to
 continue paginating the FilterLogEvents results.
-
-
-
-
-
-
-
-
-
 
 =head2 startTime => Int
 
-  
-
-A unix timestamp indicating the start time of the range for the
+  A unix timestamp indicating the start time of the range for the
 request. If provided, events with a timestamp prior to this time will
 not be returned.
-
-
-
-
-
-
-
-
-
 
 
 

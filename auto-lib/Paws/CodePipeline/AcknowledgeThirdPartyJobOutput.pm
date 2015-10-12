@@ -14,18 +14,7 @@ Paws::CodePipeline::AcknowledgeThirdPartyJobOutput
 
 =head2 status => Str
 
-  
-
-The status information for the third party job, if any.
-
-
-
-
-
-
-
-
-
+  The status information for the third party job, if any.
 
 
 =cut

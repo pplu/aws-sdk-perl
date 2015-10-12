@@ -54,349 +54,107 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
 =head2 AllocatedStorage => Int
 
-  
-
-Specifies the allocated storage size in gigabytes (GB).
-
-
-
-
-
-
-
-
-
+  Specifies the allocated storage size in gigabytes (GB).
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  
-
-Provides the list of EC2 Availability Zones that instances in the DB
+  Provides the list of EC2 Availability Zones that instances in the DB
 cluster can be created in.
-
-
-
-
-
-
-
-
-
 
 =head2 BackupRetentionPeriod => Int
 
-  
-
-Specifies the number of days for which automatic DB snapshots are
+  Specifies the number of days for which automatic DB snapshots are
 retained.
-
-
-
-
-
-
-
-
-
 
 =head2 CharacterSetName => Str
 
-  
-
-If present, specifies the name of the character set that this cluster
+  If present, specifies the name of the character set that this cluster
 is associated with.
-
-
-
-
-
-
-
-
-
 
 =head2 DatabaseName => Str
 
-  
-
-Contains the name of the initial database of this DB cluster that was
+  Contains the name of the initial database of this DB cluster that was
 provided at create time, if one was specified when the DB cluster was
 created. This same name is returned for the life of the DB cluster.
 
-
-
-
-
-
-
-
-
-
 =head2 DBClusterIdentifier => Str
 
-  
-
-Contains a user-supplied DB cluster identifier. This identifier is the
+  Contains a user-supplied DB cluster identifier. This identifier is the
 unique key that identifies a DB cluster.
-
-
-
-
-
-
-
-
-
 
 =head2 DBClusterMembers => ArrayRef[Paws::RDS::DBClusterMember]
 
-  
-
-Provides the list of instances that make up the DB cluster.
-
-
-
-
-
-
-
-
-
+  Provides the list of instances that make up the DB cluster.
 
 =head2 DBClusterOptionGroupMemberships => ArrayRef[Paws::RDS::DBClusterOptionGroupStatus]
 
-  
-
-Provides the list of option group memberships for this DB cluster.
-
-
-
-
-
-
-
-
-
+  Provides the list of option group memberships for this DB cluster.
 
 =head2 DBClusterParameterGroup => Str
 
-  
-
-Specifies the name of the DB cluster parameter group for the DB
+  Specifies the name of the DB cluster parameter group for the DB
 cluster.
-
-
-
-
-
-
-
-
-
 
 =head2 DBSubnetGroup => Str
 
-  
-
-Specifies information on the subnet group associated with the DB
+  Specifies information on the subnet group associated with the DB
 cluster, including the name, description, and subnets in the subnet
 group.
 
-
-
-
-
-
-
-
-
-
 =head2 EarliestRestorableTime => Str
 
-  
-
-Specifies the earliest time to which a database can be restored with
+  Specifies the earliest time to which a database can be restored with
 point-in-time restore.
-
-
-
-
-
-
-
-
-
 
 =head2 Endpoint => Str
 
-  
-
-Specifies the connection endpoint for the primary instance of the DB
+  Specifies the connection endpoint for the primary instance of the DB
 cluster.
-
-
-
-
-
-
-
-
-
 
 =head2 Engine => Str
 
-  
-
-Provides the name of the database engine to be used for this DB
+  Provides the name of the database engine to be used for this DB
 cluster.
-
-
-
-
-
-
-
-
-
 
 =head2 EngineVersion => Str
 
-  
-
-Indicates the database engine version.
-
-
-
-
-
-
-
-
-
+  Indicates the database engine version.
 
 =head2 LatestRestorableTime => Str
 
-  
-
-Specifies the latest time to which a database can be restored with
+  Specifies the latest time to which a database can be restored with
 point-in-time restore.
-
-
-
-
-
-
-
-
-
 
 =head2 MasterUsername => Str
 
-  
-
-Contains the master username for the DB cluster.
-
-
-
-
-
-
-
-
-
+  Contains the master username for the DB cluster.
 
 =head2 PercentProgress => Str
 
-  
-
-Specifies the progress of the operation as a percentage.
-
-
-
-
-
-
-
-
-
+  Specifies the progress of the operation as a percentage.
 
 =head2 Port => Int
 
-  
-
-Specifies the port that the database engine is listening on.
-
-
-
-
-
-
-
-
-
+  Specifies the port that the database engine is listening on.
 
 =head2 PreferredBackupWindow => Str
 
-  
-
-Specifies the daily time range during which automated backups are
+  Specifies the daily time range during which automated backups are
 created if automated backups are enabled, as determined by the
 C<BackupRetentionPeriod>.
 
-
-
-
-
-
-
-
-
-
 =head2 PreferredMaintenanceWindow => Str
 
-  
-
-Specifies the weekly time range during which system maintenance can
+  Specifies the weekly time range during which system maintenance can
 occur, in Universal Coordinated Time (UTC).
-
-
-
-
-
-
-
-
-
 
 =head2 Status => Str
 
-  
-
-Specifies the current state of this DB cluster.
-
-
-
-
-
-
-
-
-
+  Specifies the current state of this DB cluster.
 
 =head2 VpcSecurityGroups => ArrayRef[Paws::RDS::VpcSecurityGroupMembership]
 
-  
-
-Provides a list of VPC security groups that the DB cluster belongs to.
-
-
-
-
-
-
-
-
-
+  Provides a list of VPC security groups that the DB cluster belongs to.
 
 
 

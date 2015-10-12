@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AliasName => Str
 
-  
-
-The alias to be deleted. The name must start with the word "alias"
+  The alias to be deleted. The name must start with the word "alias"
 followed by a forward slash (alias/). Aliases that begin with
 "alias/AWS" are reserved.
-
-
-
-
-
-
-
-
-
 
 
 

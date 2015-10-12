@@ -38,96 +38,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::SSHPub
 
 =head2 B<REQUIRED> Fingerprint => Str
 
-  
-
-The MD5 message digest of the SSH public key.
-
-
-
-
-
-
-
-
-
+  The MD5 message digest of the SSH public key.
 
 =head2 B<REQUIRED> SSHPublicKeyBody => Str
 
-  
-
-The SSH public key.
-
-
-
-
-
-
-
-
-
+  The SSH public key.
 
 =head2 B<REQUIRED> SSHPublicKeyId => Str
 
-  
-
-The unique identifier for the SSH public key.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the SSH public key.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The status of the SSH public key. C<Active> means the key can be used
+  The status of the SSH public key. C<Active> means the key can be used
 for authentication with an AWS CodeCommit repository. C<Inactive> means
 the key cannot be used.
 
-
-
-
-
-
-
-
-
-
 =head2 UploadDate => Str
 
-  
-
-The date and time, in ISO 8601 date-time format, when the SSH public
+  The date and time, in ISO 8601 date-time format, when the SSH public
 key was uploaded.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the IAM user associated with the SSH public key.
-
-
-
-
-
-
-
-
-
+  The name of the IAM user associated with the SSH public key.
 
 
 

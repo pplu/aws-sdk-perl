@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::EventC
 
 =head2 EventCategories => ArrayRef[Str]
 
-  
-
-The event categories for the specified source type
-
-
-
-
-
-
-
-
-
+  The event categories for the specified source type
 
 =head2 SourceType => Str
 
-  
-
-The source type that the returned categories belong to
-
-
-
-
-
-
-
-
-
+  The source type that the returned categories belong to
 
 
 

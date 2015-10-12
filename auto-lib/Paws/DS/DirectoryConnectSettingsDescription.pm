@@ -38,93 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Directo
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  
-
-A list of the Availability Zones that the directory is in.
-
-
-
-
-
-
-
-
-
+  A list of the Availability Zones that the directory is in.
 
 =head2 ConnectIps => ArrayRef[Str]
 
-  
-
-The IP addresses of the AD Connector servers.
-
-
-
-
-
-
-
-
-
+  The IP addresses of the AD Connector servers.
 
 =head2 CustomerUserName => Str
 
-  
-
-The username of the service account in the on-premises directory.
-
-
-
-
-
-
-
-
-
+  The username of the service account in the on-premises directory.
 
 =head2 SecurityGroupId => Str
 
-  
-
-The security group identifier for the AD Connector directory.
-
-
-
-
-
-
-
-
-
+  The security group identifier for the AD Connector directory.
 
 =head2 SubnetIds => ArrayRef[Str]
 
-  
-
-A list of subnet identifiers in the VPC that the AD connector is in.
-
-
-
-
-
-
-
-
-
+  A list of subnet identifiers in the VPC that the AD connector is in.
 
 =head2 VpcId => Str
 
-  
-
-The identifier of the VPC that the AD Connector is in.
-
-
-
-
-
-
-
-
-
+  The identifier of the VPC that the AD Connector is in.
 
 
 

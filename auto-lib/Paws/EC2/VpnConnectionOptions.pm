@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::VpnCon
 
 =head2 StaticRoutesOnly => Bool
 
-  
-
-Indicates whether the VPN connection uses static routes only. Static
+  Indicates whether the VPN connection uses static routes only. Static
 routes must be used for devices that don't support BGP.
-
-
-
-
-
-
-
-
-
 
 
 

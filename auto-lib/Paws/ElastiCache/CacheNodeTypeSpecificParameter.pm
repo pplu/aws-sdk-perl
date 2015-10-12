@@ -40,126 +40,38 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 AllowedValues => Str
 
-  
-
-The valid range of values for the parameter.
-
-
-
-
-
-
-
-
-
+  The valid range of values for the parameter.
 
 =head2 CacheNodeTypeSpecificValues => ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificValue]
 
-  
-
-A list of cache node types and their corresponding values for this
+  A list of cache node types and their corresponding values for this
 parameter.
-
-
-
-
-
-
-
-
-
 
 =head2 DataType => Str
 
-  
-
-The valid data type for the parameter.
-
-
-
-
-
-
-
-
-
+  The valid data type for the parameter.
 
 =head2 Description => Str
 
-  
-
-A description of the parameter.
-
-
-
-
-
-
-
-
-
+  A description of the parameter.
 
 =head2 IsModifiable => Bool
 
-  
-
-Indicates whether (C<true>) or not (C<false>) the parameter can be
+  Indicates whether (C<true>) or not (C<false>) the parameter can be
 modified. Some parameters have security or operational implications
 that prevent them from being changed.
 
-
-
-
-
-
-
-
-
-
 =head2 MinimumEngineVersion => Str
 
-  
-
-The earliest cache engine version to which the parameter can apply.
-
-
-
-
-
-
-
-
-
+  The earliest cache engine version to which the parameter can apply.
 
 =head2 ParameterName => Str
 
-  
-
-The name of the parameter.
-
-
-
-
-
-
-
-
-
+  The name of the parameter.
 
 =head2 Source => Str
 
-  
-
-The source of the parameter value.
-
-
-
-
-
-
-
-
-
+  The source of the parameter value.
 
 
 

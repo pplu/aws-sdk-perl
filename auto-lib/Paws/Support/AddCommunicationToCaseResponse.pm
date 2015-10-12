@@ -14,18 +14,7 @@ Paws::Support::AddCommunicationToCaseResponse
 
 =head2 result => Bool
 
-  
-
-True if AddCommunicationToCase succeeds. Otherwise, returns an error.
-
-
-
-
-
-
-
-
-
+  True if AddCommunicationToCase succeeds. Otherwise, returns an error.
 
 
 =cut

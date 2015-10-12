@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head2 Items => ArrayRef[Str]
 
-  
-
-A complex type that contains a list of the objects that you want to
+  A complex type that contains a list of the objects that you want to
 invalidate.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Quantity => Int
 
-  
-
-The number of objects that you want to invalidate.
-
-
-
-
-
-
-
-
-
+  The number of objects that you want to invalidate.
 
 
 

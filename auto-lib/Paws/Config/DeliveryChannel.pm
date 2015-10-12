@@ -41,67 +41,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Del
 
 =head2 name => Str
 
-  
-
-The name of the delivery channel. By default, AWS Config automatically
+  The name of the delivery channel. By default, AWS Config automatically
 assigns the name "default" when creating the delivery channel. You
 cannot change the assigned name.
 
-
-
-
-
-
-
-
-
-
 =head2 s3BucketName => Str
 
-  
-
-The name of the Amazon S3 bucket used to store configuration history
+  The name of the Amazon S3 bucket used to store configuration history
 for the delivery channel.
-
-
-
-
-
-
-
-
-
 
 =head2 s3KeyPrefix => Str
 
-  
-
-The prefix for the specified Amazon S3 bucket.
-
-
-
-
-
-
-
-
-
+  The prefix for the specified Amazon S3 bucket.
 
 =head2 snsTopicARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the SNS topic that AWS Config
+  The Amazon Resource Name (ARN) of the SNS topic that AWS Config
 delivers notifications to.
-
-
-
-
-
-
-
-
-
 
 
 

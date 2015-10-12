@@ -37,83 +37,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
 =head2 B<REQUIRED> category => Str
 
-  
-
-The category of the Trusted Advisor check.
-
-
-
-
-
-
-
-
-
+  The category of the Trusted Advisor check.
 
 =head2 B<REQUIRED> description => Str
 
-  
-
-The description of the Trusted Advisor check, which includes the alert
+  The description of the Trusted Advisor check, which includes the alert
 criteria and recommended actions (contains HTML markup).
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> id => Str
 
-  
-
-The unique identifier for the Trusted Advisor check.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the Trusted Advisor check.
 
 =head2 B<REQUIRED> metadata => ArrayRef[Str]
 
-  
-
-The column headings for the data returned by the Trusted Advisor check.
+  The column headings for the data returned by the Trusted Advisor check.
 The order of the headings corresponds to the order of the data in the
 B<Metadata> element of the TrustedAdvisorResourceDetail for the check.
 B<Metadata> contains all the data that is shown in the Excel download,
 even in those cases where the UI shows just summary data.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> name => Str
 
-  
-
-The display name for the Trusted Advisor check.
-
-
-
-
-
-
-
-
-
+  The display name for the Trusted Advisor check.
 
 
 

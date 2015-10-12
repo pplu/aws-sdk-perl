@@ -36,50 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Message => Str
 
-  
-
-A message describing the error or warning.
-
-
-
-
-
-
-
-
-
+  A message describing the error or warning.
 
 =head2 Namespace => Str
 
   
 
-
-
-
-
-
-
-
-
-
 =head2 OptionName => Str
 
   
 
-
-
-
-
-
-
-
-
-
 =head2 Severity => Str
 
-  
-
-An indication of the severity of this message:
+  An indication of the severity of this message:
 
 error: This message indicates that this is not a valid setting for an
 option.
@@ -96,15 +65,6 @@ for an option.
 into account.
 
 =back
-
-
-
-
-
-
-
-
-
 
 
 

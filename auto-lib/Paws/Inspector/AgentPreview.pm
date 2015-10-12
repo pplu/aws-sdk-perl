@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head2 agentId => Str
 
-  
-
-The id of the EC2 instance where the agent is intalled.
-
-
-
-
-
-
-
-
-
+  The id of the EC2 instance where the agent is intalled.
 
 =head2 autoScalingGroup => Str
 
-  
-
-The autoscaling group for the EC2 instance where the agent is
+  The autoscaling group for the EC2 instance where the agent is
 installed.
-
-
-
-
-
-
-
-
-
 
 
 

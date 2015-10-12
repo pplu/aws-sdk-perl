@@ -36,64 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::E
 
 =head2 EC2SecurityGroupName => Str
 
-  
-
-The name of the EC2 Security Group.
-
-
-
-
-
-
-
-
-
+  The name of the EC2 Security Group.
 
 =head2 EC2SecurityGroupOwnerId => Str
 
-  
-
-The AWS ID of the owner of the EC2 security group specified in the
+  The AWS ID of the owner of the EC2 security group specified in the
 C<EC2SecurityGroupName> field.
-
-
-
-
-
-
-
-
-
 
 =head2 Status => Str
 
-  
-
-The status of the EC2 security group.
-
-
-
-
-
-
-
-
-
+  The status of the EC2 security group.
 
 =head2 Tags => ArrayRef[Paws::RedShift::Tag]
 
-  
-
-The list of tags for the EC2 security group.
-
-
-
-
-
-
-
-
-
+  The list of tags for the EC2 security group.
 
 
 

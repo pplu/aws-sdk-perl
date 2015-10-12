@@ -37,79 +37,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepSu
 
 =head2 ActionOnFailure => Str
 
-  
-
-This specifies what action to take when the cluster step fails.
+  This specifies what action to take when the cluster step fails.
 Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.
-
-
-
-
-
-
-
-
-
 
 =head2 Config => Paws::EMR::HadoopStepConfig
 
-  
-
-The Hadoop job configuration of the cluster step.
-
-
-
-
-
-
-
-
-
+  The Hadoop job configuration of the cluster step.
 
 =head2 Id => Str
 
-  
-
-The identifier of the cluster step.
-
-
-
-
-
-
-
-
-
+  The identifier of the cluster step.
 
 =head2 Name => Str
 
-  
-
-The name of the cluster step.
-
-
-
-
-
-
-
-
-
+  The name of the cluster step.
 
 =head2 Status => Paws::EMR::StepStatus
 
-  
-
-The current execution status details of the cluster step.
-
-
-
-
-
-
-
-
-
+  The current execution status details of the cluster step.
 
 
 

@@ -33,19 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 B<REQUIRED> tag => Str
 
-  
-
-B<Required.> Specifies the tag that must be associated with the
+  B<Required.> Specifies the tag that must be associated with the
 execution for it to meet the filter criteria.
-
-
-
-
-
-
-
-
-
 
 
 

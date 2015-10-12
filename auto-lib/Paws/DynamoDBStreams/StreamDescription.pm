@@ -41,39 +41,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
 =head2 CreationRequestDateTime => Str
 
-  
-
-The date and time when the request to create this stream was issued.
-
-
-
-
-
-
-
-
-
+  The date and time when the request to create this stream was issued.
 
 =head2 KeySchema => ArrayRef[Paws::DynamoDBStreams::KeySchemaElement]
 
-  
-
-The key attribute(s) of the stream's DynamoDB table.
-
-
-
-
-
-
-
-
-
+  The key attribute(s) of the stream's DynamoDB table.
 
 =head2 LastEvaluatedShardId => Str
 
-  
-
-The shard ID of the item where the operation stopped, inclusive of the
+  The shard ID of the item where the operation stopped, inclusive of the
 previous result set. Use this value to start a new operation, excluding
 this value in the new request.
 
@@ -85,50 +61,17 @@ that there is more data in the result set. The only way to know when
 you have reached the end of the result set is when
 C<LastEvaluatedShardId> is empty.
 
-
-
-
-
-
-
-
-
-
 =head2 Shards => ArrayRef[Paws::DynamoDBStreams::Shard]
 
-  
-
-The shards that comprise the stream.
-
-
-
-
-
-
-
-
-
+  The shards that comprise the stream.
 
 =head2 StreamArn => Str
 
-  
-
-The Amazon Resource Name (ARN) for the stream.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) for the stream.
 
 =head2 StreamLabel => Str
 
-  
-
-A timestamp, in ISO 8601 format, for this stream.
+  A timestamp, in ISO 8601 format, for this stream.
 
 Note that I<LatestStreamLabel> is not a unique identifier for the
 stream, because it is possible that a stream from another table might
@@ -151,20 +94,9 @@ the I<StreamLabel>
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 StreamStatus => Str
 
-  
-
-Indicates the current status of the stream:
+  Indicates the current status of the stream:
 
 =over
 
@@ -187,20 +119,9 @@ C<DISABLED> - the stream is disabled.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 StreamViewType => Str
 
-  
-
-Indicates the format of the records within this stream:
+  Indicates the format of the records within this stream:
 
 =over
 
@@ -226,29 +147,9 @@ from the table.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 TableName => Str
 
-  
-
-The DynamoDB table with which the stream is associated.
-
-
-
-
-
-
-
-
-
+  The DynamoDB table with which the stream is associated.
 
 
 

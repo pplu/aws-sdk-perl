@@ -14,18 +14,7 @@ Paws::Inspector::ListTagsForResourceResponse
 
 =head2 tagList => ArrayRef[Paws::Inspector::Tag]
 
-  
-
-A collection of key and value pairs.
-
-
-
-
-
-
-
-
-
+  A collection of key and value pairs.
 
 
 =cut

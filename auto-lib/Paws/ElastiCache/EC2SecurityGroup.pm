@@ -35,48 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
 =head2 EC2SecurityGroupName => Str
 
-  
-
-The name of the Amazon EC2 security group.
-
-
-
-
-
-
-
-
-
+  The name of the Amazon EC2 security group.
 
 =head2 EC2SecurityGroupOwnerId => Str
 
-  
-
-The AWS account ID of the Amazon EC2 security group owner.
-
-
-
-
-
-
-
-
-
+  The AWS account ID of the Amazon EC2 security group owner.
 
 =head2 Status => Str
 
-  
-
-The status of the Amazon EC2 security group.
-
-
-
-
-
-
-
-
-
+  The status of the Amazon EC2 security group.
 
 
 

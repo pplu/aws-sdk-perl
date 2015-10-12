@@ -36,9 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
 =head2 BitDepth => Str
 
-  
-
-You can only choose an audio bit depth when you specify C<flac> or
+  You can only choose an audio bit depth when you specify C<flac> or
 C<pcm> for the value of Audio:Codec.
 
 The bit depth of a sample is how many bits of information are included
@@ -49,40 +47,18 @@ Valid values are C<16> and C<24>.
 
 The most common bit depth is C<24>.
 
-
-
-
-
-
-
-
-
-
 =head2 BitOrder => Str
 
-  
-
-You can only choose an audio bit order when you specify C<pcm> for the
+  You can only choose an audio bit order when you specify C<pcm> for the
 value of Audio:Codec.
 
 The order the bits of a PCM sample are stored in.
 
 The supported value is C<LittleEndian>.
 
-
-
-
-
-
-
-
-
-
 =head2 Profile => Str
 
-  
-
-You can only choose an audio profile when you specify AAC for the value
+  You can only choose an audio profile when you specify AAC for the value
 of Audio:Codec.
 
 Specify the AAC profile for the output file. Elastic Transcoder
@@ -111,35 +87,15 @@ If you created any presets before AAC profiles were added, Elastic
 Transcoder automatically updated your presets to use AAC-LC. You can
 change the value as required.
 
-
-
-
-
-
-
-
-
-
 =head2 Signed => Str
 
-  
-
-You can only choose whether an audio sample is signed when you specify
+  You can only choose whether an audio sample is signed when you specify
 C<pcm> for the value of Audio:Codec.
 
 Whether audio samples are represented with negative and positive
 numbers (signed) or only positive numbers (unsigned).
 
 The supported value is C<Signed>.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -15,18 +15,7 @@ Paws::Lambda::InvokeAsyncResponse
 
 =head2 Status => Int
 
-  
-
-It will be 202 upon success.
-
-
-
-
-
-
-
-
-
+  It will be 202 upon success.
 
 
 =cut

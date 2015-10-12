@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Se
 
 =head2 EndingSequenceNumber => Str
 
-  
-
-The ending sequence number for the range. Shards that are in the OPEN
+  The ending sequence number for the range. Shards that are in the OPEN
 state have an ending sequence number of C<null>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> StartingSequenceNumber => Str
 
-  
-
-The starting sequence number for the range.
-
-
-
-
-
-
-
-
-
+  The starting sequence number for the range.
 
 
 

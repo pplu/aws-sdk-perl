@@ -36,70 +36,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
 =head2 control => Str
 
-  
-
-I<Optional.> Data attached to the event that can be used by the decider
+  I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> decisionTaskCompletedEventId => Int
 
-  
-
-The ID of the C<DecisionTaskCompleted> event corresponding to the
+  The ID of the C<DecisionTaskCompleted> event corresponding to the
 decision task that resulted in the C<StartTimer> decision for this
 activity task. This information can be useful for diagnosing problems
 by tracing back the chain of events leading up to this event.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> startToFireTimeout => Str
 
-  
-
-The duration of time after which the timer will fire.
+  The duration of time after which the timer will fire.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> timerId => Str
 
-  
-
-The unique ID of the timer that was started.
-
-
-
-
-
-
-
-
-
+  The unique ID of the timer that was started.
 
 
 

@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head2 Label => Str
 
-  
-
-A unique name representing this regular expression.
-
-
-
-
-
-
-
-
-
+  A unique name representing this regular expression.
 
 =head2 Pattern => Str
 
-  
-
-The regular expression pattern that a string configuration option value
+  The regular expression pattern that a string configuration option value
 with this restriction must match.
-
-
-
-
-
-
-
-
-
 
 
 

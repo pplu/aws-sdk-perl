@@ -30,33 +30,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CloudFrontOriginAccessIdentityConfig => Paws::CloudFront::CloudFrontOriginAccessIdentityConfig
 
-  
-
-The origin access identity's configuration information.
-
-
-
-
-
-
-
-
-
+  The origin access identity's configuration information.
 
 =head2 ETag => Str
 
-  
-
-The current version of the configuration. For example: E2QWRUHAPOMQZL.
-
-
-
-
-
-
-
-
-
+  The current version of the configuration. For example: E2QWRUHAPOMQZL.
 
 
 

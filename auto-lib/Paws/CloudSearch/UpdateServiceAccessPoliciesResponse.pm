@@ -15,18 +15,7 @@ Paws::CloudSearch::UpdateServiceAccessPoliciesResponse
 
 =head2 B<REQUIRED> AccessPolicies => Paws::CloudSearch::AccessPoliciesStatus
 
-  
-
-The access rules configured for the domain.
-
-
-
-
-
-
-
-
-
+  The access rules configured for the domain.
 
 
 =cut

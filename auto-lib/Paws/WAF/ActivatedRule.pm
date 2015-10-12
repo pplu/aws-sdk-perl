@@ -35,9 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Activa
 
 =head2 B<REQUIRED> Action => Paws::WAF::WafAction
 
-  
-
-Specifies the action that CloudFront or AWS WAF takes when a web
+  Specifies the action that CloudFront or AWS WAF takes when a web
 request matches the conditions in the C<Rule>. Valid values for
 C<Action> include the following:
 
@@ -54,53 +52,22 @@ request based on the remaining rules in the web ACL.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Priority => Int
 
-  
-
-Specifies the order in which the C<Rules> in a C<WebACL> are evaluated.
+  Specifies the order in which the C<Rules> in a C<WebACL> are evaluated.
 Rules with a lower value for C<Priority> are evaluated before C<Rules>
 with a higher value. The value must be a unique integer. If you add
 multiple C<Rules> to a C<WebACL>, the values don't need to be
 consecutive.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> RuleId => Str
 
-  
-
-The C<RuleId> for a C<Rule>. You use C<RuleId> to get more information
+  The C<RuleId> for a C<Rule>. You use C<RuleId> to get more information
 about a C<Rule> (see GetRule), update a C<Rule> (see UpdateRule),
 insert a C<Rule> into a C<WebACL> or delete a one from a C<WebACL> (see
 UpdateWebACL), or delete a C<Rule> from AWS WAF (see DeleteRule).
 
 C<RuleId> is returned by CreateRule and by ListRules.
-
-
-
-
-
-
-
-
-
 
 
 

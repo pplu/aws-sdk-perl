@@ -36,48 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> domain => Str
 
-  
-
-The name of the domain containing the workflow execution to cancel.
-
-
-
-
-
-
-
-
-
+  The name of the domain containing the workflow execution to cancel.
 
 =head2 runId => Str
 
-  
-
-The runId of the workflow execution to cancel.
-
-
-
-
-
-
-
-
-
+  The runId of the workflow execution to cancel.
 
 =head2 B<REQUIRED> workflowId => Str
 
-  
-
-The workflowId of the workflow execution to cancel.
-
-
-
-
-
-
-
-
-
+  The workflowId of the workflow execution to cancel.
 
 
 

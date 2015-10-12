@@ -37,25 +37,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head2 bucket => Str
 
-  
-
-The name of the Amazon S3 bucket where the application revision is
+  The name of the Amazon S3 bucket where the application revision is
 stored.
-
-
-
-
-
-
-
-
-
 
 =head2 bundleType => Str
 
-  
-
-The file type of the application revision. Must be one of the
+  The file type of the application revision. Must be one of the
 following:
 
 =over
@@ -68,68 +55,26 @@ following:
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 eTag => Str
 
-  
-
-The ETag of the Amazon S3 object that represents the bundled artifacts
+  The ETag of the Amazon S3 object that represents the bundled artifacts
 for the application revision.
 
 If the ETag is not specified as an input parameter, ETag validation of
 the object will be skipped.
 
-
-
-
-
-
-
-
-
-
 =head2 key => Str
 
-  
-
-The name of the Amazon S3 object that represents the bundled artifacts
+  The name of the Amazon S3 object that represents the bundled artifacts
 for the application revision.
-
-
-
-
-
-
-
-
-
 
 =head2 version => Str
 
-  
-
-A specific version of the Amazon S3 object that represents the bundled
+  A specific version of the Amazon S3 object that represents the bundled
 artifacts for the application revision.
 
 If the version is not specified, the system will use the most recent
 version by default.
-
-
-
-
-
-
-
-
-
 
 
 

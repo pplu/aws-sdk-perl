@@ -34,33 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head2 B<REQUIRED> name => Str
 
-  
-
-The name of the gate declaration.
-
-
-
-
-
-
-
-
-
+  The name of the gate declaration.
 
 =head2 B<REQUIRED> type => Str
 
-  
-
-The type of the gate declaration.
-
-
-
-
-
-
-
-
-
+  The type of the gate declaration.
 
 
 

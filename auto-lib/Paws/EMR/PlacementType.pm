@@ -33,18 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Placem
 
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-  
-
-The Amazon EC2 Availability Zone for the job flow.
-
-
-
-
-
-
-
-
-
+  The Amazon EC2 Availability Zone for the job flow.
 
 
 

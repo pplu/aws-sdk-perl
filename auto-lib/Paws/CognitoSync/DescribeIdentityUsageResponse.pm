@@ -15,18 +15,7 @@ Paws::CognitoSync::DescribeIdentityUsageResponse
 
 =head2 IdentityUsage => Paws::CognitoSync::IdentityUsage
 
-  
-
-Usage information for the identity.
-
-
-
-
-
-
-
-
-
+  Usage information for the identity.
 
 
 =cut

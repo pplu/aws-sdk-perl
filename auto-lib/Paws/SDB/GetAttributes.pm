@@ -37,67 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeNames => ArrayRef[Str]
 
-  
-
-The names of the attributes.
-
-
-
-
-
-
-
-
-
+  The names of the attributes.
 
 =head2 ConsistentRead => Bool
 
-  
-
-Determines whether or not strong consistency should be enforced when
+  Determines whether or not strong consistency should be enforced when
 data is read from SimpleDB. If C<true>, any data previously written to
 SimpleDB will be returned. Otherwise, results will be consistent
 eventually, and the client may not see data that was written
 immediately before your read.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of the domain in which to perform the operation.
-
-
-
-
-
-
-
-
-
+  The name of the domain in which to perform the operation.
 
 =head2 B<REQUIRED> ItemName => Str
 
-  
-
-The name of the item.
-
-
-
-
-
-
-
-
-
+  The name of the item.
 
 
 

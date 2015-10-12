@@ -35,24 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::EventI
 
 =head2 EventDescription => Str
 
-  
-
-The description of the event.
-
-
-
-
-
-
-
-
-
+  The description of the event.
 
 =head2 EventSubType => Str
 
-  
-
-The event.
+  The event.
 
 The following are the C<error> events.
 
@@ -148,30 +135,10 @@ C<terminated> - An instance was terminated by the user.
 
 =back
 
-
-
-
-
-
-
-
-
-
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance. This information is available only for
+  The ID of the instance. This information is available only for
 C<instanceChange> events.
-
-
-
-
-
-
-
-
-
 
 
 

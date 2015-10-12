@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::IcmpTy
 
 =head2 Code => Int
 
-  
-
-The ICMP type. A value of -1 means all types.
-
-
-
-
-
-
-
-
-
+  The ICMP type. A value of -1 means all types.
 
 =head2 Type => Int
 
-  
-
-The ICMP code. A value of -1 means all codes for the specified ICMP
+  The ICMP code. A value of -1 means all codes for the specified ICMP
 type.
-
-
-
-
-
-
-
-
-
 
 
 

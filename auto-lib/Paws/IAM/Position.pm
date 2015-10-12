@@ -34,34 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Positi
 
 =head2 Column => Int
 
-  
-
-The column in the line containing the specified position in the
+  The column in the line containing the specified position in the
 document.
-
-
-
-
-
-
-
-
-
 
 =head2 Line => Int
 
-  
-
-The line containing the specified position in the document.
-
-
-
-
-
-
-
-
-
+  The line containing the specified position in the document.
 
 
 

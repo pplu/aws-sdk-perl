@@ -36,41 +36,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head2 B<REQUIRED> DataLocationS3 => Str
 
-  
-
-The location of the data file(s) used by a C<DataSource>. The URI
+  The location of the data file(s) used by a C<DataSource>. The URI
 specifies a data file or an Amazon Simple Storage Service (Amazon S3)
 directory or bucket containing data files.
 
-
-
-
-
-
-
-
-
-
 =head2 DataRearrangement => Str
 
-  
-
-Describes the splitting requirement of a C<Datasource>.
-
-
-
-
-
-
-
-
-
+  Describes the splitting requirement of a C<Datasource>.
 
 =head2 DataSchema => Str
 
-  
-
-A JSON string that represents the schema for an Amazon S3
+  A JSON string that represents the schema for an Amazon S3
 C<DataSource>. The C<DataSchema> defines the structure of the
 observation data in the data file(s) referenced in the C<DataSource>.
 
@@ -102,29 +78,9 @@ value. Use the following format to define your C<DataSchema>.
 
 "excludedVariableNames": [ "F6" ] }
 
-
-
-
-
-
-
-
-
-
 =head2 DataSchemaLocationS3 => Str
 
-  
-
-Describes the schema Location in Amazon S3.
-
-
-
-
-
-
-
-
-
+  Describes the schema Location in Amazon S3.
 
 
 

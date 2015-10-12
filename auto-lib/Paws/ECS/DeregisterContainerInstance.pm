@@ -36,46 +36,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster that
+  The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container instance to deregister. If you do not specify a
 cluster, the default cluster is assumed.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> containerInstance => Str
 
-  
-
-The container instance ID or full Amazon Resource Name (ARN) of the
+  The container instance ID or full Amazon Resource Name (ARN) of the
 container instance to deregister. The ARN contains the C<arn:aws:ecs>
 namespace, followed by the region of the container instance, the AWS
 account ID of the container instance owner, the C<container-instance>
 namespace, and then the container instance ID. For example,
 arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>.
 
-
-
-
-
-
-
-
-
-
 =head2 force => Bool
 
-  
-
-Forces the deregistration of the container instance. If you have tasks
+  Forces the deregistration of the container instance. If you have tasks
 running on the container instance when you deregister it with the
 C<force> option, these tasks remain running and they continue to pass
 Elastic Load Balancing load balancer health checks until you terminate
@@ -84,15 +60,6 @@ orphaned (no longer monitored or accounted for by Amazon ECS). If an
 orphaned task on your container instance is part of an Amazon ECS
 service, then the service scheduler starts another copy of that task,
 on a different container instance if possible.
-
-
-
-
-
-
-
-
-
 
 
 
