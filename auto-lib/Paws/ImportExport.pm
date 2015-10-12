@@ -55,6 +55,9 @@ package Paws::ImportExport;
     my $call_object = $self->new_with_coercions('Paws::ImportExport::UpdateJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CancelJob CreateJob GetShippingLabel GetStatus ListJobs UpdateJob / }
+
 1;
 
 ### main pod documentation begin ###

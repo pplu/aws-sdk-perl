@@ -97,6 +97,9 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/BatchGetItem BatchWriteItem CreateTable DeleteItem DeleteTable DescribeTable GetItem ListTables PutItem Query Scan UpdateItem UpdateTable / }
+
 1;
 
 ### main pod documentation begin ###

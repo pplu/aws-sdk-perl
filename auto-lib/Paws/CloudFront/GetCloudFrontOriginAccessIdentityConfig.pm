@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig2015_07_27;
+package Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
 

@@ -93,6 +93,9 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::UpdateRadius', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/ConnectDirectory CreateAlias CreateComputer CreateDirectory CreateSnapshot DeleteDirectory DeleteSnapshot DescribeDirectories DescribeSnapshots DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits RestoreFromSnapshot UpdateRadius / }
+
 1;
 
 ### main pod documentation begin ###

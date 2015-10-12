@@ -47,7 +47,11 @@ has credentials => (
   },
   coerce => 1
 );
-
+has immutable => (
+  is => 'rw',
+  isa => 'Bool',
+  default => 0,
+);
 __PACKAGE__->meta->make_immutable;
 1;
 
@@ -83,14 +87,23 @@ class_has default_config => (is => 'rw', isa => 'Paws::SDK::Config', default => 
 
 sub load_class {
   my (undef, @classes) = @_;
-  Module::Runtime::require_module($_) for (@classes);
+  foreach my $class (@classes) {
+    Module::Runtime::require_module($class);
+    # immutability is a global setting that will affect all instances
+    $class->meta->make_immutable if (Paws->default_config->immutable);
+  }
 }
 
 sub available_services {
   my ($self) = @_;
+  $self = $self->get_self;
+
+  my $skip_list = {
+    API => 1, Credential => 1, Exception => 1
+  };
   require Module::Find;
   my $class_prefix = $self->_class_prefix;
-  return grep { $_ ne 'API' } map { $_ =~ s/^$class_prefix//; $_ } Module::Find::findsubmod Paws;
+  return grep { not $skip_list->{ $_ } } map { $_ =~ s/^$class_prefix//; $_ } Module::Find::findsubmod Paws;
 }
 
 sub get_self {
@@ -128,6 +141,67 @@ sub service {
   );
 
   return $instance;
+}
+
+sub preload_service {
+  my (undef, $service, @operations) = @_;
+
+  # load the service class
+  my $service_class = Paws->class_for_service($service);
+
+  @operations = ('*') if (@operations == 0);
+
+  my %calculated_operations = ();
+  foreach my $operation (@operations) {
+    if ($operation eq '*') {
+      $calculated_operations{ $_ } = 1 for ($service_class->operations);
+    } elsif ($operation =~ m/\*/) {
+      die "Wildcards not implemented yet";
+    } else {
+      $calculated_operations{ $operation } = 1;
+    }
+  }
+
+  _preload_operations($service_class, keys %calculated_operations);
+}
+
+sub _preload_operations {
+  my ($service_class, @operations) = @_;
+
+  foreach my $operation (@operations) {
+    # Each operation has two classes associated:
+
+    # 1st preload the classes that represent the arguments for a call
+    my $op_params_class = "${service_class}::${operation}";
+    _preload_scanclass($op_params_class);
+
+    # 2nd preload the classes that represent responses from the call
+    _preload_scanclass($op_params_class->_returns) if ($op_params_class->_returns);
+  }
+}
+
+sub _preload_scanclass {
+  my ($class) = @_;
+
+  # If the class is already loaded, we really don't want to be rescanning it
+  # this avoid infinite recursion on DynamoDB, for example
+  return if (Moose::Util::find_meta($class));
+
+  Paws->load_class($class);
+
+  foreach my $att ($class->meta->get_all_attributes){
+    my $tconst = $att->type_constraint;
+
+    if ($tconst->isa('Moose::Meta::TypeConstraint::Class')) {
+      # Any attribute that isa class will need to be inspected
+      _preload_scanclass($tconst->class);
+    } elsif ($tconst->isa('Moose::Meta::TypeConstraint::Parameterized') and
+             $tconst->type_parameter->isa('Moose::Meta::TypeConstraint::Class')) {
+      # those attributes can also be found in parametrized 
+      # type constraints (ArrayRef[...], Hashref[...])
+      _preload_scanclass($tconst->type_parameter->class);
+    }
+  }
 }
 
 1;

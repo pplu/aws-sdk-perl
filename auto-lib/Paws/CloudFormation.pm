@@ -97,6 +97,9 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ValidateTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CancelUpdateStack CreateStack DeleteStack DescribeAccountLimits DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost GetStackPolicy GetTemplate GetTemplateSummary ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
+
 1;
 
 ### main pod documentation begin ###

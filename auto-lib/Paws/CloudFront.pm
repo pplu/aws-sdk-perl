@@ -31,116 +31,119 @@ package Paws::CloudFront;
   });
 
   
-  sub CreateCloudFrontOriginAccessIdentity2015_07_27 {
+  sub CreateCloudFrontOriginAccessIdentity {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateCloudFrontOriginAccessIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateDistribution2015_07_27 {
+  sub CreateDistribution {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateDistribution2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateInvalidation2015_07_27 {
+  sub CreateInvalidation {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateInvalidation2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateInvalidation', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateStreamingDistribution2015_07_27 {
+  sub CreateStreamingDistribution {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateStreamingDistribution2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateStreamingDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteCloudFrontOriginAccessIdentity2015_07_27 {
+  sub DeleteCloudFrontOriginAccessIdentity {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteDistribution2015_07_27 {
+  sub DeleteDistribution {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteDistribution2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteStreamingDistribution2015_07_27 {
+  sub DeleteStreamingDistribution {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteStreamingDistribution2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteStreamingDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetCloudFrontOriginAccessIdentity2015_07_27 {
+  sub GetCloudFrontOriginAccessIdentity {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetCloudFrontOriginAccessIdentity2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetCloudFrontOriginAccessIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetCloudFrontOriginAccessIdentityConfig2015_07_27 {
+  sub GetCloudFrontOriginAccessIdentityConfig {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetDistribution2015_07_27 {
+  sub GetDistribution {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetDistribution2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetDistributionConfig2015_07_27 {
+  sub GetDistributionConfig {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetDistributionConfig2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetDistributionConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetInvalidation2015_07_27 {
+  sub GetInvalidation {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetInvalidation2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetInvalidation', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetStreamingDistribution2015_07_27 {
+  sub GetStreamingDistribution {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetStreamingDistribution2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetStreamingDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetStreamingDistributionConfig2015_07_27 {
+  sub GetStreamingDistributionConfig {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetStreamingDistributionConfig2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetStreamingDistributionConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListCloudFrontOriginAccessIdentities2015_07_27 {
+  sub ListCloudFrontOriginAccessIdentities {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListCloudFrontOriginAccessIdentities2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListCloudFrontOriginAccessIdentities', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListDistributions2015_07_27 {
+  sub ListDistributions {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListDistributions2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListDistributions', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListDistributionsByWebACLId2015_07_27 {
+  sub ListDistributionsByWebACLId {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListDistributionsByWebACLId2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListDistributionsByWebACLId', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListInvalidations2015_07_27 {
+  sub ListInvalidations {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListInvalidations2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListInvalidations', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListStreamingDistributions2015_07_27 {
+  sub ListStreamingDistributions {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListStreamingDistributions2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListStreamingDistributions', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub UpdateCloudFrontOriginAccessIdentity2015_07_27 {
+  sub UpdateCloudFrontOriginAccessIdentity {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub UpdateDistribution2015_07_27 {
+  sub UpdateDistribution {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateDistribution2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub UpdateStreamingDistribution2015_07_27 {
+  sub UpdateStreamingDistribution {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateStreamingDistribution2015_07_27', @_);
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateStreamingDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateInvalidation CreateStreamingDistribution DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetInvalidation GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListInvalidations ListStreamingDistributions UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateStreamingDistribution / }
+
 1;
 
 ### main pod documentation begin ###

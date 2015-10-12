@@ -28,6 +28,9 @@ package Paws::DynamoDBStreams;
     my $call_object = $self->new_with_coercions('Paws::DynamoDBStreams::ListStreams', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/DescribeStream GetRecords GetShardIterator ListStreams / }
+
 1;
 
 ### main pod documentation begin ###

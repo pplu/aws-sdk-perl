@@ -156,6 +156,9 @@ package Paws::Lambda;
 
     return 'Paws::Lambda::ListFunctions'->_returns->new(Functions => $array);
   }
+
+  sub operations { qw/AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction GetAlias GetEventSourceMapping GetFunction GetFunctionConfiguration GetPolicy Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctions ListVersionsByFunction PublishVersion RemovePermission UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration / }
+
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::CreateDistribution2015_07_27;
+package Paws::CloudFront::CreateDistribution;
   use Moose;
   has DistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::DistributionConfig', required => 1);
 

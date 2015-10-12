@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::CreateStreamingDistribution2015_07_27;
+package Paws::CloudFront::CreateStreamingDistribution;
   use Moose;
   has StreamingDistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionConfig', required => 1);
 

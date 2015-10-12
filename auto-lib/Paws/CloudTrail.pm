@@ -68,6 +68,9 @@ package Paws::CloudTrail;
     my $call_object = $self->new_with_coercions('Paws::CloudTrail::UpdateTrail', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AddTags CreateTrail DeleteTrail DescribeTrails GetTrailStatus ListPublicKeys ListTags LookupEvents RemoveTags StartLogging StopLogging UpdateTrail / }
+
 1;
 
 ### main pod documentation begin ###

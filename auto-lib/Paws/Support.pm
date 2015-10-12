@@ -78,6 +78,9 @@ package Paws::Support;
     my $call_object = $self->new_with_coercions('Paws::Support::ResolveCase', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AddAttachmentsToSet AddCommunicationToCase CreateCase DescribeAttachment DescribeCases DescribeCommunications DescribeServices DescribeSeverityLevels DescribeTrustedAdvisorCheckRefreshStatuses DescribeTrustedAdvisorCheckResult DescribeTrustedAdvisorChecks DescribeTrustedAdvisorCheckSummaries RefreshTrustedAdvisorCheck ResolveCase / }
+
 1;
 
 ### main pod documentation begin ###

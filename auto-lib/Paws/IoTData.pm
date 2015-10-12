@@ -28,6 +28,9 @@ package Paws::IoTData;
     my $call_object = $self->new_with_coercions('Paws::IoTData::UpdateThingShadow', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/DeleteThingShadow GetThingShadow Publish UpdateThingShadow / }
+
 1;
 
 ### main pod documentation begin ###

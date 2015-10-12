@@ -202,6 +202,9 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::VerifyEmailIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CloneReceiptRuleSet CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendEmail SendRawEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityNotificationTopic SetReceiptRulePosition UpdateReceiptRule VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
+
 1;
 
 ### main pod documentation begin ###

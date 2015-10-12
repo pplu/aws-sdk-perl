@@ -171,6 +171,9 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::UpdateWebACL', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateByteMatchSet CreateIPSet CreateRule CreateSqlInjectionMatchSet CreateWebACL DeleteByteMatchSet DeleteIPSet DeleteRule DeleteSqlInjectionMatchSet DeleteWebACL GetByteMatchSet GetChangeToken GetChangeTokenStatus GetIPSet GetRule GetSampledRequests GetSqlInjectionMatchSet GetWebACL ListByteMatchSets ListIPSets ListRules ListSqlInjectionMatchSets ListWebACLs UpdateByteMatchSet UpdateIPSet UpdateRule UpdateSqlInjectionMatchSet UpdateWebACL / }
+
 1;
 
 ### main pod documentation begin ###

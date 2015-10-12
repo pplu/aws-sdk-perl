@@ -63,6 +63,9 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdateRepositoryName', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteRepository GetBranch GetRepository ListBranches ListRepositories UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }
+
 1;
 
 ### main pod documentation begin ###

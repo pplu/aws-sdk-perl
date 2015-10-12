@@ -63,6 +63,9 @@ package Paws::EFS;
     my $call_object = $self->new_with_coercions('Paws::EFS::ModifyMountTargetSecurityGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateFileSystem CreateMountTarget CreateTags DeleteFileSystem DeleteMountTarget DeleteTags DescribeFileSystems DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ModifyMountTargetSecurityGroups / }
+
 1;
 
 ### main pod documentation begin ###

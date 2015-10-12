@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::ListInvalidations2015_07_27;
+package Paws::CloudFront::ListInvalidations;
   use Moose;
   has DistributionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DistributionId' , required => 1);
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );

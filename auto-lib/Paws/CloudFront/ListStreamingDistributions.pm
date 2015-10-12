@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::ListStreamingDistributions2015_07_27;
+package Paws::CloudFront::ListStreamingDistributions;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Marker' );
   has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'MaxItems' );

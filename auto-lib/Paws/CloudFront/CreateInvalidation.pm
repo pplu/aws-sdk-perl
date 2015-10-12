@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::CreateInvalidation2015_07_27;
+package Paws::CloudFront::CreateInvalidation;
   use Moose;
   has DistributionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DistributionId' , required => 1);
   has InvalidationBatch => (is => 'ro', isa => 'Paws::CloudFront::InvalidationBatch', required => 1);

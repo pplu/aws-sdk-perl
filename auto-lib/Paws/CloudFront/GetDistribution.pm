@@ -1,5 +1,5 @@
 
-package Paws::CloudFront::GetDistribution2015_07_27;
+package Paws::CloudFront::GetDistribution;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
 

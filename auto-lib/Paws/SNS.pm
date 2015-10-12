@@ -132,6 +132,9 @@ package Paws::SNS;
     my $call_object = $self->new_with_coercions('Paws::SNS::Unsubscribe', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AddPermission ConfirmSubscription CreatePlatformApplication CreatePlatformEndpoint CreateTopic DeleteEndpoint DeletePlatformApplication DeleteTopic GetEndpointAttributes GetPlatformApplicationAttributes GetSubscriptionAttributes GetTopicAttributes ListEndpointsByPlatformApplication ListPlatformApplications ListSubscriptions ListSubscriptionsByTopic ListTopics Publish RemovePermission SetEndpointAttributes SetPlatformApplicationAttributes SetSubscriptionAttributes SetTopicAttributes Subscribe Unsubscribe / }
+
 1;
 
 ### main pod documentation begin ###

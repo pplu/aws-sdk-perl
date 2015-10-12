@@ -43,6 +43,9 @@ package Paws::Firehose;
     my $call_object = $self->new_with_coercions('Paws::Firehose::UpdateDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateDeliveryStream DeleteDeliveryStream DescribeDeliveryStream ListDeliveryStreams PutRecord PutRecordBatch UpdateDestination / }
+
 1;
 
 ### main pod documentation begin ###

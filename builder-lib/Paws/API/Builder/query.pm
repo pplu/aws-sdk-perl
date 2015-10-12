@@ -96,6 +96,9 @@ package [% c.api %];
     return '[% c.api %]::[% op %]'->_returns->new([% paginator.result_key %] => $array);
   }
   [%- END %]
+
+  sub operations { qw/[% FOR op IN c.api_struct.operations.keys.sort; op _ ' '; END %]/ }
+
 1;
 [% c.service_documentation_template | eval %]
 #);

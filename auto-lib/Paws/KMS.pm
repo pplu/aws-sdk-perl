@@ -138,6 +138,9 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::UpdateKeyDescription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus ListAliases ListGrants ListKeyPolicies ListKeys PutKeyPolicy ReEncrypt RetireGrant RevokeGrant UpdateAlias UpdateKeyDescription / }
+
 1;
 
 ### main pod documentation begin ###

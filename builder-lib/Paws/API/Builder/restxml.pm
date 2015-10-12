@@ -15,7 +15,7 @@ package Paws::API::Builder::restxml {
   has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.operation(op_name) %]
 [%- shape = c.input_for_operation(op_name) %]
-package [% c.api %]::[% operation.name %];
+package [% c.api %]::[% op_name %];
   use Moose;
 [% FOREACH param_name IN shape.members.keys.sort -%]
   [%- member = c.shape(shape.members.$param_name.shape) -%]
@@ -74,7 +74,7 @@ package [% c.api %];
 
   [%- c.service_endpoint_rules %]
   [% FOR op IN c.api_struct.operations.keys.sort %]
-  [%- op_name = c.api_struct.operations.$op.name %]
+  [%- op_name = op %]
   sub [% op_name %] {
     my $self = shift;
     my $call_object = $self->new_with_coercions('[% c.api %]::[% op_name %]', @_);
@@ -98,6 +98,9 @@ package [% c.api %];
     return '[% c.api %]::[% op %]'->_returns->new([% paginator.result_key %] => $array);
   }
   [%- END %]
+
+  sub operations { qw/[% FOR op IN c.api_struct.operations.keys.sort; op _ ' '; END %]/ }
+
 1;
 [% c.service_documentation_template | eval %]
 #);

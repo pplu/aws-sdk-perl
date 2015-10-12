@@ -103,6 +103,9 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeVirtualInterfaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+
+  sub operations { qw/AllocateConnectionOnInterconnect AllocatePrivateVirtualInterface AllocatePublicVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateConnection CreateInterconnect CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteConnection DeleteInterconnect DeleteVirtualInterface DescribeConnections DescribeConnectionsOnInterconnect DescribeInterconnects DescribeLocations DescribeVirtualGateways DescribeVirtualInterfaces / }
+
 1;
 
 ### main pod documentation begin ###
