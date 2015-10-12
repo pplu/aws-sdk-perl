@@ -273,7 +273,7 @@ This class represents the parameters used for calling the method [% operation.na
 [% c.api_struct.metadata.serviceFullName %] service. Use the attributes of this class
 as arguments to method [% operation.name %].
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to [% operation.name %].
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to [% operation.name %].
 
 As an example:
 
