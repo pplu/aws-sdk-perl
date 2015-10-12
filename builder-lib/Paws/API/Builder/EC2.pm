@@ -128,7 +128,7 @@ package [% inner_class %];
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END -%]
 1;
-[%\# c.innerclass_documentation_template | eval %]
+[% c.innerclass_documentation_template | eval %]
 [%- -%]
 #);
 
