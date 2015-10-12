@@ -40,6 +40,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Attrib
 
 =head1 ATTRIBUTES
 
+=head2 ApproximateFirstReceiveTimestamp => Str
+
+=head2 ApproximateReceiveCount => Str
+
+=head2 SenderId => Str
+
+=head2 SentTimestamp => Str
+
 
 
 =head1 SEE ALSO

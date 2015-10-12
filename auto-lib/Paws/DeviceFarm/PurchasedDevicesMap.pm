@@ -38,6 +38,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head1 ATTRIBUTES
 
+=head2 ANDROID => Int
+
+=head2 IOS => Int
+
 
 
 =head1 SEE ALSO

@@ -43,6 +43,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
 =head1 ATTRIBUTES
 
+=head2 ERRORED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+
+=head2 FAILED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+
+=head2 PASSED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+
+=head2 PENDING => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+
+=head2 SKIPPED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+
+=head2 STOPPED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+
+=head2 WARNED => ArrayRef[L<Paws::DeviceFarm::UniqueProblem>]
+
 
 
 =head1 SEE ALSO

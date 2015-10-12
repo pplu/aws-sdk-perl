@@ -38,6 +38,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head1 ATTRIBUTES
 
+=head2 Algorithm => Str
+
+=head2 PredictiveModelType => Str
+
 
 
 =head1 SEE ALSO

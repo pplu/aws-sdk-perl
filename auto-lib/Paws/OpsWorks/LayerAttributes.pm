@@ -61,6 +61,56 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::L
 
 =head1 ATTRIBUTES
 
+=head2 BundlerVersion => Str
+
+=head2 EcsClusterArn => Str
+
+=head2 EnableHaproxyStats => Str
+
+=head2 GangliaPassword => Str
+
+=head2 GangliaUrl => Str
+
+=head2 GangliaUser => Str
+
+=head2 HaproxyHealthCheckMethod => Str
+
+=head2 HaproxyHealthCheckUrl => Str
+
+=head2 HaproxyStatsPassword => Str
+
+=head2 HaproxyStatsUrl => Str
+
+=head2 HaproxyStatsUser => Str
+
+=head2 JavaAppServer => Str
+
+=head2 JavaAppServerVersion => Str
+
+=head2 Jvm => Str
+
+=head2 JvmOptions => Str
+
+=head2 JvmVersion => Str
+
+=head2 ManageBundler => Str
+
+=head2 MemcachedMemory => Str
+
+=head2 MysqlRootPassword => Str
+
+=head2 MysqlRootPasswordUbiquitous => Str
+
+=head2 NodejsVersion => Str
+
+=head2 PassengerVersion => Str
+
+=head2 RailsStack => Str
+
+=head2 RubygemsVersion => Str
+
+=head2 RubyVersion => Str
+
 
 
 =head1 SEE ALSO
