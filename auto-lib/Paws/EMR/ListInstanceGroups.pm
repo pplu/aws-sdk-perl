@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListInstanceGro
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method ListInstanceGroups.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListInstanceGroups.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListInstanceGroups.
 
 As an example:
 

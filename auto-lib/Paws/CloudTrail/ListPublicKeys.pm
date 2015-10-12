@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListPublicKeys 
 AWS CloudTrail service. Use the attributes of this class
 as arguments to method ListPublicKeys.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListPublicKeys.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPublicKeys.
 
 As an example:
 

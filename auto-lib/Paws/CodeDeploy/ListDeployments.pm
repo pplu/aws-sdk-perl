@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method ListDeployments
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method ListDeployments.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListDeployments.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDeployments.
 
 As an example:
 

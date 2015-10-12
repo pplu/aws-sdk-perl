@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteCustomAct
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method DeleteCustomActionType.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCustomActionType.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCustomActionType.
 
 As an example:
 

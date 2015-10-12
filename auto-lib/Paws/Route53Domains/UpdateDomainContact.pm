@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method UpdateDomainCon
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method UpdateDomainContact.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDomainContact.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDomainContact.
 
 As an example:
 

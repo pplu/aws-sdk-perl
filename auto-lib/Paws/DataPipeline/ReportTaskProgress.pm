@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ReportTaskProgr
 AWS Data Pipeline service. Use the attributes of this class
 as arguments to method ReportTaskProgress.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ReportTaskProgress.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReportTaskProgress.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteSnapshot 
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method DeleteSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSnapshot.
 
 As an example:
 

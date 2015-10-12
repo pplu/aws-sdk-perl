@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetGroupPolicy 
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetGroupPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetGroupPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetGroupPolicy.
 
 As an example:
 

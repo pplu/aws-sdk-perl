@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetCredentialsF
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method GetCredentialsForIdentity.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetCredentialsForIdentity.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCredentialsForIdentity.
 
 As an example:
 

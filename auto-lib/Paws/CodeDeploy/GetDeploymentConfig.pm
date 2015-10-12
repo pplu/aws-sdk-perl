@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetDeploymentCo
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method GetDeploymentConfig.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetDeploymentConfig.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDeploymentConfig.
 
 As an example:
 

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method MergeDeveloperI
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method MergeDeveloperIdentities.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to MergeDeveloperIdentities.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to MergeDeveloperIdentities.
 
 As an example:
 

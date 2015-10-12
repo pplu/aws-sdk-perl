@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteStream on
 Amazon Kinesis service. Use the attributes of this class
 as arguments to method DeleteStream.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteStream.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteStream.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteOptionGro
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DeleteOptionGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteOptionGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteOptionGroup.
 
 As an example:
 

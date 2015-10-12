@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeElastic
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeElasticIps.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeElasticIps.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeElasticIps.
 
 As an example:
 

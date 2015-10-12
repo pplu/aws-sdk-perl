@@ -31,7 +31,7 @@ This class represents the parameters used for calling the method RevokeSecurityG
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method RevokeSecurityGroupIngress.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RevokeSecurityGroupIngress.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RevokeSecurityGroupIngress.
 
 As an example:
 

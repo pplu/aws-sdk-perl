@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method StopTask on the
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method StopTask.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StopTask.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StopTask.
 
 As an example:
 

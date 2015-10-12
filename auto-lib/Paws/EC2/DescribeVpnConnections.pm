@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeVpnConn
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeVpnConnections.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVpnConnections.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVpnConnections.
 
 As an example:
 

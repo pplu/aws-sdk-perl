@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteTapeArchi
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DeleteTapeArchive.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTapeArchive.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTapeArchive.
 
 As an example:
 

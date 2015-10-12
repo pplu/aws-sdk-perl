@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method SendRawEmail on
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method SendRawEmail.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SendRawEmail.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendRawEmail.
 
 As an example:
 

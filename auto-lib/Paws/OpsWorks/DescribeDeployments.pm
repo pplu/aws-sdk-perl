@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeDeploym
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeDeployments.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDeployments.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDeployments.
 
 As an example:
 

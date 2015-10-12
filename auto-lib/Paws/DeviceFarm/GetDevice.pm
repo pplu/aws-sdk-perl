@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetDevice on th
 AWS Device Farm service. Use the attributes of this class
 as arguments to method GetDevice.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetDevice.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDevice.
 
 As an example:
 

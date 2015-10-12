@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ListPipelines o
 AWS Data Pipeline service. Use the attributes of this class
 as arguments to method ListPipelines.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListPipelines.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPipelines.
 
 As an example:
 

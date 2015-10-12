@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListStreams on 
 Amazon DynamoDB Streams service. Use the attributes of this class
 as arguments to method ListStreams.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListStreams.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListStreams.
 
 As an example:
 

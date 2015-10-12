@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateBranch on
 AWS CodeCommit service. Use the attributes of this class
 as arguments to method CreateBranch.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateBranch.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateBranch.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteHapg on t
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method DeleteHapg.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteHapg.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteHapg.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateLogGroup 
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method CreateLogGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateLogGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLogGroup.
 
 As an example:
 

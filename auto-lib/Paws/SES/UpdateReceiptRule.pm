@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateReceiptRu
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method UpdateReceiptRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateReceiptRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateReceiptRule.
 
 As an example:
 

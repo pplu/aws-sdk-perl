@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method UpdateWebACL on
 AWS WAF service. Use the attributes of this class
 as arguments to method UpdateWebACL.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateWebACL.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateWebACL.
 
 As an example:
 

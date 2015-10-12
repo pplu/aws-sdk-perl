@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method GetLogEvents on
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method GetLogEvents.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetLogEvents.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLogEvents.
 
 As an example:
 

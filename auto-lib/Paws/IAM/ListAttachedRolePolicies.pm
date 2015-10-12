@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method ListAttachedRol
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method ListAttachedRolePolicies.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListAttachedRolePolicies.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAttachedRolePolicies.
 
 As an example:
 

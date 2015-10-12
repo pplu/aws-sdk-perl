@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method EnableMetricsCo
 Auto Scaling service. Use the attributes of this class
 as arguments to method EnableMetricsCollection.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to EnableMetricsCollection.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnableMetricsCollection.
 
 As an example:
 

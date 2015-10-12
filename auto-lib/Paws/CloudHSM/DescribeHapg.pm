@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeHapg on
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method DescribeHapg.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeHapg.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeHapg.
 
 As an example:
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeService
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeServiceErrors.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeServiceErrors.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeServiceErrors.
 
 As an example:
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeExpress
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method DescribeExpressions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeExpressions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeExpressions.
 
 As an example:
 

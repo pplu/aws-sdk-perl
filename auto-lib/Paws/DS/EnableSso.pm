@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method EnableSso on th
 AWS Directory Service service. Use the attributes of this class
 as arguments to method EnableSso.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to EnableSso.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnableSso.
 
 As an example:
 

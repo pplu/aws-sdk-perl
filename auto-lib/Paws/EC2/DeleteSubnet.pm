@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteSubnet on
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DeleteSubnet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSubnet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSubnet.
 
 As an example:
 

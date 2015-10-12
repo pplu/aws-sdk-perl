@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateLogStream
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method CreateLogStream.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateLogStream.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLogStream.
 
 As an example:
 

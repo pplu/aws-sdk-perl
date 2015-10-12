@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteSuggester
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method DeleteSuggester.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSuggester.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSuggester.
 
 As an example:
 

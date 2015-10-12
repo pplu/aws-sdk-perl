@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method GetTopicRule on
 AWS IoT service. Use the attributes of this class
 as arguments to method GetTopicRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetTopicRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTopicRule.
 
 As an example:
 

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method SignalResource 
 AWS CloudFormation service. Use the attributes of this class
 as arguments to method SignalResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SignalResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SignalResource.
 
 As an example:
 

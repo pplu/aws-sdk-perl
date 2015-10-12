@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ConfirmPrivateV
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method ConfirmPrivateVirtualInterface.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ConfirmPrivateVirtualInterface.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ConfirmPrivateVirtualInterface.
 
 As an example:
 

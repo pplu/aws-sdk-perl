@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RebootDBInstanc
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method RebootDBInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RebootDBInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RebootDBInstance.
 
 As an example:
 

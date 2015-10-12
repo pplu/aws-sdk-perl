@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method StartDataCollec
 Amazon Inspector service. Use the attributes of this class
 as arguments to method StartDataCollection.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StartDataCollection.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartDataCollection.
 
 As an example:
 

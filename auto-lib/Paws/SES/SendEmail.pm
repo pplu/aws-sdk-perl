@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method SendEmail on th
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method SendEmail.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SendEmail.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendEmail.
 
 As an example:
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListAttachedRul
 Amazon Inspector service. Use the attributes of this class
 as arguments to method ListAttachedRulesPackages.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListAttachedRulesPackages.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAttachedRulesPackages.
 
 As an example:
 

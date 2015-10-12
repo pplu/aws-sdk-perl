@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RegisterElastic
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method RegisterElasticIp.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RegisterElasticIp.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterElasticIp.
 
 As an example:
 

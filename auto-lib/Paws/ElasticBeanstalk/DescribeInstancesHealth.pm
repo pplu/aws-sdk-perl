@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeInstanc
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method DescribeInstancesHealth.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstancesHealth.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstancesHealth.
 
 As an example:
 

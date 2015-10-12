@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method ListVaults on t
 Amazon Glacier service. Use the attributes of this class
 as arguments to method ListVaults.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListVaults.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListVaults.
 
 As an example:
 

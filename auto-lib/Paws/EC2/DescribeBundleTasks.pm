@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeBundleT
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeBundleTasks.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBundleTasks.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBundleTasks.
 
 As an example:
 

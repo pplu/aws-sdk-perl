@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeConnect
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method DescribeConnectionsOnInterconnect.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConnectionsOnInterconnect.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConnectionsOnInterconnect.
 
 As an example:
 

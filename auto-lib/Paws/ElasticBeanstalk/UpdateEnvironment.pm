@@ -30,7 +30,7 @@ This class represents the parameters used for calling the method UpdateEnvironme
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method UpdateEnvironment.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateEnvironment.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateEnvironment.
 
 As an example:
 

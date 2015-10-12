@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeCustome
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeCustomerGateways.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCustomerGateways.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCustomerGateways.
 
 As an example:
 

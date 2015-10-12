@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeWorkspa
 Amazon WorkSpaces service. Use the attributes of this class
 as arguments to method DescribeWorkspaceBundles.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeWorkspaceBundles.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeWorkspaceBundles.
 
 As an example:
 

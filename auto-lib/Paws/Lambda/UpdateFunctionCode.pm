@@ -29,7 +29,7 @@ This class represents the parameters used for calling the method UpdateFunctionC
 AWS Lambda service. Use the attributes of this class
 as arguments to method UpdateFunctionCode.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateFunctionCode.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateFunctionCode.
 
 As an example:
 

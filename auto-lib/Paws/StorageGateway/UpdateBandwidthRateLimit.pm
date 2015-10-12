@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateBandwidth
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method UpdateBandwidthRateLimit.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateBandwidthRateLimit.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateBandwidthRateLimit.
 
 As an example:
 

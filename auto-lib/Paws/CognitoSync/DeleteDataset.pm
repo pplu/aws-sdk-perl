@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method DeleteDataset o
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method DeleteDataset.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDataset.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDataset.
 
 As an example:
 

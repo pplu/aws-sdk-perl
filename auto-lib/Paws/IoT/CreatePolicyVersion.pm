@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method CreatePolicyVer
 AWS IoT service. Use the attributes of this class
 as arguments to method CreatePolicyVersion.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreatePolicyVersion.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePolicyVersion.
 
 As an example:
 

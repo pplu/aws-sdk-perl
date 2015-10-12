@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method RestoreFromSnap
 AWS Directory Service service. Use the attributes of this class
 as arguments to method RestoreFromSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RestoreFromSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreFromSnapshot.
 
 As an example:
 

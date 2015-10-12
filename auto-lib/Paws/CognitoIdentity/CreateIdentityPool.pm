@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method CreateIdentityP
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method CreateIdentityPool.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateIdentityPool.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateIdentityPool.
 
 As an example:
 

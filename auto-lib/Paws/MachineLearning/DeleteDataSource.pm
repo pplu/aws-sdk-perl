@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteDataSourc
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method DeleteDataSource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDataSource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDataSource.
 
 As an example:
 

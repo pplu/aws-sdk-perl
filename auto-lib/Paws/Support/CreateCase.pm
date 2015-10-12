@@ -30,7 +30,7 @@ This class represents the parameters used for calling the method CreateCase on t
 AWS Support service. Use the attributes of this class
 as arguments to method CreateCase.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateCase.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCase.
 
 As an example:
 

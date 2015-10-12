@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteRouteTabl
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DeleteRouteTable.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRouteTable.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRouteTable.
 
 As an example:
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateCachePara
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method CreateCacheParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheParameterGroup.
 
 As an example:
 

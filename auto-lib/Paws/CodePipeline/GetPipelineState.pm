@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetPipelineStat
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method GetPipelineState.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetPipelineState.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPipelineState.
 
 As an example:
 

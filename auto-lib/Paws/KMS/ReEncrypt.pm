@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method ReEncrypt on th
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method ReEncrypt.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ReEncrypt.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReEncrypt.
 
 As an example:
 

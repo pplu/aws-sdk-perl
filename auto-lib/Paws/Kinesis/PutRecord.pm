@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method PutRecord on th
 Amazon Kinesis service. Use the attributes of this class
 as arguments to method PutRecord.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutRecord.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRecord.
 
 As an example:
 

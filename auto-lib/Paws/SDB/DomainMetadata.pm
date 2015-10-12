@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DomainMetadata 
 Amazon SimpleDB service. Use the attributes of this class
 as arguments to method DomainMetadata.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DomainMetadata.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DomainMetadata.
 
 As an example:
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DetachAssessmen
 Amazon Inspector service. Use the attributes of this class
 as arguments to method DetachAssessmentAndRulesPackage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DetachAssessmentAndRulesPackage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetachAssessmentAndRulesPackage.
 
 As an example:
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteMessageBa
 Amazon Simple Queue Service service. Use the attributes of this class
 as arguments to method DeleteMessageBatch.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMessageBatch.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMessageBatch.
 
 As an example:
 

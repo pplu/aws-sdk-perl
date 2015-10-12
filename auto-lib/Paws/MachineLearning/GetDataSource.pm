@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetDataSource o
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method GetDataSource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetDataSource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDataSource.
 
 As an example:
 

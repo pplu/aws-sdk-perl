@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeEcsClus
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeEcsClusters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEcsClusters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEcsClusters.
 
 As an example:
 

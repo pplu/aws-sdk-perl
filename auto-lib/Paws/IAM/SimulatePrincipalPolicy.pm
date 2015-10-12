@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method SimulatePrincip
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method SimulatePrincipalPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SimulatePrincipalPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SimulatePrincipalPolicy.
 
 As an example:
 

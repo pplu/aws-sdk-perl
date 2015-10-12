@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeVault o
 Amazon Glacier service. Use the attributes of this class
 as arguments to method DescribeVault.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVault.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVault.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method IndexDocuments 
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method IndexDocuments.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to IndexDocuments.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to IndexDocuments.
 
 As an example:
 

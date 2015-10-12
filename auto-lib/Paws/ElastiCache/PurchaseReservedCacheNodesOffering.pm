@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method PurchaseReserve
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method PurchaseReservedCacheNodesOffering.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PurchaseReservedCacheNodesOffering.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PurchaseReservedCacheNodesOffering.
 
 As an example:
 

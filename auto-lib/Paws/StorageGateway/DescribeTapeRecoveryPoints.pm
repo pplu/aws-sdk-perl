@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeTapeRec
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DescribeTapeRecoveryPoints.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTapeRecoveryPoints.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTapeRecoveryPoints.
 
 As an example:
 

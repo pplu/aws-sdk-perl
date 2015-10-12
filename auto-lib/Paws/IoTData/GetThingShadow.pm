@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method GetThingShadow 
 AWS IoT Data Plane service. Use the attributes of this class
 as arguments to method GetThingShadow.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetThingShadow.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetThingShadow.
 
 As an example:
 

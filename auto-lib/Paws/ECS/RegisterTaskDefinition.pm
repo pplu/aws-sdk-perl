@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method RegisterTaskDef
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method RegisterTaskDefinition.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RegisterTaskDefinition.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterTaskDefinition.
 
 As an example:
 

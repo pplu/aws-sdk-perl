@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method SubscribeToData
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method SubscribeToDataset.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SubscribeToDataset.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SubscribeToDataset.
 
 As an example:
 

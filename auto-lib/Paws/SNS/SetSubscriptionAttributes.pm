@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method SetSubscription
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method SetSubscriptionAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetSubscriptionAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetSubscriptionAttributes.
 
 As an example:
 

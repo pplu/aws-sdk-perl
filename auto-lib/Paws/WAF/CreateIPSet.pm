@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateIPSet on 
 AWS WAF service. Use the attributes of this class
 as arguments to method CreateIPSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateIPSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateIPSet.
 
 As an example:
 

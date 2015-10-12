@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteInternetG
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DeleteInternetGateway.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteInternetGateway.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteInternetGateway.
 
 As an example:
 

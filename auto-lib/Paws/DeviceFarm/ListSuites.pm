@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListSuites on t
 AWS Device Farm service. Use the attributes of this class
 as arguments to method ListSuites.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListSuites.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListSuites.
 
 As an example:
 

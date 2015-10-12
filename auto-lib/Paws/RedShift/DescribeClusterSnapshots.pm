@@ -31,7 +31,7 @@ This class represents the parameters used for calling the method DescribeCluster
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DescribeClusterSnapshots.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeClusterSnapshots.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeClusterSnapshots.
 
 As an example:
 

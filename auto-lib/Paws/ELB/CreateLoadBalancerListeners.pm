@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateLoadBalan
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method CreateLoadBalancerListeners.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateLoadBalancerListeners.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLoadBalancerListeners.
 
 As an example:
 

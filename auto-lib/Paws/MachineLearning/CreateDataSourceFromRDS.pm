@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method CreateDataSourc
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method CreateDataSourceFromRDS.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDataSourceFromRDS.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDataSourceFromRDS.
 
 As an example:
 

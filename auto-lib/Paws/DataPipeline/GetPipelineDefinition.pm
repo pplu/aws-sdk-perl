@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetPipelineDefi
 AWS Data Pipeline service. Use the attributes of this class
 as arguments to method GetPipelineDefinition.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetPipelineDefinition.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPipelineDefinition.
 
 As an example:
 

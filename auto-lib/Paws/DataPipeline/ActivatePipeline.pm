@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ActivatePipelin
 AWS Data Pipeline service. Use the attributes of this class
 as arguments to method ActivatePipeline.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ActivatePipeline.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ActivatePipeline.
 
 As an example:
 

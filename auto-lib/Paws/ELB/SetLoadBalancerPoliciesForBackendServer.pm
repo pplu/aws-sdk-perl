@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method SetLoadBalancer
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method SetLoadBalancerPoliciesForBackendServer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetLoadBalancerPoliciesForBackendServer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetLoadBalancerPoliciesForBackendServer.
 
 As an example:
 

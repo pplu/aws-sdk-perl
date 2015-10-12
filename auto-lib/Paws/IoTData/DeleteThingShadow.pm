@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteThingShad
 AWS IoT Data Plane service. Use the attributes of this class
 as arguments to method DeleteThingShadow.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteThingShadow.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteThingShadow.
 
 As an example:
 

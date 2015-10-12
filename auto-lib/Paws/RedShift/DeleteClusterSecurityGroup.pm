@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteClusterSe
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DeleteClusterSecurityGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteClusterSecurityGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteClusterSecurityGroup.
 
 As an example:
 

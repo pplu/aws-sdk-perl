@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method RemoveTags on t
 Amazon Elasticsearch Service service. Use the attributes of this class
 as arguments to method RemoveTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTags.
 
 As an example:
 

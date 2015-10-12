@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ListQueues on t
 Amazon Simple Queue Service service. Use the attributes of this class
 as arguments to method ListQueues.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListQueues.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListQueues.
 
 As an example:
 

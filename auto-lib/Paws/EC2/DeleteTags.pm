@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteTags on t
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DeleteTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTags.
 
 As an example:
 

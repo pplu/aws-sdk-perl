@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateDeliveryS
 Amazon Kinesis Firehose service. Use the attributes of this class
 as arguments to method CreateDeliveryStream.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeliveryStream.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeliveryStream.
 
 As an example:
 

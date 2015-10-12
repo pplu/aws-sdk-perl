@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteDeploymen
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method DeleteDeploymentConfig.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDeploymentConfig.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDeploymentConfig.
 
 As an example:
 

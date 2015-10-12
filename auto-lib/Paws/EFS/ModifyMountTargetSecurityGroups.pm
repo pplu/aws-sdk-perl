@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method ModifyMountTarg
 Amazon Elastic File System service. Use the attributes of this class
 as arguments to method ModifyMountTargetSecurityGroups.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyMountTargetSecurityGroups.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyMountTargetSecurityGroups.
 
 As an example:
 

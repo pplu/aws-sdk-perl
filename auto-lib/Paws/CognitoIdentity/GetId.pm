@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method GetId on the
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method GetId.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetId.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetId.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeTrusted
 AWS Support service. Use the attributes of this class
 as arguments to method DescribeTrustedAdvisorCheckSummaries.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTrustedAdvisorCheckSummaries.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTrustedAdvisorCheckSummaries.
 
 As an example:
 

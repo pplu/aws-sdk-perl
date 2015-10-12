@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddAttributesTo
 Amazon Inspector service. Use the attributes of this class
 as arguments to method AddAttributesToFindings.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddAttributesToFindings.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddAttributesToFindings.
 
 As an example:
 

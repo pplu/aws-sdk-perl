@@ -372,6 +372,55 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 =cut
 #);
 
+  has innerclass_documentation_template => (is => 'ro', isa => 'Str', default => q#
+\#\#\# main pod documentation begin \#\#\#
+
+=head1 NAME
+
+[% inner_class %]
+
+=head1 DESCRIPTION
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a [% inner_class %] object:
+
+  $service_obj->Method(Att1 => { [% shape.members.keys.sort.0 %] => $value, ..., [% shape.members.keys.sort.-1 %] => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an [% inner_class %] object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->[% shape.members.keys.sort.0 %]
+
+=head1 ATTRIBUTES
+
+[% FOREACH param_name IN shape.members.keys.sort -%]
+  [%- member = c.shape(shape.members.$param_name.shape) -%]
+=head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% member.perl_type %]
+
+  [% c.doc_for_param_name_in_shape(shape, param_name) %]
+
+[% END %]
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<[% c.api %]>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+#);
 
   sub required_in_shape {
     my ($self, $shape, $attribute) = @_;
@@ -654,7 +703,8 @@ package [% inner_class %];
 [% FOREACH param_name=keys_shape.enum.sort -%]
   has [% param_name %] => (is => 'ro', isa => '[% c.get_caller_class_type(iclass.value.shape) %]');
 [% END -%]
-1
+1;
+[% c.innerclass_documentation_template | eval %]
 #);
 
   has map_str_to_native_template => (is => 'ro', isa => 'Str', default => q#
@@ -668,7 +718,8 @@ package [% inner_class %];
   class_has xml_values =>(is => 'ro', default => '[% iclass.value.locationName || 'value' %]');
 
   has Map => (is => 'ro', isa => '[% map_class %]');
-1
+1;
+[% c.innerclass_documentation_template | eval %]
 #);
 
   has map_str_to_obj_template => (is => 'ro', isa => 'Str', default => q#
@@ -682,7 +733,8 @@ package [% inner_class %];
   class_has xml_values =>(is => 'ro', default => '[% iclass.value.locationName || 'value' %]');
 
   has Map => (is => 'ro', isa => '[% map_class %]');
-1
+1;
+[% c.innerclass_documentation_template | eval %]
 #);
 
   has object_template => (is => 'ro', isa => 'Str', default => q#
@@ -700,7 +752,9 @@ package [% inner_class %];
   [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['Unwrapped'], xmlname => '[% member.members.xmlname %]'[% END %]
   [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% IF (NOT loop.last) %],[% END %][% END %]][% END -%]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
-[% END %]1;
+[% END -%]
+1;
+[% c.innerclass_documentation_template | eval %]
 #);
 
   sub make_inner_class {

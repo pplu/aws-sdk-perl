@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DescribeLayers 
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeLayers.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLayers.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLayers.
 
 As an example:
 

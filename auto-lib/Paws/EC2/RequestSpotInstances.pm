@@ -32,7 +32,7 @@ This class represents the parameters used for calling the method RequestSpotInst
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method RequestSpotInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RequestSpotInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RequestSpotInstances.
 
 As an example:
 

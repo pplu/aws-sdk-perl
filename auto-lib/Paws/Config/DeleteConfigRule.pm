@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteConfigRul
 AWS Config service. Use the attributes of this class
 as arguments to method DeleteConfigRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteConfigRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteConfigRule.
 
 As an example:
 

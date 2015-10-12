@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method DescribeFileSys
 Amazon Elastic File System service. Use the attributes of this class
 as arguments to method DescribeFileSystems.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeFileSystems.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeFileSystems.
 
 As an example:
 

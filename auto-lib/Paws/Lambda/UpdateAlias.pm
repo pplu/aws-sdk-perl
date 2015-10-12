@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method UpdateAlias on 
 AWS Lambda service. Use the attributes of this class
 as arguments to method UpdateAlias.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAlias.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAlias.
 
 As an example:
 

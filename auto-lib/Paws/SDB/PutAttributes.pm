@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method PutAttributes o
 Amazon SimpleDB service. Use the attributes of this class
 as arguments to method PutAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutAttributes.
 
 As an example:
 

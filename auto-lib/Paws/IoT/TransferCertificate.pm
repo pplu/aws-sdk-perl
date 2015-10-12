@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method TransferCertifi
 AWS IoT service. Use the attributes of this class
 as arguments to method TransferCertificate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to TransferCertificate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TransferCertificate.
 
 As an example:
 

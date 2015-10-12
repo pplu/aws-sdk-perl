@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetUserPolicy o
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetUserPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetUserPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUserPolicy.
 
 As an example:
 

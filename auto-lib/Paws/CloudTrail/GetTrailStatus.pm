@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetTrailStatus 
 AWS CloudTrail service. Use the attributes of this class
 as arguments to method GetTrailStatus.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetTrailStatus.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTrailStatus.
 
 As an example:
 

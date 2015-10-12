@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListKeys on the
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method ListKeys.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListKeys.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListKeys.
 
 As an example:
 

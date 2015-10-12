@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CopyClusterSnap
 Amazon Redshift service. Use the attributes of this class
 as arguments to method CopyClusterSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CopyClusterSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyClusterSnapshot.
 
 As an example:
 

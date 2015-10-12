@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method LookupEvents on
 AWS CloudTrail service. Use the attributes of this class
 as arguments to method LookupEvents.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to LookupEvents.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to LookupEvents.
 
 As an example:
 

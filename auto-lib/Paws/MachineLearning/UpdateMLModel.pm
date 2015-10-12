@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateMLModel o
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method UpdateMLModel.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateMLModel.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateMLModel.
 
 As an example:
 

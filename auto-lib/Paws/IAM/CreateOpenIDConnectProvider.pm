@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateOpenIDCon
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method CreateOpenIDConnectProvider.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateOpenIDConnectProvider.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateOpenIDConnectProvider.
 
 As an example:
 

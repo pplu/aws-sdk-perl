@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteReceiptFi
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method DeleteReceiptFilter.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteReceiptFilter.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteReceiptFilter.
 
 As an example:
 

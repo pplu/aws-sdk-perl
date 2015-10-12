@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeCacheSu
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method DescribeCacheSubnetGroups.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCacheSubnetGroups.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCacheSubnetGroups.
 
 As an example:
 

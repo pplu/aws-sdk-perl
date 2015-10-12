@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method PutKeyPolicy on
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method PutKeyPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutKeyPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutKeyPolicy.
 
 As an example:
 

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method SetDataRetrieva
 Amazon Glacier service. Use the attributes of this class
 as arguments to method SetDataRetrievalPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetDataRetrievalPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetDataRetrievalPolicy.
 
 As an example:
 

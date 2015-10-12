@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RetrieveTapeArc
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method RetrieveTapeArchive.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RetrieveTapeArchive.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RetrieveTapeArchive.
 
 As an example:
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateCacheSecu
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method CreateCacheSecurityGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheSecurityGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheSecurityGroup.
 
 As an example:
 

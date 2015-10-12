@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method ImportInstance 
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method ImportInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ImportInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ImportInstance.
 
 As an example:
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method SetLoadBalancer
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method SetLoadBalancerListenerSSLCertificate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetLoadBalancerListenerSSLCertificate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetLoadBalancerListenerSSLCertificate.
 
 As an example:
 

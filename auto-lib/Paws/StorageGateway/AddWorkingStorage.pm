@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddWorkingStora
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method AddWorkingStorage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddWorkingStorage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddWorkingStorage.
 
 As an example:
 

@@ -30,7 +30,7 @@ This class represents the parameters used for calling the method DescribeCases o
 AWS Support service. Use the attributes of this class
 as arguments to method DescribeCases.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCases.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCases.
 
 As an example:
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteFileSyste
 Amazon Elastic File System service. Use the attributes of this class
 as arguments to method DeleteFileSystem.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteFileSystem.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteFileSystem.
 
 As an example:
 

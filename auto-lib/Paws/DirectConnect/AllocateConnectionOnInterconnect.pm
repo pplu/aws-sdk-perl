@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method AllocateConnect
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method AllocateConnectionOnInterconnect.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AllocateConnectionOnInterconnect.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AllocateConnectionOnInterconnect.
 
 As an example:
 

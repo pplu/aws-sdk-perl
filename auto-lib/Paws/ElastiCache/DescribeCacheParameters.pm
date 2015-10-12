@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeCachePa
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method DescribeCacheParameters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCacheParameters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCacheParameters.
 
 As an example:
 

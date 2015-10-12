@@ -30,7 +30,7 @@ This class represents the parameters used for calling the method PutScheduledUpd
 Auto Scaling service. Use the attributes of this class
 as arguments to method PutScheduledUpdateGroupAction.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutScheduledUpdateGroupAction.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutScheduledUpdateGroupAction.
 
 As an example:
 

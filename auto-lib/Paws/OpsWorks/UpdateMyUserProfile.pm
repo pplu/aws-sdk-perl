@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method UpdateMyUserPro
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method UpdateMyUserProfile.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateMyUserProfile.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateMyUserProfile.
 
 As an example:
 

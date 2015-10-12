@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DisableLogging 
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DisableLogging.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DisableLogging.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisableLogging.
 
 As an example:
 

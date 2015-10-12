@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DisableSso on t
 AWS Directory Service service. Use the attributes of this class
 as arguments to method DisableSso.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DisableSso.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisableSso.
 
 As an example:
 

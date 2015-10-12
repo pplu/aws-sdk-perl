@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteMetricFil
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method DeleteMetricFilter.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMetricFilter.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMetricFilter.
 
 As an example:
 

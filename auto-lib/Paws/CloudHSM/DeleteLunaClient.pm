@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteLunaClien
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method DeleteLunaClient.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLunaClient.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLunaClient.
 
 As an example:
 

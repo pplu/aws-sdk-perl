@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListPolicyVersi
 AWS IoT service. Use the attributes of this class
 as arguments to method ListPolicyVersions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListPolicyVersions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPolicyVersions.
 
 As an example:
 

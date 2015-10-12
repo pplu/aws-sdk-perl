@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListDomains on 
 Amazon SimpleDB service. Use the attributes of this class
 as arguments to method ListDomains.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListDomains.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDomains.
 
 As an example:
 

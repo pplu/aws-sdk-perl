@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetDeploymentGr
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method GetDeploymentGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetDeploymentGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDeploymentGroup.
 
 As an example:
 

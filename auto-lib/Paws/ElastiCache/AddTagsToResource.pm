@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddTagsToResour
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method AddTagsToResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddTagsToResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTagsToResource.
 
 As an example:
 

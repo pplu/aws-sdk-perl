@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteLoadBalan
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method DeleteLoadBalancer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLoadBalancer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLoadBalancer.
 
 As an example:
 

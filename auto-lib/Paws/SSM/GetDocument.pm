@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetDocument on 
 Amazon Simple Systems Management Service service. Use the attributes of this class
 as arguments to method GetDocument.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetDocument.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDocument.
 
 As an example:
 

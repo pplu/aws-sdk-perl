@@ -32,7 +32,7 @@ This class represents the parameters used for calling the method RestoreDBCluste
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method RestoreDBClusterFromSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBClusterFromSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBClusterFromSnapshot.
 
 As an example:
 

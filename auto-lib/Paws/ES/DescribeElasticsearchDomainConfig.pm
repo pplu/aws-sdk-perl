@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeElastic
 Amazon Elasticsearch Service service. Use the attributes of this class
 as arguments to method DescribeElasticsearchDomainConfig.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeElasticsearchDomainConfig.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeElasticsearchDomainConfig.
 
 As an example:
 

@@ -16,3 +16,248 @@ package Paws::CloudFront::DistributionSummary;
   has ViewerCertificate => (is => 'ro', isa => 'Paws::CloudFront::ViewerCertificate', required => 1);
   has WebACLId => (is => 'ro', isa => 'Str', required => 1);
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudFront::DistributionSummary
+
+=head1 DESCRIPTION
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::CloudFront::DistributionSummary object:
+
+  $service_obj->Method(Att1 => { Aliases => $value, ..., WebACLId => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront::DistributionSummary object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->Aliases
+
+=head1 ATTRIBUTES
+
+=head2 B<REQUIRED> Aliases => Paws::CloudFront::Aliases
+
+  
+
+A complex type that contains information about CNAMEs (alternate domain
+names), if any, for this distribution.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> CacheBehaviors => Paws::CloudFront::CacheBehaviors
+
+  
+
+A complex type that contains zero or more CacheBehavior elements.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Comment => Str
+
+  
+
+The comment originally specified when this distribution was created.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> CustomErrorResponses => Paws::CloudFront::CustomErrorResponses
+
+  
+
+A complex type that contains zero or more CustomErrorResponses
+elements.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> DefaultCacheBehavior => Paws::CloudFront::DefaultCacheBehavior
+
+  
+
+A complex type that describes the default cache behavior if you do not
+specify a CacheBehavior element or if files don't match any of the
+values of PathPattern in CacheBehavior elements.You must create exactly
+one default cache behavior.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> DomainName => Str
+
+  
+
+The domain name corresponding to the distribution. For example:
+d604721fxaaqy9.cloudfront.net.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Enabled => Bool
+
+  
+
+Whether the distribution is enabled to accept end user requests for
+content.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Id => Str
+
+  
+
+The identifier for the distribution. For example: EDFDVBD632BHDS5.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> LastModifiedTime => Str
+
+  
+
+The date and time the distribution was last modified.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> Origins => Paws::CloudFront::Origins
+
+  
+
+A complex type that contains information about origins for this
+distribution.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> PriceClass => Str
+
+  
+
+=head2 B<REQUIRED> Restrictions => Paws::CloudFront::Restrictions
+
+  
+
+=head2 B<REQUIRED> Status => Str
+
+  
+
+This response element indicates the current status of the distribution.
+When the status is Deployed, the distribution's information is fully
+propagated throughout the Amazon CloudFront system.
+
+
+
+
+
+
+
+
+
+
+=head2 B<REQUIRED> ViewerCertificate => Paws::CloudFront::ViewerCertificate
+
+  
+
+=head2 B<REQUIRED> WebACLId => Str
+
+  
+
+The Web ACL Id (if any) associated with the distribution.
+
+
+
+
+
+
+
+
+
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::CloudFront>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

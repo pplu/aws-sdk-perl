@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribePending
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribePendingMaintenanceActions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribePendingMaintenanceActions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribePendingMaintenanceActions.
 
 As an example:
 

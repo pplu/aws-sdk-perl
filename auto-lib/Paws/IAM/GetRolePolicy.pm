@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetRolePolicy o
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetRolePolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetRolePolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetRolePolicy.
 
 As an example:
 

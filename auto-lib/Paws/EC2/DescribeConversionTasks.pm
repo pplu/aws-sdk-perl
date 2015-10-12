@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeConvers
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeConversionTasks.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConversionTasks.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConversionTasks.
 
 As an example:
 

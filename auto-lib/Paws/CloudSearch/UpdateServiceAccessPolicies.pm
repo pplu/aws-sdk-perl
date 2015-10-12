@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateServiceAc
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method UpdateServiceAccessPolicies.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateServiceAccessPolicies.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateServiceAccessPolicies.
 
 As an example:
 

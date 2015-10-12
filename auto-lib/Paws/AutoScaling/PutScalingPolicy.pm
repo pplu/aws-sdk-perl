@@ -32,7 +32,7 @@ This class represents the parameters used for calling the method PutScalingPolic
 Auto Scaling service. Use the attributes of this class
 as arguments to method PutScalingPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutScalingPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutScalingPolicy.
 
 As an example:
 

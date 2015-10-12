@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteCachePara
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method DeleteCacheParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCacheParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCacheParameterGroup.
 
 As an example:
 

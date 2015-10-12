@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeNotific
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribeNotificationConfigurations.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeNotificationConfigurations.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeNotificationConfigurations.
 
 As an example:
 

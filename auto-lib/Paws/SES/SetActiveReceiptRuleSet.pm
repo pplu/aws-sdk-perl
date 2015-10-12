@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method SetActiveReceip
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method SetActiveReceiptRuleSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetActiveReceiptRuleSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetActiveReceiptRuleSet.
 
 As an example:
 

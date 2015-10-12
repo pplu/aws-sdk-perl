@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetSuite on the
 AWS Device Farm service. Use the attributes of this class
 as arguments to method GetSuite.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetSuite.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSuite.
 
 As an example:
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateDeploymen
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method CreateDeploymentConfig.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeploymentConfig.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeploymentConfig.
 
 As an example:
 

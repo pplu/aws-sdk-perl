@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DisableAlarmAct
 Amazon CloudWatch service. Use the attributes of this class
 as arguments to method DisableAlarmActions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DisableAlarmActions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisableAlarmActions.
 
 As an example:
 

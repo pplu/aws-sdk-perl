@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateAssessmen
 Amazon Inspector service. Use the attributes of this class
 as arguments to method UpdateAssessment.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAssessment.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAssessment.
 
 As an example:
 

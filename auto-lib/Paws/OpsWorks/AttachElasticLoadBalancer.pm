@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AttachElasticLo
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method AttachElasticLoadBalancer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AttachElasticLoadBalancer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AttachElasticLoadBalancer.
 
 As an example:
 

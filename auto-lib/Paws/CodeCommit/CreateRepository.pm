@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateRepositor
 AWS CodeCommit service. Use the attributes of this class
 as arguments to method CreateRepository.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateRepository.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRepository.
 
 As an example:
 

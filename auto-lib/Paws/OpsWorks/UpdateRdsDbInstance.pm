@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateRdsDbInst
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method UpdateRdsDbInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRdsDbInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRdsDbInstance.
 
 As an example:
 

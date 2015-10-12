@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateInternetG
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateInternetGateway.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateInternetGateway.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateInternetGateway.
 
 As an example:
 

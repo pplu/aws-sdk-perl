@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ListTopics on t
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method ListTopics.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListTopics.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTopics.
 
 As an example:
 

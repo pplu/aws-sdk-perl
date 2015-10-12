@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListStackResour
 AWS CloudFormation service. Use the attributes of this class
 as arguments to method ListStackResources.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListStackResources.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListStackResources.
 
 As an example:
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateAssociati
 Amazon Simple Systems Management Service service. Use the attributes of this class
 as arguments to method UpdateAssociationStatus.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAssociationStatus.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAssociationStatus.
 
 As an example:
 

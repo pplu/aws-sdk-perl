@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method SetIdentityPool
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method SetIdentityPoolConfiguration.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetIdentityPoolConfiguration.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetIdentityPoolConfiguration.
 
 As an example:
 

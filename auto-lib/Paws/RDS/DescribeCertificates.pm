@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeCertifi
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribeCertificates.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCertificates.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCertificates.
 
 As an example:
 

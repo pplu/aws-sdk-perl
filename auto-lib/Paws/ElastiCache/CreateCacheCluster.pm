@@ -43,7 +43,7 @@ This class represents the parameters used for calling the method CreateCacheClus
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method CreateCacheCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheCluster.
 
 As an example:
 

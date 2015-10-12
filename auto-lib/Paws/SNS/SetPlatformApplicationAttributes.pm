@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method SetPlatformAppl
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method SetPlatformApplicationAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetPlatformApplicationAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetPlatformApplicationAttributes.
 
 As an example:
 

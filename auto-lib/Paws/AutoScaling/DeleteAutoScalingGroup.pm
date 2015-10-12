@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteAutoScali
 Auto Scaling service. Use the attributes of this class
 as arguments to method DeleteAutoScalingGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteAutoScalingGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteAutoScalingGroup.
 
 As an example:
 

@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method SetVaultAccessP
 Amazon Glacier service. Use the attributes of this class
 as arguments to method SetVaultAccessPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetVaultAccessPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetVaultAccessPolicy.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateProject o
 AWS Device Farm service. Use the attributes of this class
 as arguments to method CreateProject.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateProject.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateProject.
 
 As an example:
 

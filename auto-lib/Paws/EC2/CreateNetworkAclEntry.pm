@@ -30,7 +30,7 @@ This class represents the parameters used for calling the method CreateNetworkAc
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateNetworkAclEntry.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateNetworkAclEntry.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateNetworkAclEntry.
 
 As an example:
 

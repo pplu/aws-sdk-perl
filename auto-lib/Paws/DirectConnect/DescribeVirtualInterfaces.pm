@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DescribeVirtual
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method DescribeVirtualInterfaces.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVirtualInterfaces.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVirtualInterfaces.
 
 As an example:
 

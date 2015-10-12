@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeScaling
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribeScalingActivities.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeScalingActivities.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeScalingActivities.
 
 As an example:
 

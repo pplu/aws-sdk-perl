@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeDBInsta
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribeDBInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBInstances.
 
 As an example:
 

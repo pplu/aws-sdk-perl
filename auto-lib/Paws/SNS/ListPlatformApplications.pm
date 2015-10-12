@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ListPlatformApp
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method ListPlatformApplications.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListPlatformApplications.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPlatformApplications.
 
 As an example:
 

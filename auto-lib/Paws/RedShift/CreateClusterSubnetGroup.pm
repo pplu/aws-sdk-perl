@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method CreateClusterSu
 Amazon Redshift service. Use the attributes of this class
 as arguments to method CreateClusterSubnetGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateClusterSubnetGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateClusterSubnetGroup.
 
 As an example:
 

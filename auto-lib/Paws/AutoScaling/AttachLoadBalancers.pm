@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AttachLoadBalan
 Auto Scaling service. Use the attributes of this class
 as arguments to method AttachLoadBalancers.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AttachLoadBalancers.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AttachLoadBalancers.
 
 As an example:
 

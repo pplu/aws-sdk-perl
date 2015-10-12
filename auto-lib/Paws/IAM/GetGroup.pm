@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method GetGroup on the
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetGroup.
 
 As an example:
 

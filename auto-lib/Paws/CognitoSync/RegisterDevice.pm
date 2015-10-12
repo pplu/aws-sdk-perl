@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method RegisterDevice 
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method RegisterDevice.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RegisterDevice.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterDevice.
 
 As an example:
 

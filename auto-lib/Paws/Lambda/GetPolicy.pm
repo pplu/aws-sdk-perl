@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method GetPolicy on th
 AWS Lambda service. Use the attributes of this class
 as arguments to method GetPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPolicy.
 
 As an example:
 

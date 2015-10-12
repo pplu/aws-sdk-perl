@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteAssociati
 Amazon Simple Systems Management Service service. Use the attributes of this class
 as arguments to method DeleteAssociation.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteAssociation.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteAssociation.
 
 As an example:
 

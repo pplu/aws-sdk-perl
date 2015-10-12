@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method GetComplianceDe
 AWS Config service. Use the attributes of this class
 as arguments to method GetComplianceDetailsByResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetComplianceDetailsByResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetComplianceDetailsByResource.
 
 As an example:
 

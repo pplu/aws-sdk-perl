@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method CreateConfigura
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method CreateConfigurationTemplate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateConfigurationTemplate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateConfigurationTemplate.
 
 As an example:
 

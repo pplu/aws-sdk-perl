@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method ListParts on th
 Amazon Glacier service. Use the attributes of this class
 as arguments to method ListParts.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListParts.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListParts.
 
 As an example:
 

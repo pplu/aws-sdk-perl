@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeCachedi
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DescribeCachediSCSIVolumes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCachediSCSIVolumes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCachediSCSIVolumes.
 
 As an example:
 

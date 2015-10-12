@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateIPSet on 
 AWS WAF service. Use the attributes of this class
 as arguments to method UpdateIPSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateIPSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateIPSet.
 
 As an example:
 

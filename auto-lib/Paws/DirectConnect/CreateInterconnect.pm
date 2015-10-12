@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateInterconn
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method CreateInterconnect.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateInterconnect.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateInterconnect.
 
 As an example:
 

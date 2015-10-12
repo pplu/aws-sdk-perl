@@ -29,7 +29,7 @@ This class represents the parameters used for calling the method GetMetricStatis
 Amazon CloudWatch service. Use the attributes of this class
 as arguments to method GetMetricStatistics.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetMetricStatistics.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetMetricStatistics.
 
 As an example:
 

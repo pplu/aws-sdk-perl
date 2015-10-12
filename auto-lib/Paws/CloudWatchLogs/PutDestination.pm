@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method PutDestination 
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method PutDestination.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutDestination.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutDestination.
 
 As an example:
 

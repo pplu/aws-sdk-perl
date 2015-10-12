@@ -33,7 +33,7 @@ This class represents the parameters used for calling the method TransferDomain 
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method TransferDomain.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to TransferDomain.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TransferDomain.
 
 As an example:
 

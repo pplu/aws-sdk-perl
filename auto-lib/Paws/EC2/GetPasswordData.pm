@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetPasswordData
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method GetPasswordData.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetPasswordData.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPasswordData.
 
 As an example:
 

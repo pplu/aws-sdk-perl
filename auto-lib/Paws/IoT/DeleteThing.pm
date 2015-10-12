@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteThing on 
 AWS IoT service. Use the attributes of this class
 as arguments to method DeleteThing.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteThing.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteThing.
 
 As an example:
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method Subscribe on th
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method Subscribe.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to Subscribe.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Subscribe.
 
 As an example:
 

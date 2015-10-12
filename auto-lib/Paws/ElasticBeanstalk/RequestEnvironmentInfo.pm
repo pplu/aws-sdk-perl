@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method RequestEnvironm
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method RequestEnvironmentInfo.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RequestEnvironmentInfo.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RequestEnvironmentInfo.
 
 As an example:
 

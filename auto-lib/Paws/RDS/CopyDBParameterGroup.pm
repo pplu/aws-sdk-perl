@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method CopyDBParameter
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CopyDBParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CopyDBParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyDBParameterGroup.
 
 As an example:
 

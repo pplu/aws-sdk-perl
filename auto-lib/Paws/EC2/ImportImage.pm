@@ -31,7 +31,7 @@ This class represents the parameters used for calling the method ImportImage on 
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method ImportImage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ImportImage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ImportImage.
 
 As an example:
 

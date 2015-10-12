@@ -4,3 +4,137 @@ package Paws::DeviceFarm::Rule;
   has operator => (is => 'ro', isa => 'Str');
   has value => (is => 'ro', isa => 'Str');
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::DeviceFarm::Rule
+
+=head1 DESCRIPTION
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::DeviceFarm::Rule object:
+
+  $service_obj->Method(Att1 => { attribute => $value, ..., value => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::Rule object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->attribute
+
+=head1 ATTRIBUTES
+
+=head2 attribute => Str
+
+  
+
+The rule's attribute.
+
+Allowed values include:
+
+=over
+
+=item *
+
+ARN: The ARN.
+
+=item *
+
+FORM_FACTOR: The form factor (for example, phone or tablet).
+
+=item *
+
+MANUFACTURER: The manufacturer.
+
+=item *
+
+PLATFORM: The platform (for example, Android or iOS).
+
+=back
+
+
+
+
+
+
+
+
+
+
+=head2 operator => Str
+
+  
+
+The rule's operator.
+
+=over
+
+=item *
+
+EQUALS: The equals operator.
+
+=item *
+
+GREATER_THAN: The greater-than operator.
+
+=item *
+
+IN: The in operator.
+
+=item *
+
+LESS_THAN: The less-than operator.
+
+=item *
+
+NOT_IN: The not-in operator.
+
+=back
+
+
+
+
+
+
+
+
+
+
+=head2 value => Str
+
+  
+
+The rule's value.
+
+
+
+
+
+
+
+
+
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::DeviceFarm>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

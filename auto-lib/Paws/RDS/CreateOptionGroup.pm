@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method CreateOptionGro
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CreateOptionGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateOptionGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateOptionGroup.
 
 As an example:
 

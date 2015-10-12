@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeNetwork
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeNetworkAcls.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeNetworkAcls.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeNetworkAcls.
 
 As an example:
 

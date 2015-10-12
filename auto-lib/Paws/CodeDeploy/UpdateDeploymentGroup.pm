@@ -29,7 +29,7 @@ This class represents the parameters used for calling the method UpdateDeploymen
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method UpdateDeploymentGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDeploymentGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDeploymentGroup.
 
 As an example:
 

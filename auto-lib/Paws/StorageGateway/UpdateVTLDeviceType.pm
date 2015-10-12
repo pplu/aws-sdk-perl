@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateVTLDevice
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method UpdateVTLDeviceType.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateVTLDeviceType.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateVTLDeviceType.
 
 As an example:
 

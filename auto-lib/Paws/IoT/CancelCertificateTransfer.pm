@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CancelCertifica
 AWS IoT service. Use the attributes of this class
 as arguments to method CancelCertificateTransfer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CancelCertificateTransfer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CancelCertificateTransfer.
 
 As an example:
 

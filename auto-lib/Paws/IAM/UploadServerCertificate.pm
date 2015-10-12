@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method UploadServerCer
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method UploadServerCertificate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UploadServerCertificate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UploadServerCertificate.
 
 As an example:
 

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method GetShardIterato
 Amazon Kinesis service. Use the attributes of this class
 as arguments to method GetShardIterator.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetShardIterator.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetShardIterator.
 
 As an example:
 

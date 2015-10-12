@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method ListThings on t
 AWS IoT service. Use the attributes of this class
 as arguments to method ListThings.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListThings.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListThings.
 
 As an example:
 

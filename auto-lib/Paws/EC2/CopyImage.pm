@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method CopyImage on th
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CopyImage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CopyImage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyImage.
 
 As an example:
 

@@ -30,7 +30,7 @@ This class represents the parameters used for calling the method AddPermission o
 AWS Lambda service. Use the attributes of this class
 as arguments to method AddPermission.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddPermission.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddPermission.
 
 As an example:
 

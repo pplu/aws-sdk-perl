@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method CountOpenWorkfl
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method CountOpenWorkflowExecutions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CountOpenWorkflowExecutions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CountOpenWorkflowExecutions.
 
 As an example:
 

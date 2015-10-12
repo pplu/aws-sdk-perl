@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListActionTypes
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method ListActionTypes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListActionTypes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListActionTypes.
 
 As an example:
 

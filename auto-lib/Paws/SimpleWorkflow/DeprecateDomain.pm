@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeprecateDomain
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method DeprecateDomain.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeprecateDomain.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeprecateDomain.
 
 As an example:
 

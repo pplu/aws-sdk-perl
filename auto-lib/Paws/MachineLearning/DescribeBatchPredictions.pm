@@ -32,7 +32,7 @@ This class represents the parameters used for calling the method DescribeBatchPr
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method DescribeBatchPredictions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBatchPredictions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBatchPredictions.
 
 As an example:
 

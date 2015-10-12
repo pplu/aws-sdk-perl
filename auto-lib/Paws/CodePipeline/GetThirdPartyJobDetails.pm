@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetThirdPartyJo
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method GetThirdPartyJobDetails.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetThirdPartyJobDetails.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetThirdPartyJobDetails.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteRetention
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method DeleteRetentionPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRetentionPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRetentionPolicy.
 
 As an example:
 

@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method DescribeEnviron
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method DescribeEnvironments.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEnvironments.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEnvironments.
 
 As an example:
 

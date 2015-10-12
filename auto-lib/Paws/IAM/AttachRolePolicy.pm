@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AttachRolePolic
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method AttachRolePolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AttachRolePolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AttachRolePolicy.
 
 As an example:
 

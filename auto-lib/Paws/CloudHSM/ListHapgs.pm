@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ListHapgs on th
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method ListHapgs.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListHapgs.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListHapgs.
 
 As an example:
 

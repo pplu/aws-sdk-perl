@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListUniqueProbl
 AWS Device Farm service. Use the attributes of this class
 as arguments to method ListUniqueProblems.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListUniqueProblems.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListUniqueProblems.
 
 As an example:
 

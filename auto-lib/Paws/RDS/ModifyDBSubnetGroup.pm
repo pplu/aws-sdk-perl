@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ModifyDBSubnetG
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method ModifyDBSubnetGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyDBSubnetGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyDBSubnetGroup.
 
 As an example:
 

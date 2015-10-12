@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method DescribeImportS
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeImportSnapshotTasks.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeImportSnapshotTasks.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeImportSnapshotTasks.
 
 As an example:
 

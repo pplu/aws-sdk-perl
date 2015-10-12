@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method GenerateDataKey
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method GenerateDataKey.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GenerateDataKey.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GenerateDataKey.
 
 As an example:
 

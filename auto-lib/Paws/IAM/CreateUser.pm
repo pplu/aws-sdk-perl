@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateUser on t
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method CreateUser.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateUser.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateUser.
 
 As an example:
 

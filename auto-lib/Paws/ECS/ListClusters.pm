@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListClusters on
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method ListClusters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListClusters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListClusters.
 
 As an example:
 

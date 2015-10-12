@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method GetVaultLock on
 Amazon Glacier service. Use the attributes of this class
 as arguments to method GetVaultLock.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetVaultLock.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetVaultLock.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateReceiptFi
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method CreateReceiptFilter.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateReceiptFilter.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateReceiptFilter.
 
 As an example:
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateDBSnapsho
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CreateDBSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBSnapshot.
 
 As an example:
 

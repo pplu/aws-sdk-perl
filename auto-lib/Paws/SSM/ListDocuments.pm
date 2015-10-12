@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListDocuments o
 Amazon Simple Systems Management Service service. Use the attributes of this class
 as arguments to method ListDocuments.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListDocuments.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDocuments.
 
 As an example:
 

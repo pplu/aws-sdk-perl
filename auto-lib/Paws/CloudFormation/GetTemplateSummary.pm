@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method GetTemplateSumm
 AWS CloudFormation service. Use the attributes of this class
 as arguments to method GetTemplateSummary.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetTemplateSummary.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTemplateSummary.
 
 As an example:
 

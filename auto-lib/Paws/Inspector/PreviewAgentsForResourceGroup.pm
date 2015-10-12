@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method PreviewAgentsFo
 Amazon Inspector service. Use the attributes of this class
 as arguments to method PreviewAgentsForResourceGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PreviewAgentsForResourceGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PreviewAgentsForResourceGroup.
 
 As an example:
 

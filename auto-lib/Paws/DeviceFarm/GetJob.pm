@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetJob on the
 AWS Device Farm service. Use the attributes of this class
 as arguments to method GetJob.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetJob.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetJob.
 
 As an example:
 

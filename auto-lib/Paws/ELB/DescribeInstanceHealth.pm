@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DescribeInstanc
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method DescribeInstanceHealth.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstanceHealth.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstanceHealth.
 
 As an example:
 

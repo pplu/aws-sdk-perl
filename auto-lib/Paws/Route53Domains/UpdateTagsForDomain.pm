@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateTagsForDo
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method UpdateTagsForDomain.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateTagsForDomain.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateTagsForDomain.
 
 As an example:
 

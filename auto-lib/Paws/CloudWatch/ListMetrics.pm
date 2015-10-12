@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method ListMetrics on 
 Amazon CloudWatch service. Use the attributes of this class
 as arguments to method ListMetrics.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListMetrics.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListMetrics.
 
 As an example:
 

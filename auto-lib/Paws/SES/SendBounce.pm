@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method SendBounce on t
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method SendBounce.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SendBounce.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendBounce.
 
 As an example:
 

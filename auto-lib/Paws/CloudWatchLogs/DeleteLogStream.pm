@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteLogStream
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method DeleteLogStream.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLogStream.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLogStream.
 
 As an example:
 

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method PutLogEvents on
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method PutLogEvents.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutLogEvents.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutLogEvents.
 
 As an example:
 

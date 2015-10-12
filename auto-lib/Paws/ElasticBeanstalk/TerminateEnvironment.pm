@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method TerminateEnviro
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method TerminateEnvironment.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to TerminateEnvironment.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TerminateEnvironment.
 
 As an example:
 

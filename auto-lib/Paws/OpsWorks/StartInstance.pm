@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method StartInstance o
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method StartInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StartInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartInstance.
 
 As an example:
 

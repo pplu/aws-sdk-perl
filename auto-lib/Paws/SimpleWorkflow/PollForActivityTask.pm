@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method PollForActivity
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method PollForActivityTask.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PollForActivityTask.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PollForActivityTask.
 
 As an example:
 

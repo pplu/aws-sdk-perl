@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method QueryObjects on
 AWS Data Pipeline service. Use the attributes of this class
 as arguments to method QueryObjects.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to QueryObjects.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to QueryObjects.
 
 As an example:
 

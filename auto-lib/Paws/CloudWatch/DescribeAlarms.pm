@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method DescribeAlarms 
 Amazon CloudWatch service. Use the attributes of this class
 as arguments to method DescribeAlarms.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAlarms.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAlarms.
 
 As an example:
 

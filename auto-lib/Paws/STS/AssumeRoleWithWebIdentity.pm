@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method AssumeRoleWithW
 AWS Security Token Service service. Use the attributes of this class
 as arguments to method AssumeRoleWithWebIdentity.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AssumeRoleWithWebIdentity.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssumeRoleWithWebIdentity.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateReceiptRu
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method CreateReceiptRuleSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateReceiptRuleSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateReceiptRuleSet.
 
 As an example:
 

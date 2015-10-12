@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method SetAlarmState o
 Amazon CloudWatch service. Use the attributes of this class
 as arguments to method SetAlarmState.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetAlarmState.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetAlarmState.
 
 As an example:
 

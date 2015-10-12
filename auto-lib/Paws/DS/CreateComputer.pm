@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method CreateComputer 
 AWS Directory Service service. Use the attributes of this class
 as arguments to method CreateComputer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateComputer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateComputer.
 
 As an example:
 

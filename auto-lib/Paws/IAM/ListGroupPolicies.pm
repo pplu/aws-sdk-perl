@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListGroupPolici
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method ListGroupPolicies.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListGroupPolicies.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListGroupPolicies.
 
 As an example:
 

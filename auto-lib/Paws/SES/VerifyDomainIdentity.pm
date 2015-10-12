@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method VerifyDomainIde
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method VerifyDomainIdentity.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to VerifyDomainIdentity.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to VerifyDomainIdentity.
 
 As an example:
 

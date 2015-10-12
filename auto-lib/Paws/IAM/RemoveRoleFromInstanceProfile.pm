@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RemoveRoleFromI
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method RemoveRoleFromInstanceProfile.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemoveRoleFromInstanceProfile.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveRoleFromInstanceProfile.
 
 As an example:
 

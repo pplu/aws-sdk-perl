@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeDestina
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method DescribeDestinations.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDestinations.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDestinations.
 
 As an example:
 

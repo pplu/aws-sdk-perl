@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method DescribeDBClust
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribeDBClusterParameters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBClusterParameters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBClusterParameters.
 
 As an example:
 

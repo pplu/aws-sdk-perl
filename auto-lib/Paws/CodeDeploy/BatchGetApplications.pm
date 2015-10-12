@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method BatchGetApplica
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method BatchGetApplications.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetApplications.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetApplications.
 
 As an example:
 

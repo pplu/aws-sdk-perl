@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DescribeLunaCli
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method DescribeLunaClient.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLunaClient.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLunaClient.
 
 As an example:
 

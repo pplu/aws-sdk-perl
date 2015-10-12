@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteApp on th
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DeleteApp.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApp.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApp.
 
 As an example:
 

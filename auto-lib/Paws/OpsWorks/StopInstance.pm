@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method StopInstance on
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method StopInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StopInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StopInstance.
 
 As an example:
 

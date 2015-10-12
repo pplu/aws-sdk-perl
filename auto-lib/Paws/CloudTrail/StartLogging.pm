@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method StartLogging on
 AWS CloudTrail service. Use the attributes of this class
 as arguments to method StartLogging.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StartLogging.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartLogging.
 
 As an example:
 

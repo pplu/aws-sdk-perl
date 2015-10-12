@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListBootstrapAc
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method ListBootstrapActions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListBootstrapActions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListBootstrapActions.
 
 As an example:
 

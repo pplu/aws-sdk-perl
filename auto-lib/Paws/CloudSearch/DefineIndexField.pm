@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DefineIndexFiel
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method DefineIndexField.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DefineIndexField.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DefineIndexField.
 
 As an example:
 

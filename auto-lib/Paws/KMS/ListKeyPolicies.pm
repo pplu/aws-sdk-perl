@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListKeyPolicies
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method ListKeyPolicies.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListKeyPolicies.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListKeyPolicies.
 
 As an example:
 

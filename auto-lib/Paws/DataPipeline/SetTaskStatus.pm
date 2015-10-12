@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method SetTaskStatus o
 AWS Data Pipeline service. Use the attributes of this class
 as arguments to method SetTaskStatus.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetTaskStatus.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetTaskStatus.
 
 As an example:
 

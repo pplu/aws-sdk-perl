@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddAttachmentsT
 AWS Support service. Use the attributes of this class
 as arguments to method AddAttachmentsToSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddAttachmentsToSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddAttachmentsToSet.
 
 As an example:
 

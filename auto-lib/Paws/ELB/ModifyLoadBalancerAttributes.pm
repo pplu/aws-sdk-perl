@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ModifyLoadBalan
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method ModifyLoadBalancerAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyLoadBalancerAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyLoadBalancerAttributes.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DisableKey on t
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method DisableKey.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DisableKey.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisableKey.
 
 As an example:
 

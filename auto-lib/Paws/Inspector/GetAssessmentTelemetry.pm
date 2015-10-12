@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetAssessmentTe
 Amazon Inspector service. Use the attributes of this class
 as arguments to method GetAssessmentTelemetry.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetAssessmentTelemetry.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAssessmentTelemetry.
 
 As an example:
 

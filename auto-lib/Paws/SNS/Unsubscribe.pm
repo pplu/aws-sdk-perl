@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method Unsubscribe on 
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method Unsubscribe.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to Unsubscribe.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Unsubscribe.
 
 As an example:
 

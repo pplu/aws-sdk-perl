@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListDevicePools
 AWS Device Farm service. Use the attributes of this class
 as arguments to method ListDevicePools.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListDevicePools.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDevicePools.
 
 As an example:
 

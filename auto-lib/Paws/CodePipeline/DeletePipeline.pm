@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeletePipeline 
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method DeletePipeline.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeletePipeline.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeletePipeline.
 
 As an example:
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RemoveTagsFromO
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method RemoveTagsFromOnPremisesInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTagsFromOnPremisesInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTagsFromOnPremisesInstances.
 
 As an example:
 

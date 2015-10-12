@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ModifyCachePara
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method ModifyCacheParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyCacheParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyCacheParameterGroup.
 
 As an example:
 

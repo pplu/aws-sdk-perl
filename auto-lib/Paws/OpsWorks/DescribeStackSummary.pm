@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeStackSu
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeStackSummary.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStackSummary.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStackSummary.
 
 As an example:
 

@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method DescribeImages 
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeImages.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeImages.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeImages.
 
 As an example:
 

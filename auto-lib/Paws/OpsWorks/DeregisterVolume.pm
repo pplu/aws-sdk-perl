@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeregisterVolum
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DeregisterVolume.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterVolume.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterVolume.
 
 As an example:
 

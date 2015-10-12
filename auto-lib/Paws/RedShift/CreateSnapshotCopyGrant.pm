@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateSnapshotC
 Amazon Redshift service. Use the attributes of this class
 as arguments to method CreateSnapshotCopyGrant.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateSnapshotCopyGrant.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSnapshotCopyGrant.
 
 As an example:
 

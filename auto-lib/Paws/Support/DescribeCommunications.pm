@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method DescribeCommuni
 AWS Support service. Use the attributes of this class
 as arguments to method DescribeCommunications.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCommunications.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCommunications.
 
 As an example:
 

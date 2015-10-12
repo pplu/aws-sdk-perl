@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeSpotFle
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeSpotFleetRequests.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSpotFleetRequests.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSpotFleetRequests.
 
 As an example:
 

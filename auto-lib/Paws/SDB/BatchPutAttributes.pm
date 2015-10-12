@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method BatchPutAttribu
 Amazon SimpleDB service. Use the attributes of this class
 as arguments to method BatchPutAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BatchPutAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchPutAttributes.
 
 As an example:
 

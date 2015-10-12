@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ResetNetworkInt
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method ResetNetworkInterfaceAttribute.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ResetNetworkInterfaceAttribute.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ResetNetworkInterfaceAttribute.
 
 As an example:
 

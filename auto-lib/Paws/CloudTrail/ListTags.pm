@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListTags on the
 AWS CloudTrail service. Use the attributes of this class
 as arguments to method ListTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTags.
 
 As an example:
 

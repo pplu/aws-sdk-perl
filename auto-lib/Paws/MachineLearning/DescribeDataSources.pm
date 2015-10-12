@@ -32,7 +32,7 @@ This class represents the parameters used for calling the method DescribeDataSou
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method DescribeDataSources.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDataSources.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDataSources.
 
 As an example:
 

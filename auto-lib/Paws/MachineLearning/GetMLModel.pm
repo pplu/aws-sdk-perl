@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetMLModel on t
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method GetMLModel.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetMLModel.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetMLModel.
 
 As an example:
 

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeIdentit
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method DescribeIdentityUsage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeIdentityUsage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeIdentityUsage.
 
 As an example:
 

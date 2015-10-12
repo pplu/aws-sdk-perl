@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateUser on t
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method UpdateUser.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUser.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUser.
 
 As an example:
 

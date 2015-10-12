@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreatePublicVir
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method CreatePublicVirtualInterface.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreatePublicVirtualInterface.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePublicVirtualInterface.
 
 As an example:
 

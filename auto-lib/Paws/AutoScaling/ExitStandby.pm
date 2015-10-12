@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ExitStandby on 
 Auto Scaling service. Use the attributes of this class
 as arguments to method ExitStandby.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ExitStandby.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ExitStandby.
 
 As an example:
 

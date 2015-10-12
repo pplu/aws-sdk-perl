@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeprecateWorkfl
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method DeprecateWorkflowType.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeprecateWorkflowType.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeprecateWorkflowType.
 
 As an example:
 

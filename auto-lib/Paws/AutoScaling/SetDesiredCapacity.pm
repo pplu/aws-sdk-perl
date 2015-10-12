@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method SetDesiredCapac
 Auto Scaling service. Use the attributes of this class
 as arguments to method SetDesiredCapacity.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetDesiredCapacity.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetDesiredCapacity.
 
 As an example:
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method GetSSHPublicKey
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetSSHPublicKey.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetSSHPublicKey.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSSHPublicKey.
 
 As an example:
 

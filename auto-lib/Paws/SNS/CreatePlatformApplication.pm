@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreatePlatformA
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method CreatePlatformApplication.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreatePlatformApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePlatformApplication.
 
 As an example:
 

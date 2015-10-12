@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListRules on th
 AWS WAF service. Use the attributes of this class
 as arguments to method ListRules.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListRules.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListRules.
 
 As an example:
 

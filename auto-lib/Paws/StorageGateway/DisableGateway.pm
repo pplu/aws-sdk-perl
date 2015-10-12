@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DisableGateway 
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DisableGateway.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DisableGateway.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisableGateway.
 
 As an example:
 

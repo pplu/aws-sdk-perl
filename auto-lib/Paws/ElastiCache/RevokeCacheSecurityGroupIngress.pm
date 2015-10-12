@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method RevokeCacheSecu
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method RevokeCacheSecurityGroupIngress.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RevokeCacheSecurityGroupIngress.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RevokeCacheSecurityGroupIngress.
 
 As an example:
 

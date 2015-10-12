@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteCluster o
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method DeleteCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCluster.
 
 As an example:
 

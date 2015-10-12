@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteTopicRule
 AWS IoT service. Use the attributes of this class
 as arguments to method DeleteTopicRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTopicRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTopicRule.
 
 As an example:
 

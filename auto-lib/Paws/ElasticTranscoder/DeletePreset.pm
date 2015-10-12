@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeletePreset on
 Amazon Elastic Transcoder service. Use the attributes of this class
 as arguments to method DeletePreset.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeletePreset.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeletePreset.
 
 As an example:
 

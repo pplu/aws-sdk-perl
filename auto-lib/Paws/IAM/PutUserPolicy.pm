@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method PutUserPolicy o
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method PutUserPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutUserPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutUserPolicy.
 
 As an example:
 

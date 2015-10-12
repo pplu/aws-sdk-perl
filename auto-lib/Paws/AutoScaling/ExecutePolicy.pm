@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method ExecutePolicy o
 Auto Scaling service. Use the attributes of this class
 as arguments to method ExecutePolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ExecutePolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ExecutePolicy.
 
 As an example:
 

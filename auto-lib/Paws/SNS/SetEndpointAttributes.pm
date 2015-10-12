@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method SetEndpointAttr
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method SetEndpointAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetEndpointAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetEndpointAttributes.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method RebuildWorkspac
 Amazon WorkSpaces service. Use the attributes of this class
 as arguments to method RebuildWorkspaces.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RebuildWorkspaces.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RebuildWorkspaces.
 
 As an example:
 

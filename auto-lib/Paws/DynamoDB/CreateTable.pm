@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method CreateTable on 
 Amazon DynamoDB service. Use the attributes of this class
 as arguments to method CreateTable.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateTable.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTable.
 
 As an example:
 

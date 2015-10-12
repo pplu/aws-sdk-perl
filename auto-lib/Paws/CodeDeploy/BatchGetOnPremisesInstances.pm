@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method BatchGetOnPremi
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method BatchGetOnPremisesInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetOnPremisesInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetOnPremisesInstances.
 
 As an example:
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteVolume on
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DeleteVolume.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteVolume.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteVolume.
 
 As an example:
 

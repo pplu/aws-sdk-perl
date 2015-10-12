@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method DescribePolicie
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribePolicies.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribePolicies.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribePolicies.
 
 As an example:
 

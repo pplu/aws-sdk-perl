@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method PutRecordBatch 
 Amazon Kinesis Firehose service. Use the attributes of this class
 as arguments to method PutRecordBatch.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutRecordBatch.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRecordBatch.
 
 As an example:
 

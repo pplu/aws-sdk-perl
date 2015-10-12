@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeregisterInsta
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method DeregisterInstancesFromLoadBalancer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterInstancesFromLoadBalancer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterInstancesFromLoadBalancer.
 
 As an example:
 

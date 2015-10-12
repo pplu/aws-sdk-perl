@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method UpdateThingShad
 AWS IoT Data Plane service. Use the attributes of this class
 as arguments to method UpdateThingShadow.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateThingShadow.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateThingShadow.
 
 As an example:
 

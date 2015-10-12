@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateRule on t
 AWS WAF service. Use the attributes of this class
 as arguments to method UpdateRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRule.
 
 As an example:
 

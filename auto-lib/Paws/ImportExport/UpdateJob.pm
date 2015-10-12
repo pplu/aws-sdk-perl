@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method UpdateJob on th
 AWS Import/Export service. Use the attributes of this class
 as arguments to method UpdateJob.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateJob.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateJob.
 
 As an example:
 

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method UpdateThing on 
 AWS IoT service. Use the attributes of this class
 as arguments to method UpdateThing.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateThing.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateThing.
 
 As an example:
 

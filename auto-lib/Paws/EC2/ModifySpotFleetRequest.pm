@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ModifySpotFleet
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method ModifySpotFleetRequest.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifySpotFleetRequest.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifySpotFleetRequest.
 
 As an example:
 

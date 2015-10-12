@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateAssociati
 Amazon Simple Systems Management Service service. Use the attributes of this class
 as arguments to method CreateAssociationBatch.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateAssociationBatch.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAssociationBatch.
 
 As an example:
 

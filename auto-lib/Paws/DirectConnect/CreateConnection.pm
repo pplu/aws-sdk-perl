@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateConnectio
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method CreateConnection.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateConnection.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateConnection.
 
 As an example:
 

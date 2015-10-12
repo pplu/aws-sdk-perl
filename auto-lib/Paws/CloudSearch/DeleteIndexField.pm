@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteIndexFiel
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method DeleteIndexField.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteIndexField.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteIndexField.
 
 As an example:
 

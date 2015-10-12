@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CopyDBClusterSn
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CopyDBClusterSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CopyDBClusterSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyDBClusterSnapshot.
 
 As an example:
 

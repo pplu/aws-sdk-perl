@@ -38,7 +38,7 @@ This class represents the parameters used for calling the method CreateInstance 
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method CreateInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateInstance.
 
 As an example:
 
