@@ -642,8 +642,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
   }
 
   has map_enum_template => (is => 'ro', isa => 'Str', default => q#
-[%- operation = c.operation(op_name) %]
-[%- shape = c.input_for_operation(op_name) -%]
+[%- -%]
 package [% inner_class %];
   use Moose;
   with 'Paws::API::MapParser';
@@ -659,8 +658,7 @@ package [% inner_class %];
 #);
 
   has map_str_to_native_template => (is => 'ro', isa => 'Str', default => q#
-[%- operation = c.operation(op_name) %]
-[%- shape = c.input_for_operation(op_name) -%]
+[%- -%]
 package [% inner_class %];
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
@@ -674,8 +672,7 @@ package [% inner_class %];
 #);
 
   has map_str_to_obj_template => (is => 'ro', isa => 'Str', default => q#
-[%- operation = c.operation(op_name) %]
-[%- shape = c.input_for_operation(op_name) -%]
+[%- -%]
 package [% inner_class %];
   use Moose;
   with 'Paws::API::StrToObjMapParser';
@@ -686,6 +683,24 @@ package [% inner_class %];
 
   has Map => (is => 'ro', isa => '[% map_class %]');
 1
+#);
+
+  has object_template => (is => 'ro', isa => 'Str', default => q#
+[%- -%]
+package [% inner_class %];
+  use Moose;
+[% FOREACH param_name IN shape.members.keys.sort -%]
+  [%- traits = [] -%]
+  [%- member_shape_name = shape.members.$param_name.shape %]
+  [%- member = c.shape(member_shape_name) -%]
+  has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
+  [%- IF (shape.members.${param_name}.locationName); traits.push('Unwrapped','NameInRequest') %], xmlname => '[% shape.members.${param_name}.locationName %]', request_name => '[% shape.members.${param_name}.locationName %]'[% END %]
+  [%- IF (shape.members.$param_name.streaming == 1); traits.push('ParamInBody'); END %]
+  [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('JSONAttribute') %], decode_as => '[% encoder.encoding %]', method => '[% encoder.alias %]'[% END %]
+  [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['Unwrapped'], xmlname => '[% member.members.xmlname %]'[% END %]
+  [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% IF (NOT loop.last) %],[% END %][% END %]][% END -%]
+  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+[% END %]1;
 #);
 
   sub make_inner_class {
@@ -716,45 +731,7 @@ package [% inner_class %];
           die "Unrecognized Map type in query API " . Dumper($iclass) . ' keys_shape ' . Dumper($keys_shape) . ' values_shape' . Dumper($values_shape);
         }
       } elsif ($iclass->{type} eq 'structure'){
-        $output .= "package $inner_class;\n";
-        $output .= "  use Moose;\n";
-        my $members = $iclass->{members};
-        foreach my $param_name (sort keys %$members){
-          my $member_shape_name = $members->{ $param_name }->{ shape };
-          my $param_props = $self->shape($member_shape_name);
-
-          my $type;
-          if ($param_props->{enum}) {
-            # Enums passed to Str because documentation tends to have inconsistencies 
-            #$type = $self->api . "::" . $param_props->{shape_name};
-            #$self->register_enum($type, $param_props->{enum});
-            $type = 'Str';
-          } else {
-            $type = eval { $self->get_caller_class_type($members->{ $param_name }->{ shape }) };
-            if ($@) { die "In Inner Class: $inner_class: $@"; }
-          }
-          my $traits = [];
-          $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-          if (defined $members->{ $param_name }->{locationName}) {
-            push @$traits, 'Unwrapped';
-            $output .= ", xmlname => '$members->{ $param_name }->{locationName}'";
-          }
-          if (defined $members->{ $param_name }->{locationName}) {
-            push @$traits, 'NameInRequest';
-            $output .= ", request_name => '$members->{ $param_name }->{locationName}'";
-          }
-          if (defined $self->encoders_struct and my $encoder = $self->encoders_struct->{ $member_shape_name }) {
-            push @$traits, 'JSONAttribute';
-            $output .= ", decode_as => '$encoder->{ encoding }', method => '$encoder->{ alias }'";
-          }
-          if (@$traits) {
-            $output .= ", traits => [" . (join ',', map { "'$_'" } @$traits) . "]";
-          }
-          $output .= ", required => 1" if ($self->required_in_shape($iclass,$param_name));
-          $output .= ");\n";
-        }
-        $output .= "1;\n";
-        return $output;
+        $self->process_template($self->object_template, { c => $self, shape => $iclass, inner_class => $inner_class });
       }
   }
 }

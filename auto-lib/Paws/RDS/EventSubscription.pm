@@ -1,7 +1,7 @@
 package Paws::RDS::EventSubscription;
   use Moose;
-  has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has CustomerAwsId => (is => 'ro', isa => 'Str');
+  has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str]');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
