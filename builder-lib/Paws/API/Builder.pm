@@ -626,7 +626,6 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     }
 
     foreach my $shape_name ($self->inner_shapes) {
-      print "Inner Shape $shape_name\n";
       my $shape = $self->shape($shape_name);
       my $class_name = $self->namespace_shape($shape_name);
       my $output = $self->make_inner_class($shape, $class_name);
@@ -663,7 +662,6 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my ($self, $shape, $param_name) = @_;
     my $doc = $shape->{members}->{$param_name}->{documentation};
     if (not $doc) {
-      warn "No documentation for $param_name in " . $self->api;
       return '';
     }
     my $pod = $self->html_to_pod($doc);
@@ -675,7 +673,6 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
   sub doc_for_service {
     my ($self) = @_;
     if (not $self->api_struct->{documentation}) {
-      warn "No documentation for service " . $self->api;
       return '';
     }
     return $self->html_to_pod($self->api_struct->{documentation});
@@ -684,7 +681,6 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my ($self, $method) = @_;
     my $op = $self->operation($method);
     if (not $op->{ documentation }) {
-      warn "No documentation for " . $self->api . "::" . $method;
       return '';
     }
     return $self->html_to_pod($op->{ documentation });
