@@ -29,6 +29,6 @@ package Paws::OpsWorks::LayerAttributes;
   has NodejsVersion => (is => 'ro', isa => 'Str');
   has PassengerVersion => (is => 'ro', isa => 'Str');
   has RailsStack => (is => 'ro', isa => 'Str');
-  has RubyVersion => (is => 'ro', isa => 'Str');
   has RubygemsVersion => (is => 'ro', isa => 'Str');
+  has RubyVersion => (is => 'ro', isa => 'Str');
 1

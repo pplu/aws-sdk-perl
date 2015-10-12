@@ -641,6 +641,23 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     return $pod;
   }
 
+  has map_enum_template => (is => 'ro', isa => 'Str', default => q#
+[%- operation = c.operation(op_name) %]
+[%- shape = c.input_for_operation(op_name) -%]
+package [% inner_class %];
+  use Moose;
+  with 'Paws::API::MapParser';
+
+  use MooseX::ClassAttribute;
+  class_has xml_keys =>(is => 'ro', default => '[% iclass.key.locationName || 'key' %]');
+  class_has xml_values =>(is => 'ro', default => '[% iclass.value.locationName || 'value' %]');
+
+[% FOREACH param_name=keys_shape.enum.sort -%]
+  has [% param_name %] => (is => 'ro', isa => '[% c.get_caller_class_type(iclass.value.shape) %]');
+[% END -%]
+1
+#);
+
   sub make_inner_class {
     my $self = shift;
     my $iclass = shift;
@@ -654,25 +671,15 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
         my $values_shape = $self->shape($iclass->{value}->{shape});
 
         if ($keys_shape->{enum}){
-          $output .= "package $inner_class;\n";
-          $output .= "  use Moose;\n";
-          $output .= "  with 'Paws::API::MapParser';\n";
-
-          my $type = $self->get_caller_class_type($iclass->{value}->{shape});
-          my $xml_keys = $iclass->{key}->{locationName} || 'key';
-          my $xml_values = $iclass->{value}->{locationName} || 'value';
-          $output .= "\n";
-          $output .= "  use MooseX::ClassAttribute;\n";
-          $output .= "  class_has xml_keys =>(is => 'ro', default => '$xml_keys');\n";
-          $output .= "  class_has xml_values =>(is => 'ro', default => '$xml_values');\n";
-          $output .= "\n";
-
-          my $members = $keys_shape->{enum};
-          foreach my $param_name (sort @$members){
-            $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-            $output .= ");\n";
-          }
-          $output .= "1\n";
+          $self->process_template(
+            $self->map_enum_template,
+            {
+              c => $self,
+              iclass => $iclass,
+              inner_class => $inner_class,
+              keys_shape => $keys_shape,
+              values_shape => $values_shape,
+            });
         } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'string') {
           $output .= "package $inner_class;\n"; 
           $output .= "  use Moose;\n";
