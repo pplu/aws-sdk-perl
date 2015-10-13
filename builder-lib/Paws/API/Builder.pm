@@ -654,6 +654,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
   sub doc_for_shape {
     my ($self, $shape) = @_;
+    return if (not $shape);
     my $doc = $shape->{documentation};
     if (not $doc) {
       return '';
