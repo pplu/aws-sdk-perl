@@ -1,4 +1,4 @@
-package Paws::IAM::summaryMapType;
+package Paws::IAM::SummaryMapType;
   use Moose;
   with 'Paws::API::MapParser';
 
@@ -37,7 +37,7 @@ package Paws::IAM::summaryMapType;
 
 =head1 NAME
 
-Paws::IAM::summaryMapType
+Paws::IAM::SummaryMapType
 
 =head1 USAGE
 
@@ -48,13 +48,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::IAM::summaryMapType object:
+As an example, if Att1 is expected to be a Paws::IAM::SummaryMapType object:
 
   $service_obj->Method(Att1 => { AccessKeysPerUserQuota => $value, ..., VersionsPerPolicyQuota => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::summaryMapType object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::SummaryMapType object:
 
   $result = $service_obj->Method(...);
   $result->Att1->AccessKeysPerUserQuota

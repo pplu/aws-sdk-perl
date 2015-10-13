@@ -589,6 +589,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
   sub namespace_shape {
     my ($self, $shape) = @_;
+    substr($shape,0,1) = uc(substr($shape,0,1));
     return $self->api . '::' . $shape;
   }
 

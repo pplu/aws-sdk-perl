@@ -1,7 +1,7 @@
 package Paws::StorageGateway::StorageGatewayError;
   use Moose;
   has errorCode => (is => 'ro', isa => 'Str');
-  has errorDetails => (is => 'ro', isa => 'Paws::StorageGateway::errorDetails');
+  has errorDetails => (is => 'ro', isa => 'Paws::StorageGateway::ErrorDetails');
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ more information about the error.
 
   Additional information about the error.
 
-=head2 errorDetails => L<Paws::StorageGateway::errorDetails>
+=head2 errorDetails => L<Paws::StorageGateway::ErrorDetails>
 
   Human-readable text that provides detail about the error that occurred.
 

@@ -1,4 +1,4 @@
-package Paws::StorageGateway::errorDetails;
+package Paws::StorageGateway::ErrorDetails;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -13,7 +13,7 @@ package Paws::StorageGateway::errorDetails;
 
 =head1 NAME
 
-Paws::StorageGateway::errorDetails
+Paws::StorageGateway::ErrorDetails
 
 =head1 USAGE
 
@@ -24,13 +24,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::StorageGateway::errorDetails object:
+As an example, if Att1 is expected to be a Paws::StorageGateway::ErrorDetails object:
 
   $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGateway::errorDetails object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGateway::ErrorDetails object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Map->{ key1 }
