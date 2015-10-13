@@ -226,6 +226,7 @@ libraries, which you can find at the following AWS developer centers:
 
 =back
 
+
 =head1 METHODS
 
 =head2 CancelExportTask(taskId => Str)
@@ -274,6 +275,7 @@ You must use the following guidelines when naming a log group:
 =back
 
 
+
 =head2 CreateLogStream(logGroupName => Str, logStreamName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogStream>
@@ -293,6 +295,7 @@ You must use the following guidelines when naming a log stream:
 =item * The ':' colon character is not allowed.
 
 =back
+
 
 
 =head2 DeleteDestination(destinationName => Str)
@@ -565,6 +568,7 @@ their C<timestamp>.
 =item * The maximum number of log events in a batch is 10,000.
 
 =back
+
 
 
 =head2 PutMetricFilter(filterName => Str, filterPattern => Str, logGroupName => Str, metricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>])

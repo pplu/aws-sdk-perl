@@ -114,6 +114,7 @@ the VPN connection.
 
 =back
 
+
 =head2 VpnConnectionIds => ArrayRef[Str]
 
   One or more VPN connection IDs.

@@ -104,6 +104,7 @@ C<vpc-id> - The ID of the VPC for the subnet.
 
 =back
 
+
 =head2 SubnetIds => ArrayRef[Str]
 
   One or more subnet IDs.

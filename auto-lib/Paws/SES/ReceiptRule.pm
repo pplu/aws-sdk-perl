@@ -75,6 +75,7 @@ receipt rule.
 
 =back
 
+
 =head2 Recipients => ArrayRef[Str]
 
   The recipient domains and email addresses to which the receipt rule

@@ -57,6 +57,7 @@ continue to run.
 
 =back
 
+
 =head2 B<REQUIRED> timeoutType => Str
 
   The type of timeout that caused this event.

@@ -51,6 +51,7 @@ and ends at 3.1 MB (the end of the archive), then the
 x-amz-sha256-tree-hash is returned as a response header.
 
 =back
+
 =head2 contentRange => Str
 
   The range of bytes returned by Amazon Glacier. If only partial output

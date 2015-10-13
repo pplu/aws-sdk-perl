@@ -123,6 +123,7 @@ notification message sent to the target includes the following:
 
 =back
 
+
 =head2 RoleARN => Str
 
   The ARN of the IAM role that allows the Auto Scaling group to publish

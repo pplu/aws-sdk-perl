@@ -63,6 +63,7 @@ EndpointArn of a mobile app and device.
 
 =back
 
+
 =head2 B<REQUIRED> Protocol => Str
 
   The protocol you want to use. Supported protocols include:
@@ -86,6 +87,7 @@ queue
 EndpointArn for a mobile app and device.
 
 =back
+
 
 =head2 B<REQUIRED> TopicArn => Str
 

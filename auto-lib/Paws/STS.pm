@@ -313,6 +313,7 @@ For more information, see the following resources:
 =back
 
 
+
 =head2 AssumeRoleWithWebIdentity(RoleArn => Str, RoleSessionName => Str, WebIdentityToken => Str, [DurationSeconds => Int, Policy => Str, ProviderId => Str])
 
 Each argument is described in detail in: L<Paws::STS::AssumeRoleWithWebIdentity>
@@ -395,6 +396,7 @@ web identity federation to get access to content in Amazon S3.
 =back
 
 
+
 =head2 DecodeAuthorizationMessage(EncodedMessage => Str)
 
 Each argument is described in detail in: L<Paws::STS::DecodeAuthorizationMessage>
@@ -439,6 +441,7 @@ Determining Whether a Request is Allowed or Denied in I<Using IAM>.
 request.
 
 =back
+
 
 
 =head2 GetFederationToken(Name => Str, [DurationSeconds => Int, Policy => Str])

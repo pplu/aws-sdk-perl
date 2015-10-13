@@ -109,6 +109,7 @@ global secondary index, consisting of read and write capacity units.
 
 =back
 
+
 =head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
   Specifies the attributes that make up the primary key for a table or an
@@ -208,6 +209,7 @@ attributes when determining the total.
 
 =back
 
+
 =head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
   
@@ -255,6 +257,7 @@ item are written to the stream.
 =back
 
 =back
+
 
 =head2 B<REQUIRED> TableName => Str
 

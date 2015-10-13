@@ -29,6 +29,7 @@ C<true> : The CNAME is not available.
 =item * C<false> : The CNAME is not available.
 
 =back
+
 =head2 FullyQualifiedCNAME => Str
 
   The fully qualified CNAME to reserve when CreateEnvironment is called

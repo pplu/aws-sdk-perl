@@ -69,6 +69,7 @@ C<autoscaling:TEST_NOTIFICATION>
 
 =back
 
+
 =head2 TopicARN => Str
 
   The Amazon Resource Name (ARN) of the Amazon Simple Notification

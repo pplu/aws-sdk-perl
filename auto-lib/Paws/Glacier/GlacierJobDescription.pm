@@ -116,6 +116,7 @@ and the job status is InProgress.
 Inventory jobs.
 
 =back
+
 =head2 SNSTopic => Str
 
   An Amazon Simple Notification Service (Amazon SNS) topic that receives

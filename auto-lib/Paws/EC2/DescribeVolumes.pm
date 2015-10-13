@@ -132,6 +132,7 @@ volumes, or C<standard> for Magnetic volumes.
 
 =back
 
+
 =head2 MaxResults => Int
 
   The maximum number of volume results returned by C<DescribeVolumes> in

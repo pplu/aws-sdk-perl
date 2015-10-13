@@ -217,6 +217,7 @@ Constraints:
 
 =back
 
+
 =head2 StorageType => Str
 
   Specifies the storage type to be associated with the DB instance.
@@ -248,6 +249,7 @@ Constraints:
 =item * Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
+
 
 =head2 TdeCredentialArn => Str
 

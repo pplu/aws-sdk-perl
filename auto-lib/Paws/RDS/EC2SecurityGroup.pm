@@ -46,6 +46,7 @@ This data type is used as a response element in the following actions:
 
 =back
 
+
 =head1 ATTRIBUTES
 
 =head2 EC2SecurityGroupId => Str

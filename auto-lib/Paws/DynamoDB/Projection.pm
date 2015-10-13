@@ -72,6 +72,7 @@ C<ALL> - All of the table attributes are projected into the index.
 
 
 
+
 =head1 SEE ALSO
 
 This class forms part of L<Paws>, describing an object used in L<Paws::DynamoDB>

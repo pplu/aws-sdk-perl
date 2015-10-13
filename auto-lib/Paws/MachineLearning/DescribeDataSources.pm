@@ -71,6 +71,7 @@ invoked the C<DataSource> creation.
 
 =back
 
+
 =head2 GE => Str
 
   The greater than or equal to operator. The C<DataSource> results will
@@ -133,6 +134,7 @@ strings for the C<Prefix>:
 2014-09-09-Holiday
 
 =back
+
 
 =head2 SortOrder => Str
 

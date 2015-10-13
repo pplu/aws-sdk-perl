@@ -108,6 +108,7 @@ available for use.
 
 =back
 
+
 =head2 UsagePrice => Num
 
   The hourly rate Amazon Redshift charges you for this reserved node.

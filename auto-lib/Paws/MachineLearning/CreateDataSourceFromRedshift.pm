@@ -106,6 +106,7 @@ Sample - C< "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}">
 
 =back
 
+
 =head2 B<REQUIRED> RoleARN => Str
 
   A fully specified role Amazon Resource Name (ARN). Amazon ML assumes
@@ -124,6 +125,7 @@ An Amazon S3 bucket policy to grant Amazon ML read/write permissions on
 the C<S3StagingLocation>
 
 =back
+
 
 
 

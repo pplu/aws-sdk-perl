@@ -61,6 +61,7 @@ Constraints:
 
 =back
 
+
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   A list of tag instances.

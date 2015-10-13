@@ -84,6 +84,7 @@ C<vpc-id> - The ID of the VPC that the instance is linked to.
 
 =back
 
+
 =head2 InstanceIds => ArrayRef[Str]
 
   One or more instance IDs. Must be instances linked to a VPC through

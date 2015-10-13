@@ -58,6 +58,7 @@ must be supplied.
 
 =back
 
+
 =head2 B<REQUIRED> SubscriptionName => Str
 
   The name of the RDS event notification subscription you want to add a

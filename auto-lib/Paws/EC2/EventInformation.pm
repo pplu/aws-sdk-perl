@@ -139,6 +139,7 @@ C<terminated> - An instance was terminated by the user.
 
 =back
 
+
 =head2 InstanceId => Str
 
   The ID of the instance. This information is available only for

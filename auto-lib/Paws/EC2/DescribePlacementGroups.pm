@@ -62,6 +62,7 @@ C<strategy> - The strategy of the placement group (C<cluster>).
 
 =back
 
+
 =head2 GroupNames => ArrayRef[Str]
 
   One or more placement group names.

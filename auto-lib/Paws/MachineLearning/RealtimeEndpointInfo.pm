@@ -58,6 +58,7 @@ element can have one of the following values:
 
 =back
 
+
 =head2 EndpointUrl => Str
 
   The URI that specifies where to send real-time prediction requests for

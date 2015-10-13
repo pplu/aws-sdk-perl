@@ -60,6 +60,7 @@ C<status-message> - The reason for the status.
 
 =back
 
+
 =head2 ReservedInstancesId => Str
 
   One or more Reserved Instance IDs.

@@ -340,6 +340,7 @@ For complete descriptions of all comparison operators, see Condition.
 
 =back
 
+
 =head2 Segment => Int
 
   For a parallel I<Scan> request, I<Segment> identifies an individual

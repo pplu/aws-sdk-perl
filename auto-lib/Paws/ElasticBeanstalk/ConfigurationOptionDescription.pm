@@ -76,6 +76,7 @@ application servers on the running Amazon EC2 instances are restarted.
 
 =back
 
+
 =head2 DefaultValue => Str
 
   The default value for this configuration option.
@@ -173,6 +174,7 @@ C<false> .
 C<ConfigDocument>.
 
 =back
+
 
 
 

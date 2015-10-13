@@ -102,6 +102,7 @@ C<cluster-snapshot>.
 
 =back
 
+
 =head2 SourceType => Str
 
   The event source to retrieve events for. If no value is specified, all
@@ -127,6 +128,7 @@ a cluster parameter group name.
 cluster snapshot identifier.
 
 =back
+
 
 =head2 StartTime => Str
 

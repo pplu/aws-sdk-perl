@@ -75,6 +75,7 @@ Queues in the I<Amazon SQS Developer Guide>.
 
 =back
 
+
 =head2 B<REQUIRED> QueueUrl => Str
 
   The URL of the Amazon SQS queue to take action on.

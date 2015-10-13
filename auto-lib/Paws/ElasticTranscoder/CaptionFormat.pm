@@ -104,6 +104,7 @@ C<fmp4> captions have an extension of C<.ismt>
 
 =back
 
+
 =head2 Pattern => Str
 
   The prefix for caption filenames, in the form

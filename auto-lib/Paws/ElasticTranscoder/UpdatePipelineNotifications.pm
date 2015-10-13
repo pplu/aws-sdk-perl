@@ -72,6 +72,7 @@ is the ARN that Amazon SNS returned when you created the topic.
 
 
 
+
 =head1 SEE ALSO
 
 This class forms part of L<Paws>, documenting arguments for method UpdatePipelineNotifications in L<Paws::ElasticTranscoder>

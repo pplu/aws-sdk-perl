@@ -67,6 +67,7 @@ I<AttributeType> - The data type for the attribute.
 
 =back
 
+
 =head2 CreationDateTime => Str
 
   The date and time when the table was created, in UNIX epoch time
@@ -245,6 +246,7 @@ the I<StreamLabel>.
 
 =back
 
+
 =head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndexDescription>]
 
   Represents one or more local secondary indexes on the table. Each index
@@ -372,6 +374,7 @@ I<DELETING> - The table is being deleted.
 I<ACTIVE> - The table is ready for use.
 
 =back
+
 
 
 

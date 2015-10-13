@@ -80,6 +80,7 @@ For more information, go to the Amazon SES Developer Guide.
 
 =back
 
+
 =head2 ReturnPathArn => Str
 
   This parameter is used only for sending authorization. It is the ARN of

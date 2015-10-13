@@ -31,6 +31,7 @@ I<TableName> - The table that consumed the provisioned throughput.
 I<CapacityUnits> - The total number of capacity units consumed.
 
 =back
+
 =head2 Responses => L<Paws::DynamoDB::BatchGetResponseMap>
 
   A map of table name to a list of items. Each object in I<Responses>

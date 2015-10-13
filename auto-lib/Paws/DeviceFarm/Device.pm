@@ -78,6 +78,7 @@ TABLET: The tablet form factor.
 
 =back
 
+
 =head2 heapSize => Int
 
   The device's heap size, expressed in bytes.
@@ -123,6 +124,7 @@ ANDROID: The Android platform.
 IOS: The iOS platform.
 
 =back
+
 
 =head2 radio => Str
 

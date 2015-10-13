@@ -98,6 +98,7 @@ C<Instance is in terminated state.>
 
 =back
 
+
 =head2 InstanceId => Str
 
   The ID of the instance.

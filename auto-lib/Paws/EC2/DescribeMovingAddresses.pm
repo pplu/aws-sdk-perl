@@ -56,6 +56,7 @@ C<moving-status> - The status of the Elastic IP address (C<MovingToVpc>
 
 =back
 
+
 =head2 MaxResults => Int
 
   The maximum number of results to return for the request in a single

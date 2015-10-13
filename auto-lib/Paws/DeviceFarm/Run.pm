@@ -97,6 +97,7 @@ IOS: The iOS platform.
 
 =back
 
+
 =head2 result => Str
 
   The run's result.
@@ -135,6 +136,7 @@ WARNED: A warning condition.
 
 =back
 
+
 =head2 started => Str
 
   The run's start time.
@@ -168,6 +170,7 @@ RUNNING: A running status.
 SCHEDULING: A scheduling status.
 
 =back
+
 
 =head2 stopped => Str
 
@@ -224,6 +227,7 @@ UIAUTOMATOR: The uiautomator type.
 XCTEST: The XCode test type.
 
 =back
+
 
 
 

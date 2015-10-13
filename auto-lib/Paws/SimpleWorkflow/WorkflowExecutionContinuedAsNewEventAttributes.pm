@@ -67,6 +67,7 @@ continue to run.
 
 =back
 
+
 =head2 B<REQUIRED> decisionTaskCompletedEventId => Int
 
   The ID of the C<DecisionTaskCompleted> event corresponding to the

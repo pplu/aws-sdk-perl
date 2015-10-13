@@ -66,6 +66,7 @@ the I<StreamLabel>
 
 =back
 
+
 =head2 TableName => Str
 
   The DynamoDB table with which the stream is associated.

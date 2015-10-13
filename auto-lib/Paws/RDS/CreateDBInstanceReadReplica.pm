@@ -116,6 +116,7 @@ created outside of any VPC.
 
 =back
 
+
 =head2 Iops => Int
 
   The amount of Provisioned IOPS (input/output operations per second) to
@@ -188,6 +189,7 @@ Read Replica, specify a valid DB instance ARN. For more information, go
 to Constructing a Amazon RDS Amazon Resource Name (ARN).
 
 =back
+
 
 =head2 StorageType => Str
 

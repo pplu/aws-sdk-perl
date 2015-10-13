@@ -76,6 +76,7 @@ listing price should a house have?"
 example, "Is this a HIGH, LOW or MEDIUM risk trade?"
 
 =back
+
 =head2 Name => Str
 
   A user-supplied name or description of the C<MLModel>.
@@ -131,6 +132,7 @@ usable.
 usable.
 
 =back
+
 =head2 TrainingDataSourceId => Str
 
   The ID of the training C<DataSource>.
@@ -181,6 +183,7 @@ The value is an integer that ranges from 100000 to 2147483648. The
 default value is 33554432.
 
 =back
+
 
 
 =cut

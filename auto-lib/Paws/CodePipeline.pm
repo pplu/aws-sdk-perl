@@ -285,6 +285,7 @@ success.
 
 =back
 
+
 =head1 METHODS
 
 =head2 AcknowledgeJob(jobId => Str, nonce => Str)

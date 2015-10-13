@@ -46,6 +46,7 @@ by the C<CreateGrant> function.
 
 =back
 
+
 =head2 GrantToken => Str
 
   Token that identifies the grant to be retired.
@@ -65,6 +66,7 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 12345678-1234-1234-1234-123456789012
 
 =back
+
 
 
 

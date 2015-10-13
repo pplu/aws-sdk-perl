@@ -236,6 +236,7 @@ complete.
 =back
 
 
+
 =head2 DescribeComplianceByConfigRule([ComplianceTypes => ArrayRef[Str], ConfigRuleNames => ArrayRef[Str], NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::DescribeComplianceByConfigRule>
@@ -271,6 +272,7 @@ for all evaluation results. This can occur if the resources were
 deleted or removed from the rule's scope.
 
 =back
+
 
 
 =head2 DescribeComplianceByResource([ComplianceTypes => ArrayRef[Str], Limit => Int, NextToken => Str, ResourceId => Str, ResourceType => Str])
@@ -309,6 +311,7 @@ for all evaluation results. This can occur if the resources were
 deleted or removed from the rule's scope.
 
 =back
+
 
 
 =head2 DescribeConfigRuleEvaluationStatus([ConfigRuleNames => ArrayRef[Str]])

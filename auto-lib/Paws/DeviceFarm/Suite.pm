@@ -102,6 +102,7 @@ WARNED: A warning condition.
 
 =back
 
+
 =head2 started => Str
 
   The suite's start time.
@@ -135,6 +136,7 @@ RUNNING: A running status.
 SCHEDULING: A scheduling status.
 
 =back
+
 
 =head2 stopped => Str
 
@@ -187,6 +189,7 @@ UIAUTOMATOR: The uiautomator type.
 XCTEST: The XCode test type.
 
 =back
+
 
 
 

@@ -135,6 +135,7 @@ video files and playlists that it stores in your Amazon S3 bucket.
 
 =back
 
+
 =head2 B<REQUIRED> Id => Str
 
   The ID of the pipeline that you want to update.
@@ -238,6 +239,7 @@ C<ReducedRedundancy>, that you want Elastic Transcoder to assign to the
 thumbnails that it stores in your Amazon S3 bucket.
 
 =back
+
 
 
 

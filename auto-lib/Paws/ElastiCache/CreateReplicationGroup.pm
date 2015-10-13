@@ -73,6 +73,7 @@ ElastiCache Multi-AZ replication groups is not supported on:
 
 =back
 
+
 =head2 AutoMinorVersionUpgrade => Bool
 
   This parameter is currently disabled.
@@ -264,6 +265,7 @@ hyphens.
 hyphens.
 
 =back
+
 
 =head2 SecurityGroupIds => ArrayRef[Str]
 

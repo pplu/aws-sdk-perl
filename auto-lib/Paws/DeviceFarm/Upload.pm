@@ -96,6 +96,7 @@ SUCCEEDED: A succeeded status.
 
 =back
 
+
 =head2 type => Str
 
   The upload's type.
@@ -143,6 +144,7 @@ UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
 XCTEST_TEST_PACKAGE: An XCode test package upload.
 
 =back
+
 
 =head2 url => Str
 

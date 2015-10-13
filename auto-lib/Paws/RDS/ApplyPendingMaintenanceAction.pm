@@ -57,6 +57,7 @@ requests.
 
 =back
 
+
 =head2 B<REQUIRED> ResourceIdentifier => Str
 
   The RDS Amazon Resource Name (ARN) of the resource that the pending

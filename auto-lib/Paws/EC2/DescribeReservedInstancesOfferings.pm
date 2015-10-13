@@ -114,6 +114,7 @@ C<usage-price> - The usage price of the Reserved Instance, per hour
 
 =back
 
+
 =head2 IncludeMarketplace => Bool
 
   Include Marketplace offerings in the response.

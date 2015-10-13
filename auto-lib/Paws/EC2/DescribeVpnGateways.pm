@@ -98,6 +98,7 @@ C<vpn-gateway-id> - The ID of the virtual private gateway.
 
 =back
 
+
 =head2 VpnGatewayIds => ArrayRef[Str]
 
   One or more virtual private gateway IDs.

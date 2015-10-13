@@ -82,6 +82,7 @@ The upper and lower bound can't be null in the same step adjustment.
 
 =back
 
+
 =head1 ATTRIBUTES
 
 =head2 MetricIntervalLowerBound => Num

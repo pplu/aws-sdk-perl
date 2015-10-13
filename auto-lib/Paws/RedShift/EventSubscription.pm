@@ -106,6 +106,7 @@ subscription was created.
 
 =back
 
+
 =head2 SubscriptionCreationTime => Str
 
   The date and time the Amazon Redshift event notification subscription

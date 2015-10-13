@@ -701,6 +701,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     $pod =~ s/#.*$//mg;
     $pod =~ s/^(?:\s*\n)*//;
     $pod =~ s/(?:\s*\n)*$//;
+    $pod .= "\n" if ($pod =~ m/=back$/);
     return $pod;
   }
 

@@ -128,6 +128,7 @@ C<usage-price> - The usage price of the Reserved Instance, per hour
 
 =back
 
+
 =head2 OfferingType => Str
 
   The Reserved Instance offering type. If you are using tools that

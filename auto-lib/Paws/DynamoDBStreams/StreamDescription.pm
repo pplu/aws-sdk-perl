@@ -98,6 +98,7 @@ the I<StreamLabel>
 
 =back
 
+
 =head2 StreamStatus => Str
 
   Indicates the current status of the stream:
@@ -122,6 +123,7 @@ table.
 C<DISABLED> - the stream is disabled.
 
 =back
+
 
 =head2 StreamViewType => Str
 
@@ -150,6 +152,7 @@ C<NEW_AND_OLD_IMAGES> - both the new and the old images of the items
 from the table.
 
 =back
+
 
 =head2 TableName => Str
 

@@ -105,6 +105,7 @@ Constraints:
 
 =back
 
+
 =head2 ClusterType => Str
 
   The new cluster type.
@@ -171,6 +172,7 @@ Constraints:
 except ' (single quote), " (double quote), \, /, @, or space.
 
 =back
+
 
 =head2 NewClusterIdentifier => Str
 

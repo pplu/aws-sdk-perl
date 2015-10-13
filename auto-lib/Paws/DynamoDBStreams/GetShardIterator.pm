@@ -76,6 +76,7 @@ the shard, so that you always read the most recent data in the shard.
 
 =back
 
+
 =head2 B<REQUIRED> StreamArn => Str
 
   The Amazon Resource Name (ARN) for the stream.

@@ -82,6 +82,7 @@ is independent of the C<tag-key> filter.
 
 =back
 
+
 =head2 InternetGatewayIds => ArrayRef[Str]
 
   One or more Internet gateway IDs.

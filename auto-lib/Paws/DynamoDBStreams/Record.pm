@@ -74,6 +74,7 @@ C<REMOVE> - the item was deleted from the table
 
 =back
 
+
 =head2 eventSource => Str
 
   The AWS service from which the stream record originated. For DynamoDB

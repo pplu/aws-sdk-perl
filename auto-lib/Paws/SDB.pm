@@ -145,6 +145,7 @@ The following limitations are enforced for this operation:
 =back
 
 
+
 =head2 BatchPutAttributes(DomainName => Str, Items => ArrayRef[L<Paws::SDB::ReplaceableItem>])
 
 Each argument is described in detail in: L<Paws::SDB::BatchPutAttributes>
@@ -207,6 +208,7 @@ The following limitations are enforced for this operation:
 =item * 25 item limit per C<BatchPutAttributes> operation
 
 =back
+
 
 
 =head2 CreateDomain(DomainName => Str)
@@ -344,6 +346,7 @@ The following limitations are enforced for this operation:
 =item * 10 GB of total user data storage per domain
 
 =back
+
 
 
 =head2 Select(SelectExpression => Str, [ConsistentRead => Bool, NextToken => Str])

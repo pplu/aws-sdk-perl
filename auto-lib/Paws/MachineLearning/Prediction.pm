@@ -60,6 +60,7 @@ C<PredictedValue> - Present for a REGRESSION C<MLModel> request.
 
 =back
 
+
 =head1 ATTRIBUTES
 
 =head2 details => L<Paws::MachineLearning::DetailsMap>

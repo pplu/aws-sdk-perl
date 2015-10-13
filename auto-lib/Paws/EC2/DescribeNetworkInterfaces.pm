@@ -222,6 +222,7 @@ C<vpc-id> - The ID of the VPC for the network interface.
 
 =back
 
+
 =head2 NetworkInterfaceIds => ArrayRef[Str]
 
   One or more network interface IDs.

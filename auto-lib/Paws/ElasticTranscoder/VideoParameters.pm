@@ -108,6 +108,7 @@ Profile) : maximum video bit rate in kilobits/second (high Profile)>
 
 =back
 
+
 =head2 Codec => Str
 
   The video codec for the output file. Valid values include C<gif>,
@@ -366,6 +367,7 @@ level is described in the following list (I<Level - Decoding speed>):
 
 =back
 
+
 =head2 KeyframesMaxDist => Str
 
   Applicable only when the value of Video:Codec is one of C<H.264>,
@@ -495,6 +497,7 @@ value in the following list (I<List - Max width x height value>):
 
 =back
 
+
 =head2 SizingPolicy => Str
 
   Specify one of the following values to control scaling of the output
@@ -535,6 +538,7 @@ value. If you specify this option, Elastic Transcoder does not scale
 the video up.
 
 =back
+
 
 =head2 Watermarks => ArrayRef[L<Paws::ElasticTranscoder::PresetWatermark>]
 

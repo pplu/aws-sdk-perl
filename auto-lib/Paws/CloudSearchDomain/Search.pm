@@ -326,6 +326,7 @@ the scores from all fields (pure sum): C<"tieBreaker":1>. Valid values:
 
 =back
 
+
 =head2 queryParser => Str
 
   Specifies which query parser to use to process the request. If
@@ -364,6 +365,7 @@ Lucene query parser syntax defined by the DisMax query parser. For more
 information, see DisMax Query Parser Syntax.
 
 =back
+
 
 =head2 return => Str
 

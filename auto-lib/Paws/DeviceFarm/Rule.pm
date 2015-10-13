@@ -63,6 +63,7 @@ PLATFORM: The platform (for example, Android or iOS).
 
 =back
 
+
 =head2 operator => Str
 
   The rule's operator.
@@ -90,6 +91,7 @@ LESS_THAN: The less-than operator.
 NOT_IN: The not-in operator.
 
 =back
+
 
 =head2 value => Str
 

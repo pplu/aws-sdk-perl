@@ -255,6 +255,7 @@ requests.
 
 =back
 
+
 =head1 ATTRIBUTES
 
 =head2 activityTaskCanceledEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCanceledEventAttributes>

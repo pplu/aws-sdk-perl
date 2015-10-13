@@ -2418,6 +2418,7 @@ you can allocate for use with EC2-VPC.
 =back
 
 
+
 =head2 DescribeAddresses([AllocationIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], PublicIps => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeAddresses>
@@ -2641,6 +2642,7 @@ launch them through their termination. For more information, see
 Instance Lifecycle in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =back
+
 
 
 =head2 DescribeInternetGateways([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InternetGatewayIds => ArrayRef[Str]])

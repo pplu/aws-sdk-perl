@@ -114,6 +114,7 @@ C<not-applicable>).
 
 =back
 
+
 =head2 IncludeAllInstances => Bool
 
   When C<true>, includes the health status for all instances. When

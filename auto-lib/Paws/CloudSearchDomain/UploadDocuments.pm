@@ -48,6 +48,7 @@ two document batch formats:
 
 =back
 
+
 =head2 B<REQUIRED> documents => Str
 
   A batch of documents formatted in JSON or HTML.

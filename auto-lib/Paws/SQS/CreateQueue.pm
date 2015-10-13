@@ -70,6 +70,7 @@ Timeout in the I<Amazon SQS Developer Guide>.
 
 =back
 
+
 =head2 B<REQUIRED> QueueName => Str
 
   The name for the queue to be created.

@@ -161,6 +161,7 @@ return.
 
 =back
 
+
 =head1 METHODS
 
 =head2 AllocateConnectionOnInterconnect(bandwidth => Str, connectionName => Str, interconnectId => Str, ownerAccount => Str, vlan => Int)

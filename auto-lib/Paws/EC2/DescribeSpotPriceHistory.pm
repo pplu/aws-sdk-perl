@@ -92,6 +92,7 @@ supported.
 
 =back
 
+
 =head2 InstanceTypes => ArrayRef[Str]
 
   Filters the results by the specified instance types.

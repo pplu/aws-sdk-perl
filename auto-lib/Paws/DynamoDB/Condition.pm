@@ -55,6 +55,7 @@ evaluates the scan results and returns only the desired values.
 
 =back
 
+
 =head1 ATTRIBUTES
 
 =head2 AttributeValueList => ArrayRef[L<Paws::DynamoDB::AttributeValue>]

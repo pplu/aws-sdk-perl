@@ -95,6 +95,7 @@ I<ACTIVE> - The index is ready for use.
 
 =back
 
+
 =head2 ItemCount => Int
 
   The number of items in the specified index. DynamoDB updates this value

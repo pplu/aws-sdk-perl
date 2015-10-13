@@ -112,6 +112,7 @@ C<volume-size> - The size of the volume, in GiB.
 
 =back
 
+
 =head2 MaxResults => Int
 
   The maximum number of snapshot results returned by C<DescribeSnapshots>

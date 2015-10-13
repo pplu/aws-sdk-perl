@@ -270,6 +270,7 @@ the Root Device.
 
 =back
 
+
 =head2 SubnetId => Str
 
   The instance's subnet ID; applicable only if the stack is running in a

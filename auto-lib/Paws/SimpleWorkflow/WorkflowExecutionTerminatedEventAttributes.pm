@@ -66,6 +66,7 @@ continue to run.
 
 =back
 
+
 =head2 details => Str
 
   The details provided for the termination (if any).

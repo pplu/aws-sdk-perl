@@ -62,6 +62,7 @@ shard, so that you always read the most recent data in the shard.
 
 =back
 
+
 =head2 StartingSequenceNumber => Str
 
   The sequence number of the data record in the shard from which to start

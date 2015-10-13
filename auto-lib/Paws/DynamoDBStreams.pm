@@ -105,6 +105,7 @@ current AWS account and endpoint.
 
 =back
 
+
 =head1 METHODS
 
 =head2 DescribeStream(StreamArn => Str, [ExclusiveStartShardId => Str, Limit => Int])

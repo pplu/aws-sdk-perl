@@ -60,6 +60,7 @@ following:
 
 =back
 
+
 =head2 eTag => Str
 
   The ETag of the Amazon S3 object that represents the bundled artifacts

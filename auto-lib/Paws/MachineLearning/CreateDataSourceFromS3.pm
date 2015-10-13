@@ -82,6 +82,7 @@ Sample - C< "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}">
 
 
 
+
 =head1 SEE ALSO
 
 This class forms part of L<Paws>, documenting arguments for method CreateDataSourceFromS3 in L<Paws::MachineLearning>

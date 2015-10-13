@@ -63,6 +63,7 @@ reason.
 
 =back
 
+
 =head2 logTail => Str
 
   The last portion of the associated diagnostic log.

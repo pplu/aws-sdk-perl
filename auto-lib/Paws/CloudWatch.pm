@@ -163,6 +163,7 @@ libraries, which you can find at the following AWS developer centers:
 
 =back
 
+
 =head1 METHODS
 
 =head2 DeleteAlarms(AlarmNames => ArrayRef[Str])

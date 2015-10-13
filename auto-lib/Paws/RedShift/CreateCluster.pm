@@ -140,6 +140,7 @@ Constraints:
 
 =back
 
+
 =head2 ClusterSecurityGroups => ArrayRef[Str]
 
   A list of security groups to be associated with this cluster.
@@ -206,6 +207,7 @@ Database Developer Guide.
 
 =back
 
+
 =head2 ElasticIp => Str
 
   The Elastic IP (EIP) address for the cluster.
@@ -256,6 +258,7 @@ Guide.
 
 =back
 
+
 =head2 B<REQUIRED> MasterUserPassword => Str
 
   The password associated with the master user account for the cluster
@@ -277,6 +280,7 @@ Constraints:
 except ' (single quote), " (double quote), \, /, @, or space.
 
 =back
+
 
 =head2 B<REQUIRED> NodeType => Str
 

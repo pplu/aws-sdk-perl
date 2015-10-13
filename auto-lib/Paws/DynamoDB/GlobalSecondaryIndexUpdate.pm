@@ -53,6 +53,7 @@ table.
 
 =back
 
+
 =head1 ATTRIBUTES
 
 =head2 Create => L<Paws::DynamoDB::CreateGlobalSecondaryIndexAction>
@@ -83,6 +84,7 @@ C<Projection>
 C<ProvisionedThroughput>
 
 =back
+
 
 =head2 Delete => L<Paws::DynamoDB::DeleteGlobalSecondaryIndexAction>
 

@@ -92,6 +92,7 @@ C<vpc-id> - The ID of the VPC.
 
 =back
 
+
 =head2 VpcIds => ArrayRef[Str]
 
   One or more VPC IDs.

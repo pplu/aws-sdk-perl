@@ -79,6 +79,7 @@ Amazon Simple Storage Solution (Amazon S3) bucket or directory.
 
 =back
 
+
 =head2 GE => Str
 
   The greater than or equal to operator. The C<BatchPrediction> results
@@ -142,6 +143,7 @@ strings for the C<Prefix>:
 2014-09-09-Holiday
 
 =back
+
 
 =head2 SortOrder => Str
 

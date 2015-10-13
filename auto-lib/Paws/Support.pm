@@ -313,6 +313,7 @@ objects.
 =back
 
 
+
 =head2 DescribeCommunications(caseId => Str, [afterTime => Str, beforeTime => Str, maxResults => Int, nextToken => Str])
 
 Each argument is described in detail in: L<Paws::Support::DescribeCommunications>
@@ -413,6 +414,7 @@ In addition, the response contains these fields:
 =back
 
 
+
 =head2 DescribeTrustedAdvisorChecks(language => Str)
 
 Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorChecks>
@@ -463,6 +465,7 @@ milliseconds, until the check is eligible for refresh.
 =item * B<CheckId.> The unique identifier for the check.
 
 =back
+
 
 
 =head2 ResolveCase([caseId => Str])

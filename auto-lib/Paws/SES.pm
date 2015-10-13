@@ -722,6 +722,7 @@ about your sending quota, go to the Amazon SES Developer Guide.
 =back
 
 
+
 =head2 SendRawEmail(RawMessage => L<Paws::SES::RawMessage>, [Destinations => ArrayRef[Str], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str])
 
 Each argument is described in detail in: L<Paws::SES::SendRawEmail>
@@ -792,6 +793,7 @@ information about sending authorization, see the Amazon SES Developer
 Guide.
 
 =back
+
 
 
 =head2 SetActiveReceiptRuleSet([RuleSetName => Str])

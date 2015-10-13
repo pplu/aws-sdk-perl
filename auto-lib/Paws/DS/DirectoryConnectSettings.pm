@@ -60,6 +60,7 @@ privileges:
 
 =back
 
+
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
   A list of subnet identifiers in the VPC that the AD Connector is

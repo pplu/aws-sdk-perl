@@ -69,6 +69,7 @@ C<80> : C<stopped>
 
 =back
 
+
 =head2 Name => Str
 
   The current state of the instance.

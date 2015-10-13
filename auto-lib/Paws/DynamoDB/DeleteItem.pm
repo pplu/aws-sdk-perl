@@ -505,6 +505,7 @@ C<ALL_OLD> - The content of the old item is returned.
 
 =back
 
+
 =head2 B<REQUIRED> TableName => Str
 
   The name of the table from which to delete the item.

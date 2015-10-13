@@ -99,6 +99,7 @@ Constraints:
 
 =back
 
+
 =head2 ClusterParameterGroupName => Str
 
   The name of the parameter group to be associated with this cluster.
@@ -118,6 +119,7 @@ Constraints:
 =item * Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
+
 
 =head2 ClusterSecurityGroups => ArrayRef[Str]
 

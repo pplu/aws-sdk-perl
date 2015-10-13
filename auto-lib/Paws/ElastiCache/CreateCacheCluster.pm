@@ -87,6 +87,7 @@ hyphens.
 
 =back
 
+
 =head2 CacheNodeType => Str
 
   The compute and memory capacity of the nodes in the node group.

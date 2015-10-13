@@ -250,6 +250,7 @@ console.
 
 =back
 
+
 =head1 METHODS
 
 =head2 CreateAlias(AliasName => Str, TargetKeyId => Str)
@@ -293,6 +294,7 @@ policies attached to the user.
 =item 3. RevokeGrant
 
 =back
+
 
 
 =head2 CreateKey([Description => Str, KeyUsage => Str, Policy => Str])

@@ -70,6 +70,7 @@ Constraints:
 
 =back
 
+
 =head2 CharacterSetName => Str
 
   A value that indicates that the DB cluster should be associated with
@@ -118,6 +119,7 @@ Constraints:
 
 =back
 
+
 =head2 DBSubnetGroupName => Str
 
   A DB subnet group to associate with this DB cluster.
@@ -151,6 +153,7 @@ Constraints:
 =item * Cannot be a reserved word for the chosen database engine.
 
 =back
+
 
 =head2 B<REQUIRED> MasterUserPassword => Str
 
@@ -198,6 +201,7 @@ Constraints:
 =item * Must be at least 30 minutes.
 
 =back
+
 
 =head2 PreferredMaintenanceWindow => Str
 

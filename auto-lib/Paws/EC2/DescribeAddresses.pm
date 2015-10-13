@@ -92,6 +92,7 @@ C<public-ip> - The Elastic IP address.
 
 =back
 
+
 =head2 PublicIps => ArrayRef[Str]
 
   [EC2-Classic] One or more Elastic IP addresses.

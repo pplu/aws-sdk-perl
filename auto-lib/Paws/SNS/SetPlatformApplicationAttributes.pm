@@ -65,6 +65,7 @@ event notifications should be sent upon Direct Publish delivery failure
 
 =back
 
+
 =head2 B<REQUIRED> PlatformApplicationArn => Str
 
   PlatformApplicationArn for SetPlatformApplicationAttributes action.

@@ -138,6 +138,7 @@ C<vpc-id> - The ID of the VPC for the route table.
 
 =back
 
+
 =head2 RouteTableIds => ArrayRef[Str]
 
   One or more route table IDs.

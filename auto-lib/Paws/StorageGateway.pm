@@ -338,6 +338,7 @@ Gateway.
 
 =back
 
+
 =head1 METHODS
 
 =head2 ActivateGateway(ActivationKey => Str, GatewayName => Str, GatewayRegion => Str, GatewayTimezone => Str, [GatewayType => Str, MediumChangerType => Str, TapeDriveType => Str])

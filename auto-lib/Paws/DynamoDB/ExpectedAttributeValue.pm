@@ -261,6 +261,7 @@ C<{"N":"6"}> does not compare to C<{"NS":["6", "2", "1"]}>
 
 =back
 
+
 =head2 Exists => Bool
 
   Causes DynamoDB to evaluate the value before attempting a conditional
@@ -305,6 +306,7 @@ expect an attribute to have a value, while also expecting it not to
 exist.)
 
 =back
+
 
 =head2 Value => L<Paws::DynamoDB::AttributeValue>
 

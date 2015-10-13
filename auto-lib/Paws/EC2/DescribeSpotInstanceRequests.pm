@@ -244,6 +244,7 @@ C<valid-until> - The end date of the request.
 
 =back
 
+
 =head2 SpotInstanceRequestIds => ArrayRef[Str]
 
   One or more Spot instance request IDs.

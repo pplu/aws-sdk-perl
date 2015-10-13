@@ -68,6 +68,7 @@ continue to run.
 
 =back
 
+
 =head2 control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider

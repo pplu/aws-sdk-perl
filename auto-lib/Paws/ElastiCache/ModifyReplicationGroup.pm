@@ -79,6 +79,7 @@ ElastiCache Multi-AZ replication groups are not supported on:
 
 =back
 
+
 =head2 AutoMinorVersionUpgrade => Bool
 
   This parameter is currently disabled.

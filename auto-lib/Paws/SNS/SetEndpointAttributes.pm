@@ -56,6 +56,7 @@ the notification service.
 
 =back
 
+
 =head2 B<REQUIRED> EndpointArn => Str
 
   EndpointArn used for SetEndpointAttributes action.

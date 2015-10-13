@@ -124,6 +124,7 @@ on it, such as update or terminate.
 =item * C<Terminated>: Environment is not running.
 
 =back
+
 =head2 TemplateName => Str
 
   The name of the configuration template used to originally launch this

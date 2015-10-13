@@ -92,6 +92,7 @@ XCTEST: The XCode test type.
 
 
 
+
 =head1 SEE ALSO
 
 This class forms part of L<Paws>, documenting arguments for method GetDevicePoolCompatibility in L<Paws::DeviceFarm>

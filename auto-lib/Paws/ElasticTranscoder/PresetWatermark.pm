@@ -76,6 +76,7 @@ borders.
 
 =back
 
+
 =head2 HorizontalOffset => Str
 
   The amount by which you want the horizontal position of the watermark
@@ -149,6 +150,7 @@ the value of C<MaxWidth>.
 
 =back
 
+
 =head2 Opacity => Str
 
   A percentage that indicates how much you want a watermark to obscure
@@ -184,6 +186,7 @@ watermark up.
 
 =back
 
+
 =head2 Target => Str
 
   A value that determines how Elastic Transcoder interprets values that
@@ -209,6 +212,7 @@ black bars added by Elastic Transcoder, if any.
 
 =back
 
+
 =head2 VerticalAlign => Str
 
   The vertical position of the watermark unless you specify a non-zero
@@ -226,6 +230,7 @@ bottom border of the video.
 borders.
 
 =back
+
 
 =head2 VerticalOffset => Str
 

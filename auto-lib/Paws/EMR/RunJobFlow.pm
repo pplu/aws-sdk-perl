@@ -148,6 +148,7 @@ System installed.
 
 =back
 
+
 =head2 ReleaseLabel => Str
 
   Amazon EMR releases 4.x or later.
@@ -180,6 +181,7 @@ Amazon EMR. Currently supported values are:
 =item * "mapr-m5" - launch the job flow using MapR M5 Edition.
 
 =back
+
 
 =head2 Tags => ArrayRef[L<Paws::EMR::Tag>]
 

@@ -58,6 +58,7 @@ C<region-name> - The name of the region (for example, C<us-east-1>).
 
 =back
 
+
 =head2 RegionNames => ArrayRef[Str]
 
   The names of one or more regions.

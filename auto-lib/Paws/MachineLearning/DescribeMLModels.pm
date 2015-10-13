@@ -84,6 +84,7 @@ directory.
 
 =back
 
+
 =head2 GE => Str
 
   The greater than or equal to operator. The C<MLModel> results will have
@@ -147,6 +148,7 @@ the C<Prefix>:
 2014-09-09-Holiday
 
 =back
+
 
 =head2 SortOrder => Str
 

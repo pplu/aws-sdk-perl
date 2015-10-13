@@ -24,6 +24,7 @@ Paws::CodeDeploy::StopDeploymentOutput
 =item * Succeeded: The stop operation succeeded.
 
 =back
+
 =head2 statusMessage => Str
 
   An accompanying status message.

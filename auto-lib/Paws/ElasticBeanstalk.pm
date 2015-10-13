@@ -288,6 +288,7 @@ Related Topics
 =back
 
 
+
 =head2 CreateEnvironment(ApplicationName => Str, EnvironmentName => Str, [CNAMEPrefix => Str, Description => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>], TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateEnvironment>
@@ -422,6 +423,7 @@ Related Topics
 =back
 
 
+
 =head2 DescribeEnvironmentHealth([AttributeNames => ArrayRef[Str], EnvironmentId => Str, EnvironmentName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironmentHealth>
@@ -524,6 +526,7 @@ Related Topics
 =back
 
 
+
 =head2 RestartAppServer([EnvironmentId => Str, EnvironmentName => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::RestartAppServer>
@@ -550,6 +553,7 @@ Related Topics
 =item * RequestEnvironmentInfo
 
 =back
+
 
 
 =head2 SwapEnvironmentCNAMEs([DestinationEnvironmentId => Str, DestinationEnvironmentName => Str, SourceEnvironmentId => Str, SourceEnvironmentName => Str])
@@ -615,6 +619,7 @@ Related Topics
 =item * DescribeConfigurationOptions
 
 =back
+
 
 
 =head2 UpdateEnvironment([Description => Str, EnvironmentId => Str, EnvironmentName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])

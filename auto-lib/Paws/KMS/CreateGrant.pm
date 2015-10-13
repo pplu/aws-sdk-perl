@@ -66,6 +66,7 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =back
 
+
 =head2 Operations => ArrayRef[Str]
 
   List of operations permitted by the grant. This can be any combination
@@ -90,6 +91,7 @@ of one or more of the following values:
 =item 8. RetireGrant
 
 =back
+
 
 =head2 RetiringPrincipal => Str
 

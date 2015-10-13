@@ -106,6 +106,7 @@ C<other>: [explain using the description parameter]
 
 =back
 
+
 =head2 StartTime => Str
 
   The time at which the reported instance health state began.

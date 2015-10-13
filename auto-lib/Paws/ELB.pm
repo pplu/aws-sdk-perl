@@ -558,6 +558,7 @@ Developer Guide>:
 =back
 
 
+
 =head2 RegisterInstancesWithLoadBalancer(Instances => ArrayRef[L<Paws::ELB::Instance>], LoadBalancerName => Str)
 
 Each argument is described in detail in: L<Paws::ELB::RegisterInstancesWithLoadBalancer>

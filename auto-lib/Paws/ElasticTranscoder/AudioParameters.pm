@@ -166,6 +166,7 @@ eight tracks in all
 
 =back
 
+
 =head2 BitRate => Str
 
   The bit rate of the audio stream in the output file, in

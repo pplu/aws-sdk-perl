@@ -72,6 +72,7 @@ The Stack data type.
 
 =back
 
+
 =head2 LastUpdatedTime => Str
 
   The time the stack was last updated. This field will only be returned

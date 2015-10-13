@@ -55,6 +55,7 @@ Information about a tag filter.
 
 =back
 
+
 =head2 Value => Str
 
   The tag filter value.

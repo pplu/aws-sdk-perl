@@ -62,6 +62,7 @@ to the queue (epoch time in milliseconds).
 
 =back
 
+
 =head2 MaxNumberOfMessages => Int
 
   The maximum number of messages to return. Amazon SQS never returns more

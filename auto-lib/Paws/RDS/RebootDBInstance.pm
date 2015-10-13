@@ -50,6 +50,7 @@ Constraints:
 
 =back
 
+
 =head2 ForceFailover => Bool
 
   When C<true>, the reboot will be conducted through a MultiAZ failover.
