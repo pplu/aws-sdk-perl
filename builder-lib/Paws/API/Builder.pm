@@ -652,7 +652,6 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my ($self, $shape) = @_;
     my $doc = $shape->{documentation};
     if (not $doc) {
-      warn "No documentation for shape $shape in " . $self->api;
       return '';
     }
     return $self->html_to_pod($doc);
@@ -707,7 +706,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 [% inner_class %]
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -726,6 +725,10 @@ Use accessors for each attribute. If Att1 is expected to be an [% inner_class %]
 
   $result = $service_obj->Method(...);
   $result->Att1->[% keys_shape.enum.sort.0 %]
+
+=head1 DESCRIPTION
+
+[% desc = c.doc_for_shape(iclass); IF(desc); desc; ELSE; 'This class has no description'; END %]
 
 =head1 ATTRIBUTES
 
@@ -771,7 +774,7 @@ package [% inner_class %];
 
 [% inner_class %]
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -790,6 +793,10 @@ Use accessors for each attribute. If Att1 is expected to be an [% inner_class %]
 
   $result = $service_obj->Method(...);
   $result->Att1->Map->{ key1 }
+
+=head1 DESCRIPTION
+
+[% desc = c.doc_for_shape(iclass); IF(desc); desc; ELSE; 'This class has no description'; END %]
 
 =head1 ATTRIBUTES
 

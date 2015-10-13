@@ -15,7 +15,7 @@ package Paws::Kinesis::TagMap;
 
 Paws::Kinesis::TagMap
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Ta
 
   $result = $service_obj->Method(...);
   $result->Att1->Map->{ key1 }
+
+=head1 DESCRIPTION
+
+This class has no description
 
 =head1 ATTRIBUTES
 

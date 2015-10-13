@@ -16,7 +16,7 @@ package Paws::MachineLearning::DetailsMap;
 
 Paws::MachineLearning::DetailsMap
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->Algorithm
+
+=head1 DESCRIPTION
+
+Provides any additional details regarding the prediction.
 
 =head1 ATTRIBUTES
 
