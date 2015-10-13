@@ -10,7 +10,7 @@ package Paws::ES::Tag;
 
 Paws::ES::Tag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::Tag obj
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+Specifies a key value pair for a resource tag.
 
 =head1 ATTRIBUTES
 

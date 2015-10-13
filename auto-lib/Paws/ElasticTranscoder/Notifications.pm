@@ -12,7 +12,7 @@ package Paws::ElasticTranscoder::Notifications;
 
 Paws::ElasticTranscoder::Notifications
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->Completed
+
+=head1 DESCRIPTION
+
+The Amazon Simple Notification Service (Amazon SNS) topic or topics to
+notify in order to report job status.
+
+To receive notifications, you must also subscribe to the new topic in
+the Amazon SNS console.
 
 =head1 ATTRIBUTES
 

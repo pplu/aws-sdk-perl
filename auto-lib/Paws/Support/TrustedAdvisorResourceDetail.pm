@@ -13,7 +13,7 @@ package Paws::Support::TrustedAdvisorResourceDetail;
 
 Paws::Support::TrustedAdvisorResourceDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
   $result = $service_obj->Method(...);
   $result->Att1->isSuppressed
+
+=head1 DESCRIPTION
+
+Contains information about a resource identified by a Trusted Advisor
+check.
 
 =head1 ATTRIBUTES
 

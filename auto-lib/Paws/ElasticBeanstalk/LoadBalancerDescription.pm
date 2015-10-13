@@ -11,7 +11,7 @@ package Paws::ElasticBeanstalk::LoadBalancerDescription;
 
 Paws::ElasticBeanstalk::LoadBalancerDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->Domain
+
+=head1 DESCRIPTION
+
+Describes the details of a LoadBalancer.
 
 =head1 ATTRIBUTES
 

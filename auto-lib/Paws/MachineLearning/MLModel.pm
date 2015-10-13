@@ -24,7 +24,7 @@ package Paws::MachineLearning::MLModel;
 
 Paws::MachineLearning::MLModel
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -43,6 +43,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->Algorithm
+
+=head1 DESCRIPTION
+
+Represents the output of a GetMLModel operation.
+
+The content consists of the detailed metadata and the current status of
+the C<MLModel>.
 
 =head1 ATTRIBUTES
 

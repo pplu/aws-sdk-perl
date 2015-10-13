@@ -10,7 +10,7 @@ package Paws::ECS::HostEntry;
 
 Paws::ECS::HostEntry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::HostEn
 
   $result = $service_obj->Method(...);
   $result->Att1->hostname
+
+=head1 DESCRIPTION
+
+Hostnames and IP address entries that are added to the C</etc/hosts>
+file of a container via the C<extraHosts> parameter of its
+ContainerDefinition.
 
 =head1 ATTRIBUTES
 

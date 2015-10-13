@@ -11,7 +11,7 @@ package Paws::CloudFront::StreamingLoggingConfig;
 
 Paws::CloudFront::StreamingLoggingConfig
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->Bucket
+
+=head1 DESCRIPTION
+
+A complex type that controls whether access logs are written for this
+streaming distribution.
 
 =head1 ATTRIBUTES
 

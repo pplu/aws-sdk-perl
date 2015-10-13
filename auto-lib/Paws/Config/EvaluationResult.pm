@@ -14,7 +14,7 @@ package Paws::Config::EvaluationResult;
 
 Paws::Config::EvaluationResult
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Eva
 
   $result = $service_obj->Method(...);
   $result->Att1->Annotation
+
+=head1 DESCRIPTION
+
+The details of an AWS Config evaluation. Provides the AWS resource that
+was evaluated, the compliance of the resource, related timestamps, and
+supplementary information.
 
 =head1 ATTRIBUTES
 

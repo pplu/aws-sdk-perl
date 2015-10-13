@@ -12,7 +12,7 @@ package Paws::Route53::HealthCheck;
 
 Paws::Route53::HealthCheck
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::He
 
   $result = $service_obj->Method(...);
   $result->Att1->CallerReference
+
+=head1 DESCRIPTION
+
+A complex type that contains identifying information about the health
+check.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::Inspector::Attribute;
 
 Paws::Inspector::Attribute
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
   $result = $service_obj->Method(...);
   $result->Att1->key
+
+=head1 DESCRIPTION
+
+This data type is used as a response element in the
+AddAttributesToFindings action and a request parameter in the
+CreateAssessment action.
 
 =head1 ATTRIBUTES
 

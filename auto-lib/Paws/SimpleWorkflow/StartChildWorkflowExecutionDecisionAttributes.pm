@@ -19,7 +19,7 @@ package Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes;
 
 Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -38,6 +38,50 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->childPolicy
+
+=head1 DESCRIPTION
+
+Provides details of the C<StartChildWorkflowExecution> decision.
+
+B<Access Control>
+
+You can use IAM policies to control this decision's access to Amazon
+SWF resources as follows:
+
+=over
+
+=item * Use a C<Resource> element with the domain name to limit the
+action to only specified domains.
+
+=item * Use an C<Action> element to allow or deny permission to call
+this action.
+
+=item * Constrain the following parameters by using a C<Condition>
+element with the appropriate keys.
+
+=over
+
+=item * C<tagList.member.N>: The key is "swf:tagList.N" where N is the
+tag number from 0 to 4, inclusive.
+
+=item * C<taskList>: String constraint. The key is
+C<swf:taskList.name>.
+
+=item * C<workflowType.name>: String constraint. The key is
+C<swf:workflowType.name>.
+
+=item * C<workflowType.version>: String constraint. The key is
+C<swf:workflowType.version>.
+
+=back
+
+=back
+
+If the caller does not have sufficient permissions to invoke the
+action, or the parameter values fall outside the specified constraints,
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 

@@ -29,7 +29,7 @@ package Paws::CloudWatch::MetricAlarm;
 
 Paws::CloudWatch::MetricAlarm
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -48,6 +48,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
   $result = $service_obj->Method(...);
   $result->Att1->ActionsEnabled
+
+=head1 DESCRIPTION
+
+The MetricAlarm data type represents an alarm. You can use
+PutMetricAlarm to create or update an alarm.
 
 =head1 ATTRIBUTES
 

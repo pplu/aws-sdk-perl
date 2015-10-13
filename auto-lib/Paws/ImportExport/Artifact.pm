@@ -10,7 +10,7 @@ package Paws::ImportExport::Artifact;
 
 Paws::ImportExport::Artifact
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImportExpor
 
   $result = $service_obj->Method(...);
   $result->Att1->Description
+
+=head1 DESCRIPTION
+
+A discrete item that contains the description and URL of an artifact
+(such as a PDF).
 
 =head1 ATTRIBUTES
 

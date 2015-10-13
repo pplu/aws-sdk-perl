@@ -11,7 +11,7 @@ package Paws::RedShift::ClusterParameterGroupStatus;
 
 Paws::RedShift::ClusterParameterGroupStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
   $result = $service_obj->Method(...);
   $result->Att1->ClusterParameterStatusList
+
+=head1 DESCRIPTION
+
+Describes the status of a parameter group.
 
 =head1 ATTRIBUTES
 

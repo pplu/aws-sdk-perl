@@ -11,7 +11,7 @@ package Paws::CloudSearch::AnalysisScheme;
 
 Paws::CloudSearch::AnalysisScheme
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->AnalysisOptions
+
+=head1 DESCRIPTION
+
+Configuration information for an analysis scheme. Each analysis scheme
+has a unique name and specifies the language of the text to be
+processed. The following options can be configured for an analysis
+scheme: C<Synonyms>, C<Stopwords>, C<StemmingDictionary>,
+C<JapaneseTokenizationDictionary> and C<AlgorithmicStemming>.
 
 =head1 ATTRIBUTES
 

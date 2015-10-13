@@ -11,7 +11,7 @@ package Paws::CloudSearchDomain::SuggestModel;
 
 Paws::CloudSearchDomain::SuggestModel
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->found
+
+=head1 DESCRIPTION
+
+Container for the suggestion information returned in a
+C<SuggestResponse>.
 
 =head1 ATTRIBUTES
 

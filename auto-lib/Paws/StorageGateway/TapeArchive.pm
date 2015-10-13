@@ -14,7 +14,7 @@ package Paws::StorageGateway::TapeArchive;
 
 Paws::StorageGateway::TapeArchive
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
   $result = $service_obj->Method(...);
   $result->Att1->CompletionTime
+
+=head1 DESCRIPTION
+
+Represents a virtual tape that is archived in the virtual tape shelf
+(VTS).
 
 =head1 ATTRIBUTES
 

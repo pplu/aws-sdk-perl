@@ -12,7 +12,7 @@ package Paws::IAM::SSHPublicKeyMetadata;
 
 Paws::IAM::SSHPublicKeyMetadata
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::SSHPub
 
   $result = $service_obj->Method(...);
   $result->Att1->SSHPublicKeyId
+
+=head1 DESCRIPTION
+
+Contains information about an SSH public key, without the key's body or
+fingerprint.
+
+This data type is used as a response element in the ListSSHPublicKeys
+action.
 
 =head1 ATTRIBUTES
 

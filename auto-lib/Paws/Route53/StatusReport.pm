@@ -10,7 +10,7 @@ package Paws::Route53::StatusReport;
 
 Paws::Route53::StatusReport
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::St
 
   $result = $service_obj->Method(...);
   $result->Att1->CheckedTime
+
+=head1 DESCRIPTION
+
+A complex type that contains information about the health check status
+for the current observation.
 
 =head1 ATTRIBUTES
 

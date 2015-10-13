@@ -14,7 +14,7 @@ package Paws::WAF::HTTPRequest;
 
 Paws::WAF::HTTPRequest
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::HTTPRe
 
   $result = $service_obj->Method(...);
   $result->Att1->ClientIP
+
+=head1 DESCRIPTION
+
+The response from a GetSampledRequests request includes an
+C<HTTPRequest> complex type that appears as C<Request> in the response
+syntax. C<HTTPRequest> contains information about one of the web
+requests that were returned by C<GetSampledRequests>.
 
 =head1 ATTRIBUTES
 

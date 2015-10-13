@@ -10,7 +10,7 @@ package Paws::ElastiCache::RecurringCharge;
 
 Paws::ElastiCache::RecurringCharge
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->RecurringChargeAmount
+
+=head1 DESCRIPTION
+
+Contains the specific price and frequency of a recurring charges for a
+reserved cache node, or for a reserved cache node offering.
 
 =head1 ATTRIBUTES
 

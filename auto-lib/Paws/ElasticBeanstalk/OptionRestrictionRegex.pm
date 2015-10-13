@@ -10,7 +10,7 @@ package Paws::ElasticBeanstalk::OptionRestrictionRegex;
 
 Paws::ElasticBeanstalk::OptionRestrictionRegex
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->Label
+
+=head1 DESCRIPTION
+
+A regular expression representing a restriction on a string
+configuration option value.
 
 =head1 ATTRIBUTES
 

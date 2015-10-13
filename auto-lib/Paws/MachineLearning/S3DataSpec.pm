@@ -12,7 +12,7 @@ package Paws::MachineLearning::S3DataSpec;
 
 Paws::MachineLearning::S3DataSpec
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->DataLocationS3
+
+=head1 DESCRIPTION
+
+Describes the data specification of a C<DataSource>.
 
 =head1 ATTRIBUTES
 

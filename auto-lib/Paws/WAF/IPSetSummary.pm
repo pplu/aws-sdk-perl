@@ -10,7 +10,7 @@ package Paws::WAF::IPSetSummary;
 
 Paws::WAF::IPSetSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSetS
 
   $result = $service_obj->Method(...);
   $result->Att1->IPSetId
+
+=head1 DESCRIPTION
+
+Contains the identifier and the name of the C<IPSet>.
 
 =head1 ATTRIBUTES
 

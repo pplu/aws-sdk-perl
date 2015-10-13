@@ -11,7 +11,7 @@ package Paws::CloudFront::ActiveTrustedSigners;
 
 Paws::CloudFront::ActiveTrustedSigners
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->Enabled
+
+=head1 DESCRIPTION
+
+A complex type that lists the AWS accounts, if any, that you included
+in the TrustedSigners complex type for the default cache behavior or
+for any of the other cache behaviors for this distribution. These are
+accounts that you want to allow to create signed URLs for private
+content.
 
 =head1 ATTRIBUTES
 

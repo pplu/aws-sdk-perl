@@ -10,7 +10,7 @@ package Paws::DataPipeline::PipelineIdName;
 
 Paws::DataPipeline::PipelineIdName
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->id
+
+=head1 DESCRIPTION
+
+Contains the name and identifier of a pipeline.
 
 =head1 ATTRIBUTES
 

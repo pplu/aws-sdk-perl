@@ -10,7 +10,7 @@ package Paws::ECS::Failure;
 
 Paws::ECS::Failure
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Failur
 
   $result = $service_obj->Method(...);
   $result->Att1->arn
+
+=head1 DESCRIPTION
+
+A failed resource.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::ElasticTranscoder::Warning;
 
 Paws::ElasticTranscoder::Warning
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->Code
+
+=head1 DESCRIPTION
+
+Elastic Transcoder returns a warning if the resources used by your
+pipeline are not in the same region as the pipeline.
+
+Using resources in the same region, such as your Amazon S3 buckets,
+Amazon SNS notification topics, and AWS KMS key, reduces processing
+time and prevents cross-regional charges.
 
 =head1 ATTRIBUTES
 

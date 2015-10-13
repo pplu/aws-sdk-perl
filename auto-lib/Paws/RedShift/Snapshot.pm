@@ -36,7 +36,7 @@ package Paws::RedShift::Snapshot;
 
 Paws::RedShift::Snapshot
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -55,6 +55,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::S
 
   $result = $service_obj->Method(...);
   $result->Att1->AccountsWithRestoreAccess
+
+=head1 DESCRIPTION
+
+Describes a snapshot.
 
 =head1 ATTRIBUTES
 

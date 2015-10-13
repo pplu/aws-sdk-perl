@@ -9,7 +9,7 @@ package Paws::DynamoDB::DeleteRequest;
 
 Paws::DynamoDB::DeleteRequest
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::D
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+Represents a request to perform a I<DeleteItem> operation on an item.
 
 =head1 ATTRIBUTES
 

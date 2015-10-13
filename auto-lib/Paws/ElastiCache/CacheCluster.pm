@@ -30,7 +30,7 @@ package Paws::ElastiCache::CacheCluster;
 
 Paws::ElastiCache::CacheCluster
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -49,6 +49,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->AutoMinorVersionUpgrade
+
+=head1 DESCRIPTION
+
+Contains all of the attributes of a specific cache cluster.
 
 =head1 ATTRIBUTES
 

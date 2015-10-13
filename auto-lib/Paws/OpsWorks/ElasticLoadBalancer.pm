@@ -17,7 +17,7 @@ package Paws::OpsWorks::ElasticLoadBalancer;
 
 Paws::OpsWorks::ElasticLoadBalancer
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::E
 
   $result = $service_obj->Method(...);
   $result->Att1->AvailabilityZones
+
+=head1 DESCRIPTION
+
+Describes an Elastic Load Balancing instance.
 
 =head1 ATTRIBUTES
 

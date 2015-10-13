@@ -16,7 +16,7 @@ package Paws::ElasticTranscoder::Thumbnails;
 
 Paws::ElasticTranscoder::Thumbnails
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->AspectRatio
+
+=head1 DESCRIPTION
+
+Thumbnails for videos.
 
 =head1 ATTRIBUTES
 

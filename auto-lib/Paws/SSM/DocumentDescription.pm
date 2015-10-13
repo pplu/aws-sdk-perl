@@ -12,7 +12,7 @@ package Paws::SSM::DocumentDescription;
 
 Paws::SSM::DocumentDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Docume
 
   $result = $service_obj->Method(...);
   $result->Att1->CreatedDate
+
+=head1 DESCRIPTION
+
+Describes a configuration document.
 
 =head1 ATTRIBUTES
 

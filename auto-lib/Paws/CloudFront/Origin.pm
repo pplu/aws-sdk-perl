@@ -13,7 +13,7 @@ package Paws::CloudFront::Origin;
 
 Paws::CloudFront::Origin
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->CustomOriginConfig
+
+=head1 DESCRIPTION
+
+A complex type that describes the Amazon S3 bucket or the HTTP server
+(for example, a web server) from which CloudFront gets your files.You
+must create at least one origin.
 
 =head1 ATTRIBUTES
 

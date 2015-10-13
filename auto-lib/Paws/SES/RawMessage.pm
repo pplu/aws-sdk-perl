@@ -9,7 +9,7 @@ package Paws::SES::RawMessage;
 
 Paws::SES::RawMessage
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::RawMes
 
   $result = $service_obj->Method(...);
   $result->Att1->Data
+
+=head1 DESCRIPTION
+
+Represents the raw data of the message.
 
 =head1 ATTRIBUTES
 

@@ -14,7 +14,7 @@ package Paws::CloudWatch::MetricDatum;
 
 Paws::CloudWatch::MetricDatum
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
   $result = $service_obj->Method(...);
   $result->Att1->Dimensions
+
+=head1 DESCRIPTION
+
+The C<MetricDatum> data type encapsulates the information sent with
+PutMetricData to either create a new metric or add new values to be
+aggregated into an existing metric.
 
 =head1 ATTRIBUTES
 

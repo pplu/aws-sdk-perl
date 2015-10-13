@@ -10,7 +10,7 @@ package Paws::ECS::LogConfiguration;
 
 Paws::ECS::LogConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::LogCon
 
   $result = $service_obj->Method(...);
   $result->Att1->logDriver
+
+=head1 DESCRIPTION
+
+Log configuration options to send to a custom log driver for the
+container.
 
 =head1 ATTRIBUTES
 

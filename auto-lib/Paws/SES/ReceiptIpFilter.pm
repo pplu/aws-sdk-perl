@@ -10,7 +10,7 @@ package Paws::SES::ReceiptIpFilter;
 
 Paws::SES::ReceiptIpFilter
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Receip
 
   $result = $service_obj->Method(...);
   $result->Att1->Cidr
+
+=head1 DESCRIPTION
+
+A receipt IP address filter enables you to specify whether to accept or
+reject mail originating from an IP address or range of IP addresses.
+
+For information about setting up IP address filters, see the Amazon SES
+Developer Guide.
 
 =head1 ATTRIBUTES
 

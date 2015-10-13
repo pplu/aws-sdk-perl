@@ -10,7 +10,7 @@ package Paws::DeviceFarm::Resolution;
 
 Paws::DeviceFarm::Resolution
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   $result = $service_obj->Method(...);
   $result->Att1->height
+
+=head1 DESCRIPTION
+
+Represents the screen resolution of a device in height and width,
+expressed in pixels.
 
 =head1 ATTRIBUTES
 

@@ -18,7 +18,7 @@ package Paws::DynamoDBStreams::AttributeValue;
 
 Paws::DynamoDBStreams::AttributeValue
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -37,6 +37,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
   $result = $service_obj->Method(...);
   $result->Att1->B
+
+=head1 DESCRIPTION
+
+Represents the data for an attribute. You can set one, and only one, of
+the elements.
+
+Each attribute in an item is a name-value pair. An attribute can be
+single-valued or multi-valued set. For example, a book item can have
+title and authors attributes. Each book has one title but can have many
+authors. The multi-valued attribute is a set; duplicate values are not
+allowed.
 
 =head1 ATTRIBUTES
 

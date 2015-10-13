@@ -9,7 +9,7 @@ package Paws::Support::TrustedAdvisorCategorySpecificSummary;
 
 Paws::Support::TrustedAdvisorCategorySpecificSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
   $result = $service_obj->Method(...);
   $result->Att1->costOptimizing
+
+=head1 DESCRIPTION
+
+The container for summary information that relates to the category of
+the Trusted Advisor check.
 
 =head1 ATTRIBUTES
 

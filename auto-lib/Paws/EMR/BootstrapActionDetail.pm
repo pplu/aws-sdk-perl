@@ -9,7 +9,7 @@ package Paws::EMR::BootstrapActionDetail;
 
 Paws::EMR::BootstrapActionDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Bootst
 
   $result = $service_obj->Method(...);
   $result->Att1->BootstrapActionConfig
+
+=head1 DESCRIPTION
+
+Reports the configuration of a bootstrap action in a job flow.
 
 =head1 ATTRIBUTES
 

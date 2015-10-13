@@ -9,7 +9,7 @@ package Paws::Glacier::VaultAccessPolicy;
 
 Paws::Glacier::VaultAccessPolicy
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glacier::Va
 
   $result = $service_obj->Method(...);
   $result->Att1->Policy
+
+=head1 DESCRIPTION
+
+Contains the vault access policy.
 
 =head1 ATTRIBUTES
 

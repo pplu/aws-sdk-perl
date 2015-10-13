@@ -11,7 +11,7 @@ package Paws::WAF::ActivatedRule;
 
 Paws::WAF::ActivatedRule
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Activa
 
   $result = $service_obj->Method(...);
   $result->Att1->Action
+
+=head1 DESCRIPTION
+
+The C<ActivatedRule> object in an UpdateWebACL request specifies a
+C<Rule> that you want to insert or delete, the priority of the C<Rule>
+in the C<WebACL>, and the action that you want AWS WAF to take when a
+web request matches the C<Rule> (C<ALLOW>, C<BLOCK>, or C<COUNT>).
+
+To specify whether to insert or delete a C<Rule>, use the C<Action>
+parameter in the WebACLUpdate data type.
 
 =head1 ATTRIBUTES
 

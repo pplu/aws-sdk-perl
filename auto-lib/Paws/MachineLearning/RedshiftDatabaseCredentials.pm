@@ -10,7 +10,7 @@ package Paws::MachineLearning::RedshiftDatabaseCredentials;
 
 Paws::MachineLearning::RedshiftDatabaseCredentials
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->Password
+
+=head1 DESCRIPTION
+
+Describes the database credentials for connecting to a database on an
+Amazon Redshift cluster.
 
 =head1 ATTRIBUTES
 

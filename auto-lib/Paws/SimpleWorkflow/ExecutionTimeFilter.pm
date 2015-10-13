@@ -10,7 +10,7 @@ package Paws::SimpleWorkflow::ExecutionTimeFilter;
 
 Paws::SimpleWorkflow::ExecutionTimeFilter
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->latestDate
+
+=head1 DESCRIPTION
+
+Used to filter the workflow executions in visibility APIs by various
+time-based rules. Each parameter, if specified, defines a rule that
+must be satisfied by each returned query result. The parameter values
+are in the Unix Time format. For example: C<"oldestDate": 1325376070.>
 
 =head1 ATTRIBUTES
 

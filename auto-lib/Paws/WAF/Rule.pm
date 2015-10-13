@@ -12,7 +12,7 @@ package Paws::WAF::Rule;
 
 Paws::WAF::Rule
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Rule o
 
   $result = $service_obj->Method(...);
   $result->Att1->MetricName
+
+=head1 DESCRIPTION
+
+A combination of ByteMatchSet, IPSet, and/or SqlInjectionMatchSet
+objects that identify the web requests that you want to allow, block,
+or count. For example, you might create a C<Rule> that includes the
+following predicates:
+
+=over
+
+=item * An C<IPSet> that causes AWS WAF to search for web requests that
+originate from the IP address C<192.0.2.44>
+
+=item * A C<ByteMatchSet> that causes AWS WAF to search for web
+requests for which the value of the C<User-Agent> header is C<BadBot>.
+
+=back
+
+To match the settings in this C<Rule>, a request must originate from
+C<192.0.2.44> AND include a C<User-Agent> header for which the value is
+C<BadBot>.
 
 =head1 ATTRIBUTES
 

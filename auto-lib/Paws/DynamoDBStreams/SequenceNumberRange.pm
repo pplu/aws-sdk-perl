@@ -10,7 +10,7 @@ package Paws::DynamoDBStreams::SequenceNumberRange;
 
 Paws::DynamoDBStreams::SequenceNumberRange
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
   $result = $service_obj->Method(...);
   $result->Att1->EndingSequenceNumber
+
+=head1 DESCRIPTION
+
+The beginning and ending sequence numbers for the stream records
+contained within a shard.
 
 =head1 ATTRIBUTES
 

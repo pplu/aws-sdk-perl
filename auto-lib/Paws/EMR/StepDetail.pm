@@ -10,7 +10,7 @@ package Paws::EMR::StepDetail;
 
 Paws::EMR::StepDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepDe
 
   $result = $service_obj->Method(...);
   $result->Att1->ExecutionStatusDetail
+
+=head1 DESCRIPTION
+
+Combines the execution state and configuration of a step.
 
 =head1 ATTRIBUTES
 

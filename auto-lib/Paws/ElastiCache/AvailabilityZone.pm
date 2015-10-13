@@ -9,7 +9,7 @@ package Paws::ElastiCache::AvailabilityZone;
 
 Paws::ElastiCache::AvailabilityZone
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->Name
+
+=head1 DESCRIPTION
+
+Describes an Availability Zone in which the cache cluster is launched.
 
 =head1 ATTRIBUTES
 

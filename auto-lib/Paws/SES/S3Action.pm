@@ -12,7 +12,7 @@ package Paws::SES::S3Action;
 
 Paws::SES::S3Action
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::S3Acti
 
   $result = $service_obj->Method(...);
   $result->Att1->BucketName
+
+=head1 DESCRIPTION
+
+When included in a receipt rule, this action saves the received message
+to an Amazon Simple Storage Service (Amazon S3) bucket and, optionally,
+publishes a notification to Amazon Simple Notification Service (Amazon
+SNS).
+
+To enable Amazon SES to write emails to your Amazon S3 bucket, use an
+AWS KMS key to encrypt your emails, or publish to an Amazon SNS topic
+of another account, Amazon SES must have permission to access those
+resources. For information about giving permissions, see the Amazon SES
+Developer Guide.
+
+When you save your emails to an Amazon S3 bucket, the maximum email
+size (including headers) is 30 MB. Emails larger than that will bounce.
+
+For information about specifying Amazon S3 actions in receipt rules,
+see the Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 

@@ -14,7 +14,7 @@ package Paws::CloudWatchLogs::Destination;
 
 Paws::CloudWatchLogs::Destination
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
   $result = $service_obj->Method(...);
   $result->Att1->accessPolicy
+
+=head1 DESCRIPTION
+
+A cross account destination that is the recipient of subscription log
+events.
 
 =head1 ATTRIBUTES
 

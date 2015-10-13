@@ -14,7 +14,7 @@ package Paws::SES::ReceiptRule;
 
 Paws::SES::ReceiptRule
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Receip
 
   $result = $service_obj->Method(...);
   $result->Att1->Actions
+
+=head1 DESCRIPTION
+
+Receipt rules enable you to specify which actions Amazon SES should
+take when it receives mail on behalf of one or more email addresses or
+domains that you own.
+
+Each receipt rule defines a set of email addresses or domains to which
+it applies. If the email addresses or domains match at least one
+recipient address of the message, Amazon SES executes all of the
+receipt rule's actions on the message.
+
+For information about setting up receipt rules, see the Amazon SES
+Developer Guide.
 
 =head1 ATTRIBUTES
 

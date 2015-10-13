@@ -12,7 +12,7 @@ package Paws::STS::Credentials;
 
 Paws::STS::Credentials
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::STS::Creden
 
   $result = $service_obj->Method(...);
   $result->Att1->AccessKeyId
+
+=head1 DESCRIPTION
+
+AWS credentials for API authentication.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::DataPipeline::ValidationError;
 
 Paws::DataPipeline::ValidationError
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->errors
+
+=head1 DESCRIPTION
+
+Defines a validation error. Validation errors prevent pipeline
+activation. The set of validation errors that can be returned are
+defined by AWS Data Pipeline.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::DirectConnect::Location;
 
 Paws::DirectConnect::Location
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
   $result = $service_obj->Method(...);
   $result->Att1->locationCode
+
+=head1 DESCRIPTION
+
+An AWS Direct Connect location where connections and interconnects can
+be requested.
 
 =head1 ATTRIBUTES
 

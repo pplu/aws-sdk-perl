@@ -21,7 +21,7 @@ package Paws::CloudSearch::IndexField;
 
 Paws::CloudSearch::IndexField
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -40,6 +40,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->DateArrayOptions
+
+=head1 DESCRIPTION
+
+Configuration information for a field in the index, including its name,
+type, and options. The supported options depend on the
+C<IndexFieldType>.
 
 =head1 ATTRIBUTES
 

@@ -9,7 +9,7 @@ package Paws::S3::RestoreRequest;
 
 Paws::S3::RestoreRequest
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Restore
 
   $result = $service_obj->Method(...);
   $result->Att1->Days
+
+=head1 DESCRIPTION
+
+This class has no description
 
 =head1 ATTRIBUTES
 

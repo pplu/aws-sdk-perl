@@ -11,7 +11,7 @@ package Paws::RedShift::SnapshotCopyGrant;
 
 Paws::RedShift::SnapshotCopyGrant
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::S
 
   $result = $service_obj->Method(...);
   $result->Att1->KmsKeyId
+
+=head1 DESCRIPTION
+
+The snapshot copy grant that grants Amazon Redshift permission to
+encrypt copied snapshots with the specified customer master key (CMK)
+from AWS KMS in the destination region.
+
+For more information about managing snapshot copy grants, go to Amazon
+Redshift Database Encryption in the I<Amazon Redshift Cluster
+Management Guide>.
 
 =head1 ATTRIBUTES
 

@@ -16,7 +16,7 @@ package Paws::DS::RadiusSettings;
 
 Paws::DS::RadiusSettings
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::RadiusS
 
   $result = $service_obj->Method(...);
   $result->Att1->AuthenticationProtocol
+
+=head1 DESCRIPTION
+
+Contains information about a Remote Authentication Dial In User Service
+(RADIUS) server.
 
 =head1 ATTRIBUTES
 

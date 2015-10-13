@@ -9,7 +9,7 @@ package Paws::CloudSearch::ServiceEndpoint;
 
 Paws::CloudSearch::ServiceEndpoint
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->Endpoint
+
+=head1 DESCRIPTION
+
+The endpoint to which service requests can be submitted.
 
 =head1 ATTRIBUTES
 

@@ -15,7 +15,7 @@ package Paws::ElasticTranscoder::Playlist;
 
 Paws::ElasticTranscoder::Playlist
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->Format
+
+=head1 DESCRIPTION
+
+Use Only for Fragmented MP4 or MPEG-TS Outputs. If you specify a preset
+for which the value of Container is C<fmp4> (Fragmented MP4) or C<ts>
+(MPEG-TS), Playlists contains information about the master playlists
+that you want Elastic Transcoder to create. We recommend that you
+create only one master playlist per output format. The maximum number
+of master playlists in a job is 30.
 
 =head1 ATTRIBUTES
 

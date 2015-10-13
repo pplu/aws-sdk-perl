@@ -10,7 +10,7 @@ package Paws::CloudFront::Signer;
 
 Paws::CloudFront::Signer
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->AwsAccountNumber
+
+=head1 DESCRIPTION
+
+A complex type that lists the AWS accounts that were included in the
+TrustedSigners complex type, as well as their active CloudFront key
+pair IDs, if any.
 
 =head1 ATTRIBUTES
 

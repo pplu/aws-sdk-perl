@@ -16,7 +16,7 @@ package Paws::ElasticBeanstalk::InstanceHealthSummary;
 
 Paws::ElasticBeanstalk::InstanceHealthSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->Degraded
+
+=head1 DESCRIPTION
+
+Represents summary information about the health of an instance. For
+more information, see Health Colors and Statuses.
 
 =head1 ATTRIBUTES
 

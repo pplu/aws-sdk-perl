@@ -12,7 +12,7 @@ package Paws::ElasticBeanstalk::ApplicationMetrics;
 
 Paws::ElasticBeanstalk::ApplicationMetrics
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->Duration
+
+=head1 DESCRIPTION
+
+Represents the application metrics for a specified environment.
 
 =head1 ATTRIBUTES
 

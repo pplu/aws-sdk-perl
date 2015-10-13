@@ -12,7 +12,7 @@ package Paws::DynamoDB::GlobalSecondaryIndex;
 
 Paws::DynamoDB::GlobalSecondaryIndex
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::G
 
   $result = $service_obj->Method(...);
   $result->Att1->IndexName
+
+=head1 DESCRIPTION
+
+Represents the properties of a global secondary index.
 
 =head1 ATTRIBUTES
 

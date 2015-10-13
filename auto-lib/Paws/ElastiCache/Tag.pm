@@ -10,7 +10,7 @@ package Paws::ElastiCache::Tag;
 
 Paws::ElastiCache::Tag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+A cost allocation Tag that can be added to an ElastiCache cluster or
+replication group. Tags are composed of a Key/Value pair. A tag with a
+null Value is permitted.
 
 =head1 ATTRIBUTES
 

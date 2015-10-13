@@ -10,7 +10,7 @@ package Paws::RDS::CharacterSet;
 
 Paws::RDS::CharacterSet
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Charac
 
   $result = $service_obj->Method(...);
   $result->Att1->CharacterSetDescription
+
+=head1 DESCRIPTION
+
+This data type is used as a response element in the action
+DescribeDBEngineVersions.
 
 =head1 ATTRIBUTES
 

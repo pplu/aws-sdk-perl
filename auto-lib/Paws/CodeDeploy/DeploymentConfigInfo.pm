@@ -12,7 +12,7 @@ package Paws::CodeDeploy::DeploymentConfigInfo;
 
 Paws::CodeDeploy::DeploymentConfigInfo
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   $result = $service_obj->Method(...);
   $result->Att1->createTime
+
+=head1 DESCRIPTION
+
+Information about a deployment configuration.
 
 =head1 ATTRIBUTES
 

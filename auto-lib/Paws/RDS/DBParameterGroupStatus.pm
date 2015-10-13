@@ -10,7 +10,7 @@ package Paws::RDS::DBParameterGroupStatus;
 
 Paws::RDS::DBParameterGroupStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBPara
 
   $result = $service_obj->Method(...);
   $result->Att1->DBParameterGroupName
+
+=head1 DESCRIPTION
+
+The status of the DB parameter group.
+
+This data type is used as a response element in the following actions:
+
+=over
+
+=item * CreateDBInstance
+
+=item * CreateDBInstanceReadReplica
+
+=item * DeleteDBInstance
+
+=item * ModifyDBInstance
+
+=item * RebootDBInstance
+
+=item * RestoreDBInstanceFromDBSnapshot
+
+=back
 
 =head1 ATTRIBUTES
 

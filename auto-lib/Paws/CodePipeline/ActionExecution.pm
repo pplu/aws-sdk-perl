@@ -15,7 +15,7 @@ package Paws::CodePipeline::ActionExecution;
 
 Paws::CodePipeline::ActionExecution
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->errorDetails
+
+=head1 DESCRIPTION
+
+Represents information about how an action runs.
 
 =head1 ATTRIBUTES
 

@@ -13,7 +13,7 @@ package Paws::ELB::Listener;
 
 Paws::ELB::Listener
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Listen
 
   $result = $service_obj->Method(...);
   $result->Att1->InstancePort
+
+=head1 DESCRIPTION
+
+Information about a listener.
+
+For information about the protocols and the ports supported by Elastic
+Load Balancing, see Listener Configurations for Elastic Load Balancing
+in the I<Elastic Load Balancing Developer Guide>.
 
 =head1 ATTRIBUTES
 

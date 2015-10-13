@@ -11,7 +11,7 @@ package Paws::CloudFront::InvalidationSummary;
 
 Paws::CloudFront::InvalidationSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->CreateTime
+
+=head1 DESCRIPTION
+
+Summary of an invalidation request.
 
 =head1 ATTRIBUTES
 

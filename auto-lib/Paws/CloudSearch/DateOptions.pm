@@ -14,7 +14,7 @@ package Paws::CloudSearch::DateOptions;
 
 Paws::CloudSearch::DateOptions
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->DefaultValue
+
+=head1 DESCRIPTION
+
+Options for a date field. Dates and times are specified in UTC
+(Coordinated Universal Time) according to IETF RFC3339:
+yyyy-mm-ddT00:00:00Z. Present if C<IndexFieldType> specifies the field
+is of type C<date>. All options are enabled by default.
 
 =head1 ATTRIBUTES
 

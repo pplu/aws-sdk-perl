@@ -14,7 +14,7 @@ package Paws::RDS::OptionGroupOptionSetting;
 
 Paws::RDS::OptionGroupOptionSetting
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowedValues
+
+=head1 DESCRIPTION
+
+Option group option settings are used to display settings available for
+each option with their default values and other information. These
+values are used with the DescribeOptionGroupOptions action.
 
 =head1 ATTRIBUTES
 

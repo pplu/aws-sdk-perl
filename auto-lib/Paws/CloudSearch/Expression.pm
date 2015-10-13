@@ -10,7 +10,7 @@ package Paws::CloudSearch::Expression;
 
 Paws::CloudSearch::Expression
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->ExpressionName
+
+=head1 DESCRIPTION
+
+A named expression that can be evaluated at search time. Can be used to
+sort the search results, define other expressions, or return computed
+information in the search results.
 
 =head1 ATTRIBUTES
 

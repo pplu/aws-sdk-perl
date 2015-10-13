@@ -13,7 +13,7 @@ package Paws::Inspector::RulesPackage;
 
 Paws::Inspector::RulesPackage
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
   $result = $service_obj->Method(...);
   $result->Att1->description
+
+=head1 DESCRIPTION
+
+Contains information about an Inspector rules package.
+
+This data type is used as the response element in the
+DescribeRulesPackage action.
 
 =head1 ATTRIBUTES
 

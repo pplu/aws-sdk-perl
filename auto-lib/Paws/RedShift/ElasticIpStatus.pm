@@ -10,7 +10,7 @@ package Paws::RedShift::ElasticIpStatus;
 
 Paws::RedShift::ElasticIpStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::E
 
   $result = $service_obj->Method(...);
   $result->Att1->ElasticIp
+
+=head1 DESCRIPTION
+
+Describes the status of the elastic IP (EIP) address.
 
 =head1 ATTRIBUTES
 

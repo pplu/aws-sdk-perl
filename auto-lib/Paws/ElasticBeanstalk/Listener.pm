@@ -10,7 +10,7 @@ package Paws::ElasticBeanstalk::Listener;
 
 Paws::ElasticBeanstalk::Listener
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->Port
+
+=head1 DESCRIPTION
+
+Describes the properties of a Listener for the LoadBalancer.
 
 =head1 ATTRIBUTES
 

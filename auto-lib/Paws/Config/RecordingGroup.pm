@@ -10,7 +10,7 @@ package Paws::Config::RecordingGroup;
 
 Paws::Config::RecordingGroup
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Rec
 
   $result = $service_obj->Method(...);
   $result->Att1->allSupported
+
+=head1 DESCRIPTION
+
+The group of AWS resource types that AWS Config records when starting
+the configuration recorder.
+
+B<recordingGroup> can have one and only one parameter. Choose either
+B<allSupported> or B<resourceTypes>.
 
 =head1 ATTRIBUTES
 

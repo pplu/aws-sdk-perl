@@ -10,7 +10,7 @@ package Paws::S3::Destination;
 
 Paws::S3::Destination
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Destina
 
   $result = $service_obj->Method(...);
   $result->Att1->Bucket
+
+=head1 DESCRIPTION
+
+This class has no description
 
 =head1 ATTRIBUTES
 

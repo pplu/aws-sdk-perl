@@ -11,7 +11,7 @@ package Paws::Route53::AliasTarget;
 
 Paws::Route53::AliasTarget
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Al
 
   $result = $service_obj->Method(...);
   $result->Att1->DNSName
+
+=head1 DESCRIPTION
+
+I<Alias resource record sets only:> Information about the domain to
+which you are redirecting traffic.
+
+For more information and an example, see Creating Alias Resource Record
+Sets in the I<Amazon Route 53 Developer Guide>
+
+.
 
 =head1 ATTRIBUTES
 

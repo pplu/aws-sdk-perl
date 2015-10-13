@@ -9,7 +9,7 @@ package Paws::SimpleWorkflow::CloseStatusFilter;
 
 Paws::SimpleWorkflow::CloseStatusFilter
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->status
+
+=head1 DESCRIPTION
+
+Used to filter the closed workflow executions in visibility APIs by
+their close status.
 
 =head1 ATTRIBUTES
 

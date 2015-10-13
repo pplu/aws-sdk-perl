@@ -9,7 +9,7 @@ package Paws::ElasticBeanstalk::Instance;
 
 Paws::ElasticBeanstalk::Instance
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->Id
+
+=head1 DESCRIPTION
+
+The description of an Amazon EC2 instance.
 
 =head1 ATTRIBUTES
 

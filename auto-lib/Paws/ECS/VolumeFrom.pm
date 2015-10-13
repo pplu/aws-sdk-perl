@@ -10,7 +10,7 @@ package Paws::ECS::VolumeFrom;
 
 Paws::ECS::VolumeFrom
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Volume
 
   $result = $service_obj->Method(...);
   $result->Att1->readOnly
+
+=head1 DESCRIPTION
+
+Details on a data volume from another container.
 
 =head1 ATTRIBUTES
 

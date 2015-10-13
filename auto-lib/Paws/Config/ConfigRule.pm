@@ -17,7 +17,7 @@ package Paws::Config::ConfigRule;
 
 Paws::Config::ConfigRule
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
   $result = $service_obj->Method(...);
   $result->Att1->ConfigRuleArn
+
+=head1 DESCRIPTION
+
+An AWS Lambda function that evaluates configuration items to assess
+whether your AWS resources comply with your desired configurations.
+This function can run when AWS Config detects a configuration change or
+delivers a configuration snapshot. This function can evaluate any
+resource in the recording group. To define which of these are
+evaluated, specify a value for the C<Scope> key.
+
+For more information about developing and using AWS Config rules, see
+Evaluating AWS Resource Configurations with AWS Config in the I<AWS
+Config Developer Guide>.
 
 =head1 ATTRIBUTES
 

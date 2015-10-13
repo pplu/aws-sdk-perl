@@ -10,7 +10,7 @@ package Paws::DynamoDB::UpdateGlobalSecondaryIndexAction;
 
 Paws::DynamoDB::UpdateGlobalSecondaryIndexAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::U
 
   $result = $service_obj->Method(...);
   $result->Att1->IndexName
+
+=head1 DESCRIPTION
+
+Represents the new provisioned throughput settings to be applied to a
+global secondary index.
 
 =head1 ATTRIBUTES
 

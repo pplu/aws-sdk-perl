@@ -16,7 +16,7 @@ package Paws::RedShift::ReservedNodeOffering;
 
 Paws::RedShift::ReservedNodeOffering
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::R
 
   $result = $service_obj->Method(...);
   $result->Att1->CurrencyCode
+
+=head1 DESCRIPTION
+
+Describes a reserved node offering.
 
 =head1 ATTRIBUTES
 

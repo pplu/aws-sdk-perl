@@ -10,7 +10,7 @@ package Paws::Config::ComplianceContributorCount;
 
 Paws::Config::ComplianceContributorCount
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
   $result = $service_obj->Method(...);
   $result->Att1->CapExceeded
+
+=head1 DESCRIPTION
+
+The number of AWS resources or AWS Config rules responsible for the
+current compliance of the item, up to a maximum number.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::Route53::HealthCheckObservation;
 
 Paws::Route53::HealthCheckObservation
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::He
 
   $result = $service_obj->Method(...);
   $result->Att1->IPAddress
+
+=head1 DESCRIPTION
+
+A complex type that contains the IP address of a Route 53 health
+checker and the reason for the health check status.
 
 =head1 ATTRIBUTES
 

@@ -14,7 +14,7 @@ package Paws::MachineLearning::RDSMetadata;
 
 Paws::MachineLearning::RDSMetadata
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->Database
+
+=head1 DESCRIPTION
+
+The datasource details that are specific to Amazon RDS.
 
 =head1 ATTRIBUTES
 

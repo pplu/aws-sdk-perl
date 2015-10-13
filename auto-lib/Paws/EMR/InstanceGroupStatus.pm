@@ -11,7 +11,7 @@ package Paws::EMR::InstanceGroupStatus;
 
 Paws::EMR::InstanceGroupStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
   $result = $service_obj->Method(...);
   $result->Att1->State
+
+=head1 DESCRIPTION
+
+The details of the instance group status.
 
 =head1 ATTRIBUTES
 

@@ -9,7 +9,7 @@ package Paws::ECS::TaskOverride;
 
 Paws::ECS::TaskOverride
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::TaskOv
 
   $result = $service_obj->Method(...);
   $result->Att1->containerOverrides
+
+=head1 DESCRIPTION
+
+The overrides associated with a task.
 
 =head1 ATTRIBUTES
 

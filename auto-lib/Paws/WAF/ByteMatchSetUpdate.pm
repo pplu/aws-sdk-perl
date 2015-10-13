@@ -10,7 +10,7 @@ package Paws::WAF::ByteMatchSetUpdate;
 
 Paws::WAF::ByteMatchSetUpdate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::ByteMa
 
   $result = $service_obj->Method(...);
   $result->Att1->Action
+
+=head1 DESCRIPTION
+
+In an UpdateByteMatchSet request, C<ByteMatchSetUpdate> specifies
+whether to insert or delete a ByteMatchTuple and includes the settings
+for the C<ByteMatchTuple>.
 
 =head1 ATTRIBUTES
 

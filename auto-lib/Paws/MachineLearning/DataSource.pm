@@ -23,7 +23,7 @@ package Paws::MachineLearning::DataSource;
 
 Paws::MachineLearning::DataSource
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -42,6 +42,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->ComputeStatistics
+
+=head1 DESCRIPTION
+
+Represents the output of the GetDataSource operation.
+
+The content consists of the detailed metadata and data file information
+and the current status of the C<DataSource>.
 
 =head1 ATTRIBUTES
 

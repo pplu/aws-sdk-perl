@@ -11,7 +11,7 @@ package Paws::ELB::Policies;
 
 Paws::ELB::Policies
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Polici
 
   $result = $service_obj->Method(...);
   $result->Att1->AppCookieStickinessPolicies
+
+=head1 DESCRIPTION
+
+The policies for a load balancer.
 
 =head1 ATTRIBUTES
 

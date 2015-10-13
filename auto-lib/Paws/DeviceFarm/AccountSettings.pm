@@ -10,7 +10,7 @@ package Paws::DeviceFarm::AccountSettings;
 
 Paws::DeviceFarm::AccountSettings
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   $result = $service_obj->Method(...);
   $result->Att1->awsAccountNumber
+
+=head1 DESCRIPTION
+
+A container for account-level settings within AWS Device Farm.
 
 =head1 ATTRIBUTES
 

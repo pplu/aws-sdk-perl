@@ -10,7 +10,7 @@ package Paws::RDS::IPRange;
 
 Paws::RDS::IPRange
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::IPRang
 
   $result = $service_obj->Method(...);
   $result->Att1->CIDRIP
+
+=head1 DESCRIPTION
+
+This data type is used as a response element in the
+DescribeDBSecurityGroups action.
 
 =head1 ATTRIBUTES
 

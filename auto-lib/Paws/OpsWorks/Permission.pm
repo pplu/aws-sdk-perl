@@ -13,7 +13,7 @@ package Paws::OpsWorks::Permission;
 
 Paws::OpsWorks::Permission
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::P
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowSsh
+
+=head1 DESCRIPTION
+
+Describes stack or user permissions.
 
 =head1 ATTRIBUTES
 

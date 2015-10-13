@@ -11,7 +11,7 @@ package Paws::ElastiCache::CacheParameterGroupStatus;
 
 Paws::ElastiCache::CacheParameterGroupStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->CacheNodeIdsToReboot
+
+=head1 DESCRIPTION
+
+The status of the cache parameter group.
 
 =head1 ATTRIBUTES
 

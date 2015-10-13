@@ -16,7 +16,7 @@ package Paws::ECS::Deployment;
 
 Paws::ECS::Deployment
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Deploy
 
   $result = $service_obj->Method(...);
   $result->Att1->createdAt
+
+=head1 DESCRIPTION
+
+The details of an Amazon ECS service deployment.
 
 =head1 ATTRIBUTES
 

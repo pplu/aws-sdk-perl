@@ -15,7 +15,7 @@ package Paws::OpsWorks::WeeklyAutoScalingSchedule;
 
 Paws::OpsWorks::WeeklyAutoScalingSchedule
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::W
 
   $result = $service_obj->Method(...);
   $result->Att1->Friday
+
+=head1 DESCRIPTION
+
+Describes a time-based instance's auto scaling schedule. The schedule
+consists of a set of key-value pairs.
+
+=over
+
+=item * The key is the time period (a UTC hour) and must be an integer
+from 0 - 23.
+
+=item * The value indicates whether the instance should be online or
+offline for the specified period, and must be set to "on" or "off"
+
+=back
+
+The default setting for all time periods is off, so you use the
+following parameters primarily to specify the online periods. You don't
+have to explicitly specify offline periods unless you want to change an
+online period to an offline period.
+
+The following example specifies that the instance should be online for
+four hours, from UTC 1200 - 1600. It will be off for the remainder of
+the day.
+
+C<{ "12":"on", "13":"on", "14":"on", "15":"on" }>
 
 =head1 ATTRIBUTES
 

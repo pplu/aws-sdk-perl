@@ -16,7 +16,7 @@ package Paws::ElasticBeanstalk::Latency;
 
 Paws::ElasticBeanstalk::Latency
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->P10
+
+=head1 DESCRIPTION
+
+Represents the average latency for the slowest X percent of requests
+over the last 10 seconds.
 
 =head1 ATTRIBUTES
 

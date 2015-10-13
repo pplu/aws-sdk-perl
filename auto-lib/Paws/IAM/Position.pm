@@ -10,7 +10,7 @@ package Paws::IAM::Position;
 
 Paws::IAM::Position
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Positi
 
   $result = $service_obj->Method(...);
   $result->Att1->Column
+
+=head1 DESCRIPTION
+
+Contains the row and column of a location of a C<Statement> element in
+a policy document.
+
+This data type is used as a member of the C<Statement> type.
 
 =head1 ATTRIBUTES
 

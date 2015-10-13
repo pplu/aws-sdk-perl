@@ -13,7 +13,7 @@ package Paws::OpsWorks::UserProfile;
 
 Paws::OpsWorks::UserProfile
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::U
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowSelfManagement
+
+=head1 DESCRIPTION
+
+Describes a user's SSH information.
 
 =head1 ATTRIBUTES
 

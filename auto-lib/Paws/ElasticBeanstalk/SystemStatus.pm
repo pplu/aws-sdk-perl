@@ -10,7 +10,7 @@ package Paws::ElasticBeanstalk::SystemStatus;
 
 Paws::ElasticBeanstalk::SystemStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->CPUUtilization
+
+=head1 DESCRIPTION
+
+Represents CPU utilization and load average information for
+applications running in the specified environment.
 
 =head1 ATTRIBUTES
 

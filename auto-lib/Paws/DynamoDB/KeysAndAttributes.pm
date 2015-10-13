@@ -13,7 +13,7 @@ package Paws::DynamoDB::KeysAndAttributes;
 
 Paws::DynamoDB::KeysAndAttributes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::K
 
   $result = $service_obj->Method(...);
   $result->Att1->AttributesToGet
+
+=head1 DESCRIPTION
+
+Represents a set of primary keys and, for each key, the attributes to
+retrieve from the table.
+
+For each primary key, you must provide I<all> of the key attributes.
+For example, with a hash type primary key, you only need to provide the
+hash attribute. For a hash-and-range type primary key, you must provide
+I<both> the hash attribute and the range attribute.
 
 =head1 ATTRIBUTES
 

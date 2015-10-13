@@ -10,7 +10,7 @@ package Paws::Config::ComplianceByConfigRule;
 
 Paws::Config::ComplianceByConfigRule
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
   $result = $service_obj->Method(...);
   $result->Att1->Compliance
+
+=head1 DESCRIPTION
+
+Indicates whether an AWS Config rule is compliant. A rule is compliant
+if all of the resources that the rule evaluated comply with it, and it
+is noncompliant if any of these resources do not comply.
 
 =head1 ATTRIBUTES
 

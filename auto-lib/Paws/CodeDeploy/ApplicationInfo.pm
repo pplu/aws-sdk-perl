@@ -12,7 +12,7 @@ package Paws::CodeDeploy::ApplicationInfo;
 
 Paws::CodeDeploy::ApplicationInfo
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   $result = $service_obj->Method(...);
   $result->Att1->applicationId
+
+=head1 DESCRIPTION
+
+Information about an application.
 
 =head1 ATTRIBUTES
 

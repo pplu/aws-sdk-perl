@@ -14,7 +14,7 @@ package Paws::ElasticTranscoder::PlayReadyDrm;
 
 Paws::ElasticTranscoder::PlayReadyDrm
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->Format
+
+=head1 DESCRIPTION
+
+The PlayReady DRM settings, if any, that you want Elastic Transcoder to
+apply to the output files associated with this playlist.
+
+PlayReady DRM encrypts your media files using C<AES-CTR> encryption.
+
+If you use DRM for an C<HLSv3> playlist, your outputs must have a
+master playlist.
 
 =head1 ATTRIBUTES
 

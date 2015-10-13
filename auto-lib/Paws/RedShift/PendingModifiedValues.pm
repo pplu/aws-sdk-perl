@@ -15,7 +15,7 @@ package Paws::RedShift::PendingModifiedValues;
 
 Paws::RedShift::PendingModifiedValues
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::P
 
   $result = $service_obj->Method(...);
   $result->Att1->AutomatedSnapshotRetentionPeriod
+
+=head1 DESCRIPTION
+
+Describes cluster attributes that are in a pending state. A change to
+one or more the attributes was requested and is in progress or will be
+applied.
 
 =head1 ATTRIBUTES
 

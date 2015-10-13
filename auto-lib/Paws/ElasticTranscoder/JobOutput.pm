@@ -29,7 +29,7 @@ package Paws::ElasticTranscoder::JobOutput;
 
 Paws::ElasticTranscoder::JobOutput
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -48,6 +48,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->AlbumArt
+
+=head1 DESCRIPTION
+
+Outputs recommended instead.If you specified one output for a job,
+information about that output. If you specified multiple outputs for a
+job, the C<Output> object lists information about the first output.
+This duplicates the information that is listed for the first output in
+the C<Outputs> object.
 
 =head1 ATTRIBUTES
 

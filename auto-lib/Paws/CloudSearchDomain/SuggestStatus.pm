@@ -10,7 +10,7 @@ package Paws::CloudSearchDomain::SuggestStatus;
 
 Paws::CloudSearchDomain::SuggestStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->rid
+
+=head1 DESCRIPTION
+
+Contains the resource id (C<rid>) and the time it took to process the
+request (C<timems>).
 
 =head1 ATTRIBUTES
 

@@ -15,7 +15,7 @@ package Paws::CognitoSync::Dataset;
 
 Paws::CognitoSync::Dataset
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoSync
 
   $result = $service_obj->Method(...);
   $result->Att1->CreationDate
+
+=head1 DESCRIPTION
+
+A collection of data for an identity pool. An identity pool can have
+multiple datasets. A dataset is per identity and can be general or
+associated with a particular entity in an application (like a saved
+game). Datasets are automatically created if they don't exist. Data is
+synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
 
 =head1 ATTRIBUTES
 

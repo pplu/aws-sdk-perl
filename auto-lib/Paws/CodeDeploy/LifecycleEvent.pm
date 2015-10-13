@@ -13,7 +13,7 @@ package Paws::CodeDeploy::LifecycleEvent;
 
 Paws::CodeDeploy::LifecycleEvent
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   $result = $service_obj->Method(...);
   $result->Att1->diagnostics
+
+=head1 DESCRIPTION
+
+Information about a deployment lifecycle event.
 
 =head1 ATTRIBUTES
 

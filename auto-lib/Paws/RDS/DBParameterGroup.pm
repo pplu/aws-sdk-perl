@@ -11,7 +11,7 @@ package Paws::RDS::DBParameterGroup;
 
 Paws::RDS::DBParameterGroup
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBPara
 
   $result = $service_obj->Method(...);
   $result->Att1->DBParameterGroupFamily
+
+=head1 DESCRIPTION
+
+Contains the result of a successful invocation of the
+CreateDBParameterGroup action.
+
+This data type is used as a request parameter in the
+DeleteDBParameterGroup action, and as a response element in the
+DescribeDBParameterGroups action.
 
 =head1 ATTRIBUTES
 

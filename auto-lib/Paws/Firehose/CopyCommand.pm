@@ -11,7 +11,7 @@ package Paws::Firehose::CopyCommand;
 
 Paws::Firehose::CopyCommand
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::C
 
   $result = $service_obj->Method(...);
   $result->Att1->CopyOptions
+
+=head1 DESCRIPTION
+
+Describes a C<COPY> command for Amazon Redshift.
 
 =head1 ATTRIBUTES
 

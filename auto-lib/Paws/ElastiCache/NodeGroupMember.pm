@@ -13,7 +13,7 @@ package Paws::ElastiCache::NodeGroupMember;
 
 Paws::ElastiCache::NodeGroupMember
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->CacheClusterId
+
+=head1 DESCRIPTION
+
+Represents a single node within a node group.
 
 =head1 ATTRIBUTES
 

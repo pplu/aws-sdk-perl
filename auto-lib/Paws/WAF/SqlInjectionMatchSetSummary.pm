@@ -10,7 +10,7 @@ package Paws::WAF::SqlInjectionMatchSetSummary;
 
 Paws::WAF::SqlInjectionMatchSetSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::SqlInj
 
   $result = $service_obj->Method(...);
   $result->Att1->Name
+
+=head1 DESCRIPTION
+
+The C<Id> and C<Name> of a C<SqlInjectionMatchSet>.
 
 =head1 ATTRIBUTES
 

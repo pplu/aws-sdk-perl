@@ -10,7 +10,7 @@ package Paws::WAF::FieldToMatch;
 
 Paws::WAF::FieldToMatch
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::FieldT
 
   $result = $service_obj->Method(...);
   $result->Att1->Data
+
+=head1 DESCRIPTION
+
+Specifies where in a web request to look for C<TargetString>.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::CloudTrail::Tag;
 
 Paws::CloudTrail::Tag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+A custom key-value pair associated with a resource such as a CloudTrail
+trail.
 
 =head1 ATTRIBUTES
 

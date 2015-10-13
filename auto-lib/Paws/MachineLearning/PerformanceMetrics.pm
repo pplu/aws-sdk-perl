@@ -9,7 +9,7 @@ package Paws::MachineLearning::PerformanceMetrics;
 
 Paws::MachineLearning::PerformanceMetrics
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->Properties
+
+=head1 DESCRIPTION
+
+Measurements of how well the C<MLModel> performed on known
+observations. One of the following metrics is returned, based on the
+type of the C<MLModel>:
+
+=over
+
+=item *
+
+BinaryAUC: The binary C<MLModel> uses the Area Under the Curve (AUC)
+technique to measure performance.
+
+=item *
+
+RegressionRMSE: The regression C<MLModel> uses the Root Mean Square
+Error (RMSE) technique to measure performance. RMSE measures the
+difference between predicted and actual values for a single variable.
+
+=item *
+
+MulticlassAvgFScore: The multiclass C<MLModel> uses the F1 score
+technique to measure performance.
+
+=back
+
+For more information about performance metrics, please see the Amazon
+Machine Learning Developer Guide.
 
 =head1 ATTRIBUTES
 

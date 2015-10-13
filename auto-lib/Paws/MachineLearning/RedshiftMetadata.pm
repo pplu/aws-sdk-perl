@@ -11,7 +11,7 @@ package Paws::MachineLearning::RedshiftMetadata;
 
 Paws::MachineLearning::RedshiftMetadata
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->DatabaseUserName
+
+=head1 DESCRIPTION
+
+Describes the C<DataSource> details specific to Amazon Redshift.
 
 =head1 ATTRIBUTES
 

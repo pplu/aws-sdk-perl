@@ -12,7 +12,7 @@ package Paws::StorageGateway::DeviceiSCSIAttributes;
 
 Paws::StorageGateway::DeviceiSCSIAttributes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
   $result = $service_obj->Method(...);
   $result->Att1->ChapEnabled
+
+=head1 DESCRIPTION
+
+Lists iSCSI information about a VTL device.
 
 =head1 ATTRIBUTES
 

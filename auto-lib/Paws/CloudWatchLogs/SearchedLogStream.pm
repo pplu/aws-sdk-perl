@@ -10,7 +10,7 @@ package Paws::CloudWatchLogs::SearchedLogStream;
 
 Paws::CloudWatchLogs::SearchedLogStream
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
   $result = $service_obj->Method(...);
   $result->Att1->logStreamName
+
+=head1 DESCRIPTION
+
+An object indicating the search status of a log stream in a
+C<FilterLogEvents> request.
 
 =head1 ATTRIBUTES
 

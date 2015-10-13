@@ -12,7 +12,7 @@ package Paws::DeviceFarm::Radios;
 
 Paws::DeviceFarm::Radios
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   $result = $service_obj->Method(...);
   $result->Att1->bluetooth
+
+=head1 DESCRIPTION
+
+Represents the set of radios and their states on a device. Examples of
+radios include Wi-Fi, GPS, Bluetooth, and NFC.
 
 =head1 ATTRIBUTES
 

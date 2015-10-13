@@ -12,7 +12,7 @@ package Paws::CognitoSync::IdentityPoolUsage;
 
 Paws::CognitoSync::IdentityPoolUsage
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoSync
 
   $result = $service_obj->Method(...);
   $result->Att1->DataStorage
+
+=head1 DESCRIPTION
+
+Usage information for the identity pool.
 
 =head1 ATTRIBUTES
 

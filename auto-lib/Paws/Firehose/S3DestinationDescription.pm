@@ -14,7 +14,7 @@ package Paws::Firehose::S3DestinationDescription;
 
 Paws::Firehose::S3DestinationDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::S
 
   $result = $service_obj->Method(...);
   $result->Att1->BucketARN
+
+=head1 DESCRIPTION
+
+Describes a destination in Amazon S3.
 
 =head1 ATTRIBUTES
 

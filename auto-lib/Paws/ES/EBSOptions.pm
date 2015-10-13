@@ -12,7 +12,7 @@ package Paws::ES::EBSOptions;
 
 Paws::ES::EBSOptions
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::EBSOpti
 
   $result = $service_obj->Method(...);
   $result->Att1->EBSEnabled
+
+=head1 DESCRIPTION
+
+Options to enable, disable, and specify the properties of EBS storage
+volumes. For more information, see Configuring EBS-based Storage.
 
 =head1 ATTRIBUTES
 

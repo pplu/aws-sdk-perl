@@ -16,7 +16,7 @@ package Paws::ElastiCache::ReplicationGroup;
 
 Paws::ElastiCache::ReplicationGroup
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->AutomaticFailover
+
+=head1 DESCRIPTION
+
+Contains all of the attributes of a specific replication group.
 
 =head1 ATTRIBUTES
 

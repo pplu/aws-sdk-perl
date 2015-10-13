@@ -12,7 +12,7 @@ package Paws::Kinesis::Record;
 
 Paws::Kinesis::Record
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Re
 
   $result = $service_obj->Method(...);
   $result->Att1->ApproximateArrivalTimestamp
+
+=head1 DESCRIPTION
+
+The unit of data of the Amazon Kinesis stream, which is composed of a
+sequence number, a partition key, and a data blob.
 
 =head1 ATTRIBUTES
 

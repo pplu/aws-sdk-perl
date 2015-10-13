@@ -12,7 +12,7 @@ package Paws::OpsWorks::LoadBasedAutoScalingConfiguration;
 
 Paws::OpsWorks::LoadBasedAutoScalingConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::L
 
   $result = $service_obj->Method(...);
   $result->Att1->DownScaling
+
+=head1 DESCRIPTION
+
+Describes a layer's load-based auto scaling configuration.
 
 =head1 ATTRIBUTES
 

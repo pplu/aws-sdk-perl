@@ -10,7 +10,7 @@ package Paws::RDS::VpcSecurityGroupMembership;
 
 Paws::RDS::VpcSecurityGroupMembership
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::VpcSec
 
   $result = $service_obj->Method(...);
   $result->Att1->Status
+
+=head1 DESCRIPTION
+
+This data type is used as a response element for queries on VPC
+security group membership.
 
 =head1 ATTRIBUTES
 

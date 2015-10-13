@@ -9,7 +9,7 @@ package Paws::SNS::Topic;
 
 Paws::SNS::Topic
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SNS::Topic 
 
   $result = $service_obj->Method(...);
   $result->Att1->TopicArn
+
+=head1 DESCRIPTION
+
+A wrapper type for the topic's Amazon Resource Name (ARN). To retrieve
+a topic's attributes, use C<GetTopicAttributes>.
 
 =head1 ATTRIBUTES
 

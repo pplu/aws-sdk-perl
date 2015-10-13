@@ -11,7 +11,7 @@ package Paws::Config::ConfigurationRecorder;
 
 Paws::Config::ConfigurationRecorder
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
   $result = $service_obj->Method(...);
   $result->Att1->name
+
+=head1 DESCRIPTION
+
+An object that represents the recording of configuration changes of an
+AWS resource.
 
 =head1 ATTRIBUTES
 

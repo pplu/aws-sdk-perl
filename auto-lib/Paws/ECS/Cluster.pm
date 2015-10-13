@@ -15,7 +15,7 @@ package Paws::ECS::Cluster;
 
 Paws::ECS::Cluster
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Cluste
 
   $result = $service_obj->Method(...);
   $result->Att1->activeServicesCount
+
+=head1 DESCRIPTION
+
+A regional grouping of one or more container instances on which you can
+run task requests. Each account receives a default cluster the first
+time you use the Amazon ECS service, but you may also create other
+clusters. Clusters may contain more than one instance type
+simultaneously.
 
 =head1 ATTRIBUTES
 

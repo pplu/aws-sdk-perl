@@ -17,7 +17,7 @@ package Paws::OpsWorks::RdsDbInstance;
 
 Paws::OpsWorks::RdsDbInstance
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::R
 
   $result = $service_obj->Method(...);
   $result->Att1->Address
+
+=head1 DESCRIPTION
+
+Describes an Amazon RDS instance.
 
 =head1 ATTRIBUTES
 

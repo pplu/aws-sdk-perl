@@ -10,7 +10,7 @@ package Paws::DynamoDBStreams::KeySchemaElement;
 
 Paws::DynamoDBStreams::KeySchemaElement
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
   $result = $service_obj->Method(...);
   $result->Att1->AttributeName
+
+=head1 DESCRIPTION
+
+Represents I<a single element> of a key schema. A key schema specifies
+the attributes that make up the primary key of a table, or the key
+attributes of an index.
+
+A I<KeySchemaElement> represents exactly one attribute of the primary
+key. For example, a hash type primary key would be represented by one
+I<KeySchemaElement>. A hash-and-range type primary key would require
+one I<KeySchemaElement> for the hash attribute, and another
+I<KeySchemaElement> for the range attribute.
 
 =head1 ATTRIBUTES
 

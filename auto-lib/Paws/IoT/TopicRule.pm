@@ -14,7 +14,7 @@ package Paws::IoT::TopicRule;
 
 Paws::IoT::TopicRule
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::TopicR
 
   $result = $service_obj->Method(...);
   $result->Att1->actions
+
+=head1 DESCRIPTION
+
+Describes a rule.
 
 =head1 ATTRIBUTES
 

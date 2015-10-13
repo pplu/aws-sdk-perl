@@ -10,7 +10,7 @@ package Paws::CognitoSync::PushSync;
 
 Paws::CognitoSync::PushSync
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoSync
 
   $result = $service_obj->Method(...);
   $result->Att1->ApplicationArns
+
+=head1 DESCRIPTION
+
+Configuration options to be applied to the identity pool.
 
 =head1 ATTRIBUTES
 

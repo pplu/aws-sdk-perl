@@ -10,7 +10,7 @@ package Paws::Support::TrustedAdvisorCostOptimizingSummary;
 
 Paws::Support::TrustedAdvisorCostOptimizingSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
   $result = $service_obj->Method(...);
   $result->Att1->estimatedMonthlySavings
+
+=head1 DESCRIPTION
+
+The estimated cost savings that might be realized if the recommended
+actions are taken.
 
 =head1 ATTRIBUTES
 

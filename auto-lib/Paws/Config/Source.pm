@@ -11,7 +11,7 @@ package Paws::Config::Source;
 
 Paws::Config::Source
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Sou
 
   $result = $service_obj->Method(...);
   $result->Att1->Owner
+
+=head1 DESCRIPTION
+
+Provides the AWS Config rule owner (AWS or customer), the rule
+identifier, and the events that trigger the evaluation of your AWS
+resources.
 
 =head1 ATTRIBUTES
 

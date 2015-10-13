@@ -10,7 +10,7 @@ package Paws::SQS::DeleteMessageBatchRequestEntry;
 
 Paws::SQS::DeleteMessageBatchRequestEntry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Delete
 
   $result = $service_obj->Method(...);
   $result->Att1->Id
+
+=head1 DESCRIPTION
+
+Encloses a receipt handle and an identifier for it.
 
 =head1 ATTRIBUTES
 

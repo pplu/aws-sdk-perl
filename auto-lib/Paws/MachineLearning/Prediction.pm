@@ -12,7 +12,7 @@ package Paws::MachineLearning::Prediction;
 
 Paws::MachineLearning::Prediction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->details
+
+=head1 DESCRIPTION
+
+The output from a C<Predict> operation:
+
+=over
+
+=item *
+
+C<Details> - Contains the following attributes:
+DetailsAttributes.PREDICTIVE_MODEL_TYPE - REGRESSION | BINARY |
+MULTICLASS DetailsAttributes.ALGORITHM - SGD
+
+=item *
+
+C<PredictedLabel> - Present for either a BINARY or MULTICLASS
+C<MLModel> request.
+
+=item *
+
+C<PredictedScores> - Contains the raw classification score
+corresponding to each label.
+
+=item *
+
+C<PredictedValue> - Present for a REGRESSION C<MLModel> request.
+
+=back
 
 =head1 ATTRIBUTES
 

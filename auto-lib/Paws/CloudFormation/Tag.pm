@@ -10,7 +10,7 @@ package Paws::CloudFormation::Tag;
 
 Paws::CloudFormation::Tag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+The Tag type is used by C<CreateStack> in the C<Tags> parameter. It
+allows you to specify a key/value pair that can be used to store
+information related to cost allocation for an AWS CloudFormation stack.
 
 =head1 ATTRIBUTES
 

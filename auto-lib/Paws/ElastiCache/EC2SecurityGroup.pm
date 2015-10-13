@@ -11,7 +11,7 @@ package Paws::ElastiCache::EC2SecurityGroup;
 
 Paws::ElastiCache::EC2SecurityGroup
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->EC2SecurityGroupName
+
+=head1 DESCRIPTION
+
+Provides ownership and status information for an Amazon EC2 security
+group.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::MachineLearning::RedshiftDatabase;
 
 Paws::MachineLearning::RedshiftDatabase
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->ClusterIdentifier
+
+=head1 DESCRIPTION
+
+Describes the database details required to connect to an Amazon
+Redshift database.
 
 =head1 ATTRIBUTES
 

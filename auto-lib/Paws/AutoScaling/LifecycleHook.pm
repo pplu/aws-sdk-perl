@@ -17,7 +17,7 @@ package Paws::AutoScaling::LifecycleHook;
 
 Paws::AutoScaling::LifecycleHook
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
   $result = $service_obj->Method(...);
   $result->Att1->AutoScalingGroupName
+
+=head1 DESCRIPTION
+
+Describes a lifecycle hook, which tells Auto Scaling that you want to
+perform an action when an instance launches or terminates. When you
+have a lifecycle hook in place, the Auto Scaling group will either:
+
+=over
+
+=item * Pause the instance after it launches, but before it is put into
+service
+
+=item * Pause the instance as it terminates, but before it is fully
+terminated
+
+=back
+
+For more information, see Auto Scaling Pending State and Auto Scaling
+Terminating State in the I<Auto Scaling Developer Guide>.
 
 =head1 ATTRIBUTES
 

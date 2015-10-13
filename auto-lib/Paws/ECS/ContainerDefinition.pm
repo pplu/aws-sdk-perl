@@ -33,7 +33,7 @@ package Paws::ECS::ContainerDefinition;
 
 Paws::ECS::ContainerDefinition
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -52,6 +52,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Contai
 
   $result = $service_obj->Method(...);
   $result->Att1->command
+
+=head1 DESCRIPTION
+
+Container definitions are used in task definitions to describe the
+different containers that are launched as part of a task.
 
 =head1 ATTRIBUTES
 

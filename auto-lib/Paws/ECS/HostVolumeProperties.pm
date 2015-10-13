@@ -9,7 +9,7 @@ package Paws::ECS::HostVolumeProperties;
 
 Paws::ECS::HostVolumeProperties
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::HostVo
 
   $result = $service_obj->Method(...);
   $result->Att1->sourcePath
+
+=head1 DESCRIPTION
+
+Details on a container instance host volume.
 
 =head1 ATTRIBUTES
 

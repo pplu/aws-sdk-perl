@@ -10,7 +10,7 @@ package Paws::EMR::ScriptBootstrapActionConfig;
 
 Paws::EMR::ScriptBootstrapActionConfig
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Script
 
   $result = $service_obj->Method(...);
   $result->Att1->Args
+
+=head1 DESCRIPTION
+
+Configuration of the script to run during a bootstrap action.
 
 =head1 ATTRIBUTES
 

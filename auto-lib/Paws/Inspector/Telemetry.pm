@@ -10,7 +10,7 @@ package Paws::Inspector::Telemetry;
 
 Paws::Inspector::Telemetry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
   $result = $service_obj->Method(...);
   $result->Att1->messageTypeTelemetries
+
+=head1 DESCRIPTION
+
+The metadata about the Inspector application data metrics collected by
+the agent.
+
+This data type is used as the response element in the
+GetAssessmentTelemetry action.
 
 =head1 ATTRIBUTES
 

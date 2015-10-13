@@ -10,7 +10,7 @@ package Paws::SSM::CreateAssociationBatchRequestEntry;
 
 Paws::SSM::CreateAssociationBatchRequestEntry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Create
 
   $result = $service_obj->Method(...);
   $result->Att1->InstanceId
+
+=head1 DESCRIPTION
+
+Describes the association of a configuration document and an instance.
 
 =head1 ATTRIBUTES
 

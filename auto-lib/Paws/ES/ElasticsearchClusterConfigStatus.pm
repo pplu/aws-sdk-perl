@@ -10,7 +10,7 @@ package Paws::ES::ElasticsearchClusterConfigStatus;
 
 Paws::ES::ElasticsearchClusterConfigStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::Elastic
 
   $result = $service_obj->Method(...);
   $result->Att1->Options
+
+=head1 DESCRIPTION
+
+Specifies the configuration status for the specified Elasticsearch
+domain.
 
 =head1 ATTRIBUTES
 

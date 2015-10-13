@@ -15,7 +15,7 @@ package Paws::DeviceFarm::Problem;
 
 Paws::DeviceFarm::Problem
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   $result = $service_obj->Method(...);
   $result->Att1->device
+
+=head1 DESCRIPTION
+
+Represents a specific warning or failure.
 
 =head1 ATTRIBUTES
 

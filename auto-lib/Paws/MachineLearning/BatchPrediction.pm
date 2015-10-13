@@ -19,7 +19,7 @@ package Paws::MachineLearning::BatchPrediction;
 
 Paws::MachineLearning::BatchPrediction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -38,6 +38,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->BatchPredictionDataSourceId
+
+=head1 DESCRIPTION
+
+Represents the output of GetBatchPrediction operation.
+
+The content consists of the detailed metadata, the status, and the data
+file information of a I<Batch Prediction>.
 
 =head1 ATTRIBUTES
 

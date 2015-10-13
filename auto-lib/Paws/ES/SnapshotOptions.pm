@@ -9,7 +9,7 @@ package Paws::ES::SnapshotOptions;
 
 Paws::ES::SnapshotOptions
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::Snapsho
 
   $result = $service_obj->Method(...);
   $result->Att1->AutomatedSnapshotStartHour
+
+=head1 DESCRIPTION
+
+Specifies the time, in UTC format, when the service takes a daily
+automated snapshot of the specified Elasticsearch domain. Default value
+is C<0> hours.
 
 =head1 ATTRIBUTES
 

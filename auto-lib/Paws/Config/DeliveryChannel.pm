@@ -13,7 +13,7 @@ package Paws::Config::DeliveryChannel;
 
 Paws::Config::DeliveryChannel
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Del
 
   $result = $service_obj->Method(...);
   $result->Att1->configSnapshotDeliveryProperties
+
+=head1 DESCRIPTION
+
+A logical container used for storing the configuration changes of an
+AWS resource.
 
 =head1 ATTRIBUTES
 

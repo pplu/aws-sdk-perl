@@ -10,7 +10,7 @@ package Paws::IoT::RepublishAction;
 
 Paws::IoT::RepublishAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Republ
 
   $result = $service_obj->Method(...);
   $result->Att1->roleArn
+
+=head1 DESCRIPTION
+
+Describes an action to republish to another topic.
 
 =head1 ATTRIBUTES
 

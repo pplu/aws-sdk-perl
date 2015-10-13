@@ -10,7 +10,7 @@ package Paws::CloudFront::Headers;
 
 Paws::CloudFront::Headers
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->Items
+
+=head1 DESCRIPTION
+
+A complex type that specifies the headers that you want CloudFront to
+forward to the origin for this cache behavior. For the headers that you
+specify, CloudFront also caches separate versions of a given object
+based on the header values in viewer requests; this is known as varying
+on headers. For example, suppose viewer requests for logo.jpg contain a
+custom Product header that has a value of either Acme or Apex, and you
+configure CloudFront to vary on the Product header. CloudFront forwards
+the Product header to the origin and caches the response from the
+origin once for each header value.
 
 =head1 ATTRIBUTES
 

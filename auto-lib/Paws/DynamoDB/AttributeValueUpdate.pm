@@ -10,7 +10,7 @@ package Paws::DynamoDB::AttributeValueUpdate;
 
 Paws::DynamoDB::AttributeValueUpdate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::A
 
   $result = $service_obj->Method(...);
   $result->Att1->Action
+
+=head1 DESCRIPTION
+
+For the I<UpdateItem> operation, represents the attributes to be
+modified, the action to perform on each, and the new value for each.
+
+You cannot use I<UpdateItem> to update any primary key attributes.
+Instead, you will need to delete the item, and then use I<PutItem> to
+create a new item with new attributes.
+
+Attribute values cannot be null; string and binary type attributes must
+have lengths greater than zero; and set type attributes must not be
+empty. Requests with empty values will be rejected with a
+I<ValidationException> exception.
 
 =head1 ATTRIBUTES
 

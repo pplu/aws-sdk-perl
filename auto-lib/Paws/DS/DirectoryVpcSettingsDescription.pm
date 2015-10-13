@@ -12,7 +12,7 @@ package Paws::DS::DirectoryVpcSettingsDescription;
 
 Paws::DS::DirectoryVpcSettingsDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Directo
 
   $result = $service_obj->Method(...);
   $result->Att1->AvailabilityZones
+
+=head1 DESCRIPTION
+
+Contains information about a Simple AD directory.
 
 =head1 ATTRIBUTES
 

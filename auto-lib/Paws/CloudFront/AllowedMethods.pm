@@ -11,7 +11,7 @@ package Paws::CloudFront::AllowedMethods;
 
 Paws::CloudFront::AllowedMethods
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->CachedMethods
+
+=head1 DESCRIPTION
+
+A complex type that controls which HTTP methods CloudFront processes
+and forwards to your Amazon S3 bucket or your custom origin. There are
+three choices: - CloudFront forwards only GET and HEAD requests. -
+CloudFront forwards only GET, HEAD and OPTIONS requests. - CloudFront
+forwards GET, HEAD, OPTIONS, PUT, PATCH, POST, and DELETE requests. If
+you pick the third choice, you may need to restrict access to your
+Amazon S3 bucket or to your custom origin so users can't perform
+operations that you don't want them to. For example, you may not want
+users to have permission to delete objects from your origin.
 
 =head1 ATTRIBUTES
 

@@ -12,7 +12,7 @@ package Paws::CloudWatch::StatisticSet;
 
 Paws::CloudWatch::StatisticSet
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
   $result = $service_obj->Method(...);
   $result->Att1->Maximum
+
+=head1 DESCRIPTION
+
+The C<StatisticSet> data type describes the C<StatisticValues>
+component of MetricDatum, and represents a set of statistics that
+describes a specific metric.
 
 =head1 ATTRIBUTES
 

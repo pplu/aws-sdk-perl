@@ -17,7 +17,7 @@ package Paws::ECS::Task;
 
 Paws::ECS::Task
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Task o
 
   $result = $service_obj->Method(...);
   $result->Att1->clusterArn
+
+=head1 DESCRIPTION
+
+Details on a task in a cluster.
 
 =head1 ATTRIBUTES
 

@@ -11,7 +11,7 @@ package Paws::SES::IdentityDkimAttributes;
 
 Paws::SES::IdentityDkimAttributes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Identi
 
   $result = $service_obj->Method(...);
   $result->Att1->DkimEnabled
+
+=head1 DESCRIPTION
+
+Represents the DKIM attributes of a verified email address or a domain.
 
 =head1 ATTRIBUTES
 

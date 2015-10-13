@@ -15,7 +15,7 @@ package Paws::EMR::InstanceGroupConfig;
 
 Paws::EMR::InstanceGroupConfig
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
   $result = $service_obj->Method(...);
   $result->Att1->BidPrice
+
+=head1 DESCRIPTION
+
+Configuration defining a new instance group.
 
 =head1 ATTRIBUTES
 

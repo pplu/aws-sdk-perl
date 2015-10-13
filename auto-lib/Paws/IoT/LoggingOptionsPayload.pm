@@ -10,7 +10,7 @@ package Paws::IoT::LoggingOptionsPayload;
 
 Paws::IoT::LoggingOptionsPayload
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Loggin
 
   $result = $service_obj->Method(...);
   $result->Att1->logLevel
+
+=head1 DESCRIPTION
+
+Describes the logging options payload.
 
 =head1 ATTRIBUTES
 

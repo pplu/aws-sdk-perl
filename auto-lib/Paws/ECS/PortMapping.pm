@@ -11,7 +11,7 @@ package Paws::ECS::PortMapping;
 
 Paws::ECS::PortMapping
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::PortMa
 
   $result = $service_obj->Method(...);
   $result->Att1->containerPort
+
+=head1 DESCRIPTION
+
+Port mappings allow containers to access ports on the host container
+instance to send or receive traffic. Port mappings are specified as
+part of the container definition. After a task reaches the C<RUNNING>
+status, manual and automatic host and container port assignments are
+visible in the C<networkBindings> section of DescribeTasks API
+responses.
 
 =head1 ATTRIBUTES
 

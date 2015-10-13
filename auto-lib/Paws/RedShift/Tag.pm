@@ -10,7 +10,7 @@ package Paws::RedShift::Tag;
 
 Paws::RedShift::Tag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::T
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+A tag consisting of a name/value pair for a resource.
 
 =head1 ATTRIBUTES
 

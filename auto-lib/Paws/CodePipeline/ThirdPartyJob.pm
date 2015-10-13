@@ -10,7 +10,7 @@ package Paws::CodePipeline::ThirdPartyJob;
 
 Paws::CodePipeline::ThirdPartyJob
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->clientId
+
+=head1 DESCRIPTION
+
+A response to a PollForThirdPartyJobs request returned by AWS
+CodePipeline when there is a job to be worked upon by a partner action.
 
 =head1 ATTRIBUTES
 

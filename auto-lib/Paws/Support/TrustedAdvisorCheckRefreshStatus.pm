@@ -11,7 +11,7 @@ package Paws::Support::TrustedAdvisorCheckRefreshStatus;
 
 Paws::Support::TrustedAdvisorCheckRefreshStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
   $result = $service_obj->Method(...);
   $result->Att1->checkId
+
+=head1 DESCRIPTION
+
+The refresh status of a Trusted Advisor check.
 
 =head1 ATTRIBUTES
 

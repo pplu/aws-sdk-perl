@@ -13,7 +13,7 @@ package Paws::CodeDeploy::DeploymentOverview;
 
 Paws::CodeDeploy::DeploymentOverview
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   $result = $service_obj->Method(...);
   $result->Att1->Failed
+
+=head1 DESCRIPTION
+
+Information about the deployment status of the instances in the
+deployment.
 
 =head1 ATTRIBUTES
 

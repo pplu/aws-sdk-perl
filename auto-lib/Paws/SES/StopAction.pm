@@ -10,7 +10,7 @@ package Paws::SES::StopAction;
 
 Paws::SES::StopAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::StopAc
 
   $result = $service_obj->Method(...);
   $result->Att1->Scope
+
+=head1 DESCRIPTION
+
+When included in a receipt rule, this action terminates the evaluation
+of the receipt rule set and, optionally, publishes a notification to
+Amazon Simple Notification Service (Amazon SNS).
+
+For information about setting a stop action in a receipt rule, see the
+Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 

@@ -12,7 +12,7 @@ package Paws::S3::TopicConfigurationDeprecated;
 
 Paws::S3::TopicConfigurationDeprecated
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::TopicCo
 
   $result = $service_obj->Method(...);
   $result->Att1->Event
+
+=head1 DESCRIPTION
+
+This class has no description
 
 =head1 ATTRIBUTES
 

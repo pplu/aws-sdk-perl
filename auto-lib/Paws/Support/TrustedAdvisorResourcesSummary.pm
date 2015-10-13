@@ -12,7 +12,7 @@ package Paws::Support::TrustedAdvisorResourcesSummary;
 
 Paws::Support::TrustedAdvisorResourcesSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
   $result = $service_obj->Method(...);
   $result->Att1->resourcesFlagged
+
+=head1 DESCRIPTION
+
+Details about AWS resources that were analyzed in a call to Trusted
+Advisor DescribeTrustedAdvisorCheckSummaries.
 
 =head1 ATTRIBUTES
 

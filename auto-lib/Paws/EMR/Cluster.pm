@@ -25,7 +25,7 @@ package Paws::EMR::Cluster;
 
 Paws::EMR::Cluster
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -44,6 +44,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Cluste
 
   $result = $service_obj->Method(...);
   $result->Att1->Applications
+
+=head1 DESCRIPTION
+
+The detailed description of the cluster.
 
 =head1 ATTRIBUTES
 

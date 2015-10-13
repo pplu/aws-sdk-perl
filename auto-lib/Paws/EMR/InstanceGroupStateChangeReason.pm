@@ -10,7 +10,7 @@ package Paws::EMR::InstanceGroupStateChangeReason;
 
 Paws::EMR::InstanceGroupStateChangeReason
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
   $result = $service_obj->Method(...);
   $result->Att1->Code
+
+=head1 DESCRIPTION
+
+The status change reason details for the instance group.
 
 =head1 ATTRIBUTES
 

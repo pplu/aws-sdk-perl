@@ -10,7 +10,7 @@ package Paws::CloudFront::CookieNames;
 
 Paws::CloudFront::CookieNames
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->Items
+
+=head1 DESCRIPTION
+
+A complex type that specifies the whitelisted cookies, if any, that you
+want CloudFront to forward to your origin that is associated with this
+cache behavior.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::WAF::IPSetDescriptor;
 
 Paws::WAF::IPSetDescriptor
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSetD
 
   $result = $service_obj->Method(...);
   $result->Att1->Type
+
+=head1 DESCRIPTION
+
+Specifies the IP address type (C<IPV4>) and the IP address range (in
+CIDR format) that web requests originate from.
 
 =head1 ATTRIBUTES
 

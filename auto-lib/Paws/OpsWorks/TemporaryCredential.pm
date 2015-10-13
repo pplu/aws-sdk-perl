@@ -12,7 +12,7 @@ package Paws::OpsWorks::TemporaryCredential;
 
 Paws::OpsWorks::TemporaryCredential
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::T
 
   $result = $service_obj->Method(...);
   $result->Att1->InstanceId
+
+=head1 DESCRIPTION
+
+Contains the data needed by RDP clients such as the Microsoft Remote
+Desktop Connection to log in to the instance.
 
 =head1 ATTRIBUTES
 

@@ -12,7 +12,7 @@ package Paws::ElasticBeanstalk::ConfigurationOptionSetting;
 
 Paws::ElasticBeanstalk::ConfigurationOptionSetting
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->Namespace
+
+=head1 DESCRIPTION
+
+A specification identifying an individual configuration option along
+with its current value. For a list of possible option values, go to
+Option Values in the I<AWS Elastic Beanstalk Developer Guide>.
 
 =head1 ATTRIBUTES
 

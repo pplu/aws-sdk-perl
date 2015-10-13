@@ -11,7 +11,7 @@ package Paws::WAF::Predicate;
 
 Paws::WAF::Predicate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Predic
 
   $result = $service_obj->Method(...);
   $result->Att1->DataId
+
+=head1 DESCRIPTION
+
+Specifies the ByteMatchSet, IPSet, and SqlInjectionMatchSet objects
+that you want to add to a C<Rule> and, for each object, indicates
+whether you want to negate the settings, for example, requests that do
+NOT originate from the IP address 192.0.2.44.
 
 =head1 ATTRIBUTES
 

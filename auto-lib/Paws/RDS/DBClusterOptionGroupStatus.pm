@@ -10,7 +10,7 @@ package Paws::RDS::DBClusterOptionGroupStatus;
 
 Paws::RDS::DBClusterOptionGroupStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
   $result = $service_obj->Method(...);
   $result->Att1->DBClusterOptionGroupName
+
+=head1 DESCRIPTION
+
+Contains status information for a DB cluster option group.
 
 =head1 ATTRIBUTES
 

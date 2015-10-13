@@ -12,7 +12,7 @@ package Paws::S3::QueueConfiguration;
 
 Paws::S3::QueueConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::QueueCo
 
   $result = $service_obj->Method(...);
   $result->Att1->Events
+
+=head1 DESCRIPTION
+
+Container for specifying an configuration when you want Amazon S3 to
+publish events to an Amazon Simple Queue Service (Amazon SQS) queue.
 
 =head1 ATTRIBUTES
 

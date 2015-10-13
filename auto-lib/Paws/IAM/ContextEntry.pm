@@ -11,7 +11,7 @@ package Paws::IAM::ContextEntry;
 
 Paws::IAM::ContextEntry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Contex
 
   $result = $service_obj->Method(...);
   $result->Att1->ContextKeyName
+
+=head1 DESCRIPTION
+
+Contains information about a condition context key. It includes the
+name of the key and specifies the value (or values, if the context key
+supports multiple values) to use in the simulation. This information is
+used when evaluating the C<Condition> elements of the input policies.
+
+This data type is used as an input parameter to C<SimulatePolicy>.
 
 =head1 ATTRIBUTES
 

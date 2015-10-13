@@ -11,7 +11,7 @@ package Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes;
 
 Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->startToCloseTimeout
+
+=head1 DESCRIPTION
+
+Provides details about the C<DecisionTaskScheduled> event.
 
 =head1 ATTRIBUTES
 

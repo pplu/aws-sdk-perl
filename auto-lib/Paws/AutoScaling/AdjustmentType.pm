@@ -9,7 +9,7 @@ package Paws::AutoScaling::AdjustmentType;
 
 Paws::AutoScaling::AdjustmentType
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
   $result = $service_obj->Method(...);
   $result->Att1->AdjustmentType
+
+=head1 DESCRIPTION
+
+Describes a policy adjustment type.
+
+For more information, see Dynamic Scaling in the I<Auto Scaling
+Developer Guide>.
 
 =head1 ATTRIBUTES
 

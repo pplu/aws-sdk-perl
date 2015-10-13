@@ -10,7 +10,7 @@ package Paws::WAF::TimeWindow;
 
 Paws::WAF::TimeWindow
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::TimeWi
 
   $result = $service_obj->Method(...);
   $result->Att1->EndTime
+
+=head1 DESCRIPTION
+
+In a GetSampledRequests request, the C<StartTime> and C<EndTime>
+objects specify the time range for which you want AWS WAF to return a
+sample of web requests.
+
+In a GetSampledRequests response, the C<StartTime> and C<EndTime>
+objects specify the time range for which AWS WAF actually returned a
+sample of web requests. AWS WAF gets the specified number of requests
+from among the first 5,000 requests that your AWS resource receives
+during the specified time period. If your resource receives more than
+5,000 requests during that period, AWS WAF stops sampling after the
+5,000th request. In that case, C<EndTime> is the time that AWS WAF
+received the 5,000th request.
 
 =head1 ATTRIBUTES
 

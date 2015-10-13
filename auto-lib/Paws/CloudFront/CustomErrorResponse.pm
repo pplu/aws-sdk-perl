@@ -12,7 +12,7 @@ package Paws::CloudFront::CustomErrorResponse;
 
 Paws::CloudFront::CustomErrorResponse
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->ErrorCachingMinTTL
+
+=head1 DESCRIPTION
+
+A complex type that describes how you'd prefer CloudFront to respond to
+requests that result in either a 4xx or 5xx response. You can control
+whether a custom error page should be displayed, what the desired
+response code should be for this error page and how long should the
+error response be cached by CloudFront. If you don't want to specify
+any custom error responses, include only an empty CustomErrorResponses
+element. To delete all custom error responses in an existing
+distribution, update the distribution configuration and include only an
+empty CustomErrorResponses element. To add, change, or remove one or
+more custom error responses, update the distribution configuration and
+specify all of the custom error responses that you want to include in
+the updated distribution.
 
 =head1 ATTRIBUTES
 

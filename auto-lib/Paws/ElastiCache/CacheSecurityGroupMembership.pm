@@ -10,7 +10,7 @@ package Paws::ElastiCache::CacheSecurityGroupMembership;
 
 Paws::ElastiCache::CacheSecurityGroupMembership
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->CacheSecurityGroupName
+
+=head1 DESCRIPTION
+
+Represents a cache cluster's status within a particular cache security
+group.
 
 =head1 ATTRIBUTES
 

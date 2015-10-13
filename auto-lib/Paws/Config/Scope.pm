@@ -12,7 +12,7 @@ package Paws::Config::Scope;
 
 Paws::Config::Scope
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Sco
 
   $result = $service_obj->Method(...);
   $result->Att1->ComplianceResourceId
+
+=head1 DESCRIPTION
+
+Defines which resources AWS Config evaluates against a rule. The scope
+can include one or more resource types, a combination of a tag key and
+value, or a combination of one resource type and one or more resource
+IDs. Specify a scope to constrain the resources to be evaluated. If you
+do not specify a scope, all resources in your recording group are
+evaluated against the rule.
 
 =head1 ATTRIBUTES
 

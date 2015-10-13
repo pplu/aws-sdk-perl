@@ -11,7 +11,7 @@ package Paws::WAF::ByteMatchSet;
 
 Paws::WAF::ByteMatchSet
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::ByteMa
 
   $result = $service_obj->Method(...);
   $result->Att1->ByteMatchSetId
+
+=head1 DESCRIPTION
+
+In a GetByteMatchSet request, C<ByteMatchSet> is a complex type that
+contains the C<ByteMatchSetId> and C<Name> of a C<ByteMatchSet>, and
+the values that you specified when you updated the C<ByteMatchSet>.
+
+A complex type that contains C<ByteMatchTuple> objects, which specify
+the parts of web requests that you want AWS WAF to inspect and the
+values that you want AWS WAF to search for. If a C<ByteMatchSet>
+contains more than one C<ByteMatchTuple> object, a request needs to
+match the settings in only one C<ByteMatchTuple> to be considered a
+match.
 
 =head1 ATTRIBUTES
 

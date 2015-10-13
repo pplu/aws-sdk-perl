@@ -17,7 +17,7 @@ package Paws::RDS::OptionSetting;
 
 Paws::RDS::OptionSetting
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowedValues
+
+=head1 DESCRIPTION
+
+Option settings are the actual settings being applied or configured for
+that option. It is used when you modify an option group or describe
+option groups. For example, the NATIVE_NETWORK_ENCRYPTION option has a
+setting called SQLNET.ENCRYPTION_SERVER that can have several different
+values.
 
 =head1 ATTRIBUTES
 

@@ -15,7 +15,7 @@ package Paws::ElasticTranscoder::Artwork;
 
 Paws::ElasticTranscoder::Artwork
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->AlbumArtFormat
+
+=head1 DESCRIPTION
+
+The file to be used as album art. There can be multiple artworks
+associated with an audio file, to a maximum of 20.
+
+To remove artwork or leave the artwork empty, you can either set
+C<Artwork> to null, or set the C<Merge Policy> to "Replace" and use an
+empty C<Artwork> array.
+
+To pass through existing artwork unchanged, set the C<Merge Policy> to
+"Prepend", "Append", or "Fallback", and use an empty C<Artwork> array.
 
 =head1 ATTRIBUTES
 

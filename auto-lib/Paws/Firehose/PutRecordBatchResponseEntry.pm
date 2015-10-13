@@ -11,7 +11,7 @@ package Paws::Firehose::PutRecordBatchResponseEntry;
 
 Paws::Firehose::PutRecordBatchResponseEntry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::P
 
   $result = $service_obj->Method(...);
   $result->Att1->ErrorCode
+
+=head1 DESCRIPTION
+
+Contains the result for an individual record from a PutRecordBatch
+request. If the record is successfully added to your delivery stream,
+it receives a record ID. If the record fails to be added to your
+delivery stream, the result includes an error code and an error
+message.
 
 =head1 ATTRIBUTES
 

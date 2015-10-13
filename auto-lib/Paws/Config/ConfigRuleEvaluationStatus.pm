@@ -16,7 +16,7 @@ package Paws::Config::ConfigRuleEvaluationStatus;
 
 Paws::Config::ConfigRuleEvaluationStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
   $result = $service_obj->Method(...);
   $result->Att1->ConfigRuleArn
+
+=head1 DESCRIPTION
+
+Status information for your AWS managed Config rules. The status
+includes information such as the last time the rule ran, the last time
+it failed, and the related error for the last failure.
+
+This action does not return status information about customer managed
+Config rules.
 
 =head1 ATTRIBUTES
 

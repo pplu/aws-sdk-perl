@@ -12,7 +12,7 @@ package Paws::DataPipeline::TaskObject;
 
 Paws::DataPipeline::TaskObject
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->attemptId
+
+=head1 DESCRIPTION
+
+Contains information about a pipeline task that is assigned to a task
+runner.
 
 =head1 ATTRIBUTES
 

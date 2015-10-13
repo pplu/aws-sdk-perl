@@ -12,7 +12,7 @@ package Paws::SQS::BatchResultErrorEntry;
 
 Paws::SQS::BatchResultErrorEntry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::BatchR
 
   $result = $service_obj->Method(...);
   $result->Att1->Code
+
+=head1 DESCRIPTION
+
+This is used in the responses of batch API to give a detailed
+description of the result of an action on each entry in the request.
 
 =head1 ATTRIBUTES
 

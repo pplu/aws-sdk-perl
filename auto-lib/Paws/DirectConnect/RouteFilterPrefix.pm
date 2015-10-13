@@ -9,7 +9,7 @@ package Paws::DirectConnect::RouteFilterPrefix;
 
 Paws::DirectConnect::RouteFilterPrefix
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
   $result = $service_obj->Method(...);
   $result->Att1->cidr
+
+=head1 DESCRIPTION
+
+A route filter prefix that the customer can advertise through Border
+Gateway Protocol (BGP) over a public virtual interface.
 
 =head1 ATTRIBUTES
 

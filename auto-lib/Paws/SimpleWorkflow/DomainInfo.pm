@@ -11,7 +11,7 @@ package Paws::SimpleWorkflow::DomainInfo;
 
 Paws::SimpleWorkflow::DomainInfo
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->description
+
+=head1 DESCRIPTION
+
+Contains general information about a domain.
 
 =head1 ATTRIBUTES
 

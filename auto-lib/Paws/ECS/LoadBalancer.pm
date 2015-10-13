@@ -11,7 +11,7 @@ package Paws::ECS::LoadBalancer;
 
 Paws::ECS::LoadBalancer
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::LoadBa
 
   $result = $service_obj->Method(...);
   $result->Att1->containerName
+
+=head1 DESCRIPTION
+
+Details on a load balancer that is used with a service.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::Support::SeverityLevel;
 
 Paws::Support::SeverityLevel
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Se
 
   $result = $service_obj->Method(...);
   $result->Att1->code
+
+=head1 DESCRIPTION
+
+A code and name pair that represent a severity level that can be
+applied to a support case.
 
 =head1 ATTRIBUTES
 

@@ -11,7 +11,7 @@ package Paws::RedShift::DefaultClusterParameters;
 
 Paws::RedShift::DefaultClusterParameters
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::D
 
   $result = $service_obj->Method(...);
   $result->Att1->Marker
+
+=head1 DESCRIPTION
+
+Describes the default cluster parameters for a parameter group family.
 
 =head1 ATTRIBUTES
 

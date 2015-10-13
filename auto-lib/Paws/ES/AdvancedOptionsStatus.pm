@@ -10,7 +10,7 @@ package Paws::ES::AdvancedOptionsStatus;
 
 Paws::ES::AdvancedOptionsStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ES::Advance
 
   $result = $service_obj->Method(...);
   $result->Att1->Options
+
+=head1 DESCRIPTION
+
+Status of the advanced options for the specified Elasticsearch domain.
+Currently, the following advanced options are available:
+
+=over
+
+=item * Option to allow references to indices in an HTTP request body.
+Must be C<false> when configuring access to individual sub-resources.
+By default, the value is C<true>. See Configuration Advanced Options
+for more information.
+
+=item * Option to specify the percentage of heap space that is
+allocated to field data. By default, this setting is unbounded.
+
+=back
+
+For more information, see Configuring Advanced Options.
 
 =head1 ATTRIBUTES
 

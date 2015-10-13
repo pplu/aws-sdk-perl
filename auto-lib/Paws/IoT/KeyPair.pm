@@ -10,7 +10,7 @@ package Paws::IoT::KeyPair;
 
 Paws::IoT::KeyPair
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::KeyPai
 
   $result = $service_obj->Method(...);
   $result->Att1->PrivateKey
+
+=head1 DESCRIPTION
+
+Describes a key pair.
 
 =head1 ATTRIBUTES
 

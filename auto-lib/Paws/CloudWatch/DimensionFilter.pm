@@ -10,7 +10,7 @@ package Paws::CloudWatch::DimensionFilter;
 
 Paws::CloudWatch::DimensionFilter
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
   $result = $service_obj->Method(...);
   $result->Att1->Name
+
+=head1 DESCRIPTION
+
+The C<DimensionFilter> data type is used to filter ListMetrics results.
 
 =head1 ATTRIBUTES
 

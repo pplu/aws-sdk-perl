@@ -9,7 +9,7 @@ package Paws::ELB::TagKeyOnly;
 
 Paws::ELB::TagKeyOnly
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::TagKey
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+The key of a tag.
 
 =head1 ATTRIBUTES
 

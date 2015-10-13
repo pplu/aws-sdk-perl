@@ -15,7 +15,7 @@ package Paws::Glacier::JobParameters;
 
 Paws::Glacier::JobParameters
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glacier::Jo
 
   $result = $service_obj->Method(...);
   $result->Att1->ArchiveId
+
+=head1 DESCRIPTION
+
+Provides options for defining a job.
 
 =head1 ATTRIBUTES
 

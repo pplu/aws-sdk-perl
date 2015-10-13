@@ -9,7 +9,7 @@ package Paws::SimpleWorkflow::DomainConfiguration;
 
 Paws::SimpleWorkflow::DomainConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->workflowExecutionRetentionPeriodInDays
+
+=head1 DESCRIPTION
+
+Contains the configuration settings of a domain.
 
 =head1 ATTRIBUTES
 

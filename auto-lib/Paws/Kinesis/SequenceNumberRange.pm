@@ -10,7 +10,7 @@ package Paws::Kinesis::SequenceNumberRange;
 
 Paws::Kinesis::SequenceNumberRange
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Se
 
   $result = $service_obj->Method(...);
   $result->Att1->EndingSequenceNumber
+
+=head1 DESCRIPTION
+
+The range of possible sequence numbers for the shard.
 
 =head1 ATTRIBUTES
 

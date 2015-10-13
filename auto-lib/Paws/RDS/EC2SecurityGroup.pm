@@ -12,7 +12,7 @@ package Paws::RDS::EC2SecurityGroup;
 
 Paws::RDS::EC2SecurityGroup
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::EC2Sec
 
   $result = $service_obj->Method(...);
   $result->Att1->EC2SecurityGroupId
+
+=head1 DESCRIPTION
+
+This data type is used as a response element in the following actions:
+
+=over
+
+=item * AuthorizeDBSecurityGroupIngress
+
+=item * DescribeDBSecurityGroups
+
+=item * RevokeDBSecurityGroupIngress
+
+=back
 
 =head1 ATTRIBUTES
 

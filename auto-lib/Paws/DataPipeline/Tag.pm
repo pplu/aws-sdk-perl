@@ -10,7 +10,7 @@ package Paws::DataPipeline::Tag;
 
 Paws::DataPipeline::Tag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->key
+
+=head1 DESCRIPTION
+
+Tags are key/value pairs defined by a user and associated with a
+pipeline to control access. AWS Data Pipeline allows you to associate
+ten tags per pipeline. For more information, see Controlling User
+Access to Pipelines in the I<AWS Data Pipeline Developer Guide>.
 
 =head1 ATTRIBUTES
 

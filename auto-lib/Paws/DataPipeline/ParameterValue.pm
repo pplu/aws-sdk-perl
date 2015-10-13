@@ -10,7 +10,7 @@ package Paws::DataPipeline::ParameterValue;
 
 Paws::DataPipeline::ParameterValue
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->id
+
+=head1 DESCRIPTION
+
+A value or list of parameter values.
 
 =head1 ATTRIBUTES
 

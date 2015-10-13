@@ -10,7 +10,7 @@ package Paws::CloudFront::CachedMethods;
 
 Paws::CloudFront::CachedMethods
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->Items
+
+=head1 DESCRIPTION
+
+A complex type that controls whether CloudFront caches the response to
+requests using the specified HTTP methods. There are two choices: -
+CloudFront caches responses to GET and HEAD requests. - CloudFront
+caches responses to GET, HEAD, and OPTIONS requests. If you pick the
+second choice for your S3 Origin, you may need to forward
+Access-Control-Request-Method, Access-Control-Request-Headers and
+Origin headers for the responses to be cached correctly.
 
 =head1 ATTRIBUTES
 

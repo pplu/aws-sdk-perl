@@ -10,7 +10,7 @@ package Paws::Support::RecentCaseCommunications;
 
 Paws::Support::RecentCaseCommunications
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Re
 
   $result = $service_obj->Method(...);
   $result->Att1->communications
+
+=head1 DESCRIPTION
+
+The five most recent communications associated with the case.
 
 =head1 ATTRIBUTES
 

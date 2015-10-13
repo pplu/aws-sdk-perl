@@ -12,7 +12,7 @@ package Paws::StorageGateway::ChapInfo;
 
 Paws::StorageGateway::ChapInfo
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
   $result = $service_obj->Method(...);
   $result->Att1->InitiatorName
+
+=head1 DESCRIPTION
+
+Describes Challenge-Handshake Authentication Protocol (CHAP)
+information that supports authentication between your gateway and iSCSI
+initiators.
 
 =head1 ATTRIBUTES
 

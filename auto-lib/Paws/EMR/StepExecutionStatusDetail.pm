@@ -13,7 +13,7 @@ package Paws::EMR::StepExecutionStatusDetail;
 
 Paws::EMR::StepExecutionStatusDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepEx
 
   $result = $service_obj->Method(...);
   $result->Att1->CreationDateTime
+
+=head1 DESCRIPTION
+
+The execution state of a step.
 
 =head1 ATTRIBUTES
 

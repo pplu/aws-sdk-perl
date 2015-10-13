@@ -10,7 +10,7 @@ package Paws::EFS::Tag;
 
 Paws::EFS::Tag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EFS::Tag ob
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+A tag is a pair of key and value. The allowed characters in keys and
+values are letters, whitespace, and numbers, representable in UTF-8,
+and the characters '+', '-', '=', '.', '_', ':', and '/'.
 
 =head1 ATTRIBUTES
 

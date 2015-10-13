@@ -14,7 +14,7 @@ package Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation;
 
 Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
   $result = $service_obj->Method(...);
   $result->Att1->amazonAddress
+
+=head1 DESCRIPTION
+
+A structure containing information about a private virtual interface
+that will be provisioned on a connection.
 
 =head1 ATTRIBUTES
 

@@ -11,7 +11,7 @@ package Paws::Route53::ResourceTagSet;
 
 Paws::Route53::ResourceTagSet
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Re
 
   $result = $service_obj->Method(...);
   $result->Att1->ResourceId
+
+=head1 DESCRIPTION
+
+A complex type containing a resource and its associated tags.
 
 =head1 ATTRIBUTES
 

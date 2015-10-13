@@ -9,7 +9,7 @@ package Paws::S3::NoncurrentVersionExpiration;
 
 Paws::S3::NoncurrentVersionExpiration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Noncurr
 
   $result = $service_obj->Method(...);
   $result->Att1->NoncurrentDays
+
+=head1 DESCRIPTION
+
+Specifies when noncurrent object versions expire. Upon expiration,
+Amazon S3 permanently deletes the noncurrent object versions. You set
+this lifecycle configuration action on a bucket that has versioning
+enabled (or suspended) to request that Amazon S3 delete noncurrent
+object versions at a specific period in the object's lifetime.
 
 =head1 ATTRIBUTES
 

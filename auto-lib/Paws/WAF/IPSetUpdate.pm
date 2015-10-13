@@ -10,7 +10,7 @@ package Paws::WAF::IPSetUpdate;
 
 Paws::WAF::IPSetUpdate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSetU
 
   $result = $service_obj->Method(...);
   $result->Att1->Action
+
+=head1 DESCRIPTION
+
+Specifies the type of update to perform to an IPSet with UpdateIPSet.
 
 =head1 ATTRIBUTES
 

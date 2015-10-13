@@ -11,7 +11,7 @@ package Paws::WAF::IPSet;
 
 Paws::WAF::IPSet
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::IPSet 
 
   $result = $service_obj->Method(...);
   $result->Att1->IPSetDescriptors
+
+=head1 DESCRIPTION
+
+Contains one or more IP addresses or blocks of IP addresses specified
+in Classless Inter-Domain Routing (CIDR) notation. To specify an
+individual IP address, you specify the four-part IP address followed by
+a C</32>, for example, 192.0.2.0/31. To block a range of IP addresses,
+you can specify a C</24>, a C</16>, or a C</8> CIDR. For more
+information about CIDR notation, perform an Internet search on C<cidr
+notation>.
 
 =head1 ATTRIBUTES
 

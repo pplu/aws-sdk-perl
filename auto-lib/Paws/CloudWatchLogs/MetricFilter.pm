@@ -12,7 +12,7 @@ package Paws::CloudWatchLogs::MetricFilter;
 
 Paws::CloudWatchLogs::MetricFilter
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
   $result = $service_obj->Method(...);
   $result->Att1->creationTime
+
+=head1 DESCRIPTION
+
+Metric filters can be used to express how Amazon CloudWatch Logs would
+extract metric observations from ingested log events and transform them
+to metric data in a CloudWatch metric.
 
 =head1 ATTRIBUTES
 

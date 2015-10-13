@@ -12,7 +12,7 @@ package Paws::SQS::SendMessageBatchResultEntry;
 
 Paws::SQS::SendMessageBatchResultEntry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::SendMe
 
   $result = $service_obj->Method(...);
   $result->Att1->Id
+
+=head1 DESCRIPTION
+
+Encloses a message ID for successfully enqueued message of a
+SendMessageBatch.
 
 =head1 ATTRIBUTES
 

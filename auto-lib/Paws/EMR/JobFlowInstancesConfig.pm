@@ -22,7 +22,7 @@ package Paws::EMR::JobFlowInstancesConfig;
 
 Paws::EMR::JobFlowInstancesConfig
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -41,6 +41,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::JobFlo
 
   $result = $service_obj->Method(...);
   $result->Att1->AdditionalMasterSecurityGroups
+
+=head1 DESCRIPTION
+
+A description of the Amazon EC2 instance running the job flow. A valid
+JobFlowInstancesConfig must contain at least InstanceGroups, which is
+the recommended configuration. However, a valid alternative is to have
+MasterInstanceType, SlaveInstanceType, and InstanceCount (all three
+must be present).
 
 =head1 ATTRIBUTES
 

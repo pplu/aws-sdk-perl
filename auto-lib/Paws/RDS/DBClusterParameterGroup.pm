@@ -11,7 +11,7 @@ package Paws::RDS::DBClusterParameterGroup;
 
 Paws::RDS::DBClusterParameterGroup
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
   $result = $service_obj->Method(...);
   $result->Att1->DBClusterParameterGroupName
+
+=head1 DESCRIPTION
+
+Contains the result of a successful invocation of the
+CreateDBClusterParameterGroup action.
+
+This data type is used as a request parameter in the
+DeleteDBClusterParameterGroup action, and as a response element in the
+DescribeDBClusterParameterGroups action.
 
 =head1 ATTRIBUTES
 

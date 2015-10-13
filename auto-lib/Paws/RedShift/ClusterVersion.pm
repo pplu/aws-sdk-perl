@@ -11,7 +11,7 @@ package Paws::RedShift::ClusterVersion;
 
 Paws::RedShift::ClusterVersion
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
   $result = $service_obj->Method(...);
   $result->Att1->ClusterParameterGroupFamily
+
+=head1 DESCRIPTION
+
+Describes a cluster version, including the parameter group family and
+description of the version.
 
 =head1 ATTRIBUTES
 

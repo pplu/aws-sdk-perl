@@ -18,7 +18,7 @@ package Paws::AutoScaling::Activity;
 
 Paws::AutoScaling::Activity
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -37,6 +37,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
   $result = $service_obj->Method(...);
   $result->Att1->ActivityId
+
+=head1 DESCRIPTION
+
+Describes scaling activity, which is a long-running process that
+represents a change to your Auto Scaling group, such as changing its
+size or replacing an instance.
 
 =head1 ATTRIBUTES
 

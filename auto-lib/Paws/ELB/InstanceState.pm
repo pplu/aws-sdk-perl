@@ -12,7 +12,7 @@ package Paws::ELB::InstanceState;
 
 Paws::ELB::InstanceState
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Instan
 
   $result = $service_obj->Method(...);
   $result->Att1->Description
+
+=head1 DESCRIPTION
+
+Information about the state of a back-end instance.
 
 =head1 ATTRIBUTES
 

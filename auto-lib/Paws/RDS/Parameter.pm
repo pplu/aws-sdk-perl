@@ -18,7 +18,7 @@ package Paws::RDS::Parameter;
 
 Paws::RDS::Parameter
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -37,6 +37,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Parame
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowedValues
+
+=head1 DESCRIPTION
+
+This data type is used as a request parameter in the
+ModifyDBParameterGroup and ResetDBParameterGroup actions.
+
+This data type is used as a response element in the
+DescribeEngineDefaultParameters and DescribeDBParameters actions.
 
 =head1 ATTRIBUTES
 

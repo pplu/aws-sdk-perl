@@ -10,7 +10,7 @@ package Paws::Kinesis::HashKeyRange;
 
 Paws::Kinesis::HashKeyRange
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Ha
 
   $result = $service_obj->Method(...);
   $result->Att1->EndingHashKey
+
+=head1 DESCRIPTION
+
+The range of possible hash key values for the shard, which is a set of
+ordered contiguous positive integers.
 
 =head1 ATTRIBUTES
 

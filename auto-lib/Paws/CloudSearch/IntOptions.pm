@@ -14,7 +14,7 @@ package Paws::CloudSearch::IntOptions;
 
 Paws::CloudSearch::IntOptions
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->DefaultValue
+
+=head1 DESCRIPTION
+
+Options for a 64-bit signed integer field. Present if C<IndexFieldType>
+specifies the field is of type C<int>. All options are enabled by
+default.
 
 =head1 ATTRIBUTES
 

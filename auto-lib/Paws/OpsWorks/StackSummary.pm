@@ -14,7 +14,7 @@ package Paws::OpsWorks::StackSummary;
 
 Paws::OpsWorks::StackSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::S
 
   $result = $service_obj->Method(...);
   $result->Att1->AppsCount
+
+=head1 DESCRIPTION
+
+Summarizes the number of layers, instances, and apps in a stack.
 
 =head1 ATTRIBUTES
 

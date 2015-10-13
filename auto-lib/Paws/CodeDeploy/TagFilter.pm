@@ -11,7 +11,7 @@ package Paws::CodeDeploy::TagFilter;
 
 Paws::CodeDeploy::TagFilter
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+Information about an on-premises instance tag filter.
 
 =head1 ATTRIBUTES
 

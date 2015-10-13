@@ -11,7 +11,7 @@ package Paws::StorageGateway::NetworkInterface;
 
 Paws::StorageGateway::NetworkInterface
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
   $result = $service_obj->Method(...);
   $result->Att1->Ipv4Address
+
+=head1 DESCRIPTION
+
+Describes a gateway's network interface.
 
 =head1 ATTRIBUTES
 

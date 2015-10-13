@@ -15,7 +15,7 @@ package Paws::IAM::GroupDetail;
 
 Paws::IAM::GroupDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::GroupD
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
+
+=head1 DESCRIPTION
+
+Contains information about an IAM group, including all of the group's
+policies.
+
+This data type is used as a response element in the
+GetAccountAuthorizationDetails action.
 
 =head1 ATTRIBUTES
 

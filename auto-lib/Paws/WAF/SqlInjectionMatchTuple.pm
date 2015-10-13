@@ -10,7 +10,7 @@ package Paws::WAF::SqlInjectionMatchTuple;
 
 Paws::WAF::SqlInjectionMatchTuple
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::SqlInj
 
   $result = $service_obj->Method(...);
   $result->Att1->FieldToMatch
+
+=head1 DESCRIPTION
+
+Specifies the part of a web request that you want AWS WAF to inspect
+for snippets of malicious SQL code and, if you want AWS WAF to inspect
+a header, the name of the header.
 
 =head1 ATTRIBUTES
 

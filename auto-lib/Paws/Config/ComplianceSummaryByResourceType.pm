@@ -10,7 +10,7 @@ package Paws::Config::ComplianceSummaryByResourceType;
 
 Paws::Config::ComplianceSummaryByResourceType
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
   $result = $service_obj->Method(...);
   $result->Att1->ComplianceSummary
+
+=head1 DESCRIPTION
+
+The number of AWS resources of a specific type that are compliant or
+noncompliant, up to a maximum of 100 for each compliance.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::Route53::HostedZoneConfig;
 
 Paws::Route53::HostedZoneConfig
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ho
 
   $result = $service_obj->Method(...);
   $result->Att1->Comment
+
+=head1 DESCRIPTION
+
+A complex type that contains an optional comment about your hosted
+zone. If you don't want to specify a comment, you can omit the
+C<HostedZoneConfig> and C<Comment> elements from the XML document.
 
 =head1 ATTRIBUTES
 

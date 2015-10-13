@@ -11,7 +11,7 @@ package Paws::SDB::UpdateCondition;
 
 Paws::SDB::UpdateCondition
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SDB::Update
 
   $result = $service_obj->Method(...);
   $result->Att1->Exists
+
+=head1 DESCRIPTION
+
+Specifies the conditions under which data should be updated. If an
+update condition is specified for a request, the data will only be
+updated if the condition is satisfied. For example, if an attribute
+with a specific name and value exists, or if a specific attribute
+doesn't exist.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::IoT::SnsAction;
 
 Paws::IoT::SnsAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::SnsAct
 
   $result = $service_obj->Method(...);
   $result->Att1->roleArn
+
+=head1 DESCRIPTION
+
+Describes an action to publish to an Amazon SNS topic.
 
 =head1 ATTRIBUTES
 

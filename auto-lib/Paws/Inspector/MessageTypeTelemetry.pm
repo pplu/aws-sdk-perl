@@ -11,7 +11,7 @@ package Paws::Inspector::MessageTypeTelemetry;
 
 Paws::Inspector::MessageTypeTelemetry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
   $result = $service_obj->Method(...);
   $result->Att1->count
+
+=head1 DESCRIPTION
+
+This data type is used in the Telemetry data type.
+
+This is metadata about the behavioral data collected by the Inspector
+agent on your EC2 instances during an assessment and passed to the
+Inspector service for analysis.
 
 =head1 ATTRIBUTES
 

@@ -12,7 +12,7 @@ package Paws::StorageGateway::TapeRecoveryPointInfo;
 
 Paws::StorageGateway::TapeRecoveryPointInfo
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
   $result = $service_obj->Method(...);
   $result->Att1->TapeARN
+
+=head1 DESCRIPTION
+
+Describes a recovery point.
 
 =head1 ATTRIBUTES
 

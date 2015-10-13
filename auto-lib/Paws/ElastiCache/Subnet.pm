@@ -10,7 +10,7 @@ package Paws::ElastiCache::Subnet;
 
 Paws::ElastiCache::Subnet
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->SubnetAvailabilityZone
+
+=head1 DESCRIPTION
+
+Represents the subnet associated with a cache cluster. This parameter
+refers to subnets defined in Amazon Virtual Private Cloud (Amazon VPC)
+and used with ElastiCache.
 
 =head1 ATTRIBUTES
 

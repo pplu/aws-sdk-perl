@@ -11,7 +11,7 @@ package Paws::RedShift::HsmClientCertificate;
 
 Paws::RedShift::HsmClientCertificate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::H
 
   $result = $service_obj->Method(...);
   $result->Att1->HsmClientCertificateIdentifier
+
+=head1 DESCRIPTION
+
+Returns information about an HSM client certificate. The certificate is
+stored in a secure Hardware Storage Module (HSM), and used by the
+Amazon Redshift cluster to encrypt data files.
 
 =head1 ATTRIBUTES
 

@@ -9,7 +9,7 @@ package Paws::CloudSearchDomain::DocumentServiceWarning;
 
 Paws::CloudSearchDomain::DocumentServiceWarning
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->message
+
+=head1 DESCRIPTION
+
+A warning returned by the document service when an issue is discovered
+while processing an upload request.
 
 =head1 ATTRIBUTES
 

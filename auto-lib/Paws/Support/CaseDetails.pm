@@ -20,7 +20,7 @@ package Paws::Support::CaseDetails;
 
 Paws::Support::CaseDetails
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -39,6 +39,56 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Ca
 
   $result = $service_obj->Method(...);
   $result->Att1->caseId
+
+=head1 DESCRIPTION
+
+A JSON-formatted object that contains the metadata for a support case.
+It is contained the response from a DescribeCases request.
+B<CaseDetails> contains the following fields:
+
+=over
+
+=item 1. B<CaseID.> The AWS Support case ID requested or returned in
+the call. The case ID is an alphanumeric string formatted as shown in
+this example: case-I<12345678910-2013-c4c1d2bf33c5cf47>.
+
+=item 2. B<CategoryCode.> The category of problem for the AWS Support
+case. Corresponds to the CategoryCode values returned by a call to
+DescribeServices.
+
+=item 3. B<DisplayId.> The identifier for the case on pages in the AWS
+Support Center.
+
+=item 4. B<Language.> The ISO 639-1 code for the language in which AWS
+provides support. AWS Support currently supports English ("en") and
+Japanese ("ja"). Language parameters must be passed explicitly for
+operations that take them.
+
+=item 5. B<RecentCommunications.> One or more Communication objects.
+Fields of these objects are C<Attachments>, C<Body>, C<CaseId>,
+C<SubmittedBy>, and C<TimeCreated>.
+
+=item 6. B<NextToken.> A resumption point for pagination.
+
+=item 7. B<ServiceCode.> The identifier for the AWS service that
+corresponds to the service code defined in the call to
+DescribeServices.
+
+=item 8. B<SeverityCode. >The severity code assigned to the case.
+Contains one of the values returned by the call to
+DescribeSeverityLevels.
+
+=item 9. B<Status.> The status of the case in the AWS Support Center.
+
+=item 10. B<Subject.> The subject line of the case.
+
+=item 11. B<SubmittedBy.> The email address of the account that
+submitted the case.
+
+=item 12. B<TimeCreated.> The time the case was created, in ISO-8601
+format.
+
+=back
 
 =head1 ATTRIBUTES
 

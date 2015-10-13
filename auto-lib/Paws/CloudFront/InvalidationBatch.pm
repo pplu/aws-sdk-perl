@@ -10,7 +10,7 @@ package Paws::CloudFront::InvalidationBatch;
 
 Paws::CloudFront::InvalidationBatch
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->CallerReference
+
+=head1 DESCRIPTION
+
+An invalidation batch.
 
 =head1 ATTRIBUTES
 

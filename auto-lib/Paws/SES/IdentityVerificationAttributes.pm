@@ -10,7 +10,7 @@ package Paws::SES::IdentityVerificationAttributes;
 
 Paws::SES::IdentityVerificationAttributes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Identi
 
   $result = $service_obj->Method(...);
   $result->Att1->VerificationStatus
+
+=head1 DESCRIPTION
+
+Represents the verification attributes of a single identity.
 
 =head1 ATTRIBUTES
 

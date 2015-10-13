@@ -9,7 +9,7 @@ package Paws::ElasticTranscoder::Clip;
 
 Paws::ElasticTranscoder::Clip
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->TimeSpan
+
+=head1 DESCRIPTION
+
+Settings for one clip in a composition. All jobs in a playlist must
+have the same clip settings.
 
 =head1 ATTRIBUTES
 

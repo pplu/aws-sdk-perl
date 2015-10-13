@@ -9,7 +9,7 @@ package Paws::WorkSpaces::UserStorage;
 
 Paws::WorkSpaces::UserStorage
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
   $result = $service_obj->Method(...);
   $result->Att1->Capacity
+
+=head1 DESCRIPTION
+
+Contains information about the user storage for a WorkSpace bundle.
 
 =head1 ATTRIBUTES
 

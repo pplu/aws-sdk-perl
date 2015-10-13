@@ -13,7 +13,7 @@ package Paws::CognitoSync::RecordPatch;
 
 Paws::CognitoSync::RecordPatch
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoSync
 
   $result = $service_obj->Method(...);
   $result->Att1->DeviceLastModifiedDate
+
+=head1 DESCRIPTION
+
+An update operation for a record.
 
 =head1 ATTRIBUTES
 

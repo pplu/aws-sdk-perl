@@ -10,7 +10,7 @@ package Paws::ElastiCache::ParameterNameValue;
 
 Paws::ElastiCache::ParameterNameValue
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->ParameterName
+
+=head1 DESCRIPTION
+
+Describes a name-value pair that is used to update the value of a
+parameter.
 
 =head1 ATTRIBUTES
 

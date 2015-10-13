@@ -9,7 +9,7 @@ package Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes;
 
 Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->scheduledEventId
+
+=head1 DESCRIPTION
+
+Provides details for the C<LambdaFunctionStarted> event.
 
 =head1 ATTRIBUTES
 

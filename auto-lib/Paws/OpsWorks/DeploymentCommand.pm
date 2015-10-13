@@ -10,7 +10,7 @@ package Paws::OpsWorks::DeploymentCommand;
 
 Paws::OpsWorks::DeploymentCommand
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::D
 
   $result = $service_obj->Method(...);
   $result->Att1->Args
+
+=head1 DESCRIPTION
+
+Used to specify a stack or deployment command.
 
 =head1 ATTRIBUTES
 

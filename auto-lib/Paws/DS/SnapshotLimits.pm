@@ -11,7 +11,7 @@ package Paws::DS::SnapshotLimits;
 
 Paws::DS::SnapshotLimits
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Snapsho
 
   $result = $service_obj->Method(...);
   $result->Att1->ManualSnapshotsCurrentCount
+
+=head1 DESCRIPTION
+
+Contains manual snapshot limit information for a directory.
 
 =head1 ATTRIBUTES
 

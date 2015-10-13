@@ -10,7 +10,7 @@ package Paws::EMR::SupportedProductConfig;
 
 Paws::EMR::SupportedProductConfig
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Suppor
 
   $result = $service_obj->Method(...);
   $result->Att1->Args
+
+=head1 DESCRIPTION
+
+The list of supported product configurations which allow user-supplied
+arguments. EMR accepts these arguments and forwards them to the
+corresponding installation script as bootstrap action arguments.
 
 =head1 ATTRIBUTES
 

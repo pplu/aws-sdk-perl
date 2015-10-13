@@ -12,7 +12,7 @@ package Paws::ECS::NetworkBinding;
 
 Paws::ECS::NetworkBinding
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Networ
 
   $result = $service_obj->Method(...);
   $result->Att1->bindIP
+
+=head1 DESCRIPTION
+
+Details on the network bindings between a container and its host
+container instance. After a task reaches the C<RUNNING> status, manual
+and automatic host and container port assignments are visible in the
+C<networkBindings> section of DescribeTasks API responses.
 
 =head1 ATTRIBUTES
 

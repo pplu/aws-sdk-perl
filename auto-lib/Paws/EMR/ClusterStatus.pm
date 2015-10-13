@@ -11,7 +11,7 @@ package Paws::EMR::ClusterStatus;
 
 Paws::EMR::ClusterStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Cluste
 
   $result = $service_obj->Method(...);
   $result->Att1->State
+
+=head1 DESCRIPTION
+
+The detailed status of the cluster.
 
 =head1 ATTRIBUTES
 

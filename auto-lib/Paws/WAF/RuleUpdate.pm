@@ -10,7 +10,7 @@ package Paws::WAF::RuleUpdate;
 
 Paws::WAF::RuleUpdate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::RuleUp
 
   $result = $service_obj->Method(...);
   $result->Att1->Action
+
+=head1 DESCRIPTION
+
+Specifies a C<Predicate> (such as an C<IPSet>) and indicates whether
+you want to add it to a C<Rule> or delete it from a C<Rule>.
 
 =head1 ATTRIBUTES
 

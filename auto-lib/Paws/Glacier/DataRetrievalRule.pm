@@ -10,7 +10,7 @@ package Paws::Glacier::DataRetrievalRule;
 
 Paws::Glacier::DataRetrievalRule
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glacier::Da
 
   $result = $service_obj->Method(...);
   $result->Att1->BytesPerHour
+
+=head1 DESCRIPTION
+
+Data retrieval policy rule.
 
 =head1 ATTRIBUTES
 

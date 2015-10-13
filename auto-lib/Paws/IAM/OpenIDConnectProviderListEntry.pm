@@ -9,7 +9,7 @@ package Paws::IAM::OpenIDConnectProviderListEntry;
 
 Paws::IAM::OpenIDConnectProviderListEntry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::OpenID
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
+
+=head1 DESCRIPTION
+
+Contains the Amazon Resource Name (ARN) for an IAM OpenID Connect
+provider.
 
 =head1 ATTRIBUTES
 

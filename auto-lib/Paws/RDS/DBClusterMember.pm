@@ -11,7 +11,7 @@ package Paws::RDS::DBClusterMember;
 
 Paws::RDS::DBClusterMember
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
   $result = $service_obj->Method(...);
   $result->Att1->DBClusterParameterGroupStatus
+
+=head1 DESCRIPTION
+
+Contains information about an instance that is part of a DB cluster.
 
 =head1 ATTRIBUTES
 

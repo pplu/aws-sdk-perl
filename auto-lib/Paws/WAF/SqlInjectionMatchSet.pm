@@ -11,7 +11,7 @@ package Paws::WAF::SqlInjectionMatchSet;
 
 Paws::WAF::SqlInjectionMatchSet
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::SqlInj
 
   $result = $service_obj->Method(...);
   $result->Att1->Name
+
+=head1 DESCRIPTION
+
+A complex type that contains C<SqlInjectionMatchTuple> objects, which
+specify the parts of web requests that you want AWS WAF to inspect for
+snippets of malicious SQL code and, if you want AWS WAF to inspect a
+header, the name of the header. If a C<SqlInjectionMatchSet> contains
+more than one C<SqlInjectionMatchTuple> object, a request needs to
+include snippets of SQL code in only one of the specified parts of the
+request to be considered a match.
 
 =head1 ATTRIBUTES
 

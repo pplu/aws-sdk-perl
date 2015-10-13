@@ -10,7 +10,7 @@ package Paws::RDS::DBSecurityGroupMembership;
 
 Paws::RDS::DBSecurityGroupMembership
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSecu
 
   $result = $service_obj->Method(...);
   $result->Att1->DBSecurityGroupName
+
+=head1 DESCRIPTION
+
+This data type is used as a response element in the following actions:
+
+=over
+
+=item * ModifyDBInstance
+
+=item * RebootDBInstance
+
+=item * RestoreDBInstanceFromDBSnapshot
+
+=item * RestoreDBInstanceToPointInTime
+
+=back
 
 =head1 ATTRIBUTES
 

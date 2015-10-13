@@ -13,7 +13,7 @@ package Paws::CognitoSync::IdentityUsage;
 
 Paws::CognitoSync::IdentityUsage
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoSync
 
   $result = $service_obj->Method(...);
   $result->Att1->DatasetCount
+
+=head1 DESCRIPTION
+
+Usage information for the identity.
 
 =head1 ATTRIBUTES
 

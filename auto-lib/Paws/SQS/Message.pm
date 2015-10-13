@@ -15,7 +15,7 @@ package Paws::SQS::Message;
 
 Paws::SQS::Message
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Messag
 
   $result = $service_obj->Method(...);
   $result->Att1->Attributes
+
+=head1 DESCRIPTION
+
+An Amazon SQS message.
 
 =head1 ATTRIBUTES
 

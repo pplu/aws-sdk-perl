@@ -10,7 +10,7 @@ package Paws::WAF::RuleSummary;
 
 Paws::WAF::RuleSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::RuleSu
 
   $result = $service_obj->Method(...);
   $result->Att1->Name
+
+=head1 DESCRIPTION
+
+Contains the identifier and the friendly name or description of the
+C<Rule>.
 
 =head1 ATTRIBUTES
 

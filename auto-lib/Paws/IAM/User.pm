@@ -14,7 +14,7 @@ package Paws::IAM::User;
 
 Paws::IAM::User
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::User o
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
+
+=head1 DESCRIPTION
+
+Contains information about an IAM user entity.
+
+This data type is used as a response element in the following actions:
+
+=over
+
+=item *
+
+CreateUser
+
+=item *
+
+GetUser
+
+=item *
+
+ListUsers
+
+=back
 
 =head1 ATTRIBUTES
 

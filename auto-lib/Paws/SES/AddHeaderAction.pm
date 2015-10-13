@@ -10,7 +10,7 @@ package Paws::SES::AddHeaderAction;
 
 Paws::SES::AddHeaderAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::AddHea
 
   $result = $service_obj->Method(...);
   $result->Att1->HeaderName
+
+=head1 DESCRIPTION
+
+When included in a receipt rule, this action adds a header to the
+received email.
+
+For information about adding a header using a receipt rule, see the
+Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 

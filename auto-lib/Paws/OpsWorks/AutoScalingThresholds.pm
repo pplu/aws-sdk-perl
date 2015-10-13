@@ -15,7 +15,7 @@ package Paws::OpsWorks::AutoScalingThresholds;
 
 Paws::OpsWorks::AutoScalingThresholds
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::A
 
   $result = $service_obj->Method(...);
   $result->Att1->Alarms
+
+=head1 DESCRIPTION
+
+Describes a load-based auto scaling upscaling or downscaling threshold
+configuration, which specifies when AWS OpsWorks starts or stops
+load-based instances.
 
 =head1 ATTRIBUTES
 

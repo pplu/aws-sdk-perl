@@ -11,7 +11,7 @@ package Paws::CognitoSync::CognitoStreams;
 
 Paws::CognitoSync::CognitoStreams
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoSync
 
   $result = $service_obj->Method(...);
   $result->Att1->RoleArn
+
+=head1 DESCRIPTION
+
+Configuration options for configure Cognito streams.
 
 =head1 ATTRIBUTES
 

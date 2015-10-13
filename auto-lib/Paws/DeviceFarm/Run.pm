@@ -22,7 +22,7 @@ package Paws::DeviceFarm::Run;
 
 Paws::DeviceFarm::Run
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -41,6 +41,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   $result = $service_obj->Method(...);
   $result->Att1->arn
+
+=head1 DESCRIPTION
+
+Represents an app on a set of devices with a specific test and
+configuration.
 
 =head1 ATTRIBUTES
 

@@ -12,7 +12,7 @@ package Paws::ElastiCache::Event;
 
 Paws::ElastiCache::Event
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->Date
+
+=head1 DESCRIPTION
+
+Represents a single occurrence of something interesting within the
+system. Some examples of events are creating a cache cluster, adding or
+removing a cache node, or rebooting a node.
 
 =head1 ATTRIBUTES
 

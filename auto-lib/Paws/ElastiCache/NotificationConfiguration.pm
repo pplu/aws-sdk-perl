@@ -10,7 +10,7 @@ package Paws::ElastiCache::NotificationConfiguration;
 
 Paws::ElastiCache::NotificationConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->TopicArn
+
+=head1 DESCRIPTION
+
+Describes a notification topic and its status. Notification topics are
+used for publishing ElastiCache events to subscribers using Amazon
+Simple Notification Service (SNS).
 
 =head1 ATTRIBUTES
 

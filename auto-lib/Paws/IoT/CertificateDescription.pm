@@ -15,7 +15,7 @@ package Paws::IoT::CertificateDescription;
 
 Paws::IoT::CertificateDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Certif
 
   $result = $service_obj->Method(...);
   $result->Att1->certificateArn
+
+=head1 DESCRIPTION
+
+Describes a certificate.
 
 =head1 ATTRIBUTES
 

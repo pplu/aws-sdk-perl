@@ -9,7 +9,7 @@ package Paws::S3::NotificationConfigurationFilter;
 
 Paws::S3::NotificationConfigurationFilter
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Notific
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+Container for object key name filtering rules. For information about
+key name filtering, go to Configuring Event Notifications in the Amazon
+Simple Storage Service Developer Guide.
 
 =head1 ATTRIBUTES
 

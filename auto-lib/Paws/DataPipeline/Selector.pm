@@ -10,7 +10,7 @@ package Paws::DataPipeline::Selector;
 
 Paws::DataPipeline::Selector
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->fieldName
+
+=head1 DESCRIPTION
+
+A comparision that is used to determine whether a query should return
+this object.
 
 =head1 ATTRIBUTES
 

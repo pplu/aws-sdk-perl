@@ -14,7 +14,7 @@ package Paws::DynamoDBStreams::StreamRecord;
 
 Paws::DynamoDBStreams::StreamRecord
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
   $result = $service_obj->Method(...);
   $result->Att1->Keys
+
+=head1 DESCRIPTION
+
+A description of a single data modification that was performed on an
+item in a DynamoDB table.
 
 =head1 ATTRIBUTES
 

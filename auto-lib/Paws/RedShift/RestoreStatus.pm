@@ -14,7 +14,7 @@ package Paws::RedShift::RestoreStatus;
 
 Paws::RedShift::RestoreStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::R
 
   $result = $service_obj->Method(...);
   $result->Att1->CurrentRestoreRateInMegaBytesPerSecond
+
+=head1 DESCRIPTION
+
+Describes the status of a cluster restore action. Returns null if the
+cluster was not created by restoring a snapshot.
 
 =head1 ATTRIBUTES
 

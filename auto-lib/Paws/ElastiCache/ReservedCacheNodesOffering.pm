@@ -16,7 +16,7 @@ package Paws::ElastiCache::ReservedCacheNodesOffering;
 
 Paws::ElastiCache::ReservedCacheNodesOffering
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->CacheNodeType
+
+=head1 DESCRIPTION
+
+Describes all of the attributes of a reserved cache node offering.
 
 =head1 ATTRIBUTES
 

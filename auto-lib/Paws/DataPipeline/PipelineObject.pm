@@ -11,7 +11,7 @@ package Paws::DataPipeline::PipelineObject;
 
 Paws::DataPipeline::PipelineObject
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->fields
+
+=head1 DESCRIPTION
+
+Contains information about a pipeline object. This can be a logical,
+physical, or physical attempt pipeline object. The complete set of
+components of a pipeline defines the pipeline.
 
 =head1 ATTRIBUTES
 

@@ -11,7 +11,7 @@ package Paws::CloudFront::CloudFrontOriginAccessIdentitySummary;
 
 Paws::CloudFront::CloudFrontOriginAccessIdentitySummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->Comment
+
+=head1 DESCRIPTION
+
+Summary of the information about a CloudFront origin access identity.
 
 =head1 ATTRIBUTES
 

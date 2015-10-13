@@ -10,7 +10,7 @@ package Paws::EMR::Tag;
 
 Paws::EMR::Tag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Tag ob
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+A key/value pair containing user-defined metadata that you can
+associate with an Amazon EMR resource. Tags make it easier to associate
+clusters in various ways, such as grouping clu\ sters to track your
+Amazon EMR resource allocation costs. For more information, see Tagging
+Amazon EMR Resources.
 
 =head1 ATTRIBUTES
 

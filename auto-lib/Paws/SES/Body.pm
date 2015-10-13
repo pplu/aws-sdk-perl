@@ -10,7 +10,7 @@ package Paws::SES::Body;
 
 Paws::SES::Body
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Body o
 
   $result = $service_obj->Method(...);
   $result->Att1->Html
+
+=head1 DESCRIPTION
+
+Represents the body of the message. You can specify text, HTML, or
+both. If you use both, then the message should display correctly in the
+widest variety of email clients.
 
 =head1 ATTRIBUTES
 

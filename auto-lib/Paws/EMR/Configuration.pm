@@ -11,7 +11,7 @@ package Paws::EMR::Configuration;
 
 Paws::EMR::Configuration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Config
 
   $result = $service_obj->Method(...);
   $result->Att1->Classification
+
+=head1 DESCRIPTION
+
+Amazon EMR releases 4.x or later.
+
+Specifies a hardware and software configuration of the EMR cluster.
+This includes configurations for applications and software bundled with
+Amazon EMR. The Configuration object is a JSON object which is defined
+by a classification and a set of properties. Configurations can be
+nested, so a configuration may have its own Configuration objects
+listed.
 
 =head1 ATTRIBUTES
 

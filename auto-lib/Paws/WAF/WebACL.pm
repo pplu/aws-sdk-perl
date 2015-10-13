@@ -13,7 +13,7 @@ package Paws::WAF::WebACL;
 
 Paws::WAF::WebACL
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::WebACL
 
   $result = $service_obj->Method(...);
   $result->Att1->DefaultAction
+
+=head1 DESCRIPTION
+
+Contains the C<Rules> that identify the requests that you want to
+allow, block, or count. In a C<WebACL>, you also specify a default
+action (C<ALLOW> or C<BLOCK>), and the action for each C<Rule> that you
+add to a C<WebACL>, for example, block requests from specified IP
+addresses or block requests from specified referrers. You also
+associate the C<WebACL> with a CloudFront distribution to identify the
+requests that you want AWS WAF to filter. If you add more than one
+C<Rule> to a C<WebACL>, a request needs to match only one of the
+specifications to be allowed, blocked, or counted. For more
+information, see UpdateWebACL.
 
 =head1 ATTRIBUTES
 

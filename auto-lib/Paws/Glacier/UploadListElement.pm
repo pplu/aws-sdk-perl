@@ -13,7 +13,7 @@ package Paws::Glacier::UploadListElement;
 
 Paws::Glacier::UploadListElement
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glacier::Up
 
   $result = $service_obj->Method(...);
   $result->Att1->ArchiveDescription
+
+=head1 DESCRIPTION
+
+A list of in-progress multipart uploads for a vault.
 
 =head1 ATTRIBUTES
 

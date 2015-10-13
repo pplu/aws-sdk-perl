@@ -13,7 +13,7 @@ package Paws::RDS::Certificate;
 
 Paws::RDS::Certificate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Certif
 
   $result = $service_obj->Method(...);
   $result->Att1->CertificateIdentifier
+
+=head1 DESCRIPTION
+
+A CA certificate for an AWS account.
 
 =head1 ATTRIBUTES
 

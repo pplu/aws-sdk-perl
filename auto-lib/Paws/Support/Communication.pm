@@ -13,7 +13,7 @@ package Paws::Support::Communication;
 
 Paws::Support::Communication
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Co
 
   $result = $service_obj->Method(...);
   $result->Att1->attachmentSet
+
+=head1 DESCRIPTION
+
+A communication associated with an AWS Support case. The communication
+consists of the case ID, the message body, attachment information, the
+account email address, and the date and time of the communication.
 
 =head1 ATTRIBUTES
 

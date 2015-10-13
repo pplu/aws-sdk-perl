@@ -9,7 +9,7 @@ package Paws::IoT::AttributePayload;
 
 Paws::IoT::AttributePayload
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Attrib
 
   $result = $service_obj->Method(...);
   $result->Att1->attributes
+
+=head1 DESCRIPTION
+
+The attribute payload, a JSON string containing up to three key-value
+pairs.
+
+For example: {\"attributes\":{\"string1\":\"string2\E<rdquo>}}
 
 =head1 ATTRIBUTES
 

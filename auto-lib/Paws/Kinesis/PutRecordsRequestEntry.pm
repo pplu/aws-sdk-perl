@@ -11,7 +11,7 @@ package Paws::Kinesis::PutRecordsRequestEntry;
 
 Paws::Kinesis::PutRecordsRequestEntry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Pu
 
   $result = $service_obj->Method(...);
   $result->Att1->Data
+
+=head1 DESCRIPTION
+
+Represents the output for C<PutRecords>.
 
 =head1 ATTRIBUTES
 

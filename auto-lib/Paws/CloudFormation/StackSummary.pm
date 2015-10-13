@@ -16,7 +16,7 @@ package Paws::CloudFormation::StackSummary;
 
 Paws::CloudFormation::StackSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
   $result = $service_obj->Method(...);
   $result->Att1->CreationTime
+
+=head1 DESCRIPTION
+
+The StackSummary Data Type
 
 =head1 ATTRIBUTES
 

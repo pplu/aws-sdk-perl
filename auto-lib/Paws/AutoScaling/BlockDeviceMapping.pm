@@ -12,7 +12,7 @@ package Paws::AutoScaling::BlockDeviceMapping;
 
 Paws::AutoScaling::BlockDeviceMapping
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
   $result = $service_obj->Method(...);
   $result->Att1->DeviceName
+
+=head1 DESCRIPTION
+
+Describes a block device mapping.
 
 =head1 ATTRIBUTES
 

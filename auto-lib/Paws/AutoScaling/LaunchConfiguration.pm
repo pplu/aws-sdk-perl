@@ -27,7 +27,7 @@ package Paws::AutoScaling::LaunchConfiguration;
 
 Paws::AutoScaling::LaunchConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -46,6 +46,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
   $result = $service_obj->Method(...);
   $result->Att1->AssociatePublicIpAddress
+
+=head1 DESCRIPTION
+
+Describes a launch configuration.
 
 =head1 ATTRIBUTES
 

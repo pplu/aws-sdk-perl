@@ -9,7 +9,7 @@ package Paws::RDS::AvailabilityZone;
 
 Paws::RDS::AvailabilityZone
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Availa
 
   $result = $service_obj->Method(...);
   $result->Att1->Name
+
+=head1 DESCRIPTION
+
+Contains Availability Zone information.
+
+This data type is used as an element in the following data type:
+
+=over
+
+=item * OrderableDBInstanceOption
+
+=back
 
 =head1 ATTRIBUTES
 

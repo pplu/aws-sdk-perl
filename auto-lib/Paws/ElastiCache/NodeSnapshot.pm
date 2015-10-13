@@ -12,7 +12,7 @@ package Paws::ElastiCache::NodeSnapshot;
 
 Paws::ElastiCache::NodeSnapshot
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->CacheNodeCreateTime
+
+=head1 DESCRIPTION
+
+Represents an individual cache node in a snapshot of a cache cluster.
 
 =head1 ATTRIBUTES
 

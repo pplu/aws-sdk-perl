@@ -16,7 +16,7 @@ package Paws::Inspector::Agent;
 
 Paws::Inspector::Agent
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
   $result = $service_obj->Method(...);
   $result->Att1->accountId
+
+=head1 DESCRIPTION
+
+Contains information about an Inspector agent. This data type is used
+as a response element in the ListAssessmentAgents action.
 
 =head1 ATTRIBUTES
 

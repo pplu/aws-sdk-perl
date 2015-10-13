@@ -10,7 +10,7 @@ package Paws::CodePipeline::ArtifactDetails;
 
 Paws::CodePipeline::ArtifactDetails
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->maximumCount
+
+=head1 DESCRIPTION
+
+Returns information about the details of an artifact.
 
 =head1 ATTRIBUTES
 

@@ -12,7 +12,7 @@ package Paws::SES::IdentityNotificationAttributes;
 
 Paws::SES::IdentityNotificationAttributes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Identi
 
   $result = $service_obj->Method(...);
   $result->Att1->BounceTopic
+
+=head1 DESCRIPTION
+
+Represents the notification attributes of an identity, including
+whether an identity has Amazon Simple Notification Service (Amazon SNS)
+topics set for bounce, complaint, and/or delivery notifications, and
+whether feedback forwarding is enabled for bounce and complaint
+notifications.
 
 =head1 ATTRIBUTES
 

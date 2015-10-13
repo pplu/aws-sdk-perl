@@ -11,7 +11,7 @@ package Paws::EMR::StepStatus;
 
 Paws::EMR::StepStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepSt
 
   $result = $service_obj->Method(...);
   $result->Att1->State
+
+=head1 DESCRIPTION
+
+The execution status details of the cluster step.
 
 =head1 ATTRIBUTES
 

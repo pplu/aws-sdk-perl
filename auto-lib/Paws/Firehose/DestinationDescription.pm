@@ -11,7 +11,7 @@ package Paws::Firehose::DestinationDescription;
 
 Paws::Firehose::DestinationDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::D
 
   $result = $service_obj->Method(...);
   $result->Att1->DestinationId
+
+=head1 DESCRIPTION
+
+Describes the destination for a delivery stream.
 
 =head1 ATTRIBUTES
 

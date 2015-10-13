@@ -20,7 +20,7 @@ package Paws::Inspector::Finding;
 
 Paws::Inspector::Finding
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -39,6 +39,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
   $result = $service_obj->Method(...);
   $result->Att1->agentId
+
+=head1 DESCRIPTION
+
+Contains information about an Inspector finding.
+
+This data type is used as the response element in the DescribeFinding
+action.
 
 =head1 ATTRIBUTES
 

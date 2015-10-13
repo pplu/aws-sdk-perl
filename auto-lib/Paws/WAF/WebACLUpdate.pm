@@ -10,7 +10,7 @@ package Paws::WAF::WebACLUpdate;
 
 Paws::WAF::WebACLUpdate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::WebACL
 
   $result = $service_obj->Method(...);
   $result->Att1->Action
+
+=head1 DESCRIPTION
+
+Specifies whether to insert a C<Rule> into or delete a C<Rule> from a
+C<WebACL>.
 
 =head1 ATTRIBUTES
 

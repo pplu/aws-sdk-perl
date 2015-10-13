@@ -9,7 +9,7 @@ package Paws::CloudFormation::ParameterConstraints;
 
 Paws::CloudFormation::ParameterConstraints
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowedValues
+
+=head1 DESCRIPTION
+
+A set of criteria that AWS CloudFormation uses to validate parameter
+values. Although other constraints might be defined in the stack
+template, AWS CloudFormation returns only the C<AllowedValues>
+property.
 
 =head1 ATTRIBUTES
 

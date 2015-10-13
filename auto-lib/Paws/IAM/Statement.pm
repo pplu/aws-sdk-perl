@@ -12,7 +12,7 @@ package Paws::IAM::Statement;
 
 Paws::IAM::Statement
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Statem
 
   $result = $service_obj->Method(...);
   $result->Att1->EndPosition
+
+=head1 DESCRIPTION
+
+Contains a reference to a C<Statement> element in a policy document
+that determines the result of the simulation.
+
+This data type is used by the C<MatchedStatements> member of the
+C<EvaluationResult> type.
 
 =head1 ATTRIBUTES
 

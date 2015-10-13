@@ -15,7 +15,7 @@ package Paws::ElastiCache::CacheNode;
 
 Paws::ElastiCache::CacheNode
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,64 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->CacheNodeCreateTime
+
+=head1 DESCRIPTION
+
+Represents an individual cache node within a cache cluster. Each cache
+node runs its own instance of the cluster's protocol-compliant caching
+software - either Memcached or Redis.
+
+Valid node types are as follows:
+
+=over
+
+=item * General purpose:
+
+=over
+
+=item * Current generation: C<cache.t2.micro>, C<cache.t2.small>,
+C<cache.t2.medium>, C<cache.m3.medium>, C<cache.m3.large>,
+C<cache.m3.xlarge>, C<cache.m3.2xlarge>
+
+=item * Previous generation: C<cache.t1.micro>, C<cache.m1.small>,
+C<cache.m1.medium>, C<cache.m1.large>, C<cache.m1.xlarge>
+
+=back
+
+=item * Compute optimized: C<cache.c1.xlarge>
+
+=item * Memory optimized
+
+=over
+
+=item * Current generation: C<cache.r3.large>, C<cache.r3.xlarge>,
+C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
+
+=item * Previous generation: C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
+C<cache.m2.4xlarge>
+
+=back
+
+=back
+
+B<Notes:>
+
+=over
+
+=item * All t2 instances are created in an Amazon Virtual Private Cloud
+(VPC).
+
+=item * Redis backup/restore is not supported for t2 instances.
+
+=item * Redis Append-only files (AOF) functionality is not supported
+for t1 or t2 instances.
+
+=back
+
+For a complete listing of cache node types and specifications, see
+Amazon ElastiCache Product Features and Details and Cache Node
+Type-Specific Parameters for Memcached or Cache Node Type-Specific
+Parameters for Redis.
 
 =head1 ATTRIBUTES
 

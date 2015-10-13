@@ -13,7 +13,7 @@ package Paws::CloudWatch::AlarmHistoryItem;
 
 Paws::CloudWatch::AlarmHistoryItem
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
   $result = $service_obj->Method(...);
   $result->Att1->AlarmName
+
+=head1 DESCRIPTION
+
+The C<AlarmHistoryItem> data type contains descriptive information
+about the history of a specific alarm. If you call
+DescribeAlarmHistory, Amazon CloudWatch returns this data type as part
+of the DescribeAlarmHistoryResult data type.
 
 =head1 ATTRIBUTES
 

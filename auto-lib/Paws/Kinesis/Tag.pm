@@ -10,7 +10,7 @@ package Paws::Kinesis::Tag;
 
 Paws::Kinesis::Tag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Ta
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+Metadata assigned to the stream, consisting of a key-value pair.
 
 =head1 ATTRIBUTES
 

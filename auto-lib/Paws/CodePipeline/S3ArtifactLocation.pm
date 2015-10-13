@@ -10,7 +10,7 @@ package Paws::CodePipeline::S3ArtifactLocation;
 
 Paws::CodePipeline::S3ArtifactLocation
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->bucketName
+
+=head1 DESCRIPTION
+
+The location of the Amazon S3 bucket that contains a revision.
 
 =head1 ATTRIBUTES
 

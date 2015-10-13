@@ -10,7 +10,7 @@ package Paws::StorageGateway::StorageGatewayError;
 
 Paws::StorageGateway::StorageGatewayError
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
   $result = $service_obj->Method(...);
   $result->Att1->errorCode
+
+=head1 DESCRIPTION
+
+Provides additional information about an error that was returned by the
+service as an or. See the C<errorCode> and C<errorDetails> members for
+more information about the error.
 
 =head1 ATTRIBUTES
 

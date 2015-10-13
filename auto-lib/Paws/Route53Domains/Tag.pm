@@ -10,7 +10,7 @@ package Paws::Route53Domains::Tag;
 
 Paws::Route53Domains::Tag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Doma
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+Each tag includes the following elements.
 
 =head1 ATTRIBUTES
 

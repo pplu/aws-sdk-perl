@@ -10,7 +10,7 @@ package Paws::CloudSearch::ExpressionStatus;
 
 Paws::CloudSearch::ExpressionStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->Options
+
+=head1 DESCRIPTION
+
+The value of an C<Expression> and its current status.
 
 =head1 ATTRIBUTES
 

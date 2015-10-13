@@ -12,7 +12,7 @@ package Paws::Kinesis::PutRecordsResultEntry;
 
 Paws::Kinesis::PutRecordsResultEntry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Pu
 
   $result = $service_obj->Method(...);
   $result->Att1->ErrorCode
+
+=head1 DESCRIPTION
+
+Represents the result of an individual record from a C<PutRecords>
+request. A record that is successfully added to your Amazon Kinesis
+stream includes SequenceNumber and ShardId in the result. A record that
+fails to be added to your Amazon Kinesis stream includes ErrorCode and
+ErrorMessage in the result.
 
 =head1 ATTRIBUTES
 

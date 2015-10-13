@@ -10,7 +10,7 @@ package Paws::OpsWorks::InstanceIdentity;
 
 Paws::OpsWorks::InstanceIdentity
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::I
 
   $result = $service_obj->Method(...);
   $result->Att1->Document
+
+=head1 DESCRIPTION
+
+Contains a description of an Amazon EC2 instance from the Amazon EC2
+metadata service. For more information, see Instance Metadata and User
+Data.
 
 =head1 ATTRIBUTES
 

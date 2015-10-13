@@ -13,7 +13,7 @@ package Paws::ElasticTranscoder::DetectedProperties;
 
 Paws::ElasticTranscoder::DetectedProperties
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->DurationMillis
+
+=head1 DESCRIPTION
+
+The detected properties of the input file. Elastic Transcoder
+identifies these values from the input file.
 
 =head1 ATTRIBUTES
 

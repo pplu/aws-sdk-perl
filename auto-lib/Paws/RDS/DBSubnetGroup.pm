@@ -13,7 +13,7 @@ package Paws::RDS::DBSubnetGroup;
 
 Paws::RDS::DBSubnetGroup
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSubn
 
   $result = $service_obj->Method(...);
   $result->Att1->DBSubnetGroupDescription
+
+=head1 DESCRIPTION
+
+Contains the result of a successful invocation of the following
+actions:
+
+=over
+
+=item * CreateDBSubnetGroup
+
+=item * ModifyDBSubnetGroup
+
+=item * DescribeDBSubnetGroups
+
+=item * DeleteDBSubnetGroup
+
+=back
+
+This data type is used as a response element in the
+DescribeDBSubnetGroups action.
 
 =head1 ATTRIBUTES
 

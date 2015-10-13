@@ -10,7 +10,7 @@ package Paws::ElasticTranscoder::TimeSpan;
 
 Paws::ElasticTranscoder::TimeSpan
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->Duration
+
+=head1 DESCRIPTION
+
+Settings that determine when a clip begins and how long it lasts.
 
 =head1 ATTRIBUTES
 

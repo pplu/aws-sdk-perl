@@ -12,7 +12,7 @@ package Paws::DynamoDB::ExpectedAttributeValue;
 
 Paws::DynamoDB::ExpectedAttributeValue
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::E
 
   $result = $service_obj->Method(...);
   $result->Att1->AttributeValueList
+
+=head1 DESCRIPTION
+
+Represents a condition to be compared with an attribute value. This
+condition can be used with I<DeleteItem>, I<PutItem> or I<UpdateItem>
+operations; if the comparison evaluates to true, the operation
+succeeds; if not, the operation fails. You can use
+I<ExpectedAttributeValue> in one of two different ways:
+
+=over
+
+=item *
+
+Use I<AttributeValueList> to specify one or more values to compare
+against an attribute. Use I<ComparisonOperator> to specify how you want
+to perform the comparison. If the comparison evaluates to true, then
+the conditional operation succeeds.
+
+=item *
+
+Use I<Value> to specify a value that DynamoDB will compare against an
+attribute. If the values match, then I<ExpectedAttributeValue>
+evaluates to true and the conditional operation succeeds. Optionally,
+you can also set I<Exists> to false, indicating that you I<do not>
+expect to find the attribute value in the table. In this case, the
+conditional operation succeeds only if the comparison evaluates to
+false.
+
+=back
+
+I<Value> and I<Exists> are incompatible with I<AttributeValueList> and
+I<ComparisonOperator>. Note that if you use both sets of parameters at
+once, DynamoDB will return a I<ValidationException> exception.
 
 =head1 ATTRIBUTES
 

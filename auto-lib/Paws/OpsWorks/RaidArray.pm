@@ -21,7 +21,7 @@ package Paws::OpsWorks::RaidArray;
 
 Paws::OpsWorks::RaidArray
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -40,6 +40,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::R
 
   $result = $service_obj->Method(...);
   $result->Att1->AvailabilityZone
+
+=head1 DESCRIPTION
+
+Describes an instance's RAID array.
 
 =head1 ATTRIBUTES
 

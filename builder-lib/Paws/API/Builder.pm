@@ -379,7 +379,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 [% inner_class %]
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -398,6 +398,10 @@ Use accessors for each attribute. If Att1 is expected to be an [% inner_class %]
 
   $result = $service_obj->Method(...);
   $result->Att1->[% shape.members.keys.sort.0 %]
+
+=head1 DESCRIPTION
+
+[% desc = c.doc_for_shape(iclass); IF(desc); desc; ELSE; 'This class has no description'; END %]
 
 =head1 ATTRIBUTES
 
@@ -864,7 +868,7 @@ package [% inner_class %];
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END -%]
 1;
-[% c.innerclass_documentation_template | eval %]
+[% iclass=shape; c.innerclass_documentation_template | eval %]
 #);
 
   sub make_inner_class {

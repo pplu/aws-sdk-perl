@@ -18,7 +18,7 @@ package Paws::CodeCommit::RepositoryMetadata;
 
 Paws::CodeCommit::RepositoryMetadata
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -37,6 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit:
 
   $result = $service_obj->Method(...);
   $result->Att1->accountId
+
+=head1 DESCRIPTION
+
+Information about a repository.
 
 =head1 ATTRIBUTES
 

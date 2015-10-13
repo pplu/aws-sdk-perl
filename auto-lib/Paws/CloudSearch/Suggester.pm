@@ -10,7 +10,7 @@ package Paws::CloudSearch::Suggester;
 
 Paws::CloudSearch::Suggester
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->DocumentSuggesterOptions
+
+=head1 DESCRIPTION
+
+Configuration information for a search suggester. Each suggester has a
+unique name and specifies the text field you want to use for
+suggestions. The following options can be configured for a suggester:
+C<FuzzyMatching>, C<SortExpression>.
 
 =head1 ATTRIBUTES
 

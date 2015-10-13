@@ -10,7 +10,7 @@ package Paws::DS::DirectoryVpcSettings;
 
 Paws::DS::DirectoryVpcSettings
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Directo
 
   $result = $service_obj->Method(...);
   $result->Att1->SubnetIds
+
+=head1 DESCRIPTION
+
+Contains information for the CreateDirectory operation when a Simple AD
+directory is being created.
 
 =head1 ATTRIBUTES
 

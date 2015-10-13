@@ -25,7 +25,7 @@ package Paws::Config::ConfigurationItem;
 
 Paws::Config::ConfigurationItem
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -44,6 +44,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
   $result = $service_obj->Method(...);
   $result->Att1->accountId
+
+=head1 DESCRIPTION
+
+A list that contains detailed configurations of a specified resource.
+
+Currently, the list does not contain information about non-AWS
+components (for example, applications on your Amazon EC2 instances).
 
 =head1 ATTRIBUTES
 

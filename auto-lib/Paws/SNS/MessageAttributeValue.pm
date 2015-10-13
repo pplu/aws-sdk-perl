@@ -11,7 +11,7 @@ package Paws::SNS::MessageAttributeValue;
 
 Paws::SNS::MessageAttributeValue
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SNS::Messag
 
   $result = $service_obj->Method(...);
   $result->Att1->BinaryValue
+
+=head1 DESCRIPTION
+
+The user-specified message attribute value. For string data types, the
+value attribute has the same restrictions on the content as the message
+body. For more information, see Publish.
+
+Name, type, and value must not be empty or null. In addition, the
+message body should not be empty or null. All parts of the message
+attribute, including name, type, and value, are included in the message
+size restriction, which is currently 256 KB (262,144 bytes). For more
+information, see Using Amazon SNS Message Attributes.
 
 =head1 ATTRIBUTES
 

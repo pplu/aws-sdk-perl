@@ -11,7 +11,7 @@ package Paws::DeviceFarm::CPU;
 
 Paws::DeviceFarm::CPU
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   $result = $service_obj->Method(...);
   $result->Att1->architecture
+
+=head1 DESCRIPTION
+
+Represents the amount of CPU that an app is using on a physical device.
+
+Note that this does not represent system-wide CPU usage.
 
 =head1 ATTRIBUTES
 

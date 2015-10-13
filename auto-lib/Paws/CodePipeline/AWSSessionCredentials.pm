@@ -11,7 +11,7 @@ package Paws::CodePipeline::AWSSessionCredentials;
 
 Paws::CodePipeline::AWSSessionCredentials
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->accessKeyId
+
+=head1 DESCRIPTION
+
+Represents an AWS session credentials object. These credentials are
+temporary credentials that are issued by AWS Secure Token Service
+(STS). They can be used to access input and output artifacts in the
+Amazon S3 bucket used to store artifact for the pipeline in AWS
+CodePipeline.
 
 =head1 ATTRIBUTES
 

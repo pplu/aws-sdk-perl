@@ -10,7 +10,7 @@ package Paws::DynamoDB::WriteRequest;
 
 Paws::DynamoDB::WriteRequest
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::W
 
   $result = $service_obj->Method(...);
   $result->Att1->DeleteRequest
+
+=head1 DESCRIPTION
+
+Represents an operation to perform - either I<DeleteItem> or
+I<PutItem>. You can only request one of these operations, not both, in
+a single I<WriteRequest>. If you do need to perform both of these
+operations, you will need to provide two separate I<WriteRequest>
+objects.
 
 =head1 ATTRIBUTES
 

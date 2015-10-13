@@ -30,7 +30,7 @@ package Paws::RDS::DBCluster;
 
 Paws::RDS::DBCluster
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -49,6 +49,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 
   $result = $service_obj->Method(...);
   $result->Att1->AllocatedStorage
+
+=head1 DESCRIPTION
+
+Contains the result of a successful invocation of the following
+actions:
+
+=over
+
+=item * CreateDBCluster
+
+=item * DeleteDBCluster
+
+=item * FailoverDBCluster
+
+=item * ModifyDBCluster
+
+=item * RestoreDBClusterFromSnapshot
+
+=back
+
+This data type is used as a response element in the DescribeDBClusters
+action.
 
 =head1 ATTRIBUTES
 

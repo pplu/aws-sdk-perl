@@ -14,7 +14,7 @@ package Paws::IAM::InstanceProfile;
 
 Paws::IAM::InstanceProfile
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Instan
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
+
+=head1 DESCRIPTION
+
+Contains information about an instance profile.
+
+This data type is used as a response element in the following actions:
+
+=over
+
+=item *
+
+CreateInstanceProfile
+
+=item *
+
+GetInstanceProfile
+
+=item *
+
+ListInstanceProfiles
+
+=item *
+
+ListInstanceProfilesForRole
+
+=back
 
 =head1 ATTRIBUTES
 

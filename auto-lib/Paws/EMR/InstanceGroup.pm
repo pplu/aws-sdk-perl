@@ -18,7 +18,7 @@ package Paws::EMR::InstanceGroup;
 
 Paws::EMR::InstanceGroup
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -37,6 +37,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 
   $result = $service_obj->Method(...);
   $result->Att1->BidPrice
+
+=head1 DESCRIPTION
+
+This entity represents an instance group, which is a group of instances
+that have common purpose. For example, CORE instance group is used for
+HDFS.
 
 =head1 ATTRIBUTES
 

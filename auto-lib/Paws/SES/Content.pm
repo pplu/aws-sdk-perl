@@ -10,7 +10,7 @@ package Paws::SES::Content;
 
 Paws::SES::Content
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Conten
 
   $result = $service_obj->Method(...);
   $result->Att1->Charset
+
+=head1 DESCRIPTION
+
+Represents textual data, plus an optional character set specification.
+
+By default, the text must be 7-bit ASCII, due to the constraints of the
+SMTP protocol. If the text must contain any other characters, then you
+must also specify a character set. Examples include UTF-8, ISO-8859-1,
+and Shift_JIS.
 
 =head1 ATTRIBUTES
 

@@ -14,7 +14,7 @@ package Paws::CloudTrail::Event;
 
 Paws::CloudTrail::Event
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
   $result = $service_obj->Method(...);
   $result->Att1->CloudTrailEvent
+
+=head1 DESCRIPTION
+
+Contains information about an event that was returned by a lookup
+request. The result includes a representation of a CloudTrail event.
 
 =head1 ATTRIBUTES
 

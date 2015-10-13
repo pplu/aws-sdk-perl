@@ -10,7 +10,7 @@ package Paws::WAF::WebACLSummary;
 
 Paws::WAF::WebACLSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::WebACL
 
   $result = $service_obj->Method(...);
   $result->Att1->Name
+
+=head1 DESCRIPTION
+
+Contains the identifier and the name or description of the WebACL.
 
 =head1 ATTRIBUTES
 

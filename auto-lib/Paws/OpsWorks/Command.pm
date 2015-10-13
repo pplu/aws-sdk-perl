@@ -18,7 +18,7 @@ package Paws::OpsWorks::Command;
 
 Paws::OpsWorks::Command
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -37,6 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::C
 
   $result = $service_obj->Method(...);
   $result->Att1->AcknowledgedAt
+
+=head1 DESCRIPTION
+
+Describes a command.
 
 =head1 ATTRIBUTES
 

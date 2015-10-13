@@ -11,7 +11,7 @@ package Paws::OpsWorks::EnvironmentVariable;
 
 Paws::OpsWorks::EnvironmentVariable
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::E
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+Represents an app's environment variable.
 
 =head1 ATTRIBUTES
 

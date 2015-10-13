@@ -11,7 +11,7 @@ package Paws::ECS::MountPoint;
 
 Paws::ECS::MountPoint
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::MountP
 
   $result = $service_obj->Method(...);
   $result->Att1->containerPath
+
+=head1 DESCRIPTION
+
+Details on a volume mount point that is used in a container definition.
 
 =head1 ATTRIBUTES
 

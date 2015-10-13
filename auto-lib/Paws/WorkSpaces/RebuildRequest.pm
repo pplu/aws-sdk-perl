@@ -9,7 +9,7 @@ package Paws::WorkSpaces::RebuildRequest;
 
 Paws::WorkSpaces::RebuildRequest
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
   $result = $service_obj->Method(...);
   $result->Att1->WorkspaceId
+
+=head1 DESCRIPTION
+
+Contains information used with the RebuildWorkspaces operation to
+rebuild a WorkSpace.
 
 =head1 ATTRIBUTES
 

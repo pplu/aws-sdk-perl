@@ -12,7 +12,7 @@ package Paws::ELB::AccessLog;
 
 Paws::ELB::AccessLog
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Access
 
   $result = $service_obj->Method(...);
   $result->Att1->EmitInterval
+
+=head1 DESCRIPTION
+
+Information about the C<AccessLog> attribute.
 
 =head1 ATTRIBUTES
 

@@ -9,7 +9,7 @@ package Paws::OpsWorks::LifecycleEventConfiguration;
 
 Paws::OpsWorks::LifecycleEventConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::L
 
   $result = $service_obj->Method(...);
   $result->Att1->Shutdown
+
+=head1 DESCRIPTION
+
+Specifies the lifecycle event configuration
 
 =head1 ATTRIBUTES
 

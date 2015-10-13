@@ -10,7 +10,7 @@ package Paws::SES::WorkmailAction;
 
 Paws::SES::WorkmailAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Workma
 
   $result = $service_obj->Method(...);
   $result->Att1->OrganizationArn
+
+=head1 DESCRIPTION
+
+When included in a receipt rule, this action calls Amazon WorkMail and,
+optionally, publishes a notification to Amazon Simple Notification
+Service (Amazon SNS). You will typically not use this action directly
+because Amazon WorkMail adds the rule automatically during its setup
+procedure.
+
+For information using a receipt rule to call Amazon WorkMail, see the
+Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 

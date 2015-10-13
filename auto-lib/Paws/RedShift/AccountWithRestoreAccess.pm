@@ -9,7 +9,7 @@ package Paws::RedShift::AccountWithRestoreAccess;
 
 Paws::RedShift::AccountWithRestoreAccess
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::A
 
   $result = $service_obj->Method(...);
   $result->Att1->AccountId
+
+=head1 DESCRIPTION
+
+Describes an AWS customer account authorized to restore a snapshot.
 
 =head1 ATTRIBUTES
 

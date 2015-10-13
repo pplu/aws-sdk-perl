@@ -11,7 +11,7 @@ package Paws::EMR::StepConfig;
 
 Paws::EMR::StepConfig
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::StepCo
 
   $result = $service_obj->Method(...);
   $result->Att1->ActionOnFailure
+
+=head1 DESCRIPTION
+
+Specification of a job flow step.
 
 =head1 ATTRIBUTES
 

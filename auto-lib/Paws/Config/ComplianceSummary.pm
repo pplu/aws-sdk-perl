@@ -11,7 +11,7 @@ package Paws::Config::ComplianceSummary;
 
 Paws::Config::ComplianceSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
   $result = $service_obj->Method(...);
   $result->Att1->ComplianceSummaryTimestamp
+
+=head1 DESCRIPTION
+
+The number of AWS Config rules or AWS resources that are compliant and
+noncompliant, up to a maximum.
 
 =head1 ATTRIBUTES
 

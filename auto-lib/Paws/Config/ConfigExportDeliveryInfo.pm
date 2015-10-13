@@ -14,7 +14,7 @@ package Paws::Config::ConfigExportDeliveryInfo;
 
 Paws::Config::ConfigExportDeliveryInfo
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
   $result = $service_obj->Method(...);
   $result->Att1->lastAttemptTime
+
+=head1 DESCRIPTION
+
+A list that contains the status of the delivery of either the snapshot
+or the configuration history to the specified Amazon S3 bucket.
 
 =head1 ATTRIBUTES
 

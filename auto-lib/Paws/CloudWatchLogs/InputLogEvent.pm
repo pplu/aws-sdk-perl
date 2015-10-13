@@ -10,7 +10,7 @@ package Paws::CloudWatchLogs::InputLogEvent;
 
 Paws::CloudWatchLogs::InputLogEvent
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
   $result = $service_obj->Method(...);
   $result->Att1->message
+
+=head1 DESCRIPTION
+
+A log event is a record of some activity that was recorded by the
+application or resource being monitored. The log event record that
+Amazon CloudWatch Logs understands contains two properties: the
+timestamp of when the event occurred, and the raw event message.
 
 =head1 ATTRIBUTES
 

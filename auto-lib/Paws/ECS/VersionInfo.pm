@@ -11,7 +11,7 @@ package Paws::ECS::VersionInfo;
 
 Paws::ECS::VersionInfo
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Versio
 
   $result = $service_obj->Method(...);
   $result->Att1->agentHash
+
+=head1 DESCRIPTION
+
+The Docker and Amazon ECS container agent version information about a
+container instance.
 
 =head1 ATTRIBUTES
 

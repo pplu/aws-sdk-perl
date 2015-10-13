@@ -17,7 +17,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionInfo;
 
 Paws::SimpleWorkflow::WorkflowExecutionInfo
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->cancelRequested
+
+=head1 DESCRIPTION
+
+Contains information about a workflow execution.
 
 =head1 ATTRIBUTES
 

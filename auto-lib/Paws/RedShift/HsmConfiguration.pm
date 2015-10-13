@@ -13,7 +13,7 @@ package Paws::RedShift::HsmConfiguration;
 
 Paws::RedShift::HsmConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::H
 
   $result = $service_obj->Method(...);
   $result->Att1->Description
+
+=head1 DESCRIPTION
+
+Returns information about an HSM configuration, which is an object that
+describes to Amazon Redshift clusters the information they require to
+connect to an HSM where they can store database encryption keys.
 
 =head1 ATTRIBUTES
 

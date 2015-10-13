@@ -17,7 +17,7 @@ package Paws::DeviceFarm::Upload;
 
 Paws::DeviceFarm::Upload
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   $result = $service_obj->Method(...);
   $result->Att1->arn
+
+=head1 DESCRIPTION
+
+An app or a set of one or more tests to upload or that have been
+uploaded.
 
 =head1 ATTRIBUTES
 

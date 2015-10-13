@@ -9,7 +9,7 @@ package Paws::DataPipeline::Query;
 
 Paws::DataPipeline::Query
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->selectors
+
+=head1 DESCRIPTION
+
+Defines the query to run against an object.
 
 =head1 ATTRIBUTES
 

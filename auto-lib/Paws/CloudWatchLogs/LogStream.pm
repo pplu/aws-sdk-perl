@@ -16,7 +16,7 @@ package Paws::CloudWatchLogs::LogStream;
 
 Paws::CloudWatchLogs::LogStream
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
   $result = $service_obj->Method(...);
   $result->Att1->arn
+
+=head1 DESCRIPTION
+
+A log stream is sequence of log events from a single emitter of logs.
 
 =head1 ATTRIBUTES
 

@@ -11,7 +11,7 @@ package Paws::CodePipeline::ArtifactStore;
 
 Paws::CodePipeline::ArtifactStore
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->encryptionKey
+
+=head1 DESCRIPTION
+
+The Amazon S3 location where artifacts are stored for the pipeline. If
+this Amazon S3 bucket is created manually, it must meet the
+requirements for AWS CodePipeline. For more information, see the
+Concepts.
 
 =head1 ATTRIBUTES
 

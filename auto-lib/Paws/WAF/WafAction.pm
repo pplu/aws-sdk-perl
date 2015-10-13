@@ -9,7 +9,7 @@ package Paws::WAF::WafAction;
 
 Paws::WAF::WafAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::WafAct
 
   $result = $service_obj->Method(...);
   $result->Att1->Type
+
+=head1 DESCRIPTION
+
+For the action that is associated with a rule in a C<WebACL>, specifies
+the action that you want AWS WAF to perform when a web request matches
+all of the conditions in a rule. For the default action in a C<WebACL>,
+specifies the action that you want AWS WAF to take when a web request
+doesn't match all of the conditions in any of the rules in a C<WebACL>.
 
 =head1 ATTRIBUTES
 

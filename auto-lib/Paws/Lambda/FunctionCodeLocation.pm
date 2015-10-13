@@ -10,7 +10,7 @@ package Paws::Lambda::FunctionCodeLocation;
 
 Paws::Lambda::FunctionCodeLocation
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Fun
 
   $result = $service_obj->Method(...);
   $result->Att1->Location
+
+=head1 DESCRIPTION
+
+The object for the Lambda function location.
 
 =head1 ATTRIBUTES
 

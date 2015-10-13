@@ -13,7 +13,7 @@ package Paws::ELB::HealthCheck;
 
 Paws::ELB::HealthCheck
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Health
 
   $result = $service_obj->Method(...);
   $result->Att1->HealthyThreshold
+
+=head1 DESCRIPTION
+
+Information about a health check.
 
 =head1 ATTRIBUTES
 

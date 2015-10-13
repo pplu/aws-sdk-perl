@@ -9,7 +9,7 @@ package Paws::CodePipeline::InputArtifact;
 
 Paws::CodePipeline::InputArtifact
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->name
+
+=head1 DESCRIPTION
+
+Represents information about an artifact to be worked on, such as a
+test or build artifact.
 
 =head1 ATTRIBUTES
 

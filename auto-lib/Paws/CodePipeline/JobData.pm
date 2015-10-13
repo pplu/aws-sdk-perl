@@ -16,7 +16,7 @@ package Paws::CodePipeline::JobData;
 
 Paws::CodePipeline::JobData
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->actionConfiguration
+
+=head1 DESCRIPTION
+
+Represents additional information about a job required for a job worker
+to complete the job.
 
 =head1 ATTRIBUTES
 

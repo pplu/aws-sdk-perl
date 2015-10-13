@@ -15,7 +15,7 @@ package Paws::ElasticBeanstalk::EnvironmentResourceDescription;
 
 Paws::ElasticBeanstalk::EnvironmentResourceDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->AutoScalingGroups
+
+=head1 DESCRIPTION
+
+Describes the AWS resources in use by this environment. This data is
+live.
 
 =head1 ATTRIBUTES
 

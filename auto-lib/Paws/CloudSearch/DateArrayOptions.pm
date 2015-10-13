@@ -13,7 +13,7 @@ package Paws::CloudSearch::DateArrayOptions;
 
 Paws::CloudSearch::DateArrayOptions
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->DefaultValue
+
+=head1 DESCRIPTION
+
+Options for a field that contains an array of dates. Present if
+C<IndexFieldType> specifies the field is of type C<date-array>. All
+options are enabled by default.
 
 =head1 ATTRIBUTES
 

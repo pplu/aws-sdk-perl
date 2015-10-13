@@ -12,7 +12,7 @@ package Paws::ElasticBeanstalk::EnvironmentInfoDescription;
 
 Paws::ElasticBeanstalk::EnvironmentInfoDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->Ec2InstanceId
+
+=head1 DESCRIPTION
+
+The information retrieved from the Amazon EC2 instances.
 
 =head1 ATTRIBUTES
 

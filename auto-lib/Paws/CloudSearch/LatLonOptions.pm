@@ -14,7 +14,7 @@ package Paws::CloudSearch::LatLonOptions;
 
 Paws::CloudSearch::LatLonOptions
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->DefaultValue
+
+=head1 DESCRIPTION
+
+Options for a latlon field. A latlon field contains a location stored
+as a latitude and longitude value pair. Present if C<IndexFieldType>
+specifies the field is of type C<latlon>. All options are enabled by
+default.
 
 =head1 ATTRIBUTES
 

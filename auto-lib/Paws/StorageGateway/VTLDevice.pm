@@ -13,7 +13,7 @@ package Paws::StorageGateway::VTLDevice;
 
 Paws::StorageGateway::VTLDevice
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
   $result = $service_obj->Method(...);
   $result->Att1->DeviceiSCSIAttributes
+
+=head1 DESCRIPTION
+
+Represents a device object associated with a gateway-VTL.
 
 =head1 ATTRIBUTES
 

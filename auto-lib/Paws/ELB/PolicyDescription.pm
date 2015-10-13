@@ -11,7 +11,7 @@ package Paws::ELB::PolicyDescription;
 
 Paws::ELB::PolicyDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Policy
 
   $result = $service_obj->Method(...);
   $result->Att1->PolicyAttributeDescriptions
+
+=head1 DESCRIPTION
+
+Information about a policy.
 
 =head1 ATTRIBUTES
 

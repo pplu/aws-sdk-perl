@@ -19,7 +19,7 @@ package Paws::RDS::OptionGroupOption;
 
 Paws::RDS::OptionGroupOption
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -38,6 +38,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
   $result = $service_obj->Method(...);
   $result->Att1->DefaultPort
+
+=head1 DESCRIPTION
+
+Available option.
 
 =head1 ATTRIBUTES
 

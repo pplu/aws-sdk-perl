@@ -10,7 +10,7 @@ package Paws::Inspector::Tag;
 
 Paws::Inspector::Tag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
   $result = $service_obj->Method(...);
   $result->Att1->Key
+
+=head1 DESCRIPTION
+
+A key and value pair.
+
+This data type is used as a request parameter in the SetTagsForResource
+action and a response element in the ListTagsForResource action.
 
 =head1 ATTRIBUTES
 

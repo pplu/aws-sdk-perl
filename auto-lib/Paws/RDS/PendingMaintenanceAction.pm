@@ -14,7 +14,7 @@ package Paws::RDS::PendingMaintenanceAction;
 
 Paws::RDS::PendingMaintenanceAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Pendin
 
   $result = $service_obj->Method(...);
   $result->Att1->Action
+
+=head1 DESCRIPTION
+
+Provides information about a pending maintenance action for a resource.
 
 =head1 ATTRIBUTES
 

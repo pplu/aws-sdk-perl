@@ -10,7 +10,7 @@ package Paws::Support::AttachmentDetails;
 
 Paws::Support::AttachmentDetails
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::At
 
   $result = $service_obj->Method(...);
   $result->Att1->attachmentId
+
+=head1 DESCRIPTION
+
+The file name and ID of an attachment to a case communication. You can
+use the ID to retrieve the attachment with the DescribeAttachment
+operation.
 
 =head1 ATTRIBUTES
 

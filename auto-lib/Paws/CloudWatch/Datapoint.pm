@@ -15,7 +15,7 @@ package Paws::CloudWatch::Datapoint;
 
 Paws::CloudWatch::Datapoint
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
   $result = $service_obj->Method(...);
   $result->Att1->Average
+
+=head1 DESCRIPTION
+
+The C<Datapoint> data type encapsulates the statistical data that
+Amazon CloudWatch computes from metric data.
 
 =head1 ATTRIBUTES
 

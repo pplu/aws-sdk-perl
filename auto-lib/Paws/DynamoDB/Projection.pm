@@ -10,7 +10,7 @@ package Paws::DynamoDB::Projection;
 
 Paws::DynamoDB::Projection
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::P
 
   $result = $service_obj->Method(...);
   $result->Att1->NonKeyAttributes
+
+=head1 DESCRIPTION
+
+Represents attributes that are copied (projected) from the table into
+an index. These are in addition to the primary key attributes and index
+key attributes, which are automatically projected.
 
 =head1 ATTRIBUTES
 

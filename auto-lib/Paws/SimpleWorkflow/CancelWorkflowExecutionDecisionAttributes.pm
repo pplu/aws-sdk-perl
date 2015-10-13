@@ -9,7 +9,7 @@ package Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes;
 
 Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,34 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->details
+
+=head1 DESCRIPTION
+
+Provides details of the C<CancelWorkflowExecution> decision.
+
+B<Access Control>
+
+You can use IAM policies to control this decision's access to Amazon
+SWF resources as follows:
+
+=over
+
+=item * Use a C<Resource> element with the domain name to limit the
+action to only specified domains.
+
+=item * Use an C<Action> element to allow or deny permission to call
+this action.
+
+=item * You cannot use an IAM policy to constrain this action's
+parameters.
+
+=back
+
+If the caller does not have sufficient permissions to invoke the
+action, or the parameter values fall outside the specified constraints,
+the action fails. The associated event attribute's B<cause> parameter
+will be set to OPERATION_NOT_PERMITTED. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 

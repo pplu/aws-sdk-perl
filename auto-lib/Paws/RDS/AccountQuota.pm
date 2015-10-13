@@ -11,7 +11,7 @@ package Paws::RDS::AccountQuota;
 
 Paws::RDS::AccountQuota
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Accoun
 
   $result = $service_obj->Method(...);
   $result->Att1->AccountQuotaName
+
+=head1 DESCRIPTION
+
+Describes a quota for an AWS account, for example, the number of DB
+instances allowed.
 
 =head1 ATTRIBUTES
 

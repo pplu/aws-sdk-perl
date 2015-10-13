@@ -11,7 +11,7 @@ package Paws::ECS::ServiceEvent;
 
 Paws::ECS::ServiceEvent
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Servic
 
   $result = $service_obj->Method(...);
   $result->Att1->createdAt
+
+=head1 DESCRIPTION
+
+Details on an event associated with a service.
 
 =head1 ATTRIBUTES
 

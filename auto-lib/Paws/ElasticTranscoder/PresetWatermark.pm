@@ -18,7 +18,7 @@ package Paws::ElasticTranscoder::PresetWatermark;
 
 Paws::ElasticTranscoder::PresetWatermark
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -37,6 +37,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->HorizontalAlign
+
+=head1 DESCRIPTION
+
+Settings for the size, location, and opacity of graphics that you want
+Elastic Transcoder to overlay over videos that are transcoded using
+this preset. You can specify settings for up to four watermarks.
+Watermarks appear in the specified size and location, and with the
+specified opacity for the duration of the transcoded video.
+
+Watermarks can be in .png or .jpg format. If you want to display a
+watermark that is not rectangular, use the .png format, which supports
+transparency.
+
+When you create a job that uses this preset, you specify the .png or
+.jpg graphics that you want Elastic Transcoder to include in the
+transcoded videos. You can specify fewer graphics in the job than you
+specify watermark settings in the preset, which allows you to use the
+same preset for up to four watermarks that have different dimensions.
 
 =head1 ATTRIBUTES
 

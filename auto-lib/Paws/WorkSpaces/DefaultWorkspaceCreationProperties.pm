@@ -13,7 +13,7 @@ package Paws::WorkSpaces::DefaultWorkspaceCreationProperties;
 
 Paws::WorkSpaces::DefaultWorkspaceCreationProperties
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
   $result = $service_obj->Method(...);
   $result->Att1->CustomSecurityGroupId
+
+=head1 DESCRIPTION
+
+Contains default WorkSpace creation information.
 
 =head1 ATTRIBUTES
 

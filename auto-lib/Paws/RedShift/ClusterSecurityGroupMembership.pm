@@ -10,7 +10,7 @@ package Paws::RedShift::ClusterSecurityGroupMembership;
 
 Paws::RedShift::ClusterSecurityGroupMembership
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
   $result = $service_obj->Method(...);
   $result->Att1->ClusterSecurityGroupName
+
+=head1 DESCRIPTION
+
+Describes a security group.
 
 =head1 ATTRIBUTES
 

@@ -19,7 +19,7 @@ package Paws::MachineLearning::RDSDataSpec;
 
 Paws::MachineLearning::RDSDataSpec
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -38,6 +38,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
   $result = $service_obj->Method(...);
   $result->Att1->DatabaseCredentials
+
+=head1 DESCRIPTION
+
+The data specification of an Amazon Relational Database Service (Amazon
+RDS) C<DataSource>.
 
 =head1 ATTRIBUTES
 

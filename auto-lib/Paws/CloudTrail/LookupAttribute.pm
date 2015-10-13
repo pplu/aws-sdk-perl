@@ -10,7 +10,7 @@ package Paws::CloudTrail::LookupAttribute;
 
 Paws::CloudTrail::LookupAttribute
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
   $result = $service_obj->Method(...);
   $result->Att1->AttributeKey
+
+=head1 DESCRIPTION
+
+Specifies an attribute and value that filter the events returned.
 
 =head1 ATTRIBUTES
 

@@ -21,7 +21,7 @@ package Paws::WorkSpaces::Workspace;
 
 Paws::WorkSpaces::Workspace
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -40,6 +40,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
   $result = $service_obj->Method(...);
   $result->Att1->BundleId
+
+=head1 DESCRIPTION
+
+Contains information about a WorkSpace.
 
 =head1 ATTRIBUTES
 

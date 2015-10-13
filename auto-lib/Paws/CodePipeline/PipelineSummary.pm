@@ -12,7 +12,7 @@ package Paws::CodePipeline::PipelineSummary;
 
 Paws::CodePipeline::PipelineSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->created
+
+=head1 DESCRIPTION
+
+Returns a summary of a pipeline.
 
 =head1 ATTRIBUTES
 

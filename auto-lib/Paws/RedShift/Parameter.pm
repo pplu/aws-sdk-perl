@@ -17,7 +17,7 @@ package Paws::RedShift::Parameter;
 
 Paws::RedShift::Parameter
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::P
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowedValues
+
+=head1 DESCRIPTION
+
+Describes a parameter in a cluster parameter group.
 
 =head1 ATTRIBUTES
 

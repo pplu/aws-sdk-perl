@@ -11,7 +11,7 @@ package Paws::CloudWatch::Metric;
 
 Paws::CloudWatch::Metric
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
   $result = $service_obj->Method(...);
   $result->Att1->Dimensions
+
+=head1 DESCRIPTION
+
+The C<Metric> data type contains information about a specific metric.
+If you call ListMetrics, Amazon CloudWatch returns information
+contained by this data type.
+
+The example in the Examples section publishes two metrics named buffers
+and latency. Both metrics are in the examples namespace. Both metrics
+have two dimensions, InstanceID and InstanceType.
 
 =head1 ATTRIBUTES
 

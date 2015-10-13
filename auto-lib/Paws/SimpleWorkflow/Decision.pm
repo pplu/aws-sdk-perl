@@ -22,7 +22,7 @@ package Paws::SimpleWorkflow::Decision;
 
 Paws::SimpleWorkflow::Decision
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -41,6 +41,208 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->cancelTimerDecisionAttributes
+
+=head1 DESCRIPTION
+
+Specifies a decision made by the decider. A decision can be one of
+these types:
+
+=over
+
+=item * B<CancelTimer>: cancels a previously started timer and records
+a C<TimerCanceled> event in the history.
+
+=item * B<CancelWorkflowExecution>: closes the workflow execution and
+records a C<WorkflowExecutionCanceled> event in the history.
+
+=item * B<CompleteWorkflowExecution>: closes the workflow execution and
+records a C<WorkflowExecutionCompleted> event in the history .
+
+=item * B<ContinueAsNewWorkflowExecution>: closes the workflow
+execution and starts a new workflow execution of the same type using
+the same workflow ID and a unique run ID. A
+C<WorkflowExecutionContinuedAsNew> event is recorded in the history.
+
+=item * B<FailWorkflowExecution>: closes the workflow execution and
+records a C<WorkflowExecutionFailed> event in the history.
+
+=item * B<RecordMarker>: records a C<MarkerRecorded> event in the
+history. Markers can be used for adding custom information in the
+history for instance to let deciders know that they do not need to look
+at the history beyond the marker event.
+
+=item * B<RequestCancelActivityTask>: attempts to cancel a previously
+scheduled activity task. If the activity task was scheduled but has not
+been assigned to a worker, then it will be canceled. If the activity
+task was already assigned to a worker, then the worker will be informed
+that cancellation has been requested in the response to
+RecordActivityTaskHeartbeat.
+
+=item * B<RequestCancelExternalWorkflowExecution>: requests that a
+request be made to cancel the specified external workflow execution and
+records a C<RequestCancelExternalWorkflowExecutionInitiated> event in
+the history.
+
+=item * B<ScheduleActivityTask>: schedules an activity task.
+
+=item * B<ScheduleLambdaFunction>: schedules a AWS Lambda function.
+
+=item * B<SignalExternalWorkflowExecution>: requests a signal to be
+delivered to the specified external workflow execution and records a
+C<SignalExternalWorkflowExecutionInitiated> event in the history.
+
+=item * B<StartChildWorkflowExecution>: requests that a child workflow
+execution be started and records a
+C<StartChildWorkflowExecutionInitiated> event in the history. The child
+workflow execution is a separate workflow execution with its own
+history.
+
+=item * B<StartTimer>: starts a timer for this workflow execution and
+records a C<TimerStarted> event in the history. This timer will fire
+after the specified delay and record a C<TimerFired> event.
+
+=back
+
+B<Access Control>
+
+If you grant permission to use C<RespondDecisionTaskCompleted>, you can
+use IAM policies to express permissions for the list of decisions
+returned by this action as if they were members of the API. Treating
+decisions as a pseudo API maintains a uniform conceptual model and
+helps keep policies readable. For details and example IAM policies, see
+Using IAM to Manage Access to Amazon SWF Workflows.
+
+B<Decision Failure>
+
+Decisions can fail for several reasons
+
+=over
+
+=item * The ordering of decisions should follow a logical flow. Some
+decisions might not make sense in the current context of the workflow
+execution and will therefore fail.
+
+=item * A limit on your account was reached.
+
+=item * The decision lacks sufficient permissions.
+
+=back
+
+One of the following events might be added to the history to indicate
+an error. The event attribute's B<cause> parameter indicates the cause.
+If B<cause> is set to OPERATION_NOT_PERMITTED, the decision failed
+because it lacked sufficient permissions. For details and example IAM
+policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+
+=over
+
+=item * B<ScheduleActivityTaskFailed>: a ScheduleActivityTask decision
+failed. This could happen if the activity type specified in the
+decision is not registered, is in a deprecated state, or the decision
+is not properly configured.
+
+=item * B<ScheduleLambdaFunctionFailed>: a ScheduleLambdaFunctionFailed
+decision failed. This could happen if the AWS Lambda function specified
+in the decision does not exist, or the AWS Lambda service's limits are
+exceeded.
+
+=item * B<RequestCancelActivityTaskFailed>: a RequestCancelActivityTask
+decision failed. This could happen if there is no open activity task
+with the specified activityId.
+
+=item * B<StartTimerFailed>: a StartTimer decision failed. This could
+happen if there is another open timer with the same timerId.
+
+=item * B<CancelTimerFailed>: a CancelTimer decision failed. This could
+happen if there is no open timer with the specified timerId.
+
+=item * B<StartChildWorkflowExecutionFailed>: a
+StartChildWorkflowExecution decision failed. This could happen if the
+workflow type specified is not registered, is deprecated, or the
+decision is not properly configured.
+
+=item * B<SignalExternalWorkflowExecutionFailed>: a
+SignalExternalWorkflowExecution decision failed. This could happen if
+the C<workflowID> specified in the decision was incorrect.
+
+=item * B<RequestCancelExternalWorkflowExecutionFailed>: a
+RequestCancelExternalWorkflowExecution decision failed. This could
+happen if the C<workflowID> specified in the decision was incorrect.
+
+=item * B<CancelWorkflowExecutionFailed>: a CancelWorkflowExecution
+decision failed. This could happen if there is an unhandled decision
+task pending in the workflow execution.
+
+=item * B<CompleteWorkflowExecutionFailed>: a CompleteWorkflowExecution
+decision failed. This could happen if there is an unhandled decision
+task pending in the workflow execution.
+
+=item * B<ContinueAsNewWorkflowExecutionFailed>: a
+ContinueAsNewWorkflowExecution decision failed. This could happen if
+there is an unhandled decision task pending in the workflow execution
+or the ContinueAsNewWorkflowExecution decision was not configured
+correctly.
+
+=item * B<FailWorkflowExecutionFailed>: a FailWorkflowExecution
+decision failed. This could happen if there is an unhandled decision
+task pending in the workflow execution.
+
+=back
+
+The preceding error events might occur due to an error in the decider
+logic, which might put the workflow execution in an unstable state The
+cause field in the event structure for the error event indicates the
+cause of the error.
+
+A workflow execution may be closed by the decider by returning one of
+the following decisions when completing a decision task:
+C<CompleteWorkflowExecution>, C<FailWorkflowExecution>,
+C<CancelWorkflowExecution> and C<ContinueAsNewWorkflowExecution>. An
+UnhandledDecision fault will be returned if a workflow closing decision
+is specified and a signal or activity event had been added to the
+history while the decision task was being performed by the decider.
+Unlike the above situations which are logic issues, this fault is
+always possible because of race conditions in a distributed system. The
+right action here is to call RespondDecisionTaskCompleted without any
+decisions. This would result in another decision task with these new
+events included in the history. The decider should handle the new
+events and may decide to close the workflow execution.
+
+B<How to code a decision>
+
+You code a decision by first setting the decision type field to one of
+the above decision values, and then set the corresponding attributes
+field shown below:
+
+=over
+
+=item * ScheduleActivityTaskDecisionAttributes
+
+=item * ScheduleLambdaFunctionDecisionAttributes
+
+=item * RequestCancelActivityTaskDecisionAttributes
+
+=item * CompleteWorkflowExecutionDecisionAttributes
+
+=item * FailWorkflowExecutionDecisionAttributes
+
+=item * CancelWorkflowExecutionDecisionAttributes
+
+=item * ContinueAsNewWorkflowExecutionDecisionAttributes
+
+=item * RecordMarkerDecisionAttributes
+
+=item * StartTimerDecisionAttributes
+
+=item * CancelTimerDecisionAttributes
+
+=item * SignalExternalWorkflowExecutionDecisionAttributes
+
+=item * RequestCancelExternalWorkflowExecutionDecisionAttributes
+
+=item * StartChildWorkflowExecutionDecisionAttributes
+
+=back
 
 =head1 ATTRIBUTES
 

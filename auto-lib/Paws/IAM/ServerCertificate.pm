@@ -11,7 +11,7 @@ package Paws::IAM::ServerCertificate;
 
 Paws::IAM::ServerCertificate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Server
 
   $result = $service_obj->Method(...);
   $result->Att1->CertificateBody
+
+=head1 DESCRIPTION
+
+Contains information about a server certificate.
+
+This data type is used as a response element in the
+GetServerCertificate action.
 
 =head1 ATTRIBUTES
 

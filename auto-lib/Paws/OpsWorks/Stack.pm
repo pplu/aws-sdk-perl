@@ -30,7 +30,7 @@ package Paws::OpsWorks::Stack;
 
 Paws::OpsWorks::Stack
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -49,6 +49,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::S
 
   $result = $service_obj->Method(...);
   $result->Att1->AgentVersion
+
+=head1 DESCRIPTION
+
+Describes a stack.
 
 =head1 ATTRIBUTES
 

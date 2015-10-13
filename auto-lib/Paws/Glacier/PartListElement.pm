@@ -10,7 +10,7 @@ package Paws::Glacier::PartListElement;
 
 Paws::Glacier::PartListElement
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glacier::Pa
 
   $result = $service_obj->Method(...);
   $result->Att1->RangeInBytes
+
+=head1 DESCRIPTION
+
+A list of the part sizes of the multipart upload.
 
 =head1 ATTRIBUTES
 

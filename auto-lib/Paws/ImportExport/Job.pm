@@ -12,7 +12,7 @@ package Paws::ImportExport::Job;
 
 Paws::ImportExport::Job
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImportExpor
 
   $result = $service_obj->Method(...);
   $result->Att1->CreationDate
+
+=head1 DESCRIPTION
+
+Representation of a job returned by the ListJobs operation.
 
 =head1 ATTRIBUTES
 

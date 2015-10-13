@@ -10,7 +10,7 @@ package Paws::ElastiCache::Endpoint;
 
 Paws::ElastiCache::Endpoint
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->Address
+
+=head1 DESCRIPTION
+
+Represents the information required for client programs to connect to a
+cache node.
 
 =head1 ATTRIBUTES
 

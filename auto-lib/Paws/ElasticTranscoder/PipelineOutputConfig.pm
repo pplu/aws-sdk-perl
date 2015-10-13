@@ -11,7 +11,7 @@ package Paws::ElasticTranscoder::PipelineOutputConfig;
 
 Paws::ElasticTranscoder::PipelineOutputConfig
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->Bucket
+
+=head1 DESCRIPTION
+
+The C<PipelineOutputConfig> structure.
 
 =head1 ATTRIBUTES
 

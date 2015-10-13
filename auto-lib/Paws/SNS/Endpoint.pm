@@ -10,7 +10,7 @@ package Paws::SNS::Endpoint;
 
 Paws::SNS::Endpoint
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SNS::Endpoi
 
   $result = $service_obj->Method(...);
   $result->Att1->Attributes
+
+=head1 DESCRIPTION
+
+Endpoint for mobile app and device.
 
 =head1 ATTRIBUTES
 

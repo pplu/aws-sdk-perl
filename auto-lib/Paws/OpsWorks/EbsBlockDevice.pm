@@ -13,7 +13,7 @@ package Paws::OpsWorks::EbsBlockDevice;
 
 Paws::OpsWorks::EbsBlockDevice
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::E
 
   $result = $service_obj->Method(...);
   $result->Att1->DeleteOnTermination
+
+=head1 DESCRIPTION
+
+Describes an Amazon EBS volume. This data type maps directly to the
+Amazon EC2 EbsBlockDevice data type.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::Firehose::BufferingHints;
 
 Paws::Firehose::BufferingHints
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::B
 
   $result = $service_obj->Method(...);
   $result->Att1->IntervalInSeconds
+
+=head1 DESCRIPTION
+
+Describes the buffering to perform before delivering data to the
+destination.
 
 =head1 ATTRIBUTES
 

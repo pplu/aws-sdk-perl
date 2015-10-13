@@ -10,7 +10,7 @@ package Paws::Route53Domains::Nameserver;
 
 Paws::Route53Domains::Nameserver
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Doma
 
   $result = $service_obj->Method(...);
   $result->Att1->GlueIps
+
+=head1 DESCRIPTION
+
+Nameserver includes the following elements.
 
 =head1 ATTRIBUTES
 

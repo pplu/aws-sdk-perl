@@ -10,7 +10,7 @@ package Paws::CognitoIdentity::UnprocessedIdentityId;
 
 Paws::CognitoIdentity::UnprocessedIdentityId
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIden
 
   $result = $service_obj->Method(...);
   $result->Att1->ErrorCode
+
+=head1 DESCRIPTION
+
+An array of UnprocessedIdentityId objects, each of which contains an
+ErrorCode and IdentityId.
 
 =head1 ATTRIBUTES
 

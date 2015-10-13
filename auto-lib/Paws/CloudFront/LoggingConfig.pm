@@ -12,7 +12,7 @@ package Paws::CloudFront::LoggingConfig;
 
 Paws::CloudFront::LoggingConfig
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->Bucket
+
+=head1 DESCRIPTION
+
+A complex type that controls whether access logs are written for the
+distribution.
 
 =head1 ATTRIBUTES
 

@@ -13,7 +13,7 @@ package Paws::Kinesis::Shard;
 
 Paws::Kinesis::Shard
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Sh
 
   $result = $service_obj->Method(...);
   $result->Att1->AdjacentParentShardId
+
+=head1 DESCRIPTION
+
+A uniquely identified group of data records in an Amazon Kinesis
+stream.
 
 =head1 ATTRIBUTES
 

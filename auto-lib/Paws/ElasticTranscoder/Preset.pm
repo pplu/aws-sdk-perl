@@ -17,7 +17,7 @@ package Paws::ElasticTranscoder::Preset;
 
 Paws::ElasticTranscoder::Preset
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
+
+=head1 DESCRIPTION
+
+Presets are templates that contain most of the settings for transcoding
+media files from one format to another. Elastic Transcoder includes
+some default presets for common formats, for example, several iPod and
+iPhone versions. You can also create your own presets for formats that
+aren't included among the default presets. You specify which preset you
+want to use when you create a job.
 
 =head1 ATTRIBUTES
 

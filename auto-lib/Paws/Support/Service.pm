@@ -11,7 +11,7 @@ package Paws::Support::Service;
 
 Paws::Support::Service
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Se
 
   $result = $service_obj->Method(...);
   $result->Att1->categories
+
+=head1 DESCRIPTION
+
+Information about an AWS service returned by the DescribeServices
+operation.
 
 =head1 ATTRIBUTES
 

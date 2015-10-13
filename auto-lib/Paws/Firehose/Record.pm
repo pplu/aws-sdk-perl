@@ -9,7 +9,7 @@ package Paws::Firehose::Record;
 
 Paws::Firehose::Record
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::R
 
   $result = $service_obj->Method(...);
   $result->Att1->Data
+
+=head1 DESCRIPTION
+
+The unit of data in a delivery stream.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::CloudSearch::ScalingParametersStatus;
 
 Paws::CloudSearch::ScalingParametersStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->Options
+
+=head1 DESCRIPTION
+
+The status and configuration of a search domain's scaling parameters.
 
 =head1 ATTRIBUTES
 

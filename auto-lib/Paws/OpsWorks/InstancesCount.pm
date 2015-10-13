@@ -27,7 +27,7 @@ package Paws::OpsWorks::InstancesCount;
 
 Paws::OpsWorks::InstancesCount
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -46,6 +46,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::I
 
   $result = $service_obj->Method(...);
   $result->Att1->Assigning
+
+=head1 DESCRIPTION
+
+Describes how many instances a stack has for each status.
 
 =head1 ATTRIBUTES
 

@@ -65,7 +65,7 @@ package Paws::SimpleWorkflow::HistoryEvent;
 
 Paws::SimpleWorkflow::HistoryEvent
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -84,6 +84,176 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->activityTaskCanceledEventAttributes
+
+=head1 DESCRIPTION
+
+Event within a workflow execution. A history event can be one of these
+types:
+
+=over
+
+=item * B<WorkflowExecutionStarted>: The workflow execution was
+started.
+
+=item * B<WorkflowExecutionCompleted>: The workflow execution was
+closed due to successful completion.
+
+=item * B<WorkflowExecutionFailed>: The workflow execution closed due
+to a failure.
+
+=item * B<WorkflowExecutionTimedOut>: The workflow execution was closed
+because a time out was exceeded.
+
+=item * B<WorkflowExecutionCanceled>: The workflow execution was
+successfully canceled and closed.
+
+=item * B<WorkflowExecutionTerminated>: The workflow execution was
+terminated.
+
+=item * B<WorkflowExecutionContinuedAsNew>: The workflow execution was
+closed and a new execution of the same type was created with the same
+workflowId.
+
+=item * B<WorkflowExecutionCancelRequested>: A request to cancel this
+workflow execution was made.
+
+=item * B<DecisionTaskScheduled>: A decision task was scheduled for the
+workflow execution.
+
+=item * B<DecisionTaskStarted>: The decision task was dispatched to a
+decider.
+
+=item * B<DecisionTaskCompleted>: The decider successfully completed a
+decision task by calling RespondDecisionTaskCompleted.
+
+=item * B<DecisionTaskTimedOut>: The decision task timed out.
+
+=item * B<ActivityTaskScheduled>: An activity task was scheduled for
+execution.
+
+=item * B<ScheduleActivityTaskFailed>: Failed to process
+ScheduleActivityTask decision. This happens when the decision is not
+configured properly, for example the activity type specified is not
+registered.
+
+=item * B<ActivityTaskStarted>: The scheduled activity task was
+dispatched to a worker.
+
+=item * B<ActivityTaskCompleted>: An activity worker successfully
+completed an activity task by calling RespondActivityTaskCompleted.
+
+=item * B<ActivityTaskFailed>: An activity worker failed an activity
+task by calling RespondActivityTaskFailed.
+
+=item * B<ActivityTaskTimedOut>: The activity task timed out.
+
+=item * B<ActivityTaskCanceled>: The activity task was successfully
+canceled.
+
+=item * B<ActivityTaskCancelRequested>: A C<RequestCancelActivityTask>
+decision was received by the system.
+
+=item * B<RequestCancelActivityTaskFailed>: Failed to process
+RequestCancelActivityTask decision. This happens when the decision is
+not configured properly.
+
+=item * B<WorkflowExecutionSignaled>: An external signal was received
+for the workflow execution.
+
+=item * B<MarkerRecorded>: A marker was recorded in the workflow
+history as the result of a C<RecordMarker> decision.
+
+=item * B<TimerStarted>: A timer was started for the workflow execution
+due to a C<StartTimer> decision.
+
+=item * B<StartTimerFailed>: Failed to process StartTimer decision.
+This happens when the decision is not configured properly, for example
+a timer already exists with the specified timer ID.
+
+=item * B<TimerFired>: A timer, previously started for this workflow
+execution, fired.
+
+=item * B<TimerCanceled>: A timer, previously started for this workflow
+execution, was successfully canceled.
+
+=item * B<CancelTimerFailed>: Failed to process CancelTimer decision.
+This happens when the decision is not configured properly, for example
+no timer exists with the specified timer ID.
+
+=item * B<StartChildWorkflowExecutionInitiated>: A request was made to
+start a child workflow execution.
+
+=item * B<StartChildWorkflowExecutionFailed>: Failed to process
+StartChildWorkflowExecution decision. This happens when the decision is
+not configured properly, for example the workflow type specified is not
+registered.
+
+=item * B<ChildWorkflowExecutionStarted>: A child workflow execution
+was successfully started.
+
+=item * B<ChildWorkflowExecutionCompleted>: A child workflow execution,
+started by this workflow execution, completed successfully and was
+closed.
+
+=item * B<ChildWorkflowExecutionFailed>: A child workflow execution,
+started by this workflow execution, failed to complete successfully and
+was closed.
+
+=item * B<ChildWorkflowExecutionTimedOut>: A child workflow execution,
+started by this workflow execution, timed out and was closed.
+
+=item * B<ChildWorkflowExecutionCanceled>: A child workflow execution,
+started by this workflow execution, was canceled and closed.
+
+=item * B<ChildWorkflowExecutionTerminated>: A child workflow
+execution, started by this workflow execution, was terminated.
+
+=item * B<SignalExternalWorkflowExecutionInitiated>: A request to
+signal an external workflow was made.
+
+=item * B<ExternalWorkflowExecutionSignaled>: A signal, requested by
+this workflow execution, was successfully delivered to the target
+external workflow execution.
+
+=item * B<SignalExternalWorkflowExecutionFailed>: The request to signal
+an external workflow execution failed.
+
+=item * B<RequestCancelExternalWorkflowExecutionInitiated>: A request
+was made to request the cancellation of an external workflow execution.
+
+=item * B<ExternalWorkflowExecutionCancelRequested>: Request to cancel
+an external workflow execution was successfully delivered to the target
+execution.
+
+=item * B<RequestCancelExternalWorkflowExecutionFailed>: Request to
+cancel an external workflow execution failed.
+
+=item * B<LambdaFunctionScheduled>: An AWS Lambda function was
+scheduled for execution.
+
+=item * B<LambdaFunctionStarted>: The scheduled function was invoked in
+the AWS Lambda service.
+
+=item * B<LambdaFunctionCompleted>: The AWS Lambda function
+successfully completed.
+
+=item * B<LambdaFunctionFailed>: The AWS Lambda function execution
+failed.
+
+=item * B<LambdaFunctionTimedOut>: The AWS Lambda function execution
+timed out.
+
+=item * B<ScheduleLambdaFunctionFailed>: Failed to process
+ScheduleLambdaFunction decision. This happens when the workflow
+execution does not have the proper IAM role attached to invoke AWS
+Lambda functions.
+
+=item * B<StartLambdaFunctionFailed>: Failed to invoke the scheduled
+function in the AWS Lambda service. This happens when the AWS Lambda
+service is not available in the current region, or received too many
+requests.
+
+=back
 
 =head1 ATTRIBUTES
 

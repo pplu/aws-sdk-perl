@@ -16,7 +16,7 @@ package Paws::EMR::Ec2InstanceAttributes;
 
 Paws::EMR::Ec2InstanceAttributes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Ec2Ins
 
   $result = $service_obj->Method(...);
   $result->Att1->AdditionalMasterSecurityGroups
+
+=head1 DESCRIPTION
+
+Provides information about the EC2 instances in a cluster grouped by
+category. For example, key name, subnet ID, IAM instance profile, and
+so on.
 
 =head1 ATTRIBUTES
 

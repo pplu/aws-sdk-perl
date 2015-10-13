@@ -13,7 +13,7 @@ package Paws::CloudSearch::AnalysisOptions;
 
 Paws::CloudSearch::AnalysisOptions
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->AlgorithmicStemming
+
+=head1 DESCRIPTION
+
+Synonyms, stopwords, and stemming options for an analysis scheme.
+Includes tokenization dictionary for Japanese.
 
 =head1 ATTRIBUTES
 

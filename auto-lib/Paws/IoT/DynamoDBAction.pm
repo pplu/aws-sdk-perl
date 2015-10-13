@@ -15,7 +15,7 @@ package Paws::IoT::DynamoDBAction;
 
 Paws::IoT::DynamoDBAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Dynamo
 
   $result = $service_obj->Method(...);
   $result->Att1->hashKeyField
+
+=head1 DESCRIPTION
+
+Describes an action to write to a DynamoDB table.
+
+The C<tableName>, C<hashKeyField>, and C<rangeKeyField> values must
+match the values used when you created the table.
+
+The C<hashKeyValue> and C<rangeKeyvalue> fields use a substitution
+template syntax. These templates provide data at runtime. The syntax is
+as follows: ${I<sql-expression>}.
+
+You can specify any expression that's valid in a WHERE or SELECT
+clause, including JSON properties, comparisons, calculations, and
+functions. For example, the following field uses the third level of the
+topic:
+
+C<"hashKeyValue": "${topic(3)}">
+
+The following field uses the timestamp:
+
+C<"rangeKeyValue": "${timestamp()}">
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::CloudTrail::ResourceTag;
 
 Paws::CloudTrail::ResourceTag
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
   $result = $service_obj->Method(...);
   $result->Att1->ResourceId
+
+=head1 DESCRIPTION
+
+A resource tag.
 
 =head1 ATTRIBUTES
 

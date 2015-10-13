@@ -11,7 +11,7 @@ package Paws::CloudSearch::ScalingParameters;
 
 Paws::CloudSearch::ScalingParameters
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->DesiredInstanceType
+
+=head1 DESCRIPTION
+
+The desired instance type and desired number of replicas of each index
+partition.
 
 =head1 ATTRIBUTES
 

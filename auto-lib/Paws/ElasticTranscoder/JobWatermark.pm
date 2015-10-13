@@ -11,7 +11,7 @@ package Paws::ElasticTranscoder::JobWatermark;
 
 Paws::ElasticTranscoder::JobWatermark
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->Encryption
+
+=head1 DESCRIPTION
+
+Watermarks can be in .png or .jpg format. If you want to display a
+watermark that is not rectangular, use the .png format, which supports
+transparency.
 
 =head1 ATTRIBUTES
 

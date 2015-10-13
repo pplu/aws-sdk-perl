@@ -12,7 +12,7 @@ package Paws::IAM::PolicyVersion;
 
 Paws::IAM::PolicyVersion
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Policy
 
   $result = $service_obj->Method(...);
   $result->Att1->CreateDate
+
+=head1 DESCRIPTION
+
+Contains information about a version of a managed policy.
+
+This data type is used as a response element in the
+CreatePolicyVersion, GetPolicyVersion, ListPolicyVersions, and
+GetAccountAuthorizationDetails actions.
+
+For more information about managed policies, refer to Managed Policies
+and Inline Policies in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 

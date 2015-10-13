@@ -13,7 +13,7 @@ package Paws::OpsWorks::Recipes;
 
 Paws::OpsWorks::Recipes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::R
 
   $result = $service_obj->Method(...);
   $result->Att1->Configure
+
+=head1 DESCRIPTION
+
+AWS OpsWorks supports five lifecycle events: B<setup>,
+B<configuration>, B<deploy>, B<undeploy>, and B<shutdown>. For each
+layer, AWS OpsWorks runs a set of standard recipes for each event. In
+addition, you can provide custom recipes for any or all layers and
+events. AWS OpsWorks runs custom event recipes after the standard
+recipes. C<LayerCustomRecipes> specifies the custom recipes for a
+particular layer to be run in response to each of the five events.
+
+To specify a recipe, use the cookbook's directory name in the
+repository followed by two colons and the recipe name, which is the
+recipe's file name without the .rb extension. For example:
+phpapp2::dbsetup specifies the dbsetup.rb recipe in the repository's
+phpapp2 folder.
 
 =head1 ATTRIBUTES
 

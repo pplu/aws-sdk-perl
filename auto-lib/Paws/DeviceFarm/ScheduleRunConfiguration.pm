@@ -15,7 +15,7 @@ package Paws::DeviceFarm::ScheduleRunConfiguration;
 
 Paws::DeviceFarm::ScheduleRunConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   $result = $service_obj->Method(...);
   $result->Att1->auxiliaryApps
+
+=head1 DESCRIPTION
+
+Represents the settings for a run. Includes things like location, radio
+states, auxiliary apps, and network profiles.
 
 =head1 ATTRIBUTES
 

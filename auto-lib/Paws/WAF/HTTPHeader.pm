@@ -10,7 +10,7 @@ package Paws::WAF::HTTPHeader;
 
 Paws::WAF::HTTPHeader
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::HTTPHe
 
   $result = $service_obj->Method(...);
   $result->Att1->Name
+
+=head1 DESCRIPTION
+
+The response from a GetSampledRequests request includes an
+C<HTTPHeader> complex type that appears as C<Headers> in the response
+syntax. C<HTTPHeader> contains the names and values of all of the
+headers that appear in one of the web requests that were returned by
+C<GetSampledRequests>.
 
 =head1 ATTRIBUTES
 

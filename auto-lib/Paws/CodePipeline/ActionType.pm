@@ -13,7 +13,7 @@ package Paws::CodePipeline::ActionType;
 
 Paws::CodePipeline::ActionType
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
   $result = $service_obj->Method(...);
   $result->Att1->actionConfigurationProperties
+
+=head1 DESCRIPTION
+
+Returns information about the details of an action type.
 
 =head1 ATTRIBUTES
 

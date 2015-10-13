@@ -9,7 +9,7 @@ package Paws::EMR::PlacementType;
 
 Paws::EMR::PlacementType
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Placem
 
   $result = $service_obj->Method(...);
   $result->Att1->AvailabilityZone
+
+=head1 DESCRIPTION
+
+The Amazon EC2 location for the job flow.
 
 =head1 ATTRIBUTES
 

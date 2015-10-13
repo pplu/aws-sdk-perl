@@ -10,7 +10,7 @@ package Paws::IoT::ThingAttribute;
 
 Paws::IoT::ThingAttribute
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::ThingA
 
   $result = $service_obj->Method(...);
   $result->Att1->attributes
+
+=head1 DESCRIPTION
+
+Describes a thing attribute.
 
 =head1 ATTRIBUTES
 

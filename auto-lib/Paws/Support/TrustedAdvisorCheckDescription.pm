@@ -13,7 +13,7 @@ package Paws::Support::TrustedAdvisorCheckDescription;
 
 Paws::Support::TrustedAdvisorCheckDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 
   $result = $service_obj->Method(...);
   $result->Att1->category
+
+=head1 DESCRIPTION
+
+The description and metadata for a Trusted Advisor check.
 
 =head1 ATTRIBUTES
 

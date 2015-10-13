@@ -15,7 +15,7 @@ package Paws::Inspector::Run;
 
 Paws::Inspector::Run
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
   $result = $service_obj->Method(...);
   $result->Att1->assessmentArn
+
+=head1 DESCRIPTION
+
+A snapshot of an Inspector assessment that contains the assessment's
+findings.
+
+This data type is used as the response element in the DescribeRun
+action.
 
 =head1 ATTRIBUTES
 

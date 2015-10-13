@@ -20,7 +20,7 @@ package Paws::EMR::JobFlowDetail;
 
 Paws::EMR::JobFlowDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -39,6 +39,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::JobFlo
 
   $result = $service_obj->Method(...);
   $result->Att1->AmiVersion
+
+=head1 DESCRIPTION
+
+A description of a job flow.
 
 =head1 ATTRIBUTES
 

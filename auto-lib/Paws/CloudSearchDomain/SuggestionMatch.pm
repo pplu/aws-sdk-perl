@@ -11,7 +11,7 @@ package Paws::CloudSearchDomain::SuggestionMatch;
 
 Paws::CloudSearchDomain::SuggestionMatch
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->id
+
+=head1 DESCRIPTION
+
+An autocomplete suggestion that matches the query string specified in a
+C<SuggestRequest>.
 
 =head1 ATTRIBUTES
 

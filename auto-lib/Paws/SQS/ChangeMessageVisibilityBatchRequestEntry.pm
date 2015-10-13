@@ -11,7 +11,7 @@ package Paws::SQS::ChangeMessageVisibilityBatchRequestEntry;
 
 Paws::SQS::ChangeMessageVisibilityBatchRequestEntry
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SQS::Change
 
   $result = $service_obj->Method(...);
   $result->Att1->Id
+
+=head1 DESCRIPTION
+
+Encloses a receipt handle and an entry id for each message in
+ChangeMessageVisibilityBatch.
+
+All of the following parameters are list parameters that must be
+prefixed with C<ChangeMessageVisibilityBatchRequestEntry.n>, where C<n>
+is an integer value starting with 1. For example, a parameter list for
+this action might look like this:
+
+C<&ChangeMessageVisibilityBatchRequestEntry.1.Id=change_visibility_msg_2>
+
+C<&ChangeMessageVisibilityBatchRequestEntry.1.ReceiptHandle=Your_Receipt_Handle>
+
+C<&ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45>
 
 =head1 ATTRIBUTES
 

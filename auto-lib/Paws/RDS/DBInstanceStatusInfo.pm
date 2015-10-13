@@ -12,7 +12,7 @@ package Paws::RDS::DBInstanceStatusInfo;
 
 Paws::RDS::DBInstanceStatusInfo
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBInst
 
   $result = $service_obj->Method(...);
   $result->Att1->Message
+
+=head1 DESCRIPTION
+
+Provides a list of status information for a DB instance.
 
 =head1 ATTRIBUTES
 

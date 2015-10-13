@@ -14,7 +14,7 @@ package Paws::DS::Snapshot;
 
 Paws::DS::Snapshot
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Snapsho
 
   $result = $service_obj->Method(...);
   $result->Att1->DirectoryId
+
+=head1 DESCRIPTION
+
+Describes a directory snapshot.
 
 =head1 ATTRIBUTES
 

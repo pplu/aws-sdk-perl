@@ -10,7 +10,7 @@ package Paws::AutoScaling::SuspendedProcess;
 
 Paws::AutoScaling::SuspendedProcess
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
   $result = $service_obj->Method(...);
   $result->Att1->ProcessName
+
+=head1 DESCRIPTION
+
+Describes an Auto Scaling process that has been suspended. For more
+information, see ProcessType.
 
 =head1 ATTRIBUTES
 

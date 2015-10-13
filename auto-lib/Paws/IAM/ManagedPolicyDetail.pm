@@ -19,7 +19,7 @@ package Paws::IAM::ManagedPolicyDetail;
 
 Paws::IAM::ManagedPolicyDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -38,6 +38,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Manage
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
+
+=head1 DESCRIPTION
+
+Contains information about a managed policy, including the policy's
+ARN, versions, and the number of principal entities (users, groups, and
+roles) that the policy is attached to.
+
+This data type is used as a response element in the
+GetAccountAuthorizationDetails action.
+
+For more information about managed policies, see Managed Policies and
+Inline Policies in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 

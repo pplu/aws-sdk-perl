@@ -11,7 +11,7 @@ package Paws::IoT::SqsAction;
 
 Paws::IoT::SqsAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::SqsAct
 
   $result = $service_obj->Method(...);
   $result->Att1->queueUrl
+
+=head1 DESCRIPTION
+
+Describes an action to publish data to an SQS queue.
 
 =head1 ATTRIBUTES
 

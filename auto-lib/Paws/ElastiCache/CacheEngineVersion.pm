@@ -13,7 +13,7 @@ package Paws::ElastiCache::CacheEngineVersion;
 
 Paws::ElastiCache::CacheEngineVersion
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->CacheEngineDescription
+
+=head1 DESCRIPTION
+
+Provides all of the details about a particular cache engine version.
 
 =head1 ATTRIBUTES
 

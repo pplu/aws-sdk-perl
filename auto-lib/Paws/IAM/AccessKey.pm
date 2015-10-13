@@ -13,7 +13,7 @@ package Paws::IAM::AccessKey;
 
 Paws::IAM::AccessKey
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Access
 
   $result = $service_obj->Method(...);
   $result->Att1->AccessKeyId
+
+=head1 DESCRIPTION
+
+Contains information about an AWS access key.
+
+This data type is used as a response element in the CreateAccessKey and
+ListAccessKeys actions.
+
+The C<SecretAccessKey> value is returned only in response to
+CreateAccessKey. You can get a secret access key only when you first
+create an access key; you cannot recover the secret access key later.
+If you lose a secret access key, you must create a new access key.
 
 =head1 ATTRIBUTES
 

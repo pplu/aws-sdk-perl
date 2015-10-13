@@ -20,7 +20,7 @@ package Paws::ECS::Service;
 
 Paws::ECS::Service
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -39,6 +39,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Servic
 
   $result = $service_obj->Method(...);
   $result->Att1->clusterArn
+
+=head1 DESCRIPTION
+
+Details on a service within a cluster
 
 =head1 ATTRIBUTES
 

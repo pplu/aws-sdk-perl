@@ -31,7 +31,7 @@ package Paws::RDS::DBSnapshot;
 
 Paws::RDS::DBSnapshot
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -50,6 +50,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSnap
 
   $result = $service_obj->Method(...);
   $result->Att1->AllocatedStorage
+
+=head1 DESCRIPTION
+
+Contains the result of a successful invocation of the following
+actions:
+
+=over
+
+=item * CreateDBSnapshot
+
+=item * DeleteDBSnapshot
+
+=back
+
+This data type is used as a response element in the DescribeDBSnapshots
+action.
 
 =head1 ATTRIBUTES
 

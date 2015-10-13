@@ -9,7 +9,7 @@ package Paws::CloudSearchDomain::BucketInfo;
 
 Paws::CloudSearchDomain::BucketInfo
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->buckets
+
+=head1 DESCRIPTION
+
+A container for the calculated facet values and counts.
 
 =head1 ATTRIBUTES
 

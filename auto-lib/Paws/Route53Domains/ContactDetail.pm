@@ -22,7 +22,7 @@ package Paws::Route53Domains::ContactDetail;
 
 Paws::Route53Domains::ContactDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -41,6 +41,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Doma
 
   $result = $service_obj->Method(...);
   $result->Att1->AddressLine1
+
+=head1 DESCRIPTION
+
+ContactDetail includes the following elements.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::Config::SourceDetail;
 
 Paws::Config::SourceDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Sou
 
   $result = $service_obj->Method(...);
   $result->Att1->EventSource
+
+=head1 DESCRIPTION
+
+Provides the source and type of the event that triggers AWS Config to
+evaluate your AWS resources against a rule.
 
 =head1 ATTRIBUTES
 

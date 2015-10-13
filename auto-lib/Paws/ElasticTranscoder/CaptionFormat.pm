@@ -11,7 +11,7 @@ package Paws::ElasticTranscoder::CaptionFormat;
 
 Paws::ElasticTranscoder::CaptionFormat
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->Encryption
+
+=head1 DESCRIPTION
+
+The file format of the output captions. If you leave this value blank,
+Elastic Transcoder returns an error.
 
 =head1 ATTRIBUTES
 

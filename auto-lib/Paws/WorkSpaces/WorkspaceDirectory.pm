@@ -20,7 +20,7 @@ package Paws::WorkSpaces::WorkspaceDirectory;
 
 Paws::WorkSpaces::WorkspaceDirectory
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -39,6 +39,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
   $result = $service_obj->Method(...);
   $result->Att1->Alias
+
+=head1 DESCRIPTION
+
+Contains information about an AWS Directory Service directory for use
+with Amazon WorkSpaces.
 
 =head1 ATTRIBUTES
 

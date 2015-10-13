@@ -11,7 +11,7 @@ package Paws::S3::LoggingEnabled;
 
 Paws::S3::LoggingEnabled
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Logging
 
   $result = $service_obj->Method(...);
   $result->Att1->TargetBucket
+
+=head1 DESCRIPTION
+
+This class has no description
 
 =head1 ATTRIBUTES
 

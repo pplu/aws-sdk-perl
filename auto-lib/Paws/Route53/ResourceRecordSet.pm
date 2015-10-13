@@ -19,7 +19,7 @@ package Paws::Route53::ResourceRecordSet;
 
 Paws::Route53::ResourceRecordSet
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -38,6 +38,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Re
 
   $result = $service_obj->Method(...);
   $result->Att1->AliasTarget
+
+=head1 DESCRIPTION
+
+A complex type that contains information about the current resource
+record set.
 
 =head1 ATTRIBUTES
 

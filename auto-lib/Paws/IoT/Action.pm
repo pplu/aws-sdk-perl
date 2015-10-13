@@ -16,7 +16,7 @@ package Paws::IoT::Action;
 
 Paws::IoT::Action
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Action
 
   $result = $service_obj->Method(...);
   $result->Att1->dynamoDB
+
+=head1 DESCRIPTION
+
+Describes the actions associated with a rule.
 
 =head1 ATTRIBUTES
 

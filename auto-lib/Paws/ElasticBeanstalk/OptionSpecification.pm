@@ -11,7 +11,7 @@ package Paws::ElasticBeanstalk::OptionSpecification;
 
 Paws::ElasticBeanstalk::OptionSpecification
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->Namespace
+
+=head1 DESCRIPTION
+
+A specification identifying an individual configuration option.
 
 =head1 ATTRIBUTES
 

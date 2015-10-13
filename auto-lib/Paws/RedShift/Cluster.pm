@@ -39,7 +39,7 @@ package Paws::RedShift::Cluster;
 
 Paws::RedShift::Cluster
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -58,6 +58,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowVersionUpgrade
+
+=head1 DESCRIPTION
+
+Describes a cluster.
 
 =head1 ATTRIBUTES
 

@@ -11,7 +11,7 @@ package Paws::SES::Destination;
 
 Paws::SES::Destination
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Destin
 
   $result = $service_obj->Method(...);
   $result->Att1->BccAddresses
+
+=head1 DESCRIPTION
+
+Represents the destination of the message, consisting of To:, CC:, and
+BCC: fields.
+
+By default, the string must be 7-bit ASCII. If the text must contain
+any other characters, then you must use MIME encoded-word syntax (RFC
+2047) instead of a literal string. MIME encoded-word syntax uses the
+following form: C<=?charset?encoding?encoded-text?=>. For more
+information, see RFC 2047.
 
 =head1 ATTRIBUTES
 

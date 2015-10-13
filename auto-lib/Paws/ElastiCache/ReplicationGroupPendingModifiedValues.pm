@@ -10,7 +10,7 @@ package Paws::ElastiCache::ReplicationGroupPendingModifiedValues;
 
 Paws::ElastiCache::ReplicationGroupPendingModifiedValues
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->AutomaticFailoverStatus
+
+=head1 DESCRIPTION
+
+The settings to be applied to the replication group, either immediately
+or during the next maintenance window.
 
 =head1 ATTRIBUTES
 

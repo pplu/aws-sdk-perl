@@ -10,7 +10,7 @@ package Paws::RDS::OptionGroupMembership;
 
 Paws::RDS::OptionGroupMembership
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Option
 
   $result = $service_obj->Method(...);
   $result->Att1->OptionGroupName
+
+=head1 DESCRIPTION
+
+Provides information on the option groups the DB instance is a member
+of.
 
 =head1 ATTRIBUTES
 

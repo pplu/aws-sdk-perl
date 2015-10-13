@@ -10,7 +10,7 @@ package Paws::Config::Compliance;
 
 Paws::Config::Compliance
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Com
 
   $result = $service_obj->Method(...);
   $result->Att1->ComplianceContributorCount
+
+=head1 DESCRIPTION
+
+Indicates whether an AWS resource or AWS Config rule is compliant and
+provides the number of contributors that affect the compliance.
 
 =head1 ATTRIBUTES
 

@@ -10,7 +10,7 @@ package Paws::CloudSearch::AccessPoliciesStatus;
 
 Paws::CloudSearch::AccessPoliciesStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->Options
+
+=head1 DESCRIPTION
+
+The configured access rules for the domain's document and search
+endpoints, and the current status of those rules.
 
 =head1 ATTRIBUTES
 

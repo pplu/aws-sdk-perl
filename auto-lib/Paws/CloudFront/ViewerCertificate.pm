@@ -12,7 +12,7 @@ package Paws::CloudFront::ViewerCertificate;
 
 Paws::CloudFront::ViewerCertificate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->CloudFrontDefaultCertificate
+
+=head1 DESCRIPTION
+
+A complex type that contains information about viewer certificates for
+this distribution.
 
 =head1 ATTRIBUTES
 

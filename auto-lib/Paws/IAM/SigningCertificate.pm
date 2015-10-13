@@ -13,7 +13,7 @@ package Paws::IAM::SigningCertificate;
 
 Paws::IAM::SigningCertificate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Signin
 
   $result = $service_obj->Method(...);
   $result->Att1->CertificateBody
+
+=head1 DESCRIPTION
+
+Contains information about an X.509 signing certificate.
+
+This data type is used as a response element in the
+UploadSigningCertificate and ListSigningCertificates actions.
 
 =head1 ATTRIBUTES
 

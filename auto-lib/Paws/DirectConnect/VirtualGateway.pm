@@ -10,7 +10,7 @@ package Paws::DirectConnect::VirtualGateway;
 
 Paws::DirectConnect::VirtualGateway
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConne
 
   $result = $service_obj->Method(...);
   $result->Att1->virtualGatewayId
+
+=head1 DESCRIPTION
+
+You can create one or more AWS Direct Connect private virtual
+interfaces linking to your virtual private gateway.
+
+Virtual private gateways can be managed using the Amazon Virtual
+Private Cloud (Amazon VPC) console or the Amazon EC2 CreateVpnGateway
+action.
 
 =head1 ATTRIBUTES
 

@@ -11,7 +11,7 @@ package Paws::SimpleWorkflow::ActivityTaskCompletedEventAttributes;
 
 Paws::SimpleWorkflow::ActivityTaskCompletedEventAttributes
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->result
+
+=head1 DESCRIPTION
+
+Provides details of the C<ActivityTaskCompleted> event.
 
 =head1 ATTRIBUTES
 

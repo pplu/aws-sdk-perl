@@ -10,7 +10,7 @@ package Paws::IAM::PolicyDetail;
 
 Paws::IAM::PolicyDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Policy
 
   $result = $service_obj->Method(...);
   $result->Att1->PolicyDocument
+
+=head1 DESCRIPTION
+
+Contains information about an IAM policy, including the policy
+document.
+
+This data type is used as a response element in the
+GetAccountAuthorizationDetails action.
 
 =head1 ATTRIBUTES
 

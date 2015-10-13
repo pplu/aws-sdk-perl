@@ -21,7 +21,7 @@ package Paws::CloudSearch::DomainStatus;
 
 Paws::CloudSearch::DomainStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -40,6 +40,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->ARN
+
+=head1 DESCRIPTION
+
+The current status of the search domain.
 
 =head1 ATTRIBUTES
 

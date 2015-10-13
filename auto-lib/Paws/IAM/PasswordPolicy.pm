@@ -18,7 +18,7 @@ package Paws::IAM::PasswordPolicy;
 
 Paws::IAM::PasswordPolicy
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -37,6 +37,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Passwo
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowUsersToChangePassword
+
+=head1 DESCRIPTION
+
+Contains information about the account password policy.
+
+This data type is used as a response element in the
+GetAccountPasswordPolicy action.
 
 =head1 ATTRIBUTES
 

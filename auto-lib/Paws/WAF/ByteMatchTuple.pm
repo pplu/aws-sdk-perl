@@ -12,7 +12,7 @@ package Paws::WAF::ByteMatchTuple;
 
 Paws::WAF::ByteMatchTuple
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::ByteMa
 
   $result = $service_obj->Method(...);
   $result->Att1->FieldToMatch
+
+=head1 DESCRIPTION
+
+The bytes (typically a string that corresponds with ASCII characters)
+that you want AWS WAF to search for in web requests, the location in
+requests that you want AWS WAF to search, and other settings.
 
 =head1 ATTRIBUTES
 

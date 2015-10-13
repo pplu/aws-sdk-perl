@@ -9,7 +9,7 @@ package Paws::IoT::LambdaAction;
 
 Paws::IoT::LambdaAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Lambda
 
   $result = $service_obj->Method(...);
   $result->Att1->functionArn
+
+=head1 DESCRIPTION
+
+Describes an action to invoke a Lamdba function.
 
 =head1 ATTRIBUTES
 

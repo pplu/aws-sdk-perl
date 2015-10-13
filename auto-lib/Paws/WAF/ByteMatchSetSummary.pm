@@ -10,7 +10,7 @@ package Paws::WAF::ByteMatchSetSummary;
 
 Paws::WAF::ByteMatchSetSummary
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::ByteMa
 
   $result = $service_obj->Method(...);
   $result->Att1->ByteMatchSetId
+
+=head1 DESCRIPTION
+
+Returned by ListByteMatchSets. Each C<ByteMatchSetSummary> object
+includes the C<Name> and C<ByteMatchSetId> for one ByteMatchSet.
 
 =head1 ATTRIBUTES
 

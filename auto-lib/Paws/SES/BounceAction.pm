@@ -13,7 +13,7 @@ package Paws::SES::BounceAction;
 
 Paws::SES::BounceAction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Bounce
 
   $result = $service_obj->Method(...);
   $result->Att1->Message
+
+=head1 DESCRIPTION
+
+When included in a receipt rule, this action rejects the received email
+by returning a bounce response to the sender and, optionally, publishes
+a notification to Amazon Simple Notification Service (Amazon SNS).
+
+For information about sending a bounce message in response to a
+received email, see the Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 

@@ -14,7 +14,7 @@ package Paws::Firehose::RedshiftDestinationUpdate;
 
 Paws::Firehose::RedshiftDestinationUpdate
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::R
 
   $result = $service_obj->Method(...);
   $result->Att1->ClusterJDBCURL
+
+=head1 DESCRIPTION
+
+Describes an update for a destination in Amazon Redshift.
 
 =head1 ATTRIBUTES
 

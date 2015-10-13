@@ -13,7 +13,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionOpenCounts;
 
 Paws::SimpleWorkflow::WorkflowExecutionOpenCounts
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->openActivityTasks
+
+=head1 DESCRIPTION
+
+Contains the counts of open tasks, child workflow executions and timers
+for a workflow execution.
 
 =head1 ATTRIBUTES
 

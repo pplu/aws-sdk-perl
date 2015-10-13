@@ -15,7 +15,7 @@ package Paws::ElasticBeanstalk::CPUUtilization;
 
 Paws::ElasticBeanstalk::CPUUtilization
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -34,6 +34,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
   $result = $service_obj->Method(...);
   $result->Att1->Idle
+
+=head1 DESCRIPTION
+
+Represents CPU utilization information from the specified instance that
+belongs to the AWS Elastic Beanstalk environment. Use the C<instanceId>
+property to specify the application instance for which you'd like to
+return data.
 
 =head1 ATTRIBUTES
 

@@ -11,7 +11,7 @@ package Paws::IAM::AccessKeyLastUsed;
 
 Paws::IAM::AccessKeyLastUsed
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Access
 
   $result = $service_obj->Method(...);
   $result->Att1->LastUsedDate
+
+=head1 DESCRIPTION
+
+Contains information about the last time an AWS access key was used.
+
+This data type is used as a response element in the
+GetAccessKeyLastUsed action.
 
 =head1 ATTRIBUTES
 

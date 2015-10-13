@@ -10,7 +10,7 @@ package Paws::IAM::AttachedPolicy;
 
 Paws::IAM::AttachedPolicy
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Attach
 
   $result = $service_obj->Method(...);
   $result->Att1->PolicyArn
+
+=head1 DESCRIPTION
+
+Contains information about an attached policy.
+
+An attached policy is a managed policy that has been attached to a
+user, group, or role. This data type is used as a response element in
+the ListAttachedGroupPolicies, ListAttachedRolePolicies,
+ListAttachedUserPolicies, and GetAccountAuthorizationDetails actions.
+
+For more information about managed policies, refer to Managed Policies
+and Inline Policies in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 

@@ -22,7 +22,7 @@ package Paws::DynamoDB::TableDescription;
 
 Paws::DynamoDB::TableDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -41,6 +41,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::T
 
   $result = $service_obj->Method(...);
   $result->Att1->AttributeDefinitions
+
+=head1 DESCRIPTION
+
+Represents the properties of a table.
 
 =head1 ATTRIBUTES
 

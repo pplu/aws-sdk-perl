@@ -11,7 +11,7 @@ package Paws::CloudFront::GeoRestriction;
 
 Paws::CloudFront::GeoRestriction
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->Items
+
+=head1 DESCRIPTION
+
+A complex type that controls the countries in which your content is
+distributed. For more information about geo restriction, go to
+Customizing Error Responses in the Amazon CloudFront Developer Guide.
+CloudFront determines the location of your users using MaxMind GeoIP
+databases. For information about the accuracy of these databases, see
+How accurate are your GeoIP databases? on the MaxMind website.
 
 =head1 ATTRIBUTES
 

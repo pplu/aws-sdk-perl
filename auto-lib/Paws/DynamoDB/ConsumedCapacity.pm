@@ -13,7 +13,7 @@ package Paws::DynamoDB::ConsumedCapacity;
 
 Paws::DynamoDB::ConsumedCapacity
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 
   $result = $service_obj->Method(...);
   $result->Att1->CapacityUnits
+
+=head1 DESCRIPTION
+
+The capacity units consumed by an operation. The data returned includes
+the total provisioned throughput consumed, along with statistics for
+the table and any indexes involved in the operation.
+I<ConsumedCapacity> is only returned if the request asked for it. For
+more information, see Provisioned Throughput in the I<Amazon DynamoDB
+Developer Guide>.
 
 =head1 ATTRIBUTES
 

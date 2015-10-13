@@ -24,7 +24,7 @@ package Paws::ELB::LoadBalancerDescription;
 
 Paws::ELB::LoadBalancerDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -43,6 +43,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::LoadBa
 
   $result = $service_obj->Method(...);
   $result->Att1->AvailabilityZones
+
+=head1 DESCRIPTION
+
+Information about a load balancer.
 
 =head1 ATTRIBUTES
 

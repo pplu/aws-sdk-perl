@@ -11,7 +11,7 @@ package Paws::IoT::PolicyVersion;
 
 Paws::IoT::PolicyVersion
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Policy
 
   $result = $service_obj->Method(...);
   $result->Att1->createDate
+
+=head1 DESCRIPTION
+
+Describes a policy version.
 
 =head1 ATTRIBUTES
 

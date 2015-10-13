@@ -13,7 +13,7 @@ package Paws::DeviceFarm::Artifact;
 
 Paws::DeviceFarm::Artifact
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm:
 
   $result = $service_obj->Method(...);
   $result->Att1->arn
+
+=head1 DESCRIPTION
+
+Represents the output of a test. Examples of artifacts include logs and
+screenshots.
 
 =head1 ATTRIBUTES
 

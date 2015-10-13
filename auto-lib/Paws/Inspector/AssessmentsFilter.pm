@@ -14,7 +14,7 @@ package Paws::Inspector::AssessmentsFilter;
 
 Paws::Inspector::AssessmentsFilter
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
   $result = $service_obj->Method(...);
   $result->Att1->assessmentNamePatterns
+
+=head1 DESCRIPTION
+
+This data type is used as the request parameter in the ListAssessments
+and ListAttachedAssessments actions.
 
 =head1 ATTRIBUTES
 

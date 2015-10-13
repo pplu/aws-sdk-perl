@@ -19,7 +19,7 @@ package Paws::ECS::ContainerInstance;
 
 Paws::ECS::ContainerInstance
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -38,6 +38,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Contai
 
   $result = $service_obj->Method(...);
   $result->Att1->agentConnected
+
+=head1 DESCRIPTION
+
+An EC2 instance that is running the Amazon ECS agent and has been
+registered with a cluster.
 
 =head1 ATTRIBUTES
 

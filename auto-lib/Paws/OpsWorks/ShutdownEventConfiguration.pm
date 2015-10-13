@@ -10,7 +10,7 @@ package Paws::OpsWorks::ShutdownEventConfiguration;
 
 Paws::OpsWorks::ShutdownEventConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::OpsWorks::S
 
   $result = $service_obj->Method(...);
   $result->Att1->DelayUntilElbConnectionsDrained
+
+=head1 DESCRIPTION
+
+The Shutdown event configuration.
 
 =head1 ATTRIBUTES
 

@@ -13,7 +13,7 @@ package Paws::CloudSearch::OptionStatus;
 
 Paws::CloudSearch::OptionStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->CreationDate
+
+=head1 DESCRIPTION
+
+The status of domain configuration option.
 
 =head1 ATTRIBUTES
 

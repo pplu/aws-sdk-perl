@@ -13,7 +13,7 @@ package Paws::IAM::EvaluationResult;
 
 Paws::IAM::EvaluationResult
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -32,6 +32,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Evalua
 
   $result = $service_obj->Method(...);
   $result->Att1->EvalActionName
+
+=head1 DESCRIPTION
+
+Contains the results of a simulation.
+
+This data type is used by the return parameter of C<SimulatePolicy>.
 
 =head1 ATTRIBUTES
 

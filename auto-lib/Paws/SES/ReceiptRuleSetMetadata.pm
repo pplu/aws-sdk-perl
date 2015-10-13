@@ -10,7 +10,7 @@ package Paws::SES::ReceiptRuleSetMetadata;
 
 Paws::SES::ReceiptRuleSetMetadata
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SES::Receip
 
   $result = $service_obj->Method(...);
   $result->Att1->CreatedTimestamp
+
+=head1 DESCRIPTION
+
+Information about a receipt rule set.
+
+A receipt rule set is a collection of rules that specify what Amazon
+SES should do with mail it receives on behalf of your account's
+verified domains.
+
+For information about setting up receipt rule sets, see the Amazon SES
+Developer Guide.
 
 =head1 ATTRIBUTES
 

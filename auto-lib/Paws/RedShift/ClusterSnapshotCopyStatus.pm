@@ -11,7 +11,7 @@ package Paws::RedShift::ClusterSnapshotCopyStatus;
 
 Paws::RedShift::ClusterSnapshotCopyStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
   $result = $service_obj->Method(...);
   $result->Att1->DestinationRegion
+
+=head1 DESCRIPTION
+
+Returns the destination region and retention period that are configured
+for cross-region snapshot copy.
 
 =head1 ATTRIBUTES
 

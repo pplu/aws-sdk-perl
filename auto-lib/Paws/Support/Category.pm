@@ -10,7 +10,7 @@ package Paws::Support::Category;
 
 Paws::Support::Category
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Ca
 
   $result = $service_obj->Method(...);
   $result->Att1->code
+
+=head1 DESCRIPTION
+
+A JSON-formatted name/value pair that represents the category name and
+category code of the problem, selected from the DescribeServices
+response for each AWS service.
 
 =head1 ATTRIBUTES
 

@@ -12,7 +12,7 @@ package Paws::CloudSearchDomain::Hit;
 
 Paws::CloudSearchDomain::Hit
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearch
 
   $result = $service_obj->Method(...);
   $result->Att1->exprs
+
+=head1 DESCRIPTION
+
+Information about a document that matches the search request.
 
 =head1 ATTRIBUTES
 

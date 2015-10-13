@@ -14,7 +14,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionConfiguration;
 
 Paws::SimpleWorkflow::WorkflowExecutionConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -33,6 +33,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkf
 
   $result = $service_obj->Method(...);
   $result->Att1->childPolicy
+
+=head1 DESCRIPTION
+
+The configuration settings for a workflow execution including timeout
+values, tasklist etc. These configuration settings are determined from
+the defaults specified when registering the workflow type and those
+specified when starting the workflow execution.
 
 =head1 ATTRIBUTES
 

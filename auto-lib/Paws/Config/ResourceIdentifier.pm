@@ -12,7 +12,7 @@ package Paws::Config::ResourceIdentifier;
 
 Paws::Config::ResourceIdentifier
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Res
 
   $result = $service_obj->Method(...);
   $result->Att1->resourceDeletionTime
+
+=head1 DESCRIPTION
+
+The details that identify a resource that is discovered by AWS Config,
+including the resource type, ID, and (if available) the custom resource
+name.
 
 =head1 ATTRIBUTES
 

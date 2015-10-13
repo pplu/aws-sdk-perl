@@ -11,7 +11,7 @@ package Paws::Route53::GeoLocation;
 
 Paws::Route53::GeoLocation
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ge
 
   $result = $service_obj->Method(...);
   $result->Att1->ContinentCode
+
+=head1 DESCRIPTION
+
+A complex type that contains information about a geo location.
 
 =head1 ATTRIBUTES
 

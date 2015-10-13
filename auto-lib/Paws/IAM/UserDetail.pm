@@ -16,7 +16,7 @@ package Paws::IAM::UserDetail;
 
 Paws::IAM::UserDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::UserDe
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
+
+=head1 DESCRIPTION
+
+Contains information about an IAM user, including all the user's
+policies and all the IAM groups the user is in.
+
+This data type is used as a response element in the
+GetAccountAuthorizationDetails action.
 
 =head1 ATTRIBUTES
 

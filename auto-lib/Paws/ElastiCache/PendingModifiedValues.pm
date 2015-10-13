@@ -11,7 +11,7 @@ package Paws::ElastiCache::PendingModifiedValues;
 
 Paws::ElastiCache::PendingModifiedValues
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->CacheNodeIdsToRemove
+
+=head1 DESCRIPTION
+
+A group of settings that will be applied to the cache cluster in the
+future, or that are currently being applied.
 
 =head1 ATTRIBUTES
 

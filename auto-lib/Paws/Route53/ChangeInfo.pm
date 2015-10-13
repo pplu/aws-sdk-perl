@@ -12,7 +12,7 @@ package Paws::Route53::ChangeInfo;
 
 Paws::Route53::ChangeInfo
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::Ch
 
   $result = $service_obj->Method(...);
   $result->Att1->Comment
+
+=head1 DESCRIPTION
+
+A complex type that describes change information about changes made to
+your hosted zone.
+
+This element contains an ID that you use when performing a GetChange
+action to get detailed information about the change.
 
 =head1 ATTRIBUTES
 

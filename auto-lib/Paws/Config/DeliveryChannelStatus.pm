@@ -12,7 +12,7 @@ package Paws::Config::DeliveryChannelStatus;
 
 Paws::Config::DeliveryChannelStatus
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Del
 
   $result = $service_obj->Method(...);
   $result->Att1->configHistoryDeliveryInfo
+
+=head1 DESCRIPTION
+
+The status of a specified delivery channel.
+
+Valid values: C<Success> | C<Failure>
 
 =head1 ATTRIBUTES
 

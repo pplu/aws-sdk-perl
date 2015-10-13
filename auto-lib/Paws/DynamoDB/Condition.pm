@@ -10,7 +10,7 @@ package Paws::DynamoDB::Condition;
 
 Paws::DynamoDB::Condition
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 
   $result = $service_obj->Method(...);
   $result->Att1->AttributeValueList
+
+=head1 DESCRIPTION
+
+Represents the selection criteria for a I<Query> or I<Scan> operation:
+
+=over
+
+=item *
+
+For a I<Query> operation, I<Condition> is used for specifying the
+I<KeyConditions> to use when querying a table or an index. For
+I<KeyConditions>, only the following comparison operators are
+supported:
+
+C<EQ | LE | LT | GE | GT | BEGINS_WITH | BETWEEN>
+
+I<Condition> is also used in a I<QueryFilter>, which evaluates the
+query results and returns only the desired values.
+
+=item *
+
+For a I<Scan> operation, I<Condition> is used in a I<ScanFilter>, which
+evaluates the scan results and returns only the desired values.
+
+=back
 
 =head1 ATTRIBUTES
 

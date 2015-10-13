@@ -17,7 +17,7 @@ package Paws::CloudFront::DefaultCacheBehavior;
 
 Paws::CloudFront::DefaultCacheBehavior
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowedMethods
+
+=head1 DESCRIPTION
+
+A complex type that describes the default cache behavior if you do not
+specify a CacheBehavior element or if files don't match any of the
+values of PathPattern in CacheBehavior elements.You must create exactly
+one default cache behavior.
 
 =head1 ATTRIBUTES
 

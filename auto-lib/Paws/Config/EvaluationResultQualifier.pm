@@ -11,7 +11,7 @@ package Paws::Config::EvaluationResultQualifier;
 
 Paws::Config::EvaluationResultQualifier
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -30,6 +30,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Eva
 
   $result = $service_obj->Method(...);
   $result->Att1->ConfigRuleName
+
+=head1 DESCRIPTION
+
+Identifies an AWS Config rule that evaluated an AWS resource, and
+provides the type and ID of the resource that the rule evaluated.
 
 =head1 ATTRIBUTES
 

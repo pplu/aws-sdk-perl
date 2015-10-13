@@ -18,7 +18,7 @@ package Paws::CloudFront::CacheBehavior;
 
 Paws::CloudFront::CacheBehavior
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -37,6 +37,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowedMethods
+
+=head1 DESCRIPTION
+
+A complex type that describes how CloudFront processes requests. You
+can create up to 10 cache behaviors.You must create at least as many
+cache behaviors (including the default cache behavior) as you have
+origins if you want CloudFront to distribute objects from all of the
+origins. Each cache behavior specifies the one origin from which you
+want CloudFront to get objects. If you have two origins and only the
+default cache behavior, the default cache behavior will cause
+CloudFront to get objects from one of the origins, but the other origin
+will never be used. If you don't want to specify any cache behaviors,
+include only an empty CacheBehaviors element. Don't include an empty
+CacheBehavior element, or CloudFront returns a MalformedXML error. To
+delete all cache behaviors in an existing distribution, update the
+distribution configuration and include only an empty CacheBehaviors
+element. To add, change, or remove one or more cache behaviors, update
+the distribution configuration and specify all of the cache behaviors
+that you want to include in the updated distribution.
 
 =head1 ATTRIBUTES
 

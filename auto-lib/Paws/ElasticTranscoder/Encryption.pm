@@ -12,7 +12,7 @@ package Paws::ElasticTranscoder::Encryption;
 
 Paws::ElasticTranscoder::Encryption
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->InitializationVector
+
+=head1 DESCRIPTION
+
+The encryption settings, if any, that are used for decrypting your
+input files or encrypting your output files. If your input file is
+encrypted, you must specify the mode that Elastic Transcoder will use
+to decrypt your file, otherwise you must specify the mode you want
+Elastic Transcoder to use to encrypt your output files.
 
 =head1 ATTRIBUTES
 

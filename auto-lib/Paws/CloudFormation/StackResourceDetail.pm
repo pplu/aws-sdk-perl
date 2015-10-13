@@ -18,7 +18,7 @@ package Paws::CloudFormation::StackResourceDetail;
 
 Paws::CloudFormation::StackResourceDetail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -37,6 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
   $result = $service_obj->Method(...);
   $result->Att1->Description
+
+=head1 DESCRIPTION
+
+Contains detailed information about the specified stack resource.
 
 =head1 ATTRIBUTES
 

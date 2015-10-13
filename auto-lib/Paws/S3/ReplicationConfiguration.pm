@@ -10,7 +10,7 @@ package Paws::S3::ReplicationConfiguration;
 
 Paws::S3::ReplicationConfiguration
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Replica
 
   $result = $service_obj->Method(...);
   $result->Att1->Role
+
+=head1 DESCRIPTION
+
+Container for replication rules. You can add as many as 1,000 rules.
+Total replication configuration size can be up to 2 MB.
 
 =head1 ATTRIBUTES
 

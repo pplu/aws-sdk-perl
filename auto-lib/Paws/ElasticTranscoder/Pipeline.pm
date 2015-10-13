@@ -19,7 +19,7 @@ package Paws::ElasticTranscoder::Pipeline;
 
 Paws::ElasticTranscoder::Pipeline
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -38,6 +38,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticTran
 
   $result = $service_obj->Method(...);
   $result->Att1->Arn
+
+=head1 DESCRIPTION
+
+The pipeline (queue) that is used to manage jobs.
 
 =head1 ATTRIBUTES
 

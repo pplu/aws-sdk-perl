@@ -18,7 +18,7 @@ package Paws::CloudTrail::Trail;
 
 Paws::CloudTrail::Trail
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -37,6 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
   $result = $service_obj->Method(...);
   $result->Att1->CloudWatchLogsLogGroupArn
+
+=head1 DESCRIPTION
+
+The settings for a trail.
 
 =head1 ATTRIBUTES
 

@@ -9,7 +9,7 @@ package Paws::Config::ConfigSnapshotDeliveryProperties;
 
 Paws::Config::ConfigSnapshotDeliveryProperties
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -28,6 +28,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
   $result = $service_obj->Method(...);
   $result->Att1->deliveryFrequency
+
+=head1 DESCRIPTION
+
+Options for how AWS Config delivers configuration snapshots to the
+Amazon S3 bucket in your delivery channel.
 
 =head1 ATTRIBUTES
 

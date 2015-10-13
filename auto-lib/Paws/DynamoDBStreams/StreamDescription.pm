@@ -17,7 +17,7 @@ package Paws::DynamoDBStreams::StreamDescription;
 
 Paws::DynamoDBStreams::StreamDescription
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -36,6 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStr
 
   $result = $service_obj->Method(...);
   $result->Att1->CreationRequestDateTime
+
+=head1 DESCRIPTION
+
+Represents all of the data describing a particular stream.
 
 =head1 ATTRIBUTES
 

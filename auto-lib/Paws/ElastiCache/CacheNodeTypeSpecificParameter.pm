@@ -16,7 +16,7 @@ package Paws::ElastiCache::CacheNodeTypeSpecificParameter;
 
 Paws::ElastiCache::CacheNodeTypeSpecificParameter
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElastiCache
 
   $result = $service_obj->Method(...);
   $result->Att1->AllowedValues
+
+=head1 DESCRIPTION
+
+A parameter that has a different value for each cache node type it is
+applied to. For example, in a Redis cache cluster, a I<cache.m1.large>
+cache node type would have a larger I<maxmemory> value than a
+I<cache.m1.small> type.
 
 =head1 ATTRIBUTES
 

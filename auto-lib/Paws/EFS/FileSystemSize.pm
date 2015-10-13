@@ -10,7 +10,7 @@ package Paws::EFS::FileSystemSize;
 
 Paws::EFS::FileSystemSize
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -29,6 +29,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EFS::FileSy
 
   $result = $service_obj->Method(...);
   $result->Att1->Timestamp
+
+=head1 DESCRIPTION
+
+This object provides the latest known metered size, in bytes, of data
+stored in the file system, in its C<Value> field, and the time at which
+that size was determined in its C<Timestamp> field. Note that the value
+does not represent the size of a consistent snapshot of the file
+system, but it is eventually consistent when there are no writes to the
+file system. That is, the value will represent the actual size only if
+the file system is not modified for a period longer than a couple of
+hours. Otherwise, the value is not necessarily the exact size the file
+system was at any instant in time.
 
 =head1 ATTRIBUTES
 

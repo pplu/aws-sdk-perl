@@ -12,7 +12,7 @@ package Paws::WAF::SampledHTTPRequest;
 
 Paws::WAF::SampledHTTPRequest
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Sample
 
   $result = $service_obj->Method(...);
   $result->Att1->Action
+
+=head1 DESCRIPTION
+
+The response from a GetSampledRequests request includes a
+C<SampledHTTPRequests> complex type that appears as C<SampledRequests>
+in the response syntax. C<SampledHTTPRequests> contains one
+C<SampledHTTPRequest> object for each web request that is returned by
+C<GetSampledRequests>.
 
 =head1 ATTRIBUTES
 

@@ -12,7 +12,7 @@ package Paws::Config::Relationship;
 
 Paws::Config::Relationship
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -31,6 +31,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Rel
 
   $result = $service_obj->Method(...);
   $result->Att1->relationshipName
+
+=head1 DESCRIPTION
+
+The relationship of the related resource to the main resource.
 
 =head1 ATTRIBUTES
 

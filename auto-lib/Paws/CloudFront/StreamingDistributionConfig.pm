@@ -16,7 +16,7 @@ package Paws::CloudFront::StreamingDistributionConfig;
 
 Paws::CloudFront::StreamingDistributionConfig
 
-=head1 DESCRIPTION
+=head1 USAGE
 
 This class represents one of two things:
 
@@ -35,6 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
   $result = $service_obj->Method(...);
   $result->Att1->Aliases
+
+=head1 DESCRIPTION
+
+The configuration for the streaming distribution.
 
 =head1 ATTRIBUTES
 
