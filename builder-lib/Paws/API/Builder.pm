@@ -455,7 +455,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my $shape = $self->shapename_for_operation_output($operation);
     return if (not $shape);
 
-    return $self->shape($shape);
+    return $self->output_shape($shape);
   }
 
   sub shapename_for_operation_input {
@@ -474,7 +474,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my $shape = $self->shapename_for_operation_input($operation);
     return if (not $shape);
 
-    return $self->shape($shape);
+    return $self->input_shape($shape);
   }
 
   use autodie;
