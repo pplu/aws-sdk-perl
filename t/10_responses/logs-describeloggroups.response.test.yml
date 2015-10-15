@@ -4,16 +4,16 @@ service: CloudWatchLogs
 tests:
   - expected: 0
     op: eq
-    path: logGroups.0.metricFilterCount
+    path: LogGroups.0.MetricFilterCount
   - expected: 0
     op: eq
-    path: logGroups.0.storedBytes
+    path: LogGroups.0.StoredBytes
   - expected: test_log_group
     op: eq
-    path: logGroups.0.logGroupName
+    path: LogGroups.0.LogGroupName
   - expected: 1431545271411
     op: eq
-    path: logGroups.0.creationTime
+    path: LogGroups.0.CreationTime
   - expected: arn:aws:logs:eu-west-1:000000000000:log-group:test_log_group:*
     op: eq
-    path: logGroups.0.arn
+    path: LogGroups.0.Arn
