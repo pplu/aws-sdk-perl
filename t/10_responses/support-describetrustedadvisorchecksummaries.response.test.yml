@@ -1,0 +1,58 @@
+---
+call: DescribeTrustedAdvisorCheckSummaries
+service: Support
+tests:
+  - expected: 0
+    op: eq
+    path: Summaries.1.ResourcesSummary.ResourcesProcessed
+  - expected: 0
+    op: eq
+    path: Summaries.1.ResourcesSummary.ResourcesIgnored
+  - expected: ok
+    op: eq
+    path: Summaries.1.Status
+  - expected: N425c450f2
+    op: eq
+    path: Summaries.1.CheckId
+  - expected: 1
+    op: eq
+    path: Summaries.0.ResourcesSummary.ResourcesProcessed
+  - expected: zXCkfM1nI3
+    op: eq
+    path: Summaries.0.CheckId
+  - expected: 0
+    op: eq
+    path: Summaries.1.ResourcesSummary.ResourcesSuppressed
+  - expected: 2015-10-14T10:40:19Z
+    op: eq
+    path: Summaries.0.Timestamp
+  - expected: 0
+    op: eq
+    path: Summaries.0.ResourcesSummary.ResourcesIgnored
+  - expected: 0
+    op: eq
+    path: Summaries.0.CategorySpecificSummary.CostOptimizing.EstimatedPercentMonthlySavings
+  - expected: 0
+    op: eq
+    path: Summaries.0.ResourcesSummary.ResourcesFlagged
+  - expected: 0
+    op: eq
+    path: Summaries.0.CategorySpecificSummary.CostOptimizing.EstimatedMonthlySavings
+  - expected: 0
+    op: eq
+    path: Summaries.0.ResourcesSummary.ResourcesSuppressed
+  - expected: 1
+    op: eq
+    path: Summaries.0.HasFlaggedResources
+  - expected: ok
+    op: eq
+    path: Summaries.0.Status
+  - expected: 0
+    op: eq
+    path: Summaries.1.ResourcesSummary.ResourcesFlagged
+  - expected: 0
+    op: eq
+    path: Summaries.1.HasFlaggedResources
+  - expected: 2015-10-14T10:40:20Z
+    op: eq
+    path: Summaries.1.Timestamp
