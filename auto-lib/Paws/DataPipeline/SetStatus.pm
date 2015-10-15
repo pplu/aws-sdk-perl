@@ -1,9 +1,9 @@
 
 package Paws::DataPipeline::SetStatus;
   use Moose;
-  has objectIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has pipelineId => (is => 'ro', isa => 'Str', required => 1);
-  has status => (is => 'ro', isa => 'Str', required => 1);
+  has ObjectIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'objectIds' , required => 1);
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,16 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> objectIds => ArrayRef[Str]
+=head2 B<REQUIRED> ObjectIds => ArrayRef[Str]
 
   The IDs of the objects. The corresponding objects can be either
 physical or components, but not a mix of both types.
 
-=head2 B<REQUIRED> pipelineId => Str
+=head2 B<REQUIRED> PipelineId => Str
 
   The ID of the pipeline that contains the objects.
 
-=head2 B<REQUIRED> status => Str
+=head2 B<REQUIRED> Status => Str
 
   The status to be set on all the objects specified in C<objectIds>. For
 components, use C<PAUSE> or C<RESUME>. For instances, use

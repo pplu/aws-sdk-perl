@@ -1,12 +1,12 @@
 package Paws::Inspector::Run;
   use Moose;
-  has assessmentArn => (is => 'ro', isa => 'Str');
-  has completionTime => (is => 'ro', isa => 'Str');
-  has creationTime => (is => 'ro', isa => 'Str');
-  has rulesPackages => (is => 'ro', isa => 'ArrayRef[Str]');
-  has runArn => (is => 'ro', isa => 'Str');
-  has runName => (is => 'ro', isa => 'Str');
-  has runState => (is => 'ro', isa => 'Str');
+  has AssessmentArn => (is => 'ro', isa => 'Str', xmlname => 'assessmentArn', request_name => 'assessmentArn', traits => ['Unwrapped','NameInRequest']);
+  has CompletionTime => (is => 'ro', isa => 'Str', xmlname => 'completionTime', request_name => 'completionTime', traits => ['Unwrapped','NameInRequest']);
+  has CreationTime => (is => 'ro', isa => 'Str', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
+  has RulesPackages => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'rulesPackages', request_name => 'rulesPackages', traits => ['Unwrapped','NameInRequest']);
+  has RunArn => (is => 'ro', isa => 'Str', xmlname => 'runArn', request_name => 'runArn', traits => ['Unwrapped','NameInRequest']);
+  has RunName => (is => 'ro', isa => 'Str', xmlname => 'runName', request_name => 'runName', traits => ['Unwrapped','NameInRequest']);
+  has RunState => (is => 'ro', isa => 'Str', xmlname => 'runState', request_name => 'runState', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -26,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::Run object:
 
-  $service_obj->Method(Att1 => { assessmentArn => $value, ..., runState => $value  });
+  $service_obj->Method(Att1 => { AssessmentArn => $value, ..., RunState => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::Run object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->assessmentArn
+  $result->Att1->AssessmentArn
 
 =head1 DESCRIPTION
 
@@ -45,33 +45,33 @@ action.
 
 =head1 ATTRIBUTES
 
-=head2 assessmentArn => Str
+=head2 AssessmentArn => Str
 
   The ARN of the assessment that is associated with the run.
 
-=head2 completionTime => Str
+=head2 CompletionTime => Str
 
   Run completion time that corresponds to the rules packages evaluation
 completion time or failure.
 
-=head2 creationTime => Str
+=head2 CreationTime => Str
 
   Run creation time that corresponds to the data collection completion
 time or failure.
 
-=head2 rulesPackages => ArrayRef[Str]
+=head2 RulesPackages => ArrayRef[Str]
 
   Rules packages selected for the run of the assessment.
 
-=head2 runArn => Str
+=head2 RunArn => Str
 
   The ARN of the run.
 
-=head2 runName => Str
+=head2 RunName => Str
 
   The auto-generated name for the run.
 
-=head2 runState => Str
+=head2 RunState => Str
 
   The state of the run. Values can be set to I<DataCollectionComplete>,
 I<EvaluatingPolicies>, I<EvaluatingPoliciesErrorCanRetry>,

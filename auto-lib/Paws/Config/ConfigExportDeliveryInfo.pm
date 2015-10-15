@@ -1,11 +1,11 @@
 package Paws::Config::ConfigExportDeliveryInfo;
   use Moose;
-  has lastAttemptTime => (is => 'ro', isa => 'Str');
-  has lastErrorCode => (is => 'ro', isa => 'Str');
-  has lastErrorMessage => (is => 'ro', isa => 'Str');
-  has lastStatus => (is => 'ro', isa => 'Str');
-  has lastSuccessfulTime => (is => 'ro', isa => 'Str');
-  has nextDeliveryTime => (is => 'ro', isa => 'Str');
+  has LastAttemptTime => (is => 'ro', isa => 'Str', xmlname => 'lastAttemptTime', request_name => 'lastAttemptTime', traits => ['Unwrapped','NameInRequest']);
+  has LastErrorCode => (is => 'ro', isa => 'Str', xmlname => 'lastErrorCode', request_name => 'lastErrorCode', traits => ['Unwrapped','NameInRequest']);
+  has LastErrorMessage => (is => 'ro', isa => 'Str', xmlname => 'lastErrorMessage', request_name => 'lastErrorMessage', traits => ['Unwrapped','NameInRequest']);
+  has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
+  has LastSuccessfulTime => (is => 'ro', isa => 'Str', xmlname => 'lastSuccessfulTime', request_name => 'lastSuccessfulTime', traits => ['Unwrapped','NameInRequest']);
+  has NextDeliveryTime => (is => 'ro', isa => 'Str', xmlname => 'nextDeliveryTime', request_name => 'nextDeliveryTime', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Config::ConfigExportDeliveryInfo object:
 
-  $service_obj->Method(Att1 => { lastAttemptTime => $value, ..., nextDeliveryTime => $value  });
+  $service_obj->Method(Att1 => { LastAttemptTime => $value, ..., NextDeliveryTime => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Config::ConfigExportDeliveryInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->lastAttemptTime
+  $result->Att1->LastAttemptTime
 
 =head1 DESCRIPTION
 
@@ -41,27 +41,27 @@ or the configuration history to the specified Amazon S3 bucket.
 
 =head1 ATTRIBUTES
 
-=head2 lastAttemptTime => Str
+=head2 LastAttemptTime => Str
 
   The time of the last attempted delivery.
 
-=head2 lastErrorCode => Str
+=head2 LastErrorCode => Str
 
   The error code from the last attempted delivery.
 
-=head2 lastErrorMessage => Str
+=head2 LastErrorMessage => Str
 
   The error message from the last attempted delivery.
 
-=head2 lastStatus => Str
+=head2 LastStatus => Str
 
   Status of the last attempted delivery.
 
-=head2 lastSuccessfulTime => Str
+=head2 LastSuccessfulTime => Str
 
   The time of the last successful delivery.
 
-=head2 nextDeliveryTime => Str
+=head2 NextDeliveryTime => Str
 
   The time that the next delivery occurs.
 

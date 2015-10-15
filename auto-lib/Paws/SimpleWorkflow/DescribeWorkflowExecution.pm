@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::DescribeWorkflowExecution;
   use Moose;
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has execution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has Execution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', traits => ['NameInRequest'], request_name => 'execution' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
   The name of the domain containing the workflow execution.
 
-=head2 B<REQUIRED> execution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 B<REQUIRED> Execution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The workflow execution to describe.
 

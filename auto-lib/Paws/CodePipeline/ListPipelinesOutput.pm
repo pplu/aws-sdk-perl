@@ -1,8 +1,8 @@
 
 package Paws::CodePipeline::ListPipelinesOutput;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
-  has pipelines => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::PipelineSummary]');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has Pipelines => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::PipelineSummary]', traits => ['Unwrapped'], xmlname => 'pipelines' );
 
 
 ### main pod documentation begin ###
@@ -13,12 +13,12 @@ Paws::CodePipeline::ListPipelinesOutput
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   If the amount of returned information is significantly large, an
 identifier is also returned which can be used in a subsequent list
 pipelines call to return the next set of pipelines in the list.
-=head2 pipelines => ArrayRef[L<Paws::CodePipeline::PipelineSummary>]
+=head2 Pipelines => ArrayRef[L<Paws::CodePipeline::PipelineSummary>]
 
   The list of pipelines.
 

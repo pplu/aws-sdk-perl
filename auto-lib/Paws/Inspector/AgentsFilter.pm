@@ -1,6 +1,6 @@
 package Paws::Inspector::AgentsFilter;
   use Moose;
-  has agentHealthList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AgentHealthList => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'agentHealthList', request_name => 'agentHealthList', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::AgentsFilter object:
 
-  $service_obj->Method(Att1 => { agentHealthList => $value, ..., agentHealthList => $value  });
+  $service_obj->Method(Att1 => { AgentHealthList => $value, ..., AgentHealthList => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::AgentsFilter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->agentHealthList
+  $result->Att1->AgentHealthList
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ ListAssessmentAgents action.
 
 =head1 ATTRIBUTES
 
-=head2 agentHealthList => ArrayRef[Str]
+=head2 AgentHealthList => ArrayRef[Str]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<agentHealth>

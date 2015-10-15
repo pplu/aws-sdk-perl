@@ -1,8 +1,8 @@
 
 package Paws::DataPipeline::ReportTaskProgress;
   use Moose;
-  has fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]');
-  has taskId => (is => 'ro', isa => 'Str', required => 1);
+  has Fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', traits => ['NameInRequest'], request_name => 'fields' );
+  has TaskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,12 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 fields => ArrayRef[L<Paws::DataPipeline::Field>]
+=head2 Fields => ArrayRef[L<Paws::DataPipeline::Field>]
 
   Key-value pairs that define the properties of the
 ReportTaskProgressInput object.
 
-=head2 B<REQUIRED> taskId => Str
+=head2 B<REQUIRED> TaskId => Str
 
   The ID of the task assigned to the task runner. This value is provided
 in the response for PollForTask.

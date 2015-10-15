@@ -1,7 +1,7 @@
 package Paws::CloudWatchLogs::ExportTaskExecutionInfo;
   use Moose;
-  has completionTime => (is => 'ro', isa => 'Int');
-  has creationTime => (is => 'ro', isa => 'Int');
+  has CompletionTime => (is => 'ro', isa => 'Int', xmlname => 'completionTime', request_name => 'completionTime', traits => ['Unwrapped','NameInRequest']);
+  has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::ExportTaskExecutionInfo object:
 
-  $service_obj->Method(Att1 => { completionTime => $value, ..., creationTime => $value  });
+  $service_obj->Method(Att1 => { CompletionTime => $value, ..., CreationTime => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::ExportTaskExecutionInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->completionTime
+  $result->Att1->CompletionTime
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Represents the status of an export task.
 
 =head1 ATTRIBUTES
 
-=head2 completionTime => Int
+=head2 CompletionTime => Int
 
   A point in time when the export task got completed.
 
-=head2 creationTime => Int
+=head2 CreationTime => Int
 
   A point in time when the export task got created.
 

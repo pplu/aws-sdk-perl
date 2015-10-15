@@ -1,7 +1,7 @@
 
 package Paws::Inspector::CreateAssessmentResponse;
   use Moose;
-  has assessmentArn => (is => 'ro', isa => 'Str');
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'assessmentArn' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::Inspector::CreateAssessmentResponse
 
 =head1 ATTRIBUTES
 
-=head2 assessmentArn => Str
+=head2 AssessmentArn => Str
 
   The ARN specifying the assessment that is created.
 

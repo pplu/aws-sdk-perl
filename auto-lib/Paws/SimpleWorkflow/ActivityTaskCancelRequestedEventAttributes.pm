@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes;
   use Moose;
-  has activityId => (is => 'ro', isa => 'Str', required => 1);
-  has decisionTaskCompletedEventId => (is => 'ro', isa => 'Int', required => 1);
+  has ActivityId => (is => 'ro', isa => 'Str', xmlname => 'activityId', request_name => 'activityId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', xmlname => 'decisionTaskCompletedEventId', request_name => 'decisionTaskCompletedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes object:
 
-  $service_obj->Method(Att1 => { activityId => $value, ..., decisionTaskCompletedEventId => $value  });
+  $service_obj->Method(Att1 => { ActivityId => $value, ..., DecisionTaskCompletedEventId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->activityId
+  $result->Att1->ActivityId
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Provides details of the C<ActivityTaskCancelRequested> event.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> activityId => Str
+=head2 B<REQUIRED> ActivityId => Str
 
   The unique ID of the task.
 
-=head2 B<REQUIRED> decisionTaskCompletedEventId => Int
+=head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 
   The ID of the C<DecisionTaskCompleted> event corresponding to the
 decision task that resulted in the C<RequestCancelActivityTask>

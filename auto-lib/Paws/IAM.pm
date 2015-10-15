@@ -1896,7 +1896,7 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListOpenIDConnectProviders( => )
+=head2 ListOpenIDConnectProviders()
 
 Each argument is described in detail in: L<Paws::IAM::ListOpenIDConnectProviders>
 
@@ -1975,7 +1975,7 @@ You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
 
 
-=head2 ListSAMLProviders( => )
+=head2 ListSAMLProviders()
 
 Each argument is described in detail in: L<Paws::IAM::ListSAMLProviders>
 

@@ -71,7 +71,7 @@ cloud.
 
 =head1 METHODS
 
-=head2 DeleteThingShadow(thingName => Str)
+=head2 DeleteThingShadow(ThingName => Str)
 
 Each argument is described in detail in: L<Paws::IoTData::DeleteThingShadow>
 
@@ -83,7 +83,7 @@ For more information, see DeleteThingShadow in the I<AWS IoT Developer
 Guide>.
 
 
-=head2 GetThingShadow(thingName => Str)
+=head2 GetThingShadow(ThingName => Str)
 
 Each argument is described in detail in: L<Paws::IoTData::GetThingShadow>
 
@@ -95,7 +95,7 @@ For more information, see GetThingShadow in the I<AWS IoT Developer
 Guide>.
 
 
-=head2 Publish(topic => Str, [payload => Str, qos => Int])
+=head2 Publish(Topic => Str, [Payload => Str, Qos => Int])
 
 Each argument is described in detail in: L<Paws::IoTData::Publish>
 
@@ -107,7 +107,7 @@ For more information, see HTTP Protocol in the I<AWS IoT Developer
 Guide>.
 
 
-=head2 UpdateThingShadow(payload => Str, thingName => Str)
+=head2 UpdateThingShadow(Payload => Str, ThingName => Str)
 
 Each argument is described in detail in: L<Paws::IoTData::UpdateThingShadow>
 

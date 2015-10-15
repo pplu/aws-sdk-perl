@@ -1,8 +1,8 @@
 package Paws::ECS::PortMapping;
   use Moose;
-  has containerPort => (is => 'ro', isa => 'Int');
-  has hostPort => (is => 'ro', isa => 'Int');
-  has protocol => (is => 'ro', isa => 'Str');
+  has ContainerPort => (is => 'ro', isa => 'Int', xmlname => 'containerPort', request_name => 'containerPort', traits => ['Unwrapped','NameInRequest']);
+  has HostPort => (is => 'ro', isa => 'Int', xmlname => 'hostPort', request_name => 'hostPort', traits => ['Unwrapped','NameInRequest']);
+  has Protocol => (is => 'ro', isa => 'Str', xmlname => 'protocol', request_name => 'protocol', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::PortMapping object:
 
-  $service_obj->Method(Att1 => { containerPort => $value, ..., protocol => $value  });
+  $service_obj->Method(Att1 => { ContainerPort => $value, ..., Protocol => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::PortMapping object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->containerPort
+  $result->Att1->ContainerPort
 
 =head1 DESCRIPTION
 
@@ -42,14 +42,14 @@ responses.
 
 =head1 ATTRIBUTES
 
-=head2 containerPort => Int
+=head2 ContainerPort => Int
 
   The port number on the container that is bound to the user-specified or
 automatically assigned host port. If you specify a container port and
 not a host port, your container automatically receives a host port in
 the ephemeral port range (for more information, see C<hostPort>).
 
-=head2 hostPort => Int
+=head2 HostPort => Int
 
   The port number on the container instance to reserve for your
 container. You can specify a non-reserved host port for your container
@@ -76,7 +76,7 @@ DescribeContainerInstances output, and a container instance may have up
 to 50 reserved ports at a time, including the default reserved ports
 (automatically assigned ports do not count toward this limit).
 
-=head2 protocol => Str
+=head2 Protocol => Str
 
   The protocol used for the port mapping. Valid values are C<tcp> and
 C<udp>. The default is C<tcp>.

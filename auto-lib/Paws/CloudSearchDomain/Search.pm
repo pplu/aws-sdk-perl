@@ -1,19 +1,19 @@
 
 package Paws::CloudSearchDomain::Search;
   use Moose;
-  has cursor => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'cursor' );
-  has expr => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'expr' );
-  has facet => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'facet' );
-  has filterQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'fq' );
-  has highlight => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'highlight' );
-  has partial => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'partial' );
-  has query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q' , required => 1);
-  has queryOptions => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q.options' );
-  has queryParser => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q.parser' );
-  has return => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'return' );
-  has size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size' );
-  has sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort' );
-  has start => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'start' );
+  has Cursor => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'cursor' );
+  has Expr => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'expr' );
+  has Facet => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'facet' );
+  has FilterQuery => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'filterQuery' );
+  has Highlight => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'highlight' );
+  has Partial => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'partial' );
+  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query' , required => 1);
+  has QueryOptions => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'queryOptions' );
+  has QueryParser => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'queryParser' );
+  has Return => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'return' );
+  has Size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size' );
+  has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort' );
+  has Start => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'start' );
 
   use MooseX::ClassAttribute;
 
@@ -46,7 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cursor => Str
+=head2 Cursor => Str
 
   Retrieves a cursor value you can use to page through large result sets.
 Use the C<size> parameter to control the number of hits to include in
@@ -58,7 +58,7 @@ specify the cursor value returned in the hits section of the response.
 For more information, see Paginating Results in the I<Amazon
 CloudSearch Developer Guide>.
 
-=head2 expr => Str
+=head2 Expr => Str
 
   Defines one or more numeric expressions that can be used to sort
 results or specify search or filter criteria. You can also specify
@@ -74,7 +74,7 @@ For information about the variables, operators, and functions you can
 use in expressions, see Writing Expressions in the I<Amazon CloudSearch
 Developer Guide>.
 
-=head2 facet => Str
+=head2 Facet => Str
 
   Specifies one or more fields for which to get facet information, and
 options that control how the facet information is returned. Each
@@ -140,7 +140,7 @@ C<{"year":{"sort":"bucket"}}>
 For more information, see Getting and Using Facet Information in the
 I<Amazon CloudSearch Developer Guide>.
 
-=head2 filterQuery => Str
+=head2 FilterQuery => Str
 
   Specifies a structured query that filters the results of a search
 without affecting how the results are scored and sorted. You use
@@ -154,7 +154,7 @@ query syntax.
 For more information about using filters, see Filtering Matching
 Documents in the I<Amazon CloudSearch Developer Guide>.
 
-=head2 highlight => Str
+=head2 Highlight => Str
 
   Retrieves highlights for matches in the specified C<text> or
 C<text-array> fields. Each specified field must be highlight enabled in
@@ -194,7 +194,7 @@ C<actors> and C<title> fields.
 C<{ "actors": {}, "title": {"format": "text","max_phrases":
 2,"pre_tag": "B<","post_tag": ">"} }>
 
-=head2 partial => Bool
+=head2 Partial => Bool
 
   Enables partial results to be returned if one or more index partitions
 are unavailable. When your search index is partitioned across multiple
@@ -209,7 +209,7 @@ displaying no results, you could display the partial results and a
 message indicating that the results might be incomplete due to a
 temporary system outage.
 
-=head2 B<REQUIRED> query => Str
+=head2 B<REQUIRED> Query => Str
 
   Specifies the search criteria for the request. How you specify the
 search criteria depends on the query parser used for the request and
@@ -221,7 +221,7 @@ specify the C<queryParser> parameter.
 For more information about specifying search criteria, see Searching
 Your Data in the I<Amazon CloudSearch Developer Guide>.
 
-=head2 queryOptions => Str
+=head2 QueryOptions => Str
 
   Configures options for the query parser specified in the C<queryParser>
 parameter. You specify the options in JSON using the following form
@@ -327,7 +327,7 @@ the scores from all fields (pure sum): C<"tieBreaker":1>. Valid values:
 =back
 
 
-=head2 queryParser => Str
+=head2 QueryParser => Str
 
   Specifies which query parser to use to process the request. If
 C<queryParser> is not specified, Amazon CloudSearch uses the C<simple>
@@ -367,7 +367,7 @@ information, see DisMax Query Parser Syntax.
 =back
 
 
-=head2 return => Str
+=head2 Return => Str
 
   Specifies the field and expression values to include in the response.
 Multiple fields or expressions are specified as a comma-separated list.
@@ -376,11 +376,11 @@ By default, a search response includes all return enabled fields
 documents, specify C<_no_fields>. To retrieve the relevance score
 calculated for each document, specify C<_score>.
 
-=head2 size => Int
+=head2 Size => Int
 
   Specifies the maximum number of search hits to include in the response.
 
-=head2 sort => Str
+=head2 Sort => Str
 
   Specifies the fields or custom expressions to use to sort the search
 results. Multiple fields or expressions are specified as a
@@ -395,7 +395,7 @@ by document ID (C<_id asc>) and version (C<_version desc>).
 For more information, see Sorting Results in the I<Amazon CloudSearch
 Developer Guide>.
 
-=head2 start => Int
+=head2 Start => Int
 
   Specifies the offset of the first search hit you want to return. Note
 that the result set is zero-based; the first result is at index 0. You

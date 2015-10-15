@@ -1,8 +1,8 @@
 package Paws::DeviceFarm::Sample;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str');
-  has type => (is => 'ro', isa => 'Str');
-  has url => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has Url => (is => 'ro', isa => 'Str', xmlname => 'url', request_name => 'url', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::Sample object:
 
-  $service_obj->Method(Att1 => { arn => $value, ..., url => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Url => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::Sample object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->arn
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
@@ -37,11 +37,11 @@ Represents a sample of performance data.
 
 =head1 ATTRIBUTES
 
-=head2 arn => Str
+=head2 Arn => Str
 
   The sample's ARN.
 
-=head2 type => Str
+=head2 Type => Str
 
   The sample's type.
 
@@ -126,7 +126,7 @@ received, by app process.
 =back
 
 
-=head2 url => Str
+=head2 Url => Str
 
   The pre-signed Amazon S3 URL that can be used with a corresponding GET
 request to download the sample's file.

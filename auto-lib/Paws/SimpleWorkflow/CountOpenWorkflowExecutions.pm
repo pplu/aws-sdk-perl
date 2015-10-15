@@ -1,11 +1,11 @@
 
 package Paws::SimpleWorkflow::CountOpenWorkflowExecutions;
   use Moose;
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has executionFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionFilter');
-  has startTimeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExecutionTimeFilter', required => 1);
-  has tagFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::TagFilter');
-  has typeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeFilter');
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has ExecutionFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionFilter', traits => ['NameInRequest'], request_name => 'executionFilter' );
+  has StartTimeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExecutionTimeFilter', traits => ['NameInRequest'], request_name => 'startTimeFilter' , required => 1);
+  has TagFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::TagFilter', traits => ['NameInRequest'], request_name => 'tagFilter' );
+  has TypeFilter => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeFilter', traits => ['NameInRequest'], request_name => 'typeFilter' );
 
   use MooseX::ClassAttribute;
 
@@ -36,11 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
   The name of the domain containing the workflow executions to count.
 
-=head2 executionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>
+=head2 ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>
 
   If specified, only workflow executions matching the C<WorkflowId> in
 the filter are counted.
@@ -48,12 +48,12 @@ the filter are counted.
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
 
-=head2 B<REQUIRED> startTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
+=head2 B<REQUIRED> StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
 
   Specifies the start time criteria that workflow executions must meet in
 order to be counted.
 
-=head2 tagFilter => L<Paws::SimpleWorkflow::TagFilter>
+=head2 TagFilter => L<Paws::SimpleWorkflow::TagFilter>
 
   If specified, only executions that have a tag that matches the filter
 are counted.
@@ -61,7 +61,7 @@ are counted.
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
 
-=head2 typeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>
+=head2 TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>
 
   Specifies the type of the workflow executions to be counted.
 

@@ -1,8 +1,8 @@
 
 package Paws::IoT::UpdateThing;
   use Moose;
-  has attributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', required => 1);
-  has thingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
+  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload', required => 1);
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,14 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> attributePayload => L<Paws::IoT::AttributePayload>
+=head2 B<REQUIRED> AttributePayload => L<Paws::IoT::AttributePayload>
 
   The attribute payload, a JSON string containing up to three key-value
 pairs.
 
 For example: {\"attributes\":{\"string1\":\"string2\E<rdquo>}}
 
-=head2 B<REQUIRED> thingName => Str
+=head2 B<REQUIRED> ThingName => Str
 
   The thing name.
 

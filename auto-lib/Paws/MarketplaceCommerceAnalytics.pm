@@ -46,7 +46,7 @@ Provides AWS Marketplace business intelligence data on-demand.
 
 =head1 METHODS
 
-=head2 GenerateDataSet(dataSetPublicationDate => Str, dataSetType => Str, destinationS3BucketName => Str, roleNameArn => Str, snsTopicArn => Str, [destinationS3Prefix => Str])
+=head2 GenerateDataSet(DataSetPublicationDate => Str, DataSetType => Str, DestinationS3BucketName => Str, RoleNameArn => Str, SnsTopicArn => Str, [DestinationS3Prefix => Str])
 
 Each argument is described in detail in: L<Paws::MarketplaceCommerceAnalytics::GenerateDataSet>
 

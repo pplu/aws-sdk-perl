@@ -1,7 +1,7 @@
 package Paws::Support::TrustedAdvisorCostOptimizingSummary;
   use Moose;
-  has estimatedMonthlySavings => (is => 'ro', isa => 'Num', required => 1);
-  has estimatedPercentMonthlySavings => (is => 'ro', isa => 'Num', required => 1);
+  has EstimatedMonthlySavings => (is => 'ro', isa => 'Num', xmlname => 'estimatedMonthlySavings', request_name => 'estimatedMonthlySavings', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has EstimatedPercentMonthlySavings => (is => 'ro', isa => 'Num', xmlname => 'estimatedPercentMonthlySavings', request_name => 'estimatedPercentMonthlySavings', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Support::TrustedAdvisorCostOptimizingSummary object:
 
-  $service_obj->Method(Att1 => { estimatedMonthlySavings => $value, ..., estimatedPercentMonthlySavings => $value  });
+  $service_obj->Method(Att1 => { EstimatedMonthlySavings => $value, ..., EstimatedPercentMonthlySavings => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Support::TrustedAdvisorCostOptimizingSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->estimatedMonthlySavings
+  $result->Att1->EstimatedMonthlySavings
 
 =head1 DESCRIPTION
 
@@ -37,12 +37,12 @@ actions are taken.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> estimatedMonthlySavings => Num
+=head2 B<REQUIRED> EstimatedMonthlySavings => Num
 
   The estimated monthly savings that might be realized if the recommended
 actions are taken.
 
-=head2 B<REQUIRED> estimatedPercentMonthlySavings => Num
+=head2 B<REQUIRED> EstimatedPercentMonthlySavings => Num
 
   The estimated percentage of savings that might be realized if the
 recommended actions are taken.

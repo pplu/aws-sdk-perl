@@ -1,8 +1,8 @@
 
 package Paws::Support::DescribeTrustedAdvisorCheckResult;
   use Moose;
-  has checkId => (is => 'ro', isa => 'Str', required => 1);
-  has language => (is => 'ro', isa => 'Str');
+  has CheckId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checkId' , required => 1);
+  has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' );
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> checkId => Str
+=head2 B<REQUIRED> CheckId => Str
 
   The unique identifier for the Trusted Advisor check.
 
-=head2 language => Str
+=head2 Language => Str
 
   The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language

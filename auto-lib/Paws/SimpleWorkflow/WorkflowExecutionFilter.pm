@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::WorkflowExecutionFilter;
   use Moose;
-  has workflowId => (is => 'ro', isa => 'Str', required => 1);
+  has WorkflowId => (is => 'ro', isa => 'Str', xmlname => 'workflowId', request_name => 'workflowId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::WorkflowExecutionFilter object:
 
-  $service_obj->Method(Att1 => { workflowId => $value, ..., workflowId => $value  });
+  $service_obj->Method(Att1 => { WorkflowId => $value, ..., WorkflowId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::WorkflowExecutionFilter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->workflowId
+  $result->Att1->WorkflowId
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ C<workflowId>.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> workflowId => Str
+=head2 B<REQUIRED> WorkflowId => Str
 
   The workflowId to pass of match the criteria of this filter.
 

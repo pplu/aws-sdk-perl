@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes;
   use Moose;
-  has childPolicy => (is => 'ro', isa => 'Str', required => 1);
-  has timeoutType => (is => 'ro', isa => 'Str', required => 1);
+  has ChildPolicy => (is => 'ro', isa => 'Str', xmlname => 'childPolicy', request_name => 'childPolicy', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has TimeoutType => (is => 'ro', isa => 'Str', xmlname => 'timeoutType', request_name => 'timeoutType', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes object:
 
-  $service_obj->Method(Att1 => { childPolicy => $value, ..., timeoutType => $value  });
+  $service_obj->Method(Att1 => { ChildPolicy => $value, ..., TimeoutType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->childPolicy
+  $result->Att1->ChildPolicy
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ Provides details of the C<WorkflowExecutionTimedOut> event.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> childPolicy => Str
+=head2 B<REQUIRED> ChildPolicy => Str
 
   The policy used for the child workflow executions of this workflow
 execution.
@@ -58,7 +58,7 @@ continue to run.
 =back
 
 
-=head2 B<REQUIRED> timeoutType => Str
+=head2 B<REQUIRED> TimeoutType => Str
 
   The type of timeout that caused this event.
 

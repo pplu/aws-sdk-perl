@@ -1,8 +1,8 @@
 
 package Paws::IoT::ListCertificatesResponse;
   use Moose;
-  has certificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Certificate]');
-  has nextMarker => (is => 'ro', isa => 'Str');
+  has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Certificate]');
+  has NextMarker => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -14,10 +14,10 @@ Paws::IoT::ListCertificatesResponse
 
 =head1 ATTRIBUTES
 
-=head2 certificates => ArrayRef[L<Paws::IoT::Certificate>]
+=head2 Certificates => ArrayRef[L<Paws::IoT::Certificate>]
 
   The descriptions of the certificates.
-=head2 nextMarker => Str
+=head2 NextMarker => Str
 
   The marker for the next set of results, or null if there are no
 additional results.

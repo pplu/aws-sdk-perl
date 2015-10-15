@@ -1,8 +1,8 @@
 package Paws::Config::ConfigurationRecorder;
   use Moose;
-  has name => (is => 'ro', isa => 'Str');
-  has recordingGroup => (is => 'ro', isa => 'Paws::Config::RecordingGroup');
-  has roleARN => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has RecordingGroup => (is => 'ro', isa => 'Paws::Config::RecordingGroup', xmlname => 'recordingGroup', request_name => 'recordingGroup', traits => ['Unwrapped','NameInRequest']);
+  has RoleARN => (is => 'ro', isa => 'Str', xmlname => 'roleARN', request_name => 'roleARN', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Config::ConfigurationRecorder object:
 
-  $service_obj->Method(Att1 => { name => $value, ..., roleARN => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., RoleARN => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Config::ConfigurationRecorder object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->name
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
@@ -38,20 +38,20 @@ AWS resource.
 
 =head1 ATTRIBUTES
 
-=head2 name => Str
+=head2 Name => Str
 
   The name of the recorder. By default, AWS Config automatically assigns
 the name "default" when creating the configuration recorder. You cannot
 change the assigned name.
 
-=head2 recordingGroup => L<Paws::Config::RecordingGroup>
+=head2 RecordingGroup => L<Paws::Config::RecordingGroup>
 
   The recording group specifies either to record configurations for all
 supported resources or to provide a list of resource types to record.
 The list of resource types must be a subset of supported resource
 types.
 
-=head2 roleARN => Str
+=head2 RoleARN => Str
 
   Amazon Resource Name (ARN) of the IAM role used to describe the AWS
 resources associated with the account.

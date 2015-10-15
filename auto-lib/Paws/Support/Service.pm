@@ -1,8 +1,8 @@
 package Paws::Support::Service;
   use Moose;
-  has categories => (is => 'ro', isa => 'ArrayRef[Paws::Support::Category]');
-  has code => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str');
+  has Categories => (is => 'ro', isa => 'ArrayRef[Paws::Support::Category]', xmlname => 'categories', request_name => 'categories', traits => ['Unwrapped','NameInRequest']);
+  has Code => (is => 'ro', isa => 'Str', xmlname => 'code', request_name => 'code', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Support::Service object:
 
-  $service_obj->Method(Att1 => { categories => $value, ..., name => $value  });
+  $service_obj->Method(Att1 => { Categories => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Service object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->categories
+  $result->Att1->Categories
 
 =head1 DESCRIPTION
 
@@ -38,19 +38,19 @@ operation.
 
 =head1 ATTRIBUTES
 
-=head2 categories => ArrayRef[L<Paws::Support::Category>]
+=head2 Categories => ArrayRef[L<Paws::Support::Category>]
 
   A list of categories that describe the type of support issue a case
 describes. Categories consist of a category name and a category code.
 Category names and codes are passed to AWS Support when you call
 CreateCase.
 
-=head2 code => Str
+=head2 Code => Str
 
   The code for an AWS service returned by the DescribeServices response.
 The C<Name> element contains the corresponding friendly name.
 
-=head2 name => Str
+=head2 Name => Str
 
   The friendly name for an AWS service. The C<Code> element contains the
 corresponding code.

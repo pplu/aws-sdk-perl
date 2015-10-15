@@ -1,7 +1,7 @@
 package Paws::CodePipeline::CurrentRevision;
   use Moose;
-  has changeIdentifier => (is => 'ro', isa => 'Str', required => 1);
-  has revision => (is => 'ro', isa => 'Str', required => 1);
+  has ChangeIdentifier => (is => 'ro', isa => 'Str', xmlname => 'changeIdentifier', request_name => 'changeIdentifier', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Revision => (is => 'ro', isa => 'Str', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::CurrentRevision object:
 
-  $service_obj->Method(Att1 => { changeIdentifier => $value, ..., revision => $value  });
+  $service_obj->Method(Att1 => { ChangeIdentifier => $value, ..., Revision => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::CurrentRevision object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->changeIdentifier
+  $result->Att1->ChangeIdentifier
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Represents information about a current revision.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> changeIdentifier => Str
+=head2 B<REQUIRED> ChangeIdentifier => Str
 
   The change identifier for the current revision.
 
-=head2 B<REQUIRED> revision => Str
+=head2 B<REQUIRED> Revision => Str
 
   The revision ID of the current version of an artifact.
 

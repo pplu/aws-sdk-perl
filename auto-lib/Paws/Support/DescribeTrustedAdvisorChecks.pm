@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeTrustedAdvisorChecks;
   use Moose;
-  has language => (is => 'ro', isa => 'Str', required => 1);
+  has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> language => Str
+=head2 B<REQUIRED> Language => Str
 
   The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language

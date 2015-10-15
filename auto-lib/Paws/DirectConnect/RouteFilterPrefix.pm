@@ -1,6 +1,6 @@
 package Paws::DirectConnect::RouteFilterPrefix;
   use Moose;
-  has cidr => (is => 'ro', isa => 'Str');
+  has Cidr => (is => 'ro', isa => 'Str', xmlname => 'cidr', request_name => 'cidr', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DirectConnect::RouteFilterPrefix object:
 
-  $service_obj->Method(Att1 => { cidr => $value, ..., cidr => $value  });
+  $service_obj->Method(Att1 => { Cidr => $value, ..., Cidr => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConnect::RouteFilterPrefix object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->cidr
+  $result->Att1->Cidr
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ Gateway Protocol (BGP) over a public virtual interface.
 
 =head1 ATTRIBUTES
 
-=head2 cidr => Str
+=head2 Cidr => Str
 
   CIDR notation for the advertised route. Multiple routes are separated
 by commas.

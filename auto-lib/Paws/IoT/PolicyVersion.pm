@@ -1,8 +1,8 @@
 package Paws::IoT::PolicyVersion;
   use Moose;
-  has createDate => (is => 'ro', isa => 'Str');
-  has isDefaultVersion => (is => 'ro', isa => 'Bool');
-  has versionId => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Str', xmlname => 'createDate', request_name => 'createDate', traits => ['Unwrapped','NameInRequest']);
+  has IsDefaultVersion => (is => 'ro', isa => 'Bool', xmlname => 'isDefaultVersion', request_name => 'isDefaultVersion', traits => ['Unwrapped','NameInRequest']);
+  has VersionId => (is => 'ro', isa => 'Str', xmlname => 'versionId', request_name => 'versionId', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::PolicyVersion object:
 
-  $service_obj->Method(Att1 => { createDate => $value, ..., versionId => $value  });
+  $service_obj->Method(Att1 => { CreateDate => $value, ..., VersionId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::PolicyVersion object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->createDate
+  $result->Att1->CreateDate
 
 =head1 DESCRIPTION
 
@@ -37,15 +37,15 @@ Describes a policy version.
 
 =head1 ATTRIBUTES
 
-=head2 createDate => Str
+=head2 CreateDate => Str
 
   The date and time the policy was created.
 
-=head2 isDefaultVersion => Bool
+=head2 IsDefaultVersion => Bool
 
   Specifies whether the policy version is the default.
 
-=head2 versionId => Str
+=head2 VersionId => Str
 
   The policy version ID.
 

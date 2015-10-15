@@ -1,9 +1,9 @@
 
 package Paws::SimpleWorkflow::PollForActivityTask;
   use Moose;
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has identity => (is => 'ro', isa => 'Str');
-  has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has Identity => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identity' );
+  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'taskList' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,18 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
   The name of the domain that contains the task lists being polled.
 
-=head2 identity => Str
+=head2 Identity => Str
 
   Identity of the worker making the request, recorded in the
 C<ActivityTaskStarted> event in the workflow history. This enables
 diagnostic tracing when problems arise. The form of this identity is
 user defined.
 
-=head2 B<REQUIRED> taskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   Specifies the task list to poll for activity tasks.
 

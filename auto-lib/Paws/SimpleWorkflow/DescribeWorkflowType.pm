@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::DescribeWorkflowType;
   use Moose;
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has workflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', traits => ['NameInRequest'], request_name => 'workflowType' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
   The name of the domain in which this workflow type is registered.
 
-=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The workflow type to describe.
 

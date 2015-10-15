@@ -1,8 +1,8 @@
 package Paws::CodeDeploy::RevisionLocation;
   use Moose;
-  has gitHubLocation => (is => 'ro', isa => 'Paws::CodeDeploy::GitHubLocation');
-  has revisionType => (is => 'ro', isa => 'Str');
-  has s3Location => (is => 'ro', isa => 'Paws::CodeDeploy::S3Location');
+  has GitHubLocation => (is => 'ro', isa => 'Paws::CodeDeploy::GitHubLocation', xmlname => 'gitHubLocation', request_name => 'gitHubLocation', traits => ['Unwrapped','NameInRequest']);
+  has RevisionType => (is => 'ro', isa => 'Str', xmlname => 'revisionType', request_name => 'revisionType', traits => ['Unwrapped','NameInRequest']);
+  has S3Location => (is => 'ro', isa => 'Paws::CodeDeploy::S3Location', xmlname => 's3Location', request_name => 's3Location', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::RevisionLocation object:
 
-  $service_obj->Method(Att1 => { gitHubLocation => $value, ..., s3Location => $value  });
+  $service_obj->Method(Att1 => { GitHubLocation => $value, ..., S3Location => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::RevisionLocation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->gitHubLocation
+  $result->Att1->GitHubLocation
 
 =head1 DESCRIPTION
 
@@ -37,11 +37,11 @@ Information about an application revision's location.
 
 =head1 ATTRIBUTES
 
-=head2 gitHubLocation => L<Paws::CodeDeploy::GitHubLocation>
+=head2 GitHubLocation => L<Paws::CodeDeploy::GitHubLocation>
 
   
 
-=head2 revisionType => Str
+=head2 RevisionType => Str
 
   The application revision's type:
 
@@ -54,7 +54,7 @@ Information about an application revision's location.
 =back
 
 
-=head2 s3Location => L<Paws::CodeDeploy::S3Location>
+=head2 S3Location => L<Paws::CodeDeploy::S3Location>
 
   
 

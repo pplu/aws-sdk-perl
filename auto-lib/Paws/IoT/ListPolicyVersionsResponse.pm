@@ -1,7 +1,7 @@
 
 package Paws::IoT::ListPolicyVersionsResponse;
   use Moose;
-  has policyVersions => (is => 'ro', isa => 'ArrayRef[Paws::IoT::PolicyVersion]');
+  has PolicyVersions => (is => 'ro', isa => 'ArrayRef[Paws::IoT::PolicyVersion]');
 
 1;
 
@@ -13,7 +13,7 @@ Paws::IoT::ListPolicyVersionsResponse
 
 =head1 ATTRIBUTES
 
-=head2 policyVersions => ArrayRef[L<Paws::IoT::PolicyVersion>]
+=head2 PolicyVersions => ArrayRef[L<Paws::IoT::PolicyVersion>]
 
   The policy versions.
 

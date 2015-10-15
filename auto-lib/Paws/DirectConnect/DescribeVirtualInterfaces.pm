@@ -1,8 +1,8 @@
 
 package Paws::DirectConnect::DescribeVirtualInterfaces;
   use Moose;
-  has connectionId => (is => 'ro', isa => 'Str');
-  has virtualInterfaceId => (is => 'ro', isa => 'Str');
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
+  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' );
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 connectionId => Str
+=head2 ConnectionId => Str
 
   
 
-=head2 virtualInterfaceId => Str
+=head2 VirtualInterfaceId => Str
 
   
 

@@ -1,7 +1,7 @@
 
 package Paws::IoT::DeletePolicy;
   use Moose;
-  has policyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
+  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> policyName => Str
+=head2 B<REQUIRED> PolicyName => Str
 
   The name of the policy to delete.
 

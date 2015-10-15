@@ -1,9 +1,9 @@
 package Paws::CloudSearchDomain::Hit;
   use Moose;
-  has exprs => (is => 'ro', isa => 'Paws::CloudSearchDomain::Exprs');
-  has fields => (is => 'ro', isa => 'Paws::CloudSearchDomain::Fields');
-  has highlights => (is => 'ro', isa => 'Paws::CloudSearchDomain::Highlights');
-  has id => (is => 'ro', isa => 'Str');
+  has Exprs => (is => 'ro', isa => 'Paws::CloudSearchDomain::Exprs', xmlname => 'exprs', request_name => 'exprs', traits => ['Unwrapped','NameInRequest']);
+  has Fields => (is => 'ro', isa => 'Paws::CloudSearchDomain::Fields', xmlname => 'fields', request_name => 'fields', traits => ['Unwrapped','NameInRequest']);
+  has Highlights => (is => 'ro', isa => 'Paws::CloudSearchDomain::Highlights', xmlname => 'highlights', request_name => 'highlights', traits => ['Unwrapped','NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudSearchDomain::Hit object:
 
-  $service_obj->Method(Att1 => { exprs => $value, ..., id => $value  });
+  $service_obj->Method(Att1 => { Exprs => $value, ..., Id => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearchDomain::Hit object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->exprs
+  $result->Att1->Exprs
 
 =head1 DESCRIPTION
 
@@ -38,21 +38,21 @@ Information about a document that matches the search request.
 
 =head1 ATTRIBUTES
 
-=head2 exprs => L<Paws::CloudSearchDomain::Exprs>
+=head2 Exprs => L<Paws::CloudSearchDomain::Exprs>
 
   The expressions returned from a document that matches the search
 request.
 
-=head2 fields => L<Paws::CloudSearchDomain::Fields>
+=head2 Fields => L<Paws::CloudSearchDomain::Fields>
 
   The fields returned from a document that matches the search request.
 
-=head2 highlights => L<Paws::CloudSearchDomain::Highlights>
+=head2 Highlights => L<Paws::CloudSearchDomain::Highlights>
 
   The highlights returned from a document that matches the search
 request.
 
-=head2 id => Str
+=head2 Id => Str
 
   The document ID of a document that matches the search request.
 

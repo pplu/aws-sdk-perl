@@ -1,11 +1,11 @@
 package Paws::SimpleWorkflow::WorkflowTypeConfiguration;
   use Moose;
-  has defaultChildPolicy => (is => 'ro', isa => 'Str');
-  has defaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str');
-  has defaultLambdaRole => (is => 'ro', isa => 'Str');
-  has defaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
-  has defaultTaskPriority => (is => 'ro', isa => 'Str');
-  has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
+  has DefaultChildPolicy => (is => 'ro', isa => 'Str', xmlname => 'defaultChildPolicy', request_name => 'defaultChildPolicy', traits => ['Unwrapped','NameInRequest']);
+  has DefaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultExecutionStartToCloseTimeout', request_name => 'defaultExecutionStartToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
+  has DefaultLambdaRole => (is => 'ro', isa => 'Str', xmlname => 'defaultLambdaRole', request_name => 'defaultLambdaRole', traits => ['Unwrapped','NameInRequest']);
+  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', xmlname => 'defaultTaskList', request_name => 'defaultTaskList', traits => ['Unwrapped','NameInRequest']);
+  has DefaultTaskPriority => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskPriority', request_name => 'defaultTaskPriority', traits => ['Unwrapped','NameInRequest']);
+  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskStartToCloseTimeout', request_name => 'defaultTaskStartToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::WorkflowTypeConfiguration object:
 
-  $service_obj->Method(Att1 => { defaultChildPolicy => $value, ..., defaultTaskStartToCloseTimeout => $value  });
+  $service_obj->Method(Att1 => { DefaultChildPolicy => $value, ..., DefaultTaskStartToCloseTimeout => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::WorkflowTypeConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->defaultChildPolicy
+  $result->Att1->DefaultChildPolicy
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,7 @@ The configuration settings of a workflow type.
 
 =head1 ATTRIBUTES
 
-=head2 defaultChildPolicy => Str
+=head2 DefaultChildPolicy => Str
 
   I<Optional.> The default policy to use for the child workflow
 executions when a workflow execution of this type is terminated, by
@@ -66,7 +66,7 @@ continue to run.
 =back
 
 
-=head2 defaultExecutionStartToCloseTimeout => Str
+=head2 DefaultExecutionStartToCloseTimeout => Str
 
   I<Optional.> The default maximum duration, specified when registering
 the workflow type, for executions of this workflow type. This default
@@ -77,12 +77,12 @@ decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 defaultLambdaRole => Str
+=head2 DefaultLambdaRole => Str
 
   The default IAM role to use when a workflow execution invokes a AWS
 Lambda function.
 
-=head2 defaultTaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
   I<Optional.> The default task list, specified when registering the
 workflow type, for decisions tasks scheduled for workflow executions of
@@ -90,7 +90,7 @@ this type. This default can be overridden when starting a workflow
 execution using the StartWorkflowExecution action or the
 C<StartChildWorkflowExecution> decision.
 
-=head2 defaultTaskPriority => Str
+=head2 DefaultTaskPriority => Str
 
   I<Optional.> The default task priority, specified when registering the
 workflow type, for all decision tasks of this workflow type. This
@@ -105,7 +105,7 @@ indicate higher priority.
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
-=head2 defaultTaskStartToCloseTimeout => Str
+=head2 DefaultTaskStartToCloseTimeout => Str
 
   I<Optional.> The default maximum duration, specified when registering
 the workflow type, that a decision task for executions of this workflow

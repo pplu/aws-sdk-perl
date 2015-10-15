@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::TaskList;
   use Moose;
-  has name => (is => 'ro', isa => 'Str', required => 1);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::TaskList object:
 
-  $service_obj->Method(Att1 => { name => $value, ..., name => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::TaskList object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->name
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ Represents a task list.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name of the task list.
 

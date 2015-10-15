@@ -1,13 +1,13 @@
 
 package Paws::CodePipeline::CreateCustomActionType;
   use Moose;
-  has category => (is => 'ro', isa => 'Str', required => 1);
-  has configurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionConfigurationProperty]');
-  has inputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', required => 1);
-  has outputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', required => 1);
-  has provider => (is => 'ro', isa => 'Str', required => 1);
-  has settings => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeSettings');
-  has version => (is => 'ro', isa => 'Str', required => 1);
+  has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category' , required => 1);
+  has ConfigurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionConfigurationProperty]', traits => ['NameInRequest'], request_name => 'configurationProperties' );
+  has InputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', traits => ['NameInRequest'], request_name => 'inputArtifactDetails' , required => 1);
+  has OutputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', traits => ['NameInRequest'], request_name => 'outputArtifactDetails' , required => 1);
+  has Provider => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'provider' , required => 1);
+  has Settings => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeSettings', traits => ['NameInRequest'], request_name => 'settings' );
+  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -38,33 +38,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> category => Str
+=head2 B<REQUIRED> Category => Str
 
   The category of the custom action, such as a source action or a build
 action.
 
-=head2 configurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]
+=head2 ConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]
 
   The configuration properties for the custom action.
 
-=head2 B<REQUIRED> inputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+=head2 B<REQUIRED> InputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
   
 
-=head2 B<REQUIRED> outputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+=head2 B<REQUIRED> OutputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
   
 
-=head2 B<REQUIRED> provider => Str
+=head2 B<REQUIRED> Provider => Str
 
   The provider of the service used in the custom action, such as AWS
 CodeDeploy.
 
-=head2 settings => L<Paws::CodePipeline::ActionTypeSettings>
+=head2 Settings => L<Paws::CodePipeline::ActionTypeSettings>
 
   
 
-=head2 B<REQUIRED> version => Str
+=head2 B<REQUIRED> Version => Str
 
   The version number of the custom action.
 

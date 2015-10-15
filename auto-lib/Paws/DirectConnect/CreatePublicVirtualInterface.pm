@@ -1,8 +1,8 @@
 
 package Paws::DirectConnect::CreatePublicVirtualInterface;
   use Moose;
-  has connectionId => (is => 'ro', isa => 'Str', required => 1);
-  has newPublicVirtualInterface => (is => 'ro', isa => 'Paws::DirectConnect::NewPublicVirtualInterface', required => 1);
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
+  has NewPublicVirtualInterface => (is => 'ro', isa => 'Paws::DirectConnect::NewPublicVirtualInterface', traits => ['NameInRequest'], request_name => 'newPublicVirtualInterface' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> connectionId => Str
+=head2 B<REQUIRED> ConnectionId => Str
 
   
 
-=head2 B<REQUIRED> newPublicVirtualInterface => L<Paws::DirectConnect::NewPublicVirtualInterface>
+=head2 B<REQUIRED> NewPublicVirtualInterface => L<Paws::DirectConnect::NewPublicVirtualInterface>
 
   Detailed information for the public virtual interface to be created.
 

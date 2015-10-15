@@ -1,7 +1,7 @@
 package Paws::Inspector::LocalizedTextKey;
   use Moose;
-  has facility => (is => 'ro', isa => 'Str');
-  has id => (is => 'ro', isa => 'Str');
+  has Facility => (is => 'ro', isa => 'Str', xmlname => 'facility', request_name => 'facility', traits => ['Unwrapped','NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::LocalizedTextKey object:
 
-  $service_obj->Method(Att1 => { facility => $value, ..., id => $value  });
+  $service_obj->Method(Att1 => { Facility => $value, ..., Id => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::LocalizedTextKey object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->facility
+  $result->Att1->Facility
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ This data type is used in the LocalizedText data type.
 
 =head1 ATTRIBUTES
 
-=head2 facility => Str
+=head2 Facility => Str
 
   The module response source of the text.
 
-=head2 id => Str
+=head2 Id => Str
 
   Part of the module response source of the text.
 

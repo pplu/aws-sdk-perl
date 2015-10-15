@@ -1,9 +1,9 @@
 package Paws::Config::ResourceIdentifier;
   use Moose;
-  has resourceDeletionTime => (is => 'ro', isa => 'Str');
-  has resourceId => (is => 'ro', isa => 'Str');
-  has resourceName => (is => 'ro', isa => 'Str');
-  has resourceType => (is => 'ro', isa => 'Str');
+  has ResourceDeletionTime => (is => 'ro', isa => 'Str', xmlname => 'resourceDeletionTime', request_name => 'resourceDeletionTime', traits => ['Unwrapped','NameInRequest']);
+  has ResourceId => (is => 'ro', isa => 'Str', xmlname => 'resourceId', request_name => 'resourceId', traits => ['Unwrapped','NameInRequest']);
+  has ResourceName => (is => 'ro', isa => 'Str', xmlname => 'resourceName', request_name => 'resourceName', traits => ['Unwrapped','NameInRequest']);
+  has ResourceType => (is => 'ro', isa => 'Str', xmlname => 'resourceType', request_name => 'resourceType', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Config::ResourceIdentifier object:
 
-  $service_obj->Method(Att1 => { resourceDeletionTime => $value, ..., resourceType => $value  });
+  $service_obj->Method(Att1 => { ResourceDeletionTime => $value, ..., ResourceType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Config::ResourceIdentifier object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->resourceDeletionTime
+  $result->Att1->ResourceDeletionTime
 
 =head1 DESCRIPTION
 
@@ -40,19 +40,19 @@ name.
 
 =head1 ATTRIBUTES
 
-=head2 resourceDeletionTime => Str
+=head2 ResourceDeletionTime => Str
 
   The time that the resource was deleted.
 
-=head2 resourceId => Str
+=head2 ResourceId => Str
 
   The ID of the resource (for example., C<sg-xxxxxx>).
 
-=head2 resourceName => Str
+=head2 ResourceName => Str
 
   The custom name of the resource (if available).
 
-=head2 resourceType => Str
+=head2 ResourceType => Str
 
   The type of resource.
 

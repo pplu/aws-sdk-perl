@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::DeprecateActivityType;
   use Moose;
-  has activityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', required => 1);
-  has domain => (is => 'ro', isa => 'Str', required => 1);
+  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', traits => ['NameInRequest'], request_name => 'activityType' , required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> activityType => L<Paws::SimpleWorkflow::ActivityType>
+=head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
 
   The activity type to deprecate.
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
   The name of the domain in which the activity type is registered.
 

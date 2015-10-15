@@ -1,12 +1,12 @@
 
 package Paws::DeviceFarm::ScheduleRun;
   use Moose;
-  has appArn => (is => 'ro', isa => 'Str', required => 1);
-  has configuration => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunConfiguration');
-  has devicePoolArn => (is => 'ro', isa => 'Str', required => 1);
-  has name => (is => 'ro', isa => 'Str');
-  has projectArn => (is => 'ro', isa => 'Str', required => 1);
-  has test => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunTest', required => 1);
+  has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' , required => 1);
+  has Configuration => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunConfiguration', traits => ['NameInRequest'], request_name => 'configuration' );
+  has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
+  has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
+  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::ScheduleRunTest', traits => ['NameInRequest'], request_name => 'test' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -37,27 +37,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> appArn => Str
+=head2 B<REQUIRED> AppArn => Str
 
   The ARN of the app to schedule a run.
 
-=head2 configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>
+=head2 Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>
 
   Information about the settings for the run to be scheduled.
 
-=head2 B<REQUIRED> devicePoolArn => Str
+=head2 B<REQUIRED> DevicePoolArn => Str
 
   The ARN of the device pool for the run to be scheduled.
 
-=head2 name => Str
+=head2 Name => Str
 
   The name for the run to be scheduled.
 
-=head2 B<REQUIRED> projectArn => Str
+=head2 B<REQUIRED> ProjectArn => Str
 
   The ARN of the project for the run to be scheduled.
 
-=head2 B<REQUIRED> test => L<Paws::DeviceFarm::ScheduleRunTest>
+=head2 B<REQUIRED> Test => L<Paws::DeviceFarm::ScheduleRunTest>
 
   Information about the test for the run to be scheduled.
 

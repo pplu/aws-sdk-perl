@@ -1,10 +1,10 @@
 package Paws::Inspector::RulesPackage;
   use Moose;
-  has description => (is => 'ro', isa => 'Paws::Inspector::LocalizedText');
-  has provider => (is => 'ro', isa => 'Str');
-  has rulesPackageArn => (is => 'ro', isa => 'Str');
-  has rulesPackageName => (is => 'ro', isa => 'Str');
-  has version => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Paws::Inspector::LocalizedText', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
+  has Provider => (is => 'ro', isa => 'Str', xmlname => 'provider', request_name => 'provider', traits => ['Unwrapped','NameInRequest']);
+  has RulesPackageArn => (is => 'ro', isa => 'Str', xmlname => 'rulesPackageArn', request_name => 'rulesPackageArn', traits => ['Unwrapped','NameInRequest']);
+  has RulesPackageName => (is => 'ro', isa => 'Str', xmlname => 'rulesPackageName', request_name => 'rulesPackageName', traits => ['Unwrapped','NameInRequest']);
+  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::RulesPackage object:
 
-  $service_obj->Method(Att1 => { description => $value, ..., version => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::RulesPackage object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->description
+  $result->Att1->Description
 
 =head1 DESCRIPTION
 
@@ -42,23 +42,23 @@ DescribeRulesPackage action.
 
 =head1 ATTRIBUTES
 
-=head2 description => L<Paws::Inspector::LocalizedText>
+=head2 Description => L<Paws::Inspector::LocalizedText>
 
   The description of the rules package.
 
-=head2 provider => Str
+=head2 Provider => Str
 
   The provider of the rules package.
 
-=head2 rulesPackageArn => Str
+=head2 RulesPackageArn => Str
 
   The ARN of the rules package.
 
-=head2 rulesPackageName => Str
+=head2 RulesPackageName => Str
 
   The name of the rules package.
 
-=head2 version => Str
+=head2 Version => Str
 
   The version id of the rules package.
 

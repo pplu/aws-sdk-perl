@@ -1,10 +1,10 @@
 
 package Paws::CloudWatchLogs::DescribeExportTasks;
   use Moose;
-  has limit => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
-  has statusCode => (is => 'ro', isa => 'Str');
-  has taskId => (is => 'ro', isa => 'Str');
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has StatusCode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'statusCode' );
+  has TaskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskId' );
 
   use MooseX::ClassAttribute;
 
@@ -35,23 +35,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 limit => Int
+=head2 Limit => Int
 
   The maximum number of items returned in the response. If you don't
 specify a value, the request would return up to 50 items.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   A string token used for pagination that points to the next page of
 results. It must be a value obtained from the response of the previous
 C<DescribeExportTasks> request.
 
-=head2 statusCode => Str
+=head2 StatusCode => Str
 
   All export tasks that matches the specified status code will be
 returned. This can return zero or more export tasks.
 
-=head2 taskId => Str
+=head2 TaskId => Str
 
   Export task that matches the specified task Id will be returned. This
 can result in zero or one export task.

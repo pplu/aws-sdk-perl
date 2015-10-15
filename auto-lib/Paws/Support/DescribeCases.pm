@@ -1,15 +1,15 @@
 
 package Paws::Support::DescribeCases;
   use Moose;
-  has afterTime => (is => 'ro', isa => 'Str');
-  has beforeTime => (is => 'ro', isa => 'Str');
-  has caseIdList => (is => 'ro', isa => 'ArrayRef[Str]');
-  has displayId => (is => 'ro', isa => 'Str');
-  has includeCommunications => (is => 'ro', isa => 'Bool');
-  has includeResolvedCases => (is => 'ro', isa => 'Bool');
-  has language => (is => 'ro', isa => 'Str');
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has AfterTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterTime' );
+  has BeforeTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforeTime' );
+  has CaseIdList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'caseIdList' );
+  has DisplayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'displayId' );
+  has IncludeCommunications => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeCommunications' );
+  has IncludeResolvedCases => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeResolvedCases' );
+  has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -40,47 +40,47 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 afterTime => Str
+=head2 AfterTime => Str
 
   The start date for a filtered date search on support case
 communications. Case communications are available for 12 months after
 creation.
 
-=head2 beforeTime => Str
+=head2 BeforeTime => Str
 
   The end date for a filtered date search on support case communications.
 Case communications are available for 12 months after creation.
 
-=head2 caseIdList => ArrayRef[Str]
+=head2 CaseIdList => ArrayRef[Str]
 
   A list of ID numbers of the support cases you want returned. The
 maximum number of cases is 100.
 
-=head2 displayId => Str
+=head2 DisplayId => Str
 
   The ID displayed for a case in the AWS Support Center user interface.
 
-=head2 includeCommunications => Bool
+=head2 IncludeCommunications => Bool
 
   Specifies whether communications should be included in the
 DescribeCases results. The default is I<true>.
 
-=head2 includeResolvedCases => Bool
+=head2 IncludeResolvedCases => Bool
 
   Specifies whether resolved support cases should be included in the
 DescribeCases results. The default is I<false>.
 
-=head2 language => Str
+=head2 Language => Str
 
   The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.
 
-=head2 maxResults => Int
+=head2 MaxResults => Int
 
   The maximum number of results to return before paginating.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   A resumption point for pagination.
 

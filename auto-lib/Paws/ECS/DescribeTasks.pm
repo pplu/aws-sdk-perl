@@ -1,8 +1,8 @@
 
 package Paws::ECS::DescribeTasks;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has tasks => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Tasks => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'tasks' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,13 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the task to describe. If you do not specify a cluster, the
 default cluster is assumed.
 
-=head2 B<REQUIRED> tasks => ArrayRef[Str]
+=head2 B<REQUIRED> Tasks => ArrayRef[Str]
 
   A space-separated list of task IDs or full Amazon Resource Name (ARN)
 entries.

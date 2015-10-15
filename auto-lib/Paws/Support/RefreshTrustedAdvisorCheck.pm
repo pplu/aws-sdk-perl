@@ -1,7 +1,7 @@
 
 package Paws::Support::RefreshTrustedAdvisorCheck;
   use Moose;
-  has checkId => (is => 'ro', isa => 'Str', required => 1);
+  has CheckId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checkId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> checkId => Str
+=head2 B<REQUIRED> CheckId => Str
 
   The unique identifier for the Trusted Advisor check.
 

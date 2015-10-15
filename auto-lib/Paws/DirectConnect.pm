@@ -164,7 +164,7 @@ return.
 
 =head1 METHODS
 
-=head2 AllocateConnectionOnInterconnect(bandwidth => Str, connectionName => Str, interconnectId => Str, ownerAccount => Str, vlan => Int)
+=head2 AllocateConnectionOnInterconnect(Bandwidth => Str, ConnectionName => Str, InterconnectId => Str, OwnerAccount => Str, Vlan => Int)
 
 Each argument is described in detail in: L<Paws::DirectConnect::AllocateConnectionOnInterconnect>
 
@@ -176,7 +176,7 @@ Allocates a VLAN number and a specified amount of bandwidth for use by
 a hosted connection on the given interconnect.
 
 
-=head2 AllocatePrivateVirtualInterface(connectionId => Str, newPrivateVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation>, ownerAccount => Str)
+=head2 AllocatePrivateVirtualInterface(ConnectionId => Str, NewPrivateVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation>, OwnerAccount => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::AllocatePrivateVirtualInterface>
 
@@ -194,7 +194,7 @@ Until this step has been completed, the virtual interface will be in
 'Confirming' state, and will not be available for handling traffic.
 
 
-=head2 AllocatePublicVirtualInterface(connectionId => Str, newPublicVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPublicVirtualInterfaceAllocation>, ownerAccount => Str)
+=head2 AllocatePublicVirtualInterface(ConnectionId => Str, NewPublicVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPublicVirtualInterfaceAllocation>, OwnerAccount => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::AllocatePublicVirtualInterface>
 
@@ -212,7 +212,7 @@ this step has been completed, the virtual interface will be in
 'Confirming' state, and will not be available for handling traffic.
 
 
-=head2 ConfirmConnection(connectionId => Str)
+=head2 ConfirmConnection(ConnectionId => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::ConfirmConnection>
 
@@ -225,7 +225,7 @@ state, and will remain in this state until the owner calls
 ConfirmConnection to confirm creation of the hosted connection.
 
 
-=head2 ConfirmPrivateVirtualInterface(virtualGatewayId => Str, virtualInterfaceId => Str)
+=head2 ConfirmPrivateVirtualInterface(VirtualGatewayId => Str, VirtualInterfaceId => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::ConfirmPrivateVirtualInterface>
 
@@ -239,7 +239,7 @@ interface will be created and attached to the given virtual private
 gateway, and will be available for handling traffic.
 
 
-=head2 ConfirmPublicVirtualInterface(virtualInterfaceId => Str)
+=head2 ConfirmPublicVirtualInterface(VirtualInterfaceId => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::ConfirmPublicVirtualInterface>
 
@@ -253,7 +253,7 @@ virtual interface will be created and made available for handling
 traffic.
 
 
-=head2 CreateConnection(bandwidth => Str, connectionName => Str, location => Str)
+=head2 CreateConnection(Bandwidth => Str, ConnectionName => Str, Location => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::CreateConnection>
 
@@ -272,7 +272,7 @@ regions, but a connection in one region does not provide connectivity
 to other regions.
 
 
-=head2 CreateInterconnect(bandwidth => Str, interconnectName => Str, location => Str)
+=head2 CreateInterconnect(Bandwidth => Str, InterconnectName => Str, Location => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::CreateInterconnect>
 
@@ -297,7 +297,7 @@ AWS resources by creating a virtual interface on their connection,
 using the VLAN assigned to them by the AWS Direct Connect partner.
 
 
-=head2 CreatePrivateVirtualInterface(connectionId => Str, newPrivateVirtualInterface => L<Paws::DirectConnect::NewPrivateVirtualInterface>)
+=head2 CreatePrivateVirtualInterface(ConnectionId => Str, NewPrivateVirtualInterface => L<Paws::DirectConnect::NewPrivateVirtualInterface>)
 
 Each argument is described in detail in: L<Paws::DirectConnect::CreatePrivateVirtualInterface>
 
@@ -309,7 +309,7 @@ interface supports sending traffic to a single virtual private cloud
 (VPC).
 
 
-=head2 CreatePublicVirtualInterface(connectionId => Str, newPublicVirtualInterface => L<Paws::DirectConnect::NewPublicVirtualInterface>)
+=head2 CreatePublicVirtualInterface(ConnectionId => Str, NewPublicVirtualInterface => L<Paws::DirectConnect::NewPublicVirtualInterface>)
 
 Each argument is described in detail in: L<Paws::DirectConnect::CreatePublicVirtualInterface>
 
@@ -321,7 +321,7 @@ supports sending traffic to public services of AWS such as Amazon
 Simple Storage Service (Amazon S3).
 
 
-=head2 DeleteConnection(connectionId => Str)
+=head2 DeleteConnection(ConnectionId => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::DeleteConnection>
 
@@ -335,7 +335,7 @@ any services or charges for cross-connects or network circuits that
 connect you to the AWS Direct Connect location.
 
 
-=head2 DeleteInterconnect(interconnectId => Str)
+=head2 DeleteInterconnect(InterconnectId => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::DeleteInterconnect>
 
@@ -344,7 +344,7 @@ Returns: a L<Paws::DirectConnect::DeleteInterconnectResponse> instance
   Deletes the specified interconnect.
 
 
-=head2 DeleteVirtualInterface(virtualInterfaceId => Str)
+=head2 DeleteVirtualInterface(VirtualInterfaceId => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::DeleteVirtualInterface>
 
@@ -353,7 +353,7 @@ Returns: a L<Paws::DirectConnect::DeleteVirtualInterfaceResponse> instance
   Deletes a virtual interface.
 
 
-=head2 DescribeConnections([connectionId => Str])
+=head2 DescribeConnections([ConnectionId => Str])
 
 Each argument is described in detail in: L<Paws::DirectConnect::DescribeConnections>
 
@@ -365,7 +365,7 @@ If a connection ID is provided, the call returns only that particular
 connection.
 
 
-=head2 DescribeConnectionsOnInterconnect(interconnectId => Str)
+=head2 DescribeConnectionsOnInterconnect(InterconnectId => Str)
 
 Each argument is described in detail in: L<Paws::DirectConnect::DescribeConnectionsOnInterconnect>
 
@@ -375,7 +375,7 @@ Returns: a L<Paws::DirectConnect::Connections> instance
 interconnect.
 
 
-=head2 DescribeInterconnects([interconnectId => Str])
+=head2 DescribeInterconnects([InterconnectId => Str])
 
 Each argument is described in detail in: L<Paws::DirectConnect::DescribeInterconnects>
 
@@ -412,7 +412,7 @@ gateway can be managed via Amazon Virtual Private Cloud (VPC) console
 or the EC2 CreateVpnGateway action.
 
 
-=head2 DescribeVirtualInterfaces([connectionId => Str, virtualInterfaceId => Str])
+=head2 DescribeVirtualInterfaces([ConnectionId => Str, VirtualInterfaceId => Str])
 
 Each argument is described in detail in: L<Paws::DirectConnect::DescribeVirtualInterfaces>
 

@@ -1,10 +1,10 @@
 package Paws::SimpleWorkflow::ActivityTypeInfo;
   use Moose;
-  has activityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', required => 1);
-  has creationDate => (is => 'ro', isa => 'Str', required => 1);
-  has deprecationDate => (is => 'ro', isa => 'Str');
-  has description => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Str', required => 1);
+  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', xmlname => 'activityType', request_name => 'activityType', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has DeprecationDate => (is => 'ro', isa => 'Str', xmlname => 'deprecationDate', request_name => 'deprecationDate', traits => ['Unwrapped','NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::ActivityTypeInfo object:
 
-  $service_obj->Method(Att1 => { activityType => $value, ..., status => $value  });
+  $service_obj->Method(Att1 => { ActivityType => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::ActivityTypeInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->activityType
+  $result->Att1->ActivityType
 
 =head1 DESCRIPTION
 
@@ -39,24 +39,24 @@ Detailed information about an activity type.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> activityType => L<Paws::SimpleWorkflow::ActivityType>
+=head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
 
   The ActivityType type structure representing the activity type.
 
-=head2 B<REQUIRED> creationDate => Str
+=head2 B<REQUIRED> CreationDate => Str
 
   The date and time this activity type was created through
 RegisterActivityType.
 
-=head2 deprecationDate => Str
+=head2 DeprecationDate => Str
 
   If DEPRECATED, the date and time DeprecateActivityType was called.
 
-=head2 description => Str
+=head2 Description => Str
 
   The description of the activity type provided in RegisterActivityType.
 
-=head2 B<REQUIRED> status => Str
+=head2 B<REQUIRED> Status => Str
 
   The current status of the activity type.
 

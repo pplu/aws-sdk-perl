@@ -1,8 +1,8 @@
 
 package Paws::Inspector::ListRulesPackages;
   use Moose;
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -33,13 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 maxResults => Int
+=head2 MaxResults => Int
 
   You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is
 500.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   You can use this parameter when paginating results. Set the value of
 this parameter to 'null' on your first call to the B<ListRulesPackages>

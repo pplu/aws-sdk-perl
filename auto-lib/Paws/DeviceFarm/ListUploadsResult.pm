@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListUploadsResult;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
-  has uploads => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Upload]');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has Uploads => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Upload]', traits => ['Unwrapped'], xmlname => 'uploads' );
 
 
 ### main pod documentation begin ###
@@ -13,13 +13,13 @@ Paws::DeviceFarm::ListUploadsResult
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   If the number of items that are returned is significantly large, this
 is an identifier that is also returned, which can be used in a
 subsequent call to this operation to return the next set of items in
 the list.
-=head2 uploads => ArrayRef[L<Paws::DeviceFarm::Upload>]
+=head2 Uploads => ArrayRef[L<Paws::DeviceFarm::Upload>]
 
   Information about the uploads.
 

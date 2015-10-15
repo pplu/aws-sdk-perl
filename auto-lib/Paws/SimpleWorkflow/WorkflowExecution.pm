@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::WorkflowExecution;
   use Moose;
-  has runId => (is => 'ro', isa => 'Str', required => 1);
-  has workflowId => (is => 'ro', isa => 'Str', required => 1);
+  has RunId => (is => 'ro', isa => 'Str', xmlname => 'runId', request_name => 'runId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has WorkflowId => (is => 'ro', isa => 'Str', xmlname => 'workflowId', request_name => 'workflowId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::WorkflowExecution object:
 
-  $service_obj->Method(Att1 => { runId => $value, ..., workflowId => $value  });
+  $service_obj->Method(Att1 => { RunId => $value, ..., WorkflowId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::WorkflowExecution object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->runId
+  $result->Att1->RunId
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Represents a workflow execution.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> runId => Str
+=head2 B<REQUIRED> RunId => Str
 
   A system-generated unique identifier for the workflow execution.
 
-=head2 B<REQUIRED> workflowId => Str
+=head2 B<REQUIRED> WorkflowId => Str
 
   The user defined identifier associated with the workflow execution.
 

@@ -1,11 +1,11 @@
 
 package Paws::DirectConnect::AllocateConnectionOnInterconnect;
   use Moose;
-  has bandwidth => (is => 'ro', isa => 'Str', required => 1);
-  has connectionName => (is => 'ro', isa => 'Str', required => 1);
-  has interconnectId => (is => 'ro', isa => 'Str', required => 1);
-  has ownerAccount => (is => 'ro', isa => 'Str', required => 1);
-  has vlan => (is => 'ro', isa => 'Int', required => 1);
+  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' , required => 1);
+  has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' , required => 1);
+  has InterconnectId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectId' , required => 1);
+  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' , required => 1);
+  has Vlan => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'vlan' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> bandwidth => Str
+=head2 B<REQUIRED> Bandwidth => Str
 
   Bandwidth of the connection.
 
@@ -44,7 +44,7 @@ Example: "I<500Mbps>"
 
 Default: None
 
-=head2 B<REQUIRED> connectionName => Str
+=head2 B<REQUIRED> ConnectionName => Str
 
   Name of the provisioned connection.
 
@@ -52,7 +52,7 @@ Example: "I<500M Connection to AWS>"
 
 Default: None
 
-=head2 B<REQUIRED> interconnectId => Str
+=head2 B<REQUIRED> InterconnectId => Str
 
   ID of the interconnect on which the connection will be provisioned.
 
@@ -60,7 +60,7 @@ Example: dxcon-456abc78
 
 Default: None
 
-=head2 B<REQUIRED> ownerAccount => Str
+=head2 B<REQUIRED> OwnerAccount => Str
 
   Numeric account Id of the customer for whom the connection will be
 provisioned.
@@ -69,7 +69,7 @@ Example: 123443215678
 
 Default: None
 
-=head2 B<REQUIRED> vlan => Int
+=head2 B<REQUIRED> Vlan => Int
 
   The dedicated VLAN provisioned to the connection.
 

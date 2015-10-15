@@ -565,7 +565,7 @@ Returns: a L<Paws::WAF::GetByteMatchSetResponse> instance
   Returns the ByteMatchSet specified by C<ByteMatchSetId>.
 
 
-=head2 GetChangeToken( => )
+=head2 GetChangeToken()
 
 Each argument is described in detail in: L<Paws::WAF::GetChangeToken>
 

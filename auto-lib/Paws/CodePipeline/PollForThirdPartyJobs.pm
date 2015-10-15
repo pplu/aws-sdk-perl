@@ -1,8 +1,8 @@
 
 package Paws::CodePipeline::PollForThirdPartyJobs;
   use Moose;
-  has actionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', required => 1);
-  has maxBatchSize => (is => 'ro', isa => 'Int');
+  has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', traits => ['NameInRequest'], request_name => 'actionTypeId' , required => 1);
+  has MaxBatchSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxBatchSize' );
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> actionTypeId => L<Paws::CodePipeline::ActionTypeId>
+=head2 B<REQUIRED> ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
   
 
-=head2 maxBatchSize => Int
+=head2 MaxBatchSize => Int
 
   The maximum number of jobs to return in a poll for jobs call.
 

@@ -1,12 +1,12 @@
 package Paws::CodePipeline::ActionDeclaration;
   use Moose;
-  has actionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', required => 1);
-  has configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap');
-  has inputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::InputArtifact]');
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has outputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::OutputArtifact]');
-  has roleArn => (is => 'ro', isa => 'Str');
-  has runOrder => (is => 'ro', isa => 'Int');
+  has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', xmlname => 'actionTypeId', request_name => 'actionTypeId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap', xmlname => 'configuration', request_name => 'configuration', traits => ['Unwrapped','NameInRequest']);
+  has InputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::InputArtifact]', xmlname => 'inputArtifacts', request_name => 'inputArtifacts', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::OutputArtifact]', xmlname => 'outputArtifacts', request_name => 'outputArtifacts', traits => ['Unwrapped','NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest']);
+  has RunOrder => (is => 'ro', isa => 'Int', xmlname => 'runOrder', request_name => 'runOrder', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -26,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ActionDeclaration object:
 
-  $service_obj->Method(Att1 => { actionTypeId => $value, ..., runOrder => $value  });
+  $service_obj->Method(Att1 => { ActionTypeId => $value, ..., RunOrder => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ActionDeclaration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->actionTypeId
+  $result->Att1->ActionTypeId
 
 =head1 DESCRIPTION
 
@@ -41,34 +41,34 @@ Represents information about an action declaration.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> actionTypeId => L<Paws::CodePipeline::ActionTypeId>
+=head2 B<REQUIRED> ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
   The configuration information for the action type.
 
-=head2 configuration => L<Paws::CodePipeline::ActionConfigurationMap>
+=head2 Configuration => L<Paws::CodePipeline::ActionConfigurationMap>
 
   The action declaration's configuration.
 
-=head2 inputArtifacts => ArrayRef[L<Paws::CodePipeline::InputArtifact>]
+=head2 InputArtifacts => ArrayRef[L<Paws::CodePipeline::InputArtifact>]
 
   The name or ID of the artifact consumed by the action, such as a test
 or build artifact.
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
   The action declaration's name.
 
-=head2 outputArtifacts => ArrayRef[L<Paws::CodePipeline::OutputArtifact>]
+=head2 OutputArtifacts => ArrayRef[L<Paws::CodePipeline::OutputArtifact>]
 
   The name or ID of the result of the action declaration, such as a test
 or build artifact.
 
-=head2 roleArn => Str
+=head2 RoleArn => Str
 
   The ARN of the IAM service role that will perform the declared action.
 This is assumed through the roleArn for the pipeline.
 
-=head2 runOrder => Int
+=head2 RunOrder => Int
 
   The order in which actions are run.
 

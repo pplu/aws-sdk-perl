@@ -1,17 +1,17 @@
 package Paws::ECS::Service;
   use Moose;
-  has clusterArn => (is => 'ro', isa => 'Str');
-  has deployments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Deployment]');
-  has desiredCount => (is => 'ro', isa => 'Int');
-  has events => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceEvent]');
-  has loadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]');
-  has pendingCount => (is => 'ro', isa => 'Int');
-  has roleArn => (is => 'ro', isa => 'Str');
-  has runningCount => (is => 'ro', isa => 'Int');
-  has serviceArn => (is => 'ro', isa => 'Str');
-  has serviceName => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Str');
-  has taskDefinition => (is => 'ro', isa => 'Str');
+  has ClusterArn => (is => 'ro', isa => 'Str', xmlname => 'clusterArn', request_name => 'clusterArn', traits => ['Unwrapped','NameInRequest']);
+  has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Deployment]', xmlname => 'deployments', request_name => 'deployments', traits => ['Unwrapped','NameInRequest']);
+  has DesiredCount => (is => 'ro', isa => 'Int', xmlname => 'desiredCount', request_name => 'desiredCount', traits => ['Unwrapped','NameInRequest']);
+  has Events => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceEvent]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest']);
+  has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', xmlname => 'loadBalancers', request_name => 'loadBalancers', traits => ['Unwrapped','NameInRequest']);
+  has PendingCount => (is => 'ro', isa => 'Int', xmlname => 'pendingCount', request_name => 'pendingCount', traits => ['Unwrapped','NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest']);
+  has RunningCount => (is => 'ro', isa => 'Int', xmlname => 'runningCount', request_name => 'runningCount', traits => ['Unwrapped','NameInRequest']);
+  has ServiceArn => (is => 'ro', isa => 'Str', xmlname => 'serviceArn', request_name => 'serviceArn', traits => ['Unwrapped','NameInRequest']);
+  has ServiceName => (is => 'ro', isa => 'Str', xmlname => 'serviceName', request_name => 'serviceName', traits => ['Unwrapped','NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has TaskDefinition => (is => 'ro', isa => 'Str', xmlname => 'taskDefinition', request_name => 'taskDefinition', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -31,14 +31,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::Service object:
 
-  $service_obj->Method(Att1 => { clusterArn => $value, ..., taskDefinition => $value  });
+  $service_obj->Method(Att1 => { ClusterArn => $value, ..., TaskDefinition => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Service object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->clusterArn
+  $result->Att1->ClusterArn
 
 =head1 DESCRIPTION
 
@@ -46,47 +46,47 @@ Details on a service within a cluster
 
 =head1 ATTRIBUTES
 
-=head2 clusterArn => Str
+=head2 ClusterArn => Str
 
   The Amazon Resource Name (ARN) of the of the cluster that hosts the
 service.
 
-=head2 deployments => ArrayRef[L<Paws::ECS::Deployment>]
+=head2 Deployments => ArrayRef[L<Paws::ECS::Deployment>]
 
   The current state of deployments for the service.
 
-=head2 desiredCount => Int
+=head2 DesiredCount => Int
 
   The desired number of instantiations of the task definition to keep
 running on the service. This value is specified when the service is
 created with CreateService, and it can be modified with UpdateService.
 
-=head2 events => ArrayRef[L<Paws::ECS::ServiceEvent>]
+=head2 Events => ArrayRef[L<Paws::ECS::ServiceEvent>]
 
   The event stream for your service. A maximum of 100 of the latest
 events are displayed.
 
-=head2 loadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
+=head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
   A list of load balancer objects, containing the load balancer name, the
 container name (as it appears in a container definition), and the
 container port to access from the load balancer.
 
-=head2 pendingCount => Int
+=head2 PendingCount => Int
 
   The number of tasks in the cluster that are in the C<PENDING> state.
 
-=head2 roleArn => Str
+=head2 RoleArn => Str
 
   The Amazon Resource Name (ARN) of the IAM role associated with the
 service that allows the Amazon ECS container agent to register
 container instances with a load balancer.
 
-=head2 runningCount => Int
+=head2 RunningCount => Int
 
   The number of tasks in the cluster that are in the C<RUNNING> state.
 
-=head2 serviceArn => Str
+=head2 ServiceArn => Str
 
   The Amazon Resource Name (ARN) that identifies the service. The ARN
 contains the C<arn:aws:ecs> namespace, followed by the region of the
@@ -94,16 +94,16 @@ service, the AWS account ID of the service owner, the C<service>
 namespace, and then the service name. For example,
 arn:aws:ecs:I<region>:I<012345678910>:service/I<my-service>.
 
-=head2 serviceName => Str
+=head2 ServiceName => Str
 
   A user-generated string that you can use to identify your service.
 
-=head2 status => Str
+=head2 Status => Str
 
   The status of the service. The valid values are C<ACTIVE>, C<DRAINING>,
 or C<INACTIVE>.
 
-=head2 taskDefinition => Str
+=head2 TaskDefinition => Str
 
   The task definition to use for tasks in the service. This value is
 specified when the service is created with CreateService, and it can be

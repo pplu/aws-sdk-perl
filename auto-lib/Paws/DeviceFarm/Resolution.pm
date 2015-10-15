@@ -1,7 +1,7 @@
 package Paws::DeviceFarm::Resolution;
   use Moose;
-  has height => (is => 'ro', isa => 'Int');
-  has width => (is => 'ro', isa => 'Int');
+  has Height => (is => 'ro', isa => 'Int', xmlname => 'height', request_name => 'height', traits => ['Unwrapped','NameInRequest']);
+  has Width => (is => 'ro', isa => 'Int', xmlname => 'width', request_name => 'width', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::Resolution object:
 
-  $service_obj->Method(Att1 => { height => $value, ..., width => $value  });
+  $service_obj->Method(Att1 => { Height => $value, ..., Width => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::Resolution object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->height
+  $result->Att1->Height
 
 =head1 DESCRIPTION
 
@@ -37,11 +37,11 @@ expressed in pixels.
 
 =head1 ATTRIBUTES
 
-=head2 height => Int
+=head2 Height => Int
 
   The screen resolution's height, expressed in pixels.
 
-=head2 width => Int
+=head2 Width => Int
 
   The screen resolution's width, expressed in pixels.
 

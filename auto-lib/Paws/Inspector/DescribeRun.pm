@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeRun;
   use Moose;
-  has runArn => (is => 'ro', isa => 'Str');
+  has RunArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'runArn' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 runArn => Str
+=head2 RunArn => Str
 
   The ARN specifying the assessment run that you want to describe.
 

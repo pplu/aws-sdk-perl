@@ -1,7 +1,7 @@
 package Paws::CodeCommit::BranchInfo;
   use Moose;
-  has branchName => (is => 'ro', isa => 'Str');
-  has commitId => (is => 'ro', isa => 'Str');
+  has BranchName => (is => 'ro', isa => 'Str', xmlname => 'branchName', request_name => 'branchName', traits => ['Unwrapped','NameInRequest']);
+  has CommitId => (is => 'ro', isa => 'Str', xmlname => 'commitId', request_name => 'commitId', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeCommit::BranchInfo object:
 
-  $service_obj->Method(Att1 => { branchName => $value, ..., commitId => $value  });
+  $service_obj->Method(Att1 => { BranchName => $value, ..., CommitId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit::BranchInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->branchName
+  $result->Att1->BranchName
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Returns information about a branch.
 
 =head1 ATTRIBUTES
 
-=head2 branchName => Str
+=head2 BranchName => Str
 
   The name of the branch.
 
-=head2 commitId => Str
+=head2 CommitId => Str
 
   The ID of the last commit made to the branch.
 

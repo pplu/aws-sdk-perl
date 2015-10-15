@@ -1,6 +1,6 @@
 package Paws::CodePipeline::ActionContext;
   use Moose;
-  has name => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ActionContext object:
 
-  $service_obj->Method(Att1 => { name => $value, ..., name => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ActionContext object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->name
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ job worker.
 
 =head1 ATTRIBUTES
 
-=head2 name => Str
+=head2 Name => Str
 
   The name of the action within the context of a job.
 

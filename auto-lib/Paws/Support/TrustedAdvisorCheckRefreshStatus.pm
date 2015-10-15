@@ -1,8 +1,8 @@
 package Paws::Support::TrustedAdvisorCheckRefreshStatus;
   use Moose;
-  has checkId => (is => 'ro', isa => 'Str', required => 1);
-  has millisUntilNextRefreshable => (is => 'ro', isa => 'Int', required => 1);
-  has status => (is => 'ro', isa => 'Str', required => 1);
+  has CheckId => (is => 'ro', isa => 'Str', xmlname => 'checkId', request_name => 'checkId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has MillisUntilNextRefreshable => (is => 'ro', isa => 'Int', xmlname => 'millisUntilNextRefreshable', request_name => 'millisUntilNextRefreshable', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Support::TrustedAdvisorCheckRefreshStatus object:
 
-  $service_obj->Method(Att1 => { checkId => $value, ..., status => $value  });
+  $service_obj->Method(Att1 => { CheckId => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Support::TrustedAdvisorCheckRefreshStatus object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->checkId
+  $result->Att1->CheckId
 
 =head1 DESCRIPTION
 
@@ -37,16 +37,16 @@ The refresh status of a Trusted Advisor check.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> checkId => Str
+=head2 B<REQUIRED> CheckId => Str
 
   The unique identifier for the Trusted Advisor check.
 
-=head2 B<REQUIRED> millisUntilNextRefreshable => Int
+=head2 B<REQUIRED> MillisUntilNextRefreshable => Int
 
   The amount of time, in milliseconds, until the Trusted Advisor check is
 eligible for refresh.
 
-=head2 B<REQUIRED> status => Str
+=head2 B<REQUIRED> Status => Str
 
   The status of the Trusted Advisor check for which a refresh has been
 requested: "none", "enqueued", "processing", "success", or "abandoned".

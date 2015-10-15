@@ -1,8 +1,8 @@
 package Paws::CodePipeline::ActionRevision;
   use Moose;
-  has created => (is => 'ro', isa => 'Str', required => 1);
-  has revisionChangeId => (is => 'ro', isa => 'Str');
-  has revisionId => (is => 'ro', isa => 'Str', required => 1);
+  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has RevisionChangeId => (is => 'ro', isa => 'Str', xmlname => 'revisionChangeId', request_name => 'revisionChangeId', traits => ['Unwrapped','NameInRequest']);
+  has RevisionId => (is => 'ro', isa => 'Str', xmlname => 'revisionId', request_name => 'revisionId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ActionRevision object:
 
-  $service_obj->Method(Att1 => { created => $value, ..., revisionId => $value  });
+  $service_obj->Method(Att1 => { Created => $value, ..., RevisionId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ActionRevision object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->created
+  $result->Att1->Created
 
 =head1 DESCRIPTION
 
@@ -37,17 +37,17 @@ Represents information about the version (or revision) of an action.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> created => Str
+=head2 B<REQUIRED> Created => Str
 
   The date and time when the most recent version of the action was
 created, in timestamp format.
 
-=head2 revisionChangeId => Str
+=head2 RevisionChangeId => Str
 
   The unique identifier of the change that set the state to this
 revision, for example a deployment ID or timestamp.
 
-=head2 B<REQUIRED> revisionId => Str
+=head2 B<REQUIRED> RevisionId => Str
 
   The system-generated unique ID that identifies the revision number of
 the action.

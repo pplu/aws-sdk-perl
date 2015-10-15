@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::RespondActivityTaskCanceled;
   use Moose;
-  has details => (is => 'ro', isa => 'Str');
-  has taskToken => (is => 'ro', isa => 'Str', required => 1);
+  has Details => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'details' );
+  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 details => Str
+=head2 Details => Str
 
   I<Optional.> Information about the cancellation.
 
-=head2 B<REQUIRED> taskToken => Str
+=head2 B<REQUIRED> TaskToken => Str
 
   The C<taskToken> of the ActivityTask.
 

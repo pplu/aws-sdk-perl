@@ -1,19 +1,19 @@
 package Paws::CodeDeploy::DeploymentInfo;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str');
-  has completeTime => (is => 'ro', isa => 'Str');
-  has createTime => (is => 'ro', isa => 'Str');
-  has creator => (is => 'ro', isa => 'Str');
-  has deploymentConfigName => (is => 'ro', isa => 'Str');
-  has deploymentGroupName => (is => 'ro', isa => 'Str');
-  has deploymentId => (is => 'ro', isa => 'Str');
-  has deploymentOverview => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentOverview');
-  has description => (is => 'ro', isa => 'Str');
-  has errorInformation => (is => 'ro', isa => 'Paws::CodeDeploy::ErrorInformation');
-  has ignoreApplicationStopFailures => (is => 'ro', isa => 'Bool');
-  has revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation');
-  has startTime => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Str');
+  has ApplicationName => (is => 'ro', isa => 'Str', xmlname => 'applicationName', request_name => 'applicationName', traits => ['Unwrapped','NameInRequest']);
+  has CompleteTime => (is => 'ro', isa => 'Str', xmlname => 'completeTime', request_name => 'completeTime', traits => ['Unwrapped','NameInRequest']);
+  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
+  has Creator => (is => 'ro', isa => 'Str', xmlname => 'creator', request_name => 'creator', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigName', request_name => 'deploymentConfigName', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentGroupName => (is => 'ro', isa => 'Str', xmlname => 'deploymentGroupName', request_name => 'deploymentGroupName', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentId => (is => 'ro', isa => 'Str', xmlname => 'deploymentId', request_name => 'deploymentId', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentOverview => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentOverview', xmlname => 'deploymentOverview', request_name => 'deploymentOverview', traits => ['Unwrapped','NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
+  has ErrorInformation => (is => 'ro', isa => 'Paws::CodeDeploy::ErrorInformation', xmlname => 'errorInformation', request_name => 'errorInformation', traits => ['Unwrapped','NameInRequest']);
+  has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', xmlname => 'ignoreApplicationStopFailures', request_name => 'ignoreApplicationStopFailures', traits => ['Unwrapped','NameInRequest']);
+  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest']);
+  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -33,14 +33,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::DeploymentInfo object:
 
-  $service_obj->Method(Att1 => { applicationName => $value, ..., status => $value  });
+  $service_obj->Method(Att1 => { ApplicationName => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::DeploymentInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->applicationName
+  $result->Att1->ApplicationName
 
 =head1 DESCRIPTION
 
@@ -48,19 +48,19 @@ Information about a deployment.
 
 =head1 ATTRIBUTES
 
-=head2 applicationName => Str
+=head2 ApplicationName => Str
 
   The application name.
 
-=head2 completeTime => Str
+=head2 CompleteTime => Str
 
   A timestamp indicating when the deployment was completed.
 
-=head2 createTime => Str
+=head2 CreateTime => Str
 
   A timestamp indicating when the deployment was created.
 
-=head2 creator => Str
+=head2 Creator => Str
 
   How the deployment was created:
 
@@ -73,31 +73,31 @@ Information about a deployment.
 =back
 
 
-=head2 deploymentConfigName => Str
+=head2 DeploymentConfigName => Str
 
   The deployment configuration name.
 
-=head2 deploymentGroupName => Str
+=head2 DeploymentGroupName => Str
 
   The deployment group name.
 
-=head2 deploymentId => Str
+=head2 DeploymentId => Str
 
   The deployment ID.
 
-=head2 deploymentOverview => L<Paws::CodeDeploy::DeploymentOverview>
+=head2 DeploymentOverview => L<Paws::CodeDeploy::DeploymentOverview>
 
   A summary of the deployment status of the instances in the deployment.
 
-=head2 description => Str
+=head2 Description => Str
 
   A comment about the deployment.
 
-=head2 errorInformation => L<Paws::CodeDeploy::ErrorInformation>
+=head2 ErrorInformation => L<Paws::CodeDeploy::ErrorInformation>
 
   Information about any error associated with this deployment.
 
-=head2 ignoreApplicationStopFailures => Bool
+=head2 IgnoreApplicationStopFailures => Bool
 
   If true, then if the deployment causes the ApplicationStop deployment
 lifecycle event to fail to a specific instance, the deployment will not
@@ -109,12 +109,12 @@ ApplicationStop deployment lifecycle event to fail to a specific
 instance, the deployment will stop to that instance, and the deployment
 to that instance will be considered to have failed.
 
-=head2 revision => L<Paws::CodeDeploy::RevisionLocation>
+=head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
 
   Information about the location of application artifacts that are stored
 and the service to retrieve them from.
 
-=head2 startTime => Str
+=head2 StartTime => Str
 
   A timestamp indicating when the deployment began deploying to the
 deployment group.
@@ -124,7 +124,7 @@ later than the complete time. This is due to differences in the clock
 settings of various back-end servers that participate in the overall
 deployment process.
 
-=head2 status => Str
+=head2 Status => Str
 
   The current state of the deployment as a whole.
 

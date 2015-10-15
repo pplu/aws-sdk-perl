@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes;
   use Moose;
-  has startToCloseTimeout => (is => 'ro', isa => 'Str');
-  has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', required => 1);
-  has taskPriority => (is => 'ro', isa => 'Str');
+  has StartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'startToCloseTimeout', request_name => 'startToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
+  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', xmlname => 'taskList', request_name => 'taskList', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has TaskPriority => (is => 'ro', isa => 'Str', xmlname => 'taskPriority', request_name => 'taskPriority', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes object:
 
-  $service_obj->Method(Att1 => { startToCloseTimeout => $value, ..., taskPriority => $value  });
+  $service_obj->Method(Att1 => { StartToCloseTimeout => $value, ..., TaskPriority => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->startToCloseTimeout
+  $result->Att1->StartToCloseTimeout
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Provides details about the C<DecisionTaskScheduled> event.
 
 =head1 ATTRIBUTES
 
-=head2 startToCloseTimeout => Str
+=head2 StartToCloseTimeout => Str
 
   The maximum duration for this decision task. The task is considered
 timed out if it does not completed within this duration.
@@ -45,11 +45,11 @@ timed out if it does not completed within this duration.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 B<REQUIRED> taskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   The name of the task list in which the decision task was scheduled.
 
-=head2 taskPriority => Str
+=head2 TaskPriority => Str
 
   I<Optional.> A task priority that, if set, specifies the priority for
 this decision task. Valid values are integers that range from Java's

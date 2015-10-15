@@ -1,11 +1,11 @@
 package Paws::CloudWatchLogs::LogGroup;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str');
-  has creationTime => (is => 'ro', isa => 'Int');
-  has logGroupName => (is => 'ro', isa => 'Str');
-  has metricFilterCount => (is => 'ro', isa => 'Int');
-  has retentionInDays => (is => 'ro', isa => 'Int');
-  has storedBytes => (is => 'ro', isa => 'Int');
+  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
+  has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
+  has LogGroupName => (is => 'ro', isa => 'Str', xmlname => 'logGroupName', request_name => 'logGroupName', traits => ['Unwrapped','NameInRequest']);
+  has MetricFilterCount => (is => 'ro', isa => 'Int', xmlname => 'metricFilterCount', request_name => 'metricFilterCount', traits => ['Unwrapped','NameInRequest']);
+  has RetentionInDays => (is => 'ro', isa => 'Int', xmlname => 'retentionInDays', request_name => 'retentionInDays', traits => ['Unwrapped','NameInRequest']);
+  has StoredBytes => (is => 'ro', isa => 'Int', xmlname => 'storedBytes', request_name => 'storedBytes', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::LogGroup object:
 
-  $service_obj->Method(Att1 => { arn => $value, ..., storedBytes => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., StoredBytes => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::LogGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->arn
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
@@ -40,27 +40,27 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 arn => Str
+=head2 Arn => Str
 
   
 
-=head2 creationTime => Int
+=head2 CreationTime => Int
 
   
 
-=head2 logGroupName => Str
+=head2 LogGroupName => Str
 
   
 
-=head2 metricFilterCount => Int
+=head2 MetricFilterCount => Int
 
   
 
-=head2 retentionInDays => Int
+=head2 RetentionInDays => Int
 
   
 
-=head2 storedBytes => Int
+=head2 StoredBytes => Int
 
   
 

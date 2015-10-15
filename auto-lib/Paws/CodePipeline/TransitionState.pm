@@ -1,9 +1,9 @@
 package Paws::CodePipeline::TransitionState;
   use Moose;
-  has disabledReason => (is => 'ro', isa => 'Str');
-  has enabled => (is => 'ro', isa => 'Bool');
-  has lastChangedAt => (is => 'ro', isa => 'Str');
-  has lastChangedBy => (is => 'ro', isa => 'Str');
+  has DisabledReason => (is => 'ro', isa => 'Str', xmlname => 'disabledReason', request_name => 'disabledReason', traits => ['Unwrapped','NameInRequest']);
+  has Enabled => (is => 'ro', isa => 'Bool', xmlname => 'enabled', request_name => 'enabled', traits => ['Unwrapped','NameInRequest']);
+  has LastChangedAt => (is => 'ro', isa => 'Str', xmlname => 'lastChangedAt', request_name => 'lastChangedAt', traits => ['Unwrapped','NameInRequest']);
+  has LastChangedBy => (is => 'ro', isa => 'Str', xmlname => 'lastChangedBy', request_name => 'lastChangedBy', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::TransitionState object:
 
-  $service_obj->Method(Att1 => { disabledReason => $value, ..., lastChangedBy => $value  });
+  $service_obj->Method(Att1 => { DisabledReason => $value, ..., LastChangedBy => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::TransitionState object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->disabledReason
+  $result->Att1->DisabledReason
 
 =head1 DESCRIPTION
 
@@ -39,21 +39,21 @@ and another stage.
 
 =head1 ATTRIBUTES
 
-=head2 disabledReason => Str
+=head2 DisabledReason => Str
 
   The user-specified reason why the transition between two stages of a
 pipeline was disabled.
 
-=head2 enabled => Bool
+=head2 Enabled => Bool
 
   Whether the transition between stages is enabled (true) or disabled
 (false).
 
-=head2 lastChangedAt => Str
+=head2 LastChangedAt => Str
 
   The timestamp when the transition state was last changed.
 
-=head2 lastChangedBy => Str
+=head2 LastChangedBy => Str
 
   The ID of the user who last changed the transition state.
 

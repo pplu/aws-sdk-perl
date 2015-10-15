@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::GetRepository;
   use Moose;
-  has repositoryName => (is => 'ro', isa => 'Str', required => 1);
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> repositoryName => Str
+=head2 B<REQUIRED> RepositoryName => Str
 
   The name of the repository to get information about.
 

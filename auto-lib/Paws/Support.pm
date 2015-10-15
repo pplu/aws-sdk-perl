@@ -176,7 +176,7 @@ your resources.
 
 =head1 METHODS
 
-=head2 AddAttachmentsToSet(attachments => ArrayRef[L<Paws::Support::Attachment>], [attachmentSetId => Str])
+=head2 AddAttachmentsToSet(Attachments => ArrayRef[L<Paws::Support::Attachment>], [AttachmentSetId => Str])
 
 Each argument is described in detail in: L<Paws::Support::AddAttachmentsToSet>
 
@@ -195,7 +195,7 @@ indicates when the set expires. The maximum number of attachments in a
 set is 3, and the maximum size of any attachment in the set is 5 MB.
 
 
-=head2 AddCommunicationToCase(communicationBody => Str, [attachmentSetId => Str, caseId => Str, ccEmailAddresses => ArrayRef[Str]])
+=head2 AddCommunicationToCase(CommunicationBody => Str, [AttachmentSetId => Str, CaseId => Str, CcEmailAddresses => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::Support::AddCommunicationToCase>
 
@@ -213,7 +213,7 @@ This operation implements a subset of the features of the AWS Support
 Center.
 
 
-=head2 CreateCase(communicationBody => Str, subject => Str, [attachmentSetId => Str, categoryCode => Str, ccEmailAddresses => ArrayRef[Str], issueType => Str, language => Str, serviceCode => Str, severityCode => Str])
+=head2 CreateCase(CommunicationBody => Str, Subject => Str, [AttachmentSetId => Str, CategoryCode => Str, CcEmailAddresses => ArrayRef[Str], IssueType => Str, Language => Str, ServiceCode => Str, SeverityCode => Str])
 
 Each argument is described in detail in: L<Paws::Support::CreateCase>
 
@@ -271,7 +271,7 @@ Case numbers are used by the DescribeCases operation to retrieve
 existing AWS Support cases.
 
 
-=head2 DescribeAttachment(attachmentId => Str)
+=head2 DescribeAttachment(AttachmentId => Str)
 
 Each argument is described in detail in: L<Paws::Support::DescribeAttachment>
 
@@ -284,7 +284,7 @@ AttachmentDetails objects that are returned by the
 DescribeCommunications operation.
 
 
-=head2 DescribeCases([afterTime => Str, beforeTime => Str, caseIdList => ArrayRef[Str], displayId => Str, includeCommunications => Bool, includeResolvedCases => Bool, language => Str, maxResults => Int, nextToken => Str])
+=head2 DescribeCases([AfterTime => Str, BeforeTime => Str, CaseIdList => ArrayRef[Str], DisplayId => Str, IncludeCommunications => Bool, IncludeResolvedCases => Bool, Language => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Support::DescribeCases>
 
@@ -314,7 +314,7 @@ objects.
 
 
 
-=head2 DescribeCommunications(caseId => Str, [afterTime => Str, beforeTime => Str, maxResults => Int, nextToken => Str])
+=head2 DescribeCommunications(CaseId => Str, [AfterTime => Str, BeforeTime => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Support::DescribeCommunications>
 
@@ -335,7 +335,7 @@ cases you want displayed on each page, and use C<NextToken> to specify
 the resumption of pagination.
 
 
-=head2 DescribeServices([language => Str, serviceCodeList => ArrayRef[Str]])
+=head2 DescribeServices([Language => Str, ServiceCodeList => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::Support::DescribeServices>
 
@@ -355,7 +355,7 @@ categories obtained programmatically. This practice ensures that you
 always have the most recent set of service and category codes.
 
 
-=head2 DescribeSeverityLevels([language => Str])
+=head2 DescribeSeverityLevels([Language => Str])
 
 Each argument is described in detail in: L<Paws::Support::DescribeSeverityLevels>
 
@@ -366,7 +366,7 @@ Support case. The severity level for a case is also a field in the
 CaseDetails data type included in any CreateCase request.
 
 
-=head2 DescribeTrustedAdvisorCheckRefreshStatuses(checkIds => ArrayRef[Str])
+=head2 DescribeTrustedAdvisorCheckRefreshStatuses(CheckIds => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses>
 
@@ -377,7 +377,7 @@ specified check IDs. Check IDs can be obtained by calling
 DescribeTrustedAdvisorChecks.
 
 
-=head2 DescribeTrustedAdvisorCheckResult(checkId => Str, [language => Str])
+=head2 DescribeTrustedAdvisorCheckResult(CheckId => Str, [Language => Str])
 
 Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorCheckResult>
 
@@ -415,7 +415,7 @@ In addition, the response contains these fields:
 
 
 
-=head2 DescribeTrustedAdvisorChecks(language => Str)
+=head2 DescribeTrustedAdvisorChecks(Language => Str)
 
 Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorChecks>
 
@@ -428,7 +428,7 @@ currently supported. The response contains a
 TrustedAdvisorCheckDescription for each check.
 
 
-=head2 DescribeTrustedAdvisorCheckSummaries(checkIds => ArrayRef[Str])
+=head2 DescribeTrustedAdvisorCheckSummaries(CheckIds => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::Support::DescribeTrustedAdvisorCheckSummaries>
 
@@ -441,7 +441,7 @@ DescribeTrustedAdvisorChecks.
 The response contains an array of TrustedAdvisorCheckSummary objects.
 
 
-=head2 RefreshTrustedAdvisorCheck(checkId => Str)
+=head2 RefreshTrustedAdvisorCheck(CheckId => Str)
 
 Each argument is described in detail in: L<Paws::Support::RefreshTrustedAdvisorCheck>
 
@@ -468,7 +468,7 @@ milliseconds, until the check is eligible for refresh.
 
 
 
-=head2 ResolveCase([caseId => Str])
+=head2 ResolveCase([CaseId => Str])
 
 Each argument is described in detail in: L<Paws::Support::ResolveCase>
 

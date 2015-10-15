@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::GetDeploymentInstance;
   use Moose;
-  has deploymentId => (is => 'ro', isa => 'Str', required => 1);
-  has instanceId => (is => 'ro', isa => 'Str', required => 1);
+  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' , required => 1);
+  has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> deploymentId => Str
+=head2 B<REQUIRED> DeploymentId => Str
 
   The unique ID of a deployment.
 
-=head2 B<REQUIRED> instanceId => Str
+=head2 B<REQUIRED> InstanceId => Str
 
   The unique ID of an instance in the deployment's deployment group.
 

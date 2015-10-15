@@ -1,7 +1,7 @@
 package Paws::CodePipeline::BlockerDeclaration;
   use Moose;
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has type => (is => 'ro', isa => 'Str', required => 1);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::BlockerDeclaration object:
 
-  $service_obj->Method(Att1 => { name => $value, ..., type => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::BlockerDeclaration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->name
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Represents information about a gate declaration.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name of the gate declaration.
 
-=head2 B<REQUIRED> type => Str
+=head2 B<REQUIRED> Type => Str
 
   The type of the gate declaration.
 

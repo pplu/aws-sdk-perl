@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::CancelTimerDecisionAttributes;
   use Moose;
-  has timerId => (is => 'ro', isa => 'Str', required => 1);
+  has TimerId => (is => 'ro', isa => 'Str', xmlname => 'timerId', request_name => 'timerId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::CancelTimerDecisionAttributes object:
 
-  $service_obj->Method(Att1 => { timerId => $value, ..., timerId => $value  });
+  $service_obj->Method(Att1 => { TimerId => $value, ..., TimerId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::CancelTimerDecisionAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->timerId
+  $result->Att1->TimerId
 
 =head1 DESCRIPTION
 
@@ -59,7 +59,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> timerId => Str
+=head2 B<REQUIRED> TimerId => Str
 
   B<Required.> The unique ID of the timer to cancel.
 

@@ -1,11 +1,11 @@
 package Paws::SimpleWorkflow::ActivityTypeConfiguration;
   use Moose;
-  has defaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str');
-  has defaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
-  has defaultTaskPriority => (is => 'ro', isa => 'Str');
-  has defaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str');
-  has defaultTaskScheduleToStartTimeout => (is => 'ro', isa => 'Str');
-  has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
+  has DefaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskHeartbeatTimeout', request_name => 'defaultTaskHeartbeatTimeout', traits => ['Unwrapped','NameInRequest']);
+  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', xmlname => 'defaultTaskList', request_name => 'defaultTaskList', traits => ['Unwrapped','NameInRequest']);
+  has DefaultTaskPriority => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskPriority', request_name => 'defaultTaskPriority', traits => ['Unwrapped','NameInRequest']);
+  has DefaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskScheduleToCloseTimeout', request_name => 'defaultTaskScheduleToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
+  has DefaultTaskScheduleToStartTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskScheduleToStartTimeout', request_name => 'defaultTaskScheduleToStartTimeout', traits => ['Unwrapped','NameInRequest']);
+  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'defaultTaskStartToCloseTimeout', request_name => 'defaultTaskStartToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::ActivityTypeConfiguration object:
 
-  $service_obj->Method(Att1 => { defaultTaskHeartbeatTimeout => $value, ..., defaultTaskStartToCloseTimeout => $value  });
+  $service_obj->Method(Att1 => { DefaultTaskHeartbeatTimeout => $value, ..., DefaultTaskStartToCloseTimeout => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::ActivityTypeConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->defaultTaskHeartbeatTimeout
+  $result->Att1->DefaultTaskHeartbeatTimeout
 
 =head1 DESCRIPTION
 
@@ -40,7 +40,7 @@ Configuration settings registered with the activity type.
 
 =head1 ATTRIBUTES
 
-=head2 defaultTaskHeartbeatTimeout => Str
+=head2 DefaultTaskHeartbeatTimeout => Str
 
   I<Optional.> The default maximum time, in seconds, before which a
 worker processing a task must report progress by calling
@@ -57,7 +57,7 @@ activity worker should clean up the activity task.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 defaultTaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
   I<Optional.> The default task list specified for this activity type at
 registration. This default is used if a task list is not provided when
@@ -65,7 +65,7 @@ a task is scheduled through the C<ScheduleActivityTask> decision. You
 can override the default registered task list when scheduling a task
 through the C<ScheduleActivityTask> decision.
 
-=head2 defaultTaskPriority => Str
+=head2 DefaultTaskPriority => Str
 
   I<Optional.> The default task priority for tasks of this activity type,
 specified at registration. If not set, then "0" will be used as the
@@ -79,7 +79,7 @@ indicate higher priority.
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
-=head2 defaultTaskScheduleToCloseTimeout => Str
+=head2 DefaultTaskScheduleToCloseTimeout => Str
 
   I<Optional.> The default maximum duration, specified when registering
 the activity type, for tasks of this activity type. You can override
@@ -89,7 +89,7 @@ decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 defaultTaskScheduleToStartTimeout => Str
+=head2 DefaultTaskScheduleToStartTimeout => Str
 
   I<Optional.> The default maximum duration, specified when registering
 the activity type, that a task of an activity type can wait before
@@ -99,7 +99,7 @@ scheduling a task through the C<ScheduleActivityTask> decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 defaultTaskStartToCloseTimeout => Str
+=head2 DefaultTaskStartToCloseTimeout => Str
 
   I<Optional.> The default maximum duration for tasks of an activity type
 specified when registering the activity type. You can override this

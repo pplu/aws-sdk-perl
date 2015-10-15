@@ -1,9 +1,9 @@
 package Paws::CodeDeploy::Diagnostics;
   use Moose;
-  has errorCode => (is => 'ro', isa => 'Str');
-  has logTail => (is => 'ro', isa => 'Str');
-  has message => (is => 'ro', isa => 'Str');
-  has scriptName => (is => 'ro', isa => 'Str');
+  has ErrorCode => (is => 'ro', isa => 'Str', xmlname => 'errorCode', request_name => 'errorCode', traits => ['Unwrapped','NameInRequest']);
+  has LogTail => (is => 'ro', isa => 'Str', xmlname => 'logTail', request_name => 'logTail', traits => ['Unwrapped','NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
+  has ScriptName => (is => 'ro', isa => 'Str', xmlname => 'scriptName', request_name => 'scriptName', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::Diagnostics object:
 
-  $service_obj->Method(Att1 => { errorCode => $value, ..., scriptName => $value  });
+  $service_obj->Method(Att1 => { ErrorCode => $value, ..., ScriptName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::Diagnostics object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->errorCode
+  $result->Att1->ErrorCode
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,7 @@ deployment.
 
 =head1 ATTRIBUTES
 
-=head2 errorCode => Str
+=head2 ErrorCode => Str
 
   The associated error code:
 
@@ -64,15 +64,15 @@ reason.
 =back
 
 
-=head2 logTail => Str
+=head2 LogTail => Str
 
   The last portion of the associated diagnostic log.
 
-=head2 message => Str
+=head2 Message => Str
 
   The message associated with the error.
 
-=head2 scriptName => Str
+=head2 ScriptName => Str
 
   The name of the script.
 

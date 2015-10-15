@@ -1,8 +1,8 @@
 
 package Paws::CodePipeline::AcknowledgeJob;
   use Moose;
-  has jobId => (is => 'ro', isa => 'Str', required => 1);
-  has nonce => (is => 'ro', isa => 'Str', required => 1);
+  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
+  has Nonce => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nonce' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,12 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> jobId => Str
+=head2 B<REQUIRED> JobId => Str
 
   The unique system-generated ID of the job for which you want to confirm
 receipt.
 
-=head2 B<REQUIRED> nonce => Str
+=head2 B<REQUIRED> Nonce => Str
 
   A system-generated random number that AWS CodePipeline uses to ensure
 that the job is being worked on by only one job worker. This number

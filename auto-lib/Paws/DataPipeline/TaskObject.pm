@@ -1,9 +1,9 @@
 package Paws::DataPipeline::TaskObject;
   use Moose;
-  has attemptId => (is => 'ro', isa => 'Str');
-  has objects => (is => 'ro', isa => 'Paws::DataPipeline::PipelineObjectMap');
-  has pipelineId => (is => 'ro', isa => 'Str');
-  has taskId => (is => 'ro', isa => 'Str');
+  has AttemptId => (is => 'ro', isa => 'Str', xmlname => 'attemptId', request_name => 'attemptId', traits => ['Unwrapped','NameInRequest']);
+  has Objects => (is => 'ro', isa => 'Paws::DataPipeline::PipelineObjectMap', xmlname => 'objects', request_name => 'objects', traits => ['Unwrapped','NameInRequest']);
+  has PipelineId => (is => 'ro', isa => 'Str', xmlname => 'pipelineId', request_name => 'pipelineId', traits => ['Unwrapped','NameInRequest']);
+  has TaskId => (is => 'ro', isa => 'Str', xmlname => 'taskId', request_name => 'taskId', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DataPipeline::TaskObject object:
 
-  $service_obj->Method(Att1 => { attemptId => $value, ..., taskId => $value  });
+  $service_obj->Method(Att1 => { AttemptId => $value, ..., TaskId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipeline::TaskObject object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->attemptId
+  $result->Att1->AttemptId
 
 =head1 DESCRIPTION
 
@@ -39,21 +39,21 @@ runner.
 
 =head1 ATTRIBUTES
 
-=head2 attemptId => Str
+=head2 AttemptId => Str
 
   The ID of the pipeline task attempt object. AWS Data Pipeline uses this
 value to track how many times a task is attempted.
 
-=head2 objects => L<Paws::DataPipeline::PipelineObjectMap>
+=head2 Objects => L<Paws::DataPipeline::PipelineObjectMap>
 
   Connection information for the location where the task runner will
 publish the output of the task.
 
-=head2 pipelineId => Str
+=head2 PipelineId => Str
 
   The ID of the pipeline that provided the task.
 
-=head2 taskId => Str
+=head2 TaskId => Str
 
   An internal identifier for the task. This ID is passed to the
 SetTaskStatus and ReportTaskProgress actions.

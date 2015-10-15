@@ -1,7 +1,7 @@
 package Paws::Inspector::AgentPreview;
   use Moose;
-  has agentId => (is => 'ro', isa => 'Str');
-  has autoScalingGroup => (is => 'ro', isa => 'Str');
+  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest']);
+  has AutoScalingGroup => (is => 'ro', isa => 'Str', xmlname => 'autoScalingGroup', request_name => 'autoScalingGroup', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::AgentPreview object:
 
-  $service_obj->Method(Att1 => { agentId => $value, ..., autoScalingGroup => $value  });
+  $service_obj->Method(Att1 => { AgentId => $value, ..., AutoScalingGroup => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::AgentPreview object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->agentId
+  $result->Att1->AgentId
 
 =head1 DESCRIPTION
 
@@ -37,11 +37,11 @@ PreviewAgentsForResourceGroup action.
 
 =head1 ATTRIBUTES
 
-=head2 agentId => Str
+=head2 AgentId => Str
 
   The id of the EC2 instance where the agent is intalled.
 
-=head2 autoScalingGroup => Str
+=head2 AutoScalingGroup => Str
 
   The autoscaling group for the EC2 instance where the agent is
 installed.

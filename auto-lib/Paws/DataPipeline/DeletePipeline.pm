@@ -1,7 +1,7 @@
 
 package Paws::DataPipeline::DeletePipeline;
   use Moose;
-  has pipelineId => (is => 'ro', isa => 'Str', required => 1);
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> pipelineId => Str
+=head2 B<REQUIRED> PipelineId => Str
 
   The ID of the pipeline.
 

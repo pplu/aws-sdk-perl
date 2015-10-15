@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::RespondActivityTaskCompleted;
   use Moose;
-  has result => (is => 'ro', isa => 'Str');
-  has taskToken => (is => 'ro', isa => 'Str', required => 1);
+  has Result => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'result' );
+  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,12 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 result => Str
+=head2 Result => Str
 
   The result of the activity task. It is a free form string that is
 implementation specific.
 
-=head2 B<REQUIRED> taskToken => Str
+=head2 B<REQUIRED> TaskToken => Str
 
   The C<taskToken> of the ActivityTask.
 

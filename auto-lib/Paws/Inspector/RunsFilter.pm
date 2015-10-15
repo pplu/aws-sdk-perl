@@ -1,10 +1,10 @@
 package Paws::Inspector::RunsFilter;
   use Moose;
-  has completionTime => (is => 'ro', isa => 'Paws::Inspector::TimestampRange');
-  has creationTime => (is => 'ro', isa => 'Paws::Inspector::TimestampRange');
-  has rulesPackages => (is => 'ro', isa => 'ArrayRef[Str]');
-  has runNamePatterns => (is => 'ro', isa => 'ArrayRef[Str]');
-  has runStates => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CompletionTime => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', xmlname => 'completionTime', request_name => 'completionTime', traits => ['Unwrapped','NameInRequest']);
+  has CreationTime => (is => 'ro', isa => 'Paws::Inspector::TimestampRange', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
+  has RulesPackages => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'rulesPackages', request_name => 'rulesPackages', traits => ['Unwrapped','NameInRequest']);
+  has RunNamePatterns => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'runNamePatterns', request_name => 'runNamePatterns', traits => ['Unwrapped','NameInRequest']);
+  has RunStates => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'runStates', request_name => 'runStates', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::RunsFilter object:
 
-  $service_obj->Method(Att1 => { completionTime => $value, ..., runStates => $value  });
+  $service_obj->Method(Att1 => { CompletionTime => $value, ..., RunStates => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::RunsFilter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->completionTime
+  $result->Att1->CompletionTime
 
 =head1 DESCRIPTION
 
@@ -39,33 +39,33 @@ This data type is used as the request parameter in the ListRuns action.
 
 =head1 ATTRIBUTES
 
-=head2 completionTime => L<Paws::Inspector::TimestampRange>
+=head2 CompletionTime => L<Paws::Inspector::TimestampRange>
 
   For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<completionTime> property of the Run data
 type.
 
-=head2 creationTime => L<Paws::Inspector::TimestampRange>
+=head2 CreationTime => L<Paws::Inspector::TimestampRange>
 
   For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<creationTime> property of the Run data
 type.
 
-=head2 rulesPackages => ArrayRef[Str]
+=head2 RulesPackages => ArrayRef[Str]
 
   For a record to match a filter, the value specified for this data type
 property must match a list of values of the B<rulesPackages> property
 of the Run data type.
 
-=head2 runNamePatterns => ArrayRef[Str]
+=head2 RunNamePatterns => ArrayRef[Str]
 
   For a record to match a filter, an explicit value or a string
 containing a wildcard specified for this data type property must match
 the value of the B<runName> property of the Run data type.
 
-=head2 runStates => ArrayRef[Str]
+=head2 RunStates => ArrayRef[Str]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<runState>

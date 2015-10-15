@@ -1,9 +1,9 @@
 
 package Paws::CodePipeline::DeleteCustomActionType;
   use Moose;
-  has category => (is => 'ro', isa => 'Str', required => 1);
-  has provider => (is => 'ro', isa => 'Str', required => 1);
-  has version => (is => 'ro', isa => 'Str', required => 1);
+  has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category' , required => 1);
+  has Provider => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'provider' , required => 1);
+  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,17 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> category => Str
+=head2 B<REQUIRED> Category => Str
 
   The category of the custom action that you want to delete, such as
 source or deploy.
 
-=head2 B<REQUIRED> provider => Str
+=head2 B<REQUIRED> Provider => Str
 
   The provider of the service used in the custom action, such as AWS
 CodeDeploy.
 
-=head2 B<REQUIRED> version => Str
+=head2 B<REQUIRED> Version => Str
 
   The version of the custom action to delete.
 

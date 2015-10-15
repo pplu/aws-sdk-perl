@@ -1,8 +1,8 @@
 
 package Paws::Glacier::AbortVaultLock;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
   The C<AccountId> value is the AWS account ID. This value must match the
 AWS account ID associated with the credentials used to sign the
@@ -45,7 +45,7 @@ account ID associated with the credentials used to sign the request. If
 you specify your account ID, do not include any hyphens (apos-apos) in
 the ID.
 
-=head2 B<REQUIRED> vaultName => Str
+=head2 B<REQUIRED> VaultName => Str
 
   The name of the vault.
 

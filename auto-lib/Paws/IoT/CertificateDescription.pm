@@ -1,12 +1,12 @@
 package Paws::IoT::CertificateDescription;
   use Moose;
-  has certificateArn => (is => 'ro', isa => 'Str');
-  has certificateId => (is => 'ro', isa => 'Str');
-  has certificatePem => (is => 'ro', isa => 'Str');
-  has creationDate => (is => 'ro', isa => 'Str');
-  has lastModifiedDate => (is => 'ro', isa => 'Str');
-  has ownedBy => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Str');
+  has CertificateArn => (is => 'ro', isa => 'Str', xmlname => 'certificateArn', request_name => 'certificateArn', traits => ['Unwrapped','NameInRequest']);
+  has CertificateId => (is => 'ro', isa => 'Str', xmlname => 'certificateId', request_name => 'certificateId', traits => ['Unwrapped','NameInRequest']);
+  has CertificatePem => (is => 'ro', isa => 'Str', xmlname => 'certificatePem', request_name => 'certificatePem', traits => ['Unwrapped','NameInRequest']);
+  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
+  has LastModifiedDate => (is => 'ro', isa => 'Str', xmlname => 'lastModifiedDate', request_name => 'lastModifiedDate', traits => ['Unwrapped','NameInRequest']);
+  has OwnedBy => (is => 'ro', isa => 'Str', xmlname => 'ownedBy', request_name => 'ownedBy', traits => ['Unwrapped','NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -26,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::CertificateDescription object:
 
-  $service_obj->Method(Att1 => { certificateArn => $value, ..., status => $value  });
+  $service_obj->Method(Att1 => { CertificateArn => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::CertificateDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->certificateArn
+  $result->Att1->CertificateArn
 
 =head1 DESCRIPTION
 
@@ -41,31 +41,31 @@ Describes a certificate.
 
 =head1 ATTRIBUTES
 
-=head2 certificateArn => Str
+=head2 CertificateArn => Str
 
   The ARN of the certificate.
 
-=head2 certificateId => Str
+=head2 CertificateId => Str
 
   The ID of the certificate.
 
-=head2 certificatePem => Str
+=head2 CertificatePem => Str
 
   The certificate data, in PEM format.
 
-=head2 creationDate => Str
+=head2 CreationDate => Str
 
   The date and time the certificate was created.
 
-=head2 lastModifiedDate => Str
+=head2 LastModifiedDate => Str
 
   The date and time the certificate was last modified.
 
-=head2 ownedBy => Str
+=head2 OwnedBy => Str
 
   The ID of the AWS account that owns the certificate.
 
-=head2 status => Str
+=head2 Status => Str
 
   The status of the certificate.
 

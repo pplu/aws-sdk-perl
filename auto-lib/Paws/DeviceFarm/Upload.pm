@@ -1,14 +1,14 @@
 package Paws::DeviceFarm::Upload;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str');
-  has contentType => (is => 'ro', isa => 'Str');
-  has created => (is => 'ro', isa => 'Str');
-  has message => (is => 'ro', isa => 'Str');
-  has metadata => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Str');
-  has type => (is => 'ro', isa => 'Str');
-  has url => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
+  has ContentType => (is => 'ro', isa => 'Str', xmlname => 'contentType', request_name => 'contentType', traits => ['Unwrapped','NameInRequest']);
+  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
+  has Metadata => (is => 'ro', isa => 'Str', xmlname => 'metadata', request_name => 'metadata', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has Url => (is => 'ro', isa => 'Str', xmlname => 'url', request_name => 'url', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -28,14 +28,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::Upload object:
 
-  $service_obj->Method(Att1 => { arn => $value, ..., url => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Url => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::Upload object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->arn
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
@@ -44,33 +44,33 @@ uploaded.
 
 =head1 ATTRIBUTES
 
-=head2 arn => Str
+=head2 Arn => Str
 
   The upload's ARN.
 
-=head2 contentType => Str
+=head2 ContentType => Str
 
   The upload's content type (for example, "application/octet-stream").
 
-=head2 created => Str
+=head2 Created => Str
 
   When the upload was created.
 
-=head2 message => Str
+=head2 Message => Str
 
   A message about the upload's result.
 
-=head2 metadata => Str
+=head2 Metadata => Str
 
   The upload's metadata. For example, for Android, this contains
 information that is parsed from the manifest and is displayed in the
 AWS Device Farm console after the associated app is uploaded.
 
-=head2 name => Str
+=head2 Name => Str
 
   The upload's file name.
 
-=head2 status => Str
+=head2 Status => Str
 
   The upload's status.
 
@@ -97,7 +97,7 @@ SUCCEEDED: A succeeded status.
 =back
 
 
-=head2 type => Str
+=head2 Type => Str
 
   The upload's type.
 
@@ -146,7 +146,7 @@ XCTEST_TEST_PACKAGE: An XCode test package upload.
 =back
 
 
-=head2 url => Str
+=head2 Url => Str
 
   The pre-signed Amazon S3 URL that was used to store a file through a
 corresponding PUT request.

@@ -1,9 +1,9 @@
 package Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes;
   use Moose;
-  has control => (is => 'ro', isa => 'Str');
-  has decisionTaskCompletedEventId => (is => 'ro', isa => 'Int', required => 1);
-  has runId => (is => 'ro', isa => 'Str');
-  has workflowId => (is => 'ro', isa => 'Str', required => 1);
+  has Control => (is => 'ro', isa => 'Str', xmlname => 'control', request_name => 'control', traits => ['Unwrapped','NameInRequest']);
+  has DecisionTaskCompletedEventId => (is => 'ro', isa => 'Int', xmlname => 'decisionTaskCompletedEventId', request_name => 'decisionTaskCompletedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has RunId => (is => 'ro', isa => 'Str', xmlname => 'runId', request_name => 'runId', traits => ['Unwrapped','NameInRequest']);
+  has WorkflowId => (is => 'ro', isa => 'Str', xmlname => 'workflowId', request_name => 'workflowId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes object:
 
-  $service_obj->Method(Att1 => { control => $value, ..., workflowId => $value  });
+  $service_obj->Method(Att1 => { Control => $value, ..., WorkflowId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->control
+  $result->Att1->Control
 
 =head1 DESCRIPTION
 
@@ -39,12 +39,12 @@ C<RequestCancelExternalWorkflowExecutionInitiated> event.
 
 =head1 ATTRIBUTES
 
-=head2 control => Str
+=head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks.
 
-=head2 B<REQUIRED> decisionTaskCompletedEventId => Int
+=head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 
   The ID of the C<DecisionTaskCompleted> event corresponding to the
 decision task that resulted in the
@@ -52,11 +52,11 @@ C<RequestCancelExternalWorkflowExecution> decision for this
 cancellation request. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
 
-=head2 runId => Str
+=head2 RunId => Str
 
   The C<runId> of the external workflow execution to be canceled.
 
-=head2 B<REQUIRED> workflowId => Str
+=head2 B<REQUIRED> WorkflowId => Str
 
   The C<workflowId> of the external workflow execution to be canceled.
 

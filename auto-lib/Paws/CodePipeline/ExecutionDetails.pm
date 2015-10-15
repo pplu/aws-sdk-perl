@@ -1,8 +1,8 @@
 package Paws::CodePipeline::ExecutionDetails;
   use Moose;
-  has externalExecutionId => (is => 'ro', isa => 'Str');
-  has percentComplete => (is => 'ro', isa => 'Int');
-  has summary => (is => 'ro', isa => 'Str');
+  has ExternalExecutionId => (is => 'ro', isa => 'Str', xmlname => 'externalExecutionId', request_name => 'externalExecutionId', traits => ['Unwrapped','NameInRequest']);
+  has PercentComplete => (is => 'ro', isa => 'Int', xmlname => 'percentComplete', request_name => 'percentComplete', traits => ['Unwrapped','NameInRequest']);
+  has Summary => (is => 'ro', isa => 'Str', xmlname => 'summary', request_name => 'summary', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ExecutionDetails object:
 
-  $service_obj->Method(Att1 => { externalExecutionId => $value, ..., summary => $value  });
+  $service_obj->Method(Att1 => { ExternalExecutionId => $value, ..., Summary => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ExecutionDetails object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->externalExecutionId
+  $result->Att1->ExternalExecutionId
 
 =head1 DESCRIPTION
 
@@ -38,17 +38,17 @@ it passes through stages in the pipeline.
 
 =head1 ATTRIBUTES
 
-=head2 externalExecutionId => Str
+=head2 ExternalExecutionId => Str
 
   The system-generated unique ID of this action used to identify this job
 worker in any external systems, such as AWS CodeDeploy.
 
-=head2 percentComplete => Int
+=head2 PercentComplete => Int
 
   The percentage of work completed on the action, represented on a scale
 of zero to one hundred percent.
 
-=head2 summary => Str
+=head2 Summary => Str
 
   The summary of the current status of the actions.
 

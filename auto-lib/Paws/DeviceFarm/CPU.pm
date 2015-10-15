@@ -1,8 +1,8 @@
 package Paws::DeviceFarm::CPU;
   use Moose;
-  has architecture => (is => 'ro', isa => 'Str');
-  has clock => (is => 'ro', isa => 'Num');
-  has frequency => (is => 'ro', isa => 'Str');
+  has Architecture => (is => 'ro', isa => 'Str', xmlname => 'architecture', request_name => 'architecture', traits => ['Unwrapped','NameInRequest']);
+  has Clock => (is => 'ro', isa => 'Num', xmlname => 'clock', request_name => 'clock', traits => ['Unwrapped','NameInRequest']);
+  has Frequency => (is => 'ro', isa => 'Str', xmlname => 'frequency', request_name => 'frequency', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::CPU object:
 
-  $service_obj->Method(Att1 => { architecture => $value, ..., frequency => $value  });
+  $service_obj->Method(Att1 => { Architecture => $value, ..., Frequency => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::CPU object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->architecture
+  $result->Att1->Architecture
 
 =head1 DESCRIPTION
 
@@ -39,16 +39,16 @@ Note that this does not represent system-wide CPU usage.
 
 =head1 ATTRIBUTES
 
-=head2 architecture => Str
+=head2 Architecture => Str
 
   The CPU's architecture, for example x86 or ARM.
 
-=head2 clock => Num
+=head2 Clock => Num
 
   The clock speed of the device's CPU, expressed in hertz (Hz). For
 example, a 1.2 GHz CPU is expressed as 1200000000.
 
-=head2 frequency => Str
+=head2 Frequency => Str
 
   The CPU's frequency.
 

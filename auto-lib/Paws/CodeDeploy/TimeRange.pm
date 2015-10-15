@@ -1,7 +1,7 @@
 package Paws::CodeDeploy::TimeRange;
   use Moose;
-  has end => (is => 'ro', isa => 'Str');
-  has start => (is => 'ro', isa => 'Str');
+  has End => (is => 'ro', isa => 'Str', xmlname => 'end', request_name => 'end', traits => ['Unwrapped','NameInRequest']);
+  has Start => (is => 'ro', isa => 'Str', xmlname => 'start', request_name => 'start', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::TimeRange object:
 
-  $service_obj->Method(Att1 => { end => $value, ..., start => $value  });
+  $service_obj->Method(Att1 => { End => $value, ..., Start => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::TimeRange object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->end
+  $result->Att1->End
 
 =head1 DESCRIPTION
 
@@ -36,13 +36,13 @@ Information about a time range.
 
 =head1 ATTRIBUTES
 
-=head2 end => Str
+=head2 End => Str
 
   The time range's end time.
 
 Specify null to leave the time range's end time open-ended.
 
-=head2 start => Str
+=head2 Start => Str
 
   The time range's start time.
 

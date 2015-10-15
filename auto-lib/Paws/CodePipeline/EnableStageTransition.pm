@@ -1,9 +1,9 @@
 
 package Paws::CodePipeline::EnableStageTransition;
   use Moose;
-  has pipelineName => (is => 'ro', isa => 'Str', required => 1);
-  has stageName => (is => 'ro', isa => 'Str', required => 1);
-  has transitionType => (is => 'ro', isa => 'Str', required => 1);
+  has PipelineName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineName' , required => 1);
+  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName' , required => 1);
+  has TransitionType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'transitionType' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,18 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> pipelineName => Str
+=head2 B<REQUIRED> PipelineName => Str
 
   The name of the pipeline in which you want to enable the flow of
 artifacts from one stage to another.
 
-=head2 B<REQUIRED> stageName => Str
+=head2 B<REQUIRED> StageName => Str
 
   The name of the stage where you want to enable the transition of
 artifacts, either into the stage (inbound) or from that stage to the
 next stage (outbound).
 
-=head2 B<REQUIRED> transitionType => Str
+=head2 B<REQUIRED> TransitionType => Str
 
   Specifies whether artifacts will be allowed to enter the stage and be
 processed by the actions in that stage (inbound) or whether

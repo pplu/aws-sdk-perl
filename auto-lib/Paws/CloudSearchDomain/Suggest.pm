@@ -1,9 +1,9 @@
 
 package Paws::CloudSearchDomain::Suggest;
   use Moose;
-  has query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'q' , required => 1);
-  has size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size' );
-  has suggester => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'suggester' , required => 1);
+  has Query => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'query' , required => 1);
+  has Size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size' );
+  has Suggester => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'suggester' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -36,15 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> query => Str
+=head2 B<REQUIRED> Query => Str
 
   Specifies the string for which you want to get suggestions.
 
-=head2 size => Int
+=head2 Size => Int
 
   Specifies the maximum number of suggestions to return.
 
-=head2 B<REQUIRED> suggester => Str
+=head2 B<REQUIRED> Suggester => Str
 
   Specifies the name of the suggester to use to find suggested matches.
 

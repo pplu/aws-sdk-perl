@@ -1,6 +1,6 @@
 package Paws::IoT::LambdaAction;
   use Moose;
-  has functionArn => (is => 'ro', isa => 'Str', required => 1);
+  has FunctionArn => (is => 'ro', isa => 'Str', xmlname => 'functionArn', request_name => 'functionArn', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::LambdaAction object:
 
-  $service_obj->Method(Att1 => { functionArn => $value, ..., functionArn => $value  });
+  $service_obj->Method(Att1 => { FunctionArn => $value, ..., FunctionArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::LambdaAction object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->functionArn
+  $result->Att1->FunctionArn
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ Describes an action to invoke a Lamdba function.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> functionArn => Str
+=head2 B<REQUIRED> FunctionArn => Str
 
   The ARN of the Lambda function.
 

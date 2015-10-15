@@ -1,14 +1,14 @@
 
 package Paws::CodeDeploy::UpdateDeploymentGroup;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str', required => 1);
-  has autoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has currentDeploymentGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has deploymentConfigName => (is => 'ro', isa => 'Str');
-  has ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]');
-  has newDeploymentGroupName => (is => 'ro', isa => 'Str');
-  has onPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]');
-  has serviceRoleArn => (is => 'ro', isa => 'Str');
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'autoScalingGroups' );
+  has CurrentDeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'currentDeploymentGroupName' , required => 1);
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' );
+  has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', traits => ['NameInRequest'], request_name => 'ec2TagFilters' );
+  has NewDeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'newDeploymentGroupName' );
+  has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
+  has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' );
 
   use MooseX::ClassAttribute;
 
@@ -39,39 +39,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> applicationName => Str
+=head2 B<REQUIRED> ApplicationName => Str
 
   The application name corresponding to the deployment group to update.
 
-=head2 autoScalingGroups => ArrayRef[Str]
+=head2 AutoScalingGroups => ArrayRef[Str]
 
   The replacement list of Auto Scaling groups to be included in the
 deployment group, if you want to change them.
 
-=head2 B<REQUIRED> currentDeploymentGroupName => Str
+=head2 B<REQUIRED> CurrentDeploymentGroupName => Str
 
   The current name of the existing deployment group.
 
-=head2 deploymentConfigName => Str
+=head2 DeploymentConfigName => Str
 
   The replacement deployment configuration name to use, if you want to
 change it.
 
-=head2 ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
+=head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
   The replacement set of Amazon EC2 tags to filter on, if you want to
 change them.
 
-=head2 newDeploymentGroupName => Str
+=head2 NewDeploymentGroupName => Str
 
   The new name of the deployment group, if you want to change it.
 
-=head2 onPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
+=head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
   The replacement set of on-premises instance tags for filter on, if you
 want to change them.
 
-=head2 serviceRoleArn => Str
+=head2 ServiceRoleArn => Str
 
   A replacement service role's ARN, if you want to change it.
 

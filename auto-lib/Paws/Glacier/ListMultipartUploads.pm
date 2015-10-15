@@ -1,10 +1,10 @@
 
 package Paws::Glacier::ListMultipartUploads;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
-  has marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
-  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has Limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
   The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
@@ -46,13 +46,13 @@ account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
-=head2 limit => Str
+=head2 Limit => Str
 
   Specifies the maximum number of uploads returned in the response body.
 If this value is not specified, the List Uploads operation returns up
 to 1,000 uploads.
 
-=head2 marker => Str
+=head2 Marker => Str
 
   An opaque string used for pagination. This value specifies the upload
 at which the listing of uploads should begin. Get the marker value from
@@ -60,7 +60,7 @@ a previous List Uploads response. You need only include the marker if
 you are continuing the pagination of results started in a previous List
 Uploads request.
 
-=head2 B<REQUIRED> vaultName => Str
+=head2 B<REQUIRED> VaultName => Str
 
   The name of the vault.
 

@@ -1,8 +1,8 @@
 
 package Paws::CodeCommit::GetBranch;
   use Moose;
-  has branchName => (is => 'ro', isa => 'Str');
-  has repositoryName => (is => 'ro', isa => 'Str');
+  has BranchName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchName' );
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 branchName => Str
+=head2 BranchName => Str
 
   The name of the branch for which you want to retrieve information.
 
-=head2 repositoryName => Str
+=head2 RepositoryName => Str
 
   
 

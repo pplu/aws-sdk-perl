@@ -1,11 +1,11 @@
 package Paws::CloudWatchLogs::SubscriptionFilter;
   use Moose;
-  has creationTime => (is => 'ro', isa => 'Int');
-  has destinationArn => (is => 'ro', isa => 'Str');
-  has filterName => (is => 'ro', isa => 'Str');
-  has filterPattern => (is => 'ro', isa => 'Str');
-  has logGroupName => (is => 'ro', isa => 'Str');
-  has roleArn => (is => 'ro', isa => 'Str');
+  has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
+  has DestinationArn => (is => 'ro', isa => 'Str', xmlname => 'destinationArn', request_name => 'destinationArn', traits => ['Unwrapped','NameInRequest']);
+  has FilterName => (is => 'ro', isa => 'Str', xmlname => 'filterName', request_name => 'filterName', traits => ['Unwrapped','NameInRequest']);
+  has FilterPattern => (is => 'ro', isa => 'Str', xmlname => 'filterPattern', request_name => 'filterPattern', traits => ['Unwrapped','NameInRequest']);
+  has LogGroupName => (is => 'ro', isa => 'Str', xmlname => 'logGroupName', request_name => 'logGroupName', traits => ['Unwrapped','NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -25,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::SubscriptionFilter object:
 
-  $service_obj->Method(Att1 => { creationTime => $value, ..., roleArn => $value  });
+  $service_obj->Method(Att1 => { CreationTime => $value, ..., RoleArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::SubscriptionFilter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->creationTime
+  $result->Att1->CreationTime
 
 =head1 DESCRIPTION
 
@@ -40,27 +40,27 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 creationTime => Int
+=head2 CreationTime => Int
 
   
 
-=head2 destinationArn => Str
+=head2 DestinationArn => Str
 
   
 
-=head2 filterName => Str
+=head2 FilterName => Str
 
   
 
-=head2 filterPattern => Str
+=head2 FilterPattern => Str
 
   
 
-=head2 logGroupName => Str
+=head2 LogGroupName => Str
 
   
 
-=head2 roleArn => Str
+=head2 RoleArn => Str
 
   
 

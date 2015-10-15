@@ -1,7 +1,7 @@
 package Paws::CloudSearchDomain::SuggestStatus;
   use Moose;
-  has rid => (is => 'ro', isa => 'Str');
-  has timems => (is => 'ro', isa => 'Int');
+  has Rid => (is => 'ro', isa => 'Str', xmlname => 'rid', request_name => 'rid', traits => ['Unwrapped','NameInRequest']);
+  has Timems => (is => 'ro', isa => 'Int', xmlname => 'timems', request_name => 'timems', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudSearchDomain::SuggestStatus object:
 
-  $service_obj->Method(Att1 => { rid => $value, ..., timems => $value  });
+  $service_obj->Method(Att1 => { Rid => $value, ..., Timems => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearchDomain::SuggestStatus object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->rid
+  $result->Att1->Rid
 
 =head1 DESCRIPTION
 
@@ -37,11 +37,11 @@ request (C<timems>).
 
 =head1 ATTRIBUTES
 
-=head2 rid => Str
+=head2 Rid => Str
 
   The encrypted resource ID for the request.
 
-=head2 timems => Int
+=head2 Timems => Int
 
   How long it took to process the request, in milliseconds.
 

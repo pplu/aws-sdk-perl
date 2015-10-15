@@ -1,6 +1,6 @@
 package Paws::Inspector::ApplicationsFilter;
   use Moose;
-  has applicationNamePatterns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ApplicationNamePatterns => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'applicationNamePatterns', request_name => 'applicationNamePatterns', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::ApplicationsFilter object:
 
-  $service_obj->Method(Att1 => { applicationNamePatterns => $value, ..., applicationNamePatterns => $value  });
+  $service_obj->Method(Att1 => { ApplicationNamePatterns => $value, ..., ApplicationNamePatterns => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::ApplicationsFilter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->applicationNamePatterns
+  $result->Att1->ApplicationNamePatterns
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ action.
 
 =head1 ATTRIBUTES
 
-=head2 applicationNamePatterns => ArrayRef[Str]
+=head2 ApplicationNamePatterns => ArrayRef[Str]
 
   For a record to match a filter, an explicit value or a string
 containing a wildcard specified for this data type property must match

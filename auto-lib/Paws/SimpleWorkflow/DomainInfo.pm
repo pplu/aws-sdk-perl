@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::DomainInfo;
   use Moose;
-  has description => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has status => (is => 'ro', isa => 'Str', required => 1);
+  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::DomainInfo object:
 
-  $service_obj->Method(Att1 => { description => $value, ..., status => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::DomainInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->description
+  $result->Att1->Description
 
 =head1 DESCRIPTION
 
@@ -37,15 +37,15 @@ Contains general information about a domain.
 
 =head1 ATTRIBUTES
 
-=head2 description => Str
+=head2 Description => Str
 
   The description of the domain provided through RegisterDomain.
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name of the domain. This name is unique within the account.
 
-=head2 B<REQUIRED> status => Str
+=head2 B<REQUIRED> Status => Str
 
   The status of the domain:
 

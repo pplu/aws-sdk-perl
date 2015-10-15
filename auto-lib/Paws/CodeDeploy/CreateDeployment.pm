@@ -1,12 +1,12 @@
 
 package Paws::CodeDeploy::CreateDeployment;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str', required => 1);
-  has deploymentConfigName => (is => 'ro', isa => 'Str');
-  has deploymentGroupName => (is => 'ro', isa => 'Str');
-  has description => (is => 'ro', isa => 'Str');
-  has ignoreApplicationStopFailures => (is => 'ro', isa => 'Bool');
-  has revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation');
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' );
+  has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' );
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'ignoreApplicationStopFailures' );
+  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['NameInRequest'], request_name => 'revision' );
 
   use MooseX::ClassAttribute;
 
@@ -37,12 +37,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> applicationName => Str
+=head2 B<REQUIRED> ApplicationName => Str
 
   The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
 
-=head2 deploymentConfigName => Str
+=head2 DeploymentConfigName => Str
 
   The name of an existing deployment configuration associated with the
 applicable IAM user or AWS account.
@@ -52,15 +52,15 @@ used as the default. If the deployment group does not have a deployment
 configuration associated with it, then CodeDeployDefault.OneAtATime
 will be used by default.
 
-=head2 deploymentGroupName => Str
+=head2 DeploymentGroupName => Str
 
   The deployment group's name.
 
-=head2 description => Str
+=head2 Description => Str
 
   A comment about the deployment.
 
-=head2 ignoreApplicationStopFailures => Bool
+=head2 IgnoreApplicationStopFailures => Bool
 
   If set to true, then if the deployment causes the ApplicationStop
 deployment lifecycle event to fail to a specific instance, the
@@ -73,7 +73,7 @@ ApplicationStop deployment lifecycle event to fail to a specific
 instance, the deployment will stop to that instance, and the deployment
 to that instance will be considered to have failed.
 
-=head2 revision => L<Paws::CodeDeploy::RevisionLocation>
+=head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
 
   The type of revision to deploy, along with information about the
 revision's location.

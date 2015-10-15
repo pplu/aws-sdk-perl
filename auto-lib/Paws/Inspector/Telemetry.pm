@@ -1,7 +1,7 @@
 package Paws::Inspector::Telemetry;
   use Moose;
-  has messageTypeTelemetries => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::MessageTypeTelemetry]');
-  has status => (is => 'ro', isa => 'Str');
+  has MessageTypeTelemetries => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::MessageTypeTelemetry]', xmlname => 'messageTypeTelemetries', request_name => 'messageTypeTelemetries', traits => ['Unwrapped','NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::Telemetry object:
 
-  $service_obj->Method(Att1 => { messageTypeTelemetries => $value, ..., status => $value  });
+  $service_obj->Method(Att1 => { MessageTypeTelemetries => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::Telemetry object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->messageTypeTelemetries
+  $result->Att1->MessageTypeTelemetries
 
 =head1 DESCRIPTION
 
@@ -40,11 +40,11 @@ GetAssessmentTelemetry action.
 
 =head1 ATTRIBUTES
 
-=head2 messageTypeTelemetries => ArrayRef[L<Paws::Inspector::MessageTypeTelemetry>]
+=head2 MessageTypeTelemetries => ArrayRef[L<Paws::Inspector::MessageTypeTelemetry>]
 
   Counts of individual metrics received by Inspector from the agent.
 
-=head2 status => Str
+=head2 Status => Str
 
   The category of the individual metrics that together constitute the
 telemetry that Inspector received from the agent.

@@ -1,8 +1,8 @@
 package Paws::ECS::MountPoint;
   use Moose;
-  has containerPath => (is => 'ro', isa => 'Str');
-  has readOnly => (is => 'ro', isa => 'Bool');
-  has sourceVolume => (is => 'ro', isa => 'Str');
+  has ContainerPath => (is => 'ro', isa => 'Str', xmlname => 'containerPath', request_name => 'containerPath', traits => ['Unwrapped','NameInRequest']);
+  has ReadOnly => (is => 'ro', isa => 'Bool', xmlname => 'readOnly', request_name => 'readOnly', traits => ['Unwrapped','NameInRequest']);
+  has SourceVolume => (is => 'ro', isa => 'Str', xmlname => 'sourceVolume', request_name => 'sourceVolume', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::MountPoint object:
 
-  $service_obj->Method(Att1 => { containerPath => $value, ..., sourceVolume => $value  });
+  $service_obj->Method(Att1 => { ContainerPath => $value, ..., SourceVolume => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::MountPoint object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->containerPath
+  $result->Att1->ContainerPath
 
 =head1 DESCRIPTION
 
@@ -37,17 +37,17 @@ Details on a volume mount point that is used in a container definition.
 
 =head1 ATTRIBUTES
 
-=head2 containerPath => Str
+=head2 ContainerPath => Str
 
   The path on the container to mount the host volume at.
 
-=head2 readOnly => Bool
+=head2 ReadOnly => Bool
 
   If this value is C<true>, the container has read-only access to the
 volume. If this value is C<false>, then the container can write to the
 volume. The default value is C<false>.
 
-=head2 sourceVolume => Str
+=head2 SourceVolume => Str
 
   The name of the volume to mount.
 

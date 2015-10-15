@@ -1,8 +1,8 @@
 package Paws::IoT::KinesisAction;
   use Moose;
-  has partitionKey => (is => 'ro', isa => 'Str');
-  has roleArn => (is => 'ro', isa => 'Str', required => 1);
-  has streamName => (is => 'ro', isa => 'Str', required => 1);
+  has PartitionKey => (is => 'ro', isa => 'Str', xmlname => 'partitionKey', request_name => 'partitionKey', traits => ['Unwrapped','NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has StreamName => (is => 'ro', isa => 'Str', xmlname => 'streamName', request_name => 'streamName', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::KinesisAction object:
 
-  $service_obj->Method(Att1 => { partitionKey => $value, ..., streamName => $value  });
+  $service_obj->Method(Att1 => { PartitionKey => $value, ..., StreamName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::KinesisAction object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->partitionKey
+  $result->Att1->PartitionKey
 
 =head1 DESCRIPTION
 
@@ -37,15 +37,15 @@ Describes an action to write data to an Amazon Kinesis stream.
 
 =head1 ATTRIBUTES
 
-=head2 partitionKey => Str
+=head2 PartitionKey => Str
 
   The partition key.
 
-=head2 B<REQUIRED> roleArn => Str
+=head2 B<REQUIRED> RoleArn => Str
 
   The ARN of the IAM role that grants access.
 
-=head2 B<REQUIRED> streamName => Str
+=head2 B<REQUIRED> StreamName => Str
 
   The name of the Kinesis stream.
 

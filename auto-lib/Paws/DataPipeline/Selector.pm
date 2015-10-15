@@ -1,7 +1,7 @@
 package Paws::DataPipeline::Selector;
   use Moose;
-  has fieldName => (is => 'ro', isa => 'Str');
-  has operator => (is => 'ro', isa => 'Paws::DataPipeline::Operator');
+  has FieldName => (is => 'ro', isa => 'Str', xmlname => 'fieldName', request_name => 'fieldName', traits => ['Unwrapped','NameInRequest']);
+  has Operator => (is => 'ro', isa => 'Paws::DataPipeline::Operator', xmlname => 'operator', request_name => 'operator', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DataPipeline::Selector object:
 
-  $service_obj->Method(Att1 => { fieldName => $value, ..., operator => $value  });
+  $service_obj->Method(Att1 => { FieldName => $value, ..., Operator => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipeline::Selector object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->fieldName
+  $result->Att1->FieldName
 
 =head1 DESCRIPTION
 
@@ -37,14 +37,14 @@ this object.
 
 =head1 ATTRIBUTES
 
-=head2 fieldName => Str
+=head2 FieldName => Str
 
   The name of the field that the operator will be applied to. The field
 name is the "key" portion of the field definition in the pipeline
 definition syntax that is used by the AWS Data Pipeline API. If the
 field is not set on the object, the condition fails.
 
-=head2 operator => L<Paws::DataPipeline::Operator>
+=head2 Operator => L<Paws::DataPipeline::Operator>
 
   
 

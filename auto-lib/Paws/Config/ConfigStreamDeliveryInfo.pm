@@ -1,9 +1,9 @@
 package Paws::Config::ConfigStreamDeliveryInfo;
   use Moose;
-  has lastErrorCode => (is => 'ro', isa => 'Str');
-  has lastErrorMessage => (is => 'ro', isa => 'Str');
-  has lastStatus => (is => 'ro', isa => 'Str');
-  has lastStatusChangeTime => (is => 'ro', isa => 'Str');
+  has LastErrorCode => (is => 'ro', isa => 'Str', xmlname => 'lastErrorCode', request_name => 'lastErrorCode', traits => ['Unwrapped','NameInRequest']);
+  has LastErrorMessage => (is => 'ro', isa => 'Str', xmlname => 'lastErrorMessage', request_name => 'lastErrorMessage', traits => ['Unwrapped','NameInRequest']);
+  has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
+  has LastStatusChangeTime => (is => 'ro', isa => 'Str', xmlname => 'lastStatusChangeTime', request_name => 'lastStatusChangeTime', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Config::ConfigStreamDeliveryInfo object:
 
-  $service_obj->Method(Att1 => { lastErrorCode => $value, ..., lastStatusChangeTime => $value  });
+  $service_obj->Method(Att1 => { LastErrorCode => $value, ..., LastStatusChangeTime => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Config::ConfigStreamDeliveryInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->lastErrorCode
+  $result->Att1->LastErrorCode
 
 =head1 DESCRIPTION
 
@@ -39,15 +39,15 @@ stream notification to the Amazon SNS topic.
 
 =head1 ATTRIBUTES
 
-=head2 lastErrorCode => Str
+=head2 LastErrorCode => Str
 
   The error code from the last attempted delivery.
 
-=head2 lastErrorMessage => Str
+=head2 LastErrorMessage => Str
 
   The error message from the last attempted delivery.
 
-=head2 lastStatus => Str
+=head2 LastStatus => Str
 
   Status of the last attempted delivery.
 
@@ -55,7 +55,7 @@ B<Note> Providing an SNS topic on a DeliveryChannel for AWS Config is
 optional. If the SNS delivery is turned off, the last status will be
 B<Not_Applicable>.
 
-=head2 lastStatusChangeTime => Str
+=head2 LastStatusChangeTime => Str
 
   The time from the last status change.
 

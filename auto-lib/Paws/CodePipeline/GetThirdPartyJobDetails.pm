@@ -1,8 +1,8 @@
 
 package Paws::CodePipeline::GetThirdPartyJobDetails;
   use Moose;
-  has clientToken => (is => 'ro', isa => 'Str', required => 1);
-  has jobId => (is => 'ro', isa => 'Str', required => 1);
+  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' , required => 1);
+  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,13 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> clientToken => Str
+=head2 B<REQUIRED> ClientToken => Str
 
   The clientToken portion of the clientId and clientToken pair used to
 verify that the calling entity is allowed access to the job and its
 details.
 
-=head2 B<REQUIRED> jobId => Str
+=head2 B<REQUIRED> JobId => Str
 
   The unique system-generated ID used for identifying the job.
 

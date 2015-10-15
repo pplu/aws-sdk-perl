@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::DeleteDeploymentGroup;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str', required => 1);
-  has deploymentGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,12 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> applicationName => Str
+=head2 B<REQUIRED> ApplicationName => Str
 
   The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
 
-=head2 B<REQUIRED> deploymentGroupName => Str
+=head2 B<REQUIRED> DeploymentGroupName => Str
 
   The name of an existing deployment group for the specified application.
 

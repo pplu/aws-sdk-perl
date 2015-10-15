@@ -1,7 +1,7 @@
 package Paws::ECS::HostEntry;
   use Moose;
-  has hostname => (is => 'ro', isa => 'Str', required => 1);
-  has ipAddress => (is => 'ro', isa => 'Str', required => 1);
+  has Hostname => (is => 'ro', isa => 'Str', xmlname => 'hostname', request_name => 'hostname', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has IpAddress => (is => 'ro', isa => 'Str', xmlname => 'ipAddress', request_name => 'ipAddress', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::HostEntry object:
 
-  $service_obj->Method(Att1 => { hostname => $value, ..., ipAddress => $value  });
+  $service_obj->Method(Att1 => { Hostname => $value, ..., IpAddress => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::HostEntry object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->hostname
+  $result->Att1->Hostname
 
 =head1 DESCRIPTION
 
@@ -38,11 +38,11 @@ ContainerDefinition.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> hostname => Str
+=head2 B<REQUIRED> Hostname => Str
 
   The hostname to use in the C</etc/hosts> entry.
 
-=head2 B<REQUIRED> ipAddress => Str
+=head2 B<REQUIRED> IpAddress => Str
 
   The IP address to use in the C</etc/hosts> entry.
 

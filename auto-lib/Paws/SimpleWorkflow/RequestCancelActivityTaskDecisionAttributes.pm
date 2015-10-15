@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes;
   use Moose;
-  has activityId => (is => 'ro', isa => 'Str', required => 1);
+  has ActivityId => (is => 'ro', isa => 'Str', xmlname => 'activityId', request_name => 'activityId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes object:
 
-  $service_obj->Method(Att1 => { activityId => $value, ..., activityId => $value  });
+  $service_obj->Method(Att1 => { ActivityId => $value, ..., ActivityId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->activityId
+  $result->Att1->ActivityId
 
 =head1 DESCRIPTION
 
@@ -59,7 +59,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> activityId => Str
+=head2 B<REQUIRED> ActivityId => Str
 
   The C<activityId> of the activity task to be canceled.
 

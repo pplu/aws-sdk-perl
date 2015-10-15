@@ -1,10 +1,10 @@
 package Paws::CodeDeploy::S3Location;
   use Moose;
-  has bucket => (is => 'ro', isa => 'Str');
-  has bundleType => (is => 'ro', isa => 'Str');
-  has eTag => (is => 'ro', isa => 'Str');
-  has key => (is => 'ro', isa => 'Str');
-  has version => (is => 'ro', isa => 'Str');
+  has Bucket => (is => 'ro', isa => 'Str', xmlname => 'bucket', request_name => 'bucket', traits => ['Unwrapped','NameInRequest']);
+  has BundleType => (is => 'ro', isa => 'Str', xmlname => 'bundleType', request_name => 'bundleType', traits => ['Unwrapped','NameInRequest']);
+  has ETag => (is => 'ro', isa => 'Str', xmlname => 'eTag', request_name => 'eTag', traits => ['Unwrapped','NameInRequest']);
+  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest']);
+  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::S3Location object:
 
-  $service_obj->Method(Att1 => { bucket => $value, ..., version => $value  });
+  $service_obj->Method(Att1 => { Bucket => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::S3Location object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->bucket
+  $result->Att1->Bucket
 
 =head1 DESCRIPTION
 
@@ -40,12 +40,12 @@ in Amazon S3.
 
 =head1 ATTRIBUTES
 
-=head2 bucket => Str
+=head2 Bucket => Str
 
   The name of the Amazon S3 bucket where the application revision is
 stored.
 
-=head2 bundleType => Str
+=head2 BundleType => Str
 
   The file type of the application revision. Must be one of the
 following:
@@ -61,7 +61,7 @@ following:
 =back
 
 
-=head2 eTag => Str
+=head2 ETag => Str
 
   The ETag of the Amazon S3 object that represents the bundled artifacts
 for the application revision.
@@ -69,12 +69,12 @@ for the application revision.
 If the ETag is not specified as an input parameter, ETag validation of
 the object will be skipped.
 
-=head2 key => Str
+=head2 Key => Str
 
   The name of the Amazon S3 object that represents the bundled artifacts
 for the application revision.
 
-=head2 version => Str
+=head2 Version => Str
 
   A specific version of the Amazon S3 object that represents the bundled
 artifacts for the application revision.

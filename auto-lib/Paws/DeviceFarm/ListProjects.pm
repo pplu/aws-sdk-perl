@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListProjects;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 arn => Str
+=head2 Arn => Str
 
   The projects' ARNs.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the

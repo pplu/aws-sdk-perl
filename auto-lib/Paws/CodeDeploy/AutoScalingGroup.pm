@@ -1,7 +1,7 @@
 package Paws::CodeDeploy::AutoScalingGroup;
   use Moose;
-  has hook => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str');
+  has Hook => (is => 'ro', isa => 'Str', xmlname => 'hook', request_name => 'hook', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::AutoScalingGroup object:
 
-  $service_obj->Method(Att1 => { hook => $value, ..., name => $value  });
+  $service_obj->Method(Att1 => { Hook => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::AutoScalingGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->hook
+  $result->Att1->Hook
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Information about an Auto Scaling group.
 
 =head1 ATTRIBUTES
 
-=head2 hook => Str
+=head2 Hook => Str
 
   An Auto Scaling lifecycle event hook name.
 
-=head2 name => Str
+=head2 Name => Str
 
   The Auto Scaling group name.
 

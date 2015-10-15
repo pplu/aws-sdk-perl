@@ -1,8 +1,8 @@
 package Paws::DeviceFarm::Project;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str');
-  has created => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
+  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::Project object:
 
-  $service_obj->Method(Att1 => { arn => $value, ..., name => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::Project object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->arn
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
@@ -38,15 +38,15 @@ managing tests.
 
 =head1 ATTRIBUTES
 
-=head2 arn => Str
+=head2 Arn => Str
 
   The project's ARN.
 
-=head2 created => Str
+=head2 Created => Str
 
   When the project was created.
 
-=head2 name => Str
+=head2 Name => Str
 
   The project's name.
 

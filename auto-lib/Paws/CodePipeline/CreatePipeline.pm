@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::CreatePipeline;
   use Moose;
-  has pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', required => 1);
+  has Pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', traits => ['NameInRequest'], request_name => 'pipeline' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> pipeline => L<Paws::CodePipeline::PipelineDeclaration>
+=head2 B<REQUIRED> Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
 
   
 

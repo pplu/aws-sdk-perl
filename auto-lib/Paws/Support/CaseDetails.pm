@@ -1,17 +1,17 @@
 package Paws::Support::CaseDetails;
   use Moose;
-  has caseId => (is => 'ro', isa => 'Str');
-  has categoryCode => (is => 'ro', isa => 'Str');
-  has ccEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
-  has displayId => (is => 'ro', isa => 'Str');
-  has language => (is => 'ro', isa => 'Str');
-  has recentCommunications => (is => 'ro', isa => 'Paws::Support::RecentCaseCommunications');
-  has serviceCode => (is => 'ro', isa => 'Str');
-  has severityCode => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Str');
-  has subject => (is => 'ro', isa => 'Str');
-  has submittedBy => (is => 'ro', isa => 'Str');
-  has timeCreated => (is => 'ro', isa => 'Str');
+  has CaseId => (is => 'ro', isa => 'Str', xmlname => 'caseId', request_name => 'caseId', traits => ['Unwrapped','NameInRequest']);
+  has CategoryCode => (is => 'ro', isa => 'Str', xmlname => 'categoryCode', request_name => 'categoryCode', traits => ['Unwrapped','NameInRequest']);
+  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'ccEmailAddresses', request_name => 'ccEmailAddresses', traits => ['Unwrapped','NameInRequest']);
+  has DisplayId => (is => 'ro', isa => 'Str', xmlname => 'displayId', request_name => 'displayId', traits => ['Unwrapped','NameInRequest']);
+  has Language => (is => 'ro', isa => 'Str', xmlname => 'language', request_name => 'language', traits => ['Unwrapped','NameInRequest']);
+  has RecentCommunications => (is => 'ro', isa => 'Paws::Support::RecentCaseCommunications', xmlname => 'recentCommunications', request_name => 'recentCommunications', traits => ['Unwrapped','NameInRequest']);
+  has ServiceCode => (is => 'ro', isa => 'Str', xmlname => 'serviceCode', request_name => 'serviceCode', traits => ['Unwrapped','NameInRequest']);
+  has SeverityCode => (is => 'ro', isa => 'Str', xmlname => 'severityCode', request_name => 'severityCode', traits => ['Unwrapped','NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has Subject => (is => 'ro', isa => 'Str', xmlname => 'subject', request_name => 'subject', traits => ['Unwrapped','NameInRequest']);
+  has SubmittedBy => (is => 'ro', isa => 'Str', xmlname => 'submittedBy', request_name => 'submittedBy', traits => ['Unwrapped','NameInRequest']);
+  has TimeCreated => (is => 'ro', isa => 'Str', xmlname => 'timeCreated', request_name => 'timeCreated', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -31,14 +31,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Support::CaseDetails object:
 
-  $service_obj->Method(Att1 => { caseId => $value, ..., timeCreated => $value  });
+  $service_obj->Method(Att1 => { CaseId => $value, ..., TimeCreated => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Support::CaseDetails object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->caseId
+  $result->Att1->CaseId
 
 =head1 DESCRIPTION
 
@@ -93,61 +93,61 @@ format.
 
 =head1 ATTRIBUTES
 
-=head2 caseId => Str
+=head2 CaseId => Str
 
   The AWS Support case ID requested or returned in the call. The case ID
 is an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
-=head2 categoryCode => Str
+=head2 CategoryCode => Str
 
   The category of problem for the AWS Support case.
 
-=head2 ccEmailAddresses => ArrayRef[Str]
+=head2 CcEmailAddresses => ArrayRef[Str]
 
   The email addresses that receive copies of communication about the
 case.
 
-=head2 displayId => Str
+=head2 DisplayId => Str
 
   The ID displayed for the case in the AWS Support Center. This is a
 numeric string.
 
-=head2 language => Str
+=head2 Language => Str
 
   The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.
 
-=head2 recentCommunications => L<Paws::Support::RecentCaseCommunications>
+=head2 RecentCommunications => L<Paws::Support::RecentCaseCommunications>
 
   The five most recent communications between you and AWS Support Center,
 including the IDs of any attachments to the communications. Also
 includes a C<nextToken> that you can use to retrieve earlier
 communications.
 
-=head2 serviceCode => Str
+=head2 ServiceCode => Str
 
   The code for the AWS service returned by the call to DescribeServices.
 
-=head2 severityCode => Str
+=head2 SeverityCode => Str
 
   The code for the severity level returned by the call to
 DescribeSeverityLevels.
 
-=head2 status => Str
+=head2 Status => Str
 
   The status of the case.
 
-=head2 subject => Str
+=head2 Subject => Str
 
   The subject line for the case in the AWS Support Center.
 
-=head2 submittedBy => Str
+=head2 SubmittedBy => Str
 
   The email address of the account that submitted the case.
 
-=head2 timeCreated => Str
+=head2 TimeCreated => Str
 
   The time that the case was case created in the AWS Support Center.
 

@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::ListDeploymentsOutput;
   use Moose;
-  has deployments => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Deployments => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'deployments' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::CodeDeploy::ListDeploymentsOutput
 
 =head1 ATTRIBUTES
 
-=head2 deployments => ArrayRef[Str]
+=head2 Deployments => ArrayRef[Str]
 
   A list of deployment IDs.
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   If the amount of information that is returned is significantly large,
 an identifier will also be returned, which can be used in a subsequent

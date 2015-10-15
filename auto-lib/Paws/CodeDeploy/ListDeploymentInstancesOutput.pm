@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::ListDeploymentInstancesOutput;
   use Moose;
-  has instancesList => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has InstancesList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'instancesList' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::CodeDeploy::ListDeploymentInstancesOutput
 
 =head1 ATTRIBUTES
 
-=head2 instancesList => ArrayRef[Str]
+=head2 InstancesList => ArrayRef[Str]
 
   A list of instances IDs.
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   If the amount of information that is returned is significantly large,
 an identifier will also be returned, which can be used in a subsequent

@@ -212,7 +212,7 @@ delivery channel, stop the running configuration recorder using the
 StopConfigurationRecorder action.
 
 
-=head2 DeliverConfigSnapshot(deliveryChannelName => Str)
+=head2 DeliverConfigSnapshot(DeliveryChannelName => Str)
 
 Each argument is described in detail in: L<Paws::Config::DeliverConfigSnapshot>
 
@@ -433,7 +433,7 @@ these numbers for each resource type. The maximum number returned is
 100.
 
 
-=head2 GetResourceConfigHistory(resourceId => Str, resourceType => Str, [chronologicalOrder => Str, earlierTime => Str, laterTime => Str, limit => Int, nextToken => Str])
+=head2 GetResourceConfigHistory(ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::GetResourceConfigHistory>
 
@@ -455,7 +455,7 @@ specified C<limit>. In such cases, you can make another call, using the
 C<nextToken>.
 
 
-=head2 ListDiscoveredResources(resourceType => Str, [includeDeletedResources => Bool, limit => Int, nextToken => Str, resourceIds => ArrayRef[Str], resourceName => Str])
+=head2 ListDiscoveredResources(ResourceType => Str, [IncludeDeletedResources => Bool, Limit => Int, NextToken => Str, ResourceIds => ArrayRef[Str], ResourceName => Str])
 
 Each argument is described in detail in: L<Paws::Config::ListDiscoveredResources>
 

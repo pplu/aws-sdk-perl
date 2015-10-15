@@ -1,8 +1,8 @@
 
 package Paws::Inspector::RunAssessment;
   use Moose;
-  has assessmentArn => (is => 'ro', isa => 'Str');
-  has runName => (is => 'ro', isa => 'Str');
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' );
+  has RunName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'runName' );
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 assessmentArn => Str
+=head2 AssessmentArn => Str
 
   The ARN of the assessment that you want to run.
 
-=head2 runName => Str
+=head2 RunName => Str
 
   A name specifying the run of the assessment.
 

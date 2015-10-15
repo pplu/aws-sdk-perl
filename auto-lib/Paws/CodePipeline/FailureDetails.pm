@@ -1,8 +1,8 @@
 package Paws::CodePipeline::FailureDetails;
   use Moose;
-  has externalExecutionId => (is => 'ro', isa => 'Str');
-  has message => (is => 'ro', isa => 'Str', required => 1);
-  has type => (is => 'ro', isa => 'Str', required => 1);
+  has ExternalExecutionId => (is => 'ro', isa => 'Str', xmlname => 'externalExecutionId', request_name => 'externalExecutionId', traits => ['Unwrapped','NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::FailureDetails object:
 
-  $service_obj->Method(Att1 => { externalExecutionId => $value, ..., type => $value  });
+  $service_obj->Method(Att1 => { ExternalExecutionId => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::FailureDetails object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->externalExecutionId
+  $result->Att1->ExternalExecutionId
 
 =head1 DESCRIPTION
 
@@ -37,15 +37,15 @@ Represents information about failure details.
 
 =head1 ATTRIBUTES
 
-=head2 externalExecutionId => Str
+=head2 ExternalExecutionId => Str
 
   The external ID of the run of the action that failed.
 
-=head2 B<REQUIRED> message => Str
+=head2 B<REQUIRED> Message => Str
 
   The message about the failure.
 
-=head2 B<REQUIRED> type => Str
+=head2 B<REQUIRED> Type => Str
 
   The type of the failure.
 

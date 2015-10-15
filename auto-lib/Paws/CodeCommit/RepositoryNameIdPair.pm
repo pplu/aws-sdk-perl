@@ -1,7 +1,7 @@
 package Paws::CodeCommit::RepositoryNameIdPair;
   use Moose;
-  has repositoryId => (is => 'ro', isa => 'Str');
-  has repositoryName => (is => 'ro', isa => 'Str');
+  has RepositoryId => (is => 'ro', isa => 'Str', xmlname => 'repositoryId', request_name => 'repositoryId', traits => ['Unwrapped','NameInRequest']);
+  has RepositoryName => (is => 'ro', isa => 'Str', xmlname => 'repositoryName', request_name => 'repositoryName', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeCommit::RepositoryNameIdPair object:
 
-  $service_obj->Method(Att1 => { repositoryId => $value, ..., repositoryName => $value  });
+  $service_obj->Method(Att1 => { RepositoryId => $value, ..., RepositoryName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeCommit::RepositoryNameIdPair object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->repositoryId
+  $result->Att1->RepositoryId
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Information about a repository name and ID.
 
 =head1 ATTRIBUTES
 
-=head2 repositoryId => Str
+=head2 RepositoryId => Str
 
   The ID associated with the repository name.
 
-=head2 repositoryName => Str
+=head2 RepositoryName => Str
 
   
 

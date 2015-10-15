@@ -1,10 +1,10 @@
 package Paws::CodeDeploy::GenericRevisionInfo;
   use Moose;
-  has deploymentGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has description => (is => 'ro', isa => 'Str');
-  has firstUsedTime => (is => 'ro', isa => 'Str');
-  has lastUsedTime => (is => 'ro', isa => 'Str');
-  has registerTime => (is => 'ro', isa => 'Str');
+  has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'deploymentGroups', request_name => 'deploymentGroups', traits => ['Unwrapped','NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
+  has FirstUsedTime => (is => 'ro', isa => 'Str', xmlname => 'firstUsedTime', request_name => 'firstUsedTime', traits => ['Unwrapped','NameInRequest']);
+  has LastUsedTime => (is => 'ro', isa => 'Str', xmlname => 'lastUsedTime', request_name => 'lastUsedTime', traits => ['Unwrapped','NameInRequest']);
+  has RegisterTime => (is => 'ro', isa => 'Str', xmlname => 'registerTime', request_name => 'registerTime', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::GenericRevisionInfo object:
 
-  $service_obj->Method(Att1 => { deploymentGroups => $value, ..., registerTime => $value  });
+  $service_obj->Method(Att1 => { DeploymentGroups => $value, ..., RegisterTime => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::GenericRevisionInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->deploymentGroups
+  $result->Att1->DeploymentGroups
 
 =head1 DESCRIPTION
 
@@ -39,23 +39,23 @@ Information about an application revision.
 
 =head1 ATTRIBUTES
 
-=head2 deploymentGroups => ArrayRef[Str]
+=head2 DeploymentGroups => ArrayRef[Str]
 
   A list of deployment groups that use this revision.
 
-=head2 description => Str
+=head2 Description => Str
 
   A comment about the revision.
 
-=head2 firstUsedTime => Str
+=head2 FirstUsedTime => Str
 
   When the revision was first used by AWS CodeDeploy.
 
-=head2 lastUsedTime => Str
+=head2 LastUsedTime => Str
 
   When the revision was last used by AWS CodeDeploy.
 
-=head2 registerTime => Str
+=head2 RegisterTime => Str
 
   When the revision was registered with AWS CodeDeploy.
 

@@ -1,8 +1,8 @@
 
 package Paws::ECS::ListClusters;
   use Moose;
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 maxResults => Int
+=head2 MaxResults => Int
 
   The maximum number of cluster results returned by C<ListClusters> in
 paginated output. When this parameter is used, C<ListClusters> only
@@ -44,7 +44,7 @@ returned C<nextToken> value. This value can be between 1 and 100. If
 this parameter is not used, then C<ListClusters> returns up to 100
 results and a C<nextToken> value if applicable.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   The C<nextToken> value returned from a previous paginated
 C<ListClusters> request where C<maxResults> was used and the results

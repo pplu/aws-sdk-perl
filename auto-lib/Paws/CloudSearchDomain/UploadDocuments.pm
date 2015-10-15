@@ -1,8 +1,8 @@
 
 package Paws::CloudSearchDomain::UploadDocuments;
   use Moose;
-  has contentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type' , required => 1);
-  has documents => (is => 'ro', isa => 'Str', required => 1);
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'contentType' , required => 1);
+  has Documents => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> contentType => Str
+=head2 B<REQUIRED> ContentType => Str
 
   The format of the batch you are uploading. Amazon CloudSearch supports
 two document batch formats:
@@ -49,7 +49,7 @@ two document batch formats:
 =back
 
 
-=head2 B<REQUIRED> documents => Str
+=head2 B<REQUIRED> Documents => Str
 
   A batch of documents formatted in JSON or HTML.
 

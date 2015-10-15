@@ -1,8 +1,8 @@
 
 package Paws::ECS::DescribeServices;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has services => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Services => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'services' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,12 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
   The name of the cluster that hosts the service to describe. If you do
 not specify a cluster, the default cluster is assumed.
 
-=head2 B<REQUIRED> services => ArrayRef[Str]
+=head2 B<REQUIRED> Services => ArrayRef[Str]
 
   A list of services to describe.
 

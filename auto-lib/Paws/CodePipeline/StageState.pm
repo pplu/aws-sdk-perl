@@ -1,8 +1,8 @@
 package Paws::CodePipeline::StageState;
   use Moose;
-  has actionStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionState]');
-  has inboundTransitionState => (is => 'ro', isa => 'Paws::CodePipeline::TransitionState');
-  has stageName => (is => 'ro', isa => 'Str');
+  has ActionStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionState]', xmlname => 'actionStates', request_name => 'actionStates', traits => ['Unwrapped','NameInRequest']);
+  has InboundTransitionState => (is => 'ro', isa => 'Paws::CodePipeline::TransitionState', xmlname => 'inboundTransitionState', request_name => 'inboundTransitionState', traits => ['Unwrapped','NameInRequest']);
+  has StageName => (is => 'ro', isa => 'Str', xmlname => 'stageName', request_name => 'stageName', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::StageState object:
 
-  $service_obj->Method(Att1 => { actionStates => $value, ..., stageName => $value  });
+  $service_obj->Method(Att1 => { ActionStates => $value, ..., StageName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::StageState object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->actionStates
+  $result->Att1->ActionStates
 
 =head1 DESCRIPTION
 
@@ -37,16 +37,16 @@ Represents information about the state of the stage.
 
 =head1 ATTRIBUTES
 
-=head2 actionStates => ArrayRef[L<Paws::CodePipeline::ActionState>]
+=head2 ActionStates => ArrayRef[L<Paws::CodePipeline::ActionState>]
 
   The state of the stage.
 
-=head2 inboundTransitionState => L<Paws::CodePipeline::TransitionState>
+=head2 InboundTransitionState => L<Paws::CodePipeline::TransitionState>
 
   The state of the inbound transition, which is either enabled or
 disabled.
 
-=head2 stageName => Str
+=head2 StageName => Str
 
   The name of the stage.
 

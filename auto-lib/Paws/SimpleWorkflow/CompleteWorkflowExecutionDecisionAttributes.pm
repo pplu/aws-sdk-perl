@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes;
   use Moose;
-  has result => (is => 'ro', isa => 'Str');
+  has Result => (is => 'ro', isa => 'Str', xmlname => 'result', request_name => 'result', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes object:
 
-  $service_obj->Method(Att1 => { result => $value, ..., result => $value  });
+  $service_obj->Method(Att1 => { Result => $value, ..., Result => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->result
+  $result->Att1->Result
 
 =head1 DESCRIPTION
 
@@ -59,7 +59,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
-=head2 result => Str
+=head2 Result => Str
 
   The result of the workflow execution. The form of the result is
 implementation defined.

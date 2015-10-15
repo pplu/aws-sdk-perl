@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::ConfirmPublicVirtualInterface;
   use Moose;
-  has virtualInterfaceId => (is => 'ro', isa => 'Str', required => 1);
+  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> virtualInterfaceId => Str
+=head2 B<REQUIRED> VirtualInterfaceId => Str
 
   
 

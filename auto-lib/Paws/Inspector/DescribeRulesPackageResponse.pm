@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeRulesPackageResponse;
   use Moose;
-  has rulesPackage => (is => 'ro', isa => 'Paws::Inspector::RulesPackage');
+  has RulesPackage => (is => 'ro', isa => 'Paws::Inspector::RulesPackage', traits => ['Unwrapped'], xmlname => 'rulesPackage' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::Inspector::DescribeRulesPackageResponse
 
 =head1 ATTRIBUTES
 
-=head2 rulesPackage => L<Paws::Inspector::RulesPackage>
+=head2 RulesPackage => L<Paws::Inspector::RulesPackage>
 
   Information about the rules package.
 

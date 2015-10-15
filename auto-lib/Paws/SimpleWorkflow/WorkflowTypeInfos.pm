@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::WorkflowTypeInfos;
   use Moose;
-  has nextPageToken => (is => 'ro', isa => 'Str');
-  has typeInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::WorkflowTypeInfo]', required => 1);
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextPageToken' );
+  has TypeInfos => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::WorkflowTypeInfo]', traits => ['Unwrapped'], xmlname => 'typeInfos' , required => 1);
 
 
 ### main pod documentation begin ###
@@ -13,7 +13,7 @@ Paws::SimpleWorkflow::WorkflowTypeInfos
 
 =head1 ATTRIBUTES
 
-=head2 nextPageToken => Str
+=head2 NextPageToken => Str
 
   If a C<NextPageToken> was returned by a previous call, there are more
 results available. To retrieve the next page of results, make the call
@@ -22,7 +22,7 @@ arguments unchanged.
 
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
-=head2 B<REQUIRED> typeInfos => ArrayRef[L<Paws::SimpleWorkflow::WorkflowTypeInfo>]
+=head2 B<REQUIRED> TypeInfos => ArrayRef[L<Paws::SimpleWorkflow::WorkflowTypeInfo>]
 
   The list of workflow type information.
 

@@ -1,13 +1,13 @@
 package Paws::CloudWatchLogs::LogStream;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str');
-  has creationTime => (is => 'ro', isa => 'Int');
-  has firstEventTimestamp => (is => 'ro', isa => 'Int');
-  has lastEventTimestamp => (is => 'ro', isa => 'Int');
-  has lastIngestionTime => (is => 'ro', isa => 'Int');
-  has logStreamName => (is => 'ro', isa => 'Str');
-  has storedBytes => (is => 'ro', isa => 'Int');
-  has uploadSequenceToken => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
+  has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
+  has FirstEventTimestamp => (is => 'ro', isa => 'Int', xmlname => 'firstEventTimestamp', request_name => 'firstEventTimestamp', traits => ['Unwrapped','NameInRequest']);
+  has LastEventTimestamp => (is => 'ro', isa => 'Int', xmlname => 'lastEventTimestamp', request_name => 'lastEventTimestamp', traits => ['Unwrapped','NameInRequest']);
+  has LastIngestionTime => (is => 'ro', isa => 'Int', xmlname => 'lastIngestionTime', request_name => 'lastIngestionTime', traits => ['Unwrapped','NameInRequest']);
+  has LogStreamName => (is => 'ro', isa => 'Str', xmlname => 'logStreamName', request_name => 'logStreamName', traits => ['Unwrapped','NameInRequest']);
+  has StoredBytes => (is => 'ro', isa => 'Int', xmlname => 'storedBytes', request_name => 'storedBytes', traits => ['Unwrapped','NameInRequest']);
+  has UploadSequenceToken => (is => 'ro', isa => 'Str', xmlname => 'uploadSequenceToken', request_name => 'uploadSequenceToken', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -27,14 +27,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::LogStream object:
 
-  $service_obj->Method(Att1 => { arn => $value, ..., uploadSequenceToken => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., UploadSequenceToken => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::LogStream object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->arn
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
@@ -42,35 +42,35 @@ A log stream is sequence of log events from a single emitter of logs.
 
 =head1 ATTRIBUTES
 
-=head2 arn => Str
+=head2 Arn => Str
 
   
 
-=head2 creationTime => Int
+=head2 CreationTime => Int
 
   
 
-=head2 firstEventTimestamp => Int
+=head2 FirstEventTimestamp => Int
 
   
 
-=head2 lastEventTimestamp => Int
+=head2 LastEventTimestamp => Int
 
   
 
-=head2 lastIngestionTime => Int
+=head2 LastIngestionTime => Int
 
   
 
-=head2 logStreamName => Str
+=head2 LogStreamName => Str
 
   
 
-=head2 storedBytes => Int
+=head2 StoredBytes => Int
 
   
 
-=head2 uploadSequenceToken => Str
+=head2 UploadSequenceToken => Str
 
   
 

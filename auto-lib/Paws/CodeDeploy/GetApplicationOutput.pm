@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::GetApplicationOutput;
   use Moose;
-  has application => (is => 'ro', isa => 'Paws::CodeDeploy::ApplicationInfo');
+  has Application => (is => 'ro', isa => 'Paws::CodeDeploy::ApplicationInfo', traits => ['Unwrapped'], xmlname => 'application' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::CodeDeploy::GetApplicationOutput
 
 =head1 ATTRIBUTES
 
-=head2 application => L<Paws::CodeDeploy::ApplicationInfo>
+=head2 Application => L<Paws::CodeDeploy::ApplicationInfo>
 
   Information about the application.
 

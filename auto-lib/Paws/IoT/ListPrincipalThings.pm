@@ -1,9 +1,9 @@
 
 package Paws::IoT::ListPrincipalThings;
   use Moose;
-  has maxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
-  has nextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
-  has principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amzn-principal' , required => 1);
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
+  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'principal' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -36,15 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 maxResults => Int
+=head2 MaxResults => Int
 
   
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   
 
-=head2 B<REQUIRED> principal => Str
+=head2 B<REQUIRED> Principal => Str
 
   The principal.
 

@@ -1,8 +1,8 @@
 
 package Paws::Inspector::AddAttributesToFindings;
   use Moose;
-  has attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]');
-  has findingArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', traits => ['NameInRequest'], request_name => 'attributes' );
+  has FindingArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'findingArns' );
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 attributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   The array of attributes that you want to assign to specified findings.
 
-=head2 findingArns => ArrayRef[Str]
+=head2 FindingArns => ArrayRef[Str]
 
   The ARNs specifying the findings that you want to assign attributes to.
 

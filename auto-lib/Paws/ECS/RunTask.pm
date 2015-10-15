@@ -1,11 +1,11 @@
 
 package Paws::ECS::RunTask;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has count => (is => 'ro', isa => 'Int');
-  has overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride');
-  has startedBy => (is => 'ro', isa => 'Str');
-  has taskDefinition => (is => 'ro', isa => 'Str', required => 1);
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Count => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'count' );
+  has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
+  has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
+  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -36,20 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster on
 which to run your task. If you do not specify a cluster, the default
 cluster is assumed..
 
-=head2 count => Int
+=head2 Count => Int
 
   The number of instantiations of the specified task to place on your
 cluster.
 
 The C<count> parameter is limited to 10 tasks per call.
 
-=head2 overrides => L<Paws::ECS::TaskOverride>
+=head2 Overrides => L<Paws::ECS::TaskOverride>
 
   A list of container overrides in JSON format that specify the name of a
 container in the specified task definition and the overrides it should
@@ -62,7 +62,7 @@ add new environment variables to it with an C<environment> override.
 A total of 8192 characters are allowed for overrides. This limit
 includes the JSON formatting characters of the override structure.
 
-=head2 startedBy => Str
+=head2 StartedBy => Str
 
   An optional tag specified when a task is started. For example if you
 automatically trigger a task to run a batch process job, you could
@@ -74,7 +74,7 @@ C<startedBy> value.
 If a task is started by an Amazon ECS service, then the C<startedBy>
 parameter contains the deployment ID of the service that starts it.
 
-=head2 B<REQUIRED> taskDefinition => Str
+=head2 B<REQUIRED> TaskDefinition => Str
 
   The C<family> and C<revision> (C<family:revision>) or full Amazon
 Resource Name (ARN) of the task definition to run. If a C<revision> is

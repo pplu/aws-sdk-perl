@@ -1,9 +1,9 @@
 package Paws::Support::TrustedAdvisorResourcesSummary;
   use Moose;
-  has resourcesFlagged => (is => 'ro', isa => 'Int', required => 1);
-  has resourcesIgnored => (is => 'ro', isa => 'Int', required => 1);
-  has resourcesProcessed => (is => 'ro', isa => 'Int', required => 1);
-  has resourcesSuppressed => (is => 'ro', isa => 'Int', required => 1);
+  has ResourcesFlagged => (is => 'ro', isa => 'Int', xmlname => 'resourcesFlagged', request_name => 'resourcesFlagged', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ResourcesIgnored => (is => 'ro', isa => 'Int', xmlname => 'resourcesIgnored', request_name => 'resourcesIgnored', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ResourcesProcessed => (is => 'ro', isa => 'Int', xmlname => 'resourcesProcessed', request_name => 'resourcesProcessed', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ResourcesSuppressed => (is => 'ro', isa => 'Int', xmlname => 'resourcesSuppressed', request_name => 'resourcesSuppressed', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Support::TrustedAdvisorResourcesSummary object:
 
-  $service_obj->Method(Att1 => { resourcesFlagged => $value, ..., resourcesSuppressed => $value  });
+  $service_obj->Method(Att1 => { ResourcesFlagged => $value, ..., ResourcesSuppressed => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Support::TrustedAdvisorResourcesSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->resourcesFlagged
+  $result->Att1->ResourcesFlagged
 
 =head1 DESCRIPTION
 
@@ -39,22 +39,22 @@ Advisor DescribeTrustedAdvisorCheckSummaries.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> resourcesFlagged => Int
+=head2 B<REQUIRED> ResourcesFlagged => Int
 
   The number of AWS resources that were flagged (listed) by the Trusted
 Advisor check.
 
-=head2 B<REQUIRED> resourcesIgnored => Int
+=head2 B<REQUIRED> ResourcesIgnored => Int
 
   The number of AWS resources ignored by Trusted Advisor because
 information was unavailable.
 
-=head2 B<REQUIRED> resourcesProcessed => Int
+=head2 B<REQUIRED> ResourcesProcessed => Int
 
   The number of AWS resources that were analyzed by the Trusted Advisor
 check.
 
-=head2 B<REQUIRED> resourcesSuppressed => Int
+=head2 B<REQUIRED> ResourcesSuppressed => Int
 
   The number of AWS resources ignored by Trusted Advisor because they
 were marked as suppressed by the user.

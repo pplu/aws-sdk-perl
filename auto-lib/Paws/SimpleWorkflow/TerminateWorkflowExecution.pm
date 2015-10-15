@@ -1,12 +1,12 @@
 
 package Paws::SimpleWorkflow::TerminateWorkflowExecution;
   use Moose;
-  has childPolicy => (is => 'ro', isa => 'Str');
-  has details => (is => 'ro', isa => 'Str');
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has reason => (is => 'ro', isa => 'Str');
-  has runId => (is => 'ro', isa => 'Str');
-  has workflowId => (is => 'ro', isa => 'Str', required => 1);
+  has ChildPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'childPolicy' );
+  has Details => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'details' );
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
+  has RunId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'runId' );
+  has WorkflowId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workflowId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 childPolicy => Str
+=head2 ChildPolicy => Str
 
   If set, specifies the policy to use for the child workflow executions
 of the workflow execution being terminated. This policy overrides the
@@ -65,24 +65,24 @@ a default for the workflow type or through this parameter. If neither
 this parameter is set nor a default child policy was specified at
 registration time then a fault will be returned.
 
-=head2 details => Str
+=head2 Details => Str
 
   I<Optional.> Details for terminating the workflow execution.
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
   The domain of the workflow execution to terminate.
 
-=head2 reason => Str
+=head2 Reason => Str
 
   I<Optional.> A descriptive reason for terminating the workflow
 execution.
 
-=head2 runId => Str
+=head2 RunId => Str
 
   The runId of the workflow execution to terminate.
 
-=head2 B<REQUIRED> workflowId => Str
+=head2 B<REQUIRED> WorkflowId => Str
 
   The workflowId of the workflow execution to terminate.
 

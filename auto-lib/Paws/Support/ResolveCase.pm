@@ -1,7 +1,7 @@
 
 package Paws::Support::ResolveCase;
   use Moose;
-  has caseId => (is => 'ro', isa => 'Str');
+  has CaseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caseId' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 caseId => Str
+=head2 CaseId => Str
 
   The AWS Support case ID requested or returned in the call. The case ID
 is an alphanumeric string formatted as shown in this example:

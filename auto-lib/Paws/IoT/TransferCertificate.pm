@@ -1,8 +1,8 @@
 
 package Paws::IoT::TransferCertificate;
   use Moose;
-  has certificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
-  has targetAwsAccount => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'targetAwsAccount' , required => 1);
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
+  has TargetAwsAccount => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'targetAwsAccount' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,11 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> certificateId => Str
+=head2 B<REQUIRED> CertificateId => Str
 
   The ID of the certificate.
 
-=head2 B<REQUIRED> targetAwsAccount => Str
+=head2 B<REQUIRED> TargetAwsAccount => Str
 
   The AWS account.
 

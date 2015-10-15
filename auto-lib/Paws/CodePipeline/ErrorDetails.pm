@@ -1,7 +1,7 @@
 package Paws::CodePipeline::ErrorDetails;
   use Moose;
-  has code => (is => 'ro', isa => 'Str');
-  has message => (is => 'ro', isa => 'Str');
+  has Code => (is => 'ro', isa => 'Str', xmlname => 'code', request_name => 'code', traits => ['Unwrapped','NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ErrorDetails object:
 
-  $service_obj->Method(Att1 => { code => $value, ..., message => $value  });
+  $service_obj->Method(Att1 => { Code => $value, ..., Message => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ErrorDetails object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->code
+  $result->Att1->Code
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Represents information about an error in AWS CodePipeline.
 
 =head1 ATTRIBUTES
 
-=head2 code => Str
+=head2 Code => Str
 
   The system ID or error number code of the error.
 
-=head2 message => Str
+=head2 Message => Str
 
   The text of the error message.
 

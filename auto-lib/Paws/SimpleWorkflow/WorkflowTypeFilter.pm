@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::WorkflowTypeFilter;
   use Moose;
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has version => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::WorkflowTypeFilter object:
 
-  $service_obj->Method(Att1 => { name => $value, ..., version => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::WorkflowTypeFilter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->name
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
@@ -38,11 +38,11 @@ returned result.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
   B<Required.> Name of the workflow type.
 
-=head2 version => Str
+=head2 Version => Str
 
   Version of the workflow type.
 

@@ -1,8 +1,8 @@
 
 package Paws::IoT::UpdateCertificate;
   use Moose;
-  has certificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
-  has newStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newStatus' , required => 1);
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
+  has NewStatus => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'newStatus' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,11 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> certificateId => Str
+=head2 B<REQUIRED> CertificateId => Str
 
   The ID of the certificate.
 
-=head2 B<REQUIRED> newStatus => Str
+=head2 B<REQUIRED> NewStatus => Str
 
   The new status.
 

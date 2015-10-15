@@ -1,7 +1,7 @@
 
 package Paws::Inspector::StopDataCollection;
   use Moose;
-  has assessmentArn => (is => 'ro', isa => 'Str');
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 assessmentArn => Str
+=head2 AssessmentArn => Str
 
   The ARN of the assessment for which you want to stop the data
 collection process.

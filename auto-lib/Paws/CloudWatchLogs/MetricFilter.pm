@@ -1,9 +1,9 @@
 package Paws::CloudWatchLogs::MetricFilter;
   use Moose;
-  has creationTime => (is => 'ro', isa => 'Int');
-  has filterName => (is => 'ro', isa => 'Str');
-  has filterPattern => (is => 'ro', isa => 'Str');
-  has metricTransformations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricTransformation]');
+  has CreationTime => (is => 'ro', isa => 'Int', xmlname => 'creationTime', request_name => 'creationTime', traits => ['Unwrapped','NameInRequest']);
+  has FilterName => (is => 'ro', isa => 'Str', xmlname => 'filterName', request_name => 'filterName', traits => ['Unwrapped','NameInRequest']);
+  has FilterPattern => (is => 'ro', isa => 'Str', xmlname => 'filterPattern', request_name => 'filterPattern', traits => ['Unwrapped','NameInRequest']);
+  has MetricTransformations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricTransformation]', xmlname => 'metricTransformations', request_name => 'metricTransformations', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::MetricFilter object:
 
-  $service_obj->Method(Att1 => { creationTime => $value, ..., metricTransformations => $value  });
+  $service_obj->Method(Att1 => { CreationTime => $value, ..., MetricTransformations => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::MetricFilter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->creationTime
+  $result->Att1->CreationTime
 
 =head1 DESCRIPTION
 
@@ -40,19 +40,19 @@ to metric data in a CloudWatch metric.
 
 =head1 ATTRIBUTES
 
-=head2 creationTime => Int
+=head2 CreationTime => Int
 
   
 
-=head2 filterName => Str
+=head2 FilterName => Str
 
   
 
-=head2 filterPattern => Str
+=head2 FilterPattern => Str
 
   
 
-=head2 metricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
+=head2 MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
 
   
 

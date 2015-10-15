@@ -1,7 +1,7 @@
 package Paws::CloudSearchDomain::Bucket;
   use Moose;
-  has count => (is => 'ro', isa => 'Int');
-  has value => (is => 'ro', isa => 'Str');
+  has Count => (is => 'ro', isa => 'Int', xmlname => 'count', request_name => 'count', traits => ['Unwrapped','NameInRequest']);
+  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudSearchDomain::Bucket object:
 
-  $service_obj->Method(Att1 => { count => $value, ..., value => $value  });
+  $service_obj->Method(Att1 => { Count => $value, ..., Value => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearchDomain::Bucket object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->count
+  $result->Att1->Count
 
 =head1 DESCRIPTION
 
@@ -36,12 +36,12 @@ A container for facet information.
 
 =head1 ATTRIBUTES
 
-=head2 count => Int
+=head2 Count => Int
 
   The number of hits that contain the facet value in the specified facet
 field.
 
-=head2 value => Str
+=head2 Value => Str
 
   The facet value being counted.
 

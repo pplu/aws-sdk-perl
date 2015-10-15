@@ -1,8 +1,8 @@
 
 package Paws::Glacier::InitiateJobOutput;
   use Moose;
-  has jobId => (is => 'ro', isa => 'Str');
-  has location => (is => 'ro', isa => 'Str');
+  has JobId => (is => 'ro', isa => 'Str');
+  has Location => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -14,10 +14,10 @@ Paws::Glacier::InitiateJobOutput
 
 =head1 ATTRIBUTES
 
-=head2 jobId => Str
+=head2 JobId => Str
 
   The ID of the job.
-=head2 location => Str
+=head2 Location => Str
 
   The relative URI path of the job.
 

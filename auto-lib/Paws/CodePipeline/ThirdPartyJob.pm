@@ -1,7 +1,7 @@
 package Paws::CodePipeline::ThirdPartyJob;
   use Moose;
-  has clientId => (is => 'ro', isa => 'Str');
-  has jobId => (is => 'ro', isa => 'Str');
+  has ClientId => (is => 'ro', isa => 'Str', xmlname => 'clientId', request_name => 'clientId', traits => ['Unwrapped','NameInRequest']);
+  has JobId => (is => 'ro', isa => 'Str', xmlname => 'jobId', request_name => 'jobId', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ThirdPartyJob object:
 
-  $service_obj->Method(Att1 => { clientId => $value, ..., jobId => $value  });
+  $service_obj->Method(Att1 => { ClientId => $value, ..., JobId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ThirdPartyJob object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->clientId
+  $result->Att1->ClientId
 
 =head1 DESCRIPTION
 
@@ -37,13 +37,13 @@ CodePipeline when there is a job to be worked upon by a partner action.
 
 =head1 ATTRIBUTES
 
-=head2 clientId => Str
+=head2 ClientId => Str
 
   The clientToken portion of the clientId and clientToken pair used to
 verify that the calling entity is allowed access to the job and its
 details.
 
-=head2 jobId => Str
+=head2 JobId => Str
 
   The identifier used to identify the job in AWS CodePipeline.
 

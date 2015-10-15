@@ -1,9 +1,9 @@
 
 package Paws::IoTData::Publish;
   use Moose;
-  has payload => (is => 'ro', isa => 'Str');
-  has qos => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'qos' );
-  has topic => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'topic' , required => 1);
+  has Payload => (is => 'ro', isa => 'Str');
+  has Qos => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'qos' );
+  has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'topic' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -36,15 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 payload => Str
+=head2 Payload => Str
 
   The state information, in JSON format.
 
-=head2 qos => Int
+=head2 Qos => Int
 
   The Quality of Service (QoS) level.
 
-=head2 B<REQUIRED> topic => Str
+=head2 B<REQUIRED> Topic => Str
 
   The name of the MQTT topic.
 

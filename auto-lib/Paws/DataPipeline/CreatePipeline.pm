@@ -1,10 +1,10 @@
 
 package Paws::DataPipeline::CreatePipeline;
   use Moose;
-  has description => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]');
-  has uniqueId => (is => 'ro', isa => 'Str', required => 1);
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  has UniqueId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uniqueId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,23 +35,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 description => Str
+=head2 Description => Str
 
   The description for the pipeline.
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name for the pipeline. You can use the same name for multiple
 pipelines associated with your AWS account, because AWS Data Pipeline
 assigns each pipeline a unique pipeline identifier.
 
-=head2 tags => ArrayRef[L<Paws::DataPipeline::Tag>]
+=head2 Tags => ArrayRef[L<Paws::DataPipeline::Tag>]
 
   A list of tags to associate with the pipeline at creation. Tags let you
 control access to pipelines. For more information, see Controlling User
 Access to Pipelines in the I<AWS Data Pipeline Developer Guide>.
 
-=head2 B<REQUIRED> uniqueId => Str
+=head2 B<REQUIRED> UniqueId => Str
 
   A unique identifier. This identifier is not the same as the pipeline
 identifier assigned by AWS Data Pipeline. You are responsible for

@@ -1,8 +1,8 @@
 package Paws::DataPipeline::PipelineObject;
   use Moose;
-  has fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', required => 1);
-  has id => (is => 'ro', isa => 'Str', required => 1);
-  has name => (is => 'ro', isa => 'Str', required => 1);
+  has Fields => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Field]', xmlname => 'fields', request_name => 'fields', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DataPipeline::PipelineObject object:
 
-  $service_obj->Method(Att1 => { fields => $value, ..., name => $value  });
+  $service_obj->Method(Att1 => { Fields => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipeline::PipelineObject object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->fields
+  $result->Att1->Fields
 
 =head1 DESCRIPTION
 
@@ -39,15 +39,15 @@ components of a pipeline defines the pipeline.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> fields => ArrayRef[L<Paws::DataPipeline::Field>]
+=head2 B<REQUIRED> Fields => ArrayRef[L<Paws::DataPipeline::Field>]
 
   Key-value pairs that define the properties of the object.
 
-=head2 B<REQUIRED> id => Str
+=head2 B<REQUIRED> Id => Str
 
   The ID of the object.
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name of the object.
 

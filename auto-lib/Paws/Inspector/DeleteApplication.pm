@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DeleteApplication;
   use Moose;
-  has applicationArn => (is => 'ro', isa => 'Str');
+  has ApplicationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationArn' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 applicationArn => Str
+=head2 ApplicationArn => Str
 
   The ARN specifying the application that you want to delete.
 

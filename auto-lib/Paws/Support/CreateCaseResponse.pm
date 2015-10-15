@@ -1,7 +1,7 @@
 
 package Paws::Support::CreateCaseResponse;
   use Moose;
-  has caseId => (is => 'ro', isa => 'Str');
+  has CaseId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'caseId' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::Support::CreateCaseResponse
 
 =head1 ATTRIBUTES
 
-=head2 caseId => Str
+=head2 CaseId => Str
 
   The AWS Support case ID requested or returned in the call. The case ID
 is an alphanumeric string formatted as shown in this example:

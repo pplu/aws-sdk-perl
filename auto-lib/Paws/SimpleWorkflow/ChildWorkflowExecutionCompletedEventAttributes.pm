@@ -1,10 +1,10 @@
 package Paws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes;
   use Moose;
-  has initiatedEventId => (is => 'ro', isa => 'Int', required => 1);
-  has result => (is => 'ro', isa => 'Str');
-  has startedEventId => (is => 'ro', isa => 'Int', required => 1);
-  has workflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', required => 1);
-  has workflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', required => 1);
+  has InitiatedEventId => (is => 'ro', isa => 'Int', xmlname => 'initiatedEventId', request_name => 'initiatedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Result => (is => 'ro', isa => 'Str', xmlname => 'result', request_name => 'result', traits => ['Unwrapped','NameInRequest']);
+  has StartedEventId => (is => 'ro', isa => 'Int', xmlname => 'startedEventId', request_name => 'startedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has WorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', xmlname => 'workflowExecution', request_name => 'workflowExecution', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', xmlname => 'workflowType', request_name => 'workflowType', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes object:
 
-  $service_obj->Method(Att1 => { initiatedEventId => $value, ..., workflowType => $value  });
+  $service_obj->Method(Att1 => { InitiatedEventId => $value, ..., WorkflowType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->initiatedEventId
+  $result->Att1->InitiatedEventId
 
 =head1 DESCRIPTION
 
@@ -39,7 +39,7 @@ Provides details of the C<ChildWorkflowExecutionCompleted> event.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> initiatedEventId => Int
+=head2 B<REQUIRED> InitiatedEventId => Int
 
   The ID of the C<StartChildWorkflowExecutionInitiated> event
 corresponding to the C<StartChildWorkflowExecution> decision to start
@@ -47,22 +47,22 @@ this child workflow execution. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
-=head2 result => Str
+=head2 Result => Str
 
   The result of the child workflow execution (if any).
 
-=head2 B<REQUIRED> startedEventId => Int
+=head2 B<REQUIRED> StartedEventId => Int
 
   The ID of the C<ChildWorkflowExecutionStarted> event recorded when this
 child workflow execution was started. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
-=head2 B<REQUIRED> workflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The child workflow execution that was completed.
 
-=head2 B<REQUIRED> workflowType => L<Paws::SimpleWorkflow::WorkflowType>
+=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The type of the child workflow execution.
 

@@ -1,14 +1,14 @@
 package Paws::ECS::Task;
   use Moose;
-  has clusterArn => (is => 'ro', isa => 'Str');
-  has containerInstanceArn => (is => 'ro', isa => 'Str');
-  has containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Container]');
-  has desiredStatus => (is => 'ro', isa => 'Str');
-  has lastStatus => (is => 'ro', isa => 'Str');
-  has overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride');
-  has startedBy => (is => 'ro', isa => 'Str');
-  has taskArn => (is => 'ro', isa => 'Str');
-  has taskDefinitionArn => (is => 'ro', isa => 'Str');
+  has ClusterArn => (is => 'ro', isa => 'Str', xmlname => 'clusterArn', request_name => 'clusterArn', traits => ['Unwrapped','NameInRequest']);
+  has ContainerInstanceArn => (is => 'ro', isa => 'Str', xmlname => 'containerInstanceArn', request_name => 'containerInstanceArn', traits => ['Unwrapped','NameInRequest']);
+  has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Container]', xmlname => 'containers', request_name => 'containers', traits => ['Unwrapped','NameInRequest']);
+  has DesiredStatus => (is => 'ro', isa => 'Str', xmlname => 'desiredStatus', request_name => 'desiredStatus', traits => ['Unwrapped','NameInRequest']);
+  has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
+  has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', xmlname => 'overrides', request_name => 'overrides', traits => ['Unwrapped','NameInRequest']);
+  has StartedBy => (is => 'ro', isa => 'Str', xmlname => 'startedBy', request_name => 'startedBy', traits => ['Unwrapped','NameInRequest']);
+  has TaskArn => (is => 'ro', isa => 'Str', xmlname => 'taskArn', request_name => 'taskArn', traits => ['Unwrapped','NameInRequest']);
+  has TaskDefinitionArn => (is => 'ro', isa => 'Str', xmlname => 'taskDefinitionArn', request_name => 'taskDefinitionArn', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -28,14 +28,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::Task object:
 
-  $service_obj->Method(Att1 => { clusterArn => $value, ..., taskDefinitionArn => $value  });
+  $service_obj->Method(Att1 => { ClusterArn => $value, ..., TaskDefinitionArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Task object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->clusterArn
+  $result->Att1->ClusterArn
 
 =head1 DESCRIPTION
 
@@ -43,43 +43,43 @@ Details on a task in a cluster.
 
 =head1 ATTRIBUTES
 
-=head2 clusterArn => Str
+=head2 ClusterArn => Str
 
   The Amazon Resource Name (ARN) of the of the cluster that hosts the
 task.
 
-=head2 containerInstanceArn => Str
+=head2 ContainerInstanceArn => Str
 
   The Amazon Resource Name (ARN) of the container instances that host the
 task.
 
-=head2 containers => ArrayRef[L<Paws::ECS::Container>]
+=head2 Containers => ArrayRef[L<Paws::ECS::Container>]
 
   The containers associated with the task.
 
-=head2 desiredStatus => Str
+=head2 DesiredStatus => Str
 
   The desired status of the task.
 
-=head2 lastStatus => Str
+=head2 LastStatus => Str
 
   The last known status of the task.
 
-=head2 overrides => L<Paws::ECS::TaskOverride>
+=head2 Overrides => L<Paws::ECS::TaskOverride>
 
   One or more container overrides.
 
-=head2 startedBy => Str
+=head2 StartedBy => Str
 
   The tag specified when a task is started. If the task is started by an
 Amazon ECS service, then the C<startedBy> parameter contains the
 deployment ID of the service that starts it.
 
-=head2 taskArn => Str
+=head2 TaskArn => Str
 
   The Amazon Resource Name (ARN) of the task.
 
-=head2 taskDefinitionArn => Str
+=head2 TaskDefinitionArn => Str
 
   The Amazon Resource Name (ARN) of the of the task definition that
 creates the task.

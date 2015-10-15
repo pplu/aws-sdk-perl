@@ -1,9 +1,9 @@
 
 package Paws::SimpleWorkflow::RespondDecisionTaskCompleted;
   use Moose;
-  has decisions => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::Decision]');
-  has executionContext => (is => 'ro', isa => 'Str');
-  has taskToken => (is => 'ro', isa => 'Str', required => 1);
+  has Decisions => (is => 'ro', isa => 'ArrayRef[Paws::SimpleWorkflow::Decision]', traits => ['NameInRequest'], request_name => 'decisions' );
+  has ExecutionContext => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionContext' );
+  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,17 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 decisions => ArrayRef[L<Paws::SimpleWorkflow::Decision>]
+=head2 Decisions => ArrayRef[L<Paws::SimpleWorkflow::Decision>]
 
   The list of decisions (possibly empty) made by the decider while
 processing this decision task. See the docs for the decision structure
 for details.
 
-=head2 executionContext => Str
+=head2 ExecutionContext => Str
 
   User defined context to add to workflow execution.
 
-=head2 B<REQUIRED> taskToken => Str
+=head2 B<REQUIRED> TaskToken => Str
 
   The C<taskToken> from the DecisionTask.
 

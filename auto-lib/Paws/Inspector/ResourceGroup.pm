@@ -1,7 +1,7 @@
 package Paws::Inspector::ResourceGroup;
   use Moose;
-  has resourceGroupArn => (is => 'ro', isa => 'Str');
-  has resourceGroupTags => (is => 'ro', isa => 'Str');
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', xmlname => 'resourceGroupArn', request_name => 'resourceGroupArn', traits => ['Unwrapped','NameInRequest']);
+  has ResourceGroupTags => (is => 'ro', isa => 'Str', xmlname => 'resourceGroupTags', request_name => 'resourceGroupTags', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::ResourceGroup object:
 
-  $service_obj->Method(Att1 => { resourceGroupArn => $value, ..., resourceGroupTags => $value  });
+  $service_obj->Method(Att1 => { ResourceGroupArn => $value, ..., ResourceGroupTags => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::ResourceGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->resourceGroupArn
+  $result->Att1->ResourceGroupArn
 
 =head1 DESCRIPTION
 
@@ -41,11 +41,11 @@ DescribeResourceGroup action.
 
 =head1 ATTRIBUTES
 
-=head2 resourceGroupArn => Str
+=head2 ResourceGroupArn => Str
 
   The ARN of the resource group.
 
-=head2 resourceGroupTags => Str
+=head2 ResourceGroupTags => Str
 
   The tags (key and value pairs) of the resource group.
 

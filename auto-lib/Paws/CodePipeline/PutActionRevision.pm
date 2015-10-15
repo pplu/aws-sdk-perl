@@ -1,10 +1,10 @@
 
 package Paws::CodePipeline::PutActionRevision;
   use Moose;
-  has actionName => (is => 'ro', isa => 'Str', required => 1);
-  has actionRevision => (is => 'ro', isa => 'Paws::CodePipeline::ActionRevision', required => 1);
-  has pipelineName => (is => 'ro', isa => 'Str', required => 1);
-  has stageName => (is => 'ro', isa => 'Str', required => 1);
+  has ActionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'actionName' , required => 1);
+  has ActionRevision => (is => 'ro', isa => 'Paws::CodePipeline::ActionRevision', traits => ['NameInRequest'], request_name => 'actionRevision' , required => 1);
+  has PipelineName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineName' , required => 1);
+  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,20 +35,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> actionName => Str
+=head2 B<REQUIRED> ActionName => Str
 
   The name of the action that will process the revision.
 
-=head2 B<REQUIRED> actionRevision => L<Paws::CodePipeline::ActionRevision>
+=head2 B<REQUIRED> ActionRevision => L<Paws::CodePipeline::ActionRevision>
 
   
 
-=head2 B<REQUIRED> pipelineName => Str
+=head2 B<REQUIRED> PipelineName => Str
 
   The name of the pipeline that will start processing the revision to the
 source.
 
-=head2 B<REQUIRED> stageName => Str
+=head2 B<REQUIRED> StageName => Str
 
   The name of the stage that contains the action that will act upon the
 revision.

@@ -1,9 +1,9 @@
 
 package Paws::CloudSearchDomain::SearchResponse;
   use Moose;
-  has facets => (is => 'ro', isa => 'Paws::CloudSearchDomain::Facets');
-  has hits => (is => 'ro', isa => 'Paws::CloudSearchDomain::Hits');
-  has status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SearchStatus');
+  has Facets => (is => 'ro', isa => 'Paws::CloudSearchDomain::Facets');
+  has Hits => (is => 'ro', isa => 'Paws::CloudSearchDomain::Hits');
+  has Status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SearchStatus');
 
 1;
 
@@ -15,13 +15,13 @@ Paws::CloudSearchDomain::SearchResponse
 
 =head1 ATTRIBUTES
 
-=head2 facets => L<Paws::CloudSearchDomain::Facets>
+=head2 Facets => L<Paws::CloudSearchDomain::Facets>
 
   The requested facet information.
-=head2 hits => L<Paws::CloudSearchDomain::Hits>
+=head2 Hits => L<Paws::CloudSearchDomain::Hits>
 
   The documents that match the search criteria.
-=head2 status => L<Paws::CloudSearchDomain::SearchStatus>
+=head2 Status => L<Paws::CloudSearchDomain::SearchStatus>
 
   The status information returned for the search request.
 

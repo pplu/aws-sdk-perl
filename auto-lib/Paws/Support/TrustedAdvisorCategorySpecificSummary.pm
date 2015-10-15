@@ -1,6 +1,6 @@
 package Paws::Support::TrustedAdvisorCategorySpecificSummary;
   use Moose;
-  has costOptimizing => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCostOptimizingSummary');
+  has CostOptimizing => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCostOptimizingSummary', xmlname => 'costOptimizing', request_name => 'costOptimizing', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Support::TrustedAdvisorCategorySpecificSummary object:
 
-  $service_obj->Method(Att1 => { costOptimizing => $value, ..., costOptimizing => $value  });
+  $service_obj->Method(Att1 => { CostOptimizing => $value, ..., CostOptimizing => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Support::TrustedAdvisorCategorySpecificSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->costOptimizing
+  $result->Att1->CostOptimizing
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ the Trusted Advisor check.
 
 =head1 ATTRIBUTES
 
-=head2 costOptimizing => L<Paws::Support::TrustedAdvisorCostOptimizingSummary>
+=head2 CostOptimizing => L<Paws::Support::TrustedAdvisorCostOptimizingSummary>
 
   The summary information about cost savings for a Trusted Advisor check
 that is in the Cost Optimizing category.

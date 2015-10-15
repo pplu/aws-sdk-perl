@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::DeleteDeploymentConfig;
   use Moose;
-  has deploymentConfigName => (is => 'ro', isa => 'Str', required => 1);
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> deploymentConfigName => Str
+=head2 B<REQUIRED> DeploymentConfigName => Str
 
   The name of an existing deployment configuration associated with the
 applicable IAM user or AWS account.

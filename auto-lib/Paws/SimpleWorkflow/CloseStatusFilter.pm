@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::CloseStatusFilter;
   use Moose;
-  has status => (is => 'ro', isa => 'Str', required => 1);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::CloseStatusFilter object:
 
-  $service_obj->Method(Att1 => { status => $value, ..., status => $value  });
+  $service_obj->Method(Att1 => { Status => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::CloseStatusFilter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->status
+  $result->Att1->Status
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ their close status.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> status => Str
+=head2 B<REQUIRED> Status => Str
 
   B<Required.> The close status that must match the close status of an
 execution for it to meet the criteria of this filter.

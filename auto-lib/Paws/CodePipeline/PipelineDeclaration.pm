@@ -1,10 +1,10 @@
 package Paws::CodePipeline::PipelineDeclaration;
   use Moose;
-  has artifactStore => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactStore', required => 1);
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has roleArn => (is => 'ro', isa => 'Str', required => 1);
-  has stages => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::StageDeclaration]', required => 1);
-  has version => (is => 'ro', isa => 'Int');
+  has ArtifactStore => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactStore', xmlname => 'artifactStore', request_name => 'artifactStore', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Stages => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::StageDeclaration]', xmlname => 'stages', request_name => 'stages', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Version => (is => 'ro', isa => 'Int', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::PipelineDeclaration object:
 
-  $service_obj->Method(Att1 => { artifactStore => $value, ..., version => $value  });
+  $service_obj->Method(Att1 => { ArtifactStore => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::PipelineDeclaration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->artifactStore
+  $result->Att1->ArtifactStore
 
 =head1 DESCRIPTION
 
@@ -40,25 +40,25 @@ pipeline.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> artifactStore => L<Paws::CodePipeline::ArtifactStore>
+=head2 B<REQUIRED> ArtifactStore => L<Paws::CodePipeline::ArtifactStore>
 
   
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name of the action to be performed.
 
-=head2 B<REQUIRED> roleArn => Str
+=head2 B<REQUIRED> RoleArn => Str
 
   The Amazon Resource Name (ARN) for AWS CodePipeline to use to either
 perform actions with no actionRoleArn, or to use to assume roles for
 actions with an actionRoleArn.
 
-=head2 B<REQUIRED> stages => ArrayRef[L<Paws::CodePipeline::StageDeclaration>]
+=head2 B<REQUIRED> Stages => ArrayRef[L<Paws::CodePipeline::StageDeclaration>]
 
   The stage in which to perform the action.
 
-=head2 version => Int
+=head2 Version => Int
 
   The version number of the pipeline. A new pipeline always has a version
 number of 1. This number is automatically incremented when a pipeline

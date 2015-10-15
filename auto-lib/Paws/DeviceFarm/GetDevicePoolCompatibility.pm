@@ -1,9 +1,9 @@
 
 package Paws::DeviceFarm::GetDevicePoolCompatibility;
   use Moose;
-  has appArn => (is => 'ro', isa => 'Str', required => 1);
-  has devicePoolArn => (is => 'ro', isa => 'Str', required => 1);
-  has testType => (is => 'ro', isa => 'Str');
+  has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' , required => 1);
+  has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' , required => 1);
+  has TestType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'testType' );
 
   use MooseX::ClassAttribute;
 
@@ -34,15 +34,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> appArn => Str
+=head2 B<REQUIRED> AppArn => Str
 
   The ARN of the app that is associated with the specified device pool.
 
-=head2 B<REQUIRED> devicePoolArn => Str
+=head2 B<REQUIRED> DevicePoolArn => Str
 
   The device pool's ARN.
 
-=head2 testType => Str
+=head2 TestType => Str
 
   The test type for the specified device pool.
 

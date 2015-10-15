@@ -229,7 +229,7 @@ libraries, which you can find at the following AWS developer centers:
 
 =head1 METHODS
 
-=head2 CancelExportTask(taskId => Str)
+=head2 CancelExportTask(TaskId => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CancelExportTask>
 
@@ -238,7 +238,7 @@ Returns: nothing
   Cancels an export task if it is in C<PENDING> or C<RUNNING> state.
 
 
-=head2 CreateExportTask(destination => Str, from => Int, logGroupName => Str, to => Int, [destinationPrefix => Str, logStreamNamePrefix => Str, taskName => Str])
+=head2 CreateExportTask(Destination => Str, From => Int, LogGroupName => Str, To => Int, [DestinationPrefix => Str, LogStreamNamePrefix => Str, TaskName => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateExportTask>
 
@@ -253,7 +253,7 @@ task Id. Once started, C<DescribeExportTasks> can be used to get the
 status of an export task.
 
 
-=head2 CreateLogGroup(logGroupName => Str)
+=head2 CreateLogGroup(LogGroupName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogGroup>
 
@@ -276,7 +276,7 @@ You must use the following guidelines when naming a log group:
 
 
 
-=head2 CreateLogStream(logGroupName => Str, logStreamName => Str)
+=head2 CreateLogStream(LogGroupName => Str, LogStreamName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::CreateLogStream>
 
@@ -298,7 +298,7 @@ You must use the following guidelines when naming a log stream:
 
 
 
-=head2 DeleteDestination(destinationName => Str)
+=head2 DeleteDestination(DestinationName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteDestination>
 
@@ -309,7 +309,7 @@ all the subscription filters that publish to it. This will not delete
 the physical resource encapsulated by the destination.
 
 
-=head2 DeleteLogGroup(logGroupName => Str)
+=head2 DeleteLogGroup(LogGroupName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogGroup>
 
@@ -319,7 +319,7 @@ Returns: nothing
 all the archived log events associated with it.
 
 
-=head2 DeleteLogStream(logGroupName => Str, logStreamName => Str)
+=head2 DeleteLogStream(LogGroupName => Str, LogStreamName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteLogStream>
 
@@ -329,7 +329,7 @@ Returns: nothing
 events associated with it.
 
 
-=head2 DeleteMetricFilter(filterName => Str, logGroupName => Str)
+=head2 DeleteMetricFilter(FilterName => Str, LogGroupName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteMetricFilter>
 
@@ -338,7 +338,7 @@ Returns: nothing
   Deletes a metric filter associated with the specified log group.
 
 
-=head2 DeleteRetentionPolicy(logGroupName => Str)
+=head2 DeleteRetentionPolicy(LogGroupName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteRetentionPolicy>
 
@@ -349,7 +349,7 @@ would not expire if they belong to log groups without a retention
 policy.
 
 
-=head2 DeleteSubscriptionFilter(filterName => Str, logGroupName => Str)
+=head2 DeleteSubscriptionFilter(FilterName => Str, LogGroupName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DeleteSubscriptionFilter>
 
@@ -358,7 +358,7 @@ Returns: nothing
   Deletes a subscription filter associated with the specified log group.
 
 
-=head2 DescribeDestinations([DestinationNamePrefix => Str, limit => Int, nextToken => Str])
+=head2 DescribeDestinations([DestinationNamePrefix => Str, Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeDestinations>
 
@@ -375,7 +375,7 @@ destinations returned in the response by specifying the C<limit>
 parameter in the request.
 
 
-=head2 DescribeExportTasks([limit => Int, nextToken => Str, statusCode => Str, taskId => Str])
+=head2 DescribeExportTasks([Limit => Int, NextToken => Str, StatusCode => Str, TaskId => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeExportTasks>
 
@@ -392,7 +392,7 @@ can also limit the number of export tasks returned in the response by
 specifying the C<limit> parameter in the request.
 
 
-=head2 DescribeLogGroups([limit => Int, logGroupNamePrefix => Str, nextToken => Str])
+=head2 DescribeLogGroups([Limit => Int, LogGroupNamePrefix => Str, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogGroups>
 
@@ -409,7 +409,7 @@ returned in the response by specifying the C<limit> parameter in the
 request.
 
 
-=head2 DescribeLogStreams(logGroupName => Str, [descending => Bool, limit => Int, logStreamNamePrefix => Str, nextToken => Str, orderBy => Str])
+=head2 DescribeLogStreams(LogGroupName => Str, [Descending => Bool, Limit => Int, LogStreamNamePrefix => Str, NextToken => Str, OrderBy => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeLogStreams>
 
@@ -427,7 +427,7 @@ in the request. This operation has a limit of five transactions per
 second, after which transactions are throttled.
 
 
-=head2 DescribeMetricFilters(logGroupName => Str, [filterNamePrefix => Str, limit => Int, nextToken => Str])
+=head2 DescribeMetricFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeMetricFilters>
 
@@ -444,7 +444,7 @@ of metric filters returned in the response by specifying the C<limit>
 parameter in the request.
 
 
-=head2 DescribeSubscriptionFilters(logGroupName => Str, [filterNamePrefix => Str, limit => Int, nextToken => Str])
+=head2 DescribeSubscriptionFilters(LogGroupName => Str, [FilterNamePrefix => Str, Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::DescribeSubscriptionFilters>
 
@@ -461,7 +461,7 @@ number of subscription filters returned in the response by specifying
 the C<limit> parameter in the request.
 
 
-=head2 FilterLogEvents(logGroupName => Str, [endTime => Int, filterPattern => Str, interleaved => Bool, limit => Int, logStreamNames => ArrayRef[Str], nextToken => Str, startTime => Int])
+=head2 FilterLogEvents(LogGroupName => Str, [EndTime => Int, FilterPattern => Str, Interleaved => Bool, Limit => Int, LogStreamNames => ArrayRef[Str], NextToken => Str, StartTime => Int])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::FilterLogEvents>
 
@@ -484,7 +484,7 @@ pagination. The C<limit> parameter in the request. can be used to
 specify the maximum number of events to return in a page.
 
 
-=head2 GetLogEvents(logGroupName => Str, logStreamName => Str, [endTime => Int, limit => Int, nextToken => Str, startFromHead => Bool, startTime => Int])
+=head2 GetLogEvents(LogGroupName => Str, LogStreamName => Str, [EndTime => Int, Limit => Int, NextToken => Str, StartFromHead => Bool, StartTime => Int])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::GetLogEvents>
 
@@ -503,7 +503,7 @@ returned in the response by specifying the C<limit> parameter in the
 request.
 
 
-=head2 PutDestination(destinationName => Str, roleArn => Str, targetArn => Str)
+=head2 PutDestination(DestinationName => Str, RoleArn => Str, TargetArn => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestination>
 
@@ -524,7 +524,7 @@ destination. To enable that, the destination owner must call
 C<PutDestinationPolicy> after PutDestination.
 
 
-=head2 PutDestinationPolicy(accessPolicy => Str, destinationName => Str)
+=head2 PutDestinationPolicy(AccessPolicy => Str, DestinationName => Str)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutDestinationPolicy>
 
@@ -536,7 +536,7 @@ to authorize claims to register a subscription filter against a given
 destination.
 
 
-=head2 PutLogEvents(logEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>], logGroupName => Str, logStreamName => Str, [sequenceToken => Str])
+=head2 PutLogEvents(LogEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>], LogGroupName => Str, LogStreamName => Str, [SequenceToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutLogEvents>
 
@@ -571,7 +571,7 @@ their C<timestamp>.
 
 
 
-=head2 PutMetricFilter(filterName => Str, filterPattern => Str, logGroupName => Str, metricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>])
+=head2 PutMetricFilter(FilterName => Str, FilterPattern => Str, LogGroupName => Str, MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutMetricFilter>
 
@@ -585,7 +585,7 @@ The maximum number of metric filters that can be associated with a log
 group is 100.
 
 
-=head2 PutRetentionPolicy(logGroupName => Str, retentionInDays => Int)
+=head2 PutRetentionPolicy(LogGroupName => Str, RetentionInDays => Int)
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutRetentionPolicy>
 
@@ -596,7 +596,7 @@ allows you to configure the number of days you want to retain log
 events in the specified log group.
 
 
-=head2 PutSubscriptionFilter(destinationArn => Str, filterName => Str, filterPattern => Str, logGroupName => Str, [roleArn => Str])
+=head2 PutSubscriptionFilter(DestinationArn => Str, FilterName => Str, FilterPattern => Str, LogGroupName => Str, [RoleArn => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::PutSubscriptionFilter>
 
@@ -622,7 +622,7 @@ Currently there can only be one subscription filter associated with a
 log group.
 
 
-=head2 TestMetricFilter(filterPattern => Str, logEventMessages => ArrayRef[Str])
+=head2 TestMetricFilter(FilterPattern => Str, LogEventMessages => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::CloudWatchLogs::TestMetricFilter>
 

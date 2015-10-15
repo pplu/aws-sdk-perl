@@ -1,10 +1,10 @@
 
 package Paws::CloudWatchLogs::PutMetricFilter;
   use Moose;
-  has filterName => (is => 'ro', isa => 'Str', required => 1);
-  has filterPattern => (is => 'ro', isa => 'Str', required => 1);
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has metricTransformations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricTransformation]', required => 1);
+  has FilterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterName' , required => 1);
+  has FilterPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterPattern' , required => 1);
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has MetricTransformations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricTransformation]', traits => ['NameInRequest'], request_name => 'metricTransformations' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,20 +35,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> filterName => Str
+=head2 B<REQUIRED> FilterName => Str
 
   A name for the metric filter.
 
-=head2 B<REQUIRED> filterPattern => Str
+=head2 B<REQUIRED> FilterPattern => Str
 
   A valid CloudWatch Logs filter pattern for extracting metric data out
 of ingested log events.
 
-=head2 B<REQUIRED> logGroupName => Str
+=head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group to associate the metric filter with.
 
-=head2 B<REQUIRED> metricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
+=head2 B<REQUIRED> MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
 
   A collection of information needed to define how metric data gets
 emitted.

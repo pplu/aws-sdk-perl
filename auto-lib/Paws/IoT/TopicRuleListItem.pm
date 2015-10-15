@@ -1,9 +1,9 @@
 package Paws::IoT::TopicRuleListItem;
   use Moose;
-  has createdAt => (is => 'ro', isa => 'Str');
-  has ruleDisabled => (is => 'ro', isa => 'Bool');
-  has ruleName => (is => 'ro', isa => 'Str');
-  has topicPattern => (is => 'ro', isa => 'Str');
+  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
+  has RuleDisabled => (is => 'ro', isa => 'Bool', xmlname => 'ruleDisabled', request_name => 'ruleDisabled', traits => ['Unwrapped','NameInRequest']);
+  has RuleName => (is => 'ro', isa => 'Str', xmlname => 'ruleName', request_name => 'ruleName', traits => ['Unwrapped','NameInRequest']);
+  has TopicPattern => (is => 'ro', isa => 'Str', xmlname => 'topicPattern', request_name => 'topicPattern', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::TopicRuleListItem object:
 
-  $service_obj->Method(Att1 => { createdAt => $value, ..., topicPattern => $value  });
+  $service_obj->Method(Att1 => { CreatedAt => $value, ..., TopicPattern => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::TopicRuleListItem object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->createdAt
+  $result->Att1->CreatedAt
 
 =head1 DESCRIPTION
 
@@ -38,19 +38,19 @@ Describes a rule.
 
 =head1 ATTRIBUTES
 
-=head2 createdAt => Str
+=head2 CreatedAt => Str
 
   The date and time the rule was created.
 
-=head2 ruleDisabled => Bool
+=head2 RuleDisabled => Bool
 
   Specifies whether the rule is disabled.
 
-=head2 ruleName => Str
+=head2 RuleName => Str
 
   The name of the rule.
 
-=head2 topicPattern => Str
+=head2 TopicPattern => Str
 
   The pattern for the topic names that apply.
 

@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse;
   use Moose;
-  has statuses => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckRefreshStatus]', required => 1);
+  has Statuses => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckRefreshStatus]', traits => ['Unwrapped'], xmlname => 'statuses' , required => 1);
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> statuses => ArrayRef[L<Paws::Support::TrustedAdvisorCheckRefreshStatus>]
+=head2 B<REQUIRED> Statuses => ArrayRef[L<Paws::Support::TrustedAdvisorCheckRefreshStatus>]
 
   The refresh status of the specified Trusted Advisor checks.
 

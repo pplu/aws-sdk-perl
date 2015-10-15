@@ -1,10 +1,10 @@
 
 package Paws::Support::AddCommunicationToCase;
   use Moose;
-  has attachmentSetId => (is => 'ro', isa => 'Str');
-  has caseId => (is => 'ro', isa => 'Str');
-  has ccEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
-  has communicationBody => (is => 'ro', isa => 'Str', required => 1);
+  has AttachmentSetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attachmentSetId' );
+  has CaseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caseId' );
+  has CcEmailAddresses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ccEmailAddresses' );
+  has CommunicationBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'communicationBody' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,23 +35,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 attachmentSetId => Str
+=head2 AttachmentSetId => Str
 
   The ID of a set of one or more attachments for the communication to add
 to the case. Create the set by calling AddAttachmentsToSet
 
-=head2 caseId => Str
+=head2 CaseId => Str
 
   The AWS Support case ID requested or returned in the call. The case ID
 is an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
-=head2 ccEmailAddresses => ArrayRef[Str]
+=head2 CcEmailAddresses => ArrayRef[Str]
 
   The email addresses in the CC line of an email to be added to the
 support case.
 
-=head2 B<REQUIRED> communicationBody => Str
+=head2 B<REQUIRED> CommunicationBody => Str
 
   The body of an email communication to add to the support case.
 

@@ -1,10 +1,10 @@
 
 package Paws::Glacier::GetJobOutput;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has jobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId' , required => 1);
-  has range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Range' );
-  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId' , required => 1);
+  has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'range' );
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
   The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
@@ -46,18 +46,18 @@ account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
-=head2 B<REQUIRED> jobId => Str
+=head2 B<REQUIRED> JobId => Str
 
   The job ID whose data is downloaded.
 
-=head2 range => Str
+=head2 Range => Str
 
   The range of bytes to retrieve from the output. For example, if you
 want to download the first 1,048,576 bytes, specify "Range:
 bytes=0-1048575". By default, this operation downloads the entire
 output.
 
-=head2 B<REQUIRED> vaultName => Str
+=head2 B<REQUIRED> VaultName => Str
 
   The name of the vault.
 

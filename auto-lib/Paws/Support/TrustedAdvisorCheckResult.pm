@@ -1,11 +1,11 @@
 package Paws::Support::TrustedAdvisorCheckResult;
   use Moose;
-  has categorySpecificSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCategorySpecificSummary', required => 1);
-  has checkId => (is => 'ro', isa => 'Str', required => 1);
-  has flaggedResources => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorResourceDetail]', required => 1);
-  has resourcesSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorResourcesSummary', required => 1);
-  has status => (is => 'ro', isa => 'Str', required => 1);
-  has timestamp => (is => 'ro', isa => 'Str', required => 1);
+  has CategorySpecificSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCategorySpecificSummary', xmlname => 'categorySpecificSummary', request_name => 'categorySpecificSummary', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CheckId => (is => 'ro', isa => 'Str', xmlname => 'checkId', request_name => 'checkId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has FlaggedResources => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorResourceDetail]', xmlname => 'flaggedResources', request_name => 'flaggedResources', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ResourcesSummary => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorResourcesSummary', xmlname => 'resourcesSummary', request_name => 'resourcesSummary', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', request_name => 'timestamp', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -25,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Support::TrustedAdvisorCheckResult object:
 
-  $service_obj->Method(Att1 => { categorySpecificSummary => $value, ..., timestamp => $value  });
+  $service_obj->Method(Att1 => { CategorySpecificSummary => $value, ..., Timestamp => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Support::TrustedAdvisorCheckResult object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->categorySpecificSummary
+  $result->Att1->CategorySpecificSummary
 
 =head1 DESCRIPTION
 
@@ -41,29 +41,29 @@ DescribeTrustedAdvisorCheckResult.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> categorySpecificSummary => L<Paws::Support::TrustedAdvisorCategorySpecificSummary>
+=head2 B<REQUIRED> CategorySpecificSummary => L<Paws::Support::TrustedAdvisorCategorySpecificSummary>
 
   Summary information that relates to the category of the check. Cost
 Optimizing is the only category that is currently supported.
 
-=head2 B<REQUIRED> checkId => Str
+=head2 B<REQUIRED> CheckId => Str
 
   The unique identifier for the Trusted Advisor check.
 
-=head2 B<REQUIRED> flaggedResources => ArrayRef[L<Paws::Support::TrustedAdvisorResourceDetail>]
+=head2 B<REQUIRED> FlaggedResources => ArrayRef[L<Paws::Support::TrustedAdvisorResourceDetail>]
 
   The details about each resource listed in the check result.
 
-=head2 B<REQUIRED> resourcesSummary => L<Paws::Support::TrustedAdvisorResourcesSummary>
+=head2 B<REQUIRED> ResourcesSummary => L<Paws::Support::TrustedAdvisorResourcesSummary>
 
   
 
-=head2 B<REQUIRED> status => Str
+=head2 B<REQUIRED> Status => Str
 
   The alert status of the check: "ok" (green), "warning" (yellow),
 "error" (red), or "not_available".
 
-=head2 B<REQUIRED> timestamp => Str
+=head2 B<REQUIRED> Timestamp => Str
 
   The time of the last refresh of the check.
 

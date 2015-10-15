@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::GetDeploymentOutput;
   use Moose;
-  has deploymentInfo => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentInfo');
+  has DeploymentInfo => (is => 'ro', isa => 'Paws::CodeDeploy::DeploymentInfo', traits => ['Unwrapped'], xmlname => 'deploymentInfo' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::CodeDeploy::GetDeploymentOutput
 
 =head1 ATTRIBUTES
 
-=head2 deploymentInfo => L<Paws::CodeDeploy::DeploymentInfo>
+=head2 DeploymentInfo => L<Paws::CodeDeploy::DeploymentInfo>
 
   Information about the deployment.
 

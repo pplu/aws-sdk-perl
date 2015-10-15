@@ -1,19 +1,19 @@
 package Paws::SimpleWorkflow::Decision;
   use Moose;
-  has cancelTimerDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CancelTimerDecisionAttributes');
-  has cancelWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes');
-  has completeWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes');
-  has continueAsNewWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes');
-  has decisionType => (is => 'ro', isa => 'Str', required => 1);
-  has failWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes');
-  has recordMarkerDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RecordMarkerDecisionAttributes');
-  has requestCancelActivityTaskDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes');
-  has requestCancelExternalWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes');
-  has scheduleActivityTaskDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes');
-  has scheduleLambdaFunctionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ScheduleLambdaFunctionDecisionAttributes');
-  has signalExternalWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes');
-  has startChildWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes');
-  has startTimerDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartTimerDecisionAttributes');
+  has CancelTimerDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CancelTimerDecisionAttributes', xmlname => 'cancelTimerDecisionAttributes', request_name => 'cancelTimerDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has CancelWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes', xmlname => 'cancelWorkflowExecutionDecisionAttributes', request_name => 'cancelWorkflowExecutionDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has CompleteWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes', xmlname => 'completeWorkflowExecutionDecisionAttributes', request_name => 'completeWorkflowExecutionDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ContinueAsNewWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes', xmlname => 'continueAsNewWorkflowExecutionDecisionAttributes', request_name => 'continueAsNewWorkflowExecutionDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has DecisionType => (is => 'ro', isa => 'Str', xmlname => 'decisionType', request_name => 'decisionType', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has FailWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes', xmlname => 'failWorkflowExecutionDecisionAttributes', request_name => 'failWorkflowExecutionDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has RecordMarkerDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RecordMarkerDecisionAttributes', xmlname => 'recordMarkerDecisionAttributes', request_name => 'recordMarkerDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has RequestCancelActivityTaskDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes', xmlname => 'requestCancelActivityTaskDecisionAttributes', request_name => 'requestCancelActivityTaskDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has RequestCancelExternalWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes', xmlname => 'requestCancelExternalWorkflowExecutionDecisionAttributes', request_name => 'requestCancelExternalWorkflowExecutionDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ScheduleActivityTaskDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes', xmlname => 'scheduleActivityTaskDecisionAttributes', request_name => 'scheduleActivityTaskDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ScheduleLambdaFunctionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ScheduleLambdaFunctionDecisionAttributes', xmlname => 'scheduleLambdaFunctionDecisionAttributes', request_name => 'scheduleLambdaFunctionDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has SignalExternalWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes', xmlname => 'signalExternalWorkflowExecutionDecisionAttributes', request_name => 'signalExternalWorkflowExecutionDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has StartChildWorkflowExecutionDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes', xmlname => 'startChildWorkflowExecutionDecisionAttributes', request_name => 'startChildWorkflowExecutionDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
+  has StartTimerDecisionAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartTimerDecisionAttributes', xmlname => 'startTimerDecisionAttributes', request_name => 'startTimerDecisionAttributes', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -33,14 +33,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::Decision object:
 
-  $service_obj->Method(Att1 => { cancelTimerDecisionAttributes => $value, ..., startTimerDecisionAttributes => $value  });
+  $service_obj->Method(Att1 => { CancelTimerDecisionAttributes => $value, ..., StartTimerDecisionAttributes => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::Decision object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->cancelTimerDecisionAttributes
+  $result->Att1->CancelTimerDecisionAttributes
 
 =head1 DESCRIPTION
 
@@ -247,70 +247,70 @@ field shown below:
 
 =head1 ATTRIBUTES
 
-=head2 cancelTimerDecisionAttributes => L<Paws::SimpleWorkflow::CancelTimerDecisionAttributes>
+=head2 CancelTimerDecisionAttributes => L<Paws::SimpleWorkflow::CancelTimerDecisionAttributes>
 
   Provides details of the C<CancelTimer> decision. It is not set for
 other decision types.
 
-=head2 cancelWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes>
+=head2 CancelWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<CancelWorkflowExecution> decision. It is not
 set for other decision types.
 
-=head2 completeWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes>
+=head2 CompleteWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<CompleteWorkflowExecution> decision. It is
 not set for other decision types.
 
-=head2 continueAsNewWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes>
+=head2 ContinueAsNewWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<ContinueAsNewWorkflowExecution> decision. It
 is not set for other decision types.
 
-=head2 B<REQUIRED> decisionType => Str
+=head2 B<REQUIRED> DecisionType => Str
 
   Specifies the type of the decision.
 
-=head2 failWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes>
+=head2 FailWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<FailWorkflowExecution> decision. It is not
 set for other decision types.
 
-=head2 recordMarkerDecisionAttributes => L<Paws::SimpleWorkflow::RecordMarkerDecisionAttributes>
+=head2 RecordMarkerDecisionAttributes => L<Paws::SimpleWorkflow::RecordMarkerDecisionAttributes>
 
   Provides details of the C<RecordMarker> decision. It is not set for
 other decision types.
 
-=head2 requestCancelActivityTaskDecisionAttributes => L<Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes>
+=head2 RequestCancelActivityTaskDecisionAttributes => L<Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes>
 
   Provides details of the C<RequestCancelActivityTask> decision. It is
 not set for other decision types.
 
-=head2 requestCancelExternalWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes>
+=head2 RequestCancelExternalWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<RequestCancelExternalWorkflowExecution>
 decision. It is not set for other decision types.
 
-=head2 scheduleActivityTaskDecisionAttributes => L<Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes>
+=head2 ScheduleActivityTaskDecisionAttributes => L<Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes>
 
   Provides details of the C<ScheduleActivityTask> decision. It is not set
 for other decision types.
 
-=head2 scheduleLambdaFunctionDecisionAttributes => L<Paws::SimpleWorkflow::ScheduleLambdaFunctionDecisionAttributes>
+=head2 ScheduleLambdaFunctionDecisionAttributes => L<Paws::SimpleWorkflow::ScheduleLambdaFunctionDecisionAttributes>
 
   
 
-=head2 signalExternalWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes>
+=head2 SignalExternalWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<SignalExternalWorkflowExecution> decision. It
 is not set for other decision types.
 
-=head2 startChildWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes>
+=head2 StartChildWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<StartChildWorkflowExecution> decision. It is
 not set for other decision types.
 
-=head2 startTimerDecisionAttributes => L<Paws::SimpleWorkflow::StartTimerDecisionAttributes>
+=head2 StartTimerDecisionAttributes => L<Paws::SimpleWorkflow::StartTimerDecisionAttributes>
 
   Provides details of the C<StartTimer> decision. It is not set for other
 decision types.

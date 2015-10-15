@@ -1,9 +1,9 @@
 
 package Paws::SimpleWorkflow::RespondActivityTaskFailed;
   use Moose;
-  has details => (is => 'ro', isa => 'Str');
-  has reason => (is => 'ro', isa => 'Str');
-  has taskToken => (is => 'ro', isa => 'Str', required => 1);
+  has Details => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'details' );
+  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
+  has TaskToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskToken' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,15 +34,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 details => Str
+=head2 Details => Str
 
   I<Optional.> Detailed information about the failure.
 
-=head2 reason => Str
+=head2 Reason => Str
 
   Description of the error that may assist in diagnostics.
 
-=head2 B<REQUIRED> taskToken => Str
+=head2 B<REQUIRED> TaskToken => Str
 
   The C<taskToken> of the ActivityTask.
 

@@ -1,7 +1,7 @@
 package Paws::Support::Category;
   use Moose;
-  has code => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str');
+  has Code => (is => 'ro', isa => 'Str', xmlname => 'code', request_name => 'code', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Support::Category object:
 
-  $service_obj->Method(Att1 => { code => $value, ..., name => $value  });
+  $service_obj->Method(Att1 => { Code => $value, ..., Name => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Category object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->code
+  $result->Att1->Code
 
 =head1 DESCRIPTION
 
@@ -38,11 +38,11 @@ response for each AWS service.
 
 =head1 ATTRIBUTES
 
-=head2 code => Str
+=head2 Code => Str
 
   The category code for the support case.
 
-=head2 name => Str
+=head2 Name => Str
 
   The category name for the support case.
 

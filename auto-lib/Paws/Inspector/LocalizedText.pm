@@ -1,7 +1,7 @@
 package Paws::Inspector::LocalizedText;
   use Moose;
-  has key => (is => 'ro', isa => 'Paws::Inspector::LocalizedTextKey');
-  has parameters => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Parameter]');
+  has Key => (is => 'ro', isa => 'Paws::Inspector::LocalizedTextKey', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest']);
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Parameter]', xmlname => 'parameters', request_name => 'parameters', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::LocalizedText object:
 
-  $service_obj->Method(Att1 => { key => $value, ..., parameters => $value  });
+  $service_obj->Method(Att1 => { Key => $value, ..., Parameters => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::LocalizedText object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->key
+  $result->Att1->Key
 
 =head1 DESCRIPTION
 
@@ -37,11 +37,11 @@ in the LocalizeText action.
 
 =head1 ATTRIBUTES
 
-=head2 key => L<Paws::Inspector::LocalizedTextKey>
+=head2 Key => L<Paws::Inspector::LocalizedTextKey>
 
   The facility and id properties of the LocalizedTextKey data type.
 
-=head2 parameters => ArrayRef[L<Paws::Inspector::Parameter>]
+=head2 Parameters => ArrayRef[L<Paws::Inspector::Parameter>]
 
   Values for the dynamic elements of the string specified by the textual
 identifier.

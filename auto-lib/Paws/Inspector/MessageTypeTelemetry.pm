@@ -1,8 +1,8 @@
 package Paws::Inspector::MessageTypeTelemetry;
   use Moose;
-  has count => (is => 'ro', isa => 'Int');
-  has dataSize => (is => 'ro', isa => 'Int');
-  has messageType => (is => 'ro', isa => 'Str');
+  has Count => (is => 'ro', isa => 'Int', xmlname => 'count', request_name => 'count', traits => ['Unwrapped','NameInRequest']);
+  has DataSize => (is => 'ro', isa => 'Int', xmlname => 'dataSize', request_name => 'dataSize', traits => ['Unwrapped','NameInRequest']);
+  has MessageType => (is => 'ro', isa => 'Str', xmlname => 'messageType', request_name => 'messageType', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::MessageTypeTelemetry object:
 
-  $service_obj->Method(Att1 => { count => $value, ..., messageType => $value  });
+  $service_obj->Method(Att1 => { Count => $value, ..., MessageType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::MessageTypeTelemetry object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->count
+  $result->Att1->Count
 
 =head1 DESCRIPTION
 
@@ -41,17 +41,17 @@ Inspector service for analysis.
 
 =head1 ATTRIBUTES
 
-=head2 count => Int
+=head2 Count => Int
 
   The number of times that the behavioral data is collected by the agent
 during an assessment.
 
-=head2 dataSize => Int
+=head2 DataSize => Int
 
   The total size of the behavioral data that is collected by the agent
 during an assessment.
 
-=head2 messageType => Str
+=head2 MessageType => Str
 
   A specific type of behavioral data that is collected by the agent.
 

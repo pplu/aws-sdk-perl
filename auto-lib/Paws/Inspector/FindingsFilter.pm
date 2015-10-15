@@ -1,10 +1,10 @@
 package Paws::Inspector::FindingsFilter;
   use Moose;
-  has attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]');
-  has ruleNames => (is => 'ro', isa => 'ArrayRef[Str]');
-  has rulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str]');
-  has severities => (is => 'ro', isa => 'ArrayRef[Str]');
-  has userAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]');
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
+  has RuleNames => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'ruleNames', request_name => 'ruleNames', traits => ['Unwrapped','NameInRequest']);
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest']);
+  has Severities => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'severities', request_name => 'severities', traits => ['Unwrapped','NameInRequest']);
+  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'userAttributes', request_name => 'userAttributes', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::FindingsFilter object:
 
-  $service_obj->Method(Att1 => { attributes => $value, ..., userAttributes => $value  });
+  $service_obj->Method(Att1 => { Attributes => $value, ..., UserAttributes => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::FindingsFilter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->attributes
+  $result->Att1->Attributes
 
 =head1 DESCRIPTION
 
@@ -40,31 +40,31 @@ action.
 
 =head1 ATTRIBUTES
 
-=head2 attributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<attributes>
 property of the Finding data type.
 
-=head2 ruleNames => ArrayRef[Str]
+=head2 RuleNames => ArrayRef[Str]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<ruleName>
 property of the Finding data type.
 
-=head2 rulesPackageArns => ArrayRef[Str]
+=head2 RulesPackageArns => ArrayRef[Str]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<rulesPackageArn>
 property of the Finding data type.
 
-=head2 severities => ArrayRef[Str]
+=head2 Severities => ArrayRef[Str]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<severity>
 property of the Finding data type.
 
-=head2 userAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 UserAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<userAttributes>

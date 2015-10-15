@@ -223,7 +223,7 @@ Returns: a L<Paws::CloudHSM::GetConfigResponse> instance
 availability partition groups the client is associated with.
 
 
-=head2 ListAvailableZones( => )
+=head2 ListAvailableZones()
 
 Each argument is described in detail in: L<Paws::CloudHSM::ListAvailableZones>
 

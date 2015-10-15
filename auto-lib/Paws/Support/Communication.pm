@@ -1,10 +1,10 @@
 package Paws::Support::Communication;
   use Moose;
-  has attachmentSet => (is => 'ro', isa => 'ArrayRef[Paws::Support::AttachmentDetails]');
-  has body => (is => 'ro', isa => 'Str');
-  has caseId => (is => 'ro', isa => 'Str');
-  has submittedBy => (is => 'ro', isa => 'Str');
-  has timeCreated => (is => 'ro', isa => 'Str');
+  has AttachmentSet => (is => 'ro', isa => 'ArrayRef[Paws::Support::AttachmentDetails]', xmlname => 'attachmentSet', request_name => 'attachmentSet', traits => ['Unwrapped','NameInRequest']);
+  has Body => (is => 'ro', isa => 'Str', xmlname => 'body', request_name => 'body', traits => ['Unwrapped','NameInRequest']);
+  has CaseId => (is => 'ro', isa => 'Str', xmlname => 'caseId', request_name => 'caseId', traits => ['Unwrapped','NameInRequest']);
+  has SubmittedBy => (is => 'ro', isa => 'Str', xmlname => 'submittedBy', request_name => 'submittedBy', traits => ['Unwrapped','NameInRequest']);
+  has TimeCreated => (is => 'ro', isa => 'Str', xmlname => 'timeCreated', request_name => 'timeCreated', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Support::Communication object:
 
-  $service_obj->Method(Att1 => { attachmentSet => $value, ..., timeCreated => $value  });
+  $service_obj->Method(Att1 => { AttachmentSet => $value, ..., TimeCreated => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Communication object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->attachmentSet
+  $result->Att1->AttachmentSet
 
 =head1 DESCRIPTION
 
@@ -41,25 +41,25 @@ account email address, and the date and time of the communication.
 
 =head1 ATTRIBUTES
 
-=head2 attachmentSet => ArrayRef[L<Paws::Support::AttachmentDetails>]
+=head2 AttachmentSet => ArrayRef[L<Paws::Support::AttachmentDetails>]
 
   Information about the attachments to the case communication.
 
-=head2 body => Str
+=head2 Body => Str
 
   The text of the communication between the customer and AWS Support.
 
-=head2 caseId => Str
+=head2 CaseId => Str
 
   The AWS Support case ID requested or returned in the call. The case ID
 is an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
-=head2 submittedBy => Str
+=head2 SubmittedBy => Str
 
   The email address of the account that submitted the AWS Support case.
 
-=head2 timeCreated => Str
+=head2 TimeCreated => Str
 
   The time the communication was created.
 

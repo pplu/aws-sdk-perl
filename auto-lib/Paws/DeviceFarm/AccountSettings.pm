@@ -1,7 +1,7 @@
 package Paws::DeviceFarm::AccountSettings;
   use Moose;
-  has awsAccountNumber => (is => 'ro', isa => 'Str');
-  has unmeteredDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap');
+  has AwsAccountNumber => (is => 'ro', isa => 'Str', xmlname => 'awsAccountNumber', request_name => 'awsAccountNumber', traits => ['Unwrapped','NameInRequest']);
+  has UnmeteredDevices => (is => 'ro', isa => 'Paws::DeviceFarm::PurchasedDevicesMap', xmlname => 'unmeteredDevices', request_name => 'unmeteredDevices', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::AccountSettings object:
 
-  $service_obj->Method(Att1 => { awsAccountNumber => $value, ..., unmeteredDevices => $value  });
+  $service_obj->Method(Att1 => { AwsAccountNumber => $value, ..., UnmeteredDevices => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::AccountSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->awsAccountNumber
+  $result->Att1->AwsAccountNumber
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ A container for account-level settings within AWS Device Farm.
 
 =head1 ATTRIBUTES
 
-=head2 awsAccountNumber => Str
+=head2 AwsAccountNumber => Str
 
   The AWS account number specified in the C<AccountSettings> container.
 
-=head2 unmeteredDevices => L<Paws::DeviceFarm::PurchasedDevicesMap>
+=head2 UnmeteredDevices => L<Paws::DeviceFarm::PurchasedDevicesMap>
 
   Returns the unmetered devices you have purchased.
 

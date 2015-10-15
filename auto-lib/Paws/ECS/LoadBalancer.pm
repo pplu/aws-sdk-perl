@@ -1,8 +1,8 @@
 package Paws::ECS::LoadBalancer;
   use Moose;
-  has containerName => (is => 'ro', isa => 'Str');
-  has containerPort => (is => 'ro', isa => 'Int');
-  has loadBalancerName => (is => 'ro', isa => 'Str');
+  has ContainerName => (is => 'ro', isa => 'Str', xmlname => 'containerName', request_name => 'containerName', traits => ['Unwrapped','NameInRequest']);
+  has ContainerPort => (is => 'ro', isa => 'Int', xmlname => 'containerPort', request_name => 'containerPort', traits => ['Unwrapped','NameInRequest']);
+  has LoadBalancerName => (is => 'ro', isa => 'Str', xmlname => 'loadBalancerName', request_name => 'loadBalancerName', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::LoadBalancer object:
 
-  $service_obj->Method(Att1 => { containerName => $value, ..., loadBalancerName => $value  });
+  $service_obj->Method(Att1 => { ContainerName => $value, ..., LoadBalancerName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::LoadBalancer object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->containerName
+  $result->Att1->ContainerName
 
 =head1 DESCRIPTION
 
@@ -37,18 +37,18 @@ Details on a load balancer that is used with a service.
 
 =head1 ATTRIBUTES
 
-=head2 containerName => Str
+=head2 ContainerName => Str
 
   The name of the container to associate with the load balancer.
 
-=head2 containerPort => Int
+=head2 ContainerPort => Int
 
   The port on the container to associate with the load balancer. This
 port must correspond to a C<containerPort> in the service's task
 definition. Your container instances must allow ingress traffic on the
 C<hostPort> of the port mapping.
 
-=head2 loadBalancerName => Str
+=head2 LoadBalancerName => Str
 
   The name of the load balancer.
 

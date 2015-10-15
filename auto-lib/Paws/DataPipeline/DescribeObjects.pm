@@ -1,10 +1,10 @@
 
 package Paws::DataPipeline::DescribeObjects;
   use Moose;
-  has evaluateExpressions => (is => 'ro', isa => 'Bool');
-  has marker => (is => 'ro', isa => 'Str');
-  has objectIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has pipelineId => (is => 'ro', isa => 'Str', required => 1);
+  has EvaluateExpressions => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'evaluateExpressions' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'marker' );
+  has ObjectIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'objectIds' , required => 1);
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,25 +35,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 evaluateExpressions => Bool
+=head2 EvaluateExpressions => Bool
 
   Indicates whether any expressions in the object should be evaluated
 when the object descriptions are returned.
 
-=head2 marker => Str
+=head2 Marker => Str
 
   The starting point for the results to be returned. For the first call,
 this value should be empty. As long as there are more results, continue
 to call C<DescribeObjects> with the marker value from the previous call
 to retrieve the next set of results.
 
-=head2 B<REQUIRED> objectIds => ArrayRef[Str]
+=head2 B<REQUIRED> ObjectIds => ArrayRef[Str]
 
   The IDs of the pipeline objects that contain the definitions to be
 described. You can pass as many as 25 identifiers in a single call to
 C<DescribeObjects>.
 
-=head2 B<REQUIRED> pipelineId => Str
+=head2 B<REQUIRED> PipelineId => Str
 
   The ID of the pipeline that contains the object definitions.
 

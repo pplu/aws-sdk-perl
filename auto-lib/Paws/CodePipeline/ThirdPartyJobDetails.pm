@@ -1,8 +1,8 @@
 package Paws::CodePipeline::ThirdPartyJobDetails;
   use Moose;
-  has data => (is => 'ro', isa => 'Paws::CodePipeline::ThirdPartyJobData');
-  has id => (is => 'ro', isa => 'Str');
-  has nonce => (is => 'ro', isa => 'Str');
+  has Data => (is => 'ro', isa => 'Paws::CodePipeline::ThirdPartyJobData', xmlname => 'data', request_name => 'data', traits => ['Unwrapped','NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
+  has Nonce => (is => 'ro', isa => 'Str', xmlname => 'nonce', request_name => 'nonce', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ThirdPartyJobDetails object:
 
-  $service_obj->Method(Att1 => { data => $value, ..., nonce => $value  });
+  $service_obj->Method(Att1 => { Data => $value, ..., Nonce => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ThirdPartyJobDetails object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->data
+  $result->Att1->Data
 
 =head1 DESCRIPTION
 
@@ -38,15 +38,15 @@ request.
 
 =head1 ATTRIBUTES
 
-=head2 data => L<Paws::CodePipeline::ThirdPartyJobData>
+=head2 Data => L<Paws::CodePipeline::ThirdPartyJobData>
 
   The data to be returned by the third party job worker.
 
-=head2 id => Str
+=head2 Id => Str
 
   The identifier used to identify the job details in AWS CodePipeline.
 
-=head2 nonce => Str
+=head2 Nonce => Str
 
   A system-generated random number that AWS CodePipeline uses to ensure
 that the job is being worked on by only one job worker. This number

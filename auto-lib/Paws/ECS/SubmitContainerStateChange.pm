@@ -1,13 +1,13 @@
 
 package Paws::ECS::SubmitContainerStateChange;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has containerName => (is => 'ro', isa => 'Str');
-  has exitCode => (is => 'ro', isa => 'Int');
-  has networkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]');
-  has reason => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Str');
-  has task => (is => 'ro', isa => 'Str');
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has ContainerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerName' );
+  has ExitCode => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'exitCode' );
+  has NetworkBindings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::NetworkBinding]', traits => ['NameInRequest'], request_name => 'networkBindings' );
+  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
+  has Task => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'task' );
 
   use MooseX::ClassAttribute;
 
@@ -38,32 +38,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container.
 
-=head2 containerName => Str
+=head2 ContainerName => Str
 
   The name of the container.
 
-=head2 exitCode => Int
+=head2 ExitCode => Int
 
   The exit code returned for the state change request.
 
-=head2 networkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]
+=head2 NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]
 
   The network bindings of the container.
 
-=head2 reason => Str
+=head2 Reason => Str
 
   The reason for the state change request.
 
-=head2 status => Str
+=head2 Status => Str
 
   The status of the state change request.
 
-=head2 task => Str
+=head2 Task => Str
 
   The task ID or full Amazon Resource Name (ARN) of the task that hosts
 the container.

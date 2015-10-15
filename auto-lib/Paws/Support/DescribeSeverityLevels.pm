@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeSeverityLevels;
   use Moose;
-  has language => (is => 'ro', isa => 'Str');
+  has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 language => Str
+=head2 Language => Str
 
   The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language

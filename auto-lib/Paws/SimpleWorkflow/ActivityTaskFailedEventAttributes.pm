@@ -1,9 +1,9 @@
 package Paws::SimpleWorkflow::ActivityTaskFailedEventAttributes;
   use Moose;
-  has details => (is => 'ro', isa => 'Str');
-  has reason => (is => 'ro', isa => 'Str');
-  has scheduledEventId => (is => 'ro', isa => 'Int', required => 1);
-  has startedEventId => (is => 'ro', isa => 'Int', required => 1);
+  has Details => (is => 'ro', isa => 'Str', xmlname => 'details', request_name => 'details', traits => ['Unwrapped','NameInRequest']);
+  has Reason => (is => 'ro', isa => 'Str', xmlname => 'reason', request_name => 'reason', traits => ['Unwrapped','NameInRequest']);
+  has ScheduledEventId => (is => 'ro', isa => 'Int', xmlname => 'scheduledEventId', request_name => 'scheduledEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has StartedEventId => (is => 'ro', isa => 'Int', xmlname => 'startedEventId', request_name => 'startedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::ActivityTaskFailedEventAttributes object:
 
-  $service_obj->Method(Att1 => { details => $value, ..., startedEventId => $value  });
+  $service_obj->Method(Att1 => { Details => $value, ..., StartedEventId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::ActivityTaskFailedEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->details
+  $result->Att1->Details
 
 =head1 DESCRIPTION
 
@@ -38,22 +38,22 @@ Provides details of the C<ActivityTaskFailed> event.
 
 =head1 ATTRIBUTES
 
-=head2 details => Str
+=head2 Details => Str
 
   The details of the failure (if any).
 
-=head2 reason => Str
+=head2 Reason => Str
 
   The reason provided for the failure (if any).
 
-=head2 B<REQUIRED> scheduledEventId => Int
+=head2 B<REQUIRED> ScheduledEventId => Int
 
   The ID of the C<ActivityTaskScheduled> event that was recorded when
 this activity task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
-=head2 B<REQUIRED> startedEventId => Int
+=head2 B<REQUIRED> StartedEventId => Int
 
   The ID of the C<ActivityTaskStarted> event recorded when this activity
 task was started. This information can be useful for diagnosing

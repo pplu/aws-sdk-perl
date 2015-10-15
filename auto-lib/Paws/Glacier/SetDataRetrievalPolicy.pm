@@ -1,7 +1,7 @@
 
 package Paws::Glacier::SetDataRetrievalPolicy;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
   has Policy => (is => 'ro', isa => 'Paws::Glacier::DataRetrievalPolicy');
 
   use MooseX::ClassAttribute;
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
   The C<AccountId> value is the AWS account ID. This value must match the
 AWS account ID associated with the credentials used to sign the

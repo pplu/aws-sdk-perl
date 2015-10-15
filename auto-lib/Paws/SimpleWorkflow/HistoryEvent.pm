@@ -1,62 +1,62 @@
 package Paws::SimpleWorkflow::HistoryEvent;
   use Moose;
-  has activityTaskCanceledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskCanceledEventAttributes');
-  has activityTaskCancelRequestedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes');
-  has activityTaskCompletedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskCompletedEventAttributes');
-  has activityTaskFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskFailedEventAttributes');
-  has activityTaskScheduledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskScheduledEventAttributes');
-  has activityTaskStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskStartedEventAttributes');
-  has activityTaskTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes');
-  has cancelTimerFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CancelTimerFailedEventAttributes');
-  has cancelWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CancelWorkflowExecutionFailedEventAttributes');
-  has childWorkflowExecutionCanceledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionCanceledEventAttributes');
-  has childWorkflowExecutionCompletedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes');
-  has childWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes');
-  has childWorkflowExecutionStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionStartedEventAttributes');
-  has childWorkflowExecutionTerminatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionTerminatedEventAttributes');
-  has childWorkflowExecutionTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes');
-  has completeWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CompleteWorkflowExecutionFailedEventAttributes');
-  has continueAsNewWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedEventAttributes');
-  has decisionTaskCompletedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskCompletedEventAttributes');
-  has decisionTaskScheduledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes');
-  has decisionTaskStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes');
-  has decisionTaskTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes');
-  has eventId => (is => 'ro', isa => 'Int', required => 1);
-  has eventTimestamp => (is => 'ro', isa => 'Str', required => 1);
-  has eventType => (is => 'ro', isa => 'Str', required => 1);
-  has externalWorkflowExecutionCancelRequestedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes');
-  has externalWorkflowExecutionSignaledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExternalWorkflowExecutionSignaledEventAttributes');
-  has failWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::FailWorkflowExecutionFailedEventAttributes');
-  has lambdaFunctionCompletedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::LambdaFunctionCompletedEventAttributes');
-  has lambdaFunctionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::LambdaFunctionFailedEventAttributes');
-  has lambdaFunctionScheduledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::LambdaFunctionScheduledEventAttributes');
-  has lambdaFunctionStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes');
-  has lambdaFunctionTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::LambdaFunctionTimedOutEventAttributes');
-  has markerRecordedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::MarkerRecordedEventAttributes');
-  has recordMarkerFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RecordMarkerFailedEventAttributes');
-  has requestCancelActivityTaskFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelActivityTaskFailedEventAttributes');
-  has requestCancelExternalWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes');
-  has requestCancelExternalWorkflowExecutionInitiatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes');
-  has scheduleActivityTaskFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes');
-  has scheduleLambdaFunctionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ScheduleLambdaFunctionFailedEventAttributes');
-  has signalExternalWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes');
-  has signalExternalWorkflowExecutionInitiatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes');
-  has startChildWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes');
-  has startChildWorkflowExecutionInitiatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes');
-  has startLambdaFunctionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartLambdaFunctionFailedEventAttributes');
-  has startTimerFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartTimerFailedEventAttributes');
-  has timerCanceledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::TimerCanceledEventAttributes');
-  has timerFiredEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::TimerFiredEventAttributes');
-  has timerStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::TimerStartedEventAttributes');
-  has workflowExecutionCanceledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionCanceledEventAttributes');
-  has workflowExecutionCancelRequestedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes');
-  has workflowExecutionCompletedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionCompletedEventAttributes');
-  has workflowExecutionContinuedAsNewEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes');
-  has workflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes');
-  has workflowExecutionSignaledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes');
-  has workflowExecutionStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes');
-  has workflowExecutionTerminatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes');
-  has workflowExecutionTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes');
+  has ActivityTaskCanceledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskCanceledEventAttributes', xmlname => 'activityTaskCanceledEventAttributes', request_name => 'activityTaskCanceledEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ActivityTaskCancelRequestedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes', xmlname => 'activityTaskCancelRequestedEventAttributes', request_name => 'activityTaskCancelRequestedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ActivityTaskCompletedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskCompletedEventAttributes', xmlname => 'activityTaskCompletedEventAttributes', request_name => 'activityTaskCompletedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ActivityTaskFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskFailedEventAttributes', xmlname => 'activityTaskFailedEventAttributes', request_name => 'activityTaskFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ActivityTaskScheduledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskScheduledEventAttributes', xmlname => 'activityTaskScheduledEventAttributes', request_name => 'activityTaskScheduledEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ActivityTaskStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskStartedEventAttributes', xmlname => 'activityTaskStartedEventAttributes', request_name => 'activityTaskStartedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ActivityTaskTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes', xmlname => 'activityTaskTimedOutEventAttributes', request_name => 'activityTaskTimedOutEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has CancelTimerFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CancelTimerFailedEventAttributes', xmlname => 'cancelTimerFailedEventAttributes', request_name => 'cancelTimerFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has CancelWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CancelWorkflowExecutionFailedEventAttributes', xmlname => 'cancelWorkflowExecutionFailedEventAttributes', request_name => 'cancelWorkflowExecutionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ChildWorkflowExecutionCanceledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionCanceledEventAttributes', xmlname => 'childWorkflowExecutionCanceledEventAttributes', request_name => 'childWorkflowExecutionCanceledEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ChildWorkflowExecutionCompletedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes', xmlname => 'childWorkflowExecutionCompletedEventAttributes', request_name => 'childWorkflowExecutionCompletedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ChildWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes', xmlname => 'childWorkflowExecutionFailedEventAttributes', request_name => 'childWorkflowExecutionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ChildWorkflowExecutionStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionStartedEventAttributes', xmlname => 'childWorkflowExecutionStartedEventAttributes', request_name => 'childWorkflowExecutionStartedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ChildWorkflowExecutionTerminatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionTerminatedEventAttributes', xmlname => 'childWorkflowExecutionTerminatedEventAttributes', request_name => 'childWorkflowExecutionTerminatedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ChildWorkflowExecutionTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes', xmlname => 'childWorkflowExecutionTimedOutEventAttributes', request_name => 'childWorkflowExecutionTimedOutEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has CompleteWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::CompleteWorkflowExecutionFailedEventAttributes', xmlname => 'completeWorkflowExecutionFailedEventAttributes', request_name => 'completeWorkflowExecutionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ContinueAsNewWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedEventAttributes', xmlname => 'continueAsNewWorkflowExecutionFailedEventAttributes', request_name => 'continueAsNewWorkflowExecutionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has DecisionTaskCompletedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskCompletedEventAttributes', xmlname => 'decisionTaskCompletedEventAttributes', request_name => 'decisionTaskCompletedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has DecisionTaskScheduledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes', xmlname => 'decisionTaskScheduledEventAttributes', request_name => 'decisionTaskScheduledEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has DecisionTaskStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes', xmlname => 'decisionTaskStartedEventAttributes', request_name => 'decisionTaskStartedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has DecisionTaskTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes', xmlname => 'decisionTaskTimedOutEventAttributes', request_name => 'decisionTaskTimedOutEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has EventId => (is => 'ro', isa => 'Int', xmlname => 'eventId', request_name => 'eventId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has EventTimestamp => (is => 'ro', isa => 'Str', xmlname => 'eventTimestamp', request_name => 'eventTimestamp', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has EventType => (is => 'ro', isa => 'Str', xmlname => 'eventType', request_name => 'eventType', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ExternalWorkflowExecutionCancelRequestedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes', xmlname => 'externalWorkflowExecutionCancelRequestedEventAttributes', request_name => 'externalWorkflowExecutionCancelRequestedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ExternalWorkflowExecutionSignaledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExternalWorkflowExecutionSignaledEventAttributes', xmlname => 'externalWorkflowExecutionSignaledEventAttributes', request_name => 'externalWorkflowExecutionSignaledEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has FailWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::FailWorkflowExecutionFailedEventAttributes', xmlname => 'failWorkflowExecutionFailedEventAttributes', request_name => 'failWorkflowExecutionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has LambdaFunctionCompletedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::LambdaFunctionCompletedEventAttributes', xmlname => 'lambdaFunctionCompletedEventAttributes', request_name => 'lambdaFunctionCompletedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has LambdaFunctionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::LambdaFunctionFailedEventAttributes', xmlname => 'lambdaFunctionFailedEventAttributes', request_name => 'lambdaFunctionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has LambdaFunctionScheduledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::LambdaFunctionScheduledEventAttributes', xmlname => 'lambdaFunctionScheduledEventAttributes', request_name => 'lambdaFunctionScheduledEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has LambdaFunctionStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes', xmlname => 'lambdaFunctionStartedEventAttributes', request_name => 'lambdaFunctionStartedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has LambdaFunctionTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::LambdaFunctionTimedOutEventAttributes', xmlname => 'lambdaFunctionTimedOutEventAttributes', request_name => 'lambdaFunctionTimedOutEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has MarkerRecordedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::MarkerRecordedEventAttributes', xmlname => 'markerRecordedEventAttributes', request_name => 'markerRecordedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has RecordMarkerFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RecordMarkerFailedEventAttributes', xmlname => 'recordMarkerFailedEventAttributes', request_name => 'recordMarkerFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has RequestCancelActivityTaskFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelActivityTaskFailedEventAttributes', xmlname => 'requestCancelActivityTaskFailedEventAttributes', request_name => 'requestCancelActivityTaskFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has RequestCancelExternalWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes', xmlname => 'requestCancelExternalWorkflowExecutionFailedEventAttributes', request_name => 'requestCancelExternalWorkflowExecutionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has RequestCancelExternalWorkflowExecutionInitiatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes', xmlname => 'requestCancelExternalWorkflowExecutionInitiatedEventAttributes', request_name => 'requestCancelExternalWorkflowExecutionInitiatedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ScheduleActivityTaskFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes', xmlname => 'scheduleActivityTaskFailedEventAttributes', request_name => 'scheduleActivityTaskFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has ScheduleLambdaFunctionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ScheduleLambdaFunctionFailedEventAttributes', xmlname => 'scheduleLambdaFunctionFailedEventAttributes', request_name => 'scheduleLambdaFunctionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has SignalExternalWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes', xmlname => 'signalExternalWorkflowExecutionFailedEventAttributes', request_name => 'signalExternalWorkflowExecutionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has SignalExternalWorkflowExecutionInitiatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes', xmlname => 'signalExternalWorkflowExecutionInitiatedEventAttributes', request_name => 'signalExternalWorkflowExecutionInitiatedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has StartChildWorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes', xmlname => 'startChildWorkflowExecutionFailedEventAttributes', request_name => 'startChildWorkflowExecutionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has StartChildWorkflowExecutionInitiatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes', xmlname => 'startChildWorkflowExecutionInitiatedEventAttributes', request_name => 'startChildWorkflowExecutionInitiatedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has StartLambdaFunctionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartLambdaFunctionFailedEventAttributes', xmlname => 'startLambdaFunctionFailedEventAttributes', request_name => 'startLambdaFunctionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has StartTimerFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::StartTimerFailedEventAttributes', xmlname => 'startTimerFailedEventAttributes', request_name => 'startTimerFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has TimerCanceledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::TimerCanceledEventAttributes', xmlname => 'timerCanceledEventAttributes', request_name => 'timerCanceledEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has TimerFiredEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::TimerFiredEventAttributes', xmlname => 'timerFiredEventAttributes', request_name => 'timerFiredEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has TimerStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::TimerStartedEventAttributes', xmlname => 'timerStartedEventAttributes', request_name => 'timerStartedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has WorkflowExecutionCanceledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionCanceledEventAttributes', xmlname => 'workflowExecutionCanceledEventAttributes', request_name => 'workflowExecutionCanceledEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has WorkflowExecutionCancelRequestedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes', xmlname => 'workflowExecutionCancelRequestedEventAttributes', request_name => 'workflowExecutionCancelRequestedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has WorkflowExecutionCompletedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionCompletedEventAttributes', xmlname => 'workflowExecutionCompletedEventAttributes', request_name => 'workflowExecutionCompletedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has WorkflowExecutionContinuedAsNewEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes', xmlname => 'workflowExecutionContinuedAsNewEventAttributes', request_name => 'workflowExecutionContinuedAsNewEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has WorkflowExecutionFailedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes', xmlname => 'workflowExecutionFailedEventAttributes', request_name => 'workflowExecutionFailedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has WorkflowExecutionSignaledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes', xmlname => 'workflowExecutionSignaledEventAttributes', request_name => 'workflowExecutionSignaledEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has WorkflowExecutionStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes', xmlname => 'workflowExecutionStartedEventAttributes', request_name => 'workflowExecutionStartedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has WorkflowExecutionTerminatedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes', xmlname => 'workflowExecutionTerminatedEventAttributes', request_name => 'workflowExecutionTerminatedEventAttributes', traits => ['Unwrapped','NameInRequest']);
+  has WorkflowExecutionTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes', xmlname => 'workflowExecutionTimedOutEventAttributes', request_name => 'workflowExecutionTimedOutEventAttributes', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -76,14 +76,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::HistoryEvent object:
 
-  $service_obj->Method(Att1 => { activityTaskCanceledEventAttributes => $value, ..., workflowExecutionTimedOutEventAttributes => $value  });
+  $service_obj->Method(Att1 => { ActivityTaskCanceledEventAttributes => $value, ..., WorkflowExecutionTimedOutEventAttributes => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::HistoryEvent object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->activityTaskCanceledEventAttributes
+  $result->Att1->ActivityTaskCanceledEventAttributes
 
 =head1 DESCRIPTION
 
@@ -258,325 +258,325 @@ requests.
 
 =head1 ATTRIBUTES
 
-=head2 activityTaskCanceledEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCanceledEventAttributes>
+=head2 ActivityTaskCanceledEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCanceledEventAttributes>
 
   If the event is of type C<ActivityTaskCanceled> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
 
-=head2 activityTaskCancelRequestedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes>
+=head2 ActivityTaskCancelRequestedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes>
 
   If the event is of type C<ActivityTaskcancelRequested> then this member
 is set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 activityTaskCompletedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCompletedEventAttributes>
+=head2 ActivityTaskCompletedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCompletedEventAttributes>
 
   If the event is of type C<ActivityTaskCompleted> then this member is
 set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 activityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskFailedEventAttributes>
+=head2 ActivityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskFailedEventAttributes>
 
   If the event is of type C<ActivityTaskFailed> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
 
-=head2 activityTaskScheduledEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskScheduledEventAttributes>
+=head2 ActivityTaskScheduledEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskScheduledEventAttributes>
 
   If the event is of type C<ActivityTaskScheduled> then this member is
 set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 activityTaskStartedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskStartedEventAttributes>
+=head2 ActivityTaskStartedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskStartedEventAttributes>
 
   If the event is of type C<ActivityTaskStarted> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
 
-=head2 activityTaskTimedOutEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes>
+=head2 ActivityTaskTimedOutEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes>
 
   If the event is of type C<ActivityTaskTimedOut> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
 
-=head2 cancelTimerFailedEventAttributes => L<Paws::SimpleWorkflow::CancelTimerFailedEventAttributes>
+=head2 CancelTimerFailedEventAttributes => L<Paws::SimpleWorkflow::CancelTimerFailedEventAttributes>
 
   If the event is of type C<CancelTimerFailed> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
 
-=head2 cancelWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::CancelWorkflowExecutionFailedEventAttributes>
+=head2 CancelWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::CancelWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<CancelWorkflowExecutionFailed> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 childWorkflowExecutionCanceledEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionCanceledEventAttributes>
+=head2 ChildWorkflowExecutionCanceledEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionCanceledEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionCanceled> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 childWorkflowExecutionCompletedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes>
+=head2 ChildWorkflowExecutionCompletedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionCompleted> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 childWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes>
+=head2 ChildWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionFailed> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 childWorkflowExecutionStartedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionStartedEventAttributes>
+=head2 ChildWorkflowExecutionStartedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionStartedEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionStarted> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 childWorkflowExecutionTerminatedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionTerminatedEventAttributes>
+=head2 ChildWorkflowExecutionTerminatedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionTerminatedEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionTerminated> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 childWorkflowExecutionTimedOutEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes>
+=head2 ChildWorkflowExecutionTimedOutEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionTimedOut> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 completeWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::CompleteWorkflowExecutionFailedEventAttributes>
+=head2 CompleteWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::CompleteWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<CompleteWorkflowExecutionFailed> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 continueAsNewWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedEventAttributes>
+=head2 ContinueAsNewWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<ContinueAsNewWorkflowExecutionFailed> then
 this member is set and provides detailed information about the event.
 It is not set for other event types.
 
-=head2 decisionTaskCompletedEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskCompletedEventAttributes>
+=head2 DecisionTaskCompletedEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskCompletedEventAttributes>
 
   If the event is of type C<DecisionTaskCompleted> then this member is
 set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 decisionTaskScheduledEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes>
+=head2 DecisionTaskScheduledEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes>
 
   If the event is of type C<DecisionTaskScheduled> then this member is
 set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 decisionTaskStartedEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes>
+=head2 DecisionTaskStartedEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes>
 
   If the event is of type C<DecisionTaskStarted> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
 
-=head2 decisionTaskTimedOutEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes>
+=head2 DecisionTaskTimedOutEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes>
 
   If the event is of type C<DecisionTaskTimedOut> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
 
-=head2 B<REQUIRED> eventId => Int
+=head2 B<REQUIRED> EventId => Int
 
   The system generated ID of the event. This ID uniquely identifies the
 event with in the workflow execution history.
 
-=head2 B<REQUIRED> eventTimestamp => Str
+=head2 B<REQUIRED> EventTimestamp => Str
 
   The date and time when the event occurred.
 
-=head2 B<REQUIRED> eventType => Str
+=head2 B<REQUIRED> EventType => Str
 
   The type of the history event.
 
-=head2 externalWorkflowExecutionCancelRequestedEventAttributes => L<Paws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes>
+=head2 ExternalWorkflowExecutionCancelRequestedEventAttributes => L<Paws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes>
 
   If the event is of type C<ExternalWorkflowExecutionCancelRequested>
 then this member is set and provides detailed information about the
 event. It is not set for other event types.
 
-=head2 externalWorkflowExecutionSignaledEventAttributes => L<Paws::SimpleWorkflow::ExternalWorkflowExecutionSignaledEventAttributes>
+=head2 ExternalWorkflowExecutionSignaledEventAttributes => L<Paws::SimpleWorkflow::ExternalWorkflowExecutionSignaledEventAttributes>
 
   If the event is of type C<ExternalWorkflowExecutionSignaled> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 failWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::FailWorkflowExecutionFailedEventAttributes>
+=head2 FailWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::FailWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<FailWorkflowExecutionFailed> then this member
 is set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 lambdaFunctionCompletedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionCompletedEventAttributes>
+=head2 LambdaFunctionCompletedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionCompletedEventAttributes>
 
   
 
-=head2 lambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionFailedEventAttributes>
+=head2 LambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionFailedEventAttributes>
 
   
 
-=head2 lambdaFunctionScheduledEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionScheduledEventAttributes>
+=head2 LambdaFunctionScheduledEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionScheduledEventAttributes>
 
   
 
-=head2 lambdaFunctionStartedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes>
+=head2 LambdaFunctionStartedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes>
 
   
 
-=head2 lambdaFunctionTimedOutEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionTimedOutEventAttributes>
+=head2 LambdaFunctionTimedOutEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionTimedOutEventAttributes>
 
   
 
-=head2 markerRecordedEventAttributes => L<Paws::SimpleWorkflow::MarkerRecordedEventAttributes>
+=head2 MarkerRecordedEventAttributes => L<Paws::SimpleWorkflow::MarkerRecordedEventAttributes>
 
   If the event is of type C<MarkerRecorded> then this member is set and
 provides detailed information about the event. It is not set for other
 event types.
 
-=head2 recordMarkerFailedEventAttributes => L<Paws::SimpleWorkflow::RecordMarkerFailedEventAttributes>
+=head2 RecordMarkerFailedEventAttributes => L<Paws::SimpleWorkflow::RecordMarkerFailedEventAttributes>
 
   If the event is of type C<DecisionTaskFailed> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
 
-=head2 requestCancelActivityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelActivityTaskFailedEventAttributes>
+=head2 RequestCancelActivityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelActivityTaskFailedEventAttributes>
 
   If the event is of type C<RequestCancelActivityTaskFailed> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 requestCancelExternalWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes>
+=head2 RequestCancelExternalWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<RequestCancelExternalWorkflowExecutionFailed>
 then this member is set and provides detailed information about the
 event. It is not set for other event types.
 
-=head2 requestCancelExternalWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes>
+=head2 RequestCancelExternalWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes>
 
   If the event is of type
 C<RequestCancelExternalWorkflowExecutionInitiated> then this member is
 set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 scheduleActivityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes>
+=head2 ScheduleActivityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes>
 
   If the event is of type C<ScheduleActivityTaskFailed> then this member
 is set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 scheduleLambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::ScheduleLambdaFunctionFailedEventAttributes>
+=head2 ScheduleLambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::ScheduleLambdaFunctionFailedEventAttributes>
 
   
 
-=head2 signalExternalWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes>
+=head2 SignalExternalWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<SignalExternalWorkflowExecutionFailed> then
 this member is set and provides detailed information about the event.
 It is not set for other event types.
 
-=head2 signalExternalWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes>
+=head2 SignalExternalWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes>
 
   If the event is of type C<SignalExternalWorkflowExecutionInitiated>
 then this member is set and provides detailed information about the
 event. It is not set for other event types.
 
-=head2 startChildWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes>
+=head2 StartChildWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<StartChildWorkflowExecutionFailed> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 startChildWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes>
+=head2 StartChildWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes>
 
   If the event is of type C<StartChildWorkflowExecutionInitiated> then
 this member is set and provides detailed information about the event.
 It is not set for other event types.
 
-=head2 startLambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::StartLambdaFunctionFailedEventAttributes>
+=head2 StartLambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::StartLambdaFunctionFailedEventAttributes>
 
   
 
-=head2 startTimerFailedEventAttributes => L<Paws::SimpleWorkflow::StartTimerFailedEventAttributes>
+=head2 StartTimerFailedEventAttributes => L<Paws::SimpleWorkflow::StartTimerFailedEventAttributes>
 
   If the event is of type C<StartTimerFailed> then this member is set and
 provides detailed information about the event. It is not set for other
 event types.
 
-=head2 timerCanceledEventAttributes => L<Paws::SimpleWorkflow::TimerCanceledEventAttributes>
+=head2 TimerCanceledEventAttributes => L<Paws::SimpleWorkflow::TimerCanceledEventAttributes>
 
   If the event is of type C<TimerCanceled> then this member is set and
 provides detailed information about the event. It is not set for other
 event types.
 
-=head2 timerFiredEventAttributes => L<Paws::SimpleWorkflow::TimerFiredEventAttributes>
+=head2 TimerFiredEventAttributes => L<Paws::SimpleWorkflow::TimerFiredEventAttributes>
 
   If the event is of type C<TimerFired> then this member is set and
 provides detailed information about the event. It is not set for other
 event types.
 
-=head2 timerStartedEventAttributes => L<Paws::SimpleWorkflow::TimerStartedEventAttributes>
+=head2 TimerStartedEventAttributes => L<Paws::SimpleWorkflow::TimerStartedEventAttributes>
 
   If the event is of type C<TimerStarted> then this member is set and
 provides detailed information about the event. It is not set for other
 event types.
 
-=head2 workflowExecutionCanceledEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCanceledEventAttributes>
+=head2 WorkflowExecutionCanceledEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCanceledEventAttributes>
 
   If the event is of type C<WorkflowExecutionCanceled> then this member
 is set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 workflowExecutionCancelRequestedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes>
+=head2 WorkflowExecutionCancelRequestedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes>
 
   If the event is of type C<WorkflowExecutionCancelRequested> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 workflowExecutionCompletedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCompletedEventAttributes>
+=head2 WorkflowExecutionCompletedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCompletedEventAttributes>
 
   If the event is of type C<WorkflowExecutionCompleted> then this member
 is set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 workflowExecutionContinuedAsNewEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes>
+=head2 WorkflowExecutionContinuedAsNewEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes>
 
   If the event is of type C<WorkflowExecutionContinuedAsNew> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
-=head2 workflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes>
+=head2 WorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<WorkflowExecutionFailed> then this member is
 set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 workflowExecutionSignaledEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes>
+=head2 WorkflowExecutionSignaledEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes>
 
   If the event is of type C<WorkflowExecutionSignaled> then this member
 is set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 workflowExecutionStartedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes>
+=head2 WorkflowExecutionStartedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes>
 
   If the event is of type C<WorkflowExecutionStarted> then this member is
 set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 workflowExecutionTerminatedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes>
+=head2 WorkflowExecutionTerminatedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes>
 
   If the event is of type C<WorkflowExecutionTerminated> then this member
 is set and provides detailed information about the event. It is not set
 for other event types.
 
-=head2 workflowExecutionTimedOutEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes>
+=head2 WorkflowExecutionTimedOutEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes>
 
   If the event is of type C<WorkflowExecutionTimedOut> then this member
 is set and provides detailed information about the event. It is not set

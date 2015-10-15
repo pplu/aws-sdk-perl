@@ -877,7 +877,7 @@ Returns: nothing
   Deletes an existing option group.
 
 
-=head2 DescribeAccountAttributes( => )
+=head2 DescribeAccountAttributes()
 
 Each argument is described in detail in: L<Paws::RDS::DescribeAccountAttributes>
 

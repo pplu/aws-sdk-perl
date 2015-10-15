@@ -1,7 +1,7 @@
 package Paws::IoT::FirehoseAction;
   use Moose;
-  has deliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
-  has roleArn => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryStreamName => (is => 'ro', isa => 'Str', xmlname => 'deliveryStreamName', request_name => 'deliveryStreamName', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::FirehoseAction object:
 
-  $service_obj->Method(Att1 => { deliveryStreamName => $value, ..., roleArn => $value  });
+  $service_obj->Method(Att1 => { DeliveryStreamName => $value, ..., RoleArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::FirehoseAction object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->deliveryStreamName
+  $result->Att1->DeliveryStreamName
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> deliveryStreamName => Str
+=head2 B<REQUIRED> DeliveryStreamName => Str
 
   
 
-=head2 B<REQUIRED> roleArn => Str
+=head2 B<REQUIRED> RoleArn => Str
 
   
 

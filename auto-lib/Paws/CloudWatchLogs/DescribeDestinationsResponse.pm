@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::DescribeDestinationsResponse;
   use Moose;
-  has destinations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::Destination]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::Destination]', traits => ['Unwrapped'], xmlname => 'destinations' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::CloudWatchLogs::DescribeDestinationsResponse
 
 =head1 ATTRIBUTES
 
-=head2 destinations => ArrayRef[L<Paws::CloudWatchLogs::Destination>]
+=head2 Destinations => ArrayRef[L<Paws::CloudWatchLogs::Destination>]
 
   
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   
 

@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::TimerFiredEventAttributes;
   use Moose;
-  has startedEventId => (is => 'ro', isa => 'Int', required => 1);
-  has timerId => (is => 'ro', isa => 'Str', required => 1);
+  has StartedEventId => (is => 'ro', isa => 'Int', xmlname => 'startedEventId', request_name => 'startedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has TimerId => (is => 'ro', isa => 'Str', xmlname => 'timerId', request_name => 'timerId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::TimerFiredEventAttributes object:
 
-  $service_obj->Method(Att1 => { startedEventId => $value, ..., timerId => $value  });
+  $service_obj->Method(Att1 => { StartedEventId => $value, ..., TimerId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::TimerFiredEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->startedEventId
+  $result->Att1->StartedEventId
 
 =head1 DESCRIPTION
 
@@ -36,13 +36,13 @@ Provides details of the C<TimerFired> event.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> startedEventId => Int
+=head2 B<REQUIRED> StartedEventId => Int
 
   The ID of the C<TimerStarted> event that was recorded when this timer
 was started. This information can be useful for diagnosing problems by
 tracing back the chain of events leading up to this event.
 
-=head2 B<REQUIRED> timerId => Str
+=head2 B<REQUIRED> TimerId => Str
 
   The unique ID of the timer that fired.
 

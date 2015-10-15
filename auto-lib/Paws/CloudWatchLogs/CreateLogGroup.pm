@@ -1,7 +1,7 @@
 
 package Paws::CloudWatchLogs::CreateLogGroup;
   use Moose;
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> logGroupName => Str
+=head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group to create.
 

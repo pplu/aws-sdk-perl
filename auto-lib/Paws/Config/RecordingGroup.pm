@@ -1,7 +1,7 @@
 package Paws::Config::RecordingGroup;
   use Moose;
-  has allSupported => (is => 'ro', isa => 'Bool');
-  has resourceTypes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AllSupported => (is => 'ro', isa => 'Bool', xmlname => 'allSupported', request_name => 'allSupported', traits => ['Unwrapped','NameInRequest']);
+  has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'resourceTypes', request_name => 'resourceTypes', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Config::RecordingGroup object:
 
-  $service_obj->Method(Att1 => { allSupported => $value, ..., resourceTypes => $value  });
+  $service_obj->Method(Att1 => { AllSupported => $value, ..., ResourceTypes => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Config::RecordingGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->allSupported
+  $result->Att1->AllSupported
 
 =head1 DESCRIPTION
 
@@ -40,14 +40,14 @@ B<allSupported> or B<resourceTypes>.
 
 =head1 ATTRIBUTES
 
-=head2 allSupported => Bool
+=head2 AllSupported => Bool
 
   Records all supported resource types in the recording group. For a list
 of supported resource types, see Supported resource types. If you
 specify B<allSupported>, you cannot enumerate a list of
 B<resourceTypes>.
 
-=head2 resourceTypes => ArrayRef[Str]
+=head2 ResourceTypes => ArrayRef[Str]
 
   A comma-separated list of strings representing valid AWS resource types
 (for example, C<AWS::EC2::Instance> or C<AWS::CloudTrail::Trail>).

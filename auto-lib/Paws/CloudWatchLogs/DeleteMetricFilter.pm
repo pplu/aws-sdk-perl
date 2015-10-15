@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::DeleteMetricFilter;
   use Moose;
-  has filterName => (is => 'ro', isa => 'Str', required => 1);
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has FilterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterName' , required => 1);
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> filterName => Str
+=head2 B<REQUIRED> FilterName => Str
 
   The name of the metric filter to delete.
 
-=head2 B<REQUIRED> logGroupName => Str
+=head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group that is associated with the metric filter to
 delete.

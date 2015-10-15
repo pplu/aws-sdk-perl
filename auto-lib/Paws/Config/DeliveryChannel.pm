@@ -1,10 +1,10 @@
 package Paws::Config::DeliveryChannel;
   use Moose;
-  has configSnapshotDeliveryProperties => (is => 'ro', isa => 'Paws::Config::ConfigSnapshotDeliveryProperties');
-  has name => (is => 'ro', isa => 'Str');
-  has s3BucketName => (is => 'ro', isa => 'Str');
-  has s3KeyPrefix => (is => 'ro', isa => 'Str');
-  has snsTopicARN => (is => 'ro', isa => 'Str');
+  has ConfigSnapshotDeliveryProperties => (is => 'ro', isa => 'Paws::Config::ConfigSnapshotDeliveryProperties', xmlname => 'configSnapshotDeliveryProperties', request_name => 'configSnapshotDeliveryProperties', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has S3BucketName => (is => 'ro', isa => 'Str', xmlname => 's3BucketName', request_name => 's3BucketName', traits => ['Unwrapped','NameInRequest']);
+  has S3KeyPrefix => (is => 'ro', isa => 'Str', xmlname => 's3KeyPrefix', request_name => 's3KeyPrefix', traits => ['Unwrapped','NameInRequest']);
+  has SnsTopicARN => (is => 'ro', isa => 'Str', xmlname => 'snsTopicARN', request_name => 'snsTopicARN', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Config::DeliveryChannel object:
 
-  $service_obj->Method(Att1 => { configSnapshotDeliveryProperties => $value, ..., snsTopicARN => $value  });
+  $service_obj->Method(Att1 => { ConfigSnapshotDeliveryProperties => $value, ..., SnsTopicARN => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Config::DeliveryChannel object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->configSnapshotDeliveryProperties
+  $result->Att1->ConfigSnapshotDeliveryProperties
 
 =head1 DESCRIPTION
 
@@ -40,26 +40,26 @@ AWS resource.
 
 =head1 ATTRIBUTES
 
-=head2 configSnapshotDeliveryProperties => L<Paws::Config::ConfigSnapshotDeliveryProperties>
+=head2 ConfigSnapshotDeliveryProperties => L<Paws::Config::ConfigSnapshotDeliveryProperties>
 
   
 
-=head2 name => Str
+=head2 Name => Str
 
   The name of the delivery channel. By default, AWS Config automatically
 assigns the name "default" when creating the delivery channel. You
 cannot change the assigned name.
 
-=head2 s3BucketName => Str
+=head2 S3BucketName => Str
 
   The name of the Amazon S3 bucket used to store configuration history
 for the delivery channel.
 
-=head2 s3KeyPrefix => Str
+=head2 S3KeyPrefix => Str
 
   The prefix for the specified Amazon S3 bucket.
 
-=head2 snsTopicARN => Str
+=head2 SnsTopicARN => Str
 
   The Amazon Resource Name (ARN) of the SNS topic that AWS Config
 delivers notifications to.

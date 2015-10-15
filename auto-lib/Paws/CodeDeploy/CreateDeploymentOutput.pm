@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::CreateDeploymentOutput;
   use Moose;
-  has deploymentId => (is => 'ro', isa => 'Str');
+  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deploymentId' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::CodeDeploy::CreateDeploymentOutput
 
 =head1 ATTRIBUTES
 
-=head2 deploymentId => Str
+=head2 DeploymentId => Str
 
   A unique deployment ID.
 

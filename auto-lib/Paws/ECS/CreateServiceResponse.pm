@@ -1,7 +1,7 @@
 
 package Paws::ECS::CreateServiceResponse;
   use Moose;
-  has service => (is => 'ro', isa => 'Paws::ECS::Service');
+  has Service => (is => 'ro', isa => 'Paws::ECS::Service', traits => ['Unwrapped'], xmlname => 'service' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::ECS::CreateServiceResponse
 
 =head1 ATTRIBUTES
 
-=head2 service => L<Paws::ECS::Service>
+=head2 Service => L<Paws::ECS::Service>
 
   The full description of your service following the create call.
 

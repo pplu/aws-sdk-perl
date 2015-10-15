@@ -1,10 +1,10 @@
 
 package Paws::IoT::ListTopicRules;
   use Moose;
-  has maxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
-  has nextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
-  has ruleDisabled => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ruleDisabled' );
-  has topic => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'topic' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
+  has RuleDisabled => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ruleDisabled' );
+  has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'topic' );
 
   use MooseX::ClassAttribute;
 
@@ -37,19 +37,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 maxResults => Int
+=head2 MaxResults => Int
 
   The maximum number of results to return.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   A token used to retrieve the next value.
 
-=head2 ruleDisabled => Bool
+=head2 RuleDisabled => Bool
 
   Specifies whether the rule is disabled.
 
-=head2 topic => Str
+=head2 Topic => Str
 
   The topic.
 

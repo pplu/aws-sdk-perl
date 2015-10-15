@@ -1,10 +1,10 @@
 
 package Paws::CloudSearchDomain::UploadDocumentsResponse;
   use Moose;
-  has adds => (is => 'ro', isa => 'Int');
-  has deletes => (is => 'ro', isa => 'Int');
-  has status => (is => 'ro', isa => 'Str');
-  has warnings => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::DocumentServiceWarning]');
+  has Adds => (is => 'ro', isa => 'Int');
+  has Deletes => (is => 'ro', isa => 'Int');
+  has Status => (is => 'ro', isa => 'Str');
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::DocumentServiceWarning]');
 
 1;
 
@@ -16,16 +16,16 @@ Paws::CloudSearchDomain::UploadDocumentsResponse
 
 =head1 ATTRIBUTES
 
-=head2 adds => Int
+=head2 Adds => Int
 
   The number of documents that were added to the search domain.
-=head2 deletes => Int
+=head2 Deletes => Int
 
   The number of documents that were deleted from the search domain.
-=head2 status => Str
+=head2 Status => Str
 
   The status of an C<UploadDocumentsRequest>.
-=head2 warnings => ArrayRef[L<Paws::CloudSearchDomain::DocumentServiceWarning>]
+=head2 Warnings => ArrayRef[L<Paws::CloudSearchDomain::DocumentServiceWarning>]
 
   Any warnings returned by the document service about the documents being
 uploaded.

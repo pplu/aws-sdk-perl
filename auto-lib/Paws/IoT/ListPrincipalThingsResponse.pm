@@ -1,8 +1,8 @@
 
 package Paws::IoT::ListPrincipalThingsResponse;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
-  has things => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NextToken => (is => 'ro', isa => 'Str');
+  has Things => (is => 'ro', isa => 'ArrayRef[Str]');
 
 1;
 
@@ -14,10 +14,10 @@ Paws::IoT::ListPrincipalThingsResponse
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   A token used to retrieve the next value.
-=head2 things => ArrayRef[Str]
+=head2 Things => ArrayRef[Str]
 
   The things.
 

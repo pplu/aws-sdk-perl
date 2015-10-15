@@ -1,7 +1,7 @@
 
 package Paws::CloudTrail::DescribeTrails;
   use Moose;
-  has trailNameList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has TrailNameList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'trailNameList' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 trailNameList => ArrayRef[Str]
+=head2 TrailNameList => ArrayRef[Str]
 
   Specifies a list of trail names, trail ARNs, or both, of the trails to
 describe. The format of a trail ARN is

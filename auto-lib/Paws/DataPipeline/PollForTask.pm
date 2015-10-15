@@ -1,9 +1,9 @@
 
 package Paws::DataPipeline::PollForTask;
   use Moose;
-  has hostname => (is => 'ro', isa => 'Str');
-  has instanceIdentity => (is => 'ro', isa => 'Paws::DataPipeline::InstanceIdentity');
-  has workerGroup => (is => 'ro', isa => 'Str', required => 1);
+  has Hostname => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostname' );
+  has InstanceIdentity => (is => 'ro', isa => 'Paws::DataPipeline::InstanceIdentity', traits => ['NameInRequest'], request_name => 'instanceIdentity' );
+  has WorkerGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workerGroup' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,11 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 hostname => Str
+=head2 Hostname => Str
 
   The public DNS name of the calling task runner.
 
-=head2 instanceIdentity => L<Paws::DataPipeline::InstanceIdentity>
+=head2 InstanceIdentity => L<Paws::DataPipeline::InstanceIdentity>
 
   Identity information for the EC2 instance that is hosting the task
 runner. You can get this value from the instance using
@@ -48,7 +48,7 @@ Cloud User Guide.> Passing in this value proves that your task runner
 is running on an EC2 instance, and ensures the proper AWS Data Pipeline
 service charges are applied to your pipeline.
 
-=head2 B<REQUIRED> workerGroup => Str
+=head2 B<REQUIRED> WorkerGroup => Str
 
   The type of task the task runner is configured to accept and process.
 The worker group is set as a field on objects in the pipeline when they

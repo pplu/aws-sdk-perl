@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::BatchGetDeployments;
   use Moose;
-  has deploymentIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DeploymentIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'deploymentIds' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 deploymentIds => ArrayRef[Str]
+=head2 DeploymentIds => ArrayRef[Str]
 
   A list of deployment IDs, with multiple deployment IDs separated by
 spaces.

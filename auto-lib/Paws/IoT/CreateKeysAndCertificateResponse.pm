@@ -1,10 +1,10 @@
 
 package Paws::IoT::CreateKeysAndCertificateResponse;
   use Moose;
-  has certificateArn => (is => 'ro', isa => 'Str');
-  has certificateId => (is => 'ro', isa => 'Str');
-  has certificatePem => (is => 'ro', isa => 'Str');
-  has keyPair => (is => 'ro', isa => 'Paws::IoT::KeyPair');
+  has CertificateArn => (is => 'ro', isa => 'Str');
+  has CertificateId => (is => 'ro', isa => 'Str');
+  has CertificatePem => (is => 'ro', isa => 'Str');
+  has KeyPair => (is => 'ro', isa => 'Paws::IoT::KeyPair');
 
 1;
 
@@ -16,17 +16,17 @@ Paws::IoT::CreateKeysAndCertificateResponse
 
 =head1 ATTRIBUTES
 
-=head2 certificateArn => Str
+=head2 CertificateArn => Str
 
   The ARN of the certificate.
-=head2 certificateId => Str
+=head2 CertificateId => Str
 
   The ID of the certificate. AWS IoT issues a default subject name for
 the certificate (e.g., AWS IoT Certificate).
-=head2 certificatePem => Str
+=head2 CertificatePem => Str
 
   The certificate data, in PEM format.
-=head2 keyPair => L<Paws::IoT::KeyPair>
+=head2 KeyPair => L<Paws::IoT::KeyPair>
 
   The generated key pair.
 

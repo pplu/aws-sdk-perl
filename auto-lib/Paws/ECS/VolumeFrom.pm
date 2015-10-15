@@ -1,7 +1,7 @@
 package Paws::ECS::VolumeFrom;
   use Moose;
-  has readOnly => (is => 'ro', isa => 'Bool');
-  has sourceContainer => (is => 'ro', isa => 'Str');
+  has ReadOnly => (is => 'ro', isa => 'Bool', xmlname => 'readOnly', request_name => 'readOnly', traits => ['Unwrapped','NameInRequest']);
+  has SourceContainer => (is => 'ro', isa => 'Str', xmlname => 'sourceContainer', request_name => 'sourceContainer', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::VolumeFrom object:
 
-  $service_obj->Method(Att1 => { readOnly => $value, ..., sourceContainer => $value  });
+  $service_obj->Method(Att1 => { ReadOnly => $value, ..., SourceContainer => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::VolumeFrom object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->readOnly
+  $result->Att1->ReadOnly
 
 =head1 DESCRIPTION
 
@@ -36,13 +36,13 @@ Details on a data volume from another container.
 
 =head1 ATTRIBUTES
 
-=head2 readOnly => Bool
+=head2 ReadOnly => Bool
 
   If this value is C<true>, the container has read-only access to the
 volume. If this value is C<false>, then the container can write to the
 volume. The default value is C<false>.
 
-=head2 sourceContainer => Str
+=head2 SourceContainer => Str
 
   The name of the container to mount volumes from.
 

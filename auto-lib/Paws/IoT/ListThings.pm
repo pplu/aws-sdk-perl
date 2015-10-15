@@ -1,10 +1,10 @@
 
 package Paws::IoT::ListThings;
   use Moose;
-  has attributeName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'attributeName' );
-  has attributeValue => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'attributeValue' );
-  has maxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
-  has nextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
+  has AttributeName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'attributeName' );
+  has AttributeValue => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'attributeValue' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -37,19 +37,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 attributeName => Str
+=head2 AttributeName => Str
 
   The attribute name.
 
-=head2 attributeValue => Str
+=head2 AttributeValue => Str
 
   The attribute value.
 
-=head2 maxResults => Int
+=head2 MaxResults => Int
 
   The maximum number of results.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   The token for the next value.
 

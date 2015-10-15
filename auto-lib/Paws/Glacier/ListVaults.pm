@@ -1,9 +1,9 @@
 
 package Paws::Glacier::ListVaults;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
-  has marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has Limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
 
   use MooseX::ClassAttribute;
 
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
   The C<AccountId> value is the AWS account ID. This value must match the
 AWS account ID associated with the credentials used to sign the
@@ -46,12 +46,12 @@ account ID associated with the credentials used to sign the request. If
 you specify your account ID, do not include any hyphens (apos-apos) in
 the ID.
 
-=head2 limit => Str
+=head2 Limit => Str
 
   The maximum number of items returned in the response. If you don't
 specify a value, the List Vaults operation returns up to 1,000 items.
 
-=head2 marker => Str
+=head2 Marker => Str
 
   A string used for pagination. The marker specifies the vault ARN after
 which the listing of vaults should begin.

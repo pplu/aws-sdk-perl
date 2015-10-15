@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes;
   use Moose;
-  has cause => (is => 'ro', isa => 'Str');
-  has externalInitiatedEventId => (is => 'ro', isa => 'Int');
-  has externalWorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution');
+  has Cause => (is => 'ro', isa => 'Str', xmlname => 'cause', request_name => 'cause', traits => ['Unwrapped','NameInRequest']);
+  has ExternalInitiatedEventId => (is => 'ro', isa => 'Int', xmlname => 'externalInitiatedEventId', request_name => 'externalInitiatedEventId', traits => ['Unwrapped','NameInRequest']);
+  has ExternalWorkflowExecution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', xmlname => 'externalWorkflowExecution', request_name => 'externalWorkflowExecution', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes object:
 
-  $service_obj->Method(Att1 => { cause => $value, ..., externalWorkflowExecution => $value  });
+  $service_obj->Method(Att1 => { Cause => $value, ..., ExternalWorkflowExecution => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->cause
+  $result->Att1->Cause
 
 =head1 DESCRIPTION
 
@@ -37,14 +37,14 @@ Provides details of the C<WorkflowExecutionCancelRequested> event.
 
 =head1 ATTRIBUTES
 
-=head2 cause => Str
+=head2 Cause => Str
 
   If set, indicates that the request to cancel the workflow execution was
 automatically generated, and specifies the cause. This happens if the
 parent workflow execution times out or is terminated, and the child
 policy is set to cancel child executions.
 
-=head2 externalInitiatedEventId => Int
+=head2 ExternalInitiatedEventId => Int
 
   The ID of the C<RequestCancelExternalWorkflowExecutionInitiated> event
 corresponding to the C<RequestCancelExternalWorkflowExecution> decision
@@ -53,7 +53,7 @@ found in the history of the source workflow execution. This information
 can be useful for diagnosing problems by tracing back the chain of
 events leading up to this event.
 
-=head2 externalWorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
+=head2 ExternalWorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The external workflow execution for which the cancellation was
 requested.

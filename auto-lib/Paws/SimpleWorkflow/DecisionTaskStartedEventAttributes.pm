@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes;
   use Moose;
-  has identity => (is => 'ro', isa => 'Str');
-  has scheduledEventId => (is => 'ro', isa => 'Int', required => 1);
+  has Identity => (is => 'ro', isa => 'Str', xmlname => 'identity', request_name => 'identity', traits => ['Unwrapped','NameInRequest']);
+  has ScheduledEventId => (is => 'ro', isa => 'Int', xmlname => 'scheduledEventId', request_name => 'scheduledEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes object:
 
-  $service_obj->Method(Att1 => { identity => $value, ..., scheduledEventId => $value  });
+  $service_obj->Method(Att1 => { Identity => $value, ..., ScheduledEventId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->identity
+  $result->Att1->Identity
 
 =head1 DESCRIPTION
 
@@ -36,12 +36,12 @@ Provides details of the C<DecisionTaskStarted> event.
 
 =head1 ATTRIBUTES
 
-=head2 identity => Str
+=head2 Identity => Str
 
   Identity of the decider making the request. This enables diagnostic
 tracing when problems arise. The form of this identity is user defined.
 
-=head2 B<REQUIRED> scheduledEventId => Int
+=head2 B<REQUIRED> ScheduledEventId => Int
 
   The ID of the C<DecisionTaskScheduled> event that was recorded when
 this decision task was scheduled. This information can be useful for

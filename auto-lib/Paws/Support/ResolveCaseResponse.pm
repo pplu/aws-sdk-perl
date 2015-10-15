@@ -1,8 +1,8 @@
 
 package Paws::Support::ResolveCaseResponse;
   use Moose;
-  has finalCaseStatus => (is => 'ro', isa => 'Str');
-  has initialCaseStatus => (is => 'ro', isa => 'Str');
+  has FinalCaseStatus => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'finalCaseStatus' );
+  has InitialCaseStatus => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'initialCaseStatus' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::Support::ResolveCaseResponse
 
 =head1 ATTRIBUTES
 
-=head2 finalCaseStatus => Str
+=head2 FinalCaseStatus => Str
 
   The status of the case after the ResolveCase request was processed.
-=head2 initialCaseStatus => Str
+=head2 InitialCaseStatus => Str
 
   The status of the case when the ResolveCase request was sent.
 

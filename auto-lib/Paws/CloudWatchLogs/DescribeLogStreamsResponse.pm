@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::DescribeLogStreamsResponse;
   use Moose;
-  has logStreams => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::LogStream]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has LogStreams => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::LogStream]', traits => ['Unwrapped'], xmlname => 'logStreams' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::CloudWatchLogs::DescribeLogStreamsResponse
 
 =head1 ATTRIBUTES
 
-=head2 logStreams => ArrayRef[L<Paws::CloudWatchLogs::LogStream>]
+=head2 LogStreams => ArrayRef[L<Paws::CloudWatchLogs::LogStream>]
 
   
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   
 

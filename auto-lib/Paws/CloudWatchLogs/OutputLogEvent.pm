@@ -1,8 +1,8 @@
 package Paws::CloudWatchLogs::OutputLogEvent;
   use Moose;
-  has ingestionTime => (is => 'ro', isa => 'Int');
-  has message => (is => 'ro', isa => 'Str');
-  has timestamp => (is => 'ro', isa => 'Int');
+  has IngestionTime => (is => 'ro', isa => 'Int', xmlname => 'ingestionTime', request_name => 'ingestionTime', traits => ['Unwrapped','NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
+  has Timestamp => (is => 'ro', isa => 'Int', xmlname => 'timestamp', request_name => 'timestamp', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::OutputLogEvent object:
 
-  $service_obj->Method(Att1 => { ingestionTime => $value, ..., timestamp => $value  });
+  $service_obj->Method(Att1 => { IngestionTime => $value, ..., Timestamp => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::OutputLogEvent object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ingestionTime
+  $result->Att1->IngestionTime
 
 =head1 DESCRIPTION
 
@@ -37,15 +37,15 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 ingestionTime => Int
+=head2 IngestionTime => Int
 
   
 
-=head2 message => Str
+=head2 Message => Str
 
   
 
-=head2 timestamp => Int
+=head2 Timestamp => Int
 
   
 

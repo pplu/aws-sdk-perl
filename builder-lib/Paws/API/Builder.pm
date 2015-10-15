@@ -153,7 +153,11 @@ package Paws::API::Builder {
       foreach my $op ($self->operations) {
         my $operation = $self->operation($op);
         my $sh_name = $operation->{ input }->{ shape };
-        $ret->{ $sh_name } = $self->shape($sh_name) if (defined $sh_name);
+        if (defined $sh_name){
+          my $shape = $self->shape($sh_name);
+          $shape = $self->capitalize_shape($shape);
+          $ret->{ $sh_name } = $shape
+        }
       }
       return $ret;
     },
@@ -175,7 +179,11 @@ package Paws::API::Builder {
       foreach my $op ($self->operations) {
         my $operation = $self->operation($op);
         my $sh_name = $operation->{ output }->{ shape };
-        $ret->{ $sh_name } = $self->shape($sh_name) if (defined $sh_name);
+        if (defined $sh_name){
+          my $shape = $self->shape($sh_name);
+          $shape = $self->capitalize_shape($shape);
+          $ret->{ $sh_name } = $shape
+        }
       }
       return $ret;
     },
@@ -208,6 +216,28 @@ package Paws::API::Builder {
     }
   );
 
+  sub capitalize {
+    my ($self, $shape) = @_;
+    substr($shape,0,1) = uc(substr($shape,0,1));
+    return $shape;
+  }
+
+  sub capitalize_shape {
+    my ($self, $shape) = @_;
+
+    if ($shape->{ type } eq 'structure'){
+      foreach my $member (keys %{ $shape->{ members } }){
+        next if ($member =~ m/^[A-Z]/); # if we already start with capital, don't touch
+        my $s = delete $shape->{ members }->{ $member };
+        $s->{ locationName } = $member;
+        $shape->{ members }->{ $self->capitalize($member) } = $s;
+      }
+      $shape->{ required } = [ map { $self->capitalize($_) } @{ $shape->{ required } } ];
+    }
+
+    return $shape;
+  };
+
   has _inner_shapes => (
     is => 'ro',
     lazy => 1,
@@ -217,6 +247,9 @@ package Paws::API::Builder {
       my $ret = {};
       foreach my $shape_name ($self->shapes) {
         my $shape = $self->shape($shape_name);
+
+        $self->capitalize_shape($shape);
+
         $ret->{ $shape_name } = $shape if (( $shape->{type} eq 'structure' or $shape->{type} eq 'map')
                                            and not $self->is_exception_shape($shape_name)
                                            and not $self->is_output_shape($shape_name)

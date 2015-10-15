@@ -1,8 +1,8 @@
 package Paws::CloudWatchLogs::MetricTransformation;
   use Moose;
-  has metricName => (is => 'ro', isa => 'Str', required => 1);
-  has metricNamespace => (is => 'ro', isa => 'Str', required => 1);
-  has metricValue => (is => 'ro', isa => 'Str', required => 1);
+  has MetricName => (is => 'ro', isa => 'Str', xmlname => 'metricName', request_name => 'metricName', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has MetricNamespace => (is => 'ro', isa => 'Str', xmlname => 'metricNamespace', request_name => 'metricNamespace', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has MetricValue => (is => 'ro', isa => 'Str', xmlname => 'metricValue', request_name => 'metricValue', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::MetricTransformation object:
 
-  $service_obj->Method(Att1 => { metricName => $value, ..., metricValue => $value  });
+  $service_obj->Method(Att1 => { MetricName => $value, ..., MetricValue => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::MetricTransformation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->metricName
+  $result->Att1->MetricName
 
 =head1 DESCRIPTION
 
@@ -37,15 +37,15 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> metricName => Str
+=head2 B<REQUIRED> MetricName => Str
 
   
 
-=head2 B<REQUIRED> metricNamespace => Str
+=head2 B<REQUIRED> MetricNamespace => Str
 
   
 
-=head2 B<REQUIRED> metricValue => Str
+=head2 B<REQUIRED> MetricValue => Str
 
   
 

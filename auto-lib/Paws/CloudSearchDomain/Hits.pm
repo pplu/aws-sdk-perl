@@ -1,9 +1,9 @@
 package Paws::CloudSearchDomain::Hits;
   use Moose;
-  has cursor => (is => 'ro', isa => 'Str');
-  has found => (is => 'ro', isa => 'Int');
-  has hit => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::Hit]');
-  has start => (is => 'ro', isa => 'Int');
+  has Cursor => (is => 'ro', isa => 'Str', xmlname => 'cursor', request_name => 'cursor', traits => ['Unwrapped','NameInRequest']);
+  has Found => (is => 'ro', isa => 'Int', xmlname => 'found', request_name => 'found', traits => ['Unwrapped','NameInRequest']);
+  has Hit => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::Hit]', xmlname => 'hit', request_name => 'hit', traits => ['Unwrapped','NameInRequest']);
+  has Start => (is => 'ro', isa => 'Int', xmlname => 'start', request_name => 'start', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudSearchDomain::Hits object:
 
-  $service_obj->Method(Att1 => { cursor => $value, ..., start => $value  });
+  $service_obj->Method(Att1 => { Cursor => $value, ..., Start => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearchDomain::Hits object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->cursor
+  $result->Att1->Cursor
 
 =head1 DESCRIPTION
 
@@ -38,20 +38,20 @@ The collection of documents that match the search request.
 
 =head1 ATTRIBUTES
 
-=head2 cursor => Str
+=head2 Cursor => Str
 
   A cursor that can be used to retrieve the next set of matching
 documents when you want to page through a large result set.
 
-=head2 found => Int
+=head2 Found => Int
 
   The total number of documents that match the search request.
 
-=head2 hit => ArrayRef[L<Paws::CloudSearchDomain::Hit>]
+=head2 Hit => ArrayRef[L<Paws::CloudSearchDomain::Hit>]
 
   A document that matches the search request.
 
-=head2 start => Int
+=head2 Start => Int
 
   The index of the first matching document.
 

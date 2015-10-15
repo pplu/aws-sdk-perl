@@ -1,6 +1,6 @@
 package Paws::DataPipeline::Query;
   use Moose;
-  has selectors => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Selector]');
+  has Selectors => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Selector]', xmlname => 'selectors', request_name => 'selectors', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DataPipeline::Query object:
 
-  $service_obj->Method(Att1 => { selectors => $value, ..., selectors => $value  });
+  $service_obj->Method(Att1 => { Selectors => $value, ..., Selectors => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipeline::Query object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->selectors
+  $result->Att1->Selectors
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ Defines the query to run against an object.
 
 =head1 ATTRIBUTES
 
-=head2 selectors => ArrayRef[L<Paws::DataPipeline::Selector>]
+=head2 Selectors => ArrayRef[L<Paws::DataPipeline::Selector>]
 
   List of selectors that define the query. An object must satisfy all of
 the selectors to match the query.

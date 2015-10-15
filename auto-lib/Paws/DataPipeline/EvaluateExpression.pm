@@ -1,9 +1,9 @@
 
 package Paws::DataPipeline::EvaluateExpression;
   use Moose;
-  has expression => (is => 'ro', isa => 'Str', required => 1);
-  has objectId => (is => 'ro', isa => 'Str', required => 1);
-  has pipelineId => (is => 'ro', isa => 'Str', required => 1);
+  has Expression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'expression' , required => 1);
+  has ObjectId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'objectId' , required => 1);
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,15 +34,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> expression => Str
+=head2 B<REQUIRED> Expression => Str
 
   The expression to evaluate.
 
-=head2 B<REQUIRED> objectId => Str
+=head2 B<REQUIRED> ObjectId => Str
 
   The ID of the object.
 
-=head2 B<REQUIRED> pipelineId => Str
+=head2 B<REQUIRED> PipelineId => Str
 
   The ID of the pipeline.
 

@@ -1,7 +1,7 @@
 
 package Paws::DataPipeline::DescribePipelines;
   use Moose;
-  has pipelineIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has PipelineIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'pipelineIds' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> pipelineIds => ArrayRef[Str]
+=head2 B<REQUIRED> PipelineIds => ArrayRef[Str]
 
   The IDs of the pipelines to describe. You can pass as many as 25
 identifiers in a single call. To obtain pipeline IDs, call

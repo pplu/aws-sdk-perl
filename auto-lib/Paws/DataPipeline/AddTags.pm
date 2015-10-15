@@ -1,8 +1,8 @@
 
 package Paws::DataPipeline::AddTags;
   use Moose;
-  has pipelineId => (is => 'ro', isa => 'Str', required => 1);
-  has tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]', required => 1);
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> pipelineId => Str
+=head2 B<REQUIRED> PipelineId => Str
 
   The ID of the pipeline.
 
-=head2 B<REQUIRED> tags => ArrayRef[L<Paws::DataPipeline::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::DataPipeline::Tag>]
 
   The tags to add, as key/value pairs.
 

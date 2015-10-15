@@ -1,9 +1,9 @@
 
 package Paws::CloudWatchLogs::FilterLogEventsResponse;
   use Moose;
-  has events => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::FilteredLogEvent]');
-  has nextToken => (is => 'ro', isa => 'Str');
-  has searchedLogStreams => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SearchedLogStream]');
+  has Events => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::FilteredLogEvent]', traits => ['Unwrapped'], xmlname => 'events' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has SearchedLogStreams => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::SearchedLogStream]', traits => ['Unwrapped'], xmlname => 'searchedLogStreams' );
 
 
 ### main pod documentation begin ###
@@ -14,15 +14,15 @@ Paws::CloudWatchLogs::FilterLogEventsResponse
 
 =head1 ATTRIBUTES
 
-=head2 events => ArrayRef[L<Paws::CloudWatchLogs::FilteredLogEvent>]
+=head2 Events => ArrayRef[L<Paws::CloudWatchLogs::FilteredLogEvent>]
 
   A list of C<FilteredLogEvent> objects representing the matched events
 from the request.
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   A pagination token obtained from a C<FilterLogEvents> response to
 continue paginating the FilterLogEvents results.
-=head2 searchedLogStreams => ArrayRef[L<Paws::CloudWatchLogs::SearchedLogStream>]
+=head2 SearchedLogStreams => ArrayRef[L<Paws::CloudWatchLogs::SearchedLogStream>]
 
   A list of C<SearchedLogStream> objects indicating which log streams
 have been searched in this request and whether each has been searched

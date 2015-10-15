@@ -1,8 +1,8 @@
 
 package Paws::CloudSearchDomain::SuggestResponse;
   use Moose;
-  has status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestStatus');
-  has suggest => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestModel');
+  has Status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestStatus');
+  has Suggest => (is => 'ro', isa => 'Paws::CloudSearchDomain::SuggestModel');
 
 1;
 
@@ -14,11 +14,11 @@ Paws::CloudSearchDomain::SuggestResponse
 
 =head1 ATTRIBUTES
 
-=head2 status => L<Paws::CloudSearchDomain::SuggestStatus>
+=head2 Status => L<Paws::CloudSearchDomain::SuggestStatus>
 
   The status of a C<SuggestRequest>. Contains the resource ID (C<rid>)
 and how long it took to process the request (C<timems>).
-=head2 suggest => L<Paws::CloudSearchDomain::SuggestModel>
+=head2 Suggest => L<Paws::CloudSearchDomain::SuggestModel>
 
   Container for the matching search suggestion information.
 

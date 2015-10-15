@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::GetOnPremisesInstance;
   use Moose;
-  has instanceName => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> instanceName => Str
+=head2 B<REQUIRED> InstanceName => Str
 
   The name of the on-premises instance to get information about
 

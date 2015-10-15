@@ -1,7 +1,7 @@
 
 package Paws::IoT::TransferCertificateResponse;
   use Moose;
-  has transferredCertificateArn => (is => 'ro', isa => 'Str');
+  has TransferredCertificateArn => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -13,7 +13,7 @@ Paws::IoT::TransferCertificateResponse
 
 =head1 ATTRIBUTES
 
-=head2 transferredCertificateArn => Str
+=head2 TransferredCertificateArn => Str
 
   The ARN of the certificate.
 

@@ -1,7 +1,7 @@
 
 package Paws::IoTData::GetThingShadowResponse;
   use Moose;
-  has payload => (is => 'ro', isa => 'Str');
+  has Payload => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -13,7 +13,7 @@ Paws::IoTData::GetThingShadowResponse
 
 =head1 ATTRIBUTES
 
-=head2 payload => Str
+=head2 Payload => Str
 
   The state information, in JSON format.
 

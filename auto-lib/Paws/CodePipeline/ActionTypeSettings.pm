@@ -1,9 +1,9 @@
 package Paws::CodePipeline::ActionTypeSettings;
   use Moose;
-  has entityUrlTemplate => (is => 'ro', isa => 'Str');
-  has executionUrlTemplate => (is => 'ro', isa => 'Str');
-  has revisionUrlTemplate => (is => 'ro', isa => 'Str');
-  has thirdPartyConfigurationUrl => (is => 'ro', isa => 'Str');
+  has EntityUrlTemplate => (is => 'ro', isa => 'Str', xmlname => 'entityUrlTemplate', request_name => 'entityUrlTemplate', traits => ['Unwrapped','NameInRequest']);
+  has ExecutionUrlTemplate => (is => 'ro', isa => 'Str', xmlname => 'executionUrlTemplate', request_name => 'executionUrlTemplate', traits => ['Unwrapped','NameInRequest']);
+  has RevisionUrlTemplate => (is => 'ro', isa => 'Str', xmlname => 'revisionUrlTemplate', request_name => 'revisionUrlTemplate', traits => ['Unwrapped','NameInRequest']);
+  has ThirdPartyConfigurationUrl => (is => 'ro', isa => 'Str', xmlname => 'thirdPartyConfigurationUrl', request_name => 'thirdPartyConfigurationUrl', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ActionTypeSettings object:
 
-  $service_obj->Method(Att1 => { entityUrlTemplate => $value, ..., thirdPartyConfigurationUrl => $value  });
+  $service_obj->Method(Att1 => { EntityUrlTemplate => $value, ..., ThirdPartyConfigurationUrl => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ActionTypeSettings object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->entityUrlTemplate
+  $result->Att1->EntityUrlTemplate
 
 =head1 DESCRIPTION
 
@@ -38,14 +38,14 @@ Returns information about the settings for an action type.
 
 =head1 ATTRIBUTES
 
-=head2 entityUrlTemplate => Str
+=head2 EntityUrlTemplate => Str
 
   The URL returned to the AWS CodePipeline console that provides a deep
 link to the resources of the external system, such as the configuration
 page for an AWS CodeDeploy deployment group. This link is provided as
 part of the action display within the pipeline.
 
-=head2 executionUrlTemplate => Str
+=head2 ExecutionUrlTemplate => Str
 
   The URL returned to the AWS CodePipeline console that contains a link
 to the top-level landing page for the external system, such as console
@@ -53,13 +53,13 @@ page for AWS CodeDeploy. This link is shown on the pipeline view page
 in the AWS CodePipeline console and provides a link to the execution
 entity of the external action.
 
-=head2 revisionUrlTemplate => Str
+=head2 RevisionUrlTemplate => Str
 
   The URL returned to the AWS CodePipeline console that contains a link
 to the page where customers can update or change the configuration of
 the external action.
 
-=head2 thirdPartyConfigurationUrl => Str
+=head2 ThirdPartyConfigurationUrl => Str
 
   The URL of a sign-up page where users can sign up for an external
 service and perform initial configuration of the action provided by

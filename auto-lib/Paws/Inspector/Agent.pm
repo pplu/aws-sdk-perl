@@ -1,13 +1,13 @@
 package Paws::Inspector::Agent;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str');
-  has agentHealth => (is => 'ro', isa => 'Str');
-  has agentHealthCode => (is => 'ro', isa => 'Str');
-  has agentHealthDetails => (is => 'ro', isa => 'Str');
-  has agentId => (is => 'ro', isa => 'Str');
-  has assessmentArn => (is => 'ro', isa => 'Str');
-  has autoScalingGroup => (is => 'ro', isa => 'Str');
-  has telemetry => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Telemetry]');
+  has AccountId => (is => 'ro', isa => 'Str', xmlname => 'accountId', request_name => 'accountId', traits => ['Unwrapped','NameInRequest']);
+  has AgentHealth => (is => 'ro', isa => 'Str', xmlname => 'agentHealth', request_name => 'agentHealth', traits => ['Unwrapped','NameInRequest']);
+  has AgentHealthCode => (is => 'ro', isa => 'Str', xmlname => 'agentHealthCode', request_name => 'agentHealthCode', traits => ['Unwrapped','NameInRequest']);
+  has AgentHealthDetails => (is => 'ro', isa => 'Str', xmlname => 'agentHealthDetails', request_name => 'agentHealthDetails', traits => ['Unwrapped','NameInRequest']);
+  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest']);
+  has AssessmentArn => (is => 'ro', isa => 'Str', xmlname => 'assessmentArn', request_name => 'assessmentArn', traits => ['Unwrapped','NameInRequest']);
+  has AutoScalingGroup => (is => 'ro', isa => 'Str', xmlname => 'autoScalingGroup', request_name => 'autoScalingGroup', traits => ['Unwrapped','NameInRequest']);
+  has Telemetry => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Telemetry]', xmlname => 'telemetry', request_name => 'telemetry', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -27,14 +27,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::Agent object:
 
-  $service_obj->Method(Att1 => { accountId => $value, ..., telemetry => $value  });
+  $service_obj->Method(Att1 => { AccountId => $value, ..., Telemetry => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::Agent object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->accountId
+  $result->Att1->AccountId
 
 =head1 DESCRIPTION
 
@@ -43,38 +43,38 @@ as a response element in the ListAssessmentAgents action.
 
 =head1 ATTRIBUTES
 
-=head2 accountId => Str
+=head2 AccountId => Str
 
   AWS account of the EC2 instance where the agent is installed.
 
-=head2 agentHealth => Str
+=head2 AgentHealth => Str
 
   The current health state of the agent. Values can be set to I<HEALTHY>
 or I<UNHEALTHY>.
 
-=head2 agentHealthCode => Str
+=head2 AgentHealthCode => Str
 
   The detailed health state of the agent. Values can be set to
 I<RUNNING>, I<HEALTHY>, I<UNHEALTHY>, I<UNKNOWN>, I<BLACKLISTED>,
 I<SHUTDOWN>, I<THROTTLED>.
 
-=head2 agentHealthDetails => Str
+=head2 AgentHealthDetails => Str
 
   The description for the agent health code.
 
-=head2 agentId => Str
+=head2 AgentId => Str
 
   The EC2 instance ID where the agent is installed.
 
-=head2 assessmentArn => Str
+=head2 AssessmentArn => Str
 
   The ARN of the assessment that is associated with the agent.
 
-=head2 autoScalingGroup => Str
+=head2 AutoScalingGroup => Str
 
   This data type property is currently not used.
 
-=head2 telemetry => ArrayRef[L<Paws::Inspector::Telemetry>]
+=head2 Telemetry => ArrayRef[L<Paws::Inspector::Telemetry>]
 
   The Inspector application data metrics collected by the agent.
 

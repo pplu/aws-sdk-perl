@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetDevicePoolResult;
   use Moose;
-  has devicePool => (is => 'ro', isa => 'Paws::DeviceFarm::DevicePool');
+  has DevicePool => (is => 'ro', isa => 'Paws::DeviceFarm::DevicePool', traits => ['Unwrapped'], xmlname => 'devicePool' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::DeviceFarm::GetDevicePoolResult
 
 =head1 ATTRIBUTES
 
-=head2 devicePool => L<Paws::DeviceFarm::DevicePool>
+=head2 DevicePool => L<Paws::DeviceFarm::DevicePool>
 
   
 

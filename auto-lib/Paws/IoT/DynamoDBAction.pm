@@ -1,12 +1,12 @@
 package Paws::IoT::DynamoDBAction;
   use Moose;
-  has hashKeyField => (is => 'ro', isa => 'Str', required => 1);
-  has hashKeyValue => (is => 'ro', isa => 'Str', required => 1);
-  has payloadField => (is => 'ro', isa => 'Str');
-  has rangeKeyField => (is => 'ro', isa => 'Str', required => 1);
-  has rangeKeyValue => (is => 'ro', isa => 'Str', required => 1);
-  has roleArn => (is => 'ro', isa => 'Str', required => 1);
-  has tableName => (is => 'ro', isa => 'Str', required => 1);
+  has HashKeyField => (is => 'ro', isa => 'Str', xmlname => 'hashKeyField', request_name => 'hashKeyField', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has HashKeyValue => (is => 'ro', isa => 'Str', xmlname => 'hashKeyValue', request_name => 'hashKeyValue', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has PayloadField => (is => 'ro', isa => 'Str', xmlname => 'payloadField', request_name => 'payloadField', traits => ['Unwrapped','NameInRequest']);
+  has RangeKeyField => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyField', request_name => 'rangeKeyField', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has RangeKeyValue => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyValue', request_name => 'rangeKeyValue', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has TableName => (is => 'ro', isa => 'Str', xmlname => 'tableName', request_name => 'tableName', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -26,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::DynamoDBAction object:
 
-  $service_obj->Method(Att1 => { hashKeyField => $value, ..., tableName => $value  });
+  $service_obj->Method(Att1 => { HashKeyField => $value, ..., TableName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::DynamoDBAction object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->hashKeyField
+  $result->Att1->HashKeyField
 
 =head1 DESCRIPTION
 
@@ -59,31 +59,31 @@ C<"rangeKeyValue": "${timestamp()}">
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> hashKeyField => Str
+=head2 B<REQUIRED> HashKeyField => Str
 
   The hash key name.
 
-=head2 B<REQUIRED> hashKeyValue => Str
+=head2 B<REQUIRED> HashKeyValue => Str
 
   The hash key value.
 
-=head2 payloadField => Str
+=head2 PayloadField => Str
 
   The action payload.
 
-=head2 B<REQUIRED> rangeKeyField => Str
+=head2 B<REQUIRED> RangeKeyField => Str
 
   The range key name.
 
-=head2 B<REQUIRED> rangeKeyValue => Str
+=head2 B<REQUIRED> RangeKeyValue => Str
 
   The range key value.
 
-=head2 B<REQUIRED> roleArn => Str
+=head2 B<REQUIRED> RoleArn => Str
 
   The ARN of the IAM role that grants access.
 
-=head2 B<REQUIRED> tableName => Str
+=head2 B<REQUIRED> TableName => Str
 
   The name of the DynamoDB table.
 

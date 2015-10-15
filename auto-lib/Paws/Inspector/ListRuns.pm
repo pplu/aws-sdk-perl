@@ -1,10 +1,10 @@
 
 package Paws::Inspector::ListRuns;
   use Moose;
-  has assessmentArns => (is => 'ro', isa => 'ArrayRef[Str]');
-  has filter => (is => 'ro', isa => 'Paws::Inspector::RunsFilter');
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has AssessmentArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'assessmentArns' );
+  has Filter => (is => 'ro', isa => 'Paws::Inspector::RunsFilter', traits => ['NameInRequest'], request_name => 'filter' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -35,11 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 assessmentArns => ArrayRef[Str]
+=head2 AssessmentArns => ArrayRef[Str]
 
   The ARNs specifying the assessments whose runs you want to list.
 
-=head2 filter => L<Paws::Inspector::RunsFilter>
+=head2 Filter => L<Paws::Inspector::RunsFilter>
 
   You can use this parameter to specify a subset of data to be included
 in the action's response.
@@ -48,13 +48,13 @@ For a record to match a filter, all specified filter attributes must
 match. When multiple values are specified for a filter attribute, any
 of the values can match.
 
-=head2 maxResults => Int
+=head2 MaxResults => Int
 
   You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is
 500.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   You can use this parameter when paginating results. Set the value of
 this parameter to 'null' on your first call to the B<ListRuns> action.

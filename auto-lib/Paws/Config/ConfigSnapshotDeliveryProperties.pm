@@ -1,6 +1,6 @@
 package Paws::Config::ConfigSnapshotDeliveryProperties;
   use Moose;
-  has deliveryFrequency => (is => 'ro', isa => 'Str');
+  has DeliveryFrequency => (is => 'ro', isa => 'Str', xmlname => 'deliveryFrequency', request_name => 'deliveryFrequency', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Config::ConfigSnapshotDeliveryProperties object:
 
-  $service_obj->Method(Att1 => { deliveryFrequency => $value, ..., deliveryFrequency => $value  });
+  $service_obj->Method(Att1 => { DeliveryFrequency => $value, ..., DeliveryFrequency => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Config::ConfigSnapshotDeliveryProperties object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->deliveryFrequency
+  $result->Att1->DeliveryFrequency
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ Amazon S3 bucket in your delivery channel.
 
 =head1 ATTRIBUTES
 
-=head2 deliveryFrequency => Str
+=head2 DeliveryFrequency => Str
 
   The frequency with which a AWS Config recurringly delivers
 configuration snapshots.

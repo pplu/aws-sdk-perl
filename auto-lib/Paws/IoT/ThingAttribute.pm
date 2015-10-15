@@ -1,7 +1,7 @@
 package Paws::IoT::ThingAttribute;
   use Moose;
-  has attributes => (is => 'ro', isa => 'Paws::IoT::Attributes');
-  has thingName => (is => 'ro', isa => 'Str');
+  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
+  has ThingName => (is => 'ro', isa => 'Str', xmlname => 'thingName', request_name => 'thingName', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::ThingAttribute object:
 
-  $service_obj->Method(Att1 => { attributes => $value, ..., thingName => $value  });
+  $service_obj->Method(Att1 => { Attributes => $value, ..., ThingName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::ThingAttribute object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->attributes
+  $result->Att1->Attributes
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Describes a thing attribute.
 
 =head1 ATTRIBUTES
 
-=head2 attributes => L<Paws::IoT::Attributes>
+=head2 Attributes => L<Paws::IoT::Attributes>
 
   The attributes.
 
-=head2 thingName => Str
+=head2 ThingName => Str
 
   The name of the thing.
 

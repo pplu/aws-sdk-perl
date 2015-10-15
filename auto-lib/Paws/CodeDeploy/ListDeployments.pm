@@ -1,11 +1,11 @@
 
 package Paws::CodeDeploy::ListDeployments;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str');
-  has createTimeRange => (is => 'ro', isa => 'Paws::CodeDeploy::TimeRange');
-  has deploymentGroupName => (is => 'ro', isa => 'Str');
-  has includeOnlyStatuses => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
+  has CreateTimeRange => (is => 'ro', isa => 'Paws::CodeDeploy::TimeRange', traits => ['NameInRequest'], request_name => 'createTimeRange' );
+  has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' );
+  has IncludeOnlyStatuses => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'includeOnlyStatuses' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -36,21 +36,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 applicationName => Str
+=head2 ApplicationName => Str
 
   The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
 
-=head2 createTimeRange => L<Paws::CodeDeploy::TimeRange>
+=head2 CreateTimeRange => L<Paws::CodeDeploy::TimeRange>
 
   A deployment creation start- and end-time range for returning a subset
 of the list of deployments.
 
-=head2 deploymentGroupName => Str
+=head2 DeploymentGroupName => Str
 
   The name of an existing deployment group for the specified application.
 
-=head2 includeOnlyStatuses => ArrayRef[Str]
+=head2 IncludeOnlyStatuses => ArrayRef[Str]
 
   A subset of deployments to list, by status:
 
@@ -72,7 +72,7 @@ deployments.
 =back
 
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   An identifier that was returned from the previous list deployments
 call, which can be used to return the next set of deployments in the

@@ -1,10 +1,10 @@
 
 package Paws::ECS::UpdateService;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has desiredCount => (is => 'ro', isa => 'Int');
-  has service => (is => 'ro', isa => 'Str', required => 1);
-  has taskDefinition => (is => 'ro', isa => 'Str');
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
+  has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
+  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' );
 
   use MooseX::ClassAttribute;
 
@@ -35,22 +35,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster that
 your service is running on. If you do not specify a cluster, the
 default cluster is assumed.
 
-=head2 desiredCount => Int
+=head2 DesiredCount => Int
 
   The number of instantiations of the task to place and keep running in
 your service.
 
-=head2 B<REQUIRED> service => Str
+=head2 B<REQUIRED> Service => Str
 
   The name of the service to update.
 
-=head2 taskDefinition => Str
+=head2 TaskDefinition => Str
 
   The C<family> and C<revision> (C<family:revision>) or full Amazon
 Resource Name (ARN) of the task definition to run in your service. If a

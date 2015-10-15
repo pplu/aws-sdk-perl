@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::GetJobDetails;
   use Moose;
-  has jobId => (is => 'ro', isa => 'Str', required => 1);
+  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> jobId => Str
+=head2 B<REQUIRED> JobId => Str
 
   The unique system-generated ID for the job.
 

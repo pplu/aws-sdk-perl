@@ -1,9 +1,9 @@
 
 package Paws::DirectConnect::AllocatePublicVirtualInterface;
   use Moose;
-  has connectionId => (is => 'ro', isa => 'Str', required => 1);
-  has newPublicVirtualInterfaceAllocation => (is => 'ro', isa => 'Paws::DirectConnect::NewPublicVirtualInterfaceAllocation', required => 1);
-  has ownerAccount => (is => 'ro', isa => 'Str', required => 1);
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
+  has NewPublicVirtualInterfaceAllocation => (is => 'ro', isa => 'Paws::DirectConnect::NewPublicVirtualInterfaceAllocation', traits => ['NameInRequest'], request_name => 'newPublicVirtualInterfaceAllocation' , required => 1);
+  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,20 +34,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> connectionId => Str
+=head2 B<REQUIRED> ConnectionId => Str
 
   The connection ID on which the public virtual interface is provisioned.
 
 Default: None
 
-=head2 B<REQUIRED> newPublicVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPublicVirtualInterfaceAllocation>
+=head2 B<REQUIRED> NewPublicVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPublicVirtualInterfaceAllocation>
 
   Detailed information for the public virtual interface to be
 provisioned.
 
 Default: None
 
-=head2 B<REQUIRED> ownerAccount => Str
+=head2 B<REQUIRED> OwnerAccount => Str
 
   The AWS account that will own the new public virtual interface.
 

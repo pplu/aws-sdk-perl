@@ -1,10 +1,10 @@
 
 package Paws::CodePipeline::DisableStageTransition;
   use Moose;
-  has pipelineName => (is => 'ro', isa => 'Str', required => 1);
-  has reason => (is => 'ro', isa => 'Str', required => 1);
-  has stageName => (is => 'ro', isa => 'Str', required => 1);
-  has transitionType => (is => 'ro', isa => 'Str', required => 1);
+  has PipelineName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineName' , required => 1);
+  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' , required => 1);
+  has StageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stageName' , required => 1);
+  has TransitionType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'transitionType' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,23 +35,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> pipelineName => Str
+=head2 B<REQUIRED> PipelineName => Str
 
   The name of the pipeline in which you want to disable the flow of
 artifacts from one stage to another.
 
-=head2 B<REQUIRED> reason => Str
+=head2 B<REQUIRED> Reason => Str
 
   The reason given to the user why a stage is disabled, such as waiting
 for manual approval or manual tests. This message is displayed in the
 pipeline console UI.
 
-=head2 B<REQUIRED> stageName => Str
+=head2 B<REQUIRED> StageName => Str
 
   The name of the stage where you want to disable the inbound or outbound
 transition of artifacts.
 
-=head2 B<REQUIRED> transitionType => Str
+=head2 B<REQUIRED> TransitionType => Str
 
   Specifies whether artifacts will be prevented from transitioning into
 the stage and being processed by the actions in that stage (inbound),

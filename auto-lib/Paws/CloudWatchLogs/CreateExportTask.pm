@@ -1,13 +1,13 @@
 
 package Paws::CloudWatchLogs::CreateExportTask;
   use Moose;
-  has destination => (is => 'ro', isa => 'Str', required => 1);
-  has destinationPrefix => (is => 'ro', isa => 'Str');
-  has from => (is => 'ro', isa => 'Int', required => 1);
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has logStreamNamePrefix => (is => 'ro', isa => 'Str');
-  has taskName => (is => 'ro', isa => 'Str');
-  has to => (is => 'ro', isa => 'Int', required => 1);
+  has Destination => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destination' , required => 1);
+  has DestinationPrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationPrefix' );
+  has From => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'from' , required => 1);
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has LogStreamNamePrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logStreamNamePrefix' );
+  has TaskName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskName' );
+  has To => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'to' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -38,38 +38,38 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> destination => Str
+=head2 B<REQUIRED> Destination => Str
 
   Name of Amazon S3 bucket to which the log data will be exported.
 
 B<NOTE: Only buckets in the same AWS region are supported>
 
-=head2 destinationPrefix => Str
+=head2 DestinationPrefix => Str
 
   Prefix that will be used as the start of Amazon S3 key for every object
 exported. If not specified, this defaults to 'exportedlogs'.
 
-=head2 B<REQUIRED> from => Int
+=head2 B<REQUIRED> From => Int
 
   A unix timestamp indicating the start time of the range for the
 request. Events with a timestamp prior to this time will not be
 exported.
 
-=head2 B<REQUIRED> logGroupName => Str
+=head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group to export.
 
-=head2 logStreamNamePrefix => Str
+=head2 LogStreamNamePrefix => Str
 
   Will only export log streams that match the provided
 logStreamNamePrefix. If you don't specify a value, no prefix filter is
 applied.
 
-=head2 taskName => Str
+=head2 TaskName => Str
 
   The name of the export task.
 
-=head2 B<REQUIRED> to => Int
+=head2 B<REQUIRED> To => Int
 
   A unix timestamp indicating the end time of the range for the request.
 Events with a timestamp later than this time will not be exported.

@@ -1,6 +1,6 @@
 package Paws::CodePipeline::ActionConfiguration;
   use Moose;
-  has configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap');
+  has Configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap', xmlname => 'configuration', request_name => 'configuration', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ActionConfiguration object:
 
-  $service_obj->Method(Att1 => { configuration => $value, ..., configuration => $value  });
+  $service_obj->Method(Att1 => { Configuration => $value, ..., Configuration => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ActionConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->configuration
+  $result->Att1->Configuration
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ Represents information about an action configuration.
 
 =head1 ATTRIBUTES
 
-=head2 configuration => L<Paws::CodePipeline::ActionConfigurationMap>
+=head2 Configuration => L<Paws::CodePipeline::ActionConfigurationMap>
 
   The configuration data for the action.
 

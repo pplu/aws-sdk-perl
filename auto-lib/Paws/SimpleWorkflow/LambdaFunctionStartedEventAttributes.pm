@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes;
   use Moose;
-  has scheduledEventId => (is => 'ro', isa => 'Int', required => 1);
+  has ScheduledEventId => (is => 'ro', isa => 'Int', xmlname => 'scheduledEventId', request_name => 'scheduledEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes object:
 
-  $service_obj->Method(Att1 => { scheduledEventId => $value, ..., scheduledEventId => $value  });
+  $service_obj->Method(Att1 => { ScheduledEventId => $value, ..., ScheduledEventId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->scheduledEventId
+  $result->Att1->ScheduledEventId
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ Provides details for the C<LambdaFunctionStarted> event.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> scheduledEventId => Int
+=head2 B<REQUIRED> ScheduledEventId => Int
 
   The ID of the C<LambdaFunctionScheduled> event that was recorded when
 this AWS Lambda function was scheduled. This information can be useful

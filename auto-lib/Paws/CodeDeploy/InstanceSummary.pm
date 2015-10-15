@@ -1,10 +1,10 @@
 package Paws::CodeDeploy::InstanceSummary;
   use Moose;
-  has deploymentId => (is => 'ro', isa => 'Str');
-  has instanceId => (is => 'ro', isa => 'Str');
-  has lastUpdatedAt => (is => 'ro', isa => 'Str');
-  has lifecycleEvents => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::LifecycleEvent]');
-  has status => (is => 'ro', isa => 'Str');
+  has DeploymentId => (is => 'ro', isa => 'Str', xmlname => 'deploymentId', request_name => 'deploymentId', traits => ['Unwrapped','NameInRequest']);
+  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', request_name => 'instanceId', traits => ['Unwrapped','NameInRequest']);
+  has LastUpdatedAt => (is => 'ro', isa => 'Str', xmlname => 'lastUpdatedAt', request_name => 'lastUpdatedAt', traits => ['Unwrapped','NameInRequest']);
+  has LifecycleEvents => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::LifecycleEvent]', xmlname => 'lifecycleEvents', request_name => 'lifecycleEvents', traits => ['Unwrapped','NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::InstanceSummary object:
 
-  $service_obj->Method(Att1 => { deploymentId => $value, ..., status => $value  });
+  $service_obj->Method(Att1 => { DeploymentId => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::InstanceSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->deploymentId
+  $result->Att1->DeploymentId
 
 =head1 DESCRIPTION
 
@@ -39,23 +39,23 @@ Information about an instance in a deployment.
 
 =head1 ATTRIBUTES
 
-=head2 deploymentId => Str
+=head2 DeploymentId => Str
 
   The deployment ID.
 
-=head2 instanceId => Str
+=head2 InstanceId => Str
 
   The instance ID.
 
-=head2 lastUpdatedAt => Str
+=head2 LastUpdatedAt => Str
 
   A timestamp indicating when the instance information was last updated.
 
-=head2 lifecycleEvents => ArrayRef[L<Paws::CodeDeploy::LifecycleEvent>]
+=head2 LifecycleEvents => ArrayRef[L<Paws::CodeDeploy::LifecycleEvent>]
 
   A list of lifecycle events for this instance.
 
-=head2 status => Str
+=head2 Status => Str
 
   The deployment status for this instance:
 

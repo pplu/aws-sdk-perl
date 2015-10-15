@@ -1,7 +1,7 @@
 
 package Paws::ECS::CreateCluster;
   use Moose;
-  has clusterName => (is => 'ro', isa => 'Str');
+  has ClusterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clusterName' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 clusterName => Str
+=head2 ClusterName => Str
 
   The name of your cluster. If you do not specify a name for your
 cluster, you create a cluster named C<default>. Up to 255 letters

@@ -1,8 +1,8 @@
 
 package Paws::ECS::ListClustersResponse;
   use Moose;
-  has clusterArns => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has ClusterArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'clusterArns' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
 ### main pod documentation begin ###
@@ -13,11 +13,11 @@ Paws::ECS::ListClustersResponse
 
 =head1 ATTRIBUTES
 
-=head2 clusterArns => ArrayRef[Str]
+=head2 ClusterArns => ArrayRef[Str]
 
   The list of full Amazon Resource Name (ARN) entries for each cluster
 associated with your account.
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   The C<nextToken> value to include in a future C<ListClusters> request.
 When the results of a C<ListClusters> request exceed C<maxResults>,

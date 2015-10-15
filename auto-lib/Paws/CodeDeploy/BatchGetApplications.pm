@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::BatchGetApplications;
   use Moose;
-  has applicationNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ApplicationNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'applicationNames' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 applicationNames => ArrayRef[Str]
+=head2 ApplicationNames => ArrayRef[Str]
 
   A list of application names, with multiple application names separated
 by spaces.

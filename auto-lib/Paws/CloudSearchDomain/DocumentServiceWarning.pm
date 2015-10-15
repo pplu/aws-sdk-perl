@@ -1,6 +1,6 @@
 package Paws::CloudSearchDomain::DocumentServiceWarning;
   use Moose;
-  has message => (is => 'ro', isa => 'Str');
+  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudSearchDomain::DocumentServiceWarning object:
 
-  $service_obj->Method(Att1 => { message => $value, ..., message => $value  });
+  $service_obj->Method(Att1 => { Message => $value, ..., Message => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearchDomain::DocumentServiceWarning object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->message
+  $result->Att1->Message
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ while processing an upload request.
 
 =head1 ATTRIBUTES
 
-=head2 message => Str
+=head2 Message => Str
 
   The description for a warning returned by the document service.
 

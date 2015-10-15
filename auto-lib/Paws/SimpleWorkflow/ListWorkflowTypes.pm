@@ -1,12 +1,12 @@
 
 package Paws::SimpleWorkflow::ListWorkflowTypes;
   use Moose;
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has maximumPageSize => (is => 'ro', isa => 'Int');
-  has name => (is => 'ro', isa => 'Str');
-  has nextPageToken => (is => 'ro', isa => 'Str');
-  has registrationStatus => (is => 'ro', isa => 'Str', required => 1);
-  has reverseOrder => (is => 'ro', isa => 'Bool');
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has MaximumPageSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maximumPageSize' );
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  has RegistrationStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registrationStatus' , required => 1);
+  has ReverseOrder => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reverseOrder' );
 
   use MooseX::ClassAttribute;
 
@@ -37,12 +37,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
   The name of the domain in which the workflow types have been
 registered.
 
-=head2 maximumPageSize => Int
+=head2 MaximumPageSize => Int
 
   The maximum number of results that will be returned per call.
 C<nextPageToken> can be used to obtain futher pages of results. The
@@ -52,11 +52,11 @@ however, specify a page size I<smaller> than the maximum.
 This is an upper limit only; the actual number of results returned per
 call may be fewer than the specified maximum.
 
-=head2 name => Str
+=head2 Name => Str
 
   If specified, lists the workflow type with this name.
 
-=head2 nextPageToken => Str
+=head2 NextPageToken => Str
 
   If a C<NextPageToken> was returned by a previous call, there are more
 results available. To retrieve the next page of results, make the call
@@ -66,11 +66,11 @@ arguments unchanged.
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
 
-=head2 B<REQUIRED> registrationStatus => Str
+=head2 B<REQUIRED> RegistrationStatus => Str
 
   Specifies the registration status of the workflow types to list.
 
-=head2 reverseOrder => Bool
+=head2 ReverseOrder => Bool
 
   When set to C<true>, returns the results in reverse order. By default
 the results are returned in ascending alphabetical order of the C<name>

@@ -1,6 +1,6 @@
 package Paws::IoT::AttributePayload;
   use Moose;
-  has attributes => (is => 'ro', isa => 'Paws::IoT::Attributes');
+  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::AttributePayload object:
 
-  $service_obj->Method(Att1 => { attributes => $value, ..., attributes => $value  });
+  $service_obj->Method(Att1 => { Attributes => $value, ..., Attributes => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::AttributePayload object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->attributes
+  $result->Att1->Attributes
 
 =head1 DESCRIPTION
 
@@ -38,7 +38,7 @@ For example: {\"attributes\":{\"string1\":\"string2\E<rdquo>}}
 
 =head1 ATTRIBUTES
 
-=head2 attributes => L<Paws::IoT::Attributes>
+=head2 Attributes => L<Paws::IoT::Attributes>
 
   A JSON string containing up to three key-value pair in JSON format.
 

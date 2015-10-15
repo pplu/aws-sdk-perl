@@ -1,14 +1,14 @@
 
 package Paws::CloudWatchLogs::FilterLogEvents;
   use Moose;
-  has endTime => (is => 'ro', isa => 'Int');
-  has filterPattern => (is => 'ro', isa => 'Str');
-  has interleaved => (is => 'ro', isa => 'Bool');
-  has limit => (is => 'ro', isa => 'Int');
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has logStreamNames => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
-  has startTime => (is => 'ro', isa => 'Int');
+  has EndTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'endTime' );
+  has FilterPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterPattern' );
+  has Interleaved => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'interleaved' );
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has LogStreamNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'logStreamNames' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has StartTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startTime' );
 
   use MooseX::ClassAttribute;
 
@@ -39,18 +39,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 endTime => Int
+=head2 EndTime => Int
 
   A unix timestamp indicating the end time of the range for the request.
 If provided, events with a timestamp later than this time will not be
 returned.
 
-=head2 filterPattern => Str
+=head2 FilterPattern => Str
 
   A valid CloudWatch Logs filter pattern to use for filtering the
 response. If not provided, all the events are matched.
 
-=head2 interleaved => Bool
+=head2 Interleaved => Bool
 
   If provided, the API will make a best effort to provide responses that
 contain events from multiple log streams within the log group
@@ -58,26 +58,26 @@ interleaved in a single response. If not provided, all the matched log
 events in the first log stream will be searched first, then those in
 the next log stream, etc.
 
-=head2 limit => Int
+=head2 Limit => Int
 
   The maximum number of events to return in a page of results. Default is
 10,000 events.
 
-=head2 B<REQUIRED> logGroupName => Str
+=head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group to query.
 
-=head2 logStreamNames => ArrayRef[Str]
+=head2 LogStreamNames => ArrayRef[Str]
 
   Optional list of log stream names within the specified log group to
 search. Defaults to all the log streams in the log group.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   A pagination token obtained from a C<FilterLogEvents> response to
 continue paginating the FilterLogEvents results.
 
-=head2 startTime => Int
+=head2 StartTime => Int
 
   A unix timestamp indicating the start time of the range for the
 request. If provided, events with a timestamp prior to this time will

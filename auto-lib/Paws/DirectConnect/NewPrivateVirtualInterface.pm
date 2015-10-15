@@ -1,12 +1,12 @@
 package Paws::DirectConnect::NewPrivateVirtualInterface;
   use Moose;
-  has amazonAddress => (is => 'ro', isa => 'Str');
-  has asn => (is => 'ro', isa => 'Int', required => 1);
-  has authKey => (is => 'ro', isa => 'Str');
-  has customerAddress => (is => 'ro', isa => 'Str');
-  has virtualGatewayId => (is => 'ro', isa => 'Str', required => 1);
-  has virtualInterfaceName => (is => 'ro', isa => 'Str', required => 1);
-  has vlan => (is => 'ro', isa => 'Int', required => 1);
+  has AmazonAddress => (is => 'ro', isa => 'Str', xmlname => 'amazonAddress', request_name => 'amazonAddress', traits => ['Unwrapped','NameInRequest']);
+  has Asn => (is => 'ro', isa => 'Int', xmlname => 'asn', request_name => 'asn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has AuthKey => (is => 'ro', isa => 'Str', xmlname => 'authKey', request_name => 'authKey', traits => ['Unwrapped','NameInRequest']);
+  has CustomerAddress => (is => 'ro', isa => 'Str', xmlname => 'customerAddress', request_name => 'customerAddress', traits => ['Unwrapped','NameInRequest']);
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', xmlname => 'virtualGatewayId', request_name => 'virtualGatewayId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has VirtualInterfaceName => (is => 'ro', isa => 'Str', xmlname => 'virtualInterfaceName', request_name => 'virtualInterfaceName', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Vlan => (is => 'ro', isa => 'Int', xmlname => 'vlan', request_name => 'vlan', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -26,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DirectConnect::NewPrivateVirtualInterface object:
 
-  $service_obj->Method(Att1 => { amazonAddress => $value, ..., vlan => $value  });
+  $service_obj->Method(Att1 => { AmazonAddress => $value, ..., Vlan => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConnect::NewPrivateVirtualInterface object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->amazonAddress
+  $result->Att1->AmazonAddress
 
 =head1 DESCRIPTION
 
@@ -42,31 +42,31 @@ interface.
 
 =head1 ATTRIBUTES
 
-=head2 amazonAddress => Str
+=head2 AmazonAddress => Str
 
   
 
-=head2 B<REQUIRED> asn => Int
+=head2 B<REQUIRED> Asn => Int
 
   
 
-=head2 authKey => Str
+=head2 AuthKey => Str
 
   
 
-=head2 customerAddress => Str
+=head2 CustomerAddress => Str
 
   
 
-=head2 B<REQUIRED> virtualGatewayId => Str
+=head2 B<REQUIRED> VirtualGatewayId => Str
 
   
 
-=head2 B<REQUIRED> virtualInterfaceName => Str
+=head2 B<REQUIRED> VirtualInterfaceName => Str
 
   
 
-=head2 B<REQUIRED> vlan => Int
+=head2 B<REQUIRED> Vlan => Int
 
   
 

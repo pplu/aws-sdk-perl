@@ -1,7 +1,7 @@
 package Paws::DataPipeline::ValidationWarning;
   use Moose;
-  has id => (is => 'ro', isa => 'Str');
-  has warnings => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'warnings', request_name => 'warnings', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DataPipeline::ValidationWarning object:
 
-  $service_obj->Method(Att1 => { id => $value, ..., warnings => $value  });
+  $service_obj->Method(Att1 => { Id => $value, ..., Warnings => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipeline::ValidationWarning object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->id
+  $result->Att1->Id
 
 =head1 DESCRIPTION
 
@@ -38,11 +38,11 @@ returned are defined by AWS Data Pipeline.
 
 =head1 ATTRIBUTES
 
-=head2 id => Str
+=head2 Id => Str
 
   The identifier of the object that contains the validation warning.
 
-=head2 warnings => ArrayRef[Str]
+=head2 Warnings => ArrayRef[Str]
 
   A description of the validation warning.
 

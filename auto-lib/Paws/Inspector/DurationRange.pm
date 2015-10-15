@@ -1,7 +1,7 @@
 package Paws::Inspector::DurationRange;
   use Moose;
-  has maximum => (is => 'ro', isa => 'Int');
-  has minimum => (is => 'ro', isa => 'Int');
+  has Maximum => (is => 'ro', isa => 'Int', xmlname => 'maximum', request_name => 'maximum', traits => ['Unwrapped','NameInRequest']);
+  has Minimum => (is => 'ro', isa => 'Int', xmlname => 'minimum', request_name => 'minimum', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::DurationRange object:
 
-  $service_obj->Method(Att1 => { maximum => $value, ..., minimum => $value  });
+  $service_obj->Method(Att1 => { Maximum => $value, ..., Minimum => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::DurationRange object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->maximum
+  $result->Att1->Maximum
 
 =head1 DESCRIPTION
 
@@ -36,12 +36,12 @@ This data type is used in the AssessmentsFilter data type.
 
 =head1 ATTRIBUTES
 
-=head2 maximum => Int
+=head2 Maximum => Int
 
   The maximum value of the duration range. Must be less than or equal to
 604800 seconds (1 week).
 
-=head2 minimum => Int
+=head2 Minimum => Int
 
   The minimum value of the duration range. Must be greater than zero.
 

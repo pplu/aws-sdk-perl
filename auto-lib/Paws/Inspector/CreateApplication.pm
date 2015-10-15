@@ -1,8 +1,8 @@
 
 package Paws::Inspector::CreateApplication;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str');
-  has resourceGroupArn => (is => 'ro', isa => 'Str');
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' );
 
   use MooseX::ClassAttribute;
 
@@ -33,12 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 applicationName => Str
+=head2 ApplicationName => Str
 
   The user-defined name identifying the application that you want to
 create. The name must be unique within the AWS account.
 
-=head2 resourceGroupArn => Str
+=head2 ResourceGroupArn => Str
 
   The ARN specifying the resource group that is used to create the
 application.

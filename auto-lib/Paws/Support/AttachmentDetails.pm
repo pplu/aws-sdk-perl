@@ -1,7 +1,7 @@
 package Paws::Support::AttachmentDetails;
   use Moose;
-  has attachmentId => (is => 'ro', isa => 'Str');
-  has fileName => (is => 'ro', isa => 'Str');
+  has AttachmentId => (is => 'ro', isa => 'Str', xmlname => 'attachmentId', request_name => 'attachmentId', traits => ['Unwrapped','NameInRequest']);
+  has FileName => (is => 'ro', isa => 'Str', xmlname => 'fileName', request_name => 'fileName', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Support::AttachmentDetails object:
 
-  $service_obj->Method(Att1 => { attachmentId => $value, ..., fileName => $value  });
+  $service_obj->Method(Att1 => { AttachmentId => $value, ..., FileName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Support::AttachmentDetails object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->attachmentId
+  $result->Att1->AttachmentId
 
 =head1 DESCRIPTION
 
@@ -38,11 +38,11 @@ operation.
 
 =head1 ATTRIBUTES
 
-=head2 attachmentId => Str
+=head2 AttachmentId => Str
 
   The ID of the attachment.
 
-=head2 fileName => Str
+=head2 FileName => Str
 
   The file name of the attachment.
 

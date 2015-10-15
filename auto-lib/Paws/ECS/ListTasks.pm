@@ -1,14 +1,14 @@
 
 package Paws::ECS::ListTasks;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has containerInstance => (is => 'ro', isa => 'Str');
-  has desiredStatus => (is => 'ro', isa => 'Str');
-  has family => (is => 'ro', isa => 'Str');
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
-  has serviceName => (is => 'ro', isa => 'Str');
-  has startedBy => (is => 'ro', isa => 'Str');
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has ContainerInstance => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerInstance' );
+  has DesiredStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'desiredStatus' );
+  has Family => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'family' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has ServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceName' );
+  has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
 
   use MooseX::ClassAttribute;
 
@@ -39,20 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the tasks to list. If you do not specify a cluster, the default
 cluster is assumed..
 
-=head2 containerInstance => Str
+=head2 ContainerInstance => Str
 
   The container instance ID or full Amazon Resource Name (ARN) of the
 container instance with which to filter the C<ListTasks> results.
 Specifying a C<containerInstance> limits the results to tasks that
 belong to that container instance.
 
-=head2 desiredStatus => Str
+=head2 DesiredStatus => Str
 
   The task status with which to filter the C<ListTasks> results.
 Specifying a C<desiredStatus> of C<STOPPED> limits the results to tasks
@@ -60,13 +60,13 @@ that are in the C<STOPPED> status, which can be useful for debugging
 tasks that are not starting properly or have died or finished. The
 default status filter is C<RUNNING>.
 
-=head2 family => Str
+=head2 Family => Str
 
   The name of the family with which to filter the C<ListTasks> results.
 Specifying a C<family> limits the results to tasks that belong to that
 family.
 
-=head2 maxResults => Int
+=head2 MaxResults => Int
 
   The maximum number of task results returned by C<ListTasks> in
 paginated output. When this parameter is used, C<ListTasks> only
@@ -77,7 +77,7 @@ returned C<nextToken> value. This value can be between 1 and 100. If
 this parameter is not used, then C<ListTasks> returns up to 100 results
 and a C<nextToken> value if applicable.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   The C<nextToken> value returned from a previous paginated C<ListTasks>
 request where C<maxResults> was used and the results exceeded the value
@@ -85,13 +85,13 @@ of that parameter. Pagination continues from the end of the previous
 results that returned the C<nextToken> value. This value is C<null>
 when there are no more results to return.
 
-=head2 serviceName => Str
+=head2 ServiceName => Str
 
   The name of the service with which to filter the C<ListTasks> results.
 Specifying a C<serviceName> limits the results to tasks that belong to
 that service.
 
-=head2 startedBy => Str
+=head2 StartedBy => Str
 
   The C<startedBy> value with which to filter the task results.
 Specifying a C<startedBy> value limits the results to tasks that were

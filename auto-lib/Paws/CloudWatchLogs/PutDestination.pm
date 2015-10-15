@@ -1,9 +1,9 @@
 
 package Paws::CloudWatchLogs::PutDestination;
   use Moose;
-  has destinationName => (is => 'ro', isa => 'Str', required => 1);
-  has roleArn => (is => 'ro', isa => 'Str', required => 1);
-  has targetArn => (is => 'ro', isa => 'Str', required => 1);
+  has DestinationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationName' , required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
+  has TargetArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,16 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> destinationName => Str
+=head2 B<REQUIRED> DestinationName => Str
 
   A name for the destination.
 
-=head2 B<REQUIRED> roleArn => Str
+=head2 B<REQUIRED> RoleArn => Str
 
   The ARN of an IAM role that grants Amazon CloudWatch Logs permissions
 to do Amazon Kinesis PutRecord requests on the desitnation stream.
 
-=head2 B<REQUIRED> targetArn => Str
+=head2 B<REQUIRED> TargetArn => Str
 
   The ARN of an Amazon Kinesis stream to deliver matching log events to.
 

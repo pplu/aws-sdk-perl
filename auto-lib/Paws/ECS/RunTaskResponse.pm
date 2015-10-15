@@ -1,8 +1,8 @@
 
 package Paws::ECS::RunTaskResponse;
   use Moose;
-  has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
-  has tasks => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Task]');
+  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['Unwrapped'], xmlname => 'failures' );
+  has Tasks => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Task]', traits => ['Unwrapped'], xmlname => 'tasks' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::ECS::RunTaskResponse
 
 =head1 ATTRIBUTES
 
-=head2 failures => ArrayRef[L<Paws::ECS::Failure>]
+=head2 Failures => ArrayRef[L<Paws::ECS::Failure>]
 
   Any failures associated with the call.
-=head2 tasks => ArrayRef[L<Paws::ECS::Task>]
+=head2 Tasks => ArrayRef[L<Paws::ECS::Task>]
 
   A full description of the tasks that were run. Each task that was
 successfully placed on your cluster are described here.

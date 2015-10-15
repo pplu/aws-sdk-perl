@@ -1,9 +1,9 @@
 
 package Paws::CloudWatchLogs::DescribeLogGroups;
   use Moose;
-  has limit => (is => 'ro', isa => 'Int');
-  has logGroupNamePrefix => (is => 'ro', isa => 'Str');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has LogGroupNamePrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupNamePrefix' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -34,17 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 limit => Int
+=head2 Limit => Int
 
   The maximum number of items returned in the response. If you don't
 specify a value, the request would return up to 50 items.
 
-=head2 logGroupNamePrefix => Str
+=head2 LogGroupNamePrefix => Str
 
   Will only return log groups that match the provided logGroupNamePrefix.
 If you don't specify a value, no prefix filter is applied.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   A string token used for pagination that points to the next page of
 results. It must be a value obtained from the response of the previous

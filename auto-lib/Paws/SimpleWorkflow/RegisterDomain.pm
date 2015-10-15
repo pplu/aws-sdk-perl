@@ -1,9 +1,9 @@
 
 package Paws::SimpleWorkflow::RegisterDomain;
   use Moose;
-  has description => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has workflowExecutionRetentionPeriodInDays => (is => 'ro', isa => 'Str', required => 1);
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has WorkflowExecutionRetentionPeriodInDays => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workflowExecutionRetentionPeriodInDays' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,11 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 description => Str
+=head2 Description => Str
 
   A text description of the domain.
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
   Name of the domain to register. The name must be unique in the region
 that the domain is registered in.
@@ -48,7 +48,7 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
-=head2 B<REQUIRED> workflowExecutionRetentionPeriodInDays => Str
+=head2 B<REQUIRED> WorkflowExecutionRetentionPeriodInDays => Str
 
   The duration (in days) that records and histories of workflow
 executions on the domain should be kept by the service. After the

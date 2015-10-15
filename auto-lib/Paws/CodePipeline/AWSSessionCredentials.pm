@@ -1,8 +1,8 @@
 package Paws::CodePipeline::AWSSessionCredentials;
   use Moose;
-  has accessKeyId => (is => 'ro', isa => 'Str', required => 1);
-  has secretAccessKey => (is => 'ro', isa => 'Str', required => 1);
-  has sessionToken => (is => 'ro', isa => 'Str', required => 1);
+  has AccessKeyId => (is => 'ro', isa => 'Str', xmlname => 'accessKeyId', request_name => 'accessKeyId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has SecretAccessKey => (is => 'ro', isa => 'Str', xmlname => 'secretAccessKey', request_name => 'secretAccessKey', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has SessionToken => (is => 'ro', isa => 'Str', xmlname => 'sessionToken', request_name => 'sessionToken', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::AWSSessionCredentials object:
 
-  $service_obj->Method(Att1 => { accessKeyId => $value, ..., sessionToken => $value  });
+  $service_obj->Method(Att1 => { AccessKeyId => $value, ..., SessionToken => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::AWSSessionCredentials object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->accessKeyId
+  $result->Att1->AccessKeyId
 
 =head1 DESCRIPTION
 
@@ -41,15 +41,15 @@ CodePipeline.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accessKeyId => Str
+=head2 B<REQUIRED> AccessKeyId => Str
 
   The access key for the session.
 
-=head2 B<REQUIRED> secretAccessKey => Str
+=head2 B<REQUIRED> SecretAccessKey => Str
 
   The secret access key for the session.
 
-=head2 B<REQUIRED> sessionToken => Str
+=head2 B<REQUIRED> SessionToken => Str
 
   The token for the session.
 

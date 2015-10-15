@@ -1,10 +1,10 @@
 package Paws::CodeDeploy::LifecycleEvent;
   use Moose;
-  has diagnostics => (is => 'ro', isa => 'Paws::CodeDeploy::Diagnostics');
-  has endTime => (is => 'ro', isa => 'Str');
-  has lifecycleEventName => (is => 'ro', isa => 'Str');
-  has startTime => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Str');
+  has Diagnostics => (is => 'ro', isa => 'Paws::CodeDeploy::Diagnostics', xmlname => 'diagnostics', request_name => 'diagnostics', traits => ['Unwrapped','NameInRequest']);
+  has EndTime => (is => 'ro', isa => 'Str', xmlname => 'endTime', request_name => 'endTime', traits => ['Unwrapped','NameInRequest']);
+  has LifecycleEventName => (is => 'ro', isa => 'Str', xmlname => 'lifecycleEventName', request_name => 'lifecycleEventName', traits => ['Unwrapped','NameInRequest']);
+  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::LifecycleEvent object:
 
-  $service_obj->Method(Att1 => { diagnostics => $value, ..., status => $value  });
+  $service_obj->Method(Att1 => { Diagnostics => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::LifecycleEvent object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->diagnostics
+  $result->Att1->Diagnostics
 
 =head1 DESCRIPTION
 
@@ -39,24 +39,24 @@ Information about a deployment lifecycle event.
 
 =head1 ATTRIBUTES
 
-=head2 diagnostics => L<Paws::CodeDeploy::Diagnostics>
+=head2 Diagnostics => L<Paws::CodeDeploy::Diagnostics>
 
   Diagnostic information about the deployment lifecycle event.
 
-=head2 endTime => Str
+=head2 EndTime => Str
 
   A timestamp indicating when the deployment lifecycle event ended.
 
-=head2 lifecycleEventName => Str
+=head2 LifecycleEventName => Str
 
   The deployment lifecycle event name, such as ApplicationStop,
 BeforeInstall, AfterInstall, ApplicationStart, or ValidateService.
 
-=head2 startTime => Str
+=head2 StartTime => Str
 
   A timestamp indicating when the deployment lifecycle event started.
 
-=head2 status => Str
+=head2 Status => Str
 
   The deployment lifecycle event status:
 

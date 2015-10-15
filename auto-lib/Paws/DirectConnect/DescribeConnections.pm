@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::DescribeConnections;
   use Moose;
-  has connectionId => (is => 'ro', isa => 'Str');
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 connectionId => Str
+=head2 ConnectionId => Str
 
   
 

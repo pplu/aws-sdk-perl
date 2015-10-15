@@ -1,9 +1,9 @@
 
 package Paws::CodeCommit::ListRepositories;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
-  has order => (is => 'ro', isa => 'Str');
-  has sortBy => (is => 'ro', isa => 'Str');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Order => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'order' );
+  has SortBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sortBy' );
 
   use MooseX::ClassAttribute;
 
@@ -34,19 +34,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   An enumeration token that allows the operation to batch the results of
 the operation. Batch sizes are 1,000 for list repository operations.
 When the client sends the token back to AWS CodeCommit, another page of
 1,000 records is retrieved.
 
-=head2 order => Str
+=head2 Order => Str
 
   The order in which to sort the results of a list repositories
 operation.
 
-=head2 sortBy => Str
+=head2 SortBy => Str
 
   The criteria used to sort the results of a list repositories operation.
 

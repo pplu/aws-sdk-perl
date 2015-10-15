@@ -1,8 +1,8 @@
 package Paws::DataPipeline::Field;
   use Moose;
-  has key => (is => 'ro', isa => 'Str', required => 1);
-  has refValue => (is => 'ro', isa => 'Str');
-  has stringValue => (is => 'ro', isa => 'Str');
+  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has RefValue => (is => 'ro', isa => 'Str', xmlname => 'refValue', request_name => 'refValue', traits => ['Unwrapped','NameInRequest']);
+  has StringValue => (is => 'ro', isa => 'Str', xmlname => 'stringValue', request_name => 'stringValue', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DataPipeline::Field object:
 
-  $service_obj->Method(Att1 => { key => $value, ..., stringValue => $value  });
+  $service_obj->Method(Att1 => { Key => $value, ..., StringValue => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipeline::Field object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->key
+  $result->Att1->Key
 
 =head1 DESCRIPTION
 
@@ -39,15 +39,15 @@ reference to another object (C<RefValue>) but not as both.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> key => Str
+=head2 B<REQUIRED> Key => Str
 
   The field identifier.
 
-=head2 refValue => Str
+=head2 RefValue => Str
 
   The field value, expressed as the identifier of another object.
 
-=head2 stringValue => Str
+=head2 StringValue => Str
 
   The field value, expressed as a String.
 

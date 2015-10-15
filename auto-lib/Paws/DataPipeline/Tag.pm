@@ -1,7 +1,7 @@
 package Paws::DataPipeline::Tag;
   use Moose;
-  has key => (is => 'ro', isa => 'Str', required => 1);
-  has value => (is => 'ro', isa => 'Str', required => 1);
+  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DataPipeline::Tag object:
 
-  $service_obj->Method(Att1 => { key => $value, ..., value => $value  });
+  $service_obj->Method(Att1 => { Key => $value, ..., Value => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipeline::Tag object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->key
+  $result->Att1->Key
 
 =head1 DESCRIPTION
 
@@ -39,13 +39,13 @@ Access to Pipelines in the I<AWS Data Pipeline Developer Guide>.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> key => Str
+=head2 B<REQUIRED> Key => Str
 
   The key name of a tag defined by a user. For more information, see
 Controlling User Access to Pipelines in the I<AWS Data Pipeline
 Developer Guide>.
 
-=head2 B<REQUIRED> value => Str
+=head2 B<REQUIRED> Value => Str
 
   The optional value portion of a tag defined by a user. For more
 information, see Controlling User Access to Pipelines in the I<AWS Data

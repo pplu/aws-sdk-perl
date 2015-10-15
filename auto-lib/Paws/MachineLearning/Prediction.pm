@@ -1,9 +1,9 @@
 package Paws::MachineLearning::Prediction;
   use Moose;
-  has details => (is => 'ro', isa => 'Paws::MachineLearning::DetailsMap');
-  has predictedLabel => (is => 'ro', isa => 'Str');
-  has predictedScores => (is => 'ro', isa => 'Paws::MachineLearning::ScoreValuePerLabelMap');
-  has predictedValue => (is => 'ro', isa => 'Num');
+  has Details => (is => 'ro', isa => 'Paws::MachineLearning::DetailsMap', xmlname => 'details', request_name => 'details', traits => ['Unwrapped','NameInRequest']);
+  has PredictedLabel => (is => 'ro', isa => 'Str', xmlname => 'predictedLabel', request_name => 'predictedLabel', traits => ['Unwrapped','NameInRequest']);
+  has PredictedScores => (is => 'ro', isa => 'Paws::MachineLearning::ScoreValuePerLabelMap', xmlname => 'predictedScores', request_name => 'predictedScores', traits => ['Unwrapped','NameInRequest']);
+  has PredictedValue => (is => 'ro', isa => 'Num', xmlname => 'predictedValue', request_name => 'predictedValue', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MachineLearning::Prediction object:
 
-  $service_obj->Method(Att1 => { details => $value, ..., predictedValue => $value  });
+  $service_obj->Method(Att1 => { Details => $value, ..., PredictedValue => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLearning::Prediction object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->details
+  $result->Att1->Details
 
 =head1 DESCRIPTION
 
@@ -63,19 +63,19 @@ C<PredictedValue> - Present for a REGRESSION C<MLModel> request.
 
 =head1 ATTRIBUTES
 
-=head2 details => L<Paws::MachineLearning::DetailsMap>
+=head2 Details => L<Paws::MachineLearning::DetailsMap>
 
   
 
-=head2 predictedLabel => Str
+=head2 PredictedLabel => Str
 
   The prediction label for either a BINARY or MULTICLASS C<MLModel>.
 
-=head2 predictedScores => L<Paws::MachineLearning::ScoreValuePerLabelMap>
+=head2 PredictedScores => L<Paws::MachineLearning::ScoreValuePerLabelMap>
 
   
 
-=head2 predictedValue => Num
+=head2 PredictedValue => Num
 
   The prediction value for REGRESSION C<MLModel>.
 

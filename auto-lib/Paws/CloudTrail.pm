@@ -156,7 +156,7 @@ Returns: a L<Paws::CloudTrail::DeleteTrailResponse> instance
 the trail was created.
 
 
-=head2 DescribeTrails([trailNameList => ArrayRef[Str]])
+=head2 DescribeTrails([TrailNameList => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::CloudTrail::DescribeTrails>
 

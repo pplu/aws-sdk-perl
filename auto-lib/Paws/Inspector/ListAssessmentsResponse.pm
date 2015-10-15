@@ -1,8 +1,8 @@
 
 package Paws::Inspector::ListAssessmentsResponse;
   use Moose;
-  has assessmentArnList => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has AssessmentArnList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'assessmentArnList' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::Inspector::ListAssessmentsResponse
 
 =head1 ATTRIBUTES
 
-=head2 assessmentArnList => ArrayRef[Str]
+=head2 AssessmentArnList => ArrayRef[Str]
 
   A list of ARNs specifying the assessments returned by the action.
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   When a response is generated, if there is more data to be listed, this
 parameter is present in the response and contains the value to use for

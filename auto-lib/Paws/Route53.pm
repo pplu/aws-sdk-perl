@@ -447,7 +447,7 @@ all change batch requests.
 Route 53 DNS servers.
 
 
-=head2 GetCheckerIpRanges( => )
+=head2 GetCheckerIpRanges()
 
 Each argument is described in detail in: L<Paws::Route53::GetCheckerIpRanges>
 
@@ -481,7 +481,7 @@ Returns: a L<Paws::Route53::GetHealthCheckResponse> instance
 C<2013-04-01/healthcheck/I<health check ID>> resource.
 
 
-=head2 GetHealthCheckCount( => )
+=head2 GetHealthCheckCount()
 
 Each argument is described in detail in: L<Paws::Route53::GetHealthCheckCount>
 
@@ -527,7 +527,7 @@ delegation set is the four Route 53 name servers that were assigned to
 the hosted zone when you created it.
 
 
-=head2 GetHostedZoneCount( => )
+=head2 GetHostedZoneCount()
 
 Each argument is described in detail in: L<Paws::Route53::GetHostedZoneCount>
 

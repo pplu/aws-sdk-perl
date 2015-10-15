@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::ListPipelines;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   An identifier that was returned from the previous list pipelines call,
 which can be used to return the next set of pipelines in the list.

@@ -1,8 +1,8 @@
 
 package Paws::CodeCommit::ListBranches;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
-  has repositoryName => (is => 'ro', isa => 'Str', required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   An enumeration token that allows the operation to batch the results.
 
-=head2 B<REQUIRED> repositoryName => Str
+=head2 B<REQUIRED> RepositoryName => Str
 
   The name of the repository that contains the branches.
 

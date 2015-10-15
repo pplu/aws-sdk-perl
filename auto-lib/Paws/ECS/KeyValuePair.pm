@@ -1,7 +1,7 @@
 package Paws::ECS::KeyValuePair;
   use Moose;
-  has name => (is => 'ro', isa => 'Str');
-  has value => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::KeyValuePair object:
 
-  $service_obj->Method(Att1 => { name => $value, ..., value => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., Value => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::KeyValuePair object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->name
+  $result->Att1->Name
 
 =head1 DESCRIPTION
 
@@ -36,12 +36,12 @@ A key and value pair object.
 
 =head1 ATTRIBUTES
 
-=head2 name => Str
+=head2 Name => Str
 
   The name of the key value pair. For environment variables, this is the
 name of the environment variable.
 
-=head2 value => Str
+=head2 Value => Str
 
   The value of the key value pair. For environment variables, this is the
 value of the environment variable.

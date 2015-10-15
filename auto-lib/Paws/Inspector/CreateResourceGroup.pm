@@ -1,7 +1,7 @@
 
 package Paws::Inspector::CreateResourceGroup;
   use Moose;
-  has resourceGroupTags => (is => 'ro', isa => 'Str');
+  has ResourceGroupTags => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupTags' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 resourceGroupTags => Str
+=head2 ResourceGroupTags => Str
 
   A collection of keys and an array of possible values in JSON format.
 

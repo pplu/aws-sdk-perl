@@ -1,7 +1,7 @@
 
 package Paws::ECS::DescribeClusters;
   use Moose;
-  has clusters => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Clusters => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'clusters' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 clusters => ArrayRef[Str]
+=head2 Clusters => ArrayRef[Str]
 
   A space-separated list of cluster names or full cluster Amazon Resource
 Name (ARN) entries. If you do not specify a cluster, the default

@@ -1,8 +1,8 @@
 
 package Paws::DirectConnect::ConfirmPrivateVirtualInterface;
   use Moose;
-  has virtualGatewayId => (is => 'ro', isa => 'Str', required => 1);
-  has virtualInterfaceId => (is => 'ro', isa => 'Str', required => 1);
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' , required => 1);
+  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> virtualGatewayId => Str
+=head2 B<REQUIRED> VirtualGatewayId => Str
 
   ID of the virtual private gateway that will be attached to the virtual
 interface.
@@ -43,7 +43,7 @@ Cloud (VPC) console or the EC2 CreateVpnGateway action.
 
 Default: None
 
-=head2 B<REQUIRED> virtualInterfaceId => Str
+=head2 B<REQUIRED> VirtualInterfaceId => Str
 
   
 

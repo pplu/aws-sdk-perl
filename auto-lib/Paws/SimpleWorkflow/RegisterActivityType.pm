@@ -1,16 +1,16 @@
 
 package Paws::SimpleWorkflow::RegisterActivityType;
   use Moose;
-  has defaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str');
-  has defaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
-  has defaultTaskPriority => (is => 'ro', isa => 'Str');
-  has defaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str');
-  has defaultTaskScheduleToStartTimeout => (is => 'ro', isa => 'Str');
-  has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
-  has description => (is => 'ro', isa => 'Str');
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has version => (is => 'ro', isa => 'Str', required => 1);
+  has DefaultTaskHeartbeatTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskHeartbeatTimeout' );
+  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'defaultTaskList' );
+  has DefaultTaskPriority => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskPriority' );
+  has DefaultTaskScheduleToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskScheduleToCloseTimeout' );
+  has DefaultTaskScheduleToStartTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskScheduleToStartTimeout' );
+  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskStartToCloseTimeout' );
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 defaultTaskHeartbeatTimeout => Str
+=head2 DefaultTaskHeartbeatTimeout => Str
 
   If set, specifies the default maximum time before which a worker
 processing a task of this type must report progress by calling
@@ -56,14 +56,14 @@ to be valid; the activity worker should clean up the activity task.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 defaultTaskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
   If set, specifies the default task list to use for scheduling tasks of
 this activity type. This default task list is used if a task list is
 not provided when a task is scheduled through the
 C<ScheduleActivityTask> decision.
 
-=head2 defaultTaskPriority => Str
+=head2 DefaultTaskPriority => Str
 
   The default task priority to assign to the activity type. If not
 assigned, then "0" will be used. Valid values are integers that range
@@ -73,7 +73,7 @@ from Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
-=head2 defaultTaskScheduleToCloseTimeout => Str
+=head2 DefaultTaskScheduleToCloseTimeout => Str
 
   If set, specifies the default maximum duration for a task of this
 activity type. This default can be overridden when scheduling an
@@ -82,7 +82,7 @@ activity task using the C<ScheduleActivityTask> decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 defaultTaskScheduleToStartTimeout => Str
+=head2 DefaultTaskScheduleToStartTimeout => Str
 
   If set, specifies the default maximum duration that a task of this
 activity type can wait before being assigned to a worker. This default
@@ -92,7 +92,7 @@ C<ScheduleActivityTask> decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 defaultTaskStartToCloseTimeout => Str
+=head2 DefaultTaskStartToCloseTimeout => Str
 
   If set, specifies the default maximum duration that a worker can take
 to process tasks of this activity type. This default can be overridden
@@ -102,15 +102,15 @@ decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 description => Str
+=head2 Description => Str
 
   A textual description of the activity type.
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
   The name of the domain in which this activity is to be registered.
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
   The name of the activity type within the domain.
 
@@ -119,7 +119,7 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
-=head2 B<REQUIRED> version => Str
+=head2 B<REQUIRED> Version => Str
 
   The version of the activity type.
 

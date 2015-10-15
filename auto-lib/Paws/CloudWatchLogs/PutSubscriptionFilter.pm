@@ -1,11 +1,11 @@
 
 package Paws::CloudWatchLogs::PutSubscriptionFilter;
   use Moose;
-  has destinationArn => (is => 'ro', isa => 'Str', required => 1);
-  has filterName => (is => 'ro', isa => 'Str', required => 1);
-  has filterPattern => (is => 'ro', isa => 'Str', required => 1);
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has roleArn => (is => 'ro', isa => 'Str');
+  has DestinationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationArn' , required => 1);
+  has FilterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterName' , required => 1);
+  has FilterPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterPattern' , required => 1);
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' );
 
   use MooseX::ClassAttribute;
 
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> destinationArn => Str
+=head2 B<REQUIRED> DestinationArn => Str
 
   The ARN of the destination to deliver matching log events to.
 Currently, the supported destinations are:
@@ -52,20 +52,20 @@ belonging to a different account, for cross-account delivery.
 =back
 
 
-=head2 B<REQUIRED> filterName => Str
+=head2 B<REQUIRED> FilterName => Str
 
   A name for the subscription filter.
 
-=head2 B<REQUIRED> filterPattern => Str
+=head2 B<REQUIRED> FilterPattern => Str
 
   A valid CloudWatch Logs filter pattern for subscribing to a filtered
 stream of log events.
 
-=head2 B<REQUIRED> logGroupName => Str
+=head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group to associate the subscription filter with.
 
-=head2 roleArn => Str
+=head2 RoleArn => Str
 
   The ARN of an IAM role that grants Amazon CloudWatch Logs permissions
 to deliver ingested log events to the destination stream. You don't

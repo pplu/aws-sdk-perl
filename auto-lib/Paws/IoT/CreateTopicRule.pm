@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreateTopicRule;
   use Moose;
-  has ruleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName' , required => 1);
-  has topicRulePayload => (is => 'ro', isa => 'Paws::IoT::TopicRulePayload', required => 1);
+  has RuleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName' , required => 1);
+  has TopicRulePayload => (is => 'ro', isa => 'Paws::IoT::TopicRulePayload', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,11 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ruleName => Str
+=head2 B<REQUIRED> RuleName => Str
 
   The name of the rule.
 
-=head2 B<REQUIRED> topicRulePayload => L<Paws::IoT::TopicRulePayload>
+=head2 B<REQUIRED> TopicRulePayload => L<Paws::IoT::TopicRulePayload>
 
   The rule payload.
 

@@ -1,16 +1,16 @@
 package Paws::ECS::ContainerInstance;
   use Moose;
-  has agentConnected => (is => 'ro', isa => 'Bool');
-  has agentUpdateStatus => (is => 'ro', isa => 'Str');
-  has attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]');
-  has containerInstanceArn => (is => 'ro', isa => 'Str');
-  has ec2InstanceId => (is => 'ro', isa => 'Str');
-  has pendingTasksCount => (is => 'ro', isa => 'Int');
-  has registeredResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]');
-  has remainingResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]');
-  has runningTasksCount => (is => 'ro', isa => 'Int');
-  has status => (is => 'ro', isa => 'Str');
-  has versionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo');
+  has AgentConnected => (is => 'ro', isa => 'Bool', xmlname => 'agentConnected', request_name => 'agentConnected', traits => ['Unwrapped','NameInRequest']);
+  has AgentUpdateStatus => (is => 'ro', isa => 'Str', xmlname => 'agentUpdateStatus', request_name => 'agentUpdateStatus', traits => ['Unwrapped','NameInRequest']);
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
+  has ContainerInstanceArn => (is => 'ro', isa => 'Str', xmlname => 'containerInstanceArn', request_name => 'containerInstanceArn', traits => ['Unwrapped','NameInRequest']);
+  has Ec2InstanceId => (is => 'ro', isa => 'Str', xmlname => 'ec2InstanceId', request_name => 'ec2InstanceId', traits => ['Unwrapped','NameInRequest']);
+  has PendingTasksCount => (is => 'ro', isa => 'Int', xmlname => 'pendingTasksCount', request_name => 'pendingTasksCount', traits => ['Unwrapped','NameInRequest']);
+  has RegisteredResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', xmlname => 'registeredResources', request_name => 'registeredResources', traits => ['Unwrapped','NameInRequest']);
+  has RemainingResources => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Resource]', xmlname => 'remainingResources', request_name => 'remainingResources', traits => ['Unwrapped','NameInRequest']);
+  has RunningTasksCount => (is => 'ro', isa => 'Int', xmlname => 'runningTasksCount', request_name => 'runningTasksCount', traits => ['Unwrapped','NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has VersionInfo => (is => 'ro', isa => 'Paws::ECS::VersionInfo', xmlname => 'versionInfo', request_name => 'versionInfo', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -30,14 +30,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::ContainerInstance object:
 
-  $service_obj->Method(Att1 => { agentConnected => $value, ..., versionInfo => $value  });
+  $service_obj->Method(Att1 => { AgentConnected => $value, ..., VersionInfo => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::ContainerInstance object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->agentConnected
+  $result->Att1->AgentConnected
 
 =head1 DESCRIPTION
 
@@ -46,24 +46,24 @@ registered with a cluster.
 
 =head1 ATTRIBUTES
 
-=head2 agentConnected => Bool
+=head2 AgentConnected => Bool
 
   This parameter returns C<true> if the agent is actually connected to
 Amazon ECS. Registered instances with an agent that may be unhealthy or
 stopped return C<false>, and instances without a connected agent cannot
 accept placement requests.
 
-=head2 agentUpdateStatus => Str
+=head2 AgentUpdateStatus => Str
 
   The status of the most recent agent update. If an update has never been
 requested, this value is C<NULL>.
 
-=head2 attributes => ArrayRef[L<Paws::ECS::Attribute>]
+=head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
 
   The attributes set for the container instance by the Amazon ECS
 container agent at instance registration.
 
-=head2 containerInstanceArn => Str
+=head2 ContainerInstanceArn => Str
 
   The Amazon Resource Name (ARN) of the container instance. The ARN
 contains the C<arn:aws:ecs> namespace, followed by the region of the
@@ -72,37 +72,37 @@ the C<container-instance> namespace, and then the container instance
 ID. For example,
 arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>.
 
-=head2 ec2InstanceId => Str
+=head2 Ec2InstanceId => Str
 
   The EC2 instance ID of the container instance.
 
-=head2 pendingTasksCount => Int
+=head2 PendingTasksCount => Int
 
   The number of tasks on the container instance that are in the
 C<PENDING> status.
 
-=head2 registeredResources => ArrayRef[L<Paws::ECS::Resource>]
+=head2 RegisteredResources => ArrayRef[L<Paws::ECS::Resource>]
 
   The registered resources on the container instance that are in use by
 current tasks.
 
-=head2 remainingResources => ArrayRef[L<Paws::ECS::Resource>]
+=head2 RemainingResources => ArrayRef[L<Paws::ECS::Resource>]
 
   The remaining resources of the container instance that are available
 for new tasks.
 
-=head2 runningTasksCount => Int
+=head2 RunningTasksCount => Int
 
   The number of tasks on the container instance that are in the
 C<RUNNING> status.
 
-=head2 status => Str
+=head2 Status => Str
 
   The status of the container instance. The valid values are C<ACTIVE> or
 C<INACTIVE>. C<ACTIVE> indicates that the container instance can accept
 tasks.
 
-=head2 versionInfo => L<Paws::ECS::VersionInfo>
+=head2 VersionInfo => L<Paws::ECS::VersionInfo>
 
   The version information for the Amazon ECS container agent and Docker
 daemon running on the container instance.

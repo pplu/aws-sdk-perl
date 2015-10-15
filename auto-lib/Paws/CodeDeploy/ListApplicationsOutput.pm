@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::ListApplicationsOutput;
   use Moose;
-  has applications => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Applications => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'applications' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::CodeDeploy::ListApplicationsOutput
 
 =head1 ATTRIBUTES
 
-=head2 applications => ArrayRef[Str]
+=head2 Applications => ArrayRef[Str]
 
   A list of application names.
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   If the amount of information that is returned is significantly large,
 an identifier will also be returned, which can be used in a subsequent

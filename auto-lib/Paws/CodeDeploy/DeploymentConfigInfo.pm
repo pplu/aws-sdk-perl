@@ -1,9 +1,9 @@
 package Paws::CodeDeploy::DeploymentConfigInfo;
   use Moose;
-  has createTime => (is => 'ro', isa => 'Str');
-  has deploymentConfigId => (is => 'ro', isa => 'Str');
-  has deploymentConfigName => (is => 'ro', isa => 'Str');
-  has minimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts');
+  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentConfigId => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigId', request_name => 'deploymentConfigId', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigName', request_name => 'deploymentConfigName', traits => ['Unwrapped','NameInRequest']);
+  has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', xmlname => 'minimumHealthyHosts', request_name => 'minimumHealthyHosts', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::DeploymentConfigInfo object:
 
-  $service_obj->Method(Att1 => { createTime => $value, ..., minimumHealthyHosts => $value  });
+  $service_obj->Method(Att1 => { CreateTime => $value, ..., MinimumHealthyHosts => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::DeploymentConfigInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->createTime
+  $result->Att1->CreateTime
 
 =head1 DESCRIPTION
 
@@ -38,19 +38,19 @@ Information about a deployment configuration.
 
 =head1 ATTRIBUTES
 
-=head2 createTime => Str
+=head2 CreateTime => Str
 
   The time that the deployment configuration was created.
 
-=head2 deploymentConfigId => Str
+=head2 DeploymentConfigId => Str
 
   The deployment configuration ID.
 
-=head2 deploymentConfigName => Str
+=head2 DeploymentConfigName => Str
 
   The deployment configuration name.
 
-=head2 minimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
+=head2 MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
 
   Information about the number or percentage of minimum healthy
 instances.

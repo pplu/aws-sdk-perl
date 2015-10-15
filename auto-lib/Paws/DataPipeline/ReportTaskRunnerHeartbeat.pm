@@ -1,9 +1,9 @@
 
 package Paws::DataPipeline::ReportTaskRunnerHeartbeat;
   use Moose;
-  has hostname => (is => 'ro', isa => 'Str');
-  has taskrunnerId => (is => 'ro', isa => 'Str', required => 1);
-  has workerGroup => (is => 'ro', isa => 'Str');
+  has Hostname => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostname' );
+  has TaskrunnerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskrunnerId' , required => 1);
+  has WorkerGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workerGroup' );
 
   use MooseX::ClassAttribute;
 
@@ -34,11 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 hostname => Str
+=head2 Hostname => Str
 
   The public DNS name of the task runner.
 
-=head2 B<REQUIRED> taskrunnerId => Str
+=head2 B<REQUIRED> TaskrunnerId => Str
 
   The ID of the task runner. This value should be unique across your AWS
 account. In the case of AWS Data Pipeline Task Runner launched on a
@@ -47,7 +47,7 @@ unique identifier when it launches the application. If you have written
 a custom task runner, you should assign a unique identifier for the
 task runner.
 
-=head2 workerGroup => Str
+=head2 WorkerGroup => Str
 
   The type of task the task runner is configured to accept and process.
 The worker group is set as a field on objects in the pipeline when they

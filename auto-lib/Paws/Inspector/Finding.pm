@@ -1,17 +1,17 @@
 package Paws::Inspector::Finding;
   use Moose;
-  has agentId => (is => 'ro', isa => 'Str');
-  has attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]');
-  has autoScalingGroup => (is => 'ro', isa => 'Str');
-  has description => (is => 'ro', isa => 'Paws::Inspector::LocalizedText');
-  has finding => (is => 'ro', isa => 'Paws::Inspector::LocalizedText');
-  has findingArn => (is => 'ro', isa => 'Str');
-  has recommendation => (is => 'ro', isa => 'Paws::Inspector::LocalizedText');
-  has ruleName => (is => 'ro', isa => 'Str');
-  has rulesPackageArn => (is => 'ro', isa => 'Str');
-  has runArn => (is => 'ro', isa => 'Str');
-  has severity => (is => 'ro', isa => 'Str');
-  has userAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]');
+  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest']);
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
+  has AutoScalingGroup => (is => 'ro', isa => 'Str', xmlname => 'autoScalingGroup', request_name => 'autoScalingGroup', traits => ['Unwrapped','NameInRequest']);
+  has Description => (is => 'ro', isa => 'Paws::Inspector::LocalizedText', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
+  has Finding => (is => 'ro', isa => 'Paws::Inspector::LocalizedText', xmlname => 'finding', request_name => 'finding', traits => ['Unwrapped','NameInRequest']);
+  has FindingArn => (is => 'ro', isa => 'Str', xmlname => 'findingArn', request_name => 'findingArn', traits => ['Unwrapped','NameInRequest']);
+  has Recommendation => (is => 'ro', isa => 'Paws::Inspector::LocalizedText', xmlname => 'recommendation', request_name => 'recommendation', traits => ['Unwrapped','NameInRequest']);
+  has RuleName => (is => 'ro', isa => 'Str', xmlname => 'ruleName', request_name => 'ruleName', traits => ['Unwrapped','NameInRequest']);
+  has RulesPackageArn => (is => 'ro', isa => 'Str', xmlname => 'rulesPackageArn', request_name => 'rulesPackageArn', traits => ['Unwrapped','NameInRequest']);
+  has RunArn => (is => 'ro', isa => 'Str', xmlname => 'runArn', request_name => 'runArn', traits => ['Unwrapped','NameInRequest']);
+  has Severity => (is => 'ro', isa => 'Str', xmlname => 'severity', request_name => 'severity', traits => ['Unwrapped','NameInRequest']);
+  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'userAttributes', request_name => 'userAttributes', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -31,14 +31,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::Finding object:
 
-  $service_obj->Method(Att1 => { agentId => $value, ..., userAttributes => $value  });
+  $service_obj->Method(Att1 => { AgentId => $value, ..., UserAttributes => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::Finding object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->agentId
+  $result->Att1->AgentId
 
 =head1 DESCRIPTION
 
@@ -49,54 +49,54 @@ action.
 
 =head1 ATTRIBUTES
 
-=head2 agentId => Str
+=head2 AgentId => Str
 
   The EC2 instance ID where the agent is installed that is used during
 the assessment that generates the finding.
 
-=head2 attributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   The system-defined attributes for the finding.
 
-=head2 autoScalingGroup => Str
+=head2 AutoScalingGroup => Str
 
   The autoscaling group of the EC2 instance where the agent is installed
 that is used during the assessment that generates the finding.
 
-=head2 description => L<Paws::Inspector::LocalizedText>
+=head2 Description => L<Paws::Inspector::LocalizedText>
 
   The description of the finding.
 
-=head2 finding => L<Paws::Inspector::LocalizedText>
+=head2 Finding => L<Paws::Inspector::LocalizedText>
 
   A short description that identifies the finding.
 
-=head2 findingArn => Str
+=head2 FindingArn => Str
 
   The ARN specifying the finding.
 
-=head2 recommendation => L<Paws::Inspector::LocalizedText>
+=head2 Recommendation => L<Paws::Inspector::LocalizedText>
 
   The recommendation for the finding.
 
-=head2 ruleName => Str
+=head2 RuleName => Str
 
   The rule name that is used to generate the finding.
 
-=head2 rulesPackageArn => Str
+=head2 RulesPackageArn => Str
 
   The ARN of the rules package that is used to generate the finding.
 
-=head2 runArn => Str
+=head2 RunArn => Str
 
   The ARN of the assessment run that generated the finding.
 
-=head2 severity => Str
+=head2 Severity => Str
 
   The finding severity. Values can be set to I<High>, I<Medium>, I<Low>,
 and I<Informational>.
 
-=head2 userAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 UserAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   The user-defined attributes that are assigned to the finding.
 

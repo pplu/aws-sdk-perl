@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::RecordMarkerDecisionAttributes;
   use Moose;
-  has details => (is => 'ro', isa => 'Str');
-  has markerName => (is => 'ro', isa => 'Str', required => 1);
+  has Details => (is => 'ro', isa => 'Str', xmlname => 'details', request_name => 'details', traits => ['Unwrapped','NameInRequest']);
+  has MarkerName => (is => 'ro', isa => 'Str', xmlname => 'markerName', request_name => 'markerName', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::RecordMarkerDecisionAttributes object:
 
-  $service_obj->Method(Att1 => { details => $value, ..., markerName => $value  });
+  $service_obj->Method(Att1 => { Details => $value, ..., MarkerName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::RecordMarkerDecisionAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->details
+  $result->Att1->Details
 
 =head1 DESCRIPTION
 
@@ -60,11 +60,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
-=head2 details => Str
+=head2 Details => Str
 
   I<Optional.> details of the marker.
 
-=head2 B<REQUIRED> markerName => Str
+=head2 B<REQUIRED> MarkerName => Str
 
   B<Required.> The name of the marker.
 

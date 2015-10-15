@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeAssessmentResponse;
   use Moose;
-  has assessment => (is => 'ro', isa => 'Paws::Inspector::Assessment');
+  has Assessment => (is => 'ro', isa => 'Paws::Inspector::Assessment', traits => ['Unwrapped'], xmlname => 'assessment' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::Inspector::DescribeAssessmentResponse
 
 =head1 ATTRIBUTES
 
-=head2 assessment => L<Paws::Inspector::Assessment>
+=head2 Assessment => L<Paws::Inspector::Assessment>
 
   Information about the assessment.
 

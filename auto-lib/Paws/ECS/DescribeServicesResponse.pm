@@ -1,8 +1,8 @@
 
 package Paws::ECS::DescribeServicesResponse;
   use Moose;
-  has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
-  has services => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Service]');
+  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['Unwrapped'], xmlname => 'failures' );
+  has Services => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Service]', traits => ['Unwrapped'], xmlname => 'services' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::ECS::DescribeServicesResponse
 
 =head1 ATTRIBUTES
 
-=head2 failures => ArrayRef[L<Paws::ECS::Failure>]
+=head2 Failures => ArrayRef[L<Paws::ECS::Failure>]
 
   Any failures associated with the call.
-=head2 services => ArrayRef[L<Paws::ECS::Service>]
+=head2 Services => ArrayRef[L<Paws::ECS::Service>]
 
   The list of services described.
 

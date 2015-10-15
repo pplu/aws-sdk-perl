@@ -1,8 +1,8 @@
 
 package Paws::ECS::DiscoverPollEndpoint;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has containerInstance => (is => 'ro', isa => 'Str');
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has ContainerInstance => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerInstance' );
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
   The cluster that the container instance belongs to.
 
-=head2 containerInstance => Str
+=head2 ContainerInstance => Str
 
   The container instance ID or full Amazon Resource Name (ARN) of the
 container instance. The ARN contains the C<arn:aws:ecs> namespace,

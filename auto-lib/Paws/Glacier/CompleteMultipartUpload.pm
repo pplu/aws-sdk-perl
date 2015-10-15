@@ -1,11 +1,11 @@
 
 package Paws::Glacier::CompleteMultipartUpload;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has archiveSize => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-archive-size' );
-  has checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash' );
-  has uploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId' , required => 1);
-  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has ArchiveSize => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'archiveSize' );
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'checksum' );
+  has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId' , required => 1);
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
   The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
@@ -47,12 +47,12 @@ account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
-=head2 archiveSize => Str
+=head2 ArchiveSize => Str
 
   The total size, in bytes, of the entire archive. This value should be
 the sum of all the sizes of the individual parts that you uploaded.
 
-=head2 checksum => Str
+=head2 Checksum => Str
 
   The SHA256 tree hash of the entire archive. It is the tree hash of
 SHA256 tree hash of the individual parts. If the value you specify in
@@ -60,11 +60,11 @@ the request does not match the SHA256 tree hash of the final assembled
 archive as computed by Amazon Glacier, Amazon Glacier returns an error
 and the request fails.
 
-=head2 B<REQUIRED> uploadId => Str
+=head2 B<REQUIRED> UploadId => Str
 
   The upload ID of the multipart upload.
 
-=head2 B<REQUIRED> vaultName => Str
+=head2 B<REQUIRED> VaultName => Str
 
   The name of the vault.
 

@@ -1,7 +1,7 @@
 package Paws::DirectConnect::Location;
   use Moose;
-  has locationCode => (is => 'ro', isa => 'Str');
-  has locationName => (is => 'ro', isa => 'Str');
+  has LocationCode => (is => 'ro', isa => 'Str', xmlname => 'locationCode', request_name => 'locationCode', traits => ['Unwrapped','NameInRequest']);
+  has LocationName => (is => 'ro', isa => 'Str', xmlname => 'locationName', request_name => 'locationName', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DirectConnect::Location object:
 
-  $service_obj->Method(Att1 => { locationCode => $value, ..., locationName => $value  });
+  $service_obj->Method(Att1 => { LocationCode => $value, ..., LocationName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConnect::Location object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->locationCode
+  $result->Att1->LocationCode
 
 =head1 DESCRIPTION
 
@@ -37,11 +37,11 @@ be requested.
 
 =head1 ATTRIBUTES
 
-=head2 locationCode => Str
+=head2 LocationCode => Str
 
   The code used to indicate the AWS Direct Connect location.
 
-=head2 locationName => Str
+=head2 LocationName => Str
 
   The name of the AWS Direct Connect location. The name includes the
 colocation partner name and the physical site of the lit building.

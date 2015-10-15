@@ -1,10 +1,10 @@
 package Paws::CodePipeline::ActionState;
   use Moose;
-  has actionName => (is => 'ro', isa => 'Str');
-  has currentRevision => (is => 'ro', isa => 'Paws::CodePipeline::ActionRevision');
-  has entityUrl => (is => 'ro', isa => 'Str');
-  has latestExecution => (is => 'ro', isa => 'Paws::CodePipeline::ActionExecution');
-  has revisionUrl => (is => 'ro', isa => 'Str');
+  has ActionName => (is => 'ro', isa => 'Str', xmlname => 'actionName', request_name => 'actionName', traits => ['Unwrapped','NameInRequest']);
+  has CurrentRevision => (is => 'ro', isa => 'Paws::CodePipeline::ActionRevision', xmlname => 'currentRevision', request_name => 'currentRevision', traits => ['Unwrapped','NameInRequest']);
+  has EntityUrl => (is => 'ro', isa => 'Str', xmlname => 'entityUrl', request_name => 'entityUrl', traits => ['Unwrapped','NameInRequest']);
+  has LatestExecution => (is => 'ro', isa => 'Paws::CodePipeline::ActionExecution', xmlname => 'latestExecution', request_name => 'latestExecution', traits => ['Unwrapped','NameInRequest']);
+  has RevisionUrl => (is => 'ro', isa => 'Str', xmlname => 'revisionUrl', request_name => 'revisionUrl', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ActionState object:
 
-  $service_obj->Method(Att1 => { actionName => $value, ..., revisionUrl => $value  });
+  $service_obj->Method(Att1 => { ActionName => $value, ..., RevisionUrl => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ActionState object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->actionName
+  $result->Att1->ActionName
 
 =head1 DESCRIPTION
 
@@ -39,24 +39,24 @@ Represents information about the state of an action.
 
 =head1 ATTRIBUTES
 
-=head2 actionName => Str
+=head2 ActionName => Str
 
   The name of the action.
 
-=head2 currentRevision => L<Paws::CodePipeline::ActionRevision>
+=head2 CurrentRevision => L<Paws::CodePipeline::ActionRevision>
 
   
 
-=head2 entityUrl => Str
+=head2 EntityUrl => Str
 
   A URL link for more information about the state of the action, such as
 a deployment group details page.
 
-=head2 latestExecution => L<Paws::CodePipeline::ActionExecution>
+=head2 LatestExecution => L<Paws::CodePipeline::ActionExecution>
 
   
 
-=head2 revisionUrl => Str
+=head2 RevisionUrl => Str
 
   A URL link for more information about the revision, such as a commit
 details page.

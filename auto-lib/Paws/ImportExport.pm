@@ -118,7 +118,7 @@ that you use to identify your storage device, and the address where you
 should ship your storage device.
 
 
-=head2 GetShippingLabel(jobIds => ArrayRef[Str], [APIVersion => Str, city => Str, company => Str, country => Str, name => Str, phoneNumber => Str, postalCode => Str, stateOrProvince => Str, street1 => Str, street2 => Str, street3 => Str])
+=head2 GetShippingLabel(JobIds => ArrayRef[Str], [APIVersion => Str, City => Str, Company => Str, Country => Str, Name => Str, PhoneNumber => Str, PostalCode => Str, StateOrProvince => Str, Street1 => Str, Street2 => Str, Street3 => Str])
 
 Each argument is described in detail in: L<Paws::ImportExport::GetShippingLabel>
 

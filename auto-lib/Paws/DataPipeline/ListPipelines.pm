@@ -1,7 +1,7 @@
 
 package Paws::DataPipeline::ListPipelines;
   use Moose;
-  has marker => (is => 'ro', isa => 'Str');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'marker' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 marker => Str
+=head2 Marker => Str
 
   The starting point for the results to be returned. For the first call,
 this value should be empty. As long as there are more results, continue

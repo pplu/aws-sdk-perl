@@ -1,8 +1,8 @@
 
 package Paws::ECS::ListTaskDefinitionFamiliesResponse;
   use Moose;
-  has families => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Families => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'families' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
 ### main pod documentation begin ###
@@ -13,11 +13,11 @@ Paws::ECS::ListTaskDefinitionFamiliesResponse
 
 =head1 ATTRIBUTES
 
-=head2 families => ArrayRef[Str]
+=head2 Families => ArrayRef[Str]
 
   The list of task definition family names that match the
 C<ListTaskDefinitionFamilies> request.
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   The C<nextToken> value to include in a future
 C<ListTaskDefinitionFamilies> request. When the results of a

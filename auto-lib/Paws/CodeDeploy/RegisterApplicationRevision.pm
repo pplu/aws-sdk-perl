@@ -1,9 +1,9 @@
 
 package Paws::CodeDeploy::RegisterApplicationRevision;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str', required => 1);
-  has description => (is => 'ro', isa => 'Str');
-  has revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', required => 1);
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['NameInRequest'], request_name => 'revision' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,16 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> applicationName => Str
+=head2 B<REQUIRED> ApplicationName => Str
 
   The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
 
-=head2 description => Str
+=head2 Description => Str
 
   A comment about the revision.
 
-=head2 B<REQUIRED> revision => L<Paws::CodeDeploy::RevisionLocation>
+=head2 B<REQUIRED> Revision => L<Paws::CodeDeploy::RevisionLocation>
 
   Information about the application revision to register, including the
 revision's type and its location.

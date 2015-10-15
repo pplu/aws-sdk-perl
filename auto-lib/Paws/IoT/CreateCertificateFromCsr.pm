@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreateCertificateFromCsr;
   use Moose;
-  has certificateSigningRequest => (is => 'ro', isa => 'Str', required => 1);
-  has setAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
+  has CertificateSigningRequest => (is => 'ro', isa => 'Str', required => 1);
+  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
 
   use MooseX::ClassAttribute;
 
@@ -35,11 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> certificateSigningRequest => Str
+=head2 B<REQUIRED> CertificateSigningRequest => Str
 
   The certificate signing request (CSR).
 
-=head2 setAsActive => Bool
+=head2 SetAsActive => Bool
 
   Specifies whether the certificate is active.
 

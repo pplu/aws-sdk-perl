@@ -1,9 +1,9 @@
 
 package Paws::ECS::ListServices;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -34,13 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the services to list. If you do not specify a cluster, the
 default cluster is assumed..
 
-=head2 maxResults => Int
+=head2 MaxResults => Int
 
   The maximum number of container instance results returned by
 C<ListServices> in paginated output. When this parameter is used,
@@ -51,7 +51,7 @@ request with the returned C<nextToken> value. This value can be between
 1 and 100. If this parameter is not used, then C<ListServices> returns
 up to 100 results and a C<nextToken> value if applicable.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   The C<nextToken> value returned from a previous paginated
 C<ListServices> request where C<maxResults> was used and the results

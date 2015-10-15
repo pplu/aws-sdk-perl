@@ -1,8 +1,8 @@
 package Paws::CodePipeline::ArtifactStore;
   use Moose;
-  has encryptionKey => (is => 'ro', isa => 'Paws::CodePipeline::EncryptionKey');
-  has location => (is => 'ro', isa => 'Str', required => 1);
-  has type => (is => 'ro', isa => 'Str', required => 1);
+  has EncryptionKey => (is => 'ro', isa => 'Paws::CodePipeline::EncryptionKey', xmlname => 'encryptionKey', request_name => 'encryptionKey', traits => ['Unwrapped','NameInRequest']);
+  has Location => (is => 'ro', isa => 'Str', xmlname => 'location', request_name => 'location', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ArtifactStore object:
 
-  $service_obj->Method(Att1 => { encryptionKey => $value, ..., type => $value  });
+  $service_obj->Method(Att1 => { EncryptionKey => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ArtifactStore object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->encryptionKey
+  $result->Att1->EncryptionKey
 
 =head1 DESCRIPTION
 
@@ -40,18 +40,18 @@ Concepts.
 
 =head1 ATTRIBUTES
 
-=head2 encryptionKey => L<Paws::CodePipeline::EncryptionKey>
+=head2 EncryptionKey => L<Paws::CodePipeline::EncryptionKey>
 
   The AWS Key Management Service (AWS KMS) key used to encrypt the data
 in the artifact store. If this is undefined, the default key for Amazon
 S3 is used.
 
-=head2 B<REQUIRED> location => Str
+=head2 B<REQUIRED> Location => Str
 
   The location for storing the artifacts for a pipeline, such as an S3
 bucket or folder.
 
-=head2 B<REQUIRED> type => Str
+=head2 B<REQUIRED> Type => Str
 
   The type of the artifact store, such as S3.
 

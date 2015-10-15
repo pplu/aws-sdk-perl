@@ -1,7 +1,7 @@
 
 package Paws::ECS::DescribeTaskDefinition;
   use Moose;
-  has taskDefinition => (is => 'ro', isa => 'Str', required => 1);
+  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> taskDefinition => Str
+=head2 B<REQUIRED> TaskDefinition => Str
 
   The C<family> for the latest C<ACTIVE> revision, C<family> and
 C<revision> (C<family:revision>) for a specific revision in the family,

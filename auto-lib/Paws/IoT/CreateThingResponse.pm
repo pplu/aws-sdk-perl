@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreateThingResponse;
   use Moose;
-  has thingArn => (is => 'ro', isa => 'Str');
-  has thingName => (is => 'ro', isa => 'Str');
+  has ThingArn => (is => 'ro', isa => 'Str');
+  has ThingName => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -14,10 +14,10 @@ Paws::IoT::CreateThingResponse
 
 =head1 ATTRIBUTES
 
-=head2 thingArn => Str
+=head2 ThingArn => Str
 
   The thing ARN.
-=head2 thingName => Str
+=head2 ThingName => Str
 
   The name of the thing.
 

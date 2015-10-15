@@ -2,8 +2,8 @@
 package Paws::CloudWatchLogs::DescribeDestinations;
   use Moose;
   has DestinationNamePrefix => (is => 'ro', isa => 'Str');
-  has limit => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -40,11 +40,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 destinationNamePrefix. If you don't specify a value, no prefix is
 applied.
 
-=head2 limit => Int
+=head2 Limit => Int
 
   
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   
 

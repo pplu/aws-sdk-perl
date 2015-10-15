@@ -1,7 +1,7 @@
 package Paws::CloudWatchLogs::InputLogEvent;
   use Moose;
-  has message => (is => 'ro', isa => 'Str', required => 1);
-  has timestamp => (is => 'ro', isa => 'Int', required => 1);
+  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Timestamp => (is => 'ro', isa => 'Int', xmlname => 'timestamp', request_name => 'timestamp', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::InputLogEvent object:
 
-  $service_obj->Method(Att1 => { message => $value, ..., timestamp => $value  });
+  $service_obj->Method(Att1 => { Message => $value, ..., Timestamp => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::InputLogEvent object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->message
+  $result->Att1->Message
 
 =head1 DESCRIPTION
 
@@ -39,11 +39,11 @@ timestamp of when the event occurred, and the raw event message.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> message => Str
+=head2 B<REQUIRED> Message => Str
 
   
 
-=head2 B<REQUIRED> timestamp => Int
+=head2 B<REQUIRED> Timestamp => Int
 
   
 

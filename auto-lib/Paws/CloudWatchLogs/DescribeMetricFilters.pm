@@ -1,10 +1,10 @@
 
 package Paws::CloudWatchLogs::DescribeMetricFilters;
   use Moose;
-  has filterNamePrefix => (is => 'ro', isa => 'Str');
-  has limit => (is => 'ro', isa => 'Int');
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has nextToken => (is => 'ro', isa => 'Str');
+  has FilterNamePrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterNamePrefix' );
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -35,22 +35,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 filterNamePrefix => Str
+=head2 FilterNamePrefix => Str
 
   Will only return metric filters that match the provided
 filterNamePrefix. If you don't specify a value, no prefix filter is
 applied.
 
-=head2 limit => Int
+=head2 Limit => Int
 
   The maximum number of items returned in the response. If you don't
 specify a value, the request would return up to 50 items.
 
-=head2 B<REQUIRED> logGroupName => Str
+=head2 B<REQUIRED> LogGroupName => Str
 
   The log group name for which metric filters are to be listed.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   A string token used for pagination that points to the next page of
 results. It must be a value obtained from the response of the previous

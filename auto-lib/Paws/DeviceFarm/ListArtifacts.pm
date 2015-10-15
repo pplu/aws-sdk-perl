@@ -1,9 +1,9 @@
 
 package Paws::DeviceFarm::ListArtifacts;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str', required => 1);
-  has nextToken => (is => 'ro', isa => 'Str');
-  has type => (is => 'ro', isa => 'Str', required => 1);
+  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,17 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> arn => Str
+=head2 B<REQUIRED> Arn => Str
 
   The Run, Job, Suite, or Test ARN.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the
 list.
 
-=head2 B<REQUIRED> type => Str
+=head2 B<REQUIRED> Type => Str
 
   The artifacts' type.
 

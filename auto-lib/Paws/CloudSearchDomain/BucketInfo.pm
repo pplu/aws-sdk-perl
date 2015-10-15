@@ -1,6 +1,6 @@
 package Paws::CloudSearchDomain::BucketInfo;
   use Moose;
-  has buckets => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::Bucket]');
+  has Buckets => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::Bucket]', xmlname => 'buckets', request_name => 'buckets', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudSearchDomain::BucketInfo object:
 
-  $service_obj->Method(Att1 => { buckets => $value, ..., buckets => $value  });
+  $service_obj->Method(Att1 => { Buckets => $value, ..., Buckets => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearchDomain::BucketInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->buckets
+  $result->Att1->Buckets
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ A container for the calculated facet values and counts.
 
 =head1 ATTRIBUTES
 
-=head2 buckets => ArrayRef[L<Paws::CloudSearchDomain::Bucket>]
+=head2 Buckets => ArrayRef[L<Paws::CloudSearchDomain::Bucket>]
 
   A list of the calculated facet values and counts.
 

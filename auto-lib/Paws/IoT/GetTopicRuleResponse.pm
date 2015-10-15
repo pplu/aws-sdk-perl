@@ -1,7 +1,7 @@
 
 package Paws::IoT::GetTopicRuleResponse;
   use Moose;
-  has rule => (is => 'ro', isa => 'Paws::IoT::TopicRule');
+  has Rule => (is => 'ro', isa => 'Paws::IoT::TopicRule');
 
 1;
 
@@ -13,7 +13,7 @@ Paws::IoT::GetTopicRuleResponse
 
 =head1 ATTRIBUTES
 
-=head2 rule => L<Paws::IoT::TopicRule>
+=head2 Rule => L<Paws::IoT::TopicRule>
 
   The rule.
 

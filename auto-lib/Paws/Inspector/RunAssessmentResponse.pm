@@ -1,7 +1,7 @@
 
 package Paws::Inspector::RunAssessmentResponse;
   use Moose;
-  has runArn => (is => 'ro', isa => 'Str');
+  has RunArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'runArn' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::Inspector::RunAssessmentResponse
 
 =head1 ATTRIBUTES
 
-=head2 runArn => Str
+=head2 RunArn => Str
 
   The ARN specifying the run of the assessment.
 

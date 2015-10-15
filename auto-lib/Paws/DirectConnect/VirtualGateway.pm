@@ -1,7 +1,7 @@
 package Paws::DirectConnect::VirtualGateway;
   use Moose;
-  has virtualGatewayId => (is => 'ro', isa => 'Str');
-  has virtualGatewayState => (is => 'ro', isa => 'Str');
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', xmlname => 'virtualGatewayId', request_name => 'virtualGatewayId', traits => ['Unwrapped','NameInRequest']);
+  has VirtualGatewayState => (is => 'ro', isa => 'Str', xmlname => 'virtualGatewayState', request_name => 'virtualGatewayState', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DirectConnect::VirtualGateway object:
 
-  $service_obj->Method(Att1 => { virtualGatewayId => $value, ..., virtualGatewayState => $value  });
+  $service_obj->Method(Att1 => { VirtualGatewayId => $value, ..., VirtualGatewayState => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DirectConnect::VirtualGateway object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->virtualGatewayId
+  $result->Att1->VirtualGatewayId
 
 =head1 DESCRIPTION
 
@@ -41,11 +41,11 @@ action.
 
 =head1 ATTRIBUTES
 
-=head2 virtualGatewayId => Str
+=head2 VirtualGatewayId => Str
 
   
 
-=head2 virtualGatewayState => Str
+=head2 VirtualGatewayState => Str
 
   
 

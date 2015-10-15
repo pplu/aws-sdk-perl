@@ -1,8 +1,8 @@
 
 package Paws::ECS::DescribeContainerInstancesResponse;
   use Moose;
-  has containerInstances => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerInstance]');
-  has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
+  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerInstance]', traits => ['Unwrapped'], xmlname => 'containerInstances' );
+  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['Unwrapped'], xmlname => 'failures' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::ECS::DescribeContainerInstancesResponse
 
 =head1 ATTRIBUTES
 
-=head2 containerInstances => ArrayRef[L<Paws::ECS::ContainerInstance>]
+=head2 ContainerInstances => ArrayRef[L<Paws::ECS::ContainerInstance>]
 
   The list of container instances.
-=head2 failures => ArrayRef[L<Paws::ECS::Failure>]
+=head2 Failures => ArrayRef[L<Paws::ECS::Failure>]
 
   Any failures associated with the call.
 

@@ -1,8 +1,8 @@
 
 package Paws::IoT::AttachThingPrincipal;
   use Moose;
-  has principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amzn-principal' , required => 1);
-  has thingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
+  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'principal' , required => 1);
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,11 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> principal => Str
+=head2 B<REQUIRED> Principal => Str
 
   The principal (certificate or other credential).
 
-=head2 B<REQUIRED> thingName => Str
+=head2 B<REQUIRED> ThingName => Str
 
   The name of the thing.
 

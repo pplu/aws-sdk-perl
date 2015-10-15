@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes;
   use Moose;
-  has details => (is => 'ro', isa => 'Str');
-  has reason => (is => 'ro', isa => 'Str');
+  has Details => (is => 'ro', isa => 'Str', xmlname => 'details', request_name => 'details', traits => ['Unwrapped','NameInRequest']);
+  has Reason => (is => 'ro', isa => 'Str', xmlname => 'reason', request_name => 'reason', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes object:
 
-  $service_obj->Method(Att1 => { details => $value, ..., reason => $value  });
+  $service_obj->Method(Att1 => { Details => $value, ..., Reason => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->details
+  $result->Att1->Details
 
 =head1 DESCRIPTION
 
@@ -60,11 +60,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
-=head2 details => Str
+=head2 Details => Str
 
   I<Optional.> Details of the failure.
 
-=head2 reason => Str
+=head2 Reason => Str
 
   A descriptive reason for the failure that may help in diagnostics.
 

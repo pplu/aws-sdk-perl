@@ -1,7 +1,7 @@
 package Paws::DeviceFarm::Location;
   use Moose;
-  has latitude => (is => 'ro', isa => 'Num', required => 1);
-  has longitude => (is => 'ro', isa => 'Num', required => 1);
+  has Latitude => (is => 'ro', isa => 'Num', xmlname => 'latitude', request_name => 'latitude', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Longitude => (is => 'ro', isa => 'Num', xmlname => 'longitude', request_name => 'longitude', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::Location object:
 
-  $service_obj->Method(Att1 => { latitude => $value, ..., longitude => $value  });
+  $service_obj->Method(Att1 => { Latitude => $value, ..., Longitude => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::Location object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->latitude
+  $result->Att1->Latitude
 
 =head1 DESCRIPTION
 
@@ -39,11 +39,11 @@ Elevation is currently not supported.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> latitude => Num
+=head2 B<REQUIRED> Latitude => Num
 
   The latitude.
 
-=head2 B<REQUIRED> longitude => Num
+=head2 B<REQUIRED> Longitude => Num
 
   The longitude.
 

@@ -1,8 +1,8 @@
 package Paws::CloudWatchLogs::RejectedLogEventsInfo;
   use Moose;
-  has expiredLogEventEndIndex => (is => 'ro', isa => 'Int');
-  has tooNewLogEventStartIndex => (is => 'ro', isa => 'Int');
-  has tooOldLogEventEndIndex => (is => 'ro', isa => 'Int');
+  has ExpiredLogEventEndIndex => (is => 'ro', isa => 'Int', xmlname => 'expiredLogEventEndIndex', request_name => 'expiredLogEventEndIndex', traits => ['Unwrapped','NameInRequest']);
+  has TooNewLogEventStartIndex => (is => 'ro', isa => 'Int', xmlname => 'tooNewLogEventStartIndex', request_name => 'tooNewLogEventStartIndex', traits => ['Unwrapped','NameInRequest']);
+  has TooOldLogEventEndIndex => (is => 'ro', isa => 'Int', xmlname => 'tooOldLogEventEndIndex', request_name => 'tooOldLogEventEndIndex', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::RejectedLogEventsInfo object:
 
-  $service_obj->Method(Att1 => { expiredLogEventEndIndex => $value, ..., tooOldLogEventEndIndex => $value  });
+  $service_obj->Method(Att1 => { ExpiredLogEventEndIndex => $value, ..., TooOldLogEventEndIndex => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::RejectedLogEventsInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->expiredLogEventEndIndex
+  $result->Att1->ExpiredLogEventEndIndex
 
 =head1 DESCRIPTION
 
@@ -37,15 +37,15 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 expiredLogEventEndIndex => Int
+=head2 ExpiredLogEventEndIndex => Int
 
   
 
-=head2 tooNewLogEventStartIndex => Int
+=head2 TooNewLogEventStartIndex => Int
 
   
 
-=head2 tooOldLogEventEndIndex => Int
+=head2 TooOldLogEventEndIndex => Int
 
   
 

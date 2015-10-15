@@ -279,7 +279,7 @@ Returns: a L<Paws::DS::EnableSsoResult> instance
   Enables single-sign on for a directory.
 
 
-=head2 GetDirectoryLimits( => )
+=head2 GetDirectoryLimits()
 
 Each argument is described in detail in: L<Paws::DS::GetDirectoryLimits>
 

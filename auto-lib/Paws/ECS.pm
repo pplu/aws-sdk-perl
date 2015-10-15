@@ -189,7 +189,7 @@ infrastructure.
 
 =head1 METHODS
 
-=head2 CreateCluster([clusterName => Str])
+=head2 CreateCluster([ClusterName => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateCluster>
 
@@ -201,7 +201,7 @@ However, you can create your own cluster with a unique name with the
 C<CreateCluster> action.
 
 
-=head2 CreateService(desiredCount => Int, serviceName => Str, taskDefinition => Str, [clientToken => Str, cluster => Str, loadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], role => Str])
+=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], Role => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -213,7 +213,7 @@ C<desiredCount>, Amazon ECS spawns another instantiation of the task in
 the specified cluster.
 
 
-=head2 DeleteCluster(cluster => Str)
+=head2 DeleteCluster(Cluster => Str)
 
 Each argument is described in detail in: L<Paws::ECS::DeleteCluster>
 
@@ -225,7 +225,7 @@ container instances in a cluster with ListContainerInstances and
 deregister them with DeregisterContainerInstance.
 
 
-=head2 DeleteService(service => Str, [cluster => Str])
+=head2 DeleteService(Service => Str, [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DeleteService>
 
@@ -234,7 +234,7 @@ Returns: a L<Paws::ECS::DeleteServiceResponse> instance
   Deletes a specified service within a cluster.
 
 
-=head2 DeregisterContainerInstance(containerInstance => Str, [cluster => Str, force => Bool])
+=head2 DeregisterContainerInstance(ContainerInstance => Str, [Cluster => Str, Force => Bool])
 
 Each argument is described in detail in: L<Paws::ECS::DeregisterContainerInstance>
 
@@ -257,7 +257,7 @@ When you terminate a container instance, it is automatically
 deregistered from your cluster.
 
 
-=head2 DeregisterTaskDefinition(taskDefinition => Str)
+=head2 DeregisterTaskDefinition(TaskDefinition => Str)
 
 Each argument is described in detail in: L<Paws::ECS::DeregisterTaskDefinition>
 
@@ -277,7 +277,7 @@ reference an C<INACTIVE> task definition (although there may be up to a
 not yet taken effect).
 
 
-=head2 DescribeClusters([clusters => ArrayRef[Str]])
+=head2 DescribeClusters([Clusters => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeClusters>
 
@@ -286,7 +286,7 @@ Returns: a L<Paws::ECS::DescribeClustersResponse> instance
   Describes one or more of your clusters.
 
 
-=head2 DescribeContainerInstances(containerInstances => ArrayRef[Str], [cluster => Str])
+=head2 DescribeContainerInstances(ContainerInstances => ArrayRef[Str], [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeContainerInstances>
 
@@ -297,7 +297,7 @@ metadata about registered and remaining resources on each container
 instance requested.
 
 
-=head2 DescribeServices(services => ArrayRef[Str], [cluster => Str])
+=head2 DescribeServices(Services => ArrayRef[Str], [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeServices>
 
@@ -306,7 +306,7 @@ Returns: a L<Paws::ECS::DescribeServicesResponse> instance
   Describes the specified services running in your cluster.
 
 
-=head2 DescribeTaskDefinition(taskDefinition => Str)
+=head2 DescribeTaskDefinition(TaskDefinition => Str)
 
 Each argument is described in detail in: L<Paws::ECS::DescribeTaskDefinition>
 
@@ -321,7 +321,7 @@ You can only describe C<INACTIVE> task definitions while an active task
 or service references them.
 
 
-=head2 DescribeTasks(tasks => ArrayRef[Str], [cluster => Str])
+=head2 DescribeTasks(Tasks => ArrayRef[Str], [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DescribeTasks>
 
@@ -330,7 +330,7 @@ Returns: a L<Paws::ECS::DescribeTasksResponse> instance
   Describes a specified task or tasks.
 
 
-=head2 DiscoverPollEndpoint([cluster => Str, containerInstance => Str])
+=head2 DiscoverPollEndpoint([Cluster => Str, ContainerInstance => Str])
 
 Each argument is described in detail in: L<Paws::ECS::DiscoverPollEndpoint>
 
@@ -343,7 +343,7 @@ Returns an endpoint for the Amazon EC2 Container Service agent to poll
 for updates.
 
 
-=head2 ListClusters([maxResults => Int, nextToken => Str])
+=head2 ListClusters([MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListClusters>
 
@@ -352,7 +352,7 @@ Returns: a L<Paws::ECS::ListClustersResponse> instance
   Returns a list of existing clusters.
 
 
-=head2 ListContainerInstances([cluster => Str, maxResults => Int, nextToken => Str])
+=head2 ListContainerInstances([Cluster => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListContainerInstances>
 
@@ -361,7 +361,7 @@ Returns: a L<Paws::ECS::ListContainerInstancesResponse> instance
   Returns a list of container instances in a specified cluster.
 
 
-=head2 ListServices([cluster => Str, maxResults => Int, nextToken => Str])
+=head2 ListServices([Cluster => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListServices>
 
@@ -370,7 +370,7 @@ Returns: a L<Paws::ECS::ListServicesResponse> instance
   Lists the services that are running in a specified cluster.
 
 
-=head2 ListTaskDefinitionFamilies([familyPrefix => Str, maxResults => Int, nextToken => Str])
+=head2 ListTaskDefinitionFamilies([FamilyPrefix => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitionFamilies>
 
@@ -382,7 +382,7 @@ any C<ACTIVE> task definitions). You can filter the results with the
 C<familyPrefix> parameter.
 
 
-=head2 ListTaskDefinitions([familyPrefix => Str, maxResults => Int, nextToken => Str, sort => Str, status => Str])
+=head2 ListTaskDefinitions([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Sort => Str, Status => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitions>
 
@@ -393,7 +393,7 @@ You can filter the results by family name with the C<familyPrefix>
 parameter or by status with the C<status> parameter.
 
 
-=head2 ListTasks([cluster => Str, containerInstance => Str, desiredStatus => Str, family => Str, maxResults => Int, nextToken => Str, serviceName => Str, startedBy => Str])
+=head2 ListTasks([Cluster => Str, ContainerInstance => Str, DesiredStatus => Str, Family => Str, MaxResults => Int, NextToken => Str, ServiceName => Str, StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTasks>
 
@@ -405,7 +405,7 @@ desired status of the task with the C<family>, C<containerInstance>,
 and C<desiredStatus> parameters.
 
 
-=head2 RegisterContainerInstance([attributes => ArrayRef[L<Paws::ECS::Attribute>], cluster => Str, containerInstanceArn => Str, instanceIdentityDocument => Str, instanceIdentityDocumentSignature => Str, totalResources => ArrayRef[L<Paws::ECS::Resource>], versionInfo => L<Paws::ECS::VersionInfo>])
+=head2 RegisterContainerInstance([Attributes => ArrayRef[L<Paws::ECS::Attribute>], Cluster => Str, ContainerInstanceArn => Str, InstanceIdentityDocument => Str, InstanceIdentityDocumentSignature => Str, TotalResources => ArrayRef[L<Paws::ECS::Resource>], VersionInfo => L<Paws::ECS::VersionInfo>])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterContainerInstance>
 
@@ -418,7 +418,7 @@ Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
 
 
-=head2 RegisterTaskDefinition(containerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], family => Str, [volumes => ArrayRef[L<Paws::ECS::Volume>]])
+=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [Volumes => ArrayRef[L<Paws::ECS::Volume>]])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterTaskDefinition>
 
@@ -431,7 +431,7 @@ task definition parameters and defaults, see Amazon ECS Task
 Definitions in the I<Amazon EC2 Container Service Developer Guide>.
 
 
-=head2 RunTask(taskDefinition => Str, [cluster => Str, count => Int, overrides => L<Paws::ECS::TaskOverride>, startedBy => Str])
+=head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::RunTask>
 
@@ -444,7 +444,7 @@ container instance, use C<StartTask> instead.
 The C<count> parameter is limited to 10 tasks per call.
 
 
-=head2 StartTask(containerInstances => ArrayRef[Str], taskDefinition => Str, [cluster => Str, overrides => L<Paws::ECS::TaskOverride>, startedBy => Str])
+=head2 StartTask(ContainerInstances => ArrayRef[Str], TaskDefinition => Str, [Cluster => Str, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])
 
 Each argument is described in detail in: L<Paws::ECS::StartTask>
 
@@ -457,7 +457,7 @@ scheduler to place your task, use C<RunTask> instead.
 The list of container instances to start tasks on is limited to 10.
 
 
-=head2 StopTask(task => Str, [cluster => Str])
+=head2 StopTask(Task => Str, [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::StopTask>
 
@@ -473,7 +473,7 @@ C<SIGTERM> gracefully and exits within 30 seconds from receiving it, no
 C<SIGKILL> is sent.
 
 
-=head2 SubmitContainerStateChange([cluster => Str, containerName => Str, exitCode => Int, networkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>], reason => Str, status => Str, task => Str])
+=head2 SubmitContainerStateChange([Cluster => Str, ContainerName => Str, ExitCode => Int, NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>], Reason => Str, Status => Str, Task => Str])
 
 Each argument is described in detail in: L<Paws::ECS::SubmitContainerStateChange>
 
@@ -485,7 +485,7 @@ it is not intended for use outside of the agent.
 Sent to acknowledge that a container changed states.
 
 
-=head2 SubmitTaskStateChange([cluster => Str, reason => Str, status => Str, task => Str])
+=head2 SubmitTaskStateChange([Cluster => Str, Reason => Str, Status => Str, Task => Str])
 
 Each argument is described in detail in: L<Paws::ECS::SubmitTaskStateChange>
 
@@ -497,7 +497,7 @@ it is not intended for use outside of the agent.
 Sent to acknowledge that a task changed states.
 
 
-=head2 UpdateContainerAgent(containerInstance => Str, [cluster => Str])
+=head2 UpdateContainerAgent(ContainerInstance => Str, [Cluster => Str])
 
 Each argument is described in detail in: L<Paws::ECS::UpdateContainerAgent>
 
@@ -517,7 +517,7 @@ Manually Updating the Amazon ECS Container Agent in the I<Amazon EC2
 Container Service Developer Guide>.
 
 
-=head2 UpdateService(service => Str, [cluster => Str, desiredCount => Int, taskDefinition => Str])
+=head2 UpdateService(Service => Str, [Cluster => Str, DesiredCount => Int, TaskDefinition => Str])
 
 Each argument is described in detail in: L<Paws::ECS::UpdateService>
 

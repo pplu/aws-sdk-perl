@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeRunResponse;
   use Moose;
-  has run => (is => 'ro', isa => 'Paws::Inspector::Run');
+  has Run => (is => 'ro', isa => 'Paws::Inspector::Run', traits => ['Unwrapped'], xmlname => 'run' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::Inspector::DescribeRunResponse
 
 =head1 ATTRIBUTES
 
-=head2 run => L<Paws::Inspector::Run>
+=head2 Run => L<Paws::Inspector::Run>
 
   Information about the assessment run.
 

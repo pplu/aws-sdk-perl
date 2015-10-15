@@ -1,7 +1,7 @@
 package Paws::DataPipeline::InstanceIdentity;
   use Moose;
-  has document => (is => 'ro', isa => 'Str');
-  has signature => (is => 'ro', isa => 'Str');
+  has Document => (is => 'ro', isa => 'Str', xmlname => 'document', request_name => 'document', traits => ['Unwrapped','NameInRequest']);
+  has Signature => (is => 'ro', isa => 'Str', xmlname => 'signature', request_name => 'signature', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DataPipeline::InstanceIdentity object:
 
-  $service_obj->Method(Att1 => { document => $value, ..., signature => $value  });
+  $service_obj->Method(Att1 => { Document => $value, ..., Signature => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipeline::InstanceIdentity object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->document
+  $result->Att1->Document
 
 =head1 DESCRIPTION
 
@@ -41,13 +41,13 @@ AWS Data Pipeline service charges are applied to your pipeline.
 
 =head1 ATTRIBUTES
 
-=head2 document => Str
+=head2 Document => Str
 
   A description of an EC2 instance that is generated when the instance is
 launched and exposed to the instance via the instance metadata service
 in the form of a JSON representation of an object.
 
-=head2 signature => Str
+=head2 Signature => Str
 
   A signature which can be used to verify the accuracy and authenticity
 of the information provided in the instance identity document.

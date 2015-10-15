@@ -1,12 +1,12 @@
 
 package Paws::Config::ListDiscoveredResources;
   use Moose;
-  has includeDeletedResources => (is => 'ro', isa => 'Bool');
-  has limit => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
-  has resourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has resourceName => (is => 'ro', isa => 'Str');
-  has resourceType => (is => 'ro', isa => 'Str', required => 1);
+  has IncludeDeletedResources => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeDeletedResources' );
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'resourceIds' );
+  has ResourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceName' );
+  has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -37,35 +37,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 includeDeletedResources => Bool
+=head2 IncludeDeletedResources => Bool
 
   Specifies whether AWS Config includes deleted resources in the results.
 By default, deleted resources are not included.
 
-=head2 limit => Int
+=head2 Limit => Int
 
   The maximum number of resource identifiers returned on each page. The
 default is 100. You cannot specify a limit greater than 100. If you
 specify 0, AWS Config uses the default.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
 
-=head2 resourceIds => ArrayRef[Str]
+=head2 ResourceIds => ArrayRef[Str]
 
   The IDs of only those resources that you want AWS Config to list in the
 response. If you do not specify this parameter, AWS Config lists all
 resources of the specified type that it has discovered.
 
-=head2 resourceName => Str
+=head2 ResourceName => Str
 
   The custom name of only those resources that you want AWS Config to
 list in the response. If you do not specify this parameter, AWS Config
 lists all resources of the specified type that it has discovered.
 
-=head2 B<REQUIRED> resourceType => Str
+=head2 B<REQUIRED> ResourceType => Str
 
   The type of resources that you want AWS Config to list in the response.
 

@@ -1,14 +1,14 @@
 package Paws::CodeDeploy::DeploymentGroupInfo;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str');
-  has autoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]');
-  has deploymentConfigName => (is => 'ro', isa => 'Str');
-  has deploymentGroupId => (is => 'ro', isa => 'Str');
-  has deploymentGroupName => (is => 'ro', isa => 'Str');
-  has ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]');
-  has onPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]');
-  has serviceRoleArn => (is => 'ro', isa => 'Str');
-  has targetRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation');
+  has ApplicationName => (is => 'ro', isa => 'Str', xmlname => 'applicationName', request_name => 'applicationName', traits => ['Unwrapped','NameInRequest']);
+  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]', xmlname => 'autoScalingGroups', request_name => 'autoScalingGroups', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigName', request_name => 'deploymentConfigName', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentGroupId => (is => 'ro', isa => 'Str', xmlname => 'deploymentGroupId', request_name => 'deploymentGroupId', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentGroupName => (is => 'ro', isa => 'Str', xmlname => 'deploymentGroupName', request_name => 'deploymentGroupName', traits => ['Unwrapped','NameInRequest']);
+  has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', xmlname => 'ec2TagFilters', request_name => 'ec2TagFilters', traits => ['Unwrapped','NameInRequest']);
+  has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', xmlname => 'onPremisesInstanceTagFilters', request_name => 'onPremisesInstanceTagFilters', traits => ['Unwrapped','NameInRequest']);
+  has ServiceRoleArn => (is => 'ro', isa => 'Str', xmlname => 'serviceRoleArn', request_name => 'serviceRoleArn', traits => ['Unwrapped','NameInRequest']);
+  has TargetRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', xmlname => 'targetRevision', request_name => 'targetRevision', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -28,14 +28,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::DeploymentGroupInfo object:
 
-  $service_obj->Method(Att1 => { applicationName => $value, ..., targetRevision => $value  });
+  $service_obj->Method(Att1 => { ApplicationName => $value, ..., TargetRevision => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy::DeploymentGroupInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->applicationName
+  $result->Att1->ApplicationName
 
 =head1 DESCRIPTION
 
@@ -43,39 +43,39 @@ Information about a deployment group.
 
 =head1 ATTRIBUTES
 
-=head2 applicationName => Str
+=head2 ApplicationName => Str
 
   The application name.
 
-=head2 autoScalingGroups => ArrayRef[L<Paws::CodeDeploy::AutoScalingGroup>]
+=head2 AutoScalingGroups => ArrayRef[L<Paws::CodeDeploy::AutoScalingGroup>]
 
   A list of associated Auto Scaling groups.
 
-=head2 deploymentConfigName => Str
+=head2 DeploymentConfigName => Str
 
   The deployment configuration name.
 
-=head2 deploymentGroupId => Str
+=head2 DeploymentGroupId => Str
 
   The deployment group ID.
 
-=head2 deploymentGroupName => Str
+=head2 DeploymentGroupName => Str
 
   The deployment group name.
 
-=head2 ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
+=head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
   The Amazon EC2 tags to filter on.
 
-=head2 onPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
+=head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
   The on-premises instance tags to filter on.
 
-=head2 serviceRoleArn => Str
+=head2 ServiceRoleArn => Str
 
   A service role ARN.
 
-=head2 targetRevision => L<Paws::CodeDeploy::RevisionLocation>
+=head2 TargetRevision => L<Paws::CodeDeploy::RevisionLocation>
 
   Information about the deployment group's target revision, including the
 revision's type and its location.

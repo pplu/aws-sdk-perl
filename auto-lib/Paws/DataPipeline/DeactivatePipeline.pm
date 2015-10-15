@@ -1,8 +1,8 @@
 
 package Paws::DataPipeline::DeactivatePipeline;
   use Moose;
-  has cancelActive => (is => 'ro', isa => 'Bool');
-  has pipelineId => (is => 'ro', isa => 'Str', required => 1);
+  has CancelActive => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cancelActive' );
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,14 +33,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cancelActive => Bool
+=head2 CancelActive => Bool
 
   Indicates whether to cancel any running objects. The default is true,
 which sets the state of any running objects to C<CANCELED>. If this
 value is false, the pipeline is deactivated after all running objects
 finish.
 
-=head2 B<REQUIRED> pipelineId => Str
+=head2 B<REQUIRED> PipelineId => Str
 
   The ID of the pipeline.
 

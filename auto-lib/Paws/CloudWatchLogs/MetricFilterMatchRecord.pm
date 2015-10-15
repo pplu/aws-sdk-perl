@@ -1,8 +1,8 @@
 package Paws::CloudWatchLogs::MetricFilterMatchRecord;
   use Moose;
-  has eventMessage => (is => 'ro', isa => 'Str');
-  has eventNumber => (is => 'ro', isa => 'Int');
-  has extractedValues => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExtractedValues');
+  has EventMessage => (is => 'ro', isa => 'Str', xmlname => 'eventMessage', request_name => 'eventMessage', traits => ['Unwrapped','NameInRequest']);
+  has EventNumber => (is => 'ro', isa => 'Int', xmlname => 'eventNumber', request_name => 'eventNumber', traits => ['Unwrapped','NameInRequest']);
+  has ExtractedValues => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExtractedValues', xmlname => 'extractedValues', request_name => 'extractedValues', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::MetricFilterMatchRecord object:
 
-  $service_obj->Method(Att1 => { eventMessage => $value, ..., extractedValues => $value  });
+  $service_obj->Method(Att1 => { EventMessage => $value, ..., ExtractedValues => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::MetricFilterMatchRecord object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->eventMessage
+  $result->Att1->EventMessage
 
 =head1 DESCRIPTION
 
@@ -37,15 +37,15 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 eventMessage => Str
+=head2 EventMessage => Str
 
   
 
-=head2 eventNumber => Int
+=head2 EventNumber => Int
 
   
 
-=head2 extractedValues => L<Paws::CloudWatchLogs::ExtractedValues>
+=head2 ExtractedValues => L<Paws::CloudWatchLogs::ExtractedValues>
 
   
 

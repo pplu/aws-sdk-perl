@@ -1,9 +1,9 @@
 
 package Paws::Inspector::ListAttachedRulesPackages;
   use Moose;
-  has assessmentArn => (is => 'ro', isa => 'Str');
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -34,18 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 assessmentArn => Str
+=head2 AssessmentArn => Str
 
   The ARN specifying the assessment whose rules packages you want to
 list.
 
-=head2 maxResults => Int
+=head2 MaxResults => Int
 
   You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is
 500.
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   You can use this parameter when paginating results. Set the value of
 this parameter to 'null' on your first call to the

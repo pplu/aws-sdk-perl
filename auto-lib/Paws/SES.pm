@@ -393,7 +393,7 @@ preferred.
 This action is throttled at one request per second.
 
 
-=head2 DescribeActiveReceiptRuleSet( => )
+=head2 DescribeActiveReceiptRuleSet()
 
 Each argument is described in detail in: L<Paws::SES::DescribeActiveReceiptRuleSet>
 
@@ -581,7 +581,7 @@ using sending authorization, see the Amazon SES Developer Guide.
 This action is throttled at one request per second.
 
 
-=head2 ListReceiptFilters( => )
+=head2 ListReceiptFilters()
 
 Each argument is described in detail in: L<Paws::SES::ListReceiptFilters>
 

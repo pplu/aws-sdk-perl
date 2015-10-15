@@ -1,8 +1,8 @@
 
 package Paws::ECS::DescribeContainerInstances;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has containerInstances => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,13 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container instances to describe. If you do not specify a
 cluster, the default cluster is assumed.
 
-=head2 B<REQUIRED> containerInstances => ArrayRef[Str]
+=head2 B<REQUIRED> ContainerInstances => ArrayRef[Str]
 
   A space-separated list of container instance IDs or full Amazon
 Resource Name (ARN) entries.

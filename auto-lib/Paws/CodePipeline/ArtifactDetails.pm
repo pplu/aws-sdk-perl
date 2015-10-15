@@ -1,7 +1,7 @@
 package Paws::CodePipeline::ArtifactDetails;
   use Moose;
-  has maximumCount => (is => 'ro', isa => 'Int', required => 1);
-  has minimumCount => (is => 'ro', isa => 'Int', required => 1);
+  has MaximumCount => (is => 'ro', isa => 'Int', xmlname => 'maximumCount', request_name => 'maximumCount', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has MinimumCount => (is => 'ro', isa => 'Int', xmlname => 'minimumCount', request_name => 'minimumCount', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ArtifactDetails object:
 
-  $service_obj->Method(Att1 => { maximumCount => $value, ..., minimumCount => $value  });
+  $service_obj->Method(Att1 => { MaximumCount => $value, ..., MinimumCount => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ArtifactDetails object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->maximumCount
+  $result->Att1->MaximumCount
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Returns information about the details of an artifact.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> maximumCount => Int
+=head2 B<REQUIRED> MaximumCount => Int
 
   The maximum number of artifacts allowed for the action type.
 
-=head2 B<REQUIRED> minimumCount => Int
+=head2 B<REQUIRED> MinimumCount => Int
 
   The minimum number of artifacts allowed for the action type.
 

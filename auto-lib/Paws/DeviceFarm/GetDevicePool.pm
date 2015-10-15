@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetDevicePool;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str', required => 1);
+  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> arn => Str
+=head2 B<REQUIRED> Arn => Str
 
   The device pool's ARN.
 

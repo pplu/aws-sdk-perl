@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::ExecutionTimeFilter;
   use Moose;
-  has latestDate => (is => 'ro', isa => 'Str');
-  has oldestDate => (is => 'ro', isa => 'Str', required => 1);
+  has LatestDate => (is => 'ro', isa => 'Str', xmlname => 'latestDate', request_name => 'latestDate', traits => ['Unwrapped','NameInRequest']);
+  has OldestDate => (is => 'ro', isa => 'Str', xmlname => 'oldestDate', request_name => 'oldestDate', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::ExecutionTimeFilter object:
 
-  $service_obj->Method(Att1 => { latestDate => $value, ..., oldestDate => $value  });
+  $service_obj->Method(Att1 => { LatestDate => $value, ..., OldestDate => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::ExecutionTimeFilter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->latestDate
+  $result->Att1->LatestDate
 
 =head1 DESCRIPTION
 
@@ -39,11 +39,11 @@ are in the Unix Time format. For example: C<"oldestDate": 1325376070.>
 
 =head1 ATTRIBUTES
 
-=head2 latestDate => Str
+=head2 LatestDate => Str
 
   Specifies the latest start or close date and time to return.
 
-=head2 B<REQUIRED> oldestDate => Str
+=head2 B<REQUIRED> OldestDate => Str
 
   Specifies the oldest start or close date and time to return.
 

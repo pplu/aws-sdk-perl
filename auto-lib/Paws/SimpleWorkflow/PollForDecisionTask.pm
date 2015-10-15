@@ -1,12 +1,12 @@
 
 package Paws::SimpleWorkflow::PollForDecisionTask;
   use Moose;
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has identity => (is => 'ro', isa => 'Str');
-  has maximumPageSize => (is => 'ro', isa => 'Int');
-  has nextPageToken => (is => 'ro', isa => 'Str');
-  has reverseOrder => (is => 'ro', isa => 'Bool');
-  has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has Identity => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identity' );
+  has MaximumPageSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maximumPageSize' );
+  has NextPageToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextPageToken' );
+  has ReverseOrder => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'reverseOrder' );
+  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'taskList' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -37,18 +37,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
   The name of the domain containing the task lists to poll.
 
-=head2 identity => Str
+=head2 Identity => Str
 
   Identity of the decider making the request, which is recorded in the
 DecisionTaskStarted event in the workflow history. This enables
 diagnostic tracing when problems arise. The form of this identity is
 user defined.
 
-=head2 maximumPageSize => Int
+=head2 MaximumPageSize => Int
 
   The maximum number of results that will be returned per call.
 C<nextPageToken> can be used to obtain futher pages of results. The
@@ -58,7 +58,7 @@ however, specify a page size I<smaller> than the maximum.
 This is an upper limit only; the actual number of results returned per
 call may be fewer than the specified maximum.
 
-=head2 nextPageToken => Str
+=head2 NextPageToken => Str
 
   If a C<NextPageToken> was returned by a previous call, there are more
 results available. To retrieve the next page of results, make the call
@@ -74,13 +74,13 @@ PollForDecisionTask again (with the C<nextPageToken>) to retrieve the
 next page of history records. Calling PollForDecisionTask with a
 C<nextPageToken> will not return a new decision task..
 
-=head2 reverseOrder => Bool
+=head2 ReverseOrder => Bool
 
   When set to C<true>, returns the events in reverse order. By default
 the results are returned in ascending order of the C<eventTimestamp> of
 the events.
 
-=head2 B<REQUIRED> taskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   Specifies the task list to poll for decision tasks.
 

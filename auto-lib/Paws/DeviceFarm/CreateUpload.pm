@@ -1,10 +1,10 @@
 
 package Paws::DeviceFarm::CreateUpload;
   use Moose;
-  has contentType => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has projectArn => (is => 'ro', isa => 'Str', required => 1);
-  has type => (is => 'ro', isa => 'Str', required => 1);
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentType' );
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,19 +35,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 contentType => Str
+=head2 ContentType => Str
 
   The upload's content type (for example, "application/octet-stream").
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
   The upload's file name.
 
-=head2 B<REQUIRED> projectArn => Str
+=head2 B<REQUIRED> ProjectArn => Str
 
   The ARN of the project for the upload.
 
-=head2 B<REQUIRED> type => Str
+=head2 B<REQUIRED> Type => Str
 
   The upload's upload type.
 

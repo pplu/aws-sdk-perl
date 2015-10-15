@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::UpdateDeploymentGroupOutput;
   use Moose;
-  has hooksNotCleanedUp => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]');
+  has HooksNotCleanedUp => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::AutoScalingGroup]', traits => ['Unwrapped'], xmlname => 'hooksNotCleanedUp' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::CodeDeploy::UpdateDeploymentGroupOutput
 
 =head1 ATTRIBUTES
 
-=head2 hooksNotCleanedUp => ArrayRef[L<Paws::CodeDeploy::AutoScalingGroup>]
+=head2 HooksNotCleanedUp => ArrayRef[L<Paws::CodeDeploy::AutoScalingGroup>]
 
   If the output contains no data, and the corresponding deployment group
 contained at least one Auto Scaling group, AWS CodeDeploy successfully

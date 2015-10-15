@@ -1,11 +1,11 @@
 
 package Paws::DataPipeline::QueryObjects;
   use Moose;
-  has limit => (is => 'ro', isa => 'Int');
-  has marker => (is => 'ro', isa => 'Str');
-  has pipelineId => (is => 'ro', isa => 'Str', required => 1);
-  has query => (is => 'ro', isa => 'Paws::DataPipeline::Query');
-  has sphere => (is => 'ro', isa => 'Str', required => 1);
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'marker' );
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
+  has Query => (is => 'ro', isa => 'Paws::DataPipeline::Query', traits => ['NameInRequest'], request_name => 'query' );
+  has Sphere => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sphere' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -36,30 +36,30 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 limit => Int
+=head2 Limit => Int
 
   The maximum number of object names that C<QueryObjects> will return in
 a single call. The default value is 100.
 
-=head2 marker => Str
+=head2 Marker => Str
 
   The starting point for the results to be returned. For the first call,
 this value should be empty. As long as there are more results, continue
 to call C<QueryObjects> with the marker value from the previous call to
 retrieve the next set of results.
 
-=head2 B<REQUIRED> pipelineId => Str
+=head2 B<REQUIRED> PipelineId => Str
 
   The ID of the pipeline.
 
-=head2 query => L<Paws::DataPipeline::Query>
+=head2 Query => L<Paws::DataPipeline::Query>
 
   The query that defines the objects to be returned. The C<Query> object
 can contain a maximum of ten selectors. The conditions in the query are
 limited to top-level String fields in the object. These filters can be
 applied to components, instances, and attempts.
 
-=head2 B<REQUIRED> sphere => Str
+=head2 B<REQUIRED> Sphere => Str
 
   Indicates whether the query applies to components or instances. The
 possible values are: C<COMPONENT>, C<INSTANCE>, and C<ATTEMPT>.

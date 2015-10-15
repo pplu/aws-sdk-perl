@@ -1,7 +1,7 @@
 package Paws::IoT::LoggingOptionsPayload;
   use Moose;
-  has logLevel => (is => 'ro', isa => 'Str');
-  has roleArn => (is => 'ro', isa => 'Str', required => 1);
+  has LogLevel => (is => 'ro', isa => 'Str', xmlname => 'logLevel', request_name => 'logLevel', traits => ['Unwrapped','NameInRequest']);
+  has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::LoggingOptionsPayload object:
 
-  $service_obj->Method(Att1 => { logLevel => $value, ..., roleArn => $value  });
+  $service_obj->Method(Att1 => { LogLevel => $value, ..., RoleArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::LoggingOptionsPayload object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->logLevel
+  $result->Att1->LogLevel
 
 =head1 DESCRIPTION
 
@@ -36,11 +36,11 @@ Describes the logging options payload.
 
 =head1 ATTRIBUTES
 
-=head2 logLevel => Str
+=head2 LogLevel => Str
 
   The logging level.
 
-=head2 B<REQUIRED> roleArn => Str
+=head2 B<REQUIRED> RoleArn => Str
 
   The ARN of the IAM role that grants access.
 

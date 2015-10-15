@@ -1,9 +1,9 @@
 package Paws::ECS::NetworkBinding;
   use Moose;
-  has bindIP => (is => 'ro', isa => 'Str');
-  has containerPort => (is => 'ro', isa => 'Int');
-  has hostPort => (is => 'ro', isa => 'Int');
-  has protocol => (is => 'ro', isa => 'Str');
+  has BindIP => (is => 'ro', isa => 'Str', xmlname => 'bindIP', request_name => 'bindIP', traits => ['Unwrapped','NameInRequest']);
+  has ContainerPort => (is => 'ro', isa => 'Int', xmlname => 'containerPort', request_name => 'containerPort', traits => ['Unwrapped','NameInRequest']);
+  has HostPort => (is => 'ro', isa => 'Int', xmlname => 'hostPort', request_name => 'hostPort', traits => ['Unwrapped','NameInRequest']);
+  has Protocol => (is => 'ro', isa => 'Str', xmlname => 'protocol', request_name => 'protocol', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::NetworkBinding object:
 
-  $service_obj->Method(Att1 => { bindIP => $value, ..., protocol => $value  });
+  $service_obj->Method(Att1 => { BindIP => $value, ..., Protocol => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::NetworkBinding object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->bindIP
+  $result->Att1->BindIP
 
 =head1 DESCRIPTION
 
@@ -41,21 +41,21 @@ C<networkBindings> section of DescribeTasks API responses.
 
 =head1 ATTRIBUTES
 
-=head2 bindIP => Str
+=head2 BindIP => Str
 
   The IP address that the container is bound to on the container
 instance.
 
-=head2 containerPort => Int
+=head2 ContainerPort => Int
 
   The port number on the container that is be used with the network
 binding.
 
-=head2 hostPort => Int
+=head2 HostPort => Int
 
   The port number on the host that is used with the network binding.
 
-=head2 protocol => Str
+=head2 Protocol => Str
 
   The protocol used for the network binding.
 

@@ -159,7 +159,7 @@ service.
 
 =head1 METHODS
 
-=head2 ActivatePipeline(pipelineId => Str, [parameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>], startTimestamp => Str])
+=head2 ActivatePipeline(PipelineId => Str, [ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>], StartTimestamp => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ActivatePipeline>
 
@@ -175,7 +175,7 @@ To activate a finished pipeline, modify the end date for the pipeline
 and then activate it.
 
 
-=head2 AddTags(pipelineId => Str, tags => ArrayRef[L<Paws::DataPipeline::Tag>])
+=head2 AddTags(PipelineId => Str, Tags => ArrayRef[L<Paws::DataPipeline::Tag>])
 
 Each argument is described in detail in: L<Paws::DataPipeline::AddTags>
 
@@ -184,7 +184,7 @@ Returns: a L<Paws::DataPipeline::AddTagsOutput> instance
   Adds or modifies tags for the specified pipeline.
 
 
-=head2 CreatePipeline(name => Str, uniqueId => Str, [description => Str, tags => ArrayRef[L<Paws::DataPipeline::Tag>]])
+=head2 CreatePipeline(Name => Str, UniqueId => Str, [Description => Str, Tags => ArrayRef[L<Paws::DataPipeline::Tag>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::CreatePipeline>
 
@@ -194,7 +194,7 @@ Returns: a L<Paws::DataPipeline::CreatePipelineOutput> instance
 the pipeline.
 
 
-=head2 DeactivatePipeline(pipelineId => Str, [cancelActive => Bool])
+=head2 DeactivatePipeline(PipelineId => Str, [CancelActive => Bool])
 
 Each argument is described in detail in: L<Paws::DataPipeline::DeactivatePipeline>
 
@@ -208,7 +208,7 @@ pipeline resumes from the last completed execution. Optionally, you can
 specify the date and time to resume the pipeline.
 
 
-=head2 DeletePipeline(pipelineId => Str)
+=head2 DeletePipeline(PipelineId => Str)
 
 Each argument is described in detail in: L<Paws::DataPipeline::DeletePipeline>
 
@@ -224,7 +224,7 @@ it, call SetStatus with the status set to C<PAUSE> on individual
 components. Components that are paused by SetStatus can be resumed.
 
 
-=head2 DescribeObjects(objectIds => ArrayRef[Str], pipelineId => Str, [evaluateExpressions => Bool, marker => Str])
+=head2 DescribeObjects(ObjectIds => ArrayRef[Str], PipelineId => Str, [EvaluateExpressions => Bool, Marker => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::DescribeObjects>
 
@@ -235,7 +235,7 @@ pipeline. Object definitions are composed of a set of fields that
 define the properties of the object.
 
 
-=head2 DescribePipelines(pipelineIds => ArrayRef[Str])
+=head2 DescribePipelines(PipelineIds => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::DescribePipelines>
 
@@ -253,7 +253,7 @@ To retrieve the full pipeline definition instead of metadata about the
 pipeline, call GetPipelineDefinition.
 
 
-=head2 EvaluateExpression(expression => Str, objectId => Str, pipelineId => Str)
+=head2 EvaluateExpression(Expression => Str, ObjectId => Str, PipelineId => Str)
 
 Each argument is described in detail in: L<Paws::DataPipeline::EvaluateExpression>
 
@@ -264,7 +264,7 @@ context of the specified object. For example, a task runner can
 evaluate SQL queries stored in Amazon S3.
 
 
-=head2 GetPipelineDefinition(pipelineId => Str, [version => Str])
+=head2 GetPipelineDefinition(PipelineId => Str, [Version => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::GetPipelineDefinition>
 
@@ -275,7 +275,7 @@ C<GetPipelineDefinition> to retrieve the pipeline definition that you
 provided using PutPipelineDefinition.
 
 
-=head2 ListPipelines([marker => Str])
+=head2 ListPipelines([Marker => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ListPipelines>
 
@@ -285,7 +285,7 @@ Returns: a L<Paws::DataPipeline::ListPipelinesOutput> instance
 permission to access.
 
 
-=head2 PollForTask(workerGroup => Str, [hostname => Str, instanceIdentity => L<Paws::DataPipeline::InstanceIdentity>])
+=head2 PollForTask(WorkerGroup => Str, [Hostname => Str, InstanceIdentity => L<Paws::DataPipeline::InstanceIdentity>])
 
 Each argument is described in detail in: L<Paws::DataPipeline::PollForTask>
 
@@ -308,7 +308,7 @@ C<PollForTask> again on the same C<workerGroup> until it receives a
 response, and this can take up to 90 seconds.
 
 
-=head2 PutPipelineDefinition(pipelineId => Str, pipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>], [parameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>], parameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]])
+=head2 PutPipelineDefinition(PipelineId => Str, PipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>], [ParameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>], ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::PutPipelineDefinition>
 
@@ -338,7 +338,7 @@ Pipeline object definitions are passed to the C<PutPipelineDefinition>
 action and returned by the GetPipelineDefinition action.
 
 
-=head2 QueryObjects(pipelineId => Str, sphere => Str, [limit => Int, marker => Str, query => L<Paws::DataPipeline::Query>])
+=head2 QueryObjects(PipelineId => Str, Sphere => Str, [Limit => Int, Marker => Str, Query => L<Paws::DataPipeline::Query>])
 
 Each argument is described in detail in: L<Paws::DataPipeline::QueryObjects>
 
@@ -348,7 +348,7 @@ Returns: a L<Paws::DataPipeline::QueryObjectsOutput> instance
 specified set of conditions.
 
 
-=head2 RemoveTags(pipelineId => Str, tagKeys => ArrayRef[Str])
+=head2 RemoveTags(PipelineId => Str, TagKeys => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::RemoveTags>
 
@@ -357,7 +357,7 @@ Returns: a L<Paws::DataPipeline::RemoveTagsOutput> instance
   Removes existing tags from the specified pipeline.
 
 
-=head2 ReportTaskProgress(taskId => Str, [fields => ArrayRef[L<Paws::DataPipeline::Field>]])
+=head2 ReportTaskProgress(TaskId => Str, [Fields => ArrayRef[L<Paws::DataPipeline::Field>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ReportTaskProgress>
 
@@ -378,7 +378,7 @@ reassigns the task in a subsequent response to PollForTask. Task
 runners should call C<ReportTaskProgress> every 60 seconds.
 
 
-=head2 ReportTaskRunnerHeartbeat(taskrunnerId => Str, [hostname => Str, workerGroup => Str])
+=head2 ReportTaskRunnerHeartbeat(TaskrunnerId => Str, [Hostname => Str, WorkerGroup => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ReportTaskRunnerHeartbeat>
 
@@ -391,7 +391,7 @@ service can use this call to detect when the task runner application
 has failed and restart a new instance.
 
 
-=head2 SetStatus(objectIds => ArrayRef[Str], pipelineId => Str, status => Str)
+=head2 SetStatus(ObjectIds => ArrayRef[Str], PipelineId => Str, Status => Str)
 
 Each argument is described in detail in: L<Paws::DataPipeline::SetStatus>
 
@@ -405,7 +405,7 @@ You cannot perform this operation on C<FINISHED> pipelines and
 attempting to do so returns C<InvalidRequestException>.
 
 
-=head2 SetTaskStatus(taskId => Str, taskStatus => Str, [errorId => Str, errorMessage => Str, errorStackTrace => Str])
+=head2 SetTaskStatus(TaskId => Str, TaskStatus => Str, [ErrorId => Str, ErrorMessage => Str, ErrorStackTrace => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::SetTaskStatus>
 
@@ -419,7 +419,7 @@ tasks that are canceled by the web service during a call to
 ReportTaskProgress.
 
 
-=head2 ValidatePipelineDefinition(pipelineId => Str, pipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>], [parameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>], parameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]])
+=head2 ValidatePipelineDefinition(PipelineId => Str, PipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>], [ParameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>], ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ValidatePipelineDefinition>
 

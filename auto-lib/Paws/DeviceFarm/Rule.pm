@@ -1,8 +1,8 @@
 package Paws::DeviceFarm::Rule;
   use Moose;
-  has attribute => (is => 'ro', isa => 'Str');
-  has operator => (is => 'ro', isa => 'Str');
-  has value => (is => 'ro', isa => 'Str');
+  has Attribute => (is => 'ro', isa => 'Str', xmlname => 'attribute', request_name => 'attribute', traits => ['Unwrapped','NameInRequest']);
+  has Operator => (is => 'ro', isa => 'Str', xmlname => 'operator', request_name => 'operator', traits => ['Unwrapped','NameInRequest']);
+  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::Rule object:
 
-  $service_obj->Method(Att1 => { attribute => $value, ..., value => $value  });
+  $service_obj->Method(Att1 => { Attribute => $value, ..., Value => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::Rule object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->attribute
+  $result->Att1->Attribute
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ Represents a condition for a device pool.
 
 =head1 ATTRIBUTES
 
-=head2 attribute => Str
+=head2 Attribute => Str
 
   The rule's attribute.
 
@@ -64,7 +64,7 @@ PLATFORM: The platform (for example, Android or iOS).
 =back
 
 
-=head2 operator => Str
+=head2 Operator => Str
 
   The rule's operator.
 
@@ -93,7 +93,7 @@ NOT_IN: The not-in operator.
 =back
 
 
-=head2 value => Str
+=head2 Value => Str
 
   The rule's value.
 

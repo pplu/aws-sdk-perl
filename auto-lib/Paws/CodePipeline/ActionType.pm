@@ -1,10 +1,10 @@
 package Paws::CodePipeline::ActionType;
   use Moose;
-  has actionConfigurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionConfigurationProperty]');
-  has id => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', required => 1);
-  has inputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', required => 1);
-  has outputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', required => 1);
-  has settings => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeSettings');
+  has ActionConfigurationProperties => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionConfigurationProperty]', xmlname => 'actionConfigurationProperties', request_name => 'actionConfigurationProperties', traits => ['Unwrapped','NameInRequest']);
+  has Id => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has InputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', xmlname => 'inputArtifactDetails', request_name => 'inputArtifactDetails', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has OutputArtifactDetails => (is => 'ro', isa => 'Paws::CodePipeline::ArtifactDetails', xmlname => 'outputArtifactDetails', request_name => 'outputArtifactDetails', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Settings => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeSettings', xmlname => 'settings', request_name => 'settings', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ActionType object:
 
-  $service_obj->Method(Att1 => { actionConfigurationProperties => $value, ..., settings => $value  });
+  $service_obj->Method(Att1 => { ActionConfigurationProperties => $value, ..., Settings => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::ActionType object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->actionConfigurationProperties
+  $result->Att1->ActionConfigurationProperties
 
 =head1 DESCRIPTION
 
@@ -39,25 +39,25 @@ Returns information about the details of an action type.
 
 =head1 ATTRIBUTES
 
-=head2 actionConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]
+=head2 ActionConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]
 
   The configuration properties for the action type.
 
-=head2 B<REQUIRED> id => L<Paws::CodePipeline::ActionTypeId>
+=head2 B<REQUIRED> Id => L<Paws::CodePipeline::ActionTypeId>
 
   
 
-=head2 B<REQUIRED> inputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+=head2 B<REQUIRED> InputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
   The details of the input artifact for the action, such as its commit
 ID.
 
-=head2 B<REQUIRED> outputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
+=head2 B<REQUIRED> OutputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
   The details of the output artifact of the action, such as its commit
 ID.
 
-=head2 settings => L<Paws::CodePipeline::ActionTypeSettings>
+=head2 Settings => L<Paws::CodePipeline::ActionTypeSettings>
 
   The settings for the action type.
 

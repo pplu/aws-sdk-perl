@@ -1,7 +1,7 @@
 package Paws::Inspector::Attribute;
   use Moose;
-  has key => (is => 'ro', isa => 'Str');
-  has value => (is => 'ro', isa => 'Str');
+  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest']);
+  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::Attribute object:
 
-  $service_obj->Method(Att1 => { key => $value, ..., value => $value  });
+  $service_obj->Method(Att1 => { Key => $value, ..., Value => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::Attribute object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->key
+  $result->Att1->Key
 
 =head1 DESCRIPTION
 
@@ -38,11 +38,11 @@ CreateAssessment action.
 
 =head1 ATTRIBUTES
 
-=head2 key => Str
+=head2 Key => Str
 
   The attribute key.
 
-=head2 value => Str
+=head2 Value => Str
 
   The value assigned to the attribute key.
 

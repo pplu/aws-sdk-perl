@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::GetBranchOutput;
   use Moose;
-  has branch => (is => 'ro', isa => 'Paws::CodeCommit::BranchInfo');
+  has Branch => (is => 'ro', isa => 'Paws::CodeCommit::BranchInfo', traits => ['Unwrapped'], xmlname => 'branch' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::CodeCommit::GetBranchOutput
 
 =head1 ATTRIBUTES
 
-=head2 branch => L<Paws::CodeCommit::BranchInfo>
+=head2 Branch => L<Paws::CodeCommit::BranchInfo>
 
   The name of the branch.
 

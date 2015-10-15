@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::BatchGetRepositories;
   use Moose;
-  has repositoryNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has RepositoryNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'repositoryNames' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> repositoryNames => ArrayRef[Str]
+=head2 B<REQUIRED> RepositoryNames => ArrayRef[Str]
 
   The names of the repositories to get information about.
 

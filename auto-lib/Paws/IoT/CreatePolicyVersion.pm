@@ -1,9 +1,9 @@
 
 package Paws::IoT::CreatePolicyVersion;
   use Moose;
-  has policyDocument => (is => 'ro', isa => 'Str', required => 1);
-  has policyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
-  has setAsDefault => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsDefault' );
+  has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
+  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
+  has SetAsDefault => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsDefault' );
 
   use MooseX::ClassAttribute;
 
@@ -36,15 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> policyDocument => Str
+=head2 B<REQUIRED> PolicyDocument => Str
 
   The JSON document that describes the policy.
 
-=head2 B<REQUIRED> policyName => Str
+=head2 B<REQUIRED> PolicyName => Str
 
   The policy name.
 
-=head2 setAsDefault => Bool
+=head2 SetAsDefault => Bool
 
   Specifies whether the policy version is set as the default.
 

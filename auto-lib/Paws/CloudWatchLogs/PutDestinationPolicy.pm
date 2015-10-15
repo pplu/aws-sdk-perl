@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::PutDestinationPolicy;
   use Moose;
-  has accessPolicy => (is => 'ro', isa => 'Str', required => 1);
-  has destinationName => (is => 'ro', isa => 'Str', required => 1);
+  has AccessPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'accessPolicy' , required => 1);
+  has DestinationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,12 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accessPolicy => Str
+=head2 B<REQUIRED> AccessPolicy => Str
 
   An IAM policy document that authorizes cross-account users to deliver
 their log events to associated destination.
 
-=head2 B<REQUIRED> destinationName => Str
+=head2 B<REQUIRED> DestinationName => Str
 
   A name for an existing destination.
 

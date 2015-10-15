@@ -1,7 +1,7 @@
 
 package Paws::MarketplaceCommerceAnalytics::GenerateDataSetResult;
   use Moose;
-  has dataSetRequestId => (is => 'ro', isa => 'Str');
+  has DataSetRequestId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'dataSetRequestId' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::MarketplaceCommerceAnalytics::GenerateDataSetResult
 
 =head1 ATTRIBUTES
 
-=head2 dataSetRequestId => Str
+=head2 DataSetRequestId => Str
 
   
 

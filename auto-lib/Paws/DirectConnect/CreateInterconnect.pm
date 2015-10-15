@@ -1,9 +1,9 @@
 
 package Paws::DirectConnect::CreateInterconnect;
   use Moose;
-  has bandwidth => (is => 'ro', isa => 'Str', required => 1);
-  has interconnectName => (is => 'ro', isa => 'Str', required => 1);
-  has location => (is => 'ro', isa => 'Str', required => 1);
+  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' , required => 1);
+  has InterconnectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectName' , required => 1);
+  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> bandwidth => Str
+=head2 B<REQUIRED> Bandwidth => Str
 
   The port bandwidth
 
@@ -44,7 +44,7 @@ Default: None
 
 Available values: 1Gbps,10Gbps
 
-=head2 B<REQUIRED> interconnectName => Str
+=head2 B<REQUIRED> InterconnectName => Str
 
   The name of the interconnect.
 
@@ -52,7 +52,7 @@ Example: "I<1G Interconnect to AWS>"
 
 Default: None
 
-=head2 B<REQUIRED> location => Str
+=head2 B<REQUIRED> Location => Str
 
   Where the interconnect is located
 

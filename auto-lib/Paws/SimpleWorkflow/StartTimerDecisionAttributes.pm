@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::StartTimerDecisionAttributes;
   use Moose;
-  has control => (is => 'ro', isa => 'Str');
-  has startToFireTimeout => (is => 'ro', isa => 'Str', required => 1);
-  has timerId => (is => 'ro', isa => 'Str', required => 1);
+  has Control => (is => 'ro', isa => 'Str', xmlname => 'control', request_name => 'control', traits => ['Unwrapped','NameInRequest']);
+  has StartToFireTimeout => (is => 'ro', isa => 'Str', xmlname => 'startToFireTimeout', request_name => 'startToFireTimeout', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has TimerId => (is => 'ro', isa => 'Str', xmlname => 'timerId', request_name => 'timerId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::StartTimerDecisionAttributes object:
 
-  $service_obj->Method(Att1 => { control => $value, ..., timerId => $value  });
+  $service_obj->Method(Att1 => { Control => $value, ..., TimerId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::StartTimerDecisionAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->control
+  $result->Att1->Control
 
 =head1 DESCRIPTION
 
@@ -61,19 +61,19 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
-=head2 control => Str
+=head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks.
 
-=head2 B<REQUIRED> startToFireTimeout => Str
+=head2 B<REQUIRED> StartToFireTimeout => Str
 
   B<Required.> The duration to wait before firing the timer.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0.
 
-=head2 B<REQUIRED> timerId => Str
+=head2 B<REQUIRED> TimerId => Str
 
   B<Required.> The unique ID of the timer.
 

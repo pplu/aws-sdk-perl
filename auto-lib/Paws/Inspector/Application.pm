@@ -1,8 +1,8 @@
 package Paws::Inspector::Application;
   use Moose;
-  has applicationArn => (is => 'ro', isa => 'Str');
-  has applicationName => (is => 'ro', isa => 'Str');
-  has resourceGroupArn => (is => 'ro', isa => 'Str');
+  has ApplicationArn => (is => 'ro', isa => 'Str', xmlname => 'applicationArn', request_name => 'applicationArn', traits => ['Unwrapped','NameInRequest']);
+  has ApplicationName => (is => 'ro', isa => 'Str', xmlname => 'applicationName', request_name => 'applicationName', traits => ['Unwrapped','NameInRequest']);
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', xmlname => 'resourceGroupArn', request_name => 'resourceGroupArn', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::Application object:
 
-  $service_obj->Method(Att1 => { applicationArn => $value, ..., resourceGroupArn => $value  });
+  $service_obj->Method(Att1 => { ApplicationArn => $value, ..., ResourceGroupArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::Application object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->applicationArn
+  $result->Att1->ApplicationArn
 
 =head1 DESCRIPTION
 
@@ -40,15 +40,15 @@ DescribeApplication action.
 
 =head1 ATTRIBUTES
 
-=head2 applicationArn => Str
+=head2 ApplicationArn => Str
 
   The ARN specifying the Inspector application.
 
-=head2 applicationName => Str
+=head2 ApplicationName => Str
 
   The name of the Inspector application.
 
-=head2 resourceGroupArn => Str
+=head2 ResourceGroupArn => Str
 
   The ARN specifying the resource group that is associated with the
 application.

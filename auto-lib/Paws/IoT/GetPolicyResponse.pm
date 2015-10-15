@@ -1,10 +1,10 @@
 
 package Paws::IoT::GetPolicyResponse;
   use Moose;
-  has defaultVersionId => (is => 'ro', isa => 'Str');
-  has policyArn => (is => 'ro', isa => 'Str');
-  has policyDocument => (is => 'ro', isa => 'Str');
-  has policyName => (is => 'ro', isa => 'Str');
+  has DefaultVersionId => (is => 'ro', isa => 'Str');
+  has PolicyArn => (is => 'ro', isa => 'Str');
+  has PolicyDocument => (is => 'ro', isa => 'Str');
+  has PolicyName => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -16,16 +16,16 @@ Paws::IoT::GetPolicyResponse
 
 =head1 ATTRIBUTES
 
-=head2 defaultVersionId => Str
+=head2 DefaultVersionId => Str
 
   The default policy version ID.
-=head2 policyArn => Str
+=head2 PolicyArn => Str
 
   The policy ARN.
-=head2 policyDocument => Str
+=head2 PolicyDocument => Str
 
   The JSON document that describes the policy.
-=head2 policyName => Str
+=head2 PolicyName => Str
 
   The policy name.
 

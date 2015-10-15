@@ -1,7 +1,7 @@
 
 package Paws::Inspector::ListTagsForResource;
   use Moose;
-  has resourceArn => (is => 'ro', isa => 'Str');
+  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 resourceArn => Str
+=head2 ResourceArn => Str
 
   The ARN specifying the resource whose tags you want to list.
 

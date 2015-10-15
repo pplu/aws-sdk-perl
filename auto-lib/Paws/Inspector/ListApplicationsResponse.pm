@@ -1,8 +1,8 @@
 
 package Paws::Inspector::ListApplicationsResponse;
   use Moose;
-  has applicationArnList => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has ApplicationArnList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'applicationArnList' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::Inspector::ListApplicationsResponse
 
 =head1 ATTRIBUTES
 
-=head2 applicationArnList => ArrayRef[Str]
+=head2 ApplicationArnList => ArrayRef[Str]
 
   A list of ARNs specifying the applications returned by the action.
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   When a response is generated, if there is more data to be listed, this
 parameter is present in the response and contains the value to use for

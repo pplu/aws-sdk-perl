@@ -1,10 +1,10 @@
 package Paws::Support::TrustedAdvisorResourceDetail;
   use Moose;
-  has isSuppressed => (is => 'ro', isa => 'Bool');
-  has metadata => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has region => (is => 'ro', isa => 'Str', required => 1);
-  has resourceId => (is => 'ro', isa => 'Str', required => 1);
-  has status => (is => 'ro', isa => 'Str', required => 1);
+  has IsSuppressed => (is => 'ro', isa => 'Bool', xmlname => 'isSuppressed', request_name => 'isSuppressed', traits => ['Unwrapped','NameInRequest']);
+  has Metadata => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'metadata', request_name => 'metadata', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Region => (is => 'ro', isa => 'Str', xmlname => 'region', request_name => 'region', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ResourceId => (is => 'ro', isa => 'Str', xmlname => 'resourceId', request_name => 'resourceId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Support::TrustedAdvisorResourceDetail object:
 
-  $service_obj->Method(Att1 => { isSuppressed => $value, ..., status => $value  });
+  $service_obj->Method(Att1 => { IsSuppressed => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Support::TrustedAdvisorResourceDetail object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->isSuppressed
+  $result->Att1->IsSuppressed
 
 =head1 DESCRIPTION
 
@@ -40,12 +40,12 @@ check.
 
 =head1 ATTRIBUTES
 
-=head2 isSuppressed => Bool
+=head2 IsSuppressed => Bool
 
   Specifies whether the AWS resource was ignored by Trusted Advisor
 because it was marked as suppressed by the user.
 
-=head2 B<REQUIRED> metadata => ArrayRef[Str]
+=head2 B<REQUIRED> Metadata => ArrayRef[Str]
 
   Additional information about the identified resource. The exact
 metadata and its order can be obtained by inspecting the
@@ -54,15 +54,15 @@ DescribeTrustedAdvisorChecks. B<Metadata> contains all the data that is
 shown in the Excel download, even in those cases where the UI shows
 just summary data.
 
-=head2 B<REQUIRED> region => Str
+=head2 B<REQUIRED> Region => Str
 
   The AWS region in which the identified resource is located.
 
-=head2 B<REQUIRED> resourceId => Str
+=head2 B<REQUIRED> ResourceId => Str
 
   The unique identifier for the identified resource.
 
-=head2 B<REQUIRED> status => Str
+=head2 B<REQUIRED> Status => Str
 
   The status code for the resource identified in the Trusted Advisor
 check.

@@ -1,7 +1,7 @@
 package Paws::CodePipeline::EncryptionKey;
   use Moose;
-  has id => (is => 'ro', isa => 'Str', required => 1);
-  has type => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::EncryptionKey object:
 
-  $service_obj->Method(Att1 => { id => $value, ..., type => $value  });
+  $service_obj->Method(Att1 => { Id => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::EncryptionKey object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->id
+  $result->Att1->Id
 
 =head1 DESCRIPTION
 
@@ -37,11 +37,11 @@ key used to encrypt data in the artifact store.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> id => Str
+=head2 B<REQUIRED> Id => Str
 
   The ID of the AWS KMS key.
 
-=head2 B<REQUIRED> type => Str
+=head2 B<REQUIRED> Type => Str
 
   The type of AWS KMS key, such as a customer master key.
 

@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::ActivityTypeDetail;
   use Moose;
-  has configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeConfiguration', required => 1);
-  has typeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeInfo', required => 1);
+  has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeConfiguration', traits => ['Unwrapped'], xmlname => 'configuration' , required => 1);
+  has TypeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeInfo', traits => ['Unwrapped'], xmlname => 'typeInfo' , required => 1);
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::SimpleWorkflow::ActivityTypeDetail
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> configuration => L<Paws::SimpleWorkflow::ActivityTypeConfiguration>
+=head2 B<REQUIRED> Configuration => L<Paws::SimpleWorkflow::ActivityTypeConfiguration>
 
   The configuration settings registered with the activity type.
-=head2 B<REQUIRED> typeInfo => L<Paws::SimpleWorkflow::ActivityTypeInfo>
+=head2 B<REQUIRED> TypeInfo => L<Paws::SimpleWorkflow::ActivityTypeInfo>
 
   General information about the activity type.
 

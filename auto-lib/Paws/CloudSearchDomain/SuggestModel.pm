@@ -1,8 +1,8 @@
 package Paws::CloudSearchDomain::SuggestModel;
   use Moose;
-  has found => (is => 'ro', isa => 'Int');
-  has query => (is => 'ro', isa => 'Str');
-  has suggestions => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::SuggestionMatch]');
+  has Found => (is => 'ro', isa => 'Int', xmlname => 'found', request_name => 'found', traits => ['Unwrapped','NameInRequest']);
+  has Query => (is => 'ro', isa => 'Str', xmlname => 'query', request_name => 'query', traits => ['Unwrapped','NameInRequest']);
+  has Suggestions => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearchDomain::SuggestionMatch]', xmlname => 'suggestions', request_name => 'suggestions', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudSearchDomain::SuggestModel object:
 
-  $service_obj->Method(Att1 => { found => $value, ..., suggestions => $value  });
+  $service_obj->Method(Att1 => { Found => $value, ..., Suggestions => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudSearchDomain::SuggestModel object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->found
+  $result->Att1->Found
 
 =head1 DESCRIPTION
 
@@ -38,15 +38,15 @@ C<SuggestResponse>.
 
 =head1 ATTRIBUTES
 
-=head2 found => Int
+=head2 Found => Int
 
   The number of documents that were found to match the query string.
 
-=head2 query => Str
+=head2 Query => Str
 
   The query string specified in the suggest request.
 
-=head2 suggestions => ArrayRef[L<Paws::CloudSearchDomain::SuggestionMatch>]
+=head2 Suggestions => ArrayRef[L<Paws::CloudSearchDomain::SuggestionMatch>]
 
   The documents that match the query string.
 

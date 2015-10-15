@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::TestMetricFilter;
   use Moose;
-  has filterPattern => (is => 'ro', isa => 'Str', required => 1);
-  has logEventMessages => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has FilterPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterPattern' , required => 1);
+  has LogEventMessages => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'logEventMessages' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> filterPattern => Str
+=head2 B<REQUIRED> FilterPattern => Str
 
   
 
-=head2 B<REQUIRED> logEventMessages => ArrayRef[Str]
+=head2 B<REQUIRED> LogEventMessages => ArrayRef[Str]
 
   A list of log event messages to test.
 

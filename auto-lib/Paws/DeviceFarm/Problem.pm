@@ -1,12 +1,12 @@
 package Paws::DeviceFarm::Problem;
   use Moose;
-  has device => (is => 'ro', isa => 'Paws::DeviceFarm::Device');
-  has job => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail');
-  has message => (is => 'ro', isa => 'Str');
-  has result => (is => 'ro', isa => 'Str');
-  has run => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail');
-  has suite => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail');
-  has test => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail');
+  has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', xmlname => 'device', request_name => 'device', traits => ['Unwrapped','NameInRequest']);
+  has Job => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', xmlname => 'job', request_name => 'job', traits => ['Unwrapped','NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
+  has Result => (is => 'ro', isa => 'Str', xmlname => 'result', request_name => 'result', traits => ['Unwrapped','NameInRequest']);
+  has Run => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', xmlname => 'run', request_name => 'run', traits => ['Unwrapped','NameInRequest']);
+  has Suite => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', xmlname => 'suite', request_name => 'suite', traits => ['Unwrapped','NameInRequest']);
+  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::ProblemDetail', xmlname => 'test', request_name => 'test', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -26,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::Problem object:
 
-  $service_obj->Method(Att1 => { device => $value, ..., test => $value  });
+  $service_obj->Method(Att1 => { Device => $value, ..., Test => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::Problem object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->device
+  $result->Att1->Device
 
 =head1 DESCRIPTION
 
@@ -41,19 +41,19 @@ Represents a specific warning or failure.
 
 =head1 ATTRIBUTES
 
-=head2 device => L<Paws::DeviceFarm::Device>
+=head2 Device => L<Paws::DeviceFarm::Device>
 
   Information about the associated device.
 
-=head2 job => L<Paws::DeviceFarm::ProblemDetail>
+=head2 Job => L<Paws::DeviceFarm::ProblemDetail>
 
   Information about the associated job.
 
-=head2 message => Str
+=head2 Message => Str
 
   A message about the problem's result.
 
-=head2 result => Str
+=head2 Result => Str
 
   The problem's result.
 
@@ -92,15 +92,15 @@ WARNED: A warning condition.
 =back
 
 
-=head2 run => L<Paws::DeviceFarm::ProblemDetail>
+=head2 Run => L<Paws::DeviceFarm::ProblemDetail>
 
   Information about the associated run.
 
-=head2 suite => L<Paws::DeviceFarm::ProblemDetail>
+=head2 Suite => L<Paws::DeviceFarm::ProblemDetail>
 
   Information about the associated suite.
 
-=head2 test => L<Paws::DeviceFarm::ProblemDetail>
+=head2 Test => L<Paws::DeviceFarm::ProblemDetail>
 
   Information about the associated test.
 

@@ -1,8 +1,8 @@
 
 package Paws::Glacier::InitiateMultipartUploadOutput;
   use Moose;
-  has location => (is => 'ro', isa => 'Str');
-  has uploadId => (is => 'ro', isa => 'Str');
+  has Location => (is => 'ro', isa => 'Str');
+  has UploadId => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -14,11 +14,11 @@ Paws::Glacier::InitiateMultipartUploadOutput
 
 =head1 ATTRIBUTES
 
-=head2 location => Str
+=head2 Location => Str
 
   The relative URI path of the multipart upload ID Amazon Glacier
 created.
-=head2 uploadId => Str
+=head2 UploadId => Str
 
   The ID of the multipart upload. This value is also included as part of
 the location.

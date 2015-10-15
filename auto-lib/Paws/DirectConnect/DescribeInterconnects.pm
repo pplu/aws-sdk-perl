@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::DescribeInterconnects;
   use Moose;
-  has interconnectId => (is => 'ro', isa => 'Str');
+  has InterconnectId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectId' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 interconnectId => Str
+=head2 InterconnectId => Str
 
   
 

@@ -1,10 +1,10 @@
 package Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes;
   use Moose;
-  has control => (is => 'ro', isa => 'Str');
-  has input => (is => 'ro', isa => 'Str');
-  has runId => (is => 'ro', isa => 'Str');
-  has signalName => (is => 'ro', isa => 'Str', required => 1);
-  has workflowId => (is => 'ro', isa => 'Str', required => 1);
+  has Control => (is => 'ro', isa => 'Str', xmlname => 'control', request_name => 'control', traits => ['Unwrapped','NameInRequest']);
+  has Input => (is => 'ro', isa => 'Str', xmlname => 'input', request_name => 'input', traits => ['Unwrapped','NameInRequest']);
+  has RunId => (is => 'ro', isa => 'Str', xmlname => 'runId', request_name => 'runId', traits => ['Unwrapped','NameInRequest']);
+  has SignalName => (is => 'ro', isa => 'Str', xmlname => 'signalName', request_name => 'signalName', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has WorkflowId => (is => 'ro', isa => 'Str', xmlname => 'workflowId', request_name => 'workflowId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes object:
 
-  $service_obj->Method(Att1 => { control => $value, ..., workflowId => $value  });
+  $service_obj->Method(Att1 => { Control => $value, ..., WorkflowId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->control
+  $result->Att1->Control
 
 =head1 DESCRIPTION
 
@@ -63,27 +63,27 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
-=head2 control => Str
+=head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent decision tasks.
 
-=head2 input => Str
+=head2 Input => Str
 
   I<Optional.> Input data to be provided with the signal. The target
 workflow execution will use the signal name and input data to process
 the signal.
 
-=head2 runId => Str
+=head2 RunId => Str
 
   The C<runId> of the workflow execution to be signaled.
 
-=head2 B<REQUIRED> signalName => Str
+=head2 B<REQUIRED> SignalName => Str
 
   B<Required.> The name of the signal.The target workflow execution will
 use the signal name and input to process the signal.
 
-=head2 B<REQUIRED> workflowId => Str
+=head2 B<REQUIRED> WorkflowId => Str
 
   B<Required.> The C<workflowId> of the workflow execution to be
 signaled.

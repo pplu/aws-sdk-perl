@@ -1,9 +1,9 @@
 package Paws::CodePipeline::PipelineSummary;
   use Moose;
-  has created => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str');
-  has updated => (is => 'ro', isa => 'Str');
-  has version => (is => 'ro', isa => 'Int');
+  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has Updated => (is => 'ro', isa => 'Str', xmlname => 'updated', request_name => 'updated', traits => ['Unwrapped','NameInRequest']);
+  has Version => (is => 'ro', isa => 'Int', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::PipelineSummary object:
 
-  $service_obj->Method(Att1 => { created => $value, ..., version => $value  });
+  $service_obj->Method(Att1 => { Created => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipeline::PipelineSummary object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->created
+  $result->Att1->Created
 
 =head1 DESCRIPTION
 
@@ -38,20 +38,20 @@ Returns a summary of a pipeline.
 
 =head1 ATTRIBUTES
 
-=head2 created => Str
+=head2 Created => Str
 
   The date and time the pipeline was created, in timestamp format.
 
-=head2 name => Str
+=head2 Name => Str
 
   The name of the pipeline.
 
-=head2 updated => Str
+=head2 Updated => Str
 
   The date and time of the last update to the pipeline, in timestamp
 format.
 
-=head2 version => Int
+=head2 Version => Int
 
   The version number of the pipeline.
 

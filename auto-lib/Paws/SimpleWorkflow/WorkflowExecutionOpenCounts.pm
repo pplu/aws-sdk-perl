@@ -1,10 +1,10 @@
 package Paws::SimpleWorkflow::WorkflowExecutionOpenCounts;
   use Moose;
-  has openActivityTasks => (is => 'ro', isa => 'Int', required => 1);
-  has openChildWorkflowExecutions => (is => 'ro', isa => 'Int', required => 1);
-  has openDecisionTasks => (is => 'ro', isa => 'Int', required => 1);
-  has openLambdaFunctions => (is => 'ro', isa => 'Int');
-  has openTimers => (is => 'ro', isa => 'Int', required => 1);
+  has OpenActivityTasks => (is => 'ro', isa => 'Int', xmlname => 'openActivityTasks', request_name => 'openActivityTasks', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has OpenChildWorkflowExecutions => (is => 'ro', isa => 'Int', xmlname => 'openChildWorkflowExecutions', request_name => 'openChildWorkflowExecutions', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has OpenDecisionTasks => (is => 'ro', isa => 'Int', xmlname => 'openDecisionTasks', request_name => 'openDecisionTasks', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has OpenLambdaFunctions => (is => 'ro', isa => 'Int', xmlname => 'openLambdaFunctions', request_name => 'openLambdaFunctions', traits => ['Unwrapped','NameInRequest']);
+  has OpenTimers => (is => 'ro', isa => 'Int', xmlname => 'openTimers', request_name => 'openTimers', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::WorkflowExecutionOpenCounts object:
 
-  $service_obj->Method(Att1 => { openActivityTasks => $value, ..., openTimers => $value  });
+  $service_obj->Method(Att1 => { OpenActivityTasks => $value, ..., OpenTimers => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::WorkflowExecutionOpenCounts object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->openActivityTasks
+  $result->Att1->OpenActivityTasks
 
 =head1 DESCRIPTION
 
@@ -40,24 +40,24 @@ for a workflow execution.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> openActivityTasks => Int
+=head2 B<REQUIRED> OpenActivityTasks => Int
 
   The count of activity tasks whose status is OPEN.
 
-=head2 B<REQUIRED> openChildWorkflowExecutions => Int
+=head2 B<REQUIRED> OpenChildWorkflowExecutions => Int
 
   The count of child workflow executions whose status is OPEN.
 
-=head2 B<REQUIRED> openDecisionTasks => Int
+=head2 B<REQUIRED> OpenDecisionTasks => Int
 
   The count of decision tasks whose status is OPEN. A workflow execution
 can have at most one open decision task.
 
-=head2 openLambdaFunctions => Int
+=head2 OpenLambdaFunctions => Int
 
   The count of AWS Lambda functions that are currently executing.
 
-=head2 B<REQUIRED> openTimers => Int
+=head2 B<REQUIRED> OpenTimers => Int
 
   The count of timers started by this workflow execution that have not
 fired yet.

@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreatePolicy;
   use Moose;
-  has policyDocument => (is => 'ro', isa => 'Str', required => 1);
-  has policyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
+  has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
+  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,13 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> policyDocument => Str
+=head2 B<REQUIRED> PolicyDocument => Str
 
   The JSON document that describes the policy. The length of the
 B<policyDocument> must be a minimum length of 1, with a maximum length
 of 2048, excluding whitespace.
 
-=head2 B<REQUIRED> policyName => Str
+=head2 B<REQUIRED> PolicyName => Str
 
   The policy name.
 

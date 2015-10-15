@@ -1,6 +1,6 @@
 package Paws::SimpleWorkflow::TagFilter;
   use Moose;
-  has tag => (is => 'ro', isa => 'Str', required => 1);
+  has Tag => (is => 'ro', isa => 'Str', xmlname => 'tag', request_name => 'tag', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::TagFilter object:
 
-  $service_obj->Method(Att1 => { tag => $value, ..., tag => $value  });
+  $service_obj->Method(Att1 => { Tag => $value, ..., Tag => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::TagFilter object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->tag
+  $result->Att1->Tag
 
 =head1 DESCRIPTION
 
@@ -36,7 +36,7 @@ tag.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> tag => Str
+=head2 B<REQUIRED> Tag => Str
 
   B<Required.> Specifies the tag that must be associated with the
 execution for it to meet the filter criteria.

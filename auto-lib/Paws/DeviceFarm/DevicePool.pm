@@ -1,10 +1,10 @@
 package Paws::DeviceFarm::DevicePool;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str');
-  has description => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str');
-  has rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]');
-  has type => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
+  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]', xmlname => 'rules', request_name => 'rules', traits => ['Unwrapped','NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -24,14 +24,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::DevicePool object:
 
-  $service_obj->Method(Att1 => { arn => $value, ..., type => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::DevicePool object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->arn
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
@@ -39,23 +39,23 @@ Represents a collection of device types.
 
 =head1 ATTRIBUTES
 
-=head2 arn => Str
+=head2 Arn => Str
 
   The device pool's ARN.
 
-=head2 description => Str
+=head2 Description => Str
 
   The device pool's description.
 
-=head2 name => Str
+=head2 Name => Str
 
   The device pool's name.
 
-=head2 rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
+=head2 Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
 
   Information about the device pool's rules.
 
-=head2 type => Str
+=head2 Type => Str
 
   The device pool's type.
 

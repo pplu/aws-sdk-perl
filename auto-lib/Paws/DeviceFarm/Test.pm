@@ -1,15 +1,15 @@
 package Paws::DeviceFarm::Test;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str');
-  has counters => (is => 'ro', isa => 'Paws::DeviceFarm::Counters');
-  has created => (is => 'ro', isa => 'Str');
-  has message => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str');
-  has result => (is => 'ro', isa => 'Str');
-  has started => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Str');
-  has stopped => (is => 'ro', isa => 'Str');
-  has type => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
+  has Counters => (is => 'ro', isa => 'Paws::DeviceFarm::Counters', xmlname => 'counters', request_name => 'counters', traits => ['Unwrapped','NameInRequest']);
+  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
+  has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
+  has Result => (is => 'ro', isa => 'Str', xmlname => 'result', request_name => 'result', traits => ['Unwrapped','NameInRequest']);
+  has Started => (is => 'ro', isa => 'Str', xmlname => 'started', request_name => 'started', traits => ['Unwrapped','NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
+  has Stopped => (is => 'ro', isa => 'Str', xmlname => 'stopped', request_name => 'stopped', traits => ['Unwrapped','NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -29,14 +29,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::Test object:
 
-  $service_obj->Method(Att1 => { arn => $value, ..., type => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::Test object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->arn
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
@@ -44,27 +44,27 @@ Represents a condition that is evaluated.
 
 =head1 ATTRIBUTES
 
-=head2 arn => Str
+=head2 Arn => Str
 
   The test's ARN.
 
-=head2 counters => L<Paws::DeviceFarm::Counters>
+=head2 Counters => L<Paws::DeviceFarm::Counters>
 
   The test's result counters.
 
-=head2 created => Str
+=head2 Created => Str
 
   When the test was created.
 
-=head2 message => Str
+=head2 Message => Str
 
   A message about the test's result.
 
-=head2 name => Str
+=head2 Name => Str
 
   The test's name.
 
-=head2 result => Str
+=head2 Result => Str
 
   The test's result.
 
@@ -103,11 +103,11 @@ WARNED: A warning condition.
 =back
 
 
-=head2 started => Str
+=head2 Started => Str
 
   The test's start time.
 
-=head2 status => Str
+=head2 Status => Str
 
   The test's status.
 
@@ -138,11 +138,11 @@ SCHEDULING: A scheduling status.
 =back
 
 
-=head2 stopped => Str
+=head2 Stopped => Str
 
   The test's stop time.
 
-=head2 type => Str
+=head2 Type => Str
 
   The test's type.
 

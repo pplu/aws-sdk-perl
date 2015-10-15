@@ -1,7 +1,7 @@
 
 package Paws::ECS::UpdateContainerAgentResponse;
   use Moose;
-  has containerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance');
+  has ContainerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance', traits => ['Unwrapped'], xmlname => 'containerInstance' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::ECS::UpdateContainerAgentResponse
 
 =head1 ATTRIBUTES
 
-=head2 containerInstance => L<Paws::ECS::ContainerInstance>
+=head2 ContainerInstance => L<Paws::ECS::ContainerInstance>
 
   
 

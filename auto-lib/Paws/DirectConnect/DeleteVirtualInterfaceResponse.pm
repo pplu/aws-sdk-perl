@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::DeleteVirtualInterfaceResponse;
   use Moose;
-  has virtualInterfaceState => (is => 'ro', isa => 'Str');
+  has VirtualInterfaceState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceState' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::DirectConnect::DeleteVirtualInterfaceResponse
 
 =head1 ATTRIBUTES
 
-=head2 virtualInterfaceState => Str
+=head2 VirtualInterfaceState => Str
 
   
 

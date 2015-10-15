@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::ActivityTaskCompletedEventAttributes;
   use Moose;
-  has result => (is => 'ro', isa => 'Str');
-  has scheduledEventId => (is => 'ro', isa => 'Int', required => 1);
-  has startedEventId => (is => 'ro', isa => 'Int', required => 1);
+  has Result => (is => 'ro', isa => 'Str', xmlname => 'result', request_name => 'result', traits => ['Unwrapped','NameInRequest']);
+  has ScheduledEventId => (is => 'ro', isa => 'Int', xmlname => 'scheduledEventId', request_name => 'scheduledEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has StartedEventId => (is => 'ro', isa => 'Int', xmlname => 'startedEventId', request_name => 'startedEventId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -22,14 +22,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::ActivityTaskCompletedEventAttributes object:
 
-  $service_obj->Method(Att1 => { result => $value, ..., startedEventId => $value  });
+  $service_obj->Method(Att1 => { Result => $value, ..., StartedEventId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::ActivityTaskCompletedEventAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->result
+  $result->Att1->Result
 
 =head1 DESCRIPTION
 
@@ -37,18 +37,18 @@ Provides details of the C<ActivityTaskCompleted> event.
 
 =head1 ATTRIBUTES
 
-=head2 result => Str
+=head2 Result => Str
 
   The results of the activity task (if any).
 
-=head2 B<REQUIRED> scheduledEventId => Int
+=head2 B<REQUIRED> ScheduledEventId => Int
 
   The ID of the C<ActivityTaskScheduled> event that was recorded when
 this activity task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
-=head2 B<REQUIRED> startedEventId => Int
+=head2 B<REQUIRED> StartedEventId => Int
 
   The ID of the C<ActivityTaskStarted> event recorded when this activity
 task was started. This information can be useful for diagnosing

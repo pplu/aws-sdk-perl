@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeRulesPackage;
   use Moose;
-  has rulesPackageArn => (is => 'ro', isa => 'Str');
+  has RulesPackageArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'rulesPackageArn' );
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 rulesPackageArn => Str
+=head2 RulesPackageArn => Str
 
   The ARN specifying the rules package that you want to describe.
 

@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses;
   use Moose;
-  has checkIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has CheckIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'checkIds' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> checkIds => ArrayRef[Str]
+=head2 B<REQUIRED> CheckIds => ArrayRef[Str]
 
   The IDs of the Trusted Advisor checks.
 

@@ -1,9 +1,9 @@
 package Paws::DeviceFarm::ScheduleRunTest;
   use Moose;
-  has filter => (is => 'ro', isa => 'Str');
-  has parameters => (is => 'ro', isa => 'Paws::DeviceFarm::TestParameters');
-  has testPackageArn => (is => 'ro', isa => 'Str');
-  has type => (is => 'ro', isa => 'Str', required => 1);
+  has Filter => (is => 'ro', isa => 'Str', xmlname => 'filter', request_name => 'filter', traits => ['Unwrapped','NameInRequest']);
+  has Parameters => (is => 'ro', isa => 'Paws::DeviceFarm::TestParameters', xmlname => 'parameters', request_name => 'parameters', traits => ['Unwrapped','NameInRequest']);
+  has TestPackageArn => (is => 'ro', isa => 'Str', xmlname => 'testPackageArn', request_name => 'testPackageArn', traits => ['Unwrapped','NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -23,14 +23,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::ScheduleRunTest object:
 
-  $service_obj->Method(Att1 => { filter => $value, ..., type => $value  });
+  $service_obj->Method(Att1 => { Filter => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DeviceFarm::ScheduleRunTest object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->filter
+  $result->Att1->Filter
 
 =head1 DESCRIPTION
 
@@ -38,20 +38,20 @@ Represents additional test settings.
 
 =head1 ATTRIBUTES
 
-=head2 filter => Str
+=head2 Filter => Str
 
   The test's filter.
 
-=head2 parameters => L<Paws::DeviceFarm::TestParameters>
+=head2 Parameters => L<Paws::DeviceFarm::TestParameters>
 
   The test's parameters, such as test framework parameters and fixture
 settings.
 
-=head2 testPackageArn => Str
+=head2 TestPackageArn => Str
 
   The ARN of the uploaded test that will be run.
 
-=head2 B<REQUIRED> type => Str
+=head2 B<REQUIRED> Type => Str
 
   The test's type.
 

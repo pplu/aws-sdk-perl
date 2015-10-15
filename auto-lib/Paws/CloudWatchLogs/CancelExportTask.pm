@@ -1,7 +1,7 @@
 
 package Paws::CloudWatchLogs::CancelExportTask;
   use Moose;
-  has taskId => (is => 'ro', isa => 'Str', required => 1);
+  has TaskId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> taskId => Str
+=head2 B<REQUIRED> TaskId => Str
 
   Id of the export task to cancel.
 

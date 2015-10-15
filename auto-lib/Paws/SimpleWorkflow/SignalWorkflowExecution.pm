@@ -1,11 +1,11 @@
 
 package Paws::SimpleWorkflow::SignalWorkflowExecution;
   use Moose;
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has input => (is => 'ro', isa => 'Str');
-  has runId => (is => 'ro', isa => 'Str');
-  has signalName => (is => 'ro', isa => 'Str', required => 1);
-  has workflowId => (is => 'ro', isa => 'Str', required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' );
+  has RunId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'runId' );
+  has SignalName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'signalName' , required => 1);
+  has WorkflowId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workflowId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -36,25 +36,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
   The name of the domain containing the workflow execution to signal.
 
-=head2 input => Str
+=head2 Input => Str
 
   Data to attach to the C<WorkflowExecutionSignaled> event in the target
 workflow execution's history.
 
-=head2 runId => Str
+=head2 RunId => Str
 
   The runId of the workflow execution to signal.
 
-=head2 B<REQUIRED> signalName => Str
+=head2 B<REQUIRED> SignalName => Str
 
   The name of the signal. This name must be meaningful to the target
 workflow.
 
-=head2 B<REQUIRED> workflowId => Str
+=head2 B<REQUIRED> WorkflowId => Str
 
   The workflowId of the workflow execution to signal.
 

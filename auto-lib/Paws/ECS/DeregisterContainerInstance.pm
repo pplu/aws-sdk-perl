@@ -1,9 +1,9 @@
 
 package Paws::ECS::DeregisterContainerInstance;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has containerInstance => (is => 'ro', isa => 'Str', required => 1);
-  has force => (is => 'ro', isa => 'Bool');
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has ContainerInstance => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerInstance' , required => 1);
+  has Force => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'force' );
 
   use MooseX::ClassAttribute;
 
@@ -34,13 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container instance to deregister. If you do not specify a
 cluster, the default cluster is assumed.
 
-=head2 B<REQUIRED> containerInstance => Str
+=head2 B<REQUIRED> ContainerInstance => Str
 
   The container instance ID or full Amazon Resource Name (ARN) of the
 container instance to deregister. The ARN contains the C<arn:aws:ecs>
@@ -49,7 +49,7 @@ account ID of the container instance owner, the C<container-instance>
 namespace, and then the container instance ID. For example,
 arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>.
 
-=head2 force => Bool
+=head2 Force => Bool
 
   Forces the deregistration of the container instance. If you have tasks
 running on the container instance when you deregister it with the

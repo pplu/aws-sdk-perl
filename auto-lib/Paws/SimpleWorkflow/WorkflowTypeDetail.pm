@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::WorkflowTypeDetail;
   use Moose;
-  has configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeConfiguration', required => 1);
-  has typeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeInfo', required => 1);
+  has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeConfiguration', traits => ['Unwrapped'], xmlname => 'configuration' , required => 1);
+  has TypeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeInfo', traits => ['Unwrapped'], xmlname => 'typeInfo' , required => 1);
 
 
 ### main pod documentation begin ###
@@ -13,11 +13,11 @@ Paws::SimpleWorkflow::WorkflowTypeDetail
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> configuration => L<Paws::SimpleWorkflow::WorkflowTypeConfiguration>
+=head2 B<REQUIRED> Configuration => L<Paws::SimpleWorkflow::WorkflowTypeConfiguration>
 
   Configuration settings of the workflow type registered through
 RegisterWorkflowType
-=head2 B<REQUIRED> typeInfo => L<Paws::SimpleWorkflow::WorkflowTypeInfo>
+=head2 B<REQUIRED> TypeInfo => L<Paws::SimpleWorkflow::WorkflowTypeInfo>
 
   General information about the workflow type.
 

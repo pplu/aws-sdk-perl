@@ -1,10 +1,10 @@
 
 package Paws::CloudWatchLogs::PutLogEvents;
   use Moose;
-  has logEvents => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::InputLogEvent]', required => 1);
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has logStreamName => (is => 'ro', isa => 'Str', required => 1);
-  has sequenceToken => (is => 'ro', isa => 'Str');
+  has LogEvents => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::InputLogEvent]', traits => ['NameInRequest'], request_name => 'logEvents' , required => 1);
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has LogStreamName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logStreamName' , required => 1);
+  has SequenceToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sequenceToken' );
 
   use MooseX::ClassAttribute;
 
@@ -35,19 +35,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> logEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>]
+=head2 B<REQUIRED> LogEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>]
 
   
 
-=head2 B<REQUIRED> logGroupName => Str
+=head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group to put log events to.
 
-=head2 B<REQUIRED> logStreamName => Str
+=head2 B<REQUIRED> LogStreamName => Str
 
   The name of the log stream to put log events to.
 
-=head2 sequenceToken => Str
+=head2 SequenceToken => Str
 
   A string token that must be obtained from the response of the previous
 C<PutLogEvents> request.

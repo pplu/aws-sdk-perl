@@ -1,15 +1,15 @@
 package Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes;
   use Moose;
-  has activityId => (is => 'ro', isa => 'Str', required => 1);
-  has activityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', required => 1);
-  has control => (is => 'ro', isa => 'Str');
-  has heartbeatTimeout => (is => 'ro', isa => 'Str');
-  has input => (is => 'ro', isa => 'Str');
-  has scheduleToCloseTimeout => (is => 'ro', isa => 'Str');
-  has scheduleToStartTimeout => (is => 'ro', isa => 'Str');
-  has startToCloseTimeout => (is => 'ro', isa => 'Str');
-  has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
-  has taskPriority => (is => 'ro', isa => 'Str');
+  has ActivityId => (is => 'ro', isa => 'Str', xmlname => 'activityId', request_name => 'activityId', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', xmlname => 'activityType', request_name => 'activityType', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Control => (is => 'ro', isa => 'Str', xmlname => 'control', request_name => 'control', traits => ['Unwrapped','NameInRequest']);
+  has HeartbeatTimeout => (is => 'ro', isa => 'Str', xmlname => 'heartbeatTimeout', request_name => 'heartbeatTimeout', traits => ['Unwrapped','NameInRequest']);
+  has Input => (is => 'ro', isa => 'Str', xmlname => 'input', request_name => 'input', traits => ['Unwrapped','NameInRequest']);
+  has ScheduleToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'scheduleToCloseTimeout', request_name => 'scheduleToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
+  has ScheduleToStartTimeout => (is => 'ro', isa => 'Str', xmlname => 'scheduleToStartTimeout', request_name => 'scheduleToStartTimeout', traits => ['Unwrapped','NameInRequest']);
+  has StartToCloseTimeout => (is => 'ro', isa => 'Str', xmlname => 'startToCloseTimeout', request_name => 'startToCloseTimeout', traits => ['Unwrapped','NameInRequest']);
+  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', xmlname => 'taskList', request_name => 'taskList', traits => ['Unwrapped','NameInRequest']);
+  has TaskPriority => (is => 'ro', isa => 'Str', xmlname => 'taskPriority', request_name => 'taskPriority', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -29,14 +29,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes object:
 
-  $service_obj->Method(Att1 => { activityId => $value, ..., taskPriority => $value  });
+  $service_obj->Method(Att1 => { ActivityId => $value, ..., TaskPriority => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->activityId
+  $result->Att1->ActivityId
 
 =head1 DESCRIPTION
 
@@ -81,7 +81,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> activityId => Str
+=head2 B<REQUIRED> ActivityId => Str
 
   B<Required.> The C<activityId> of the activity task.
 
@@ -90,16 +90,16 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
-=head2 B<REQUIRED> activityType => L<Paws::SimpleWorkflow::ActivityType>
+=head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
 
   B<Required.> The type of the activity task to schedule.
 
-=head2 control => Str
+=head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks. This data is not sent to the activity.
 
-=head2 heartbeatTimeout => Str
+=head2 HeartbeatTimeout => Str
 
   If set, specifies the maximum time before which a worker processing a
 task of this type must report progress by calling
@@ -112,11 +112,11 @@ activity type using RegisterActivityType.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
-=head2 input => Str
+=head2 Input => Str
 
   The input provided to the activity task.
 
-=head2 scheduleToCloseTimeout => Str
+=head2 ScheduleToCloseTimeout => Str
 
   The maximum duration for this activity task.
 
@@ -128,7 +128,7 @@ either as a default for the activity type or through this field. If
 neither this field is set nor a default schedule-to-close timeout was
 specified at registration time then a fault will be returned.
 
-=head2 scheduleToStartTimeout => Str
+=head2 ScheduleToStartTimeout => Str
 
   I<Optional.> If set, specifies the maximum duration the activity task
 can wait to be assigned to a worker. This overrides the default
@@ -143,7 +143,7 @@ either as a default for the activity type or through this field. If
 neither this field is set nor a default schedule-to-start timeout was
 specified at registration time then a fault will be returned.
 
-=head2 startToCloseTimeout => Str
+=head2 StartToCloseTimeout => Str
 
   If set, specifies the maximum duration a worker may take to process
 this activity task. This overrides the default start-to-close timeout
@@ -158,7 +158,7 @@ either as a default for the activity type or through this field. If
 neither this field is set nor a default start-to-close timeout was
 specified at registration time then a fault will be returned.
 
-=head2 taskList => L<Paws::SimpleWorkflow::TaskList>
+=head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   If set, specifies the name of the task list in which to schedule the
 activity task. If not specified, the C<defaultTaskList> registered with
@@ -174,7 +174,7 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
-=head2 taskPriority => Str
+=head2 TaskPriority => Str
 
   I<Optional.> If set, specifies the priority with which the activity
 task is to be assigned to a worker. This overrides the

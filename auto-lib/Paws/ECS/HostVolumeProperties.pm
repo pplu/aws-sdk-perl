@@ -1,6 +1,6 @@
 package Paws::ECS::HostVolumeProperties;
   use Moose;
-  has sourcePath => (is => 'ro', isa => 'Str');
+  has SourcePath => (is => 'ro', isa => 'Str', xmlname => 'sourcePath', request_name => 'sourcePath', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,14 +20,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::HostVolumeProperties object:
 
-  $service_obj->Method(Att1 => { sourcePath => $value, ..., sourcePath => $value  });
+  $service_obj->Method(Att1 => { SourcePath => $value, ..., SourcePath => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::HostVolumeProperties object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->sourcePath
+  $result->Att1->SourcePath
 
 =head1 DESCRIPTION
 
@@ -35,7 +35,7 @@ Details on a container instance host volume.
 
 =head1 ATTRIBUTES
 
-=head2 sourcePath => Str
+=head2 SourcePath => Str
 
   The path on the host container instance that is presented to the
 container. If this parameter is empty, then the Docker daemon has

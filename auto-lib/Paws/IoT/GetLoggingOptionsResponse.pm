@@ -1,8 +1,8 @@
 
 package Paws::IoT::GetLoggingOptionsResponse;
   use Moose;
-  has logLevel => (is => 'ro', isa => 'Str');
-  has roleArn => (is => 'ro', isa => 'Str');
+  has LogLevel => (is => 'ro', isa => 'Str');
+  has RoleArn => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -14,10 +14,10 @@ Paws::IoT::GetLoggingOptionsResponse
 
 =head1 ATTRIBUTES
 
-=head2 logLevel => Str
+=head2 LogLevel => Str
 
   The logging level.
-=head2 roleArn => Str
+=head2 RoleArn => Str
 
   The ARN of the IAM role that grants access.
 

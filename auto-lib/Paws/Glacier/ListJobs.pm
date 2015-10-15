@@ -1,12 +1,12 @@
 
 package Paws::Glacier::ListJobs;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has completed => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'completed' );
-  has limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
-  has marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
-  has statuscode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'statuscode' );
-  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has Completed => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'completed' );
+  has Limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
+  has Statuscode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'statuscode' );
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
   The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
@@ -48,18 +48,18 @@ account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
-=head2 completed => Str
+=head2 Completed => Str
 
   Specifies the state of the jobs to return. You can specify C<true> or
 C<false>.
 
-=head2 limit => Str
+=head2 Limit => Str
 
   Specifies that the response be limited to the specified number of items
 or fewer. If not specified, the List Jobs operation returns up to 1,000
 jobs.
 
-=head2 marker => Str
+=head2 Marker => Str
 
   An opaque string used for pagination. This value specifies the job at
 which the listing of jobs should begin. Get the marker value from a
@@ -67,12 +67,12 @@ previous List Jobs response. You need only include the marker if you
 are continuing the pagination of results started in a previous List
 Jobs request.
 
-=head2 statuscode => Str
+=head2 Statuscode => Str
 
   Specifies the type of job status to return. You can specify the
 following values: "InProgress", "Succeeded", or "Failed".
 
-=head2 B<REQUIRED> vaultName => Str
+=head2 B<REQUIRED> VaultName => Str
 
   The name of the vault.
 

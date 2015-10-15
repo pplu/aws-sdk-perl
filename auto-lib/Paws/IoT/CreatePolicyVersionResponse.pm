@@ -1,10 +1,10 @@
 
 package Paws::IoT::CreatePolicyVersionResponse;
   use Moose;
-  has isDefaultVersion => (is => 'ro', isa => 'Bool');
-  has policyArn => (is => 'ro', isa => 'Str');
-  has policyDocument => (is => 'ro', isa => 'Str');
-  has policyVersionId => (is => 'ro', isa => 'Str');
+  has IsDefaultVersion => (is => 'ro', isa => 'Bool');
+  has PolicyArn => (is => 'ro', isa => 'Str');
+  has PolicyDocument => (is => 'ro', isa => 'Str');
+  has PolicyVersionId => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -16,16 +16,16 @@ Paws::IoT::CreatePolicyVersionResponse
 
 =head1 ATTRIBUTES
 
-=head2 isDefaultVersion => Bool
+=head2 IsDefaultVersion => Bool
 
   Specifies whether the policy version is the default.
-=head2 policyArn => Str
+=head2 PolicyArn => Str
 
   The policy ARN.
-=head2 policyDocument => Str
+=head2 PolicyDocument => Str
 
   The JSON document that describes the policy.
-=head2 policyVersionId => Str
+=head2 PolicyVersionId => Str
 
   The policy version ID.
 

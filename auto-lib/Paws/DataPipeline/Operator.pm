@@ -1,7 +1,7 @@
 package Paws::DataPipeline::Operator;
   use Moose;
-  has type => (is => 'ro', isa => 'Str');
-  has values => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'values', request_name => 'values', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DataPipeline::Operator object:
 
-  $service_obj->Method(Att1 => { type => $value, ..., values => $value  });
+  $service_obj->Method(Att1 => { Type => $value, ..., Values => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DataPipeline::Operator object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->type
+  $result->Att1->Type
 
 =head1 DESCRIPTION
 
@@ -37,7 +37,7 @@ specified value.
 
 =head1 ATTRIBUTES
 
-=head2 type => Str
+=head2 Type => Str
 
   The logical operation to be performed: equal (C<EQ>), equal reference
 (C<REF_EQ>), less than or equal (C<LE>), greater than or equal (C<GE>),
@@ -93,7 +93,7 @@ containing only alpha-numeric values, as symbols may be reserved by AWS
 Data Pipeline. User-defined fields that you add to a pipeline should
 prefix their name with the string "my".
 
-=head2 values => ArrayRef[Str]
+=head2 Values => ArrayRef[Str]
 
   The value that the actual field value will be compared with.
 

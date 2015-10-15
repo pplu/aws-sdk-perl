@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::AddTagsToOnPremisesInstances;
   use Moose;
-  has instanceNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', required => 1);
+  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', traits => ['NameInRequest'], request_name => 'tags' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> instanceNames => ArrayRef[Str]
+=head2 B<REQUIRED> InstanceNames => ArrayRef[Str]
 
   The names of the on-premises instances to add tags to.
 
-=head2 B<REQUIRED> tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
 
   The tag key-value pairs to add to the on-premises instances.
 

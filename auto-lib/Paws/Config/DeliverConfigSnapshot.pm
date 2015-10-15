@@ -1,7 +1,7 @@
 
 package Paws::Config::DeliverConfigSnapshot;
   use Moose;
-  has deliveryChannelName => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryChannelName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deliveryChannelName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> deliveryChannelName => Str
+=head2 B<REQUIRED> DeliveryChannelName => Str
 
   The name of the delivery channel through which the snapshot is
 delivered.

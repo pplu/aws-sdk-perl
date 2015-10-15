@@ -1,7 +1,7 @@
 
 package Paws::IoT::SetLoggingOptions;
   use Moose;
-  has loggingOptionsPayload => (is => 'ro', isa => 'Paws::IoT::LoggingOptionsPayload');
+  has LoggingOptionsPayload => (is => 'ro', isa => 'Paws::IoT::LoggingOptionsPayload');
 
   use MooseX::ClassAttribute;
 
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 loggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>
+=head2 LoggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>
 
   The logging options payload.
 

@@ -1,8 +1,8 @@
 
 package Paws::CodeCommit::CreateRepository;
   use Moose;
-  has repositoryDescription => (is => 'ro', isa => 'Str');
-  has repositoryName => (is => 'ro', isa => 'Str', required => 1);
+  has RepositoryDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryDescription' );
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 repositoryDescription => Str
+=head2 RepositoryDescription => Str
 
   A comment or description about the new repository.
 
-=head2 B<REQUIRED> repositoryName => Str
+=head2 B<REQUIRED> RepositoryName => Str
 
   The name of the new repository to be created.
 

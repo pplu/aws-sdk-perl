@@ -66,7 +66,7 @@ For more information, see the Amazon CloudSearch Developer Guide.
 
 =head1 METHODS
 
-=head2 Search(query => Str, [cursor => Str, expr => Str, facet => Str, filterQuery => Str, highlight => Str, partial => Bool, queryOptions => Str, queryParser => Str, return => Str, size => Int, sort => Str, start => Int])
+=head2 Search(Query => Str, [Cursor => Str, Expr => Str, Facet => Str, FilterQuery => Str, Highlight => Str, Partial => Bool, QueryOptions => Str, QueryParser => Str, Return => Str, Size => Int, Sort => Str, Start => Int])
 
 Each argument is described in detail in: L<Paws::CloudSearchDomain::Search>
 
@@ -104,7 +104,7 @@ service C<DescribeDomains> action. A domain's endpoints are also
 displayed on the domain dashboard in the Amazon CloudSearch console.
 
 
-=head2 Suggest(query => Str, suggester => Str, [size => Int])
+=head2 Suggest(Query => Str, Suggester => Str, [Size => Int])
 
 Each argument is described in detail in: L<Paws::CloudSearchDomain::Suggest>
 
@@ -130,7 +130,7 @@ are also displayed on the domain dashboard in the Amazon CloudSearch
 console.
 
 
-=head2 UploadDocuments(contentType => Str, documents => Str)
+=head2 UploadDocuments(ContentType => Str, Documents => Str)
 
 Each argument is described in detail in: L<Paws::CloudSearchDomain::UploadDocuments>
 

@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetAccountSettingsResult;
   use Moose;
-  has accountSettings => (is => 'ro', isa => 'Paws::DeviceFarm::AccountSettings');
+  has AccountSettings => (is => 'ro', isa => 'Paws::DeviceFarm::AccountSettings', traits => ['Unwrapped'], xmlname => 'accountSettings' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::DeviceFarm::GetAccountSettingsResult
 
 =head1 ATTRIBUTES
 
-=head2 accountSettings => L<Paws::DeviceFarm::AccountSettings>
+=head2 AccountSettings => L<Paws::DeviceFarm::AccountSettings>
 
   
 

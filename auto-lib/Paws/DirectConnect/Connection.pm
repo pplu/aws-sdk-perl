@@ -1,15 +1,15 @@
 
 package Paws::DirectConnect::Connection;
   use Moose;
-  has bandwidth => (is => 'ro', isa => 'Str');
-  has connectionId => (is => 'ro', isa => 'Str');
-  has connectionName => (is => 'ro', isa => 'Str');
-  has connectionState => (is => 'ro', isa => 'Str');
-  has location => (is => 'ro', isa => 'Str');
-  has ownerAccount => (is => 'ro', isa => 'Str');
-  has partnerName => (is => 'ro', isa => 'Str');
-  has region => (is => 'ro', isa => 'Str');
-  has vlan => (is => 'ro', isa => 'Int');
+  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bandwidth' );
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionId' );
+  has ConnectionName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionName' );
+  has ConnectionState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionState' );
+  has Location => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'location' );
+  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAccount' );
+  has PartnerName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'partnerName' );
+  has Region => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'region' );
+  has Vlan => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'vlan' );
 
 
 ### main pod documentation begin ###
@@ -20,7 +20,7 @@ Paws::DirectConnect::Connection
 
 =head1 ATTRIBUTES
 
-=head2 bandwidth => Str
+=head2 Bandwidth => Str
 
   Bandwidth of the connection.
 
@@ -28,28 +28,28 @@ Example: 1Gbps (for regular connections), or 500Mbps (for hosted
 connections)
 
 Default: None
-=head2 connectionId => Str
+=head2 ConnectionId => Str
 
   
-=head2 connectionName => Str
+=head2 ConnectionName => Str
 
   
-=head2 connectionState => Str
+=head2 ConnectionState => Str
 
   
-=head2 location => Str
+=head2 Location => Str
 
   
-=head2 ownerAccount => Str
+=head2 OwnerAccount => Str
 
   
-=head2 partnerName => Str
+=head2 PartnerName => Str
 
   
-=head2 region => Str
+=head2 Region => Str
 
   
-=head2 vlan => Int
+=head2 Vlan => Int
 
   
 
