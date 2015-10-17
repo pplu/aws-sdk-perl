@@ -32,18 +32,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::GrantC
 
 =head1 DESCRIPTION
 
-Contains constraints on the grant.
+A structure for specifying the conditions under which the operations
+permitted by the grant are allowed.
+
+You can use this structure to allow the operations permitted by the
+grant only when a specified encryption context is present. For more
+information about encryption context, see Encryption Context in the
+I<AWS Key Management Service Developer Guide>.
 
 =head1 ATTRIBUTES
 
 =head2 EncryptionContextEquals => L<Paws::KMS::EncryptionContextType>
 
-  The constraint contains additional key/value pairs that serve to
-further limit the grant.
+  Contains a list of key-value pairs that must be present in the
+encryption context of a subsequent operation permitted by the grant.
+When a subsequent operation permitted by the grant includes an
+encryption context that matches this list, the grant allows the
+operation. Otherwise, the operation is not allowed.
 
 =head2 EncryptionContextSubset => L<Paws::KMS::EncryptionContextType>
 
-  The constraint equals the full encryption context.
+  Contains a list of key-value pairs, a subset of which must be present
+in the encryption context of a subsequent operation permitted by the
+grant. When a subsequent operation permitted by the grant includes an
+encryption context that matches this list or is a subset of this list,
+the grant allows the operation. Otherwise, the operation is not
+allowed.
 
 
 

@@ -1,9 +1,12 @@
 package Paws::KMS::GrantListEntry;
   use Moose;
   has Constraints => (is => 'ro', isa => 'Paws::KMS::GrantConstraints');
+  has CreationDate => (is => 'ro', isa => 'Str');
   has GranteePrincipal => (is => 'ro', isa => 'Str');
   has GrantId => (is => 'ro', isa => 'Str');
   has IssuingAccount => (is => 'ro', isa => 'Str');
+  has KeyId => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
   has Operations => (is => 'ro', isa => 'ArrayRef[Str]');
   has RetiringPrincipal => (is => 'ro', isa => 'Str');
 1;
@@ -36,54 +39,48 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::GrantL
 
 =head1 DESCRIPTION
 
-Contains information about each entry in the grant list.
+Contains information about an entry in a list of grants.
 
 =head1 ATTRIBUTES
 
 =head2 Constraints => L<Paws::KMS::GrantConstraints>
 
-  Specifies the conditions under which the actions specified by the
-C<Operations> parameter are allowed.
+  The conditions under which the grant's operations are allowed.
+
+=head2 CreationDate => Str
+
+  The date and time when the grant was created.
 
 =head2 GranteePrincipal => Str
 
-  The principal that receives the grant permission.
+  The principal that receives the grant's permissions.
 
 =head2 GrantId => Str
 
-  Unique grant identifier.
+  The unique identifier for the grant.
 
 =head2 IssuingAccount => Str
 
-  The account under which the grant was issued.
+  The AWS account under which the grant was issued.
+
+=head2 KeyId => Str
+
+  The unique identifier for the customer master key (CMK) to which the
+grant applies.
+
+=head2 Name => Str
+
+  The friendly name that identifies the grant. If a name was provided in
+the CreateGrant request, that name is returned. Otherwise this value is
+null.
 
 =head2 Operations => ArrayRef[Str]
 
-  List of operations permitted by the grant. This can be any combination
-of one or more of the following values:
-
-=over
-
-=item 1. Decrypt
-
-=item 2. Encrypt
-
-=item 3. GenerateDataKey
-
-=item 4. GenerateDataKeyWithoutPlaintext
-
-=item 5. ReEncryptFrom
-
-=item 6. ReEncryptTo
-
-=item 7. CreateGrant
-
-=back
-
+  The list of operations permitted by the grant.
 
 =head2 RetiringPrincipal => Str
 
-  The principal that can retire the account.
+  The principal that can retire the grant.
 
 
 

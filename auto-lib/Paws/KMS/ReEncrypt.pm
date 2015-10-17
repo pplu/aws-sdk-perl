@@ -68,7 +68,10 @@ arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 
 =head2 GrantTokens => ArrayRef[Str]
 
-  For more information, see Grant Tokens.
+  A list of grant tokens.
+
+For more information, go to Grant Tokens in the I<AWS Key Management
+Service Developer Guide>.
 
 =head2 SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>
 

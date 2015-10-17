@@ -1,6 +1,7 @@
 
 package Paws::KMS::DescribeKey;
   use Moose;
+  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,6 +32,13 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+=head2 GrantTokens => ArrayRef[Str]
+
+  A list of grant tokens.
+
+For more information, go to Grant Tokens in the I<AWS Key Management
+Service Developer Guide>.
 
 =head2 B<REQUIRED> KeyId => Str
 

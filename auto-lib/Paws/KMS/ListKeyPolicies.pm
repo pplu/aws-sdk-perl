@@ -58,17 +58,21 @@ arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 
 =head2 Limit => Int
 
-  Specify this parameter only when paginating results to indicate the
-maximum number of policies you want listed in the response. If there
-are additional policies beyond the maximum you specify, the
-C<Truncated> response element will be set to C<true.>
+  When paginating results, specify the maximum number of items to return
+in the response. If additional items exist beyond the number you
+specify, the C<Truncated> element in the response is set to true.
+
+This value is optional. If you include a value, it must be between 1
+and 1000, inclusive. If you do not include a value, it defaults to 100.
+
+Currently only 1 policy can be attached to a key.
 
 =head2 Marker => Str
 
-  Use this parameter only when paginating results, and only in a
-subsequent request after you've received a response where the results
-are truncated. Set it to the value of the C<NextMarker> in the response
-you just received.
+  Use this parameter only when paginating results and only in a
+subsequent request after you've received a response with truncated
+results. Set it to the value of C<NextMarker> from the response you
+just received.
 
 
 

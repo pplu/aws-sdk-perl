@@ -3,9 +3,11 @@ package Paws::KMS::KeyMetadata;
   has Arn => (is => 'ro', isa => 'Str');
   has AWSAccountId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
+  has DeletionDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
+  has KeyState => (is => 'ro', isa => 'Str');
   has KeyUsage => (is => 'ro', isa => 'Str');
 1;
 
@@ -37,37 +39,59 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::KeyMet
 
 =head1 DESCRIPTION
 
-Contains metadata associated with a specific key.
+Contains metadata about a customer master key (CMK).
+
+This data type is used as a response element for the CreateKey and
+DescribeKey operations.
 
 =head1 ATTRIBUTES
 
 =head2 Arn => Str
 
-  Key ARN (Amazon Resource Name).
+  The Amazon Resource Name (ARN) of the key. For examples, see AWS Key
+Management Service (AWS KMS) in the Example ARNs section of the I<AWS
+General Reference>.
 
 =head2 AWSAccountId => Str
 
-  Account ID number.
+  The twelve-digit account ID of the AWS account that owns the key.
 
 =head2 CreationDate => Str
 
-  Date the key was created.
+  The date and time when the key was created.
+
+=head2 DeletionDate => Str
+
+  The date and time after which AWS KMS deletes the customer master key
+(CMK). This value is present only when C<KeyState> is
+C<PendingDeletion>, otherwise this value is null.
 
 =head2 Description => Str
 
-  The description of the key.
+  The friendly description of the key.
 
 =head2 Enabled => Bool
 
-  Value that specifies whether the key is enabled.
+  Specifies whether the key is enabled. When C<KeyState> is C<Enabled>
+this value is true, otherwise it is false.
 
 =head2 B<REQUIRED> KeyId => Str
 
-  Unique identifier for the key.
+  The globally unique identifier for the key.
+
+=head2 KeyState => Str
+
+  The state of the customer master key (CMK).
+
+For more information about how key state affects the use of a CMK, go
+to How Key State Affects the Use of a Customer Master Key in the I<AWS
+Key Management Service Developer Guide>.
 
 =head2 KeyUsage => Str
 
-  A value that specifies what operation(s) the key can perform.
+  The cryptographic operations for which you can use the key. Currently
+the only allowed value is C<ENCRYPT_DECRYPT>, which means you can use
+the key for the Encrypt and Decrypt operations.
 
 
 

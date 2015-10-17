@@ -17,6 +17,7 @@
    date appended, so anyone using CloudFront should be aware of that API change
 
  - S3 API update: Support for ServerSideEncryption 
+ - KMS API update: New operations: CancelKeyDeletion ListRetirableGrants ScheduleKeyDeletion and docu update
 
 0.16 09 Oct 2015
  - docu fixes by Gimpson

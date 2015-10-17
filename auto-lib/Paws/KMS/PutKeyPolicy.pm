@@ -52,7 +52,9 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =head2 B<REQUIRED> Policy => Str
 
-  The policy, in JSON format, to be attached to the key.
+  The policy to attach to the key. This is required and delegates back to
+the account. The key is the root of trust. The policy size limit is 32
+KiB (32768 bytes).
 
 =head2 B<REQUIRED> PolicyName => Str
 

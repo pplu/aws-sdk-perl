@@ -8,6 +8,11 @@ package Paws::KMS;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub CancelKeyDeletion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::CancelKeyDeletion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::CreateAlias', @_);
@@ -108,6 +113,11 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::ListKeys', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListRetirableGrants {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::ListRetirableGrants', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutKeyPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::PutKeyPolicy', @_);
@@ -128,6 +138,11 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::RevokeGrant', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ScheduleKeyDeletion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KMS::ScheduleKeyDeletion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KMS::UpdateAlias', @_);
@@ -139,7 +154,7 @@ package Paws::KMS;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus ListAliases ListGrants ListKeyPolicies ListKeys PutKeyPolicy ReEncrypt RetireGrant RevokeGrant UpdateAlias UpdateKeyDescription / }
+  sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus ListAliases ListGrants ListKeyPolicies ListKeys ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion UpdateAlias UpdateKeyDescription / }
 
 1;
 
@@ -169,21 +184,22 @@ Paws::KMS - Perl Interface to AWS AWS Key Management Service
 
 AWS Key Management Service
 
-AWS Key Management Service (KMS) is an encryption and key management
-web service. This guide describes the KMS actions that you can call
-programmatically. For general information about KMS, see the AWS Key
-Management Service Developer Guide
+AWS Key Management Service (AWS KMS) is an encryption and key
+management web service. This guide describes the AWS KMS operations
+that you can call programmatically. For general information about AWS
+KMS, see the AWS Key Management Service Developer Guide.
 
 AWS provides SDKs that consist of libraries and sample code for various
 programming languages and platforms (Java, Ruby, .Net, iOS, Android,
 etc.). The SDKs provide a convenient way to create programmatic access
-to KMS and AWS. For example, the SDKs take care of tasks such as
-signing requests (see below), managing errors, and retrying requests
-automatically. For more information about the AWS SDKs, including how
-to download and install them, see Tools for Amazon Web Services.
+to AWS KMS and other AWS services. For example, the SDKs take care of
+tasks such as signing requests (see below), managing errors, and
+retrying requests automatically. For more information about the AWS
+SDKs, including how to download and install them, see Tools for Amazon
+Web Services.
 
 We recommend that you use the AWS SDKs to make programmatic API calls
-to KMS.
+to AWS KMS.
 
 Clients must support TLS (Transport Layer Security) 1.0. We recommend
 TLS 1.2. Clients must also support cipher suites with Perfect Forward
@@ -194,23 +210,23 @@ and later support these modes.
 B<Signing Requests>
 
 Requests must be signed by using an access key ID and a secret access
-key. We strongly recommend that you do not use your AWS account access
-key ID and secret key for everyday work with KMS. Instead, use the
-access key ID and secret access key for an IAM user, or you can use the
-AWS Security Token Service to generate temporary security credentials
-that you can use to sign requests.
+key. We strongly recommend that you I<do not> use your AWS account
+access key ID and secret key for everyday work with AWS KMS. Instead,
+use the access key ID and secret access key for an IAM user, or you can
+use the AWS Security Token Service to generate temporary security
+credentials that you can use to sign requests.
 
-All KMS operations require Signature Version 4.
+All AWS KMS operations require Signature Version 4.
 
-B<Recording API Requests>
+B<Logging API Requests>
 
-KMS supports AWS CloudTrail, a service that records AWS API calls and
+AWS KMS supports AWS CloudTrail, a service that logs AWS API calls and
 related events for your AWS account and delivers them to an Amazon S3
 bucket that you specify. By using the information collected by
-CloudTrail, you can determine what requests were made to KMS, who made
-the request, when it was made, and so on. To learn more about
+CloudTrail, you can determine what requests were made to AWS KMS, who
+made the request, when it was made, and so on. To learn more about
 CloudTrail, including how to turn it on and find your log files, see
-the AWS CloudTrail User Guide
+the AWS CloudTrail User Guide.
 
 B<Additional Resources>
 
@@ -219,13 +235,13 @@ following:
 
 =over
 
-=item * AWS Security Credentials. This topic provides general
+=item * AWS Security Credentials - This topic provides general
 information about the types of credentials used for accessing AWS.
 
-=item * AWS Security Token Service. This guide describes how to create
+=item * AWS Security Token Service - This guide describes how to create
 and use temporary security credentials.
 
-=item * Signing AWS API Requests. This set of topics walks you through
+=item * Signing AWS API Requests - This set of topics walks you through
 the process of signing a request using an access key ID and a secret
 access key.
 
@@ -253,6 +269,21 @@ console.
 
 =head1 METHODS
 
+=head2 CancelKeyDeletion(KeyId => Str)
+
+Each argument is described in detail in: L<Paws::KMS::CancelKeyDeletion>
+
+Returns: a L<Paws::KMS::CancelKeyDeletionResponse> instance
+
+  Cancels the deletion of a customer master key (CMK). When this
+operation is successful, the CMK is set to the C<Disabled> state. To
+enable a CMK, use EnableKey.
+
+For more information about scheduling and canceling deletion of a CMK,
+go to Deleting Customer Master Keys in the I<AWS Key Management Service
+Developer Guide>.
+
+
 =head2 CreateAlias(AliasName => Str, TargetKeyId => Str)
 
 Each argument is described in detail in: L<Paws::KMS::CreateAlias>
@@ -267,34 +298,23 @@ contain only alphanumeric characters, forward slashes (/), underscores
 by a forward slash (alias/). An alias that begins with "aws" after the
 forward slash (alias/aws...) is reserved by Amazon Web Services (AWS).
 
-To associate an alias with a different key, call UpdateAlias.
+The alias and the key it is mapped to must be in the same AWS account
+and the same region.
 
-Note that you cannot create or update an alias that represents a key in
-another account.
+To map an alias to a different key, call UpdateAlias.
 
 
-=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [Constraints => L<Paws::KMS::GrantConstraints>, GrantTokens => ArrayRef[Str], Operations => ArrayRef[Str], RetiringPrincipal => Str])
+=head2 CreateGrant(GranteePrincipal => Str, KeyId => Str, [Constraints => L<Paws::KMS::GrantConstraints>, GrantTokens => ArrayRef[Str], Name => Str, Operations => ArrayRef[Str], RetiringPrincipal => Str])
 
 Each argument is described in detail in: L<Paws::KMS::CreateGrant>
 
 Returns: a L<Paws::KMS::CreateGrantResponse> instance
 
-  Adds a grant to a key to specify who can access the key and under what
+  Adds a grant to a key to specify who can use the key and under what
 conditions. Grants are alternate permission mechanisms to key policies.
-For more information about grants, see Grants in the developer guide.
-If a grant is absent, access to the key is evaluated based on IAM
-policies attached to the user.
 
-=over
-
-=item 1. ListGrants
-
-=item 2. RetireGrant
-
-=item 3. RevokeGrant
-
-=back
-
+For more information about grants, see Grants in the I<AWS Key
+Management Service Developer Guide>.
 
 
 =head2 CreateKey([Description => Str, KeyUsage => Str, Policy => Str])
@@ -346,11 +366,11 @@ Each argument is described in detail in: L<Paws::KMS::DeleteAlias>
 
 Returns: nothing
 
-  Deletes the specified alias. To associate an alias with a different
-key, call UpdateAlias.
+  Deletes the specified alias. To map an alias to a different key, call
+UpdateAlias.
 
 
-=head2 DescribeKey(KeyId => Str)
+=head2 DescribeKey(KeyId => Str, [GrantTokens => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::KMS::DescribeKey>
 
@@ -365,7 +385,11 @@ Each argument is described in detail in: L<Paws::KMS::DisableKey>
 
 Returns: nothing
 
-  Marks a key as disabled, thereby preventing its use.
+  Sets the state of a master key to disabled, thereby preventing its use
+for cryptographic operations. For more information about how key state
+affects the use of a master key, go to How Key State Affects the Use of
+a Customer Master Key in the I<AWS Key Management Service Developer
+Guide>.
 
 
 =head2 DisableKeyRotation(KeyId => Str)
@@ -383,8 +407,7 @@ Each argument is described in detail in: L<Paws::KMS::EnableKey>
 
 Returns: nothing
 
-  Marks a key as enabled, thereby permitting its use. You can have up to
-25 enabled keys at one time.
+  Marks a key as enabled, thereby permitting its use.
 
 
 =head2 EnableKeyRotation(KeyId => Str)
@@ -550,6 +573,19 @@ Returns: a L<Paws::KMS::ListKeysResponse> instance
   Lists the customer master keys.
 
 
+=head2 ListRetirableGrants(RetiringPrincipal => Str, [Limit => Int, Marker => Str])
+
+Each argument is described in detail in: L<Paws::KMS::ListRetirableGrants>
+
+Returns: a L<Paws::KMS::ListGrantsResponse> instance
+
+  Returns a list of all grants for which the grant's C<RetiringPrincipal>
+matches the one specified.
+
+A typical use is to list all grants that you are able to retire. To
+retire a grant, use RetireGrant.
+
+
 =head2 PutKeyPolicy(KeyId => Str, Policy => Str, PolicyName => Str)
 
 Each argument is described in detail in: L<Paws::KMS::PutKeyPolicy>
@@ -619,13 +655,42 @@ Returns: nothing
 that depend on it.
 
 
+=head2 ScheduleKeyDeletion(KeyId => Str, [PendingWindowInDays => Int])
+
+Each argument is described in detail in: L<Paws::KMS::ScheduleKeyDeletion>
+
+Returns: a L<Paws::KMS::ScheduleKeyDeletionResponse> instance
+
+  Schedules the deletion of a customer master key (CMK). You may provide
+a waiting period, specified in days, before deletion occurs. If you do
+not provide a waiting period, the default period of 30 days is used.
+When this operation is successful, the state of the CMK changes to
+C<PendingDeletion>. Before the waiting period ends, you can use
+CancelKeyDeletion to cancel the deletion of the CMK. After the waiting
+period ends, AWS KMS deletes the CMK and all AWS KMS data associated
+with it, including all aliases that point to it.
+
+Deleting a CMK is a destructive and potentially dangerous operation.
+When a CMK is deleted, all data that was encrypted under the CMK is
+rendered unrecoverable. To restrict the use of a CMK without deleting
+it, use DisableKey.
+
+For more information about scheduling a CMK for deletion, go to
+Deleting Customer Master Keys in the I<AWS Key Management Service
+Developer Guide>.
+
+
 =head2 UpdateAlias(AliasName => Str, TargetKeyId => Str)
 
 Each argument is described in detail in: L<Paws::KMS::UpdateAlias>
 
 Returns: nothing
 
-  Updates an alias to associate it with a different key.
+  Updates an alias to map it to a different key.
+
+An alias is not a property of a key. Therefore, an alias can be mapped
+to and unmapped from an existing key without changing the properties of
+the key.
 
 An alias name can contain only alphanumeric characters, forward slashes
 (/), underscores (_), and dashes (-). An alias must start with the word
@@ -633,12 +698,8 @@ An alias name can contain only alphanumeric characters, forward slashes
 "aws" after the forward slash (alias/aws...) is reserved by Amazon Web
 Services (AWS).
 
-An alias is not a property of a key. Therefore, an alias can be
-associated with and disassociated from an existing key without changing
-the properties of the key.
-
-Note that you cannot create or update an alias that represents a key in
-another account.
+The alias and the key it is mapped to must be in the same AWS account
+and the same region.
 
 
 =head2 UpdateKeyDescription(Description => Str, KeyId => Str)

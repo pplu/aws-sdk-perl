@@ -35,15 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AliasName => Str
 
-  String that contains the name of the alias to be modifed. The name must
-start with the word "alias" followed by a forward slash (alias/).
-Aliases that begin with "alias/AWS" are reserved.
+  String that contains the name of the alias to be modified. The name
+must start with the word "alias" followed by a forward slash (alias/).
+Aliases that begin with "alias/aws" are reserved.
 
 =head2 B<REQUIRED> TargetKeyId => Str
 
-  Unique identifier of the customer master key to be associated with the
-alias. This value can be a globally unique identifier or the fully
-specified ARN of a key.
+  Unique identifier of the customer master key to be mapped to the alias.
+This value can be a globally unique identifier or the fully specified
+ARN of a key.
 
 =over
 
@@ -55,6 +55,8 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =back
 
+You can call ListAliases to verify that the alias is mapped to the
+correct C<TargetKeyId>.
 
 
 
