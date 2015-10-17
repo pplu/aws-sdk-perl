@@ -7,12 +7,15 @@ package Paws::MarketplaceCommerceAnalytics;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub GenerateDataSet {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MarketplaceCommerceAnalytics::GenerateDataSet', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
+
 
   sub operations { qw/GenerateDataSet / }
 

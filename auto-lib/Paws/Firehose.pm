@@ -7,42 +7,15 @@ package Paws::Firehose;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub CreateDeliveryStream {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Firehose::CreateDeliveryStream', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteDeliveryStream {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Firehose::DeleteDeliveryStream', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeDeliveryStream {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Firehose::DescribeDeliveryStream', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDeliveryStreams {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Firehose::ListDeliveryStreams', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutRecord {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Firehose::PutRecord', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutRecordBatch {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Firehose::PutRecordBatch', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateDestination {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Firehose::UpdateDestination', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CreateDeliveryStream DeleteDeliveryStream DescribeDeliveryStream ListDeliveryStreams PutRecord PutRecordBatch UpdateDestination / }
 

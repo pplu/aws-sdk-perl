@@ -7,67 +7,15 @@ package Paws::CloudTrail;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub AddTags {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::AddTags', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateTrail {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::CreateTrail', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteTrail {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::DeleteTrail', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeTrails {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::DescribeTrails', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetTrailStatus {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::GetTrailStatus', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListPublicKeys {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::ListPublicKeys', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListTags {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::ListTags', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub LookupEvents {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::LookupEvents', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RemoveTags {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::RemoveTags', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub StartLogging {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::StartLogging', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub StopLogging {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::StopLogging', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateTrail {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudTrail::UpdateTrail', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/AddTags CreateTrail DeleteTrail DescribeTrails GetTrailStatus ListPublicKeys ListTags LookupEvents RemoveTags StartLogging StopLogging UpdateTrail / }
 

@@ -7,92 +7,15 @@ package Paws::DS;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub ConnectDirectory {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::ConnectDirectory', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateAlias {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::CreateAlias', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateComputer {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::CreateComputer', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateDirectory {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::CreateDirectory', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateSnapshot {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::CreateSnapshot', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteDirectory {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::DeleteDirectory', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteSnapshot {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::DeleteSnapshot', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeDirectories {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::DescribeDirectories', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeSnapshots {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::DescribeSnapshots', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DisableRadius {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::DisableRadius', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DisableSso {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::DisableSso', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub EnableRadius {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::EnableRadius', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub EnableSso {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::EnableSso', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetDirectoryLimits {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::GetDirectoryLimits', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetSnapshotLimits {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::GetSnapshotLimits', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RestoreFromSnapshot {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::RestoreFromSnapshot', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateRadius {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DS::UpdateRadius', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/ConnectDirectory CreateAlias CreateComputer CreateDirectory CreateSnapshot DeleteDirectory DeleteSnapshot DescribeDirectories DescribeSnapshots DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits RestoreFromSnapshot UpdateRadius / }
 

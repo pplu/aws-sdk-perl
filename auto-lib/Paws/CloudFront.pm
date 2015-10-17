@@ -30,117 +30,15 @@ package Paws::CloudFront;
     return $regioninfo;
   });
 
-  
-  sub CreateCloudFrontOriginAccessIdentity {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateCloudFrontOriginAccessIdentity', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateDistribution {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateDistribution', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateInvalidation {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateInvalidation', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateStreamingDistribution {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateStreamingDistribution', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteCloudFrontOriginAccessIdentity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteDistribution {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteDistribution', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteStreamingDistribution {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::DeleteStreamingDistribution', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetCloudFrontOriginAccessIdentity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetCloudFrontOriginAccessIdentity', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetCloudFrontOriginAccessIdentityConfig {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetDistribution {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetDistribution', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetDistributionConfig {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetDistributionConfig', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetInvalidation {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetInvalidation', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetStreamingDistribution {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetStreamingDistribution', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetStreamingDistributionConfig {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::GetStreamingDistributionConfig', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListCloudFrontOriginAccessIdentities {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListCloudFrontOriginAccessIdentities', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDistributions {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListDistributions', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDistributionsByWebACLId {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListDistributionsByWebACLId', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListInvalidations {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListInvalidations', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListStreamingDistributions {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListStreamingDistributions', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateCloudFrontOriginAccessIdentity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateDistribution {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateDistribution', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateStreamingDistribution {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateStreamingDistribution', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateInvalidation CreateStreamingDistribution DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetInvalidation GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListInvalidations ListStreamingDistributions UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateStreamingDistribution / }
 

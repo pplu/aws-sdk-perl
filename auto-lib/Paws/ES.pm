@@ -7,57 +7,15 @@ package Paws::ES;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
-  
-  sub AddTags {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ES::AddTags', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateElasticsearchDomain {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ES::CreateElasticsearchDomain', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteElasticsearchDomain {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ES::DeleteElasticsearchDomain', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeElasticsearchDomain {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ES::DescribeElasticsearchDomain', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeElasticsearchDomainConfig {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ES::DescribeElasticsearchDomainConfig', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeElasticsearchDomains {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ES::DescribeElasticsearchDomains', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDomainNames {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ES::ListDomainNames', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListTags {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ES::ListTags', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RemoveTags {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ES::RemoveTags', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateElasticsearchDomainConfig {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ES::UpdateElasticsearchDomainConfig', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains ListDomainNames ListTags RemoveTags UpdateElasticsearchDomainConfig / }
 

@@ -30,147 +30,15 @@ package Paws::WAF;
     return $regioninfo;
   });
 
-  
-  sub CreateByteMatchSet {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::CreateByteMatchSet', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateIPSet {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::CreateIPSet', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateRule {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::CreateRule', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateSqlInjectionMatchSet {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::CreateSqlInjectionMatchSet', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateWebACL {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::CreateWebACL', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteByteMatchSet {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::DeleteByteMatchSet', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteIPSet {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::DeleteIPSet', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteRule {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::DeleteRule', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteSqlInjectionMatchSet {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::DeleteSqlInjectionMatchSet', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteWebACL {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::DeleteWebACL', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetByteMatchSet {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::GetByteMatchSet', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetChangeToken {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::GetChangeToken', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetChangeTokenStatus {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::GetChangeTokenStatus', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetIPSet {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::GetIPSet', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetRule {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::GetRule', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetSampledRequests {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::GetSampledRequests', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetSqlInjectionMatchSet {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::GetSqlInjectionMatchSet', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetWebACL {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::GetWebACL', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListByteMatchSets {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::ListByteMatchSets', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListIPSets {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::ListIPSets', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListRules {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::ListRules', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListSqlInjectionMatchSets {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::ListSqlInjectionMatchSets', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListWebACLs {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::ListWebACLs', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateByteMatchSet {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::UpdateByteMatchSet', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateIPSet {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::UpdateIPSet', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateRule {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::UpdateRule', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateSqlInjectionMatchSet {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::UpdateSqlInjectionMatchSet', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateWebACL {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WAF::UpdateWebACL', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CreateByteMatchSet CreateIPSet CreateRule CreateSqlInjectionMatchSet CreateWebACL DeleteByteMatchSet DeleteIPSet DeleteRule DeleteSqlInjectionMatchSet DeleteWebACL GetByteMatchSet GetChangeToken GetChangeTokenStatus GetIPSet GetRule GetSampledRequests GetSqlInjectionMatchSet GetWebACL ListByteMatchSets ListIPSets ListRules ListSqlInjectionMatchSets ListWebACLs UpdateByteMatchSet UpdateIPSet UpdateRule UpdateSqlInjectionMatchSet UpdateWebACL / }
 

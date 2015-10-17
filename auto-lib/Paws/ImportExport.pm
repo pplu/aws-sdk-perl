@@ -24,37 +24,15 @@ package Paws::ImportExport;
     return $regioninfo;
   });
 
-  
-  sub CancelJob {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ImportExport::CancelJob', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateJob {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ImportExport::CreateJob', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetShippingLabel {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ImportExport::GetShippingLabel', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetStatus {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ImportExport::GetStatus', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListJobs {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ImportExport::ListJobs', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateJob {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ImportExport::UpdateJob', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CancelJob CreateJob GetShippingLabel GetStatus ListJobs UpdateJob / }
 

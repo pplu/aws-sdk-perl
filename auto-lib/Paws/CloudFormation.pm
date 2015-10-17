@@ -6,97 +6,15 @@ package Paws::CloudFormation;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
-  
-  sub CancelUpdateStack {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::CancelUpdateStack', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateStack {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::CreateStack', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteStack {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DeleteStack', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeAccountLimits {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeAccountLimits', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeStackEvents {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackEvents', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeStackResource {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackResource', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeStackResources {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStackResources', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeStacks {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeStacks', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub EstimateTemplateCost {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::EstimateTemplateCost', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetStackPolicy {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::GetStackPolicy', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetTemplate {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::GetTemplate', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetTemplateSummary {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::GetTemplateSummary', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListStackResources {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListStackResources', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListStacks {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListStacks', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SetStackPolicy {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::SetStackPolicy', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SignalResource {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::SignalResource', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateStack {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::UpdateStack', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ValidateTemplate {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ValidateTemplate', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CancelUpdateStack CreateStack DeleteStack DescribeAccountLimits DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost GetStackPolicy GetTemplate GetTemplateSummary ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
 

@@ -7,92 +7,15 @@ package Paws::CognitoSync;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
-  
-  sub BulkPublish {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::BulkPublish', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteDataset {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::DeleteDataset', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeDataset {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::DescribeDataset', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeIdentityPoolUsage {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::DescribeIdentityPoolUsage', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeIdentityUsage {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::DescribeIdentityUsage', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetBulkPublishDetails {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::GetBulkPublishDetails', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetCognitoEvents {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::GetCognitoEvents', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetIdentityPoolConfiguration {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::GetIdentityPoolConfiguration', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDatasets {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::ListDatasets', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListIdentityPoolUsage {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::ListIdentityPoolUsage', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListRecords {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::ListRecords', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RegisterDevice {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::RegisterDevice', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SetCognitoEvents {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::SetCognitoEvents', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SetIdentityPoolConfiguration {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::SetIdentityPoolConfiguration', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SubscribeToDataset {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::SubscribeToDataset', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UnsubscribeFromDataset {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::UnsubscribeFromDataset', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateRecords {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoSync::UpdateRecords', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/BulkPublish DeleteDataset DescribeDataset DescribeIdentityPoolUsage DescribeIdentityUsage GetBulkPublishDetails GetCognitoEvents GetIdentityPoolConfiguration ListDatasets ListIdentityPoolUsage ListRecords RegisterDevice SetCognitoEvents SetIdentityPoolConfiguration SubscribeToDataset UnsubscribeFromDataset UpdateRecords / }
 

@@ -7,42 +7,15 @@ package Paws::WorkSpaces;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub CreateWorkspaces {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::CreateWorkspaces', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeWorkspaceBundles {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaceBundles', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeWorkspaceDirectories {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaceDirectories', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeWorkspaces {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeWorkspaces', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RebootWorkspaces {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::RebootWorkspaces', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RebuildWorkspaces {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::RebuildWorkspaces', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub TerminateWorkspaces {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::TerminateWorkspaces', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CreateWorkspaces DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaces RebootWorkspaces RebuildWorkspaces TerminateWorkspaces / }
 

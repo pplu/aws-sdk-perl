@@ -7,77 +7,15 @@ package Paws::Support;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub AddAttachmentsToSet {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::AddAttachmentsToSet', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub AddCommunicationToCase {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::AddCommunicationToCase', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateCase {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::CreateCase', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeAttachment {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::DescribeAttachment', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeCases {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::DescribeCases', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeCommunications {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::DescribeCommunications', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeServices {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::DescribeServices', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeSeverityLevels {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::DescribeSeverityLevels', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeTrustedAdvisorCheckRefreshStatuses {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeTrustedAdvisorCheckResult {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::DescribeTrustedAdvisorCheckResult', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeTrustedAdvisorChecks {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::DescribeTrustedAdvisorChecks', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeTrustedAdvisorCheckSummaries {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::DescribeTrustedAdvisorCheckSummaries', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RefreshTrustedAdvisorCheck {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::RefreshTrustedAdvisorCheck', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ResolveCase {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Support::ResolveCase', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/AddAttachmentsToSet AddCommunicationToCase CreateCase DescribeAttachment DescribeCases DescribeCommunications DescribeServices DescribeSeverityLevels DescribeTrustedAdvisorCheckRefreshStatuses DescribeTrustedAdvisorCheckResult DescribeTrustedAdvisorChecks DescribeTrustedAdvisorCheckSummaries RefreshTrustedAdvisorCheck ResolveCase / }
 

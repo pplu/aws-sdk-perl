@@ -7,132 +7,15 @@ package Paws::MachineLearning;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub CreateBatchPrediction {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::CreateBatchPrediction', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateDataSourceFromRDS {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::CreateDataSourceFromRDS', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateDataSourceFromRedshift {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::CreateDataSourceFromRedshift', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateDataSourceFromS3 {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::CreateDataSourceFromS3', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateEvaluation {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::CreateEvaluation', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateMLModel {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::CreateMLModel', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateRealtimeEndpoint {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::CreateRealtimeEndpoint', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteBatchPrediction {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::DeleteBatchPrediction', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteDataSource {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::DeleteDataSource', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteEvaluation {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::DeleteEvaluation', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteMLModel {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::DeleteMLModel', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteRealtimeEndpoint {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::DeleteRealtimeEndpoint', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeBatchPredictions {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::DescribeBatchPredictions', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeDataSources {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::DescribeDataSources', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeEvaluations {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::DescribeEvaluations', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeMLModels {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::DescribeMLModels', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetBatchPrediction {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::GetBatchPrediction', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetDataSource {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::GetDataSource', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetEvaluation {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::GetEvaluation', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetMLModel {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::GetMLModel', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub Predict {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::Predict', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateBatchPrediction {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::UpdateBatchPrediction', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateDataSource {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::UpdateDataSource', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateEvaluation {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::UpdateEvaluation', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateMLModel {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::MachineLearning::UpdateMLModel', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CreateBatchPrediction CreateDataSourceFromRDS CreateDataSourceFromRedshift CreateDataSourceFromS3 CreateEvaluation CreateMLModel CreateRealtimeEndpoint DeleteBatchPrediction DeleteDataSource DeleteEvaluation DeleteMLModel DeleteRealtimeEndpoint DescribeBatchPredictions DescribeDataSources DescribeEvaluations DescribeMLModels GetBatchPrediction GetDataSource GetEvaluation GetMLModel Predict UpdateBatchPrediction UpdateDataSource UpdateEvaluation UpdateMLModel / }
 

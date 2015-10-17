@@ -7,27 +7,15 @@ package Paws::DynamoDBStreams;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub DescribeStream {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDBStreams::DescribeStream', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetRecords {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDBStreams::GetRecords', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetShardIterator {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDBStreams::GetShardIterator', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListStreams {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDBStreams::ListStreams', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/DescribeStream GetRecords GetShardIterator ListStreams / }
 

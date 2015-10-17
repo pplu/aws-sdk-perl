@@ -7,132 +7,15 @@ package Paws::DeviceFarm;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub CreateDevicePool {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateDevicePool', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateProject {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateProject', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateUpload {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateUpload', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetAccountSettings {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetAccountSettings', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetDevice {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetDevice', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetDevicePool {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetDevicePool', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetDevicePoolCompatibility {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetDevicePoolCompatibility', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetJob {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetJob', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetProject {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetProject', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetRun {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetRun', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetSuite {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetSuite', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetTest {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetTest', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetUpload {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetUpload', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListArtifacts {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListArtifacts', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDevicePools {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListDevicePools', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDevices {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListDevices', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListJobs {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListJobs', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListProjects {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListProjects', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListRuns {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListRuns', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListSamples {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListSamples', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListSuites {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListSuites', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListTests {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListTests', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListUniqueProblems {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListUniqueProblems', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListUploads {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListUploads', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ScheduleRun {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ScheduleRun', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CreateDevicePool CreateProject CreateUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetProject GetRun GetSuite GetTest GetUpload ListArtifacts ListDevicePools ListDevices ListJobs ListProjects ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads ScheduleRun / }
 

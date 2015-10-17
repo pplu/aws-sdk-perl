@@ -44,92 +44,15 @@ package Paws::SQS;
     return $regioninfo;
   });
 
-  
-  sub AddPermission {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::AddPermission', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ChangeMessageVisibility {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::ChangeMessageVisibility', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ChangeMessageVisibilityBatch {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::ChangeMessageVisibilityBatch', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateQueue {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::CreateQueue', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteMessage {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::DeleteMessage', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteMessageBatch {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::DeleteMessageBatch', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteQueue {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::DeleteQueue', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetQueueAttributes {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::GetQueueAttributes', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetQueueUrl {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::GetQueueUrl', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDeadLetterSourceQueues {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::ListDeadLetterSourceQueues', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListQueues {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::ListQueues', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PurgeQueue {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::PurgeQueue', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ReceiveMessage {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::ReceiveMessage', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RemovePermission {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::RemovePermission', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SendMessage {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::SendMessage', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SendMessageBatch {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::SendMessageBatch', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SetQueueAttributes {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SQS::SetQueueAttributes', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/AddPermission ChangeMessageVisibility ChangeMessageVisibilityBatch CreateQueue DeleteMessage DeleteMessageBatch DeleteQueue GetQueueAttributes GetQueueUrl ListDeadLetterSourceQueues ListQueues PurgeQueue ReceiveMessage RemovePermission SendMessage SendMessageBatch SetQueueAttributes / }
 

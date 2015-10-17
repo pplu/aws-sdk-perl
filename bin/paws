@@ -50,29 +50,6 @@ if (exists $opts->{caller}) {
 
 $service = $aws->service($service_name, %$opts);
 
-my $call;
-
-if (not defined $method_name or not $call = $service->meta->find_method_by_name($method_name)){
-  if (defined $method_name) {
-    print "Don't know method $method_name on $service_name\n\n";
-  } else {
-    print "Please specify a method for $service_name\n\n"
-  }
-  
-  print "Maybe you ment:\n";
-
-  map  { say $_ }
-    sort 
-    map  { $_->name } 
-    grep { $_->package_name =~ m/^Paws\:\:/ and 
-           $_->name =~ m/^[A-Z]/ 
-         } 
-    $service->meta->get_all_methods;
-  exit 1;
-}
-
-die "invalid method" if ($call->package_name !~ m/^Paws\:\:/);
-
 my $help_with_method_call = grep { $_ =~ m/^help$/i } @args;
 
 die "HELP!!!" if ($help_with_method_call);
@@ -85,7 +62,7 @@ if ($opts->{ debug }) {
 } 
 
 # $call is a Meta Method Object. It can be called via execute
-my $result = eval {$call->execute($service, %args) };
+my $result = eval { $service->$method_name(%args) };
 if ($@) {
   print $@ if ($opts->{debug});
   if (ref($@) and $@->isa('Moose::Exception::AttributeIsRequired')) {

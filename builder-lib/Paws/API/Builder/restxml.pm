@@ -73,14 +73,15 @@ package [% c.api %];
   with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]';
 
   [%- c.service_endpoint_rules %]
-  [% FOR op IN c.api_struct.operations.keys.sort %]
-  [%- op_name = op %]
-  sub [% op_name %] {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('[% c.api %]::[% op_name %]', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  [%- END %]
+
   [%- FOR op IN [] \#c.paginators_struct.keys.sort %]
   sub [% c.get_paginator_name(op) %] {
     [%- paginator = c.paginators_struct.$op %]

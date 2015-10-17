@@ -7,97 +7,15 @@ package Paws::Route53Domains;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub CheckDomainAvailability {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::CheckDomainAvailability', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteTagsForDomain {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::DeleteTagsForDomain', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DisableDomainAutoRenew {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::DisableDomainAutoRenew', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DisableDomainTransferLock {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::DisableDomainTransferLock', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub EnableDomainAutoRenew {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::EnableDomainAutoRenew', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub EnableDomainTransferLock {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::EnableDomainTransferLock', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetDomainDetail {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::GetDomainDetail', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetOperationDetail {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::GetOperationDetail', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDomains {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::ListDomains', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListOperations {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::ListOperations', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListTagsForDomain {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::ListTagsForDomain', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RegisterDomain {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::RegisterDomain', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RetrieveDomainAuthCode {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::RetrieveDomainAuthCode', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub TransferDomain {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::TransferDomain', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateDomainContact {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateDomainContact', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateDomainContactPrivacy {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateDomainContactPrivacy', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateDomainNameservers {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateDomainNameservers', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateTagsForDomain {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateTagsForDomain', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CheckDomainAvailability DeleteTagsForDomain DisableDomainAutoRenew DisableDomainTransferLock EnableDomainAutoRenew EnableDomainTransferLock GetDomainDetail GetOperationDetail ListDomains ListOperations ListTagsForDomain RegisterDomain RetrieveDomainAuthCode TransferDomain UpdateDomainContact UpdateDomainContactPrivacy UpdateDomainNameservers UpdateTagsForDomain / }
 

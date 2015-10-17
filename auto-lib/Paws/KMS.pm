@@ -7,152 +7,15 @@ package Paws::KMS;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub CancelKeyDeletion {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::CancelKeyDeletion', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateAlias {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::CreateAlias', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateGrant {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::CreateGrant', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateKey {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::CreateKey', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub Decrypt {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::Decrypt', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteAlias {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::DeleteAlias', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeKey {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::DescribeKey', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DisableKey {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::DisableKey', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DisableKeyRotation {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::DisableKeyRotation', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub EnableKey {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::EnableKey', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub EnableKeyRotation {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::EnableKeyRotation', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub Encrypt {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::Encrypt', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GenerateDataKey {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::GenerateDataKey', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GenerateDataKeyWithoutPlaintext {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::GenerateDataKeyWithoutPlaintext', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GenerateRandom {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::GenerateRandom', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetKeyPolicy {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::GetKeyPolicy', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetKeyRotationStatus {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::GetKeyRotationStatus', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListAliases {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::ListAliases', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListGrants {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::ListGrants', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListKeyPolicies {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::ListKeyPolicies', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListKeys {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::ListKeys', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListRetirableGrants {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::ListRetirableGrants', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutKeyPolicy {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::PutKeyPolicy', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ReEncrypt {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::ReEncrypt', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RetireGrant {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::RetireGrant', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RevokeGrant {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::RevokeGrant', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ScheduleKeyDeletion {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::ScheduleKeyDeletion', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateAlias {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::UpdateAlias', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateKeyDescription {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::KMS::UpdateKeyDescription', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus ListAliases ListGrants ListKeyPolicies ListKeys ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion UpdateAlias UpdateKeyDescription / }
 

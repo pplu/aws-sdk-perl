@@ -7,102 +7,15 @@ package Paws::DataPipeline;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub ActivatePipeline {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::ActivatePipeline', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub AddTags {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::AddTags', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreatePipeline {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::CreatePipeline', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeactivatePipeline {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::DeactivatePipeline', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeletePipeline {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::DeletePipeline', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeObjects {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::DescribeObjects', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribePipelines {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::DescribePipelines', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub EvaluateExpression {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::EvaluateExpression', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetPipelineDefinition {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::GetPipelineDefinition', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListPipelines {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::ListPipelines', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PollForTask {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::PollForTask', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutPipelineDefinition {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::PutPipelineDefinition', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub QueryObjects {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::QueryObjects', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RemoveTags {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::RemoveTags', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ReportTaskProgress {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::ReportTaskProgress', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ReportTaskRunnerHeartbeat {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::ReportTaskRunnerHeartbeat', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SetStatus {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::SetStatus', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SetTaskStatus {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::SetTaskStatus', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ValidatePipelineDefinition {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DataPipeline::ValidatePipelineDefinition', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/ActivatePipeline AddTags CreatePipeline DeactivatePipeline DeletePipeline DescribeObjects DescribePipelines EvaluateExpression GetPipelineDefinition ListPipelines PollForTask PutPipelineDefinition QueryObjects RemoveTags ReportTaskProgress ReportTaskRunnerHeartbeat SetStatus SetTaskStatus ValidatePipelineDefinition / }
 

@@ -31,72 +31,15 @@ package Paws::DynamoDB;
     return $regioninfo;
   });
 
-  
-  sub BatchGetItem {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::BatchGetItem', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub BatchWriteItem {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::BatchWriteItem', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateTable {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::CreateTable', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteItem {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DeleteItem', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteTable {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DeleteTable', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeTable {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeTable', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetItem {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::GetItem', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListTables {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::ListTables', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutItem {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::PutItem', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub Query {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::Query', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub Scan {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::Scan', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateItem {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateItem', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateTable {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DynamoDB::UpdateTable', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/BatchGetItem BatchWriteItem CreateTable DeleteItem DeleteTable DescribeTable GetItem ListTables PutItem Query Scan UpdateItem UpdateTable / }
 

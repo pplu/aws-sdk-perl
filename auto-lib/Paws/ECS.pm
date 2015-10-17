@@ -7,142 +7,15 @@ package Paws::ECS;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub CreateCluster {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::CreateCluster', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateService {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::CreateService', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteCluster {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::DeleteCluster', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteService {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::DeleteService', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeregisterContainerInstance {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::DeregisterContainerInstance', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeregisterTaskDefinition {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::DeregisterTaskDefinition', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeClusters {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeClusters', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeContainerInstances {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeContainerInstances', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeServices {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeServices', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeTaskDefinition {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeTaskDefinition', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeTasks {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::DescribeTasks', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DiscoverPollEndpoint {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::DiscoverPollEndpoint', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListClusters {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::ListClusters', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListContainerInstances {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::ListContainerInstances', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListServices {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::ListServices', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListTaskDefinitionFamilies {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::ListTaskDefinitionFamilies', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListTaskDefinitions {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::ListTaskDefinitions', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListTasks {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::ListTasks', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RegisterContainerInstance {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::RegisterContainerInstance', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RegisterTaskDefinition {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::RegisterTaskDefinition', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RunTask {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::RunTask', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub StartTask {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::StartTask', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub StopTask {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::StopTask', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SubmitContainerStateChange {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::SubmitContainerStateChange', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SubmitTaskStateChange {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::SubmitTaskStateChange', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateContainerAgent {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateContainerAgent', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateService {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CreateCluster CreateService DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListClusters ListContainerInstances ListServices ListTaskDefinitionFamilies ListTaskDefinitions ListTasks RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange UpdateContainerAgent UpdateService / }
 

@@ -52,37 +52,15 @@ package Paws::STS;
     return $regioninfo;
   });
 
-  
-  sub AssumeRole {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::STS::AssumeRole', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub AssumeRoleWithSAML {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::STS::AssumeRoleWithSAML', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub AssumeRoleWithWebIdentity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::STS::AssumeRoleWithWebIdentity', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DecodeAuthorizationMessage {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::STS::DecodeAuthorizationMessage', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetFederationToken {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::STS::GetFederationToken', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetSessionToken {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::STS::GetSessionToken', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/AssumeRole AssumeRoleWithSAML AssumeRoleWithWebIdentity DecodeAuthorizationMessage GetFederationToken GetSessionToken / }
 

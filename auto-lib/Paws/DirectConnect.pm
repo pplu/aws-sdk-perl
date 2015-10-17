@@ -7,102 +7,15 @@ package Paws::DirectConnect;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub AllocateConnectionOnInterconnect {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::AllocateConnectionOnInterconnect', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub AllocatePrivateVirtualInterface {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::AllocatePrivateVirtualInterface', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub AllocatePublicVirtualInterface {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::AllocatePublicVirtualInterface', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ConfirmConnection {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::ConfirmConnection', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ConfirmPrivateVirtualInterface {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::ConfirmPrivateVirtualInterface', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ConfirmPublicVirtualInterface {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::ConfirmPublicVirtualInterface', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateConnection {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateConnection', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateInterconnect {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreateInterconnect', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreatePrivateVirtualInterface {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreatePrivateVirtualInterface', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreatePublicVirtualInterface {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::CreatePublicVirtualInterface', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteConnection {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteConnection', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteInterconnect {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteInterconnect', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteVirtualInterface {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteVirtualInterface', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeConnections {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeConnections', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeConnectionsOnInterconnect {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeConnectionsOnInterconnect', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeInterconnects {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeInterconnects', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeLocations {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeLocations', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeVirtualGateways {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeVirtualGateways', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeVirtualInterfaces {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeVirtualInterfaces', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/AllocateConnectionOnInterconnect AllocatePrivateVirtualInterface AllocatePublicVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateConnection CreateInterconnect CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteConnection DeleteInterconnect DeleteVirtualInterface DescribeConnections DescribeConnectionsOnInterconnect DescribeInterconnects DescribeLocations DescribeVirtualGateways DescribeVirtualInterfaces / }
 

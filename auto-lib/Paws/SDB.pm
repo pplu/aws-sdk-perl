@@ -24,57 +24,15 @@ package Paws::SDB;
     return $regioninfo;
   });
 
-  
-  sub BatchDeleteAttributes {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SDB::BatchDeleteAttributes', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub BatchPutAttributes {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SDB::BatchPutAttributes', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateDomain {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SDB::CreateDomain', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteAttributes {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SDB::DeleteAttributes', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteDomain {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SDB::DeleteDomain', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DomainMetadata {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SDB::DomainMetadata', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetAttributes {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SDB::GetAttributes', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDomains {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SDB::ListDomains', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutAttributes {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SDB::PutAttributes', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub Select {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SDB::Select', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/BatchDeleteAttributes BatchPutAttributes CreateDomain DeleteAttributes DeleteDomain DomainMetadata GetAttributes ListDomains PutAttributes Select / }
 

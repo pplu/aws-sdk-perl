@@ -7,97 +7,15 @@ package Paws::CognitoIdentity;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub CreateIdentityPool {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::CreateIdentityPool', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteIdentities {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::DeleteIdentities', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteIdentityPool {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::DeleteIdentityPool', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeIdentity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::DescribeIdentity', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeIdentityPool {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::DescribeIdentityPool', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetCredentialsForIdentity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::GetCredentialsForIdentity', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetId {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::GetId', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetIdentityPoolRoles {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::GetIdentityPoolRoles', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetOpenIdToken {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::GetOpenIdToken', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetOpenIdTokenForDeveloperIdentity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListIdentities {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::ListIdentities', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListIdentityPools {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::ListIdentityPools', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub LookupDeveloperIdentity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::LookupDeveloperIdentity', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub MergeDeveloperIdentities {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::MergeDeveloperIdentities', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SetIdentityPoolRoles {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::SetIdentityPoolRoles', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UnlinkDeveloperIdentity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::UnlinkDeveloperIdentity', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UnlinkIdentity {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::UnlinkIdentity', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateIdentityPool {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CognitoIdentity::UpdateIdentityPool', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CreateIdentityPool DeleteIdentities DeleteIdentityPool DescribeIdentity DescribeIdentityPool GetCredentialsForIdentity GetId GetIdentityPoolRoles GetOpenIdToken GetOpenIdTokenForDeveloperIdentity ListIdentities ListIdentityPools LookupDeveloperIdentity MergeDeveloperIdentities SetIdentityPoolRoles UnlinkDeveloperIdentity UnlinkIdentity UpdateIdentityPool / }
 

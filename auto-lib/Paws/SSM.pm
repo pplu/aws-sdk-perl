@@ -7,62 +7,15 @@ package Paws::SSM;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub CreateAssociation {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::CreateAssociation', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateAssociationBatch {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::CreateAssociationBatch', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateDocument {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::CreateDocument', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteAssociation {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::DeleteAssociation', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteDocument {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::DeleteDocument', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeAssociation {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeAssociation', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeDocument {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeDocument', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetDocument {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::GetDocument', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListAssociations {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::ListAssociations', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDocuments {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::ListDocuments', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateAssociationStatus {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateAssociationStatus', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CreateAssociation CreateAssociationBatch CreateDocument DeleteAssociation DeleteDocument DescribeAssociation DescribeDocument GetDocument ListAssociations ListDocuments UpdateAssociationStatus / }
 

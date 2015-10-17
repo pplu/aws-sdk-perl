@@ -7,62 +7,15 @@ package Paws::EFS;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
-  
-  sub CreateFileSystem {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::EFS::CreateFileSystem', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateMountTarget {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::EFS::CreateMountTarget', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateTags {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::EFS::CreateTags', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteFileSystem {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::EFS::DeleteFileSystem', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteMountTarget {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::EFS::DeleteMountTarget', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteTags {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::EFS::DeleteTags', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeFileSystems {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::EFS::DescribeFileSystems', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeMountTargets {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::EFS::DescribeMountTargets', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeMountTargetSecurityGroups {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::EFS::DescribeMountTargetSecurityGroups', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeTags {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::EFS::DescribeTags', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ModifyMountTargetSecurityGroups {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::EFS::ModifyMountTargetSecurityGroups', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CreateFileSystem CreateMountTarget CreateTags DeleteFileSystem DeleteMountTarget DeleteTags DescribeFileSystems DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ModifyMountTargetSecurityGroups / }
 

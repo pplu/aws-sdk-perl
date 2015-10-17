@@ -7,82 +7,15 @@ package Paws::Kinesis;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub AddTagsToStream {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::AddTagsToStream', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateStream {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::CreateStream', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DecreaseStreamRetentionPeriod {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::DecreaseStreamRetentionPeriod', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteStream {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::DeleteStream', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeStream {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::DescribeStream', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetRecords {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::GetRecords', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetShardIterator {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::GetShardIterator', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub IncreaseStreamRetentionPeriod {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::IncreaseStreamRetentionPeriod', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListStreams {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::ListStreams', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListTagsForStream {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::ListTagsForStream', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub MergeShards {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::MergeShards', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutRecord {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::PutRecord', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutRecords {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::PutRecords', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RemoveTagsFromStream {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::RemoveTagsFromStream', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub SplitShard {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Kinesis::SplitShard', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/AddTagsToStream CreateStream DecreaseStreamRetentionPeriod DeleteStream DescribeStream GetRecords GetShardIterator IncreaseStreamRetentionPeriod ListStreams ListTagsForStream MergeShards PutRecord PutRecords RemoveTagsFromStream SplitShard / }
 

@@ -7,22 +7,15 @@ package Paws::CloudSearchDomain;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
-  
-  sub Search {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudSearchDomain::Search', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub Suggest {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudSearchDomain::Suggest', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UploadDocuments {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudSearchDomain::UploadDocuments', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/Search Suggest UploadDocuments / }
 

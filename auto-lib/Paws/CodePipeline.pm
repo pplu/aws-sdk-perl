@@ -7,122 +7,15 @@ package Paws::CodePipeline;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub AcknowledgeJob {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::AcknowledgeJob', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub AcknowledgeThirdPartyJob {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::AcknowledgeThirdPartyJob', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateCustomActionType {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::CreateCustomActionType', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreatePipeline {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::CreatePipeline', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteCustomActionType {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::DeleteCustomActionType', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeletePipeline {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::DeletePipeline', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DisableStageTransition {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::DisableStageTransition', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub EnableStageTransition {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::EnableStageTransition', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetJobDetails {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::GetJobDetails', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetPipeline {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::GetPipeline', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetPipelineState {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::GetPipelineState', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetThirdPartyJobDetails {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::GetThirdPartyJobDetails', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListActionTypes {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListActionTypes', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListPipelines {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::ListPipelines', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PollForJobs {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::PollForJobs', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PollForThirdPartyJobs {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::PollForThirdPartyJobs', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutActionRevision {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::PutActionRevision', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutJobFailureResult {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::PutJobFailureResult', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutJobSuccessResult {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::PutJobSuccessResult', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutThirdPartyJobFailureResult {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::PutThirdPartyJobFailureResult', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutThirdPartyJobSuccessResult {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::PutThirdPartyJobSuccessResult', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub StartPipelineExecution {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::StartPipelineExecution', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdatePipeline {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodePipeline::UpdatePipeline', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelines PollForJobs PollForThirdPartyJobs PutActionRevision PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult StartPipelineExecution UpdatePipeline / }
 

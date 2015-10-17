@@ -7,62 +7,15 @@ package Paws::CodeCommit;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub BatchGetRepositories {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodeCommit::BatchGetRepositories', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateBranch {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateBranch', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateRepository {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodeCommit::CreateRepository', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteRepository {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodeCommit::DeleteRepository', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetBranch {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetBranch', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetRepository {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetRepository', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListBranches {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodeCommit::ListBranches', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListRepositories {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodeCommit::ListRepositories', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateDefaultBranch {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdateDefaultBranch', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateRepositoryDescription {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdateRepositoryDescription', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateRepositoryName {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CodeCommit::UpdateRepositoryName', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteRepository GetBranch GetRepository ListBranches ListRepositories UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }
 

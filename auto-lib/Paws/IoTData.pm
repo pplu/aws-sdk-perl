@@ -7,27 +7,15 @@ package Paws::IoTData;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
-  
-  sub DeleteThingShadow {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::IoTData::DeleteThingShadow', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetThingShadow {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::IoTData::GetThingShadow', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub Publish {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::IoTData::Publish', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateThingShadow {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::IoTData::UpdateThingShadow', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/DeleteThingShadow GetThingShadow Publish UpdateThingShadow / }
 

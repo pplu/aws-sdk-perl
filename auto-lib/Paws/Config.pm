@@ -7,122 +7,15 @@ package Paws::Config;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub DeleteConfigRule {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::DeleteConfigRule', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteDeliveryChannel {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::DeleteDeliveryChannel', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeliverConfigSnapshot {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::DeliverConfigSnapshot', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeComplianceByConfigRule {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::DescribeComplianceByConfigRule', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeComplianceByResource {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::DescribeComplianceByResource', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeConfigRuleEvaluationStatus {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigRuleEvaluationStatus', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeConfigRules {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigRules', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeConfigurationRecorders {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigurationRecorders', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeConfigurationRecorderStatus {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::DescribeConfigurationRecorderStatus', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeDeliveryChannels {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::DescribeDeliveryChannels', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeDeliveryChannelStatus {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::DescribeDeliveryChannelStatus', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetComplianceDetailsByConfigRule {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceDetailsByConfigRule', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetComplianceDetailsByResource {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceDetailsByResource', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetComplianceSummaryByConfigRule {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceSummaryByConfigRule', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetComplianceSummaryByResourceType {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::GetComplianceSummaryByResourceType', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetResourceConfigHistory {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::GetResourceConfigHistory', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListDiscoveredResources {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::ListDiscoveredResources', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutConfigRule {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::PutConfigRule', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutConfigurationRecorder {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::PutConfigurationRecorder', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutDeliveryChannel {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::PutDeliveryChannel', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutEvaluations {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::PutEvaluations', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub StartConfigurationRecorder {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::StartConfigurationRecorder', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub StopConfigurationRecorder {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Config::StopConfigurationRecorder', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/DeleteConfigRule DeleteDeliveryChannel DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigurationRecorder StopConfigurationRecorder / }
 

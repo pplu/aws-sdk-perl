@@ -7,132 +7,15 @@ package Paws::CloudWatchLogs;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub CancelExportTask {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::CancelExportTask', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateExportTask {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::CreateExportTask', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateLogGroup {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::CreateLogGroup', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateLogStream {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::CreateLogStream', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteDestination {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteDestination', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteLogGroup {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteLogGroup', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteLogStream {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteLogStream', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteMetricFilter {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteMetricFilter', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteRetentionPolicy {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteRetentionPolicy', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteSubscriptionFilter {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DeleteSubscriptionFilter', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeDestinations {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeDestinations', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeExportTasks {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeExportTasks', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeLogGroups {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeLogGroups', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeLogStreams {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeLogStreams', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeMetricFilters {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeMetricFilters', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeSubscriptionFilters {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::DescribeSubscriptionFilters', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub FilterLogEvents {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::FilterLogEvents', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetLogEvents {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::GetLogEvents', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutDestination {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutDestination', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutDestinationPolicy {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutDestinationPolicy', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutLogEvents {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutLogEvents', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutMetricFilter {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutMetricFilter', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutRetentionPolicy {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutRetentionPolicy', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PutSubscriptionFilter {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::PutSubscriptionFilter', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub TestMetricFilter {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudWatchLogs::TestMetricFilter', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CancelExportTask CreateExportTask CreateLogGroup CreateLogStream DeleteDestination DeleteLogGroup DeleteLogStream DeleteMetricFilter DeleteRetentionPolicy DeleteSubscriptionFilter DescribeDestinations DescribeExportTasks DescribeLogGroups DescribeLogStreams DescribeMetricFilters DescribeSubscriptionFilters FilterLogEvents GetLogEvents PutDestination PutDestinationPolicy PutLogEvents PutMetricFilter PutRetentionPolicy PutSubscriptionFilter TestMetricFilter / }
 

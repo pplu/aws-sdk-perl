@@ -7,92 +7,15 @@ package Paws::CloudHSM;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
-  
-  sub CreateHapg {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::CreateHapg', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateHsm {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::CreateHsm', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateLunaClient {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::CreateLunaClient', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteHapg {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DeleteHapg', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteHsm {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DeleteHsm', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteLunaClient {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DeleteLunaClient', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeHapg {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DescribeHapg', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeHsm {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DescribeHsm', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DescribeLunaClient {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::DescribeLunaClient', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetConfig {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::GetConfig', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListAvailableZones {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ListAvailableZones', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListHapgs {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ListHapgs', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListHsms {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ListHsms', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListLunaClients {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ListLunaClients', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ModifyHapg {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ModifyHapg', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ModifyHsm {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ModifyHsm', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ModifyLunaClient {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::CloudHSM::ModifyLunaClient', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
 
   sub operations { qw/CreateHapg CreateHsm CreateLunaClient DeleteHapg DeleteHsm DeleteLunaClient DescribeHapg DescribeHsm DescribeLunaClient GetConfig ListAvailableZones ListHapgs ListHsms ListLunaClients ModifyHapg ModifyHsm ModifyLunaClient / }
 

@@ -7,127 +7,15 @@ package Paws::Lambda;
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
-  
-  sub AddPermission {
+
+  our $AUTOLOAD;
+  sub AUTOLOAD {
+    my $method = $AUTOLOAD;
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::AddPermission', @_);
+    my $call_object = $self->new_with_coercions($method, @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateAlias {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::CreateAlias', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateEventSourceMapping {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::CreateEventSourceMapping', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateFunction {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::CreateFunction', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteAlias {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteAlias', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteEventSourceMapping {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteEventSourceMapping', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub DeleteFunction {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteFunction', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetAlias {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::GetAlias', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetEventSourceMapping {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::GetEventSourceMapping', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetFunction {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::GetFunction', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetFunctionConfiguration {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::GetFunctionConfiguration', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub GetPolicy {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::GetPolicy', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub Invoke {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::Invoke', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub InvokeAsync {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::InvokeAsync', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListAliases {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::ListAliases', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListEventSourceMappings {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::ListEventSourceMappings', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListFunctions {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::ListFunctions', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListVersionsByFunction {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::ListVersionsByFunction', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PublishVersion {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::PublishVersion', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub RemovePermission {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::RemovePermission', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateAlias {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateAlias', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateEventSourceMapping {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateEventSourceMapping', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateFunctionCode {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateFunctionCode', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UpdateFunctionConfiguration {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateFunctionConfiguration', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
+
   sub ListAllEventSourceMappings {
     my $self = shift;
 
