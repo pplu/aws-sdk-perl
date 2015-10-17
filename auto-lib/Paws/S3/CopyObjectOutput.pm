@@ -9,6 +9,7 @@ package Paws::S3::CopyObjectOutput;
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str');
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
+  has VersionId => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -72,6 +73,10 @@ message integrity verification of the customer-provided encryption key.
 
   If present, specifies the ID of the AWS Key Management Service (KMS)
 master encryption key that was used for the object.
+
+=head2 VersionId => Str
+
+  Version ID of the newly created copy.
 
 
 
