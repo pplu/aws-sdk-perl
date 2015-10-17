@@ -1020,6 +1020,20 @@ package Paws::EC2;
 
     return 'Paws::EC2::DescribeTags'->_returns->new(Tags => $array);
   }
+  sub DescribeAllVolumes {
+    my $self = shift;
+
+    my $result = $self->DescribeVolumes(@_);
+    my $array = [];
+    push @$array, @{ $result->Volumes };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Volumes };
+    }
+
+    return 'Paws::EC2::DescribeVolumes'->_returns->new(Volumes => $array);
+  }
   sub DescribeAllVolumeStatus {
     my $self = shift;
 

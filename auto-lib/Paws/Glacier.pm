@@ -163,6 +163,62 @@ package Paws::Glacier;
     my $call_object = $self->new_with_coercions('Paws::Glacier::UploadMultipartPart', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAllJobs {
+    my $self = shift;
+
+    my $result = $self->ListJobs(@_);
+    my $array = [];
+    push @$array, @{ $result->JobList };
+
+    while ($result->Marker) {
+      $result = $self->ListJobs(@_, marker => $result->Marker);
+      push @$array, @{ $result->JobList };
+    }
+
+    return 'Paws::Glacier::ListJobs'->_returns->new(JobList => $array);
+  }
+  sub ListAllMultipartUploads {
+    my $self = shift;
+
+    my $result = $self->ListMultipartUploads(@_);
+    my $array = [];
+    push @$array, @{ $result->UploadsList };
+
+    while ($result->Marker) {
+      $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
+      push @$array, @{ $result->UploadsList };
+    }
+
+    return 'Paws::Glacier::ListMultipartUploads'->_returns->new(UploadsList => $array);
+  }
+  sub ListAllParts {
+    my $self = shift;
+
+    my $result = $self->ListParts(@_);
+    my $array = [];
+    push @$array, @{ $result->Parts };
+
+    while ($result->Marker) {
+      $result = $self->ListParts(@_, marker => $result->Marker);
+      push @$array, @{ $result->Parts };
+    }
+
+    return 'Paws::Glacier::ListParts'->_returns->new(Parts => $array);
+  }
+  sub ListAllVaults {
+    my $self = shift;
+
+    my $result = $self->ListVaults(@_);
+    my $array = [];
+    push @$array, @{ $result->VaultList };
+
+    while ($result->Marker) {
+      $result = $self->ListVaults(@_, marker => $result->Marker);
+      push @$array, @{ $result->VaultList };
+    }
+
+    return 'Paws::Glacier::ListVaults'->_returns->new(VaultList => $array);
+  }
 
   sub operations { qw/AbortMultipartUpload AbortVaultLock AddTagsToVault CompleteMultipartUpload CompleteVaultLock CreateVault DeleteArchive DeleteVault DeleteVaultAccessPolicy DeleteVaultNotifications DescribeJob DescribeVault GetDataRetrievalPolicy GetJobOutput GetVaultAccessPolicy GetVaultLock GetVaultNotifications InitiateJob InitiateMultipartUpload InitiateVaultLock ListJobs ListMultipartUploads ListParts ListTagsForVault ListVaults RemoveTagsFromVault SetDataRetrievalPolicy SetVaultAccessPolicy SetVaultNotifications UploadArchive UploadMultipartPart / }
 
