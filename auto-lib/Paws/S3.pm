@@ -361,6 +361,62 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::UploadPartCopy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAllMultipartUploads {
+    my $self = shift;
+
+    my $result = $self->ListMultipartUploads(@_);
+    my $array = [];
+    push @$array, @{ $result->ARRAY(0x3d5bc18) };
+
+    while ($result->ARRAY(0x3d41890)) {
+      $result = $self->ListMultipartUploads(@_, ARRAY(0x3c408d0) => $result->ARRAY(0x3d41890));
+      push @$array, @{ $result->ARRAY(0x3d5bc18) };
+    }
+
+    return 'Paws::S3::ListMultipartUploads'->_returns->new(ARRAY(0x3d5bc18) => $array);
+  }
+  sub ListAllObjects {
+    my $self = shift;
+
+    my $result = $self->ListObjects(@_);
+    my $array = [];
+    push @$array, @{ $result->ARRAY(0x3b5c720) };
+
+    while ($result->NextMarker || Contents[-1].Key) {
+      $result = $self->ListObjects(@_, Marker => $result->NextMarker || Contents[-1].Key);
+      push @$array, @{ $result->ARRAY(0x3b5c720) };
+    }
+
+    return 'Paws::S3::ListObjects'->_returns->new(ARRAY(0x3b5c720) => $array);
+  }
+  sub ListAllObjectVersions {
+    my $self = shift;
+
+    my $result = $self->ListObjectVersions(@_);
+    my $array = [];
+    push @$array, @{ $result->ARRAY(0x4054808) };
+
+    while ($result->ARRAY(0x38cff08)) {
+      $result = $self->ListObjectVersions(@_, ARRAY(0x3d55ad0) => $result->ARRAY(0x38cff08));
+      push @$array, @{ $result->ARRAY(0x4054808) };
+    }
+
+    return 'Paws::S3::ListObjectVersions'->_returns->new(ARRAY(0x4054808) => $array);
+  }
+  sub ListAllParts {
+    my $self = shift;
+
+    my $result = $self->ListParts(@_);
+    my $array = [];
+    push @$array, @{ $result->Parts };
+
+    while ($result->NextPartNumberMarker) {
+      $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
+      push @$array, @{ $result->Parts };
+    }
+
+    return 'Paws::S3::ListParts'->_returns->new(Parts => $array);
+  }
 
   sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketCors DeleteBucketLifecycle DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects GetBucketAcl GetBucketCors GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTorrent HeadBucket HeadObject ListBuckets ListMultipartUploads ListObjects ListObjectVersions ListParts PutBucketAcl PutBucketCors PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl RestoreObject UploadPart UploadPartCopy / }
 

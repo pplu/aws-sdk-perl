@@ -143,6 +143,90 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAllClusters {
+    my $self = shift;
+
+    my $result = $self->ListClusters(@_);
+    my $array = [];
+    push @$array, @{ $result->clusterArns };
+
+    while ($result->nextToken) {
+      $result = $self->ListClusters(@_, nextToken => $result->nextToken);
+      push @$array, @{ $result->clusterArns };
+    }
+
+    return 'Paws::ECS::ListClusters'->_returns->new(clusterArns => $array);
+  }
+  sub ListAllContainerInstances {
+    my $self = shift;
+
+    my $result = $self->ListContainerInstances(@_);
+    my $array = [];
+    push @$array, @{ $result->containerInstanceArns };
+
+    while ($result->nextToken) {
+      $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
+      push @$array, @{ $result->containerInstanceArns };
+    }
+
+    return 'Paws::ECS::ListContainerInstances'->_returns->new(containerInstanceArns => $array);
+  }
+  sub ListAllServices {
+    my $self = shift;
+
+    my $result = $self->ListServices(@_);
+    my $array = [];
+    push @$array, @{ $result->serviceArns };
+
+    while ($result->nextToken) {
+      $result = $self->ListServices(@_, nextToken => $result->nextToken);
+      push @$array, @{ $result->serviceArns };
+    }
+
+    return 'Paws::ECS::ListServices'->_returns->new(serviceArns => $array);
+  }
+  sub ListAllTaskDefinitionFamilies {
+    my $self = shift;
+
+    my $result = $self->ListTaskDefinitionFamilies(@_);
+    my $array = [];
+    push @$array, @{ $result->families };
+
+    while ($result->nextToken) {
+      $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
+      push @$array, @{ $result->families };
+    }
+
+    return 'Paws::ECS::ListTaskDefinitionFamilies'->_returns->new(families => $array);
+  }
+  sub ListAllTaskDefinitions {
+    my $self = shift;
+
+    my $result = $self->ListTaskDefinitions(@_);
+    my $array = [];
+    push @$array, @{ $result->taskDefinitionArns };
+
+    while ($result->nextToken) {
+      $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
+      push @$array, @{ $result->taskDefinitionArns };
+    }
+
+    return 'Paws::ECS::ListTaskDefinitions'->_returns->new(taskDefinitionArns => $array);
+  }
+  sub ListAllTasks {
+    my $self = shift;
+
+    my $result = $self->ListTasks(@_);
+    my $array = [];
+    push @$array, @{ $result->taskArns };
+
+    while ($result->nextToken) {
+      $result = $self->ListTasks(@_, nextToken => $result->nextToken);
+      push @$array, @{ $result->taskArns };
+    }
+
+    return 'Paws::ECS::ListTasks'->_returns->new(taskArns => $array);
+  }
 
   sub operations { qw/CreateCluster CreateService DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListClusters ListContainerInstances ListServices ListTaskDefinitionFamilies ListTaskDefinitions ListTasks RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange UpdateContainerAgent UpdateService / }
 

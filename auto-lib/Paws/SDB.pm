@@ -75,6 +75,34 @@ package Paws::SDB;
     my $call_object = $self->new_with_coercions('Paws::SDB::Select', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAllDomains {
+    my $self = shift;
+
+    my $result = $self->ListDomains(@_);
+    my $array = [];
+    push @$array, @{ $result->DomainNames };
+
+    while ($result->NextToken) {
+      $result = $self->ListDomains(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->DomainNames };
+    }
+
+    return 'Paws::SDB::ListDomains'->_returns->new(DomainNames => $array);
+  }
+  sub SelectAll {
+    my $self = shift;
+
+    my $result = $self->Select(@_);
+    my $array = [];
+    push @$array, @{ $result->Items };
+
+    while ($result->NextToken) {
+      $result = $self->Select(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Items };
+    }
+
+    return 'Paws::SDB::Select'->_returns->new(Items => $array);
+  }
 
   sub operations { qw/BatchDeleteAttributes BatchPutAttributes CreateDomain DeleteAttributes DeleteDomain DomainMetadata GetAttributes ListDomains PutAttributes Select / }
 

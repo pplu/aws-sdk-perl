@@ -247,6 +247,118 @@ package Paws::AutoScaling;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::UpdateAutoScalingGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAllAutoScalingGroups {
+    my $self = shift;
+
+    my $result = $self->DescribeAutoScalingGroups(@_);
+    my $array = [];
+    push @$array, @{ $result->AutoScalingGroups };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->AutoScalingGroups };
+    }
+
+    return 'Paws::AutoScaling::DescribeAutoScalingGroups'->_returns->new(AutoScalingGroups => $array);
+  }
+  sub DescribeAllAutoScalingInstances {
+    my $self = shift;
+
+    my $result = $self->DescribeAutoScalingInstances(@_);
+    my $array = [];
+    push @$array, @{ $result->AutoScalingInstances };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->AutoScalingInstances };
+    }
+
+    return 'Paws::AutoScaling::DescribeAutoScalingInstances'->_returns->new(AutoScalingInstances => $array);
+  }
+  sub DescribeAllLaunchConfigurations {
+    my $self = shift;
+
+    my $result = $self->DescribeLaunchConfigurations(@_);
+    my $array = [];
+    push @$array, @{ $result->LaunchConfigurations };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->LaunchConfigurations };
+    }
+
+    return 'Paws::AutoScaling::DescribeLaunchConfigurations'->_returns->new(LaunchConfigurations => $array);
+  }
+  sub DescribeAllNotificationConfigurations {
+    my $self = shift;
+
+    my $result = $self->DescribeNotificationConfigurations(@_);
+    my $array = [];
+    push @$array, @{ $result->NotificationConfigurations };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->NotificationConfigurations };
+    }
+
+    return 'Paws::AutoScaling::DescribeNotificationConfigurations'->_returns->new(NotificationConfigurations => $array);
+  }
+  sub DescribeAllPolicies {
+    my $self = shift;
+
+    my $result = $self->DescribePolicies(@_);
+    my $array = [];
+    push @$array, @{ $result->ScalingPolicies };
+
+    while ($result->NextToken) {
+      $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->ScalingPolicies };
+    }
+
+    return 'Paws::AutoScaling::DescribePolicies'->_returns->new(ScalingPolicies => $array);
+  }
+  sub DescribeAllScalingActivities {
+    my $self = shift;
+
+    my $result = $self->DescribeScalingActivities(@_);
+    my $array = [];
+    push @$array, @{ $result->Activities };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Activities };
+    }
+
+    return 'Paws::AutoScaling::DescribeScalingActivities'->_returns->new(Activities => $array);
+  }
+  sub DescribeAllScheduledActions {
+    my $self = shift;
+
+    my $result = $self->DescribeScheduledActions(@_);
+    my $array = [];
+    push @$array, @{ $result->ScheduledUpdateGroupActions };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->ScheduledUpdateGroupActions };
+    }
+
+    return 'Paws::AutoScaling::DescribeScheduledActions'->_returns->new(ScheduledUpdateGroupActions => $array);
+  }
+  sub DescribeAllTags {
+    my $self = shift;
+
+    my $result = $self->DescribeTags(@_);
+    my $array = [];
+    push @$array, @{ $result->Tags };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Tags };
+    }
+
+    return 'Paws::AutoScaling::DescribeTags'->_returns->new(Tags => $array);
+  }
 
   sub operations { qw/AttachInstances AttachLoadBalancers CompleteLifecycleAction CreateAutoScalingGroup CreateLaunchConfiguration CreateOrUpdateTags DeleteAutoScalingGroup DeleteLaunchConfiguration DeleteLifecycleHook DeleteNotificationConfiguration DeletePolicy DeleteScheduledAction DeleteTags DescribeAccountLimits DescribeAdjustmentTypes DescribeAutoScalingGroups DescribeAutoScalingInstances DescribeAutoScalingNotificationTypes DescribeLaunchConfigurations DescribeLifecycleHooks DescribeLifecycleHookTypes DescribeLoadBalancers DescribeMetricCollectionTypes DescribeNotificationConfigurations DescribePolicies DescribeScalingActivities DescribeScalingProcessTypes DescribeScheduledActions DescribeTags DescribeTerminationPolicyTypes DetachInstances DetachLoadBalancers DisableMetricsCollection EnableMetricsCollection EnterStandby ExecutePolicy ExitStandby PutLifecycleHook PutNotificationConfiguration PutScalingPolicy PutScheduledUpdateGroupAction RecordLifecycleActionHeartbeat ResumeProcesses SetDesiredCapacity SetInstanceHealth SuspendProcesses TerminateInstanceInAutoScalingGroup UpdateAutoScalingGroup / }
 

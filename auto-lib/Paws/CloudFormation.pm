@@ -97,6 +97,62 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ValidateTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAllStackEvents {
+    my $self = shift;
+
+    my $result = $self->DescribeStackEvents(@_);
+    my $array = [];
+    push @$array, @{ $result->StackEvents };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->StackEvents };
+    }
+
+    return 'Paws::CloudFormation::DescribeStackEvents'->_returns->new(StackEvents => $array);
+  }
+  sub DescribeAllStacks {
+    my $self = shift;
+
+    my $result = $self->DescribeStacks(@_);
+    my $array = [];
+    push @$array, @{ $result->Stacks };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Stacks };
+    }
+
+    return 'Paws::CloudFormation::DescribeStacks'->_returns->new(Stacks => $array);
+  }
+  sub ListAllStackResources {
+    my $self = shift;
+
+    my $result = $self->ListStackResources(@_);
+    my $array = [];
+    push @$array, @{ $result->StackResourceSummaries };
+
+    while ($result->NextToken) {
+      $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->StackResourceSummaries };
+    }
+
+    return 'Paws::CloudFormation::ListStackResources'->_returns->new(StackResourceSummaries => $array);
+  }
+  sub ListAllStacks {
+    my $self = shift;
+
+    my $result = $self->ListStacks(@_);
+    my $array = [];
+    push @$array, @{ $result->StackSummaries };
+
+    while ($result->NextToken) {
+      $result = $self->ListStacks(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->StackSummaries };
+    }
+
+    return 'Paws::CloudFormation::ListStacks'->_returns->new(StackSummaries => $array);
+  }
 
   sub operations { qw/CancelUpdateStack CreateStack DeleteStack DescribeAccountLimits DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost GetStackPolicy GetTemplate GetTemplateSummary ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
 

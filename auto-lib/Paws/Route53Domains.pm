@@ -98,6 +98,34 @@ package Paws::Route53Domains;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateTagsForDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAllDomains {
+    my $self = shift;
+
+    my $result = $self->ListDomains(@_);
+    my $array = [];
+    push @$array, @{ $result->Domains };
+
+    while ($result->NextPageMarker) {
+      $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
+      push @$array, @{ $result->Domains };
+    }
+
+    return 'Paws::Route53Domains::ListDomains'->_returns->new(Domains => $array);
+  }
+  sub ListAllOperations {
+    my $self = shift;
+
+    my $result = $self->ListOperations(@_);
+    my $array = [];
+    push @$array, @{ $result->Operations };
+
+    while ($result->NextPageMarker) {
+      $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
+      push @$array, @{ $result->Operations };
+    }
+
+    return 'Paws::Route53Domains::ListOperations'->_returns->new(Operations => $array);
+  }
 
   sub operations { qw/CheckDomainAvailability DeleteTagsForDomain DisableDomainAutoRenew DisableDomainTransferLock EnableDomainAutoRenew EnableDomainTransferLock GetDomainDetail GetOperationDetail ListDomains ListOperations ListTagsForDomain RegisterDomain RetrieveDomainAuthCode TransferDomain UpdateDomainContact UpdateDomainContactPrivacy UpdateDomainNameservers UpdateTagsForDomain / }
 

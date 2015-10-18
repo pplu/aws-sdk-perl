@@ -133,6 +133,62 @@ package Paws::MachineLearning;
     my $call_object = $self->new_with_coercions('Paws::MachineLearning::UpdateMLModel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAllBatchPredictions {
+    my $self = shift;
+
+    my $result = $self->DescribeBatchPredictions(@_);
+    my $array = [];
+    push @$array, @{ $result->Results };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Results };
+    }
+
+    return 'Paws::MachineLearning::DescribeBatchPredictions'->_returns->new(Results => $array);
+  }
+  sub DescribeAllDataSources {
+    my $self = shift;
+
+    my $result = $self->DescribeDataSources(@_);
+    my $array = [];
+    push @$array, @{ $result->Results };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Results };
+    }
+
+    return 'Paws::MachineLearning::DescribeDataSources'->_returns->new(Results => $array);
+  }
+  sub DescribeAllEvaluations {
+    my $self = shift;
+
+    my $result = $self->DescribeEvaluations(@_);
+    my $array = [];
+    push @$array, @{ $result->Results };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Results };
+    }
+
+    return 'Paws::MachineLearning::DescribeEvaluations'->_returns->new(Results => $array);
+  }
+  sub DescribeAllMLModels {
+    my $self = shift;
+
+    my $result = $self->DescribeMLModels(@_);
+    my $array = [];
+    push @$array, @{ $result->Results };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Results };
+    }
+
+    return 'Paws::MachineLearning::DescribeMLModels'->_returns->new(Results => $array);
+  }
 
   sub operations { qw/CreateBatchPrediction CreateDataSourceFromRDS CreateDataSourceFromRedshift CreateDataSourceFromS3 CreateEvaluation CreateMLModel CreateRealtimeEndpoint DeleteBatchPrediction DeleteDataSource DeleteEvaluation DeleteMLModel DeleteRealtimeEndpoint DescribeBatchPredictions DescribeDataSources DescribeEvaluations DescribeMLModels GetBatchPrediction GetDataSource GetEvaluation GetMLModel Predict UpdateBatchPrediction UpdateDataSource UpdateEvaluation UpdateMLModel / }
 

@@ -405,6 +405,244 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::RevokeDBSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAllDBEngineVersions {
+    my $self = shift;
+
+    my $result = $self->DescribeDBEngineVersions(@_);
+    my $array = [];
+    push @$array, @{ $result->DBEngineVersions };
+
+    while ($result->Marker) {
+      $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
+      push @$array, @{ $result->DBEngineVersions };
+    }
+
+    return 'Paws::RDS::DescribeDBEngineVersions'->_returns->new(DBEngineVersions => $array);
+  }
+  sub DescribeAllDBInstances {
+    my $self = shift;
+
+    my $result = $self->DescribeDBInstances(@_);
+    my $array = [];
+    push @$array, @{ $result->DBInstances };
+
+    while ($result->Marker) {
+      $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
+      push @$array, @{ $result->DBInstances };
+    }
+
+    return 'Paws::RDS::DescribeDBInstances'->_returns->new(DBInstances => $array);
+  }
+  sub DescribeAllDBLogFiles {
+    my $self = shift;
+
+    my $result = $self->DescribeDBLogFiles(@_);
+    my $array = [];
+    push @$array, @{ $result->DescribeDBLogFiles };
+
+    while ($result->Marker) {
+      $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
+      push @$array, @{ $result->DescribeDBLogFiles };
+    }
+
+    return 'Paws::RDS::DescribeDBLogFiles'->_returns->new(DescribeDBLogFiles => $array);
+  }
+  sub DescribeAllDBParameterGroups {
+    my $self = shift;
+
+    my $result = $self->DescribeDBParameterGroups(@_);
+    my $array = [];
+    push @$array, @{ $result->DBParameterGroups };
+
+    while ($result->Marker) {
+      $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
+      push @$array, @{ $result->DBParameterGroups };
+    }
+
+    return 'Paws::RDS::DescribeDBParameterGroups'->_returns->new(DBParameterGroups => $array);
+  }
+  sub DescribeAllDBParameters {
+    my $self = shift;
+
+    my $result = $self->DescribeDBParameters(@_);
+    my $array = [];
+    push @$array, @{ $result->Parameters };
+
+    while ($result->Marker) {
+      $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
+      push @$array, @{ $result->Parameters };
+    }
+
+    return 'Paws::RDS::DescribeDBParameters'->_returns->new(Parameters => $array);
+  }
+  sub DescribeAllDBSecurityGroups {
+    my $self = shift;
+
+    my $result = $self->DescribeDBSecurityGroups(@_);
+    my $array = [];
+    push @$array, @{ $result->DBSecurityGroups };
+
+    while ($result->Marker) {
+      $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
+      push @$array, @{ $result->DBSecurityGroups };
+    }
+
+    return 'Paws::RDS::DescribeDBSecurityGroups'->_returns->new(DBSecurityGroups => $array);
+  }
+  sub DescribeAllDBSnapshots {
+    my $self = shift;
+
+    my $result = $self->DescribeDBSnapshots(@_);
+    my $array = [];
+    push @$array, @{ $result->DBSnapshots };
+
+    while ($result->Marker) {
+      $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
+      push @$array, @{ $result->DBSnapshots };
+    }
+
+    return 'Paws::RDS::DescribeDBSnapshots'->_returns->new(DBSnapshots => $array);
+  }
+  sub DescribeAllDBSubnetGroups {
+    my $self = shift;
+
+    my $result = $self->DescribeDBSubnetGroups(@_);
+    my $array = [];
+    push @$array, @{ $result->DBSubnetGroups };
+
+    while ($result->Marker) {
+      $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
+      push @$array, @{ $result->DBSubnetGroups };
+    }
+
+    return 'Paws::RDS::DescribeDBSubnetGroups'->_returns->new(DBSubnetGroups => $array);
+  }
+  sub DescribeAllEngineDefaultParameters {
+    my $self = shift;
+
+    my $result = $self->DescribeEngineDefaultParameters(@_);
+    my $array = [];
+    push @$array, @{ $result->EngineDefaults.Parameters };
+
+    while ($result->EngineDefaults.Marker) {
+      $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults.Marker);
+      push @$array, @{ $result->EngineDefaults.Parameters };
+    }
+
+    return 'Paws::RDS::DescribeEngineDefaultParameters'->_returns->new(EngineDefaults.Parameters => $array);
+  }
+  sub DescribeAllEvents {
+    my $self = shift;
+
+    my $result = $self->DescribeEvents(@_);
+    my $array = [];
+    push @$array, @{ $result->Events };
+
+    while ($result->Marker) {
+      $result = $self->DescribeEvents(@_, Marker => $result->Marker);
+      push @$array, @{ $result->Events };
+    }
+
+    return 'Paws::RDS::DescribeEvents'->_returns->new(Events => $array);
+  }
+  sub DescribeAllEventSubscriptions {
+    my $self = shift;
+
+    my $result = $self->DescribeEventSubscriptions(@_);
+    my $array = [];
+    push @$array, @{ $result->EventSubscriptionsList };
+
+    while ($result->Marker) {
+      $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
+      push @$array, @{ $result->EventSubscriptionsList };
+    }
+
+    return 'Paws::RDS::DescribeEventSubscriptions'->_returns->new(EventSubscriptionsList => $array);
+  }
+  sub DescribeAllOptionGroupOptions {
+    my $self = shift;
+
+    my $result = $self->DescribeOptionGroupOptions(@_);
+    my $array = [];
+    push @$array, @{ $result->OptionGroupOptions };
+
+    while ($result->Marker) {
+      $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
+      push @$array, @{ $result->OptionGroupOptions };
+    }
+
+    return 'Paws::RDS::DescribeOptionGroupOptions'->_returns->new(OptionGroupOptions => $array);
+  }
+  sub DescribeAllOptionGroups {
+    my $self = shift;
+
+    my $result = $self->DescribeOptionGroups(@_);
+    my $array = [];
+    push @$array, @{ $result->OptionGroupsList };
+
+    while ($result->Marker) {
+      $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
+      push @$array, @{ $result->OptionGroupsList };
+    }
+
+    return 'Paws::RDS::DescribeOptionGroups'->_returns->new(OptionGroupsList => $array);
+  }
+  sub DescribeAllOrderableDBInstanceOptions {
+    my $self = shift;
+
+    my $result = $self->DescribeOrderableDBInstanceOptions(@_);
+    my $array = [];
+    push @$array, @{ $result->OrderableDBInstanceOptions };
+
+    while ($result->Marker) {
+      $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
+      push @$array, @{ $result->OrderableDBInstanceOptions };
+    }
+
+    return 'Paws::RDS::DescribeOrderableDBInstanceOptions'->_returns->new(OrderableDBInstanceOptions => $array);
+  }
+  sub DescribeAllReservedDBInstances {
+    my $self = shift;
+
+    my $result = $self->DescribeReservedDBInstances(@_);
+    my $array = [];
+    push @$array, @{ $result->ReservedDBInstances };
+
+    while ($result->Marker) {
+      $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
+      push @$array, @{ $result->ReservedDBInstances };
+    }
+
+    return 'Paws::RDS::DescribeReservedDBInstances'->_returns->new(ReservedDBInstances => $array);
+  }
+  sub DescribeAllReservedDBInstancesOfferings {
+    my $self = shift;
+
+    my $result = $self->DescribeReservedDBInstancesOfferings(@_);
+    my $array = [];
+    push @$array, @{ $result->ReservedDBInstancesOfferings };
+
+    while ($result->Marker) {
+      $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
+      push @$array, @{ $result->ReservedDBInstancesOfferings };
+    }
+
+    return 'Paws::RDS::DescribeReservedDBInstancesOfferings'->_returns->new(ReservedDBInstancesOfferings => $array);
+  }
+  sub DownloadAllDBLogFilePortions {
+    my $self = shift;
+
+    my $result = $self->DownloadDBLogFilePortion(@_);
+    my $array = [];
+    push @$array, @{ $result->LogFileData };
+
+    while ($result->Marker) {
+      $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
+      push @$array, @{ $result->LogFileData };
+    }
+
+    return 'Paws::RDS::DownloadDBLogFilePortion'->_returns->new(LogFileData => $array);
+  }
 
   sub operations { qw/AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBInstance ModifyDBParameterGroup ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PurchaseReservedDBInstancesOffering RebootDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress / }
 

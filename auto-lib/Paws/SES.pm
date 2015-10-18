@@ -202,6 +202,20 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::VerifyEmailIdentity', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAllIdentities {
+    my $self = shift;
+
+    my $result = $self->ListIdentities(@_);
+    my $array = [];
+    push @$array, @{ $result->Identities };
+
+    while ($result->NextToken) {
+      $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Identities };
+    }
+
+    return 'Paws::SES::ListIdentities'->_returns->new(Identities => $array);
+  }
 
   sub operations { qw/CloneReceiptRuleSet CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendEmail SendRawEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityNotificationTopic SetReceiptRulePosition UpdateReceiptRule VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
 

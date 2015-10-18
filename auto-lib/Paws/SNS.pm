@@ -132,6 +132,76 @@ package Paws::SNS;
     my $call_object = $self->new_with_coercions('Paws::SNS::Unsubscribe', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAllEndpointsByPlatformApplication {
+    my $self = shift;
+
+    my $result = $self->ListEndpointsByPlatformApplication(@_);
+    my $array = [];
+    push @$array, @{ $result->Endpoints };
+
+    while ($result->NextToken) {
+      $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Endpoints };
+    }
+
+    return 'Paws::SNS::ListEndpointsByPlatformApplication'->_returns->new(Endpoints => $array);
+  }
+  sub ListAllPlatformApplications {
+    my $self = shift;
+
+    my $result = $self->ListPlatformApplications(@_);
+    my $array = [];
+    push @$array, @{ $result->PlatformApplications };
+
+    while ($result->NextToken) {
+      $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->PlatformApplications };
+    }
+
+    return 'Paws::SNS::ListPlatformApplications'->_returns->new(PlatformApplications => $array);
+  }
+  sub ListAllSubscriptions {
+    my $self = shift;
+
+    my $result = $self->ListSubscriptions(@_);
+    my $array = [];
+    push @$array, @{ $result->Subscriptions };
+
+    while ($result->NextToken) {
+      $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Subscriptions };
+    }
+
+    return 'Paws::SNS::ListSubscriptions'->_returns->new(Subscriptions => $array);
+  }
+  sub ListAllSubscriptionsByTopic {
+    my $self = shift;
+
+    my $result = $self->ListSubscriptionsByTopic(@_);
+    my $array = [];
+    push @$array, @{ $result->Subscriptions };
+
+    while ($result->NextToken) {
+      $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Subscriptions };
+    }
+
+    return 'Paws::SNS::ListSubscriptionsByTopic'->_returns->new(Subscriptions => $array);
+  }
+  sub ListAllTopics {
+    my $self = shift;
+
+    my $result = $self->ListTopics(@_);
+    my $array = [];
+    push @$array, @{ $result->Topics };
+
+    while ($result->NextToken) {
+      $result = $self->ListTopics(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Topics };
+    }
+
+    return 'Paws::SNS::ListTopics'->_returns->new(Topics => $array);
+  }
 
   sub operations { qw/AddPermission ConfirmSubscription CreatePlatformApplication CreatePlatformEndpoint CreateTopic DeleteEndpoint DeletePlatformApplication DeleteTopic GetEndpointAttributes GetPlatformApplicationAttributes GetSubscriptionAttributes GetTopicAttributes ListEndpointsByPlatformApplication ListPlatformApplications ListSubscriptions ListSubscriptionsByTopic ListTopics Publish RemovePermission SetEndpointAttributes SetPlatformApplicationAttributes SetSubscriptionAttributes SetTopicAttributes Subscribe Unsubscribe / }
 
