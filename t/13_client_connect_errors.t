@@ -56,7 +56,7 @@ my $mojo = eval {
   });
 };
 diag($@);
-goto END if ($@);
+goto FURL if ($@);
 
 throws_ok {
   $mojo->service('EC2',
@@ -66,6 +66,27 @@ throws_ok {
 } 'Paws::Exception', 'got exception';
 
 cmp_ok($@->message, 'eq', 'Connection refused', 'Correct message');
+cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
+
+FURL:
+diag "Furl caller";
+
+my $furl = eval {
+  Paws->new(config => { 
+    caller => 'Paws::Net::FurlCaller',
+    credentials => 'Test::CustomCredentials' 
+  });
+};
+goto END if ($@);
+
+throws_ok {
+  $furl->service('EC2',
+                region => 'test', 
+                region_rules => [ { uri => $closed_server_endpoint } ]
+               )->DescribeInstances;
+} 'Paws::Exception', 'got exception';
+
+like($@->message, qr/Connection refused/, 'Correct message');
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 END:
