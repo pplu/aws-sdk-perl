@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteChapCrede
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DeleteChapCredentials.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteChapCredentials.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteChapCredentials.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InitiatorName => Str
 
-  
-
-The iSCSI initiator that connects to the target.
-
-
-
-
-
-
-
-
-
+  The iSCSI initiator that connects to the target.
 
 =head2 B<REQUIRED> TargetARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
+  The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
 DescribeStorediSCSIVolumes operation to return to retrieve the
 TargetARN for specified VolumeARN.
-
-
-
-
-
-
-
-
-
 
 
 

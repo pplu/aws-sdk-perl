@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::PutDestinationPolicy;
   use Moose;
-  has accessPolicy => (is => 'ro', isa => 'Str', required => 1);
-  has destinationName => (is => 'ro', isa => 'Str', required => 1);
+  has AccessPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'accessPolicy' , required => 1);
+  has DestinationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method PutDestinationP
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method PutDestinationPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutDestinationPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutDestinationPolicy.
 
 As an example:
 
@@ -33,36 +33,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accessPolicy => Str
+=head2 B<REQUIRED> AccessPolicy => Str
 
-  
-
-An IAM policy document that authorizes cross-account users to deliver
+  An IAM policy document that authorizes cross-account users to deliver
 their log events to associated destination.
 
+=head2 B<REQUIRED> DestinationName => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> destinationName => Str
-
-  
-
-A name for an existing destination.
-
-
-
-
-
-
-
-
-
+  A name for an existing destination.
 
 
 

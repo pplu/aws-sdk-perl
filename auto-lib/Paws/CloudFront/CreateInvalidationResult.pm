@@ -18,7 +18,7 @@ This class represents the parameters used for calling the method  on the
 Amazon CloudFront service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -28,36 +28,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Invalidation => Paws::CloudFront::Invalidation
+=head2 Invalidation => L<Paws::CloudFront::Invalidation>
 
-  
-
-The invalidation's information.
-
-
-
-
-
-
-
-
-
+  The invalidation's information.
 
 =head2 Location => Str
 
-  
-
-The fully qualified URI of the distribution and invalidation batch
+  The fully qualified URI of the distribution and invalidation batch
 request, including the Invalidation ID.
-
-
-
-
-
-
-
-
-
 
 
 

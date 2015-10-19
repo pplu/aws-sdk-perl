@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method TerminateInstan
 Auto Scaling service. Use the attributes of this class
 as arguments to method TerminateInstanceInAutoScalingGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to TerminateInstanceInAutoScalingGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TerminateInstanceInAutoScalingGroup.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The ID of the EC2 instance.
-
-
-
-
-
-
-
-
-
+  The ID of the EC2 instance.
 
 =head2 B<REQUIRED> ShouldDecrementDesiredCapacity => Bool
 
-  
-
-If C<true>, terminating this instance also decrements the size of the
+  If C<true>, terminating this instance also decrements the size of the
 Auto Scaling group.
-
-
-
-
-
-
-
-
-
 
 
 

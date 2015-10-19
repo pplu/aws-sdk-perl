@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetOpenIdToken 
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method GetOpenIdToken.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetOpenIdToken.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetOpenIdToken.
 
 As an example:
 
@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IdentityId => Str
 
-  
+  A unique identifier in the format REGION:GUID.
 
-A unique identifier in the format REGION:GUID.
+=head2 Logins => L<Paws::CognitoIdentity::LoginsMap>
 
-
-
-
-
-
-
-
-
-
-=head2 Logins => Paws::CognitoIdentity::LoginsMap
-
-  
-
-A set of optional name-value pairs that map provider names to provider
+  A set of optional name-value pairs that map provider names to provider
 tokens. When using graph.facebook.com and www.amazon.com, supply the
 access_token returned from the provider's authflow. For
 accounts.google.com or any other OpenId Connect provider, always
 include the id_token.
-
-
-
-
-
-
-
-
-
 
 
 

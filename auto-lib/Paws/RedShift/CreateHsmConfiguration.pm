@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method CreateHsmConfig
 Amazon Redshift service. Use the attributes of this class
 as arguments to method CreateHsmConfiguration.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateHsmConfiguration.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateHsmConfiguration.
 
 As an example:
 
@@ -40,112 +40,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Description => Str
 
-  
-
-A text description of the HSM configuration to be created.
-
-
-
-
-
-
-
-
-
+  A text description of the HSM configuration to be created.
 
 =head2 B<REQUIRED> HsmConfigurationIdentifier => Str
 
-  
-
-The identifier to be assigned to the new Amazon Redshift HSM
+  The identifier to be assigned to the new Amazon Redshift HSM
 configuration.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> HsmIpAddress => Str
 
-  
-
-The IP address that the Amazon Redshift cluster must use to access the
+  The IP address that the Amazon Redshift cluster must use to access the
 HSM.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> HsmPartitionName => Str
 
-  
-
-The name of the partition in the HSM where the Amazon Redshift clusters
+  The name of the partition in the HSM where the Amazon Redshift clusters
 will store their database encryption keys.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> HsmPartitionPassword => Str
 
-  
-
-The password required to access the HSM partition.
-
-
-
-
-
-
-
-
-
+  The password required to access the HSM partition.
 
 =head2 B<REQUIRED> HsmServerPublicCertificate => Str
 
-  
-
-The HSMs public certificate file. When using Cloud HSM, the file name
+  The HSMs public certificate file. When using Cloud HSM, the file name
 is server.pem.
 
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
-
-  
-
-A list of tag instances.
-
-
-
-
-
-
-
-
-
+  A list of tag instances.
 
 
 

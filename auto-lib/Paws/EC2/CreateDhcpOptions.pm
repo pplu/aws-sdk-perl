@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateDhcpOptio
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateDhcpOptions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDhcpOptions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDhcpOptions.
 
 As an example:
 
@@ -33,38 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DhcpConfigurations => ArrayRef[Paws::EC2::NewDhcpConfiguration]
+=head2 B<REQUIRED> DhcpConfigurations => ArrayRef[L<Paws::EC2::NewDhcpConfiguration>]
 
-  
-
-A DHCP configuration option.
-
-
-
-
-
-
-
-
-
+  A DHCP configuration option.
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
-
-
-
-
-
-
-
-
-
 
 
 

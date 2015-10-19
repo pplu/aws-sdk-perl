@@ -42,30 +42,17 @@ Paws::MarketplaceCommerceAnalytics - Perl Interface to AWS AWS Marketplace Comme
 
 =head1 DESCRIPTION
 
-
-
 Provides AWS Marketplace business intelligence data on-demand.
-
-
-
-
-
-
-
-
-
 
 =head1 METHODS
 
-=head2 GenerateDataSet(dataSetPublicationDate => Str, dataSetType => Str, destinationS3BucketName => Str, roleNameArn => Str, snsTopicArn => Str, [destinationS3Prefix => Str])
+=head2 GenerateDataSet(DataSetPublicationDate => Str, DataSetType => Str, DestinationS3BucketName => Str, RoleNameArn => Str, SnsTopicArn => Str, [DestinationS3Prefix => Str])
 
 Each argument is described in detail in: L<Paws::MarketplaceCommerceAnalytics::GenerateDataSet>
 
 Returns: a L<Paws::MarketplaceCommerceAnalytics::GenerateDataSetResult> instance
 
-  
-
-Given a data set type and data set publication date, asynchronously
+  Given a data set type and data set publication date, asynchronously
 publishes the requested data set to the specified S3 bucket and
 notifies the specified SNS topic once the data is available. Returns a
 unique request identifier that can be used to correlate requests with
@@ -77,15 +64,6 @@ file will be overwritten by the new file. Requires a Role with an
 attached permissions policy providing Allow permissions for the
 following actions: s3:PutObject, s3:getBucketLocation, sns:SetRegion,
 sns:ListTopics, sns:Publish, iam:GetRolePolicy.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

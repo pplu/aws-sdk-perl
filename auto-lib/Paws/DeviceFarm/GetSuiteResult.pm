@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetSuiteResult;
   use Moose;
-  has suite => (is => 'ro', isa => 'Paws::DeviceFarm::Suite');
+  has Suite => (is => 'ro', isa => 'Paws::DeviceFarm::Suite', traits => ['Unwrapped'], xmlname => 'suite' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::DeviceFarm::GetSuiteResult
 
 =head1 ATTRIBUTES
 
-=head2 suite => Paws::DeviceFarm::Suite
+=head2 Suite => L<Paws::DeviceFarm::Suite>
 
   
 

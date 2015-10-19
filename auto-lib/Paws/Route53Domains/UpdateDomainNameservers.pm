@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateDomainNam
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method UpdateDomainNameservers.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDomainNameservers.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDomainNameservers.
 
 As an example:
 
@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of a domain.
+  The name of a domain.
 
 Type: String
 
@@ -50,50 +48,19 @@ are not supported.
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 FIAuthKey => Str
 
-  
+  The authorization key for .fi domains
 
-The authorization key for .fi domains
+=head2 B<REQUIRED> Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Nameservers => ArrayRef[Paws::Route53Domains::Nameserver]
-
-  
-
-A list of new name servers for the domain.
+  A list of new name servers for the domain.
 
 Type: Complex
 
 Children: C<Name>, C<GlueIps>
 
 Required: Yes
-
-
-
-
-
-
-
-
-
 
 
 

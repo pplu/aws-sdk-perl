@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DetachLoadBalan
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method DetachLoadBalancerFromSubnets.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DetachLoadBalancerFromSubnets.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetachLoadBalancerFromSubnets.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 =head2 B<REQUIRED> Subnets => ArrayRef[Str]
 
-  
-
-The IDs of the subnets.
-
-
-
-
-
-
-
-
-
+  The IDs of the subnets.
 
 
 

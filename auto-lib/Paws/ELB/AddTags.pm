@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddTags on the
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method AddTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTags.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LoadBalancerNames => ArrayRef[Str]
 
-  
+  The name of the load balancer. You can specify one load balancer only.
 
-The name of the load balancer. You can specify one load balancer only.
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::ELB::Tag>]
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::ELB::Tag]
-
-  
-
-The tags.
-
-
-
-
-
-
-
-
-
+  The tags.
 
 
 

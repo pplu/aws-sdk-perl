@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetLoggingOptio
 AWS IoT service. Use the attributes of this class
 as arguments to method GetLoggingOptions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetLoggingOptions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLoggingOptions.
 
 As an example:
 

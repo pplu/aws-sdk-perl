@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteEventSubs
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DeleteEventSubscription.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteEventSubscription.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteEventSubscription.
 
 As an example:
 
@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SubscriptionName => Str
 
-  
-
-The name of the Amazon Redshift event notification subscription to be
+  The name of the Amazon Redshift event notification subscription to be
 deleted.
-
-
-
-
-
-
-
-
-
 
 
 

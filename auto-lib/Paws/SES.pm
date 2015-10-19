@@ -231,8 +231,6 @@ Paws::SES - Perl Interface to AWS Amazon Simple Email Service
 
 =head1 DESCRIPTION
 
-
-
 Amazon Simple Email Service
 
 This is the API Reference for Amazon Simple Email Service (Amazon SES).
@@ -242,15 +240,6 @@ Amazon SES Developer Guide.
 For a list of Amazon SES endpoints to use in service requests, see
 Regions and Amazon SES in the Amazon SES Developer Guide.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 CloneReceiptRuleSet(OriginalRuleSetName => Str, RuleSetName => Str)
@@ -259,9 +248,7 @@ Each argument is described in detail in: L<Paws::SES::CloneReceiptRuleSet>
 
 Returns: a L<Paws::SES::CloneReceiptRuleSetResponse> instance
 
-  
-
-Creates a receipt rule set by cloning an existing one. All receipt
+  Creates a receipt rule set by cloning an existing one. All receipt
 rules and configurations are copied to the new receipt rule set and are
 completely independent of the source rule set.
 
@@ -271,24 +258,13 @@ Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateReceiptFilter(Filter => Paws::SES::ReceiptFilter)
+=head2 CreateReceiptFilter(Filter => L<Paws::SES::ReceiptFilter>)
 
 Each argument is described in detail in: L<Paws::SES::CreateReceiptFilter>
 
 Returns: a L<Paws::SES::CreateReceiptFilterResponse> instance
 
-  
-
-Creates a new IP address filter.
+  Creates a new IP address filter.
 
 For information about setting up IP address filters, see the Amazon SES
 Developer Guide.
@@ -296,38 +272,18 @@ Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateReceiptRule(Rule => Paws::SES::ReceiptRule, RuleSetName => Str, [After => Str])
+=head2 CreateReceiptRule(Rule => L<Paws::SES::ReceiptRule>, RuleSetName => Str, [After => Str])
 
 Each argument is described in detail in: L<Paws::SES::CreateReceiptRule>
 
 Returns: a L<Paws::SES::CreateReceiptRuleResponse> instance
 
-  
-
-Creates a receipt rule.
+  Creates a receipt rule.
 
 For information about setting up receipt rules, see the Amazon SES
 Developer Guide.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreateReceiptRuleSet(RuleSetName => Str)
@@ -336,23 +292,12 @@ Each argument is described in detail in: L<Paws::SES::CreateReceiptRuleSet>
 
 Returns: a L<Paws::SES::CreateReceiptRuleSetResponse> instance
 
-  
-
-Creates an empty receipt rule set.
+  Creates an empty receipt rule set.
 
 For information about setting up receipt rule sets, see the Amazon SES
 Developer Guide.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteIdentity(Identity => Str)
@@ -361,21 +306,10 @@ Each argument is described in detail in: L<Paws::SES::DeleteIdentity>
 
 Returns: a L<Paws::SES::DeleteIdentityResponse> instance
 
-  
-
-Deletes the specified identity (email address or domain) from the list
+  Deletes the specified identity (email address or domain) from the list
 of verified identities.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteIdentityPolicy(Identity => Str, PolicyName => Str)
@@ -384,9 +318,7 @@ Each argument is described in detail in: L<Paws::SES::DeleteIdentityPolicy>
 
 Returns: a L<Paws::SES::DeleteIdentityPolicyResponse> instance
 
-  
-
-Deletes the specified sending authorization policy for the given
+  Deletes the specified sending authorization policy for the given
 identity (email address or domain). This API returns successfully even
 if a policy with the specified name does not exist.
 
@@ -400,38 +332,18 @@ using sending authorization, see the Amazon SES Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteReceiptFilter(FilterName => Str)
 
 Each argument is described in detail in: L<Paws::SES::DeleteReceiptFilter>
 
 Returns: a L<Paws::SES::DeleteReceiptFilterResponse> instance
 
-  
-
-Deletes the specified IP address filter.
+  Deletes the specified IP address filter.
 
 For information about managing IP address filters, see the Amazon SES
 Developer Guide.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteReceiptRule(RuleName => Str, RuleSetName => Str)
@@ -440,23 +352,12 @@ Each argument is described in detail in: L<Paws::SES::DeleteReceiptRule>
 
 Returns: a L<Paws::SES::DeleteReceiptRuleResponse> instance
 
-  
-
-Deletes the specified receipt rule.
+  Deletes the specified receipt rule.
 
 For information about managing receipt rules, see the Amazon SES
 Developer Guide.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteReceiptRuleSet(RuleSetName => Str)
@@ -465,9 +366,7 @@ Each argument is described in detail in: L<Paws::SES::DeleteReceiptRuleSet>
 
 Returns: a L<Paws::SES::DeleteReceiptRuleSetResponse> instance
 
-  
-
-Deletes the specified receipt rule set and all of the receipt rules it
+  Deletes the specified receipt rule set and all of the receipt rules it
 contains.
 
 The currently active rule set cannot be deleted.
@@ -478,24 +377,13 @@ Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteVerifiedEmailAddress(EmailAddress => Str)
 
 Each argument is described in detail in: L<Paws::SES::DeleteVerifiedEmailAddress>
 
 Returns: nothing
 
-  
-
-Deletes the specified email address from the list of verified
+  Deletes the specified email address from the list of verified
 addresses.
 
 The DeleteVerifiedEmailAddress action is deprecated as of the May 15,
@@ -505,24 +393,13 @@ preferred.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeActiveReceiptRuleSet( => )
+=head2 DescribeActiveReceiptRuleSet()
 
 Each argument is described in detail in: L<Paws::SES::DescribeActiveReceiptRuleSet>
 
 Returns: a L<Paws::SES::DescribeActiveReceiptRuleSetResponse> instance
 
-  
-
-Returns the metadata and receipt rules for the receipt rule set that is
+  Returns the metadata and receipt rules for the receipt rule set that is
 currently active.
 
 For information about setting up receipt rule sets, see the Amazon SES
@@ -531,38 +408,18 @@ Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeReceiptRule(RuleName => Str, RuleSetName => Str)
 
 Each argument is described in detail in: L<Paws::SES::DescribeReceiptRule>
 
 Returns: a L<Paws::SES::DescribeReceiptRuleResponse> instance
 
-  
-
-Returns the details of the specified receipt rule.
+  Returns the details of the specified receipt rule.
 
 For information about setting up receipt rules, see the Amazon SES
 Developer Guide.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeReceiptRuleSet(RuleSetName => Str)
@@ -571,23 +428,12 @@ Each argument is described in detail in: L<Paws::SES::DescribeReceiptRuleSet>
 
 Returns: a L<Paws::SES::DescribeReceiptRuleSetResponse> instance
 
-  
-
-Returns the details of the specified receipt rule set.
+  Returns the details of the specified receipt rule set.
 
 For information about managing receipt rule sets, see the Amazon SES
 Developer Guide.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetIdentityDkimAttributes(Identities => ArrayRef[Str])
@@ -596,9 +442,7 @@ Each argument is described in detail in: L<Paws::SES::GetIdentityDkimAttributes>
 
 Returns: a L<Paws::SES::GetIdentityDkimAttributesResponse> instance
 
-  
-
-Returns the current status of Easy DKIM signing for an entity. For
+  Returns the current status of Easy DKIM signing for an entity. For
 domain name identities, this action also returns the DKIM tokens that
 are required for Easy DKIM signing, and whether Amazon SES has
 successfully verified that these tokens have been published.
@@ -627,24 +471,13 @@ For more information about creating DNS records using DKIM tokens, go
 to the Amazon SES Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetIdentityNotificationAttributes(Identities => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityNotificationAttributes>
 
 Returns: a L<Paws::SES::GetIdentityNotificationAttributesResponse> instance
 
-  
-
-Given a list of verified identities (email addresses and/or domains),
+  Given a list of verified identities (email addresses and/or domains),
 returns a structure describing identity notification attributes.
 
 This action is throttled at one request per second and can only get
@@ -654,24 +487,13 @@ For more information about using notifications with Amazon SES, see the
 Amazon SES Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetIdentityPolicies(Identity => Str, PolicyNames => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityPolicies>
 
 Returns: a L<Paws::SES::GetIdentityPoliciesResponse> instance
 
-  
-
-Returns the requested sending authorization policies for the given
+  Returns the requested sending authorization policies for the given
 identity (email address or domain). The policies are returned as a map
 of policy names to policy contents. You can retrieve a maximum of 20
 policies at a time.
@@ -686,38 +508,18 @@ using sending authorization, see the Amazon SES Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetIdentityVerificationAttributes(Identities => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityVerificationAttributes>
 
 Returns: a L<Paws::SES::GetIdentityVerificationAttributesResponse> instance
 
-  
-
-Given a list of identities (email addresses and/or domains), returns
+  Given a list of identities (email addresses and/or domains), returns
 the verification status and (for domain identities) the verification
 token for each identity.
 
 This action is throttled at one request per second and can only get
 verification attributes for up to 100 identities at a time.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetSendQuota( => )
@@ -726,20 +528,9 @@ Each argument is described in detail in: L<Paws::SES::GetSendQuota>
 
 Returns: a L<Paws::SES::GetSendQuotaResponse> instance
 
-  
-
-Returns the user's current sending limits.
+  Returns the user's current sending limits.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetSendStatistics( => )
@@ -748,9 +539,7 @@ Each argument is described in detail in: L<Paws::SES::GetSendStatistics>
 
 Returns: a L<Paws::SES::GetSendStatisticsResponse> instance
 
-  
-
-Returns the user's sending statistics. The result is a list of data
+  Returns the user's sending statistics. The result is a list of data
 points, representing the last two weeks of sending activity.
 
 Each data point in the list contains statistics for a 15-minute
@@ -759,36 +548,16 @@ interval.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListIdentities([IdentityType => Str, MaxItems => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SES::ListIdentities>
 
 Returns: a L<Paws::SES::ListIdentitiesResponse> instance
 
-  
-
-Returns a list containing all of the identities (email addresses and
+  Returns a list containing all of the identities (email addresses and
 domains) for a specific AWS Account, regardless of verification status.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListIdentityPolicies(Identity => Str)
@@ -797,9 +566,7 @@ Each argument is described in detail in: L<Paws::SES::ListIdentityPolicies>
 
 Returns: a L<Paws::SES::ListIdentityPoliciesResponse> instance
 
-  
-
-Returns a list of sending authorization policies that are attached to
+  Returns a list of sending authorization policies that are attached to
 the given identity (email address or domain). This API returns only a
 list. If you want the actual policy content, you can use
 C<GetIdentityPolicies>.
@@ -814,38 +581,18 @@ using sending authorization, see the Amazon SES Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListReceiptFilters( => )
+=head2 ListReceiptFilters()
 
 Each argument is described in detail in: L<Paws::SES::ListReceiptFilters>
 
 Returns: a L<Paws::SES::ListReceiptFiltersResponse> instance
 
-  
-
-Lists the IP address filters associated with your account.
+  Lists the IP address filters associated with your account.
 
 For information about managing IP address filters, see the Amazon SES
 Developer Guide.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListReceiptRuleSets([NextToken => Str])
@@ -854,9 +601,7 @@ Each argument is described in detail in: L<Paws::SES::ListReceiptRuleSets>
 
 Returns: a L<Paws::SES::ListReceiptRuleSetsResponse> instance
 
-  
-
-Lists the receipt rule sets that exist under your AWS account. If there
+  Lists the receipt rule sets that exist under your AWS account. If there
 are additional receipt rule sets to be retrieved, you will receive a
 C<NextToken> that you can provide to the next call to
 C<ListReceiptRuleSets> to retrieve the additional entries.
@@ -867,24 +612,13 @@ Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListVerifiedEmailAddresses( => )
 
 Each argument is described in detail in: L<Paws::SES::ListVerifiedEmailAddresses>
 
 Returns: a L<Paws::SES::ListVerifiedEmailAddressesResponse> instance
 
-  
-
-Returns a list containing all of the email addresses that have been
+  Returns a list containing all of the email addresses that have been
 verified.
 
 The ListVerifiedEmailAddresses action is deprecated as of the May 15,
@@ -894,24 +628,13 @@ preferred.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
 =head2 PutIdentityPolicy(Identity => Str, Policy => Str, PolicyName => Str)
 
 Each argument is described in detail in: L<Paws::SES::PutIdentityPolicy>
 
 Returns: a L<Paws::SES::PutIdentityPolicyResponse> instance
 
-  
-
-Adds or updates a sending authorization policy for the specified
+  Adds or updates a sending authorization policy for the specified
 identity (email address or domain).
 
 This API is for the identity owner only. If you have not verified the
@@ -924,24 +647,13 @@ using sending authorization, see the Amazon SES Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ReorderReceiptRuleSet(RuleNames => ArrayRef[Str], RuleSetName => Str)
 
 Each argument is described in detail in: L<Paws::SES::ReorderReceiptRuleSet>
 
 Returns: a L<Paws::SES::ReorderReceiptRuleSetResponse> instance
 
-  
-
-Reorders the receipt rules within a receipt rule set.
+  Reorders the receipt rules within a receipt rule set.
 
 All of the rules in the rule set must be represented in this request.
 That is, this API will return an error if the reorder request
@@ -953,24 +665,13 @@ Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
-=head2 SendBounce(BouncedRecipientInfoList => ArrayRef[Paws::SES::BouncedRecipientInfo], BounceSender => Str, OriginalMessageId => Str, [BounceSenderArn => Str, Explanation => Str, MessageDsn => Paws::SES::MessageDsn])
+=head2 SendBounce(BouncedRecipientInfoList => ArrayRef[L<Paws::SES::BouncedRecipientInfo>], BounceSender => Str, OriginalMessageId => Str, [BounceSenderArn => Str, Explanation => Str, MessageDsn => L<Paws::SES::MessageDsn>])
 
 Each argument is described in detail in: L<Paws::SES::SendBounce>
 
 Returns: a L<Paws::SES::SendBounceResponse> instance
 
-  
-
-Generates and sends a bounce message to the sender of an email you
+  Generates and sends a bounce message to the sender of an email you
 received through Amazon SES. You can only use this API on an email up
 to 24 hours after you receive it.
 
@@ -983,24 +684,13 @@ Amazon SES Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
-=head2 SendEmail(Destination => Paws::SES::Destination, Message => Paws::SES::Message, Source => Str, [ReplyToAddresses => ArrayRef[Str], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str])
+=head2 SendEmail(Destination => L<Paws::SES::Destination>, Message => L<Paws::SES::Message>, Source => Str, [ReplyToAddresses => ArrayRef[Str], ReturnPath => Str, ReturnPathArn => Str, SourceArn => Str])
 
 Each argument is described in detail in: L<Paws::SES::SendEmail>
 
 Returns: a L<Paws::SES::SendEmailResponse> instance
 
-  
-
-Composes an email message based on input data, and then immediately
+  Composes an email message based on input data, and then immediately
 queues the message for sending.
 
 There are several important points to know about C<SendEmail>:
@@ -1033,23 +723,13 @@ about your sending quota, go to the Amazon SES Developer Guide.
 
 
 
-
-
-
-
-
-
-
-
-=head2 SendRawEmail(RawMessage => Paws::SES::RawMessage, [Destinations => ArrayRef[Str], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str])
+=head2 SendRawEmail(RawMessage => L<Paws::SES::RawMessage>, [Destinations => ArrayRef[Str], FromArn => Str, ReturnPathArn => Str, Source => Str, SourceArn => Str])
 
 Each argument is described in detail in: L<Paws::SES::SendRawEmail>
 
 Returns: a L<Paws::SES::SendRawEmailResponse> instance
 
-  
-
-Sends an email message, with header and content specified by the
+  Sends an email message, with header and content specified by the
 client. The C<SendRawEmail> action is useful for sending multipart MIME
 emails. The raw text of the message must comply with Internet email
 standards; otherwise, the message cannot be sent.
@@ -1116,23 +796,13 @@ Guide.
 
 
 
-
-
-
-
-
-
-
-
 =head2 SetActiveReceiptRuleSet([RuleSetName => Str])
 
 Each argument is described in detail in: L<Paws::SES::SetActiveReceiptRuleSet>
 
 Returns: a L<Paws::SES::SetActiveReceiptRuleSetResponse> instance
 
-  
-
-Sets the specified receipt rule set as the active receipt rule set.
+  Sets the specified receipt rule set as the active receipt rule set.
 
 To disable your email-receiving through Amazon SES completely, you can
 call this API with RuleSetName set to null.
@@ -1143,24 +813,13 @@ Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
 =head2 SetIdentityDkimEnabled(DkimEnabled => Bool, Identity => Str)
 
 Each argument is described in detail in: L<Paws::SES::SetIdentityDkimEnabled>
 
 Returns: a L<Paws::SES::SetIdentityDkimEnabledResponse> instance
 
-  
-
-Enables or disables Easy DKIM signing of email sent from an identity:
+  Enables or disables Easy DKIM signing of email sent from an identity:
 
 =over
 
@@ -1184,24 +843,13 @@ For more information about Easy DKIM signing, go to the Amazon SES
 Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
 =head2 SetIdentityFeedbackForwardingEnabled(ForwardingEnabled => Bool, Identity => Str)
 
 Each argument is described in detail in: L<Paws::SES::SetIdentityFeedbackForwardingEnabled>
 
 Returns: a L<Paws::SES::SetIdentityFeedbackForwardingEnabledResponse> instance
 
-  
-
-Given an identity (email address or domain), enables or disables
+  Given an identity (email address or domain), enables or disables
 whether Amazon SES forwards bounce and complaint notifications as
 email. Feedback forwarding can only be disabled when Amazon Simple
 Notification Service (Amazon SNS) topics are specified for both bounces
@@ -1216,24 +864,13 @@ For more information about using notifications with Amazon SES, see the
 Amazon SES Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
 =head2 SetIdentityNotificationTopic(Identity => Str, NotificationType => Str, [SnsTopic => Str])
 
 Each argument is described in detail in: L<Paws::SES::SetIdentityNotificationTopic>
 
 Returns: a L<Paws::SES::SetIdentityNotificationTopicResponse> instance
 
-  
-
-Given an identity (email address or domain), sets the Amazon Simple
+  Given an identity (email address or domain), sets the Amazon Simple
 Notification Service (Amazon SNS) topic to which Amazon SES will
 publish bounce, complaint, and/or delivery notifications for emails
 sent with that identity as the C<Source>.
@@ -1248,24 +885,13 @@ For more information about feedback notification, see the Amazon SES
 Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
 =head2 SetReceiptRulePosition(RuleName => Str, RuleSetName => Str, [After => Str])
 
 Each argument is described in detail in: L<Paws::SES::SetReceiptRulePosition>
 
 Returns: a L<Paws::SES::SetReceiptRulePositionResponse> instance
 
-  
-
-Sets the position of the specified receipt rule in the receipt rule
+  Sets the position of the specified receipt rule in the receipt rule
 set.
 
 For information about managing receipt rules, see the Amazon SES
@@ -1274,38 +900,18 @@ Developer Guide.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateReceiptRule(Rule => Paws::SES::ReceiptRule, RuleSetName => Str)
+=head2 UpdateReceiptRule(Rule => L<Paws::SES::ReceiptRule>, RuleSetName => Str)
 
 Each argument is described in detail in: L<Paws::SES::UpdateReceiptRule>
 
 Returns: a L<Paws::SES::UpdateReceiptRuleResponse> instance
 
-  
-
-Updates a receipt rule.
+  Updates a receipt rule.
 
 For information about managing receipt rules, see the Amazon SES
 Developer Guide.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 VerifyDomainDkim(Domain => Str)
@@ -1314,9 +920,7 @@ Each argument is described in detail in: L<Paws::SES::VerifyDomainDkim>
 
 Returns: a L<Paws::SES::VerifyDomainDkimResponse> instance
 
-  
-
-Returns a set of DKIM tokens for a domain. DKIM I<tokens> are character
+  Returns a set of DKIM tokens for a domain. DKIM I<tokens> are character
 strings that represent your domain's identity. Using these tokens, you
 will need to create DNS CNAME records that point to DKIM public keys
 hosted by Amazon SES. Amazon Web Services will eventually detect that
@@ -1333,35 +937,15 @@ For more information about creating DNS records using DKIM tokens, go
 to the Amazon SES Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
 =head2 VerifyDomainIdentity(Domain => Str)
 
 Each argument is described in detail in: L<Paws::SES::VerifyDomainIdentity>
 
 Returns: a L<Paws::SES::VerifyDomainIdentityResponse> instance
 
-  
-
-Verifies a domain.
+  Verifies a domain.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head2 VerifyEmailAddress(EmailAddress => Str)
@@ -1370,9 +954,7 @@ Each argument is described in detail in: L<Paws::SES::VerifyEmailAddress>
 
 Returns: nothing
 
-  
-
-Verifies an email address. This action causes a confirmation email
+  Verifies an email address. This action causes a confirmation email
 message to be sent to the specified address.
 
 The VerifyEmailAddress action is deprecated as of the May 15, 2012
@@ -1382,36 +964,16 @@ preferred.
 This action is throttled at one request per second.
 
 
-
-
-
-
-
-
-
-
-
 =head2 VerifyEmailIdentity(EmailAddress => Str)
 
 Each argument is described in detail in: L<Paws::SES::VerifyEmailIdentity>
 
 Returns: a L<Paws::SES::VerifyEmailIdentityResponse> instance
 
-  
-
-Verifies an email address. This action causes a confirmation email
+  Verifies an email address. This action causes a confirmation email
 message to be sent to the specified address.
 
 This action is throttled at one request per second.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

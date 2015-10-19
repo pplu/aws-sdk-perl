@@ -13,21 +13,10 @@ Paws::SES::ListReceiptFiltersResponse
 
 =head1 ATTRIBUTES
 
-=head2 Filters => ArrayRef[Paws::SES::ReceiptFilter]
+=head2 Filters => ArrayRef[L<Paws::SES::ReceiptFilter>]
 
-  
-
-A list of IP address filter data structures, which each consist of a
+  A list of IP address filter data structures, which each consist of a
 name, an IP address range, and whether to allow or block mail from it.
-
-
-
-
-
-
-
-
-
 
 
 =cut

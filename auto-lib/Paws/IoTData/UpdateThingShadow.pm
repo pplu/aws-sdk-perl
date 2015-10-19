@@ -1,8 +1,8 @@
 
 package Paws::IoTData::UpdateThingShadow;
   use Moose;
-  has payload => (is => 'ro', isa => 'Str', required => 1);
-  has thingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
+  has Payload => (is => 'ro', isa => 'Str', required => 1);
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method UpdateThingShad
 AWS IoT Data Plane service. Use the attributes of this class
 as arguments to method UpdateThingShadow.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateThingShadow.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateThingShadow.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> payload => Str
+=head2 B<REQUIRED> Payload => Str
 
-  
+  The state information, in JSON format.
 
-The state information, in JSON format.
+=head2 B<REQUIRED> ThingName => Str
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> thingName => Str
-
-  
-
-The name of the thing.
-
-
-
-
-
-
-
-
-
+  The name of the thing.
 
 
 

@@ -57,8 +57,6 @@ Paws::IoTData - Perl Interface to AWS AWS IoT Data Plane
 
 =head1 DESCRIPTION
 
-
-
 AWS IoT (Beta)
 
 B<AWS IoT is considered a beta service as defined in the Service Terms>
@@ -71,107 +69,54 @@ retrieve, update, and delete thing shadows. A thing shadow is a
 persistent representation of your things and their state in the AWS
 cloud.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
-=head2 DeleteThingShadow(thingName => Str)
+=head2 DeleteThingShadow(ThingName => Str)
 
 Each argument is described in detail in: L<Paws::IoTData::DeleteThingShadow>
 
 Returns: a L<Paws::IoTData::DeleteThingShadowResponse> instance
 
-  
-
-Deletes the thing shadow for the specified thing.
+  Deletes the thing shadow for the specified thing.
 
 For more information, see DeleteThingShadow in the I<AWS IoT Developer
 Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetThingShadow(thingName => Str)
+=head2 GetThingShadow(ThingName => Str)
 
 Each argument is described in detail in: L<Paws::IoTData::GetThingShadow>
 
 Returns: a L<Paws::IoTData::GetThingShadowResponse> instance
 
-  
-
-Gets the thing shadow for the specified thing.
+  Gets the thing shadow for the specified thing.
 
 For more information, see GetThingShadow in the I<AWS IoT Developer
 Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 Publish(topic => Str, [payload => Str, qos => Int])
+=head2 Publish(Topic => Str, [Payload => Str, Qos => Int])
 
 Each argument is described in detail in: L<Paws::IoTData::Publish>
 
 Returns: nothing
 
-  
-
-Publishes state information.
+  Publishes state information.
 
 For more information, see HTTP Protocol in the I<AWS IoT Developer
 Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateThingShadow(payload => Str, thingName => Str)
+=head2 UpdateThingShadow(Payload => Str, ThingName => Str)
 
 Each argument is described in detail in: L<Paws::IoTData::UpdateThingShadow>
 
 Returns: a L<Paws::IoTData::UpdateThingShadowResponse> instance
 
-  
-
-Updates the thing shadow for the specified thing.
+  Updates the thing shadow for the specified thing.
 
 For more information, see UpdateThingShadow in the I<AWS IoT Developer
 Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

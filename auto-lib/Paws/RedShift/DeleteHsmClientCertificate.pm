@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteHsmClient
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DeleteHsmClientCertificate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteHsmClientCertificate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteHsmClientCertificate.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HsmClientCertificateIdentifier => Str
 
-  
-
-The identifier of the HSM client certificate to be deleted.
-
-
-
-
-
-
-
-
-
+  The identifier of the HSM client certificate to be deleted.
 
 
 

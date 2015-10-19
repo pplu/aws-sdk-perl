@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method SwapEnvironment
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method SwapEnvironmentCNAMEs.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SwapEnvironmentCNAMEs.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SwapEnvironmentCNAMEs.
 
 As an example:
 
@@ -37,83 +37,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DestinationEnvironmentId => Str
 
-  
-
-The ID of the destination environment.
+  The ID of the destination environment.
 
 Condition: You must specify at least the C<DestinationEnvironmentID> or
 the C<DestinationEnvironmentName>. You may also specify both. You must
 specify the C<SourceEnvironmentId> with the
 C<DestinationEnvironmentId>.
 
-
-
-
-
-
-
-
-
-
 =head2 DestinationEnvironmentName => Str
 
-  
-
-The name of the destination environment.
+  The name of the destination environment.
 
 Condition: You must specify at least the C<DestinationEnvironmentID> or
 the C<DestinationEnvironmentName>. You may also specify both. You must
 specify the C<SourceEnvironmentName> with the
 C<DestinationEnvironmentName>.
 
-
-
-
-
-
-
-
-
-
 =head2 SourceEnvironmentId => Str
 
-  
-
-The ID of the source environment.
+  The ID of the source environment.
 
 Condition: You must specify at least the C<SourceEnvironmentID> or the
 C<SourceEnvironmentName>. You may also specify both. If you specify the
 C<SourceEnvironmentId>, you must specify the
 C<DestinationEnvironmentId>.
 
-
-
-
-
-
-
-
-
-
 =head2 SourceEnvironmentName => Str
 
-  
-
-The name of the source environment.
+  The name of the source environment.
 
 Condition: You must specify at least the C<SourceEnvironmentID> or the
 C<SourceEnvironmentName>. You may also specify both. If you specify the
 C<SourceEnvironmentName>, you must specify the
 C<DestinationEnvironmentName>.
-
-
-
-
-
-
-
-
-
 
 
 

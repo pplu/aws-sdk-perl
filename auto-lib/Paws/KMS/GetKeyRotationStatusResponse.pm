@@ -14,18 +14,7 @@ Paws::KMS::GetKeyRotationStatusResponse
 
 =head2 KeyRotationEnabled => Bool
 
-  
-
-A Boolean value that specifies whether key rotation is enabled.
-
-
-
-
-
-
-
-
-
+  A Boolean value that specifies whether key rotation is enabled.
 
 
 =cut

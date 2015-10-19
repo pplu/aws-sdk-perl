@@ -1,7 +1,7 @@
 
 package Paws::CodeCommit::DeleteRepositoryOutput;
   use Moose;
-  has repositoryId => (is => 'ro', isa => 'Str');
+  has RepositoryId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'repositoryId' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::CodeCommit::DeleteRepositoryOutput
 
 =head1 ATTRIBUTES
 
-=head2 repositoryId => Str
+=head2 RepositoryId => Str
 
-  
-
-The ID of the repository that was deleted.
-
-
-
-
-
-
-
-
-
+  The ID of the repository that was deleted.
 
 
 =cut

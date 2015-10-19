@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateGatewayIn
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method UpdateGatewayInformation.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateGatewayInformation.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateGatewayInformation.
 
 As an example:
 

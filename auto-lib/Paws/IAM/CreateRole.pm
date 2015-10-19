@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateRole on t
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method CreateRole.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateRole.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRole.
 
 As an example:
 
@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssumeRolePolicyDocument => Str
 
-  
-
-The policy that grants an entity permission to assume the role.
-
-
-
-
-
-
-
-
-
+  The policy that grants an entity permission to assume the role.
 
 =head2 Path => Str
 
-  
-
-The path to the role. For more information about paths, see IAM
+  The path to the role. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> RoleName => Str
 
-  
-
-The name of the role to create.
-
-
-
-
-
-
-
-
-
+  The name of the role to create.
 
 
 

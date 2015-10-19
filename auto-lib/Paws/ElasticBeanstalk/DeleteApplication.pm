@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteApplicati
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method DeleteApplication.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApplication.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of the application to delete.
-
-
-
-
-
-
-
-
-
+  The name of the application to delete.
 
 =head2 TerminateEnvByForce => Bool
 
-  
-
-When set to true, running environments will be terminated before
+  When set to true, running environments will be terminated before
 deleting the application.
-
-
-
-
-
-
-
-
-
 
 
 

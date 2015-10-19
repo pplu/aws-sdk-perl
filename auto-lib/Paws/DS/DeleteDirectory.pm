@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteDirectory
 AWS Directory Service service. Use the attributes of this class
 as arguments to method DeleteDirectory.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDirectory.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDirectory.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-  
-
-The identifier of the directory to delete.
-
-
-
-
-
-
-
-
-
+  The identifier of the directory to delete.
 
 
 

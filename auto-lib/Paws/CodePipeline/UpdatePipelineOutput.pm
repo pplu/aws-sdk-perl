@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::UpdatePipelineOutput;
   use Moose;
-  has pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration');
+  has Pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', traits => ['Unwrapped'], xmlname => 'pipeline' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::CodePipeline::UpdatePipelineOutput
 
 =head1 ATTRIBUTES
 
-=head2 pipeline => Paws::CodePipeline::PipelineDeclaration
+=head2 Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
 
-  
-
-The structure of the updated pipeline.
-
-
-
-
-
-
-
-
-
+  The structure of the updated pipeline.
 
 
 =cut

@@ -17,46 +17,13 @@ Paws::IAM::GetUserPolicyResponse
 
 =head2 B<REQUIRED> PolicyDocument => Str
 
-  
-
-The policy document.
-
-
-
-
-
-
-
-
-
+  The policy document.
 =head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The name of the policy.
-
-
-
-
-
-
-
-
-
+  The name of the policy.
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The user the policy is associated with.
-
-
-
-
-
-
-
-
-
+  The user the policy is associated with.
 
 
 =cut

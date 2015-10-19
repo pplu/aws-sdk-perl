@@ -57,8 +57,6 @@ Paws::DynamoDBStreams - Perl Interface to AWS Amazon DynamoDB Streams
 
 =head1 DESCRIPTION
 
-
-
 Amazon DynamoDB Streams
 
 This is the Amazon DynamoDB Streams API Reference. This guide describes
@@ -108,14 +106,6 @@ current AWS account and endpoint.
 =back
 
 
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 DescribeStream(StreamArn => Str, [ExclusiveStartShardId => Str, Limit => Int])
@@ -124,9 +114,7 @@ Each argument is described in detail in: L<Paws::DynamoDBStreams::DescribeStream
 
 Returns: a L<Paws::DynamoDBStreams::DescribeStreamOutput> instance
 
-  
-
-Returns information about a stream, including the current status of the
+  Returns information about a stream, including the current status of the
 stream, its Amazon Resource Name (ARN), the composition of its shards,
 and its corresponding DynamoDB table.
 
@@ -141,24 +129,13 @@ C<EndingSequenceNumber> are present, the that shared is closed and can
 no longer receive more data.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetRecords(ShardIterator => Str, [Limit => Int])
 
 Each argument is described in detail in: L<Paws::DynamoDBStreams::GetRecords>
 
 Returns: a L<Paws::DynamoDBStreams::GetRecordsOutput> instance
 
-  
-
-Retrieves the stream records from a given shard.
+  Retrieves the stream records from a given shard.
 
 Specify a shard iterator using the C<ShardIterator> parameter. The
 shard iterator specifies the position in the shard from which you want
@@ -172,24 +149,13 @@ GetRecords can retrieve a maximum of 1 MB of data or 2000 stream
 records, whichever comes first.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetShardIterator(ShardId => Str, ShardIteratorType => Str, StreamArn => Str, [SequenceNumber => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDBStreams::GetShardIterator>
 
 Returns: a L<Paws::DynamoDBStreams::GetShardIteratorOutput> instance
 
-  
-
-Returns a shard iterator. A shard iterator provides information about
+  Returns a shard iterator. A shard iterator provides information about
 how to retrieve the stream records from within a shard. Use the shard
 iterator in a subsequent C<GetRecords> request to read the stream
 records from the shard.
@@ -198,37 +164,17 @@ A shard iterator expires 15 minutes after it is returned to the
 requester.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListStreams([ExclusiveStartStreamArn => Str, Limit => Int, TableName => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDBStreams::ListStreams>
 
 Returns: a L<Paws::DynamoDBStreams::ListStreamsOutput> instance
 
-  
-
-Returns an array of stream ARNs associated with the current account and
+  Returns an array of stream ARNs associated with the current account and
 endpoint. If the C<TableName> parameter is present, then I<ListStreams>
 will return only the streams ARNs for that table.
 
 You can call I<ListStreams> at a maximum rate of 5 times per second.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

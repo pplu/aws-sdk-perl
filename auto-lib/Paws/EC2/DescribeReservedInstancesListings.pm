@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeReserve
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeReservedInstancesListings.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReservedInstancesListings.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReservedInstancesListings.
 
 As an example:
 
@@ -34,11 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -63,43 +61,13 @@ C<status-message> - The reason for the status.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 ReservedInstancesId => Str
 
-  
-
-One or more Reserved Instance IDs.
-
-
-
-
-
-
-
-
-
+  One or more Reserved Instance IDs.
 
 =head2 ReservedInstancesListingId => Str
 
-  
-
-One or more Reserved Instance Listing IDs.
-
-
-
-
-
-
-
-
-
+  One or more Reserved Instance Listing IDs.
 
 
 

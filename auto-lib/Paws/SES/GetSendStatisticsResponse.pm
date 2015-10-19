@@ -13,20 +13,9 @@ Paws::SES::GetSendStatisticsResponse
 
 =head1 ATTRIBUTES
 
-=head2 SendDataPoints => ArrayRef[Paws::SES::SendDataPoint]
+=head2 SendDataPoints => ArrayRef[L<Paws::SES::SendDataPoint>]
 
-  
-
-A list of data points, each of which represents 15 minutes of activity.
-
-
-
-
-
-
-
-
-
+  A list of data points, each of which represents 15 minutes of activity.
 
 
 =cut

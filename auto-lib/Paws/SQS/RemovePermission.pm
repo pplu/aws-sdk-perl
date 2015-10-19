@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RemovePermissio
 Amazon Simple Queue Service service. Use the attributes of this class
 as arguments to method RemovePermission.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemovePermission.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemovePermission.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Label => Str
 
-  
-
-The identification of the permission to remove. This is the label added
+  The identification of the permission to remove. This is the label added
 with the AddPermission action.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-  
-
-The URL of the Amazon SQS queue to take action on.
-
-
-
-
-
-
-
-
-
+  The URL of the Amazon SQS queue to take action on.
 
 
 

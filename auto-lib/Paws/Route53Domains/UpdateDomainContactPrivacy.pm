@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method UpdateDomainCon
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method UpdateDomainContactPrivacy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDomainContactPrivacy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDomainContactPrivacy.
 
 As an example:
 
@@ -37,9 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AdminPrivacy => Bool
 
-  
-
-Whether you want to conceal contact information from WHOIS queries. If
+  Whether you want to conceal contact information from WHOIS queries. If
 you specify true, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
@@ -52,20 +50,9 @@ Valid values: C<true> | C<false>
 
 Required: No
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of a domain.
+  The name of a domain.
 
 Type: String
 
@@ -77,20 +64,9 @@ are not supported.
 
 Required: Yes
 
-
-
-
-
-
-
-
-
-
 =head2 RegistrantPrivacy => Bool
 
-  
-
-Whether you want to conceal contact information from WHOIS queries. If
+  Whether you want to conceal contact information from WHOIS queries. If
 you specify true, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
@@ -102,21 +78,10 @@ Default: None
 Valid values: C<true> | C<false>
 
 Required: No
-
-
-
-
-
-
-
-
-
 
 =head2 TechPrivacy => Bool
 
-  
-
-Whether you want to conceal contact information from WHOIS queries. If
+  Whether you want to conceal contact information from WHOIS queries. If
 you specify true, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
@@ -128,15 +93,6 @@ Default: None
 Valid values: C<true> | C<false>
 
 Required: No
-
-
-
-
-
-
-
-
-
 
 
 

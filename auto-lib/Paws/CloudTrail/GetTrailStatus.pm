@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetTrailStatus 
 AWS CloudTrail service. Use the attributes of this class
 as arguments to method GetTrailStatus.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetTrailStatus.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetTrailStatus.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-Specifies the name or the CloudTrail ARN of the trail for which you are
+  Specifies the name or the CloudTrail ARN of the trail for which you are
 requesting status. The format of a trail ARN is
 C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
-
-
-
-
-
-
-
-
-
 
 
 

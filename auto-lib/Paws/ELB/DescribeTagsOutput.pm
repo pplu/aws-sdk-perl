@@ -13,20 +13,9 @@ Paws::ELB::DescribeTagsOutput
 
 =head1 ATTRIBUTES
 
-=head2 TagDescriptions => ArrayRef[Paws::ELB::TagDescription]
+=head2 TagDescriptions => ArrayRef[L<Paws::ELB::TagDescription>]
 
-  
-
-Information about the tags.
-
-
-
-
-
-
-
-
-
+  Information about the tags.
 
 
 =cut

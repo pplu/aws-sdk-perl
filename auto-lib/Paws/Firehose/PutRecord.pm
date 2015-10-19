@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method PutRecord on th
 Amazon Kinesis Firehose service. Use the attributes of this class
 as arguments to method PutRecord.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutRecord.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRecord.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeliveryStreamName => Str
 
-  
+  The name of the delivery stream.
 
-The name of the delivery stream.
+=head2 B<REQUIRED> Record => L<Paws::Firehose::Record>
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Record => Paws::Firehose::Record
-
-  
-
-The record.
-
-
-
-
-
-
-
-
-
+  The record.
 
 
 

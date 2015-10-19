@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListTables on t
 Amazon DynamoDB service. Use the attributes of this class
 as arguments to method ListTables.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListTables.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTables.
 
 As an example:
 
@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ExclusiveStartTableName => Str
 
-  
-
-The first table name that this operation will evaluate. Use the value
+  The first table name that this operation will evaluate. Use the value
 that was returned for I<LastEvaluatedTableName> in a previous
 operation, so that you can obtain the next page of results.
 
-
-
-
-
-
-
-
-
-
 =head2 Limit => Int
 
-  
-
-A maximum number of table names to return. If this parameter is not
+  A maximum number of table names to return. If this parameter is not
 specified, the limit is 100.
-
-
-
-
-
-
-
-
-
 
 
 

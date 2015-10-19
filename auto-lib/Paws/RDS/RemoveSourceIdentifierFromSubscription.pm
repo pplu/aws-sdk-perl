@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RemoveSourceIde
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method RemoveSourceIdentifierFromSubscription.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemoveSourceIdentifierFromSubscription.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveSourceIdentifierFromSubscription.
 
 As an example:
 
@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SourceIdentifier => Str
 
-  
-
-The source identifier to be removed from the subscription, such as the
+  The source identifier to be removed from the subscription, such as the
 B<DB instance identifier> for a DB instance or the name of a security
 group.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SubscriptionName => Str
 
-  
-
-The name of the RDS event notification subscription you want to remove
+  The name of the RDS event notification subscription you want to remove
 a source identifier from.
-
-
-
-
-
-
-
-
-
 
 
 

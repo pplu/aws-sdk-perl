@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateScalingPa
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method UpdateScalingParameters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateScalingParameters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateScalingParameters.
 
 As an example:
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   
 
-=head2 B<REQUIRED> ScalingParameters => Paws::CloudSearch::ScalingParameters
+=head2 B<REQUIRED> ScalingParameters => L<Paws::CloudSearch::ScalingParameters>
 
   
 

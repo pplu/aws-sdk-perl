@@ -13,20 +13,9 @@ Paws::ES::CreateElasticsearchDomainResponse
 
 =head1 ATTRIBUTES
 
-=head2 DomainStatus => Paws::ES::ElasticsearchDomainStatus
+=head2 DomainStatus => L<Paws::ES::ElasticsearchDomainStatus>
 
-  
-
-The status of the newly created Elasticsearch domain.
-
-
-
-
-
-
-
-
-
+  The status of the newly created Elasticsearch domain.
 
 
 =cut

@@ -13,7 +13,7 @@ Paws::RedShift::AuthorizeClusterSecurityGroupIngressResult
 
 =head1 ATTRIBUTES
 
-=head2 ClusterSecurityGroup => Paws::RedShift::ClusterSecurityGroup
+=head2 ClusterSecurityGroup => L<Paws::RedShift::ClusterSecurityGroup>
 
   
 

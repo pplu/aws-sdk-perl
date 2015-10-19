@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetDevicePool;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str', required => 1);
+  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetDevicePool o
 AWS Device Farm service. Use the attributes of this class
 as arguments to method GetDevicePool.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetDevicePool.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDevicePool.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> arn => Str
+=head2 B<REQUIRED> Arn => Str
 
-  
-
-The device pool's ARN.
-
-
-
-
-
-
-
-
-
+  The device pool's ARN.
 
 
 

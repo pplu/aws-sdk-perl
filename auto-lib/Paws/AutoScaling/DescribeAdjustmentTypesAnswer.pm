@@ -13,20 +13,9 @@ Paws::AutoScaling::DescribeAdjustmentTypesAnswer
 
 =head1 ATTRIBUTES
 
-=head2 AdjustmentTypes => ArrayRef[Paws::AutoScaling::AdjustmentType]
+=head2 AdjustmentTypes => ArrayRef[L<Paws::AutoScaling::AdjustmentType>]
 
-  
-
-The policy adjustment types.
-
-
-
-
-
-
-
-
-
+  The policy adjustment types.
 
 
 =cut

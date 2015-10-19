@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateDBSecurit
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CreateDBSecurityGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBSecurityGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBSecurityGroup.
 
 As an example:
 
@@ -36,24 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBSecurityGroupDescription => Str
 
-  
-
-The description for the DB security group.
-
-
-
-
-
-
-
-
-
+  The description for the DB security group.
 
 =head2 B<REQUIRED> DBSecurityGroupName => Str
 
-  
-
-The name for the DB security group. This value is stored as a lowercase
+  The name for the DB security group. This value is stored as a lowercase
 string.
 
 Constraints:
@@ -74,16 +61,7 @@ Constraints:
 
 Example: C<mysecuritygroup>
 
-
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

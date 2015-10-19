@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ListTagsForDoma
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method ListTagsForDomain.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListTagsForDomain.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTagsForDomain.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The domain for which you want to get a list of tags.
-
-
-
-
-
-
-
-
-
+  The domain for which you want to get a list of tags.
 
 
 

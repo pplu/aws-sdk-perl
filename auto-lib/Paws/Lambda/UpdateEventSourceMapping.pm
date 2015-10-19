@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method UpdateEventSour
 AWS Lambda service. Use the attributes of this class
 as arguments to method UpdateEventSourceMapping.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateEventSourceMapping.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateEventSourceMapping.
 
 As an example:
 
@@ -39,41 +39,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 BatchSize => Int
 
-  
-
-The maximum number of stream records that can be sent to your Lambda
+  The maximum number of stream records that can be sent to your Lambda
 function for a single invocation.
-
-
-
-
-
-
-
-
-
 
 =head2 Enabled => Bool
 
-  
-
-Specifies whether AWS Lambda should actively poll the stream or not. If
+  Specifies whether AWS Lambda should actively poll the stream or not. If
 disabled, AWS Lambda will not poll the stream.
-
-
-
-
-
-
-
-
-
 
 =head2 FunctionName => Str
 
-  
-
-The Lambda function to which you want the stream records sent.
+  The Lambda function to which you want the stream records sent.
 
 You can specify an unqualified function name (for example, "Thumbnail")
 or you can specify Amazon Resource Name (ARN) of the function (for
@@ -83,29 +59,9 @@ example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> UUID => Str
 
-  
-
-The event source mapping identifier.
-
-
-
-
-
-
-
-
-
+  The event source mapping identifier.
 
 
 

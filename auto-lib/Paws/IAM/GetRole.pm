@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetRole on the
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetRole.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetRole.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetRole.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RoleName => Str
 
-  
-
-The name of the role to get information about.
-
-
-
-
-
-
-
-
-
+  The name of the role to get information about.
 
 
 

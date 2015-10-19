@@ -13,7 +13,7 @@ Paws::RDS::CreateDBInstanceResult
 
 =head1 ATTRIBUTES
 
-=head2 DBInstance => Paws::RDS::DBInstance
+=head2 DBInstance => L<Paws::RDS::DBInstance>
 
   
 

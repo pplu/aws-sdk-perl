@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method CreateIdentityP
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method CreateIdentityPool.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateIdentityPool.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateIdentityPool.
 
 As an example:
 
@@ -38,24 +38,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AllowUnauthenticatedIdentities => Bool
 
-  
-
-TRUE if the identity pool supports unauthenticated logins.
-
-
-
-
-
-
-
-
-
+  TRUE if the identity pool supports unauthenticated logins.
 
 =head2 DeveloperProviderName => Str
 
-  
-
-The "domain" by which Cognito will refer to your users. This name acts
+  The "domain" by which Cognito will refer to your users. This name acts
 as a placeholder that allows your backend and the Cognito service to
 communicate about the developer provider. For the
 C<DeveloperProviderName>, you can use letters as well as period (C<.>),
@@ -64,59 +51,17 @@ underscore (C<_>), and dash (C<->).
 Once you have set a developer provider name, you cannot change it.
 Please take care in setting this parameter.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> IdentityPoolName => Str
 
-  
-
-A string that you provide.
-
-
-
-
-
-
-
-
-
+  A string that you provide.
 
 =head2 OpenIdConnectProviderARNs => ArrayRef[Str]
 
-  
+  A list of OpendID Connect provider ARNs.
 
-A list of OpendID Connect provider ARNs.
+=head2 SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>
 
-
-
-
-
-
-
-
-
-
-=head2 SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders
-
-  
-
-Optional key:value pairs mapping provider names to provider app IDs.
-
-
-
-
-
-
-
-
-
+  Optional key:value pairs mapping provider names to provider app IDs.
 
 
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateAssociati
 Amazon Simple Systems Management Service service. Use the attributes of this class
 as arguments to method UpdateAssociationStatus.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAssociationStatus.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAssociationStatus.
 
 As an example:
 
@@ -34,50 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AssociationStatus => Paws::SSM::AssociationStatus
+=head2 B<REQUIRED> AssociationStatus => L<Paws::SSM::AssociationStatus>
 
-  
-
-The association status.
-
-
-
-
-
-
-
-
-
+  The association status.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the configuration document.
-
-
-
-
-
-
-
-
-
+  The name of the configuration document.
 
 
 

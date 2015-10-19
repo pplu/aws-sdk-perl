@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteLayer on 
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DeleteLayer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLayer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLayer.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LayerId => Str
 
-  
-
-The layer ID.
-
-
-
-
-
-
-
-
-
+  The layer ID.
 
 
 

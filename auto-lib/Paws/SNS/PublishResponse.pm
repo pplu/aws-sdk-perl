@@ -15,20 +15,9 @@ Paws::SNS::PublishResponse
 
 =head2 MessageId => Str
 
-  
-
-Unique identifier assigned to the published message.
+  Unique identifier assigned to the published message.
 
 Length Constraint: Maximum 100 characters
-
-
-
-
-
-
-
-
-
 
 
 =cut

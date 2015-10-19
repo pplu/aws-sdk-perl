@@ -127,21 +127,10 @@ Paws::Route53Domains - Perl Interface to AWS Amazon Route 53 Domains
 
 =head1 DESCRIPTION
 
-
-
 Amazon Route 53 Domains
 
 Amazon Route 53 permits Interned Domain Name registration, trasnfer and
 management
-
-
-
-
-
-
-
-
-
 
 =head1 METHODS
 
@@ -151,21 +140,10 @@ Each argument is described in detail in: L<Paws::Route53Domains::CheckDomainAvai
 
 Returns: a L<Paws::Route53Domains::CheckDomainAvailabilityResponse> instance
 
-  
-
-This operation checks the availability of one domain name. You can
+  This operation checks the availability of one domain name. You can
 access this API without authenticating. Note that if the availability
 status of a domain is pending, you must submit another request to
 determine the availability of the domain name.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteTagsForDomain(DomainName => Str, TagsToDelete => ArrayRef[Str])
@@ -174,21 +152,10 @@ Each argument is described in detail in: L<Paws::Route53Domains::DeleteTagsForDo
 
 Returns: a L<Paws::Route53Domains::DeleteTagsForDomainResponse> instance
 
-  
-
-This operation deletes the specified tags for a domain.
+  This operation deletes the specified tags for a domain.
 
 All tag operations are eventually consistent; subsequent operations may
 not immediately represent all issued operations.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DisableDomainAutoRenew(DomainName => Str)
@@ -197,9 +164,7 @@ Each argument is described in detail in: L<Paws::Route53Domains::DisableDomainAu
 
 Returns: a L<Paws::Route53Domains::DisableDomainAutoRenewResponse> instance
 
-  
-
-This operation disables automatic renewal of domain registration for
+  This operation disables automatic renewal of domain registration for
 the specified domain.
 
 Caution! Amazon Route 53 doesn't have a manual renewal process, so if
@@ -208,24 +173,13 @@ renewed when the expiration date passes, and you will lose control of
 the domain name.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DisableDomainTransferLock(DomainName => Str)
 
 Each argument is described in detail in: L<Paws::Route53Domains::DisableDomainTransferLock>
 
 Returns: a L<Paws::Route53Domains::DisableDomainTransferLockResponse> instance
 
-  
-
-This operation removes the transfer lock on the domain (specifically
+  This operation removes the transfer lock on the domain (specifically
 the C<clientTransferProhibited> status) to allow domain transfers. We
 recommend you refrain from performing this action unless you intend to
 transfer the domain to a different registrar. Successful submission
@@ -234,24 +188,13 @@ completion of the action. If the request is not completed successfully,
 the domain registrant will be notified by email.
 
 
-
-
-
-
-
-
-
-
-
 =head2 EnableDomainAutoRenew(DomainName => Str)
 
 Each argument is described in detail in: L<Paws::Route53Domains::EnableDomainAutoRenew>
 
 Returns: a L<Paws::Route53Domains::EnableDomainAutoRenewResponse> instance
 
-  
-
-This operation configures Amazon Route 53 to automatically renew the
+  This operation configures Amazon Route 53 to automatically renew the
 specified domain before the domain registration expires. The cost of
 renewing your domain registration is billed to your AWS account.
 
@@ -263,38 +206,18 @@ that is listed on the Gandi website so we can complete processing
 before the deadline.
 
 
-
-
-
-
-
-
-
-
-
 =head2 EnableDomainTransferLock(DomainName => Str)
 
 Each argument is described in detail in: L<Paws::Route53Domains::EnableDomainTransferLock>
 
 Returns: a L<Paws::Route53Domains::EnableDomainTransferLockResponse> instance
 
-  
-
-This operation sets the transfer lock on the domain (specifically the
+  This operation sets the transfer lock on the domain (specifically the
 C<clientTransferProhibited> status) to prevent domain transfers.
 Successful submission returns an operation ID that you can use to track
 the progress and completion of the action. If the request is not
 completed successfully, the domain registrant will be notified by
 email.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetDomainDetail(DomainName => Str)
@@ -303,19 +226,8 @@ Each argument is described in detail in: L<Paws::Route53Domains::GetDomainDetail
 
 Returns: a L<Paws::Route53Domains::GetDomainDetailResponse> instance
 
-  
-
-This operation returns detailed information about the domain. The
+  This operation returns detailed information about the domain. The
 domain's contact information is also returned as part of the output.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetOperationDetail(OperationId => Str)
@@ -324,19 +236,8 @@ Each argument is described in detail in: L<Paws::Route53Domains::GetOperationDet
 
 Returns: a L<Paws::Route53Domains::GetOperationDetailResponse> instance
 
-  
-
-This operation returns the current status of an operation that is not
+  This operation returns the current status of an operation that is not
 completed.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListDomains([Marker => Str, MaxItems => Int])
@@ -345,19 +246,8 @@ Each argument is described in detail in: L<Paws::Route53Domains::ListDomains>
 
 Returns: a L<Paws::Route53Domains::ListDomainsResponse> instance
 
-  
-
-This operation returns all the domain names registered with Amazon
+  This operation returns all the domain names registered with Amazon
 Route 53 for the current AWS account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListOperations([Marker => Str, MaxItems => Int])
@@ -366,19 +256,8 @@ Each argument is described in detail in: L<Paws::Route53Domains::ListOperations>
 
 Returns: a L<Paws::Route53Domains::ListOperationsResponse> instance
 
-  
-
-This operation returns the operation IDs of operations that are not yet
+  This operation returns the operation IDs of operations that are not yet
 complete.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListTagsForDomain(DomainName => Str)
@@ -387,33 +266,20 @@ Each argument is described in detail in: L<Paws::Route53Domains::ListTagsForDoma
 
 Returns: a L<Paws::Route53Domains::ListTagsForDomainResponse> instance
 
-  
-
-This operation returns all of the tags that are associated with the
+  This operation returns all of the tags that are associated with the
 specified domain.
 
 All tag operations are eventually consistent; subsequent operations may
 not immediately represent all issued operations.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RegisterDomain(AdminContact => Paws::Route53Domains::ContactDetail, DomainName => Str, DurationInYears => Int, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail, [AutoRenew => Bool, IdnLangCode => Str, PrivacyProtectAdminContact => Bool, PrivacyProtectRegistrantContact => Bool, PrivacyProtectTechContact => Bool])
+=head2 RegisterDomain(AdminContact => L<Paws::Route53Domains::ContactDetail>, DomainName => Str, DurationInYears => Int, RegistrantContact => L<Paws::Route53Domains::ContactDetail>, TechContact => L<Paws::Route53Domains::ContactDetail>, [AutoRenew => Bool, IdnLangCode => Str, PrivacyProtectAdminContact => Bool, PrivacyProtectRegistrantContact => Bool, PrivacyProtectTechContact => Bool])
 
 Each argument is described in detail in: L<Paws::Route53Domains::RegisterDomain>
 
 Returns: a L<Paws::Route53Domains::RegisterDomainResponse> instance
 
-  
-
-This operation registers a domain. Domains are registered by the AWS
+  This operation registers a domain. Domains are registered by the AWS
 registrar partner, Gandi. For some top-level domains (TLDs), this
 operation requires extra parameters.
 
@@ -446,45 +312,24 @@ domain. For more information, see Amazon Route 53 Pricing.
 
 
 
-
-
-
-
-
-
-
-
 =head2 RetrieveDomainAuthCode(DomainName => Str)
 
 Each argument is described in detail in: L<Paws::Route53Domains::RetrieveDomainAuthCode>
 
 Returns: a L<Paws::Route53Domains::RetrieveDomainAuthCodeResponse> instance
 
-  
-
-This operation returns the AuthCode for the domain. To transfer a
+  This operation returns the AuthCode for the domain. To transfer a
 domain to another registrar, you provide this value to the new
 registrar.
 
 
-
-
-
-
-
-
-
-
-
-=head2 TransferDomain(AdminContact => Paws::Route53Domains::ContactDetail, DomainName => Str, DurationInYears => Int, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail, [AuthCode => Str, AutoRenew => Bool, IdnLangCode => Str, Nameservers => ArrayRef[Paws::Route53Domains::Nameserver], PrivacyProtectAdminContact => Bool, PrivacyProtectRegistrantContact => Bool, PrivacyProtectTechContact => Bool])
+=head2 TransferDomain(AdminContact => L<Paws::Route53Domains::ContactDetail>, DomainName => Str, DurationInYears => Int, RegistrantContact => L<Paws::Route53Domains::ContactDetail>, TechContact => L<Paws::Route53Domains::ContactDetail>, [AuthCode => Str, AutoRenew => Bool, IdnLangCode => Str, Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>], PrivacyProtectAdminContact => Bool, PrivacyProtectRegistrantContact => Bool, PrivacyProtectTechContact => Bool])
 
 Each argument is described in detail in: L<Paws::Route53Domains::TransferDomain>
 
 Returns: a L<Paws::Route53Domains::TransferDomainResponse> instance
 
-  
-
-This operation transfers a domain from another registrar to Amazon
+  This operation transfers a domain from another registrar to Amazon
 Route 53. When the transfer is complete, the domain is registered with
 the AWS registrar partner, Gandi.
 
@@ -511,24 +356,13 @@ transfer doesn't complete successfully, the domain registrant will be
 notified by email.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateDomainContact(DomainName => Str, [AdminContact => Paws::Route53Domains::ContactDetail, RegistrantContact => Paws::Route53Domains::ContactDetail, TechContact => Paws::Route53Domains::ContactDetail])
+=head2 UpdateDomainContact(DomainName => Str, [AdminContact => L<Paws::Route53Domains::ContactDetail>, RegistrantContact => L<Paws::Route53Domains::ContactDetail>, TechContact => L<Paws::Route53Domains::ContactDetail>])
 
 Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainContact>
 
 Returns: a L<Paws::Route53Domains::UpdateDomainContactResponse> instance
 
-  
-
-This operation updates the contact information for a particular domain.
+  This operation updates the contact information for a particular domain.
 Information for at least one contact (registrant, administrator, or
 technical) must be supplied for update.
 
@@ -538,24 +372,13 @@ request is not completed successfully, the domain registrant will be
 notified by email.
 
 
-
-
-
-
-
-
-
-
-
 =head2 UpdateDomainContactPrivacy(DomainName => Str, [AdminPrivacy => Bool, RegistrantPrivacy => Bool, TechPrivacy => Bool])
 
 Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainContactPrivacy>
 
 Returns: a L<Paws::Route53Domains::UpdateDomainContactPrivacyResponse> instance
 
-  
-
-This operation updates the specified domain contact's privacy setting.
+  This operation updates the specified domain contact's privacy setting.
 When the privacy option is enabled, personal information such as postal
 or email address is hidden from the results of a public WHOIS query.
 The privacy services are provided by the AWS registrar, Gandi. For more
@@ -568,24 +391,13 @@ progress and completion of the action. If the request is not completed
 successfully, the domain registrant will be notified by email.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateDomainNameservers(DomainName => Str, Nameservers => ArrayRef[Paws::Route53Domains::Nameserver], [FIAuthKey => Str])
+=head2 UpdateDomainNameservers(DomainName => Str, Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>], [FIAuthKey => Str])
 
 Each argument is described in detail in: L<Paws::Route53Domains::UpdateDomainNameservers>
 
 Returns: a L<Paws::Route53Domains::UpdateDomainNameserversResponse> instance
 
-  
-
-This operation replaces the current set of name servers for the domain
+  This operation replaces the current set of name servers for the domain
 with the specified set of name servers. If you use Amazon Route 53 as
 your DNS service, specify the four name servers in the delegation set
 for the hosted zone for the domain.
@@ -596,36 +408,16 @@ not completed successfully, the domain registrant will be notified by
 email.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateTagsForDomain(DomainName => Str, [TagsToUpdate => ArrayRef[Paws::Route53Domains::Tag]])
+=head2 UpdateTagsForDomain(DomainName => Str, [TagsToUpdate => ArrayRef[L<Paws::Route53Domains::Tag>]])
 
 Each argument is described in detail in: L<Paws::Route53Domains::UpdateTagsForDomain>
 
 Returns: a L<Paws::Route53Domains::UpdateTagsForDomainResponse> instance
 
-  
-
-This operation adds or updates tags for a specified domain.
+  This operation adds or updates tags for a specified domain.
 
 All tag operations are eventually consistent; subsequent operations may
 not immediately represent all issued operations.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

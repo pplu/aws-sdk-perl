@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetRecords on t
 Amazon DynamoDB Streams service. Use the attributes of this class
 as arguments to method GetRecords.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetRecords.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetRecords.
 
 As an example:
 
@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  
-
-The maximum number of records to return from the shard. The upper limit
+  The maximum number of records to return from the shard. The upper limit
 is 1000.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ShardIterator => Str
 
-  
-
-A shard iterator that was retrieved from a previous GetShardIterator
+  A shard iterator that was retrieved from a previous GetShardIterator
 operation. This iterator can be used to access the stream records in
 this shard.
-
-
-
-
-
-
-
-
-
 
 
 

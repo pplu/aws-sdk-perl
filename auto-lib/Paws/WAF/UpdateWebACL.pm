@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method UpdateWebACL on
 AWS WAF service. Use the attributes of this class
 as arguments to method UpdateWebACL.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateWebACL.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateWebACL.
 
 As an example:
 
@@ -37,28 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
+  The value returned by the most recent call to GetChangeToken.
 
-The value returned by the most recent call to GetChangeToken.
-
-
-
-
-
-
-
-
-
-
-=head2 DefaultAction => Paws::WAF::WafAction
+=head2 DefaultAction => L<Paws::WAF::WafAction>
 
   
 
-=head2 Updates => ArrayRef[Paws::WAF::WebACLUpdate]
+=head2 Updates => ArrayRef[L<Paws::WAF::WebACLUpdate>]
 
-  
-
-An array of updates to make to the WebACL.
+  An array of updates to make to the WebACL.
 
 An array of C<WebACLUpdate> objects that you want to insert into or
 delete from a WebACL. For more information, see the applicable data
@@ -75,29 +62,10 @@ types:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> WebACLId => Str
 
-  
-
-The C<WebACLId> of the WebACL that you want to update. C<WebACLId> is
+  The C<WebACLId> of the WebACL that you want to update. C<WebACLId> is
 returned by CreateWebACL and by ListWebACLs.
-
-
-
-
-
-
-
-
-
 
 
 

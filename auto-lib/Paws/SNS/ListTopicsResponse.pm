@@ -16,33 +16,11 @@ Paws::SNS::ListTopicsResponse
 
 =head2 NextToken => Str
 
-  
-
-Token to pass along to the next C<ListTopics> request. This element is
+  Token to pass along to the next C<ListTopics> request. This element is
 returned if there are additional topics to retrieve.
+=head2 Topics => ArrayRef[L<Paws::SNS::Topic>]
 
-
-
-
-
-
-
-
-
-=head2 Topics => ArrayRef[Paws::SNS::Topic]
-
-  
-
-A list of topic ARNs.
-
-
-
-
-
-
-
-
-
+  A list of topic ARNs.
 
 
 =cut

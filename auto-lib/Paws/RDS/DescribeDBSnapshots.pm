@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method DescribeDBSnaps
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribeDBSnapshots.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBSnapshots.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBSnapshots.
 
 As an example:
 
@@ -39,9 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DBInstanceIdentifier => Str
 
-  
-
-A DB instance identifier to retrieve the list of DB snapshots for. This
+  A DB instance identifier to retrieve the list of DB snapshots for. This
 parameter cannot be used in conjunction with C<DBSnapshotIdentifier>.
 This parameter is not case-sensitive.
 
@@ -58,19 +56,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 DBSnapshotIdentifier => Str
 
-  
-
-A specific DB snapshot identifier to describe. This parameter cannot be
+  A specific DB snapshot identifier to describe. This parameter cannot be
 used in conjunction with C<DBInstanceIdentifier>. This value is stored
 as a lowercase string.
 
@@ -90,52 +78,20 @@ C<SnapshotType> parameter must also be specified.
 =back
 
 
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
-
-  
-
-This parameter is not currently supported.
-
-
-
-
-
-
-
-
-
+  This parameter is not currently supported.
 
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous
+  An optional pagination token provided by a previous
 C<DescribeDBSnapshots> request. If this parameter is specified, the
 response includes only records beyond the marker, up to the value
 specified by C<MaxRecords>.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of records to include in the response. If more
+  The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
 results can be retrieved.
@@ -144,31 +100,11 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.
 
-
-
-
-
-
-
-
-
-
 =head2 SnapshotType => Str
 
-  
-
-The type of snapshots that will be returned. Values can be "automated"
+  The type of snapshots that will be returned. Values can be "automated"
 or "manual." If not specified, the returned results will include all
 snapshots types.
-
-
-
-
-
-
-
-
-
 
 
 

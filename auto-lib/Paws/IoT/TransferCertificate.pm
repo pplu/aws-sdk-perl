@@ -1,8 +1,8 @@
 
 package Paws::IoT::TransferCertificate;
   use Moose;
-  has certificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
-  has targetAwsAccount => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'targetAwsAccount' , required => 1);
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
+  has TargetAwsAccount => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'targetAwsAccount' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method TransferCertifi
 AWS IoT service. Use the attributes of this class
 as arguments to method TransferCertificate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to TransferCertificate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TransferCertificate.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> certificateId => Str
+=head2 B<REQUIRED> CertificateId => Str
 
-  
+  The ID of the certificate.
 
-The ID of the certificate.
+=head2 B<REQUIRED> TargetAwsAccount => Str
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> targetAwsAccount => Str
-
-  
-
-The AWS account.
-
-
-
-
-
-
-
-
-
+  The AWS account.
 
 
 

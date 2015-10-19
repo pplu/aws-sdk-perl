@@ -15,18 +15,7 @@ Paws::CloudSearch::IndexDocumentsResponse
 
 =head2 FieldNames => ArrayRef[Str]
 
-  
-
-The names of the fields that are currently being indexed.
-
-
-
-
-
-
-
-
-
+  The names of the fields that are currently being indexed.
 
 
 =cut

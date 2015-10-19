@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::BatchGetDeployments;
   use Moose;
-  has deploymentIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has DeploymentIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'deploymentIds' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method BatchGetDeploym
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method BatchGetDeployments.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetDeployments.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetDeployments.
 
 As an example:
 
@@ -32,21 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 deploymentIds => ArrayRef[Str]
+=head2 DeploymentIds => ArrayRef[Str]
 
-  
-
-A list of deployment IDs, with multiple deployment IDs separated by
+  A list of deployment IDs, with multiple deployment IDs separated by
 spaces.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -13,20 +13,9 @@ Paws::CloudSearch::DeleteSuggesterResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Suggester => Paws::CloudSearch::SuggesterStatus
+=head2 B<REQUIRED> Suggester => L<Paws::CloudSearch::SuggesterStatus>
 
-  
-
-The status of the suggester being deleted.
-
-
-
-
-
-
-
-
-
+  The status of the suggester being deleted.
 
 
 =cut

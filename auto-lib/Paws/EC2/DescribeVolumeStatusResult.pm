@@ -16,33 +16,11 @@ Paws::EC2::DescribeVolumeStatusResult
 
 =head2 NextToken => Str
 
-  
-
-The token to use to retrieve the next page of results. This value is
+  The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
+=head2 VolumeStatuses => ArrayRef[L<Paws::EC2::VolumeStatusItem>]
 
-
-
-
-
-
-
-
-
-=head2 VolumeStatuses => ArrayRef[Paws::EC2::VolumeStatusItem]
-
-  
-
-A list of volumes.
-
-
-
-
-
-
-
-
-
+  A list of volumes.
 
 
 =cut

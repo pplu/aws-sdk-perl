@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ChangePassword 
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method ChangePassword.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ChangePassword.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ChangePassword.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> NewPassword => Str
 
-  
-
-The new password. The new password must conform to the AWS account's
+  The new password. The new password must conform to the AWS account's
 password policy, if one exists.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> OldPassword => Str
 
-  
-
-The IAM user's current password.
-
-
-
-
-
-
-
-
-
+  The IAM user's current password.
 
 
 

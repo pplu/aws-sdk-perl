@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ListPlatformApp
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method ListPlatformApplications.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListPlatformApplications.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPlatformApplications.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  
-
-NextToken string is used when calling ListPlatformApplications action
+  NextToken string is used when calling ListPlatformApplications action
 to retrieve additional records that are available after the first page
 results.
-
-
-
-
-
-
-
-
-
 
 
 

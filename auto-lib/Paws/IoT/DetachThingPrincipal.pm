@@ -1,8 +1,8 @@
 
 package Paws::IoT::DetachThingPrincipal;
   use Moose;
-  has principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amzn-principal' , required => 1);
-  has thingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
+  has Principal => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'principal' , required => 1);
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DetachThingPrin
 AWS IoT service. Use the attributes of this class
 as arguments to method DetachThingPrincipal.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DetachThingPrincipal.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetachThingPrincipal.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> principal => Str
+=head2 B<REQUIRED> Principal => Str
 
-  
+  The principal.
 
-The principal.
+=head2 B<REQUIRED> ThingName => Str
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> thingName => Str
-
-  
-
-The name of the thing.
-
-
-
-
-
-
-
-
-
+  The name of the thing.
 
 
 

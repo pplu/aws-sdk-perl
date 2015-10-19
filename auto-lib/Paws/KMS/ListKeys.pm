@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListKeys on the
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method ListKeys.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListKeys.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListKeys.
 
 As an example:
 
@@ -35,39 +35,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  
+  When paginating results, specify the maximum number of items to return
+in the response. If additional items exist beyond the number you
+specify, the C<Truncated> element in the response is set to true.
 
-Specify this parameter only when paginating results to indicate the
-maximum number of keys you want listed in the response. If there are
-additional keys beyond the maximum you specify, the C<Truncated>
-response element will be set to C<true.>
-
-
-
-
-
-
-
-
-
+This value is optional. If you include a value, it must be between 1
+and 1000, inclusive. If you do not include a value, it defaults to 100.
 
 =head2 Marker => Str
 
-  
-
-Use this parameter only when paginating results, and only in a
-subsequent request after you've received a response where the results
-are truncated. Set it to the value of the C<NextMarker> in the response
-you just received.
-
-
-
-
-
-
-
-
-
+  Use this parameter only when paginating results and only in a
+subsequent request after you've received a response with truncated
+results. Set it to the value of C<NextMarker> from the response you
+just received.
 
 
 

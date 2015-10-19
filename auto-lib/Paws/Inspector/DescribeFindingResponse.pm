@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeFindingResponse;
   use Moose;
-  has finding => (is => 'ro', isa => 'Paws::Inspector::Finding');
+  has Finding => (is => 'ro', isa => 'Paws::Inspector::Finding', traits => ['Unwrapped'], xmlname => 'finding' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::Inspector::DescribeFindingResponse
 
 =head1 ATTRIBUTES
 
-=head2 finding => Paws::Inspector::Finding
+=head2 Finding => L<Paws::Inspector::Finding>
 
-  
-
-Information about the finding.
-
-
-
-
-
-
-
-
-
+  Information about the finding.
 
 
 =cut

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddRoleToInstan
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method AddRoleToInstanceProfile.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddRoleToInstanceProfile.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddRoleToInstanceProfile.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceProfileName => Str
 
-  
-
-The name of the instance profile to update.
-
-
-
-
-
-
-
-
-
+  The name of the instance profile to update.
 
 =head2 B<REQUIRED> RoleName => Str
 
-  
-
-The name of the role to add.
-
-
-
-
-
-
-
-
-
+  The name of the role to add.
 
 
 

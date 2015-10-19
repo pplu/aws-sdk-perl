@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListTagsForReso
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method ListTagsForResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListTagsForResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTagsForResource.
 
 As an example:
 
@@ -33,37 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-  
-
-This parameter is not currently supported.
-
-
-
-
-
-
-
-
-
+  This parameter is not currently supported.
 
 =head2 B<REQUIRED> ResourceName => Str
 
-  
-
-The Amazon RDS resource with tags to be listed. This value is an Amazon
+  The Amazon RDS resource with tags to be listed. This value is an Amazon
 Resource Name (ARN). For information about creating an ARN, see
 Constructing an RDS Amazon Resource Name (ARN).
-
-
-
-
-
-
-
-
-
 
 
 

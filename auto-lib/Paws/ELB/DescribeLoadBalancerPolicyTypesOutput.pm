@@ -13,20 +13,9 @@ Paws::ELB::DescribeLoadBalancerPolicyTypesOutput
 
 =head1 ATTRIBUTES
 
-=head2 PolicyTypeDescriptions => ArrayRef[Paws::ELB::PolicyTypeDescription]
+=head2 PolicyTypeDescriptions => ArrayRef[L<Paws::ELB::PolicyTypeDescription>]
 
-  
-
-Information about the policy types.
-
-
-
-
-
-
-
-
-
+  Information about the policy types.
 
 
 =cut

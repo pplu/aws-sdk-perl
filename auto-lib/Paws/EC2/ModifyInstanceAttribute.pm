@@ -36,7 +36,7 @@ This class represents the parameters used for calling the method ModifyInstanceA
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method ModifyInstanceAttribute.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyInstanceAttribute.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyInstanceAttribute.
 
 As an example:
 
@@ -48,24 +48,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Attribute => Str
 
-  
+  The name of the attribute.
 
-The name of the attribute.
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>]
 
-
-
-
-
-
-
-
-
-
-=head2 BlockDeviceMappings => ArrayRef[Paws::EC2::InstanceBlockDeviceMappingSpecification]
-
-  
-
-Modifies the C<DeleteOnTermination> attribute for volumes that are
+  Modifies the C<DeleteOnTermination> attribute for volumes that are
 currently attached. The volume must be owned by the caller. If no value
 is specified for C<DeleteOnTermination>, the default is C<true> and the
 volume is deleted when the instance is terminated.
@@ -75,239 +62,87 @@ must add them when you launch the instance. For more information, see
 Updating the Block Device Mapping when Launching an Instance in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
+=head2 DisableApiTermination => L<Paws::EC2::AttributeBooleanValue>
 
-
-
-
-
-
-
-
-
-=head2 DisableApiTermination => Paws::EC2::AttributeBooleanValue
-
-  
-
-If the value is C<true>, you can't terminate the instance using the
+  If the value is C<true>, you can't terminate the instance using the
 Amazon EC2 console, CLI, or API; otherwise, you can. You cannot use
 this paramater for Spot Instances.
 
-
-
-
-
-
-
-
-
-
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+=head2 EbsOptimized => L<Paws::EC2::AttributeBooleanValue>
 
-
-
-
-
-
-
-
-
-=head2 EbsOptimized => Paws::EC2::AttributeBooleanValue
-
-  
-
-Specifies whether the instance is optimized for EBS I/O. This
+  Specifies whether the instance is optimized for EBS I/O. This
 optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal EBS I/O performance.
 This optimization isn't available with all instance types. Additional
 usage charges apply when using an EBS Optimized instance.
 
-
-
-
-
-
-
-
-
-
 =head2 Groups => ArrayRef[Str]
 
-  
-
-[EC2-VPC] Changes the security groups of the instance. You must specify
+  [EC2-VPC] Changes the security groups of the instance. You must specify
 at least one security group, even if it's just the default security
 group for the VPC. You must specify the security group ID, not the
 security group name.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> InstanceId => Str
 
-  
+  The ID of the instance.
 
-The ID of the instance.
+=head2 InstanceInitiatedShutdownBehavior => L<Paws::EC2::AttributeValue>
 
-
-
-
-
-
-
-
-
-
-=head2 InstanceInitiatedShutdownBehavior => Paws::EC2::AttributeValue
-
-  
-
-Specifies whether an instance stops or terminates when you initiate
+  Specifies whether an instance stops or terminates when you initiate
 shutdown from the instance (using the operating system command for
 system shutdown).
 
+=head2 InstanceType => L<Paws::EC2::AttributeValue>
 
-
-
-
-
-
-
-
-
-=head2 InstanceType => Paws::EC2::AttributeValue
-
-  
-
-Changes the instance type to the specified value. For more information,
+  Changes the instance type to the specified value. For more information,
 see Instance Types. If the instance type is not valid, the error
 returned is C<InvalidInstanceAttributeValue>.
 
+=head2 Kernel => L<Paws::EC2::AttributeValue>
 
-
-
-
-
-
-
-
-
-=head2 Kernel => Paws::EC2::AttributeValue
-
-  
-
-Changes the instance's kernel to the specified value. We recommend that
+  Changes the instance's kernel to the specified value. We recommend that
 you use PV-GRUB instead of kernels and RAM disks. For more information,
 see PV-GRUB.
 
+=head2 Ramdisk => L<Paws::EC2::AttributeValue>
 
-
-
-
-
-
-
-
-
-=head2 Ramdisk => Paws::EC2::AttributeValue
-
-  
-
-Changes the instance's RAM disk to the specified value. We recommend
+  Changes the instance's RAM disk to the specified value. We recommend
 that you use PV-GRUB instead of kernels and RAM disks. For more
 information, see PV-GRUB.
 
+=head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
 
-
-
-
-
-
-
-
-
-=head2 SourceDestCheck => Paws::EC2::AttributeBooleanValue
-
-  
-
-Specifies whether source/destination checking is enabled. A value of
+  Specifies whether source/destination checking is enabled. A value of
 C<true> means that checking is enabled, and C<false> means checking is
 disabled. This value must be C<false> for a NAT instance to perform
 NAT.
 
+=head2 SriovNetSupport => L<Paws::EC2::AttributeValue>
 
-
-
-
-
-
-
-
-
-=head2 SriovNetSupport => Paws::EC2::AttributeValue
-
-  
-
-Set to C<simple> to enable enhanced networking for the instance.
+  Set to C<simple> to enable enhanced networking for the instance.
 
 There is no way to disable enhanced networking at this time.
 
 This option is supported only for HVM instances. Specifying this option
 with a PV instance can make it unreachable.
 
+=head2 UserData => L<Paws::EC2::BlobAttributeValue>
 
-
-
-
-
-
-
-
-
-=head2 UserData => Paws::EC2::BlobAttributeValue
-
-  
-
-Changes the instance's user data to the specified value.
-
-
-
-
-
-
-
-
-
+  Changes the instance's user data to the specified value.
 
 =head2 Value => Str
 
-  
-
-A new value for the attribute. Use only with the C<kernel>, C<ramdisk>,
+  A new value for the attribute. Use only with the C<kernel>, C<ramdisk>,
 C<userData>, C<disableApiTermination>, or
 C<instanceInitiatedShutdownBehavior> attribute.
-
-
-
-
-
-
-
-
-
 
 
 

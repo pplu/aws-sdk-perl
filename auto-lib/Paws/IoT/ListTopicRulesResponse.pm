@@ -1,8 +1,8 @@
 
 package Paws::IoT::ListTopicRulesResponse;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
-  has rules => (is => 'ro', isa => 'ArrayRef[Paws::IoT::TopicRuleListItem]');
+  has NextToken => (is => 'ro', isa => 'Str');
+  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::IoT::TopicRuleListItem]');
 
 1;
 
@@ -14,34 +14,12 @@ Paws::IoT::ListTopicRulesResponse
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
-  
+  A token used to retrieve the next value.
+=head2 Rules => ArrayRef[L<Paws::IoT::TopicRuleListItem>]
 
-A token used to retrieve the next value.
-
-
-
-
-
-
-
-
-
-=head2 rules => ArrayRef[Paws::IoT::TopicRuleListItem]
-
-  
-
-The rules.
-
-
-
-
-
-
-
-
-
+  The rules.
 
 
 =cut

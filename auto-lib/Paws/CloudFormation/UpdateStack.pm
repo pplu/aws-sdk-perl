@@ -33,7 +33,7 @@ This class represents the parameters used for calling the method UpdateStack on 
 AWS CloudFormation service. Use the attributes of this class
 as arguments to method UpdateStack.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateStack.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateStack.
 
 As an example:
 
@@ -45,9 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Capabilities => ArrayRef[Str]
 
-  
-
-A list of capabilities that you must specify before AWS CloudFormation
+  A list of capabilities that you must specify before AWS CloudFormation
 can create or update certain stacks. Some stack templates might include
 resources that can affect permissions in your AWS account. For those
 stacks, you must explicitly acknowledge their capabilities by
@@ -60,52 +58,19 @@ resources, we recommend that you review any permissions associated with
 them. If you don't specify this parameter, this action returns an
 InsufficientCapabilities error.
 
-
-
-
-
-
-
-
-
-
 =head2 NotificationARNs => ArrayRef[Str]
 
-  
-
-Update the ARNs for the Amazon SNS topics that are associated with the
+  Update the ARNs for the Amazon SNS topics that are associated with the
 stack.
 
+=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
-
-
-
-
-
-
-
-
-=head2 Parameters => ArrayRef[Paws::CloudFormation::Parameter]
-
-  
-
-A list of C<Parameter> structures that specify input parameters for the
+  A list of C<Parameter> structures that specify input parameters for the
 stack. For more information, see the Parameter data type.
-
-
-
-
-
-
-
-
-
 
 =head2 ResourceTypes => ArrayRef[Str]
 
-  
-
-The template resource types that you have permissions to work with for
+  The template resource types that you have permissions to work with for
 this update stack action, such as C<AWS::EC2::Instance>,
 C<AWS::EC2::*>, or C<Custom::MyCustomInstance>.
 
@@ -116,35 +81,13 @@ permissions to all resource types. AWS Identity and Access Management
 keys in IAM policies. For more information, see Controlling Access with
 AWS Identity and Access Management
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StackName => Str
 
-  
-
-The name or unique stack ID of the stack to update.
-
-
-
-
-
-
-
-
-
+  The name or unique stack ID of the stack to update.
 
 =head2 StackPolicyBody => Str
 
-  
-
-Structure containing a new stack policy body. You can specify either
+  Structure containing a new stack policy body. You can specify either
 the C<StackPolicyBody> or the C<StackPolicyURL> parameter, but not
 both.
 
@@ -153,20 +96,9 @@ new resource that you created during a stack update. If you do not
 specify a stack policy, the current policy that is associated with the
 stack is unchanged.
 
-
-
-
-
-
-
-
-
-
 =head2 StackPolicyDuringUpdateBody => Str
 
-  
-
-Structure containing the temporary overriding stack policy body. You
+  Structure containing the temporary overriding stack policy body. You
 can specify either the C<StackPolicyDuringUpdateBody> or the
 C<StackPolicyDuringUpdateURL> parameter, but not both.
 
@@ -175,20 +107,9 @@ overriding stack policy during this update. If you do not specify a
 stack policy, the current policy that is associated with the stack will
 be used.
 
-
-
-
-
-
-
-
-
-
 =head2 StackPolicyDuringUpdateURL => Str
 
-  
-
-Location of a file containing the temporary overriding stack policy.
+  Location of a file containing the temporary overriding stack policy.
 The URL must point to a policy (max size: 16KB) located in an S3 bucket
 in the same region as the stack. You can specify either the
 C<StackPolicyDuringUpdateBody> or the C<StackPolicyDuringUpdateURL>
@@ -199,20 +120,9 @@ overriding stack policy during this update. If you do not specify a
 stack policy, the current policy that is associated with the stack will
 be used.
 
-
-
-
-
-
-
-
-
-
 =head2 StackPolicyURL => Str
 
-  
-
-Location of a file containing the updated stack policy. The URL must
+  Location of a file containing the updated stack policy. The URL must
 point to a policy (max size: 16KB) located in an S3 bucket in the same
 region as the stack. You can specify either the C<StackPolicyBody> or
 the C<StackPolicyURL> parameter, but not both.
@@ -222,70 +132,28 @@ new resource that you created during a stack update. If you do not
 specify a stack policy, the current policy that is associated with the
 stack is unchanged.
 
-
-
-
-
-
-
-
-
-
 =head2 TemplateBody => Str
 
-  
-
-Structure containing the template body with a minimum length of 1 byte
+  Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. (For more information, go to
 Template Anatomy in the AWS CloudFormation User Guide.)
 
 Conditional: You must specify either the C<TemplateBody> or the
 C<TemplateURL> parameter, but not both.
 
-
-
-
-
-
-
-
-
-
 =head2 TemplateURL => Str
 
-  
-
-Location of file containing the template body. The URL must point to a
+  Location of file containing the template body. The URL must point to a
 template that is located in an Amazon S3 bucket. For more information,
 go to Template Anatomy in the AWS CloudFormation User Guide.
 
 Conditional: You must specify either the C<TemplateBody> or the
 C<TemplateURL> parameter, but not both.
 
-
-
-
-
-
-
-
-
-
 =head2 UsePreviousTemplate => Bool
 
-  
-
-Reuse the existing template that is associated with the stack that you
+  Reuse the existing template that is associated with the stack that you
 are updating.
-
-
-
-
-
-
-
-
-
 
 
 

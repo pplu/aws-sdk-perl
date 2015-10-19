@@ -20,105 +20,28 @@ Paws::EC2::ImageAttribute
 
 =head1 ATTRIBUTES
 
-=head2 BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping]
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-  
+  One or more block device mapping entries.
+=head2 Description => L<Paws::EC2::AttributeValue>
 
-One or more block device mapping entries.
-
-
-
-
-
-
-
-
-
-=head2 Description => Paws::EC2::AttributeValue
-
-  
-
-A description for the AMI.
-
-
-
-
-
-
-
-
-
+  A description for the AMI.
 =head2 ImageId => Str
 
-  
+  The ID of the AMI.
+=head2 KernelId => L<Paws::EC2::AttributeValue>
 
-The ID of the AMI.
+  The kernel ID.
+=head2 LaunchPermissions => ArrayRef[L<Paws::EC2::LaunchPermission>]
 
+  One or more launch permissions.
+=head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
+  One or more product codes.
+=head2 RamdiskId => L<Paws::EC2::AttributeValue>
 
-
-
-
-
-
-
-=head2 KernelId => Paws::EC2::AttributeValue
-
-  
-
-The kernel ID.
-
-
-
-
-
-
-
-
-
-=head2 LaunchPermissions => ArrayRef[Paws::EC2::LaunchPermission]
-
-  
-
-One or more launch permissions.
-
-
-
-
-
-
-
-
-
-=head2 ProductCodes => ArrayRef[Paws::EC2::ProductCode]
-
-  
-
-One or more product codes.
-
-
-
-
-
-
-
-
-
-=head2 RamdiskId => Paws::EC2::AttributeValue
-
-  
-
-The RAM disk ID.
-
-
-
-
-
-
-
-
-
-=head2 SriovNetSupport => Paws::EC2::AttributeValue
+  The RAM disk ID.
+=head2 SriovNetSupport => L<Paws::EC2::AttributeValue>
 
   
 

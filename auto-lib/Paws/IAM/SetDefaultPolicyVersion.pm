@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method SetDefaultPolic
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method SetDefaultPolicyVersion.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetDefaultPolicyVersion.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetDefaultPolicyVersion.
 
 As an example:
 
@@ -39,21 +39,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> VersionId => Str
 
-  
-
-The version of the policy to set as the default (operative) version.
+  The version of the policy to set as the default (operative) version.
 
 For more information about managed policy versions, see Versioning for
 Managed Policies in the I<IAM User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

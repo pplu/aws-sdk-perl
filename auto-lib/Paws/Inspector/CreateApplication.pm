@@ -1,8 +1,8 @@
 
 package Paws::Inspector::CreateApplication;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str');
-  has resourceGroupArn => (is => 'ro', isa => 'Str');
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' );
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateApplicati
 Amazon Inspector service. Use the attributes of this class
 as arguments to method CreateApplication.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplication.
 
 As an example:
 
@@ -33,37 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 applicationName => Str
+=head2 ApplicationName => Str
 
-  
-
-The user-defined name identifying the application that you want to
+  The user-defined name identifying the application that you want to
 create. The name must be unique within the AWS account.
 
+=head2 ResourceGroupArn => Str
 
-
-
-
-
-
-
-
-
-=head2 resourceGroupArn => Str
-
-  
-
-The ARN specifying the resource group that is used to create the
+  The ARN specifying the resource group that is used to create the
 application.
-
-
-
-
-
-
-
-
-
 
 
 

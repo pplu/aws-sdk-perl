@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddTagsToResour
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method AddTagsToResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddTagsToResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTagsToResource.
 
 As an example:
 
@@ -35,38 +35,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-  
+  The Amazon Resource Name (ARN) of the resource you want to add tags to.
 
-The Amazon Resource Name (ARN) of the resource you want to add tags to.
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::StorageGateway::Tag]
-
-  
-
-The key-value pair that represents the tag you want to add to the
+  The key-value pair that represents the tag you want to add to the
 resource. The value can be an empty string.
 
 Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: +
 - = . _ : / @.
-
-
-
-
-
-
-
-
-
 
 
 

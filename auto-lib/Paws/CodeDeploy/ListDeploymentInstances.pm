@@ -1,9 +1,9 @@
 
 package Paws::CodeDeploy::ListDeploymentInstances;
   use Moose;
-  has deploymentId => (is => 'ro', isa => 'Str', required => 1);
-  has instanceStatusFilter => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' , required => 1);
+  has InstanceStatusFilter => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'instanceStatusFilter' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListDeploymentI
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method ListDeploymentInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListDeploymentInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDeploymentInstances.
 
 As an example:
 
@@ -34,26 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> deploymentId => Str
+=head2 B<REQUIRED> DeploymentId => Str
 
-  
+  The unique ID of a deployment.
 
-The unique ID of a deployment.
+=head2 InstanceStatusFilter => ArrayRef[Str]
 
-
-
-
-
-
-
-
-
-
-=head2 instanceStatusFilter => ArrayRef[Str]
-
-  
-
-A subset of instances to list, by status:
+  A subset of instances to list, by status:
 
 =over
 
@@ -78,30 +65,11 @@ deployments in an unknown state.
 =back
 
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-An identifier that was returned from the previous list deployment
+  An identifier that was returned from the previous list deployment
 instances call, which can be used to return the next set of deployment
 instances in the list.
-
-
-
-
-
-
-
-
-
 
 
 

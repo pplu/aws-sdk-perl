@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method DescribeEnviron
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method DescribeEnvironments.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEnvironments.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEnvironments.
 
 As an example:
 
@@ -39,104 +39,38 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplicationName => Str
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to include only those that are associated with this application.
-
-
-
-
-
-
-
-
-
 
 =head2 EnvironmentIds => ArrayRef[Str]
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to include only those that have the specified IDs.
-
-
-
-
-
-
-
-
-
 
 =head2 EnvironmentNames => ArrayRef[Str]
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to include only those that have the specified names.
-
-
-
-
-
-
-
-
-
 
 =head2 IncludedDeletedBackTo => Str
 
-  
-
-If specified when C<IncludeDeleted> is set to C<true>, then
+  If specified when C<IncludeDeleted> is set to C<true>, then
 environments deleted after this date are displayed.
-
-
-
-
-
-
-
-
-
 
 =head2 IncludeDeleted => Bool
 
-  
-
-Indicates whether to include deleted environments:
+  Indicates whether to include deleted environments:
 
 C<true>: Environments that have been deleted after
 C<IncludedDeletedBackTo> are displayed.
 
 C<false>: Do not include deleted environments.
 
-
-
-
-
-
-
-
-
-
 =head2 VersionLabel => Str
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to include only those that are associated with this application
 version.
-
-
-
-
-
-
-
-
-
 
 
 

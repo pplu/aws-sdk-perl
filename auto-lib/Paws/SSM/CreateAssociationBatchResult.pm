@@ -13,34 +13,12 @@ Paws::SSM::CreateAssociationBatchResult
 
 =head1 ATTRIBUTES
 
-=head2 Failed => ArrayRef[Paws::SSM::FailedCreateAssociation]
+=head2 Failed => ArrayRef[L<Paws::SSM::FailedCreateAssociation>]
 
-  
+  Information about the associations that failed.
+=head2 Successful => ArrayRef[L<Paws::SSM::AssociationDescription>]
 
-Information about the associations that failed.
-
-
-
-
-
-
-
-
-
-=head2 Successful => ArrayRef[Paws::SSM::AssociationDescription]
-
-  
-
-Information about the associations that succeeded.
-
-
-
-
-
-
-
-
-
+  Information about the associations that succeeded.
 
 
 =cut

@@ -1,7 +1,7 @@
 
 package Paws::Inspector::GetAssessmentTelemetryResponse;
   use Moose;
-  has telemetry => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Telemetry]');
+  has Telemetry => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Telemetry]', traits => ['Unwrapped'], xmlname => 'telemetry' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::Inspector::GetAssessmentTelemetryResponse
 
 =head1 ATTRIBUTES
 
-=head2 telemetry => ArrayRef[Paws::Inspector::Telemetry]
+=head2 Telemetry => ArrayRef[L<Paws::Inspector::Telemetry>]
 
-  
-
-Telemetry details.
-
-
-
-
-
-
-
-
-
+  Telemetry details.
 
 
 =cut

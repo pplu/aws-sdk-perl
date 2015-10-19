@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method EstimateTemplat
 AWS CloudFormation service. Use the attributes of this class
 as arguments to method EstimateTemplateCost.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to EstimateTemplateCost.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EstimateTemplateCost.
 
 As an example:
 
@@ -34,60 +34,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Parameters => ArrayRef[Paws::CloudFormation::Parameter]
+=head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
-  
-
-A list of C<Parameter> structures that specify input parameters.
-
-
-
-
-
-
-
-
-
+  A list of C<Parameter> structures that specify input parameters.
 
 =head2 TemplateBody => Str
 
-  
-
-Structure containing the template body with a minimum length of 1 byte
+  Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. (For more information, go to
 Template Anatomy in the AWS CloudFormation User Guide.)
 
 Conditional: You must pass C<TemplateBody> or C<TemplateURL>. If both
 are passed, only C<TemplateBody> is used.
 
-
-
-
-
-
-
-
-
-
 =head2 TemplateURL => Str
 
-  
-
-Location of file containing the template body. The URL must point to a
+  Location of file containing the template body. The URL must point to a
 template that is located in an Amazon S3 bucket. For more information,
 go to Template Anatomy in the AWS CloudFormation User Guide.
 
 Conditional: You must pass C<TemplateURL> or C<TemplateBody>. If both
 are passed, only C<TemplateBody> is used.
-
-
-
-
-
-
-
-
-
 
 
 

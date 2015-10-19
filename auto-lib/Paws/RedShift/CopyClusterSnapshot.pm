@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CopyClusterSnap
 Amazon Redshift service. Use the attributes of this class
 as arguments to method CopyClusterSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CopyClusterSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyClusterSnapshot.
 
 As an example:
 
@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 SourceSnapshotClusterIdentifier => Str
 
-  
-
-The identifier of the cluster the source snapshot was created from.
+  The identifier of the cluster the source snapshot was created from.
 This parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.
@@ -52,19 +50,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SourceSnapshotIdentifier => Str
 
-  
-
-The identifier for the source snapshot.
+  The identifier for the source snapshot.
 
 Constraints:
 
@@ -76,19 +64,9 @@ state is C<available>.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TargetSnapshotIdentifier => Str
 
-  
-
-The identifier given to the new manual snapshot.
+  The identifier given to the new manual snapshot.
 
 Constraints:
 
@@ -105,14 +83,6 @@ Constraints:
 =item * Must be unique for the AWS account that is making the request.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

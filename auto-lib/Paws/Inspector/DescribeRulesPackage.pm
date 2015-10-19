@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeRulesPackage;
   use Moose;
-  has rulesPackageArn => (is => 'ro', isa => 'Str');
+  has RulesPackageArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'rulesPackageArn' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeRulesPa
 Amazon Inspector service. Use the attributes of this class
 as arguments to method DescribeRulesPackage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRulesPackage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRulesPackage.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 rulesPackageArn => Str
+=head2 RulesPackageArn => Str
 
-  
-
-The ARN specifying the rules package that you want to describe.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the rules package that you want to describe.
 
 
 

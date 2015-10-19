@@ -12,21 +12,10 @@ Paws::OpsWorks::DescribeCommandsResult
 
 =head1 ATTRIBUTES
 
-=head2 Commands => ArrayRef[Paws::OpsWorks::Command]
+=head2 Commands => ArrayRef[L<Paws::OpsWorks::Command>]
 
-  
-
-An array of C<Command> objects that describe each of the specified
+  An array of C<Command> objects that describe each of the specified
 commands.
-
-
-
-
-
-
-
-
-
 
 
 =cut

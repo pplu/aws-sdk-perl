@@ -21,7 +21,7 @@ This class represents the parameters used for calling the method GetSendStatisti
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method GetSendStatistics.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetSendStatistics.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSendStatistics.
 
 As an example:
 

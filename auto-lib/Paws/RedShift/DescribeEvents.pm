@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method DescribeEvents 
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DescribeEvents.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEvents.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEvents.
 
 As an example:
 
@@ -40,68 +40,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Duration => Int
 
-  
-
-The number of minutes prior to the time of the request for which to
+  The number of minutes prior to the time of the request for which to
 retrieve events. For example, if the request is sent at 18:00 and you
 specify a duration of 60, then only events which have occurred after
 17:00 will be returned.
 
 Default: C<60>
 
-
-
-
-
-
-
-
-
-
 =head2 EndTime => Str
 
-  
-
-The end of the time interval for which to retrieve events, specified in
+  The end of the time interval for which to retrieve events, specified in
 ISO 8601 format. For more information about ISO 8601, go to the ISO8601
 Wikipedia page.
 
 Example: C<2009-07-08T18:00Z>
 
-
-
-
-
-
-
-
-
-
 =head2 Marker => Str
 
-  
-
-An optional parameter that specifies the starting point to return a set
+  An optional parameter that specifies the starting point to return a set
 of response records. When the results of a DescribeEvents request
 exceed the value specified in C<MaxRecords>, AWS returns a value in the
 C<Marker> field of the response. You can retrieve the next set of
 response records by providing the returned marker value in the
 C<Marker> parameter and retrying the request.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of response records to return in each call. If the
+  The maximum number of response records to return in each call. If the
 number of remaining response records exceeds the specified
 C<MaxRecords> value, a value is returned in a C<marker> field of the
 response. You can retrieve the next set of records by retrying the
@@ -111,20 +76,9 @@ Default: C<100>
 
 Constraints: minimum 20, maximum 100.
 
-
-
-
-
-
-
-
-
-
 =head2 SourceIdentifier => Str
 
-  
-
-The identifier of the event source for which events will be returned.
+  The identifier of the event source for which events will be returned.
 If this parameter is not specified, then all sources are included in
 the response.
 
@@ -149,19 +103,9 @@ C<cluster-snapshot>.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 SourceType => Str
 
-  
-
-The event source to retrieve events for. If no value is specified, all
+  The event source to retrieve events for. If no value is specified, all
 events are returned.
 
 Constraints:
@@ -186,32 +130,13 @@ cluster snapshot identifier.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 StartTime => Str
 
-  
-
-The beginning of the time interval to retrieve events for, specified in
+  The beginning of the time interval to retrieve events for, specified in
 ISO 8601 format. For more information about ISO 8601, go to the ISO8601
 Wikipedia page.
 
 Example: C<2009-07-08T18:00Z>
-
-
-
-
-
-
-
-
-
 
 
 

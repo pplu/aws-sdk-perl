@@ -14,18 +14,7 @@ Paws::DS::CreateDirectoryResult
 
 =head2 DirectoryId => Str
 
-  
-
-The identifier of the directory that was created.
-
-
-
-
-
-
-
-
-
+  The identifier of the directory that was created.
 
 
 =cut

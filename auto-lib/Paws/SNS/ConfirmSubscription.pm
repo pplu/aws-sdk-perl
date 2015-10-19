@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ConfirmSubscrip
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method ConfirmSubscription.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ConfirmSubscription.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ConfirmSubscription.
 
 As an example:
 
@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AuthenticateOnUnsubscribe => Str
 
-  
-
-Disallows unauthenticated unsubscribes of the subscription. If the
+  Disallows unauthenticated unsubscribes of the subscription. If the
 value of this parameter is C<true> and the request has an AWS
 signature, then only the topic owner and the subscription owner can
 unsubscribe the endpoint. The unsubscribe action requires AWS
 authentication.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Token => Str
 
-  
-
-Short-lived token sent to an endpoint during the C<Subscribe> action.
-
-
-
-
-
-
-
-
-
+  Short-lived token sent to an endpoint during the C<Subscribe> action.
 
 =head2 B<REQUIRED> TopicArn => Str
 
-  
-
-The ARN of the topic for which you wish to confirm a subscription.
-
-
-
-
-
-
-
-
-
+  The ARN of the topic for which you wish to confirm a subscription.
 
 
 

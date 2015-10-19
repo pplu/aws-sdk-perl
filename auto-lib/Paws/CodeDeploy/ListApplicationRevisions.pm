@@ -1,13 +1,13 @@
 
 package Paws::CodeDeploy::ListApplicationRevisions;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str', required => 1);
-  has deployed => (is => 'ro', isa => 'Str');
-  has nextToken => (is => 'ro', isa => 'Str');
-  has s3Bucket => (is => 'ro', isa => 'Str');
-  has s3KeyPrefix => (is => 'ro', isa => 'Str');
-  has sortBy => (is => 'ro', isa => 'Str');
-  has sortOrder => (is => 'ro', isa => 'Str');
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has Deployed => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deployed' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has S3Bucket => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 's3Bucket' );
+  has S3KeyPrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 's3KeyPrefix' );
+  has SortBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sortBy' );
+  has SortOrder => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sortOrder' );
 
   use MooseX::ClassAttribute;
 
@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method ListApplication
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method ListApplicationRevisions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListApplicationRevisions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListApplicationRevisions.
 
 As an example:
 
@@ -38,27 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> applicationName => Str
+=head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of an existing AWS CodeDeploy application associated with the
+  The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
 
+=head2 Deployed => Str
 
-
-
-
-
-
-
-
-
-=head2 deployed => Str
-
-  
-
-Whether to list revisions based on whether the revision is the target
+  Whether to list revisions based on whether the revision is the target
 revision of an deployment group:
 
 =over
@@ -75,69 +62,26 @@ target revisions of a deployment group.
 =back
 
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-An identifier that was returned from the previous list application
+  An identifier that was returned from the previous list application
 revisions call, which can be used to return the next set of
 applications in the list.
 
+=head2 S3Bucket => Str
 
-
-
-
-
-
-
-
-
-=head2 s3Bucket => Str
-
-  
-
-A specific Amazon S3 bucket name to limit the search for revisions.
+  A specific Amazon S3 bucket name to limit the search for revisions.
 
 If set to null, then all of the user's buckets will be searched.
 
+=head2 S3KeyPrefix => Str
 
-
-
-
-
-
-
-
-
-=head2 s3KeyPrefix => Str
-
-  
-
-A specific key prefix for the set of Amazon S3 objects to limit the
+  A specific key prefix for the set of Amazon S3 objects to limit the
 search for revisions.
 
+=head2 SortBy => Str
 
-
-
-
-
-
-
-
-
-=head2 sortBy => Str
-
-  
-
-The column name to sort the list results by:
+  The column name to sort the list results by:
 
 =over
 
@@ -155,20 +99,9 @@ last used in a deployment.
 If not specified or set to null, the results will be returned in an
 arbitrary order.
 
+=head2 SortOrder => Str
 
-
-
-
-
-
-
-
-
-=head2 sortOrder => Str
-
-  
-
-The order to sort the list results by:
+  The order to sort the list results by:
 
 =over
 
@@ -181,15 +114,6 @@ The order to sort the list results by:
 If not specified, the results will be sorted in ascending order.
 
 If set to null, the results will be sorted in an arbitrary order.
-
-
-
-
-
-
-
-
-
 
 
 

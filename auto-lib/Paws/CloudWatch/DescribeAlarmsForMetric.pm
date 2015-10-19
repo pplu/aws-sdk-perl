@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method DescribeAlarmsF
 Amazon CloudWatch service. Use the attributes of this class
 as arguments to method DescribeAlarmsForMetric.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAlarmsForMetric.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAlarmsForMetric.
 
 As an example:
 
@@ -37,95 +37,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Dimensions => ArrayRef[Paws::CloudWatch::Dimension]
+=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
-  
-
-The list of dimensions associated with the metric.
-
-
-
-
-
-
-
-
-
+  The list of dimensions associated with the metric.
 
 =head2 B<REQUIRED> MetricName => Str
 
-  
-
-The name of the metric.
-
-
-
-
-
-
-
-
-
+  The name of the metric.
 
 =head2 B<REQUIRED> Namespace => Str
 
-  
-
-The namespace of the metric.
-
-
-
-
-
-
-
-
-
+  The namespace of the metric.
 
 =head2 Period => Int
 
-  
-
-The period in seconds over which the statistic is applied.
-
-
-
-
-
-
-
-
-
+  The period in seconds over which the statistic is applied.
 
 =head2 Statistic => Str
 
-  
-
-The statistic for the metric.
-
-
-
-
-
-
-
-
-
+  The statistic for the metric.
 
 =head2 Unit => Str
 
-  
-
-The unit for the metric.
-
-
-
-
-
-
-
-
-
+  The unit for the metric.
 
 
 

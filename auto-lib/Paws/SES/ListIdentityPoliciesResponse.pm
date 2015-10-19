@@ -15,18 +15,7 @@ Paws::SES::ListIdentityPoliciesResponse
 
 =head2 B<REQUIRED> PolicyNames => ArrayRef[Str]
 
-  
-
-A list of names of policies that apply to the specified identity.
-
-
-
-
-
-
-
-
-
+  A list of names of policies that apply to the specified identity.
 
 
 =cut

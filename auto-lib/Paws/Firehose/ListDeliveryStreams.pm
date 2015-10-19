@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListDeliveryStr
 Amazon Kinesis Firehose service. Use the attributes of this class
 as arguments to method ListDeliveryStreams.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListDeliveryStreams.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDeliveryStreams.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ExclusiveStartDeliveryStreamName => Str
 
-  
-
-The name of the delivery stream to start the list with.
-
-
-
-
-
-
-
-
-
+  The name of the delivery stream to start the list with.
 
 =head2 Limit => Int
 
-  
-
-The maximum number of delivery streams to list.
-
-
-
-
-
-
-
-
-
+  The maximum number of delivery streams to list.
 
 
 

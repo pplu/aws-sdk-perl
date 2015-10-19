@@ -14,34 +14,12 @@ Paws::Lambda::ListAliasesResponse
 
 =head1 ATTRIBUTES
 
-=head2 Aliases => ArrayRef[Paws::Lambda::AliasConfiguration]
+=head2 Aliases => ArrayRef[L<Paws::Lambda::AliasConfiguration>]
 
-  
-
-An list of alises.
-
-
-
-
-
-
-
-
-
+  An list of alises.
 =head2 NextMarker => Str
 
-  
-
-A string, present if there are more aliases.
-
-
-
-
-
-
-
-
-
+  A string, present if there are more aliases.
 
 
 =cut

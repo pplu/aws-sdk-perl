@@ -12,21 +12,10 @@ Paws::WorkSpaces::TerminateWorkspacesResult
 
 =head1 ATTRIBUTES
 
-=head2 FailedRequests => ArrayRef[Paws::WorkSpaces::FailedWorkspaceChangeRequest]
+=head2 FailedRequests => ArrayRef[L<Paws::WorkSpaces::FailedWorkspaceChangeRequest>]
 
-  
-
-An array of structures that represent any WorkSpaces that could not be
+  An array of structures that represent any WorkSpaces that could not be
 terminated.
-
-
-
-
-
-
-
-
-
 
 
 =cut

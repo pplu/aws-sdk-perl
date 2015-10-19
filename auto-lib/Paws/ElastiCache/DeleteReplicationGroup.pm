@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteReplicati
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method DeleteReplicationGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteReplicationGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteReplicationGroup.
 
 As an example:
 
@@ -36,53 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 FinalSnapshotIdentifier => Str
 
-  
-
-The name of a final node group snapshot. ElastiCache creates the
+  The name of a final node group snapshot. ElastiCache creates the
 snapshot from the primary node in the cluster, rather than one of the
 replicas; this is to ensure that it captures the freshest data. After
 the final snapshot is taken, the cluster is immediately deleted.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ReplicationGroupId => Str
 
-  
-
-The identifier for the cluster to be deleted. This parameter is not
+  The identifier for the cluster to be deleted. This parameter is not
 case sensitive.
-
-
-
-
-
-
-
-
-
 
 =head2 RetainPrimaryCluster => Bool
 
-  
-
-If set to I<true>, all of the read replicas will be deleted, but the
+  If set to I<true>, all of the read replicas will be deleted, but the
 primary node will be retained.
-
-
-
-
-
-
-
-
-
 
 
 

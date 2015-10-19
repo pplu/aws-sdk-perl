@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteRule on t
 AWS WAF service. Use the attributes of this class
 as arguments to method DeleteRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRule.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
-
-The value returned by the most recent call to GetChangeToken.
-
-
-
-
-
-
-
-
-
+  The value returned by the most recent call to GetChangeToken.
 
 =head2 B<REQUIRED> RuleId => Str
 
-  
-
-The C<RuleId> of the Rule that you want to delete. C<RuleId> is
+  The C<RuleId> of the Rule that you want to delete. C<RuleId> is
 returned by CreateRule and by ListRules.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -13,7 +13,7 @@ Paws::ElastiCache::CreateCacheParameterGroupResult
 
 =head1 ATTRIBUTES
 
-=head2 CacheParameterGroup => Paws::ElastiCache::CacheParameterGroup
+=head2 CacheParameterGroup => L<Paws::ElastiCache::CacheParameterGroup>
 
   
 

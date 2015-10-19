@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetChangeTokenS
 AWS WAF service. Use the attributes of this class
 as arguments to method GetChangeTokenStatus.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetChangeTokenStatus.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetChangeTokenStatus.
 
 As an example:
 
@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
-
-The change token for which you want to get the status. This change
+  The change token for which you want to get the status. This change
 token was previously returned in the C<GetChangeToken> response.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -12,20 +12,9 @@ Paws::OpsWorks::DescribeLayersResult
 
 =head1 ATTRIBUTES
 
-=head2 Layers => ArrayRef[Paws::OpsWorks::Layer]
+=head2 Layers => ArrayRef[L<Paws::OpsWorks::Layer>]
 
-  
-
-An array of C<Layer> objects that describe the layers.
-
-
-
-
-
-
-
-
-
+  An array of C<Layer> objects that describe the layers.
 
 
 =cut

@@ -26,24 +26,13 @@ Paws::S3::DeleteObjectsOutput
 =head2 B<REQUIRED> Bucket => Str
 
   
-=head2 B<REQUIRED> Delete => Paws::S3::Delete
+=head2 B<REQUIRED> Delete => L<Paws::S3::Delete>
 
   
 =head2 MFA => Str
 
-  
-
-The concatenation of the authentication device's serial number, a
+  The concatenation of the authentication device's serial number, a
 space, and the value that is displayed on your authentication device.
-
-
-
-
-
-
-
-
-
 =head2 RequestPayer => Str
 
   

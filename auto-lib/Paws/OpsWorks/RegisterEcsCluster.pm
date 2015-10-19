@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RegisterEcsClus
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method RegisterEcsCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RegisterEcsCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterEcsCluster.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EcsClusterArn => Str
 
-  
-
-The cluster's ARN.
-
-
-
-
-
-
-
-
-
+  The cluster's ARN.
 
 =head2 B<REQUIRED> StackId => Str
 
-  
-
-The stack ID.
-
-
-
-
-
-
-
-
-
+  The stack ID.
 
 
 

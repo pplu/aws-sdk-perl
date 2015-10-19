@@ -13,7 +13,7 @@ Paws::RDS::ModifyDBSubnetGroupResult
 
 =head1 ATTRIBUTES
 
-=head2 DBSubnetGroup => Paws::RDS::DBSubnetGroup
+=head2 DBSubnetGroup => L<Paws::RDS::DBSubnetGroup>
 
   
 

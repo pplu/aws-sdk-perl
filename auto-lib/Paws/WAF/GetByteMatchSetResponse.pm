@@ -12,11 +12,9 @@ Paws::WAF::GetByteMatchSetResponse
 
 =head1 ATTRIBUTES
 
-=head2 ByteMatchSet => Paws::WAF::ByteMatchSet
+=head2 ByteMatchSet => L<Paws::WAF::ByteMatchSet>
 
-  
-
-Information about the ByteMatchSet that you specified in the
+  Information about the ByteMatchSet that you specified in the
 C<GetByteMatchSet> request. For more information, see the following
 topics:
 
@@ -32,14 +30,6 @@ C<PositionalConstraint>, C<TargetString>, and C<TextTransformation>
 =item * FieldToMatch: Contains C<Data> and C<Type>
 
 =back
-
-
-
-
-
-
-
-
 
 
 

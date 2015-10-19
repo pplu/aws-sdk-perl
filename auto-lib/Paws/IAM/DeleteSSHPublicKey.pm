@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteSSHPublic
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method DeleteSSHPublicKey.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSSHPublicKey.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSSHPublicKey.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SSHPublicKeyId => Str
 
-  
-
-The unique identifier for the SSH public key.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the SSH public key.
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the IAM user associated with the SSH public key.
-
-
-
-
-
-
-
-
-
+  The name of the IAM user associated with the SSH public key.
 
 
 

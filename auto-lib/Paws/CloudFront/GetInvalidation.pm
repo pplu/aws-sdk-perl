@@ -23,32 +23,10 @@ Paws::CloudFront::GetInvalidationResult
 
 =head2 B<REQUIRED> DistributionId => Str
 
-  
-
-The distribution's id.
-
-
-
-
-
-
-
-
-
+  The distribution's id.
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The invalidation's id.
-
-
-
-
-
-
-
-
-
+  The invalidation's id.
 
 
 =cut

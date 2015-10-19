@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method DescribeSnapsho
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeSnapshots.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSnapshots.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSnapshots.
 
 As an example:
 
@@ -40,27 +40,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
-
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -126,19 +113,9 @@ C<volume-size> - The size of the volume, in GiB.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 MaxResults => Int
 
-  
-
-The maximum number of snapshot results returned by C<DescribeSnapshots>
+  The maximum number of snapshot results returned by C<DescribeSnapshots>
 in paginated output. When this parameter is used, C<DescribeSnapshots>
 only returns C<MaxResults> results in a single page along with a
 C<NextToken> response element. The remaining results of the initial
@@ -149,81 +126,28 @@ results are returned. If this parameter is not used, then
 C<DescribeSnapshots> returns all results. You cannot specify this
 parameter and the snapshot IDs parameter in the same request.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The C<NextToken> value returned from a previous paginated
+  The C<NextToken> value returned from a previous paginated
 C<DescribeSnapshots> request where C<MaxResults> was used and the
 results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<NextToken> value.
 This value is C<null> when there are no more results to return.
 
-
-
-
-
-
-
-
-
-
 =head2 OwnerIds => ArrayRef[Str]
 
-  
-
-Returns the snapshots owned by the specified owner. Multiple owners can
+  Returns the snapshots owned by the specified owner. Multiple owners can
 be specified.
-
-
-
-
-
-
-
-
-
 
 =head2 RestorableByUserIds => ArrayRef[Str]
 
-  
-
-One or more AWS accounts IDs that can create volumes from the snapshot.
-
-
-
-
-
-
-
-
-
+  One or more AWS accounts IDs that can create volumes from the snapshot.
 
 =head2 SnapshotIds => ArrayRef[Str]
 
-  
-
-One or more snapshot IDs.
+  One or more snapshot IDs.
 
 Default: Describes snapshots for which you have launch permissions.
-
-
-
-
-
-
-
-
-
 
 
 

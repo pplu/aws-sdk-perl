@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::DescribeActivityType;
   use Moose;
-  has activityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', required => 1);
-  has domain => (is => 'ro', isa => 'Str', required => 1);
+  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', traits => ['NameInRequest'], request_name => 'activityType' , required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DescribeActivit
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method DescribeActivityType.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeActivityType.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeActivityType.
 
 As an example:
 
@@ -33,37 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> activityType => Paws::SimpleWorkflow::ActivityType
+=head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
 
-  
-
-The activity type to get information about. Activity types are
+  The activity type to get information about. Activity types are
 identified by the C<name> and C<version> that were supplied when the
 activity was registered.
 
+=head2 B<REQUIRED> Domain => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> domain => Str
-
-  
-
-The name of the domain in which the activity type is registered.
-
-
-
-
-
-
-
-
-
+  The name of the domain in which the activity type is registered.
 
 
 

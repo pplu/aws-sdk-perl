@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeCacheCl
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method DescribeCacheClusters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCacheClusters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCacheClusters.
 
 As an example:
 
@@ -37,44 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CacheClusterId => Str
 
-  
-
-The user-supplied cluster identifier. If this parameter is specified,
+  The user-supplied cluster identifier. If this parameter is specified,
 only information about that specific cache cluster is returned. This
 parameter isn't case sensitive.
 
-
-
-
-
-
-
-
-
-
 =head2 Marker => Str
 
-  
-
-An optional marker returned from a prior request. Use this marker for
+  An optional marker returned from a prior request. Use this marker for
 pagination of results from this action. If this parameter is specified,
 the response includes only records beyond the marker, up to the value
 specified by I<MaxRecords>.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of records to include in the response. If more
+  The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a marker is
 included in the response so that the remaining results can be
 retrieved.
@@ -83,30 +59,10 @@ Default: 100
 
 Constraints: minimum 20; maximum 100.
 
-
-
-
-
-
-
-
-
-
 =head2 ShowCacheNodeInfo => Bool
 
-  
-
-An optional flag that can be included in the DescribeCacheCluster
+  An optional flag that can be included in the DescribeCacheCluster
 request to retrieve information about the individual cache nodes.
-
-
-
-
-
-
-
-
-
 
 
 

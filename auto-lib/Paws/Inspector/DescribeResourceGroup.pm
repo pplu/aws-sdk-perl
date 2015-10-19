@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeResourceGroup;
   use Moose;
-  has resourceGroupArn => (is => 'ro', isa => 'Str');
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeResourc
 Amazon Inspector service. Use the attributes of this class
 as arguments to method DescribeResourceGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeResourceGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeResourceGroup.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 resourceGroupArn => Str
+=head2 ResourceGroupArn => Str
 
-  
-
-The ARN specifying the resource group that you want to describe.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the resource group that you want to describe.
 
 
 

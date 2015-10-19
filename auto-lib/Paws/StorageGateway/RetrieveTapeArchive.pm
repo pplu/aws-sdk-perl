@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RetrieveTapeArc
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method RetrieveTapeArchive.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RetrieveTapeArchive.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RetrieveTapeArchive.
 
 As an example:
 
@@ -35,39 +35,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GatewayARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the gateway you want to retrieve the
+  The Amazon Resource Name (ARN) of the gateway you want to retrieve the
 virtual tape to. Use the ListGateways operation to return a list of
 gateways for your account and region.
 
 You retrieve archived virtual tapes to only one gateway and the gateway
 must be a gateway-VTL.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TapeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the virtual tape you want to retrieve
+  The Amazon Resource Name (ARN) of the virtual tape you want to retrieve
 from the virtual tape shelf (VTS).
-
-
-
-
-
-
-
-
-
 
 
 

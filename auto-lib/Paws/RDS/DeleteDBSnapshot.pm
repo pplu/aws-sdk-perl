@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteDBSnapsho
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DeleteDBSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDBSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDBSnapshot.
 
 As an example:
 
@@ -34,21 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBSnapshotIdentifier => Str
 
-  
-
-The DBSnapshot identifier.
+  The DBSnapshot identifier.
 
 Constraints: Must be the name of an existing DB snapshot in the
 C<available> state.
-
-
-
-
-
-
-
-
-
 
 
 

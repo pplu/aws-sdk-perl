@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteMountTarg
 Amazon Elastic File System service. Use the attributes of this class
 as arguments to method DeleteMountTarget.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMountTarget.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMountTarget.
 
 As an example:
 
@@ -36,18 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MountTargetId => Str
 
-  
-
-String. The ID of the mount target to delete.
-
-
-
-
-
-
-
-
-
+  String. The ID of the mount target to delete.
 
 
 

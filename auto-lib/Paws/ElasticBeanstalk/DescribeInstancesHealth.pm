@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeInstanc
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method DescribeInstancesHealth.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstancesHealth.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstancesHealth.
 
 As an example:
 
@@ -37,65 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeNames => ArrayRef[Str]
 
-  
-
-Specifies the response elements you wish to receive. If no attribute
+  Specifies the response elements you wish to receive. If no attribute
 names are specified, AWS Elastic Beanstalk returns all response
 elements.
 
-
-
-
-
-
-
-
-
-
 =head2 EnvironmentId => Str
 
-  
-
-Specifies the AWS Elastic Beanstalk environment ID.
-
-
-
-
-
-
-
-
-
+  Specifies the AWS Elastic Beanstalk environment ID.
 
 =head2 EnvironmentName => Str
 
-  
-
-Specifies the AWS Elastic Beanstalk environment name.
-
-
-
-
-
-
-
-
-
+  Specifies the AWS Elastic Beanstalk environment name.
 
 =head2 NextToken => Str
 
-  
-
-Specifies the next token of the request.
-
-
-
-
-
-
-
-
-
+  Specifies the next token of the request.
 
 
 

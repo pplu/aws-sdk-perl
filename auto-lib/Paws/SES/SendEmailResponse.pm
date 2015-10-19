@@ -15,18 +15,7 @@ Paws::SES::SendEmailResponse
 
 =head2 B<REQUIRED> MessageId => Str
 
-  
-
-The unique message identifier returned from the C<SendEmail> action.
-
-
-
-
-
-
-
-
-
+  The unique message identifier returned from the C<SendEmail> action.
 
 
 =cut

@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DeleteApplication;
   use Moose;
-  has applicationArn => (is => 'ro', isa => 'Str');
+  has ApplicationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationArn' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteApplicati
 Amazon Inspector service. Use the attributes of this class
 as arguments to method DeleteApplication.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApplication.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 applicationArn => Str
+=head2 ApplicationArn => Str
 
-  
-
-The ARN specifying the application that you want to delete.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the application that you want to delete.
 
 
 

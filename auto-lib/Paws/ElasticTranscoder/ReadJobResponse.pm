@@ -13,20 +13,9 @@ Paws::ElasticTranscoder::ReadJobResponse
 
 =head1 ATTRIBUTES
 
-=head2 Job => Paws::ElasticTranscoder::Job
+=head2 Job => L<Paws::ElasticTranscoder::Job>
 
-  
-
-A section of the response body that provides information about the job.
-
-
-
-
-
-
-
-
-
+  A section of the response body that provides information about the job.
 
 
 =cut

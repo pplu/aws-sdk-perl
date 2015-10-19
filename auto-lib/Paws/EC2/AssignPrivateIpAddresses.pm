@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method AssignPrivateIp
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method AssignPrivateIpAddresses.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AssignPrivateIpAddresses.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssignPrivateIpAddresses.
 
 As an example:
 
@@ -37,72 +37,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllowReassignment => Bool
 
-  
-
-Indicates whether to allow an IP address that is already assigned to
+  Indicates whether to allow an IP address that is already assigned to
 another network interface or instance to be reassigned to the specified
 network interface.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> NetworkInterfaceId => Str
 
-  
-
-The ID of the network interface.
-
-
-
-
-
-
-
-
-
+  The ID of the network interface.
 
 =head2 PrivateIpAddresses => ArrayRef[Str]
 
-  
-
-One or more IP addresses to be assigned as a secondary private IP
+  One or more IP addresses to be assigned as a secondary private IP
 address to the network interface. You can't specify this parameter when
 also specifying a number of secondary IP addresses.
 
 If you don't specify an IP address, Amazon EC2 automatically selects an
 IP address within the subnet range.
 
-
-
-
-
-
-
-
-
-
 =head2 SecondaryPrivateIpAddressCount => Int
 
-  
-
-The number of secondary IP addresses to assign to the network
+  The number of secondary IP addresses to assign to the network
 interface. You can't specify this parameter when also specifying
 private IP addresses.
-
-
-
-
-
-
-
-
-
 
 
 

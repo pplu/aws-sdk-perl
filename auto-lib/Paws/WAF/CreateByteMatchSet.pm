@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateByteMatch
 AWS WAF service. Use the attributes of this class
 as arguments to method CreateByteMatchSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateByteMatchSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateByteMatchSet.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
-
-The value returned by the most recent call to GetChangeToken.
-
-
-
-
-
-
-
-
-
+  The value returned by the most recent call to GetChangeToken.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-A friendly name or description of the ByteMatchSet. You can't change
+  A friendly name or description of the ByteMatchSet. You can't change
 C<Name> after you create a C<ByteMatchSet>.
-
-
-
-
-
-
-
-
-
 
 
 

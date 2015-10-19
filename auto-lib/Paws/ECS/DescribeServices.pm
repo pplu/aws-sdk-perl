@@ -1,8 +1,8 @@
 
 package Paws::ECS::DescribeServices;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has services => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Services => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'services' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DescribeService
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method DescribeServices.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeServices.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeServices.
 
 As an example:
 
@@ -33,36 +33,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
-  
-
-The name of the cluster that hosts the service to describe. If you do
+  The name of the cluster that hosts the service to describe. If you do
 not specify a cluster, the default cluster is assumed.
 
+=head2 B<REQUIRED> Services => ArrayRef[Str]
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> services => ArrayRef[Str]
-
-  
-
-A list of services to describe.
-
-
-
-
-
-
-
-
-
+  A list of services to describe.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::Inspector::RegisterCrossAccountAccessRoleResponse;
   use Moose;
-  has message => (is => 'ro', isa => 'Str');
+  has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::Inspector::RegisterCrossAccountAccessRoleResponse
 
 =head1 ATTRIBUTES
 
-=head2 message => Str
+=head2 Message => Str
 
-  
-
-Confirmation details of the action performed.
-
-
-
-
-
-
-
-
-
+  Confirmation details of the action performed.
 
 
 =cut

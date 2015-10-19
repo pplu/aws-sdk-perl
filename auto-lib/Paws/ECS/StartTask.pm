@@ -1,11 +1,11 @@
 
 package Paws::ECS::StartTask;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has containerInstances => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride');
-  has startedBy => (is => 'ro', isa => 'Str');
-  has taskDefinition => (is => 'ro', isa => 'Str', required => 1);
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
+  has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
+  has StartedBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startedBy' );
+  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method StartTask on th
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method StartTask.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StartTask.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartTask.
 
 As an example:
 
@@ -36,46 +36,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster on
+  The short name or full Amazon Resource Name (ARN) of the cluster on
 which to start your task. If you do not specify a cluster, the default
 cluster is assumed..
 
+=head2 B<REQUIRED> ContainerInstances => ArrayRef[Str]
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> containerInstances => ArrayRef[Str]
-
-  
-
-The container instance IDs or full Amazon Resource Name (ARN) entries
+  The container instance IDs or full Amazon Resource Name (ARN) entries
 for the container instances on which you would like to place your task.
 
 The list of container instances to start tasks on is limited to 10.
 
+=head2 Overrides => L<Paws::ECS::TaskOverride>
 
-
-
-
-
-
-
-
-
-=head2 overrides => Paws::ECS::TaskOverride
-
-  
-
-A list of container overrides in JSON format that specify the name of a
+  A list of container overrides in JSON format that specify the name of a
 container in the specified task definition and the overrides it should
 receive. You can override the default command for a container (that is
 specified in the task definition or Docker image) with a C<command>
@@ -86,20 +62,9 @@ add new environment variables to it with an C<environment> override.
 A total of 8192 characters are allowed for overrides. This limit
 includes the JSON formatting characters of the override structure.
 
+=head2 StartedBy => Str
 
-
-
-
-
-
-
-
-
-=head2 startedBy => Str
-
-  
-
-An optional tag specified when a task is started. For example if you
+  An optional tag specified when a task is started. For example if you
 automatically trigger a task to run a batch process job, you could
 apply a unique identifier for that job to your task with the
 C<startedBy> parameter. You can then identify which tasks belong to
@@ -109,31 +74,11 @@ C<startedBy> value.
 If a task is started by an Amazon ECS service, then the C<startedBy>
 parameter contains the deployment ID of the service that starts it.
 
+=head2 B<REQUIRED> TaskDefinition => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> taskDefinition => Str
-
-  
-
-The C<family> and C<revision> (C<family:revision>) or full Amazon
+  The C<family> and C<revision> (C<family:revision>) or full Amazon
 Resource Name (ARN) of the task definition to start. If a C<revision>
 is not specified, the latest C<ACTIVE> revision is used.
-
-
-
-
-
-
-
-
-
 
 
 

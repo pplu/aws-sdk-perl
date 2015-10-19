@@ -2,8 +2,8 @@
 package Paws::CloudWatchLogs::DescribeDestinations;
   use Moose;
   has DestinationNamePrefix => (is => 'ro', isa => 'Str');
-  has limit => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeDestina
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method DescribeDestinations.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDestinations.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDestinations.
 
 As an example:
 
@@ -36,26 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DestinationNamePrefix => Str
 
-  
-
-Will only return destinations that match the provided
+  Will only return destinations that match the provided
 destinationNamePrefix. If you don't specify a value, no prefix is
 applied.
 
-
-
-
-
-
-
-
-
-
-=head2 limit => Int
+=head2 Limit => Int
 
   
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeBundleT
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeBundleTasks.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBundleTasks.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBundleTasks.
 
 As an example:
 
@@ -36,44 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 BundleIds => ArrayRef[Str]
 
-  
-
-One or more bundle task IDs.
+  One or more bundle task IDs.
 
 Default: Describes all your bundle tasks.
 
-
-
-
-
-
-
-
-
-
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
-
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -121,14 +97,6 @@ C<state> - The state of the task (C<pending> | C<waiting-for-shutdown>
 C<update-time> - The time of the most recent update for the task.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

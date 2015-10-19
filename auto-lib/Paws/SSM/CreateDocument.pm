@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateDocument 
 Amazon Simple Systems Management Service service. Use the attributes of this class
 as arguments to method CreateDocument.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDocument.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDocument.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Content => Str
 
-  
-
-A valid JSON file. For more information about the contents of this
+  A valid JSON file. For more information about the contents of this
 file, see Configuration Document.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-A name for the configuration document.
-
-
-
-
-
-
-
-
-
+  A name for the configuration document.
 
 
 

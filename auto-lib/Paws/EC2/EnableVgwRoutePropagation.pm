@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method EnableVgwRouteP
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method EnableVgwRoutePropagation.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to EnableVgwRoutePropagation.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnableVgwRoutePropagation.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GatewayId => Str
 
-  
-
-The ID of the virtual private gateway.
-
-
-
-
-
-
-
-
-
+  The ID of the virtual private gateway.
 
 =head2 B<REQUIRED> RouteTableId => Str
 
-  
-
-The ID of the route table.
-
-
-
-
-
-
-
-
-
+  The ID of the route table.
 
 
 

@@ -21,7 +21,7 @@ This class represents the parameters used for calling the method ListOpenIDConne
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method ListOpenIDConnectProviders.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListOpenIDConnectProviders.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListOpenIDConnectProviders.
 
 As an example:
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetLoginProfile
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetLoginProfile.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetLoginProfile.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLoginProfile.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user whose login profile you want to retrieve.
-
-
-
-
-
-
-
-
-
+  The name of the user whose login profile you want to retrieve.
 
 
 

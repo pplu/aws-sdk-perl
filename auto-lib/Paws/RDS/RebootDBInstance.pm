@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RebootDBInstanc
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method RebootDBInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RebootDBInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RebootDBInstance.
 
 As an example:
 
@@ -35,9 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  
-
-The DB instance identifier. This parameter is stored as a lowercase
+  The DB instance identifier. This parameter is stored as a lowercase
 string.
 
 Constraints:
@@ -53,31 +51,12 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 ForceFailover => Bool
 
-  
-
-When C<true>, the reboot will be conducted through a MultiAZ failover.
+  When C<true>, the reboot will be conducted through a MultiAZ failover.
 
 Constraint: You cannot specify C<true> if the instance is not
 configured for MultiAZ.
-
-
-
-
-
-
-
-
-
 
 
 

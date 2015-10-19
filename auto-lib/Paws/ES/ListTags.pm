@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListTags on the
 Amazon Elasticsearch Service service. Use the attributes of this class
 as arguments to method ListTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTags.
 
 As an example:
 
@@ -36,19 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ARN => Str
 
-  
-
-Specify the C<ARN> for the Elasticsearch domain to which the tags are
+  Specify the C<ARN> for the Elasticsearch domain to which the tags are
 attached that you want to view.
-
-
-
-
-
-
-
-
-
 
 
 

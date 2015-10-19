@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteGateway o
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DeleteGateway.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteGateway.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteGateway.
 
 As an example:
 

@@ -13,21 +13,10 @@ Paws::AutoScaling::DetachInstancesAnswer
 
 =head1 ATTRIBUTES
 
-=head2 Activities => ArrayRef[Paws::AutoScaling::Activity]
+=head2 Activities => ArrayRef[L<Paws::AutoScaling::Activity>]
 
-  
-
-The activities related to detaching the instances from the Auto Scaling
+  The activities related to detaching the instances from the Auto Scaling
 group.
-
-
-
-
-
-
-
-
-
 
 
 =cut

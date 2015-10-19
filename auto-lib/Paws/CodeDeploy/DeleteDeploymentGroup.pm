@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::DeleteDeploymentGroup;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str', required => 1);
-  has deploymentGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteDeploymen
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method DeleteDeploymentGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDeploymentGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDeploymentGroup.
 
 As an example:
 
@@ -33,36 +33,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> applicationName => Str
+=head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of an existing AWS CodeDeploy application associated with the
+  The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
 
+=head2 B<REQUIRED> DeploymentGroupName => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> deploymentGroupName => Str
-
-  
-
-The name of an existing deployment group for the specified application.
-
-
-
-
-
-
-
-
-
+  The name of an existing deployment group for the specified application.
 
 
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CopySnapshot on
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method CopySnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CopySnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopySnapshot.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SourceSnapshotName => Str
 
-  
-
-The name of an existing snapshot from which to copy.
-
-
-
-
-
-
-
-
-
+  The name of an existing snapshot from which to copy.
 
 =head2 B<REQUIRED> TargetSnapshotName => Str
 
-  
-
-A name for the copied snapshot.
-
-
-
-
-
-
-
-
-
+  A name for the copied snapshot.
 
 
 

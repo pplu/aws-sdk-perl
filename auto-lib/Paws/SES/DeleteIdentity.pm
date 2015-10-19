@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteIdentity 
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method DeleteIdentity.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteIdentity.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteIdentity.
 
 As an example:
 
@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Identity => Str
 
-  
-
-The identity to be removed from the list of identities for the AWS
+  The identity to be removed from the list of identities for the AWS
 Account.
-
-
-
-
-
-
-
-
-
 
 
 

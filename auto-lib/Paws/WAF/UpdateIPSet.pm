@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateIPSet on 
 AWS WAF service. Use the attributes of this class
 as arguments to method UpdateIPSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateIPSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateIPSet.
 
 As an example:
 
@@ -36,40 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
-
-The value returned by the most recent call to GetChangeToken.
-
-
-
-
-
-
-
-
-
+  The value returned by the most recent call to GetChangeToken.
 
 =head2 B<REQUIRED> IPSetId => Str
 
-  
-
-The C<IPSetId> of the IPSet that you want to update. C<IPSetId> is
+  The C<IPSetId> of the IPSet that you want to update. C<IPSetId> is
 returned by CreateIPSet and by ListIPSets.
 
+=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::IPSetUpdate>]
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Updates => ArrayRef[Paws::WAF::IPSetUpdate]
-
-  
-
-An array of C<IPSetUpdate> objects that you want to insert into or
+  An array of C<IPSetUpdate> objects that you want to insert into or
 delete from an IPSet. For more information, see the applicable data
 types:
 
@@ -80,14 +56,6 @@ types:
 =item * IPSetDescriptor: Contains C<Type> and C<Value>
 
 =back
-
-
-
-
-
-
-
-
 
 
 

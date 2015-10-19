@@ -13,7 +13,7 @@ Paws::RDS::ApplyPendingMaintenanceActionResult
 
 =head1 ATTRIBUTES
 
-=head2 ResourcePendingMaintenanceActions => Paws::RDS::ResourcePendingMaintenanceActions
+=head2 ResourcePendingMaintenanceActions => L<Paws::RDS::ResourcePendingMaintenanceActions>
 
   
 

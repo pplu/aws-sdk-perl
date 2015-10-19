@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteCacheClus
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method DeleteCacheCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCacheCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCacheCluster.
 
 As an example:
 
@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheClusterId => Str
 
-  
-
-The cache cluster identifier for the cluster to be deleted. This
+  The cache cluster identifier for the cluster to be deleted. This
 parameter is not case sensitive.
-
-
-
-
-
-
-
-
-
 
 =head2 FinalSnapshotIdentifier => Str
 
-  
-
-The user-supplied name of a final cache cluster snapshot. This is the
+  The user-supplied name of a final cache cluster snapshot. This is the
 unique name that identifies the snapshot. ElastiCache creates the
 snapshot, and then deletes the cache cluster immediately afterward.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::GetDeployment;
   use Moose;
-  has deploymentId => (is => 'ro', isa => 'Str', required => 1);
+  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetDeployment o
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method GetDeployment.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetDeployment.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDeployment.
 
 As an example:
 
@@ -32,21 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> deploymentId => Str
+=head2 B<REQUIRED> DeploymentId => Str
 
-  
-
-An existing deployment ID associated with the applicable IAM user or
+  An existing deployment ID associated with the applicable IAM user or
 AWS account.
-
-
-
-
-
-
-
-
-
 
 
 

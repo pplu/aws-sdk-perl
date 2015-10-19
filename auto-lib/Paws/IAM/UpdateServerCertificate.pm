@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateServerCer
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method UpdateServerCertificate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateServerCertificate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateServerCertificate.
 
 As an example:
 
@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NewPath => Str
 
-  
-
-The new path for the server certificate. Include this only if you are
+  The new path for the server certificate. Include this only if you are
 updating the server certificate's path.
-
-
-
-
-
-
-
-
-
 
 =head2 NewServerCertificateName => Str
 
-  
-
-The new name for the server certificate. Include this only if you are
+  The new name for the server certificate. Include this only if you are
 updating the server certificate's name. The name of the certificate
 cannot contain any spaces.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ServerCertificateName => Str
 
-  
-
-The name of the server certificate that you want to update.
-
-
-
-
-
-
-
-
-
+  The name of the server certificate that you want to update.
 
 
 

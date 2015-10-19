@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RebootCacheClus
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method RebootCacheCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RebootCacheCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RebootCacheCluster.
 
 As an example:
 
@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheClusterId => Str
 
-  
-
-The cache cluster identifier. This parameter is stored as a lowercase
+  The cache cluster identifier. This parameter is stored as a lowercase
 string.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> CacheNodeIdsToReboot => ArrayRef[Str]
 
-  
-
-A list of cache node IDs to reboot. A node ID is a numeric identifier
+  A list of cache node IDs to reboot. A node ID is a numeric identifier
 (0001, 0002, etc.). To reboot an entire cache cluster, specify all of
 the cache node IDs.
-
-
-
-
-
-
-
-
-
 
 
 

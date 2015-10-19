@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateHsmClient
 Amazon Redshift service. Use the attributes of this class
 as arguments to method CreateHsmClientCertificate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateHsmClientCertificate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateHsmClientCertificate.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HsmClientCertificateIdentifier => Str
 
-  
-
-The identifier to be assigned to the new HSM client certificate that
+  The identifier to be assigned to the new HSM client certificate that
 the cluster will use to connect to the HSM to use the database
 encryption keys.
 
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
-
-  
-
-A list of tag instances.
-
-
-
-
-
-
-
-
-
+  A list of tag instances.
 
 
 

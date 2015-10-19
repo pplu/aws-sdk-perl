@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method RecordLifecycle
 Auto Scaling service. Use the attributes of this class
 as arguments to method RecordLifecycleActionHeartbeat.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RecordLifecycleActionHeartbeat.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RecordLifecycleActionHeartbeat.
 
 As an example:
 
@@ -36,50 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the Auto Scaling group for the hook.
-
-
-
-
-
-
-
-
-
+  The name of the Auto Scaling group for the hook.
 
 =head2 B<REQUIRED> LifecycleActionToken => Str
 
-  
-
-A token that uniquely identifies a specific lifecycle action associated
+  A token that uniquely identifies a specific lifecycle action associated
 with an instance. Auto Scaling sends this token to the notification
 target you specified when you created the lifecycle hook.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> LifecycleHookName => Str
 
-  
-
-The name of the lifecycle hook.
-
-
-
-
-
-
-
-
-
+  The name of the lifecycle hook.
 
 
 

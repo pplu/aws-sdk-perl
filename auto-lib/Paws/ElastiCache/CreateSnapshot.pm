@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateSnapshot 
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method CreateSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSnapshot.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheClusterId => Str
 
-  
-
-The identifier of an existing cache cluster. The snapshot will be
+  The identifier of an existing cache cluster. The snapshot will be
 created from this cache cluster.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> SnapshotName => Str
 
-  
-
-A name for the snapshot being created.
-
-
-
-
-
-
-
-
-
+  A name for the snapshot being created.
 
 
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DescribeApplica
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method DescribeApplicationVersions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeApplicationVersions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeApplicationVersions.
 
 As an example:
 
@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplicationName => Str
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to only include ones that are associated with the specified
 application.
 
-
-
-
-
-
-
-
-
-
 =head2 VersionLabels => ArrayRef[Str]
 
-  
-
-If specified, restricts the returned descriptions to only include ones
+  If specified, restricts the returned descriptions to only include ones
 that have the specified version labels.
-
-
-
-
-
-
-
-
-
 
 
 

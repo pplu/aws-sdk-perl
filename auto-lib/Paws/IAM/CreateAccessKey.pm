@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateAccessKey
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method CreateAccessKey.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateAccessKey.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAccessKey.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 UserName => Str
 
-  
-
-The user name that the new key will belong to.
-
-
-
-
-
-
-
-
-
+  The user name that the new key will belong to.
 
 
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateElasticIp
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method UpdateElasticIp.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateElasticIp.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateElasticIp.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ElasticIp => Str
 
-  
-
-The address.
-
-
-
-
-
-
-
-
-
+  The address.
 
 =head2 Name => Str
 
-  
-
-The new name.
-
-
-
-
-
-
-
-
-
+  The new name.
 
 
 

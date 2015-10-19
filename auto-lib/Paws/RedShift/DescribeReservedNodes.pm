@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeReserve
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DescribeReservedNodes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReservedNodes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReservedNodes.
 
 As an example:
 
@@ -36,29 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Marker => Str
 
-  
-
-An optional parameter that specifies the starting point to return a set
+  An optional parameter that specifies the starting point to return a set
 of response records. When the results of a DescribeReservedNodes
 request exceed the value specified in C<MaxRecords>, AWS returns a
 value in the C<Marker> field of the response. You can retrieve the next
 set of response records by providing the returned marker value in the
 C<Marker> parameter and retrying the request.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of response records to return in each call. If the
+  The maximum number of response records to return in each call. If the
 number of remaining response records exceeds the specified
 C<MaxRecords> value, a value is returned in a C<marker> field of the
 response. You can retrieve the next set of records by retrying the
@@ -68,29 +55,9 @@ Default: C<100>
 
 Constraints: minimum 20, maximum 100.
 
-
-
-
-
-
-
-
-
-
 =head2 ReservedNodeId => Str
 
-  
-
-Identifier for the node reservation.
-
-
-
-
-
-
-
-
-
+  Identifier for the node reservation.
 
 
 

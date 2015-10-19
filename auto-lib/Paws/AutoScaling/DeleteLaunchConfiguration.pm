@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteLaunchCon
 Auto Scaling service. Use the attributes of this class
 as arguments to method DeleteLaunchConfiguration.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLaunchConfiguration.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLaunchConfiguration.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LaunchConfigurationName => Str
 
-  
-
-The name of the launch configuration.
-
-
-
-
-
-
-
-
-
+  The name of the launch configuration.
 
 
 

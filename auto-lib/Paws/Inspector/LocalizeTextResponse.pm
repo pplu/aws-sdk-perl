@@ -1,8 +1,8 @@
 
 package Paws::Inspector::LocalizeTextResponse;
   use Moose;
-  has message => (is => 'ro', isa => 'Str');
-  has results => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message' );
+  has Results => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'results' );
 
 
 ### main pod documentation begin ###
@@ -13,34 +13,12 @@ Paws::Inspector::LocalizeTextResponse
 
 =head1 ATTRIBUTES
 
-=head2 message => Str
+=head2 Message => Str
 
-  
+  Confirmation details of the action performed.
+=head2 Results => ArrayRef[Str]
 
-Confirmation details of the action performed.
-
-
-
-
-
-
-
-
-
-=head2 results => ArrayRef[Str]
-
-  
-
-The resulting list of user-readable texts.
-
-
-
-
-
-
-
-
-
+  The resulting list of user-readable texts.
 
 
 =cut

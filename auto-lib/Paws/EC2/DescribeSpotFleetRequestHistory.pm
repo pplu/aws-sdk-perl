@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method DescribeSpotFle
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeSpotFleetRequestHistory.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSpotFleetRequestHistory.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSpotFleetRequestHistory.
 
 As an example:
 
@@ -39,100 +39,34 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 EventType => Str
 
-  
-
-The type of events to describe. By default, all events are described.
-
-
-
-
-
-
-
-
-
+  The type of events to describe. By default, all events are described.
 
 =head2 MaxResults => Int
 
-  
-
-The maximum number of results to return in a single call. Specify a
+  The maximum number of results to return in a single call. Specify a
 value between 1 and 1000. The default value is 1000. To retrieve the
 remaining results, make another call with the returned C<NextToken>
 value.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The token for the next set of results.
-
-
-
-
-
-
-
-
-
+  The token for the next set of results.
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-  
-
-The ID of the Spot fleet request.
-
-
-
-
-
-
-
-
-
+  The ID of the Spot fleet request.
 
 =head2 B<REQUIRED> StartTime => Str
 
-  
-
-The starting date and time for the events, in UTC format (for example,
+  The starting date and time for the events, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
-
-
-
-
-
-
-
-
-
 
 
 

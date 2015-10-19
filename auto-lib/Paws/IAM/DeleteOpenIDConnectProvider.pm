@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteOpenIDCon
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method DeleteOpenIDConnectProvider.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteOpenIDConnectProvider.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteOpenIDConnectProvider.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> OpenIDConnectProviderArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the IAM OpenID Connect provider to
+  The Amazon Resource Name (ARN) of the IAM OpenID Connect provider to
 delete. You can get a list of OpenID Connect provider ARNs by using the
 ListOpenIDConnectProviders action.
-
-
-
-
-
-
-
-
-
 
 
 

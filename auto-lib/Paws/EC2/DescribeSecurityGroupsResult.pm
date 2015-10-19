@@ -13,20 +13,9 @@ Paws::EC2::DescribeSecurityGroupsResult
 
 =head1 ATTRIBUTES
 
-=head2 SecurityGroups => ArrayRef[Paws::EC2::SecurityGroup]
+=head2 SecurityGroups => ArrayRef[L<Paws::EC2::SecurityGroup>]
 
-  
-
-Information about one or more security groups.
-
-
-
-
-
-
-
-
-
+  Information about one or more security groups.
 
 
 =cut

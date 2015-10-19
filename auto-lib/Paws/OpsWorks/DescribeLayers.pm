@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DescribeLayers 
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeLayers.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLayers.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLayers.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LayerIds => ArrayRef[Str]
 
-  
-
-An array of layer IDs that specify the layers to be described. If you
+  An array of layer IDs that specify the layers to be described. If you
 omit this parameter, C<DescribeLayers> returns a description of every
 layer in the specified stack.
 
-
-
-
-
-
-
-
-
-
 =head2 StackId => Str
 
-  
-
-The stack ID.
-
-
-
-
-
-
-
-
-
+  The stack ID.
 
 
 

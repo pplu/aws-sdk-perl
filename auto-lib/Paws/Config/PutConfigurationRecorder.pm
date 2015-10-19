@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method PutConfiguratio
 AWS Config service. Use the attributes of this class
 as arguments to method PutConfigurationRecorder.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutConfigurationRecorder.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutConfigurationRecorder.
 
 As an example:
 
@@ -32,21 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ConfigurationRecorder => Paws::Config::ConfigurationRecorder
+=head2 B<REQUIRED> ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>
 
-  
-
-The configuration recorder object that records each configuration
+  The configuration recorder object that records each configuration
 change made to the resources.
-
-
-
-
-
-
-
-
-
 
 
 

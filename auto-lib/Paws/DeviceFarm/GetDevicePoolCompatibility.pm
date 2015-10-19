@@ -1,9 +1,9 @@
 
 package Paws::DeviceFarm::GetDevicePoolCompatibility;
   use Moose;
-  has appArn => (is => 'ro', isa => 'Str', required => 1);
-  has devicePoolArn => (is => 'ro', isa => 'Str', required => 1);
-  has testType => (is => 'ro', isa => 'Str');
+  has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' , required => 1);
+  has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' , required => 1);
+  has TestType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'testType' );
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method GetDevicePoolCo
 AWS Device Farm service. Use the attributes of this class
 as arguments to method GetDevicePoolCompatibility.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetDevicePoolCompatibility.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDevicePoolCompatibility.
 
 As an example:
 
@@ -34,41 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> appArn => Str
+=head2 B<REQUIRED> AppArn => Str
 
-  
+  The ARN of the app that is associated with the specified device pool.
 
-The ARN of the app that is associated with the specified device pool.
+=head2 B<REQUIRED> DevicePoolArn => Str
 
+  The device pool's ARN.
 
+=head2 TestType => Str
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> devicePoolArn => Str
-
-  
-
-The device pool's ARN.
-
-
-
-
-
-
-
-
-
-
-=head2 testType => Str
-
-  
-
-The test type for the specified device pool.
+  The test type for the specified device pool.
 
 Allowed values include the following:
 
@@ -113,14 +89,6 @@ UIAUTOMATOR: The uiautomator type.
 XCTEST: The XCode test type.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

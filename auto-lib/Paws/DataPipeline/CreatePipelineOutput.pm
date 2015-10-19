@@ -1,7 +1,7 @@
 
 package Paws::DataPipeline::CreatePipelineOutput;
   use Moose;
-  has pipelineId => (is => 'ro', isa => 'Str', required => 1);
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pipelineId' , required => 1);
 
 
 ### main pod documentation begin ###
@@ -12,21 +12,10 @@ Paws::DataPipeline::CreatePipelineOutput
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> pipelineId => Str
+=head2 B<REQUIRED> PipelineId => Str
 
-  
-
-The ID that AWS Data Pipeline assigns the newly created pipeline. For
+  The ID that AWS Data Pipeline assigns the newly created pipeline. For
 example, C<df-06372391ZG65EXAMPLE>.
-
-
-
-
-
-
-
-
-
 
 
 =cut

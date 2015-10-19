@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RemoveTagsFromR
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method RemoveTagsFromResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTagsFromResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTagsFromResource.
 
 As an example:
 
@@ -35,38 +35,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceName => Str
 
-  
-
-The name of the ElastiCache resource from which you want the listed
+  The name of the ElastiCache resource from which you want the listed
 tags removed, for example
 C<arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
-  
-
-A list of C<TagKeys> identifying the tags you want removed from the
+  A list of C<TagKeys> identifying the tags you want removed from the
 named resource. For example, C<TagKeys.member.1=Region> removes the
 cost allocation tag with the key name C<Region> from the resource named
 by the I<ResourceName> parameter.
-
-
-
-
-
-
-
-
-
 
 
 

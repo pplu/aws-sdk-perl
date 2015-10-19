@@ -13,7 +13,7 @@ Paws::RDS::DeleteDBClusterSnapshotResult
 
 =head1 ATTRIBUTES
 
-=head2 DBClusterSnapshot => Paws::RDS::DBClusterSnapshot
+=head2 DBClusterSnapshot => L<Paws::RDS::DBClusterSnapshot>
 
   
 

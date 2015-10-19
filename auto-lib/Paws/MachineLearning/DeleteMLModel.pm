@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteMLModel o
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method DeleteMLModel.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMLModel.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMLModel.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MLModelId => Str
 
-  
-
-A user-supplied ID that uniquely identifies the C<MLModel>.
-
-
-
-
-
-
-
-
-
+  A user-supplied ID that uniquely identifies the C<MLModel>.
 
 
 

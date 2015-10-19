@@ -23,70 +23,26 @@ Paws::Route53::ChangeTagsForResourceResponse
 
 =head1 ATTRIBUTES
 
-=head2 AddTags => ArrayRef[Paws::Route53::Tag]
+=head2 AddTags => ArrayRef[L<Paws::Route53::Tag>]
 
-  
-
-A complex type that contains a list of C<Tag> elements. Each C<Tag>
+  A complex type that contains a list of C<Tag> elements. Each C<Tag>
 element identifies a tag that you want to add or update for the
 specified resource.
-
-
-
-
-
-
-
-
-
 =head2 RemoveTagKeys => ArrayRef[Str]
 
-  
-
-A list of C<Tag> keys that you want to remove from the specified
+  A list of C<Tag> keys that you want to remove from the specified
 resource.
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ResourceId => Str
 
-  
-
-The ID of the resource for which you want to add, change, or delete
+  The ID of the resource for which you want to add, change, or delete
 tags.
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ResourceType => Str
 
-  
-
-The type of the resource.
+  The type of the resource.
 
 - The resource type for health checks is C<healthcheck>.
 
 - The resource type for hosted zones is C<hostedzone>.
-
-
-
-
-
-
-
-
-
 
 
 =cut

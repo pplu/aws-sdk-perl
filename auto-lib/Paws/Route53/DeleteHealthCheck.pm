@@ -22,18 +22,7 @@ Paws::Route53::DeleteHealthCheckResponse
 
 =head2 B<REQUIRED> HealthCheckId => Str
 
-  
-
-The ID of the health check to delete.
-
-
-
-
-
-
-
-
-
+  The ID of the health check to delete.
 
 
 =cut

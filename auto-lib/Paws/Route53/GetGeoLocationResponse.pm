@@ -17,7 +17,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Route 53 service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -27,21 +27,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> GeoLocationDetails => Paws::Route53::GeoLocationDetails
+=head2 B<REQUIRED> GeoLocationDetails => L<Paws::Route53::GeoLocationDetails>
 
-  
-
-A complex type that contains the information about the specified geo
+  A complex type that contains the information about the specified geo
 location.
-
-
-
-
-
-
-
-
-
 
 
 

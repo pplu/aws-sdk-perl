@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeStackRe
 AWS CloudFormation service. Use the attributes of this class
 as arguments to method DescribeStackResources.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStackResources.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStackResources.
 
 As an example:
 
@@ -36,26 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LogicalResourceId => Str
 
-  
-
-The logical name of the resource as specified in the template.
+  The logical name of the resource as specified in the template.
 
 Default: There is no default value.
 
-
-
-
-
-
-
-
-
-
 =head2 PhysicalResourceId => Str
 
-  
-
-The name or unique identifier that corresponds to a physical instance
+  The name or unique identifier that corresponds to a physical instance
 ID of a resource supported by AWS CloudFormation.
 
 For example, for an Amazon Elastic Compute Cloud (EC2) instance,
@@ -68,20 +55,9 @@ must specify C<StackName>.
 
 Default: There is no default value.
 
-
-
-
-
-
-
-
-
-
 =head2 StackName => Str
 
-  
-
-The name or the unique stack ID that is associated with the stack,
+  The name or the unique stack ID that is associated with the stack,
 which are not always interchangeable:
 
 =over
@@ -97,15 +73,6 @@ Default: There is no default value.
 
 Required: Conditional. If you do not specify C<StackName>, you must
 specify C<PhysicalResourceId>.
-
-
-
-
-
-
-
-
-
 
 
 

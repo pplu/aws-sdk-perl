@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method GetBulkPublishD
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method GetBulkPublishDetails.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetBulkPublishDetails.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetBulkPublishDetails.
 
 As an example:
 
@@ -36,20 +36,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-A name-spaced GUID (for example,
+  A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
-
-
-
-
-
-
-
-
-
 
 
 

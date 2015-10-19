@@ -1,7 +1,7 @@
 
 package Paws::Inspector::RegisterCrossAccountAccessRole;
   use Moose;
-  has roleArn => (is => 'ro', isa => 'Str');
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method RegisterCrossAc
 Amazon Inspector service. Use the attributes of this class
 as arguments to method RegisterCrossAccountAccessRole.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RegisterCrossAccountAccessRole.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterCrossAccountAccessRole.
 
 As an example:
 
@@ -32,21 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 roleArn => Str
+=head2 RoleArn => Str
 
-  
-
-The ARN of the IAM role that Inspector uses to list your EC2 instances
+  The ARN of the IAM role that Inspector uses to list your EC2 instances
 during the assessment.
-
-
-
-
-
-
-
-
-
 
 
 

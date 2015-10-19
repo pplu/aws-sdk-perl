@@ -1,9 +1,9 @@
 
 package Paws::CodeCommit::CreateBranch;
   use Moose;
-  has branchName => (is => 'ro', isa => 'Str', required => 1);
-  has commitId => (is => 'ro', isa => 'Str', required => 1);
-  has repositoryName => (is => 'ro', isa => 'Str', required => 1);
+  has BranchName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchName' , required => 1);
+  has CommitId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'commitId' , required => 1);
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateBranch on
 AWS CodeCommit service. Use the attributes of this class
 as arguments to method CreateBranch.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateBranch.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateBranch.
 
 As an example:
 
@@ -34,53 +34,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> branchName => Str
+=head2 B<REQUIRED> BranchName => Str
 
-  
+  The name of the new branch to create.
 
-The name of the new branch to create.
+=head2 B<REQUIRED> CommitId => Str
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> commitId => Str
-
-  
-
-The ID of the commit to point the new branch to.
+  The ID of the commit to point the new branch to.
 
 If this commit ID is not specified, the new branch will point to the
 commit that is pointed to by the repository's default branch.
 
+=head2 B<REQUIRED> RepositoryName => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> repositoryName => Str
-
-  
-
-The name of the repository in which you want to create the new branch.
-
-
-
-
-
-
-
-
-
+  The name of the repository in which you want to create the new branch.
 
 
 

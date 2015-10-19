@@ -13,20 +13,9 @@ Paws::EC2::CancelSpotInstanceRequestsResult
 
 =head1 ATTRIBUTES
 
-=head2 CancelledSpotInstanceRequests => ArrayRef[Paws::EC2::CancelledSpotInstanceRequest]
+=head2 CancelledSpotInstanceRequests => ArrayRef[L<Paws::EC2::CancelledSpotInstanceRequest>]
 
-  
-
-One or more Spot instance requests.
-
-
-
-
-
-
-
-
-
+  One or more Spot instance requests.
 
 
 =cut

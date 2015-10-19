@@ -1,8 +1,8 @@
 
 package Paws::Inspector::RemoveAttributesFromFindings;
   use Moose;
-  has attributeKeys => (is => 'ro', isa => 'ArrayRef[Str]');
-  has findingArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributeKeys => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'attributeKeys' );
+  has FindingArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'findingArns' );
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RemoveAttribute
 Amazon Inspector service. Use the attributes of this class
 as arguments to method RemoveAttributesFromFindings.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemoveAttributesFromFindings.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveAttributesFromFindings.
 
 As an example:
 
@@ -33,37 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 attributeKeys => ArrayRef[Str]
+=head2 AttributeKeys => ArrayRef[Str]
 
-  
-
-The array of attribute keys that you want to remove from specified
+  The array of attribute keys that you want to remove from specified
 findings.
 
+=head2 FindingArns => ArrayRef[Str]
 
-
-
-
-
-
-
-
-
-=head2 findingArns => ArrayRef[Str]
-
-  
-
-The ARNs specifying the findings that you want to remove attributes
+  The ARNs specifying the findings that you want to remove attributes
 from.
-
-
-
-
-
-
-
-
-
 
 
 

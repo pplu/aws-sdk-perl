@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method DescribeWorkspa
 Amazon WorkSpaces service. Use the attributes of this class
 as arguments to method DescribeWorkspaces.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeWorkspaces.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeWorkspaces.
 
 As an example:
 
@@ -39,91 +39,34 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 BundleId => Str
 
-  
-
-The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces
+  The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces
 that are created from this bundle will be retrieved. This parameter
 cannot be combined with any other filter parameter.
 
-
-
-
-
-
-
-
-
-
 =head2 DirectoryId => Str
 
-  
-
-Specifies the directory identifier to which to limit the WorkSpaces.
+  Specifies the directory identifier to which to limit the WorkSpaces.
 Optionally, you can specify a specific directory user with the
 C<UserName> parameter. This parameter cannot be combined with any other
 filter parameter.
 
-
-
-
-
-
-
-
-
-
 =head2 Limit => Int
 
-  
-
-The maximum number of items to return.
-
-
-
-
-
-
-
-
-
+  The maximum number of items to return.
 
 =head2 NextToken => Str
 
-  
-
-The C<NextToken> value from a previous call to this operation. Pass
+  The C<NextToken> value from a previous call to this operation. Pass
 null if this is the first call.
-
-
-
-
-
-
-
-
-
 
 =head2 UserName => Str
 
-  
-
-Used with the C<DirectoryId> parameter to specify the directory user
+  Used with the C<DirectoryId> parameter to specify the directory user
 for which to obtain the WorkSpace.
-
-
-
-
-
-
-
-
-
 
 =head2 WorkspaceIds => ArrayRef[Str]
 
-  
-
-An array of strings that contain the identifiers of the WorkSpaces for
+  An array of strings that contain the identifiers of the WorkSpaces for
 which to retrieve information. This parameter cannot be combined with
 any other filter parameter.
 
@@ -131,15 +74,6 @@ Because the CreateWorkspaces operation is asynchronous, the identifier
 returned by CreateWorkspaces is not immediately available. If you
 immediately call DescribeWorkspaces with this identifier, no
 information will be returned.
-
-
-
-
-
-
-
-
-
 
 
 

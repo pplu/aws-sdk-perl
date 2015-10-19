@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::DeleteApplication;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str', required => 1);
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteApplicati
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method DeleteApplication.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApplication.
 
 As an example:
 
@@ -32,21 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> applicationName => Str
+=head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of an existing AWS CodeDeploy application associated with the
+  The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
-
-
-
-
-
-
-
-
-
 
 
 

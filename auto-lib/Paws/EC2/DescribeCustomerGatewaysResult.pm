@@ -13,20 +13,9 @@ Paws::EC2::DescribeCustomerGatewaysResult
 
 =head1 ATTRIBUTES
 
-=head2 CustomerGateways => ArrayRef[Paws::EC2::CustomerGateway]
+=head2 CustomerGateways => ArrayRef[L<Paws::EC2::CustomerGateway>]
 
-  
-
-Information about one or more customer gateways.
-
-
-
-
-
-
-
-
-
+  Information about one or more customer gateways.
 
 
 =cut

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeReserve
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeReservedInstancesModifications.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReservedInstancesModifications.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeReservedInstancesModifications.
 
 As an example:
 
@@ -34,11 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -106,43 +104,13 @@ updated.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The token to retrieve the next page of results.
-
-
-
-
-
-
-
-
-
+  The token to retrieve the next page of results.
 
 =head2 ReservedInstancesModificationIds => ArrayRef[Str]
 
-  
-
-IDs for the submitted modification request.
-
-
-
-
-
-
-
-
-
+  IDs for the submitted modification request.
 
 
 

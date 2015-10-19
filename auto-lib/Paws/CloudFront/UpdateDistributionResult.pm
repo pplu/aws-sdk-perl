@@ -18,7 +18,7 @@ This class represents the parameters used for calling the method  on the
 Amazon CloudFront service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -28,35 +28,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Distribution => Paws::CloudFront::Distribution
+=head2 Distribution => L<Paws::CloudFront::Distribution>
 
-  
-
-The distribution's information.
-
-
-
-
-
-
-
-
-
+  The distribution's information.
 
 =head2 ETag => Str
 
-  
-
-The current version of the configuration. For example: E2QWRUHAPOMQZL.
-
-
-
-
-
-
-
-
-
+  The current version of the configuration. For example: E2QWRUHAPOMQZL.
 
 
 

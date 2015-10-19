@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ModifyDBParamet
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method ModifyDBParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyDBParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyDBParameterGroup.
 
 As an example:
 
@@ -35,9 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBParameterGroupName => Str
 
-  
-
-The name of the DB parameter group.
+  The name of the DB parameter group.
 
 Constraints:
 
@@ -54,19 +52,9 @@ Constraints:
 =back
 
 
+=head2 B<REQUIRED> Parameters => ArrayRef[L<Paws::RDS::Parameter>]
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Parameters => ArrayRef[Paws::RDS::Parameter]
-
-  
-
-An array of parameter names, values, and the apply method for the
+  An array of parameter names, values, and the apply method for the
 parameter update. At least one parameter name, value, and apply method
 must be supplied; subsequent arguments are optional. A maximum of 20
 parameters can be modified in a single request.
@@ -78,15 +66,6 @@ You can use the immediate value with dynamic parameters only. You can
 use the pending-reboot value for both dynamic and static parameters,
 and changes are applied when you reboot the DB instance without
 failover.
-
-
-
-
-
-
-
-
-
 
 
 

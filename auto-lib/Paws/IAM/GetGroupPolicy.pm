@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetGroupPolicy 
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetGroupPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetGroupPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetGroupPolicy.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GroupName => Str
 
-  
-
-The name of the group the policy is associated with.
-
-
-
-
-
-
-
-
-
+  The name of the group the policy is associated with.
 
 =head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The name of the policy document to get.
-
-
-
-
-
-
-
-
-
+  The name of the policy document to get.
 
 
 

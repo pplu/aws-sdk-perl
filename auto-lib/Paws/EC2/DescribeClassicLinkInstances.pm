@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method DescribeClassic
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeClassicLinkInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeClassicLinkInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeClassicLinkInstances.
 
 As an example:
 
@@ -38,27 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
-
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -98,35 +85,14 @@ C<vpc-id> - The ID of the VPC that the instance is linked to.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 InstanceIds => ArrayRef[Str]
 
-  
-
-One or more instance IDs. Must be instances linked to a VPC through
+  One or more instance IDs. Must be instances linked to a VPC through
 ClassicLink.
-
-
-
-
-
-
-
-
-
 
 =head2 MaxResults => Int
 
-  
-
-The maximum number of results to return for the request in a single
+  The maximum number of results to return for the request in a single
 page. The remaining results of the initial request can be seen by
 sending another request with the returned C<NextToken> value. This
 value can be between 5 and 1000; if C<MaxResults> is given a value
@@ -136,29 +102,9 @@ this parameter and the instance IDs parameter in the same request.
 Constraint: If the value is greater than 1000, we return only 1000
 items.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The token to retrieve the next page of results.
-
-
-
-
-
-
-
-
-
+  The token to retrieve the next page of results.
 
 
 

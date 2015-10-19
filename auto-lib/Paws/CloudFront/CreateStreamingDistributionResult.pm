@@ -19,7 +19,7 @@ This class represents the parameters used for calling the method  on the
 Amazon CloudFront service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -31,50 +31,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ETag => Str
 
-  
-
-The current version of the streaming distribution created.
-
-
-
-
-
-
-
-
-
+  The current version of the streaming distribution created.
 
 =head2 Location => Str
 
-  
-
-The fully qualified URI of the new streaming distribution resource just
+  The fully qualified URI of the new streaming distribution resource just
 created. For example:
 https://cloudfront.amazonaws.com/2010-11-01/streaming-distribution/EGTXBD79H29TRA8.
 
+=head2 StreamingDistribution => L<Paws::CloudFront::StreamingDistribution>
 
-
-
-
-
-
-
-
-
-=head2 StreamingDistribution => Paws::CloudFront::StreamingDistribution
-
-  
-
-The streaming distribution's information.
-
-
-
-
-
-
-
-
-
+  The streaming distribution's information.
 
 
 

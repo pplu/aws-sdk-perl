@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteInstanceP
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method DeleteInstanceProfile.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteInstanceProfile.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteInstanceProfile.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceProfileName => Str
 
-  
-
-The name of the instance profile to delete.
-
-
-
-
-
-
-
-
-
+  The name of the instance profile to delete.
 
 
 

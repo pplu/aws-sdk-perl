@@ -1,11 +1,11 @@
 
 package Paws::ECS::ListTaskDefinitions;
   use Moose;
-  has familyPrefix => (is => 'ro', isa => 'Str');
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
-  has sort => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Str');
+  has FamilyPrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'familyPrefix' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Sort => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sort' );
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
 
   use MooseX::ClassAttribute;
 
@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method ListTaskDefinit
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method ListTaskDefinitions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListTaskDefinitions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTaskDefinitions.
 
 As an example:
 
@@ -36,28 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 familyPrefix => Str
+=head2 FamilyPrefix => Str
 
-  
-
-The full family name with which to filter the C<ListTaskDefinitions>
+  The full family name with which to filter the C<ListTaskDefinitions>
 results. Specifying a C<familyPrefix> limits the listed task
 definitions to task definition revisions that belong to that family.
 
+=head2 MaxResults => Int
 
-
-
-
-
-
-
-
-
-=head2 maxResults => Int
-
-  
-
-The maximum number of task definition results returned by
+  The maximum number of task definition results returned by
 C<ListTaskDefinitions> in paginated output. When this parameter is
 used, C<ListTaskDefinitions> only returns C<maxResults> results in a
 single page along with a C<nextToken> response element. The remaining
@@ -67,39 +54,17 @@ This value can be between 1 and 100. If this parameter is not used,
 then C<ListTaskDefinitions> returns up to 100 results and a
 C<nextToken> value if applicable.
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-The C<nextToken> value returned from a previous paginated
+  The C<nextToken> value returned from a previous paginated
 C<ListTaskDefinitions> request where C<maxResults> was used and the
 results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<nextToken> value.
 This value is C<null> when there are no more results to return.
 
+=head2 Sort => Str
 
-
-
-
-
-
-
-
-
-=head2 sort => Str
-
-  
-
-The order in which to sort the results. Valid values are C<ASC> and
+  The order in which to sort the results. Valid values are C<ASC> and
 C<DESC>. By default (C<ASC>), task definitions are listed
 lexicographically by family name and in ascending numerical order by
 revision so that the newest task definitions in a family are listed
@@ -107,35 +72,15 @@ last. Setting this parameter to C<DESC> reverses the sort order on
 family name and revision so that the newest task definitions in a
 family are listed first.
 
+=head2 Status => Str
 
-
-
-
-
-
-
-
-
-=head2 status => Str
-
-  
-
-The task definition status with which to filter the
+  The task definition status with which to filter the
 C<ListTaskDefinitions> results. By default, only C<ACTIVE> task
 definitions are listed. By setting this parameter to C<INACTIVE>, you
 can view task definitions that are C<INACTIVE> as long as an active
 task or service still references them. If you paginate the resulting
 output, be sure to keep the C<status> value constant in each subsequent
 request.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -13,7 +13,7 @@ Paws::RedShift::CreateClusterParameterGroupResult
 
 =head1 ATTRIBUTES
 
-=head2 ClusterParameterGroup => Paws::RedShift::ClusterParameterGroup
+=head2 ClusterParameterGroup => L<Paws::RedShift::ClusterParameterGroup>
 
   
 

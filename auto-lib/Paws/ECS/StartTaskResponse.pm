@@ -1,8 +1,8 @@
 
 package Paws::ECS::StartTaskResponse;
   use Moose;
-  has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
-  has tasks => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Task]');
+  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['Unwrapped'], xmlname => 'failures' );
+  has Tasks => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Task]', traits => ['Unwrapped'], xmlname => 'tasks' );
 
 
 ### main pod documentation begin ###
@@ -13,35 +13,13 @@ Paws::ECS::StartTaskResponse
 
 =head1 ATTRIBUTES
 
-=head2 failures => ArrayRef[Paws::ECS::Failure]
+=head2 Failures => ArrayRef[L<Paws::ECS::Failure>]
 
-  
+  Any failures associated with the call.
+=head2 Tasks => ArrayRef[L<Paws::ECS::Task>]
 
-Any failures associated with the call.
-
-
-
-
-
-
-
-
-
-=head2 tasks => ArrayRef[Paws::ECS::Task]
-
-  
-
-A full description of the tasks that were started. Each task that was
+  A full description of the tasks that were started. Each task that was
 successfully placed on your container instances are described here.
-
-
-
-
-
-
-
-
-
 
 
 =cut

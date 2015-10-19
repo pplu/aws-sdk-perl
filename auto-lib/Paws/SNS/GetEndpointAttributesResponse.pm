@@ -13,11 +13,9 @@ Paws::SNS::GetEndpointAttributesResponse
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::SNS::MapStringToString
+=head2 Attributes => L<Paws::SNS::MapStringToString>
 
-  
-
-Attributes include the following:
+  Attributes include the following:
 
 =over
 
@@ -36,14 +34,6 @@ notification service when an app and mobile device are registered with
 the notification service.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

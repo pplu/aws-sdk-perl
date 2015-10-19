@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AssignVolume on
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method AssignVolume.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AssignVolume.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssignVolume.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 InstanceId => Str
 
-  
-
-The instance ID.
-
-
-
-
-
-
-
-
-
+  The instance ID.
 
 =head2 B<REQUIRED> VolumeId => Str
 
-  
-
-The volume ID.
-
-
-
-
-
-
-
-
-
+  The volume ID.
 
 
 

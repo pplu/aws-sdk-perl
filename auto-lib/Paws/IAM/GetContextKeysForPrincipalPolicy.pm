@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetContextKeysF
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetContextKeysForPrincipalPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetContextKeysForPrincipalPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetContextKeysForPrincipalPolicy.
 
 As an example:
 
@@ -35,25 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 PolicyInputList => ArrayRef[Str]
 
-  
-
-A optional list of additional policies for which you want list of
+  A optional list of additional policies for which you want list of
 context keys used in C<Condition> elements.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> PolicySourceArn => Str
 
-  
-
-The ARN of a user, group, or role whose policies contain the context
+  The ARN of a user, group, or role whose policies contain the context
 keys that you want listed. If you specify a user, the list includes
 context keys that are found in all policies attached to the user as
 well as to all groups that the user is a member of. If you pick a group
@@ -61,15 +48,6 @@ or a role, then it includes only those context keys that are found in
 policies attached to that entity. Note that all parameters are shown in
 unencoded form here for clarity, but must be URL encoded to be included
 as a part of a real HTML request.
-
-
-
-
-
-
-
-
-
 
 
 

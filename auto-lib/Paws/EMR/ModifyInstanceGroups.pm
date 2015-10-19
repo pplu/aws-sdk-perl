@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ModifyInstanceG
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method ModifyInstanceGroups.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyInstanceGroups.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyInstanceGroups.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 InstanceGroups => ArrayRef[Paws::EMR::InstanceGroupModifyConfig]
+=head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupModifyConfig>]
 
-  
-
-Instance groups to change.
-
-
-
-
-
-
-
-
-
+  Instance groups to change.
 
 
 

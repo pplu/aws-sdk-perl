@@ -16,34 +16,12 @@ Paws::Glacier::ListVaultsOutput
 
 =head2 Marker => Str
 
-  
-
-The vault ARN at which to continue pagination of the results. You use
+  The vault ARN at which to continue pagination of the results. You use
 the marker in another List Vaults request to obtain more vaults in the
 list.
+=head2 VaultList => ArrayRef[L<Paws::Glacier::DescribeVaultOutput>]
 
-
-
-
-
-
-
-
-
-=head2 VaultList => ArrayRef[Paws::Glacier::DescribeVaultOutput]
-
-  
-
-List of vaults.
-
-
-
-
-
-
-
-
-
+  List of vaults.
 
 
 =cut

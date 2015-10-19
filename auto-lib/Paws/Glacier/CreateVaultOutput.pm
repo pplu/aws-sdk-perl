@@ -1,7 +1,7 @@
 
 package Paws::Glacier::CreateVaultOutput;
   use Moose;
-  has location => (is => 'ro', isa => 'Str');
+  has Location => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -13,20 +13,9 @@ Paws::Glacier::CreateVaultOutput
 
 =head1 ATTRIBUTES
 
-=head2 location => Str
+=head2 Location => Str
 
-  
-
-The URI of the vault that was created.
-
-
-
-
-
-
-
-
-
+  The URI of the vault that was created.
 
 
 =cut

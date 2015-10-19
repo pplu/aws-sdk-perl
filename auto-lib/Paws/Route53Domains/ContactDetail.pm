@@ -15,3 +15,257 @@ package Paws::Route53Domains::ContactDetail;
   has State => (is => 'ro', isa => 'Str');
   has ZipCode => (is => 'ro', isa => 'Str');
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Route53Domains::ContactDetail
+
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::Route53Domains::ContactDetail object:
+
+  $service_obj->Method(Att1 => { AddressLine1 => $value, ..., ZipCode => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Domains::ContactDetail object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->AddressLine1
+
+=head1 DESCRIPTION
+
+ContactDetail includes the following elements.
+
+=head1 ATTRIBUTES
+
+=head2 AddressLine1 => Str
+
+  First line of the contact's address.
+
+Type: String
+
+Default: None
+
+Constraints: Maximum 255 characters.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: Yes
+
+=head2 AddressLine2 => Str
+
+  Second line of contact's address, if any.
+
+Type: String
+
+Default: None
+
+Constraints: Maximum 255 characters.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: No
+
+=head2 City => Str
+
+  The city of the contact's address.
+
+Type: String
+
+Default: None
+
+Constraints: Maximum 255 characters.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: Yes
+
+=head2 ContactType => Str
+
+  Indicates whether the contact is a person, company, association, or
+public organization. If you choose an option other than C<PERSON>, you
+must enter an organization name, and you can't enable privacy
+protection for the contact.
+
+Type: String
+
+Default: None
+
+Constraints: Maximum 255 characters.
+
+Valid values: C<PERSON> | C<COMPANY> | C<ASSOCIATION> | C<PUBLIC_BODY>
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: Yes
+
+=head2 CountryCode => Str
+
+  Code for the country of the contact's address.
+
+Type: String
+
+Default: None
+
+Constraints: Maximum 255 characters.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: Yes
+
+=head2 Email => Str
+
+  Email address of the contact.
+
+Type: String
+
+Default: None
+
+Constraints: Maximum 254 characters.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: Yes
+
+=head2 ExtraParams => ArrayRef[L<Paws::Route53Domains::ExtraParam>]
+
+  A list of name-value pairs for parameters required by certain top-level
+domains.
+
+Type: Complex
+
+Default: None
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Children: C<Name>, C<Value>
+
+Required: No
+
+=head2 Fax => Str
+
+  Fax number of the contact.
+
+Type: String
+
+Default: None
+
+Constraints: Phone number must be specified in the format "+[country
+dialing code].[number including any area code]". For example, a US
+phone number might appear as C<"+1.1234567890">.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: No
+
+=head2 FirstName => Str
+
+  First name of contact.
+
+Type: String
+
+Default: None
+
+Constraints: Maximum 255 characters.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: Yes
+
+=head2 LastName => Str
+
+  Last name of contact.
+
+Type: String
+
+Default: None
+
+Constraints: Maximum 255 characters.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: Yes
+
+=head2 OrganizationName => Str
+
+  Name of the organization for contact types other than C<PERSON>.
+
+Type: String
+
+Default: None
+
+Constraints: Maximum 255 characters. Contact type must not be
+C<PERSON>.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: No
+
+=head2 PhoneNumber => Str
+
+  The phone number of the contact.
+
+Type: String
+
+Default: None
+
+Constraints: Phone number must be specified in the format "+[country
+dialing code].[number including any area codeE<gt>]". For example, a US
+phone number might appear as C<"+1.1234567890">.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: Yes
+
+=head2 State => Str
+
+  The state or province of the contact's city.
+
+Type: String
+
+Default: None
+
+Constraints: Maximum 255 characters.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: No
+
+=head2 ZipCode => Str
+
+  The zip or postal code of the contact's address.
+
+Type: String
+
+Default: None
+
+Constraints: Maximum 255 characters.
+
+Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
+
+Required: No
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::Route53Domains>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

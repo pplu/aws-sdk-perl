@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateWorkspace
 Amazon WorkSpaces service. Use the attributes of this class
 as arguments to method CreateWorkspaces.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateWorkspaces.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateWorkspaces.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Workspaces => ArrayRef[Paws::WorkSpaces::WorkspaceRequest]
+=head2 B<REQUIRED> Workspaces => ArrayRef[L<Paws::WorkSpaces::WorkspaceRequest>]
 
-  
-
-An array of structures that specify the WorkSpaces to create.
-
-
-
-
-
-
-
-
-
+  An array of structures that specify the WorkSpaces to create.
 
 
 

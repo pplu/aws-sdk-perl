@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetUser on the
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetUser.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetUser.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUser.
 
 As an example:
 
@@ -34,21 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 UserName => Str
 
-  
-
-The name of the user to get information about.
+  The name of the user to get information about.
 
 This parameter is optional. If it is not included, it defaults to the
 user making the request.
-
-
-
-
-
-
-
-
-
 
 
 

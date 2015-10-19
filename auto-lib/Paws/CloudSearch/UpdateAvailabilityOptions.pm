@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateAvailabil
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method UpdateAvailabilityOptions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAvailabilityOptions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAvailabilityOptions.
 
 As an example:
 
@@ -39,21 +39,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MultiAZ => Bool
 
-  
-
-You expand an existing search domain to a second Availability Zone by
+  You expand an existing search domain to a second Availability Zone by
 setting the Multi-AZ option to true. Similarly, you can turn off the
 Multi-AZ option to downgrade the domain to a single Availability Zone
 by setting the Multi-AZ option to C<false>.
-
-
-
-
-
-
-
-
-
 
 
 

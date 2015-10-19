@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteApplicati
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method DeleteApplicationVersion.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApplicationVersion.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteApplicationVersion.
 
 As an example:
 
@@ -36,24 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of the application to delete releases from.
-
-
-
-
-
-
-
-
-
+  The name of the application to delete releases from.
 
 =head2 DeleteSourceBundle => Bool
 
-  
-
-Indicates whether to delete the associated source bundle from Amazon
+  Indicates whether to delete the associated source bundle from Amazon
 S3:
 
 =over
@@ -68,29 +55,9 @@ specified at time of creation.
 
 Valid Values: C<true> | C<false>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VersionLabel => Str
 
-  
-
-The label of the version to delete.
-
-
-
-
-
-
-
-
-
+  The label of the version to delete.
 
 
 

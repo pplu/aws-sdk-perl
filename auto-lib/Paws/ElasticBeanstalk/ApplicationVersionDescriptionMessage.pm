@@ -13,20 +13,9 @@ Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage
 
 =head1 ATTRIBUTES
 
-=head2 ApplicationVersion => Paws::ElasticBeanstalk::ApplicationVersionDescription
+=head2 ApplicationVersion => L<Paws::ElasticBeanstalk::ApplicationVersionDescription>
 
-  
-
-The ApplicationVersionDescription of the application version.
-
-
-
-
-
-
-
-
-
+  The ApplicationVersionDescription of the application version.
 
 
 =cut

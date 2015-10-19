@@ -13,7 +13,7 @@ Paws::ElastiCache::ModifyCacheSubnetGroupResult
 
 =head1 ATTRIBUTES
 
-=head2 CacheSubnetGroup => Paws::ElastiCache::CacheSubnetGroup
+=head2 CacheSubnetGroup => L<Paws::ElastiCache::CacheSubnetGroup>
 
   
 

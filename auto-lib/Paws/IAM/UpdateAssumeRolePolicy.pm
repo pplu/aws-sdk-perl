@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateAssumeRol
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method UpdateAssumeRolePolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAssumeRolePolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAssumeRolePolicy.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PolicyDocument => Str
 
-  
-
-The policy that grants an entity permission to assume the role.
-
-
-
-
-
-
-
-
-
+  The policy that grants an entity permission to assume the role.
 
 =head2 B<REQUIRED> RoleName => Str
 
-  
-
-The name of the role to update.
-
-
-
-
-
-
-
-
-
+  The name of the role to update.
 
 
 

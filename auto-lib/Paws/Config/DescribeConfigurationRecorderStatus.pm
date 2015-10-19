@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeConfigu
 AWS Config service. Use the attributes of this class
 as arguments to method DescribeConfigurationRecorderStatus.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConfigurationRecorderStatus.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConfigurationRecorderStatus.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConfigurationRecorderNames => ArrayRef[Str]
 
-  
-
-The name(s) of the configuration recorder. If the name is not
+  The name(s) of the configuration recorder. If the name is not
 specified, the action returns the current status of all the
 configuration recorders associated with the account.
-
-
-
-
-
-
-
-
-
 
 
 

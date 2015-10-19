@@ -192,8 +192,6 @@ Paws::SimpleWorkflow - Perl Interface to AWS Amazon Simple Workflow Service
 
 =head1 DESCRIPTION
 
-
-
 Amazon Simple Workflow Service
 
 The Amazon Simple Workflow Service (Amazon SWF) makes it easy to build
@@ -211,26 +209,15 @@ as tracking their progress and maintaining their state.
 This documentation serves as reference only. For a broader overview of
 the Amazon SWF programming model, see the Amazon SWF Developer Guide.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
-=head2 CountClosedWorkflowExecutions(domain => Str, [closeStatusFilter => Paws::SimpleWorkflow::CloseStatusFilter, closeTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter, executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter, startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter, tagFilter => Paws::SimpleWorkflow::TagFilter, typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter])
+=head2 CountClosedWorkflowExecutions(Domain => Str, [CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>, CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::CountClosedWorkflowExecutions>
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionCount> instance
 
-  
-
-Returns the number of closed workflow executions within the given
+  Returns the number of closed workflow executions within the given
 domain that meet the specified filtering criteria.
 
 This operation is eventually consistent. The results are best effort
@@ -274,24 +261,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CountOpenWorkflowExecutions(domain => Str, startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter, [executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter, tagFilter => Paws::SimpleWorkflow::TagFilter, typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter])
+=head2 CountOpenWorkflowExecutions(Domain => Str, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::CountOpenWorkflowExecutions>
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionCount> instance
 
-  
-
-Returns the number of open workflow executions within the given domain
+  Returns the number of open workflow executions within the given domain
 that meet the specified filtering criteria.
 
 This operation is eventually consistent. The results are best effort
@@ -335,24 +311,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CountPendingActivityTasks(domain => Str, taskList => Paws::SimpleWorkflow::TaskList)
+=head2 CountPendingActivityTasks(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>)
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::CountPendingActivityTasks>
 
 Returns: a L<Paws::SimpleWorkflow::PendingTaskCount> instance
 
-  
-
-Returns the estimated number of activity tasks in the specified task
+  Returns the estimated number of activity tasks in the specified task
 list. The count returned is an approximation and is not guaranteed to
 be exact. If you specify a task list that no activity task was ever
 scheduled in then 0 will be returned.
@@ -383,24 +348,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CountPendingDecisionTasks(domain => Str, taskList => Paws::SimpleWorkflow::TaskList)
+=head2 CountPendingDecisionTasks(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>)
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::CountPendingDecisionTasks>
 
 Returns: a L<Paws::SimpleWorkflow::PendingTaskCount> instance
 
-  
-
-Returns the estimated number of decision tasks in the specified task
+  Returns the estimated number of decision tasks in the specified task
 list. The count returned is an approximation and is not guaranteed to
 be exact. If you specify a task list that no decision task was ever
 scheduled in then 0 will be returned.
@@ -431,24 +385,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeprecateActivityType(activityType => Paws::SimpleWorkflow::ActivityType, domain => Str)
+=head2 DeprecateActivityType(ActivityType => L<Paws::SimpleWorkflow::ActivityType>, Domain => Str)
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::DeprecateActivityType>
 
 Returns: nothing
 
-  
-
-Deprecates the specified I<activity type>. After an activity type has
+  Deprecates the specified I<activity type>. After an activity type has
 been deprecated, you cannot create new tasks of that activity type.
 Tasks of this type that were scheduled before the type was deprecated
 will continue to run.
@@ -491,24 +434,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeprecateDomain(name => Str)
+=head2 DeprecateDomain(Name => Str)
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::DeprecateDomain>
 
 Returns: nothing
 
-  
-
-Deprecates the specified domain. After a domain has been deprecated it
+  Deprecates the specified domain. After a domain has been deprecated it
 cannot be used to create new workflow executions or register new types.
 However, you can still use visibility actions on this domain.
 Deprecating a domain also deprecates all activity and workflow types
@@ -543,24 +475,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeprecateWorkflowType(domain => Str, workflowType => Paws::SimpleWorkflow::WorkflowType)
+=head2 DeprecateWorkflowType(Domain => Str, WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>)
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::DeprecateWorkflowType>
 
 Returns: nothing
 
-  
-
-Deprecates the specified I<workflow type>. After a workflow type has
+  Deprecates the specified I<workflow type>. After a workflow type has
 been deprecated, you cannot create new executions of that type.
 Executions that were started before the type was deprecated will
 continue to run. A deprecated workflow type may still be used when
@@ -604,24 +525,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeActivityType(activityType => Paws::SimpleWorkflow::ActivityType, domain => Str)
+=head2 DescribeActivityType(ActivityType => L<Paws::SimpleWorkflow::ActivityType>, Domain => Str)
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeActivityType>
 
 Returns: a L<Paws::SimpleWorkflow::ActivityTypeDetail> instance
 
-  
-
-Returns information about the specified activity type. This includes
+  Returns information about the specified activity type. This includes
 configuration settings provided when the type was registered and other
 general information about the type.
 
@@ -660,24 +570,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeDomain(name => Str)
+=head2 DescribeDomain(Name => Str)
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeDomain>
 
 Returns: a L<Paws::SimpleWorkflow::DomainDetail> instance
 
-  
-
-Returns information about the specified domain, including description
+  Returns information about the specified domain, including description
 and status.
 
 B<Access Control>
@@ -705,24 +604,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeWorkflowExecution(domain => Str, execution => Paws::SimpleWorkflow::WorkflowExecution)
+=head2 DescribeWorkflowExecution(Domain => Str, Execution => L<Paws::SimpleWorkflow::WorkflowExecution>)
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeWorkflowExecution>
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionDetail> instance
 
-  
-
-Returns information about the specified workflow execution including
+  Returns information about the specified workflow execution including
 its type and some statistics.
 
 This operation is eventually consistent. The results are best effort
@@ -753,24 +641,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeWorkflowType(domain => Str, workflowType => Paws::SimpleWorkflow::WorkflowType)
+=head2 DescribeWorkflowType(Domain => Str, WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>)
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::DescribeWorkflowType>
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowTypeDetail> instance
 
-  
-
-Returns information about the specified I<workflow type>. This includes
+  Returns information about the specified I<workflow type>. This includes
 configuration settings specified when the type was registered and other
 information such as creation date, current status, and so on.
 
@@ -809,24 +686,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetWorkflowExecutionHistory(domain => Str, execution => Paws::SimpleWorkflow::WorkflowExecution, [maximumPageSize => Int, nextPageToken => Str, reverseOrder => Bool])
+=head2 GetWorkflowExecutionHistory(Domain => Str, Execution => L<Paws::SimpleWorkflow::WorkflowExecution>, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::GetWorkflowExecutionHistory>
 
 Returns: a L<Paws::SimpleWorkflow::History> instance
 
-  
-
-Returns the history of the specified workflow execution. The results
+  Returns the history of the specified workflow execution. The results
 may be split into multiple pages. To retrieve subsequent pages, make
 the call again using the C<nextPageToken> returned by the initial call.
 
@@ -858,24 +724,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListActivityTypes(domain => Str, registrationStatus => Str, [maximumPageSize => Int, name => Str, nextPageToken => Str, reverseOrder => Bool])
+=head2 ListActivityTypes(Domain => Str, RegistrationStatus => Str, [MaximumPageSize => Int, Name => Str, NextPageToken => Str, ReverseOrder => Bool])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::ListActivityTypes>
 
 Returns: a L<Paws::SimpleWorkflow::ActivityTypeInfos> instance
 
-  
-
-Returns information about all activities registered in the specified
+  Returns information about all activities registered in the specified
 domain that match the specified name and registration status. The
 result includes information like creation date, current status of the
 activity, etc. The results may be split into multiple pages. To
@@ -907,24 +762,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListClosedWorkflowExecutions(domain => Str, [closeStatusFilter => Paws::SimpleWorkflow::CloseStatusFilter, closeTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter, executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter, maximumPageSize => Int, nextPageToken => Str, reverseOrder => Bool, startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter, tagFilter => Paws::SimpleWorkflow::TagFilter, typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter])
+=head2 ListClosedWorkflowExecutions(Domain => Str, [CloseStatusFilter => L<Paws::SimpleWorkflow::CloseStatusFilter>, CloseTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::ListClosedWorkflowExecutions>
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionInfos> instance
 
-  
-
-Returns a list of closed workflow executions in the specified domain
+  Returns a list of closed workflow executions in the specified domain
 that meet the filtering criteria. The results may be split into
 multiple pages. To retrieve subsequent pages, make the call again using
 the nextPageToken returned by the initial call.
@@ -970,24 +814,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListDomains(registrationStatus => Str, [maximumPageSize => Int, nextPageToken => Str, reverseOrder => Bool])
+=head2 ListDomains(RegistrationStatus => Str, [MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::ListDomains>
 
 Returns: a L<Paws::SimpleWorkflow::DomainInfos> instance
 
-  
-
-Returns the list of domains registered in the account. The results may
+  Returns the list of domains registered in the account. The results may
 be split into multiple pages. To retrieve subsequent pages, make the
 call again using the nextPageToken returned by the initial call.
 
@@ -1021,24 +854,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListOpenWorkflowExecutions(domain => Str, startTimeFilter => Paws::SimpleWorkflow::ExecutionTimeFilter, [executionFilter => Paws::SimpleWorkflow::WorkflowExecutionFilter, maximumPageSize => Int, nextPageToken => Str, reverseOrder => Bool, tagFilter => Paws::SimpleWorkflow::TagFilter, typeFilter => Paws::SimpleWorkflow::WorkflowTypeFilter])
+=head2 ListOpenWorkflowExecutions(Domain => Str, StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>, [ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool, TagFilter => L<Paws::SimpleWorkflow::TagFilter>, TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::ListOpenWorkflowExecutions>
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowExecutionInfos> instance
 
-  
-
-Returns a list of open workflow executions in the specified domain that
+  Returns a list of open workflow executions in the specified domain that
 meet the filtering criteria. The results may be split into multiple
 pages. To retrieve subsequent pages, make the call again using the
 nextPageToken returned by the initial call.
@@ -1084,24 +906,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListWorkflowTypes(domain => Str, registrationStatus => Str, [maximumPageSize => Int, name => Str, nextPageToken => Str, reverseOrder => Bool])
+=head2 ListWorkflowTypes(Domain => Str, RegistrationStatus => Str, [MaximumPageSize => Int, Name => Str, NextPageToken => Str, ReverseOrder => Bool])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::ListWorkflowTypes>
 
 Returns: a L<Paws::SimpleWorkflow::WorkflowTypeInfos> instance
 
-  
-
-Returns information about workflow types in the specified domain. The
+  Returns information about workflow types in the specified domain. The
 results may be split into multiple pages that can be retrieved by
 making the call repeatedly.
 
@@ -1130,24 +941,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 PollForActivityTask(domain => Str, taskList => Paws::SimpleWorkflow::TaskList, [identity => Str])
+=head2 PollForActivityTask(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>, [Identity => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::PollForActivityTask>
 
 Returns: a L<Paws::SimpleWorkflow::ActivityTask> instance
 
-  
-
-Used by workers to get an ActivityTask from the specified activity
+  Used by workers to get an ActivityTask from the specified activity
 C<taskList>. This initiates a long poll, where the service holds the
 HTTP connection open and responds as soon as a task becomes available.
 The maximum time the service holds on to the request before responding
@@ -1187,24 +987,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 PollForDecisionTask(domain => Str, taskList => Paws::SimpleWorkflow::TaskList, [identity => Str, maximumPageSize => Int, nextPageToken => Str, reverseOrder => Bool])
+=head2 PollForDecisionTask(Domain => Str, TaskList => L<Paws::SimpleWorkflow::TaskList>, [Identity => Str, MaximumPageSize => Int, NextPageToken => Str, ReverseOrder => Bool])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::PollForDecisionTask>
 
 Returns: a L<Paws::SimpleWorkflow::DecisionTask> instance
 
-  
-
-Used by deciders to get a DecisionTask from the specified decision
+  Used by deciders to get a DecisionTask from the specified decision
 C<taskList>. A decision task may be returned for any open workflow
 execution that is using the specified task list. The task includes a
 paginated view of the history of the workflow execution. The decider
@@ -1254,24 +1043,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RecordActivityTaskHeartbeat(taskToken => Str, [details => Str])
+=head2 RecordActivityTaskHeartbeat(TaskToken => Str, [Details => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::RecordActivityTaskHeartbeat>
 
 Returns: a L<Paws::SimpleWorkflow::ActivityTaskStatus> instance
 
-  
-
-Used by activity workers to report to the service that the ActivityTask
+  Used by activity workers to report to the service that the ActivityTask
 represented by the specified C<taskToken> is still making progress. The
 worker can also (optionally) specify details of the progress, for
 example percent complete, using the C<details> parameter. This action
@@ -1325,24 +1103,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RegisterActivityType(domain => Str, name => Str, version => Str, [defaultTaskHeartbeatTimeout => Str, defaultTaskList => Paws::SimpleWorkflow::TaskList, defaultTaskPriority => Str, defaultTaskScheduleToCloseTimeout => Str, defaultTaskScheduleToStartTimeout => Str, defaultTaskStartToCloseTimeout => Str, description => Str])
+=head2 RegisterActivityType(Domain => Str, Name => Str, Version => Str, [DefaultTaskHeartbeatTimeout => Str, DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>, DefaultTaskPriority => Str, DefaultTaskScheduleToCloseTimeout => Str, DefaultTaskScheduleToStartTimeout => Str, DefaultTaskStartToCloseTimeout => Str, Description => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::RegisterActivityType>
 
 Returns: nothing
 
-  
-
-Registers a new I<activity type> along with its configuration settings
+  Registers a new I<activity type> along with its configuration settings
 in the specified domain.
 
 A C<TypeAlreadyExists> fault is returned if the type already exists in
@@ -1385,24 +1152,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RegisterDomain(name => Str, workflowExecutionRetentionPeriodInDays => Str, [description => Str])
+=head2 RegisterDomain(Name => Str, WorkflowExecutionRetentionPeriodInDays => Str, [Description => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::RegisterDomain>
 
 Returns: nothing
 
-  
-
-Registers a new domain.
+  Registers a new domain.
 
 B<Access Control>
 
@@ -1430,24 +1186,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RegisterWorkflowType(domain => Str, name => Str, version => Str, [defaultChildPolicy => Str, defaultExecutionStartToCloseTimeout => Str, defaultLambdaRole => Str, defaultTaskList => Paws::SimpleWorkflow::TaskList, defaultTaskPriority => Str, defaultTaskStartToCloseTimeout => Str, description => Str])
+=head2 RegisterWorkflowType(Domain => Str, Name => Str, Version => Str, [DefaultChildPolicy => Str, DefaultExecutionStartToCloseTimeout => Str, DefaultLambdaRole => Str, DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>, DefaultTaskPriority => Str, DefaultTaskStartToCloseTimeout => Str, Description => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::RegisterWorkflowType>
 
 Returns: nothing
 
-  
-
-Registers a new I<workflow type> and its configuration settings in the
+  Registers a new I<workflow type> and its configuration settings in the
 specified domain.
 
 The retention period for the workflow history is set by the
@@ -1493,24 +1238,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RequestCancelWorkflowExecution(domain => Str, workflowId => Str, [runId => Str])
+=head2 RequestCancelWorkflowExecution(Domain => Str, WorkflowId => Str, [RunId => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::RequestCancelWorkflowExecution>
 
 Returns: nothing
 
-  
-
-Records a C<WorkflowExecutionCancelRequested> event in the currently
+  Records a C<WorkflowExecutionCancelRequested> event in the currently
 running workflow execution identified by the given domain, workflowId,
 and runId. This logically requests the cancellation of the workflow
 execution as a whole. It is up to the decider to take appropriate
@@ -1547,24 +1281,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RespondActivityTaskCanceled(taskToken => Str, [details => Str])
+=head2 RespondActivityTaskCanceled(TaskToken => Str, [Details => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondActivityTaskCanceled>
 
 Returns: nothing
 
-  
-
-Used by workers to tell the service that the ActivityTask identified by
+  Used by workers to tell the service that the ActivityTask identified by
 the C<taskToken> was successfully canceled. Additional C<details> can
 be optionally provided using the C<details> argument.
 
@@ -1606,24 +1329,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RespondActivityTaskCompleted(taskToken => Str, [result => Str])
+=head2 RespondActivityTaskCompleted(TaskToken => Str, [Result => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondActivityTaskCompleted>
 
 Returns: nothing
 
-  
-
-Used by workers to tell the service that the ActivityTask identified by
+  Used by workers to tell the service that the ActivityTask identified by
 the C<taskToken> completed successfully with a C<result> (if provided).
 The C<result> appears in the C<ActivityTaskCompleted> event in the
 workflow history.
@@ -1665,24 +1377,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RespondActivityTaskFailed(taskToken => Str, [details => Str, reason => Str])
+=head2 RespondActivityTaskFailed(TaskToken => Str, [Details => Str, Reason => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondActivityTaskFailed>
 
 Returns: nothing
 
-  
-
-Used by workers to tell the service that the ActivityTask identified by
+  Used by workers to tell the service that the ActivityTask identified by
 the C<taskToken> has failed with C<reason> (if specified). The
 C<reason> and C<details> appear in the C<ActivityTaskFailed> event
 added to the workflow history.
@@ -1718,24 +1419,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RespondDecisionTaskCompleted(taskToken => Str, [decisions => ArrayRef[Paws::SimpleWorkflow::Decision], executionContext => Str])
+=head2 RespondDecisionTaskCompleted(TaskToken => Str, [Decisions => ArrayRef[L<Paws::SimpleWorkflow::Decision>], ExecutionContext => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::RespondDecisionTaskCompleted>
 
 Returns: nothing
 
-  
-
-Used by deciders to tell the service that the DecisionTask identified
+  Used by deciders to tell the service that the DecisionTask identified
 by the C<taskToken> has successfully completed. The C<decisions>
 argument specifies the list of decisions made while processing the
 task.
@@ -1756,24 +1446,13 @@ conditions to some parameters. For more information, see Using IAM to
 Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 SignalWorkflowExecution(domain => Str, signalName => Str, workflowId => Str, [input => Str, runId => Str])
+=head2 SignalWorkflowExecution(Domain => Str, SignalName => Str, WorkflowId => Str, [Input => Str, RunId => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::SignalWorkflowExecution>
 
 Returns: nothing
 
-  
-
-Records a C<WorkflowExecutionSignaled> event in the workflow execution
+  Records a C<WorkflowExecutionSignaled> event in the workflow execution
 history and creates a decision task for the workflow execution
 identified by the given domain, workflowId and runId. The event is
 recorded with the specified user defined signalName and input (if
@@ -1809,24 +1488,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 StartWorkflowExecution(domain => Str, workflowId => Str, workflowType => Paws::SimpleWorkflow::WorkflowType, [childPolicy => Str, executionStartToCloseTimeout => Str, input => Str, lambdaRole => Str, tagList => ArrayRef[Str], taskList => Paws::SimpleWorkflow::TaskList, taskPriority => Str, taskStartToCloseTimeout => Str])
+=head2 StartWorkflowExecution(Domain => Str, WorkflowId => Str, WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>, [ChildPolicy => Str, ExecutionStartToCloseTimeout => Str, Input => Str, LambdaRole => Str, TagList => ArrayRef[Str], TaskList => L<Paws::SimpleWorkflow::TaskList>, TaskPriority => Str, TaskStartToCloseTimeout => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::StartWorkflowExecution>
 
 Returns: a L<Paws::SimpleWorkflow::Run> instance
 
-  
-
-Starts an execution of the workflow type in the specified domain using
+  Starts an execution of the workflow type in the specified domain using
 the provided C<workflowId> and input data.
 
 This action returns the newly started workflow execution.
@@ -1879,24 +1547,13 @@ will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 
-
-
-
-
-
-
-
-
-
-=head2 TerminateWorkflowExecution(domain => Str, workflowId => Str, [childPolicy => Str, details => Str, reason => Str, runId => Str])
+=head2 TerminateWorkflowExecution(Domain => Str, WorkflowId => Str, [ChildPolicy => Str, Details => Str, Reason => Str, RunId => Str])
 
 Each argument is described in detail in: L<Paws::SimpleWorkflow::TerminateWorkflowExecution>
 
 Returns: nothing
 
-  
-
-Records a C<WorkflowExecutionTerminated> event and forces closure of
+  Records a C<WorkflowExecutionTerminated> event and forces closure of
 the workflow execution identified by the given domain, runId, and
 workflowId. The child policy, registered with the workflow type or
 specified when starting this execution, is applied to any open child
@@ -1933,15 +1590,6 @@ action, or the parameter values fall outside the specified constraints,
 the action fails. The associated event attribute's B<cause> parameter
 will be set to OPERATION_NOT_PERMITTED. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

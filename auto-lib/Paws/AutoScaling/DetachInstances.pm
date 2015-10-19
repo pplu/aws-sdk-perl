@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DetachInstances
 Auto Scaling service. Use the attributes of this class
 as arguments to method DetachInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DetachInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetachInstances.
 
 As an example:
 
@@ -36,49 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
-
+  The name of the group.
 
 =head2 InstanceIds => ArrayRef[Str]
 
-  
-
-One or more instance IDs.
-
-
-
-
-
-
-
-
-
+  One or more instance IDs.
 
 =head2 B<REQUIRED> ShouldDecrementDesiredCapacity => Bool
 
-  
-
-If C<True>, the Auto Scaling group decrements the desired capacity
+  If C<True>, the Auto Scaling group decrements the desired capacity
 value by the number of instances detached.
-
-
-
-
-
-
-
-
-
 
 
 

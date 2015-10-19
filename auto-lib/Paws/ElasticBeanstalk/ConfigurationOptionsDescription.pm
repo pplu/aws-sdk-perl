@@ -14,34 +14,12 @@ Paws::ElasticBeanstalk::ConfigurationOptionsDescription
 
 =head1 ATTRIBUTES
 
-=head2 Options => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionDescription]
+=head2 Options => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionDescription>]
 
-  
-
-A list of ConfigurationOptionDescription.
-
-
-
-
-
-
-
-
-
+  A list of ConfigurationOptionDescription.
 =head2 SolutionStackName => Str
 
-  
-
-The name of the solution stack these configuration options belong to.
-
-
-
-
-
-
-
-
-
+  The name of the solution stack these configuration options belong to.
 
 
 =cut

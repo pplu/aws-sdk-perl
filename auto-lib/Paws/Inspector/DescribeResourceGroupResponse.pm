@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeResourceGroupResponse;
   use Moose;
-  has resourceGroup => (is => 'ro', isa => 'Paws::Inspector::ResourceGroup');
+  has ResourceGroup => (is => 'ro', isa => 'Paws::Inspector::ResourceGroup', traits => ['Unwrapped'], xmlname => 'resourceGroup' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::Inspector::DescribeResourceGroupResponse
 
 =head1 ATTRIBUTES
 
-=head2 resourceGroup => Paws::Inspector::ResourceGroup
+=head2 ResourceGroup => L<Paws::Inspector::ResourceGroup>
 
-  
-
-Information about the resource group.
-
-
-
-
-
-
-
-
-
+  Information about the resource group.
 
 
 =cut

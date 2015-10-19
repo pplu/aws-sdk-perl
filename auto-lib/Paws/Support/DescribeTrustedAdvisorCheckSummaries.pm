@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeTrustedAdvisorCheckSummaries;
   use Moose;
-  has checkIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has CheckIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'checkIds' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeTrusted
 AWS Support service. Use the attributes of this class
 as arguments to method DescribeTrustedAdvisorCheckSummaries.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTrustedAdvisorCheckSummaries.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTrustedAdvisorCheckSummaries.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> checkIds => ArrayRef[Str]
+=head2 B<REQUIRED> CheckIds => ArrayRef[Str]
 
-  
-
-The IDs of the Trusted Advisor checks.
-
-
-
-
-
-
-
-
-
+  The IDs of the Trusted Advisor checks.
 
 
 

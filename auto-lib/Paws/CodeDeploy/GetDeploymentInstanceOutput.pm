@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::GetDeploymentInstanceOutput;
   use Moose;
-  has instanceSummary => (is => 'ro', isa => 'Paws::CodeDeploy::InstanceSummary');
+  has InstanceSummary => (is => 'ro', isa => 'Paws::CodeDeploy::InstanceSummary', traits => ['Unwrapped'], xmlname => 'instanceSummary' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::CodeDeploy::GetDeploymentInstanceOutput
 
 =head1 ATTRIBUTES
 
-=head2 instanceSummary => Paws::CodeDeploy::InstanceSummary
+=head2 InstanceSummary => L<Paws::CodeDeploy::InstanceSummary>
 
-  
-
-Information about the instance.
-
-
-
-
-
-
-
-
-
+  Information about the instance.
 
 
 =cut

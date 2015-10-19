@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateEvaluatio
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method UpdateEvaluation.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateEvaluation.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateEvaluation.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EvaluationId => Str
 
-  
-
-The ID assigned to the C<Evaluation> during creation.
-
-
-
-
-
-
-
-
-
+  The ID assigned to the C<Evaluation> during creation.
 
 =head2 B<REQUIRED> EvaluationName => Str
 
-  
-
-A new user-supplied name or description of the C<Evaluation> that will
+  A new user-supplied name or description of the C<Evaluation> that will
 replace the current content.
-
-
-
-
-
-
-
-
-
 
 
 

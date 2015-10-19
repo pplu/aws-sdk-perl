@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method UpdateChapCrede
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method UpdateChapCredentials.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateChapCredentials.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateChapCredentials.
 
 As an example:
 
@@ -37,73 +37,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InitiatorName => Str
 
-  
-
-The iSCSI initiator that connects to the target.
-
-
-
-
-
-
-
-
-
+  The iSCSI initiator that connects to the target.
 
 =head2 B<REQUIRED> SecretToAuthenticateInitiator => Str
 
-  
-
-The secret key that the initiator (for example, the Windows client)
+  The secret key that the initiator (for example, the Windows client)
 must provide to participate in mutual CHAP with the target.
 
 The secret key must be between 12 and 16 bytes when encoded in UTF-8.
 
-
-
-
-
-
-
-
-
-
 =head2 SecretToAuthenticateTarget => Str
 
-  
-
-The secret key that the target must provide to participate in mutual
+  The secret key that the target must provide to participate in mutual
 CHAP with the initiator (e.g. Windows client).
 
 Byte constraints: Minimum bytes of 12. Maximum bytes of 16.
 
 The secret key must be between 12 and 16 bytes when encoded in UTF-8.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TargetARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
+  The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
 DescribeStorediSCSIVolumes operation to return the TargetARN for
 specified VolumeARN.
-
-
-
-
-
-
-
-
-
 
 
 

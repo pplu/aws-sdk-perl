@@ -14,36 +14,14 @@ Paws::RDS::DBSecurityGroupMessage
 
 =head1 ATTRIBUTES
 
-=head2 DBSecurityGroups => ArrayRef[Paws::RDS::DBSecurityGroup]
+=head2 DBSecurityGroups => ArrayRef[L<Paws::RDS::DBSecurityGroup>]
 
-  
-
-A list of DBSecurityGroup instances.
-
-
-
-
-
-
-
-
-
+  A list of DBSecurityGroup instances.
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous request. If this
+  An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
-
-
-
-
-
-
-
-
-
 
 
 =cut

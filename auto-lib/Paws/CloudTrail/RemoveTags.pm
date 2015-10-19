@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RemoveTags on t
 AWS CloudTrail service. Use the attributes of this class
 as arguments to method RemoveTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTags.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  
-
-Specifies the ARN of the trail from which tags should be removed. The
+  Specifies the ARN of the trail from which tags should be removed. The
 format of a trail ARN is
 C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
 
+=head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 TagsList => ArrayRef[Paws::CloudTrail::Tag]
-
-  
-
-Specifies a list of tags to be removed.
-
-
-
-
-
-
-
-
-
+  Specifies a list of tags to be removed.
 
 
 

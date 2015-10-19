@@ -13,20 +13,9 @@ Paws::ELB::DescribeEndPointStateOutput
 
 =head1 ATTRIBUTES
 
-=head2 InstanceStates => ArrayRef[Paws::ELB::InstanceState]
+=head2 InstanceStates => ArrayRef[L<Paws::ELB::InstanceState>]
 
-  
-
-Information about the health of the instances.
-
-
-
-
-
-
-
-
-
+  Information about the health of the instances.
 
 
 =cut

@@ -13,7 +13,7 @@ Paws::RedShift::ModifyEventSubscriptionResult
 
 =head1 ATTRIBUTES
 
-=head2 EventSubscription => Paws::RedShift::EventSubscription
+=head2 EventSubscription => L<Paws::RedShift::EventSubscription>
 
   
 

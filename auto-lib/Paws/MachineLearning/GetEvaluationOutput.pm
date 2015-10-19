@@ -25,156 +25,44 @@ Paws::MachineLearning::GetEvaluationOutput
 
 =head2 CreatedAt => Str
 
-  
-
-The time that the C<Evaluation> was created. The time is expressed in
+  The time that the C<Evaluation> was created. The time is expressed in
 epoch time.
-
-
-
-
-
-
-
-
-
 =head2 CreatedByIamUser => Str
 
-  
-
-The AWS user account that invoked the evaluation. The account type can
+  The AWS user account that invoked the evaluation. The account type can
 be either an AWS root account or an AWS Identity and Access Management
 (IAM) user account.
-
-
-
-
-
-
-
-
-
 =head2 EvaluationDataSourceId => Str
 
-  
-
-The C<DataSource> used for this evaluation.
-
-
-
-
-
-
-
-
-
+  The C<DataSource> used for this evaluation.
 =head2 EvaluationId => Str
 
-  
-
-The evaluation ID which is same as the C<EvaluationId> in the request.
-
-
-
-
-
-
-
-
-
+  The evaluation ID which is same as the C<EvaluationId> in the request.
 =head2 InputDataLocationS3 => Str
 
-  
-
-The location of the data file or directory in Amazon Simple Storage
+  The location of the data file or directory in Amazon Simple Storage
 Service (Amazon S3).
-
-
-
-
-
-
-
-
-
 =head2 LastUpdatedAt => Str
 
-  
-
-The time of the most recent edit to the C<BatchPrediction>. The time is
+  The time of the most recent edit to the C<BatchPrediction>. The time is
 expressed in epoch time.
-
-
-
-
-
-
-
-
-
 =head2 LogUri => Str
 
-  
-
-A link to the file that contains logs of the CreateEvaluation
+  A link to the file that contains logs of the CreateEvaluation
 operation.
-
-
-
-
-
-
-
-
-
 =head2 Message => Str
 
-  
-
-A description of the most recent details about evaluating the
+  A description of the most recent details about evaluating the
 C<MLModel>.
-
-
-
-
-
-
-
-
-
 =head2 MLModelId => Str
 
-  
-
-The ID of the C<MLModel> that was the focus of the evaluation.
-
-
-
-
-
-
-
-
-
+  The ID of the C<MLModel> that was the focus of the evaluation.
 =head2 Name => Str
 
-  
+  A user-supplied name or description of the C<Evaluation>.
+=head2 PerformanceMetrics => L<Paws::MachineLearning::PerformanceMetrics>
 
-A user-supplied name or description of the C<Evaluation>.
-
-
-
-
-
-
-
-
-
-=head2 PerformanceMetrics => Paws::MachineLearning::PerformanceMetrics
-
-  
-
-Measurements of how well the C<MLModel> performed using observations
+  Measurements of how well the C<MLModel> performed using observations
 referenced by the C<DataSource>. One of the following metric is
 returned based on the type of the C<MLModel>:
 
@@ -200,20 +88,9 @@ technique to measure performance.
 
 For more information about performance metrics, please see the Amazon
 Machine Learning Developer Guide.
-
-
-
-
-
-
-
-
-
 =head2 Status => Str
 
-  
-
-The status of the evaluation. This element can have one of the
+  The status of the evaluation. This element can have one of the
 following values:
 
 =over
@@ -232,14 +109,6 @@ to completion. It is not usable.
 usable.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

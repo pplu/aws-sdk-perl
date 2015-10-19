@@ -1,9 +1,9 @@
 
 package Paws::ECS::ListContainerInstances;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListContainerIn
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method ListContainerInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListContainerInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListContainerInstances.
 
 As an example:
 
@@ -34,28 +34,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster that
+  The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container instances to list. If you do not specify a cluster,
 the default cluster is assumed..
 
+=head2 MaxResults => Int
 
-
-
-
-
-
-
-
-
-=head2 maxResults => Int
-
-  
-
-The maximum number of container instance results returned by
+  The maximum number of container instance results returned by
 C<ListContainerInstances> in paginated output. When this parameter is
 used, C<ListContainerInstances> only returns C<maxResults> results in a
 single page along with a C<nextToken> response element. The remaining
@@ -65,33 +52,13 @@ This value can be between 1 and 100. If this parameter is not used,
 then C<ListContainerInstances> returns up to 100 results and a
 C<nextToken> value if applicable.
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-The C<nextToken> value returned from a previous paginated
+  The C<nextToken> value returned from a previous paginated
 C<ListContainerInstances> request where C<maxResults> was used and the
 results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<nextToken> value.
 This value is C<null> when there are no more results to return.
-
-
-
-
-
-
-
-
-
 
 
 

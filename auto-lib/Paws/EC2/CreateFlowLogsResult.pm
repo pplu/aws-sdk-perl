@@ -17,47 +17,14 @@ Paws::EC2::CreateFlowLogsResult
 
 =head2 ClientToken => Str
 
-  
-
-Unique, case-sensitive identifier you provide to ensure the idempotency
+  Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request.
-
-
-
-
-
-
-
-
-
 =head2 FlowLogIds => ArrayRef[Str]
 
-  
+  The IDs of the flow logs.
+=head2 Unsuccessful => ArrayRef[L<Paws::EC2::UnsuccessfulItem>]
 
-The IDs of the flow logs.
-
-
-
-
-
-
-
-
-
-=head2 Unsuccessful => ArrayRef[Paws::EC2::UnsuccessfulItem]
-
-  
-
-Information about the flow logs that could not be created successfully.
-
-
-
-
-
-
-
-
-
+  Information about the flow logs that could not be created successfully.
 
 
 =cut

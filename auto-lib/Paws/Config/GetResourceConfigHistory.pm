@@ -1,13 +1,13 @@
 
 package Paws::Config::GetResourceConfigHistory;
   use Moose;
-  has chronologicalOrder => (is => 'ro', isa => 'Str');
-  has earlierTime => (is => 'ro', isa => 'Str');
-  has laterTime => (is => 'ro', isa => 'Str');
-  has limit => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
-  has resourceId => (is => 'ro', isa => 'Str', required => 1);
-  has resourceType => (is => 'ro', isa => 'Str', required => 1);
+  has ChronologicalOrder => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'chronologicalOrder' );
+  has EarlierTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'earlierTime' );
+  has LaterTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'laterTime' );
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has ResourceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceId' , required => 1);
+  has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method GetResourceConf
 AWS Config service. Use the attributes of this class
 as arguments to method GetResourceConfigHistory.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetResourceConfigHistory.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetResourceConfigHistory.
 
 As an example:
 
@@ -38,117 +38,40 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 chronologicalOrder => Str
+=head2 ChronologicalOrder => Str
 
-  
-
-The chronological order for configuration items listed. By default the
+  The chronological order for configuration items listed. By default the
 results are listed in reverse chronological order.
 
+=head2 EarlierTime => Str
 
-
-
-
-
-
-
-
-
-=head2 earlierTime => Str
-
-  
-
-The time stamp that indicates an earlier time. If not specified, the
+  The time stamp that indicates an earlier time. If not specified, the
 action returns paginated results that contain configuration items that
 start from when the first configuration item was recorded.
 
+=head2 LaterTime => Str
 
-
-
-
-
-
-
-
-
-=head2 laterTime => Str
-
-  
-
-The time stamp that indicates a later time. If not specified, current
+  The time stamp that indicates a later time. If not specified, current
 time is taken.
 
+=head2 Limit => Int
 
-
-
-
-
-
-
-
-
-=head2 limit => Int
-
-  
-
-The maximum number of configuration items returned on each page. The
+  The maximum number of configuration items returned on each page. The
 default is 10. You cannot specify a limit greater than 100. If you
 specify 0, AWS Config uses the default.
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-The C<nextToken> string returned on a previous page that you use to get
+  The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
 
+=head2 B<REQUIRED> ResourceId => Str
 
+  The ID of the resource (for example., C<sg-xxxxxx>).
 
+=head2 B<REQUIRED> ResourceType => Str
 
-
-
-
-
-
-
-=head2 B<REQUIRED> resourceId => Str
-
-  
-
-The ID of the resource (for example., C<sg-xxxxxx>).
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> resourceType => Str
-
-  
-
-The resource type.
-
-
-
-
-
-
-
-
-
+  The resource type.
 
 
 

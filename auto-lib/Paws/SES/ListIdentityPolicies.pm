@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ListIdentityPol
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method ListIdentityPolicies.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListIdentityPolicies.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListIdentityPolicies.
 
 As an example:
 
@@ -34,24 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Identity => Str
 
-  
-
-The identity that is associated with the policy for which the policies
+  The identity that is associated with the policy for which the policies
 will be listed. You can specify an identity by using its name or by
 using its Amazon Resource Name (ARN). Examples: C<user@example.com>,
 C<example.com>,
 C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
 
 To successfully call this API, you must own the identity.
-
-
-
-
-
-
-
-
-
 
 
 

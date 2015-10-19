@@ -13,7 +13,7 @@ Paws::RedShift::ModifyClusterSubnetGroupResult
 
 =head1 ATTRIBUTES
 
-=head2 ClusterSubnetGroup => Paws::RedShift::ClusterSubnetGroup
+=head2 ClusterSubnetGroup => L<Paws::RedShift::ClusterSubnetGroup>
 
   
 

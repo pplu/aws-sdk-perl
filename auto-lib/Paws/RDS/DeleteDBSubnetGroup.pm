@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteDBSubnetG
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DeleteDBSubnetGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDBSubnetGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDBSubnetGroup.
 
 As an example:
 
@@ -34,9 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBSubnetGroupName => Str
 
-  
-
-The name of the database subnet group to delete.
+  The name of the database subnet group to delete.
 
 You cannot delete the default subnet group.
 
@@ -51,14 +49,6 @@ Constraints:
 =item * Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
-
-
-
-
-
-
-
-
 
 
 

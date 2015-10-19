@@ -13,20 +13,9 @@ Paws::EC2::DescribeConversionTasksResult
 
 =head1 ATTRIBUTES
 
-=head2 ConversionTasks => ArrayRef[Paws::EC2::ConversionTask]
+=head2 ConversionTasks => ArrayRef[L<Paws::EC2::ConversionTask>]
 
-  
-
-Information about the conversion tasks.
-
-
-
-
-
-
-
-
-
+  Information about the conversion tasks.
 
 
 =cut

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method PutDeliveryChan
 AWS Config service. Use the attributes of this class
 as arguments to method PutDeliveryChannel.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutDeliveryChannel.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutDeliveryChannel.
 
 As an example:
 
@@ -32,22 +32,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DeliveryChannel => Paws::Config::DeliveryChannel
+=head2 B<REQUIRED> DeliveryChannel => L<Paws::Config::DeliveryChannel>
 
-  
-
-The configuration delivery channel object that delivers the
+  The configuration delivery channel object that delivers the
 configuration information to an Amazon S3 bucket, and to an Amazon SNS
 topic.
-
-
-
-
-
-
-
-
-
 
 
 

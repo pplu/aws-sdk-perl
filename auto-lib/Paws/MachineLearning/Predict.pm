@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method Predict on the
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method Predict.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to Predict.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Predict.
 
 As an example:
 
@@ -36,24 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MLModelId => Str
 
-  
-
-A unique identifier of the C<MLModel>.
-
-
-
-
-
-
-
-
-
+  A unique identifier of the C<MLModel>.
 
 =head2 B<REQUIRED> PredictEndpoint => Str
 
   
 
-=head2 B<REQUIRED> Record => Paws::MachineLearning::Record
+=head2 B<REQUIRED> Record => L<Paws::MachineLearning::Record>
 
   
 

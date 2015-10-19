@@ -13,20 +13,9 @@ Paws::IAM::GetSSHPublicKeyResponse
 
 =head1 ATTRIBUTES
 
-=head2 SSHPublicKey => Paws::IAM::SSHPublicKey
+=head2 SSHPublicKey => L<Paws::IAM::SSHPublicKey>
 
-  
-
-Information about the SSH public key.
-
-
-
-
-
-
-
-
-
+  Information about the SSH public key.
 
 
 =cut

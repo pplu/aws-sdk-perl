@@ -1,8 +1,8 @@
 
 package Paws::Inspector::DetachAssessmentAndRulesPackage;
   use Moose;
-  has assessmentArn => (is => 'ro', isa => 'Str');
-  has rulesPackageArn => (is => 'ro', isa => 'Str');
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' );
+  has RulesPackageArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'rulesPackageArn' );
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DetachAssessmen
 Amazon Inspector service. Use the attributes of this class
 as arguments to method DetachAssessmentAndRulesPackage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DetachAssessmentAndRulesPackage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetachAssessmentAndRulesPackage.
 
 As an example:
 
@@ -33,37 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 assessmentArn => Str
+=head2 AssessmentArn => Str
 
-  
-
-The ARN specifying the assessment from which you want to detach a rules
+  The ARN specifying the assessment from which you want to detach a rules
 package.
 
+=head2 RulesPackageArn => Str
 
-
-
-
-
-
-
-
-
-=head2 rulesPackageArn => Str
-
-  
-
-The ARN specifying the rules package that you want to detach from the
+  The ARN specifying the rules package that you want to detach from the
 assessment.
-
-
-
-
-
-
-
-
-
 
 
 

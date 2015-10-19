@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddWorkingStora
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method AddWorkingStorage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddWorkingStorage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddWorkingStorage.
 
 As an example:
 
@@ -35,20 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DiskIds => ArrayRef[Str]
 
-  
-
-An array of strings that identify disks that are to be configured as
+  An array of strings that identify disks that are to be configured as
 working storage. Each string have a minimum length of 1 and maximum
 length of 300. You can get the disk IDs from the ListLocalDisks API.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> GatewayARN => Str
 

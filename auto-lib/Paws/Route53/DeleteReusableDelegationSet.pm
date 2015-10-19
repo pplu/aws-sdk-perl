@@ -22,18 +22,7 @@ Paws::Route53::DeleteReusableDelegationSetResponse
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The ID of the reusable delegation set you want to delete.
-
-
-
-
-
-
-
-
-
+  The ID of the reusable delegation set you want to delete.
 
 
 =cut

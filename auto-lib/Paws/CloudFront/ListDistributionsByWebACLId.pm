@@ -24,54 +24,21 @@ Paws::CloudFront::ListDistributionsByWebACLIdResult
 
 =head2 Marker => Str
 
-  
-
-Use Marker and MaxItems to control pagination of results. If you have
+  Use Marker and MaxItems to control pagination of results. If you have
 more than MaxItems distributions that satisfy the request, the response
 includes a NextMarker element. To get the next page of results, submit
 another request. For the value of Marker, specify the value of
 NextMarker from the last response. (For the first request, omit
 Marker.)
-
-
-
-
-
-
-
-
-
 =head2 MaxItems => Str
 
-  
-
-The maximum number of distributions that you want CloudFront to return
+  The maximum number of distributions that you want CloudFront to return
 in the response body. The maximum and default values are both 100.
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> WebACLId => Str
 
-  
-
-The Id of the AWS WAF web ACL for which you want to list the associated
+  The Id of the AWS WAF web ACL for which you want to list the associated
 distributions. If you specify "null" for the Id, the request returns a
 list of the distributions that aren't associated with a web ACL.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteTags on t
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DeleteTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTags.
 
 As an example:
 
@@ -36,55 +36,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Resources => ArrayRef[Str]
 
-  
-
-The ID of the resource. For example, ami-1a2b3c4d. You can specify more
+  The ID of the resource. For example, ami-1a2b3c4d. You can specify more
 than one resource ID.
 
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
-
-  
-
-One or more tags to delete. If you omit the C<value> parameter, we
+  One or more tags to delete. If you omit the C<value> parameter, we
 delete the tag regardless of its value. If you specify this parameter
 with an empty string as the value, we delete the key only if its value
 is an empty string.
-
-
-
-
-
-
-
-
-
 
 
 

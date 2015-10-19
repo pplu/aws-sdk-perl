@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateVTLDevice
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method UpdateVTLDeviceType.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateVTLDeviceType.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateVTLDeviceType.
 
 As an example:
 
@@ -35,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeviceType => Str
 
-  
-
-The type of medium changer you want to select.
+  The type of medium changer you want to select.
 
 I<Valid Values>: "STK-L700", "AWS-Gateway-VTL"
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VTLDeviceARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the medium changer you want to
+  The Amazon Resource Name (ARN) of the medium changer you want to
 select.
-
-
-
-
-
-
-
-
-
 
 
 

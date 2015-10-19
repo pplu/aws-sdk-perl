@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeResize 
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DescribeResize.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeResize.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeResize.
 
 As an example:
 
@@ -34,22 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  
-
-The unique identifier of a cluster whose resize progress you are
+  The unique identifier of a cluster whose resize progress you are
 requesting. This parameter is case-sensitive.
 
 By default, resize operations for all clusters defined for an AWS
 account are returned.
-
-
-
-
-
-
-
-
-
 
 
 

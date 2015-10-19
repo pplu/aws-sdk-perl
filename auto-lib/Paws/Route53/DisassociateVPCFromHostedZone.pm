@@ -24,49 +24,16 @@ Paws::Route53::DisassociateVPCFromHostedZoneResponse
 
 =head2 Comment => Str
 
-  
-
-I<Optional:> Any comments you want to include about a
+  I<Optional:> Any comments you want to include about a
 C<DisassociateVPCFromHostedZoneRequest>.
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> HostedZoneId => Str
 
-  
-
-The ID of the hosted zone you want to disassociate your VPC from.
+  The ID of the hosted zone you want to disassociate your VPC from.
 
 Note that you cannot disassociate the last VPC from a hosted zone.
+=head2 B<REQUIRED> VPC => L<Paws::Route53::VPC>
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> VPC => Paws::Route53::VPC
-
-  
-
-The VPC that you want your hosted zone to be disassociated from.
-
-
-
-
-
-
-
-
-
+  The VPC that you want your hosted zone to be disassociated from.
 
 
 =cut

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DeleteAlias on 
 AWS Lambda service. Use the attributes of this class
 as arguments to method DeleteAlias.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteAlias.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteAlias.
 
 As an example:
 
@@ -37,33 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-The Lambda function name for which the alias is created.
-
-
-
-
-
-
-
-
-
+  The Lambda function name for which the alias is created.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-Name of the alias to delete.
-
-
-
-
-
-
-
-
-
+  Name of the alias to delete.
 
 
 

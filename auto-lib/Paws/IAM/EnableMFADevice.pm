@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method EnableMFADevice
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method EnableMFADevice.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to EnableMFADevice.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnableMFADevice.
 
 As an example:
 
@@ -37,64 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AuthenticationCode1 => Str
 
-  
-
-An authentication code emitted by the device.
-
-
-
-
-
-
-
-
-
+  An authentication code emitted by the device.
 
 =head2 B<REQUIRED> AuthenticationCode2 => Str
 
-  
-
-A subsequent authentication code emitted by the device.
-
-
-
-
-
-
-
-
-
+  A subsequent authentication code emitted by the device.
 
 =head2 B<REQUIRED> SerialNumber => Str
 
-  
-
-The serial number that uniquely identifies the MFA device. For virtual
+  The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the device ARN.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user for whom you want to enable the MFA device.
-
-
-
-
-
-
-
-
-
+  The name of the user for whom you want to enable the MFA device.
 
 
 

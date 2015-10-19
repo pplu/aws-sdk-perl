@@ -14,35 +14,13 @@ Paws::ElastiCache::EventsMessage
 
 =head1 ATTRIBUTES
 
-=head2 Events => ArrayRef[Paws::ElastiCache::Event]
+=head2 Events => ArrayRef[L<Paws::ElastiCache::Event>]
 
-  
-
-A list of events. Each element in the list contains detailed
+  A list of events. Each element in the list contains detailed
 information about one event.
-
-
-
-
-
-
-
-
-
 =head2 Marker => Str
 
-  
-
-Provides an identifier to allow retrieval of paginated results.
-
-
-
-
-
-
-
-
-
+  Provides an identifier to allow retrieval of paginated results.
 
 
 =cut

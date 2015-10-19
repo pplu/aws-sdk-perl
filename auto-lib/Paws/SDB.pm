@@ -104,8 +104,6 @@ Paws::SDB - Perl Interface to AWS Amazon SimpleDB
 
 =head1 DESCRIPTION
 
-
-
 Amazon SimpleDB is a web service providing the core database functions
 of data indexing and querying in the cloud. By offloading the time and
 effort associated with building and operating a web-scale database,
@@ -124,26 +122,15 @@ pay only for what they use.
 
 Visit http://aws.amazon.com/simpledb/ for more information.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
-=head2 BatchDeleteAttributes(DomainName => Str, Items => ArrayRef[Paws::SDB::DeletableItem])
+=head2 BatchDeleteAttributes(DomainName => Str, Items => ArrayRef[L<Paws::SDB::DeletableItem>])
 
 Each argument is described in detail in: L<Paws::SDB::BatchDeleteAttributes>
 
 Returns: nothing
 
-  
-
-Performs multiple DeleteAttributes operations in a single call, which
+  Performs multiple DeleteAttributes operations in a single call, which
 reduces round trips and latencies. This enables Amazon SimpleDB to
 optimize requests, which generally yields better throughput.
 
@@ -159,23 +146,13 @@ The following limitations are enforced for this operation:
 
 
 
-
-
-
-
-
-
-
-
-=head2 BatchPutAttributes(DomainName => Str, Items => ArrayRef[Paws::SDB::ReplaceableItem])
+=head2 BatchPutAttributes(DomainName => Str, Items => ArrayRef[L<Paws::SDB::ReplaceableItem>])
 
 Each argument is described in detail in: L<Paws::SDB::BatchPutAttributes>
 
 Returns: nothing
 
-  
-
-The C<BatchPutAttributes> operation creates or replaces attributes
+  The C<BatchPutAttributes> operation creates or replaces attributes
 within one or more items. By using this operation, the client can
 perform multiple PutAttribute operation with a single call. This helps
 yield savings in round trips and latencies, enabling Amazon SimpleDB to
@@ -234,23 +211,13 @@ The following limitations are enforced for this operation:
 
 
 
-
-
-
-
-
-
-
-
 =head2 CreateDomain(DomainName => Str)
 
 Each argument is described in detail in: L<Paws::SDB::CreateDomain>
 
 Returns: nothing
 
-  
-
-The C<CreateDomain> operation creates a new domain. The domain name
+  The C<CreateDomain> operation creates a new domain. The domain name
 should be unique among the domains associated with the Access Key ID
 provided in the request. The C<CreateDomain> operation may take 10 or
 more seconds to complete.
@@ -261,24 +228,13 @@ If the client requires additional domains, go to
 http://aws.amazon.com/contact-us/simpledb-limit-request/.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[Paws::SDB::Attribute], Expected => Paws::SDB::UpdateCondition])
+=head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[L<Paws::SDB::Attribute>], Expected => L<Paws::SDB::UpdateCondition>])
 
 Each argument is described in detail in: L<Paws::SDB::DeleteAttributes>
 
 Returns: nothing
 
-  
-
-Deletes one or more attributes associated with an item. If all
+  Deletes one or more attributes associated with an item. If all
 attributes of the item are deleted, the item is deleted.
 
 C<DeleteAttributes> is an idempotent operation; running it multiple
@@ -291,35 +247,15 @@ operation (read) immediately after a C<DeleteAttributes> or
 PutAttributes operation (write) might not return updated item data.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteDomain(DomainName => Str)
 
 Each argument is described in detail in: L<Paws::SDB::DeleteDomain>
 
 Returns: nothing
 
-  
-
-The C<DeleteDomain> operation deletes a domain. Any items (and their
+  The C<DeleteDomain> operation deletes a domain. Any items (and their
 attributes) in the domain are deleted as well. The C<DeleteDomain>
 operation might take 10 or more seconds to complete.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DomainMetadata(DomainName => Str)
@@ -328,20 +264,9 @@ Each argument is described in detail in: L<Paws::SDB::DomainMetadata>
 
 Returns: a L<Paws::SDB::DomainMetadataResult> instance
 
-  
-
-Returns information about the domain, including when the domain was
+  Returns information about the domain, including when the domain was
 created, the number of items and attributes in the domain, and the size
 of the attribute names and values.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetAttributes(DomainName => Str, ItemName => Str, [AttributeNames => ArrayRef[Str], ConsistentRead => Bool])
@@ -350,9 +275,7 @@ Each argument is described in detail in: L<Paws::SDB::GetAttributes>
 
 Returns: a L<Paws::SDB::GetAttributesResult> instance
 
-  
-
-Returns all of the attributes associated with the specified item.
+  Returns all of the attributes associated with the specified item.
 Optionally, the attributes returned can be limited to one or more
 attributes by specifying an attribute name parameter.
 
@@ -361,24 +284,13 @@ operation, an empty set is returned. The system does not return an
 error as it cannot guarantee the item does not exist on other replicas.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListDomains([MaxNumberOfDomains => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SDB::ListDomains>
 
 Returns: a L<Paws::SDB::ListDomainsResult> instance
 
-  
-
-The C<ListDomains> operation lists all domains associated with the
+  The C<ListDomains> operation lists all domains associated with the
 Access Key ID. It returns domain names up to the limit set by
 MaxNumberOfDomains. A NextToken is returned if there are more than
 C<MaxNumberOfDomains> domains. Calling C<ListDomains> successive times
@@ -387,24 +299,13 @@ C<MaxNumberOfDomains> more domain names with each successive operation
 call.
 
 
-
-
-
-
-
-
-
-
-
-=head2 PutAttributes(Attributes => ArrayRef[Paws::SDB::ReplaceableAttribute], DomainName => Str, ItemName => Str, [Expected => Paws::SDB::UpdateCondition])
+=head2 PutAttributes(Attributes => ArrayRef[L<Paws::SDB::ReplaceableAttribute>], DomainName => Str, ItemName => Str, [Expected => L<Paws::SDB::UpdateCondition>])
 
 Each argument is described in detail in: L<Paws::SDB::PutAttributes>
 
 Returns: nothing
 
-  
-
-The PutAttributes operation creates or replaces attributes in an item.
+  The PutAttributes operation creates or replaces attributes in an item.
 The client may specify new attributes using a combination of the
 C<Attribute.X.Name> and C<Attribute.X.Value> parameters. The client
 specifies the first attribute by the parameters C<Attribute.0.Name> and
@@ -448,23 +349,13 @@ The following limitations are enforced for this operation:
 
 
 
-
-
-
-
-
-
-
-
 =head2 Select(SelectExpression => Str, [ConsistentRead => Bool, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SDB::Select>
 
 Returns: a L<Paws::SDB::SelectResult> instance
 
-  
-
-The C<Select> operation returns a set of attributes for C<ItemNames>
+  The C<Select> operation returns a set of attributes for C<ItemNames>
 that match the select expression. C<Select> is similar to the standard
 SQL SELECT statement.
 
@@ -477,15 +368,6 @@ next page of results.
 
 For information on how to construct select expressions, see Using
 Select to Create Amazon SimpleDB Queries in the Developer Guide.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

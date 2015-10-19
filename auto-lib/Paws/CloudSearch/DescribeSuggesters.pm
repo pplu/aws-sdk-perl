@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeSuggest
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method DescribeSuggesters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSuggesters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSuggesters.
 
 As an example:
 
@@ -36,49 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Deployed => Bool
 
-  
-
-Whether to display the deployed configuration (C<true>) or include any
+  Whether to display the deployed configuration (C<true>) or include any
 pending changes (C<false>). Defaults to C<false>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of the domain you want to describe.
-
-
-
-
-
-
-
-
-
+  The name of the domain you want to describe.
 
 =head2 SuggesterNames => ArrayRef[Str]
 
-  
-
-The suggesters you want to describe.
-
-
-
-
-
-
-
-
-
+  The suggesters you want to describe.
 
 
 

@@ -13,20 +13,9 @@ Paws::EC2::DescribeKeyPairsResult
 
 =head1 ATTRIBUTES
 
-=head2 KeyPairs => ArrayRef[Paws::EC2::KeyPairInfo]
+=head2 KeyPairs => ArrayRef[L<Paws::EC2::KeyPairInfo>]
 
-  
-
-Information about one or more key pairs.
-
-
-
-
-
-
-
-
-
+  Information about one or more key pairs.
 
 
 =cut

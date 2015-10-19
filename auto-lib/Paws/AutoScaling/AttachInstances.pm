@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AttachInstances
 Auto Scaling service. Use the attributes of this class
 as arguments to method AttachInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AttachInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AttachInstances.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
-
+  The name of the group.
 
 =head2 InstanceIds => ArrayRef[Str]
 
-  
-
-One or more EC2 instance IDs.
-
-
-
-
-
-
-
-
-
+  One or more EC2 instance IDs.
 
 
 

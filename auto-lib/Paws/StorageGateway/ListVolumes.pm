@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListVolumes on 
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method ListVolumes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListVolumes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListVolumes.
 
 As an example:
 
@@ -40,36 +40,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  
-
-Specifies that the list of volumes returned be limited to the specified
+  Specifies that the list of volumes returned be limited to the specified
 number of items.
-
-
-
-
-
-
-
-
-
 
 =head2 Marker => Str
 
-  
-
-A string that indicates the position at which to begin the returned
+  A string that indicates the position at which to begin the returned
 list of volumes. Obtain the marker from the response of a previous List
 iSCSI Volumes request.
-
-
-
-
-
-
-
-
-
 
 
 

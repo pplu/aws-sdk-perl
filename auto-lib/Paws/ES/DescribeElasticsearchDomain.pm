@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeElastic
 Amazon Elasticsearch Service service. Use the attributes of this class
 as arguments to method DescribeElasticsearchDomain.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeElasticsearchDomain.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeElasticsearchDomain.
 
 As an example:
 
@@ -36,18 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of the Elasticsearch domain for which you want information.
-
-
-
-
-
-
-
-
-
+  The name of the Elasticsearch domain for which you want information.
 
 
 

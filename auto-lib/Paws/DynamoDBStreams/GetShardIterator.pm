@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method GetShardIterato
 Amazon DynamoDB Streams service. Use the attributes of this class
 as arguments to method GetShardIterator.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetShardIterator.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetShardIterator.
 
 As an example:
 
@@ -37,41 +37,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 SequenceNumber => Str
 
-  
-
-The sequence number of a stream record in the shard from which to start
+  The sequence number of a stream record in the shard from which to start
 reading.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ShardId => Str
 
-  
-
-The identifier of the shard. The iterator will be returned for this
+  The identifier of the shard. The iterator will be returned for this
 shard ID.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ShardIteratorType => Str
 
-  
-
-Determines how the shard iterator is used to start reading stream
+  Determines how the shard iterator is used to start reading stream
 records from the shard:
 
 =over
@@ -101,28 +77,9 @@ the shard, so that you always read the most recent data in the shard.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StreamArn => Str
 
-  
-
-The Amazon Resource Name (ARN) for the stream.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) for the stream.
 
 
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateApplicati
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method UpdateApplication.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApplication.
 
 As an example:
 
@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of the application to update. If no such application is found,
+  The name of the application to update. If no such application is found,
 C<UpdateApplication> returns an C<InvalidParameterValue> error.
-
-
-
-
-
-
-
-
-
 
 =head2 Description => Str
 
-  
-
-A new description for the application.
+  A new description for the application.
 
 Default: If not specified, AWS Elastic Beanstalk does not update the
 description.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method ModifyMountTarg
 Amazon Elastic File System service. Use the attributes of this class
 as arguments to method ModifyMountTargetSecurityGroups.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyMountTargetSecurityGroups.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyMountTargetSecurityGroups.
 
 As an example:
 
@@ -37,33 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MountTargetId => Str
 
-  
-
-The ID of the mount target whose security groups you want to modify.
-
-
-
-
-
-
-
-
-
+  The ID of the mount target whose security groups you want to modify.
 
 =head2 SecurityGroups => ArrayRef[Str]
 
-  
-
-An array of up to five VPC security group IDs.
-
-
-
-
-
-
-
-
-
+  An array of up to five VPC security group IDs.
 
 
 

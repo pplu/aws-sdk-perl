@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateRule on t
 AWS WAF service. Use the attributes of this class
 as arguments to method UpdateRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRule.
 
 As an example:
 
@@ -36,40 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
-
-The value returned by the most recent call to GetChangeToken.
-
-
-
-
-
-
-
-
-
+  The value returned by the most recent call to GetChangeToken.
 
 =head2 B<REQUIRED> RuleId => Str
 
-  
-
-The C<RuleId> of the C<Rule> that you want to update. C<RuleId> is
+  The C<RuleId> of the C<Rule> that you want to update. C<RuleId> is
 returned by C<CreateRule> and by ListRules.
 
+=head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::RuleUpdate>]
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Updates => ArrayRef[Paws::WAF::RuleUpdate]
-
-  
-
-An array of C<RuleUpdate> objects that you want to insert into or
+  An array of C<RuleUpdate> objects that you want to insert into or
 delete from a Rule. For more information, see the applicable data
 types:
 
@@ -82,14 +58,6 @@ types:
 =item * FieldToMatch: Contains C<Data> and C<Type>
 
 =back
-
-
-
-
-
-
-
-
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::AcknowledgeThirdPartyJobOutput;
   use Moose;
-  has status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::CodePipeline::AcknowledgeThirdPartyJobOutput
 
 =head1 ATTRIBUTES
 
-=head2 status => Str
+=head2 Status => Str
 
-  
-
-The status information for the third party job, if any.
-
-
-
-
-
-
-
-
-
+  The status information for the third party job, if any.
 
 
 =cut

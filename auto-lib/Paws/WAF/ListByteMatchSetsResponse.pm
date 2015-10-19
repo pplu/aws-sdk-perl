@@ -13,38 +13,16 @@ Paws::WAF::ListByteMatchSetsResponse
 
 =head1 ATTRIBUTES
 
-=head2 ByteMatchSets => ArrayRef[Paws::WAF::ByteMatchSetSummary]
+=head2 ByteMatchSets => ArrayRef[L<Paws::WAF::ByteMatchSetSummary>]
 
-  
-
-An array of ByteMatchSetSummary objects.
-
-
-
-
-
-
-
-
-
+  An array of ByteMatchSetSummary objects.
 =head2 NextMarker => Str
 
-  
-
-If you have more C<ByteMatchSet> objects than the number that you
+  If you have more C<ByteMatchSet> objects than the number that you
 specified for C<Limit> in the request, the response includes a
 C<NextMarker> value. To list more C<ByteMatchSet> objects, submit
 another C<ListByteMatchSets> request, and specify the C<NextMarker>
 value from the response in the C<NextMarker> value in the next request.
-
-
-
-
-
-
-
-
-
 
 
 =cut

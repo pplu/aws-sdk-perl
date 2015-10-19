@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RemoveTagsFromR
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method RemoveTagsFromResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTagsFromResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTagsFromResource.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ResourceARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the resource you want to remove the
+  The Amazon Resource Name (ARN) of the resource you want to remove the
 tags from.
-
-
-
-
-
-
-
-
-
 
 =head2 TagKeys => ArrayRef[Str]
 
-  
-
-The keys of the tags you want to remove from the specified resource. A
+  The keys of the tags you want to remove from the specified resource. A
 tag is composed of a key/value pair.
-
-
-
-
-
-
-
-
-
 
 
 

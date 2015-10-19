@@ -15,18 +15,7 @@ Paws::CloudFormation::CreateStackOutput
 
 =head2 StackId => Str
 
-  
-
-Unique identifier of the stack.
-
-
-
-
-
-
-
-
-
+  Unique identifier of the stack.
 
 
 =cut

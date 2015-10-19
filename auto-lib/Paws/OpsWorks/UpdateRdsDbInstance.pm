@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateRdsDbInst
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method UpdateRdsDbInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRdsDbInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRdsDbInstance.
 
 As an example:
 
@@ -36,48 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DbPassword => Str
 
-  
-
-The database password.
-
-
-
-
-
-
-
-
-
+  The database password.
 
 =head2 DbUser => Str
 
-  
-
-The master user name.
-
-
-
-
-
-
-
-
-
+  The master user name.
 
 =head2 B<REQUIRED> RdsDbInstanceArn => Str
 
-  
-
-The Amazon RDS instance's ARN.
-
-
-
-
-
-
-
-
-
+  The Amazon RDS instance's ARN.
 
 
 

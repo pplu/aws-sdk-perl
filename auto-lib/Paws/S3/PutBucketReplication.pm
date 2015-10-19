@@ -28,7 +28,7 @@ Paws::S3::
 =head2 ContentMD5 => Str
 
   
-=head2 B<REQUIRED> ReplicationConfiguration => Paws::S3::ReplicationConfiguration
+=head2 B<REQUIRED> ReplicationConfiguration => L<Paws::S3::ReplicationConfiguration>
 
   
 

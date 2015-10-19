@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method StopInstances o
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method StopInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StopInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StopInstances.
 
 As an example:
 
@@ -36,56 +36,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 Force => Bool
 
-  
-
-Forces the instances to stop. The instances do not have an opportunity
+  Forces the instances to stop. The instances do not have an opportunity
 to flush file system caches or file system metadata. If you use this
 option, you must perform file system check and repair procedures. This
 option is not recommended for Windows instances.
 
 Default: C<false>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> InstanceIds => ArrayRef[Str]
 
-  
-
-One or more instance IDs.
-
-
-
-
-
-
-
-
-
+  One or more instance IDs.
 
 
 

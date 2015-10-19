@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddTagsToStream
 Amazon Kinesis service. Use the attributes of this class
 as arguments to method AddTagsToStream.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddTagsToStream.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTagsToStream.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> StreamName => Str
 
-  
+  The name of the stream.
 
-The name of the stream.
+=head2 B<REQUIRED> Tags => L<Paws::Kinesis::TagMap>
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Tags => Paws::Kinesis::TagMap
-
-  
-
-The set of key-value pairs to use to create the tags.
-
-
-
-
-
-
-
-
-
+  The set of key-value pairs to use to create the tags.
 
 
 

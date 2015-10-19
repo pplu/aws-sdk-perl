@@ -15,18 +15,7 @@ Paws::SNS::CreatePlatformApplicationResponse
 
 =head2 PlatformApplicationArn => Str
 
-  
-
-PlatformApplicationArn is returned.
-
-
-
-
-
-
-
-
-
+  PlatformApplicationArn is returned.
 
 
 =cut

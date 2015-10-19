@@ -1,7 +1,7 @@
 
 package Paws::Inspector::CreateResourceGroup;
   use Moose;
-  has resourceGroupTags => (is => 'ro', isa => 'Str');
+  has ResourceGroupTags => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupTags' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateResourceG
 Amazon Inspector service. Use the attributes of this class
 as arguments to method CreateResourceGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateResourceGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateResourceGroup.
 
 As an example:
 
@@ -32,22 +32,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 resourceGroupTags => Str
+=head2 ResourceGroupTags => Str
 
-  
-
-A collection of keys and an array of possible values in JSON format.
+  A collection of keys and an array of possible values in JSON format.
 
 For example, [{ "key1" : ["Value1","Value2"]},{"Key2": ["Value3"]}]
-
-
-
-
-
-
-
-
-
 
 
 

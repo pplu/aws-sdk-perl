@@ -1,8 +1,8 @@
 
 package Paws::Inspector::RunAssessment;
   use Moose;
-  has assessmentArn => (is => 'ro', isa => 'Str');
-  has runName => (is => 'ro', isa => 'Str');
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' );
+  has RunName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'runName' );
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RunAssessment o
 Amazon Inspector service. Use the attributes of this class
 as arguments to method RunAssessment.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RunAssessment.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RunAssessment.
 
 As an example:
 
@@ -33,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 assessmentArn => Str
+=head2 AssessmentArn => Str
 
-  
+  The ARN of the assessment that you want to run.
 
-The ARN of the assessment that you want to run.
+=head2 RunName => Str
 
-
-
-
-
-
-
-
-
-
-=head2 runName => Str
-
-  
-
-A name specifying the run of the assessment.
-
-
-
-
-
-
-
-
-
+  A name specifying the run of the assessment.
 
 
 

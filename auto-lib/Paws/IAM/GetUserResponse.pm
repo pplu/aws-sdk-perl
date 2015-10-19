@@ -13,20 +13,9 @@ Paws::IAM::GetUserResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> User => Paws::IAM::User
+=head2 B<REQUIRED> User => L<Paws::IAM::User>
 
-  
-
-Information about the user.
-
-
-
-
-
-
-
-
-
+  Information about the user.
 
 
 =cut

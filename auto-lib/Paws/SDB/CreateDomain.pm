@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateDomain on
 Amazon SimpleDB service. Use the attributes of this class
 as arguments to method CreateDomain.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDomain.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDomain.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of the domain to create. The name can range between 3 and 255
+  The name of the domain to create. The name can range between 3 and 255
 characters and can contain the following characters: a-z, A-Z, 0-9,
 '_', '-', and '.'.
-
-
-
-
-
-
-
-
-
 
 
 

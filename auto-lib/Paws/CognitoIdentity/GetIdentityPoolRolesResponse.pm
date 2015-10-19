@@ -15,33 +15,11 @@ Paws::CognitoIdentity::GetIdentityPoolRolesResponse
 
 =head2 IdentityPoolId => Str
 
-  
+  An identity pool ID in the format REGION:GUID.
+=head2 Roles => L<Paws::CognitoIdentity::RolesMap>
 
-An identity pool ID in the format REGION:GUID.
-
-
-
-
-
-
-
-
-
-=head2 Roles => Paws::CognitoIdentity::RolesMap
-
-  
-
-The map of roles associated with this pool. Currently only
+  The map of roles associated with this pool. Currently only
 authenticated and unauthenticated roles are supported.
-
-
-
-
-
-
-
-
-
 
 
 =cut

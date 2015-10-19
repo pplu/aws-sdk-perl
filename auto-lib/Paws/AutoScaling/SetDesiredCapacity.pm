@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method SetDesiredCapac
 Auto Scaling service. Use the attributes of this class
 as arguments to method SetDesiredCapacity.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetDesiredCapacity.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetDesiredCapacity.
 
 As an example:
 
@@ -36,53 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the Auto Scaling group.
-
-
-
-
-
-
-
-
-
+  The name of the Auto Scaling group.
 
 =head2 B<REQUIRED> DesiredCapacity => Int
 
-  
-
-The number of EC2 instances that should be running in the Auto Scaling
+  The number of EC2 instances that should be running in the Auto Scaling
 group.
-
-
-
-
-
-
-
-
-
 
 =head2 HonorCooldown => Bool
 
-  
-
-By default, C<SetDesiredCapacity> overrides any cooldown period
+  By default, C<SetDesiredCapacity> overrides any cooldown period
 associated with the Auto Scaling group. Specify C<True> to make Auto
 Scaling to wait for the cool-down period associated with the Auto
 Scaling group to complete before initiating a scaling activity to set
 your Auto Scaling group to its new capacity.
-
-
-
-
-
-
-
-
-
 
 
 

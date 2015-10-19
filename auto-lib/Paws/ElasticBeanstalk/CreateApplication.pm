@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateApplicati
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method CreateApplication.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplication.
 
 As an example:
 
@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of the application.
+  The name of the application.
 
 Constraint: This name must be unique within your account. If the
 specified name already exists, the action returns an
 C<InvalidParameterValue> error.
 
-
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
-
-Describes the application.
-
-
-
-
-
-
-
-
-
+  Describes the application.
 
 
 

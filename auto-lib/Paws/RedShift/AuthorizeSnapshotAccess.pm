@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method AuthorizeSnapsh
 Amazon Redshift service. Use the attributes of this class
 as arguments to method AuthorizeSnapshotAccess.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AuthorizeSnapshotAccess.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AuthorizeSnapshotAccess.
 
 As an example:
 
@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountWithRestoreAccess => Str
 
-  
-
-The identifier of the AWS customer account authorized to restore the
+  The identifier of the AWS customer account authorized to restore the
 specified snapshot.
-
-
-
-
-
-
-
-
-
 
 =head2 SnapshotClusterIdentifier => Str
 
-  
-
-The identifier of the cluster the snapshot was created from. This
+  The identifier of the cluster the snapshot was created from. This
 parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
-  
-
-The identifier of the snapshot the account is authorized to restore.
-
-
-
-
-
-
-
-
-
+  The identifier of the snapshot the account is authorized to restore.
 
 
 

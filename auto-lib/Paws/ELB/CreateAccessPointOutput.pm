@@ -15,18 +15,7 @@ Paws::ELB::CreateAccessPointOutput
 
 =head2 DNSName => Str
 
-  
-
-The DNS name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The DNS name of the load balancer.
 
 
 =cut

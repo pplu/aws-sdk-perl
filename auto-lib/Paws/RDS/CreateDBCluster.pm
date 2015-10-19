@@ -38,7 +38,7 @@ This class represents the parameters used for calling the method CreateDBCluster
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CreateDBCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBCluster.
 
 As an example:
 
@@ -50,26 +50,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  
-
-A list of EC2 Availability Zones that instances in the DB cluster can
+  A list of EC2 Availability Zones that instances in the DB cluster can
 be created in. For information on regions and Availability Zones, see
 Regions and Availability Zones.
 
-
-
-
-
-
-
-
-
-
 =head2 BackupRetentionPeriod => Int
 
-  
-
-The number of days for which automated backups are retained. Setting
+  The number of days for which automated backups are retained. Setting
 this parameter to a positive number enables backups. Setting this
 parameter to 0 disables automated backups.
 
@@ -84,52 +71,20 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 CharacterSetName => Str
 
-  
-
-A value that indicates that the DB cluster should be associated with
+  A value that indicates that the DB cluster should be associated with
 the specified CharacterSet.
-
-
-
-
-
-
-
-
-
 
 =head2 DatabaseName => Str
 
-  
-
-The name for your database of up to 8 alpha-numeric characters. If you
+  The name for your database of up to 8 alpha-numeric characters. If you
 do not provide a name, Amazon RDS will not create a database in the DB
 cluster you are creating.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-  
-
-The DB cluster identifier. This parameter is stored as a lowercase
+  The DB cluster identifier. This parameter is stored as a lowercase
 string.
 
 Constraints:
@@ -146,20 +101,9 @@ Constraints:
 
 Example: C<my-cluster1>
 
-
-
-
-
-
-
-
-
-
 =head2 DBClusterParameterGroupName => Str
 
-  
-
-The name of the DB cluster parameter group to associate with this DB
+  The name of the DB cluster parameter group to associate with this DB
 cluster. If this argument is omitted, C<default.aurora5.6> for the
 specified engine will be used.
 
@@ -176,70 +120,27 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 DBSubnetGroupName => Str
 
-  
-
-A DB subnet group to associate with this DB cluster.
-
-
-
-
-
-
-
-
-
+  A DB subnet group to associate with this DB cluster.
 
 =head2 B<REQUIRED> Engine => Str
 
-  
-
-The name of the database engine to be used for this DB cluster.
+  The name of the database engine to be used for this DB cluster.
 
 Valid Values: C<aurora>
 
-
-
-
-
-
-
-
-
-
 =head2 EngineVersion => Str
 
-  
-
-The version number of the database engine to use.
+  The version number of the database engine to use.
 
 B<Aurora>
 
 Example: C<5.6.10a>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> MasterUsername => Str
 
-  
-
-The name of the master user for the client DB cluster.
+  The name of the master user for the client DB cluster.
 
 Constraints:
 
@@ -254,75 +155,32 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> MasterUserPassword => Str
 
-  
-
-The password for the master database user. This password can contain
+  The password for the master database user. This password can contain
 any printable ASCII character except "/", """, or "@".
 
 Constraints: Must contain from 8 to 41 characters.
 
-
-
-
-
-
-
-
-
-
 =head2 OptionGroupName => Str
 
-  
-
-A value that indicates that the DB cluster should be associated with
+  A value that indicates that the DB cluster should be associated with
 the specified option group.
 
 Permanent options cannot be removed from an option group. The option
 group cannot be removed from a DB cluster once it is associated with a
 DB cluster.
 
-
-
-
-
-
-
-
-
-
 =head2 Port => Int
 
-  
-
-The port number on which the instances in the DB cluster accept
+  The port number on which the instances in the DB cluster accept
 connections.
 
 Default: C<3306>
 
-
-
-
-
-
-
-
-
-
 =head2 PreferredBackupWindow => Str
 
-  
-
-The daily time range during which automated backups are created if
+  The daily time range during which automated backups are created if
 automated backups are enabled using the C<BackupRetentionPeriod>
 parameter.
 
@@ -345,19 +203,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 PreferredMaintenanceWindow => Str
 
-  
-
-The weekly time range during which system maintenance can occur, in
+  The weekly time range during which system maintenance can occur, in
 Universal Coordinated Time (UTC).
 
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
@@ -371,33 +219,13 @@ Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Constraints: Minimum 30-minute window.
 
-
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  
-
-A list of EC2 VPC security groups to associate with this DB cluster.
-
-
-
-
-
-
-
-
-
+  A list of EC2 VPC security groups to associate with this DB cluster.
 
 
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ApplySecurityGr
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method ApplySecurityGroupsToLoadBalancer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ApplySecurityGroupsToLoadBalancer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ApplySecurityGroupsToLoadBalancer.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 =head2 B<REQUIRED> SecurityGroups => ArrayRef[Str]
 
-  
-
-The IDs of the security groups to associate with the load balancer.
+  The IDs of the security groups to associate with the load balancer.
 Note that you cannot specify the name of the security group.
-
-
-
-
-
-
-
-
-
 
 
 

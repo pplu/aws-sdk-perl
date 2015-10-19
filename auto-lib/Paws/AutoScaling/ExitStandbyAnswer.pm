@@ -13,20 +13,9 @@ Paws::AutoScaling::ExitStandbyAnswer
 
 =head1 ATTRIBUTES
 
-=head2 Activities => ArrayRef[Paws::AutoScaling::Activity]
+=head2 Activities => ArrayRef[L<Paws::AutoScaling::Activity>]
 
-  
-
-The activities related to moving instances out of C<Standby> mode.
-
-
-
-
-
-
-
-
-
+  The activities related to moving instances out of C<Standby> mode.
 
 
 =cut

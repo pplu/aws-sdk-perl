@@ -21,7 +21,7 @@ This class represents the parameters used for calling the method CreateStorageLo
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method CreateStorageLocation.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateStorageLocation.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStorageLocation.
 
 As an example:
 

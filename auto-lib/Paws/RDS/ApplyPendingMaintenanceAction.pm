@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ApplyPendingMai
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method ApplyPendingMaintenanceAction.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ApplyPendingMaintenanceAction.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ApplyPendingMaintenanceAction.
 
 As an example:
 
@@ -36,24 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplyAction => Str
 
-  
-
-The pending maintenance action to apply to this resource.
-
-
-
-
-
-
-
-
-
+  The pending maintenance action to apply to this resource.
 
 =head2 B<REQUIRED> OptInType => Str
 
-  
-
-A value that specifies the type of opt-in request, or undoes an opt-in
+  A value that specifies the type of opt-in request, or undoes an opt-in
 request. An opt-in request of type C<immediate> cannot be undone.
 
 Valid values:
@@ -71,30 +58,11 @@ requests.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ResourceIdentifier => Str
 
-  
-
-The RDS Amazon Resource Name (ARN) of the resource that the pending
+  The RDS Amazon Resource Name (ARN) of the resource that the pending
 maintenance action applies to. For information about creating an ARN,
 see Constructing an RDS Amazon Resource Name (ARN).
-
-
-
-
-
-
-
-
-
 
 
 

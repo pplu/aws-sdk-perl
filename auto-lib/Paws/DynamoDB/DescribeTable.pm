@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeTable o
 Amazon DynamoDB service. Use the attributes of this class
 as arguments to method DescribeTable.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTable.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTable.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TableName => Str
 
-  
-
-The name of the table to describe.
-
-
-
-
-
-
-
-
-
+  The name of the table to describe.
 
 
 

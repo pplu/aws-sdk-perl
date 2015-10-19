@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteDBParamet
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DeleteDBParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDBParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDBParameterGroup.
 
 As an example:
 
@@ -34,9 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBParameterGroupName => Str
 
-  
-
-The name of the DB parameter group.
+  The name of the DB parameter group.
 
 Constraints:
 
@@ -49,14 +47,6 @@ Constraints:
 =item * Cannot be associated with any DB instances
 
 =back
-
-
-
-
-
-
-
-
 
 
 

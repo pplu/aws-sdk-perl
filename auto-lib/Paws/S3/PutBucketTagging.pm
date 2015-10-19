@@ -28,7 +28,7 @@ Paws::S3::
 =head2 ContentMD5 => Str
 
   
-=head2 B<REQUIRED> Tagging => Paws::S3::Tagging
+=head2 B<REQUIRED> Tagging => L<Paws::S3::Tagging>
 
   
 

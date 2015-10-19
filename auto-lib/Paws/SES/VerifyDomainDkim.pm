@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method VerifyDomainDki
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method VerifyDomainDkim.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to VerifyDomainDkim.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to VerifyDomainDkim.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Domain => Str
 
-  
-
-The name of the domain to be verified for Easy DKIM signing.
-
-
-
-
-
-
-
-
-
+  The name of the domain to be verified for Easy DKIM signing.
 
 
 

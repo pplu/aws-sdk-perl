@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method EnableLogging o
 Amazon Redshift service. Use the attributes of this class
 as arguments to method EnableLogging.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to EnableLogging.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnableLogging.
 
 As an example:
 
@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BucketName => Str
 
-  
-
-The name of an existing S3 bucket where the log files are to be stored.
+  The name of an existing S3 bucket where the log files are to be stored.
 
 Constraints:
 
@@ -51,36 +49,15 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  
-
-The identifier of the cluster on which logging is to be started.
+  The identifier of the cluster on which logging is to be started.
 
 Example: C<examplecluster>
 
-
-
-
-
-
-
-
-
-
 =head2 S3KeyPrefix => Str
 
-  
-
-The prefix applied to the log file names.
+  The prefix applied to the log file names.
 
 Constraints:
 
@@ -107,14 +84,6 @@ invalid characters are:
 =back
 
 =back
-
-
-
-
-
-
-
-
 
 
 

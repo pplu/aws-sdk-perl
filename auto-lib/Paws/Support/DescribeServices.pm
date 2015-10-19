@@ -1,8 +1,8 @@
 
 package Paws::Support::DescribeServices;
   use Moose;
-  has language => (is => 'ro', isa => 'Str');
-  has serviceCodeList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' );
+  has ServiceCodeList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'serviceCodeList' );
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DescribeService
 AWS Support service. Use the attributes of this class
 as arguments to method DescribeServices.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeServices.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeServices.
 
 As an example:
 
@@ -33,37 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 language => Str
+=head2 Language => Str
 
-  
-
-The ISO 639-1 code for the language in which AWS provides support. AWS
+  The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.
 
+=head2 ServiceCodeList => ArrayRef[Str]
 
-
-
-
-
-
-
-
-
-=head2 serviceCodeList => ArrayRef[Str]
-
-  
-
-A JSON-formatted list of service codes available for AWS services.
-
-
-
-
-
-
-
-
-
+  A JSON-formatted list of service codes available for AWS services.
 
 
 

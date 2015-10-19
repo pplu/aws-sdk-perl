@@ -1,8 +1,8 @@
 
 package Paws::CodePipeline::PutJobFailureResult;
   use Moose;
-  has failureDetails => (is => 'ro', isa => 'Paws::CodePipeline::FailureDetails', required => 1);
-  has jobId => (is => 'ro', isa => 'Str', required => 1);
+  has FailureDetails => (is => 'ro', isa => 'Paws::CodePipeline::FailureDetails', traits => ['NameInRequest'], request_name => 'failureDetails' , required => 1);
+  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method PutJobFailureRe
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method PutJobFailureResult.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutJobFailureResult.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutJobFailureResult.
 
 As an example:
 
@@ -33,36 +33,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> failureDetails => Paws::CodePipeline::FailureDetails
+=head2 B<REQUIRED> FailureDetails => L<Paws::CodePipeline::FailureDetails>
 
-  
+  The details about the failure of a job.
 
-The details about the failure of a job.
+=head2 B<REQUIRED> JobId => Str
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> jobId => Str
-
-  
-
-The unique system-generated ID of the job that failed. This is the same
+  The unique system-generated ID of the job that failed. This is the same
 ID returned from PollForJobs.
-
-
-
-
-
-
-
-
-
 
 
 

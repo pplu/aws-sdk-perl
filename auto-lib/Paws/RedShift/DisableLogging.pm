@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DisableLogging 
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DisableLogging.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DisableLogging.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisableLogging.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  
-
-The identifier of the cluster on which logging is to be stopped.
+  The identifier of the cluster on which logging is to be stopped.
 
 Example: C<examplecluster>
-
-
-
-
-
-
-
-
-
 
 
 

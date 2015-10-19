@@ -13,7 +13,7 @@ Paws::RDS::AuthorizeDBSecurityGroupIngressResult
 
 =head1 ATTRIBUTES
 
-=head2 DBSecurityGroup => Paws::RDS::DBSecurityGroup
+=head2 DBSecurityGroup => L<Paws::RDS::DBSecurityGroup>
 
   
 

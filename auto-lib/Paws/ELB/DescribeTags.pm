@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeTags on
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method DescribeTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTags.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LoadBalancerNames => ArrayRef[Str]
 
-  
-
-The names of the load balancers.
-
-
-
-
-
-
-
-
-
+  The names of the load balancers.
 
 
 

@@ -34,18 +34,7 @@ Paws::S3::GetObjectAclOutput
   
 =head2 VersionId => Str
 
-  
-
-VersionId used to reference a specific version of the object.
-
-
-
-
-
-
-
-
-
+  VersionId used to reference a specific version of the object.
 
 
 =cut

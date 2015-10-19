@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RemoveTags on t
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method RemoveTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTags.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LoadBalancerNames => ArrayRef[Str]
 
-  
-
-The name of the load balancer. You can specify a maximum of one load
+  The name of the load balancer. You can specify a maximum of one load
 balancer name.
 
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::ELB::TagKeyOnly>]
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::ELB::TagKeyOnly]
-
-  
-
-The list of tag keys to remove.
-
-
-
-
-
-
-
-
-
+  The list of tag keys to remove.
 
 
 

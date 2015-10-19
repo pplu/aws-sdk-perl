@@ -33,7 +33,7 @@ This class represents the parameters used for calling the method UpdateInstance 
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method UpdateInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateInstance.
 
 As an example:
 
@@ -45,9 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AgentVersion => Str
 
-  
-
-The default AWS OpsWorks agent version. You have the following options:
+  The default AWS OpsWorks agent version. You have the following options:
 
 =over
 
@@ -65,102 +63,36 @@ must use the complete version number, not the abbreviated number shown
 on the console. For a list of available agent version numbers, call
 DescribeAgentVersions.
 
-
-
-
-
-
-
-
-
-
 =head2 AmiId => Str
 
-  
-
-A custom AMI ID to be used to create the instance. The AMI must be
+  A custom AMI ID to be used to create the instance. The AMI must be
 based on one of the supported operating systems. For more information,
 see Instances
 
 If you specify a custom AMI, you must set C<Os> to C<Custom>.
 
-
-
-
-
-
-
-
-
-
 =head2 Architecture => Str
 
-  
-
-The instance architecture. Instance types do not necessarily support
+  The instance architecture. Instance types do not necessarily support
 both architectures. For a list of the architectures that are supported
 by the different instance types, see Instance Families and Types.
 
-
-
-
-
-
-
-
-
-
 =head2 AutoScalingType => Str
 
-  
-
-For load-based or time-based instances, the type. Windows stacks can
+  For load-based or time-based instances, the type. Windows stacks can
 use only time-based instances.
-
-
-
-
-
-
-
-
-
 
 =head2 EbsOptimized => Bool
 
-  
-
-This property cannot be updated.
-
-
-
-
-
-
-
-
-
+  This property cannot be updated.
 
 =head2 Hostname => Str
 
-  
-
-The instance host name.
-
-
-
-
-
-
-
-
-
+  The instance host name.
 
 =head2 InstallUpdatesOnBoot => Bool
 
-  
-
-Whether to install operating system and package updates when the
+  Whether to install operating system and package updates when the
 instance boots. The default value is C<true>. To control when updates
 are installed, set this value to C<false>. You must then update your
 instances manually by using CreateDeployment to run the
@@ -170,70 +102,26 @@ C<update_dependencies> stack command or by manually running C<yum>
 We strongly recommend using the default value of C<true>, to ensure
 that your instances have the latest security updates.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The instance ID.
-
-
-
-
-
-
-
-
-
+  The instance ID.
 
 =head2 InstanceType => Str
 
-  
-
-The instance type, such as C<t2.micro>. For a list of supported
+  The instance type, such as C<t2.micro>. For a list of supported
 instance types, open the stack in the console, choose B<Instances>, and
 choose B<+ Instance>. The B<Size> list contains the currently supported
 types. For more information, see Instance Families and Types. The
 parameter values that you use to specify the various types are in the
 B<API Name> column of the B<Available Instance Types> table.
 
-
-
-
-
-
-
-
-
-
 =head2 LayerIds => ArrayRef[Str]
 
-  
-
-The instance's layer IDs.
-
-
-
-
-
-
-
-
-
+  The instance's layer IDs.
 
 =head2 Os => Str
 
-  
-
-The instance's operating system, which must be set to one of the
+  The instance's operating system, which must be set to one of the
 following.
 
 =over
@@ -260,29 +148,9 @@ to use custom AMIs with OpsWorks, see Using Custom AMIs.
 You can specify a different Linux operating system for the updated
 stack, but you cannot change from Linux to Windows or Windows to Linux.
 
-
-
-
-
-
-
-
-
-
 =head2 SshKeyName => Str
 
-  
-
-The instance's Amazon EC2 key name.
-
-
-
-
-
-
-
-
-
+  The instance's Amazon EC2 key name.
 
 
 

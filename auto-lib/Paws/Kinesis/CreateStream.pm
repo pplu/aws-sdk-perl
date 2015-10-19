@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateStream on
 Amazon Kinesis service. Use the attributes of this class
 as arguments to method CreateStream.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateStream.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateStream.
 
 As an example:
 
@@ -35,41 +35,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ShardCount => Int
 
-  
-
-The number of shards that the stream will use. The throughput of the
+  The number of shards that the stream will use. The throughput of the
 stream is a function of the number of shards; more shards are required
 for greater provisioned throughput.
 
 DefaultShardLimit;
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StreamName => Str
 
-  
-
-A name to identify the stream. The stream name is scoped to the AWS
+  A name to identify the stream. The stream name is scoped to the AWS
 account used by the application that creates the stream. It is also
 scoped by region. That is, two streams in two different AWS accounts
 can have the same name, and two streams in the same AWS account, but in
 two different regions, can have the same name.
-
-
-
-
-
-
-
-
-
 
 
 

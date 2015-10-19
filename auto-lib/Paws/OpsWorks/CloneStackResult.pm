@@ -14,18 +14,7 @@ Paws::OpsWorks::CloneStackResult
 
 =head2 StackId => Str
 
-  
-
-The cloned stack ID.
-
-
-
-
-
-
-
-
-
+  The cloned stack ID.
 
 
 =cut

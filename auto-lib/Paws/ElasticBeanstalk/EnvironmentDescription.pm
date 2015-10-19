@@ -31,142 +31,41 @@ Paws::ElasticBeanstalk::EnvironmentDescription
 
 =head2 AbortableOperationInProgress => Bool
 
-  
-
-Indicates if there is an in-progress environment configuration update
+  Indicates if there is an in-progress environment configuration update
 or application version deployment that you can cancel.
 
 C<true:> There is an update in progress.
 
 C<false:> There are no updates currently in progress.
-
-
-
-
-
-
-
-
-
 =head2 ApplicationName => Str
 
-  
-
-The name of the application associated with this environment.
-
-
-
-
-
-
-
-
-
+  The name of the application associated with this environment.
 =head2 CNAME => Str
 
-  
-
-The URL to the CNAME for this environment.
-
-
-
-
-
-
-
-
-
+  The URL to the CNAME for this environment.
 =head2 DateCreated => Str
 
-  
-
-The creation date for this environment.
-
-
-
-
-
-
-
-
-
+  The creation date for this environment.
 =head2 DateUpdated => Str
 
-  
-
-The last modified date for this environment.
-
-
-
-
-
-
-
-
-
+  The last modified date for this environment.
 =head2 Description => Str
 
-  
-
-Describes this environment.
-
-
-
-
-
-
-
-
-
+  Describes this environment.
 =head2 EndpointURL => Str
 
-  
-
-For load-balanced, autoscaling environments, the URL to the
+  For load-balanced, autoscaling environments, the URL to the
 LoadBalancer. For single-instance environments, the IP address of the
 instance.
-
-
-
-
-
-
-
-
-
 =head2 EnvironmentId => Str
 
-  
-
-The ID of this environment.
-
-
-
-
-
-
-
-
-
+  The ID of this environment.
 =head2 EnvironmentName => Str
 
-  
-
-The name of this environment.
-
-
-
-
-
-
-
-
-
+  The name of this environment.
 =head2 Health => Str
 
-  
-
-Describes the health status of the environment. AWS Elastic Beanstalk
+  Describes the health status of the environment. AWS Elastic Beanstalk
 indicates the failure levels for a running environment:
 
 C<Red> : Indicates the environment is not working.
@@ -195,63 +94,19 @@ C<RestartEnvironement> request.
 =back
 
 Default: C<Grey>
-
-
-
-
-
-
-
-
-
 =head2 HealthStatus => Str
 
-  
-
-Returns the health status of the application running in your
+  Returns the health status of the application running in your
 environment. For more information, see Health Colors and Statuses.
+=head2 Resources => L<Paws::ElasticBeanstalk::EnvironmentResourcesDescription>
 
-
-
-
-
-
-
-
-
-=head2 Resources => Paws::ElasticBeanstalk::EnvironmentResourcesDescription
-
-  
-
-The description of the AWS resources used by this environment.
-
-
-
-
-
-
-
-
-
+  The description of the AWS resources used by this environment.
 =head2 SolutionStackName => Str
 
-  
-
-The name of the C<SolutionStack> deployed with this environment.
-
-
-
-
-
-
-
-
-
+  The name of the C<SolutionStack> deployed with this environment.
 =head2 Status => Str
 
-  
-
-The current operational status of the environment:
+  The current operational status of the environment:
 
 =over
 
@@ -270,57 +125,16 @@ on it, such as update or terminate.
 
 =back
 
-
-
-
-
-
-
-
-
 =head2 TemplateName => Str
 
-  
-
-The name of the configuration template used to originally launch this
+  The name of the configuration template used to originally launch this
 environment.
+=head2 Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>
 
-
-
-
-
-
-
-
-
-=head2 Tier => Paws::ElasticBeanstalk::EnvironmentTier
-
-  
-
-Describes the current tier of this environment.
-
-
-
-
-
-
-
-
-
+  Describes the current tier of this environment.
 =head2 VersionLabel => Str
 
-  
-
-The application version deployed in this environment.
-
-
-
-
-
-
-
-
-
+  The application version deployed in this environment.
 
 
 =cut

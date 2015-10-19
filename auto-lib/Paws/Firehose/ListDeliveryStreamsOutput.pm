@@ -15,32 +15,10 @@ Paws::Firehose::ListDeliveryStreamsOutput
 
 =head2 B<REQUIRED> DeliveryStreamNames => ArrayRef[Str]
 
-  
-
-The names of the delivery streams.
-
-
-
-
-
-
-
-
-
+  The names of the delivery streams.
 =head2 B<REQUIRED> HasMoreDeliveryStreams => Bool
 
-  
-
-Indicates whether there are more delivery streams available to list.
-
-
-
-
-
-
-
-
-
+  Indicates whether there are more delivery streams available to list.
 
 
 =cut

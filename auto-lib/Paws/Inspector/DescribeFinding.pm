@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeFinding;
   use Moose;
-  has findingArn => (is => 'ro', isa => 'Str');
+  has FindingArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingArn' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeFinding
 Amazon Inspector service. Use the attributes of this class
 as arguments to method DescribeFinding.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeFinding.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeFinding.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 findingArn => Str
+=head2 FindingArn => Str
 
-  
-
-The ARN specifying the finding that you want to describe.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the finding that you want to describe.
 
 
 

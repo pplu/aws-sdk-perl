@@ -21,7 +21,7 @@ This class represents the parameters used for calling the method DescribeMyUserP
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeMyUserProfile.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeMyUserProfile.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeMyUserProfile.
 
 As an example:
 

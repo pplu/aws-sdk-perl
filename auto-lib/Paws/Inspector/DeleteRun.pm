@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DeleteRun;
   use Moose;
-  has runArn => (is => 'ro', isa => 'Str');
+  has RunArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'runArn' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteRun on th
 Amazon Inspector service. Use the attributes of this class
 as arguments to method DeleteRun.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRun.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRun.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 runArn => Str
+=head2 RunArn => Str
 
-  
-
-The ARN specifying the assessment run that you want to delete.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the assessment run that you want to delete.
 
 
 

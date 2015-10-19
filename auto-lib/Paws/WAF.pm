@@ -200,22 +200,11 @@ Paws::WAF - Perl Interface to AWS AWS WAF
 
 =head1 DESCRIPTION
 
-
-
 This is the I<AWS WAF API Reference>. This guide is for developers who
 need detailed information about the AWS WAF API actions, data types,
 and errors. For detailed information about AWS WAF features and an
 overview of how to use the AWS WAF API, see the AWS WAF Developer
 Guide.
-
-
-
-
-
-
-
-
-
 
 =head1 METHODS
 
@@ -225,9 +214,7 @@ Each argument is described in detail in: L<Paws::WAF::CreateByteMatchSet>
 
 Returns: a L<Paws::WAF::CreateByteMatchSetResponse> instance
 
-  
-
-Creates a C<ByteMatchSet>. You then use UpdateByteMatchSet to identify
+  Creates a C<ByteMatchSet>. You then use UpdateByteMatchSet to identify
 the part of a web request that you want AWS WAF to inspect, such as the
 values of the C<User-Agent> header or the query string. For example,
 you can create a C<ByteMatchSet> that matches any requests with
@@ -256,24 +243,13 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateIPSet(ChangeToken => Str, Name => Str)
 
 Each argument is described in detail in: L<Paws::WAF::CreateIPSet>
 
 Returns: a L<Paws::WAF::CreateIPSetResponse> instance
 
-  
-
-Creates an IPSet, which you use to specify which web requests you want
+  Creates an IPSet, which you use to specify which web requests you want
 to allow or block based on the IP addresses that the requests originate
 from. For example, if you're receiving a lot of requests from one or
 more individual IP addresses or one or more ranges of IP addresses and
@@ -302,24 +278,13 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateRule(ChangeToken => Str, MetricName => Str, Name => Str)
 
 Each argument is described in detail in: L<Paws::WAF::CreateRule>
 
 Returns: a L<Paws::WAF::CreateRuleResponse> instance
 
-  
-
-Creates a C<Rule>, which contains the C<IPSet> objects, C<ByteMatchSet>
+  Creates a C<Rule>, which contains the C<IPSet> objects, C<ByteMatchSet>
 objects, and other predicates that identify the requests that you want
 to block. If you add more than one predicate to a C<Rule>, a request
 must match all of the specifications to be allowed or blocked. For
@@ -367,24 +332,13 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateSqlInjectionMatchSet(ChangeToken => Str, Name => Str)
 
 Each argument is described in detail in: L<Paws::WAF::CreateSqlInjectionMatchSet>
 
 Returns: a L<Paws::WAF::CreateSqlInjectionMatchSetResponse> instance
 
-  
-
-Creates a SqlInjectionMatchSet, which you use to allow, block, or count
+  Creates a SqlInjectionMatchSet, which you use to allow, block, or count
 requests that contain snippets of SQL code in a specified part of web
 requests. AWS WAF searches for character sequences that are likely to
 be malicious strings.
@@ -414,24 +368,13 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateWebACL(ChangeToken => Str, DefaultAction => Paws::WAF::WafAction, MetricName => Str, Name => Str)
+=head2 CreateWebACL(ChangeToken => Str, DefaultAction => L<Paws::WAF::WafAction>, MetricName => Str, Name => Str)
 
 Each argument is described in detail in: L<Paws::WAF::CreateWebACL>
 
 Returns: a L<Paws::WAF::CreateWebACLResponse> instance
 
-  
-
-Creates a C<WebACL>, which contains the C<Rules> that identify the
+  Creates a C<WebACL>, which contains the C<Rules> that identify the
 CloudFront web requests that you want to allow, block, or count. AWS
 WAF evaluates C<Rules> in order based on the value of C<Priority> for
 each C<Rule>.
@@ -470,24 +413,13 @@ For more information about how to use the AWS WAF API, see the AWS WAF
 Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str)
 
 Each argument is described in detail in: L<Paws::WAF::DeleteByteMatchSet>
 
 Returns: a L<Paws::WAF::DeleteByteMatchSetResponse> instance
 
-  
-
-Permanently deletes a ByteMatchSet. You can't delete a C<ByteMatchSet>
+  Permanently deletes a ByteMatchSet. You can't delete a C<ByteMatchSet>
 if it's still used in any C<Rules> or if it still includes any
 ByteMatchTuple objects (any filters).
 
@@ -510,23 +442,13 @@ the C<ChangeToken> parameter of a C<DeleteByteMatchSet> request.
 
 
 
-
-
-
-
-
-
-
-
 =head2 DeleteIPSet(ChangeToken => Str, IPSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::DeleteIPSet>
 
 Returns: a L<Paws::WAF::DeleteIPSetResponse> instance
 
-  
-
-Permanently deletes an IPSet. You can't delete an C<IPSet> if it's
+  Permanently deletes an IPSet. You can't delete an C<IPSet> if it's
 still used in any C<Rules> or if it still includes any IP addresses.
 
 If you just want to remove an C<IPSet> from a C<Rule>, use UpdateRule.
@@ -548,23 +470,13 @@ the C<ChangeToken> parameter of a C<DeleteIPSet> request.
 
 
 
-
-
-
-
-
-
-
-
 =head2 DeleteRule(ChangeToken => Str, RuleId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::DeleteRule>
 
 Returns: a L<Paws::WAF::DeleteRuleResponse> instance
 
-  
-
-Permanently deletes a Rule. You can't delete a C<Rule> if it's still
+  Permanently deletes a Rule. You can't delete a C<Rule> if it's still
 used in any C<WebACL> objects or if it still includes any predicates,
 such as C<ByteMatchSet> objects.
 
@@ -588,23 +500,13 @@ the C<ChangeToken> parameter of a C<DeleteRule> request.
 
 
 
-
-
-
-
-
-
-
-
 =head2 DeleteSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::DeleteSqlInjectionMatchSet>
 
 Returns: a L<Paws::WAF::DeleteSqlInjectionMatchSetResponse> instance
 
-  
-
-Permanently deletes a SqlInjectionMatchSet. You can't delete a
+  Permanently deletes a SqlInjectionMatchSet. You can't delete a
 C<SqlInjectionMatchSet> if it's still used in any C<Rules> or if it
 still contains any SqlInjectionMatchTuple objects.
 
@@ -629,23 +531,13 @@ request.
 
 
 
-
-
-
-
-
-
-
-
 =head2 DeleteWebACL(ChangeToken => Str, WebACLId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::DeleteWebACL>
 
 Returns: a L<Paws::WAF::DeleteWebACLResponse> instance
 
-  
-
-Permanently deletes a WebACL. You can't delete a C<WebACL> if it still
+  Permanently deletes a WebACL. You can't delete a C<WebACL> if it still
 contains any C<Rules>.
 
 To delete a C<WebACL>, perform the following steps:
@@ -664,43 +556,22 @@ the C<ChangeToken> parameter of a C<DeleteWebACL> request.
 
 
 
-
-
-
-
-
-
-
-
 =head2 GetByteMatchSet(ByteMatchSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::GetByteMatchSet>
 
 Returns: a L<Paws::WAF::GetByteMatchSetResponse> instance
 
-  
-
-Returns the ByteMatchSet specified by C<ByteMatchSetId>.
+  Returns the ByteMatchSet specified by C<ByteMatchSetId>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetChangeToken( => )
+=head2 GetChangeToken()
 
 Each argument is described in detail in: L<Paws::WAF::GetChangeToken>
 
 Returns: a L<Paws::WAF::GetChangeTokenResponse> instance
 
-  
-
-When you want to create, update, or delete AWS WAF objects, get a
+  When you want to create, update, or delete AWS WAF objects, get a
 change token and include the change token in the create, update, or
 delete request. Change tokens ensure that your application doesn't
 submit conflicting requests to AWS WAF.
@@ -717,24 +588,13 @@ AWS WAF is propagating the change to all AWS WAF servers. Use
 C<GetChangeTokenStatus> to determine the status of your change token.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetChangeTokenStatus(ChangeToken => Str)
 
 Each argument is described in detail in: L<Paws::WAF::GetChangeTokenStatus>
 
 Returns: a L<Paws::WAF::GetChangeTokenStatusResponse> instance
 
-  
-
-Returns the status of a C<ChangeToken> that you got by calling
+  Returns the status of a C<ChangeToken> that you got by calling
 GetChangeToken. C<ChangeTokenStatus> is one of the following values:
 
 =over
@@ -752,32 +612,13 @@ delete request to all AWS WAF servers.
 
 
 
-
-
-
-
-
-
-
-
 =head2 GetIPSet(IPSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::GetIPSet>
 
 Returns: a L<Paws::WAF::GetIPSetResponse> instance
 
-  
-
-Returns the IPSet that is specified by C<IPSetId>.
-
-
-
-
-
-
-
-
-
+  Returns the IPSet that is specified by C<IPSetId>.
 
 
 =head2 GetRule(RuleId => Str)
@@ -786,30 +627,17 @@ Each argument is described in detail in: L<Paws::WAF::GetRule>
 
 Returns: a L<Paws::WAF::GetRuleResponse> instance
 
-  
-
-Returns the Rule that is specified by the C<RuleId> that you included
+  Returns the Rule that is specified by the C<RuleId> that you included
 in the C<GetRule> request.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetSampledRequests(MaxItems => Int, RuleId => Str, TimeWindow => Paws::WAF::TimeWindow, WebAclId => Str)
+=head2 GetSampledRequests(MaxItems => Int, RuleId => Str, TimeWindow => L<Paws::WAF::TimeWindow>, WebAclId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::GetSampledRequests>
 
 Returns: a L<Paws::WAF::GetSampledRequestsResponse> instance
 
-  
-
-Gets detailed information about a specified number of requests--a
+  Gets detailed information about a specified number of requests--a
 sample--that AWS WAF randomly selects from among the first 5,000
 requests that your AWS resource received during a time range that you
 choose. You can specify a sample size of up to 100 requests, and you
@@ -823,34 +651,14 @@ range. This new time range indicates the actual period during which AWS
 WAF selected the requests in the sample.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetSqlInjectionMatchSet(SqlInjectionMatchSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::GetSqlInjectionMatchSet>
 
 Returns: a L<Paws::WAF::GetSqlInjectionMatchSetResponse> instance
 
-  
-
-Returns the SqlInjectionMatchSet that is specified by
+  Returns the SqlInjectionMatchSet that is specified by
 C<SqlInjectionMatchSetId>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetWebACL(WebACLId => Str)
@@ -859,18 +667,7 @@ Each argument is described in detail in: L<Paws::WAF::GetWebACL>
 
 Returns: a L<Paws::WAF::GetWebACLResponse> instance
 
-  
-
-Returns the WebACL that is specified by C<WebACLId>.
-
-
-
-
-
-
-
-
-
+  Returns the WebACL that is specified by C<WebACLId>.
 
 
 =head2 ListByteMatchSets(Limit => Int, [NextMarker => Str])
@@ -879,18 +676,7 @@ Each argument is described in detail in: L<Paws::WAF::ListByteMatchSets>
 
 Returns: a L<Paws::WAF::ListByteMatchSetsResponse> instance
 
-  
-
-Returns an array of ByteMatchSetSummary objects.
-
-
-
-
-
-
-
-
-
+  Returns an array of ByteMatchSetSummary objects.
 
 
 =head2 ListIPSets(Limit => Int, [NextMarker => Str])
@@ -899,18 +685,7 @@ Each argument is described in detail in: L<Paws::WAF::ListIPSets>
 
 Returns: a L<Paws::WAF::ListIPSetsResponse> instance
 
-  
-
-Returns an array of IPSetSummary objects in the response.
-
-
-
-
-
-
-
-
-
+  Returns an array of IPSetSummary objects in the response.
 
 
 =head2 ListRules(Limit => Int, [NextMarker => Str])
@@ -919,18 +694,7 @@ Each argument is described in detail in: L<Paws::WAF::ListRules>
 
 Returns: a L<Paws::WAF::ListRulesResponse> instance
 
-  
-
-Returns an array of RuleSummary objects.
-
-
-
-
-
-
-
-
-
+  Returns an array of RuleSummary objects.
 
 
 =head2 ListSqlInjectionMatchSets(Limit => Int, [NextMarker => Str])
@@ -939,18 +703,7 @@ Each argument is described in detail in: L<Paws::WAF::ListSqlInjectionMatchSets>
 
 Returns: a L<Paws::WAF::ListSqlInjectionMatchSetsResponse> instance
 
-  
-
-Returns an array of SqlInjectionMatchSet objects.
-
-
-
-
-
-
-
-
-
+  Returns an array of SqlInjectionMatchSet objects.
 
 
 =head2 ListWebACLs(Limit => Int, [NextMarker => Str])
@@ -959,29 +712,16 @@ Each argument is described in detail in: L<Paws::WAF::ListWebACLs>
 
 Returns: a L<Paws::WAF::ListWebACLsResponse> instance
 
-  
-
-Returns an array of WebACLSummary objects in the response.
+  Returns an array of WebACLSummary objects in the response.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str, Updates => ArrayRef[Paws::WAF::ByteMatchSetUpdate])
+=head2 UpdateByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str, Updates => ArrayRef[L<Paws::WAF::ByteMatchSetUpdate>])
 
 Each argument is described in detail in: L<Paws::WAF::UpdateByteMatchSet>
 
 Returns: a L<Paws::WAF::UpdateByteMatchSetResponse> instance
 
-  
-
-Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet.
+  Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet.
 For each C<ByteMatchTuple> object, you specify the following values:
 
 =over
@@ -1031,24 +771,13 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateIPSet(ChangeToken => Str, IPSetId => Str, Updates => ArrayRef[Paws::WAF::IPSetUpdate])
+=head2 UpdateIPSet(ChangeToken => Str, IPSetId => Str, Updates => ArrayRef[L<Paws::WAF::IPSetUpdate>])
 
 Each argument is described in detail in: L<Paws::WAF::UpdateIPSet>
 
 Returns: a L<Paws::WAF::UpdateIPSetResponse> instance
 
-  
-
-Inserts or deletes IPSetDescriptor objects in an C<IPSet>. For each
+  Inserts or deletes IPSetDescriptor objects in an C<IPSet>. For each
 C<IPSetDescriptor> object, you specify the following values:
 
 =over
@@ -1099,24 +828,13 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateRule(ChangeToken => Str, RuleId => Str, Updates => ArrayRef[Paws::WAF::RuleUpdate])
+=head2 UpdateRule(ChangeToken => Str, RuleId => Str, Updates => ArrayRef[L<Paws::WAF::RuleUpdate>])
 
 Each argument is described in detail in: L<Paws::WAF::UpdateRule>
 
 Returns: a L<Paws::WAF::UpdateRuleResponse> instance
 
-  
-
-Inserts or deletes Predicate objects in a C<Rule>. Each C<Predicate>
+  Inserts or deletes Predicate objects in a C<Rule>. Each C<Predicate>
 object identifies a predicate, such as a ByteMatchSet or an IPSet, that
 specifies the web requests that you want to allow, block, or count. If
 you add more than one predicate to a C<Rule>, a request must match all
@@ -1165,24 +883,13 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str, Updates => ArrayRef[Paws::WAF::SqlInjectionMatchSetUpdate])
+=head2 UpdateSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str, Updates => ArrayRef[L<Paws::WAF::SqlInjectionMatchSetUpdate>])
 
 Each argument is described in detail in: L<Paws::WAF::UpdateSqlInjectionMatchSet>
 
 Returns: a L<Paws::WAF::UpdateSqlInjectionMatchSetResponse> instance
 
-  
-
-Inserts or deletes SqlInjectionMatchTuple objects (filters) in a
+  Inserts or deletes SqlInjectionMatchTuple objects (filters) in a
 SqlInjectionMatchSet. For each C<SqlInjectionMatchTuple> object, you
 specify the following values:
 
@@ -1229,24 +936,13 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateWebACL(ChangeToken => Str, WebACLId => Str, [DefaultAction => Paws::WAF::WafAction, Updates => ArrayRef[Paws::WAF::WebACLUpdate]])
+=head2 UpdateWebACL(ChangeToken => Str, WebACLId => Str, [DefaultAction => L<Paws::WAF::WafAction>, Updates => ArrayRef[L<Paws::WAF::WebACLUpdate>]])
 
 Each argument is described in detail in: L<Paws::WAF::UpdateWebACL>
 
 Returns: a L<Paws::WAF::UpdateWebACLResponse> instance
 
-  
-
-Inserts or deletes ActivatedRule objects in a C<WebACL>. Each C<Rule>
+  Inserts or deletes ActivatedRule objects in a C<WebACL>. Each C<Rule>
 identifies web requests that you want to allow, block, or count. When
 you update a C<WebACL>, you specify the following values:
 
@@ -1304,15 +1000,6 @@ and to associate the C<WebACL> with a CloudFront distribution.
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

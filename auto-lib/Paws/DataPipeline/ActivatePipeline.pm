@@ -1,9 +1,9 @@
 
 package Paws::DataPipeline::ActivatePipeline;
   use Moose;
-  has parameterValues => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterValue]');
-  has pipelineId => (is => 'ro', isa => 'Str', required => 1);
-  has startTimestamp => (is => 'ro', isa => 'Str');
+  has ParameterValues => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterValue]', traits => ['NameInRequest'], request_name => 'parameterValues' );
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
+  has StartTimestamp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTimestamp' );
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ActivatePipelin
 AWS Data Pipeline service. Use the attributes of this class
 as arguments to method ActivatePipeline.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ActivatePipeline.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ActivatePipeline.
 
 As an example:
 
@@ -34,51 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]
+=head2 ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]
 
-  
+  A list of parameter values to pass to the pipeline at activation.
 
-A list of parameter values to pass to the pipeline at activation.
+=head2 B<REQUIRED> PipelineId => Str
 
+  The ID of the pipeline.
 
+=head2 StartTimestamp => Str
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> pipelineId => Str
-
-  
-
-The ID of the pipeline.
-
-
-
-
-
-
-
-
-
-
-=head2 startTimestamp => Str
-
-  
-
-The date and time to resume the pipeline. By default, the pipeline
+  The date and time to resume the pipeline. By default, the pipeline
 resumes from the last completed execution.
-
-
-
-
-
-
-
-
-
 
 
 

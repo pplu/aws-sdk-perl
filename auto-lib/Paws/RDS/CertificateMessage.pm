@@ -14,37 +14,15 @@ Paws::RDS::CertificateMessage
 
 =head1 ATTRIBUTES
 
-=head2 Certificates => ArrayRef[Paws::RDS::Certificate]
+=head2 Certificates => ArrayRef[L<Paws::RDS::Certificate>]
 
-  
-
-The list of Certificate objects for the AWS account.
-
-
-
-
-
-
-
-
-
+  The list of Certificate objects for the AWS account.
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous
+  An optional pagination token provided by a previous
 DescribeCertificates request. If this parameter is specified, the
 response includes only records beyond the marker, up to the value
 specified by C<MaxRecords> .
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method RebootCluster o
 Amazon Redshift service. Use the attributes of this class
 as arguments to method RebootCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RebootCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RebootCluster.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  
-
-The cluster identifier.
-
-
-
-
-
-
-
-
-
+  The cluster identifier.
 
 
 

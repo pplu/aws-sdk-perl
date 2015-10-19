@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::ConfirmConnection;
   use Moose;
-  has connectionId => (is => 'ro', isa => 'Str', required => 1);
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ConfirmConnecti
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method ConfirmConnection.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ConfirmConnection.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ConfirmConnection.
 
 As an example:
 
@@ -32,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> connectionId => Str
+=head2 B<REQUIRED> ConnectionId => Str
 
   
 

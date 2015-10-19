@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeRegions
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeRegions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRegions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRegions.
 
 As an example:
 
@@ -36,27 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
-
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -72,28 +59,9 @@ C<region-name> - The name of the region (for example, C<us-east-1>).
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 RegionNames => ArrayRef[Str]
 
-  
-
-The names of one or more regions.
-
-
-
-
-
-
-
-
-
+  The names of one or more regions.
 
 
 

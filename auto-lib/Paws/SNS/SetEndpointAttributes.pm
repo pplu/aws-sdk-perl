@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method SetEndpointAttr
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method SetEndpointAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetEndpointAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetEndpointAttributes.
 
 As an example:
 
@@ -33,11 +33,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Attributes => Paws::SNS::MapStringToString
+=head2 B<REQUIRED> Attributes => L<Paws::SNS::MapStringToString>
 
-  
-
-A map of the endpoint attributes. Attributes in this map include the
+  A map of the endpoint attributes. Attributes in this map include the
 following:
 
 =over
@@ -59,28 +57,9 @@ the notification service.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> EndpointArn => Str
 
-  
-
-EndpointArn used for SetEndpointAttributes action.
-
-
-
-
-
-
-
-
-
+  EndpointArn used for SetEndpointAttributes action.
 
 
 

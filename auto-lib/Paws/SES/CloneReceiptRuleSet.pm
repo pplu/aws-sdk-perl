@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CloneReceiptRul
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method CloneReceiptRuleSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CloneReceiptRuleSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CloneReceiptRuleSet.
 
 As an example:
 
@@ -35,24 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> OriginalRuleSetName => Str
 
-  
-
-The name of the rule set to clone.
-
-
-
-
-
-
-
-
-
+  The name of the rule set to clone.
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-  
-
-The name of the rule set to create. The name must:
+  The name of the rule set to create. The name must:
 
 =over
 
@@ -64,14 +51,6 @@ The name of the rule set to create. The name must:
 =item * Contain less than 64 characters.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

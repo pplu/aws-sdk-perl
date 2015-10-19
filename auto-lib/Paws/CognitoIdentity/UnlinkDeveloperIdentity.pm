@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method UnlinkDeveloper
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method UnlinkDeveloperIdentity.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UnlinkDeveloperIdentity.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UnlinkDeveloperIdentity.
 
 As an example:
 
@@ -37,64 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeveloperProviderName => Str
 
-  
-
-The "domain" by which Cognito will refer to your users.
-
-
-
-
-
-
-
-
-
+  The "domain" by which Cognito will refer to your users.
 
 =head2 B<REQUIRED> DeveloperUserIdentifier => Str
 
-  
-
-A unique ID used by your backend authentication process to identify a
+  A unique ID used by your backend authentication process to identify a
 user.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> IdentityId => Str
 
-  
-
-A unique identifier in the format REGION:GUID.
-
-
-
-
-
-
-
-
-
+  A unique identifier in the format REGION:GUID.
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-An identity pool ID in the format REGION:GUID.
-
-
-
-
-
-
-
-
-
+  An identity pool ID in the format REGION:GUID.
 
 
 

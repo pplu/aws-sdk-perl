@@ -24,50 +24,17 @@ Paws::Route53::AssociateVPCWithHostedZoneResponse
 
 =head2 Comment => Str
 
-  
-
-I<Optional:> Any comments you want to include about a
+  I<Optional:> Any comments you want to include about a
 C<AssociateVPCWithHostedZoneRequest>.
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> HostedZoneId => Str
 
-  
-
-The ID of the hosted zone you want to associate your VPC with.
+  The ID of the hosted zone you want to associate your VPC with.
 
 Note that you cannot associate a VPC with a hosted zone that doesn't
 have an existing VPC association.
+=head2 B<REQUIRED> VPC => L<Paws::Route53::VPC>
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> VPC => Paws::Route53::VPC
-
-  
-
-The VPC that you want your hosted zone to be associated with.
-
-
-
-
-
-
-
-
-
+  The VPC that you want your hosted zone to be associated with.
 
 
 =cut

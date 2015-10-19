@@ -1,9 +1,9 @@
 
 package Paws::CodeDeploy::GetApplicationRevisionOutput;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str');
-  has revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation');
-  has revisionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::GenericRevisionInfo');
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'applicationName' );
+  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['Unwrapped'], xmlname => 'revision' );
+  has RevisionInfo => (is => 'ro', isa => 'Paws::CodeDeploy::GenericRevisionInfo', traits => ['Unwrapped'], xmlname => 'revisionInfo' );
 
 
 ### main pod documentation begin ###
@@ -14,49 +14,16 @@ Paws::CodeDeploy::GetApplicationRevisionOutput
 
 =head1 ATTRIBUTES
 
-=head2 applicationName => Str
+=head2 ApplicationName => Str
 
-  
+  The name of the application that corresponds to the revision.
+=head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
 
-The name of the application that corresponds to the revision.
-
-
-
-
-
-
-
-
-
-=head2 revision => Paws::CodeDeploy::RevisionLocation
-
-  
-
-Additional information about the revision, including the revision's
+  Additional information about the revision, including the revision's
 type and its location.
+=head2 RevisionInfo => L<Paws::CodeDeploy::GenericRevisionInfo>
 
-
-
-
-
-
-
-
-
-=head2 revisionInfo => Paws::CodeDeploy::GenericRevisionInfo
-
-  
-
-General information about the revision.
-
-
-
-
-
-
-
-
-
+  General information about the revision.
 
 
 =cut

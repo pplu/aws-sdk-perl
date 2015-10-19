@@ -12,20 +12,9 @@ Paws::OpsWorks::DescribeRaidArraysResult
 
 =head1 ATTRIBUTES
 
-=head2 RaidArrays => ArrayRef[Paws::OpsWorks::RaidArray]
+=head2 RaidArrays => ArrayRef[L<Paws::OpsWorks::RaidArray>]
 
-  
-
-A C<RaidArrays> object that describes the specified RAID arrays.
-
-
-
-
-
-
-
-
-
+  A C<RaidArrays> object that describes the specified RAID arrays.
 
 
 =cut

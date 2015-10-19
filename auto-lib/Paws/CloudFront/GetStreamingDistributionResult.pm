@@ -18,7 +18,7 @@ This class represents the parameters used for calling the method  on the
 Amazon CloudFront service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -30,34 +30,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ETag => Str
 
-  
-
-The current version of the streaming distribution's information. For
+  The current version of the streaming distribution's information. For
 example: E2QWRUHAPOMQZL.
 
+=head2 StreamingDistribution => L<Paws::CloudFront::StreamingDistribution>
 
-
-
-
-
-
-
-
-
-=head2 StreamingDistribution => Paws::CloudFront::StreamingDistribution
-
-  
-
-The streaming distribution's information.
-
-
-
-
-
-
-
-
-
+  The streaming distribution's information.
 
 
 

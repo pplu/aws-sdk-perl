@@ -13,20 +13,9 @@ Paws::ES::ListDomainNamesResponse
 
 =head1 ATTRIBUTES
 
-=head2 DomainNames => ArrayRef[Paws::ES::DomainInfo]
+=head2 DomainNames => ArrayRef[L<Paws::ES::DomainInfo>]
 
-  
-
-List of Elasticsearch domain names.
-
-
-
-
-
-
-
-
-
+  List of Elasticsearch domain names.
 
 
 =cut

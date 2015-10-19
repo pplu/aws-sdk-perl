@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeConfigR
 AWS Config service. Use the attributes of this class
 as arguments to method DescribeConfigRuleEvaluationStatus.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConfigRuleEvaluationStatus.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeConfigRuleEvaluationStatus.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConfigRuleNames => ArrayRef[Str]
 
-  
-
-The name of the AWS managed Config rules for which you want status
+  The name of the AWS managed Config rules for which you want status
 information. If you do not specify any names, AWS Config returns status
 information for all AWS managed Config rules that you use.
-
-
-
-
-
-
-
-
-
 
 
 

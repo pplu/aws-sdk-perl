@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeComplia
 AWS Config service. Use the attributes of this class
 as arguments to method DescribeComplianceByConfigRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeComplianceByConfigRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeComplianceByConfigRule.
 
 As an example:
 
@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ComplianceTypes => ArrayRef[Str]
 
-  
-
-Filters the results by compliance. The valid values are C<Compliant>
+  Filters the results by compliance. The valid values are C<Compliant>
 and C<NonCompliant>.
-
-
-
-
-
-
-
-
-
 
 =head2 ConfigRuleNames => ArrayRef[Str]
 
-  
-
-Specify one or more AWS Config rule names to filter the results by
+  Specify one or more AWS Config rule names to filter the results by
 rule.
-
-
-
-
-
-
-
-
-
 
 =head2 NextToken => Str
 
-  
-
-The C<nextToken> string returned on a previous page that you use to get
+  The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
-
-
-
-
-
-
-
-
-
 
 
 

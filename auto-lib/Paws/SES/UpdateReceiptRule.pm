@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateReceiptRu
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method UpdateReceiptRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateReceiptRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateReceiptRule.
 
 As an example:
 
@@ -33,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Rule => Paws::SES::ReceiptRule
+=head2 B<REQUIRED> Rule => L<Paws::SES::ReceiptRule>
 
-  
-
-A data structure that contains the updated receipt rule information.
-
-
-
-
-
-
-
-
-
+  A data structure that contains the updated receipt rule information.
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-  
-
-The name of the receipt rule set to which the receipt rule belongs.
-
-
-
-
-
-
-
-
-
+  The name of the receipt rule set to which the receipt rule belongs.
 
 
 

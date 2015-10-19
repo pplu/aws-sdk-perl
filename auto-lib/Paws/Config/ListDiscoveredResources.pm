@@ -1,12 +1,12 @@
 
 package Paws::Config::ListDiscoveredResources;
   use Moose;
-  has includeDeletedResources => (is => 'ro', isa => 'Bool');
-  has limit => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
-  has resourceIds => (is => 'ro', isa => 'ArrayRef[Str]');
-  has resourceName => (is => 'ro', isa => 'Str');
-  has resourceType => (is => 'ro', isa => 'Str', required => 1);
+  has IncludeDeletedResources => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'includeDeletedResources' );
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'resourceIds' );
+  has ResourceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceName' );
+  has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method ListDiscoveredR
 AWS Config service. Use the attributes of this class
 as arguments to method ListDiscoveredResources.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListDiscoveredResources.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDiscoveredResources.
 
 As an example:
 
@@ -37,103 +37,37 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 includeDeletedResources => Bool
+=head2 IncludeDeletedResources => Bool
 
-  
-
-Specifies whether AWS Config includes deleted resources in the results.
+  Specifies whether AWS Config includes deleted resources in the results.
 By default, deleted resources are not included.
 
+=head2 Limit => Int
 
-
-
-
-
-
-
-
-
-=head2 limit => Int
-
-  
-
-The maximum number of resource identifiers returned on each page. The
+  The maximum number of resource identifiers returned on each page. The
 default is 100. You cannot specify a limit greater than 100. If you
 specify 0, AWS Config uses the default.
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-The C<nextToken> string returned on a previous page that you use to get
+  The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
 
+=head2 ResourceIds => ArrayRef[Str]
 
-
-
-
-
-
-
-
-
-=head2 resourceIds => ArrayRef[Str]
-
-  
-
-The IDs of only those resources that you want AWS Config to list in the
+  The IDs of only those resources that you want AWS Config to list in the
 response. If you do not specify this parameter, AWS Config lists all
 resources of the specified type that it has discovered.
 
+=head2 ResourceName => Str
 
-
-
-
-
-
-
-
-
-=head2 resourceName => Str
-
-  
-
-The custom name of only those resources that you want AWS Config to
+  The custom name of only those resources that you want AWS Config to
 list in the response. If you do not specify this parameter, AWS Config
 lists all resources of the specified type that it has discovered.
 
+=head2 B<REQUIRED> ResourceType => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> resourceType => Str
-
-  
-
-The type of resources that you want AWS Config to list in the response.
-
-
-
-
-
-
-
-
-
+  The type of resources that you want AWS Config to list in the response.
 
 
 

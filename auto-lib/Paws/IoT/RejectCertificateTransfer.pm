@@ -1,7 +1,7 @@
 
 package Paws::IoT::RejectCertificateTransfer;
   use Moose;
-  has certificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method RejectCertifica
 AWS IoT service. Use the attributes of this class
 as arguments to method RejectCertificateTransfer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RejectCertificateTransfer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RejectCertificateTransfer.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> certificateId => Str
+=head2 B<REQUIRED> CertificateId => Str
 
-  
-
-The ID of the certificate.
-
-
-
-
-
-
-
-
-
+  The ID of the certificate.
 
 
 

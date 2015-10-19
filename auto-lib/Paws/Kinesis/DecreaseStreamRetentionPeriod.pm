@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DecreaseStreamR
 Amazon Kinesis service. Use the attributes of this class
 as arguments to method DecreaseStreamRetentionPeriod.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DecreaseStreamRetentionPeriod.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DecreaseStreamRetentionPeriod.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RetentionPeriodHours => Int
 
-  
-
-The new retention period of the stream, in hours. Must be less than the
+  The new retention period of the stream, in hours. Must be less than the
 current retention period.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> StreamName => Str
 
-  
-
-The name of the stream to modify.
-
-
-
-
-
-
-
-
-
+  The name of the stream to modify.
 
 
 

@@ -1,8 +1,8 @@
 
 package Paws::IoT::ListThingsResponse;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
-  has things => (is => 'ro', isa => 'ArrayRef[Paws::IoT::ThingAttribute]');
+  has NextToken => (is => 'ro', isa => 'Str');
+  has Things => (is => 'ro', isa => 'ArrayRef[Paws::IoT::ThingAttribute]');
 
 1;
 
@@ -14,34 +14,12 @@ Paws::IoT::ListThingsResponse
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
-  
+  A token used to retrieve the next value.
+=head2 Things => ArrayRef[L<Paws::IoT::ThingAttribute>]
 
-A token used to retrieve the next value.
-
-
-
-
-
-
-
-
-
-=head2 things => ArrayRef[Paws::IoT::ThingAttribute]
-
-  
-
-The things.
-
-
-
-
-
-
-
-
-
+  The things.
 
 
 =cut

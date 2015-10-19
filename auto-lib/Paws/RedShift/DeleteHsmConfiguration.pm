@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteHsmConfig
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DeleteHsmConfiguration.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteHsmConfiguration.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteHsmConfiguration.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HsmConfigurationIdentifier => Str
 
-  
-
-The identifier of the Amazon Redshift HSM configuration to be deleted.
-
-
-
-
-
-
-
-
-
+  The identifier of the Amazon Redshift HSM configuration to be deleted.
 
 
 

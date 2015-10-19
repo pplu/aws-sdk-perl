@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteInstance 
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DeleteInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteInstance.
 
 As an example:
 
@@ -36,48 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DeleteElasticIp => Bool
 
-  
-
-Whether to delete the instance Elastic IP address.
-
-
-
-
-
-
-
-
-
+  Whether to delete the instance Elastic IP address.
 
 =head2 DeleteVolumes => Bool
 
-  
-
-Whether to delete the instance's Amazon EBS volumes.
-
-
-
-
-
-
-
-
-
+  Whether to delete the instance's Amazon EBS volumes.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The instance ID.
-
-
-
-
-
-
-
-
-
+  The instance ID.
 
 
 

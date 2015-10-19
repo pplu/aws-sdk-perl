@@ -31,78 +31,23 @@ Paws::S3::ListObjectVersionsOutput
   
 =head2 Delimiter => Str
 
-  
-
-A delimiter is a character you use to group keys.
-
-
-
-
-
-
-
-
-
+  A delimiter is a character you use to group keys.
 =head2 EncodingType => Str
 
   
 =head2 KeyMarker => Str
 
-  
-
-Specifies the key to start with when listing objects in a bucket.
-
-
-
-
-
-
-
-
-
+  Specifies the key to start with when listing objects in a bucket.
 =head2 MaxKeys => Int
 
-  
-
-Sets the maximum number of keys returned in the response. The response
+  Sets the maximum number of keys returned in the response. The response
 might contain fewer keys but will never contain more.
-
-
-
-
-
-
-
-
-
 =head2 Prefix => Str
 
-  
-
-Limits the response to keys that begin with the specified prefix.
-
-
-
-
-
-
-
-
-
+  Limits the response to keys that begin with the specified prefix.
 =head2 VersionIdMarker => Str
 
-  
-
-Specifies the object version you want to start listing from.
-
-
-
-
-
-
-
-
-
+  Specifies the object version you want to start listing from.
 
 
 =cut

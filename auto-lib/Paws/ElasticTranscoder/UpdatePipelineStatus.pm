@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method UpdatePipelineS
 Amazon Elastic Transcoder service. Use the attributes of this class
 as arguments to method UpdatePipelineStatus.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipelineStatus.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipelineStatus.
 
 As an example:
 
@@ -37,24 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The identifier of the pipeline to update.
-
-
-
-
-
-
-
-
-
+  The identifier of the pipeline to update.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The desired status of the pipeline:
+  The desired status of the pipeline:
 
 =over
 
@@ -63,14 +50,6 @@ The desired status of the pipeline:
 =item * C<Paused>: The pipeline is not currently processing jobs.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

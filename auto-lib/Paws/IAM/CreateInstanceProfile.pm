@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateInstanceP
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method CreateInstanceProfile.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateInstanceProfile.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateInstanceProfile.
 
 As an example:
 
@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceProfileName => Str
 
-  
-
-The name of the instance profile to create.
-
-
-
-
-
-
-
-
-
+  The name of the instance profile to create.
 
 =head2 Path => Str
 
-  
-
-The path to the instance profile. For more information about paths, see
+  The path to the instance profile. For more information about paths, see
 IAM Identifiers in the I<Using IAM> guide.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
-
-
-
-
-
-
-
-
-
 
 
 

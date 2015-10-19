@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteIPSet on 
 AWS WAF service. Use the attributes of this class
 as arguments to method DeleteIPSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteIPSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteIPSet.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
-
-The value returned by the most recent call to GetChangeToken.
-
-
-
-
-
-
-
-
-
+  The value returned by the most recent call to GetChangeToken.
 
 =head2 B<REQUIRED> IPSetId => Str
 
-  
-
-The C<IPSetId> of the IPSet that you want to delete. C<IPSetId> is
+  The C<IPSetId> of the IPSet that you want to delete. C<IPSetId> is
 returned by CreateIPSet and by ListIPSets.
-
-
-
-
-
-
-
-
-
 
 
 

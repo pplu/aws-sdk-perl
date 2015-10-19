@@ -16,21 +16,10 @@ Paws::RDS::OptionGroupOptionsMessage
 
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous request. If this
+  An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
-
-
-
-
-
-
-
-
-
-=head2 OptionGroupOptions => ArrayRef[Paws::RDS::OptionGroupOption]
+=head2 OptionGroupOptions => ArrayRef[L<Paws::RDS::OptionGroupOption>]
 
   
 

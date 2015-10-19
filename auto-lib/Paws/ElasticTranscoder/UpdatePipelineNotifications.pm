@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method UpdatePipelineN
 Amazon Elastic Transcoder service. Use the attributes of this class
 as arguments to method UpdatePipelineNotifications.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipelineNotifications.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipelineNotifications.
 
 As an example:
 
@@ -37,25 +37,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The identifier of the pipeline for which you want to change
+  The identifier of the pipeline for which you want to change
 notification settings.
 
+=head2 B<REQUIRED> Notifications => L<Paws::ElasticTranscoder::Notifications>
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Notifications => Paws::ElasticTranscoder::Notifications
-
-  
-
-The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
+  The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
 topic that you want to notify to report job status.
 
 To receive notifications, you must also subscribe to the new topic in
@@ -82,14 +69,6 @@ to notify when Elastic Transcoder encounters an error condition. This
 is the ARN that Amazon SNS returned when you created the topic.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

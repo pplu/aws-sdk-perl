@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteWebACL on
 AWS WAF service. Use the attributes of this class
 as arguments to method DeleteWebACL.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteWebACL.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteWebACL.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
-
-The value returned by the most recent call to GetChangeToken.
-
-
-
-
-
-
-
-
-
+  The value returned by the most recent call to GetChangeToken.
 
 =head2 B<REQUIRED> WebACLId => Str
 
-  
-
-The C<WebACLId> of the WebACL that you want to delete. C<WebACLId> is
+  The C<WebACLId> of the WebACL that you want to delete. C<WebACLId> is
 returned by CreateWebACL and by ListWebACLs.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,12 +1,12 @@
 
 package Paws::MarketplaceCommerceAnalytics::GenerateDataSet;
   use Moose;
-  has dataSetPublicationDate => (is => 'ro', isa => 'Str', required => 1);
-  has dataSetType => (is => 'ro', isa => 'Str', required => 1);
-  has destinationS3BucketName => (is => 'ro', isa => 'Str', required => 1);
-  has destinationS3Prefix => (is => 'ro', isa => 'Str');
-  has roleNameArn => (is => 'ro', isa => 'Str', required => 1);
-  has snsTopicArn => (is => 'ro', isa => 'Str', required => 1);
+  has DataSetPublicationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSetPublicationDate' , required => 1);
+  has DataSetType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSetType' , required => 1);
+  has DestinationS3BucketName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationS3BucketName' , required => 1);
+  has DestinationS3Prefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationS3Prefix' );
+  has RoleNameArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleNameArn' , required => 1);
+  has SnsTopicArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'snsTopicArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method GenerateDataSet
 AWS Marketplace Commerce Analytics service. Use the attributes of this class
 as arguments to method GenerateDataSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GenerateDataSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GenerateDataSet.
 
 As an example:
 
@@ -37,27 +37,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> dataSetPublicationDate => Str
+=head2 B<REQUIRED> DataSetPublicationDate => Str
 
   
 
-=head2 B<REQUIRED> dataSetType => Str
+=head2 B<REQUIRED> DataSetType => Str
 
   
 
-=head2 B<REQUIRED> destinationS3BucketName => Str
+=head2 B<REQUIRED> DestinationS3BucketName => Str
 
   
 
-=head2 destinationS3Prefix => Str
+=head2 DestinationS3Prefix => Str
 
   
 
-=head2 B<REQUIRED> roleNameArn => Str
+=head2 B<REQUIRED> RoleNameArn => Str
 
   
 
-=head2 B<REQUIRED> snsTopicArn => Str
+=head2 B<REQUIRED> SnsTopicArn => Str
 
   
 

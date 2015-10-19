@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteConfigRul
 AWS Config service. Use the attributes of this class
 as arguments to method DeleteConfigRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteConfigRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteConfigRule.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConfigRuleName => Str
 
-  
-
-The name of the AWS Config rule that you want to delete.
-
-
-
-
-
-
-
-
-
+  The name of the AWS Config rule that you want to delete.
 
 
 

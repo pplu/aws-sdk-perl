@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method ModifyOptionGro
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method ModifyOptionGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyOptionGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyOptionGroup.
 
 As an example:
 
@@ -37,72 +37,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplyImmediately => Bool
 
-  
-
-Indicates whether the changes should be applied immediately, or during
+  Indicates whether the changes should be applied immediately, or during
 the next maintenance window for each instance associated with the
 option group.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> OptionGroupName => Str
 
-  
-
-The name of the option group to be modified.
+  The name of the option group to be modified.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, cannot be removed from an option group, and that option group
 cannot be removed from a DB instance once it is associated with a DB
 instance
 
+=head2 OptionsToInclude => ArrayRef[L<Paws::RDS::OptionConfiguration>]
 
-
-
-
-
-
-
-
-
-=head2 OptionsToInclude => ArrayRef[Paws::RDS::OptionConfiguration]
-
-  
-
-Options in this list are added to the option group or, if already
+  Options in this list are added to the option group or, if already
 present, the specified configuration is used to update the existing
 configuration.
 
-
-
-
-
-
-
-
-
-
 =head2 OptionsToRemove => ArrayRef[Str]
 
-  
-
-Options in this list are removed from the option group.
-
-
-
-
-
-
-
-
-
+  Options in this list are removed from the option group.
 
 
 

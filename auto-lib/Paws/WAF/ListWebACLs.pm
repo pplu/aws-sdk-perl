@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListWebACLs on 
 AWS WAF service. Use the attributes of this class
 as arguments to method ListWebACLs.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListWebACLs.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListWebACLs.
 
 As an example:
 
@@ -35,43 +35,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Limit => Int
 
-  
-
-Specifies the number of C<WebACL> objects that you want AWS WAF to
+  Specifies the number of C<WebACL> objects that you want AWS WAF to
 return for this request. If you have more C<WebACL> objects than the
 number that you specify for C<Limit>, the response includes a
 C<NextMarker> value that you can use to get another batch of C<WebACL>
 objects.
 
-
-
-
-
-
-
-
-
-
 =head2 NextMarker => Str
 
-  
-
-If you specify a value for C<Limit> and you have more C<WebACL> objects
+  If you specify a value for C<Limit> and you have more C<WebACL> objects
 than the number that you specify for C<Limit>, AWS WAF returns a
 C<NextMarker> value in the response that allows you to list another
 group of C<WebACL> objects. For the second and subsequent
 C<ListWebACLs> requests, specify the value of C<NextMarker> from the
 previous response to get information about another batch of C<WebACL>
 objects.
-
-
-
-
-
-
-
-
-
 
 
 

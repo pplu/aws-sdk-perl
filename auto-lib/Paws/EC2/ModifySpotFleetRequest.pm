@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ModifySpotFleet
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method ModifySpotFleetRequest.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifySpotFleetRequest.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifySpotFleetRequest.
 
 As an example:
 
@@ -36,50 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ExcessCapacityTerminationPolicy => Str
 
-  
-
-Indicates whether running Spot instances should be terminated if the
+  Indicates whether running Spot instances should be terminated if the
 target capacity of the Spot fleet request is decreased below the
 current size of the Spot fleet.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
-  
-
-The ID of the Spot fleet request.
-
-
-
-
-
-
-
-
-
+  The ID of the Spot fleet request.
 
 =head2 TargetCapacity => Int
 
-  
-
-The size of the fleet.
-
-
-
-
-
-
-
-
-
+  The size of the fleet.
 
 
 

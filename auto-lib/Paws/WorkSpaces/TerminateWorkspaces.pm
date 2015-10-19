@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method TerminateWorksp
 Amazon WorkSpaces service. Use the attributes of this class
 as arguments to method TerminateWorkspaces.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to TerminateWorkspaces.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TerminateWorkspaces.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> TerminateWorkspaceRequests => ArrayRef[Paws::WorkSpaces::TerminateRequest]
+=head2 B<REQUIRED> TerminateWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::TerminateRequest>]
 
-  
-
-An array of structures that specify the WorkSpaces to terminate.
-
-
-
-
-
-
-
-
-
+  An array of structures that specify the WorkSpaces to terminate.
 
 
 

@@ -12,11 +12,9 @@ Paws::WAF::GetIPSetResponse
 
 =head1 ATTRIBUTES
 
-=head2 IPSet => Paws::WAF::IPSet
+=head2 IPSet => L<Paws::WAF::IPSet>
 
-  
-
-Information about the IPSet that you specified in the C<GetIPSet>
+  Information about the IPSet that you specified in the C<GetIPSet>
 request. For more information, see the following topics:
 
 =over
@@ -27,14 +25,6 @@ request. For more information, see the following topics:
 objects. Each C<IPSetDescriptor> object contains C<Type> and C<Value>
 
 =back
-
-
-
-
-
-
-
-
 
 
 

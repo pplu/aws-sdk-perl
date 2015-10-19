@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AssignInstance 
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method AssignInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AssignInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssignInstance.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The instance ID.
-
-
-
-
-
-
-
-
-
+  The instance ID.
 
 =head2 B<REQUIRED> LayerIds => ArrayRef[Str]
 
-  
-
-The layer ID, which must correspond to a custom layer. You cannot
+  The layer ID, which must correspond to a custom layer. You cannot
 assign a registered instance to a built-in layer.
-
-
-
-
-
-
-
-
-
 
 
 

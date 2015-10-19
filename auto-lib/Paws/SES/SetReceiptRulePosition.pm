@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method SetReceiptRuleP
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method SetReceiptRulePosition.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetReceiptRulePosition.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetReceiptRulePosition.
 
 As an example:
 
@@ -36,50 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 After => Str
 
-  
-
-The name of the receipt rule after which to place the specified receipt
+  The name of the receipt rule after which to place the specified receipt
 rule.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> RuleName => Str
 
-  
-
-The name of the receipt rule to reposition.
-
-
-
-
-
-
-
-
-
+  The name of the receipt rule to reposition.
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-  
-
-The name of the receipt rule set that contains the receipt rule to
+  The name of the receipt rule set that contains the receipt rule to
 reposition.
-
-
-
-
-
-
-
-
-
 
 
 

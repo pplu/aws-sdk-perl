@@ -13,7 +13,7 @@ Paws::RDS::PurchaseReservedDBInstancesOfferingResult
 
 =head1 ATTRIBUTES
 
-=head2 ReservedDBInstance => Paws::RDS::ReservedDBInstance
+=head2 ReservedDBInstance => L<Paws::RDS::ReservedDBInstance>
 
   
 

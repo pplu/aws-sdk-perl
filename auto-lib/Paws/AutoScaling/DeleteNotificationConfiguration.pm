@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteNotificat
 Auto Scaling service. Use the attributes of this class
 as arguments to method DeleteNotificationConfiguration.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteNotificationConfiguration.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteNotificationConfiguration.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the Auto Scaling group.
-
-
-
-
-
-
-
-
-
+  The name of the Auto Scaling group.
 
 =head2 B<REQUIRED> TopicARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon Simple Notification
+  The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) topic.
-
-
-
-
-
-
-
-
-
 
 
 

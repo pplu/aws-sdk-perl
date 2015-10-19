@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddTags on the
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method AddTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTags.
 
 As an example:
 
@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  
-
-The Amazon EMR resource identifier to which tags will be added. This
+  The Amazon EMR resource identifier to which tags will be added. This
 value must be a cluster identifier.
 
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EMR::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::EMR::Tag]
-
-  
-
-A list of tags to associate with a cluster and propagate to Amazon EC2
+  A list of tags to associate with a cluster and propagate to Amazon EC2
 instances. Tags are user-defined key/value pairs that consist of a
 required key string with a maximum of 128 characters, and an optional
 value string with a maximum of 256 characters.
-
-
-
-
-
-
-
-
-
 
 
 

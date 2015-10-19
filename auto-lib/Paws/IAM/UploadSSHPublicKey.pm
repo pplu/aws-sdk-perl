@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UploadSSHPublic
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method UploadSSHPublicKey.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UploadSSHPublicKey.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UploadSSHPublicKey.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SSHPublicKeyBody => Str
 
-  
-
-The SSH public key. The public key must be encoded in ssh-rsa format or
+  The SSH public key. The public key must be encoded in ssh-rsa format or
 PEM format.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the IAM user to associate the SSH public key with.
-
-
-
-
-
-
-
-
-
+  The name of the IAM user to associate the SSH public key with.
 
 
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method Decrypt on the
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method Decrypt.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to Decrypt.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Decrypt.
 
 As an example:
 
@@ -36,50 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CiphertextBlob => Str
 
-  
+  Ciphertext to be decrypted. The blob includes metadata.
 
-Ciphertext to be decrypted. The blob includes metadata.
+=head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
-
-
-
-
-
-
-
-
-
-=head2 EncryptionContext => Paws::KMS::EncryptionContextType
-
-  
-
-The encryption context. If this was specified in the Encrypt function,
+  The encryption context. If this was specified in the Encrypt function,
 it must be specified here or the decryption operation will fail. For
 more information, see Encryption Context.
 
-
-
-
-
-
-
-
-
-
 =head2 GrantTokens => ArrayRef[Str]
 
-  
+  A list of grant tokens.
 
-For more information, see Grant Tokens.
-
-
-
-
-
-
-
-
-
+For more information, go to Grant Tokens in the I<AWS Key Management
+Service Developer Guide>.
 
 
 

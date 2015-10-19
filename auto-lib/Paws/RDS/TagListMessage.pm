@@ -13,20 +13,9 @@ Paws::RDS::TagListMessage
 
 =head1 ATTRIBUTES
 
-=head2 TagList => ArrayRef[Paws::RDS::Tag]
+=head2 TagList => ArrayRef[L<Paws::RDS::Tag>]
 
-  
-
-List of tags returned by the ListTagsForResource operation.
-
-
-
-
-
-
-
-
-
+  List of tags returned by the ListTagsForResource operation.
 
 
 =cut

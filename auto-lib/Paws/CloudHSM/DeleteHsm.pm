@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteHsm on th
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method DeleteHsm.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteHsm.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteHsm.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HsmArn => Str
 
-  
-
-The ARN of the HSM to delete.
-
-
-
-
-
-
-
-
-
+  The ARN of the HSM to delete.
 
 
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method EnableAlarmActi
 Amazon CloudWatch service. Use the attributes of this class
 as arguments to method EnableAlarmActions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to EnableAlarmActions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnableAlarmActions.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AlarmNames => ArrayRef[Str]
 
-  
-
-The names of the alarms to enable actions for.
-
-
-
-
-
-
-
-
-
+  The names of the alarms to enable actions for.
 
 
 

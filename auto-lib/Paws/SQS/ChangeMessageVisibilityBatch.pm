@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ChangeMessageVi
 Amazon Simple Queue Service service. Use the attributes of this class
 as arguments to method ChangeMessageVisibilityBatch.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ChangeMessageVisibilityBatch.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ChangeMessageVisibilityBatch.
 
 As an example:
 
@@ -33,36 +33,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Entries => ArrayRef[Paws::SQS::ChangeMessageVisibilityBatchRequestEntry]
+=head2 B<REQUIRED> Entries => ArrayRef[L<Paws::SQS::ChangeMessageVisibilityBatchRequestEntry>]
 
-  
-
-A list of receipt handles of the messages for which the visibility
+  A list of receipt handles of the messages for which the visibility
 timeout must be changed.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-  
-
-The URL of the Amazon SQS queue to take action on.
-
-
-
-
-
-
-
-
-
+  The URL of the Amazon SQS queue to take action on.
 
 
 

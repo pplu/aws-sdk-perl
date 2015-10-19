@@ -1,8 +1,8 @@
 
 package Paws::CodePipeline::GetPipeline;
   use Moose;
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has version => (is => 'ro', isa => 'Int');
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has Version => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'version' );
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetPipeline on 
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method GetPipeline.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetPipeline.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPipeline.
 
 As an example:
 
@@ -33,38 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the pipeline for which you want to get information.
+  The name of the pipeline for which you want to get information.
 Pipeline names must be unique under an Amazon Web Services (AWS) user
 account.
 
+=head2 Version => Int
 
-
-
-
-
-
-
-
-
-=head2 version => Int
-
-  
-
-The version number of the pipeline. If you do not specify a version,
+  The version number of the pipeline. If you do not specify a version,
 defaults to the most current version.
-
-
-
-
-
-
-
-
-
 
 
 

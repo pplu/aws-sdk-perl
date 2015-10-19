@@ -1,7 +1,7 @@
 
 package Paws::IoT::ListThingPrincipalsResponse;
   use Moose;
-  has principals => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Principals => (is => 'ro', isa => 'ArrayRef[Str]');
 
 1;
 
@@ -13,20 +13,9 @@ Paws::IoT::ListThingPrincipalsResponse
 
 =head1 ATTRIBUTES
 
-=head2 principals => ArrayRef[Str]
+=head2 Principals => ArrayRef[Str]
 
-  
-
-The principals.
-
-
-
-
-
-
-
-
-
+  The principals.
 
 
 =cut

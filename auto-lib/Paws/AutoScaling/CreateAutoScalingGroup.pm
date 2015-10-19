@@ -36,7 +36,7 @@ This class represents the parameters used for calling the method CreateAutoScali
 Auto Scaling service. Use the attributes of this class
 as arguments to method CreateAutoScalingGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateAutoScalingGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAutoScalingGroup.
 
 As an example:
 
@@ -48,79 +48,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the group. This name must be unique within the scope of
+  The name of the group. This name must be unique within the scope of
 your AWS account.
-
-
-
-
-
-
-
-
-
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  
-
-One or more Availability Zones for the group. This parameter is
+  One or more Availability Zones for the group. This parameter is
 optional if you specify subnets using the C<VPCZoneIdentifier>
 parameter.
 
-
-
-
-
-
-
-
-
-
 =head2 DefaultCooldown => Int
 
-  
-
-The amount of time, in seconds, after a scaling activity completes
+  The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start.
 
 If this parameter is not specified, the default value is 300. For more
 information, see Understanding Auto Scaling Cooldowns in the I<Auto
 Scaling Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 DesiredCapacity => Int
 
-  
-
-The number of EC2 instances that should be running in the group. This
+  The number of EC2 instances that should be running in the group. This
 number must be greater than or equal to the minimum size of the group
 and less than or equal to the maximum size of the group.
 
-
-
-
-
-
-
-
-
-
 =head2 HealthCheckGracePeriod => Int
 
-  
-
-The amount of time, in seconds, after an EC2 instance comes into
+  The amount of time, in seconds, after an EC2 instance comes into
 service that Auto Scaling starts checking its health. During this time,
 any health check failures for the instance are ignored.
 
@@ -133,40 +87,18 @@ your application.
 For more information, see Add an Elastic Load Balancing Health Check to
 Your Auto Scaling Group in the I<Auto Scaling Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 HealthCheckType => Str
 
-  
-
-The service to use for the health checks. The valid values are C<EC2>
+  The service to use for the health checks. The valid values are C<EC2>
 and C<ELB>.
 
 By default, health checks use Amazon EC2 instance status checks to
 determine the health of an instance. For more information, see Health
 Checks.
 
-
-
-
-
-
-
-
-
-
 =head2 InstanceId => Str
 
-  
-
-The ID of the EC2 instance used to create a launch configuration for
+  The ID of the EC2 instance used to create a launch configuration for
 the group. Alternatively, use the C<LaunchConfigurationName> parameter
 to specify a launch configuration instead of an EC2 instance.
 
@@ -178,102 +110,36 @@ the exception of the block device mapping.
 For more information, see Create an Auto Scaling Group from an EC2
 Instance in the I<Auto Scaling Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 LaunchConfigurationName => Str
 
-  
-
-The name of the launch configuration. Alternatively, use the
+  The name of the launch configuration. Alternatively, use the
 C<InstanceId> parameter to specify an EC2 instance instead of a launch
 configuration.
 
-
-
-
-
-
-
-
-
-
 =head2 LoadBalancerNames => ArrayRef[Str]
 
-  
-
-One or more load balancers.
+  One or more load balancers.
 
 For more information, see Load Balance Your Auto Scaling Group in the
 I<Auto Scaling Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> MaxSize => Int
 
-  
-
-The maximum size of the group.
-
-
-
-
-
-
-
-
-
+  The maximum size of the group.
 
 =head2 B<REQUIRED> MinSize => Int
 
-  
-
-The minimum size of the group.
-
-
-
-
-
-
-
-
-
+  The minimum size of the group.
 
 =head2 PlacementGroup => Str
 
-  
-
-The name of the placement group into which you'll launch your
+  The name of the placement group into which you'll launch your
 instances, if any. For more information, see Placement Groups in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
+=head2 Tags => ArrayRef[L<Paws::AutoScaling::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::AutoScaling::Tag]
-
-  
-
-The tag to be created or updated. Each tag should be defined by its
+  The tag to be created or updated. Each tag should be defined by its
 resource type, resource ID, key, value, and a propagate flag. Valid
 values: key=I<value>, value=I<value>, propagate=I<true> or I<false>.
 Value and propagate are optional parameters.
@@ -281,40 +147,18 @@ Value and propagate are optional parameters.
 For more information, see Tagging Auto Scaling Groups and Instances in
 the I<Auto Scaling Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 TerminationPolicies => ArrayRef[Str]
 
-  
-
-One or more termination policies used to select the instance to
+  One or more termination policies used to select the instance to
 terminate. These policies are executed in the order that they are
 listed.
 
 For more information, see Choosing a Termination Policy for Your Auto
 Scaling Group in the I<Auto Scaling Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 VPCZoneIdentifier => Str
 
-  
-
-A comma-separated list of subnet identifiers for your virtual private
+  A comma-separated list of subnet identifiers for your virtual private
 cloud (VPC).
 
 If you specify subnets and Availability Zones with this call, ensure
@@ -323,15 +167,6 @@ specified.
 
 For more information, see Auto Scaling and Amazon Virtual Private Cloud
 in the I<Auto Scaling Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

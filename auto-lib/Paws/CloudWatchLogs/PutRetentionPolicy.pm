@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::PutRetentionPolicy;
   use Moose;
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has retentionInDays => (is => 'ro', isa => 'Int', required => 1);
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has RetentionInDays => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'retentionInDays' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method PutRetentionPol
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method PutRetentionPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutRetentionPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRetentionPolicy.
 
 As an example:
 
@@ -33,22 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> logGroupName => Str
+=head2 B<REQUIRED> LogGroupName => Str
 
-  
+  The name of the log group to associate the retention policy with.
 
-The name of the log group to associate the retention policy with.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> retentionInDays => Int
+=head2 B<REQUIRED> RetentionInDays => Int
 
   
 

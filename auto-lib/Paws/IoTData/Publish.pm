@@ -1,9 +1,9 @@
 
 package Paws::IoTData::Publish;
   use Moose;
-  has payload => (is => 'ro', isa => 'Str');
-  has qos => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'qos' );
-  has topic => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'topic' , required => 1);
+  has Payload => (is => 'ro', isa => 'Str');
+  has Qos => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'qos' );
+  has Topic => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'topic' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method Publish on the
 AWS IoT Data Plane service. Use the attributes of this class
 as arguments to method Publish.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to Publish.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Publish.
 
 As an example:
 
@@ -36,50 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 payload => Str
+=head2 Payload => Str
 
-  
+  The state information, in JSON format.
 
-The state information, in JSON format.
+=head2 Qos => Int
 
+  The Quality of Service (QoS) level.
 
+=head2 B<REQUIRED> Topic => Str
 
-
-
-
-
-
-
-
-=head2 qos => Int
-
-  
-
-The Quality of Service (QoS) level.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> topic => Str
-
-  
-
-The name of the MQTT topic.
-
-
-
-
-
-
-
-
-
+  The name of the MQTT topic.
 
 
 

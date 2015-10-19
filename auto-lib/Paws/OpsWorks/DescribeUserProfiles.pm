@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeUserPro
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeUserProfiles.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeUserProfiles.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeUserProfiles.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 IamUserArns => ArrayRef[Str]
 
-  
-
-An array of IAM user ARNs that identify the users to be described.
-
-
-
-
-
-
-
-
-
+  An array of IAM user ARNs that identify the users to be described.
 
 
 

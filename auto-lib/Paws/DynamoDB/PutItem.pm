@@ -31,7 +31,7 @@ This class represents the parameters used for calling the method PutItem on the
 Amazon DynamoDB service. Use the attributes of this class
 as arguments to method PutItem.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutItem.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutItem.
 
 As an example:
 
@@ -43,9 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConditionalOperator => Str
 
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I<ConditionExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -72,20 +70,9 @@ The operation will succeed only if the entire map evaluates to true.
 
 This parameter does not support attributes of type List or Map.
 
-
-
-
-
-
-
-
-
-
 =head2 ConditionExpression => Str
 
-  
-
-A condition that must be satisfied in order for a conditional
+  A condition that must be satisfied in order for a conditional
 I<PutItem> operation to succeed.
 
 An expression can contain any of the following:
@@ -116,20 +103,9 @@ Conditions in the I<Amazon DynamoDB Developer Guide>.
 I<ConditionExpression> replaces the legacy I<ConditionalOperator> and
 I<Expected> parameters.
 
+=head2 Expected => L<Paws::DynamoDB::ExpectedAttributeMap>
 
-
-
-
-
-
-
-
-
-=head2 Expected => Paws::DynamoDB::ExpectedAttributeMap
-
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I<ConditionExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -399,20 +375,9 @@ I<AttributeValueList> and I<ComparisonOperator>. Note that if you use
 both sets of parameters at once, DynamoDB will return a
 I<ValidationException> exception.
 
+=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
-
-
-
-
-
-
-
-
-=head2 ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap
-
-  
-
-One or more substitution tokens for attribute names in an expression.
+  One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
@@ -476,20 +441,9 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
+=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
 
-
-
-
-
-
-
-
-
-=head2 ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap
-
-  
-
-One or more values that can be substituted in an expression.
+  One or more values that can be substituted in an expression.
 
 Use the B<:> (colon) character in an expression to dereference an
 attribute value. For example, suppose that you wanted to check whether
@@ -510,20 +464,9 @@ C<ProductStatus IN (:avail, :back, :disc)>
 For more information on expression attribute values, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
 
+=head2 B<REQUIRED> Item => L<Paws::DynamoDB::PutItemInputAttributeMap>
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Item => Paws::DynamoDB::PutItemInputAttributeMap
-
-  
-
-A map of attribute name/value pairs, one for each attribute. Only the
+  A map of attribute name/value pairs, one for each attribute. Only the
 primary key attributes are required; you can optionally provide other
 attribute name-value pairs for the item.
 
@@ -541,42 +484,20 @@ I<Amazon DynamoDB Developer Guide>.
 
 Each element in the I<Item> map is an I<AttributeValue> object.
 
-
-
-
-
-
-
-
-
-
 =head2 ReturnConsumedCapacity => Str
 
   
 
 =head2 ReturnItemCollectionMetrics => Str
 
-  
-
-Determines whether item collection metrics are returned. If set to
+  Determines whether item collection metrics are returned. If set to
 C<SIZE>, the response includes statistics about item collections, if
 any, that were modified during the operation are returned in the
 response. If set to C<NONE> (the default), no statistics are returned.
 
-
-
-
-
-
-
-
-
-
 =head2 ReturnValues => Str
 
-  
-
-Use I<ReturnValues> if you want to get the item attributes as they
+  Use I<ReturnValues> if you want to get the item attributes as they
 appeared before they were updated with the I<PutItem> request. For
 I<PutItem>, the valid values are:
 
@@ -597,29 +518,9 @@ the content of the old item is returned.
 
 Other "Valid Values" are not relevant to PutItem.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TableName => Str
 
-  
-
-The name of the table to contain the item.
-
-
-
-
-
-
-
-
-
+  The name of the table to contain the item.
 
 
 

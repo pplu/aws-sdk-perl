@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method GetFunction on 
 AWS Lambda service. Use the attributes of this class
 as arguments to method GetFunction.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetFunction.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetFunction.
 
 As an example:
 
@@ -37,9 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-The Lambda function name.
+  The Lambda function name.
 
 You can specify an unqualified function name (for example, "Thumbnail")
 or you can specify Amazon Resource Name (ARN) of the function (for
@@ -49,20 +47,9 @@ example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
-
-
-
-
-
-
-
-
-
 =head2 Qualifier => Str
 
-  
-
-Using this optional parameter to specify a function version or alias
+  Using this optional parameter to specify a function version or alias
 name. If you specify function version, the API uses qualified function
 ARN for the request and returns information about the specific Lambda
 function version. If you specify alias name, the API uses alias ARN and
@@ -70,15 +57,6 @@ returns information about the function version to which the alias
 points. If you don't provide this parameter, the API uses unqualified
 function ARN and returns information about the $LATEST version of the
 Lambda function.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeBandwid
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DescribeBandwidthRateLimit.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBandwidthRateLimit.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeBandwidthRateLimit.
 
 As an example:
 

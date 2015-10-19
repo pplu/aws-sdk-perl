@@ -1,8 +1,8 @@
 
 package Paws::IoT::AcceptCertificateTransfer;
   use Moose;
-  has certificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
-  has setAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
+  has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
+  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
 
   use MooseX::ClassAttribute;
 
@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method AcceptCertifica
 AWS IoT service. Use the attributes of this class
 as arguments to method AcceptCertificateTransfer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AcceptCertificateTransfer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AcceptCertificateTransfer.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> certificateId => Str
+=head2 B<REQUIRED> CertificateId => Str
 
-  
+  The ID of the certificate.
 
-The ID of the certificate.
+=head2 SetAsActive => Bool
 
-
-
-
-
-
-
-
-
-
-=head2 setAsActive => Bool
-
-  
-
-Specifies whether the certificate is active.
-
-
-
-
-
-
-
-
-
+  Specifies whether the certificate is active.
 
 
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListStackResour
 AWS CloudFormation service. Use the attributes of this class
 as arguments to method ListStackResources.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListStackResources.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListStackResources.
 
 As an example:
 
@@ -35,27 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  
-
-String that identifies the start of the next list of stack resource
+  String that identifies the start of the next list of stack resource
 summaries, if there is one.
 
 Default: There is no default value.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StackName => Str
 
-  
-
-The name or the unique stack ID that is associated with the stack,
+  The name or the unique stack ID that is associated with the stack,
 which are not always interchangeable:
 
 =over
@@ -68,15 +55,6 @@ unique stack ID.
 =back
 
 Default: There is no default value.
-
-
-
-
-
-
-
-
-
 
 
 

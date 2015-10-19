@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ListHsms on the
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method ListHsms.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListHsms.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListHsms.
 
 As an example:
 
@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  
-
-The I<NextToken> value from a previous call to ListHsms. Pass null if
+  The I<NextToken> value from a previous call to ListHsms. Pass null if
 this is the first call.
-
-
-
-
-
-
-
-
-
 
 
 

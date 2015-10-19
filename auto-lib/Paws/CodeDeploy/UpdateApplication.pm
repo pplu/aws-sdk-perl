@@ -1,8 +1,8 @@
 
 package Paws::CodeDeploy::UpdateApplication;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str');
-  has newApplicationName => (is => 'ro', isa => 'Str');
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
+  has NewApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'newApplicationName' );
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateApplicati
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method UpdateApplication.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApplication.
 
 As an example:
 
@@ -33,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 applicationName => Str
+=head2 ApplicationName => Str
 
-  
+  The current name of the application that you want to change.
 
-The current name of the application that you want to change.
+=head2 NewApplicationName => Str
 
-
-
-
-
-
-
-
-
-
-=head2 newApplicationName => Str
-
-  
-
-The new name that you want to change the application to.
-
-
-
-
-
-
-
-
-
+  The new name that you want to change the application to.
 
 
 

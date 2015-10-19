@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeAddress
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeAddresses.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAddresses.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAddresses.
 
 As an example:
 
@@ -37,44 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllocationIds => ArrayRef[Str]
 
-  
-
-[EC2-VPC] One or more allocation IDs.
+  [EC2-VPC] One or more allocation IDs.
 
 Default: Describes all your Elastic IP addresses.
 
-
-
-
-
-
-
-
-
-
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
-
-  
-
-One or more filters. Filter names and values are case-sensitive.
+  One or more filters. Filter names and values are case-sensitive.
 
 =over
 
@@ -117,30 +93,11 @@ C<public-ip> - The Elastic IP address.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 PublicIps => ArrayRef[Str]
 
-  
-
-[EC2-Classic] One or more Elastic IP addresses.
+  [EC2-Classic] One or more Elastic IP addresses.
 
 Default: Describes all your Elastic IP addresses.
-
-
-
-
-
-
-
-
-
 
 
 

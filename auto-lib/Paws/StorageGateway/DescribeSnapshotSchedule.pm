@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeSnapsho
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DescribeSnapshotSchedule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSnapshotSchedule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSnapshotSchedule.
 
 As an example:
 
@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> VolumeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
+  The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
 operation to return a list of gateway volumes.
-
-
-
-
-
-
-
-
-
 
 
 

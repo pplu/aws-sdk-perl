@@ -100,7 +100,7 @@ cmp_ok($@->code, 'eq', 'InvalidSignatureException', 'Correct code');
 cmp_ok($@->request_id, 'eq', '000000000000000000000000000000000000', 'Correct Request ID');
 
 throws_ok {
-  $p->service('Glacier', region => 'eu-west-1')->ListVaults(accountId => 'X');
+  $p->service('Glacier', region => 'eu-west-1')->ListVaults(AccountId => 'X');
 } 'Paws::Exception', 'got exception';
 
 cmp_ok($@->message, 'eq', 'Required parameter missing: API version', 'Glacier exception');

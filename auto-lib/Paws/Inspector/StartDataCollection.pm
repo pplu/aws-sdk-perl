@@ -1,7 +1,7 @@
 
 package Paws::Inspector::StartDataCollection;
   use Moose;
-  has assessmentArn => (is => 'ro', isa => 'Str');
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method StartDataCollec
 Amazon Inspector service. Use the attributes of this class
 as arguments to method StartDataCollection.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StartDataCollection.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartDataCollection.
 
 As an example:
 
@@ -32,21 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 assessmentArn => Str
+=head2 AssessmentArn => Str
 
-  
-
-The ARN of the assessment for which you want to start the data
+  The ARN of the assessment for which you want to start the data
 collection process.
-
-
-
-
-
-
-
-
-
 
 
 

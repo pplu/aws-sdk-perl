@@ -1,7 +1,7 @@
 
 package Paws::Inspector::ListTagsForResource;
   use Moose;
-  has resourceArn => (is => 'ro', isa => 'Str');
+  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ListTagsForReso
 Amazon Inspector service. Use the attributes of this class
 as arguments to method ListTagsForResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListTagsForResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTagsForResource.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 resourceArn => Str
+=head2 ResourceArn => Str
 
-  
-
-The ARN specifying the resource whose tags you want to list.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the resource whose tags you want to list.
 
 
 

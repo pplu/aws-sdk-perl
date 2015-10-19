@@ -14,19 +14,8 @@ Paws::OpsWorks::CreateDeploymentResult
 
 =head2 DeploymentId => Str
 
-  
-
-The deployment ID, which can be used with other requests to identify
+  The deployment ID, which can be used with other requests to identify
 the deployment.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DeleteTags on t
 Amazon Elastic File System service. Use the attributes of this class
 as arguments to method DeleteTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTags.
 
 As an example:
 
@@ -37,33 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-  
-
-String. The ID of the file system whose tags you want to delete.
-
-
-
-
-
-
-
-
-
+  String. The ID of the file system whose tags you want to delete.
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
-  
-
-A list of tag keys to delete.
-
-
-
-
-
-
-
-
-
+  A list of tag keys to delete.
 
 
 

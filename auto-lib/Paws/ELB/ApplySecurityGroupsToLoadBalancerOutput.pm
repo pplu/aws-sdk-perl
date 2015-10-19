@@ -15,18 +15,7 @@ Paws::ELB::ApplySecurityGroupsToLoadBalancerOutput
 
 =head2 SecurityGroups => ArrayRef[Str]
 
-  
-
-The IDs of the security groups associated with the load balancer.
-
-
-
-
-
-
-
-
-
+  The IDs of the security groups associated with the load balancer.
 
 
 =cut

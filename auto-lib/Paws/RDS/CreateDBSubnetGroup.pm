@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method CreateDBSubnetG
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CreateDBSubnetGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBSubnetGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBSubnetGroup.
 
 As an example:
 
@@ -37,24 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBSubnetGroupDescription => Str
 
-  
-
-The description for the DB subnet group.
-
-
-
-
-
-
-
-
-
+  The description for the DB subnet group.
 
 =head2 B<REQUIRED> DBSubnetGroupName => Str
 
-  
-
-The name for the DB subnet group. This value is stored as a lowercase
+  The name for the DB subnet group. This value is stored as a lowercase
 string.
 
 Constraints: Must contain no more than 255 alphanumeric characters,
@@ -62,31 +49,11 @@ periods, underscores, or hyphens. Must not be default.
 
 Example: C<mySubnetgroup>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
-  
+  The EC2 Subnet IDs for the DB subnet group.
 
-The EC2 Subnet IDs for the DB subnet group.
-
-
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

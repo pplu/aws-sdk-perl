@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeregisterVolum
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DeregisterVolume.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterVolume.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterVolume.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> VolumeId => Str
 
-  
-
-The AWS OpsWorks volume ID, which is the GUID that AWS OpsWorks
+  The AWS OpsWorks volume ID, which is the GUID that AWS OpsWorks
 assigned to the instance when you registered the volume with the stack,
 not the Amazon EC2 volume ID.
-
-
-
-
-
-
-
-
-
 
 
 

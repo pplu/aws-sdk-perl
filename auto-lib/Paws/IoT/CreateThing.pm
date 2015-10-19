@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreateThing;
   use Moose;
-  has attributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload');
-  has thingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
+  has AttributePayload => (is => 'ro', isa => 'Paws::IoT::AttributePayload');
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method CreateThing on 
 AWS IoT service. Use the attributes of this class
 as arguments to method CreateThing.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateThing.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateThing.
 
 As an example:
 
@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 attributePayload => Paws::IoT::AttributePayload
+=head2 AttributePayload => L<Paws::IoT::AttributePayload>
 
-  
-
-The attribute payload. Which consists of up to 3 name/value pairs in a
+  The attribute payload. Which consists of up to 3 name/value pairs in a
 JSON document. For example:
 {\"attributes\":{\"string1\":\"string2\E<rdquo>}}
 
+=head2 B<REQUIRED> ThingName => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> thingName => Str
-
-  
-
-The name of the thing.
-
-
-
-
-
-
-
-
-
+  The name of the thing.
 
 
 

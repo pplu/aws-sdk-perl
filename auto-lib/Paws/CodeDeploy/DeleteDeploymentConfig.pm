@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::DeleteDeploymentConfig;
   use Moose;
-  has deploymentConfigName => (is => 'ro', isa => 'Str', required => 1);
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteDeploymen
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method DeleteDeploymentConfig.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDeploymentConfig.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDeploymentConfig.
 
 As an example:
 
@@ -32,21 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> deploymentConfigName => Str
+=head2 B<REQUIRED> DeploymentConfigName => Str
 
-  
-
-The name of an existing deployment configuration associated with the
+  The name of an existing deployment configuration associated with the
 applicable IAM user or AWS account.
-
-
-
-
-
-
-
-
-
 
 
 

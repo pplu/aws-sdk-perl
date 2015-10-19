@@ -28,7 +28,7 @@ Paws::S3::
 =head2 ContentMD5 => Str
 
   
-=head2 B<REQUIRED> NotificationConfiguration => Paws::S3::NotificationConfigurationDeprecated
+=head2 B<REQUIRED> NotificationConfiguration => L<Paws::S3::NotificationConfigurationDeprecated>
 
   
 

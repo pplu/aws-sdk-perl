@@ -12,7 +12,7 @@ Paws::StorageGateway::DescribeStorediSCSIVolumesOutput
 
 =head1 ATTRIBUTES
 
-=head2 StorediSCSIVolumes => ArrayRef[Paws::StorageGateway::StorediSCSIVolume]
+=head2 StorediSCSIVolumes => ArrayRef[L<Paws::StorageGateway::StorediSCSIVolume>]
 
   
 

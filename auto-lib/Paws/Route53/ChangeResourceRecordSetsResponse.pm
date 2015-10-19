@@ -17,7 +17,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Route 53 service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -27,24 +27,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ChangeInfo => Paws::Route53::ChangeInfo
+=head2 B<REQUIRED> ChangeInfo => L<Paws::Route53::ChangeInfo>
 
-  
-
-A complex type that contains information about changes made to your
+  A complex type that contains information about changes made to your
 hosted zone.
 
 This element contains an ID that you use when performing a GetChange
 action to get detailed information about the change.
-
-
-
-
-
-
-
-
-
 
 
 

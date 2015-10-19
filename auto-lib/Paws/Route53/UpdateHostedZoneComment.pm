@@ -23,32 +23,10 @@ Paws::Route53::UpdateHostedZoneCommentResponse
 
 =head2 Comment => Str
 
-  
-
-A comment about your hosted zone.
-
-
-
-
-
-
-
-
-
+  A comment about your hosted zone.
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The ID of the hosted zone you want to update.
-
-
-
-
-
-
-
-
-
+  The ID of the hosted zone you want to update.
 
 
 =cut

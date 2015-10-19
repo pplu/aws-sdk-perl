@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DisableSnapshot
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DisableSnapshotCopy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DisableSnapshotCopy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisableSnapshotCopy.
 
 As an example:
 
@@ -34,22 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  
-
-The unique identifier of the source cluster that you want to disable
+  The unique identifier of the source cluster that you want to disable
 copying of snapshots to a destination region.
 
 Constraints: Must be the valid name of an existing cluster that has
 cross-region snapshot copy enabled.
-
-
-
-
-
-
-
-
-
 
 
 

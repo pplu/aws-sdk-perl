@@ -13,35 +13,13 @@ Paws::Config::DescribeComplianceByConfigRuleResponse
 
 =head1 ATTRIBUTES
 
-=head2 ComplianceByConfigRules => ArrayRef[Paws::Config::ComplianceByConfigRule]
+=head2 ComplianceByConfigRules => ArrayRef[L<Paws::Config::ComplianceByConfigRule>]
 
-  
-
-Indicates whether each of the specified AWS Config rules is compliant.
-
-
-
-
-
-
-
-
-
+  Indicates whether each of the specified AWS Config rules is compliant.
 =head2 NextToken => Str
 
-  
-
-The string that you use in a subsequent request to get the next page of
+  The string that you use in a subsequent request to get the next page of
 results in a paginated response.
-
-
-
-
-
-
-
-
-
 
 
 =cut

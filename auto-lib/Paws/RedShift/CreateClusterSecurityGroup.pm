@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateClusterSe
 Amazon Redshift service. Use the attributes of this class
 as arguments to method CreateClusterSecurityGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateClusterSecurityGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateClusterSecurityGroup.
 
 As an example:
 
@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterSecurityGroupName => Str
 
-  
-
-The name for the security group. Amazon Redshift stores the value as a
+  The name for the security group. Amazon Redshift stores the value as a
 lowercase string.
 
 Constraints:
@@ -57,44 +55,13 @@ AWS account.
 
 Example: C<examplesecuritygroup>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Description => Str
 
-  
+  A description for the security group.
 
-A description for the security group.
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
-
-  
-
-A list of tag instances.
-
-
-
-
-
-
-
-
-
+  A list of tag instances.
 
 
 

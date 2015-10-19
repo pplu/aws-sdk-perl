@@ -14,18 +14,7 @@ Paws::CognitoIdentity::GetIdResponse
 
 =head2 IdentityId => Str
 
-  
-
-A unique identifier in the format REGION:GUID.
-
-
-
-
-
-
-
-
-
+  A unique identifier in the format REGION:GUID.
 
 
 =cut

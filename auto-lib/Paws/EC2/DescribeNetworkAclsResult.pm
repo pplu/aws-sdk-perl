@@ -13,20 +13,9 @@ Paws::EC2::DescribeNetworkAclsResult
 
 =head1 ATTRIBUTES
 
-=head2 NetworkAcls => ArrayRef[Paws::EC2::NetworkAcl]
+=head2 NetworkAcls => ArrayRef[L<Paws::EC2::NetworkAcl>]
 
-  
-
-Information about one or more network ACLs.
-
-
-
-
-
-
-
-
-
+  Information about one or more network ACLs.
 
 
 =cut

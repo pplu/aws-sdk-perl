@@ -1,9 +1,9 @@
 
 package Paws::DirectConnect::AllocatePrivateVirtualInterface;
   use Moose;
-  has connectionId => (is => 'ro', isa => 'Str', required => 1);
-  has newPrivateVirtualInterfaceAllocation => (is => 'ro', isa => 'Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation', required => 1);
-  has ownerAccount => (is => 'ro', isa => 'Str', required => 1);
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
+  has NewPrivateVirtualInterfaceAllocation => (is => 'ro', isa => 'Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation', traits => ['NameInRequest'], request_name => 'newPrivateVirtualInterfaceAllocation' , required => 1);
+  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method AllocatePrivate
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method AllocatePrivateVirtualInterface.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AllocatePrivateVirtualInterface.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AllocatePrivateVirtualInterface.
 
 As an example:
 
@@ -34,58 +34,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> connectionId => Str
+=head2 B<REQUIRED> ConnectionId => Str
 
-  
-
-The connection ID on which the private virtual interface is
+  The connection ID on which the private virtual interface is
 provisioned.
 
 Default: None
 
+=head2 B<REQUIRED> NewPrivateVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation>
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> newPrivateVirtualInterfaceAllocation => Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation
-
-  
-
-Detailed information for the private virtual interface to be
+  Detailed information for the private virtual interface to be
 provisioned.
 
 Default: None
 
+=head2 B<REQUIRED> OwnerAccount => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> ownerAccount => Str
-
-  
-
-The AWS account that will own the new private virtual interface.
+  The AWS account that will own the new private virtual interface.
 
 Default: None
-
-
-
-
-
-
-
-
-
 
 
 

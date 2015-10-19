@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CancelExportTas
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CancelExportTask.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CancelExportTask.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CancelExportTask.
 
 As an example:
 
@@ -34,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ExportTaskId => Str
 
-  
-
-The ID of the export task. This is the ID returned by
+  The ID of the export task. This is the ID returned by
 C<CreateInstanceExportTask>.
-
-
-
-
-
-
-
-
-
 
 
 

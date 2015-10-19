@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetEvaluation o
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method GetEvaluation.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetEvaluation.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetEvaluation.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EvaluationId => Str
 
-  
-
-The ID of the C<Evaluation> to retrieve. The evaluation of each
+  The ID of the C<Evaluation> to retrieve. The evaluation of each
 C<MLModel> is recorded and cataloged. The ID provides the means to
 access the information.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListGateways on
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method ListGateways.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListGateways.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListGateways.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  
-
-Specifies that the list of gateways returned be limited to the
+  Specifies that the list of gateways returned be limited to the
 specified number of items.
-
-
-
-
-
-
-
-
-
 
 =head2 Marker => Str
 
-  
-
-An opaque string that indicates the position at which to begin the
+  An opaque string that indicates the position at which to begin the
 returned list of gateways.
-
-
-
-
-
-
-
-
-
 
 
 

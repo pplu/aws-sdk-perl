@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method GetEventSourceM
 AWS Lambda service. Use the attributes of this class
 as arguments to method GetEventSourceMapping.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetEventSourceMapping.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetEventSourceMapping.
 
 As an example:
 
@@ -36,18 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> UUID => Str
 
-  
-
-The AWS Lambda assigned ID of the event source mapping.
-
-
-
-
-
-
-
-
-
+  The AWS Lambda assigned ID of the event source mapping.
 
 
 

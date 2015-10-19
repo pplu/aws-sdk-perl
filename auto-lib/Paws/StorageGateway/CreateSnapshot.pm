@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateSnapshot 
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method CreateSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSnapshot.
 
 As an example:
 
@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SnapshotDescription => Str
 
-  
-
-Textual description of the snapshot that appears in the Amazon EC2
+  Textual description of the snapshot that appears in the Amazon EC2
 console, Elastic Block Store snapshots panel in the B<Description>
 field, and in the AWS Storage Gateway snapshot B<Details> pane,
 B<Description> field
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VolumeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
+  The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
 operation to return a list of gateway volumes.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -55,7 +55,7 @@ my $mojo = eval {
     credentials => 'Test::CustomCredentials' 
   });
 };
-goto END if ($@);
+goto FURL if ($@);
 
 throws_ok {
   $mojo->service('EC2',
@@ -65,6 +65,27 @@ throws_ok {
 } 'Paws::Exception', 'got exception';
 
 cmp_ok($@->message, 'eq', 'Can\'t connect: Name or service not known', 'Correct message');
+cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
+
+FURL:
+diag "Furl caller";
+
+my $furl = eval {
+  Paws->new(config => {
+    caller => 'Paws::Net::FurlCaller',
+    credentials => 'Test::CustomCredentials' 
+  });
+};
+goto END if ($@);
+
+throws_ok {
+  $furl->service('EC2',
+                 region => 'test', 
+                 region_rules => [ { uri => $closed_server_endpoint } ]
+                )->DescribeInstances->get;
+} 'Paws::Exception', 'got exception';
+
+like($@->message, qr/Cannot resolve host name/, 'Correct message');
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 END:

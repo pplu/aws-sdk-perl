@@ -1,8 +1,8 @@
 
 package Paws::Inspector::AddAttributesToFindings;
   use Moose;
-  has attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]');
-  has findingArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', traits => ['NameInRequest'], request_name => 'attributes' );
+  has FindingArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'findingArns' );
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddAttributesTo
 Amazon Inspector service. Use the attributes of this class
 as arguments to method AddAttributesToFindings.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddAttributesToFindings.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddAttributesToFindings.
 
 As an example:
 
@@ -33,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 attributes => ArrayRef[Paws::Inspector::Attribute]
+=head2 Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
-  
+  The array of attributes that you want to assign to specified findings.
 
-The array of attributes that you want to assign to specified findings.
+=head2 FindingArns => ArrayRef[Str]
 
-
-
-
-
-
-
-
-
-
-=head2 findingArns => ArrayRef[Str]
-
-  
-
-The ARNs specifying the findings that you want to assign attributes to.
-
-
-
-
-
-
-
-
-
+  The ARNs specifying the findings that you want to assign attributes to.
 
 
 

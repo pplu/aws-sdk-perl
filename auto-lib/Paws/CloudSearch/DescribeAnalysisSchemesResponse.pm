@@ -13,20 +13,9 @@ Paws::CloudSearch::DescribeAnalysisSchemesResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AnalysisSchemes => ArrayRef[Paws::CloudSearch::AnalysisSchemeStatus]
+=head2 B<REQUIRED> AnalysisSchemes => ArrayRef[L<Paws::CloudSearch::AnalysisSchemeStatus>]
 
-  
-
-The analysis scheme descriptions.
-
-
-
-
-
-
-
-
-
+  The analysis scheme descriptions.
 
 
 =cut

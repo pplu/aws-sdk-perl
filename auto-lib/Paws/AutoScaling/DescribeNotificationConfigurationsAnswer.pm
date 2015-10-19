@@ -16,33 +16,11 @@ Paws::AutoScaling::DescribeNotificationConfigurationsAnswer
 
 =head2 NextToken => Str
 
-  
-
-The token to use when requesting the next set of items. If there are no
+  The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
+=head2 B<REQUIRED> NotificationConfigurations => ArrayRef[L<Paws::AutoScaling::NotificationConfiguration>]
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> NotificationConfigurations => ArrayRef[Paws::AutoScaling::NotificationConfiguration]
-
-  
-
-The notification configurations.
-
-
-
-
-
-
-
-
-
+  The notification configurations.
 
 
 =cut

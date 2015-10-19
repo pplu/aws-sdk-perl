@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetRolePolicy o
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetRolePolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetRolePolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetRolePolicy.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The name of the policy document to get.
-
-
-
-
-
-
-
-
-
+  The name of the policy document to get.
 
 =head2 B<REQUIRED> RoleName => Str
 
-  
-
-The name of the role associated with the policy.
-
-
-
-
-
-
-
-
-
+  The name of the role associated with the policy.
 
 
 

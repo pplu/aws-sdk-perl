@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::BatchGetApplications;
   use Moose;
-  has applicationNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ApplicationNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'applicationNames' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method BatchGetApplica
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method BatchGetApplications.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetApplications.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetApplications.
 
 As an example:
 
@@ -32,21 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 applicationNames => ArrayRef[Str]
+=head2 ApplicationNames => ArrayRef[Str]
 
-  
-
-A list of application names, with multiple application names separated
+  A list of application names, with multiple application names separated
 by spaces.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ResetDBClusterP
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method ResetDBClusterParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ResetDBClusterParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ResetDBClusterParameterGroup.
 
 As an example:
 
@@ -36,53 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBClusterParameterGroupName => Str
 
-  
+  The name of the DB cluster parameter group to reset.
 
-The name of the DB cluster parameter group to reset.
+=head2 Parameters => ArrayRef[L<Paws::RDS::Parameter>]
 
-
-
-
-
-
-
-
-
-
-=head2 Parameters => ArrayRef[Paws::RDS::Parameter]
-
-  
-
-A list of parameter names in the DB cluster parameter group to reset to
+  A list of parameter names in the DB cluster parameter group to reset to
 the default values. You cannot use this parameter if the
 C<ResetAllParameters> parameter is set to C<true>.
 
-
-
-
-
-
-
-
-
-
 =head2 ResetAllParameters => Bool
 
-  
-
-A value that is set to C<true> to reset all parameters in the DB
+  A value that is set to C<true> to reset all parameters in the DB
 cluster parameter group to their default values, and C<false>
 otherwise. You cannot use this parameter if there is a list of
 parameter names specified for the C<Parameters> parameter.
-
-
-
-
-
-
-
-
-
 
 
 

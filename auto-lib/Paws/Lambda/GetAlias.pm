@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method GetAlias on the
 AWS Lambda service. Use the attributes of this class
 as arguments to method GetAlias.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetAlias.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetAlias.
 
 As an example:
 
@@ -37,35 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-Function name for which the alias is created. An alias is a subresource
+  Function name for which the alias is created. An alias is a subresource
 that exists only in the context of an existing Lambda function. So you
 must specify the function name.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Name => Str
 
-  
-
-Name of the alias for which you want to retrieve information.
-
-
-
-
-
-
-
-
-
+  Name of the alias for which you want to retrieve information.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::IoT::DeleteThing;
   use Moose;
-  has thingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
+  has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteThing on 
 AWS IoT service. Use the attributes of this class
 as arguments to method DeleteThing.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteThing.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteThing.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> thingName => Str
+=head2 B<REQUIRED> ThingName => Str
 
-  
-
-The thing name.
-
-
-
-
-
-
-
-
-
+  The thing name.
 
 
 

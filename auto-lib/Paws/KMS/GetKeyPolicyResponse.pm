@@ -14,18 +14,7 @@ Paws::KMS::GetKeyPolicyResponse
 
 =head2 Policy => Str
 
-  
-
-A policy document in JSON format.
-
-
-
-
-
-
-
-
-
+  A policy document in JSON format.
 
 
 =cut

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateAccountAl
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method CreateAccountAlias.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateAccountAlias.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAccountAlias.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountAlias => Str
 
-  
-
-The account alias to create.
-
-
-
-
-
-
-
-
-
+  The account alias to create.
 
 
 

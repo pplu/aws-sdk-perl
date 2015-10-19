@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DescribeScaling
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribeScalingActivities.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeScalingActivities.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeScalingActivities.
 
 As an example:
 
@@ -37,68 +37,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ActivityIds => ArrayRef[Str]
 
-  
-
-The activity IDs of the desired scaling activities. If this list is
+  The activity IDs of the desired scaling activities. If this list is
 omitted, all activities are described. If the C<AutoScalingGroupName>
 parameter is provided, the results are limited to that group. The list
 of requested activities cannot contain more than 50 items. If unknown
 activities are requested, they are ignored with no error.
 
-
-
-
-
-
-
-
-
-
 =head2 AutoScalingGroupName => Str
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
-
+  The name of the group.
 
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of items to return with this call.
-
-
-
-
-
-
-
-
-
+  The maximum number of items to return with this call.
 
 =head2 NextToken => Str
 
-  
-
-The token for the next set of items to return. (You received this token
+  The token for the next set of items to return. (You received this token
 from a previous call.)
-
-
-
-
-
-
-
-
-
 
 
 

@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeletePolicyVer
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method DeletePolicyVersion.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeletePolicyVersion.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeletePolicyVersion.
 
 As an example:
 
@@ -39,21 +39,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> VersionId => Str
 
-  
-
-The policy version to delete.
+  The policy version to delete.
 
 For more information about managed policy versions, see Versioning for
 Managed Policies in the I<IAM User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 

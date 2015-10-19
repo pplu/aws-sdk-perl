@@ -13,20 +13,9 @@ Paws::IAM::CreateGroupResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Group => Paws::IAM::Group
+=head2 B<REQUIRED> Group => L<Paws::IAM::Group>
 
-  
-
-Information about the group.
-
-
-
-
-
-
-
-
-
+  Information about the group.
 
 
 =cut

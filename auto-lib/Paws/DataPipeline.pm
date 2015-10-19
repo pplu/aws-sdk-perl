@@ -132,8 +132,6 @@ Paws::DataPipeline - Perl Interface to AWS AWS Data Pipeline
 
 =head1 DESCRIPTION
 
-
-
 AWS Data Pipeline configures and manages a data-driven workflow called
 a pipeline. AWS Data Pipeline handles the details of scheduling and
 ensuring that data dependencies are met so that your application can
@@ -159,26 +157,15 @@ progress to the web service as it does so. When the task is done, the
 task runner reports the final success or failure of the task to the web
 service.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
-=head2 ActivatePipeline(pipelineId => Str, [parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue], startTimestamp => Str])
+=head2 ActivatePipeline(PipelineId => Str, [ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>], StartTimestamp => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ActivatePipeline>
 
 Returns: a L<Paws::DataPipeline::ActivatePipelineOutput> instance
 
-  
-
-Validates the specified pipeline and starts processing pipeline tasks.
+  Validates the specified pipeline and starts processing pipeline tasks.
 If the pipeline does not pass validation, activation fails.
 
 If you need to pause the pipeline to investigate an issue with a
@@ -188,65 +175,32 @@ To activate a finished pipeline, modify the end date for the pipeline
 and then activate it.
 
 
-
-
-
-
-
-
-
-
-
-=head2 AddTags(pipelineId => Str, tags => ArrayRef[Paws::DataPipeline::Tag])
+=head2 AddTags(PipelineId => Str, Tags => ArrayRef[L<Paws::DataPipeline::Tag>])
 
 Each argument is described in detail in: L<Paws::DataPipeline::AddTags>
 
 Returns: a L<Paws::DataPipeline::AddTagsOutput> instance
 
-  
-
-Adds or modifies tags for the specified pipeline.
+  Adds or modifies tags for the specified pipeline.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreatePipeline(name => Str, uniqueId => Str, [description => Str, tags => ArrayRef[Paws::DataPipeline::Tag]])
+=head2 CreatePipeline(Name => Str, UniqueId => Str, [Description => Str, Tags => ArrayRef[L<Paws::DataPipeline::Tag>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::CreatePipeline>
 
 Returns: a L<Paws::DataPipeline::CreatePipelineOutput> instance
 
-  
-
-Creates a new, empty pipeline. Use PutPipelineDefinition to populate
+  Creates a new, empty pipeline. Use PutPipelineDefinition to populate
 the pipeline.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeactivatePipeline(pipelineId => Str, [cancelActive => Bool])
+=head2 DeactivatePipeline(PipelineId => Str, [CancelActive => Bool])
 
 Each argument is described in detail in: L<Paws::DataPipeline::DeactivatePipeline>
 
 Returns: a L<Paws::DataPipeline::DeactivatePipelineOutput> instance
 
-  
-
-Deactivates the specified running pipeline. The pipeline is set to the
+  Deactivates the specified running pipeline. The pipeline is set to the
 C<DEACTIVATING> state until the deactivation process completes.
 
 To resume a deactivated pipeline, use ActivatePipeline. By default, the
@@ -254,24 +208,13 @@ pipeline resumes from the last completed execution. Optionally, you can
 specify the date and time to resume the pipeline.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeletePipeline(pipelineId => Str)
+=head2 DeletePipeline(PipelineId => Str)
 
 Each argument is described in detail in: L<Paws::DataPipeline::DeletePipeline>
 
 Returns: nothing
 
-  
-
-Deletes a pipeline, its pipeline definition, and its run history. AWS
+  Deletes a pipeline, its pipeline definition, and its run history. AWS
 Data Pipeline attempts to cancel instances associated with the pipeline
 that are currently being processed by task runners.
 
@@ -281,46 +224,24 @@ it, call SetStatus with the status set to C<PAUSE> on individual
 components. Components that are paused by SetStatus can be resumed.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeObjects(objectIds => ArrayRef[Str], pipelineId => Str, [evaluateExpressions => Bool, marker => Str])
+=head2 DescribeObjects(ObjectIds => ArrayRef[Str], PipelineId => Str, [EvaluateExpressions => Bool, Marker => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::DescribeObjects>
 
 Returns: a L<Paws::DataPipeline::DescribeObjectsOutput> instance
 
-  
-
-Gets the object definitions for a set of objects associated with the
+  Gets the object definitions for a set of objects associated with the
 pipeline. Object definitions are composed of a set of fields that
 define the properties of the object.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribePipelines(pipelineIds => ArrayRef[Str])
+=head2 DescribePipelines(PipelineIds => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::DescribePipelines>
 
 Returns: a L<Paws::DataPipeline::DescribePipelinesOutput> instance
 
-  
-
-Retrieves metadata about one or more pipelines. The information
+  Retrieves metadata about one or more pipelines. The information
 retrieved includes the name of the pipeline, the pipeline identifier,
 its current state, and the user account that owns the pipeline. Using
 account credentials, you can retrieve metadata about pipelines that you
@@ -332,89 +253,45 @@ To retrieve the full pipeline definition instead of metadata about the
 pipeline, call GetPipelineDefinition.
 
 
-
-
-
-
-
-
-
-
-
-=head2 EvaluateExpression(expression => Str, objectId => Str, pipelineId => Str)
+=head2 EvaluateExpression(Expression => Str, ObjectId => Str, PipelineId => Str)
 
 Each argument is described in detail in: L<Paws::DataPipeline::EvaluateExpression>
 
 Returns: a L<Paws::DataPipeline::EvaluateExpressionOutput> instance
 
-  
-
-Task runners call C<EvaluateExpression> to evaluate a string in the
+  Task runners call C<EvaluateExpression> to evaluate a string in the
 context of the specified object. For example, a task runner can
 evaluate SQL queries stored in Amazon S3.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetPipelineDefinition(pipelineId => Str, [version => Str])
+=head2 GetPipelineDefinition(PipelineId => Str, [Version => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::GetPipelineDefinition>
 
 Returns: a L<Paws::DataPipeline::GetPipelineDefinitionOutput> instance
 
-  
-
-Gets the definition of the specified pipeline. You can call
+  Gets the definition of the specified pipeline. You can call
 C<GetPipelineDefinition> to retrieve the pipeline definition that you
 provided using PutPipelineDefinition.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListPipelines([marker => Str])
+=head2 ListPipelines([Marker => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ListPipelines>
 
 Returns: a L<Paws::DataPipeline::ListPipelinesOutput> instance
 
-  
-
-Lists the pipeline identifiers for all active pipelines that you have
+  Lists the pipeline identifiers for all active pipelines that you have
 permission to access.
 
 
-
-
-
-
-
-
-
-
-
-=head2 PollForTask(workerGroup => Str, [hostname => Str, instanceIdentity => Paws::DataPipeline::InstanceIdentity])
+=head2 PollForTask(WorkerGroup => Str, [Hostname => Str, InstanceIdentity => L<Paws::DataPipeline::InstanceIdentity>])
 
 Each argument is described in detail in: L<Paws::DataPipeline::PollForTask>
 
 Returns: a L<Paws::DataPipeline::PollForTaskOutput> instance
 
-  
-
-Task runners call C<PollForTask> to receive a task to perform from AWS
+  Task runners call C<PollForTask> to receive a task to perform from AWS
 Data Pipeline. The task runner specifies which tasks it can perform by
 setting a value for the C<workerGroup> parameter. The task returned can
 come from any of the pipelines that match the C<workerGroup> value
@@ -431,24 +308,13 @@ C<PollForTask> again on the same C<workerGroup> until it receives a
 response, and this can take up to 90 seconds.
 
 
-
-
-
-
-
-
-
-
-
-=head2 PutPipelineDefinition(pipelineId => Str, pipelineObjects => ArrayRef[Paws::DataPipeline::PipelineObject], [parameterObjects => ArrayRef[Paws::DataPipeline::ParameterObject], parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]])
+=head2 PutPipelineDefinition(PipelineId => Str, PipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>], [ParameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>], ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::PutPipelineDefinition>
 
 Returns: a L<Paws::DataPipeline::PutPipelineDefinitionOutput> instance
 
-  
-
-Adds tasks, schedules, and preconditions to the specified pipeline. You
+  Adds tasks, schedules, and preconditions to the specified pipeline. You
 can use C<PutPipelineDefinition> to populate a new pipeline.
 
 C<PutPipelineDefinition> also validates the configuration as it adds it
@@ -472,65 +338,32 @@ Pipeline object definitions are passed to the C<PutPipelineDefinition>
 action and returned by the GetPipelineDefinition action.
 
 
-
-
-
-
-
-
-
-
-
-=head2 QueryObjects(pipelineId => Str, sphere => Str, [limit => Int, marker => Str, query => Paws::DataPipeline::Query])
+=head2 QueryObjects(PipelineId => Str, Sphere => Str, [Limit => Int, Marker => Str, Query => L<Paws::DataPipeline::Query>])
 
 Each argument is described in detail in: L<Paws::DataPipeline::QueryObjects>
 
 Returns: a L<Paws::DataPipeline::QueryObjectsOutput> instance
 
-  
-
-Queries the specified pipeline for the names of objects that match the
+  Queries the specified pipeline for the names of objects that match the
 specified set of conditions.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RemoveTags(pipelineId => Str, tagKeys => ArrayRef[Str])
+=head2 RemoveTags(PipelineId => Str, TagKeys => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::RemoveTags>
 
 Returns: a L<Paws::DataPipeline::RemoveTagsOutput> instance
 
-  
-
-Removes existing tags from the specified pipeline.
+  Removes existing tags from the specified pipeline.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ReportTaskProgress(taskId => Str, [fields => ArrayRef[Paws::DataPipeline::Field]])
+=head2 ReportTaskProgress(TaskId => Str, [Fields => ArrayRef[L<Paws::DataPipeline::Field>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ReportTaskProgress>
 
 Returns: a L<Paws::DataPipeline::ReportTaskProgressOutput> instance
 
-  
-
-Task runners call C<ReportTaskProgress> when assigned a task to
+  Task runners call C<ReportTaskProgress> when assigned a task to
 acknowledge that it has the task. If the web service does not receive
 this acknowledgement within 2 minutes, it assigns the task in a
 subsequent PollForTask call. After this initial acknowledgement, the
@@ -545,48 +378,26 @@ reassigns the task in a subsequent response to PollForTask. Task
 runners should call C<ReportTaskProgress> every 60 seconds.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ReportTaskRunnerHeartbeat(taskrunnerId => Str, [hostname => Str, workerGroup => Str])
+=head2 ReportTaskRunnerHeartbeat(TaskrunnerId => Str, [Hostname => Str, WorkerGroup => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ReportTaskRunnerHeartbeat>
 
 Returns: a L<Paws::DataPipeline::ReportTaskRunnerHeartbeatOutput> instance
 
-  
-
-Task runners call C<ReportTaskRunnerHeartbeat> every 15 minutes to
+  Task runners call C<ReportTaskRunnerHeartbeat> every 15 minutes to
 indicate that they are operational. If the AWS Data Pipeline Task
 Runner is launched on a resource managed by AWS Data Pipeline, the web
 service can use this call to detect when the task runner application
 has failed and restart a new instance.
 
 
-
-
-
-
-
-
-
-
-
-=head2 SetStatus(objectIds => ArrayRef[Str], pipelineId => Str, status => Str)
+=head2 SetStatus(ObjectIds => ArrayRef[Str], PipelineId => Str, Status => Str)
 
 Each argument is described in detail in: L<Paws::DataPipeline::SetStatus>
 
 Returns: nothing
 
-  
-
-Requests that the status of the specified physical or logical pipeline
+  Requests that the status of the specified physical or logical pipeline
 objects be updated in the specified pipeline. This update might not
 occur immediately, but is eventually consistent. The status that can be
 set depends on the type of object (for example, DataNode or Activity).
@@ -594,24 +405,13 @@ You cannot perform this operation on C<FINISHED> pipelines and
 attempting to do so returns C<InvalidRequestException>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 SetTaskStatus(taskId => Str, taskStatus => Str, [errorId => Str, errorMessage => Str, errorStackTrace => Str])
+=head2 SetTaskStatus(TaskId => Str, TaskStatus => Str, [ErrorId => Str, ErrorMessage => Str, ErrorStackTrace => Str])
 
 Each argument is described in detail in: L<Paws::DataPipeline::SetTaskStatus>
 
 Returns: a L<Paws::DataPipeline::SetTaskStatusOutput> instance
 
-  
-
-Task runners call C<SetTaskStatus> to notify AWS Data Pipeline that a
+  Task runners call C<SetTaskStatus> to notify AWS Data Pipeline that a
 task is completed and provide information about the final status. A
 task runner makes this call regardless of whether the task was
 sucessful. A task runner does not need to call C<SetTaskStatus> for
@@ -619,34 +419,14 @@ tasks that are canceled by the web service during a call to
 ReportTaskProgress.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ValidatePipelineDefinition(pipelineId => Str, pipelineObjects => ArrayRef[Paws::DataPipeline::PipelineObject], [parameterObjects => ArrayRef[Paws::DataPipeline::ParameterObject], parameterValues => ArrayRef[Paws::DataPipeline::ParameterValue]])
+=head2 ValidatePipelineDefinition(PipelineId => Str, PipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>], [ParameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>], ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ValidatePipelineDefinition>
 
 Returns: a L<Paws::DataPipeline::ValidatePipelineDefinitionOutput> instance
 
-  
-
-Validates the specified pipeline definition to ensure that it is well
+  Validates the specified pipeline definition to ensure that it is well
 formed and can be run without error.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

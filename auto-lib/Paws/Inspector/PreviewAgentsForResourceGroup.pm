@@ -1,9 +1,9 @@
 
 package Paws::Inspector::PreviewAgentsForResourceGroup;
   use Moose;
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
-  has resourceGroupArn => (is => 'ro', isa => 'Str');
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' );
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method PreviewAgentsFo
 Amazon Inspector service. Use the attributes of this class
 as arguments to method PreviewAgentsForResourceGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PreviewAgentsForResourceGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PreviewAgentsForResourceGroup.
 
 As an example:
 
@@ -34,56 +34,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 maxResults => Int
+=head2 MaxResults => Int
 
-  
-
-You can use this parameter to indicate the maximum number of items you
+  You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is
 500.
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-You can use this parameter when paginating results. Set the value of
+  You can use this parameter when paginating results. Set the value of
 this parameter to 'null' on your first call to the
 B<PreviewAgentsForResourceGroup> action. Subsequent calls to the action
 fill B<nextToken> in the request with the value of B<NextToken> from
 previous response to continue listing data.
 
+=head2 ResourceGroupArn => Str
 
-
-
-
-
-
-
-
-
-=head2 resourceGroupArn => Str
-
-  
-
-The ARN of the resource group that is used to create an application.
-
-
-
-
-
-
-
-
-
+  The ARN of the resource group that is used to create an application.
 
 
 

@@ -13,20 +13,9 @@ Paws::EC2::CreateInstanceExportTaskResult
 
 =head1 ATTRIBUTES
 
-=head2 ExportTask => Paws::EC2::ExportTask
+=head2 ExportTask => L<Paws::EC2::ExportTask>
 
-  
-
-Information about the instance export task.
-
-
-
-
-
-
-
-
-
+  Information about the instance export task.
 
 
 =cut

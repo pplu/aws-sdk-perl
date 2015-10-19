@@ -1,9 +1,9 @@
 
 package Paws::ECS::ListTaskDefinitionFamilies;
   use Moose;
-  has familyPrefix => (is => 'ro', isa => 'Str');
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has FamilyPrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'familyPrefix' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListTaskDefinit
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method ListTaskDefinitionFamilies.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListTaskDefinitionFamilies.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTaskDefinitionFamilies.
 
 As an example:
 
@@ -34,29 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 familyPrefix => Str
+=head2 FamilyPrefix => Str
 
-  
-
-The C<familyPrefix> is a string that is used to filter the results of
+  The C<familyPrefix> is a string that is used to filter the results of
 C<ListTaskDefinitionFamilies>. If you specify a C<familyPrefix>, only
 task definition family names that begin with the C<familyPrefix> string
 are returned.
 
+=head2 MaxResults => Int
 
-
-
-
-
-
-
-
-
-=head2 maxResults => Int
-
-  
-
-The maximum number of task definition family results returned by
+  The maximum number of task definition family results returned by
 C<ListTaskDefinitionFamilies> in paginated output. When this parameter
 is used, C<ListTaskDefinitions> only returns C<maxResults> results in a
 single page along with a C<nextToken> response element. The remaining
@@ -66,33 +53,13 @@ value. This value can be between 1 and 100. If this parameter is not
 used, then C<ListTaskDefinitionFamilies> returns up to 100 results and
 a C<nextToken> value if applicable.
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-The C<nextToken> value returned from a previous paginated
+  The C<nextToken> value returned from a previous paginated
 C<ListTaskDefinitionFamilies> request where C<maxResults> was used and
 the results exceeded the value of that parameter. Pagination continues
 from the end of the previous results that returned the C<nextToken>
 value. This value is C<null> when there are no more results to return.
-
-
-
-
-
-
-
-
-
 
 
 

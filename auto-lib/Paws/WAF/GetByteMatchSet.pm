@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetByteMatchSet
 AWS WAF service. Use the attributes of this class
 as arguments to method GetByteMatchSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetByteMatchSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetByteMatchSet.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ByteMatchSetId => Str
 
-  
-
-The C<ByteMatchSetId> of the ByteMatchSet that you want to get.
+  The C<ByteMatchSetId> of the ByteMatchSet that you want to get.
 C<ByteMatchSetId> is returned by CreateByteMatchSet and by
 ListByteMatchSets.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -13,7 +13,7 @@ Paws::RDS::DeleteEventSubscriptionResult
 
 =head1 ATTRIBUTES
 
-=head2 EventSubscription => Paws::RDS::EventSubscription
+=head2 EventSubscription => L<Paws::RDS::EventSubscription>
 
   
 

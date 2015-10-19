@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method ListSteps on th
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method ListSteps.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListSteps.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListSteps.
 
 As an example:
 
@@ -37,64 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterId => Str
 
-  
-
-The identifier of the cluster for which to list the steps.
-
-
-
-
-
-
-
-
-
+  The identifier of the cluster for which to list the steps.
 
 =head2 Marker => Str
 
-  
-
-The pagination token that indicates the next set of results to
+  The pagination token that indicates the next set of results to
 retrieve.
-
-
-
-
-
-
-
-
-
 
 =head2 StepIds => ArrayRef[Str]
 
-  
-
-The filter to limit the step list based on the identifier of the steps.
-
-
-
-
-
-
-
-
-
+  The filter to limit the step list based on the identifier of the steps.
 
 =head2 StepStates => ArrayRef[Str]
 
-  
-
-The filter to limit the step list based on certain states.
-
-
-
-
-
-
-
-
-
+  The filter to limit the step list based on certain states.
 
 
 

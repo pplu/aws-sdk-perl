@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method UnsubscribeFrom
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method UnsubscribeFromDataset.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UnsubscribeFromDataset.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UnsubscribeFromDataset.
 
 As an example:
 
@@ -39,65 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DatasetName => Str
 
-  
-
-The name of the dataset from which to unsubcribe.
-
-
-
-
-
-
-
-
-
+  The name of the dataset from which to unsubcribe.
 
 =head2 B<REQUIRED> DeviceId => Str
 
-  
-
-The unique ID generated for this device by Cognito.
-
-
-
-
-
-
-
-
-
+  The unique ID generated for this device by Cognito.
 
 =head2 B<REQUIRED> IdentityId => Str
 
-  
-
-Unique ID for this identity.
-
-
-
-
-
-
-
-
-
+  Unique ID for this identity.
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-A name-spaced GUID (for example,
+  A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. The ID of the pool to which this identity belongs.
-
-
-
-
-
-
-
-
-
 
 
 

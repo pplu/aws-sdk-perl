@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeApplication;
   use Moose;
-  has applicationArn => (is => 'ro', isa => 'Str');
+  has ApplicationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationArn' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeApplica
 Amazon Inspector service. Use the attributes of this class
 as arguments to method DescribeApplication.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeApplication.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 applicationArn => Str
+=head2 ApplicationArn => Str
 
-  
-
-The ARN specifying the application that you want to describe.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the application that you want to describe.
 
 
 

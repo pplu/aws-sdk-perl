@@ -28,7 +28,7 @@ Paws::ImportExport::GetStatusOutput
 
 =head1 ATTRIBUTES
 
-=head2 ArtifactList => ArrayRef[Paws::ImportExport::Artifact]
+=head2 ArtifactList => ArrayRef[L<Paws::ImportExport::Artifact>]
 
   
 =head2 Carrier => Str

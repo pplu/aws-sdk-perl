@@ -1,12 +1,12 @@
 
 package Paws::Glacier::UploadMultipartPart;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has body => (is => 'ro', isa => 'Str');
-  has checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-sha256-tree-hash' );
-  has range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Range' );
-  has uploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId' , required => 1);
-  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has Body => (is => 'ro', isa => 'Str');
+  has Checksum => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'checksum' );
+  has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'range' );
+  has UploadId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'uploadId' , required => 1);
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +29,7 @@ This class represents the parameters used for calling the method UploadMultipart
 Amazon Glacier service. Use the attributes of this class
 as arguments to method UploadMultipartPart.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UploadMultipartPart.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UploadMultipartPart.
 
 As an example:
 
@@ -39,103 +39,37 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
-  
-
-The C<AccountId> value is the AWS account ID of the account that owns
+  The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
+=head2 Body => Str
 
+  The data to upload.
 
+=head2 Checksum => Str
 
+  The SHA256 tree hash of the data being uploaded.
 
+=head2 Range => Str
 
-
-
-
-
-=head2 body => Str
-
-  
-
-The data to upload.
-
-
-
-
-
-
-
-
-
-
-=head2 checksum => Str
-
-  
-
-The SHA256 tree hash of the data being uploaded.
-
-
-
-
-
-
-
-
-
-
-=head2 range => Str
-
-  
-
-Identifies the range of bytes in the assembled archive that will be
+  Identifies the range of bytes in the assembled archive that will be
 uploaded in this part. Amazon Glacier uses this information to assemble
 the archive in the proper sequence. The format of this header follows
 RFC 2616. An example header is Content-Range:bytes 0-4194303/*.
 
+=head2 B<REQUIRED> UploadId => Str
 
+  The upload ID of the multipart upload.
 
+=head2 B<REQUIRED> VaultName => Str
 
-
-
-
-
-
-
-=head2 B<REQUIRED> uploadId => Str
-
-  
-
-The upload ID of the multipart upload.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> vaultName => Str
-
-  
-
-The name of the vault.
-
-
-
-
-
-
-
-
-
+  The name of the vault.
 
 
 

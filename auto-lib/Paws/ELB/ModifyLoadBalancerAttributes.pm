@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ModifyLoadBalan
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method ModifyLoadBalancerAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyLoadBalancerAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyLoadBalancerAttributes.
 
 As an example:
 
@@ -33,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> LoadBalancerAttributes => Paws::ELB::LoadBalancerAttributes
+=head2 B<REQUIRED> LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>
 
-  
-
-The attributes of the load balancer.
-
-
-
-
-
-
-
-
-
+  The attributes of the load balancer.
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 
 

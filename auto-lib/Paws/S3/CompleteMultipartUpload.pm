@@ -30,7 +30,7 @@ Paws::S3::CompleteMultipartUploadOutput
 =head2 B<REQUIRED> Key => Str
 
   
-=head2 MultipartUpload => Paws::S3::CompletedMultipartUpload
+=head2 MultipartUpload => L<Paws::S3::CompletedMultipartUpload>
 
   
 =head2 RequestPayer => Str

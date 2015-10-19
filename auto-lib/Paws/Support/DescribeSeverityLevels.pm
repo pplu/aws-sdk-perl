@@ -1,7 +1,7 @@
 
 package Paws::Support::DescribeSeverityLevels;
   use Moose;
-  has language => (is => 'ro', isa => 'Str');
+  has Language => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'language' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeSeverit
 AWS Support service. Use the attributes of this class
 as arguments to method DescribeSeverityLevels.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSeverityLevels.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSeverityLevels.
 
 As an example:
 
@@ -32,22 +32,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 language => Str
+=head2 Language => Str
 
-  
-
-The ISO 639-1 code for the language in which AWS provides support. AWS
+  The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.
-
-
-
-
-
-
-
-
-
 
 
 

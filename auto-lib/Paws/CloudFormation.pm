@@ -126,8 +126,6 @@ Paws::CloudFormation - Perl Interface to AWS AWS CloudFormation
 
 =head1 DESCRIPTION
 
-
-
 AWS CloudFormation
 
 AWS CloudFormation enables you to create and manage AWS infrastructure
@@ -151,15 +149,6 @@ additional technical information about a specific AWS product, you can
 find the product's technical documentation at
 http://aws.amazon.com/documentation/.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 CancelUpdateStack(StackName => Str)
@@ -168,44 +157,22 @@ Each argument is described in detail in: L<Paws::CloudFormation::CancelUpdateSta
 
 Returns: nothing
 
-  
-
-Cancels an update on the specified stack. If the call completes
+  Cancels an update on the specified stack. If the call completes
 successfully, the stack rolls back the update and reverts to the
 previous stack configuration.
 
 You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str], DisableRollback => Bool, NotificationARNs => ArrayRef[Str], OnFailure => Str, Parameters => ArrayRef[Paws::CloudFormation::Parameter], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[Paws::CloudFormation::Tag], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
+=head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str], DisableRollback => Bool, NotificationARNs => ArrayRef[Str], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
 
 Each argument is described in detail in: L<Paws::CloudFormation::CreateStack>
 
 Returns: a L<Paws::CloudFormation::CreateStackOutput> instance
 
-  
-
-Creates a stack as specified in the template. After the call completes
+  Creates a stack as specified in the template. After the call completes
 successfully, the stack creation starts. You can check the status of
 the stack via the DescribeStacks API.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteStack(StackName => Str)
@@ -214,20 +181,9 @@ Each argument is described in detail in: L<Paws::CloudFormation::DeleteStack>
 
 Returns: nothing
 
-  
-
-Deletes a specified stack. Once the call completes successfully, stack
+  Deletes a specified stack. Once the call completes successfully, stack
 deletion starts. Deleted stacks do not show up in the DescribeStacks
 API if the deletion has been completed successfully.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeAccountLimits([NextToken => Str])
@@ -236,19 +192,8 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeAccount
 
 Returns: a L<Paws::CloudFormation::DescribeAccountLimitsOutput> instance
 
-  
-
-Retrieves your account's AWS CloudFormation limits, such as the maximum
+  Retrieves your account's AWS CloudFormation limits, such as the maximum
 number of stacks that you can create in your account.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeStackEvents([NextToken => Str, StackName => Str])
@@ -257,23 +202,12 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackEv
 
 Returns: a L<Paws::CloudFormation::DescribeStackEventsOutput> instance
 
-  
-
-Returns all stack related events for a specified stack. For more
+  Returns all stack related events for a specified stack. For more
 information about a stack's event history, go to Stacks in the AWS
 CloudFormation User Guide.
 
 You can list events for stacks that have failed to create or have been
 deleted by specifying the unique stack identifier (stack ID).
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeStackResource(LogicalResourceId => Str, StackName => Str)
@@ -282,21 +216,10 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackRe
 
 Returns: a L<Paws::CloudFormation::DescribeStackResourceOutput> instance
 
-  
-
-Returns a description of the specified resource in the specified stack.
+  Returns a description of the specified resource in the specified stack.
 
 For deleted stacks, DescribeStackResource returns resource information
 for up to 90 days after the stack has been deleted.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeStackResources([LogicalResourceId => Str, PhysicalResourceId => Str, StackName => Str])
@@ -305,9 +228,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackRe
 
 Returns: a L<Paws::CloudFormation::DescribeStackResourcesOutput> instance
 
-  
-
-Returns AWS resource descriptions for running and deleted stacks. If
+  Returns AWS resource descriptions for running and deleted stacks. If
 C<StackName> is specified, all the associated resources that are part
 of the stack are returned. If C<PhysicalResourceId> is specified, the
 associated resources of the stack that the resource belongs to are
@@ -329,56 +250,25 @@ A C<ValidationError> is returned if you specify both C<StackName> and
 C<PhysicalResourceId> in the same request.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeStacks([NextToken => Str, StackName => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::DescribeStacks>
 
 Returns: a L<Paws::CloudFormation::DescribeStacksOutput> instance
 
-  
-
-Returns the description for the specified stack; if no stack name was
+  Returns the description for the specified stack; if no stack name was
 specified, then it returns the description for all the stacks created.
 
 
-
-
-
-
-
-
-
-
-
-=head2 EstimateTemplateCost([Parameters => ArrayRef[Paws::CloudFormation::Parameter], TemplateBody => Str, TemplateURL => Str])
+=head2 EstimateTemplateCost([Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], TemplateBody => Str, TemplateURL => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::EstimateTemplateCost>
 
 Returns: a L<Paws::CloudFormation::EstimateTemplateCostOutput> instance
 
-  
-
-Returns the estimated monthly cost of a template. The return value is
+  Returns the estimated monthly cost of a template. The return value is
 an AWS Simple Monthly Calculator URL with a query string that describes
 the resources required to run the template.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetStackPolicy(StackName => Str)
@@ -387,19 +277,8 @@ Each argument is described in detail in: L<Paws::CloudFormation::GetStackPolicy>
 
 Returns: a L<Paws::CloudFormation::GetStackPolicyOutput> instance
 
-  
-
-Returns the stack policy for a specified stack. If a stack doesn't have
+  Returns the stack policy for a specified stack. If a stack doesn't have
 a policy, a null value is returned.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetTemplate(StackName => Str)
@@ -408,9 +287,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::GetTemplate>
 
 Returns: a L<Paws::CloudFormation::GetTemplateOutput> instance
 
-  
-
-Returns the template body for a specified stack. You can get the
+  Returns the template body for a specified stack. You can get the
 template for running or deleted stacks.
 
 For deleted stacks, GetTemplate returns the template for up to 90 days
@@ -419,24 +296,13 @@ after the stack has been deleted.
 If the template does not exist, a C<ValidationError> is returned.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetTemplateSummary([StackName => Str, TemplateBody => Str, TemplateURL => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::GetTemplateSummary>
 
 Returns: a L<Paws::CloudFormation::GetTemplateSummaryOutput> instance
 
-  
-
-Returns information about a new or existing template. The
+  Returns information about a new or existing template. The
 C<GetTemplateSummary> action is useful for viewing parameter
 information, such as default parameter values and parameter types,
 before you create or update a stack.
@@ -450,36 +316,16 @@ information for up to 90 days after the stack has been deleted. If the
 template does not exist, a C<ValidationError> is returned.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListStackResources(StackName => Str, [NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::ListStackResources>
 
 Returns: a L<Paws::CloudFormation::ListStackResourcesOutput> instance
 
-  
-
-Returns descriptions of all resources of the specified stack.
+  Returns descriptions of all resources of the specified stack.
 
 For deleted stacks, ListStackResources returns resource information for
 up to 90 days after the stack has been deleted.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListStacks([NextToken => Str, StackStatusFilter => ArrayRef[Str]])
@@ -488,22 +334,11 @@ Each argument is described in detail in: L<Paws::CloudFormation::ListStacks>
 
 Returns: a L<Paws::CloudFormation::ListStacksOutput> instance
 
-  
-
-Returns the summary information for stacks whose status matches the
+  Returns the summary information for stacks whose status matches the
 specified StackStatusFilter. Summary information for stacks that have
 been deleted is kept for 90 days after the stack is deleted. If no
 StackStatusFilter is specified, summary information for all stacks is
 returned (including existing stacks and stacks that have been deleted).
-
-
-
-
-
-
-
-
-
 
 
 =head2 SetStackPolicy(StackName => Str, [StackPolicyBody => Str, StackPolicyURL => Str])
@@ -512,18 +347,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::SetStackPolicy>
 
 Returns: nothing
 
-  
-
-Sets a stack policy for a specified stack.
-
-
-
-
-
-
-
-
-
+  Sets a stack policy for a specified stack.
 
 
 =head2 SignalResource(LogicalResourceId => Str, StackName => Str, Status => Str, UniqueId => Str)
@@ -532,9 +356,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::SignalResource>
 
 Returns: nothing
 
-  
-
-Sends a signal to the specified resource with a success or failure
+  Sends a signal to the specified resource with a success or failure
 status. You can use the SignalResource API in conjunction with a
 creation policy or update policy. AWS CloudFormation doesn't proceed
 with a stack creation or update until resources receive the required
@@ -543,24 +365,13 @@ API is useful in cases where you want to send signals from anywhere
 other than an Amazon EC2 instance.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str], NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[Paws::CloudFormation::Parameter], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str], NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStack>
 
 Returns: a L<Paws::CloudFormation::UpdateStackOutput> instance
 
-  
-
-Updates a stack as specified in the template. After the call completes
+  Updates a stack as specified in the template. After the call completes
 successfully, the stack update starts. You can check the status of the
 stack via the DescribeStacks action.
 
@@ -574,33 +385,13 @@ For more information about creating an update template, updating a
 stack, and monitoring the progress of the update, see Updating a Stack.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ValidateTemplate([TemplateBody => Str, TemplateURL => Str])
 
 Each argument is described in detail in: L<Paws::CloudFormation::ValidateTemplate>
 
 Returns: a L<Paws::CloudFormation::ValidateTemplateOutput> instance
 
-  
-
-Validates a specified template.
-
-
-
-
-
-
-
-
-
+  Validates a specified template.
 
 
 =head1 SEE ALSO

@@ -1,7 +1,7 @@
 
 package Paws::ECS::DeleteCluster;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str', required => 1);
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeleteCluster o
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method DeleteCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCluster.
 
 As an example:
 
@@ -32,21 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> cluster => Str
+=head2 B<REQUIRED> Cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster to
+  The short name or full Amazon Resource Name (ARN) of the cluster to
 delete.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeExportT
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeExportTasks.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeExportTasks.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeExportTasks.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ExportTaskIds => ArrayRef[Str]
 
-  
-
-One or more export task IDs.
-
-
-
-
-
-
-
-
-
+  One or more export task IDs.
 
 
 

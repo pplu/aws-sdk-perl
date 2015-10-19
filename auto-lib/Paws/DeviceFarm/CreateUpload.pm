@@ -1,10 +1,10 @@
 
 package Paws::DeviceFarm::CreateUpload;
   use Moose;
-  has contentType => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has projectArn => (is => 'ro', isa => 'Str', required => 1);
-  has type => (is => 'ro', isa => 'Str', required => 1);
+  has ContentType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contentType' );
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method CreateUpload on
 AWS Device Farm service. Use the attributes of this class
 as arguments to method CreateUpload.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateUpload.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateUpload.
 
 As an example:
 
@@ -35,56 +35,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 contentType => Str
+=head2 ContentType => Str
 
-  
+  The upload's content type (for example, "application/octet-stream").
 
-The upload's content type (for example, "application/octet-stream").
+=head2 B<REQUIRED> Name => Str
 
+  The upload's file name.
 
+=head2 B<REQUIRED> ProjectArn => Str
 
+  The ARN of the project for the upload.
 
+=head2 B<REQUIRED> Type => Str
 
-
-
-
-
-
-=head2 B<REQUIRED> name => Str
-
-  
-
-The upload's file name.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> projectArn => Str
-
-  
-
-The ARN of the project for the upload.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> type => Str
-
-  
-
-The upload's upload type.
+  The upload's upload type.
 
 Must be one of the following values:
 
@@ -129,14 +94,6 @@ UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
 XCTEST_TEST_PACKAGE: An XCode test package upload.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

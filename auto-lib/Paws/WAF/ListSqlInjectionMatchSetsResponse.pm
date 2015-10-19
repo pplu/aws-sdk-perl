@@ -15,37 +15,15 @@ Paws::WAF::ListSqlInjectionMatchSetsResponse
 
 =head2 NextMarker => Str
 
-  
-
-If you have more SqlInjectionMatchSet objects than the number that you
+  If you have more SqlInjectionMatchSet objects than the number that you
 specified for C<Limit> in the request, the response includes a
 C<NextMarker> value. To list more C<SqlInjectionMatchSet> objects,
 submit another C<ListSqlInjectionMatchSets> request, and specify the
 C<NextMarker> value from the response in the C<NextMarker> value in the
 next request.
+=head2 SqlInjectionMatchSets => ArrayRef[L<Paws::WAF::SqlInjectionMatchSetSummary>]
 
-
-
-
-
-
-
-
-
-=head2 SqlInjectionMatchSets => ArrayRef[Paws::WAF::SqlInjectionMatchSetSummary]
-
-  
-
-An array of SqlInjectionMatchSetSummary objects.
-
-
-
-
-
-
-
-
-
+  An array of SqlInjectionMatchSetSummary objects.
 
 
 =cut

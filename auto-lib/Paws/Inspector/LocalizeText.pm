@@ -1,8 +1,8 @@
 
 package Paws::Inspector::LocalizeText;
   use Moose;
-  has locale => (is => 'ro', isa => 'Str');
-  has localizedTexts => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::LocalizedText]');
+  has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale' );
+  has LocalizedTexts => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::LocalizedText]', traits => ['NameInRequest'], request_name => 'localizedTexts' );
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method LocalizeText on
 Amazon Inspector service. Use the attributes of this class
 as arguments to method LocalizeText.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to LocalizeText.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to LocalizeText.
 
 As an example:
 
@@ -33,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 locale => Str
+=head2 Locale => Str
 
-  
+  The locale that you want to translate a textual identifier into.
 
-The locale that you want to translate a textual identifier into.
+=head2 LocalizedTexts => ArrayRef[L<Paws::Inspector::LocalizedText>]
 
-
-
-
-
-
-
-
-
-
-=head2 localizedTexts => ArrayRef[Paws::Inspector::LocalizedText]
-
-  
-
-A list of textual identifiers.
-
-
-
-
-
-
-
-
-
+  A list of textual identifiers.
 
 
 

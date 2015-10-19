@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CancelConversio
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CancelConversionTask.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CancelConversionTask.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CancelConversionTask.
 
 As an example:
 
@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConversionTaskId => Str
 
-  
-
-The ID of the conversion task.
-
-
-
-
-
-
-
-
-
+  The ID of the conversion task.
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 ReasonMessage => Str
 
-  
-
-The reason for canceling the conversion task.
-
-
-
-
-
-
-
-
-
+  The reason for canceling the conversion task.
 
 
 

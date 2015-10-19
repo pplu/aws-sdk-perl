@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method SetIdentityDkim
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method SetIdentityDkimEnabled.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetIdentityDkimEnabled.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetIdentityDkimEnabled.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DkimEnabled => Bool
 
-  
-
-Sets whether DKIM signing is enabled for an identity. Set to C<true> to
+  Sets whether DKIM signing is enabled for an identity. Set to C<true> to
 enable DKIM signing for this identity; C<false> to disable it.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Identity => Str
 
-  
-
-The identity for which DKIM signing should be enabled or disabled.
-
-
-
-
-
-
-
-
-
+  The identity for which DKIM signing should be enabled or disabled.
 
 
 

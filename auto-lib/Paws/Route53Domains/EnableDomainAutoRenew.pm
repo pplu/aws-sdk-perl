@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method EnableDomainAut
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method EnableDomainAutoRenew.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to EnableDomainAutoRenew.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnableDomainAutoRenew.
 
 As an example:
 

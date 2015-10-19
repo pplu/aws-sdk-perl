@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::CountPendingActivityTasks;
   use Moose;
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'taskList' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CountPendingAct
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method CountPendingActivityTasks.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CountPendingActivityTasks.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CountPendingActivityTasks.
 
 As an example:
 
@@ -33,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
-  
+  The name of the domain that contains the task list.
 
-The name of the domain that contains the task list.
+=head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
-
-  
-
-The name of the task list.
-
-
-
-
-
-
-
-
-
+  The name of the task list.
 
 
 

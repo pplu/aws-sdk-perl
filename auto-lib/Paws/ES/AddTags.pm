@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method AddTags on the
 Amazon Elasticsearch Service service. Use the attributes of this class
 as arguments to method AddTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTags.
 
 As an example:
 
@@ -37,33 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ARN => Str
 
-  
+  Specify the C<ARN> for which you want to add the tags.
 
-Specify the C<ARN> for which you want to add the tags.
+=head2 B<REQUIRED> TagList => ArrayRef[L<Paws::ES::Tag>]
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> TagList => ArrayRef[Paws::ES::Tag]
-
-  
-
-List of C<Tag> that need to be added for the Elasticsearch domain.
-
-
-
-
-
-
-
-
-
+  List of C<Tag> that need to be added for the Elasticsearch domain.
 
 
 

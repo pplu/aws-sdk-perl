@@ -1,9 +1,9 @@
 
 package Paws::IoT::ListPolicies;
   use Moose;
-  has ascendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'isAscendingOrder' );
-  has marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
-  has pageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize' );
+  has AscendingOrder => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'ascendingOrder' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
+  has PageSize => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'pageSize' );
 
   use MooseX::ClassAttribute;
 
@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method ListPolicies on
 AWS IoT service. Use the attributes of this class
 as arguments to method ListPolicies.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListPolicies.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPolicies.
 
 As an example:
 
@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 ascendingOrder => Bool
+=head2 AscendingOrder => Bool
 
-  
-
-Specifies the order for results. If true, the results are returned in
+  Specifies the order for results. If true, the results are returned in
 ascending creation order.
 
+=head2 Marker => Str
 
+  The marker for the next set of results.
 
+=head2 PageSize => Int
 
-
-
-
-
-
-
-=head2 marker => Str
-
-  
-
-The marker for the next set of results.
-
-
-
-
-
-
-
-
-
-
-=head2 pageSize => Int
-
-  
-
-The result page size.
-
-
-
-
-
-
-
-
-
+  The result page size.
 
 
 

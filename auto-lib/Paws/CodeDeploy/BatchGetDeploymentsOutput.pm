@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::BatchGetDeploymentsOutput;
   use Moose;
-  has deploymentsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::DeploymentInfo]');
+  has DeploymentsInfo => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::DeploymentInfo]', traits => ['Unwrapped'], xmlname => 'deploymentsInfo' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::CodeDeploy::BatchGetDeploymentsOutput
 
 =head1 ATTRIBUTES
 
-=head2 deploymentsInfo => ArrayRef[Paws::CodeDeploy::DeploymentInfo]
+=head2 DeploymentsInfo => ArrayRef[L<Paws::CodeDeploy::DeploymentInfo>]
 
-  
-
-Information about the deployments.
-
-
-
-
-
-
-
-
-
+  Information about the deployments.
 
 
 =cut

@@ -13,20 +13,9 @@ Paws::ELB::DescribeLoadBalancerAttributesOutput
 
 =head1 ATTRIBUTES
 
-=head2 LoadBalancerAttributes => Paws::ELB::LoadBalancerAttributes
+=head2 LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>
 
-  
-
-Information about the load balancer attributes.
-
-
-
-
-
-
-
-
-
+  Information about the load balancer attributes.
 
 
 =cut

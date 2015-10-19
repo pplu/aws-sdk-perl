@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ReadPreset on t
 Amazon Elastic Transcoder service. Use the attributes of this class
 as arguments to method ReadPreset.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ReadPreset.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReadPreset.
 
 As an example:
 
@@ -36,19 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The identifier of the preset for which you want to get detailed
+  The identifier of the preset for which you want to get detailed
 information.
-
-
-
-
-
-
-
-
-
 
 
 

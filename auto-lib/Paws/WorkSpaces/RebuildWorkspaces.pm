@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method RebuildWorkspac
 Amazon WorkSpaces service. Use the attributes of this class
 as arguments to method RebuildWorkspaces.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RebuildWorkspaces.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RebuildWorkspaces.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> RebuildWorkspaceRequests => ArrayRef[Paws::WorkSpaces::RebuildRequest]
+=head2 B<REQUIRED> RebuildWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebuildRequest>]
 
-  
-
-An array of structures that specify the WorkSpaces to rebuild.
-
-
-
-
-
-
-
-
-
+  An array of structures that specify the WorkSpaces to rebuild.
 
 
 

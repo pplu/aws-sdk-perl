@@ -1,7 +1,7 @@
 
 package Paws::Inspector::CreateApplicationResponse;
   use Moose;
-  has applicationArn => (is => 'ro', isa => 'Str');
+  has ApplicationArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'applicationArn' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::Inspector::CreateApplicationResponse
 
 =head1 ATTRIBUTES
 
-=head2 applicationArn => Str
+=head2 ApplicationArn => Str
 
-  
-
-The ARN specifying the application that is created.
-
-
-
-
-
-
-
-
-
+  The ARN specifying the application that is created.
 
 
 =cut

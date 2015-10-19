@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method CreateApplicati
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method CreateApplicationVersion.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplicationVersion.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateApplicationVersion.
 
 As an example:
 
@@ -38,26 +38,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of the application. If no application is found with this name,
+  The name of the application. If no application is found with this name,
 and C<AutoCreateApplication> is C<false>, returns an
 C<InvalidParameterValue> error.
 
-
-
-
-
-
-
-
-
-
 =head2 AutoCreateApplication => Bool
 
-  
-
-Determines how the system behaves if the specified application for this
+  Determines how the system behaves if the specified application for this
 version does not already exist:
 
 C<true>: Automatically creates the specified application for this
@@ -80,35 +67,13 @@ Default: C<false>
 
 Valid Values: C<true> | C<false>
 
-
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
+  Describes this version.
 
-Describes this version.
+=head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>
 
-
-
-
-
-
-
-
-
-
-=head2 SourceBundle => Paws::ElasticBeanstalk::S3Location
-
-  
-
-The Amazon S3 bucket and key that identify the location of the source
+  The Amazon S3 bucket and key that identify the location of the source
 bundle for this version.
 
 If data found at the Amazon S3 location exceeds the maximum allowed
@@ -121,33 +86,13 @@ provided but not the key) or if no data is found at the Amazon S3
 location, AWS Elastic Beanstalk returns an
 C<InvalidParameterCombination> error.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VersionLabel => Str
 
-  
-
-A label identifying this version.
+  A label identifying this version.
 
 Constraint: Must be unique per application. If an application version
 already exists with this label for the specified application, AWS
 Elastic Beanstalk returns an C<InvalidParameterValue> error.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method SplitShard on t
 Amazon Kinesis service. Use the attributes of this class
 as arguments to method SplitShard.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SplitShard.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SplitShard.
 
 As an example:
 
@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> NewStartingHashKey => Str
 
-  
-
-A hash key value for the starting hash key of one of the child shards
+  A hash key value for the starting hash key of one of the child shards
 created by the split. The hash key range for a given shard constitutes
 a set of ordered contiguous positive integers. The value for
 C<NewStartingHashKey> must be in the range of hash keys being mapped
@@ -47,44 +45,13 @@ hash key values in hash key range are distributed to one of the child
 shards. All the lower hash key values in the range are distributed to
 the other child shard.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ShardToSplit => Str
 
-  
-
-The shard ID of the shard to split.
-
-
-
-
-
-
-
-
-
+  The shard ID of the shard to split.
 
 =head2 B<REQUIRED> StreamName => Str
 
-  
-
-The name of the stream for the shard split.
-
-
-
-
-
-
-
-
-
+  The name of the stream for the shard split.
 
 
 

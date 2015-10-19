@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method SetAlarmState o
 Amazon CloudWatch service. Use the attributes of this class
 as arguments to method SetAlarmState.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetAlarmState.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetAlarmState.
 
 As an example:
 
@@ -37,66 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AlarmName => Str
 
-  
-
-The descriptive name for the alarm. This name must be unique within the
+  The descriptive name for the alarm. This name must be unique within the
 user's AWS account. The maximum length is 255 characters.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> StateReason => Str
 
-  
-
-The reason that this alarm is set to this specific state (in
+  The reason that this alarm is set to this specific state (in
 human-readable text format)
-
-
-
-
-
-
-
-
-
 
 =head2 StateReasonData => Str
 
-  
-
-The reason that this alarm is set to this specific state (in
+  The reason that this alarm is set to this specific state (in
 machine-readable JSON format)
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> StateValue => Str
 
-  
-
-The value of the state.
-
-
-
-
-
-
-
-
-
+  The value of the state.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::Support::ResolveCase;
   use Moose;
-  has caseId => (is => 'ro', isa => 'Str');
+  has CaseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caseId' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method ResolveCase on 
 AWS Support service. Use the attributes of this class
 as arguments to method ResolveCase.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ResolveCase.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ResolveCase.
 
 As an example:
 
@@ -32,22 +32,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 caseId => Str
+=head2 CaseId => Str
 
-  
-
-The AWS Support case ID requested or returned in the call. The case ID
+  The AWS Support case ID requested or returned in the call. The case ID
 is an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
-
-
-
-
-
-
-
-
-
 
 
 

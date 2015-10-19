@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method DescribeInstanc
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeInstanceStatus.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstanceStatus.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInstanceStatus.
 
 As an example:
 
@@ -39,27 +39,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
-
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -128,85 +115,33 @@ C<not-applicable>).
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 IncludeAllInstances => Bool
 
-  
-
-When C<true>, includes the health status for all instances. When
+  When C<true>, includes the health status for all instances. When
 C<false>, includes the health status for running instances only.
 
 Default: C<false>
 
-
-
-
-
-
-
-
-
-
 =head2 InstanceIds => ArrayRef[Str]
 
-  
-
-One or more instance IDs.
+  One or more instance IDs.
 
 Default: Describes all your instances.
 
 Constraints: Maximum 100 explicitly specified instance IDs.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxResults => Int
 
-  
-
-The maximum number of results to return for the request in a single
+  The maximum number of results to return for the request in a single
 page. The remaining results of the initial request can be seen by
 sending another request with the returned C<NextToken> value. This
 value can be between 5 and 1000; if C<MaxResults> is given a value
 larger than 1000, only 1000 results are returned. You cannot specify
 this parameter and the instance IDs parameter in the same request.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The token to retrieve the next page of results.
-
-
-
-
-
-
-
-
-
+  The token to retrieve the next page of results.
 
 
 

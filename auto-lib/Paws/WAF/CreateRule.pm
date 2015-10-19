@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateRule on t
 AWS WAF service. Use the attributes of this class
 as arguments to method CreateRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRule.
 
 As an example:
 
@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
-
-The value returned by the most recent call to GetChangeToken.
-
-
-
-
-
-
-
-
-
+  The value returned by the most recent call to GetChangeToken.
 
 =head2 B<REQUIRED> MetricName => Str
 
-  
-
-A friendly name or description for the metrics for this C<Rule>. The
+  A friendly name or description for the metrics for this C<Rule>. The
 name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
 can't contain whitespace. You can't change the name of the metric after
 you create the C<Rule>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Name => Str
 
-  
-
-A friendly name or description of the Rule. You can't change the name
+  A friendly name or description of the Rule. You can't change the name
 of a C<Rule> after you create it.
-
-
-
-
-
-
-
-
-
 
 
 

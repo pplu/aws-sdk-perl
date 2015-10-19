@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ReorderReceiptR
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method ReorderReceiptRuleSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ReorderReceiptRuleSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReorderReceiptRuleSet.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RuleNames => ArrayRef[Str]
 
-  
-
-A list of the specified receipt rule set's receipt rules in the order
+  A list of the specified receipt rule set's receipt rules in the order
 that you want to put them.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-  
-
-The name of the receipt rule set to reorder.
-
-
-
-
-
-
-
-
-
+  The name of the receipt rule set to reorder.
 
 
 

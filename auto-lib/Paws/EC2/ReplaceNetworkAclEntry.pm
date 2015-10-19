@@ -30,7 +30,7 @@ This class represents the parameters used for calling the method ReplaceNetworkA
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method ReplaceNetworkAclEntry.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ReplaceNetworkAclEntry.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReplaceNetworkAclEntry.
 
 As an example:
 
@@ -42,145 +42,46 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CidrBlock => Str
 
-  
-
-The network range to allow or deny, in CIDR notation.
-
-
-
-
-
-
-
-
-
+  The network range to allow or deny, in CIDR notation.
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Egress => Bool
 
-  
-
-Indicates whether to replace the egress rule.
+  Indicates whether to replace the egress rule.
 
 Default: If no value is specified, we replace the ingress rule.
 
+=head2 IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>
 
-
-
-
-
-
-
-
-
-=head2 IcmpTypeCode => Paws::EC2::IcmpTypeCode
-
-  
-
-ICMP protocol: The ICMP type and code. Required if specifying 1 (ICMP)
+  ICMP protocol: The ICMP type and code. Required if specifying 1 (ICMP)
 for the protocol.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> NetworkAclId => Str
 
-  
+  The ID of the ACL.
 
-The ID of the ACL.
+=head2 PortRange => L<Paws::EC2::PortRange>
 
-
-
-
-
-
-
-
-
-
-=head2 PortRange => Paws::EC2::PortRange
-
-  
-
-TCP or UDP protocols: The range of ports the rule applies to. Required
+  TCP or UDP protocols: The range of ports the rule applies to. Required
 if specifying 6 (TCP) or 17 (UDP) for the protocol.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Protocol => Str
 
-  
-
-The IP protocol. You can specify C<all> or C<-1> to mean all protocols.
-
-
-
-
-
-
-
-
-
+  The IP protocol. You can specify C<all> or C<-1> to mean all protocols.
 
 =head2 B<REQUIRED> RuleAction => Str
 
-  
-
-Indicates whether to allow or deny the traffic that matches the rule.
-
-
-
-
-
-
-
-
-
+  Indicates whether to allow or deny the traffic that matches the rule.
 
 =head2 B<REQUIRED> RuleNumber => Int
 
-  
-
-The rule number of the entry to replace.
-
-
-
-
-
-
-
-
-
+  The rule number of the entry to replace.
 
 
 

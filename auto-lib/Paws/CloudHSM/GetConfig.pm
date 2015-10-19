@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method GetConfig on th
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method GetConfig.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetConfig.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetConfig.
 
 As an example:
 
@@ -36,49 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientArn => Str
 
-  
-
-The ARN of the client.
-
-
-
-
-
-
-
-
-
+  The ARN of the client.
 
 =head2 B<REQUIRED> ClientVersion => Str
 
-  
-
-The client version.
-
-
-
-
-
-
-
-
-
+  The client version.
 
 =head2 B<REQUIRED> HapgList => ArrayRef[Str]
 
-  
-
-A list of ARNs that identify the high-availability partition groups
+  A list of ARNs that identify the high-availability partition groups
 that are associated with the client.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DeleteFunction 
 AWS Lambda service. Use the attributes of this class
 as arguments to method DeleteFunction.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteFunction.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteFunction.
 
 As an example:
 
@@ -37,9 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-The Lambda function to delete.
+  The Lambda function to delete.
 
 You can specify an unqualified function name (for example, "Thumbnail")
 or you can specify Amazon Resource Name (ARN) of the function (for
@@ -49,20 +47,9 @@ example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
-
-
-
-
-
-
-
-
-
 =head2 Qualifier => Str
 
-  
-
-Using this optional parameter you can specify a function version (but
+  Using this optional parameter you can specify a function version (but
 not the $LATEST version) to direct AWS Lambda to delete a specific
 function version. If the function version has one or more aliases
 pointing to it, you will get an error because you cannot have aliases
@@ -76,15 +63,6 @@ parameter. You cannot delete a function version using its alias.
 
 If you don't specify this parameter, AWS Lambda will delete the
 function, including all its versions and aliases.
-
-
-
-
-
-
-
-
-
 
 
 

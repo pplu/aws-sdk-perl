@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method GetDataSource o
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method GetDataSource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetDataSource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDataSource.
 
 As an example:
 
@@ -35,38 +35,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DataSourceId => Str
 
-  
-
-The ID assigned to the C<DataSource> at creation.
-
-
-
-
-
-
-
-
-
+  The ID assigned to the C<DataSource> at creation.
 
 =head2 Verbose => Bool
 
-  
-
-Specifies whether the C<GetDataSource> operation should return
+  Specifies whether the C<GetDataSource> operation should return
 C<DataSourceSchema>.
 
 If true, C<DataSourceSchema> is returned.
 
 If false, C<DataSourceSchema> is not returned.
-
-
-
-
-
-
-
-
-
 
 
 

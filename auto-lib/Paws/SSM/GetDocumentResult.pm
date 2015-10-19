@@ -15,32 +15,10 @@ Paws::SSM::GetDocumentResult
 
 =head2 Content => Str
 
-  
-
-The contents of the configuration document.
-
-
-
-
-
-
-
-
-
+  The contents of the configuration document.
 =head2 Name => Str
 
-  
-
-The name of the configuration document.
-
-
-
-
-
-
-
-
-
+  The name of the configuration document.
 
 
 =cut

@@ -1,7 +1,7 @@
 
 package Paws::IoT::DescribeEndpointResponse;
   use Moose;
-  has endpointAddress => (is => 'ro', isa => 'Str');
+  has EndpointAddress => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -13,20 +13,9 @@ Paws::IoT::DescribeEndpointResponse
 
 =head1 ATTRIBUTES
 
-=head2 endpointAddress => Str
+=head2 EndpointAddress => Str
 
-  
-
-The address.
-
-
-
-
-
-
-
-
-
+  The address.
 
 
 =cut

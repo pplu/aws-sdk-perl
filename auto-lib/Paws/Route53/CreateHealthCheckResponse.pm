@@ -18,7 +18,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Route 53 service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -28,36 +28,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> HealthCheck => Paws::Route53::HealthCheck
+=head2 B<REQUIRED> HealthCheck => L<Paws::Route53::HealthCheck>
 
-  
-
-A complex type that contains identifying information about the health
+  A complex type that contains identifying information about the health
 check.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Location => Str
 
-  
-
-The unique URL representing the new health check.
-
-
-
-
-
-
-
-
-
+  The unique URL representing the new health check.
 
 
 

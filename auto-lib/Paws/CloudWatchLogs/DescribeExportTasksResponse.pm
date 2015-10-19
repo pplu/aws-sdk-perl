@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::DescribeExportTasksResponse;
   use Moose;
-  has exportTasks => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::ExportTask]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has ExportTasks => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::ExportTask]', traits => ['Unwrapped'], xmlname => 'exportTasks' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
 
 ### main pod documentation begin ###
@@ -13,10 +13,10 @@ Paws::CloudWatchLogs::DescribeExportTasksResponse
 
 =head1 ATTRIBUTES
 
-=head2 exportTasks => ArrayRef[Paws::CloudWatchLogs::ExportTask]
+=head2 ExportTasks => ArrayRef[L<Paws::CloudWatchLogs::ExportTask>]
 
   
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   
 

@@ -13,20 +13,9 @@ Paws::EC2::StartInstancesResult
 
 =head1 ATTRIBUTES
 
-=head2 StartingInstances => ArrayRef[Paws::EC2::InstanceStateChange]
+=head2 StartingInstances => ArrayRef[L<Paws::EC2::InstanceStateChange>]
 
-  
-
-Information about one or more started instances.
-
-
-
-
-
-
-
-
-
+  Information about one or more started instances.
 
 
 =cut

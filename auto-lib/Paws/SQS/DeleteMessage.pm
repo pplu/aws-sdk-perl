@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteMessage o
 Amazon Simple Queue Service service. Use the attributes of this class
 as arguments to method DeleteMessage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMessage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMessage.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-  
-
-The URL of the Amazon SQS queue to take action on.
-
-
-
-
-
-
-
-
-
+  The URL of the Amazon SQS queue to take action on.
 
 =head2 B<REQUIRED> ReceiptHandle => Str
 
-  
-
-The receipt handle associated with the message to delete.
-
-
-
-
-
-
-
-
-
+  The receipt handle associated with the message to delete.
 
 
 

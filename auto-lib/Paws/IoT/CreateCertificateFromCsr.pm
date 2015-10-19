@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreateCertificateFromCsr;
   use Moose;
-  has certificateSigningRequest => (is => 'ro', isa => 'Str', required => 1);
-  has setAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
+  has CertificateSigningRequest => (is => 'ro', isa => 'Str', required => 1);
+  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
 
   use MooseX::ClassAttribute;
 
@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method CreateCertifica
 AWS IoT service. Use the attributes of this class
 as arguments to method CreateCertificateFromCsr.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateCertificateFromCsr.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCertificateFromCsr.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> certificateSigningRequest => Str
+=head2 B<REQUIRED> CertificateSigningRequest => Str
 
-  
+  The certificate signing request (CSR).
 
-The certificate signing request (CSR).
+=head2 SetAsActive => Bool
 
-
-
-
-
-
-
-
-
-
-=head2 setAsActive => Bool
-
-  
-
-Specifies whether the certificate is active.
-
-
-
-
-
-
-
-
-
+  Specifies whether the certificate is active.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::ECS::DescribeClusters;
   use Moose;
-  has clusters => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Clusters => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'clusters' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeCluster
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method DescribeClusters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeClusters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeClusters.
 
 As an example:
 
@@ -32,22 +32,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 clusters => ArrayRef[Str]
+=head2 Clusters => ArrayRef[Str]
 
-  
-
-A space-separated list of cluster names or full cluster Amazon Resource
+  A space-separated list of cluster names or full cluster Amazon Resource
 Name (ARN) entries. If you do not specify a cluster, the default
 cluster is assumed.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -111,69 +111,27 @@ package [% c.api %];
 [% c.service_documentation_template | eval %]
 #);
 
+  has object_template => (is => 'ro', isa => 'Str', default => q#
+[%- -%]
+package [% inner_class %];
+  use Moose;
+[% FOREACH param_name IN shape.members.keys.sort -%]
+  [%- traits = [] -%]
+  [%- member_shape_name = shape.members.$param_name.shape %]
+  [%- member = c.shape(member_shape_name) -%]
+  has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
+  [%- IF (shape.members.${param_name}.locationName); traits.push('Unwrapped') %], xmlname => '[% shape.members.${param_name}.locationName %]'[% END %]
+  [%- IF (shape.members.$param_name.streaming == 1); traits.push('ParamInBody'); END %]
+  [%- encoder = c.encoders_struct.$member_shape_name; IF (encoder); traits.push('Base64Attribute') %], decode_as => '[% encoder.encoding %]', method => '[% encoder.alias %]'[% END %]
+  [%- IF (member.members.xmlname and (member.members.xmlname != 'item')) %], traits => ['Unwrapped'], xmlname => '[% member.members.xmlname %]'[% END %]
+  [%- IF (traits.size) %], traits => [[% FOREACH trait=traits %]'[% trait %]'[% IF (NOT loop.last) %],[% END %][% END %]][% END -%]
+  [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
+[% END -%]
+1;
+[% c.innerclass_documentation_template | eval %]
+[%- -%]
+#);
 
-  override make_inner_class => sub {
-    my $self = shift;
-    my $iclass = shift;
-    my $inner_class = shift;
-  
-      my $output = '';
-      if ($iclass->{type} eq 'map'){
-        my $keys_shape = $self->shape($iclass->{key}->{shape});
-        $output .= "package $inner_class;\n";
-        $output .= "  use Moose;\n";
-        $output .= "  with 'Paws::API::MapParser';\n";
-        my $type = $self->get_caller_class_type($self->inner_classes->{ $inner_class }->{members});
-        my $members = $keys_shape->{enum};
-        next if (not defined $members);
-        foreach my $param_name (sort @$members){
-          $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-          $output .= ");\n";
-        }
-        $output .= "1;\n";
-        $self->save_class($inner_class, $output);
-      } elsif($iclass->{type} eq 'structure') {
-        $output .= "package $inner_class;\n";
-        $output .= "  use Moose;\n";
- 
-        my $members = $iclass->{members};
-        foreach my $param_name (sort keys %$members){
-          my $member_shape_name = $members->{ $param_name }->{ shape };
-          my $param_props = $self->shape($members->{ $param_name }->{ shape });
-
-          my $callit = $self->get_caller_class_type($members->{ $param_name }->{ shape });
-          $self->make_inner_class($param_props,$callit);
-
-          my $type;
-          if ($param_props->{enum}) {
-            # Enums passed to Str because documentation tends to have inconsistencies 
-            #$type = $self->api . "::" . $param_props->{shape_name};
-            #$self->register_enum($type, $param_props->{enum});
-            $type = 'Str';
-          } else {
-            $type = eval { $self->get_caller_class_type($members->{ $param_name }->{ shape }) };
-            if ($@) { die "In Inner Class: $inner_class: $@"; }
-          }
-
-          my $traits = [];
-          $output .= "  has $param_name => (is => 'ro', isa => '$type'";
-          if (defined $members->{ $param_name }->{locationName}) {
-            push @$traits, 'Unwrapped';
-            $output .= ", xmlname => '$members->{ $param_name }->{locationName}'";
-          }
-          if (defined $self->encoders_struct and my $encoder = $self->encoders_struct->{ $member_shape_name }) {
-            push @$traits, 'Base64Attribute';
-            $output .= ", decode_as => '$encoder->{ encoding }', method => '$encoder->{ alias }'";
-          }
-          if (@$traits) {
-            $output .= ", traits => [" . (join ',', map { "'$_'" } @$traits) . "]";
-          }
-          $output .= ", required => 1" if ($self->required_in_shape($iclass,$param_name));
-          $output .= ");\n";
-        }
-        $output .= "1;\n";
-      }
-    };
 }
 
 1;

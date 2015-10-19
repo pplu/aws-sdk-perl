@@ -1,9 +1,9 @@
 
 package Paws::Inspector::UpdateApplication;
   use Moose;
-  has applicationArn => (is => 'ro', isa => 'Str');
-  has applicationName => (is => 'ro', isa => 'Str');
-  has resourceGroupArn => (is => 'ro', isa => 'Str');
+  has ApplicationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationArn' );
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' );
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateApplicati
 Amazon Inspector service. Use the attributes of this class
 as arguments to method UpdateApplication.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateApplication.
 
 As an example:
 
@@ -34,50 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 applicationArn => Str
+=head2 ApplicationArn => Str
 
-  
+  Application ARN that you want to update.
 
-Application ARN that you want to update.
+=head2 ApplicationName => Str
 
+  Application name that you want to update.
 
+=head2 ResourceGroupArn => Str
 
-
-
-
-
-
-
-
-=head2 applicationName => Str
-
-  
-
-Application name that you want to update.
-
-
-
-
-
-
-
-
-
-
-=head2 resourceGroupArn => Str
-
-  
-
-The resource group ARN that you want to update.
-
-
-
-
-
-
-
-
-
+  The resource group ARN that you want to update.
 
 
 

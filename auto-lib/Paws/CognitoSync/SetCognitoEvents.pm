@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method SetCognitoEvent
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method SetCognitoEvents.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetCognitoEvents.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetCognitoEvents.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Events => Paws::CognitoSync::Events
+=head2 B<REQUIRED> Events => L<Paws::CognitoSync::Events>
 
-  
-
-The events to configure
-
-
-
-
-
-
-
-
-
+  The events to configure
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-The Cognito Identity Pool to use when configuring Cognito Events
-
-
-
-
-
-
-
-
-
+  The Cognito Identity Pool to use when configuring Cognito Events
 
 
 

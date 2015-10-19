@@ -163,6 +163,62 @@ package Paws::Glacier;
     my $call_object = $self->new_with_coercions('Paws::Glacier::UploadMultipartPart', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAllJobs {
+    my $self = shift;
+
+    my $result = $self->ListJobs(@_);
+    my $array = [];
+    push @$array, @{ $result->JobList };
+
+    while ($result->Marker) {
+      $result = $self->ListJobs(@_, marker => $result->Marker);
+      push @$array, @{ $result->JobList };
+    }
+
+    return 'Paws::Glacier::ListJobs'->_returns->new(JobList => $array);
+  }
+  sub ListAllMultipartUploads {
+    my $self = shift;
+
+    my $result = $self->ListMultipartUploads(@_);
+    my $array = [];
+    push @$array, @{ $result->UploadsList };
+
+    while ($result->Marker) {
+      $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
+      push @$array, @{ $result->UploadsList };
+    }
+
+    return 'Paws::Glacier::ListMultipartUploads'->_returns->new(UploadsList => $array);
+  }
+  sub ListAllParts {
+    my $self = shift;
+
+    my $result = $self->ListParts(@_);
+    my $array = [];
+    push @$array, @{ $result->Parts };
+
+    while ($result->Marker) {
+      $result = $self->ListParts(@_, marker => $result->Marker);
+      push @$array, @{ $result->Parts };
+    }
+
+    return 'Paws::Glacier::ListParts'->_returns->new(Parts => $array);
+  }
+  sub ListAllVaults {
+    my $self = shift;
+
+    my $result = $self->ListVaults(@_);
+    my $array = [];
+    push @$array, @{ $result->VaultList };
+
+    while ($result->Marker) {
+      $result = $self->ListVaults(@_, marker => $result->Marker);
+      push @$array, @{ $result->VaultList };
+    }
+
+    return 'Paws::Glacier::ListVaults'->_returns->new(VaultList => $array);
+  }
 
   sub operations { qw/AbortMultipartUpload AbortVaultLock AddTagsToVault CompleteMultipartUpload CompleteVaultLock CreateVault DeleteArchive DeleteVault DeleteVaultAccessPolicy DeleteVaultNotifications DescribeJob DescribeVault GetDataRetrievalPolicy GetJobOutput GetVaultAccessPolicy GetVaultLock GetVaultNotifications InitiateJob InitiateMultipartUpload InitiateVaultLock ListJobs ListMultipartUploads ListParts ListTagsForVault ListVaults RemoveTagsFromVault SetDataRetrievalPolicy SetVaultAccessPolicy SetVaultNotifications UploadArchive UploadMultipartPart / }
 
@@ -191,8 +247,6 @@ Paws::Glacier - Perl Interface to AWS Amazon Glacier
   );
 
 =head1 DESCRIPTION
-
-
 
 Amazon Glacier is a storage solution for "cold data."
 
@@ -236,25 +290,15 @@ deleting archives.
 =back
 
 
-
-
-
-
-
-
-
-
 =head1 METHODS
 
-=head2 AbortMultipartUpload(accountId => Str, uploadId => Str, vaultName => Str)
+=head2 AbortMultipartUpload(AccountId => Str, UploadId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::AbortMultipartUpload>
 
 Returns: nothing
 
-  
-
-This operation aborts a multipart upload identified by the upload ID.
+  This operation aborts a multipart upload identified by the upload ID.
 
 After the Abort Multipart Upload request succeeds, you cannot upload
 any more parts to the multipart upload or complete the multipart
@@ -276,24 +320,13 @@ Archives in Amazon Glacier and Abort Multipart Upload in the I<Amazon
 Glacier Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 AbortVaultLock(accountId => Str, vaultName => Str)
+=head2 AbortVaultLock(AccountId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::AbortVaultLock>
 
 Returns: nothing
 
-  
-
-This operation aborts the vault locking process if the vault lock is
+  This operation aborts the vault locking process if the vault lock is
 not in the C<Locked> state. If the vault lock is in the C<Locked> state
 when this operation is requested, the operation returns an
 C<AccessDeniedException> error. Aborting the vault locking process
@@ -312,24 +345,13 @@ operation multiple times, if the vault lock is in the C<InProgress>
 state or if there is no policy associated with the vault.
 
 
-
-
-
-
-
-
-
-
-
-=head2 AddTagsToVault(accountId => Str, vaultName => Str, [Tags => Paws::Glacier::TagMap])
+=head2 AddTagsToVault(AccountId => Str, VaultName => Str, [Tags => L<Paws::Glacier::TagMap>])
 
 Each argument is described in detail in: L<Paws::Glacier::AddTagsToVault>
 
 Returns: nothing
 
-  
-
-This operation adds the specified tags to a vault. Each tag is composed
+  This operation adds the specified tags to a vault. Each tag is composed
 of a key and a value. Each vault can have up to 10 tags. If your
 request would cause the tag limit for the vault to be exceeded, the
 operation throws the C<LimitExceededException> error. If a tag already
@@ -338,24 +360,13 @@ be overwritten. For more information about tags, see Tagging Amazon
 Glacier Resources.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CompleteMultipartUpload(accountId => Str, uploadId => Str, vaultName => Str, [archiveSize => Str, checksum => Str])
+=head2 CompleteMultipartUpload(AccountId => Str, UploadId => Str, VaultName => Str, [ArchiveSize => Str, Checksum => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::CompleteMultipartUpload>
 
 Returns: a L<Paws::Glacier::ArchiveCreationOutput> instance
 
-  
-
-You call this operation to inform Amazon Glacier that all the archive
+  You call this operation to inform Amazon Glacier that all the archive
 parts have been uploaded and that Amazon Glacier can now assemble the
 archive from the uploaded parts. After assembling and saving the
 archive to the vault, Amazon Glacier returns the URI path of the newly
@@ -401,24 +412,13 @@ Large Archives in Parts (Multipart Upload) and Complete Multipart
 Upload in the I<Amazon Glacier Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CompleteVaultLock(accountId => Str, lockId => Str, vaultName => Str)
+=head2 CompleteVaultLock(AccountId => Str, LockId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::CompleteVaultLock>
 
 Returns: nothing
 
-  
-
-This operation completes the vault locking process by transitioning the
+  This operation completes the vault locking process by transitioning the
 vault lock from the C<InProgress> state to the C<Locked> state, which
 causes the vault lock policy to become unchangeable. A vault lock is
 put into the C<InProgress> state by calling InitiateVaultLock. You can
@@ -436,24 +436,13 @@ request when the vault lock is in the C<InProgress> state, the
 operation throws an C<InvalidParameter> error.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateVault(accountId => Str, vaultName => Str)
+=head2 CreateVault(AccountId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::CreateVault>
 
 Returns: a L<Paws::Glacier::CreateVaultOutput> instance
 
-  
-
-This operation creates a new vault with the specified name. The name of
+  This operation creates a new vault with the specified name. The name of
 the vault must be unique within a region for an AWS account. You can
 create up to 1,000 vaults per account. If you need to create more
 vaults, contact Amazon Glacier.
@@ -486,24 +475,13 @@ Vault in Amazon Glacier and Create Vault in the I<Amazon Glacier
 Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeleteArchive(accountId => Str, archiveId => Str, vaultName => Str)
+=head2 DeleteArchive(AccountId => Str, ArchiveId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::DeleteArchive>
 
 Returns: nothing
 
-  
-
-This operation deletes an archive from a vault. Subsequent requests to
+  This operation deletes an archive from a vault. Subsequent requests to
 initiate a retrieval of this archive will fail. Archive retrievals that
 are in progress for this archive ID may or may not succeed according to
 the following scenarios:
@@ -534,24 +512,13 @@ Archive in Amazon Glacier and Delete Archive in the I<Amazon Glacier
 Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeleteVault(accountId => Str, vaultName => Str)
+=head2 DeleteVault(AccountId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::DeleteVault>
 
 Returns: nothing
 
-  
-
-This operation deletes a vault. Amazon Glacier will delete a vault only
+  This operation deletes a vault. Amazon Glacier will delete a vault only
 if there are no archives in the vault as of the last inventory and
 there have been no writes to the vault since the last inventory. If
 either of these conditions is not satisfied, the vault deletion fails
@@ -574,24 +541,13 @@ Vault in Amazon Glacier and Delete Vault in the I<Amazon Glacier
 Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeleteVaultAccessPolicy(accountId => Str, vaultName => Str)
+=head2 DeleteVaultAccessPolicy(AccountId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::DeleteVaultAccessPolicy>
 
 Returns: nothing
 
-  
-
-This operation deletes the access policy associated with the specified
+  This operation deletes the access policy associated with the specified
 vault. The operation is eventually consistent; that is, it might take
 some time for Amazon Glacier to completely remove the access policy,
 and you might still see the effect of the policy for a short time after
@@ -603,24 +559,13 @@ information about vault access policies, see Amazon Glacier Access
 Control with Vault Access Policies.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeleteVaultNotifications(accountId => Str, vaultName => Str)
+=head2 DeleteVaultNotifications(AccountId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::DeleteVaultNotifications>
 
 Returns: nothing
 
-  
-
-This operation deletes the notification configuration set for a vault.
+  This operation deletes the notification configuration set for a vault.
 The operation is eventually consistent; that is, it might take some
 time for Amazon Glacier to completely disable the notifications and you
 might still receive some notifications for a short time after you send
@@ -637,24 +582,13 @@ Vault Notifications in Amazon Glacier and Delete Vault Notification
 Configuration in the Amazon Glacier Developer Guide.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeJob(accountId => Str, jobId => Str, vaultName => Str)
+=head2 DescribeJob(AccountId => Str, JobId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::DescribeJob>
 
 Returns: a L<Paws::Glacier::GlacierJobDescription> instance
 
-  
-
-This operation returns information about a job you previously
+  This operation returns information about a job you previously
 initiated, including the job initiation date, the user who initiated
 the job, the job status code/message and the Amazon SNS topic to notify
 after Amazon Glacier completes the job. For more information about
@@ -678,24 +612,13 @@ For information about the underlying REST API, go to Working with
 Archives in Amazon Glacier in the I<Amazon Glacier Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeVault(accountId => Str, vaultName => Str)
+=head2 DescribeVault(AccountId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::DescribeVault>
 
 Returns: a L<Paws::Glacier::DescribeVaultOutput> instance
 
-  
-
-This operation returns information about a vault, including the vault's
+  This operation returns information about a vault, including the vault's
 Amazon Resource Name (ARN), the date the vault was created, the number
 of archives it contains, and the total size of all the archives in the
 vault. The number of archives and their total size are as of the last
@@ -717,47 +640,25 @@ Vault Metadata in Amazon Glacier and Describe Vault in the I<Amazon
 Glacier Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetDataRetrievalPolicy(accountId => Str)
+=head2 GetDataRetrievalPolicy(AccountId => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::GetDataRetrievalPolicy>
 
 Returns: a L<Paws::Glacier::GetDataRetrievalPolicyOutput> instance
 
-  
-
-This operation returns the current data retrieval policy for the
+  This operation returns the current data retrieval policy for the
 account and region specified in the GET request. For more information
 about data retrieval policies, see Amazon Glacier Data Retrieval
 Policies.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetJobOutput(accountId => Str, jobId => Str, vaultName => Str, [range => Str])
+=head2 GetJobOutput(AccountId => Str, JobId => Str, VaultName => Str, [Range => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::GetJobOutput>
 
 Returns: a L<Paws::Glacier::GetJobOutputOutput> instance
 
-  
-
-This operation downloads the output of the job you initiated using
+  This operation downloads the output of the job you initiated using
 InitiateJob. Depending on the job type you specified when you initiated
 the job, the output will be either the content of an archive or a vault
 inventory.
@@ -816,24 +717,13 @@ Downloading a Vault Inventory, Downloading an Archive, and Get Job
 Output
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetVaultAccessPolicy(accountId => Str, vaultName => Str)
+=head2 GetVaultAccessPolicy(AccountId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::GetVaultAccessPolicy>
 
 Returns: a L<Paws::Glacier::GetVaultAccessPolicyOutput> instance
 
-  
-
-This operation retrieves the C<access-policy> subresource set on the
+  This operation retrieves the C<access-policy> subresource set on the
 vault; for more information on setting this subresource, see Set Vault
 Access Policy (PUT access-policy). If there is no access policy set on
 the vault, the operation returns a C<404 Not found> error. For more
@@ -841,24 +731,13 @@ information about vault access policies, see Amazon Glacier Access
 Control with Vault Access Policies.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetVaultLock(accountId => Str, vaultName => Str)
+=head2 GetVaultLock(AccountId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::GetVaultLock>
 
 Returns: a L<Paws::Glacier::GetVaultLockOutput> instance
 
-  
-
-This operation retrieves the following attributes from the
+  This operation retrieves the following attributes from the
 C<lock-policy> subresource set on the specified vault:
 
 =over
@@ -893,24 +772,13 @@ returns a C<404 Not found> error. For more information about vault lock
 policies, Amazon Glacier Access Control with Vault Lock Policies.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetVaultNotifications(accountId => Str, vaultName => Str)
+=head2 GetVaultNotifications(AccountId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::GetVaultNotifications>
 
 Returns: a L<Paws::Glacier::GetVaultNotificationsOutput> instance
 
-  
-
-This operation retrieves the C<notification-configuration> subresource
+  This operation retrieves the C<notification-configuration> subresource
 of the specified vault.
 
 For information about setting a notification configuration on a vault,
@@ -930,24 +798,13 @@ Vault Notifications in Amazon Glacier and Get Vault Notification
 Configuration in the I<Amazon Glacier Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 InitiateJob(accountId => Str, vaultName => Str, [jobParameters => Paws::Glacier::JobParameters])
+=head2 InitiateJob(AccountId => Str, VaultName => Str, [JobParameters => L<Paws::Glacier::JobParameters>])
 
 Each argument is described in detail in: L<Paws::Glacier::InitiateJob>
 
 Returns: a L<Paws::Glacier::InitiateJobOutput> instance
 
-  
-
-This operation initiates a job of the specified type. In this release,
+  This operation initiates a job of the specified type. In this release,
 you can initiate a job to retrieve either an archive or a vault
 inventory (a list of archives in a vault).
 
@@ -1089,24 +946,13 @@ For conceptual information and the underlying REST API, go to Initiate
 a Job and Downloading a Vault Inventory
 
 
-
-
-
-
-
-
-
-
-
-=head2 InitiateMultipartUpload(accountId => Str, vaultName => Str, [archiveDescription => Str, partSize => Str])
+=head2 InitiateMultipartUpload(AccountId => Str, VaultName => Str, [ArchiveDescription => Str, PartSize => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::InitiateMultipartUpload>
 
 Returns: a L<Paws::Glacier::InitiateMultipartUploadOutput> instance
 
-  
-
-This operation initiates a multipart upload. Amazon Glacier creates a
+  This operation initiates a multipart upload. Amazon Glacier creates a
 multipart upload resource and returns its ID in the response. The
 multipart upload ID is used in subsequent requests to upload parts of
 an archive (see UploadMultipartPart).
@@ -1144,24 +990,13 @@ Large Archives in Parts (Multipart Upload) and Initiate Multipart
 Upload in the I<Amazon Glacier Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 InitiateVaultLock(accountId => Str, vaultName => Str, [policy => Paws::Glacier::VaultLockPolicy])
+=head2 InitiateVaultLock(AccountId => Str, VaultName => Str, [Policy => L<Paws::Glacier::VaultLockPolicy>])
 
 Each argument is described in detail in: L<Paws::Glacier::InitiateVaultLock>
 
 Returns: a L<Paws::Glacier::InitiateVaultLockOutput> instance
 
-  
-
-This operation initiates the vault locking process by doing the
+  This operation initiates the vault locking process by doing the
 following:
 
 =over
@@ -1205,24 +1040,13 @@ the vault lock is in the C<InProgress> state you must call
 AbortVaultLock before you can initiate a new vault lock policy.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListJobs(accountId => Str, vaultName => Str, [completed => Str, limit => Str, marker => Str, statuscode => Str])
+=head2 ListJobs(AccountId => Str, VaultName => Str, [Completed => Str, Limit => Str, Marker => Str, Statuscode => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::ListJobs>
 
 Returns: a L<Paws::Glacier::ListJobsOutput> instance
 
-  
-
-This operation lists jobs for a vault, including jobs that are
+  This operation lists jobs for a vault, including jobs that are
 in-progress and jobs that have recently finished.
 
 Amazon Glacier retains recently completed jobs for a period before
@@ -1268,24 +1092,13 @@ Using AWS Identity and Access Management (IAM).
 For the underlying REST API, go to List Jobs
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListMultipartUploads(accountId => Str, vaultName => Str, [limit => Str, marker => Str])
+=head2 ListMultipartUploads(AccountId => Str, VaultName => Str, [Limit => Str, Marker => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::ListMultipartUploads>
 
 Returns: a L<Paws::Glacier::ListMultipartUploadsOutput> instance
 
-  
-
-This operation lists in-progress multipart uploads for the specified
+  This operation lists in-progress multipart uploads for the specified
 vault. An in-progress multipart upload is a multipart upload that has
 been initiated by an InitiateMultipartUpload request, but has not yet
 been completed or aborted. The list returned in the List Multipart
@@ -1318,24 +1131,13 @@ with Archives in Amazon Glacier and List Multipart Uploads in the
 I<Amazon Glacier Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListParts(accountId => Str, uploadId => Str, vaultName => Str, [limit => Str, marker => Str])
+=head2 ListParts(AccountId => Str, UploadId => Str, VaultName => Str, [Limit => Str, Marker => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::ListParts>
 
 Returns: a L<Paws::Glacier::ListPartsOutput> instance
 
-  
-
-This operation lists the parts of an archive that have been uploaded in
+  This operation lists the parts of an archive that have been uploaded in
 a specific multipart upload. You can make this request at any time
 during an in-progress multipart upload before you complete the upload
 (see CompleteMultipartUpload. List Parts returns an error for completed
@@ -1362,46 +1164,24 @@ with Archives in Amazon Glacier and List Parts in the I<Amazon Glacier
 Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListTagsForVault(accountId => Str, vaultName => Str)
+=head2 ListTagsForVault(AccountId => Str, VaultName => Str)
 
 Each argument is described in detail in: L<Paws::Glacier::ListTagsForVault>
 
 Returns: a L<Paws::Glacier::ListTagsForVaultOutput> instance
 
-  
-
-This operation lists all the tags attached to a vault. The operation
+  This operation lists all the tags attached to a vault. The operation
 returns an empty map if there are no tags. For more information about
 tags, see Tagging Amazon Glacier Resources.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ListVaults(accountId => Str, [limit => Str, marker => Str])
+=head2 ListVaults(AccountId => Str, [Limit => Str, Marker => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::ListVaults>
 
 Returns: a L<Paws::Glacier::ListVaultsOutput> instance
 
-  
-
-This operation lists all vaults owned by the calling user's account.
+  This operation lists all vaults owned by the calling user's account.
 The list returned in the response is ASCII-sorted by vault name.
 
 By default, this operation returns up to 1,000 items. If there are more
@@ -1424,47 +1204,25 @@ Vault Metadata in Amazon Glacier and List Vaults in the I<Amazon
 Glacier Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RemoveTagsFromVault(accountId => Str, vaultName => Str, [TagKeys => ArrayRef[Str]])
+=head2 RemoveTagsFromVault(AccountId => Str, VaultName => Str, [TagKeys => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::Glacier::RemoveTagsFromVault>
 
 Returns: nothing
 
-  
-
-This operation removes one or more tags from the set of tags attached
+  This operation removes one or more tags from the set of tags attached
 to a vault. For more information about tags, see Tagging Amazon Glacier
 Resources. This operation is idempotent. The operation will be
 successful, even if there are no tags attached to the vault.
 
 
-
-
-
-
-
-
-
-
-
-=head2 SetDataRetrievalPolicy(accountId => Str, [Policy => Paws::Glacier::DataRetrievalPolicy])
+=head2 SetDataRetrievalPolicy(AccountId => Str, [Policy => L<Paws::Glacier::DataRetrievalPolicy>])
 
 Each argument is described in detail in: L<Paws::Glacier::SetDataRetrievalPolicy>
 
 Returns: nothing
 
-  
-
-This operation sets and then enacts a data retrieval policy in the
+  This operation sets and then enacts a data retrieval policy in the
 region specified in the PUT request. You can set one policy per region
 for an AWS account. The policy is enacted within a few minutes of a
 successful PUT operation.
@@ -1474,24 +1232,13 @@ progress before the policy was enacted. For more information about data
 retrieval policies, see Amazon Glacier Data Retrieval Policies.
 
 
-
-
-
-
-
-
-
-
-
-=head2 SetVaultAccessPolicy(accountId => Str, vaultName => Str, [policy => Paws::Glacier::VaultAccessPolicy])
+=head2 SetVaultAccessPolicy(AccountId => Str, VaultName => Str, [Policy => L<Paws::Glacier::VaultAccessPolicy>])
 
 Each argument is described in detail in: L<Paws::Glacier::SetVaultAccessPolicy>
 
 Returns: nothing
 
-  
-
-This operation configures an access policy for a vault and will
+  This operation configures an access policy for a vault and will
 overwrite an existing policy. To configure a vault access policy, send
 a PUT request to the C<access-policy> subresource of the vault. An
 access policy is specific to a vault and is also called a vault
@@ -1500,24 +1247,13 @@ be up to 20 KB in size. For more information about vault access
 policies, see Amazon Glacier Access Control with Vault Access Policies.
 
 
-
-
-
-
-
-
-
-
-
-=head2 SetVaultNotifications(accountId => Str, vaultName => Str, [vaultNotificationConfig => Paws::Glacier::VaultNotificationConfig])
+=head2 SetVaultNotifications(AccountId => Str, VaultName => Str, [VaultNotificationConfig => L<Paws::Glacier::VaultNotificationConfig>])
 
 Each argument is described in detail in: L<Paws::Glacier::SetVaultNotifications>
 
 Returns: nothing
 
-  
-
-This operation configures notifications that will be sent when specific
+  This operation configures notifications that will be sent when specific
 events happen to a vault. By default, you don't get any notifications.
 
 To configure vault notifications, send a PUT request to the
@@ -1557,24 +1293,13 @@ Vault Notifications in Amazon Glacier and Set Vault Notification
 Configuration in the I<Amazon Glacier Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UploadArchive(accountId => Str, vaultName => Str, [archiveDescription => Str, body => Str, checksum => Str])
+=head2 UploadArchive(AccountId => Str, VaultName => Str, [ArchiveDescription => Str, Body => Str, Checksum => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::UploadArchive>
 
 Returns: a L<Paws::Glacier::ArchiveCreationOutput> instance
 
-  
-
-This operation adds an archive to a vault. This is a synchronous
+  This operation adds an archive to a vault. This is a synchronous
 operation, and for a successful upload, your data is durably persisted.
 Amazon Glacier returns the archive ID in the C<x-amz-archive-id> header
 of the response.
@@ -1615,24 +1340,13 @@ Archive in Amazon Glacier and Upload Archive in the I<Amazon Glacier
 Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UploadMultipartPart(accountId => Str, uploadId => Str, vaultName => Str, [body => Str, checksum => Str, range => Str])
+=head2 UploadMultipartPart(AccountId => Str, UploadId => Str, VaultName => Str, [Body => Str, Checksum => Str, Range => Str])
 
 Each argument is described in detail in: L<Paws::Glacier::UploadMultipartPart>
 
 Returns: a L<Paws::Glacier::UploadMultipartPartOutput> instance
 
-  
-
-This operation uploads a part of an archive. You can upload archive
+  This operation uploads a part of an archive. You can upload archive
 parts in any order. You can also upload them in parallel. You can
 upload up to 10,000 parts for a multipart upload.
 
@@ -1685,15 +1399,6 @@ Using AWS Identity and Access Management (IAM).
 For conceptual information and underlying REST API, go to Uploading
 Large Archives in Parts (Multipart Upload) and Upload Part in the
 I<Amazon Glacier Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

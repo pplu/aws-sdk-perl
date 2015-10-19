@@ -14,19 +14,8 @@ Paws::StorageGateway::DeleteVolumeOutput
 
 =head2 VolumeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the storage volume that was deleted.
+  The Amazon Resource Name (ARN) of the storage volume that was deleted.
 It is the same ARN you provided in the request.
-
-
-
-
-
-
-
-
-
 
 
 =cut

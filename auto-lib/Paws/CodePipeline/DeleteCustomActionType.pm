@@ -1,9 +1,9 @@
 
 package Paws::CodePipeline::DeleteCustomActionType;
   use Moose;
-  has category => (is => 'ro', isa => 'Str', required => 1);
-  has provider => (is => 'ro', isa => 'Str', required => 1);
-  has version => (is => 'ro', isa => 'Str', required => 1);
+  has Category => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'category' , required => 1);
+  has Provider => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'provider' , required => 1);
+  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteCustomAct
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method DeleteCustomActionType.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCustomActionType.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCustomActionType.
 
 As an example:
 
@@ -34,52 +34,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> category => Str
+=head2 B<REQUIRED> Category => Str
 
-  
-
-The category of the custom action that you want to delete, such as
+  The category of the custom action that you want to delete, such as
 source or deploy.
 
+=head2 B<REQUIRED> Provider => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> provider => Str
-
-  
-
-The provider of the service used in the custom action, such as AWS
+  The provider of the service used in the custom action, such as AWS
 CodeDeploy.
 
+=head2 B<REQUIRED> Version => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> version => Str
-
-  
-
-The version of the custom action to delete.
-
-
-
-
-
-
-
-
-
+  The version of the custom action to delete.
 
 
 

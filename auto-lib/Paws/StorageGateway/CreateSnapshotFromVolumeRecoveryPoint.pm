@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateSnapshotF
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method CreateSnapshotFromVolumeRecoveryPoint.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateSnapshotFromVolumeRecoveryPoint.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSnapshotFromVolumeRecoveryPoint.
 
 As an example:
 

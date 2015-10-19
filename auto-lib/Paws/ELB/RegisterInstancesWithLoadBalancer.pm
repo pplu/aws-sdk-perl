@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RegisterInstanc
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method RegisterInstancesWithLoadBalancer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RegisterInstancesWithLoadBalancer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterInstancesWithLoadBalancer.
 
 As an example:
 
@@ -33,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Instances => ArrayRef[Paws::ELB::Instance]
+=head2 B<REQUIRED> Instances => ArrayRef[L<Paws::ELB::Instance>]
 
-  
-
-The IDs of the instances.
-
-
-
-
-
-
-
-
-
+  The IDs of the instances.
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 
 

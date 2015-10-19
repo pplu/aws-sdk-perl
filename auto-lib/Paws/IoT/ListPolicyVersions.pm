@@ -1,7 +1,7 @@
 
 package Paws::IoT::ListPolicyVersions;
   use Moose;
-  has policyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
+  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListPolicyVersi
 AWS IoT service. Use the attributes of this class
 as arguments to method ListPolicyVersions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListPolicyVersions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPolicyVersions.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> policyName => Str
+=head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The policy name.
-
-
-
-
-
-
-
-
-
+  The policy name.
 
 
 

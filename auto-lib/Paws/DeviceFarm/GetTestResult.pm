@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetTestResult;
   use Moose;
-  has test => (is => 'ro', isa => 'Paws::DeviceFarm::Test');
+  has Test => (is => 'ro', isa => 'Paws::DeviceFarm::Test', traits => ['Unwrapped'], xmlname => 'test' );
 
 
 ### main pod documentation begin ###
@@ -12,7 +12,7 @@ Paws::DeviceFarm::GetTestResult
 
 =head1 ATTRIBUTES
 
-=head2 test => Paws::DeviceFarm::Test
+=head2 Test => L<Paws::DeviceFarm::Test>
 
   
 

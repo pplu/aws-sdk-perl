@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListBootstrapAc
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method ListBootstrapActions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListBootstrapActions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListBootstrapActions.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterId => Str
 
-  
-
-The cluster identifier for the bootstrap actions to list .
-
-
-
-
-
-
-
-
-
+  The cluster identifier for the bootstrap actions to list .
 
 =head2 Marker => Str
 
-  
-
-The pagination token that indicates the next set of results to retrieve
+  The pagination token that indicates the next set of results to retrieve
 .
-
-
-
-
-
-
-
-
-
 
 
 

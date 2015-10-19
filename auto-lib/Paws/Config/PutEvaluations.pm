@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method PutEvaluations 
 AWS Config service. Use the attributes of this class
 as arguments to method PutEvaluations.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutEvaluations.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutEvaluations.
 
 As an example:
 
@@ -33,38 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Evaluations => ArrayRef[Paws::Config::Evaluation]
+=head2 Evaluations => ArrayRef[L<Paws::Config::Evaluation>]
 
-  
-
-The assessments that the AWS Lambda function performs. Each evaluation
+  The assessments that the AWS Lambda function performs. Each evaluation
 identifies an AWS resource and indicates whether it complies with the
 AWS Config rule that invokes the AWS Lambda function.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ResultToken => Str
 
-  
-
-An encrypted token that associates an evaluation with an AWS Config
+  An encrypted token that associates an evaluation with an AWS Config
 rule. Identifies the rule and the event that triggered the evaluation
-
-
-
-
-
-
-
-
-
 
 
 

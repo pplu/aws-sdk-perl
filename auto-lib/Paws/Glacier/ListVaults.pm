@@ -1,9 +1,9 @@
 
 package Paws::Glacier::ListVaults;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
-  has marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has Limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
 
   use MooseX::ClassAttribute;
 
@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method ListVaults on t
 Amazon Glacier service. Use the attributes of this class
 as arguments to method ListVaults.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListVaults.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListVaults.
 
 As an example:
 
@@ -36,11 +36,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
-  
-
-The C<AccountId> value is the AWS account ID. This value must match the
+  The C<AccountId> value is the AWS account ID. This value must match the
 AWS account ID associated with the credentials used to sign the
 request. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
@@ -48,46 +46,15 @@ account ID associated with the credentials used to sign the request. If
 you specify your account ID, do not include any hyphens (apos-apos) in
 the ID.
 
+=head2 Limit => Str
 
-
-
-
-
-
-
-
-
-=head2 limit => Str
-
-  
-
-The maximum number of items returned in the response. If you don't
+  The maximum number of items returned in the response. If you don't
 specify a value, the List Vaults operation returns up to 1,000 items.
 
+=head2 Marker => Str
 
-
-
-
-
-
-
-
-
-=head2 marker => Str
-
-  
-
-A string used for pagination. The marker specifies the vault ARN after
+  A string used for pagination. The marker specifies the vault ARN after
 which the listing of vaults should begin.
-
-
-
-
-
-
-
-
-
 
 
 

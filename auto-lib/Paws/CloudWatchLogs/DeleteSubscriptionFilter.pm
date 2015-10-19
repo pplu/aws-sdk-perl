@@ -1,8 +1,8 @@
 
 package Paws::CloudWatchLogs::DeleteSubscriptionFilter;
   use Moose;
-  has filterName => (is => 'ro', isa => 'Str', required => 1);
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has FilterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterName' , required => 1);
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteSubscript
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method DeleteSubscriptionFilter.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSubscriptionFilter.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSubscriptionFilter.
 
 As an example:
 
@@ -33,36 +33,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> filterName => Str
+=head2 B<REQUIRED> FilterName => Str
 
-  
+  The name of the subscription filter to delete.
 
-The name of the subscription filter to delete.
+=head2 B<REQUIRED> LogGroupName => Str
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> logGroupName => Str
-
-  
-
-The name of the log group that is associated with the subscription
+  The name of the log group that is associated with the subscription
 filter to delete.
-
-
-
-
-
-
-
-
-
 
 
 

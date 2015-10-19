@@ -1,8 +1,8 @@
 
 package Paws::ECS::UpdateContainerAgent;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has containerInstance => (is => 'ro', isa => 'Str', required => 1);
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has ContainerInstance => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerInstance' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateContainer
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method UpdateContainerAgent.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateContainerAgent.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateContainerAgent.
 
 As an example:
 
@@ -33,39 +33,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
+=head2 Cluster => Str
 
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster that
+  The short name or full Amazon Resource Name (ARN) of the cluster that
 your container instance is running on. If you do not specify a cluster,
 the default cluster is assumed.
 
+=head2 B<REQUIRED> ContainerInstance => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> containerInstance => Str
-
-  
-
-The container instance ID or full Amazon Resource Name (ARN) entries
+  The container instance ID or full Amazon Resource Name (ARN) entries
 for the container instance on which you would like to update the Amazon
 ECS container agent.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DescribeIdentit
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method DescribeIdentityPool.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeIdentityPool.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeIdentityPool.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-An identity pool ID in the format REGION:GUID.
-
-
-
-
-
-
-
-
-
+  An identity pool ID in the format REGION:GUID.
 
 
 

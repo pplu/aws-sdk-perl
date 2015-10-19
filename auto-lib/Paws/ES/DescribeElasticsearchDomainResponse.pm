@@ -13,20 +13,9 @@ Paws::ES::DescribeElasticsearchDomainResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DomainStatus => Paws::ES::ElasticsearchDomainStatus
+=head2 B<REQUIRED> DomainStatus => L<Paws::ES::ElasticsearchDomainStatus>
 
-  
-
-The current status of the Elasticsearch domain.
-
-
-
-
-
-
-
-
-
+  The current status of the Elasticsearch domain.
 
 
 =cut

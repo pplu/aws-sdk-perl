@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeNotific
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribeNotificationConfigurations.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeNotificationConfigurations.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeNotificationConfigurations.
 
 As an example:
 
@@ -36,49 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoScalingGroupNames => ArrayRef[Str]
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
-
+  The name of the group.
 
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of items to return with this call.
-
-
-
-
-
-
-
-
-
+  The maximum number of items to return with this call.
 
 =head2 NextToken => Str
 
-  
-
-The token for the next set of items to return. (You received this token
+  The token for the next set of items to return. (You received this token
 from a previous call.)
-
-
-
-
-
-
-
-
-
 
 
 

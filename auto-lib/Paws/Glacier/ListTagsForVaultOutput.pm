@@ -13,21 +13,10 @@ Paws::Glacier::ListTagsForVaultOutput
 
 =head1 ATTRIBUTES
 
-=head2 Tags => Paws::Glacier::TagMap
+=head2 Tags => L<Paws::Glacier::TagMap>
 
-  
-
-The tags attached to the vault. Each tag is composed of a key and a
+  The tags attached to the vault. Each tag is composed of a key and a
 value.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreatePolicy;
   use Moose;
-  has policyDocument => (is => 'ro', isa => 'Str', required => 1);
-  has policyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
+  has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
+  has PolicyName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'policyName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method CreatePolicy on
 AWS IoT service. Use the attributes of this class
 as arguments to method CreatePolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreatePolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePolicy.
 
 As an example:
 
@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> policyDocument => Str
+=head2 B<REQUIRED> PolicyDocument => Str
 
-  
-
-The JSON document that describes the policy. The length of the
+  The JSON document that describes the policy. The length of the
 B<policyDocument> must be a minimum length of 1, with a maximum length
 of 2048, excluding whitespace.
 
+=head2 B<REQUIRED> PolicyName => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> policyName => Str
-
-  
-
-The policy name.
-
-
-
-
-
-
-
-
-
+  The policy name.
 
 
 

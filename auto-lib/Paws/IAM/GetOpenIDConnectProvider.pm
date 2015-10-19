@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetOpenIDConnec
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetOpenIDConnectProvider.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetOpenIDConnectProvider.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetOpenIDConnectProvider.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> OpenIDConnectProviderArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC)
+  The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC)
 provider to get information for. You can get a list of OIDC provider
 ARNs by using the ListOpenIDConnectProviders action.
-
-
-
-
-
-
-
-
-
 
 
 

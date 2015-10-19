@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteVpnConnec
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DeleteVpnConnectionRoute.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteVpnConnectionRoute.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteVpnConnectionRoute.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DestinationCidrBlock => Str
 
-  
-
-The CIDR block associated with the local subnet of the customer
+  The CIDR block associated with the local subnet of the customer
 network.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> VpnConnectionId => Str
 
-  
-
-The ID of the VPN connection.
-
-
-
-
-
-
-
-
-
+  The ID of the VPN connection.
 
 
 

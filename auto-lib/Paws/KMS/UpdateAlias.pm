@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateAlias on 
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method UpdateAlias.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAlias.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAlias.
 
 As an example:
 
@@ -35,28 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AliasName => Str
 
-  
-
-String that contains the name of the alias to be modifed. The name must
-start with the word "alias" followed by a forward slash (alias/).
-Aliases that begin with "alias/AWS" are reserved.
-
-
-
-
-
-
-
-
-
+  String that contains the name of the alias to be modified. The name
+must start with the word "alias" followed by a forward slash (alias/).
+Aliases that begin with "alias/aws" are reserved.
 
 =head2 B<REQUIRED> TargetKeyId => Str
 
-  
-
-Unique identifier of the customer master key to be associated with the
-alias. This value can be a globally unique identifier or the fully
-specified ARN of a key.
+  Unique identifier of the customer master key to be mapped to the alias.
+This value can be a globally unique identifier or the fully specified
+ARN of a key.
 
 =over
 
@@ -68,14 +55,8 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =back
 
-
-
-
-
-
-
-
-
+You can call ListAliases to verify that the alias is mapped to the
+correct C<TargetKeyId>.
 
 
 

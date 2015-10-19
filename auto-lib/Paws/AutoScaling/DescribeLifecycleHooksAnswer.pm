@@ -13,20 +13,9 @@ Paws::AutoScaling::DescribeLifecycleHooksAnswer
 
 =head1 ATTRIBUTES
 
-=head2 LifecycleHooks => ArrayRef[Paws::AutoScaling::LifecycleHook]
+=head2 LifecycleHooks => ArrayRef[L<Paws::AutoScaling::LifecycleHook>]
 
-  
-
-The lifecycle hooks for the specified group.
-
-
-
-
-
-
-
-
-
+  The lifecycle hooks for the specified group.
 
 
 =cut

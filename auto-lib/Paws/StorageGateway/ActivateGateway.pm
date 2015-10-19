@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method ActivateGateway
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method ActivateGateway.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ActivateGateway.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ActivateGateway.
 
 As an example:
 
@@ -40,9 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ActivationKey => Str
 
-  
-
-Your gateway activation key. You can obtain the activation key by
+  Your gateway activation key. You can obtain the activation key by
 sending an HTTP GET request with redirects enabled to the gateway IP
 address (port 80). The redirect URL returned in the response provides
 you the activation key for your gateway in the query string parameter
@@ -51,24 +49,13 @@ parameters, however, these are merely defaults -- the arguments you
 pass to the C<ActivateGateway> API call determine the actual
 configuration of your gateway.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> GatewayName => Str
 
   
 
 =head2 B<REQUIRED> GatewayRegion => Str
 
-  
-
-One of the values that indicates the region where you want to store the
+  One of the values that indicates the region where you want to store the
 snapshot backups. The gateway region specified must be the same region
 as the region in your C<Host> header in the request. For more
 information about available regions and endpoints for AWS Storage
@@ -79,84 +66,31 @@ I<Valid Values>: "us-east-1", "us-west-1", "us-west-2", "eu-west-1",
 "eu-central-1", "ap-northeast-1", "ap-southeast-1", "ap-southeast-2",
 "sa-east-1"
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> GatewayTimezone => Str
 
-  
-
-One of the values that indicates the time zone you want to set for the
+  One of the values that indicates the time zone you want to set for the
 gateway. The time zone is used, for example, for scheduling snapshots
 and your gateway's maintenance schedule.
 
-
-
-
-
-
-
-
-
-
 =head2 GatewayType => Str
 
-  
-
-One of the values that defines the type of gateway to activate. The
+  One of the values that defines the type of gateway to activate. The
 type specified is critical to all later functions of the gateway and
 cannot be changed after activation. The default value is C<STORED>.
 
-
-
-
-
-
-
-
-
-
 =head2 MediumChangerType => Str
 
-  
-
-The value that indicates the type of medium changer to use for
+  The value that indicates the type of medium changer to use for
 gateway-VTL. This field is optional.
 
 I<Valid Values>: "STK-L700", "AWS-Gateway-VTL"
 
-
-
-
-
-
-
-
-
-
 =head2 TapeDriveType => Str
 
-  
-
-The value that indicates the type of tape drive to use for gateway-VTL.
+  The value that indicates the type of tape drive to use for gateway-VTL.
 This field is optional.
 
 I<Valid Values>: "IBM-ULT3580-TD5"
-
-
-
-
-
-
-
-
-
 
 
 

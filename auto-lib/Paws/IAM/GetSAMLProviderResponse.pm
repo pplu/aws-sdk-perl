@@ -17,47 +17,14 @@ Paws::IAM::GetSAMLProviderResponse
 
 =head2 CreateDate => Str
 
-  
-
-The date and time when the SAML provider was created.
-
-
-
-
-
-
-
-
-
+  The date and time when the SAML provider was created.
 =head2 SAMLMetadataDocument => Str
 
-  
-
-The XML metadata document that includes information about an identity
+  The XML metadata document that includes information about an identity
 provider.
-
-
-
-
-
-
-
-
-
 =head2 ValidUntil => Str
 
-  
-
-The expiration date and time for the SAML provider.
-
-
-
-
-
-
-
-
-
+  The expiration date and time for the SAML provider.
 
 
 =cut

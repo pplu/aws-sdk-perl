@@ -15,18 +15,7 @@ Paws::SQS::GetQueueUrlResult
 
 =head2 QueueUrl => Str
 
-  
-
-The URL for the queue.
-
-
-
-
-
-
-
-
-
+  The URL for the queue.
 
 
 =cut

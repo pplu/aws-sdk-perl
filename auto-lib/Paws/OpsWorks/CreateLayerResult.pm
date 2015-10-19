@@ -14,18 +14,7 @@ Paws::OpsWorks::CreateLayerResult
 
 =head2 LayerId => Str
 
-  
-
-The layer ID.
-
-
-
-
-
-
-
-
-
+  The layer ID.
 
 
 =cut

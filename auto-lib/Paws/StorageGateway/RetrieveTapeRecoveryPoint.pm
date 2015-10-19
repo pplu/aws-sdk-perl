@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RetrieveTapeRec
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method RetrieveTapeRecoveryPoint.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RetrieveTapeRecoveryPoint.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RetrieveTapeRecoveryPoint.
 
 As an example:
 
@@ -39,19 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TapeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the virtual tape for which you want
+  The Amazon Resource Name (ARN) of the virtual tape for which you want
 to retrieve the recovery point.
-
-
-
-
-
-
-
-
-
 
 
 

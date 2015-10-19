@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateCacheSecu
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method CreateCacheSecurityGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheSecurityGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheSecurityGroup.
 
 As an example:
 
@@ -35,9 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheSecurityGroupName => Str
 
-  
-
-A name for the cache security group. This value is stored as a
+  A name for the cache security group. This value is stored as a
 lowercase string.
 
 Constraints: Must contain no more than 255 alphanumeric characters.
@@ -45,29 +43,9 @@ Cannot be the word "Default".
 
 Example: C<mysecuritygroup>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Description => Str
 
-  
-
-A description for the cache security group.
-
-
-
-
-
-
-
-
-
+  A description for the cache security group.
 
 
 

@@ -1,10 +1,10 @@
 
 package Paws::IoT::CreatePolicyResponse;
   use Moose;
-  has policyArn => (is => 'ro', isa => 'Str');
-  has policyDocument => (is => 'ro', isa => 'Str');
-  has policyName => (is => 'ro', isa => 'Str');
-  has policyVersionId => (is => 'ro', isa => 'Str');
+  has PolicyArn => (is => 'ro', isa => 'Str');
+  has PolicyDocument => (is => 'ro', isa => 'Str');
+  has PolicyName => (is => 'ro', isa => 'Str');
+  has PolicyVersionId => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -16,62 +16,18 @@ Paws::IoT::CreatePolicyResponse
 
 =head1 ATTRIBUTES
 
-=head2 policyArn => Str
+=head2 PolicyArn => Str
 
-  
+  The policy ARN.
+=head2 PolicyDocument => Str
 
-The policy ARN.
+  The JSON document that describes the policy.
+=head2 PolicyName => Str
 
+  The policy name.
+=head2 PolicyVersionId => Str
 
-
-
-
-
-
-
-
-=head2 policyDocument => Str
-
-  
-
-The JSON document that describes the policy.
-
-
-
-
-
-
-
-
-
-=head2 policyName => Str
-
-  
-
-The policy name.
-
-
-
-
-
-
-
-
-
-=head2 policyVersionId => Str
-
-  
-
-The policy version ID.
-
-
-
-
-
-
-
-
-
+  The policy version ID.
 
 
 =cut

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method ListIdentityPoo
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method ListIdentityPoolUsage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListIdentityPoolUsage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListIdentityPoolUsage.
 
 As an example:
 
@@ -37,33 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-  
-
-The maximum number of results to be returned.
-
-
-
-
-
-
-
-
-
+  The maximum number of results to be returned.
 
 =head2 NextToken => Str
 
-  
-
-A pagination token for obtaining the next page of results.
-
-
-
-
-
-
-
-
-
+  A pagination token for obtaining the next page of results.
 
 
 

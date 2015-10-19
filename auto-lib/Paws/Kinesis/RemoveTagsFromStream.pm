@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method RemoveTagsFromS
 Amazon Kinesis service. Use the attributes of this class
 as arguments to method RemoveTagsFromStream.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTagsFromStream.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTagsFromStream.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> StreamName => Str
 
-  
-
-The name of the stream.
-
-
-
-
-
-
-
-
-
+  The name of the stream.
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
-  
-
-A list of tag keys. Each corresponding tag is removed from the stream.
-
-
-
-
-
-
-
-
-
+  A list of tag keys. Each corresponding tag is removed from the stream.
 
 
 

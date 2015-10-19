@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DescribeEnviron
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method DescribeEnvironmentResources.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEnvironmentResources.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEnvironmentResources.
 
 As an example:
 
@@ -35,41 +35,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EnvironmentId => Str
 
-  
-
-The ID of the environment to retrieve AWS resource usage data.
+  The ID of the environment to retrieve AWS resource usage data.
 
 Condition: You must specify either this or an EnvironmentName, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
-
-
-
-
-
-
-
-
-
 =head2 EnvironmentName => Str
 
-  
-
-The name of the environment to retrieve AWS resource usage data.
+  The name of the environment to retrieve AWS resource usage data.
 
 Condition: You must specify either this or an EnvironmentId, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
-
-
-
-
-
-
-
-
-
 
 
 

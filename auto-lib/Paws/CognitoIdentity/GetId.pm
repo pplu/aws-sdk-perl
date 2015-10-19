@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method GetId on the
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method GetId.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetId.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetId.
 
 As an example:
 
@@ -36,39 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AccountId => Str
 
-  
-
-A standard AWS account ID (9+ digits).
-
-
-
-
-
-
-
-
-
+  A standard AWS account ID (9+ digits).
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
+  An identity pool ID in the format REGION:GUID.
 
-An identity pool ID in the format REGION:GUID.
+=head2 Logins => L<Paws::CognitoIdentity::LoginsMap>
 
-
-
-
-
-
-
-
-
-
-=head2 Logins => Paws::CognitoIdentity::LoginsMap
-
-  
-
-A set of optional name-value pairs that map provider names to provider
+  A set of optional name-value pairs that map provider names to provider
 tokens.
 
 The available provider names for C<Logins> are as follows:
@@ -86,14 +62,6 @@ The available provider names for C<Logins> are as follows:
 =item * Digits: C<www.digits.com>
 
 =back
-
-
-
-
-
-
-
-
 
 
 

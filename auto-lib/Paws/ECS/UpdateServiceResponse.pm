@@ -1,7 +1,7 @@
 
 package Paws::ECS::UpdateServiceResponse;
   use Moose;
-  has service => (is => 'ro', isa => 'Paws::ECS::Service');
+  has Service => (is => 'ro', isa => 'Paws::ECS::Service', traits => ['Unwrapped'], xmlname => 'service' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::ECS::UpdateServiceResponse
 
 =head1 ATTRIBUTES
 
-=head2 service => Paws::ECS::Service
+=head2 Service => L<Paws::ECS::Service>
 
-  
-
-The full description of your service following the update call.
-
-
-
-
-
-
-
-
-
+  The full description of your service following the update call.
 
 
 =cut

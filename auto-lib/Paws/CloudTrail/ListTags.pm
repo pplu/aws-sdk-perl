@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListTags on the
 AWS CloudTrail service. Use the attributes of this class
 as arguments to method ListTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTags.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  
-
-Reserved for future use.
-
-
-
-
-
-
-
-
-
+  Reserved for future use.
 
 =head2 B<REQUIRED> ResourceIdList => ArrayRef[Str]
 
-  
-
-Specifies a list of trail ARNs whose tags will be listed. The list has
+  Specifies a list of trail ARNs whose tags will be listed. The list has
 a limit of 20 ARNs. The format of a trail ARN is
 C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
-
-
-
-
-
-
-
-
-
 
 
 

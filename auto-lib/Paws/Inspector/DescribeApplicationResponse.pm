@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeApplicationResponse;
   use Moose;
-  has application => (is => 'ro', isa => 'Paws::Inspector::Application');
+  has Application => (is => 'ro', isa => 'Paws::Inspector::Application', traits => ['Unwrapped'], xmlname => 'application' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::Inspector::DescribeApplicationResponse
 
 =head1 ATTRIBUTES
 
-=head2 application => Paws::Inspector::Application
+=head2 Application => L<Paws::Inspector::Application>
 
-  
-
-Information about the application.
-
-
-
-
-
-
-
-
-
+  Information about the application.
 
 
 =cut

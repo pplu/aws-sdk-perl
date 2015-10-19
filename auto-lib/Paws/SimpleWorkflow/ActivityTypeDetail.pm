@@ -1,8 +1,8 @@
 
 package Paws::SimpleWorkflow::ActivityTypeDetail;
   use Moose;
-  has configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeConfiguration', required => 1);
-  has typeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeInfo', required => 1);
+  has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeConfiguration', traits => ['Unwrapped'], xmlname => 'configuration' , required => 1);
+  has TypeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityTypeInfo', traits => ['Unwrapped'], xmlname => 'typeInfo' , required => 1);
 
 
 ### main pod documentation begin ###
@@ -13,25 +13,12 @@ Paws::SimpleWorkflow::ActivityTypeDetail
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> configuration => Paws::SimpleWorkflow::ActivityTypeConfiguration
+=head2 B<REQUIRED> Configuration => L<Paws::SimpleWorkflow::ActivityTypeConfiguration>
 
-  
+  The configuration settings registered with the activity type.
+=head2 B<REQUIRED> TypeInfo => L<Paws::SimpleWorkflow::ActivityTypeInfo>
 
-The configuration settings registered with the activity type.
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> typeInfo => Paws::SimpleWorkflow::ActivityTypeInfo
-
-  
-
-General information about the activity type.
+  General information about the activity type.
 
 The status of activity type (returned in the ActivityTypeInfo
 structure) can be one of the following.
@@ -46,14 +33,6 @@ DeprecateActivityType, but is still in use. You should keep workers
 supporting this type running. You cannot create new tasks of this type.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

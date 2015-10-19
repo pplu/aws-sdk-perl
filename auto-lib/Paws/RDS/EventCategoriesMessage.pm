@@ -13,20 +13,9 @@ Paws::RDS::EventCategoriesMessage
 
 =head1 ATTRIBUTES
 
-=head2 EventCategoriesMapList => ArrayRef[Paws::RDS::EventCategoriesMap]
+=head2 EventCategoriesMapList => ArrayRef[L<Paws::RDS::EventCategoriesMap>]
 
-  
-
-A list of EventCategoriesMap data types.
-
-
-
-
-
-
-
-
-
+  A list of EventCategoriesMap data types.
 
 
 =cut

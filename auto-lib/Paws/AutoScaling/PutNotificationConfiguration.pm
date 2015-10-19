@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method PutNotification
 Auto Scaling service. Use the attributes of this class
 as arguments to method PutNotificationConfiguration.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutNotificationConfiguration.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutNotificationConfiguration.
 
 As an example:
 
@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the Auto Scaling group.
-
-
-
-
-
-
-
-
-
+  The name of the Auto Scaling group.
 
 =head2 B<REQUIRED> NotificationTypes => ArrayRef[Str]
 
-  
-
-The type of event that will cause the notification to be sent. For
+  The type of event that will cause the notification to be sent. For
 details about notification types supported by Auto Scaling, see
 DescribeAutoScalingNotificationTypes.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TopicARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon Simple Notification
+  The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) topic.
-
-
-
-
-
-
-
-
-
 
 
 

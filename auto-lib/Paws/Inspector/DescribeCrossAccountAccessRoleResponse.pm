@@ -1,8 +1,8 @@
 
 package Paws::Inspector::DescribeCrossAccountAccessRoleResponse;
   use Moose;
-  has roleArn => (is => 'ro', isa => 'Str');
-  has valid => (is => 'ro', isa => 'Bool');
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'roleArn' );
+  has Valid => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'valid' );
 
 
 ### main pod documentation begin ###
@@ -13,36 +13,14 @@ Paws::Inspector::DescribeCrossAccountAccessRoleResponse
 
 =head1 ATTRIBUTES
 
-=head2 roleArn => Str
+=head2 RoleArn => Str
 
-  
-
-The ARN specifying the IAM role that Inspector uses to access your AWS
+  The ARN specifying the IAM role that Inspector uses to access your AWS
 account.
+=head2 Valid => Bool
 
-
-
-
-
-
-
-
-
-=head2 valid => Bool
-
-  
-
-A Boolean value that specifies whether the IAM role has the necessary
+  A Boolean value that specifies whether the IAM role has the necessary
 policies attached to enable Inspector to access your AWS account.
-
-
-
-
-
-
-
-
-
 
 
 =cut

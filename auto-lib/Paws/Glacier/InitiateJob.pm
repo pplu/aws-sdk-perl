@@ -1,9 +1,9 @@
 
 package Paws::Glacier::InitiateJob;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has jobParameters => (is => 'ro', isa => 'Paws::Glacier::JobParameters');
-  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has JobParameters => (is => 'ro', isa => 'Paws::Glacier::JobParameters');
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method InitiateJob on 
 Amazon Glacier service. Use the attributes of this class
 as arguments to method InitiateJob.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to InitiateJob.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to InitiateJob.
 
 As an example:
 
@@ -36,55 +36,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
-  
-
-The C<AccountId> value is the AWS account ID of the account that owns
+  The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
+=head2 JobParameters => L<Paws::Glacier::JobParameters>
 
+  Provides options for specifying job information.
 
+=head2 B<REQUIRED> VaultName => Str
 
-
-
-
-
-
-
-=head2 jobParameters => Paws::Glacier::JobParameters
-
-  
-
-Provides options for specifying job information.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> vaultName => Str
-
-  
-
-The name of the vault.
-
-
-
-
-
-
-
-
-
+  The name of the vault.
 
 
 

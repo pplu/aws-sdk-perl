@@ -92,18 +92,7 @@ Paws::EFS - Perl Interface to AWS Amazon Elastic File System
 
 =head1 DESCRIPTION
 
-
-
 Amazon Elastic File System
-
-
-
-
-
-
-
-
-
 
 =head1 METHODS
 
@@ -113,9 +102,7 @@ Each argument is described in detail in: L<Paws::EFS::CreateFileSystem>
 
 Returns: a L<Paws::EFS::FileSystemDescription> instance
 
-  
-
-Creates a new, empty file system. The operation requires a creation
+  Creates a new, empty file system. The operation requires a creation
 token in the request that Amazon EFS uses to ensure idempotent creation
 (calling the operation with same creation token has no effect). If a
 file system does not currently exist that is owned by the caller's AWS
@@ -161,24 +148,13 @@ This operation requires permission for the
 C<elasticfilesystem:CreateFileSystem> action.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateMountTarget(FileSystemId => Str, SubnetId => Str, [IpAddress => Str, SecurityGroups => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EFS::CreateMountTarget>
 
 Returns: a L<Paws::EFS::MountTargetDescription> instance
 
-  
-
-Creates a mount target for a file system. You can then mount the file
+  Creates a mount target for a file system. You can then mount the file
 system on EC2 instances via the mount target.
 
 You can create one mount target in each Availability Zone in your VPC.
@@ -315,23 +291,13 @@ actions:
 
 
 
-
-
-
-
-
-
-
-
-=head2 CreateTags(FileSystemId => Str, Tags => ArrayRef[Paws::EFS::Tag])
+=head2 CreateTags(FileSystemId => Str, Tags => ArrayRef[L<Paws::EFS::Tag>])
 
 Each argument is described in detail in: L<Paws::EFS::CreateTags>
 
 Returns: nothing
 
-  
-
-Creates or overwrites tags associated with a file system. Each tag is a
+  Creates or overwrites tags associated with a file system. Each tag is a
 key-value pair. If a tag key specified in the request already exists on
 the file system, this operation overwrites its value with the value
 provided in the request. If you add the "Name" tag to your file system,
@@ -341,24 +307,13 @@ This operation requires permission for the
 C<elasticfilesystem:CreateTags> action.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteFileSystem(FileSystemId => Str)
 
 Each argument is described in detail in: L<Paws::EFS::DeleteFileSystem>
 
 Returns: nothing
 
-  
-
-Deletes a file system, permanently severing access to its contents.
+  Deletes a file system, permanently severing access to its contents.
 Upon return, the file system no longer exists and you will not be able
 to access any contents of the deleted file system.
 
@@ -377,24 +332,13 @@ This operation requires permission for the
 C<elasticfilesystem:DeleteFileSystem> action.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteMountTarget(MountTargetId => Str)
 
 Each argument is described in detail in: L<Paws::EFS::DeleteMountTarget>
 
 Returns: nothing
 
-  
-
-Deletes the specified mount target.
+  Deletes the specified mount target.
 
 This operation forcibly breaks any mounts of the file system via the
 mount target being deleted, which might disrupt instances or
@@ -431,23 +375,13 @@ action on the mount target's network interface:
 
 
 
-
-
-
-
-
-
-
-
 =head2 DeleteTags(FileSystemId => Str, TagKeys => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::EFS::DeleteTags>
 
 Returns: nothing
 
-  
-
-Deletes the specified tags from a file system. If the C<DeleteTags>
+  Deletes the specified tags from a file system. If the C<DeleteTags>
 request includes a tag key that does not exist, Amazon EFS ignores it;
 it is not an error. For more information about tags and related
 restrictions, go to Tag Restrictions in the I<AWS Billing and Cost
@@ -457,24 +391,13 @@ This operation requires permission for the
 C<elasticfilesystem:DeleteTags> action.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeFileSystems([CreationToken => Str, FileSystemId => Str, Marker => Str, MaxItems => Int])
 
 Each argument is described in detail in: L<Paws::EFS::DescribeFileSystems>
 
 Returns: a L<Paws::EFS::DescribeFileSystemsResponse> instance
 
-  
-
-Returns the description of a specific Amazon EFS file system if either
+  Returns the description of a specific Amazon EFS file system if either
 the file system C<CreationToken> or the C<FileSystemId> is provided;
 otherwise, returns descriptions of all file systems owned by the
 caller's AWS account in the AWS region of the endpoint that you're
@@ -505,24 +428,13 @@ This operation requires permission for the
 C<elasticfilesystem:DescribeFileSystems> action.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeMountTargets([FileSystemId => Str, Marker => Str, MaxItems => Int, MountTargetId => Str])
 
 Each argument is described in detail in: L<Paws::EFS::DescribeMountTargets>
 
 Returns: a L<Paws::EFS::DescribeMountTargetsResponse> instance
 
-  
-
-Returns the descriptions of all the current mount targets, or a
+  Returns the descriptions of all the current mount targets, or a
 specific mount target, for a file system. When requesting all of the
 current mount targets, the order of mount targets returned in the
 response is unspecified.
@@ -533,24 +445,13 @@ system id that you specify in C<FileSystemId>, or on the file system of
 the mount target that you specify in C<MountTargetId>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeMountTargetSecurityGroups(MountTargetId => Str)
 
 Each argument is described in detail in: L<Paws::EFS::DescribeMountTargetSecurityGroups>
 
 Returns: a L<Paws::EFS::DescribeMountTargetSecurityGroupsResponse> instance
 
-  
-
-Returns the security groups currently in effect for a mount target.
+  Returns the security groups currently in effect for a mount target.
 This operation requires that the network interface of the mount target
 has been created and the life cycle state of the mount target is not
 "deleted".
@@ -569,23 +470,13 @@ target's network interface.
 
 
 
-
-
-
-
-
-
-
-
 =head2 DescribeTags(FileSystemId => Str, [Marker => Str, MaxItems => Int])
 
 Each argument is described in detail in: L<Paws::EFS::DescribeTags>
 
 Returns: a L<Paws::EFS::DescribeTagsResponse> instance
 
-  
-
-Returns the tags associated with a file system. The order of tags
+  Returns the tags associated with a file system. The order of tags
 returned in the response of one C<DescribeTags> call, and the order of
 tags returned across the responses of a multi-call iteration (when
 using pagination), is unspecified.
@@ -594,24 +485,13 @@ This operation requires permission for the
 C<elasticfilesystem:DescribeTags> action.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ModifyMountTargetSecurityGroups(MountTargetId => Str, [SecurityGroups => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EFS::ModifyMountTargetSecurityGroups>
 
 Returns: nothing
 
-  
-
-Modifies the set of security groups in effect for a mount target.
+  Modifies the set of security groups in effect for a mount target.
 
 When you create a mount target, Amazon EFS also creates a new network
 interface (see CreateMountTarget). This operation replaces the security
@@ -632,14 +512,6 @@ the mount target's file system.
 target's network interface.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

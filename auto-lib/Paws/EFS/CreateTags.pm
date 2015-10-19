@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method CreateTags on t
 Amazon Elastic File System service. Use the attributes of this class
 as arguments to method CreateTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTags.
 
 As an example:
 
@@ -37,35 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-  
-
-String. The ID of the file system whose tags you want to modify. This
+  String. The ID of the file system whose tags you want to modify. This
 operation modifies only the tags and not the file system.
 
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EFS::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::EFS::Tag]
-
-  
-
-An array of C<Tag> objects to add. Each C<Tag> object is a key-value
+  An array of C<Tag> objects to add. Each C<Tag> object is a key-value
 pair.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateKey on th
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method CreateKey.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateKey.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateKey.
 
 As an example:
 
@@ -36,52 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  
-
-Description of the key. We recommend that you choose a description that
+  Description of the key. We recommend that you choose a description that
 helps your customer decide whether the key is appropriate for a task.
-
-
-
-
-
-
-
-
-
 
 =head2 KeyUsage => Str
 
-  
-
-Specifies the intended use of the key. Currently this defaults to
+  Specifies the intended use of the key. Currently this defaults to
 ENCRYPT/DECRYPT, and only symmetric encryption and decryption are
 supported.
 
-
-
-
-
-
-
-
-
-
 =head2 Policy => Str
 
-  
-
-Policy to be attached to the key. This is required and delegates back
-to the account. The key is the root of trust.
-
-
-
-
-
-
-
-
-
+  Policy to attach to the key. This is required and delegates back to the
+account. The key is the root of trust. The policy size limit is 32 KiB
+(32768 bytes).
 
 
 

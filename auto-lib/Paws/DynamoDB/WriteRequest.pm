@@ -3,3 +3,62 @@ package Paws::DynamoDB::WriteRequest;
   has DeleteRequest => (is => 'ro', isa => 'Paws::DynamoDB::DeleteRequest');
   has PutRequest => (is => 'ro', isa => 'Paws::DynamoDB::PutRequest');
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::DynamoDB::WriteRequest
+
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::DynamoDB::WriteRequest object:
+
+  $service_obj->Method(Att1 => { DeleteRequest => $value, ..., PutRequest => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::WriteRequest object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->DeleteRequest
+
+=head1 DESCRIPTION
+
+Represents an operation to perform - either I<DeleteItem> or
+I<PutItem>. You can only request one of these operations, not both, in
+a single I<WriteRequest>. If you do need to perform both of these
+operations, you will need to provide two separate I<WriteRequest>
+objects.
+
+=head1 ATTRIBUTES
+
+=head2 DeleteRequest => L<Paws::DynamoDB::DeleteRequest>
+
+  A request to perform a I<DeleteItem> operation.
+
+=head2 PutRequest => L<Paws::DynamoDB::PutRequest>
+
+  A request to perform a I<PutItem> operation.
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::DynamoDB>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

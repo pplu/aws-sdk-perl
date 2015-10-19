@@ -1,7 +1,7 @@
 
 package Paws::CodePipeline::DeletePipeline;
   use Moose;
-  has name => (is => 'ro', isa => 'Str', required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method DeletePipeline 
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method DeletePipeline.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeletePipeline.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeletePipeline.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> name => Str
+=head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the pipeline to be deleted.
-
-
-
-
-
-
-
-
-
+  The name of the pipeline to be deleted.
 
 
 

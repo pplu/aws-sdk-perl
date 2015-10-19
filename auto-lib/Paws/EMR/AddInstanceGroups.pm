@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method AddInstanceGrou
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method AddInstanceGroups.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddInstanceGroups.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddInstanceGroups.
 
 As an example:
 
@@ -33,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> InstanceGroups => ArrayRef[Paws::EMR::InstanceGroupConfig]
+=head2 B<REQUIRED> InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupConfig>]
 
-  
-
-Instance Groups to add.
-
-
-
-
-
-
-
-
-
+  Instance Groups to add.
 
 =head2 B<REQUIRED> JobFlowId => Str
 
-  
-
-Job flow in which to add the instance groups.
-
-
-
-
-
-
-
-
-
+  Job flow in which to add the instance groups.
 
 
 

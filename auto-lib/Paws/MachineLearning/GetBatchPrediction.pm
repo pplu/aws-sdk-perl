@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetBatchPredict
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method GetBatchPrediction.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetBatchPrediction.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetBatchPrediction.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BatchPredictionId => Str
 
-  
-
-An ID assigned to the C<BatchPrediction> at creation.
-
-
-
-
-
-
-
-
-
+  An ID assigned to the C<BatchPrediction> at creation.
 
 
 

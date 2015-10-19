@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetSnapshotLimi
 AWS Directory Service service. Use the attributes of this class
 as arguments to method GetSnapshotLimits.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetSnapshotLimits.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSnapshotLimits.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-  
-
-Contains the identifier of the directory to obtain the limits for.
-
-
-
-
-
-
-
-
-
+  Contains the identifier of the directory to obtain the limits for.
 
 
 

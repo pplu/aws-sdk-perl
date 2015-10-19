@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DetachRolePolic
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method DetachRolePolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DetachRolePolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetachRolePolicy.
 
 As an example:
 
@@ -39,19 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RoleName => Str
 
-  
-
-The name (friendly name, not ARN) of the role to detach the policy
+  The name (friendly name, not ARN) of the role to detach the policy
 from.
-
-
-
-
-
-
-
-
-
 
 
 

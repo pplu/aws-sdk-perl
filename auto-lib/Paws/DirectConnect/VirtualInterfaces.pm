@@ -1,7 +1,7 @@
 
 package Paws::DirectConnect::VirtualInterfaces;
   use Moose;
-  has virtualInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::VirtualInterface]');
+  has VirtualInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::VirtualInterface]', traits => ['Unwrapped'], xmlname => 'virtualInterfaces' );
 
 
 ### main pod documentation begin ###
@@ -12,20 +12,9 @@ Paws::DirectConnect::VirtualInterfaces
 
 =head1 ATTRIBUTES
 
-=head2 virtualInterfaces => ArrayRef[Paws::DirectConnect::VirtualInterface]
+=head2 VirtualInterfaces => ArrayRef[L<Paws::DirectConnect::VirtualInterface>]
 
-  
-
-A list of virtual interfaces.
-
-
-
-
-
-
-
-
-
+  A list of virtual interfaces.
 
 
 =cut

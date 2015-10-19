@@ -1,8 +1,8 @@
 
 package Paws::ECS::DiscoverPollEndpointResponse;
   use Moose;
-  has endpoint => (is => 'ro', isa => 'Str');
-  has telemetryEndpoint => (is => 'ro', isa => 'Str');
+  has Endpoint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'endpoint' );
+  has TelemetryEndpoint => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'telemetryEndpoint' );
 
 
 ### main pod documentation begin ###
@@ -13,34 +13,12 @@ Paws::ECS::DiscoverPollEndpointResponse
 
 =head1 ATTRIBUTES
 
-=head2 endpoint => Str
+=head2 Endpoint => Str
 
-  
+  The endpoint for the Amazon ECS agent to poll.
+=head2 TelemetryEndpoint => Str
 
-The endpoint for the Amazon ECS agent to poll.
-
-
-
-
-
-
-
-
-
-=head2 telemetryEndpoint => Str
-
-  
-
-The telemetry endpoint for the Amazon ECS agent.
-
-
-
-
-
-
-
-
-
+  The telemetry endpoint for the Amazon ECS agent.
 
 
 =cut

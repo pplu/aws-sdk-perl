@@ -1,7 +1,7 @@
 
 package Paws::CodeDeploy::BatchGetOnPremisesInstances;
   use Moose;
-  has instanceNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'instanceNames' );
 
   use MooseX::ClassAttribute;
 
@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method BatchGetOnPremi
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method BatchGetOnPremisesInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetOnPremisesInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetOnPremisesInstances.
 
 As an example:
 
@@ -32,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 instanceNames => ArrayRef[Str]
+=head2 InstanceNames => ArrayRef[Str]
 
-  
-
-The names of the on-premises instances to get information about.
-
-
-
-
-
-
-
-
-
+  The names of the on-premises instances to get information about.
 
 
 

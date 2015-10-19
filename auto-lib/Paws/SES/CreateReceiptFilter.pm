@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method CreateReceiptFi
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method CreateReceiptFilter.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateReceiptFilter.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateReceiptFilter.
 
 As an example:
 
@@ -32,22 +32,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Filter => Paws::SES::ReceiptFilter
+=head2 B<REQUIRED> Filter => L<Paws::SES::ReceiptFilter>
 
-  
-
-A data structure that describes the IP address filter to create, which
+  A data structure that describes the IP address filter to create, which
 consists of a name, an IP address range, and whether to allow or block
 mail from it.
-
-
-
-
-
-
-
-
-
 
 
 

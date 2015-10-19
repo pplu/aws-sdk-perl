@@ -1,8 +1,8 @@
 
 package Paws::Inspector::SetTagsForResource;
   use Moose;
-  has resourceArn => (is => 'ro', isa => 'Str');
-  has tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]');
+  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method SetTagsForResou
 Amazon Inspector service. Use the attributes of this class
 as arguments to method SetTagsForResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetTagsForResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetTagsForResource.
 
 As an example:
 
@@ -33,36 +33,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 resourceArn => Str
+=head2 ResourceArn => Str
 
-  
+  The ARN of the assessment that you want to set tags to.
 
-The ARN of the assessment that you want to set tags to.
+=head2 Tags => ArrayRef[L<Paws::Inspector::Tag>]
 
-
-
-
-
-
-
-
-
-
-=head2 tags => ArrayRef[Paws::Inspector::Tag]
-
-  
-
-A collection of key and value pairs that you want to set to an
+  A collection of key and value pairs that you want to set to an
 assessment.
-
-
-
-
-
-
-
-
-
 
 
 

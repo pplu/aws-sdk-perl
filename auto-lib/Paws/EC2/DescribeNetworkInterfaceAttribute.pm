@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DescribeNetwork
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeNetworkInterfaceAttribute.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeNetworkInterfaceAttribute.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeNetworkInterfaceAttribute.
 
 As an example:
 
@@ -36,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Attribute => Str
 
-  
-
-The attribute of the network interface.
-
-
-
-
-
-
-
-
-
+  The attribute of the network interface.
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> NetworkInterfaceId => Str
 
-  
-
-The ID of the network interface.
-
-
-
-
-
-
-
-
-
+  The ID of the network interface.
 
 
 

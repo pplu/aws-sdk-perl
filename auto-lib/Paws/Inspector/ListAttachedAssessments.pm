@@ -1,10 +1,10 @@
 
 package Paws::Inspector::ListAttachedAssessments;
   use Moose;
-  has filter => (is => 'ro', isa => 'Paws::Inspector::AssessmentsFilter');
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
-  has rulesPackageArn => (is => 'ro', isa => 'Str');
+  has Filter => (is => 'ro', isa => 'Paws::Inspector::AssessmentsFilter', traits => ['NameInRequest'], request_name => 'filter' );
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has RulesPackageArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'rulesPackageArn' );
 
   use MooseX::ClassAttribute;
 
@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method ListAttachedAss
 Amazon Inspector service. Use the attributes of this class
 as arguments to method ListAttachedAssessments.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListAttachedAssessments.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAttachedAssessments.
 
 As an example:
 
@@ -35,77 +35,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 filter => Paws::Inspector::AssessmentsFilter
+=head2 Filter => L<Paws::Inspector::AssessmentsFilter>
 
-  
-
-You can use this parameter to specify a subset of data to be included
+  You can use this parameter to specify a subset of data to be included
 in the action's response.
 
 For a record to match a filter, all specified filter attributes must
 match. When multiple values are specified for a filter attribute, any
 of the values can match.
 
+=head2 MaxResults => Int
 
-
-
-
-
-
-
-
-
-=head2 maxResults => Int
-
-  
-
-You can use this parameter to indicate the maximum number of items you
+  You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is
 500.
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-You can use this parameter when paginating results. Set the value of
+  You can use this parameter when paginating results. Set the value of
 this parameter to 'null' on your first call to the
 B<ListAttachedAssessments> action. Subsequent calls to the action fill
 B<nextToken> in the request with the value of B<NextToken> from
 previous response to continue listing data.
 
+=head2 RulesPackageArn => Str
 
-
-
-
-
-
-
-
-
-=head2 rulesPackageArn => Str
-
-  
-
-The ARN specifying the rules package whose assessments you want to
+  The ARN specifying the rules package whose assessments you want to
 list.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method CreateAlias on 
 AWS Lambda service. Use the attributes of this class
 as arguments to method CreateAlias.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateAlias.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAlias.
 
 As an example:
 
@@ -39,63 +39,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  
-
-Description of the alias.
-
-
-
-
-
-
-
-
-
+  Description of the alias.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-Name of the Lambda function for which you want to create an alias.
-
-
-
-
-
-
-
-
-
+  Name of the Lambda function for which you want to create an alias.
 
 =head2 B<REQUIRED> FunctionVersion => Str
 
-  
-
-Lambda function version for which you are creating the alias.
-
-
-
-
-
-
-
-
-
+  Lambda function version for which you are creating the alias.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-Name for the alias your creating.
-
-
-
-
-
-
-
-
-
+  Name for the alias your creating.
 
 
 

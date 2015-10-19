@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method ListPipelines o
 Amazon Elastic Transcoder service. Use the attributes of this class
 as arguments to method ListPipelines.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListPipelines.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPipelines.
 
 As an example:
 
@@ -37,37 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Ascending => Str
 
-  
-
-To list pipelines in chronological order by the date and time that they
+  To list pipelines in chronological order by the date and time that they
 were created, enter C<true>. To list pipelines in reverse chronological
 order, enter C<false>.
 
-
-
-
-
-
-
-
-
-
 =head2 PageToken => Str
 
-  
-
-When Elastic Transcoder returns more than one page of results, use
+  When Elastic Transcoder returns more than one page of results, use
 C<pageToken> in subsequent C<GET> requests to get each successive page
 of results.
-
-
-
-
-
-
-
-
-
 
 
 

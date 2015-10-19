@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method CreateIPSet on 
 AWS WAF service. Use the attributes of this class
 as arguments to method CreateIPSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateIPSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateIPSet.
 
 As an example:
 
@@ -35,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  
-
-The value returned by the most recent call to GetChangeToken.
-
-
-
-
-
-
-
-
-
+  The value returned by the most recent call to GetChangeToken.
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-A friendly name or description of the IPSet. You can't change C<Name>
+  A friendly name or description of the IPSet. You can't change C<Name>
 after you create the C<IPSet>.
-
-
-
-
-
-
-
-
-
 
 
 

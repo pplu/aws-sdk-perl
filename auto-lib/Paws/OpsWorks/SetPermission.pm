@@ -26,7 +26,7 @@ This class represents the parameters used for calling the method SetPermission o
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method SetPermission.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetPermission.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetPermission.
 
 As an example:
 
@@ -38,54 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllowSsh => Bool
 
-  
-
-The user is allowed to use SSH to communicate with the instance.
-
-
-
-
-
-
-
-
-
+  The user is allowed to use SSH to communicate with the instance.
 
 =head2 AllowSudo => Bool
 
-  
-
-The user is allowed to use B<sudo> to elevate privileges.
-
-
-
-
-
-
-
-
-
+  The user is allowed to use B<sudo> to elevate privileges.
 
 =head2 B<REQUIRED> IamUserArn => Str
 
-  
-
-The user's IAM ARN.
-
-
-
-
-
-
-
-
-
+  The user's IAM ARN.
 
 =head2 Level => Str
 
-  
-
-The user's permission level, which must be set to one of the following
+  The user's permission level, which must be set to one of the following
 strings. You cannot set your own permissions level.
 
 =over
@@ -105,29 +70,9 @@ strings. You cannot set your own permissions level.
 For more information on the permissions associated with these levels,
 see Managing User Permissions.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StackId => Str
 
-  
-
-The stack ID.
-
-
-
-
-
-
-
-
-
+  The stack ID.
 
 
 

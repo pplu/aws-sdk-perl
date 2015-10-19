@@ -27,7 +27,7 @@ This class represents the parameters used for calling the method ImportSnapshot 
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method ImportSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ImportSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ImportSnapshot.
 
 As an example:
 
@@ -37,99 +37,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 ClientData => Paws::EC2::ClientData
+=head2 ClientData => L<Paws::EC2::ClientData>
 
-  
-
-The client-specific data.
-
-
-
-
-
-
-
-
-
+  The client-specific data.
 
 =head2 ClientToken => Str
 
-  
-
-Token to enable idempotency for VM import requests.
-
-
-
-
-
-
-
-
-
+  Token to enable idempotency for VM import requests.
 
 =head2 Description => Str
 
-  
+  The description string for the import snapshot task.
 
-The description string for the import snapshot task.
+=head2 DiskContainer => L<Paws::EC2::SnapshotDiskContainer>
 
-
-
-
-
-
-
-
-
-
-=head2 DiskContainer => Paws::EC2::SnapshotDiskContainer
-
-  
-
-Information about the disk container.
-
-
-
-
-
-
-
-
-
+  Information about the disk container.
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 RoleName => Str
 
-  
-
-The name of the role to use when not using the default role,
+  The name of the role to use when not using the default role,
 'vmimport'.
-
-
-
-
-
-
-
-
-
 
 
 

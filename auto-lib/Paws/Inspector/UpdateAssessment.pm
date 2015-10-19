@@ -1,9 +1,9 @@
 
 package Paws::Inspector::UpdateAssessment;
   use Moose;
-  has assessmentArn => (is => 'ro', isa => 'Str');
-  has assessmentName => (is => 'ro', isa => 'Str');
-  has durationInSeconds => (is => 'ro', isa => 'Int');
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' );
+  has AssessmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentName' );
+  has DurationInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'durationInSeconds' );
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method UpdateAssessmen
 Amazon Inspector service. Use the attributes of this class
 as arguments to method UpdateAssessment.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAssessment.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateAssessment.
 
 As an example:
 
@@ -34,52 +34,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 assessmentArn => Str
+=head2 AssessmentArn => Str
 
-  
+  Asessment ARN that you want to update.
 
-Asessment ARN that you want to update.
+=head2 AssessmentName => Str
 
+  Assessment name that you want to update.
 
+=head2 DurationInSeconds => Int
 
-
-
-
-
-
-
-
-=head2 assessmentName => Str
-
-  
-
-Assessment name that you want to update.
-
-
-
-
-
-
-
-
-
-
-=head2 durationInSeconds => Int
-
-  
-
-Assessment duration in seconds that you want to update. The default
+  Assessment duration in seconds that you want to update. The default
 value is 3600 seconds (one hour). The maximum value is 86400 seconds
 (one day).
-
-
-
-
-
-
-
-
-
 
 
 

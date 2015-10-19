@@ -1,7 +1,7 @@
 
 package Paws::IoT::CreateKeysAndCertificate;
   use Moose;
-  has setAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
+  has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
 
   use MooseX::ClassAttribute;
 
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateKeysAndCe
 AWS IoT service. Use the attributes of this class
 as arguments to method CreateKeysAndCertificate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateKeysAndCertificate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateKeysAndCertificate.
 
 As an example:
 
@@ -34,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 setAsActive => Bool
+=head2 SetAsActive => Bool
 
-  
-
-Specifies whether the certificate is active.
-
-
-
-
-
-
-
-
-
+  Specifies whether the certificate is active.
 
 
 

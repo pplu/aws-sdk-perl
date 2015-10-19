@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method GetPlatformAppl
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method GetPlatformApplicationAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetPlatformApplicationAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPlatformApplicationAttributes.
 
 As an example:
 
@@ -34,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PlatformApplicationArn => Str
 
-  
-
-PlatformApplicationArn for GetPlatformApplicationAttributesInput.
-
-
-
-
-
-
-
-
-
+  PlatformApplicationArn for GetPlatformApplicationAttributesInput.
 
 
 

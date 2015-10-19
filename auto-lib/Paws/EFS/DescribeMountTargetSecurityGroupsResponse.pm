@@ -15,18 +15,7 @@ Paws::EFS::DescribeMountTargetSecurityGroupsResponse
 
 =head2 B<REQUIRED> SecurityGroups => ArrayRef[Str]
 
-  
-
-An array of security groups.
-
-
-
-
-
-
-
-
-
+  An array of security groups.
 
 
 =cut

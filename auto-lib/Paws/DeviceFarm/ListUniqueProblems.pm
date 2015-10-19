@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::ListUniqueProblems;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str', required => 1);
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method ListUniqueProbl
 AWS Device Farm service. Use the attributes of this class
 as arguments to method ListUniqueProblems.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListUniqueProblems.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListUniqueProblems.
 
 As an example:
 
@@ -33,37 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> arn => Str
+=head2 B<REQUIRED> Arn => Str
 
-  
+  The unique problems' ARNs.
 
-The unique problems' ARNs.
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-An identifier that was returned from the previous call to this
+  An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the
 list.
-
-
-
-
-
-
-
-
-
 
 
 

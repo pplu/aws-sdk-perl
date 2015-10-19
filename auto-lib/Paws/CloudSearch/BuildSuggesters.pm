@@ -22,7 +22,7 @@ This class represents the parameters used for calling the method BuildSuggesters
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method BuildSuggesters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BuildSuggesters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BuildSuggesters.
 
 As an example:
 

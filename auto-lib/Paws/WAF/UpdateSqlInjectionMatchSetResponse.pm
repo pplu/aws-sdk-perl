@@ -14,21 +14,10 @@ Paws::WAF::UpdateSqlInjectionMatchSetResponse
 
 =head2 ChangeToken => Str
 
-  
-
-The C<ChangeToken> that you used to submit the
+  The C<ChangeToken> that you used to submit the
 C<UpdateSqlInjectionMatchSet> request. You can also use this value to
 query the status of the request. For more information, see
 GetChangeTokenStatus.
-
-
-
-
-
-
-
-
-
 
 
 =cut

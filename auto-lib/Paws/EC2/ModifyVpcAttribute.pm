@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ModifyVpcAttrib
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method ModifyVpcAttribute.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyVpcAttribute.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyVpcAttribute.
 
 As an example:
 
@@ -34,59 +34,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 EnableDnsHostnames => Paws::EC2::AttributeBooleanValue
+=head2 EnableDnsHostnames => L<Paws::EC2::AttributeBooleanValue>
 
-  
-
-Indicates whether the instances launched in the VPC get DNS hostnames.
+  Indicates whether the instances launched in the VPC get DNS hostnames.
 If enabled, instances in the VPC get DNS hostnames; otherwise, they do
 not.
 
 You can only enable DNS hostnames if you also enable DNS support.
 
+=head2 EnableDnsSupport => L<Paws::EC2::AttributeBooleanValue>
 
-
-
-
-
-
-
-
-
-=head2 EnableDnsSupport => Paws::EC2::AttributeBooleanValue
-
-  
-
-Indicates whether the DNS resolution is supported for the VPC. If
+  Indicates whether the DNS resolution is supported for the VPC. If
 enabled, queries to the Amazon provided DNS server at the
 169.254.169.253 IP address, or the reserved IP address at the base of
 the VPC network range "plus two" will succeed. If disabled, the Amazon
 provided DNS service in the VPC that resolves public DNS hostnames to
 IP addresses is not enabled.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VpcId => Str
 
-  
-
-The ID of the VPC.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC.
 
 
 

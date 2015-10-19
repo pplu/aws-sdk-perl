@@ -1,8 +1,8 @@
 
 package Paws::IoT::CreateTopicRule;
   use Moose;
-  has ruleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName' , required => 1);
-  has topicRulePayload => (is => 'ro', isa => 'Paws::IoT::TopicRulePayload', required => 1);
+  has RuleName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'ruleName' , required => 1);
+  has TopicRulePayload => (is => 'ro', isa => 'Paws::IoT::TopicRulePayload', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method CreateTopicRule
 AWS IoT service. Use the attributes of this class
 as arguments to method CreateTopicRule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateTopicRule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTopicRule.
 
 As an example:
 
@@ -35,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ruleName => Str
+=head2 B<REQUIRED> RuleName => Str
 
-  
+  The name of the rule.
 
-The name of the rule.
+=head2 B<REQUIRED> TopicRulePayload => L<Paws::IoT::TopicRulePayload>
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> topicRulePayload => Paws::IoT::TopicRulePayload
-
-  
-
-The rule payload.
-
-
-
-
-
-
-
-
-
+  The rule payload.
 
 
 

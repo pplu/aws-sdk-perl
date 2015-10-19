@@ -15,19 +15,8 @@ Paws::CloudTrail::ListTagsResponse
 
 =head2 NextToken => Str
 
-  
-
-Reserved for future use.
-
-
-
-
-
-
-
-
-
-=head2 ResourceTagList => ArrayRef[Paws::CloudTrail::ResourceTag]
+  Reserved for future use.
+=head2 ResourceTagList => ArrayRef[L<Paws::CloudTrail::ResourceTag>]
 
   
 

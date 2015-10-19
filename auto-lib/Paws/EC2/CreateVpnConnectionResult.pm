@@ -13,20 +13,9 @@ Paws::EC2::CreateVpnConnectionResult
 
 =head1 ATTRIBUTES
 
-=head2 VpnConnection => Paws::EC2::VpnConnection
+=head2 VpnConnection => L<Paws::EC2::VpnConnection>
 
-  
-
-Information about the VPN connection.
-
-
-
-
-
-
-
-
-
+  Information about the VPN connection.
 
 
 =cut

@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method DeleteAttribute
 Amazon SimpleDB service. Use the attributes of this class
 as arguments to method DeleteAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteAttributes.
 
 As an example:
 
@@ -35,70 +35,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => ArrayRef[Paws::SDB::Attribute]
+=head2 Attributes => ArrayRef[L<Paws::SDB::Attribute>]
 
-  
-
-A list of Attributes. Similar to columns on a spreadsheet, attributes
+  A list of Attributes. Similar to columns on a spreadsheet, attributes
 represent categories of data that can be assigned to items.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
+  The name of the domain in which to perform the operation.
 
-The name of the domain in which to perform the operation.
+=head2 Expected => L<Paws::SDB::UpdateCondition>
 
-
-
-
-
-
-
-
-
-
-=head2 Expected => Paws::SDB::UpdateCondition
-
-  
-
-The update condition which, if specified, determines whether the
+  The update condition which, if specified, determines whether the
 specified attributes will be deleted or not. The update condition must
 be satisfied in order for this request to be processed and the
 attributes to be deleted.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ItemName => Str
 
-  
-
-The name of the item. Similar to rows on a spreadsheet, items represent
+  The name of the item. Similar to rows on a spreadsheet, items represent
 individual objects that contain one or more value-attribute pairs.
-
-
-
-
-
-
-
-
-
 
 
 

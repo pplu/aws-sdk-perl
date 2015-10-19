@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteSigningCe
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method DeleteSigningCertificate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSigningCertificate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteSigningCertificate.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateId => Str
 
-  
-
-The ID of the signing certificate to delete.
-
-
-
-
-
-
-
-
-
+  The ID of the signing certificate to delete.
 
 =head2 UserName => Str
 
-  
-
-The name of the user the signing certificate belongs to.
-
-
-
-
-
-
-
-
-
+  The name of the user the signing certificate belongs to.
 
 
 

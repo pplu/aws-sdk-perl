@@ -112,8 +112,6 @@ Paws::STS - Perl Interface to AWS AWS Security Token Service
 
 =head1 DESCRIPTION
 
-
-
 AWS Security Token Service
 
 The AWS Security Token Service (STS) is a web service that enables you
@@ -165,15 +163,6 @@ requests were successfully made to STS, who made the request, when it
 was made, and so on. To learn more about CloudTrail, including how to
 turn it on and find your log files, see the AWS CloudTrail User Guide.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 AssumeRole(RoleArn => Str, RoleSessionName => Str, [DurationSeconds => Int, ExternalId => Str, Policy => Str, SerialNumber => Str, TokenCode => Str])
@@ -182,9 +171,7 @@ Each argument is described in detail in: L<Paws::STS::AssumeRole>
 
 Returns: a L<Paws::STS::AssumeRoleResponse> instance
 
-  
-
-Returns a set of temporary security credentials (consisting of an
+  Returns a set of temporary security credentials (consisting of an
 access key ID, a secret access key, and a security token) that you can
 use to access AWS resources that you might not normally have access to.
 Typically, you use C<AssumeRole> for cross-account access or
@@ -262,24 +249,13 @@ user's hardware or virtual MFA device. The C<TokenCode> is the
 time-based one-time password (TOTP) that the MFA devices produces.
 
 
-
-
-
-
-
-
-
-
-
 =head2 AssumeRoleWithSAML(PrincipalArn => Str, RoleArn => Str, SAMLAssertion => Str, [DurationSeconds => Int, Policy => Str])
 
 Each argument is described in detail in: L<Paws::STS::AssumeRoleWithSAML>
 
 Returns: a L<Paws::STS::AssumeRoleWithSAMLResponse> instance
 
-  
-
-Returns a set of temporary security credentials for users who have been
+  Returns a set of temporary security credentials for users who have been
 authenticated via a SAML authentication response. This operation
 provides a mechanism for tying an enterprise identity store or
 directory to role-based AWS access without user-specific credentials or
@@ -338,23 +314,13 @@ For more information, see the following resources:
 
 
 
-
-
-
-
-
-
-
-
 =head2 AssumeRoleWithWebIdentity(RoleArn => Str, RoleSessionName => Str, WebIdentityToken => Str, [DurationSeconds => Int, Policy => Str, ProviderId => Str])
 
 Each argument is described in detail in: L<Paws::STS::AssumeRoleWithWebIdentity>
 
 Returns: a L<Paws::STS::AssumeRoleWithWebIdentityResponse> instance
 
-  
-
-Returns a set of temporary security credentials for users who have been
+  Returns a set of temporary security credentials for users who have been
 authenticated in a mobile or web application with a web identity
 provider, such as Amazon Cognito, Login with Amazon, Facebook, Google,
 or any OpenID Connect-compatible identity provider.
@@ -431,23 +397,13 @@ web identity federation to get access to content in Amazon S3.
 
 
 
-
-
-
-
-
-
-
-
 =head2 DecodeAuthorizationMessage(EncodedMessage => Str)
 
 Each argument is described in detail in: L<Paws::STS::DecodeAuthorizationMessage>
 
 Returns: a L<Paws::STS::DecodeAuthorizationMessageResponse> instance
 
-  
-
-Decodes additional information about the authorization status of a
+  Decodes additional information about the authorization status of a
 request from an encoded message returned in response to an AWS request.
 
 For example, if a user is not authorized to perform an action that he
@@ -488,23 +444,13 @@ request.
 
 
 
-
-
-
-
-
-
-
-
 =head2 GetFederationToken(Name => Str, [DurationSeconds => Int, Policy => Str])
 
 Each argument is described in detail in: L<Paws::STS::GetFederationToken>
 
 Returns: a L<Paws::STS::GetFederationTokenResponse> instance
 
-  
-
-Returns a set of temporary security credentials (consisting of an
+  Returns a set of temporary security credentials (consisting of an
 access key ID, a secret access key, and a security token) for a
 federated user. A typical use is in a proxy application that gets
 temporary security credentials on behalf of distributed applications
@@ -582,24 +528,13 @@ to create temporary security credentials, see Creating Temporary
 Credentials to Enable Access for Federated Users.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetSessionToken([DurationSeconds => Int, SerialNumber => Str, TokenCode => Str])
 
 Each argument is described in detail in: L<Paws::STS::GetSessionToken>
 
 Returns: a L<Paws::STS::GetSessionTokenResponse> instance
 
-  
-
-Returns a set of temporary credentials for an AWS account or IAM user.
+  Returns a set of temporary credentials for an AWS account or IAM user.
 The credentials consist of an access key ID, a secret access key, and a
 security token. Typically, you use C<GetSessionToken> if you want to
 use MFA to protect programmatic calls to specific AWS APIs like Amazon
@@ -632,15 +567,6 @@ temporary credentials have the same permissions as the IAM user.
 For more information about using C<GetSessionToken> to create temporary
 credentials, go to Creating Temporary Credentials to Enable Access for
 IAM Users.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

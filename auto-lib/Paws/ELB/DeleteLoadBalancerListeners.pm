@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DeleteLoadBalan
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method DeleteLoadBalancerListeners.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLoadBalancerListeners.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLoadBalancerListeners.
 
 As an example:
 
@@ -35,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 =head2 B<REQUIRED> LoadBalancerPorts => ArrayRef[Int]
 
-  
-
-The client port numbers of the listeners.
-
-
-
-
-
-
-
-
-
+  The client port numbers of the listeners.
 
 
 

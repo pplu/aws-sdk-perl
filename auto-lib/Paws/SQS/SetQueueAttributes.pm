@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method SetQueueAttribu
 Amazon Simple Queue Service service. Use the attributes of this class
 as arguments to method SetQueueAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetQueueAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetQueueAttributes.
 
 As an example:
 
@@ -33,11 +33,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Attributes => Paws::SQS::QueueAttributeMap
+=head2 B<REQUIRED> Attributes => L<Paws::SQS::QueueAttributeMap>
 
-  
-
-A map of attributes to set.
+  A map of attributes to set.
 
 The following lists the names, descriptions, and values of the special
 request parameters the C<SetQueueAttributes> action uses:
@@ -78,28 +76,9 @@ Queues in the I<Amazon SQS Developer Guide>.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> QueueUrl => Str
 
-  
-
-The URL of the Amazon SQS queue to take action on.
-
-
-
-
-
-
-
-
-
+  The URL of the Amazon SQS queue to take action on.
 
 
 

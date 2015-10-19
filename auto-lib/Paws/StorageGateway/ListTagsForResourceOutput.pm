@@ -16,48 +16,15 @@ Paws::StorageGateway::ListTagsForResourceOutput
 
 =head2 Marker => Str
 
-  
-
-An opaque string that indicates the position at which to stop returning
+  An opaque string that indicates the position at which to stop returning
 the list of tags.
-
-
-
-
-
-
-
-
-
 =head2 ResourceARN => Str
 
-  
-
-he Amazon Resource Name (ARN) of the resource for which you want to
+  he Amazon Resource Name (ARN) of the resource for which you want to
 list tags.
+=head2 Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::StorageGateway::Tag]
-
-  
-
-An array that contains the tags for the specified resource.
-
-
-
-
-
-
-
-
-
+  An array that contains the tags for the specified resource.
 
 
 =cut

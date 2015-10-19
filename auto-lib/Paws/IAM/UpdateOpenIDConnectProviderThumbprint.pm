@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method UpdateOpenIDCon
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method UpdateOpenIDConnectProviderThumbprint.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateOpenIDConnectProviderThumbprint.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateOpenIDConnectProviderThumbprint.
 
 As an example:
 
@@ -35,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> OpenIDConnectProviderArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC)
+  The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC)
 provider to update the thumbprint for. You can get a list of OIDC
 provider ARNs by using the ListOpenIDConnectProviders action.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ThumbprintList => ArrayRef[Str]
 
-  
-
-A list of certificate thumbprints that are associated with the
+  A list of certificate thumbprints that are associated with the
 specified IAM OpenID Connect provider. For more information, see
 CreateOpenIDConnectProvider.
-
-
-
-
-
-
-
-
-
 
 
 

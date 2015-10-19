@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method ListPublicKeys 
 AWS CloudTrail service. Use the attributes of this class
 as arguments to method ListPublicKeys.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListPublicKeys.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPublicKeys.
 
 As an example:
 
@@ -36,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EndTime => Str
 
-  
-
-Optionally specifies, in UTC, the end of the time range to look up
+  Optionally specifies, in UTC, the end of the time range to look up
 public keys for CloudTrail digest files. If not specified, the current
 time is used.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-Reserved for future use.
-
-
-
-
-
-
-
-
-
+  Reserved for future use.
 
 =head2 StartTime => Str
 
-  
-
-Optionally specifies, in UTC, the start of the time range to look up
+  Optionally specifies, in UTC, the start of the time range to look up
 public keys for CloudTrail digest files. If not specified, the current
 time is used, and the current public key is returned.
-
-
-
-
-
-
-
-
-
 
 
 

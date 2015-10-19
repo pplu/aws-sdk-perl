@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method DeleteCluster o
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DeleteCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCluster.
 
 As an example:
 
@@ -36,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  
-
-The identifier of the cluster to be deleted.
+  The identifier of the cluster to be deleted.
 
 Constraints:
 
@@ -55,19 +53,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 FinalClusterSnapshotIdentifier => Str
 
-  
-
-The identifier of the final snapshot that is to be created immediately
+  The identifier of the final snapshot that is to be created immediately
 before deleting the cluster. If this parameter is provided,
 I<SkipFinalClusterSnapshot> must be C<false>.
 
@@ -84,19 +72,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 SkipFinalClusterSnapshot => Bool
 
-  
-
-Determines whether a final snapshot of the cluster is created before
+  Determines whether a final snapshot of the cluster is created before
 Amazon Redshift deletes the cluster. If C<true>, a final cluster
 snapshot is not created. If C<false>, a final cluster snapshot is
 created before the cluster is deleted.
@@ -105,15 +83,6 @@ The I<FinalClusterSnapshotIdentifier> parameter must be specified if
 I<SkipFinalClusterSnapshot> is C<false>.
 
 Default: C<false>
-
-
-
-
-
-
-
-
-
 
 
 
