@@ -1,8 +1,6 @@
 package Paws::Credential::ProviderChain {
   use Moose;
 
-  use Module::Runtime qw//;
-
   has providers => (
     is => 'ro', 
     isa => 'ArrayRef[Str]', 
@@ -20,7 +18,7 @@ package Paws::Credential::ProviderChain {
   sub BUILD {
     my ($self) = @_;
     foreach my $prov (@{ $self->providers }) {
-      Module::Runtime::require_module($prov);
+      Paws->load_class($prov);
       my $creds = $prov->new;
       if ($creds->are_set) {
         $self->selected_provider($creds);
