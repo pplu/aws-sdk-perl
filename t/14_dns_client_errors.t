@@ -64,7 +64,7 @@ throws_ok {
                 )->DescribeInstances->get;
 } 'Paws::Exception', 'got exception';
 
-cmp_ok($@->message, 'eq', 'Can\'t connect: Name or service not known', 'Correct message');
+like($@->message, qr/(?:Can't connect: Name or service not known|Can't connect: nodename nor servname provided, or not known)/, 'Correct message');
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 FURL:
