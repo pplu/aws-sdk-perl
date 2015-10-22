@@ -42,6 +42,7 @@ on 'develop' => sub {
   requires 'Mojolicious';
   requires 'MojoX::IOLoop::Future';
   requires 'LWP::UserAgent';
+  requires 'Furl';
 };
 on 'test' => sub {
   requires 'File::Slurper';

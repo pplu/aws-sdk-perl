@@ -54,7 +54,7 @@ package Paws::Net::JsonResponse {
 
     my $inner_class = $att_class->meta->get_attribute('Map')->type_constraint->name;
     ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
-    Module::Runtime::require_module("$inner_class");
+    Paws->load_class("$inner_class");
 
     if (not defined $value){
       return $att_class->new(Map => {});
