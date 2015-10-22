@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::CreateDevicePoolResult {
+package Paws::DeviceFarm::CreateDevicePoolResult;
   use Moose;
-  has devicePool => (is => 'ro', isa => 'Paws::DeviceFarm::DevicePool');
+  has DevicePool => (is => 'ro', isa => 'Paws::DeviceFarm::DevicePool', traits => ['Unwrapped'], xmlname => 'devicePool' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::DeviceFarm::CreateDevicePoolResult
 
 =head1 ATTRIBUTES
 
-=head2 devicePool => Paws::DeviceFarm::DevicePool
+=head2 DevicePool => L<Paws::DeviceFarm::DevicePool>
 
-  
-
-The newly created device pool.
-
-
-
-
-
-
-
-
-
+  The newly created device pool.
 
 
 =cut

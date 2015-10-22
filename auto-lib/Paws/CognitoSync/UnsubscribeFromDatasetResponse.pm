@@ -1,8 +1,7 @@
 
-package Paws::CognitoSync::UnsubscribeFromDatasetResponse {
+package Paws::CognitoSync::UnsubscribeFromDatasetResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetJobResult {
+package Paws::DeviceFarm::GetJobResult;
   use Moose;
-  has job => (is => 'ro', isa => 'Paws::DeviceFarm::Job');
+  has Job => (is => 'ro', isa => 'Paws::DeviceFarm::Job', traits => ['Unwrapped'], xmlname => 'job' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,7 @@ Paws::DeviceFarm::GetJobResult
 
 =head1 ATTRIBUTES
 
-=head2 job => Paws::DeviceFarm::Job
+=head2 Job => L<Paws::DeviceFarm::Job>
 
   
 

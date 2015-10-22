@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::DescribeElasticLoadBalancers {
+package Paws::OpsWorks::DescribeElasticLoadBalancers;
   use Moose;
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::OpsWorks::DescribeElasticLoadBalancers {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeElasticLoadBalancers');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::DescribeElasticLoadBalancersResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DescribeElastic
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeElasticLoadBalancers.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeElasticLoadBalancers.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeElasticLoadBalancers.
 
 As an example:
 
@@ -36,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LayerIds => ArrayRef[Str]
 
-  
-
-A list of layer IDs. The action describes the Elastic Load Balancing
+  A list of layer IDs. The action describes the Elastic Load Balancing
 instances for the specified layers.
-
-
-
-
-
-
-
-
-
 
 =head2 StackId => Str
 
-  
-
-A stack ID. The action describes the stack's Elastic Load Balancing
+  A stack ID. The action describes the stack's Elastic Load Balancing
 instances.
-
-
-
-
-
-
-
-
-
 
 
 

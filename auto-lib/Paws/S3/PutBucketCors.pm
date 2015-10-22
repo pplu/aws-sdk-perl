@@ -1,9 +1,9 @@
 
-package Paws::S3::PutBucketCors {
+package Paws::S3::PutBucketCors;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
   has ContentMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-MD5' );
-  has CORSConfiguration => (is => 'ro', isa => 'Paws::S3::CORSConfiguration');
+  has CORSConfiguration => (is => 'ro', isa => 'Paws::S3::CORSConfiguration', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -12,7 +12,6 @@ package Paws::S3::PutBucketCors {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ Paws::S3::
 =head2 ContentMD5 => Str
 
   
-=head2 CORSConfiguration => Paws::S3::CORSConfiguration
+=head2 B<REQUIRED> CORSConfiguration => L<Paws::S3::CORSConfiguration>
 
   
 

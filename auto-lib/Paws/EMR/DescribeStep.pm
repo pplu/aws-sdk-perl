@@ -1,5 +1,5 @@
 
-package Paws::EMR::DescribeStep {
+package Paws::EMR::DescribeStep;
   use Moose;
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has StepId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::EMR::DescribeStep {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStep');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::DescribeStepOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DescribeStep on
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method DescribeStep.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStep.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStep.
 
 As an example:
 
@@ -36,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterId => Str
 
-  
-
-The identifier of the cluster with steps to describe.
-
-
-
-
-
-
-
-
-
+  The identifier of the cluster with steps to describe.
 
 =head2 B<REQUIRED> StepId => Str
 
-  
-
-The identifier of the step to describe.
-
-
-
-
-
-
-
-
-
+  The identifier of the step to describe.
 
 
 

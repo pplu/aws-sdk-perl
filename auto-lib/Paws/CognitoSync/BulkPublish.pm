@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::BulkPublish {
+package Paws::CognitoSync::BulkPublish;
   use Moose;
   has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
 
@@ -10,7 +10,6 @@ package Paws::CognitoSync::BulkPublish {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::BulkPublishResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'BulkPublishResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method BulkPublish on 
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method BulkPublish.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BulkPublish.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BulkPublish.
 
 As an example:
 
@@ -37,20 +36,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-A name-spaced GUID (for example,
+  A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
-
-
-
-
-
-
-
-
-
 
 
 

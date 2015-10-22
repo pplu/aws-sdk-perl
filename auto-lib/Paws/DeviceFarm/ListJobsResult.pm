@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListJobsResult {
+package Paws::DeviceFarm::ListJobsResult;
   use Moose;
-  has jobs => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Job]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Job]', traits => ['Unwrapped'], xmlname => 'jobs' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,37 +13,15 @@ Paws::DeviceFarm::ListJobsResult
 
 =head1 ATTRIBUTES
 
-=head2 jobs => ArrayRef[Paws::DeviceFarm::Job]
+=head2 Jobs => ArrayRef[L<Paws::DeviceFarm::Job>]
 
-  
+  Information about the jobs.
+=head2 NextToken => Str
 
-Information about the jobs.
-
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-If the number of items that are returned is significantly large, this
+  If the number of items that are returned is significantly large, this
 is an identifier that is also returned, which can be used in a
 subsequent call to this operation to return the next set of items in
 the list.
-
-
-
-
-
-
-
-
-
 
 
 =cut

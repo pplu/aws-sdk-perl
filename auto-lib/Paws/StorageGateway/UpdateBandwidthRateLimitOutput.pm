@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::UpdateBandwidthRateLimitOutput {
+package Paws::StorageGateway::UpdateBandwidthRateLimitOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

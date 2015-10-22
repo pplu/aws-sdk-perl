@@ -1,9 +1,8 @@
 
-package Paws::DS::CreateComputerResult {
+package Paws::DS::CreateComputerResult;
   use Moose;
   has Computer => (is => 'ro', isa => 'Paws::DS::Computer');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::DS::CreateComputerResult
 
 =head1 ATTRIBUTES
 
-=head2 Computer => Paws::DS::Computer
+=head2 Computer => L<Paws::DS::Computer>
 
-  
-
-A Computer object the represents the computer account.
-
-
-
-
-
-
-
-
-
+  A Computer object the represents the computer account.
 
 
 =cut

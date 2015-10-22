@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::DeleteLunaClient {
+package Paws::CloudHSM::DeleteLunaClient;
   use Moose;
   has ClientArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::CloudHSM::DeleteLunaClient {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLunaClient');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::DeleteLunaClientResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteLunaClien
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method DeleteLunaClient.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLunaClient.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLunaClient.
 
 As an example:
 
@@ -35,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientArn => Str
 
-  
-
-The ARN of the client to delete.
-
-
-
-
-
-
-
-
-
+  The ARN of the client to delete.
 
 
 

@@ -15,6 +15,8 @@ package Paws::Signin {
     ];
     return $regioninfo;
   });
+
+  sub operations { qw/GetSigninToken Login/ }
  
   sub GetSigninToken {
     my $self = shift;

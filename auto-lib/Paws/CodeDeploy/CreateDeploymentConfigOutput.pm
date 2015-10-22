@@ -1,9 +1,8 @@
 
-package Paws::CodeDeploy::CreateDeploymentConfigOutput {
+package Paws::CodeDeploy::CreateDeploymentConfigOutput;
   use Moose;
-  has deploymentConfigId => (is => 'ro', isa => 'Str');
+  has DeploymentConfigId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'deploymentConfigId' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::CodeDeploy::CreateDeploymentConfigOutput
 
 =head1 ATTRIBUTES
 
-=head2 deploymentConfigId => Str
+=head2 DeploymentConfigId => Str
 
-  
-
-A unique deployment configuration ID.
-
-
-
-
-
-
-
-
-
+  A unique deployment configuration ID.
 
 
 =cut

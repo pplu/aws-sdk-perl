@@ -1,6 +1,5 @@
 package Paws::API::Caller {
   use Moose::Role;
-  use Module::Runtime qw//;
   use Carp;
   use Paws::Net::APIRequest;
   use String::Util qw/trim/;
@@ -18,14 +17,14 @@ package Paws::API::Caller {
   sub new_with_coercions {
     my ($self, $class, %params) = @_;
 
-    Module::Runtime::require_module($class);
+    Paws->load_class($class);
     my %p;
     foreach my $att (keys %params){
       my $att_meta = $class->meta->find_attribute_by_name($att);
 
       if ($class->does('Paws::API::StrToObjMapParser')) {
         my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
-        Module::Runtime::require_module($subtype);
+        Paws->load_class($subtype);
         $p{ Map }->{ $att } = $subtype->new(%{ $params{ $att } });
       } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
         $p{ Map }->{ $att } = $params{ $att };
@@ -57,6 +56,13 @@ package Paws::API::Caller {
   sub to_hash {
     my ($self, $params) = @_;
     my $refHash = {};
+
+    if      ($params->does('Paws::API::StrToNativeMapParser')) {
+      return $params->Map;
+    } elsif ($params->does('Paws::API::StrToObjMapParser')) {
+      return { map { ($_ => $self->to_hash($params->Map->{$_})) } keys %{ $params->Map } };
+    }
+
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
       my $key = $att;
       if (defined $params->$att) {
@@ -73,10 +79,6 @@ package Paws::API::Caller {
           }
         } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
           $refHash->{ $key } = $params->$att;
-        } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')) {
-          $refHash->{$key} = $params->$att->Map;
-        } elsif ($params->$att->does('Paws::API::StrToObjMapParser')) {
-          $refHash->{$key} = { map { ($_ => $self->to_hash($params->$att->Map->{$_})) } keys %{ $params->$att->Map } };
         } else {
           $refHash->{ $key } = $self->to_hash($params->$att);
         }
@@ -87,10 +89,6 @@ package Paws::API::Caller {
 
   sub handle_response {
     my ($self, $call_object, $http_status, $content, $headers) = @_;
-
-    if ( $http_status == 599 ) {
-        return Paws::Exception->new(message => $content, code => 'ConnectionError', request_id => '');
-    }
 
     my $unserialized_struct;
     $unserialized_struct = $self->unserialize_response( $content );
@@ -112,7 +110,7 @@ package Paws::API::Caller {
         $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };
       }
 
-      Module::Runtime::require_module($call_object->_returns);
+      Paws->load_class($call_object->_returns);
       my $o_result = $self->new_from_struct($call_object->_returns, $unserialized_struct);
       return $o_result;
     } else {
@@ -141,7 +139,7 @@ package Paws::API::Caller {
 
         if ($att_type =~ m/\:\:/) {
           # Make the att_type stringify for module loading
-          Module::Runtime::require_module("$att_type");
+          Paws->load_class("$att_type");
           if (defined $value) {
             if (not $value_ref) {
               $args{ $att } = $value;
@@ -213,13 +211,25 @@ package Paws::API::Caller {
         }
  
         if ($type =~ m/\:\:/) {
-          Module::Runtime::require_module($type);
+          Paws->load_class($type);
+
+          my $val;
           if (not defined $value) {
-            $args{ $att } = [ ];
+            $val = [ ];
           } elsif ($value_ref eq 'ARRAY') {
-            $args{ $att } = [ map { $self->new_from_struct($type, $_) } @$value ] ;
+            $val = $value;
           } elsif ($value_ref eq 'HASH') {
-            $args{ $att } = [ $self->new_from_struct($type, $value) ];
+            $val = [ $value ];
+          }
+
+          if ($type->does('Paws::API::StrToObjMapParser')) {
+            $args{ $att } = [ map { $self->handle_response_strtoobjmap($type, $_) } @$val ];
+          } elsif ($type->does('Paws::API::StrToNativeMapParser')) {
+            $args{ $att } = [ map { $self->handle_response_strtonativemap($type, $_) } @$val ];
+          } elsif ($type->does('Paws::API::MapParser')) {
+            die "MapParser Type in an Array. Please implement me";
+          } else {
+            $args{ $att } = [ map { $self->new_from_struct($type, $_) } @$val ];
           }
         } else {
           if (defined $value){

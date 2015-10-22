@@ -1,24 +1,23 @@
 
-package Paws::SimpleWorkflow::StartWorkflowExecution {
+package Paws::SimpleWorkflow::StartWorkflowExecution;
   use Moose;
-  has childPolicy => (is => 'ro', isa => 'Str');
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has executionStartToCloseTimeout => (is => 'ro', isa => 'Str');
-  has input => (is => 'ro', isa => 'Str');
-  has lambdaRole => (is => 'ro', isa => 'Str');
-  has tagList => (is => 'ro', isa => 'ArrayRef[Str]');
-  has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
-  has taskPriority => (is => 'ro', isa => 'Str');
-  has taskStartToCloseTimeout => (is => 'ro', isa => 'Str');
-  has workflowId => (is => 'ro', isa => 'Str', required => 1);
-  has workflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', required => 1);
+  has ChildPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'childPolicy' );
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has ExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'executionStartToCloseTimeout' );
+  has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' );
+  has LambdaRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lambdaRole' );
+  has TagList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'tagList' );
+  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'taskList' );
+  has TaskPriority => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskPriority' );
+  has TaskStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskStartToCloseTimeout' );
+  has WorkflowId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workflowId' , required => 1);
+  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', traits => ['NameInRequest'], request_name => 'workflowType' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartWorkflowExecution');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::Run');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -33,7 +32,7 @@ This class represents the parameters used for calling the method StartWorkflowEx
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method StartWorkflowExecution.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StartWorkflowExecution.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartWorkflowExecution.
 
 As an example:
 
@@ -43,11 +42,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 childPolicy => Str
+=head2 ChildPolicy => Str
 
-  
-
-If set, specifies the policy to use for the child workflow executions
+  If set, specifies the policy to use for the child workflow executions
 of this workflow execution if it is terminated, by calling the
 TerminateWorkflowExecution action explicitly or due to an expired
 timeout. This policy overrides the default child policy specified when
@@ -74,35 +71,13 @@ a default for the workflow type or through this parameter. If neither
 this parameter is set nor a default child policy was specified at
 registration time then a fault will be returned.
 
+=head2 B<REQUIRED> Domain => Str
 
+  The name of the domain in which the workflow execution is created.
 
+=head2 ExecutionStartToCloseTimeout => Str
 
-
-
-
-
-
-
-=head2 B<REQUIRED> domain => Str
-
-  
-
-The name of the domain in which the workflow execution is created.
-
-
-
-
-
-
-
-
-
-
-=head2 executionStartToCloseTimeout => Str
-
-  
-
-The total duration for this workflow execution. This overrides the
+  The total duration for this workflow execution. This overrides the
 defaultExecutionStartToCloseTimeout specified when registering the
 workflow type.
 
@@ -117,76 +92,32 @@ this parameter or as a default when the workflow type is registered. If
 neither this parameter nor a default execution start-to-close timeout
 is specified, a fault is returned.
 
+=head2 Input => Str
 
-
-
-
-
-
-
-
-
-=head2 input => Str
-
-  
-
-The input for the workflow execution. This is a free form string which
+  The input for the workflow execution. This is a free form string which
 should be meaningful to the workflow you are starting. This C<input> is
 made available to the new workflow execution in the
 C<WorkflowExecutionStarted> history event.
 
+=head2 LambdaRole => Str
 
-
-
-
-
-
-
-
-
-=head2 lambdaRole => Str
-
-  
-
-The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda
+  The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda
 functions.
 
 In order for this workflow execution to invoke AWS Lambda functions, an
 appropriate IAM role must be specified either as a default for the
 workflow type or through this field.
 
+=head2 TagList => ArrayRef[Str]
 
-
-
-
-
-
-
-
-
-=head2 tagList => ArrayRef[Str]
-
-  
-
-The list of tags to associate with the workflow execution. You can
+  The list of tags to associate with the workflow execution. You can
 specify a maximum of 5 tags. You can list workflow executions with a
 specific tag by calling ListOpenWorkflowExecutions or
 ListClosedWorkflowExecutions and specifying a TagFilter.
 
+=head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
 
-
-
-
-
-
-
-
-
-=head2 taskList => Paws::SimpleWorkflow::TaskList
-
-  
-
-The task list to use for the decision tasks generated for this workflow
+  The task list to use for the decision tasks generated for this workflow
 execution. This overrides the C<defaultTaskList> specified when
 registering the workflow type.
 
@@ -200,20 +131,9 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
+=head2 TaskPriority => Str
 
-
-
-
-
-
-
-
-
-=head2 taskPriority => Str
-
-  
-
-The task priority to use for this workflow execution. This will
+  The task priority to use for this workflow execution. This will
 override any default priority that was assigned when the workflow type
 was registered. If not set, then the default task priority for the
 workflow type will be used. Valid values are integers that range from
@@ -223,20 +143,9 @@ Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
+=head2 TaskStartToCloseTimeout => Str
 
-
-
-
-
-
-
-
-
-=head2 taskStartToCloseTimeout => Str
-
-  
-
-Specifies the maximum duration of decision tasks for this workflow
+  Specifies the maximum duration of decision tasks for this workflow
 execution. This parameter overrides the
 C<defaultTaskStartToCloseTimout> specified when registering the
 workflow type using RegisterWorkflowType.
@@ -250,20 +159,9 @@ parameter. If neither this parameter is set nor a default task
 start-to-close timeout was specified at registration time then a fault
 will be returned.
 
+=head2 B<REQUIRED> WorkflowId => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> workflowId => Str
-
-  
-
-The user defined identifier associated with the workflow execution. You
+  The user defined identifier associated with the workflow execution. You
 can use this to associate a custom identifier with the workflow
 execution. You may specify the same identifier if a workflow execution
 is logically a I<restart> of a previous execution. You cannot have two
@@ -274,29 +172,9 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
+=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
-
-  
-
-The type of the workflow to start.
-
-
-
-
-
-
-
-
-
+  The type of the workflow to start.
 
 
 

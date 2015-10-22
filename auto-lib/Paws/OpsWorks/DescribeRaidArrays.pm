@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::DescribeRaidArrays {
+package Paws::OpsWorks::DescribeRaidArrays;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
   has RaidArrayIds => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -10,7 +10,6 @@ package Paws::OpsWorks::DescribeRaidArrays {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRaidArrays');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::DescribeRaidArraysResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeRaidArr
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeRaidArrays.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRaidArrays.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRaidArrays.
 
 As an example:
 
@@ -37,52 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 InstanceId => Str
 
-  
-
-The instance ID. If you use this parameter, C<DescribeRaidArrays>
+  The instance ID. If you use this parameter, C<DescribeRaidArrays>
 returns descriptions of the RAID arrays associated with the specified
 instance.
 
-
-
-
-
-
-
-
-
-
 =head2 RaidArrayIds => ArrayRef[Str]
 
-  
-
-An array of RAID array IDs. If you use this parameter,
+  An array of RAID array IDs. If you use this parameter,
 C<DescribeRaidArrays> returns descriptions of the specified arrays.
 Otherwise, it returns a description of every array.
 
-
-
-
-
-
-
-
-
-
 =head2 StackId => Str
 
-  
-
-The stack ID.
-
-
-
-
-
-
-
-
-
+  The stack ID.
 
 
 

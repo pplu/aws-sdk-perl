@@ -1,10 +1,9 @@
 
-package Paws::SSM::CreateAssociationBatchResult {
+package Paws::SSM::CreateAssociationBatchResult;
   use Moose;
   has Failed => (is => 'ro', isa => 'ArrayRef[Paws::SSM::FailedCreateAssociation]');
   has Successful => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AssociationDescription]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,34 +13,12 @@ Paws::SSM::CreateAssociationBatchResult
 
 =head1 ATTRIBUTES
 
-=head2 Failed => ArrayRef[Paws::SSM::FailedCreateAssociation]
+=head2 Failed => ArrayRef[L<Paws::SSM::FailedCreateAssociation>]
 
-  
+  Information about the associations that failed.
+=head2 Successful => ArrayRef[L<Paws::SSM::AssociationDescription>]
 
-Information about the associations that failed.
-
-
-
-
-
-
-
-
-
-=head2 Successful => ArrayRef[Paws::SSM::AssociationDescription]
-
-  
-
-Information about the associations that succeeded.
-
-
-
-
-
-
-
-
-
+  Information about the associations that succeeded.
 
 
 =cut

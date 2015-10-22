@@ -1,8 +1,7 @@
 
-package Paws::DataPipeline::AddTagsOutput {
+package Paws::DataPipeline::AddTagsOutput;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

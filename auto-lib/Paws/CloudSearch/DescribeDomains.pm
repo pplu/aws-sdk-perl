@@ -1,5 +1,5 @@
 
-package Paws::CloudSearch::DescribeDomains {
+package Paws::CloudSearch::DescribeDomains;
   use Moose;
   has DomainNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -8,7 +8,6 @@ package Paws::CloudSearch::DescribeDomains {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDomains');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearch::DescribeDomainsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDomainsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DescribeDomains
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method DescribeDomains.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDomains.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDomains.
 
 As an example:
 
@@ -35,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DomainNames => ArrayRef[Str]
 
-  
-
-The names of the domains you want to include in the response.
-
-
-
-
-
-
-
-
-
+  The names of the domains you want to include in the response.
 
 
 

@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::DeleteGateway {
+package Paws::StorageGateway::DeleteGateway;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::StorageGateway::DeleteGateway {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteGateway');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::DeleteGatewayOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteGateway o
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DeleteGateway.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteGateway.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteGateway.
 
 As an example:
 

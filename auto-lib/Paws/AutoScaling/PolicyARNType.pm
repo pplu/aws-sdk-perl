@@ -1,9 +1,8 @@
 
-package Paws::AutoScaling::PolicyARNType {
+package Paws::AutoScaling::PolicyARNType;
   use Moose;
   has PolicyARN => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -16,18 +15,7 @@ Paws::AutoScaling::PolicyARNType
 
 =head2 PolicyARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the policy.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the policy.
 
 
 =cut

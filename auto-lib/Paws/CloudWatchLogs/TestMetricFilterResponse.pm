@@ -1,9 +1,8 @@
 
-package Paws::CloudWatchLogs::TestMetricFilterResponse {
+package Paws::CloudWatchLogs::TestMetricFilterResponse;
   use Moose;
-  has matches => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricFilterMatchRecord]');
+  has Matches => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricFilterMatchRecord]', traits => ['Unwrapped'], xmlname => 'matches' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,7 @@ Paws::CloudWatchLogs::TestMetricFilterResponse
 
 =head1 ATTRIBUTES
 
-=head2 matches => ArrayRef[Paws::CloudWatchLogs::MetricFilterMatchRecord]
+=head2 Matches => ArrayRef[L<Paws::CloudWatchLogs::MetricFilterMatchRecord>]
 
   
 

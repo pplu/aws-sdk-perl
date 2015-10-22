@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::ListPresets {
+package Paws::ElasticTranscoder::ListPresets;
   use Moose;
   has Ascending => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Ascending' );
   has PageToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PageToken' );
@@ -11,7 +11,6 @@ package Paws::ElasticTranscoder::ListPresets {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ListPresetsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListPresetsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method ListPresets on 
 Amazon Elastic Transcoder service. Use the attributes of this class
 as arguments to method ListPresets.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListPresets.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPresets.
 
 As an example:
 
@@ -38,37 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Ascending => Str
 
-  
-
-To list presets in chronological order by the date and time that they
+  To list presets in chronological order by the date and time that they
 were created, enter C<true>. To list presets in reverse chronological
 order, enter C<false>.
 
-
-
-
-
-
-
-
-
-
 =head2 PageToken => Str
 
-  
-
-When Elastic Transcoder returns more than one page of results, use
+  When Elastic Transcoder returns more than one page of results, use
 C<pageToken> in subsequent C<GET> requests to get each successive page
 of results.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,11 +1,10 @@
 
-package Paws::IAM::GetGroupPolicyResponse {
+package Paws::IAM::GetGroupPolicyResponse;
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has PolicyDocument => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute',], required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -18,46 +17,13 @@ Paws::IAM::GetGroupPolicyResponse
 
 =head2 B<REQUIRED> GroupName => Str
 
-  
-
-The group the policy is associated with.
-
-
-
-
-
-
-
-
-
+  The group the policy is associated with.
 =head2 B<REQUIRED> PolicyDocument => Str
 
-  
-
-The policy document.
-
-
-
-
-
-
-
-
-
+  The policy document.
 =head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The name of the policy.
-
-
-
-
-
-
-
-
-
+  The name of the policy.
 
 
 =cut

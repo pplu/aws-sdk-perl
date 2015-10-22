@@ -1,11 +1,10 @@
 
-package Paws::EC2::CancelImportTaskResult {
+package Paws::EC2::CancelImportTaskResult;
   use Moose;
   has ImportTaskId => (is => 'ro', isa => 'Str', xmlname => 'importTaskId', traits => ['Unwrapped',]);
   has PreviousState => (is => 'ro', isa => 'Str', xmlname => 'previousState', traits => ['Unwrapped',]);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -18,46 +17,13 @@ Paws::EC2::CancelImportTaskResult
 
 =head2 ImportTaskId => Str
 
-  
-
-The ID of the task being canceled.
-
-
-
-
-
-
-
-
-
+  The ID of the task being canceled.
 =head2 PreviousState => Str
 
-  
-
-The current state of the task being canceled.
-
-
-
-
-
-
-
-
-
+  The current state of the task being canceled.
 =head2 State => Str
 
-  
-
-The current state of the task being canceled.
-
-
-
-
-
-
-
-
-
+  The current state of the task being canceled.
 
 
 =cut

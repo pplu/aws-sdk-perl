@@ -1,9 +1,8 @@
 
-package Paws::ImportExport::CancelJobOutput {
+package Paws::ImportExport::CancelJobOutput;
   use Moose;
   has Success => (is => 'ro', isa => 'Bool');
 
-}
 1;
 
 ### main pod documentation begin ###

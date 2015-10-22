@@ -1,16 +1,15 @@
 
-package Paws::CodeCommit::ListRepositories {
+package Paws::CodeCommit::ListRepositories;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
-  has order => (is => 'ro', isa => 'Str');
-  has sortBy => (is => 'ro', isa => 'Str');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Order => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'order' );
+  has SortBy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sortBy' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListRepositories');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::ListRepositoriesOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method ListRepositorie
 AWS CodeCommit service. Use the attributes of this class
 as arguments to method ListRepositories.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListRepositories.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListRepositories.
 
 As an example:
 
@@ -35,54 +34,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
-  
-
-An enumeration token that allows the operation to batch the results of
+  An enumeration token that allows the operation to batch the results of
 the operation. Batch sizes are 1,000 for list repository operations.
 When the client sends the token back to AWS CodeCommit, another page of
 1,000 records is retrieved.
 
+=head2 Order => Str
 
-
-
-
-
-
-
-
-
-=head2 order => Str
-
-  
-
-The order in which to sort the results of a list repositories
+  The order in which to sort the results of a list repositories
 operation.
 
+=head2 SortBy => Str
 
-
-
-
-
-
-
-
-
-=head2 sortBy => Str
-
-  
-
-The criteria used to sort the results of a list repositories operation.
-
-
-
-
-
-
-
-
-
+  The criteria used to sort the results of a list repositories operation.
 
 
 

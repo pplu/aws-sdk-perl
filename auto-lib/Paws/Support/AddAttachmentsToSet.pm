@@ -1,15 +1,14 @@
 
-package Paws::Support::AddAttachmentsToSet {
+package Paws::Support::AddAttachmentsToSet;
   use Moose;
-  has attachments => (is => 'ro', isa => 'ArrayRef[Paws::Support::Attachment]', required => 1);
-  has attachmentSetId => (is => 'ro', isa => 'Str');
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::Support::Attachment]', traits => ['NameInRequest'], request_name => 'attachments' , required => 1);
+  has AttachmentSetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'attachmentSetId' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddAttachmentsToSet');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::AddAttachmentsToSetResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method AddAttachmentsT
 AWS Support service. Use the attributes of this class
 as arguments to method AddAttachmentsToSet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddAttachmentsToSet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddAttachmentsToSet.
 
 As an example:
 
@@ -34,39 +33,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> attachments => ArrayRef[Paws::Support::Attachment]
+=head2 B<REQUIRED> Attachments => ArrayRef[L<Paws::Support::Attachment>]
 
-  
-
-One or more attachments to add to the set. The limit is 3 attachments
+  One or more attachments to add to the set. The limit is 3 attachments
 per set, and the size limit is 5 MB per attachment.
 
+=head2 AttachmentSetId => Str
 
-
-
-
-
-
-
-
-
-=head2 attachmentSetId => Str
-
-  
-
-The ID of the attachment set. If an C<AttachmentSetId> is not
+  The ID of the attachment set. If an C<AttachmentSetId> is not
 specified, a new attachment set is created, and the ID of the set is
 returned in the response. If an C<AttachmentSetId> is specified, the
 attachments are added to the specified set, if it exists.
-
-
-
-
-
-
-
-
-
 
 
 

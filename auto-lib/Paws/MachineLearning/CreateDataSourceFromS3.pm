@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::CreateDataSourceFromS3 {
+package Paws::MachineLearning::CreateDataSourceFromS3;
   use Moose;
   has ComputeStatistics => (is => 'ro', isa => 'Bool');
   has DataSourceId => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::MachineLearning::CreateDataSourceFromS3 {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDataSourceFromS3');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::CreateDataSourceFromS3Output');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CreateDataSourc
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method CreateDataSourceFromS3.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDataSourceFromS3.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDataSourceFromS3.
 
 As an example:
 
@@ -38,58 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ComputeStatistics => Bool
 
-  
-
-The compute statistics for a C<DataSource>. The statistics are
+  The compute statistics for a C<DataSource>. The statistics are
 generated from the observation data referenced by a C<DataSource>.
 Amazon ML uses the statistics internally during an C<MLModel> training.
 This parameter must be set to C<true> if the C<>DataSourceC<> needs to
 be used for C<MLModel> training
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DataSourceId => Str
 
-  
-
-A user-supplied identifier that uniquely identifies the C<DataSource>.
-
-
-
-
-
-
-
-
-
+  A user-supplied identifier that uniquely identifies the C<DataSource>.
 
 =head2 DataSourceName => Str
 
-  
+  A user-supplied name or description of the C<DataSource>.
 
-A user-supplied name or description of the C<DataSource>.
+=head2 B<REQUIRED> DataSpec => L<Paws::MachineLearning::S3DataSpec>
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> DataSpec => Paws::MachineLearning::S3DataSpec
-
-  
-
-The data specification of a C<DataSource>:
+  The data specification of a C<DataSource>:
 
 =over
 
@@ -112,18 +76,9 @@ required if C<DataSchemaUri> is specified.
 DataRearrangement - A JSON string representing the splitting
 requirement of a C<Datasource>.
 
-Sample - C< "{\"randomSeed\":\"some-random-seed\",
-\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}">
+Sample - C< "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}">
 
 =back
-
-
-
-
-
-
-
-
 
 
 

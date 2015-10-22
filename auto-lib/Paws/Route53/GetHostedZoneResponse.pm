@@ -1,11 +1,10 @@
 
-package Paws::Route53::GetHostedZoneResponse {
+package Paws::Route53::GetHostedZoneResponse;
   use Moose;
   has DelegationSet => (is => 'ro', isa => 'Paws::Route53::DelegationSet');
   has HostedZone => (is => 'ro', isa => 'Paws::Route53::HostedZone', required => 1);
   has VPCs => (is => 'ro', isa => 'ArrayRef[Paws::Route53::VPC]', traits => ['Unwrapped'], xmlname => 'VPC');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +19,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Route 53 service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -30,53 +29,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 DelegationSet => Paws::Route53::DelegationSet
+=head2 DelegationSet => L<Paws::Route53::DelegationSet>
 
-  
-
-A complex type that contains information about the name servers for the
+  A complex type that contains information about the name servers for the
 specified hosted zone.
 
+=head2 B<REQUIRED> HostedZone => L<Paws::Route53::HostedZone>
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> HostedZone => Paws::Route53::HostedZone
-
-  
-
-A complex type that contains the information about the specified hosted
+  A complex type that contains the information about the specified hosted
 zone.
 
+=head2 VPCs => ArrayRef[L<Paws::Route53::VPC>]
 
-
-
-
-
-
-
-
-
-=head2 VPCs => ArrayRef[Paws::Route53::VPC]
-
-  
-
-A complex type that contains information about VPCs associated with the
+  A complex type that contains information about VPCs associated with the
 specified hosted zone.
-
-
-
-
-
-
-
-
-
 
 
 

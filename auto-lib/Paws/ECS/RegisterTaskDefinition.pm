@@ -1,16 +1,15 @@
 
-package Paws::ECS::RegisterTaskDefinition {
+package Paws::ECS::RegisterTaskDefinition;
   use Moose;
-  has containerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', required => 1);
-  has family => (is => 'ro', isa => 'Str', required => 1);
-  has volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]');
+  has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', traits => ['NameInRequest'], request_name => 'containerDefinitions' , required => 1);
+  has Family => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'family' , required => 1);
+  has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', traits => ['NameInRequest'], request_name => 'volumes' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterTaskDefinition');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::RegisterTaskDefinitionResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method RegisterTaskDef
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method RegisterTaskDefinition.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RegisterTaskDefinition.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterTaskDefinition.
 
 As an example:
 
@@ -35,56 +34,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> containerDefinitions => ArrayRef[Paws::ECS::ContainerDefinition]
+=head2 B<REQUIRED> ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>]
 
-  
-
-A list of container definitions in JSON format that describe the
+  A list of container definitions in JSON format that describe the
 different containers that make up your task.
 
+=head2 B<REQUIRED> Family => Str
 
+  You must specify a C<family> for a task definition, which allows you to
+track multiple versions of the same task definition. The C<family> is
+used as a name for your task definition. Up to 255 letters (uppercase
+and lowercase), numbers, hyphens, and underscores are allowed.
 
+=head2 Volumes => ArrayRef[L<Paws::ECS::Volume>]
 
-
-
-
-
-
-
-=head2 B<REQUIRED> family => Str
-
-  
-
-You must specify a C<family> for a task definition, which allows you to
-track multiple versions of the same task definition. You can think of
-the C<family> as a name for your task definition. Up to 255 letters
-(uppercase and lowercase), numbers, hyphens, and underscores are
-allowed.
-
-
-
-
-
-
-
-
-
-
-=head2 volumes => ArrayRef[Paws::ECS::Volume]
-
-  
-
-A list of volume definitions in JSON format that containers in your
+  A list of volume definitions in JSON format that containers in your
 task may use.
-
-
-
-
-
-
-
-
-
 
 
 

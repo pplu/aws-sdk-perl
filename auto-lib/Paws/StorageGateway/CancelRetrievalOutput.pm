@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::CancelRetrievalOutput {
+package Paws::StorageGateway::CancelRetrievalOutput;
   use Moose;
   has TapeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,19 +14,8 @@ Paws::StorageGateway::CancelRetrievalOutput
 
 =head2 TapeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the virtual tape for which retrieval
+  The Amazon Resource Name (ARN) of the virtual tape for which retrieval
 was canceled.
-
-
-
-
-
-
-
-
-
 
 
 =cut

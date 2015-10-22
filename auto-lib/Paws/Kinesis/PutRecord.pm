@@ -1,5 +1,5 @@
 
-package Paws::Kinesis::PutRecord {
+package Paws::Kinesis::PutRecord;
   use Moose;
   has Data => (is => 'ro', isa => 'Str', required => 1);
   has ExplicitHashKey => (is => 'ro', isa => 'Str');
@@ -12,7 +12,6 @@ package Paws::Kinesis::PutRecord {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutRecord');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kinesis::PutRecordOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method PutRecord on th
 Amazon Kinesis service. Use the attributes of this class
 as arguments to method PutRecord.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutRecord.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutRecord.
 
 As an example:
 
@@ -39,42 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Data => Str
 
-  
-
-The data blob to put into the record, which is base64-encoded when the
-blob is serialized. The maximum size of the data blob (the payload
-before base64-encoding) is 50 kilobytes (KB)
-
-
-
-
-
-
-
-
-
+  The data blob to put into the record, which is base64-encoded when the
+blob is serialized. When the data blob (the payload before
+base64-encoding) is added to the partition key size, the total size
+must not exceed the maximum record size (1 MB).
 
 =head2 ExplicitHashKey => Str
 
-  
-
-The hash value used to explicitly determine the shard the data record
+  The hash value used to explicitly determine the shard the data record
 is assigned to by overriding the partition key hash.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> PartitionKey => Str
 
-  
-
-Determines which shard in the stream the data record is assigned to.
+  Determines which shard in the stream the data record is assigned to.
 Partition keys are Unicode strings with a maximum length limit of 256
 characters for each key. Amazon Kinesis uses the partition key as input
 to a hash function that maps the partition key and associated data to a
@@ -84,49 +60,18 @@ records to shards. As a result of this hashing mechanism, all data
 records with the same partition key will map to the same shard within
 the stream.
 
-
-
-
-
-
-
-
-
-
 =head2 SequenceNumberForOrdering => Str
 
-  
-
-Guarantees strictly increasing sequence numbers, for puts from the same
+  Guarantees strictly increasing sequence numbers, for puts from the same
 client and to the same partition key. Usage: set the
 C<SequenceNumberForOrdering> of record I<n> to the sequence number of
 record I<n-1> (as returned in the result when putting record I<n-1>).
 If this parameter is not set, records will be coarsely ordered based on
 arrival time.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StreamName => Str
 
-  
-
-The name of the stream to put the data record into.
-
-
-
-
-
-
-
-
-
+  The name of the stream to put the data record into.
 
 
 

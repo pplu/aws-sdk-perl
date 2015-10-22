@@ -1,4 +1,4 @@
-package Paws::Route53 {
+package Paws::Route53;
   warn "Paws::Route53 is not stable / supported / entirely developed";
   use Moose;
   sub service { 'route53' }
@@ -176,7 +176,9 @@ package Paws::Route53 {
     my $call_object = $self->new_with_coercions('Paws::Route53::UpdateHostedZoneComment', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
+
+  sub operations { qw/AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateReusableDelegationSet DeleteHealthCheck DeleteHostedZone DeleteReusableDelegationSet DisassociateVPCFromHostedZone GetChange GetCheckerIpRanges GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetReusableDelegationSet ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources UpdateHealthCheck UpdateHostedZoneComment / }
+
 1;
 
 ### main pod documentation begin ###
@@ -189,7 +191,7 @@ Paws::Route53 - Perl Interface to AWS Amazon Route 53
 
   use Paws;
 
-  my $obj = Paws->service('Route53')->new;
+  my $obj = Paws->service('Route53');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],
@@ -202,8 +204,6 @@ Paws::Route53 - Perl Interface to AWS Amazon Route 53
   );
 
 =head1 DESCRIPTION
-
-
 
 Amazon Route 53
 
@@ -221,26 +221,15 @@ network of authoritative DNS servers, which reduces latency. For a list
 of the locations of Amazon Route 53 DNS servers, see The Amazon Route
 53 Global Network on the Amazon Route 53 detail page.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
-=head2 AssociateVPCWithHostedZone(HostedZoneId => Str, VPC => Paws::Route53::VPC, [Comment => Str])
+=head2 AssociateVPCWithHostedZone(HostedZoneId => Str, VPC => L<Paws::Route53::VPC>, [Comment => Str])
 
 Each argument is described in detail in: L<Paws::Route53::AssociateVPCWithHostedZone>
 
 Returns: a L<Paws::Route53::AssociateVPCWithHostedZoneResponse> instance
 
-  
-
-This action associates a VPC with an hosted zone.
+  This action associates a VPC with an hosted zone.
 
 To associate a VPC with an hosted zone, send a C<POST> request to the
 C<2013-04-01/hostedzone/I<hosted zone ID>/associatevpc> resource. The
@@ -252,24 +241,13 @@ C<AssociateVPCWithHostedZoneRequest> you made. See C<GetChange>
 operation for how to track the progress of your change.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ChangeResourceRecordSets(ChangeBatch => Paws::Route53::ChangeBatch, HostedZoneId => Str)
+=head2 ChangeResourceRecordSets(ChangeBatch => L<Paws::Route53::ChangeBatch>, HostedZoneId => Str)
 
 Each argument is described in detail in: L<Paws::Route53::ChangeResourceRecordSets>
 
 Returns: a L<Paws::Route53::ChangeResourceRecordSetsResponse> instance
 
-  
-
-Use this action to create or change your authoritative DNS information.
+  Use this action to create or change your authoritative DNS information.
 To use this action, send a C<POST> request to the
 C<2013-04-01/hostedzone/I<hosted Zone ID>/rrset> resource. The request
 body must include an XML document with a
@@ -302,16 +280,7 @@ The sum of the number of characters (including spaces) in all C<Value>
 elements in a request cannot exceed 32,000 characters.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ChangeTagsForResource(ResourceId => Str, ResourceType => Str, [AddTags => ArrayRef[Paws::Route53::Tag], RemoveTagKeys => ArrayRef[Str]])
+=head2 ChangeTagsForResource(ResourceId => Str, ResourceType => Str, [AddTags => ArrayRef[L<Paws::Route53::Tag>], RemoveTagKeys => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::Route53::ChangeTagsForResource>
 
@@ -320,15 +289,13 @@ Returns: a L<Paws::Route53::ChangeTagsForResourceResponse> instance
   
 
 
-=head2 CreateHealthCheck(CallerReference => Str, HealthCheckConfig => Paws::Route53::HealthCheckConfig)
+=head2 CreateHealthCheck(CallerReference => Str, HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>)
 
 Each argument is described in detail in: L<Paws::Route53::CreateHealthCheck>
 
 Returns: a L<Paws::Route53::CreateHealthCheckResponse> instance
 
-  
-
-This action creates a new health check.
+  This action creates a new health check.
 
 To create a new health check, send a C<POST> request to the
 C<2013-04-01/healthcheck> resource. The request body must include an
@@ -337,24 +304,13 @@ returns the C<CreateHealthCheckResponse> element that contains metadata
 about the health check.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateHostedZone(CallerReference => Str, Name => Str, [DelegationSetId => Str, HostedZoneConfig => Paws::Route53::HostedZoneConfig, VPC => Paws::Route53::VPC])
+=head2 CreateHostedZone(CallerReference => Str, Name => Str, [DelegationSetId => Str, HostedZoneConfig => L<Paws::Route53::HostedZoneConfig>, VPC => L<Paws::Route53::VPC>])
 
 Each argument is described in detail in: L<Paws::Route53::CreateHostedZone>
 
 Returns: a L<Paws::Route53::CreateHostedZoneResponse> instance
 
-  
-
-This action creates a new hosted zone.
+  This action creates a new hosted zone.
 
 To create a new hosted zone, send a C<POST> request to the
 C<2013-04-01/hostedzone> resource. The request body must include an XML
@@ -378,24 +334,13 @@ you could specify an optional DelegationSetId, and Route53 would assign
 those 4 NS records for the zone, instead of alloting a new one.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateReusableDelegationSet(CallerReference => Str, [HostedZoneId => Str])
 
 Each argument is described in detail in: L<Paws::Route53::CreateReusableDelegationSet>
 
 Returns: a L<Paws::Route53::CreateReusableDelegationSetResponse> instance
 
-  
-
-This action creates a reusable delegationSet.
+  This action creates a reusable delegationSet.
 
 To create a new reusable delegationSet, send a C<POST> request to the
 C<2013-04-01/delegationset> resource. The request body must include an
@@ -407,24 +352,13 @@ If the optional parameter HostedZoneId is specified, it marks the
 delegationSet associated with that particular hosted zone as reusable.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteHealthCheck(HealthCheckId => Str)
 
 Each argument is described in detail in: L<Paws::Route53::DeleteHealthCheck>
 
 Returns: a L<Paws::Route53::DeleteHealthCheckResponse> instance
 
-  
-
-This action deletes a health check. To delete a health check, send a
+  This action deletes a health check. To delete a health check, send a
 C<DELETE> request to the C<2013-04-01/healthcheck/I<health check ID>>
 resource.
 
@@ -438,24 +372,13 @@ disassociating the records from your health check, see
 ChangeResourceRecordSets.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteHostedZone(Id => Str)
 
 Each argument is described in detail in: L<Paws::Route53::DeleteHostedZone>
 
 Returns: a L<Paws::Route53::DeleteHostedZoneResponse> instance
 
-  
-
-This action deletes a hosted zone. To delete a hosted zone, send a
+  This action deletes a hosted zone. To delete a hosted zone, send a
 C<DELETE> request to the C<2013-04-01/hostedzone/I<hosted zone ID>>
 resource.
 
@@ -471,24 +394,13 @@ request with a C<HostedZoneNotEmpty> error. For information about
 deleting records from your hosted zone, see ChangeResourceRecordSets.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteReusableDelegationSet(Id => Str)
 
 Each argument is described in detail in: L<Paws::Route53::DeleteReusableDelegationSet>
 
 Returns: a L<Paws::Route53::DeleteReusableDelegationSetResponse> instance
 
-  
-
-This action deletes a reusable delegation set. To delete a reusable
+  This action deletes a reusable delegation set. To delete a reusable
 delegation set, send a C<DELETE> request to the
 C<2013-04-01/delegationset/I<delegation set ID>> resource.
 
@@ -500,24 +412,13 @@ delegation set that contains associated hosted zones, Route 53 will
 deny your request with a C<DelegationSetInUse> error.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DisassociateVPCFromHostedZone(HostedZoneId => Str, VPC => Paws::Route53::VPC, [Comment => Str])
+=head2 DisassociateVPCFromHostedZone(HostedZoneId => Str, VPC => L<Paws::Route53::VPC>, [Comment => Str])
 
 Each argument is described in detail in: L<Paws::Route53::DisassociateVPCFromHostedZone>
 
 Returns: a L<Paws::Route53::DisassociateVPCFromHostedZoneResponse> instance
 
-  
-
-This action disassociates a VPC from an hosted zone.
+  This action disassociates a VPC from an hosted zone.
 
 To disassociate a VPC to a hosted zone, send a C<POST> request to the
 C<2013-04-01/hostedzone/I<hosted zone ID>/disassociatevpc> resource.
@@ -529,24 +430,13 @@ C<DisassociateVPCFromHostedZoneRequest> you made. See C<GetChange>
 operation for how to track the progress of your change.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetChange(Id => Str)
 
 Each argument is described in detail in: L<Paws::Route53::GetChange>
 
 Returns: a L<Paws::Route53::GetChangeResponse> instance
 
-  
-
-This action returns the current status of a change batch request. The
+  This action returns the current status of a change batch request. The
 status is one of the following values:
 
 - C<PENDING> indicates that the changes in this request have not
@@ -557,37 +447,17 @@ all change batch requests.
 Route 53 DNS servers.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetCheckerIpRanges( => )
+=head2 GetCheckerIpRanges()
 
 Each argument is described in detail in: L<Paws::Route53::GetCheckerIpRanges>
 
 Returns: a L<Paws::Route53::GetCheckerIpRangesResponse> instance
 
-  
-
-To retrieve a list of the IP ranges used by Amazon Route 53 health
+  To retrieve a list of the IP ranges used by Amazon Route 53 health
 checkers to check the health of your resources, send a C<GET> request
 to the C<2013-04-01/checkeripranges> resource. You can use these IP
 addresses to configure router and firewall rules to allow health
 checkers to check the health of your resources.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetGeoLocation([ContinentCode => Str, CountryCode => Str, SubdivisionCode => Str])
@@ -596,20 +466,9 @@ Each argument is described in detail in: L<Paws::Route53::GetGeoLocation>
 
 Returns: a L<Paws::Route53::GetGeoLocationResponse> instance
 
-  
-
-To retrieve a single geo location, send a C<GET> request to the
+  To retrieve a single geo location, send a C<GET> request to the
 C<2013-04-01/geolocation> resource with one of these options:
 continentcode | countrycode | countrycode and subdivisioncode.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetHealthCheck(HealthCheckId => Str)
@@ -618,40 +477,18 @@ Each argument is described in detail in: L<Paws::Route53::GetHealthCheck>
 
 Returns: a L<Paws::Route53::GetHealthCheckResponse> instance
 
-  
-
-To retrieve the health check, send a C<GET> request to the
+  To retrieve the health check, send a C<GET> request to the
 C<2013-04-01/healthcheck/I<health check ID>> resource.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetHealthCheckCount( => )
+=head2 GetHealthCheckCount()
 
 Each argument is described in detail in: L<Paws::Route53::GetHealthCheckCount>
 
 Returns: a L<Paws::Route53::GetHealthCheckCountResponse> instance
 
-  
-
-To retrieve a count of all your health checks, send a C<GET> request to
+  To retrieve a count of all your health checks, send a C<GET> request to
 the C<2013-04-01/healthcheckcount> resource.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetHealthCheckLastFailureReason(HealthCheckId => Str)
@@ -660,22 +497,11 @@ Each argument is described in detail in: L<Paws::Route53::GetHealthCheckLastFail
 
 Returns: a L<Paws::Route53::GetHealthCheckLastFailureReasonResponse> instance
 
-  
-
-If you want to learn why a health check is currently failing or why it
+  If you want to learn why a health check is currently failing or why it
 failed most recently (if at all), you can get the failure reason for
 the most recent failure. Send a C<GET> request to the
 C<2013-04-01/healthcheck/I<health check ID>/lastfailurereason>
 resource.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetHealthCheckStatus(HealthCheckId => Str)
@@ -684,20 +510,9 @@ Each argument is described in detail in: L<Paws::Route53::GetHealthCheckStatus>
 
 Returns: a L<Paws::Route53::GetHealthCheckStatusResponse> instance
 
-  
-
-To retrieve the health check status, send a C<GET> request to the
+  To retrieve the health check status, send a C<GET> request to the
 C<2013-04-01/healthcheck/I<health check ID>/status> resource. You can
 use this call to get a health check's current status.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetHostedZone(Id => Str)
@@ -706,42 +521,20 @@ Each argument is described in detail in: L<Paws::Route53::GetHostedZone>
 
 Returns: a L<Paws::Route53::GetHostedZoneResponse> instance
 
-  
-
-To retrieve the delegation set for a hosted zone, send a C<GET> request
+  To retrieve the delegation set for a hosted zone, send a C<GET> request
 to the C<2013-04-01/hostedzone/I<hosted zone ID>> resource. The
 delegation set is the four Route 53 name servers that were assigned to
 the hosted zone when you created it.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetHostedZoneCount( => )
+=head2 GetHostedZoneCount()
 
 Each argument is described in detail in: L<Paws::Route53::GetHostedZoneCount>
 
 Returns: a L<Paws::Route53::GetHostedZoneCountResponse> instance
 
-  
-
-To retrieve a count of all your hosted zones, send a C<GET> request to
+  To retrieve a count of all your hosted zones, send a C<GET> request to
 the C<2013-04-01/hostedzonecount> resource.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetReusableDelegationSet(Id => Str)
@@ -750,19 +543,8 @@ Each argument is described in detail in: L<Paws::Route53::GetReusableDelegationS
 
 Returns: a L<Paws::Route53::GetReusableDelegationSetResponse> instance
 
-  
-
-To retrieve the reusable delegation set, send a C<GET> request to the
+  To retrieve the reusable delegation set, send a C<GET> request to the
 C<2013-04-01/delegationset/I<delegation set ID>> resource.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListGeoLocations([MaxItems => Str, StartContinentCode => Str, StartCountryCode => Str, StartSubdivisionCode => Str])
@@ -771,9 +553,7 @@ Each argument is described in detail in: L<Paws::Route53::ListGeoLocations>
 
 Returns: a L<Paws::Route53::ListGeoLocationsResponse> instance
 
-  
-
-To retrieve a list of supported geo locations, send a C<GET> request to
+  To retrieve a list of supported geo locations, send a C<GET> request to
 the C<2013-04-01/geolocations> resource. The response to this request
 includes a C<GeoLocationDetailsList> element with zero, one, or
 multiple C<GeoLocationDetails> child elements. The list is sorted by
@@ -790,24 +570,13 @@ StartSubdivisionCode> to control the geo location that the list begins
 with.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListHealthChecks([Marker => Str, MaxItems => Str])
 
 Each argument is described in detail in: L<Paws::Route53::ListHealthChecks>
 
 Returns: a L<Paws::Route53::ListHealthChecksResponse> instance
 
-  
-
-To retrieve a list of your health checks, send a C<GET> request to the
+  To retrieve a list of your health checks, send a C<GET> request to the
 C<2013-04-01/healthcheck> resource. The response to this request
 includes a C<HealthChecks> element with zero, one, or multiple
 C<HealthCheck> child elements. By default, the list of health checks is
@@ -820,24 +589,13 @@ Amazon Route 53 returns a maximum of 100 items. If you set MaxItems to
 a value greater than 100, Amazon Route 53 returns only the first 100.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListHostedZones([DelegationSetId => Str, Marker => Str, MaxItems => Str])
 
 Each argument is described in detail in: L<Paws::Route53::ListHostedZones>
 
 Returns: a L<Paws::Route53::ListHostedZonesResponse> instance
 
-  
-
-To retrieve a list of your hosted zones, send a C<GET> request to the
+  To retrieve a list of your hosted zones, send a C<GET> request to the
 C<2013-04-01/hostedzone> resource. The response to this request
 includes a C<HostedZones> element with zero, one, or multiple
 C<HostedZone> child elements. By default, the list of hosted zones is
@@ -850,24 +608,13 @@ Amazon Route 53 returns a maximum of 100 items. If you set MaxItems to
 a value greater than 100, Amazon Route 53 returns only the first 100.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListHostedZonesByName([DNSName => Str, HostedZoneId => Str, MaxItems => Str])
 
 Each argument is described in detail in: L<Paws::Route53::ListHostedZonesByName>
 
 Returns: a L<Paws::Route53::ListHostedZonesByNameResponse> instance
 
-  
-
-To retrieve a list of your hosted zones in lexicographic order, send a
+  To retrieve a list of your hosted zones in lexicographic order, send a
 C<GET> request to the C<2013-04-01/hostedzonesbyname> resource. The
 response to this request includes a C<HostedZones> element with zero or
 more C<HostedZone> child elements lexicographically ordered by DNS
@@ -881,24 +628,13 @@ Amazon Route 53 returns a maximum of 100 items. If you set MaxItems to
 a value greater than 100, Amazon Route 53 returns only the first 100.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListResourceRecordSets(HostedZoneId => Str, [MaxItems => Str, StartRecordIdentifier => Str, StartRecordName => Str, StartRecordType => Str])
 
 Each argument is described in detail in: L<Paws::Route53::ListResourceRecordSets>
 
 Returns: a L<Paws::Route53::ListResourceRecordSetsResponse> instance
 
-  
-
-Imagine all the resource record sets in a zone listed out in front of
+  Imagine all the resource record sets in a zone listed out in front of
 you. Imagine them sorted lexicographically first by DNS name (with the
 labels reversed, like "com.amazon.www" for example), and secondarily,
 lexicographically by record type. This operation retrieves at most
@@ -950,24 +686,13 @@ the effects of that change will be visible in a subsequent call to
 ListResourceRecordSets by that process.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListReusableDelegationSets([Marker => Str, MaxItems => Str])
 
 Each argument is described in detail in: L<Paws::Route53::ListReusableDelegationSets>
 
 Returns: a L<Paws::Route53::ListReusableDelegationSetsResponse> instance
 
-  
-
-To retrieve a list of your reusable delegation sets, send a C<GET>
+  To retrieve a list of your reusable delegation sets, send a C<GET>
 request to the C<2013-04-01/delegationset> resource. The response to
 this request includes a C<DelegationSets> element with zero, one, or
 multiple C<DelegationSet> child elements. By default, the list of
@@ -978,15 +703,6 @@ delegation set that the list begins with.
 
 Amazon Route 53 returns a maximum of 100 items. If you set MaxItems to
 a value greater than 100, Amazon Route 53 returns only the first 100.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListTagsForResource(ResourceId => Str, ResourceType => Str)
@@ -1007,15 +723,13 @@ Returns: a L<Paws::Route53::ListTagsForResourcesResponse> instance
   
 
 
-=head2 UpdateHealthCheck(HealthCheckId => Str, [FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Int, IPAddress => Str, Port => Int, ResourcePath => Str, SearchString => Str])
+=head2 UpdateHealthCheck(HealthCheckId => Str, [ChildHealthChecks => ArrayRef[Str], FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Int, HealthThreshold => Int, Inverted => Bool, IPAddress => Str, Port => Int, ResourcePath => Str, SearchString => Str])
 
 Each argument is described in detail in: L<Paws::Route53::UpdateHealthCheck>
 
 Returns: a L<Paws::Route53::UpdateHealthCheckResponse> instance
 
-  
-
-This action updates an existing health check.
+  This action updates an existing health check.
 
 To update a health check, send a C<POST> request to the
 C<2013-04-01/healthcheck/I<health check ID>> resource. The request body
@@ -1024,39 +738,19 @@ element. The response returns an C<UpdateHealthCheckResponse> element,
 which contains metadata about the health check.
 
 
-
-
-
-
-
-
-
-
-
 =head2 UpdateHostedZoneComment(Id => Str, [Comment => Str])
 
 Each argument is described in detail in: L<Paws::Route53::UpdateHostedZoneComment>
 
 Returns: a L<Paws::Route53::UpdateHostedZoneCommentResponse> instance
 
-  
-
-To update the hosted zone comment, send a C<POST> request to the
+  To update the hosted zone comment, send a C<POST> request to the
 C<2013-04-01/hostedzone/I<hosted zone ID>> resource. The request body
 must include an XML document with a C<UpdateHostedZoneCommentRequest>
 element. The response to this request includes the modified
 C<HostedZone> element.
 
 The comment can have a maximum length of 256 characters.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

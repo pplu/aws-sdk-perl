@@ -1,18 +1,17 @@
 
-package Paws::CodePipeline::PutThirdPartyJobSuccessResult {
+package Paws::CodePipeline::PutThirdPartyJobSuccessResult;
   use Moose;
-  has clientToken => (is => 'ro', isa => 'Str', required => 1);
-  has continuationToken => (is => 'ro', isa => 'Str');
-  has currentRevision => (is => 'ro', isa => 'Paws::CodePipeline::CurrentRevision');
-  has executionDetails => (is => 'ro', isa => 'Paws::CodePipeline::ExecutionDetails');
-  has jobId => (is => 'ro', isa => 'Str', required => 1);
+  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' , required => 1);
+  has ContinuationToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'continuationToken' );
+  has CurrentRevision => (is => 'ro', isa => 'Paws::CodePipeline::CurrentRevision', traits => ['NameInRequest'], request_name => 'currentRevision' );
+  has ExecutionDetails => (is => 'ro', isa => 'Paws::CodePipeline::ExecutionDetails', traits => ['NameInRequest'], request_name => 'executionDetails' );
+  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutThirdPartyJobSuccessResult');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method PutThirdPartyJo
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method PutThirdPartyJobSuccessResult.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutThirdPartyJobSuccessResult.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutThirdPartyJobSuccessResult.
 
 As an example:
 
@@ -37,62 +36,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> clientToken => Str
+=head2 B<REQUIRED> ClientToken => Str
 
-  
-
-The clientToken portion of the clientId and clientToken pair used to
+  The clientToken portion of the clientId and clientToken pair used to
 verify that the calling entity is allowed access to the job and its
 details.
 
+=head2 ContinuationToken => Str
 
-
-
-
-
-
-
-
-
-=head2 continuationToken => Str
-
-  
-
-A system-generated token, such as a AWS CodeDeploy deployment ID, that
+  A system-generated token, such as a AWS CodeDeploy deployment ID, that
 a job uses in order to continue the job asynchronously.
 
-
-
-
-
-
-
-
-
-
-=head2 currentRevision => Paws::CodePipeline::CurrentRevision
+=head2 CurrentRevision => L<Paws::CodePipeline::CurrentRevision>
 
   
 
-=head2 executionDetails => Paws::CodePipeline::ExecutionDetails
+=head2 ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>
 
   
 
-=head2 B<REQUIRED> jobId => Str
+=head2 B<REQUIRED> JobId => Str
 
-  
-
-The ID of the job that successfully completed. This is the same ID
+  The ID of the job that successfully completed. This is the same ID
 returned from PollForThirdPartyJobs.
-
-
-
-
-
-
-
-
-
 
 
 

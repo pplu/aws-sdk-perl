@@ -1,5 +1,5 @@
 
-package Paws::CognitoIdentity::ListIdentities {
+package Paws::CognitoIdentity::ListIdentities;
   use Moose;
   has HideDisabled => (is => 'ro', isa => 'Bool');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::CognitoIdentity::ListIdentities {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListIdentities');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdentity::ListIdentitiesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method ListIdentities 
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method ListIdentities.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListIdentities.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListIdentities.
 
 As an example:
 
@@ -38,65 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 HideDisabled => Bool
 
-  
-
-An optional boolean parameter that allows you to hide disabled
+  An optional boolean parameter that allows you to hide disabled
 identities. If omitted, the ListIdentities API will include disabled
 identities in the response.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-An identity pool ID in the format REGION:GUID.
-
-
-
-
-
-
-
-
-
+  An identity pool ID in the format REGION:GUID.
 
 =head2 B<REQUIRED> MaxResults => Int
 
-  
-
-The maximum number of identities to return.
-
-
-
-
-
-
-
-
-
+  The maximum number of identities to return.
 
 =head2 NextToken => Str
 
-  
-
-A pagination token.
-
-
-
-
-
-
-
-
-
+  A pagination token.
 
 
 

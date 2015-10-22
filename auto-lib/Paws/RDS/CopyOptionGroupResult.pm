@@ -1,9 +1,8 @@
 
-package Paws::RDS::CopyOptionGroupResult {
+package Paws::RDS::CopyOptionGroupResult;
   use Moose;
   has OptionGroup => (is => 'ro', isa => 'Paws::RDS::OptionGroup');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,7 @@ Paws::RDS::CopyOptionGroupResult
 
 =head1 ATTRIBUTES
 
-=head2 OptionGroup => Paws::RDS::OptionGroup
+=head2 OptionGroup => L<Paws::RDS::OptionGroup>
 
   
 

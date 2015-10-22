@@ -1,8 +1,7 @@
 
-package Paws::DS::DisableRadiusResult {
+package Paws::DS::DisableRadiusResult;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

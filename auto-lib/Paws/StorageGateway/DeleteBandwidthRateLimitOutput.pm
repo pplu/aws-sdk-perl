@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::DeleteBandwidthRateLimitOutput {
+package Paws::StorageGateway::DeleteBandwidthRateLimitOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

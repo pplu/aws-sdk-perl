@@ -1,9 +1,8 @@
 
-package Paws::EC2::RegisterImageResult {
+package Paws::EC2::RegisterImageResult;
   use Moose;
   has ImageId => (is => 'ro', isa => 'Str', xmlname => 'imageId', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -16,18 +15,7 @@ Paws::EC2::RegisterImageResult
 
 =head2 ImageId => Str
 
-  
-
-The ID of the newly registered AMI.
-
-
-
-
-
-
-
-
-
+  The ID of the newly registered AMI.
 
 
 =cut

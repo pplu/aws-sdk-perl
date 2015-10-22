@@ -1,5 +1,5 @@
 
-package Paws::DirectConnect::DescribeVirtualGateways {
+package Paws::DirectConnect::DescribeVirtualGateways;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::DirectConnect::DescribeVirtualGateways {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVirtualGateways');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::VirtualGateways');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method DescribeVirtual
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method DescribeVirtualGateways.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVirtualGateways.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVirtualGateways.
 
 As an example:
 

@@ -1,5 +1,5 @@
 
-package Paws::ELB::DescribeLoadBalancerPolicyTypes {
+package Paws::ELB::DescribeLoadBalancerPolicyTypes;
   use Moose;
   has PolicyTypeNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -8,7 +8,6 @@ package Paws::ELB::DescribeLoadBalancerPolicyTypes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerPolicyTypes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::DescribeLoadBalancerPolicyTypesOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancerPolicyTypesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DescribeLoadBal
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method DescribeLoadBalancerPolicyTypes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLoadBalancerPolicyTypes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLoadBalancerPolicyTypes.
 
 As an example:
 
@@ -35,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 PolicyTypeNames => ArrayRef[Str]
 
-  
-
-The names of the policy types. If no names are specified, describes all
+  The names of the policy types. If no names are specified, describes all
 policy types defined by Elastic Load Balancing.
-
-
-
-
-
-
-
-
-
 
 
 

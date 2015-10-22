@@ -1,14 +1,13 @@
 
-package Paws::DirectConnect::DescribeInterconnects {
+package Paws::DirectConnect::DescribeInterconnects;
   use Moose;
-  has interconnectId => (is => 'ro', isa => 'Str');
+  has InterconnectId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'interconnectId' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeInterconnects');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::Interconnects');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DescribeInterco
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method DescribeInterconnects.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInterconnects.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeInterconnects.
 
 As an example:
 
@@ -33,7 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 interconnectId => Str
+=head2 InterconnectId => Str
 
   
 

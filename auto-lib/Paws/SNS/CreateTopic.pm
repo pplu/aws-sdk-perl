@@ -1,5 +1,5 @@
 
-package Paws::SNS::CreateTopic {
+package Paws::SNS::CreateTopic;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::SNS::CreateTopic {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTopic');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::CreateTopicResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateTopicResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method CreateTopic on 
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method CreateTopic.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateTopic.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTopic.
 
 As an example:
 
@@ -35,22 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the topic you want to create.
+  The name of the topic you want to create.
 
 Constraints: Topic names must be made up of only uppercase and
 lowercase ASCII letters, numbers, underscores, and hyphens, and must be
 between 1 and 256 characters long.
-
-
-
-
-
-
-
-
-
 
 
 

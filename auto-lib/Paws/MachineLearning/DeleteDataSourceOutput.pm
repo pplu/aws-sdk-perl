@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::DeleteDataSourceOutput {
+package Paws::MachineLearning::DeleteDataSourceOutput;
   use Moose;
   has DataSourceId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,20 +14,9 @@ Paws::MachineLearning::DeleteDataSourceOutput
 
 =head2 DataSourceId => Str
 
-  
-
-A user-supplied ID that uniquely identifies the C<DataSource>. This
+  A user-supplied ID that uniquely identifies the C<DataSource>. This
 value should be identical to the value of the C<DataSourceID> in the
 request.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::CancelArchivalOutput {
+package Paws::StorageGateway::CancelArchivalOutput;
   use Moose;
   has TapeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,19 +14,8 @@ Paws::StorageGateway::CancelArchivalOutput
 
 =head2 TapeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the virtual tape for which archiving
+  The Amazon Resource Name (ARN) of the virtual tape for which archiving
 was canceled.
-
-
-
-
-
-
-
-
-
 
 
 =cut

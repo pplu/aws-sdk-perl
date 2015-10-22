@@ -1,14 +1,13 @@
 
-package Paws::ECS::DeregisterTaskDefinition {
+package Paws::ECS::DeregisterTaskDefinition;
   use Moose;
-  has taskDefinition => (is => 'ro', isa => 'Str', required => 1);
+  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterTaskDefinition');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DeregisterTaskDefinitionResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeregisterTaskD
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method DeregisterTaskDefinition.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterTaskDefinition.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterTaskDefinition.
 
 As an example:
 
@@ -33,22 +32,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> taskDefinition => Str
+=head2 B<REQUIRED> TaskDefinition => Str
 
-  
-
-The C<family> and C<revision> (C<family:revision>) or full Amazon
-Resource Name (ARN) of the task definition that you want to deregister.
-You must specify a C<revision>.
-
-
-
-
-
-
-
-
-
+  The C<family> and C<revision> (C<family:revision>) or full Amazon
+Resource Name (ARN) of the task definition to deregister. You must
+specify a C<revision>.
 
 
 

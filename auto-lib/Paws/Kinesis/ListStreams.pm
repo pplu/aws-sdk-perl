@@ -1,5 +1,5 @@
 
-package Paws::Kinesis::ListStreams {
+package Paws::Kinesis::ListStreams;
   use Moose;
   has ExclusiveStartStreamName => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
@@ -9,7 +9,6 @@ package Paws::Kinesis::ListStreams {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListStreams');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kinesis::ListStreamsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ListStreams on 
 Amazon Kinesis service. Use the attributes of this class
 as arguments to method ListStreams.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListStreams.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListStreams.
 
 As an example:
 
@@ -36,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ExclusiveStartStreamName => Str
 
-  
-
-The name of the stream to start the list with.
-
-
-
-
-
-
-
-
-
+  The name of the stream to start the list with.
 
 =head2 Limit => Int
 
-  
-
-The maximum number of streams to list.
-
-
-
-
-
-
-
-
-
+  The maximum number of streams to list.
 
 
 

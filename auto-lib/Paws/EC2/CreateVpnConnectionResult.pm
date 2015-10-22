@@ -1,9 +1,8 @@
 
-package Paws::EC2::CreateVpnConnectionResult {
+package Paws::EC2::CreateVpnConnectionResult;
   use Moose;
   has VpnConnection => (is => 'ro', isa => 'Paws::EC2::VpnConnection', xmlname => 'vpnConnection', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::EC2::CreateVpnConnectionResult
 
 =head1 ATTRIBUTES
 
-=head2 VpnConnection => Paws::EC2::VpnConnection
+=head2 VpnConnection => L<Paws::EC2::VpnConnection>
 
-  
-
-Information about the VPN connection.
-
-
-
-
-
-
-
-
-
+  Information about the VPN connection.
 
 
 =cut

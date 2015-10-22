@@ -1,9 +1,8 @@
 
-package Paws::ElasticBeanstalk::RetrieveEnvironmentInfoResultMessage {
+package Paws::ElasticBeanstalk::RetrieveEnvironmentInfoResultMessage;
   use Moose;
   has EnvironmentInfo => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::EnvironmentInfoDescription]');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::ElasticBeanstalk::RetrieveEnvironmentInfoResultMessage
 
 =head1 ATTRIBUTES
 
-=head2 EnvironmentInfo => ArrayRef[Paws::ElasticBeanstalk::EnvironmentInfoDescription]
+=head2 EnvironmentInfo => ArrayRef[L<Paws::ElasticBeanstalk::EnvironmentInfoDescription>]
 
-  
-
-The EnvironmentInfoDescription of the environment.
-
-
-
-
-
-
-
-
-
+  The EnvironmentInfoDescription of the environment.
 
 
 =cut

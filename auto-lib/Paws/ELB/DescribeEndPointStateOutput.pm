@@ -1,9 +1,8 @@
 
-package Paws::ELB::DescribeEndPointStateOutput {
+package Paws::ELB::DescribeEndPointStateOutput;
   use Moose;
   has InstanceStates => (is => 'ro', isa => 'ArrayRef[Paws::ELB::InstanceState]');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::ELB::DescribeEndPointStateOutput
 
 =head1 ATTRIBUTES
 
-=head2 InstanceStates => ArrayRef[Paws::ELB::InstanceState]
+=head2 InstanceStates => ArrayRef[L<Paws::ELB::InstanceState>]
 
-  
-
-Information about the health of the instances.
-
-
-
-
-
-
-
-
-
+  Information about the health of the instances.
 
 
 =cut

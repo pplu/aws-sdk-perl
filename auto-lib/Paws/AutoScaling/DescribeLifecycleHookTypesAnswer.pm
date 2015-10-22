@@ -1,9 +1,8 @@
 
-package Paws::AutoScaling::DescribeLifecycleHookTypesAnswer {
+package Paws::AutoScaling::DescribeLifecycleHookTypesAnswer;
   use Moose;
   has LifecycleHookTypes => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -16,9 +15,7 @@ Paws::AutoScaling::DescribeLifecycleHookTypesAnswer
 
 =head2 LifecycleHookTypes => ArrayRef[Str]
 
-  
-
-One or more of the following notification types:
+  One or more of the following notification types:
 
 =over
 
@@ -31,14 +28,6 @@ C<autoscaling:EC2_INSTANCE_LAUNCHING>
 C<autoscaling:EC2_INSTANCE_TERMINATING>
 
 =back
-
-
-
-
-
-
-
-
 
 
 

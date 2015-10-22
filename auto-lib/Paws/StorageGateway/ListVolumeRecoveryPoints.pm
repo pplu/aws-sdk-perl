@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::ListVolumeRecoveryPoints {
+package Paws::StorageGateway::ListVolumeRecoveryPoints;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::StorageGateway::ListVolumeRecoveryPoints {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListVolumeRecoveryPoints');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::ListVolumeRecoveryPointsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method ListVolumeRecov
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method ListVolumeRecoveryPoints.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListVolumeRecoveryPoints.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListVolumeRecoveryPoints.
 
 As an example:
 

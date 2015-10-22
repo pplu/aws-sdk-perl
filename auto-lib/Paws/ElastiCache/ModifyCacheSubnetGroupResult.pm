@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::ModifyCacheSubnetGroupResult {
+package Paws::ElastiCache::ModifyCacheSubnetGroupResult;
   use Moose;
   has CacheSubnetGroup => (is => 'ro', isa => 'Paws::ElastiCache::CacheSubnetGroup');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,7 @@ Paws::ElastiCache::ModifyCacheSubnetGroupResult
 
 =head1 ATTRIBUTES
 
-=head2 CacheSubnetGroup => Paws::ElastiCache::CacheSubnetGroup
+=head2 CacheSubnetGroup => L<Paws::ElastiCache::CacheSubnetGroup>
 
   
 

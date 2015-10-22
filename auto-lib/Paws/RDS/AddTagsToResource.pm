@@ -1,5 +1,5 @@
 
-package Paws::RDS::AddTagsToResource {
+package Paws::RDS::AddTagsToResource;
   use Moose;
   has ResourceName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]', required => 1);
@@ -9,7 +9,6 @@ package Paws::RDS::AddTagsToResource {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddTagsToResource');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method AddTagsToResour
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method AddTagsToResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddTagsToResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddTagsToResource.
 
 As an example:
 
@@ -36,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceName => Str
 
-  
-
-The Amazon RDS resource the tags will be added to. This value is an
+  The Amazon RDS resource the tags will be added to. This value is an
 Amazon Resource Name (ARN). For information about creating an ARN, see
 Constructing an RDS Amazon Resource Name (ARN).
 
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::RDS::Tag]
-
-  
-
-The tags to be assigned to the Amazon RDS resource.
-
-
-
-
-
-
-
-
-
+  The tags to be assigned to the Amazon RDS resource.
 
 
 

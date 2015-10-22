@@ -1,5 +1,5 @@
 
-package Paws::EC2::ModifySubnetAttribute {
+package Paws::EC2::ModifySubnetAttribute;
   use Moose;
   has MapPublicIpOnLaunch => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue');
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subnetId' , required => 1);
@@ -9,7 +9,6 @@ package Paws::EC2::ModifySubnetAttribute {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifySubnetAttribute');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ModifySubnetAtt
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method ModifySubnetAttribute.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifySubnetAttribute.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifySubnetAttribute.
 
 As an example:
 
@@ -34,36 +33,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 MapPublicIpOnLaunch => Paws::EC2::AttributeBooleanValue
+=head2 MapPublicIpOnLaunch => L<Paws::EC2::AttributeBooleanValue>
 
-  
-
-Specify C<true> to indicate that instances launched into the specified
+  Specify C<true> to indicate that instances launched into the specified
 subnet should be assigned public IP address.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> SubnetId => Str
 
-  
-
-The ID of the subnet.
-
-
-
-
-
-
-
-
-
+  The ID of the subnet.
 
 
 

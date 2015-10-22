@@ -1,5 +1,5 @@
 
-package Paws::RDS::DeleteDBInstance {
+package Paws::RDS::DeleteDBInstance;
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has FinalDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::RDS::DeleteDBInstance {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBInstance');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DeleteDBInstanceResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBInstanceResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DeleteDBInstanc
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DeleteDBInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDBInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDBInstance.
 
 As an example:
 
@@ -37,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  
-
-The DB instance identifier for the DB instance to be deleted. This
+  The DB instance identifier for the DB instance to be deleted. This
 parameter isn't case-sensitive.
 
 Constraints:
@@ -55,19 +52,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 FinalDBSnapshotIdentifier => Str
 
-  
-
-The DBSnapshotIdentifier of the new DBSnapshot created when
+  The DBSnapshotIdentifier of the new DBSnapshot created when
 SkipFinalSnapshot is set to C<false>.
 
 Specifying this parameter and also setting the SkipFinalShapshot
@@ -88,19 +75,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 SkipFinalSnapshot => Bool
 
-  
-
-Determines whether a final DB snapshot is created before the DB
+  Determines whether a final DB snapshot is created before the DB
 instance is deleted. If C<true> is specified, no DBSnapshot is created.
 If C<false> is specified, a DB snapshot is created before the DB
 instance is deleted.
@@ -115,15 +92,6 @@ The FinalDBSnapshotIdentifier parameter must be specified if
 SkipFinalSnapshot is C<false>.
 
 Default: C<false>
-
-
-
-
-
-
-
-
-
 
 
 

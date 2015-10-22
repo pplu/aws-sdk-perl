@@ -1,5 +1,5 @@
 
-package Paws::RedShift::CreateHsmClientCertificate {
+package Paws::RedShift::CreateHsmClientCertificate;
   use Moose;
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
@@ -9,7 +9,6 @@ package Paws::RedShift::CreateHsmClientCertificate {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHsmClientCertificate');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::CreateHsmClientCertificateResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateHsmClientCertificateResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method CreateHsmClient
 Amazon Redshift service. Use the attributes of this class
 as arguments to method CreateHsmClientCertificate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateHsmClientCertificate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateHsmClientCertificate.
 
 As an example:
 
@@ -36,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HsmClientCertificateIdentifier => Str
 
-  
-
-The identifier to be assigned to the new HSM client certificate that
+  The identifier to be assigned to the new HSM client certificate that
 the cluster will use to connect to the HSM to use the database
 encryption keys.
 
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
-
-  
-
-A list of tag instances.
-
-
-
-
-
-
-
-
-
+  A list of tag instances.
 
 
 

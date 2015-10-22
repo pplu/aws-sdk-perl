@@ -1,9 +1,8 @@
 
-package Paws::CloudHSM::ModifyHapgResponse {
+package Paws::CloudHSM::ModifyHapgResponse;
   use Moose;
   has HapgArn => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,18 +14,7 @@ Paws::CloudHSM::ModifyHapgResponse
 
 =head2 HapgArn => Str
 
-  
-
-The ARN of the high-availability partition group.
-
-
-
-
-
-
-
-
-
+  The ARN of the high-availability partition group.
 
 
 =cut

@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::CreateMLModel {
+package Paws::MachineLearning::CreateMLModel;
   use Moose;
   has MLModelId => (is => 'ro', isa => 'Str', required => 1);
   has MLModelName => (is => 'ro', isa => 'Str');
@@ -14,7 +14,6 @@ package Paws::MachineLearning::CreateMLModel {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMLModel');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::CreateMLModelOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ This class represents the parameters used for calling the method CreateMLModel o
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method CreateMLModel.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateMLModel.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateMLModel.
 
 As an example:
 
@@ -41,39 +40,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MLModelId => Str
 
-  
-
-A user-supplied ID that uniquely identifies the C<MLModel>.
-
-
-
-
-
-
-
-
-
+  A user-supplied ID that uniquely identifies the C<MLModel>.
 
 =head2 MLModelName => Str
 
-  
-
-A user-supplied name or description of the C<MLModel>.
-
-
-
-
-
-
-
-
-
+  A user-supplied name or description of the C<MLModel>.
 
 =head2 B<REQUIRED> MLModelType => Str
 
-  
-
-The category of supervised learning that this C<MLModel> will address.
+  The category of supervised learning that this C<MLModel> will address.
 Choose from the following types:
 
 =over
@@ -91,20 +66,9 @@ number of values.
 
 For more information, see the Amazon Machine Learning Developer Guide.
 
+=head2 Parameters => L<Paws::MachineLearning::TrainingParameters>
 
-
-
-
-
-
-
-
-
-=head2 Parameters => Paws::MachineLearning::TrainingParameters
-
-  
-
-A list of the training parameters in the C<MLModel>. The list is
+  A list of the training parameters in the C<MLModel>. The list is
 implemented as a map of key/value pairs.
 
 The following is the current set of training parameters:
@@ -152,63 +116,22 @@ default value is 33554432.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 Recipe => Str
 
-  
-
-The data recipe for creating C<MLModel>. You must specify either the
-recipe or its URI. If you donE<acirc>E<128>E<153>t specify a recipe or
-its URI, Amazon ML creates a default.
-
-
-
-
-
-
-
-
-
+  The data recipe for creating C<MLModel>. You must specify either the
+recipe or its URI. If you donE<rsquo>t specify a recipe or its URI,
+Amazon ML creates a default.
 
 =head2 RecipeUri => Str
 
-  
-
-The Amazon Simple Storage Service (Amazon S3) location and file name
+  The Amazon Simple Storage Service (Amazon S3) location and file name
 that contains the C<MLModel> recipe. You must specify either the recipe
-or its URI. If you donE<acirc>E<128>E<153>t specify a recipe or its
-URI, Amazon ML creates a default.
-
-
-
-
-
-
-
-
-
+or its URI. If you donE<rsquo>t specify a recipe or its URI, Amazon ML
+creates a default.
 
 =head2 B<REQUIRED> TrainingDataSourceId => Str
 
-  
-
-The C<DataSource> that points to the training data.
-
-
-
-
-
-
-
-
-
+  The C<DataSource> that points to the training data.
 
 
 

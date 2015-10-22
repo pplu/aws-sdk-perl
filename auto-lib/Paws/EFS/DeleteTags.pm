@@ -1,5 +1,5 @@
 
-package Paws::EFS::DeleteTags {
+package Paws::EFS::DeleteTags;
   use Moose;
   has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId' , required => 1);
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -11,7 +11,6 @@ package Paws::EFS::DeleteTags {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method DeleteTags on t
 Amazon Elastic File System service. Use the attributes of this class
 as arguments to method DeleteTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteTags.
 
 As an example:
 
@@ -38,33 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-  
-
-String. The ID of the file system whose tags you want to delete.
-
-
-
-
-
-
-
-
-
+  String. The ID of the file system whose tags you want to delete.
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
-  
-
-A list of tag keys to delete.
-
-
-
-
-
-
-
-
-
+  A list of tag keys to delete.
 
 
 

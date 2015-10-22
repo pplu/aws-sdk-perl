@@ -1,9 +1,8 @@
 
-package Paws::CloudHSM::ListAvailableZonesResponse {
+package Paws::CloudHSM::ListAvailableZonesResponse;
   use Moose;
   has AZList => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,19 +14,8 @@ Paws::CloudHSM::ListAvailableZonesResponse
 
 =head2 AZList => ArrayRef[Str]
 
-  
-
-The list of Availability Zones that have available AWS CloudHSM
+  The list of Availability Zones that have available AWS CloudHSM
 capacity.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -1,5 +1,5 @@
 
-package Paws::SDB::DomainMetadata {
+package Paws::SDB::DomainMetadata;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::SDB::DomainMetadata {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DomainMetadata');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SDB::DomainMetadataResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DomainMetadataResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DomainMetadata 
 Amazon SimpleDB service. Use the attributes of this class
 as arguments to method DomainMetadata.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DomainMetadata.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DomainMetadata.
 
 As an example:
 
@@ -35,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of the domain for which to display the metadata of.
-
-
-
-
-
-
-
-
-
+  The name of the domain for which to display the metadata of.
 
 
 

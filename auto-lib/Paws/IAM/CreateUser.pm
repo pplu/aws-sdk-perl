@@ -1,5 +1,5 @@
 
-package Paws::IAM::CreateUser {
+package Paws::IAM::CreateUser;
   use Moose;
   has Path => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::IAM::CreateUser {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUser');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreateUserResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateUserResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method CreateUser on t
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method CreateUser.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateUser.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateUser.
 
 As an example:
 
@@ -36,37 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Path => Str
 
-  
-
-The path for the user name. For more information about paths, see IAM
+  The path for the user name. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user to create.
-
-
-
-
-
-
-
-
-
+  The name of the user to create.
 
 
 

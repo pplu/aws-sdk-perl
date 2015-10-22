@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::SubscribeToDataset {
+package Paws::CognitoSync::SubscribeToDataset;
   use Moose;
   has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName' , required => 1);
   has DeviceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DeviceId' , required => 1);
@@ -13,7 +13,6 @@ package Paws::CognitoSync::SubscribeToDataset {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::SubscribeToDatasetResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SubscribeToDatasetResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +27,7 @@ This class represents the parameters used for calling the method SubscribeToData
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method SubscribeToDataset.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SubscribeToDataset.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SubscribeToDataset.
 
 As an example:
 
@@ -40,65 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DatasetName => Str
 
-  
-
-The name of the dataset to subcribe to.
-
-
-
-
-
-
-
-
-
+  The name of the dataset to subcribe to.
 
 =head2 B<REQUIRED> DeviceId => Str
 
-  
-
-The unique ID generated for this device by Cognito.
-
-
-
-
-
-
-
-
-
+  The unique ID generated for this device by Cognito.
 
 =head2 B<REQUIRED> IdentityId => Str
 
-  
-
-Unique ID for this identity.
-
-
-
-
-
-
-
-
-
+  Unique ID for this identity.
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-A name-spaced GUID (for example,
+  A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. The ID of the pool to which the identity belongs.
-
-
-
-
-
-
-
-
-
 
 
 

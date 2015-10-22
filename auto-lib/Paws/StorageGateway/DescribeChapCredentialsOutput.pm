@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::DescribeChapCredentialsOutput {
+package Paws::StorageGateway::DescribeChapCredentialsOutput;
   use Moose;
   has ChapCredentials => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::ChapInfo]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,11 +12,9 @@ Paws::StorageGateway::DescribeChapCredentialsOutput
 
 =head1 ATTRIBUTES
 
-=head2 ChapCredentials => ArrayRef[Paws::StorageGateway::ChapInfo]
+=head2 ChapCredentials => ArrayRef[L<Paws::StorageGateway::ChapInfo>]
 
-  
-
-An array of ChapInfo objects that represent CHAP credentials. Each
+  An array of ChapInfo objects that represent CHAP credentials. Each
 object in the array contains CHAP credential information for one
 target-initiator pair. If no CHAP credentials are set, an empty array
 is returned. CHAP credential information is provided in a JSON object
@@ -46,14 +43,6 @@ client).
 B<TargetARN>: The Amazon Resource Name (ARN) of the storage volume.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

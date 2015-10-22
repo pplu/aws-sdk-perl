@@ -1,9 +1,8 @@
 
-package Paws::ELB::DetachLoadBalancerFromSubnetsOutput {
+package Paws::ELB::DetachLoadBalancerFromSubnetsOutput;
   use Moose;
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -16,18 +15,7 @@ Paws::ELB::DetachLoadBalancerFromSubnetsOutput
 
 =head2 Subnets => ArrayRef[Str]
 
-  
-
-The IDs of the remaining subnets for the load balancer.
-
-
-
-
-
-
-
-
-
+  The IDs of the remaining subnets for the load balancer.
 
 
 =cut

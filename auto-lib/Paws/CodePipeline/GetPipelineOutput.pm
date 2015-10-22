@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::GetPipelineOutput {
+package Paws::CodePipeline::GetPipelineOutput;
   use Moose;
-  has pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration');
+  has Pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', traits => ['Unwrapped'], xmlname => 'pipeline' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,7 @@ Paws::CodePipeline::GetPipelineOutput
 
 =head1 ATTRIBUTES
 
-=head2 pipeline => Paws::CodePipeline::PipelineDeclaration
+=head2 Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
 
   
 

@@ -1,5 +1,5 @@
 
-package Paws::IAM::CreatePolicy {
+package Paws::IAM::CreatePolicy;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has Path => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::IAM::CreatePolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePolicy');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreatePolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePolicyResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CreatePolicy on
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method CreatePolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreatePolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePolicy.
 
 As an example:
 
@@ -38,9 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  
-
-A friendly description of the policy.
+  A friendly description of the policy.
 
 Typically used to store information about the permissions defined in
 the policy. For example, "Grants access to production DynamoDB tables."
@@ -48,65 +45,23 @@ the policy. For example, "Grants access to production DynamoDB tables."
 The policy description is immutable. After a value is assigned, it
 cannot be changed.
 
-
-
-
-
-
-
-
-
-
 =head2 Path => Str
 
-  
+  The path for the policy.
 
-The path for the policy.
-
-For more information about paths, see IAM Identifiers in the I<Using
-IAM> guide.
+For more information about paths, see IAM Identifiers in the I<IAM User
+Guide>.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PolicyDocument => Str
 
-  
-
-The policy document.
-
-
-
-
-
-
-
-
-
+  The policy document.
 
 =head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The name of the policy document.
-
-
-
-
-
-
-
-
-
+  The name of the policy document.
 
 
 

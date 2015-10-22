@@ -1,10 +1,9 @@
 
-package Paws::SimpleWorkflow::WorkflowTypeDetail {
+package Paws::SimpleWorkflow::WorkflowTypeDetail;
   use Moose;
-  has configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeConfiguration', required => 1);
-  has typeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeInfo', required => 1);
+  has Configuration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeConfiguration', traits => ['Unwrapped'], xmlname => 'configuration' , required => 1);
+  has TypeInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowTypeInfo', traits => ['Unwrapped'], xmlname => 'typeInfo' , required => 1);
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,26 +13,13 @@ Paws::SimpleWorkflow::WorkflowTypeDetail
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> configuration => Paws::SimpleWorkflow::WorkflowTypeConfiguration
+=head2 B<REQUIRED> Configuration => L<Paws::SimpleWorkflow::WorkflowTypeConfiguration>
 
-  
-
-Configuration settings of the workflow type registered through
+  Configuration settings of the workflow type registered through
 RegisterWorkflowType
+=head2 B<REQUIRED> TypeInfo => L<Paws::SimpleWorkflow::WorkflowTypeInfo>
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> typeInfo => Paws::SimpleWorkflow::WorkflowTypeInfo
-
-  
-
-General information about the workflow type.
+  General information about the workflow type.
 
 The status of the workflow type (returned in the WorkflowTypeInfo
 structure) can be one of the following.
@@ -49,14 +35,6 @@ supporting this type running. You cannot create new workflow executions
 of this type.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

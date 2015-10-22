@@ -1,9 +1,8 @@
 
-package Paws::AutoScaling::ActivityType {
+package Paws::AutoScaling::ActivityType;
   use Moose;
   has Activity => (is => 'ro', isa => 'Paws::AutoScaling::Activity');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::AutoScaling::ActivityType
 
 =head1 ATTRIBUTES
 
-=head2 Activity => Paws::AutoScaling::Activity
+=head2 Activity => L<Paws::AutoScaling::Activity>
 
-  
-
-A scaling activity.
-
-
-
-
-
-
-
-
-
+  A scaling activity.
 
 
 =cut

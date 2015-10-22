@@ -1,5 +1,5 @@
 
-package Paws::RedShift::DisableLogging {
+package Paws::RedShift::DisableLogging;
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::RedShift::DisableLogging {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableLogging');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::LoggingStatus');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DisableLoggingResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DisableLogging 
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DisableLogging.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DisableLogging.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisableLogging.
 
 As an example:
 
@@ -35,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  
-
-The identifier of the cluster on which logging is to be stopped.
+  The identifier of the cluster on which logging is to be stopped.
 
 Example: C<examplecluster>
-
-
-
-
-
-
-
-
-
 
 
 

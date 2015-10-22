@@ -1,9 +1,8 @@
 
-package Paws::DS::ConnectDirectoryResult {
+package Paws::DS::ConnectDirectoryResult;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,18 +14,7 @@ Paws::DS::ConnectDirectoryResult
 
 =head2 DirectoryId => Str
 
-  
-
-The identifier of the new directory.
-
-
-
-
-
-
-
-
-
+  The identifier of the new directory.
 
 
 =cut

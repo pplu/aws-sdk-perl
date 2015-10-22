@@ -1,9 +1,8 @@
 
-package Paws::CloudHSM::DeleteLunaClientResponse {
+package Paws::CloudHSM::DeleteLunaClientResponse;
   use Moose;
   has Status => (is => 'ro', isa => 'Str', required => 1);
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,18 +14,7 @@ Paws::CloudHSM::DeleteLunaClientResponse
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The status of the action.
-
-
-
-
-
-
-
-
-
+  The status of the action.
 
 
 =cut

@@ -1,12 +1,11 @@
 
-package Paws::S3::GetBucketWebsiteOutput {
+package Paws::S3::GetBucketWebsiteOutput;
   use Moose;
   has ErrorDocument => (is => 'ro', isa => 'Paws::S3::ErrorDocument');
   has IndexDocument => (is => 'ro', isa => 'Paws::S3::IndexDocument');
   has RedirectAllRequestsTo => (is => 'ro', isa => 'Paws::S3::RedirectAllRequestsTo');
   has RoutingRules => (is => 'ro', isa => 'ArrayRef[Paws::S3::RoutingRule]', traits => ['Unwrapped'], xmlname => 'RoutingRule');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +20,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Simple Storage Service service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -31,19 +30,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 ErrorDocument => Paws::S3::ErrorDocument
+=head2 ErrorDocument => L<Paws::S3::ErrorDocument>
 
   
 
-=head2 IndexDocument => Paws::S3::IndexDocument
+=head2 IndexDocument => L<Paws::S3::IndexDocument>
 
   
 
-=head2 RedirectAllRequestsTo => Paws::S3::RedirectAllRequestsTo
+=head2 RedirectAllRequestsTo => L<Paws::S3::RedirectAllRequestsTo>
 
   
 
-=head2 RoutingRules => ArrayRef[Paws::S3::RoutingRule]
+=head2 RoutingRules => ArrayRef[L<Paws::S3::RoutingRule>]
 
   
 

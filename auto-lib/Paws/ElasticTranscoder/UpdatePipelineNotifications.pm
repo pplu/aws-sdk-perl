@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::UpdatePipelineNotifications {
+package Paws::ElasticTranscoder::UpdatePipelineNotifications;
   use Moose;
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
   has Notifications => (is => 'ro', isa => 'Paws::ElasticTranscoder::Notifications', required => 1);
@@ -11,7 +11,6 @@ package Paws::ElasticTranscoder::UpdatePipelineNotifications {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdatePipelineNotificationsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method UpdatePipelineN
 Amazon Elastic Transcoder service. Use the attributes of this class
 as arguments to method UpdatePipelineNotifications.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipelineNotifications.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipelineNotifications.
 
 As an example:
 
@@ -38,25 +37,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-  
-
-The identifier of the pipeline for which you want to change
+  The identifier of the pipeline for which you want to change
 notification settings.
 
+=head2 B<REQUIRED> Notifications => L<Paws::ElasticTranscoder::Notifications>
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Notifications => Paws::ElasticTranscoder::Notifications
-
-  
-
-The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
+  The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
 topic that you want to notify to report job status.
 
 To receive notifications, you must also subscribe to the new topic in
@@ -83,14 +69,6 @@ to notify when Elastic Transcoder encounters an error condition. This
 is the ARN that Amazon SNS returned when you created the topic.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

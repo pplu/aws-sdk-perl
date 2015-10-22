@@ -1,5 +1,5 @@
 
-package Paws::Route53Domains::EnableDomainAutoRenew {
+package Paws::Route53Domains::EnableDomainAutoRenew;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::Route53Domains::EnableDomainAutoRenew {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'EnableDomainAutoRenew');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::EnableDomainAutoRenewResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method EnableDomainAut
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method EnableDomainAutoRenew.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to EnableDomainAutoRenew.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EnableDomainAutoRenew.
 
 As an example:
 

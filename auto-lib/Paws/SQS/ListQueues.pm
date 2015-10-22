@@ -1,5 +1,5 @@
 
-package Paws::SQS::ListQueues {
+package Paws::SQS::ListQueues;
   use Moose;
   has QueueNamePrefix => (is => 'ro', isa => 'Str');
 
@@ -8,7 +8,6 @@ package Paws::SQS::ListQueues {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListQueues');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SQS::ListQueuesResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListQueuesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method ListQueues on t
 Amazon Simple Queue Service service. Use the attributes of this class
 as arguments to method ListQueues.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListQueues.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListQueues.
 
 As an example:
 
@@ -35,19 +34,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 QueueNamePrefix => Str
 
-  
-
-A string to use for filtering the list results. Only those queues whose
+  A string to use for filtering the list results. Only those queues whose
 name begins with the specified string are returned.
-
-
-
-
-
-
-
-
-
 
 
 

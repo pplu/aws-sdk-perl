@@ -1,9 +1,8 @@
 
-package Paws::SNS::CreateTopicResponse {
+package Paws::SNS::CreateTopicResponse;
   use Moose;
   has TopicArn => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -16,18 +15,7 @@ Paws::SNS::CreateTopicResponse
 
 =head2 TopicArn => Str
 
-  
-
-The Amazon Resource Name (ARN) assigned to the created topic.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) assigned to the created topic.
 
 
 =cut

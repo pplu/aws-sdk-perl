@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::BatchGetItem {
+package Paws::DynamoDB::BatchGetItem;
   use Moose;
   has RequestItems => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetRequestMap', required => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::DynamoDB::BatchGetItem {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchGetItem');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::BatchGetItemOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method BatchGetItem on
 Amazon DynamoDB service. Use the attributes of this class
 as arguments to method BatchGetItem.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetItem.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchGetItem.
 
 As an example:
 
@@ -34,11 +33,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> RequestItems => Paws::DynamoDB::BatchGetRequestMap
+=head2 B<REQUIRED> RequestItems => L<Paws::DynamoDB::BatchGetRequestMap>
 
-  
-
-A map of one or more table names and, for each table, a map that
+  A map of one or more table names and, for each table, a map that
 describes one or more items to retrieve from that table. Each table
 name can be used only once per I<BatchGetItem> request.
 
@@ -76,7 +73,7 @@ misinterpreted in an expression.
 
 =back
 
-Use the B<
+Use the hash character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 
 =over
@@ -97,7 +94,7 @@ I<ExpressionAttributeNames>:
 
 =item *
 
-C<{"
+{"
 
 =back
 
@@ -108,7 +105,7 @@ example:
 
 =item *
 
-C<
+
 
 =back
 
@@ -162,14 +159,6 @@ consumption. DynamoDB determines capacity units consumed based on item
 size, not on the amount of data that is returned to an application.
 
 =back
-
-
-
-
-
-
-
-
 
 
 =head2 ReturnConsumedCapacity => Str

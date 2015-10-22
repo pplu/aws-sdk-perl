@@ -1,18 +1,17 @@
 
-package Paws::Support::DescribeCommunications {
+package Paws::Support::DescribeCommunications;
   use Moose;
-  has afterTime => (is => 'ro', isa => 'Str');
-  has beforeTime => (is => 'ro', isa => 'Str');
-  has caseId => (is => 'ro', isa => 'Str', required => 1);
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has AfterTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'afterTime' );
+  has BeforeTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'beforeTime' );
+  has CaseId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'caseId' , required => 1);
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCommunications');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::DescribeCommunicationsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method DescribeCommuni
 AWS Support service. Use the attributes of this class
 as arguments to method DescribeCommunications.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCommunications.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCommunications.
 
 As an example:
 
@@ -37,85 +36,30 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 afterTime => Str
+=head2 AfterTime => Str
 
-  
-
-The start date for a filtered date search on support case
+  The start date for a filtered date search on support case
 communications. Case communications are available for 12 months after
 creation.
 
+=head2 BeforeTime => Str
 
-
-
-
-
-
-
-
-
-=head2 beforeTime => Str
-
-  
-
-The end date for a filtered date search on support case communications.
+  The end date for a filtered date search on support case communications.
 Case communications are available for 12 months after creation.
 
+=head2 B<REQUIRED> CaseId => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> caseId => Str
-
-  
-
-The AWS Support case ID requested or returned in the call. The case ID
+  The AWS Support case ID requested or returned in the call. The case ID
 is an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
+=head2 MaxResults => Int
 
+  The maximum number of results to return before paginating.
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-=head2 maxResults => Int
-
-  
-
-The maximum number of results to return before paginating.
-
-
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-A resumption point for pagination.
-
-
-
-
-
-
-
-
-
+  A resumption point for pagination.
 
 
 

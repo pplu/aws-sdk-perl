@@ -1,9 +1,8 @@
 
-package Paws::Route53::ListTagsForResourcesResponse {
+package Paws::Route53::ListTagsForResourcesResponse;
   use Moose;
   has ResourceTagSets => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ResourceTagSet]', traits => ['Unwrapped'], xmlname => 'ResourceTagSet', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -18,7 +17,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Route 53 service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -28,21 +27,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ResourceTagSets => ArrayRef[Paws::Route53::ResourceTagSet]
+=head2 B<REQUIRED> ResourceTagSets => ArrayRef[L<Paws::Route53::ResourceTagSet>]
 
-  
-
-A list of C<ResourceTagSet>s containing tags associated with the
+  A list of C<ResourceTagSet>s containing tags associated with the
 specified resources.
-
-
-
-
-
-
-
-
-
 
 
 

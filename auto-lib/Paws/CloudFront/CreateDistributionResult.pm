@@ -1,11 +1,10 @@
 
-package Paws::CloudFront::CreateDistributionResult {
+package Paws::CloudFront::CreateDistributionResult;
   use Moose;
   has Distribution => (is => 'ro', isa => 'Paws::CloudFront::Distribution');
   has ETag => (is => 'ro', isa => 'Str');
   has Location => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +19,7 @@ This class represents the parameters used for calling the method  on the
 Amazon CloudFront service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -30,52 +29,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Distribution => Paws::CloudFront::Distribution
+=head2 Distribution => L<Paws::CloudFront::Distribution>
 
-  
-
-The distribution's information.
-
-
-
-
-
-
-
-
-
+  The distribution's information.
 
 =head2 ETag => Str
 
-  
-
-The current version of the distribution created.
-
-
-
-
-
-
-
-
-
+  The current version of the distribution created.
 
 =head2 Location => Str
 
-  
-
-The fully qualified URI of the new distribution resource just created.
+  The fully qualified URI of the new distribution resource just created.
 For example:
 https://cloudfront.amazonaws.com/2010-11-01/distribution/EDFDVBD632BHDS5.
-
-
-
-
-
-
-
-
-
 
 
 

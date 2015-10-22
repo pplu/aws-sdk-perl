@@ -1,9 +1,8 @@
 
-package Paws::IAM::CreateAccessKeyResponse {
+package Paws::IAM::CreateAccessKeyResponse;
   use Moose;
   has AccessKey => (is => 'ro', isa => 'Paws::IAM::AccessKey', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::IAM::CreateAccessKeyResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AccessKey => Paws::IAM::AccessKey
+=head2 B<REQUIRED> AccessKey => L<Paws::IAM::AccessKey>
 
-  
-
-Information about the access key.
-
-
-
-
-
-
-
-
-
+  Information about the access key.
 
 
 =cut

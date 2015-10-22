@@ -1,5 +1,5 @@
 
-package Paws::SNS::ListSubscriptionsByTopic {
+package Paws::SNS::ListSubscriptionsByTopic;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::SNS::ListSubscriptionsByTopic {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListSubscriptionsByTopic');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::ListSubscriptionsByTopicResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListSubscriptionsByTopicResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ListSubscriptio
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method ListSubscriptionsByTopic.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListSubscriptionsByTopic.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListSubscriptionsByTopic.
 
 As an example:
 
@@ -36,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  
-
-Token returned by the previous C<ListSubscriptionsByTopic> request.
-
-
-
-
-
-
-
-
-
+  Token returned by the previous C<ListSubscriptionsByTopic> request.
 
 =head2 B<REQUIRED> TopicArn => Str
 
-  
-
-The ARN of the topic for which you wish to find subscriptions.
-
-
-
-
-
-
-
-
-
+  The ARN of the topic for which you wish to find subscriptions.
 
 
 

@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateRoute {
+package Paws::EC2::CreateRoute;
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' , required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -14,7 +14,6 @@ package Paws::EC2::CreateRoute {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateRoute');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateRouteResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ This class represents the parameters used for calling the method CreateRoute on 
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateRoute.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateRoute.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateRoute.
 
 As an example:
 
@@ -41,115 +40,38 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DestinationCidrBlock => Str
 
-  
-
-The CIDR address block used for the destination match. Routing
+  The CIDR address block used for the destination match. Routing
 decisions are based on the most specific match.
-
-
-
-
-
-
-
-
-
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 GatewayId => Str
 
-  
-
-The ID of an Internet gateway or virtual private gateway attached to
+  The ID of an Internet gateway or virtual private gateway attached to
 your VPC.
-
-
-
-
-
-
-
-
-
 
 =head2 InstanceId => Str
 
-  
-
-The ID of a NAT instance in your VPC. The operation fails if you
+  The ID of a NAT instance in your VPC. The operation fails if you
 specify an instance ID unless exactly one network interface is
 attached.
 
-
-
-
-
-
-
-
-
-
 =head2 NetworkInterfaceId => Str
 
-  
-
-The ID of a network interface.
-
-
-
-
-
-
-
-
-
+  The ID of a network interface.
 
 =head2 B<REQUIRED> RouteTableId => Str
 
-  
-
-The ID of the route table for the route.
-
-
-
-
-
-
-
-
-
+  The ID of the route table for the route.
 
 =head2 VpcPeeringConnectionId => Str
 
-  
-
-The ID of a VPC peering connection.
-
-
-
-
-
-
-
-
-
+  The ID of a VPC peering connection.
 
 
 

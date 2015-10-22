@@ -1,5 +1,5 @@
 
-package Paws::EC2::ReportInstanceStatus {
+package Paws::EC2::ReportInstanceStatus;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -14,7 +14,6 @@ package Paws::EC2::ReportInstanceStatus {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ReportInstanceStatus');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ This class represents the parameters used for calling the method ReportInstanceS
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method ReportInstanceStatus.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ReportInstanceStatus.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ReportInstanceStatus.
 
 As an example:
 
@@ -41,72 +40,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  
-
-Descriptive text about the health state of your instance.
-
-
-
-
-
-
-
-
-
+  Descriptive text about the health state of your instance.
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 EndTime => Str
 
-  
-
-The time at which the reported instance health state ended.
-
-
-
-
-
-
-
-
-
+  The time at which the reported instance health state ended.
 
 =head2 B<REQUIRED> Instances => ArrayRef[Str]
 
-  
-
-One or more instances.
-
-
-
-
-
-
-
-
-
+  One or more instances.
 
 =head2 B<REQUIRED> ReasonCodes => ArrayRef[Str]
 
-  
-
-One or more reason codes that describes the health state of your
+  One or more reason codes that describes the health state of your
 instance.
 
 =over
@@ -154,43 +107,13 @@ C<other>: [explain using the description parameter]
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 StartTime => Str
 
-  
-
-The time at which the reported instance health state began.
-
-
-
-
-
-
-
-
-
+  The time at which the reported instance health state began.
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The status of all instances listed.
-
-
-
-
-
-
-
-
-
+  The status of all instances listed.
 
 
 

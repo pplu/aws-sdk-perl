@@ -1,9 +1,8 @@
 
-package Paws::CodeDeploy::CreateApplicationOutput {
+package Paws::CodeDeploy::CreateApplicationOutput;
   use Moose;
-  has applicationId => (is => 'ro', isa => 'Str');
+  has ApplicationId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'applicationId' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::CodeDeploy::CreateApplicationOutput
 
 =head1 ATTRIBUTES
 
-=head2 applicationId => Str
+=head2 ApplicationId => Str
 
-  
-
-A unique application ID.
-
-
-
-
-
-
-
-
-
+  A unique application ID.
 
 
 =cut

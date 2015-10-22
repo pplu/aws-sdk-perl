@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::UpdateGatewaySoftwareNowOutput {
+package Paws::StorageGateway::UpdateGatewaySoftwareNowOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

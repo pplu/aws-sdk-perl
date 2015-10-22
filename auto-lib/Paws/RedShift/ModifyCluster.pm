@@ -1,5 +1,5 @@
 
-package Paws::RedShift::ModifyCluster {
+package Paws::RedShift::ModifyCluster;
   use Moose;
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -22,7 +22,6 @@ package Paws::RedShift::ModifyCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::ModifyClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyClusterResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +36,7 @@ This class represents the parameters used for calling the method ModifyCluster o
 Amazon Redshift service. Use the attributes of this class
 as arguments to method ModifyCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyCluster.
 
 As an example:
 
@@ -49,27 +48,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllowVersionUpgrade => Bool
 
-  
-
-If C<true>, major version upgrades will be applied automatically to the
+  If C<true>, major version upgrades will be applied automatically to the
 cluster during the maintenance window.
 
 Default: C<false>
 
-
-
-
-
-
-
-
-
-
 =head2 AutomatedSnapshotRetentionPeriod => Int
 
-  
-
-The number of days that automated snapshots are retained. If the value
+  The number of days that automated snapshots are retained. If the value
 is 0, automated snapshots are disabled. Even if automated snapshots are
 disabled, you can still create manual snapshots when you want with
 CreateClusterSnapshot.
@@ -82,37 +68,15 @@ Default: Uses existing setting.
 
 Constraints: Must be a value from 0 to 35.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  
-
-The unique identifier of the cluster to be modified.
+  The unique identifier of the cluster to be modified.
 
 Example: C<examplecluster>
 
-
-
-
-
-
-
-
-
-
 =head2 ClusterParameterGroupName => Str
 
-  
-
-The name of the cluster parameter group to apply to this cluster. This
+  The name of the cluster parameter group to apply to this cluster. This
 change is applied only after the cluster is rebooted. To reboot a
 cluster use RebootCluster.
 
@@ -121,20 +85,9 @@ Default: Uses existing setting.
 Constraints: The cluster parameter group must be in the same parameter
 group family that matches the cluster version.
 
-
-
-
-
-
-
-
-
-
 =head2 ClusterSecurityGroups => ArrayRef[Str]
 
-  
-
-A list of cluster security groups to be authorized on this cluster.
+  A list of cluster security groups to be authorized on this cluster.
 This change is asynchronously applied as soon as possible.
 
 Security groups currently associated with the cluster, and not in the
@@ -153,19 +106,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 ClusterType => Str
 
-  
-
-The new cluster type.
+  The new cluster type.
 
 When you submit your cluster resize request, your existing cluster goes
 into a read-only mode. After Amazon Redshift provisions a new cluster
@@ -176,20 +119,9 @@ resize request.
 
 Valid Values: C< multi-node | single-node>
 
-
-
-
-
-
-
-
-
-
 =head2 ClusterVersion => Str
 
-  
-
-The new version number of the Amazon Redshift engine to upgrade to.
+  The new version number of the Amazon Redshift engine to upgrade to.
 
 For major version upgrades, if a non-default cluster parameter group is
 currently in use, a new cluster parameter group in the cluster
@@ -201,53 +133,20 @@ Cluster Management Guide>.
 
 Example: C<1.0>
 
-
-
-
-
-
-
-
-
-
 =head2 HsmClientCertificateIdentifier => Str
 
-  
-
-Specifies the name of the HSM client certificate the Amazon Redshift
+  Specifies the name of the HSM client certificate the Amazon Redshift
 cluster uses to retrieve the data encryption keys stored in an HSM.
-
-
-
-
-
-
-
-
-
 
 =head2 HsmConfigurationIdentifier => Str
 
-  
-
-Specifies the name of the HSM configuration that contains the
+  Specifies the name of the HSM configuration that contains the
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
 
-
-
-
-
-
-
-
-
-
 =head2 MasterUserPassword => Str
 
-  
-
-The new password for the cluster master user. This change is
+  The new password for the cluster master user. This change is
 asynchronously applied as soon as possible. Between the time of the
 request and the completion of the request, the C<MasterUserPassword>
 element exists in the C<PendingModifiedValues> element of the operation
@@ -275,19 +174,9 @@ except ' (single quote), " (double quote), \, /, @, or space.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 NewClusterIdentifier => Str
 
-  
-
-The new identifier for the cluster.
+  The new identifier for the cluster.
 
 Constraints:
 
@@ -307,20 +196,9 @@ Constraints:
 
 Example: C<examplecluster>
 
-
-
-
-
-
-
-
-
-
 =head2 NodeType => Str
 
-  
-
-The new node type of the cluster. If you specify a new node type, you
+  The new node type of the cluster. If you specify a new node type, you
 must also specify the number of nodes parameter.
 
 When you submit your request to resize a cluster, Amazon Redshift sets
@@ -334,20 +212,9 @@ You can use DescribeResize to track the progress of the resize request.
 Valid Values: C< ds1.xlarge> | C<ds1.8xlarge> | C< ds2.xlarge> |
 C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge>.
 
-
-
-
-
-
-
-
-
-
 =head2 NumberOfNodes => Int
 
-  
-
-The new number of nodes of the cluster. If you specify a new number of
+  The new number of nodes of the cluster. If you specify a new number of
 nodes, you must also specify the node type parameter.
 
 When you submit your request to resize a cluster, Amazon Redshift sets
@@ -360,20 +227,9 @@ You can use DescribeResize to track the progress of the resize request.
 
 Valid Values: Integer greater than C<0>.
 
-
-
-
-
-
-
-
-
-
 =head2 PreferredMaintenanceWindow => Str
 
-  
-
-The weekly time range (in UTC) during which system maintenance can
+  The weekly time range (in UTC) during which system maintenance can
 occur, if necessary. If system maintenance is necessary during the
 window, it may result in an outage.
 
@@ -390,30 +246,10 @@ Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
 Constraints: Must be at least 30 minutes.
 
-
-
-
-
-
-
-
-
-
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  
-
-A list of virtual private cloud (VPC) security groups to be associated
+  A list of virtual private cloud (VPC) security groups to be associated
 with the cluster.
-
-
-
-
-
-
-
-
-
 
 
 

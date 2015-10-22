@@ -1,5 +1,5 @@
 
-package Paws::CloudFormation::DescribeStackEvents {
+package Paws::CloudFormation::DescribeStackEvents;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::CloudFormation::DescribeStackEvents {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackEvents');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::DescribeStackEventsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackEventsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DescribeStackEv
 AWS CloudFormation service. Use the attributes of this class
 as arguments to method DescribeStackEvents.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStackEvents.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStackEvents.
 
 As an example:
 
@@ -36,27 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  
-
-String that identifies the start of the next list of events, if there
+  String that identifies the start of the next list of events, if there
 is one.
 
 Default: There is no default value.
 
-
-
-
-
-
-
-
-
-
 =head2 StackName => Str
 
-  
-
-The name or the unique stack ID that is associated with the stack,
+  The name or the unique stack ID that is associated with the stack,
 which are not always interchangeable:
 
 =over
@@ -69,15 +55,6 @@ unique stack ID.
 =back
 
 Default: There is no default value.
-
-
-
-
-
-
-
-
-
 
 
 

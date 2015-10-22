@@ -1,5 +1,5 @@
 
-package Paws::RedShift::AuthorizeClusterSecurityGroupIngress {
+package Paws::RedShift::AuthorizeClusterSecurityGroupIngress;
   use Moose;
   has CIDRIP => (is => 'ro', isa => 'Str');
   has ClusterSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::RedShift::AuthorizeClusterSecurityGroupIngress {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AuthorizeClusterSecurityGroupIngress');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::AuthorizeClusterSecurityGroupIngressResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'AuthorizeClusterSecurityGroupIngressResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method AuthorizeCluste
 Amazon Redshift service. Use the attributes of this class
 as arguments to method AuthorizeClusterSecurityGroupIngress.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AuthorizeClusterSecurityGroupIngress.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AuthorizeClusterSecurityGroupIngress.
 
 As an example:
 
@@ -38,67 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CIDRIP => Str
 
-  
-
-The IP range to be added the Amazon Redshift security group.
-
-
-
-
-
-
-
-
-
+  The IP range to be added the Amazon Redshift security group.
 
 =head2 B<REQUIRED> ClusterSecurityGroupName => Str
 
-  
-
-The name of the security group to which the ingress rule is added.
-
-
-
-
-
-
-
-
-
+  The name of the security group to which the ingress rule is added.
 
 =head2 EC2SecurityGroupName => Str
 
-  
-
-The EC2 security group to be added the Amazon Redshift security group.
-
-
-
-
-
-
-
-
-
+  The EC2 security group to be added the Amazon Redshift security group.
 
 =head2 EC2SecurityGroupOwnerId => Str
 
-  
-
-The AWS account number of the owner of the security group specified by
+  The AWS account number of the owner of the security group specified by
 the I<EC2SecurityGroupName> parameter. The AWS Access Key ID is not an
 acceptable value.
 
 Example: C<111122223333>
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,5 +1,5 @@
 
-package Paws::EFS::CreateTags {
+package Paws::EFS::CreateTags;
   use Moose;
   has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EFS::Tag]', required => 1);
@@ -11,7 +11,6 @@ package Paws::EFS::CreateTags {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CreateTags on t
 Amazon Elastic File System service. Use the attributes of this class
 as arguments to method CreateTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTags.
 
 As an example:
 
@@ -38,35 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-  
-
-String. The ID of the file system whose tags you want to modify. This
+  String. The ID of the file system whose tags you want to modify. This
 operation modifies only the tags and not the file system.
 
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EFS::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::EFS::Tag]
-
-  
-
-An array of C<Tag> objects to add. Each C<Tag> object is a key-value
+  An array of C<Tag> objects to add. Each C<Tag> object is a key-value
 pair.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,20 +1,19 @@
 
-package Paws::CodeDeploy::CreateDeploymentGroup {
+package Paws::CodeDeploy::CreateDeploymentGroup;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str', required => 1);
-  has autoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has deploymentConfigName => (is => 'ro', isa => 'Str');
-  has deploymentGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]');
-  has onPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]');
-  has serviceRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has AutoScalingGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'autoScalingGroups' );
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' );
+  has DeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentGroupName' , required => 1);
+  has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', traits => ['NameInRequest'], request_name => 'ec2TagFilters' );
+  has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
+  has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeploymentGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::CreateDeploymentGroupOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ This class represents the parameters used for calling the method CreateDeploymen
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method CreateDeploymentGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeploymentGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeploymentGroup.
 
 As an example:
 
@@ -39,42 +38,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> applicationName => Str
+=head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of an existing AWS CodeDeploy application associated with the
+  The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
 
+=head2 AutoScalingGroups => ArrayRef[Str]
 
+  A list of associated Auto Scaling groups.
 
+=head2 DeploymentConfigName => Str
 
-
-
-
-
-
-
-=head2 autoScalingGroups => ArrayRef[Str]
-
-  
-
-A list of associated Auto Scaling groups.
-
-
-
-
-
-
-
-
-
-
-=head2 deploymentConfigName => Str
-
-  
-
-If specified, the deployment configuration name must be one of the
+  If specified, the deployment configuration name must be one of the
 predefined values, or it can be a custom deployment configuration:
 
 =over
@@ -115,75 +90,22 @@ isn't specified for either the deployment or the deployment group.
 To create a custom deployment configuration, call the create deployment
 configuration operation.
 
+=head2 B<REQUIRED> DeploymentGroupName => Str
 
+  The name of an existing deployment group for the specified application.
 
+=head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
+  The Amazon EC2 tags to filter on.
 
+=head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
+  The on-premises instance tags to filter on.
 
+=head2 B<REQUIRED> ServiceRoleArn => Str
 
-
-
-=head2 B<REQUIRED> deploymentGroupName => Str
-
-  
-
-The name of an existing deployment group for the specified application.
-
-
-
-
-
-
-
-
-
-
-=head2 ec2TagFilters => ArrayRef[Paws::CodeDeploy::EC2TagFilter]
-
-  
-
-The Amazon EC2 tags to filter on.
-
-
-
-
-
-
-
-
-
-
-=head2 onPremisesInstanceTagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]
-
-  
-
-The on-premises instance tags to filter on.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> serviceRoleArn => Str
-
-  
-
-A service role ARN that allows AWS CodeDeploy to act on the user's
+  A service role ARN that allows AWS CodeDeploy to act on the user's
 behalf when interacting with AWS services.
-
-
-
-
-
-
-
-
-
 
 
 

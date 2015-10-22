@@ -1,5 +1,5 @@
 
-package Paws::SQS::AddPermission {
+package Paws::SQS::AddPermission;
   use Moose;
   has Actions => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has AWSAccountIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -11,7 +11,6 @@ package Paws::SQS::AddPermission {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddPermission');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method AddPermission o
 Amazon Simple Queue Service service. Use the attributes of this class
 as arguments to method AddPermission.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddPermission.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddPermission.
 
 As an example:
 
@@ -38,9 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Actions => ArrayRef[Str]
 
-  
-
-The action the client wants to allow for the specified principal. The
+  The action the client wants to allow for the specified principal. The
 following are valid values: C<* | SendMessage | ReceiveMessage |
 DeleteMessage | ChangeMessageVisibility | GetQueueAttributes |
 GetQueueUrl>. For more information about these actions, see
@@ -52,65 +49,23 @@ permissions for the corresponding batch versions of those actions:
 C<SendMessageBatch>, C<DeleteMessageBatch>, and
 C<ChangeMessageVisibilityBatch>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> AWSAccountIds => ArrayRef[Str]
 
-  
-
-The AWS account number of the principal who will be given permission.
+  The AWS account number of the principal who will be given permission.
 The principal must have an AWS account, but does not need to be signed
 up for Amazon SQS. For information about locating the AWS account
 identification, see Your AWS Identifiers in the I<Amazon SQS Developer
 Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Label => Str
 
-  
-
-The unique identification of the permission you're setting (e.g.,
+  The unique identification of the permission you're setting (e.g.,
 C<AliceSendMessage>). Constraints: Maximum 80 characters; alphanumeric
 characters, hyphens (-), and underscores (_) are allowed.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> QueueUrl => Str
 
-  
-
-The URL of the Amazon SQS queue to take action on.
-
-
-
-
-
-
-
-
-
+  The URL of the Amazon SQS queue to take action on.
 
 
 

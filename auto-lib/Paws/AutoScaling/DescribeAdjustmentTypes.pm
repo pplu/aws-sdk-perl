@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::DescribeAdjustmentTypes {
+package Paws::AutoScaling::DescribeAdjustmentTypes;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::AutoScaling::DescribeAdjustmentTypes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAdjustmentTypes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::DescribeAdjustmentTypesAnswer');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAdjustmentTypesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method DescribeAdjustm
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribeAdjustmentTypes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAdjustmentTypes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAdjustmentTypes.
 
 As an example:
 

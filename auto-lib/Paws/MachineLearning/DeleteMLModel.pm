@@ -1,5 +1,5 @@
 
-package Paws::MachineLearning::DeleteMLModel {
+package Paws::MachineLearning::DeleteMLModel;
   use Moose;
   has MLModelId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::MachineLearning::DeleteMLModel {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteMLModel');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::MachineLearning::DeleteMLModelOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteMLModel o
 Amazon Machine Learning service. Use the attributes of this class
 as arguments to method DeleteMLModel.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMLModel.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMLModel.
 
 As an example:
 
@@ -35,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MLModelId => Str
 
-  
-
-A user-supplied ID that uniquely identifies the C<MLModel>.
-
-
-
-
-
-
-
-
-
+  A user-supplied ID that uniquely identifies the C<MLModel>.
 
 
 

@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::PollForJobsOutput {
+package Paws::CodePipeline::PollForJobsOutput;
   use Moose;
-  has jobs => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Job]');
+  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::Job]', traits => ['Unwrapped'], xmlname => 'jobs' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::CodePipeline::PollForJobsOutput
 
 =head1 ATTRIBUTES
 
-=head2 jobs => ArrayRef[Paws::CodePipeline::Job]
+=head2 Jobs => ArrayRef[L<Paws::CodePipeline::Job>]
 
-  
-
-Information about the jobs to take action on.
-
-
-
-
-
-
-
-
-
+  Information about the jobs to take action on.
 
 
 =cut

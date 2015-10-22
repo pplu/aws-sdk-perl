@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateDhcpOptions {
+package Paws::EC2::CreateDhcpOptions;
   use Moose;
   has DhcpConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NewDhcpConfiguration]', traits => ['NameInRequest'], request_name => 'dhcpConfiguration' , required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -9,7 +9,6 @@ package Paws::EC2::CreateDhcpOptions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDhcpOptions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateDhcpOptionsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method CreateDhcpOptio
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateDhcpOptions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDhcpOptions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDhcpOptions.
 
 As an example:
 
@@ -34,38 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DhcpConfigurations => ArrayRef[Paws::EC2::NewDhcpConfiguration]
+=head2 B<REQUIRED> DhcpConfigurations => ArrayRef[L<Paws::EC2::NewDhcpConfiguration>]
 
-  
-
-A DHCP configuration option.
-
-
-
-
-
-
-
-
-
+  A DHCP configuration option.
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,8 +1,7 @@
 
-package Paws::ELB::CreateLBCookieStickinessPolicyOutput {
+package Paws::ELB::CreateLBCookieStickinessPolicyOutput;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

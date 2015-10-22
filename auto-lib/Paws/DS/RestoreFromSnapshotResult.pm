@@ -1,8 +1,7 @@
 
-package Paws::DS::RestoreFromSnapshotResult {
+package Paws::DS::RestoreFromSnapshotResult;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

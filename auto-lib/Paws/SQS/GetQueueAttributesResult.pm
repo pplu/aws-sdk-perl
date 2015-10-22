@@ -1,9 +1,8 @@
 
-package Paws::SQS::GetQueueAttributesResult {
+package Paws::SQS::GetQueueAttributesResult;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SQS::QueueAttributeMap', xmlname => 'Attribute', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::SQS::GetQueueAttributesResult
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::SQS::QueueAttributeMap
+=head2 Attributes => L<Paws::SQS::QueueAttributeMap>
 
-  
-
-A map of attributes to the respective values.
-
-
-
-
-
-
-
-
-
+  A map of attributes to the respective values.
 
 
 =cut

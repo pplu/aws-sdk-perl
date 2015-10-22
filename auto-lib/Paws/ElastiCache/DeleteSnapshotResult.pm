@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::DeleteSnapshotResult {
+package Paws::ElastiCache::DeleteSnapshotResult;
   use Moose;
   has Snapshot => (is => 'ro', isa => 'Paws::ElastiCache::Snapshot');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,7 @@ Paws::ElastiCache::DeleteSnapshotResult
 
 =head1 ATTRIBUTES
 
-=head2 Snapshot => Paws::ElastiCache::Snapshot
+=head2 Snapshot => L<Paws::ElastiCache::Snapshot>
 
   
 

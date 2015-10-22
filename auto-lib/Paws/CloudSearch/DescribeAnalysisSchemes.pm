@@ -1,5 +1,5 @@
 
-package Paws::CloudSearch::DescribeAnalysisSchemes {
+package Paws::CloudSearch::DescribeAnalysisSchemes;
   use Moose;
   has AnalysisSchemeNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has Deployed => (is => 'ro', isa => 'Bool');
@@ -10,7 +10,6 @@ package Paws::CloudSearch::DescribeAnalysisSchemes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAnalysisSchemes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearch::DescribeAnalysisSchemesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAnalysisSchemesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeAnalysi
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method DescribeAnalysisSchemes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAnalysisSchemes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAnalysisSchemes.
 
 As an example:
 
@@ -37,49 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AnalysisSchemeNames => ArrayRef[Str]
 
-  
-
-The analysis schemes you want to describe.
-
-
-
-
-
-
-
-
-
+  The analysis schemes you want to describe.
 
 =head2 Deployed => Bool
 
-  
-
-Whether to display the deployed configuration (C<true>) or include any
+  Whether to display the deployed configuration (C<true>) or include any
 pending changes (C<false>). Defaults to C<false>.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of the domain you want to describe.
-
-
-
-
-
-
-
-
-
+  The name of the domain you want to describe.
 
 
 

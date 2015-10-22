@@ -1,5 +1,5 @@
 
-package Paws::IAM::ListEntitiesForPolicyResponse {
+package Paws::IAM::ListEntitiesForPolicyResponse;
   use Moose;
   has IsTruncated => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
@@ -7,7 +7,6 @@ package Paws::IAM::ListEntitiesForPolicyResponse {
   has PolicyRoles => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyRole]');
   has PolicyUsers => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyUser]');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -20,78 +19,27 @@ Paws::IAM::ListEntitiesForPolicyResponse
 
 =head2 IsTruncated => Bool
 
-  
-
-A flag that indicates whether there are more items to return. If your
+  A flag that indicates whether there are more items to return. If your
 results were truncated, you can make a subsequent pagination request
-using the C<Marker> request parameter to retrieve more items.
-
-
-
-
-
-
-
-
-
+using the C<Marker> request parameter to retrieve more items. Note that
+IAM might return fewer than the C<MaxItems> number of results even when
+there are more results available. We recommend that you check
+C<IsTruncated> after every call to ensure that you receive all of your
+results.
 =head2 Marker => Str
 
-  
-
-When C<IsTruncated> is C<true>, this element is present and contains
+  When C<IsTruncated> is C<true>, this element is present and contains
 the value to use for the C<Marker> parameter in a subsequent pagination
 request.
+=head2 PolicyGroups => ArrayRef[L<Paws::IAM::PolicyGroup>]
 
+  A list of groups that the policy is attached to.
+=head2 PolicyRoles => ArrayRef[L<Paws::IAM::PolicyRole>]
 
+  A list of roles that the policy is attached to.
+=head2 PolicyUsers => ArrayRef[L<Paws::IAM::PolicyUser>]
 
-
-
-
-
-
-
-=head2 PolicyGroups => ArrayRef[Paws::IAM::PolicyGroup]
-
-  
-
-A list of groups that the policy is attached to.
-
-
-
-
-
-
-
-
-
-=head2 PolicyRoles => ArrayRef[Paws::IAM::PolicyRole]
-
-  
-
-A list of roles that the policy is attached to.
-
-
-
-
-
-
-
-
-
-=head2 PolicyUsers => ArrayRef[Paws::IAM::PolicyUser]
-
-  
-
-A list of users that the policy is attached to.
-
-
-
-
-
-
-
-
-
+  A list of users that the policy is attached to.
 
 
 =cut

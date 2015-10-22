@@ -1,5 +1,5 @@
 
-package Paws::RDS::CreateOptionGroup {
+package Paws::RDS::CreateOptionGroup;
   use Moose;
   has EngineName => (is => 'ro', isa => 'Str', required => 1);
   has MajorEngineVersion => (is => 'ro', isa => 'Str', required => 1);
@@ -12,7 +12,6 @@ package Paws::RDS::CreateOptionGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOptionGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateOptionGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateOptionGroupResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method CreateOptionGro
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CreateOptionGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateOptionGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateOptionGroup.
 
 As an example:
 
@@ -39,56 +38,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> EngineName => Str
 
-  
-
-Specifies the name of the engine that this option group should be
+  Specifies the name of the engine that this option group should be
 associated with.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> MajorEngineVersion => Str
 
-  
-
-Specifies the major version of the engine that this option group should
+  Specifies the major version of the engine that this option group should
 be associated with.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> OptionGroupDescription => Str
 
-  
-
-The description of the option group.
-
-
-
-
-
-
-
-
-
+  The description of the option group.
 
 =head2 B<REQUIRED> OptionGroupName => Str
 
-  
-
-Specifies the name of the option group to be created.
+  Specifies the name of the option group to be created.
 
 Constraints:
 
@@ -104,16 +68,7 @@ Constraints:
 
 Example: C<myoptiongroup>
 
-
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

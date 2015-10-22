@@ -1,16 +1,15 @@
 
-package Paws::CodeDeploy::ListOnPremisesInstances {
+package Paws::CodeDeploy::ListOnPremisesInstances;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
-  has registrationStatus => (is => 'ro', isa => 'Str');
-  has tagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has RegistrationStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'registrationStatus' );
+  has TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'tagFilters' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListOnPremisesInstances');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::ListOnPremisesInstancesOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method ListOnPremisesI
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method ListOnPremisesInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListOnPremisesInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListOnPremisesInstances.
 
 As an example:
 
@@ -35,28 +34,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
+=head2 NextToken => Str
 
-  
-
-An identifier that was returned from the previous list on-premises
+  An identifier that was returned from the previous list on-premises
 instances call, which can be used to return the next set of on-premises
 instances in the list.
 
+=head2 RegistrationStatus => Str
 
-
-
-
-
-
-
-
-
-=head2 registrationStatus => Str
-
-  
-
-The on-premises instances registration status:
+  The on-premises instances registration status:
 
 =over
 
@@ -69,29 +55,10 @@ on-premises instances.
 =back
 
 
+=head2 TagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
-
-
-
-
-
-
-
-=head2 tagFilters => ArrayRef[Paws::CodeDeploy::TagFilter]
-
-  
-
-The on-premises instance tags that will be used to restrict the
+  The on-premises instance tags that will be used to restrict the
 corresponding on-premises instance names that are returned.
-
-
-
-
-
-
-
-
-
 
 
 

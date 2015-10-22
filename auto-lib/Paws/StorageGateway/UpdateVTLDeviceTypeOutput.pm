@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::UpdateVTLDeviceTypeOutput {
+package Paws::StorageGateway::UpdateVTLDeviceTypeOutput;
   use Moose;
   has VTLDeviceARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,18 +14,7 @@ Paws::StorageGateway::UpdateVTLDeviceTypeOutput
 
 =head2 VTLDeviceARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the medium changer you have selected.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the medium changer you have selected.
 
 
 =cut

@@ -1,10 +1,9 @@
 
-package Paws::CloudFront::UpdateStreamingDistributionResult {
+package Paws::CloudFront::UpdateStreamingDistributionResult;
   use Moose;
   has ETag => (is => 'ro', isa => 'Str');
   has StreamingDistribution => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistribution');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -19,7 +18,7 @@ This class represents the parameters used for calling the method  on the
 Amazon CloudFront service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -31,33 +30,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ETag => Str
 
-  
+  The current version of the configuration. For example: E2QWRUHAPOMQZL.
 
-The current version of the configuration. For example: E2QWRUHAPOMQZL.
+=head2 StreamingDistribution => L<Paws::CloudFront::StreamingDistribution>
 
-
-
-
-
-
-
-
-
-
-=head2 StreamingDistribution => Paws::CloudFront::StreamingDistribution
-
-  
-
-The streaming distribution's information.
-
-
-
-
-
-
-
-
-
+  The streaming distribution's information.
 
 
 

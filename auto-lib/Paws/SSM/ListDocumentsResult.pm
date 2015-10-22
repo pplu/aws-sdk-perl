@@ -1,10 +1,9 @@
 
-package Paws::SSM::ListDocumentsResult {
+package Paws::SSM::ListDocumentsResult;
   use Moose;
   has DocumentIdentifiers => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentIdentifier]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,35 +13,13 @@ Paws::SSM::ListDocumentsResult
 
 =head1 ATTRIBUTES
 
-=head2 DocumentIdentifiers => ArrayRef[Paws::SSM::DocumentIdentifier]
+=head2 DocumentIdentifiers => ArrayRef[L<Paws::SSM::DocumentIdentifier>]
 
-  
-
-The names of the configuration documents.
-
-
-
-
-
-
-
-
-
+  The names of the configuration documents.
 =head2 NextToken => Str
 
-  
-
-The token to use when requesting the next set of items. If there are no
+  The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
-
-
-
-
-
-
-
-
-
 
 
 =cut

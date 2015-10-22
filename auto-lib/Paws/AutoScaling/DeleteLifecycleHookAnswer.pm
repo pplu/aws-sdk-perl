@@ -1,8 +1,7 @@
 
-package Paws::AutoScaling::DeleteLifecycleHookAnswer {
+package Paws::AutoScaling::DeleteLifecycleHookAnswer;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

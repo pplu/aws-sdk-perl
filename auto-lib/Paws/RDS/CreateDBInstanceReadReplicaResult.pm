@@ -1,9 +1,8 @@
 
-package Paws::RDS::CreateDBInstanceReadReplicaResult {
+package Paws::RDS::CreateDBInstanceReadReplicaResult;
   use Moose;
   has DBInstance => (is => 'ro', isa => 'Paws::RDS::DBInstance');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,7 @@ Paws::RDS::CreateDBInstanceReadReplicaResult
 
 =head1 ATTRIBUTES
 
-=head2 DBInstance => Paws::RDS::DBInstance
+=head2 DBInstance => L<Paws::RDS::DBInstance>
 
   
 

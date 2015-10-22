@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::AddUploadBuffer {
+package Paws::StorageGateway::AddUploadBuffer;
   use Moose;
   has DiskIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::StorageGateway::AddUploadBuffer {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddUploadBuffer');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::AddUploadBufferOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method AddUploadBuffer
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method AddUploadBuffer.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddUploadBuffer.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddUploadBuffer.
 
 As an example:
 

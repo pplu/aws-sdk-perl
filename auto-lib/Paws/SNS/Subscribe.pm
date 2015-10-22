@@ -1,5 +1,5 @@
 
-package Paws::SNS::Subscribe {
+package Paws::SNS::Subscribe;
   use Moose;
   has Endpoint => (is => 'ro', isa => 'Str');
   has Protocol => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::SNS::Subscribe {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Subscribe');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::SubscribeResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SubscribeResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method Subscribe on th
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method Subscribe.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to Subscribe.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Subscribe.
 
 As an example:
 
@@ -37,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Endpoint => Str
 
-  
-
-The endpoint that you want to receive notifications. Endpoints vary by
+  The endpoint that you want to receive notifications. Endpoints vary by
 protocol:
 
 =over
@@ -67,19 +64,9 @@ EndpointArn of a mobile app and device.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Protocol => Str
 
-  
-
-The protocol you want to use. Supported protocols include:
+  The protocol you want to use. Supported protocols include:
 
 =over
 
@@ -102,28 +89,9 @@ EndpointArn for a mobile app and device.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TopicArn => Str
 
-  
-
-The ARN of the topic you want to subscribe to.
-
-
-
-
-
-
-
-
-
+  The ARN of the topic you want to subscribe to.
 
 
 

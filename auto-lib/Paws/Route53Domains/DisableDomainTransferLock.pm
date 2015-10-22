@@ -1,5 +1,5 @@
 
-package Paws::Route53Domains::DisableDomainTransferLock {
+package Paws::Route53Domains::DisableDomainTransferLock;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::Route53Domains::DisableDomainTransferLock {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DisableDomainTransferLock');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::DisableDomainTransferLockResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DisableDomainTr
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method DisableDomainTransferLock.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DisableDomainTransferLock.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DisableDomainTransferLock.
 
 As an example:
 
@@ -35,9 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of a domain.
+  The name of a domain.
 
 Type: String
 
@@ -48,15 +45,6 @@ the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
 are not supported.
 
 Required: Yes
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,10 +1,9 @@
 
-package Paws::EC2::DescribeVolumesResult {
+package Paws::EC2::DescribeVolumesResult;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', xmlname => 'nextToken', traits => ['Unwrapped',]);
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Volume]', xmlname => 'volumeSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -17,36 +16,14 @@ Paws::EC2::DescribeVolumesResult
 
 =head2 NextToken => Str
 
-  
-
-The C<NextToken> value to include in a future C<DescribeVolumes>
+  The C<NextToken> value to include in a future C<DescribeVolumes>
 request. When the results of a C<DescribeVolumes> request exceed
 C<MaxResults>, this value can be used to retrieve the next page of
 results. This value is C<null> when there are no more results to
 return.
+=head2 Volumes => ArrayRef[L<Paws::EC2::Volume>]
 
-
-
-
-
-
-
-
-
-=head2 Volumes => ArrayRef[Paws::EC2::Volume]
-
-  
-
-Information about the volumes.
-
-
-
-
-
-
-
-
-
+  Information about the volumes.
 
 
 =cut

@@ -1,8 +1,7 @@
 
-package Paws::CloudTrail::StartLoggingResponse {
+package Paws::CloudTrail::StartLoggingResponse;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

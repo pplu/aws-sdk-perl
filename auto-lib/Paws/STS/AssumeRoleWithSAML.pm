@@ -1,5 +1,5 @@
 
-package Paws::STS::AssumeRoleWithSAML {
+package Paws::STS::AssumeRoleWithSAML;
   use Moose;
   has DurationSeconds => (is => 'ro', isa => 'Int');
   has Policy => (is => 'ro', isa => 'Str');
@@ -12,7 +12,6 @@ package Paws::STS::AssumeRoleWithSAML {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithSAML');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::STS::AssumeRoleWithSAMLResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'AssumeRoleWithSAMLResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method AssumeRoleWithS
 AWS Security Token Service service. Use the attributes of this class
 as arguments to method AssumeRoleWithSAML.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AssumeRoleWithSAML.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssumeRoleWithSAML.
 
 As an example:
 
@@ -39,9 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DurationSeconds => Int
 
-  
-
-The duration, in seconds, of the role session. The value can range from
+  The duration, in seconds, of the role session. The value can range from
 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the
 value is set to 3600 seconds. An expiration can also be specified in
 the SAML authentication response's C<SessionNotOnOrAfter> value. The
@@ -50,20 +47,9 @@ actual expiration time is whichever value is shorter.
 The maximum duration for a session is 1 hour, and the minimum duration
 is 15 minutes, even if values outside this range are specified.
 
-
-
-
-
-
-
-
-
-
 =head2 Policy => Str
 
-  
-
-An IAM policy in JSON format.
+  An IAM policy in JSON format.
 
 The policy parameter is optional. If you pass a policy, the temporary
 security credentials that are returned by the operation have the
@@ -81,63 +67,21 @@ separate limit. The PackedPolicySize response element indicates by
 percentage how close to the upper size limit the policy is, with 100%
 equaling the maximum allowed size.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PrincipalArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the SAML provider in IAM that
+  The Amazon Resource Name (ARN) of the SAML provider in IAM that
 describes the IdP.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the role that the caller is assuming.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the role that the caller is assuming.
 
 =head2 B<REQUIRED> SAMLAssertion => Str
 
-  
-
-The base-64 encoded SAML authentication response provided by the IdP.
+  The base-64 encoded SAML authentication response provided by the IdP.
 
 For more information, see Configuring a Relying Party and Adding Claims
 in the I<Using IAM> guide.
-
-
-
-
-
-
-
-
-
 
 
 

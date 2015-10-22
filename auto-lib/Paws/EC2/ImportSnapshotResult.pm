@@ -1,11 +1,10 @@
 
-package Paws::EC2::ImportSnapshotResult {
+package Paws::EC2::ImportSnapshotResult;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped',]);
   has ImportTaskId => (is => 'ro', isa => 'Str', xmlname => 'importTaskId', traits => ['Unwrapped',]);
   has SnapshotTaskDetail => (is => 'ro', isa => 'Paws::EC2::SnapshotTaskDetail', xmlname => 'snapshotTaskDetail', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -18,46 +17,13 @@ Paws::EC2::ImportSnapshotResult
 
 =head2 Description => Str
 
-  
-
-A description of the import snapshot task.
-
-
-
-
-
-
-
-
-
+  A description of the import snapshot task.
 =head2 ImportTaskId => Str
 
-  
+  The ID of the import snapshot task.
+=head2 SnapshotTaskDetail => L<Paws::EC2::SnapshotTaskDetail>
 
-The ID of the import snapshot task.
-
-
-
-
-
-
-
-
-
-=head2 SnapshotTaskDetail => Paws::EC2::SnapshotTaskDetail
-
-  
-
-Information about the import snapshot task.
-
-
-
-
-
-
-
-
-
+  Information about the import snapshot task.
 
 
 =cut

@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::AcknowledgeJobOutput {
+package Paws::CodePipeline::AcknowledgeJobOutput;
   use Moose;
-  has status => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::CodePipeline::AcknowledgeJobOutput
 
 =head1 ATTRIBUTES
 
-=head2 status => Str
+=head2 Status => Str
 
-  
-
-Whether the job worker has received the specified job.
-
-
-
-
-
-
-
-
-
+  Whether the job worker has received the specified job.
 
 
 =cut

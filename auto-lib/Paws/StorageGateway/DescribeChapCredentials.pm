@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::DescribeChapCredentials {
+package Paws::StorageGateway::DescribeChapCredentials;
   use Moose;
   has TargetARN => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::StorageGateway::DescribeChapCredentials {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeChapCredentials');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::DescribeChapCredentialsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DescribeChapCre
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DescribeChapCredentials.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeChapCredentials.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeChapCredentials.
 
 As an example:
 
@@ -35,20 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TargetARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
+  The Amazon Resource Name (ARN) of the iSCSI volume target. Use the
 DescribeStorediSCSIVolumes operation to return to retrieve the
 TargetARN for specified VolumeARN.
-
-
-
-
-
-
-
-
-
 
 
 

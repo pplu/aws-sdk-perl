@@ -1,9 +1,8 @@
 
-package Paws::CognitoSync::DescribeIdentityPoolUsageResponse {
+package Paws::CognitoSync::DescribeIdentityPoolUsageResponse;
   use Moose;
   has IdentityPoolUsage => (is => 'ro', isa => 'Paws::CognitoSync::IdentityPoolUsage');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::CognitoSync::DescribeIdentityPoolUsageResponse
 
 =head1 ATTRIBUTES
 
-=head2 IdentityPoolUsage => Paws::CognitoSync::IdentityPoolUsage
+=head2 IdentityPoolUsage => L<Paws::CognitoSync::IdentityPoolUsage>
 
-  
-
-Information about the usage of the identity pool.
-
-
-
-
-
-
-
-
-
+  Information about the usage of the identity pool.
 
 
 =cut

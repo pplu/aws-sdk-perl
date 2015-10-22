@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::CreateHsm {
+package Paws::CloudHSM::CreateHsm;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
   has EniIp => (is => 'ro', isa => 'Str');
@@ -15,7 +15,6 @@ package Paws::CloudHSM::CreateHsm {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateHsm');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::CreateHsmResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +29,7 @@ This class represents the parameters used for calling the method CreateHsm on th
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method CreateHsm.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateHsm.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateHsm.
 
 As an example:
 
@@ -42,125 +41,37 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ClientToken => Str
 
-  
-
-A user-defined token to ensure idempotence. Subsequent calls to this
+  A user-defined token to ensure idempotence. Subsequent calls to this
 action with the same token will be ignored.
-
-
-
-
-
-
-
-
-
 
 =head2 EniIp => Str
 
-  
-
-The IP address to assign to the HSM's ENI.
-
-
-
-
-
-
-
-
-
+  The IP address to assign to the HSM's ENI.
 
 =head2 ExternalId => Str
 
-  
-
-The external ID from B<IamRoleArn>, if present.
-
-
-
-
-
-
-
-
-
+  The external ID from B<IamRoleArn>, if present.
 
 =head2 B<REQUIRED> IamRoleArn => Str
 
-  
-
-The ARN of an IAM role to enable the AWS CloudHSM service to allocate
+  The ARN of an IAM role to enable the AWS CloudHSM service to allocate
 an ENI on your behalf.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> SshKey => Str
 
-  
-
-The SSH public key to install on the HSM.
-
-
-
-
-
-
-
-
-
+  The SSH public key to install on the HSM.
 
 =head2 B<REQUIRED> SubnetId => Str
 
-  
-
-The identifier of the subnet in your VPC in which to place the HSM.
-
-
-
-
-
-
-
-
-
+  The identifier of the subnet in your VPC in which to place the HSM.
 
 =head2 B<REQUIRED> SubscriptionType => Str
 
-  
-
-The subscription type.
-
-
-
-
-
-
-
-
-
+  The subscription type.
 
 =head2 SyslogIp => Str
 
-  
-
-The IP address for the syslog monitoring server.
-
-
-
-
-
-
-
-
-
+  The IP address for the syslog monitoring server.
 
 
 

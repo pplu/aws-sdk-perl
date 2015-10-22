@@ -1,9 +1,8 @@
 
-package Paws::CloudHSM::DeleteHapgResponse {
+package Paws::CloudHSM::DeleteHapgResponse;
   use Moose;
   has Status => (is => 'ro', isa => 'Str', required => 1);
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,18 +14,7 @@ Paws::CloudHSM::DeleteHapgResponse
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The status of the action.
-
-
-
-
-
-
-
-
-
+  The status of the action.
 
 
 =cut

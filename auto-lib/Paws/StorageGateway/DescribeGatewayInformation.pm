@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::DescribeGatewayInformation {
+package Paws::StorageGateway::DescribeGatewayInformation;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::StorageGateway::DescribeGatewayInformation {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeGatewayInformation');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::DescribeGatewayInformationOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DescribeGateway
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DescribeGatewayInformation.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeGatewayInformation.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeGatewayInformation.
 
 As an example:
 

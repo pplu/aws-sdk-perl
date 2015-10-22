@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::DescribeLoadBalancers {
+package Paws::AutoScaling::DescribeLoadBalancers;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::AutoScaling::DescribeLoadBalancers {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancers');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::DescribeLoadBalancersResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancersResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeLoadBal
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribeLoadBalancers.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLoadBalancers.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLoadBalancers.
 
 As an example:
 
@@ -37,49 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
-
+  The name of the group.
 
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of items to return with this call.
-
-
-
-
-
-
-
-
-
+  The maximum number of items to return with this call.
 
 =head2 NextToken => Str
 
-  
-
-The token for the next set of items to return. (You received this token
+  The token for the next set of items to return. (You received this token
 from a previous call.)
-
-
-
-
-
-
-
-
-
 
 
 

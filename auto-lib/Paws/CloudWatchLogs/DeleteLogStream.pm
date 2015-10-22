@@ -1,15 +1,14 @@
 
-package Paws::CloudWatchLogs::DeleteLogStream {
+package Paws::CloudWatchLogs::DeleteLogStream;
   use Moose;
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has logStreamName => (is => 'ro', isa => 'Str', required => 1);
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has LogStreamName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logStreamName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLogStream');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DeleteLogStream
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method DeleteLogStream.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLogStream.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLogStream.
 
 As an example:
 
@@ -34,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> logGroupName => Str
+=head2 B<REQUIRED> LogGroupName => Str
 
-  
+  The name of the log group under which the log stream to delete belongs.
 
-The name of the log group under which the log stream to delete belongs.
+=head2 B<REQUIRED> LogStreamName => Str
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> logStreamName => Str
-
-  
-
-The name of the log stream to delete.
-
-
-
-
-
-
-
-
-
+  The name of the log stream to delete.
 
 
 

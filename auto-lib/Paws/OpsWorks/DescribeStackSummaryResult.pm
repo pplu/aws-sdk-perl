@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeStackSummaryResult {
+package Paws::OpsWorks::DescribeStackSummaryResult;
   use Moose;
   has StackSummary => (is => 'ro', isa => 'Paws::OpsWorks::StackSummary');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::OpsWorks::DescribeStackSummaryResult
 
 =head1 ATTRIBUTES
 
-=head2 StackSummary => Paws::OpsWorks::StackSummary
+=head2 StackSummary => L<Paws::OpsWorks::StackSummary>
 
-  
-
-A C<StackSummary> object that contains the results.
-
-
-
-
-
-
-
-
-
+  A C<StackSummary> object that contains the results.
 
 
 =cut

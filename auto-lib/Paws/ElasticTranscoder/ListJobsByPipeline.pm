@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::ListJobsByPipeline {
+package Paws::ElasticTranscoder::ListJobsByPipeline;
   use Moose;
   has Ascending => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Ascending' );
   has PageToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'PageToken' );
@@ -12,7 +12,6 @@ package Paws::ElasticTranscoder::ListJobsByPipeline {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ListJobsByPipelineResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListJobsByPipelineResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method ListJobsByPipel
 Amazon Elastic Transcoder service. Use the attributes of this class
 as arguments to method ListJobsByPipeline.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListJobsByPipeline.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListJobsByPipeline.
 
 As an example:
 
@@ -39,52 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Ascending => Str
 
-  
-
-To list jobs in chronological order by the date and time that they were
+  To list jobs in chronological order by the date and time that they were
 submitted, enter C<true>. To list jobs in reverse chronological order,
 enter C<false>.
 
-
-
-
-
-
-
-
-
-
 =head2 PageToken => Str
 
-  
-
-When Elastic Transcoder returns more than one page of results, use
+  When Elastic Transcoder returns more than one page of results, use
 C<pageToken> in subsequent C<GET> requests to get each successive page
 of results.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PipelineId => Str
 
-  
-
-The ID of the pipeline for which you want to get job information.
-
-
-
-
-
-
-
-
-
+  The ID of the pipeline for which you want to get job information.
 
 
 

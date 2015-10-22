@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::SuspendProcesses {
+package Paws::AutoScaling::SuspendProcesses;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has ScalingProcesses => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -9,7 +9,6 @@ package Paws::AutoScaling::SuspendProcesses {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SuspendProcesses');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method SuspendProcesse
 Auto Scaling service. Use the attributes of this class
 as arguments to method SuspendProcesses.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SuspendProcesses.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SuspendProcesses.
 
 As an example:
 
@@ -36,24 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name or Amazon Resource Name (ARN) of the Auto Scaling group.
-
-
-
-
-
-
-
-
-
+  The name or Amazon Resource Name (ARN) of the Auto Scaling group.
 
 =head2 ScalingProcesses => ArrayRef[Str]
 
-  
-
-One or more of the following processes:
+  One or more of the following processes:
 
 =over
 
@@ -90,14 +76,6 @@ C<ScheduledActions>
 C<AddToLoadBalancer>
 
 =back
-
-
-
-
-
-
-
-
 
 
 

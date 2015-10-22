@@ -1,5 +1,5 @@
 
-package Paws::SSM::CreateAssociationBatch {
+package Paws::SSM::CreateAssociationBatch;
   use Moose;
   has Entries => (is => 'ro', isa => 'ArrayRef[Paws::SSM::CreateAssociationBatchRequestEntry]', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::SSM::CreateAssociationBatch {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAssociationBatch');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateAssociationBatchResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method CreateAssociati
 Amazon Simple Systems Management Service service. Use the attributes of this class
 as arguments to method CreateAssociationBatch.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateAssociationBatch.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAssociationBatch.
 
 As an example:
 
@@ -33,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Entries => ArrayRef[Paws::SSM::CreateAssociationBatchRequestEntry]
+=head2 B<REQUIRED> Entries => ArrayRef[L<Paws::SSM::CreateAssociationBatchRequestEntry>]
 
-  
-
-One or more associations.
-
-
-
-
-
-
-
-
-
+  One or more associations.
 
 
 

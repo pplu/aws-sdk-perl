@@ -1,5 +1,5 @@
 
-package Paws::SES::VerifyDomainIdentity {
+package Paws::SES::VerifyDomainIdentity;
   use Moose;
   has Domain => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::SES::VerifyDomainIdentity {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'VerifyDomainIdentity');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::VerifyDomainIdentityResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'VerifyDomainIdentityResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method VerifyDomainIde
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method VerifyDomainIdentity.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to VerifyDomainIdentity.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to VerifyDomainIdentity.
 
 As an example:
 
@@ -35,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Domain => Str
 
-  
-
-The domain to be verified.
-
-
-
-
-
-
-
-
-
+  The domain to be verified.
 
 
 

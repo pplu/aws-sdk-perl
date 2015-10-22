@@ -1,9 +1,8 @@
 
-package Paws::Support::AddCommunicationToCaseResponse {
+package Paws::Support::AddCommunicationToCaseResponse;
   use Moose;
-  has result => (is => 'ro', isa => 'Bool');
+  has Result => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'result' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::Support::AddCommunicationToCaseResponse
 
 =head1 ATTRIBUTES
 
-=head2 result => Bool
+=head2 Result => Bool
 
-  
-
-True if AddCommunicationToCase succeeds. Otherwise, returns an error.
-
-
-
-
-
-
-
-
-
+  True if AddCommunicationToCase succeeds. Otherwise, returns an error.
 
 
 =cut

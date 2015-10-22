@@ -1,15 +1,14 @@
 
-package Paws::CodePipeline::AcknowledgeJob {
+package Paws::CodePipeline::AcknowledgeJob;
   use Moose;
-  has jobId => (is => 'ro', isa => 'Str', required => 1);
-  has nonce => (is => 'ro', isa => 'Str', required => 1);
+  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
+  has Nonce => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nonce' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AcknowledgeJob');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::AcknowledgeJobOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method AcknowledgeJob 
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method AcknowledgeJob.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AcknowledgeJob.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AcknowledgeJob.
 
 As an example:
 
@@ -34,38 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> jobId => Str
+=head2 B<REQUIRED> JobId => Str
 
-  
-
-The unique system-generated ID of the job for which you want to confirm
+  The unique system-generated ID of the job for which you want to confirm
 receipt.
 
+=head2 B<REQUIRED> Nonce => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> nonce => Str
-
-  
-
-A system-generated random number that AWS CodePipeline uses to ensure
+  A system-generated random number that AWS CodePipeline uses to ensure
 that the job is being worked on by only one job worker. This number
 must be returned in the response.
-
-
-
-
-
-
-
-
-
 
 
 

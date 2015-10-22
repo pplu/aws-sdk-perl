@@ -1,5 +1,5 @@
 
-package Paws::SQS::DeleteQueue {
+package Paws::SQS::DeleteQueue;
   use Moose;
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::SQS::DeleteQueue {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteQueue');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteQueue on 
 Amazon Simple Queue Service service. Use the attributes of this class
 as arguments to method DeleteQueue.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteQueue.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteQueue.
 
 As an example:
 
@@ -35,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-  
-
-The URL of the Amazon SQS queue to take action on.
-
-
-
-
-
-
-
-
-
+  The URL of the Amazon SQS queue to take action on.
 
 
 

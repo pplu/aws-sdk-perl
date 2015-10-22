@@ -1,5 +1,5 @@
 
-package Paws::RedShift::RebootCluster {
+package Paws::RedShift::RebootCluster;
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::RedShift::RebootCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebootCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::RebootClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RebootClusterResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method RebootCluster o
 Amazon Redshift service. Use the attributes of this class
 as arguments to method RebootCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RebootCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RebootCluster.
 
 As an example:
 
@@ -35,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  
-
-The cluster identifier.
-
-
-
-
-
-
-
-
-
+  The cluster identifier.
 
 
 

@@ -1,8 +1,7 @@
 
-package Paws::DS::UpdateRadiusResult {
+package Paws::DS::UpdateRadiusResult;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

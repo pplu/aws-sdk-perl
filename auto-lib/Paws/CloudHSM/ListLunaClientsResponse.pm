@@ -1,10 +1,9 @@
 
-package Paws::CloudHSM::ListLunaClientsResponse {
+package Paws::CloudHSM::ListLunaClientsResponse;
   use Moose;
   has ClientList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -16,33 +15,11 @@ Paws::CloudHSM::ListLunaClientsResponse
 
 =head2 B<REQUIRED> ClientList => ArrayRef[Str]
 
-  
-
-The list of clients.
-
-
-
-
-
-
-
-
-
+  The list of clients.
 =head2 NextToken => Str
 
-  
-
-If not null, more results are available. Pass this to ListLunaClients
+  If not null, more results are available. Pass this to ListLunaClients
 to retrieve the next set of items.
-
-
-
-
-
-
-
-
-
 
 
 =cut

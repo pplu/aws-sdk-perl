@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::CreateOrUpdateTags {
+package Paws::AutoScaling::CreateOrUpdateTags;
   use Moose;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Tag]', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::AutoScaling::CreateOrUpdateTags {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOrUpdateTags');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method CreateOrUpdateT
 Auto Scaling service. Use the attributes of this class
 as arguments to method CreateOrUpdateTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateOrUpdateTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateOrUpdateTags.
 
 As an example:
 
@@ -33,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Tags => ArrayRef[Paws::AutoScaling::Tag]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::AutoScaling::Tag>]
 
-  
-
-One or more tags.
-
-
-
-
-
-
-
-
-
+  One or more tags.
 
 
 

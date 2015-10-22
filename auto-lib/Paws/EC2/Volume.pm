@@ -1,5 +1,5 @@
 
-package Paws::EC2::Volume {
+package Paws::EC2::Volume;
   use Moose;
   has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeAttachment]', xmlname => 'attachmentSet', traits => ['Unwrapped',]);
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped',]);
@@ -14,7 +14,6 @@ package Paws::EC2::Volume {
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped',]);
   has VolumeType => (is => 'ro', isa => 'Str', xmlname => 'volumeType', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,67 +24,21 @@ Paws::EC2::Volume
 
 =head1 ATTRIBUTES
 
-=head2 Attachments => ArrayRef[Paws::EC2::VolumeAttachment]
+=head2 Attachments => ArrayRef[L<Paws::EC2::VolumeAttachment>]
 
-  
-
-Information about the volume attachments.
-
-
-
-
-
-
-
-
-
+  Information about the volume attachments.
 =head2 AvailabilityZone => Str
 
-  
-
-The Availability Zone for the volume.
-
-
-
-
-
-
-
-
-
+  The Availability Zone for the volume.
 =head2 CreateTime => Str
 
-  
-
-The time stamp when volume creation was initiated.
-
-
-
-
-
-
-
-
-
+  The time stamp when volume creation was initiated.
 =head2 Encrypted => Bool
 
-  
-
-Indicates whether the volume will be encrypted.
-
-
-
-
-
-
-
-
-
+  Indicates whether the volume will be encrypted.
 =head2 Iops => Int
 
-  
-
-The number of I/O operations per second (IOPS) that the volume
+  The number of I/O operations per second (IOPS) that the volume
 supports. For Provisioned IOPS (SSD) volumes, this represents the
 number of IOPS that are provisioned for the volume. For General Purpose
 (SSD) volumes, this represents the baseline performance of the volume
@@ -100,117 +53,31 @@ and 3 to 10000 for General Purpose (SSD) volumes.
 Condition: This parameter is required for requests to create C<io1>
 volumes; it is not used in requests to create C<standard> or C<gp2>
 volumes.
-
-
-
-
-
-
-
-
-
 =head2 KmsKeyId => Str
 
-  
-
-The full ARN of the AWS Key Management Service (AWS KMS) customer
+  The full ARN of the AWS Key Management Service (AWS KMS) customer
 master key (CMK) that was used to protect the volume encryption key for
 the volume.
-
-
-
-
-
-
-
-
-
 =head2 Size => Int
 
-  
-
-The size of the volume, in GiBs.
-
-
-
-
-
-
-
-
-
+  The size of the volume, in GiBs.
 =head2 SnapshotId => Str
 
-  
-
-The snapshot from which the volume was created, if applicable.
-
-
-
-
-
-
-
-
-
+  The snapshot from which the volume was created, if applicable.
 =head2 State => Str
 
-  
+  The volume state.
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
-The volume state.
-
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::EC2::Tag]
-
-  
-
-Any tags assigned to the volume.
-
-
-
-
-
-
-
-
-
+  Any tags assigned to the volume.
 =head2 VolumeId => Str
 
-  
-
-The ID of the volume.
-
-
-
-
-
-
-
-
-
+  The ID of the volume.
 =head2 VolumeType => Str
 
-  
-
-The volume type. This can be C<gp2> for General Purpose (SSD) volumes,
+  The volume type. This can be C<gp2> for General Purpose (SSD) volumes,
 C<io1> for Provisioned IOPS (SSD) volumes, or C<standard> for Magnetic
 volumes.
-
-
-
-
-
-
-
-
-
 
 
 =cut

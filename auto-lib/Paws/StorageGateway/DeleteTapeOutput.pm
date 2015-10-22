@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::DeleteTapeOutput {
+package Paws::StorageGateway::DeleteTapeOutput;
   use Moose;
   has TapeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,18 +14,7 @@ Paws::StorageGateway::DeleteTapeOutput
 
 =head2 TapeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the deleted virtual tape.
-
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the deleted virtual tape.
 
 
 =cut

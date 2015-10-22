@@ -1,9 +1,8 @@
 
-package Paws::RDS::AddSourceIdentifierToSubscriptionResult {
+package Paws::RDS::AddSourceIdentifierToSubscriptionResult;
   use Moose;
   has EventSubscription => (is => 'ro', isa => 'Paws::RDS::EventSubscription');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,7 @@ Paws::RDS::AddSourceIdentifierToSubscriptionResult
 
 =head1 ATTRIBUTES
 
-=head2 EventSubscription => Paws::RDS::EventSubscription
+=head2 EventSubscription => L<Paws::RDS::EventSubscription>
 
   
 

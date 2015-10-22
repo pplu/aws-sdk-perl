@@ -1,12 +1,12 @@
 
-package Paws::Glacier::ListJobs {
+package Paws::Glacier::ListJobs;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has completed => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'completed' );
-  has limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
-  has marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
-  has statuscode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'statuscode' );
-  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has Completed => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'completed' );
+  has Limit => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'limit' );
+  has Marker => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'marker' );
+  has Statuscode => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'statuscode' );
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -15,7 +15,6 @@ package Paws::Glacier::ListJobs {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ListJobsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListJobsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +29,7 @@ This class represents the parameters used for calling the method ListJobs on the
 Amazon Glacier service. Use the attributes of this class
 as arguments to method ListJobs.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListJobs.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListJobs.
 
 As an example:
 
@@ -40,108 +39,42 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
-  
-
-The C<AccountId> value is the AWS account ID of the account that owns
+  The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
+=head2 Completed => Str
 
-
-
-
-
-
-
-
-
-=head2 completed => Str
-
-  
-
-Specifies the state of the jobs to return. You can specify C<true> or
+  Specifies the state of the jobs to return. You can specify C<true> or
 C<false>.
 
+=head2 Limit => Str
 
-
-
-
-
-
-
-
-
-=head2 limit => Str
-
-  
-
-Specifies that the response be limited to the specified number of items
+  Specifies that the response be limited to the specified number of items
 or fewer. If not specified, the List Jobs operation returns up to 1,000
 jobs.
 
+=head2 Marker => Str
 
-
-
-
-
-
-
-
-
-=head2 marker => Str
-
-  
-
-An opaque string used for pagination. This value specifies the job at
+  An opaque string used for pagination. This value specifies the job at
 which the listing of jobs should begin. Get the marker value from a
 previous List Jobs response. You need only include the marker if you
 are continuing the pagination of results started in a previous List
 Jobs request.
 
+=head2 Statuscode => Str
 
-
-
-
-
-
-
-
-
-=head2 statuscode => Str
-
-  
-
-Specifies the type of job status to return. You can specify the
+  Specifies the type of job status to return. You can specify the
 following values: "InProgress", "Succeeded", or "Failed".
 
+=head2 B<REQUIRED> VaultName => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> vaultName => Str
-
-  
-
-The name of the vault.
-
-
-
-
-
-
-
-
-
+  The name of the vault.
 
 
 

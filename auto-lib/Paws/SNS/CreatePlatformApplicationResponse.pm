@@ -1,9 +1,8 @@
 
-package Paws::SNS::CreatePlatformApplicationResponse {
+package Paws::SNS::CreatePlatformApplicationResponse;
   use Moose;
   has PlatformApplicationArn => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -16,18 +15,7 @@ Paws::SNS::CreatePlatformApplicationResponse
 
 =head2 PlatformApplicationArn => Str
 
-  
-
-PlatformApplicationArn is returned.
-
-
-
-
-
-
-
-
-
+  PlatformApplicationArn is returned.
 
 
 =cut

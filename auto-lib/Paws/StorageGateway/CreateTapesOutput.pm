@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::CreateTapesOutput {
+package Paws::StorageGateway::CreateTapesOutput;
   use Moose;
   has TapeARNs => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,19 +14,8 @@ Paws::StorageGateway::CreateTapesOutput
 
 =head2 TapeARNs => ArrayRef[Str]
 
-  
-
-A list of unique Amazon Resource Named (ARN) the represents the virtual
-tapes that were created.
-
-
-
-
-
-
-
-
-
+  A list of unique Amazon Resource Named (ARN) that represents the
+virtual tapes that were created.
 
 
 =cut

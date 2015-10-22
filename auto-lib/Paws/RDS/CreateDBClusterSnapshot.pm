@@ -1,5 +1,5 @@
 
-package Paws::RDS::CreateDBClusterSnapshot {
+package Paws::RDS::CreateDBClusterSnapshot;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::RDS::CreateDBClusterSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBClusterSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBClusterSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBClusterSnapshotResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method CreateDBCluster
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CreateDBClusterSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBClusterSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBClusterSnapshot.
 
 As an example:
 
@@ -37,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-  
-
-The identifier of the DB cluster to create a snapshot for. This
+  The identifier of the DB cluster to create a snapshot for. This
 parameter is not case-sensitive.
 
 Constraints:
@@ -56,20 +53,9 @@ Constraints:
 
 Example: C<my-cluster1>
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DBClusterSnapshotIdentifier => Str
 
-  
-
-The identifier of the DB cluster snapshot. This parameter is stored as
+  The identifier of the DB cluster snapshot. This parameter is stored as
 a lowercase string.
 
 Constraints:
@@ -86,29 +72,9 @@ Constraints:
 
 Example: C<my-cluster1-snapshot1>
 
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
-
-  
-
-The tags to be assigned to the DB cluster snapshot.
-
-
-
-
-
-
-
-
-
+  The tags to be assigned to the DB cluster snapshot.
 
 
 

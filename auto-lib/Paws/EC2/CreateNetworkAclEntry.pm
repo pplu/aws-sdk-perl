@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateNetworkAclEntry {
+package Paws::EC2::CreateNetworkAclEntry;
   use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cidrBlock' , required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -16,7 +16,6 @@ package Paws::EC2::CreateNetworkAclEntry {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetworkAclEntry');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +30,7 @@ This class represents the parameters used for calling the method CreateNetworkAc
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateNetworkAclEntry.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateNetworkAclEntry.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateNetworkAclEntry.
 
 As an example:
 
@@ -43,147 +42,48 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CidrBlock => Str
 
-  
-
-The network range to allow or deny, in CIDR notation (for example
+  The network range to allow or deny, in CIDR notation (for example
 C<172.16.0.0/24>).
-
-
-
-
-
-
-
-
-
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Egress => Bool
 
-  
-
-Indicates whether this is an egress rule (rule is applied to traffic
+  Indicates whether this is an egress rule (rule is applied to traffic
 leaving the subnet).
 
+=head2 IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>
 
-
-
-
-
-
-
-
-
-=head2 IcmpTypeCode => Paws::EC2::IcmpTypeCode
-
-  
-
-ICMP protocol: The ICMP type and code. Required if specifying ICMP for
+  ICMP protocol: The ICMP type and code. Required if specifying ICMP for
 the protocol.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> NetworkAclId => Str
 
-  
+  The ID of the network ACL.
 
-The ID of the network ACL.
+=head2 PortRange => L<Paws::EC2::PortRange>
 
-
-
-
-
-
-
-
-
-
-=head2 PortRange => Paws::EC2::PortRange
-
-  
-
-TCP or UDP protocols: The range of ports the rule applies to.
-
-
-
-
-
-
-
-
-
+  TCP or UDP protocols: The range of ports the rule applies to.
 
 =head2 B<REQUIRED> Protocol => Str
 
-  
-
-The protocol. A value of -1 means all protocols.
-
-
-
-
-
-
-
-
-
+  The protocol. A value of -1 means all protocols.
 
 =head2 B<REQUIRED> RuleAction => Str
 
-  
-
-Indicates whether to allow or deny the traffic that matches the rule.
-
-
-
-
-
-
-
-
-
+  Indicates whether to allow or deny the traffic that matches the rule.
 
 =head2 B<REQUIRED> RuleNumber => Int
 
-  
-
-The rule number for the entry (for example, 100). ACL entries are
+  The rule number for the entry (for example, 100). ACL entries are
 processed in ascending order by rule number.
 
 Constraints: Positive integer from 1 to 32766
-
-
-
-
-
-
-
-
-
 
 
 

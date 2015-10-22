@@ -1,10 +1,9 @@
 
-package Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage {
+package Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage;
   use Moose;
   has Available => (is => 'ro', isa => 'Bool');
   has FullyQualifiedCNAME => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -17,9 +16,7 @@ Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage
 
 =head2 Available => Bool
 
-  
-
-Indicates if the specified CNAME is available:
+  Indicates if the specified CNAME is available:
 
 C<true> : The CNAME is available.
 
@@ -33,29 +30,10 @@ C<true> : The CNAME is not available.
 
 =back
 
-
-
-
-
-
-
-
-
 =head2 FullyQualifiedCNAME => Str
 
-  
-
-The fully qualified CNAME to reserve when CreateEnvironment is called
+  The fully qualified CNAME to reserve when CreateEnvironment is called
 with the provided prefix.
-
-
-
-
-
-
-
-
-
 
 
 =cut

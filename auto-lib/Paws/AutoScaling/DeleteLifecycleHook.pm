@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::DeleteLifecycleHook {
+package Paws::AutoScaling::DeleteLifecycleHook;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::AutoScaling::DeleteLifecycleHook {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLifecycleHook');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::DeleteLifecycleHookAnswer');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteLifecycleHookResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DeleteLifecycle
 Auto Scaling service. Use the attributes of this class
 as arguments to method DeleteLifecycleHook.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLifecycleHook.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLifecycleHook.
 
 As an example:
 
@@ -36,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the Auto Scaling group for the lifecycle hook.
-
-
-
-
-
-
-
-
-
+  The name of the Auto Scaling group for the lifecycle hook.
 
 =head2 B<REQUIRED> LifecycleHookName => Str
 
-  
-
-The name of the lifecycle hook.
-
-
-
-
-
-
-
-
-
+  The name of the lifecycle hook.
 
 
 

@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::DisableGatewayOutput {
+package Paws::StorageGateway::DisableGatewayOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,18 +14,7 @@ Paws::StorageGateway::DisableGatewayOutput
 
 =head2 GatewayARN => Str
 
-  
-
-The unique Amazon Resource Name of the disabled gateway.
-
-
-
-
-
-
-
-
-
+  The unique Amazon Resource Name of the disabled gateway.
 
 
 =cut

@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::TerminateEnvironment {
+package Paws::ElasticBeanstalk::TerminateEnvironment;
   use Moose;
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::ElasticBeanstalk::TerminateEnvironment {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'TerminateEnvironment');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::EnvironmentDescription');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'TerminateEnvironmentResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method TerminateEnviro
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method TerminateEnvironment.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to TerminateEnvironment.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TerminateEnvironment.
 
 As an example:
 
@@ -37,47 +36,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EnvironmentId => Str
 
-  
-
-The ID of the environment to terminate.
+  The ID of the environment to terminate.
 
 Condition: You must specify either this or an EnvironmentName, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
-
-
-
-
-
-
-
-
-
 =head2 EnvironmentName => Str
 
-  
-
-The name of the environment to terminate.
+  The name of the environment to terminate.
 
 Condition: You must specify either this or an EnvironmentId, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
-
-
-
-
-
-
-
-
-
 =head2 TerminateResources => Bool
 
-  
-
-Indicates whether the associated AWS resources should shut down when
+  Indicates whether the associated AWS resources should shut down when
 the environment is terminated:
 
 C<true>: (default) The user AWS resources (for example, the Auto
@@ -103,15 +78,6 @@ For more information, see the AWS Elastic Beanstalk User Guide.
 Default: C<true>
 
 Valid Values: C<true> | C<false>
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::BuildSuggestersResponse {
+package Paws::CloudSearch::BuildSuggestersResponse;
   use Moose;
   has FieldNames => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###

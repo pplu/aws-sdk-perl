@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::CreateUserProfileResult {
+package Paws::OpsWorks::CreateUserProfileResult;
   use Moose;
   has IamUserArn => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,18 +14,7 @@ Paws::OpsWorks::CreateUserProfileResult
 
 =head2 IamUserArn => Str
 
-  
-
-The user's IAM ARN.
-
-
-
-
-
-
-
-
-
+  The user's IAM ARN.
 
 
 =cut

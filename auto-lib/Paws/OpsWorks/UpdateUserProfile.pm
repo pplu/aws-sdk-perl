@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::UpdateUserProfile {
+package Paws::OpsWorks::UpdateUserProfile;
   use Moose;
   has AllowSelfManagement => (is => 'ro', isa => 'Bool');
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::OpsWorks::UpdateUserProfile {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUserProfile');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method UpdateUserProfi
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method UpdateUserProfile.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUserProfile.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUserProfile.
 
 As an example:
 
@@ -38,68 +37,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllowSelfManagement => Bool
 
-  
-
-Whether users can specify their own SSH public key through the My
+  Whether users can specify their own SSH public key through the My
 Settings page. For more information, see Managing User Permissions.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> IamUserArn => Str
 
-  
-
-The user IAM ARN.
-
-
-
-
-
-
-
-
-
+  The user IAM ARN.
 
 =head2 SshPublicKey => Str
 
-  
-
-The user's new SSH public key.
-
-
-
-
-
-
-
-
-
+  The user's new SSH public key.
 
 =head2 SshUsername => Str
 
-  
-
-The user's SSH user name. The allowable characters are [a-z], [A-Z],
+  The user's SSH user name. The allowable characters are [a-z], [A-Z],
 [0-9], '-', and '_'. If the specified name includes other punctuation
 marks, AWS OpsWorks removes them. For example, C<my.name> will be
 changed to C<myname>. If you do not specify an SSH user name, AWS
 OpsWorks generates one from the IAM user name.
-
-
-
-
-
-
-
-
-
 
 
 

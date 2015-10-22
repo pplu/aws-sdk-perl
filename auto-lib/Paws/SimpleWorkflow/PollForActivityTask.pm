@@ -1,16 +1,15 @@
 
-package Paws::SimpleWorkflow::PollForActivityTask {
+package Paws::SimpleWorkflow::PollForActivityTask;
   use Moose;
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has identity => (is => 'ro', isa => 'Str');
-  has taskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has Identity => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'identity' );
+  has TaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'taskList' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForActivityTask');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SimpleWorkflow::ActivityTask');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method PollForActivity
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method PollForActivityTask.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PollForActivityTask.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PollForActivityTask.
 
 As an example:
 
@@ -35,58 +34,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domain => Str
+=head2 B<REQUIRED> Domain => Str
 
-  
+  The name of the domain that contains the task lists being polled.
 
-The name of the domain that contains the task lists being polled.
+=head2 Identity => Str
 
-
-
-
-
-
-
-
-
-
-=head2 identity => Str
-
-  
-
-Identity of the worker making the request, recorded in the
+  Identity of the worker making the request, recorded in the
 C<ActivityTaskStarted> event in the workflow history. This enables
 diagnostic tracing when problems arise. The form of this identity is
 user defined.
 
+=head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> taskList => Paws::SimpleWorkflow::TaskList
-
-  
-
-Specifies the task list to poll for activity tasks.
+  Specifies the task list to poll for activity tasks.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
-
-
-
-
-
-
-
-
-
 
 
 

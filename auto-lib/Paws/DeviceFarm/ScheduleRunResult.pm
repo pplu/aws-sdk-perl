@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::ScheduleRunResult {
+package Paws::DeviceFarm::ScheduleRunResult;
   use Moose;
-  has run => (is => 'ro', isa => 'Paws::DeviceFarm::Run');
+  has Run => (is => 'ro', isa => 'Paws::DeviceFarm::Run', traits => ['Unwrapped'], xmlname => 'run' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::DeviceFarm::ScheduleRunResult
 
 =head1 ATTRIBUTES
 
-=head2 run => Paws::DeviceFarm::Run
+=head2 Run => L<Paws::DeviceFarm::Run>
 
-  
-
-Information about the scheduled run.
-
-
-
-
-
-
-
-
-
+  Information about the scheduled run.
 
 
 =cut

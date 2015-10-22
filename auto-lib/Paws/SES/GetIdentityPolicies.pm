@@ -1,5 +1,5 @@
 
-package Paws::SES::GetIdentityPolicies {
+package Paws::SES::GetIdentityPolicies;
   use Moose;
   has Identity => (is => 'ro', isa => 'Str', required => 1);
   has PolicyNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -9,7 +9,6 @@ package Paws::SES::GetIdentityPolicies {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetIdentityPolicies');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::GetIdentityPoliciesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetIdentityPoliciesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method GetIdentityPoli
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method GetIdentityPolicies.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetIdentityPolicies.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetIdentityPolicies.
 
 As an example:
 
@@ -36,41 +35,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Identity => Str
 
-  
-
-The identity for which the policies will be retrieved. You can specify
+  The identity for which the policies will be retrieved. You can specify
 an identity by using its name or by using its Amazon Resource Name
 (ARN). Examples: C<user@example.com>, C<example.com>,
 C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
 
 To successfully call this API, you must own the identity.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PolicyNames => ArrayRef[Str]
 
-  
-
-A list of the names of policies to be retrieved. You can retrieve a
+  A list of the names of policies to be retrieved. You can retrieve a
 maximum of 20 policies at a time. If you do not know the names of the
 policies that are attached to the identity, you can use
 C<ListIdentityPolicies>.
-
-
-
-
-
-
-
-
-
 
 
 

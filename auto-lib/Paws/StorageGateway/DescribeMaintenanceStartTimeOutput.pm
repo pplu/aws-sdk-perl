@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::DescribeMaintenanceStartTimeOutput {
+package Paws::StorageGateway::DescribeMaintenanceStartTimeOutput;
   use Moose;
   has DayOfWeek => (is => 'ro', isa => 'Int');
   has GatewayARN => (is => 'ro', isa => 'Str');
@@ -7,7 +7,6 @@ package Paws::StorageGateway::DescribeMaintenanceStartTimeOutput {
   has MinuteOfHour => (is => 'ro', isa => 'Int');
   has Timezone => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

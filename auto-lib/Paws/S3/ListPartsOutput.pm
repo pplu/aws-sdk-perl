@@ -1,5 +1,5 @@
 
-package Paws::S3::ListPartsOutput {
+package Paws::S3::ListPartsOutput;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str');
   has Initiator => (is => 'ro', isa => 'Paws::S3::Initiator');
@@ -14,7 +14,6 @@ package Paws::S3::ListPartsOutput {
   has StorageClass => (is => 'ro', isa => 'Str');
   has UploadId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Simple Storage Service service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -41,116 +40,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Bucket => Str
 
-  
+  Name of the bucket to which the multipart upload was initiated.
 
-Name of the bucket to which the multipart upload was initiated.
+=head2 Initiator => L<Paws::S3::Initiator>
 
-
-
-
-
-
-
-
-
-
-=head2 Initiator => Paws::S3::Initiator
-
-  
-
-Identifies who initiated the multipart upload.
-
-
-
-
-
-
-
-
-
+  Identifies who initiated the multipart upload.
 
 =head2 IsTruncated => Bool
 
-  
-
-Indicates whether the returned list of parts is truncated.
-
-
-
-
-
-
-
-
-
+  Indicates whether the returned list of parts is truncated.
 
 =head2 Key => Str
 
-  
-
-Object key for which the multipart upload was initiated.
-
-
-
-
-
-
-
-
-
+  Object key for which the multipart upload was initiated.
 
 =head2 MaxParts => Int
 
-  
-
-Maximum number of parts that were allowed in the response.
-
-
-
-
-
-
-
-
-
+  Maximum number of parts that were allowed in the response.
 
 =head2 NextPartNumberMarker => Int
 
-  
-
-When a list is truncated, this element specifies the last part in the
+  When a list is truncated, this element specifies the last part in the
 list, as well as the value to use for the part-number-marker request
 parameter in a subsequent request.
 
-
-
-
-
-
-
-
-
-
-=head2 Owner => Paws::S3::Owner
+=head2 Owner => L<Paws::S3::Owner>
 
   
 
 =head2 PartNumberMarker => Int
 
-  
+  Part number after which listing begins.
 
-Part number after which listing begins.
-
-
-
-
-
-
-
-
-
-
-=head2 Parts => ArrayRef[Paws::S3::Part]
+=head2 Parts => ArrayRef[L<Paws::S3::Part>]
 
   
 
@@ -160,34 +82,12 @@ Part number after which listing begins.
 
 =head2 StorageClass => Str
 
-  
-
-The class of storage used to store the object.
-
-
-
-
-
-
-
-
-
+  The class of storage used to store the object.
 
 =head2 UploadId => Str
 
-  
-
-Upload ID identifying the multipart upload whose parts are being
+  Upload ID identifying the multipart upload whose parts are being
 listed.
-
-
-
-
-
-
-
-
-
 
 
 

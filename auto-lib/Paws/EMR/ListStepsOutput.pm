@@ -1,10 +1,9 @@
 
-package Paws::EMR::ListStepsOutput {
+package Paws::EMR::ListStepsOutput;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepSummary]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -16,33 +15,11 @@ Paws::EMR::ListStepsOutput
 
 =head2 Marker => Str
 
-  
-
-The pagination token that indicates the next set of results to
+  The pagination token that indicates the next set of results to
 retrieve.
+=head2 Steps => ArrayRef[L<Paws::EMR::StepSummary>]
 
-
-
-
-
-
-
-
-
-=head2 Steps => ArrayRef[Paws::EMR::StepSummary]
-
-  
-
-The filtered list of steps for the cluster.
-
-
-
-
-
-
-
-
-
+  The filtered list of steps for the cluster.
 
 
 =cut

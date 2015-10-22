@@ -1,5 +1,5 @@
 
-package Paws::RedShift::DeleteClusterSubnetGroup {
+package Paws::RedShift::DeleteClusterSubnetGroup;
   use Moose;
   has ClusterSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::RedShift::DeleteClusterSubnetGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSubnetGroup');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteClusterSu
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DeleteClusterSubnetGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteClusterSubnetGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteClusterSubnetGroup.
 
 As an example:
 
@@ -35,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterSubnetGroupName => Str
 
-  
-
-The name of the cluster subnet group name to be deleted.
-
-
-
-
-
-
-
-
-
+  The name of the cluster subnet group name to be deleted.
 
 
 

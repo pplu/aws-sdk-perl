@@ -1,9 +1,8 @@
 
-package Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages {
+package Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages;
   use Moose;
   has Messages => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ValidationMessage]');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::ElasticBeanstalk::ConfigurationSettingsValidationMessages
 
 =head1 ATTRIBUTES
 
-=head2 Messages => ArrayRef[Paws::ElasticBeanstalk::ValidationMessage]
+=head2 Messages => ArrayRef[L<Paws::ElasticBeanstalk::ValidationMessage>]
 
-  
-
-A list of ValidationMessage.
-
-
-
-
-
-
-
-
-
+  A list of ValidationMessage.
 
 
 =cut

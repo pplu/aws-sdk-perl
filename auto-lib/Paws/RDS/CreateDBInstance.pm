@@ -1,5 +1,5 @@
 
-package Paws::RDS::CreateDBInstance {
+package Paws::RDS::CreateDBInstance;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
@@ -14,7 +14,6 @@ package Paws::RDS::CreateDBInstance {
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
-  has Domain => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
@@ -40,7 +39,6 @@ package Paws::RDS::CreateDBInstance {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBInstance');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBInstanceResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBInstanceResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +53,7 @@ This class represents the parameters used for calling the method CreateDBInstanc
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CreateDBInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBInstance.
 
 As an example:
 
@@ -67,9 +65,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllocatedStorage => Int
 
-  
-
-The amount of storage (in gigabytes) to be initially allocated for the
+  The amount of storage (in gigabytes) to be initially allocated for the
 database instance.
 
 Type: Integer
@@ -92,38 +88,16 @@ Constraints: Must be an integer from 200 to 4096 (Standard Edition and
 Enterprise Edition) or from 20 to 4096 (Express Edition and Web
 Edition)
 
-
-
-
-
-
-
-
-
-
 =head2 AutoMinorVersionUpgrade => Bool
 
-  
-
-Indicates that minor engine upgrades will be applied automatically to
+  Indicates that minor engine upgrades will be applied automatically to
 the DB instance during the maintenance window.
 
 Default: C<true>
 
-
-
-
-
-
-
-
-
-
 =head2 AvailabilityZone => Str
 
-  
-
-The EC2 Availability Zone that the database instance will be created
+  The EC2 Availability Zone that the database instance will be created
 in. For information on regions and Availability Zones, see Regions and
 Availability Zones.
 
@@ -136,20 +110,9 @@ Constraint: The AvailabilityZone parameter cannot be specified if the
 MultiAZ parameter is set to C<true>. The specified Availability Zone
 must be in the same region as the current endpoint.
 
-
-
-
-
-
-
-
-
-
 =head2 BackupRetentionPeriod => Int
 
-  
-
-The number of days for which automated backups are retained. Setting
+  The number of days for which automated backups are retained. Setting
 this parameter to a positive number enables backups. Setting this
 parameter to 0 disables automated backups.
 
@@ -167,90 +130,37 @@ Replicas
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 CharacterSetName => Str
 
-  
-
-For supported engines, indicates that the DB instance should be
+  For supported engines, indicates that the DB instance should be
 associated with the specified CharacterSet.
-
-
-
-
-
-
-
-
-
 
 =head2 CopyTagsToSnapshot => Bool
 
-  
-
-This property is not currently implemented.
-
-
-
-
-
-
-
-
-
+  True to copy all tags from the DB instance to snapshots of the DB
+instance; otherwise false. The default is false.
 
 =head2 DBClusterIdentifier => Str
 
-  
-
-The identifier of the DB cluster that the instance will belong to.
+  The identifier of the DB cluster that the instance will belong to.
 
 For information on creating a DB cluster, see CreateDBCluster.
 
 Type: String
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DBInstanceClass => Str
 
-  
-
-The compute and memory capacity of the DB instance.
+  The compute and memory capacity of the DB instance.
 
 Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
 | db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge |
 db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.r3.large
 | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge |
-db.t2.micro | db.t2.small | db.t2.medium>
-
-
-
-
-
-
-
-
-
+db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  
-
-The DB instance identifier. This parameter is stored as a lowercase
+  The DB instance identifier. This parameter is stored as a lowercase
 string.
 
 Constraints:
@@ -268,20 +178,9 @@ to 15 for SQL Server).
 
 Example: C<mydbinstance>
 
-
-
-
-
-
-
-
-
-
 =head2 DBName => Str
 
-  
-
-The meaning of this parameter differs according to the database engine
+  The meaning of this parameter differs according to the database engine
 you use.
 
 Type: String
@@ -339,20 +238,26 @@ B<SQL Server>
 
 Not applicable. Must be null.
 
+B<Amazon Aurora>
 
+The name of the database to create when the primary instance of the DB
+cluster is created. If this parameter is not specified, no database is
+created in the DB instance.
 
+Constraints:
 
+=over
 
+=item * Must contain 1 to 64 alphanumeric characters
 
+=item * Cannot be a word reserved by the specified database engine
 
-
+=back
 
 
 =head2 DBParameterGroupName => Str
 
-  
-
-The name of the DB parameter group to associate with this DB instance.
+  The name of the DB parameter group to associate with this DB instance.
 If this argument is omitted, the default DBParameterGroup for the
 specified engine will be used.
 
@@ -369,68 +274,21 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 DBSecurityGroups => ArrayRef[Str]
 
-  
-
-A list of DB security groups to associate with this DB instance.
+  A list of DB security groups to associate with this DB instance.
 
 Default: The default DB security group for the database engine.
 
-
-
-
-
-
-
-
-
-
 =head2 DBSubnetGroupName => Str
 
-  
-
-A DB subnet group to associate with this DB instance.
+  A DB subnet group to associate with this DB instance.
 
 If there is no DB subnet group, then it is a non-VPC DB instance.
 
-
-
-
-
-
-
-
-
-
-=head2 Domain => Str
-
-  
-
-Specify the Active Directory Domain to create the instance in.
-
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Engine => Str
 
-  
-
-The name of the database engine to be used for this instance.
+  The name of the database engine to be used for this instance.
 
 Valid Values: C<MySQL> | C<oracle-se1> | C<oracle-se> | C<oracle-ee> |
 C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> | C<sqlserver-web>
@@ -438,20 +296,9 @@ C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> | C<sqlserver-web>
 
 Not every database engine is available for every AWS region.
 
-
-
-
-
-
-
-
-
-
 =head2 EngineVersion => Str
 
-  
-
-The version number of the database engine to use.
+  The version number of the database engine to use.
 
 The following are the database engines and major and minor versions
 that are available with Amazon RDS. Not every database engine is
@@ -477,66 +324,6 @@ us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
 
 =back
 
-B<MySQL>
-
-=over
-
-=item * B<Version 5.1 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
-
-=item * B<Version 5.5 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
-
-=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41
-| 5.5.42>
-
-=item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
-
-=back
-
-B<MySQL>
-
-=over
-
-=item * B<Version 5.1 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
-
-=item * B<Version 5.5 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
-
-=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41
-| 5.5.42>
-
-=item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
-
-=back
-
-B<MySQL>
-
-=over
-
-=item * B<Version 5.1 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
-
-=item * B<Version 5.5 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
-
-=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41
-| 5.5.42>
-
-=item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
-
-=back
-
 B<Oracle Database Enterprise Edition (oracle-ee)>
 
 =over
@@ -547,41 +334,10 @@ us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
 11.2.0.2.v6 | 11.2.0.2.v7>
 
 =item * B<Version 11.2 (Available in all regions):> C< 11.2.0.3.v1 |
-11.2.0.3.v2 | 11.2.0.4.v1 | 11.2.0.4.v3>
+11.2.0.3.v2 | 11.2.0.3.v3 | 11.2.0.4.v1 | 11.2.0.4.v3 | 11.2.0.4.v4>
 
-=item * B<Version 12.1 (Available in all regions):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Enterprise Edition (oracle-ee)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
-11.2.0.2.v6 | 11.2.0.2.v7>
-
-=item * B<Version 11.2 (Available in all regions):> C< 11.2.0.3.v1 |
-11.2.0.3.v2 | 11.2.0.4.v1 | 11.2.0.4.v3>
-
-=item * B<Version 12.1 (Available in all regions):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Enterprise Edition (oracle-ee)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
-11.2.0.2.v6 | 11.2.0.2.v7>
-
-=item * B<Version 11.2 (Available in all regions):> C< 11.2.0.3.v1 |
-11.2.0.3.v2 | 11.2.0.4.v1 | 11.2.0.4.v3>
-
-=item * B<Version 12.1 (Available in all regions):> C< 12.1.0.1.v1>
+=item * B<Version 12.1 (Available in all regions):> C<12.1.0.1.v1 |
+12.1.0.1.v2 | 12.1.0.2.v1>
 
 =back
 
@@ -594,45 +350,11 @@ us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
 11.2.0.2.v7>
 
 =item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
+eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3 |
+11.2.0.4.v1 | 11.2.0.4.v3 | 11.2.0.4.v4>
 
 =item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Standard Edition (oracle-se)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
-11.2.0.2.v7>
-
-=item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
-
-=item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Standard Edition (oracle-se)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
-11.2.0.2.v7>
-
-=item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
-
-=item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
+eu-central-1, us-west-1):> C<12.1.0.1.v1 | 12.1.0.1.v2>
 
 =back
 
@@ -645,75 +367,11 @@ us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
 11.2.0.2.v7>
 
 =item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
+eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3 |
+11.2.0.4.v1 | 11.2.0.4.v3 | 11.2.0.4.v4>
 
 =item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Standard Edition One (oracle-se1)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
-11.2.0.2.v7>
-
-=item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
-
-=item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
-
-=back
-
-B<Oracle Database Standard Edition One (oracle-se1)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
-11.2.0.2.v7>
-
-=item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.4.v1 |
-11.2.0.4.v3>
-
-=item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1>
-
-=back
-
-B<PostgreSQL>
-
-=over
-
-=item * B<Version 9.3 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 9.3.1 | 9.3.2>
-
-=item * B<Version 9.3 (Available in all regions):> C< 9.3.3 | 9.3.5 |
-9.3.6>
-
-=item * B<Version 9.4 (Available in all regions):> C< 9.4.1>
-
-=back
-
-B<PostgreSQL>
-
-=over
-
-=item * B<Version 9.3 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 9.3.1 | 9.3.2>
-
-=item * B<Version 9.3 (Available in all regions):> C< 9.3.3 | 9.3.5 |
-9.3.6>
-
-=item * B<Version 9.4 (Available in all regions):> C< 9.4.1>
+eu-central-1, us-west-1):> C< 12.1.0.1.v1 | 12.1.0.1.v2>
 
 =back
 
@@ -744,43 +402,7 @@ eu-central-1, us-west-1):> C< 11.00.2100.60.v1>
 
 =back
 
-B<Microsoft SQL Server Enterprise Edition (sqlserver-ee)>
-
-=over
-
-=item * B<Version 10.50 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 10.50.2789.0.v1>
-
-=item * B<Version 11.00 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.00.2100.60.v1>
-
-=back
-
 B<Microsoft SQL Server Express Edition (sqlserver-ex)>
-
-=over
-
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.2789.0.v1>
-
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.2100.60.v1>
-
-=back
-
-B<Microsoft SQL Server Express Edition (sqlserver-ex)>
-
-=over
-
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.2789.0.v1>
-
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.2100.60.v1>
-
-=back
-
-B<Microsoft SQL Server Standard Edition (sqlserver-se)>
 
 =over
 
@@ -815,52 +437,19 @@ B<Microsoft SQL Server Web Edition (sqlserver-web)>
 11.00.2100.60.v1>
 
 =back
-
-B<Microsoft SQL Server Web Edition (sqlserver-web)>
-
-=over
-
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.2789.0.v1>
-
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.2100.60.v1>
-
-=back
-
-
-
-
-
-
-
-
 
 
 =head2 Iops => Int
 
-  
-
-The amount of Provisioned IOPS (input/output operations per second) to
+  The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance.
 
 Constraints: To use PIOPS, this value must be an integer greater than
 1000.
 
-
-
-
-
-
-
-
-
-
 =head2 KmsKeyId => Str
 
-  
-
-The KMS key identifier for an encrypted DB instance.
+  The KMS key identifier for an encrypted DB instance.
 
 The KMS key identifier is the Amazon Resoure Name (ARN) for the KMS
 encryption key. If you are creating a DB instance with the same AWS
@@ -874,38 +463,16 @@ default encryption key. AWS KMS creates the default encryption key for
 your AWS account. Your AWS account has a different default encryption
 key for each AWS region.
 
-
-
-
-
-
-
-
-
-
 =head2 LicenseModel => Str
 
-  
-
-License model information for this DB instance.
+  License model information for this DB instance.
 
 Valid values: C<license-included> | C<bring-your-own-license> |
 C<general-public-license>
 
-
-
-
-
-
-
-
-
-
 =head2 MasterUsername => Str
 
-  
-
-The name of master user for the client DB instance.
+  The name of master user for the client DB instance.
 
 B<MySQL>
 
@@ -966,19 +533,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 MasterUserPassword => Str
 
-  
-
-The password for the master database user. Can be any printable ASCII
+  The password for the master database user. Can be any printable ASCII
 character except "/", """, or "@".
 
 Type: String
@@ -999,39 +556,21 @@ B<PostgreSQL>
 
 Constraints: Must contain from 8 to 128 characters.
 
+B<Amazon Aurora>
 
-
-
-
-
-
-
-
+Constraints: Must contain from 8 to 41 characters.
 
 =head2 MultiAZ => Bool
 
-  
-
-Specifies if the DB instance is a Multi-AZ deployment. You cannot set
+  Specifies if the DB instance is a Multi-AZ deployment. You cannot set
 the AvailabilityZone parameter if the MultiAZ parameter is set to true.
 Do not set this value if you want a Multi-AZ deployment for a SQL
 Server DB instance. Multi-AZ for SQL Server is set using the Mirroring
 option in an option group.
 
-
-
-
-
-
-
-
-
-
 =head2 OptionGroupName => Str
 
-  
-
-Indicates that the DB instance should be associated with the specified
+  Indicates that the DB instance should be associated with the specified
 option group.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
@@ -1039,20 +578,9 @@ TDE, cannot be removed from an option group, and that option group
 cannot be removed from a DB instance once it is associated with a DB
 instance
 
-
-
-
-
-
-
-
-
-
 =head2 Port => Int
 
-  
-
-The port number on which the database accepts connections.
+  The port number on which the database accepts connections.
 
 B<MySQL>
 
@@ -1083,20 +611,17 @@ Default: C<1433>
 Valid Values: C<1150-65535> except for C<1434>, C<3389>, C<47001>,
 C<49152>, and C<49152> through C<49156>.
 
+B<Amazon Aurora>
 
+Default: C<3306>
 
+Valid Values: C<1150-65535>
 
-
-
-
-
-
+Type: Integer
 
 =head2 PreferredBackupWindow => Str
 
-  
-
-The daily time range during which automated backups are created if
+  The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter. For more information, see DB Instance Backups.
 
@@ -1119,19 +644,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 PreferredMaintenanceWindow => Str
 
-  
-
-The weekly time range during which system maintenance can occur, in
+  The weekly time range during which system maintenance can occur, in
 Universal Coordinated Time (UTC). For more information, see DB Instance
 Maintenance.
 
@@ -1146,20 +661,9 @@ Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Constraints: Minimum 30-minute window.
 
-
-
-
-
-
-
-
-
-
 =head2 PubliclyAccessible => Bool
 
-  
-
-Specifies the accessibility options for the DB instance. A value of
+  Specifies the accessibility options for the DB instance. A value of
 true specifies an Internet-facing instance with a publicly resolvable
 DNS name, which resolves to a public IP address. A value of false
 specifies an internal instance with a DNS name that resolves to a
@@ -1183,37 +687,15 @@ publicly accessible. If a specific DB subnet group has been specified
 as part of the request and the PubliclyAccessible value has not been
 set, the DB instance will be private.
 
-
-
-
-
-
-
-
-
-
 =head2 StorageEncrypted => Bool
 
-  
-
-Specifies whether the DB instance is encrypted.
+  Specifies whether the DB instance is encrypted.
 
 Default: false
 
-
-
-
-
-
-
-
-
-
 =head2 StorageType => Str
 
-  
-
-Specifies the storage type to be associated with the DB instance.
+  Specifies the storage type to be associated with the DB instance.
 
 Valid values: C<standard | gp2 | io1>
 
@@ -1223,68 +705,26 @@ parameter.
 Default: C<io1> if the C<Iops> parameter is specified; otherwise
 C<standard>
 
-
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 
 =head2 TdeCredentialArn => Str
 
-  
-
-The ARN from the Key Store with which to associate the instance for TDE
+  The ARN from the Key Store with which to associate the instance for TDE
 encryption.
-
-
-
-
-
-
-
-
-
 
 =head2 TdeCredentialPassword => Str
 
-  
-
-The password for the given ARN from the Key Store in order to access
+  The password for the given ARN from the Key Store in order to access
 the device.
-
-
-
-
-
-
-
-
-
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  
-
-A list of EC2 VPC security groups to associate with this DB instance.
+  A list of EC2 VPC security groups to associate with this DB instance.
 
 Default: The default EC2 VPC security group for the DB subnet group's
 VPC.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,5 +1,5 @@
 
-package Paws::EMR::ListInstanceGroups {
+package Paws::EMR::ListInstanceGroups;
   use Moose;
   has ClusterId => (is => 'ro', isa => 'Str', required => 1);
   has Marker => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::EMR::ListInstanceGroups {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListInstanceGroups');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::ListInstanceGroupsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ListInstanceGro
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method ListInstanceGroups.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListInstanceGroups.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListInstanceGroups.
 
 As an example:
 
@@ -36,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterId => Str
 
-  
-
-The identifier of the cluster for which to list the instance groups.
-
-
-
-
-
-
-
-
-
+  The identifier of the cluster for which to list the instance groups.
 
 =head2 Marker => Str
 
-  
-
-The pagination token that indicates the next set of results to
+  The pagination token that indicates the next set of results to
 retrieve.
-
-
-
-
-
-
-
-
-
 
 
 

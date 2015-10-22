@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::SetLoadBasedAutoScaling {
+package Paws::OpsWorks::SetLoadBasedAutoScaling;
   use Moose;
   has DownScaling => (is => 'ro', isa => 'Paws::OpsWorks::AutoScalingThresholds');
   has Enable => (is => 'ro', isa => 'Bool');
@@ -11,7 +11,6 @@ package Paws::OpsWorks::SetLoadBasedAutoScaling {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetLoadBasedAutoScaling');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method SetLoadBasedAut
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method SetLoadBasedAutoScaling.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetLoadBasedAutoScaling.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetLoadBasedAutoScaling.
 
 As an example:
 
@@ -36,69 +35,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 DownScaling => Paws::OpsWorks::AutoScalingThresholds
+=head2 DownScaling => L<Paws::OpsWorks::AutoScalingThresholds>
 
-  
-
-An C<AutoScalingThresholds> object with the downscaling threshold
+  An C<AutoScalingThresholds> object with the downscaling threshold
 configuration. If the load falls below these thresholds for a specified
 amount of time, AWS OpsWorks stops a specified number of instances.
 
-
-
-
-
-
-
-
-
-
 =head2 Enable => Bool
 
-  
-
-Enables load-based auto scaling for the layer.
-
-
-
-
-
-
-
-
-
+  Enables load-based auto scaling for the layer.
 
 =head2 B<REQUIRED> LayerId => Str
 
-  
+  The layer ID.
 
-The layer ID.
+=head2 UpScaling => L<Paws::OpsWorks::AutoScalingThresholds>
 
-
-
-
-
-
-
-
-
-
-=head2 UpScaling => Paws::OpsWorks::AutoScalingThresholds
-
-  
-
-An C<AutoScalingThresholds> object with the upscaling threshold
+  An C<AutoScalingThresholds> object with the upscaling threshold
 configuration. If the load exceeds these thresholds for a specified
 amount of time, AWS OpsWorks starts a specified number of instances.
-
-
-
-
-
-
-
-
-
 
 
 

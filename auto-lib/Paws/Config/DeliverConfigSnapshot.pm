@@ -1,14 +1,13 @@
 
-package Paws::Config::DeliverConfigSnapshot {
+package Paws::Config::DeliverConfigSnapshot;
   use Moose;
-  has deliveryChannelName => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryChannelName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deliveryChannelName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeliverConfigSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Config::DeliverConfigSnapshotResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeliverConfigSn
 AWS Config service. Use the attributes of this class
 as arguments to method DeliverConfigSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeliverConfigSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeliverConfigSnapshot.
 
 As an example:
 
@@ -33,21 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> deliveryChannelName => Str
+=head2 B<REQUIRED> DeliveryChannelName => Str
 
-  
-
-The name of the delivery channel through which the snapshot is
+  The name of the delivery channel through which the snapshot is
 delivered.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,9 +1,8 @@
 
-package Paws::ECS::SubmitContainerStateChangeResponse {
+package Paws::ECS::SubmitContainerStateChangeResponse;
   use Moose;
-  has acknowledgment => (is => 'ro', isa => 'Str');
+  has Acknowledgment => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'acknowledgment' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::ECS::SubmitContainerStateChangeResponse
 
 =head1 ATTRIBUTES
 
-=head2 acknowledgment => Str
+=head2 Acknowledgment => Str
 
-  
-
-Acknowledgement of the state change.
-
-
-
-
-
-
-
-
-
+  Acknowledgement of the state change.
 
 
 =cut

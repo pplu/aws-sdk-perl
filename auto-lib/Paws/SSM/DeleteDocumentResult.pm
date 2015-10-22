@@ -1,8 +1,7 @@
 
-package Paws::SSM::DeleteDocumentResult {
+package Paws::SSM::DeleteDocumentResult;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

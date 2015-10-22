@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeInstancesResult {
+package Paws::OpsWorks::DescribeInstancesResult;
   use Moose;
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Instance]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::OpsWorks::DescribeInstancesResult
 
 =head1 ATTRIBUTES
 
-=head2 Instances => ArrayRef[Paws::OpsWorks::Instance]
+=head2 Instances => ArrayRef[L<Paws::OpsWorks::Instance>]
 
-  
-
-An array of C<Instance> objects that describe the instances.
-
-
-
-
-
-
-
-
-
+  An array of C<Instance> objects that describe the instances.
 
 
 =cut

@@ -1,9 +1,8 @@
 
-package Paws::DirectConnect::Interconnects {
+package Paws::DirectConnect::Interconnects;
   use Moose;
-  has interconnects => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Interconnect]');
+  has Interconnects => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Interconnect]', traits => ['Unwrapped'], xmlname => 'interconnects' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::DirectConnect::Interconnects
 
 =head1 ATTRIBUTES
 
-=head2 interconnects => ArrayRef[Paws::DirectConnect::Interconnect]
+=head2 Interconnects => ArrayRef[L<Paws::DirectConnect::Interconnect>]
 
-  
-
-A list of interconnects.
-
-
-
-
-
-
-
-
-
+  A list of interconnects.
 
 
 =cut

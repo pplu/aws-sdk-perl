@@ -1,5 +1,5 @@
 
-package Paws::EC2::PurchaseReservedInstancesOffering {
+package Paws::EC2::PurchaseReservedInstancesOffering;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
@@ -11,7 +11,6 @@ package Paws::EC2::PurchaseReservedInstancesOffering {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedInstancesOffering');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::PurchaseReservedInstancesOfferingResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method PurchaseReserve
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method PurchaseReservedInstancesOffering.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PurchaseReservedInstancesOffering.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PurchaseReservedInstancesOffering.
 
 As an example:
 
@@ -38,68 +37,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> InstanceCount => Int
 
-  
+  The number of Reserved Instances to purchase.
 
-The number of Reserved Instances to purchase.
+=head2 LimitPrice => L<Paws::EC2::ReservedInstanceLimitPrice>
 
-
-
-
-
-
-
-
-
-
-=head2 LimitPrice => Paws::EC2::ReservedInstanceLimitPrice
-
-  
-
-Specified for Reserved Instance Marketplace offerings to limit the
+  Specified for Reserved Instance Marketplace offerings to limit the
 total order and ensure that the Reserved Instances are not purchased at
 unexpected prices.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ReservedInstancesOfferingId => Str
 
-  
-
-The ID of the Reserved Instance offering to purchase.
-
-
-
-
-
-
-
-
-
+  The ID of the Reserved Instance offering to purchase.
 
 
 

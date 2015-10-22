@@ -1,9 +1,8 @@
 
-package Paws::EMR::DescribeClusterOutput {
+package Paws::EMR::DescribeClusterOutput;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Paws::EMR::Cluster');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::EMR::DescribeClusterOutput
 
 =head1 ATTRIBUTES
 
-=head2 Cluster => Paws::EMR::Cluster
+=head2 Cluster => L<Paws::EMR::Cluster>
 
-  
-
-This output contains the details for the requested cluster.
-
-
-
-
-
-
-
-
-
+  This output contains the details for the requested cluster.
 
 
 =cut

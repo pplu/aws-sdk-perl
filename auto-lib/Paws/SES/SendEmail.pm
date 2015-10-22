@@ -1,5 +1,5 @@
 
-package Paws::SES::SendEmail {
+package Paws::SES::SendEmail;
   use Moose;
   has Destination => (is => 'ro', isa => 'Paws::SES::Destination', required => 1);
   has Message => (is => 'ro', isa => 'Paws::SES::Message', required => 1);
@@ -14,7 +14,6 @@ package Paws::SES::SendEmail {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SendEmail');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::SendEmailResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'SendEmailResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ This class represents the parameters used for calling the method SendEmail on th
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method SendEmail.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SendEmail.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SendEmail.
 
 As an example:
 
@@ -39,57 +38,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Destination => Paws::SES::Destination
+=head2 B<REQUIRED> Destination => L<Paws::SES::Destination>
 
-  
+  The destination for this email, composed of To:, CC:, and BCC: fields.
 
-The destination for this email, composed of To:, CC:, and BCC: fields.
+=head2 B<REQUIRED> Message => L<Paws::SES::Message>
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Message => Paws::SES::Message
-
-  
-
-The message to be sent.
-
-
-
-
-
-
-
-
-
+  The message to be sent.
 
 =head2 ReplyToAddresses => ArrayRef[Str]
 
-  
-
-The reply-to email address(es) for the message. If the recipient
+  The reply-to email address(es) for the message. If the recipient
 replies to the message, each reply-to address will receive the reply.
-
-
-
-
-
-
-
-
-
 
 =head2 ReturnPath => Str
 
-  
-
-The email address to which bounces and complaints are to be forwarded
+  The email address to which bounces and complaints are to be forwarded
 when feedback forwarding is enabled. If the message cannot be delivered
 to the recipient, then an error message will be returned from the
 recipient's ISP; this message will then be forwarded to the email
@@ -98,20 +62,9 @@ parameter is never overwritten. This email address must be either
 individually verified with Amazon SES, or from a domain that has been
 verified with Amazon SES.
 
-
-
-
-
-
-
-
-
-
 =head2 ReturnPathArn => Str
 
-  
-
-This parameter is used only for sending authorization. It is the ARN of
+  This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
 that permits you to use the email address specified in the
 C<ReturnPath> parameter.
@@ -126,20 +79,9 @@ C<ReturnPath> to be C<feedback@example.com>.
 For more information about sending authorization, see the Amazon SES
 Developer Guide.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Source => Str
 
-  
-
-The email address that is sending the email. This email address must be
+  The email address that is sending the email. This email address must be
 either individually verified with Amazon SES, or from a domain that has
 been verified with Amazon SES. For information about verifying
 identities, see the Amazon SES Developer Guide.
@@ -155,20 +97,9 @@ syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax
 uses the following form: C<=?charset?encoding?encoded-text?=>. For more
 information, see RFC 2047.
 
-
-
-
-
-
-
-
-
-
 =head2 SourceArn => Str
 
-  
-
-This parameter is used only for sending authorization. It is the ARN of
+  This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
 that permits you to send for the email address specified in the
 C<Source> parameter.
@@ -182,15 +113,6 @@ C<Source> to be C<user@example.com>.
 
 For more information about sending authorization, see the Amazon SES
 Developer Guide.
-
-
-
-
-
-
-
-
-
 
 
 

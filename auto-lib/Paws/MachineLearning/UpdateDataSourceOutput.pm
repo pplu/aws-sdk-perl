@@ -1,9 +1,8 @@
 
-package Paws::MachineLearning::UpdateDataSourceOutput {
+package Paws::MachineLearning::UpdateDataSourceOutput;
   use Moose;
   has DataSourceId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,19 +14,8 @@ Paws::MachineLearning::UpdateDataSourceOutput
 
 =head2 DataSourceId => Str
 
-  
-
-The ID assigned to the C<DataSource> during creation. This value should
+  The ID assigned to the C<DataSource> during creation. This value should
 be identical to the value of the C<DataSourceID> in the request.
-
-
-
-
-
-
-
-
-
 
 
 =cut

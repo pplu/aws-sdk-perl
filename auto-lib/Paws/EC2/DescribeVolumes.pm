@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeVolumes {
+package Paws::EC2::DescribeVolumes;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
@@ -12,7 +12,6 @@ package Paws::EC2::DescribeVolumes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVolumes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeVolumesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method DescribeVolumes
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeVolumes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVolumes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVolumes.
 
 As an example:
 
@@ -39,27 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
-
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -147,19 +133,9 @@ volumes, or C<standard> for Magnetic volumes.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 MaxResults => Int
 
-  
-
-The maximum number of volume results returned by C<DescribeVolumes> in
+  The maximum number of volume results returned by C<DescribeVolumes> in
 paginated output. When this parameter is used, C<DescribeVolumes> only
 returns C<MaxResults> results in a single page along with a
 C<NextToken> response element. The remaining results of the initial
@@ -170,48 +146,17 @@ are returned. If this parameter is not used, then C<DescribeVolumes>
 returns all results. You cannot specify this parameter and the volume
 IDs parameter in the same request.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The C<NextToken> value returned from a previous paginated
+  The C<NextToken> value returned from a previous paginated
 C<DescribeVolumes> request where C<MaxResults> was used and the results
 exceeded the value of that parameter. Pagination continues from the end
 of the previous results that returned the C<NextToken> value. This
 value is C<null> when there are no more results to return.
 
-
-
-
-
-
-
-
-
-
 =head2 VolumeIds => ArrayRef[Str]
 
-  
-
-One or more volume IDs.
-
-
-
-
-
-
-
-
-
+  One or more volume IDs.
 
 
 

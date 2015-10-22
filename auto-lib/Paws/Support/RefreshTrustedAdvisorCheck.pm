@@ -1,14 +1,13 @@
 
-package Paws::Support::RefreshTrustedAdvisorCheck {
+package Paws::Support::RefreshTrustedAdvisorCheck;
   use Moose;
-  has checkId => (is => 'ro', isa => 'Str', required => 1);
+  has CheckId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'checkId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RefreshTrustedAdvisorCheck');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::RefreshTrustedAdvisorCheckResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method RefreshTrustedA
 AWS Support service. Use the attributes of this class
 as arguments to method RefreshTrustedAdvisorCheck.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RefreshTrustedAdvisorCheck.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RefreshTrustedAdvisorCheck.
 
 As an example:
 
@@ -33,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> checkId => Str
+=head2 B<REQUIRED> CheckId => Str
 
-  
-
-The unique identifier for the Trusted Advisor check.
-
-
-
-
-
-
-
-
-
+  The unique identifier for the Trusted Advisor check.
 
 
 

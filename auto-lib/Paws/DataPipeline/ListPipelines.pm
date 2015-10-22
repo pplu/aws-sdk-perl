@@ -1,14 +1,13 @@
 
-package Paws::DataPipeline::ListPipelines {
+package Paws::DataPipeline::ListPipelines;
   use Moose;
-  has marker => (is => 'ro', isa => 'Str');
+  has Marker => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'marker' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListPipelines');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::ListPipelinesOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method ListPipelines o
 AWS Data Pipeline service. Use the attributes of this class
 as arguments to method ListPipelines.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListPipelines.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListPipelines.
 
 As an example:
 
@@ -33,23 +32,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 marker => Str
+=head2 Marker => Str
 
-  
-
-The starting point for the results to be returned. For the first call,
+  The starting point for the results to be returned. For the first call,
 this value should be empty. As long as there are more results, continue
 to call C<ListPipelines> with the marker value from the previous call
 to retrieve the next set of results.
-
-
-
-
-
-
-
-
-
 
 
 

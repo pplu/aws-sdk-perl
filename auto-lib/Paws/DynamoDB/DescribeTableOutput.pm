@@ -1,9 +1,8 @@
 
-package Paws::DynamoDB::DescribeTableOutput {
+package Paws::DynamoDB::DescribeTableOutput;
   use Moose;
   has Table => (is => 'ro', isa => 'Paws::DynamoDB::TableDescription');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,7 @@ Paws::DynamoDB::DescribeTableOutput
 
 =head1 ATTRIBUTES
 
-=head2 Table => Paws::DynamoDB::TableDescription
+=head2 Table => L<Paws::DynamoDB::TableDescription>
 
   
 

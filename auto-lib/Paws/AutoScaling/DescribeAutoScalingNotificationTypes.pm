@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::DescribeAutoScalingNotificationTypes {
+package Paws::AutoScaling::DescribeAutoScalingNotificationTypes;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::AutoScaling::DescribeAutoScalingNotificationTypes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingNotificationTypes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAutoScalingNotificationTypesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method DescribeAutoSca
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribeAutoScalingNotificationTypes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAutoScalingNotificationTypes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAutoScalingNotificationTypes.
 
 As an example:
 

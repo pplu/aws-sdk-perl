@@ -1,5 +1,5 @@
 
-package Paws::RDS::CreateDBSnapshot {
+package Paws::RDS::CreateDBSnapshot;
   use Moose;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::RDS::CreateDBSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBSnapshotResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method CreateDBSnapsho
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CreateDBSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBSnapshot.
 
 As an example:
 
@@ -37,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  
-
-The DB instance identifier. This is the unique key that identifies a DB
+  The DB instance identifier. This is the unique key that identifies a DB
 instance.
 
 Constraints:
@@ -55,19 +52,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DBSnapshotIdentifier => Str
 
-  
-
-The identifier for the DB snapshot.
+  The identifier for the DB snapshot.
 
 Constraints:
 
@@ -85,16 +72,7 @@ Constraints:
 
 Example: C<my-snapshot-id>
 
-
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

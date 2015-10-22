@@ -1,15 +1,14 @@
 
-package Paws::CodeDeploy::GetDeploymentInstance {
+package Paws::CodeDeploy::GetDeploymentInstance;
   use Moose;
-  has deploymentId => (is => 'ro', isa => 'Str', required => 1);
-  has instanceId => (is => 'ro', isa => 'Str', required => 1);
+  has DeploymentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentId' , required => 1);
+  has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDeploymentInstance');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::GetDeploymentInstanceOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method GetDeploymentIn
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method GetDeploymentInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetDeploymentInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDeploymentInstance.
 
 As an example:
 
@@ -34,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> deploymentId => Str
+=head2 B<REQUIRED> DeploymentId => Str
 
-  
+  The unique ID of a deployment.
 
-The unique ID of a deployment.
+=head2 B<REQUIRED> InstanceId => Str
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> instanceId => Str
-
-  
-
-The unique ID of an instance in the deployment's deployment group.
-
-
-
-
-
-
-
-
-
+  The unique ID of an instance in the deployment's deployment group.
 
 
 

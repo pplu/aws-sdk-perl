@@ -1,10 +1,9 @@
 
-package Paws::CloudFormation::DescribeStackEventsOutput {
+package Paws::CloudFormation::DescribeStackEventsOutput;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has StackEvents => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::StackEvent]');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -17,33 +16,11 @@ Paws::CloudFormation::DescribeStackEventsOutput
 
 =head2 NextToken => Str
 
-  
-
-String that identifies the start of the next list of events, if there
+  String that identifies the start of the next list of events, if there
 is one.
+=head2 StackEvents => ArrayRef[L<Paws::CloudFormation::StackEvent>]
 
-
-
-
-
-
-
-
-
-=head2 StackEvents => ArrayRef[Paws::CloudFormation::StackEvent]
-
-  
-
-A list of C<StackEvents> structures.
-
-
-
-
-
-
-
-
-
+  A list of C<StackEvents> structures.
 
 
 =cut

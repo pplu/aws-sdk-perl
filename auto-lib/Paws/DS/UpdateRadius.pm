@@ -1,5 +1,5 @@
 
-package Paws::DS::UpdateRadius {
+package Paws::DS::UpdateRadius;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
   has RadiusSettings => (is => 'ro', isa => 'Paws::DS::RadiusSettings', required => 1);
@@ -9,7 +9,6 @@ package Paws::DS::UpdateRadius {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateRadius');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::UpdateRadiusResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method UpdateRadius on
 AWS Directory Service service. Use the attributes of this class
 as arguments to method UpdateRadius.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRadius.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateRadius.
 
 As an example:
 
@@ -36,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-  
-
-The identifier of the directory to update the RADIUS server information
+  The identifier of the directory to update the RADIUS server information
 for.
 
+=head2 B<REQUIRED> RadiusSettings => L<Paws::DS::RadiusSettings>
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> RadiusSettings => Paws::DS::RadiusSettings
-
-  
-
-A RadiusSettings object that contains information about the RADIUS
+  A RadiusSettings object that contains information about the RADIUS
 server.
-
-
-
-
-
-
-
-
-
 
 
 

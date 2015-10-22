@@ -1,9 +1,8 @@
 
-package Paws::Route53::GetHealthCheckLastFailureReasonResponse {
+package Paws::Route53::GetHealthCheckLastFailureReasonResponse;
   use Moose;
   has HealthCheckObservations => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HealthCheckObservation]', traits => ['Unwrapped'], xmlname => 'HealthCheckObservation', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -18,7 +17,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Route 53 service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -28,21 +27,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> HealthCheckObservations => ArrayRef[Paws::Route53::HealthCheckObservation]
+=head2 B<REQUIRED> HealthCheckObservations => ArrayRef[L<Paws::Route53::HealthCheckObservation>]
 
-  
-
-A list that contains one C<HealthCheckObservation> element for each
+  A list that contains one C<HealthCheckObservation> element for each
 Route 53 health checker.
-
-
-
-
-
-
-
-
-
 
 
 

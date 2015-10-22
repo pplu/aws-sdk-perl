@@ -1,7 +1,8 @@
 
-package Paws::Lambda::UpdateFunctionCode {
+package Paws::Lambda::UpdateFunctionCode;
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has Publish => (is => 'ro', isa => 'Bool');
   has S3Bucket => (is => 'ro', isa => 'Str');
   has S3Key => (is => 'ro', isa => 'Str');
   has S3ObjectVersion => (is => 'ro', isa => 'Str');
@@ -10,11 +11,10 @@ package Paws::Lambda::UpdateFunctionCode {
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateFunctionCode');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/versions/HEAD/code');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/code');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateFunctionCodeResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +29,7 @@ This class represents the parameters used for calling the method UpdateFunctionC
 AWS Lambda service. Use the attributes of this class
 as arguments to method UpdateFunctionCode.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateFunctionCode.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateFunctionCode.
 
 As an example:
 
@@ -41,9 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-The existing Lambda function name whose code you want to replace.
+  The existing Lambda function name whose code you want to replace.
 
 You can specify an unqualified function name (for example, "Thumbnail")
 or you can specify Amazon Resource Name (ARN) of the function (for
@@ -53,78 +51,30 @@ example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
+=head2 Publish => Bool
 
-
-
-
-
-
-
-
+  This boolean parameter can be used to request AWS Lambda to update the
+Lambda function and publish a version as an atomic operation.
 
 =head2 S3Bucket => Str
 
-  
-
-Amazon S3 bucket name where the .zip file containing your deployment
+  Amazon S3 bucket name where the .zip file containing your deployment
 package is stored. This bucket must reside in the same AWS region where
 you are creating the Lambda function.
 
-
-
-
-
-
-
-
-
-
 =head2 S3Key => Str
 
-  
-
-The Amazon S3 object (the deployment package) key name you want to
+  The Amazon S3 object (the deployment package) key name you want to
 upload.
-
-
-
-
-
-
-
-
-
 
 =head2 S3ObjectVersion => Str
 
-  
-
-The Amazon S3 object (the deployment package) version you want to
+  The Amazon S3 object (the deployment package) version you want to
 upload.
-
-
-
-
-
-
-
-
-
 
 =head2 ZipFile => Str
 
-  
-
-Based64-encoded .zip file containing your packaged source code.
-
-
-
-
-
-
-
-
-
+  Based64-encoded .zip file containing your packaged source code.
 
 
 

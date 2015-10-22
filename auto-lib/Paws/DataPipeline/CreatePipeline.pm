@@ -1,17 +1,16 @@
 
-package Paws::DataPipeline::CreatePipeline {
+package Paws::DataPipeline::CreatePipeline;
   use Moose;
-  has description => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]');
-  has uniqueId => (is => 'ro', isa => 'Str', required => 1);
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  has UniqueId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uniqueId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePipeline');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::CreatePipelineOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CreatePipeline 
 AWS Data Pipeline service. Use the attributes of this class
 as arguments to method CreatePipeline.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreatePipeline.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePipeline.
 
 As an example:
 
@@ -36,60 +35,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 description => Str
+=head2 Description => Str
 
-  
+  The description for the pipeline.
 
-The description for the pipeline.
+=head2 B<REQUIRED> Name => Str
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> name => Str
-
-  
-
-The name for the pipeline. You can use the same name for multiple
+  The name for the pipeline. You can use the same name for multiple
 pipelines associated with your AWS account, because AWS Data Pipeline
 assigns each pipeline a unique pipeline identifier.
 
+=head2 Tags => ArrayRef[L<Paws::DataPipeline::Tag>]
 
-
-
-
-
-
-
-
-
-=head2 tags => ArrayRef[Paws::DataPipeline::Tag]
-
-  
-
-A list of tags to associate with the pipeline at creation. Tags let you
+  A list of tags to associate with the pipeline at creation. Tags let you
 control access to pipelines. For more information, see Controlling User
 Access to Pipelines in the I<AWS Data Pipeline Developer Guide>.
 
+=head2 B<REQUIRED> UniqueId => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> uniqueId => Str
-
-  
-
-A unique identifier. This identifier is not the same as the pipeline
+  A unique identifier. This identifier is not the same as the pipeline
 identifier assigned by AWS Data Pipeline. You are responsible for
 defining the format and ensuring the uniqueness of this identifier. You
 use this parameter to ensure idempotency during repeated calls to
@@ -101,15 +65,6 @@ same name and unique identifier, a new pipeline is not created.
 Instead, you'll receive the pipeline identifier from the previous
 attempt. The uniqueness of the name and unique identifier combination
 is scoped to the AWS account or IAM user credentials.
-
-
-
-
-
-
-
-
-
 
 
 

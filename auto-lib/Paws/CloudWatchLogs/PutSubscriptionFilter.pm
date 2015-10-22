@@ -1,18 +1,17 @@
 
-package Paws::CloudWatchLogs::PutSubscriptionFilter {
+package Paws::CloudWatchLogs::PutSubscriptionFilter;
   use Moose;
-  has destinationArn => (is => 'ro', isa => 'Str', required => 1);
-  has filterName => (is => 'ro', isa => 'Str', required => 1);
-  has filterPattern => (is => 'ro', isa => 'Str', required => 1);
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has roleArn => (is => 'ro', isa => 'Str');
+  has DestinationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationArn' , required => 1);
+  has FilterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterName' , required => 1);
+  has FilterPattern => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterPattern' , required => 1);
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutSubscriptionFilter');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method PutSubscription
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method PutSubscriptionFilter.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutSubscriptionFilter.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutSubscriptionFilter.
 
 As an example:
 
@@ -37,11 +36,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> destinationArn => Str
+=head2 B<REQUIRED> DestinationArn => Str
 
-  
-
-The ARN of the destination to deliver matching log events to.
+  The ARN of the destination to deliver matching log events to.
 Currently, the supported destinations are:
 
 =over
@@ -55,77 +52,25 @@ belonging to a different account, for cross-account delivery.
 =back
 
 
+=head2 B<REQUIRED> FilterName => Str
 
+  A name for the subscription filter.
 
+=head2 B<REQUIRED> FilterPattern => Str
 
-
-
-
-
-
-=head2 B<REQUIRED> filterName => Str
-
-  
-
-A name for the subscription filter.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> filterPattern => Str
-
-  
-
-A valid CloudWatch Logs filter pattern for subscribing to a filtered
+  A valid CloudWatch Logs filter pattern for subscribing to a filtered
 stream of log events.
 
+=head2 B<REQUIRED> LogGroupName => Str
 
+  The name of the log group to associate the subscription filter with.
 
+=head2 RoleArn => Str
 
-
-
-
-
-
-
-=head2 B<REQUIRED> logGroupName => Str
-
-  
-
-The name of the log group to associate the subscription filter with.
-
-
-
-
-
-
-
-
-
-
-=head2 roleArn => Str
-
-  
-
-The ARN of an IAM role that grants Amazon CloudWatch Logs permissions
+  The ARN of an IAM role that grants Amazon CloudWatch Logs permissions
 to deliver ingested log events to the destination stream. You don't
 need to provide the ARN when you are working with a logical destination
 (used via an ARN of C<Destination>) for cross-account delivery.
-
-
-
-
-
-
-
-
-
 
 
 

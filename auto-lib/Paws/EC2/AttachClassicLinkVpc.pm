@@ -1,5 +1,5 @@
 
-package Paws::EC2::AttachClassicLinkVpc {
+package Paws::EC2::AttachClassicLinkVpc;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' , required => 1);
@@ -11,7 +11,6 @@ package Paws::EC2::AttachClassicLinkVpc {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachClassicLinkVpc');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::AttachClassicLinkVpcResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method AttachClassicLi
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method AttachClassicLinkVpc.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AttachClassicLinkVpc.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AttachClassicLinkVpc.
 
 As an example:
 
@@ -38,68 +37,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Groups => ArrayRef[Str]
 
-  
-
-The ID of one or more of the VPC's security groups. You cannot specify
+  The ID of one or more of the VPC's security groups. You cannot specify
 security groups from a different VPC.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The ID of an EC2-Classic instance to link to the ClassicLink-enabled
+  The ID of an EC2-Classic instance to link to the ClassicLink-enabled
 VPC.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> VpcId => Str
 
-  
-
-The ID of a ClassicLink-enabled VPC.
-
-
-
-
-
-
-
-
-
+  The ID of a ClassicLink-enabled VPC.
 
 
 

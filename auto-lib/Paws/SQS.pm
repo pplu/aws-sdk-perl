@@ -1,4 +1,4 @@
-package Paws::SQS {
+package Paws::SQS;
   use Moose;
   sub service { 'sqs' }
   sub version { '2012-11-05' }
@@ -130,7 +130,9 @@ package Paws::SQS {
     my $call_object = $self->new_with_coercions('Paws::SQS::SetQueueAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
+
+  sub operations { qw/AddPermission ChangeMessageVisibility ChangeMessageVisibilityBatch CreateQueue DeleteMessage DeleteMessageBatch DeleteQueue GetQueueAttributes GetQueueUrl ListDeadLetterSourceQueues ListQueues PurgeQueue ReceiveMessage RemovePermission SendMessage SendMessageBatch SetQueueAttributes / }
+
 1;
 
 ### main pod documentation begin ###
@@ -143,7 +145,7 @@ Paws::SQS - Perl Interface to AWS Amazon Simple Queue Service
 
   use Paws;
 
-  my $obj = Paws->service('SQS')->new;
+  my $obj = Paws->service('SQS');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],
@@ -156,8 +158,6 @@ Paws::SQS - Perl Interface to AWS Amazon Simple Queue Service
   );
 
 =head1 DESCRIPTION
-
-
 
 Welcome to the I<Amazon Simple Queue Service API Reference>. This
 section describes who should read this guide, how the guide is
@@ -204,15 +204,6 @@ automatically takes care of tasks such as:
 
 For a list of available SDKs, go to Tools for Amazon Web Services.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 AddPermission(Actions => ArrayRef[Str], AWSAccountIds => ArrayRef[Str], Label => Str, QueueUrl => Str)
@@ -221,9 +212,7 @@ Each argument is described in detail in: L<Paws::SQS::AddPermission>
 
 Returns: nothing
 
-  
-
-Adds a permission to a queue for a specific principal. This allows for
+  Adds a permission to a queue for a specific principal. This allows for
 sharing access to the queue.
 
 When you create a queue, you have full control access rights for the
@@ -246,24 +235,13 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-
-
-
-
-
-
-
-
-
 =head2 ChangeMessageVisibility(QueueUrl => Str, ReceiptHandle => Str, VisibilityTimeout => Int)
 
 Each argument is described in detail in: L<Paws::SQS::ChangeMessageVisibility>
 
 Returns: nothing
 
-  
-
-Changes the visibility timeout of a specified message in a queue to a
+  Changes the visibility timeout of a specified message in a queue to a
 new value. The maximum allowed timeout value you can set the value to
 is 12 hours. This means you can't extend the timeout of a message in an
 existing queue to more than a total visibility timeout of 12 hours.
@@ -297,24 +275,13 @@ time it is received reverts to the original timeout value, not the
 value you set with the C<ChangeMessageVisibility> action.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ChangeMessageVisibilityBatch(Entries => ArrayRef[Paws::SQS::ChangeMessageVisibilityBatchRequestEntry], QueueUrl => Str)
+=head2 ChangeMessageVisibilityBatch(Entries => ArrayRef[L<Paws::SQS::ChangeMessageVisibilityBatchRequestEntry>], QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::ChangeMessageVisibilityBatch>
 
 Returns: a L<Paws::SQS::ChangeMessageVisibilityBatchResult> instance
 
-  
-
-Changes the visibility timeout of multiple messages. This is a batch
+  Changes the visibility timeout of multiple messages. This is a batch
 version of ChangeMessageVisibility. The result of the action on each
 message is reported individually in the response. You can send up to 10
 ChangeMessageVisibility requests with each
@@ -332,24 +299,13 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateQueue(QueueName => Str, [Attributes => Paws::SQS::QueueAttributeMap])
+=head2 CreateQueue(QueueName => Str, [Attributes => L<Paws::SQS::QueueAttributeMap>])
 
 Each argument is described in detail in: L<Paws::SQS::CreateQueue>
 
 Returns: a L<Paws::SQS::CreateQueueResult> instance
 
-  
-
-Creates a new queue, or returns the URL of an existing one. When you
+  Creates a new queue, or returns the URL of an existing one. When you
 request C<CreateQueue>, you provide a name for the queue. To
 successfully create a new queue, you must provide a name that is unique
 within the scope of your own queues.
@@ -381,24 +337,13 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteMessage(QueueUrl => Str, ReceiptHandle => Str)
 
 Each argument is described in detail in: L<Paws::SQS::DeleteMessage>
 
 Returns: nothing
 
-  
-
-Deletes the specified message from the specified queue. You specify the
+  Deletes the specified message from the specified queue. You specify the
 message by using the message's C<receipt handle> and not the C<message
 ID> you received when you sent the message. Even if the message is
 locked by another reader due to the visibility timeout setting, it is
@@ -422,24 +367,13 @@ be idempotent so that receiving a particular message more than once is
 not a problem.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeleteMessageBatch(Entries => ArrayRef[Paws::SQS::DeleteMessageBatchRequestEntry], QueueUrl => Str)
+=head2 DeleteMessageBatch(Entries => ArrayRef[L<Paws::SQS::DeleteMessageBatchRequestEntry>], QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::DeleteMessageBatch>
 
 Returns: a L<Paws::SQS::DeleteMessageBatchResult> instance
 
-  
-
-Deletes up to ten messages from the specified queue. This is a batch
+  Deletes up to ten messages from the specified queue. This is a batch
 version of DeleteMessage. The result of the delete action on each
 message is reported individually in the response.
 
@@ -457,24 +391,13 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteQueue(QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::DeleteQueue>
 
 Returns: nothing
 
-  
-
-Deletes the queue specified by the B<queue URL>, regardless of whether
+  Deletes the queue specified by the B<queue URL>, regardless of whether
 the queue is empty. If the specified queue does not exist, Amazon SQS
 returns a successful response.
 
@@ -493,24 +416,13 @@ more than 30 days. For more information, see How Amazon SQS Queues Work
 in the I<Amazon SQS Developer Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetQueueAttributes(QueueUrl => Str, [AttributeNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::SQS::GetQueueAttributes>
 
 Returns: a L<Paws::SQS::GetQueueAttributesResult> instance
 
-  
-
-Gets attributes for the specified queue. The following attributes are
+  Gets attributes for the specified queue. The following attributes are
 supported:
 
 =over
@@ -574,24 +486,13 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetQueueUrl(QueueName => Str, [QueueOwnerAWSAccountId => Str])
 
 Each argument is described in detail in: L<Paws::SQS::GetQueueUrl>
 
 Returns: a L<Paws::SQS::GetQueueUrlResult> instance
 
-  
-
-Returns the URL of an existing queue. This action provides a simple way
+  Returns the URL of an existing queue. This action provides a simple way
 to retrieve the URL of an Amazon SQS queue.
 
 To access a queue that belongs to another AWS account, use the
@@ -602,37 +503,17 @@ AddPermission or go to Shared Queues in the I<Amazon SQS Developer
 Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListDeadLetterSourceQueues(QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::ListDeadLetterSourceQueues>
 
 Returns: a L<Paws::SQS::ListDeadLetterSourceQueuesResult> instance
 
-  
-
-Returns a list of your queues that have the RedrivePolicy queue
+  Returns a list of your queues that have the RedrivePolicy queue
 attribute configured with a dead letter queue.
 
 For more information about using dead letter queues, see Using Amazon
 SQS Dead Letter Queues.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListQueues([QueueNamePrefix => Str])
@@ -641,21 +522,10 @@ Each argument is described in detail in: L<Paws::SQS::ListQueues>
 
 Returns: a L<Paws::SQS::ListQueuesResult> instance
 
-  
-
-Returns a list of your queues. The maximum number of queues that can be
+  Returns a list of your queues. The maximum number of queues that can be
 returned is 1000. If you specify a value for the optional
 C<QueueNamePrefix> parameter, only queues with a name beginning with
 the specified value are returned.
-
-
-
-
-
-
-
-
-
 
 
 =head2 PurgeQueue(QueueUrl => Str)
@@ -664,9 +534,7 @@ Each argument is described in detail in: L<Paws::SQS::PurgeQueue>
 
 Returns: nothing
 
-  
-
-Deletes the messages in a queue specified by the B<queue URL>.
+  Deletes the messages in a queue specified by the B<queue URL>.
 
 When you use the C<PurgeQueue> API, the deleted messages in the queue
 cannot be retrieved.
@@ -679,24 +547,13 @@ queue before C<PurgeQueue> was called may be received, but will be
 deleted within the next minute.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ReceiveMessage(QueueUrl => Str, [AttributeNames => ArrayRef[Str], MaxNumberOfMessages => Int, MessageAttributeNames => ArrayRef[Str], VisibilityTimeout => Int, WaitTimeSeconds => Int])
 
 Each argument is described in detail in: L<Paws::SQS::ReceiveMessage>
 
 Returns: a L<Paws::SQS::ReceiveMessageResult> instance
 
-  
-
-Retrieves one or more messages, with a maximum limit of 10 messages,
+  Retrieves one or more messages, with a maximum limit of 10 messages,
 from the specified queue. Long poll support is enabled by using the
 C<WaitTimeSeconds> parameter. For more information, see Amazon SQS Long
 Poll in the I<Amazon SQS Developer Guide>.
@@ -757,45 +614,23 @@ that calls this action, we recommend that you structure your code so
 that it can handle new attributes gracefully.
 
 
-
-
-
-
-
-
-
-
-
 =head2 RemovePermission(Label => Str, QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::RemovePermission>
 
 Returns: nothing
 
-  
-
-Revokes any permissions in the queue policy that matches the specified
+  Revokes any permissions in the queue policy that matches the specified
 C<Label> parameter. Only the owner of the queue can remove permissions.
 
 
-
-
-
-
-
-
-
-
-
-=head2 SendMessage(MessageBody => Str, QueueUrl => Str, [DelaySeconds => Int, MessageAttributes => Paws::SQS::MessageAttributeMap])
+=head2 SendMessage(MessageBody => Str, QueueUrl => Str, [DelaySeconds => Int, MessageAttributes => L<Paws::SQS::MessageAttributeMap>])
 
 Each argument is described in detail in: L<Paws::SQS::SendMessage>
 
 Returns: a L<Paws::SQS::SendMessageResult> instance
 
-  
-
-Delivers a message to the specified queue. With Amazon SQS, you now
+  Delivers a message to the specified queue. With Amazon SQS, you now
 have the ability to send large payload messages that are up to 256KB
 (262,144 bytes) in size. To send large payloads, you must use an AWS
 SDK that supports SigV4 signing. To verify whether SigV4 is supported
@@ -807,27 +642,13 @@ go to http://www.w3.org/TR/REC-xml/
 not included in the list, your request will be rejected.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-=head2 SendMessageBatch(Entries => ArrayRef[Paws::SQS::SendMessageBatchRequestEntry], QueueUrl => Str)
+=head2 SendMessageBatch(Entries => ArrayRef[L<Paws::SQS::SendMessageBatchRequestEntry>], QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::SendMessageBatch>
 
 Returns: a L<Paws::SQS::SendMessageBatchResult> instance
 
-  
-
-Delivers up to ten messages to the specified queue. This is a batch
+  Delivers up to ten messages to the specified queue. This is a batch
 version of SendMessage. The result of the send action on each message
 is reported individually in the response. The maximum allowed
 individual message size is 256 KB (262,144 bytes).
@@ -859,24 +680,13 @@ C<&Attribute.1=this>
 C<&Attribute.2=that>
 
 
-
-
-
-
-
-
-
-
-
-=head2 SetQueueAttributes(Attributes => Paws::SQS::QueueAttributeMap, QueueUrl => Str)
+=head2 SetQueueAttributes(Attributes => L<Paws::SQS::QueueAttributeMap>, QueueUrl => Str)
 
 Each argument is described in detail in: L<Paws::SQS::SetQueueAttributes>
 
 Returns: nothing
 
-  
-
-Sets the value of one or more queue attributes. When you change a
+  Sets the value of one or more queue attributes. When you change a
 queue's attributes, the change can take up to 60 seconds for most of
 the attributes to propagate throughout the SQS system. Changes made to
 the C<MessageRetentionPeriod> attribute can take up to 15 minutes.
@@ -884,15 +694,6 @@ the C<MessageRetentionPeriod> attribute can take up to 15 minutes.
 Going forward, new attributes might be added. If you are writing code
 that calls this action, we recommend that you structure your code so
 that it can handle new attributes gracefully.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

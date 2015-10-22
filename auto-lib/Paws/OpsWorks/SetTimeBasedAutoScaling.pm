@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::SetTimeBasedAutoScaling {
+package Paws::OpsWorks::SetTimeBasedAutoScaling;
   use Moose;
   has AutoScalingSchedule => (is => 'ro', isa => 'Paws::OpsWorks::WeeklyAutoScalingSchedule');
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::OpsWorks::SetTimeBasedAutoScaling {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetTimeBasedAutoScaling');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method SetTimeBasedAut
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method SetTimeBasedAutoScaling.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetTimeBasedAutoScaling.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetTimeBasedAutoScaling.
 
 As an example:
 
@@ -34,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 AutoScalingSchedule => Paws::OpsWorks::WeeklyAutoScalingSchedule
+=head2 AutoScalingSchedule => L<Paws::OpsWorks::WeeklyAutoScalingSchedule>
 
-  
-
-An C<AutoScalingSchedule> with the instance schedule.
-
-
-
-
-
-
-
-
-
+  An C<AutoScalingSchedule> with the instance schedule.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The instance ID.
-
-
-
-
-
-
-
-
-
+  The instance ID.
 
 
 

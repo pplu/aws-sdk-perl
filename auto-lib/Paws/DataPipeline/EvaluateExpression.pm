@@ -1,16 +1,15 @@
 
-package Paws::DataPipeline::EvaluateExpression {
+package Paws::DataPipeline::EvaluateExpression;
   use Moose;
-  has expression => (is => 'ro', isa => 'Str', required => 1);
-  has objectId => (is => 'ro', isa => 'Str', required => 1);
-  has pipelineId => (is => 'ro', isa => 'Str', required => 1);
+  has Expression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'expression' , required => 1);
+  has ObjectId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'objectId' , required => 1);
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'EvaluateExpression');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::EvaluateExpressionOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method EvaluateExpress
 AWS Data Pipeline service. Use the attributes of this class
 as arguments to method EvaluateExpression.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to EvaluateExpression.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to EvaluateExpression.
 
 As an example:
 
@@ -35,50 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> expression => Str
+=head2 B<REQUIRED> Expression => Str
 
-  
+  The expression to evaluate.
 
-The expression to evaluate.
+=head2 B<REQUIRED> ObjectId => Str
 
+  The ID of the object.
 
+=head2 B<REQUIRED> PipelineId => Str
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> objectId => Str
-
-  
-
-The ID of the object.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> pipelineId => Str
-
-  
-
-The ID of the pipeline.
-
-
-
-
-
-
-
-
-
+  The ID of the pipeline.
 
 
 

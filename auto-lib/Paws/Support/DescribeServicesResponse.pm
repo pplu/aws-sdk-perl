@@ -1,9 +1,8 @@
 
-package Paws::Support::DescribeServicesResponse {
+package Paws::Support::DescribeServicesResponse;
   use Moose;
-  has services => (is => 'ro', isa => 'ArrayRef[Paws::Support::Service]');
+  has Services => (is => 'ro', isa => 'ArrayRef[Paws::Support::Service]', traits => ['Unwrapped'], xmlname => 'services' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::Support::DescribeServicesResponse
 
 =head1 ATTRIBUTES
 
-=head2 services => ArrayRef[Paws::Support::Service]
+=head2 Services => ArrayRef[L<Paws::Support::Service>]
 
-  
-
-A JSON-formatted list of AWS services.
-
-
-
-
-
-
-
-
-
+  A JSON-formatted list of AWS services.
 
 
 =cut

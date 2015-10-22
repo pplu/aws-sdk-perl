@@ -1,5 +1,5 @@
 
-package Paws::IAM::DeletePolicy {
+package Paws::IAM::DeletePolicy;
   use Moose;
   has PolicyArn => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::IAM::DeletePolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeletePolicy');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeletePolicy on
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method DeletePolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeletePolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeletePolicy.
 
 As an example:
 

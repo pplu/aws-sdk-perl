@@ -1,20 +1,19 @@
 
-package Paws::ECS::CreateService {
+package Paws::ECS::CreateService;
   use Moose;
-  has clientToken => (is => 'ro', isa => 'Str');
-  has cluster => (is => 'ro', isa => 'Str');
-  has desiredCount => (is => 'ro', isa => 'Int', required => 1);
-  has loadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]');
-  has role => (is => 'ro', isa => 'Str');
-  has serviceName => (is => 'ro', isa => 'Str', required => 1);
-  has taskDefinition => (is => 'ro', isa => 'Str', required => 1);
+  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' , required => 1);
+  has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', traits => ['NameInRequest'], request_name => 'loadBalancers' );
+  has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role' );
+  has ServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceName' , required => 1);
+  has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateService');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::CreateServiceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ This class represents the parameters used for calling the method CreateService o
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method CreateService.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateService.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateService.
 
 As an example:
 
@@ -39,125 +38,47 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 clientToken => Str
+=head2 ClientToken => Str
 
-  
-
-Unique, case-sensitive identifier you provide to ensure the idempotency
+  Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. Up to 32 ASCII characters are allowed.
 
+=head2 Cluster => Str
 
+  The short name or full Amazon Resource Name (ARN) of the cluster on
+which to run your service. If you do not specify a cluster, the default
+cluster is assumed.
 
+=head2 B<REQUIRED> DesiredCount => Int
 
+  The number of instantiations of the specified task definition to place
+and keep running on your cluster.
 
+=head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
-
-
-
-
-=head2 cluster => Str
-
-  
-
-The short name or full Amazon Resource Name (ARN) of the cluster that
-you want to run your service on. If you do not specify a cluster, the
-default cluster is assumed.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> desiredCount => Int
-
-  
-
-The number of instantiations of the specified task definition that you
-would like to place and keep running on your cluster.
-
-
-
-
-
-
-
-
-
-
-=head2 loadBalancers => ArrayRef[Paws::ECS::LoadBalancer]
-
-  
-
-A list of load balancer objects, containing the load balancer name, the
+  A list of load balancer objects, containing the load balancer name, the
 container name (as it appears in a container definition), and the
 container port to access from the load balancer.
 
+=head2 Role => Str
 
-
-
-
-
-
-
-
-
-=head2 role => Str
-
-  
-
-The name or full Amazon Resource Name (ARN) of the IAM role that allows
+  The name or full Amazon Resource Name (ARN) of the IAM role that allows
 your Amazon ECS container agent to make calls to your load balancer on
 your behalf. This parameter is only required if you are using a load
 balancer with your service.
 
+=head2 B<REQUIRED> ServiceName => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> serviceName => Str
-
-  
-
-The name of your service. Up to 255 letters (uppercase and lowercase),
+  The name of your service. Up to 255 letters (uppercase and lowercase),
 numbers, hyphens, and underscores are allowed. Service names must be
 unique within a cluster, but you can have similarly named services in
 multiple clusters within a region or across multiple regions.
 
+=head2 B<REQUIRED> TaskDefinition => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> taskDefinition => Str
-
-  
-
-The C<family> and C<revision> (C<family:revision>) or full Amazon
-Resource Name (ARN) of the task definition that you want to run in your
-service. If a C<revision> is not specified, the latest C<ACTIVE>
-revision is used.
-
-
-
-
-
-
-
-
-
+  The C<family> and C<revision> (C<family:revision>) or full Amazon
+Resource Name (ARN) of the task definition to run in your service. If a
+C<revision> is not specified, the latest C<ACTIVE> revision is used.
 
 
 

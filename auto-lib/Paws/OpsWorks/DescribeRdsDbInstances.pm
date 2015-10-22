@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::DescribeRdsDbInstances {
+package Paws::OpsWorks::DescribeRdsDbInstances;
   use Moose;
   has RdsDbInstanceArns => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::OpsWorks::DescribeRdsDbInstances {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeRdsDbInstances');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::DescribeRdsDbInstancesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DescribeRdsDbIn
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeRdsDbInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRdsDbInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeRdsDbInstances.
 
 As an example:
 
@@ -36,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 RdsDbInstanceArns => ArrayRef[Str]
 
-  
-
-An array containing the ARNs of the instances to be described.
-
-
-
-
-
-
-
-
-
+  An array containing the ARNs of the instances to be described.
 
 =head2 B<REQUIRED> StackId => Str
 
-  
-
-The stack ID that the instances are registered with. The operation
+  The stack ID that the instances are registered with. The operation
 returns descriptions of all registered Amazon RDS instances.
-
-
-
-
-
-
-
-
-
 
 
 

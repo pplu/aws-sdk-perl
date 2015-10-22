@@ -1,8 +1,7 @@
 
-package Paws::Route53Domains::UpdateTagsForDomainResponse {
+package Paws::Route53Domains::UpdateTagsForDomainResponse;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::UpdateSnapshotScheduleOutput {
+package Paws::StorageGateway::UpdateSnapshotScheduleOutput;
   use Moose;
   has VolumeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

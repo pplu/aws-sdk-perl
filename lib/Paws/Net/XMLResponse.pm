@@ -97,7 +97,7 @@ package Paws::Net::XMLResponse {
         
     my $inner_class = $att_class->meta->get_attribute('Map')->type_constraint->name;
     ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
-    Module::Runtime::require_module("$inner_class");
+    Paws->load_class("$inner_class");
 
     if ($value_ref eq 'ARRAY') {
       return $att_class->new(Map => { map { ( $_->{ $xml_keys } => $self->new_from_struct($inner_class, $_->{ $xml_values }) ) } @$value } );

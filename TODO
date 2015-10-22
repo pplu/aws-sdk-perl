@@ -12,14 +12,13 @@
 - JSON callers
   - when a boolean is returned from API, it doesn't get properly handed to 
     result objects (error thrown)
-- rest-xml callers for rest-xml services
-- json-xml callers for json-xml services
-- enums for results may be too strict. If AWS returns something new, an exception
-  is raised
-- enums should be validated when calling, and not validating when being returned from
-  APIs
+- enums in calling classes (for better parameter validation). Note: some shapes are used in
+  responses too. It's known that APIs sometimes return more values than documented in the enums,
+  so if enums are validated in results, this can result in unwanted exceptions 
 - Objects that can ->Delete, or ->Update, calling service->Update(Id => ...)
-- Build classes at runtime?
 - ResultParser and UnwrappedParser can maybe be fusioned. They're almost the same 
-- Validate Enums when passing params
 - for RDS and RedShift lists: adapt code so that botocore jsons don't have to be changed
+
+- shapes with no docu
+- operations that don't start with capitals
+- callclass documentation class names is not correct

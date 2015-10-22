@@ -1,5 +1,5 @@
 
-package Paws::RDS::CopyDBClusterSnapshot {
+package Paws::RDS::CopyDBClusterSnapshot;
   use Moose;
   has SourceDBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
@@ -10,7 +10,6 @@ package Paws::RDS::CopyDBClusterSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBClusterSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CopyDBClusterSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBClusterSnapshotResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method CopyDBClusterSn
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CopyDBClusterSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CopyDBClusterSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyDBClusterSnapshot.
 
 As an example:
 
@@ -37,9 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SourceDBClusterSnapshotIdentifier => Str
 
-  
-
-The identifier of the DB cluster snapshot to copy. This parameter is
+  The identifier of the DB cluster snapshot to copy. This parameter is
 not case-sensitive.
 
 Constraints:
@@ -56,24 +53,13 @@ Constraints:
 
 Example: C<my-cluster-snapshot1>
 
-
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 
 =head2 B<REQUIRED> TargetDBClusterSnapshotIdentifier => Str
 
-  
-
-The identifier of the new DB cluster snapshot to create from the source
+  The identifier of the new DB cluster snapshot to create from the source
 DB cluster snapshot. This parameter is not case-sensitive.
 
 Constraints:
@@ -89,15 +75,6 @@ Constraints:
 =back
 
 Example: C<my-cluster-snapshot2>
-
-
-
-
-
-
-
-
-
 
 
 

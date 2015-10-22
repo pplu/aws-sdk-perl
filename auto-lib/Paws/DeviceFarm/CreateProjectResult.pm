@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::CreateProjectResult {
+package Paws::DeviceFarm::CreateProjectResult;
   use Moose;
-  has project => (is => 'ro', isa => 'Paws::DeviceFarm::Project');
+  has Project => (is => 'ro', isa => 'Paws::DeviceFarm::Project', traits => ['Unwrapped'], xmlname => 'project' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::DeviceFarm::CreateProjectResult
 
 =head1 ATTRIBUTES
 
-=head2 project => Paws::DeviceFarm::Project
+=head2 Project => L<Paws::DeviceFarm::Project>
 
-  
-
-The newly created project.
-
-
-
-
-
-
-
-
-
+  The newly created project.
 
 
 =cut

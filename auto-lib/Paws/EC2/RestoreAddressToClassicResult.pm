@@ -1,10 +1,9 @@
 
-package Paws::EC2::RestoreAddressToClassicResult {
+package Paws::EC2::RestoreAddressToClassicResult;
   use Moose;
   has PublicIp => (is => 'ro', isa => 'Str', xmlname => 'publicIp', traits => ['Unwrapped',]);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -17,32 +16,10 @@ Paws::EC2::RestoreAddressToClassicResult
 
 =head2 PublicIp => Str
 
-  
-
-The Elastic IP address.
-
-
-
-
-
-
-
-
-
+  The Elastic IP address.
 =head2 Status => Str
 
-  
-
-The move status for the IP address.
-
-
-
-
-
-
-
-
-
+  The move status for the IP address.
 
 
 =cut

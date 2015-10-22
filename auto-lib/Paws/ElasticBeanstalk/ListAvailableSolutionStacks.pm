@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::ListAvailableSolutionStacks {
+package Paws::ElasticBeanstalk::ListAvailableSolutionStacks;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::ElasticBeanstalk::ListAvailableSolutionStacks {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAvailableSolutionStacks');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListAvailableSolutionStacksResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method ListAvailableSo
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method ListAvailableSolutionStacks.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListAvailableSolutionStacks.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAvailableSolutionStacks.
 
 As an example:
 

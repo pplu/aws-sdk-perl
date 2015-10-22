@@ -1,5 +1,5 @@
 
-package Paws::SES::GetSendQuota {
+package Paws::SES::GetSendQuota;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::SES::GetSendQuota {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSendQuota');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::GetSendQuotaResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSendQuotaResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method GetSendQuota on
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method GetSendQuota.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetSendQuota.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSendQuota.
 
 As an example:
 

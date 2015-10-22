@@ -1,5 +1,5 @@
 
-package Paws::CloudTrail::StartLogging {
+package Paws::CloudTrail::StartLogging;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::CloudTrail::StartLogging {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartLogging');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudTrail::StartLoggingResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method StartLogging on
 AWS CloudTrail service. Use the attributes of this class
 as arguments to method StartLogging.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StartLogging.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartLogging.
 
 As an example:
 
@@ -35,18 +34,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the trail for which CloudTrail logs AWS API calls.
-
-
-
-
-
-
-
-
-
+  Specifies the name or the CloudTrail ARN of the trail for which
+CloudTrail logs AWS API calls. The format of a trail ARN is
+C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
 
 
 

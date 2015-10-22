@@ -1,9 +1,8 @@
 
-package Paws::RDS::CreateDBSecurityGroupResult {
+package Paws::RDS::CreateDBSecurityGroupResult;
   use Moose;
   has DBSecurityGroup => (is => 'ro', isa => 'Paws::RDS::DBSecurityGroup');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,7 @@ Paws::RDS::CreateDBSecurityGroupResult
 
 =head1 ATTRIBUTES
 
-=head2 DBSecurityGroup => Paws::RDS::DBSecurityGroup
+=head2 DBSecurityGroup => L<Paws::RDS::DBSecurityGroup>
 
   
 

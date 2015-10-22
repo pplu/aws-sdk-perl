@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeDBClusterSnapshots {
+package Paws::RDS::DescribeDBClusterSnapshots;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::RDS::DescribeDBClusterSnapshots {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterSnapshots');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterSnapshotMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBClusterSnapshotsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +27,7 @@ This class represents the parameters used for calling the method DescribeDBClust
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribeDBClusterSnapshots.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBClusterSnapshots.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBClusterSnapshots.
 
 As an example:
 
@@ -40,9 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DBClusterIdentifier => Str
 
-  
-
-A DB cluster identifier to retrieve the list of DB cluster snapshots
+  A DB cluster identifier to retrieve the list of DB cluster snapshots
 for. This parameter cannot be used in conjunction with the
 C<DBClusterSnapshotIdentifier> parameter. This parameter is not
 case-sensitive.
@@ -60,19 +57,9 @@ Constraints:
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 DBClusterSnapshotIdentifier => Str
 
-  
-
-A specific DB cluster snapshot identifier to describe. This parameter
+  A specific DB cluster snapshot identifier to describe. This parameter
 cannot be used in conjunction with the C<DBClusterIdentifier>
 parameter. This value is stored as a lowercase string.
 
@@ -92,52 +79,20 @@ C<SnapshotType> parameter must also be specified.
 =back
 
 
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
-
-  
-
-This parameter is not currently supported.
-
-
-
-
-
-
-
-
-
+  This parameter is not currently supported.
 
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous
+  An optional pagination token provided by a previous
 C<DescribeDBClusterSnapshots> request. If this parameter is specified,
 the response includes only records beyond the marker, up to the value
 specified by C<MaxRecords>.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of records to include in the response. If more
+  The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
 results can be retrieved.
@@ -146,31 +101,11 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.
 
-
-
-
-
-
-
-
-
-
 =head2 SnapshotType => Str
 
-  
-
-The type of DB cluster snapshots that will be returned. Values can be
+  The type of DB cluster snapshots that will be returned. Values can be
 C<automated> or C<manual>. If this parameter is not specified, the
 returned results will include all snapshot types.
-
-
-
-
-
-
-
-
-
 
 
 

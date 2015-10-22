@@ -1,5 +1,5 @@
 
-package Paws::S3::UploadPartOutput {
+package Paws::S3::UploadPartOutput;
   use Moose;
   has ETag => (is => 'ro', isa => 'Str');
   has RequestCharged => (is => 'ro', isa => 'Str');
@@ -8,7 +8,6 @@ package Paws::S3::UploadPartOutput {
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str');
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Simple Storage Service service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -35,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ETag => Str
 
-  
-
-Entity tag for the uploaded object.
-
-
-
-
-
-
-
-
-
+  Entity tag for the uploaded object.
 
 =head2 RequestCharged => Str
 
@@ -54,69 +42,25 @@ Entity tag for the uploaded object.
 
 =head2 ServerSideEncryption => Str
 
-  
-
-The Server-side encryption algorithm used when storing this object in
+  The Server-side encryption algorithm used when storing this object in
 S3 (e.g., AES256, aws:kms).
-
-
-
-
-
-
-
-
-
 
 =head2 SSECustomerAlgorithm => Str
 
-  
-
-If server-side encryption with a customer-provided encryption key was
+  If server-side encryption with a customer-provided encryption key was
 requested, the response will include this header confirming the
 encryption algorithm used.
 
-
-
-
-
-
-
-
-
-
 =head2 SSECustomerKeyMD5 => Str
 
-  
-
-If server-side encryption with a customer-provided encryption key was
+  If server-side encryption with a customer-provided encryption key was
 requested, the response will include this header to provide round trip
 message integrity verification of the customer-provided encryption key.
 
-
-
-
-
-
-
-
-
-
 =head2 SSEKMSKeyId => Str
 
-  
-
-If present, specifies the ID of the AWS Key Management Service (KMS)
+  If present, specifies the ID of the AWS Key Management Service (KMS)
 master encryption key that was used for the object.
-
-
-
-
-
-
-
-
-
 
 
 

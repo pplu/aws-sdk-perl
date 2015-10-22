@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::Scan {
+package Paws::DynamoDB::Scan;
   use Moose;
   has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
   has ConditionalOperator => (is => 'ro', isa => 'Str');
@@ -23,7 +23,6 @@ package Paws::DynamoDB::Scan {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Scan');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::ScanOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +37,7 @@ This class represents the parameters used for calling the method Scan on the
 Amazon DynamoDB service. Use the attributes of this class
 as arguments to method Scan.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to Scan.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Scan.
 
 As an example:
 
@@ -50,9 +49,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributesToGet => ArrayRef[Str]
 
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I<ProjectionExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -68,20 +65,9 @@ Note that I<AttributesToGet> has no effect on provisioned throughput
 consumption. DynamoDB determines capacity units consumed based on item
 size, not on the amount of data that is returned to an application.
 
-
-
-
-
-
-
-
-
-
 =head2 ConditionalOperator => Str
 
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I<FilterExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -108,20 +94,9 @@ The operation will succeed only if the entire map evaluates to true.
 
 This parameter does not support attributes of type List or Map.
 
-
-
-
-
-
-
-
-
-
 =head2 ConsistentRead => Bool
 
-  
-
-A Boolean value that determines the read consistency model during the
+  A Boolean value that determines the read consistency model during the
 scan:
 
 =over
@@ -149,20 +124,9 @@ Strongly consistent reads are not supported on global secondary
 indexes. If you scan a global secondary index with I<ConsistentRead>
 set to true, you will receive a I<ValidationException>.
 
+=head2 ExclusiveStartKey => L<Paws::DynamoDB::Key>
 
-
-
-
-
-
-
-
-
-=head2 ExclusiveStartKey => Paws::DynamoDB::Key
-
-  
-
-The primary key of the first item that this operation will evaluate.
+  The primary key of the first item that this operation will evaluate.
 Use the value that was returned for I<LastEvaluatedKey> in the previous
 operation.
 
@@ -173,20 +137,9 @@ In a parallel scan, a I<Scan> request that includes
 I<ExclusiveStartKey> must specify the same segment whose previous
 I<Scan> returned the corresponding value of I<LastEvaluatedKey>.
 
+=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
-
-
-
-
-
-
-
-
-=head2 ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap
-
-  
-
-One or more substitution tokens for attribute names in an expression.
+  One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
@@ -208,7 +161,7 @@ misinterpreted in an expression.
 
 =back
 
-Use the B<
+Use the hash character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 
 =over
@@ -229,7 +182,7 @@ I<ExpressionAttributeNames>:
 
 =item *
 
-C<{"
+{"
 
 =back
 
@@ -240,7 +193,7 @@ example:
 
 =item *
 
-C<
+
 
 =back
 
@@ -250,20 +203,9 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
+=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
 
-
-
-
-
-
-
-
-
-=head2 ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap
-
-  
-
-One or more values that can be substituted in an expression.
+  One or more values that can be substituted in an expression.
 
 Use the B<:> (colon) character in an expression to dereference an
 attribute value. For example, suppose that you wanted to check whether
@@ -284,20 +226,9 @@ C<ProductStatus IN (:avail, :back, :disc)>
 For more information on expression attribute values, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 FilterExpression => Str
 
-  
-
-A string that contains conditions that DynamoDB applies after the
+  A string that contains conditions that DynamoDB applies after the
 I<Scan> operation, but before the data is returned to you. Items that
 do not satisfy the I<FilterExpression> criteria are not returned.
 
@@ -311,37 +242,15 @@ Developer Guide>.
 I<FilterExpression> replaces the legacy I<ScanFilter> and
 I<ConditionalOperator> parameters.
 
-
-
-
-
-
-
-
-
-
 =head2 IndexName => Str
 
-  
-
-The name of a secondary index to scan. This index can be any local
+  The name of a secondary index to scan. This index can be any local
 secondary index or global secondary index. Note that if you use the
 C<IndexName> parameter, you must also provide C<TableName>.
 
-
-
-
-
-
-
-
-
-
 =head2 Limit => Int
 
-  
-
-The maximum number of items to evaluate (not necessarily the number of
+  The maximum number of items to evaluate (not necessarily the number of
 matching items). If DynamoDB processes the number of items up to the
 limit while processing the results, it stops the operation and returns
 the matching values up to that point, and a key in I<LastEvaluatedKey>
@@ -353,20 +262,9 @@ apply in a subsequent operation to continue the operation. For more
 information, see Query and Scan in the I<Amazon DynamoDB Developer
 Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 ProjectionExpression => Str
 
-  
-
-A string that identifies one or more attributes to retrieve from the
+  A string that identifies one or more attributes to retrieve from the
 specified table or index. These attributes can include scalars, sets,
 or elements of a JSON document. The attributes in the expression must
 be separated by commas.
@@ -381,24 +279,13 @@ DynamoDB Developer Guide>.
 I<ProjectionExpression> replaces the legacy I<AttributesToGet>
 parameter.
 
-
-
-
-
-
-
-
-
-
 =head2 ReturnConsumedCapacity => Str
 
   
 
-=head2 ScanFilter => Paws::DynamoDB::FilterConditionMap
+=head2 ScanFilter => L<Paws::DynamoDB::FilterConditionMap>
 
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I<FilterExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -454,19 +341,9 @@ For complete descriptions of all comparison operators, see Condition.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 Segment => Int
 
-  
-
-For a parallel I<Scan> request, I<Segment> identifies an individual
+  For a parallel I<Scan> request, I<Segment> identifies an individual
 segment to be scanned by an application worker.
 
 Segment IDs are zero-based, so the first segment is always 0. For
@@ -483,20 +360,9 @@ than the value provided for I<TotalSegments>.
 
 If you provide I<Segment>, you must also provide I<TotalSegments>.
 
-
-
-
-
-
-
-
-
-
 =head2 Select => Str
 
-  
-
-The attributes to be returned in the result. You can retrieve all item
+  The attributes to be returned in the result. You can retrieve all item
 attributes, specific item attributes, or the count of matching items.
 
 =over
@@ -524,37 +390,15 @@ and I<Select> together in a single request, unless the value for
 I<Select> is C<SPECIFIC_ATTRIBUTES>. (This usage is equivalent to
 specifying I<AttributesToGet> without any value for I<Select>.)
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TableName => Str
 
-  
-
-The name of the table containing the requested items; or, if you
+  The name of the table containing the requested items; or, if you
 provide C<IndexName>, the name of the table to which that index
 belongs.
 
-
-
-
-
-
-
-
-
-
 =head2 TotalSegments => Int
 
-  
-
-For a parallel I<Scan> request, I<TotalSegments> represents the total
+  For a parallel I<Scan> request, I<TotalSegments> represents the total
 number of segments into which the I<Scan> operation will be divided.
 The value of I<TotalSegments> corresponds to the number of application
 workers that will perform the parallel scan. For example, if you want
@@ -566,15 +410,6 @@ less than or equal to 1000000. If you specify a I<TotalSegments> value
 of 1, the I<Scan> operation will be sequential rather than parallel.
 
 If you specify I<TotalSegments>, you must also specify I<Segment>.
-
-
-
-
-
-
-
-
-
 
 
 

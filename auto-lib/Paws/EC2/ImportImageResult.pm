@@ -1,5 +1,5 @@
 
-package Paws::EC2::ImportImageResult {
+package Paws::EC2::ImportImageResult;
   use Moose;
   has Architecture => (is => 'ro', isa => 'Str', xmlname => 'architecture', traits => ['Unwrapped',]);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped',]);
@@ -13,7 +13,6 @@ package Paws::EC2::ImportImageResult {
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
   has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,158 +25,37 @@ Paws::EC2::ImportImageResult
 
 =head2 Architecture => Str
 
-  
-
-The architecture of the virtual machine.
-
-
-
-
-
-
-
-
-
+  The architecture of the virtual machine.
 =head2 Description => Str
 
-  
-
-A description of the import task.
-
-
-
-
-
-
-
-
-
+  A description of the import task.
 =head2 Hypervisor => Str
 
-  
-
-The target hypervisor of the import task.
-
-
-
-
-
-
-
-
-
+  The target hypervisor of the import task.
 =head2 ImageId => Str
 
-  
-
-The ID of the Amazon Machine Image (AMI) created by the import task.
-
-
-
-
-
-
-
-
-
+  The ID of the Amazon Machine Image (AMI) created by the import task.
 =head2 ImportTaskId => Str
 
-  
-
-The task ID of the import image task.
-
-
-
-
-
-
-
-
-
+  The task ID of the import image task.
 =head2 LicenseType => Str
 
-  
-
-The license type of the virtual machine.
-
-
-
-
-
-
-
-
-
+  The license type of the virtual machine.
 =head2 Platform => Str
 
-  
-
-The operating system of the virtual machine.
-
-
-
-
-
-
-
-
-
+  The operating system of the virtual machine.
 =head2 Progress => Str
 
-  
+  The progress of the task.
+=head2 SnapshotDetails => ArrayRef[L<Paws::EC2::SnapshotDetail>]
 
-The progress of the task.
-
-
-
-
-
-
-
-
-
-=head2 SnapshotDetails => ArrayRef[Paws::EC2::SnapshotDetail]
-
-  
-
-Information about the snapshots.
-
-
-
-
-
-
-
-
-
+  Information about the snapshots.
 =head2 Status => Str
 
-  
-
-A brief status of the task.
-
-
-
-
-
-
-
-
-
+  A brief status of the task.
 =head2 StatusMessage => Str
 
-  
-
-A detailed status message of the import task.
-
-
-
-
-
-
-
-
-
+  A detailed status message of the import task.
 
 
 =cut

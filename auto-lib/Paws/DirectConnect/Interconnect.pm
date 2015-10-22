@@ -1,14 +1,13 @@
 
-package Paws::DirectConnect::Interconnect {
+package Paws::DirectConnect::Interconnect;
   use Moose;
-  has bandwidth => (is => 'ro', isa => 'Str');
-  has interconnectId => (is => 'ro', isa => 'Str');
-  has interconnectName => (is => 'ro', isa => 'Str');
-  has interconnectState => (is => 'ro', isa => 'Str');
-  has location => (is => 'ro', isa => 'Str');
-  has region => (is => 'ro', isa => 'Str');
+  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'bandwidth' );
+  has InterconnectId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'interconnectId' );
+  has InterconnectName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'interconnectName' );
+  has InterconnectState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'interconnectState' );
+  has Location => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'location' );
+  has Region => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'region' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -18,22 +17,22 @@ Paws::DirectConnect::Interconnect
 
 =head1 ATTRIBUTES
 
-=head2 bandwidth => Str
+=head2 Bandwidth => Str
 
   
-=head2 interconnectId => Str
+=head2 InterconnectId => Str
 
   
-=head2 interconnectName => Str
+=head2 InterconnectName => Str
 
   
-=head2 interconnectState => Str
+=head2 InterconnectState => Str
 
   
-=head2 location => Str
+=head2 Location => Str
 
   
-=head2 region => Str
+=head2 Region => Str
 
   
 

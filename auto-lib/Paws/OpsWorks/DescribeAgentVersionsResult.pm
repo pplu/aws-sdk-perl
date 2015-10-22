@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeAgentVersionsResult {
+package Paws::OpsWorks::DescribeAgentVersionsResult;
   use Moose;
   has AgentVersions => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::AgentVersion]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,22 +12,11 @@ Paws::OpsWorks::DescribeAgentVersionsResult
 
 =head1 ATTRIBUTES
 
-=head2 AgentVersions => ArrayRef[Paws::OpsWorks::AgentVersion]
+=head2 AgentVersions => ArrayRef[L<Paws::OpsWorks::AgentVersion>]
 
-  
-
-The agent versions for the specified stack or configuration manager.
+  The agent versions for the specified stack or configuration manager.
 Note that this value is the complete version number, not the
 abbreviated number used by the console.
-
-
-
-
-
-
-
-
-
 
 
 =cut

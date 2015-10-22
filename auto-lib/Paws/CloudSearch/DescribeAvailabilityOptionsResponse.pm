@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::DescribeAvailabilityOptionsResponse {
+package Paws::CloudSearch::DescribeAvailabilityOptionsResponse;
   use Moose;
   has AvailabilityOptions => (is => 'ro', isa => 'Paws::CloudSearch::AvailabilityOptionsStatus');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,21 +13,10 @@ Paws::CloudSearch::DescribeAvailabilityOptionsResponse
 
 =head1 ATTRIBUTES
 
-=head2 AvailabilityOptions => Paws::CloudSearch::AvailabilityOptionsStatus
+=head2 AvailabilityOptions => L<Paws::CloudSearch::AvailabilityOptionsStatus>
 
-  
-
-The availability options configured for the domain. Indicates whether
+  The availability options configured for the domain. Indicates whether
 Multi-AZ is enabled for the domain.
-
-
-
-
-
-
-
-
-
 
 
 =cut

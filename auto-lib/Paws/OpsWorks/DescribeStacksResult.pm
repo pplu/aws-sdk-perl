@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeStacksResult {
+package Paws::OpsWorks::DescribeStacksResult;
   use Moose;
   has Stacks => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::Stack]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::OpsWorks::DescribeStacksResult
 
 =head1 ATTRIBUTES
 
-=head2 Stacks => ArrayRef[Paws::OpsWorks::Stack]
+=head2 Stacks => ArrayRef[L<Paws::OpsWorks::Stack>]
 
-  
-
-An array of C<Stack> objects that describe the stacks.
-
-
-
-
-
-
-
-
-
+  An array of C<Stack> objects that describe the stacks.
 
 
 =cut

@@ -1,15 +1,14 @@
 
-package Paws::SimpleWorkflow::DeprecateActivityType {
+package Paws::SimpleWorkflow::DeprecateActivityType;
   use Moose;
-  has activityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', required => 1);
-  has domain => (is => 'ro', isa => 'Str', required => 1);
+  has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', traits => ['NameInRequest'], request_name => 'activityType' , required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeprecateActivityType');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DeprecateActivi
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method DeprecateActivityType.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeprecateActivityType.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeprecateActivityType.
 
 As an example:
 
@@ -34,35 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> activityType => Paws::SimpleWorkflow::ActivityType
+=head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
 
-  
+  The activity type to deprecate.
 
-The activity type to deprecate.
+=head2 B<REQUIRED> Domain => Str
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> domain => Str
-
-  
-
-The name of the domain in which the activity type is registered.
-
-
-
-
-
-
-
-
-
+  The name of the domain in which the activity type is registered.
 
 
 

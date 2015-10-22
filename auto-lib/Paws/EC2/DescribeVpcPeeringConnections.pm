@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeVpcPeeringConnections {
+package Paws::EC2::DescribeVpcPeeringConnections;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
@@ -10,7 +10,6 @@ package Paws::EC2::DescribeVpcPeeringConnections {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcPeeringConnections');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeVpcPeeringConnectionsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeVpcPeer
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeVpcPeeringConnections.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVpcPeeringConnections.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVpcPeeringConnections.
 
 As an example:
 
@@ -37,27 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
-
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -131,30 +117,11 @@ C<vpc-peering-connection-id> - The ID of the VPC peering connection.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 VpcPeeringConnectionIds => ArrayRef[Str]
 
-  
-
-One or more VPC peering connection IDs.
+  One or more VPC peering connection IDs.
 
 Default: Describes all your VPC peering connections.
-
-
-
-
-
-
-
-
-
 
 
 

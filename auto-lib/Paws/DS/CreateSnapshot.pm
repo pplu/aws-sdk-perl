@@ -1,5 +1,5 @@
 
-package Paws::DS::CreateSnapshot {
+package Paws::DS::CreateSnapshot;
   use Moose;
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::DS::CreateSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::CreateSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method CreateSnapshot 
 AWS Directory Service service. Use the attributes of this class
 as arguments to method CreateSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSnapshot.
 
 As an example:
 
@@ -36,33 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-  
-
-The identifier of the directory to take a snapshot of.
-
-
-
-
-
-
-
-
-
+  The identifier of the directory to take a snapshot of.
 
 =head2 Name => Str
 
-  
-
-The descriptive name to apply to the snapshot.
-
-
-
-
-
-
-
-
-
+  The descriptive name to apply to the snapshot.
 
 
 

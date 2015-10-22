@@ -1,5 +1,5 @@
 
-package Paws::WorkSpaces::RebuildWorkspaces {
+package Paws::WorkSpaces::RebuildWorkspaces;
   use Moose;
   has RebuildWorkspaceRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::RebuildRequest]', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::WorkSpaces::RebuildWorkspaces {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebuildWorkspaces');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::RebuildWorkspacesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method RebuildWorkspac
 Amazon WorkSpaces service. Use the attributes of this class
 as arguments to method RebuildWorkspaces.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RebuildWorkspaces.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RebuildWorkspaces.
 
 As an example:
 
@@ -33,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> RebuildWorkspaceRequests => ArrayRef[Paws::WorkSpaces::RebuildRequest]
+=head2 B<REQUIRED> RebuildWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebuildRequest>]
 
-  
-
-An array of structures that specify the WorkSpaces to rebuild.
-
-
-
-
-
-
-
-
-
+  An array of structures that specify the WorkSpaces to rebuild.
 
 
 

@@ -1,10 +1,9 @@
 
-package Paws::CodeCommit::ListBranchesOutput {
+package Paws::CodeCommit::ListBranchesOutput;
   use Moose;
-  has branches => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Branches => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'branches' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,34 +13,12 @@ Paws::CodeCommit::ListBranchesOutput
 
 =head1 ATTRIBUTES
 
-=head2 branches => ArrayRef[Str]
+=head2 Branches => ArrayRef[Str]
 
-  
+  The list of branch names.
+=head2 NextToken => Str
 
-The list of branch names.
-
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-An enumeration token that returns the batch of the results.
-
-
-
-
-
-
-
-
-
+  An enumeration token that returns the batch of the results.
 
 
 =cut

@@ -1,23 +1,22 @@
 
-package Paws::DirectConnect::VirtualInterface {
+package Paws::DirectConnect::VirtualInterface;
   use Moose;
-  has amazonAddress => (is => 'ro', isa => 'Str');
-  has asn => (is => 'ro', isa => 'Int');
-  has authKey => (is => 'ro', isa => 'Str');
-  has connectionId => (is => 'ro', isa => 'Str');
-  has customerAddress => (is => 'ro', isa => 'Str');
-  has customerRouterConfig => (is => 'ro', isa => 'Str');
-  has location => (is => 'ro', isa => 'Str');
-  has ownerAccount => (is => 'ro', isa => 'Str');
-  has routeFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]');
-  has virtualGatewayId => (is => 'ro', isa => 'Str');
-  has virtualInterfaceId => (is => 'ro', isa => 'Str');
-  has virtualInterfaceName => (is => 'ro', isa => 'Str');
-  has virtualInterfaceState => (is => 'ro', isa => 'Str');
-  has virtualInterfaceType => (is => 'ro', isa => 'Str');
-  has vlan => (is => 'ro', isa => 'Int');
+  has AmazonAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'amazonAddress' );
+  has Asn => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'asn' );
+  has AuthKey => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'authKey' );
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionId' );
+  has CustomerAddress => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerAddress' );
+  has CustomerRouterConfig => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'customerRouterConfig' );
+  has Location => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'location' );
+  has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAccount' );
+  has RouteFilterPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::RouteFilterPrefix]', traits => ['Unwrapped'], xmlname => 'routeFilterPrefixes' );
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualGatewayId' );
+  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceId' );
+  has VirtualInterfaceName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceName' );
+  has VirtualInterfaceState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceState' );
+  has VirtualInterfaceType => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceType' );
+  has Vlan => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'vlan' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -27,60 +26,49 @@ Paws::DirectConnect::VirtualInterface
 
 =head1 ATTRIBUTES
 
-=head2 amazonAddress => Str
+=head2 AmazonAddress => Str
 
   
-=head2 asn => Int
+=head2 Asn => Int
 
   
-=head2 authKey => Str
+=head2 AuthKey => Str
 
   
-=head2 connectionId => Str
+=head2 ConnectionId => Str
 
   
-=head2 customerAddress => Str
+=head2 CustomerAddress => Str
 
   
-=head2 customerRouterConfig => Str
+=head2 CustomerRouterConfig => Str
+
+  Information for generating the customer router configuration.
+=head2 Location => Str
 
   
-
-Information for generating the customer router configuration.
-
-
-
-
-
-
-
-
-
-=head2 location => Str
+=head2 OwnerAccount => Str
 
   
-=head2 ownerAccount => Str
+=head2 RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
 
   
-=head2 routeFilterPrefixes => ArrayRef[Paws::DirectConnect::RouteFilterPrefix]
+=head2 VirtualGatewayId => Str
 
   
-=head2 virtualGatewayId => Str
+=head2 VirtualInterfaceId => Str
 
   
-=head2 virtualInterfaceId => Str
+=head2 VirtualInterfaceName => Str
 
   
-=head2 virtualInterfaceName => Str
+=head2 VirtualInterfaceState => Str
 
   
-=head2 virtualInterfaceState => Str
+=head2 VirtualInterfaceType => Str
 
   
-=head2 virtualInterfaceType => Str
-
-  
-=head2 vlan => Int
+=head2 Vlan => Int
 
   
 

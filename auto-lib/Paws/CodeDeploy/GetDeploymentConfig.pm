@@ -1,14 +1,13 @@
 
-package Paws::CodeDeploy::GetDeploymentConfig {
+package Paws::CodeDeploy::GetDeploymentConfig;
   use Moose;
-  has deploymentConfigName => (is => 'ro', isa => 'Str', required => 1);
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetDeploymentConfig');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::GetDeploymentConfigOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method GetDeploymentCo
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method GetDeploymentConfig.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetDeploymentConfig.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetDeploymentConfig.
 
 As an example:
 
@@ -33,21 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> deploymentConfigName => Str
+=head2 B<REQUIRED> DeploymentConfigName => Str
 
-  
-
-The name of an existing deployment configuration associated with the
+  The name of an existing deployment configuration associated with the
 applicable IAM user or AWS account.
-
-
-
-
-
-
-
-
-
 
 
 

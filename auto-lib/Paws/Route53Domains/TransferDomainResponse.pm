@@ -1,9 +1,8 @@
 
-package Paws::Route53Domains::TransferDomainResponse {
+package Paws::Route53Domains::TransferDomainResponse;
   use Moose;
   has OperationId => (is => 'ro', isa => 'Str', required => 1);
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,9 +14,7 @@ Paws::Route53Domains::TransferDomainResponse
 
 =head2 B<REQUIRED> OperationId => Str
 
-  
-
-Identifier for tracking the progress of the request. To use this ID to
+  Identifier for tracking the progress of the request. To use this ID to
 query the operation status, use GetOperationDetail.
 
 Type: String
@@ -25,15 +22,6 @@ Type: String
 Default: None
 
 Constraints: Maximum 255 characters.
-
-
-
-
-
-
-
-
-
 
 
 =cut

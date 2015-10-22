@@ -1,9 +1,8 @@
 
-package Paws::SNS::PublishResponse {
+package Paws::SNS::PublishResponse;
   use Moose;
   has MessageId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -16,20 +15,9 @@ Paws::SNS::PublishResponse
 
 =head2 MessageId => Str
 
-  
-
-Unique identifier assigned to the published message.
+  Unique identifier assigned to the published message.
 
 Length Constraint: Maximum 100 characters
-
-
-
-
-
-
-
-
-
 
 
 =cut

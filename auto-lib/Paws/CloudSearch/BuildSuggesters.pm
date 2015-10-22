@@ -1,5 +1,5 @@
 
-package Paws::CloudSearch::BuildSuggesters {
+package Paws::CloudSearch::BuildSuggesters;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::CloudSearch::BuildSuggesters {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'BuildSuggesters');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearch::BuildSuggestersResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'BuildSuggestersResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method BuildSuggesters
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method BuildSuggesters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BuildSuggesters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BuildSuggesters.
 
 As an example:
 

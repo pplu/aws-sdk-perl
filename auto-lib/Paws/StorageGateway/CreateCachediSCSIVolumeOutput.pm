@@ -1,10 +1,9 @@
 
-package Paws::StorageGateway::CreateCachediSCSIVolumeOutput {
+package Paws::StorageGateway::CreateCachediSCSIVolumeOutput;
   use Moose;
   has TargetARN => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 

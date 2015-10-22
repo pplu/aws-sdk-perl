@@ -1,9 +1,8 @@
 
-package Paws::IAM::GetAccountSummaryResponse {
+package Paws::IAM::GetAccountSummaryResponse;
   use Moose;
-  has SummaryMap => (is => 'ro', isa => 'Paws::IAM::summaryMapType');
+  has SummaryMap => (is => 'ro', isa => 'Paws::IAM::SummaryMapType');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,11 +13,9 @@ Paws::IAM::GetAccountSummaryResponse
 
 =head1 ATTRIBUTES
 
-=head2 SummaryMap => Paws::IAM::summaryMapType
+=head2 SummaryMap => L<Paws::IAM::SummaryMapType>
 
-  
-
-A set of key value pairs containing information about IAM entity usage
+  A set of key value pairs containing information about IAM entity usage
 and IAM quotas.
 
 C<SummaryMap> contains the following keys:
@@ -236,14 +233,6 @@ B<VersionsPerPolicyQuota>
 The maximum number of policy versions allowed for each managed policy.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

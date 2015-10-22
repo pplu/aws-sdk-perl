@@ -1,5 +1,5 @@
 
-package Paws::RedShift::DeleteClusterParameterGroup {
+package Paws::RedShift::DeleteClusterParameterGroup;
   use Moose;
   has ParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::RedShift::DeleteClusterParameterGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterParameterGroup');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteClusterPa
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DeleteClusterParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteClusterParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteClusterParameterGroup.
 
 As an example:
 
@@ -35,9 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ParameterGroupName => Str
 
-  
-
-The name of the parameter group to be deleted.
+  The name of the parameter group to be deleted.
 
 Constraints:
 
@@ -48,14 +45,6 @@ Constraints:
 =item * Cannot delete a default cluster parameter group.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

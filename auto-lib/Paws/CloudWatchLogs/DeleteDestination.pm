@@ -1,14 +1,13 @@
 
-package Paws::CloudWatchLogs::DeleteDestination {
+package Paws::CloudWatchLogs::DeleteDestination;
   use Moose;
-  has destinationName => (is => 'ro', isa => 'Str', required => 1);
+  has DestinationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDestination');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteDestinati
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method DeleteDestination.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDestination.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDestination.
 
 As an example:
 
@@ -33,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> destinationName => Str
+=head2 B<REQUIRED> DestinationName => Str
 
-  
-
-The name of destination to delete.
-
-
-
-
-
-
-
-
-
+  The name of destination to delete.
 
 
 

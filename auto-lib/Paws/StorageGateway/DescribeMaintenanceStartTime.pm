@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::DescribeMaintenanceStartTime {
+package Paws::StorageGateway::DescribeMaintenanceStartTime;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::StorageGateway::DescribeMaintenanceStartTime {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMaintenanceStartTime');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::DescribeMaintenanceStartTimeOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DescribeMainten
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DescribeMaintenanceStartTime.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeMaintenanceStartTime.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeMaintenanceStartTime.
 
 As an example:
 

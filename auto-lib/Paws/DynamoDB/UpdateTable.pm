@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::UpdateTable {
+package Paws::DynamoDB::UpdateTable;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
   has GlobalSecondaryIndexUpdates => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate]');
@@ -12,7 +12,6 @@ package Paws::DynamoDB::UpdateTable {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateTable');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::UpdateTableOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method UpdateTable on 
 Amazon DynamoDB service. Use the attributes of this class
 as arguments to method UpdateTable.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateTable.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateTable.
 
 As an example:
 
@@ -37,29 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 AttributeDefinitions => ArrayRef[Paws::DynamoDB::AttributeDefinition]
+=head2 AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
 
-  
-
-An array of attributes that describe the key schema for the table and
+  An array of attributes that describe the key schema for the table and
 indexes. If you are adding a new global secondary index to the table,
 I<AttributeDefinitions> must include the key element(s) of the new
 index.
 
+=head2 GlobalSecondaryIndexUpdates => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexUpdate>]
 
-
-
-
-
-
-
-
-
-=head2 GlobalSecondaryIndexUpdates => ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexUpdate]
-
-  
-
-An array of one or more global secondary indexes for the table. For
+  An array of one or more global secondary indexes for the table. For
 each index in the array, you can request one action:
 
 =over
@@ -82,52 +68,21 @@ I<Delete> - remove a global secondary index from the table.
 For more information, see Managing Global Secondary Indexes in the
 I<Amazon DynamoDB Developer Guide>.
 
-
-
-
-
-
-
-
-
-
-=head2 ProvisionedThroughput => Paws::DynamoDB::ProvisionedThroughput
+=head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
   
 
-=head2 StreamSpecification => Paws::DynamoDB::StreamSpecification
+=head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>
 
-  
-
-Represents the DynamoDB Streams configuration for the table.
+  Represents the DynamoDB Streams configuration for the table.
 
 You will receive a I<ResourceInUseException> if you attempt to enable a
 stream on a table that already has a stream, or if you attempt to
 disable a stream on a table which does not have a stream.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TableName => Str
 
-  
-
-The name of the table to be updated.
-
-
-
-
-
-
-
-
-
+  The name of the table to be updated.
 
 
 

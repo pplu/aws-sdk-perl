@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::DeleteLaunchConfiguration {
+package Paws::AutoScaling::DeleteLaunchConfiguration;
   use Moose;
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::AutoScaling::DeleteLaunchConfiguration {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteLaunchConfiguration');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteLaunchCon
 Auto Scaling service. Use the attributes of this class
 as arguments to method DeleteLaunchConfiguration.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLaunchConfiguration.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteLaunchConfiguration.
 
 As an example:
 
@@ -35,18 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LaunchConfigurationName => Str
 
-  
-
-The name of the launch configuration.
-
-
-
-
-
-
-
-
-
+  The name of the launch configuration.
 
 
 

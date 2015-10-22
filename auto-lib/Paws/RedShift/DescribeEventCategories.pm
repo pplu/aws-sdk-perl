@@ -1,5 +1,5 @@
 
-package Paws::RedShift::DescribeEventCategories {
+package Paws::RedShift::DescribeEventCategories;
   use Moose;
   has SourceType => (is => 'ro', isa => 'Str');
 
@@ -8,7 +8,6 @@ package Paws::RedShift::DescribeEventCategories {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventCategories');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::EventCategoriesMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DescribeEventCa
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DescribeEventCategories.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEventCategories.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEventCategories.
 
 As an example:
 
@@ -35,21 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 SourceType => Str
 
-  
-
-The source type, such as cluster or parameter group, to which the
+  The source type, such as cluster or parameter group, to which the
 described event categories apply.
 
 Valid values: cluster, snapshot, parameter group, and security group.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::UpdateVTLDeviceType {
+package Paws::StorageGateway::UpdateVTLDeviceType;
   use Moose;
   has DeviceType => (is => 'ro', isa => 'Str', required => 1);
   has VTLDeviceARN => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::StorageGateway::UpdateVTLDeviceType {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateVTLDeviceType');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::UpdateVTLDeviceTypeOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method UpdateVTLDevice
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method UpdateVTLDeviceType.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateVTLDeviceType.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateVTLDeviceType.
 
 As an example:
 
@@ -36,36 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeviceType => Str
 
-  
-
-The type of medium changer you want to select.
+  The type of medium changer you want to select.
 
 I<Valid Values>: "STK-L700", "AWS-Gateway-VTL"
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VTLDeviceARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the medium changer you want to
+  The Amazon Resource Name (ARN) of the medium changer you want to
 select.
-
-
-
-
-
-
-
-
-
 
 
 

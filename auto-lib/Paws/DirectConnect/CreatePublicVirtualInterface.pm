@@ -1,15 +1,14 @@
 
-package Paws::DirectConnect::CreatePublicVirtualInterface {
+package Paws::DirectConnect::CreatePublicVirtualInterface;
   use Moose;
-  has connectionId => (is => 'ro', isa => 'Str', required => 1);
-  has newPublicVirtualInterface => (is => 'ro', isa => 'Paws::DirectConnect::NewPublicVirtualInterface', required => 1);
+  has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' , required => 1);
+  has NewPublicVirtualInterface => (is => 'ro', isa => 'Paws::DirectConnect::NewPublicVirtualInterface', traits => ['NameInRequest'], request_name => 'newPublicVirtualInterface' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePublicVirtualInterface');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::VirtualInterface');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method CreatePublicVir
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method CreatePublicVirtualInterface.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreatePublicVirtualInterface.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePublicVirtualInterface.
 
 As an example:
 
@@ -34,26 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> connectionId => Str
+=head2 B<REQUIRED> ConnectionId => Str
 
   
 
-=head2 B<REQUIRED> newPublicVirtualInterface => Paws::DirectConnect::NewPublicVirtualInterface
+=head2 B<REQUIRED> NewPublicVirtualInterface => L<Paws::DirectConnect::NewPublicVirtualInterface>
 
-  
-
-Detailed information for the public virtual interface to be created.
+  Detailed information for the public virtual interface to be created.
 
 Default: None
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,0 +1,55 @@
+---
+call: CreateTable
+service: DynamoDB
+tests:
+  - expected: count
+    op: eq
+    path: TableDescription.AttributeDefinitions.0.AttributeName
+  - expected: N
+    op: eq
+    path: TableDescription.AttributeDefinitions.0.AttributeType
+  - expected: arn:aws:dynamodb:eu-west-1:000000000000:table/Emails
+    op: eq
+    path: TableDescription.TableArn
+  - expected: 0
+    op: eq
+    path: TableDescription.TableSizeBytes
+  - expected: count
+    op: eq
+    path: TableDescription.KeySchema.1.AttributeName
+  - expected: 1441743918.505
+    op: eq
+    path: TableDescription.CreationDateTime
+  - expected: email
+    op: eq
+    path: TableDescription.AttributeDefinitions.1.AttributeName
+  - expected: 1
+    op: eq
+    path: TableDescription.ProvisionedThroughput.WriteCapacityUnits
+  - expected: 0
+    op: eq
+    path: TableDescription.ProvisionedThroughput.NumberOfDecreasesToday
+  - expected: RANGE
+    op: eq
+    path: TableDescription.KeySchema.1.KeyType
+  - expected: HASH
+    op: eq
+    path: TableDescription.KeySchema.0.KeyType
+  - expected: email
+    op: eq
+    path: TableDescription.KeySchema.0.AttributeName
+  - expected: 0
+    op: eq
+    path: TableDescription.ItemCount
+  - expected: CREATING
+    op: eq
+    path: TableDescription.TableStatus
+  - expected: S
+    op: eq
+    path: TableDescription.AttributeDefinitions.1.AttributeType
+  - expected: 1
+    op: eq
+    path: TableDescription.ProvisionedThroughput.ReadCapacityUnits
+  - expected: Emails
+    op: eq
+    path: TableDescription.TableName

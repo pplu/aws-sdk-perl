@@ -1,9 +1,8 @@
 
-package Paws::EC2::UnmonitorInstancesResult {
+package Paws::EC2::UnmonitorInstancesResult;
   use Moose;
   has InstanceMonitorings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceMonitoring]', xmlname => 'instancesSet', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::EC2::UnmonitorInstancesResult
 
 =head1 ATTRIBUTES
 
-=head2 InstanceMonitorings => ArrayRef[Paws::EC2::InstanceMonitoring]
+=head2 InstanceMonitorings => ArrayRef[L<Paws::EC2::InstanceMonitoring>]
 
-  
-
-Monitoring information for one or more instances.
-
-
-
-
-
-
-
-
-
+  Monitoring information for one or more instances.
 
 
 =cut

@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeEngineDefaultClusterParameters {
+package Paws::RDS::DescribeEngineDefaultClusterParameters;
   use Moose;
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
@@ -11,7 +11,6 @@ package Paws::RDS::DescribeEngineDefaultClusterParameters {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultClusterParameters');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DescribeEngineDefaultClusterParametersResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEngineDefaultClusterParametersResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method DescribeEngineD
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribeEngineDefaultClusterParameters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEngineDefaultClusterParameters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEngineDefaultClusterParameters.
 
 As an example:
 
@@ -38,58 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBParameterGroupFamily => Str
 
-  
-
-The name of the DB cluster parameter group family to return engine
+  The name of the DB cluster parameter group family to return engine
 parameter information for.
 
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
-
-  
-
-This parameter is not currently supported.
-
-
-
-
-
-
-
-
-
+  This parameter is not currently supported.
 
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous
+  An optional pagination token provided by a previous
 C<DescribeEngineDefaultClusterParameters> request. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by C<MaxRecords>.
 
-
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of records to include in the response. If more
+  The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
 results can be retrieved.
@@ -97,15 +61,6 @@ results can be retrieved.
 Default: 100
 
 Constraints: Minimum 20, maximum 100.
-
-
-
-
-
-
-
-
-
 
 
 

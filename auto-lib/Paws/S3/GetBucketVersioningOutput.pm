@@ -1,10 +1,9 @@
 
-package Paws::S3::GetBucketVersioningOutput {
+package Paws::S3::GetBucketVersioningOutput;
   use Moose;
   has MFADelete => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -19,7 +18,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Simple Storage Service service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -31,36 +30,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MFADelete => Str
 
-  
-
-Specifies whether MFA delete is enabled in the bucket versioning
+  Specifies whether MFA delete is enabled in the bucket versioning
 configuration. This element is only returned if the bucket has been
 configured with MFA delete. If the bucket has never been so configured,
 this element is not returned.
 
-
-
-
-
-
-
-
-
-
 =head2 Status => Str
 
-  
-
-The versioning state of the bucket.
-
-
-
-
-
-
-
-
-
+  The versioning state of the bucket.
 
 
 

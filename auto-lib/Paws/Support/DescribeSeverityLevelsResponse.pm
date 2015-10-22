@@ -1,9 +1,8 @@
 
-package Paws::Support::DescribeSeverityLevelsResponse {
+package Paws::Support::DescribeSeverityLevelsResponse;
   use Moose;
-  has severityLevels => (is => 'ro', isa => 'ArrayRef[Paws::Support::SeverityLevel]');
+  has SeverityLevels => (is => 'ro', isa => 'ArrayRef[Paws::Support::SeverityLevel]', traits => ['Unwrapped'], xmlname => 'severityLevels' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,21 +12,10 @@ Paws::Support::DescribeSeverityLevelsResponse
 
 =head1 ATTRIBUTES
 
-=head2 severityLevels => ArrayRef[Paws::Support::SeverityLevel]
+=head2 SeverityLevels => ArrayRef[L<Paws::Support::SeverityLevel>]
 
-  
-
-The available severity levels for the support case. Available severity
+  The available severity levels for the support case. Available severity
 levels are defined by your service level agreement with AWS.
-
-
-
-
-
-
-
-
-
 
 
 =cut

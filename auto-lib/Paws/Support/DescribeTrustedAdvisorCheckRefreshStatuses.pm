@@ -1,14 +1,13 @@
 
-package Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses {
+package Paws::Support::DescribeTrustedAdvisorCheckRefreshStatuses;
   use Moose;
-  has checkIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has CheckIds => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'checkIds' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeTrustedAdvisorCheckRefreshStatuses');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DescribeTrusted
 AWS Support service. Use the attributes of this class
 as arguments to method DescribeTrustedAdvisorCheckRefreshStatuses.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTrustedAdvisorCheckRefreshStatuses.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeTrustedAdvisorCheckRefreshStatuses.
 
 As an example:
 
@@ -33,20 +32,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> checkIds => ArrayRef[Str]
+=head2 B<REQUIRED> CheckIds => ArrayRef[Str]
 
-  
-
-The IDs of the Trusted Advisor checks.
-
-
-
-
-
-
-
-
-
+  The IDs of the Trusted Advisor checks.
 
 
 

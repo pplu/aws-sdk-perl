@@ -1,5 +1,5 @@
 
-package Paws::EC2::AllocateAddress {
+package Paws::EC2::AllocateAddress;
   use Moose;
   has Domain => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -9,7 +9,6 @@ package Paws::EC2::AllocateAddress {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AllocateAddress');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::AllocateAddressResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method AllocateAddress
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method AllocateAddress.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AllocateAddress.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AllocateAddress.
 
 As an example:
 
@@ -36,38 +35,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Domain => Str
 
-  
-
-Set to C<vpc> to allocate the address for use with instances in a VPC.
+  Set to C<vpc> to allocate the address for use with instances in a VPC.
 
 Default: The address is for use with instances in EC2-Classic.
 
-
-
-
-
-
-
-
-
-
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
-
-
-
-
-
-
-
-
-
 
 
 

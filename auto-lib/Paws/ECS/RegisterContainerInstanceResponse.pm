@@ -1,9 +1,8 @@
 
-package Paws::ECS::RegisterContainerInstanceResponse {
+package Paws::ECS::RegisterContainerInstanceResponse;
   use Moose;
-  has containerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance');
+  has ContainerInstance => (is => 'ro', isa => 'Paws::ECS::ContainerInstance', traits => ['Unwrapped'], xmlname => 'containerInstance' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,7 @@ Paws::ECS::RegisterContainerInstanceResponse
 
 =head1 ATTRIBUTES
 
-=head2 containerInstance => Paws::ECS::ContainerInstance
+=head2 ContainerInstance => L<Paws::ECS::ContainerInstance>
 
   
 

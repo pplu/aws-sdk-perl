@@ -1,5 +1,5 @@
 
-package Paws::EMR::DescribeJobFlows {
+package Paws::EMR::DescribeJobFlows;
   use Moose;
   has CreatedAfter => (is => 'ro', isa => 'Str');
   has CreatedBefore => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::EMR::DescribeJobFlows {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeJobFlows');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::DescribeJobFlowsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method DescribeJobFlow
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method DescribeJobFlows.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeJobFlows.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeJobFlows.
 
 As an example:
 
@@ -38,63 +37,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CreatedAfter => Str
 
-  
-
-Return only job flows created after this date and time.
-
-
-
-
-
-
-
-
-
+  Return only job flows created after this date and time.
 
 =head2 CreatedBefore => Str
 
-  
-
-Return only job flows created before this date and time.
-
-
-
-
-
-
-
-
-
+  Return only job flows created before this date and time.
 
 =head2 JobFlowIds => ArrayRef[Str]
 
-  
-
-Return only job flows whose job flow ID is contained in this list.
-
-
-
-
-
-
-
-
-
+  Return only job flows whose job flow ID is contained in this list.
 
 =head2 JobFlowStates => ArrayRef[Str]
 
-  
-
-Return only job flows whose state is contained in this list.
-
-
-
-
-
-
-
-
-
+  Return only job flows whose state is contained in this list.
 
 
 

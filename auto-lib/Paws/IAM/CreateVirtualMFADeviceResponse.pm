@@ -1,9 +1,8 @@
 
-package Paws::IAM::CreateVirtualMFADeviceResponse {
+package Paws::IAM::CreateVirtualMFADeviceResponse;
   use Moose;
   has VirtualMFADevice => (is => 'ro', isa => 'Paws::IAM::VirtualMFADevice', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::IAM::CreateVirtualMFADeviceResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> VirtualMFADevice => Paws::IAM::VirtualMFADevice
+=head2 B<REQUIRED> VirtualMFADevice => L<Paws::IAM::VirtualMFADevice>
 
-  
-
-A newly created virtual MFA device.
-
-
-
-
-
-
-
-
-
+  A newly created virtual MFA device.
 
 
 =cut

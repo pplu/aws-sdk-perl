@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::DescribePermissions {
+package Paws::OpsWorks::DescribePermissions;
   use Moose;
   has IamUserArn => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::OpsWorks::DescribePermissions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribePermissions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::DescribePermissionsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DescribePermiss
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribePermissions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribePermissions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribePermissions.
 
 As an example:
 
@@ -36,34 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 IamUserArn => Str
 
-  
-
-The user's IAM ARN. For more information about IAM ARNs, see Using
+  The user's IAM ARN. For more information about IAM ARNs, see Using
 Identifiers.
-
-
-
-
-
-
-
-
-
 
 =head2 StackId => Str
 
-  
-
-The stack ID.
-
-
-
-
-
-
-
-
-
+  The stack ID.
 
 
 

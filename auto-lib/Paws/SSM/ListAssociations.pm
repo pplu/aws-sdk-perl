@@ -1,5 +1,5 @@
 
-package Paws::SSM::ListAssociations {
+package Paws::SSM::ListAssociations;
   use Moose;
   has AssociationFilterList => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AssociationFilter]', required => 1);
   has MaxResults => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::SSM::ListAssociations {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListAssociations');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::ListAssociationsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method ListAssociation
 Amazon Simple Systems Management Service service. Use the attributes of this class
 as arguments to method ListAssociations.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListAssociations.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListAssociations.
 
 As an example:
 
@@ -35,54 +34,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AssociationFilterList => ArrayRef[Paws::SSM::AssociationFilter]
+=head2 B<REQUIRED> AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>]
 
-  
-
-One or more filters. Use a filter to return a more specific list of
+  One or more filters. Use a filter to return a more specific list of
 results.
-
-
-
-
-
-
-
-
-
 
 =head2 MaxResults => Int
 
-  
-
-The maximum number of items to return for this call. The call also
+  The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
 next set of results.
 
-
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The token for the next set of items to return. (You received this token
+  The token for the next set of items to return. (You received this token
 from a previous call.)
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::CreateCustomActionTypeOutput {
+package Paws::CodePipeline::CreateCustomActionTypeOutput;
   use Moose;
-  has actionType => (is => 'ro', isa => 'Paws::CodePipeline::ActionType', required => 1);
+  has ActionType => (is => 'ro', isa => 'Paws::CodePipeline::ActionType', traits => ['Unwrapped'], xmlname => 'actionType' , required => 1);
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,7 @@ Paws::CodePipeline::CreateCustomActionTypeOutput
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> actionType => Paws::CodePipeline::ActionType
+=head2 B<REQUIRED> ActionType => L<Paws::CodePipeline::ActionType>
 
   
 

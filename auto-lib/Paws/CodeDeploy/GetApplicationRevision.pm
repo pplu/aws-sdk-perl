@@ -1,15 +1,14 @@
 
-package Paws::CodeDeploy::GetApplicationRevision {
+package Paws::CodeDeploy::GetApplicationRevision;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str', required => 1);
-  has revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', required => 1);
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', traits => ['NameInRequest'], request_name => 'revision' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetApplicationRevision');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::GetApplicationRevisionOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method GetApplicationR
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method GetApplicationRevision.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetApplicationRevision.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetApplicationRevision.
 
 As an example:
 
@@ -34,36 +33,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> applicationName => Str
+=head2 B<REQUIRED> ApplicationName => Str
 
-  
+  The name of the application that corresponds to the revision.
 
-The name of the application that corresponds to the revision.
+=head2 B<REQUIRED> Revision => L<Paws::CodeDeploy::RevisionLocation>
 
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> revision => Paws::CodeDeploy::RevisionLocation
-
-  
-
-Information about the application revision to get, including the
+  Information about the application revision to get, including the
 revision's type and its location.
-
-
-
-
-
-
-
-
-
 
 
 

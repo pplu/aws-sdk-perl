@@ -1,15 +1,14 @@
 
-package Paws::CodePipeline::ListActionTypes {
+package Paws::CodePipeline::ListActionTypes;
   use Moose;
-  has actionOwnerFilter => (is => 'ro', isa => 'Str');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has ActionOwnerFilter => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'actionOwnerFilter' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListActionTypes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::ListActionTypesOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ListActionTypes
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method ListActionTypes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListActionTypes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListActionTypes.
 
 As an example:
 
@@ -34,38 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 actionOwnerFilter => Str
+=head2 ActionOwnerFilter => Str
 
-  
-
-Filters the list of action types to those created by a specified
+  Filters the list of action types to those created by a specified
 entity.
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-An identifier that was returned from the previous list action types
+  An identifier that was returned from the previous list action types
 call, which can be used to return the next set of action types in the
 list.
-
-
-
-
-
-
-
-
-
 
 
 

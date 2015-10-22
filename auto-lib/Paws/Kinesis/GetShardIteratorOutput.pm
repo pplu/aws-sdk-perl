@@ -1,9 +1,8 @@
 
-package Paws::Kinesis::GetShardIteratorOutput {
+package Paws::Kinesis::GetShardIteratorOutput;
   use Moose;
   has ShardIterator => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,20 +14,9 @@ Paws::Kinesis::GetShardIteratorOutput
 
 =head2 ShardIterator => Str
 
-  
-
-The position in the shard from which to start reading data records
+  The position in the shard from which to start reading data records
 sequentially. A shard iterator specifies this position using the
 sequence number of a data record in a shard.
-
-
-
-
-
-
-
-
-
 
 
 =cut

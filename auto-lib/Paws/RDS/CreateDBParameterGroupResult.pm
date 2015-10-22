@@ -1,9 +1,8 @@
 
-package Paws::RDS::CreateDBParameterGroupResult {
+package Paws::RDS::CreateDBParameterGroupResult;
   use Moose;
   has DBParameterGroup => (is => 'ro', isa => 'Paws::RDS::DBParameterGroup');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,7 @@ Paws::RDS::CreateDBParameterGroupResult
 
 =head1 ATTRIBUTES
 
-=head2 DBParameterGroup => Paws::RDS::DBParameterGroup
+=head2 DBParameterGroup => L<Paws::RDS::DBParameterGroup>
 
   
 

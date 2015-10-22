@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::CloneStack {
+package Paws::OpsWorks::CloneStack;
   use Moose;
   has AgentVersion => (is => 'ro', isa => 'Str');
   has Attributes => (is => 'ro', isa => 'Paws::OpsWorks::StackAttributes');
@@ -29,7 +29,6 @@ package Paws::OpsWorks::CloneStack {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CloneStack');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::CloneStackResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +43,7 @@ This class represents the parameters used for calling the method CloneStack on t
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method CloneStack.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CloneStack.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CloneStack.
 
 As an example:
 
@@ -56,9 +55,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AgentVersion => Str
 
-  
-
-The default AWS OpsWorks agent version. You have the following options:
+  The default AWS OpsWorks agent version. You have the following options:
 
 =over
 
@@ -81,104 +78,38 @@ DescribeAgentVersions.
 You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.
 
+=head2 Attributes => L<Paws::OpsWorks::StackAttributes>
 
-
-
-
-
-
-
-
-
-=head2 Attributes => Paws::OpsWorks::StackAttributes
-
-  
-
-A list of stack attributes and values as key/value pairs to be added to
+  A list of stack attributes and values as key/value pairs to be added to
 the cloned stack.
 
+=head2 ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>
 
-
-
-
-
-
-
-
-
-=head2 ChefConfiguration => Paws::OpsWorks::ChefConfiguration
-
-  
-
-A C<ChefConfiguration> object that specifies whether to enable
+  A C<ChefConfiguration> object that specifies whether to enable
 Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more
 information, see Create a New Stack.
 
-
-
-
-
-
-
-
-
-
 =head2 CloneAppIds => ArrayRef[Str]
 
-  
-
-A list of source stack app IDs to be included in the cloned stack.
-
-
-
-
-
-
-
-
-
+  A list of source stack app IDs to be included in the cloned stack.
 
 =head2 ClonePermissions => Bool
 
-  
+  Whether to clone the source stack's permissions.
 
-Whether to clone the source stack's permissions.
+=head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
 
-
-
-
-
-
-
-
-
-
-=head2 ConfigurationManager => Paws::OpsWorks::StackConfigurationManager
-
-  
-
-The configuration manager. When you clone a Linux stack we recommend
+  The configuration manager. When you clone a Linux stack we recommend
 that you use the configuration manager to specify the Chef version:
 0.9, 11.4, or 11.10. The default value is currently 11.10.
 
-
-
-
-
-
-
-
-
-
-=head2 CustomCookbooksSource => Paws::OpsWorks::Source
+=head2 CustomCookbooksSource => L<Paws::OpsWorks::Source>
 
   
 
 =head2 CustomJson => Str
 
-  
-
-A string that contains user-defined, custom JSON. It is used to
+  A string that contains user-defined, custom JSON. It is used to
 override the corresponding default stack configuration JSON values. The
 string should be in the following format and must escape characters
 such as '"':
@@ -188,56 +119,23 @@ C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 For more information on custom JSON, see Use Custom JSON to Modify the
 Stack Configuration Attributes
 
-
-
-
-
-
-
-
-
-
 =head2 DefaultAvailabilityZone => Str
 
-  
-
-The cloned stack's default Availability Zone, which must be in the
+  The cloned stack's default Availability Zone, which must be in the
 specified region. For more information, see Regions and Endpoints. If
 you also specify a value for C<DefaultSubnetId>, the subnet must be in
 the same zone. For more information, see the C<VpcId> parameter
 description.
 
-
-
-
-
-
-
-
-
-
 =head2 DefaultInstanceProfileArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of an IAM profile that is the default
+  The Amazon Resource Name (ARN) of an IAM profile that is the default
 profile for all of the stack's EC2 instances. For more information
 about IAM ARNs, see Using Identifiers.
 
-
-
-
-
-
-
-
-
-
 =head2 DefaultOs => Str
 
-  
-
-The stack's operating system, which must be set to one of the
+  The stack's operating system, which must be set to one of the
 following.
 
 =over
@@ -261,37 +159,15 @@ Operating Systems.
 You can specify a different Linux operating system for the cloned
 stack, but you cannot change from Linux to Windows or Windows to Linux.
 
-
-
-
-
-
-
-
-
-
 =head2 DefaultRootDeviceType => Str
 
-  
-
-The default root device type. This value is used by default for all
+  The default root device type. This value is used by default for all
 instances in the cloned stack, but you can override it when you create
 an instance. For more information, see Storage for the Root Device.
 
-
-
-
-
-
-
-
-
-
 =head2 DefaultSshKeyName => Str
 
-  
-
-A default Amazon EC2 key pair name. The default value is none. If you
+  A default Amazon EC2 key pair name. The default value is none. If you
 specify a key pair name, AWS OpsWorks installs the public key on the
 instance and you can use the private key with an SSH client to log in
 to the instance. For more information, see Using SSH to Communicate
@@ -299,20 +175,9 @@ with an Instance and Managing SSH Access. You can override this setting
 by specifying a different key pair, or no key pair, when you create an
 instance.
 
-
-
-
-
-
-
-
-
-
 =head2 DefaultSubnetId => Str
 
-  
-
-The stack's default VPC subnet ID. This parameter is required if you
+  The stack's default VPC subnet ID. This parameter is required if you
 specify a value for the C<VpcId> parameter. All instances are launched
 into this subnet unless you specify otherwise when you create the
 instance. If you also specify a value for C<DefaultAvailabilityZone>,
@@ -320,20 +185,9 @@ the subnet must be in that zone. For information on default values and
 when this parameter is required, see the C<VpcId> parameter
 description.
 
-
-
-
-
-
-
-
-
-
 =head2 HostnameTheme => Str
 
-  
-
-The stack's host name theme, with spaces are replaced by underscores.
+  The stack's host name theme, with spaces are replaced by underscores.
 The theme is used to generate host names for the stack's instances. By
 default, C<HostnameTheme> is set to C<Layer_Dependent>, which creates
 host names by appending integers to the layer's short name. The other
@@ -368,51 +222,18 @@ themes are:
 To obtain a generated host name, call C<GetHostNameSuggestion>, which
 returns a host name based on the current theme.
 
-
-
-
-
-
-
-
-
-
 =head2 Name => Str
 
-  
-
-The cloned stack name.
-
-
-
-
-
-
-
-
-
+  The cloned stack name.
 
 =head2 Region => Str
 
-  
-
-The cloned stack AWS region, such as "us-east-1". For more information
+  The cloned stack AWS region, such as "us-east-1". For more information
 about AWS regions, see Regions and Endpoints.
-
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> ServiceRoleArn => Str
 
-  
-
-The stack AWS Identity and Access Management (IAM) role, which allows
+  The stack AWS Identity and Access Management (IAM) role, which allows
 AWS OpsWorks to work with AWS resources on your behalf. You must set
 this parameter to the Amazon Resource Name (ARN) for an existing IAM
 role. If you create a stack by using the AWS OpsWorks console, it
@@ -424,50 +245,17 @@ You must set this parameter to a valid service role ARN or the action
 will fail; there is no default value. You can specify the source
 stack's service role ARN, if you prefer, but you must do so explicitly.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SourceStackId => Str
 
-  
-
-The source stack ID.
-
-
-
-
-
-
-
-
-
+  The source stack ID.
 
 =head2 UseCustomCookbooks => Bool
 
-  
-
-Whether to use custom cookbooks.
-
-
-
-
-
-
-
-
-
+  Whether to use custom cookbooks.
 
 =head2 UseOpsworksSecurityGroups => Bool
 
-  
-
-Whether to associate the AWS OpsWorks built-in security groups with the
+  Whether to associate the AWS OpsWorks built-in security groups with the
 stack's layers.
 
 AWS OpsWorks provides a standard set of built-in security groups, one
@@ -494,20 +282,9 @@ groups are required only for those layers that need custom settings.
 
 For more information, see Create a New Stack.
 
-
-
-
-
-
-
-
-
-
 =head2 VpcId => Str
 
-  
-
-The ID of the VPC that the cloned stack is to be launched into. It must
+  The ID of the VPC that the cloned stack is to be launched into. It must
 be in the specified region. All instances are launched into this VPC,
 and you cannot change the ID later.
 
@@ -542,15 +319,6 @@ specified region.
 For more information on how to use AWS OpsWorks with a VPC, see Running
 a Stack in a VPC. For more information on default VPC and EC2 Classic,
 see Supported Platforms.
-
-
-
-
-
-
-
-
-
 
 
 

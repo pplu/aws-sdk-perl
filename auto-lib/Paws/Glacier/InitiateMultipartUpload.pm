@@ -1,10 +1,10 @@
 
-package Paws::Glacier::InitiateMultipartUpload {
+package Paws::Glacier::InitiateMultipartUpload;
   use Moose;
-  has accountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has archiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-archive-description' );
-  has partSize => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-part-size' );
-  has vaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
+  has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
+  has ArchiveDescription => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'archiveDescription' );
+  has PartSize => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'partSize' );
+  has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -13,7 +13,6 @@ package Paws::Glacier::InitiateMultipartUpload {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::InitiateMultipartUploadOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'InitiateMultipartUploadResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +27,7 @@ This class represents the parameters used for calling the method InitiateMultipa
 Amazon Glacier service. Use the attributes of this class
 as arguments to method InitiateMultipartUpload.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to InitiateMultipartUpload.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to InitiateMultipartUpload.
 
 As an example:
 
@@ -38,76 +37,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> accountId => Str
+=head2 B<REQUIRED> AccountId => Str
 
-  
-
-The C<AccountId> value is the AWS account ID of the account that owns
+  The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
+=head2 ArchiveDescription => Str
 
-
-
-
-
-
-
-
-
-=head2 archiveDescription => Str
-
-  
-
-The archive description that you are uploading in parts.
+  The archive description that you are uploading in parts.
 
 The part size must be a megabyte (1024 KB) multiplied by a power of 2,
 for example 1048576 (1 MB), 2097152 (2 MB), 4194304 (4 MB), 8388608 (8
 MB), and so on. The minimum allowable part size is 1 MB, and the
 maximum is 4 GB (4096 MB).
 
+=head2 PartSize => Str
 
-
-
-
-
-
-
-
-
-=head2 partSize => Str
-
-  
-
-The size of each part except the last, in bytes. The last part can be
+  The size of each part except the last, in bytes. The last part can be
 smaller than this part size.
 
+=head2 B<REQUIRED> VaultName => Str
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> vaultName => Str
-
-  
-
-The name of the vault.
-
-
-
-
-
-
-
-
-
+  The name of the vault.
 
 
 

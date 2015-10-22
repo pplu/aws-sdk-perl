@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::AbortEnvironmentUpdate {
+package Paws::ElasticBeanstalk::AbortEnvironmentUpdate;
   use Moose;
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::ElasticBeanstalk::AbortEnvironmentUpdate {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AbortEnvironmentUpdate');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method AbortEnvironmen
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method AbortEnvironmentUpdate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AbortEnvironmentUpdate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AbortEnvironmentUpdate.
 
 As an example:
 
@@ -36,35 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EnvironmentId => Str
 
-  
-
-This specifies the ID of the environment with the in-progress update
+  This specifies the ID of the environment with the in-progress update
 that you want to cancel.
-
-
-
-
-
-
-
-
-
 
 =head2 EnvironmentName => Str
 
-  
-
-This specifies the name of the environment with the in-progress update
+  This specifies the name of the environment with the in-progress update
 that you want to cancel.
-
-
-
-
-
-
-
-
-
 
 
 

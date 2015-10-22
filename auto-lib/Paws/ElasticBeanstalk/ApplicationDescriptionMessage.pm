@@ -1,9 +1,8 @@
 
-package Paws::ElasticBeanstalk::ApplicationDescriptionMessage {
+package Paws::ElasticBeanstalk::ApplicationDescriptionMessage;
   use Moose;
   has Application => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationDescription');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::ElasticBeanstalk::ApplicationDescriptionMessage
 
 =head1 ATTRIBUTES
 
-=head2 Application => Paws::ElasticBeanstalk::ApplicationDescription
+=head2 Application => L<Paws::ElasticBeanstalk::ApplicationDescription>
 
-  
-
-The ApplicationDescription of the application.
-
-
-
-
-
-
-
-
-
+  The ApplicationDescription of the application.
 
 
 =cut

@@ -1,5 +1,5 @@
 
-package Paws::EFS::DeleteFileSystem {
+package Paws::EFS::DeleteFileSystem;
   use Moose;
   has FileSystemId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FileSystemId' , required => 1);
 
@@ -10,7 +10,6 @@ package Paws::EFS::DeleteFileSystem {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DeleteFileSyste
 Amazon Elastic File System service. Use the attributes of this class
 as arguments to method DeleteFileSystem.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteFileSystem.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteFileSystem.
 
 As an example:
 
@@ -37,18 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-  
-
-The ID of the file system you want to delete.
-
-
-
-
-
-
-
-
-
+  The ID of the file system you want to delete.
 
 
 

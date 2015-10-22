@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::RegisterElasticIpResult {
+package Paws::OpsWorks::RegisterElasticIpResult;
   use Moose;
   has ElasticIp => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,18 +14,7 @@ Paws::OpsWorks::RegisterElasticIpResult
 
 =head2 ElasticIp => Str
 
-  
-
-The Elastic IP address.
-
-
-
-
-
-
-
-
-
+  The Elastic IP address.
 
 
 =cut

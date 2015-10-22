@@ -1,9 +1,8 @@
 
-package Paws::S3::GetBucketLocationOutput {
+package Paws::S3::GetBucketLocationOutput;
   use Moose;
   has LocationConstraint => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -18,7 +17,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Simple Storage Service service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 

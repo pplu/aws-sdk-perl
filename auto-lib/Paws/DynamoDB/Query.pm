@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::Query {
+package Paws::DynamoDB::Query;
   use Moose;
   has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
   has ConditionalOperator => (is => 'ro', isa => 'Str');
@@ -24,7 +24,6 @@ package Paws::DynamoDB::Query {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'Query');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::QueryOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +38,7 @@ This class represents the parameters used for calling the method Query on the
 Amazon DynamoDB service. Use the attributes of this class
 as arguments to method Query.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to Query.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to Query.
 
 As an example:
 
@@ -51,9 +50,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributesToGet => ArrayRef[Str]
 
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I<ProjectionExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -85,20 +82,9 @@ If you query a global secondary index, you can only request attributes
 that are projected into the index. Global secondary index queries
 cannot fetch attributes from the parent table.
 
-
-
-
-
-
-
-
-
-
 =head2 ConditionalOperator => Str
 
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I<FilterExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -125,20 +111,9 @@ The operation will succeed only if the entire map evaluates to true.
 
 This parameter does not support attributes of type List or Map.
 
-
-
-
-
-
-
-
-
-
 =head2 ConsistentRead => Bool
 
-  
-
-Determines the read consistency model: If set to C<true>, then the
+  Determines the read consistency model: If set to C<true>, then the
 operation uses strongly consistent reads; otherwise, the operation uses
 eventually consistent reads.
 
@@ -146,40 +121,18 @@ Strongly consistent reads are not supported on global secondary
 indexes. If you query a global secondary index with I<ConsistentRead>
 set to C<true>, you will receive a I<ValidationException>.
 
+=head2 ExclusiveStartKey => L<Paws::DynamoDB::Key>
 
-
-
-
-
-
-
-
-
-=head2 ExclusiveStartKey => Paws::DynamoDB::Key
-
-  
-
-The primary key of the first item that this operation will evaluate.
+  The primary key of the first item that this operation will evaluate.
 Use the value that was returned for I<LastEvaluatedKey> in the previous
 operation.
 
 The data type for I<ExclusiveStartKey> must be String, Number or
 Binary. No set data types are allowed.
 
+=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
-
-
-
-
-
-
-
-
-=head2 ExpressionAttributeNames => Paws::DynamoDB::ExpressionAttributeNameMap
-
-  
-
-One or more substitution tokens for attribute names in an expression.
+  One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
@@ -201,7 +154,7 @@ misinterpreted in an expression.
 
 =back
 
-Use the B<
+Use the hash character in an expression to dereference an attribute
 name. For example, consider the following attribute name:
 
 =over
@@ -222,7 +175,7 @@ I<ExpressionAttributeNames>:
 
 =item *
 
-C<{"
+{"
 
 =back
 
@@ -233,7 +186,7 @@ example:
 
 =item *
 
-C<
+
 
 =back
 
@@ -243,20 +196,9 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
+=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
 
-
-
-
-
-
-
-
-
-=head2 ExpressionAttributeValues => Paws::DynamoDB::ExpressionAttributeValueMap
-
-  
-
-One or more values that can be substituted in an expression.
+  One or more values that can be substituted in an expression.
 
 Use the B<:> (colon) character in an expression to dereference an
 attribute value. For example, suppose that you wanted to check whether
@@ -277,20 +219,9 @@ C<ProductStatus IN (:avail, :back, :disc)>
 For more information on expression attribute values, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 FilterExpression => Str
 
-  
-
-A string that contains conditions that DynamoDB applies after the
+  A string that contains conditions that DynamoDB applies after the
 I<Query> operation, but before the data is returned to you. Items that
 do not satisfy the I<FilterExpression> criteria are not returned.
 
@@ -304,37 +235,15 @@ Developer Guide>.
 I<FilterExpression> replaces the legacy I<QueryFilter> and
 I<ConditionalOperator> parameters.
 
-
-
-
-
-
-
-
-
-
 =head2 IndexName => Str
 
-  
-
-The name of an index to query. This index can be any local secondary
+  The name of an index to query. This index can be any local secondary
 index or global secondary index on the table. Note that if you use the
 I<IndexName> parameter, you must also provide I<TableName.>
 
-
-
-
-
-
-
-
-
-
 =head2 KeyConditionExpression => Str
 
-  
-
-The condition that specifies the key value(s) for items to be retrieved
+  The condition that specifies the key value(s) for items to be retrieved
 by the I<Query> action.
 
 The condition must perform an equality test on a single hash key value.
@@ -415,13 +324,13 @@ a reserved word:
 
 =back
 
-To work around this, define a placeholder (such a C<
+To work around this, define a placeholder (such a C<S>) to represent
 the attribute name I<Size>. I<KeyConditionExpression> then is as
 follows:
 
 =over
 
-=item * C<
+=item * C<S = :myval>
 
 =back
 
@@ -435,20 +344,9 @@ Names and Values in the I<Amazon DynamoDB Developer Guide>.
 I<KeyConditionExpression> replaces the legacy I<KeyConditions>
 parameter.
 
+=head2 KeyConditions => L<Paws::DynamoDB::KeyConditions>
 
-
-
-
-
-
-
-
-
-=head2 KeyConditions => Paws::DynamoDB::KeyConditions
-
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I<KeyConditionExpression> instead. Do not
 combine legacy parameters and expression parameters in a single API
 call; otherwise, DynamoDB will return a I<ValidationException>
@@ -591,20 +489,9 @@ For usage examples of I<AttributeValueList> and I<ComparisonOperator>,
 see Legacy Conditional Parameters in the I<Amazon DynamoDB Developer
 Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 Limit => Int
 
-  
-
-The maximum number of items to evaluate (not necessarily the number of
+  The maximum number of items to evaluate (not necessarily the number of
 matching items). If DynamoDB processes the number of items up to the
 limit while processing the results, it stops the operation and returns
 the matching values up to that point, and a key in I<LastEvaluatedKey>
@@ -616,20 +503,9 @@ apply in a subsequent operation to continue the operation. For more
 information, see Query and Scan in the I<Amazon DynamoDB Developer
 Guide>.
 
-
-
-
-
-
-
-
-
-
 =head2 ProjectionExpression => Str
 
-  
-
-A string that identifies one or more attributes to retrieve from the
+  A string that identifies one or more attributes to retrieve from the
 table. These attributes can include scalars, sets, or elements of a
 JSON document. The attributes in the expression must be separated by
 commas.
@@ -644,20 +520,9 @@ DynamoDB Developer Guide>.
 I<ProjectionExpression> replaces the legacy I<AttributesToGet>
 parameter.
 
+=head2 QueryFilter => L<Paws::DynamoDB::FilterConditionMap>
 
-
-
-
-
-
-
-
-
-=head2 QueryFilter => Paws::DynamoDB::FilterConditionMap
-
-  
-
-This is a legacy parameter, for backward compatibility. New
+  This is a legacy parameter, for backward compatibility. New
 applications should use I<FilterExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -721,23 +586,13 @@ Condition data type.
 =back
 
 
-
-
-
-
-
-
-
-
 =head2 ReturnConsumedCapacity => Str
 
   
 
 =head2 ScanIndexForward => Bool
 
-  
-
-Specifies the order in which to return the query results - either
+  Specifies the order in which to return the query results - either
 ascending (C<true>) or descending (C<false>).
 
 Items with the same hash key are stored in sorted order by range key
@@ -753,20 +608,9 @@ If I<ScanIndexForward> is C<false>, DynamoDB sorts the results in
 descending order by range key, and then returns the results to the
 client.
 
-
-
-
-
-
-
-
-
-
 =head2 Select => Str
 
-  
-
-The attributes to be returned in the result. You can retrieve all item
+  The attributes to be returned in the result. You can retrieve all item
 attributes, specific item attributes, the count of matching items, or
 in the case of an index, some or all of the attributes projected into
 the index.
@@ -825,29 +669,9 @@ If you use the I<ProjectionExpression> parameter, then the value for
 I<Select> can only be C<SPECIFIC_ATTRIBUTES>. Any other value for
 I<Select> will return an error.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TableName => Str
 
-  
-
-The name of the table containing the requested items.
-
-
-
-
-
-
-
-
-
+  The name of the table containing the requested items.
 
 
 

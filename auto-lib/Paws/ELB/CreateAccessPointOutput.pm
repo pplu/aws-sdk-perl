@@ -1,9 +1,8 @@
 
-package Paws::ELB::CreateAccessPointOutput {
+package Paws::ELB::CreateAccessPointOutput;
   use Moose;
   has DNSName => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -16,18 +15,7 @@ Paws::ELB::CreateAccessPointOutput
 
 =head2 DNSName => Str
 
-  
-
-The DNS name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The DNS name of the load balancer.
 
 
 =cut

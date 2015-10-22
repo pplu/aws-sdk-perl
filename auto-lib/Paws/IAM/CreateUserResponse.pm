@@ -1,9 +1,8 @@
 
-package Paws::IAM::CreateUserResponse {
+package Paws::IAM::CreateUserResponse;
   use Moose;
   has User => (is => 'ro', isa => 'Paws::IAM::User');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,9 @@ Paws::IAM::CreateUserResponse
 
 =head1 ATTRIBUTES
 
-=head2 User => Paws::IAM::User
+=head2 User => L<Paws::IAM::User>
 
-  
-
-Information about the user.
-
-
-
-
-
-
-
-
-
+  Information about the user.
 
 
 =cut

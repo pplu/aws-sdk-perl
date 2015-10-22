@@ -1,5 +1,5 @@
 
-package Paws::IAM::GetCredentialReport {
+package Paws::IAM::GetCredentialReport;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::IAM::GetCredentialReport {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetCredentialReport');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetCredentialReportResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetCredentialReportResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method GetCredentialRe
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetCredentialReport.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetCredentialReport.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetCredentialReport.
 
 As an example:
 

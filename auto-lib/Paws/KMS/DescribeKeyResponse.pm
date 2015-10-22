@@ -1,9 +1,8 @@
 
-package Paws::KMS::DescribeKeyResponse {
+package Paws::KMS::DescribeKeyResponse;
   use Moose;
   has KeyMetadata => (is => 'ro', isa => 'Paws::KMS::KeyMetadata');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,9 @@ Paws::KMS::DescribeKeyResponse
 
 =head1 ATTRIBUTES
 
-=head2 KeyMetadata => Paws::KMS::KeyMetadata
+=head2 KeyMetadata => L<Paws::KMS::KeyMetadata>
 
-  
-
-Metadata associated with the key.
-
-
-
-
-
-
-
-
-
+  Metadata associated with the key.
 
 
 =cut

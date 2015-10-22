@@ -1,15 +1,14 @@
 
-package Paws::CodeCommit::GetBranch {
+package Paws::CodeCommit::GetBranch;
   use Moose;
-  has branchName => (is => 'ro', isa => 'Str');
-  has repositoryName => (is => 'ro', isa => 'Str');
+  has BranchName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchName' );
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetBranch');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::GetBranchOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method GetBranch on th
 AWS CodeCommit service. Use the attributes of this class
 as arguments to method GetBranch.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetBranch.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetBranch.
 
 As an example:
 
@@ -34,22 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 branchName => Str
+=head2 BranchName => Str
 
-  
+  The name of the branch for which you want to retrieve information.
 
-The name of the branch for which you want to retrieve information.
-
-
-
-
-
-
-
-
-
-
-=head2 repositoryName => Str
+=head2 RepositoryName => Str
 
   
 

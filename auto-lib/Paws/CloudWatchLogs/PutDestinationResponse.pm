@@ -1,9 +1,8 @@
 
-package Paws::CloudWatchLogs::PutDestinationResponse {
+package Paws::CloudWatchLogs::PutDestinationResponse;
   use Moose;
-  has destination => (is => 'ro', isa => 'Paws::CloudWatchLogs::Destination');
+  has Destination => (is => 'ro', isa => 'Paws::CloudWatchLogs::Destination', traits => ['Unwrapped'], xmlname => 'destination' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,7 @@ Paws::CloudWatchLogs::PutDestinationResponse
 
 =head1 ATTRIBUTES
 
-=head2 destination => Paws::CloudWatchLogs::Destination
+=head2 Destination => L<Paws::CloudWatchLogs::Destination>
 
   
 

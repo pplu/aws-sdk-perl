@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::DeleteCacheParameterGroup {
+package Paws::ElastiCache::DeleteCacheParameterGroup;
   use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::ElastiCache::DeleteCacheParameterGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCacheParameterGroup');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteCachePara
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method DeleteCacheParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCacheParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteCacheParameterGroup.
 
 As an example:
 
@@ -35,21 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CacheParameterGroupName => Str
 
-  
-
-The name of the cache parameter group to delete.
+  The name of the cache parameter group to delete.
 
 The specified cache security group must not be associated with any
 cache clusters.
-
-
-
-
-
-
-
-
-
 
 
 

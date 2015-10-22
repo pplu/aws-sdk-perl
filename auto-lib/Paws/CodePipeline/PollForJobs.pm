@@ -1,16 +1,15 @@
 
-package Paws::CodePipeline::PollForJobs {
+package Paws::CodePipeline::PollForJobs;
   use Moose;
-  has actionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', required => 1);
-  has maxBatchSize => (is => 'ro', isa => 'Int');
-  has queryParam => (is => 'ro', isa => 'Paws::CodePipeline::QueryParamMap');
+  has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', traits => ['NameInRequest'], request_name => 'actionTypeId' , required => 1);
+  has MaxBatchSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxBatchSize' );
+  has QueryParam => (is => 'ro', isa => 'Paws::CodePipeline::QueryParamMap', traits => ['NameInRequest'], request_name => 'queryParam' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PollForJobs');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::PollForJobsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method PollForJobs on 
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method PollForJobs.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PollForJobs.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PollForJobs.
 
 As an example:
 
@@ -35,43 +34,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> actionTypeId => Paws::CodePipeline::ActionTypeId
+=head2 B<REQUIRED> ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
   
 
-=head2 maxBatchSize => Int
+=head2 MaxBatchSize => Int
 
-  
+  The maximum number of jobs to return in a poll for jobs call.
 
-The maximum number of jobs to return in a poll for jobs call.
+=head2 QueryParam => L<Paws::CodePipeline::QueryParamMap>
 
-
-
-
-
-
-
-
-
-
-=head2 queryParam => Paws::CodePipeline::QueryParamMap
-
-  
-
-A map of property names and values. For an action type with no
+  A map of property names and values. For an action type with no
 queryable properties, this value must be null or an empty map. For an
 action type with a queryable property, you must supply that property as
 a key in the map. Only jobs whose action configuration matches the
 mapped value will be returned.
-
-
-
-
-
-
-
-
-
 
 
 

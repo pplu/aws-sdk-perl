@@ -1,9 +1,8 @@
 
-package Paws::ElastiCache::CreateReplicationGroupResult {
+package Paws::ElastiCache::CreateReplicationGroupResult;
   use Moose;
   has ReplicationGroup => (is => 'ro', isa => 'Paws::ElastiCache::ReplicationGroup');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,7 @@ Paws::ElastiCache::CreateReplicationGroupResult
 
 =head1 ATTRIBUTES
 
-=head2 ReplicationGroup => Paws::ElastiCache::ReplicationGroup
+=head2 ReplicationGroup => L<Paws::ElastiCache::ReplicationGroup>
 
   
 

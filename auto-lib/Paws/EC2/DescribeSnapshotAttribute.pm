@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeSnapshotAttribute {
+package Paws::EC2::DescribeSnapshotAttribute;
   use Moose;
   has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -10,7 +10,6 @@ package Paws::EC2::DescribeSnapshotAttribute {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSnapshotAttribute');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeSnapshotAttributeResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeSnapsho
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeSnapshotAttribute.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSnapshotAttribute.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSnapshotAttribute.
 
 As an example:
 
@@ -37,51 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Attribute => Str
 
-  
-
-The snapshot attribute you would like to view.
-
-
-
-
-
-
-
-
-
+  The snapshot attribute you would like to view.
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
-
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SnapshotId => Str
 
-  
-
-The ID of the EBS snapshot.
-
-
-
-
-
-
-
-
-
+  The ID of the EBS snapshot.
 
 
 

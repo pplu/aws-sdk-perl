@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::DefineExpressionResponse {
+package Paws::CloudSearch::DefineExpressionResponse;
   use Moose;
   has Expression => (is => 'ro', isa => 'Paws::CloudSearch::ExpressionStatus', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,7 @@ Paws::CloudSearch::DefineExpressionResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Expression => Paws::CloudSearch::ExpressionStatus
+=head2 B<REQUIRED> Expression => L<Paws::CloudSearch::ExpressionStatus>
 
   
 
