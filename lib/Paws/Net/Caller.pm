@@ -29,6 +29,8 @@ package Paws::Net::Caller {
     delete $headers->{Host};
 
     my $tries = 0;
+    my $max_tries = 1;
+
     while ($tries < $max_tries) {
       my $response = $self->ua->request(
         $requestObj->method,
