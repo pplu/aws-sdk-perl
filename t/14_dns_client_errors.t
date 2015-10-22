@@ -23,7 +23,7 @@ throws_ok {
              )->DescribeInstances;
 } 'Paws::Exception', 'got exception';
 
-like($@->message, qr/(?:Name or service not known|Bad hostname)/, 'Correct message');
+like($@->message, qr/(?:Name or service not known|Bad hostname|Could not connect to)/, 'Correct message');
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 diag "LWP caller";
@@ -43,7 +43,7 @@ throws_ok {
                )->DescribeInstances;
 } 'Paws::Exception', 'got exception';
 
-like($@->message, qr/Name or service not known/, 'Correct message');
+like($@->message, qr/(?:Name or service not known|nodename nor servname provided, or not known)/, 'Correct message');
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 MOJO:
@@ -64,7 +64,7 @@ throws_ok {
                 )->DescribeInstances->get;
 } 'Paws::Exception', 'got exception';
 
-cmp_ok($@->message, 'eq', 'Can\'t connect: Name or service not known', 'Correct message');
+like($@->message, qr/(?:Can't connect: Name or service not known|Can't connect: nodename nor servname provided, or not known)/, 'Correct message');
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 FURL:
