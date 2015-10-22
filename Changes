@@ -1,4 +1,5 @@
 0.17
+ - Pass tests on MacOSX by Roger Pettett
  - BREAKING CHANGE: All API methods and attributes have been properly CamelCased. Before
    that, some services were being generated with method names and attributes starting with
    lowercase. For example, in CloudWatchLogs, method DescribeLogGroups would expect:
