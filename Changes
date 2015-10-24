@@ -1,3 +1,6 @@
+0.18 
+ - IAM update: SimulateCustomPolicy updated. Docs updated too
+
 0.17 22 Oct 2015
  - Pass tests on MacOSX by Roger Pettett
  - BREAKING CHANGE: All API methods and attributes have been properly CamelCased. Before

@@ -2,6 +2,7 @@ package Paws::IAM::EvaluationResult;
   use Moose;
   has EvalActionName => (is => 'ro', isa => 'Str', required => 1);
   has EvalDecision => (is => 'ro', isa => 'Str', required => 1);
+  has EvalDecisionDetails => (is => 'ro', isa => 'Paws::IAM::EvalDecisionDetailsType');
   has EvalResourceName => (is => 'ro', isa => 'Str', required => 1);
   has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
   has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -48,6 +49,15 @@ This data type is used by the return parameter of C<SimulatePolicy>.
 =head2 B<REQUIRED> EvalDecision => Str
 
   The result of the simulation.
+
+=head2 EvalDecisionDetails => L<Paws::IAM::EvalDecisionDetailsType>
+
+  Additional details about the results of the evaluation decision. When
+there are both IAM policies and resource policies, this parameter
+explains how each set of policies contributes to the final evaluation
+decision. When simulating cross-account access to a resource, both the
+resource-based policy and the caller's IAM policy must grant access.
+See How IAM Roles Differ from Resource-based Policies
 
 =head2 B<REQUIRED> EvalResourceName => Str
 
