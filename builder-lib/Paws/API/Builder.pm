@@ -75,6 +75,7 @@ package Paws::API::Builder {
     return 'GetAllWorkflowExecutionHistories' if ($name eq 'GetWorkflowExecutionHistory');
     return 'ScanAll' if ($name eq 'Scan');
     return 'PollForAllDecisionTasks' if ($name eq 'PollForDecisionTask');
+    return 'FilterAllLogEvents' if ($name eq 'FilterLogEvents');
     die "Please help me generate a good name for the paginator $name";
   }
 
@@ -905,6 +906,45 @@ package [% inner_class %];
 1;
 [% iclass=shape; c.innerclass_documentation_template | eval %]
 #);
+
+  sub paginator_accessor {
+    my ($self, $accessor) = @_;
+    $accessor =~ s|\.|->|g;
+    $accessor =~ s|(\w+)([.*?])|$1->$2|g;
+    return $accessor;
+  }
+  sub paginator_return {
+    my ($self, $path) = @_;
+    if ($path =~ m/\./){
+      $path =~ s|\.(\w+)| => { $1 => \$array }|;
+    } else {
+      $path .= ' => $array';
+    }
+    
+    return $path;
+  }
+
+  has paginator_template => (is => 'ro', isa => 'Str', default => q#
+  [%- FOR op IN c.paginators_struct.keys.sort %]
+  sub [% c.get_paginator_name(op) %] {
+    [%- paginator = c.paginators_struct.$op %]
+    my $self = shift;
+
+    my $result = $self->[% op %](@_);
+    my $array = [];
+    push @$array, @{ $result->[% c.paginator_accessor(paginator.result_key) %] };
+
+    while ($result->[% c.paginator_accessor(paginator.output_token) %]) {
+      $result = $self->[% op %](@_, [% paginator.input_token %] => $result->[% c.paginator_accessor(paginator.output_token) %]);
+      push @$array, @{ $result->[% c.paginator_accessor(paginator.result_key) %] };
+    }
+
+    return $self->new_with_coercions([% c.api %]::[% op %]->_returns, [% c.paginator_return(paginator.result_key) %]);
+  }
+  [%- END %]
+#);
+
+
 
   sub make_inner_class {
     my $self = shift;

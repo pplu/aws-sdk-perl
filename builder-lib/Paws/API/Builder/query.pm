@@ -79,23 +79,7 @@ package [% c.api %];
     return $self->caller->do_call($self, $call_object);
   }
   [%- END %]
-  [%- FOR op IN c.paginators_struct.keys.sort %]
-  sub [% c.get_paginator_name(op) %] {
-    [%- paginator = c.paginators_struct.$op %]
-    my $self = shift;
-
-    my $result = $self->[% op %](@_);
-    my $array = [];
-    push @$array, @{ $result->[% paginator.result_key.replace('\.','->') %] };
-
-    while ($result->[% paginator.output_token.replace('\.','->') %]) {
-      $result = $self->[% op %](@_, [% paginator.input_token %] => $result->[% paginator.output_token.replace('\.','->') %]);
-      push @$array, @{ $result->[% paginator.result_key.replace('\.','->') %] };
-    }
-
-    return '[% c.api %]::[% op %]'->_returns->new([% paginator.result_key %] => $array);
-  }
-  [%- END %]
+  [% c.paginator_template | eval %]
 
   sub operations { qw/[% FOR op IN c.api_struct.operations.keys.sort; op _ ' '; END %]/ }
 
