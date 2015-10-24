@@ -10,7 +10,12 @@ describing input and output parameters.
 
 The project is actually generating all of it's classes from botocore
 
-[![Build Status](https://travis-ci.org/pplu/aws-sdk-perl.svg?branch=master)](https://travis-ci.org/pplu/aws-sdk-perl)
+Project info:
+
+Travis CI status: [![Build Status](https://travis-ci.org/pplu/aws-sdk-perl.svg?branch=master)](https://travis-ci.org/pplu/aws-sdk-perl)
+
+Version on CPAN: [![CPAN version](https://badge.fury.io/pl/Paws.svg)](https://badge.fury.io/pl/Paws)
+
 
 Installation
 ============
