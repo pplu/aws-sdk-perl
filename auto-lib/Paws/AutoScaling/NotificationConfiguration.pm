@@ -43,7 +43,7 @@ Describes a notification.
 
 =head2 NotificationType => Str
 
-  The types of events for an action to start.
+  One of the following event notification types:
 
 =over
 

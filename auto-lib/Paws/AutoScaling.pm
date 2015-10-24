@@ -1049,7 +1049,7 @@ Returns: a L<Paws::AutoScaling::ActivityType> instance
   Terminates the specified instance and optionally adjusts the desired
 group size.
 
-This call simply makes a termination request. The instances is not
+This call simply makes a termination request. The instance is not
 terminated immediately.
 
 

@@ -42,7 +42,7 @@ Describes the state of a load balancer.
 
 =head2 State => Str
 
-  The state of the load balancer.
+  One of the following load balancer states:
 
 =over
 

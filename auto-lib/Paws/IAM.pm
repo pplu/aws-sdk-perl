@@ -2541,17 +2541,18 @@ For information about managed policies, refer to Managed Policies and
 Inline Policies in the I<IAM User Guide>.
 
 
-=head2 SimulateCustomPolicy(ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str]])
+=head2 SimulateCustomPolicy(ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str], ResourceOwner => Str, ResourcePolicy => Str])
 
 Each argument is described in detail in: L<Paws::IAM::SimulateCustomPolicy>
 
 Returns: a L<Paws::IAM::SimulatePolicyResponse> instance
 
-  Simulate a set of IAM policies against a list of API actions and AWS
-resources to determine the policies' effective permissions. The
-policies are provided as a list of strings.
+  Simulate how a set of IAM policies and optionally a resource-based
+policy works with a list of API actions and AWS resources to determine
+the policies' effective permissions. The policies are provided as
+strings.
 
-The simulation does not perform the API actions, it only checks the
+The simulation does not perform the API actions; it only checks the
 authorization to determine if the simulated policies allow or deny the
 actions.
 
@@ -2559,31 +2560,34 @@ If you want to simulate existing policies attached to an IAM user,
 group, or role, use SimulatePrincipalPolicy instead.
 
 Context keys are variables maintained by AWS and its services that
-provide details about the context of an API query request, and can be
-evaluated by using the C<Condition> element of an IAM policy. To get
-the list of context keys required by the policies to simulate them
-correctly, use GetContextKeysForCustomPolicy.
+provide details about the context of an API query request. You can use
+the C<Condition> element of an IAM policy to evaluate context keys. To
+get the list of context keys that the policies require for correct
+simulation, use GetContextKeysForCustomPolicy.
 
-If the output is long, you can paginate the results using the
-C<MaxItems> and C<Marker> parameters.
+If the output is long, you can use C<MaxItems> and C<Marker> parameters
+to paginate the results.
 
 
-=head2 SimulatePrincipalPolicy(ActionNames => ArrayRef[Str], PolicySourceArn => Str, [ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str]])
+=head2 SimulatePrincipalPolicy(ActionNames => ArrayRef[Str], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str], ResourceOwner => Str, ResourcePolicy => Str])
 
 Each argument is described in detail in: L<Paws::IAM::SimulatePrincipalPolicy>
 
 Returns: a L<Paws::IAM::SimulatePolicyResponse> instance
 
-  Simulate the set of IAM policies attached to an IAM entity against a
-list of API actions and AWS resources to determine the policies'
+  Simulate how a set of IAM policies attached to an IAM entity works with
+a list of API actions and AWS resources to determine the policies'
 effective permissions. The entity can be an IAM user, group, or role.
 If you specify a user, then the simulation also includes all of the
-policies attached to groups that the user is a member of.
+policies that are attached to groups that the user belongs to .
 
 You can optionally include a list of one or more additional policies
 specified as strings to include in the simulation. If you want to
 simulate only policies specified as strings, use SimulateCustomPolicy
 instead.
+
+You can also optionally include one resource-based policy to be
+evaluated with each of the resources included in the simulation.
 
 The simulation does not perform the API actions, it only checks the
 authorization to determine if the simulated policies allow or deny the
@@ -2595,13 +2599,13 @@ permissions, then consider allowing them to use SimulateCustomPolicy
 instead.
 
 Context keys are variables maintained by AWS and its services that
-provide details about the context of an API query request, and can be
-evaluated by using the C<Condition> element of an IAM policy. To get
-the list of context keys required by the policies to simulate them
-correctly, use GetContextKeysForPrincipalPolicy.
+provide details about the context of an API query request. You can use
+the C<Condition> element of an IAM policy to evaluate context keys. To
+get the list of context keys that the policies require for correct
+simulation, use GetContextKeysForPrincipalPolicy.
 
-If the output is long, you can paginate the results using the
-C<MaxItems> and C<Marker> parameters.
+If the output is long, you can use the C<MaxItems> and C<Marker>
+parameters to paginate the results.
 
 
 =head2 UpdateAccessKey(AccessKeyId => Str, Status => Str, [UserName => Str])
