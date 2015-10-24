@@ -1,5 +1,6 @@
 0.18 
  - IAM update: SimulateCustomPolicy updated. Docs updated too
+ - Autoscaling update: Encryption for EBS volumes flag. Docu update too
 
 0.17 22 Oct 2015
  - Pass tests on MacOSX by Roger Pettett

@@ -142,7 +142,7 @@ Your Auto Scaling Instances in the I<Auto Scaling Developer Guide>.
 
   The instance type of the EC2 instance. For information about available
 instance types, see Available Instance Types in the I<Amazon Elastic
-Cloud Compute User Guide.>
+Compute Cloud User Guide.>
 
 =head2 KernelId => Str
 

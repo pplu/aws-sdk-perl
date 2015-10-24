@@ -55,8 +55,8 @@ Describes a launch configuration.
 
 =head2 AssociatePublicIpAddress => Bool
 
-  Specifies whether the instances are associated with a public IP address
-(C<true>) or not (C<false>).
+  [EC2-VPC] Indicates whether to assign a public IP address to each
+instance.
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>]
 

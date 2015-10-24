@@ -117,7 +117,8 @@ either C<EC2> for Amazon EC2 or C<ELB> for Elastic Load Balancing.
 =head2 PlacementGroup => Str
 
   The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups.
+instances, if any. For more information, see Placement Groups in the
+I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 Status => Str
 

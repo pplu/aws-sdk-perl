@@ -62,9 +62,8 @@ parameter.
   The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start.
 
-If this parameter is not specified, the default value is 300. For more
-information, see Understanding Auto Scaling Cooldowns in the I<Auto
-Scaling Developer Guide>.
+The default is 300. For more information, see Understanding Auto
+Scaling Cooldowns in the I<Auto Scaling Developer Guide>.
 
 =head2 DesiredCapacity => Int
 
@@ -94,7 +93,7 @@ and C<ELB>.
 
 By default, health checks use Amazon EC2 instance status checks to
 determine the health of an instance. For more information, see Health
-Checks.
+Checks in the I<Auto Scaling Developer Guide>.
 
 =head2 InstanceId => Str
 

@@ -71,17 +71,17 @@ C<CONTINUE>.
 
 =head2 GlobalTimeout => Int
 
-  The maximum length of time an instance can remain in a C<Pending:Wait>
-or C<Terminating:Wait> state. Currently, the maximum is set to 48
-hours.
+  The maximum time, in seconds, that an instance can remain in a
+C<Pending:Wait> or C<Terminating:Wait> state. The default is 172800
+seconds (48 hours).
 
 =head2 HeartbeatTimeout => Int
 
-  The amount of time that can elapse before the lifecycle hook times out.
-When the lifecycle hook times out, Auto Scaling performs the action
-defined in the C<DefaultResult> parameter. You can prevent the
-lifecycle hook from timing out by calling
-RecordLifecycleActionHeartbeat.
+  The maximum time, in seconds, that can elapse before the lifecycle hook
+times out. The default is 3600 seconds (1 hour). When the lifecycle
+hook times out, Auto Scaling performs the action defined in the
+C<DefaultResult> parameter. You can prevent the lifecycle hook from
+timing out by calling RecordLifecycleActionHeartbeat.
 
 =head2 LifecycleHookName => Str
 

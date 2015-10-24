@@ -39,8 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Metrics => ArrayRef[Str]
 
-  One or more metrics. If you omit this parameter, all metrics are
-disabled.
+  One or more of the following metrics. If you omit this parameter, all
+metrics are disabled.
 
 =over
 
