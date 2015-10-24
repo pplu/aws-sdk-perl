@@ -38,6 +38,7 @@ on 'develop' => sub {
   requires 'Carp::Always';
   requires 'Devel::Cover';
   requires 'Data::Printer';
+  requires 'Carp::Always';
   # For developing / testing the pluggable callers
   requires 'Mojolicious';
   requires 'MojoX::IOLoop::Future';
