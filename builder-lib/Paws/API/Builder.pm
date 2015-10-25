@@ -909,19 +909,40 @@ package [% inner_class %];
 
   sub paginator_accessor {
     my ($self, $accessor) = @_;
+   
+    if (ref($accessor) eq 'ARRAY'){
+      warn "Complex accessor ", join ',', @$accessor;
+    }
+ 
+    if ($accessor =~ m/ /) {
+      warn "Complex accessor $accessor";
+    }
+    if ($accessor eq 'NextMarker || Contents[-1].Key') {
+      return '$result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef )';
+    }
+
     $accessor =~ s|\.|->|g;
     $accessor =~ s|(\w+)([.*?])|$1->$2|g;
+
+    $accessor = "\$result->$accessor";
     return $accessor;
   }
-  sub paginator_return {
-    my ($self, $path) = @_;
-    if ($path =~ m/\./){
-      $path =~ s|\.(\w+)| => { $1 => \$array }|;
+  sub paginator_result_key {
+    my ($self, $paginator) = @_;
+    if (ref($paginator->{ result_key }) eq 'ARRAY'){
+      return $paginator->{ result_key };
     } else {
-      $path .= ' => $array';
+      return [ $paginator->{ result_key } ];
     }
-    
-    return $path;
+  }
+  sub paginator_pass_params {
+    my ($self, $paginator) = @_;
+    if (ref($paginator->{ input_token }) eq 'ARRAY'){
+      my $i = 0;
+      return join ', ', map { "$_ => " . $self->paginator_accessor($paginator->{ output_token }->[ $i++ ]) } @{ $paginator->{ input_token } };
+    } else {
+      return "$paginator->{ input_token } => " . $self->paginator_accessor($paginator->{ output_token });
+    }
   }
 
   has paginator_template => (is => 'ro', isa => 'Str', default => q#
@@ -931,15 +952,19 @@ package [% inner_class %];
     my $self = shift;
 
     my $result = $self->[% op %](@_);
-    my $array = [];
-    push @$array, @{ $result->[% c.paginator_accessor(paginator.result_key) %] };
+    my $params = {};
+    [% FOREACH param = c.paginator_result_key(paginator) %]
+    $params->{ [% param %] } = [% c.paginator_accessor(param) %];
+    [% END %]
 
-    while ($result->[% c.paginator_accessor(paginator.output_token) %]) {
-      $result = $self->[% op %](@_, [% paginator.input_token %] => $result->[% c.paginator_accessor(paginator.output_token) %]);
-      push @$array, @{ $result->[% c.paginator_accessor(paginator.result_key) %] };
+    while ($result->[% paginator.more_results %]) {
+      $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+      [% FOREACH param = c.paginator_result_key(paginator) %]
+      push @{ $params->{ [% param %] } }, @{ [% c.paginator_accessor(param) %] };
+      [% END %]
     }
 
-    return $self->new_with_coercions([% c.api %]::[% op %]->_returns, [% c.paginator_return(paginator.result_key) %]);
+    return $self->new_with_coercions([% c.api %]::[% op %]->_returns, %$params);
   }
   [%- END %]
 #);
