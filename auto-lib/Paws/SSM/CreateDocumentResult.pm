@@ -14,7 +14,7 @@ Paws::SSM::CreateDocumentResult
 
 =head2 DocumentDescription => L<Paws::SSM::DocumentDescription>
 
-  Information about the configuration document.
+  Information about the SSM document.
 
 
 =cut
