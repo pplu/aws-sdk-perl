@@ -35,12 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Content => Str
 
-  A valid JSON file. For more information about the contents of this
-file, see Configuration Document.
+  A valid JSON string. For more information about the contents of this
+string, see SSM Document.
 
 =head2 B<REQUIRED> Name => Str
 
-  A name for the configuration document.
+  A name for the SSM document.
 
 
 
