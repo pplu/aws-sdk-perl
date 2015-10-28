@@ -3,6 +3,7 @@ package Paws::API::ServiceToClass {
   use warnings;
 
   our $services_to_classes = {
+    apigateway => 'ApiGateway',
     autoscaling => 'AutoScaling',
     cloudformation => 'CloudFormation',
     cloudfront => 'CloudFront',
