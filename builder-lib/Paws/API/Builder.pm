@@ -69,6 +69,7 @@ package Paws::API::Builder {
     return $name if ($name =~ s/^Describe/DescribeAll/);
     return $name if ($name =~ s/^List/ListAll/);
     return $name if ($name =~ s/^Query/QueryAll/);
+    return $name if ($name =~ s/^Get/GetAll/);
     return 'GetAllGroups' if ($name eq 'GetGroup');
     return 'DownloadAllDBLogFilePortions' if ($name eq 'DownloadDBLogFilePortion');
     return 'SelectAll' if ($name eq 'Select');

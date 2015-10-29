@@ -4,7 +4,8 @@ package Paws::ApiGateway::PutIntegration;
   has CacheKeyParameters => (is => 'ro', isa => 'ArrayRef[Str]');
   has CacheNamespace => (is => 'ro', isa => 'Str');
   has Credentials => (is => 'ro', isa => 'Str');
-  has HttpMethod => (is => 'ro', isa => 'Str', required => 1);
+  has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
+  has IntegrationHttpMethod => (is => 'ro', isa => 'Str');
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
   has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
@@ -56,6 +57,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   Specifies whether credentials are required for a put integration.
 
 =head2 B<REQUIRED> HttpMethod => Str
+
+  Specifies a put integration request's HTTP method.
+
+=head2 IntegrationHttpMethod => Str
 
   Specifies a put integration HTTP method.
 

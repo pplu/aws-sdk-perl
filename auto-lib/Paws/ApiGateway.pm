@@ -343,6 +343,118 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateStage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAllApiKeys {
+    my $self = shift;
+
+    my $result = $self->GetApiKeys(@_);
+    my $array = [];
+    push @$array, @{ $result->items };
+
+    while ($result->position) {
+      $result = $self->GetApiKeys(@_, position => $result->position);
+      push @$array, @{ $result->items };
+    }
+
+    return 'Paws::ApiGateway::GetApiKeys'->_returns->new(items => $array);
+  }
+  sub GetAllBasePathMappings {
+    my $self = shift;
+
+    my $result = $self->GetBasePathMappings(@_);
+    my $array = [];
+    push @$array, @{ $result->items };
+
+    while ($result->position) {
+      $result = $self->GetBasePathMappings(@_, position => $result->position);
+      push @$array, @{ $result->items };
+    }
+
+    return 'Paws::ApiGateway::GetBasePathMappings'->_returns->new(items => $array);
+  }
+  sub GetAllClientCertificates {
+    my $self = shift;
+
+    my $result = $self->GetClientCertificates(@_);
+    my $array = [];
+    push @$array, @{ $result->items };
+
+    while ($result->position) {
+      $result = $self->GetClientCertificates(@_, position => $result->position);
+      push @$array, @{ $result->items };
+    }
+
+    return 'Paws::ApiGateway::GetClientCertificates'->_returns->new(items => $array);
+  }
+  sub GetAllDeployments {
+    my $self = shift;
+
+    my $result = $self->GetDeployments(@_);
+    my $array = [];
+    push @$array, @{ $result->items };
+
+    while ($result->position) {
+      $result = $self->GetDeployments(@_, position => $result->position);
+      push @$array, @{ $result->items };
+    }
+
+    return 'Paws::ApiGateway::GetDeployments'->_returns->new(items => $array);
+  }
+  sub GetAllDomainNames {
+    my $self = shift;
+
+    my $result = $self->GetDomainNames(@_);
+    my $array = [];
+    push @$array, @{ $result->items };
+
+    while ($result->position) {
+      $result = $self->GetDomainNames(@_, position => $result->position);
+      push @$array, @{ $result->items };
+    }
+
+    return 'Paws::ApiGateway::GetDomainNames'->_returns->new(items => $array);
+  }
+  sub GetAllModels {
+    my $self = shift;
+
+    my $result = $self->GetModels(@_);
+    my $array = [];
+    push @$array, @{ $result->items };
+
+    while ($result->position) {
+      $result = $self->GetModels(@_, position => $result->position);
+      push @$array, @{ $result->items };
+    }
+
+    return 'Paws::ApiGateway::GetModels'->_returns->new(items => $array);
+  }
+  sub GetAllResources {
+    my $self = shift;
+
+    my $result = $self->GetResources(@_);
+    my $array = [];
+    push @$array, @{ $result->items };
+
+    while ($result->position) {
+      $result = $self->GetResources(@_, position => $result->position);
+      push @$array, @{ $result->items };
+    }
+
+    return 'Paws::ApiGateway::GetResources'->_returns->new(items => $array);
+  }
+  sub GetAllRestApis {
+    my $self = shift;
+
+    my $result = $self->GetRestApis(@_);
+    my $array = [];
+    push @$array, @{ $result->items };
+
+    while ($result->position) {
+      $result = $self->GetRestApis(@_, position => $result->position);
+      push @$array, @{ $result->items };
+    }
+
+    return 'Paws::ApiGateway::GetRestApis'->_returns->new(items => $array);
+  }
 
   sub operations { qw/CreateApiKey CreateBasePathMapping CreateDeployment CreateDomainName CreateModel CreateResource CreateRestApi CreateStage DeleteApiKey DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDomainName GetDomainNames GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages PutIntegration PutIntegrationResponse PutMethod PutMethodResponse TestInvokeMethod UpdateAccount UpdateApiKey UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage / }
 
@@ -818,7 +930,7 @@ Returns: a L<Paws::ApiGateway::Stages> instance
   Gets information about one or more Stage resources.
 
 
-=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str], CacheNamespace => Str, Credentials => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, Uri => Str])
+=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str], CacheNamespace => Str, Credentials => Str, IntegrationHttpMethod => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, Uri => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutIntegration>
 
