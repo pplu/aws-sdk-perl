@@ -8,6 +8,7 @@ package Paws::IAM::SimulateCustomPolicy;
   has MaxItems => (is => 'ro', isa => 'Int');
   has PolicyInputList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ResourceHandlingOption => (is => 'ro', isa => 'Str');
   has ResourceOwner => (is => 'ro', isa => 'Str');
   has ResourcePolicy => (is => 'ro', isa => 'Str');
 
@@ -109,6 +110,66 @@ C<ResourcePolicy> parameter.
 If you include a C<ResourcePolicy>, then it must be applicable to all
 of the resources included in the simulation or you receive an invalid
 input error.
+
+=head2 ResourceHandlingOption => Str
+
+  Specifies the type of simulation to run. Different APIs that support
+resource-based policies require different combinations of resources. By
+specifying the type of simulation to run, you enable the policy
+simulator to enforce the presence of the required resources to ensure
+reliable simulation results. If your simulation does not match one of
+the following scenarios, then you can omit this parameter. The
+following list shows each of the supported scenario values and the
+resources that you must define to run the simulation.
+
+Each of the EC2 scenarios requires that you specify instance, image,
+and security-group resources. If your scenario includes an EBS volume,
+then you must specify that volume as a resource. If the EC2 scenario
+includes VPC, then you must supply the network-interface resource. If
+it includes an IP subnet, then you must specify the subnet resource.
+For more information on the EC2 scenario options, see Supported
+Platforms in the I<AWS EC2 User Guide>.
+
+=over
+
+=item *
+
+B<EC2-Classic-InstanceStore>
+
+instance, image, security-group
+
+=item *
+
+B<EC2-Classic-EBS>
+
+instance, image, security-group, volume
+
+=item *
+
+B<EC2-VPC-InstanceStore>
+
+instance, image, security-group, network-interface
+
+=item *
+
+B<EC2-VPC-InstanceStore-Subnet>
+
+instance, image, security-group, network-interface, subnet
+
+=item *
+
+B<EC2-VPC-EBS>
+
+instance, image, security-group, network-interface, volume
+
+=item *
+
+B<EC2-VPC-EBS-Subnet>
+
+instance, image, security-group, network-interface, subnet, volume
+
+=back
+
 
 =head2 ResourceOwner => Str
 
