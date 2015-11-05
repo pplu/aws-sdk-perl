@@ -3,6 +3,7 @@
  - Autoscaling update: Encryption for EBS volumes flag. Docu update too
  - SSM update: new functionalities (SendCommand) for mangaging Windows boxes in AWS
  - new API Gateway service
+ - STS docu update
 
 0.17 22 Oct 2015
  - Pass tests on MacOSX by Roger Pettett

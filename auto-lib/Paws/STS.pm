@@ -118,8 +118,8 @@ The AWS Security Token Service (STS) is a web service that enables you
 to request temporary, limited-privilege credentials for AWS Identity
 and Access Management (IAM) users or for users that you authenticate
 (federated users). This guide provides descriptions of the STS API. For
-more detailed information about using this service, go to Using
-Temporary Security Credentials.
+more detailed information about using this service, go to Temporary
+Security Credentials.
 
 As an alternative to using the API, you can use one of the AWS SDKs,
 which consist of libraries and sample code for various programming
@@ -134,8 +134,8 @@ For information about setting up signatures and authorization through
 the API, go to Signing AWS API Requests in the I<AWS General
 Reference>. For general information about the Query API, go to Making
 Query Requests in I<Using IAM>. For information about using security
-tokens with other AWS products, go to Using Temporary Security
-Credentials to Access AWS in I<Using Temporary Security Credentials>.
+tokens with other AWS products, go to AWS Services That Work with IAM
+in the I<Using IAM>.
 
 If you're new to AWS and need additional technical information about a
 specific AWS product, you can find the product's technical
@@ -148,8 +148,7 @@ https://sts.amazonaws.com that maps to the US East (N. Virginia)
 region. Additional regions are available, but must first be activated
 in the AWS Management Console before you can use a different region's
 endpoint. For more information about activating a region for STS see
-Activating STS in a New Region in the I<Using Temporary Security
-Credentials> guide.
+Activating STS in a New Region in the I<Using IAM>.
 
 For information about STS endpoints, see Regions and Endpoints in the
 I<AWS General Reference>.
@@ -189,7 +188,7 @@ which account can be time consuming. Instead, you can create one set of
 long-term credentials in one account and then use temporary security
 credentials to access all the other accounts by assuming roles in those
 accounts. For more information about roles, see IAM Roles (Delegation
-and Federation) in I<Using IAM>.
+and Federation) in the I<Using IAM>.
 
 For federation, you can, for example, grant single sign-on access to
 the AWS Management Console. If you already have an identity and
@@ -199,8 +198,8 @@ access to AWS. Instead, after a user has been authenticated, you call
 C<AssumeRole> (and specify the role with the appropriate permissions)
 to get temporary security credentials for that user. With those
 temporary security credentials, you construct a sign-in URL that users
-can use to access the console. For more information, see Scenarios for
-Granting Temporary Access in I<Using Temporary Security Credentials>.
+can use to access the console. For more information, see Common
+Scenarios for Temporary Credentials in the I<Using IAM>.
 
 The temporary security credentials are valid for the duration that you
 specified when calling C<AssumeRole>, which can be from 900 seconds (15
@@ -218,8 +217,7 @@ permissions for the resulting temporary security credentials. You
 cannot use the passed policy to grant permissions that are in excess of
 those allowed by the access policy of the role that is being assumed.
 For more information, see Permissions for AssumeRole,
-AssumeRoleWithSAML, and AssumeRoleWithWebIdentity in I<Using Temporary
-Security Credentials>.
+AssumeRoleWithSAML, and AssumeRoleWithWebIdentity in the I<Using IAM>.
 
 To assume a role, your AWS account must be trusted by the role. The
 trust relationship is defined in the role's trust policy when the role
@@ -240,7 +238,7 @@ authentication might look like the following example.
 
 C<"Condition": {"Bool": {"aws:MultiFactorAuthPresent": true}}>
 
-For more information, see Configuring MFA-Protected API Access in
+For more information, see Configuring MFA-Protected API Access in the
 I<Using IAM> guide.
 
 To use MFA with C<AssumeRole>, you pass values for the C<SerialNumber>
@@ -283,8 +281,8 @@ policy that you pass. This gives you a way to further restrict the
 permissions for the resulting temporary security credentials. You
 cannot use the passed policy to grant permissions that are in excess of
 those allowed by the access policy of the role that is being assumed.
-For more information, see Permissions for AssumeRoleWithSAML in I<Using
-Temporary Security Credentials>.
+For more information, see Permissions for AssumeRole,
+AssumeRoleWithSAML, and AssumeRoleWithWebIdentity in the I<Using IAM>.
 
 Before your application can call C<AssumeRoleWithSAML>, you must
 configure your SAML identity provider (IdP) to issue the claims
@@ -302,13 +300,13 @@ For more information, see the following resources:
 
 =over
 
-=item * Creating Temporary Security Credentials for SAML Federation.
+=item * About SAML 2.0-based Federation in the I<Using IAM>.
 
-=item * SAML Providers in I<Using IAM>.
+=item * Creating SAML Identity Providers in the I<Using IAM>.
 
-=item * Configuring a Relying Party and Claims in I<Using IAM>.
+=item * Configuring a Relying Party and Claims in the I<Using IAM>.
 
-=item * Creating a Role for SAML-Based Federation in I<Using IAM>.
+=item * Creating a Role for SAML 2.0 Federation in the I<Using IAM>.
 
 =back
 
@@ -361,7 +359,8 @@ policy that you pass. This gives you a way to further restrict the
 permissions for the resulting temporary security credentials. You
 cannot use the passed policy to grant permissions that are in excess of
 those allowed by the access policy of the role that is being assumed.
-For more information, see Permissions for AssumeRoleWithWebIdentity.
+For more information, see Permissions for AssumeRole,
+AssumeRoleWithSAML, and AssumeRoleWithWebIdentity in the I<Using IAM>.
 
 Before your application can call C<AssumeRoleWithWebIdentity>, you must
 have an identity token from a supported identity provider and create a
@@ -375,9 +374,8 @@ C<AssumeRoleWithWebIdentity> API, see the following resources:
 
 =over
 
-=item * Creating a Mobile Application with Third-Party Sign-In and
-Creating Temporary Security Credentials for Mobile Apps Using
-Third-Party Identity Providers.
+=item * Using Web Identity Federation APIs for Mobile Apps and
+Federation Through a Web-based Identity Provider.
 
 =item * Web Identity Federation Playground. This interactive website
 lets you walk through the process of authenticating via Login with
@@ -429,7 +427,7 @@ The decoded message includes the following type of information:
 
 =item * Whether the request was denied due to an explicit deny or due
 to the absence of an explicit allow. For more information, see
-Determining Whether a Request is Allowed or Denied in I<Using IAM>.
+Determining Whether a Request is Allowed or Denied in the I<Using IAM>.
 
 =item * The principal who made the request.
 
@@ -464,9 +462,8 @@ If you are creating a mobile-based or browser-based app that can
 authenticate users using a web identity provider like Login with
 Amazon, Facebook, Google, or an OpenID Connect-compatible identity
 provider, we recommend that you use Amazon Cognito or
-C<AssumeRoleWithWebIdentity>. For more information, see Creating
-Temporary Security Credentials for Mobile Apps Using Identity
-Providers.
+C<AssumeRoleWithWebIdentity>. For more information, see Federation
+Through a Web-based Identity Provider.
 
 The C<GetFederationToken> action must be called by using the long-term
 AWS security credentials of an IAM user. You can also call
@@ -475,7 +472,7 @@ C<GetFederationToken> using the security credentials of an AWS account
 create an IAM user for the purpose of the proxy application and then
 attach a policy to the IAM user that limits federated users to only the
 actions and resources they need access to. For more information, see
-IAM Best Practices in I<Using IAM>.
+IAM Best Practices in the I<Using IAM>.
 
 The temporary security credentials that are obtained by using the
 long-term credentials of an IAM user are valid for the specified
@@ -524,8 +521,8 @@ to access the resource.
 
 For more information about how permissions work, see Permissions for
 GetFederationToken. For information about using C<GetFederationToken>
-to create temporary security credentials, see Creating Temporary
-Credentials to Enable Access for Federated Users.
+to create temporary security credentials, see
+GetFederationTokenE<mdash>Federation Through a Custom Identity Broker.
 
 
 =head2 GetSessionToken([DurationSeconds => Int, SerialNumber => Str, TokenCode => Str])
@@ -542,7 +539,8 @@ EC2 C<StopInstances>. MFA-enabled IAM users would need to call
 C<GetSessionToken> and submit an MFA code that is associated with their
 MFA device. Using the temporary security credentials that are returned
 from the call, IAM users can then make programmatic calls to APIs that
-require MFA authentication.
+require MFA authentication. If you do not supply a correct MFA code,
+then the API returns an access denied error.
 
 The C<GetSessionToken> action must be called by using the long-term AWS
 security credentials of the AWS account or an IAM user. Credentials
@@ -565,8 +563,8 @@ C<GetSessionToken> is called using the credentials of an IAM user, the
 temporary credentials have the same permissions as the IAM user.
 
 For more information about using C<GetSessionToken> to create temporary
-credentials, go to Creating Temporary Credentials to Enable Access for
-IAM Users.
+credentials, go to Temporary Credentials for Users in Untrusted
+Environments in the I<Using IAM>.
 
 
 =head1 SEE ALSO
