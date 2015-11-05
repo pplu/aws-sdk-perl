@@ -60,9 +60,10 @@ I<Elastic Load Balancing Developer Guide>.
 
   The name of the load balancer.
 
-This name must be unique within your AWS account, must have a maximum
-of 32 characters, must contain only alphanumeric characters or hyphens,
-and cannot begin or end with a hyphen.
+This name must be unique within your set of load balancers for the
+region, must have a maximum of 32 characters, must contain only
+alphanumeric characters or hyphens, and cannot begin or end with a
+hyphen.
 
 =head2 Scheme => Str
 
