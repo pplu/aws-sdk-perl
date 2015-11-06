@@ -23,6 +23,26 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateUpload', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDevicePool {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteDevicePool', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteProject {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteUpload {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteUpload', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAccountSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetAccountSettings', @_);
@@ -133,8 +153,18 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ScheduleRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateDevicePool {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateDevicePool', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateProject {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
 
-  sub operations { qw/CreateDevicePool CreateProject CreateUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetProject GetRun GetSuite GetTest GetUpload ListArtifacts ListDevicePools ListDevices ListJobs ListProjects ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads ScheduleRun / }
+  sub operations { qw/CreateDevicePool CreateProject CreateUpload DeleteDevicePool DeleteProject DeleteRun DeleteUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetProject GetRun GetSuite GetTest GetUpload ListArtifacts ListDevicePools ListDevices ListJobs ListProjects ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads ScheduleRun UpdateDevicePool UpdateProject / }
 
 1;
 
@@ -193,6 +223,47 @@ Each argument is described in detail in: L<Paws::DeviceFarm::CreateUpload>
 Returns: a L<Paws::DeviceFarm::CreateUploadResult> instance
 
   Uploads an app or test scripts.
+
+
+=head2 DeleteDevicePool(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::DeleteDevicePool>
+
+Returns: a L<Paws::DeviceFarm::DeleteDevicePoolResult> instance
+
+  Deletes a device pool given the pool ARN. Does not allow deletion of
+curated pools owned by the system.
+
+
+=head2 DeleteProject(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::DeleteProject>
+
+Returns: a L<Paws::DeviceFarm::DeleteProjectResult> instance
+
+  Deletes an AWS Device Farm project, given the project ARN.
+
+B<Note> Deleting this resource does not stop an in-progress run.
+
+
+=head2 DeleteRun(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::DeleteRun>
+
+Returns: a L<Paws::DeviceFarm::DeleteRunResult> instance
+
+  Deletes the run, given the run ARN.
+
+B<Note> Deleting this resource does not stop an in-progress run.
+
+
+=head2 DeleteUpload(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::DeleteUpload>
+
+Returns: a L<Paws::DeviceFarm::DeleteUploadResult> instance
+
+  Deletes an upload given the upload ARN.
 
 
 =head2 GetAccountSettings()
@@ -392,6 +463,27 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ScheduleRun>
 Returns: a L<Paws::DeviceFarm::ScheduleRunResult> instance
 
   Schedules a run.
+
+
+=head2 UpdateDevicePool(Arn => Str, [Description => Str, Name => Str, Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::UpdateDevicePool>
+
+Returns: a L<Paws::DeviceFarm::UpdateDevicePoolResult> instance
+
+  Modifies the name, description, and rules in a device pool given the
+attributes and the pool ARN. Rule updates are all-or-nothing, meaning
+they can only be updated as a whole (or not at all).
+
+
+=head2 UpdateProject(Arn => Str, [Name => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::UpdateProject>
+
+Returns: a L<Paws::DeviceFarm::UpdateProjectResult> instance
+
+  Modifies the specified project name, given the project ARN and a new
+name.
 
 
 =head1 SEE ALSO

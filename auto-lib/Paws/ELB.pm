@@ -413,10 +413,12 @@ Each argument is described in detail in: L<Paws::ELB::DescribeInstanceHealth>
 
 Returns: a L<Paws::ELB::DescribeEndPointStateOutput> instance
 
-  Describes the state of the specified instances registered with the
+  Describes the state of the specified instances with respect to the
 specified load balancer. If no instances are specified, the call
-describes the state of all instances registered with the load balancer,
-not including any terminated instances.
+describes the state of all instances that are currently registered with
+the load balancer. If instances are specified, their state is returned
+even if they are no longer registered with the load balancer. The state
+of terminated instances is not returned.
 
 
 =head2 DescribeLoadBalancerAttributes(LoadBalancerName => Str)
@@ -574,8 +576,8 @@ can link the EC2-Classic instances to that VPC and then register the
 linked EC2-Classic instances with the load balancer in the VPC.
 
 Note that C<RegisterInstanceWithLoadBalancer> completes when the
-request has been registered. Instance registration happens shortly
-afterwards. To check the state of the registered instances, use
+request has been registered. Instance registration takes a little time
+to complete. To check the state of the registered instances, use
 DescribeLoadBalancers or DescribeInstanceHealth.
 
 After the instance is registered, it starts receiving traffic and

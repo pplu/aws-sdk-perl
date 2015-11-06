@@ -1,6 +1,7 @@
 package Paws::AutoScaling::Ebs;
   use Moose;
   has DeleteOnTermination => (is => 'ro', isa => 'Bool');
+  has Encrypted => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has VolumeSize => (is => 'ro', isa => 'Int');
@@ -45,12 +46,20 @@ Describes an Amazon EBS volume.
 
 Default: C<true>
 
+=head2 Encrypted => Bool
+
+  Indicates whether the volume should be encrypted. Encrypted EBS volumes
+must be attached to instances that support Amazon EBS encryption.
+Volumes that are created from encrypted snapshots are automatically
+encrypted. There is no way to create an encrypted volume from an
+unencrypted snapshot or an unencrypted volume from an encrypted
+snapshot. For more information, see Amazon EBS Encryption in the
+I<Amazon Elastic Compute Cloud User Guide>.
+
 =head2 Iops => Int
 
   For Provisioned IOPS (SSD) volumes only. The number of I/O operations
 per second (IOPS) to provision for the volume.
-
-Valid values: Range is 100 to 4000.
 
 Default: None
 

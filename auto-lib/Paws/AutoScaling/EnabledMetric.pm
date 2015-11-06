@@ -42,7 +42,7 @@ Describes an enabled metric.
 
 =head2 Metric => Str
 
-  The name of the metric.
+  One of the following metrics:
 
 =over
 

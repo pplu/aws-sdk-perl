@@ -45,8 +45,8 @@ valid value is C<1Minute>.
 
 =head2 Metrics => ArrayRef[Str]
 
-  One or more metrics. If you omit this parameter, all metrics are
-enabled.
+  One or more of the following metrics. If you omit this parameter, all
+metrics are enabled.
 
 =over
 

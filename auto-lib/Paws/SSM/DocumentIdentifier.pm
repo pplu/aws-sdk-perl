@@ -1,6 +1,7 @@
 package Paws::SSM::DocumentIdentifier;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
+  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str]');
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::DocumentIdentifier object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., PlatformTypes => $value  });
 
 =head3 Results returned from an API call
 
@@ -31,13 +32,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Docume
 
 =head1 DESCRIPTION
 
-Describes the name of a configuration document.
+Describes the name of an SSM document.
 
 =head1 ATTRIBUTES
 
 =head2 Name => Str
 
-  The name of the configuration document.
+  The name of the SSM document.
+
+=head2 PlatformTypes => ArrayRef[Str]
+
+  The operating system platform.
 
 
 

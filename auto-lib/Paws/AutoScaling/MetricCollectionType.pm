@@ -37,7 +37,7 @@ Describes a metric.
 
 =head2 Metric => Str
 
-  The metric.
+  One of the following metrics:
 
 =over
 
