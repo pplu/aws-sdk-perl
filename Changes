@@ -1,4 +1,4 @@
-0.18 
+0.18 6 Nov 2015
  - Important change: Paws license has been changed to a more permissive Apache 2.0
  - IAM update: SimulateCustomPolicy updated. Docs updated too
  - Autoscaling update: Encryption for EBS volumes flag. Docu update too
