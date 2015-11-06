@@ -267,7 +267,7 @@ paws EC2 --region eu-west-1 DescribeInstances Parameter1: ValueForParameter1 Lis
 License
 ================
 
-This code is distributed under the GNU Lesser General Public License, Version 3
+This code is distributed under the Apache v2 License
 
 Thanks
 ================
@@ -306,3 +306,5 @@ stevecaldwell77 for contributing support for temporary credentials in S3
 Gimpson for contributing documentation fixes
 
 Roger Pettett for testing and contributing fixes for tests on MacOSX
+
+Henri Yandell for help with licensing issues

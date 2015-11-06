@@ -65,8 +65,10 @@ must be HTTP or TCP.
 
 =head2 B<REQUIRED> LoadBalancerPort => Int
 
-  The port on which the load balancer is listening. The supported ports
-are: 25, 80, 443, 465, 587, and 1024-65535.
+  The port on which the load balancer is listening. On EC2-VPC, you can
+specify any port from the range 1-65535. On EC2-Classic, you can
+specify any port from the following list: 25, 80, 443, 465, 587,
+1024-65535.
 
 =head2 B<REQUIRED> Protocol => Str
 

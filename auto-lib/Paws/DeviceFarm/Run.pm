@@ -5,6 +5,7 @@ package Paws::DeviceFarm::Run;
   has CompletedJobs => (is => 'ro', isa => 'Int', xmlname => 'completedJobs', request_name => 'completedJobs', traits => ['Unwrapped','NameInRequest']);
   has Counters => (is => 'ro', isa => 'Paws::DeviceFarm::Counters', xmlname => 'counters', request_name => 'counters', traits => ['Unwrapped','NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
+  has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', xmlname => 'deviceMinutes', request_name => 'deviceMinutes', traits => ['Unwrapped','NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', xmlname => 'platform', request_name => 'platform', traits => ['Unwrapped','NameInRequest']);
@@ -70,6 +71,11 @@ C<unmetered>.
 =head2 Created => Str
 
   When the run was created.
+
+=head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
+
+  Represents the total (metered or unmetered) minutes used by the test
+run.
 
 =head2 Message => Str
 

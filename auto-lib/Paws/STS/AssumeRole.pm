@@ -53,8 +53,8 @@ policy checks for the external ID that the third party generated. Each
 time the third party assumes the role, they should pass the customer's
 external ID. The external ID is useful in order to help third parties
 bind a role to the customer who created it. For more information about
-the external ID, see How to Use External ID When Granting Access to
-Your AWS Resources in I<Using Temporary Security Credentials>.
+the external ID, see How to Use an External ID When Granting Access to
+Your AWS Resources to a Third Party in the I<Using IAM>.
 
 =head2 Policy => Str
 
@@ -69,7 +69,7 @@ resulting temporary security credentials. You cannot use the passed
 policy to grant permissions that are in excess of those allowed by the
 access policy of the role that is being assumed. For more information,
 see Permissions for AssumeRole, AssumeRoleWithSAML, and
-AssumeRoleWithWebIdentity in I<Using Temporary Security Credentials>.
+AssumeRoleWithWebIdentity in the I<Using IAM>.
 
 The policy plain text must be 2048 bytes or shorter. However, an
 internal conversion compresses it into a packed binary format with a

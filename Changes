@@ -1,8 +1,12 @@
 0.18 
+ - Important change: Paws license has been changed to a more permissive Apache 2.0
  - IAM update: SimulateCustomPolicy updated. Docs updated too
  - Autoscaling update: Encryption for EBS volumes flag. Docu update too
  - SSM update: new functionalities (SendCommand) for mangaging Windows boxes in AWS
  - new API Gateway service
+ - STS docu update
+ - DeviceFarm update: New Update and Delete methods
+ - ELB docu update
 
 0.17 22 Oct 2015
  - Pass tests on MacOSX by Roger Pettett

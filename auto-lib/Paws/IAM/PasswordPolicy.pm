@@ -53,8 +53,9 @@ GetAccountPasswordPolicy action.
 
 =head2 ExpirePasswords => Bool
 
-  Specifies whether IAM users are required to change their password after
-a specified number of days.
+  Indicates whether passwords in the account expire. Returns true if
+MaxPasswordAge is contains a value greater than 0. Returns false if
+MaxPasswordAge is 0 or not present.
 
 =head2 HardExpiry => Bool
 

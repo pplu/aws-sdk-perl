@@ -1,4 +1,6 @@
 language: perl
+env:
+  - IN_TRAVIS=1
 perl:
   - "dev"
   - "5.22"

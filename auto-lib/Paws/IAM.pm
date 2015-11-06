@@ -2032,12 +2032,9 @@ Each argument is described in detail in: L<Paws::IAM::ListAccountAliases>
 
 Returns: a L<Paws::IAM::ListAccountAliasesResponse> instance
 
-  Lists the account aliases associated with the account. For information
-about using an AWS account alias, see Using an Alias for Your AWS
-Account ID in the I<IAM User Guide>.
-
-You can paginate the results using the C<MaxItems> and C<Marker>
-parameters.
+  Lists the account alias associated with the account (Note: you can have
+only one). For information about using an AWS account alias, see Using
+an Alias for Your AWS Account ID in the I<IAM User Guide>.
 
 
 =head2 ListAttachedGroupPolicies(GroupName => Str, [Marker => Str, MaxItems => Int, PathPrefix => Str])
@@ -2541,7 +2538,7 @@ For information about managed policies, refer to Managed Policies and
 Inline Policies in the I<IAM User Guide>.
 
 
-=head2 SimulateCustomPolicy(ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str], ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulateCustomPolicy(ActionNames => ArrayRef[Str], PolicyInputList => ArrayRef[Str], [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
 Each argument is described in detail in: L<Paws::IAM::SimulateCustomPolicy>
 
@@ -2569,7 +2566,7 @@ If the output is long, you can use C<MaxItems> and C<Marker> parameters
 to paginate the results.
 
 
-=head2 SimulatePrincipalPolicy(ActionNames => ArrayRef[Str], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str], ResourceOwner => Str, ResourcePolicy => Str])
+=head2 SimulatePrincipalPolicy(ActionNames => ArrayRef[Str], PolicySourceArn => Str, [CallerArn => Str, ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>], Marker => Str, MaxItems => Int, PolicyInputList => ArrayRef[Str], ResourceArns => ArrayRef[Str], ResourceHandlingOption => Str, ResourceOwner => Str, ResourcePolicy => Str])
 
 Each argument is described in detail in: L<Paws::IAM::SimulatePrincipalPolicy>
 
