@@ -388,6 +388,6 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 Copyright (c) 2015 by Jose Luis Martinez Torres
 
-This code is distributed under the GNU Lesser General Public License, Version 3. The full text of the license can be found in the LICENSE file included with this module.
+This code is distributed under the Apache 2 License. The full text of the license can be found in the LICENSE file included with this module.
 
 =cut
