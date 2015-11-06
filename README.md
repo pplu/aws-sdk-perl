@@ -267,7 +267,7 @@ paws EC2 --region eu-west-1 DescribeInstances Parameter1: ValueForParameter1 Lis
 License
 ================
 
-This code is distributed under the GNU Lesser General Public License, Version 3
+This code is distributed under the Apache v2 License
 
 Thanks
 ================
