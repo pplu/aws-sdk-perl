@@ -1,4 +1,15 @@
-0.17
+0.18 
+ - Important change: Paws license has been changed to a more permissive Apache 2.0
+ - IAM update: SimulateCustomPolicy updated. Docs updated too
+ - Autoscaling update: Encryption for EBS volumes flag. Docu update too
+ - SSM update: new functionalities (SendCommand) for mangaging Windows boxes in AWS
+ - new API Gateway service
+ - STS docu update
+ - DeviceFarm update: New Update and Delete methods
+ - ELB docu update
+
+0.17 22 Oct 2015
+ - Pass tests on MacOSX by Roger Pettett
  - BREAKING CHANGE: All API methods and attributes have been properly CamelCased. Before
    that, some services were being generated with method names and attributes starting with
    lowercase. For example, in CloudWatchLogs, method DescribeLogGroups would expect:
@@ -12,10 +23,15 @@
    This change also applies to never-released-to-cpan services: MarketplaceCommerceAnalytics,
    IoT, IoTData, Inspector.
 
- - loaded classes can be made immutable for better performance vs a bit more load time   
+ - loaded classes can be made immutable for better performance vs a bit more load time
+ - services can be preloaded via Paws->preload (see examples/preload.pl)
+ - Experimental Furl caller
+ - Proper linking of documentation to appropiate classes
+ - All classes now have doc (some innner shapes docs were not being generated) 
  - CloudFront methods had dates appended to them. Now all methods don't have the
    date appended, so anyone using CloudFront should be aware of that API change
  - New iterators for EC2 and Glacier
+ - New caller: Paws::Net::FurlCaller. Uses Furl to do HTTP calls
 
  - S3 API update: Support for ServerSideEncryption 
  - KMS API update: New operations: CancelKeyDeletion ListRetirableGrants ScheduleKeyDeletion and docu update

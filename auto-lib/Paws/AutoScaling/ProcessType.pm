@@ -40,7 +40,7 @@ Developer Guide>.
 
 =head2 B<REQUIRED> ProcessName => Str
 
-  The name of the process.
+  One of the following processes:
 
 =over
 

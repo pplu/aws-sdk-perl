@@ -38,10 +38,12 @@ on 'develop' => sub {
   requires 'Carp::Always';
   requires 'Devel::Cover';
   requires 'Data::Printer';
+  requires 'Carp::Always';
   # For developing / testing the pluggable callers
   requires 'Mojolicious';
   requires 'MojoX::IOLoop::Future';
   requires 'LWP::UserAgent';
+  requires 'Furl';
 };
 on 'test' => sub {
   requires 'File::Slurper';

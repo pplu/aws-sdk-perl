@@ -1,7 +1,10 @@
 package Paws::SSM::DocumentDescription;
   use Moose;
   has CreatedDate => (is => 'ro', isa => 'Str');
+  has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentParameter]');
+  has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str]');
   has Sha1 => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -34,17 +37,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Docume
 
 =head1 DESCRIPTION
 
-Describes a configuration document.
+Describes an SSM document.
 
 =head1 ATTRIBUTES
 
 =head2 CreatedDate => Str
 
-  The date when the configuration document was created.
+  The date when the SSM document was created.
+
+=head2 Description => Str
+
+  A description of the document.
 
 =head2 Name => Str
 
-  The name of the configuration document.
+  The name of the SSM document.
+
+=head2 Parameters => ArrayRef[L<Paws::SSM::DocumentParameter>]
+
+  A description of the parameters for a document.
+
+=head2 PlatformTypes => ArrayRef[Str]
+
+  The list of OS platforms compatible with this SSM document.
 
 =head2 Sha1 => Str
 
@@ -53,7 +68,7 @@ purposes.
 
 =head2 Status => Str
 
-  The status of the configuration document.
+  The status of the SSM document.
 
 
 

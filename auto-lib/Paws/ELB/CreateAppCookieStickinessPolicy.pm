@@ -44,7 +44,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PolicyName => Str
 
-  The name of the policy being created. This name must be unique within
+  The name of the policy being created. Policy names must consist of
+alphanumeric characters and dashes (-). This name must be unique within
 the set of policies for this load balancer.
 
 

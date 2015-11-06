@@ -57,7 +57,7 @@ the instance fails the health check.
 
 =head2 VirtualName => Str
 
-  The name of the virtual device, C<ephemeral0> to C<ephemeral3>.
+  The name of the virtual device (for example, C<ephemeral0>).
 
 
 

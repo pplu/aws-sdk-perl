@@ -3,6 +3,7 @@ package Paws::SSM::AssociationDescription;
   has Date => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
   has Status => (is => 'ro', isa => 'Paws::SSM::AssociationStatus');
 1;
 
@@ -34,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Associ
 
 =head1 DESCRIPTION
 
-Describes an association.
+Describes the parameters for a document.
 
 =head1 ATTRIBUTES
 
@@ -48,7 +49,11 @@ Describes an association.
 
 =head2 Name => Str
 
-  The name of the configuration document.
+  The name of the SSM document.
+
+=head2 Parameters => L<Paws::SSM::Parameters>
+
+  A description of the parameters for a document.
 
 =head2 Status => L<Paws::SSM::AssociationStatus>
 

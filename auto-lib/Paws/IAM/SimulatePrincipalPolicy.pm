@@ -2,12 +2,16 @@
 package Paws::IAM::SimulatePrincipalPolicy;
   use Moose;
   has ActionNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has CallerArn => (is => 'ro', isa => 'Str');
   has ContextEntries => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ContextEntry]');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
   has PolicyInputList => (is => 'ro', isa => 'ArrayRef[Str]');
   has PolicySourceArn => (is => 'ro', isa => 'Str', required => 1);
   has ResourceArns => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ResourceHandlingOption => (is => 'ro', isa => 'Str');
+  has ResourceOwner => (is => 'ro', isa => 'Str');
+  has ResourcePolicy => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -44,32 +48,48 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 action is evaluated for each resource. Each action must include the
 service identifier, such as C<iam:CreateUser>.
 
+=head2 CallerArn => Str
+
+  The ARN of the user that you want to specify as the simulated caller of
+the APIs. If you do not specify a C<CallerArn>, it defaults to the ARN
+of the user that you specify in C<PolicySourceArn>, if you specified a
+user. If you include both a C<PolicySourceArn> (for example,
+C<arn:aws:iam::123456789012:user/David>) and a C<CallerArn> (for
+example, C<arn:aws:iam::123456789012:user/Bob>), the result is that you
+simulate calling the APIs as Bob, as if Bob had David's policies.
+
+You can specify only the ARN of an IAM user. You cannot specify the ARN
+of an assumed role, federated user, or a service principal.
+
+C<CallerArn> is required if you include a C<ResourcePolicy> and the
+C<PolicySourceArn> is not the ARN for an IAM user. This is required so
+that the resource-based policy's C<Principal> element has a value to
+use in evaluating the policy.
+
 =head2 ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]
 
-  A list of context keys and corresponding values that are used by the
-simulation. Whenever a context key is evaluated by a C<Condition>
-element in one of the simulated IAM permission policies, the
-corresponding value is supplied.
+  A list of context keys and corresponding values for the simulation to
+use. Whenever a context key is evaluated by a C<Condition> element in
+one of the simulated policies, the corresponding value is supplied.
 
 =head2 Marker => Str
 
   Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
-the value of the C<Marker> element in the response you received to
-inform the next call about where to start.
+the value of the C<Marker> element in the response that you received to
+indicate where the next call should start.
 
 =head2 MaxItems => Int
 
   Use this only when paginating results to indicate the maximum number of
-items you want in the response. If there are additional items beyond
-the maximum you specify, the C<IsTruncated> response element is
-C<true>.
+items you want in the response. If additional items exist beyond the
+maximum you specify, the C<IsTruncated> response element is C<true>.
 
 This parameter is optional. If you do not include it, it defaults to
 100. Note that IAM might return fewer results, even when there are more
-results available. If this is the case, the C<IsTruncated> response
-element returns C<true> and C<Marker> contains a value to include in
-the subsequent call that tells the service where to continue from.
+results available. In that case, the C<IsTruncated> response element
+returns C<true> and C<Marker> contains a value to include in the
+subsequent call that tells the service where to continue from.
 
 =head2 PolicyInputList => ArrayRef[Str]
 
@@ -81,9 +101,9 @@ complete, valid JSON text of an IAM policy.
 
   The Amazon Resource Name (ARN) of a user, group, or role whose policies
 you want to include in the simulation. If you specify a user, group, or
-role, the simulation includes all policies associated with that entity.
-If you specify a user, the simulation also includes all policies
-attached to any groups the user is a member of.
+role, the simulation includes all policies that are associated with
+that entity. If you specify a user, the simulation also includes all
+policies that are attached to any groups the user belongs to.
 
 =head2 ResourceArns => ArrayRef[Str]
 
@@ -92,6 +112,91 @@ parameter is not provided then the value defaults to C<*> (all
 resources). Each API in the C<ActionNames> parameter is evaluated for
 each resource in this list. The simulation determines the access result
 (allowed or denied) of each combination and reports it in the response.
+
+The simulation does not automatically retrieve policies for the
+specified resources. If you want to include a resource policy in the
+simulation, then you must include the policy as a string in the
+C<ResourcePolicy> parameter.
+
+=head2 ResourceHandlingOption => Str
+
+  Specifies the type of simulation to run. Different APIs that support
+resource-based policies require different combinations of resources. By
+specifying the type of simulation to run, you enable the policy
+simulator to enforce the presence of the required resources to ensure
+reliable simulation results. If your simulation does not match one of
+the following scenarios, then you can omit this parameter. The
+following list shows each of the supported scenario values and the
+resources that you must define to run the simulation.
+
+Each of the EC2 scenarios requires that you specify instance, image,
+and security-group resources. If your scenario includes an EBS volume,
+then you must specify that volume as a resource. If the EC2 scenario
+includes VPC, then you must supply the network-interface resource. If
+it includes an IP subnet, then you must specify the subnet resource.
+For more information on the EC2 scenario options, see Supported
+Platforms in the I<AWS EC2 User Guide>.
+
+=over
+
+=item *
+
+B<EC2-Classic-InstanceStore>
+
+instance, image, security-group
+
+=item *
+
+B<EC2-Classic-EBS>
+
+instance, image, security-group, volume
+
+=item *
+
+B<EC2-VPC-InstanceStore>
+
+instance, image, security-group, network-interface
+
+=item *
+
+B<EC2-VPC-InstanceStore-Subnet>
+
+instance, image, security-group, network-interface, subnet
+
+=item *
+
+B<EC2-VPC-EBS>
+
+instance, image, security-group, network-interface, volume
+
+=item *
+
+B<EC2-VPC-EBS-Subnet>
+
+instance, image, security-group, network-interface, subnet, volume
+
+=back
+
+
+=head2 ResourceOwner => Str
+
+  An AWS account ID that specifies the owner of any simulated resource
+that does not identify its owner in the resource ARN, such as an S3
+bucket or object. If C<ResourceOwner> is specified, it is also used as
+the account owner of any C<ResourcePolicy> included in the simulation.
+If the C<ResourceOwner> parameter is not specified, then the owner of
+the resources and the resource policy defaults to the account of the
+identity provided in C<CallerArn>. This parameter is required only if
+you specify a resource-based policy and account that owns the resource
+is different from the account that owns the simulated calling user
+C<CallerArn>.
+
+=head2 ResourcePolicy => Str
+
+  A resource-based policy to include in the simulation provided as a
+string. Each resource in the simulation is treated as if it had this
+policy attached. You can include only one resource-based policy in a
+simulation.
 
 
 

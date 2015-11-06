@@ -2,9 +2,11 @@ package Paws::IAM::EvaluationResult;
   use Moose;
   has EvalActionName => (is => 'ro', isa => 'Str', required => 1);
   has EvalDecision => (is => 'ro', isa => 'Str', required => 1);
-  has EvalResourceName => (is => 'ro', isa => 'Str', required => 1);
+  has EvalDecisionDetails => (is => 'ro', isa => 'Paws::IAM::EvalDecisionDetailsType');
+  has EvalResourceName => (is => 'ro', isa => 'Str');
   has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
   has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ResourceSpecificResults => (is => 'ro', isa => 'ArrayRef[Paws::IAM::ResourceSpecificResult]');
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IAM::EvaluationResult object:
 
-  $service_obj->Method(Att1 => { EvalActionName => $value, ..., MissingContextValues => $value  });
+  $service_obj->Method(Att1 => { EvalActionName => $value, ..., ResourceSpecificResults => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,7 +51,16 @@ This data type is used by the return parameter of C<SimulatePolicy>.
 
   The result of the simulation.
 
-=head2 B<REQUIRED> EvalResourceName => Str
+=head2 EvalDecisionDetails => L<Paws::IAM::EvalDecisionDetailsType>
+
+  Additional details about the results of the evaluation decision. When
+there are both IAM policies and resource policies, this parameter
+explains how each set of policies contributes to the final evaluation
+decision. When simulating cross-account access to a resource, both the
+resource-based policy and the caller's IAM policy must grant access.
+See How IAM Roles Differ from Resource-based Policies
+
+=head2 EvalResourceName => Str
 
   The ARN of the resource that the indicated API action was tested on.
 
@@ -72,6 +83,11 @@ If the response includes any keys in this list, then the reported
 results might be untrustworthy because the simulation could not
 completely evaluate all of the conditions specified in the policies
 that would occur in a real world request.
+
+=head2 ResourceSpecificResults => ArrayRef[L<Paws::IAM::ResourceSpecificResult>]
+
+  The individual results of the simulation of the API action specified in
+EvalActionName on each resource.
 
 
 

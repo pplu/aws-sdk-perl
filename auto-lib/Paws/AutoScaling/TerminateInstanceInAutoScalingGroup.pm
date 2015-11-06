@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ShouldDecrementDesiredCapacity => Bool
 
-  If C<true>, terminating this instance also decrements the size of the
+  If C<true>, terminating the instance also decrements the size of the
 Auto Scaling group.
 
 

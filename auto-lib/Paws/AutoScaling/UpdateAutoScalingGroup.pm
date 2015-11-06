@@ -55,7 +55,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
   The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. For more information, see
-Understanding Auto Scaling Cooldowns.
+Understanding Auto Scaling Cooldowns in the I<Auto Scaling Developer
+Guide>.
 
 =head2 DesiredCapacity => Int
 
@@ -68,7 +69,8 @@ the group and less than or equal to the maximum size of the group.
   The amount of time, in seconds, that Auto Scaling waits before checking
 the health status of an instance. The grace period begins when the
 instance passes the system status and instance status checks from
-Amazon EC2. For more information, see .
+Amazon EC2. For more information, see Health Checks in the I<Auto
+Scaling Developer Guide>.
 
 =head2 HealthCheckType => Str
 
@@ -91,7 +93,8 @@ Elastic Load Balancing.
 =head2 PlacementGroup => Str
 
   The name of the placement group into which you'll launch your
-instances, if any. For more information, see Placement Groups.
+instances, if any. For more information, see Placement Groups in the
+I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 TerminationPolicies => ArrayRef[Str]
 

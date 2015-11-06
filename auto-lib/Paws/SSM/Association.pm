@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Associ
 
 =head1 DESCRIPTION
 
-Describes an association of a configuration document and an instance.
+Describes an association of an SSM document and an instance.
 
 =head1 ATTRIBUTES
 
@@ -42,7 +42,7 @@ Describes an association of a configuration document and an instance.
 
 =head2 Name => Str
 
-  The name of the configuration document.
+  The name of the SSM document.
 
 
 

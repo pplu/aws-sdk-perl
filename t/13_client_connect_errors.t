@@ -10,6 +10,8 @@ use lib 't/lib';
 
 use Test::CustomCredentials;
 
+my $match_message_tests = not $ENV{IN_TRAVIS};
+
 my $closed_server_endpoint = 'http://localhost:65511';
 
 my $p = Paws->new(config => { credentials => 'Test::CustomCredentials' });
@@ -23,9 +25,8 @@ throws_ok {
              )->DescribeInstances;
 } 'Paws::Exception', 'got exception';
 
-like($@->message, qr/Connection refused/, 'Correct message');
+like($@->message, qr/Connection refused/, 'Correct message') if ($match_message_tests);
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
-
 diag "LWP caller";
 
 my $lwp = eval {
@@ -43,7 +44,7 @@ throws_ok {
                )->DescribeInstances;
 } 'Paws::Exception', 'got exception';
 
-like($@->message, qr/Connection refused/, 'Correct message');
+like($@->message, qr/Connection refused/, 'Correct message') if ($match_message_tests);
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 MOJO:
@@ -56,7 +57,7 @@ my $mojo = eval {
   });
 };
 diag($@);
-goto END if ($@);
+goto FURL if ($@);
 
 throws_ok {
   $mojo->service('EC2',
@@ -65,7 +66,28 @@ throws_ok {
                 )->DescribeInstances->get;
 } 'Paws::Exception', 'got exception';
 
-cmp_ok($@->message, 'eq', 'Connection refused', 'Correct message');
+cmp_ok($@->message, 'eq', 'Connection refused', 'Correct message') if ($match_message_tests);
+cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
+
+FURL:
+diag "Furl caller";
+
+my $furl = eval {
+  Paws->new(config => { 
+    caller => 'Paws::Net::FurlCaller',
+    credentials => 'Test::CustomCredentials' 
+  });
+};
+goto END if ($@);
+
+throws_ok {
+  $furl->service('EC2',
+                region => 'test', 
+                region_rules => [ { uri => $closed_server_endpoint } ]
+               )->DescribeInstances;
+} 'Paws::Exception', 'got exception';
+
+like($@->message, qr/Connection refused/, 'Correct message') if ($match_message_tests);
 cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 
 END:
