@@ -8,6 +8,10 @@ package Paws::API::Builder::Paws {
 
   use Moose;
 
+  sub version {
+    '0.19';
+  }
+
   sub services {
     my $self = shift;
     [ Paws::API::ServiceToClass::classes ];
@@ -121,7 +125,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.18';
+our $VERSION = '[% c.version %]';
 
 use Moose;
 use MooseX::ClassAttribute;
