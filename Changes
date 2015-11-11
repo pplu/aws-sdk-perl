@@ -1,4 +1,4 @@
-0.19
+0.19 12 Nov 2015
  - Fix issues with POD documentation. Some head2 tags didn't have a newline above
    them, causing them to not behave as head tags
  - We were having problems checking error messages for dns and connection failures
