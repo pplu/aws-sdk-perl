@@ -2,10 +2,16 @@ package Paws::API::Builder::Paws {
   use Template;
   use Data::Printer;
   use Data::Dumper;
+  use Paws::API::ServiceToClass;
 
   use autodie;
 
   use Moose;
+
+  sub services {
+    my $self = shift;
+    [ Paws::API::ServiceToClass::classes ];
+  }
 
   sub save_class {
     my ($self, $class_name, $content) = @_;
@@ -289,7 +295,9 @@ kept stable, and changes to it should be notified via ChangeLog
 
 =head1 SUPPORTED SERVICES
 
-Please take a look at classes in the Paws::XXX namespace
+[% FOREACH service = c.services.sort %]
+L<Paws::[% service %]>
+[% END %]
 
 =head1 SERVICES CLASSES
 
