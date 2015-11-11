@@ -11,6 +11,7 @@ package Paws::ApiGateway::Stage;
   has LastUpdatedDate => (is => 'ro', isa => 'Str');
   has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings');
   has StageName => (is => 'ro', isa => 'Str');
+  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
 
 1;
 
@@ -57,6 +58,11 @@ stage.
 
   The name of the stage is the first path segment in the Uniform Resource
 Identifier (URI) of a call to Amazon API Gateway.
+=head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
+
+  A map that defines the stage variables for a Stage resource. Variable
+names can have alphabetic characters, and the values must match
+[A-Za-z0-9-._~:/?
 
 
 =cut
