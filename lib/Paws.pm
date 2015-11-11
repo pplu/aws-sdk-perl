@@ -360,10 +360,46 @@ The credential objects' access_key, secret_key and session_token methods will be
 =head2 Caller Pluggability
 
 Caller classes need to have the Role L<Paws::Net::CallerRole> applied. This obliges them to implement the do_call method. Tests use this interface to
-mock calls and responses to the APIs (without using the network). If you want to use Asyncronous IO, take a look at the L<Paws::Net::MojoAsyncCaller>
-in the examples directory.
+mock calls and responses to the APIs (without using the network). 
 
 The caller instance is responsable for doing the network Input/Output with some type of HTTP request library, and returning the Result from the API.
+
+These callers are included and supported in Paws:
+
+L<Paws::Net::Caller>: Uses HTTP::Tiny. It's the default caller for Paws
+
+L<Paws::Net::MojoAsyncCaller>: Experimental asyncronous IO caller. Paws method calls return futures instead of results
+
+L<Paws::Net::LWPCaller>: Uses LWP. LWP supports HTTPS proxies, so Paws can call AWS from behind an HTTPS proxy.
+
+L<Paws::Net::FurlCaller>: Uses Furl: a lightning fast HTTP client
+
+=head1 Optimization
+
+=head2 Preloading services and operations
+
+  Paws->preload_service($service)
+  Paws->preload_service($service, @methods)
+
+Paws manages a lot of objects that are loaded dynamically as needed. This causes high memory consumption if you do operations with Paws in a forked 
+environment because each child loads a separate copy of all the classes it needs to do the calls. Paws provides the preload_service operation. Call
+it with the name of the service before forking off so your server can benefit from copy on write memory sharing. The parent class will load all the
+classes needed so that child processes don't need to load them.
+
+Some classes have lot's of calls, so preloading them can be quite expensive. If you call preload_service with a list of the methods you will call,
+it will only load classes needed for those calls. This is specially useful for L<Paws::EC2>, for example.
+
+Preloading doesn't change the usage of Paws. That means that all services and methods still work without any change, just that if they're not preloaded
+they'll be loaded at runtime.
+
+=head2 Immutabilizing classes
+
+Paws objects are programmed with L<Moose> (the Modern Perl Object Framework). Moose objects can be immutibilized so that method calls perform better,
+at the cost of startup time. If you deem your usage of Paws to be long-lived, you can call
+
+  Paws->default_config->immutable(1);
+
+as early as possible in the code. Very important that the immutable flag be activated before calling preload_service.
 
 =head1 AUTHOR
 

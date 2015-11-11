@@ -4,6 +4,7 @@
  - We were having problems checking error messages for dns and connection failures
    Different messages on different platforms / locales were making tests fail, and
    Paws harder to install
+ - add preloading and immutabilizing to documentation
  - SQS docu update
  - ApiGateway support for variables
  - S3 API Update: support for ServerSideEncryption in UploadPart 
