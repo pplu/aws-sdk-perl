@@ -414,7 +414,7 @@ L<http://aws.amazon.com/documentation/>
 
 L<https://github.com/pplu/aws-sdk-perl>
 
-=head1 BUGS and CONTRIBUTIONS
+=head1 BUGS and SOURCE
 
 The source code is located here: https://github.com/pplu/aws-sdk-perl
 
@@ -425,5 +425,46 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 Copyright (c) 2015 by Jose Luis Martinez Torres
 
 This code is distributed under the Apache 2 License. The full text of the license can be found in the LICENSE file included with this module.
+
+=head1 CONTRIBUITIONS
+
+Luis Alberto Gimenez (@agimenez) for 
+ - The git-fu cleaning up the "pull other sdks" code
+ - Credential Providers code
+
+Srinvas (@kidambisrinivas) for testing, bug reporting and fixing
+
+juair10 for corrections and testing
+
+CHORNY for CPAN and cpanfile packaging corrections
+
+Iñigo Tejedor for service endpoint resolution based on rules
+
+codehead for helping fix SQS Queue Maps
+
+mbartold for helping fix SQS MessageBatch functionality
+
+coreymayer for reporting bug in RestXmlCaller
+
+arc (Aaron Crane) for documentation patches
+
+dtikhonov for LWP Caller and bug reporting/fixing
+
+vivus-ignis for DynamoDB bug reporting and test scripts for DynamoDB
+
+karenetheridge for bug reporting, pull requests and help
+
+ioanrogers for fixing unicode issues in tests
+
+ilmari for fixing issues with timestamps in Date and X-Amz-Date headers
+
+stevecaldwell77 for contributing support for temporary credentials in S3
+
+Gimpson for contributing documentation fixes
+
+Roger Pettett for testing and contributing fixes for tests on MacOSX
+
+Henri Yandell for help with licensing issues
+
 
 =cut
