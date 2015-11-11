@@ -207,6 +207,8 @@ sub _preload_scanclass {
 1;
 ### main pod documentation begin ###
 
+=encoding UTF-8
+
 =head1 NAME
 
 Paws - A Perl SDK for AWS (Amazon Web Services) APIs
