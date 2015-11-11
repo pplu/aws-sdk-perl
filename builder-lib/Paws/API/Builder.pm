@@ -639,6 +639,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
     my $self = shift;
     my $output = '';
     my ($calls, $results);
+    $self->validate_shapes;
 
     foreach my $shape_name ($self->shapes) {
       $self->shape($shape_name)->{perl_type} = $self->get_caller_class_type($shape_name);
@@ -672,6 +673,21 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
     my $class_out = $self->process_template($self->service_class_template, { c => $self });
     $self->save_class($self->api, $class_out);
+  }
+
+  sub validate_shapes {
+    my $self = shift;
+    foreach my $shape_name ($self->shapes) {
+      my $shape = $self->shape($shape_name);
+      next  unless(defined $shape->{ members });
+      foreach my $member_name (keys %{ $shape->{members} }) {
+        my $member = $shape->{members}->{$member_name};
+        die "Shape '$shape_name' has a member '$member_name' with an undefined shape"
+            unless(defined $member->{shape});
+        die "Shape '$shape_name' has a member '$member_name' with an unrecognized shape: '$member->{shape}'"
+            unless ($self->has_shape($member->{shape}));
+        }
+    }
   }
 
   sub perl_type_to_pod {
