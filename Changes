@@ -8,6 +8,8 @@
  - DeviceFarm update: New Update and Delete methods
  - ELB docu update
  - SQS docu update
+ - ApiGateway support for variables
+ - S3 API Update: support for ServerSideEncryption in UploadPart 
 
 0.17 22 Oct 2015
  - Pass tests on MacOSX by Roger Pettett
