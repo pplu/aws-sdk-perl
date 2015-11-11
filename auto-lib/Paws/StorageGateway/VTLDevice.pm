@@ -39,22 +39,27 @@ Represents a device object associated with a gateway-VTL.
 
 =head1 ATTRIBUTES
 
+
 =head2 DeviceiSCSIAttributes => L<Paws::StorageGateway::DeviceiSCSIAttributes>
 
   A list of iSCSI information about a VTL device.
+
 
 =head2 VTLDeviceARN => Str
 
   Specifies the unique Amazon Resource Name (ARN) of the device (tape
 drive or media changer).
 
+
 =head2 VTLDeviceProductIdentifier => Str
 
   
 
+
 =head2 VTLDeviceType => Str
 
   
+
 
 =head2 VTLDeviceVendor => Str
 

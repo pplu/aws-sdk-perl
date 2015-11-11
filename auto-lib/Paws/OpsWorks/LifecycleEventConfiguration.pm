@@ -35,6 +35,7 @@ Specifies the lifecycle event configuration
 
 =head1 ATTRIBUTES
 
+
 =head2 Shutdown => L<Paws::OpsWorks::ShutdownEventConfiguration>
 
   A C<ShutdownEventConfiguration> object that specifies the Shutdown

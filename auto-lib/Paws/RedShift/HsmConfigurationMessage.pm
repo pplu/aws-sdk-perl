@@ -14,9 +14,11 @@ Paws::RedShift::HsmConfigurationMessage
 
 =head1 ATTRIBUTES
 
+
 =head2 HsmConfigurations => ArrayRef[L<Paws::RedShift::HsmConfiguration>]
 
   A list of Amazon Redshift HSM configurations.
+
 =head2 Marker => Str
 
   A value that indicates the starting point for the next set of response

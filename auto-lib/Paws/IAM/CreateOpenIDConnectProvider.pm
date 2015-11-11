@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClientIDList => ArrayRef[Str]
 
   A list of client IDs (also known as audiences). When a mobile or web
@@ -49,6 +50,7 @@ IAM OIDC provider.
 There is no defined format for a client ID. The
 C<CreateOpenIDConnectProviderRequest> action accepts client IDs up to
 255 characters long.
+
 
 =head2 B<REQUIRED> ThumbprintList => ArrayRef[Str]
 
@@ -72,6 +74,7 @@ https://keys.server.example.com.
 For more information about obtaining the OIDC provider's thumbprint,
 see Obtaining the Thumbprint for an OpenID Connect Provider in the
 I<IAM User Guide>.
+
 
 =head2 B<REQUIRED> Url => Str
 

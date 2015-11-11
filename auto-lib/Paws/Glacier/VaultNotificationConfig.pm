@@ -36,10 +36,12 @@ Represents a vault's notification configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 Events => ArrayRef[Str]
 
   A list of one or more events for which Amazon Glacier will send a
 notification to the specified Amazon SNS topic.
+
 
 =head2 SNSTopic => Str
 

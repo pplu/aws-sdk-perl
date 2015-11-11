@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
   The DB instance identifier. This is the unique key that identifies a DB
@@ -50,6 +51,7 @@ Constraints:
 =item * Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
+
 
 
 =head2 B<REQUIRED> DBSnapshotIdentifier => Str
@@ -71,6 +73,7 @@ Constraints:
 =back
 
 Example: C<my-snapshot-id>
+
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 

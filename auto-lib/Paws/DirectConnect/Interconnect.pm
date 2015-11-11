@@ -17,21 +17,27 @@ Paws::DirectConnect::Interconnect
 
 =head1 ATTRIBUTES
 
+
 =head2 Bandwidth => Str
 
   
+
 =head2 InterconnectId => Str
 
   
+
 =head2 InterconnectName => Str
 
   
+
 =head2 InterconnectState => Str
 
   
+
 =head2 Location => Str
 
   
+
 =head2 Region => Str
 
   

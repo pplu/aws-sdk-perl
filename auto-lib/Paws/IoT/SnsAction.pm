@@ -36,9 +36,11 @@ Describes an action to publish to an Amazon SNS topic.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> RoleArn => Str
 
   The ARN of the IAM role that grants access.
+
 
 =head2 B<REQUIRED> TargetArn => Str
 

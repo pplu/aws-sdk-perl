@@ -40,30 +40,37 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheClusterEnabled => Bool
 
   Whether cache clustering is enabled for the stage.
+
 
 =head2 CacheClusterSize => Str
 
   The stage's cache cluster size.
 
+
 =head2 B<REQUIRED> DeploymentId => Str
 
   The identifier of the Deployment resource for the Stage resource.
 
+
 =head2 Description => Str
 
   The description of the Stage resource.
+
 
 =head2 B<REQUIRED> RestApiId => Str
 
   The identifier of the RestApi resource for the Stage resource to
 create.
 
+
 =head2 B<REQUIRED> StageName => Str
 
   The name for the Stage resource.
+
 
 =head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
 

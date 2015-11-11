@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ExclusiveStartStreamArn => Str
 
   The ARN (Amazon Resource Name) of the first item that this operation
 will evaluate. Use the value that was returned for
 C<LastEvaluatedStreamArn> in the previous operation.
 
+
 =head2 Limit => Int
 
   The maximum number of streams to return. The upper limit is 100.
+
 
 =head2 TableName => Str
 

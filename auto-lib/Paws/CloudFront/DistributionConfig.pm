@@ -48,14 +48,17 @@ A distribution Configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 Aliases => L<Paws::CloudFront::Aliases>
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this distribution.
 
+
 =head2 CacheBehaviors => L<Paws::CloudFront::CacheBehaviors>
 
   A complex type that contains zero or more CacheBehavior elements.
+
 
 =head2 B<REQUIRED> CallerReference => Str
 
@@ -70,13 +73,16 @@ a value you already sent in a previous request to create a distribution
 but the content of the DistributionConfig is different from the
 original request, CloudFront returns a DistributionAlreadyExists error.
 
+
 =head2 B<REQUIRED> Comment => Str
 
   Any comments you want to include about the distribution.
 
+
 =head2 CustomErrorResponses => L<Paws::CloudFront::CustomErrorResponses>
 
   A complex type that contains zero or more CustomErrorResponse elements.
+
 
 =head2 B<REQUIRED> DefaultCacheBehavior => L<Paws::CloudFront::DefaultCacheBehavior>
 
@@ -84,6 +90,7 @@ original request, CloudFront returns a DistributionAlreadyExists error.
 specify a CacheBehavior element or if files don't match any of the
 values of PathPattern in CacheBehavior elements.You must create exactly
 one default cache behavior.
+
 
 =head2 DefaultRootObject => Str
 
@@ -99,33 +106,40 @@ and include an empty DefaultRootObject element. To replace the default
 root object, update the distribution configuration and specify the new
 object.
 
+
 =head2 B<REQUIRED> Enabled => Bool
 
   Whether the distribution is enabled to accept end user requests for
 content.
+
 
 =head2 Logging => L<Paws::CloudFront::LoggingConfig>
 
   A complex type that controls whether access logs are written for the
 distribution.
 
+
 =head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>
 
   A complex type that contains information about origins for this
 distribution.
+
 
 =head2 PriceClass => Str
 
   A complex type that contains information about price class for this
 distribution.
 
+
 =head2 Restrictions => L<Paws::CloudFront::Restrictions>
 
   
 
+
 =head2 ViewerCertificate => L<Paws::CloudFront::ViewerCertificate>
 
   
+
 
 =head2 WebACLId => Str
 

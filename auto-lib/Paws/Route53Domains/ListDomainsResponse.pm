@@ -13,6 +13,7 @@ Paws::Route53Domains::ListDomainsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Domains => ArrayRef[L<Paws::Route53Domains::DomainSummary>]
 
   A summary of domains.
@@ -20,6 +21,7 @@ Paws::Route53Domains::ListDomainsResponse
 Type: Complex type containing a list of domain summaries.
 
 Children: C<AutoRenew>, C<DomainName>, C<Expiry>, C<TransferLock>
+
 =head2 NextPageMarker => Str
 
   If there are more domains than you specified for C<MaxItems> in the

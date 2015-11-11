@@ -38,20 +38,24 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 DeviceName => Str
 
   The device name exposed to the instance (for example, C</dev/sdh> or
 C<xvdh>).
+
 
 =head2 Ebs => L<Paws::EC2::EbsBlockDevice>
 
   Parameters used to automatically set up EBS volumes when the instance
 is launched.
 
+
 =head2 NoDevice => Str
 
   Suppresses the specified device included in the block device mapping of
 the AMI.
+
 
 =head2 VirtualName => Str
 

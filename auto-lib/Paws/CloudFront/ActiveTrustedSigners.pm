@@ -41,9 +41,11 @@ content.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Enabled => Bool
 
   Each active trusted signer.
+
 
 =head2 Items => ArrayRef[L<Paws::CloudFront::Signer>]
 
@@ -51,6 +53,7 @@ content.
 trusted signer that is specified in the TrustedSigners complex type,
 including trusted signers in the default cache behavior and in all of
 the other cache behaviors.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

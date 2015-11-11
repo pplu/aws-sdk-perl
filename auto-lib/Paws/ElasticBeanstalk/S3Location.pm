@@ -36,9 +36,11 @@ A specification of a location in Amazon S3.
 
 =head1 ATTRIBUTES
 
+
 =head2 S3Bucket => Str
 
   The Amazon S3 bucket where the data is located.
+
 
 =head2 S3Key => Str
 

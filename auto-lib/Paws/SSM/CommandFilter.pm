@@ -36,9 +36,11 @@ Describes a command filter.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   The name of the filter. For example, requested date and time.
+
 
 =head2 B<REQUIRED> Value => Str
 

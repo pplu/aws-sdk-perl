@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DBClusterParameterGroupName => Str
 
   The name of the DB cluster parameter group to reset.
+
 
 =head2 Parameters => ArrayRef[L<Paws::RDS::Parameter>]
 
   A list of parameter names in the DB cluster parameter group to reset to
 the default values. You cannot use this parameter if the
 C<ResetAllParameters> parameter is set to C<true>.
+
 
 =head2 ResetAllParameters => Bool
 

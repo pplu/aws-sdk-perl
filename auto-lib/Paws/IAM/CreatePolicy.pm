@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   A friendly description of the policy.
@@ -44,6 +45,7 @@ the policy. For example, "Grants access to production DynamoDB tables."
 
 The policy description is immutable. After a value is assigned, it
 cannot be changed.
+
 
 =head2 Path => Str
 
@@ -55,9 +57,11 @@ Guide>.
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
+
 =head2 B<REQUIRED> PolicyDocument => Str
 
   The policy document.
+
 
 =head2 B<REQUIRED> PolicyName => Str
 

@@ -13,12 +13,14 @@ Paws::KMS::CreateGrantResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 GrantId => Str
 
   The unique identifier for the grant.
 
 You can use the C<GrantId> in a subsequent RetireGrant or RevokeGrant
 operation.
+
 =head2 GrantToken => Str
 
   The grant token.

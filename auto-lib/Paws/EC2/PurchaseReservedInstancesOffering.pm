@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
@@ -42,15 +43,18 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 B<REQUIRED> InstanceCount => Int
 
   The number of Reserved Instances to purchase.
+
 
 =head2 LimitPrice => L<Paws::EC2::ReservedInstanceLimitPrice>
 
   Specified for Reserved Instance Marketplace offerings to limit the
 total order and ensure that the Reserved Instances are not purchased at
 unexpected prices.
+
 
 =head2 B<REQUIRED> ReservedInstancesOfferingId => Str
 

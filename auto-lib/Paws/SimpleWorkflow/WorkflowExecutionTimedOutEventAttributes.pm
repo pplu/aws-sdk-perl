@@ -36,6 +36,7 @@ Provides details of the C<WorkflowExecutionTimedOut> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ChildPolicy => Str
 
   The policy used for the child workflow executions of this workflow
@@ -56,6 +57,7 @@ actions when it receives an execution history with this event.
 continue to run.
 
 =back
+
 
 
 =head2 B<REQUIRED> TimeoutType => Str

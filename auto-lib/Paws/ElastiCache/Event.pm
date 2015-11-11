@@ -40,19 +40,23 @@ removing a cache node, or rebooting a node.
 
 =head1 ATTRIBUTES
 
+
 =head2 Date => Str
 
   The date and time when the event occurred.
 
+
 =head2 Message => Str
 
   The text of the event.
+
 
 =head2 SourceIdentifier => Str
 
   The identifier for the source of the event. For example, if the event
 occurred at the cache cluster level, the identifier would be the name
 of the cache cluster.
+
 
 =head2 SourceType => Str
 

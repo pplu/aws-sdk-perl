@@ -22,6 +22,7 @@ Paws::Route53::ListHostedZonesByNameResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 DNSName => Str
 
   The first name in the lexicographic ordering of domain names that you
@@ -31,12 +32,14 @@ If the request returned more than one page of results, submit another
 request and specify the value of C<NextDNSName> and C<NextHostedZoneId>
 from the last response in the C<DNSName> and C<HostedZoneId> parameters
 to get the next page of results.
+
 =head2 HostedZoneId => Str
 
   If the request returned more than one page of results, submit another
 request and specify the value of C<NextDNSName> and C<NextHostedZoneId>
 from the last response in the C<DNSName> and C<HostedZoneId> parameters
 to get the next page of results.
+
 =head2 MaxItems => Str
 
   Specify the maximum number of hosted zones to return per page of

@@ -59,9 +59,11 @@ that you want to include in the updated distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowedMethods => L<Paws::CloudFront::AllowedMethods>
 
   
+
 
 =head2 DefaultTTL => Int
 
@@ -74,10 +76,12 @@ when your origin does not add HTTP headers such as Cache-Control
 max-age, Cache-Control s-maxage, and Expires to objects. You can
 specify a value from 0 to 3,153,600,000 seconds (100 years).
 
+
 =head2 B<REQUIRED> ForwardedValues => L<Paws::CloudFront::ForwardedValues>
 
   A complex type that specifies how CloudFront handles query strings,
 cookies and headers.
+
 
 =head2 MaxTTL => Int
 
@@ -88,12 +92,14 @@ you specify applies only when your origin adds HTTP headers such as
 Cache-Control max-age, Cache-Control s-maxage, and Expires to objects.
 You can specify a value from 0 to 3,153,600,000 seconds (100 years).
 
+
 =head2 B<REQUIRED> MinTTL => Int
 
   The minimum amount of time that you want objects to stay in CloudFront
 caches before CloudFront queries your origin to see whether the object
 has been updated.You can specify a value from 0 to 3,153,600,000
 seconds (100 years).
+
 
 =head2 B<REQUIRED> PathPattern => Str
 
@@ -106,17 +112,20 @@ If the request for an object does not match the path pattern for any
 cache behaviors, CloudFront applies the behavior in the default cache
 behavior.
 
+
 =head2 SmoothStreaming => Bool
 
   Indicates whether you want to distribute media files in Microsoft
 Smooth Streaming format using the origin that is associated with this
 cache behavior. If so, specify true; if not, specify false.
 
+
 =head2 B<REQUIRED> TargetOriginId => Str
 
   The value of ID for the origin that you want CloudFront to route
 requests to when a request matches the path pattern either for a cache
 behavior or for the default cache behavior.
+
 
 =head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>
 
@@ -132,6 +141,7 @@ false for Enabled and 0 for Quantity. Omit Items. To add, change, or
 remove one or more trusted signers, change Enabled to true (if it's
 currently false), change Quantity as applicable, and specify all of the
 trusted signers that you want to include in the updated distribution.
+
 
 =head2 B<REQUIRED> ViewerProtocolPolicy => Str
 

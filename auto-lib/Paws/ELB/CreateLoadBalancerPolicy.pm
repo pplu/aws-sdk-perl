@@ -35,18 +35,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> LoadBalancerName => Str
 
   The name of the load balancer.
+
 
 =head2 PolicyAttributes => ArrayRef[L<Paws::ELB::PolicyAttribute>]
 
   The attributes for the policy.
 
+
 =head2 B<REQUIRED> PolicyName => Str
 
   The name of the load balancer policy to be created. This name must be
 unique within the set of policies for this load balancer.
+
 
 =head2 B<REQUIRED> PolicyTypeName => Str
 

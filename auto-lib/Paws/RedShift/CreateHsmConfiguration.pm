@@ -38,33 +38,40 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Description => Str
 
   A text description of the HSM configuration to be created.
+
 
 =head2 B<REQUIRED> HsmConfigurationIdentifier => Str
 
   The identifier to be assigned to the new Amazon Redshift HSM
 configuration.
 
+
 =head2 B<REQUIRED> HsmIpAddress => Str
 
   The IP address that the Amazon Redshift cluster must use to access the
 HSM.
+
 
 =head2 B<REQUIRED> HsmPartitionName => Str
 
   The name of the partition in the HSM where the Amazon Redshift clusters
 will store their database encryption keys.
 
+
 =head2 B<REQUIRED> HsmPartitionPassword => Str
 
   The password required to access the HSM partition.
+
 
 =head2 B<REQUIRED> HsmServerPublicCertificate => Str
 
   The HSMs public certificate file. When using Cloud HSM, the file name
 is server.pem.
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

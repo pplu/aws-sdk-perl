@@ -13,6 +13,7 @@ Paws::IAM::CreateVirtualMFADeviceResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> VirtualMFADevice => L<Paws::IAM::VirtualMFADevice>
 
   A newly created virtual MFA device.

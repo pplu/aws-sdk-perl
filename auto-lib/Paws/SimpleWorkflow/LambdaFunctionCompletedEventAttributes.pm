@@ -37,9 +37,11 @@ Provides details for the C<LambdaFunctionCompleted> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Result => Str
 
   The result of the function execution (if any).
+
 
 =head2 B<REQUIRED> ScheduledEventId => Int
 
@@ -47,6 +49,7 @@ Provides details for the C<LambdaFunctionCompleted> event.
 this AWS Lambda function was scheduled. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
+
 
 =head2 B<REQUIRED> StartedEventId => Int
 

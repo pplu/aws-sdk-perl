@@ -13,6 +13,7 @@ Paws::IoTData::UpdateThingShadowResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Payload => Str
 
   The state information, in JSON format.

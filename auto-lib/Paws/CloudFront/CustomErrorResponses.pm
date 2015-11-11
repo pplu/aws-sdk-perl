@@ -36,10 +36,12 @@ A complex type that contains zero or more CustomErrorResponse elements.
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[L<Paws::CloudFront::CustomErrorResponse>]
 
   Optional: A complex type that contains custom error responses for this
 distribution. If Quantity is 0, you can omit Items.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

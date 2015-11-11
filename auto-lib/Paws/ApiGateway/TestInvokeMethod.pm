@@ -41,33 +41,41 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Body => Str
 
   
+
 
 =head2 ClientCertificateId => Str
 
   
 
+
 =head2 Headers => L<Paws::ApiGateway::MapOfHeaderValues>
 
   
+
 
 =head2 B<REQUIRED> HttpMethod => Str
 
   
 
+
 =head2 PathWithQueryString => Str
 
   
+
 
 =head2 B<REQUIRED> ResourceId => Str
 
   
 
+
 =head2 B<REQUIRED> RestApiId => Str
 
   
+
 
 =head2 StageVariables => L<Paws::ApiGateway::MapOfStringToString>
 

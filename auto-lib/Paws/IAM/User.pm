@@ -59,16 +59,19 @@ ListUsers
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Arn => Str
 
   The Amazon Resource Name (ARN) that identifies the user. For more
 information about ARNs and how to use ARNs in policies, see IAM
 Identifiers in the I<Using IAM> guide.
 
+
 =head2 B<REQUIRED> CreateDate => Str
 
   The date and time, in ISO 8601 date-time format, when the user was
 created.
+
 
 =head2 PasswordLastUsed => Str
 
@@ -98,15 +101,18 @@ there is no sign-in data associated with the user
 
 This value is returned only in the GetUser and ListUsers actions.
 
+
 =head2 B<REQUIRED> Path => Str
 
   The path to the user. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
 
+
 =head2 B<REQUIRED> UserId => Str
 
   The stable and unique string identifying the user. For more information
 about IDs, see IAM Identifiers in the I<Using IAM> guide.
+
 
 =head2 B<REQUIRED> UserName => Str
 

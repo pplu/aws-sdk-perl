@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Alias => Str
 
   The requested alias.
@@ -40,6 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The alias must be unique amongst all aliases in AWS. This operation
 will throw an C<EntityAlreadyExistsException> if this alias already
 exists.
+
 
 =head2 B<REQUIRED> DirectoryId => Str
 

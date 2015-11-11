@@ -38,21 +38,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ContentType => Str
 
   The content-type for the model.
+
 
 =head2 Description => Str
 
   The description of the model.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the model.
 
+
 =head2 B<REQUIRED> RestApiId => Str
 
   The RestApi identifier under which the Model will be created.
+
 
 =head2 Schema => Str
 

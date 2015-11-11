@@ -44,20 +44,24 @@ The settings for a trail.
 
 =head1 ATTRIBUTES
 
+
 =head2 CloudWatchLogsLogGroupArn => Str
 
   Specifies an Amazon Resource Name (ARN), a unique identifier that
 represents the log group to which CloudTrail logs will be delivered.
+
 
 =head2 CloudWatchLogsRoleArn => Str
 
   Specifies the role for the CloudWatch Logs endpoint to assume to write
 to a user's log group.
 
+
 =head2 IncludeGlobalServiceEvents => Bool
 
   Set to B<True> to include AWS API calls from AWS global services such
 as IAM. Otherwise, B<False>.
+
 
 =head2 KmsKeyId => Str
 
@@ -67,19 +71,23 @@ format:
 
 C<arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012>
 
+
 =head2 LogFileValidationEnabled => Bool
 
   Specifies whether log file validation is enabled.
+
 
 =head2 Name => Str
 
   Name of the trail set by calling CreateTrail. The maximum length is 128
 characters.
 
+
 =head2 S3BucketName => Str
 
   Name of the Amazon S3 bucket into which CloudTrail delivers your trail
 files. See Amazon S3 Bucket Naming Requirements.
+
 
 =head2 S3KeyPrefix => Str
 
@@ -88,11 +96,13 @@ bucket you have designated for log file delivery. For more information,
 see Finding Your CloudTrail Log Files.The maximum length is 200
 characters.
 
+
 =head2 SnsTopicName => Str
 
   Name of the existing Amazon SNS topic that CloudTrail uses to notify
 the account owner when new CloudTrail log files have been delivered.
 The maximum length is 256 characters.
+
 
 =head2 TrailARN => Str
 

@@ -44,35 +44,43 @@ DescribeEventSubscriptions action.
 
 =head1 ATTRIBUTES
 
+
 =head2 CustomerAwsId => Str
 
   The AWS customer account associated with the RDS event notification
 subscription.
 
+
 =head2 CustSubscriptionId => Str
 
   The RDS event notification subscription Id.
+
 
 =head2 Enabled => Bool
 
   A Boolean value indicating if the subscription is enabled. True
 indicates the subscription is enabled.
 
+
 =head2 EventCategoriesList => ArrayRef[Str]
 
   A list of event categories for the RDS event notification subscription.
+
 
 =head2 SnsTopicArn => Str
 
   The topic ARN of the RDS event notification subscription.
 
+
 =head2 SourceIdsList => ArrayRef[Str]
 
   A list of source IDs for the RDS event notification subscription.
 
+
 =head2 SourceType => Str
 
   The source type for the RDS event notification subscription.
+
 
 =head2 Status => Str
 
@@ -86,6 +94,7 @@ no-permission | topic-not-exist
 The status "no-permission" indicates that RDS no longer has permission
 to post to the SNS topic. The status "topic-not-exist" indicates that
 the topic was deleted after the subscription was created.
+
 
 =head2 SubscriptionCreationTime => Str
 

@@ -51,23 +51,28 @@ phpapp2 folder.
 
 =head1 ATTRIBUTES
 
+
 =head2 Configure => ArrayRef[Str]
 
   An array of custom recipe names to be run following a C<configure>
 event.
 
+
 =head2 Deploy => ArrayRef[Str]
 
   An array of custom recipe names to be run following a C<deploy> event.
+
 
 =head2 Setup => ArrayRef[Str]
 
   An array of custom recipe names to be run following a C<setup> event.
 
+
 =head2 Shutdown => ArrayRef[Str]
 
   An array of custom recipe names to be run following a C<shutdown>
 event.
+
 
 =head2 Undeploy => ArrayRef[Str]
 

@@ -38,11 +38,13 @@ Provides options for specifying a range inventory retrieval job.
 
 =head1 ATTRIBUTES
 
+
 =head2 EndDate => Str
 
   The end of the date range in UTC for vault inventory retrieval that
 includes archives created before this date. A string representation of
 ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
+
 
 =head2 Limit => Str
 
@@ -50,12 +52,14 @@ ISO 8601 date format, for example, 2013-03-20T17:03:43Z.
 inventory retrieval request. Valid values are greater than or equal to
 1.
 
+
 =head2 Marker => Str
 
   An opaque string that represents where to continue pagination of the
 vault inventory retrieval results. You use the marker in a new
 B<InitiateJob> request to obtain additional inventory items. If there
 are no more inventory items, this value is C<null>.
+
 
 =head2 StartDate => Str
 

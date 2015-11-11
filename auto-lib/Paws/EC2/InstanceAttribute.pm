@@ -26,52 +26,66 @@ Paws::EC2::InstanceAttribute
 
 =head1 ATTRIBUTES
 
+
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMapping>]
 
   The block device mapping of the instance.
+
 =head2 DisableApiTermination => L<Paws::EC2::AttributeBooleanValue>
 
   If the value is C<true>, you can't terminate the instance through the
 Amazon EC2 console, CLI, or API; otherwise, you can.
+
 =head2 EbsOptimized => L<Paws::EC2::AttributeBooleanValue>
 
   Indicates whether the instance is optimized for EBS I/O.
+
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
   The security groups associated with the instance.
+
 =head2 InstanceId => Str
 
   The ID of the instance.
+
 =head2 InstanceInitiatedShutdownBehavior => L<Paws::EC2::AttributeValue>
 
   Indicates whether an instance stops or terminates when you initiate
 shutdown from the instance (using the operating system command for
 system shutdown).
+
 =head2 InstanceType => L<Paws::EC2::AttributeValue>
 
   The instance type.
+
 =head2 KernelId => L<Paws::EC2::AttributeValue>
 
   The kernel ID.
+
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
   A list of product codes.
+
 =head2 RamdiskId => L<Paws::EC2::AttributeValue>
 
   The RAM disk ID.
+
 =head2 RootDeviceName => L<Paws::EC2::AttributeValue>
 
   The name of the root device (for example, C</dev/sda1> or
 C</dev/xvda>).
+
 =head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
 
   Indicates whether source/destination checking is enabled. A value of
 C<true> means checking is enabled, and C<false> means checking is
 disabled. This value must be C<false> for a NAT instance to perform
 NAT.
+
 =head2 SriovNetSupport => L<Paws::EC2::AttributeValue>
 
   
+
 =head2 UserData => L<Paws::EC2::AttributeValue>
 
   The Base64-encoded MIME user data.

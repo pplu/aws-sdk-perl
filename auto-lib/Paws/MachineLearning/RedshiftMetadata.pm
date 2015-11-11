@@ -37,13 +37,16 @@ Describes the C<DataSource> details specific to Amazon Redshift.
 
 =head1 ATTRIBUTES
 
+
 =head2 DatabaseUserName => Str
 
   
 
+
 =head2 RedshiftDatabase => L<Paws::MachineLearning::RedshiftDatabase>
 
   
+
 
 =head2 SelectSqlQuery => Str
 

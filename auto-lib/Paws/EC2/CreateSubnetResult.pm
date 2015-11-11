@@ -13,6 +13,7 @@ Paws::EC2::CreateSubnetResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Subnet => L<Paws::EC2::Subnet>
 
   Information about the subnet.

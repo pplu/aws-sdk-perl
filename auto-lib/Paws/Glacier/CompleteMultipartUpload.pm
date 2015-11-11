@@ -38,6 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AccountId => Str
 
   The C<AccountId> value is the AWS account ID of the account that owns
@@ -47,10 +48,12 @@ account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
+
 =head2 ArchiveSize => Str
 
   The total size, in bytes, of the entire archive. This value should be
 the sum of all the sizes of the individual parts that you uploaded.
+
 
 =head2 Checksum => Str
 
@@ -60,9 +63,11 @@ the request does not match the SHA256 tree hash of the final assembled
 archive as computed by Amazon Glacier, Amazon Glacier returns an error
 and the request fails.
 
+
 =head2 B<REQUIRED> UploadId => Str
 
   The upload ID of the multipart upload.
+
 
 =head2 B<REQUIRED> VaultName => Str
 

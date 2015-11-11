@@ -37,13 +37,16 @@ Information about a policy.
 
 =head1 ATTRIBUTES
 
+
 =head2 PolicyAttributeDescriptions => ArrayRef[L<Paws::ELB::PolicyAttributeDescription>]
 
   The policy attributes.
 
+
 =head2 PolicyName => Str
 
   The name of the policy.
+
 
 =head2 PolicyTypeName => Str
 

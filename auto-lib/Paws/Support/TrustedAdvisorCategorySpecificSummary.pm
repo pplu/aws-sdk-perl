@@ -36,6 +36,7 @@ the Trusted Advisor check.
 
 =head1 ATTRIBUTES
 
+
 =head2 CostOptimizing => L<Paws::Support::TrustedAdvisorCostOptimizingSummary>
 
   The summary information about cost savings for a Trusted Advisor check

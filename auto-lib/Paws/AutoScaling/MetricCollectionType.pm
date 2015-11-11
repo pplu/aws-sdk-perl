@@ -35,6 +35,7 @@ Describes a metric.
 
 =head1 ATTRIBUTES
 
+
 =head2 Metric => Str
 
   One of the following metrics:

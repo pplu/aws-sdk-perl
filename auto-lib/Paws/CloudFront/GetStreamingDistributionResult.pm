@@ -28,10 +28,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ETag => Str
 
   The current version of the streaming distribution's information. For
 example: E2QWRUHAPOMQZL.
+
 
 =head2 StreamingDistribution => L<Paws::CloudFront::StreamingDistribution>
 

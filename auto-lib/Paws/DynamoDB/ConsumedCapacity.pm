@@ -44,24 +44,29 @@ Developer Guide>.
 
 =head1 ATTRIBUTES
 
+
 =head2 CapacityUnits => Num
 
   The total number of capacity units consumed by the operation.
+
 
 =head2 GlobalSecondaryIndexes => L<Paws::DynamoDB::SecondaryIndexesCapacityMap>
 
   The amount of throughput consumed on each global index affected by the
 operation.
 
+
 =head2 LocalSecondaryIndexes => L<Paws::DynamoDB::SecondaryIndexesCapacityMap>
 
   The amount of throughput consumed on each local index affected by the
 operation.
 
+
 =head2 Table => L<Paws::DynamoDB::Capacity>
 
   The amount of throughput consumed on the table affected by the
 operation.
+
 
 =head2 TableName => Str
 

@@ -34,11 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DhcpOptionsIds => ArrayRef[Str]
 
   The IDs of one or more DHCP options sets.
 
 Default: Describes all your DHCP options sets.
+
 
 =head2 DryRun => Bool
 
@@ -46,6 +48,7 @@ Default: Describes all your DHCP options sets.
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 

@@ -37,9 +37,11 @@ time.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApiKeyRequired => Bool
 
   Specifies whether the method requires a valid ApiKey.
+
 
 =head2 AuthorizationType => Str
 

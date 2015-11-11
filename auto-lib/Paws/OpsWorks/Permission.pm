@@ -39,19 +39,23 @@ Describes stack or user permissions.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowSsh => Bool
 
   Whether the user can use SSH.
 
+
 =head2 AllowSudo => Bool
 
   Whether the user can use B<sudo>.
+
 
 =head2 IamUserArn => Str
 
   The Amazon Resource Name (ARN) for an AWS Identity and Access
 Management (IAM) role. For more information about IAM ARNs, see Using
 Identifiers.
+
 
 =head2 Level => Str
 
@@ -73,6 +77,7 @@ Identifiers.
 
 For more information on the permissions associated with these levels,
 see Managing User Permissions
+
 
 =head2 StackId => Str
 

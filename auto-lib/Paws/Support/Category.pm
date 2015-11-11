@@ -38,9 +38,11 @@ response for each AWS service.
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   The category code for the support case.
+
 
 =head2 Name => Str
 

@@ -39,20 +39,24 @@ Advisor DescribeTrustedAdvisorCheckSummaries.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ResourcesFlagged => Int
 
   The number of AWS resources that were flagged (listed) by the Trusted
 Advisor check.
+
 
 =head2 B<REQUIRED> ResourcesIgnored => Int
 
   The number of AWS resources ignored by Trusted Advisor because
 information was unavailable.
 
+
 =head2 B<REQUIRED> ResourcesProcessed => Int
 
   The number of AWS resources that were analyzed by the Trusted Advisor
 check.
+
 
 =head2 B<REQUIRED> ResourcesSuppressed => Int
 

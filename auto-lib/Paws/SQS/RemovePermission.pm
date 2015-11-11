@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Label => Str
 
   The identification of the permission to remove. This is the label added
 with the AddPermission action.
+
 
 =head2 B<REQUIRED> QueueUrl => Str
 

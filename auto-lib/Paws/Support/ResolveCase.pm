@@ -32,6 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CaseId => Str
 
   The AWS Support case ID requested or returned in the call. The case ID

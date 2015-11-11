@@ -36,10 +36,12 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Amount => Num
 
   Used for Reserved Instance Marketplace offerings. Specifies the limit
 price on the total order (instanceCount * price).
+
 
 =head2 CurrencyCode => Str
 

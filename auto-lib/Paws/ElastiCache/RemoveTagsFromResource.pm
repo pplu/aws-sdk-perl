@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ResourceName => Str
 
   The name of the ElastiCache resource from which you want the listed
 tags removed, for example
 C<arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster>.
+
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 

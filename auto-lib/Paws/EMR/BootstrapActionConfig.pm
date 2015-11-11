@@ -36,9 +36,11 @@ Configuration of a bootstrap action.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the bootstrap action.
+
 
 =head2 B<REQUIRED> ScriptBootstrapAction => L<Paws::EMR::ScriptBootstrapActionConfig>
 

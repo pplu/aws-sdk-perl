@@ -47,9 +47,11 @@ action.
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheNodeCount => Int
 
   The number of cache nodes that have been reserved.
+
 
 =head2 CacheNodeType => Str
 
@@ -107,41 +109,51 @@ Amazon ElastiCache Product Features and Details and Cache Node
 Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
+
 =head2 Duration => Int
 
   The duration of the reservation in seconds.
+
 
 =head2 FixedPrice => Num
 
   The fixed price charged for this reserved cache node.
 
+
 =head2 OfferingType => Str
 
   The offering type of this reserved cache node.
+
 
 =head2 ProductDescription => Str
 
   The description of the reserved cache node.
 
+
 =head2 RecurringCharges => ArrayRef[L<Paws::ElastiCache::RecurringCharge>]
 
   The recurring price charged to run this reserved cache node.
+
 
 =head2 ReservedCacheNodeId => Str
 
   The unique identifier for the reservation.
 
+
 =head2 ReservedCacheNodesOfferingId => Str
 
   The offering identifier.
+
 
 =head2 StartTime => Str
 
   The time the reservation started.
 
+
 =head2 State => Str
 
   The state of the reserved cache node.
+
 
 =head2 UsagePrice => Num
 

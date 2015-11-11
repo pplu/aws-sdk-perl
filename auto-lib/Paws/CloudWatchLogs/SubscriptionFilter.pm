@@ -40,25 +40,31 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 CreationTime => Int
 
   
+
 
 =head2 DestinationArn => Str
 
   
 
+
 =head2 FilterName => Str
 
   
+
 
 =head2 FilterPattern => Str
 
   
 
+
 =head2 LogGroupName => Str
 
   
+
 
 =head2 RoleArn => Str
 

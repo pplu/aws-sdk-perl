@@ -38,17 +38,21 @@ Information about an application.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationId => Str
 
   The application ID.
+
 
 =head2 ApplicationName => Str
 
   The application name.
 
+
 =head2 CreateTime => Str
 
   The time that the application was created.
+
 
 =head2 LinkedToGitHub => Bool
 

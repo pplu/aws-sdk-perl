@@ -41,17 +41,21 @@ Represents a specific warning or failure.
 
 =head1 ATTRIBUTES
 
+
 =head2 Device => L<Paws::DeviceFarm::Device>
 
   Information about the associated device.
+
 
 =head2 Job => L<Paws::DeviceFarm::ProblemDetail>
 
   Information about the associated job.
 
+
 =head2 Message => Str
 
   A message about the problem's result.
+
 
 =head2 Result => Str
 
@@ -92,13 +96,16 @@ WARNED: A warning condition.
 =back
 
 
+
 =head2 Run => L<Paws::DeviceFarm::ProblemDetail>
 
   Information about the associated run.
 
+
 =head2 Suite => L<Paws::DeviceFarm::ProblemDetail>
 
   Information about the associated suite.
+
 
 =head2 Test => L<Paws::DeviceFarm::ProblemDetail>
 

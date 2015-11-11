@@ -37,13 +37,16 @@ Describes the properties of an environment tier
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of this environment tier.
 
+
 =head2 Type => Str
 
   The type of this environment tier.
+
 
 =head2 Version => Str
 

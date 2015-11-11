@@ -14,9 +14,11 @@ Paws::IoT::CreateThingResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ThingArn => Str
 
   The thing ARN.
+
 =head2 ThingName => Str
 
   The name of the thing.

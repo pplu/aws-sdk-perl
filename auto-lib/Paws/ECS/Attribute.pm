@@ -37,9 +37,11 @@ registered.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the container instance attribute.
+
 
 =head2 Value => Str
 

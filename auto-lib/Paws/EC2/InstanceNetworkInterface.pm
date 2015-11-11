@@ -48,59 +48,73 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Association => L<Paws::EC2::InstanceNetworkInterfaceAssociation>
 
   The association information for an Elastic IP associated with the
 network interface.
 
+
 =head2 Attachment => L<Paws::EC2::InstanceNetworkInterfaceAttachment>
 
   The network interface attachment.
+
 
 =head2 Description => Str
 
   The description.
 
+
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
   One or more security groups.
+
 
 =head2 MacAddress => Str
 
   The MAC address.
 
+
 =head2 NetworkInterfaceId => Str
 
   The ID of the network interface.
+
 
 =head2 OwnerId => Str
 
   The ID of the AWS account that created the network interface.
 
+
 =head2 PrivateDnsName => Str
 
   The private DNS name.
+
 
 =head2 PrivateIpAddress => Str
 
   The IP address of the network interface within the subnet.
 
+
 =head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::InstancePrivateIpAddress>]
 
   The private IP addresses associated with the network interface.
+
 
 =head2 SourceDestCheck => Bool
 
   Indicates whether to validate network traffic to or from this network
 interface.
 
+
 =head2 Status => Str
 
   The status of the network interface.
 
+
 =head2 SubnetId => Str
 
   The ID of the subnet.
+
 
 =head2 VpcId => Str
 

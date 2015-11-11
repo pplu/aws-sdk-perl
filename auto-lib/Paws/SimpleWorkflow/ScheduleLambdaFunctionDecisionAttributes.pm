@@ -75,6 +75,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   B<Required.> The SWF C<id> of the AWS Lambda task.
@@ -84,13 +85,16 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
+
 =head2 Input => Str
 
   The input provided to the AWS Lambda function.
 
+
 =head2 B<REQUIRED> Name => Str
 
   B<Required.> The name of the AWS Lambda function to invoke.
+
 
 =head2 StartToCloseTimeout => Str
 

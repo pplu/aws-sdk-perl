@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Domain => Str
 
   Set to C<vpc> to allocate the address for use with instances in a VPC.
 
 Default: The address is for use with instances in EC2-Classic.
+
 
 =head2 DryRun => Bool
 

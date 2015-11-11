@@ -40,22 +40,27 @@ for a workflow execution.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> OpenActivityTasks => Int
 
   The count of activity tasks whose status is OPEN.
 
+
 =head2 B<REQUIRED> OpenChildWorkflowExecutions => Int
 
   The count of child workflow executions whose status is OPEN.
+
 
 =head2 B<REQUIRED> OpenDecisionTasks => Int
 
   The count of decision tasks whose status is OPEN. A workflow execution
 can have at most one open decision task.
 
+
 =head2 OpenLambdaFunctions => Int
 
   The count of AWS Lambda functions that are currently executing.
+
 
 =head2 B<REQUIRED> OpenTimers => Int
 

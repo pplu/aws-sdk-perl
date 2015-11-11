@@ -63,10 +63,12 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
+
 =head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent decision tasks.
+
 
 =head2 Input => Str
 
@@ -74,14 +76,17 @@ in subsequent decision tasks.
 workflow execution will use the signal name and input data to process
 the signal.
 
+
 =head2 RunId => Str
 
   The C<runId> of the workflow execution to be signaled.
+
 
 =head2 B<REQUIRED> SignalName => Str
 
   B<Required.> The name of the signal.The target workflow execution will
 use the signal name and input to process the signal.
+
 
 =head2 B<REQUIRED> WorkflowId => Str
 

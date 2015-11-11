@@ -37,17 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 MaxResults => Int
 
   The maximum number of results to return.
+
 
 =head2 NextToken => Str
 
   A token used to retrieve the next value.
 
+
 =head2 RuleDisabled => Bool
 
   Specifies whether the rule is disabled.
+
 
 =head2 Topic => Str
 

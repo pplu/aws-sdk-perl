@@ -35,27 +35,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CopyObjectResult => L<Paws::S3::CopyObjectResult>
 
   
 
+
 =head2 CopySourceVersionId => Str
 
   
+
 
 =head2 Expiration => Str
 
   If the object expiration is configured, the response includes this
 header.
 
+
 =head2 RequestCharged => Str
 
   
+
 
 =head2 ServerSideEncryption => Str
 
   The Server-side encryption algorithm used when storing this object in
 S3 (e.g., AES256, aws:kms).
+
 
 =head2 SSECustomerAlgorithm => Str
 
@@ -63,16 +69,19 @@ S3 (e.g., AES256, aws:kms).
 requested, the response will include this header confirming the
 encryption algorithm used.
 
+
 =head2 SSECustomerKeyMD5 => Str
 
   If server-side encryption with a customer-provided encryption key was
 requested, the response will include this header to provide round trip
 message integrity verification of the customer-provided encryption key.
 
+
 =head2 SSEKMSKeyId => Str
 
   If present, specifies the ID of the AWS Key Management Service (KMS)
 master encryption key that was used for the object.
+
 
 =head2 VersionId => Str
 

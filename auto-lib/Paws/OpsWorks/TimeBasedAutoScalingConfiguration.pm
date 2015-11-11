@@ -36,9 +36,11 @@ Describes an instance's time-based auto scaling configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoScalingSchedule => L<Paws::OpsWorks::WeeklyAutoScalingSchedule>
 
   A C<WeeklyAutoScalingSchedule> object with the instance schedule.
+
 
 =head2 InstanceId => Str
 

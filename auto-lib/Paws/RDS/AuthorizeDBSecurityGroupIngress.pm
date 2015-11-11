@@ -36,13 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CIDRIP => Str
 
   The IP range to authorize.
 
+
 =head2 B<REQUIRED> DBSecurityGroupName => Str
 
   The name of the DB security group to add authorization to.
+
 
 =head2 EC2SecurityGroupId => Str
 
@@ -51,12 +54,14 @@ C<EC2SecurityGroupId> must be provided. Otherwise,
 C<EC2SecurityGroupOwnerId> and either C<EC2SecurityGroupName> or
 C<EC2SecurityGroupId> must be provided.
 
+
 =head2 EC2SecurityGroupName => Str
 
   Name of the EC2 security group to authorize. For VPC DB security
 groups, C<EC2SecurityGroupId> must be provided. Otherwise,
 C<EC2SecurityGroupOwnerId> and either C<EC2SecurityGroupName> or
 C<EC2SecurityGroupId> must be provided.
+
 
 =head2 EC2SecurityGroupOwnerId => Str
 

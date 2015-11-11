@@ -40,6 +40,7 @@ An invalidation list.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IsTruncated => Bool
 
   A flag that indicates whether more invalidation batch requests remain
@@ -47,24 +48,29 @@ to be listed. If your results were truncated, you can make a follow-up
 pagination request using the Marker request parameter to retrieve more
 invalidation batches in the list.
 
+
 =head2 Items => ArrayRef[L<Paws::CloudFront::InvalidationSummary>]
 
   A complex type that contains one InvalidationSummary element for each
 invalidation batch that was created by the current AWS account.
 
+
 =head2 B<REQUIRED> Marker => Str
 
   The value you provided for the Marker request parameter.
 
+
 =head2 B<REQUIRED> MaxItems => Int
 
   The value you provided for the MaxItems request parameter.
+
 
 =head2 NextMarker => Str
 
   If IsTruncated is true, this element is present and contains the value
 you can use for the Marker request parameter to continue listing your
 invalidation batches where they left off.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

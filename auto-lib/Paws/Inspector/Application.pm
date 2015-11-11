@@ -40,13 +40,16 @@ DescribeApplication action.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationArn => Str
 
   The ARN specifying the Inspector application.
 
+
 =head2 ApplicationName => Str
 
   The name of the Inspector application.
+
 
 =head2 ResourceGroupArn => Str
 

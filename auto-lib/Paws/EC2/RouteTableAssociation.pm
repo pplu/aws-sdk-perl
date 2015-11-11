@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Main => Bool
 
   Indicates whether this is the main route table.
+
 
 =head2 RouteTableAssociationId => Str
 
   The ID of the association between a route table and a subnet.
 
+
 =head2 RouteTableId => Str
 
   The ID of the route table.
+
 
 =head2 SubnetId => Str
 

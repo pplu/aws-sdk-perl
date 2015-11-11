@@ -38,19 +38,23 @@ Information about a document that matches the search request.
 
 =head1 ATTRIBUTES
 
+
 =head2 Exprs => L<Paws::CloudSearchDomain::Exprs>
 
   The expressions returned from a document that matches the search
 request.
 
+
 =head2 Fields => L<Paws::CloudSearchDomain::Fields>
 
   The fields returned from a document that matches the search request.
+
 
 =head2 Highlights => L<Paws::CloudSearchDomain::Highlights>
 
   The highlights returned from a document that matches the search
 request.
+
 
 =head2 Id => Str
 

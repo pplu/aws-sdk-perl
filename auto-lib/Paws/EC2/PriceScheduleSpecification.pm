@@ -37,14 +37,17 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 CurrencyCode => Str
 
   The currency for transacting the Reserved Instance resale. At this
 time, the only supported currency is C<USD>.
 
+
 =head2 Price => Num
 
   The fixed price for the term.
+
 
 =head2 Term => Int
 

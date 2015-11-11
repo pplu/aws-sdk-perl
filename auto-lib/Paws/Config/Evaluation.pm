@@ -40,23 +40,28 @@ AWS Config rule that it was evaluated against.
 
 =head1 ATTRIBUTES
 
+
 =head2 Annotation => Str
 
   Supplementary information about how the evaluation determined the
 compliance.
 
+
 =head2 B<REQUIRED> ComplianceResourceId => Str
 
   The ID of the AWS resource that was evaluated.
+
 
 =head2 B<REQUIRED> ComplianceResourceType => Str
 
   The type of AWS resource that was evaluated.
 
+
 =head2 B<REQUIRED> ComplianceType => Str
 
   Indicates whether the AWS resource complies with the AWS Config rule
 that it was evaluated against.
+
 
 =head2 B<REQUIRED> OrderingTimestamp => Str
 

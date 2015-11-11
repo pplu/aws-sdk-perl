@@ -14,11 +14,13 @@ Paws::SNS::ListPlatformApplicationsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   NextToken string is returned when calling ListPlatformApplications
 action if additional records are available after the first page
 results.
+
 =head2 PlatformApplications => ArrayRef[L<Paws::SNS::PlatformApplication>]
 
   Platform applications returned when calling ListPlatformApplications

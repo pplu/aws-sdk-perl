@@ -35,9 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Description => Str
 
   A description of the parameter group.
+
 
 =head2 B<REQUIRED> ParameterGroupFamily => Str
 
@@ -51,6 +53,7 @@ including the default parameter groups for each Amazon Redshift engine
 version. The parameter group family names associated with the default
 parameter groups provide you the valid values. For example, a valid
 family name is "redshift-1.0".
+
 
 =head2 B<REQUIRED> ParameterGroupName => Str
 
@@ -71,6 +74,7 @@ Constraints:
 =back
 
 This value is stored as a lower-case string.
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

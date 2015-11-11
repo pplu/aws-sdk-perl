@@ -37,6 +37,7 @@ Describes a C<COPY> command for Amazon Redshift.
 
 =head1 ATTRIBUTES
 
+
 =head2 CopyOptions => Str
 
   Optional parameters to use with the Amazon Redshift C<COPY> command.
@@ -62,9 +63,11 @@ path specified is the format of the data.
 
 For more examples, see and Amazon Redshift COPY command exmaples.
 
+
 =head2 DataTableColumns => Str
 
   A comma-separated list of column names.
+
 
 =head2 B<REQUIRED> DataTableName => Str
 

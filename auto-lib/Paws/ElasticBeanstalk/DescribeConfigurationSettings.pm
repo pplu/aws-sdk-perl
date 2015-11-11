@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ApplicationName => Str
 
   The application for the environment or configuration template.
+
 
 =head2 EnvironmentName => Str
 
@@ -46,6 +48,7 @@ Condition: You must specify either this or a TemplateName, but not
 both. If you specify both, AWS Elastic Beanstalk returns an
 C<InvalidParameterCombination> error. If you do not specify either, AWS
 Elastic Beanstalk returns C<MissingRequiredParameter> error.
+
 
 =head2 TemplateName => Str
 

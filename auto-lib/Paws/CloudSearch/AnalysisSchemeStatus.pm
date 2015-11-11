@@ -36,9 +36,11 @@ The status and configuration of an C<AnalysisScheme>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Options => L<Paws::CloudSearch::AnalysisScheme>
 
   
+
 
 =head2 B<REQUIRED> Status => L<Paws::CloudSearch::OptionStatus>
 

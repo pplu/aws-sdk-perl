@@ -40,12 +40,14 @@ Limits in the I<Amazon DynamoDB Developer Guide>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ReadCapacityUnits => Int
 
   The maximum number of strongly consistent reads consumed per second
 before DynamoDB returns a I<ThrottlingException>. For more information,
 see Specifying Read and Write Requirements in the I<Amazon DynamoDB
 Developer Guide>.
+
 
 =head2 B<REQUIRED> WriteCapacityUnits => Int
 

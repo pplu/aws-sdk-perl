@@ -34,10 +34,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DestinationCidrBlock => Str
 
   The CIDR range for the route. The value you specify must match the CIDR
 for the route exactly.
+
 
 =head2 DryRun => Bool
 
@@ -45,6 +47,7 @@ for the route exactly.
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 B<REQUIRED> RouteTableId => Str
 

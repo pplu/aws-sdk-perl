@@ -36,9 +36,11 @@ Configuration options to be applied to the identity pool.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationArns => ArrayRef[Str]
 
   List of SNS platform application ARNs that could be used by clients.
+
 
 =head2 RoleArn => Str
 

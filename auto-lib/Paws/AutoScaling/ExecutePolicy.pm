@@ -36,9 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoScalingGroupName => Str
 
   The name or Amazon Resource Name (ARN) of the Auto Scaling group.
+
 
 =head2 BreachThreshold => Num
 
@@ -46,6 +48,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 This parameter is required if the policy type is C<StepScaling> and not
 supported otherwise.
+
 
 =head2 HonorCooldown => Bool
 
@@ -58,6 +61,7 @@ This parameter is not supported if the policy type is C<StepScaling>.
 
 For more information, see Understanding Auto Scaling Cooldowns in the
 I<Auto Scaling Developer Guide>.
+
 
 =head2 MetricValue => Num
 
@@ -72,6 +76,7 @@ adjustment for the policy, the call returns an error.
 
 This parameter is required if the policy type is C<StepScaling> and not
 supported otherwise.
+
 
 =head2 B<REQUIRED> PolicyName => Str
 

@@ -37,13 +37,16 @@ The execution status details of the cluster step.
 
 =head1 ATTRIBUTES
 
+
 =head2 State => Str
 
   The execution state of the cluster step.
 
+
 =head2 StateChangeReason => L<Paws::EMR::StepStateChangeReason>
 
   The reason for the step execution status change.
+
 
 =head2 Timeline => L<Paws::EMR::StepTimeline>
 

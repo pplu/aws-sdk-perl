@@ -38,17 +38,21 @@ Describes a user's SSH information.
 
 =head1 ATTRIBUTES
 
+
 =head2 IamUserArn => Str
 
   The user's IAM ARN.
+
 
 =head2 Name => Str
 
   The user's name.
 
+
 =head2 SshPublicKey => Str
 
   The user's SSH public key.
+
 
 =head2 SshUsername => Str
 

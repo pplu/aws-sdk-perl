@@ -47,34 +47,42 @@ information about a command you executed.
 
 =head1 ATTRIBUTES
 
+
 =head2 CommandId => Str
 
   The command against which this invocation was requested.
 
+
 =head2 CommandPlugins => ArrayRef[L<Paws::SSM::CommandPlugin>]
 
   
+
 
 =head2 Comment => Str
 
   User-specified information about the command, such as a brief
 description of what the command should do.
 
+
 =head2 DocumentName => Str
 
   The document name that was requested for execution.
+
 
 =head2 InstanceId => Str
 
   The instance ID in which this invocation was requested.
 
+
 =head2 RequestedDateTime => Str
 
   The time and date the request was sent to this instance.
 
+
 =head2 Status => Str
 
   Whether or not the invocation succeeded, failed, or is pending.
+
 
 =head2 TraceOutput => Str
 

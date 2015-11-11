@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ActivityIds => ArrayRef[Str]
 
   The activity IDs of the desired scaling activities. If this list is
@@ -43,13 +44,16 @@ parameter is provided, the results are limited to that group. The list
 of requested activities cannot contain more than 50 items. If unknown
 activities are requested, they are ignored with no error.
 
+
 =head2 AutoScalingGroupName => Str
 
   The name of the group.
 
+
 =head2 MaxRecords => Int
 
   The maximum number of items to return with this call.
+
 
 =head2 NextToken => Str
 

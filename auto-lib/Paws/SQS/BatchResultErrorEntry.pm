@@ -39,17 +39,21 @@ description of the result of an action on each entry in the request.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Code => Str
 
   An error code representing why the action failed on this entry.
+
 
 =head2 B<REQUIRED> Id => Str
 
   The id of an entry in a batch request.
 
+
 =head2 Message => Str
 
   A message explaining why the action failed on this entry.
+
 
 =head2 B<REQUIRED> SenderFault => Bool
 

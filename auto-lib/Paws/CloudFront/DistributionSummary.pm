@@ -49,23 +49,28 @@ A summary of the information for an Amazon CloudFront distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Aliases => L<Paws::CloudFront::Aliases>
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this distribution.
 
+
 =head2 B<REQUIRED> CacheBehaviors => L<Paws::CloudFront::CacheBehaviors>
 
   A complex type that contains zero or more CacheBehavior elements.
+
 
 =head2 B<REQUIRED> Comment => Str
 
   The comment originally specified when this distribution was created.
 
+
 =head2 B<REQUIRED> CustomErrorResponses => L<Paws::CloudFront::CustomErrorResponses>
 
   A complex type that contains zero or more CustomErrorResponses
 elements.
+
 
 =head2 B<REQUIRED> DefaultCacheBehavior => L<Paws::CloudFront::DefaultCacheBehavior>
 
@@ -74,36 +79,44 @@ specify a CacheBehavior element or if files don't match any of the
 values of PathPattern in CacheBehavior elements.You must create exactly
 one default cache behavior.
 
+
 =head2 B<REQUIRED> DomainName => Str
 
   The domain name corresponding to the distribution. For example:
 d604721fxaaqy9.cloudfront.net.
+
 
 =head2 B<REQUIRED> Enabled => Bool
 
   Whether the distribution is enabled to accept end user requests for
 content.
 
+
 =head2 B<REQUIRED> Id => Str
 
   The identifier for the distribution. For example: EDFDVBD632BHDS5.
 
+
 =head2 B<REQUIRED> LastModifiedTime => Str
 
   The date and time the distribution was last modified.
+
 
 =head2 B<REQUIRED> Origins => L<Paws::CloudFront::Origins>
 
   A complex type that contains information about origins for this
 distribution.
 
+
 =head2 B<REQUIRED> PriceClass => Str
 
   
 
+
 =head2 B<REQUIRED> Restrictions => L<Paws::CloudFront::Restrictions>
 
   
+
 
 =head2 B<REQUIRED> Status => Str
 
@@ -111,9 +124,11 @@ distribution.
 When the status is Deployed, the distribution's information is fully
 propagated throughout the Amazon CloudFront system.
 
+
 =head2 B<REQUIRED> ViewerCertificate => L<Paws::CloudFront::ViewerCertificate>
 
   
+
 
 =head2 B<REQUIRED> WebACLId => Str
 

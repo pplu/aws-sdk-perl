@@ -36,10 +36,12 @@ The details of the step state change reason.
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   The programmable code for the state change reason. Note: Currently, the
 service provides no code for the state change.
+
 
 =head2 Message => Str
 

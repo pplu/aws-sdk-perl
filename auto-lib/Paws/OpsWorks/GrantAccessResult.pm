@@ -12,6 +12,7 @@ Paws::OpsWorks::GrantAccessResult
 
 =head1 ATTRIBUTES
 
+
 =head2 TemporaryCredential => L<Paws::OpsWorks::TemporaryCredential>
 
   A C<TemporaryCredential> object that contains the data needed to log in

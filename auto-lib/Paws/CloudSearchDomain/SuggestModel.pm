@@ -38,13 +38,16 @@ C<SuggestResponse>.
 
 =head1 ATTRIBUTES
 
+
 =head2 Found => Int
 
   The number of documents that were found to match the query string.
 
+
 =head2 Query => Str
 
   The query string specified in the suggest request.
+
 
 =head2 Suggestions => ArrayRef[L<Paws::CloudSearchDomain::SuggestionMatch>]
 

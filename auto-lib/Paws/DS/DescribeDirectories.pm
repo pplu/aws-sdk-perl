@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DirectoryIds => ArrayRef[Str]
 
   A list of identifiers of the directories to obtain the information for.
@@ -42,11 +43,13 @@ account are returned.
 
 An empty list results in an C<InvalidParameterException> being thrown.
 
+
 =head2 Limit => Int
 
   The maximum number of items to return. If this value is zero, the
 maximum number of items is specified by the limitations of the
 operation.
+
 
 =head2 NextToken => Str
 

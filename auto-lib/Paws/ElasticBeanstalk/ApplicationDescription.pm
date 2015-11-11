@@ -40,26 +40,32 @@ Describes the properties of an application.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationName => Str
 
   The name of the application.
+
 
 =head2 ConfigurationTemplates => ArrayRef[Str]
 
   The names of the configuration templates associated with this
 application.
 
+
 =head2 DateCreated => Str
 
   The date when the application was created.
+
 
 =head2 DateUpdated => Str
 
   The date when the application was last modified.
 
+
 =head2 Description => Str
 
   User-defined description of the application.
+
 
 =head2 Versions => ArrayRef[Str]
 

@@ -35,11 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DBInstanceCount => Int
 
   The number of instances to reserve.
 
 Default: C<1>
+
 
 =head2 ReservedDBInstanceId => Str
 
@@ -47,11 +49,13 @@ Default: C<1>
 
 Example: myreservationID
 
+
 =head2 B<REQUIRED> ReservedDBInstancesOfferingId => Str
 
   The ID of the Reserved DB instance offering to purchase.
 
 Example: 438012d3-4052-4cc7-b2e3-8d3372e0e706
+
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 

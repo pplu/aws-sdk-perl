@@ -48,11 +48,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZones => ArrayRef[Str]
 
   A list of EC2 Availability Zones that instances in the DB cluster can
 be created in. For information on regions and Availability Zones, see
 Regions and Availability Zones.
+
 
 =head2 BackupRetentionPeriod => Int
 
@@ -71,16 +73,19 @@ Constraints:
 =back
 
 
+
 =head2 CharacterSetName => Str
 
   A value that indicates that the DB cluster should be associated with
 the specified CharacterSet.
+
 
 =head2 DatabaseName => Str
 
   The name for your database of up to 8 alpha-numeric characters. If you
 do not provide a name, Amazon RDS will not create a database in the DB
 cluster you are creating.
+
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
@@ -101,6 +106,7 @@ Constraints:
 
 Example: C<my-cluster1>
 
+
 =head2 DBClusterParameterGroupName => Str
 
   The name of the DB cluster parameter group to associate with this DB
@@ -120,15 +126,18 @@ Constraints:
 =back
 
 
+
 =head2 DBSubnetGroupName => Str
 
   A DB subnet group to associate with this DB cluster.
+
 
 =head2 B<REQUIRED> Engine => Str
 
   The name of the database engine to be used for this DB cluster.
 
 Valid Values: C<aurora>
+
 
 =head2 EngineVersion => Str
 
@@ -137,6 +146,7 @@ Valid Values: C<aurora>
 B<Aurora>
 
 Example: C<5.6.10a>
+
 
 =head2 B<REQUIRED> MasterUsername => Str
 
@@ -155,12 +165,14 @@ Constraints:
 =back
 
 
+
 =head2 B<REQUIRED> MasterUserPassword => Str
 
   The password for the master database user. This password can contain
 any printable ASCII character except "/", """, or "@".
 
 Constraints: Must contain from 8 to 41 characters.
+
 
 =head2 OptionGroupName => Str
 
@@ -171,12 +183,14 @@ Permanent options cannot be removed from an option group. The option
 group cannot be removed from a DB cluster once it is associated with a
 DB cluster.
 
+
 =head2 Port => Int
 
   The port number on which the instances in the DB cluster accept
 connections.
 
 Default: C<3306>
+
 
 =head2 PreferredBackupWindow => Str
 
@@ -203,6 +217,7 @@ Constraints:
 =back
 
 
+
 =head2 PreferredMaintenanceWindow => Str
 
   The weekly time range during which system maintenance can occur, in
@@ -219,9 +234,11 @@ Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Constraints: Minimum 30-minute window.
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
+
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 

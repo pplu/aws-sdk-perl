@@ -37,11 +37,13 @@ trail.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   The key in a key-value pair. The key must be must be no longer than 128
 Unicode characters. The key must be unique for the resource to which it
 applies.
+
 
 =head2 Value => Str
 

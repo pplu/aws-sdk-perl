@@ -45,12 +45,14 @@ The C<CreateJobOutput> structure.
 
 =head1 ATTRIBUTES
 
+
 =head2 AlbumArt => L<Paws::ElasticTranscoder::JobAlbumArt>
 
   Information about the album art that you want Elastic Transcoder to add
 to the file during transcoding. You can specify up to twenty album
 artworks for each output. Settings for each artwork must be defined in
 the job for the current output.
+
 
 =head2 Captions => L<Paws::ElasticTranscoder::Captions>
 
@@ -112,6 +114,7 @@ page.
 For more information on sidecar files, see the Extensible Metadata
 Platform and Sidecar file Wikipedia pages.
 
+
 =head2 Composition => ArrayRef[L<Paws::ElasticTranscoder::Clip>]
 
   You can create an output file that contains an excerpt from the input
@@ -121,12 +124,14 @@ clips that make up an output file. For the current release, you can
 only specify settings for a single clip per output file. The
 Composition object cannot be null.
 
+
 =head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
   You can specify encryption settings for any output files that you want
 to use for a transcoding job. This includes the output file and any
 watermarks, thumbnails, album art, or captions that you want to use.
 You must specify encryption settings for each file individually.
+
 
 =head2 Key => Str
 
@@ -135,11 +140,13 @@ file in the Amazon S3 bucket specified by the C<OutputBucket> object in
 the pipeline that is specified by the pipeline ID. If a file with the
 specified name already exists in the output bucket, the job fails.
 
+
 =head2 PresetId => Str
 
   The C<Id> of the preset to use for this job. The preset determines the
 audio, video, and thumbnail settings that Elastic Transcoder uses for
 transcoding.
+
 
 =head2 Rotate => Str
 
@@ -148,6 +155,7 @@ rotate the output relative to the input. Enter one of the following
 values: C<auto>, C<0>, C<90>, C<180>, C<270>. The value C<auto>
 generally works only if the file that you're transcoding contains
 rotation metadata.
+
 
 =head2 SegmentDuration => Str
 
@@ -170,10 +178,12 @@ C<HLS> output that you specify in OutputKeys. To add an output to the
 master playlist for this job, include it in the C<OutputKeys> of the
 associated playlist.
 
+
 =head2 ThumbnailEncryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your thumbnail.
+
 
 =head2 ThumbnailPattern => Str
 
@@ -220,6 +230,7 @@ When creating thumbnails, Elastic Transcoder automatically saves the
 files in the format (.jpg or .png) that appears in the preset that you
 specified in the C<PresetID> value of C<CreateJobOutput>. Elastic
 Transcoder also appends the applicable file name extension.
+
 
 =head2 Watermarks => ArrayRef[L<Paws::ElasticTranscoder::JobWatermark>]
 

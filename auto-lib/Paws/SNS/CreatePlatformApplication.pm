@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Attributes => L<Paws::SNS::MapStringToString>
 
   For a list of attributes, see SetPlatformApplicationAttributes
+
 
 =head2 B<REQUIRED> Name => Str
 
   Application names must be made up of only uppercase and lowercase ASCII
 letters, numbers, underscores, hyphens, and periods, and must be
 between 1 and 256 characters long.
+
 
 =head2 B<REQUIRED> Platform => Str
 

@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 MaximumPageSize => Int
 
   The maximum number of results that will be returned per call.
@@ -44,6 +45,7 @@ however, specify a page size I<smaller> than the maximum.
 
 This is an upper limit only; the actual number of results returned per
 call may be fewer than the specified maximum.
+
 
 =head2 NextPageToken => Str
 
@@ -55,9 +57,11 @@ arguments unchanged.
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
 
+
 =head2 B<REQUIRED> RegistrationStatus => Str
 
   Specifies the registration status of the domains to list.
+
 
 =head2 ReverseOrder => Bool
 

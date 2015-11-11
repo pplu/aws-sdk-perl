@@ -39,6 +39,7 @@ Provides details of the C<ChildWorkflowExecutionCompleted> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> InitiatedEventId => Int
 
   The ID of the C<StartChildWorkflowExecutionInitiated> event
@@ -47,9 +48,11 @@ this child workflow execution. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
+
 =head2 Result => Str
 
   The result of the child workflow execution (if any).
+
 
 =head2 B<REQUIRED> StartedEventId => Int
 
@@ -58,9 +61,11 @@ child workflow execution was started. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
+
 =head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The child workflow execution that was completed.
+
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 

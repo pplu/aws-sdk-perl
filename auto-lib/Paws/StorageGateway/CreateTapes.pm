@@ -36,6 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ClientToken => Str
 
   A unique identifier that you use to retry a request. If you retry a
@@ -45,15 +46,18 @@ request.
 Using the same C<ClientToken> prevents creating the tape multiple
 times.
 
+
 =head2 B<REQUIRED> GatewayARN => Str
 
   The unique Amazon Resource Name(ARN) that represents the gateway to
 associate the virtual tapes with. Use the ListGateways operation to
 return a list of gateways for your account and region.
 
+
 =head2 B<REQUIRED> NumTapesToCreate => Int
 
   The number of virtual tapes you want to create.
+
 
 =head2 B<REQUIRED> TapeBarcodePrefix => Str
 
@@ -62,6 +66,7 @@ creating. This makes a barcode unique.
 
 The prefix must be 1 to 4 characters in length and must be upper-case
 letters A-Z.
+
 
 =head2 B<REQUIRED> TapeSizeInBytes => Int
 

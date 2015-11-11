@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => Str
 
   The tag key.
+
 
 =head2 ResourceId => Str
 
   The ID of the resource. For example, C<ami-1a2b3c4d>.
 
+
 =head2 ResourceType => Str
 
   The resource type.
+
 
 =head2 Value => Str
 

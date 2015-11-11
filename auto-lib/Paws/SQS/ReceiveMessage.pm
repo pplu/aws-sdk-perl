@@ -37,6 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AttributeNames => ArrayRef[Str]
 
   A list of attributes that need to be returned along with each message.
@@ -63,6 +64,7 @@ to the queue (epoch time in milliseconds).
 =back
 
 
+
 =head2 MaxNumberOfMessages => Int
 
   The maximum number of messages to return. Amazon SQS never returns more
@@ -70,6 +72,7 @@ messages than this value but may return fewer. Values can be from 1 to
 10. Default is 1.
 
 All of the messages are not necessarily returned.
+
 
 =head2 MessageAttributeNames => ArrayRef[Str]
 
@@ -87,15 +90,18 @@ receive, or you can return all of the attributes by specifying "All" or
 ".*" in your request. You can also use "foo.*" to return all message
 attributes starting with the "foo" prefix.
 
+
 =head2 B<REQUIRED> QueueUrl => Str
 
   The URL of the Amazon SQS queue to take action on.
+
 
 =head2 VisibilityTimeout => Int
 
   The duration (in seconds) that the received messages are hidden from
 subsequent retrieve requests after being retrieved by a
 C<ReceiveMessage> request.
+
 
 =head2 WaitTimeSeconds => Int
 

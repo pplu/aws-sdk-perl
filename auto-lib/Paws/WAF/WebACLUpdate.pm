@@ -37,10 +37,12 @@ C<WebACL>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Action => Str
 
   Specifies whether to insert a C<Rule> into or delete a C<Rule> from a
 C<WebACL>.
+
 
 =head2 B<REQUIRED> ActivatedRule => L<Paws::WAF::ActivatedRule>
 

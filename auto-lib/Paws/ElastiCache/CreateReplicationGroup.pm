@@ -53,6 +53,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AutomaticFailoverEnabled => Bool
 
   Specifies whether a read-only replica will be automatically promoted to
@@ -74,9 +75,11 @@ ElastiCache Multi-AZ replication groups is not supported on:
 =back
 
 
+
 =head2 AutoMinorVersionUpgrade => Bool
 
   This parameter is currently disabled.
+
 
 =head2 CacheNodeType => Str
 
@@ -134,21 +137,25 @@ Amazon ElastiCache Product Features and Details and Cache Node
 Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
+
 =head2 CacheParameterGroupName => Str
 
   The name of the parameter group to associate with this replication
 group. If this argument is omitted, the default cache parameter group
 for the specified engine is used.
 
+
 =head2 CacheSecurityGroupNames => ArrayRef[Str]
 
   A list of cache security group names to associate with this replication
 group.
 
+
 =head2 CacheSubnetGroupName => Str
 
   The name of the cache subnet group to be used for the replication
 group.
+
 
 =head2 Engine => Str
 
@@ -157,11 +164,13 @@ replication group.
 
 Default: redis
 
+
 =head2 EngineVersion => Str
 
   The version number of the cache engine to be used for the cache
 clusters in this replication group. To view the supported cache engine
 versions, use the I<DescribeCacheEngineVersions> action.
+
 
 =head2 NotificationTopicArn => Str
 
@@ -169,6 +178,7 @@ versions, use the I<DescribeCacheEngineVersions> action.
 Service (SNS) topic to which notifications will be sent.
 
 The Amazon SNS topic owner must be the same as the cache cluster owner.
+
 
 =head2 NumCacheClusters => Int
 
@@ -183,10 +193,12 @@ The maximum permitted value for I<NumCacheClusters> is 6 (primary plus
 ElastiCache Limit Increase Request form at
 http://aws.amazon.com/contact-us/elasticache-node-limit-request.
 
+
 =head2 Port => Int
 
   The port number on which each member of the replication group will
 accept connections.
+
 
 =head2 PreferredCacheClusterAZs => ArrayRef[Str]
 
@@ -207,6 +219,7 @@ Example: One Redis cache cluster in each of three availability zones.
 PreferredAvailabilityZones.member.1=us-west-2a
 PreferredAvailabilityZones.member.2=us-west-2c
 PreferredAvailabilityZones.member.3=us-west-2c
+
 
 =head2 PreferredMaintenanceWindow => Str
 
@@ -235,6 +248,7 @@ is a 60 minute period. Valid values for C<ddd> are:
 
 Example: C<sun:05:00-sun:09:00>
 
+
 =head2 PrimaryClusterId => Str
 
   The identifier of the cache cluster that will serve as the primary for
@@ -243,9 +257,11 @@ a status of I<available>.
 
 This parameter is not required if I<NumCacheClusters> is specified.
 
+
 =head2 B<REQUIRED> ReplicationGroupDescription => Str
 
   A user-created description for the replication group.
+
 
 =head2 B<REQUIRED> ReplicationGroupId => Str
 
@@ -267,6 +283,7 @@ hyphens.
 =back
 
 
+
 =head2 SecurityGroupIds => ArrayRef[Str]
 
   One or more Amazon VPC security groups associated with this replication
@@ -274,6 +291,7 @@ group.
 
 Use this parameter only when you are creating a replication group in an
 Amazon Virtual Private Cloud (VPC).
+
 
 =head2 SnapshotArns => ArrayRef[Str]
 
@@ -287,6 +305,7 @@ C<redis>.
 
 Example of an Amazon S3 ARN: C<arn:aws:s3:::my_bucket/snapshot1.rdb>
 
+
 =head2 SnapshotName => Str
 
   The name of a snapshot from which to restore data into the new node
@@ -295,6 +314,7 @@ group is being created.
 
 B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.
+
 
 =head2 SnapshotRetentionLimit => Int
 
@@ -309,6 +329,7 @@ C<redis>.
 Default: 0 (i.e., automatic backups are disabled for this cache
 cluster).
 
+
 =head2 SnapshotWindow => Str
 
   The daily time range (in UTC) during which ElastiCache will begin
@@ -321,6 +342,7 @@ automatically choose an appropriate time range.
 
 B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.
+
 
 =head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 

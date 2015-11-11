@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 EndTime => Str
 
   Optionally specifies, in UTC, the end of the time range to look up
 public keys for CloudTrail digest files. If not specified, the current
 time is used.
 
+
 =head2 NextToken => Str
 
   Reserved for future use.
+
 
 =head2 StartTime => Str
 

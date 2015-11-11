@@ -58,6 +58,7 @@ same preset for up to four watermarks that have different dimensions.
 
 =head1 ATTRIBUTES
 
+
 =head2 HorizontalAlign => Str
 
   The horizontal position of the watermark unless you specify a non-zero
@@ -75,6 +76,7 @@ right border of the video.
 borders.
 
 =back
+
 
 
 =head2 HorizontalOffset => Str
@@ -107,10 +109,12 @@ Use the value of C<Target> to specify whether you want to include the
 black bars that are added by Elastic Transcoder, if any, in the offset
 calculation.
 
+
 =head2 Id => Str
 
   A unique identifier for the settings for one watermark. The value of
 C<Id> can be up to 40 characters long.
+
 
 =head2 MaxHeight => Str
 
@@ -130,6 +134,7 @@ Transcoder, if any, in the calculation.
 
 If you specify the value in pixels, it must be less than or equal to
 the value of C<MaxHeight>.
+
 
 =head2 MaxWidth => Str
 
@@ -151,6 +156,7 @@ the value of C<MaxWidth>.
 =back
 
 
+
 =head2 Opacity => Str
 
   A percentage that indicates how much you want a watermark to obscure
@@ -162,6 +168,7 @@ Elastic Transcoder supports transparent .png graphics. If you use a
 transparent .png, the transparent portion of the video appears as if
 you had specified a value of 0 for C<Opacity>. The .jpg file format
 doesn't support transparency.
+
 
 =head2 SizingPolicy => Str
 
@@ -185,6 +192,7 @@ you specify this option, Elastic Transcoder does not scale the
 watermark up.
 
 =back
+
 
 
 =head2 Target => Str
@@ -213,6 +221,7 @@ black bars added by Elastic Transcoder, if any.
 =back
 
 
+
 =head2 VerticalAlign => Str
 
   The vertical position of the watermark unless you specify a non-zero
@@ -230,6 +239,7 @@ bottom border of the video.
 borders.
 
 =back
+
 
 
 =head2 VerticalOffset => Str

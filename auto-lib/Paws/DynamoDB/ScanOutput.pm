@@ -16,9 +16,11 @@ Paws::DynamoDB::ScanOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
 
   
+
 =head2 Count => Int
 
   The number of items in the response.
@@ -29,11 +31,13 @@ number of matching items before the filter was applied.
 
 If you did not use a filter in the request, then I<Count> is the same
 as I<ScannedCount>.
+
 =head2 Items => ArrayRef[L<Paws::DynamoDB::AttributeMap>]
 
   An array of item attributes that match the scan criteria. Each element
 in this array consists of an attribute name and the value for that
 attribute.
+
 =head2 LastEvaluatedKey => L<Paws::DynamoDB::Key>
 
   The primary key of the item where the operation stopped, inclusive of
@@ -47,6 +51,7 @@ If I<LastEvaluatedKey> is not empty, it does not necessarily mean that
 there is more data in the result set. The only way to know when you
 have reached the end of the result set is when I<LastEvaluatedKey> is
 empty.
+
 =head2 ScannedCount => Int
 
   The number of items evaluated, before any I<ScanFilter> is applied. A

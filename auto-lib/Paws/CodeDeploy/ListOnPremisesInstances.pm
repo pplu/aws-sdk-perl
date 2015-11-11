@@ -34,11 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   An identifier that was returned from the previous list on-premises
 instances call, which can be used to return the next set of on-premises
 instances in the list.
+
 
 =head2 RegistrationStatus => Str
 
@@ -53,6 +55,7 @@ on-premises instances.
 on-premises instances.
 
 =back
+
 
 
 =head2 TagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]

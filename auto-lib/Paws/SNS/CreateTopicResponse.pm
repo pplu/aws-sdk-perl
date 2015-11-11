@@ -13,6 +13,7 @@ Paws::SNS::CreateTopicResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 TopicArn => Str
 
   The Amazon Resource Name (ARN) assigned to the created topic.

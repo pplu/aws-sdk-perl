@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AuthenticateOnUnsubscribe => Str
 
   Disallows unauthenticated unsubscribes of the subscription. If the
@@ -42,9 +43,11 @@ signature, then only the topic owner and the subscription owner can
 unsubscribe the endpoint. The unsubscribe action requires AWS
 authentication.
 
+
 =head2 B<REQUIRED> Token => Str
 
   Short-lived token sent to an endpoint during the C<Subscribe> action.
+
 
 =head2 B<REQUIRED> TopicArn => Str
 

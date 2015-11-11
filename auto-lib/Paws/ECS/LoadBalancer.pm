@@ -37,9 +37,11 @@ Details on a load balancer that is used with a service.
 
 =head1 ATTRIBUTES
 
+
 =head2 ContainerName => Str
 
   The name of the container to associate with the load balancer.
+
 
 =head2 ContainerPort => Int
 
@@ -47,6 +49,7 @@ Details on a load balancer that is used with a service.
 port must correspond to a C<containerPort> in the service's task
 definition. Your container instances must allow ingress traffic on the
 C<hostPort> of the port mapping.
+
 
 =head2 LoadBalancerName => Str
 

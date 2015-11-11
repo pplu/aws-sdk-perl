@@ -36,9 +36,11 @@ A tag consisting of a name/value pair for a resource.
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => Str
 
   The key, or name, for the resource tag.
+
 
 =head2 Value => Str
 

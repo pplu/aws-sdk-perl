@@ -37,13 +37,16 @@ Contains manual snapshot limit information for a directory.
 
 =head1 ATTRIBUTES
 
+
 =head2 ManualSnapshotsCurrentCount => Int
 
   The current number of manual snapshots of the directory.
 
+
 =head2 ManualSnapshotsLimit => Int
 
   The maximum number of manual snapshots allowed.
+
 
 =head2 ManualSnapshotsLimitReached => Bool
 

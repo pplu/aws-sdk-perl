@@ -12,6 +12,7 @@ Paws::OpsWorks::RegisterElasticIpResult
 
 =head1 ATTRIBUTES
 
+
 =head2 ElasticIp => Str
 
   The Elastic IP address.

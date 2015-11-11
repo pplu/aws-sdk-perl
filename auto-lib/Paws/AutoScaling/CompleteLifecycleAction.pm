@@ -35,14 +35,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name of the group for the lifecycle hook.
+
 
 =head2 B<REQUIRED> LifecycleActionResult => Str
 
   The action for the group to take. This parameter can be either
 C<CONTINUE> or C<ABANDON>.
+
 
 =head2 B<REQUIRED> LifecycleActionToken => Str
 
@@ -50,6 +53,7 @@ C<CONTINUE> or C<ABANDON>.
 lifecycle action associated with an instance. Auto Scaling sends this
 token to the notification target you specified when you created the
 lifecycle hook.
+
 
 =head2 B<REQUIRED> LifecycleHookName => Str
 

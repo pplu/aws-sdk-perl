@@ -46,6 +46,7 @@ Provides details of C<WorkflowExecutionStarted> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ChildPolicy => Str
 
   The policy to use for the child workflow executions if this workflow
@@ -69,12 +70,14 @@ continue to run.
 =back
 
 
+
 =head2 ContinuedExecutionRunId => Str
 
   If this workflow execution was started due to a
 C<ContinueAsNewWorkflowExecution> decision, then it contains the
 C<runId> of the previous workflow execution that was closed and
 continued as this execution.
+
 
 =head2 ExecutionStartToCloseTimeout => Str
 
@@ -83,14 +86,17 @@ continued as this execution.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 Input => Str
 
   The input provided to the workflow execution (if any).
+
 
 =head2 LambdaRole => Str
 
   The IAM role attached to this workflow execution to use when invoking
 AWS Lambda functions.
+
 
 =head2 ParentInitiatedEventId => Int
 
@@ -101,25 +107,30 @@ the history of the source workflow execution. This information can be
 useful for diagnosing problems by tracing back the chain of events
 leading up to this event.
 
+
 =head2 ParentWorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The source workflow execution that started this workflow execution. The
 member is not set if the workflow execution was not started by a
 workflow.
 
+
 =head2 TagList => ArrayRef[Str]
 
   The list of tags associated with this workflow execution. An execution
 can have up to 5 tags.
+
 
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   The name of the task list for scheduling the decision tasks for this
 workflow execution.
 
+
 =head2 TaskPriority => Str
 
   
+
 
 =head2 TaskStartToCloseTimeout => Str
 
@@ -127,6 +138,7 @@ workflow execution.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
+
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 

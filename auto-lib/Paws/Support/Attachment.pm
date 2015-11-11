@@ -37,9 +37,11 @@ file name and the content of the file.
 
 =head1 ATTRIBUTES
 
+
 =head2 Data => Str
 
   The content of the attachment file.
+
 
 =head2 FileName => Str
 

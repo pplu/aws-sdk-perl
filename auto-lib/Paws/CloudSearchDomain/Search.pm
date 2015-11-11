@@ -46,6 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Cursor => Str
 
   Retrieves a cursor value you can use to page through large result sets.
@@ -57,6 +58,7 @@ specify the cursor value returned in the hits section of the response.
 
 For more information, see Paginating Results in the I<Amazon
 CloudSearch Developer Guide>.
+
 
 =head2 Expr => Str
 
@@ -73,6 +75,7 @@ C<{"expression1":"_score*rating", "expression2":"(1/rank)*year"}>
 For information about the variables, operators, and functions you can
 use in expressions, see Writing Expressions in the I<Amazon CloudSearch
 Developer Guide>.
+
 
 =head2 Facet => Str
 
@@ -140,6 +143,7 @@ C<{"year":{"sort":"bucket"}}>
 For more information, see Getting and Using Facet Information in the
 I<Amazon CloudSearch Developer Guide>.
 
+
 =head2 FilterQuery => Str
 
   Specifies a structured query that filters the results of a search
@@ -153,6 +157,7 @@ query syntax.
 
 For more information about using filters, see Filtering Matching
 Documents in the I<Amazon CloudSearch Developer Guide>.
+
 
 =head2 Highlight => Str
 
@@ -194,6 +199,7 @@ C<actors> and C<title> fields.
 C<{ "actors": {}, "title": {"format": "text","max_phrases":
 2,"pre_tag": "B<","post_tag": ">"} }>
 
+
 =head2 Partial => Bool
 
   Enables partial results to be returned if one or more index partitions
@@ -209,6 +215,7 @@ displaying no results, you could display the partial results and a
 message indicating that the results might be incomplete due to a
 temporary system outage.
 
+
 =head2 B<REQUIRED> Query => Str
 
   Specifies the search criteria for the request. How you specify the
@@ -220,6 +227,7 @@ specify the C<queryParser> parameter.
 
 For more information about specifying search criteria, see Searching
 Your Data in the I<Amazon CloudSearch Developer Guide>.
+
 
 =head2 QueryOptions => Str
 
@@ -327,6 +335,7 @@ the scores from all fields (pure sum): C<"tieBreaker":1>. Valid values:
 =back
 
 
+
 =head2 QueryParser => Str
 
   Specifies which query parser to use to process the request. If
@@ -367,6 +376,7 @@ information, see DisMax Query Parser Syntax.
 =back
 
 
+
 =head2 Return => Str
 
   Specifies the field and expression values to include in the response.
@@ -376,9 +386,11 @@ By default, a search response includes all return enabled fields
 documents, specify C<_no_fields>. To retrieve the relevance score
 calculated for each document, specify C<_score>.
 
+
 =head2 Size => Int
 
   Specifies the maximum number of search hits to include in the response.
+
 
 =head2 Sort => Str
 
@@ -394,6 +406,7 @@ by document ID (C<_id asc>) and version (C<_version desc>).
 
 For more information, see Sorting Results in the I<Amazon CloudSearch
 Developer Guide>.
+
 
 =head2 Start => Int
 

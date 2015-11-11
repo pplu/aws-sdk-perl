@@ -41,18 +41,22 @@ Represents information about an action configuration property.
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   The description of the action configuration property that will be
 displayed to users.
 
+
 =head2 B<REQUIRED> Key => Bool
 
   Whether the configuration property is a key.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the action configuration property.
+
 
 =head2 Queryable => Bool
 
@@ -67,9 +71,11 @@ property is subject to additional restrictions. The value must be less
 than or equal to twenty (20) characters. The value can contain only
 alphanumeric characters, underscores, and hyphens.
 
+
 =head2 B<REQUIRED> Required => Bool
 
   Whether the configuration property is a required value.
+
 
 =head2 B<REQUIRED> Secret => Bool
 
@@ -79,6 +85,7 @@ PollForJobs, and PollForThirdPartyJobs.
 
 When updating a pipeline, passing * * * * * without changing any other
 values of the action will preserve the prior value of the secret.
+
 
 =head2 Type => Str
 

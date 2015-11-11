@@ -41,10 +41,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CidrIp => Str
 
   The CIDR IP address range. You can't specify this parameter when
 specifying a source security group.
+
 
 =head2 DryRun => Bool
 
@@ -53,29 +55,35 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 FromPort => Int
 
   The start of port range for the TCP and UDP protocols, or an ICMP type
 number. For the ICMP type number, use C<-1> to specify all ICMP types.
+
 
 =head2 GroupId => Str
 
   The ID of the security group. Required for a security group in a
 nondefault VPC.
 
+
 =head2 GroupName => Str
 
   [EC2-Classic, default VPC] The name of the security group.
+
 
 =head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
   A set of IP permissions. You can't specify a source security group and
 a CIDR IP address range.
 
+
 =head2 IpProtocol => Str
 
   The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
 Numbers). Use C<-1> to specify all.
+
 
 =head2 SourceSecurityGroupName => Str
 
@@ -84,6 +92,7 @@ can't specify this parameter in combination with the following
 parameters: the CIDR IP address range, the start of the port range, the
 IP protocol, and the end of the port range. For EC2-VPC, the source
 security group must be in the same VPC.
+
 
 =head2 SourceSecurityGroupOwnerId => Str
 
@@ -94,6 +103,7 @@ parameters: the CIDR IP address range, the IP protocol, the start of
 the port range, and the end of the port range. To revoke a specific
 rule for an IP protocol and port range, use a set of IP permissions
 instead.
+
 
 =head2 ToPort => Int
 

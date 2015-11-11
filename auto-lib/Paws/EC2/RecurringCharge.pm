@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Amount => Num
 
   The amount of the recurring charge.
+
 
 =head2 Frequency => Str
 

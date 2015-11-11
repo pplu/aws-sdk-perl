@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ExcessCapacityTerminationPolicy => Str
 
   Indicates whether running Spot instances should be terminated if the
 target capacity of the Spot fleet request is decreased below the
 current size of the Spot fleet.
 
+
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
   The ID of the Spot fleet request.
+
 
 =head2 TargetCapacity => Int
 

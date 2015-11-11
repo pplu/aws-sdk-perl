@@ -14,9 +14,11 @@ Paws::ApiGateway::Resources
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[L<Paws::ApiGateway::Resource>]
 
   Gets the current Resource resource in the collection.
+
 =head2 Position => Str
 
   

@@ -42,34 +42,42 @@ Option details.
 
 =head1 ATTRIBUTES
 
+
 =head2 DBSecurityGroupMemberships => ArrayRef[L<Paws::RDS::DBSecurityGroupMembership>]
 
   If the option requires access to a port, then this DB security group
 allows access to the port.
 
+
 =head2 OptionDescription => Str
 
   The description of the option.
+
 
 =head2 OptionName => Str
 
   The name of the option.
 
+
 =head2 OptionSettings => ArrayRef[L<Paws::RDS::OptionSetting>]
 
   The option settings for this option.
+
 
 =head2 Permanent => Bool
 
   Indicate if this option is permanent.
 
+
 =head2 Persistent => Bool
 
   Indicate if this option is persistent.
 
+
 =head2 Port => Int
 
   If required, the port configured for this option to use.
+
 
 =head2 VpcSecurityGroupMemberships => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]
 

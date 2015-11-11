@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheSubnetGroupDescription => Str
 
   A description for the cache subnet group.
+
 
 =head2 B<REQUIRED> CacheSubnetGroupName => Str
 
@@ -47,6 +49,7 @@ Constraints: Must contain no more than 255 alphanumeric characters or
 hyphens.
 
 Example: C<mysubnetgroup>
+
 
 =head2 SubnetIds => ArrayRef[Str]
 

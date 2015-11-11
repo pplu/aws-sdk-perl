@@ -41,15 +41,18 @@ Inspector service for analysis.
 
 =head1 ATTRIBUTES
 
+
 =head2 Count => Int
 
   The number of times that the behavioral data is collected by the agent
 during an assessment.
 
+
 =head2 DataSize => Int
 
   The total size of the behavioral data that is collected by the agent
 during an assessment.
+
 
 =head2 MessageType => Str
 

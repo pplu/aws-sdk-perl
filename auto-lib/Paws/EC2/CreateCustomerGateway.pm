@@ -35,11 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> BgpAsn => Int
 
   For devices that support BGP, the customer gateway's BGP ASN.
 
 Default: 65000
+
 
 =head2 DryRun => Bool
 
@@ -48,10 +50,12 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 B<REQUIRED> PublicIp => Str
 
   The Internet-routable IP address for the customer gateway's outside
 interface. The address must be static.
+
 
 =head2 B<REQUIRED> Type => Str
 

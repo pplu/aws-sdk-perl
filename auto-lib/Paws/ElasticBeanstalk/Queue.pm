@@ -36,9 +36,11 @@ Describes a queue.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the queue.
+
 
 =head2 URL => Str
 

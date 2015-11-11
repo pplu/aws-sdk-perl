@@ -37,10 +37,12 @@ destination.
 
 =head1 ATTRIBUTES
 
+
 =head2 IntervalInSeconds => Int
 
   Buffer incoming data for the specified period of time, in seconds,
 before delivering it to the destination. The default value is 300.
+
 
 =head2 SizeInMBs => Int
 

@@ -13,6 +13,7 @@ Paws::CloudFormation::GetStackPolicyOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 StackPolicyBody => Str
 
   Structure containing the stack policy body. (For more information, go

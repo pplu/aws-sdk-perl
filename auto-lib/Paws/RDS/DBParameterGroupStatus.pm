@@ -55,9 +55,11 @@ This data type is used as a response element in the following actions:
 
 =head1 ATTRIBUTES
 
+
 =head2 DBParameterGroupName => Str
 
   The name of the DP parameter group.
+
 
 =head2 ParameterApplyStatus => Str
 

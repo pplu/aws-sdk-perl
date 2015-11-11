@@ -12,6 +12,7 @@ Paws::Support::AddCommunicationToCaseResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Result => Bool
 
   True if AddCommunicationToCase succeeds. Otherwise, returns an error.

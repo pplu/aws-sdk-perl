@@ -43,6 +43,7 @@ Represents the properties of a global secondary index.
 
 =head1 ATTRIBUTES
 
+
 =head2 Backfilling => Bool
 
   Indicates whether the index is currently backfilling. I<Backfilling> is
@@ -57,19 +58,23 @@ For indexes that were created during a I<CreateTable> operation, the
 I<Backfilling> attribute does not appear in the I<DescribeTable>
 output.
 
+
 =head2 IndexArn => Str
 
   The Amazon Resource Name (ARN) that uniquely identifies the index.
 
+
 =head2 IndexName => Str
 
   The name of the global secondary index.
+
 
 =head2 IndexSizeBytes => Int
 
   The total size of the specified index, in bytes. DynamoDB updates this
 value approximately every six hours. Recent changes might not be
 reflected in this value.
+
 
 =head2 IndexStatus => Str
 
@@ -96,11 +101,13 @@ I<ACTIVE> - The index is ready for use.
 =back
 
 
+
 =head2 ItemCount => Int
 
   The number of items in the specified index. DynamoDB updates this value
 approximately every six hours. Recent changes might not be reflected in
 this value.
+
 
 =head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
@@ -108,9 +115,11 @@ this value.
 one or more pairs of attribute names and key types (C<HASH> or
 C<RANGE>).
 
+
 =head2 Projection => L<Paws::DynamoDB::Projection>
 
   
+
 
 =head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughputDescription>
 

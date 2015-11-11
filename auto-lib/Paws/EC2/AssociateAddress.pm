@@ -38,9 +38,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AllocationId => Str
 
   [EC2-VPC] The allocation ID. This is required for EC2-VPC.
+
 
 =head2 AllowReassociation => Bool
 
@@ -50,12 +52,14 @@ instance or network interface. Otherwise, the operation fails.
 
 Default: C<false>
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 InstanceId => Str
 
@@ -64,16 +68,19 @@ you can specify either the instance ID or the network interface ID, but
 not both. The operation fails if you specify an instance ID unless
 exactly one network interface is attached.
 
+
 =head2 NetworkInterfaceId => Str
 
   [EC2-VPC] The ID of the network interface. If the instance has more
 than one network interface, you must specify a network interface ID.
+
 
 =head2 PrivateIpAddress => Str
 
   [EC2-VPC] The primary or secondary private IP address to associate with
 the Elastic IP address. If no private IP address is specified, the
 Elastic IP address is associated with the primary private IP address.
+
 
 =head2 PublicIp => Str
 

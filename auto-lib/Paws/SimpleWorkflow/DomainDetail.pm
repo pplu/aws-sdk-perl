@@ -13,9 +13,11 @@ Paws::SimpleWorkflow::DomainDetail
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Configuration => L<Paws::SimpleWorkflow::DomainConfiguration>
 
   
+
 =head2 B<REQUIRED> DomainInfo => L<Paws::SimpleWorkflow::DomainInfo>
 
   

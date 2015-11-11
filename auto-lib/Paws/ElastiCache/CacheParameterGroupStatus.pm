@@ -37,15 +37,18 @@ The status of the cache parameter group.
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheNodeIdsToReboot => ArrayRef[Str]
 
   A list of the cache node IDs which need to be rebooted for parameter
 changes to be applied. A node ID is a numeric identifier (0001, 0002,
 etc.).
 
+
 =head2 CacheParameterGroupName => Str
 
   The name of the cache parameter group.
+
 
 =head2 ParameterApplyStatus => Str
 

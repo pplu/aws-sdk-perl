@@ -32,6 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ConfigurationRecorderName => Str
 
   The name of the recorder object that records each configuration change

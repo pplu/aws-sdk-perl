@@ -35,10 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Device => Str
 
   The device name to expose to the instance (for example, C</dev/sdh> or
 C<xvdh>).
+
 
 =head2 DryRun => Bool
 
@@ -47,9 +49,11 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
   The ID of the instance.
+
 
 =head2 B<REQUIRED> VolumeId => Str
 

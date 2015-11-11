@@ -39,9 +39,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
   A list of dimensions describing qualities of the metric.
+
 
 =head2 B<REQUIRED> EndTime => Str
 
@@ -49,13 +51,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 value specified is exclusive; results will include datapoints up to the
 time stamp specified.
 
+
 =head2 B<REQUIRED> MetricName => Str
 
   The name of the metric, with or without spaces.
 
+
 =head2 B<REQUIRED> Namespace => Str
 
   The namespace of the metric, with or without spaces.
+
 
 =head2 B<REQUIRED> Period => Int
 
@@ -63,11 +68,13 @@ time stamp specified.
 be at least 60 seconds and must be a multiple of 60. The default value
 is 60.
 
+
 =head2 B<REQUIRED> StartTime => Str
 
   The time stamp to use for determining the first datapoint to return.
 The value specified is inclusive; results include datapoints with the
 time stamp specified.
+
 
 =head2 B<REQUIRED> Statistics => ArrayRef[Str]
 
@@ -76,6 +83,7 @@ statistics returned by GetMetricStatistics, go to Statistics in the
 I<Amazon CloudWatch Developer Guide>.
 
 Valid Values: C<Average | Sum | SampleCount | Maximum | Minimum>
+
 
 =head2 Unit => Str
 

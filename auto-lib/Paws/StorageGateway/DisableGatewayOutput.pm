@@ -12,6 +12,7 @@ Paws::StorageGateway::DisableGatewayOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 GatewayARN => Str
 
   The unique Amazon Resource Name of the disabled gateway.

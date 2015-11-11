@@ -36,10 +36,12 @@ Status of a daily automated snapshot.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Options => L<Paws::ES::SnapshotOptions>
 
   Specifies the daily snapshot options specified for the Elasticsearch
 domain.
+
 
 =head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
 

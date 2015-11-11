@@ -69,102 +69,125 @@ action.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllocatedStorage => Int
 
   Specifies the allocated storage size in gigabytes (GB).
+
 
 =head2 AvailabilityZone => Str
 
   Specifies the name of the Availability Zone the DB instance was located
 in at the time of the DB snapshot.
 
+
 =head2 DBInstanceIdentifier => Str
 
   Specifies the DB instance identifier of the DB instance this DB
 snapshot was created from.
 
+
 =head2 DBSnapshotIdentifier => Str
 
   Specifies the identifier for the DB snapshot.
+
 
 =head2 Encrypted => Bool
 
   Specifies whether the DB snapshot is encrypted.
 
+
 =head2 Engine => Str
 
   Specifies the name of the database engine.
 
+
 =head2 EngineVersion => Str
 
   Specifies the version of the database engine.
+
 
 =head2 InstanceCreateTime => Str
 
   Specifies the time when the snapshot was taken, in Universal
 Coordinated Time (UTC).
 
+
 =head2 Iops => Int
 
   Specifies the Provisioned IOPS (I/O operations per second) value of the
 DB instance at the time of the snapshot.
+
 
 =head2 KmsKeyId => Str
 
   If C<Encrypted> is true, the KMS key identifier for the encrypted DB
 snapshot.
 
+
 =head2 LicenseModel => Str
 
   License model information for the restored DB instance.
+
 
 =head2 MasterUsername => Str
 
   Provides the master username for the DB snapshot.
 
+
 =head2 OptionGroupName => Str
 
   Provides the option group name for the DB snapshot.
 
+
 =head2 PercentProgress => Int
 
   The percentage of the estimated data that has been transferred.
+
 
 =head2 Port => Int
 
   Specifies the port that the database engine was listening on at the
 time of the snapshot.
 
+
 =head2 SnapshotCreateTime => Str
 
   Provides the time when the snapshot was taken, in Universal Coordinated
 Time (UTC).
 
+
 =head2 SnapshotType => Str
 
   Provides the type of the DB snapshot.
+
 
 =head2 SourceDBSnapshotIdentifier => Str
 
   The DB snapshot Arn that the DB snapshot was copied from. It only has
 value in case of cross customer or cross region copy.
 
+
 =head2 SourceRegion => Str
 
   The region that the DB snapshot was created in or copied from.
+
 
 =head2 Status => Str
 
   Specifies the status of this DB snapshot.
 
+
 =head2 StorageType => Str
 
   Specifies the storage type associated with DB Snapshot.
+
 
 =head2 TdeCredentialArn => Str
 
   The ARN from the Key Store with which to associate the instance for TDE
 encryption.
+
 
 =head2 VpcId => Str
 

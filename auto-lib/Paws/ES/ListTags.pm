@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ARN => Str
 
   Specify the C<ARN> for the Elasticsearch domain to which the tags are

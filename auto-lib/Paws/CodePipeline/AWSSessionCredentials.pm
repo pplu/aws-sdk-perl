@@ -41,13 +41,16 @@ CodePipeline.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AccessKeyId => Str
 
   The access key for the session.
 
+
 =head2 B<REQUIRED> SecretAccessKey => Str
 
   The secret access key for the session.
+
 
 =head2 B<REQUIRED> SessionToken => Str
 

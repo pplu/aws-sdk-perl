@@ -73,67 +73,82 @@ Describes an instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 AgentVersion => Str
 
   The agent version. This parameter is set to C<INHERIT> if the instance
 inherits the default stack setting or to a a version number for a fixed
 agent version.
 
+
 =head2 AmiId => Str
 
   A custom AMI ID to be used to create the instance. For more
 information, see Instances
 
+
 =head2 Architecture => Str
 
   The instance architecture: "i386" or "x86_64".
 
+
 =head2 AutoScalingType => Str
 
   For load-based or time-based instances, the type.
+
 
 =head2 AvailabilityZone => Str
 
   The instance Availability Zone. For more information, see Regions and
 Endpoints.
 
+
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>]
 
   An array of C<BlockDeviceMapping> objects that specify the instance's
 block device mappings.
 
+
 =head2 CreatedAt => Str
 
   The time that the instance was created.
+
 
 =head2 EbsOptimized => Bool
 
   Whether this is an Amazon EBS-optimized instance.
 
+
 =head2 Ec2InstanceId => Str
 
   The ID of the associated Amazon EC2 instance.
+
 
 =head2 EcsClusterArn => Str
 
   For container instances, the Amazon ECS cluster's ARN.
 
+
 =head2 EcsContainerInstanceArn => Str
 
   For container instances, the instance's ARN.
+
 
 =head2 ElasticIp => Str
 
   The instance Elastic IP address .
 
+
 =head2 Hostname => Str
 
   The instance host name.
+
 
 =head2 InfrastructureClass => Str
 
   For registered instances, the infrastructure class: C<ec2> or
 C<on-premises>.
+
 
 =head2 InstallUpdatesOnBoot => Bool
 
@@ -147,92 +162,114 @@ instances.
 We strongly recommend using the default value of C<true>, to ensure
 that your instances have the latest security updates.
 
+
 =head2 InstanceId => Str
 
   The instance ID.
+
 
 =head2 InstanceProfileArn => Str
 
   The ARN of the instance's IAM profile. For more information about IAM
 ARNs, see Using Identifiers.
 
+
 =head2 InstanceType => Str
 
   The instance type, such as C<t2.micro>.
+
 
 =head2 LastServiceErrorId => Str
 
   The ID of the last service error. For more information, call
 DescribeServiceErrors.
 
+
 =head2 LayerIds => ArrayRef[Str]
 
   An array containing the instance layer IDs.
+
 
 =head2 Os => Str
 
   The instance's operating system.
 
+
 =head2 Platform => Str
 
   The instance's platform.
+
 
 =head2 PrivateDns => Str
 
   The The instance's private DNS name.
 
+
 =head2 PrivateIp => Str
 
   The instance's private IP address.
+
 
 =head2 PublicDns => Str
 
   The instance public DNS name.
 
+
 =head2 PublicIp => Str
 
   The instance public IP address.
+
 
 =head2 RegisteredBy => Str
 
   For registered instances, who performed the registration.
 
+
 =head2 ReportedAgentVersion => Str
 
   The instance's reported AWS OpsWorks agent version.
 
+
 =head2 ReportedOs => L<Paws::OpsWorks::ReportedOs>
 
   For registered instances, the reported operating system.
+
 
 =head2 RootDeviceType => Str
 
   The instance's root device type. For more information, see Storage for
 the Root Device.
 
+
 =head2 RootDeviceVolumeId => Str
 
   The root device volume ID.
+
 
 =head2 SecurityGroupIds => ArrayRef[Str]
 
   An array containing the instance security group IDs.
 
+
 =head2 SshHostDsaKeyFingerprint => Str
 
   The SSH key's Deep Security Agent (DSA) fingerprint.
+
 
 =head2 SshHostRsaKeyFingerprint => Str
 
   The SSH key's RSA fingerprint.
 
+
 =head2 SshKeyName => Str
 
   The instance's Amazon EC2 key-pair name.
 
+
 =head2 StackId => Str
 
   The stack ID.
+
 
 =head2 Status => Str
 
@@ -271,10 +308,12 @@ the Root Device.
 =back
 
 
+
 =head2 SubnetId => Str
 
   The instance's subnet ID; applicable only if the stack is running in a
 VPC.
+
 
 =head2 VirtualizationType => Str
 

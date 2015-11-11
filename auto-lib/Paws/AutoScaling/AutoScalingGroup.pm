@@ -54,34 +54,42 @@ Describes an Auto Scaling group.
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoScalingGroupARN => Str
 
   The Amazon Resource Name (ARN) of the group.
+
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name of the group.
 
+
 =head2 B<REQUIRED> AvailabilityZones => ArrayRef[Str]
 
   One or more Availability Zones for the group.
 
+
 =head2 B<REQUIRED> CreatedTime => Str
 
   The date and time the group was created.
+
 
 =head2 B<REQUIRED> DefaultCooldown => Int
 
   The number of seconds after a scaling activity completes before any
 further scaling activities can start.
 
+
 =head2 B<REQUIRED> DesiredCapacity => Int
 
   The desired size of the group.
 
+
 =head2 EnabledMetrics => ArrayRef[L<Paws::AutoScaling::EnabledMetric>]
 
   The metrics enabled for the group.
+
 
 =head2 HealthCheckGracePeriod => Int
 
@@ -89,30 +97,37 @@ further scaling activities can start.
 instance's health status. The grace period begins when an instance
 comes into service.
 
+
 =head2 B<REQUIRED> HealthCheckType => Str
 
   The service of interest for the health status check, which can be
 either C<EC2> for Amazon EC2 or C<ELB> for Elastic Load Balancing.
 
+
 =head2 Instances => ArrayRef[L<Paws::AutoScaling::Instance>]
 
   The EC2 instances associated with the group.
+
 
 =head2 LaunchConfigurationName => Str
 
   The name of the associated launch configuration.
 
+
 =head2 LoadBalancerNames => ArrayRef[Str]
 
   One or more load balancers associated with the group.
+
 
 =head2 B<REQUIRED> MaxSize => Int
 
   The maximum size of the group.
 
+
 =head2 B<REQUIRED> MinSize => Int
 
   The minimum size of the group.
+
 
 =head2 PlacementGroup => Str
 
@@ -120,22 +135,27 @@ either C<EC2> for Amazon EC2 or C<ELB> for Elastic Load Balancing.
 instances, if any. For more information, see Placement Groups in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
+
 =head2 Status => Str
 
   The current state of the group when DeleteAutoScalingGroup is in
 progress.
 
+
 =head2 SuspendedProcesses => ArrayRef[L<Paws::AutoScaling::SuspendedProcess>]
 
   The suspended processes associated with the group.
+
 
 =head2 Tags => ArrayRef[L<Paws::AutoScaling::TagDescription>]
 
   The tags for the group.
 
+
 =head2 TerminationPolicies => ArrayRef[Str]
 
   The termination policies for the group.
+
 
 =head2 VPCZoneIdentifier => Str
 

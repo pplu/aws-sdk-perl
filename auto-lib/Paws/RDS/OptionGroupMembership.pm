@@ -37,9 +37,11 @@ of.
 
 =head1 ATTRIBUTES
 
+
 =head2 OptionGroupName => Str
 
   The name of the option group that the instance belongs to.
+
 
 =head2 Status => Str
 

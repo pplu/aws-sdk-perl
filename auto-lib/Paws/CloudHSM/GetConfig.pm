@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ClientArn => Str
 
   The ARN of the client.
 
+
 =head2 B<REQUIRED> ClientVersion => Str
 
   The client version.
+
 
 =head2 B<REQUIRED> HapgList => ArrayRef[Str]
 

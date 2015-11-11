@@ -42,35 +42,43 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AppId => Str
 
   The app ID.
 
+
 =head2 AppSource => L<Paws::OpsWorks::Source>
 
   A C<Source> object that specifies the app repository.
+
 
 =head2 Attributes => L<Paws::OpsWorks::AppAttributes>
 
   One or more user-defined key/value pairs to be added to the stack
 attributes.
 
+
 =head2 DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>]
 
   The app's data sources.
 
+
 =head2 Description => Str
 
   A description of the app.
+
 
 =head2 Domains => ArrayRef[Str]
 
   The app's virtual host settings, with multiple domains separated by
 commas. For example: C<'www.example.com, example.com'>
 
+
 =head2 EnableSsl => Bool
 
   Whether SSL is enabled for the app.
+
 
 =head2 Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>]
 
@@ -90,13 +98,16 @@ This parameter is supported only by Chef 11.10 stacks. If you have
 specified one or more environment variables, you cannot modify the
 stack's Chef version.
 
+
 =head2 Name => Str
 
   The app name.
 
+
 =head2 SslConfiguration => L<Paws::OpsWorks::SslConfiguration>
 
   An C<SslConfiguration> object with the SSL configuration.
+
 
 =head2 Type => Str
 

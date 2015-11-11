@@ -34,14 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CacheSecurityGroupName => Str
 
   The cache security group which will allow network ingress.
+
 
 =head2 B<REQUIRED> EC2SecurityGroupName => Str
 
   The Amazon EC2 security group to be authorized for ingress to the cache
 security group.
+
 
 =head2 B<REQUIRED> EC2SecurityGroupOwnerId => Str
 

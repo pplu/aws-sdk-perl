@@ -13,9 +13,11 @@ Paws::CloudWatchLogs::DescribeMetricFiltersResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 MetricFilters => ArrayRef[L<Paws::CloudWatchLogs::MetricFilter>]
 
   
+
 =head2 NextToken => Str
 
   

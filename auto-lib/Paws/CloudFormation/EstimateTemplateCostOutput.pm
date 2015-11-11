@@ -13,6 +13,7 @@ Paws::CloudFormation::EstimateTemplateCostOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Url => Str
 
   An AWS Simple Monthly Calculator URL with a query string that describes

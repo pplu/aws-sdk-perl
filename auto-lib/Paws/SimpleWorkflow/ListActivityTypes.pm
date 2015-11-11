@@ -37,10 +37,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Domain => Str
 
   The name of the domain in which the activity types have been
 registered.
+
 
 =head2 MaximumPageSize => Int
 
@@ -52,9 +54,11 @@ however, specify a page size I<smaller> than the maximum.
 This is an upper limit only; the actual number of results returned per
 call may be fewer than the specified maximum.
 
+
 =head2 Name => Str
 
   If specified, only lists the activity types that have this name.
+
 
 =head2 NextPageToken => Str
 
@@ -66,9 +70,11 @@ arguments unchanged.
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
 
+
 =head2 B<REQUIRED> RegistrationStatus => Str
 
   Specifies the registration status of the activity types to list.
+
 
 =head2 ReverseOrder => Bool
 

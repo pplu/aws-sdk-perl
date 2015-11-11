@@ -12,6 +12,7 @@ Paws::Support::DescribeSeverityLevelsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 SeverityLevels => ArrayRef[L<Paws::Support::SeverityLevel>]
 
   The available severity levels for the support case. Available severity

@@ -42,6 +42,7 @@ Elastic Transcoder to use to encrypt your output files.
 
 =head1 ATTRIBUTES
 
+
 =head2 InitializationVector => Str
 
   The series of random bits created by a random bit generator, unique for
@@ -49,6 +50,7 @@ every encryption operation, that you used to encrypt your input files
 or that you want Elastic Transcoder to use to encrypt your output
 files. The initialization vector must be base64-encoded, and it must be
 exactly 16 bytes long before being base64-encoded.
+
 
 =head2 Key => Str
 
@@ -62,6 +64,7 @@ C<128>, C<192>, or C<256>.
 The key must also be encrypted by using the Amazon Key Management
 Service.
 
+
 =head2 KeyMd5 => Str
 
   The MD5 digest of the key that you used to encrypt your input file, or
@@ -69,6 +72,7 @@ that you want Elastic Transcoder to use to encrypt your output file.
 Elastic Transcoder uses the key digest as a checksum to make sure your
 key was not corrupted in transit. The key MD5 must be base64-encoded,
 and it must be exactly 16 bytes long before being base64-encoded.
+
 
 =head2 Mode => Str
 

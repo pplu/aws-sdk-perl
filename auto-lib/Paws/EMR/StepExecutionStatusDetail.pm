@@ -39,21 +39,26 @@ The execution state of a step.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CreationDateTime => Str
 
   The creation date and time of the step.
+
 
 =head2 EndDateTime => Str
 
   The completion date and time of the step.
 
+
 =head2 LastStateChangeReason => Str
 
   A description of the step's current state.
 
+
 =head2 StartDateTime => Str
 
   The start date and time of the step.
+
 
 =head2 B<REQUIRED> State => Str
 

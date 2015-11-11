@@ -42,10 +42,12 @@ The configuration for the streaming distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 Aliases => L<Paws::CloudFront::Aliases>
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this streaming distribution.
+
 
 =head2 B<REQUIRED> CallerReference => Str
 
@@ -62,30 +64,36 @@ but the content of the StreamingDistributionConfig is different from
 the original request, CloudFront returns a DistributionAlreadyExists
 error.
 
+
 =head2 B<REQUIRED> Comment => Str
 
   Any comments you want to include about the streaming distribution.
+
 
 =head2 B<REQUIRED> Enabled => Bool
 
   Whether the streaming distribution is enabled to accept end user
 requests for content.
 
+
 =head2 Logging => L<Paws::CloudFront::StreamingLoggingConfig>
 
   A complex type that controls whether access logs are written for the
 streaming distribution.
+
 
 =head2 PriceClass => Str
 
   A complex type that contains information about price class for this
 streaming distribution.
 
+
 =head2 B<REQUIRED> S3Origin => L<Paws::CloudFront::S3Origin>
 
   A complex type that contains information about the Amazon S3 bucket
 from which you want CloudFront to get your media files for
 distribution.
+
 
 =head2 B<REQUIRED> TrustedSigners => L<Paws::CloudFront::TrustedSigners>
 

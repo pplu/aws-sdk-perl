@@ -39,15 +39,18 @@ Information about a health check.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HealthyThreshold => Int
 
   The number of consecutive health checks successes required before
 moving the instance to the C<Healthy> state.
 
+
 =head2 B<REQUIRED> Interval => Int
 
   The approximate interval, in seconds, between health checks of an
 individual instance.
+
 
 =head2 B<REQUIRED> Target => Str
 
@@ -70,12 +73,14 @@ than "200 OK" within the timeout period is considered unhealthy.
 The total length of the HTTP ping target must be 1024 16-bit Unicode
 characters or less.
 
+
 =head2 B<REQUIRED> Timeout => Int
 
   The amount of time, in seconds, during which no response means a failed
 health check.
 
 This value must be less than the C<Interval> value.
+
 
 =head2 B<REQUIRED> UnhealthyThreshold => Int
 

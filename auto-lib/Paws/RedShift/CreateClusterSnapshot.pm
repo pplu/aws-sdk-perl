@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
   The cluster identifier for which you want a snapshot.
+
 
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
@@ -58,6 +60,7 @@ Constraints:
 =back
 
 Example: C<my-snapshot-id>
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

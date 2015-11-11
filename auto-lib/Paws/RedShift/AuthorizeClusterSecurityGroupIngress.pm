@@ -35,17 +35,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CIDRIP => Str
 
   The IP range to be added the Amazon Redshift security group.
+
 
 =head2 B<REQUIRED> ClusterSecurityGroupName => Str
 
   The name of the security group to which the ingress rule is added.
 
+
 =head2 EC2SecurityGroupName => Str
 
   The EC2 security group to be added the Amazon Redshift security group.
+
 
 =head2 EC2SecurityGroupOwnerId => Str
 

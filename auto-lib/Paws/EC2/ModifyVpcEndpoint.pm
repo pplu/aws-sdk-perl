@@ -37,9 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AddRouteTableIds => ArrayRef[Str]
 
   One or more route tables IDs to associate with the endpoint.
+
 
 =head2 DryRun => Bool
 
@@ -48,19 +50,23 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 PolicyDocument => Str
 
   A policy document to attach to the endpoint. The policy must be in
 valid JSON format.
 
+
 =head2 RemoveRouteTableIds => ArrayRef[Str]
 
   One or more route table IDs to disassociate from the endpoint.
+
 
 =head2 ResetPolicy => Bool
 
   Specify C<true> to reset the policy document to the default policy. The
 default policy allows access to the service.
+
 
 =head2 B<REQUIRED> VpcEndpointId => Str
 

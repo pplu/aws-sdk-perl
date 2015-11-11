@@ -38,13 +38,16 @@ instances allowed.
 
 =head1 ATTRIBUTES
 
+
 =head2 AccountQuotaName => Str
 
   The name of the Amazon RDS quota for this AWS account.
 
+
 =head2 Max => Int
 
   The maximum allowed value for the quota.
+
 
 =head2 Used => Int
 

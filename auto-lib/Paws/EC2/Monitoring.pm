@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 State => Str
 
   Indicates whether monitoring is enabled for the instance.

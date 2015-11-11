@@ -36,9 +36,11 @@ This data type is used in the LocalizedText data type.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the variable that is being replaced.
+
 
 =head2 Value => Str
 

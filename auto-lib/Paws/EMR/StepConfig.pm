@@ -37,13 +37,16 @@ Specification of a job flow step.
 
 =head1 ATTRIBUTES
 
+
 =head2 ActionOnFailure => Str
 
   The action to take if the job flow step fails.
 
+
 =head2 B<REQUIRED> HadoopJarStep => L<Paws::EMR::HadoopJarStepConfig>
 
   The JAR file used for the job flow step.
+
 
 =head2 B<REQUIRED> Name => Str
 

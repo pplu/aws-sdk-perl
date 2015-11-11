@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 GrantId => Str
 
   Unique identifier of the grant to be retired. The grant ID is returned
@@ -47,9 +48,11 @@ by the C<CreateGrant> function.
 =back
 
 
+
 =head2 GrantToken => Str
 
   Token that identifies the grant to be retired.
+
 
 =head2 KeyId => Str
 

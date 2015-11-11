@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZone => Str
 
   The Availability Zone.
+
 
 =head2 GroupName => Str
 

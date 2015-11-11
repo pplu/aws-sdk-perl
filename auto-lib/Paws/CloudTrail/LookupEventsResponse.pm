@@ -13,11 +13,13 @@ Paws::CloudTrail::LookupEventsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Events => ArrayRef[L<Paws::CloudTrail::Event>]
 
   A list of events returned based on the lookup attributes specified and
 the CloudTrail event. The events list is sorted by time. The most
 recent event is listed first.
+
 =head2 NextToken => Str
 
   The token to use to get the next page of results after a previous API

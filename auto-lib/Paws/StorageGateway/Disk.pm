@@ -41,29 +41,36 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 DiskAllocationResource => Str
 
   
+
 
 =head2 DiskAllocationType => Str
 
   
 
+
 =head2 DiskId => Str
 
   
+
 
 =head2 DiskNode => Str
 
   
 
+
 =head2 DiskPath => Str
 
   
 
+
 =head2 DiskSizeInBytes => Int
 
   
+
 
 =head2 DiskStatus => Str
 

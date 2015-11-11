@@ -12,6 +12,7 @@ Paws::DeviceFarm::UpdateDevicePoolResult
 
 =head1 ATTRIBUTES
 
+
 =head2 DevicePool => L<Paws::DeviceFarm::DevicePool>
 
   

@@ -13,10 +13,12 @@ Paws::SimpleWorkflow::WorkflowTypeDetail
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Configuration => L<Paws::SimpleWorkflow::WorkflowTypeConfiguration>
 
   Configuration settings of the workflow type registered through
 RegisterWorkflowType
+
 =head2 B<REQUIRED> TypeInfo => L<Paws::SimpleWorkflow::WorkflowTypeInfo>
 
   General information about the workflow type.

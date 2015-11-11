@@ -35,6 +35,7 @@ Encloses the id an entry in DeleteMessageBatch.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   Represents a successfully deleted message.

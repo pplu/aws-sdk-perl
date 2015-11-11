@@ -53,6 +53,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AgentVersion => Str
 
   The default AWS OpsWorks agent version. You have the following options:
@@ -78,10 +79,12 @@ DescribeAgentVersions.
 You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.
 
+
 =head2 Attributes => L<Paws::OpsWorks::StackAttributes>
 
   A list of stack attributes and values as key/value pairs to be added to
 the cloned stack.
+
 
 =head2 ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>
 
@@ -89,13 +92,16 @@ the cloned stack.
 Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more
 information, see Create a New Stack.
 
+
 =head2 CloneAppIds => ArrayRef[Str]
 
   A list of source stack app IDs to be included in the cloned stack.
 
+
 =head2 ClonePermissions => Bool
 
   Whether to clone the source stack's permissions.
+
 
 =head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
 
@@ -103,9 +109,11 @@ information, see Create a New Stack.
 that you use the configuration manager to specify the Chef version:
 0.9, 11.4, or 11.10. The default value is currently 11.10.
 
+
 =head2 CustomCookbooksSource => L<Paws::OpsWorks::Source>
 
   
+
 
 =head2 CustomJson => Str
 
@@ -119,6 +127,7 @@ C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 For more information on custom JSON, see Use Custom JSON to Modify the
 Stack Configuration Attributes
 
+
 =head2 DefaultAvailabilityZone => Str
 
   The cloned stack's default Availability Zone, which must be in the
@@ -127,11 +136,13 @@ you also specify a value for C<DefaultSubnetId>, the subnet must be in
 the same zone. For more information, see the C<VpcId> parameter
 description.
 
+
 =head2 DefaultInstanceProfileArn => Str
 
   The Amazon Resource Name (ARN) of an IAM profile that is the default
 profile for all of the stack's EC2 instances. For more information
 about IAM ARNs, see Using Identifiers.
+
 
 =head2 DefaultOs => Str
 
@@ -159,11 +170,13 @@ Operating Systems.
 You can specify a different Linux operating system for the cloned
 stack, but you cannot change from Linux to Windows or Windows to Linux.
 
+
 =head2 DefaultRootDeviceType => Str
 
   The default root device type. This value is used by default for all
 instances in the cloned stack, but you can override it when you create
 an instance. For more information, see Storage for the Root Device.
+
 
 =head2 DefaultSshKeyName => Str
 
@@ -175,6 +188,7 @@ with an Instance and Managing SSH Access. You can override this setting
 by specifying a different key pair, or no key pair, when you create an
 instance.
 
+
 =head2 DefaultSubnetId => Str
 
   The stack's default VPC subnet ID. This parameter is required if you
@@ -184,6 +198,7 @@ instance. If you also specify a value for C<DefaultAvailabilityZone>,
 the subnet must be in that zone. For information on default values and
 when this parameter is required, see the C<VpcId> parameter
 description.
+
 
 =head2 HostnameTheme => Str
 
@@ -222,14 +237,17 @@ themes are:
 To obtain a generated host name, call C<GetHostNameSuggestion>, which
 returns a host name based on the current theme.
 
+
 =head2 Name => Str
 
   The cloned stack name.
+
 
 =head2 Region => Str
 
   The cloned stack AWS region, such as "us-east-1". For more information
 about AWS regions, see Regions and Endpoints.
+
 
 =head2 B<REQUIRED> ServiceRoleArn => Str
 
@@ -245,13 +263,16 @@ You must set this parameter to a valid service role ARN or the action
 will fail; there is no default value. You can specify the source
 stack's service role ARN, if you prefer, but you must do so explicitly.
 
+
 =head2 B<REQUIRED> SourceStackId => Str
 
   The source stack ID.
 
+
 =head2 UseCustomCookbooks => Bool
 
   Whether to use custom cookbooks.
+
 
 =head2 UseOpsworksSecurityGroups => Bool
 
@@ -281,6 +302,7 @@ groups are required only for those layers that need custom settings.
 =back
 
 For more information, see Create a New Stack.
+
 
 =head2 VpcId => Str
 

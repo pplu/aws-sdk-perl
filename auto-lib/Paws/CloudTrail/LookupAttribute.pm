@@ -36,9 +36,11 @@ Specifies an attribute and value that filter the events returned.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AttributeKey => Str
 
   Specifies an attribute on which to filter the events returned.
+
 
 =head2 B<REQUIRED> AttributeValue => Str
 

@@ -40,11 +40,13 @@ explanation of how each operation is used.
 
 =head1 ATTRIBUTES
 
+
 =head2 From => Str
 
   The "move" and "copy" operation object MUST contain a "from" member,
 which is a string containing a C<JSON Pointer> value that references
 the location in the target document to move the value from.
+
 
 =head2 Op => Str
 
@@ -52,12 +54,14 @@ the location in the target document to move the value from.
 value MUST be one of "add", "remove", "replace", "move", "copy", or
 "test"; other values are errors.
 
+
 =head2 Path => Str
 
   Operation objects MUST have exactly one "path" member. That member's
 value is a string containing a `JSON-Pointer` value that references a
 location within the target document (the "target location") where the
 operation is performed.
+
 
 =head2 Value => Str
 

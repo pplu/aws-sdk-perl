@@ -40,6 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowUsersToChangePassword => Bool
 
   Allows all IAM users in your account to use the AWS Management Console
@@ -48,12 +49,14 @@ Users Change Their Own Passwords in the I<IAM User Guide>.
 
 Default value: false
 
+
 =head2 HardExpiry => Bool
 
   Prevents IAM users from setting a new password after their password has
 expired.
 
 Default value: false
+
 
 =head2 MaxPasswordAge => Int
 
@@ -62,11 +65,13 @@ value of 0 means IAM user passwords never expire.
 
 Default value: 0
 
+
 =head2 MinimumPasswordLength => Int
 
   The minimum number of characters allowed in an IAM user password.
 
 Default value: 6
+
 
 =head2 PasswordReusePrevention => Int
 
@@ -76,6 +81,7 @@ from reusing previous passwords.
 
 Default value: 0
 
+
 =head2 RequireLowercaseCharacters => Bool
 
   Specifies whether IAM user passwords must contain at least one
@@ -83,12 +89,14 @@ lowercase character from the ISO basic Latin alphabet (a to z).
 
 Default value: false
 
+
 =head2 RequireNumbers => Bool
 
   Specifies whether IAM user passwords must contain at least one numeric
 character (0 to 9).
 
 Default value: false
+
 
 =head2 RequireSymbols => Bool
 
@@ -98,6 +106,7 @@ following non-alphanumeric characters:
 ! @ 
 
 Default value: false
+
 
 =head2 RequireUppercaseCharacters => Bool
 

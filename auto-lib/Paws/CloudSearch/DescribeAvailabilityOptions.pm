@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Deployed => Bool
 
   Whether to display the deployed configuration (C<true>) or include any
 pending changes (C<false>). Defaults to C<false>.
+
 
 =head2 B<REQUIRED> DomainName => Str
 

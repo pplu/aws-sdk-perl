@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> JobId => Str
 
   The unique system-generated ID of the job for which you want to confirm
 receipt.
+
 
 =head2 B<REQUIRED> Nonce => Str
 

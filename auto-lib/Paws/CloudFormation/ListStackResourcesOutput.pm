@@ -14,10 +14,12 @@ Paws::CloudFormation::ListStackResourcesOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   String that identifies the start of the next list of stack resources,
 if there is one.
+
 =head2 StackResourceSummaries => ArrayRef[L<Paws::CloudFormation::StackResourceSummary>]
 
   A list of C<StackResourceSummary> structures.

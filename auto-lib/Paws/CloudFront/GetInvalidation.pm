@@ -21,9 +21,11 @@ Paws::CloudFront::GetInvalidationResult
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DistributionId => Str
 
   The distribution's id.
+
 =head2 B<REQUIRED> Id => Str
 
   The invalidation's id.

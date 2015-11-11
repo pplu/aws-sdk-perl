@@ -13,6 +13,7 @@ Paws::CloudSearch::DefineAnalysisSchemeResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AnalysisScheme => L<Paws::CloudSearch::AnalysisSchemeStatus>
 
   

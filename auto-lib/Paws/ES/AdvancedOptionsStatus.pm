@@ -51,10 +51,12 @@ For more information, see Configuring Advanced Options.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Options => L<Paws::ES::AdvancedOptions>
 
   Specifies the status of advanced options for the specified
 Elasticsearch domain.
+
 
 =head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
 

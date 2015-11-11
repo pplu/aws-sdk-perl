@@ -39,16 +39,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 EndTime => Int
 
   A unix timestamp indicating the end time of the range for the request.
 If provided, events with a timestamp later than this time will not be
 returned.
 
+
 =head2 FilterPattern => Str
 
   A valid CloudWatch Logs filter pattern to use for filtering the
 response. If not provided, all the events are matched.
+
 
 =head2 Interleaved => Bool
 
@@ -58,24 +61,29 @@ interleaved in a single response. If not provided, all the matched log
 events in the first log stream will be searched first, then those in
 the next log stream, etc.
 
+
 =head2 Limit => Int
 
   The maximum number of events to return in a page of results. Default is
 10,000 events.
 
+
 =head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group to query.
+
 
 =head2 LogStreamNames => ArrayRef[Str]
 
   Optional list of log stream names within the specified log group to
 search. Defaults to all the log streams in the log group.
 
+
 =head2 NextToken => Str
 
   A pagination token obtained from a C<FilterLogEvents> response to
 continue paginating the FilterLogEvents results.
+
 
 =head2 StartTime => Int
 

@@ -22,9 +22,11 @@ Paws::CloudFront::ListInvalidationsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DistributionId => Str
 
   The distribution's id.
+
 =head2 Marker => Str
 
   Use this parameter when paginating results to indicate where to begin
@@ -34,6 +36,7 @@ are on the first page, the second page will contain earlier results,
 and so on. To get the next page of results, set the Marker to the value
 of the NextMarker from the current page's response. This value is the
 same as the ID of the last invalidation batch on that page.
+
 =head2 MaxItems => Str
 
   The maximum number of invalidation batches you want in the response

@@ -12,6 +12,7 @@ Paws::CodeDeploy::GetDeploymentConfigOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 DeploymentConfigInfo => L<Paws::CodeDeploy::DeploymentConfigInfo>
 
   Information about the deployment configuration.

@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> BucketName => Str
 
   The name of an existing S3 bucket where the log files are to be stored.
@@ -49,11 +50,13 @@ Constraints:
 =back
 
 
+
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
   The identifier of the cluster on which logging is to be started.
 
 Example: C<examplecluster>
+
 
 =head2 S3KeyPrefix => Str
 

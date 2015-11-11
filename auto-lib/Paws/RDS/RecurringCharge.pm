@@ -38,9 +38,11 @@ actions.
 
 =head1 ATTRIBUTES
 
+
 =head2 RecurringChargeAmount => Num
 
   The amount of the recurring charge.
+
 
 =head2 RecurringChargeFrequency => Str
 

@@ -37,6 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AccountId => Str
 
   The C<AccountId> value is the AWS account ID of the account that owns
@@ -45,6 +46,7 @@ single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
+
 
 =head2 ArchiveDescription => Str
 
@@ -55,10 +57,12 @@ for example 1048576 (1 MB), 2097152 (2 MB), 4194304 (4 MB), 8388608 (8
 MB), and so on. The minimum allowable part size is 1 MB, and the
 maximum is 4 GB (4096 MB).
 
+
 =head2 PartSize => Str
 
   The size of each part except the last, in bytes. The last part can be
 smaller than this part size.
+
 
 =head2 B<REQUIRED> VaultName => Str
 

@@ -38,17 +38,21 @@ Credentials for the provided identity ID.
 
 =head1 ATTRIBUTES
 
+
 =head2 AccessKeyId => Str
 
   The Access Key portion of the credentials.
+
 
 =head2 Expiration => Str
 
   The date at which these credentials will expire.
 
+
 =head2 SecretKey => Str
 
   The Secret Access Key portion of the credentials
+
 
 =head2 SessionToken => Str
 

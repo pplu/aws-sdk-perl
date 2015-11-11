@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DirectoryIds => ArrayRef[Str]
 
   An array of strings that contains the directory identifiers to retrieve
 information for. If this member is null, all directories are retrieved.
+
 
 =head2 NextToken => Str
 

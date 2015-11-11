@@ -35,21 +35,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> LogicalResourceId => Str
 
   The logical ID of the resource that you want to signal. The logical ID
 is the name of the resource that given in the template.
+
 
 =head2 B<REQUIRED> StackName => Str
 
   The stack name or unique stack ID that includes the resource that you
 want to signal.
 
+
 =head2 B<REQUIRED> Status => Str
 
   The status of the signal, which is either success or failure. A failure
 signal causes AWS CloudFormation to immediately fail the stack creation
 or update.
+
 
 =head2 B<REQUIRED> UniqueId => Str
 

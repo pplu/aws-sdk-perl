@@ -12,6 +12,7 @@ Paws::DeviceFarm::UpdateProjectResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Project => L<Paws::DeviceFarm::Project>
 
   

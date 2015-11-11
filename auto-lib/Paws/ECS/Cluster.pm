@@ -45,10 +45,12 @@ simultaneously.
 
 =head1 ATTRIBUTES
 
+
 =head2 ActiveServicesCount => Int
 
   The number of services that are running on the cluster in an C<ACTIVE>
 state. You can view these services with ListServices.
+
 
 =head2 ClusterArn => Str
 
@@ -58,21 +60,26 @@ cluster, the AWS account ID of the cluster owner, the C<cluster>
 namespace, and then the cluster name. For example,
 arn:aws:ecs:I<region>:I<012345678910>:cluster/I<test>.
 
+
 =head2 ClusterName => Str
 
   A user-generated string that you use to identify your cluster.
+
 
 =head2 PendingTasksCount => Int
 
   The number of tasks in the cluster that are in the C<PENDING> state.
 
+
 =head2 RegisteredContainerInstancesCount => Int
 
   The number of container instances registered into the cluster.
 
+
 =head2 RunningTasksCount => Int
 
   The number of tasks in the cluster that are in the C<RUNNING> state.
+
 
 =head2 Status => Str
 

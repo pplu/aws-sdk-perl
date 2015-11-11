@@ -43,6 +43,7 @@ parameter in the WebACLUpdate data type.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Action => L<Paws::WAF::WafAction>
 
   Specifies the action that CloudFront or AWS WAF takes when a web
@@ -63,6 +64,7 @@ request based on the remaining rules in the web ACL.
 =back
 
 
+
 =head2 B<REQUIRED> Priority => Int
 
   Specifies the order in which the C<Rules> in a C<WebACL> are evaluated.
@@ -70,6 +72,7 @@ Rules with a lower value for C<Priority> are evaluated before C<Rules>
 with a higher value. The value must be a unique integer. If you add
 multiple C<Rules> to a C<WebACL>, the values don't need to be
 consecutive.
+
 
 =head2 B<REQUIRED> RuleId => Str
 

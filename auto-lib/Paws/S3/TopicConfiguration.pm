@@ -40,17 +40,21 @@ topic.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Events => ArrayRef[Str]
 
   
+
 
 =head2 Filter => L<Paws::S3::NotificationConfigurationFilter>
 
   
 
+
 =head2 Id => Str
 
   
+
 
 =head2 B<REQUIRED> TopicArn => Str
 

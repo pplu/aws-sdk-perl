@@ -34,14 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name of the Auto Scaling group.
+
 
 =head2 InstanceIds => ArrayRef[Str]
 
   One or more instances to move into C<Standby> mode. You must specify at
 least one instance ID.
+
 
 =head2 B<REQUIRED> ShouldDecrementDesiredCapacity => Bool
 

@@ -40,10 +40,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CidrIp => Str
 
   The CIDR IP address range. You can't specify this parameter when
 specifying a source security group.
+
 
 =head2 DryRun => Bool
 
@@ -52,24 +54,29 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 FromPort => Int
 
   The start of port range for the TCP and UDP protocols, or an ICMP type
 number. For the ICMP type number, use C<-1> to specify all ICMP types.
 
+
 =head2 B<REQUIRED> GroupId => Str
 
   The ID of the security group.
+
 
 =head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
   A set of IP permissions. You can't specify a destination security group
 and a CIDR IP address range.
 
+
 =head2 IpProtocol => Str
 
   The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
 Numbers). Use C<-1> to specify all.
+
 
 =head2 SourceSecurityGroupName => Str
 
@@ -77,11 +84,13 @@ Numbers). Use C<-1> to specify all.
 to a destination security group, we recommend that you use a set of IP
 permissions instead.
 
+
 =head2 SourceSecurityGroupOwnerId => Str
 
   The AWS account number for a destination security group. To authorize
 outbound access to a destination security group, we recommend that you
 use a set of IP permissions instead.
+
 
 =head2 ToPort => Int
 

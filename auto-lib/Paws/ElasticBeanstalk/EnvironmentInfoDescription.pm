@@ -38,17 +38,21 @@ The information retrieved from the Amazon EC2 instances.
 
 =head1 ATTRIBUTES
 
+
 =head2 Ec2InstanceId => Str
 
   The Amazon EC2 Instance ID for this information.
+
 
 =head2 InfoType => Str
 
   The type of information retrieved.
 
+
 =head2 Message => Str
 
   The retrieved information.
+
 
 =head2 SampleTimestamp => Str
 

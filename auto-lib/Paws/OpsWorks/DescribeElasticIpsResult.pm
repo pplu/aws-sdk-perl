@@ -12,6 +12,7 @@ Paws::OpsWorks::DescribeElasticIpsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 ElasticIps => ArrayRef[L<Paws::OpsWorks::ElasticIp>]
 
   An C<ElasticIps> object that describes the specified Elastic IP

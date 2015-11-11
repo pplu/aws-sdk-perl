@@ -37,10 +37,12 @@ Total replication configuration size can be up to 2 MB.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Role => Str
 
   Amazon Resource Name (ARN) of an IAM role for Amazon S3 to assume when
 replicating the objects.
+
 
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::ReplicationRule>]
 

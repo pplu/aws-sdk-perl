@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Details => ArrayRef[L<Paws::EC2::InstanceStatusDetails>]
 
   The system instance health or application instance health.
+
 
 =head2 Status => Str
 

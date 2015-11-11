@@ -35,6 +35,7 @@ Represents information about a stage to a job worker.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the stage.

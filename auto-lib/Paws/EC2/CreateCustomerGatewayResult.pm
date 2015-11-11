@@ -13,6 +13,7 @@ Paws::EC2::CreateCustomerGatewayResult
 
 =head1 ATTRIBUTES
 
+
 =head2 CustomerGateway => L<Paws::EC2::CustomerGateway>
 
   Information about the customer gateway.

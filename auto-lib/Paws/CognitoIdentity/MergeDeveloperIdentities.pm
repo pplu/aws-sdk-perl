@@ -35,10 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DestinationUserIdentifier => Str
 
   User identifier for the destination user. The value should be a
 C<DeveloperUserIdentifier>.
+
 
 =head2 B<REQUIRED> DeveloperProviderName => Str
 
@@ -49,9 +51,11 @@ Cognito service to communicate about the developer provider. For the
 C<DeveloperProviderName>, you can use letters as well as period (.),
 underscore (_), and dash (-).
 
+
 =head2 B<REQUIRED> IdentityPoolId => Str
 
   An identity pool ID in the format REGION:GUID.
+
 
 =head2 B<REQUIRED> SourceUserIdentifier => Str
 

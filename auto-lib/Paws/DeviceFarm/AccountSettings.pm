@@ -36,9 +36,11 @@ A container for account-level settings within AWS Device Farm.
 
 =head1 ATTRIBUTES
 
+
 =head2 AwsAccountNumber => Str
 
   The AWS account number specified in the C<AccountSettings> container.
+
 
 =head2 UnmeteredDevices => L<Paws::DeviceFarm::PurchasedDevicesMap>
 

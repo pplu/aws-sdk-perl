@@ -35,6 +35,7 @@ Describes whether instance monitoring is enabled.
 
 =head1 ATTRIBUTES
 
+
 =head2 Enabled => Bool
 
   If C<True>, instance monitoring is enabled.

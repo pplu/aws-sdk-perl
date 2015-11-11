@@ -36,18 +36,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoScalingGroupName => Str
 
   The name of the group.
+
 
 =head2 MaxRecords => Int
 
   The maximum number of items to be returned with each call.
 
+
 =head2 NextToken => Str
 
   The token for the next set of items to return. (You received this token
 from a previous call.)
+
 
 =head2 PolicyNames => ArrayRef[Str]
 
@@ -56,6 +60,7 @@ this list, all policy names are described. If an group name is
 provided, the results are limited to that group. This list is limited
 to 50 items. If you specify an unknown policy name, it is ignored with
 no error.
+
 
 =head2 PolicyTypes => ArrayRef[Str]
 

@@ -36,10 +36,12 @@ Describes the pending maintenance actions for a resource.
 
 =head1 ATTRIBUTES
 
+
 =head2 PendingMaintenanceActionDetails => ArrayRef[L<Paws::RDS::PendingMaintenanceAction>]
 
   A list that provides details about the pending maintenance actions for
 the resource.
+
 
 =head2 ResourceIdentifier => Str
 

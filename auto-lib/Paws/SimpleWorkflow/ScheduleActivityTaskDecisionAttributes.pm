@@ -81,6 +81,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActivityId => Str
 
   B<Required.> The C<activityId> of the activity task.
@@ -90,14 +91,17 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
+
 =head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
 
   B<Required.> The type of the activity task to schedule.
+
 
 =head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks. This data is not sent to the activity.
+
 
 =head2 HeartbeatTimeout => Str
 
@@ -112,9 +116,11 @@ activity type using RegisterActivityType.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 Input => Str
 
   The input provided to the activity task.
+
 
 =head2 ScheduleToCloseTimeout => Str
 
@@ -127,6 +133,7 @@ A schedule-to-close timeout for this activity task must be specified
 either as a default for the activity type or through this field. If
 neither this field is set nor a default schedule-to-close timeout was
 specified at registration time then a fault will be returned.
+
 
 =head2 ScheduleToStartTimeout => Str
 
@@ -143,6 +150,7 @@ either as a default for the activity type or through this field. If
 neither this field is set nor a default schedule-to-start timeout was
 specified at registration time then a fault will be returned.
 
+
 =head2 StartToCloseTimeout => Str
 
   If set, specifies the maximum duration a worker may take to process
@@ -157,6 +165,7 @@ A start-to-close timeout for this activity task must be specified
 either as a default for the activity type or through this field. If
 neither this field is set nor a default start-to-close timeout was
 specified at registration time then a fault will be returned.
+
 
 =head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
 
@@ -173,6 +182,7 @@ The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
+
 
 =head2 TaskPriority => Str
 

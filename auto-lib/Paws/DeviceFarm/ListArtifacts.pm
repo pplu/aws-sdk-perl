@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Arn => Str
 
   The Run, Job, Suite, or Test ARN.
+
 
 =head2 NextToken => Str
 
   An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the
 list.
+
 
 =head2 B<REQUIRED> Type => Str
 

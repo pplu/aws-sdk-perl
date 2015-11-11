@@ -12,6 +12,7 @@ Paws::DS::CreateSnapshotResult
 
 =head1 ATTRIBUTES
 
+
 =head2 SnapshotId => Str
 
   The identifier of the snapshot that was created.

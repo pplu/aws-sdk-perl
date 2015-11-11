@@ -37,13 +37,16 @@ Contains general information about a domain.
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   The description of the domain provided through RegisterDomain.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the domain. This name is unique within the account.
+
 
 =head2 B<REQUIRED> Status => Str
 

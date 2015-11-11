@@ -36,6 +36,7 @@ terminate a WorkSpace.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> WorkspaceId => Str
 
   The identifier of the WorkSpace to terminate.

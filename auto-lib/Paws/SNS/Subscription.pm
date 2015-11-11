@@ -39,21 +39,26 @@ A wrapper type for the attributes of an Amazon SNS subscription.
 
 =head1 ATTRIBUTES
 
+
 =head2 Endpoint => Str
 
   The subscription's endpoint (format depends on the protocol).
+
 
 =head2 Owner => Str
 
   The subscription's owner.
 
+
 =head2 Protocol => Str
 
   The subscription's protocol.
 
+
 =head2 SubscriptionArn => Str
 
   The subscription's ARN.
+
 
 =head2 TopicArn => Str
 

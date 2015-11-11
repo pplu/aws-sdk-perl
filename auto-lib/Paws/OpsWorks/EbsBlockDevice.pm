@@ -40,22 +40,27 @@ Amazon EC2 EbsBlockDevice data type.
 
 =head1 ATTRIBUTES
 
+
 =head2 DeleteOnTermination => Bool
 
   Whether the volume is deleted on instance termination.
+
 
 =head2 Iops => Int
 
   The number of I/O operations per second (IOPS) that the volume
 supports. For more information, see EbsBlockDevice.
 
+
 =head2 SnapshotId => Str
 
   The snapshot ID.
 
+
 =head2 VolumeSize => Int
 
   The volume size, in GiB. For more information, see EbsBlockDevice.
+
 
 =head2 VolumeType => Str
 

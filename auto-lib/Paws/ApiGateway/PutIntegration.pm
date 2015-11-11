@@ -44,25 +44,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheKeyParameters => ArrayRef[Str]
 
   Specifies a put integration input's cache key parameters.
+
 
 =head2 CacheNamespace => Str
 
   Specifies a put integration input's cache namespace.
 
+
 =head2 Credentials => Str
 
   Specifies whether credentials are required for a put integration.
+
 
 =head2 B<REQUIRED> HttpMethod => Str
 
   Specifies a put integration request's HTTP method.
 
+
 =head2 IntegrationHttpMethod => Str
 
   Specifies a put integration HTTP method.
+
 
 =head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToString>
 
@@ -76,23 +82,28 @@ C<integration.request.{location}.{name}>, where C<location> is either
 querystring, path, or header. C<name> must be a valid, unique parameter
 name.
 
+
 =head2 RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>
 
   Specifies the templates used to transform the method request body.
 Request templates are represented as a key/value map, with a
 content-type as the key and a template as the value.
 
+
 =head2 B<REQUIRED> ResourceId => Str
 
   Specifies a put integration request's resource ID.
+
 
 =head2 B<REQUIRED> RestApiId => Str
 
   Specifies a put integration request's API identifier.
 
+
 =head2 B<REQUIRED> Type => Str
 
   Specifies a put integration input's type.
+
 
 =head2 Uri => Str
 

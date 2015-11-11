@@ -56,6 +56,7 @@ table.
 
 =head1 ATTRIBUTES
 
+
 =head2 Create => L<Paws::DynamoDB::CreateGlobalSecondaryIndexAction>
 
   The parameters required for creating a global secondary index on an
@@ -86,9 +87,11 @@ C<ProvisionedThroughput>
 =back
 
 
+
 =head2 Delete => L<Paws::DynamoDB::DeleteGlobalSecondaryIndexAction>
 
   The name of an existing global secondary index to be removed.
+
 
 =head2 Update => L<Paws::DynamoDB::UpdateGlobalSecondaryIndexAction>
 

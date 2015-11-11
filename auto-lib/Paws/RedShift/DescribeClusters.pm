@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClusterIdentifier => Str
 
   The unique identifier of a cluster whose properties you are requesting.
 This parameter is case sensitive.
 
 The default is that all clusters defined for an account are returned.
+
 
 =head2 Marker => Str
 
@@ -55,6 +57,7 @@ C<Marker> parameter and retrying the request.
 Constraints: You can specify either the B<ClusterIdentifier> parameter
 or the B<Marker> parameter, but not both.
 
+
 =head2 MaxRecords => Int
 
   The maximum number of response records to return in each call. If the
@@ -67,6 +70,7 @@ Default: C<100>
 
 Constraints: minimum 20, maximum 100.
 
+
 =head2 TagKeys => ArrayRef[Str]
 
   A tag key or keys for which you want to return all matching clusters
@@ -75,6 +79,7 @@ suppose that you have clusters that are tagged with keys called
 C<owner> and C<environment>. If you specify both of these tag keys in
 the request, Amazon Redshift returns a response with the clusters that
 have either or both of these tag keys associated with them.
+
 
 =head2 TagValues => ArrayRef[Str]
 

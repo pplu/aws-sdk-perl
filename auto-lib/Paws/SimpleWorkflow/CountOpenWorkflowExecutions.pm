@@ -36,9 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Domain => Str
 
   The name of the domain containing the workflow executions to count.
+
 
 =head2 ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>
 
@@ -48,10 +50,12 @@ the filter are counted.
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
 
+
 =head2 B<REQUIRED> StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
 
   Specifies the start time criteria that workflow executions must meet in
 order to be counted.
+
 
 =head2 TagFilter => L<Paws::SimpleWorkflow::TagFilter>
 
@@ -60,6 +64,7 @@ are counted.
 
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
+
 
 =head2 TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>
 

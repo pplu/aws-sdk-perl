@@ -13,9 +13,11 @@ Paws::Inspector::ListFindingsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 FindingArnList => ArrayRef[Str]
 
   A list of ARNs specifying the findings returned by the action.
+
 =head2 NextToken => Str
 
   When a response is generated, if there is more data to be listed, this

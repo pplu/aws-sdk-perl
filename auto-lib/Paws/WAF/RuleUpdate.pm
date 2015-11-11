@@ -37,10 +37,12 @@ you want to add it to a C<Rule> or delete it from a C<Rule>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Action => Str
 
   Specify C<INSERT> to add a C<Predicate> to a C<Rule>. Use C<DELETE> to
 remove a C<Predicate> from a C<Rule>.
+
 
 =head2 B<REQUIRED> Predicate => L<Paws::WAF::Predicate>
 

@@ -20,6 +20,7 @@ Paws::Route53::ListTagsForResourcesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ResourceType => Str
 
   The type of the resources.

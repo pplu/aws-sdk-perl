@@ -36,9 +36,11 @@ Describes the name of an SSM document.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the SSM document.
+
 
 =head2 PlatformTypes => ArrayRef[Str]
 

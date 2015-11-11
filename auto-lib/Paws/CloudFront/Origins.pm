@@ -37,9 +37,11 @@ distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[L<Paws::CloudFront::Origin>]
 
   A complex type that contains origins for this distribution.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

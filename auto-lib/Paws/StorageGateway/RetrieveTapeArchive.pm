@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GatewayARN => Str
 
   The Amazon Resource Name (ARN) of the gateway you want to retrieve the
@@ -41,6 +42,7 @@ gateways for your account and region.
 
 You retrieve archived virtual tapes to only one gateway and the gateway
 must be a gateway-VTL.
+
 
 =head2 B<REQUIRED> TapeARN => Str
 

@@ -38,15 +38,18 @@ Represents information about an action type.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Category => Str
 
   A category defines what kind of action can be taken in the stage, and
 constrains the provider type for the action. Valid categories are
 limited to one of the values below.
 
+
 =head2 B<REQUIRED> Owner => Str
 
   The creator of the action being called.
+
 
 =head2 B<REQUIRED> Provider => Str
 
@@ -54,6 +57,7 @@ limited to one of the values below.
 are determined by the action category. For example, an action in the
 Deploy category type might have a provider of AWS CodeDeploy, which
 would be specified as CodeDeploy.
+
 
 =head2 B<REQUIRED> Version => Str
 

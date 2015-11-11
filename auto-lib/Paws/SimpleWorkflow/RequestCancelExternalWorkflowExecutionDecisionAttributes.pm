@@ -62,14 +62,17 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
+
 =head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks.
 
+
 =head2 RunId => Str
 
   The C<runId> of the external workflow execution to cancel.
+
 
 =head2 B<REQUIRED> WorkflowId => Str
 

@@ -29,13 +29,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Deleted => ArrayRef[L<Paws::S3::DeletedObject>]
 
   
 
+
 =head2 Errors => ArrayRef[L<Paws::S3::Error>]
 
   
+
 
 =head2 RequestCharged => Str
 

@@ -37,6 +37,7 @@ rule.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   Object key name prefix or suffix identifying one or more objects to
@@ -44,6 +45,7 @@ which the filtering rule applies. Maximum prefix length can be up to
 1,024 characters. Overlapping prefixes and suffixes are not supported.
 For more information, go to Configuring Event Notifications in the
 Amazon Simple Storage Service Developer Guide.
+
 
 =head2 Value => Str
 

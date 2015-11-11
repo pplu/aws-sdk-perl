@@ -12,6 +12,7 @@ Paws::CodePipeline::GetJobDetailsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 JobDetails => L<Paws::CodePipeline::JobDetails>
 
   The details of the job.

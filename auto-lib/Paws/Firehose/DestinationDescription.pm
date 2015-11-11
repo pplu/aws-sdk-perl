@@ -37,13 +37,16 @@ Describes the destination for a delivery stream.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DestinationId => Str
 
   The ID of the destination.
 
+
 =head2 RedshiftDestinationDescription => L<Paws::Firehose::RedshiftDestinationDescription>
 
   The destination in Amazon Redshift.
+
 
 =head2 S3DestinationDescription => L<Paws::Firehose::S3DestinationDescription>
 

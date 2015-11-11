@@ -13,10 +13,12 @@ Paws::MachineLearning::DescribeEvaluationsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   The ID of the next page in the paginated results that indicates at
 least one more page follows.
+
 =head2 Results => ArrayRef[L<Paws::MachineLearning::Evaluation>]
 
   A list of Evaluation that meet the search criteria.

@@ -14,9 +14,11 @@ Paws::RDS::DescribeDBLogFilesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 DescribeDBLogFiles => ArrayRef[L<Paws::RDS::DescribeDBLogFilesDetails>]
 
   The DB log files returned.
+
 =head2 Marker => Str
 
   A pagination token that can be used in a subsequent DescribeDBLogFiles

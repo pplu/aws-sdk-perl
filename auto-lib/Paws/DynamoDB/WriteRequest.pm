@@ -40,9 +40,11 @@ objects.
 
 =head1 ATTRIBUTES
 
+
 =head2 DeleteRequest => L<Paws::DynamoDB::DeleteRequest>
 
   A request to perform a I<DeleteItem> operation.
+
 
 =head2 PutRequest => L<Paws::DynamoDB::PutRequest>
 

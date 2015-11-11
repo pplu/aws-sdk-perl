@@ -52,25 +52,30 @@ This data type is used as a response element in the following actions:
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Arn => Str
 
   The Amazon Resource Name (ARN) specifying the group. For more
 information about ARNs and how to use them in policies, see IAM
 Identifiers in the I<Using IAM> guide.
 
+
 =head2 B<REQUIRED> CreateDate => Str
 
   The date and time, in ISO 8601 date-time format, when the group was
 created.
+
 
 =head2 B<REQUIRED> GroupId => Str
 
   The stable and unique string identifying the group. For more
 information about IDs, see IAM Identifiers in the I<Using IAM> guide.
 
+
 =head2 B<REQUIRED> GroupName => Str
 
   The friendly name that identifies the group.
+
 
 =head2 B<REQUIRED> Path => Str
 

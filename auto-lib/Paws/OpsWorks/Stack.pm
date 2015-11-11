@@ -56,18 +56,22 @@ Describes a stack.
 
 =head1 ATTRIBUTES
 
+
 =head2 AgentVersion => Str
 
   The agent version. This parameter is set to C<LATEST> for auto-update.
 or a version number for a fixed agent version.
 
+
 =head2 Arn => Str
 
   The stack's ARN.
 
+
 =head2 Attributes => L<Paws::OpsWorks::StackAttributes>
 
   The stack's attributes.
+
 
 =head2 ChefConfiguration => L<Paws::OpsWorks::ChefConfiguration>
 
@@ -75,17 +79,21 @@ or a version number for a fixed agent version.
 Berkshelf and the Berkshelf version. For more information, see Create a
 New Stack.
 
+
 =head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
 
   The configuration manager.
+
 
 =head2 CreatedAt => Str
 
   The date when the stack was created.
 
+
 =head2 CustomCookbooksSource => L<Paws::OpsWorks::Source>
 
   
+
 
 =head2 CustomJson => Str
 
@@ -100,10 +108,12 @@ C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 For more information on custom JSON, see Use Custom JSON to Modify the
 Stack Configuration Attributes.
 
+
 =head2 DefaultAvailabilityZone => Str
 
   The stack's default Availability Zone. For more information, see
 Regions and Endpoints.
+
 
 =head2 DefaultInstanceProfileArn => Str
 
@@ -111,9 +121,11 @@ Regions and Endpoints.
 stack's EC2 instances. For more information about IAM ARNs, see Using
 Identifiers.
 
+
 =head2 DefaultOs => Str
 
   The stack's default operating system.
+
 
 =head2 DefaultRootDeviceType => Str
 
@@ -121,45 +133,55 @@ Identifiers.
 instances in the stack, but you can override it when you create an
 instance. For more information, see Storage for the Root Device.
 
+
 =head2 DefaultSshKeyName => Str
 
   A default Amazon EC2 key pair for the stack's instances. You can
 override this value when you create or update an instance.
+
 
 =head2 DefaultSubnetId => Str
 
   The default subnet ID; applicable only if the stack is running in a
 VPC.
 
+
 =head2 HostnameTheme => Str
 
   The stack host name theme, with spaces replaced by underscores.
 
+
 =head2 Name => Str
 
   The stack name.
+
 
 =head2 Region => Str
 
   The stack AWS region, such as "us-east-1". For more information about
 AWS regions, see Regions and Endpoints.
 
+
 =head2 ServiceRoleArn => Str
 
   The stack AWS Identity and Access Management (IAM) role.
+
 
 =head2 StackId => Str
 
   The stack ID.
 
+
 =head2 UseCustomCookbooks => Bool
 
   Whether the stack uses custom cookbooks.
+
 
 =head2 UseOpsworksSecurityGroups => Bool
 
   Whether the stack automatically associates the AWS OpsWorks built-in
 security groups with the stack's layers.
+
 
 =head2 VpcId => Str
 

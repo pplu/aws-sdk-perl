@@ -43,6 +43,7 @@ load-based instances.
 
 =head1 ATTRIBUTES
 
+
 =head2 Alarms => ArrayRef[Str]
 
   Custom Cloudwatch auto scaling alarms, to be used as thresholds. This
@@ -55,9 +56,11 @@ the role for you when you first use this feature or you can edit the
 role manually. For more information, see Allowing AWS OpsWorks to Act
 on Your Behalf.
 
+
 =head2 CpuThreshold => Num
 
   The CPU utilization threshold, as a percent of the available CPU.
+
 
 =head2 IgnoreMetricsTime => Int
 
@@ -70,19 +73,23 @@ scaling events during that operation, which typically takes several
 minutes. C<IgnoreMetricsTime> allows you to direct AWS OpsWorks to
 suppress scaling events long enough to get the new instances online.
 
+
 =head2 InstanceCount => Int
 
   The number of instances to add or remove when the load exceeds a
 threshold.
+
 
 =head2 LoadThreshold => Num
 
   The load threshold. For more information about how load is computed,
 see Load (computing).
 
+
 =head2 MemoryThreshold => Num
 
   The memory utilization threshold, as a percent of the available memory.
+
 
 =head2 ThresholdsWaitTime => Int
 

@@ -40,13 +40,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   The description of the disk image.
 
+
 =head2 DeviceName => Str
 
   The block device mapping for the disk.
+
 
 =head2 Format => Str
 
@@ -54,14 +57,17 @@ This class has no description
 
 Valid values: C<RAW> | C<VHD> | C<VMDK> | C<OVA>
 
+
 =head2 SnapshotId => Str
 
   The ID of the EBS snapshot to be used for importing the snapshot.
+
 
 =head2 Url => Str
 
   The URL to the Amazon S3-based disk image being imported. The URL can
 either be a https URL (https://..) or an Amazon S3 URL (s3://..)
+
 
 =head2 UserBucket => L<Paws::EC2::UserBucket>
 

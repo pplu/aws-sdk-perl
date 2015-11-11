@@ -12,6 +12,7 @@ Paws::StorageGateway::UpdateVTLDeviceTypeOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 VTLDeviceARN => Str
 
   The Amazon Resource Name (ARN) of the medium changer you have selected.

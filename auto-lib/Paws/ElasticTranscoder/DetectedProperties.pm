@@ -40,21 +40,26 @@ identifies these values from the input file.
 
 =head1 ATTRIBUTES
 
+
 =head2 DurationMillis => Int
 
   The detected duration of the input file, in milliseconds.
+
 
 =head2 FileSize => Int
 
   The detected file size of the input file, in bytes.
 
+
 =head2 FrameRate => Str
 
   The detected frame rate of the input file, in frames per second.
 
+
 =head2 Height => Int
 
   The detected height of the input file, in pixels.
+
 
 =head2 Width => Int
 

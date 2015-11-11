@@ -38,6 +38,7 @@ Options associated with your audio codec.
 
 =head1 ATTRIBUTES
 
+
 =head2 BitDepth => Str
 
   You can only choose an audio bit depth when you specify C<flac> or
@@ -51,6 +52,7 @@ Valid values are C<16> and C<24>.
 
 The most common bit depth is C<24>.
 
+
 =head2 BitOrder => Str
 
   You can only choose an audio bit order when you specify C<pcm> for the
@@ -59,6 +61,7 @@ value of Audio:Codec.
 The order the bits of a PCM sample are stored in.
 
 The supported value is C<LittleEndian>.
+
 
 =head2 Profile => Str
 
@@ -90,6 +93,7 @@ C<Profile>.
 If you created any presets before AAC profiles were added, Elastic
 Transcoder automatically updated your presets to use AAC-LC. You can
 change the value as required.
+
 
 =head2 Signed => Str
 

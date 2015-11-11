@@ -42,9 +42,11 @@ states, auxiliary apps, and network profiles.
 
 =head1 ATTRIBUTES
 
+
 =head2 AuxiliaryApps => ArrayRef[Str]
 
   A list of auxiliary apps for the run.
+
 
 =head2 BillingMethod => Str
 
@@ -52,23 +54,28 @@ states, auxiliary apps, and network profiles.
 C<unmetered>. If the parameter is not specified, the default value is
 C<unmetered>.
 
+
 =head2 ExtraDataPackageArn => Str
 
   The ARN of the extra data for the run. The extra data is a .zip file
 that AWS Device Farm will extract to external data for Android or the
 app's sandbox for iOS.
 
+
 =head2 Locale => Str
 
   Information about the locale that is used for the run.
+
 
 =head2 Location => L<Paws::DeviceFarm::Location>
 
   Information about the location that is used for the run.
 
+
 =head2 NetworkProfileArn => Str
 
   Reserved for internal use.
+
 
 =head2 Radios => L<Paws::DeviceFarm::Radios>
 

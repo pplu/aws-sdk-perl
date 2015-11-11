@@ -41,6 +41,7 @@ Transcoder to apply to your output files.
 
 =head1 ATTRIBUTES
 
+
 =head2 InitializationVector => Str
 
   If Elastic Transcoder is generating your key for you, you must leave
@@ -51,6 +52,7 @@ every encryption operation, that you want Elastic Transcoder to use to
 encrypt your output files. The initialization vector must be
 base64-encoded, and it must be exactly 16 bytes before being
 base64-encoded.
+
 
 =head2 Key => Str
 
@@ -63,6 +65,7 @@ following bit lengths before being base64-encoded:
 
 C<128>, C<192>, or C<256>.
 
+
 =head2 KeyMd5 => Str
 
   If Elastic Transcoder is generating your key for you, you must leave
@@ -74,6 +77,7 @@ as a checksum to make sure your key was not corrupted in transit. The
 key MD5 must be base64-encoded, and it must be exactly 16 bytes before
 being base64- encoded.
 
+
 =head2 KeyStoragePolicy => Str
 
   Specify whether you want Elastic Transcoder to write your HLS license
@@ -81,11 +85,13 @@ key to an Amazon S3 bucket. If you choose C<WithVariantPlaylists>,
 C<LicenseAcquisitionUrl> must be left blank and Elastic Transcoder
 writes your data key into the same bucket as the associated playlist.
 
+
 =head2 LicenseAcquisitionUrl => Str
 
   The location of the license key required to decrypt your HLS playlist.
 The URL must be an absolute path, and is referenced in the URI
 attribute of the EXT-X-KEY metadata tag in the playlist file.
+
 
 =head2 Method => Str
 

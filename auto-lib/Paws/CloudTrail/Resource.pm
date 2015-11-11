@@ -36,12 +36,14 @@ Specifies the type and name of a resource referenced by an event.
 
 =head1 ATTRIBUTES
 
+
 =head2 ResourceName => Str
 
   The name of the resource referenced by the event returned. These are
 user-created names whose values will depend on the environment. For
 example, the resource name might be "auto-scaling-test-group" for an
 Auto Scaling Group or "i-1234567" for an EC2 Instance.
+
 
 =head2 ResourceType => Str
 

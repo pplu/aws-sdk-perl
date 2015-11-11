@@ -39,9 +39,11 @@ For examples that use one or more dimensions, see PutMetricData.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the dimension.
+
 
 =head2 B<REQUIRED> Value => Str
 

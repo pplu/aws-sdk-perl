@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DelaySeconds => Int
 
   The number of seconds (0 to 900 - 15 minutes) to delay a specific
@@ -42,15 +43,18 @@ message. Messages with a positive C<DelaySeconds> value become
 available for processing after the delay time is finished. If you don't
 specify a value, the default value for the queue applies.
 
+
 =head2 MessageAttributes => L<Paws::SQS::MessageAttributeMap>
 
   Each message attribute consists of a Name, Type, and Value. For more
 information, see Message Attribute Items.
 
+
 =head2 B<REQUIRED> MessageBody => Str
 
   The message to send. String maximum 256 KB in size. For a list of
 allowed characters, see the preceding important note.
+
 
 =head2 B<REQUIRED> QueueUrl => Str
 

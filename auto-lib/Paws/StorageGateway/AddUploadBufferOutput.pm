@@ -12,6 +12,7 @@ Paws::StorageGateway::AddUploadBufferOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 GatewayARN => Str
 
   

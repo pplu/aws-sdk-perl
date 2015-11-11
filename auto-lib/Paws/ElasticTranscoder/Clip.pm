@@ -36,6 +36,7 @@ have the same clip settings.
 
 =head1 ATTRIBUTES
 
+
 =head2 TimeSpan => L<Paws::ElasticTranscoder::TimeSpan>
 
   Settings that determine when a clip begins and how long it lasts.

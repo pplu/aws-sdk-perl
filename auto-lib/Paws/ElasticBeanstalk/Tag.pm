@@ -36,9 +36,11 @@ Describes a tag applied to a resource in an environment.
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => Str
 
   The key of the tag.
+
 
 =head2 Value => Str
 

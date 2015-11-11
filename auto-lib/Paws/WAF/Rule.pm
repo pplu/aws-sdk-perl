@@ -55,20 +55,24 @@ C<BadBot>.
 
 =head1 ATTRIBUTES
 
+
 =head2 MetricName => Str
 
   
+
 
 =head2 Name => Str
 
   The friendly name or description for the C<Rule>. You can't change the
 name of a C<Rule> after you create it.
 
+
 =head2 B<REQUIRED> Predicates => ArrayRef[L<Paws::WAF::Predicate>]
 
   The C<Predicates> object contains one C<Predicate> element for each
 ByteMatchSet, IPSet, or SqlInjectionMatchSet object that you want to
 include in a C<Rule>.
+
 
 =head2 B<REQUIRED> RuleId => Str
 

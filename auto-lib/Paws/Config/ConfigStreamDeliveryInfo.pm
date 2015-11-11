@@ -39,13 +39,16 @@ stream notification to the Amazon SNS topic.
 
 =head1 ATTRIBUTES
 
+
 =head2 LastErrorCode => Str
 
   The error code from the last attempted delivery.
 
+
 =head2 LastErrorMessage => Str
 
   The error message from the last attempted delivery.
+
 
 =head2 LastStatus => Str
 
@@ -54,6 +57,7 @@ stream notification to the Amazon SNS topic.
 B<Note> Providing an SNS topic on a DeliveryChannel for AWS Config is
 optional. If the SNS delivery is turned off, the last status will be
 B<Not_Applicable>.
+
 
 =head2 LastStatusChangeTime => Str
 

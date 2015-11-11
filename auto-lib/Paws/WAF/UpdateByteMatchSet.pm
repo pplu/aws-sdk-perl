@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ByteMatchSetId => Str
 
   The C<ByteMatchSetId> of the ByteMatchSet that you want to update.
 C<ByteMatchSetId> is returned by CreateByteMatchSet and by
 ListByteMatchSets.
 
+
 =head2 B<REQUIRED> ChangeToken => Str
 
   The value returned by the most recent call to GetChangeToken.
+
 
 =head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::ByteMatchSetUpdate>]
 

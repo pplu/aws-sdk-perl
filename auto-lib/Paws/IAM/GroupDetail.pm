@@ -45,31 +45,38 @@ GetAccountAuthorizationDetails action.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   
 
+
 =head2 AttachedManagedPolicies => ArrayRef[L<Paws::IAM::AttachedPolicy>]
 
   A list of the managed policies attached to the group.
+
 
 =head2 CreateDate => Str
 
   The date and time, in ISO 8601 date-time format, when the group was
 created.
 
+
 =head2 GroupId => Str
 
   The stable and unique string identifying the group. For more
 information about IDs, see IAM Identifiers in the I<Using IAM> guide.
 
+
 =head2 GroupName => Str
 
   The friendly name that identifies the group.
 
+
 =head2 GroupPolicyList => ArrayRef[L<Paws::IAM::PolicyDetail>]
 
   A list of the inline policies embedded in the group.
+
 
 =head2 Path => Str
 

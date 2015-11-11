@@ -12,6 +12,7 @@ Paws::WAF::GetIPSetResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 IPSet => L<Paws::WAF::IPSet>
 
   Information about the IPSet that you specified in the C<GetIPSet>

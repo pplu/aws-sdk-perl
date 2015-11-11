@@ -36,10 +36,12 @@ This data type is used in the AssessmentsFilter data type.
 
 =head1 ATTRIBUTES
 
+
 =head2 Maximum => Int
 
   The maximum value of the duration range. Must be less than or equal to
 604800 seconds (1 week).
+
 
 =head2 Minimum => Int
 

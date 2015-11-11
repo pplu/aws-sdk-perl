@@ -36,13 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Payload => Str
 
   The state information, in JSON format.
 
+
 =head2 Qos => Int
 
   The Quality of Service (QoS) level.
+
 
 =head2 B<REQUIRED> Topic => Str
 

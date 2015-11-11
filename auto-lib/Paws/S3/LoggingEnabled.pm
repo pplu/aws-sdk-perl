@@ -37,6 +37,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 TargetBucket => Str
 
   Specifies the bucket where you want Amazon S3 to store server access
@@ -46,9 +47,11 @@ multiple buckets to deliver their logs to the same target bucket. In
 this case you should choose a different TargetPrefix for each source
 bucket so that the delivered log files can be distinguished by key.
 
+
 =head2 TargetGrants => ArrayRef[L<Paws::S3::TargetGrant>]
 
   
+
 
 =head2 TargetPrefix => Str
 

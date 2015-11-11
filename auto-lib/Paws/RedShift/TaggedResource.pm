@@ -37,10 +37,12 @@ A tag and its associated resource.
 
 =head1 ATTRIBUTES
 
+
 =head2 ResourceName => Str
 
   The Amazon Resource Name (ARN) with which the tag is associated. For
 example, C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
+
 
 =head2 ResourceType => Str
 
@@ -72,6 +74,7 @@ types are:
 For more information about Amazon Redshift resource types and
 constructing ARNs, go to Constructing an Amazon Redshift Amazon
 Resource Name (ARN) in the Amazon Redshift Cluster Management Guide.
+
 
 =head2 Tag => L<Paws::RedShift::Tag>
 

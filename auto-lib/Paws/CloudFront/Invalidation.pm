@@ -38,18 +38,22 @@ An invalidation.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CreateTime => Str
 
   The date and time the invalidation request was first made.
+
 
 =head2 B<REQUIRED> Id => Str
 
   The identifier for the invalidation request. For example:
 IDFDVBD632BHDS5.
 
+
 =head2 B<REQUIRED> InvalidationBatch => L<Paws::CloudFront::InvalidationBatch>
 
   The current invalidation information for the batch request.
+
 
 =head2 B<REQUIRED> Status => Str
 

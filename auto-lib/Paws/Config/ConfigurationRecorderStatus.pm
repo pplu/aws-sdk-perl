@@ -42,33 +42,41 @@ The current status of the configuration recorder.
 
 =head1 ATTRIBUTES
 
+
 =head2 LastErrorCode => Str
 
   The error code indicating that the recording failed.
+
 
 =head2 LastErrorMessage => Str
 
   The message indicating that the recording failed due to an error.
 
+
 =head2 LastStartTime => Str
 
   The time the recorder was last started.
+
 
 =head2 LastStatus => Str
 
   The last (previous) status of the recorder.
 
+
 =head2 LastStatusChangeTime => Str
 
   The time when the status was last changed.
+
 
 =head2 LastStopTime => Str
 
   The time the recorder was last stopped.
 
+
 =head2 Name => Str
 
   The name of the configuration recorder.
+
 
 =head2 Recording => Bool
 

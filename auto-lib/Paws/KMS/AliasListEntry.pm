@@ -37,13 +37,16 @@ Contains information about an alias.
 
 =head1 ATTRIBUTES
 
+
 =head2 AliasArn => Str
 
   String that contains the key ARN.
 
+
 =head2 AliasName => Str
 
   String that contains the alias.
+
 
 =head2 TargetKeyId => Str
 

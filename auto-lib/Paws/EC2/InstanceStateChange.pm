@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 CurrentState => L<Paws::EC2::InstanceState>
 
   The current state of the instance.
 
+
 =head2 InstanceId => Str
 
   The ID of the instance.
+
 
 =head2 PreviousState => L<Paws::EC2::InstanceState>
 

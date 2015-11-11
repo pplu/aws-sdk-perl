@@ -13,6 +13,7 @@ Paws::ElasticBeanstalk::ConfigurationSettingsDescriptions
 
 =head1 ATTRIBUTES
 
+
 =head2 ConfigurationSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationSettingsDescription>]
 
   A list of ConfigurationSettingsDescription.

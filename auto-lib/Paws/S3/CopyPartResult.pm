@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 ETag => Str
 
   Entity tag of the object.
+
 
 =head2 LastModified => Str
 

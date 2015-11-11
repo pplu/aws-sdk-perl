@@ -36,10 +36,12 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Add => ArrayRef[L<Paws::EC2::CreateVolumePermission>]
 
   Adds a specific AWS account ID or group to a volume's list of create
 volume permissions.
+
 
 =head2 Remove => ArrayRef[L<Paws::EC2::CreateVolumePermission>]
 

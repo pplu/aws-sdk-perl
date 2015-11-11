@@ -41,13 +41,16 @@ account email address, and the date and time of the communication.
 
 =head1 ATTRIBUTES
 
+
 =head2 AttachmentSet => ArrayRef[L<Paws::Support::AttachmentDetails>]
 
   Information about the attachments to the case communication.
 
+
 =head2 Body => Str
 
   The text of the communication between the customer and AWS Support.
+
 
 =head2 CaseId => Str
 
@@ -55,9 +58,11 @@ account email address, and the date and time of the communication.
 is an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
+
 =head2 SubmittedBy => Str
 
   The email address of the account that submitted the AWS Support case.
+
 
 =head2 TimeCreated => Str
 

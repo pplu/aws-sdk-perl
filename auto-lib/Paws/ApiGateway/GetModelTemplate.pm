@@ -35,9 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ModelName => Str
 
   The name of the model for which to generate a template.
+
 
 =head2 B<REQUIRED> RestApiId => Str
 

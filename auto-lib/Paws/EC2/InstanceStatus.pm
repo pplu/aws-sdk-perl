@@ -40,27 +40,33 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZone => Str
 
   The Availability Zone of the instance.
+
 
 =head2 Events => ArrayRef[L<Paws::EC2::InstanceStatusEvent>]
 
   Any scheduled events associated with the instance.
 
+
 =head2 InstanceId => Str
 
   The ID of the instance.
+
 
 =head2 InstanceState => L<Paws::EC2::InstanceState>
 
   The intended state of the instance. DescribeInstanceStatus requires
 that an instance be in the C<running> state.
 
+
 =head2 InstanceStatus => L<Paws::EC2::InstanceStatusSummary>
 
   Reports impaired functionality that stems from issues internal to the
 instance, such as impaired reachability.
+
 
 =head2 SystemStatus => L<Paws::EC2::InstanceStatusSummary>
 

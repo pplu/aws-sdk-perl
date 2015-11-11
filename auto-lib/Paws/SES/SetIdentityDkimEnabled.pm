@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DkimEnabled => Bool
 
   Sets whether DKIM signing is enabled for an identity. Set to C<true> to
 enable DKIM signing for this identity; C<false> to disable it.
+
 
 =head2 B<REQUIRED> Identity => Str
 

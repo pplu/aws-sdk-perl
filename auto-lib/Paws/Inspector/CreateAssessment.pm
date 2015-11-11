@@ -35,10 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationArn => Str
 
   The ARN specifying the application for which you want to create an
 assessment.
+
 
 =head2 AssessmentName => Str
 
@@ -47,10 +49,12 @@ create. You can create several assessments for an application. The
 names of the assessments corresponding to a particular application must
 be unique.
 
+
 =head2 DurationInSeconds => Int
 
   The duration of the assessment in seconds. The default value is 3600
 seconds (one hour). The maximum value is 86400 seconds (one day).
+
 
 =head2 UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]
 

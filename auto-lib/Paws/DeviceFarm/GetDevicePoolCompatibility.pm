@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AppArn => Str
 
   The ARN of the app that is associated with the specified device pool.
 
+
 =head2 B<REQUIRED> DevicePoolArn => Str
 
   The device pool's ARN.
+
 
 =head2 TestType => Str
 

@@ -37,11 +37,13 @@ change batch request.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Action => Str
 
   The action to perform.
 
 Valid values: C<CREATE> | C<DELETE> | C<UPSERT>
+
 
 =head2 B<REQUIRED> ResourceRecordSet => L<Paws::Route53::ResourceRecordSet>
 

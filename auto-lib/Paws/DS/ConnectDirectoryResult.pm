@@ -12,6 +12,7 @@ Paws::DS::ConnectDirectoryResult
 
 =head1 ATTRIBUTES
 
+
 =head2 DirectoryId => Str
 
   The identifier of the new directory.

@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 SpotInstanceRequestId => Str
 
   The ID of the Spot instance request.
+
 
 =head2 State => Str
 

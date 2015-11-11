@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::SDB::ReplaceableAttribute>]
 
   The list of attributes for a replaceable item.
+
 
 =head2 B<REQUIRED> Name => Str
 

@@ -12,6 +12,7 @@ Paws::Kinesis::DescribeStreamOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> StreamDescription => L<Paws::Kinesis::StreamDescription>
 
   The current status of the stream, the stream ARN, an array of shard

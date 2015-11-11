@@ -37,9 +37,11 @@ cache node.
 
 =head1 ATTRIBUTES
 
+
 =head2 Address => Str
 
   The DNS hostname of the cache node.
+
 
 =head2 Port => Int
 

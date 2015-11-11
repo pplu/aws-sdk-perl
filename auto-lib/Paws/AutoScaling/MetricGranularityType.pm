@@ -35,6 +35,7 @@ Describes a granularity of a metric.
 
 =head1 ATTRIBUTES
 
+
 =head2 Granularity => Str
 
   The granularity. The only valid value is C<1Minute>.

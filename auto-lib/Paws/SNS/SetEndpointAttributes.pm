@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Attributes => L<Paws::SNS::MapStringToString>
 
   A map of the endpoint attributes. Attributes in this map include the
@@ -55,6 +56,7 @@ notification service when an app and mobile device are registered with
 the notification service.
 
 =back
+
 
 
 =head2 B<REQUIRED> EndpointArn => Str

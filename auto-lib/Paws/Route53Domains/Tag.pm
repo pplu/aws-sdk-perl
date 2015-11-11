@@ -36,6 +36,7 @@ Each tag includes the following elements.
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => Str
 
   The key (name) of a tag.
@@ -49,6 +50,7 @@ Valid values: A-Z, a-z, 0-9, space, ".:/=+\-@"
 Constraints: Each key can be 1-128 characters long.
 
 Required: Yes
+
 
 =head2 Value => Str
 

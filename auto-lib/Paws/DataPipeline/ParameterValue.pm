@@ -36,9 +36,11 @@ A value or list of parameter values.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   The ID of the parameter value.
+
 
 =head2 B<REQUIRED> StringValue => Str
 

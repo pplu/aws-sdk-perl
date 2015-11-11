@@ -37,13 +37,16 @@ Contains the list of SAML providers for this account.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the SAML provider.
 
+
 =head2 CreateDate => Str
 
   The date and time when the SAML provider was created.
+
 
 =head2 ValidUntil => Str
 

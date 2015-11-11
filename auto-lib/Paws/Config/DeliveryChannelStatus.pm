@@ -40,20 +40,24 @@ Valid values: C<Success> | C<Failure>
 
 =head1 ATTRIBUTES
 
+
 =head2 ConfigHistoryDeliveryInfo => L<Paws::Config::ConfigExportDeliveryInfo>
 
   A list that contains the status of the delivery of the configuration
 history to the specified Amazon S3 bucket.
+
 
 =head2 ConfigSnapshotDeliveryInfo => L<Paws::Config::ConfigExportDeliveryInfo>
 
   A list containing the status of the delivery of the snapshot to the
 specified Amazon S3 bucket.
 
+
 =head2 ConfigStreamDeliveryInfo => L<Paws::Config::ConfigStreamDeliveryInfo>
 
   A list containing the status of the delivery of the configuration
 stream notification to the specified Amazon SNS topic.
+
 
 =head2 Name => Str
 

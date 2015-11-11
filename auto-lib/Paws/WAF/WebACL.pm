@@ -48,24 +48,29 @@ information, see UpdateWebACL.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DefaultAction => L<Paws::WAF::WafAction>
 
   The action to perform if none of the C<Rules> contained in the
 C<WebACL> match. The action is specified by the WafAction object.
 
+
 =head2 MetricName => Str
 
   
+
 
 =head2 Name => Str
 
   A friendly name or description of the C<WebACL>. You can't change the
 name of a C<WebACL> after you create it.
 
+
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::WAF::ActivatedRule>]
 
   An array that contains the action for each C<Rule> in a C<WebACL>, the
 priority of the C<Rule>, and the ID of the C<Rule>.
+
 
 =head2 B<REQUIRED> WebACLId => Str
 

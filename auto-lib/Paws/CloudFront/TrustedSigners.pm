@@ -48,15 +48,18 @@ trusted signers that you want to include in the updated distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Enabled => Bool
 
   Specifies whether you want to require end users to use signed URLs to
 access the files specified by PathPattern and TargetOriginId.
 
+
 =head2 Items => ArrayRef[Str]
 
   Optional: A complex type that contains trusted signers for this cache
 behavior. If Quantity is 0, you can omit Items.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

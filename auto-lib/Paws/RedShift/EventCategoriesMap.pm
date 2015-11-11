@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Events => ArrayRef[L<Paws::RedShift::EventInfoMap>]
 
   The events in the event category.
+
 
 =head2 SourceType => Str
 

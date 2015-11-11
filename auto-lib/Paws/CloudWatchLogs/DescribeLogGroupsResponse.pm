@@ -13,9 +13,11 @@ Paws::CloudWatchLogs::DescribeLogGroupsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 LogGroups => ArrayRef[L<Paws::CloudWatchLogs::LogGroup>]
 
   
+
 =head2 NextToken => Str
 
   

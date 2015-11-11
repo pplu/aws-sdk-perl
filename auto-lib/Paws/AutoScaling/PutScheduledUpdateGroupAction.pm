@@ -40,25 +40,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name or Amazon Resource Name (ARN) of the Auto Scaling group.
+
 
 =head2 DesiredCapacity => Int
 
   The number of EC2 instances that should be running in the group.
 
+
 =head2 EndTime => Str
 
   The time for this action to end.
+
 
 =head2 MaxSize => Int
 
   The maximum size for the Auto Scaling group.
 
+
 =head2 MinSize => Int
 
   The minimum size for the Auto Scaling group.
+
 
 =head2 Recurrence => Str
 
@@ -69,9 +75,11 @@ information, see Cron in Wikipedia.
 When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
 form the boundaries of when the recurring action will start and stop.
 
+
 =head2 B<REQUIRED> ScheduledActionName => Str
 
   The name of this scaling action.
+
 
 =head2 StartTime => Str
 
@@ -83,6 +91,7 @@ error message.
 
 When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
 form the boundaries of when the recurring action starts and stops.
+
 
 =head2 Time => Str
 

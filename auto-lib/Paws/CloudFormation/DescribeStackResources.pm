@@ -34,11 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 LogicalResourceId => Str
 
   The logical name of the resource as specified in the template.
 
 Default: There is no default value.
+
 
 =head2 PhysicalResourceId => Str
 
@@ -54,6 +56,7 @@ Required: Conditional. If you do not specify C<PhysicalResourceId>, you
 must specify C<StackName>.
 
 Default: There is no default value.
+
 
 =head2 StackName => Str
 

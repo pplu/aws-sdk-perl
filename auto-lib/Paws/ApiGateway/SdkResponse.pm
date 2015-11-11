@@ -15,12 +15,15 @@ Paws::ApiGateway::SdkResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Body => Str
 
   
+
 =head2 ContentDisposition => Str
 
   
+
 =head2 ContentType => Str
 
   

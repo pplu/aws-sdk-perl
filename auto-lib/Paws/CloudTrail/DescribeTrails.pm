@@ -32,6 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 TrailNameList => ArrayRef[Str]
 
   Specifies a list of trail names, trail ARNs, or both, of the trails to

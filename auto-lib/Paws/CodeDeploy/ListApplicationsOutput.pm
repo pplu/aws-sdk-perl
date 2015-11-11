@@ -13,9 +13,11 @@ Paws::CodeDeploy::ListApplicationsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Applications => ArrayRef[Str]
 
   A list of application names.
+
 =head2 NextToken => Str
 
   If the amount of information that is returned is significantly large,

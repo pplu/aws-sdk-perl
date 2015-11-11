@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   The reason code for the state change.
+
 
 =head2 Message => Str
 

@@ -39,11 +39,13 @@ C<SqlInjectionMatchSet>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Action => Str
 
   Specify C<INSERT> to add a SqlInjectionMatchSetUpdate to a
 SqlInjectionMatchSet. Use C<DELETE> to remove a
 C<SqlInjectionMatchSetUpdate> from a C<SqlInjectionMatchSet>.
+
 
 =head2 B<REQUIRED> SqlInjectionMatchTuple => L<Paws::WAF::SqlInjectionMatchTuple>
 

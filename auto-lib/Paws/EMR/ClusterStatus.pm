@@ -37,13 +37,16 @@ The detailed status of the cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 State => Str
 
   The current state of the cluster.
 
+
 =head2 StateChangeReason => L<Paws::EMR::ClusterStateChangeReason>
 
   The reason for the cluster status change.
+
 
 =head2 Timeline => L<Paws::EMR::ClusterTimeline>
 

@@ -13,9 +13,11 @@ Paws::DeviceFarm::GetDevicePoolCompatibilityResult
 
 =head1 ATTRIBUTES
 
+
 =head2 CompatibleDevices => ArrayRef[L<Paws::DeviceFarm::DevicePoolCompatibilityResult>]
 
   Information about compatible devices.
+
 =head2 IncompatibleDevices => ArrayRef[L<Paws::DeviceFarm::DevicePoolCompatibilityResult>]
 
   Information about incompatible devices.

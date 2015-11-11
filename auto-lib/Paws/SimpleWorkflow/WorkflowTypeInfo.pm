@@ -39,22 +39,27 @@ Contains information about a workflow type.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CreationDate => Str
 
   The date when this type was registered.
+
 
 =head2 DeprecationDate => Str
 
   If the type is in deprecated state, then it is set to the date when the
 type was deprecated.
 
+
 =head2 Description => Str
 
   The description of the type registered through RegisterWorkflowType.
 
+
 =head2 B<REQUIRED> Status => Str
 
   The current status of the workflow type.
+
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 

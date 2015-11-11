@@ -36,6 +36,7 @@ Origin access identity configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CallerReference => Str
 
   A unique number that ensures the request can't be replayed. If the
@@ -50,6 +51,7 @@ a value you already sent in a previous request to create an identity
 but the content of the CloudFrontOriginAccessIdentityConfig is
 different from the original request, CloudFront returns a
 CloudFrontOriginAccessIdentityAlreadyExists error.
+
 
 =head2 B<REQUIRED> Comment => Str
 

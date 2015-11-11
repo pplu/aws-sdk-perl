@@ -13,6 +13,7 @@ Paws::Glacier::CreateVaultOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Location => Str
 
   The URI of the vault that was created.

@@ -35,9 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 EcsClusterArns => ArrayRef[Str]
 
   A list of ARNs, one for each cluster to be described.
+
 
 =head2 MaxResults => Int
 
@@ -47,6 +49,7 @@ number of available results exceeds this maximum, the response includes
 a C<NextToken> value that you can assign to the C<NextToken> request
 parameter to get the next set of results.
 
+
 =head2 NextToken => Str
 
   If the previous paginated request did not return all of the remaining
@@ -55,6 +58,7 @@ token. To retrieve the next set of results, call C<DescribeEcsClusters>
 again and assign that token to the request object's C<NextToken>
 parameter. If there are no remaining results, the previous response
 object's C<NextToken> parameter is set to C<null>.
+
 
 =head2 StackId => Str
 

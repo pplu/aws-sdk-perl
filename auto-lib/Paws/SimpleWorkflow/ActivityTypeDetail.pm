@@ -13,9 +13,11 @@ Paws::SimpleWorkflow::ActivityTypeDetail
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Configuration => L<Paws::SimpleWorkflow::ActivityTypeConfiguration>
 
   The configuration settings registered with the activity type.
+
 =head2 B<REQUIRED> TypeInfo => L<Paws::SimpleWorkflow::ActivityTypeInfo>
 
   General information about the activity type.

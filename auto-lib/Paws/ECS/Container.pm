@@ -41,30 +41,37 @@ A Docker container that is part of a task.
 
 =head1 ATTRIBUTES
 
+
 =head2 ContainerArn => Str
 
   The Amazon Resource Name (ARN) of the container.
+
 
 =head2 ExitCode => Int
 
   The exit code returned from the container.
 
+
 =head2 LastStatus => Str
 
   The last known status of the container.
+
 
 =head2 Name => Str
 
   The name of the container.
 
+
 =head2 NetworkBindings => ArrayRef[L<Paws::ECS::NetworkBinding>]
 
   The network bindings associated with the container.
+
 
 =head2 Reason => Str
 
   A short (255 max characters) human-readable string to provide
 additional detail about a running or stopped container.
+
 
 =head2 TaskArn => Str
 

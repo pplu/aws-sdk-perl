@@ -38,9 +38,11 @@ Simple Notification Service (SNS).
 
 =head1 ATTRIBUTES
 
+
 =head2 TopicArn => Str
 
   The Amazon Resource Name (ARN) that identifies the topic.
+
 
 =head2 TopicStatus => Str
 

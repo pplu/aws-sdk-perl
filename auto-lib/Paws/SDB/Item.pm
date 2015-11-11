@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AlternateNameEncoding => Str
 
   
 
+
 =head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::SDB::Attribute>]
 
   A list of attributes.
+
 
 =head2 B<REQUIRED> Name => Str
 

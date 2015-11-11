@@ -38,9 +38,11 @@ Contains the details of a single Amazon SQS message along with a C<Id>.
 
 =head1 ATTRIBUTES
 
+
 =head2 DelaySeconds => Int
 
   The number of seconds for which the message has to be delayed.
+
 
 =head2 B<REQUIRED> Id => Str
 
@@ -48,10 +50,12 @@ Contains the details of a single Amazon SQS message along with a C<Id>.
 communicate the result. Note that the C<Id>s of a batch request need to
 be unique within the request.
 
+
 =head2 MessageAttributes => L<Paws::SQS::MessageAttributeMap>
 
   Each message attribute consists of a Name, Type, and Value. For more
 information, see Message Attribute Items.
+
 
 =head2 B<REQUIRED> MessageBody => Str
 

@@ -36,6 +36,7 @@ ExtraParam includes the following elements.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   Name of the additional parameter required by the top-level domain.
@@ -54,6 +55,7 @@ C<RU_PASSPORT_DATA> | C<SE_ID_NUMBER> | C<SG_ID_NUMBER> | C<VAT_NUMBER>
 Parent: C<ExtraParams>
 
 Required: Yes
+
 
 =head2 B<REQUIRED> Value => Str
 

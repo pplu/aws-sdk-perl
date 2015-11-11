@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the volume status.
+
 
 =head2 Status => Str
 

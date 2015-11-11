@@ -41,23 +41,28 @@ C<int-array>. All options are enabled by default.
 
 =head1 ATTRIBUTES
 
+
 =head2 DefaultValue => Int
 
   A value to use for the field if the field isn't specified for a
 document.
 
+
 =head2 FacetEnabled => Bool
 
   Whether facet information can be returned for the field.
+
 
 =head2 ReturnEnabled => Bool
 
   Whether the contents of the field can be returned in the search
 results.
 
+
 =head2 SearchEnabled => Bool
 
   Whether the contents of the field are searchable.
+
 
 =head2 SourceFields => Str
 

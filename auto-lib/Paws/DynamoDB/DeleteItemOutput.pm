@@ -14,15 +14,18 @@ Paws::DynamoDB::DeleteItemOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::DynamoDB::AttributeMap>
 
   A map of attribute names to I<AttributeValue> objects, representing the
 item as it appeared before the I<DeleteItem> operation. This map
 appears in the response only if I<ReturnValues> was specified as
 C<ALL_OLD> in the request.
+
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
 
   
+
 =head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetrics>
 
   Information about item collections, if any, that were affected by the

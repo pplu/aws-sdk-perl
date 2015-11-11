@@ -40,17 +40,21 @@ name.
 
 =head1 ATTRIBUTES
 
+
 =head2 ResourceDeletionTime => Str
 
   The time that the resource was deleted.
+
 
 =head2 ResourceId => Str
 
   The ID of the resource (for example., C<sg-xxxxxx>).
 
+
 =head2 ResourceName => Str
 
   The custom name of the resource (if available).
+
 
 =head2 ResourceType => Str
 

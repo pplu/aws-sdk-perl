@@ -49,6 +49,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AssociatePublicIpAddress => Bool
 
   Used for groups that launch instances into a virtual private cloud
@@ -65,11 +66,13 @@ is C<true>. If the instance is launched into a nondefault subnet, the
 default is C<false>. For more information, see Supported Platforms in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
+
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>]
 
   One or more mappings that specify how block devices are exposed to the
 instance. For more information, see Block Device Mapping in the
 I<Amazon Elastic Compute Cloud User Guide>.
+
 
 =head2 ClassicLinkVPCId => Str
 
@@ -78,12 +81,14 @@ to. This parameter is supported only if you are launching EC2-Classic
 instances. For more information, see ClassicLink in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
+
 =head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str]
 
   The IDs of one or more security groups for the VPC specified in
 C<ClassicLinkVPCId>. This parameter is required if C<ClassicLinkVPCId>
 is specified, and is not supported otherwise. For more information, see
 ClassicLink in the I<Amazon Elastic Compute Cloud User Guide>.
+
 
 =head2 EbsOptimized => Bool
 
@@ -94,6 +99,7 @@ configuration stack to provide optimal I/O performance. This
 optimization is not available with all instance types. Additional usage
 charges apply. For more information, see Amazon EBS-Optimized Instances
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
 
 =head2 IamInstanceProfile => Str
 
@@ -107,11 +113,13 @@ securely access other AWS resources. For more information, see Launch
 Auto Scaling Instances with an IAM Role in the I<Auto Scaling Developer
 Guide>.
 
+
 =head2 ImageId => Str
 
   The ID of the Amazon Machine Image (AMI) to use to launch your EC2
 instances. For more information, see Finding an AMI in the I<Amazon
 Elastic Compute Cloud User Guide>.
+
 
 =head2 InstanceId => Str
 
@@ -127,6 +135,7 @@ same request.
 For more information, see Create a Launch Configuration Using an EC2
 Instance in the I<Auto Scaling Developer Guide>.
 
+
 =head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
 
   Enables detailed monitoring if it is disabled. Detailed monitoring is
@@ -138,25 +147,30 @@ disable detailed monitoring, by specifying C<False>, CloudWatch
 generates metrics every 5 minutes. For more information, see Monitor
 Your Auto Scaling Instances in the I<Auto Scaling Developer Guide>.
 
+
 =head2 InstanceType => Str
 
   The instance type of the EC2 instance. For information about available
 instance types, see Available Instance Types in the I<Amazon Elastic
 Compute Cloud User Guide.>
 
+
 =head2 KernelId => Str
 
   The ID of the kernel associated with the AMI.
+
 
 =head2 KeyName => Str
 
   The name of the key pair. For more information, see Amazon EC2 Key
 Pairs in the I<Amazon Elastic Compute Cloud User Guide>.
 
+
 =head2 B<REQUIRED> LaunchConfigurationName => Str
 
   The name of the launch configuration. This name must be unique within
 the scope of your AWS account.
+
 
 =head2 PlacementTenancy => Str
 
@@ -176,9 +190,11 @@ in the I<Auto Scaling Developer Guide>.
 
 Valid values: C<default> | C<dedicated>
 
+
 =head2 RamdiskId => Str
 
   The ID of the RAM disk associated with the AMI.
+
 
 =head2 SecurityGroups => ArrayRef[Str]
 
@@ -193,6 +209,7 @@ If your instances are launched into a VPC, specify security group IDs.
 For more information, see Security Groups for Your VPC in the I<Amazon
 Virtual Private Cloud User Guide>.
 
+
 =head2 SpotPrice => Str
 
   The maximum hourly price to be paid for any Spot Instance launched to
@@ -200,6 +217,7 @@ fulfill the request. Spot Instances are launched when the price you
 specify exceeds the current Spot market price. For more information,
 see Launch Spot Instances in Your Auto Scaling Group in the I<Auto
 Scaling Developer Guide>.
+
 
 =head2 UserData => Str
 

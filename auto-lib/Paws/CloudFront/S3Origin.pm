@@ -38,9 +38,11 @@ distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DomainName => Str
 
   The DNS name of the S3 origin.
+
 
 =head2 B<REQUIRED> OriginAccessIdentity => Str
 

@@ -40,17 +40,21 @@ describes a specific metric.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Maximum => Num
 
   The maximum value of the sample set.
+
 
 =head2 B<REQUIRED> Minimum => Num
 
   The minimum value of the sample set.
 
+
 =head2 B<REQUIRED> SampleCount => Num
 
   The number of samples used for the statistic set.
+
 
 =head2 B<REQUIRED> Sum => Num
 

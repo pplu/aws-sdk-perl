@@ -40,25 +40,31 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZone => Str
 
   The Availability Zone where the virtual private gateway was created.
+
 
 =head2 State => Str
 
   The current state of the virtual private gateway.
 
+
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the virtual private gateway.
+
 
 =head2 Type => Str
 
   The type of VPN connection the virtual private gateway supports.
 
+
 =head2 VpcAttachments => ArrayRef[L<Paws::EC2::VpcAttachment>]
 
   Any VPCs attached to the virtual private gateway.
+
 
 =head2 VpnGatewayId => Str
 

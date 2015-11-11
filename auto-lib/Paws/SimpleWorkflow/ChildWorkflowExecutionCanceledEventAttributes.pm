@@ -39,9 +39,11 @@ Provide details of the C<ChildWorkflowExecutionCanceled> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Details => Str
 
   Details of the cancellation (if provided).
+
 
 =head2 B<REQUIRED> InitiatedEventId => Int
 
@@ -51,6 +53,7 @@ this child workflow execution. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
+
 =head2 B<REQUIRED> StartedEventId => Int
 
   The ID of the C<ChildWorkflowExecutionStarted> event recorded when this
@@ -58,9 +61,11 @@ child workflow execution was started. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
+
 =head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The child workflow execution that was canceled.
+
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 

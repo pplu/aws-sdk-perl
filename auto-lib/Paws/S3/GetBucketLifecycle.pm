@@ -20,6 +20,7 @@ Paws::S3::GetBucketLifecycleOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bucket => Str
 
   

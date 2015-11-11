@@ -13,10 +13,12 @@ Paws::Inspector::DescribeCrossAccountAccessRoleResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 RoleArn => Str
 
   The ARN specifying the IAM role that Inspector uses to access your AWS
 account.
+
 =head2 Valid => Bool
 
   A Boolean value that specifies whether the IAM role has the necessary

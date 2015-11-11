@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   Token returned by the previous C<ListSubscriptionsByTopic> request.
+
 
 =head2 B<REQUIRED> TopicArn => Str
 

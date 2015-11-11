@@ -36,6 +36,7 @@ Information about a deployment error.
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   The error code:
@@ -83,6 +84,7 @@ error code will most likely be raised if the revision is deleted after
 the deployment is created but before it starts.
 
 =back
+
 
 
 =head2 Message => Str

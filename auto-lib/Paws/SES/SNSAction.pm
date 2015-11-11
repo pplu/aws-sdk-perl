@@ -53,6 +53,7 @@ notification, see the Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> TopicArn => Str
 
   The Amazon Resource Name (ARN) of the Amazon SNS topic to notify. An

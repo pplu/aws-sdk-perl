@@ -39,10 +39,12 @@ C<RequestCancelExternalWorkflowExecutionInitiated> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks.
+
 
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 
@@ -52,9 +54,11 @@ C<RequestCancelExternalWorkflowExecution> decision for this
 cancellation request. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
 
+
 =head2 RunId => Str
 
   The C<runId> of the external workflow execution to be canceled.
+
 
 =head2 B<REQUIRED> WorkflowId => Str
 

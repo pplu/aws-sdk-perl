@@ -40,17 +40,21 @@ zone.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CallerReference => Str
 
   A unique string that identifies the request to create the hosted zone.
+
 
 =head2 Config => L<Paws::Route53::HostedZoneConfig>
 
   A complex type that contains the C<Comment> element.
 
+
 =head2 B<REQUIRED> Id => Str
 
   The ID of the specified hosted zone.
+
 
 =head2 B<REQUIRED> Name => Str
 
@@ -64,6 +68,7 @@ This is the name you have registered with your DNS registrar. You
 should ask your registrar to change the authoritative name servers for
 your domain to the set of C<NameServers> elements returned in
 C<DelegationSet>.
+
 
 =head2 ResourceRecordSetCount => Int
 

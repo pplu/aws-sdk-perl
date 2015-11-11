@@ -44,9 +44,11 @@ and Inline Policies in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 PolicyArn => Str
 
   
+
 
 =head2 PolicyName => Str
 

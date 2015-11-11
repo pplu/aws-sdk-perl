@@ -13,9 +13,11 @@ Paws::StorageGateway::ListGatewaysOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Gateways => ArrayRef[L<Paws::StorageGateway::GatewayInfo>]
 
   
+
 =head2 Marker => Str
 
   

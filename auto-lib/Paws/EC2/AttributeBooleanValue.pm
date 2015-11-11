@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Value => Bool
 
   Valid values are C<true> or C<false>.

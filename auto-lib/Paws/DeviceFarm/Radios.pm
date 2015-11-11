@@ -39,18 +39,22 @@ radios include Wi-Fi, GPS, Bluetooth, and NFC.
 
 =head1 ATTRIBUTES
 
+
 =head2 Bluetooth => Bool
 
   True if Bluetooth is enabled at the beginning of the test; otherwise,
 false.
 
+
 =head2 Gps => Bool
 
   True if GPS is enabled at the beginning of the test; otherwise, false.
 
+
 =head2 Nfc => Bool
 
   True if NFC is enabled at the beginning of the test; otherwise, false.
+
 
 =head2 Wifi => Bool
 

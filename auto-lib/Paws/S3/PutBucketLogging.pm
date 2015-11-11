@@ -22,12 +22,15 @@ Paws::S3::
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bucket => Str
 
   
+
 =head2 B<REQUIRED> BucketLoggingStatus => L<Paws::S3::BucketLoggingStatus>
 
   
+
 =head2 ContentMD5 => Str
 
   

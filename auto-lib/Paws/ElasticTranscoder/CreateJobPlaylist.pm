@@ -39,15 +39,18 @@ Information about the master playlist.
 
 =head1 ATTRIBUTES
 
+
 =head2 Format => Str
 
   The format of the output playlist. Valid formats include C<HLSv3>,
 C<HLSv4>, and C<Smooth>.
 
+
 =head2 HlsContentProtection => L<Paws::ElasticTranscoder::HlsContentProtection>
 
   The HLS content protection settings, if any, that you want Elastic
 Transcoder to apply to the output files associated with this playlist.
+
 
 =head2 Name => Str
 
@@ -62,6 +65,7 @@ extension to the file name (C<.m3u8> for C<HLSv3> and C<HLSv4>
 playlists, and C<.ism> and C<.ismc> for C<Smooth> playlists). If you
 include a file extension in C<Name>, the file name will have two
 extensions.
+
 
 =head2 OutputKeys => ArrayRef[Str]
 
@@ -114,6 +118,7 @@ settings, clip settings, or caption settings must be the same for all
 outputs in the playlist. For C<Smooth> playlists, the C<Audio:Profile>,
 C<Video:Profile>, and C<Video:FrameRate> to C<Video:KeyframesMaxDist>
 ratio must be the same for all outputs.
+
 
 =head2 PlayReadyDrm => L<Paws::ElasticTranscoder::PlayReadyDrm>
 

@@ -38,19 +38,23 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Association => L<Paws::EC2::InstanceNetworkInterfaceAssociation>
 
   The association information for an Elastic IP address for the network
 interface.
+
 
 =head2 Primary => Bool
 
   Indicates whether this IP address is the primary private IP address of
 the network interface.
 
+
 =head2 PrivateDnsName => Str
 
   The private DNS name.
+
 
 =head2 PrivateIpAddress => Str
 

@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Details => Str
 
   I<Optional.> Detailed information about the failure.
 
+
 =head2 Reason => Str
 
   Description of the error that may assist in diagnostics.
+
 
 =head2 B<REQUIRED> TaskToken => Str
 

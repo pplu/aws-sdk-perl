@@ -37,13 +37,16 @@ A customer origin.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HTTPPort => Int
 
   The HTTP port the custom origin listens on.
 
+
 =head2 B<REQUIRED> HTTPSPort => Int
 
   The HTTPS port the custom origin listens on.
+
 
 =head2 B<REQUIRED> OriginProtocolPolicy => Str
 

@@ -36,11 +36,13 @@ Provides details of the C<TimerFired> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> StartedEventId => Int
 
   The ID of the C<TimerStarted> event that was recorded when this timer
 was started. This information can be useful for diagnosing problems by
 tracing back the chain of events leading up to this event.
+
 
 =head2 B<REQUIRED> TimerId => Str
 

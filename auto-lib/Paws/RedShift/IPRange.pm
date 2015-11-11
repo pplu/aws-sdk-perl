@@ -37,13 +37,16 @@ Describes an IP range used in a security group.
 
 =head1 ATTRIBUTES
 
+
 =head2 CIDRIP => Str
 
   The IP range in Classless Inter-Domain Routing (CIDR) notation.
 
+
 =head2 Status => Str
 
   The status of the IP range, for example, "authorized".
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

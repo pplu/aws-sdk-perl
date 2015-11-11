@@ -14,9 +14,11 @@ Paws::RedShift::EventSubscriptionsMessage
 
 =head1 ATTRIBUTES
 
+
 =head2 EventSubscriptionsList => ArrayRef[L<Paws::RedShift::EventSubscription>]
 
   A list of event subscriptions.
+
 =head2 Marker => Str
 
   A value that indicates the starting point for the next set of response

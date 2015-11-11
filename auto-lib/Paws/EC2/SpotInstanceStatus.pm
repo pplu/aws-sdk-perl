@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   The status code.
 
+
 =head2 Message => Str
 
   The description for the status code.
+
 
 =head2 UpdateTime => Str
 

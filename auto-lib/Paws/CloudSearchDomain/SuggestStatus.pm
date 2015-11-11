@@ -37,9 +37,11 @@ request (C<timems>).
 
 =head1 ATTRIBUTES
 
+
 =head2 Rid => Str
 
   The encrypted resource ID for the request.
+
 
 =head2 Timems => Int
 

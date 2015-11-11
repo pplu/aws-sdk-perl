@@ -40,26 +40,32 @@ Describes a subnet group.
 
 =head1 ATTRIBUTES
 
+
 =head2 ClusterSubnetGroupName => Str
 
   The name of the cluster subnet group.
 
+
 =head2 Description => Str
 
   The description of the cluster subnet group.
+
 
 =head2 SubnetGroupStatus => Str
 
   The status of the cluster subnet group. Possible values are
 C<Complete>, C<Incomplete> and C<Invalid>.
 
+
 =head2 Subnets => ArrayRef[L<Paws::RedShift::Subnet>]
 
   A list of the VPC Subnet elements.
 
+
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   The list of tags for the cluster subnet group.
+
 
 =head2 VpcId => Str
 

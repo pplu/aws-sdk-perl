@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   String that identifies the start of the next list of stacks, if there
 is one.
+
 
 =head2 StackName => Str
 

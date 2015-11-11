@@ -48,17 +48,21 @@ Represents a device type that an app is tested against.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The device's ARN.
+
 
 =head2 Carrier => Str
 
   The device's carrier.
 
+
 =head2 Cpu => L<Paws::DeviceFarm::CPU>
 
   Information about the device's CPU.
+
 
 =head2 FormFactor => Str
 
@@ -79,33 +83,41 @@ TABLET: The tablet form factor.
 =back
 
 
+
 =head2 HeapSize => Int
 
   The device's heap size, expressed in bytes.
+
 
 =head2 Image => Str
 
   The device's image name.
 
+
 =head2 Manufacturer => Str
 
   The device's manufacturer name.
+
 
 =head2 Memory => Int
 
   The device's total memory size, expressed in bytes.
 
+
 =head2 Model => Str
 
   The device's model name.
+
 
 =head2 Name => Str
 
   The device's display name.
 
+
 =head2 Os => Str
 
   The device's operating system type.
+
 
 =head2 Platform => Str
 
@@ -126,9 +138,11 @@ IOS: The iOS platform.
 =back
 
 
+
 =head2 Radio => Str
 
   The device's radio.
+
 
 =head2 Resolution => L<Paws::DeviceFarm::Resolution>
 

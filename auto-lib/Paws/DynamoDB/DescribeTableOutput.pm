@@ -12,6 +12,7 @@ Paws::DynamoDB::DescribeTableOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Table => L<Paws::DynamoDB::TableDescription>
 
   

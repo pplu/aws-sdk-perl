@@ -36,10 +36,12 @@ The AccountLimit data type.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the account limit. Currently, the only account limit is
 C<StackLimit>.
+
 
 =head2 Value => Int
 

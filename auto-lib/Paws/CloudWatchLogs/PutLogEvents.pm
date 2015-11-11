@@ -35,17 +35,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> LogEvents => ArrayRef[L<Paws::CloudWatchLogs::InputLogEvent>]
 
   
+
 
 =head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group to put log events to.
 
+
 =head2 B<REQUIRED> LogStreamName => Str
 
   The name of the log stream to put log events to.
+
 
 =head2 SequenceToken => Str
 

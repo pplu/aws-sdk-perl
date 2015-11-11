@@ -13,9 +13,11 @@ Paws::CodePipeline::ListActionTypesOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActionTypes => ArrayRef[L<Paws::CodePipeline::ActionType>]
 
   Provides details of the action types.
+
 =head2 NextToken => Str
 
   If the amount of returned information is significantly large, an

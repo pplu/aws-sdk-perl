@@ -37,10 +37,12 @@ checker and the reason for the health check status.
 
 =head1 ATTRIBUTES
 
+
 =head2 IPAddress => Str
 
   The IP address of the Route 53 health checker that performed the health
 check.
+
 
 =head2 StatusReport => L<Paws::Route53::StatusReport>
 

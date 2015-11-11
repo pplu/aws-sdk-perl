@@ -42,6 +42,7 @@ Contains all of the attributes of a specific replication group.
 
 =head1 ATTRIBUTES
 
+
 =head2 AutomaticFailover => Str
 
   Indicates the status of Multi-AZ for this replication group.
@@ -57,33 +58,40 @@ ElastiCache Multi-AZ replication groups are not supported on:
 =back
 
 
+
 =head2 Description => Str
 
   The description of the replication group.
+
 
 =head2 MemberClusters => ArrayRef[Str]
 
   The names of all the cache clusters that are part of this replication
 group.
 
+
 =head2 NodeGroups => ArrayRef[L<Paws::ElastiCache::NodeGroup>]
 
   A single element list with information about the nodes in the
 replication group.
+
 
 =head2 PendingModifiedValues => L<Paws::ElastiCache::ReplicationGroupPendingModifiedValues>
 
   A group of settings to be applied to the replication group, either
 immediately or during the next maintenance window.
 
+
 =head2 ReplicationGroupId => Str
 
   The identifier for the replication group.
+
 
 =head2 SnapshottingClusterId => Str
 
   The cache cluster ID that is used as the daily snapshot source for the
 replication group.
+
 
 =head2 Status => Str
 

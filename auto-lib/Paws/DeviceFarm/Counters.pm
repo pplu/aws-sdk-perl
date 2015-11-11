@@ -41,29 +41,36 @@ Represents entity counters.
 
 =head1 ATTRIBUTES
 
+
 =head2 Errored => Int
 
   The number of errored entities.
+
 
 =head2 Failed => Int
 
   The number of failed entities.
 
+
 =head2 Passed => Int
 
   The number of passed entities.
+
 
 =head2 Skipped => Int
 
   The number of skipped entities.
 
+
 =head2 Stopped => Int
 
   The number of stopped entities.
 
+
 =head2 Total => Int
 
   The total number of entities.
+
 
 =head2 Warned => Int
 

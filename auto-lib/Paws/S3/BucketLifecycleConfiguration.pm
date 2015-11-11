@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::LifecycleRule>]
 
   

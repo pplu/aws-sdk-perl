@@ -42,12 +42,14 @@ responses.
 
 =head1 ATTRIBUTES
 
+
 =head2 ContainerPort => Int
 
   The port number on the container that is bound to the user-specified or
 automatically assigned host port. If you specify a container port and
 not a host port, your container automatically receives a host port in
 the ephemeral port range (for more information, see C<hostPort>).
+
 
 =head2 HostPort => Int
 
@@ -75,6 +77,7 @@ current reserved ports are displayed in the C<remainingResources> of
 DescribeContainerInstances output, and a container instance may have up
 to 50 reserved ports at a time, including the default reserved ports
 (automatically assigned ports do not count toward this limit).
+
 
 =head2 Protocol => Str
 

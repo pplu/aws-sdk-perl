@@ -12,6 +12,7 @@ Paws::Inspector::RunAssessmentResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 RunArn => Str
 
   The ARN specifying the run of the assessment.

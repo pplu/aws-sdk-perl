@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CacheSecurityGroupName => Str
 
   A name for the cache security group. This value is stored as a
@@ -42,6 +43,7 @@ Constraints: Must contain no more than 255 alphanumeric characters.
 Cannot be the word "Default".
 
 Example: C<mysecuritygroup>
+
 
 =head2 B<REQUIRED> Description => Str
 

@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Decisions => ArrayRef[L<Paws::SimpleWorkflow::Decision>]
 
   The list of decisions (possibly empty) made by the decider while
 processing this decision task. See the docs for the decision structure
 for details.
 
+
 =head2 ExecutionContext => Str
 
   User defined context to add to workflow execution.
+
 
 =head2 B<REQUIRED> TaskToken => Str
 

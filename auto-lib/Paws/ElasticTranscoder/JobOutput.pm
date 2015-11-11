@@ -59,9 +59,11 @@ the C<Outputs> object.
 
 =head1 ATTRIBUTES
 
+
 =head2 AlbumArt => L<Paws::ElasticTranscoder::JobAlbumArt>
 
   The album art to be associated with the output file, if any.
+
 
 =head2 AppliedColorSpaceConversion => Str
 
@@ -70,6 +72,7 @@ to transcode the output file, the C<AppliedColorSpaceConversion>
 parameter shows the conversion used. If no C<ColorSpaceConversionMode>
 was defined in the preset, this parameter will not be included in the
 job response.
+
 
 =head2 Captions => L<Paws::ElasticTranscoder::Captions>
 
@@ -131,6 +134,7 @@ page.
 For more information on sidecar files, see the Extensible Metadata
 Platform and Sidecar file Wikipedia pages.
 
+
 =head2 Composition => ArrayRef[L<Paws::ElasticTranscoder::Clip>]
 
   You can create an output file that contains an excerpt from the input
@@ -140,13 +144,16 @@ clips that make up an output file. For the current release, you can
 only specify settings for a single clip per output file. The
 Composition object cannot be null.
 
+
 =head2 Duration => Int
 
   Duration of the output file, in seconds.
 
+
 =head2 DurationMillis => Int
 
   Duration of the output file, in milliseconds.
+
 
 =head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
@@ -155,17 +162,21 @@ apply to your output files. If you choose to use encryption, you must
 specify a mode to use. If you choose not to use encryption, Elastic
 Transcoder will write an unencrypted file to your Amazon S3 bucket.
 
+
 =head2 FileSize => Int
 
   File size of the output file, in bytes.
+
 
 =head2 FrameRate => Str
 
   Frame rate of the output file, in frames per second.
 
+
 =head2 Height => Int
 
   Height of the output file, in pixels.
+
 
 =head2 Id => Str
 
@@ -173,11 +184,13 @@ Transcoder will write an unencrypted file to your Amazon S3 bucket.
 the outputs from the current job. In the Output syntax, this value is
 always 1.
 
+
 =head2 Key => Str
 
   The name to assign to the transcoded file. Elastic Transcoder saves the
 file in the Amazon S3 bucket specified by the C<OutputBucket> object in
 the pipeline that is specified by the pipeline ID.
+
 
 =head2 PresetId => Str
 
@@ -189,6 +202,7 @@ returned in the response when you created the preset. You can also use
 the Elastic Transcoder system presets, which you can get with
 C<ListPresets>.
 
+
 =head2 Rotate => Str
 
   The number of degrees clockwise by which you want Elastic Transcoder to
@@ -199,6 +213,7 @@ C<auto>, C<0>, C<90>, C<180>, C<270>
 
 The value C<auto> generally works only if the file that you're
 transcoding contains rotation metadata.
+
 
 =head2 SegmentDuration => Str
 
@@ -220,6 +235,7 @@ Elastic Transcoder creates an output-specific playlist for each output
 C<HLS> output that you specify in OutputKeys. To add an output to the
 master playlist for this job, include it in the C<OutputKeys> of the
 associated playlist.
+
 
 =head2 Status => Str
 
@@ -250,14 +266,17 @@ the terminal status for C<Job:Status> is also C<Error>.
 The value of C<Status> is one of the following: C<Submitted>,
 C<Progressing>, C<Complete>, C<Canceled>, or C<Error>.
 
+
 =head2 StatusDetail => Str
 
   Information that further explains C<Status>.
+
 
 =head2 ThumbnailEncryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your thumbnail.
+
 
 =head2 ThumbnailPattern => Str
 
@@ -305,6 +324,7 @@ files in the format (.jpg or .png) that appears in the preset that you
 specified in the C<PresetID> value of C<CreateJobOutput>. Elastic
 Transcoder also appends the applicable file name extension.
 
+
 =head2 Watermarks => ArrayRef[L<Paws::ElasticTranscoder::JobWatermark>]
 
   Information about the watermarks that you want Elastic Transcoder to
@@ -319,6 +339,7 @@ added next, and so on. As a result, if the settings in a preset cause
 Elastic Transcoder to place all watermarks in the same location, the
 second watermark that you add will cover the first one, the third one
 will cover the second, and the fourth one will cover the third.
+
 
 =head2 Width => Int
 

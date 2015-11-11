@@ -14,10 +14,12 @@ Paws::ApiGateway::BasePathMappings
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[L<Paws::ApiGateway::BasePathMapping>]
 
   The current page of any BasePathMapping resources in the collection of
 base path mapping resources.
+
 =head2 Position => Str
 
   

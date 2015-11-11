@@ -34,14 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IdentityId => Str
 
   A unique identifier in the format REGION:GUID.
+
 
 =head2 B<REQUIRED> Logins => L<Paws::CognitoIdentity::LoginsMap>
 
   A set of optional name-value pairs that map provider names to provider
 tokens.
+
 
 =head2 B<REQUIRED> LoginsToRemove => ArrayRef[Str]
 

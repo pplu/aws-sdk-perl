@@ -36,9 +36,11 @@ A single tag containing a key and value.
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => Str
 
   The key for a C<Tag>.
+
 
 =head2 Value => Str
 

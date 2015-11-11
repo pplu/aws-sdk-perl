@@ -38,18 +38,22 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 ETag => Str
 
   Entity tag returned when the part was uploaded.
+
 
 =head2 LastModified => Str
 
   Date and time at which the part was uploaded.
 
+
 =head2 PartNumber => Int
 
   Part number identifying the part. This is a positive integer between 1
 and 10,000.
+
 
 =head2 Size => Int
 

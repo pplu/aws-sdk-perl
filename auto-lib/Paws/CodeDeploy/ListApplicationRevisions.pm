@@ -38,10 +38,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ApplicationName => Str
 
   The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
+
 
 =head2 Deployed => Str
 
@@ -62,11 +64,13 @@ target revisions of a deployment group.
 =back
 
 
+
 =head2 NextToken => Str
 
   An identifier that was returned from the previous list application
 revisions call, which can be used to return the next set of
 applications in the list.
+
 
 =head2 S3Bucket => Str
 
@@ -74,10 +78,12 @@ applications in the list.
 
 If set to null, then all of the user's buckets will be searched.
 
+
 =head2 S3KeyPrefix => Str
 
   A specific key prefix for the set of Amazon S3 objects to limit the
 search for revisions.
+
 
 =head2 SortBy => Str
 
@@ -98,6 +104,7 @@ last used in a deployment.
 
 If not specified or set to null, the results will be returned in an
 arbitrary order.
+
 
 =head2 SortOrder => Str
 

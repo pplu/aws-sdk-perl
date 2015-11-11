@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   The object key name to use when a 4XX class error occurs.

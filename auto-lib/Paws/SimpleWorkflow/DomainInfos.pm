@@ -13,9 +13,11 @@ Paws::SimpleWorkflow::DomainInfos
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DomainInfos => ArrayRef[L<Paws::SimpleWorkflow::DomainInfo>]
 
   A list of DomainInfo structures.
+
 =head2 NextPageToken => Str
 
   If a C<NextPageToken> was returned by a previous call, there are more

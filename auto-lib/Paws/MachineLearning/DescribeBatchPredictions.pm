@@ -42,11 +42,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 EQ => Str
 
   The equal to operator. The C<BatchPrediction> results will have
 C<FilterVariable> values that exactly match the value specified with
 C<EQ>.
+
 
 =head2 FilterVariable => Str
 
@@ -80,11 +82,13 @@ Amazon Simple Storage Solution (Amazon S3) bucket or directory.
 =back
 
 
+
 =head2 GE => Str
 
   The greater than or equal to operator. The C<BatchPrediction> results
 will have C<FilterVariable> values that are greater than or equal to
 the value specified with C<GE>.
+
 
 =head2 GT => Str
 
@@ -92,16 +96,19 @@ the value specified with C<GE>.
 C<FilterVariable> values that are greater than the value specified with
 C<GT>.
 
+
 =head2 LE => Str
 
   The less than or equal to operator. The C<BatchPrediction> results will
 have C<FilterVariable> values that are less than or equal to the value
 specified with C<LE>.
 
+
 =head2 Limit => Int
 
   The number of pages of information to include in the result. The range
 of acceptable values is 1 through 100. The default value is 100.
+
 
 =head2 LT => Str
 
@@ -109,14 +116,17 @@ of acceptable values is 1 through 100. The default value is 100.
 C<FilterVariable> values that are less than the value specified with
 C<LT>.
 
+
 =head2 NE => Str
 
   The not equal to operator. The C<BatchPrediction> results will have
 C<FilterVariable> values not equal to the value specified with C<NE>.
 
+
 =head2 NextToken => Str
 
   An ID of the page in the paginated results.
+
 
 =head2 Prefix => Str
 
@@ -143,6 +153,7 @@ strings for the C<Prefix>:
 2014-09-09-Holiday
 
 =back
+
 
 
 =head2 SortOrder => Str

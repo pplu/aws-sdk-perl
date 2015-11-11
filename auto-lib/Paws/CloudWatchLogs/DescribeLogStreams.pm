@@ -37,20 +37,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Descending => Bool
 
   If set to true, results are returned in descending order. If you don't
 specify a value or set it to false, results are returned in ascending
 order.
 
+
 =head2 Limit => Int
 
   The maximum number of items returned in the response. If you don't
 specify a value, the request would return up to 50 items.
 
+
 =head2 B<REQUIRED> LogGroupName => Str
 
   The log group name for which log streams are to be listed.
+
 
 =head2 LogStreamNamePrefix => Str
 
@@ -58,11 +62,13 @@ specify a value, the request would return up to 50 items.
 logStreamNamePrefix. If you don't specify a value, no prefix filter is
 applied.
 
+
 =head2 NextToken => Str
 
   A string token used for pagination that points to the next page of
 results. It must be a value obtained from the response of the previous
 C<DescribeLogStreams> request.
+
 
 =head2 OrderBy => Str
 

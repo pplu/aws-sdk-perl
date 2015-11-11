@@ -38,17 +38,21 @@ Information about a certificate.
 
 =head1 ATTRIBUTES
 
+
 =head2 CertificateArn => Str
 
   The ARN of the certificate.
+
 
 =head2 CertificateId => Str
 
   The ID of the certificate.
 
+
 =head2 CreationDate => Str
 
   The date and time the certificate was created.
+
 
 =head2 Status => Str
 

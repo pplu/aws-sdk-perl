@@ -37,12 +37,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
@@ -115,12 +117,14 @@ C<not-applicable>).
 =back
 
 
+
 =head2 IncludeAllInstances => Bool
 
   When C<true>, includes the health status for all instances. When
 C<false>, includes the health status for running instances only.
 
 Default: C<false>
+
 
 =head2 InstanceIds => ArrayRef[Str]
 
@@ -130,6 +134,7 @@ Default: Describes all your instances.
 
 Constraints: Maximum 100 explicitly specified instance IDs.
 
+
 =head2 MaxResults => Int
 
   The maximum number of results to return for the request in a single
@@ -138,6 +143,7 @@ sending another request with the returned C<NextToken> value. This
 value can be between 5 and 1000; if C<MaxResults> is given a value
 larger than 1000, only 1000 results are returned. You cannot specify
 this parameter and the instance IDs parameter in the same request.
+
 
 =head2 NextToken => Str
 

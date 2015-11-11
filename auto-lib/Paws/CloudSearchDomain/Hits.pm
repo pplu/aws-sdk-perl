@@ -38,18 +38,22 @@ The collection of documents that match the search request.
 
 =head1 ATTRIBUTES
 
+
 =head2 Cursor => Str
 
   A cursor that can be used to retrieve the next set of matching
 documents when you want to page through a large result set.
 
+
 =head2 Found => Int
 
   The total number of documents that match the search request.
 
+
 =head2 Hit => ArrayRef[L<Paws::CloudSearchDomain::Hit>]
 
   A document that matches the search request.
+
 
 =head2 Start => Int
 

@@ -40,10 +40,12 @@ Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IpFilter => L<Paws::SES::ReceiptIpFilter>
 
   A structure that provides the IP addresses to block or allow, and
 whether to block or allow incoming mail from them.
+
 
 =head2 B<REQUIRED> Name => Str
 

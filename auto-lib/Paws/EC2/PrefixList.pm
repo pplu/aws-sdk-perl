@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Cidrs => ArrayRef[Str]
 
   The IP address range of the AWS service.
 
+
 =head2 PrefixListId => Str
 
   The ID of the prefix.
+
 
 =head2 PrefixListName => Str
 

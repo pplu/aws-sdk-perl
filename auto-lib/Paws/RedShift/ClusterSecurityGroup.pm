@@ -39,24 +39,29 @@ Describes a security group.
 
 =head1 ATTRIBUTES
 
+
 =head2 ClusterSecurityGroupName => Str
 
   The name of the cluster security group to which the operation was
 applied.
 
+
 =head2 Description => Str
 
   A description of the security group.
+
 
 =head2 EC2SecurityGroups => ArrayRef[L<Paws::RedShift::EC2SecurityGroup>]
 
   A list of EC2 security groups that are permitted to access clusters
 associated with this cluster security group.
 
+
 =head2 IPRanges => ArrayRef[L<Paws::RedShift::IPRange>]
 
   A list of IP ranges (CIDR blocks) that are permitted to access clusters
 associated with this cluster security group.
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

@@ -12,6 +12,7 @@ Paws::DeviceFarm::ScheduleRunResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Run => L<Paws::DeviceFarm::Run>
 
   Information about the scheduled run.

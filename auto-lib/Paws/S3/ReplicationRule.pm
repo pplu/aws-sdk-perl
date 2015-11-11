@@ -38,20 +38,24 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Destination => L<Paws::S3::Destination>
 
   
+
 
 =head2 ID => Str
 
   Unique identifier for the rule. The value cannot be longer than 255
 characters.
 
+
 =head2 B<REQUIRED> Prefix => Str
 
   Object keyname prefix identifying one or more objects to which the rule
 applies. Maximum prefix length can be up to 1,024 characters.
 Overlapping prefixes are not supported.
+
 
 =head2 B<REQUIRED> Status => Str
 

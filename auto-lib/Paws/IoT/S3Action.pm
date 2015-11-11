@@ -37,13 +37,16 @@ Describes an action to write data to an Amazon S3 bucket.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> BucketName => Str
 
   The S3 bucket.
 
+
 =head2 B<REQUIRED> Key => Str
 
   The object key.
+
 
 =head2 B<REQUIRED> RoleArn => Str
 

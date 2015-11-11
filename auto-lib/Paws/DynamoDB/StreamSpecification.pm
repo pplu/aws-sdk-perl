@@ -36,10 +36,12 @@ Represents the DynamoDB Streams configuration for a table in DynamoDB.
 
 =head1 ATTRIBUTES
 
+
 =head2 StreamEnabled => Bool
 
   Indicates whether DynamoDB Streams is enabled (true) or disabled
 (false) on the table.
+
 
 =head2 StreamViewType => Str
 

@@ -50,15 +50,18 @@ Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 Actions => ArrayRef[L<Paws::SES::ReceiptAction>]
 
   An ordered list of actions to perform on messages that match at least
 one of the recipient email addresses or domains specified in the
 receipt rule.
 
+
 =head2 Enabled => Bool
 
   If C<true>, the receipt rule is active. The default value is true.
+
 
 =head2 B<REQUIRED> Name => Str
 
@@ -76,16 +79,19 @@ receipt rule.
 =back
 
 
+
 =head2 Recipients => ArrayRef[Str]
 
   The recipient domains and email addresses to which the receipt rule
 applies. If this field is not specified, this rule will match all
 recipients under all verified domains.
 
+
 =head2 ScanEnabled => Bool
 
   If C<true>, then messages to which this receipt rule applies are
 scanned for spam and viruses. The default value is C<true>.
+
 
 =head2 TlsPolicy => Str
 

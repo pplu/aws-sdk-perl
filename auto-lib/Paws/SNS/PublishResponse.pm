@@ -13,6 +13,7 @@ Paws::SNS::PublishResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 MessageId => Str
 
   Unique identifier assigned to the published message.

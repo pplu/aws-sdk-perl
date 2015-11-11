@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GroupName => Str
 
   The name (friendly name, not ARN) identifying the group that the policy
 is embedded in.
+
 
 =head2 B<REQUIRED> PolicyName => Str
 

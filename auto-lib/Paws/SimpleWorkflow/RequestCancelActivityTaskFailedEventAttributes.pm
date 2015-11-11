@@ -37,10 +37,12 @@ Provides details of the C<RequestCancelActivityTaskFailed> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActivityId => Str
 
   The activityId provided in the C<RequestCancelActivityTask> decision
 that failed.
+
 
 =head2 B<REQUIRED> Cause => Str
 
@@ -50,6 +52,7 @@ and can be useful for diagnostic purposes.
 If B<cause> is set to OPERATION_NOT_PERMITTED, the decision failed
 because it lacked sufficient permissions. For details and example IAM
 policies, see Using IAM to Manage Access to Amazon SWF Workflows.
+
 
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 

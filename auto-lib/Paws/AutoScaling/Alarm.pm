@@ -36,9 +36,11 @@ Describes an alarm.
 
 =head1 ATTRIBUTES
 
+
 =head2 AlarmARN => Str
 
   The Amazon Resource Name (ARN) of the alarm.
+
 
 =head2 AlarmName => Str
 

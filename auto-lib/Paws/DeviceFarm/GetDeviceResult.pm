@@ -12,6 +12,7 @@ Paws::DeviceFarm::GetDeviceResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Device => L<Paws::DeviceFarm::Device>
 
   

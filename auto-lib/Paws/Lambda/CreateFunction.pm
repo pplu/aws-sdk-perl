@@ -42,14 +42,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Code => L<Paws::Lambda::FunctionCode>
 
   The code for the Lambda function.
+
 
 =head2 Description => Str
 
   A short, user-defined function description. Lambda does not use this
 value. Assign a meaningful description as you see fit.
+
 
 =head2 B<REQUIRED> FunctionName => Str
 
@@ -64,6 +67,7 @@ character in length. The function names appear in the console and are
 returned in the ListFunctions API. Function names are used to specify
 functions to other AWS Lambda APIs, such as Invoke.
 
+
 =head2 B<REQUIRED> Handler => Str
 
   The function within your code that Lambda calls to begin execution. For
@@ -71,6 +75,7 @@ Node.js, it is the I<module-name>.I<export> value in your function. For
 Java, it can be C<package.class-name::handler> or
 C<package.class-name>. For more information, see Lambda Function
 Handler (Java).
+
 
 =head2 MemorySize => Int
 
@@ -81,10 +86,12 @@ requirements. For example, a database operation might need less memory
 compared to an image processing function. The default value is 128 MB.
 The value must be a multiple of 64 MB.
 
+
 =head2 Publish => Bool
 
   This boolean parameter can be used to request AWS Lambda to create the
 Lambda function and publish a version as an atomic operation.
+
 
 =head2 B<REQUIRED> Role => Str
 
@@ -92,10 +99,12 @@ Lambda function and publish a version as an atomic operation.
 it executes your function to access any other Amazon Web Services (AWS)
 resources. For more information, see AWS Lambda: How it Works
 
+
 =head2 B<REQUIRED> Runtime => Str
 
   The runtime environment for the Lambda function you are uploading.
 Currently, Lambda supports "java" and "nodejs" as the runtime.
+
 
 =head2 Timeout => Int
 

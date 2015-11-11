@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 EnvironmentId => Str
 
   The ID of the environment to terminate.
@@ -42,6 +43,7 @@ Condition: You must specify either this or an EnvironmentName, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
+
 =head2 EnvironmentName => Str
 
   The name of the environment to terminate.
@@ -49,6 +51,7 @@ C<MissingRequiredParameter> error.
 Condition: You must specify either this or an EnvironmentId, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
+
 
 =head2 TerminateResources => Bool
 

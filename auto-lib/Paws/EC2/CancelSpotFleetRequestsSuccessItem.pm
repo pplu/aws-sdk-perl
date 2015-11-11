@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CurrentSpotFleetRequestState => Str
 
   The current state of the Spot fleet request.
 
+
 =head2 B<REQUIRED> PreviousSpotFleetRequestState => Str
 
   The previous state of the Spot fleet request.
+
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 

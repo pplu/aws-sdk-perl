@@ -47,38 +47,47 @@ values.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowedValues => Str
 
   The allowed values of the option setting.
+
 
 =head2 ApplyType => Str
 
   The DB engine specific parameter type.
 
+
 =head2 DataType => Str
 
   The data type of the option setting.
+
 
 =head2 DefaultValue => Str
 
   The default value of the option setting.
 
+
 =head2 Description => Str
 
   The description of the option setting.
 
+
 =head2 IsCollection => Bool
 
   Indicates if the option setting is part of a collection.
+
 
 =head2 IsModifiable => Bool
 
   A Boolean value that, when true, indicates the option setting can be
 modified from the default.
 
+
 =head2 Name => Str
 
   The name of the option that has settings that you can set.
+
 
 =head2 Value => Str
 

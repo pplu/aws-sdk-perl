@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Identity => Str
 
   The identity to which the policy will apply. You can specify an
@@ -43,12 +44,14 @@ C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
 
 To successfully call this API, you must own the identity.
 
+
 =head2 B<REQUIRED> Policy => Str
 
   The text of the policy in JSON format. The policy cannot exceed 4 KB.
 
 For information about the syntax of sending authorization policies, see
 the Amazon SES Developer Guide.
+
 
 =head2 B<REQUIRED> PolicyName => Str
 

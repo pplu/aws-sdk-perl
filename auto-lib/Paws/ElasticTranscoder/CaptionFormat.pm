@@ -38,10 +38,12 @@ Elastic Transcoder returns an error.
 
 =head1 ATTRIBUTES
 
+
 =head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your caption formats.
+
 
 =head2 Format => Str
 
@@ -103,6 +105,7 @@ B<Non-FMP4 outputs>: All sidecar types
 C<fmp4> captions have an extension of C<.ismt>
 
 =back
+
 
 
 =head2 Pattern => Str

@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => Str
 
   The name of a DHCP option.
+
 
 =head2 Values => ArrayRef[L<Paws::EC2::AttributeValue>]
 

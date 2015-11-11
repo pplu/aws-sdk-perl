@@ -36,6 +36,7 @@ Gateway Protocol (BGP) over a public virtual interface.
 
 =head1 ATTRIBUTES
 
+
 =head2 Cidr => Str
 
   CIDR notation for the advertised route. Multiple routes are separated

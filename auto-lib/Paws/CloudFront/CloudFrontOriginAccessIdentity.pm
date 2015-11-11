@@ -37,13 +37,16 @@ CloudFront origin access identity.
 
 =head1 ATTRIBUTES
 
+
 =head2 CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>
 
   The current configuration information for the identity.
 
+
 =head2 B<REQUIRED> Id => Str
 
   The ID for the origin access identity. For example: E74FTE3AJFJ256A.
+
 
 =head2 B<REQUIRED> S3CanonicalUserId => Str
 

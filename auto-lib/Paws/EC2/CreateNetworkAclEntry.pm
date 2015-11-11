@@ -40,10 +40,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CidrBlock => Str
 
   The network range to allow or deny, in CIDR notation (for example
 C<172.16.0.0/24>).
+
 
 =head2 DryRun => Bool
 
@@ -52,31 +54,38 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 B<REQUIRED> Egress => Bool
 
   Indicates whether this is an egress rule (rule is applied to traffic
 leaving the subnet).
+
 
 =head2 IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>
 
   ICMP protocol: The ICMP type and code. Required if specifying ICMP for
 the protocol.
 
+
 =head2 B<REQUIRED> NetworkAclId => Str
 
   The ID of the network ACL.
+
 
 =head2 PortRange => L<Paws::EC2::PortRange>
 
   TCP or UDP protocols: The range of ports the rule applies to.
 
+
 =head2 B<REQUIRED> Protocol => Str
 
   The protocol. A value of -1 means all protocols.
 
+
 =head2 B<REQUIRED> RuleAction => Str
 
   Indicates whether to allow or deny the traffic that matches the rule.
+
 
 =head2 B<REQUIRED> RuleNumber => Int
 

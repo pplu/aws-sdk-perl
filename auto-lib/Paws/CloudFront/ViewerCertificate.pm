@@ -39,12 +39,14 @@ this distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 CloudFrontDefaultCertificate => Bool
 
   If you want viewers to use HTTPS to request your objects and you're
 using the CloudFront domain name of your distribution in your object
 URLs (for example, https://d111111abcdef8.cloudfront.net/logo.jpg), set
 to true. Omit this value if you are setting an IAMCertificateId.
+
 
 =head2 IAMCertificateId => Str
 
@@ -53,6 +55,7 @@ using an alternate domain name in your object URLs (for example,
 https://example.com/logo.jpg), specify the IAM certificate identifier
 of the custom viewer certificate for this distribution. Specify either
 this value or CloudFrontDefaultCertificate.
+
 
 =head2 MinimumProtocolVersion => Str
 
@@ -68,6 +71,7 @@ you can choose SSLv3 or TLSv1 as the MinimumProtocolVersion. If you're
 using a custom certificate (if you specify a value for
 IAMCertificateId) and if you're using SNI (if you specify sni-only for
 SSLSupportMethod), you must specify TLSv1 for MinimumProtocolVersion.
+
 
 =head2 SSLSupportMethod => Str
 

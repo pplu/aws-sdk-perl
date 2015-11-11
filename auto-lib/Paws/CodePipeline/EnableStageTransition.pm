@@ -34,16 +34,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> PipelineName => Str
 
   The name of the pipeline in which you want to enable the flow of
 artifacts from one stage to another.
+
 
 =head2 B<REQUIRED> StageName => Str
 
   The name of the stage where you want to enable the transition of
 artifacts, either into the stage (inbound) or from that stage to the
 next stage (outbound).
+
 
 =head2 B<REQUIRED> TransitionType => Str
 

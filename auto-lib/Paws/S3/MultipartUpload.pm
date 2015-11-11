@@ -40,25 +40,31 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Initiated => Str
 
   Date and time at which the multipart upload was initiated.
+
 
 =head2 Initiator => L<Paws::S3::Initiator>
 
   Identifies who initiated the multipart upload.
 
+
 =head2 Key => Str
 
   Key of the object for which the multipart upload was initiated.
+
 
 =head2 Owner => L<Paws::S3::Owner>
 
   
 
+
 =head2 StorageClass => Str
 
   The class of storage used to store the object.
+
 
 =head2 UploadId => Str
 

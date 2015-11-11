@@ -36,9 +36,11 @@ Represents the status of an export task.
 
 =head1 ATTRIBUTES
 
+
 =head2 CompletionTime => Int
 
   A point in time when the export task got completed.
+
 
 =head2 CreationTime => Int
 

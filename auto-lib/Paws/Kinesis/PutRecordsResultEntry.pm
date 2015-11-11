@@ -42,10 +42,12 @@ ErrorMessage in the result.
 
 =head1 ATTRIBUTES
 
+
 =head2 ErrorCode => Str
 
   The error code for an individual record result. C<ErrorCodes> can be
 either C<ProvisionedThroughputExceededException> or C<InternalFailure>.
+
 
 =head2 ErrorMessage => Str
 
@@ -55,9 +57,11 @@ that includes the account ID, stream name, and shard ID. An
 C<ErrorCode> value of C<InternalFailure> has the error message
 C<"Internal Service Failure">.
 
+
 =head2 SequenceNumber => Str
 
   The sequence number for an individual record result.
+
 
 =head2 ShardId => Str
 

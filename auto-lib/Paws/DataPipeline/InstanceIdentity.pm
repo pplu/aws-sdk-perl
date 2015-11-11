@@ -41,11 +41,13 @@ AWS Data Pipeline service charges are applied to your pipeline.
 
 =head1 ATTRIBUTES
 
+
 =head2 Document => Str
 
   A description of an EC2 instance that is generated when the instance is
 launched and exposed to the instance via the instance metadata service
 in the form of a JSON representation of an object.
+
 
 =head2 Signature => Str
 

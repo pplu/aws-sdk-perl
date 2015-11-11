@@ -37,15 +37,18 @@ Details on a volume mount point that is used in a container definition.
 
 =head1 ATTRIBUTES
 
+
 =head2 ContainerPath => Str
 
   The path on the container to mount the host volume at.
+
 
 =head2 ReadOnly => Bool
 
   If this value is C<true>, the container has read-only access to the
 volume. If this value is C<false>, then the container can write to the
 volume. The default value is C<false>.
+
 
 =head2 SourceVolume => Str
 

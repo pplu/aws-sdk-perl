@@ -13,6 +13,7 @@ Paws::SES::SendBounceResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 MessageId => Str
 
   The message ID of the bounce message.

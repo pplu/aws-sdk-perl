@@ -13,9 +13,11 @@ Paws::SimpleWorkflow::PendingTaskCount
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Count => Int
 
   The number of tasks in the task list.
+
 =head2 Truncated => Bool
 
   If set to true, indicates that the actual count was more than the

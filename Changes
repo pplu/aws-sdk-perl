@@ -1,4 +1,6 @@
 0.19
+ - Fix issues with POD documentation. Some head2 tags didn't have a newline above
+   them, causing them to not behave as head tags
  - We were having problems checking error messages for dns and connection failures
    Different messages on different platforms / locales were making tests fail, and
    Paws harder to install

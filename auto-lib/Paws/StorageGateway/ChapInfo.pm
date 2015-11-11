@@ -40,19 +40,23 @@ initiators.
 
 =head1 ATTRIBUTES
 
+
 =head2 InitiatorName => Str
 
   The iSCSI initiator that connects to the target.
+
 
 =head2 SecretToAuthenticateInitiator => Str
 
   The secret key that the initiator (for example, the Windows client)
 must provide to participate in mutual CHAP with the target.
 
+
 =head2 SecretToAuthenticateTarget => Str
 
   The secret key that the target must provide to participate in mutual
 CHAP with the initiator (e.g. Windows client).
+
 
 =head2 TargetARN => Str
 

@@ -39,9 +39,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   A description for the EBS snapshot.
+
 
 =head2 DestinationRegion => Str
 
@@ -55,12 +57,14 @@ you send the HTTP request to, such as C<ec2.us-east-1.amazonaws.com>
 (in the AWS CLI, this is specified with the C<--region> parameter or
 the default region in your AWS configuration file).
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 Encrypted => Bool
 
@@ -71,6 +75,7 @@ with this flag. The default CMK for EBS is used unless a non-default
 AWS Key Management Service (AWS KMS) CMK is specified with C<KmsKeyId>.
 For more information, see Amazon EBS Encryption in the I<Amazon Elastic
 Compute Cloud User Guide>.
+
 
 =head2 KmsKeyId => Str
 
@@ -84,6 +89,7 @@ arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd5
 The specified CMK must exist in the region that the snapshot is being
 copied to. If a C<KmsKeyId> is specified, the C<Encrypted> flag must
 also be set.
+
 
 =head2 PresignedUrl => Str
 
@@ -101,9 +107,11 @@ I<Amazon Simple Storage Service API Reference>. An invalid or
 improperly signed C<PresignedUrl> will cause the copy operation to fail
 asynchronously, and the snapshot will move to an C<error> state.
 
+
 =head2 B<REQUIRED> SourceRegion => Str
 
   The ID of the region that contains the snapshot to be copied.
+
 
 =head2 B<REQUIRED> SourceSnapshotId => Str
 

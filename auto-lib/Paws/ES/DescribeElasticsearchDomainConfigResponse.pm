@@ -13,6 +13,7 @@ Paws::ES::DescribeElasticsearchDomainConfigResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DomainConfig => L<Paws::ES::ElasticsearchDomainConfig>
 
   The configuration information of the domain requested in the

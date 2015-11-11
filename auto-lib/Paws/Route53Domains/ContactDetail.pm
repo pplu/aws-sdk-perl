@@ -48,6 +48,7 @@ ContactDetail includes the following elements.
 
 =head1 ATTRIBUTES
 
+
 =head2 AddressLine1 => Str
 
   First line of the contact's address.
@@ -61,6 +62,7 @@ Constraints: Maximum 255 characters.
 Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
+
 
 =head2 AddressLine2 => Str
 
@@ -76,6 +78,7 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: No
 
+
 =head2 City => Str
 
   The city of the contact's address.
@@ -89,6 +92,7 @@ Constraints: Maximum 255 characters.
 Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
+
 
 =head2 ContactType => Str
 
@@ -109,6 +113,7 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
+
 =head2 CountryCode => Str
 
   Code for the country of the contact's address.
@@ -122,6 +127,7 @@ Constraints: Maximum 255 characters.
 Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
+
 
 =head2 Email => Str
 
@@ -137,6 +143,7 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
+
 =head2 ExtraParams => ArrayRef[L<Paws::Route53Domains::ExtraParam>]
 
   A list of name-value pairs for parameters required by certain top-level
@@ -151,6 +158,7 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 Children: C<Name>, C<Value>
 
 Required: No
+
 
 =head2 Fax => Str
 
@@ -168,6 +176,7 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: No
 
+
 =head2 FirstName => Str
 
   First name of contact.
@@ -181,6 +190,7 @@ Constraints: Maximum 255 characters.
 Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
+
 
 =head2 LastName => Str
 
@@ -196,6 +206,7 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
+
 =head2 OrganizationName => Str
 
   Name of the organization for contact types other than C<PERSON>.
@@ -210,6 +221,7 @@ C<PERSON>.
 Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: No
+
 
 =head2 PhoneNumber => Str
 
@@ -227,6 +239,7 @@ Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: Yes
 
+
 =head2 State => Str
 
   The state or province of the contact's city.
@@ -240,6 +253,7 @@ Constraints: Maximum 255 characters.
 Parents: C<RegistrantContact>, C<AdminContact>, C<TechContact>
 
 Required: No
+
 
 =head2 ZipCode => Str
 

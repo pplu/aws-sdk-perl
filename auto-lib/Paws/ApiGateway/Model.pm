@@ -17,18 +17,23 @@ Paws::ApiGateway::Model
 
 =head1 ATTRIBUTES
 
+
 =head2 ContentType => Str
 
   The content-type for the model.
+
 =head2 Description => Str
 
   The description of the model.
+
 =head2 Id => Str
 
   The identifier for the model resource.
+
 =head2 Name => Str
 
   The name of the model.
+
 =head2 Schema => Str
 
   The schema for the model. For C<application/json> models, this should

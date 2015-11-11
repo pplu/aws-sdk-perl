@@ -40,9 +40,11 @@ GetAccountAuthorizationDetails action.
 
 =head1 ATTRIBUTES
 
+
 =head2 PolicyDocument => Str
 
   The policy document.
+
 
 =head2 PolicyName => Str
 

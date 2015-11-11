@@ -36,9 +36,11 @@ Describes an association of an SSM document and an instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 InstanceId => Str
 
   The ID of the instance.
+
 
 =head2 Name => Str
 

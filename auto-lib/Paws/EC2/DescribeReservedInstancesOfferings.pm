@@ -45,9 +45,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZone => Str
 
   The Availability Zone in which the Reserved Instance can be used.
+
 
 =head2 DryRun => Bool
 
@@ -55,6 +57,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
@@ -115,9 +118,11 @@ C<usage-price> - The usage price of the Reserved Instance, per hour
 =back
 
 
+
 =head2 IncludeMarketplace => Bool
 
   Include Marketplace offerings in the response.
+
 
 =head2 InstanceTenancy => Str
 
@@ -127,11 +132,13 @@ launched within a VPC.
 
 Default: C<default>
 
+
 =head2 InstanceType => Str
 
   The instance type on which the Reserved Instance can be used. For more
 information, see Instance Types in the I<Amazon Elastic Compute Cloud
 User Guide>.
+
 
 =head2 MaxDuration => Int
 
@@ -140,11 +147,13 @@ offerings.
 
 Default: 94608000 (3 years)
 
+
 =head2 MaxInstanceCount => Int
 
   The maximum number of instances to filter when searching for offerings.
 
 Default: 20
+
 
 =head2 MaxResults => Int
 
@@ -155,6 +164,7 @@ maximum is 100.
 
 Default: 100
 
+
 =head2 MinDuration => Int
 
   The minimum duration (in seconds) to filter when searching for
@@ -162,9 +172,11 @@ offerings.
 
 Default: 2592000 (1 month)
 
+
 =head2 NextToken => Str
 
   The token to retrieve the next page of results.
+
 
 =head2 OfferingType => Str
 
@@ -172,10 +184,12 @@ Default: 2592000 (1 month)
 predate the 2011-11-01 API version, you only have access to the
 C<Medium Utilization> Reserved Instance offering type.
 
+
 =head2 ProductDescription => Str
 
   The Reserved Instance product platform description. Instances that
 include C<(Amazon VPC)> in the description are for use with Amazon VPC.
+
 
 =head2 ReservedInstancesOfferingIds => ArrayRef[Str]
 

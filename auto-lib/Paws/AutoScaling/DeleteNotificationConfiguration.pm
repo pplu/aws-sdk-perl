@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name of the Auto Scaling group.
+
 
 =head2 B<REQUIRED> TopicARN => Str
 

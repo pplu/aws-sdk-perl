@@ -38,6 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
   The customer-assigned name of the DB instance that contains the log
@@ -56,30 +57,36 @@ Constraints:
 =back
 
 
+
 =head2 FileLastWritten => Int
 
   Filters the available log files for files written since the specified
 date, in POSIX timestamp format with milliseconds.
+
 
 =head2 FilenameContains => Str
 
   Filters the available log files for log file names that contain the
 specified string.
 
+
 =head2 FileSize => Int
 
   Filters the available log files for files larger than the specified
 size.
 
+
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
   This parameter is not currently supported.
+
 
 =head2 Marker => Str
 
   The pagination token provided in the previous request. If this
 parameter is specified the response includes only records beyond the
 marker, up to MaxRecords.
+
 
 =head2 MaxRecords => Int
 

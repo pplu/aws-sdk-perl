@@ -13,6 +13,7 @@ Paws::SNS::GetSubscriptionAttributesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::SNS::SubscriptionAttributesMap>
 
   A map of the subscription's attributes. Attributes in this map include

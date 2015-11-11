@@ -37,15 +37,18 @@ Modify an instance group size.
 
 =head1 ATTRIBUTES
 
+
 =head2 EC2InstanceIdsToTerminate => ArrayRef[Str]
 
   The EC2 InstanceIds to terminate. For advanced users only. Once you
 terminate the instances, the instance group will not return to its
 original requested size.
 
+
 =head2 InstanceCount => Int
 
   Target size for the instance group.
+
 
 =head2 B<REQUIRED> InstanceGroupId => Str
 

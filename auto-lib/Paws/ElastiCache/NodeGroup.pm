@@ -38,19 +38,23 @@ Represents a collection of cache nodes in a replication group.
 
 =head1 ATTRIBUTES
 
+
 =head2 NodeGroupId => Str
 
   The identifier for the node group. A replication group contains only
 one node group; therefore, the node group ID is 0001.
+
 
 =head2 NodeGroupMembers => ArrayRef[L<Paws::ElastiCache::NodeGroupMember>]
 
   A list containing information about individual nodes within the node
 group.
 
+
 =head2 PrimaryEndpoint => L<Paws::ElastiCache::Endpoint>
 
   
+
 
 =head2 Status => Str
 

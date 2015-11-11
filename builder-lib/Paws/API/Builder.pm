@@ -285,7 +285,7 @@ package Paws::API::Builder {
 =head1 ATTRIBUTES
 
 [% FOREACH param_name IN shape.members.keys.sort -%]
-  [%- member = c.shape(shape.members.$param_name.shape) -%]
+  [%- member = c.shape(shape.members.$param_name.shape) %]
 =head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
   [% c.doc_for_param_name_in_shape(shape, param_name) %]
@@ -318,7 +318,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 [% FOREACH param_name IN shape.members.keys.sort -%]
-  [%- member = c.shape(shape.members.$param_name.shape) -%]
+  [%- member = c.shape(shape.members.$param_name.shape) %]
 =head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
   [% c.doc_for_param_name_in_shape(shape, param_name) %]
@@ -440,7 +440,7 @@ Use accessors for each attribute. If Att1 is expected to be an [% inner_class %]
 =head1 ATTRIBUTES
 
 [% FOREACH param_name IN shape.members.keys.sort -%]
-  [%- member = c.shape(shape.members.$param_name.shape) -%]
+  [%- member = c.shape(shape.members.$param_name.shape) %]
 =head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
   [% c.doc_for_param_name_in_shape(shape, param_name) %]
@@ -772,7 +772,7 @@ Use accessors for each attribute. If Att1 is expected to be an [% inner_class %]
 
 =head1 ATTRIBUTES
 
-[% FOREACH param_name IN keys_shape.enum.sort -%]
+[% FOREACH param_name IN keys_shape.enum.sort %]
 =head2 [% param_name %] => [% c.perl_type_to_pod(c.get_caller_class_type(iclass.value.shape)) %]
 
 [% END %]

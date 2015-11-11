@@ -39,21 +39,26 @@ Provides the current status of the entity.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CreationDate => Str
 
   Timestamp which tells the creation date for the entity.
+
 
 =head2 PendingDeletion => Bool
 
   Indicates whether the Elasticsearch domain is being deleted.
 
+
 =head2 B<REQUIRED> State => Str
 
   Provides the C<OptionState> for the Elasticsearch domain.
 
+
 =head2 B<REQUIRED> UpdateDate => Str
 
   Timestamp which tells the last updated time for the entity.
+
 
 =head2 UpdateVersion => Int
 

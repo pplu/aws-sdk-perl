@@ -47,17 +47,21 @@ Represents the output of one of the following actions:
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheSubnetGroupDescription => Str
 
   The description of the cache subnet group.
+
 
 =head2 CacheSubnetGroupName => Str
 
   The name of the cache subnet group.
 
+
 =head2 Subnets => ArrayRef[L<Paws::ElastiCache::Subnet>]
 
   A list of subnets associated with the cache subnet group.
+
 
 =head2 VpcId => Str
 

@@ -43,14 +43,17 @@ Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 BounceType => Str
 
   The reason for the bounce. You must provide either this parameter or
 C<RecipientDsnFields>.
 
+
 =head2 B<REQUIRED> Recipient => Str
 
   The email address of the recipient of the bounced email.
+
 
 =head2 RecipientArn => Str
 
@@ -59,6 +62,7 @@ the identity that is associated with the sending authorization policy
 that permits you to receive email for the recipient of the bounced
 email. For more information about sending authorization, see the Amazon
 SES Developer Guide.
+
 
 =head2 RecipientDsnFields => L<Paws::SES::RecipientDsnFields>
 

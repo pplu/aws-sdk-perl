@@ -13,6 +13,7 @@ Paws::ECS::ListTaskDefinitionsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   The C<nextToken> value to include in a future C<ListTaskDefinitions>
@@ -20,6 +21,7 @@ request. When the results of a C<ListTaskDefinitions> request exceed
 C<maxResults>, this value can be used to retrieve the next page of
 results. This value is C<null> when there are no more results to
 return.
+
 =head2 TaskDefinitionArns => ArrayRef[Str]
 
   The list of task definition Amazon Resource Name (ARN) entries for the

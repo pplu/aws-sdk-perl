@@ -41,30 +41,37 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 CidrBlock => Str
 
   The CIDR block for the VPC.
+
 
 =head2 DhcpOptionsId => Str
 
   The ID of the set of DHCP options you've associated with the VPC (or
 C<default> if the default options are associated with the VPC).
 
+
 =head2 InstanceTenancy => Str
 
   The allowed tenancy of instances launched into the VPC.
+
 
 =head2 IsDefault => Bool
 
   Indicates whether the VPC is the default VPC.
 
+
 =head2 State => Str
 
   The current state of the VPC.
 
+
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the VPC.
+
 
 =head2 VpcId => Str
 

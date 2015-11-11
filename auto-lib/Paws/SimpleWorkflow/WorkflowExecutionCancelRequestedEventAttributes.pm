@@ -37,12 +37,14 @@ Provides details of the C<WorkflowExecutionCancelRequested> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Cause => Str
 
   If set, indicates that the request to cancel the workflow execution was
 automatically generated, and specifies the cause. This happens if the
 parent workflow execution times out or is terminated, and the child
 policy is set to cancel child executions.
+
 
 =head2 ExternalInitiatedEventId => Int
 
@@ -52,6 +54,7 @@ to cancel this workflow execution.The source event with this ID can be
 found in the history of the source workflow execution. This information
 can be useful for diagnosing problems by tracing back the chain of
 events leading up to this event.
+
 
 =head2 ExternalWorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 

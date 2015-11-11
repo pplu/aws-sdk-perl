@@ -40,25 +40,31 @@ The basic data structure of a dataset.
 
 =head1 ATTRIBUTES
 
+
 =head2 DeviceLastModifiedDate => Str
 
   The last modified date of the client device.
+
 
 =head2 Key => Str
 
   The key for the record.
 
+
 =head2 LastModifiedBy => Str
 
   The user/device that made the last change to this record.
+
 
 =head2 LastModifiedDate => Str
 
   The date on which the record was last modified.
 
+
 =head2 SyncCount => Int
 
   The server sync count for this record.
+
 
 =head2 Value => Str
 

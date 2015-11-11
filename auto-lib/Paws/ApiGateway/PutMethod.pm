@@ -40,23 +40,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ApiKeyRequired => Bool
 
   Specifies whether the method required a valid ApiKey.
+
 
 =head2 B<REQUIRED> AuthorizationType => Str
 
   Specifies the type of authorization used for the method.
 
+
 =head2 B<REQUIRED> HttpMethod => Str
 
   Specifies the put method request's HTTP method type.
+
 
 =head2 RequestModels => L<Paws::ApiGateway::MapOfStringToString>
 
   Specifies the Model resources used for the request's content type.
 Request models are represented as a key/value map, with a content type
 as the key and a Model name as the value.
+
 
 =head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
 
@@ -70,9 +75,11 @@ C<integration.request.{location}.{name}>, where C<location> is either
 querystring, path, or header. C<name> must be a valid, unique parameter
 name.
 
+
 =head2 B<REQUIRED> ResourceId => Str
 
   The Resource identifier for the new Method resource.
+
 
 =head2 B<REQUIRED> RestApiId => Str
 

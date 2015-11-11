@@ -39,22 +39,27 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 IsLatest => Bool
 
   Specifies whether the object is (true) or is not (false) the latest
 version of an object.
 
+
 =head2 Key => Str
 
   The object key.
+
 
 =head2 LastModified => Str
 
   Date and time the object was last modified.
 
+
 =head2 Owner => L<Paws::S3::Owner>
 
   
+
 
 =head2 VersionId => Str
 

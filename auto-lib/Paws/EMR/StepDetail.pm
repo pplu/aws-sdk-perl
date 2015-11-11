@@ -36,9 +36,11 @@ Combines the execution state and configuration of a step.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ExecutionStatusDetail => L<Paws::EMR::StepExecutionStatusDetail>
 
   The description of the step status.
+
 
 =head2 B<REQUIRED> StepConfig => L<Paws::EMR::StepConfig>
 

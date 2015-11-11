@@ -38,13 +38,16 @@ DescribeDBSubnetGroups action.
 
 =head1 ATTRIBUTES
 
+
 =head2 SubnetAvailabilityZone => L<Paws::RDS::AvailabilityZone>
 
   
 
+
 =head2 SubnetIdentifier => Str
 
   Specifies the identifier of the subnet.
+
 
 =head2 SubnetStatus => Str
 

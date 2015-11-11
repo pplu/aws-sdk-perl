@@ -37,14 +37,17 @@ Represents the output of a I<CreateCacheParameterGroup> action.
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheParameterGroupFamily => Str
 
   The name of the cache parameter group family that this cache parameter
 group is compatible with.
 
+
 =head2 CacheParameterGroupName => Str
 
   The name of the cache parameter group.
+
 
 =head2 Description => Str
 

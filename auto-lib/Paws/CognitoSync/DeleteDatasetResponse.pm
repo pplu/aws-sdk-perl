@@ -13,6 +13,7 @@ Paws::CognitoSync::DeleteDatasetResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Dataset => L<Paws::CognitoSync::Dataset>
 
   A collection of data for an identity pool. An identity pool can have

@@ -37,6 +37,7 @@ Describes the default cluster parameters for a parameter group family.
 
 =head1 ATTRIBUTES
 
+
 =head2 Marker => Str
 
   A value that indicates the starting point for the next set of response
@@ -46,10 +47,12 @@ marker value in the C<Marker> parameter and retrying the command. If
 the C<Marker> field is empty, all response records have been retrieved
 for the request.
 
+
 =head2 ParameterGroupFamily => Str
 
   The name of the cluster parameter group family to which the engine
 default parameters apply.
+
 
 =head2 Parameters => ArrayRef[L<Paws::RedShift::Parameter>]
 

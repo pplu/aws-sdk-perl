@@ -38,10 +38,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClientToken => Str
 
   Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. Up to 32 ASCII characters are allowed.
+
 
 =head2 Cluster => Str
 
@@ -49,16 +51,19 @@ of the request. Up to 32 ASCII characters are allowed.
 which to run your service. If you do not specify a cluster, the default
 cluster is assumed.
 
+
 =head2 B<REQUIRED> DesiredCount => Int
 
   The number of instantiations of the specified task definition to place
 and keep running on your cluster.
+
 
 =head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
   A list of load balancer objects, containing the load balancer name, the
 container name (as it appears in a container definition), and the
 container port to access from the load balancer.
+
 
 =head2 Role => Str
 
@@ -67,12 +72,14 @@ your Amazon ECS container agent to make calls to your load balancer on
 your behalf. This parameter is only required if you are using a load
 balancer with your service.
 
+
 =head2 B<REQUIRED> ServiceName => Str
 
   The name of your service. Up to 255 letters (uppercase and lowercase),
 numbers, hyphens, and underscores are allowed. Service names must be
 unique within a cluster, but you can have similarly named services in
 multiple clusters within a region or across multiple regions.
+
 
 =head2 B<REQUIRED> TaskDefinition => Str
 

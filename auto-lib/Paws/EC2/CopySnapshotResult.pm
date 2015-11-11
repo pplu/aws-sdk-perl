@@ -13,6 +13,7 @@ Paws::EC2::CopySnapshotResult
 
 =head1 ATTRIBUTES
 
+
 =head2 SnapshotId => Str
 
   The ID of the new snapshot.

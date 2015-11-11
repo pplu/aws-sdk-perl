@@ -38,6 +38,7 @@ Provides details of the C<WorkflowExecutionSignaled> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 ExternalInitiatedEventId => Int
 
   The ID of the C<SignalExternalWorkflowExecutionInitiated> event
@@ -48,15 +49,18 @@ useful for diagnosing problems by tracing back the chain of events
 leading up to this event. This field is set only if the signal was
 initiated by another workflow execution.
 
+
 =head2 ExternalWorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The workflow execution that sent the signal. This is set only of the
 signal was sent by another workflow execution.
 
+
 =head2 Input => Str
 
   Inputs provided with the signal (if any). The decider can use the
 signal name and inputs to determine how to process the signal.
+
 
 =head2 B<REQUIRED> SignalName => Str
 

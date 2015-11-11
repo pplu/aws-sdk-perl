@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HsmClientCertificateIdentifier => Str
 
   The identifier to be assigned to the new HSM client certificate that
 the cluster will use to connect to the HSM to use the database
 encryption keys.
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

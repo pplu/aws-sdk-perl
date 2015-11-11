@@ -13,6 +13,7 @@ Paws::EC2::DescribeInternetGatewaysResult
 
 =head1 ATTRIBUTES
 
+
 =head2 InternetGateways => ArrayRef[L<Paws::EC2::InternetGateway>]
 
   Information about one or more Internet gateways.

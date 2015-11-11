@@ -39,9 +39,11 @@ action and a response element in the ListTagsForResource action.
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => Str
 
   The tag key.
+
 
 =head2 Value => Str
 

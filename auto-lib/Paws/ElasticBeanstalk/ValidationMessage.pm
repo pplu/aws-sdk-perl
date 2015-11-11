@@ -38,17 +38,21 @@ An error or warning for a desired configuration option value.
 
 =head1 ATTRIBUTES
 
+
 =head2 Message => Str
 
   A message describing the error or warning.
+
 
 =head2 Namespace => Str
 
   
 
+
 =head2 OptionName => Str
 
   
+
 
 =head2 Severity => Str
 

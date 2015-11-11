@@ -38,10 +38,12 @@ Describes the real-time endpoint information for an C<MLModel>.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreatedAt => Str
 
   The time that the request to create the real-time endpoint for the
 C<MLModel> was received. The time is expressed in epoch time.
+
 
 =head2 EndpointStatus => Str
 
@@ -59,6 +61,7 @@ element can have one of the following values:
 =back
 
 
+
 =head2 EndpointUrl => Str
 
   The URI that specifies where to send real-time prediction requests for
@@ -66,6 +69,7 @@ the C<MLModel>.
 
 The application must wait until the real-time endpoint is ready before
 using this URI.
+
 
 =head2 PeakRequestsPerSecond => Int
 

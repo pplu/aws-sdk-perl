@@ -42,20 +42,24 @@ the Amazon SNS console.
 
 =head1 ATTRIBUTES
 
+
 =head2 Completed => Str
 
   The Amazon SNS topic that you want to notify when Elastic Transcoder
 has finished processing the job.
+
 
 =head2 Error => Str
 
   The Amazon SNS topic that you want to notify when Elastic Transcoder
 encounters an error condition.
 
+
 =head2 Progressing => Str
 
   The Amazon Simple Notification Service (Amazon SNS) topic that you want
 to notify when Elastic Transcoder has started to process the job.
+
 
 =head2 Warning => Str
 

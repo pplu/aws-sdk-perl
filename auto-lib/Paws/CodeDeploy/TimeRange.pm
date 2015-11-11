@@ -36,11 +36,13 @@ Information about a time range.
 
 =head1 ATTRIBUTES
 
+
 =head2 End => Str
 
   The time range's end time.
 
 Specify null to leave the time range's end time open-ended.
+
 
 =head2 Start => Str
 

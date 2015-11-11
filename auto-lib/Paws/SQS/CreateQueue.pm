@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::SQS::QueueAttributeMap>
 
   A map of attributes with their corresponding values.
@@ -69,6 +70,7 @@ integer from 0 to 43200 (12 hours). The default for this attribute is
 Timeout in the I<Amazon SQS Developer Guide>.
 
 =back
+
 
 
 =head2 B<REQUIRED> QueueName => Str

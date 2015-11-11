@@ -37,15 +37,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClientToken => Str
 
   Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see How to Ensure Idempotency in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
+
 =head2 Description => Str
 
   A description for the new AMI in the destination region.
+
 
 =head2 DryRun => Bool
 
@@ -54,13 +57,16 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the new AMI in the destination region.
 
+
 =head2 B<REQUIRED> SourceImageId => Str
 
   The ID of the AMI to copy.
+
 
 =head2 B<REQUIRED> SourceRegion => Str
 

@@ -37,25 +37,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
   The list of dimensions associated with the metric.
+
 
 =head2 B<REQUIRED> MetricName => Str
 
   The name of the metric.
 
+
 =head2 B<REQUIRED> Namespace => Str
 
   The namespace of the metric.
+
 
 =head2 Period => Int
 
   The period in seconds over which the statistic is applied.
 
+
 =head2 Statistic => Str
 
   The statistic for the metric.
+
 
 =head2 Unit => Str
 

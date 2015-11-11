@@ -38,6 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Duration => Int
 
   The number of minutes prior to the time of the request for which to
@@ -47,6 +48,7 @@ specify a duration of 60, then only events which have occurred after
 
 Default: C<60>
 
+
 =head2 EndTime => Str
 
   The end of the time interval for which to retrieve events, specified in
@@ -54,6 +56,7 @@ ISO 8601 format. For more information about ISO 8601, go to the ISO8601
 Wikipedia page.
 
 Example: C<2009-07-08T18:00Z>
+
 
 =head2 Marker => Str
 
@@ -63,6 +66,7 @@ exceed the value specified in C<MaxRecords>, AWS returns a value in the
 C<Marker> field of the response. You can retrieve the next set of
 response records by providing the returned marker value in the
 C<Marker> parameter and retrying the request.
+
 
 =head2 MaxRecords => Int
 
@@ -75,6 +79,7 @@ command with the returned marker value.
 Default: C<100>
 
 Constraints: minimum 20, maximum 100.
+
 
 =head2 SourceIdentifier => Str
 
@@ -103,6 +108,7 @@ C<cluster-snapshot>.
 =back
 
 
+
 =head2 SourceType => Str
 
   The event source to retrieve events for. If no value is specified, all
@@ -128,6 +134,7 @@ a cluster parameter group name.
 cluster snapshot identifier.
 
 =back
+
 
 
 =head2 StartTime => Str

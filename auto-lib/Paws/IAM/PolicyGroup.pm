@@ -42,6 +42,7 @@ and Inline Policies in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 GroupName => Str
 
   The name (friendly name, not ARN) identifying the group.

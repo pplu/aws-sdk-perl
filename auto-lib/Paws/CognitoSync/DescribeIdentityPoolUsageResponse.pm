@@ -13,6 +13,7 @@ Paws::CognitoSync::DescribeIdentityPoolUsageResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 IdentityPoolUsage => L<Paws::CognitoSync::IdentityPoolUsage>
 
   Information about the usage of the identity pool.

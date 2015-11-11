@@ -36,6 +36,7 @@ Nameserver includes the following elements.
 
 =head1 ATTRIBUTES
 
+
 =head2 GlueIps => ArrayRef[Str]
 
   Glue IP address of a name server entry. Glue IP addresses are required
@@ -49,6 +50,7 @@ Type: List of IP addresses.
 Constraints: The list can contain only one IPv4 and one IPv6 address.
 
 Parent: C<Nameservers>
+
 
 =head2 B<REQUIRED> Name => Str
 

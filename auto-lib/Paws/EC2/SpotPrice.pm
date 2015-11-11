@@ -39,22 +39,27 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZone => Str
 
   The Availability Zone.
+
 
 =head2 InstanceType => Str
 
   The instance type.
 
+
 =head2 ProductDescription => Str
 
   A general description of the AMI.
+
 
 =head2 SpotPrice => Str
 
   The maximum price (bid) that you are willing to pay for a Spot
 instance.
+
 
 =head2 Timestamp => Str
 

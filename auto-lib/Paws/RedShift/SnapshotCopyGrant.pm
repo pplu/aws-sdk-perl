@@ -43,14 +43,17 @@ Management Guide>.
 
 =head1 ATTRIBUTES
 
+
 =head2 KmsKeyId => Str
 
   The unique identifier of the customer master key (CMK) in AWS KMS to
 which Amazon Redshift is granted permission.
 
+
 =head2 SnapshotCopyGrantName => Str
 
   The name of the snapshot copy grant.
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

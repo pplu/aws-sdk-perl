@@ -41,6 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DefaultTaskHeartbeatTimeout => Str
 
   If set, specifies the default maximum time before which a worker
@@ -56,12 +57,14 @@ to be valid; the activity worker should clean up the activity task.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
   If set, specifies the default task list to use for scheduling tasks of
 this activity type. This default task list is used if a task list is
 not provided when a task is scheduled through the
 C<ScheduleActivityTask> decision.
+
 
 =head2 DefaultTaskPriority => Str
 
@@ -73,6 +76,7 @@ from Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
+
 =head2 DefaultTaskScheduleToCloseTimeout => Str
 
   If set, specifies the default maximum duration for a task of this
@@ -81,6 +85,7 @@ activity task using the C<ScheduleActivityTask> decision.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
+
 
 =head2 DefaultTaskScheduleToStartTimeout => Str
 
@@ -92,6 +97,7 @@ C<ScheduleActivityTask> decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 DefaultTaskStartToCloseTimeout => Str
 
   If set, specifies the default maximum duration that a worker can take
@@ -102,13 +108,16 @@ decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 Description => Str
 
   A textual description of the activity type.
 
+
 =head2 B<REQUIRED> Domain => Str
 
   The name of the domain in which this activity is to be registered.
+
 
 =head2 B<REQUIRED> Name => Str
 
@@ -118,6 +127,7 @@ The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
+
 
 =head2 B<REQUIRED> Version => Str
 

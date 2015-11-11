@@ -48,10 +48,12 @@ and the current status of the C<Evaluation>.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreatedAt => Str
 
   The time that the C<Evaluation> was created. The time is expressed in
 epoch time.
+
 
 =head2 CreatedByIamUser => Str
 
@@ -59,36 +61,44 @@ epoch time.
 be either an AWS root account or an AWS Identity and Access Management
 (IAM) user account.
 
+
 =head2 EvaluationDataSourceId => Str
 
   The ID of the C<DataSource> that is used to evaluate the C<MLModel>.
 
+
 =head2 EvaluationId => Str
 
   The ID that is assigned to the C<Evaluation> at creation.
+
 
 =head2 InputDataLocationS3 => Str
 
   The location and name of the data in Amazon Simple Storage Server
 (Amazon S3) that is used in the evaluation.
 
+
 =head2 LastUpdatedAt => Str
 
   The time of the most recent edit to the C<Evaluation>. The time is
 expressed in epoch time.
+
 
 =head2 Message => Str
 
   A description of the most recent details about evaluating the
 C<MLModel>.
 
+
 =head2 MLModelId => Str
 
   The ID of the C<MLModel> that is the focus of the evaluation.
 
+
 =head2 Name => Str
 
   A user-supplied name or description of the C<Evaluation>.
+
 
 =head2 PerformanceMetrics => L<Paws::MachineLearning::PerformanceMetrics>
 
@@ -118,6 +128,7 @@ technique to measure performance.
 
 For more information about performance metrics, please see the Amazon
 Machine Learning Developer Guide.
+
 
 =head2 Status => Str
 

@@ -37,10 +37,12 @@ evaluate your AWS resources against a rule.
 
 =head1 ATTRIBUTES
 
+
 =head2 EventSource => Str
 
   The source of the event, such as an AWS service, that triggers AWS
 Config to evaluate your AWS resources.
+
 
 =head2 MessageType => Str
 

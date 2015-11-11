@@ -36,10 +36,12 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 MoveStatus => Str
 
   The status of the Elastic IP address that's being moved to the EC2-VPC
 platform, or restored to the EC2-Classic platform.
+
 
 =head2 PublicIp => Str
 

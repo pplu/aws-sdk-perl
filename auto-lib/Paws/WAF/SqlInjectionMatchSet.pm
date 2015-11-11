@@ -43,9 +43,11 @@ request to be considered a match.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name, if any, of the C<SqlInjectionMatchSet>.
+
 
 =head2 B<REQUIRED> SqlInjectionMatchSetId => Str
 
@@ -59,6 +61,7 @@ C<SqlInjectionMatchSet> into a C<Rule> or delete one from a C<Rule>
 
 C<SqlInjectionMatchSetId> is returned by CreateSqlInjectionMatchSet and
 by ListSqlInjectionMatchSets.
+
 
 =head2 B<REQUIRED> SqlInjectionMatchTuples => ArrayRef[L<Paws::WAF::SqlInjectionMatchTuple>]
 

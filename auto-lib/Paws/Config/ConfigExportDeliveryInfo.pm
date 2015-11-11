@@ -41,25 +41,31 @@ or the configuration history to the specified Amazon S3 bucket.
 
 =head1 ATTRIBUTES
 
+
 =head2 LastAttemptTime => Str
 
   The time of the last attempted delivery.
+
 
 =head2 LastErrorCode => Str
 
   The error code from the last attempted delivery.
 
+
 =head2 LastErrorMessage => Str
 
   The error message from the last attempted delivery.
+
 
 =head2 LastStatus => Str
 
   Status of the last attempted delivery.
 
+
 =head2 LastSuccessfulTime => Str
 
   The time of the last successful delivery.
+
 
 =head2 NextDeliveryTime => Str
 

@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Grantee => L<Paws::S3::Grantee>
 
   
+
 
 =head2 Permission => Str
 

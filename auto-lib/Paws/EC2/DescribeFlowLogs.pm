@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Filter => ArrayRef[L<Paws::EC2::Filter>]
 
   One or more filters.
@@ -65,9 +66,11 @@ C<traffic-type> - The type of traffic (C<ACCEPT> | C<REJECT> | C<ALL>)
 =back
 
 
+
 =head2 FlowLogIds => ArrayRef[Str]
 
   One or more flow log IDs.
+
 
 =head2 MaxResults => Int
 
@@ -77,6 +80,7 @@ the returned C<NextToken> value. This value can be between 5 and 1000;
 if C<MaxResults> is given a value larger than 1000, only 1000 results
 are returned. You cannot specify this parameter and the flow log IDs
 parameter in the same request.
+
 
 =head2 NextToken => Str
 

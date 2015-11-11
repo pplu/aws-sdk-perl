@@ -12,6 +12,7 @@ Paws::CloudWatchLogs::PutDestinationResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Destination => L<Paws::CloudWatchLogs::Destination>
 
   

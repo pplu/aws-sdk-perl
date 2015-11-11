@@ -37,9 +37,11 @@ contained within a shard.
 
 =head1 ATTRIBUTES
 
+
 =head2 EndingSequenceNumber => Str
 
   The last sequence number.
+
 
 =head2 StartingSequenceNumber => Str
 

@@ -14,9 +14,11 @@ Paws::SDB::ListDomainsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 DomainNames => ArrayRef[Str]
 
   A list of domain names that match the expression.
+
 =head2 NextToken => Str
 
   An opaque token indicating that there are more domains than the

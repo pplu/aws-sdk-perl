@@ -37,14 +37,17 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZone => Str
 
   The Availability Zone of the instance.
+
 
 =head2 GroupName => Str
 
   The name of the placement group the instance is in (for cluster compute
 instances).
+
 
 =head2 Tenancy => Str
 

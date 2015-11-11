@@ -40,15 +40,18 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 DeleteOnTermination => Bool
 
   Indicates whether the EBS volume is deleted on instance termination.
+
 
 =head2 Encrypted => Bool
 
   Indicates whether the EBS volume is encrypted. Encrypted Amazon EBS
 volumes may only be attached to instances that support Amazon EBS
 encryption.
+
 
 =head2 Iops => Int
 
@@ -68,9 +71,11 @@ Condition: This parameter is required for requests to create C<io1>
 volumes; it is not used in requests to create C<standard> or C<gp2>
 volumes.
 
+
 =head2 SnapshotId => Str
 
   The ID of the snapshot.
+
 
 =head2 VolumeSize => Int
 
@@ -82,6 +87,7 @@ the volume size must be equal to or larger than the snapshot size.
 
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
+
 
 =head2 VolumeType => Str
 

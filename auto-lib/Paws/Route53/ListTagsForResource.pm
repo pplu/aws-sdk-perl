@@ -21,9 +21,11 @@ Paws::Route53::ListTagsForResourceResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ResourceId => Str
 
   The ID of the resource for which you want to retrieve tags.
+
 =head2 B<REQUIRED> ResourceType => Str
 
   The type of the resource.

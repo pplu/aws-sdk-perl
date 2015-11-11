@@ -40,25 +40,31 @@ Describes a directory snapshot.
 
 =head1 ATTRIBUTES
 
+
 =head2 DirectoryId => Str
 
   The directory identifier.
+
 
 =head2 Name => Str
 
   The descriptive name of the snapshot.
 
+
 =head2 SnapshotId => Str
 
   The snapshot identifier.
+
 
 =head2 StartTime => Str
 
   The date and time that the snapshot was taken.
 
+
 =head2 Status => Str
 
   The snapshot status.
+
 
 =head2 Type => Str
 

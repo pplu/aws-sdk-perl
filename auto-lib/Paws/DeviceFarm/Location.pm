@@ -39,9 +39,11 @@ Elevation is currently not supported.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Latitude => Num
 
   The latitude.
+
 
 =head2 B<REQUIRED> Longitude => Num
 

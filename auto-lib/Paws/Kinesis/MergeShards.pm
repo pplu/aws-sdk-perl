@@ -34,14 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AdjacentShardToMerge => Str
 
   The shard ID of the adjacent shard for the merge.
+
 
 =head2 B<REQUIRED> ShardToMerge => Str
 
   The shard ID of the shard to combine with the adjacent shard for the
 merge.
+
 
 =head2 B<REQUIRED> StreamName => Str
 

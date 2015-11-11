@@ -12,6 +12,7 @@ Paws::OpsWorks::CreateStackResult
 
 =head1 ATTRIBUTES
 
+
 =head2 StackId => Str
 
   The stack ID, which is an opaque string that you use to identify the

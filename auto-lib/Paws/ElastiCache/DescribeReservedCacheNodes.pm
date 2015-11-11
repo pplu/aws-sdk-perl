@@ -39,6 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheNodeType => Str
 
   The cache node type filter value. Use this parameter to show only those
@@ -96,6 +97,7 @@ Amazon ElastiCache Product Features and Details and Cache Node
 Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
+
 =head2 Duration => Str
 
   The duration filter value, specified in years or seconds. Use this
@@ -103,12 +105,14 @@ parameter to show only reservations for this duration.
 
 Valid Values: C<1 | 3 | 31536000 | 94608000>
 
+
 =head2 Marker => Str
 
   An optional marker returned from a prior request. Use this marker for
 pagination of results from this action. If this parameter is specified,
 the response includes only records beyond the marker, up to the value
 specified by I<MaxRecords>.
+
 
 =head2 MaxRecords => Int
 
@@ -121,6 +125,7 @@ Default: 100
 
 Constraints: minimum 20; maximum 100.
 
+
 =head2 OfferingType => Str
 
   The offering type filter value. Use this parameter to show only the
@@ -129,15 +134,18 @@ available offerings matching the specified offering type.
 Valid values: C<"Light Utilization"|"Medium Utilization"|"Heavy
 Utilization">
 
+
 =head2 ProductDescription => Str
 
   The product description filter value. Use this parameter to show only
 those reservations matching the specified product description.
 
+
 =head2 ReservedCacheNodeId => Str
 
   The reserved cache node identifier filter value. Use this parameter to
 show only the reservation that matches the specified reservation ID.
+
 
 =head2 ReservedCacheNodesOfferingId => Str
 

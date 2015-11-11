@@ -13,6 +13,7 @@ Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Pipeline => L<Paws::ElasticTranscoder::Pipeline>
 
   A section of the response body that provides information about the

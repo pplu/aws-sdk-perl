@@ -38,20 +38,24 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 DefaultValue => Str
 
   If specified, the default values for the parameters. Parameters without
 a default value are required. Parameters with a default value are
 optional.
 
+
 =head2 Description => Str
 
   A description of what the parameter does, how to use it, the default
 value, and whether or not the parameter is optional.
 
+
 =head2 Name => Str
 
   The name of the parameter.
+
 
 =head2 Type => Str
 

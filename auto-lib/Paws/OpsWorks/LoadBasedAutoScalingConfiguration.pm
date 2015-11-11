@@ -38,19 +38,23 @@ Describes a layer's load-based auto scaling configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 DownScaling => L<Paws::OpsWorks::AutoScalingThresholds>
 
   An C<AutoScalingThresholds> object that describes the downscaling
 configuration, which defines how and when AWS OpsWorks reduces the
 number of instances.
 
+
 =head2 Enable => Bool
 
   Whether load-based auto scaling is enabled for the layer.
 
+
 =head2 LayerId => Str
 
   The layer ID.
+
 
 =head2 UpScaling => L<Paws::OpsWorks::AutoScalingThresholds>
 

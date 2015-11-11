@@ -41,23 +41,28 @@ connect to an HSM where they can store database encryption keys.
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   A text description of the HSM configuration.
 
+
 =head2 HsmConfigurationIdentifier => Str
 
   The name of the Amazon Redshift HSM configuration.
+
 
 =head2 HsmIpAddress => Str
 
   The IP address that the Amazon Redshift cluster must use to access the
 HSM.
 
+
 =head2 HsmPartitionName => Str
 
   The name of the partition in the HSM where the Amazon Redshift clusters
 will store their database encryption keys.
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

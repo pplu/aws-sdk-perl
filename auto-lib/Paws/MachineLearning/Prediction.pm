@@ -63,17 +63,21 @@ C<PredictedValue> - Present for a REGRESSION C<MLModel> request.
 
 =head1 ATTRIBUTES
 
+
 =head2 Details => L<Paws::MachineLearning::DetailsMap>
 
   
+
 
 =head2 PredictedLabel => Str
 
   The prediction label for either a BINARY or MULTICLASS C<MLModel>.
 
+
 =head2 PredictedScores => L<Paws::MachineLearning::ScoreValuePerLabelMap>
 
   
+
 
 =head2 PredictedValue => Num
 

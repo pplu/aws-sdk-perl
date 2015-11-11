@@ -37,6 +37,7 @@ Represents a condition for a device pool.
 
 =head1 ATTRIBUTES
 
+
 =head2 Attribute => Str
 
   The rule's attribute.
@@ -62,6 +63,7 @@ MANUFACTURER: The manufacturer.
 PLATFORM: The platform (for example, Android or iOS).
 
 =back
+
 
 
 =head2 Operator => Str
@@ -91,6 +93,7 @@ LESS_THAN: The less-than operator.
 NOT_IN: The not-in operator.
 
 =back
+
 
 
 =head2 Value => Str

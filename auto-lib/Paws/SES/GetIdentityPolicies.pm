@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Identity => Str
 
   The identity for which the policies will be retrieved. You can specify
@@ -41,6 +42,7 @@ an identity by using its name or by using its Amazon Resource Name
 C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
 
 To successfully call this API, you must own the identity.
+
 
 =head2 B<REQUIRED> PolicyNames => ArrayRef[Str]
 

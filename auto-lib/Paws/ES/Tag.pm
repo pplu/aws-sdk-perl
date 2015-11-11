@@ -36,10 +36,12 @@ Specifies a key value pair for a resource tag.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   Specifies the C<TagKey>, the name of the tag. Tag keys must be unique
 for the Elasticsearch domain to which they are attached.
+
 
 =head2 B<REQUIRED> Value => Str
 

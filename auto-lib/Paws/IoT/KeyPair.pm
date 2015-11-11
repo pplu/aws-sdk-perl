@@ -36,9 +36,11 @@ Describes a key pair.
 
 =head1 ATTRIBUTES
 
+
 =head2 PrivateKey => Str
 
   The private key.
+
 
 =head2 PublicKey => Str
 

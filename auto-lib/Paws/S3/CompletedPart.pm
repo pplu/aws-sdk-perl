@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 ETag => Str
 
   Entity tag returned when the part was uploaded.
+
 
 =head2 PartNumber => Int
 

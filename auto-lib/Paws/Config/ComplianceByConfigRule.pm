@@ -38,9 +38,11 @@ is noncompliant if any of these resources do not comply.
 
 =head1 ATTRIBUTES
 
+
 =head2 Compliance => L<Paws::Config::Compliance>
 
   Indicates whether the AWS Config rule is compliant.
+
 
 =head2 ConfigRuleName => Str
 

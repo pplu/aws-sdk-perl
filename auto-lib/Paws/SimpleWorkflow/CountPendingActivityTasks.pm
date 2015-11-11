@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Domain => Str
 
   The name of the domain that contains the task list.
+
 
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 

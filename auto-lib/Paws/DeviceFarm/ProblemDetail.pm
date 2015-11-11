@@ -36,9 +36,11 @@ Information about a problem detail.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The problem detail's ARN.
+
 
 =head2 Name => Str
 

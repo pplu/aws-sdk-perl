@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationArn => Str
 
   Application ARN that you want to update.
 
+
 =head2 ApplicationName => Str
 
   Application name that you want to update.
+
 
 =head2 ResourceGroupArn => Str
 

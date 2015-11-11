@@ -43,37 +43,46 @@ Information about a deployment group.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationName => Str
 
   The application name.
+
 
 =head2 AutoScalingGroups => ArrayRef[L<Paws::CodeDeploy::AutoScalingGroup>]
 
   A list of associated Auto Scaling groups.
 
+
 =head2 DeploymentConfigName => Str
 
   The deployment configuration name.
+
 
 =head2 DeploymentGroupId => Str
 
   The deployment group ID.
 
+
 =head2 DeploymentGroupName => Str
 
   The deployment group name.
+
 
 =head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
   The Amazon EC2 tags to filter on.
 
+
 =head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
   The on-premises instance tags to filter on.
 
+
 =head2 ServiceRoleArn => Str
 
   A service role ARN.
+
 
 =head2 TargetRevision => L<Paws::CodeDeploy::RevisionLocation>
 

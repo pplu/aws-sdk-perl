@@ -12,6 +12,7 @@ Paws::OpsWorks::RegisterEcsClusterResult
 
 =head1 ATTRIBUTES
 
+
 =head2 EcsClusterArn => Str
 
   The cluster's ARN.

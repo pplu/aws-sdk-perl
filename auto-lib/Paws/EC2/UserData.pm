@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Data => Str
 
   The Base64-encoded MIME user data for the instance.

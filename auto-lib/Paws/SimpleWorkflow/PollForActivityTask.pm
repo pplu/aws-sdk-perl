@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Domain => Str
 
   The name of the domain that contains the task lists being polled.
+
 
 =head2 Identity => Str
 
@@ -44,6 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 C<ActivityTaskStarted> event in the workflow history. This enables
 diagnostic tracing when problems arise. The form of this identity is
 user defined.
+
 
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 

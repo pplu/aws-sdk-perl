@@ -36,9 +36,11 @@ Endpoint for mobile app and device.
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::SNS::MapStringToString>
 
   Attributes for endpoint.
+
 
 =head2 EndpointArn => Str
 

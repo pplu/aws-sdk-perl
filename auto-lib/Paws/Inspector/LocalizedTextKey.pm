@@ -36,9 +36,11 @@ This data type is used in the LocalizedText data type.
 
 =head1 ATTRIBUTES
 
+
 =head2 Facility => Str
 
   The module response source of the text.
+
 
 =head2 Id => Str
 

@@ -35,6 +35,7 @@ Describes an Availability Zone in which the cache cluster is launched.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the Availability Zone.

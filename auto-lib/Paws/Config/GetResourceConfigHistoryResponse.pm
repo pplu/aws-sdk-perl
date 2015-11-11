@@ -13,10 +13,12 @@ Paws::Config::GetResourceConfigHistoryResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ConfigurationItems => ArrayRef[L<Paws::Config::ConfigurationItem>]
 
   A list that contains the configuration history of one or more
 resources.
+
 =head2 NextToken => Str
 
   The string that you use in a subsequent request to get the next page of

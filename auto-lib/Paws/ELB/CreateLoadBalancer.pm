@@ -38,6 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZones => ArrayRef[Str]
 
   One or more Availability Zones from the same region as the load
@@ -49,12 +50,14 @@ You must specify at least one Availability Zone.
 You can add more Availability Zones after you create the load balancer
 using EnableAvailabilityZonesForLoadBalancer.
 
+
 =head2 B<REQUIRED> Listeners => ArrayRef[L<Paws::ELB::Listener>]
 
   The listeners.
 
 For more information, see Listeners for Your Load Balancer in the
 I<Elastic Load Balancing Developer Guide>.
+
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
@@ -64,6 +67,7 @@ This name must be unique within your set of load balancers for the
 region, must have a maximum of 32 characters, must contain only
 alphanumeric characters or hyphens, and cannot begin or end with a
 hyphen.
+
 
 =head2 Scheme => Str
 
@@ -78,15 +82,18 @@ I<Elastic Load Balancing Developer Guide>.
 Specify C<internal> to create an internal load balancer with a DNS name
 that resolves to private IP addresses.
 
+
 =head2 SecurityGroups => ArrayRef[Str]
 
   The IDs of the security groups to assign to the load balancer.
+
 
 =head2 Subnets => ArrayRef[Str]
 
   The IDs of the subnets in your VPC to attach to the load balancer.
 Specify one subnet per Availability Zone specified in
 C<AvailabilityZones>.
+
 
 =head2 Tags => ArrayRef[L<Paws::ELB::Tag>]
 

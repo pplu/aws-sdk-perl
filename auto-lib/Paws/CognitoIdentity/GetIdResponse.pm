@@ -12,6 +12,7 @@ Paws::CognitoIdentity::GetIdResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 IdentityId => Str
 
   A unique identifier in the format REGION:GUID.

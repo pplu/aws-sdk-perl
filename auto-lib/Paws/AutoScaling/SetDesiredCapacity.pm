@@ -34,14 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name of the Auto Scaling group.
+
 
 =head2 B<REQUIRED> DesiredCapacity => Int
 
   The number of EC2 instances that should be running in the Auto Scaling
 group.
+
 
 =head2 HonorCooldown => Bool
 

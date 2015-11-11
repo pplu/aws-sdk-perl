@@ -20,6 +20,7 @@ Paws::CloudFront::GetStreamingDistributionResult
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   The streaming distribution's id.

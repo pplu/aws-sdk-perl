@@ -36,9 +36,11 @@ Returns information about a branch.
 
 =head1 ATTRIBUTES
 
+
 =head2 BranchName => Str
 
   The name of the branch.
+
 
 =head2 CommitId => Str
 

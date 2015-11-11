@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DbPassword => Str
 
   The database password.
 
+
 =head2 DbUser => Str
 
   The master user name.
+
 
 =head2 B<REQUIRED> RdsDbInstanceArn => Str
 

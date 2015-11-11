@@ -36,6 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 EntityFilter => Str
 
   The entity type to use for filtering the results.
@@ -45,12 +46,14 @@ attached to the specified policy are returned. This parameter is
 optional. If it is not included, all attached entities (users, groups,
 and roles) are returned.
 
+
 =head2 Marker => Str
 
   Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
 the value of the C<Marker> element in the response that you received to
 indicate where the next call should start.
+
 
 =head2 MaxItems => Int
 
@@ -64,11 +67,13 @@ results available. In that case, the C<IsTruncated> response element
 returns C<true> and C<Marker> contains a value to include in the
 subsequent call that tells the service where to continue from.
 
+
 =head2 PathPrefix => Str
 
   The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all
 entities.
+
 
 =head2 B<REQUIRED> PolicyArn => Str
 

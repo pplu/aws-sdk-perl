@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ResourceARN => Str
 
   The Amazon Resource Name (ARN) of the resource you want to add tags to.
+
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::StorageGateway::Tag>]
 

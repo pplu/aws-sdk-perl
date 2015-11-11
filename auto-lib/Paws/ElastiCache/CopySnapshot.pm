@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SourceSnapshotName => Str
 
   The name of an existing snapshot from which to copy.
+
 
 =head2 B<REQUIRED> TargetSnapshotName => Str
 

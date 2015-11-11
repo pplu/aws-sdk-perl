@@ -40,25 +40,31 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 ETag => Str
 
   
+
 
 =head2 Key => Str
 
   
 
+
 =head2 LastModified => Str
 
   
+
 
 =head2 Owner => L<Paws::S3::Owner>
 
   
 
+
 =head2 Size => Int
 
   
+
 
 =head2 StorageClass => Str
 

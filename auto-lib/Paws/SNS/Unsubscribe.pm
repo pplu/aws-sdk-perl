@@ -32,6 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SubscriptionArn => Str
 
   The ARN of the subscription to be deleted.

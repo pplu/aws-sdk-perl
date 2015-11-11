@@ -37,9 +37,11 @@ global secondary index.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IndexName => Str
 
   The name of the global secondary index to be updated.
+
 
 =head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 

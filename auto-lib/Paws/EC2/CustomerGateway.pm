@@ -40,28 +40,34 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 BgpAsn => Str
 
   The customer gateway's Border Gateway Protocol (BGP) Autonomous System
 Number (ASN).
 
+
 =head2 CustomerGatewayId => Str
 
   The ID of the customer gateway.
+
 
 =head2 IpAddress => Str
 
   The Internet-routable IP address of the customer gateway's outside
 interface.
 
+
 =head2 State => Str
 
   The current state of the customer gateway (C<pending | available |
 deleting | deleted>).
 
+
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the customer gateway.
+
 
 =head2 Type => Str
 

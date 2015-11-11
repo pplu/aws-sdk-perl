@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HostName => Str
 
   Name of the host where requests will be redirected.
+
 
 =head2 Protocol => Str
 

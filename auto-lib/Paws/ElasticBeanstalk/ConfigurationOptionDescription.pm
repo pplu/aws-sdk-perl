@@ -45,6 +45,7 @@ Describes the possible values for a configuration option.
 
 =head1 ATTRIBUTES
 
+
 =head2 ChangeSeverity => Str
 
   An indication of which action is required if the value for this
@@ -77,37 +78,45 @@ application servers on the running Amazon EC2 instances are restarted.
 =back
 
 
+
 =head2 DefaultValue => Str
 
   The default value for this configuration option.
+
 
 =head2 MaxLength => Int
 
   If specified, the configuration option must be a string value no longer
 than this value.
 
+
 =head2 MaxValue => Int
 
   If specified, the configuration option must be a numeric value less
 than this value.
+
 
 =head2 MinValue => Int
 
   If specified, the configuration option must be a numeric value greater
 than this value.
 
+
 =head2 Name => Str
 
   The name of the configuration option.
+
 
 =head2 Namespace => Str
 
   A unique namespace identifying the option's associated AWS resource.
 
+
 =head2 Regex => L<Paws::ElasticBeanstalk::OptionRestrictionRegex>
 
   If specified, the configuration option must be a string value that
 satisfies this regular expression.
+
 
 =head2 UserDefined => Bool
 
@@ -136,10 +145,12 @@ configuration.
 
 Valid Values: C<true> | C<false>
 
+
 =head2 ValueOptions => ArrayRef[Str]
 
   If specified, values for the configuration option are selected from
 this list.
+
 
 =head2 ValueType => Str
 

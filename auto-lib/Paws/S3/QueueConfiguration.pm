@@ -39,17 +39,21 @@ publish events to an Amazon Simple Queue Service (Amazon SQS) queue.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Events => ArrayRef[Str]
 
   
+
 
 =head2 Filter => L<Paws::S3::NotificationConfigurationFilter>
 
   
 
+
 =head2 Id => Str
 
   
+
 
 =head2 B<REQUIRED> QueueArn => Str
 

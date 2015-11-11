@@ -43,9 +43,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 CreationTime => Str
 
   The date and time the flow log was created.
+
 
 =head2 DeliverLogsErrorMessage => Str
 
@@ -56,29 +58,36 @@ associated with the flow log does not have sufficient permissions to
 publish to CloudWatch Logs. C<Unknown error> indicates an internal
 error.
 
+
 =head2 DeliverLogsPermissionArn => Str
 
   The ARN of the IAM role that posts logs to CloudWatch Logs.
+
 
 =head2 DeliverLogsStatus => Str
 
   The status of the logs delivery (C<SUCCESS> | C<FAILED>).
 
+
 =head2 FlowLogId => Str
 
   The flow log ID.
+
 
 =head2 FlowLogStatus => Str
 
   The status of the flow log (C<ACTIVE>).
 
+
 =head2 LogGroupName => Str
 
   The name of the flow log group.
 
+
 =head2 ResourceId => Str
 
   The ID of the resource on which the flow log was created.
+
 
 =head2 TrafficType => Str
 

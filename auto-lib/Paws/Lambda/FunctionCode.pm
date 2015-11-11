@@ -38,21 +38,25 @@ The code for the Lambda function.
 
 =head1 ATTRIBUTES
 
+
 =head2 S3Bucket => Str
 
   Amazon S3 bucket name where the .zip file containing your deployment
 package is stored. This bucket must reside in the same AWS region where
 you are creating the Lambda function.
 
+
 =head2 S3Key => Str
 
   The Amazon S3 object (the deployment package) key name you want to
 upload.
 
+
 =head2 S3ObjectVersion => Str
 
   The Amazon S3 object (the deployment package) version you want to
 upload.
+
 
 =head2 ZipFile => Str
 

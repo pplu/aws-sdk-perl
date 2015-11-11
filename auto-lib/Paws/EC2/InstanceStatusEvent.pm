@@ -38,9 +38,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   The event code.
+
 
 =head2 Description => Str
 
@@ -50,9 +52,11 @@ After a scheduled event is completed, it can still be described for up
 to a week. If the event has been completed, this description starts
 with the following text: [Completed].
 
+
 =head2 NotAfter => Str
 
   The latest scheduled end time for the event.
+
 
 =head2 NotBefore => Str
 

@@ -37,13 +37,16 @@ The timeline of the cluster step lifecycle.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreationDateTime => Str
 
   The date and time when the cluster step was created.
 
+
 =head2 EndDateTime => Str
 
   The date and time when the cluster step execution completed or failed.
+
 
 =head2 StartDateTime => Str
 

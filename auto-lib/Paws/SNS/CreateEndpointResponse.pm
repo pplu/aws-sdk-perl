@@ -13,6 +13,7 @@ Paws::SNS::CreateEndpointResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 EndpointArn => Str
 
   EndpointArn returned from CreateEndpoint action.

@@ -13,9 +13,11 @@ Paws::CloudTrail::ListTagsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   Reserved for future use.
+
 =head2 ResourceTagList => ArrayRef[L<Paws::CloudTrail::ResourceTag>]
 
   

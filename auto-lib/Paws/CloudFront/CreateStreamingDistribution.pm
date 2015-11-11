@@ -20,6 +20,7 @@ Paws::CloudFront::CreateStreamingDistributionResult
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
 
   The streaming distribution's configuration information.

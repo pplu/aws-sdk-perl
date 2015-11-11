@@ -34,14 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 After => Str
 
   The name of the receipt rule after which to place the specified receipt
 rule.
 
+
 =head2 B<REQUIRED> RuleName => Str
 
   The name of the receipt rule to reposition.
+
 
 =head2 B<REQUIRED> RuleSetName => Str
 

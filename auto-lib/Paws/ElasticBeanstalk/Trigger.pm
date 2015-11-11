@@ -35,6 +35,7 @@ Describes a trigger.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the trigger.

@@ -40,26 +40,32 @@ Summarizes the number of layers, instances, and apps in a stack.
 
 =head1 ATTRIBUTES
 
+
 =head2 AppsCount => Int
 
   The number of apps.
 
+
 =head2 Arn => Str
 
   The stack's ARN.
+
 
 =head2 InstancesCount => L<Paws::OpsWorks::InstancesCount>
 
   An C<InstancesCount> object with the number of instances in each
 status.
 
+
 =head2 LayersCount => Int
 
   The number of layers.
 
+
 =head2 Name => Str
 
   The stack name.
+
 
 =head2 StackId => Str
 

@@ -37,6 +37,7 @@ specified value.
 
 =head1 ATTRIBUTES
 
+
 =head2 Type => Str
 
   The logical operation to be performed: equal (C<EQ>), equal reference
@@ -92,6 +93,7 @@ by the web service. When you name fields, you should choose names
 containing only alpha-numeric values, as symbols may be reserved by AWS
 Data Pipeline. User-defined fields that you add to a pipeline should
 prefix their name with the string "my".
+
 
 =head2 Values => ArrayRef[Str]
 

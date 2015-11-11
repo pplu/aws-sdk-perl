@@ -37,10 +37,12 @@ domain.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Options => L<Paws::ES::ElasticsearchClusterConfig>
 
   Specifies the cluster configuration for the specified Elasticsearch
 domain.
+
 
 =head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
 

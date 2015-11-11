@@ -36,6 +36,7 @@ Used to specify a stack or deployment command.
 
 =head1 ATTRIBUTES
 
+
 =head2 Args => L<Paws::OpsWorks::DeploymentCommandArgs>
 
   The arguments of those commands that take arguments. It should be set
@@ -64,6 +65,7 @@ C<Args> to the following.
 
 C<{ "upgrade_os_to":["Amazon Linux 2014.09"], "allow_reboot":["true"]
 }>
+
 
 =head2 B<REQUIRED> Name => Str
 

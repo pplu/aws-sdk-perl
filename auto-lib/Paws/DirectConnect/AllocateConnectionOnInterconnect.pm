@@ -36,6 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bandwidth => Str
 
   Bandwidth of the connection.
@@ -43,6 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Example: "I<500Mbps>"
 
 Default: None
+
 
 =head2 B<REQUIRED> ConnectionName => Str
 
@@ -52,6 +54,7 @@ Example: "I<500M Connection to AWS>"
 
 Default: None
 
+
 =head2 B<REQUIRED> InterconnectId => Str
 
   ID of the interconnect on which the connection will be provisioned.
@@ -59,6 +62,7 @@ Default: None
 Example: dxcon-456abc78
 
 Default: None
+
 
 =head2 B<REQUIRED> OwnerAccount => Str
 
@@ -68,6 +72,7 @@ provisioned.
 Example: 123443215678
 
 Default: None
+
 
 =head2 B<REQUIRED> Vlan => Int
 

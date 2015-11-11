@@ -13,6 +13,7 @@ Paws::IAM::UploadServerCertificateResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ServerCertificateMetadata => L<Paws::IAM::ServerCertificateMetadata>
 
   The meta information of the uploaded server certificate without its

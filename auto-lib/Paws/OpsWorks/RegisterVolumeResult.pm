@@ -12,6 +12,7 @@ Paws::OpsWorks::RegisterVolumeResult
 
 =head1 ATTRIBUTES
 
+
 =head2 VolumeId => Str
 
   The volume ID.

@@ -13,9 +13,11 @@ Paws::SimpleWorkflow::WorkflowExecutionCount
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Count => Int
 
   The number of workflow executions.
+
 =head2 Truncated => Bool
 
   If set to true, indicates that the actual count was more than the

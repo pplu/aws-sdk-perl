@@ -38,9 +38,11 @@ Describes a recovery point.
 
 =head1 ATTRIBUTES
 
+
 =head2 TapeARN => Str
 
   The Amazon Resource Name (ARN) of the virtual tape.
+
 
 =head2 TapeRecoveryPointTime => Str
 
@@ -50,9 +52,11 @@ for later recovery.
 The string format of the tape recovery point time is in the ISO8601
 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.
 
+
 =head2 TapeSizeInBytes => Int
 
   The size, in bytes, of the virtual tapes to recover.
+
 
 =head2 TapeStatus => Str
 

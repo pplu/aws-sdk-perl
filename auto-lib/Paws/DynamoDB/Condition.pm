@@ -58,6 +58,7 @@ evaluates the scan results and returns only the desired values.
 
 =head1 ATTRIBUTES
 
+
 =head2 AttributeValueList => ArrayRef[L<Paws::DynamoDB::AttributeValue>]
 
   One or more values to evaluate against the supplied attribute. The
@@ -73,6 +74,7 @@ http://en.wikipedia.org/wiki/ASCII
 
 For Binary, DynamoDB treats each byte of the binary data as unsigned
 when it compares binary values.
+
 
 =head2 B<REQUIRED> ComparisonOperator => Str
 

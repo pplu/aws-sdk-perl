@@ -13,6 +13,7 @@ Paws::IoTData::DeleteThingShadowResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Payload => Str
 
   The state information, in JSON format.

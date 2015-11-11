@@ -37,9 +37,11 @@ endpoints, and the current status of those rules.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Options => Str
 
   
+
 
 =head2 B<REQUIRED> Status => L<Paws::CloudSearch::OptionStatus>
 

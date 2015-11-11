@@ -12,6 +12,7 @@ Paws::DeviceFarm::GetRunResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Run => L<Paws::DeviceFarm::Run>
 
   

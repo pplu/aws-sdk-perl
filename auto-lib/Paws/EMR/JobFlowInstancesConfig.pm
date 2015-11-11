@@ -52,18 +52,22 @@ must be present).
 
 =head1 ATTRIBUTES
 
+
 =head2 AdditionalMasterSecurityGroups => ArrayRef[Str]
 
   A list of additional Amazon EC2 security group IDs for the master node.
+
 
 =head2 AdditionalSlaveSecurityGroups => ArrayRef[Str]
 
   A list of additional Amazon EC2 security group IDs for the slave nodes.
 
+
 =head2 Ec2KeyName => Str
 
   The name of the Amazon EC2 key pair that can be used to ssh to the
 master node as the user called "hadoop."
+
 
 =head2 Ec2SubnetId => Str
 
@@ -77,15 +81,18 @@ Amazon VPC currently does not support cluster compute quadruple extra
 large (cc1.4xlarge) instances. Thus you cannot specify the cc1.4xlarge
 instance type for nodes of a job flow launched in a Amazon VPC.
 
+
 =head2 EmrManagedMasterSecurityGroup => Str
 
   The identifier of the Amazon EC2 security group (managed by Amazon
 ElasticMapReduce) for the master node.
 
+
 =head2 EmrManagedSlaveSecurityGroup => Str
 
   The identifier of the Amazon EC2 security group (managed by Amazon
 ElasticMapReduce) for the slave nodes.
+
 
 =head2 HadoopVersion => Str
 
@@ -96,30 +103,37 @@ is used, unless the AmiVersion parameter is set in the RunJobFlow call,
 in which case the default version of Hadoop for that AMI version is
 used.
 
+
 =head2 InstanceCount => Int
 
   The number of Amazon EC2 instances used to execute the job flow.
 
+
 =head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupConfig>]
 
   Configuration for the job flow's instance groups.
+
 
 =head2 KeepJobFlowAliveWhenNoSteps => Bool
 
   Specifies whether the job flow should be kept alive after completing
 all steps.
 
+
 =head2 MasterInstanceType => Str
 
   The EC2 instance type of the master node.
+
 
 =head2 Placement => L<Paws::EMR::PlacementType>
 
   The Availability Zone the job flow will run in.
 
+
 =head2 SlaveInstanceType => Str
 
   The EC2 instance type of the slave nodes.
+
 
 =head2 TerminationProtected => Bool
 

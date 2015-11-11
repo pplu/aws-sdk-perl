@@ -13,6 +13,7 @@ Paws::SQS::CreateQueueResult
 
 =head1 ATTRIBUTES
 
+
 =head2 QueueUrl => Str
 
   The URL for the created Amazon SQS queue.

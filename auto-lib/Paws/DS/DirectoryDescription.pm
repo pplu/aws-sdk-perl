@@ -52,14 +52,17 @@ Contains information about an AWS Directory Service directory.
 
 =head1 ATTRIBUTES
 
+
 =head2 AccessUrl => Str
 
   The access URL for the directory, such as
 C<http://E<lt>aliasE<gt>.awsapps.com>.
 
+
 =head2 Alias => Str
 
   The alias for the directory.
+
 
 =head2 ConnectSettings => L<Paws::DS::DirectoryConnectSettingsDescription>
 
@@ -67,13 +70,16 @@ C<http://E<lt>aliasE<gt>.awsapps.com>.
 information about an AD Connector directory. This member is only
 present if the directory is an AD Connector directory.
 
+
 =head2 Description => Str
 
   The textual description for the directory.
 
+
 =head2 DirectoryId => Str
 
   The directory identifier.
+
 
 =head2 DnsIpAddrs => ArrayRef[Str]
 
@@ -83,51 +89,63 @@ servers. For an AD Connector directory, these are the IP addresses of
 the DNS servers or domain controllers in the on-premises directory that
 the AD Connector is connected to.
 
+
 =head2 LaunchTime => Str
 
   Specifies when the directory was created.
 
+
 =head2 Name => Str
 
   The fully-qualified name of the directory.
+
 
 =head2 RadiusSettings => L<Paws::DS::RadiusSettings>
 
   A RadiusSettings object that contains information about the RADIUS
 server configured for this directory.
 
+
 =head2 RadiusStatus => Str
 
   The status of the RADIUS MFA server connection.
+
 
 =head2 ShortName => Str
 
   The short name of the directory.
 
+
 =head2 Size => Str
 
   The directory size.
+
 
 =head2 SsoEnabled => Bool
 
   Indicates if single-sign on is enabled for the directory. For more
 information, see EnableSso and DisableSso.
 
+
 =head2 Stage => Str
 
   The current stage of the directory.
+
 
 =head2 StageLastUpdatedDateTime => Str
 
   The date and time that the stage was last updated.
 
+
 =head2 StageReason => Str
 
   Additional information about the directory stage.
 
+
 =head2 Type => Str
 
   The directory size.
+
 
 =head2 VpcSettings => L<Paws::DS::DirectoryVpcSettingsDescription>
 

@@ -34,16 +34,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AssociationFilterList => ArrayRef[L<Paws::SSM::AssociationFilter>]
 
   One or more filters. Use a filter to return a more specific list of
 results.
+
 
 =head2 MaxResults => Int
 
   The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
 next set of results.
+
 
 =head2 NextToken => Str
 

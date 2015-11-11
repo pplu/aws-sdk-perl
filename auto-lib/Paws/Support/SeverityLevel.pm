@@ -37,11 +37,13 @@ applied to a support case.
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   One of four values: "low," "medium," "high," and "urgent". These values
 correspond to response times returned to the caller in
 C<SeverityLevel.name>.
+
 
 =head2 Name => Str
 

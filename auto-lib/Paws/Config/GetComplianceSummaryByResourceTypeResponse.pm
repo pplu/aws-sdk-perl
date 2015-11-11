@@ -12,6 +12,7 @@ Paws::Config::GetComplianceSummaryByResourceTypeResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ComplianceSummariesByResourceType => ArrayRef[L<Paws::Config::ComplianceSummaryByResourceType>]
 
   The number of resources that are compliant and the number that are

@@ -12,6 +12,7 @@ Paws::WAF::GetRuleResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Rule => L<Paws::WAF::Rule>
 
   Information about the Rule that you specified in the C<GetRule>

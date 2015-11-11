@@ -41,6 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ConditionalOperator => Str
 
   This is a legacy parameter, for backward compatibility. New
@@ -69,6 +70,7 @@ If you omit I<ConditionalOperator>, then C<AND> is the default.
 The operation will succeed only if the entire map evaluates to true.
 
 This parameter does not support attributes of type List or Map.
+
 
 =head2 ConditionExpression => Str
 
@@ -102,6 +104,7 @@ Conditions in the I<Amazon DynamoDB Developer Guide>.
 
 I<ConditionExpression> replaces the legacy I<ConditionalOperator> and
 I<Expected> parameters.
+
 
 =head2 Expected => L<Paws::DynamoDB::ExpectedAttributeMap>
 
@@ -375,6 +378,7 @@ I<AttributeValueList> and I<ComparisonOperator>. Note that if you use
 both sets of parameters at once, DynamoDB will return a
 I<ValidationException> exception.
 
+
 =head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
   One or more substitution tokens for attribute names in an expression.
@@ -441,6 +445,7 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
+
 =head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
 
   One or more values that can be substituted in an expression.
@@ -464,6 +469,7 @@ C<ProductStatus IN (:avail, :back, :disc)>
 For more information on expression attribute values, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
 
+
 =head2 B<REQUIRED> Item => L<Paws::DynamoDB::PutItemInputAttributeMap>
 
   A map of attribute name/value pairs, one for each attribute. Only the
@@ -484,9 +490,11 @@ I<Amazon DynamoDB Developer Guide>.
 
 Each element in the I<Item> map is an I<AttributeValue> object.
 
+
 =head2 ReturnConsumedCapacity => Str
 
   
+
 
 =head2 ReturnItemCollectionMetrics => Str
 
@@ -494,6 +502,7 @@ Each element in the I<Item> map is an I<AttributeValue> object.
 C<SIZE>, the response includes statistics about item collections, if
 any, that were modified during the operation are returned in the
 response. If set to C<NONE> (the default), no statistics are returned.
+
 
 =head2 ReturnValues => Str
 
@@ -517,6 +526,7 @@ the content of the old item is returned.
 =back
 
 Other "Valid Values" are not relevant to PutItem.
+
 
 =head2 B<REQUIRED> TableName => Str
 

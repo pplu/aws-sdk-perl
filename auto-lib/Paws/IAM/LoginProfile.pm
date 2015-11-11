@@ -40,14 +40,17 @@ and GetLoginProfile actions.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CreateDate => Str
 
   The date when the password for the user was created.
+
 
 =head2 PasswordResetRequired => Bool
 
   Specifies whether the user is required to set a new password on next
 sign-in.
+
 
 =head2 B<REQUIRED> UserName => Str
 

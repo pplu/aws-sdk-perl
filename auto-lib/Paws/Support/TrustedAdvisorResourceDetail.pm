@@ -40,10 +40,12 @@ check.
 
 =head1 ATTRIBUTES
 
+
 =head2 IsSuppressed => Bool
 
   Specifies whether the AWS resource was ignored by Trusted Advisor
 because it was marked as suppressed by the user.
+
 
 =head2 B<REQUIRED> Metadata => ArrayRef[Str]
 
@@ -54,13 +56,16 @@ DescribeTrustedAdvisorChecks. B<Metadata> contains all the data that is
 shown in the Excel download, even in those cases where the UI shows
 just summary data.
 
+
 =head2 B<REQUIRED> Region => Str
 
   The AWS region in which the identified resource is located.
 
+
 =head2 B<REQUIRED> ResourceId => Str
 
   The unique identifier for the identified resource.
+
 
 =head2 B<REQUIRED> Status => Str
 

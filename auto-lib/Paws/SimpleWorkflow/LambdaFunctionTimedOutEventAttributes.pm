@@ -37,6 +37,7 @@ Provides details for the C<LambdaFunctionTimedOut> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ScheduledEventId => Int
 
   The ID of the C<LambdaFunctionScheduled> event that was recorded when
@@ -44,9 +45,11 @@ this AWS Lambda function was scheduled. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
+
 =head2 B<REQUIRED> StartedEventId => Int
 
   The ID of the C<LambdaFunctionStarted> event recorded in the history.
+
 
 =head2 TimeoutType => Str
 

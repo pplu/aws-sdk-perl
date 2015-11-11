@@ -37,9 +37,11 @@ Describes a notification.
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoScalingGroupName => Str
 
   The name of the group.
+
 
 =head2 NotificationType => Str
 
@@ -68,6 +70,7 @@ C<autoscaling:EC2_INSTANCE_TERMINATE_ERROR>
 C<autoscaling:TEST_NOTIFICATION>
 
 =back
+
 
 
 =head2 TopicARN => Str

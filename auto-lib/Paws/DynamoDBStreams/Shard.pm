@@ -37,13 +37,16 @@ A uniquely identified group of stream records within a stream.
 
 =head1 ATTRIBUTES
 
+
 =head2 ParentShardId => Str
 
   The shard ID of the current shard's parent.
 
+
 =head2 SequenceNumberRange => L<Paws::DynamoDBStreams::SequenceNumberRange>
 
   The range of possible sequence numbers for the shard.
+
 
 =head2 ShardId => Str
 

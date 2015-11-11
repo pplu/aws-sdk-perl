@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 DeleteOnTermination => Bool
 
   Indicates whether the volume is deleted on instance termination.
+
 
 =head2 VolumeId => Str
 

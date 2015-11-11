@@ -13,6 +13,7 @@ Paws::IoT::ListThingPrincipalsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Principals => ArrayRef[Str]
 
   The principals.

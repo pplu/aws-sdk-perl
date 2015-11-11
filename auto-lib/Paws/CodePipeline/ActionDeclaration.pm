@@ -41,32 +41,39 @@ Represents information about an action declaration.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
   The configuration information for the action type.
 
+
 =head2 Configuration => L<Paws::CodePipeline::ActionConfigurationMap>
 
   The action declaration's configuration.
+
 
 =head2 InputArtifacts => ArrayRef[L<Paws::CodePipeline::InputArtifact>]
 
   The name or ID of the artifact consumed by the action, such as a test
 or build artifact.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The action declaration's name.
+
 
 =head2 OutputArtifacts => ArrayRef[L<Paws::CodePipeline::OutputArtifact>]
 
   The name or ID of the result of the action declaration, such as a test
 or build artifact.
 
+
 =head2 RoleArn => Str
 
   The ARN of the IAM service role that will perform the declared action.
 This is assumed through the roleArn for the pipeline.
+
 
 =head2 RunOrder => Int
 

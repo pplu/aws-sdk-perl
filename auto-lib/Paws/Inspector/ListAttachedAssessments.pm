@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Filter => L<Paws::Inspector::AssessmentsFilter>
 
   You can use this parameter to specify a subset of data to be included
@@ -44,11 +45,13 @@ For a record to match a filter, all specified filter attributes must
 match. When multiple values are specified for a filter attribute, any
 of the values can match.
 
+
 =head2 MaxResults => Int
 
   You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is
 500.
+
 
 =head2 NextToken => Str
 
@@ -57,6 +60,7 @@ this parameter to 'null' on your first call to the
 B<ListAttachedAssessments> action. Subsequent calls to the action fill
 B<nextToken> in the request with the value of B<NextToken> from
 previous response to continue listing data.
+
 
 =head2 RulesPackageArn => Str
 

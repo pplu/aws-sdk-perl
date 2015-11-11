@@ -40,14 +40,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Input => L<Paws::ElasticTranscoder::JobInput>
 
   A section of the request body that provides information about the file
 that is being transcoded.
 
+
 =head2 Output => L<Paws::ElasticTranscoder::CreateJobOutput>
 
   
+
 
 =head2 OutputKeyPrefix => Str
 
@@ -55,11 +58,13 @@ that is being transcoded.
 names of all files that this job creates, including output files,
 thumbnails, and playlists.
 
+
 =head2 Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>]
 
   A section of the request body that provides information about the
 transcoded (target) files. We recommend that you use the C<Outputs>
 syntax instead of the C<Output> syntax.
+
 
 =head2 B<REQUIRED> PipelineId => Str
 
@@ -69,6 +74,7 @@ Amazon S3 bucket from which Elastic Transcoder gets the files to
 transcode and the bucket into which Elastic Transcoder puts the
 transcoded files.
 
+
 =head2 Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>]
 
   If you specify a preset in C<PresetId> for which the value of
@@ -77,6 +83,7 @@ contains information about the master playlists that you want Elastic
 Transcoder to create.
 
 The maximum number of master playlists in a job is 30.
+
 
 =head2 UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>
 

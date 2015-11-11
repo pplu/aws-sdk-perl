@@ -12,6 +12,7 @@ Paws::StorageGateway::AddTagsToResourceOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 ResourceARN => Str
 
   The Amazon Resource Name (ARN) of the resource you want to add tags to.

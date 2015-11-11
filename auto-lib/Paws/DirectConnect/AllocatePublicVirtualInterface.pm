@@ -34,11 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ConnectionId => Str
 
   The connection ID on which the public virtual interface is provisioned.
 
 Default: None
+
 
 =head2 B<REQUIRED> NewPublicVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPublicVirtualInterfaceAllocation>
 
@@ -46,6 +48,7 @@ Default: None
 provisioned.
 
 Default: None
+
 
 =head2 B<REQUIRED> OwnerAccount => Str
 

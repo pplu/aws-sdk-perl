@@ -38,17 +38,21 @@ Information about a deployment configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreateTime => Str
 
   The time that the deployment configuration was created.
+
 
 =head2 DeploymentConfigId => Str
 
   The deployment configuration ID.
 
+
 =head2 DeploymentConfigName => Str
 
   The deployment configuration name.
+
 
 =head2 MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
 

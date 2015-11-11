@@ -41,11 +41,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActionNames => ArrayRef[Str]
 
   A list of names of API actions to evaluate in the simulation. Each
 action is evaluated against each resource. Each action must include the
 service identifier, such as C<iam:CreateUser>.
+
 
 =head2 CallerArn => Str
 
@@ -57,6 +59,7 @@ the policy.
 You can specify only the ARN of an IAM user. You cannot specify the ARN
 of an assumed role, federated user, or a service principal.
 
+
 =head2 ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]
 
   A list of context keys and corresponding values for the simulation to
@@ -64,12 +67,14 @@ use. Whenever a context key is evaluated by a C<Condition> element in
 one of the simulated IAM permission policies, the corresponding value
 is supplied.
 
+
 =head2 Marker => Str
 
   Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
 the value of the C<Marker> element in the response that you received to
 indicate where the next call should start.
+
 
 =head2 MaxItems => Int
 
@@ -83,6 +88,7 @@ results available. In that case, the C<IsTruncated> response element
 returns C<true> and C<Marker> contains a value to include in the
 subsequent call that tells the service where to continue from.
 
+
 =head2 B<REQUIRED> PolicyInputList => ArrayRef[Str]
 
   A list of policy documents to include in the simulation. Each document
@@ -93,6 +99,7 @@ C<ResourcePolicy> parameter. The policies cannot be "scope-down"
 policies, such as you could include in a call to GetFederationToken or
 one of the AssumeRole APIs to restrict what a user can do while using
 the temporary credentials.
+
 
 =head2 ResourceArns => ArrayRef[Str]
 
@@ -110,6 +117,7 @@ C<ResourcePolicy> parameter.
 If you include a C<ResourcePolicy>, then it must be applicable to all
 of the resources included in the simulation or you receive an invalid
 input error.
+
 
 =head2 ResourceHandlingOption => Str
 
@@ -171,6 +179,7 @@ instance, image, security-group, network-interface, subnet, volume
 =back
 
 
+
 =head2 ResourceOwner => Str
 
   An AWS account ID that specifies the owner of any simulated resource
@@ -183,6 +192,7 @@ identity provided in C<CallerArn>. This parameter is required only if
 you specify a resource-based policy and account that owns the resource
 is different from the account that owns the simulated calling user
 C<CallerArn>.
+
 
 =head2 ResourcePolicy => Str
 

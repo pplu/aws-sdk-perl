@@ -41,31 +41,38 @@ Represents information about how an action runs.
 
 =head1 ATTRIBUTES
 
+
 =head2 ErrorDetails => L<Paws::CodePipeline::ErrorDetails>
 
   The details of an error returned by a URL external to AWS.
 
+
 =head2 ExternalExecutionId => Str
 
   The external ID of the run of the action.
+
 
 =head2 ExternalExecutionUrl => Str
 
   The URL of a resource external to AWS that will be used when running
 the action, for example an external repository URL.
 
+
 =head2 LastStatusChange => Str
 
   The last status change of the action.
+
 
 =head2 PercentComplete => Int
 
   A percentage of completeness of the action as it runs.
 
+
 =head2 Status => Str
 
   The status of the action, or for a completed action, the last status of
 the action.
+
 
 =head2 Summary => Str
 

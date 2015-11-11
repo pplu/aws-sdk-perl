@@ -36,9 +36,11 @@ Describes the configuration manager.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name. This parameter must be set to "Chef".
+
 
 =head2 Version => Str
 

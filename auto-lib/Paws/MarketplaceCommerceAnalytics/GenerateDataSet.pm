@@ -37,25 +37,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DataSetPublicationDate => Str
 
   
+
 
 =head2 B<REQUIRED> DataSetType => Str
 
   
 
+
 =head2 B<REQUIRED> DestinationS3BucketName => Str
 
   
+
 
 =head2 DestinationS3Prefix => Str
 
   
 
+
 =head2 B<REQUIRED> RoleNameArn => Str
 
   
+
 
 =head2 B<REQUIRED> SnsTopicArn => Str
 

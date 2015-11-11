@@ -38,25 +38,30 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ApplicationName => Str
 
   The name of the application to associate with this configuration
 template. If no application is found with this name, AWS Elastic
 Beanstalk returns an C<InvalidParameterValue> error.
 
+
 =head2 Description => Str
 
   Describes this configuration.
 
+
 =head2 EnvironmentId => Str
 
   The ID of the environment used with this configuration template.
+
 
 =head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
   If specified, AWS Elastic Beanstalk sets the specified configuration
 option to the requested value. The new value overrides the value
 obtained from the solution stack or the source configuration template.
+
 
 =head2 SolutionStackName => Str
 
@@ -76,6 +81,7 @@ If a solution stack name is not specified and the source configuration
 parameter is specified, AWS Elastic Beanstalk uses the same solution
 stack as the source configuration template.
 
+
 =head2 SourceConfiguration => L<Paws::ElasticBeanstalk::SourceConfiguration>
 
   If specified, AWS Elastic Beanstalk uses the configuration values from
@@ -92,6 +98,7 @@ configuration parameters are specified, the solution stack of the
 source configuration template must match the specified solution stack
 name or else AWS Elastic Beanstalk returns an
 C<InvalidParameterCombination> error.
+
 
 =head2 B<REQUIRED> TemplateName => Str
 

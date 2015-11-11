@@ -37,9 +37,11 @@ C<{restApiId}/{stage}>.
 
 =head1 ATTRIBUTES
 
+
 =head2 RestApiId => Str
 
   A list of Stage resources that are associated with the ApiKey resource.
+
 
 =head2 StageName => Str
 

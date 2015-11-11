@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 SourceSnapshotClusterIdentifier => Str
 
   The identifier of the cluster the source snapshot was created from.
@@ -50,6 +51,7 @@ Constraints:
 =back
 
 
+
 =head2 B<REQUIRED> SourceSnapshotIdentifier => Str
 
   The identifier for the source snapshot.
@@ -62,6 +64,7 @@ Constraints:
 state is C<available>.
 
 =back
+
 
 
 =head2 B<REQUIRED> TargetSnapshotIdentifier => Str

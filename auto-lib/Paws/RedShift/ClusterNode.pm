@@ -37,13 +37,16 @@ The identifier of a node in a cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 NodeRole => Str
 
   Whether the node is a leader node or a compute node.
 
+
 =head2 PrivateIPAddress => Str
 
   The private IP address of a node within a cluster.
+
 
 =head2 PublicIPAddress => Str
 

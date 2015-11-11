@@ -14,9 +14,11 @@ Paws::ApiGateway::ClientCertificates
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[L<Paws::ApiGateway::ClientCertificate>]
 
   
+
 =head2 Position => Str
 
   

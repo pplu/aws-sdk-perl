@@ -35,6 +35,7 @@ Contains information about the user storage for a WorkSpace bundle.
 
 =head1 ATTRIBUTES
 
+
 =head2 Capacity => Str
 
   The amount of user storage for the bundle.

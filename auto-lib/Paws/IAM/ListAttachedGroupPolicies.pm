@@ -35,10 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GroupName => Str
 
   The name (friendly name, not ARN) of the group to list attached
 policies for.
+
 
 =head2 Marker => Str
 
@@ -46,6 +48,7 @@ policies for.
 receive a response indicating that the results are truncated. Set it to
 the value of the C<Marker> element in the response that you received to
 indicate where the next call should start.
+
 
 =head2 MaxItems => Int
 
@@ -58,6 +61,7 @@ This parameter is optional. If you do not include it, it defaults to
 results available. In that case, the C<IsTruncated> response element
 returns C<true> and C<Marker> contains a value to include in the
 subsequent call that tells the service where to continue from.
+
 
 =head2 PathPrefix => Str
 

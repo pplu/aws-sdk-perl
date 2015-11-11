@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 TemplateBody => Str
 
   Structure containing the template body with a minimum length of 1 byte
@@ -41,6 +42,7 @@ Template Anatomy in the AWS CloudFormation User Guide.
 
 Conditional: You must pass C<TemplateURL> or C<TemplateBody>. If both
 are passed, only C<TemplateBody> is used.
+
 
 =head2 TemplateURL => Str
 

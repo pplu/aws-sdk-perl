@@ -12,6 +12,7 @@ Paws::Config::DescribeDeliveryChannelsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 DeliveryChannels => ArrayRef[L<Paws::Config::DeliveryChannel>]
 
   A list that contains the descriptions of the specified delivery

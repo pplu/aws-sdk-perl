@@ -43,31 +43,38 @@ Details on a task in a cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 ClusterArn => Str
 
   The Amazon Resource Name (ARN) of the of the cluster that hosts the
 task.
+
 
 =head2 ContainerInstanceArn => Str
 
   The Amazon Resource Name (ARN) of the container instances that host the
 task.
 
+
 =head2 Containers => ArrayRef[L<Paws::ECS::Container>]
 
   The containers associated with the task.
+
 
 =head2 DesiredStatus => Str
 
   The desired status of the task.
 
+
 =head2 LastStatus => Str
 
   The last known status of the task.
 
+
 =head2 Overrides => L<Paws::ECS::TaskOverride>
 
   One or more container overrides.
+
 
 =head2 StartedBy => Str
 
@@ -75,9 +82,11 @@ task.
 Amazon ECS service, then the C<startedBy> parameter contains the
 deployment ID of the service that starts it.
 
+
 =head2 TaskArn => Str
 
   The Amazon Resource Name (ARN) of the task.
+
 
 =head2 TaskDefinitionArn => Str
 

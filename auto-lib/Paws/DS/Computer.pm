@@ -37,14 +37,17 @@ Contains information about a computer account in a directory.
 
 =head1 ATTRIBUTES
 
+
 =head2 ComputerAttributes => ArrayRef[L<Paws::DS::Attribute>]
 
   An array of Attribute objects that contain the LDAP attributes that
 belong to the computer account.
 
+
 =head2 ComputerId => Str
 
   The identifier of the computer.
+
 
 =head2 ComputerName => Str
 

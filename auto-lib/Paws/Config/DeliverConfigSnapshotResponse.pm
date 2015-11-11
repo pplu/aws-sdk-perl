@@ -12,6 +12,7 @@ Paws::Config::DeliverConfigSnapshotResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ConfigSnapshotId => Str
 
   The ID of the snapshot that is being created.

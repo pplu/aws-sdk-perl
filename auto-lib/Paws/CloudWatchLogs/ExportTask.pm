@@ -43,39 +43,48 @@ Represents an export task.
 
 =head1 ATTRIBUTES
 
+
 =head2 Destination => Str
 
   Name of Amazon S3 bucket to which the log data was exported.
+
 
 =head2 DestinationPrefix => Str
 
   Prefix that was used as the start of Amazon S3 key for every object
 exported.
 
+
 =head2 ExecutionInfo => L<Paws::CloudWatchLogs::ExportTaskExecutionInfo>
 
   Execution info about the export task.
+
 
 =head2 From => Int
 
   A unix timestamp indicating the start time of the range for the
 request. Events with a timestamp prior to this time were not exported.
 
+
 =head2 LogGroupName => Str
 
   The name of the log group from which logs data was exported.
+
 
 =head2 Status => L<Paws::CloudWatchLogs::ExportTaskStatus>
 
   Status of the export task.
 
+
 =head2 TaskId => Str
 
   Id of the export task.
 
+
 =head2 TaskName => Str
 
   The name of the export task.
+
 
 =head2 To => Int
 

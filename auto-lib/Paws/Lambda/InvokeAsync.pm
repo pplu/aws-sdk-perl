@@ -35,9 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> FunctionName => Str
 
   The Lambda function name.
+
 
 =head2 B<REQUIRED> InvokeArgs => Str
 

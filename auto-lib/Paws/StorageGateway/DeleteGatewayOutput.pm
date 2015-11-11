@@ -12,6 +12,7 @@ Paws::StorageGateway::DeleteGatewayOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 GatewayARN => Str
 
   

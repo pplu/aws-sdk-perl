@@ -38,13 +38,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Checksum => Str
 
   The checksum computed for the disk image.
 
+
 =head2 B<REQUIRED> Format => Str
 
   The disk image format.
+
 
 =head2 B<REQUIRED> ImportManifestUrl => Str
 
@@ -53,6 +56,7 @@ information about creating a presigned URL for an Amazon S3 object,
 read the "Query String Request Authentication Alternative" section of
 the Authenticating REST Requests topic in the I<Amazon Simple Storage
 Service Developer Guide>.
+
 
 =head2 B<REQUIRED> Size => Int
 

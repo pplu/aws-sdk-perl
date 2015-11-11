@@ -51,41 +51,51 @@ allowed.
 
 =head1 ATTRIBUTES
 
+
 =head2 B => Str
 
   A Binary data type.
+
 
 =head2 BOOL => Bool
 
   A Boolean data type.
 
+
 =head2 BS => ArrayRef[Str]
 
   A Binary Set data type.
+
 
 =head2 L => ArrayRef[L<Paws::DynamoDB::AttributeValue>]
 
   A List of attribute values.
 
+
 =head2 M => L<Paws::DynamoDB::MapAttributeValue>
 
   A Map of attribute values.
+
 
 =head2 N => Str
 
   A Number data type.
 
+
 =head2 NS => ArrayRef[Str]
 
   A Number Set data type.
+
 
 =head2 NULL => Bool
 
   A Null data type.
 
+
 =head2 S => Str
 
   A String data type.
+
 
 =head2 SS => ArrayRef[Str]
 

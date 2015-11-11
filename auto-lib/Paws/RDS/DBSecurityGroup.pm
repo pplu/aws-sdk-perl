@@ -56,25 +56,31 @@ DescribeDBSecurityGroups action.
 
 =head1 ATTRIBUTES
 
+
 =head2 DBSecurityGroupDescription => Str
 
   Provides the description of the DB security group.
+
 
 =head2 DBSecurityGroupName => Str
 
   Specifies the name of the DB security group.
 
+
 =head2 EC2SecurityGroups => ArrayRef[L<Paws::RDS::EC2SecurityGroup>]
 
   Contains a list of EC2SecurityGroup elements.
+
 
 =head2 IPRanges => ArrayRef[L<Paws::RDS::IPRange>]
 
   Contains a list of IPRange elements.
 
+
 =head2 OwnerId => Str
 
   Provides the AWS ID of the owner of a specific DB security group.
+
 
 =head2 VpcId => Str
 

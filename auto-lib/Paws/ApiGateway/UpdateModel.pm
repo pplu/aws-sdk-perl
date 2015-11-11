@@ -36,14 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ModelName => Str
 
   The name of the model to update.
+
 
 =head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
 
   A list of operations describing the updates to apply to the specified
 resource. The patches are applied in the order specified in the list.
+
 
 =head2 B<REQUIRED> RestApiId => Str
 

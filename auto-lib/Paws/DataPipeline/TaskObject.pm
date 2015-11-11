@@ -39,19 +39,23 @@ runner.
 
 =head1 ATTRIBUTES
 
+
 =head2 AttemptId => Str
 
   The ID of the pipeline task attempt object. AWS Data Pipeline uses this
 value to track how many times a task is attempted.
+
 
 =head2 Objects => L<Paws::DataPipeline::PipelineObjectMap>
 
   Connection information for the location where the task runner will
 publish the output of the task.
 
+
 =head2 PipelineId => Str
 
   The ID of the pipeline that provided the task.
+
 
 =head2 TaskId => Str
 

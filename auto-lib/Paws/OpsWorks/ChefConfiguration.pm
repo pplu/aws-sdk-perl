@@ -36,9 +36,11 @@ Describes the Chef configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 BerkshelfVersion => Str
 
   The Berkshelf version.
+
 
 =head2 ManageBerkshelf => Bool
 

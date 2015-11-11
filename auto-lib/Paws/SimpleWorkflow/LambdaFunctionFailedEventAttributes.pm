@@ -38,13 +38,16 @@ Provides details for the C<LambdaFunctionFailed> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Details => Str
 
   The details of the failure (if any).
 
+
 =head2 Reason => Str
 
   The reason provided for the failure (if any).
+
 
 =head2 B<REQUIRED> ScheduledEventId => Int
 
@@ -52,6 +55,7 @@ Provides details for the C<LambdaFunctionFailed> event.
 this AWS Lambda function was scheduled. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
+
 
 =head2 B<REQUIRED> StartedEventId => Int
 

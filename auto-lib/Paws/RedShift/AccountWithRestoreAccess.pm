@@ -35,6 +35,7 @@ Describes an AWS customer account authorized to restore a snapshot.
 
 =head1 ATTRIBUTES
 
+
 =head2 AccountId => Str
 
   The identifier of an AWS customer account authorized to restore a

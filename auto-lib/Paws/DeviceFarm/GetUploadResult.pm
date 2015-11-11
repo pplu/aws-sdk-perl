@@ -12,6 +12,7 @@ Paws::DeviceFarm::GetUploadResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Upload => L<Paws::DeviceFarm::Upload>
 
   

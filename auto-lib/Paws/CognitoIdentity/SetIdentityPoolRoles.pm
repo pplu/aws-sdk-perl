@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IdentityPoolId => Str
 
   An identity pool ID in the format REGION:GUID.
+
 
 =head2 B<REQUIRED> Roles => L<Paws::CognitoIdentity::RolesMap>
 

@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Payer => Str
 
   Specifies who pays for the download and request fees.
