@@ -1,3 +1,11 @@
+0.19
+ - We were having problems checking error messages for dns and connection failures
+   Different messages on different platforms / locales were making tests fail, and
+   Paws harder to install
+ - SQS docu update
+ - ApiGateway support for variables
+ - S3 API Update: support for ServerSideEncryption in UploadPart 
+
 0.18 6 Nov 2015 
  - Important change: Paws license has been changed to a more permissive Apache 2.0
  - IAM update: SimulateCustomPolicy updated. Docs updated too
@@ -7,9 +15,6 @@
  - STS docu update
  - DeviceFarm update: New Update and Delete methods
  - ELB docu update
- - SQS docu update
- - ApiGateway support for variables
- - S3 API Update: support for ServerSideEncryption in UploadPart 
 
 0.17 22 Oct 2015
  - Pass tests on MacOSX by Roger Pettett
