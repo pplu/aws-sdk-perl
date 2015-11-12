@@ -8,20 +8,20 @@ package Paws::Net::S3Signature {
   sub sign {
     my ($self, $request) = @_;
 
-    if ($self->session_token) {
-      $request->header( 'X-Amz-Security-Token' => $self->session_token );
+        if ($self->session_token) {
+          $request->header( 'X-Amz-Security-Token' => $self->session_token );
+        }
+
+        my $hmac = Digest::HMAC_SHA1->new( $self->secret_key );
+        $hmac->add( $request->string_to_sign() );
+
+        my $headers = $request->headers;
+        $headers->header(Authorization  => 'AWS ' . $self->access_key . ':' . encode_base64( $hmac->digest, '' ));
+        $headers->header(Date           => $request->date );
+        $headers->header(Host           => $self->_api_endpoint );
     }
 
-    my $hmac = Digest::HMAC_SHA1->new( $self->secret_key );
-    $hmac->add( $request->string_to_sign() );
-
-    my $headers = $request->headers;
-    $headers->header(Authorization  => 'AWS ' . $self->access_key . ':' . encode_base64( $hmac->digest, '' ));
-    $headers->header(Date           => $request->date );
-    $headers->header(Host           => $self->_api_endpoint );
-  }
-
-  sub auth_header {
+sub auth_header {
     my ($self, $request) = @_;
     my $hmac = Digest::HMAC_SHA1->new( $self->secret_key );
     $hmac->add( $request->string_to_sign() );

@@ -16,7 +16,7 @@ package Paws::S3::PutObjectAcl;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutObjectAcl');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}?acl');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key}?acl');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectAclOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');

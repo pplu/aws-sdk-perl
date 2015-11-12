@@ -1,8 +1,9 @@
 package Paws::Net::RestXmlCaller {
   use Moose::Role;
   use HTTP::Request::Common;
-  use POSIX qw(strftime); 
+  use POSIX qw(strftime);
   use URI::Template;
+  use URI::Encode  qw(uri_decode);
 
   sub array_flatten_string {
     my $self = shift;
@@ -51,7 +52,7 @@ package Paws::Net::RestXmlCaller {
 
   sub _call_uri {
     my ($self, $call) = @_;
-    my $uri_template = $call->meta->name->_api_uri;
+    my $uri_template = $call->meta->name->_api_uri; # in auto-lib/<service>/<method>.pm
     my $t = URI::Template->new( $uri_template );
 
     my $vars = {};
@@ -69,7 +70,20 @@ package Paws::Net::RestXmlCaller {
 
     my $uri = $t->process($vars);
     $uri->query_form(%$qparams);
-    return $uri->as_string;
+    return uri_decode($uri);
+  }
+
+  sub _to_header_params {
+    my ($self, $request, $call) = @_;
+    foreach my $att_name ( keys %{$request->parameters} )
+    {
+        my $attribute = $call->meta->get_attribute($att_name);
+      if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader')) {
+        $request->headers->header( $attribute->header_name =>$request->{parameters}->{$att_name});
+        print "key: $attribute->{header_name}, value: $request->{parameters}->{$att_name}\n";
+      }
+
+    }
   }
 
   # URI escaping adapted from URI::Escape
@@ -97,14 +111,16 @@ package Paws::Net::RestXmlCaller {
       $request = Paws::Net::APIRequest->new();
     }
 
-    my $uri = $self->_call_uri($call);
+    my $uri = $self->_call_uri($call); #in RestXmlCaller
     $request->uri($uri);
 
-    my $url = $self->_api_endpoint . $uri;
+    my $url = $self->_api_endpoint . $uri; #in Paws::API::EndPointResolver
     $request->parameters({ $self->_to_querycaller_params($call) });
     $request->url($url);
 
     $request->method($call->_api_method);
+
+    $self->_to_header_params($request, $call);
 
     #$request->headers->header( 'content-length' => $self->content_length ) if $content;
     #$request->headers->header( 'content-type'   => $self->content_type ) if $content;
