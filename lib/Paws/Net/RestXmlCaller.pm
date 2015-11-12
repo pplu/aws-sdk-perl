@@ -3,7 +3,7 @@ package Paws::Net::RestXmlCaller {
   use HTTP::Request::Common;
   use POSIX qw(strftime);
   use URI::Template;
-  use URI::Encode  qw(uri_decode);
+  use URI::Encode qw(uri_decode);
 
   sub array_flatten_string {
     my $self = shift;
@@ -80,9 +80,7 @@ package Paws::Net::RestXmlCaller {
         my $attribute = $call->meta->get_attribute($att_name);
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader')) {
         $request->headers->header( $attribute->header_name =>$request->{parameters}->{$att_name});
-        print "key: $attribute->{header_name}, value: $request->{parameters}->{$att_name}\n";
       }
-
     }
   }
 
