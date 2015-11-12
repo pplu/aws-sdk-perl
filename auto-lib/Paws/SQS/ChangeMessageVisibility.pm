@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> QueueUrl => Str
 
   The URL of the Amazon SQS queue to take action on.
+
 
 =head2 B<REQUIRED> ReceiptHandle => Str
 
   The receipt handle associated with the message whose visibility timeout
 should be changed. This parameter is returned by the ReceiveMessage
 action.
+
 
 =head2 B<REQUIRED> VisibilityTimeout => Int
 

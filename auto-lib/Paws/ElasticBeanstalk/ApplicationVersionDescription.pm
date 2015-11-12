@@ -40,25 +40,31 @@ Describes the properties of an application version.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationName => Str
 
   The name of the application associated with this release.
+
 
 =head2 DateCreated => Str
 
   The creation date of the application version.
 
+
 =head2 DateUpdated => Str
 
   The last modified date of the application version.
+
 
 =head2 Description => Str
 
   The description of this application version.
 
+
 =head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>
 
   The location where the source bundle is located for this version.
+
 
 =head2 VersionLabel => Str
 

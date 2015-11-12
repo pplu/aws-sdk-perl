@@ -63,29 +63,35 @@ ListInstanceProfilesForRole
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Arn => Str
 
   The Amazon Resource Name (ARN) specifying the instance profile. For
 more information about ARNs and how to use them in policies, see IAM
 Identifiers in the I<Using IAM> guide.
 
+
 =head2 B<REQUIRED> CreateDate => Str
 
   The date when the instance profile was created.
+
 
 =head2 B<REQUIRED> InstanceProfileId => Str
 
   The stable and unique string identifying the instance profile. For more
 information about IDs, see IAM Identifiers in the I<Using IAM> guide.
 
+
 =head2 B<REQUIRED> InstanceProfileName => Str
 
   The name identifying the instance profile.
+
 
 =head2 B<REQUIRED> Path => Str
 
   The path to the instance profile. For more information about paths, see
 IAM Identifiers in the I<Using IAM> guide.
+
 
 =head2 B<REQUIRED> Roles => ArrayRef[L<Paws::IAM::Role>]
 

@@ -42,7 +42,9 @@ Provides any additional details regarding the prediction.
 
 =head1 ATTRIBUTES
 
+
 =head2 Algorithm => Str
+
 
 =head2 PredictiveModelType => Str
 

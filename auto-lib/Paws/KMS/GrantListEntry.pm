@@ -43,30 +43,37 @@ Contains information about an entry in a list of grants.
 
 =head1 ATTRIBUTES
 
+
 =head2 Constraints => L<Paws::KMS::GrantConstraints>
 
   The conditions under which the grant's operations are allowed.
+
 
 =head2 CreationDate => Str
 
   The date and time when the grant was created.
 
+
 =head2 GranteePrincipal => Str
 
   The principal that receives the grant's permissions.
+
 
 =head2 GrantId => Str
 
   The unique identifier for the grant.
 
+
 =head2 IssuingAccount => Str
 
   The AWS account under which the grant was issued.
+
 
 =head2 KeyId => Str
 
   The unique identifier for the customer master key (CMK) to which the
 grant applies.
+
 
 =head2 Name => Str
 
@@ -74,9 +81,11 @@ grant applies.
 the CreateGrant request, that name is returned. Otherwise this value is
 null.
 
+
 =head2 Operations => ArrayRef[Str]
 
   The list of operations permitted by the grant.
+
 
 =head2 RetiringPrincipal => Str
 

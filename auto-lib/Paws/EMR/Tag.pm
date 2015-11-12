@@ -40,10 +40,12 @@ Amazon EMR Resources.
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => Str
 
   A user-defined key, which is the minimum required information for a
 valid tag. For more information, see Tagging Amazon EMR Resources.
+
 
 =head2 Value => Str
 

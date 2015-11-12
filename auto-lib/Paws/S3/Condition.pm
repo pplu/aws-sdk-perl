@@ -36,6 +36,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 HttpErrorCodeReturnedEquals => Str
 
   The HTTP error code when the redirect is applied. In the event of an
@@ -43,6 +44,7 @@ error, if the error code equals this value, then the specified redirect
 is applied. Required when parent element Condition is specified and
 sibling KeyPrefixEquals is not specified. If both are specified, then
 both must be true for the redirect to be applied.
+
 
 =head2 KeyPrefixEquals => Str
 

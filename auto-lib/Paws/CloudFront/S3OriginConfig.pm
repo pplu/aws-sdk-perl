@@ -37,6 +37,7 @@ instead.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> OriginAccessIdentity => Str
 
   The CloudFront origin access identity to associate with the origin. Use

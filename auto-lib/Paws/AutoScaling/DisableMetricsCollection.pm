@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name or Amazon Resource Name (ARN) of the group.
+
 
 =head2 Metrics => ArrayRef[Str]
 

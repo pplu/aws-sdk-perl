@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> MaximumPartitionCount => Int
 
   
+
 
 =head2 B<REQUIRED> MaximumReplicationCount => Int
 

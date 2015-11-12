@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 IngestionTime => Int
 
   
 
+
 =head2 Message => Str
 
   
+
 
 =head2 Timestamp => Int
 

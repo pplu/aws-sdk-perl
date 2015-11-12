@@ -47,9 +47,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZone => Str
 
   The Availability Zone in which the Reserved Instance can be used.
+
 
 =head2 CurrencyCode => Str
 
@@ -57,21 +59,26 @@ This class has no description
 specified using ISO 4217 standard currency codes. At this time, the
 only supported currency is C<USD>.
 
+
 =head2 Duration => Int
 
   The duration of the Reserved Instance, in seconds.
+
 
 =head2 FixedPrice => Num
 
   The purchase price of the Reserved Instance.
 
+
 =head2 InstanceTenancy => Str
 
   The tenancy of the reserved instance.
 
+
 =head2 InstanceType => Str
 
   The instance type on which the Reserved Instance can be used.
+
 
 =head2 Marketplace => Bool
 
@@ -79,25 +86,31 @@ only supported currency is C<USD>.
 Instance Marketplace (resale) or AWS. If it's a Reserved Instance
 Marketplace offering, this is C<true>.
 
+
 =head2 OfferingType => Str
 
   The Reserved Instance offering type.
+
 
 =head2 PricingDetails => ArrayRef[L<Paws::EC2::PricingDetail>]
 
   The pricing details of the Reserved Instance offering.
 
+
 =head2 ProductDescription => Str
 
   The Reserved Instance product platform description.
+
 
 =head2 RecurringCharges => ArrayRef[L<Paws::EC2::RecurringCharge>]
 
   The recurring charge tag assigned to the resource.
 
+
 =head2 ReservedInstancesOfferingId => Str
 
   The ID of the Reserved Instance offering.
+
 
 =head2 UsagePrice => Num
 

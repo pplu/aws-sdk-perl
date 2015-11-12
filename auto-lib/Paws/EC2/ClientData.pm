@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Comment => Str
 
   A user-defined comment about the disk upload.
+
 
 =head2 UploadEnd => Str
 
   The time that the disk upload ends.
 
+
 =head2 UploadSize => Num
 
   The size of the uploaded disk image, in GiB.
+
 
 =head2 UploadStart => Str
 

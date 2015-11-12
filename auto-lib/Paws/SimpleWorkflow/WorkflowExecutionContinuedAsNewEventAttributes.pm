@@ -45,6 +45,7 @@ Provides details of the C<WorkflowExecutionContinuedAsNew> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ChildPolicy => Str
 
   The policy to use for the child workflow executions of the new
@@ -68,6 +69,7 @@ continue to run.
 =back
 
 
+
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 
   The ID of the C<DecisionTaskCompleted> event corresponding to the
@@ -76,6 +78,7 @@ decision that started this execution. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
+
 =head2 ExecutionStartToCloseTimeout => Str
 
   The total duration allowed for the new workflow execution.
@@ -83,30 +86,37 @@ to this event.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 Input => Str
 
   The input provided to the new workflow execution.
+
 
 =head2 LambdaRole => Str
 
   The IAM role attached to this workflow execution to use when invoking
 AWS Lambda functions.
 
+
 =head2 B<REQUIRED> NewExecutionRunId => Str
 
   The C<runId> of the new workflow execution.
+
 
 =head2 TagList => ArrayRef[Str]
 
   The list of tags associated with the new workflow execution.
 
+
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   
 
+
 =head2 TaskPriority => Str
 
   
+
 
 =head2 TaskStartToCloseTimeout => Str
 
@@ -114,6 +124,7 @@ AWS Lambda functions.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
+
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 

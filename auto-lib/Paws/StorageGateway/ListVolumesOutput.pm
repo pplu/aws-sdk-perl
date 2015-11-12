@@ -14,12 +14,15 @@ Paws::StorageGateway::ListVolumesOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 GatewayARN => Str
 
   
+
 =head2 Marker => Str
 
   
+
 =head2 VolumeInfos => ArrayRef[L<Paws::StorageGateway::VolumeInfo>]
 
   

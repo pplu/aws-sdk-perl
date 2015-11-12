@@ -38,17 +38,21 @@ Represents information about a job.
 
 =head1 ATTRIBUTES
 
+
 =head2 AccountId => Str
 
   The ID of the AWS account to use when performing the job.
+
 
 =head2 Data => L<Paws::CodePipeline::JobData>
 
   Additional data about a job.
 
+
 =head2 Id => Str
 
   The unique system-generated ID of the job.
+
 
 =head2 Nonce => Str
 

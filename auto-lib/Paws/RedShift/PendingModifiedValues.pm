@@ -43,32 +43,39 @@ applied.
 
 =head1 ATTRIBUTES
 
+
 =head2 AutomatedSnapshotRetentionPeriod => Int
 
   The pending or in-progress change of the automated snapshot retention
 period.
+
 
 =head2 ClusterIdentifier => Str
 
   The pending or in-progress change of the new identifier for the
 cluster.
 
+
 =head2 ClusterType => Str
 
   The pending or in-progress change of the cluster type.
 
+
 =head2 ClusterVersion => Str
 
   The pending or in-progress change of the service version.
+
 
 =head2 MasterUserPassword => Str
 
   The pending or in-progress change of the master user password for the
 cluster.
 
+
 =head2 NodeType => Str
 
   The pending or in-progress change of the cluster's node type.
+
 
 =head2 NumberOfNodes => Int
 

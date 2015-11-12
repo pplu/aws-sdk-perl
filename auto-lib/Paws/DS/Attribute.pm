@@ -36,9 +36,11 @@ Represents a named directory attribute.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the attribute.
+
 
 =head2 Value => Str
 

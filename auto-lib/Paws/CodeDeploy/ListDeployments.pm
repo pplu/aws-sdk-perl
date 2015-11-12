@@ -36,19 +36,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationName => Str
 
   The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
+
 
 =head2 CreateTimeRange => L<Paws::CodeDeploy::TimeRange>
 
   A deployment creation start- and end-time range for returning a subset
 of the list of deployments.
 
+
 =head2 DeploymentGroupName => Str
 
   The name of an existing deployment group for the specified application.
+
 
 =head2 IncludeOnlyStatuses => ArrayRef[Str]
 
@@ -70,6 +74,7 @@ deployments.
 =item * Aborted: Include in the resulting list aborted deployments.
 
 =back
+
 
 
 =head2 NextToken => Str

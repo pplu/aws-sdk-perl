@@ -37,9 +37,11 @@ be requested.
 
 =head1 ATTRIBUTES
 
+
 =head2 LocationCode => Str
 
   The code used to indicate the AWS Direct Connect location.
+
 
 =head2 LocationName => Str
 

@@ -43,34 +43,42 @@ to complete the job.
 
 =head1 ATTRIBUTES
 
+
 =head2 ActionConfiguration => L<Paws::CodePipeline::ActionConfiguration>
 
   
+
 
 =head2 ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
   
 
+
 =head2 ArtifactCredentials => L<Paws::CodePipeline::AWSSessionCredentials>
 
   
+
 
 =head2 ContinuationToken => Str
 
   A system-generated token, such as a AWS CodeDeploy deployment ID, that
 a job requires in order to continue the job asynchronously.
 
+
 =head2 EncryptionKey => L<Paws::CodePipeline::EncryptionKey>
 
   
+
 
 =head2 InputArtifacts => ArrayRef[L<Paws::CodePipeline::Artifact>]
 
   The artifact supplied to the job.
 
+
 =head2 OutputArtifacts => ArrayRef[L<Paws::CodePipeline::Artifact>]
 
   The output of the job.
+
 
 =head2 PipelineContext => L<Paws::CodePipeline::PipelineContext>
 

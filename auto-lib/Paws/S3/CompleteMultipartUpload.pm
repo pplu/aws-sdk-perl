@@ -24,18 +24,23 @@ Paws::S3::CompleteMultipartUploadOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bucket => Str
 
   
+
 =head2 B<REQUIRED> Key => Str
 
   
+
 =head2 MultipartUpload => L<Paws::S3::CompletedMultipartUpload>
 
   
+
 =head2 RequestPayer => Str
 
   
+
 =head2 B<REQUIRED> UploadId => Str
 
   

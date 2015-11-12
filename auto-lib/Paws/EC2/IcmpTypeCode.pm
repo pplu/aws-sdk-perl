@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Int
 
   The ICMP type. A value of -1 means all types.
+
 
 =head2 Type => Int
 

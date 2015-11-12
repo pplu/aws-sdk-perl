@@ -39,10 +39,12 @@ distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bucket => Str
 
   The Amazon S3 bucket to store the access logs in, for example,
 myawslogbucket.s3.amazonaws.com.
+
 
 =head2 B<REQUIRED> Enabled => Bool
 
@@ -54,6 +56,7 @@ Prefix elements. If you specify false for Enabled but you specify
 values for Bucket, prefix and IncludeCookies, the values are
 automatically deleted.
 
+
 =head2 B<REQUIRED> IncludeCookies => Bool
 
   Specifies whether you want CloudFront to include cookies in access
@@ -63,6 +66,7 @@ the cache behaviors for this distribution. If you do not want to
 include cookies when you create a distribution or if you want to
 disable include cookies for an existing distribution, specify false for
 IncludeCookies.
+
 
 =head2 B<REQUIRED> Prefix => Str
 

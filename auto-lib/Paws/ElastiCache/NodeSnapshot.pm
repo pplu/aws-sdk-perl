@@ -38,18 +38,22 @@ Represents an individual cache node in a snapshot of a cache cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheNodeCreateTime => Str
 
   The date and time when the cache node was created in the source cache
 cluster.
 
+
 =head2 CacheNodeId => Str
 
   The cache node identifier for the node in the source cache cluster.
 
+
 =head2 CacheSize => Str
 
   The size of the cache on the source cache node.
+
 
 =head2 SnapshotCreateTime => Str
 

@@ -42,33 +42,41 @@ Contains information about a delivery stream.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreateTimestamp => Str
 
   The date and time that the delivery stream was created.
+
 
 =head2 B<REQUIRED> DeliveryStreamARN => Str
 
   The Amazon Resource Name (ARN) of the delivery stream.
 
+
 =head2 B<REQUIRED> DeliveryStreamName => Str
 
   The name of the delivery stream.
+
 
 =head2 B<REQUIRED> DeliveryStreamStatus => Str
 
   The status of the delivery stream.
 
+
 =head2 B<REQUIRED> Destinations => ArrayRef[L<Paws::Firehose::DestinationDescription>]
 
   The destinations.
+
 
 =head2 B<REQUIRED> HasMoreDestinations => Bool
 
   Indicates whether there are more destinations available to list.
 
+
 =head2 LastUpdateTimestamp => Str
 
   The date and time that the delivery stream was last updated.
+
 
 =head2 B<REQUIRED> VersionId => Str
 

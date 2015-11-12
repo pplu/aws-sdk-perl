@@ -12,6 +12,7 @@ Paws::DeviceFarm::CreateDevicePoolResult
 
 =head1 ATTRIBUTES
 
+
 =head2 DevicePool => L<Paws::DeviceFarm::DevicePool>
 
   The newly created device pool.

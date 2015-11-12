@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name of the group.
 
+
 =head2 InstanceIds => ArrayRef[Str]
 
   One or more instance IDs.
+
 
 =head2 B<REQUIRED> ShouldDecrementDesiredCapacity => Bool
 

@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 ExpiredLogEventEndIndex => Int
 
   
 
+
 =head2 TooNewLogEventStartIndex => Int
 
   
+
 
 =head2 TooOldLogEventEndIndex => Int
 

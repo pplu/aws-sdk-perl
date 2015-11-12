@@ -43,13 +43,16 @@ This data type is used by the return parameter of C<SimulatePolicy>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> EvalActionName => Str
 
   The name of the API action tested on the indicated resource.
 
+
 =head2 B<REQUIRED> EvalDecision => Str
 
   The result of the simulation.
+
 
 =head2 EvalDecisionDetails => L<Paws::IAM::EvalDecisionDetailsType>
 
@@ -60,9 +63,11 @@ decision. When simulating cross-account access to a resource, both the
 resource-based policy and the caller's IAM policy must grant access.
 See How IAM Roles Differ from Resource-based Policies
 
+
 =head2 EvalResourceName => Str
 
   The ARN of the resource that the indicated API action was tested on.
+
 
 =head2 MatchedStatements => ArrayRef[L<Paws::IAM::Statement>]
 
@@ -71,6 +76,7 @@ result for this scenario. Remember that even if multiple statements
 allow the action on the resource, if only one statement denies that
 action, then the explicit deny overrides any allow, and the deny
 statement is the only entry included in the result.
+
 
 =head2 MissingContextValues => ArrayRef[Str]
 
@@ -83,6 +89,7 @@ If the response includes any keys in this list, then the reported
 results might be untrustworthy because the simulation could not
 completely evaluate all of the conditions specified in the policies
 that would occur in a real world request.
+
 
 =head2 ResourceSpecificResults => ArrayRef[L<Paws::IAM::ResourceSpecificResult>]
 

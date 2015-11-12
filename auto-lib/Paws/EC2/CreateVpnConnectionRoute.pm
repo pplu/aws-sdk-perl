@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DestinationCidrBlock => Str
 
   The CIDR block associated with the local subnet of the customer
 network.
+
 
 =head2 B<REQUIRED> VpnConnectionId => Str
 

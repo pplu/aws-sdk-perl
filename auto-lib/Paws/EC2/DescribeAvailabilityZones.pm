@@ -34,12 +34,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
@@ -67,6 +69,7 @@ C<zone-name> - The name of the Availability Zone (for example,
 C<us-east-1a>).
 
 =back
+
 
 
 =head2 ZoneNames => ArrayRef[Str]

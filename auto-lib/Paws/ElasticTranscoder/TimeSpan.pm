@@ -36,6 +36,7 @@ Settings that determine when a clip begins and how long it lasts.
 
 =head1 ATTRIBUTES
 
+
 =head2 Duration => Str
 
   The duration of the clip. The format can be either HH:mm:ss.SSS
@@ -46,6 +47,7 @@ the file.
 
 If you specify a value longer than the duration of the input file,
 Elastic Transcoder transcodes the file and returns a warning message.
+
 
 =head2 StartTime => Str
 

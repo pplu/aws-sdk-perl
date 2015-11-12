@@ -12,6 +12,7 @@ Paws::CodeDeploy::BatchGetApplicationsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationsInfo => ArrayRef[L<Paws::CodeDeploy::ApplicationInfo>]
 
   Information about the applications.

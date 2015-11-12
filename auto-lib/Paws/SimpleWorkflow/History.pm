@@ -13,9 +13,11 @@ Paws::SimpleWorkflow::History
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Events => ArrayRef[L<Paws::SimpleWorkflow::HistoryEvent>]
 
   The list of history events.
+
 =head2 NextPageToken => Str
 
   If a C<NextPageToken> was returned by a previous call, there are more

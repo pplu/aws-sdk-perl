@@ -12,6 +12,7 @@ Paws::DynamoDBStreams::DescribeStreamOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 StreamDescription => L<Paws::DynamoDBStreams::StreamDescription>
 
   A complete description of the stream, including its creation date and

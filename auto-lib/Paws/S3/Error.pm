@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   
+
 
 =head2 Key => Str
 
   
 
+
 =head2 Message => Str
 
   
+
 
 =head2 VersionId => Str
 

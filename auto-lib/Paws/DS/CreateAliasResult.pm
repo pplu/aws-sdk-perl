@@ -13,9 +13,11 @@ Paws::DS::CreateAliasResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Alias => Str
 
   The alias for the directory.
+
 =head2 DirectoryId => Str
 
   The identifier of the directory.

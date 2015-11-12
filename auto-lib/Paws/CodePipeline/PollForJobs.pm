@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActionTypeId => L<Paws::CodePipeline::ActionTypeId>
 
   
 
+
 =head2 MaxBatchSize => Int
 
   The maximum number of jobs to return in a poll for jobs call.
+
 
 =head2 QueryParam => L<Paws::CodePipeline::QueryParamMap>
 

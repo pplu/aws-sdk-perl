@@ -41,19 +41,23 @@ Describes the data specification of an Amazon Redshift C<DataSource>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DatabaseCredentials => L<Paws::MachineLearning::RedshiftDatabaseCredentials>
 
   Describes AWS Identity and Access Management (IAM) credentials that are
 used connect to the Amazon Redshift database.
+
 
 =head2 B<REQUIRED> DatabaseInformation => L<Paws::MachineLearning::RedshiftDatabase>
 
   Describes the C<DatabaseName> and C<ClusterIdentifier> for an Amazon
 Redshift C<DataSource>.
 
+
 =head2 DataRearrangement => Str
 
   Describes the splitting specifications for a C<DataSource>.
+
 
 =head2 DataSchema => Str
 
@@ -91,14 +95,17 @@ value. Use the following format to define your C<DataSchema>.
 
 "excludedVariableNames": [ "F6" ] }
 
+
 =head2 DataSchemaUri => Str
 
   Describes the schema location for an Amazon Redshift C<DataSource>.
+
 
 =head2 B<REQUIRED> S3StagingLocation => Str
 
   Describes an Amazon S3 location to store the result set of the
 C<SelectSqlQuery> query.
+
 
 =head2 B<REQUIRED> SelectSqlQuery => Str
 

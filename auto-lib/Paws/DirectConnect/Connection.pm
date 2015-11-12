@@ -20,6 +20,7 @@ Paws::DirectConnect::Connection
 
 =head1 ATTRIBUTES
 
+
 =head2 Bandwidth => Str
 
   Bandwidth of the connection.
@@ -28,27 +29,35 @@ Example: 1Gbps (for regular connections), or 500Mbps (for hosted
 connections)
 
 Default: None
+
 =head2 ConnectionId => Str
 
   
+
 =head2 ConnectionName => Str
 
   
+
 =head2 ConnectionState => Str
 
   
+
 =head2 Location => Str
 
   
+
 =head2 OwnerAccount => Str
 
   
+
 =head2 PartnerName => Str
 
   
+
 =head2 Region => Str
 
   
+
 =head2 Vlan => Int
 
   

@@ -36,11 +36,13 @@ The .jpg or .png file associated with an audio file.
 
 =head1 ATTRIBUTES
 
+
 =head2 Artwork => ArrayRef[L<Paws::ElasticTranscoder::Artwork>]
 
   The file to be used as album art. There can be multiple artworks
 associated with an audio file, to a maximum of 20. Valid formats are
 C<.jpg> and C<.png>
+
 
 =head2 MergePolicy => Str
 

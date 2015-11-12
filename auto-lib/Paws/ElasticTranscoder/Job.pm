@@ -46,19 +46,23 @@ that is created.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) for the job.
+
 
 =head2 Id => Str
 
   The identifier that Elastic Transcoder assigned to the job. You use
 this value to get settings for the job or to delete the job.
 
+
 =head2 Input => L<Paws::ElasticTranscoder::JobInput>
 
   A section of the request or response body that provides information
 about the file that is being transcoded.
+
 
 =head2 Output => L<Paws::ElasticTranscoder::JobOutput>
 
@@ -70,12 +74,14 @@ that is listed for the first output in the Outputs object.
 Outputs recommended instead. A section of the request or response body
 that provides information about the transcoded (target) file.
 
+
 =head2 OutputKeyPrefix => Str
 
   The value, if any, that you want Elastic Transcoder to prepend to the
 names of all files that this job creates, including output files,
 thumbnails, and playlists. We recommend that you add a / or some other
 delimiter to the end of the C<OutputKeyPrefix>.
+
 
 =head2 Outputs => ArrayRef[L<Paws::ElasticTranscoder::JobOutput>]
 
@@ -89,6 +95,7 @@ If you specify more than one output for a job, Elastic Transcoder
 creates the files for each output in the order in which you specify
 them in the job.
 
+
 =head2 PipelineId => Str
 
   The C<Id> of the pipeline that you want Elastic Transcoder to use for
@@ -96,6 +103,7 @@ transcoding. The pipeline determines several settings, including the
 Amazon S3 bucket from which Elastic Transcoder gets the files to
 transcode and the bucket into which Elastic Transcoder puts the
 transcoded files.
+
 
 =head2 Playlists => ArrayRef[L<Paws::ElasticTranscoder::Playlist>]
 
@@ -106,14 +114,17 @@ about the master playlists that you want Elastic Transcoder to create.
 
 The maximum number of master playlists in a job is 30.
 
+
 =head2 Status => Str
 
   The status of the job: C<Submitted>, C<Progressing>, C<Complete>,
 C<Canceled>, or C<Error>.
 
+
 =head2 Timing => L<Paws::ElasticTranscoder::Timing>
 
   Details about the timing of a job.
+
 
 =head2 UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>
 

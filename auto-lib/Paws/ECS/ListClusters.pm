@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 MaxResults => Int
 
   The maximum number of cluster results returned by C<ListClusters> in
@@ -43,6 +44,7 @@ request can be seen by sending another C<ListClusters> request with the
 returned C<nextToken> value. This value can be between 1 and 100. If
 this parameter is not used, then C<ListClusters> returns up to 100
 results and a C<nextToken> value if applicable.
+
 
 =head2 NextToken => Str
 

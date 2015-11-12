@@ -39,6 +39,7 @@ deployment.
 
 =head1 ATTRIBUTES
 
+
 =head2 ErrorCode => Str
 
   The associated error code:
@@ -64,13 +65,16 @@ reason.
 =back
 
 
+
 =head2 LogTail => Str
 
   The last portion of the associated diagnostic log.
 
+
 =head2 Message => Str
 
   The message associated with the error.
+
 
 =head2 ScriptName => Str
 

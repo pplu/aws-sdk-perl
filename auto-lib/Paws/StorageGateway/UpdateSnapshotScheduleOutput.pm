@@ -12,6 +12,7 @@ Paws::StorageGateway::UpdateSnapshotScheduleOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 VolumeARN => Str
 
   

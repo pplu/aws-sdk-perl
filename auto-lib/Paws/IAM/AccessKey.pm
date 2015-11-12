@@ -47,22 +47,27 @@ If you lose a secret access key, you must create a new access key.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AccessKeyId => Str
 
   The ID for this access key.
+
 
 =head2 CreateDate => Str
 
   The date when the access key was created.
 
+
 =head2 B<REQUIRED> SecretAccessKey => Str
 
   The secret key used to sign requests.
+
 
 =head2 B<REQUIRED> Status => Str
 
   The status of the access key. C<Active> means the key is valid for API
 calls, while C<Inactive> means it is not.
+
 
 =head2 B<REQUIRED> UserName => Str
 

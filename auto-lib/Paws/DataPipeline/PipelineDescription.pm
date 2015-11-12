@@ -39,23 +39,28 @@ Contains pipeline metadata.
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   Description of the pipeline.
+
 
 =head2 B<REQUIRED> Fields => ArrayRef[L<Paws::DataPipeline::Field>]
 
   A list of read-only fields that contain metadata about the pipeline:
 @userId, @accountId, and @pipelineState.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the pipeline.
+
 
 =head2 B<REQUIRED> PipelineId => Str
 
   The pipeline identifier that was assigned by AWS Data Pipeline. This is
 a string of the form C<df-297EG78HU43EEXAMPLE>.
+
 
 =head2 Tags => ArrayRef[L<Paws::DataPipeline::Tag>]
 

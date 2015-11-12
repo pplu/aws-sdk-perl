@@ -36,9 +36,11 @@ Describes the members of a VPC security group.
 
 =head1 ATTRIBUTES
 
+
 =head2 Status => Str
 
   
+
 
 =head2 VpcSecurityGroupId => Str
 

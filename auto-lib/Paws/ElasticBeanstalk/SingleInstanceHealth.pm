@@ -44,14 +44,17 @@ return data.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationMetrics => L<Paws::ElasticBeanstalk::ApplicationMetrics>
 
   
+
 
 =head2 Causes => ArrayRef[Str]
 
   Represents the causes, which provide more information about the current
 health status.
+
 
 =head2 Color => Str
 
@@ -59,18 +62,22 @@ health status.
 health of the EC2 instance. For more information, see Health Colors and
 Statuses.
 
+
 =head2 HealthStatus => Str
 
   Returns the health status of the specified instance. For more
 information, see Health Colors and Statuses.
 
+
 =head2 InstanceId => Str
 
   The ID of the Amazon EC2 instance.
 
+
 =head2 LaunchedAt => Str
 
   The time at which the EC2 instance was launched.
+
 
 =head2 System => L<Paws::ElasticBeanstalk::SystemStatus>
 

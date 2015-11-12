@@ -45,14 +45,17 @@ users to have permission to delete objects from your origin.
 
 =head1 ATTRIBUTES
 
+
 =head2 CachedMethods => L<Paws::CloudFront::CachedMethods>
 
   
+
 
 =head2 B<REQUIRED> Items => ArrayRef[Str]
 
   A complex type that contains the HTTP methods that you want CloudFront
 to process and forward to your origin.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

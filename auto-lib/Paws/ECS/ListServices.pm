@@ -34,11 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the services to list. If you do not specify a cluster, the
 default cluster is assumed..
+
 
 =head2 MaxResults => Int
 
@@ -50,6 +52,7 @@ the initial request can be seen by sending another C<ListServices>
 request with the returned C<nextToken> value. This value can be between
 1 and 100. If this parameter is not used, then C<ListServices> returns
 up to 100 results and a C<nextToken> value if applicable.
+
 
 =head2 NextToken => Str
 

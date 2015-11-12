@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ExclusiveStartStreamName => Str
 
   The name of the stream to start the list with.
+
 
 =head2 Limit => Int
 

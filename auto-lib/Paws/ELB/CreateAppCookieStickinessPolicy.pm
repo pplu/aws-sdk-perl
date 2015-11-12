@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CookieName => Str
 
   The name of the application cookie used for stickiness.
 
+
 =head2 B<REQUIRED> LoadBalancerName => Str
 
   The name of the load balancer.
+
 
 =head2 B<REQUIRED> PolicyName => Str
 

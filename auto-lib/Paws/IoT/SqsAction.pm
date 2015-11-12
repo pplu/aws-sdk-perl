@@ -37,13 +37,16 @@ Describes an action to publish data to an SQS queue.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> QueueUrl => Str
 
   The URL of the Amazon SQS queue.
 
+
 =head2 B<REQUIRED> RoleArn => Str
 
   The ARN of the IAM role that grants access.
+
 
 =head2 UseBase64 => Bool
 

@@ -38,11 +38,13 @@ AWS resource.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the recorder. By default, AWS Config automatically assigns
 the name "default" when creating the configuration recorder. You cannot
 change the assigned name.
+
 
 =head2 RecordingGroup => L<Paws::Config::RecordingGroup>
 
@@ -50,6 +52,7 @@ change the assigned name.
 supported resources or to provide a list of resource types to record.
 The list of resource types must be a subset of supported resource
 types.
+
 
 =head2 RoleARN => Str
 

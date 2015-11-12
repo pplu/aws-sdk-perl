@@ -41,13 +41,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Attribute => Str
 
   The name of the attribute to modify.
 
+
 =head2 Description => L<Paws::EC2::AttributeValue>
 
   A description for the AMI.
+
 
 =head2 DryRun => Bool
 
@@ -56,17 +59,21 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 B<REQUIRED> ImageId => Str
 
   The ID of the AMI.
+
 
 =head2 LaunchPermission => L<Paws::EC2::LaunchPermissionModifications>
 
   A launch permission modification.
 
+
 =head2 OperationType => Str
 
   The operation type.
+
 
 =head2 ProductCodes => ArrayRef[Str]
 
@@ -74,15 +81,18 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 can't be removed. This is only valid when modifying the C<productCodes>
 attribute.
 
+
 =head2 UserGroups => ArrayRef[Str]
 
   One or more user groups. This is only valid when modifying the
 C<launchPermission> attribute.
 
+
 =head2 UserIds => ArrayRef[Str]
 
   One or more AWS account IDs. This is only valid when modifying the
 C<launchPermission> attribute.
+
 
 =head2 Value => Str
 

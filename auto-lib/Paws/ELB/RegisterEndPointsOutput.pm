@@ -13,6 +13,7 @@ Paws::ELB::RegisterEndPointsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Instances => ArrayRef[L<Paws::ELB::Instance>]
 
   The updated list of instances for the load balancer.

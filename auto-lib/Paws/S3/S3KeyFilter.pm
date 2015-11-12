@@ -35,6 +35,7 @@ Container for object key name prefix and suffix filtering rules.
 
 =head1 ATTRIBUTES
 
+
 =head2 FilterRules => ArrayRef[L<Paws::S3::FilterRule>]
 
   

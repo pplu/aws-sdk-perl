@@ -40,24 +40,29 @@ Describes a destination in Amazon S3.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> BucketARN => Str
 
   The ARN of the S3 bucket.
+
 
 =head2 B<REQUIRED> BufferingHints => L<Paws::Firehose::BufferingHints>
 
   The buffering option. If no value is specified, C<BufferingHints>
 object default values are used.
 
+
 =head2 B<REQUIRED> CompressionFormat => Str
 
   The compression format. If no value is specified, the default is
 C<NOCOMPRESSION>.
 
+
 =head2 B<REQUIRED> EncryptionConfiguration => L<Paws::Firehose::EncryptionConfiguration>
 
   The encryption configuration. If no value is specified, the default is
 no encryption.
+
 
 =head2 Prefix => Str
 
@@ -66,6 +71,7 @@ delivered S3 files. You can specify an extra prefix to be added in
 front of the time format prefix. Note that if the prefix ends with a
 slash, it appears as a folder in the S3 bucket. For more information,
 see Amazon S3 Object Name Format in the guide-fh-dev.
+
 
 =head2 B<REQUIRED> RoleARN => Str
 

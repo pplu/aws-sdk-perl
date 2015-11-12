@@ -13,6 +13,7 @@ Paws::ApiGateway::Stages
 
 =head1 ATTRIBUTES
 
+
 =head2 Item => ArrayRef[L<Paws::ApiGateway::Stage>]
 
   An individual Stage resource.

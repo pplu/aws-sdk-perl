@@ -37,9 +37,11 @@ applications running in the specified environment.
 
 =head1 ATTRIBUTES
 
+
 =head2 CPUUtilization => L<Paws::ElasticBeanstalk::CPUUtilization>
 
   
+
 
 =head2 LoadAverage => ArrayRef[Num]
 

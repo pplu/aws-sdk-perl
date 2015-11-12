@@ -42,6 +42,7 @@ How accurate are your GeoIP databases? on the MaxMind website.
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[Str]
 
   A complex type that contains a Location element for each country in
@@ -55,11 +56,13 @@ see ISO 3166-1-alpha-2 code on the International Organization for
 Standardization website. You can also refer to the country list in the
 CloudFront console, which includes both country names and codes.
 
+
 =head2 B<REQUIRED> Quantity => Int
 
   When geo restriction is enabled, this is the number of countries in
 your whitelist or blacklist. Otherwise, when it is not enabled,
 Quantity is 0, and you can omit Items.
+
 
 =head2 B<REQUIRED> RestrictionType => Str
 

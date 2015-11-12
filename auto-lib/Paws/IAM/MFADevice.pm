@@ -40,14 +40,17 @@ action.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> EnableDate => Str
 
   The date when the MFA device was enabled for the user.
+
 
 =head2 B<REQUIRED> SerialNumber => Str
 
   The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the device ARN.
+
 
 =head2 B<REQUIRED> UserName => Str
 

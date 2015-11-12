@@ -43,6 +43,7 @@ Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> OrganizationArn => Str
 
   The ARN of the Amazon WorkMail organization. An example of an Amazon
@@ -50,6 +51,7 @@ WorkMail organization ARN is
 C<arn:aws:workmail:us-west-2:123456789012:organization/m-68755160c4cb4e29a2b2f8fb58f359d7>.
 For information about Amazon WorkMail organizations, see the Amazon
 WorkMail Administrator Guide.
+
 
 =head2 TopicArn => Str
 

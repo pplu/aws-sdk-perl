@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DeliveryStreamName => Str
 
   The name of the delivery stream.
+
 
 =head2 ExclusiveStartDestinationId => Str
 
   Specifies the destination ID to start returning the destination
 information. Currently Amazon Kinesis Firehose supports one destination
 per delivery stream.
+
 
 =head2 Limit => Int
 

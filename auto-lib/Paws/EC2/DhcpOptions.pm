@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 DhcpConfigurations => ArrayRef[L<Paws::EC2::DhcpConfiguration>]
 
   One or more DHCP options in the set.
 
+
 =head2 DhcpOptionsId => Str
 
   The ID of the set of DHCP options.
+
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 

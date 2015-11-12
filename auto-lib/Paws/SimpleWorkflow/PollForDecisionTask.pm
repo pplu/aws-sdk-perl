@@ -37,9 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Domain => Str
 
   The name of the domain containing the task lists to poll.
+
 
 =head2 Identity => Str
 
@@ -47,6 +49,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 DecisionTaskStarted event in the workflow history. This enables
 diagnostic tracing when problems arise. The form of this identity is
 user defined.
+
 
 =head2 MaximumPageSize => Int
 
@@ -57,6 +60,7 @@ however, specify a page size I<smaller> than the maximum.
 
 This is an upper limit only; the actual number of results returned per
 call may be fewer than the specified maximum.
+
 
 =head2 NextPageToken => Str
 
@@ -74,11 +78,13 @@ PollForDecisionTask again (with the C<nextPageToken>) to retrieve the
 next page of history records. Calling PollForDecisionTask with a
 C<nextPageToken> will not return a new decision task..
 
+
 =head2 ReverseOrder => Bool
 
   When set to C<true>, returns the events in reverse order. By default
 the results are returned in ascending order of the C<eventTimestamp> of
 the events.
+
 
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 

@@ -36,9 +36,11 @@ Platform application object.
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::SNS::MapStringToString>
 
   Attributes for platform application object.
+
 
 =head2 PlatformApplicationArn => Str
 

@@ -12,6 +12,7 @@ Paws::OpsWorks::DescribeUserProfilesResult
 
 =head1 ATTRIBUTES
 
+
 =head2 UserProfiles => ArrayRef[L<Paws::OpsWorks::UserProfile>]
 
   A C<Users> object that describes the specified users.

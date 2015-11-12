@@ -40,16 +40,19 @@ Concepts.
 
 =head1 ATTRIBUTES
 
+
 =head2 EncryptionKey => L<Paws::CodePipeline::EncryptionKey>
 
   The AWS Key Management Service (AWS KMS) key used to encrypt the data
 in the artifact store. If this is undefined, the default key for Amazon
 S3 is used.
 
+
 =head2 B<REQUIRED> Location => Str
 
   The location for storing the artifacts for a pipeline, such as an S3
 bucket or folder.
+
 
 =head2 B<REQUIRED> Type => Str
 

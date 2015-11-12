@@ -13,6 +13,7 @@ Paws::SimpleWorkflow::ActivityTypeInfos
 
 =head1 ATTRIBUTES
 
+
 =head2 NextPageToken => Str
 
   If a C<NextPageToken> was returned by a previous call, there are more
@@ -22,6 +23,7 @@ arguments unchanged.
 
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
+
 =head2 B<REQUIRED> TypeInfos => ArrayRef[L<Paws::SimpleWorkflow::ActivityTypeInfo>]
 
   List of activity type information.

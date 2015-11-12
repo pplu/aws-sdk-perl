@@ -13,6 +13,7 @@ Paws::CloudFormation::GetTemplateOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 TemplateBody => Str
 
   Structure containing the template body. (For more information, go to

@@ -47,44 +47,54 @@ DescribeAssessment action.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationArn => Str
 
   The ARN of the application that corresponds to this assessment.
+
 
 =head2 AssessmentArn => Str
 
   The ARN of the assessment.
 
+
 =head2 AssessmentName => Str
 
   The name of the assessment.
+
 
 =head2 AssessmentState => Str
 
   The state of the assessment. Values can be set to I<Created>,
 I<Collecting Data>, I<Stopping>, and I<Completed>.
 
+
 =head2 DataCollected => Bool
 
   Boolean value (true or false) specifying whether the data collection
 process is completed.
+
 
 =head2 DurationInSeconds => Int
 
   The assessment duration in seconds. The default value is 3600 seconds
 (one hour). The maximum value is 86400 seconds (one day).
 
+
 =head2 EndTime => Str
 
   The assessment end time.
+
 
 =head2 FailureMessage => Str
 
   This data type property is not currently used.
 
+
 =head2 StartTime => Str
 
   The assessment start time.
+
 
 =head2 UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]
 

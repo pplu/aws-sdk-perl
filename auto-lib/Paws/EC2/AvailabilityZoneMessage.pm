@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Message => Str
 
   The message about the Availability Zone.

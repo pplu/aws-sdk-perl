@@ -15,12 +15,15 @@ Paws::CognitoSync::ListDatasetsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Count => Int
 
   Number of datasets returned.
+
 =head2 Datasets => ArrayRef[L<Paws::CognitoSync::Dataset>]
 
   A set of datasets.
+
 =head2 NextToken => Str
 
   A pagination token for obtaining the next page of results.

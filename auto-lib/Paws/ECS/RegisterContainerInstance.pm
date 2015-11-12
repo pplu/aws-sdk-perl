@@ -38,10 +38,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
 
   The container instance attributes that this container instance
 supports.
+
 
 =head2 Cluster => Str
 
@@ -49,10 +51,12 @@ supports.
 which to register your container instance. If you do not specify a
 cluster, the default cluster is assumed..
 
+
 =head2 ContainerInstanceArn => Str
 
   The Amazon Resource Name (ARN) of the container instance (if it was
 previously registered).
+
 
 =head2 InstanceIdentityDocument => Str
 
@@ -61,6 +65,7 @@ document can be found by running the following command from the
 instance: C<curl
 http://169.254.169.254/latest/dynamic/instance-identity/document/>
 
+
 =head2 InstanceIdentityDocumentSignature => Str
 
   The instance identity document signature for the EC2 instance to
@@ -68,9 +73,11 @@ register. This signature can be found by running the following command
 from the instance: C<curl
 http://169.254.169.254/latest/dynamic/instance-identity/signature/>
 
+
 =head2 TotalResources => ArrayRef[L<Paws::ECS::Resource>]
 
   The resources available on the instance.
+
 
 =head2 VersionInfo => L<Paws::ECS::VersionInfo>
 

@@ -36,9 +36,11 @@ A description of the identity pool.
 
 =head1 ATTRIBUTES
 
+
 =head2 IdentityPoolId => Str
 
   An identity pool ID in the format REGION:GUID.
+
 
 =head2 IdentityPoolName => Str
 

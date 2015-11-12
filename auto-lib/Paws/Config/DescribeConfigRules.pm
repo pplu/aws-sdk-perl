@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ConfigRuleNames => ArrayRef[Str]
 
   The names of the AWS Config rules for which you want details. If you do
 not specify any names, AWS Config returns details for all your rules.
+
 
 =head2 NextToken => Str
 

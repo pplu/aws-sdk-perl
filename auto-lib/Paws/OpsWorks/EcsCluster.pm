@@ -38,17 +38,21 @@ Describes a registered Amazon ECS cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 EcsClusterArn => Str
 
   The cluster's ARN.
+
 
 =head2 EcsClusterName => Str
 
   The cluster name.
 
+
 =head2 RegisteredAt => Str
 
   The time and date that the cluster was registered with the stack.
+
 
 =head2 StackId => Str
 

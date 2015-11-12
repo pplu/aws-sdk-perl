@@ -39,21 +39,26 @@ A CA certificate for an AWS account.
 
 =head1 ATTRIBUTES
 
+
 =head2 CertificateIdentifier => Str
 
   The unique key that identifies a certificate.
+
 
 =head2 CertificateType => Str
 
   The type of the certificate.
 
+
 =head2 Thumbprint => Str
 
   The thumbprint of the certificate.
 
+
 =head2 ValidFrom => Str
 
   The starting date from which the certificate is valid.
+
 
 =head2 ValidTill => Str
 

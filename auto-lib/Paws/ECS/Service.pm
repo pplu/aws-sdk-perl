@@ -46,14 +46,17 @@ Details on a service within a cluster
 
 =head1 ATTRIBUTES
 
+
 =head2 ClusterArn => Str
 
   The Amazon Resource Name (ARN) of the of the cluster that hosts the
 service.
 
+
 =head2 Deployments => ArrayRef[L<Paws::ECS::Deployment>]
 
   The current state of deployments for the service.
+
 
 =head2 DesiredCount => Int
 
@@ -61,10 +64,12 @@ service.
 running on the service. This value is specified when the service is
 created with CreateService, and it can be modified with UpdateService.
 
+
 =head2 Events => ArrayRef[L<Paws::ECS::ServiceEvent>]
 
   The event stream for your service. A maximum of 100 of the latest
 events are displayed.
+
 
 =head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
@@ -72,9 +77,11 @@ events are displayed.
 container name (as it appears in a container definition), and the
 container port to access from the load balancer.
 
+
 =head2 PendingCount => Int
 
   The number of tasks in the cluster that are in the C<PENDING> state.
+
 
 =head2 RoleArn => Str
 
@@ -82,9 +89,11 @@ container port to access from the load balancer.
 service that allows the Amazon ECS container agent to register
 container instances with a load balancer.
 
+
 =head2 RunningCount => Int
 
   The number of tasks in the cluster that are in the C<RUNNING> state.
+
 
 =head2 ServiceArn => Str
 
@@ -94,14 +103,17 @@ service, the AWS account ID of the service owner, the C<service>
 namespace, and then the service name. For example,
 arn:aws:ecs:I<region>:I<012345678910>:service/I<my-service>.
 
+
 =head2 ServiceName => Str
 
   A user-generated string that you can use to identify your service.
+
 
 =head2 Status => Str
 
   The status of the service. The valid values are C<ACTIVE>, C<DRAINING>,
 or C<INACTIVE>.
+
 
 =head2 TaskDefinition => Str
 

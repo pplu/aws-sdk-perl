@@ -41,10 +41,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClusterIdentifier => Str
 
   The identifier of the cluster for which information about snapshots is
 requested.
+
 
 =head2 EndTime => Str
 
@@ -54,6 +56,7 @@ more information about ISO 8601, go to the ISO8601 Wikipedia page.
 
 Example: C<2012-07-16T18:00:00Z>
 
+
 =head2 Marker => Str
 
   An optional parameter that specifies the starting point to return a set
@@ -62,6 +65,7 @@ request exceed the value specified in C<MaxRecords>, AWS returns a
 value in the C<Marker> field of the response. You can retrieve the next
 set of response records by providing the returned marker value in the
 C<Marker> parameter and retrying the request.
+
 
 =head2 MaxRecords => Int
 
@@ -75,6 +79,7 @@ Default: C<100>
 
 Constraints: minimum 20, maximum 100.
 
+
 =head2 OwnerAccount => Str
 
   The AWS customer account used to create or copy the snapshot. Use this
@@ -82,10 +87,12 @@ field to filter the results to snapshots owned by a particular account.
 To describe snapshots you own, either specify your AWS customer
 account, or do not specify the parameter.
 
+
 =head2 SnapshotIdentifier => Str
 
   The snapshot identifier of the snapshot about which to return
 information.
+
 
 =head2 SnapshotType => Str
 
@@ -94,6 +101,7 @@ default, snapshots of all types are returned.
 
 Valid Values: C<automated> | C<manual>
 
+
 =head2 StartTime => Str
 
   A value that requests only snapshots created at or after the specified
@@ -101,6 +109,7 @@ time. The time value is specified in ISO 8601 format. For more
 information about ISO 8601, go to the ISO8601 Wikipedia page.
 
 Example: C<2012-07-16T18:00:00Z>
+
 
 =head2 TagKeys => ArrayRef[Str]
 
@@ -111,6 +120,7 @@ called C<owner> and C<environment>. If you specify both of these tag
 keys in the request, Amazon Redshift returns a response with the
 snapshots that have either or both of these tag keys associated with
 them.
+
 
 =head2 TagValues => ArrayRef[Str]
 

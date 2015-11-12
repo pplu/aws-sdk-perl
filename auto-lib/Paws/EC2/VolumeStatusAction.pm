@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   The code identifying the operation, for example, C<enable-volume-io>.
+
 
 =head2 Description => Str
 
   A description of the operation.
 
+
 =head2 EventId => Str
 
   The ID of the event associated with this operation.
+
 
 =head2 EventType => Str
 

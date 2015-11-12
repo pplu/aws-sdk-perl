@@ -39,6 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClientContext => Str
 
   Using the C<ClientContext> you can pass client-specific information to
@@ -48,6 +49,7 @@ variable. For an example of a ClientContext JSON, go to PutEvents in
 the I<Amazon Mobile Analytics API Reference and User Guide>.
 
 The ClientContext JSON must be base64-encoded.
+
 
 =head2 B<REQUIRED> FunctionName => Str
 
@@ -61,6 +63,7 @@ example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
+
 =head2 InvocationType => Str
 
   By default, the C<Invoke> API assumes "RequestResponse" invocation
@@ -73,6 +76,7 @@ function and if the inputs are valid. You request this by specifying
 scenario when you want to verify access to a function without running
 it.
 
+
 =head2 LogType => Str
 
   You can set this optional parameter to "Tail" in the request only if
@@ -81,9 +85,11 @@ you specify the C<InvocationType> parameter with value
 last 4 KB of log data produced by your Lambda function in the
 C<x-amz-log-results> header.
 
+
 =head2 Payload => Str
 
   JSON that you want to provide to your Lambda function as input.
+
 
 =head2 Qualifier => Str
 

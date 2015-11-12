@@ -52,11 +52,13 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 ActualBlockHourlyPrice => Str
 
   If you specified a required duration and your request was fulfilled,
 this is the fixed hourly price in effect for the Spot instance while it
 runs.
+
 
 =head2 AvailabilityZoneGroup => Str
 
@@ -64,49 +66,60 @@ runs.
 group for all Spot instance requests, all Spot instances are launched
 in the same Availability Zone.
 
+
 =head2 BlockDurationMinutes => Int
 
   The required duration for the Spot instance, in minutes.
+
 
 =head2 CreateTime => Str
 
   The date and time when the Spot instance request was created, in UTC
 format (for example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
+
 =head2 Fault => L<Paws::EC2::SpotInstanceStateFault>
 
   The fault codes for the Spot instance request, if any.
+
 
 =head2 InstanceId => Str
 
   The instance ID, if an instance has been launched to fulfill the Spot
 instance request.
 
+
 =head2 LaunchedAvailabilityZone => Str
 
   The Availability Zone in which the bid is launched.
+
 
 =head2 LaunchGroup => Str
 
   The instance launch group. Launch groups are Spot instances that launch
 together and terminate together.
 
+
 =head2 LaunchSpecification => L<Paws::EC2::LaunchSpecification>
 
   Additional information for launching instances.
+
 
 =head2 ProductDescription => Str
 
   The product description associated with the Spot instance.
 
+
 =head2 SpotInstanceRequestId => Str
 
   The ID of the Spot instance request.
+
 
 =head2 SpotPrice => Str
 
   The maximum hourly price (bid) for the Spot instance launched to
 fulfill the request.
+
 
 =head2 State => Str
 
@@ -114,24 +127,29 @@ fulfill the request.
 help you track your Spot instance requests. For more information, see
 Spot Bid Status in the I<Amazon Elastic Compute Cloud User Guide>.
 
+
 =head2 Status => L<Paws::EC2::SpotInstanceStatus>
 
   The status code and status message describing the Spot instance
 request.
 
+
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the resource.
 
+
 =head2 Type => Str
 
   The Spot instance request type.
+
 
 =head2 ValidFrom => Str
 
   The start date of the request, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). The request becomes active at
 this date and time.
+
 
 =head2 ValidUntil => Str
 

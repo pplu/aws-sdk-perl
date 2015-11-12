@@ -45,29 +45,36 @@ Represents a condition that is evaluated.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The test's ARN.
+
 
 =head2 Counters => L<Paws::DeviceFarm::Counters>
 
   The test's result counters.
 
+
 =head2 Created => Str
 
   When the test was created.
+
 
 =head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
 
   Represents the total (metered or unmetered) minutes used by the test.
 
+
 =head2 Message => Str
 
   A message about the test's result.
 
+
 =head2 Name => Str
 
   The test's name.
+
 
 =head2 Result => Str
 
@@ -108,9 +115,11 @@ WARNED: A warning condition.
 =back
 
 
+
 =head2 Started => Str
 
   The test's start time.
+
 
 =head2 Status => Str
 
@@ -143,9 +152,11 @@ SCHEDULING: A scheduling status.
 =back
 
 
+
 =head2 Stopped => Str
 
   The test's stop time.
+
 
 =head2 Type => Str
 

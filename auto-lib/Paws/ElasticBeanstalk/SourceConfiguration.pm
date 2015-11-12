@@ -36,9 +36,11 @@ A specification for an environment configuration
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationName => Str
 
   The name of the application associated with the configuration.
+
 
 =head2 TemplateName => Str
 

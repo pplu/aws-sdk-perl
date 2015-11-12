@@ -39,6 +39,7 @@ object versions at a specific period in the object's lifetime.
 
 =head1 ATTRIBUTES
 
+
 =head2 NoncurrentDays => Int
 
   Specifies the number of days an object is noncurrent before Amazon S3

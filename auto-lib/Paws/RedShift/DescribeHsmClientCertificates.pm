@@ -36,11 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 HsmClientCertificateIdentifier => Str
 
   The identifier of a specific HSM client certificate for which you want
 information. If no identifier is specified, information is returned for
 all HSM client certificates owned by your AWS customer account.
+
 
 =head2 Marker => Str
 
@@ -51,6 +53,7 @@ C<MaxRecords>, AWS returns a value in the C<Marker> field of the
 response. You can retrieve the next set of response records by
 providing the returned marker value in the C<Marker> parameter and
 retrying the request.
+
 
 =head2 MaxRecords => Int
 
@@ -64,6 +67,7 @@ Default: C<100>
 
 Constraints: minimum 20, maximum 100.
 
+
 =head2 TagKeys => ArrayRef[Str]
 
   A tag key or keys for which you want to return all matching HSM client
@@ -73,6 +77,7 @@ with keys called C<owner> and C<environment>. If you specify both of
 these tag keys in the request, Amazon Redshift returns a response with
 the HSM client certificates that have either or both of these tag keys
 associated with them.
+
 
 =head2 TagValues => ArrayRef[Str]
 

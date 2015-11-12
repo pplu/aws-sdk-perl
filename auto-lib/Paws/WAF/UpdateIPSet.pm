@@ -34,14 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ChangeToken => Str
 
   The value returned by the most recent call to GetChangeToken.
+
 
 =head2 B<REQUIRED> IPSetId => Str
 
   The C<IPSetId> of the IPSet that you want to update. C<IPSetId> is
 returned by CreateIPSet and by ListIPSets.
+
 
 =head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::IPSetUpdate>]
 

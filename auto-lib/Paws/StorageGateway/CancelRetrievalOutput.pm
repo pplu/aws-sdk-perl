@@ -12,6 +12,7 @@ Paws::StorageGateway::CancelRetrievalOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 TapeARN => Str
 
   The Amazon Resource Name (ARN) of the virtual tape for which retrieval

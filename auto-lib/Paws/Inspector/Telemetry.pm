@@ -40,9 +40,11 @@ GetAssessmentTelemetry action.
 
 =head1 ATTRIBUTES
 
+
 =head2 MessageTypeTelemetries => ArrayRef[L<Paws::Inspector::MessageTypeTelemetry>]
 
   Counts of individual metrics received by Inspector from the agent.
+
 
 =head2 Status => Str
 

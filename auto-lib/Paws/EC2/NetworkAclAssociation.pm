@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 NetworkAclAssociationId => Str
 
   The ID of the association between a network ACL and a subnet.
 
+
 =head2 NetworkAclId => Str
 
   The ID of the network ACL.
+
 
 =head2 SubnetId => Str
 

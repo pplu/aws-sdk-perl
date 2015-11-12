@@ -12,6 +12,7 @@ Paws::CodeCommit::GetBranchOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Branch => L<Paws::CodeCommit::BranchInfo>
 
   The name of the branch.

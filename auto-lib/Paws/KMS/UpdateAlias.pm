@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AliasName => Str
 
   String that contains the name of the alias to be modified. The name
 must start with the word "alias" followed by a forward slash (alias/).
 Aliases that begin with "alias/aws" are reserved.
+
 
 =head2 B<REQUIRED> TargetKeyId => Str
 

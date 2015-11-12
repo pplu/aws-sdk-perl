@@ -37,13 +37,16 @@ The instance status details.
 
 =head1 ATTRIBUTES
 
+
 =head2 State => Str
 
   The current state of the instance.
 
+
 =head2 StateChangeReason => L<Paws::EMR::InstanceStateChangeReason>
 
   The details of the status change reason for the instance.
+
 
 =head2 Timeline => L<Paws::EMR::InstanceTimeline>
 

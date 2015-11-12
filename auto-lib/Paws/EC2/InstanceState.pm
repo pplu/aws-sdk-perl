@@ -36,6 +36,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Int
 
   The low byte represents the state. The high byte is an opaque internal
@@ -68,6 +69,7 @@ C<64> : C<stopping>
 C<80> : C<stopped>
 
 =back
+
 
 
 =head2 Name => Str

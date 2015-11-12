@@ -12,6 +12,7 @@ Paws::OpsWorks::DescribeTimeBasedAutoScalingResult
 
 =head1 ATTRIBUTES
 
+
 =head2 TimeBasedAutoScalingConfigurations => ArrayRef[L<Paws::OpsWorks::TimeBasedAutoScalingConfiguration>]
 
   An array of C<TimeBasedAutoScalingConfiguration> objects that describe

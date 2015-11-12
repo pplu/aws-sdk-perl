@@ -39,21 +39,26 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Actions => ArrayRef[L<Paws::EC2::VolumeStatusAction>]
 
   The details of the operation.
+
 
 =head2 AvailabilityZone => Str
 
   The Availability Zone of the volume.
 
+
 =head2 Events => ArrayRef[L<Paws::EC2::VolumeStatusEvent>]
 
   A list of events associated with the volume.
 
+
 =head2 VolumeId => Str
 
   The volume ID.
+
 
 =head2 VolumeStatus => L<Paws::EC2::VolumeStatusInfo>
 

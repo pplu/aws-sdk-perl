@@ -14,9 +14,11 @@ Paws::RedShift::ClusterParameterGroupNameMessage
 
 =head1 ATTRIBUTES
 
+
 =head2 ParameterGroupName => Str
 
   The name of the cluster parameter group.
+
 =head2 ParameterGroupStatus => Str
 
   The status of the parameter group. For example, if you made a change to

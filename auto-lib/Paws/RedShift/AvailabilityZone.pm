@@ -35,6 +35,7 @@ Describes an availability zone.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the availability zone.

@@ -13,6 +13,7 @@ Paws::SNS::GetEndpointAttributesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::SNS::MapStringToString>
 
   Attributes include the following:

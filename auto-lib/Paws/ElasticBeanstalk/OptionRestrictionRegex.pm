@@ -37,9 +37,11 @@ configuration option value.
 
 =head1 ATTRIBUTES
 
+
 =head2 Label => Str
 
   A unique name representing this regular expression.
+
 
 =head2 Pattern => Str
 

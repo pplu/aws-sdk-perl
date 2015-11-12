@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DestinationEnvironmentId => Str
 
   The ID of the destination environment.
@@ -43,6 +44,7 @@ Condition: You must specify at least the C<DestinationEnvironmentID> or
 the C<DestinationEnvironmentName>. You may also specify both. You must
 specify the C<SourceEnvironmentId> with the
 C<DestinationEnvironmentId>.
+
 
 =head2 DestinationEnvironmentName => Str
 
@@ -53,6 +55,7 @@ the C<DestinationEnvironmentName>. You may also specify both. You must
 specify the C<SourceEnvironmentName> with the
 C<DestinationEnvironmentName>.
 
+
 =head2 SourceEnvironmentId => Str
 
   The ID of the source environment.
@@ -61,6 +64,7 @@ Condition: You must specify at least the C<SourceEnvironmentID> or the
 C<SourceEnvironmentName>. You may also specify both. If you specify the
 C<SourceEnvironmentId>, you must specify the
 C<DestinationEnvironmentId>.
+
 
 =head2 SourceEnvironmentName => Str
 

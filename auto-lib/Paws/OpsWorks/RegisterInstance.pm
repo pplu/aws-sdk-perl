@@ -38,30 +38,37 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Hostname => Str
 
   The instance's hostname.
+
 
 =head2 InstanceIdentity => L<Paws::OpsWorks::InstanceIdentity>
 
   An InstanceIdentity object that contains the instance's identity.
 
+
 =head2 PrivateIp => Str
 
   The instance's private IP address.
 
+
 =head2 PublicIp => Str
 
   The instance's public IP address.
+
 
 =head2 RsaPublicKey => Str
 
   The instances public RSA key. This key is used to encrypt communication
 between the instance and the service.
 
+
 =head2 RsaPublicKeyFingerprint => Str
 
   The instances public RSA key fingerprint.
+
 
 =head2 B<REQUIRED> StackId => Str
 

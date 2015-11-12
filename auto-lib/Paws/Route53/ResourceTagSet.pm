@@ -37,9 +37,11 @@ A complex type containing a resource and its associated tags.
 
 =head1 ATTRIBUTES
 
+
 =head2 ResourceId => Str
 
   The ID for the specified resource.
+
 
 =head2 ResourceType => Str
 
@@ -48,6 +50,7 @@ A complex type containing a resource and its associated tags.
 - The resource type for health checks is C<healthcheck>.
 
 - The resource type for hosted zones is C<hostedzone>.
+
 
 =head2 Tags => ArrayRef[L<Paws::Route53::Tag>]
 

@@ -47,9 +47,11 @@ GetAccountPasswordPolicy action.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowUsersToChangePassword => Bool
 
   Specifies whether IAM users are allowed to change their own password.
+
 
 =head2 ExpirePasswords => Bool
 
@@ -57,36 +59,44 @@ GetAccountPasswordPolicy action.
 MaxPasswordAge is contains a value greater than 0. Returns false if
 MaxPasswordAge is 0 or not present.
 
+
 =head2 HardExpiry => Bool
 
   Specifies whether IAM users are prevented from setting a new password
 after their password has expired.
 
+
 =head2 MaxPasswordAge => Int
 
   The number of days that an IAM user password is valid.
 
+
 =head2 MinimumPasswordLength => Int
 
   Minimum length to require for IAM user passwords.
+
 
 =head2 PasswordReusePrevention => Int
 
   Specifies the number of previous passwords that IAM users are prevented
 from reusing.
 
+
 =head2 RequireLowercaseCharacters => Bool
 
   Specifies whether to require lowercase characters for IAM user
 passwords.
 
+
 =head2 RequireNumbers => Bool
 
   Specifies whether to require numbers for IAM user passwords.
 
+
 =head2 RequireSymbols => Bool
 
   Specifies whether to require symbols for IAM user passwords.
+
 
 =head2 RequireUppercaseCharacters => Bool
 

@@ -44,42 +44,52 @@ Information about a repository.
 
 =head1 ATTRIBUTES
 
+
 =head2 AccountId => Str
 
   The ID of the AWS account associated with the repository.
+
 
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the repository.
 
+
 =head2 CloneUrlHttp => Str
 
   The URL to use for cloning the repository over HTTPS.
+
 
 =head2 CloneUrlSsh => Str
 
   The URL to use for cloning the repository over SSH.
 
+
 =head2 CreationDate => Str
 
   The date and time the repository was created, in timestamp format.
 
+
 =head2 DefaultBranch => Str
 
   The repository's default branch name.
+
 
 =head2 LastModifiedDate => Str
 
   The date and time the repository was last modified, in timestamp
 format.
 
+
 =head2 RepositoryDescription => Str
 
   A comment or description about the repository.
 
+
 =head2 RepositoryId => Str
 
   The ID of the repository.
+
 
 =head2 RepositoryName => Str
 

@@ -37,10 +37,12 @@ Describes the status of a parameter group.
 
 =head1 ATTRIBUTES
 
+
 =head2 ParameterApplyErrorDescription => Str
 
   The error that prevented the parameter from being applied to the
 database.
+
 
 =head2 ParameterApplyStatus => Str
 
@@ -73,6 +75,7 @@ change will be applied after the cluster reboots.
 The change will be applied after the cluster reboots.
 
 =back
+
 
 
 =head2 ParameterName => Str

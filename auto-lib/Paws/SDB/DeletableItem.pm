@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => ArrayRef[L<Paws::SDB::Attribute>]
 
   
+
 
 =head2 B<REQUIRED> Name => Str
 

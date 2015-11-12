@@ -34,16 +34,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 After => Str
 
   The name of an existing rule after which the new rule will be placed.
 If this parameter is null, the new rule will be inserted at the
 beginning of the rule list.
 
+
 =head2 B<REQUIRED> Rule => L<Paws::SES::ReceiptRule>
 
   A data structure that contains the specified rule's name, actions,
 recipients, domains, enabled status, scan status, and TLS policy.
+
 
 =head2 B<REQUIRED> RuleSetName => Str
 

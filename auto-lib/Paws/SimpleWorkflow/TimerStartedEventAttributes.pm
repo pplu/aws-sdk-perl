@@ -38,10 +38,12 @@ Provides details of the C<TimerStarted> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks.
+
 
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 
@@ -50,12 +52,14 @@ decision task that resulted in the C<StartTimer> decision for this
 activity task. This information can be useful for diagnosing problems
 by tracing back the chain of events leading up to this event.
 
+
 =head2 B<REQUIRED> StartToFireTimeout => Str
 
   The duration of time after which the timer will fire.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0.
+
 
 =head2 B<REQUIRED> TimerId => Str
 

@@ -22,6 +22,7 @@ Paws::Route53::GetGeoLocationResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ContinentCode => Str
 
   The code for a continent geo location. Note: only continent locations
@@ -31,6 +32,7 @@ Valid values: C<AF> | C<AN> | C<AS> | C<EU> | C<OC> | C<NA> | C<SA>
 
 Constraint: Specifying C<ContinentCode> with either C<CountryCode> or
 C<SubdivisionCode> returns an InvalidInput error.
+
 =head2 CountryCode => Str
 
   The code for a country geo location. The default location uses '*' for
@@ -39,6 +41,7 @@ geo location.
 
 The default geo location uses a C<*> for the country code. All other
 country codes follow the ISO 3166 two-character code.
+
 =head2 SubdivisionCode => Str
 
   The code for a country's subdivision (e.g., a province of Canada). A

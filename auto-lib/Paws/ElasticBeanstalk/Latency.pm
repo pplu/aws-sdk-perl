@@ -43,40 +43,48 @@ over the last 10 seconds.
 
 =head1 ATTRIBUTES
 
+
 =head2 P10 => Num
 
   The average latency for the slowest 90 percent of requests over the
 last 10 seconds.
+
 
 =head2 P50 => Num
 
   The average latency for the slowest 50 percent of requests over the
 last 10 seconds.
 
+
 =head2 P75 => Num
 
   The average latency for the slowest 25 percent of requests over the
 last 10 seconds.
+
 
 =head2 P85 => Num
 
   The average latency for the slowest 15 percent of requests over the
 last 10 seconds.
 
+
 =head2 P90 => Num
 
   The average latency for the slowest 10 percent of requests over the
 last 10 seconds.
+
 
 =head2 P95 => Num
 
   The average latency for the slowest 5 percent of requests over the last
 10 seconds.
 
+
 =head2 P99 => Num
 
   The average latency for the slowest 1 percent of requests over the last
 10 seconds.
+
 
 =head2 P999 => Num
 

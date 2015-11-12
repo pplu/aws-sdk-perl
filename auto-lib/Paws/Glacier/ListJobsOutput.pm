@@ -14,10 +14,12 @@ Paws::Glacier::ListJobsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 JobList => ArrayRef[L<Paws::Glacier::GlacierJobDescription>]
 
   A list of job objects. Each job object contains metadata describing the
 job.
+
 =head2 Marker => Str
 
   An opaque string that represents where to continue pagination of the

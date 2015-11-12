@@ -36,9 +36,11 @@ A failed resource.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the failed resource.
+
 
 =head2 Reason => Str
 

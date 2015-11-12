@@ -40,19 +40,23 @@ A description of a unique event within a stream.
 
 =head1 ATTRIBUTES
 
+
 =head2 AwsRegion => Str
 
   The region in which the I<GetRecords> request was received.
+
 
 =head2 Dynamodb => L<Paws::DynamoDBStreams::StreamRecord>
 
   The main body of the stream record, containing all of the
 DynamoDB-specific fields.
 
+
 =head2 EventID => Str
 
   A globally unique identifier for the event that was recorded in this
 stream record.
+
 
 =head2 EventName => Str
 
@@ -75,10 +79,12 @@ C<REMOVE> - the item was deleted from the table
 =back
 
 
+
 =head2 EventSource => Str
 
   The AWS service from which the stream record originated. For DynamoDB
 Streams, this is I<aws:dynamodb>.
+
 
 =head2 EventVersion => Str
 

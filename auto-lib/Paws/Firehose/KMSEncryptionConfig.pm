@@ -35,6 +35,7 @@ Describes an encryption key for a destination in Amazon S3.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AWSKMSKeyARN => Str
 
   The ARN of the encryption key. Must belong to the same region as the

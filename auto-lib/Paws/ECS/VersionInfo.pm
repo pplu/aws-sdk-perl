@@ -38,14 +38,17 @@ container instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 AgentHash => Str
 
   The Git commit hash for the Amazon ECS container agent build on the
 amazon-ecs-agent GitHub repository.
 
+
 =head2 AgentVersion => Str
 
   The version number of the Amazon ECS container agent.
+
 
 =head2 DockerVersion => Str
 

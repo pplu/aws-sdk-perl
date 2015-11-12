@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AssessmentArn => Str
 
   Asessment ARN that you want to update.
 
+
 =head2 AssessmentName => Str
 
   Assessment name that you want to update.
+
 
 =head2 DurationInSeconds => Int
 

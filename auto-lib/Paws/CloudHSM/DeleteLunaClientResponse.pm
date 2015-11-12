@@ -12,6 +12,7 @@ Paws::CloudHSM::DeleteLunaClientResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Status => Str
 
   The status of the action.

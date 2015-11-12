@@ -39,9 +39,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AccessPolicies => Str
 
   IAM access policy as a JSON-formatted string.
+
 
 =head2 AdvancedOptions => L<Paws::ES::AdvancedOptions>
 
@@ -50,17 +52,21 @@ request body. Must be C<false> when configuring access to individual
 sub-resources. By default, the value is C<true>. See Configuration
 Advanced Options for more information.
 
+
 =head2 B<REQUIRED> DomainName => Str
 
   The name of the Elasticsearch domain that you are updating.
+
 
 =head2 EBSOptions => L<Paws::ES::EBSOptions>
 
   Specify the type and size of the EBS volume that you want to use.
 
+
 =head2 ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>
 
   The type and number of instances to instantiate for the domain cluster.
+
 
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
 

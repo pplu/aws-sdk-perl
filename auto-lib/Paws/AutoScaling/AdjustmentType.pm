@@ -38,6 +38,7 @@ Developer Guide>.
 
 =head1 ATTRIBUTES
 
+
 =head2 AdjustmentType => Str
 
   The policy adjustment type. The valid values are C<ChangeInCapacity>,

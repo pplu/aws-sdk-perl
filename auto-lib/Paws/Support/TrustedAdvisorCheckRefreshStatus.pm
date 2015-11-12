@@ -37,14 +37,17 @@ The refresh status of a Trusted Advisor check.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CheckId => Str
 
   The unique identifier for the Trusted Advisor check.
+
 
 =head2 B<REQUIRED> MillisUntilNextRefreshable => Int
 
   The amount of time, in milliseconds, until the Trusted Advisor check is
 eligible for refresh.
+
 
 =head2 B<REQUIRED> Status => Str
 

@@ -46,6 +46,7 @@ match.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ByteMatchSetId => Str
 
   The C<ByteMatchSetId> for a C<ByteMatchSet>. You use C<ByteMatchSetId>
@@ -58,12 +59,14 @@ DeleteByteMatchSet).
 C<ByteMatchSetId> is returned by CreateByteMatchSet and by
 ListByteMatchSets.
 
+
 =head2 B<REQUIRED> ByteMatchTuples => ArrayRef[L<Paws::WAF::ByteMatchTuple>]
 
   Specifies the bytes (typically a string that corresponds with ASCII
 characters) that you want AWS WAF to search for in web requests, the
 location in requests that you want AWS WAF to search, and other
 settings.
+
 
 =head2 Name => Str
 

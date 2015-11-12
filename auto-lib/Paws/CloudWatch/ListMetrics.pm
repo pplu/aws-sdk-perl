@@ -35,17 +35,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>]
 
   A list of dimensions to filter against.
+
 
 =head2 MetricName => Str
 
   The name of the metric to filter against.
 
+
 =head2 Namespace => Str
 
   The namespace to filter against.
+
 
 =head2 NextToken => Str
 

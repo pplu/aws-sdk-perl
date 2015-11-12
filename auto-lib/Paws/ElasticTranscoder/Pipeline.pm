@@ -45,9 +45,11 @@ The pipeline (queue) that is used to manage jobs.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) for the pipeline.
+
 
 =head2 AwsKmsKeyArn => Str
 
@@ -60,6 +62,7 @@ known as an AWS-KMS key, is created for you automatically. You need to
 provide an AWS-KMS key only if you want to use a non-default AWS-KMS
 key, or if you are using an C<Encryption:Mode> of C<AES-PKCS7>,
 C<AES-CTR>, or C<AES-GCM>.
+
 
 =head2 ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
 
@@ -126,11 +129,13 @@ video files and playlists that it stores in your Amazon S3 bucket.
 =back
 
 
+
 =head2 Id => Str
 
   The identifier for the pipeline. You use this value to identify the
 pipeline in which you want to perform a variety of operations, such as
 creating a job or a preset.
+
 
 =head2 InputBucket => Str
 
@@ -138,12 +143,14 @@ creating a job or a preset.
 transcoding and the graphics files, if any, that you want to use for
 watermarks.
 
+
 =head2 Name => Str
 
   The name of the pipeline. We recommend that the name be unique within
 the AWS account, but uniqueness is not enforced.
 
 Constraints: Maximum 40 characters
+
 
 =head2 Notifications => L<Paws::ElasticTranscoder::Notifications>
 
@@ -171,16 +178,19 @@ notify when Elastic Transcoder encounters an error condition.
 =back
 
 
+
 =head2 OutputBucket => Str
 
   The Amazon S3 bucket in which you want Elastic Transcoder to save
 transcoded files, thumbnails, and playlists. Either you specify this
 value, or you specify both C<ContentConfig> and C<ThumbnailConfig>.
 
+
 =head2 Role => Str
 
   The IAM Amazon Resource Name (ARN) for the role that Elastic Transcoder
 uses to transcode jobs for this pipeline.
+
 
 =head2 Status => Str
 
@@ -193,6 +203,7 @@ uses to transcode jobs for this pipeline.
 =item * C<Paused>: The pipeline is not currently processing jobs.
 
 =back
+
 
 
 =head2 ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>

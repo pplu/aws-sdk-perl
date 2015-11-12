@@ -38,9 +38,11 @@ returned are defined by AWS Data Pipeline.
 
 =head1 ATTRIBUTES
 
+
 =head2 Id => Str
 
   The identifier of the object that contains the validation warning.
+
 
 =head2 Warnings => ArrayRef[Str]
 

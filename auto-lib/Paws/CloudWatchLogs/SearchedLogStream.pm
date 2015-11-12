@@ -37,9 +37,11 @@ C<FilterLogEvents> request.
 
 =head1 ATTRIBUTES
 
+
 =head2 LogStreamName => Str
 
   The name of the log stream.
+
 
 =head2 SearchedCompletely => Bool
 

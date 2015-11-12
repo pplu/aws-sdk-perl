@@ -36,10 +36,12 @@ The value of an C<Expression> and its current status.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Options => L<Paws::CloudSearch::Expression>
 
   The expression that is evaluated for sorting while processing a search
 request.
+
 
 =head2 B<REQUIRED> Status => L<Paws::CloudSearch::OptionStatus>
 

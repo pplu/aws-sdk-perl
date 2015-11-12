@@ -39,21 +39,26 @@ A list of all available options
 
 =head1 ATTRIBUTES
 
+
 =head2 DBSecurityGroupMemberships => ArrayRef[Str]
 
   A list of DBSecurityGroupMemebrship name strings used for this option.
+
 
 =head2 B<REQUIRED> OptionName => Str
 
   The configuration of options to include in a group.
 
+
 =head2 OptionSettings => ArrayRef[L<Paws::RDS::OptionSetting>]
 
   The option settings to include in an option group.
 
+
 =head2 Port => Int
 
   The optional port for the option.
+
 
 =head2 VpcSecurityGroupMemberships => ArrayRef[Str]
 

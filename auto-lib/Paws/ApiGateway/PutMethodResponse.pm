@@ -39,19 +39,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HttpMethod => Str
 
   The HTTP verb that identifies the Method resource.
 
+
 =head2 B<REQUIRED> ResourceId => Str
 
   The Resource identifier for the Method resource.
+
 
 =head2 ResponseModels => L<Paws::ApiGateway::MapOfStringToString>
 
   Specifies the Model resources used for the response's content type.
 Response models are represented as a key/value map, with a content type
 as the key and a Model name as the value.
+
 
 =head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
 
@@ -64,9 +68,11 @@ where C<name> is a valid, unique header name. Destinations specified
 here are available to the integration for mapping from integration
 response parameters.
 
+
 =head2 B<REQUIRED> RestApiId => Str
 
   The RestApi identifier for the Method resource.
+
 
 =head2 B<REQUIRED> StatusCode => Str
 

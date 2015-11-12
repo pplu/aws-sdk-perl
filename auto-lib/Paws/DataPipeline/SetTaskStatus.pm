@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ErrorId => Str
 
   If an error occurred during the task, this value specifies the error
 code. This value is set on the physical attempt object. It is used to
 display error information to the user. It should not start with string
 "Service_" which is reserved by the system.
+
 
 =head2 ErrorMessage => Str
 
@@ -50,6 +52,7 @@ description of the error. This value is set on the physical attempt
 object. It is used to display error information to the user. The web
 service does not parse this value.
 
+
 =head2 ErrorStackTrace => Str
 
   If an error occurred during the task, this value specifies the stack
@@ -57,10 +60,12 @@ trace associated with the error. This value is set on the physical
 attempt object. It is used to display error information to the user.
 The web service does not parse this value.
 
+
 =head2 B<REQUIRED> TaskId => Str
 
   The ID of the task assigned to the task runner. This value is provided
 in the response for PollForTask.
+
 
 =head2 B<REQUIRED> TaskStatus => Str
 

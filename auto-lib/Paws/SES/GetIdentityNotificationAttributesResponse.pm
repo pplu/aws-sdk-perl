@@ -13,6 +13,7 @@ Paws::SES::GetIdentityNotificationAttributesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> NotificationAttributes => L<Paws::SES::NotificationAttributes>
 
   A map of Identity to IdentityNotificationAttributes.

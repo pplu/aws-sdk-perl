@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Identity => Str
 
   The identity that is associated with the policy that you want to
@@ -42,6 +43,7 @@ C<example.com>,
 C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
 
 To successfully call this API, you must own the identity.
+
 
 =head2 B<REQUIRED> PolicyName => Str
 

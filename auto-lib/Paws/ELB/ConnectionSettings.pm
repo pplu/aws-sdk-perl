@@ -35,6 +35,7 @@ Information about the C<ConnectionSettings> attribute.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IdleTimeout => Int
 
   The time, in seconds, that the connection is allowed to be idle (no

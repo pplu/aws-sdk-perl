@@ -37,12 +37,14 @@ Represents an app's environment variable.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   (Required) The environment variable's name, which can consist of up to
 64 characters and must be specified. The name can contain upper- and
 lowercase letters, numbers, and underscores (_), but it must start with
 a letter or underscore.
+
 
 =head2 Secure => Bool
 
@@ -51,6 +53,7 @@ DescribeApps action. To conceal an environment variable's value, set
 C<Secure> to C<true>. C<DescribeApps> then returns
 C<*****FILTERED*****> instead of the actual value. The default value
 for C<Secure> is C<false>.
+
 
 =head2 B<REQUIRED> Value => Str
 

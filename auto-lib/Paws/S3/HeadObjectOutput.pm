@@ -50,17 +50,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AcceptRanges => Str
 
   
+
 
 =head2 CacheControl => Str
 
   Specifies caching behavior along the request/reply chain.
 
+
 =head2 ContentDisposition => Str
 
   Specifies presentational information for the object.
+
 
 =head2 ContentEncoding => Str
 
@@ -68,17 +72,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 thus what decoding mechanisms must be applied to obtain the media-type
 referenced by the Content-Type header field.
 
+
 =head2 ContentLanguage => Str
 
   The language the content is in.
+
 
 =head2 ContentLength => Int
 
   Size of the body in bytes.
 
+
 =head2 ContentType => Str
 
   A standard MIME type describing the format of the object data.
+
 
 =head2 DeleteMarker => Bool
 
@@ -86,10 +94,12 @@ referenced by the Content-Type header field.
 Delete Marker. If false, this response header does not appear in the
 response.
 
+
 =head2 ETag => Str
 
   An ETag is an opaque identifier assigned by a web server to a specific
 version of a resource found at a URL
+
 
 =head2 Expiration => Str
 
@@ -98,17 +108,21 @@ response includes this header. It includes the expiry-date and rule-id
 key value pairs providing object expiration information. The value of
 the rule-id is URL encoded.
 
+
 =head2 Expires => Str
 
   The date and time at which the object is no longer cacheable.
+
 
 =head2 LastModified => Str
 
   Last modified date of the object
 
+
 =head2 Metadata => L<Paws::S3::Metadata>
 
   A map of metadata to store with the object in S3.
+
 
 =head2 MissingMeta => Int
 
@@ -118,23 +132,28 @@ like SOAP that supports more flexible metadata than the REST API. For
 example, using SOAP, you can create metadata whose values are not legal
 HTTP headers.
 
+
 =head2 ReplicationStatus => Str
 
   
 
+
 =head2 RequestCharged => Str
 
   
+
 
 =head2 Restore => Str
 
   Provides information about object restoration operation and expiration
 time of the restored object copy.
 
+
 =head2 ServerSideEncryption => Str
 
   The Server-side encryption algorithm used when storing this object in
 S3 (e.g., AES256, aws:kms).
+
 
 =head2 SSECustomerAlgorithm => Str
 
@@ -142,24 +161,29 @@ S3 (e.g., AES256, aws:kms).
 requested, the response will include this header confirming the
 encryption algorithm used.
 
+
 =head2 SSECustomerKeyMD5 => Str
 
   If server-side encryption with a customer-provided encryption key was
 requested, the response will include this header to provide round trip
 message integrity verification of the customer-provided encryption key.
 
+
 =head2 SSEKMSKeyId => Str
 
   If present, specifies the ID of the AWS Key Management Service (KMS)
 master encryption key that was used for the object.
 
+
 =head2 StorageClass => Str
 
   
 
+
 =head2 VersionId => Str
 
   Version of the object.
+
 
 =head2 WebsiteRedirectLocation => Str
 

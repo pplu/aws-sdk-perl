@@ -12,6 +12,7 @@ Paws::SSM::SendCommandResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Command => L<Paws::SSM::Command>
 
   The request as it was received by SSM. Also provides the command ID

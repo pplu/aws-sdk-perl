@@ -36,13 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HttpMethod => Str
 
   Specifies the put method request's HTTP method type.
 
+
 =head2 B<REQUIRED> ResourceId => Str
 
   The Resource identifier for the Method resource.
+
 
 =head2 B<REQUIRED> RestApiId => Str
 

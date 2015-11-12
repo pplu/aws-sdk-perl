@@ -13,9 +13,11 @@ Paws::DeviceFarm::ListDevicePoolsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 DevicePools => ArrayRef[L<Paws::DeviceFarm::DevicePool>]
 
   Information about the device pools.
+
 =head2 NextToken => Str
 
   If the number of items that are returned is significantly large, this

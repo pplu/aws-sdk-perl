@@ -40,21 +40,26 @@ Describes an update for a destination in Amazon Redshift.
 
 =head1 ATTRIBUTES
 
+
 =head2 ClusterJDBCURL => Str
 
   The database connection string.
+
 
 =head2 CopyCommand => L<Paws::Firehose::CopyCommand>
 
   The C<COPY> command.
 
+
 =head2 Password => Str
 
   The user password.
 
+
 =head2 RoleARN => Str
 
   The ARN of the AWS credentials.
+
 
 =head2 S3Update => L<Paws::Firehose::S3DestinationUpdate>
 
@@ -64,6 +69,7 @@ The compression formats C<SNAPPY> or C<ZIP> cannot be specified in
 C<RedshiftDestinationUpdate.S3Update> because the Amazon Redshift
 C<COPY> operation that reads from the S3 bucket doesn't support these
 compression formats.
+
 
 =head2 Username => Str
 

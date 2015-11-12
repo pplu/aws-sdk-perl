@@ -37,13 +37,16 @@ The timeline of the instance group lifecycle.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreationDateTime => Str
 
   The creation date and time of the instance group.
 
+
 =head2 EndDateTime => Str
 
   The date and time when the instance group terminated.
+
 
 =head2 ReadyDateTime => Str
 

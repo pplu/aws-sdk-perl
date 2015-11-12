@@ -39,15 +39,18 @@ resources.
 
 =head1 ATTRIBUTES
 
+
 =head2 Owner => Str
 
   Indicates whether AWS or the customer owns and manages the AWS Config
 rule.
 
+
 =head2 SourceDetails => ArrayRef[L<Paws::Config::SourceDetail>]
 
   Provides the source and type of the event that causes AWS Config to
 evaluate your AWS resources.
+
 
 =head2 SourceIdentifier => Str
 

@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AlternateNameEncoding => Str
 
   
+
 
 =head2 AlternateValueEncoding => Str
 
   
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the attribute.
+
 
 =head2 B<REQUIRED> Value => Str
 

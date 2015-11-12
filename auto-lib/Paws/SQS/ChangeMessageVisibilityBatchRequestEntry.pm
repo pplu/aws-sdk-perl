@@ -49,15 +49,18 @@ C<&ChangeMessageVisibilityBatchRequestEntry.1.VisibilityTimeout=45>
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   An identifier for this particular receipt handle. This is used to
 communicate the result. Note that the C<Id>s of a batch request need to
 be unique within the request.
 
+
 =head2 B<REQUIRED> ReceiptHandle => Str
 
   A receipt handle.
+
 
 =head2 VisibilityTimeout => Int
 

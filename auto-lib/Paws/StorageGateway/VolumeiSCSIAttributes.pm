@@ -39,21 +39,26 @@ Lists iSCSI information about a volume.
 
 =head1 ATTRIBUTES
 
+
 =head2 ChapEnabled => Bool
 
   Indicates whether mutual CHAP is enabled for the iSCSI target.
+
 
 =head2 LunNumber => Int
 
   The logical disk number.
 
+
 =head2 NetworkInterfaceId => Str
 
   The network interface identifier.
 
+
 =head2 NetworkInterfacePort => Int
 
   The port used to communicate with iSCSI targets.
+
 
 =head2 TargetARN => Str
 

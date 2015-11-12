@@ -12,6 +12,7 @@ Paws::Support::DescribeTrustedAdvisorCheckRefreshStatusesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Statuses => ArrayRef[L<Paws::Support::TrustedAdvisorCheckRefreshStatus>]
 
   The refresh status of the specified Trusted Advisor checks.

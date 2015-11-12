@@ -36,10 +36,12 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Date => Str
 
   Indicates at what date the object is to be moved or deleted. Should be
 in GMT ISO 8601 Format.
+
 
 =head2 Days => Int
 

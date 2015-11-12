@@ -37,9 +37,11 @@ ErrorCode and IdentityId.
 
 =head1 ATTRIBUTES
 
+
 =head2 ErrorCode => Str
 
   The error code indicating the type of error that occurred.
+
 
 =head2 IdentityId => Str
 

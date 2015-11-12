@@ -13,6 +13,7 @@ Paws::SES::ListVerifiedEmailAddressesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 VerifiedEmailAddresses => ArrayRef[Str]
 
   A list of email addresses that have been verified.

@@ -38,6 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AttributesToGet => ArrayRef[Str]
 
   This is a legacy parameter, for backward compatibility. New
@@ -56,11 +57,13 @@ Note that I<AttributesToGet> has no effect on provisioned throughput
 consumption. DynamoDB determines capacity units consumed based on item
 size, not on the amount of data that is returned to an application.
 
+
 =head2 ConsistentRead => Bool
 
   Determines the read consistency model: If set to C<true>, then the
 operation uses strongly consistent reads; otherwise, the operation uses
 eventually consistent reads.
+
 
 =head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
@@ -128,6 +131,7 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
+
 =head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
 
   A map of attribute names to I<AttributeValue> objects, representing the
@@ -137,6 +141,7 @@ For the primary key, you must provide all of the attributes. For
 example, with a hash type primary key, you only need to provide the
 hash attribute. For a hash-and-range type primary key, you must provide
 both the hash attribute and the range attribute.
+
 
 =head2 ProjectionExpression => Str
 
@@ -155,9 +160,11 @@ DynamoDB Developer Guide>.
 I<ProjectionExpression> replaces the legacy I<AttributesToGet>
 parameter.
 
+
 =head2 ReturnConsumedCapacity => Str
 
   
+
 
 =head2 B<REQUIRED> TableName => Str
 

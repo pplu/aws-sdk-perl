@@ -42,33 +42,41 @@ A log stream is sequence of log events from a single emitter of logs.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   
+
 
 =head2 CreationTime => Int
 
   
 
+
 =head2 FirstEventTimestamp => Int
 
   
+
 
 =head2 LastEventTimestamp => Int
 
   
 
+
 =head2 LastIngestionTime => Int
 
   
+
 
 =head2 LogStreamName => Str
 
   
 
+
 =head2 StoredBytes => Int
 
   
+
 
 =head2 UploadSequenceToken => Str
 

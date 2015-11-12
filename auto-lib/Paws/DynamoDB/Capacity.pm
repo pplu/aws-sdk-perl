@@ -36,6 +36,7 @@ table or an index.
 
 =head1 ATTRIBUTES
 
+
 =head2 CapacityUnits => Num
 
   The total number of capacity units consumed on a table or an index.

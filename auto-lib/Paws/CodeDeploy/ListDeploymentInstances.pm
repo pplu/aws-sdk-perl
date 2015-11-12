@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DeploymentId => Str
 
   The unique ID of a deployment.
+
 
 =head2 InstanceStatusFilter => ArrayRef[Str]
 
@@ -63,6 +65,7 @@ skipped deployments.
 deployments in an unknown state.
 
 =back
+
 
 
 =head2 NextToken => Str

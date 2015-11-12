@@ -48,47 +48,58 @@ offerings.
 
 =head1 ATTRIBUTES
 
+
 =head2 CurrencyCode => Str
 
   The currency code for the reserved cluster.
+
 
 =head2 Duration => Int
 
   The duration of the node reservation in seconds.
 
+
 =head2 FixedPrice => Num
 
   The fixed cost Amazon Redshift charges you for this reserved node.
+
 
 =head2 NodeCount => Int
 
   The number of reserved compute nodes.
 
+
 =head2 NodeType => Str
 
   The node type of the reserved node.
+
 
 =head2 OfferingType => Str
 
   The anticipated utilization of the reserved node, as defined in the
 reserved node offering.
 
+
 =head2 RecurringCharges => ArrayRef[L<Paws::RedShift::RecurringCharge>]
 
   The recurring charges for the reserved node.
+
 
 =head2 ReservedNodeId => Str
 
   The unique identifier for the reservation.
 
+
 =head2 ReservedNodeOfferingId => Str
 
   The identifier for the reserved node offering.
+
 
 =head2 StartTime => Str
 
   The time the reservation started. You purchase a reserved node offering
 for a duration. This is the start time of that duration.
+
 
 =head2 State => Str
 
@@ -107,6 +118,7 @@ available for use.
 =item * payment-failed-Payment failed for the purchase attempt.
 
 =back
+
 
 
 =head2 UsagePrice => Num

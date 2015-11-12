@@ -36,6 +36,7 @@ Provides details of the C<WorkflowExecutionCanceled> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 
   The ID of the C<DecisionTaskCompleted> event corresponding to the
@@ -43,6 +44,7 @@ decision task that resulted in the C<CancelWorkflowExecution> decision
 for this cancellation request. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
+
 
 =head2 Details => Str
 

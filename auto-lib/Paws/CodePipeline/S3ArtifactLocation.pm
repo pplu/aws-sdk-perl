@@ -36,9 +36,11 @@ The location of the Amazon S3 bucket that contains a revision.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> BucketName => Str
 
   The name of the Amazon S3 bucket.
+
 
 =head2 B<REQUIRED> ObjectKey => Str
 

@@ -37,13 +37,16 @@ Describes the details of a LoadBalancer.
 
 =head1 ATTRIBUTES
 
+
 =head2 Domain => Str
 
   The domain name of the LoadBalancer.
 
+
 =head2 Listeners => ArrayRef[L<Paws::ElasticBeanstalk::Listener>]
 
   A list of Listeners used by the LoadBalancer.
+
 
 =head2 LoadBalancerName => Str
 

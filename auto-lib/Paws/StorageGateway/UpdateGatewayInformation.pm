@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GatewayARN => Str
 
   
 
+
 =head2 GatewayName => Str
 
   
+
 
 =head2 GatewayTimezone => Str
 

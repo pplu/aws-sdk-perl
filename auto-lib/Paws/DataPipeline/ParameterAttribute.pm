@@ -36,9 +36,11 @@ The attributes allowed or specified with a parameter object.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   The field identifier.
+
 
 =head2 B<REQUIRED> StringValue => Str
 

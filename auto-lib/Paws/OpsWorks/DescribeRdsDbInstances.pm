@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 RdsDbInstanceArns => ArrayRef[Str]
 
   An array containing the ARNs of the instances to be described.
+
 
 =head2 B<REQUIRED> StackId => Str
 

@@ -53,9 +53,11 @@ see the Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> BucketName => Str
 
   The name of the Amazon S3 bucket to which to save the received email.
+
 
 =head2 KmsKeyArn => Str
 
@@ -96,11 +98,13 @@ available with the AWS Java SDK and AWS Ruby SDK only. For more
 information about client-side encryption using AWS KMS master keys, see
 the Amazon S3 Developer Guide.
 
+
 =head2 ObjectKeyPrefix => Str
 
   The key prefix of the Amazon S3 bucket. The key prefix is similar to a
 directory name that enables you to store similar data under the same
 directory in a bucket.
+
 
 =head2 TopicArn => Str
 

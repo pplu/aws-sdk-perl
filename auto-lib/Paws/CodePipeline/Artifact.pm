@@ -38,13 +38,16 @@ actions in the pipeline.
 
 =head1 ATTRIBUTES
 
+
 =head2 Location => L<Paws::CodePipeline::ArtifactLocation>
 
   The location of an artifact.
 
+
 =head2 Name => Str
 
   The artifact's name.
+
 
 =head2 Revision => Str
 

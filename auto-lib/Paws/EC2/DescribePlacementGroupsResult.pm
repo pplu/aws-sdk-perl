@@ -13,6 +13,7 @@ Paws::EC2::DescribePlacementGroupsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 PlacementGroups => ArrayRef[L<Paws::EC2::PlacementGroup>]
 
   One or more placement groups.

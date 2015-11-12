@@ -37,9 +37,11 @@ Provides details of the C<DecisionTaskCompleted> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 ExecutionContext => Str
 
   User defined context for the workflow execution.
+
 
 =head2 B<REQUIRED> ScheduledEventId => Int
 
@@ -47,6 +49,7 @@ Provides details of the C<DecisionTaskCompleted> event.
 this decision task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
+
 
 =head2 B<REQUIRED> StartedEventId => Int
 

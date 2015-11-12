@@ -44,11 +44,13 @@ system was at any instant in time.
 
 =head1 ATTRIBUTES
 
+
 =head2 Timestamp => Str
 
   The time at which the size of data, returned in the C<Value> field, was
 determined. The value is the integer number of seconds since
 1970-01-01T00:00:00Z.
+
 
 =head2 B<REQUIRED> Value => Int
 

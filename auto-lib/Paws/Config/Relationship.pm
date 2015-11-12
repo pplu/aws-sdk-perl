@@ -38,17 +38,21 @@ The relationship of the related resource to the main resource.
 
 =head1 ATTRIBUTES
 
+
 =head2 RelationshipName => Str
 
   The type of relationship with the related resource.
+
 
 =head2 ResourceId => Str
 
   The ID of the related resource (for example, C<sg-xxxxxx>).
 
+
 =head2 ResourceName => Str
 
   The custom name of the related resource, if available.
+
 
 =head2 ResourceType => Str
 

@@ -37,9 +37,11 @@ reserved cache node, or for a reserved cache node offering.
 
 =head1 ATTRIBUTES
 
+
 =head2 RecurringChargeAmount => Num
 
   The monetary amount of the recurring charge.
+
 
 =head2 RecurringChargeFrequency => Str
 

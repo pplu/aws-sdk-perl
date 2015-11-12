@@ -40,11 +40,13 @@ Describes an Amazon EBS volume.
 
 =head1 ATTRIBUTES
 
+
 =head2 DeleteOnTermination => Bool
 
   Indicates whether to delete the volume on instance termination.
 
 Default: C<true>
+
 
 =head2 Encrypted => Bool
 
@@ -56,6 +58,7 @@ unencrypted snapshot or an unencrypted volume from an encrypted
 snapshot. For more information, see Amazon EBS Encryption in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
+
 =head2 Iops => Int
 
   For Provisioned IOPS (SSD) volumes only. The number of I/O operations
@@ -63,9 +66,11 @@ per second (IOPS) to provision for the volume.
 
 Default: None
 
+
 =head2 SnapshotId => Str
 
   The ID of the snapshot.
+
 
 =head2 VolumeSize => Int
 
@@ -79,6 +84,7 @@ Default: If you create a volume from a snapshot and you don't specify a
 volume size, the default is the size of the snapshot.
 
 Required: Required when the volume type is C<io1>.
+
 
 =head2 VolumeType => Str
 

@@ -38,16 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Destination => Str
 
   Name of Amazon S3 bucket to which the log data will be exported.
 
 B<NOTE: Only buckets in the same AWS region are supported>
 
+
 =head2 DestinationPrefix => Str
 
   Prefix that will be used as the start of Amazon S3 key for every object
 exported. If not specified, this defaults to 'exportedlogs'.
+
 
 =head2 B<REQUIRED> From => Int
 
@@ -55,9 +58,11 @@ exported. If not specified, this defaults to 'exportedlogs'.
 request. Events with a timestamp prior to this time will not be
 exported.
 
+
 =head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group to export.
+
 
 =head2 LogStreamNamePrefix => Str
 
@@ -65,9 +70,11 @@ exported.
 logStreamNamePrefix. If you don't specify a value, no prefix filter is
 applied.
 
+
 =head2 TaskName => Str
 
   The name of the export task.
+
 
 =head2 B<REQUIRED> To => Int
 

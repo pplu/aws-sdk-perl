@@ -37,29 +37,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CommandId => Str
 
   (Optional) The invocations for a specific command ID.
+
 
 =head2 Details => Bool
 
   (Optional) If set this returns the response of the command executions.
 By default this is set to False.
 
+
 =head2 Filters => ArrayRef[L<Paws::SSM::CommandFilter>]
 
   (Optional) One or more filters. Use a filter to return a more specific
 list of results.
 
+
 =head2 InstanceId => Str
 
   (Optional) The command execution details for a specific instance ID.
+
 
 =head2 MaxResults => Int
 
   (Optional) The maximum number of items to return for this call. The
 call also returns a token that you can specify in a subsequent call to
 get the next set of results.
+
 
 =head2 NextToken => Str
 

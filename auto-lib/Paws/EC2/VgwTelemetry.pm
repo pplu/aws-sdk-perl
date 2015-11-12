@@ -39,22 +39,27 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AcceptedRouteCount => Int
 
   The number of accepted routes.
 
+
 =head2 LastStatusChange => Str
 
   The date and time of the last change in status.
+
 
 =head2 OutsideIpAddress => Str
 
   The Internet-routable IP address of the virtual private gateway's
 outside interface.
 
+
 =head2 Status => Str
 
   The status of the VPN tunnel.
+
 
 =head2 StatusMessage => Str
 

@@ -39,10 +39,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   A short user-defined function description. AWS Lambda does not use this
 value. Assign a meaningful description as you see fit.
+
 
 =head2 B<REQUIRED> FunctionName => Str
 
@@ -56,10 +58,12 @@ example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
+
 =head2 Handler => Str
 
   The function that Lambda calls to begin executing your function. For
 Node.js, it is the I<module-name.export> value in your function.
+
 
 =head2 MemorySize => Int
 
@@ -70,10 +74,12 @@ requirements. For example, a database operation might need less memory
 compared to an image processing function. The default value is 128 MB.
 The value must be a multiple of 64 MB.
 
+
 =head2 Role => Str
 
   The Amazon Resource Name (ARN) of the IAM role that Lambda will assume
 when it executes your function.
+
 
 =head2 Timeout => Int
 

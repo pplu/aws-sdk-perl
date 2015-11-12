@@ -54,29 +54,36 @@ components (for example, applications on your Amazon EC2 instances).
 
 =head1 ATTRIBUTES
 
+
 =head2 AccountId => Str
 
   The 12 digit AWS account ID associated with the resource.
+
 
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the resource.
 
+
 =head2 AvailabilityZone => Str
 
   The Availability Zone associated with the resource.
+
 
 =head2 AwsRegion => Str
 
   The region where the resource resides.
 
+
 =head2 Configuration => Str
 
   The description of the resource configuration.
 
+
 =head2 ConfigurationItemCaptureTime => Str
 
   The time when the configuration recording was initiated.
+
 
 =head2 ConfigurationItemMD5Hash => Str
 
@@ -85,14 +92,17 @@ components (for example, applications on your Amazon EC2 instances).
 You can use MD5 hash to compare the states of two or more configuration
 items that are associated with the same resource.
 
+
 =head2 ConfigurationItemStatus => Str
 
   The configuration item status.
+
 
 =head2 ConfigurationStateId => Str
 
   An identifier that indicates the ordering of the configuration items of
 a resource.
+
 
 =head2 RelatedEvents => ArrayRef[Str]
 
@@ -105,29 +115,36 @@ information about CloudTrail, see What is AWS CloudTrail?.
 An empty field indicates that the current configuration was not
 initiated by any event.
 
+
 =head2 Relationships => ArrayRef[L<Paws::Config::Relationship>]
 
   A list of related AWS resources.
+
 
 =head2 ResourceCreationTime => Str
 
   The time stamp when the resource was created.
 
+
 =head2 ResourceId => Str
 
   The ID of the resource (for example., C<sg-xxxxxx>).
+
 
 =head2 ResourceName => Str
 
   The custom name of the resource, if available.
 
+
 =head2 ResourceType => Str
 
   The type of AWS resource.
 
+
 =head2 Tags => L<Paws::Config::Tags>
 
   A mapping of key value tags associated with the resource.
+
 
 =head2 Version => Str
 

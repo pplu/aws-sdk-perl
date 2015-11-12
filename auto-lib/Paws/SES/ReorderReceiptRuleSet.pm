@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> RuleNames => ArrayRef[Str]
 
   A list of the specified receipt rule set's receipt rules in the order
 that you want to put them.
+
 
 =head2 B<REQUIRED> RuleSetName => Str
 

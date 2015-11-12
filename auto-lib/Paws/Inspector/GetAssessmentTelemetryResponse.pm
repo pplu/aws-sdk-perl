@@ -12,6 +12,7 @@ Paws::Inspector::GetAssessmentTelemetryResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Telemetry => ArrayRef[L<Paws::Inspector::Telemetry>]
 
   Telemetry details.

@@ -38,9 +38,11 @@ a header, the name of the header.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> FieldToMatch => L<Paws::WAF::FieldToMatch>
 
   
+
 
 =head2 B<REQUIRED> TextTransformation => Str
 

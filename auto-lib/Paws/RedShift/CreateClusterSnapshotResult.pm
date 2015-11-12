@@ -13,6 +13,7 @@ Paws::RedShift::CreateClusterSnapshotResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Snapshot => L<Paws::RedShift::Snapshot>
 
   

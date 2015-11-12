@@ -42,27 +42,33 @@ options are enabled by default.
 
 =head1 ATTRIBUTES
 
+
 =head2 AnalysisScheme => Str
 
   The name of an analysis scheme for a C<text> field.
+
 
 =head2 DefaultValue => Str
 
   A value to use for the field if the field isn't specified for a
 document.
 
+
 =head2 HighlightEnabled => Bool
 
   Whether highlights can be returned for the field.
+
 
 =head2 ReturnEnabled => Bool
 
   Whether the contents of the field can be returned in the search
 results.
 
+
 =head2 SortEnabled => Bool
 
   Whether the field can be used to sort the search results.
+
 
 =head2 SourceField => Str
 

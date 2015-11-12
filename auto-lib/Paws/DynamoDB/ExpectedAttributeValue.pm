@@ -67,6 +67,7 @@ once, DynamoDB will return a I<ValidationException> exception.
 
 =head1 ATTRIBUTES
 
+
 =head2 AttributeValueList => ArrayRef[L<Paws::DynamoDB::AttributeValue>]
 
   One or more values to evaluate against the supplied attribute. The
@@ -85,6 +86,7 @@ when it compares binary values.
 
 For information on specifying data types in JSON, see JSON Data Format
 in the I<Amazon DynamoDB Developer Guide>.
+
 
 =head2 ComparisonOperator => Str
 
@@ -262,6 +264,7 @@ C<{"N":"6"}> does not compare to C<{"NS":["6", "2", "1"]}>
 =back
 
 
+
 =head2 Exists => Bool
 
   Causes DynamoDB to evaluate the value before attempting a conditional
@@ -306,6 +309,7 @@ expect an attribute to have a value, while also expecting it not to
 exist.)
 
 =back
+
 
 
 =head2 Value => L<Paws::DynamoDB::AttributeValue>

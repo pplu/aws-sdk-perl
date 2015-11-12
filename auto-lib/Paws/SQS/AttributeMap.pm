@@ -44,11 +44,15 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 ApproximateFirstReceiveTimestamp => Str
+
 
 =head2 ApproximateReceiveCount => Str
 
+
 =head2 SenderId => Str
+
 
 =head2 SentTimestamp => Str
 

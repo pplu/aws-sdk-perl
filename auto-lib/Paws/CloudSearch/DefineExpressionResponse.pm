@@ -13,6 +13,7 @@ Paws::CloudSearch::DefineExpressionResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Expression => L<Paws::CloudSearch::ExpressionStatus>
 
   

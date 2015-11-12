@@ -35,6 +35,7 @@ Describes an action to invoke a Lamdba function.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> FunctionArn => Str
 
   The ARN of the Lambda function.

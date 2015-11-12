@@ -36,9 +36,11 @@ Status of the EBS options for the specified Elasticsearch domain.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Options => L<Paws::ES::EBSOptions>
 
   Specifies the EBS options for the specified Elasticsearch domain.
+
 
 =head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
 

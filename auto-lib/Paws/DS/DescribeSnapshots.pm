@@ -35,18 +35,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DirectoryId => Str
 
   The identifier of the directory to retrieve snapshot information for.
+
 
 =head2 Limit => Int
 
   The maximum number of objects to return.
 
+
 =head2 NextToken => Str
 
   The I<DescribeSnapshotsResult.NextToken> value from a previous call to
 DescribeSnapshots. Pass null if this is the first call.
+
 
 =head2 SnapshotIds => ArrayRef[Str]
 

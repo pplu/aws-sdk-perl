@@ -36,6 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Data => Str
 
   The data blob to put into the record, which is base64-encoded when the
@@ -43,10 +44,12 @@ blob is serialized. When the data blob (the payload before
 base64-encoding) is added to the partition key size, the total size
 must not exceed the maximum record size (1 MB).
 
+
 =head2 ExplicitHashKey => Str
 
   The hash value used to explicitly determine the shard the data record
 is assigned to by overriding the partition key hash.
+
 
 =head2 B<REQUIRED> PartitionKey => Str
 
@@ -60,6 +63,7 @@ records to shards. As a result of this hashing mechanism, all data
 records with the same partition key will map to the same shard within
 the stream.
 
+
 =head2 SequenceNumberForOrdering => Str
 
   Guarantees strictly increasing sequence numbers, for puts from the same
@@ -68,6 +72,7 @@ C<SequenceNumberForOrdering> of record I<n> to the sequence number of
 record I<n-1> (as returned in the result when putting record I<n-1>).
 If this parameter is not set, records will be coarsely ordered based on
 arrival time.
+
 
 =head2 B<REQUIRED> StreamName => Str
 

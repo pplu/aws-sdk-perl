@@ -13,6 +13,7 @@ Paws::EC2::DescribeAddressesResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Addresses => ArrayRef[L<Paws::EC2::Address>]
 
   Information about one or more Elastic IP addresses.

@@ -37,21 +37,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClientData => L<Paws::EC2::ClientData>
 
   The client-specific data.
+
 
 =head2 ClientToken => Str
 
   Token to enable idempotency for VM import requests.
 
+
 =head2 Description => Str
 
   The description string for the import snapshot task.
 
+
 =head2 DiskContainer => L<Paws::EC2::SnapshotDiskContainer>
 
   Information about the disk container.
+
 
 =head2 DryRun => Bool
 
@@ -59,6 +64,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 RoleName => Str
 

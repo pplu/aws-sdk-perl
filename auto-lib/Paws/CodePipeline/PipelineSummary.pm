@@ -38,18 +38,22 @@ Returns a summary of a pipeline.
 
 =head1 ATTRIBUTES
 
+
 =head2 Created => Str
 
   The date and time the pipeline was created, in timestamp format.
+
 
 =head2 Name => Str
 
   The name of the pipeline.
 
+
 =head2 Updated => Str
 
   The date and time of the last update to the pipeline, in timestamp
 format.
+
 
 =head2 Version => Int
 

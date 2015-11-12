@@ -46,9 +46,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Attribute => Str
 
   The name of the attribute.
+
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>]
 
@@ -62,11 +64,13 @@ must add them when you launch the instance. For more information, see
 Updating the Block Device Mapping when Launching an Instance in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
+
 =head2 DisableApiTermination => L<Paws::EC2::AttributeBooleanValue>
 
   If the value is C<true>, you can't terminate the instance using the
 Amazon EC2 console, CLI, or API; otherwise, you can. You cannot use
 this paramater for Spot Instances.
+
 
 =head2 DryRun => Bool
 
@@ -74,6 +78,7 @@ this paramater for Spot Instances.
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 EbsOptimized => L<Paws::EC2::AttributeBooleanValue>
 
@@ -83,6 +88,7 @@ optimized configuration stack to provide optimal EBS I/O performance.
 This optimization isn't available with all instance types. Additional
 usage charges apply when using an EBS Optimized instance.
 
+
 =head2 Groups => ArrayRef[Str]
 
   [EC2-VPC] Changes the security groups of the instance. You must specify
@@ -90,9 +96,11 @@ at least one security group, even if it's just the default security
 group for the VPC. You must specify the security group ID, not the
 security group name.
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
   The ID of the instance.
+
 
 =head2 InstanceInitiatedShutdownBehavior => L<Paws::EC2::AttributeValue>
 
@@ -100,11 +108,13 @@ security group name.
 shutdown from the instance (using the operating system command for
 system shutdown).
 
+
 =head2 InstanceType => L<Paws::EC2::AttributeValue>
 
   Changes the instance type to the specified value. For more information,
 see Instance Types. If the instance type is not valid, the error
 returned is C<InvalidInstanceAttributeValue>.
+
 
 =head2 Kernel => L<Paws::EC2::AttributeValue>
 
@@ -112,11 +122,13 @@ returned is C<InvalidInstanceAttributeValue>.
 you use PV-GRUB instead of kernels and RAM disks. For more information,
 see PV-GRUB.
 
+
 =head2 Ramdisk => L<Paws::EC2::AttributeValue>
 
   Changes the instance's RAM disk to the specified value. We recommend
 that you use PV-GRUB instead of kernels and RAM disks. For more
 information, see PV-GRUB.
+
 
 =head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
 
@@ -124,6 +136,7 @@ information, see PV-GRUB.
 C<true> means that checking is enabled, and C<false> means checking is
 disabled. This value must be C<false> for a NAT instance to perform
 NAT.
+
 
 =head2 SriovNetSupport => L<Paws::EC2::AttributeValue>
 
@@ -134,9 +147,11 @@ There is no way to disable enhanced networking at this time.
 This option is supported only for HVM instances. Specifying this option
 with a PV instance can make it unreachable.
 
+
 =head2 UserData => L<Paws::EC2::BlobAttributeValue>
 
   Changes the instance's user data to the specified value.
+
 
 =head2 Value => Str
 

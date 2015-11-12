@@ -43,9 +43,11 @@ Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreatedTimestamp => Str
 
   The date and time the receipt rule set was created.
+
 
 =head2 Name => Str
 

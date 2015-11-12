@@ -15,15 +15,19 @@ Paws::StorageGateway::DescribeUploadBufferOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 DiskIds => ArrayRef[Str]
 
   
+
 =head2 GatewayARN => Str
 
   
+
 =head2 UploadBufferAllocatedInBytes => Int
 
   
+
 =head2 UploadBufferUsedInBytes => Int
 
   

@@ -36,10 +36,12 @@ Represents the verification attributes of a single identity.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> VerificationStatus => Str
 
   The verification status of the identity: "Pending", "Success",
 "Failed", or "TemporaryFailure".
+
 
 =head2 VerificationToken => Str
 

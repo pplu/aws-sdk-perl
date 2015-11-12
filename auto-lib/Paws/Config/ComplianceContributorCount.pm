@@ -37,9 +37,11 @@ current compliance of the item, up to a maximum number.
 
 =head1 ATTRIBUTES
 
+
 =head2 CapExceeded => Bool
 
   Indicates whether the maximum count is reached.
+
 
 =head2 CappedCount => Int
 

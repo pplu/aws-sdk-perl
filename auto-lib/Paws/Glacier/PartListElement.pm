@@ -36,9 +36,11 @@ A list of the part sizes of the multipart upload.
 
 =head1 ATTRIBUTES
 
+
 =head2 RangeInBytes => Str
 
   The byte range of a part, inclusive of the upper value of the range.
+
 
 =head2 SHA256TreeHash => Str
 

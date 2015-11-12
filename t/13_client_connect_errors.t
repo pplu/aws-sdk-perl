@@ -10,7 +10,7 @@ use lib 't/lib';
 
 use Test::CustomCredentials;
 
-my $match_message_tests = not $ENV{IN_TRAVIS};
+my $match_message_tests = $ENV{IN_TRAVIS} == 1;
 
 my $closed_server_endpoint = 'http://localhost:65511';
 

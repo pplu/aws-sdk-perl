@@ -35,19 +35,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowSelfManagement => Bool
 
   Whether users can specify their own SSH public key through the My
 Settings page. For more information, see Setting an IAM User's Public
 SSH Key.
 
+
 =head2 B<REQUIRED> IamUserArn => Str
 
   The user's IAM ARN.
 
+
 =head2 SshPublicKey => Str
 
   The user's public SSH key.
+
 
 =head2 SshUsername => Str
 

@@ -36,9 +36,11 @@ Represents information about an error in AWS CodePipeline.
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   The system ID or error number code of the error.
+
 
 =head2 Message => Str
 

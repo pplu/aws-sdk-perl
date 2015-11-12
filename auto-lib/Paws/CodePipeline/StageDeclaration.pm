@@ -37,13 +37,16 @@ Represents information about a stage and its definition.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Actions => ArrayRef[L<Paws::CodePipeline::ActionDeclaration>]
 
   The actions included in a stage.
 
+
 =head2 Blockers => ArrayRef[L<Paws::CodePipeline::BlockerDeclaration>]
 
   The gates included in a stage.
+
 
 =head2 B<REQUIRED> Name => Str
 

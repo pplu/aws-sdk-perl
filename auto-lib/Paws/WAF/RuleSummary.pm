@@ -37,10 +37,12 @@ C<Rule>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   A friendly name or description of the Rule. You can't change the name
 of a C<Rule> after you create it.
+
 
 =head2 B<REQUIRED> RuleId => Str
 

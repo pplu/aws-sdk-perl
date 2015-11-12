@@ -36,10 +36,12 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Primary => Bool
 
   Indicates whether the private IP address is the primary private IP
 address. Only one IP address can be designated as primary.
+
 
 =head2 B<REQUIRED> PrivateIpAddress => Str
 

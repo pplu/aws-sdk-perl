@@ -36,10 +36,12 @@ A container for facet information.
 
 =head1 ATTRIBUTES
 
+
 =head2 Count => Int
 
   The number of hits that contain the facet value in the specified facet
 field.
+
 
 =head2 Value => Str
 

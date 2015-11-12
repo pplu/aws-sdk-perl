@@ -45,41 +45,51 @@ DescribeReservedDBInstancesOfferings action.
 
 =head1 ATTRIBUTES
 
+
 =head2 CurrencyCode => Str
 
   The currency code for the reserved DB instance offering.
+
 
 =head2 DBInstanceClass => Str
 
   The DB instance class for the reserved DB instance.
 
+
 =head2 Duration => Int
 
   The duration of the offering in seconds.
+
 
 =head2 FixedPrice => Num
 
   The fixed price charged for this offering.
 
+
 =head2 MultiAZ => Bool
 
   Indicates if the offering applies to Multi-AZ deployments.
+
 
 =head2 OfferingType => Str
 
   The offering type.
 
+
 =head2 ProductDescription => Str
 
   The database engine used by the offering.
+
 
 =head2 RecurringCharges => ArrayRef[L<Paws::RDS::RecurringCharge>]
 
   The recurring price charged to run this reserved DB instance.
 
+
 =head2 ReservedDBInstancesOfferingId => Str
 
   The offering identifier.
+
 
 =head2 UsagePrice => Num
 

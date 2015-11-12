@@ -14,9 +14,11 @@ Paws::ImportExport::ListJobsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 IsTruncated => Bool
 
   
+
 =head2 Jobs => ArrayRef[L<Paws::ImportExport::Job>]
 
   

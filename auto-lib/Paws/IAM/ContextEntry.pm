@@ -42,15 +42,18 @@ This data type is used as an input parameter to C<SimulatePolicy>.
 
 =head1 ATTRIBUTES
 
+
 =head2 ContextKeyName => Str
 
   The full name of a condition context key, including the service prefix.
 For example, C<aws:SourceIp> or C<s3:VersionId>.
 
+
 =head2 ContextKeyType => Str
 
   The data type of the value (or values) specified in the
 C<ContextKeyValues> parameter.
+
 
 =head2 ContextKeyValues => ArrayRef[Str]
 

@@ -36,9 +36,11 @@ The five most recent communications associated with the case.
 
 =head1 ATTRIBUTES
 
+
 =head2 Communications => ArrayRef[L<Paws::Support::Communication>]
 
   The five most recent communications associated with the case.
+
 
 =head2 NextToken => Str
 

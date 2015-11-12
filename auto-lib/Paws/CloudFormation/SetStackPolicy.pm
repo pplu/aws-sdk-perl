@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> StackName => Str
 
   The name or unique stack ID that you want to associate a policy with.
+
 
 =head2 StackPolicyBody => Str
 
@@ -44,6 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Prevent Updates to Stack Resources in the AWS CloudFormation User
 Guide. You can specify either the C<StackPolicyBody> or the
 C<StackPolicyURL> parameter, but not both.
+
 
 =head2 StackPolicyURL => Str
 

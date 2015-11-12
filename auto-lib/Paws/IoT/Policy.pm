@@ -36,9 +36,11 @@ Describes an AWS IoT policy.
 
 =head1 ATTRIBUTES
 
+
 =head2 PolicyArn => Str
 
   The policy ARN.
+
 
 =head2 PolicyName => Str
 

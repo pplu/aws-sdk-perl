@@ -39,17 +39,21 @@ table.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IndexName => Str
 
   The name of the global secondary index to be created.
+
 
 =head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
   The key schema for the global secondary index.
 
+
 =head2 B<REQUIRED> Projection => L<Paws::DynamoDB::Projection>
 
   
+
 
 =head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 

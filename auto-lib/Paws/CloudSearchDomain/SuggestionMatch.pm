@@ -38,13 +38,16 @@ C<SuggestRequest>.
 
 =head1 ATTRIBUTES
 
+
 =head2 Id => Str
 
   The document ID of the suggested document.
 
+
 =head2 Score => Int
 
   The relevance score of a suggested match.
+
 
 =head2 Suggestion => Str
 

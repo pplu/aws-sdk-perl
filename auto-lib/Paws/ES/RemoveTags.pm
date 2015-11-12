@@ -35,10 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ARN => Str
 
   Specifies the C<ARN> for the Elasticsearch domain from which you want
 to delete the specified tags.
+
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 

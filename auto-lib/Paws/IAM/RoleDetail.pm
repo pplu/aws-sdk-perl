@@ -47,41 +47,50 @@ GetAccountAuthorizationDetails action.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   
 
+
 =head2 AssumeRolePolicyDocument => Str
 
   The trust policy that grants permission to assume the role.
+
 
 =head2 AttachedManagedPolicies => ArrayRef[L<Paws::IAM::AttachedPolicy>]
 
   A list of managed policies attached to the role. These policies are the
 role's access (permissions) policies.
 
+
 =head2 CreateDate => Str
 
   The date and time, in ISO 8601 date-time format, when the role was
 created.
 
+
 =head2 InstanceProfileList => ArrayRef[L<Paws::IAM::InstanceProfile>]
 
   
+
 
 =head2 Path => Str
 
   The path to the role. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
 
+
 =head2 RoleId => Str
 
   The stable and unique string identifying the role. For more information
 about IDs, see IAM Identifiers in the I<Using IAM> guide.
 
+
 =head2 RoleName => Str
 
   The friendly name that identifies the role.
+
 
 =head2 RolePolicyList => ArrayRef[L<Paws::IAM::PolicyDetail>]
 

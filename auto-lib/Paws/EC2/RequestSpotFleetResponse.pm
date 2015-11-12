@@ -13,6 +13,7 @@ Paws::EC2::RequestSpotFleetResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
   The ID of the Spot fleet request.

@@ -34,16 +34,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 IdentityType => Str
 
   The type of the identities to list. Possible values are "EmailAddress"
 and "Domain". If this parameter is omitted, then all identities will be
 listed.
 
+
 =head2 MaxItems => Int
 
   The maximum number of identities per page. Possible values are 1-1000
 inclusive.
+
 
 =head2 NextToken => Str
 

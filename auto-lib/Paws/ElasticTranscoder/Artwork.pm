@@ -49,14 +49,17 @@ To pass through existing artwork unchanged, set the C<Merge Policy> to
 
 =head1 ATTRIBUTES
 
+
 =head2 AlbumArtFormat => Str
 
   The format of album art, if any. Valid formats are C<.jpg> and C<.png>.
+
 
 =head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your artwork.
+
 
 =head2 InputKey => Str
 
@@ -69,12 +72,14 @@ If the file name includes a prefix, for example, C<cooking/pie.jpg>,
 include the prefix in the key. If the file isn't in the specified
 bucket, Elastic Transcoder returns an error.
 
+
 =head2 MaxHeight => Str
 
   The maximum height of the output album art in pixels. If you specify
 C<auto>, Elastic Transcoder uses 600 as the default value. If you
 specify a numeric value, enter an even integer between 32 and 3072,
 inclusive.
+
 
 =head2 MaxWidth => Str
 
@@ -83,12 +88,14 @@ C<auto>, Elastic Transcoder uses 600 as the default value. If you
 specify a numeric value, enter an even integer between 32 and 4096,
 inclusive.
 
+
 =head2 PaddingPolicy => Str
 
   When you set C<PaddingPolicy> to C<Pad>, Elastic Transcoder may add
 white bars to the top and bottom and/or left and right sides of the
 output album art to make the total size of the output art match the
 values that you specified for C<MaxWidth> and C<MaxHeight>.
+
 
 =head2 SizingPolicy => Str
 

@@ -40,10 +40,12 @@ in Amazon S3.
 
 =head1 ATTRIBUTES
 
+
 =head2 Bucket => Str
 
   The name of the Amazon S3 bucket where the application revision is
 stored.
+
 
 =head2 BundleType => Str
 
@@ -61,6 +63,7 @@ following:
 =back
 
 
+
 =head2 ETag => Str
 
   The ETag of the Amazon S3 object that represents the bundled artifacts
@@ -69,10 +72,12 @@ for the application revision.
 If the ETag is not specified as an input parameter, ETag validation of
 the object will be skipped.
 
+
 =head2 Key => Str
 
   The name of the Amazon S3 object that represents the bundled artifacts
 for the application revision.
+
 
 =head2 Version => Str
 

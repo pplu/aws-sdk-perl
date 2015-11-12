@@ -13,6 +13,7 @@ Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoScalingNotificationTypes => ArrayRef[Str]
 
   One or more of the following notification types:

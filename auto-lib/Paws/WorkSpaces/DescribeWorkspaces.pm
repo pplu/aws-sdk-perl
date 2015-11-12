@@ -37,11 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 BundleId => Str
 
   The identifier of a bundle to obtain the WorkSpaces for. All WorkSpaces
 that are created from this bundle will be retrieved. This parameter
 cannot be combined with any other filter parameter.
+
 
 =head2 DirectoryId => Str
 
@@ -50,19 +52,23 @@ Optionally, you can specify a specific directory user with the
 C<UserName> parameter. This parameter cannot be combined with any other
 filter parameter.
 
+
 =head2 Limit => Int
 
   The maximum number of items to return.
+
 
 =head2 NextToken => Str
 
   The C<NextToken> value from a previous call to this operation. Pass
 null if this is the first call.
 
+
 =head2 UserName => Str
 
   Used with the C<DirectoryId> parameter to specify the directory user
 for which to obtain the WorkSpace.
+
 
 =head2 WorkspaceIds => ArrayRef[Str]
 

@@ -43,13 +43,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name of the Auto Scaling group.
 
+
 =head2 AvailabilityZones => ArrayRef[Str]
 
   One or more Availability Zones for the group.
+
 
 =head2 DefaultCooldown => Int
 
@@ -58,11 +61,13 @@ before another scaling activity can start. For more information, see
 Understanding Auto Scaling Cooldowns in the I<Auto Scaling Developer
 Guide>.
 
+
 =head2 DesiredCapacity => Int
 
   The number of EC2 instances that should be running in the Auto Scaling
 group. This number must be greater than or equal to the minimum size of
 the group and less than or equal to the maximum size of the group.
+
 
 =head2 HealthCheckGracePeriod => Int
 
@@ -72,29 +77,35 @@ instance passes the system status and instance status checks from
 Amazon EC2. For more information, see Health Checks in the I<Auto
 Scaling Developer Guide>.
 
+
 =head2 HealthCheckType => Str
 
   The type of health check for the instances in the Auto Scaling group.
 The health check type can either be C<EC2> for Amazon EC2 or C<ELB> for
 Elastic Load Balancing.
 
+
 =head2 LaunchConfigurationName => Str
 
   The name of the launch configuration.
+
 
 =head2 MaxSize => Int
 
   The maximum size of the Auto Scaling group.
 
+
 =head2 MinSize => Int
 
   The minimum size of the Auto Scaling group.
+
 
 =head2 PlacementGroup => Str
 
   The name of the placement group into which you'll launch your
 instances, if any. For more information, see Placement Groups in the
 I<Amazon Elastic Compute Cloud User Guide>.
+
 
 =head2 TerminationPolicies => ArrayRef[Str]
 
@@ -104,6 +115,7 @@ order that they are listed.
 
 For more information, see Choosing a Termination Policy for Your Auto
 Scaling Group in the I<Auto Scaling Developer Guide>.
+
 
 =head2 VPCZoneIdentifier => Str
 

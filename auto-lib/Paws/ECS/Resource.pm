@@ -40,30 +40,36 @@ Describes the resources available for a container instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 DoubleValue => Num
 
   When the C<doubleValue> type is set, the value of the resource must be
 a double precision floating-point type.
+
 
 =head2 IntegerValue => Int
 
   When the C<integerValue> type is set, the value of the resource must be
 an integer.
 
+
 =head2 LongValue => Int
 
   When the C<longValue> type is set, the value of the resource must be an
 extended precision floating-point type.
+
 
 =head2 Name => Str
 
   The name of the resource, such as C<CPU>, C<MEMORY>, C<PORTS>, or a
 user-defined resource.
 
+
 =head2 StringSetValue => ArrayRef[Str]
 
   When the C<stringSetValue> type is set, the value of the resource must
 be a string type.
+
 
 =head2 Type => Str
 

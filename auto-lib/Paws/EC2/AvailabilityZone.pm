@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Messages => ArrayRef[L<Paws::EC2::AvailabilityZoneMessage>]
 
   Any messages about the Availability Zone.
+
 
 =head2 RegionName => Str
 
   The name of the region.
 
+
 =head2 State => Str
 
   The state of the Availability Zone.
+
 
 =head2 ZoneName => Str
 

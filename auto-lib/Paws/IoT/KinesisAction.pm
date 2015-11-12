@@ -37,13 +37,16 @@ Describes an action to write data to an Amazon Kinesis stream.
 
 =head1 ATTRIBUTES
 
+
 =head2 PartitionKey => Str
 
   The partition key.
 
+
 =head2 B<REQUIRED> RoleArn => Str
 
   The ARN of the IAM role that grants access.
+
 
 =head2 B<REQUIRED> StreamName => Str
 

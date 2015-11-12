@@ -36,6 +36,7 @@ Specifies where in a web request to look for C<TargetString>.
 
 =head1 ATTRIBUTES
 
+
 =head2 Data => Str
 
   When the value of C<Type> is C<HEADER>, enter the name of the header
@@ -43,6 +44,7 @@ that you want AWS WAF to search, for example, C<User-Agent> or
 C<Referer>. If the value of C<Type> is any other value, omit C<Data>.
 
 The name of the header is not case sensitive.
+
 
 =head2 B<REQUIRED> Type => Str
 

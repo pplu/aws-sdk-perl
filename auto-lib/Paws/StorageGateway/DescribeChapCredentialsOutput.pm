@@ -12,6 +12,7 @@ Paws::StorageGateway::DescribeChapCredentialsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 ChapCredentials => ArrayRef[L<Paws::StorageGateway::ChapInfo>]
 
   An array of ChapInfo objects that represent CHAP credentials. Each

@@ -47,30 +47,37 @@ with Amazon WorkSpaces.
 
 =head1 ATTRIBUTES
 
+
 =head2 Alias => Str
 
   The directory alias.
+
 
 =head2 CustomerUserName => Str
 
   The user name for the service account.
 
+
 =head2 DirectoryId => Str
 
   The directory identifier.
+
 
 =head2 DirectoryName => Str
 
   The name of the directory.
 
+
 =head2 DirectoryType => Str
 
   The directory type.
+
 
 =head2 DnsIpAddresses => ArrayRef[Str]
 
   An array of strings that contains the IP addresses of the DNS servers
 for the directory.
+
 
 =head2 IamRoleId => Str
 
@@ -78,25 +85,30 @@ for the directory.
 WorkSpaces to make calls to other services, such as Amazon EC2, on your
 behalf.
 
+
 =head2 RegistrationCode => Str
 
   The registration code for the directory. This is the code that users
 enter in their Amazon WorkSpaces client application to connect to the
 directory.
 
+
 =head2 State => Str
 
   The state of the directory's registration with Amazon WorkSpaces
+
 
 =head2 SubnetIds => ArrayRef[Str]
 
   An array of strings that contains the identifiers of the subnets used
 with the directory.
 
+
 =head2 WorkspaceCreationProperties => L<Paws::WorkSpaces::DefaultWorkspaceCreationProperties>
 
   A structure that specifies the default creation properties for all
 WorkSpaces in the directory.
+
 
 =head2 WorkspaceSecurityGroupId => Str
 

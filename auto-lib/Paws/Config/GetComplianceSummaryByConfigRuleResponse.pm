@@ -12,6 +12,7 @@ Paws::Config::GetComplianceSummaryByConfigRuleResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ComplianceSummary => L<Paws::Config::ComplianceSummary>
 
   The number of AWS Config rules that are compliant and the number that

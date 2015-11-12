@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
@@ -57,6 +59,7 @@ C<moving-status> - The status of the Elastic IP address (C<MovingToVpc>
 =back
 
 
+
 =head2 MaxResults => Int
 
   The maximum number of results to return for the request in a single
@@ -67,9 +70,11 @@ outside of this range, an error is returned.
 
 Default: If no value is provided, the default is 1000.
 
+
 =head2 NextToken => Str
 
   The token to use to retrieve the next page of results.
+
 
 =head2 PublicIps => ArrayRef[Str]
 

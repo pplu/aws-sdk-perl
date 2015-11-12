@@ -36,10 +36,12 @@ A complex type that contains zero or more CacheBehavior elements.
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[L<Paws::CloudFront::CacheBehavior>]
 
   Optional: A complex type that contains cache behaviors for this
 distribution. If Quantity is 0, you can omit Items.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

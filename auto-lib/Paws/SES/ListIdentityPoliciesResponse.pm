@@ -13,6 +13,7 @@ Paws::SES::ListIdentityPoliciesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> PolicyNames => ArrayRef[Str]
 
   A list of names of policies that apply to the specified identity.

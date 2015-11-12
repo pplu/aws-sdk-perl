@@ -58,9 +58,11 @@ Terminating State in the I<Auto Scaling Developer Guide>.
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoScalingGroupName => Str
 
   The name of the Auto Scaling group for the lifecycle hook.
+
 
 =head2 DefaultResult => Str
 
@@ -69,11 +71,13 @@ lifecycle hook timeout elapses or if an unexpected failure occurs. The
 valid values are C<CONTINUE> and C<ABANDON>. The default value is
 C<CONTINUE>.
 
+
 =head2 GlobalTimeout => Int
 
   The maximum time, in seconds, that an instance can remain in a
 C<Pending:Wait> or C<Terminating:Wait> state. The default is 172800
 seconds (48 hours).
+
 
 =head2 HeartbeatTimeout => Int
 
@@ -83,9 +87,11 @@ hook times out, Auto Scaling performs the action defined in the
 C<DefaultResult> parameter. You can prevent the lifecycle hook from
 timing out by calling RecordLifecycleActionHeartbeat.
 
+
 =head2 LifecycleHookName => Str
 
   The name of the lifecycle hook.
+
 
 =head2 LifecycleTransition => Str
 
@@ -93,10 +99,12 @@ timing out by calling RecordLifecycleActionHeartbeat.
 hook. For a list of lifecycle hook types, see
 DescribeLifecycleHookTypes.
 
+
 =head2 NotificationMetadata => Str
 
   Additional information that you want to include any time Auto Scaling
 sends a message to the notification target.
+
 
 =head2 NotificationTargetARN => Str
 
@@ -122,6 +130,7 @@ notification message sent to the target includes the following:
 =item * Notification metadata
 
 =back
+
 
 
 =head2 RoleARN => Str

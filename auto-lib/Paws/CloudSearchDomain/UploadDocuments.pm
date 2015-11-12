@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ContentType => Str
 
   The format of the batch you are uploading. Amazon CloudSearch supports
@@ -47,6 +48,7 @@ two document batch formats:
 =item * application/xml
 
 =back
+
 
 
 =head2 B<REQUIRED> Documents => Str

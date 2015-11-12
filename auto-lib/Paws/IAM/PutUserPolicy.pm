@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> PolicyDocument => Str
 
   The policy document.
 
+
 =head2 B<REQUIRED> PolicyName => Str
 
   The name of the policy document.
+
 
 =head2 B<REQUIRED> UserName => Str
 

@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 IamUserArn => Str
 
   The user's IAM ARN. For more information about IAM ARNs, see Using
 Identifiers.
+
 
 =head2 StackId => Str
 

@@ -38,9 +38,11 @@ Usage information for the identity pool.
 
 =head1 ATTRIBUTES
 
+
 =head2 DataStorage => Int
 
   Data storage information for the identity pool.
+
 
 =head2 IdentityPoolId => Str
 
@@ -48,9 +50,11 @@ Usage information for the identity pool.
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
 
+
 =head2 LastModifiedDate => Str
 
   Date on which the identity pool was last modified.
+
 
 =head2 SyncSessionsCount => Int
 

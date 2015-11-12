@@ -37,13 +37,16 @@ Details about the timing of a job.
 
 =head1 ATTRIBUTES
 
+
 =head2 FinishTimeMillis => Int
 
   The time the job finished transcoding, in epoch milliseconds.
 
+
 =head2 StartTimeMillis => Int
 
   The time the job began transcoding, in epoch milliseconds.
+
 
 =head2 SubmitTimeMillis => Int
 

@@ -36,9 +36,11 @@ Information about an Auto Scaling group.
 
 =head1 ATTRIBUTES
 
+
 =head2 Hook => Str
 
   An Auto Scaling lifecycle event hook name.
+
 
 =head2 Name => Str
 

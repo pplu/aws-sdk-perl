@@ -42,6 +42,7 @@ Describes plugin details.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the plugin. Must be one of the following:
@@ -49,14 +50,17 @@ AWS-JoinDirectoryServiceDomain, AWS-InstallApplication,
 AWS-RunPowerShellScript, AWS-InstallPowerShellModule,
 AWS-ConfigureCloudWatch.
 
+
 =head2 Output => Str
 
   Output of the plugin execution.
+
 
 =head2 OutputS3BucketName => Str
 
   The S3 bucket where the responses to the command executions should be
 stored. This was requested when issuing the command.
+
 
 =head2 OutputS3KeyPrefix => Str
 
@@ -64,18 +68,22 @@ stored. This was requested when issuing the command.
 command executions should be stored. This was requested when issuing
 the command.
 
+
 =head2 ResponseCode => Int
 
   A numeric response code generated after executing the plugin.
+
 
 =head2 ResponseFinishDateTime => Str
 
   The time the plugin stopped executing. Could stop prematurely if, for
 example, a cancel command was sent.
 
+
 =head2 ResponseStartDateTime => Str
 
   The time the plugin started executing.
+
 
 =head2 Status => Str
 

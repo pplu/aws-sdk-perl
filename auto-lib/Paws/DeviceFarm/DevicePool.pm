@@ -39,21 +39,26 @@ Represents a collection of device types.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The device pool's ARN.
+
 
 =head2 Description => Str
 
   The device pool's description.
 
+
 =head2 Name => Str
 
   The device pool's name.
 
+
 =head2 Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
 
   Information about the device pool's rules.
+
 
 =head2 Type => Str
 

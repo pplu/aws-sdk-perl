@@ -38,9 +38,11 @@ and used with ElastiCache.
 
 =head1 ATTRIBUTES
 
+
 =head2 SubnetAvailabilityZone => L<Paws::ElastiCache::AvailabilityZone>
 
   The Availability Zone associated with the subnet.
+
 
 =head2 SubnetIdentifier => Str
 

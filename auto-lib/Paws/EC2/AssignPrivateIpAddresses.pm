@@ -35,15 +35,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowReassignment => Bool
 
   Indicates whether to allow an IP address that is already assigned to
 another network interface or instance to be reassigned to the specified
 network interface.
 
+
 =head2 B<REQUIRED> NetworkInterfaceId => Str
 
   The ID of the network interface.
+
 
 =head2 PrivateIpAddresses => ArrayRef[Str]
 
@@ -53,6 +56,7 @@ also specifying a number of secondary IP addresses.
 
 If you don't specify an IP address, Amazon EC2 automatically selects an
 IP address within the subnet range.
+
 
 =head2 SecondaryPrivateIpAddressCount => Int
 

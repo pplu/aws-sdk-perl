@@ -46,36 +46,44 @@ GetAccountAuthorizationDetails action.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   
 
+
 =head2 AttachedManagedPolicies => ArrayRef[L<Paws::IAM::AttachedPolicy>]
 
   A list of the managed policies attached to the user.
+
 
 =head2 CreateDate => Str
 
   The date and time, in ISO 8601 date-time format, when the user was
 created.
 
+
 =head2 GroupList => ArrayRef[Str]
 
   A list of IAM groups that the user is in.
+
 
 =head2 Path => Str
 
   The path to the user. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
 
+
 =head2 UserId => Str
 
   The stable and unique string identifying the user. For more information
 about IDs, see IAM Identifiers in the I<Using IAM> guide.
 
+
 =head2 UserName => Str
 
   The friendly name identifying the user.
+
 
 =head2 UserPolicyList => ArrayRef[L<Paws::IAM::PolicyDetail>]
 

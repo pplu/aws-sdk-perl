@@ -47,9 +47,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AdditionalInfo => Str
 
   A JSON string for selecting additional features.
+
 
 =head2 AmiVersion => Str
 
@@ -74,6 +76,7 @@ For details about the AMI versions currently supported by Amazon
 Elastic MapReduce, go to AMI Versions Supported in Elastic MapReduce in
 the I<Amazon Elastic MapReduce Developer's Guide.>
 
+
 =head2 Applications => ArrayRef[L<Paws::EMR::Application>]
 
   Amazon EMR releases 4.x or later.
@@ -81,10 +84,12 @@ the I<Amazon Elastic MapReduce Developer's Guide.>
 A list of applications for the cluster. Valid values are: "Hadoop",
 "Hive", "Mahout", "Pig", and "Spark." They are case insensitive.
 
+
 =head2 BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionConfig>]
 
   A list of bootstrap actions that will be run before Hadoop is started
 on the cluster nodes.
+
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
@@ -93,10 +98,12 @@ on the cluster nodes.
 The list of configurations supplied for the EMR cluster you are
 creating.
 
+
 =head2 B<REQUIRED> Instances => L<Paws::EMR::JobFlowInstancesConfig>
 
   A specification of the number and type of Amazon EC2 instances on which
 to run the job flow.
+
 
 =head2 JobFlowRole => Str
 
@@ -104,14 +111,17 @@ to run the job flow.
 this role. The default role is C<EMRJobflowDefault>. In order to use
 the default role, you must have already created it using the CLI.
 
+
 =head2 LogUri => Str
 
   The location in Amazon S3 to write the log files of the job flow. If a
 value is not provided, logs are not created.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the job flow.
+
 
 =head2 NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>]
 
@@ -149,6 +159,7 @@ System installed.
 =back
 
 
+
 =head2 ReleaseLabel => Str
 
   Amazon EMR releases 4.x or later.
@@ -156,14 +167,17 @@ System installed.
 The release label for the Amazon EMR release. For Amazon EMR 3.x and
 2.x AMIs, use amiVersion instead instead of ReleaseLabel.
 
+
 =head2 ServiceRole => Str
 
   The IAM role that will be assumed by the Amazon EMR service to access
 AWS resources on your behalf.
 
+
 =head2 Steps => ArrayRef[L<Paws::EMR::StepConfig>]
 
   A list of steps to be executed by the job flow.
+
 
 =head2 SupportedProducts => ArrayRef[Str]
 
@@ -183,10 +197,12 @@ Amazon EMR. Currently supported values are:
 =back
 
 
+
 =head2 Tags => ArrayRef[L<Paws::EMR::Tag>]
 
   A list of tags to associate with a cluster and propagate to Amazon EC2
 instances.
+
 
 =head2 VisibleToAllUsers => Bool
 

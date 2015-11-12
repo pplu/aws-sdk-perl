@@ -36,12 +36,14 @@ Represents an activity type.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of this activity.
 
 The combination of activity type name and version must be unique within
 a domain.
+
 
 =head2 B<REQUIRED> Version => Str
 

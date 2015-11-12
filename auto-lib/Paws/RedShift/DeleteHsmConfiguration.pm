@@ -32,6 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HsmConfigurationIdentifier => Str
 
   The identifier of the Amazon Redshift HSM configuration to be deleted.

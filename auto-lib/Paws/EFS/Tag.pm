@@ -38,9 +38,11 @@ and the characters '+', '-', '=', '.', '_', ':', and '/'.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   Tag key, a string. The key must not start with "aws:".
+
 
 =head2 B<REQUIRED> Value => Str
 

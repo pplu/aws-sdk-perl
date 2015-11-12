@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SourceOptionGroupIdentifier => Str
 
   The identifier or ARN for the source option group. For information
@@ -58,13 +59,16 @@ C<arn:aws:rds:us-west-2:123456789012:og:special-options>.
 =back
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 
+
 =head2 B<REQUIRED> TargetOptionGroupDescription => Str
 
   The description for the copied option group.
+
 
 =head2 B<REQUIRED> TargetOptionGroupIdentifier => Str
 

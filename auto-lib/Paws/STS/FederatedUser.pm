@@ -37,11 +37,13 @@ credentials.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Arn => Str
 
   The ARN that specifies the federated user that is associated with the
 credentials. For more information about ARNs and how to use them in
 policies, see IAM Identifiers in I<Using IAM>.
+
 
 =head2 B<REQUIRED> FederatedUserId => Str
 

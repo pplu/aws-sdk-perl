@@ -34,10 +34,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Filter => ArrayRef[Str]
 
   A list of entity types (user, group, role, local managed policy, or AWS
 managed policy) for filtering the results.
+
 
 =head2 Marker => Str
 
@@ -45,6 +47,7 @@ managed policy) for filtering the results.
 receive a response indicating that the results are truncated. Set it to
 the value of the C<Marker> element in the response that you received to
 indicate where the next call should start.
+
 
 =head2 MaxItems => Int
 

@@ -41,9 +41,11 @@ time and prevents cross-regional charges.
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   The code of the cross-regional warning.
+
 
 =head2 Message => Str
 

@@ -13,9 +13,11 @@ Paws::Support::DescribeCasesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Cases => ArrayRef[L<Paws::Support::CaseDetails>]
 
   The details for the cases that match the request.
+
 =head2 NextToken => Str
 
   A resumption point for pagination.

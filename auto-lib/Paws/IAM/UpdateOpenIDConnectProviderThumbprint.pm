@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> OpenIDConnectProviderArn => Str
 
   The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC)
 provider to update the thumbprint for. You can get a list of OIDC
 provider ARNs by using the ListOpenIDConnectProviders action.
+
 
 =head2 B<REQUIRED> ThumbprintList => ArrayRef[Str]
 

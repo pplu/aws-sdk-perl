@@ -13,6 +13,7 @@ Paws::SNS::SubscribeResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 SubscriptionArn => Str
 
   The ARN of the subscription, if the service was able to create a

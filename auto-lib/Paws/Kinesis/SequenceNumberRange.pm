@@ -36,10 +36,12 @@ The range of possible sequence numbers for the shard.
 
 =head1 ATTRIBUTES
 
+
 =head2 EndingSequenceNumber => Str
 
   The ending sequence number for the range. Shards that are in the OPEN
 state have an ending sequence number of C<null>.
+
 
 =head2 B<REQUIRED> StartingSequenceNumber => Str
 

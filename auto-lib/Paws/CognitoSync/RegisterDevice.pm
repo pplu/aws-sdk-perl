@@ -37,9 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IdentityId => Str
 
   The unique ID for this identity.
+
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
@@ -47,9 +49,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. Here, the ID of the pool that the identity belongs to.
 
+
 =head2 B<REQUIRED> Platform => Str
 
   The SNS platform type (e.g. GCM, SDM, APNS, APNS_SANDBOX).
+
 
 =head2 B<REQUIRED> Token => Str
 

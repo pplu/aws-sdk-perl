@@ -36,9 +36,11 @@ Information about the C<ConnectionDraining> attribute.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Enabled => Bool
 
   Specifies whether connection draining is enabled for the load balancer.
+
 
 =head2 Timeout => Int
 

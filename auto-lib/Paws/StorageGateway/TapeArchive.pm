@@ -41,12 +41,14 @@ Represents a virtual tape that is archived in the virtual tape shelf
 
 =head1 ATTRIBUTES
 
+
 =head2 CompletionTime => Str
 
   The time that the archiving of the virtual tape was completed.
 
 The string format of the completion time is in the ISO8601 extended
 YYYY-MM-DD'T'HH:MM:SS'Z' format.
+
 
 =head2 RetrievedTo => Str
 
@@ -55,17 +57,21 @@ is being retrieved to.
 
 The virtual tape is retrieved from the virtual tape shelf (VTS).
 
+
 =head2 TapeARN => Str
 
   The Amazon Resource Name (ARN) of an archived virtual tape.
+
 
 =head2 TapeBarcode => Str
 
   The barcode that identifies the archived virtual tape.
 
+
 =head2 TapeSizeInBytes => Int
 
   The size, in bytes, of the archived virtual tape.
+
 
 =head2 TapeStatus => Str
 

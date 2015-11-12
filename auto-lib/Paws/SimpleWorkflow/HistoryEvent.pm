@@ -258,11 +258,13 @@ requests.
 
 =head1 ATTRIBUTES
 
+
 =head2 ActivityTaskCanceledEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCanceledEventAttributes>
 
   If the event is of type C<ActivityTaskCanceled> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
+
 
 =head2 ActivityTaskCancelRequestedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCancelRequestedEventAttributes>
 
@@ -270,11 +272,13 @@ other event types.
 is set and provides detailed information about the event. It is not set
 for other event types.
 
+
 =head2 ActivityTaskCompletedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskCompletedEventAttributes>
 
   If the event is of type C<ActivityTaskCompleted> then this member is
 set and provides detailed information about the event. It is not set
 for other event types.
+
 
 =head2 ActivityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskFailedEventAttributes>
 
@@ -282,11 +286,13 @@ for other event types.
 and provides detailed information about the event. It is not set for
 other event types.
 
+
 =head2 ActivityTaskScheduledEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskScheduledEventAttributes>
 
   If the event is of type C<ActivityTaskScheduled> then this member is
 set and provides detailed information about the event. It is not set
 for other event types.
+
 
 =head2 ActivityTaskStartedEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskStartedEventAttributes>
 
@@ -294,11 +300,13 @@ for other event types.
 and provides detailed information about the event. It is not set for
 other event types.
 
+
 =head2 ActivityTaskTimedOutEventAttributes => L<Paws::SimpleWorkflow::ActivityTaskTimedOutEventAttributes>
 
   If the event is of type C<ActivityTaskTimedOut> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
+
 
 =head2 CancelTimerFailedEventAttributes => L<Paws::SimpleWorkflow::CancelTimerFailedEventAttributes>
 
@@ -306,11 +314,13 @@ other event types.
 and provides detailed information about the event. It is not set for
 other event types.
 
+
 =head2 CancelWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::CancelWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<CancelWorkflowExecutionFailed> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
+
 
 =head2 ChildWorkflowExecutionCanceledEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionCanceledEventAttributes>
 
@@ -318,11 +328,13 @@ not set for other event types.
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
+
 =head2 ChildWorkflowExecutionCompletedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionCompletedEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionCompleted> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
+
 
 =head2 ChildWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionFailedEventAttributes>
 
@@ -330,11 +342,13 @@ not set for other event types.
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
+
 =head2 ChildWorkflowExecutionStartedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionStartedEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionStarted> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
+
 
 =head2 ChildWorkflowExecutionTerminatedEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionTerminatedEventAttributes>
 
@@ -342,11 +356,13 @@ not set for other event types.
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
+
 =head2 ChildWorkflowExecutionTimedOutEventAttributes => L<Paws::SimpleWorkflow::ChildWorkflowExecutionTimedOutEventAttributes>
 
   If the event is of type C<ChildWorkflowExecutionTimedOut> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
+
 
 =head2 CompleteWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::CompleteWorkflowExecutionFailedEventAttributes>
 
@@ -354,11 +370,13 @@ not set for other event types.
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
+
 =head2 ContinueAsNewWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<ContinueAsNewWorkflowExecutionFailed> then
 this member is set and provides detailed information about the event.
 It is not set for other event types.
+
 
 =head2 DecisionTaskCompletedEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskCompletedEventAttributes>
 
@@ -366,11 +384,13 @@ It is not set for other event types.
 set and provides detailed information about the event. It is not set
 for other event types.
 
+
 =head2 DecisionTaskScheduledEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskScheduledEventAttributes>
 
   If the event is of type C<DecisionTaskScheduled> then this member is
 set and provides detailed information about the event. It is not set
 for other event types.
+
 
 =head2 DecisionTaskStartedEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes>
 
@@ -378,24 +398,29 @@ for other event types.
 and provides detailed information about the event. It is not set for
 other event types.
 
+
 =head2 DecisionTaskTimedOutEventAttributes => L<Paws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes>
 
   If the event is of type C<DecisionTaskTimedOut> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
 
+
 =head2 B<REQUIRED> EventId => Int
 
   The system generated ID of the event. This ID uniquely identifies the
 event with in the workflow execution history.
 
+
 =head2 B<REQUIRED> EventTimestamp => Str
 
   The date and time when the event occurred.
 
+
 =head2 B<REQUIRED> EventType => Str
 
   The type of the history event.
+
 
 =head2 ExternalWorkflowExecutionCancelRequestedEventAttributes => L<Paws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes>
 
@@ -403,11 +428,13 @@ event with in the workflow execution history.
 then this member is set and provides detailed information about the
 event. It is not set for other event types.
 
+
 =head2 ExternalWorkflowExecutionSignaledEventAttributes => L<Paws::SimpleWorkflow::ExternalWorkflowExecutionSignaledEventAttributes>
 
   If the event is of type C<ExternalWorkflowExecutionSignaled> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
+
 
 =head2 FailWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::FailWorkflowExecutionFailedEventAttributes>
 
@@ -415,25 +442,31 @@ not set for other event types.
 is set and provides detailed information about the event. It is not set
 for other event types.
 
+
 =head2 LambdaFunctionCompletedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionCompletedEventAttributes>
 
   
+
 
 =head2 LambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionFailedEventAttributes>
 
   
 
+
 =head2 LambdaFunctionScheduledEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionScheduledEventAttributes>
 
   
+
 
 =head2 LambdaFunctionStartedEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionStartedEventAttributes>
 
   
 
+
 =head2 LambdaFunctionTimedOutEventAttributes => L<Paws::SimpleWorkflow::LambdaFunctionTimedOutEventAttributes>
 
   
+
 
 =head2 MarkerRecordedEventAttributes => L<Paws::SimpleWorkflow::MarkerRecordedEventAttributes>
 
@@ -441,11 +474,13 @@ for other event types.
 provides detailed information about the event. It is not set for other
 event types.
 
+
 =head2 RecordMarkerFailedEventAttributes => L<Paws::SimpleWorkflow::RecordMarkerFailedEventAttributes>
 
   If the event is of type C<DecisionTaskFailed> then this member is set
 and provides detailed information about the event. It is not set for
 other event types.
+
 
 =head2 RequestCancelActivityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelActivityTaskFailedEventAttributes>
 
@@ -453,11 +488,13 @@ other event types.
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
+
 =head2 RequestCancelExternalWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionFailedEventAttributes>
 
   If the event is of type C<RequestCancelExternalWorkflowExecutionFailed>
 then this member is set and provides detailed information about the
 event. It is not set for other event types.
+
 
 =head2 RequestCancelExternalWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionInitiatedEventAttributes>
 
@@ -466,15 +503,18 @@ C<RequestCancelExternalWorkflowExecutionInitiated> then this member is
 set and provides detailed information about the event. It is not set
 for other event types.
 
+
 =head2 ScheduleActivityTaskFailedEventAttributes => L<Paws::SimpleWorkflow::ScheduleActivityTaskFailedEventAttributes>
 
   If the event is of type C<ScheduleActivityTaskFailed> then this member
 is set and provides detailed information about the event. It is not set
 for other event types.
 
+
 =head2 ScheduleLambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::ScheduleLambdaFunctionFailedEventAttributes>
 
   
+
 
 =head2 SignalExternalWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionFailedEventAttributes>
 
@@ -482,11 +522,13 @@ for other event types.
 this member is set and provides detailed information about the event.
 It is not set for other event types.
 
+
 =head2 SignalExternalWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionInitiatedEventAttributes>
 
   If the event is of type C<SignalExternalWorkflowExecutionInitiated>
 then this member is set and provides detailed information about the
 event. It is not set for other event types.
+
 
 =head2 StartChildWorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionFailedEventAttributes>
 
@@ -494,15 +536,18 @@ event. It is not set for other event types.
 member is set and provides detailed information about the event. It is
 not set for other event types.
 
+
 =head2 StartChildWorkflowExecutionInitiatedEventAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionInitiatedEventAttributes>
 
   If the event is of type C<StartChildWorkflowExecutionInitiated> then
 this member is set and provides detailed information about the event.
 It is not set for other event types.
 
+
 =head2 StartLambdaFunctionFailedEventAttributes => L<Paws::SimpleWorkflow::StartLambdaFunctionFailedEventAttributes>
 
   
+
 
 =head2 StartTimerFailedEventAttributes => L<Paws::SimpleWorkflow::StartTimerFailedEventAttributes>
 
@@ -510,11 +555,13 @@ It is not set for other event types.
 provides detailed information about the event. It is not set for other
 event types.
 
+
 =head2 TimerCanceledEventAttributes => L<Paws::SimpleWorkflow::TimerCanceledEventAttributes>
 
   If the event is of type C<TimerCanceled> then this member is set and
 provides detailed information about the event. It is not set for other
 event types.
+
 
 =head2 TimerFiredEventAttributes => L<Paws::SimpleWorkflow::TimerFiredEventAttributes>
 
@@ -522,11 +569,13 @@ event types.
 provides detailed information about the event. It is not set for other
 event types.
 
+
 =head2 TimerStartedEventAttributes => L<Paws::SimpleWorkflow::TimerStartedEventAttributes>
 
   If the event is of type C<TimerStarted> then this member is set and
 provides detailed information about the event. It is not set for other
 event types.
+
 
 =head2 WorkflowExecutionCanceledEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCanceledEventAttributes>
 
@@ -534,11 +583,13 @@ event types.
 is set and provides detailed information about the event. It is not set
 for other event types.
 
+
 =head2 WorkflowExecutionCancelRequestedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCancelRequestedEventAttributes>
 
   If the event is of type C<WorkflowExecutionCancelRequested> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
+
 
 =head2 WorkflowExecutionCompletedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionCompletedEventAttributes>
 
@@ -546,11 +597,13 @@ not set for other event types.
 is set and provides detailed information about the event. It is not set
 for other event types.
 
+
 =head2 WorkflowExecutionContinuedAsNewEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionContinuedAsNewEventAttributes>
 
   If the event is of type C<WorkflowExecutionContinuedAsNew> then this
 member is set and provides detailed information about the event. It is
 not set for other event types.
+
 
 =head2 WorkflowExecutionFailedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionFailedEventAttributes>
 
@@ -558,11 +611,13 @@ not set for other event types.
 set and provides detailed information about the event. It is not set
 for other event types.
 
+
 =head2 WorkflowExecutionSignaledEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionSignaledEventAttributes>
 
   If the event is of type C<WorkflowExecutionSignaled> then this member
 is set and provides detailed information about the event. It is not set
 for other event types.
+
 
 =head2 WorkflowExecutionStartedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionStartedEventAttributes>
 
@@ -570,11 +625,13 @@ for other event types.
 set and provides detailed information about the event. It is not set
 for other event types.
 
+
 =head2 WorkflowExecutionTerminatedEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionTerminatedEventAttributes>
 
   If the event is of type C<WorkflowExecutionTerminated> then this member
 is set and provides detailed information about the event. It is not set
 for other event types.
+
 
 =head2 WorkflowExecutionTimedOutEventAttributes => L<Paws::SimpleWorkflow::WorkflowExecutionTimedOutEventAttributes>
 

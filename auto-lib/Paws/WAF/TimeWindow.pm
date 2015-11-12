@@ -47,11 +47,13 @@ received the 5,000th request.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> EndTime => Str
 
   The end of the time range from which you want C<GetSampledRequests> to
 return a sample of the requests that your AWS resource received. You
 can specify any time range in the previous three hours.
+
 
 =head2 B<REQUIRED> StartTime => Str
 

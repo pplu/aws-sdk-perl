@@ -36,9 +36,11 @@ Returns the throttle settings.
 
 =head1 ATTRIBUTES
 
+
 =head2 BurstLimit => Int
 
   Returns the burstLimit when B<ThrottleSettings> is called.
+
 
 =head2 RateLimit => Num
 

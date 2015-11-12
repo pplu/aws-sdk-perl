@@ -13,6 +13,7 @@ Paws::Lambda::AddPermissionResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Statement => Str
 
   The permission statement you specified in the request. The response

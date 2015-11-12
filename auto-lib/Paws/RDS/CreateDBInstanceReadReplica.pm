@@ -44,12 +44,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoMinorVersionUpgrade => Bool
 
   Indicates that minor engine upgrades will be applied automatically to
 the Read Replica during the maintenance window.
 
 Default: Inherits from the source DB instance
+
 
 =head2 AvailabilityZone => Str
 
@@ -61,10 +63,12 @@ region.
 
 Example: C<us-east-1d>
 
+
 =head2 CopyTagsToSnapshot => Bool
 
   True to copy all tags from the Read Replica to snapshots of the Read
 Replica; otherwise false. The default is false.
+
 
 =head2 DBInstanceClass => Str
 
@@ -78,11 +82,13 @@ db.t2.small | db.t2.medium | db.t2.large>
 
 Default: Inherits from the source DB instance.
 
+
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
   The DB instance identifier of the Read Replica. This identifier is the
 unique key that identifies a DB instance. This parameter is stored as a
 lowercase string.
+
 
 =head2 DBSubnetGroupName => Str
 
@@ -117,15 +123,18 @@ created outside of any VPC.
 =back
 
 
+
 =head2 Iops => Int
 
   The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance.
 
+
 =head2 OptionGroupName => Str
 
   The option group the DB instance will be associated with. If omitted,
 the default option group for the engine specified will be used.
+
 
 =head2 Port => Int
 
@@ -134,6 +143,7 @@ the default option group for the engine specified will be used.
 Default: Inherits from the source DB instance
 
 Valid Values: C<1150-65535>
+
 
 =head2 PubliclyAccessible => Bool
 
@@ -160,6 +170,7 @@ PubliclyAccessible value has not been set, the DB instance will be
 publicly accessible. If a specific DB subnet group has been specified
 as part of the request and the PubliclyAccessible value has not been
 set, the DB instance will be private.
+
 
 =head2 B<REQUIRED> SourceDBInstanceIdentifier => Str
 
@@ -191,6 +202,7 @@ to Constructing a Amazon RDS Amazon Resource Name (ARN).
 =back
 
 
+
 =head2 StorageType => Str
 
   Specifies the storage type to be associated with the Read Replica.
@@ -202,6 +214,7 @@ parameter.
 
 Default: C<io1> if the C<Iops> parameter is specified; otherwise
 C<standard>
+
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 

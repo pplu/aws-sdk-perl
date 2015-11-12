@@ -48,17 +48,21 @@ Information about a deployment.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationName => Str
 
   The application name.
+
 
 =head2 CompleteTime => Str
 
   A timestamp indicating when the deployment was completed.
 
+
 =head2 CreateTime => Str
 
   A timestamp indicating when the deployment was created.
+
 
 =head2 Creator => Str
 
@@ -73,29 +77,36 @@ Information about a deployment.
 =back
 
 
+
 =head2 DeploymentConfigName => Str
 
   The deployment configuration name.
+
 
 =head2 DeploymentGroupName => Str
 
   The deployment group name.
 
+
 =head2 DeploymentId => Str
 
   The deployment ID.
+
 
 =head2 DeploymentOverview => L<Paws::CodeDeploy::DeploymentOverview>
 
   A summary of the deployment status of the instances in the deployment.
 
+
 =head2 Description => Str
 
   A comment about the deployment.
 
+
 =head2 ErrorInformation => L<Paws::CodeDeploy::ErrorInformation>
 
   Information about any error associated with this deployment.
+
 
 =head2 IgnoreApplicationStopFailures => Bool
 
@@ -109,10 +120,12 @@ ApplicationStop deployment lifecycle event to fail to a specific
 instance, the deployment will stop to that instance, and the deployment
 to that instance will be considered to have failed.
 
+
 =head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
 
   Information about the location of application artifacts that are stored
 and the service to retrieve them from.
+
 
 =head2 StartTime => Str
 
@@ -123,6 +136,7 @@ Note that in some cases, the reported value of the start time may be
 later than the complete time. This is due to differences in the clock
 settings of various back-end servers that participate in the overall
 deployment process.
+
 
 =head2 Status => Str
 

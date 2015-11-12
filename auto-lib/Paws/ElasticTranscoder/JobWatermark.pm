@@ -39,10 +39,12 @@ transparency.
 
 =head1 ATTRIBUTES
 
+
 =head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your watermarks.
+
 
 =head2 InputKey => Str
 
@@ -54,6 +56,7 @@ the C<Input Bucket> object in that pipeline identifies the bucket.
 If the file name includes a prefix, for example, B<logos/128x64.png>,
 include the prefix in the key. If the file isn't in the specified
 bucket, Elastic Transcoder returns an error.
+
 
 =head2 PresetWatermarkId => Str
 

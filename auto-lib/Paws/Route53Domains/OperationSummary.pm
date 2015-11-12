@@ -38,11 +38,13 @@ OperationSummary includes the following elements.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> OperationId => Str
 
   Identifier returned to track the requested action.
 
 Type: String
+
 
 =head2 B<REQUIRED> Status => Str
 
@@ -50,9 +52,11 @@ Type: String
 
 Type: String
 
+
 =head2 B<REQUIRED> SubmittedDate => Str
 
   The date when the request was submitted.
+
 
 =head2 B<REQUIRED> Type => Str
 

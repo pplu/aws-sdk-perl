@@ -44,6 +44,7 @@ This data type is used as an element in the following data type:
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the availability zone.

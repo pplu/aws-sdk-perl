@@ -34,11 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AppId => Str
 
   The app ID. If you include this parameter, C<DescribeDeployments>
 returns a description of the commands associated with the specified
 app.
+
 
 =head2 DeploymentIds => ArrayRef[Str]
 
@@ -46,6 +48,7 @@ app.
 parameter, C<DescribeDeployments> returns a description of the
 specified deployments. Otherwise, it returns a description of every
 deployment.
+
 
 =head2 StackId => Str
 

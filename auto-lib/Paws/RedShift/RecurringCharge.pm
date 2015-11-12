@@ -36,10 +36,12 @@ Describes a recurring charge.
 
 =head1 ATTRIBUTES
 
+
 =head2 RecurringChargeAmount => Num
 
   The amount charged per the period of time specified by the recurring
 charge frequency.
+
 
 =head2 RecurringChargeFrequency => Str
 

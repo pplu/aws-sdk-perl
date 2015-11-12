@@ -36,9 +36,11 @@ Provides details of the C<ActivityTaskCancelRequested> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActivityId => Str
 
   The unique ID of the task.
+
 
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 

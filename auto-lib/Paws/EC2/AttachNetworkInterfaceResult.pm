@@ -13,6 +13,7 @@ Paws::EC2::AttachNetworkInterfaceResult
 
 =head1 ATTRIBUTES
 
+
 =head2 AttachmentId => Str
 
   The ID of the network interface attachment.

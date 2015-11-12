@@ -46,41 +46,51 @@ size or replacing an instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActivityId => Str
 
   The ID of the activity.
+
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name of the Auto Scaling group.
 
+
 =head2 B<REQUIRED> Cause => Str
 
   The reason the activity began.
+
 
 =head2 Description => Str
 
   A friendly, more verbose description of the activity.
 
+
 =head2 Details => Str
 
   The details about the activity.
+
 
 =head2 EndTime => Str
 
   The end time of the activity.
 
+
 =head2 Progress => Int
 
   A value between 0 and 100 that indicates the progress of the activity.
+
 
 =head2 B<REQUIRED> StartTime => Str
 
   The start time of the activity.
 
+
 =head2 B<REQUIRED> StatusCode => Str
 
   The current status of the activity.
+
 
 =head2 StatusMessage => Str
 

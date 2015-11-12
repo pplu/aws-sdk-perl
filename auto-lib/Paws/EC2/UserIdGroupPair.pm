@@ -37,15 +37,18 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 GroupId => Str
 
   The ID of the security group.
+
 
 =head2 GroupName => Str
 
   The name of the security group. In a request, use this parameter for a
 security group in EC2-Classic or a default VPC only. For a security
 group in a nondefault VPC, use C<GroupId>.
+
 
 =head2 UserId => Str
 

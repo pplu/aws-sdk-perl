@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Actions => ArrayRef[Str]
 
   The action the client wants to allow for the specified principal. The
@@ -49,6 +50,7 @@ permissions for the corresponding batch versions of those actions:
 C<SendMessageBatch>, C<DeleteMessageBatch>, and
 C<ChangeMessageVisibilityBatch>.
 
+
 =head2 B<REQUIRED> AWSAccountIds => ArrayRef[Str]
 
   The AWS account number of the principal who will be given permission.
@@ -57,11 +59,13 @@ up for Amazon SQS. For information about locating the AWS account
 identification, see Your AWS Identifiers in the I<Amazon SQS Developer
 Guide>.
 
+
 =head2 B<REQUIRED> Label => Str
 
   The unique identification of the permission you're setting (e.g.,
 C<AliceSendMessage>). Constraints: Maximum 80 characters; alphanumeric
 characters, hyphens (-), and underscores (_) are allowed.
+
 
 =head2 B<REQUIRED> QueueUrl => Str
 

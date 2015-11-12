@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DirectoryId => Str
 
   The identifier of the directory to take a snapshot of.
+
 
 =head2 Name => Str
 

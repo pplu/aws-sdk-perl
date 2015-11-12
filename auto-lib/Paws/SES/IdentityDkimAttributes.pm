@@ -37,10 +37,12 @@ Represents the DKIM attributes of a verified email address or a domain.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DkimEnabled => Bool
 
   True if DKIM signing is enabled for email sent from the identity; false
 otherwise.
+
 
 =head2 DkimTokens => ArrayRef[Str]
 
@@ -55,6 +57,7 @@ identities.)
 
 For more information about creating DNS records using DKIM tokens, go
 to the Amazon SES Developer Guide.
+
 
 =head2 B<REQUIRED> DkimVerificationStatus => Str
 

@@ -46,6 +46,7 @@ registered with a cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 AgentConnected => Bool
 
   This parameter returns C<true> if the agent is actually connected to
@@ -53,15 +54,18 @@ Amazon ECS. Registered instances with an agent that may be unhealthy or
 stopped return C<false>, and instances without a connected agent cannot
 accept placement requests.
 
+
 =head2 AgentUpdateStatus => Str
 
   The status of the most recent agent update. If an update has never been
 requested, this value is C<NULL>.
 
+
 =head2 Attributes => ArrayRef[L<Paws::ECS::Attribute>]
 
   The attributes set for the container instance by the Amazon ECS
 container agent at instance registration.
+
 
 =head2 ContainerInstanceArn => Str
 
@@ -72,35 +76,42 @@ the C<container-instance> namespace, and then the container instance
 ID. For example,
 arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>.
 
+
 =head2 Ec2InstanceId => Str
 
   The EC2 instance ID of the container instance.
+
 
 =head2 PendingTasksCount => Int
 
   The number of tasks on the container instance that are in the
 C<PENDING> status.
 
+
 =head2 RegisteredResources => ArrayRef[L<Paws::ECS::Resource>]
 
   The registered resources on the container instance that are in use by
 current tasks.
+
 
 =head2 RemainingResources => ArrayRef[L<Paws::ECS::Resource>]
 
   The remaining resources of the container instance that are available
 for new tasks.
 
+
 =head2 RunningTasksCount => Int
 
   The number of tasks on the container instance that are in the
 C<RUNNING> status.
+
 
 =head2 Status => Str
 
   The status of the container instance. The valid values are C<ACTIVE> or
 C<INACTIVE>. C<ACTIVE> indicates that the container instance can accept
 tasks.
+
 
 =head2 VersionInfo => L<Paws::ECS::VersionInfo>
 

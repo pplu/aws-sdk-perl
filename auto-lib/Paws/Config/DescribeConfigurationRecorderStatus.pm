@@ -32,6 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ConfigurationRecorderNames => ArrayRef[Str]
 
   The name(s) of the configuration recorder. If the name is not

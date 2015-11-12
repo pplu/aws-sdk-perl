@@ -36,9 +36,11 @@ Represents information about incompatibility.
 
 =head1 ATTRIBUTES
 
+
 =head2 Message => Str
 
   A message about the incompatibility.
+
 
 =head2 Type => Str
 

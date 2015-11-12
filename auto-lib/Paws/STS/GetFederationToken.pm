@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DurationSeconds => Int
 
   The duration, in seconds, that the session should last. Acceptable
@@ -44,12 +45,14 @@ restricted to a maximum of 3600 seconds (one hour). If the specified
 duration is longer than one hour, the session obtained by using AWS
 account (root) credentials defaults to one hour.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the federated user. The name is used as an identifier for
 the temporary security credentials (such as C<Bob>). For example, you
 can reference the federated user name in a resource-based policy, such
 as in an Amazon S3 bucket policy.
+
 
 =head2 Policy => Str
 

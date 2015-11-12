@@ -13,6 +13,7 @@ Paws::CloudSearch::DescribeIndexFieldsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IndexFields => ArrayRef[L<Paws::CloudSearch::IndexFieldStatus>]
 
   The index fields configured for the domain.

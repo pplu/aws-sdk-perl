@@ -1,3 +1,71 @@
+package Paws::API::Builder::Paws {
+  use Template;
+  use Data::Printer;
+  use Data::Dumper;
+  use Paws::API::ServiceToClass;
+
+  use autodie;
+
+  use Moose;
+
+  sub version {
+    '0.19';
+  }
+
+  sub services {
+    my $self = shift;
+    [ Paws::API::ServiceToClass::classes ];
+  }
+
+  sub save_class {
+    my ($self, $class_name, $content) = @_;
+    return if (not defined $class_name);
+    my @class_parts = split /\:\:/, $class_name;
+    my $class_file_name = "auto-lib/" . ( join '/', @class_parts ) . ".pm";
+    if (0) {#-e $class_file_name) { #not doing this, because there are unimportant differences in files
+      {
+      my $read_content = read_text($class_file_name);
+      die "Non matching for $class_file_name: going to store $content\nvs stored: $read_content" if ($read_content ne $content);
+      }
+    }
+    pop @class_parts;
+    eval { mkdir "auto-lib/" . ( join '/', @class_parts ) };
+    open my $file, ">", $class_file_name;
+    print $file $content;
+    close $file;
+  }
+
+  sub process_template {
+    my ($self, $template, $vars) = @_;
+    my $tt = Template->new;
+    my $output = '';
+    $tt->process(\$template, $vars, \$output) || die $tt->error();
+    return $output;
+  }
+
+  sub process {
+    my ($self) = @_;
+    my $class = $self->process_template($self->pawspm_template,
+      { c => $self }
+    );
+    $self->save_class('Paws', $class);
+  }
+
+  sub contributors {
+    my $self = shift;
+    my $contributions;
+    {
+      local $/ = undef;
+      open my $file, '<', 'README.md';
+      my $content = <$file>;
+      close $file;
+      ($contributions) = ($content =~ m/Thanks\n================\n(.*)$/ms);
+    }
+    return $contributions;
+  }
+
+  has pawspm_template => (is => 'ro', isa => 'Str', default => q!
+[%- -%]
 package Paws::SDK::Config;
 
 use Moose;
@@ -57,7 +125,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.18';
+our $VERSION = '[% c.version %]';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -207,6 +275,8 @@ sub _preload_scanclass {
 1;
 ### main pod documentation begin ###
 
+=encoding UTF-8
+
 =head1 NAME
 
 Paws - A Perl SDK for AWS (Amazon Web Services) APIs
@@ -231,7 +301,9 @@ kept stable, and changes to it should be notified via ChangeLog
 
 =head1 SUPPORTED SERVICES
 
-Please take a look at classes in the Paws::XXX namespace
+[% FOREACH service = c.services.sort %]
+L<Paws::[% service %]>
+[% END %]
 
 =head1 SERVICES CLASSES
 
@@ -360,10 +432,46 @@ The credential objects' access_key, secret_key and session_token methods will be
 =head2 Caller Pluggability
 
 Caller classes need to have the Role L<Paws::Net::CallerRole> applied. This obliges them to implement the do_call method. Tests use this interface to
-mock calls and responses to the APIs (without using the network). If you want to use Asyncronous IO, take a look at the L<Paws::Net::MojoAsyncCaller>
-in the examples directory.
+mock calls and responses to the APIs (without using the network). 
 
 The caller instance is responsable for doing the network Input/Output with some type of HTTP request library, and returning the Result from the API.
+
+These callers are included and supported in Paws:
+
+L<Paws::Net::Caller>: Uses HTTP::Tiny. It's the default caller for Paws
+
+L<Paws::Net::MojoAsyncCaller>: Experimental asyncronous IO caller. Paws method calls return futures instead of results
+
+L<Paws::Net::LWPCaller>: Uses LWP. LWP supports HTTPS proxies, so Paws can call AWS from behind an HTTPS proxy.
+
+L<Paws::Net::FurlCaller>: Uses Furl: a lightning fast HTTP client
+
+=head1 Optimization
+
+=head2 Preloading services and operations
+
+  Paws->preload_service($service)
+  Paws->preload_service($service, @methods)
+
+Paws manages a lot of objects that are loaded dynamically as needed. This causes high memory consumption if you do operations with Paws in a forked 
+environment because each child loads a separate copy of all the classes it needs to do the calls. Paws provides the preload_service operation. Call
+it with the name of the service before forking off so your server can benefit from copy on write memory sharing. The parent class will load all the
+classes needed so that child processes don't need to load them.
+
+Some classes have lot's of calls, so preloading them can be quite expensive. If you call preload_service with a list of the methods you will call,
+it will only load classes needed for those calls. This is specially useful for L<Paws::EC2>, for example.
+
+Preloading doesn't change the usage of Paws. That means that all services and methods still work without any change, just that if they're not preloaded
+they'll be loaded at runtime.
+
+=head2 Immutabilizing classes
+
+Paws objects are programmed with L<Moose> (the Modern Perl Object Framework). Moose objects can be immutibilized so that method calls perform better,
+at the cost of startup time. If you deem your usage of Paws to be long-lived, you can call
+
+  Paws->default_config->immutable(1);
+
+as early as possible in the code. Very important that the immutable flag be activated before calling preload_service.
 
 =head1 AUTHOR
 
@@ -378,7 +486,7 @@ L<http://aws.amazon.com/documentation/>
 
 L<https://github.com/pplu/aws-sdk-perl>
 
-=head1 BUGS and CONTRIBUTIONS
+=head1 BUGS and SOURCE
 
 The source code is located here: https://github.com/pplu/aws-sdk-perl
 
@@ -390,4 +498,14 @@ Copyright (c) 2015 by Jose Luis Martinez Torres
 
 This code is distributed under the Apache 2 License. The full text of the license can be found in the LICENSE file included with this module.
 
+=head1 CONTRIBUITIONS
+
+[% c.contributors %]
+
 =cut
+!);
+
+
+
+}
+1;

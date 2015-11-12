@@ -13,6 +13,7 @@ Paws::EC2::CreateVpcResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Vpc => L<Paws::EC2::Vpc>
 
   Information about the VPC.

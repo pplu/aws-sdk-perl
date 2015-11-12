@@ -14,9 +14,11 @@ Paws::ImportExport::GetShippingLabelOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 ShippingLabelURL => Str
 
   
+
 =head2 Warning => Str
 
   

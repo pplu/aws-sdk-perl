@@ -41,31 +41,38 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Expiration => L<Paws::S3::LifecycleExpiration>
 
   
+
 
 =head2 ID => Str
 
   Unique identifier for the rule. The value cannot be longer than 255
 characters.
 
+
 =head2 NoncurrentVersionExpiration => L<Paws::S3::NoncurrentVersionExpiration>
 
   
+
 
 =head2 NoncurrentVersionTransitions => ArrayRef[L<Paws::S3::NoncurrentVersionTransition>]
 
   
 
+
 =head2 B<REQUIRED> Prefix => Str
 
   Prefix identifying one or more objects to which the rule applies.
+
 
 =head2 B<REQUIRED> Status => Str
 
   If 'Enabled', the rule is currently being applied. If 'Disabled', the
 rule is not currently being applied.
+
 
 =head2 Transitions => ArrayRef[L<Paws::S3::Transition>]
 

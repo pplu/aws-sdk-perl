@@ -17,13 +17,16 @@ Paws::CognitoSync::GetBulkPublishDetailsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 BulkPublishCompleteTime => Str
 
   If BulkPublishStatus is SUCCEEDED, the time the last bulk publish
 operation completed.
+
 =head2 BulkPublishStartTime => Str
 
   The date/time at which the last bulk publish was initiated.
+
 =head2 BulkPublishStatus => Str
 
   Status of the last bulk publish operation, valid values are:
@@ -37,10 +40,12 @@ configured stream
 
 FAILED - Some portion of the data has failed to publish, check
 FailureMessage for the cause.
+
 =head2 FailureMessage => Str
 
   If BulkPublishStatus is FAILED this field will contain the error
 message that caused the bulk publish to fail.
+
 =head2 IdentityPoolId => Str
 
   A name-spaced GUID (for example,

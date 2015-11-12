@@ -42,19 +42,23 @@ aggregated into an existing metric.
 
 =head1 ATTRIBUTES
 
+
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
   A list of dimensions associated with the metric. Note, when using the
 Dimensions value in a query, you need to append .member.N to it (e.g.,
 Dimensions.member.N).
 
+
 =head2 B<REQUIRED> MetricName => Str
 
   The name of the metric.
 
+
 =head2 StatisticValues => L<Paws::CloudWatch::StatisticSet>
 
   A set of statistical values describing the metric.
+
 
 =head2 Timestamp => Str
 
@@ -65,9 +69,11 @@ not accommodate seasonal adjustments such as daylight savings time. For
 more information, see Time stamps in the I<Amazon CloudWatch Developer
 Guide>.
 
+
 =head2 Unit => Str
 
   The unit of the metric.
+
 
 =head2 Value => Num
 

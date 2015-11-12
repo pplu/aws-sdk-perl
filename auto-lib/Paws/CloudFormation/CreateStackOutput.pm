@@ -13,6 +13,7 @@ Paws::CloudFormation::CreateStackOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 StackId => Str
 
   Unique identifier of the stack.

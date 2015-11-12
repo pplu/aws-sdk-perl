@@ -39,13 +39,16 @@ The status of domain configuration option.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CreationDate => Str
 
   A timestamp for when this option was created.
 
+
 =head2 PendingDeletion => Bool
 
   Indicates that the option will be deleted once processing is complete.
+
 
 =head2 B<REQUIRED> State => Str
 
@@ -69,9 +72,11 @@ modify the option value or update or remove the incompatible documents.
 =back
 
 
+
 =head2 B<REQUIRED> UpdateDate => Str
 
   A timestamp for when this option was last updated.
+
 
 =head2 UpdateVersion => Int
 

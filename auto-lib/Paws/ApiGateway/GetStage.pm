@@ -35,10 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> RestApiId => Str
 
   The identifier of the RestApi resource for the Stage resource to get
 information about.
+
 
 =head2 B<REQUIRED> StageName => Str
 

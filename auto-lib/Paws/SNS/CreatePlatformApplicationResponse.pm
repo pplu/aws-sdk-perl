@@ -13,6 +13,7 @@ Paws::SNS::CreatePlatformApplicationResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 PlatformApplicationArn => Str
 
   PlatformApplicationArn is returned.

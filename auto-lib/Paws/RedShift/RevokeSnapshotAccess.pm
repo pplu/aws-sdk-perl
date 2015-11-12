@@ -34,10 +34,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AccountWithRestoreAccess => Str
 
   The identifier of the AWS customer account that can no longer restore
 the specified snapshot.
+
 
 =head2 SnapshotClusterIdentifier => Str
 
@@ -45,6 +47,7 @@ the specified snapshot.
 parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.
+
 
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 

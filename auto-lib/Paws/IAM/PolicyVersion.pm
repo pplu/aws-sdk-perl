@@ -45,10 +45,12 @@ and Inline Policies in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreateDate => Str
 
   The date and time, in ISO 8601 date-time format, when the policy
 version was created.
+
 
 =head2 Document => Str
 
@@ -59,10 +61,12 @@ and GetAccountAuthorizationDetails operations. It is not returned in
 the response to the CreatePolicyVersion or ListPolicyVersions
 operations.
 
+
 =head2 IsDefaultVersion => Bool
 
   Specifies whether the policy version is set as the policy's default
 version.
+
 
 =head2 VersionId => Str
 

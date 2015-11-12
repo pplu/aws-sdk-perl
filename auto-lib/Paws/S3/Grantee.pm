@@ -39,21 +39,26 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 DisplayName => Str
 
   Screen name of the grantee.
+
 
 =head2 EmailAddress => Str
 
   Email address of the grantee.
 
+
 =head2 ID => Str
 
   The canonical user ID of the grantee.
 
+
 =head2 B<REQUIRED> Type => Str
 
   Type of grantee
+
 
 =head2 URI => Str
 

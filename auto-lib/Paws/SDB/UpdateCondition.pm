@@ -41,6 +41,7 @@ doesn't exist.
 
 =head1 ATTRIBUTES
 
+
 =head2 Exists => Bool
 
   A value specifying whether or not the specified attribute must exist
@@ -49,9 +50,11 @@ satisfied. Specify C<true> if the attribute must exist for the update
 condition to be satisfied. Specify C<false> if the attribute should not
 exist in order for the update condition to be satisfied.
 
+
 =head2 Name => Str
 
   The name of the attribute involved in the condition.
+
 
 =head2 Value => Str
 

@@ -12,6 +12,7 @@ Paws::WAF::GetChangeTokenStatusResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ChangeTokenStatus => Str
 
   The status of the change token.

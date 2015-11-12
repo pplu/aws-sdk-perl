@@ -13,9 +13,11 @@ Paws::StorageGateway::ListLocalDisksOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Disks => ArrayRef[L<Paws::StorageGateway::Disk>]
 
   
+
 =head2 GatewayARN => Str
 
   

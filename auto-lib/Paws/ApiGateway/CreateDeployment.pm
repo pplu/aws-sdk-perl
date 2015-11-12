@@ -7,6 +7,7 @@ package Paws::ApiGateway::CreateDeployment;
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
   has StageDescription => (is => 'ro', isa => 'Str');
   has StageName => (is => 'ro', isa => 'Str', required => 1);
+  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
 
   use MooseX::ClassAttribute;
 
@@ -39,31 +40,44 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheClusterEnabled => Bool
 
   Enables a cache cluster for the Stage resource specified in the input.
+
 
 =head2 CacheClusterSize => Str
 
   Specifies the cache cluster size for the Stage resource specified in
 the input, if a cache cluster is enabled.
 
+
 =head2 Description => Str
 
   The description for the Deployment resource to create.
 
+
 =head2 B<REQUIRED> RestApiId => Str
 
   The RestApi resource identifier for the Deployment resource to create.
+
 
 =head2 StageDescription => Str
 
   The description of the Stage resource for the Deployment resource to
 create.
 
+
 =head2 B<REQUIRED> StageName => Str
 
   The name of the Stage resource for the Deployment resource to create.
+
+
+=head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
+
+  A map that defines the stage variables for the Stage resource that is
+associated with the new deployment. Variable names can have alphabetic
+characters, and the values must match [A-Za-z0-9-._~:/?
 
 
 

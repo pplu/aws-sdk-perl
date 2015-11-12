@@ -37,15 +37,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 BatchSize => Int
 
   The maximum number of stream records that can be sent to your Lambda
 function for a single invocation.
 
+
 =head2 Enabled => Bool
 
   Specifies whether AWS Lambda should actively poll the stream or not. If
 disabled, AWS Lambda will not poll the stream.
+
 
 =head2 FunctionName => Str
 
@@ -58,6 +61,7 @@ Lambda also allows you to specify only the account ID qualifier (for
 example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
+
 
 =head2 B<REQUIRED> UUID => Str
 

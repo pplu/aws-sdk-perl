@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Code => Str
 
   The error code.
+
 
 =head2 B<REQUIRED> Message => Str
 

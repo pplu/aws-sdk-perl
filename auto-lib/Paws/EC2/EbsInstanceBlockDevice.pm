@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AttachTime => Str
 
   The time stamp when the attachment initiated.
+
 
 =head2 DeleteOnTermination => Bool
 
   Indicates whether the volume is deleted on instance termination.
 
+
 =head2 Status => Str
 
   The attachment state.
+
 
 =head2 VolumeId => Str
 

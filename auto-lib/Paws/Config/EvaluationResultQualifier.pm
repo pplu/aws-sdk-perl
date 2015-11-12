@@ -38,13 +38,16 @@ provides the type and ID of the resource that the rule evaluated.
 
 =head1 ATTRIBUTES
 
+
 =head2 ConfigRuleName => Str
 
   The name of the AWS Config rule that was used in the evaluation.
 
+
 =head2 ResourceId => Str
 
   The ID of the evaluated AWS resource.
+
 
 =head2 ResourceType => Str
 

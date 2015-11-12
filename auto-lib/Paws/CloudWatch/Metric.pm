@@ -43,13 +43,16 @@ have two dimensions, InstanceID and InstanceType.
 
 =head1 ATTRIBUTES
 
+
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
   A list of dimensions associated with the metric.
 
+
 =head2 MetricName => Str
 
   The name of the metric.
+
 
 =head2 Namespace => Str
 

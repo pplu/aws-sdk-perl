@@ -36,9 +36,11 @@ Contains information about a parameter object.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::DataPipeline::ParameterAttribute>]
 
   The attributes of the parameter object.
+
 
 =head2 B<REQUIRED> Id => Str
 

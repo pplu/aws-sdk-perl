@@ -36,9 +36,11 @@ A resource tag.
 
 =head1 ATTRIBUTES
 
+
 =head2 ResourceId => Str
 
   Specifies the ARN of the resource.
+
 
 =head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
 

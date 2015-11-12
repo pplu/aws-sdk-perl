@@ -37,9 +37,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 EventDescription => Str
 
   The description of the event.
+
 
 =head2 EventSubType => Str
 
@@ -138,6 +140,7 @@ C<launched> - A bid was fulfilled and a new instance was launched.
 C<terminated> - An instance was terminated by the user.
 
 =back
+
 
 
 =head2 InstanceId => Str

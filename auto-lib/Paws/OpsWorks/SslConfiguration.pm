@@ -37,14 +37,17 @@ Describes an app's SSL configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Certificate => Str
 
   The contents of the certificate's domain.crt file.
+
 
 =head2 Chain => Str
 
   Optional. Can be used to specify an intermediate certificate authority
 key or client authentication.
+
 
 =head2 B<REQUIRED> PrivateKey => Str
 

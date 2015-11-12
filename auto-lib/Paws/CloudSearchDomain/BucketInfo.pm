@@ -35,6 +35,7 @@ A container for the calculated facet values and counts.
 
 =head1 ATTRIBUTES
 
+
 =head2 Buckets => ArrayRef[L<Paws::CloudSearchDomain::Bucket>]
 
   A list of the calculated facet values and counts.

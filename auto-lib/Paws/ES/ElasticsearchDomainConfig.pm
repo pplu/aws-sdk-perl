@@ -39,23 +39,28 @@ The configuration of an Elasticsearch domain.
 
 =head1 ATTRIBUTES
 
+
 =head2 AccessPolicies => L<Paws::ES::AccessPoliciesStatus>
 
   IAM access policy as a JSON-formatted string.
+
 
 =head2 AdvancedOptions => L<Paws::ES::AdvancedOptionsStatus>
 
   Specifies the C<AdvancedOptions> for the domain. See Configuring
 Advanced Options for more information.
 
+
 =head2 EBSOptions => L<Paws::ES::EBSOptionsStatus>
 
   Specifies the C<EBSOptions> for the Elasticsearch domain.
+
 
 =head2 ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfigStatus>
 
   Specifies the C<ElasticsearchClusterConfig> for the Elasticsearch
 domain.
+
 
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptionsStatus>
 

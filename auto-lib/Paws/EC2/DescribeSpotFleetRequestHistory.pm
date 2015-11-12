@@ -37,6 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
@@ -44,9 +45,11 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 EventType => Str
 
   The type of events to describe. By default, all events are described.
+
 
 =head2 MaxResults => Int
 
@@ -55,13 +58,16 @@ value between 1 and 1000. The default value is 1000. To retrieve the
 remaining results, make another call with the returned C<NextToken>
 value.
 
+
 =head2 NextToken => Str
 
   The token for the next set of results.
 
+
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
   The ID of the Spot fleet request.
+
 
 =head2 B<REQUIRED> StartTime => Str
 

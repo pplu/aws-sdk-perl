@@ -40,12 +40,14 @@ B<allSupported> or B<resourceTypes>.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllSupported => Bool
 
   Records all supported resource types in the recording group. For a list
 of supported resource types, see Supported resource types. If you
 specify B<allSupported>, you cannot enumerate a list of
 B<resourceTypes>.
+
 
 =head2 ResourceTypes => ArrayRef[Str]
 

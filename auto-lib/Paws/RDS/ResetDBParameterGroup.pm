@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DBParameterGroupName => Str
 
   The name of the DB parameter group.
@@ -49,6 +50,7 @@ Constraints:
 =item * Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
+
 
 
 =head2 Parameters => ArrayRef[L<Paws::RDS::Parameter>]
@@ -69,6 +71,7 @@ and changes are applied when DB instance reboots.
 B<Oracle>
 
 Valid Values (for Apply method): C<pending-reboot>
+
 
 =head2 ResetAllParameters => Bool
 

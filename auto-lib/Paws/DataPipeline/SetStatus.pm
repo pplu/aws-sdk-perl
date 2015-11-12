@@ -34,14 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ObjectIds => ArrayRef[Str]
 
   The IDs of the objects. The corresponding objects can be either
 physical or components, but not a mix of both types.
 
+
 =head2 B<REQUIRED> PipelineId => Str
 
   The ID of the pipeline that contains the objects.
+
 
 =head2 B<REQUIRED> Status => Str
 

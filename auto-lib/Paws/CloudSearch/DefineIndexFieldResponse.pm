@@ -13,6 +13,7 @@ Paws::CloudSearch::DefineIndexFieldResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IndexField => L<Paws::CloudSearch::IndexFieldStatus>
 
   

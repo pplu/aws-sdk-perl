@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
   The customer-assigned name of the DB instance that contains the log
@@ -53,15 +54,18 @@ Constraints:
 =back
 
 
+
 =head2 B<REQUIRED> LogFileName => Str
 
   The name of the log file to be downloaded.
+
 
 =head2 Marker => Str
 
   The pagination token provided in the previous request or "0". If the
 Marker parameter is specified the response includes only records beyond
 the marker until the end of the file or up to NumberOfLines.
+
 
 =head2 NumberOfLines => Int
 

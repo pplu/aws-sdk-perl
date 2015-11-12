@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 DomainName => Str
 
   Specifies the C<DomainName>.

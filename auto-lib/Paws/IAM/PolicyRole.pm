@@ -41,6 +41,7 @@ and Inline Policies in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 RoleName => Str
 
   The name (friendly name, not ARN) identifying the role.

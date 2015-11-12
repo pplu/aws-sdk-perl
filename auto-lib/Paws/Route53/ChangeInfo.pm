@@ -42,6 +42,7 @@ action to get detailed information about the change.
 
 =head1 ATTRIBUTES
 
+
 =head2 Comment => Str
 
   A complex type that describes change information about changes made to
@@ -50,10 +51,12 @@ your hosted zone.
 This element contains an ID that you use when performing a GetChange
 action to get detailed information about the change.
 
+
 =head2 B<REQUIRED> Id => Str
 
   The ID of the request. Use this ID to track when the change has
 completed across all Amazon Route 53 DNS servers.
+
 
 =head2 B<REQUIRED> Status => Str
 
@@ -61,6 +64,7 @@ completed across all Amazon Route 53 DNS servers.
 request has not yet been applied to all Amazon Route 53 DNS servers.
 
 Valid Values: C<PENDING> | C<INSYNC>
+
 
 =head2 B<REQUIRED> SubmittedAt => Str
 

@@ -36,9 +36,11 @@ Information about a tag.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   The key of the tag.
+
 
 =head2 Value => Str
 

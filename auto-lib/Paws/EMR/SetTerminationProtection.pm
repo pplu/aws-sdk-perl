@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> JobFlowIds => ArrayRef[Str]
 
   A list of strings that uniquely identify the job flows to protect. This
 identifier is returned by RunJobFlow and can also be obtained from
 DescribeJobFlows .
+
 
 =head2 B<REQUIRED> TerminationProtected => Bool
 

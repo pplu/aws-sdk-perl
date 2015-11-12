@@ -36,9 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CustomerGatewayId => Str
 
   The ID of the customer gateway.
+
 
 =head2 DryRun => Bool
 
@@ -46,6 +48,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 Options => L<Paws::EC2::VpnConnectionOptionsSpecification>
 
@@ -55,9 +58,11 @@ must specify C<true>.
 
 Default: C<false>
 
+
 =head2 B<REQUIRED> Type => Str
 
   The type of VPN connection (C<ipsec.1>).
+
 
 =head2 B<REQUIRED> VpnGatewayId => Str
 

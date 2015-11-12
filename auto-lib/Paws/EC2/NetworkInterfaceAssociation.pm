@@ -39,21 +39,26 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AllocationId => Str
 
   The allocation ID.
+
 
 =head2 AssociationId => Str
 
   The association ID.
 
+
 =head2 IpOwnerId => Str
 
   The ID of the Elastic IP address owner.
 
+
 =head2 PublicDnsName => Str
 
   The public DNS name.
+
 
 =head2 PublicIp => Str
 

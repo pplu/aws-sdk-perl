@@ -38,10 +38,12 @@ cache behavior.
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[Str]
 
   Optional: A complex type that contains whitelisted cookies for this
 cache behavior. If Quantity is 0, you can omit Items.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

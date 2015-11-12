@@ -13,6 +13,7 @@ Paws::StorageGateway::DescribeTapeArchivesOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Marker => Str
 
   An opaque string that indicates the position at which the virtual tapes
@@ -20,6 +21,7 @@ that were fetched for description ended. Use this marker in your next
 request to fetch the next set of virtual tapes in the virtual tape
 shelf (VTS). If there are no more virtual tapes to describe, this field
 does not appear in the response.
+
 =head2 TapeArchives => ArrayRef[L<Paws::StorageGateway::TapeArchive>]
 
   An array of virtual tape objects in the virtual tape shelf (VTS). The

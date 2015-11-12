@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GrantId => Str
 
   Identifier of the grant to be revoked.
+
 
 =head2 B<REQUIRED> KeyId => Str
 

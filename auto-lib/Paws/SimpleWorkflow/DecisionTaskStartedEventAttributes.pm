@@ -36,10 +36,12 @@ Provides details of the C<DecisionTaskStarted> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Identity => Str
 
   Identity of the decider making the request. This enables diagnostic
 tracing when problems arise. The form of this identity is user defined.
+
 
 =head2 B<REQUIRED> ScheduledEventId => Int
 

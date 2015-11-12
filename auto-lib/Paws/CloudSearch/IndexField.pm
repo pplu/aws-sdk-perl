@@ -49,21 +49,26 @@ C<IndexFieldType>.
 
 =head1 ATTRIBUTES
 
+
 =head2 DateArrayOptions => L<Paws::CloudSearch::DateArrayOptions>
 
   
+
 
 =head2 DateOptions => L<Paws::CloudSearch::DateOptions>
 
   
 
+
 =head2 DoubleArrayOptions => L<Paws::CloudSearch::DoubleArrayOptions>
 
   
 
+
 =head2 DoubleOptions => L<Paws::CloudSearch::DoubleOptions>
 
   
+
 
 =head2 B<REQUIRED> IndexFieldName => Str
 
@@ -83,33 +88,41 @@ wildcards embedded within a string are not supported.
 The name C<score> is reserved and cannot be used as a field name. To
 reference a document's ID, you can use the name C<_id>.
 
+
 =head2 B<REQUIRED> IndexFieldType => Str
 
   
+
 
 =head2 IntArrayOptions => L<Paws::CloudSearch::IntArrayOptions>
 
   
 
+
 =head2 IntOptions => L<Paws::CloudSearch::IntOptions>
 
   
+
 
 =head2 LatLonOptions => L<Paws::CloudSearch::LatLonOptions>
 
   
 
+
 =head2 LiteralArrayOptions => L<Paws::CloudSearch::LiteralArrayOptions>
 
   
+
 
 =head2 LiteralOptions => L<Paws::CloudSearch::LiteralOptions>
 
   
 
+
 =head2 TextArrayOptions => L<Paws::CloudSearch::TextArrayOptions>
 
   
+
 
 =head2 TextOptions => L<Paws::CloudSearch::TextOptions>
 

@@ -14,12 +14,15 @@ Paws::CodeDeploy::ListDeploymentGroupsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationName => Str
 
   The application name.
+
 =head2 DeploymentGroups => ArrayRef[Str]
 
   A list of corresponding deployment group names.
+
 =head2 NextToken => Str
 
   If the amount of information that is returned is significantly large,

@@ -37,9 +37,11 @@ ordered contiguous positive integers.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> EndingHashKey => Str
 
   The ending hash key of the hash key range.
+
 
 =head2 B<REQUIRED> StartingHashKey => Str
 

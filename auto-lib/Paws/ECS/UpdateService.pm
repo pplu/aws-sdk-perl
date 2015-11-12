@@ -35,20 +35,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster that
 your service is running on. If you do not specify a cluster, the
 default cluster is assumed.
 
+
 =head2 DesiredCount => Int
 
   The number of instantiations of the task to place and keep running in
 your service.
 
+
 =head2 B<REQUIRED> Service => Str
 
   The name of the service to update.
+
 
 =head2 TaskDefinition => Str
 

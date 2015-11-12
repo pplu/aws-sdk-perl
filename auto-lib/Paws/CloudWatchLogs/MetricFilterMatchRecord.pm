@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 EventMessage => Str
 
   
 
+
 =head2 EventNumber => Int
 
   
+
 
 =head2 ExtractedValues => L<Paws::CloudWatchLogs::ExtractedValues>
 

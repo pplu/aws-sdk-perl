@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Endpoint => Str
 
   The region service endpoint.
+
 
 =head2 RegionName => Str
 

@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Suffix => Str
 
   A suffix that is appended to a request that is for a directory on the

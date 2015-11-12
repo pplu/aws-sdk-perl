@@ -36,13 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 MaxResults => Int
 
   
 
+
 =head2 NextToken => Str
 
   
+
 
 =head2 B<REQUIRED> Principal => Str
 

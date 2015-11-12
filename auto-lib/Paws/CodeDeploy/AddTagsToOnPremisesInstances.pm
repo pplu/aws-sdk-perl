@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> InstanceNames => ArrayRef[Str]
 
   The names of the on-premises instances to add tags to.
+
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
 

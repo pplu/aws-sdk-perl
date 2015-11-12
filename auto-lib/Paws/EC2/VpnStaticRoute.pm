@@ -37,14 +37,17 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 DestinationCidrBlock => Str
 
   The CIDR block associated with the local subnet of the customer data
 center.
 
+
 =head2 Source => Str
 
   Indicates how the routes were provided.
+
 
 =head2 State => Str
 

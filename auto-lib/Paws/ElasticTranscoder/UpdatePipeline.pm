@@ -41,6 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AwsKmsKeyArn => Str
 
   The AWS Key Management Service (AWS KMS) key that you want to use with
@@ -52,6 +53,7 @@ known as an AWS-KMS key, is created for you automatically. You need to
 provide an AWS-KMS key only if you want to use a non-default AWS-KMS
 key, or if you are using an C<Encryption:Mode> of C<AES-PKCS7>,
 C<AES-CTR>, or C<AES-GCM>.
+
 
 =head2 ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
 
@@ -136,14 +138,17 @@ video files and playlists that it stores in your Amazon S3 bucket.
 =back
 
 
+
 =head2 B<REQUIRED> Id => Str
 
   The ID of the pipeline that you want to update.
+
 
 =head2 InputBucket => Str
 
   The Amazon S3 bucket in which you saved the media files that you want
 to transcode and the graphics that you want to use as watermarks.
+
 
 =head2 Name => Str
 
@@ -152,14 +157,17 @@ the AWS account, but uniqueness is not enforced.
 
 Constraints: Maximum 40 characters
 
+
 =head2 Notifications => L<Paws::ElasticTranscoder::Notifications>
 
   
+
 
 =head2 Role => Str
 
   The IAM Amazon Resource Name (ARN) for the role that you want Elastic
 Transcoder to use to transcode jobs for this pipeline.
+
 
 =head2 ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
 

@@ -46,12 +46,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowVersionUpgrade => Bool
 
   If C<true>, major version upgrades will be applied automatically to the
 cluster during the maintenance window.
 
 Default: C<false>
+
 
 =head2 AutomatedSnapshotRetentionPeriod => Int
 
@@ -68,11 +70,13 @@ Default: Uses existing setting.
 
 Constraints: Must be a value from 0 to 35.
 
+
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
   The unique identifier of the cluster to be modified.
 
 Example: C<examplecluster>
+
 
 =head2 ClusterParameterGroupName => Str
 
@@ -84,6 +88,7 @@ Default: Uses existing setting.
 
 Constraints: The cluster parameter group must be in the same parameter
 group family that matches the cluster version.
+
 
 =head2 ClusterSecurityGroups => ArrayRef[Str]
 
@@ -106,6 +111,7 @@ Constraints:
 =back
 
 
+
 =head2 ClusterType => Str
 
   The new cluster type.
@@ -118,6 +124,7 @@ new cluster. You can use DescribeResize to track the progress of the
 resize request.
 
 Valid Values: C< multi-node | single-node>
+
 
 =head2 ClusterVersion => Str
 
@@ -133,16 +140,19 @@ Cluster Management Guide>.
 
 Example: C<1.0>
 
+
 =head2 HsmClientCertificateIdentifier => Str
 
   Specifies the name of the HSM client certificate the Amazon Redshift
 cluster uses to retrieve the data encryption keys stored in an HSM.
+
 
 =head2 HsmConfigurationIdentifier => Str
 
   Specifies the name of the HSM configuration that contains the
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
+
 
 =head2 MasterUserPassword => Str
 
@@ -174,6 +184,7 @@ except ' (single quote), " (double quote), \, /, @, or space.
 =back
 
 
+
 =head2 NewClusterIdentifier => Str
 
   The new identifier for the cluster.
@@ -196,6 +207,7 @@ Constraints:
 
 Example: C<examplecluster>
 
+
 =head2 NodeType => Str
 
   The new node type of the cluster. If you specify a new node type, you
@@ -212,6 +224,7 @@ You can use DescribeResize to track the progress of the resize request.
 Valid Values: C< ds1.xlarge> | C<ds1.8xlarge> | C< ds2.xlarge> |
 C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge>.
 
+
 =head2 NumberOfNodes => Int
 
   The new number of nodes of the cluster. If you specify a new number of
@@ -226,6 +239,7 @@ complete, the original access permissions for the cluster are restored.
 You can use DescribeResize to track the progress of the resize request.
 
 Valid Values: Integer greater than C<0>.
+
 
 =head2 PreferredMaintenanceWindow => Str
 
@@ -245,6 +259,7 @@ Format: ddd:hh24:mi-ddd:hh24:mi, for example C<wed:07:30-wed:08:00>.
 Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
 Constraints: Must be at least 30 minutes.
+
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 

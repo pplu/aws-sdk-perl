@@ -37,14 +37,17 @@ Contains information about an instance that is part of a DB cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 DBClusterParameterGroupStatus => Str
 
   Specifies the status of the DB cluster parameter group for this member
 of the DB cluster.
 
+
 =head2 DBInstanceIdentifier => Str
 
   Specifies the instance identifier for this member of the DB cluster.
+
 
 =head2 IsClusterWriter => Bool
 

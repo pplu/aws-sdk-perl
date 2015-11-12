@@ -37,9 +37,11 @@ DescribeEventCategories action.
 
 =head1 ATTRIBUTES
 
+
 =head2 EventCategories => ArrayRef[Str]
 
   The event categories for the specified source type
+
 
 =head2 SourceType => Str
 

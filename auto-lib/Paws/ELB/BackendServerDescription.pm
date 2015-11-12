@@ -36,9 +36,11 @@ Information about the configuration of a back-end server.
 
 =head1 ATTRIBUTES
 
+
 =head2 InstancePort => Int
 
   The port on which the back-end server is listening.
+
 
 =head2 PolicyNames => ArrayRef[Str]
 

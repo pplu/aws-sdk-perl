@@ -40,25 +40,31 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   A description of the resource being exported.
+
 
 =head2 ExportTaskId => Str
 
   The ID of the export task.
 
+
 =head2 ExportToS3Task => L<Paws::EC2::ExportToS3Task>
 
   Information about the export task.
+
 
 =head2 InstanceExportDetails => L<Paws::EC2::InstanceExportDetails>
 
   Information about the instance to export.
 
+
 =head2 State => Str
 
   The state of the export task.
+
 
 =head2 StatusMessage => Str
 

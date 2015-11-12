@@ -39,22 +39,27 @@ Detailed information about an activity type.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
 
   The ActivityType type structure representing the activity type.
+
 
 =head2 B<REQUIRED> CreationDate => Str
 
   The date and time this activity type was created through
 RegisterActivityType.
 
+
 =head2 DeprecationDate => Str
 
   If DEPRECATED, the date and time DeprecateActivityType was called.
 
+
 =head2 Description => Str
 
   The description of the activity type provided in RegisterActivityType.
+
 
 =head2 B<REQUIRED> Status => Str
 

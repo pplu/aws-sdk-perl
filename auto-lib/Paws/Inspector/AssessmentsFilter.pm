@@ -41,6 +41,7 @@ and ListAttachedAssessments actions.
 
 =head1 ATTRIBUTES
 
+
 =head2 AssessmentNamePatterns => ArrayRef[Str]
 
   For a record to match a filter, an explicit value or a string
@@ -48,17 +49,20 @@ containing a wildcard specified for this data type property must match
 the value of the B<assessmentName> property of the Assessment data
 type.
 
+
 =head2 AssessmentStates => ArrayRef[Str]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<assessmentState>
 property of the Assessment data type.
 
+
 =head2 DataCollected => Bool
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<dataCollected>
 property of the Assessment data type.
+
 
 =head2 DurationRange => L<Paws::Inspector::DurationRange>
 
@@ -67,12 +71,14 @@ property must inclusively match any value between the specified minimum
 and maximum values of the B<durationInSeconds> property of the
 Assessment data type.
 
+
 =head2 EndTimeRange => L<Paws::Inspector::TimestampRange>
 
   For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<endTime> property of the Assessment data
 type.
+
 
 =head2 StartTimeRange => L<Paws::Inspector::TimestampRange>
 

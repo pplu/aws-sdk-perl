@@ -37,13 +37,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
   Information about one or more block device mappings.
 
+
 =head2 Description => Str
 
   A description for the new image.
+
 
 =head2 DryRun => Bool
 
@@ -52,9 +55,11 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
   The ID of the instance.
+
 
 =head2 B<REQUIRED> Name => Str
 
@@ -63,6 +68,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 Constraints: 3-128 alphanumeric characters, parentheses (()), square
 brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single
 quotes ('), at-signs (@), or underscores(_)
+
 
 =head2 NoReboot => Bool
 

@@ -37,25 +37,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AllowUnauthenticatedIdentities => Bool
 
   TRUE if the identity pool supports unauthenticated logins.
+
 
 =head2 DeveloperProviderName => Str
 
   The "domain" by which Cognito will refer to your users.
 
+
 =head2 B<REQUIRED> IdentityPoolId => Str
 
   An identity pool ID in the format REGION:GUID.
+
 
 =head2 B<REQUIRED> IdentityPoolName => Str
 
   A string that you provide.
 
+
 =head2 OpenIdConnectProviderARNs => ArrayRef[Str]
 
   A list of OpendID Connect provider ARNs.
+
 
 =head2 SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>
 

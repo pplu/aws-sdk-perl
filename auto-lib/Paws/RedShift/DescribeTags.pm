@@ -37,6 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Marker => Str
 
   A value that indicates the starting point for the next set of response
@@ -46,6 +47,7 @@ marker value in the C<marker> parameter and retrying the command. If
 the C<marker> field is empty, all response records have been retrieved
 for the request.
 
+
 =head2 MaxRecords => Int
 
   The maximum number or response records to return in each call. If the
@@ -54,11 +56,13 @@ C<MaxRecords> value, a value is returned in a C<marker> field of the
 response. You can retrieve the next set of records by retrying the
 command with the returned C<marker> value.
 
+
 =head2 ResourceName => Str
 
   The Amazon Resource Name (ARN) for which you want to describe the tag
 or tags. For example,
 C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
+
 
 =head2 ResourceType => Str
 
@@ -93,6 +97,7 @@ For more information about Amazon Redshift resource types and
 constructing ARNs, go to Constructing an Amazon Redshift Amazon
 Resource Name (ARN) in the Amazon Redshift Cluster Management Guide.
 
+
 =head2 TagKeys => ArrayRef[Str]
 
   A tag key or keys for which you want to return all matching resources
@@ -101,6 +106,7 @@ suppose that you have resources tagged with keys called C<owner> and
 C<environment>. If you specify both of these tag keys in the request,
 Amazon Redshift returns a response with all resources that have either
 or both of these tag keys associated with them.
+
 
 =head2 TagValues => ArrayRef[Str]
 

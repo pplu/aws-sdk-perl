@@ -56,10 +56,12 @@ PutMetricAlarm to create or update an alarm.
 
 =head1 ATTRIBUTES
 
+
 =head2 ActionsEnabled => Bool
 
   Indicates whether actions should be executed during any changes to the
 alarm's state.
+
 
 =head2 AlarmActions => ArrayRef[Str]
 
@@ -69,9 +71,11 @@ Amazon Resource Number (ARN). Currently the only actions supported are
 publishing to an Amazon SNS topic and triggering an Auto Scaling
 policy.
 
+
 =head2 AlarmArn => Str
 
   The Amazon Resource Name (ARN) of the alarm.
+
 
 =head2 AlarmConfigurationUpdatedTimestamp => Str
 
@@ -81,13 +85,16 @@ stamps, which do not accommodate seasonal adjustments such as daylight
 savings time. For more information, see Time stamps in the I<Amazon
 CloudWatch Developer Guide>.
 
+
 =head2 AlarmDescription => Str
 
   The description for the alarm.
 
+
 =head2 AlarmName => Str
 
   The name of the alarm.
+
 
 =head2 ComparisonOperator => Str
 
@@ -95,14 +102,17 @@ CloudWatch Developer Guide>.
 C<Statistic> and C<Threshold>. The specified C<Statistic> value is used
 as the first operand.
 
+
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
   The list of dimensions associated with the alarm's associated metric.
+
 
 =head2 EvaluationPeriods => Int
 
   The number of periods over which data is compared to the specified
 threshold.
+
 
 =head2 InsufficientDataActions => ArrayRef[Str]
 
@@ -114,13 +124,16 @@ an Auto Scaling policy.
 
 The current WSDL lists this attribute as C<UnknownActions>.
 
+
 =head2 MetricName => Str
 
   The name of the alarm's metric.
 
+
 =head2 Namespace => Str
 
   The namespace of alarm's associated metric.
+
 
 =head2 OKActions => ArrayRef[Str]
 
@@ -130,17 +143,21 @@ Resource Number (ARN). Currently the only actions supported are
 publishing to an Amazon SNS topic and triggering an Auto Scaling
 policy.
 
+
 =head2 Period => Int
 
   The period in seconds over which the statistic is applied.
+
 
 =head2 StateReason => Str
 
   A human-readable explanation for the alarm's state.
 
+
 =head2 StateReasonData => Str
 
   An explanation for the alarm's state in machine-readable JSON format
+
 
 =head2 StateUpdatedTimestamp => Str
 
@@ -150,17 +167,21 @@ stamps, which do not accommodate seasonal adjustments such as daylight
 savings time. For more information, see Time stamps in the I<Amazon
 CloudWatch Developer Guide>.
 
+
 =head2 StateValue => Str
 
   The state value for the alarm.
+
 
 =head2 Statistic => Str
 
   The statistic to apply to the alarm's associated metric.
 
+
 =head2 Threshold => Num
 
   The value against which the specified statistic is compared.
+
 
 =head2 Unit => Str
 

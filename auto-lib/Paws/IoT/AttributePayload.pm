@@ -38,6 +38,7 @@ For example: {\"attributes\":{\"string1\":\"string2\E<rdquo>}}
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::IoT::Attributes>
 
   A JSON string containing up to three key-value pair in JSON format.

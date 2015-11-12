@@ -47,15 +47,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::OpsWorks::LayerAttributes>
 
   One or more user-defined key/value pairs to be added to the stack
 attributes.
 
+
 =head2 AutoAssignElasticIps => Bool
 
   Whether to automatically assign an Elastic IP address to the layer's
 instances. For more information, see How to Edit a Layer.
+
 
 =head2 AutoAssignPublicIps => Bool
 
@@ -63,10 +66,12 @@ instances. For more information, see How to Edit a Layer.
 public IP address to the layer's instances. For more information, see
 How to Edit a Layer.
 
+
 =head2 CustomInstanceProfileArn => Str
 
   The ARN of an IAM profile to be used for all of the layer's EC2
 instances. For more information about IAM ARNs, see Using Identifiers.
+
 
 =head2 CustomJson => Str
 
@@ -74,18 +79,22 @@ instances. For more information about IAM ARNs, see Using Identifiers.
 deployment attributes to be installed on the layer's instances. For
 more information, see Using Custom JSON.
 
+
 =head2 CustomRecipes => L<Paws::OpsWorks::Recipes>
 
   A C<LayerCustomRecipes> object that specifies the layer's custom
 recipes.
 
+
 =head2 CustomSecurityGroupIds => ArrayRef[Str]
 
   An array containing the layer's custom security group IDs.
 
+
 =head2 EnableAutoHealing => Bool
 
   Whether to disable auto healing for the layer.
+
 
 =head2 InstallUpdatesOnBoot => Bool
 
@@ -99,21 +108,26 @@ Linux) or C<apt-get> (Ubuntu) on the instances.
 We strongly recommend using the default value of C<true>, to ensure
 that your instances have the latest security updates.
 
+
 =head2 B<REQUIRED> LayerId => Str
 
   The layer ID.
+
 
 =head2 LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>
 
   
 
+
 =head2 Name => Str
 
   The layer name, which is used by the console.
 
+
 =head2 Packages => ArrayRef[Str]
 
   An array of C<Package> objects that describe the layer's packages.
+
 
 =head2 Shortname => Str
 
@@ -126,9 +140,11 @@ the following format: /\A[a-z0-9\-\_\.]+\Z/.
 The built-in layers' short names are defined by AWS OpsWorks. For more
 information, see the Layer Reference
 
+
 =head2 UseEbsOptimizedInstances => Bool
 
   Whether to use Amazon EBS-optimized instances.
+
 
 =head2 VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]
 

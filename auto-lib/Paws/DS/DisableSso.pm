@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DirectoryId => Str
 
   The identifier of the directory to disable single-sign on for.
+
 
 =head2 Password => Str
 
   The password of an alternate account to use to disable single-sign on.
 This is only used for AD Connector directories. See the I<UserName>
 parameter for more information.
+
 
 =head2 UserName => Str
 

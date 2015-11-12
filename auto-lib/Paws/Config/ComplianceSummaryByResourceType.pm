@@ -37,10 +37,12 @@ noncompliant, up to a maximum of 100 for each compliance.
 
 =head1 ATTRIBUTES
 
+
 =head2 ComplianceSummary => L<Paws::Config::ComplianceSummary>
 
   The number of AWS resources that are compliant or noncompliant, up to a
 maximum of 100 for each compliance.
+
 
 =head2 ResourceType => Str
 

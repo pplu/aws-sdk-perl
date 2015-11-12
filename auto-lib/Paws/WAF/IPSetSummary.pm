@@ -36,10 +36,12 @@ Contains the identifier and the name of the C<IPSet>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IPSetId => Str
 
   The C<IPSetId> for an IPSet. You can use C<IPSetId> in a GetIPSet
 request to get detailed information about an IPSet.
+
 
 =head2 B<REQUIRED> Name => Str
 

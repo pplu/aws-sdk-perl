@@ -36,11 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster on
 which to run your task. If you do not specify a cluster, the default
 cluster is assumed..
+
 
 =head2 Count => Int
 
@@ -48,6 +50,7 @@ cluster is assumed..
 cluster.
 
 The C<count> parameter is limited to 10 tasks per call.
+
 
 =head2 Overrides => L<Paws::ECS::TaskOverride>
 
@@ -62,6 +65,7 @@ add new environment variables to it with an C<environment> override.
 A total of 8192 characters are allowed for overrides. This limit
 includes the JSON formatting characters of the override structure.
 
+
 =head2 StartedBy => Str
 
   An optional tag specified when a task is started. For example if you
@@ -73,6 +77,7 @@ C<startedBy> value.
 
 If a task is started by an Amazon ECS service, then the C<startedBy>
 parameter contains the deployment ID of the service that starts it.
+
 
 =head2 B<REQUIRED> TaskDefinition => Str
 

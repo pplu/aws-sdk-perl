@@ -47,19 +47,23 @@ Specify the type of Amazon EC2 instances to run the job flow on.
 
 =head1 ATTRIBUTES
 
+
 =head2 Ec2KeyName => Str
 
   The name of an Amazon EC2 key pair that can be used to ssh to the
 master node of job flow.
+
 
 =head2 Ec2SubnetId => Str
 
   For job flows launched within Amazon Virtual Private Cloud, this value
 specifies the identifier of the subnet where the job flow was launched.
 
+
 =head2 HadoopVersion => Str
 
   The Hadoop version for the job flow.
+
 
 =head2 B<REQUIRED> InstanceCount => Int
 
@@ -68,26 +72,32 @@ the same instance serves as both the master and slave node. If the
 value is greater than 1, one instance is the master node and all others
 are slave nodes.
 
+
 =head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupDetail>]
 
   Details about the job flow's instance groups.
+
 
 =head2 KeepJobFlowAliveWhenNoSteps => Bool
 
   Specifies whether the job flow should terminate after completing all
 steps.
 
+
 =head2 MasterInstanceId => Str
 
   The Amazon EC2 instance identifier of the master node.
+
 
 =head2 B<REQUIRED> MasterInstanceType => Str
 
   The Amazon EC2 master node instance type.
 
+
 =head2 MasterPublicDnsName => Str
 
   The DNS name of the master node.
+
 
 =head2 NormalizedInstanceHours => Int
 
@@ -98,13 +108,16 @@ instance that is roughly four times more expensive would result in the
 normalized instance hours being incremented by four. This result is
 only an approximation and does not reflect the actual billing rate.
 
+
 =head2 Placement => L<Paws::EMR::PlacementType>
 
   The Amazon EC2 Availability Zone for the job flow.
 
+
 =head2 B<REQUIRED> SlaveInstanceType => Str
 
   The Amazon EC2 slave node instance type.
+
 
 =head2 TerminationProtected => Bool
 

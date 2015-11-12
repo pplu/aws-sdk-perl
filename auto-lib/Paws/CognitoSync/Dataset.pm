@@ -45,18 +45,22 @@ synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreationDate => Str
 
   Date on which the dataset was created.
+
 
 =head2 DatasetName => Str
 
   A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
 '_' (underscore), '-' (dash), and '.' (dot).
 
+
 =head2 DataStorage => Int
 
   Total size in bytes of the records in this dataset.
+
 
 =head2 IdentityId => Str
 
@@ -64,13 +68,16 @@ synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
 
+
 =head2 LastModifiedBy => Str
 
   The device that made the last change to this dataset.
 
+
 =head2 LastModifiedDate => Str
 
   Date when the dataset was last modified.
+
 
 =head2 NumRecords => Int
 

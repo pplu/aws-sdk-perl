@@ -44,6 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Capabilities => ArrayRef[Str]
 
   A list of capabilities that you must specify before AWS CloudFormation
@@ -60,6 +61,7 @@ template contains these resources, we recommend that you review any
 permissions associated with them. If you don't specify this parameter,
 this action returns an C<InsufficientCapabilities> error.
 
+
 =head2 DisableRollback => Bool
 
   Set to C<true> to disable rollback of the stack if stack creation
@@ -68,11 +70,13 @@ not both.
 
 Default: C<false>
 
+
 =head2 NotificationARNs => ArrayRef[Str]
 
   The Simple Notification Service (SNS) topic ARNs to publish stack
 related events. You can find your SNS topic ARNs using the SNS console
 or your Command Line Interface (CLI).
+
 
 =head2 OnFailure => Str
 
@@ -82,10 +86,12 @@ C<OnFailure> or C<DisableRollback>, but not both.
 
 Default: C<ROLLBACK>
 
+
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
   A list of C<Parameter> structures that specify input parameters for the
 stack.
+
 
 =head2 ResourceTypes => ArrayRef[Str]
 
@@ -106,6 +112,7 @@ Management (IAM) uses this parameter for AWS CloudFormation-specific
 condition keys in IAM policies. For more information, see Controlling
 Access with AWS Identity and Access Management.
 
+
 =head2 B<REQUIRED> StackName => Str
 
   The name that is associated with the stack. The name must be unique in
@@ -115,12 +122,14 @@ A stack name can contain only alphanumeric characters (case sensitive)
 and hyphens. It must start with an alphabetic character and cannot be
 longer than 255 characters.
 
+
 =head2 StackPolicyBody => Str
 
   Structure containing the stack policy body. For more information, go to
 Prevent Updates to Stack Resources in the AWS CloudFormation User
 Guide. You can specify either the C<StackPolicyBody> or the
 C<StackPolicyURL> parameter, but not both.
+
 
 =head2 StackPolicyURL => Str
 
@@ -129,12 +138,14 @@ policy (max size: 16KB) located in an S3 bucket in the same region as
 the stack. You can specify either the C<StackPolicyBody> or the
 C<StackPolicyURL> parameter, but not both.
 
+
 =head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
 
   A set of user-defined C<Tags> to associate with this stack, represented
 by key/value pairs. Tags defined for the stack are propagated to EC2
 resources that are created as part of the stack. A maximum number of 10
 tags can be specified.
+
 
 =head2 TemplateBody => Str
 
@@ -145,6 +156,7 @@ Template Anatomy in the AWS CloudFormation User Guide.
 Conditional: You must specify either the C<TemplateBody> or the
 C<TemplateURL> parameter, but not both.
 
+
 =head2 TemplateURL => Str
 
   Location of file containing the template body. The URL must point to a
@@ -154,6 +166,7 @@ CloudFormation User Guide.
 
 Conditional: You must specify either the C<TemplateBody> or the
 C<TemplateURL> parameter, but not both.
+
 
 =head2 TimeoutInMinutes => Int
 

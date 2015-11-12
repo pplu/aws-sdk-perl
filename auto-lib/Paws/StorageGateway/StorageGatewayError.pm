@@ -38,9 +38,11 @@ more information about the error.
 
 =head1 ATTRIBUTES
 
+
 =head2 ErrorCode => Str
 
   Additional information about the error.
+
 
 =head2 ErrorDetails => L<Paws::StorageGateway::ErrorDetails>
 

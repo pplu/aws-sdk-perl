@@ -39,9 +39,11 @@ C<FuzzyMatching>, C<SortExpression>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DocumentSuggesterOptions => L<Paws::CloudSearch::DocumentSuggesterOptions>
 
   
+
 
 =head2 B<REQUIRED> SuggesterName => Str
 

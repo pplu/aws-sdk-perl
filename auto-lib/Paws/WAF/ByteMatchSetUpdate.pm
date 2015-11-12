@@ -38,9 +38,11 @@ for the C<ByteMatchTuple>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Action => Str
 
   Specifies whether to insert or delete a ByteMatchTuple.
+
 
 =head2 B<REQUIRED> ByteMatchTuple => L<Paws::WAF::ByteMatchTuple>
 

@@ -40,11 +40,13 @@ Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HeaderName => Str
 
   The name of the header to add. Must be between 1 and 50 characters,
 inclusive, and consist of alphanumeric (a-z, A-Z, 0-9) characters and
 dashes only.
+
 
 =head2 B<REQUIRED> HeaderValue => Str
 

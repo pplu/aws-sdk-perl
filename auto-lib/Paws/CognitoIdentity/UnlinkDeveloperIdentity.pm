@@ -35,18 +35,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DeveloperProviderName => Str
 
   The "domain" by which Cognito will refer to your users.
+
 
 =head2 B<REQUIRED> DeveloperUserIdentifier => Str
 
   A unique ID used by your backend authentication process to identify a
 user.
 
+
 =head2 B<REQUIRED> IdentityId => Str
 
   A unique identifier in the format REGION:GUID.
+
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 

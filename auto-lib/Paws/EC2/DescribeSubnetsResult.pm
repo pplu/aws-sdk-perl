@@ -13,6 +13,7 @@ Paws::EC2::DescribeSubnetsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Subnets => ArrayRef[L<Paws::EC2::Subnet>]
 
   Information about one or more subnets.

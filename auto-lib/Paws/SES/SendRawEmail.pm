@@ -37,10 +37,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Destinations => ArrayRef[Str]
 
   A list of destinations for the message, consisting of To:, CC:, and
 BCC: addresses.
+
 
 =head2 FromArn => Str
 
@@ -57,6 +59,7 @@ the value of the C<FromArn> parameter.
 For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer
 Guide.
+
 
 =head2 B<REQUIRED> RawMessage => L<Paws::SES::RawMessage>
 
@@ -79,6 +82,7 @@ For more information, go to the Amazon SES Developer Guide.
 =item * Content must be base64-encoded, if MIME requires it.
 
 =back
+
 
 
 =head2 ReturnPathArn => Str
@@ -104,6 +108,7 @@ For information about when to use this parameter, see the description
 of C<SendRawEmail> in this guide, or see the Amazon SES Developer
 Guide.
 
+
 =head2 Source => Str
 
   The identity's email address. If you do not provide a value for this
@@ -120,6 +125,7 @@ If you specify the C<Source> parameter and have feedback forwarding
 enabled, then bounces and complaints will be sent to this email
 address. This takes precedence over any I<Return-Path> header that you
 might include in the raw text of the message.
+
 
 =head2 SourceArn => Str
 

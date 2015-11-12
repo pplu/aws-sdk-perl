@@ -46,19 +46,23 @@ DescribeKey operations.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The Amazon Resource Name (ARN) of the key. For examples, see AWS Key
 Management Service (AWS KMS) in the Example ARNs section of the I<AWS
 General Reference>.
 
+
 =head2 AWSAccountId => Str
 
   The twelve-digit account ID of the AWS account that owns the key.
 
+
 =head2 CreationDate => Str
 
   The date and time when the key was created.
+
 
 =head2 DeletionDate => Str
 
@@ -66,18 +70,22 @@ General Reference>.
 (CMK). This value is present only when C<KeyState> is
 C<PendingDeletion>, otherwise this value is null.
 
+
 =head2 Description => Str
 
   The friendly description of the key.
+
 
 =head2 Enabled => Bool
 
   Specifies whether the key is enabled. When C<KeyState> is C<Enabled>
 this value is true, otherwise it is false.
 
+
 =head2 B<REQUIRED> KeyId => Str
 
   The globally unique identifier for the key.
+
 
 =head2 KeyState => Str
 
@@ -86,6 +94,7 @@ this value is true, otherwise it is false.
 For more information about how key state affects the use of a CMK, go
 to How Key State Affects the Use of a Customer Master Key in the I<AWS
 Key Management Service Developer Guide>.
+
 
 =head2 KeyUsage => Str
 

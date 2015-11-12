@@ -13,6 +13,7 @@ Paws::CloudSearch::DescribeAvailabilityOptionsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityOptions => L<Paws::CloudSearch::AvailabilityOptionsStatus>
 
   The availability options configured for the domain. Indicates whether

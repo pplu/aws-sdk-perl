@@ -36,9 +36,11 @@ Specifies the type of update to perform to an IPSet with UpdateIPSet.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Action => Str
 
   Specifies whether to insert or delete an IP address with UpdateIPSet.
+
 
 =head2 B<REQUIRED> IPSetDescriptor => L<Paws::WAF::IPSetDescriptor>
 

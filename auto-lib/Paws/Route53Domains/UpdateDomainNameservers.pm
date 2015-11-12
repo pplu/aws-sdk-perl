@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DomainName => Str
 
   The name of a domain.
@@ -48,9 +49,11 @@ are not supported.
 
 Required: Yes
 
+
 =head2 FIAuthKey => Str
 
   The authorization key for .fi domains
+
 
 =head2 B<REQUIRED> Nameservers => ArrayRef[L<Paws::Route53Domains::Nameserver>]
 

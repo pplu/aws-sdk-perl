@@ -38,14 +38,17 @@ noncompliant, up to a maximum.
 
 =head1 ATTRIBUTES
 
+
 =head2 ComplianceSummaryTimestamp => Str
 
   The time that AWS Config created the compliance summary.
+
 
 =head2 CompliantResourceCount => L<Paws::Config::ComplianceContributorCount>
 
   The number of AWS Config rules or AWS resources that are compliant, up
 to a maximum of 25 for rules and 100 for resources.
+
 
 =head2 NonCompliantResourceCount => L<Paws::Config::ComplianceContributorCount>
 

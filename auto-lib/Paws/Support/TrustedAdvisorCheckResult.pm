@@ -41,27 +41,33 @@ DescribeTrustedAdvisorCheckResult.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CategorySpecificSummary => L<Paws::Support::TrustedAdvisorCategorySpecificSummary>
 
   Summary information that relates to the category of the check. Cost
 Optimizing is the only category that is currently supported.
 
+
 =head2 B<REQUIRED> CheckId => Str
 
   The unique identifier for the Trusted Advisor check.
+
 
 =head2 B<REQUIRED> FlaggedResources => ArrayRef[L<Paws::Support::TrustedAdvisorResourceDetail>]
 
   The details about each resource listed in the check result.
 
+
 =head2 B<REQUIRED> ResourcesSummary => L<Paws::Support::TrustedAdvisorResourcesSummary>
 
   
+
 
 =head2 B<REQUIRED> Status => Str
 
   The alert status of the check: "ok" (green), "warning" (yellow),
 "error" (red), or "not_available".
+
 
 =head2 B<REQUIRED> Timestamp => Str
 

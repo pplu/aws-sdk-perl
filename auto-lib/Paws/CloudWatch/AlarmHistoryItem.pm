@@ -42,21 +42,26 @@ of the DescribeAlarmHistoryResult data type.
 
 =head1 ATTRIBUTES
 
+
 =head2 AlarmName => Str
 
   The descriptive name for the alarm.
+
 
 =head2 HistoryData => Str
 
   Machine-readable data about the alarm in JSON format.
 
+
 =head2 HistoryItemType => Str
 
   The type of alarm history item.
 
+
 =head2 HistorySummary => Str
 
   A human-readable summary of the alarm history.
+
 
 =head2 Timestamp => Str
 

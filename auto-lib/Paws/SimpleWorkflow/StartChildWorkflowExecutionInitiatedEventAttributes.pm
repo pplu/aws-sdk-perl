@@ -46,6 +46,7 @@ Provides details of the C<StartChildWorkflowExecutionInitiated> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ChildPolicy => Str
 
   The policy to use for the child workflow executions if this execution
@@ -69,10 +70,12 @@ continue to run.
 =back
 
 
+
 =head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent decision tasks. This data is not sent to the activity.
+
 
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 
@@ -80,6 +83,7 @@ in subsequent decision tasks. This data is not sent to the activity.
 decision task that resulted in the C<StartChildWorkflowExecution>
 decision to request this child workflow execution. This information can
 be useful for diagnosing problems by tracing back the cause of events.
+
 
 =head2 ExecutionStartToCloseTimeout => Str
 
@@ -90,23 +94,28 @@ force terminated.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 Input => Str
 
   The inputs provided to the child workflow execution (if any).
+
 
 =head2 LambdaRole => Str
 
   The IAM role attached to this workflow execution to use when invoking
 AWS Lambda functions.
 
+
 =head2 TagList => ArrayRef[Str]
 
   The list of tags to associated with the child workflow execution.
+
 
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   The name of the task list used for the decision tasks of the child
 workflow execution.
+
 
 =head2 TaskPriority => Str
 
@@ -118,6 +127,7 @@ C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
+
 =head2 TaskStartToCloseTimeout => Str
 
   The maximum duration allowed for the decision tasks for this workflow
@@ -126,9 +136,11 @@ execution.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 B<REQUIRED> WorkflowId => Str
 
   The C<workflowId> of the child workflow execution.
+
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 

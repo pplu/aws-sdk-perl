@@ -37,13 +37,16 @@ A registered instance's reported operating system.
 
 =head1 ATTRIBUTES
 
+
 =head2 Family => Str
 
   The operating system family.
 
+
 =head2 Name => Str
 
   The operating system name.
+
 
 =head2 Version => Str
 

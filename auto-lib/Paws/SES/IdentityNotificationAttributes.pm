@@ -42,20 +42,24 @@ notifications.
 
 =head1 ATTRIBUTES
 
+
 =head2 BounceTopic => Str
 
   The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES
 will publish bounce notifications.
+
 
 =head2 ComplaintTopic => Str
 
   The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES
 will publish complaint notifications.
 
+
 =head2 DeliveryTopic => Str
 
   The Amazon Resource Name (ARN) of the Amazon SNS topic where Amazon SES
 will publish delivery notifications.
+
 
 =head2 B<REQUIRED> ForwardingEnabled => Bool
 

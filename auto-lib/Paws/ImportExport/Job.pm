@@ -38,17 +38,21 @@ Representation of a job returned by the ListJobs operation.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreationDate => Str
 
   
+
 
 =head2 IsCanceled => Bool
 
   
 
+
 =head2 JobId => Str
 
   
+
 
 =head2 JobType => Str
 

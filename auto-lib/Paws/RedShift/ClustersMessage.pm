@@ -14,9 +14,11 @@ Paws::RedShift::ClustersMessage
 
 =head1 ATTRIBUTES
 
+
 =head2 Clusters => ArrayRef[L<Paws::RedShift::Cluster>]
 
   A list of Cluster objects, where each object describes one cluster.
+
 =head2 Marker => Str
 
   A value that indicates the starting point for the next set of response

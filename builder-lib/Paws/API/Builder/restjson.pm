@@ -12,6 +12,45 @@ package Paws::API::Builder::restjson {
   has response_role  => (is => 'ro', lazy => 1, default => sub { 'Paws::Net::RestJsonResponse' });
   has parameter_role => (is => 'ro', lazy => 1, default => sub { return "Paws::Net::RestJsonCaller" });
 
+  has '+map_enum_template' => (default => q#
+[%- -%]
+package [% inner_class %];
+  use Moose;
+  with 'Paws::API::MapParser';
+
+  use MooseX::ClassAttribute;
+  class_has xml_keys =>(is => 'ro', default => '[% iclass.key.locationName || 'key' %]');
+  class_has xml_values =>(is => 'ro', default => '[% iclass.value.locationName || 'value' %]');
+
+[% FOREACH param_name=keys_shape.enum.sort -%]
+  has [% param_name %] => (is => 'ro', isa => '[% c.get_caller_class_type(iclass.value.shape) %]');
+[% END -%]
+1;
+[% c.map_enum_documentation_template | eval %]
+#);
+
+  has '+map_str_to_native_template' => (default => q#
+[%- -%]
+package [% inner_class %];
+  use Moose;
+  with 'Paws::API::StrToNativeMapParser';
+
+  has Map => (is => 'ro', isa => '[% map_class %]');
+1;
+[% c.map_str_to_whatever_template | eval %]
+#);
+
+  has '+map_str_to_obj_template' => (default => q#
+[%- -%]
+package [% inner_class %];
+  use Moose;
+  with 'Paws::API::StrToObjMapParser';
+
+  has Map => (is => 'ro', isa => '[% map_class %]');
+1;
+[% c.map_str_to_whatever_template | eval %]
+#);
+
   has callargs_class_template => (is => 'ro', isa => 'Str', default => q#
 [%- operation = c.operation(op_name) %]
 [%- shape = c.input_for_operation(op_name) %]

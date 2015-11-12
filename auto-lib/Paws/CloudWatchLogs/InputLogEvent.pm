@@ -39,9 +39,11 @@ timestamp of when the event occurred, and the raw event message.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Message => Str
 
   
+
 
 =head2 B<REQUIRED> Timestamp => Int
 

@@ -42,27 +42,33 @@ supplementary information.
 
 =head1 ATTRIBUTES
 
+
 =head2 Annotation => Str
 
   Supplementary information about how the evaluation determined the
 compliance.
+
 
 =head2 ComplianceType => Str
 
   Indicates whether the AWS resource complies with the AWS Config rule
 that evaluated it.
 
+
 =head2 ConfigRuleInvokedTime => Str
 
   The time when the AWS Config rule evaluated the AWS resource.
+
 
 =head2 EvaluationResultIdentifier => L<Paws::Config::EvaluationResultIdentifier>
 
   Uniquely identifies the evaluation result.
 
+
 =head2 ResultRecordedTime => Str
 
   The time when AWS Config recorded the evaluation result.
+
 
 =head2 ResultToken => Str
 

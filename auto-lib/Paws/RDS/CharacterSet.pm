@@ -37,9 +37,11 @@ DescribeDBEngineVersions.
 
 =head1 ATTRIBUTES
 
+
 =head2 CharacterSetDescription => Str
 
   The description of the character set.
+
 
 =head2 CharacterSetName => Str
 

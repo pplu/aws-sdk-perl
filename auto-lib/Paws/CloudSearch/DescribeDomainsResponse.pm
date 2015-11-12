@@ -13,6 +13,7 @@ Paws::CloudSearch::DescribeDomainsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DomainStatusList => ArrayRef[L<Paws::CloudSearch::DomainStatus>]
 
   

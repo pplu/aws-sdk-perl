@@ -37,13 +37,16 @@ The policies for a load balancer.
 
 =head1 ATTRIBUTES
 
+
 =head2 AppCookieStickinessPolicies => ArrayRef[L<Paws::ELB::AppCookieStickinessPolicy>]
 
   The stickiness policies created using CreateAppCookieStickinessPolicy.
 
+
 =head2 LBCookieStickinessPolicies => ArrayRef[L<Paws::ELB::LBCookieStickinessPolicy>]
 
   The stickiness policies created using CreateLBCookieStickinessPolicy.
+
 
 =head2 OtherPolicies => ArrayRef[Str]
 

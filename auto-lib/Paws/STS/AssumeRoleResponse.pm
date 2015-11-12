@@ -15,6 +15,7 @@ Paws::STS::AssumeRoleResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 AssumedRoleUser => L<Paws::STS::AssumedRoleUser>
 
   The Amazon Resource Name (ARN) and the assumed role ID, which are
@@ -23,10 +24,12 @@ security credentials. For example, you can reference these credentials
 as a principal in a resource-based policy by using the ARN or assumed
 role ID. The ARN and ID include the C<RoleSessionName> that you
 specified when you called C<AssumeRole>.
+
 =head2 Credentials => L<Paws::STS::Credentials>
 
   The temporary security credentials, which include an access key ID, a
 secret access key, and a security (or session) token.
+
 =head2 PackedPolicySize => Int
 
   A percentage value that indicates the size of the policy in packed

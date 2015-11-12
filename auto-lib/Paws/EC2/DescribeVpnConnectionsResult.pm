@@ -13,6 +13,7 @@ Paws::EC2::DescribeVpnConnectionsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 VpnConnections => ArrayRef[L<Paws::EC2::VpnConnection>]
 
   Information about one or more VPN connections.

@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Certificate => Str
 
   The new certificate for the client.
+
 
 =head2 B<REQUIRED> ClientArn => Str
 

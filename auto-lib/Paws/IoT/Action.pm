@@ -42,33 +42,41 @@ Describes the actions associated with a rule.
 
 =head1 ATTRIBUTES
 
+
 =head2 DynamoDB => L<Paws::IoT::DynamoDBAction>
 
   Write to a DynamoDB table.
+
 
 =head2 Firehose => L<Paws::IoT::FirehoseAction>
 
   
 
+
 =head2 Kinesis => L<Paws::IoT::KinesisAction>
 
   Write data to a Kinesis stream.
+
 
 =head2 Lambda => L<Paws::IoT::LambdaAction>
 
   Invoke a Lambda function.
 
+
 =head2 Republish => L<Paws::IoT::RepublishAction>
 
   Publish to another MQTT topic.
+
 
 =head2 S3 => L<Paws::IoT::S3Action>
 
   Write to an S3 bucket.
 
+
 =head2 Sns => L<Paws::IoT::SnsAction>
 
   Publish to an SNS topic.
+
 
 =head2 Sqs => L<Paws::IoT::SqsAction>
 

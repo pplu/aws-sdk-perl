@@ -55,17 +55,21 @@ snapshot was taken.
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoMinorVersionUpgrade => Bool
 
   This parameter is currently disabled.
+
 
 =head2 CacheClusterCreateTime => Str
 
   The date and time when the source cache cluster was created.
 
+
 =head2 CacheClusterId => Str
 
   The user-supplied identifier of the source cache cluster.
+
 
 =head2 CacheNodeType => Str
 
@@ -124,29 +128,35 @@ Amazon ElastiCache Product Features and Details and Cache Node
 Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
+
 =head2 CacheParameterGroupName => Str
 
   The cache parameter group that is associated with the source cache
 cluster.
+
 
 =head2 CacheSubnetGroupName => Str
 
   The name of the cache subnet group associated with the source cache
 cluster.
 
+
 =head2 Engine => Str
 
   The name of the cache engine (I<memcached> or I<redis>) used by the
 source cache cluster.
+
 
 =head2 EngineVersion => Str
 
   The version of the cache engine version that is used by the source
 cache cluster.
 
+
 =head2 NodeSnapshots => ArrayRef[L<Paws::ElastiCache::NodeSnapshot>]
 
   A list of the cache nodes in the source cache cluster.
+
 
 =head2 NumCacheNodes => Int
 
@@ -155,14 +165,17 @@ cache cluster.
 For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
 
+
 =head2 Port => Int
 
   The port number used by each cache nodes in the source cache cluster.
+
 
 =head2 PreferredAvailabilityZone => Str
 
   The name of the Availability Zone in which the source cache cluster is
 located.
+
 
 =head2 PreferredMaintenanceWindow => Str
 
@@ -191,11 +204,13 @@ is a 60 minute period. Valid values for C<ddd> are:
 
 Example: C<sun:05:00-sun:09:00>
 
+
 =head2 SnapshotName => Str
 
   The name of a snapshot. For an automatic snapshot, the name is
 system-generated; for a manual snapshot, this is the user-provided
 name.
+
 
 =head2 SnapshotRetentionLimit => Int
 
@@ -212,25 +227,30 @@ B<Important>
 If the value of SnapshotRetentionLimit is set to zero (0), backups are
 turned off.
 
+
 =head2 SnapshotSource => Str
 
   Indicates whether the snapshot is from an automatic backup
 (C<automated>) or was created manually (C<manual>).
+
 
 =head2 SnapshotStatus => Str
 
   The status of the snapshot. Valid values: C<creating> | C<available> |
 C<restoring> | C<copying> | C<deleting>.
 
+
 =head2 SnapshotWindow => Str
 
   The daily time range during which ElastiCache takes daily snapshots of
 the source cache cluster.
 
+
 =head2 TopicArn => Str
 
   The Amazon Resource Name (ARN) for the topic used by the source cache
 cluster for publishing notifications.
+
 
 =head2 VpcId => Str
 

@@ -39,21 +39,26 @@ Describes an EC2 instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AvailabilityZone => Str
 
   The Availability Zone in which the instance is running.
+
 
 =head2 B<REQUIRED> HealthStatus => Str
 
   The health status of the instance.
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
   The ID of the instance.
 
+
 =head2 LaunchConfigurationName => Str
 
   The launch configuration associated with the instance.
+
 
 =head2 B<REQUIRED> LifecycleState => Str
 

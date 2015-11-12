@@ -41,32 +41,39 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ConversionTaskId => Str
 
   The ID of the conversion task.
+
 
 =head2 ExpirationTime => Str
 
   The time when the task expires. If the upload isn't complete before the
 expiration time, we automatically cancel the task.
 
+
 =head2 ImportInstance => L<Paws::EC2::ImportInstanceTaskDetails>
 
   If the task is for importing an instance, this contains information
 about the import instance task.
+
 
 =head2 ImportVolume => L<Paws::EC2::ImportVolumeTaskDetails>
 
   If the task is for importing a volume, this contains information about
 the import volume task.
 
+
 =head2 B<REQUIRED> State => Str
 
   The state of the conversion task.
 
+
 =head2 StatusMessage => Str
 
   The status message related to the conversion task.
+
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 

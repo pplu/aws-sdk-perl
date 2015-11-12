@@ -39,21 +39,26 @@ Describes the parameters for a document.
 
 =head1 ATTRIBUTES
 
+
 =head2 Date => Str
 
   The date when the association was made.
+
 
 =head2 InstanceId => Str
 
   The ID of the instance.
 
+
 =head2 Name => Str
 
   The name of the SSM document.
 
+
 =head2 Parameters => L<Paws::SSM::Parameters>
 
   A description of the parameters for a document.
+
 
 =head2 Status => L<Paws::SSM::AssociationStatus>
 

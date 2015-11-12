@@ -13,6 +13,7 @@ Paws::ELB::DetachLoadBalancerFromSubnetsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Subnets => ArrayRef[Str]
 
   The IDs of the remaining subnets for the load balancer.

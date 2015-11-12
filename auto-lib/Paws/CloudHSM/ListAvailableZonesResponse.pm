@@ -12,6 +12,7 @@ Paws::CloudHSM::ListAvailableZonesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 AZList => ArrayRef[Str]
 
   The list of Availability Zones that have available AWS CloudHSM

@@ -36,6 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
@@ -43,11 +44,13 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 ExecutableUsers => ArrayRef[Str]
 
   Scopes the images by users with explicit launch permissions. Specify an
 AWS account ID, C<self> (the sender of the request), or C<all> (public
 AMIs).
+
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
@@ -195,11 +198,13 @@ C<hvm>).
 =back
 
 
+
 =head2 ImageIds => ArrayRef[Str]
 
   One or more image IDs.
 
 Default: Describes all images available to you.
+
 
 =head2 Owners => ArrayRef[Str]
 

@@ -81,5 +81,9 @@ package Paws::API::ServiceToClass {
   sub services {
     keys %$services_to_classes;
   }
+
+  sub classes {
+    grep { defined $_ } values %$services_to_classes;
+  }
 }
 1;

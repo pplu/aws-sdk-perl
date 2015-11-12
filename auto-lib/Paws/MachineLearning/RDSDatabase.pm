@@ -36,9 +36,11 @@ The database details of an Amazon RDS database.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DatabaseName => Str
 
   
+
 
 =head2 B<REQUIRED> InstanceIdentifier => Str
 

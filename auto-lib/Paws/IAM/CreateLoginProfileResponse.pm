@@ -13,6 +13,7 @@ Paws::IAM::CreateLoginProfileResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> LoginProfile => L<Paws::IAM::LoginProfile>
 
   The user name and password create date.

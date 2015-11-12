@@ -40,26 +40,32 @@ Describes the status of the job flow.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CreationDateTime => Str
 
   The creation date and time of the job flow.
+
 
 =head2 EndDateTime => Str
 
   The completion date and time of the job flow.
 
+
 =head2 LastStateChangeReason => Str
 
   Description of the job flow last changed state.
+
 
 =head2 ReadyDateTime => Str
 
   The date and time when the job flow was ready to start running
 bootstrap actions.
 
+
 =head2 StartDateTime => Str
 
   The start date and time of the job flow.
+
 
 =head2 B<REQUIRED> State => Str
 

@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ForwardingEnabled => Bool
 
   Sets whether Amazon SES will forward bounce and complaint notifications
@@ -42,6 +43,7 @@ publishing otherwise specified. C<false> specifies that Amazon SES will
 publish bounce and complaint notifications only through Amazon SNS.
 This value can only be set to C<false> when Amazon SNS topics are set
 for both C<Bounce> and C<Complaint> notification types.
+
 
 =head2 B<REQUIRED> Identity => Str
 

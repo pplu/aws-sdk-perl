@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Marker => Str
 
   For an initial request for a list of operations, omit this element. If
@@ -47,6 +48,7 @@ Type: String
 Default: None
 
 Required: No
+
 
 =head2 MaxItems => Int
 

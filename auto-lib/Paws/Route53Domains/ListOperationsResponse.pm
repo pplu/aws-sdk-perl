@@ -13,6 +13,7 @@ Paws::Route53Domains::ListOperationsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 NextPageMarker => Str
 
   If there are more operations than you specified for C<MaxItems> in the
@@ -22,6 +23,7 @@ C<NextPageMarker> in the value of C<Marker>.
 Type: String
 
 Parent: C<Operations>
+
 =head2 B<REQUIRED> Operations => ArrayRef[L<Paws::Route53Domains::OperationSummary>]
 
   Lists summaries of the operations.

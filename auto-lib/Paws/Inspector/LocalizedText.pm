@@ -37,9 +37,11 @@ in the LocalizeText action.
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => L<Paws::Inspector::LocalizedTextKey>
 
   The facility and id properties of the LocalizedTextKey data type.
+
 
 =head2 Parameters => ArrayRef[L<Paws::Inspector::Parameter>]
 

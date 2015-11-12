@@ -46,25 +46,31 @@ Describes a deployment of a stack or app.
 
 =head1 ATTRIBUTES
 
+
 =head2 AppId => Str
 
   The app ID.
+
 
 =head2 Command => L<Paws::OpsWorks::DeploymentCommand>
 
   
 
+
 =head2 Comment => Str
 
   A user-defined comment.
+
 
 =head2 CompletedAt => Str
 
   Date when the deployment completed.
 
+
 =head2 CreatedAt => Str
 
   Date when the deployment was created.
+
 
 =head2 CustomJson => Str
 
@@ -78,25 +84,31 @@ C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 For more information on custom JSON, see Use Custom JSON to Modify the
 Stack Configuration Attributes.
 
+
 =head2 DeploymentId => Str
 
   The deployment ID.
+
 
 =head2 Duration => Int
 
   The deployment duration.
 
+
 =head2 IamUserArn => Str
 
   The user's IAM ARN.
+
 
 =head2 InstanceIds => ArrayRef[Str]
 
   The IDs of the target instances.
 
+
 =head2 StackId => Str
 
   The stack ID.
+
 
 =head2 Status => Str
 

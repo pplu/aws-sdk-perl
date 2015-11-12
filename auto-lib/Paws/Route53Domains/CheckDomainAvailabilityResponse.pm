@@ -12,6 +12,7 @@ Paws::Route53Domains::CheckDomainAvailabilityResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Availability => Str
 
   Whether the domain name is available for registering.

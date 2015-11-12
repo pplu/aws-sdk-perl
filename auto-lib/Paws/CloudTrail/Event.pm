@@ -41,25 +41,31 @@ request. The result includes a representation of a CloudTrail event.
 
 =head1 ATTRIBUTES
 
+
 =head2 CloudTrailEvent => Str
 
   A JSON string that contains a representation of the event returned.
+
 
 =head2 EventId => Str
 
   The CloudTrail ID of the event returned.
 
+
 =head2 EventName => Str
 
   The name of the event returned.
+
 
 =head2 EventTime => Str
 
   The date and time of the event returned.
 
+
 =head2 Resources => ArrayRef[L<Paws::CloudTrail::Resource>]
 
   A list of resources referenced by the event returned.
+
 
 =head2 Username => Str
 

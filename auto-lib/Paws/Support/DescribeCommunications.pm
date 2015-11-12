@@ -36,16 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AfterTime => Str
 
   The start date for a filtered date search on support case
 communications. Case communications are available for 12 months after
 creation.
 
+
 =head2 BeforeTime => Str
 
   The end date for a filtered date search on support case communications.
 Case communications are available for 12 months after creation.
+
 
 =head2 B<REQUIRED> CaseId => Str
 
@@ -53,9 +56,11 @@ Case communications are available for 12 months after creation.
 is an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
+
 =head2 MaxResults => Int
 
   The maximum number of results to return before paginating.
+
 
 =head2 NextToken => Str
 

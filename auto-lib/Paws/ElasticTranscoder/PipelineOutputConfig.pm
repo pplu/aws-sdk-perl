@@ -37,6 +37,7 @@ The C<PipelineOutputConfig> structure.
 
 =head1 ATTRIBUTES
 
+
 =head2 Bucket => Str
 
   The Amazon S3 bucket in which you want Elastic Transcoder to save the
@@ -65,6 +66,7 @@ transcoded files or the permissions the users have, or change the
 Amazon S3 storage class, omit OutputBucket and specify values for
 C<ContentConfig> and C<ThumbnailConfig> instead.
 
+
 =head2 Permissions => ArrayRef[L<Paws::ElasticTranscoder::Permission>]
 
   Optional. The C<Permissions> object specifies which users and/or
@@ -81,6 +83,7 @@ full control, you must explicitly grant full control to the user.
 If you omit C<Permissions>, Elastic Transcoder grants full control over
 the transcoded files and playlists to the owner of the role specified
 by C<Role>, and grants no other permissions to any other user or group.
+
 
 =head2 StorageClass => Str
 

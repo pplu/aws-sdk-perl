@@ -28,66 +28,83 @@ Paws::MachineLearning::GetDataSourceOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 ComputeStatistics => Bool
 
   The parameter is C<true> if statistics need to be generated from the
 observation data.
+
 =head2 CreatedAt => Str
 
   The time that the C<DataSource> was created. The time is expressed in
 epoch time.
+
 =head2 CreatedByIamUser => Str
 
   The AWS user account from which the C<DataSource> was created. The
 account type can be either an AWS root account or an AWS Identity and
 Access Management (IAM) user account.
+
 =head2 DataLocationS3 => Str
 
   The location of the data file or directory in Amazon Simple Storage
 Service (Amazon S3).
+
 =head2 DataRearrangement => Str
 
   A JSON string that captures the splitting rearrangement requirement of
 the C<DataSource>.
+
 =head2 DataSizeInBytes => Int
 
   The total size of observations in the data files.
+
 =head2 DataSourceId => Str
 
   The ID assigned to the C<DataSource> at creation. This value should be
 identical to the value of the C<DataSourceId> in the request.
+
 =head2 DataSourceSchema => Str
 
   The schema used by all of the data files of this C<DataSource>.
 
 This parameter is provided as part of the verbose format.
+
 =head2 LastUpdatedAt => Str
 
   The time of the most recent edit to the C<DataSource>. The time is
 expressed in epoch time.
+
 =head2 LogUri => Str
 
   A link to the file containining logs of either create C<DataSource>
 operation.
+
 =head2 Message => Str
 
   The description of the most recent details about creating the
 C<DataSource>.
+
 =head2 Name => Str
 
   A user-supplied name or description of the C<DataSource>.
+
 =head2 NumberOfFiles => Int
 
   The number of data files referenced by the C<DataSource>.
+
 =head2 RDSMetadata => L<Paws::MachineLearning::RDSMetadata>
 
   
+
 =head2 RedshiftMetadata => L<Paws::MachineLearning::RedshiftMetadata>
 
   
+
 =head2 RoleARN => Str
 
   
+
 =head2 Status => Str
 
   The current status of the C<DataSource>. This element can have one of

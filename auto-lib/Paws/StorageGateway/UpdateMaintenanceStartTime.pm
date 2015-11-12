@@ -35,19 +35,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DayOfWeek => Int
 
   The maintenance start time day of the week.
 
+
 =head2 B<REQUIRED> GatewayARN => Str
 
   
+
 
 =head2 B<REQUIRED> HourOfDay => Int
 
   The hour component of the maintenance start time represented as I<hh>,
 where I<hh> is the hour (00 to 23). The hour of the day is in the time
 zone of the gateway.
+
 
 =head2 B<REQUIRED> MinuteOfHour => Int
 

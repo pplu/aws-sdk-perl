@@ -39,9 +39,11 @@ sequence number, a partition key, and a data blob.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApproximateArrivalTimestamp => Str
 
   The approximate time that the record was inserted into the stream.
+
 
 =head2 B<REQUIRED> Data => Str
 
@@ -51,9 +53,11 @@ the data in the blob in any way. When the data blob (the payload before
 base64-encoding) is added to the partition key size, the total size
 must not exceed the maximum record size (1 MB).
 
+
 =head2 B<REQUIRED> PartitionKey => Str
 
   Identifies which shard in the stream the data record is assigned to.
+
 
 =head2 B<REQUIRED> SequenceNumber => Str
 

@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   A text description of the domain.
+
 
 =head2 B<REQUIRED> Name => Str
 
@@ -47,6 +49,7 @@ The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
+
 
 =head2 B<REQUIRED> WorkflowExecutionRetentionPeriodInDays => Str
 

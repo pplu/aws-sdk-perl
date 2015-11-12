@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 StackName => Str
 
   The name or the stack ID that is associated with the stack, which are
@@ -44,6 +45,7 @@ specify the unique stack ID.
 Conditional: You must specify only one of the following parameters:
 C<StackName>, C<TemplateBody>, or C<TemplateURL>.
 
+
 =head2 TemplateBody => Str
 
   Structure containing the template body with a minimum length of 1 byte
@@ -52,6 +54,7 @@ templates, see Template Anatomy in the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
 C<StackName>, C<TemplateBody>, or C<TemplateURL>.
+
 
 =head2 TemplateURL => Str
 

@@ -36,6 +36,7 @@ An invalidation batch.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CallerReference => Str
 
   A unique name that ensures the request can't be replayed. If the
@@ -48,6 +49,7 @@ request. If the CallerReference is a value you already sent in a
 previous request to create a distribution but the content of any Path
 is different from the original request, CloudFront returns an
 InvalidationBatchAlreadyExists error.
+
 
 =head2 B<REQUIRED> Paths => L<Paws::CloudFront::Paths>
 

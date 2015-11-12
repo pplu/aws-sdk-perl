@@ -12,6 +12,7 @@ Paws::OpsWorks::DescribeAppsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Apps => ArrayRef[L<Paws::OpsWorks::App>]
 
   An array of C<App> objects that describe the specified apps.

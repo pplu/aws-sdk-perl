@@ -37,14 +37,17 @@ Represents information about the state of the stage.
 
 =head1 ATTRIBUTES
 
+
 =head2 ActionStates => ArrayRef[L<Paws::CodePipeline::ActionState>]
 
   The state of the stage.
+
 
 =head2 InboundTransitionState => L<Paws::CodePipeline::TransitionState>
 
   The state of the inbound transition, which is either enabled or
 disabled.
+
 
 =head2 StageName => Str
 

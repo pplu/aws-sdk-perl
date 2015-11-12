@@ -13,10 +13,12 @@ Paws::DS::DescribeSnapshotsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   If not null, more results are available. Pass this value in the
 I<NextToken> member of a subsequent call to DescribeSnapshots.
+
 =head2 Snapshots => ArrayRef[L<Paws::DS::Snapshot>]
 
   The list of Snapshot objects that were retrieved.

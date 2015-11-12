@@ -37,19 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AppId => Str
 
   The app ID. This parameter is required for app deployments, but not for
 other deployment commands.
+
 
 =head2 B<REQUIRED> Command => L<Paws::OpsWorks::DeploymentCommand>
 
   A C<DeploymentCommand> object that specifies the deployment command and
 any associated arguments.
 
+
 =head2 Comment => Str
 
   A user-defined comment.
+
 
 =head2 CustomJson => Str
 
@@ -63,9 +67,11 @@ C<"{\"key1\": \"value1\", \"key2\": \"value2\",...}">
 For more information on custom JSON, see Use Custom JSON to Modify the
 Stack Configuration Attributes.
 
+
 =head2 InstanceIds => ArrayRef[Str]
 
   The instance IDs for the deployment targets.
+
 
 =head2 B<REQUIRED> StackId => Str
 

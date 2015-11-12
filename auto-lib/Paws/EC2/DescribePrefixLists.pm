@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
@@ -60,6 +62,7 @@ C<prefix-list-name>: The name of a prefix list.
 =back
 
 
+
 =head2 MaxResults => Int
 
   The maximum number of items to return for this request. The request
@@ -69,10 +72,12 @@ next set of results.
 Constraint: If the value specified is greater than 1000, we return only
 1000 items.
 
+
 =head2 NextToken => Str
 
   The token for the next set of items to return. (You received this token
 from a prior call.)
+
 
 =head2 PrefixListIds => ArrayRef[Str]
 

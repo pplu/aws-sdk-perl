@@ -36,9 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AllowUnauthenticatedIdentities => Bool
 
   TRUE if the identity pool supports unauthenticated logins.
+
 
 =head2 DeveloperProviderName => Str
 
@@ -51,13 +53,16 @@ underscore (C<_>), and dash (C<->).
 Once you have set a developer provider name, you cannot change it.
 Please take care in setting this parameter.
 
+
 =head2 B<REQUIRED> IdentityPoolName => Str
 
   A string that you provide.
 
+
 =head2 OpenIdConnectProviderARNs => ArrayRef[Str]
 
   A list of OpendID Connect provider ARNs.
+
 
 =head2 SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>
 

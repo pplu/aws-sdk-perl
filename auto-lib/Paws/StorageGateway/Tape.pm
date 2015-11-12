@@ -40,6 +40,7 @@ Describes a virtual tape object.
 
 =head1 ATTRIBUTES
 
+
 =head2 Progress => Num
 
   For archiving virtual tapes, indicates how much data remains to be
@@ -47,21 +48,26 @@ uploaded before archiving is complete.
 
 Range: 0 (not started) to 100 (complete).
 
+
 =head2 TapeARN => Str
 
   The Amazon Resource Name (ARN) of the virtual tape.
+
 
 =head2 TapeBarcode => Str
 
   The barcode that identifies a specific virtual tape.
 
+
 =head2 TapeSizeInBytes => Int
 
   The size, in bytes, of the virtual tape.
 
+
 =head2 TapeStatus => Str
 
   The current state of the virtual tape.
+
 
 =head2 VTLDevice => Str
 

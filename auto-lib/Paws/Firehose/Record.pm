@@ -35,6 +35,7 @@ The unit of data in a delivery stream.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Data => Str
 
   The data blob, which is base64-encoded when the blob is serialized. The

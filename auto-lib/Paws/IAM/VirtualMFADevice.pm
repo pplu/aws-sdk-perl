@@ -39,14 +39,17 @@ Contains information about a virtual MFA device.
 
 =head1 ATTRIBUTES
 
+
 =head2 Base32StringSeed => Str
 
   The Base32 seed defined as specified in RFC3548. The
 C<Base32StringSeed> is Base64-encoded.
 
+
 =head2 EnableDate => Str
 
   The date and time on which the virtual MFA device was enabled.
+
 
 =head2 QRCodePNG => Str
 
@@ -57,9 +60,11 @@ C<AccountName> is the user name if set (otherwise, the account ID
 otherwise), and C<Base32String> is the seed in Base32 format. The
 C<Base32String> value is Base64-encoded.
 
+
 =head2 B<REQUIRED> SerialNumber => Str
 
   The serial number associated with C<VirtualMFADevice>.
+
 
 =head2 User => L<Paws::IAM::User>
 

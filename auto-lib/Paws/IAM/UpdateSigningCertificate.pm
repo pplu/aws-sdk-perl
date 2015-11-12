@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CertificateId => Str
 
   The ID of the signing certificate you want to update.
+
 
 =head2 B<REQUIRED> Status => Str
 
   The status you want to assign to the certificate. C<Active> means the
 certificate can be used for API calls to AWS, while C<Inactive> means
 the certificate cannot be used.
+
 
 =head2 UserName => Str
 

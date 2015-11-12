@@ -32,6 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 QueueNamePrefix => Str
 
   A string to use for filtering the list results. Only those queues whose

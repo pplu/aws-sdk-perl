@@ -39,12 +39,14 @@ This data type is used as the request parameter in the ListRuns action.
 
 =head1 ATTRIBUTES
 
+
 =head2 CompletionTime => L<Paws::Inspector::TimestampRange>
 
   For a record to match a filter, the value specified for this data type
 property must inclusively match any value between the specified minimum
 and maximum values of the B<completionTime> property of the Run data
 type.
+
 
 =head2 CreationTime => L<Paws::Inspector::TimestampRange>
 
@@ -53,17 +55,20 @@ property must inclusively match any value between the specified minimum
 and maximum values of the B<creationTime> property of the Run data
 type.
 
+
 =head2 RulesPackages => ArrayRef[Str]
 
   For a record to match a filter, the value specified for this data type
 property must match a list of values of the B<rulesPackages> property
 of the Run data type.
 
+
 =head2 RunNamePatterns => ArrayRef[Str]
 
   For a record to match a filter, an explicit value or a string
 containing a wildcard specified for this data type property must match
 the value of the B<runName> property of the Run data type.
+
 
 =head2 RunStates => ArrayRef[Str]
 

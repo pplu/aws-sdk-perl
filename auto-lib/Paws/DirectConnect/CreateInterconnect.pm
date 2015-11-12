@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bandwidth => Str
 
   The port bandwidth
@@ -44,6 +45,7 @@ Default: None
 
 Available values: 1Gbps,10Gbps
 
+
 =head2 B<REQUIRED> InterconnectName => Str
 
   The name of the interconnect.
@@ -51,6 +53,7 @@ Available values: 1Gbps,10Gbps
 Example: "I<1G Interconnect to AWS>"
 
 Default: None
+
 
 =head2 B<REQUIRED> Location => Str
 

@@ -39,9 +39,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Domain => Str
 
   The name of the domain that contains the workflow executions to list.
+
 
 =head2 ExecutionFilter => L<Paws::SimpleWorkflow::WorkflowExecutionFilter>
 
@@ -50,6 +52,7 @@ specified in the filter are returned.
 
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
+
 
 =head2 MaximumPageSize => Int
 
@@ -61,6 +64,7 @@ however, specify a page size I<smaller> than the maximum.
 This is an upper limit only; the actual number of results returned per
 call may be fewer than the specified maximum.
 
+
 =head2 NextPageToken => Str
 
   If a C<NextPageToken> was returned by a previous call, there are more
@@ -71,11 +75,13 @@ arguments unchanged.
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
 
+
 =head2 ReverseOrder => Bool
 
   When set to C<true>, returns the results in reverse order. By default
 the results are returned in descending order of the start time of the
 executions.
+
 
 =head2 B<REQUIRED> StartTimeFilter => L<Paws::SimpleWorkflow::ExecutionTimeFilter>
 
@@ -83,12 +89,14 @@ executions.
 whether their start times are within the range specified by this
 filter.
 
+
 =head2 TagFilter => L<Paws::SimpleWorkflow::TagFilter>
 
   If specified, only executions that have the matching tag are listed.
 
 C<executionFilter>, C<typeFilter> and C<tagFilter> are mutually
 exclusive. You can specify at most one of these in a request.
+
 
 =head2 TypeFilter => L<Paws::SimpleWorkflow::WorkflowTypeFilter>
 

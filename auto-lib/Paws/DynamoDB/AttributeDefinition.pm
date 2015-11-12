@@ -37,9 +37,11 @@ indexes.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AttributeName => Str
 
   A name for the attribute.
+
 
 =head2 B<REQUIRED> AttributeType => Str
 

@@ -40,13 +40,16 @@ Represents the properties of a local secondary index.
 
 =head1 ATTRIBUTES
 
+
 =head2 IndexArn => Str
 
   The Amazon Resource Name (ARN) that uniquely identifies the index.
 
+
 =head2 IndexName => Str
 
   Represents the name of the local secondary index.
+
 
 =head2 IndexSizeBytes => Int
 
@@ -54,16 +57,19 @@ Represents the properties of a local secondary index.
 value approximately every six hours. Recent changes might not be
 reflected in this value.
 
+
 =head2 ItemCount => Int
 
   The number of items in the specified index. DynamoDB updates this value
 approximately every six hours. Recent changes might not be reflected in
 this value.
 
+
 =head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
   The complete index key schema, which consists of one or more pairs of
 attribute names and key types (C<HASH> or C<RANGE>).
+
 
 =head2 Projection => L<Paws::DynamoDB::Projection>
 

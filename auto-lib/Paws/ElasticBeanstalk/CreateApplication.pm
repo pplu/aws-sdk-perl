@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ApplicationName => Str
 
   The name of the application.
@@ -40,6 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Constraint: This name must be unique within your account. If the
 specified name already exists, the action returns an
 C<InvalidParameterValue> error.
+
 
 =head2 Description => Str
 

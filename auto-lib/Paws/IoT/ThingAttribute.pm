@@ -36,9 +36,11 @@ Describes a thing attribute.
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::IoT::Attributes>
 
   The attributes.
+
 
 =head2 ThingName => Str
 

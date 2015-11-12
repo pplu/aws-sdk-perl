@@ -37,9 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> FunctionName => Str
 
   Lambda function name for which the alias is created.
+
 
 =head2 FunctionVersion => Str
 
@@ -47,11 +49,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 aliases pointing to the specific Lambda function version, otherwise
 returns all aliases created for the Lambda function.
 
+
 =head2 Marker => Str
 
   Optional string. An opaque pagination token returned from a previous
 ListAliases operation. If present, indicates where to continue the
 listing.
+
 
 =head2 MaxItems => Int
 

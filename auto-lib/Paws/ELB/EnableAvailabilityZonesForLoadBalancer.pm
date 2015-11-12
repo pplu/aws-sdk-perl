@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AvailabilityZones => ArrayRef[Str]
 
   The Availability Zones. These must be in the same region as the load
 balancer.
+
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 

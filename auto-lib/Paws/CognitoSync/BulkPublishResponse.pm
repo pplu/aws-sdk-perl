@@ -13,6 +13,7 @@ Paws::CognitoSync::BulkPublishResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 IdentityPoolId => Str
 
   A name-spaced GUID (for example,

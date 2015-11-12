@@ -35,18 +35,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Arn => Str
 
   The Amazon Resourc Name (ARN) of the Device Farm device pool you wish
 to update.
 
+
 =head2 Description => Str
 
   A description of the device pool you wish to update.
 
+
 =head2 Name => Str
 
   A string representing the name of the device pool you wish to update.
+
 
 =head2 Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
 

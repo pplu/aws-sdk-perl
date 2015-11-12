@@ -35,6 +35,7 @@ The Amazon EC2 location for the job flow.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AvailabilityZone => Str
 
   The Amazon EC2 Availability Zone for the job flow.

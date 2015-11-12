@@ -35,6 +35,7 @@ Encloses the id of an entry in ChangeMessageVisibilityBatch.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   Represents a message whose visibility timeout has been changed

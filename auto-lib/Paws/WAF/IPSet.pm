@@ -43,6 +43,7 @@ notation>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IPSetDescriptors => ArrayRef[L<Paws::WAF::IPSetDescriptor>]
 
   The IP address type (C<IPV4>) and the IP address range (in CIDR
@@ -61,6 +62,7 @@ load balancer to send the request
 =back
 
 
+
 =head2 B<REQUIRED> IPSetId => Str
 
   The C<IPSetId> for an C<IPSet>. You use C<IPSetId> to get information
@@ -69,6 +71,7 @@ insert an C<IPSet> into a C<Rule> or delete one from a C<Rule> (see
 UpdateRule), and delete an C<IPSet> from AWS WAF (see DeleteIPSet).
 
 C<IPSetId> is returned by CreateIPSet and by ListIPSets.
+
 
 =head2 Name => Str
 

@@ -37,25 +37,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AppArn => Str
 
   The ARN of the app to schedule a run.
+
 
 =head2 Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>
 
   Information about the settings for the run to be scheduled.
 
+
 =head2 B<REQUIRED> DevicePoolArn => Str
 
   The ARN of the device pool for the run to be scheduled.
+
 
 =head2 Name => Str
 
   The name for the run to be scheduled.
 
+
 =head2 B<REQUIRED> ProjectArn => Str
 
   The ARN of the project for the run to be scheduled.
+
 
 =head2 B<REQUIRED> Test => L<Paws::DeviceFarm::ScheduleRunTest>
 

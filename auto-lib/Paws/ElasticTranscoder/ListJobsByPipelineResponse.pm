@@ -14,9 +14,11 @@ Paws::ElasticTranscoder::ListJobsByPipelineResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Jobs => ArrayRef[L<Paws::ElasticTranscoder::Job>]
 
   An array of C<Job> objects that are in the specified pipeline.
+
 =head2 NextPageToken => Str
 
   A value that you use to access the second and subsequent pages of

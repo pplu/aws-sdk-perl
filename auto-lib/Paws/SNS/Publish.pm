@@ -37,6 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Message => Str
 
   The message you want to send to the topic.
@@ -85,9 +86,11 @@ delivery).
 =back
 
 
+
 =head2 MessageAttributes => L<Paws::SNS::MessageAttributeMap>
 
   Message attributes for Publish action.
+
 
 =head2 MessageStructure => Str
 
@@ -116,6 +119,7 @@ Started Guide>.
 
 Valid value: C<json>
 
+
 =head2 Subject => Str
 
   Optional parameter to be used as the "Subject" line when the message is
@@ -126,9 +130,11 @@ Constraints: Subjects must be ASCII text that begins with a letter,
 number, or punctuation mark; must not include line breaks or control
 characters; and must be less than 100 characters long.
 
+
 =head2 TargetArn => Str
 
   Either TopicArn or EndpointArn, but not both.
+
 
 =head2 TopicArn => Str
 

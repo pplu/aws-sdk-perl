@@ -36,6 +36,7 @@ distribution of your content.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GeoRestriction => L<Paws::CloudFront::GeoRestriction>
 
   

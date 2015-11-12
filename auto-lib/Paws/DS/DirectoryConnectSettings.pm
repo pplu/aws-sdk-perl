@@ -39,10 +39,12 @@ Connector directory is being created.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CustomerDnsIps => ArrayRef[Str]
 
   A list of one or more IP addresses of DNS servers or domain controllers
 in the on-premises directory.
+
 
 =head2 B<REQUIRED> CustomerUserName => Str
 
@@ -61,10 +63,12 @@ privileges:
 =back
 
 
+
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
   A list of subnet identifiers in the VPC that the AD Connector is
 created in.
+
 
 =head2 B<REQUIRED> VpcId => Str
 

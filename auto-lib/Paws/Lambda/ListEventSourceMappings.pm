@@ -37,9 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 EventSourceArn => Str
 
   The Amazon Resource Name (ARN) of the Amazon Kinesis stream.
+
 
 =head2 FunctionName => Str
 
@@ -53,11 +55,13 @@ example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
+
 =head2 Marker => Str
 
   Optional string. An opaque pagination token returned from a previous
 C<ListEventSourceMappings> operation. If present, specifies to continue
 the list from where the returning call left off.
+
 
 =head2 MaxItems => Int
 

@@ -35,6 +35,7 @@ Contains information about the compute type of a WorkSpace bundle.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the compute type for the bundle.

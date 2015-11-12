@@ -34,11 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AssignmentStatus => Str
 
   The status (unassigned or assigned) of the devices to list. If you do
 not specify an C<AssignmentStatus>, the action defaults to C<Any> which
 lists both assigned and unassigned virtual MFA devices.
+
 
 =head2 Marker => Str
 
@@ -46,6 +48,7 @@ lists both assigned and unassigned virtual MFA devices.
 receive a response indicating that the results are truncated. Set it to
 the value of the C<Marker> element in the response that you received to
 indicate where the next call should start.
+
 
 =head2 MaxItems => Int
 

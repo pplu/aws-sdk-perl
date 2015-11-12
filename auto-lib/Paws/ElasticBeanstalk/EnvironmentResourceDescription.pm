@@ -42,29 +42,36 @@ live.
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoScalingGroups => ArrayRef[L<Paws::ElasticBeanstalk::AutoScalingGroup>]
 
   The C<AutoScalingGroups> used by this environment.
+
 
 =head2 EnvironmentName => Str
 
   The name of the environment.
 
+
 =head2 Instances => ArrayRef[L<Paws::ElasticBeanstalk::Instance>]
 
   The Amazon EC2 instances used by this environment.
+
 
 =head2 LaunchConfigurations => ArrayRef[L<Paws::ElasticBeanstalk::LaunchConfiguration>]
 
   The Auto Scaling launch configurations in use by this environment.
 
+
 =head2 LoadBalancers => ArrayRef[L<Paws::ElasticBeanstalk::LoadBalancer>]
 
   The LoadBalancers in use by this environment.
 
+
 =head2 Queues => ArrayRef[L<Paws::ElasticBeanstalk::Queue>]
 
   The queues used by this environment.
+
 
 =head2 Triggers => ArrayRef[L<Paws::ElasticBeanstalk::Trigger>]
 

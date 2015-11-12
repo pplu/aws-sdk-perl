@@ -44,11 +44,15 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoBundleOnDeploy => Str
+
 
 =head2 AwsFlowRubySettings => Str
 
+
 =head2 DocumentRoot => Str
+
 
 =head2 RailsEnv => Str
 

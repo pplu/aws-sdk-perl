@@ -37,6 +37,7 @@ Provides details about the C<DecisionTaskScheduled> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 StartToCloseTimeout => Str
 
   The maximum duration for this decision task. The task is considered
@@ -45,9 +46,11 @@ timed out if it does not completed within this duration.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   The name of the task list in which the decision task was scheduled.
+
 
 =head2 TaskPriority => Str
 

@@ -36,6 +36,7 @@ a topic's attributes, use C<GetTopicAttributes>.
 
 =head1 ATTRIBUTES
 
+
 =head2 TopicArn => Str
 
   The topic's ARN.

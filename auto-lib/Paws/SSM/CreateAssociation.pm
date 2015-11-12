@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
   The instance ID.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the SSM document.
+
 
 =head2 Parameters => L<Paws::SSM::Parameters>
 

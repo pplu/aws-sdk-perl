@@ -85,6 +85,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
+
 =head2 ChildPolicy => Str
 
   I<Optional.> If set, specifies the policy to use for the child workflow
@@ -115,11 +116,13 @@ a default for the workflow type or through this parameter. If neither
 this parameter is set nor a default child policy was specified at
 registration time then a fault will be returned.
 
+
 =head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks. This data is not sent to the child
 workflow execution.
+
 
 =head2 ExecutionStartToCloseTimeout => Str
 
@@ -136,9 +139,11 @@ parameter. If neither this parameter is set nor a default execution
 start-to-close timeout was specified at registration time then a fault
 will be returned.
 
+
 =head2 Input => Str
 
   The input to be provided to the workflow execution.
+
 
 =head2 LambdaRole => Str
 
@@ -149,12 +154,14 @@ In order for this workflow execution to invoke AWS Lambda functions, an
 appropriate IAM role must be specified either as a default for the
 workflow type or through this field.
 
+
 =head2 TagList => ArrayRef[Str]
 
   The list of tags to associate with the child workflow execution. A
 maximum of 5 tags can be specified. You can list workflow executions
 with a specific tag by calling ListOpenWorkflowExecutions or
 ListClosedWorkflowExecutions and specifying a TagFilter.
+
 
 =head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
 
@@ -171,6 +178,7 @@ contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
+
 =head2 TaskPriority => Str
 
   I<Optional.> A task priority that, if set, specifies the priority for a
@@ -182,6 +190,7 @@ indicate higher priority.
 
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
+
 
 =head2 TaskStartToCloseTimeout => Str
 
@@ -199,6 +208,7 @@ parameter. If neither this parameter is set nor a default task
 start-to-close timeout was specified at registration time then a fault
 will be returned.
 
+
 =head2 B<REQUIRED> WorkflowId => Str
 
   B<Required.> The C<workflowId> of the workflow execution.
@@ -207,6 +217,7 @@ The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
+
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 

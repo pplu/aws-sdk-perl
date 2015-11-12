@@ -55,6 +55,7 @@ Describes a layer.
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::OpsWorks::LayerAttributes>
 
   The layer attributes.
@@ -66,10 +67,12 @@ C<*****FILTERED*****> instead of the actual value
 For an ECS Cluster layer, AWS OpsWorks the C<EcsClusterArn> attribute
 is set to the cluster's ARN.
 
+
 =head2 AutoAssignElasticIps => Bool
 
   Whether to automatically assign an Elastic IP address to the layer's
 instances. For more information, see How to Edit a Layer.
+
 
 =head2 AutoAssignPublicIps => Bool
 
@@ -77,40 +80,49 @@ instances. For more information, see How to Edit a Layer.
 public IP address to the layer's instances. For more information, see
 How to Edit a Layer.
 
+
 =head2 CreatedAt => Str
 
   Date when the layer was created.
+
 
 =head2 CustomInstanceProfileArn => Str
 
   The ARN of the default IAM profile to be used for the layer's EC2
 instances. For more information about IAM ARNs, see Using Identifiers.
 
+
 =head2 CustomJson => Str
 
   A JSON formatted string containing the layer's custom stack
 configuration and deployment attributes.
+
 
 =head2 CustomRecipes => L<Paws::OpsWorks::Recipes>
 
   A C<LayerCustomRecipes> object that specifies the layer's custom
 recipes.
 
+
 =head2 CustomSecurityGroupIds => ArrayRef[Str]
 
   An array containing the layer's custom security group IDs.
+
 
 =head2 DefaultRecipes => L<Paws::OpsWorks::Recipes>
 
   
 
+
 =head2 DefaultSecurityGroupNames => ArrayRef[Str]
 
   An array containing the layer's security group names.
 
+
 =head2 EnableAutoHealing => Bool
 
   Whether auto healing is disabled for the layer.
+
 
 =head2 InstallUpdatesOnBoot => Bool
 
@@ -124,38 +136,47 @@ instances.
 We strongly recommend using the default value of C<true>, to ensure
 that your instances have the latest security updates.
 
+
 =head2 LayerId => Str
 
   The layer ID.
+
 
 =head2 LifecycleEventConfiguration => L<Paws::OpsWorks::LifecycleEventConfiguration>
 
   A C<LifeCycleEventConfiguration> object that specifies the Shutdown
 event configuration.
 
+
 =head2 Name => Str
 
   The layer name.
+
 
 =head2 Packages => ArrayRef[Str]
 
   An array of C<Package> objects that describe the layer's packages.
 
+
 =head2 Shortname => Str
 
   The layer short name.
+
 
 =head2 StackId => Str
 
   The layer stack ID.
 
+
 =head2 Type => Str
 
   The layer type.
 
+
 =head2 UseEbsOptimizedInstances => Bool
 
   Whether the layer uses Amazon EBS-optimized instances.
+
 
 =head2 VolumeConfigurations => ArrayRef[L<Paws::OpsWorks::VolumeConfiguration>]
 

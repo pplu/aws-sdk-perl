@@ -35,6 +35,7 @@ Represents a request to perform a I<PutItem> operation on an item.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Item => L<Paws::DynamoDB::PutItemInputAttributeMap>
 
   A map of attribute name to attribute values, representing the primary

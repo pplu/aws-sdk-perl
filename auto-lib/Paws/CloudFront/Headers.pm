@@ -44,11 +44,13 @@ origin once for each header value.
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[Str]
 
   Optional: A complex type that contains a Name element for each header
 that you want CloudFront to forward to the origin and to vary on for
 this cache behavior. If Quantity is 0, omit Items.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ResourceId => Str
 
   Specifies the ARN of the trail to which one or more tags will be added.
 The format of a trail ARN is
 C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
+
 
 =head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
 

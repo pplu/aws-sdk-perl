@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ResourceName => Str
 
   The Amazon Resource Name (ARN) to which you want to add the tag or
 tags. For example, C<arn:aws:redshift:us-east-1:123456789:cluster:t1>.
+
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

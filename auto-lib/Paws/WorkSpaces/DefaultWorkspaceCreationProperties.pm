@@ -39,24 +39,29 @@ Contains default WorkSpace creation information.
 
 =head1 ATTRIBUTES
 
+
 =head2 CustomSecurityGroupId => Str
 
   The identifier of any custom security groups that are applied to the
 WorkSpaces when they are created.
+
 
 =head2 DefaultOu => Str
 
   The organizational unit (OU) in the directory that the WorkSpace
 machine accounts are placed in.
 
+
 =head2 EnableInternetAccess => Bool
 
   A public IP address will be attached to all WorkSpaces that are created
 or rebuilt.
 
+
 =head2 EnableWorkDocs => Bool
 
   Specifies if the directory is enabled for Amazon WorkDocs.
+
 
 =head2 UserEnabledAsLocalAdministrator => Bool
 

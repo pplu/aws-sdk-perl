@@ -59,6 +59,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
+
 =head2 Result => Str
 
   The result of the workflow execution. The form of the result is

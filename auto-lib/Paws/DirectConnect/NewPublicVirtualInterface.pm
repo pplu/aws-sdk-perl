@@ -42,29 +42,36 @@ interface.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AmazonAddress => Str
 
   
+
 
 =head2 B<REQUIRED> Asn => Int
 
   
 
+
 =head2 AuthKey => Str
 
   
+
 
 =head2 B<REQUIRED> CustomerAddress => Str
 
   
 
+
 =head2 B<REQUIRED> RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
 
   
 
+
 =head2 B<REQUIRED> VirtualInterfaceName => Str
 
   
+
 
 =head2 B<REQUIRED> Vlan => Int
 

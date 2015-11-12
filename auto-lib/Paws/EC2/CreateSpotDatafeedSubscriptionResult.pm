@@ -13,6 +13,7 @@ Paws::EC2::CreateSpotDatafeedSubscriptionResult
 
 =head1 ATTRIBUTES
 
+
 =head2 SpotDatafeedSubscription => L<Paws::EC2::SpotDatafeedSubscription>
 
   The Spot instance data feed subscription.

@@ -48,25 +48,31 @@ DescribeEngineDefaultParameters and DescribeDBParameters actions.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowedValues => Str
 
   Specifies the valid range of values for the parameter.
+
 
 =head2 ApplyMethod => Str
 
   Indicates when to apply parameter updates.
 
+
 =head2 ApplyType => Str
 
   Specifies the engine specific parameters type.
+
 
 =head2 DataType => Str
 
   Specifies the valid data type for the parameter.
 
+
 =head2 Description => Str
 
   Provides a description of the parameter.
+
 
 =head2 IsModifiable => Bool
 
@@ -74,17 +80,21 @@ DescribeEngineDefaultParameters and DescribeDBParameters actions.
 modified. Some parameters have security or operational implications
 that prevent them from being changed.
 
+
 =head2 MinimumEngineVersion => Str
 
   The earliest engine version to which the parameter can apply.
+
 
 =head2 ParameterName => Str
 
   Specifies the name of the parameter.
 
+
 =head2 ParameterValue => Str
 
   Specifies the value of the parameter.
+
 
 =head2 Source => Str
 

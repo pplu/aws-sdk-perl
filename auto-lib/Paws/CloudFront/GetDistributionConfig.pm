@@ -20,6 +20,7 @@ Paws::CloudFront::GetDistributionConfigResult
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   The distribution's id.

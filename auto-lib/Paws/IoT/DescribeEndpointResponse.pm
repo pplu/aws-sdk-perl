@@ -13,6 +13,7 @@ Paws::IoT::DescribeEndpointResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 EndpointAddress => Str
 
   The address.

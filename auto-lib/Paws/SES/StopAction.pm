@@ -41,10 +41,12 @@ Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Scope => Str
 
   The scope to which the Stop action applies. That is, what is being
 stopped.
+
 
 =head2 TopicArn => Str
 

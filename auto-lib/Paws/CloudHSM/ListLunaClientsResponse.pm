@@ -13,9 +13,11 @@ Paws::CloudHSM::ListLunaClientsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ClientList => ArrayRef[Str]
 
   The list of clients.
+
 =head2 NextToken => Str
 
   If not null, more results are available. Pass this to ListLunaClients

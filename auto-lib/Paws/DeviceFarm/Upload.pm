@@ -44,21 +44,26 @@ uploaded.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The upload's ARN.
+
 
 =head2 ContentType => Str
 
   The upload's content type (for example, "application/octet-stream").
 
+
 =head2 Created => Str
 
   When the upload was created.
 
+
 =head2 Message => Str
 
   A message about the upload's result.
+
 
 =head2 Metadata => Str
 
@@ -66,9 +71,11 @@ uploaded.
 information that is parsed from the manifest and is displayed in the
 AWS Device Farm console after the associated app is uploaded.
 
+
 =head2 Name => Str
 
   The upload's file name.
+
 
 =head2 Status => Str
 
@@ -95,6 +102,7 @@ PROCESSING: A processing status.
 SUCCEEDED: A succeeded status.
 
 =back
+
 
 
 =head2 Type => Str
@@ -144,6 +152,7 @@ UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
 XCTEST_TEST_PACKAGE: An XCode test package upload.
 
 =back
+
 
 
 =head2 Url => Str

@@ -13,6 +13,7 @@ Paws::CloudSearch::BuildSuggestersResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 FieldNames => ArrayRef[Str]
 
   

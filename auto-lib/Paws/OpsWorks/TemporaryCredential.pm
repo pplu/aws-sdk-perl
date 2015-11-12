@@ -39,17 +39,21 @@ Desktop Connection to log in to the instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 InstanceId => Str
 
   The instance's AWS OpsWorks ID.
+
 
 =head2 Password => Str
 
   The password.
 
+
 =head2 Username => Str
 
   The user name.
+
 
 =head2 ValidForInMinutes => Int
 

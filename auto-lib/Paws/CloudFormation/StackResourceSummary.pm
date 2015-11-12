@@ -40,26 +40,32 @@ Contains high-level information about the specified stack resource.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> LastUpdatedTimestamp => Str
 
   Time the status was updated.
 
+
 =head2 B<REQUIRED> LogicalResourceId => Str
 
   The logical name of the resource specified in the template.
+
 
 =head2 PhysicalResourceId => Str
 
   The name or unique identifier that corresponds to a physical instance
 ID of the resource.
 
+
 =head2 B<REQUIRED> ResourceStatus => Str
 
   Current status of the resource.
 
+
 =head2 ResourceStatusReason => Str
 
   Success/failure message associated with the resource.
+
 
 =head2 B<REQUIRED> ResourceType => Str
 

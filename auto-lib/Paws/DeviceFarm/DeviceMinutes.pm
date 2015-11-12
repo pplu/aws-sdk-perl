@@ -39,15 +39,18 @@ children.
 
 =head1 ATTRIBUTES
 
+
 =head2 Metered => Num
 
   When specified, represents only the sum of metered minutes used by the
 resource to run tests.
 
+
 =head2 Total => Num
 
   When specified, represents the total minutes used by the resource to
 run tests.
+
 
 =head2 Unmetered => Num
 

@@ -36,9 +36,11 @@ The details of the status change reason for the instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   The programmable code for the state change reason.
+
 
 =head2 Message => Str
 

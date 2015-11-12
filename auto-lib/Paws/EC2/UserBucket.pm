@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 S3Bucket => Str
 
   The name of the S3 bucket where the disk image is located.
+
 
 =head2 S3Key => Str
 

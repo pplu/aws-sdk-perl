@@ -13,9 +13,11 @@ Paws::CloudTrail::ListPublicKeysResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   Reserved for future use.
+
 =head2 PublicKeyList => ArrayRef[L<Paws::CloudTrail::PublicKey>]
 
   Contains an array of PublicKey objects.

@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Hostname => Str
 
   The public DNS name of the task runner.
+
 
 =head2 B<REQUIRED> TaskrunnerId => Str
 
@@ -46,6 +48,7 @@ resource managed by AWS Data Pipeline, the web service provides a
 unique identifier when it launches the application. If you have written
 a custom task runner, you should assign a unique identifier for the
 task runner.
+
 
 =head2 WorkerGroup => Str
 

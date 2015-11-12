@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AttributeNames => ArrayRef[Str]
 
   A list of attributes to retrieve information for.
+
 
 =head2 B<REQUIRED> QueueUrl => Str
 

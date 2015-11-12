@@ -42,6 +42,7 @@ Information about the file that you're transcoding.
 
 =head1 ATTRIBUTES
 
+
 =head2 AspectRatio => Str
 
   The aspect ratio of the input file. If you want Elastic Transcoder to
@@ -54,6 +55,7 @@ C<1:1>, C<4:3>, C<3:2>, C<16:9>
 If you specify a value other than C<auto>, Elastic Transcoder disables
 automatic detection of the aspect ratio.
 
+
 =head2 Container => Str
 
   The container type for the input file. If you want Elastic Transcoder
@@ -65,15 +67,18 @@ C<3gp>, C<aac>, C<asf>, C<avi>, C<divx>, C<flv>, C<m4a>, C<mkv>,
 C<mov>, C<mp3>, C<mp4>, C<mpeg>, C<mpeg-ps>, C<mpeg-ts>, C<mxf>,
 C<ogg>, C<vob>, C<wav>, C<webm>
 
+
 =head2 DetectedProperties => L<Paws::ElasticTranscoder::DetectedProperties>
 
   The detected properties of the input file.
+
 
 =head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that are used for decrypting your
 input files. If your input file is encrypted, you must specify the mode
 that Elastic Transcoder will use to decrypt your file.
+
 
 =head2 FrameRate => Str
 
@@ -87,6 +92,7 @@ C<10>, C<15>, C<23.97>, C<24>, C<25>, C<29.97>, C<30>, C<60>
 If you specify a value other than C<auto>, Elastic Transcoder disables
 automatic detection of the frame rate.
 
+
 =head2 Interlaced => Str
 
   Whether the input file is interlaced. If you want Elastic Transcoder to
@@ -99,6 +105,7 @@ C<true>, C<false>
 If you specify a value other than C<auto>, Elastic Transcoder disables
 automatic detection of interlacing.
 
+
 =head2 Key => Str
 
   The name of the file to transcode. Elsewhere in the body of the JSON
@@ -109,6 +116,7 @@ Amazon S3 bucket to get the file from.
 If the file name includes a prefix, such as C<cooking/lasagna.mpg>,
 include the prefix in the key. If the file isn't in the specified
 bucket, Elastic Transcoder returns an error.
+
 
 =head2 Resolution => Str
 

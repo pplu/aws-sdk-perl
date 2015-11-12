@@ -35,9 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GatewayARN => Str
 
   
+
 
 =head2 Limit => Int
 
@@ -46,12 +48,14 @@ specified number.
 
 Amazon Web Services may impose its own limit, if this field is not set.
 
+
 =head2 Marker => Str
 
   A marker value, obtained in a previous call to C<DescribeTapes>. This
 marker indicates which page of results to retrieve.
 
 If not specified, the first page of results is retrieved.
+
 
 =head2 TapeARNs => ArrayRef[Str]
 

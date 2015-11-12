@@ -38,18 +38,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Destination => L<Paws::SES::Destination>
 
   The destination for this email, composed of To:, CC:, and BCC: fields.
+
 
 =head2 B<REQUIRED> Message => L<Paws::SES::Message>
 
   The message to be sent.
 
+
 =head2 ReplyToAddresses => ArrayRef[Str]
 
   The reply-to email address(es) for the message. If the recipient
 replies to the message, each reply-to address will receive the reply.
+
 
 =head2 ReturnPath => Str
 
@@ -61,6 +65,7 @@ address specified by the C<ReturnPath> parameter. The C<ReturnPath>
 parameter is never overwritten. This email address must be either
 individually verified with Amazon SES, or from a domain that has been
 verified with Amazon SES.
+
 
 =head2 ReturnPathArn => Str
 
@@ -79,6 +84,7 @@ C<ReturnPath> to be C<feedback@example.com>.
 For more information about sending authorization, see the Amazon SES
 Developer Guide.
 
+
 =head2 B<REQUIRED> Source => Str
 
   The email address that is sending the email. This email address must be
@@ -96,6 +102,7 @@ contain any other characters, then you must use MIME encoded-word
 syntax (RFC 2047) instead of a literal string. MIME encoded-word syntax
 uses the following form: C<=?charset?encoding?encoded-text?=>. For more
 information, see RFC 2047.
+
 
 =head2 SourceArn => Str
 

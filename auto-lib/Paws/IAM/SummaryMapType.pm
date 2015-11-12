@@ -65,53 +65,78 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AccessKeysPerUserQuota => Int
+
 
 =head2 AccountAccessKeysPresent => Int
 
+
 =head2 AccountMFAEnabled => Int
+
 
 =head2 AccountSigningCertificatesPresent => Int
 
+
 =head2 AttachedPoliciesPerGroupQuota => Int
+
 
 =head2 AttachedPoliciesPerRoleQuota => Int
 
+
 =head2 AttachedPoliciesPerUserQuota => Int
+
 
 =head2 GroupPolicySizeQuota => Int
 
+
 =head2 Groups => Int
+
 
 =head2 GroupsPerUserQuota => Int
 
+
 =head2 GroupsQuota => Int
+
 
 =head2 MFADevices => Int
 
+
 =head2 MFADevicesInUse => Int
+
 
 =head2 Policies => Int
 
+
 =head2 PoliciesQuota => Int
+
 
 =head2 PolicySizeQuota => Int
 
+
 =head2 PolicyVersionsInUse => Int
+
 
 =head2 PolicyVersionsInUseQuota => Int
 
+
 =head2 ServerCertificates => Int
+
 
 =head2 ServerCertificatesQuota => Int
 
+
 =head2 SigningCertificatesPerUserQuota => Int
+
 
 =head2 UserPolicySizeQuota => Int
 
+
 =head2 Users => Int
 
+
 =head2 UsersQuota => Int
+
 
 =head2 VersionsPerPolicyQuota => Int
 

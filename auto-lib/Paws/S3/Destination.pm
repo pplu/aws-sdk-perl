@@ -36,10 +36,12 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bucket => Str
 
   Amazon resource name (ARN) of the bucket where you want Amazon S3 to
 store replicas of the object identified by the rule.
+
 
 =head2 StorageClass => Str
 

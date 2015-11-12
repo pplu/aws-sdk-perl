@@ -36,14 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CertificateBody => Str
 
   The contents of the public key certificate in PEM-encoded format.
+
 
 =head2 CertificateChain => Str
 
   The contents of the certificate chain. This is typically a
 concatenation of the PEM-encoded public key certificates of the chain.
+
 
 =head2 Path => Str
 
@@ -58,9 +61,11 @@ Amazon CloudFront distributions, you must specify a path using the
 C<--path> option. The path must begin with C</cloudfront> and must
 include a trailing slash (for example, C</cloudfront/test/>).
 
+
 =head2 B<REQUIRED> PrivateKey => Str
 
   The contents of the private key in PEM-encoded format.
+
 
 =head2 B<REQUIRED> ServerCertificateName => Str
 

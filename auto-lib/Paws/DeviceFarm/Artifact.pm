@@ -40,17 +40,21 @@ screenshots.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The artifact's ARN.
+
 
 =head2 Extension => Str
 
   The artifact's file extension.
 
+
 =head2 Name => Str
 
   The artifact's name.
+
 
 =head2 Type => Str
 
@@ -126,6 +130,7 @@ SERVICE_LOG: The service log type.
 UNKNOWN: An unknown type.
 
 =back
+
 
 
 =head2 Url => Str

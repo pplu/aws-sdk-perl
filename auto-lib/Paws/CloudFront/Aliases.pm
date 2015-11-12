@@ -37,10 +37,12 @@ names), if any, for this distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[Str]
 
   Optional: A complex type that contains CNAME elements, if any, for this
 distribution. If Quantity is 0, you can omit Items.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

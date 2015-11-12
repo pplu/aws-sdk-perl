@@ -37,9 +37,11 @@ stickiness.
 
 =head1 ATTRIBUTES
 
+
 =head2 CookieName => Str
 
   The name of the application cookie used for stickiness.
+
 
 =head2 PolicyName => Str
 

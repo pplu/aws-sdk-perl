@@ -40,9 +40,11 @@ AWS resource.
 
 =head1 ATTRIBUTES
 
+
 =head2 ConfigSnapshotDeliveryProperties => L<Paws::Config::ConfigSnapshotDeliveryProperties>
 
   
+
 
 =head2 Name => Str
 
@@ -50,14 +52,17 @@ AWS resource.
 assigns the name "default" when creating the delivery channel. You
 cannot change the assigned name.
 
+
 =head2 S3BucketName => Str
 
   The name of the Amazon S3 bucket used to store configuration history
 for the delivery channel.
 
+
 =head2 S3KeyPrefix => Str
 
   The prefix for the specified Amazon S3 bucket.
+
 
 =head2 SnsTopicARN => Str
 

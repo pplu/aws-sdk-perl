@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> BranchName => Str
 
   The name of the new branch to create.
+
 
 =head2 B<REQUIRED> CommitId => Str
 
@@ -44,6 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 If this commit ID is not specified, the new branch will point to the
 commit that is pointed to by the repository's default branch.
+
 
 =head2 B<REQUIRED> RepositoryName => Str
 

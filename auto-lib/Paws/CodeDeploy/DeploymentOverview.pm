@@ -40,21 +40,26 @@ deployment.
 
 =head1 ATTRIBUTES
 
+
 =head2 Failed => Int
 
   The number of instances that have failed in the deployment.
+
 
 =head2 InProgress => Int
 
   The number of instances that are in progress in the deployment.
 
+
 =head2 Pending => Int
 
   The number of instances that are pending in the deployment.
 
+
 =head2 Skipped => Int
 
   The number of instances that have been skipped in the deployment.
+
 
 =head2 Succeeded => Int
 

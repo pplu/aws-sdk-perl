@@ -43,17 +43,21 @@ ElastiCache behavior.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowedValues => Str
 
   The valid range of values for the parameter.
+
 
 =head2 DataType => Str
 
   The valid data type for the parameter.
 
+
 =head2 Description => Str
 
   A description of the parameter.
+
 
 =head2 IsModifiable => Bool
 
@@ -61,17 +65,21 @@ ElastiCache behavior.
 modified. Some parameters have security or operational implications
 that prevent them from being changed.
 
+
 =head2 MinimumEngineVersion => Str
 
   The earliest cache engine version to which the parameter can apply.
+
 
 =head2 ParameterName => Str
 
   The name of the parameter.
 
+
 =head2 ParameterValue => Str
 
   The value of the parameter.
+
 
 =head2 Source => Str
 

@@ -39,21 +39,26 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   A description of the event.
+
 
 =head2 EventId => Str
 
   The ID of this event.
 
+
 =head2 EventType => Str
 
   The type of this event.
 
+
 =head2 NotAfter => Str
 
   The latest end time of the event.
+
 
 =head2 NotBefore => Str
 

@@ -13,9 +13,11 @@ Paws::DeviceFarm::ListDevicesResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Devices => ArrayRef[L<Paws::DeviceFarm::Device>]
 
   Information about the devices.
+
 =head2 NextToken => Str
 
   If the number of items that are returned is significantly large, this

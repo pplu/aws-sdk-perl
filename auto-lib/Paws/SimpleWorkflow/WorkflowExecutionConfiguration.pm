@@ -43,6 +43,7 @@ specified when starting the workflow execution.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ChildPolicy => Str
 
   The policy to use for the child workflow executions if this workflow
@@ -66,6 +67,7 @@ continue to run.
 =back
 
 
+
 =head2 B<REQUIRED> ExecutionStartToCloseTimeout => Str
 
   The total duration for this workflow execution.
@@ -73,15 +75,18 @@ continue to run.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 LambdaRole => Str
 
   The IAM role used by this workflow execution when invoking AWS Lambda
 functions.
 
+
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   The task list used for the decision tasks generated for this workflow
 execution.
+
 
 =head2 TaskPriority => Str
 
@@ -92,6 +97,7 @@ indicate higher priority.
 
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
+
 
 =head2 B<REQUIRED> TaskStartToCloseTimeout => Str
 

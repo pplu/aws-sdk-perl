@@ -13,9 +13,11 @@ Paws::SimpleWorkflow::WorkflowExecutionInfos
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ExecutionInfos => ArrayRef[L<Paws::SimpleWorkflow::WorkflowExecutionInfo>]
 
   The list of workflow information structures.
+
 =head2 NextPageToken => Str
 
   If a C<NextPageToken> was returned by a previous call, there are more

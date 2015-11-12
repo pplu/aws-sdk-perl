@@ -36,6 +36,7 @@ Amazon S3 bucket in your delivery channel.
 
 =head1 ATTRIBUTES
 
+
 =head2 DeliveryFrequency => Str
 
   The frequency with which a AWS Config recurringly delivers

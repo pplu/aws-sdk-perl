@@ -40,13 +40,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HttpMethod => Str
 
   Specifies a put integration response request's HTTP method.
 
+
 =head2 B<REQUIRED> ResourceId => Str
 
   Specifies a put integration response request's resource identifier.
+
 
 =head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>
 
@@ -58,17 +61,21 @@ header from the backend response, or a static value. Static values are
 specified using enclosing single quotes, and backend response headers
 can be read using the pattern C<integration.response.header.{name}>.
 
+
 =head2 ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>
 
   Specifies a put integration response's templates.
+
 
 =head2 B<REQUIRED> RestApiId => Str
 
   Specifies a put integration response request's API identifier.
 
+
 =head2 SelectionPattern => Str
 
   Specifies the selection pattern of a put integration response.
+
 
 =head2 B<REQUIRED> StatusCode => Str
 

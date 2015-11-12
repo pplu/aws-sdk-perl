@@ -38,6 +38,7 @@ Information about the C<AccessLog> attribute.
 
 =head1 ATTRIBUTES
 
+
 =head2 EmitInterval => Int
 
   The interval for publishing the access logs. You can specify an
@@ -45,13 +46,16 @@ interval of either 5 minutes or 60 minutes.
 
 Default: 60 minutes
 
+
 =head2 B<REQUIRED> Enabled => Bool
 
   Specifies whether access log is enabled for the load balancer.
 
+
 =head2 S3BucketName => Str
 
   The name of the Amazon S3 bucket where the access logs are stored.
+
 
 =head2 S3BucketPrefix => Str
 

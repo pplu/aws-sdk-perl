@@ -42,34 +42,42 @@ Describes a filter for a specific list of instances.
 
 =head1 ATTRIBUTES
 
+
 =head2 AgentVersion => Str
 
   The version of the SSM agent running on your instance.
 
+
 =head2 InstanceId => Str
 
   The instance ID.
+
 
 =head2 IsLatestVersion => Bool
 
   Indicates whether latest version of the SSM agent is running on your
 instance.
 
+
 =head2 LastPingDateTime => Str
 
   The date and time when agent last pinged SSM service.
+
 
 =head2 PingStatus => Str
 
   Connection status of the SSM agent.
 
+
 =head2 PlatformName => Str
 
   The name of the operating system platform running on your instance.
 
+
 =head2 PlatformType => Str
 
   The operating system platform type.
+
 
 =head2 PlatformVersion => Str
 

@@ -47,12 +47,14 @@ the Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> FunctionArn => Str
 
   The Amazon Resource Name (ARN) of the AWS Lambda function. An example
 of an AWS Lambda function ARN is
 C<arn:aws:lambda:us-west-2:account-id:function:MyFunction>. For more
 information about AWS Lambda, see the AWS Lambda Developer Guide.
+
 
 =head2 InvocationType => Str
 
@@ -67,6 +69,7 @@ There is a 30-second timeout on C<RequestResponse> invocations. You
 should use C<Event> invocation in most cases. Use C<RequestResponse>
 only when you want to make a mail flow decision, such as whether to
 stop the receipt rule or the receipt rule set.
+
 
 =head2 TopicArn => Str
 

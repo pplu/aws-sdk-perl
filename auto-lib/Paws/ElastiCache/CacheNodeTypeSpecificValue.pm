@@ -36,9 +36,11 @@ A value that applies only to a certain cache node type.
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheNodeType => Str
 
   The cache node type for which this value applies.
+
 
 =head2 Value => Str
 

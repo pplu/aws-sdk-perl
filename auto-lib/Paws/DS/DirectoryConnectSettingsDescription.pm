@@ -40,25 +40,31 @@ Contains information about an AD Connector directory.
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZones => ArrayRef[Str]
 
   A list of the Availability Zones that the directory is in.
+
 
 =head2 ConnectIps => ArrayRef[Str]
 
   The IP addresses of the AD Connector servers.
 
+
 =head2 CustomerUserName => Str
 
   The username of the service account in the on-premises directory.
+
 
 =head2 SecurityGroupId => Str
 
   The security group identifier for the AD Connector directory.
 
+
 =head2 SubnetIds => ArrayRef[Str]
 
   A list of subnet identifiers in the VPC that the AD connector is in.
+
 
 =head2 VpcId => Str
 

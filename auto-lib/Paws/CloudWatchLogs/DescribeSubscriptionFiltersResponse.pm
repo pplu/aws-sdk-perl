@@ -13,9 +13,11 @@ Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   
+
 =head2 SubscriptionFilters => ArrayRef[L<Paws::CloudWatchLogs::SubscriptionFilter>]
 
   

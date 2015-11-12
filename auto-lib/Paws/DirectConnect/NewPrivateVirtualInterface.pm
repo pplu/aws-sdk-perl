@@ -42,29 +42,36 @@ interface.
 
 =head1 ATTRIBUTES
 
+
 =head2 AmazonAddress => Str
 
   
+
 
 =head2 B<REQUIRED> Asn => Int
 
   
 
+
 =head2 AuthKey => Str
 
   
+
 
 =head2 CustomerAddress => Str
 
   
 
+
 =head2 B<REQUIRED> VirtualGatewayId => Str
 
   
 
+
 =head2 B<REQUIRED> VirtualInterfaceName => Str
 
   
+
 
 =head2 B<REQUIRED> Vlan => Int
 

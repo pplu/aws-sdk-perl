@@ -37,9 +37,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> EventInformation => L<Paws::EC2::EventInformation>
 
   Information about the event.
+
 
 =head2 B<REQUIRED> EventType => Str
 
@@ -62,6 +64,7 @@ C<instanceChange> - Indicates that an instance was launched or
 terminated.
 
 =back
+
 
 
 =head2 B<REQUIRED> Timestamp => Str

@@ -95,9 +95,11 @@ Parameters for Redis.
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheNodeCreateTime => Str
 
   The date and time when the cache node was created.
+
 
 =head2 CacheNodeId => Str
 
@@ -105,21 +107,26 @@ Parameters for Redis.
 0002, etc.). The combination of cluster ID and node ID uniquely
 identifies every cache node used in a customer's AWS account.
 
+
 =head2 CacheNodeStatus => Str
 
   The current state of this cache node.
+
 
 =head2 CustomerAvailabilityZone => Str
 
   The Availability Zone where this node was created and now resides.
 
+
 =head2 Endpoint => L<Paws::ElastiCache::Endpoint>
 
   The hostname for connecting to this cache node.
 
+
 =head2 ParameterGroupStatus => Str
 
   The status of the parameter group applied to this cache node.
+
 
 =head2 SourceCacheNodeId => Str
 

@@ -39,11 +39,13 @@ Access to Pipelines in the I<AWS Data Pipeline Developer Guide>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   The key name of a tag defined by a user. For more information, see
 Controlling User Access to Pipelines in the I<AWS Data Pipeline
 Developer Guide>.
+
 
 =head2 B<REQUIRED> Value => Str
 

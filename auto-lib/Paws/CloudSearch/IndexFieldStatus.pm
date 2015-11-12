@@ -36,9 +36,11 @@ The value of an C<IndexField> and its current status.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Options => L<Paws::CloudSearch::IndexField>
 
   
+
 
 =head2 B<REQUIRED> Status => L<Paws::CloudSearch::OptionStatus>
 

@@ -36,6 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CodeSha256 => Str
 
   The SHA256 hash of the deployment package you want to publish. This
@@ -43,10 +44,12 @@ provides validation on the code you are publishing. If you provide this
 parameter value must match the SHA256 of the HEAD version for the
 publication to succeed.
 
+
 =head2 Description => Str
 
   The description for the version you are publishing. If not provided,
 AWS Lambda copies the description from the HEAD version.
+
 
 =head2 B<REQUIRED> FunctionName => Str
 

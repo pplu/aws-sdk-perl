@@ -40,25 +40,31 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AccepterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
 
   The information of the peer VPC.
+
 
 =head2 ExpirationTime => Str
 
   The time that an unaccepted VPC peering connection will expire.
 
+
 =head2 RequesterVpcInfo => L<Paws::EC2::VpcPeeringConnectionVpcInfo>
 
   The information of the requester VPC.
+
 
 =head2 Status => L<Paws::EC2::VpcPeeringConnectionStateReason>
 
   The status of the VPC peering connection.
 
+
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the resource.
+
 
 =head2 VpcPeeringConnectionId => Str
 

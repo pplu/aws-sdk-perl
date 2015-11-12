@@ -42,28 +42,34 @@ The details of an Amazon ECS service deployment.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreatedAt => Str
 
   The Unix time in seconds and milliseconds when the service was created.
+
 
 =head2 DesiredCount => Int
 
   The most recent desired count of tasks that was specified for the
 service to deploy or maintain.
 
+
 =head2 Id => Str
 
   The ID of the deployment.
+
 
 =head2 PendingCount => Int
 
   The number of tasks in the deployment that are in the C<PENDING>
 status.
 
+
 =head2 RunningCount => Int
 
   The number of tasks in the deployment that are in the C<RUNNING>
 status.
+
 
 =head2 Status => Str
 
@@ -72,10 +78,12 @@ recent deployment), C<ACTIVE> (for previous deployments that still have
 tasks running, but are being replaced with the C<PRIMARY> deployment),
 and C<INACTIVE> (for deployments that have been completely replaced).
 
+
 =head2 TaskDefinition => Str
 
   The most recent task definition that was specified for the service to
 use.
+
 
 =head2 UpdatedAt => Str
 

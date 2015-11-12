@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> RequestItems => L<Paws::DynamoDB::BatchGetRequestMap>
 
   A map of one or more table names and, for each table, a map that
@@ -159,6 +160,7 @@ consumption. DynamoDB determines capacity units consumed based on item
 size, not on the amount of data that is returned to an application.
 
 =back
+
 
 
 =head2 ReturnConsumedCapacity => Str

@@ -40,14 +40,17 @@ if it does not comply with one or more of these rules.
 
 =head1 ATTRIBUTES
 
+
 =head2 Compliance => L<Paws::Config::Compliance>
 
   Indicates whether the AWS resource complies with all of the AWS Config
 rules that evaluated it.
 
+
 =head2 ResourceId => Str
 
   The ID of the AWS resource that was evaluated.
+
 
 =head2 ResourceType => Str
 

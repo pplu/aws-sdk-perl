@@ -59,29 +59,36 @@ C<"rangeKeyValue": "${timestamp()}">
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HashKeyField => Str
 
   The hash key name.
+
 
 =head2 B<REQUIRED> HashKeyValue => Str
 
   The hash key value.
 
+
 =head2 PayloadField => Str
 
   The action payload.
+
 
 =head2 B<REQUIRED> RangeKeyField => Str
 
   The range key name.
 
+
 =head2 B<REQUIRED> RangeKeyValue => Str
 
   The range key value.
 
+
 =head2 B<REQUIRED> RoleArn => Str
 
   The ARN of the IAM role that grants access.
+
 
 =head2 B<REQUIRED> TableName => Str
 

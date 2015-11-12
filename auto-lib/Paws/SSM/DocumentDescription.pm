@@ -41,30 +41,37 @@ Describes an SSM document.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreatedDate => Str
 
   The date when the SSM document was created.
+
 
 =head2 Description => Str
 
   A description of the document.
 
+
 =head2 Name => Str
 
   The name of the SSM document.
+
 
 =head2 Parameters => ArrayRef[L<Paws::SSM::DocumentParameter>]
 
   A description of the parameters for a document.
 
+
 =head2 PlatformTypes => ArrayRef[Str]
 
   The list of OS platforms compatible with this SSM document.
+
 
 =head2 Sha1 => Str
 
   The SHA1 hash of the document, which you can use for verification
 purposes.
+
 
 =head2 Status => Str
 

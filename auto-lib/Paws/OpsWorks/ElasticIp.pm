@@ -39,21 +39,26 @@ Describes an Elastic IP address.
 
 =head1 ATTRIBUTES
 
+
 =head2 Domain => Str
 
   The domain.
+
 
 =head2 InstanceId => Str
 
   The ID of the instance that the address is attached to.
 
+
 =head2 Ip => Str
 
   The IP address.
 
+
 =head2 Name => Str
 
   The name.
+
 
 =head2 Region => Str
 

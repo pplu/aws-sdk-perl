@@ -42,19 +42,23 @@ C<GetSampledRequests>.
 
 =head1 ATTRIBUTES
 
+
 =head2 Action => Str
 
   The action for the C<Rule> that the request matched: C<ALLOW>,
 C<BLOCK>, or C<COUNT>.
 
+
 =head2 B<REQUIRED> Request => L<Paws::WAF::HTTPRequest>
 
   A complex type that contains detailed information about the request.
+
 
 =head2 Timestamp => Str
 
   The time at which AWS WAF received the request from your AWS resource,
 in Unix time format (in seconds).
+
 
 =head2 B<REQUIRED> Weight => Int
 

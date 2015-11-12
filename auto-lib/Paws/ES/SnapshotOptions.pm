@@ -37,6 +37,7 @@ is C<0> hours.
 
 =head1 ATTRIBUTES
 
+
 =head2 AutomatedSnapshotStartHour => Int
 
   Specifies the time, in UTC format, when the service takes a daily

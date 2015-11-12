@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ClusterSubnetGroupName => Str
 
   The name of the subnet group to be modified.
 
+
 =head2 Description => Str
 
   A text description of the subnet group to be modified.
+
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 

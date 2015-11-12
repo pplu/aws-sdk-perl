@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Hostname => Str
 
   The public DNS name of the calling task runner.
+
 
 =head2 InstanceIdentity => L<Paws::DataPipeline::InstanceIdentity>
 
@@ -47,6 +49,7 @@ information, see Instance Metadata in the I<Amazon Elastic Compute
 Cloud User Guide.> Passing in this value proves that your task runner
 is running on an EC2 instance, and ensures the proper AWS Data Pipeline
 service charges are applied to your pipeline.
+
 
 =head2 B<REQUIRED> WorkerGroup => Str
 

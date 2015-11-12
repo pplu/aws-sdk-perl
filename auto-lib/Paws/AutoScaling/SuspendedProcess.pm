@@ -37,9 +37,11 @@ information, see ProcessType.
 
 =head1 ATTRIBUTES
 
+
 =head2 ProcessName => Str
 
   The name of the suspended process.
+
 
 =head2 SuspensionReason => Str
 

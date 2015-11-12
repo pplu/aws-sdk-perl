@@ -40,21 +40,26 @@ Describes the configuration of a destination in Amazon Redshift.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ClusterJDBCURL => Str
 
   The database connection string.
+
 
 =head2 B<REQUIRED> CopyCommand => L<Paws::Firehose::CopyCommand>
 
   The C<COPY> command.
 
+
 =head2 B<REQUIRED> Password => Str
 
   The user password.
 
+
 =head2 B<REQUIRED> RoleARN => Str
 
   The ARN of the AWS credentials.
+
 
 =head2 B<REQUIRED> S3Configuration => L<Paws::Firehose::S3DestinationConfiguration>
 
@@ -66,6 +71,7 @@ The compression formats C<SNAPPY> or C<ZIP> cannot be specified in
 C<RedshiftDestinationConfiguration.S3Configuration> because the Amazon
 Redshift C<COPY> operation that reads from the S3 bucket doesn't
 support these compression formats.
+
 
 =head2 B<REQUIRED> Username => Str
 

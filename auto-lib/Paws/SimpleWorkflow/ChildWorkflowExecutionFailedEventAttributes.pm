@@ -40,9 +40,11 @@ Provides details of the C<ChildWorkflowExecutionFailed> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Details => Str
 
   The details of the failure (if provided).
+
 
 =head2 B<REQUIRED> InitiatedEventId => Int
 
@@ -52,9 +54,11 @@ this child workflow execution. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
+
 =head2 Reason => Str
 
   The reason for the failure (if provided).
+
 
 =head2 B<REQUIRED> StartedEventId => Int
 
@@ -63,9 +67,11 @@ child workflow execution was started. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
+
 =head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The child workflow execution that failed.
+
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 

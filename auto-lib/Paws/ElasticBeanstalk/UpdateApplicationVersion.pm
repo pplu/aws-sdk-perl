@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ApplicationName => Str
 
   The name of the application associated with this version.
@@ -41,9 +42,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 If no application is found with this name, C<UpdateApplication> returns
 an C<InvalidParameterValue> error.
 
+
 =head2 Description => Str
 
   A new description for this release.
+
 
 =head2 B<REQUIRED> VersionLabel => Str
 

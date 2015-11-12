@@ -35,6 +35,7 @@ Represents the raw data of the message.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Data => Str
 
   The raw data of the message. The client must ensure that the message

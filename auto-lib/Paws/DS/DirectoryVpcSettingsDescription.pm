@@ -38,17 +38,21 @@ Contains information about a Simple AD directory.
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZones => ArrayRef[Str]
 
   The list of Availability Zones that the directory is in.
+
 
 =head2 SecurityGroupId => Str
 
   The security group identifier for the directory.
 
+
 =head2 SubnetIds => ArrayRef[Str]
 
   The identifiers of the subnets for the directory servers.
+
 
 =head2 VpcId => Str
 

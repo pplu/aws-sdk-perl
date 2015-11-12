@@ -12,6 +12,7 @@ Paws::CloudTrail::DescribeTrailsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 TrailList => ArrayRef[L<Paws::CloudTrail::Trail>]
 
   The list of trail objects.

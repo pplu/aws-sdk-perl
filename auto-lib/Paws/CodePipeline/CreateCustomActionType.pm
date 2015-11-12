@@ -38,31 +38,38 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Category => Str
 
   The category of the custom action, such as a source action or a build
 action.
 
+
 =head2 ConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]
 
   The configuration properties for the custom action.
+
 
 =head2 B<REQUIRED> InputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
   
 
+
 =head2 B<REQUIRED> OutputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
   
+
 
 =head2 B<REQUIRED> Provider => Str
 
   The provider of the service used in the custom action, such as AWS
 CodeDeploy.
 
+
 =head2 Settings => L<Paws::CodePipeline::ActionTypeSettings>
 
   
+
 
 =head2 B<REQUIRED> Version => Str
 

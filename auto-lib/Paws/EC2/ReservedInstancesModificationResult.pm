@@ -36,11 +36,13 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 ReservedInstancesId => Str
 
   The ID for the Reserved Instances that were created as part of the
 modification request. This field is only available when the
 modification is fulfilled.
+
 
 =head2 TargetConfiguration => L<Paws::EC2::ReservedInstancesConfiguration>
 

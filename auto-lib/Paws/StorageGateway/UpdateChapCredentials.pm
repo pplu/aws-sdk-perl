@@ -35,9 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> InitiatorName => Str
 
   The iSCSI initiator that connects to the target.
+
 
 =head2 B<REQUIRED> SecretToAuthenticateInitiator => Str
 
@@ -45,6 +47,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 must provide to participate in mutual CHAP with the target.
 
 The secret key must be between 12 and 16 bytes when encoded in UTF-8.
+
 
 =head2 SecretToAuthenticateTarget => Str
 
@@ -54,6 +57,7 @@ CHAP with the initiator (e.g. Windows client).
 Byte constraints: Minimum bytes of 12. Maximum bytes of 16.
 
 The secret key must be between 12 and 16 bytes when encoded in UTF-8.
+
 
 =head2 B<REQUIRED> TargetARN => Str
 

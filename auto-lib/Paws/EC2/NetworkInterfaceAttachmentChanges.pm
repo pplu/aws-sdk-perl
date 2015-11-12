@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AttachmentId => Str
 
   The ID of the network interface attachment.
+
 
 =head2 DeleteOnTermination => Bool
 

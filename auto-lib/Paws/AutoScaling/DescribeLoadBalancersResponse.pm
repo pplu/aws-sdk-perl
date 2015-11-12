@@ -14,9 +14,11 @@ Paws::AutoScaling::DescribeLoadBalancersResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 LoadBalancers => ArrayRef[L<Paws::AutoScaling::LoadBalancerState>]
 
   The load balancers.
+
 =head2 NextToken => Str
 
   The token to use when requesting the next set of items. If there are no

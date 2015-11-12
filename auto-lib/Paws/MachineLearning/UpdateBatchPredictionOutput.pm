@@ -12,6 +12,7 @@ Paws::MachineLearning::UpdateBatchPredictionOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 BatchPredictionId => Str
 
   The ID assigned to the C<BatchPrediction> during creation. This value

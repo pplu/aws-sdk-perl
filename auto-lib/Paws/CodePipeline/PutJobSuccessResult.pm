@@ -35,20 +35,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ContinuationToken => Str
 
   A system-generated token, such as a AWS CodeDeploy deployment ID, that
 the successful job used to complete a job asynchronously.
+
 
 =head2 CurrentRevision => L<Paws::CodePipeline::CurrentRevision>
 
   The ID of the current revision of the artifact successfully worked upon
 by the job.
 
+
 =head2 ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>
 
   The execution details of the successful job, such as the actions taken
 by the job worker.
+
 
 =head2 B<REQUIRED> JobId => Str
 

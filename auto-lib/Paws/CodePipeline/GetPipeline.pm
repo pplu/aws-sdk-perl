@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the pipeline for which you want to get information.
 Pipeline names must be unique under an Amazon Web Services (AWS) user
 account.
+
 
 =head2 Version => Int
 

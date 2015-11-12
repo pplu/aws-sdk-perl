@@ -60,12 +60,14 @@ different containers that are launched as part of a task.
 
 =head1 ATTRIBUTES
 
+
 =head2 Command => ArrayRef[Str]
 
   The command that is passed to the container. This parameter maps to
 C<Cmd> in the Create a container section of the Docker Remote API and
 the C<COMMAND> parameter to docker run. For more information, see
 https://docs.docker.com/reference/builder/
+
 
 =head2 Cpu => Int
 
@@ -113,11 +115,13 @@ and CPU values of 1 are passed to Docker as 2.
 =back
 
 
+
 =head2 DisableNetworking => Bool
 
   When this parameter is true, networking is disabled within the
 container. This parameter maps to C<NetworkDisabled> in the Create a
 container section of the Docker Remote API.
+
 
 =head2 DnsSearchDomains => ArrayRef[Str]
 
@@ -125,11 +129,13 @@ container section of the Docker Remote API.
 parameter maps to C<DnsSearch> in the Create a container section of the
 Docker Remote API and the C<--dns-search> option to docker run.
 
+
 =head2 DnsServers => ArrayRef[Str]
 
   A list of DNS servers that are presented to the container. This
 parameter maps to C<Dns> in the Create a container section of the
 Docker Remote API and the C<--dns> option to docker run.
+
 
 =head2 DockerLabels => L<Paws::ECS::DockerLabelsMap>
 
@@ -140,6 +146,7 @@ version 1.18 of the Docker Remote API or greater on your container
 instance. To check the Docker Remote API version on your container
 instance, log into your container instance and run the following
 command: C<sudo docker version | grep "Server API version">
+
 
 =head2 DockerSecurityOptions => ArrayRef[Str]
 
@@ -155,6 +162,7 @@ placed on that instance can use these security options. For more
 information, see Amazon ECS Container Agent Configuration in the
 I<Amazon EC2 Container Service Developer Guide>.
 
+
 =head2 EntryPoint => ArrayRef[Str]
 
   Early versions of the Amazon ECS container agent do not properly handle
@@ -167,11 +175,13 @@ C<Entrypoint> in the Create a container section of the Docker Remote
 API and the C<--entrypoint> option to docker run. For more information,
 see https://docs.docker.com/reference/builder/
 
+
 =head2 Environment => ArrayRef[L<Paws::ECS::KeyValuePair>]
 
   The environment variables to pass to a container. This parameter maps
 to C<Env> in the Create a container section of the Docker Remote API
 and the C<--env> option to docker run.
+
 
 =head2 Essential => Bool
 
@@ -183,6 +193,7 @@ container is assumed to be essential.
 
 All tasks must have at least one essential container.
 
+
 =head2 ExtraHosts => ArrayRef[L<Paws::ECS::HostEntry>]
 
   A list of hostnames and IP address mappings to append to the
@@ -190,11 +201,13 @@ C</etc/hosts> file on the container. This parameter maps to
 C<ExtraHosts> in the Create a container section of the Docker Remote
 API and the C<--add-host> option to docker run.
 
+
 =head2 Hostname => Str
 
   The hostname to use for your container. This parameter maps to
 C<Hostname> in the Create a container section of the Docker Remote API
 and the C<--hostname> option to docker run.
+
 
 =head2 Image => Str
 
@@ -206,6 +219,7 @@ lowercase), numbers, hyphens, underscores, colons, periods, forward
 slashes, and number signs are allowed. This parameter maps to C<Image>
 in the Create a container section of the Docker Remote API and the
 C<IMAGE> parameter of docker run.
+
 
 =head2 Links => ArrayRef[Str]
 
@@ -223,6 +237,7 @@ Containers that are collocated on a single container instance may be
 able to communicate with each other without requiring links or host
 port mappings. Network isolation is achieved on the container instance
 using security groups and VPC settings.
+
 
 =head2 LogConfiguration => L<Paws::ECS::LogConfiguration>
 
@@ -242,6 +257,7 @@ placed on that instance can use these log configuration options. For
 more information, see Amazon ECS Container Agent Configuration in the
 I<Amazon EC2 Container Service Developer Guide>.
 
+
 =head2 Memory => Int
 
   The number of MiB of memory reserved for the container. If your
@@ -250,11 +266,13 @@ is killed. This parameter maps to C<Memory> in the Create a container
 section of the Docker Remote API and the C<--memory> option to docker
 run.
 
+
 =head2 MountPoints => ArrayRef[L<Paws::ECS::MountPoint>]
 
   The mount points for data volumes in your container. This parameter
 maps to C<Volumes> in the Create a container section of the Docker
 Remote API and the C<--volume> option to docker run.
+
 
 =head2 Name => Str
 
@@ -266,6 +284,7 @@ underscores are allowed. This parameter maps to C<name> in the Create a
 container section of the Docker Remote API and the C<--name> option to
 docker run.
 
+
 =head2 PortMappings => ArrayRef[L<Paws::ECS::PortMapping>]
 
   The list of port mappings for the container. Port mappings allow
@@ -274,6 +293,7 @@ receive traffic. This parameter maps to C<PortBindings> in the Create a
 container section of the Docker Remote API and the C<--publish> option
 to docker run.
 
+
 =head2 Privileged => Bool
 
   When this parameter is true, the container is given elevated privileges
@@ -281,12 +301,14 @@ on the host container instance (similar to the C<root> user). This
 parameter maps to C<Privileged> in the Create a container section of
 the Docker Remote API and the C<--privileged> option to docker run.
 
+
 =head2 ReadonlyRootFilesystem => Bool
 
   When this parameter is true, the container is given read-only access to
 its root file system. This parameter maps to C<ReadonlyRootfs> in the
 Create a container section of the Docker Remote API and the
 C<--read-only> option to C<docker run>.
+
 
 =head2 Ulimits => ArrayRef[L<Paws::ECS::Ulimit>]
 
@@ -299,17 +321,20 @@ check the Docker Remote API version on your container instance, log
 into your container instance and run the following command: C<sudo
 docker version | grep "Server API version">
 
+
 =head2 User => Str
 
   The user name to use inside the container. This parameter maps to
 C<User> in the Create a container section of the Docker Remote API and
 the C<--user> option to docker run.
 
+
 =head2 VolumesFrom => ArrayRef[L<Paws::ECS::VolumeFrom>]
 
   Data volumes to mount from another container. This parameter maps to
 C<VolumesFrom> in the Create a container section of the Docker Remote
 API and the C<--volumes-from> option to docker run.
+
 
 =head2 WorkingDirectory => Str
 

@@ -35,13 +35,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 IdentityId => Str
 
   A unique identifier in the format REGION:GUID.
 
+
 =head2 B<REQUIRED> IdentityPoolId => Str
 
   An identity pool ID in the format REGION:GUID.
+
 
 =head2 B<REQUIRED> Logins => L<Paws::CognitoIdentity::LoginsMap>
 
@@ -54,6 +57,7 @@ which Cognito will refer to your users; you provided this domain while
 creating/updating the identity pool. The developer user identifier is
 an identifier from your backend that uniquely identifies a user. When
 you create an identity pool, you can specify the supported logins.
+
 
 =head2 TokenDuration => Int
 

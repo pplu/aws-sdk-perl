@@ -39,14 +39,17 @@ Note that this does not represent system-wide CPU usage.
 
 =head1 ATTRIBUTES
 
+
 =head2 Architecture => Str
 
   The CPU's architecture, for example x86 or ARM.
+
 
 =head2 Clock => Num
 
   The clock speed of the device's CPU, expressed in hertz (Hz). For
 example, a 1.2 GHz CPU is expressed as 1200000000.
+
 
 =head2 Frequency => Str
 

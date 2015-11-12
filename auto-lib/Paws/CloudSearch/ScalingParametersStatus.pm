@@ -36,9 +36,11 @@ The status and configuration of a search domain's scaling parameters.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Options => L<Paws::CloudSearch::ScalingParameters>
 
   
+
 
 =head2 B<REQUIRED> Status => L<Paws::CloudSearch::OptionStatus>
 

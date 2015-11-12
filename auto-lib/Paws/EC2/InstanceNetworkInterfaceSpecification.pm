@@ -44,6 +44,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AssociatePublicIpAddress => Bool
 
   Indicates whether to assign a public IP address to an instance you
@@ -53,16 +54,19 @@ interface, not an existing one. You cannot specify more than one
 network interface in the request. If launching into a default subnet,
 the default value is C<true>.
 
+
 =head2 DeleteOnTermination => Bool
 
   If set to C<true>, the interface is deleted when the instance is
 terminated. You can specify C<true> only if creating a new network
 interface when launching an instance.
 
+
 =head2 Description => Str
 
   The description of the network interface. Applies only if creating a
 network interface when launching an instance.
+
 
 =head2 DeviceIndex => Int
 
@@ -70,30 +74,36 @@ network interface when launching an instance.
 attachment. If you are specifying a network interface in a RunInstances
 request, you must provide the device index.
 
+
 =head2 Groups => ArrayRef[Str]
 
   The IDs of the security groups for the network interface. Applies only
 if creating a network interface when launching an instance.
 
+
 =head2 NetworkInterfaceId => Str
 
   The ID of the network interface.
+
 
 =head2 PrivateIpAddress => Str
 
   The private IP address of the network interface. Applies only if
 creating a network interface when launching an instance.
 
+
 =head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
 
   One or more private IP addresses to assign to the network interface.
 Only one private IP address can be designated as primary.
+
 
 =head2 SecondaryPrivateIpAddressCount => Int
 
   The number of secondary private IP addresses. You can't specify this
 option and specify more than one private IP address using the private
 IP addresses option.
+
 
 =head2 SubnetId => Str
 

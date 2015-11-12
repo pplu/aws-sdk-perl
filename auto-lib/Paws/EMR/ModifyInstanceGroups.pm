@@ -32,6 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 InstanceGroups => ArrayRef[L<Paws::EMR::InstanceGroupModifyConfig>]
 
   Instance groups to change.

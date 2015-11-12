@@ -18,7 +18,4 @@
 - Objects that can ->Delete, or ->Update, calling service->Update(Id => ...)
 - ResultParser and UnwrappedParser can maybe be fusioned. They're almost the same 
 - for RDS and RedShift lists: adapt code so that botocore jsons don't have to be changed
-
-- shapes with no docu
-- operations that don't start with capitals
-- callclass documentation class names is not correct
+- docu note for experimental / non-supported services

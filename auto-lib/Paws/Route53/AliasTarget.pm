@@ -43,6 +43,7 @@ Sets in the I<Amazon Route 53 Developer Guide>
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DNSName => Str
 
   I<Alias resource record sets only:> The external DNS name associated
@@ -52,6 +53,7 @@ For more information and an example, see Creating Alias Resource Record
 Sets in the I<Amazon Route 53 Developer Guide>
 
 .
+
 
 =head2 B<REQUIRED> EvaluateTargetHealth => Bool
 
@@ -64,6 +66,7 @@ For more information and an example, see Creating Alias Resource Record
 Sets in the I<Amazon Route 53 Developer Guide>
 
 .
+
 
 =head2 B<REQUIRED> HostedZoneId => Str
 

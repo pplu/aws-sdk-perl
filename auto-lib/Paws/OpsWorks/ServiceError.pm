@@ -40,25 +40,31 @@ Describes an AWS OpsWorks service error.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreatedAt => Str
 
   When the error occurred.
+
 
 =head2 InstanceId => Str
 
   The instance ID.
 
+
 =head2 Message => Str
 
   A message that describes the error.
+
 
 =head2 ServiceErrorId => Str
 
   The error ID.
 
+
 =head2 StackId => Str
 
   The stack ID.
+
 
 =head2 Type => Str
 

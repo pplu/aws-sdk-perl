@@ -39,10 +39,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Enabled => Bool
 
   A Boolean value; set to C<true> to activate the subscription, set to
 C<false> to create the subscription but not active it.
+
 
 =head2 EventCategories => ArrayRef[Str]
 
@@ -51,6 +53,7 @@ event notification subscription.
 
 Values: Configuration, Management, Monitoring, Security
 
+
 =head2 Severity => Str
 
   Specifies the Amazon Redshift event severity to be published by the
@@ -58,11 +61,13 @@ event notification subscription.
 
 Values: ERROR, INFO
 
+
 =head2 B<REQUIRED> SnsTopicArn => Str
 
   The Amazon Resource Name (ARN) of the Amazon SNS topic used to transmit
 the event notifications. The ARN is created by Amazon SNS when you
 create a topic and subscribe to it.
+
 
 =head2 SourceIds => ArrayRef[Str]
 
@@ -76,6 +81,7 @@ Example: my-cluster-1, my-cluster-2
 
 Example: my-snapshot-20131010
 
+
 =head2 SourceType => Str
 
   The type of source that will be generating the events. For example, if
@@ -86,6 +92,7 @@ specify a source type in order to specify source IDs.
 
 Valid values: cluster, cluster-parameter-group, cluster-security-group,
 and cluster-snapshot.
+
 
 =head2 B<REQUIRED> SubscriptionName => Str
 
@@ -104,6 +111,7 @@ Constraints:
 =item * Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
+
 
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]

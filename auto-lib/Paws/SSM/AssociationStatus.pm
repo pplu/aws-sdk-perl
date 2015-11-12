@@ -38,17 +38,21 @@ Describes an association status.
 
 =head1 ATTRIBUTES
 
+
 =head2 AdditionalInfo => Str
 
   A user-defined string.
+
 
 =head2 B<REQUIRED> Date => Str
 
   The date when the status changed.
 
+
 =head2 B<REQUIRED> Message => Str
 
   The reason for the status.
+
 
 =head2 B<REQUIRED> Name => Str
 
