@@ -19,6 +19,7 @@ Paws::CloudFormation::GetTemplateSummaryOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Capabilities => ArrayRef[Str]
 
   The capabilities found within the template. Currently, AWS
@@ -27,21 +28,26 @@ template contains IAM resources, you must specify the CAPABILITY_IAM
 value for this parameter when you use the CreateStack or UpdateStack
 actions with your template; otherwise, those actions return an
 InsufficientCapabilities error.
+
 =head2 CapabilitiesReason => Str
 
   The list of resources that generated the values in the C<Capabilities>
 response element.
+
 =head2 Description => Str
 
   The value that is defined in the C<Description> property of the
 template.
+
 =head2 Metadata => Str
 
   The value that is defined for the C<Metadata> property of the template.
+
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::ParameterDeclaration>]
 
   A list of parameter declarations that describe various properties for
 each parameter.
+
 =head2 ResourceTypes => ArrayRef[Str]
 
   A list of all the template resource types that are defined in the
@@ -53,6 +59,7 @@ a specific custom resource), C<AWS::I<service_name>::*> (for all
 resources of a particular AWS service), and
 C<AWS::I<service_name>::I<resource_logical_ID>> (for a specific AWS
 resource).
+
 =head2 Version => Str
 
   The AWS template format version, which identifies the capabilities of

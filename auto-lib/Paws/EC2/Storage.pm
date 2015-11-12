@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 S3 => L<Paws::EC2::S3Storage>
 
   An Amazon S3 storage location.

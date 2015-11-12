@@ -13,6 +13,7 @@ Paws::ES::ListDomainNamesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 DomainNames => ArrayRef[L<Paws::ES::DomainInfo>]
 
   List of Elasticsearch domain names.

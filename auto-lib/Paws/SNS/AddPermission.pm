@@ -35,11 +35,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActionName => ArrayRef[Str]
 
   The action you want to allow for the specified principal(s).
 
 Valid values: any Amazon SNS action name.
+
 
 =head2 B<REQUIRED> AWSAccountId => ArrayRef[Str]
 
@@ -47,9 +49,11 @@ Valid values: any Amazon SNS action name.
 to the specified actions. The users must have AWS accounts, but do not
 need to be signed up for this service.
 
+
 =head2 B<REQUIRED> Label => Str
 
   A unique identifier for the new policy statement.
+
 
 =head2 B<REQUIRED> TopicArn => Str
 

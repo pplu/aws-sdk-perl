@@ -56,18 +56,22 @@ Contains all of the attributes of a specific cache cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoMinorVersionUpgrade => Bool
 
   This parameter is currently disabled.
+
 
 =head2 CacheClusterCreateTime => Str
 
   The date and time when the cache cluster was created.
 
+
 =head2 CacheClusterId => Str
 
   The user-supplied identifier of the cache cluster. This identifier is a
 unique key that identifies a cache cluster.
+
 
 =head2 CacheClusterStatus => Str
 
@@ -76,9 +80,11 @@ I<available>, I<creating>, I<deleted>, I<deleting>,
 I<incompatible-network>, I<modifying>, I<rebooting cache cluster
 nodes>, I<restore-failed>, or I<snapshotting>.
 
+
 =head2 CacheNodes => ArrayRef[L<Paws::ElastiCache::CacheNode>]
 
   A list of cache nodes that are members of the cache cluster.
+
 
 =head2 CacheNodeType => Str
 
@@ -137,41 +143,50 @@ Amazon ElastiCache Product Features and Details and Cache Node
 Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
+
 =head2 CacheParameterGroup => L<Paws::ElastiCache::CacheParameterGroupStatus>
 
   
+
 
 =head2 CacheSecurityGroups => ArrayRef[L<Paws::ElastiCache::CacheSecurityGroupMembership>]
 
   A list of cache security group elements, composed of name and status
 sub-elements.
 
+
 =head2 CacheSubnetGroupName => Str
 
   The name of the cache subnet group associated with the cache cluster.
+
 
 =head2 ClientDownloadLandingPage => Str
 
   The URL of the web page where you can download the latest ElastiCache
 client library.
 
+
 =head2 ConfigurationEndpoint => L<Paws::ElastiCache::Endpoint>
 
   
+
 
 =head2 Engine => Str
 
   The name of the cache engine (I<memcached> or I<redis>) to be used for
 this cache cluster.
 
+
 =head2 EngineVersion => Str
 
   The version of the cache engine version that is used in this cache
 cluster.
 
+
 =head2 NotificationConfiguration => L<Paws::ElastiCache::NotificationConfiguration>
 
   
+
 
 =head2 NumCacheNodes => Int
 
@@ -180,15 +195,18 @@ cluster.
 For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
 
+
 =head2 PendingModifiedValues => L<Paws::ElastiCache::PendingModifiedValues>
 
   
+
 
 =head2 PreferredAvailabilityZone => Str
 
   The name of the Availability Zone in which the cache cluster is located
 or "Multiple" if the cache nodes are located in different Availability
 Zones.
+
 
 =head2 PreferredMaintenanceWindow => Str
 
@@ -217,15 +235,18 @@ is a 60 minute period. Valid values for C<ddd> are:
 
 Example: C<sun:05:00-sun:09:00>
 
+
 =head2 ReplicationGroupId => Str
 
   The replication group to which this cache cluster belongs. If this
 field is empty, the cache cluster is not associated with any
 replication group.
 
+
 =head2 SecurityGroups => ArrayRef[L<Paws::ElastiCache::SecurityGroupMembership>]
 
   A list of VPC Security Groups associated with the cache cluster.
+
 
 =head2 SnapshotRetentionLimit => Int
 
@@ -238,6 +259,7 @@ B<Important>
 
 If the value of SnapshotRetentionLimit is set to zero (0), backups are
 turned off.
+
 
 =head2 SnapshotWindow => Str
 

@@ -12,6 +12,7 @@ Paws::OpsWorks::DescribeRdsDbInstancesResult
 
 =head1 ATTRIBUTES
 
+
 =head2 RdsDbInstances => ArrayRef[L<Paws::OpsWorks::RdsDbInstance>]
 
   An a array of C<RdsDbInstance> objects that describe the instances.

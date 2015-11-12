@@ -37,16 +37,19 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 HsmClientCertificateIdentifier => Str
 
   Specifies the name of the HSM client certificate the Amazon Redshift
 cluster uses to retrieve the data encryption keys stored in an HSM.
+
 
 =head2 HsmConfigurationIdentifier => Str
 
   Specifies the name of the HSM configuration that contains the
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
+
 
 =head2 Status => Str
 

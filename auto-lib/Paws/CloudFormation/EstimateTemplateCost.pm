@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
   A list of C<Parameter> structures that specify input parameters.
+
 
 =head2 TemplateBody => Str
 
@@ -46,6 +48,7 @@ Template Anatomy in the AWS CloudFormation User Guide.)
 
 Conditional: You must pass C<TemplateBody> or C<TemplateURL>. If both
 are passed, only C<TemplateBody> is used.
+
 
 =head2 TemplateURL => Str
 

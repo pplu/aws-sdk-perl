@@ -36,10 +36,12 @@ Uniquely identifies an evaluation result.
 
 =head1 ATTRIBUTES
 
+
 =head2 EvaluationResultQualifier => L<Paws::Config::EvaluationResultQualifier>
 
   Identifies an AWS Config rule used to evaluate an AWS resource, and
 provides the type and ID of the evaluated resource.
+
 
 =head2 OrderingTimestamp => Str
 

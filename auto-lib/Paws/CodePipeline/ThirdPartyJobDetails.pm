@@ -38,13 +38,16 @@ request.
 
 =head1 ATTRIBUTES
 
+
 =head2 Data => L<Paws::CodePipeline::ThirdPartyJobData>
 
   The data to be returned by the third party job worker.
 
+
 =head2 Id => Str
 
   The identifier used to identify the job details in AWS CodePipeline.
+
 
 =head2 Nonce => Str
 

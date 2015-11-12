@@ -38,17 +38,21 @@ AWS credentials for API authentication.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AccessKeyId => Str
 
   The access key ID that identifies the temporary security credentials.
+
 
 =head2 B<REQUIRED> Expiration => Str
 
   The date on which the current credentials expire.
 
+
 =head2 B<REQUIRED> SecretAccessKey => Str
 
   The secret access key that can be used to sign requests.
+
 
 =head2 B<REQUIRED> SessionToken => Str
 

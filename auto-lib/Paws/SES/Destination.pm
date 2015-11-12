@@ -44,13 +44,16 @@ information, see RFC 2047.
 
 =head1 ATTRIBUTES
 
+
 =head2 BccAddresses => ArrayRef[Str]
 
   The BCC: field(s) of the message.
 
+
 =head2 CcAddresses => ArrayRef[Str]
 
   The CC: field(s) of the message.
+
 
 =head2 ToAddresses => ArrayRef[Str]
 

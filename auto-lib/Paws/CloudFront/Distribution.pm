@@ -41,6 +41,7 @@ A distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActiveTrustedSigners => L<Paws::CloudFront::ActiveTrustedSigners>
 
   CloudFront automatically adds this element to the response only if
@@ -53,26 +54,32 @@ associated with the trusted signer's AWS account. If no KeyPairId
 element appears for a Signer, that signer can't create working signed
 URLs.
 
+
 =head2 B<REQUIRED> DistributionConfig => L<Paws::CloudFront::DistributionConfig>
 
   The current configuration information for the distribution.
+
 
 =head2 B<REQUIRED> DomainName => Str
 
   The domain name corresponding to the distribution. For example:
 d604721fxaaqy9.cloudfront.net.
 
+
 =head2 B<REQUIRED> Id => Str
 
   The identifier for the distribution. For example: EDFDVBD632BHDS5.
+
 
 =head2 B<REQUIRED> InProgressInvalidationBatches => Int
 
   The number of invalidation batches currently in progress.
 
+
 =head2 B<REQUIRED> LastModifiedTime => Str
 
   The date and time the distribution was last modified.
+
 
 =head2 B<REQUIRED> Status => Str
 

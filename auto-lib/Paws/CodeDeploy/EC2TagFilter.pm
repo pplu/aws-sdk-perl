@@ -37,9 +37,11 @@ Information about a tag filter.
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => Str
 
   The tag filter key.
+
 
 =head2 Type => Str
 
@@ -54,6 +56,7 @@ Information about a tag filter.
 =item * KEY_AND_VALUE: Key and value.
 
 =back
+
 
 
 =head2 Value => Str

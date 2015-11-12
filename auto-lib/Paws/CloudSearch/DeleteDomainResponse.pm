@@ -13,6 +13,7 @@ Paws::CloudSearch::DeleteDomainResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 DomainStatus => L<Paws::CloudSearch::DomainStatus>
 
   

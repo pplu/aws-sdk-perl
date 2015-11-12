@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ApplyAction => Str
 
   The pending maintenance action to apply to this resource.
+
 
 =head2 B<REQUIRED> OptInType => Str
 
@@ -56,6 +58,7 @@ next maintenance window for the resource.
 requests.
 
 =back
+
 
 
 =head2 B<REQUIRED> ResourceIdentifier => Str

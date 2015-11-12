@@ -38,12 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
@@ -113,6 +115,7 @@ C<volume-size> - The size of the volume, in GiB.
 =back
 
 
+
 =head2 MaxResults => Int
 
   The maximum number of snapshot results returned by C<DescribeSnapshots>
@@ -126,6 +129,7 @@ results are returned. If this parameter is not used, then
 C<DescribeSnapshots> returns all results. You cannot specify this
 parameter and the snapshot IDs parameter in the same request.
 
+
 =head2 NextToken => Str
 
   The C<NextToken> value returned from a previous paginated
@@ -134,14 +138,17 @@ results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<NextToken> value.
 This value is C<null> when there are no more results to return.
 
+
 =head2 OwnerIds => ArrayRef[Str]
 
   Returns the snapshots owned by the specified owner. Multiple owners can
 be specified.
 
+
 =head2 RestorableByUserIds => ArrayRef[Str]
 
   One or more AWS accounts IDs that can create volumes from the snapshot.
+
 
 =head2 SnapshotIds => ArrayRef[Str]
 

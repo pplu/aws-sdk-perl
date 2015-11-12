@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 MaxNumberOfDomains => Int
 
   The maximum number of domain names you want returned. The range is 1 to
 100. The default setting is 100.
+
 
 =head2 NextToken => Str
 

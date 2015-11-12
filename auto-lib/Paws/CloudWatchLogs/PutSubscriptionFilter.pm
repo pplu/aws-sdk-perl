@@ -36,6 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DestinationArn => Str
 
   The ARN of the destination to deliver matching log events to.
@@ -52,18 +53,22 @@ belonging to a different account, for cross-account delivery.
 =back
 
 
+
 =head2 B<REQUIRED> FilterName => Str
 
   A name for the subscription filter.
+
 
 =head2 B<REQUIRED> FilterPattern => Str
 
   A valid CloudWatch Logs filter pattern for subscribing to a filtered
 stream of log events.
 
+
 =head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group to associate the subscription filter with.
+
 
 =head2 RoleArn => Str
 

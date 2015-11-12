@@ -37,13 +37,16 @@ Represents the timeline of the cluster's lifecycle.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreationDateTime => Str
 
   The creation date and time of the cluster.
 
+
 =head2 EndDateTime => Str
 
   The date and time when the cluster was terminated.
+
 
 =head2 ReadyDateTime => Str
 

@@ -36,9 +36,11 @@ Represents information about a gate declaration.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the gate declaration.
+
 
 =head2 B<REQUIRED> Type => Str
 

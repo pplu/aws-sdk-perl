@@ -35,10 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   The identifier of the pipeline for which you want to change
 notification settings.
+
 
 =head2 B<REQUIRED> Notifications => L<Paws::ElasticTranscoder::Notifications>
 

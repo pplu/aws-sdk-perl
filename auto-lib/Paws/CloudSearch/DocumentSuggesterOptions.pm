@@ -37,6 +37,7 @@ Options for a search suggester.
 
 =head1 ATTRIBUTES
 
+
 =head2 FuzzyMatching => Str
 
   The level of fuzziness allowed when suggesting matches for a string:
@@ -44,6 +45,7 @@ C<none>, C<low>, or C<high>. With none, the specified string is treated
 as an exact prefix. With low, suggestions must differ from the
 specified string by no more than one character. With high, suggestions
 can differ by up to two characters. The default is none.
+
 
 =head2 SortExpression => Str
 
@@ -55,6 +57,7 @@ C<_score> value. To sort suggestions using a numeric field or existing
 expression, simply specify the name of the field or expression. If no
 expression is configured for the suggester, the suggestions are sorted
 with the closest matches listed first.
+
 
 =head2 B<REQUIRED> SourceField => Str
 

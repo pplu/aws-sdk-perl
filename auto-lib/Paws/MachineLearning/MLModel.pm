@@ -53,6 +53,7 @@ the C<MLModel>.
 
 =head1 ATTRIBUTES
 
+
 =head2 Algorithm => Str
 
   The algorithm used to train the C<MLModel>. The following algorithm is
@@ -66,10 +67,12 @@ minimize the gradient of the loss function.
 =back
 
 
+
 =head2 CreatedAt => Str
 
   The time that the C<MLModel> was created. The time is expressed in
 epoch time.
+
 
 =head2 CreatedByIamUser => Str
 
@@ -77,28 +80,34 @@ epoch time.
 type can be either an AWS root account or an AWS Identity and Access
 Management (IAM) user account.
 
+
 =head2 EndpointInfo => L<Paws::MachineLearning::RealtimeEndpointInfo>
 
   The current endpoint of the C<MLModel>.
+
 
 =head2 InputDataLocationS3 => Str
 
   The location of the data file or directory in Amazon Simple Storage
 Service (Amazon S3).
 
+
 =head2 LastUpdatedAt => Str
 
   The time of the most recent edit to the C<MLModel>. The time is
 expressed in epoch time.
+
 
 =head2 Message => Str
 
   A description of the most recent details about accessing the
 C<MLModel>.
 
+
 =head2 MLModelId => Str
 
   The ID assigned to the C<MLModel> at creation.
+
 
 =head2 MLModelType => Str
 
@@ -119,22 +128,27 @@ example, "Is this a HIGH, LOW or MEDIUM risk trade?".
 =back
 
 
+
 =head2 Name => Str
 
   A user-supplied name or description of the C<MLModel>.
 
+
 =head2 ScoreThreshold => Num
 
   
+
 
 =head2 ScoreThresholdLastUpdatedAt => Str
 
   The time of the most recent edit to the C<ScoreThreshold>. The time is
 expressed in epoch time.
 
+
 =head2 SizeInBytes => Int
 
   
+
 
 =head2 Status => Str
 
@@ -159,10 +173,12 @@ usable.
 =back
 
 
+
 =head2 TrainingDataSourceId => Str
 
   The ID of the training C<DataSource>. The CreateMLModel operation uses
 the C<TrainingDataSourceId>.
+
 
 =head2 TrainingParameters => L<Paws::MachineLearning::TrainingParameters>
 

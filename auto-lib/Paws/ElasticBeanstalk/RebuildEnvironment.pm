@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 EnvironmentId => Str
 
   The ID of the environment to rebuild.
@@ -40,6 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Condition: You must specify either this or an EnvironmentName, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
+
 
 =head2 EnvironmentName => Str
 

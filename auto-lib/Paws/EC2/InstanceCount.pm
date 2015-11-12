@@ -36,10 +36,12 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 InstanceCount => Int
 
   The number of listed Reserved Instances in the state specified by the
 C<state>.
+
 
 =head2 State => Str
 

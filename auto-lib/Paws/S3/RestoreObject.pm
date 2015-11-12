@@ -24,18 +24,23 @@ Paws::S3::RestoreObjectOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bucket => Str
 
   
+
 =head2 B<REQUIRED> Key => Str
 
   
+
 =head2 RequestPayer => Str
 
   
+
 =head2 RestoreRequest => L<Paws::S3::RestoreRequest>
 
   
+
 =head2 VersionId => Str
 
   

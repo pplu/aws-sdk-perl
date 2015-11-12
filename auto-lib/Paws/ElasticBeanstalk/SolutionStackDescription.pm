@@ -36,9 +36,11 @@ Describes the solution stack.
 
 =head1 ATTRIBUTES
 
+
 =head2 PermittedFileTypes => ArrayRef[Str]
 
   The permitted file types allowed for a solution stack.
+
 
 =head2 SolutionStackName => Str
 

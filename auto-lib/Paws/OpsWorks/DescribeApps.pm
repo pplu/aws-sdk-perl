@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AppIds => ArrayRef[Str]
 
   An array of app IDs for the apps to be described. If you use this
 parameter, C<DescribeApps> returns a description of the specified apps.
 Otherwise, it returns a description of every app.
+
 
 =head2 StackId => Str
 

@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Error => L<Paws::EC2::CancelSpotFleetRequestsError>
 
   The error.
+
 
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 

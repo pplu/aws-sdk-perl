@@ -14,9 +14,11 @@ Paws::IoT::ListPrincipalThingsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   A token used to retrieve the next value.
+
 =head2 Things => ArrayRef[Str]
 
   The things.

@@ -37,13 +37,16 @@ Describes a subnet.
 
 =head1 ATTRIBUTES
 
+
 =head2 SubnetAvailabilityZone => L<Paws::RedShift::AvailabilityZone>
 
   
 
+
 =head2 SubnetIdentifier => Str
 
   The identifier of the subnet.
+
 
 =head2 SubnetStatus => Str
 

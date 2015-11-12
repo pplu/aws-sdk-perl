@@ -41,9 +41,11 @@ and Shift_JIS.
 
 =head1 ATTRIBUTES
 
+
 =head2 Charset => Str
 
   The character set of the content.
+
 
 =head2 B<REQUIRED> Data => Str
 

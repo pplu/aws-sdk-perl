@@ -36,38 +36,47 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
 
   
+
 
 =head2 Contents => ArrayRef[L<Paws::S3::Object>]
 
   
 
+
 =head2 Delimiter => Str
 
   
 
+
 =head2 EncodingType => Str
 
   Encoding type used by Amazon S3 to encode object keys in the response.
+
 
 =head2 IsTruncated => Bool
 
   A flag that indicates whether or not Amazon S3 returned all of the
 results that satisfied the search criteria.
 
+
 =head2 Marker => Str
 
   
+
 
 =head2 MaxKeys => Int
 
   
 
+
 =head2 Name => Str
 
   
+
 
 =head2 NextMarker => Str
 
@@ -79,6 +88,7 @@ you have delimiter request parameter specified. If response does not
 include the NextMaker and it is truncated, you can use the value of the
 last Key in the response as the marker in the subsequent request to get
 the next set of object keys.
+
 
 =head2 Prefix => Str
 

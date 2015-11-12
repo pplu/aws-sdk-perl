@@ -38,15 +38,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Attribute => Str
 
   The snapshot attribute to modify.
 
 Only volume creation permissions may be modified at the customer level.
 
+
 =head2 CreateVolumePermission => L<Paws::EC2::CreateVolumePermissionModifications>
 
   A JSON representation of the snapshot attribute modification.
+
 
 =head2 DryRun => Bool
 
@@ -55,17 +58,21 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 GroupNames => ArrayRef[Str]
 
   The group to modify for the snapshot.
+
 
 =head2 OperationType => Str
 
   The type of operation to perform to the attribute.
 
+
 =head2 B<REQUIRED> SnapshotId => Str
 
   The ID of the snapshot.
+
 
 =head2 UserIds => ArrayRef[Str]
 

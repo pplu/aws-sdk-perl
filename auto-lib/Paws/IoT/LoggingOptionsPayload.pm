@@ -36,9 +36,11 @@ Describes the logging options payload.
 
 =head1 ATTRIBUTES
 
+
 =head2 LogLevel => Str
 
   The logging level.
+
 
 =head2 B<REQUIRED> RoleArn => Str
 

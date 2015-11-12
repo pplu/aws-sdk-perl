@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SSHPublicKeyBody => Str
 
   The SSH public key. The public key must be encoded in ssh-rsa format or
 PEM format.
+
 
 =head2 B<REQUIRED> UserName => Str
 

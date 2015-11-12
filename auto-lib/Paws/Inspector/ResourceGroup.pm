@@ -41,9 +41,11 @@ DescribeResourceGroup action.
 
 =head1 ATTRIBUTES
 
+
 =head2 ResourceGroupArn => Str
 
   The ARN of the resource group.
+
 
 =head2 ResourceGroupTags => Str
 

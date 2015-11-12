@@ -37,10 +37,12 @@ actions are taken.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> EstimatedMonthlySavings => Num
 
   The estimated monthly savings that might be realized if the recommended
 actions are taken.
+
 
 =head2 B<REQUIRED> EstimatedPercentMonthlySavings => Num
 

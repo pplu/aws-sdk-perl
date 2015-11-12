@@ -60,9 +60,11 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
+
 =head2 Details => Str
 
   I<Optional.> Details of the failure.
+
 
 =head2 Reason => Str
 

@@ -34,14 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Password => Str
 
   The new password for the user.
+
 
 =head2 PasswordResetRequired => Bool
 
   Specifies whether the user is required to set a new password on next
 sign-in.
+
 
 =head2 B<REQUIRED> UserName => Str
 

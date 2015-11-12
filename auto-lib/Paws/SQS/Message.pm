@@ -41,6 +41,7 @@ An Amazon SQS message.
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::SQS::AttributeMap>
 
   C<SenderId>, C<SentTimestamp>, C<ApproximateReceiveCount>, and/or
@@ -48,13 +49,16 @@ C<ApproximateFirstReceiveTimestamp>. C<SentTimestamp> and
 C<ApproximateFirstReceiveTimestamp> are each returned as an integer
 representing the epoch time in milliseconds.
 
+
 =head2 Body => Str
 
   The message's contents (not URL-encoded).
 
+
 =head2 MD5OfBody => Str
 
   An MD5 digest of the non-URL-encoded message body string.
+
 
 =head2 MD5OfMessageAttributes => Str
 
@@ -64,15 +68,18 @@ Amazon SQS first URL decodes the message before creating the MD5
 digest. For information about MD5, go to
 http://www.faqs.org/rfcs/rfc1321.html.
 
+
 =head2 MessageAttributes => L<Paws::SQS::MessageAttributeMap>
 
   Each message attribute consists of a Name, Type, and Value. For more
 information, see Message Attribute Items.
 
+
 =head2 MessageId => Str
 
   A unique identifier for the message. Message IDs are considered unique
 across all AWS accounts for an extended period of time.
+
 
 =head2 ReceiptHandle => Str
 

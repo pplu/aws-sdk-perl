@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 BackupRetentionPeriod => Int
 
   The number of days to retain automated backups. Setting this parameter
@@ -49,6 +50,7 @@ Constraints:
 =item * Must be a value from 0 to 8
 
 =back
+
 
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
@@ -70,6 +72,7 @@ Constraints:
 =back
 
 Example: C<mydbinstance>
+
 
 =head2 PreferredBackupWindow => Str
 

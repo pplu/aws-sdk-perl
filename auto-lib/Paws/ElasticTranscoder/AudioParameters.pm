@@ -40,6 +40,7 @@ Parameters required for transcoding audio.
 
 =head1 ATTRIBUTES
 
+
 =head2 AudioPackingMode => Str
 
   The method of organizing audio channels and tracks. Use
@@ -167,10 +168,12 @@ eight tracks in all
 =back
 
 
+
 =head2 BitRate => Str
 
   The bit rate of the audio stream in the output file, in
 kilobits/second. Enter an integer between 64 and 320, inclusive.
+
 
 =head2 Channels => Str
 
@@ -208,10 +211,12 @@ C<Audio:AudioPackingMode.>
 For more information about how Elastic Transcoder organizes channels
 and tracks, see C<Audio:AudioPackingMode>.
 
+
 =head2 Codec => Str
 
   The audio codec for the output file. Valid values include C<aac>,
 C<flac>, C<mp2>, C<mp3>, C<pcm>, and C<vorbis>.
+
 
 =head2 CodecOptions => L<Paws::ElasticTranscoder::AudioCodecOptions>
 
@@ -222,6 +227,7 @@ C<auto>, C<AAC-LC>, C<HE-AAC>, C<HE-AACv2>
 
 If you specify C<auto>, Elastic Transcoder chooses a profile based on
 the bit rate of the output file.
+
 
 =head2 SampleRate => Str
 

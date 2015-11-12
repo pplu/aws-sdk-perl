@@ -40,9 +40,11 @@ C<GetSampledRequests>.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of one of the headers in the sampled web request.
+
 
 =head2 Value => Str
 

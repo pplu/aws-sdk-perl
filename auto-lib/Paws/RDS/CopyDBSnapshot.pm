@@ -35,10 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CopyTags => Bool
 
   True to copy all tags from the source DB snapshot to the target DB
 snapshot; otherwise false. The default is false.
+
 
 =head2 B<REQUIRED> SourceDBSnapshotIdentifier => Str
 
@@ -64,9 +66,11 @@ Example: C<rds:mydb-2012-04-02-00-01>
 Example:
 C<arn:aws:rds:rr-regn-1:123456789012:snapshot:mysql-instance1-snapshot-20130805>
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
+
 
 =head2 B<REQUIRED> TargetDBSnapshotIdentifier => Str
 

@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AttributeKeys => ArrayRef[Str]
 
   The array of attribute keys that you want to remove from specified
 findings.
+
 
 =head2 FindingArns => ArrayRef[Str]
 

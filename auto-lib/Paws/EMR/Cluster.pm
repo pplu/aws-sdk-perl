@@ -51,14 +51,17 @@ The detailed description of the cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 Applications => ArrayRef[L<Paws::EMR::Application>]
 
   The applications installed on this cluster.
+
 
 =head2 AutoTerminate => Bool
 
   Specifies whether the cluster should terminate after completing all
 steps.
+
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
@@ -66,26 +69,32 @@ steps.
 
 The list of Configurations supplied to the EMR cluster.
 
+
 =head2 Ec2InstanceAttributes => L<Paws::EMR::Ec2InstanceAttributes>
 
   
 
+
 =head2 Id => Str
 
   The unique identifier for the cluster.
+
 
 =head2 LogUri => Str
 
   The path to the Amazon S3 location where logs for this cluster are
 stored.
 
+
 =head2 MasterPublicDnsName => Str
 
   The public DNS name of the master EC2 instance.
 
+
 =head2 Name => Str
 
   The name of the cluster.
+
 
 =head2 NormalizedInstanceHours => Int
 
@@ -96,37 +105,45 @@ instance that is roughly four times more expensive would result in the
 normalized instance hours being incremented by four. This result is
 only an approximation and does not reflect the actual billing rate.
 
+
 =head2 ReleaseLabel => Str
 
   The release label for the Amazon EMR release. For Amazon EMR 3.x and
 2.x AMIs, use amiVersion instead instead of ReleaseLabel.
 
+
 =head2 RequestedAmiVersion => Str
 
   The AMI version requested for this cluster.
 
+
 =head2 RunningAmiVersion => Str
 
   The AMI version running on this cluster.
+
 
 =head2 ServiceRole => Str
 
   The IAM role that will be assumed by the Amazon EMR service to access
 AWS resources on your behalf.
 
+
 =head2 Status => L<Paws::EMR::ClusterStatus>
 
   The current status details about the cluster.
 
+
 =head2 Tags => ArrayRef[L<Paws::EMR::Tag>]
 
   A list of tags associated with a cluster.
+
 
 =head2 TerminationProtected => Bool
 
   Indicates whether Amazon EMR will lock the cluster to prevent the EC2
 instances from being terminated by an API call or user intervention, or
 in the event of a cluster error.
+
 
 =head2 VisibleToAllUsers => Bool
 

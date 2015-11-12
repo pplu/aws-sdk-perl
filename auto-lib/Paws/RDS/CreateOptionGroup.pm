@@ -36,19 +36,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> EngineName => Str
 
   Specifies the name of the engine that this option group should be
 associated with.
+
 
 =head2 B<REQUIRED> MajorEngineVersion => Str
 
   Specifies the major version of the engine that this option group should
 be associated with.
 
+
 =head2 B<REQUIRED> OptionGroupDescription => Str
 
   The description of the option group.
+
 
 =head2 B<REQUIRED> OptionGroupName => Str
 
@@ -67,6 +71,7 @@ Constraints:
 =back
 
 Example: C<myoptiongroup>
+
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 

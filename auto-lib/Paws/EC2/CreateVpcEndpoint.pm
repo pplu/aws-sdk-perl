@@ -37,10 +37,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClientToken => Str
 
   Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. For more information, see How to Ensure Idempotency.
+
 
 =head2 DryRun => Bool
 
@@ -49,6 +51,7 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 PolicyDocument => Str
 
   A policy to attach to the endpoint that controls access to the service.
@@ -56,15 +59,18 @@ The policy must be in valid JSON format. If this parameter is not
 specified, we attach a default policy that allows full access to the
 service.
 
+
 =head2 RouteTableIds => ArrayRef[Str]
 
   One or more route table IDs.
+
 
 =head2 B<REQUIRED> ServiceName => Str
 
   The AWS service name, in the form
 C<com.amazonaws.I<region>.I<service>>. To get a list of available
 services, use the DescribeVpcEndpointServices request.
+
 
 =head2 B<REQUIRED> VpcId => Str
 

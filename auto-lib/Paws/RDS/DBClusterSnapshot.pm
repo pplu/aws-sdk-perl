@@ -61,68 +61,83 @@ DescribeDBClusterSnapshots action.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllocatedStorage => Int
 
   Specifies the allocated storage size in gigabytes (GB).
+
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
   Provides the list of EC2 Availability Zones that instances in the DB
 cluster snapshot can be restored in.
 
+
 =head2 ClusterCreateTime => Str
 
   Specifies the time when the DB cluster was created, in Universal
 Coordinated Time (UTC).
+
 
 =head2 DBClusterIdentifier => Str
 
   Specifies the DB cluster identifier of the DB cluster that this DB
 cluster snapshot was created from.
 
+
 =head2 DBClusterSnapshotIdentifier => Str
 
   Specifies the identifier for the DB cluster snapshot.
 
+
 =head2 Engine => Str
 
   Specifies the name of the database engine.
+
 
 =head2 EngineVersion => Str
 
   Provides the version of the database engine for this DB cluster
 snapshot.
 
+
 =head2 LicenseModel => Str
 
   Provides the license model information for this DB cluster snapshot.
 
+
 =head2 MasterUsername => Str
 
   Provides the master username for the DB cluster snapshot.
+
 
 =head2 PercentProgress => Int
 
   Specifies the percentage of the estimated data that has been
 transferred.
 
+
 =head2 Port => Int
 
   Specifies the port that the DB cluster was listening on at the time of
 the snapshot.
+
 
 =head2 SnapshotCreateTime => Str
 
   Provides the time when the snapshot was taken, in Universal Coordinated
 Time (UTC).
 
+
 =head2 SnapshotType => Str
 
   Provides the type of the DB cluster snapshot.
 
+
 =head2 Status => Str
 
   Specifies the status of this DB cluster snapshot.
+
 
 =head2 VpcId => Str
 

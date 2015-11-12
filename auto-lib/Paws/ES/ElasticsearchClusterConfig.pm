@@ -41,27 +41,33 @@ and number of instances.
 
 =head1 ATTRIBUTES
 
+
 =head2 DedicatedMasterCount => Int
 
   Total number of dedicated master nodes, active and on standby, for the
 cluster.
+
 
 =head2 DedicatedMasterEnabled => Bool
 
   A boolean value to indicate whether a dedicated master node is enabled.
 See About Dedicated Master Nodes for more information.
 
+
 =head2 DedicatedMasterType => Str
 
   The instance type for a dedicated master node.
+
 
 =head2 InstanceCount => Int
 
   The number of instances in the specified domain cluster.
 
+
 =head2 InstanceType => Str
 
   The instance type for an Elasticsearch cluster.
+
 
 =head2 ZoneAwarenessEnabled => Bool
 

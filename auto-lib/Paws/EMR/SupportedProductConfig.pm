@@ -38,9 +38,11 @@ corresponding installation script as bootstrap action arguments.
 
 =head1 ATTRIBUTES
 
+
 =head2 Args => ArrayRef[Str]
 
   The list of user-supplied arguments.
+
 
 =head2 Name => Str
 

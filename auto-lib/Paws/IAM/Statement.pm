@@ -42,17 +42,21 @@ C<EvaluationResult> type.
 
 =head1 ATTRIBUTES
 
+
 =head2 EndPosition => L<Paws::IAM::Position>
 
   The row and column of the end of a C<Statement> in an IAM policy.
+
 
 =head2 SourcePolicyId => Str
 
   The identifier of the policy that was provided as an input.
 
+
 =head2 SourcePolicyType => Str
 
   The type of the policy.
+
 
 =head2 StartPosition => L<Paws::IAM::Position>
 

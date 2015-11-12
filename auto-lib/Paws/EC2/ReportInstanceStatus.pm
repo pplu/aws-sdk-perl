@@ -38,9 +38,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   Descriptive text about the health state of your instance.
+
 
 =head2 DryRun => Bool
 
@@ -49,13 +51,16 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 EndTime => Str
 
   The time at which the reported instance health state ended.
 
+
 =head2 B<REQUIRED> Instances => ArrayRef[Str]
 
   One or more instances.
+
 
 =head2 B<REQUIRED> ReasonCodes => ArrayRef[Str]
 
@@ -107,9 +112,11 @@ C<other>: [explain using the description parameter]
 =back
 
 
+
 =head2 StartTime => Str
 
   The time at which the reported instance health state began.
+
 
 =head2 B<REQUIRED> Status => Str
 

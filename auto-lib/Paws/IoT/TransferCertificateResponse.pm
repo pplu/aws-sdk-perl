@@ -13,6 +13,7 @@ Paws::IoT::TransferCertificateResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 TransferredCertificateArn => Str
 
   The ARN of the certificate.

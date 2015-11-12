@@ -35,15 +35,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 SequenceNumber => Str
 
   The sequence number of a stream record in the shard from which to start
 reading.
 
+
 =head2 B<REQUIRED> ShardId => Str
 
   The identifier of the shard. The iterator will be returned for this
 shard ID.
+
 
 =head2 B<REQUIRED> ShardIteratorType => Str
 
@@ -75,6 +78,7 @@ C<LATEST> - Start reading just after the most recent stream record in
 the shard, so that you always read the most recent data in the shard.
 
 =back
+
 
 
 =head2 B<REQUIRED> StreamArn => Str

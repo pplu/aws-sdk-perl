@@ -45,18 +45,22 @@ Provides details of the C<ActivityTaskScheduled> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActivityId => Str
 
   The unique ID of the activity task.
+
 
 =head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
 
   The type of the activity task.
 
+
 =head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks. This data is not sent to the activity.
+
 
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 
@@ -64,6 +68,7 @@ in subsequent workflow tasks. This data is not sent to the activity.
 decision that resulted in the scheduling of this activity task. This
 information can be useful for diagnosing problems by tracing back the
 chain of events leading up to this event.
+
 
 =head2 HeartbeatTimeout => Str
 
@@ -73,27 +78,33 @@ is exceeded, the activity task is automatically timed out. If the
 worker subsequently attempts to record a heartbeat or return a result,
 it will be ignored.
 
+
 =head2 Input => Str
 
   The input provided to the activity task.
 
+
 =head2 ScheduleToCloseTimeout => Str
 
   The maximum amount of time for this activity task.
+
 
 =head2 ScheduleToStartTimeout => Str
 
   The maximum amount of time the activity task can wait to be assigned to
 a worker.
 
+
 =head2 StartToCloseTimeout => Str
 
   The maximum amount of time a worker may take to process the activity
 task.
 
+
 =head2 B<REQUIRED> TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   The task list in which the activity task has been scheduled.
+
 
 =head2 TaskPriority => Str
 

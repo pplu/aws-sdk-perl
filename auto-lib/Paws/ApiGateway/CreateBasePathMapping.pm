@@ -37,6 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 BasePath => Str
 
   The base path name that callers of the API must provide as part of the
@@ -44,13 +45,16 @@ URL after the domain name. This value must be unique for all of the
 mappings across a single API. Leave this blank if you do not want
 callers to specify a base path name after the domain name.
 
+
 =head2 B<REQUIRED> DomainName => Str
 
   The domain name of the BasePathMapping resource to create.
 
+
 =head2 B<REQUIRED> RestApiId => Str
 
   The name of the API that you want to apply this mapping to.
+
 
 =head2 Stage => Str
 

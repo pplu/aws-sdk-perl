@@ -12,6 +12,7 @@ Paws::MachineLearning::DeleteBatchPredictionOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 BatchPredictionId => Str
 
   A user-supplied ID that uniquely identifies the C<BatchPrediction>.

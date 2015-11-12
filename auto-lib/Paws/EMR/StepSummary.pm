@@ -39,22 +39,27 @@ The summary of the cluster step.
 
 =head1 ATTRIBUTES
 
+
 =head2 ActionOnFailure => Str
 
   This specifies what action to take when the cluster step fails.
 Possible values are TERMINATE_CLUSTER, CANCEL_AND_WAIT, and CONTINUE.
 
+
 =head2 Config => L<Paws::EMR::HadoopStepConfig>
 
   The Hadoop job configuration of the cluster step.
+
 
 =head2 Id => Str
 
   The identifier of the cluster step.
 
+
 =head2 Name => Str
 
   The name of the cluster step.
+
 
 =head2 Status => L<Paws::EMR::StepStatus>
 

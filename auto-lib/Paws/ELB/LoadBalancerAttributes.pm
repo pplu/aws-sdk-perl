@@ -39,6 +39,7 @@ The attributes for a load balancer.
 
 =head1 ATTRIBUTES
 
+
 =head2 AccessLog => L<Paws::ELB::AccessLog>
 
   If enabled, the load balancer captures detailed information of all
@@ -48,9 +49,11 @@ specify.
 For more information, see Enable Access Logs in the I<Elastic Load
 Balancing Developer Guide>.
 
+
 =head2 AdditionalAttributes => ArrayRef[L<Paws::ELB::AdditionalAttribute>]
 
   This parameter is reserved.
+
 
 =head2 ConnectionDraining => L<Paws::ELB::ConnectionDraining>
 
@@ -61,6 +64,7 @@ unhealthy back-end instance.
 For more information, see Enable Connection Draining in the I<Elastic
 Load Balancing Developer Guide>.
 
+
 =head2 ConnectionSettings => L<Paws::ELB::ConnectionSettings>
 
   If enabled, the load balancer allows the connections to remain idle (no
@@ -70,6 +74,7 @@ By default, Elastic Load Balancing maintains a 60-second idle
 connection timeout for both front-end and back-end connections of your
 load balancer. For more information, see Configure Idle Connection
 Timeout in the I<Elastic Load Balancing Developer Guide>.
+
 
 =head2 CrossZoneLoadBalancing => L<Paws::ELB::CrossZoneLoadBalancing>
 

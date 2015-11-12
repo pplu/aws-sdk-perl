@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SourceIdentifier => Str
 
   The source identifier to be removed from the subscription, such as the
 B<DB instance identifier> for a DB instance or the name of a security
 group.
+
 
 =head2 B<REQUIRED> SubscriptionName => Str
 

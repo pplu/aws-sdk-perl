@@ -35,19 +35,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::SNS::MapStringToString>
 
   For a list of attributes, see SetEndpointAttributes.
+
 
 =head2 CustomUserData => Str
 
   Arbitrary user data to associate with the endpoint. Amazon SNS does not
 use this data. The data must be in UTF-8 format and less than 2KB.
 
+
 =head2 B<REQUIRED> PlatformApplicationArn => Str
 
   PlatformApplicationArn returned from CreatePlatformApplication is used
 to create a an endpoint.
+
 
 =head2 B<REQUIRED> Token => Str
 

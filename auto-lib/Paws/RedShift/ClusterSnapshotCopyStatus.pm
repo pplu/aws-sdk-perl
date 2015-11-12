@@ -38,15 +38,18 @@ for cross-region snapshot copy.
 
 =head1 ATTRIBUTES
 
+
 =head2 DestinationRegion => Str
 
   The destination region that snapshots are automatically copied to when
 cross-region snapshot copy is enabled.
 
+
 =head2 RetentionPeriod => Int
 
   The number of days that automated snapshots are retained in the
 destination region after they are copied from a source region.
+
 
 =head2 SnapshotCopyGrantName => Str
 

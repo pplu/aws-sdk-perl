@@ -45,15 +45,18 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Architecture => Str
 
   The architecture of the virtual machine.
 
 Valid values: C<i386> | C<x86_64>
 
+
 =head2 Description => Str
 
   A description of the import task.
+
 
 =head2 Hypervisor => Str
 
@@ -61,34 +64,42 @@ Valid values: C<i386> | C<x86_64>
 
 Valid values: C<xen>
 
+
 =head2 ImageId => Str
 
   The ID of the Amazon Machine Image (AMI) of the imported virtual
 machine.
 
+
 =head2 ImportTaskId => Str
 
   The ID of the import image task.
+
 
 =head2 LicenseType => Str
 
   The license type of the virtual machine.
 
+
 =head2 Platform => Str
 
   The description string for the import image task.
+
 
 =head2 Progress => Str
 
   The percentage of progress of the import image task.
 
+
 =head2 SnapshotDetails => ArrayRef[L<Paws::EC2::SnapshotDetail>]
 
   Information about the snapshots.
 
+
 =head2 Status => Str
 
   A brief status for the import image task.
+
 
 =head2 StatusMessage => Str
 

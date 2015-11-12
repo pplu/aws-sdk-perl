@@ -12,6 +12,7 @@ Paws::DeviceFarm::GetSuiteResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Suite => L<Paws::DeviceFarm::Suite>
 
   

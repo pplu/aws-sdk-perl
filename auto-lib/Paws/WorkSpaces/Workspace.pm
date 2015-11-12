@@ -47,57 +47,70 @@ Contains information about a WorkSpace.
 
 =head1 ATTRIBUTES
 
+
 =head2 BundleId => Str
 
   The identifier of the bundle that the WorkSpace was created from.
 
+
 =head2 ComputerName => Str
 
   The name of the WorkSpace as seen by the operating system.
+
 
 =head2 DirectoryId => Str
 
   The identifier of the AWS Directory Service directory that the
 WorkSpace belongs to.
 
+
 =head2 ErrorCode => Str
 
   If the WorkSpace could not be created, this contains the error code.
+
 
 =head2 ErrorMessage => Str
 
   If the WorkSpace could not be created, this contains a textual error
 message that describes the failure.
 
+
 =head2 IpAddress => Str
 
   The IP address of the WorkSpace.
+
 
 =head2 RootVolumeEncryptionEnabled => Bool
 
   Specifies whether the data stored on the root volume, or C: drive, is
 encrypted.
 
+
 =head2 State => Str
 
   The operational state of the WorkSpace.
+
 
 =head2 SubnetId => Str
 
   The identifier of the subnet that the WorkSpace is in.
 
+
 =head2 UserName => Str
 
   The user that the WorkSpace is assigned to.
+
 
 =head2 UserVolumeEncryptionEnabled => Bool
 
   Specifies whether the data stored on the user volume, or D: drive, is
 encrypted.
 
+
 =head2 VolumeEncryptionKey => Str
 
   The KMS key used to encrypt data stored on your WorkSpace.
+
 
 =head2 WorkspaceId => Str
 

@@ -36,10 +36,12 @@ Configuration of the script to run during a bootstrap action.
 
 =head1 ATTRIBUTES
 
+
 =head2 Args => ArrayRef[Str]
 
   A list of command line arguments to pass to the bootstrap action
 script.
+
 
 =head2 B<REQUIRED> Path => Str
 

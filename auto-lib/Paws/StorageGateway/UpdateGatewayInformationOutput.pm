@@ -13,9 +13,11 @@ Paws::StorageGateway::UpdateGatewayInformationOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 GatewayARN => Str
 
   
+
 =head2 GatewayName => Str
 
   

@@ -39,9 +39,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Audio => L<Paws::ElasticTranscoder::AudioParameters>
 
   A section of the request body that specifies the audio parameters.
+
 
 =head2 B<REQUIRED> Container => Str
 
@@ -49,19 +51,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 C<flv>, C<fmp4>, C<gif>, C<mp3>, C<mp4>, C<mpg>, C<mxf>, C<oga>,
 C<ogg>, C<ts>, and C<webm>.
 
+
 =head2 Description => Str
 
   A description of the preset.
+
 
 =head2 B<REQUIRED> Name => Str
 
   The name of the preset. We recommend that the name be unique within the
 AWS account, but uniqueness is not enforced.
 
+
 =head2 Thumbnails => L<Paws::ElasticTranscoder::Thumbnails>
 
   A section of the request body that specifies the thumbnail parameters,
 if any.
+
 
 =head2 Video => L<Paws::ElasticTranscoder::VideoParameters>
 

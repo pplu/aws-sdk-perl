@@ -13,9 +13,11 @@ Paws::SSM::GetDocumentResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Content => Str
 
   The contents of the SSM document.
+
 =head2 Name => Str
 
   The name of the SSM document.

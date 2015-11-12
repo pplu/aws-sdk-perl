@@ -40,25 +40,31 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Associations => ArrayRef[L<Paws::EC2::NetworkAclAssociation>]
 
   Any associations between the network ACL and one or more subnets
+
 
 =head2 Entries => ArrayRef[L<Paws::EC2::NetworkAclEntry>]
 
   One or more entries (rules) in the network ACL.
 
+
 =head2 IsDefault => Bool
 
   Indicates whether this is the default network ACL for the VPC.
+
 
 =head2 NetworkAclId => Str
 
   The ID of the network ACL.
 
+
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the network ACL.
+
 
 =head2 VpcId => Str
 

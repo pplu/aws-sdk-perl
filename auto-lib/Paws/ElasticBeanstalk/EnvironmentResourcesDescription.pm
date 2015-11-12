@@ -36,6 +36,7 @@ not live data.
 
 =head1 ATTRIBUTES
 
+
 =head2 LoadBalancer => L<Paws::ElasticBeanstalk::LoadBalancerDescription>
 
   Describes the LoadBalancer.

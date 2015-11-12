@@ -35,9 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> BasePath => Str
 
   The base path name of the BasePathMapping resource to delete.
+
 
 =head2 B<REQUIRED> DomainName => Str
 

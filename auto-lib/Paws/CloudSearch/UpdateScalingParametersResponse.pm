@@ -13,6 +13,7 @@ Paws::CloudSearch::UpdateScalingParametersResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ScalingParameters => L<Paws::CloudSearch::ScalingParametersStatus>
 
   

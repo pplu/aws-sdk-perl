@@ -55,21 +55,26 @@ DescribeDBSubnetGroups action.
 
 =head1 ATTRIBUTES
 
+
 =head2 DBSubnetGroupDescription => Str
 
   Provides the description of the DB subnet group.
+
 
 =head2 DBSubnetGroupName => Str
 
   Specifies the name of the DB subnet group.
 
+
 =head2 SubnetGroupStatus => Str
 
   Provides the status of the DB subnet group.
 
+
 =head2 Subnets => ArrayRef[L<Paws::RDS::Subnet>]
 
   Contains a list of Subnet elements.
+
 
 =head2 VpcId => Str
 

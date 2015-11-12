@@ -35,6 +35,7 @@ Information about the C<CrossZoneLoadBalancing> attribute.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Enabled => Bool
 
   Specifies whether cross-zone load balancing is enabled for the load

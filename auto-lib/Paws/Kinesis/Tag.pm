@@ -36,10 +36,12 @@ Metadata assigned to the stream, consisting of a key-value pair.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   A unique identifier for the tag. Maximum length: 128 characters. Valid
 characters: Unicode letters, digits, white space, _ . / = + - % @
+
 
 =head2 Value => Str
 

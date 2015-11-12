@@ -38,6 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Constraints => L<Paws::KMS::GrantConstraints>
 
   The conditions under which the operations permitted by the grant are
@@ -47,6 +48,7 @@ You can use this value to allow the operations permitted by the grant
 only when a specified encryption context is present. For more
 information, see Encryption Context in the I<AWS Key Management Service
 Developer Guide>.
+
 
 =head2 B<REQUIRED> GranteePrincipal => Str
 
@@ -60,12 +62,14 @@ to use for specifying a principal, see AWS Identity and Access
 Management (IAM) in the Example ARNs section of the I<AWS General
 Reference>.
 
+
 =head2 GrantTokens => ArrayRef[Str]
 
   A list of grant tokens.
 
 For more information, go to Grant Tokens in the I<AWS Key Management
 Service Developer Guide>.
+
 
 =head2 B<REQUIRED> KeyId => Str
 
@@ -85,6 +89,7 @@ arn:aws:kms:us-west-2:123456789012:key/12345678-1234-1234-1234-123456789012
 =back
 
 
+
 =head2 Name => Str
 
   A friendly name for identifying the grant. Use this value to prevent
@@ -101,6 +106,7 @@ C<GrantId> is returned without creating a new grant. Note that the
 returned grant token is unique with every C<CreateGrant> request, even
 when a duplicate C<GrantId> is returned. All grant tokens obtained in
 this way can be used interchangeably.
+
 
 =head2 Operations => ArrayRef[Str]
 
@@ -126,6 +132,7 @@ combination of one or more of the following values:
 =item * RetireGrant
 
 =back
+
 
 
 =head2 RetiringPrincipal => Str

@@ -37,13 +37,16 @@ A specification identifying an individual configuration option.
 
 =head1 ATTRIBUTES
 
+
 =head2 Namespace => Str
 
   A unique namespace identifying the option's associated AWS resource.
 
+
 =head2 OptionName => Str
 
   The name of the configuration option.
+
 
 =head2 ResourceName => Str
 

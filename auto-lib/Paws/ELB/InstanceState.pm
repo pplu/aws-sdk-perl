@@ -38,6 +38,7 @@ Information about the state of a back-end instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   A description of the instance state. This string can contain one or
@@ -99,9 +100,11 @@ C<Instance is in terminated state.>
 =back
 
 
+
 =head2 InstanceId => Str
 
   The ID of the instance.
+
 
 =head2 ReasonCode => Str
 
@@ -109,6 +112,7 @@ C<Instance is in terminated state.>
 whether the cause is Elastic Load Balancing or the instance.
 
 Valid values: C<ELB> | C<Instance> | C<N/A>
+
 
 =head2 State => Str
 

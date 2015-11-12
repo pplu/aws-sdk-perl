@@ -36,11 +36,13 @@ Details on a data volume from another container.
 
 =head1 ATTRIBUTES
 
+
 =head2 ReadOnly => Bool
 
   If this value is C<true>, the container has read-only access to the
 volume. If this value is C<false>, then the container can write to the
 volume. The default value is C<false>.
+
 
 =head2 SourceContainer => Str
 

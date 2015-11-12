@@ -41,6 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AdminContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides detailed contact information.
@@ -53,6 +54,7 @@ C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
 C<ExtraParams>
 
 Required: Yes
+
 
 =head2 AutoRenew => Bool
 
@@ -68,6 +70,7 @@ Default: C<true>
 
 Required: No
 
+
 =head2 B<REQUIRED> DomainName => Str
 
   The name of a domain.
@@ -81,6 +84,7 @@ the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
 are not supported.
 
 Required: Yes
+
 
 =head2 B<REQUIRED> DurationInYears => Int
 
@@ -96,9 +100,11 @@ Valid values: Integer from 1 to 10
 
 Required: Yes
 
+
 =head2 IdnLangCode => Str
 
   Reserved for future use.
+
 
 =head2 PrivacyProtectAdminContact => Bool
 
@@ -115,6 +121,7 @@ Valid values: C<true> | C<false>
 
 Required: No
 
+
 =head2 PrivacyProtectRegistrantContact => Bool
 
   Whether you want to conceal contact information from WHOIS queries. If
@@ -129,6 +136,7 @@ Default: C<true>
 Valid values: C<true> | C<false>
 
 Required: No
+
 
 =head2 PrivacyProtectTechContact => Bool
 
@@ -145,6 +153,7 @@ Valid values: C<true> | C<false>
 
 Required: No
 
+
 =head2 B<REQUIRED> RegistrantContact => L<Paws::Route53Domains::ContactDetail>
 
   Provides detailed contact information.
@@ -157,6 +166,7 @@ C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
 C<ExtraParams>
 
 Required: Yes
+
 
 =head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>
 

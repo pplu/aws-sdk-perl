@@ -36,11 +36,13 @@ Information about a policy for duration-based session stickiness.
 
 =head1 ATTRIBUTES
 
+
 =head2 CookieExpirationPeriod => Int
 
   The time period, in seconds, after which the cookie should be
 considered stale. If this parameter is not specified, the stickiness
 session lasts for the duration of the browser session.
+
 
 =head2 PolicyName => Str
 

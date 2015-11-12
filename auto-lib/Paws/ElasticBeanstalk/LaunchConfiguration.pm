@@ -35,6 +35,7 @@ Describes an Auto Scaling launch configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the launch configuration.

@@ -36,14 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AscendingOrder => Bool
 
   Specifies the order for results. If True, the results are returned in
 ascending order, based on the creation date.
 
+
 =head2 Marker => Str
 
   The marker for the next set of results.
+
 
 =head2 PageSize => Int
 

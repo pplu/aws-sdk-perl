@@ -14,13 +14,16 @@ Paws::DataPipeline::QueryObjectsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 HasMoreResults => Bool
 
   Indicates whether there are more results that can be obtained by a
 subsequent call.
+
 =head2 Ids => ArrayRef[Str]
 
   The identifiers that match the query selectors.
+
 =head2 Marker => Str
 
   The starting point for the next page of results. To view the next page

@@ -36,9 +36,11 @@ Describes a connection endpoint.
 
 =head1 ATTRIBUTES
 
+
 =head2 Address => Str
 
   The DNS address of the Cluster.
+
 
 =head2 Port => Int
 

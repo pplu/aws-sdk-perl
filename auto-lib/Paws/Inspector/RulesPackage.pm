@@ -42,21 +42,26 @@ DescribeRulesPackage action.
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => L<Paws::Inspector::LocalizedText>
 
   The description of the rules package.
+
 
 =head2 Provider => Str
 
   The provider of the rules package.
 
+
 =head2 RulesPackageArn => Str
 
   The ARN of the rules package.
 
+
 =head2 RulesPackageName => Str
 
   The name of the rules package.
+
 
 =head2 Version => Str
 

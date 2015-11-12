@@ -40,26 +40,32 @@ Contains information about a WorkSpace bundle.
 
 =head1 ATTRIBUTES
 
+
 =head2 BundleId => Str
 
   The bundle identifier.
+
 
 =head2 ComputeType => L<Paws::WorkSpaces::ComputeType>
 
   A ComputeType object that specifies the compute type for the bundle.
 
+
 =head2 Description => Str
 
   The bundle description.
+
 
 =head2 Name => Str
 
   The name of the bundle.
 
+
 =head2 Owner => Str
 
   The owner of the bundle. This contains the owner's account identifier,
 or C<AMAZON> if the bundle is provided by AWS.
+
 
 =head2 UserStorage => L<Paws::WorkSpaces::UserStorage>
 

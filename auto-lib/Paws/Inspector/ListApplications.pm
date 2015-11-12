@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Filter => L<Paws::Inspector::ApplicationsFilter>
 
   You can use this parameter to specify a subset of data to be included
@@ -43,11 +44,13 @@ For a record to match a filter, all specified filter attributes must
 match. When multiple values are specified for a filter attribute, any
 of the values can match.
 
+
 =head2 MaxResults => Int
 
   You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is
 500.
+
 
 =head2 NextToken => Str
 

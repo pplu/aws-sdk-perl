@@ -41,13 +41,16 @@ C<JapaneseTokenizationDictionary> and C<AlgorithmicStemming>.
 
 =head1 ATTRIBUTES
 
+
 =head2 AnalysisOptions => L<Paws::CloudSearch::AnalysisOptions>
 
   
 
+
 =head2 B<REQUIRED> AnalysisSchemeLanguage => Str
 
   
+
 
 =head2 B<REQUIRED> AnalysisSchemeName => Str
 

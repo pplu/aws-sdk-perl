@@ -38,10 +38,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DestinationCidrBlock => Str
 
   The CIDR address block used for the destination match. The value you
 provide must match the CIDR of an existing route in the table.
+
 
 =head2 DryRun => Bool
 
@@ -50,21 +52,26 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 GatewayId => Str
 
   The ID of an Internet gateway or virtual private gateway.
+
 
 =head2 InstanceId => Str
 
   The ID of a NAT instance in your VPC.
 
+
 =head2 NetworkInterfaceId => Str
 
   The ID of a network interface.
 
+
 =head2 B<REQUIRED> RouteTableId => Str
 
   The ID of the route table.
+
 
 =head2 VpcPeeringConnectionId => Str
 

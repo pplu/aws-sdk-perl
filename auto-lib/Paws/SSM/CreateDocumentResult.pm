@@ -12,6 +12,7 @@ Paws::SSM::CreateDocumentResult
 
 =head1 ATTRIBUTES
 
+
 =head2 DocumentDescription => L<Paws::SSM::DocumentDescription>
 
   Information about the SSM document.

@@ -39,17 +39,21 @@ volumes. For more information, see Configuring EBS-based Storage.
 
 =head1 ATTRIBUTES
 
+
 =head2 EBSEnabled => Bool
 
   Specifies whether EBS-based storage is enabled.
+
 
 =head2 Iops => Int
 
   Specifies the IOPD for a Provisioned IOPS EBS volume (SSD).
 
+
 =head2 VolumeSize => Int
 
   Integer to specify the size of an EBS volume.
+
 
 =head2 VolumeType => Str
 

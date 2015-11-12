@@ -36,9 +36,11 @@ Describes the status of the elastic IP (EIP) address.
 
 =head1 ATTRIBUTES
 
+
 =head2 ElasticIp => Str
 
   The elastic IP (EIP) address for the cluster.
+
 
 =head2 Status => Str
 

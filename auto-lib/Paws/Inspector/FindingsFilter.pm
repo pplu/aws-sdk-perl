@@ -40,11 +40,13 @@ action.
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<attributes>
 property of the Finding data type.
+
 
 =head2 RuleNames => ArrayRef[Str]
 
@@ -52,17 +54,20 @@ property of the Finding data type.
 property must be the exact match of the value of the B<ruleName>
 property of the Finding data type.
 
+
 =head2 RulesPackageArns => ArrayRef[Str]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<rulesPackageArn>
 property of the Finding data type.
 
+
 =head2 Severities => ArrayRef[Str]
 
   For a record to match a filter, the value specified for this data type
 property must be the exact match of the value of the B<severity>
 property of the Finding data type.
+
 
 =head2 UserAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
 

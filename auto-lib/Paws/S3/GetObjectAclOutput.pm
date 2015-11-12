@@ -29,13 +29,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Grants => ArrayRef[L<Paws::S3::Grant>]
 
   A list of grants.
 
+
 =head2 Owner => L<Paws::S3::Owner>
 
   
+
 
 =head2 RequestCharged => Str
 

@@ -37,6 +37,7 @@ Represents the output for C<PutRecords>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Data => Str
 
   The data blob to put into the record, which is base64-encoded when the
@@ -44,10 +45,12 @@ blob is serialized. When the data blob (the payload before
 base64-encoding) is added to the partition key size, the total size
 must not exceed the maximum record size (1 MB).
 
+
 =head2 ExplicitHashKey => Str
 
   The hash value used to determine explicitly the shard that the data
 record is assigned to by overriding the partition key hash.
+
 
 =head2 B<REQUIRED> PartitionKey => Str
 

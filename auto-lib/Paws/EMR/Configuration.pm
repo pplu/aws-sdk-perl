@@ -44,14 +44,17 @@ listed.
 
 =head1 ATTRIBUTES
 
+
 =head2 Classification => Str
 
   The classification of a configuration. For more information see, Amazon
 EMR Configurations.
 
+
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
   A list of configurations you apply to this configuration object.
+
 
 =head2 Properties => L<Paws::EMR::StringMap>
 

@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 EventCategories => ArrayRef[Str]
 
   The category of an Amazon Redshift event.
+
 
 =head2 EventDescription => Str
 
   The description of an Amazon Redshift event.
 
+
 =head2 EventId => Str
 
   The identifier of an Amazon Redshift event.
+
 
 =head2 Severity => Str
 

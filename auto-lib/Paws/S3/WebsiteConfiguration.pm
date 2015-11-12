@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 ErrorDocument => L<Paws::S3::ErrorDocument>
 
   
+
 
 =head2 IndexDocument => L<Paws::S3::IndexDocument>
 
   
 
+
 =head2 RedirectAllRequestsTo => L<Paws::S3::RedirectAllRequestsTo>
 
   
+
 
 =head2 RoutingRules => ArrayRef[L<Paws::S3::RoutingRule>]
 

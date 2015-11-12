@@ -20,6 +20,7 @@ Paws::CloudFront::GetCloudFrontOriginAccessIdentityResult
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   The identity's id.

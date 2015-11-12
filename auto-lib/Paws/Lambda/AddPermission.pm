@@ -40,12 +40,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Action => Str
 
   The AWS Lambda action you want to allow in this statement. Each Lambda
 action is a string starting with "lambda:" followed by the API name
 (see Operations). For example, "lambda:CreateFunction". You can use
 wildcard ("lambda:*") to grant permission for all AWS Lambda actions.
+
 
 =head2 B<REQUIRED> FunctionName => Str
 
@@ -60,6 +62,7 @@ example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
+
 =head2 B<REQUIRED> Principal => Str
 
   The principal who is getting this permission. It can be Amazon S3
@@ -69,6 +72,7 @@ permission, or any valid AWS service principal such as
 "sns.amazonaws.com". For example, you might want to allow a custom
 application in another AWS account to push events to AWS Lambda by
 invoking your function.
+
 
 =head2 Qualifier => Str
 
@@ -90,6 +94,7 @@ requests is made using unqualified function ARN.
 
 C<arn:aws:lambda:aws-region:acct-id:function:function-name>
 
+
 =head2 SourceAccount => Str
 
   The AWS account ID (without a hyphen) of the source owner. For example,
@@ -99,6 +104,7 @@ bucket you specify is owned by a specific account (it is possible the
 bucket owner deleted the bucket and some other AWS account created the
 bucket). You can also use this condition to specify all sources (that
 is, you don't specify the C<SourceArn>) owned by a specific account.
+
 
 =head2 SourceArn => Str
 
@@ -110,6 +116,7 @@ generated from the specified bucket can invoke the function.
 If you add a permission for the Amazon S3 principal without providing
 the source ARN, any AWS account that creates a mapping to your function
 ARN can send events to invoke your Lambda function from Amazon S3.
+
 
 =head2 B<REQUIRED> StatementId => Str
 

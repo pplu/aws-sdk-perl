@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Encoding => Str
 
   Specifies the public key encoding format to use in the response. To
 retrieve the public key in ssh-rsa format, use C<SSH>. To retrieve the
 public key in PEM format, use C<PEM>.
 
+
 =head2 B<REQUIRED> SSHPublicKeyId => Str
 
   The unique identifier for the SSH public key.
+
 
 =head2 B<REQUIRED> UserName => Str
 

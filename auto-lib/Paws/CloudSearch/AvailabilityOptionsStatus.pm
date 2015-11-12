@@ -36,9 +36,11 @@ The status and configuration of the domain's availability options.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Options => Bool
 
   The availability options configured for the domain.
+
 
 =head2 B<REQUIRED> Status => L<Paws::CloudSearch::OptionStatus>
 

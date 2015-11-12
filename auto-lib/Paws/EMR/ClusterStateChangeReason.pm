@@ -36,9 +36,11 @@ The reason that the cluster changed to its current state.
 
 =head1 ATTRIBUTES
 
+
 =head2 Code => Str
 
   The programmatic code for the state change reason.
+
 
 =head2 Message => Str
 

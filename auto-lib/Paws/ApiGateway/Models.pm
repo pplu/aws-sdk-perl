@@ -14,9 +14,11 @@ Paws::ApiGateway::Models
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[L<Paws::ApiGateway::Model>]
 
   Gets the current Model resource in the collection.
+
 =head2 Position => Str
 
   

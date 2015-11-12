@@ -38,11 +38,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DurationSeconds => Int
 
   The duration, in seconds, of the role session. The value can range from
 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the
 value is set to 3600 seconds.
+
 
 =head2 ExternalId => Str
 
@@ -55,6 +57,7 @@ external ID. The external ID is useful in order to help third parties
 bind a role to the customer who created it. For more information about
 the external ID, see How to Use an External ID When Granting Access to
 Your AWS Resources to a Third Party in the I<Using IAM>.
+
 
 =head2 Policy => Str
 
@@ -77,9 +80,11 @@ separate limit. The PackedPolicySize response element indicates by
 percentage how close to the upper size limit the policy is, with 100%
 equaling the maximum allowed size.
 
+
 =head2 B<REQUIRED> RoleArn => Str
 
   The Amazon Resource Name (ARN) of the role to assume.
+
 
 =head2 B<REQUIRED> RoleSessionName => Str
 
@@ -94,6 +99,7 @@ subsequent cross-account API requests using the temporary security
 credentials will expose the role session name to the external account
 in their CloudTrail logs.
 
+
 =head2 SerialNumber => Str
 
   The identification number of the MFA device that is associated with the
@@ -103,6 +109,7 @@ requires MFA authentication. The value is either the serial number for
 a hardware device (such as C<GAHT12345678>) or an Amazon Resource Name
 (ARN) for a virtual device (such as
 C<arn:aws:iam::123456789012:mfa/user>).
+
 
 =head2 TokenCode => Str
 

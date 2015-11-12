@@ -40,25 +40,31 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Associations => ArrayRef[L<Paws::EC2::RouteTableAssociation>]
 
   The associations between the route table and one or more subnets.
+
 
 =head2 PropagatingVgws => ArrayRef[L<Paws::EC2::PropagatingVgw>]
 
   Any virtual private gateway (VGW) propagating routes.
 
+
 =head2 Routes => ArrayRef[L<Paws::EC2::Route>]
 
   The routes in the route table.
+
 
 =head2 RouteTableId => Str
 
   The ID of the route table.
 
+
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 
   Any tags assigned to the route table.
+
 
 =head2 VpcId => Str
 

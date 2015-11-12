@@ -43,39 +43,47 @@ more information, see Health Colors and Statuses.
 
 =head1 ATTRIBUTES
 
+
 =head2 Degraded => Int
 
   B<Red.> The health agent is reporting a high number of request failures
 or other issues for an instance or environment.
 
+
 =head2 Info => Int
 
   B<Green.> An operation is in progress on an instance.
+
 
 =head2 NoData => Int
 
   B<Grey.> AWS Elastic Beanstalk and the health agent are reporting no
 data on an instance.
 
+
 =head2 Ok => Int
 
   B<Green.> An instance is passing health checks and the health agent is
 not reporting any problems.
+
 
 =head2 Pending => Int
 
   B<Grey.> An operation is in progress on an instance within the command
 timeout.
 
+
 =head2 Severe => Int
 
   B<Red.> The health agent is reporting a very high number of request
 failures or other issues for an instance or environment.
 
+
 =head2 Unknown => Int
 
   B<Grey.> AWS Elastic Beanstalk and the health agent are reporting an
 insufficient amount of data on an instance.
+
 
 =head2 Warning => Int
 

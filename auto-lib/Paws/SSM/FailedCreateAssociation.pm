@@ -37,13 +37,16 @@ Describes a failed association.
 
 =head1 ATTRIBUTES
 
+
 =head2 Entry => L<Paws::SSM::CreateAssociationBatchRequestEntry>
 
   The association.
 
+
 =head2 Fault => Str
 
   The source of the failure.
+
 
 =head2 Message => Str
 

@@ -40,13 +40,16 @@ GetServerCertificate action.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CertificateBody => Str
 
   The contents of the public key certificate.
 
+
 =head2 CertificateChain => Str
 
   The contents of the public key certificate chain.
+
 
 =head2 B<REQUIRED> ServerCertificateMetadata => L<Paws::IAM::ServerCertificateMetadata>
 

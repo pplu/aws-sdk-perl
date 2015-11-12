@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 State => Str
 
   The current state of the attachment.
+
 
 =head2 VpcId => Str
 

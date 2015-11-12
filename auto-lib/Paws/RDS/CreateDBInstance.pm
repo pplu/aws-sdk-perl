@@ -63,6 +63,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AllocatedStorage => Int
 
   The amount of storage (in gigabytes) to be initially allocated for the
@@ -88,12 +89,14 @@ Constraints: Must be an integer from 200 to 4096 (Standard Edition and
 Enterprise Edition) or from 20 to 4096 (Express Edition and Web
 Edition)
 
+
 =head2 AutoMinorVersionUpgrade => Bool
 
   Indicates that minor engine upgrades will be applied automatically to
 the DB instance during the maintenance window.
 
 Default: C<true>
+
 
 =head2 AvailabilityZone => Str
 
@@ -109,6 +112,7 @@ Example: C<us-east-1d>
 Constraint: The AvailabilityZone parameter cannot be specified if the
 MultiAZ parameter is set to C<true>. The specified Availability Zone
 must be in the same region as the current endpoint.
+
 
 =head2 BackupRetentionPeriod => Int
 
@@ -130,15 +134,18 @@ Replicas
 =back
 
 
+
 =head2 CharacterSetName => Str
 
   For supported engines, indicates that the DB instance should be
 associated with the specified CharacterSet.
 
+
 =head2 CopyTagsToSnapshot => Bool
 
   True to copy all tags from the DB instance to snapshots of the DB
 instance; otherwise false. The default is false.
+
 
 =head2 DBClusterIdentifier => Str
 
@@ -147,6 +154,7 @@ instance; otherwise false. The default is false.
 For information on creating a DB cluster, see CreateDBCluster.
 
 Type: String
+
 
 =head2 B<REQUIRED> DBInstanceClass => Str
 
@@ -157,6 +165,7 @@ Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
 db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.r3.large
 | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge |
 db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
+
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
@@ -177,6 +186,7 @@ to 15 for SQL Server).
 =back
 
 Example: C<mydbinstance>
+
 
 =head2 DBName => Str
 
@@ -255,6 +265,7 @@ Constraints:
 =back
 
 
+
 =head2 DBParameterGroupName => Str
 
   The name of the DB parameter group to associate with this DB instance.
@@ -274,17 +285,20 @@ Constraints:
 =back
 
 
+
 =head2 DBSecurityGroups => ArrayRef[Str]
 
   A list of DB security groups to associate with this DB instance.
 
 Default: The default DB security group for the database engine.
 
+
 =head2 DBSubnetGroupName => Str
 
   A DB subnet group to associate with this DB instance.
 
 If there is no DB subnet group, then it is a non-VPC DB instance.
+
 
 =head2 B<REQUIRED> Engine => Str
 
@@ -295,6 +309,7 @@ C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> | C<sqlserver-web>
 | C<postgres>
 
 Not every database engine is available for every AWS region.
+
 
 =head2 EngineVersion => Str
 
@@ -439,6 +454,7 @@ B<Microsoft SQL Server Web Edition (sqlserver-web)>
 =back
 
 
+
 =head2 Iops => Int
 
   The amount of Provisioned IOPS (input/output operations per second) to
@@ -446,6 +462,7 @@ be initially allocated for the DB instance.
 
 Constraints: To use PIOPS, this value must be an integer greater than
 1000.
+
 
 =head2 KmsKeyId => Str
 
@@ -463,12 +480,14 @@ default encryption key. AWS KMS creates the default encryption key for
 your AWS account. Your AWS account has a different default encryption
 key for each AWS region.
 
+
 =head2 LicenseModel => Str
 
   License model information for this DB instance.
 
 Valid values: C<license-included> | C<bring-your-own-license> |
 C<general-public-license>
+
 
 =head2 MasterUsername => Str
 
@@ -533,6 +552,7 @@ Constraints:
 =back
 
 
+
 =head2 MasterUserPassword => Str
 
   The password for the master database user. Can be any printable ASCII
@@ -560,6 +580,7 @@ B<Amazon Aurora>
 
 Constraints: Must contain from 8 to 41 characters.
 
+
 =head2 MultiAZ => Bool
 
   Specifies if the DB instance is a Multi-AZ deployment. You cannot set
@@ -567,6 +588,7 @@ the AvailabilityZone parameter if the MultiAZ parameter is set to true.
 Do not set this value if you want a Multi-AZ deployment for a SQL
 Server DB instance. Multi-AZ for SQL Server is set using the Mirroring
 option in an option group.
+
 
 =head2 OptionGroupName => Str
 
@@ -577,6 +599,7 @@ Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, cannot be removed from an option group, and that option group
 cannot be removed from a DB instance once it is associated with a DB
 instance
+
 
 =head2 Port => Int
 
@@ -619,6 +642,7 @@ Valid Values: C<1150-65535>
 
 Type: Integer
 
+
 =head2 PreferredBackupWindow => Str
 
   The daily time range during which automated backups are created if
@@ -644,6 +668,7 @@ Constraints:
 =back
 
 
+
 =head2 PreferredMaintenanceWindow => Str
 
   The weekly time range during which system maintenance can occur, in
@@ -660,6 +685,7 @@ I<Amazon RDS User Guide.>
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Constraints: Minimum 30-minute window.
+
 
 =head2 PubliclyAccessible => Bool
 
@@ -687,11 +713,13 @@ publicly accessible. If a specific DB subnet group has been specified
 as part of the request and the PubliclyAccessible value has not been
 set, the DB instance will be private.
 
+
 =head2 StorageEncrypted => Bool
 
   Specifies whether the DB instance is encrypted.
 
 Default: false
+
 
 =head2 StorageType => Str
 
@@ -705,19 +733,23 @@ parameter.
 Default: C<io1> if the C<Iops> parameter is specified; otherwise
 C<standard>
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
+
 
 =head2 TdeCredentialArn => Str
 
   The ARN from the Key Store with which to associate the instance for TDE
 encryption.
 
+
 =head2 TdeCredentialPassword => Str
 
   The password for the given ARN from the Key Store in order to access
 the device.
+
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 

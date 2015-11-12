@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Locale => Str
 
   The locale that you want to translate a textual identifier into.
+
 
 =head2 LocalizedTexts => ArrayRef[L<Paws::Inspector::LocalizedText>]
 

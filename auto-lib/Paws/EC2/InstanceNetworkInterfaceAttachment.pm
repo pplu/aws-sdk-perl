@@ -39,23 +39,28 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AttachmentId => Str
 
   The ID of the network interface attachment.
 
+
 =head2 AttachTime => Str
 
   The time stamp when the attachment initiated.
+
 
 =head2 DeleteOnTermination => Bool
 
   Indicates whether the network interface is deleted when the instance is
 terminated.
 
+
 =head2 DeviceIndex => Int
 
   The index of the device on the instance for the network interface
 attachment.
+
 
 =head2 Status => Str
 

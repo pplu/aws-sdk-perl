@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Attributes => L<Paws::SNS::MapStringToString>
 
   A map of the platform application attributes. Attributes in this map
@@ -64,6 +65,7 @@ event notifications should be sent upon Direct Publish delivery failure
 (permanent) to one of the application's endpoints.
 
 =back
+
 
 
 =head2 B<REQUIRED> PlatformApplicationArn => Str

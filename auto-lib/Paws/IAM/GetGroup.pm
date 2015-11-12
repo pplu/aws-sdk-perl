@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GroupName => Str
 
   The name of the group.
+
 
 =head2 Marker => Str
 
@@ -44,6 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 receive a response indicating that the results are truncated. Set it to
 the value of the C<Marker> element in the response that you received to
 indicate where the next call should start.
+
 
 =head2 MaxItems => Int
 

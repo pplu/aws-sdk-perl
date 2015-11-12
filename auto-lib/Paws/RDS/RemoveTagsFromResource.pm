@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ResourceName => Str
 
   The Amazon RDS resource the tags will be removed from. This value is an
 Amazon Resource Name (ARN). For information about creating an ARN, see
 Constructing an RDS Amazon Resource Name (ARN).
+
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 

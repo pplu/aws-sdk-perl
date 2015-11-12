@@ -37,6 +37,7 @@ Describes the status of a parameter group.
 
 =head1 ATTRIBUTES
 
+
 =head2 ClusterParameterStatusList => ArrayRef[L<Paws::RedShift::ClusterParameterStatus>]
 
   The list of parameter statuses.
@@ -45,9 +46,11 @@ For more information about parameters and parameter groups, go to
 Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
 Management Guide>.
 
+
 =head2 ParameterApplyStatus => Str
 
   The status of parameter updates.
+
 
 =head2 ParameterGroupName => Str
 

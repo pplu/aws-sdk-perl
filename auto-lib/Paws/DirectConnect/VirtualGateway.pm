@@ -41,9 +41,11 @@ action.
 
 =head1 ATTRIBUTES
 
+
 =head2 VirtualGatewayId => Str
 
   
+
 
 =head2 VirtualGatewayState => Str
 

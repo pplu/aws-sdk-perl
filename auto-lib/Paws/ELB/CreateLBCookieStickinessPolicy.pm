@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CookieExpirationPeriod => Int
 
   The time period, in seconds, after which the cookie should be
 considered stale. If you do not specify this parameter, the sticky
 session lasts for the duration of the browser session.
 
+
 =head2 B<REQUIRED> LoadBalancerName => Str
 
   The name of the load balancer.
+
 
 =head2 B<REQUIRED> PolicyName => Str
 

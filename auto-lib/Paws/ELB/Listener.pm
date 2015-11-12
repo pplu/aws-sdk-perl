@@ -43,9 +43,11 @@ in the I<Elastic Load Balancing Developer Guide>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> InstancePort => Int
 
   The port on which the instance is listening.
+
 
 =head2 InstanceProtocol => Str
 
@@ -63,6 +65,7 @@ If there is another listener with the same C<InstancePort> whose
 C<InstanceProtocol> is HTTP or TCP, the listener's C<InstanceProtocol>
 must be HTTP or TCP.
 
+
 =head2 B<REQUIRED> LoadBalancerPort => Int
 
   The port on which the load balancer is listening. On EC2-VPC, you can
@@ -70,10 +73,12 @@ specify any port from the range 1-65535. On EC2-Classic, you can
 specify any port from the following list: 25, 80, 443, 465, 587,
 1024-65535.
 
+
 =head2 B<REQUIRED> Protocol => Str
 
   The load balancer transport protocol to use for routing: HTTP, HTTPS,
 TCP, or SSL.
+
 
 =head2 SSLCertificateId => Str
 

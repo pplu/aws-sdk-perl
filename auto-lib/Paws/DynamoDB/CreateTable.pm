@@ -38,10 +38,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
 
   An array of attributes that describe the key schema for the table and
 indexes.
+
 
 =head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]
 
@@ -110,6 +112,7 @@ global secondary index, consisting of read and write capacity units.
 =back
 
 
+
 =head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
   Specifies the attributes that make up the primary key for a table or an
@@ -142,6 +145,7 @@ I<KeyType> of C<RANGE>.
 
 For more information, see Specifying the Primary Key in the I<Amazon
 DynamoDB Developer Guide>.
+
 
 =head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]
 
@@ -210,9 +214,11 @@ attributes when determining the total.
 =back
 
 
+
 =head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
   
+
 
 =head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>
 
@@ -257,6 +263,7 @@ item are written to the stream.
 =back
 
 =back
+
 
 
 =head2 B<REQUIRED> TableName => Str

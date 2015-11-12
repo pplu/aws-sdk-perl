@@ -36,9 +36,11 @@ Describes a filter for a specific list of instances.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   The name of the filter.
+
 
 =head2 B<REQUIRED> ValueSet => ArrayRef[Str]
 

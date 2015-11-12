@@ -13,6 +13,7 @@ Paws::EC2::ModifyVpcEndpointResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Return => Bool
 
   Returns C<true> if the request succeeds; otherwise, it returns an

@@ -44,41 +44,51 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 PreservedExistingData => Bool
 
   
+
 
 =head2 SourceSnapshotId => Str
 
   
 
+
 =head2 VolumeARN => Str
 
   
+
 
 =head2 VolumeDiskId => Str
 
   
 
+
 =head2 VolumeId => Str
 
   
+
 
 =head2 VolumeiSCSIAttributes => L<Paws::StorageGateway::VolumeiSCSIAttributes>
 
   
 
+
 =head2 VolumeProgress => Num
 
   
+
 
 =head2 VolumeSizeInBytes => Int
 
   
 
+
 =head2 VolumeStatus => Str
 
   
+
 
 =head2 VolumeType => Str
 

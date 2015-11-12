@@ -80,6 +80,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
+
 =head2 ChildPolicy => Str
 
   If set, specifies the policy to use for the child workflow executions
@@ -109,6 +110,7 @@ a default for the workflow type or through this parameter. If neither
 this parameter is set nor a default child policy was specified at
 registration time then a fault will be returned.
 
+
 =head2 ExecutionStartToCloseTimeout => Str
 
   If set, specifies the total duration for this workflow execution. This
@@ -124,9 +126,11 @@ field. If neither this field is set nor a default execution
 start-to-close timeout was specified at registration time then a fault
 will be returned.
 
+
 =head2 Input => Str
 
   The input provided to the new workflow execution.
+
 
 =head2 LambdaRole => Str
 
@@ -137,6 +141,7 @@ In order for this workflow execution to invoke AWS Lambda functions, an
 appropriate IAM role must be specified either as a default for the
 workflow type or through this field.
 
+
 =head2 TagList => ArrayRef[Str]
 
   The list of tags to associate with the new workflow execution. A
@@ -144,9 +149,11 @@ maximum of 5 tags can be specified. You can list workflow executions
 with a specific tag by calling ListOpenWorkflowExecutions or
 ListClosedWorkflowExecutions and specifying a TagFilter.
 
+
 =head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
 
   
+
 
 =head2 TaskPriority => Str
 
@@ -159,6 +166,7 @@ indicate higher priority.
 
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
+
 
 =head2 TaskStartToCloseTimeout => Str
 
@@ -175,6 +183,7 @@ specified either as a default for the workflow type or through this
 parameter. If neither this parameter is set nor a default task
 start-to-close timeout was specified at registration time then a fault
 will be returned.
+
 
 =head2 WorkflowTypeVersion => Str
 

@@ -36,10 +36,12 @@ Contains the name and identifier of a pipeline.
 
 =head1 ATTRIBUTES
 
+
 =head2 Id => Str
 
   The ID of the pipeline that was assigned by AWS Data Pipeline. This is
 a string of the form C<df-297EG78HU43EEXAMPLE>.
+
 
 =head2 Name => Str
 

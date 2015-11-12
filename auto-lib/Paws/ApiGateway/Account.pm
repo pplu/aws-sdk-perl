@@ -14,10 +14,12 @@ Paws::ApiGateway::Account
 
 =head1 ATTRIBUTES
 
+
 =head2 CloudwatchRoleArn => Str
 
   Specifies the Amazon resource name (ARN) of an Amazon CloudWatch role
 for the current Account resource.
+
 =head2 ThrottleSettings => L<Paws::ApiGateway::ThrottleSettings>
 
   Specifies the application programming interface (API) throttle settings

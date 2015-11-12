@@ -39,10 +39,12 @@ this information is not returned in the response.
 
 =head1 ATTRIBUTES
 
+
 =head2 ItemCollectionKey => L<Paws::DynamoDB::ItemCollectionKeyAttributeMap>
 
   The hash key value of the item collection. This value is the same as
 the hash key of the item.
+
 
 =head2 SizeEstimateRangeGB => ArrayRef[Num]
 

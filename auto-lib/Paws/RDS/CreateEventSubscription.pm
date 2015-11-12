@@ -38,10 +38,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Enabled => Bool
 
   A Boolean value; set to B<true> to activate the subscription, set to
 B<false> to create the subscription but not active it.
+
 
 =head2 EventCategories => ArrayRef[Str]
 
@@ -50,11 +52,13 @@ to. You can see a list of the categories for a given SourceType in the
 Events topic in the Amazon RDS User Guide or by using the
 B<DescribeEventCategories> action.
 
+
 =head2 B<REQUIRED> SnsTopicArn => Str
 
   The Amazon Resource Name (ARN) of the SNS topic created for event
 notification. The ARN is created by Amazon SNS when you create a topic
 and subscribe to it.
+
 
 =head2 SourceIds => ArrayRef[Str]
 
@@ -85,6 +89,7 @@ must be supplied.
 =back
 
 
+
 =head2 SourceType => Str
 
   The type of source that will be generating the events. For example, if
@@ -95,11 +100,13 @@ events are returned.
 Valid values: db-instance | db-parameter-group | db-security-group |
 db-snapshot
 
+
 =head2 B<REQUIRED> SubscriptionName => Str
 
   The name of the subscription.
 
 Constraints: The name must be less than 255 characters.
+
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 

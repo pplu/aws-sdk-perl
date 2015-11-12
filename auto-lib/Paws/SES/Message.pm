@@ -36,9 +36,11 @@ Represents the message to be sent, composed of a subject and a body.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Body => L<Paws::SES::Body>
 
   The message body.
+
 
 =head2 B<REQUIRED> Subject => L<Paws::SES::Content>
 

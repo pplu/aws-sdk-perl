@@ -13,6 +13,7 @@ Paws::CognitoSync::DescribeIdentityUsageResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 IdentityUsage => L<Paws::CognitoSync::IdentityUsage>
 
   Usage information for the identity.

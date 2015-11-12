@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DurationSeconds => Int
 
   The duration, in seconds, that the credentials should remain valid.
@@ -42,6 +43,7 @@ minutes) to 129600 seconds (36 hours), with 43200 seconds (12 hours) as
 the default. Sessions for AWS account owners are restricted to a
 maximum of 3600 seconds (one hour). If the duration is longer than one
 hour, the session for AWS account owners defaults to one hour.
+
 
 =head2 SerialNumber => Str
 
@@ -53,6 +55,7 @@ C<GAHT12345678>) or an Amazon Resource Name (ARN) for a virtual device
 (such as C<arn:aws:iam::123456789012:mfa/user>). You can find the
 device for an IAM user by going to the AWS Management Console and
 viewing the user's security credentials.
+
 
 =head2 TokenCode => Str
 

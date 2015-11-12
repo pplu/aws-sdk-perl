@@ -37,9 +37,11 @@ Represents a sample of performance data.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The sample's ARN.
+
 
 =head2 Type => Str
 
@@ -124,6 +126,7 @@ TX_RATE: The total number of bytes per second (TCP and UDP) that are
 received, by app process.
 
 =back
+
 
 
 =head2 Url => Str

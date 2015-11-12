@@ -39,21 +39,26 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AvailabilityZone => Str
 
   The Availability Zone where the resulting volume will reside.
+
 
 =head2 B<REQUIRED> BytesConverted => Int
 
   The number of bytes converted so far.
 
+
 =head2 Description => Str
 
   The description you provided when starting the import volume task.
 
+
 =head2 B<REQUIRED> Image => L<Paws::EC2::DiskImageDescription>
 
   The image.
+
 
 =head2 B<REQUIRED> Volume => L<Paws::EC2::DiskImageVolumeDescription>
 

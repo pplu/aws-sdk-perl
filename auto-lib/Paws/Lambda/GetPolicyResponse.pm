@@ -13,6 +13,7 @@ Paws::Lambda::GetPolicyResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Policy => Str
 
   The resource policy associated with the specified function. The

@@ -21,9 +21,11 @@ Paws::CloudFront::
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   The origin access identity's id.
+
 =head2 IfMatch => Str
 
   The value of the ETag header you received from a previous GET or PUT

@@ -42,9 +42,11 @@ action.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SSHPublicKeyId => Str
 
   The unique identifier for the SSH public key.
+
 
 =head2 B<REQUIRED> Status => Str
 
@@ -52,10 +54,12 @@ action.
 for authentication with an AWS CodeCommit repository. C<Inactive> means
 the key cannot be used.
 
+
 =head2 B<REQUIRED> UploadDate => Str
 
   The date and time, in ISO 8601 date-time format, when the SSH public
 key was uploaded.
+
 
 =head2 B<REQUIRED> UserName => Str
 

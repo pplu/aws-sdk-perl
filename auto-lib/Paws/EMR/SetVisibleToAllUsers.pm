@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> JobFlowIds => ArrayRef[Str]
 
   Identifiers of the job flows to receive the new visibility setting.
+
 
 =head2 B<REQUIRED> VisibleToAllUsers => Bool
 

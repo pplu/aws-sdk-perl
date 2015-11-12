@@ -38,25 +38,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Bucket => Str
 
   Name of the bucket to which the multipart upload was initiated.
+
 
 =head2 Initiator => L<Paws::S3::Initiator>
 
   Identifies who initiated the multipart upload.
 
+
 =head2 IsTruncated => Bool
 
   Indicates whether the returned list of parts is truncated.
+
 
 =head2 Key => Str
 
   Object key for which the multipart upload was initiated.
 
+
 =head2 MaxParts => Int
 
   Maximum number of parts that were allowed in the response.
+
 
 =head2 NextPartNumberMarker => Int
 
@@ -64,25 +70,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 list, as well as the value to use for the part-number-marker request
 parameter in a subsequent request.
 
+
 =head2 Owner => L<Paws::S3::Owner>
 
   
+
 
 =head2 PartNumberMarker => Int
 
   Part number after which listing begins.
 
+
 =head2 Parts => ArrayRef[L<Paws::S3::Part>]
 
   
+
 
 =head2 RequestCharged => Str
 
   
 
+
 =head2 StorageClass => Str
 
   The class of storage used to store the object.
+
 
 =head2 UploadId => Str
 

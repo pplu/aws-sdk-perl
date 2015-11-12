@@ -42,6 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Architecture => Str
 
   The architecture of the AMI.
@@ -49,13 +50,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 Default: For Amazon EBS-backed AMIs, C<i386>. For instance store-backed
 AMIs, the architecture specified in the manifest file.
 
+
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
   One or more block device mapping entries.
 
+
 =head2 Description => Str
 
   A description for your AMI.
+
 
 =head2 DryRun => Bool
 
@@ -64,13 +68,16 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 ImageLocation => Str
 
   The full path to your AMI manifest in Amazon S3 storage.
 
+
 =head2 KernelId => Str
 
   The ID of the kernel.
+
 
 =head2 B<REQUIRED> Name => Str
 
@@ -80,14 +87,17 @@ Constraints: 3-128 alphanumeric characters, parentheses (()), square
 brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single
 quotes ('), at-signs (@), or underscores(_)
 
+
 =head2 RamdiskId => Str
 
   The ID of the RAM disk.
+
 
 =head2 RootDeviceName => Str
 
   The name of the root device (for example, C</dev/sda1>, or
 C</dev/xvda>).
+
 
 =head2 SriovNetSupport => Str
 
@@ -98,6 +108,7 @@ There is no way to disable enhanced networking at this time.
 
 This option is supported only for HVM AMIs. Specifying this option with
 a PV AMI can make instances launched from the AMI unreachable.
+
 
 =head2 VirtualizationType => Str
 

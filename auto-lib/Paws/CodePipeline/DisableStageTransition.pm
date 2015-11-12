@@ -35,10 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> PipelineName => Str
 
   The name of the pipeline in which you want to disable the flow of
 artifacts from one stage to another.
+
 
 =head2 B<REQUIRED> Reason => Str
 
@@ -46,10 +48,12 @@ artifacts from one stage to another.
 for manual approval or manual tests. This message is displayed in the
 pipeline console UI.
 
+
 =head2 B<REQUIRED> StageName => Str
 
   The name of the stage where you want to disable the inbound or outbound
 transition of artifacts.
+
 
 =head2 B<REQUIRED> TransitionType => Str
 

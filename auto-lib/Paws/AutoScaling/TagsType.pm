@@ -14,10 +14,12 @@ Paws::AutoScaling::TagsType
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
+
 =head2 Tags => ArrayRef[L<Paws::AutoScaling::TagDescription>]
 
   The tags.

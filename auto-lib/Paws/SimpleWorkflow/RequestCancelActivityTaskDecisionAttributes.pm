@@ -59,6 +59,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActivityId => Str
 
   The C<activityId> of the activity task to be canceled.

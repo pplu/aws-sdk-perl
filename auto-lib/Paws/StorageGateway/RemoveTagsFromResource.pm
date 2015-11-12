@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ResourceARN => Str
 
   The Amazon Resource Name (ARN) of the resource you want to remove the
 tags from.
+
 
 =head2 TagKeys => ArrayRef[Str]
 

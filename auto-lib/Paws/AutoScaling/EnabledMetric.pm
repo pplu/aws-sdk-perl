@@ -36,9 +36,11 @@ Describes an enabled metric.
 
 =head1 ATTRIBUTES
 
+
 =head2 Granularity => Str
 
   The granularity of the metric. The only valid value is C<1Minute>.
+
 
 =head2 Metric => Str
 

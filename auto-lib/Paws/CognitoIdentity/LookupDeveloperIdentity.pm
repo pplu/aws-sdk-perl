@@ -36,23 +36,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DeveloperUserIdentifier => Str
 
   A unique ID used by your backend authentication process to identify a
 user. Typically, a developer identity provider would issue many
 developer user identifiers, in keeping with the number of users.
 
+
 =head2 IdentityId => Str
 
   A unique identifier in the format REGION:GUID.
+
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
   An identity pool ID in the format REGION:GUID.
 
+
 =head2 MaxResults => Int
 
   The maximum number of identities to return.
+
 
 =head2 NextToken => Str
 

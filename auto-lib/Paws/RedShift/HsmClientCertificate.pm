@@ -39,14 +39,17 @@ Amazon Redshift cluster to encrypt data files.
 
 =head1 ATTRIBUTES
 
+
 =head2 HsmClientCertificateIdentifier => Str
 
   The identifier of the HSM client certificate.
+
 
 =head2 HsmClientCertificatePublicKey => Str
 
   The public key that the Amazon Redshift cluster will use to connect to
 the HSM. You must register the public key in the HSM.
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

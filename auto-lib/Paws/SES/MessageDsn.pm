@@ -42,14 +42,17 @@ Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 ArrivalDate => Str
 
   When the message was received by the reporting mail transfer agent
 (MTA), in RFC 822 date-time format.
 
+
 =head2 ExtensionFields => ArrayRef[L<Paws::SES::ExtensionField>]
 
   Additional X-headers to include in the DSN.
+
 
 =head2 B<REQUIRED> ReportingMta => Str
 

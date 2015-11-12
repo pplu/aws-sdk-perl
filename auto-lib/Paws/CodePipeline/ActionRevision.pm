@@ -37,15 +37,18 @@ Represents information about the version (or revision) of an action.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Created => Str
 
   The date and time when the most recent version of the action was
 created, in timestamp format.
 
+
 =head2 RevisionChangeId => Str
 
   The unique identifier of the change that set the state to this
 revision, for example a deployment ID or timestamp.
+
 
 =head2 B<REQUIRED> RevisionId => Str
 

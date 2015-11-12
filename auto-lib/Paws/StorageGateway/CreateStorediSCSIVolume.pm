@@ -37,14 +37,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DiskId => Str
 
   The unique identifier for the gateway local disk that is configured as
 a stored volume. Use ListLocalDisks to list disk IDs for a gateway.
 
+
 =head2 B<REQUIRED> GatewayARN => Str
 
   
+
 
 =head2 B<REQUIRED> NetworkInterfaceId => Str
 
@@ -55,6 +58,7 @@ available on a gateway.
 
 I<Valid Values>: A valid IP address.
 
+
 =head2 B<REQUIRED> PreserveExistingData => Bool
 
   Specify this field as true if you want to preserve the data on the
@@ -63,6 +67,7 @@ volume.
 
 I<Valid Values>: true, false
 
+
 =head2 SnapshotId => Str
 
   The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as
@@ -70,6 +75,7 @@ the new stored volume. Specify this field if you want to create the
 iSCSI storage volume from a snapshot otherwise do not include this
 field. To list snapshots for your account use DescribeSnapshots in the
 I<Amazon Elastic Compute Cloud API Reference>.
+
 
 =head2 B<REQUIRED> TargetName => Str
 

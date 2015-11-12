@@ -12,6 +12,7 @@ Paws::CodeCommit::CreateRepositoryOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 RepositoryMetadata => L<Paws::CodeCommit::RepositoryMetadata>
 
   Information about the newly created repository.

@@ -26,48 +26,63 @@ Paws::DirectConnect::VirtualInterface
 
 =head1 ATTRIBUTES
 
+
 =head2 AmazonAddress => Str
 
   
+
 =head2 Asn => Int
 
   
+
 =head2 AuthKey => Str
 
   
+
 =head2 ConnectionId => Str
 
   
+
 =head2 CustomerAddress => Str
 
   
+
 =head2 CustomerRouterConfig => Str
 
   Information for generating the customer router configuration.
+
 =head2 Location => Str
 
   
+
 =head2 OwnerAccount => Str
 
   
+
 =head2 RouteFilterPrefixes => ArrayRef[L<Paws::DirectConnect::RouteFilterPrefix>]
 
   
+
 =head2 VirtualGatewayId => Str
 
   
+
 =head2 VirtualInterfaceId => Str
 
   
+
 =head2 VirtualInterfaceName => Str
 
   
+
 =head2 VirtualInterfaceState => Str
 
   
+
 =head2 VirtualInterfaceType => Str
 
   
+
 =head2 Vlan => Int
 
   

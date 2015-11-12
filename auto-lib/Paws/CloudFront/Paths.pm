@@ -37,10 +37,12 @@ want to invalidate.
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[Str]
 
   A complex type that contains a list of the objects that you want to
 invalidate.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

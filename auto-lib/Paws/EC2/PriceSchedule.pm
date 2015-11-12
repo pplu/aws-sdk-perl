@@ -38,6 +38,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Active => Bool
 
   The current price schedule, as determined by the term remaining for the
@@ -51,14 +52,17 @@ schedule 1, covering the first three months of the remaining term, will
 be active during months 5, 4, and 3. Then schedule 2, covering the last
 two months of the term, will be active for months 2 and 1.
 
+
 =head2 CurrencyCode => Str
 
   The currency for transacting the Reserved Instance resale. At this
 time, the only supported currency is C<USD>.
 
+
 =head2 Price => Num
 
   The fixed price for the term.
+
 
 =head2 Term => Int
 

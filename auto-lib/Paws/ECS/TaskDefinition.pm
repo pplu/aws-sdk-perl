@@ -41,6 +41,7 @@ Details of a task definition.
 
 =head1 ATTRIBUTES
 
+
 =head2 ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>]
 
   A list of container definitions in JSON format that describe the
@@ -48,13 +49,16 @@ different containers that make up your task. For more information about
 container definition parameters and defaults, see Amazon ECS Task
 Definitions in the I<Amazon EC2 Container Service Developer Guide>.
 
+
 =head2 Family => Str
 
   The family of your task definition, used as the definition name.
 
+
 =head2 RequiresAttributes => ArrayRef[L<Paws::ECS::Attribute>]
 
   The container instance attributes required by your task.
+
 
 =head2 Revision => Int
 
@@ -65,13 +69,16 @@ register a new revision of a task definition in the same family, the
 revision value always increases by one (even if you have deregistered
 previous revisions in this family).
 
+
 =head2 Status => Str
 
   The status of the task definition.
 
+
 =head2 TaskDefinitionArn => Str
 
   The full Amazon Resource Name (ARN) of the of the task definition.
+
 
 =head2 Volumes => ArrayRef[L<Paws::ECS::Volume>]
 

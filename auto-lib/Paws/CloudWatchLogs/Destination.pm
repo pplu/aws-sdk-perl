@@ -41,27 +41,33 @@ events.
 
 =head1 ATTRIBUTES
 
+
 =head2 AccessPolicy => Str
 
   An IAM policy document that governs which AWS accounts can create
 subscription filters against this destination.
 
+
 =head2 Arn => Str
 
   ARN of this destination.
+
 
 =head2 CreationTime => Int
 
   A point in time expressed as the number of milliseconds since Jan 1,
 1970 00:00:00 UTC specifying when this destination was created.
 
+
 =head2 DestinationName => Str
 
   Name of the destination.
 
+
 =head2 RoleArn => Str
 
   A role for impersonation for delivering log events to the target.
+
 
 =head2 TargetArn => Str
 

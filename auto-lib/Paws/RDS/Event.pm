@@ -40,21 +40,26 @@ action.
 
 =head1 ATTRIBUTES
 
+
 =head2 Date => Str
 
   Specifies the date and time of the event.
+
 
 =head2 EventCategories => ArrayRef[Str]
 
   Specifies the category for the event.
 
+
 =head2 Message => Str
 
   Provides the text of this event.
 
+
 =head2 SourceIdentifier => Str
 
   Provides the identifier for the source of the event.
+
 
 =head2 SourceType => Str
 

@@ -14,10 +14,12 @@ Paws::ApiGateway::Deployments
 
 =head1 ATTRIBUTES
 
+
 =head2 Items => ArrayRef[L<Paws::ApiGateway::Deployment>]
 
   The current page of any Deployment resources in the collection of
 deployment resources.
+
 =head2 Position => Str
 
   

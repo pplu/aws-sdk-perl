@@ -12,6 +12,7 @@ Paws::Firehose::PutRecordOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> RecordId => Str
 
   The ID of the record.

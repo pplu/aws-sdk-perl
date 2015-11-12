@@ -13,6 +13,7 @@ Paws::SES::VerifyDomainIdentityResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> VerificationToken => Str
 
   A TXT record that must be placed in the DNS settings for the domain, in

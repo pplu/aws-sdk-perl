@@ -40,11 +40,13 @@ NOT originate from the IP address 192.0.2.44.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DataId => Str
 
   A unique identifier for a predicate in a C<Rule>, such as
 C<ByteMatchSetId> or C<IPSetId>. The ID is returned by the
 corresponding C<Create> or C<List> command.
+
 
 =head2 B<REQUIRED> Negated => Bool
 
@@ -59,6 +61,7 @@ request based on the negation of the settings in the ByteMatchSet,
 IPSet, or SqlInjectionMatchSet. For example, if an C<IPSet> includes
 the IP address C<192.0.2.44>, AWS WAF will allow, block, or count
 requests based on all IP addresses I<except> C<192.0.2.44>.
+
 
 =head2 B<REQUIRED> Type => Str
 

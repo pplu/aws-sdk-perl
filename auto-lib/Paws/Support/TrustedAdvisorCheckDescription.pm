@@ -39,18 +39,22 @@ The description and metadata for a Trusted Advisor check.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Category => Str
 
   The category of the Trusted Advisor check.
+
 
 =head2 B<REQUIRED> Description => Str
 
   The description of the Trusted Advisor check, which includes the alert
 criteria and recommended actions (contains HTML markup).
 
+
 =head2 B<REQUIRED> Id => Str
 
   The unique identifier for the Trusted Advisor check.
+
 
 =head2 B<REQUIRED> Metadata => ArrayRef[Str]
 
@@ -59,6 +63,7 @@ The order of the headings corresponds to the order of the data in the
 B<Metadata> element of the TrustedAdvisorResourceDetail for the check.
 B<Metadata> contains all the data that is shown in the Excel download,
 even in those cases where the UI shows just summary data.
+
 
 =head2 B<REQUIRED> Name => Str
 

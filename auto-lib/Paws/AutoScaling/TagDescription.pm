@@ -39,23 +39,28 @@ Describes a tag for an Auto Scaling group.
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => Str
 
   The tag key.
+
 
 =head2 PropagateAtLaunch => Bool
 
   Determines whether the tag is added to new instances as they are
 launched in the group.
 
+
 =head2 ResourceId => Str
 
   The name of the group.
+
 
 =head2 ResourceType => Str
 
   The type of resource. The only supported value is
 C<auto-scaling-group>.
+
 
 =head2 Value => Str
 

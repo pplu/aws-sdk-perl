@@ -42,11 +42,13 @@ Specifies the method setting properties.
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheDataEncrypted => Bool
 
   Specifies whether the cached responses are encrypted. The PATCH path
 for this setting is C</{method_setting_key}/caching/dataEncrypted>, and
 the value is a Boolean.
+
 
 =head2 CacheTtlInSeconds => Int
 
@@ -55,12 +57,14 @@ higher a the TTL, the longer the response will be cached. The PATCH
 path for this setting is C</{method_setting_key}/caching/ttlInSeconds>,
 and the value is an integer.
 
+
 =head2 CachingEnabled => Bool
 
   Specifies whether responses should be cached and returned for requests.
 A cache cluster must be enabled on the stage for responses to be
 cached. The PATCH path for this setting is
 C</{method_setting_key}/caching/enabled>, and the value is a Boolean.
+
 
 =head2 DataTraceEnabled => Bool
 
@@ -69,6 +73,7 @@ which effects the log entries pushed to Amazon CloudWatch Logs. The
 PATCH path for this setting is
 C</{method_setting_key}/logging/dataTrace>, and the value is a Boolean.
 
+
 =head2 LoggingLevel => Str
 
   Specifies the logging level for this method, which effects the log
@@ -76,17 +81,20 @@ entries pushed to Amazon CloudWatch Logs. The PATCH path for this
 setting is C</{method_setting_key}/logging/loglevel>, and the available
 levels are C<OFF>, C<ERROR>, and C<INFO>.
 
+
 =head2 MetricsEnabled => Bool
 
   Specifies whether Amazon CloudWatch metrics are enabled for this
 method. The PATCH path for this setting is
 C</{method_setting_key}/metrics/enabled>, and the value is a Boolean.
 
+
 =head2 ThrottlingBurstLimit => Int
 
   Specifies the throttling burst limit. The PATCH path for this setting
 is C</{method_setting_key}/throttling/burstLimit>, and the value is an
 integer.
+
 
 =head2 ThrottlingRateLimit => Num
 

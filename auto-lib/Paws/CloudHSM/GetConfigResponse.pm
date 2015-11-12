@@ -14,12 +14,15 @@ Paws::CloudHSM::GetConfigResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ConfigCred => Str
 
   The certificate file containing the server.pem files of the HSMs.
+
 =head2 ConfigFile => Str
 
   The chrystoki.conf configuration file.
+
 =head2 ConfigType => Str
 
   The type of credentials.

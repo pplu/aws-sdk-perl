@@ -36,6 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Marker => Str
 
   An optional parameter that specifies the starting point to return a set
@@ -47,6 +48,7 @@ C<Marker> parameter and retrying the request.
 
 Constraints: You can specify either the B<SnapshotCopyGrantName>
 parameter or the B<Marker> parameter, but not both.
+
 
 =head2 MaxRecords => Int
 
@@ -60,9 +62,11 @@ Default: C<100>
 
 Constraints: minimum 20, maximum 100.
 
+
 =head2 SnapshotCopyGrantName => Str
 
   The name of the snapshot copy grant.
+
 
 =head2 TagKeys => ArrayRef[Str]
 
@@ -72,6 +76,7 @@ suppose that you have resources tagged with keys called C<owner> and
 C<environment>. If you specify both of these tag keys in the request,
 Amazon Redshift returns a response with all resources that have either
 or both of these tag keys associated with them.
+
 
 =head2 TagValues => ArrayRef[Str]
 

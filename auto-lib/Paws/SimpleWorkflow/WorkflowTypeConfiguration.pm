@@ -40,6 +40,7 @@ The configuration settings of a workflow type.
 
 =head1 ATTRIBUTES
 
+
 =head2 DefaultChildPolicy => Str
 
   I<Optional.> The default policy to use for the child workflow
@@ -66,6 +67,7 @@ continue to run.
 =back
 
 
+
 =head2 DefaultExecutionStartToCloseTimeout => Str
 
   I<Optional.> The default maximum duration, specified when registering
@@ -77,10 +79,12 @@ decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 DefaultLambdaRole => Str
 
   The default IAM role to use when a workflow execution invokes a AWS
 Lambda function.
+
 
 =head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
@@ -89,6 +93,7 @@ workflow type, for decisions tasks scheduled for workflow executions of
 this type. This default can be overridden when starting a workflow
 execution using the StartWorkflowExecution action or the
 C<StartChildWorkflowExecution> decision.
+
 
 =head2 DefaultTaskPriority => Str
 
@@ -104,6 +109,7 @@ indicate higher priority.
 
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
+
 
 =head2 DefaultTaskStartToCloseTimeout => Str
 

@@ -38,9 +38,11 @@ Data.
 
 =head1 ATTRIBUTES
 
+
 =head2 Document => Str
 
   A JSON document that contains the metadata.
+
 
 =head2 Signature => Str
 

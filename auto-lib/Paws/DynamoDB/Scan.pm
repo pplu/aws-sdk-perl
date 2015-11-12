@@ -47,6 +47,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AttributesToGet => ArrayRef[Str]
 
   This is a legacy parameter, for backward compatibility. New
@@ -64,6 +65,7 @@ requested attributes are not found, they will not appear in the result.
 Note that I<AttributesToGet> has no effect on provisioned throughput
 consumption. DynamoDB determines capacity units consumed based on item
 size, not on the amount of data that is returned to an application.
+
 
 =head2 ConditionalOperator => Str
 
@@ -93,6 +95,7 @@ If you omit I<ConditionalOperator>, then C<AND> is the default.
 The operation will succeed only if the entire map evaluates to true.
 
 This parameter does not support attributes of type List or Map.
+
 
 =head2 ConsistentRead => Bool
 
@@ -124,6 +127,7 @@ Strongly consistent reads are not supported on global secondary
 indexes. If you scan a global secondary index with I<ConsistentRead>
 set to true, you will receive a I<ValidationException>.
 
+
 =head2 ExclusiveStartKey => L<Paws::DynamoDB::Key>
 
   The primary key of the first item that this operation will evaluate.
@@ -136,6 +140,7 @@ Binary. No set data types are allowed.
 In a parallel scan, a I<Scan> request that includes
 I<ExclusiveStartKey> must specify the same segment whose previous
 I<Scan> returned the corresponding value of I<LastEvaluatedKey>.
+
 
 =head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
@@ -203,6 +208,7 @@ values>, which are placeholders for the actual value at runtime.
 For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
+
 =head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
 
   One or more values that can be substituted in an expression.
@@ -226,6 +232,7 @@ C<ProductStatus IN (:avail, :back, :disc)>
 For more information on expression attribute values, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
 
+
 =head2 FilterExpression => Str
 
   A string that contains conditions that DynamoDB applies after the
@@ -242,11 +249,13 @@ Developer Guide>.
 I<FilterExpression> replaces the legacy I<ScanFilter> and
 I<ConditionalOperator> parameters.
 
+
 =head2 IndexName => Str
 
   The name of a secondary index to scan. This index can be any local
 secondary index or global secondary index. Note that if you use the
 C<IndexName> parameter, you must also provide C<TableName>.
+
 
 =head2 Limit => Int
 
@@ -261,6 +270,7 @@ matching values up to the limit, and a key in I<LastEvaluatedKey> to
 apply in a subsequent operation to continue the operation. For more
 information, see Query and Scan in the I<Amazon DynamoDB Developer
 Guide>.
+
 
 =head2 ProjectionExpression => Str
 
@@ -279,9 +289,11 @@ DynamoDB Developer Guide>.
 I<ProjectionExpression> replaces the legacy I<AttributesToGet>
 parameter.
 
+
 =head2 ReturnConsumedCapacity => Str
 
   
+
 
 =head2 ScanFilter => L<Paws::DynamoDB::FilterConditionMap>
 
@@ -341,6 +353,7 @@ For complete descriptions of all comparison operators, see Condition.
 =back
 
 
+
 =head2 Segment => Int
 
   For a parallel I<Scan> request, I<Segment> identifies an individual
@@ -359,6 +372,7 @@ The value for I<Segment> must be greater than or equal to 0, and less
 than the value provided for I<TotalSegments>.
 
 If you provide I<Segment>, you must also provide I<TotalSegments>.
+
 
 =head2 Select => Str
 
@@ -390,11 +404,13 @@ and I<Select> together in a single request, unless the value for
 I<Select> is C<SPECIFIC_ATTRIBUTES>. (This usage is equivalent to
 specifying I<AttributesToGet> without any value for I<Select>.)
 
+
 =head2 B<REQUIRED> TableName => Str
 
   The name of the table containing the requested items; or, if you
 provide C<IndexName>, the name of the table to which that index
 belongs.
+
 
 =head2 TotalSegments => Int
 

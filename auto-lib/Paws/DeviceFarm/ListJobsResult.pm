@@ -13,9 +13,11 @@ Paws::DeviceFarm::ListJobsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Jobs => ArrayRef[L<Paws::DeviceFarm::Job>]
 
   Information about the jobs.
+
 =head2 NextToken => Str
 
   If the number of items that are returned is significantly large, this

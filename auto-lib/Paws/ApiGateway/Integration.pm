@@ -21,12 +21,15 @@ Paws::ApiGateway::Integration
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheKeyParameters => ArrayRef[Str]
 
   Specifies the integration's cache key parameters.
+
 =head2 CacheNamespace => Str
 
   Specifies the integration's cache namespace.
+
 =head2 Credentials => Str
 
   Specifies the credentials required for the integration, if any. For AWS
@@ -35,12 +38,15 @@ Amazon API Gateway to assume, use the role's Amazon Resource Name
 (ARN). To require that the caller's identity be passed through from the
 request, specify the string C<arn:aws:iam::\*:user/\*>. To use
 resource-based permissions on supported AWS services, specify null.
+
 =head2 HttpMethod => Str
 
   Specifies the integration's HTTP method type.
+
 =head2 IntegrationResponses => L<Paws::ApiGateway::MapOfIntegrationResponse>
 
   Specifies the integration's responses.
+
 =head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToString>
 
   Represents requests parameters that are sent with the backend request.
@@ -52,12 +58,15 @@ destination in the request. The destination must match the pattern
 C<integration.request.{location}.{name}>, where C<location> is either
 querystring, path, or header. C<name> must be a valid, unique parameter
 name.
+
 =head2 RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>
 
   Specifies the integration's request templates.
+
 =head2 Type => Str
 
   Specifies the integration's type.
+
 =head2 Uri => Str
 
   Specifies the integration's Uniform Resource Identifier (URI). For HTTP

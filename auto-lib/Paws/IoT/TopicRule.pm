@@ -40,25 +40,31 @@ Describes a rule.
 
 =head1 ATTRIBUTES
 
+
 =head2 Actions => ArrayRef[L<Paws::IoT::Action>]
 
   The actions associated with the rule.
+
 
 =head2 CreatedAt => Str
 
   The date and time the rule was created.
 
+
 =head2 Description => Str
 
   The description of the rule.
+
 
 =head2 RuleDisabled => Bool
 
   Specifies whether the rule is disabled.
 
+
 =head2 RuleName => Str
 
   The name of the rule.
+
 
 =head2 Sql => Str
 

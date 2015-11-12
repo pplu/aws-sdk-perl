@@ -43,14 +43,17 @@ as a response element in the ListAssessmentAgents action.
 
 =head1 ATTRIBUTES
 
+
 =head2 AccountId => Str
 
   AWS account of the EC2 instance where the agent is installed.
+
 
 =head2 AgentHealth => Str
 
   The current health state of the agent. Values can be set to I<HEALTHY>
 or I<UNHEALTHY>.
+
 
 =head2 AgentHealthCode => Str
 
@@ -58,21 +61,26 @@ or I<UNHEALTHY>.
 I<RUNNING>, I<HEALTHY>, I<UNHEALTHY>, I<UNKNOWN>, I<BLACKLISTED>,
 I<SHUTDOWN>, I<THROTTLED>.
 
+
 =head2 AgentHealthDetails => Str
 
   The description for the agent health code.
+
 
 =head2 AgentId => Str
 
   The EC2 instance ID where the agent is installed.
 
+
 =head2 AssessmentArn => Str
 
   The ARN of the assessment that is associated with the agent.
 
+
 =head2 AutoScalingGroup => Str
 
   This data type property is currently not used.
+
 
 =head2 Telemetry => ArrayRef[L<Paws::Inspector::Telemetry>]
 

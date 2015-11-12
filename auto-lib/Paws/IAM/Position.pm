@@ -39,10 +39,12 @@ This data type is used as a member of the C<Statement> type.
 
 =head1 ATTRIBUTES
 
+
 =head2 Column => Int
 
   The column in the line containing the specified position in the
 document.
+
 
 =head2 Line => Int
 

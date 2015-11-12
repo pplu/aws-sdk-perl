@@ -15,15 +15,18 @@ Paws::STS::GetFederationTokenResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Credentials => L<Paws::STS::Credentials>
 
   Credentials for the service API authentication.
+
 =head2 FederatedUser => L<Paws::STS::FederatedUser>
 
   Identifiers for the federated user associated with the credentials
 (such as C<arn:aws:sts::123456789012:federated-user/Bob> or
 C<123456789012:Bob>). You can use the federated user's ARN in your
 resource-based policies, such as an Amazon S3 bucket policy.
+
 =head2 PackedPolicySize => Int
 
   A percentage value indicating the size of the policy in packed form.

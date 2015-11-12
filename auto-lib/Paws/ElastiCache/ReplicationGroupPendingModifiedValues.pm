@@ -37,6 +37,7 @@ or during the next maintenance window.
 
 =head1 ATTRIBUTES
 
+
 =head2 AutomaticFailoverStatus => Str
 
   Indicates the status of Multi-AZ for this replication group.
@@ -50,6 +51,7 @@ ElastiCache Multi-AZ replication groups are not supported on:
 =item * T1 and T2 cache node types.
 
 =back
+
 
 
 =head2 PrimaryClusterId => Str

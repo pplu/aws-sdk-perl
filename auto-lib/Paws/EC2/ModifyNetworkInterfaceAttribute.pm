@@ -37,15 +37,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Attachment => L<Paws::EC2::NetworkInterfaceAttachmentChanges>
 
   Information about the interface attachment. If modifying the 'delete on
 termination' attribute, you must specify the ID of the interface
 attachment.
 
+
 =head2 Description => L<Paws::EC2::AttributeValue>
 
   A description for the network interface.
+
 
 =head2 DryRun => Bool
 
@@ -54,6 +57,7 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 Groups => ArrayRef[Str]
 
   Changes the security groups for the network interface. The new set of
@@ -61,9 +65,11 @@ groups you specify replaces the current set. You must specify at least
 one group, even if it's just the default security group in the VPC. You
 must specify the ID of the security group, not the name.
 
+
 =head2 B<REQUIRED> NetworkInterfaceId => Str
 
   The ID of the network interface.
+
 
 =head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
 

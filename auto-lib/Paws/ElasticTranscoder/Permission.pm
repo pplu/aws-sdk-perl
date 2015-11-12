@@ -37,6 +37,7 @@ The C<Permission> structure.
 
 =head1 ATTRIBUTES
 
+
 =head2 Access => ArrayRef[Str]
 
   The permission that you want to give to the AWS user that is listed in
@@ -60,6 +61,7 @@ Amazon S3 bucket.
 =back
 
 
+
 =head2 Grantee => Str
 
   The AWS user or group that you want to have access to transcoded files
@@ -67,6 +69,7 @@ and playlists. To identify the user or group, you can specify the
 canonical user ID for an AWS account, an origin access identity for a
 CloudFront distribution, the registered email address of an AWS
 account, or a predefined Amazon S3 group.
+
 
 =head2 GranteeType => Str
 

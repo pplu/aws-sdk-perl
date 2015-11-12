@@ -13,9 +13,11 @@ Paws::CloudWatchLogs::DescribeDestinationsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Destinations => ArrayRef[L<Paws::CloudWatchLogs::Destination>]
 
   
+
 =head2 NextToken => Str
 
   

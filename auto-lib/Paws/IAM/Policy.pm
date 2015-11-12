@@ -50,24 +50,29 @@ and Inline Policies in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   
+
 
 =head2 AttachmentCount => Int
 
   The number of entities (users, groups, and roles) that the policy is
 attached to.
 
+
 =head2 CreateDate => Str
 
   The date and time, in ISO 8601 date-time format, when the policy was
 created.
 
+
 =head2 DefaultVersionId => Str
 
   The identifier for the version of the policy that is set as the default
 version.
+
 
 =head2 Description => Str
 
@@ -76,10 +81,12 @@ version.
 This element is included in the response to the GetPolicy operation. It
 is not included in the response to the ListPolicies operation.
 
+
 =head2 IsAttachable => Bool
 
   Specifies whether the policy can be attached to an IAM user, group, or
 role.
+
 
 =head2 Path => Str
 
@@ -88,6 +95,7 @@ role.
 For more information about paths, see IAM Identifiers in the I<Using
 IAM> guide.
 
+
 =head2 PolicyId => Str
 
   The stable and unique string identifying the policy.
@@ -95,9 +103,11 @@ IAM> guide.
 For more information about IDs, see IAM Identifiers in the I<Using IAM>
 guide.
 
+
 =head2 PolicyName => Str
 
   The friendly name (not ARN) identifying the policy.
+
 
 =head2 UpdateDate => Str
 

@@ -38,17 +38,21 @@ Describes an orderable cluster option.
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZones => ArrayRef[L<Paws::RedShift::AvailabilityZone>]
 
   A list of availability zones for the orderable cluster.
+
 
 =head2 ClusterType => Str
 
   The cluster type, for example C<multi-node>.
 
+
 =head2 ClusterVersion => Str
 
   The version of the orderable cluster.
+
 
 =head2 NodeType => Str
 

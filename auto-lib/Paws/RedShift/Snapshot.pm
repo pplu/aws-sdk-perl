@@ -62,55 +62,67 @@ Describes a snapshot.
 
 =head1 ATTRIBUTES
 
+
 =head2 AccountsWithRestoreAccess => ArrayRef[L<Paws::RedShift::AccountWithRestoreAccess>]
 
   A list of the AWS customer accounts authorized to restore the snapshot.
 Returns C<null> if no accounts are authorized. Visible only to the
 snapshot owner.
 
+
 =head2 ActualIncrementalBackupSizeInMegaBytes => Num
 
   The size of the incremental backup.
 
+
 =head2 AvailabilityZone => Str
 
   The Availability Zone in which the cluster was created.
+
 
 =head2 BackupProgressInMegaBytes => Num
 
   The number of megabytes that have been transferred to the snapshot
 backup.
 
+
 =head2 ClusterCreateTime => Str
 
   The time (UTC) when the cluster was originally created.
 
+
 =head2 ClusterIdentifier => Str
 
   The identifier of the cluster for which the snapshot was taken.
+
 
 =head2 ClusterVersion => Str
 
   The version ID of the Amazon Redshift engine that is running on the
 cluster.
 
+
 =head2 CurrentBackupRateInMegaBytesPerSecond => Num
 
   The number of megabytes per second being transferred to the snapshot
 backup. Returns C<0> for a completed backup.
 
+
 =head2 DBName => Str
 
   The name of the database that was created when the cluster was created.
+
 
 =head2 ElapsedTimeInSeconds => Int
 
   The amount of time an in-progress snapshot backup has been running, or
 the amount of time it took a completed backup to finish.
 
+
 =head2 Encrypted => Bool
 
   If C<true>, the data in the snapshot is encrypted at rest.
+
 
 =head2 EncryptedWithHSM => Bool
 
@@ -118,10 +130,12 @@ the amount of time it took a completed backup to finish.
 the HSM keys of the source cluster. C<true> indicates that the data is
 encrypted using HSM keys.
 
+
 =head2 EstimatedSecondsToCompletion => Int
 
   The estimate of the time remaining before the snapshot backup will
 complete. Returns C<0> for a completed backup.
+
 
 =head2 KmsKeyId => Str
 
@@ -129,17 +143,21 @@ complete. Returns C<0> for a completed backup.
 was used to encrypt data in the cluster from which the snapshot was
 taken.
 
+
 =head2 MasterUsername => Str
 
   The master user name for the cluster.
+
 
 =head2 NodeType => Str
 
   The node type of the nodes in the cluster.
 
+
 =head2 NumberOfNodes => Int
 
   The number of nodes in the cluster.
+
 
 =head2 OwnerAccount => Str
 
@@ -148,32 +166,39 @@ the snapshot. For automatic snapshots, the owner of the cluster. The
 owner can perform all snapshot actions, such as sharing a manual
 snapshot.
 
+
 =head2 Port => Int
 
   The port that the cluster is listening on.
+
 
 =head2 RestorableNodeTypes => ArrayRef[Str]
 
   The list of node types that this cluster snapshot is able to restore
 into.
 
+
 =head2 SnapshotCreateTime => Str
 
   The time (UTC) when Amazon Redshift began the snapshot. A snapshot
 contains a copy of the cluster data as of this exact time.
 
+
 =head2 SnapshotIdentifier => Str
 
   The snapshot identifier that is provided in the request.
+
 
 =head2 SnapshotType => Str
 
   The snapshot type. Snapshots created using CreateClusterSnapshot and
 CopyClusterSnapshot will be of type "manual".
 
+
 =head2 SourceRegion => Str
 
   The source region from which the snapshot was copied.
+
 
 =head2 Status => Str
 
@@ -193,14 +218,17 @@ operation used.
 =back
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   The list of tags for the cluster snapshot.
+
 
 =head2 TotalBackupSizeInMegaBytes => Num
 
   The size of the complete set of backup data that would be used to
 restore the cluster.
+
 
 =head2 VpcId => Str
 

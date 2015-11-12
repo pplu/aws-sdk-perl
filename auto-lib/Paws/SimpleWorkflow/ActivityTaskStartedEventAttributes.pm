@@ -36,11 +36,13 @@ Provides details of the C<ActivityTaskStarted> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Identity => Str
 
   Identity of the worker that was assigned this task. This aids
 diagnostics when problems arise. The form of this identity is user
 defined.
+
 
 =head2 B<REQUIRED> ScheduledEventId => Int
 

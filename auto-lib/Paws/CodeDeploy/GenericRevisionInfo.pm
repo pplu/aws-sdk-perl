@@ -39,21 +39,26 @@ Information about an application revision.
 
 =head1 ATTRIBUTES
 
+
 =head2 DeploymentGroups => ArrayRef[Str]
 
   A list of deployment groups that use this revision.
+
 
 =head2 Description => Str
 
   A comment about the revision.
 
+
 =head2 FirstUsedTime => Str
 
   When the revision was first used by AWS CodeDeploy.
 
+
 =head2 LastUsedTime => Str
 
   When the revision was last used by AWS CodeDeploy.
+
 
 =head2 RegisterTime => Str
 

@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Details => Str
 
   I<Optional.> Information about the cancellation.
+
 
 =head2 B<REQUIRED> TaskToken => Str
 

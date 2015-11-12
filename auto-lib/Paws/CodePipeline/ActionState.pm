@@ -39,22 +39,27 @@ Represents information about the state of an action.
 
 =head1 ATTRIBUTES
 
+
 =head2 ActionName => Str
 
   The name of the action.
 
+
 =head2 CurrentRevision => L<Paws::CodePipeline::ActionRevision>
 
   
+
 
 =head2 EntityUrl => Str
 
   A URL link for more information about the state of the action, such as
 a deployment group details page.
 
+
 =head2 LatestExecution => L<Paws::CodePipeline::ActionExecution>
 
   
+
 
 =head2 RevisionUrl => Str
 

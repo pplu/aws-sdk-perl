@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 IpOwnerId => Str
 
   The ID of the owner of the Elastic IP address.
 
+
 =head2 PublicDnsName => Str
 
   The public DNS name.
+
 
 =head2 PublicIp => Str
 

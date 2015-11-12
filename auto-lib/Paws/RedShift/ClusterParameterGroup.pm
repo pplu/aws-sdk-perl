@@ -38,18 +38,22 @@ Describes a parameter group.
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   The description of the parameter group.
+
 
 =head2 ParameterGroupFamily => Str
 
   The name of the cluster parameter group family that this cluster
 parameter group is compatible with.
 
+
 =head2 ParameterGroupName => Str
 
   The name of the cluster parameter group.
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

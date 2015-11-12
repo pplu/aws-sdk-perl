@@ -39,21 +39,26 @@ An update operation for a record.
 
 =head1 ATTRIBUTES
 
+
 =head2 DeviceLastModifiedDate => Str
 
   The last modified date of the client device.
+
 
 =head2 B<REQUIRED> Key => Str
 
   The key associated with the record patch.
 
+
 =head2 B<REQUIRED> Op => Str
 
   An operation, either replace or remove.
 
+
 =head2 B<REQUIRED> SyncCount => Int
 
   Last known server sync count for this record. Set to 0 if unknown.
+
 
 =head2 Value => Str
 

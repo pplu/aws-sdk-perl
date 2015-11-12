@@ -13,10 +13,12 @@ Paws::Config::ListDiscoveredResourcesResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   The string that you use in a subsequent request to get the next page of
 results in a paginated response.
+
 =head2 ResourceIdentifiers => ArrayRef[L<Paws::Config::ResourceIdentifier>]
 
   The details that identify a resource that is discovered by AWS Config,

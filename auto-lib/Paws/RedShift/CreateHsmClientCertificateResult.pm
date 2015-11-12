@@ -13,6 +13,7 @@ Paws::RedShift::CreateHsmClientCertificateResult
 
 =head1 ATTRIBUTES
 
+
 =head2 HsmClientCertificate => L<Paws::RedShift::HsmClientCertificate>
 
   

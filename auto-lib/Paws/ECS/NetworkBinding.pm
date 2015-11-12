@@ -41,19 +41,23 @@ C<networkBindings> section of DescribeTasks API responses.
 
 =head1 ATTRIBUTES
 
+
 =head2 BindIP => Str
 
   The IP address that the container is bound to on the container
 instance.
+
 
 =head2 ContainerPort => Int
 
   The port number on the container that is be used with the network
 binding.
 
+
 =head2 HostPort => Int
 
   The port number on the host that is used with the network binding.
+
 
 =head2 Protocol => Str
 

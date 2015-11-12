@@ -42,11 +42,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActionNames => ArrayRef[Str]
 
   A list of names of API actions to evaluate in the simulation. Each
 action is evaluated for each resource. Each action must include the
 service identifier, such as C<iam:CreateUser>.
+
 
 =head2 CallerArn => Str
 
@@ -66,11 +68,13 @@ C<PolicySourceArn> is not the ARN for an IAM user. This is required so
 that the resource-based policy's C<Principal> element has a value to
 use in evaluating the policy.
 
+
 =head2 ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]
 
   A list of context keys and corresponding values for the simulation to
 use. Whenever a context key is evaluated by a C<Condition> element in
 one of the simulated policies, the corresponding value is supplied.
+
 
 =head2 Marker => Str
 
@@ -78,6 +82,7 @@ one of the simulated policies, the corresponding value is supplied.
 receive a response indicating that the results are truncated. Set it to
 the value of the C<Marker> element in the response that you received to
 indicate where the next call should start.
+
 
 =head2 MaxItems => Int
 
@@ -91,11 +96,13 @@ results available. In that case, the C<IsTruncated> response element
 returns C<true> and C<Marker> contains a value to include in the
 subsequent call that tells the service where to continue from.
 
+
 =head2 PolicyInputList => ArrayRef[Str]
 
   An optional list of additional policy documents to include in the
 simulation. Each document is specified as a string containing the
 complete, valid JSON text of an IAM policy.
+
 
 =head2 B<REQUIRED> PolicySourceArn => Str
 
@@ -104,6 +111,7 @@ you want to include in the simulation. If you specify a user, group, or
 role, the simulation includes all policies that are associated with
 that entity. If you specify a user, the simulation also includes all
 policies that are attached to any groups the user belongs to.
+
 
 =head2 ResourceArns => ArrayRef[Str]
 
@@ -117,6 +125,7 @@ The simulation does not automatically retrieve policies for the
 specified resources. If you want to include a resource policy in the
 simulation, then you must include the policy as a string in the
 C<ResourcePolicy> parameter.
+
 
 =head2 ResourceHandlingOption => Str
 
@@ -178,6 +187,7 @@ instance, image, security-group, network-interface, subnet, volume
 =back
 
 
+
 =head2 ResourceOwner => Str
 
   An AWS account ID that specifies the owner of any simulated resource
@@ -190,6 +200,7 @@ identity provided in C<CallerArn>. This parameter is required only if
 you specify a resource-based policy and account that owns the resource
 is different from the account that owns the simulated calling user
 C<CallerArn>.
+
 
 =head2 ResourcePolicy => Str
 

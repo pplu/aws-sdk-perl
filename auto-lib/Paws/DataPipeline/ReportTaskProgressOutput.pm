@@ -12,6 +12,7 @@ Paws::DataPipeline::ReportTaskProgressOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Canceled => Bool
 
   If true, the calling task runner should cancel processing of the task.

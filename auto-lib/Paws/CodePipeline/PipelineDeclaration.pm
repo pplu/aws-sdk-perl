@@ -40,13 +40,16 @@ pipeline.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ArtifactStore => L<Paws::CodePipeline::ArtifactStore>
 
   
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the action to be performed.
+
 
 =head2 B<REQUIRED> RoleArn => Str
 
@@ -54,9 +57,11 @@ pipeline.
 perform actions with no actionRoleArn, or to use to assume roles for
 actions with an actionRoleArn.
 
+
 =head2 B<REQUIRED> Stages => ArrayRef[L<Paws::CodePipeline::StageDeclaration>]
 
   The stage in which to perform the action.
+
 
 =head2 Version => Int
 

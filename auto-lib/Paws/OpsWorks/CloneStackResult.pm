@@ -12,6 +12,7 @@ Paws::OpsWorks::CloneStackResult
 
 =head1 ATTRIBUTES
 
+
 =head2 StackId => Str
 
   The cloned stack ID.

@@ -1,13 +1,10 @@
 #!/usr/bin/env perl
 
-# This example is designed to benchmark immutability vs non-immutability
-# via the preload_service facility in Paws.
-# Since preload_service loads classes in-mass, it's easy to see the impact
-# that immutability has in various use cases
-# If you add use cases, please take into account that if you exercise a
-# service that has already been tested, you won't be measuring 
-# what you expect (since an already-loaded class will already be loaded
-# and immutable (or not)).
+# This example is designed to benchmark the preloading facility in Paws.
+# It does so by forking continuously until the machine starts erroring
+# out (no more memory for new processes). When preloaded, you get more
+# forks that when not preloaded, thus demostrating that preloading the 
+# classes before forking favours the creation of more processes
 
 use v5.10;
 use Paws;

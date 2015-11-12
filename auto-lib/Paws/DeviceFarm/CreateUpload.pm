@@ -35,17 +35,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ContentType => Str
 
   The upload's content type (for example, "application/octet-stream").
+
 
 =head2 B<REQUIRED> Name => Str
 
   The upload's file name.
 
+
 =head2 B<REQUIRED> ProjectArn => Str
 
   The ARN of the project for the upload.
+
 
 =head2 B<REQUIRED> Type => Str
 

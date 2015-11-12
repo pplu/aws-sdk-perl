@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Enabled => Bool
 
   Indicates whether monitoring is enabled for the instance.

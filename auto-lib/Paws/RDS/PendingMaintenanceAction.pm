@@ -40,10 +40,12 @@ Provides information about a pending maintenance action for a resource.
 
 =head1 ATTRIBUTES
 
+
 =head2 Action => Str
 
   The type of pending maintenance action that is available for the
 resource.
+
 
 =head2 AutoAppliedAfterDate => Str
 
@@ -51,6 +53,7 @@ resource.
 maintenance action will be applied to the resource during its first
 maintenance window after this date. If this date is specified, any
 C<next-maintenance> opt-in requests are ignored.
+
 
 =head2 CurrentApplyDate => Str
 
@@ -61,9 +64,11 @@ C<AutoAppliedAfterDate>, and the C<ForcedApplyDate>. This value is
 blank if an opt-in request has not been received and nothing has been
 specified as C<AutoAppliedAfterDate> or C<ForcedApplyDate>.
 
+
 =head2 Description => Str
 
   A description providing more detail about the maintenance action.
+
 
 =head2 ForcedApplyDate => Str
 
@@ -71,6 +76,7 @@ specified as C<AutoAppliedAfterDate> or C<ForcedApplyDate>.
 maintenance action will be applied to the resource on this date
 regardless of the maintenance window for the resource. If this date is
 specified, any C<immediate> opt-in requests are ignored.
+
 
 =head2 OptInStatus => Str
 

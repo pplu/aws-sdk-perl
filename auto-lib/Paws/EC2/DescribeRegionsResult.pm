@@ -13,6 +13,7 @@ Paws::EC2::DescribeRegionsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Regions => ArrayRef[L<Paws::EC2::Region>]
 
   Information about one or more regions.

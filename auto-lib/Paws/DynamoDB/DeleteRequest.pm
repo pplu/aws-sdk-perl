@@ -35,6 +35,7 @@ Represents a request to perform a I<DeleteItem> operation on an item.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
 
   A map of attribute name to attribute values, representing the primary

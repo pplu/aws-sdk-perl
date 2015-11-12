@@ -40,26 +40,32 @@ Information about an on-premises instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 DeregisterTime => Str
 
   If the on-premises instance was deregistered, the time that the
 on-premises instance was deregistered.
 
+
 =head2 IamUserArn => Str
 
   The IAM user ARN associated with the on-premises instance.
+
 
 =head2 InstanceArn => Str
 
   The ARN of the on-premises instance.
 
+
 =head2 InstanceName => Str
 
   The name of the on-premises instance.
 
+
 =head2 RegisterTime => Str
 
   The time that the on-premises instance was registered.
+
 
 =head2 Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
 

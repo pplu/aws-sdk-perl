@@ -38,11 +38,13 @@ Represents the application metrics for a specified environment.
 
 =head1 ATTRIBUTES
 
+
 =head2 Duration => Int
 
   The amount of time that the metrics cover (usually 10 seconds). For
 example, you might have 5 requests (C<request_count>) within the most
 recent time slice of 10 seconds (C<duration>).
+
 
 =head2 Latency => L<Paws::ElasticBeanstalk::Latency>
 
@@ -50,10 +52,12 @@ recent time slice of 10 seconds (C<duration>).
 over the last 10 seconds. Latencies are in seconds with one milisecond
 resolution.
 
+
 =head2 RequestCount => Int
 
   Average number of requests handled by the web server per second over
 the last 10 seconds.
+
 
 =head2 StatusCodes => L<Paws::ElasticBeanstalk::StatusCodes>
 

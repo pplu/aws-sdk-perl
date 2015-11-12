@@ -12,6 +12,7 @@ Paws::OpsWorks::RegisterInstanceResult
 
 =head1 ATTRIBUTES
 
+
 =head2 InstanceId => Str
 
   The registered instance's AWS OpsWorks ID.

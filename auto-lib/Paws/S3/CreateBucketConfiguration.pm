@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 LocationConstraint => Str
 
   Specifies the region where the bucket will be created. If you don't

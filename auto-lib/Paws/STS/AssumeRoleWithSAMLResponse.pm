@@ -20,19 +20,24 @@ Paws::STS::AssumeRoleWithSAMLResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 AssumedRoleUser => L<Paws::STS::AssumedRoleUser>
 
   
+
 =head2 Audience => Str
 
   The value of the C<Recipient> attribute of the
 C<SubjectConfirmationData> element of the SAML assertion.
+
 =head2 Credentials => L<Paws::STS::Credentials>
 
   
+
 =head2 Issuer => Str
 
   The value of the C<Issuer> element of the SAML assertion.
+
 =head2 NameQualifier => Str
 
   A hash value based on the concatenation of the C<Issuer> response
@@ -44,15 +49,18 @@ The following pseudocode shows how the hash value is calculated:
 
 C<BASE64 ( SHA1 ( "https://example.com/saml" + "123456789012" +
 "/MySAMLIdP" ) )>
+
 =head2 PackedPolicySize => Int
 
   A percentage value that indicates the size of the policy in packed
 form. The service rejects any policy with a packed size greater than
 100 percent, which means the policy exceeded the allowed space.
+
 =head2 Subject => Str
 
   The value of the C<NameID> element in the C<Subject> element of the
 SAML assertion.
+
 =head2 SubjectType => Str
 
   The format of the name ID, as defined by the C<Format> attribute in the

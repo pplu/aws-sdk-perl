@@ -13,6 +13,7 @@ Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage
 
 =head1 ATTRIBUTES
 
+
 =head2 EnvironmentResources => L<Paws::ElasticBeanstalk::EnvironmentResourceDescription>
 
   A list of EnvironmentResourceDescription.

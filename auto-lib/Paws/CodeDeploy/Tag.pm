@@ -36,9 +36,11 @@ Information about a tag.
 
 =head1 ATTRIBUTES
 
+
 =head2 Key => Str
 
   The tag's key.
+
 
 =head2 Value => Str
 

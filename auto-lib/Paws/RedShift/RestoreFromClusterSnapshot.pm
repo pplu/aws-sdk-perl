@@ -50,6 +50,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowVersionUpgrade => Bool
 
   If C<true>, major version upgrades can be applied during the
@@ -57,6 +58,7 @@ maintenance window to the Amazon Redshift engine that is running on the
 cluster.
 
 Default: C<true>
+
 
 =head2 AutomatedSnapshotRetentionPeriod => Int
 
@@ -70,6 +72,7 @@ taken.
 
 Constraints: Must be a value from 0 to 35.
 
+
 =head2 AvailabilityZone => Str
 
   The Amazon EC2 Availability Zone in which to restore the cluster.
@@ -77,6 +80,7 @@ Constraints: Must be a value from 0 to 35.
 Default: A random, system-chosen Availability Zone.
 
 Example: C<us-east-1a>
+
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
@@ -100,6 +104,7 @@ Constraints:
 =back
 
 
+
 =head2 ClusterParameterGroupName => Str
 
   The name of the parameter group to be associated with this cluster.
@@ -121,6 +126,7 @@ Constraints:
 =back
 
 
+
 =head2 ClusterSecurityGroups => ArrayRef[Str]
 
   A list of security groups to be associated with this cluster.
@@ -129,6 +135,7 @@ Default: The default cluster security group for Amazon Redshift.
 
 Cluster security groups only apply to clusters outside of VPCs.
 
+
 =head2 ClusterSubnetGroupName => Str
 
   The name of the subnet group where you want to cluster restored.
@@ -136,14 +143,17 @@ Cluster security groups only apply to clusters outside of VPCs.
 A snapshot of cluster in VPC can be restored only in VPC. Therefore,
 you must provide subnet group name where you want the cluster restored.
 
+
 =head2 ElasticIp => Str
 
   The elastic IP (EIP) address for the cluster.
+
 
 =head2 HsmClientCertificateIdentifier => Str
 
   Specifies the name of the HSM client certificate the Amazon Redshift
 cluster uses to retrieve the data encryption keys stored in an HSM.
+
 
 =head2 HsmConfigurationIdentifier => Str
 
@@ -151,11 +161,13 @@ cluster uses to retrieve the data encryption keys stored in an HSM.
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
 
+
 =head2 KmsKeyId => Str
 
   The AWS Key Management Service (KMS) key ID of the encryption key that
 you want to use to encrypt data in the cluster that you restore from a
 shared snapshot.
+
 
 =head2 NodeType => Str
 
@@ -171,11 +183,13 @@ only restore a dc1.large instance type into another dc1.large instance
 type. For more information about node types, see About Clusters and
 Nodes in the I<Amazon Redshift Cluster Management Guide>
 
+
 =head2 OwnerAccount => Str
 
   The AWS customer account used to create or copy the snapshot. Required
 if you are restoring a snapshot you do not own, optional if you own the
 snapshot.
+
 
 =head2 Port => Int
 
@@ -184,6 +198,7 @@ snapshot.
 Default: The same port as the original cluster.
 
 Constraints: Must be between C<1115> and C<65535>.
+
 
 =head2 PreferredMaintenanceWindow => Str
 
@@ -200,9 +215,11 @@ Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
 Constraints: Minimum 30-minute window.
 
+
 =head2 PubliclyAccessible => Bool
 
   If C<true>, the cluster can be accessed from a public network.
+
 
 =head2 SnapshotClusterIdentifier => Str
 
@@ -211,12 +228,14 @@ parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.
 
+
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
   The name of the snapshot from which to create the new cluster. This
 parameter isn't case sensitive.
 
 Example: C<my-snapshot-id>
+
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 

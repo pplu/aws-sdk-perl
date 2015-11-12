@@ -38,13 +38,16 @@ description of the version.
 
 =head1 ATTRIBUTES
 
+
 =head2 ClusterParameterGroupFamily => Str
 
   The name of the cluster parameter group family for the cluster.
 
+
 =head2 ClusterVersion => Str
 
   The version number used by the cluster.
+
 
 =head2 Description => Str
 

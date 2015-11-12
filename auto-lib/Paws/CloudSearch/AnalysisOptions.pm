@@ -40,6 +40,7 @@ Includes tokenization dictionary for Japanese.
 
 =head1 ATTRIBUTES
 
+
 =head2 AlgorithmicStemming => Str
 
   The level of algorithmic stemming to perform: C<none>, C<minimal>,
@@ -47,12 +48,14 @@ C<light>, or C<full>. The available levels vary depending on the
 language. For more information, see Language Specific Text Processing
 Settings in the I<Amazon CloudSearch Developer Guide>
 
+
 =head2 JapaneseTokenizationDictionary => Str
 
   A JSON array that contains a collection of terms, tokens, readings and
 part of speech for Japanese Tokenizaiton. The Japanese tokenization
 dictionary enables you to override the default tokenization for
 selected terms. This is only valid for Japanese language fields.
+
 
 =head2 StemmingDictionary => Str
 
@@ -64,12 +67,14 @@ results of the algorithmic stemming to correct specific cases of
 overstemming or understemming. The maximum size of a stemming
 dictionary is 500 KB.
 
+
 =head2 Stopwords => Str
 
   A JSON array of terms to ignore during indexing and searching. For
 example, C<["a", "an", "the", "of"]>. The stopwords dictionary must
 explicitly list each word you want to ignore. Wildcards and regular
 expressions are not supported.
+
 
 =head2 Synonyms => Str
 

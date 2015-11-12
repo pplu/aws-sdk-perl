@@ -37,9 +37,11 @@ PreviewAgentsForResourceGroup action.
 
 =head1 ATTRIBUTES
 
+
 =head2 AgentId => Str
 
   The id of the EC2 instance where the agent is intalled.
+
 
 =head2 AutoScalingGroup => Str
 

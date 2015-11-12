@@ -37,14 +37,17 @@ Information about a policy type.
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   A description of the policy type.
+
 
 =head2 PolicyAttributeTypeDescriptions => ArrayRef[L<Paws::ELB::PolicyAttributeTypeDescription>]
 
   The description of the policy attributes associated with the policies
 defined by Elastic Load Balancing.
+
 
 =head2 PolicyTypeName => Str
 

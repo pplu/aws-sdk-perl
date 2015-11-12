@@ -13,9 +13,11 @@ Paws::Inspector::ListAssessmentAgentsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 AgentList => ArrayRef[L<Paws::Inspector::Agent>]
 
   A list of ARNs specifying the agents returned by the action.
+
 =head2 NextToken => Str
 
   When a response is generated, if there is more data to be listed, this

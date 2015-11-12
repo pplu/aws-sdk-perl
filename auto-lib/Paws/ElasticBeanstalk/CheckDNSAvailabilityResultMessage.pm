@@ -14,6 +14,7 @@ Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage
 
 =head1 ATTRIBUTES
 
+
 =head2 Available => Bool
 
   Indicates if the specified CNAME is available:
@@ -29,6 +30,7 @@ C<true> : The CNAME is not available.
 =item * C<false> : The CNAME is not available.
 
 =back
+
 
 =head2 FullyQualifiedCNAME => Str
 

@@ -37,9 +37,11 @@ Information about an application revision's location.
 
 =head1 ATTRIBUTES
 
+
 =head2 GitHubLocation => L<Paws::CodeDeploy::GitHubLocation>
 
   
+
 
 =head2 RevisionType => Str
 
@@ -52,6 +54,7 @@ Information about an application revision's location.
 =item * GitHub: An application revision stored in GitHub.
 
 =back
+
 
 
 =head2 S3Location => L<Paws::CodeDeploy::S3Location>

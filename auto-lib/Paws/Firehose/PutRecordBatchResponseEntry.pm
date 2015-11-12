@@ -41,13 +41,16 @@ message.
 
 =head1 ATTRIBUTES
 
+
 =head2 ErrorCode => Str
 
   The error code for an individual record result.
 
+
 =head2 ErrorMessage => Str
 
   The error message for an individual record result.
+
 
 =head2 RecordId => Str
 

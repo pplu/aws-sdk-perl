@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CreateTime => Str
 
   The creation date and time of the request.
+
 
 =head2 B<REQUIRED> SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>
 
   Information about the configuration of the Spot fleet request.
 
+
 =head2 B<REQUIRED> SpotFleetRequestId => Str
 
   The ID of the Spot fleet request.
+
 
 =head2 B<REQUIRED> SpotFleetRequestState => Str
 

@@ -40,6 +40,7 @@ Configuration settings registered with the activity type.
 
 =head1 ATTRIBUTES
 
+
 =head2 DefaultTaskHeartbeatTimeout => Str
 
   I<Optional.> The default maximum time, in seconds, before which a
@@ -57,6 +58,7 @@ activity worker should clean up the activity task.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
   I<Optional.> The default task list specified for this activity type at
@@ -64,6 +66,7 @@ registration. This default is used if a task list is not provided when
 a task is scheduled through the C<ScheduleActivityTask> decision. You
 can override the default registered task list when scheduling a task
 through the C<ScheduleActivityTask> decision.
+
 
 =head2 DefaultTaskPriority => Str
 
@@ -79,6 +82,7 @@ indicate higher priority.
 For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
+
 =head2 DefaultTaskScheduleToCloseTimeout => Str
 
   I<Optional.> The default maximum duration, specified when registering
@@ -89,6 +93,7 @@ decision.
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
+
 =head2 DefaultTaskScheduleToStartTimeout => Str
 
   I<Optional.> The default maximum duration, specified when registering
@@ -98,6 +103,7 @@ scheduling a task through the C<ScheduleActivityTask> decision.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
+
 
 =head2 DefaultTaskStartToCloseTimeout => Str
 

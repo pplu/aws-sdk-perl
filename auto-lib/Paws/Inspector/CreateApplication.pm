@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationName => Str
 
   The user-defined name identifying the application that you want to
 create. The name must be unique within the AWS account.
+
 
 =head2 ResourceGroupArn => Str
 

@@ -14,15 +14,18 @@ Paws::DynamoDB::UpdateItemOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Attributes => L<Paws::DynamoDB::AttributeMap>
 
   A map of attribute values as they appeared before the I<UpdateItem>
 operation. This map only appears if I<ReturnValues> was specified as
 something other than C<NONE> in the request. Each element represents
 one attribute.
+
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
 
   
+
 =head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetrics>
 
   

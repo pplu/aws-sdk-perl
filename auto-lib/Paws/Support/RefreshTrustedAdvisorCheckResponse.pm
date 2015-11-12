@@ -12,6 +12,7 @@ Paws::Support::RefreshTrustedAdvisorCheckResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Status => L<Paws::Support::TrustedAdvisorCheckRefreshStatus>
 
   The current refresh status for a check, including the amount of time

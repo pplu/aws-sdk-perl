@@ -37,13 +37,16 @@ Describes an app's data source.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The data source's ARN.
 
+
 =head2 DatabaseName => Str
 
   The database name.
+
 
 =head2 Type => Str
 

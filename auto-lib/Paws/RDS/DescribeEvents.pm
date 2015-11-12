@@ -40,11 +40,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Duration => Int
 
   The number of minutes to retrieve events for.
 
 Default: 60
+
 
 =head2 EndTime => Str
 
@@ -54,20 +56,24 @@ Wikipedia page.
 
 Example: 2009-07-08T18:00Z
 
+
 =head2 EventCategories => ArrayRef[Str]
 
   A list of event categories that trigger notifications for a event
 notification subscription.
 
+
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
   This parameter is not currently supported.
+
 
 =head2 Marker => Str
 
   An optional pagination token provided by a previous DescribeEvents
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by C<MaxRecords>.
+
 
 =head2 MaxRecords => Int
 
@@ -79,6 +85,7 @@ results can be retrieved.
 Default: 100
 
 Constraints: Minimum 20, maximum 100.
+
 
 =head2 SourceIdentifier => Str
 
@@ -109,10 +116,12 @@ must be supplied.
 =back
 
 
+
 =head2 SourceType => Str
 
   The event source to retrieve events for. If no value is specified, all
 events are returned.
+
 
 =head2 StartTime => Str
 

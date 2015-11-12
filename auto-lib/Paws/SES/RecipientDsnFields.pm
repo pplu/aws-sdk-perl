@@ -46,20 +46,24 @@ Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Action => Str
 
   The action performed by the reporting mail transfer agent (MTA) as a
 result of its attempt to deliver the message to the recipient address.
 This is required by RFC 3464.
 
+
 =head2 DiagnosticCode => Str
 
   An extended explanation of what went wrong; this is usually an SMTP
 response. See RFC 3463 for the correct formatting of this parameter.
 
+
 =head2 ExtensionFields => ArrayRef[L<Paws::SES::ExtensionField>]
 
   Additional X-headers to include in the DSN.
+
 
 =head2 FinalRecipient => Str
 
@@ -73,16 +77,19 @@ original bounced message.
 Do not prepend the C<FinalRecipient> email address with C<rfc 822;>, as
 described in RFC 3798.
 
+
 =head2 LastAttemptDate => Str
 
   The time the final delivery attempt was made, in RFC 822 date-time
 format.
+
 
 =head2 RemoteMta => Str
 
   The MTA to which the remote MTA attempted to deliver the message,
 formatted as specified in RFC 3464 (C<mta-name-type; mta-name>). This
 parameter typically applies only to propagating synchronous bounces.
+
 
 =head2 B<REQUIRED> Status => Str
 

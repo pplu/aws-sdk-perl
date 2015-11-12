@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DBSubnetGroupDescription => Str
 
   The description for the DB subnet group.
+
 
 =head2 B<REQUIRED> DBSubnetGroupName => Str
 
@@ -47,6 +49,7 @@ Constraints: Must contain no more than 255 alphanumeric characters or
 hyphens. Must not be "Default".
 
 Example: C<mySubnetgroup>
+
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 

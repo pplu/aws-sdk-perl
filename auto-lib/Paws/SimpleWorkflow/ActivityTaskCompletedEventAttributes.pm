@@ -37,9 +37,11 @@ Provides details of the C<ActivityTaskCompleted> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Result => Str
 
   The results of the activity task (if any).
+
 
 =head2 B<REQUIRED> ScheduledEventId => Int
 
@@ -47,6 +49,7 @@ Provides details of the C<ActivityTaskCompleted> event.
 this activity task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
+
 
 =head2 B<REQUIRED> StartedEventId => Int
 

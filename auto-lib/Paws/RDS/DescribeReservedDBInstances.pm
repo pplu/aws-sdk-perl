@@ -41,10 +41,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DBInstanceClass => Str
 
   The DB instance class filter value. Specify this parameter to show only
 those reservations matching the specified DB instances class.
+
 
 =head2 Duration => Str
 
@@ -53,15 +55,18 @@ parameter to show only reservations for this duration.
 
 Valid Values: C<1 | 3 | 31536000 | 94608000>
 
+
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
   This parameter is not currently supported.
+
 
 =head2 Marker => Str
 
   An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
+
 
 =head2 MaxRecords => Int
 
@@ -74,10 +79,12 @@ Default: 100
 
 Constraints: Minimum 20, maximum 100.
 
+
 =head2 MultiAZ => Bool
 
   The Multi-AZ filter value. Specify this parameter to show only those
 reservations matching the specified Multi-AZ parameter.
+
 
 =head2 OfferingType => Str
 
@@ -86,16 +93,19 @@ available offerings matching the specified offering type.
 
 Valid Values: C<"Partial Upfront" | "All Upfront" | "No Upfront">
 
+
 =head2 ProductDescription => Str
 
   The product description filter value. Specify this parameter to show
 only those reservations matching the specified product description.
+
 
 =head2 ReservedDBInstanceId => Str
 
   The reserved DB instance identifier filter value. Specify this
 parameter to show only the reservation that matches the specified
 reservation ID.
+
 
 =head2 ReservedDBInstancesOfferingId => Str
 

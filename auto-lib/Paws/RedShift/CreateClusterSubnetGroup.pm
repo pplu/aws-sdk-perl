@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ClusterSubnetGroupName => Str
 
   The name for the subnet group. Amazon Redshift stores the value as a
@@ -56,14 +57,17 @@ AWS account.
 
 Example: C<examplesubnetgroup>
 
+
 =head2 B<REQUIRED> Description => Str
 
   A description for the subnet group.
+
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
   An array of VPC subnet IDs. A maximum of 20 subnets can be modified in
 a single request.
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

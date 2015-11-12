@@ -36,10 +36,12 @@ The Shutdown event configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 DelayUntilElbConnectionsDrained => Bool
 
   Whether to enable Elastic Load Balancing connection draining. For more
 information, see Connection Draining
+
 
 =head2 ExecutionTimeout => Int
 

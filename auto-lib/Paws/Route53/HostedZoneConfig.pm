@@ -38,11 +38,13 @@ C<HostedZoneConfig> and C<Comment> elements from the XML document.
 
 =head1 ATTRIBUTES
 
+
 =head2 Comment => Str
 
   An optional comment about your hosted zone. If you don't want to
 specify a comment, you can omit the C<HostedZoneConfig> and C<Comment>
 elements from the XML document.
+
 
 =head2 PrivateZone => Bool
 

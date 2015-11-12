@@ -48,46 +48,57 @@ DescribeOrderableDBInstanceOptions action.
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZones => ArrayRef[L<Paws::RDS::AvailabilityZone>]
 
   A list of Availability Zones for the orderable DB instance.
+
 
 =head2 DBInstanceClass => Str
 
   The DB instance class for the orderable DB instance.
 
+
 =head2 Engine => Str
 
   The engine type of the orderable DB instance.
+
 
 =head2 EngineVersion => Str
 
   The engine version of the orderable DB instance.
 
+
 =head2 LicenseModel => Str
 
   The license model for the orderable DB instance.
+
 
 =head2 MultiAZCapable => Bool
 
   Indicates whether this orderable DB instance is multi-AZ capable.
 
+
 =head2 ReadReplicaCapable => Bool
 
   Indicates whether this orderable DB instance can have a Read Replica.
+
 
 =head2 StorageType => Str
 
   Indicates the storage type for this orderable DB instance.
 
+
 =head2 SupportsIops => Bool
 
   Indicates whether this orderable DB instance supports provisioned IOPS.
+
 
 =head2 SupportsStorageEncryption => Bool
 
   Indicates whether this orderable DB instance supports encrypted
 storage.
+
 
 =head2 Vpc => Bool
 

@@ -46,6 +46,7 @@ A description of a job flow.
 
 =head1 ATTRIBUTES
 
+
 =head2 AmiVersion => Str
 
   The version of the AMI used to initialize Amazon EC2 instances in the
@@ -53,49 +54,60 @@ job flow. For a list of AMI versions currently supported by Amazon
 ElasticMapReduce, go to AMI Versions Supported in Elastic MapReduce in
 the I<Amazon Elastic MapReduce Developer Guide.>
 
+
 =head2 BootstrapActions => ArrayRef[L<Paws::EMR::BootstrapActionDetail>]
 
   A list of the bootstrap actions run by the job flow.
+
 
 =head2 B<REQUIRED> ExecutionStatusDetail => L<Paws::EMR::JobFlowExecutionStatusDetail>
 
   Describes the execution status of the job flow.
 
+
 =head2 B<REQUIRED> Instances => L<Paws::EMR::JobFlowInstancesDetail>
 
   Describes the Amazon EC2 instances of the job flow.
 
+
 =head2 B<REQUIRED> JobFlowId => Str
 
   The job flow identifier.
+
 
 =head2 JobFlowRole => Str
 
   The IAM role that was specified when the job flow was launched. The EC2
 instances of the job flow assume this role.
 
+
 =head2 LogUri => Str
 
   The location in Amazon S3 where log files for the job are stored.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the job flow.
+
 
 =head2 ServiceRole => Str
 
   The IAM role that will be assumed by the Amazon EMR service to access
 AWS resources on your behalf.
 
+
 =head2 Steps => ArrayRef[L<Paws::EMR::StepDetail>]
 
   A list of steps run by the job flow.
+
 
 =head2 SupportedProducts => ArrayRef[Str]
 
   A list of strings set by third party software when the job flow is
 launched. If you are not using third party software to manage the job
 flow this value is empty.
+
 
 =head2 VisibleToAllUsers => Bool
 

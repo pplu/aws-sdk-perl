@@ -43,6 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AgentVersion => Str
 
   The default AWS OpsWorks agent version. You have the following options:
@@ -63,6 +64,7 @@ must use the complete version number, not the abbreviated number shown
 on the console. For a list of available agent version numbers, call
 DescribeAgentVersions.
 
+
 =head2 AmiId => Str
 
   A custom AMI ID to be used to create the instance. The AMI must be
@@ -71,24 +73,29 @@ see Instances
 
 If you specify a custom AMI, you must set C<Os> to C<Custom>.
 
+
 =head2 Architecture => Str
 
   The instance architecture. Instance types do not necessarily support
 both architectures. For a list of the architectures that are supported
 by the different instance types, see Instance Families and Types.
 
+
 =head2 AutoScalingType => Str
 
   For load-based or time-based instances, the type. Windows stacks can
 use only time-based instances.
 
+
 =head2 EbsOptimized => Bool
 
   This property cannot be updated.
 
+
 =head2 Hostname => Str
 
   The instance host name.
+
 
 =head2 InstallUpdatesOnBoot => Bool
 
@@ -102,9 +109,11 @@ C<update_dependencies> stack command or by manually running C<yum>
 We strongly recommend using the default value of C<true>, to ensure
 that your instances have the latest security updates.
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
   The instance ID.
+
 
 =head2 InstanceType => Str
 
@@ -115,9 +124,11 @@ types. For more information, see Instance Families and Types. The
 parameter values that you use to specify the various types are in the
 B<API Name> column of the B<Available Instance Types> table.
 
+
 =head2 LayerIds => ArrayRef[Str]
 
   The instance's layer IDs.
+
 
 =head2 Os => Str
 
@@ -147,6 +158,7 @@ to use custom AMIs with OpsWorks, see Using Custom AMIs.
 
 You can specify a different Linux operating system for the updated
 stack, but you cannot change from Linux to Windows or Windows to Linux.
+
 
 =head2 SshKeyName => Str
 

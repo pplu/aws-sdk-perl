@@ -37,15 +37,18 @@ The Parameter data type.
 
 =head1 ATTRIBUTES
 
+
 =head2 ParameterKey => Str
 
   The key associated with the parameter. If you don't specify a key and
 value for a particular parameter, AWS CloudFormation uses the default
 value that is specified in your template.
 
+
 =head2 ParameterValue => Str
 
   The value associated with the parameter.
+
 
 =head2 UsePreviousValue => Bool
 

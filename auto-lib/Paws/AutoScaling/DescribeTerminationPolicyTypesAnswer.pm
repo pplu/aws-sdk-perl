@@ -13,6 +13,7 @@ Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer
 
 =head1 ATTRIBUTES
 
+
 =head2 TerminationPolicyTypes => ArrayRef[Str]
 
   The termination policies supported by Auto Scaling (C<OldestInstance>,

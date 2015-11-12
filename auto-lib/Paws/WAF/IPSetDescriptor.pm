@@ -37,9 +37,11 @@ CIDR format) that web requests originate from.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Type => Str
 
   Specify C<IPV4>.
+
 
 =head2 B<REQUIRED> Value => Str
 

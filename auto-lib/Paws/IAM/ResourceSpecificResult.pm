@@ -42,6 +42,7 @@ This data type is used by a member of the EvaluationResult data type.
 
 =head1 ATTRIBUTES
 
+
 =head2 EvalDecisionDetails => L<Paws::IAM::EvalDecisionDetailsType>
 
   Additional details about the results of the evaluation decision. When
@@ -50,15 +51,18 @@ explains how each set of policies contributes to the final evaluation
 decision. When simulating cross-account access to a resource, both the
 resource-based policy and the caller's IAM policy must grant access.
 
+
 =head2 B<REQUIRED> EvalResourceDecision => Str
 
   The result of the simulation of the simulated API action on the
 resource specified in C<EvalResourceName>.
 
+
 =head2 B<REQUIRED> EvalResourceName => Str
 
   The name of the simulated resource, in Amazon Resource Name (ARN)
 format.
+
 
 =head2 MatchedStatements => ArrayRef[L<Paws::IAM::Statement>]
 
@@ -67,6 +71,7 @@ result for this part of the simulation. Remember that even if multiple
 statements allow the action on the resource, if I<any> statement denies
 that action, then the explicit deny overrides any allow, and the deny
 statement is the only entry included in the result.
+
 
 =head2 MissingContextValues => ArrayRef[Str]
 

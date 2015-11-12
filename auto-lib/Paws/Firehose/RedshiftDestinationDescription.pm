@@ -39,21 +39,26 @@ Describes a destination in Amazon Redshift.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ClusterJDBCURL => Str
 
   The database connection string.
+
 
 =head2 B<REQUIRED> CopyCommand => L<Paws::Firehose::CopyCommand>
 
   The C<COPY> command.
 
+
 =head2 B<REQUIRED> RoleARN => Str
 
   The ARN of the AWS credentials.
 
+
 =head2 B<REQUIRED> S3DestinationDescription => L<Paws::Firehose::S3DestinationDescription>
 
   The Amazon S3 destination.
+
 
 =head2 B<REQUIRED> Username => Str
 

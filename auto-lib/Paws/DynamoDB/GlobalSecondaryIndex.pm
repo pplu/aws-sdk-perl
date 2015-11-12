@@ -38,10 +38,12 @@ Represents the properties of a global secondary index.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IndexName => Str
 
   The name of the global secondary index. The name must be unique among
 all other indexes on this table.
+
 
 =head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
@@ -49,9 +51,11 @@ all other indexes on this table.
 one or more pairs of attribute names and key types (C<HASH> or
 C<RANGE>).
 
+
 =head2 B<REQUIRED> Projection => L<Paws::DynamoDB::Projection>
 
   
+
 
 =head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 

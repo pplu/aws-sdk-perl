@@ -20,6 +20,7 @@ Paws::S3::NotificationConfiguration
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bucket => Str
 
   Name of the buket to get the notification configuration for.

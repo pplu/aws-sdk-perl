@@ -39,21 +39,26 @@ Represents a matched event from a C<FilterLogEvents> request.
 
 =head1 ATTRIBUTES
 
+
 =head2 EventId => Str
 
   A unique identifier for this event.
+
 
 =head2 IngestionTime => Int
 
   
 
+
 =head2 LogStreamName => Str
 
   The name of the log stream this event belongs to.
 
+
 =head2 Message => Str
 
   The data contained in the log event.
+
 
 =head2 Timestamp => Int
 

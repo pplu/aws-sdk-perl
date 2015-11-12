@@ -13,9 +13,11 @@ Paws::DeviceFarm::ListArtifactsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Artifacts => ArrayRef[L<Paws::DeviceFarm::Artifact>]
 
   Information about the artifacts.
+
 =head2 NextToken => Str
 
   If the number of items that are returned is significantly large, this

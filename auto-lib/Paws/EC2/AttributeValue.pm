@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Value => Str
 
   Valid values are case-sensitive and vary by action.

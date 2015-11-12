@@ -14,9 +14,11 @@ Paws::EC2::DescribeMovingAddressesResult
 
 =head1 ATTRIBUTES
 
+
 =head2 MovingAddressStatuses => ArrayRef[L<Paws::EC2::MovingAddressStatus>]
 
   The status for each Elastic IP address.
+
 =head2 NextToken => Str
 
   The token to use to retrieve the next page of results. This value is

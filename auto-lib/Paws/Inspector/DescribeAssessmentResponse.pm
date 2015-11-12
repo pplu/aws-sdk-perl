@@ -12,6 +12,7 @@ Paws::Inspector::DescribeAssessmentResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Assessment => L<Paws::Inspector::Assessment>
 
   Information about the assessment.

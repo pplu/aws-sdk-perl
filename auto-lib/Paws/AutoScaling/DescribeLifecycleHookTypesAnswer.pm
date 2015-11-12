@@ -13,6 +13,7 @@ Paws::AutoScaling::DescribeLifecycleHookTypesAnswer
 
 =head1 ATTRIBUTES
 
+
 =head2 LifecycleHookTypes => ArrayRef[Str]
 
   One or more of the following notification types:

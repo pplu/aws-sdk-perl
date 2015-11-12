@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Description => Str
 
   A description for the security group. This is informational only.
@@ -46,12 +47,14 @@ Constraints for EC2-Classic: ASCII characters
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
 ._-:/()
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 B<REQUIRED> GroupName => Str
 
@@ -63,6 +66,7 @@ Constraints for EC2-Classic: ASCII characters
 
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
 ._-:/()
+
 
 =head2 VpcId => Str
 

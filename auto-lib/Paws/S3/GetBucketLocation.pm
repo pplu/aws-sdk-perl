@@ -20,6 +20,7 @@ Paws::S3::GetBucketLocationOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bucket => Str
 
   

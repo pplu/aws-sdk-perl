@@ -38,18 +38,22 @@ The TemplateParameter data type.
 
 =head1 ATTRIBUTES
 
+
 =head2 DefaultValue => Str
 
   The default value associated with the parameter.
+
 
 =head2 Description => Str
 
   User defined description associated with the parameter.
 
+
 =head2 NoEcho => Bool
 
   Flag indicating whether the parameter should be displayed as plain text
 in logs and UIs.
+
 
 =head2 ParameterKey => Str
 

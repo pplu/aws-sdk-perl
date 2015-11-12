@@ -39,13 +39,16 @@ components of a pipeline defines the pipeline.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Fields => ArrayRef[L<Paws::DataPipeline::Field>]
 
   Key-value pairs that define the properties of the object.
 
+
 =head2 B<REQUIRED> Id => Str
 
   The ID of the object.
+
 
 =head2 B<REQUIRED> Name => Str
 

@@ -34,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 NewPath => Str
 
   New path for the user. Include this parameter only if you're changing
 the user's path.
 
+
 =head2 NewUserName => Str
 
   New name for the user. Include this parameter only if you're changing
 the user's name.
+
 
 =head2 B<REQUIRED> UserName => Str
 

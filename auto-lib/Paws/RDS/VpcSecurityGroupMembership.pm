@@ -37,9 +37,11 @@ security group membership.
 
 =head1 ATTRIBUTES
 
+
 =head2 Status => Str
 
   The status of the VPC security group.
+
 
 =head2 VpcSecurityGroupId => Str
 

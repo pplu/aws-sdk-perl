@@ -38,14 +38,17 @@ cookies and headers.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Cookies => L<Paws::CloudFront::CookiePreference>
 
   A complex type that specifies how CloudFront handles cookies.
+
 
 =head2 Headers => L<Paws::CloudFront::Headers>
 
   A complex type that specifies the Headers, if any, that you want
 CloudFront to vary upon for this cache behavior.
+
 
 =head2 B<REQUIRED> QueryString => Bool
 

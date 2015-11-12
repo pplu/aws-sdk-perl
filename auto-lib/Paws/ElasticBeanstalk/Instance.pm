@@ -35,6 +35,7 @@ The description of an Amazon EC2 instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 Id => Str
 
   The ID of the Amazon EC2 instance.

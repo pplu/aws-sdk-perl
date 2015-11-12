@@ -13,6 +13,7 @@ Paws::ApiGateway::Template
 
 =head1 ATTRIBUTES
 
+
 =head2 Value => Str
 
   The Apache Velocity Template Language (VTL) template content used for

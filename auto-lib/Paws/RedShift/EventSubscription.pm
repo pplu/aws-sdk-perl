@@ -45,19 +45,23 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 CustomerAwsId => Str
 
   The AWS customer account associated with the Amazon Redshift event
 notification subscription.
 
+
 =head2 CustSubscriptionId => Str
 
   The name of the Amazon Redshift event notification subscription.
+
 
 =head2 Enabled => Bool
 
   A Boolean value indicating whether the subscription is enabled. C<true>
 indicates the subscription is enabled.
+
 
 =head2 EventCategoriesList => ArrayRef[Str]
 
@@ -66,6 +70,7 @@ notification subscription.
 
 Values: Configuration, Management, Monitoring, Security
 
+
 =head2 Severity => Str
 
   The event severity specified in the Amazon Redshift event notification
@@ -73,20 +78,24 @@ subscription.
 
 Values: ERROR, INFO
 
+
 =head2 SnsTopicArn => Str
 
   The Amazon Resource Name (ARN) of the Amazon SNS topic used by the
 event notification subscription.
+
 
 =head2 SourceIdsList => ArrayRef[Str]
 
   A list of the sources that publish events to the Amazon Redshift event
 notification subscription.
 
+
 =head2 SourceType => Str
 
   The source type of the events returned the Amazon Redshift event
 notification, such as cluster, or cluster-snapshot.
+
 
 =head2 Status => Str
 
@@ -107,10 +116,12 @@ subscription was created.
 =back
 
 
+
 =head2 SubscriptionCreationTime => Str
 
   The date and time the Amazon Redshift event notification subscription
 was created.
+
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 

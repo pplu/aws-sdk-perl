@@ -36,9 +36,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Device => Str
 
   The device name.
+
 
 =head2 DryRun => Bool
 
@@ -46,6 +48,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 Force => Bool
 
@@ -57,9 +60,11 @@ a volume from a failed instance. The instance won't have an opportunity
 to flush file system caches or file system metadata. If you use this
 option, you must perform file system check and repair procedures.
 
+
 =head2 InstanceId => Str
 
   The ID of the instance.
+
 
 =head2 B<REQUIRED> VolumeId => Str
 

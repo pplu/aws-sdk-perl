@@ -15,12 +15,15 @@ Paws::EC2::CancelImportTaskResult
 
 =head1 ATTRIBUTES
 
+
 =head2 ImportTaskId => Str
 
   The ID of the task being canceled.
+
 =head2 PreviousState => Str
 
   The current state of the task being canceled.
+
 =head2 State => Str
 
   The current state of the task being canceled.

@@ -33,23 +33,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CopyPartResult => L<Paws::S3::CopyPartResult>
 
   
+
 
 =head2 CopySourceVersionId => Str
 
   The version of the source object that was copied, if you have enabled
 versioning on the source bucket.
 
+
 =head2 RequestCharged => Str
 
   
+
 
 =head2 ServerSideEncryption => Str
 
   The Server-side encryption algorithm used when storing this object in
 S3 (e.g., AES256, aws:kms).
+
 
 =head2 SSECustomerAlgorithm => Str
 
@@ -57,11 +62,13 @@ S3 (e.g., AES256, aws:kms).
 requested, the response will include this header confirming the
 encryption algorithm used.
 
+
 =head2 SSECustomerKeyMD5 => Str
 
   If server-side encryption with a customer-provided encryption key was
 requested, the response will include this header to provide round trip
 message integrity verification of the customer-provided encryption key.
+
 
 =head2 SSEKMSKeyId => Str
 

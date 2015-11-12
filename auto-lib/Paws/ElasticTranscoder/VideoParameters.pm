@@ -49,6 +49,7 @@ The C<VideoParameters> structure.
 
 =head1 ATTRIBUTES
 
+
 =head2 AspectRatio => Str
 
   To better control resolution and aspect ratio of output videos, we
@@ -69,6 +70,7 @@ If you specify an aspect ratio for the output file that differs from
 aspect ratio of the input file, Elastic Transcoder adds pillarboxing
 (black bars on the sides) or letterboxing (black bars on the top and
 bottom) to maintain the aspect ratio of the active region of the video.
+
 
 =head2 BitRate => Str
 
@@ -109,12 +111,14 @@ Profile) : maximum video bit rate in kilobits/second (high Profile)>
 =back
 
 
+
 =head2 Codec => Str
 
   The video codec for the output file. Valid values include C<gif>,
 C<H.264>, C<mpeg2>, and C<vp8>. You can only specify C<vp8> when the
 container type is C<webm>, C<gif> when the container type is C<gif>,
 and C<mpeg2> when the container type is C<mpg>.
+
 
 =head2 CodecOptions => L<Paws::ElasticTranscoder::CodecOptions>
 
@@ -282,10 +286,12 @@ B<LoopCount (Gif Only)>
 The number of times you want the output gif to loop. Valid values
 include C<Infinite> and integers between C<0> and C<100>, inclusive.
 
+
 =head2 DisplayAspectRatio => Str
 
   The value that Elastic Transcoder adds to the metadata in the output
 file.
+
 
 =head2 FixedGOP => Str
 
@@ -306,6 +312,7 @@ frames in a group of pictures, or GOP).
 =back
 
 C<FixedGOP> must be set to C<true> for C<fmp4> containers.
+
 
 =head2 FrameRate => Str
 
@@ -368,6 +375,7 @@ level is described in the following list (I<Level - Decoding speed>):
 =back
 
 
+
 =head2 KeyframesMaxDist => Str
 
   Applicable only when the value of Video:Codec is one of C<H.264>,
@@ -392,6 +400,7 @@ C<KeyframesMaxDist> of 90, 75, and 30, respectively.
 Alternately, this can be achieved by setting C<FrameRate> to auto and
 having the same values for C<MaxFrameRate> and C<KeyframesMaxDist>.
 
+
 =head2 MaxFrameRate => Str
 
   If you specify C<auto> for C<FrameRate>, Elastic Transcoder uses the
@@ -401,12 +410,14 @@ when the frame rate of the input video is greater than the desired
 maximum frame rate of the output video. Valid values include: C<10>,
 C<15>, C<23.97>, C<24>, C<25>, C<29.97>, C<30>, C<60>.
 
+
 =head2 MaxHeight => Str
 
   The maximum height of the output video in pixels. If you specify
 C<auto>, Elastic Transcoder uses 1080 (Full HD) as the default value.
 If you specify a numeric value, enter an even integer between 96 and
 3072.
+
 
 =head2 MaxWidth => Str
 
@@ -415,12 +426,14 @@ C<auto>, Elastic Transcoder uses 1920 (Full HD) as the default value.
 If you specify a numeric value, enter an even integer between 128 and
 4096.
 
+
 =head2 PaddingPolicy => Str
 
   When you set C<PaddingPolicy> to C<Pad>, Elastic Transcoder may add
 black bars to the top and bottom and/or left and right sides of the
 output video to make the total size of the output video match the
 values that you specified for C<MaxWidth> and C<MaxHeight>.
+
 
 =head2 Resolution => Str
 
@@ -498,6 +511,7 @@ value in the following list (I<List - Max width x height value>):
 =back
 
 
+
 =head2 SizingPolicy => Str
 
   Specify one of the following values to control scaling of the output
@@ -538,6 +552,7 @@ value. If you specify this option, Elastic Transcoder does not scale
 the video up.
 
 =back
+
 
 
 =head2 Watermarks => ArrayRef[L<Paws::ElasticTranscoder::PresetWatermark>]

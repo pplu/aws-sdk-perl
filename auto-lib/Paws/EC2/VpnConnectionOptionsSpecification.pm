@@ -35,6 +35,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 StaticRoutesOnly => Bool
 
   Indicates whether the VPN connection uses static routes only. Static

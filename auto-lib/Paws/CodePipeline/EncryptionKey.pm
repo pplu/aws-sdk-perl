@@ -37,9 +37,11 @@ key used to encrypt data in the artifact store.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   The ID of the AWS KMS key.
+
 
 =head2 B<REQUIRED> Type => Str
 

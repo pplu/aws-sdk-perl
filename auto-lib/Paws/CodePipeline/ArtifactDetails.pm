@@ -36,9 +36,11 @@ Returns information about the details of an artifact.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> MaximumCount => Int
 
   The maximum number of artifacts allowed for the action type.
+
 
 =head2 B<REQUIRED> MinimumCount => Int
 

@@ -46,10 +46,12 @@ record set.
 
 =head1 ATTRIBUTES
 
+
 =head2 AliasTarget => L<Paws::Route53::AliasTarget>
 
   I<Alias resource record sets only:> Information about the AWS resource
 to which you are redirecting traffic.
+
 
 =head2 Failover => Str
 
@@ -71,11 +73,13 @@ resource record set.
 
 Valid values: C<PRIMARY> | C<SECONDARY>
 
+
 =head2 GeoLocation => L<Paws::Route53::GeoLocation>
 
   I<Geo location resource record sets only:> Among resource record sets
 that have the same combination of DNS name and type, a value that
 specifies the geo location for the current resource record set.
+
 
 =head2 HealthCheckId => Str
 
@@ -83,9 +87,11 @@ specifies the geo location for the current resource record set.
 resource record sets:> An identifier that is used to identify health
 check associated with the resource record set.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The domain name of the current resource record set.
+
 
 =head2 Region => Str
 
@@ -93,10 +99,12 @@ check associated with the resource record set.
 that have the same combination of DNS name and type, a value that
 specifies the AWS region for the current resource record set.
 
+
 =head2 ResourceRecords => ArrayRef[L<Paws::Route53::ResourceRecord>]
 
   A complex type that contains the resource records for the current
 resource record set.
+
 
 =head2 SetIdentifier => Str
 
@@ -104,13 +112,16 @@ resource record set.
 identifier that differentiates among multiple resource record sets that
 have the same combination of DNS name and type.
 
+
 =head2 TTL => Int
 
   The cache time to live for the current resource record set.
 
+
 =head2 B<REQUIRED> Type => Str
 
   The type of the current resource record set.
+
 
 =head2 Weight => Int
 

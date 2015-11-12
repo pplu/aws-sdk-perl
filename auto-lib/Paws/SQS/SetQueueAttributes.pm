@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Attributes => L<Paws::SQS::QueueAttributeMap>
 
   A map of attributes to set.
@@ -74,6 +75,7 @@ RedrivePolicy and dead letter queues, see Using Amazon SQS Dead Letter
 Queues in the I<Amazon SQS Developer Guide>.
 
 =back
+
 
 
 =head2 B<REQUIRED> QueueUrl => Str

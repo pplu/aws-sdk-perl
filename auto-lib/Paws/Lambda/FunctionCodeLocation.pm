@@ -36,10 +36,12 @@ The object for the Lambda function location.
 
 =head1 ATTRIBUTES
 
+
 =head2 Location => Str
 
   The presigned URL you can use to download the function's .zip file that
 you previously uploaded. The URL is valid for up to 10 minutes.
+
 
 =head2 RepositoryType => Str
 

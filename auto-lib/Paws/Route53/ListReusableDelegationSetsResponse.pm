@@ -31,10 +31,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DelegationSets => ArrayRef[L<Paws::Route53::DelegationSet>]
 
   A complex type that contains information about the reusable delegation
 sets associated with the current AWS account.
+
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
@@ -44,11 +46,13 @@ request for the next page of results by using the C<Marker> element.
 
 Valid Values: C<true> | C<false>
 
+
 =head2 Marker => Str
 
   If the request returned more than one page of results, submit another
 request and specify the value of C<NextMarker> from the last response
 in the C<marker> parameter to get the next page of results.
+
 
 =head2 B<REQUIRED> MaxItems => Str
 
@@ -60,6 +64,7 @@ C<true>. Call C<ListReusableDelegationSets> again and specify the value
 of ListReusableDelegationSetsResponse$NextMarker in the
 ListReusableDelegationSetsRequest$Marker element to get the next page
 of results.
+
 
 =head2 NextMarker => Str
 

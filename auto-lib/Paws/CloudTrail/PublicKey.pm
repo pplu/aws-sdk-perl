@@ -38,17 +38,21 @@ Contains information about a returned public key.
 
 =head1 ATTRIBUTES
 
+
 =head2 Fingerprint => Str
 
   The fingerprint of the public key.
+
 
 =head2 ValidityEndTime => Str
 
   The ending time of validity of the public key.
 
+
 =head2 ValidityStartTime => Str
 
   The starting time of validity of the public key.
+
 
 =head2 Value => Str
 

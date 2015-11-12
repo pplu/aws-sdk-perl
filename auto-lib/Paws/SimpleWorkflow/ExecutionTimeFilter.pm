@@ -39,9 +39,11 @@ are in the Unix Time format. For example: C<"oldestDate": 1325376070.>
 
 =head1 ATTRIBUTES
 
+
 =head2 LatestDate => Str
 
   Specifies the latest start or close date and time to return.
+
 
 =head2 B<REQUIRED> OldestDate => Str
 

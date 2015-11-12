@@ -18,10 +18,12 @@ Paws::SimpleWorkflow::DecisionTask
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Events => ArrayRef[L<Paws::SimpleWorkflow::HistoryEvent>]
 
   A paginated list of history events of the workflow execution. The
 decider uses this during the processing of the decision task.
+
 =head2 NextPageToken => Str
 
   If a C<NextPageToken> was returned by a previous call, there are more
@@ -31,23 +33,28 @@ arguments unchanged.
 
 The configured C<maximumPageSize> determines how many results can be
 returned in a single call.
+
 =head2 PreviousStartedEventId => Int
 
   The ID of the DecisionTaskStarted event of the previous decision task
 of this workflow execution that was processed by the decider. This can
 be used to determine the events in the history new since the last
 decision task received by the decider.
+
 =head2 B<REQUIRED> StartedEventId => Int
 
   The ID of the C<DecisionTaskStarted> event recorded in the history.
+
 =head2 B<REQUIRED> TaskToken => Str
 
   The opaque string used as a handle on the task. This token is used by
 workers to communicate progress and response information back to the
 system about the task.
+
 =head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The workflow execution for which this decision task was created.
+
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
   The type of the workflow execution for which this decision task was

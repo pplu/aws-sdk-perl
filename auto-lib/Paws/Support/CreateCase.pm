@@ -40,24 +40,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AttachmentSetId => Str
 
   The ID of a set of one or more attachments for the case. Create the set
 by using AddAttachmentsToSet.
 
+
 =head2 CategoryCode => Str
 
   The category of problem for the AWS Support case.
+
 
 =head2 CcEmailAddresses => ArrayRef[Str]
 
   A list of email addresses that AWS Support copies on case
 correspondence.
 
+
 =head2 B<REQUIRED> CommunicationBody => Str
 
   The communication body text when you create an AWS Support case by
 calling CreateCase.
+
 
 =head2 IssueType => Str
 
@@ -65,15 +70,18 @@ calling CreateCase.
 "customer-service" or "technical." If you do not indicate a value, the
 default is "technical."
 
+
 =head2 Language => Str
 
   The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.
 
+
 =head2 ServiceCode => Str
 
   The code for the AWS service returned by the call to DescribeServices.
+
 
 =head2 SeverityCode => Str
 
@@ -83,6 +91,7 @@ DescribeSeverityLevels.
 The availability of severity levels depends on each customer's support
 subscription. In other words, your subscription may not necessarily
 require the urgent level of response time.
+
 
 =head2 B<REQUIRED> Subject => Str
 

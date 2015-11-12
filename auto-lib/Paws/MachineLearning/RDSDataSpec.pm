@@ -46,15 +46,18 @@ RDS) C<DataSource>.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DatabaseCredentials => L<Paws::MachineLearning::RDSDatabaseCredentials>
 
   The AWS Identity and Access Management (IAM) credentials that are used
 connect to the Amazon RDS database.
 
+
 =head2 B<REQUIRED> DatabaseInformation => L<Paws::MachineLearning::RDSDatabase>
 
   Describes the C<DatabaseName> and C<InstanceIdentifier> of an an Amazon
 RDS database.
+
 
 =head2 DataRearrangement => Str
 
@@ -62,6 +65,7 @@ RDS database.
 requirement of a C<DataSource>.
 
 Sample - C< "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}">
+
 
 =head2 DataSchema => Str
 
@@ -99,9 +103,11 @@ value. Use the following format to define your C<DataSchema>.
 
 "excludedVariableNames": [ "F6" ] }
 
+
 =head2 DataSchemaUri => Str
 
   The Amazon S3 location of the C<DataSchema>.
+
 
 =head2 B<REQUIRED> ResourceRole => Str
 
@@ -110,10 +116,12 @@ Compute Cloud (Amazon EC2) instance to carry out the copy operation
 from Amazon RDS to an Amazon S3 task. For more information, see Role
 templates for data pipelines.
 
+
 =head2 B<REQUIRED> S3StagingLocation => Str
 
   The Amazon S3 location for staging Amazon RDS data. The data retrieved
 from Amazon RDS using C<SelectSqlQuery> is stored in this location.
+
 
 =head2 B<REQUIRED> SecurityGroupIds => ArrayRef[Str]
 
@@ -123,16 +131,19 @@ allow access to the RDS DB instance. This attribute is used by Data
 Pipeline to carry out the copy operation from Amazon RDS to an Amazon
 S3 task.
 
+
 =head2 B<REQUIRED> SelectSqlQuery => Str
 
   The query that is used to retrieve the observation data for the
 C<DataSource>.
+
 
 =head2 B<REQUIRED> ServiceRole => Str
 
   The role (DataPipelineDefaultRole) assumed by AWS Data Pipeline service
 to monitor the progress of the copy task from Amazon RDS to Amazon S3.
 For more information, see Role templates for data pipelines.
+
 
 =head2 B<REQUIRED> SubnetId => Str
 

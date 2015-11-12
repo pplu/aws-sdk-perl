@@ -38,11 +38,13 @@ widest variety of email clients.
 
 =head1 ATTRIBUTES
 
+
 =head2 Html => L<Paws::SES::Content>
 
   The content of the message, in HTML format. Use this for email clients
 that can process HTML. You can include clickable links, formatted text,
 and much more in an HTML message.
+
 
 =head2 Text => L<Paws::SES::Content>
 

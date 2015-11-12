@@ -38,6 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActivationKey => Str
 
   Your gateway activation key. You can obtain the activation key by
@@ -49,9 +50,11 @@ parameters, however, these are merely defaults -- the arguments you
 pass to the C<ActivateGateway> API call determine the actual
 configuration of your gateway.
 
+
 =head2 B<REQUIRED> GatewayName => Str
 
   
+
 
 =head2 B<REQUIRED> GatewayRegion => Str
 
@@ -66,11 +69,13 @@ I<Valid Values>: "us-east-1", "us-west-1", "us-west-2", "eu-west-1",
 "eu-central-1", "ap-northeast-1", "ap-southeast-1", "ap-southeast-2",
 "sa-east-1"
 
+
 =head2 B<REQUIRED> GatewayTimezone => Str
 
   One of the values that indicates the time zone you want to set for the
 gateway. The time zone is used, for example, for scheduling snapshots
 and your gateway's maintenance schedule.
+
 
 =head2 GatewayType => Str
 
@@ -78,12 +83,14 @@ and your gateway's maintenance schedule.
 type specified is critical to all later functions of the gateway and
 cannot be changed after activation. The default value is C<STORED>.
 
+
 =head2 MediumChangerType => Str
 
   The value that indicates the type of medium changer to use for
 gateway-VTL. This field is optional.
 
 I<Valid Values>: "STK-L700", "AWS-Gateway-VTL"
+
 
 =head2 TapeDriveType => Str
 

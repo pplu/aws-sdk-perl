@@ -36,6 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationName => Str
 
   The name of the application associated with the configuration template
@@ -43,19 +44,23 @@ or environment. Only needed if you want to describe the configuration
 options associated with either the configuration template or
 environment.
 
+
 =head2 EnvironmentName => Str
 
   The name of the environment whose configuration options you want to
 describe.
 
+
 =head2 Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
 
   If specified, restricts the descriptions to only the specified options.
+
 
 =head2 SolutionStackName => Str
 
   The name of the solution stack whose configuration options you want to
 describe.
+
 
 =head2 TemplateName => Str
 

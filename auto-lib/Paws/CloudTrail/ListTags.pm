@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
   Reserved for future use.
+
 
 =head2 B<REQUIRED> ResourceIdList => ArrayRef[Str]
 

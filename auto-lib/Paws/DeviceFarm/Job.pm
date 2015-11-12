@@ -46,33 +46,41 @@ Represents a device.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The job's ARN.
+
 
 =head2 Counters => L<Paws::DeviceFarm::Counters>
 
   The job's result counters.
 
+
 =head2 Created => Str
 
   When the job was created.
+
 
 =head2 Device => L<Paws::DeviceFarm::Device>
 
   
 
+
 =head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
 
   Represents the total (metered or unmetered) minutes used by the job.
+
 
 =head2 Message => Str
 
   A message about the job's result.
 
+
 =head2 Name => Str
 
   The job's name.
+
 
 =head2 Result => Str
 
@@ -113,9 +121,11 @@ WARNED: A warning condition.
 =back
 
 
+
 =head2 Started => Str
 
   The job's start time.
+
 
 =head2 Status => Str
 
@@ -148,9 +158,11 @@ SCHEDULING: A scheduling status.
 =back
 
 
+
 =head2 Stopped => Str
 
   The job's stop time.
+
 
 =head2 Type => Str
 

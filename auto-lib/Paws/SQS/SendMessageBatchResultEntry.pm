@@ -39,9 +39,11 @@ SendMessageBatch.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   An identifier for the message in this batch.
+
 
 =head2 MD5OfMessageAttributes => Str
 
@@ -51,12 +53,14 @@ Amazon SQS first URL decodes the message before creating the MD5
 digest. For information about MD5, go to
 http://www.faqs.org/rfcs/rfc1321.html.
 
+
 =head2 B<REQUIRED> MD5OfMessageBody => Str
 
   An MD5 digest of the non-URL-encoded message body string. This can be
 used to verify that Amazon SQS received the message correctly. Amazon
 SQS first URL decodes the message before creating the MD5 digest. For
 information about MD5, go to http://www.faqs.org/rfcs/rfc1321.html.
+
 
 =head2 B<REQUIRED> MessageId => Str
 

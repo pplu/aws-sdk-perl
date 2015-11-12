@@ -36,6 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DurationSeconds => Int
 
   The duration, in seconds, of the role session. The value can range from
@@ -46,6 +47,7 @@ actual expiration time is whichever value is shorter.
 
 The maximum duration for a session is 1 hour, and the minimum duration
 is 15 minutes, even if values outside this range are specified.
+
 
 =head2 Policy => Str
 
@@ -68,14 +70,17 @@ separate limit. The PackedPolicySize response element indicates by
 percentage how close to the upper size limit the policy is, with 100%
 equaling the maximum allowed size.
 
+
 =head2 B<REQUIRED> PrincipalArn => Str
 
   The Amazon Resource Name (ARN) of the SAML provider in IAM that
 describes the IdP.
 
+
 =head2 B<REQUIRED> RoleArn => Str
 
   The Amazon Resource Name (ARN) of the role that the caller is assuming.
+
 
 =head2 B<REQUIRED> SAMLAssertion => Str
 

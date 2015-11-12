@@ -36,9 +36,11 @@ Represents information about a current revision.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ChangeIdentifier => Str
 
   The change identifier for the current revision.
+
 
 =head2 B<REQUIRED> Revision => Str
 

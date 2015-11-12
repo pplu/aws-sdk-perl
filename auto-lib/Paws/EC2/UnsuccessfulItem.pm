@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Error => L<Paws::EC2::UnsuccessfulItemError>
 
   Information about the error.
+
 
 =head2 ResourceId => Str
 

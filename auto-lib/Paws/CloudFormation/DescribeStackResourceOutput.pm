@@ -13,6 +13,7 @@ Paws::CloudFormation::DescribeStackResourceOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 StackResourceDetail => L<Paws::CloudFormation::StackResourceDetail>
 
   A C<StackResourceDetail> structure containing the description of the

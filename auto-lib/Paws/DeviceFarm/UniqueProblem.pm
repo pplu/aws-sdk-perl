@@ -36,9 +36,11 @@ A collection of one or more problems, grouped by their result.
 
 =head1 ATTRIBUTES
 
+
 =head2 Message => Str
 
   A message about the unique problems' result.
+
 
 =head2 Problems => ArrayRef[L<Paws::DeviceFarm::Problem>]
 

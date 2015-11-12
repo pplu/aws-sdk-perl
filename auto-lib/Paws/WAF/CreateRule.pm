@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ChangeToken => Str
 
   The value returned by the most recent call to GetChangeToken.
+
 
 =head2 B<REQUIRED> MetricName => Str
 
@@ -44,6 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
 can't contain whitespace. You can't change the name of the metric after
 you create the C<Rule>.
+
 
 =head2 B<REQUIRED> Name => Str
 

@@ -38,12 +38,14 @@ Provides details of the C<WorkflowExecutionTerminated> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Cause => Str
 
   If set, indicates that the workflow execution was automatically
 terminated, and specifies the cause. This happens if the parent
 workflow execution times out or is terminated and the child policy is
 set to terminate child executions.
+
 
 =head2 B<REQUIRED> ChildPolicy => Str
 
@@ -67,9 +69,11 @@ continue to run.
 =back
 
 
+
 =head2 Details => Str
 
   The details provided for the termination (if any).
+
 
 =head2 Reason => Str
 

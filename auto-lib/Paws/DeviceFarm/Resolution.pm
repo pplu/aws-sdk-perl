@@ -37,9 +37,11 @@ expressed in pixels.
 
 =head1 ATTRIBUTES
 
+
 =head2 Height => Int
 
   The screen resolution's height, expressed in pixels.
+
 
 =head2 Width => Int
 

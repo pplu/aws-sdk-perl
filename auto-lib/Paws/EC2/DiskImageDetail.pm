@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bytes => Int
 
   The size of the disk image, in GiB.
 
+
 =head2 B<REQUIRED> Format => Str
 
   The disk image format.
+
 
 =head2 B<REQUIRED> ImportManifestUrl => Str
 

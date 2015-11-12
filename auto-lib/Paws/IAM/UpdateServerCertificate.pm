@@ -34,16 +34,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 NewPath => Str
 
   The new path for the server certificate. Include this only if you are
 updating the server certificate's path.
+
 
 =head2 NewServerCertificateName => Str
 
   The new name for the server certificate. Include this only if you are
 updating the server certificate's name. The name of the certificate
 cannot contain any spaces.
+
 
 =head2 B<REQUIRED> ServerCertificateName => Str
 

@@ -29,14 +29,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DeleteMarker => Bool
 
   Specifies whether the versioned object that was permanently deleted was
 (true) or was not (false) a delete marker.
 
+
 =head2 RequestCharged => Str
 
   
+
 
 =head2 VersionId => Str
 

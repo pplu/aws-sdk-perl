@@ -14,14 +14,17 @@ Paws::CognitoIdentity::LookupDeveloperIdentityResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 DeveloperUserIdentifierList => ArrayRef[Str]
 
   This is the list of developer user identifiers associated with an
 identity ID. Cognito supports the association of multiple developer
 user identifiers with an identity ID.
+
 =head2 IdentityId => Str
 
   A unique identifier in the format REGION:GUID.
+
 =head2 NextToken => Str
 
   A pagination token. The first call you make will have C<NextToken> set

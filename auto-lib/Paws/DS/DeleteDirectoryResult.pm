@@ -12,6 +12,7 @@ Paws::DS::DeleteDirectoryResult
 
 =head1 ATTRIBUTES
 
+
 =head2 DirectoryId => Str
 
   The directory identifier.

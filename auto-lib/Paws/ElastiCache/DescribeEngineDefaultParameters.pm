@@ -34,10 +34,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CacheParameterGroupFamily => Str
 
   The name of the cache parameter group family. Valid values are:
 C<memcached1.4> | C<redis2.6> | C<redis2.8>
+
 
 =head2 Marker => Str
 
@@ -45,6 +47,7 @@ C<memcached1.4> | C<redis2.6> | C<redis2.8>
 pagination of results from this action. If this parameter is specified,
 the response includes only records beyond the marker, up to the value
 specified by I<MaxRecords>.
+
 
 =head2 MaxRecords => Int
 

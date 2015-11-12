@@ -36,10 +36,12 @@ Describes a filter.
 
 =head1 ATTRIBUTES
 
+
 =head2 Name => Str
 
   The name of the filter. The valid values are: C<"auto-scaling-group">,
 C<"key">, C<"value">, and C<"propagate-at-launch">.
+
 
 =head2 Values => ArrayRef[Str]
 

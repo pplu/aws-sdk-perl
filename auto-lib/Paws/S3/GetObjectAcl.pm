@@ -23,15 +23,19 @@ Paws::S3::GetObjectAclOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bucket => Str
 
   
+
 =head2 B<REQUIRED> Key => Str
 
   
+
 =head2 RequestPayer => Str
 
   
+
 =head2 VersionId => Str
 
   VersionId used to reference a specific version of the object.

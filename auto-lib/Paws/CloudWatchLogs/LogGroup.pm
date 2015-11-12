@@ -40,25 +40,31 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   
+
 
 =head2 CreationTime => Int
 
   
 
+
 =head2 LogGroupName => Str
 
   
+
 
 =head2 MetricFilterCount => Int
 
   
 
+
 =head2 RetentionInDays => Int
 
   
+
 
 =head2 StoredBytes => Int
 

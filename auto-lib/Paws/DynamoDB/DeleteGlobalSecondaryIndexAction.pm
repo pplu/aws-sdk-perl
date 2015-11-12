@@ -36,6 +36,7 @@ table.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IndexName => Str
 
   The name of the global secondary index to be deleted.

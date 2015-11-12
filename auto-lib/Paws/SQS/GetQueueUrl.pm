@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> QueueName => Str
 
   The name of the queue whose URL must be fetched. Maximum 80 characters;
 alphanumeric characters, hyphens (-), and underscores (_) are allowed.
+
 
 =head2 QueueOwnerAWSAccountId => Str
 

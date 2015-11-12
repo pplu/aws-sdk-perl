@@ -39,22 +39,27 @@ Describes a user's SSH information.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowSelfManagement => Bool
 
   Whether users can specify their own SSH public key through the My
 Settings page. For more information, see Managing User Permissions.
 
+
 =head2 IamUserArn => Str
 
   The user's IAM ARN.
+
 
 =head2 Name => Str
 
   The user's name.
 
+
 =head2 SshPublicKey => Str
 
   The user's SSH public key.
+
 
 =head2 SshUsername => Str
 

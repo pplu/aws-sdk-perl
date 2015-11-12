@@ -33,9 +33,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 RepositoryDescription => Str
 
   A comment or description about the new repository.
+
 
 =head2 B<REQUIRED> RepositoryName => Str
 

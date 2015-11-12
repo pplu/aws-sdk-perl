@@ -39,13 +39,16 @@ Contains information about a WorkSpace that could not be rebooted
 
 =head1 ATTRIBUTES
 
+
 =head2 ErrorCode => Str
 
   The error code.
 
+
 =head2 ErrorMessage => Str
 
   The textual error message.
+
 
 =head2 WorkspaceId => Str
 

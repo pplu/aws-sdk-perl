@@ -36,9 +36,11 @@ Describes the encryption for a destination in Amazon S3.
 
 =head1 ATTRIBUTES
 
+
 =head2 KMSEncryptionConfig => L<Paws::Firehose::KMSEncryptionConfig>
 
   The encryption key.
+
 
 =head2 NoEncryptionConfig => Str
 

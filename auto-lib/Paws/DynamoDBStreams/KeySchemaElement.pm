@@ -44,9 +44,11 @@ I<KeySchemaElement> for the range attribute.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AttributeName => Str
 
   The name of a key attribute.
+
 
 =head2 B<REQUIRED> KeyType => Str
 

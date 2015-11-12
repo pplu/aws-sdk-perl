@@ -49,6 +49,7 @@ the updated distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 ErrorCachingMinTTL => Int
 
   The minimum amount of time you want HTTP error codes to stay in
@@ -56,17 +57,20 @@ CloudFront caches before CloudFront queries your origin to see whether
 the object has been updated. You can specify a value from 0 to
 31,536,000.
 
+
 =head2 B<REQUIRED> ErrorCode => Int
 
   The 4xx or 5xx HTTP status code that you want to customize. For a list
 of HTTP status codes that you can customize, see CloudFront
 documentation.
 
+
 =head2 ResponseCode => Str
 
   The HTTP status code that you want CloudFront to return with the custom
 error page to the viewer. For a list of HTTP status codes that you can
 replace, see CloudFront Documentation.
+
 
 =head2 ResponsePagePath => Str
 

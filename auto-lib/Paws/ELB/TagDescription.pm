@@ -36,9 +36,11 @@ The tags associated with a load balancer.
 
 =head1 ATTRIBUTES
 
+
 =head2 LoadBalancerName => Str
 
   The name of the load balancer.
+
 
 =head2 Tags => ArrayRef[L<Paws::ELB::Tag>]
 

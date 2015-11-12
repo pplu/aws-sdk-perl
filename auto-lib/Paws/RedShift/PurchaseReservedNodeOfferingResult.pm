@@ -13,6 +13,7 @@ Paws::RedShift::PurchaseReservedNodeOfferingResult
 
 =head1 ATTRIBUTES
 
+
 =head2 ReservedNode => L<Paws::RedShift::ReservedNode>
 
   

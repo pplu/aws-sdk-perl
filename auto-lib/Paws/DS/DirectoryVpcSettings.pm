@@ -37,11 +37,13 @@ directory is being created.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
   The identifiers of the subnets for the directory servers. The two
 subnets must be in different Availability Zones. AWS Directory Service
 creates a directory server and a DNS server in each of these subnets.
+
 
 =head2 B<REQUIRED> VpcId => Str
 

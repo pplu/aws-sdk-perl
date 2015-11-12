@@ -37,13 +37,16 @@ An entity describing an executable that runs on a cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 Args => ArrayRef[Str]
 
   Arguments for Amazon EMR to pass to the command for execution.
 
+
 =head2 Name => Str
 
   The name of the command.
+
 
 =head2 ScriptPath => Str
 

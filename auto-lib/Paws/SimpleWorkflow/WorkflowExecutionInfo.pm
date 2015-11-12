@@ -43,9 +43,11 @@ Contains information about a workflow execution.
 
 =head1 ATTRIBUTES
 
+
 =head2 CancelRequested => Bool
 
   Set to true if a cancellation is requested for this workflow execution.
+
 
 =head2 CloseStatus => Str
 
@@ -73,33 +75,40 @@ started to carry on the workflow.
 =back
 
 
+
 =head2 CloseTimestamp => Str
 
   The time when the workflow execution was closed. Set only if the
 execution status is CLOSED.
 
+
 =head2 B<REQUIRED> Execution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The workflow execution this information is about.
 
+
 =head2 B<REQUIRED> ExecutionStatus => Str
 
   The current status of the execution.
+
 
 =head2 Parent => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   If this workflow execution is a child of another execution then
 contains the workflow execution that started this execution.
 
+
 =head2 B<REQUIRED> StartTimestamp => Str
 
   The time when the execution was started.
+
 
 =head2 TagList => ArrayRef[Str]
 
   The list of tags associated with the workflow execution. Tags can be
 used to identify and list workflow executions of interest through the
 visibility APIs. A workflow execution can have a maximum of 5 tags.
+
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 

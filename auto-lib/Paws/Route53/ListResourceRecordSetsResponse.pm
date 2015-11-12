@@ -32,6 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IsTruncated => Bool
 
   A flag that indicates whether there are more resource record sets to be
@@ -41,10 +42,12 @@ ListResourceRecordSetsResponse$NextRecordName element.
 
 Valid Values: C<true> | C<false>
 
+
 =head2 B<REQUIRED> MaxItems => Str
 
   The maximum number of records you requested. The maximum value of
 C<MaxItems> is 100.
+
 
 =head2 NextRecordIdentifier => Str
 
@@ -52,17 +55,20 @@ C<MaxItems> is 100.
 given DNS name and type, the value of C<SetIdentifier> for the next
 resource record set that has the current DNS name and type.
 
+
 =head2 NextRecordName => Str
 
   If the results were truncated, the name of the next record in the list.
 This element is present only if
 ListResourceRecordSetsResponse$IsTruncated is true.
 
+
 =head2 NextRecordType => Str
 
   If the results were truncated, the type of the next record in the list.
 This element is present only if
 ListResourceRecordSetsResponse$IsTruncated is true.
+
 
 =head2 B<REQUIRED> ResourceRecordSets => ArrayRef[L<Paws::Route53::ResourceRecordSet>]
 

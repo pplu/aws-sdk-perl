@@ -50,9 +50,11 @@ configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 Arn => Str
 
   The run's ARN.
+
 
 =head2 BillingMethod => Str
 
@@ -60,30 +62,37 @@ configuration.
 C<unmetered>. If the parameter is not specified, the default value is
 C<unmetered>.
 
+
 =head2 CompletedJobs => Int
 
   The total number of completed jobs.
+
 
 =head2 Counters => L<Paws::DeviceFarm::Counters>
 
   The run's result counters.
 
+
 =head2 Created => Str
 
   When the run was created.
+
 
 =head2 DeviceMinutes => L<Paws::DeviceFarm::DeviceMinutes>
 
   Represents the total (metered or unmetered) minutes used by the test
 run.
 
+
 =head2 Message => Str
 
   A message about the run's result.
 
+
 =head2 Name => Str
 
   The run's name.
+
 
 =head2 Platform => Str
 
@@ -102,6 +111,7 @@ ANDROID: The Android platform.
 IOS: The iOS platform.
 
 =back
+
 
 
 =head2 Result => Str
@@ -143,9 +153,11 @@ WARNED: A warning condition.
 =back
 
 
+
 =head2 Started => Str
 
   The run's start time.
+
 
 =head2 Status => Str
 
@@ -178,13 +190,16 @@ SCHEDULING: A scheduling status.
 =back
 
 
+
 =head2 Stopped => Str
 
   The run's stop time.
 
+
 =head2 TotalJobs => Int
 
   The total number of jobs for the run.
+
 
 =head2 Type => Str
 

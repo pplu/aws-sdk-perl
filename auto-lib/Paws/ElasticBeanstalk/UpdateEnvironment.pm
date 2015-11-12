@@ -40,10 +40,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   If this parameter is specified, AWS Elastic Beanstalk updates the
 description of this environment.
+
 
 =head2 EnvironmentId => Str
 
@@ -56,6 +58,7 @@ Condition: You must specify either this or an EnvironmentName, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
+
 =head2 EnvironmentName => Str
 
   The name of the environment to update. If no environment with this name
@@ -66,21 +69,25 @@ Condition: You must specify either this or an EnvironmentId, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
+
 =head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
   If specified, AWS Elastic Beanstalk updates the configuration set
 associated with the running environment and sets the specified
 configuration options to the requested value.
 
+
 =head2 OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
 
   A list of custom user-defined configuration options to remove from the
 configuration set for this environment.
 
+
 =head2 SolutionStackName => Str
 
   This specifies the platform version that the environment will run after
 the environment is updated.
+
 
 =head2 TemplateName => Str
 
@@ -89,12 +96,14 @@ configuration template to the environment. If no such configuration
 template is found, AWS Elastic Beanstalk returns an
 C<InvalidParameterValue> error.
 
+
 =head2 Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>
 
   This specifies the tier to use to update the environment.
 
 Condition: At this time, if you change the tier version, name, or type,
 AWS Elastic Beanstalk returns C<InvalidParameterValue> error.
+
 
 =head2 VersionLabel => Str
 

@@ -12,6 +12,7 @@ Paws::Inspector::DescribeFindingResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Finding => L<Paws::Inspector::Finding>
 
   Information about the finding.

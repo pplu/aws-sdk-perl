@@ -39,13 +39,16 @@ Information about a policy attribute type.
 
 =head1 ATTRIBUTES
 
+
 =head2 AttributeName => Str
 
   The name of the attribute.
 
+
 =head2 AttributeType => Str
 
   The type of the attribute. For example, C<Boolean> or C<Integer>.
+
 
 =head2 Cardinality => Str
 
@@ -66,9 +69,11 @@ Valid values:
 =back
 
 
+
 =head2 DefaultValue => Str
 
   The default value of the attribute, if applicable.
+
 
 =head2 Description => Str
 

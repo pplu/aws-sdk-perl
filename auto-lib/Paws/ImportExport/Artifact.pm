@@ -37,9 +37,11 @@ A discrete item that contains the description and URL of an artifact
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   
+
 
 =head2 URL => Str
 

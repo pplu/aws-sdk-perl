@@ -38,13 +38,16 @@ group.
 
 =head1 ATTRIBUTES
 
+
 =head2 EC2SecurityGroupName => Str
 
   The name of the Amazon EC2 security group.
 
+
 =head2 EC2SecurityGroupOwnerId => Str
 
   The AWS account ID of the Amazon EC2 security group owner.
+
 
 =head2 Status => Str
 

@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Count => Int
 
   The number of instances available for the price.
+
 
 =head2 Price => Num
 

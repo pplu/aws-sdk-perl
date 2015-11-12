@@ -37,9 +37,11 @@ Represents all of the data describing a particular stream.
 
 =head1 ATTRIBUTES
 
+
 =head2 StreamArn => Str
 
   The Amazon Resource Name (ARN) for the stream.
+
 
 =head2 StreamLabel => Str
 
@@ -65,6 +67,7 @@ the table name
 the I<StreamLabel>
 
 =back
+
 
 
 =head2 TableName => Str

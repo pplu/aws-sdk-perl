@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 GatewayARN => Str
 
   
+
 
 =head2 GatewayName => Str
 
   
 
+
 =head2 GatewayOperationalState => Str
 
   
+
 
 =head2 GatewayType => Str
 

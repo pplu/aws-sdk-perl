@@ -36,9 +36,11 @@ Information about a source security group.
 
 =head1 ATTRIBUTES
 
+
 =head2 GroupName => Str
 
   The name of the security group.
+
 
 =head2 OwnerAlias => Str
 

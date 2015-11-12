@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 GroupName => Str
 
   The name of the placement group.
 
+
 =head2 State => Str
 
   The state of the placement group.
+
 
 =head2 Strategy => Str
 

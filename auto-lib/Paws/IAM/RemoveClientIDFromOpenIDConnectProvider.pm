@@ -33,11 +33,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ClientID => Str
 
   The client ID (also known as audience) to remove from the IAM OpenID
 Connect provider. For more information about client IDs, see
 CreateOpenIDConnectProvider.
+
 
 =head2 B<REQUIRED> OpenIDConnectProviderArn => Str
 

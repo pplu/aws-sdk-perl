@@ -55,6 +55,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowVersionUpgrade => Bool
 
   If C<true>, major version upgrades can be applied during the
@@ -68,6 +69,7 @@ your cluster.
 
 Default: C<true>
 
+
 =head2 AutomatedSnapshotRetentionPeriod => Int
 
   The number of days that automated snapshots are retained. If the value
@@ -78,6 +80,7 @@ CreateClusterSnapshot.
 Default: C<1>
 
 Constraints: Must be a value from 0 to 35.
+
 
 =head2 AvailabilityZone => Str
 
@@ -94,6 +97,7 @@ Example: C<us-east-1d>
 
 Constraint: The specified Availability Zone must be in the same region
 as the current endpoint.
+
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
@@ -120,6 +124,7 @@ Constraints:
 
 Example: C<myexamplecluster>
 
+
 =head2 ClusterParameterGroupName => Str
 
   The name of the parameter group to be associated with this cluster.
@@ -141,11 +146,13 @@ Constraints:
 =back
 
 
+
 =head2 ClusterSecurityGroups => ArrayRef[Str]
 
   A list of security groups to be associated with this cluster.
 
 Default: The default cluster security group for Amazon Redshift.
+
 
 =head2 ClusterSubnetGroupName => Str
 
@@ -153,6 +160,7 @@ Default: The default cluster security group for Amazon Redshift.
 
 If this parameter is not provided the resulting cluster will be
 deployed outside virtual private cloud (VPC).
+
 
 =head2 ClusterType => Str
 
@@ -170,6 +178,7 @@ Valid Values: C<multi-node> | C<single-node>
 
 Default: C<multi-node>
 
+
 =head2 ClusterVersion => Str
 
   The version of the Amazon Redshift engine software that you want to
@@ -180,6 +189,7 @@ The version selected runs on all the nodes in the cluster.
 Constraints: Only version 1.0 is currently available.
 
 Example: C<1.0>
+
 
 =head2 DBName => Str
 
@@ -208,6 +218,7 @@ Database Developer Guide.
 =back
 
 
+
 =head2 ElasticIp => Str
 
   The Elastic IP (EIP) address for the cluster.
@@ -217,16 +228,19 @@ publicly-accessible through an Internet gateway. For more information
 about provisioning clusters in EC2-VPC, go to Supported Platforms to
 Launch Your Cluster in the Amazon Redshift Cluster Management Guide.
 
+
 =head2 Encrypted => Bool
 
   If C<true>, the data in the cluster is encrypted at rest.
 
 Default: false
 
+
 =head2 HsmClientCertificateIdentifier => Str
 
   Specifies the name of the HSM client certificate the Amazon Redshift
 cluster uses to retrieve the data encryption keys stored in an HSM.
+
 
 =head2 HsmConfigurationIdentifier => Str
 
@@ -234,10 +248,12 @@ cluster uses to retrieve the data encryption keys stored in an HSM.
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
 
+
 =head2 KmsKeyId => Str
 
   The AWS Key Management Service (KMS) key ID of the encryption key that
 you want to use to encrypt data in the cluster.
+
 
 =head2 B<REQUIRED> MasterUsername => Str
 
@@ -257,6 +273,7 @@ found in Reserved Words in the Amazon Redshift Database Developer
 Guide.
 
 =back
+
 
 
 =head2 B<REQUIRED> MasterUserPassword => Str
@@ -282,6 +299,7 @@ except ' (single quote), " (double quote), \, /, @, or space.
 =back
 
 
+
 =head2 B<REQUIRED> NodeType => Str
 
   The node type to be provisioned for the cluster. For information about
@@ -290,6 +308,7 @@ Cluster Management Guide>.
 
 Valid Values: C<ds1.xlarge> | C<ds1.8xlarge> | C<ds2.xlarge> |
 C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge>.
+
 
 =head2 NumberOfNodes => Int
 
@@ -308,6 +327,7 @@ Default: C<1>
 
 Constraints: Value must be at least 1 and no more than 100.
 
+
 =head2 Port => Int
 
   The port number on which the cluster accepts incoming connections.
@@ -319,6 +339,7 @@ cluster will listen for incoming connections.
 Default: C<5439>
 
 Valid Values: C<1150-65535>
+
 
 =head2 PreferredMaintenanceWindow => Str
 
@@ -336,13 +357,16 @@ Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
 Constraints: Minimum 30-minute window.
 
+
 =head2 PubliclyAccessible => Bool
 
   If C<true>, the cluster can be accessed from a public network.
 
+
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
   A list of tag instances.
+
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 

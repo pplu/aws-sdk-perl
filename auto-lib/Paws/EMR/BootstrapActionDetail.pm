@@ -35,6 +35,7 @@ Reports the configuration of a bootstrap action in a job flow.
 
 =head1 ATTRIBUTES
 
+
 =head2 BootstrapActionConfig => L<Paws::EMR::BootstrapActionConfig>
 
   A description of the bootstrap action.

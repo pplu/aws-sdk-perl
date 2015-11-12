@@ -36,6 +36,7 @@ action.
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationNamePatterns => ArrayRef[Str]
 
   For a record to match a filter, an explicit value or a string

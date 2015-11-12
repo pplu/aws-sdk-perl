@@ -41,29 +41,36 @@ Represents an EC2 instance provisioned as part of cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 Ec2InstanceId => Str
 
   The unique identifier of the instance in Amazon EC2.
+
 
 =head2 Id => Str
 
   The unique identifier for the instance in Amazon EMR.
 
+
 =head2 PrivateDnsName => Str
 
   The private DNS name of the instance.
+
 
 =head2 PrivateIpAddress => Str
 
   The private IP address of the instance.
 
+
 =head2 PublicDnsName => Str
 
   The public DNS name of the instance.
 
+
 =head2 PublicIpAddress => Str
 
   The public IP address of the instance.
+
 
 =head2 Status => L<Paws::EMR::InstanceStatus>
 

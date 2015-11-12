@@ -53,77 +53,96 @@ Describes how many instances a stack has for each status.
 
 =head1 ATTRIBUTES
 
+
 =head2 Assigning => Int
 
   The number of instances in the Assigning state.
+
 
 =head2 Booting => Int
 
   The number of instances with C<booting> status.
 
+
 =head2 ConnectionLost => Int
 
   The number of instances with C<connection_lost> status.
+
 
 =head2 Deregistering => Int
 
   The number of instances in the Deregistering state.
 
+
 =head2 Online => Int
 
   The number of instances with C<online> status.
+
 
 =head2 Pending => Int
 
   The number of instances with C<pending> status.
 
+
 =head2 Rebooting => Int
 
   The number of instances with C<rebooting> status.
+
 
 =head2 Registered => Int
 
   The number of instances in the Registered state.
 
+
 =head2 Registering => Int
 
   The number of instances in the Registering state.
+
 
 =head2 Requested => Int
 
   The number of instances with C<requested> status.
 
+
 =head2 RunningSetup => Int
 
   The number of instances with C<running_setup> status.
+
 
 =head2 SetupFailed => Int
 
   The number of instances with C<setup_failed> status.
 
+
 =head2 ShuttingDown => Int
 
   The number of instances with C<shutting_down> status.
+
 
 =head2 StartFailed => Int
 
   The number of instances with C<start_failed> status.
 
+
 =head2 Stopped => Int
 
   The number of instances with C<stopped> status.
+
 
 =head2 Stopping => Int
 
   The number of instances with C<stopping> status.
 
+
 =head2 Terminated => Int
 
   The number of instances with C<terminated> status.
 
+
 =head2 Terminating => Int
 
   The number of instances with C<terminating> status.
+
 
 =head2 Unassigning => Int
 

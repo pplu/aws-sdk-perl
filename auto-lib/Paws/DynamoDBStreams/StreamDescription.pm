@@ -43,13 +43,16 @@ Represents all of the data describing a particular stream.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreationRequestDateTime => Str
 
   The date and time when the request to create this stream was issued.
 
+
 =head2 KeySchema => ArrayRef[L<Paws::DynamoDBStreams::KeySchemaElement>]
 
   The key attribute(s) of the stream's DynamoDB table.
+
 
 =head2 LastEvaluatedShardId => Str
 
@@ -65,13 +68,16 @@ that there is more data in the result set. The only way to know when
 you have reached the end of the result set is when
 C<LastEvaluatedShardId> is empty.
 
+
 =head2 Shards => ArrayRef[L<Paws::DynamoDBStreams::Shard>]
 
   The shards that comprise the stream.
 
+
 =head2 StreamArn => Str
 
   The Amazon Resource Name (ARN) for the stream.
+
 
 =head2 StreamLabel => Str
 
@@ -99,6 +105,7 @@ the I<StreamLabel>
 =back
 
 
+
 =head2 StreamStatus => Str
 
   Indicates the current status of the stream:
@@ -123,6 +130,7 @@ table.
 C<DISABLED> - the stream is disabled.
 
 =back
+
 
 
 =head2 StreamViewType => Str
@@ -152,6 +160,7 @@ C<NEW_AND_OLD_IMAGES> - both the new and the old images of the items
 from the table.
 
 =back
+
 
 
 =head2 TableName => Str

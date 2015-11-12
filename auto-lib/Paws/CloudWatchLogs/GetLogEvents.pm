@@ -38,9 +38,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 EndTime => Int
 
   
+
 
 =head2 Limit => Int
 
@@ -48,13 +50,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 specify a value, the request would return as many log events as can fit
 in a response size of 1MB, up to 10,000 log events.
 
+
 =head2 B<REQUIRED> LogGroupName => Str
 
   The name of the log group to query.
 
+
 =head2 B<REQUIRED> LogStreamName => Str
 
   The name of the log stream to query.
+
 
 =head2 NextToken => Str
 
@@ -63,10 +68,12 @@ results. It must be a value obtained from the C<nextForwardToken> or
 C<nextBackwardToken> fields in the response of the previous
 C<GetLogEvents> request.
 
+
 =head2 StartFromHead => Bool
 
   If set to true, the earliest log events would be returned first. The
 default is false (the latest log events are returned first).
+
 
 =head2 StartTime => Int
 

@@ -36,6 +36,7 @@ Information about minimum healthy instances.
 
 =head1 ATTRIBUTES
 
+
 =head2 Type => Str
 
   The minimum healthy instances type:
@@ -62,6 +63,7 @@ CodeDeployDefault.OneAtATime will return a minimum healthy instances
 type of MOST_CONCURRENCY and a value of 1. This means a deployment to
 only one instances at a time. (You cannot set the type to
 MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.)
+
 
 =head2 Value => Int
 

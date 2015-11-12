@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Event => Str
 
   
+
 
 =head2 Events => ArrayRef[Str]
 
   
 
+
 =head2 Id => Str
 
   
+
 
 =head2 Queue => Str
 

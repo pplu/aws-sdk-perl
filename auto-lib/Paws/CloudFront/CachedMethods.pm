@@ -42,10 +42,12 @@ Origin headers for the responses to be cached correctly.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Items => ArrayRef[Str]
 
   A complex type that contains the HTTP methods that you want CloudFront
 to cache responses to.
+
 
 =head2 B<REQUIRED> Quantity => Int
 

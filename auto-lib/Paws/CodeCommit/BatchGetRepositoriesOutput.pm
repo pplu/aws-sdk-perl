@@ -13,10 +13,12 @@ Paws::CodeCommit::BatchGetRepositoriesOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Repositories => ArrayRef[L<Paws::CodeCommit::RepositoryMetadata>]
 
   A list of repositories returned by the batch get repositories
 operation.
+
 =head2 RepositoriesNotFound => ArrayRef[Str]
 
   Returns a list of repository names for which information could not be

@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> MetricName => Str
 
   
 
+
 =head2 B<REQUIRED> MetricNamespace => Str
 
   
+
 
 =head2 B<REQUIRED> MetricValue => Str
 

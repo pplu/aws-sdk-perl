@@ -53,29 +53,42 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 ApproximateNumberOfMessages => Str
+
 
 =head2 ApproximateNumberOfMessagesDelayed => Str
 
+
 =head2 ApproximateNumberOfMessagesNotVisible => Str
+
 
 =head2 CreatedTimestamp => Str
 
+
 =head2 DelaySeconds => Str
+
 
 =head2 LastModifiedTimestamp => Str
 
+
 =head2 MaximumMessageSize => Str
+
 
 =head2 MessageRetentionPeriod => Str
 
+
 =head2 Policy => Str
+
 
 =head2 QueueArn => Str
 
+
 =head2 ReceiveMessageWaitTimeSeconds => Str
 
+
 =head2 RedrivePolicy => Str
+
 
 =head2 VisibilityTimeout => Str
 

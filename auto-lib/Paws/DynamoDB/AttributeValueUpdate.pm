@@ -46,6 +46,7 @@ I<ValidationException> exception.
 
 =head1 ATTRIBUTES
 
+
 =head2 Action => Str
 
   Specifies how to perform the update. Valid values are C<PUT> (default),
@@ -143,6 +144,7 @@ allowed are number and number set; no other data types can be
 specified.
 
 =back
+
 
 
 =head2 Value => L<Paws::DynamoDB::AttributeValue>

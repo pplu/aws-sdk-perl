@@ -40,21 +40,26 @@ statistics for a 15-minute period of sending activity.
 
 =head1 ATTRIBUTES
 
+
 =head2 Bounces => Int
 
   Number of emails that have bounced.
+
 
 =head2 Complaints => Int
 
   Number of unwanted emails that were rejected by recipients.
 
+
 =head2 DeliveryAttempts => Int
 
   Number of emails that have been enqueued for sending.
 
+
 =head2 Rejects => Int
 
   Number of emails rejected by Amazon SES.
+
 
 =head2 Timestamp => Str
 

@@ -13,6 +13,7 @@ Paws::CloudSearch::DefineSuggesterResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Suggester => L<Paws::CloudSearch::SuggesterStatus>
 
   

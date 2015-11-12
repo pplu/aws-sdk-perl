@@ -12,6 +12,7 @@ Paws::WAF::GetChangeTokenResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ChangeToken => Str
 
   The C<ChangeToken> that you used in the request. Use this value in a

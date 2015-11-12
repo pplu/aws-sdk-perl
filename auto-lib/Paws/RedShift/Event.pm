@@ -41,9 +41,11 @@ Describes an event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Date => Str
 
   The date and time of the event.
+
 
 =head2 EventCategories => ArrayRef[Str]
 
@@ -51,13 +53,16 @@ Describes an event.
 
 Values: Configuration, Management, Monitoring, Security
 
+
 =head2 EventId => Str
 
   The identifier of the event.
 
+
 =head2 Message => Str
 
   The text of this event.
+
 
 =head2 Severity => Str
 
@@ -65,9 +70,11 @@ Values: Configuration, Management, Monitoring, Security
 
 Values: ERROR, INFO
 
+
 =head2 SourceIdentifier => Str
 
   The identifier for the source of the event.
+
 
 =head2 SourceType => Str
 

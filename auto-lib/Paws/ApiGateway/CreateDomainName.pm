@@ -38,10 +38,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CertificateBody => Str
 
   The body of the server certificate provided by your certificate
 authority.
+
 
 =head2 B<REQUIRED> CertificateChain => Str
 
@@ -52,13 +54,16 @@ certificates and end with the root certificate. Use the intermediate
 certificates that were provided by your certificate authority. Do not
 include any intermediaries that are not in the chain of trust path.
 
+
 =head2 B<REQUIRED> CertificateName => Str
 
   The name of the certificate.
 
+
 =head2 B<REQUIRED> CertificatePrivateKey => Str
 
   Your certificate's private key.
+
 
 =head2 B<REQUIRED> DomainName => Str
 

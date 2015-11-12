@@ -14,12 +14,15 @@ Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 SnapshotId => Str
 
   
+
 =head2 VolumeARN => Str
 
   
+
 =head2 VolumeRecoveryPointTime => Str
 
   

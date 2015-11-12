@@ -8,6 +8,7 @@ package Paws::ApiGateway::TestInvokeMethod;
   has PathWithQueryString => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
+  has StageVariables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
 
   use MooseX::ClassAttribute;
 
@@ -40,31 +41,43 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Body => Str
 
   
+
 
 =head2 ClientCertificateId => Str
 
   
 
+
 =head2 Headers => L<Paws::ApiGateway::MapOfHeaderValues>
 
   
+
 
 =head2 B<REQUIRED> HttpMethod => Str
 
   
 
+
 =head2 PathWithQueryString => Str
 
   
+
 
 =head2 B<REQUIRED> ResourceId => Str
 
   
 
+
 =head2 B<REQUIRED> RestApiId => Str
+
+  
+
+
+=head2 StageVariables => L<Paws::ApiGateway::MapOfStringToString>
 
   
 

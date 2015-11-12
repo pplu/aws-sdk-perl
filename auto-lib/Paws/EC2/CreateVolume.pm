@@ -39,11 +39,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AvailabilityZone => Str
 
   The Availability Zone in which to create the volume. Use
 DescribeAvailabilityZones to list the Availability Zones that are
 currently available to you.
+
 
 =head2 DryRun => Bool
 
@@ -51,6 +53,7 @@ currently available to you.
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 =head2 Encrypted => Bool
 
@@ -63,6 +66,7 @@ volumes, you can only launch it on supported instance types. For more
 information, see Amazon EBS Encryption in the I<Amazon Elastic Compute
 Cloud User Guide>.
 
+
 =head2 Iops => Int
 
   Only valid for Provisioned IOPS (SSD) volumes. The number of I/O
@@ -70,6 +74,7 @@ operations per second (IOPS) to provision for the volume, with a
 maximum ratio of 30 IOPS/GiB.
 
 Constraint: Range is 100 to 20000 for Provisioned IOPS (SSD) volumes
+
 
 =head2 KmsKeyId => Str
 
@@ -83,6 +88,7 @@ then the CMK ID. For example,
 arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
 If a C<KmsKeyId> is specified, the C<Encrypted> flag must also be set.
 
+
 =head2 Size => Int
 
   The size of the volume, in GiBs.
@@ -94,9 +100,11 @@ the volume size must be equal to or larger than the snapshot size.
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
 
+
 =head2 SnapshotId => Str
 
   The snapshot from which to create the volume.
+
 
 =head2 VolumeType => Str
 

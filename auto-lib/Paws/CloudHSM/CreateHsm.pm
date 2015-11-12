@@ -39,35 +39,43 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClientToken => Str
 
   A user-defined token to ensure idempotence. Subsequent calls to this
 action with the same token will be ignored.
 
+
 =head2 EniIp => Str
 
   The IP address to assign to the HSM's ENI.
 
+
 =head2 ExternalId => Str
 
   The external ID from B<IamRoleArn>, if present.
+
 
 =head2 B<REQUIRED> IamRoleArn => Str
 
   The ARN of an IAM role to enable the AWS CloudHSM service to allocate
 an ENI on your behalf.
 
+
 =head2 B<REQUIRED> SshKey => Str
 
   The SSH public key to install on the HSM.
+
 
 =head2 B<REQUIRED> SubnetId => Str
 
   The identifier of the subnet in your VPC in which to place the HSM.
 
+
 =head2 B<REQUIRED> SubscriptionType => Str
 
   The subscription type.
+
 
 =head2 SyslogIp => Str
 

@@ -14,6 +14,7 @@ Paws::DynamoDB::BatchWriteItemOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 ConsumedCapacity => ArrayRef[L<Paws::DynamoDB::ConsumedCapacity>]
 
   The capacity units consumed by the operation.
@@ -31,6 +32,7 @@ I<TableName> - The table that consumed the provisioned throughput.
 I<CapacityUnits> - The total number of capacity units consumed.
 
 =back
+
 
 =head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetricsPerTable>
 
@@ -60,6 +62,7 @@ The estimate is subject to change over time; therefore, do not rely on
 the precision or accuracy of the estimate.
 
 =back
+
 
 =head2 UnprocessedItems => L<Paws::DynamoDB::BatchWriteItemRequestMap>
 

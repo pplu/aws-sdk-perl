@@ -38,14 +38,17 @@ Describes a block device mapping.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DeviceName => Str
 
   The device name exposed to the EC2 instance (for example, C</dev/sdh>
 or C<xvdh>).
 
+
 =head2 Ebs => L<Paws::AutoScaling::Ebs>
 
   The information about the Amazon EBS volume.
+
 
 =head2 NoDevice => Bool
 
@@ -54,6 +57,7 @@ or C<xvdh>).
 If this parameter is true for the root device, the instance might fail
 the EC2 health check. Auto Scaling launches a replacement instance if
 the instance fails the health check.
+
 
 =head2 VirtualName => Str
 

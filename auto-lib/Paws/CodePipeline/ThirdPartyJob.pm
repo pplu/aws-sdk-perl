@@ -37,11 +37,13 @@ CodePipeline when there is a job to be worked upon by a partner action.
 
 =head1 ATTRIBUTES
 
+
 =head2 ClientId => Str
 
   The clientToken portion of the clientId and clientToken pair used to
 verify that the calling entity is allowed access to the job and its
 details.
+
 
 =head2 JobId => Str
 

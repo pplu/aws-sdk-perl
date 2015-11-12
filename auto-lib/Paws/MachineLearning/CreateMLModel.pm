@@ -38,13 +38,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> MLModelId => Str
 
   A user-supplied ID that uniquely identifies the C<MLModel>.
 
+
 =head2 MLModelName => Str
 
   A user-supplied name or description of the C<MLModel>.
+
 
 =head2 B<REQUIRED> MLModelType => Str
 
@@ -65,6 +68,7 @@ number of values.
 =back
 
 For more information, see the Amazon Machine Learning Developer Guide.
+
 
 =head2 Parameters => L<Paws::MachineLearning::TrainingParameters>
 
@@ -116,11 +120,13 @@ default value is 33554432.
 =back
 
 
+
 =head2 Recipe => Str
 
   The data recipe for creating C<MLModel>. You must specify either the
 recipe or its URI. If you donE<rsquo>t specify a recipe or its URI,
 Amazon ML creates a default.
+
 
 =head2 RecipeUri => Str
 
@@ -128,6 +134,7 @@ Amazon ML creates a default.
 that contains the C<MLModel> recipe. You must specify either the recipe
 or its URI. If you donE<rsquo>t specify a recipe or its URI, Amazon ML
 creates a default.
+
 
 =head2 B<REQUIRED> TrainingDataSourceId => Str
 

@@ -38,6 +38,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoRenew => Bool
 
   Indicates whether the domain is automatically renewed upon expiration.
@@ -46,17 +47,20 @@ Type: Boolean
 
 Valid values: C<True> | C<False>
 
+
 =head2 B<REQUIRED> DomainName => Str
 
   The name of a domain.
 
 Type: String
 
+
 =head2 Expiry => Str
 
   Expiration date of the domain in Coordinated Universal Time (UTC).
 
 Type: Long
+
 
 =head2 TransferLock => Bool
 

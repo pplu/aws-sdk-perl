@@ -13,6 +13,7 @@ Paws::EC2::DescribeReservedInstancesListingsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 ReservedInstancesListings => ArrayRef[L<Paws::EC2::ReservedInstancesListing>]
 
   Information about the Reserved Instance listing.

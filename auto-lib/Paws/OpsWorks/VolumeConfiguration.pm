@@ -40,25 +40,31 @@ Describes an Amazon EBS volume configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 Iops => Int
 
   For PIOPS volumes, the IOPS per disk.
+
 
 =head2 B<REQUIRED> MountPoint => Str
 
   The volume mount point. For example "/dev/sdh".
 
+
 =head2 B<REQUIRED> NumberOfDisks => Int
 
   The number of disks in the volume.
+
 
 =head2 RaidLevel => Int
 
   The volume RAID level.
 
+
 =head2 B<REQUIRED> Size => Int
 
   The volume size.
+
 
 =head2 VolumeType => Str
 

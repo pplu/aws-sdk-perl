@@ -40,13 +40,16 @@ The datasource details that are specific to Amazon RDS.
 
 =head1 ATTRIBUTES
 
+
 =head2 Database => L<Paws::MachineLearning::RDSDatabase>
 
   The database details required to connect to an Amazon RDS.
 
+
 =head2 DatabaseUserName => Str
 
   
+
 
 =head2 DataPipelineId => Str
 
@@ -54,16 +57,19 @@ The datasource details that are specific to Amazon RDS.
 from Amazon RDS to Amazon S3. You can use the ID to find details about
 the instance in the Data Pipeline console.
 
+
 =head2 ResourceRole => Str
 
   The role (DataPipelineDefaultResourceRole) assumed by an Amazon EC2
 instance to carry out the copy task from Amazon RDS to Amazon S3. For
 more information, see Role templates for data pipelines.
 
+
 =head2 SelectSqlQuery => Str
 
   The SQL query that is supplied during CreateDataSourceFromRDS. Returns
 only if C<Verbose> is true in C<GetDataSourceInput>.
+
 
 =head2 ServiceRole => Str
 

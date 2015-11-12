@@ -12,6 +12,7 @@ Paws::DirectConnect::DeleteVirtualInterfaceResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 VirtualInterfaceState => Str
 
   

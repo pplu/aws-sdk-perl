@@ -30,12 +30,14 @@ Paws::Route53::UpdateHealthCheckResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ChildHealthChecks => ArrayRef[Str]
 
   For a specified parent health check, a list of C<HealthCheckId> values
 for the associated child health checks.
 
 Specify this value only if you want to change it.
+
 =head2 FailureThreshold => Int
 
   The number of consecutive health checks that an endpoint must pass or
@@ -47,14 +49,17 @@ Valid values are integers between 1 and 10. For more information, see
 Amazon Route 53 Developer Guide.
 
 Specify this value only if you want to change it.
+
 =head2 FullyQualifiedDomainName => Str
 
   Fully qualified domain name of the instance to be health checked.
 
 Specify this value only if you want to change it.
+
 =head2 B<REQUIRED> HealthCheckId => Str
 
   The ID of the health check to update.
+
 =head2 HealthCheckVersion => Int
 
   Optional. When you specify a health check version, Route 53 compares
@@ -62,6 +67,7 @@ this value with the current value in the health check, which prevents
 you from updating the health check when the versions don't match. Using
 C<HealthCheckVersion> lets you prevent overwriting another change to
 the health check.
+
 =head2 HealthThreshold => Int
 
   The minimum number of child health checks that must be healthy for
@@ -69,6 +75,7 @@ Route 53 to consider the parent health check to be healthy. Valid
 values are integers between 0 and 256, inclusive.
 
 Specify this value only if you want to change it.
+
 =head2 Inverted => Bool
 
   A boolean value that indicates whether the status of health check
@@ -77,17 +84,20 @@ C<Inverted> is C<True>, then Route 53 considers the health check to be
 unhealthy.
 
 Specify this value only if you want to change it.
+
 =head2 IPAddress => Str
 
   The IP address of the resource that you want to check.
 
 Specify this value only if you want to change it.
+
 =head2 Port => Int
 
   The port on which you want Route 53 to open a connection to perform
 health checks.
 
 Specify this value only if you want to change it.
+
 =head2 ResourcePath => Str
 
   The path that you want Amazon Route 53 to request when performing
@@ -96,6 +106,7 @@ return an HTTP status code of 2xx or 3xx when the endpoint is healthy,
 for example the file /docs/route53-health-check.html.
 
 Specify this value only if you want to change it.
+
 =head2 SearchString => Str
 
   If the value of C<Type> is C<HTTP_STR_MATCH> or C<HTTP_STR_MATCH>, the

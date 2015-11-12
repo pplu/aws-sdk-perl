@@ -39,19 +39,23 @@ and another stage.
 
 =head1 ATTRIBUTES
 
+
 =head2 DisabledReason => Str
 
   The user-specified reason why the transition between two stages of a
 pipeline was disabled.
+
 
 =head2 Enabled => Bool
 
   Whether the transition between stages is enabled (true) or disabled
 (false).
 
+
 =head2 LastChangedAt => Str
 
   The timestamp when the transition state was last changed.
+
 
 =head2 LastChangedBy => Str
 

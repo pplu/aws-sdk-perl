@@ -45,15 +45,18 @@ information, see Using Amazon SNS Message Attributes.
 
 =head1 ATTRIBUTES
 
+
 =head2 BinaryValue => Str
 
   Binary type attributes can store any binary data, for example,
 compressed data, encrypted data, or images.
 
+
 =head2 B<REQUIRED> DataType => Str
 
   Amazon SNS supports the following logical data types: String, Number,
 and Binary. For more information, see Message Attribute Data Types.
+
 
 =head2 StringValue => Str
 

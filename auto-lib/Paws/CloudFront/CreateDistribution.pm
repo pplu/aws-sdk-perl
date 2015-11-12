@@ -20,6 +20,7 @@ Paws::CloudFront::CreateDistributionResult
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DistributionConfig => L<Paws::CloudFront::DistributionConfig>
 
   The distribution's configuration information.

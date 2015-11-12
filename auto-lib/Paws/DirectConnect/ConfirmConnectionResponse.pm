@@ -12,6 +12,7 @@ Paws::DirectConnect::ConfirmConnectionResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ConnectionState => Str
 
   

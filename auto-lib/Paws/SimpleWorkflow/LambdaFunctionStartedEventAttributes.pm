@@ -35,6 +35,7 @@ Provides details for the C<LambdaFunctionStarted> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ScheduledEventId => Int
 
   The ID of the C<LambdaFunctionScheduled> event that was recorded when

@@ -37,6 +37,7 @@ Provides details of the C<ChildWorkflowExecutionStarted> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> InitiatedEventId => Int
 
   The ID of the C<StartChildWorkflowExecutionInitiated> event
@@ -45,9 +46,11 @@ this child workflow execution. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
+
 =head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 
   The child workflow execution that was started.
+
 
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 

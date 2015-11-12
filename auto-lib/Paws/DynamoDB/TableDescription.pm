@@ -48,6 +48,7 @@ Represents the properties of a table.
 
 =head1 ATTRIBUTES
 
+
 =head2 AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
 
   An array of I<AttributeDefinition> objects. Each of these objects
@@ -68,10 +69,12 @@ I<AttributeType> - The data type for the attribute.
 =back
 
 
+
 =head2 CreationDateTime => Str
 
   The date and time when the table was created, in UNIX epoch time
 format.
+
 
 =head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexDescription>]
 
@@ -189,11 +192,13 @@ along with data about increases and decreases.
 If the table is in the C<DELETING> state, no information about indexes
 will be returned.
 
+
 =head2 ItemCount => Int
 
   The number of items in the specified table. DynamoDB updates this value
 approximately every six hours. Recent changes might not be reflected in
 this value.
+
 
 =head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
@@ -216,10 +221,12 @@ C<RANGE>.
 For more information about primary keys, see Primary Key in the
 I<Amazon DynamoDB Developer Guide>.
 
+
 =head2 LatestStreamArn => Str
 
   The Amazon Resource Name (ARN) that uniquely identifies the latest
 stream for this table.
+
 
 =head2 LatestStreamLabel => Str
 
@@ -245,6 +252,7 @@ the table name.
 the I<StreamLabel>.
 
 =back
+
 
 
 =head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndexDescription>]
@@ -327,29 +335,35 @@ not be reflected in this value.
 If the table is in the C<DELETING> state, no information about indexes
 will be returned.
 
+
 =head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughputDescription>
 
   The provisioned throughput settings for the table, consisting of read
 and write capacity units, along with data about increases and
 decreases.
 
+
 =head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>
 
   The current DynamoDB Streams configuration for the table.
+
 
 =head2 TableArn => Str
 
   The Amazon Resource Name (ARN) that uniquely identifies the table.
 
+
 =head2 TableName => Str
 
   The name of the table.
+
 
 =head2 TableSizeBytes => Int
 
   The total size of the specified table, in bytes. DynamoDB updates this
 value approximately every six hours. Recent changes might not be
 reflected in this value.
+
 
 =head2 TableStatus => Str
 

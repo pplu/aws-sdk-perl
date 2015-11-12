@@ -40,11 +40,13 @@ requests that you want AWS WAF to search, and other settings.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> FieldToMatch => L<Paws::WAF::FieldToMatch>
 
   The part of a web request that you want AWS WAF to search, such as a
 specified header or a query string. For more information, see
 FieldToMatch.
+
 
 =head2 B<REQUIRED> PositionalConstraint => Str
 
@@ -98,6 +100,7 @@ B<ENDS_WITH>
 The value of C<TargetString> must appear at the end of the specified
 part of the web request.
 
+
 =head2 B<REQUIRED> TargetString => Str
 
   The value that you want AWS WAF to search for. AWS WAF searches for the
@@ -146,6 +149,7 @@ B<If you're using the AWS CLI or one of the AWS SDKs>
 
 The value that you want AWS WAF to search for. The SDK automatically
 base64 encodes the value.
+
 
 =head2 B<REQUIRED> TextTransformation => Str
 

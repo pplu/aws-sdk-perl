@@ -37,13 +37,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 CidrBlock => Str
 
   The CIDR block for the VPC.
 
+
 =head2 OwnerId => Str
 
   The AWS account ID of the VPC owner.
+
 
 =head2 VpcId => Str
 

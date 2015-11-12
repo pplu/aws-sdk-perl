@@ -36,10 +36,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
   Name:value pair that contains additional data to be authenticated
 during the encryption and decryption processes.
+
 
 =head2 GrantTokens => ArrayRef[Str]
 
@@ -47,6 +49,7 @@ during the encryption and decryption processes.
 
 For more information, go to Grant Tokens in the I<AWS Key Management
 Service Developer Guide>.
+
 
 =head2 B<REQUIRED> KeyId => Str
 
@@ -70,10 +73,12 @@ arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 =back
 
 
+
 =head2 KeySpec => Str
 
   Value that identifies the encryption algorithm and key size. Currently
 this can be AES_128 or AES_256.
+
 
 =head2 NumberOfBytes => Int
 

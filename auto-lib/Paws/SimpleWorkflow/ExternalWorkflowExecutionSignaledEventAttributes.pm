@@ -36,12 +36,14 @@ Provides details of the C<ExternalWorkflowExecutionSignaled> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> InitiatedEventId => Int
 
   The ID of the C<SignalExternalWorkflowExecutionInitiated> event
 corresponding to the C<SignalExternalWorkflowExecution> decision to
 request this signal. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
+
 
 =head2 B<REQUIRED> WorkflowExecution => L<Paws::SimpleWorkflow::WorkflowExecution>
 

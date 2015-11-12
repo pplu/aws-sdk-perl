@@ -13,6 +13,7 @@ Paws::RedShift::DescribeDefaultClusterParametersResult
 
 =head1 ATTRIBUTES
 
+
 =head2 DefaultClusterParameters => L<Paws::RedShift::DefaultClusterParameters>
 
   

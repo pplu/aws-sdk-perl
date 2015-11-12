@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AccountId => Str
 
   A standard AWS account ID (9+ digits).
 
+
 =head2 B<REQUIRED> IdentityPoolId => Str
 
   An identity pool ID in the format REGION:GUID.
+
 
 =head2 Logins => L<Paws::CognitoIdentity::LoginsMap>
 

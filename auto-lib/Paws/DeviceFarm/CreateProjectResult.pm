@@ -12,6 +12,7 @@ Paws::DeviceFarm::CreateProjectResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Project => L<Paws::DeviceFarm::Project>
 
   The newly created project.

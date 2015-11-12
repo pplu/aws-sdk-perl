@@ -41,27 +41,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Architecture => Str
 
   The architecture of the virtual machine.
 
 Valid values: C<i386> | C<x86_64>
 
+
 =head2 ClientData => L<Paws::EC2::ClientData>
 
   The client-specific data.
+
 
 =head2 ClientToken => Str
 
   The token to enable idempotency for VM import requests.
 
+
 =head2 Description => Str
 
   A description string for the import image task.
 
+
 =head2 DiskContainers => ArrayRef[L<Paws::EC2::ImageDiskContainer>]
 
   Information about the disk containers.
+
 
 =head2 DryRun => Bool
 
@@ -70,11 +76,13 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 Hypervisor => Str
 
   The target hypervisor platform.
 
 Valid values: C<xen>
+
 
 =head2 LicenseType => Str
 
@@ -88,11 +96,13 @@ Compute Cloud User Guide>.
 
 Valid values: C<AWS> | C<BYOL>
 
+
 =head2 Platform => Str
 
   The operating system of the virtual machine.
 
 Valid values: C<Windows> | C<Linux>
+
 
 =head2 RoleName => Str
 

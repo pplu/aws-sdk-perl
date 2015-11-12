@@ -41,21 +41,25 @@ increases and decreases.
 
 =head1 ATTRIBUTES
 
+
 =head2 LastDecreaseDateTime => Str
 
   The date and time of the last provisioned throughput decrease for this
 table.
+
 
 =head2 LastIncreaseDateTime => Str
 
   The date and time of the last provisioned throughput increase for this
 table.
 
+
 =head2 NumberOfDecreasesToday => Int
 
   The number of provisioned throughput decreases for this table during
 this UTC calendar day. For current maximums on provisioned throughput
 decreases, see Limits in the I<Amazon DynamoDB Developer Guide>.
+
 
 =head2 ReadCapacityUnits => Int
 
@@ -64,6 +68,7 @@ before DynamoDB returns a I<ThrottlingException>. Eventually consistent
 reads require less effort than strongly consistent reads, so a setting
 of 50 I<ReadCapacityUnits> per second provides 100 eventually
 consistent I<ReadCapacityUnits> per second.
+
 
 =head2 WriteCapacityUnits => Int
 

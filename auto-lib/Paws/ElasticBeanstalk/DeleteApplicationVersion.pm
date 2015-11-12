@@ -34,9 +34,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ApplicationName => Str
 
   The name of the application to delete releases from.
+
 
 =head2 DeleteSourceBundle => Bool
 
@@ -54,6 +56,7 @@ specified at time of creation.
 =back
 
 Valid Values: C<true> | C<false>
+
 
 =head2 B<REQUIRED> VersionLabel => Str
 

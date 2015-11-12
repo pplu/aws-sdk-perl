@@ -37,14 +37,17 @@ Describes a gateway's network interface.
 
 =head1 ATTRIBUTES
 
+
 =head2 Ipv4Address => Str
 
   The Internet Protocol version 4 (IPv4) address of the interface.
+
 
 =head2 Ipv6Address => Str
 
   The Internet Protocol version 6 (IPv6) address of the interface.
 I<Currently not supported>.
+
 
 =head2 MacAddress => Str
 

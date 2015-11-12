@@ -36,9 +36,11 @@ Contains status information for a DB cluster option group.
 
 =head1 ATTRIBUTES
 
+
 =head2 DBClusterOptionGroupName => Str
 
   Specifies the name of the DB cluster option group.
+
 
 =head2 Status => Str
 

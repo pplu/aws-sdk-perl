@@ -40,25 +40,31 @@ Represents the output for DescribeStream.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HasMoreShards => Bool
 
   If set to C<true>, more shards in the stream are available to describe.
+
 
 =head2 B<REQUIRED> RetentionPeriodHours => Int
 
   The current retention period, in hours.
 
+
 =head2 B<REQUIRED> Shards => ArrayRef[L<Paws::Kinesis::Shard>]
 
   The shards that comprise the stream.
+
 
 =head2 B<REQUIRED> StreamARN => Str
 
   The Amazon Resource Name (ARN) for the stream being described.
 
+
 =head2 B<REQUIRED> StreamName => Str
 
   The name of the stream being described.
+
 
 =head2 B<REQUIRED> StreamStatus => Str
 

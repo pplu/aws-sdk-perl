@@ -35,9 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AttributeNames => ArrayRef[Str]
 
   The names of the attributes.
+
 
 =head2 ConsistentRead => Bool
 
@@ -47,9 +49,11 @@ SimpleDB will be returned. Otherwise, results will be consistent
 eventually, and the client may not see data that was written
 immediately before your read.
 
+
 =head2 B<REQUIRED> DomainName => Str
 
   The name of the domain in which to perform the operation.
+
 
 =head2 B<REQUIRED> ItemName => Str
 

@@ -37,17 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DatasetName => Str
 
   The name of the dataset from which to unsubcribe.
+
 
 =head2 B<REQUIRED> DeviceId => Str
 
   The unique ID generated for this device by Cognito.
 
+
 =head2 B<REQUIRED> IdentityId => Str
 
   Unique ID for this identity.
+
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 

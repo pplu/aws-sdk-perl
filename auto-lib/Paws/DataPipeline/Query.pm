@@ -35,6 +35,7 @@ Defines the query to run against an object.
 
 =head1 ATTRIBUTES
 
+
 =head2 Selectors => ArrayRef[L<Paws::DataPipeline::Selector>]
 
   List of selectors that define the query. An object must satisfy all of

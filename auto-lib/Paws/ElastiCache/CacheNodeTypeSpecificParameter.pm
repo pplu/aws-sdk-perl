@@ -45,22 +45,27 @@ I<cache.m1.small> type.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowedValues => Str
 
   The valid range of values for the parameter.
+
 
 =head2 CacheNodeTypeSpecificValues => ArrayRef[L<Paws::ElastiCache::CacheNodeTypeSpecificValue>]
 
   A list of cache node types and their corresponding values for this
 parameter.
 
+
 =head2 DataType => Str
 
   The valid data type for the parameter.
 
+
 =head2 Description => Str
 
   A description of the parameter.
+
 
 =head2 IsModifiable => Bool
 
@@ -68,13 +73,16 @@ parameter.
 modified. Some parameters have security or operational implications
 that prevent them from being changed.
 
+
 =head2 MinimumEngineVersion => Str
 
   The earliest cache engine version to which the parameter can apply.
 
+
 =head2 ParameterName => Str
 
   The name of the parameter.
+
 
 =head2 Source => Str
 

@@ -37,9 +37,11 @@ Redshift database.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
   
+
 
 =head2 B<REQUIRED> DatabaseName => Str
 

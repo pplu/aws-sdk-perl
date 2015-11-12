@@ -44,37 +44,46 @@ Describes a command.
 
 =head1 ATTRIBUTES
 
+
 =head2 AcknowledgedAt => Str
 
   Date and time when the command was acknowledged.
+
 
 =head2 CommandId => Str
 
   The command ID.
 
+
 =head2 CompletedAt => Str
 
   Date when the command completed.
+
 
 =head2 CreatedAt => Str
 
   Date and time when the command was run.
 
+
 =head2 DeploymentId => Str
 
   The command deployment ID.
+
 
 =head2 ExitCode => Int
 
   The command exit code.
 
+
 =head2 InstanceId => Str
 
   The ID of the instance where the command was executed.
 
+
 =head2 LogUrl => Str
 
   The URL of the command log.
+
 
 =head2 Status => Str
 
@@ -91,6 +100,7 @@ Describes a command.
 =item * pending
 
 =back
+
 
 
 =head2 Type => Str

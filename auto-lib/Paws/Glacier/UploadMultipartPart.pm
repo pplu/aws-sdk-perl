@@ -39,6 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AccountId => Str
 
   The C<AccountId> value is the AWS account ID of the account that owns
@@ -48,13 +49,16 @@ account ID associated with the credentials used to sign the request. If
 you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
+
 =head2 Body => Str
 
   The data to upload.
 
+
 =head2 Checksum => Str
 
   The SHA256 tree hash of the data being uploaded.
+
 
 =head2 Range => Str
 
@@ -63,9 +67,11 @@ uploaded in this part. Amazon Glacier uses this information to assemble
 the archive in the proper sequence. The format of this header follows
 RFC 2616. An example header is Content-Range:bytes 0-4194303/*.
 
+
 =head2 B<REQUIRED> UploadId => Str
 
   The upload ID of the multipart upload.
+
 
 =head2 B<REQUIRED> VaultName => Str
 

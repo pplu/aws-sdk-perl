@@ -37,11 +37,13 @@ operation returns.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Arn => Str
 
   The ARN of the temporary security credentials that are returned from
 the AssumeRole action. For more information about ARNs and how to use
 them in policies, see IAM Identifiers in I<Using IAM>.
+
 
 =head2 B<REQUIRED> AssumedRoleId => Str
 

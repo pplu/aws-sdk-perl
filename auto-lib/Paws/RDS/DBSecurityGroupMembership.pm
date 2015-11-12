@@ -49,9 +49,11 @@ This data type is used as a response element in the following actions:
 
 =head1 ATTRIBUTES
 
+
 =head2 DBSecurityGroupName => Str
 
   The name of the DB security group.
+
 
 =head2 Status => Str
 

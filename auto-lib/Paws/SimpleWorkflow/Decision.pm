@@ -247,68 +247,82 @@ field shown below:
 
 =head1 ATTRIBUTES
 
+
 =head2 CancelTimerDecisionAttributes => L<Paws::SimpleWorkflow::CancelTimerDecisionAttributes>
 
   Provides details of the C<CancelTimer> decision. It is not set for
 other decision types.
+
 
 =head2 CancelWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::CancelWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<CancelWorkflowExecution> decision. It is not
 set for other decision types.
 
+
 =head2 CompleteWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::CompleteWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<CompleteWorkflowExecution> decision. It is
 not set for other decision types.
+
 
 =head2 ContinueAsNewWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::ContinueAsNewWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<ContinueAsNewWorkflowExecution> decision. It
 is not set for other decision types.
 
+
 =head2 B<REQUIRED> DecisionType => Str
 
   Specifies the type of the decision.
+
 
 =head2 FailWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::FailWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<FailWorkflowExecution> decision. It is not
 set for other decision types.
 
+
 =head2 RecordMarkerDecisionAttributes => L<Paws::SimpleWorkflow::RecordMarkerDecisionAttributes>
 
   Provides details of the C<RecordMarker> decision. It is not set for
 other decision types.
+
 
 =head2 RequestCancelActivityTaskDecisionAttributes => L<Paws::SimpleWorkflow::RequestCancelActivityTaskDecisionAttributes>
 
   Provides details of the C<RequestCancelActivityTask> decision. It is
 not set for other decision types.
 
+
 =head2 RequestCancelExternalWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::RequestCancelExternalWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<RequestCancelExternalWorkflowExecution>
 decision. It is not set for other decision types.
+
 
 =head2 ScheduleActivityTaskDecisionAttributes => L<Paws::SimpleWorkflow::ScheduleActivityTaskDecisionAttributes>
 
   Provides details of the C<ScheduleActivityTask> decision. It is not set
 for other decision types.
 
+
 =head2 ScheduleLambdaFunctionDecisionAttributes => L<Paws::SimpleWorkflow::ScheduleLambdaFunctionDecisionAttributes>
 
   
+
 
 =head2 SignalExternalWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::SignalExternalWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<SignalExternalWorkflowExecution> decision. It
 is not set for other decision types.
 
+
 =head2 StartChildWorkflowExecutionDecisionAttributes => L<Paws::SimpleWorkflow::StartChildWorkflowExecutionDecisionAttributes>
 
   Provides details of the C<StartChildWorkflowExecution> decision. It is
 not set for other decision types.
+
 
 =head2 StartTimerDecisionAttributes => L<Paws::SimpleWorkflow::StartTimerDecisionAttributes>
 

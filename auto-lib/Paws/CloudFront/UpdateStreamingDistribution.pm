@@ -22,13 +22,16 @@ Paws::CloudFront::UpdateStreamingDistributionResult
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Id => Str
 
   The streaming distribution's id.
+
 =head2 IfMatch => Str
 
   The value of the ETag header you received when retrieving the streaming
 distribution's configuration. For example: E2QWRUHAPOMQZL.
+
 =head2 B<REQUIRED> StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
 
   The streaming distribution's configuration information.

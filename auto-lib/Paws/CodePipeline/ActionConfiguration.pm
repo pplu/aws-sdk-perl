@@ -35,6 +35,7 @@ Represents information about an action configuration.
 
 =head1 ATTRIBUTES
 
+
 =head2 Configuration => L<Paws::CodePipeline::ActionConfigurationMap>
 
   The configuration data for the action.

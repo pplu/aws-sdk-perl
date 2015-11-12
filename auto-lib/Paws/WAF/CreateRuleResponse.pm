@@ -13,11 +13,13 @@ Paws::WAF::CreateRuleResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 ChangeToken => Str
 
   The C<ChangeToken> that you used to submit the C<CreateRule> request.
 You can also use this value to query the status of the request. For
 more information, see GetChangeTokenStatus.
+
 =head2 Rule => L<Paws::WAF::Rule>
 
   The Rule returned in the C<CreateRule> response.

@@ -35,6 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> FunctionName => Str
 
   The Lambda function to delete.
@@ -46,6 +47,7 @@ Lambda also allows you to specify only the account ID qualifier (for
 example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
+
 
 =head2 Qualifier => Str
 

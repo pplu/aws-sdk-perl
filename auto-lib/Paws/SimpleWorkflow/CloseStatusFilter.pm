@@ -36,6 +36,7 @@ their close status.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Status => Str
 
   B<Required.> The close status that must match the close status of an

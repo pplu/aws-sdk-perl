@@ -34,14 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 LoadBalancerNames => ArrayRef[Str]
 
   The names of the load balancers.
+
 
 =head2 Marker => Str
 
   The marker for the next set of results. (You received this marker from
 a previous call.)
+
 
 =head2 PageSize => Int
 

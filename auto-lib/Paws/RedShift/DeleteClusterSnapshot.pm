@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 SnapshotClusterIdentifier => Str
 
   The unique identifier of the cluster the snapshot was created from.
@@ -41,6 +42,7 @@ snapshot resource element that specifies anything other than * for the
 cluster name.
 
 Constraints: Must be the name of valid cluster.
+
 
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 

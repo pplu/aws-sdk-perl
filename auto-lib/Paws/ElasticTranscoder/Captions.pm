@@ -37,15 +37,18 @@ The captions to be created, if any.
 
 =head1 ATTRIBUTES
 
+
 =head2 CaptionFormats => ArrayRef[L<Paws::ElasticTranscoder::CaptionFormat>]
 
   The array of file formats for the output captions. If you leave this
 value blank, Elastic Transcoder returns an error.
 
+
 =head2 CaptionSources => ArrayRef[L<Paws::ElasticTranscoder::CaptionSource>]
 
   Source files for the input sidecar captions used during the transcoding
 process. To omit all sidecar captions, leave C<CaptionSources> blank.
+
 
 =head2 MergePolicy => Str
 

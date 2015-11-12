@@ -48,58 +48,72 @@ Detailed information about an instance group.
 
 =head1 ATTRIBUTES
 
+
 =head2 BidPrice => Str
 
   Bid price for EC2 Instances when launching nodes as Spot Instances,
 expressed in USD.
 
+
 =head2 B<REQUIRED> CreationDateTime => Str
 
   The date/time the instance group was created.
+
 
 =head2 EndDateTime => Str
 
   The date/time the instance group was terminated.
 
+
 =head2 InstanceGroupId => Str
 
   Unique identifier for the instance group.
+
 
 =head2 B<REQUIRED> InstanceRequestCount => Int
 
   Target number of instances to run in the instance group.
 
+
 =head2 B<REQUIRED> InstanceRole => Str
 
   Instance group role in the cluster
+
 
 =head2 B<REQUIRED> InstanceRunningCount => Int
 
   Actual count of running instances.
 
+
 =head2 B<REQUIRED> InstanceType => Str
 
   Amazon EC2 Instance type.
+
 
 =head2 LastStateChangeReason => Str
 
   Details regarding the state of the instance group.
 
+
 =head2 B<REQUIRED> Market => Str
 
   Market type of the Amazon EC2 instances used to create a cluster node.
+
 
 =head2 Name => Str
 
   Friendly name for the instance group.
 
+
 =head2 ReadyDateTime => Str
 
   The date/time the instance group was available to the cluster.
 
+
 =head2 StartDateTime => Str
 
   The date/time the instance group was started.
+
 
 =head2 B<REQUIRED> State => Str
 

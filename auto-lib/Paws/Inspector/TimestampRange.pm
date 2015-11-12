@@ -37,9 +37,11 @@ types.
 
 =head1 ATTRIBUTES
 
+
 =head2 Maximum => Str
 
   The maximum value of the timestamp range.
+
 
 =head2 Minimum => Str
 

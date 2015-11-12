@@ -37,10 +37,12 @@ The overrides that should be sent to a container.
 
 =head1 ATTRIBUTES
 
+
 =head2 Command => ArrayRef[Str]
 
   The command to send to the container that overrides the default command
 from the Docker image or the task definition.
+
 
 =head2 Environment => ArrayRef[L<Paws::ECS::KeyValuePair>]
 
@@ -48,6 +50,7 @@ from the Docker image or the task definition.
 environment variables, which are added to the container at launch, or
 you can override the existing environment variables from the Docker
 image or the task definition.
+
 
 =head2 Name => Str
 

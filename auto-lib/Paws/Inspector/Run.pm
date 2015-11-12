@@ -45,31 +45,38 @@ action.
 
 =head1 ATTRIBUTES
 
+
 =head2 AssessmentArn => Str
 
   The ARN of the assessment that is associated with the run.
+
 
 =head2 CompletionTime => Str
 
   Run completion time that corresponds to the rules packages evaluation
 completion time or failure.
 
+
 =head2 CreationTime => Str
 
   Run creation time that corresponds to the data collection completion
 time or failure.
 
+
 =head2 RulesPackages => ArrayRef[Str]
 
   Rules packages selected for the run of the assessment.
+
 
 =head2 RunArn => Str
 
   The ARN of the run.
 
+
 =head2 RunName => Str
 
   The auto-generated name for the run.
+
 
 =head2 RunState => Str
 

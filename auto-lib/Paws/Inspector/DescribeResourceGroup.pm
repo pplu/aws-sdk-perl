@@ -32,6 +32,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ResourceGroupArn => Str
 
   The ARN specifying the resource group that you want to describe.

@@ -35,21 +35,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ComplianceTypes => ArrayRef[Str]
 
   Specify to filter the results by compliance. The valid values are
 C<Compliant>, C<NonCompliant>, and C<NotApplicable>.
+
 
 =head2 B<REQUIRED> ConfigRuleName => Str
 
   The name of the AWS Config rule for which you want compliance
 information.
 
+
 =head2 Limit => Int
 
   The maximum number of evaluation results returned on each page. The
 default is 10. You cannot specify a limit greater than 100. If you
 specify 0, AWS Config uses the default.
+
 
 =head2 NextToken => Str
 

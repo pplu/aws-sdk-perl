@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HealthStatus => Str
 
   The health status of the instance. Set to C<Healthy> if you want the
@@ -41,9 +42,11 @@ instance to remain in service. Set to C<Unhealthy> if you want the
 instance to be out of service. Auto Scaling will terminate and replace
 the unhealthy instance.
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
   The ID of the EC2 instance.
+
 
 =head2 ShouldRespectGracePeriod => Bool
 

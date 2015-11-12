@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 MountPoint => Str
 
   The new mount point.
 
+
 =head2 Name => Str
 
   The new name.
+
 
 =head2 B<REQUIRED> VolumeId => Str
 

@@ -41,29 +41,36 @@ Describes a certificate.
 
 =head1 ATTRIBUTES
 
+
 =head2 CertificateArn => Str
 
   The ARN of the certificate.
+
 
 =head2 CertificateId => Str
 
   The ID of the certificate.
 
+
 =head2 CertificatePem => Str
 
   The certificate data, in PEM format.
+
 
 =head2 CreationDate => Str
 
   The date and time the certificate was created.
 
+
 =head2 LastModifiedDate => Str
 
   The date and time the certificate was last modified.
 
+
 =head2 OwnedBy => Str
 
   The ID of the AWS account that owns the certificate.
+
 
 =head2 Status => Str
 

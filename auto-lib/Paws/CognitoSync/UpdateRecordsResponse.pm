@@ -13,6 +13,7 @@ Paws::CognitoSync::UpdateRecordsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Records => ArrayRef[L<Paws::CognitoSync::Record>]
 
   A list of records that have been updated.

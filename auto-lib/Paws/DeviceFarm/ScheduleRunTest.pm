@@ -38,18 +38,22 @@ Represents additional test settings.
 
 =head1 ATTRIBUTES
 
+
 =head2 Filter => Str
 
   The test's filter.
+
 
 =head2 Parameters => L<Paws::DeviceFarm::TestParameters>
 
   The test's parameters, such as test framework parameters and fixture
 settings.
 
+
 =head2 TestPackageArn => Str
 
   The ARN of the uploaded test that will be run.
+
 
 =head2 B<REQUIRED> Type => Str
 

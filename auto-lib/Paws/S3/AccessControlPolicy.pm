@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 Grants => ArrayRef[L<Paws::S3::Grant>]
 
   A list of grants.
+
 
 =head2 Owner => L<Paws::S3::Owner>
 

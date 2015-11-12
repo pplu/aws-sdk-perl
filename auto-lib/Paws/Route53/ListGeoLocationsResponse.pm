@@ -32,10 +32,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GeoLocationDetailsList => ArrayRef[L<Paws::Route53::GeoLocationDetails>]
 
   A complex type that contains information about the geo locations that
 are returned by the request.
+
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
@@ -48,10 +50,12 @@ ListGeoLocationsResponse$NextSubdivisionCode elements.
 
 Valid Values: C<true> | C<false>
 
+
 =head2 B<REQUIRED> MaxItems => Str
 
   The maximum number of records you requested. The maximum value of
 C<MaxItems> is 100.
+
 
 =head2 NextContinentCode => Str
 
@@ -60,12 +64,14 @@ location in the list. This element is present only if
 ListGeoLocationsResponse$IsTruncated is true and the next geo location
 to list is a continent location.
 
+
 =head2 NextCountryCode => Str
 
   If the results were truncated, the country code of the next geo
 location in the list. This element is present only if
 ListGeoLocationsResponse$IsTruncated is true and the next geo location
 to list is not a continent location.
+
 
 =head2 NextSubdivisionCode => Str
 

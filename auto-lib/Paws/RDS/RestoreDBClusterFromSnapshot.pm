@@ -42,14 +42,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZones => ArrayRef[Str]
 
   Provides the list of EC2 Availability Zones that instances in the
 restored DB cluster can be created in.
 
+
 =head2 DatabaseName => Str
 
   The database name for the restored DB cluster.
+
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
@@ -70,9 +73,11 @@ Constraints:
 
 Example: C<my-snapshot-id>
 
+
 =head2 DBSubnetGroupName => Str
 
   The name of the DB subnet group to use for the new DB cluster.
+
 
 =head2 B<REQUIRED> Engine => Str
 
@@ -82,13 +87,16 @@ Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
 
+
 =head2 EngineVersion => Str
 
   The version of the database engine to use for the new DB cluster.
 
+
 =head2 OptionGroupName => Str
 
   The name of the option group to use for the restored DB cluster.
+
 
 =head2 Port => Int
 
@@ -97,6 +105,7 @@ Constraint: Must be compatible with the engine of the source
 Constraints: Value must be C<1150-65535>
 
 Default: The same port as the original DB cluster.
+
 
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
@@ -115,9 +124,11 @@ Constraints:
 =back
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   The tags to be assigned to the restored DB cluster.
+
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 

@@ -38,13 +38,16 @@ The summary description of the cluster.
 
 =head1 ATTRIBUTES
 
+
 =head2 Id => Str
 
   The unique identifier for the cluster.
 
+
 =head2 Name => Str
 
   The name of the cluster.
+
 
 =head2 NormalizedInstanceHours => Int
 
@@ -54,6 +57,7 @@ m1.small instance runs. Larger instances are weighted more, so an EC2
 instance that is roughly four times more expensive would result in the
 normalized instance hours being incremented by four. This result is
 only an approximation and does not reflect the actual billing rate.
+
 
 =head2 Status => L<Paws::EMR::ClusterStatus>
 

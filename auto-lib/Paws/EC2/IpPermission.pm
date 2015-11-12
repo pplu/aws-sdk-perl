@@ -40,10 +40,12 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 FromPort => Int
 
   The start of port range for the TCP and UDP protocols, or an ICMP type
 number. A value of C<-1> indicates all ICMP types.
+
 
 =head2 IpProtocol => Str
 
@@ -55,9 +57,11 @@ the name (for example, C<tcp>, C<udp>, or C<icmp>). For a list of
 protocol numbers, see Protocol Numbers. (VPC only) When you call
 AuthorizeSecurityGroupIngress, you can use C<-1> to specify all.
 
+
 =head2 IpRanges => ArrayRef[L<Paws::EC2::IpRange>]
 
   One or more IP ranges.
+
 
 =head2 PrefixListIds => ArrayRef[L<Paws::EC2::PrefixListId>]
 
@@ -67,10 +71,12 @@ service. In an AuthorizeSecurityGroupEgress request, this is the AWS
 service that you want to access through a VPC endpoint from instances
 associated with the security group.
 
+
 =head2 ToPort => Int
 
   The end of port range for the TCP and UDP protocols, or an ICMP code. A
 value of C<-1> indicates all ICMP codes for the specified ICMP type.
+
 
 =head2 UserIdGroupPairs => ArrayRef[L<Paws::EC2::UserIdGroupPair>]
 

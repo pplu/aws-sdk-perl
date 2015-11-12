@@ -13,10 +13,12 @@ Paws::Kinesis::PutRecordsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 FailedRecordCount => Int
 
   The number of unsuccessfully processed records in a C<PutRecords>
 request.
+
 =head2 B<REQUIRED> Records => ArrayRef[L<Paws::Kinesis::PutRecordsResultEntry>]
 
   An array of successfully and unsuccessfully processed record results,

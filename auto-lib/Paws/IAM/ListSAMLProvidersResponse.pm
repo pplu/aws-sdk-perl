@@ -13,6 +13,7 @@ Paws::IAM::ListSAMLProvidersResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 SAMLProviderList => ArrayRef[L<Paws::IAM::SAMLProviderListEntry>]
 
   The list of SAML providers for this account.

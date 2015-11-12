@@ -38,15 +38,18 @@ future, or that are currently being applied.
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheNodeIdsToRemove => ArrayRef[Str]
 
   A list of cache node IDs that are being removed (or will be removed)
 from the cache cluster. A node ID is a numeric identifier (0001, 0002,
 etc.).
 
+
 =head2 EngineVersion => Str
 
   The new cache engine version that the cache cluster will run.
+
 
 =head2 NumCacheNodes => Int
 

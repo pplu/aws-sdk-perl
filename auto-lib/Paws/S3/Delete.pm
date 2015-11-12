@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Objects => ArrayRef[L<Paws::S3::ObjectIdentifier>]
 
   
+
 
 =head2 Quiet => Bool
 

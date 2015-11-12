@@ -37,13 +37,16 @@ Details on an event associated with a service.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreatedAt => Str
 
   The Unix time in seconds and milliseconds when the event was triggered.
 
+
 =head2 Id => Str
 
   The ID string of the event.
+
 
 =head2 Message => Str
 

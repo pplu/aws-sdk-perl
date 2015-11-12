@@ -13,9 +13,11 @@ Paws::StorageGateway::ListVolumeRecoveryPointsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 GatewayARN => Str
 
   
+
 =head2 VolumeRecoveryPointInfos => ArrayRef[L<Paws::StorageGateway::VolumeRecoveryPointInfo>]
 
   

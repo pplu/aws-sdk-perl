@@ -13,9 +13,11 @@ Paws::CloudWatchLogs::DescribeLogStreamsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 LogStreams => ArrayRef[L<Paws::CloudWatchLogs::LogStream>]
 
   
+
 =head2 NextToken => Str
 
   

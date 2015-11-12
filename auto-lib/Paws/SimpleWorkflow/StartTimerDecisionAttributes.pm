@@ -61,10 +61,12 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
+
 =head2 Control => Str
 
   I<Optional.> Data attached to the event that can be used by the decider
 in subsequent workflow tasks.
+
 
 =head2 B<REQUIRED> StartToFireTimeout => Str
 
@@ -72,6 +74,7 @@ in subsequent workflow tasks.
 
 The duration is specified in seconds; an integer greater than or equal
 to 0.
+
 
 =head2 B<REQUIRED> TimerId => Str
 

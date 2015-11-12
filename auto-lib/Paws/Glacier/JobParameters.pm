@@ -41,11 +41,13 @@ Provides options for defining a job.
 
 =head1 ATTRIBUTES
 
+
 =head2 ArchiveId => Str
 
   The ID of the archive that you want to retrieve. This field is required
 only if C<Type> is set to archive-retrieval. An error occurs if you
 specify this request parameter for an inventory retrieval job request.
+
 
 =head2 Description => Str
 
@@ -54,6 +56,7 @@ or equal to 1,024 bytes. The allowable characters are 7-bit ASCII
 without control codes-specifically, ASCII values 32-126 decimal or
 0x20-0x7E hexadecimal.
 
+
 =head2 Format => Str
 
   When initiating a job to retrieve a vault inventory, you can optionally
@@ -61,9 +64,11 @@ add this parameter to your request to specify the output format. If you
 are initiating an inventory job and do not specify a Format field, JSON
 is the default format. Valid values are "CSV" and "JSON".
 
+
 =head2 InventoryRetrievalParameters => L<Paws::Glacier::InventoryRetrievalJobInput>
 
   Input parameters used for range inventory retrieval.
+
 
 =head2 RetrievalByteRange => Str
 
@@ -79,12 +84,14 @@ RetrievalByteRange is not megabyte aligned, this operation returns a
 An error occurs if you specify this field for an inventory retrieval
 job request.
 
+
 =head2 SNSTopic => Str
 
   The Amazon SNS topic ARN to which Amazon Glacier sends a notification
 when the job is completed and the output is ready for you to download.
 The specified topic publishes the notification to its subscribers. The
 SNS topic must exist.
+
 
 =head2 Type => Str
 

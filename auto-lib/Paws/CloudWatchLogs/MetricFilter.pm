@@ -40,17 +40,21 @@ to metric data in a CloudWatch metric.
 
 =head1 ATTRIBUTES
 
+
 =head2 CreationTime => Int
 
   
+
 
 =head2 FilterName => Str
 
   
 
+
 =head2 FilterPattern => Str
 
   
+
 
 =head2 MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
 

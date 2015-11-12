@@ -35,6 +35,7 @@ Contains the vault lock policy.
 
 =head1 ATTRIBUTES
 
+
 =head2 Policy => Str
 
   The vault lock policy.

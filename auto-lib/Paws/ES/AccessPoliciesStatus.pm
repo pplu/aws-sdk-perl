@@ -37,11 +37,13 @@ endpoints, and the current status of those rules.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Options => Str
 
   The access policy configured for the Elasticsearch domain. Access
 policies may be resource-based, IP-based, or IAM-based. See Configuring
 Access Policiesfor more information.
+
 
 =head2 B<REQUIRED> Status => L<Paws::ES::OptionStatus>
 

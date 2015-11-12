@@ -40,20 +40,24 @@ see Status Code Definitions.
 
 =head1 ATTRIBUTES
 
+
 =head2 Status2xx => Int
 
   The percentage of requests over the last 10 seconds that resulted in a
 2xx (200, 201, etc.) status code.
+
 
 =head2 Status3xx => Int
 
   The percentage of requests over the last 10 seconds that resulted in a
 3xx (300, 301, etc.) status code.
 
+
 =head2 Status4xx => Int
 
   The percentage of requests over the last 10 seconds that resulted in a
 4xx (400, 401, etc.) status code.
+
 
 =head2 Status5xx => Int
 

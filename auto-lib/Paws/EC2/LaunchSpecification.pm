@@ -49,13 +49,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AddressingType => Str
 
   Deprecated.
 
+
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
   One or more block device mapping entries.
+
 
 =head2 EbsOptimized => Bool
 
@@ -67,41 +70,51 @@ usage charges apply when using an EBS Optimized instance.
 
 Default: C<false>
 
+
 =head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>
 
   The IAM instance profile.
+
 
 =head2 ImageId => Str
 
   The ID of the AMI.
 
+
 =head2 InstanceType => Str
 
   The instance type.
+
 
 =head2 KernelId => Str
 
   The ID of the kernel.
 
+
 =head2 KeyName => Str
 
   The name of the key pair.
+
 
 =head2 Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>
 
   
 
+
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
 
   One or more network interfaces.
+
 
 =head2 Placement => L<Paws::EC2::SpotPlacement>
 
   The placement information for the instance.
 
+
 =head2 RamdiskId => Str
 
   The ID of the RAM disk.
+
 
 =head2 SecurityGroups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
@@ -110,9 +123,11 @@ must specify the IDs of the security groups. When requesting instances
 in EC2-Classic, you can specify the names or the IDs of the security
 groups.
 
+
 =head2 SubnetId => Str
 
   The ID of the subnet in which to launch the instance.
+
 
 =head2 UserData => Str
 

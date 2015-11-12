@@ -42,27 +42,33 @@ Describes a reserved node offering.
 
 =head1 ATTRIBUTES
 
+
 =head2 CurrencyCode => Str
 
   The currency code for the compute nodes offering.
 
+
 =head2 Duration => Int
 
   The duration, in seconds, for which the offering will reserve the node.
+
 
 =head2 FixedPrice => Num
 
   The upfront fixed charge you will pay to purchase the specific reserved
 node offering.
 
+
 =head2 NodeType => Str
 
   The node type offered by the reserved node offering.
+
 
 =head2 OfferingType => Str
 
   The anticipated utilization of the reserved node, as defined in the
 reserved node offering.
+
 
 =head2 RecurringCharges => ArrayRef[L<Paws::RedShift::RecurringCharge>]
 
@@ -70,9 +76,11 @@ reserved node offering.
 clusters using the node offering. Recurring charges are only in effect
 for heavy-utilization reserved nodes.
 
+
 =head2 ReservedNodeOfferingId => Str
 
   The offering identifier.
+
 
 =head2 UsagePrice => Num
 

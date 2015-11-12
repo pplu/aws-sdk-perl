@@ -33,10 +33,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> NewPassword => Str
 
   The new password. The new password must conform to the AWS account's
 password policy, if one exists.
+
 
 =head2 B<REQUIRED> OldPassword => Str
 

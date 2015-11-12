@@ -37,13 +37,16 @@ Represents a device pool compatibility result.
 
 =head1 ATTRIBUTES
 
+
 =head2 Compatible => Bool
 
   Whether the result was compatible with the device pool.
 
+
 =head2 Device => L<Paws::DeviceFarm::Device>
 
   
+
 
 =head2 IncompatibilityMessages => ArrayRef[L<Paws::DeviceFarm::IncompatibilityMessage>]
 

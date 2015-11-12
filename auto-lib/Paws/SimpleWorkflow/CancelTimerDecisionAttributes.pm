@@ -59,6 +59,7 @@ policies, see Using IAM to Manage Access to Amazon SWF Workflows.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> TimerId => Str
 
   B<Required.> The unique ID of the timer to cancel.

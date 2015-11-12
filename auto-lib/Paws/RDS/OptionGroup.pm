@@ -41,32 +41,39 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowsVpcAndNonVpcInstanceMemberships => Bool
 
   Indicates whether this option group can be applied to both VPC and
 non-VPC instances. The value C<true> indicates the option group can be
 applied to both VPC and non-VPC instances.
 
+
 =head2 EngineName => Str
 
   Indicates the name of the engine that this option group can be applied
 to.
 
+
 =head2 MajorEngineVersion => Str
 
   Indicates the major engine version associated with this option group.
+
 
 =head2 OptionGroupDescription => Str
 
   Provides a description of the option group.
 
+
 =head2 OptionGroupName => Str
 
   Specifies the name of the option group.
 
+
 =head2 Options => ArrayRef[L<Paws::RDS::Option>]
 
   Indicates what options are available in the option group.
+
 
 =head2 VpcId => Str
 

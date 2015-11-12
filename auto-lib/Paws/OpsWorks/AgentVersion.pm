@@ -36,9 +36,11 @@ Describes an agent version.
 
 =head1 ATTRIBUTES
 
+
 =head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
 
   The configuration manager.
+
 
 =head2 Version => Str
 

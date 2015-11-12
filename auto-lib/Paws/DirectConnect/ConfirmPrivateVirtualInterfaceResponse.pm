@@ -12,6 +12,7 @@ Paws::DirectConnect::ConfirmPrivateVirtualInterfaceResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 VirtualInterfaceState => Str
 
   

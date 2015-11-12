@@ -37,13 +37,16 @@ This data type is used as a response element to DescribeDBLogFiles.
 
 =head1 ATTRIBUTES
 
+
 =head2 LastWritten => Int
 
   A POSIX timestamp when the last log entry was written.
 
+
 =head2 LogFileName => Str
 
   The name of the log file for the specified DB instance.
+
 
 =head2 Size => Int
 

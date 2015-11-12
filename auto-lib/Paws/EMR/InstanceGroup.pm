@@ -46,10 +46,12 @@ HDFS.
 
 =head1 ATTRIBUTES
 
+
 =head2 BidPrice => Str
 
   The bid price for each EC2 instance in the instance group when
 launching nodes as Spot Instances, expressed in USD.
+
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
@@ -59,34 +61,42 @@ The list of configurations supplied for an EMR cluster instance group.
 You can specify a separate configuration for each instance group
 (master, core, and task).
 
+
 =head2 Id => Str
 
   The identifier of the instance group.
+
 
 =head2 InstanceGroupType => Str
 
   The type of the instance group. Valid values are MASTER, CORE or TASK.
 
+
 =head2 InstanceType => Str
 
   The EC2 instance type for all instances in the instance group.
+
 
 =head2 Market => Str
 
   The marketplace to provision instances for this group. Valid values are
 ON_DEMAND or SPOT.
 
+
 =head2 Name => Str
 
   The name of the instance group.
+
 
 =head2 RequestedInstanceCount => Int
 
   The target number of instances for the instance group.
 
+
 =head2 RunningInstanceCount => Int
 
   The number of instances currently running in this instance group.
+
 
 =head2 Status => L<Paws::EMR::InstanceGroupStatus>
 

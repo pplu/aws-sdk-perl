@@ -42,6 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZoneGroup => Str
 
   The user-specified name for a logical grouping of bids.
@@ -65,6 +66,7 @@ request, even if you specified the same Availability Zone group.
 
 Default: Instances are launched in any available Availability Zone.
 
+
 =head2 BlockDurationMinutes => Int
 
   The required duration for the Spot instances, in minutes. This value
@@ -79,11 +81,13 @@ terminates.
 Note that you can't specify an Availability Zone group or a launch
 group if you specify a required duration.
 
+
 =head2 ClientToken => Str
 
   Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. For more information, see How to Ensure
 Idempotency in the I<Amazon Elastic Compute Cloud User Guide>.
+
 
 =head2 DryRun => Bool
 
@@ -92,11 +96,13 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 InstanceCount => Int
 
   The maximum number of Spot instances to launch.
 
 Default: 1
+
 
 =head2 LaunchGroup => Str
 
@@ -105,20 +111,24 @@ together and terminate together.
 
 Default: Instances are launched and terminated individually
 
+
 =head2 LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>
 
   
+
 
 =head2 B<REQUIRED> SpotPrice => Str
 
   The maximum hourly price (bid) for any Spot instance launched to
 fulfill the request.
 
+
 =head2 Type => Str
 
   The Spot instance request type.
 
 Default: C<one-time>
+
 
 =head2 ValidFrom => Str
 
@@ -129,6 +139,7 @@ If the request is persistent, the request becomes active at this date
 and time and remains active until it expires or is canceled.
 
 Default: The request is effective indefinitely.
+
 
 =head2 ValidUntil => Str
 

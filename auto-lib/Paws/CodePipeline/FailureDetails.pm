@@ -37,13 +37,16 @@ Represents information about failure details.
 
 =head1 ATTRIBUTES
 
+
 =head2 ExternalExecutionId => Str
 
   The external ID of the run of the action that failed.
 
+
 =head2 B<REQUIRED> Message => Str
 
   The message about the failure.
+
 
 =head2 B<REQUIRED> Type => Str
 

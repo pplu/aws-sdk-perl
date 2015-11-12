@@ -34,14 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name or ARN of the Auto Scaling group.
+
 
 =head2 B<REQUIRED> Granularity => Str
 
   The granularity to associate with the metrics to collect. The only
 valid value is C<1Minute>.
+
 
 =head2 Metrics => ArrayRef[Str]
 

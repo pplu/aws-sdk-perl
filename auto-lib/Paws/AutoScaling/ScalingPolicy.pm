@@ -47,34 +47,41 @@ Describes a scaling policy.
 
 =head1 ATTRIBUTES
 
+
 =head2 AdjustmentType => Str
 
   The adjustment type, which specifies how C<ScalingAdjustment> is
 interpreted. Valid values are C<ChangeInCapacity>, C<ExactCapacity>,
 and C<PercentChangeInCapacity>.
 
+
 =head2 Alarms => ArrayRef[L<Paws::AutoScaling::Alarm>]
 
   The CloudWatch alarms related to the policy.
 
+
 =head2 AutoScalingGroupName => Str
 
   The name of the Auto Scaling group associated with this scaling policy.
+
 
 =head2 Cooldown => Int
 
   The amount of time, in seconds, after a scaling activity completes
 before any further trigger-related scaling activities can start.
 
+
 =head2 EstimatedInstanceWarmup => Int
 
   The estimated time, in seconds, until a newly launched instance can
 contribute to the CloudWatch metrics.
 
+
 =head2 MetricAggregationType => Str
 
   The aggregation type for the CloudWatch metrics. Valid values are
 C<Minimum>, C<Maximum>, and C<Average>.
+
 
 =head2 MinAdjustmentMagnitude => Int
 
@@ -83,28 +90,34 @@ C<AdjustmentType> is C<PercentChangeInCapacity>, the scaling policy
 changes the C<DesiredCapacity> of the Auto Scaling group by at least
 this many instances. Otherwise, the error is C<ValidationError>.
 
+
 =head2 MinAdjustmentStep => Int
 
   Available for backward compatibility. Use C<MinAdjustmentMagnitude>
 instead.
 
+
 =head2 PolicyARN => Str
 
   The Amazon Resource Name (ARN) of the policy.
+
 
 =head2 PolicyName => Str
 
   The name of the scaling policy.
 
+
 =head2 PolicyType => Str
 
   The policy type. Valid values are C<SimpleScaling> and C<StepScaling>.
+
 
 =head2 ScalingAdjustment => Int
 
   The amount by which to scale, based on the specified adjustment type. A
 positive value adds to the current capacity while a negative number
 removes from the current capacity.
+
 
 =head2 StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>]
 

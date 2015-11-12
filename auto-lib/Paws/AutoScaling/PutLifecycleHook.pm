@@ -39,10 +39,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name of the Auto Scaling group to which you want to assign the
 lifecycle hook.
+
 
 =head2 DefaultResult => Str
 
@@ -50,6 +52,7 @@ lifecycle hook.
 lifecycle hook timeout elapses or if an unexpected failure occurs. The
 value for this parameter can be either C<CONTINUE> or C<ABANDON>. The
 default value for this parameter is C<ABANDON>.
+
 
 =head2 HeartbeatTimeout => Int
 
@@ -59,9 +62,11 @@ performs the action defined in the C<DefaultResult> parameter. You can
 prevent the lifecycle hook from timing out by calling
 RecordLifecycleActionHeartbeat. The default is 3600 seconds (1 hour).
 
+
 =head2 B<REQUIRED> LifecycleHookName => Str
 
   The name of the lifecycle hook.
+
 
 =head2 LifecycleTransition => Str
 
@@ -71,10 +76,12 @@ a list of lifecycle hook types, see DescribeLifecycleHookTypes.
 This parameter is required for new lifecycle hooks, but optional when
 updating existing hooks.
 
+
 =head2 NotificationMetadata => Str
 
   Contains additional information that you want to include any time Auto
 Scaling sends a message to the notification target.
+
 
 =head2 NotificationTargetARN => Str
 
@@ -112,6 +119,7 @@ notifications to an Amazon SNS topic.
 When you call this operation, a test message is sent to the
 notification target. This test message contains an additional key/value
 pair: C<Event:autoscaling:TEST_NOTIFICATION>.
+
 
 =head2 RoleARN => Str
 

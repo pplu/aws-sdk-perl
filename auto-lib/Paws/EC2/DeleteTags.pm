@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DryRun => Bool
 
   Checks whether you have the required permissions for the action,
@@ -41,10 +42,12 @@ without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
+
 =head2 B<REQUIRED> Resources => ArrayRef[Str]
 
   The ID of the resource. For example, ami-1a2b3c4d. You can specify more
 than one resource ID.
+
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
 

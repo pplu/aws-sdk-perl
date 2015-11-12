@@ -40,6 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CloudWatchLogsLogGroupArn => Str
 
   Specifies a log group name using an Amazon Resource Name (ARN), a
@@ -47,10 +48,12 @@ unique identifier that represents the log group to which CloudTrail
 logs will be delivered. Not required unless you specify
 CloudWatchLogsRoleArn.
 
+
 =head2 CloudWatchLogsRoleArn => Str
 
   Specifies the role for the CloudWatch Logs endpoint to assume to write
 to a user's log group.
+
 
 =head2 EnableLogFileValidation => Bool
 
@@ -67,10 +70,12 @@ not be created for the log files delivered from noon on January 2 to
 noon on January 10. The same applies whenever you stop CloudTrail
 logging or delete a trail.
 
+
 =head2 IncludeGlobalServiceEvents => Bool
 
   Specifies whether the trail is publishing events from global services
 such as IAM to the log files.
+
 
 =head2 KmsKeyId => Str
 
@@ -95,6 +100,7 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 =back
 
 
+
 =head2 B<REQUIRED> Name => Str
 
   Specifies the name of the trail. The name must meet the following
@@ -117,10 +123,12 @@ C<my-_namespace> and C<my--namespace> are invalid.
 =back
 
 
+
 =head2 B<REQUIRED> S3BucketName => Str
 
   Specifies the name of the Amazon S3 bucket designated for publishing
 log files. See Amazon S3 Bucket Naming Requirements.
+
 
 =head2 S3KeyPrefix => Str
 
@@ -128,6 +136,7 @@ log files. See Amazon S3 Bucket Naming Requirements.
 bucket you have designated for log file delivery. For more information,
 see Finding Your CloudTrail Log Files. The maximum length is 200
 characters.
+
 
 =head2 SnsTopicName => Str
 

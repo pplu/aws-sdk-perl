@@ -41,10 +41,12 @@ Configuration defining a new instance group.
 
 =head1 ATTRIBUTES
 
+
 =head2 BidPrice => Str
 
   Bid price for each Amazon EC2 instance in the instance group when
 launching nodes as Spot Instances, expressed in USD.
+
 
 =head2 Configurations => ArrayRef[L<Paws::EMR::Configuration>]
 
@@ -54,21 +56,26 @@ The list of configurations supplied for an EMR cluster instance group.
 You can specify a separate configuration for each instance group
 (master, core, and task).
 
+
 =head2 B<REQUIRED> InstanceCount => Int
 
   Target number of instances for the instance group.
+
 
 =head2 B<REQUIRED> InstanceRole => Str
 
   The role of the instance group in the cluster.
 
+
 =head2 B<REQUIRED> InstanceType => Str
 
   The Amazon EC2 instance type for all instances in the instance group.
 
+
 =head2 Market => Str
 
   Market type of the Amazon EC2 instances used to create a cluster node.
+
 
 =head2 Name => Str
 

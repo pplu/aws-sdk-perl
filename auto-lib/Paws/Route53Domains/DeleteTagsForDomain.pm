@@ -33,6 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DomainName => Str
 
   The domain for which you want to delete one or more tags.
@@ -51,6 +52,7 @@ specify an Internationalized Domain Name, you must convert the name to
 Punycode.
 
 Required: Yes
+
 
 =head2 B<REQUIRED> TagsToDelete => ArrayRef[Str]
 

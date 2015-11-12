@@ -36,9 +36,11 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   This parameter is not currently supported.
+
 
 =head2 B<REQUIRED> Values => ArrayRef[Str]
 

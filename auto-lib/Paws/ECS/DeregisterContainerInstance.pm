@@ -34,11 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Cluster => Str
 
   The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the container instance to deregister. If you do not specify a
 cluster, the default cluster is assumed.
+
 
 =head2 B<REQUIRED> ContainerInstance => Str
 
@@ -48,6 +50,7 @@ namespace, followed by the region of the container instance, the AWS
 account ID of the container instance owner, the C<container-instance>
 namespace, and then the container instance ID. For example,
 arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>.
+
 
 =head2 Force => Bool
 

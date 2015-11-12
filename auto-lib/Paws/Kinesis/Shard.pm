@@ -40,22 +40,27 @@ stream.
 
 =head1 ATTRIBUTES
 
+
 =head2 AdjacentParentShardId => Str
 
   The shard Id of the shard adjacent to the shard's parent.
+
 
 =head2 B<REQUIRED> HashKeyRange => L<Paws::Kinesis::HashKeyRange>
 
   The range of possible hash key values for the shard, which is a set of
 ordered contiguous positive integers.
 
+
 =head2 ParentShardId => Str
 
   The shard Id of the shard's parent.
 
+
 =head2 B<REQUIRED> SequenceNumberRange => L<Paws::Kinesis::SequenceNumberRange>
 
   The range of possible sequence numbers for the shard.
+
 
 =head2 B<REQUIRED> ShardId => Str
 

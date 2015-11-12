@@ -63,29 +63,36 @@ C<{ "12":"on", "13":"on", "14":"on", "15":"on" }>
 
 =head1 ATTRIBUTES
 
+
 =head2 Friday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Friday.
+
 
 =head2 Monday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Monday.
 
+
 =head2 Saturday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Saturday.
+
 
 =head2 Sunday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Sunday.
 
+
 =head2 Thursday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Thursday.
 
+
 =head2 Tuesday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 
   The schedule for Tuesday.
+
 
 =head2 Wednesday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
 

@@ -47,55 +47,68 @@ Describes an instance's Amazon EBS volume.
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZone => Str
 
   The volume Availability Zone. For more information, see Regions and
 Endpoints.
 
+
 =head2 Device => Str
 
   The device name.
+
 
 =head2 Ec2VolumeId => Str
 
   The Amazon EC2 volume ID.
 
+
 =head2 InstanceId => Str
 
   The instance ID.
+
 
 =head2 Iops => Int
 
   For PIOPS volumes, the IOPS per disk.
 
+
 =head2 MountPoint => Str
 
   The volume mount point. For example "/dev/sdh".
+
 
 =head2 Name => Str
 
   The volume name.
 
+
 =head2 RaidArrayId => Str
 
   The RAID array ID.
+
 
 =head2 Region => Str
 
   The AWS region. For more information about AWS regions, see Regions and
 Endpoints.
 
+
 =head2 Size => Int
 
   The volume size.
+
 
 =head2 Status => Str
 
   The value returned by DescribeVolumes.
 
+
 =head2 VolumeId => Str
 
   The volume ID.
+
 
 =head2 VolumeType => Str
 

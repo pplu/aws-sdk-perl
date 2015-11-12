@@ -37,6 +37,7 @@ Provides details of the C<DecisionTaskTimedOut> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ScheduledEventId => Int
 
   The ID of the C<DecisionTaskScheduled> event that was recorded when
@@ -44,11 +45,13 @@ this decision task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
+
 =head2 B<REQUIRED> StartedEventId => Int
 
   The ID of the C<DecisionTaskStarted> event recorded when this decision
 task was started. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
+
 
 =head2 B<REQUIRED> TimeoutType => Str
 

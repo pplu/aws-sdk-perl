@@ -35,6 +35,7 @@ Represents information about the output of an action.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the output of an artifact, such as "My App".

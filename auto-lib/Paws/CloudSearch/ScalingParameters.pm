@@ -38,15 +38,18 @@ partition.
 
 =head1 ATTRIBUTES
 
+
 =head2 DesiredInstanceType => Str
 
   The instance type that you want to preconfigure for your domain. For
 example, C<search.m1.small>.
 
+
 =head2 DesiredPartitionCount => Int
 
   The number of partitions you want to preconfigure for your domain. Only
 valid when you select C<m2.2xlarge> as the desired instance type.
+
 
 =head2 DesiredReplicationCount => Int
 

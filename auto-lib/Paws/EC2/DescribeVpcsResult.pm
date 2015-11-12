@@ -13,6 +13,7 @@ Paws::EC2::DescribeVpcsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 Vpcs => ArrayRef[L<Paws::EC2::Vpc>]
 
   Information about one or more VPCs.

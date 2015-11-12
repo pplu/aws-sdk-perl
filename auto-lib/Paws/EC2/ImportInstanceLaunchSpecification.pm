@@ -45,21 +45,26 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AdditionalInfo => Str
 
   Reserved.
+
 
 =head2 Architecture => Str
 
   The architecture of the instance.
 
+
 =head2 GroupIds => ArrayRef[Str]
 
   One or more security group IDs.
 
+
 =head2 GroupNames => ArrayRef[Str]
 
   One or more security group names.
+
 
 =head2 InstanceInitiatedShutdownBehavior => Str
 
@@ -67,28 +72,34 @@ This class has no description
 shutdown from the instance (using the operating system command for
 system shutdown).
 
+
 =head2 InstanceType => Str
 
   The instance type. For more information about the instance types that
 you can import, see Before You Get Started in the Amazon Elastic
 Compute Cloud User Guide.
 
+
 =head2 Monitoring => Bool
 
   Indicates whether monitoring is enabled.
 
+
 =head2 Placement => L<Paws::EC2::Placement>
 
   The placement information for the instance.
+
 
 =head2 PrivateIpAddress => Str
 
   [EC2-VPC] An available IP address from the IP address range of the
 subnet.
 
+
 =head2 SubnetId => Str
 
   [EC2-VPC] The ID of the subnet in which to launch the instance.
+
 
 =head2 UserData => L<Paws::EC2::UserData>
 

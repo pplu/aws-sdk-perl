@@ -47,9 +47,11 @@ This data type is used as a response element in the following actions:
 
 =head1 ATTRIBUTES
 
+
 =head2 Address => Str
 
   Specifies the DNS address of the DB instance.
+
 
 =head2 Port => Int
 

@@ -38,6 +38,7 @@ property.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowedValues => ArrayRef[Str]
 
   A list of values that are permitted for a parameter.

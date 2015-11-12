@@ -14,9 +14,11 @@ Paws::ElasticTranscoder::UpdatePipelineResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Pipeline => L<Paws::ElasticTranscoder::Pipeline>
 
   
+
 =head2 Warnings => ArrayRef[L<Paws::ElasticTranscoder::Warning>]
 
   Elastic Transcoder returns a warning if the resources used by your

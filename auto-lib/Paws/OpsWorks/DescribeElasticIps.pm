@@ -34,11 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 InstanceId => Str
 
   The instance ID. If you include this parameter, C<DescribeElasticIps>
 returns a description of the Elastic IP addresses associated with the
 specified instance.
+
 
 =head2 Ips => ArrayRef[Str]
 
@@ -46,6 +48,7 @@ specified instance.
 parameter, C<DescribeElasticIps> returns a description of the specified
 Elastic IP addresses. Otherwise, it returns a description of every
 Elastic IP address.
+
 
 =head2 StackId => Str
 

@@ -35,9 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Payload => Str
 
   The state information, in JSON format.
+
 
 =head2 B<REQUIRED> ThingName => Str
 

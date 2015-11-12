@@ -35,6 +35,7 @@ Contains the configuration settings of a domain.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> WorkflowExecutionRetentionPeriodInDays => Str
 
   The retention period for workflow executions in this domain.

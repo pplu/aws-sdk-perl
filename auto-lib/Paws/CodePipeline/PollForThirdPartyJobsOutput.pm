@@ -12,6 +12,7 @@ Paws::CodePipeline::PollForThirdPartyJobsOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Jobs => ArrayRef[L<Paws::CodePipeline::ThirdPartyJob>]
 
   Information about the jobs to take action on.

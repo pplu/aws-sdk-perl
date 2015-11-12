@@ -15,14 +15,17 @@ Paws::IoT::CreateCertificateFromCsrResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 CertificateArn => Str
 
   The Amazon Resource Name (ARN) of the certificate. You can use the ARN
 as a principal for policy operations.
+
 =head2 CertificateId => Str
 
   The ID of the certificate. Certificate management operations only take
 a certificateId.
+
 =head2 CertificatePem => Str
 
   The certificate data, in PEM format.

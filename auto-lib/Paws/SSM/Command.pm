@@ -44,18 +44,22 @@ Describes a command request.
 
 =head1 ATTRIBUTES
 
+
 =head2 CommandId => Str
 
   A unique identifier for this command.
+
 
 =head2 Comment => Str
 
   User-specified information about the command, such as a brief
 description of what the command should do.
 
+
 =head2 DocumentName => Str
 
   The name of the SSM document requested for execution.
+
 
 =head2 ExpiresAfter => Str
 
@@ -63,14 +67,17 @@ description of what the command should do.
 executing, it will not execute. Calculated based on the ExpiresAfter
 user input provided as part of the SendCommand API.
 
+
 =head2 InstanceIds => ArrayRef[Str]
 
   The instance IDs against which this command was requested.
+
 
 =head2 OutputS3BucketName => Str
 
   The S3 bucket where the responses to the command executions should be
 stored. This was requested when issuing the command.
+
 
 =head2 OutputS3KeyPrefix => Str
 
@@ -78,14 +85,17 @@ stored. This was requested when issuing the command.
 command executions should be stored. This was requested when issuing
 the command.
 
+
 =head2 Parameters => L<Paws::SSM::Parameters>
 
   The parameter values to be inserted in the SSM document when executing
 the command.
 
+
 =head2 RequestedDateTime => Str
 
   The date and time the command was requested.
+
 
 =head2 Status => Str
 

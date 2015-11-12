@@ -40,6 +40,7 @@ A streaming distribution.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ActiveTrustedSigners => L<Paws::CloudFront::ActiveTrustedSigners>
 
   CloudFront automatically adds this element to the response only if
@@ -52,25 +53,30 @@ associated with the trusted signer's AWS account. If no KeyPairId
 element appears for a Signer, that signer can't create working signed
 URLs.
 
+
 =head2 B<REQUIRED> DomainName => Str
 
   The domain name corresponding to the streaming distribution. For
 example: s5c39gqb8ow64r.cloudfront.net.
+
 
 =head2 B<REQUIRED> Id => Str
 
   The identifier for the streaming distribution. For example:
 EGTXBD79H29TRA8.
 
+
 =head2 LastModifiedTime => Str
 
   The date and time the distribution was last modified.
+
 
 =head2 B<REQUIRED> Status => Str
 
   The current status of the streaming distribution. When the status is
 Deployed, the distribution's information is fully propagated throughout
 the Amazon CloudFront system.
+
 
 =head2 B<REQUIRED> StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
 

@@ -13,9 +13,11 @@ Paws::CloudWatchLogs::PutLogEventsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 NextSequenceToken => Str
 
   
+
 =head2 RejectedLogEventsInfo => L<Paws::CloudWatchLogs::RejectedLogEventsInfo>
 
   

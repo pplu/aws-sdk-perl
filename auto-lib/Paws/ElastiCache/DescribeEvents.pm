@@ -38,14 +38,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Duration => Int
 
   The number of minutes' worth of events to retrieve.
+
 
 =head2 EndTime => Str
 
   The end of the time interval for which to retrieve events, specified in
 ISO 8601 format.
+
 
 =head2 Marker => Str
 
@@ -53,6 +56,7 @@ ISO 8601 format.
 pagination of results from this action. If this parameter is specified,
 the response includes only records beyond the marker, up to the value
 specified by I<MaxRecords>.
+
 
 =head2 MaxRecords => Int
 
@@ -65,10 +69,12 @@ Default: 100
 
 Constraints: minimum 20; maximum 100.
 
+
 =head2 SourceIdentifier => Str
 
   The identifier of the event source for which events will be returned.
 If not specified, then all sources are included in the response.
+
 
 =head2 SourceType => Str
 
@@ -77,6 +83,7 @@ events are returned.
 
 Valid values are: C<cache-cluster> | C<cache-parameter-group> |
 C<cache-security-group> | C<cache-subnet-group>
+
 
 =head2 StartTime => Str
 

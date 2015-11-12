@@ -14,12 +14,14 @@ Paws::ElastiCache::DescribeSnapshotsListMessage
 
 =head1 ATTRIBUTES
 
+
 =head2 Marker => Str
 
   An optional marker returned from a prior request. Use this marker for
 pagination of results from this action. If this parameter is specified,
 the response includes only records beyond the marker, up to the value
 specified by I<MaxRecords>.
+
 =head2 Snapshots => ArrayRef[L<Paws::ElastiCache::Snapshot>]
 
   A list of snapshots. Each item in the list contains detailed

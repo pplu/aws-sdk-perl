@@ -13,6 +13,7 @@ Paws::CognitoSync::RegisterDeviceResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 DeviceId => Str
 
   The unique ID generated for this device by Cognito.

@@ -39,6 +39,7 @@ Provides details for the C<LambdaFunctionScheduled> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DecisionTaskCompletedEventId => Int
 
   The ID of the C<DecisionTaskCompleted> event for the decision that
@@ -46,17 +47,21 @@ resulted in the scheduling of this AWS Lambda function. This
 information can be useful for diagnosing problems by tracing back the
 chain of events leading up to this event.
 
+
 =head2 B<REQUIRED> Id => Str
 
   The unique Amazon SWF ID for the AWS Lambda task.
+
 
 =head2 Input => Str
 
   Input provided to the AWS Lambda function.
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the scheduled AWS Lambda function.
+
 
 =head2 StartToCloseTimeout => Str
 

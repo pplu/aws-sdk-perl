@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Endpoint => Str
 
   The endpoint that you want to receive notifications. Endpoints vary by
@@ -64,6 +65,7 @@ EndpointArn of a mobile app and device.
 =back
 
 
+
 =head2 B<REQUIRED> Protocol => Str
 
   The protocol you want to use. Supported protocols include:
@@ -87,6 +89,7 @@ queue
 EndpointArn for a mobile app and device.
 
 =back
+
 
 
 =head2 B<REQUIRED> TopicArn => Str

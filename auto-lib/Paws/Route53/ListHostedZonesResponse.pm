@@ -31,10 +31,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HostedZones => ArrayRef[L<Paws::Route53::HostedZone>]
 
   A complex type that contains information about the hosted zones
 associated with the current AWS account.
+
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
@@ -44,11 +46,13 @@ next page of results by using the C<Marker> element.
 
 Valid Values: C<true> | C<false>
 
+
 =head2 Marker => Str
 
   If the request returned more than one page of results, submit another
 request and specify the value of C<NextMarker> from the last response
 in the C<marker> parameter to get the next page of results.
+
 
 =head2 B<REQUIRED> MaxItems => Str
 
@@ -58,6 +62,7 @@ C<MaxItems>, the value of ListHostedZonesResponse$IsTruncated in the
 response is C<true>. Call C<ListHostedZones> again and specify the
 value of ListHostedZonesResponse$NextMarker in the
 ListHostedZonesRequest$Marker element to get the next page of results.
+
 
 =head2 NextMarker => Str
 

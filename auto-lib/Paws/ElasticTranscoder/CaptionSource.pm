@@ -40,21 +40,25 @@ transcoding process.
 
 =head1 ATTRIBUTES
 
+
 =head2 Encryption => L<Paws::ElasticTranscoder::Encryption>
 
   The encryption settings, if any, that you want Elastic Transcoder to
 apply to your caption sources.
+
 
 =head2 Key => Str
 
   The name of the sidecar caption file that you want Elastic Transcoder
 to include in the output file.
 
+
 =head2 Label => Str
 
   The label of the caption shown in the player when choosing a language.
 We recommend that you put the caption language name here, in the
 language of the captions.
+
 
 =head2 Language => Str
 
@@ -75,6 +79,7 @@ one of:
 
 For more information on ISO language codes and language names, see the
 List of ISO 639-1 codes.
+
 
 =head2 TimeOffset => Str
 

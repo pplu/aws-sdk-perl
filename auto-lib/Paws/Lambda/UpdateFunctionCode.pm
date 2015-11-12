@@ -39,6 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> FunctionName => Str
 
   The existing Lambda function name whose code you want to replace.
@@ -51,10 +52,12 @@ example, "account-id:Thumbnail"). Note that the length constraint
 applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
+
 =head2 Publish => Bool
 
   This boolean parameter can be used to request AWS Lambda to update the
 Lambda function and publish a version as an atomic operation.
+
 
 =head2 S3Bucket => Str
 
@@ -62,15 +65,18 @@ Lambda function and publish a version as an atomic operation.
 package is stored. This bucket must reside in the same AWS region where
 you are creating the Lambda function.
 
+
 =head2 S3Key => Str
 
   The Amazon S3 object (the deployment package) key name you want to
 upload.
 
+
 =head2 S3ObjectVersion => Str
 
   The Amazon S3 object (the deployment package) version you want to
 upload.
+
 
 =head2 ZipFile => Str
 

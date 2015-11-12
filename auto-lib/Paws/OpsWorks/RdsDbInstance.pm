@@ -43,25 +43,31 @@ Describes an Amazon RDS instance.
 
 =head1 ATTRIBUTES
 
+
 =head2 Address => Str
 
   The instance's address.
+
 
 =head2 DbInstanceIdentifier => Str
 
   The DB instance identifier.
 
+
 =head2 DbPassword => Str
 
   AWS OpsWorks returns C<*****FILTERED*****> instead of the actual value.
+
 
 =head2 DbUser => Str
 
   The master user name.
 
+
 =head2 Engine => Str
 
   The instance's database engine.
+
 
 =head2 MissingOnRds => Bool
 
@@ -70,13 +76,16 @@ instance. AWS OpsWorks attempts to discover the instance only once. If
 this value is set to C<true>, you must deregister the instance and then
 register it again.
 
+
 =head2 RdsDbInstanceArn => Str
 
   The instance's ARN.
 
+
 =head2 Region => Str
 
   The instance's AWS region.
+
 
 =head2 StackId => Str
 

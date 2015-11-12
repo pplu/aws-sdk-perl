@@ -39,13 +39,16 @@ reference to another object (C<RefValue>) but not as both.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Key => Str
 
   The field identifier.
 
+
 =head2 RefValue => Str
 
   The field value, expressed as the identifier of another object.
+
 
 =head2 StringValue => Str
 

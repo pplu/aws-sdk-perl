@@ -43,11 +43,13 @@ evaluated against the rule.
 
 =head1 ATTRIBUTES
 
+
 =head2 ComplianceResourceId => Str
 
   The IDs of only those AWS resources that you want AWS Config to
 evaluate against the rule. If you specify a resource ID, you must
 specify one resource type for C<ComplianceResourceTypes>.
+
 
 =head2 ComplianceResourceTypes => ArrayRef[Str]
 
@@ -55,10 +57,12 @@ specify one resource type for C<ComplianceResourceTypes>.
 to evaluate against the rule. You can specify only one type if you also
 specify resource IDs for C<ComplianceResourceId>.
 
+
 =head2 TagKey => Str
 
   The tag key that is applied to only those AWS resources that you want
 AWS Config to evaluate against the rule.
+
 
 =head2 TagValue => Str
 

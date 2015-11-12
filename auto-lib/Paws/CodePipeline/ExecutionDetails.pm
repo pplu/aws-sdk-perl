@@ -38,15 +38,18 @@ it passes through stages in the pipeline.
 
 =head1 ATTRIBUTES
 
+
 =head2 ExternalExecutionId => Str
 
   The system-generated unique ID of this action used to identify this job
 worker in any external systems, such as AWS CodeDeploy.
 
+
 =head2 PercentComplete => Int
 
   The percentage of work completed on the action, represented on a scale
 of zero to one hundred percent.
+
 
 =head2 Summary => Str
 

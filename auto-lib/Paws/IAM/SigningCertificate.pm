@@ -42,22 +42,27 @@ UploadSigningCertificate and ListSigningCertificates actions.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CertificateBody => Str
 
   The contents of the signing certificate.
 
+
 =head2 B<REQUIRED> CertificateId => Str
 
   The ID for the signing certificate.
+
 
 =head2 B<REQUIRED> Status => Str
 
   The status of the signing certificate. C<Active> means the key is valid
 for API calls, while C<Inactive> means it is not.
 
+
 =head2 UploadDate => Str
 
   The date when the signing certificate was uploaded.
+
 
 =head2 B<REQUIRED> UserName => Str
 

@@ -37,15 +37,18 @@ Represents information about a pipeline to a job worker.
 
 =head1 ATTRIBUTES
 
+
 =head2 Action => L<Paws::CodePipeline::ActionContext>
 
   
+
 
 =head2 PipelineName => Str
 
   The name of the pipeline. This is a user-specified value. Pipeline
 names must be unique across all pipeline names under an Amazon Web
 Services account.
+
 
 =head2 Stage => L<Paws::CodePipeline::StageContext>
 

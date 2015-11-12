@@ -37,14 +37,17 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   The name of the replaceable attribute.
+
 
 =head2 Replace => Bool
 
   A flag specifying whether or not to replace the attribute/value pair or
 to add a new attribute/value pair. The default setting is C<false>.
+
 
 =head2 B<REQUIRED> Value => Str
 

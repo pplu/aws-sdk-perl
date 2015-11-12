@@ -13,6 +13,7 @@ Paws::CloudSearch::DescribeExpressionsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Expressions => ArrayRef[L<Paws::CloudSearch::ExpressionStatus>]
 
   The expressions configured for the domain.

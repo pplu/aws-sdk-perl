@@ -34,6 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AttributeName => Str
 
   The name of the attribute you want to set. Only a subset of the topic's
@@ -41,9 +42,11 @@ attributes are mutable.
 
 Valid values: C<Policy> | C<DisplayName> | C<DeliveryPolicy>
 
+
 =head2 AttributeValue => Str
 
   The new value for the attribute.
+
 
 =head2 B<REQUIRED> TopicArn => Str
 

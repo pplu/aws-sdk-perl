@@ -74,24 +74,29 @@ action.
 
 =head1 ATTRIBUTES
 
+
 =head2 AllocatedStorage => Int
 
   Specifies the allocated storage size in gigabytes (GB).
+
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
   Provides the list of EC2 Availability Zones that instances in the DB
 cluster can be created in.
 
+
 =head2 BackupRetentionPeriod => Int
 
   Specifies the number of days for which automatic DB snapshots are
 retained.
 
+
 =head2 CharacterSetName => Str
 
   If present, specifies the name of the character set that this cluster
 is associated with.
+
 
 =head2 DatabaseName => Str
 
@@ -99,23 +104,28 @@ is associated with.
 provided at create time, if one was specified when the DB cluster was
 created. This same name is returned for the life of the DB cluster.
 
+
 =head2 DBClusterIdentifier => Str
 
   Contains a user-supplied DB cluster identifier. This identifier is the
 unique key that identifies a DB cluster.
 
+
 =head2 DBClusterMembers => ArrayRef[L<Paws::RDS::DBClusterMember>]
 
   Provides the list of instances that make up the DB cluster.
+
 
 =head2 DBClusterOptionGroupMemberships => ArrayRef[L<Paws::RDS::DBClusterOptionGroupStatus>]
 
   Provides the list of option group memberships for this DB cluster.
 
+
 =head2 DBClusterParameterGroup => Str
 
   Specifies the name of the DB cluster parameter group for the DB
 cluster.
+
 
 =head2 DBSubnetGroup => Str
 
@@ -123,41 +133,50 @@ cluster.
 cluster, including the name, description, and subnets in the subnet
 group.
 
+
 =head2 EarliestRestorableTime => Str
 
   Specifies the earliest time to which a database can be restored with
 point-in-time restore.
+
 
 =head2 Endpoint => Str
 
   Specifies the connection endpoint for the primary instance of the DB
 cluster.
 
+
 =head2 Engine => Str
 
   Provides the name of the database engine to be used for this DB
 cluster.
 
+
 =head2 EngineVersion => Str
 
   Indicates the database engine version.
+
 
 =head2 LatestRestorableTime => Str
 
   Specifies the latest time to which a database can be restored with
 point-in-time restore.
 
+
 =head2 MasterUsername => Str
 
   Contains the master username for the DB cluster.
+
 
 =head2 PercentProgress => Str
 
   Specifies the progress of the operation as a percentage.
 
+
 =head2 Port => Int
 
   Specifies the port that the database engine is listening on.
+
 
 =head2 PreferredBackupWindow => Str
 
@@ -165,14 +184,17 @@ point-in-time restore.
 created if automated backups are enabled, as determined by the
 C<BackupRetentionPeriod>.
 
+
 =head2 PreferredMaintenanceWindow => Str
 
   Specifies the weekly time range during which system maintenance can
 occur, in Universal Coordinated Time (UTC).
 
+
 =head2 Status => Str
 
   Specifies the current state of this DB cluster.
+
 
 =head2 VpcSecurityGroups => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]
 

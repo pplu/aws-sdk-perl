@@ -34,13 +34,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HapgArn => Str
 
   The ARN of the high-availability partition group to modify.
 
+
 =head2 Label => Str
 
   The new label for the high-availability partition group.
+
 
 =head2 PartitionSerialList => ArrayRef[Str]
 

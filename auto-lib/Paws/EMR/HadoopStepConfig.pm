@@ -40,20 +40,24 @@ waits for the job to finish or fail.
 
 =head1 ATTRIBUTES
 
+
 =head2 Args => ArrayRef[Str]
 
   The list of command line arguments to pass to the JAR file's main
 function for execution.
 
+
 =head2 Jar => Str
 
   The path to the JAR file that runs during the step.
+
 
 =head2 MainClass => Str
 
   The name of the main class in the specified Java file. If not
 specified, the JAR file should specify a main class in its manifest
 file.
+
 
 =head2 Properties => L<Paws::EMR::StringMap>
 

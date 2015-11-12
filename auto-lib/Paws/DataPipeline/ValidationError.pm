@@ -38,9 +38,11 @@ defined by AWS Data Pipeline.
 
 =head1 ATTRIBUTES
 
+
 =head2 Errors => ArrayRef[Str]
 
   A description of the validation error.
+
 
 =head2 Id => Str
 

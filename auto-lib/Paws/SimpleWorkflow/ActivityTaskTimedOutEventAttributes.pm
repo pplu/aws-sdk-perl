@@ -38,10 +38,12 @@ Provides details of the C<ActivityTaskTimedOut> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Details => Str
 
   Contains the content of the C<details> parameter for the last call made
 by the activity to C<RecordActivityTaskHeartbeat>.
+
 
 =head2 B<REQUIRED> ScheduledEventId => Int
 
@@ -50,11 +52,13 @@ this activity task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
 
+
 =head2 B<REQUIRED> StartedEventId => Int
 
   The ID of the C<ActivityTaskStarted> event recorded when this activity
 task was started. This information can be useful for diagnosing
 problems by tracing back the chain of events leading up to this event.
+
 
 =head2 B<REQUIRED> TimeoutType => Str
 

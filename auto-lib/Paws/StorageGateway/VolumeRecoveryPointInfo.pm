@@ -38,17 +38,21 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 VolumeARN => Str
 
   
+
 
 =head2 VolumeRecoveryPointTime => Str
 
   
 
+
 =head2 VolumeSizeInBytes => Int
 
   
+
 
 =head2 VolumeUsageInBytes => Int
 

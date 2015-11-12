@@ -49,52 +49,64 @@ action.
 
 =head1 ATTRIBUTES
 
+
 =head2 AgentId => Str
 
   The EC2 instance ID where the agent is installed that is used during
 the assessment that generates the finding.
 
+
 =head2 Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   The system-defined attributes for the finding.
+
 
 =head2 AutoScalingGroup => Str
 
   The autoscaling group of the EC2 instance where the agent is installed
 that is used during the assessment that generates the finding.
 
+
 =head2 Description => L<Paws::Inspector::LocalizedText>
 
   The description of the finding.
+
 
 =head2 Finding => L<Paws::Inspector::LocalizedText>
 
   A short description that identifies the finding.
 
+
 =head2 FindingArn => Str
 
   The ARN specifying the finding.
+
 
 =head2 Recommendation => L<Paws::Inspector::LocalizedText>
 
   The recommendation for the finding.
 
+
 =head2 RuleName => Str
 
   The rule name that is used to generate the finding.
+
 
 =head2 RulesPackageArn => Str
 
   The ARN of the rules package that is used to generate the finding.
 
+
 =head2 RunArn => Str
 
   The ARN of the assessment run that generated the finding.
+
 
 =head2 Severity => Str
 
   The finding severity. Values can be set to I<High>, I<Medium>, I<Low>,
 and I<Informational>.
+
 
 =head2 UserAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
 

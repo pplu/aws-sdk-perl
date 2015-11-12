@@ -41,6 +41,7 @@ and Inline Policies in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
 
+
 =head2 UserName => Str
 
   The name (friendly name, not ARN) identifying the user.

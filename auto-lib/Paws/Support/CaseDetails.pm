@@ -93,31 +93,37 @@ format.
 
 =head1 ATTRIBUTES
 
+
 =head2 CaseId => Str
 
   The AWS Support case ID requested or returned in the call. The case ID
 is an alphanumeric string formatted as shown in this example:
 case-I<12345678910-2013-c4c1d2bf33c5cf47>
 
+
 =head2 CategoryCode => Str
 
   The category of problem for the AWS Support case.
+
 
 =head2 CcEmailAddresses => ArrayRef[Str]
 
   The email addresses that receive copies of communication about the
 case.
 
+
 =head2 DisplayId => Str
 
   The ID displayed for the case in the AWS Support Center. This is a
 numeric string.
+
 
 =head2 Language => Str
 
   The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.
+
 
 =head2 RecentCommunications => L<Paws::Support::RecentCaseCommunications>
 
@@ -126,26 +132,32 @@ including the IDs of any attachments to the communications. Also
 includes a C<nextToken> that you can use to retrieve earlier
 communications.
 
+
 =head2 ServiceCode => Str
 
   The code for the AWS service returned by the call to DescribeServices.
+
 
 =head2 SeverityCode => Str
 
   The code for the severity level returned by the call to
 DescribeSeverityLevels.
 
+
 =head2 Status => Str
 
   The status of the case.
+
 
 =head2 Subject => Str
 
   The subject line for the case in the AWS Support Center.
 
+
 =head2 SubmittedBy => Str
 
   The email address of the account that submitted the case.
+
 
 =head2 TimeCreated => Str
 

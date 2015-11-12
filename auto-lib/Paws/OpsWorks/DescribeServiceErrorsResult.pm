@@ -12,6 +12,7 @@ Paws::OpsWorks::DescribeServiceErrorsResult
 
 =head1 ATTRIBUTES
 
+
 =head2 ServiceErrors => ArrayRef[L<Paws::OpsWorks::ServiceError>]
 
   An array of C<ServiceError> objects that describe the specified service

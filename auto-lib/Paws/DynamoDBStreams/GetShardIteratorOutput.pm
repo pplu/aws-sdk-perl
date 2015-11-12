@@ -12,6 +12,7 @@ Paws::DynamoDBStreams::GetShardIteratorOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 ShardIterator => Str
 
   The position in the shard from which to start reading stream records

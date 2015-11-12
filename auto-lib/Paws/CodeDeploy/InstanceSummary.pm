@@ -39,21 +39,26 @@ Information about an instance in a deployment.
 
 =head1 ATTRIBUTES
 
+
 =head2 DeploymentId => Str
 
   The deployment ID.
+
 
 =head2 InstanceId => Str
 
   The instance ID.
 
+
 =head2 LastUpdatedAt => Str
 
   A timestamp indicating when the instance information was last updated.
 
+
 =head2 LifecycleEvents => ArrayRef[L<Paws::CodeDeploy::LifecycleEvent>]
 
   A list of lifecycle events for this instance.
+
 
 =head2 Status => Str
 

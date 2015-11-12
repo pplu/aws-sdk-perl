@@ -12,6 +12,7 @@ Paws::DS::DeleteSnapshotResult
 
 =head1 ATTRIBUTES
 
+
 =head2 SnapshotId => Str
 
   The identifier of the directory snapshot that was deleted.

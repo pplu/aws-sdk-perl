@@ -13,6 +13,7 @@ Paws::CodeDeploy::StopDeploymentOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Status => Str
 
   The status of the stop deployment operation:
@@ -24,6 +25,7 @@ Paws::CodeDeploy::StopDeploymentOutput
 =item * Succeeded: The stop operation succeeded.
 
 =back
+
 
 =head2 StatusMessage => Str
 

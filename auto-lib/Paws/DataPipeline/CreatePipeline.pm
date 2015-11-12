@@ -35,9 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
   The description for the pipeline.
+
 
 =head2 B<REQUIRED> Name => Str
 
@@ -45,11 +47,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 pipelines associated with your AWS account, because AWS Data Pipeline
 assigns each pipeline a unique pipeline identifier.
 
+
 =head2 Tags => ArrayRef[L<Paws::DataPipeline::Tag>]
 
   A list of tags to associate with the pipeline at creation. Tags let you
 control access to pipelines. For more information, see Controlling User
 Access to Pipelines in the I<AWS Data Pipeline Developer Guide>.
+
 
 =head2 B<REQUIRED> UniqueId => Str
 

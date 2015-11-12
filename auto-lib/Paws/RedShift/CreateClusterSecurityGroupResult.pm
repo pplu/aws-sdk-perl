@@ -13,6 +13,7 @@ Paws::RedShift::CreateClusterSecurityGroupResult
 
 =head1 ATTRIBUTES
 
+
 =head2 ClusterSecurityGroup => L<Paws::RedShift::ClusterSecurityGroup>
 
   

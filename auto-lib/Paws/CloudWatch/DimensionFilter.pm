@@ -36,9 +36,11 @@ The C<DimensionFilter> data type is used to filter ListMetrics results.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Name => Str
 
   The dimension name to be matched.
+
 
 =head2 Value => Str
 

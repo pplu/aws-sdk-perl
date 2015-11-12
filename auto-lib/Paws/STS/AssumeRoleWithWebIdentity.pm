@@ -37,11 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DurationSeconds => Int
 
   The duration, in seconds, of the role session. The value can range from
 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the
 value is set to 3600 seconds.
+
 
 =head2 Policy => Str
 
@@ -63,6 +65,7 @@ separate limit. The PackedPolicySize response element indicates by
 percentage how close to the upper size limit the policy is, with 100%
 equaling the maximum allowed size.
 
+
 =head2 ProviderId => Str
 
   The fully qualified host component of the domain name of the identity
@@ -75,9 +78,11 @@ schemes and port numbers.
 
 Do not specify this value for OpenID Connect ID tokens.
 
+
 =head2 B<REQUIRED> RoleArn => Str
 
   The Amazon Resource Name (ARN) of the role that the caller is assuming.
+
 
 =head2 B<REQUIRED> RoleSessionName => Str
 
@@ -87,6 +92,7 @@ application. That way, the temporary security credentials that your
 application will use are associated with that user. This session name
 is included as part of the ARN and assumed role ID in the
 C<AssumedRoleUser> response element.
+
 
 =head2 B<REQUIRED> WebIdentityToken => Str
 

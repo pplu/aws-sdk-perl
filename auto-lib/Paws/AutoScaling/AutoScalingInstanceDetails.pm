@@ -40,13 +40,16 @@ Describes an EC2 instance associated with an Auto Scaling group.
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
   The name of the Auto Scaling group associated with the instance.
 
+
 =head2 B<REQUIRED> AvailabilityZone => Str
 
   The Availability Zone for the instance.
+
 
 =head2 B<REQUIRED> HealthStatus => Str
 
@@ -54,13 +57,16 @@ Describes an EC2 instance associated with an Auto Scaling group.
 is healthy and should remain in service. "Unhealthy" means that the
 instance is unhealthy and Auto Scaling should terminate and replace it.
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
   The ID of the instance.
 
+
 =head2 LaunchConfigurationName => Str
 
   The launch configuration associated with the instance.
+
 
 =head2 B<REQUIRED> LifecycleState => Str
 

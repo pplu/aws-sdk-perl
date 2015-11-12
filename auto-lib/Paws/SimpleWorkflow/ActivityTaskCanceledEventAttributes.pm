@@ -38,9 +38,11 @@ Provides details of the C<ActivityTaskCanceled> event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Details => Str
 
   Details of the cancellation (if any).
+
 
 =head2 LatestCancelRequestedEventId => Int
 
@@ -49,12 +51,14 @@ event recorded for this activity task. This information can be useful
 for diagnosing problems by tracing back the chain of events leading up
 to this event.
 
+
 =head2 B<REQUIRED> ScheduledEventId => Int
 
   The ID of the C<ActivityTaskScheduled> event that was recorded when
 this activity task was scheduled. This information can be useful for
 diagnosing problems by tracing back the chain of events leading up to
 this event.
+
 
 =head2 B<REQUIRED> StartedEventId => Int
 

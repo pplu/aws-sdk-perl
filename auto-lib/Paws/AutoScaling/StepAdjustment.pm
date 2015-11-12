@@ -85,6 +85,7 @@ The upper and lower bound can't be null in the same step adjustment.
 
 =head1 ATTRIBUTES
 
+
 =head2 MetricIntervalLowerBound => Num
 
   The lower bound for the difference between the alarm threshold and the
@@ -93,6 +94,7 @@ the lower bound is inclusive (the metric must be greater than or equal
 to the threshold plus the lower bound). Otherwise, it is exclusive (the
 metric must be greater than the threshold plus the lower bound). A null
 value indicates negative infinity.
+
 
 =head2 MetricIntervalUpperBound => Num
 
@@ -104,6 +106,7 @@ must be less than or equal to the threshold plus the upper bound). A
 null value indicates positive infinity.
 
 The upper bound must be greater than the lower bound.
+
 
 =head2 B<REQUIRED> ScalingAdjustment => Int
 

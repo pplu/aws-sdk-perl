@@ -39,22 +39,27 @@ Information about a deployment lifecycle event.
 
 =head1 ATTRIBUTES
 
+
 =head2 Diagnostics => L<Paws::CodeDeploy::Diagnostics>
 
   Diagnostic information about the deployment lifecycle event.
 
+
 =head2 EndTime => Str
 
   A timestamp indicating when the deployment lifecycle event ended.
+
 
 =head2 LifecycleEventName => Str
 
   The deployment lifecycle event name, such as ApplicationStop,
 BeforeInstall, AfterInstall, ApplicationStart, or ValidateService.
 
+
 =head2 StartTime => Str
 
   A timestamp indicating when the deployment lifecycle event started.
+
 
 =head2 Status => Str
 

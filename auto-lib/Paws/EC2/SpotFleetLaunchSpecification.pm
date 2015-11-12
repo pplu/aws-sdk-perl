@@ -51,13 +51,16 @@ This class has no description
 
 =head1 ATTRIBUTES
 
+
 =head2 AddressingType => Str
 
   Deprecated.
 
+
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
   One or more block device mapping entries.
+
 
 =head2 EbsOptimized => Bool
 
@@ -69,41 +72,51 @@ usage charges apply when using an EBS Optimized instance.
 
 Default: C<false>
 
+
 =head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>
 
   The IAM instance profile.
+
 
 =head2 ImageId => Str
 
   The ID of the AMI.
 
+
 =head2 InstanceType => Str
 
   The instance type.
+
 
 =head2 KernelId => Str
 
   The ID of the kernel.
 
+
 =head2 KeyName => Str
 
   The name of the key pair.
+
 
 =head2 Monitoring => L<Paws::EC2::SpotFleetMonitoring>
 
   Enable or disable monitoring for the instances.
 
+
 =head2 NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>]
 
   One or more network interfaces.
+
 
 =head2 Placement => L<Paws::EC2::SpotPlacement>
 
   The placement information.
 
+
 =head2 RamdiskId => Str
 
   The ID of the RAM disk.
+
 
 =head2 SecurityGroups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
@@ -112,6 +125,7 @@ must specify the IDs of the security groups. When requesting instances
 in EC2-Classic, you can specify the names or the IDs of the security
 groups.
 
+
 =head2 SpotPrice => Str
 
   The bid price per unit hour for the specified instance type. If this
@@ -119,13 +133,16 @@ value is not specified, the default is the Spot bid price specified for
 the fleet. To determine the bid price per unit hour, divide the Spot
 bid price by the value of C<WeightedCapacity>.
 
+
 =head2 SubnetId => Str
 
   The ID of the subnet in which to launch the instances.
 
+
 =head2 UserData => Str
 
   The Base64-encoded MIME user data to make available to the instances.
+
 
 =head2 WeightedCapacity => Num
 

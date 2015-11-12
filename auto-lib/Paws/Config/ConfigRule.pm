@@ -52,18 +52,22 @@ Config Developer Guide>.
 
 =head1 ATTRIBUTES
 
+
 =head2 ConfigRuleArn => Str
 
   The Amazon Resource Name (ARN) of the AWS Config rule.
+
 
 =head2 ConfigRuleId => Str
 
   The ID of the AWS Config rule.
 
+
 =head2 ConfigRuleName => Str
 
   The name that you assign to the AWS Config rule. The name is required
 if you are adding a new rule.
+
 
 =head2 ConfigRuleState => Str
 
@@ -79,14 +83,17 @@ You cannot add a rule to AWS Config that has the state set to
 C<DELETING>. If you want to delete a rule, you must use the
 C<DeleteConfigRule> request.
 
+
 =head2 Description => Str
 
   The description that you provide for the AWS Config rule.
+
 
 =head2 InputParameters => Str
 
   A string in JSON format that is passed to the AWS Config rule Lambda
 function.
+
 
 =head2 MaximumExecutionFrequency => Str
 
@@ -101,6 +108,7 @@ of C<ConfigSnapshotDeliveryProperties>. To update the frequency with
 which AWS Config delivers your snapshots, use the C<PutDeliveryChannel>
 action.
 
+
 =head2 Scope => L<Paws::Config::Scope>
 
   Defines which resources the AWS Config rule evaluates. The scope can
@@ -109,6 +117,7 @@ value, or a combination of one resource type and one or more resource
 IDs. Specify a scope to constrain the resources that are evaluated. If
 you do not specify a scope, the AWS Config Rule evaluates all resources
 in the recording group.
+
 
 =head2 B<REQUIRED> Source => L<Paws::Config::Source>
 
