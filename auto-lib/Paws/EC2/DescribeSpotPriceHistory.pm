@@ -74,7 +74,7 @@ returned.
 
 =item *
 
-C<instance-type> - The type of instance (for example, C<m1.small>).
+C<instance-type> - The type of instance (for example, C<m3.medium>).
 
 =item *
 

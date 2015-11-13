@@ -41,7 +41,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 If enabled, instances in the VPC get DNS hostnames; otherwise, they do
 not.
 
-You can only enable DNS hostnames if you also enable DNS support.
+You cannot modify the DNS resolution and DNS hostnames attributes in
+the same request. Use separate requests for each attribute. You can
+only enable DNS hostnames if you've enabled DNS support.
 
 
 =head2 EnableDnsSupport => L<Paws::EC2::AttributeBooleanValue>
@@ -52,6 +54,9 @@ enabled, queries to the Amazon provided DNS server at the
 the VPC network range "plus two" will succeed. If disabled, the Amazon
 provided DNS service in the VPC that resolves public DNS hostnames to
 IP addresses is not enabled.
+
+You cannot modify the DNS resolution and DNS hostnames attributes in
+the same request. Use separate requests for each attribute.
 
 
 =head2 B<REQUIRED> VpcId => Str
