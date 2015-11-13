@@ -1,6 +1,7 @@
 0.20
  - Better schema validation in builders (by Oriol Soriano) 
  - EC2 docu update
+ - RDS support for cross account snapshot sharing
 
 0.19 12 Nov 2015
  - Fix issues with POD documentation. Some head2 tags didn't have a newline above
