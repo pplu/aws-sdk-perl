@@ -41,7 +41,6 @@ time_ok(sub {
                )->DescribeInstances;
   } 'Paws::Exception', 'got exception';
 
-  like($@->message, qr/Timed out/, 'Correct message');
   cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 }, 61, 'Timeout under 61 secs');
 
@@ -64,7 +63,6 @@ time_ok(sub {
                  )->DescribeInstances;
   } 'Paws::Exception', 'got exception';
 
-  like($@->message, qr/read timeout/, 'Correct message');
   cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 }, 61, 'Timeout under 61 secs');
 
@@ -74,6 +72,28 @@ diag "Mojo caller";
 my $mojo = eval {
   Paws->new(config => {
     caller => 'Paws::Net::MojoAsyncCaller',
+    credentials => 'Test::CustomCredentials' 
+  });
+};
+goto FURL if ($@);
+
+time_ok(sub {
+  throws_ok {
+    $mojo->service('EC2',
+                   region => 'test', 
+                   region_rules => [ { uri => $closed_server_endpoint } ]
+                  )->DescribeInstances->get;
+  } 'Paws::Exception', 'got exception';
+
+  cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
+}, 61, 'Timeout under 61 secs');
+
+FURL:
+diag "Furl caller";
+
+my $furl = eval {
+  Paws->new(config => {
+    caller => 'Paws::Net::FurlCaller',
     credentials => 'Test::CustomCredentials' 
   });
 };
@@ -87,7 +107,6 @@ time_ok(sub {
                   )->DescribeInstances->get;
   } 'Paws::Exception', 'got exception';
 
-  cmp_ok($@->message, 'eq', 'Inactivity timeout', 'Correct message');
   cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code ConnectionError code');
 }, 61, 'Timeout under 61 secs');
 
