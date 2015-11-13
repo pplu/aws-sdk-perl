@@ -84,9 +84,10 @@ DB instance; otherwise false. The default is false.
 
 Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
 | db.m1.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
-db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.r3.large | db.r3.xlarge
-| db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro |
-db.t2.small | db.t2.medium | db.t2.large>
+db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge
+| db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large |
+db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge |
+db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
 
 Default: The same DBInstanceClass as the original DB instance.
 
@@ -95,7 +96,7 @@ Default: The same DBInstanceClass as the original DB instance.
 
   The database name for the restored DB instance.
 
-This parameter is not used for the MySQL engine.
+This parameter is not used for the MySQL or MariaDB engines.
 
 
 =head2 DBSubnetGroupName => Str
@@ -111,9 +112,9 @@ Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
 
-Valid Values: C<MySQL> | C<oracle-se1> | C<oracle-se> | C<oracle-ee> |
-C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> | C<sqlserver-web>
-| C<postgres>
+Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
+C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
+C<sqlserver-web> | C<postgres>
 
 
 =head2 Iops => Int

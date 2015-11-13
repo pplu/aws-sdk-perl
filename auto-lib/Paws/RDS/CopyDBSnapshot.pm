@@ -46,6 +46,9 @@ snapshot; otherwise false. The default is false.
 
   The identifier for the source DB snapshot.
 
+If you are copying from a shared manual DB snapshot, this must be the
+ARN of the shared DB snapshot.
+
 Constraints:
 
 =over

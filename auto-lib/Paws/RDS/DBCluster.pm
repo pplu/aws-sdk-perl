@@ -14,6 +14,7 @@ package Paws::RDS::DBCluster;
   has Endpoint => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has HostedZoneId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has PercentProgress => (is => 'ro', isa => 'Str');
@@ -155,6 +156,12 @@ cluster.
 =head2 EngineVersion => Str
 
   Indicates the database engine version.
+
+
+=head2 HostedZoneId => Str
+
+  Specifies the ID that Amazon Route 53 assigns when you create a hosted
+zone.
 
 
 =head2 LatestRestorableTime => Str

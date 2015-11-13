@@ -4,6 +4,8 @@ package Paws::RDS::DescribeDBSnapshots;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
+  has IncludePublic => (is => 'ro', isa => 'Bool');
+  has IncludeShared => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SnapshotType => (is => 'ro', isa => 'Str');
@@ -86,6 +88,25 @@ C<SnapshotType> parameter must also be specified.
   This parameter is not currently supported.
 
 
+=head2 IncludePublic => Bool
+
+  True to include manual DB snapshots that are public and can be copied
+or restored by any AWS account; otherwise false. The default is false.
+
+An manual DB snapshot is shared as public by the
+ModifyDBSnapshotAttribute API.
+
+
+=head2 IncludeShared => Bool
+
+  True to include shared manual DB snapshots from other AWS accounts that
+this AWS account has been given permission to copy or restore;
+otherwise false. The default is false.
+
+An AWS account is given permission to restore a manual DB snapshot from
+another AWS account by the ModifyDBSnapshotAttribute API.
+
+
 =head2 Marker => Str
 
   An optional pagination token provided by a previous
@@ -108,9 +129,36 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 SnapshotType => Str
 
-  The type of snapshots that will be returned. Values can be "automated"
-or "manual." If not specified, the returned results will include all
-snapshots types.
+  The type of snapshots that will be returned. You can specify one of the
+following values:
+
+=over
+
+=item * C<automated> - Return all DB snapshots that have been
+automatically taken by Amazon RDS for my AWS account.
+
+=item * C<manual> - Return all DB snapshots that have been taken by my
+AWS account.
+
+=item * C<shared> - Return all manual DB snapshots that have been
+shared to my AWS account.
+
+=item * C<public> - Return all DB snapshots that have been marked as
+public.
+
+=back
+
+If you do not specify a C<SnapshotType>, then both automated and manual
+snapshots are returned. You can include shared snapshots with these
+results by setting the C<IncludeShared> parameter to C<true>. You can
+include public snapshots with these results by setting the
+C<IncludePublic> parameter to C<true>.
+
+The C<IncludeShared> and C<IncludePublic> parameters do not apply for
+C<SnapshotType> values of C<manual> or C<automated>. The
+C<IncludePublic> paramter does not apply when C<SnapshotType> is set to
+C<shared>. the C<IncludeShared> parameter does not apply when
+C<SnapshotType> is set to C<public>.
 
 
 

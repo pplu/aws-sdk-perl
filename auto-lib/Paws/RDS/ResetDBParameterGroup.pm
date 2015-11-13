@@ -68,6 +68,14 @@ You can use the immediate value with dynamic parameters only. You can
 use the C<pending-reboot> value for both dynamic and static parameters,
 and changes are applied when DB instance reboots.
 
+B<MariaDB>
+
+Valid Values (for Apply method): C<immediate> | C<pending-reboot>
+
+You can use the immediate value with dynamic parameters only. You can
+use the C<pending-reboot> value for both dynamic and static parameters,
+and changes are applied when DB instance reboots.
+
 B<Oracle>
 
 Valid Values (for Apply method): C<pending-reboot>
