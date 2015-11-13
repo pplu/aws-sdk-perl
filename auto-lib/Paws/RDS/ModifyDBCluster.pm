@@ -58,9 +58,8 @@ Default: C<false>
 
 =head2 BackupRetentionPeriod => Int
 
-  The number of days for which automated backups are retained. Setting
-this parameter to a positive number enables backups. Setting this
-parameter to 0 disables automated backups.
+  The number of days for which automated backups are retained. You must
+specify a minimum value of 1.
 
 Default: 1
 
@@ -68,7 +67,7 @@ Constraints:
 
 =over
 
-=item * Must be a value from 0 to 35
+=item * Must be a value from 1 to 35
 
 =back
 

@@ -82,9 +82,10 @@ DB instance; otherwise false. The default is false.
 
 Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
 | db.m1.xlarge | db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
-db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.r3.large | db.r3.xlarge
-| db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge | db.t2.micro |
-db.t2.small | db.t2.medium | db.t2.large>
+db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large | db.m4.xlarge
+| db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge | db.r3.large |
+db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge |
+db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
 
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
@@ -112,7 +113,7 @@ Example: C<my-snapshot-id>
 
   The database name for the restored DB instance.
 
-This parameter doesn't apply to the MySQL engine.
+This parameter doesn't apply to the MySQL or MariaDB engines.
 
 
 =head2 B<REQUIRED> DBSnapshotIdentifier => Str
@@ -131,6 +132,8 @@ Constraints:
 
 =back
 
+If you are restoring from a shared manual DB snapshot, the
+C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
 
 
 =head2 DBSubnetGroupName => Str
@@ -146,9 +149,9 @@ Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
 
-Valid Values: C<MySQL> | C<oracle-se1> | C<oracle-se> | C<oracle-ee> |
-C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> | C<sqlserver-web>
-| C<postgres>
+Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
+C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
+C<sqlserver-web> | C<postgres>
 
 
 =head2 Iops => Int

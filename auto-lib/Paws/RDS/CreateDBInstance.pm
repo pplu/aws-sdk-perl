@@ -75,6 +75,10 @@ B<MySQL>
 
 Constraints: Must be an integer from 5 to 6144.
 
+B<MariaDB>
+
+Constraints: Must be an integer from 5 to 6144.
+
 B<PostgreSQL>
 
 Constraints: Must be an integer from 5 to 6144.
@@ -162,9 +166,10 @@ Type: String
 
 Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
 | db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge |
-db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.r3.large
-| db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge |
-db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
+db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large
+| db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge |
+db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge |
+db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
 
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
@@ -196,6 +201,22 @@ you use.
 Type: String
 
 B<MySQL>
+
+The name of the database to create when the DB instance is created. If
+this parameter is not specified, no database is created in the DB
+instance.
+
+Constraints:
+
+=over
+
+=item * Must contain 1 to 64 alphanumeric characters
+
+=item * Cannot be a word reserved by the specified database engine
+
+=back
+
+B<MariaDB>
 
 The name of the database to create when the DB instance is created. If
 this parameter is not specified, no database is created in the DB
@@ -304,9 +325,9 @@ If there is no DB subnet group, then it is a non-VPC DB instance.
 
   The name of the database engine to be used for this instance.
 
-Valid Values: C<MySQL> | C<oracle-se1> | C<oracle-se> | C<oracle-ee> |
-C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> | C<sqlserver-web>
-| C<postgres>
+Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
+C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
+C<sqlserver-web> | C<postgres>
 
 Not every database engine is available for every AWS region.
 
@@ -336,6 +357,15 @@ us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
 
 =item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
 | 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
+
+=back
+
+B<MariaDB>
+
+=over
+
+=item * B<Version 10.0 (Available in all regions except AWS GovCloud
+(US) Region (us-gov-west-1)):> C< 10.0.17>
 
 =back
 
@@ -409,11 +439,17 @@ B<Microsoft SQL Server Enterprise Edition (sqlserver-ee)>
 
 =over
 
-=item * B<Version 10.50 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 10.50.2789.0.v1>
+=item * B<Version 10.50 (Available in all regions):> C<
+10.50.2789.0.v1>
 
-=item * B<Version 11.00 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.00.2100.60.v1>
+=item * B<Version 10.50 (Available in all regions):> C<
+10.50.6000.34.v1>
+
+=item * B<Version 11.00 (Available in all regions):> C<
+11.00.2100.60.v1>
+
+=item * B<Version 11.00 (Available in all regions):> C<
+11.00.5058.0.v1>
 
 =back
 
@@ -424,8 +460,17 @@ B<Microsoft SQL Server Express Edition (sqlserver-ex)>
 =item * B<Version 10.50 (Available in all regions):> C<
 10.50.2789.0.v1>
 
+=item * B<Version 10.50 (Available in all regions):> C<
+10.50.6000.34.v1>
+
 =item * B<Version 11.00 (Available in all regions):> C<
 11.00.2100.60.v1>
+
+=item * B<Version 11.00 (Available in all regions):> C<
+11.00.5058.0.v1>
+
+=item * B<Version 12.00 (Available in all regions):> C<
+12.00.4422.0.v1>
 
 =back
 
@@ -436,8 +481,17 @@ B<Microsoft SQL Server Standard Edition (sqlserver-se)>
 =item * B<Version 10.50 (Available in all regions):> C<
 10.50.2789.0.v1>
 
+=item * B<Version 10.50 (Available in all regions):> C<
+10.50.6000.34.v1>
+
 =item * B<Version 11.00 (Available in all regions):> C<
 11.00.2100.60.v1>
+
+=item * B<Version 11.00 (Available in all regions):> C<
+11.00.5058.0.v1>
+
+=item * B<Version 12.00 (Available in all regions):> C<
+12.00.4422.0.v1>
 
 =back
 
@@ -448,8 +502,17 @@ B<Microsoft SQL Server Web Edition (sqlserver-web)>
 =item * B<Version 10.50 (Available in all regions):> C<
 10.50.2789.0.v1>
 
+=item * B<Version 10.50 (Available in all regions):> C<
+10.50.6000.34.v1>
+
 =item * B<Version 11.00 (Available in all regions):> C<
 11.00.2100.60.v1>
+
+=item * B<Version 11.00 (Available in all regions):> C<
+11.00.5058.0.v1>
+
+=item * B<Version 12.00 (Available in all regions):> C<
+12.00.4422.0.v1>
 
 =back
 
@@ -468,7 +531,7 @@ Constraints: To use PIOPS, this value must be an integer greater than
 
   The KMS key identifier for an encrypted DB instance.
 
-The KMS key identifier is the Amazon Resoure Name (ARN) for the KMS
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 encryption key. If you are creating a DB instance with the same AWS
 account that owns the KMS encryption key used to encrypt the new DB
 instance, then you can use the KMS key alias instead of the ARN for the
@@ -502,6 +565,18 @@ Constraints:
 =item * Must be 1 to 16 alphanumeric characters.
 
 =item * First character must be a letter.
+
+=item * Cannot be a reserved word for the chosen database engine.
+
+=back
+
+B<MariaDB>
+
+Constraints:
+
+=over
+
+=item * Must be 1 to 16 alphanumeric characters.
 
 =item * Cannot be a reserved word for the chosen database engine.
 
@@ -564,6 +639,10 @@ B<MySQL>
 
 Constraints: Must contain from 8 to 41 characters.
 
+B<MariaDB>
+
+Constraints: Must contain from 8 to 41 characters.
+
 B<Oracle>
 
 Constraints: Must contain from 8 to 30 characters.
@@ -606,6 +685,14 @@ instance
   The port number on which the database accepts connections.
 
 B<MySQL>
+
+Default: C<3306>
+
+Valid Values: C<1150-65535>
+
+Type: Integer
+
+B<MariaDB>
 
 Default: C<3306>
 

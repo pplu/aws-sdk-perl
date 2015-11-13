@@ -20,6 +20,7 @@ package Paws::RDS::ModifyDBInstance;
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
@@ -63,6 +64,19 @@ maintenance window unless C<ApplyImmediately> is set to C<true> for
 this request.
 
 B<MySQL>
+
+Default: Uses existing setting
+
+Valid Values: 5-6144
+
+Constraints: Value supplied must be at least 10% greater than the
+current value. Values that are not at least 10% greater than the
+existing value are rounded up so that they are 10% greater than the
+current value.
+
+Type: Integer
+
+B<MariaDB>
 
 Default: Uses existing setting
 
@@ -220,9 +234,10 @@ Default: Uses existing setting
 
 Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
 | db.m1.xlarge | db.m2.xlarge | db.m2.2xlarge | db.m2.4xlarge |
-db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.r3.large
-| db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge | db.r3.8xlarge |
-db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
+db.m3.medium | db.m3.large | db.m3.xlarge | db.m3.2xlarge | db.m4.large
+| db.m4.xlarge | db.m4.2xlarge | db.m4.4xlarge | db.m4.10xlarge |
+db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge |
+db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
 
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
@@ -347,9 +362,9 @@ response.
 
 Default: Uses existing setting
 
-Constraints: Must be 8 to 41 alphanumeric characters (MySQL and Amazon
-Aurora), 8 to 30 alphanumeric characters (Oracle), or 8 to 128
-alphanumeric characters (SQL Server).
+Constraints: Must be 8 to 41 alphanumeric characters (MySQL, MariaDB,
+and Amazon Aurora), 8 to 30 alphanumeric characters (Oracle), or 8 to
+128 alphanumeric characters (SQL Server).
 
 Amazon RDS API actions never return the password, so this action
 provides a way to regain access to a primary instance user if the
@@ -452,6 +467,23 @@ Format: ddd:hh24:mi-ddd:hh24:mi
 Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
 Constraints: Must be at least 30 minutes
+
+
+=head2 PubliclyAccessible => Bool
+
+  True to make the DB instance Internet-facing with a publicly resolvable
+DNS name, which resolves to a public IP address. False to make the DB
+instance internal with a DNS name that resolves to a private IP
+address.
+
+C<PubliclyAccessible> only applies to DB instances in a VPC. The DB
+instance must be part of a public subnet and C<PubliclyAccessible> must
+be true in order for it to be publicly accessible.
+
+Changes to the C<PubliclyAccessible> parameter are applied immediately
+regardless of the value of the C<ApplyImmediately> parameter.
+
+Default: false
 
 
 =head2 StorageType => Str

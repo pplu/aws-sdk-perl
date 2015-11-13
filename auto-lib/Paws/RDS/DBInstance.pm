@@ -169,11 +169,11 @@ accessed.
 =head2 DBName => Str
 
   The meaning of this parameter differs according to the database engine
-you use. For example, this value returns either MySQL or PostgreSQL
+you use. For example, this value returns MySQL, MariaDB, or PostgreSQL
 information when returning values from CreateDBInstanceReadReplica
-since Read Replicas are only supported for MySQL and PostgreSQL.
+since Read Replicas are only supported for these engines.
 
-B<MySQL, SQL Server, PostgreSQL, Amazon Aurora>
+B<MySQL, MariaDB, SQL Server, PostgreSQL, Amazon Aurora>
 
 Contains the name of the initial database of this instance that was
 provided at create time, if one was specified when the DB instance was
