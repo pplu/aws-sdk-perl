@@ -79,7 +79,7 @@ notice, which gives the instance a two-minute warning before it
 terminates.
 
 Note that you can't specify an Availability Zone group or a launch
-group if you specify a required duration.
+group if you specify a duration.
 
 
 =head2 ClientToken => Str

@@ -614,7 +614,7 @@ customer gateway is the appliance at your end of the VPN connection.
 (The device on the AWS side of the VPN connection is the virtual
 private gateway.) You must provide the Internet-routable IP address of
 the customer gateway's external interface. The IP address must be
-static and can't be behind a device performing network address
+static and may be behind a device performing network address
 translation (NAT).
 
 For devices that use Border Gateway Protocol (BGP), you can also
@@ -1052,7 +1052,10 @@ Each tag consists of a key and optional value. Tag keys must be unique
 per resource.
 
 For more information about tags, see Tagging Your Resources in the
-I<Amazon Elastic Compute Cloud User Guide>.
+I<Amazon Elastic Compute Cloud User Guide>. For more information about
+creating IAM policies that control users' access to resources based on
+tags, see Supported Resource-Level Permissions for Amazon EC2 API
+Actions in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateVolume(AvailabilityZone => Str, [DryRun => Bool, Encrypted => Bool, Iops => Int, KmsKeyId => Str, Size => Int, SnapshotId => Str, VolumeType => Str])

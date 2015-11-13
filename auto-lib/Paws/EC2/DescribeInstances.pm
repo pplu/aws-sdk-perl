@@ -320,7 +320,7 @@ interface.
 
 =item *
 
-C<network-interface.network-interface.id> - The ID of the network
+C<network-interface.network-interface-id> - The ID of the network
 interface.
 
 =item *

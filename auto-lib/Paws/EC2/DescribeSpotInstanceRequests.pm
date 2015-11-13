@@ -110,7 +110,7 @@ C<launch.image-id> - The ID of the AMI.
 =item *
 
 C<launch.instance-type> - The type of instance (for example,
-C<m1.small>).
+C<m3.medium>).
 
 =item *
 
