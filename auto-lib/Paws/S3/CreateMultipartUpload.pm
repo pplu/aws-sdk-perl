@@ -27,7 +27,7 @@ package Paws::S3::CreateMultipartUpload;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateMultipartUpload');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key}?uploads');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}?uploads');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::CreateMultipartUploadOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');

@@ -2,31 +2,26 @@ package Paws::Net::S3Signature {
   use Moose::Role;
   requires 'service';
 
-  use MIME::Base64 qw(encode_base64);
-  use Digest::HMAC_SHA1;
+  use Net::Amazon::Signature::V4;
 
   sub sign {
     my ($self, $request) = @_;
 
-        if ($self->session_token) {
-          $request->header( 'X-Amz-Security-Token' => $self->session_token );
-        }
-
-        my $hmac = Digest::HMAC_SHA1->new( $self->secret_key );
-        $hmac->add( $request->string_to_sign() );
-
-        my $headers = $request->headers;
-        $headers->header(Authorization  => 'AWS ' . $self->access_key . ':' . encode_base64( $hmac->digest, '' ));
-        $headers->header(Date           => $request->date );
-        $headers->header(Host           => $self->_api_endpoint );
+    if ($self->session_token) {
+      $request->header( 'X-Amz-Security-Token' => $self->session_token );
     }
 
-sub auth_header {
-    my ($self, $request) = @_;
-    my $hmac = Digest::HMAC_SHA1->new( $self->secret_key );
-    $hmac->add( $request->string_to_sign() );
+    if (!$request->content && !$request->content_md5) {
+      $request->header('X-Amz-Content-Sha256' => 'STREAMING-AWS4-HMAC-SHA256-PAYLOAD' );
+    }
 
-    return 'AWS ' . $self->access_key . ':' . encode_base64( $hmac->digest, '' );
+    $request->header( 'Date' => $request->{'date'} );
+    $request->header( 'Host' => $self->endpoint_host );
+
+    my $sig = Net::Amazon::Signature::V4->new( $self->access_key, $self->secret_key, $self->region, $self->service );
+    my $signed_req = $sig->sign( $request );
+    return $signed_req;
+
   }
 }
 

@@ -8,7 +8,6 @@ package Paws::S3::UploadPart;
   has Key => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Key' , required => 1);
   has PartNumber => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'partNumber' , required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
-  has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption' );
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm' );
   has SSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key' );
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5' );
@@ -17,7 +16,7 @@ package Paws::S3::UploadPart;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UploadPart');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{Bucket}/{Key+}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::UploadPartOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -52,9 +51,6 @@ the body cannot be determined automatically.
   Part number of part being uploaded. This is a positive integer between
 1 and 10,000.
 =head2 RequestPayer => Str
-
-  
-=head2 ServerSideEncryption => Str
 
   
 =head2 SSECustomerAlgorithm => Str

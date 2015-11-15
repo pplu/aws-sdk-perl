@@ -7,6 +7,7 @@ package Paws::ApiGateway::CreateStage;
   has Description => (is => 'ro', isa => 'Str');
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
   has StageName => (is => 'ro', isa => 'Str', required => 1);
+  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
 
   use MooseX::ClassAttribute;
 
@@ -63,6 +64,12 @@ create.
 =head2 B<REQUIRED> StageName => Str
 
   The name for the Stage resource.
+
+=head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
+
+  A map that defines the stage variables for the new Stage resource.
+Variable names can have alphabetic characters, and the values must
+match [A-Za-z0-9-._~:/?
 
 
 

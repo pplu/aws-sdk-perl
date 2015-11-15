@@ -3,7 +3,7 @@ package Paws::Net::RestXmlCaller {
   use HTTP::Request::Common;
   use POSIX qw(strftime);
   use URI::Template;
-  use URI::Encode qw(uri_decode);
+  use URI::Escape;
 
   sub array_flatten_string {
     my $self = shift;
@@ -53,31 +53,38 @@ package Paws::Net::RestXmlCaller {
   sub _call_uri {
     my ($self, $call) = @_;
     my $uri_template = $call->meta->name->_api_uri; # in auto-lib/<service>/<method>.pm
-    my $t = URI::Template->new( $uri_template );
 
+    my @attribs = $uri_template =~ /{(.+?)}/g;
     my $vars = {};
     my $qparams = {};
 
-    foreach my $attribute ($call->meta->get_all_attributes) {
-      my $att_name = $attribute->name;
+    foreach my $attrib (@attribs)
+    {
+      my ($att_name, $greedy) = $attrib =~ /(\w+)(\+?)/;
+      my $attribute = $call->meta->get_attribute($att_name);
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
-        $vars->{ $attribute->uri_name } = $call->$att_name
+          if ($greedy) {
+              $vars->{ $att_name } =  uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
+              $uri_template =~ s{$att_name\+}{$greedy$att_name}g;
+          } else {
+              $vars->{ $att_name } = $call->$att_name;
+          }
       }
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
         $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
       }
     }
-
+    my $t = URI::Template->new( $uri_template );
     my $uri = $t->process($vars);
     $uri->query_form(%$qparams);
-    return uri_decode($uri);
+    return $uri->as_string;
   }
 
   sub _to_header_params {
     my ($self, $request, $call) = @_;
     foreach my $att_name ( keys %{$request->parameters} )
     {
-        my $attribute = $call->meta->get_attribute($att_name);
+      my $attribute = $call->meta->get_attribute($att_name);
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader')) {
         $request->headers->header( $attribute->header_name =>$request->{parameters}->{$att_name});
       }

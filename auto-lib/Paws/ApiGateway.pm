@@ -512,7 +512,7 @@ Returns: a L<Paws::ApiGateway::BasePathMapping> instance
   Creates a new BasePathMapping resource.
 
 
-=head2 CreateDeployment(RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, StageDescription => Str])
+=head2 CreateDeployment(RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, StageDescription => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateDeployment>
 
@@ -558,7 +558,7 @@ Returns: a L<Paws::ApiGateway::RestApi> instance
   Creates a new RestApi resource.
 
 
-=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str])
+=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateStage>
 
@@ -966,7 +966,7 @@ Returns: a L<Paws::ApiGateway::MethodResponse> instance
   Adds a MethodResponse to an existing Method resource.
 
 
-=head2 TestInvokeMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [Body => Str, ClientCertificateId => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str])
+=head2 TestInvokeMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [Body => Str, ClientCertificateId => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::TestInvokeMethod>
 
