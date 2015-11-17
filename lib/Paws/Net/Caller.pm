@@ -22,9 +22,9 @@ package Paws::Net::Caller {
   sub do_call {
     my ($self, $service, $call_object) = @_;
 
-    my $requestObj = $service->prepare_request_for_call($call_object); 
+    my $requestObj = $service->prepare_request_for_call($call_object); #in RestXmlCaller
 
-    my $headers = $requestObj->header_hash;
+    my $headers = $requestObj->header_hash; #in APIRequest
     # HTTP::Tiny derives the Host header from the URL. It's an error to set it.
     delete $headers->{Host};
 
