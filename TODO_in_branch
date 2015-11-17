@@ -1,0 +1,5 @@
+- unserialize_body_response in Paws::API::Caller needs code to turn headers into a datascructure
+- ack "\"streaming\"" botocore/botocore/data/ finds other APIs with responses in body
+- PutObject isn't working
+  ./bin/paws S3 --region region PutObject Bucket bucket Key key1 Body content1
+  returns error from API: "Length Required" with message "You must provide the Content-Length HTTP header."

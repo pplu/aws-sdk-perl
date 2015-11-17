@@ -27,7 +27,8 @@ package Paws::S3::GetObjectOutput;
   has StorageClass => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
   has WebsiteRedirectLocation => (is => 'ro', isa => 'Str');
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'Body');
 1;
 
 ### main pod documentation begin ###
