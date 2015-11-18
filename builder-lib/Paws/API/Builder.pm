@@ -31,6 +31,33 @@ package Paws::API::Builder {
     return $self->_load_json_file($self->api_file);
   });
 
+  has retry_file => (is => 'ro', lazy => 1, default => sub {
+    my $file = shift->api_file;
+    $file =~ s|/[^/]*?/[^/]*?/service-2\.|/_retry.|;
+    return $file;
+  });
+  has retry_struct => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return $self->_load_json_file($self->retry_file)->{ retry };
+  });
+  has default_retry => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    $self->retry_struct->{ __default__ };
+  });
+  has retry => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    $self->retry_struct->{ $self->service };
+  });
+  has service_max_attempts => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return (defined $self->retry and defined $self->retry->{ max_attempts }) ? $self->retry->{ max_attempts } : $self->default_retry->{ max_attempts };
+  });
+  has service_retry => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return (defined $self->retry and defined $self->retry->{ delay }) ? $self->retry->{ delay } : $self->default_retry->{ delay };
+  });
+
+
   has waiters_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
     $file =~ s/\/service-2\./\/waiters-2./;
