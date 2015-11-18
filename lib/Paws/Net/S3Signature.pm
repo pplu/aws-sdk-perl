@@ -2,6 +2,7 @@ package Paws::Net::S3Signature {
   use Moose::Role;
   requires 'service';
 
+  use Crypt::Digest::SHA256;
   use Net::Amazon::Signature::V4;
 
   sub sign {
@@ -11,7 +12,11 @@ package Paws::Net::S3Signature {
       $request->header( 'X-Amz-Security-Token' => $self->session_token );
     }
 
-    if (!$request->content && !$request->content_md5) {
+    if ($request->content) { # && !$request->content_md5) {
+      my $hasher = Crypt::Digest::SHA256->new;
+      $hasher->add($request->content);
+      $request->header('X-Amz-Content-Sha256' => $hasher->hexdigest);
+    } else {
       $request->header('X-Amz-Content-Sha256' => 'STREAMING-AWS4-HMAC-SHA256-PAYLOAD' );
     }
 

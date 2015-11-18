@@ -68,7 +68,7 @@ package Paws::Net::S3APIRequest {
     is       => 'ro',
     isa      => 'Int',
     lazy     => 1,
-    default  => sub { length( ${ shift->content } ) }
+    default  => sub { length( shift->content ) }
   );
 
   sub _trim {
