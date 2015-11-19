@@ -15,13 +15,18 @@ package Paws::API::Retry;
 
   sub one_more_try {
     my $self = shift;
-print "One\n";
     $self->tries($self->tries + 1);
   }
 
   sub still_has_retries {
     my $self = shift;
     $self->tries < $self->max_tries;
+  }
+
+  sub can_retry {
+    my $self = shift;
+    # TODO: and evaluate if the error is retriable
+    $self->still_has_retries;
   }
 
   __PACKAGE__->meta->make_immutable;
