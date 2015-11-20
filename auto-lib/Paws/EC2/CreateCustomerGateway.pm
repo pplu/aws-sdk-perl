@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateCustomerGateway {
+package Paws::EC2::CreateCustomerGateway;
   use Moose;
   has BgpAsn => (is => 'ro', isa => 'Int', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -11,7 +11,6 @@ package Paws::EC2::CreateCustomerGateway {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCustomerGateway');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateCustomerGatewayResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CreateCustomerG
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateCustomerGateway.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateCustomerGateway.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCustomerGateway.
 
 As an example:
 
@@ -36,72 +35,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> BgpAsn => Int
 
-  
-
-For devices that support BGP, the customer gateway's BGP ASN.
+  For devices that support BGP, the customer gateway's BGP ASN.
 
 Default: 65000
 
 
-
-
-
-
-
-
-
-
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PublicIp => Str
 
-  
-
-The Internet-routable IP address for the customer gateway's outside
+  The Internet-routable IP address for the customer gateway's outside
 interface. The address must be static.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> Type => Str
 
-  
-
-The type of VPN connection that this customer gateway supports
+  The type of VPN connection that this customer gateway supports
 (C<ipsec.1>).
-
-
-
-
-
-
-
-
-
 
 
 

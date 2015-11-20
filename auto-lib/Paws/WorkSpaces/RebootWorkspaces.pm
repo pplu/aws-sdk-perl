@@ -1,5 +1,5 @@
 
-package Paws::WorkSpaces::RebootWorkspaces {
+package Paws::WorkSpaces::RebootWorkspaces;
   use Moose;
   has RebootWorkspaceRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::RebootRequest]', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::WorkSpaces::RebootWorkspaces {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebootWorkspaces');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::WorkSpaces::RebootWorkspacesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method RebootWorkspace
 Amazon WorkSpaces service. Use the attributes of this class
 as arguments to method RebootWorkspaces.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RebootWorkspaces.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RebootWorkspaces.
 
 As an example:
 
@@ -33,20 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> RebootWorkspaceRequests => ArrayRef[Paws::WorkSpaces::RebootRequest]
 
-  
+=head2 B<REQUIRED> RebootWorkspaceRequests => ArrayRef[L<Paws::WorkSpaces::RebootRequest>]
 
-An array of structures that specify the WorkSpaces to reboot.
-
-
-
-
-
-
-
-
-
+  An array of structures that specify the WorkSpaces to reboot.
 
 
 

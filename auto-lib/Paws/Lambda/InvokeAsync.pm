@@ -1,5 +1,5 @@
 
-package Paws::Lambda::InvokeAsync {
+package Paws::Lambda::InvokeAsync;
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
   has InvokeArgs => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::Lambda::InvokeAsync {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::InvokeAsyncResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'InvokeAsyncResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method InvokeAsync on 
 AWS Lambda service. Use the attributes of this class
 as arguments to method InvokeAsync.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to InvokeAsync.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to InvokeAsync.
 
 As an example:
 
@@ -36,35 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-The Lambda function name.
-
-
-
-
-
-
-
-
+  The Lambda function name.
 
 
 =head2 B<REQUIRED> InvokeArgs => Str
 
-  
-
-JSON that you want to provide to your Lambda function as input.
-
-
-
-
-
-
-
-
-
+  JSON that you want to provide to your Lambda function as input.
 
 
 

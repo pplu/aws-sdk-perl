@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::GetIdentityPoolConfiguration {
+package Paws::CognitoSync::GetIdentityPoolConfiguration;
   use Moose;
   has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
 
@@ -10,7 +10,6 @@ package Paws::CognitoSync::GetIdentityPoolConfiguration {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::GetIdentityPoolConfigurationResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetIdentityPoolConfigurationResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method GetIdentityPool
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method GetIdentityPoolConfiguration.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetIdentityPoolConfiguration.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetIdentityPoolConfiguration.
 
 As an example:
 
@@ -35,23 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-A name-spaced GUID (for example,
+  A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. This is the ID of the pool for which to return a
 configuration.
-
-
-
-
-
-
-
-
-
 
 
 

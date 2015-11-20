@@ -1,10 +1,9 @@
 
-package Paws::CodeDeploy::StopDeploymentOutput {
+package Paws::CodeDeploy::StopDeploymentOutput;
   use Moose;
-  has status => (is => 'ro', isa => 'Str');
-  has statusMessage => (is => 'ro', isa => 'Str');
+  has Status => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'status' );
+  has StatusMessage => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'statusMessage' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,11 +13,10 @@ Paws::CodeDeploy::StopDeploymentOutput
 
 =head1 ATTRIBUTES
 
-=head2 status => Str
 
-  
+=head2 Status => Str
 
-The status of the stop deployment operation:
+  The status of the stop deployment operation:
 
 =over
 
@@ -29,27 +27,9 @@ The status of the stop deployment operation:
 =back
 
 
+=head2 StatusMessage => Str
 
-
-
-
-
-
-
-=head2 statusMessage => Str
-
-  
-
-An accompanying status message.
-
-
-
-
-
-
-
-
-
+  An accompanying status message.
 
 
 =cut

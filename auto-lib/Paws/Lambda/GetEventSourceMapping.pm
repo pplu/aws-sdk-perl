@@ -1,5 +1,5 @@
 
-package Paws::Lambda::GetEventSourceMapping {
+package Paws::Lambda::GetEventSourceMapping;
   use Moose;
   has UUID => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UUID' , required => 1);
 
@@ -10,7 +10,6 @@ package Paws::Lambda::GetEventSourceMapping {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::EventSourceMappingConfiguration');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetEventSourceMappingResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method GetEventSourceM
 AWS Lambda service. Use the attributes of this class
 as arguments to method GetEventSourceMapping.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetEventSourceMapping.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetEventSourceMapping.
 
 As an example:
 
@@ -35,20 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> UUID => Str
 
-  
-
-The AWS Lambda assigned ID of the event source mapping.
-
-
-
-
-
-
-
-
-
+  The AWS Lambda assigned ID of the event source mapping.
 
 
 

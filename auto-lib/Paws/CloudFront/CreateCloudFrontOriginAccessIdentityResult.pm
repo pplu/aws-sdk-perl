@@ -1,11 +1,10 @@
 
-package Paws::CloudFront::CreateCloudFrontOriginAccessIdentityResult {
+package Paws::CloudFront::CreateCloudFrontOriginAccessIdentityResult;
   use Moose;
   has CloudFrontOriginAccessIdentity => (is => 'ro', isa => 'Paws::CloudFront::CloudFrontOriginAccessIdentity');
   has ETag => (is => 'ro', isa => 'Str');
   has Location => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +19,7 @@ This class represents the parameters used for calling the method  on the
 Amazon CloudFront service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -30,52 +29,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 CloudFrontOriginAccessIdentity => Paws::CloudFront::CloudFrontOriginAccessIdentity
 
-  
+=head2 CloudFrontOriginAccessIdentity => L<Paws::CloudFront::CloudFrontOriginAccessIdentity>
 
-The origin access identity's information.
-
-
-
-
-
-
-
-
+  The origin access identity's information.
 
 
 =head2 ETag => Str
 
-  
-
-The current version of the origin access identity created.
-
-
-
-
-
-
-
-
+  The current version of the origin access identity created.
 
 
 =head2 Location => Str
 
-  
-
-The fully qualified URI of the new origin access identity just created.
+  The fully qualified URI of the new origin access identity just created.
 For example:
 https://cloudfront.amazonaws.com/2010-11-01/origin-access-identity/cloudfront/E74FTE3AJFJ256A.
-
-
-
-
-
-
-
-
-
 
 
 

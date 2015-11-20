@@ -1,8 +1,7 @@
 
-package Paws::SES::SetIdentityFeedbackForwardingEnabledResponse {
+package Paws::SES::SetIdentityFeedbackForwardingEnabledResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,9 +1,8 @@
 
-package Paws::EC2::ImportInstanceResult {
+package Paws::EC2::ImportInstanceResult;
   use Moose;
   has ConversionTask => (is => 'ro', isa => 'Paws::EC2::ConversionTask', xmlname => 'conversionTask', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::EC2::ImportInstanceResult
 
 =head1 ATTRIBUTES
 
-=head2 ConversionTask => Paws::EC2::ConversionTask
 
-  
+=head2 ConversionTask => L<Paws::EC2::ConversionTask>
 
-Information about the conversion task.
-
-
-
-
-
-
-
-
-
+  Information about the conversion task.
 
 
 =cut

@@ -1,5 +1,5 @@
 
-package Paws::IAM::CreateOpenIDConnectProvider {
+package Paws::IAM::CreateOpenIDConnectProvider;
   use Moose;
   has ClientIDList => (is => 'ro', isa => 'ArrayRef[Str]');
   has ThumbprintList => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -10,7 +10,6 @@ package Paws::IAM::CreateOpenIDConnectProvider {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateOpenIDConnectProvider');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreateOpenIDConnectProviderResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateOpenIDConnectProviderResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method CreateOpenIDCon
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method CreateOpenIDConnectProvider.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateOpenIDConnectProvider.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateOpenIDConnectProvider.
 
 As an example:
 
@@ -35,11 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClientIDList => ArrayRef[Str]
 
-  
-
-A list of client IDs (also known as audiences). When a mobile or web
+  A list of client IDs (also known as audiences). When a mobile or web
 app registers with an OpenID Connect provider, they establish a value
 that identifies the application. (This is the value that's sent as the
 C<client_id> parameter on OAuth requests.)
@@ -54,19 +52,9 @@ C<CreateOpenIDConnectProviderRequest> action accepts client IDs up to
 255 characters long.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ThumbprintList => ArrayRef[Str]
 
-  
-
-A list of server certificate thumbprints for the OpenID Connect (OIDC)
+  A list of server certificate thumbprints for the OpenID Connect (OIDC)
 identity provider's server certificate(s). Typically this list includes
 only one entry. However, IAM lets you have up to five thumbprints for
 an OIDC provider. This lets you maintain multiple thumbprints if the
@@ -85,22 +73,12 @@ https://keys.server.example.com.
 
 For more information about obtaining the OIDC provider's thumbprint,
 see Obtaining the Thumbprint for an OpenID Connect Provider in the
-I<Using IAM> guide.
-
-
-
-
-
-
-
-
+I<IAM User Guide>.
 
 
 =head2 B<REQUIRED> Url => Str
 
-  
-
-The URL of the identity provider. The URL must begin with "https://"
+  The URL of the identity provider. The URL must begin with "https://"
 and should correspond to the C<iss> claim in the provider's OpenID
 Connect ID tokens. Per the OIDC standard, path components are allowed
 but query parameters are not. Typically the URL consists of only a host
@@ -109,15 +87,6 @@ name, like "https://server.example.org" or "https://example.com".
 You cannot register the same provider multiple times in a single AWS
 account. If you try to submit a URL that has already been used for an
 OpenID Connect provider in the AWS account, you will get an error.
-
-
-
-
-
-
-
-
-
 
 
 

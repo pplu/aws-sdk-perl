@@ -1,9 +1,13 @@
-package Paws::CognitoSync {
+package Paws::CognitoSync;
   warn "Paws::CognitoSync is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cognito-sync' }
   sub version { '2014-06-30' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
@@ -93,7 +97,9 @@ package Paws::CognitoSync {
     my $call_object = $self->new_with_coercions('Paws::CognitoSync::UpdateRecords', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
+
+  sub operations { qw/BulkPublish DeleteDataset DescribeDataset DescribeIdentityPoolUsage DescribeIdentityUsage GetBulkPublishDetails GetCognitoEvents GetIdentityPoolConfiguration ListDatasets ListIdentityPoolUsage ListRecords RegisterDevice SetCognitoEvents SetIdentityPoolConfiguration SubscribeToDataset UnsubscribeFromDataset UpdateRecords / }
+
 1;
 
 ### main pod documentation begin ###
@@ -106,7 +112,7 @@ Paws::CognitoSync - Perl Interface to AWS Amazon Cognito Sync
 
   use Paws;
 
-  my $obj = Paws->service('CognitoSync')->new;
+  my $obj = Paws->service('CognitoSync');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],
@@ -119,8 +125,6 @@ Paws::CognitoSync - Perl Interface to AWS Amazon Cognito Sync
   );
 
 =head1 DESCRIPTION
-
-
 
 Amazon Cognito Sync
 
@@ -144,15 +148,6 @@ will probably want to make API calls via the AWS Mobile SDK. To learn
 more, see the Developer Guide for Android and the Developer Guide for
 iOS.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
 =head2 BulkPublish(IdentityPoolId => Str)
@@ -161,9 +156,7 @@ Each argument is described in detail in: L<Paws::CognitoSync::BulkPublish>
 
 Returns: a L<Paws::CognitoSync::BulkPublishResponse> instance
 
-  
-
-Initiates a bulk publish of all existing datasets for an Identity Pool
+  Initiates a bulk publish of all existing datasets for an Identity Pool
 to the configured stream. Customers are limited to one successful bulk
 publish per 24 hours. Bulk publish is an asynchronous request,
 customers can see the status of the request via the
@@ -174,24 +167,13 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteDataset(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoSync::DeleteDataset>
 
 Returns: a L<Paws::CognitoSync::DeleteDatasetResponse> instance
 
-  
-
-Deletes the specific dataset. The dataset will be deleted permanently,
+  Deletes the specific dataset. The dataset will be deleted permanently,
 and the action can't be undone. Datasets that this dataset was merged
 with will no longer report the merge. Any subsequent operation on this
 dataset will result in a ResourceNotFoundException.
@@ -200,24 +182,13 @@ This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeDataset(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoSync::DescribeDataset>
 
 Returns: a L<Paws::CognitoSync::DescribeDatasetResponse> instance
 
-  
-
-Gets meta data about a dataset by identity and dataset name. With
+  Gets meta data about a dataset by identity and dataset name. With
 Amazon Cognito Sync, each identity has access only to its own data.
 Thus, the credentials used to make this API call need to have access to
 the identity data.
@@ -227,38 +198,18 @@ Cognito Identity or with developer credentials. You should use Cognito
 Identity credentials to make this API call.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeIdentityPoolUsage(IdentityPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoSync::DescribeIdentityPoolUsage>
 
 Returns: a L<Paws::CognitoSync::DescribeIdentityPoolUsageResponse> instance
 
-  
-
-Gets usage details (for example, data storage) about a particular
+  Gets usage details (for example, data storage) about a particular
 identity pool.
 
 This API can only be called with developer credentials. You cannot call
 this API with the temporary user credentials provided by Cognito
 Identity.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeIdentityUsage(IdentityId => Str, IdentityPoolId => Str)
@@ -267,22 +218,11 @@ Each argument is described in detail in: L<Paws::CognitoSync::DescribeIdentityUs
 
 Returns: a L<Paws::CognitoSync::DescribeIdentityUsageResponse> instance
 
-  
-
-Gets usage information for an identity, including number of datasets
+  Gets usage information for an identity, including number of datasets
 and data usage.
 
 This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetBulkPublishDetails(IdentityPoolId => Str)
@@ -291,22 +231,11 @@ Each argument is described in detail in: L<Paws::CognitoSync::GetBulkPublishDeta
 
 Returns: a L<Paws::CognitoSync::GetBulkPublishDetailsResponse> instance
 
-  
-
-Get the status of the last BulkPublish operation for an identity pool.
+  Get the status of the last BulkPublish operation for an identity pool.
 
 This API can only be called with developer credentials. You cannot call
 this API with the temporary user credentials provided by Cognito
 Identity.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetCognitoEvents(IdentityPoolId => Str)
@@ -315,23 +244,12 @@ Each argument is described in detail in: L<Paws::CognitoSync::GetCognitoEvents>
 
 Returns: a L<Paws::CognitoSync::GetCognitoEventsResponse> instance
 
-  
-
-Gets the events and the corresponding Lambda functions associated with
+  Gets the events and the corresponding Lambda functions associated with
 an identity pool.
 
 This API can only be called with developer credentials. You cannot call
 this API with the temporary user credentials provided by Cognito
 Identity.
-
-
-
-
-
-
-
-
-
 
 
 =head2 GetIdentityPoolConfiguration(IdentityPoolId => Str)
@@ -340,22 +258,11 @@ Each argument is described in detail in: L<Paws::CognitoSync::GetIdentityPoolCon
 
 Returns: a L<Paws::CognitoSync::GetIdentityPoolConfigurationResponse> instance
 
-  
-
-Gets the configuration settings of an identity pool.
+  Gets the configuration settings of an identity pool.
 
 This API can only be called with developer credentials. You cannot call
 this API with the temporary user credentials provided by Cognito
 Identity.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListDatasets(IdentityId => Str, IdentityPoolId => Str, [MaxResults => Int, NextToken => Str])
@@ -364,9 +271,7 @@ Each argument is described in detail in: L<Paws::CognitoSync::ListDatasets>
 
 Returns: a L<Paws::CognitoSync::ListDatasetsResponse> instance
 
-  
-
-Lists datasets for an identity. With Amazon Cognito Sync, each identity
+  Lists datasets for an identity. With Amazon Cognito Sync, each identity
 has access only to its own data. Thus, the credentials used to make
 this API call need to have access to the identity data.
 
@@ -375,37 +280,17 @@ Cognito Identity or with developer credentials. You should use the
 Cognito Identity credentials to make this API call.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListIdentityPoolUsage([MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::CognitoSync::ListIdentityPoolUsage>
 
 Returns: a L<Paws::CognitoSync::ListIdentityPoolUsageResponse> instance
 
-  
-
-Gets a list of identity pools registered with Cognito.
+  Gets a list of identity pools registered with Cognito.
 
 ListIdentityPoolUsage can only be called with developer credentials.
 You cannot make this API call with the temporary user credentials
 provided by Cognito Identity.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ListRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, [LastSyncCount => Int, MaxResults => Int, NextToken => Str, SyncSessionToken => Str])
@@ -414,9 +299,7 @@ Each argument is described in detail in: L<Paws::CognitoSync::ListRecords>
 
 Returns: a L<Paws::CognitoSync::ListRecordsResponse> instance
 
-  
-
-Gets paginated records, optionally changed after a particular sync
+  Gets paginated records, optionally changed after a particular sync
 count for a dataset and identity. With Amazon Cognito Sync, each
 identity has access only to its own data. Thus, the credentials used to
 make this API call need to have access to the identity data.
@@ -426,47 +309,25 @@ Cognito Identity or with developer credentials. You should use Cognito
 Identity credentials to make this API call.
 
 
-
-
-
-
-
-
-
-
-
 =head2 RegisterDevice(IdentityId => Str, IdentityPoolId => Str, Platform => Str, Token => Str)
 
 Each argument is described in detail in: L<Paws::CognitoSync::RegisterDevice>
 
 Returns: a L<Paws::CognitoSync::RegisterDeviceResponse> instance
 
-  
-
-Registers a device to receive push sync notifications.
+  Registers a device to receive push sync notifications.
 
 This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 
 
-
-
-
-
-
-
-
-
-
-=head2 SetCognitoEvents(Events => Paws::CognitoSync::Events, IdentityPoolId => Str)
+=head2 SetCognitoEvents(Events => L<Paws::CognitoSync::Events>, IdentityPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoSync::SetCognitoEvents>
 
 Returns: nothing
 
-  
-
-Sets the AWS Lambda function for a given event type for an identity
+  Sets the AWS Lambda function for a given event type for an identity
 pool. This request only updates the key/value pair specified. Other
 key/values pairs are not updated. To remove a key value pair, pass a
 empty value for the particular key.
@@ -476,37 +337,17 @@ this API with the temporary user credentials provided by Cognito
 Identity.
 
 
-
-
-
-
-
-
-
-
-
-=head2 SetIdentityPoolConfiguration(IdentityPoolId => Str, [CognitoStreams => Paws::CognitoSync::CognitoStreams, PushSync => Paws::CognitoSync::PushSync])
+=head2 SetIdentityPoolConfiguration(IdentityPoolId => Str, [CognitoStreams => L<Paws::CognitoSync::CognitoStreams>, PushSync => L<Paws::CognitoSync::PushSync>])
 
 Each argument is described in detail in: L<Paws::CognitoSync::SetIdentityPoolConfiguration>
 
 Returns: a L<Paws::CognitoSync::SetIdentityPoolConfigurationResponse> instance
 
-  
-
-Sets the necessary configuration for push sync.
+  Sets the necessary configuration for push sync.
 
 This API can only be called with developer credentials. You cannot call
 this API with the temporary user credentials provided by Cognito
 Identity.
-
-
-
-
-
-
-
-
-
 
 
 =head2 SubscribeToDataset(DatasetName => Str, DeviceId => Str, IdentityId => Str, IdentityPoolId => Str)
@@ -515,22 +356,11 @@ Each argument is described in detail in: L<Paws::CognitoSync::SubscribeToDataset
 
 Returns: a L<Paws::CognitoSync::SubscribeToDatasetResponse> instance
 
-  
-
-Subscribes to receive notifications when a dataset is modified by
+  Subscribes to receive notifications when a dataset is modified by
 another device.
 
 This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
-
-
-
-
-
-
-
-
-
 
 
 =head2 UnsubscribeFromDataset(DatasetName => Str, DeviceId => Str, IdentityId => Str, IdentityPoolId => Str)
@@ -539,33 +369,20 @@ Each argument is described in detail in: L<Paws::CognitoSync::UnsubscribeFromDat
 
 Returns: a L<Paws::CognitoSync::UnsubscribeFromDatasetResponse> instance
 
-  
-
-Unsubscribes from receiving notifications when a dataset is modified by
+  Unsubscribes from receiving notifications when a dataset is modified by
 another device.
 
 This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, SyncSessionToken => Str, [ClientContext => Str, DeviceId => Str, RecordPatches => ArrayRef[Paws::CognitoSync::RecordPatch]])
+=head2 UpdateRecords(DatasetName => Str, IdentityId => Str, IdentityPoolId => Str, SyncSessionToken => Str, [ClientContext => Str, DeviceId => Str, RecordPatches => ArrayRef[L<Paws::CognitoSync::RecordPatch>]])
 
 Each argument is described in detail in: L<Paws::CognitoSync::UpdateRecords>
 
 Returns: a L<Paws::CognitoSync::UpdateRecordsResponse> instance
 
-  
-
-Posts updates to records and adds and deletes records for a dataset and
+  Posts updates to records and adds and deletes records for a dataset and
 user.
 
 The sync count in the record patch is your last known sync count for
@@ -583,15 +400,6 @@ the record does not exist, specify the sync count as 0.
 
 This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

@@ -1,5 +1,5 @@
 
-package Paws::IAM::GetLoginProfile {
+package Paws::IAM::GetLoginProfile;
   use Moose;
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::IAM::GetLoginProfile {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetLoginProfile');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetLoginProfileResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetLoginProfileResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method GetLoginProfile
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetLoginProfile.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetLoginProfile.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLoginProfile.
 
 As an example:
 
@@ -33,20 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user whose login profile you want to retrieve.
-
-
-
-
-
-
-
-
-
+  The name of the user whose login profile you want to retrieve.
 
 
 

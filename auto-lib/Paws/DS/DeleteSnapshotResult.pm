@@ -1,9 +1,8 @@
 
-package Paws::DS::DeleteSnapshotResult {
+package Paws::DS::DeleteSnapshotResult;
   use Moose;
   has SnapshotId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::DS::DeleteSnapshotResult
 
 =head1 ATTRIBUTES
 
+
 =head2 SnapshotId => Str
 
-  
-
-The identifier of the directory snapshot that was deleted.
-
-
-
-
-
-
-
-
-
+  The identifier of the directory snapshot that was deleted.
 
 
 =cut

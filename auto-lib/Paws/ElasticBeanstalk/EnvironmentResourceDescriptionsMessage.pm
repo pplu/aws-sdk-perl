@@ -1,9 +1,8 @@
 
-package Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage {
+package Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage;
   use Moose;
   has EnvironmentResources => (is => 'ro', isa => 'Paws::ElasticBeanstalk::EnvironmentResourceDescription');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage
 
 =head1 ATTRIBUTES
 
-=head2 EnvironmentResources => Paws::ElasticBeanstalk::EnvironmentResourceDescription
 
-  
+=head2 EnvironmentResources => L<Paws::ElasticBeanstalk::EnvironmentResourceDescription>
 
-A list of EnvironmentResourceDescription.
-
-
-
-
-
-
-
-
-
+  A list of EnvironmentResourceDescription.
 
 
 =cut

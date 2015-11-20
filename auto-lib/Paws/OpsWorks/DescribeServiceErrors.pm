@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::DescribeServiceErrors {
+package Paws::OpsWorks::DescribeServiceErrors;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
   has ServiceErrorIds => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -10,7 +10,6 @@ package Paws::OpsWorks::DescribeServiceErrors {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeServiceErrors');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::DescribeServiceErrorsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeService
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeServiceErrors.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeServiceErrors.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeServiceErrors.
 
 As an example:
 
@@ -35,55 +34,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 InstanceId => Str
 
-  
-
-The instance ID. If you use this parameter, C<DescribeServiceErrors>
+  The instance ID. If you use this parameter, C<DescribeServiceErrors>
 returns descriptions of the errors associated with the specified
 instance.
 
 
-
-
-
-
-
-
-
-
 =head2 ServiceErrorIds => ArrayRef[Str]
 
-  
-
-An array of service error IDs. If you use this parameter,
+  An array of service error IDs. If you use this parameter,
 C<DescribeServiceErrors> returns descriptions of the specified errors.
 Otherwise, it returns a description of every error.
 
 
-
-
-
-
-
-
-
-
 =head2 StackId => Str
 
-  
-
-The stack ID. If you use this parameter, C<DescribeServiceErrors>
+  The stack ID. If you use this parameter, C<DescribeServiceErrors>
 returns descriptions of the errors associated with the specified stack.
-
-
-
-
-
-
-
-
-
 
 
 

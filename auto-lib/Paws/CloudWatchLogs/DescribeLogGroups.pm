@@ -1,16 +1,15 @@
 
-package Paws::CloudWatchLogs::DescribeLogGroups {
+package Paws::CloudWatchLogs::DescribeLogGroups;
   use Moose;
-  has limit => (is => 'ro', isa => 'Int');
-  has logGroupNamePrefix => (is => 'ro', isa => 'Str');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has LogGroupNamePrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupNamePrefix' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLogGroups');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::DescribeLogGroupsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeLogGrou
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method DescribeLogGroups.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLogGroups.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLogGroups.
 
 As an example:
 
@@ -35,54 +34,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 limit => Int
 
-  
+=head2 Limit => Int
 
-The maximum number of items returned in the response. If you don't
+  The maximum number of items returned in the response. If you don't
 specify a value, the request would return up to 50 items.
 
 
+=head2 LogGroupNamePrefix => Str
 
-
-
-
-
-
-
-
-=head2 logGroupNamePrefix => Str
-
-  
-
-Will only return log groups that match the provided logGroupNamePrefix.
+  Will only return log groups that match the provided logGroupNamePrefix.
 If you don't specify a value, no prefix filter is applied.
 
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-A string token used for pagination that points to the next page of
+  A string token used for pagination that points to the next page of
 results. It must be a value obtained from the response of the previous
 C<DescribeLogGroups> request.
-
-
-
-
-
-
-
-
-
 
 
 

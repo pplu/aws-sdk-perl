@@ -1,14 +1,13 @@
 
-package Paws::CodeCommit::DeleteRepository {
+package Paws::CodeCommit::DeleteRepository;
   use Moose;
-  has repositoryName => (is => 'ro', isa => 'Str', required => 1);
+  has RepositoryName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'repositoryName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteRepository');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeCommit::DeleteRepositoryOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteRepositor
 AWS CodeCommit service. Use the attributes of this class
 as arguments to method DeleteRepository.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRepository.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteRepository.
 
 As an example:
 
@@ -33,20 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> repositoryName => Str
 
-  
+=head2 B<REQUIRED> RepositoryName => Str
 
-The name of the repository to delete.
-
-
-
-
-
-
-
-
-
+  The name of the repository to delete.
 
 
 

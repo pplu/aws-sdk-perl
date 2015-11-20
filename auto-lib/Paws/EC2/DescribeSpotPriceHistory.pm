@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeSpotPriceHistory {
+package Paws::EC2::DescribeSpotPriceHistory;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -16,7 +16,6 @@ package Paws::EC2::DescribeSpotPriceHistory {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSpotPriceHistory');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeSpotPriceHistoryResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +30,7 @@ This class represents the parameters used for calling the method DescribeSpotPri
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeSpotPriceHistory.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSpotPriceHistory.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSpotPriceHistory.
 
 As an example:
 
@@ -41,61 +40,30 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZone => Str
 
-  
-
-Filters the results by the specified Availability Zone.
-
-
-
-
-
-
-
-
+  Filters the results by the specified Availability Zone.
 
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
-
-
-
-
-
-
-
-
 =head2 EndTime => Str
 
-  
-
-The date and time, up to the current date, from which to stop
+  The date and time, up to the current date, from which to stop
 retrieving the price history data, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
 
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
-
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -106,22 +74,22 @@ returned.
 
 =item *
 
-C<instance-type> - The type of instance (for example, C<m1.small>).
+C<instance-type> - The type of instance (for example, C<m3.medium>).
 
 =item *
 
-C<product-description> - The product description for the Spot Price
+C<product-description> - The product description for the Spot price
 (C<Linux/UNIX> | C<SUSE Linux> | C<Windows> | C<Linux/UNIX (Amazon
 VPC)> | C<SUSE Linux (Amazon VPC)> | C<Windows (Amazon VPC)>).
 
 =item *
 
-C<spot-price> - The Spot Price. The value must match exactly (or use
+C<spot-price> - The Spot price. The value must match exactly (or use
 wildcards; greater than or less than comparison is not supported).
 
 =item *
 
-C<timestamp> - The timestamp of the Spot Price history, in UTC format
+C<timestamp> - The timestamp of the Spot price history, in UTC format
 (for example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). You can use
 wildcards (* and ?). Greater than or less than comparison is not
 supported.
@@ -130,92 +98,34 @@ supported.
 
 
 
-
-
-
-
-
-
-
 =head2 InstanceTypes => ArrayRef[Str]
 
-  
-
-Filters the results by the specified instance types.
-
-
-
-
-
-
-
-
+  Filters the results by the specified instance types.
 
 
 =head2 MaxResults => Int
 
-  
-
-The maximum number of results to return in a single call. Specify a
+  The maximum number of results to return in a single call. Specify a
 value between 1 and 1000. The default value is 1000. To retrieve the
 remaining results, make another call with the returned C<NextToken>
 value.
 
 
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The token for the next set of results.
-
-
-
-
-
-
-
-
+  The token for the next set of results.
 
 
 =head2 ProductDescriptions => ArrayRef[Str]
 
-  
-
-Filters the results by the specified basic product descriptions.
-
-
-
-
-
-
-
-
+  Filters the results by the specified basic product descriptions.
 
 
 =head2 StartTime => Str
 
-  
-
-The date and time, up to the past 90 days, from which to start
+  The date and time, up to the past 90 days, from which to start
 retrieving the price history data, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
-
-
-
-
-
-
-
-
-
 
 
 

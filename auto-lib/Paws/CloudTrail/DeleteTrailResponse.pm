@@ -1,8 +1,7 @@
 
-package Paws::CloudTrail::DeleteTrailResponse {
+package Paws::CloudTrail::DeleteTrailResponse;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

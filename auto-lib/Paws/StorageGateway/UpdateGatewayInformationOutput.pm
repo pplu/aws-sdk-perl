@@ -1,9 +1,9 @@
 
-package Paws::StorageGateway::UpdateGatewayInformationOutput {
+package Paws::StorageGateway::UpdateGatewayInformationOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
+  has GatewayName => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +13,12 @@ Paws::StorageGateway::UpdateGatewayInformationOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 GatewayARN => Str
+
+  
+
+=head2 GatewayName => Str
 
   
 

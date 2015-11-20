@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeMyUserProfileResult {
+package Paws::OpsWorks::DescribeMyUserProfileResult;
   use Moose;
   has UserProfile => (is => 'ro', isa => 'Paws::OpsWorks::SelfUserProfile');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::OpsWorks::DescribeMyUserProfileResult
 
 =head1 ATTRIBUTES
 
-=head2 UserProfile => Paws::OpsWorks::SelfUserProfile
 
-  
+=head2 UserProfile => L<Paws::OpsWorks::SelfUserProfile>
 
-A C<UserProfile> object that describes the user's SSH information.
-
-
-
-
-
-
-
-
-
+  A C<UserProfile> object that describes the user's SSH information.
 
 
 =cut

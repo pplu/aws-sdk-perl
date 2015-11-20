@@ -1,5 +1,5 @@
 
-package Paws::EFS::DeleteMountTarget {
+package Paws::EFS::DeleteMountTarget;
   use Moose;
   has MountTargetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'MountTargetId' , required => 1);
 
@@ -10,7 +10,6 @@ package Paws::EFS::DeleteMountTarget {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DeleteMountTarg
 Amazon Elastic File System service. Use the attributes of this class
 as arguments to method DeleteMountTarget.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMountTarget.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteMountTarget.
 
 As an example:
 
@@ -35,20 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> MountTargetId => Str
 
-  
-
-String. The ID of the mount target to delete.
-
-
-
-
-
-
-
-
-
+  String. The ID of the mount target to delete.
 
 
 

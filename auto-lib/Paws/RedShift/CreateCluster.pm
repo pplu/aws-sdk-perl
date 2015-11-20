@@ -1,5 +1,5 @@
 
-package Paws::RedShift::CreateCluster {
+package Paws::RedShift::CreateCluster;
   use Moose;
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -31,7 +31,6 @@ package Paws::RedShift::CreateCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::CreateClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +45,7 @@ This class represents the parameters used for calling the method CreateCluster o
 Amazon Redshift service. Use the attributes of this class
 as arguments to method CreateCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCluster.
 
 As an example:
 
@@ -56,11 +55,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowVersionUpgrade => Bool
 
-  
-
-If C<true>, major version upgrades can be applied during the
+  If C<true>, major version upgrades can be applied during the
 maintenance window to the Amazon Redshift engine that is running on the
 cluster.
 
@@ -72,19 +70,9 @@ your cluster.
 Default: C<true>
 
 
-
-
-
-
-
-
-
-
 =head2 AutomatedSnapshotRetentionPeriod => Int
 
-  
-
-The number of days that automated snapshots are retained. If the value
+  The number of days that automated snapshots are retained. If the value
 is 0, automated snapshots are disabled. Even if automated snapshots are
 disabled, you can still create manual snapshots when you want with
 CreateClusterSnapshot.
@@ -94,19 +82,9 @@ Default: C<1>
 Constraints: Must be a value from 0 to 35.
 
 
-
-
-
-
-
-
-
-
 =head2 AvailabilityZone => Str
 
-  
-
-The EC2 Availability Zone (AZ) in which you want Amazon Redshift to
+  The EC2 Availability Zone (AZ) in which you want Amazon Redshift to
 provision the cluster. For example, if you have several EC2 instances
 running in a specific Availability Zone, then you might want the
 cluster to be provisioned in the same zone in order to decrease network
@@ -121,19 +99,9 @@ Constraint: The specified Availability Zone must be in the same region
 as the current endpoint.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  
-
-A unique identifier for the cluster. You use this identifier to refer
+  A unique identifier for the cluster. You use this identifier to refer
 to the cluster for any subsequent cluster operations such as deleting
 or modifying. The identifier also appears in the Amazon Redshift
 console.
@@ -157,19 +125,9 @@ Constraints:
 Example: C<myexamplecluster>
 
 
-
-
-
-
-
-
-
-
 =head2 ClusterParameterGroupName => Str
 
-  
-
-The name of the parameter group to be associated with this cluster.
+  The name of the parameter group to be associated with this cluster.
 
 Default: The default Amazon Redshift cluster parameter group. For
 information about the default parameter group, go to Working with
@@ -189,53 +147,24 @@ Constraints:
 
 
 
-
-
-
-
-
-
-
 =head2 ClusterSecurityGroups => ArrayRef[Str]
 
-  
-
-A list of security groups to be associated with this cluster.
+  A list of security groups to be associated with this cluster.
 
 Default: The default cluster security group for Amazon Redshift.
 
 
-
-
-
-
-
-
-
-
 =head2 ClusterSubnetGroupName => Str
 
-  
-
-The name of a cluster subnet group to be associated with this cluster.
+  The name of a cluster subnet group to be associated with this cluster.
 
 If this parameter is not provided the resulting cluster will be
 deployed outside virtual private cloud (VPC).
 
 
-
-
-
-
-
-
-
-
 =head2 ClusterType => Str
 
-  
-
-The type of the cluster. When cluster type is specified as
+  The type of the cluster. When cluster type is specified as
 
 =over
 
@@ -250,19 +179,9 @@ Valid Values: C<multi-node> | C<single-node>
 Default: C<multi-node>
 
 
-
-
-
-
-
-
-
-
 =head2 ClusterVersion => Str
 
-  
-
-The version of the Amazon Redshift engine software that you want to
+  The version of the Amazon Redshift engine software that you want to
 deploy on the cluster.
 
 The version selected runs on all the nodes in the cluster.
@@ -272,19 +191,9 @@ Constraints: Only version 1.0 is currently available.
 Example: C<1.0>
 
 
-
-
-
-
-
-
-
-
 =head2 DBName => Str
 
-  
-
-The name of the first database to be created when the cluster is
+  The name of the first database to be created when the cluster is
 created.
 
 To create additional databases after the cluster is created, connect to
@@ -310,18 +219,9 @@ Database Developer Guide.
 
 
 
-
-
-
-
-
-
-
 =head2 ElasticIp => Str
 
-  
-
-The Elastic IP (EIP) address for the cluster.
+  The Elastic IP (EIP) address for the cluster.
 
 Constraints: The cluster must be provisioned in EC2-VPC and
 publicly-accessible through an Internet gateway. For more information
@@ -329,85 +229,35 @@ about provisioning clusters in EC2-VPC, go to Supported Platforms to
 Launch Your Cluster in the Amazon Redshift Cluster Management Guide.
 
 
-
-
-
-
-
-
-
-
 =head2 Encrypted => Bool
 
-  
-
-If C<true>, the data in the cluster is encrypted at rest.
+  If C<true>, the data in the cluster is encrypted at rest.
 
 Default: false
 
 
-
-
-
-
-
-
-
-
 =head2 HsmClientCertificateIdentifier => Str
 
-  
-
-Specifies the name of the HSM client certificate the Amazon Redshift
+  Specifies the name of the HSM client certificate the Amazon Redshift
 cluster uses to retrieve the data encryption keys stored in an HSM.
-
-
-
-
-
-
-
-
 
 
 =head2 HsmConfigurationIdentifier => Str
 
-  
-
-Specifies the name of the HSM configuration that contains the
+  Specifies the name of the HSM configuration that contains the
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
 
 
-
-
-
-
-
-
-
-
 =head2 KmsKeyId => Str
 
-  
-
-The AWS Key Management Service (KMS) key ID of the encryption key that
+  The AWS Key Management Service (KMS) key ID of the encryption key that
 you want to use to encrypt data in the cluster.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> MasterUsername => Str
 
-  
-
-The user name associated with the master user account for the cluster
+  The user name associated with the master user account for the cluster
 that is being created.
 
 Constraints:
@@ -426,18 +276,9 @@ Guide.
 
 
 
-
-
-
-
-
-
-
 =head2 B<REQUIRED> MasterUserPassword => Str
 
-  
-
-The password associated with the master user account for the cluster
+  The password associated with the master user account for the cluster
 that is being created.
 
 Constraints:
@@ -459,18 +300,9 @@ except ' (single quote), " (double quote), \, /, @, or space.
 
 
 
-
-
-
-
-
-
-
 =head2 B<REQUIRED> NodeType => Str
 
-  
-
-The node type to be provisioned for the cluster. For information about
+  The node type to be provisioned for the cluster. For information about
 node types, go to Working with Clusters in the I<Amazon Redshift
 Cluster Management Guide>.
 
@@ -478,19 +310,9 @@ Valid Values: C<ds1.xlarge> | C<ds1.8xlarge> | C<ds2.xlarge> |
 C<ds2.8xlarge> | C<dc1.large> | C<dc1.8xlarge>.
 
 
-
-
-
-
-
-
-
-
 =head2 NumberOfNodes => Int
 
-  
-
-The number of compute nodes in the cluster. This parameter is required
+  The number of compute nodes in the cluster. This parameter is required
 when the B<ClusterType> parameter is specified as C<multi-node>.
 
 For information about determining how many nodes you need, go to
@@ -506,19 +328,9 @@ Default: C<1>
 Constraints: Value must be at least 1 and no more than 100.
 
 
-
-
-
-
-
-
-
-
 =head2 Port => Int
 
-  
-
-The port number on which the cluster accepts incoming connections.
+  The port number on which the cluster accepts incoming connections.
 
 The cluster is accessible only via the JDBC and ODBC connection
 strings. Part of the connection string requires the port on which the
@@ -529,19 +341,9 @@ Default: C<5439>
 Valid Values: C<1150-65535>
 
 
-
-
-
-
-
-
-
-
 =head2 PreferredMaintenanceWindow => Str
 
-  
-
-The weekly time range (in UTC) during which automated cluster
+  The weekly time range (in UTC) during which automated cluster
 maintenance can occur.
 
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
@@ -556,61 +358,22 @@ Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 Constraints: Minimum 30-minute window.
 
 
-
-
-
-
-
-
-
-
 =head2 PubliclyAccessible => Bool
 
-  
-
-If C<true>, the cluster can be accessed from a public network.
+  If C<true>, the cluster can be accessed from a public network.
 
 
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
-
-  
-
-A list of tag instances.
-
-
-
-
-
-
-
-
+  A list of tag instances.
 
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  
-
-A list of Virtual Private Cloud (VPC) security groups to be associated
+  A list of Virtual Private Cloud (VPC) security groups to be associated
 with the cluster.
 
 Default: The default VPC security group is associated with the cluster.
-
-
-
-
-
-
-
-
-
 
 
 

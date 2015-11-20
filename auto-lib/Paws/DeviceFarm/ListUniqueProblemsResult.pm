@@ -1,10 +1,9 @@
 
-package Paws::DeviceFarm::ListUniqueProblemsResult {
+package Paws::DeviceFarm::ListUniqueProblemsResult;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
-  has uniqueProblems => (is => 'ro', isa => 'Paws::DeviceFarm::UniqueProblemsByExecutionResultMap');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has UniqueProblems => (is => 'ro', isa => 'Paws::DeviceFarm::UniqueProblemsByExecutionResultMap', traits => ['Unwrapped'], xmlname => 'uniqueProblems' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,28 +13,17 @@ Paws::DeviceFarm::ListUniqueProblemsResult
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
 
-  
+=head2 NextToken => Str
 
-If the number of items that are returned is significantly large, this
+  If the number of items that are returned is significantly large, this
 is an identifier that is also returned, which can be used in a
 subsequent call to this operation to return the next set of items in
 the list.
 
+=head2 UniqueProblems => L<Paws::DeviceFarm::UniqueProblemsByExecutionResultMap>
 
-
-
-
-
-
-
-
-=head2 uniqueProblems => Paws::DeviceFarm::UniqueProblemsByExecutionResultMap
-
-  
-
-Information about the unique problems.
+  Information about the unique problems.
 
 Allowed values include:
 
@@ -70,14 +58,6 @@ PENDING: A pending condition.
 WARNED: A warning condition.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

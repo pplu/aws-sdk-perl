@@ -1,9 +1,8 @@
 
-package Paws::ECS::DeleteServiceResponse {
+package Paws::ECS::DeleteServiceResponse;
   use Moose;
-  has service => (is => 'ro', isa => 'Paws::ECS::Service');
+  has Service => (is => 'ro', isa => 'Paws::ECS::Service', traits => ['Unwrapped'], xmlname => 'service' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,9 +12,10 @@ Paws::ECS::DeleteServiceResponse
 
 =head1 ATTRIBUTES
 
-=head2 service => Paws::ECS::Service
 
-  
+=head2 Service => L<Paws::ECS::Service>
+
+  The full description of the deleted service.
 
 
 =cut

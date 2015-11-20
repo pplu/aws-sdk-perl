@@ -1,8 +1,7 @@
 
-package Paws::ELB::RemoveTagsOutput {
+package Paws::ELB::RemoveTagsOutput;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

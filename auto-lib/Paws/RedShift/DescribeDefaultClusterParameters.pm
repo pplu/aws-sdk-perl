@@ -1,5 +1,5 @@
 
-package Paws::RedShift::DescribeDefaultClusterParameters {
+package Paws::RedShift::DescribeDefaultClusterParameters;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::RedShift::DescribeDefaultClusterParameters {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDefaultClusterParameters');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::DescribeDefaultClusterParametersResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDefaultClusterParametersResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeDefault
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DescribeDefaultClusterParameters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDefaultClusterParameters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDefaultClusterParameters.
 
 As an example:
 
@@ -35,11 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Marker => Str
 
-  
-
-An optional parameter that specifies the starting point to return a set
+  An optional parameter that specifies the starting point to return a set
 of response records. When the results of a
 DescribeDefaultClusterParameters request exceed the value specified in
 C<MaxRecords>, AWS returns a value in the C<Marker> field of the
@@ -48,19 +46,9 @@ providing the returned marker value in the C<Marker> parameter and
 retrying the request.
 
 
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of response records to return in each call. If the
+  The maximum number of response records to return in each call. If the
 number of remaining response records exceeds the specified
 C<MaxRecords> value, a value is returned in a C<marker> field of the
 response. You can retrieve the next set of records by retrying the
@@ -71,28 +59,9 @@ Default: C<100>
 Constraints: minimum 20, maximum 100.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ParameterGroupFamily => Str
 
-  
-
-The name of the cluster parameter group family.
-
-
-
-
-
-
-
-
-
+  The name of the cluster parameter group family.
 
 
 

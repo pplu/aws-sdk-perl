@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateVolume {
+package Paws::EC2::CreateVolume;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -15,7 +15,6 @@ package Paws::EC2::CreateVolume {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateVolume');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::Volume');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +29,7 @@ This class represents the parameters used for calling the method CreateVolume on
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateVolume.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateVolume.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateVolume.
 
 As an example:
 
@@ -40,46 +39,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-  
-
-The Availability Zone in which to create the volume. Use
+  The Availability Zone in which to create the volume. Use
 DescribeAvailabilityZones to list the Availability Zones that are
 currently available to you.
 
 
-
-
-
-
-
-
-
-
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
-
-
-
-
-
-
-
-
 =head2 Encrypted => Bool
 
-  
-
-Specifies whether the volume should be encrypted. Encrypted Amazon EBS
+  Specifies whether the volume should be encrypted. Encrypted Amazon EBS
 volumes may only be attached to instances that support Amazon EBS
 encryption. Volumes that are created from encrypted snapshots are
 automatically encrypted. There is no way to create an encrypted volume
@@ -89,38 +67,18 @@ information, see Amazon EBS Encryption in the I<Amazon Elastic Compute
 Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 Iops => Int
 
-  
-
-Only valid for Provisioned IOPS (SSD) volumes. The number of I/O
+  Only valid for Provisioned IOPS (SSD) volumes. The number of I/O
 operations per second (IOPS) to provision for the volume, with a
 maximum ratio of 30 IOPS/GiB.
 
 Constraint: Range is 100 to 20000 for Provisioned IOPS (SSD) volumes
 
 
-
-
-
-
-
-
-
-
 =head2 KmsKeyId => Str
 
-  
-
-The full ARN of the AWS Key Management Service (AWS KMS) customer
+  The full ARN of the AWS Key Management Service (AWS KMS) customer
 master key (CMK) to use when creating the encrypted volume. This
 parameter is only required if you want to use a non-default CMK; if
 this parameter is not specified, the default CMK for EBS is used. The
@@ -131,19 +89,9 @@ arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd5
 If a C<KmsKeyId> is specified, the C<Encrypted> flag must also be set.
 
 
-
-
-
-
-
-
-
-
 =head2 Size => Int
 
-  
-
-The size of the volume, in GiBs.
+  The size of the volume, in GiBs.
 
 Constraints: C<1-1024> for C<standard> volumes, C<1-16384> for C<gp2>
 volumes, and C<4-16384> for C<io1> volumes. If you specify a snapshot,
@@ -153,47 +101,18 @@ Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
 
 
-
-
-
-
-
-
-
-
 =head2 SnapshotId => Str
 
-  
-
-The snapshot from which to create the volume.
-
-
-
-
-
-
-
-
+  The snapshot from which to create the volume.
 
 
 =head2 VolumeType => Str
 
-  
-
-The volume type. This can be C<gp2> for General Purpose (SSD) volumes,
+  The volume type. This can be C<gp2> for General Purpose (SSD) volumes,
 C<io1> for Provisioned IOPS (SSD) volumes, or C<standard> for Magnetic
 volumes.
 
 Default: C<standard>
-
-
-
-
-
-
-
-
-
 
 
 

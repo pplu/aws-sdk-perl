@@ -1,11 +1,10 @@
 
-package Paws::DynamoDB::BatchWriteItemOutput {
+package Paws::DynamoDB::BatchWriteItemOutput;
   use Moose;
   has ConsumedCapacity => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ConsumedCapacity]');
   has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetricsPerTable');
   has UnprocessedItems => (is => 'ro', isa => 'Paws::DynamoDB::BatchWriteItemRequestMap');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,11 +14,10 @@ Paws::DynamoDB::BatchWriteItemOutput
 
 =head1 ATTRIBUTES
 
-=head2 ConsumedCapacity => ArrayRef[Paws::DynamoDB::ConsumedCapacity]
 
-  
+=head2 ConsumedCapacity => ArrayRef[L<Paws::DynamoDB::ConsumedCapacity>]
 
-The capacity units consumed by the operation.
+  The capacity units consumed by the operation.
 
 Each element consists of:
 
@@ -36,18 +34,9 @@ I<CapacityUnits> - The total number of capacity units consumed.
 =back
 
 
+=head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetricsPerTable>
 
-
-
-
-
-
-
-=head2 ItemCollectionMetrics => Paws::DynamoDB::ItemCollectionMetricsPerTable
-
-  
-
-A list of tables that were processed by I<BatchWriteItem> and, for each
+  A list of tables that were processed by I<BatchWriteItem> and, for each
 table, information about any item collections that were affected by
 individual I<DeleteItem> or I<PutItem> operations.
 
@@ -75,18 +64,9 @@ the precision or accuracy of the estimate.
 =back
 
 
+=head2 UnprocessedItems => L<Paws::DynamoDB::BatchWriteItemRequestMap>
 
-
-
-
-
-
-
-=head2 UnprocessedItems => Paws::DynamoDB::BatchWriteItemRequestMap
-
-  
-
-A map of tables and requests against those tables that were not
+  A map of tables and requests against those tables that were not
 processed. The I<UnprocessedItems> value is in the same form as
 I<RequestItems>, so you can provide this value directly to a subsequent
 I<BatchGetItem> operation. For more information, see I<RequestItems> in
@@ -139,15 +119,6 @@ table's attribute definition.
 
 If there are no unprocessed items remaining, the response contains an
 empty I<UnprocessedItems> map.
-
-
-
-
-
-
-
-
-
 
 
 =cut

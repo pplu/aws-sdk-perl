@@ -1,9 +1,13 @@
-package Paws::CloudSearchDomain {
+package Paws::CloudSearchDomain;
   warn "Paws::CloudSearchDomain is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudsearchdomain' }
   sub version { '2013-01-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
@@ -23,7 +27,9 @@ package Paws::CloudSearchDomain {
     my $call_object = $self->new_with_coercions('Paws::CloudSearchDomain::UploadDocuments', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
+
+  sub operations { qw/Search Suggest UploadDocuments / }
+
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +42,7 @@ Paws::CloudSearchDomain - Perl Interface to AWS Amazon CloudSearch Domain
 
   use Paws;
 
-  my $obj = Paws->service('CloudSearchDomain')->new;
+  my $obj = Paws->service('CloudSearchDomain');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],
@@ -50,8 +56,6 @@ Paws::CloudSearchDomain - Perl Interface to AWS Amazon CloudSearch Domain
 
 =head1 DESCRIPTION
 
-
-
 You use the AmazonCloudSearch2013 API to upload documents to a search
 domain and search those documents.
 
@@ -64,26 +68,15 @@ suggest requests to the search endpoint.
 
 For more information, see the Amazon CloudSearch Developer Guide.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
-=head2 Search(query => Str, [cursor => Str, expr => Str, facet => Str, filterQuery => Str, highlight => Str, partial => Bool, queryOptions => Str, queryParser => Str, return => Str, size => Int, sort => Str, start => Int])
+=head2 Search(Query => Str, [Cursor => Str, Expr => Str, Facet => Str, FilterQuery => Str, Highlight => Str, Partial => Bool, QueryOptions => Str, QueryParser => Str, Return => Str, Size => Int, Sort => Str, Start => Int])
 
 Each argument is described in detail in: L<Paws::CloudSearchDomain::Search>
 
 Returns: a L<Paws::CloudSearchDomain::SearchResponse> instance
 
-  
-
-Retrieves a list of documents that match the specified search criteria.
+  Retrieves a list of documents that match the specified search criteria.
 How you specify the search criteria depends on which query parser you
 use. Amazon CloudSearch supports four query parsers:
 
@@ -115,24 +108,13 @@ service C<DescribeDomains> action. A domain's endpoints are also
 displayed on the domain dashboard in the Amazon CloudSearch console.
 
 
-
-
-
-
-
-
-
-
-
-=head2 Suggest(query => Str, suggester => Str, [size => Int])
+=head2 Suggest(Query => Str, Suggester => Str, [Size => Int])
 
 Each argument is described in detail in: L<Paws::CloudSearchDomain::Suggest>
 
 Returns: a L<Paws::CloudSearchDomain::SuggestResponse> instance
 
-  
-
-Retrieves autocomplete suggestions for a partial query string. You can
+  Retrieves autocomplete suggestions for a partial query string. You can
 use suggestions enable you to display likely matches before users
 finish typing. In Amazon CloudSearch, suggestions are based on the
 contents of a particular text field. When you request suggestions,
@@ -152,24 +134,13 @@ are also displayed on the domain dashboard in the Amazon CloudSearch
 console.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UploadDocuments(contentType => Str, documents => Str)
+=head2 UploadDocuments(ContentType => Str, Documents => Str)
 
 Each argument is described in detail in: L<Paws::CloudSearchDomain::UploadDocuments>
 
 Returns: a L<Paws::CloudSearchDomain::UploadDocumentsResponse> instance
 
-  
-
-Posts a batch of documents to a search domain for indexing. A document
+  Posts a batch of documents to a search domain for indexing. A document
 batch is a collection of add and delete operations that represent the
 documents you want to add, update, or delete from your domain. Batches
 can be described in either JSON or XML. Each item that you want Amazon
@@ -192,15 +163,6 @@ For more information about formatting your data for Amazon CloudSearch,
 see Preparing Your Data in the I<Amazon CloudSearch Developer Guide>.
 For more information about uploading data for indexing, see Uploading
 Data in the I<Amazon CloudSearch Developer Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

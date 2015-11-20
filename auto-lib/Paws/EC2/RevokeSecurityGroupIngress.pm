@@ -1,5 +1,5 @@
 
-package Paws::EC2::RevokeSecurityGroupIngress {
+package Paws::EC2::RevokeSecurityGroupIngress;
   use Moose;
   has CidrIp => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -17,7 +17,6 @@ package Paws::EC2::RevokeSecurityGroupIngress {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupIngress');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +31,7 @@ This class represents the parameters used for calling the method RevokeSecurityG
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method RevokeSecurityGroupIngress.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RevokeSecurityGroupIngress.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RevokeSecurityGroupIngress.
 
 As an example:
 
@@ -42,143 +41,62 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CidrIp => Str
 
-  
-
-The CIDR IP address range. You can't specify this parameter when
+  The CIDR IP address range. You can't specify this parameter when
 specifying a source security group.
-
-
-
-
-
-
-
-
 
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
-
-
-
-
-
-
-
-
 =head2 FromPort => Int
 
-  
-
-The start of port range for the TCP and UDP protocols, or an ICMP type
+  The start of port range for the TCP and UDP protocols, or an ICMP type
 number. For the ICMP type number, use C<-1> to specify all ICMP types.
-
-
-
-
-
-
-
-
 
 
 =head2 GroupId => Str
 
-  
-
-The ID of the security group. Required for a security group in a
+  The ID of the security group. Required for a security group in a
 nondefault VPC.
-
-
-
-
-
-
-
-
 
 
 =head2 GroupName => Str
 
-  
-
-[EC2-Classic, default VPC] The name of the security group.
+  [EC2-Classic, default VPC] The name of the security group.
 
 
+=head2 IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>]
 
-
-
-
-
-
-
-
-=head2 IpPermissions => ArrayRef[Paws::EC2::IpPermission]
-
-  
-
-A set of IP permissions. You can't specify a source security group and
+  A set of IP permissions. You can't specify a source security group and
 a CIDR IP address range.
-
-
-
-
-
-
-
-
 
 
 =head2 IpProtocol => Str
 
-  
-
-The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
+  The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
 Numbers). Use C<-1> to specify all.
-
-
-
-
-
-
-
-
 
 
 =head2 SourceSecurityGroupName => Str
 
-  
-
-[EC2-Classic, default VPC] The name of the source security group. You
+  [EC2-Classic, default VPC] The name of the source security group. You
 can't specify this parameter in combination with the following
 parameters: the CIDR IP address range, the start of the port range, the
 IP protocol, and the end of the port range. For EC2-VPC, the source
 security group must be in the same VPC.
 
 
-
-
-
-
-
-
-
-
 =head2 SourceSecurityGroupOwnerId => Str
 
-  
-
-[EC2-Classic, default VPC] The AWS account ID of the source security
+  [EC2-Classic, default VPC] The AWS account ID of the source security
 group. For EC2-VPC, the source security group must be in the same VPC.
 You can't specify this parameter in combination with the following
 parameters: the CIDR IP address range, the IP protocol, the start of
@@ -187,30 +105,11 @@ rule for an IP protocol and port range, use a set of IP permissions
 instead.
 
 
-
-
-
-
-
-
-
-
 =head2 ToPort => Int
 
-  
-
-The end of port range for the TCP and UDP protocols, or an ICMP code
+  The end of port range for the TCP and UDP protocols, or an ICMP code
 number. For the ICMP code number, use C<-1> to specify all ICMP codes
 for the ICMP type.
-
-
-
-
-
-
-
-
-
 
 
 

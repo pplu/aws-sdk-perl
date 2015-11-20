@@ -1,9 +1,8 @@
 
-package Paws::Config::DeliverConfigSnapshotResponse {
+package Paws::Config::DeliverConfigSnapshotResponse;
   use Moose;
-  has configSnapshotId => (is => 'ro', isa => 'Str');
+  has ConfigSnapshotId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'configSnapshotId' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::Config::DeliverConfigSnapshotResponse
 
 =head1 ATTRIBUTES
 
-=head2 configSnapshotId => Str
 
-  
+=head2 ConfigSnapshotId => Str
 
-The ID of the snapshot that is being created.
-
-
-
-
-
-
-
-
-
+  The ID of the snapshot that is being created.
 
 
 =cut

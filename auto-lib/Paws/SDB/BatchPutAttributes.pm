@@ -1,5 +1,5 @@
 
-package Paws::SDB::BatchPutAttributes {
+package Paws::SDB::BatchPutAttributes;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::SDB::ReplaceableItem]', required => 1);
@@ -9,7 +9,6 @@ package Paws::SDB::BatchPutAttributes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchPutAttributes');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method BatchPutAttribu
 Amazon SimpleDB service. Use the attributes of this class
 as arguments to method BatchPutAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BatchPutAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchPutAttributes.
 
 As an example:
 
@@ -34,35 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of the domain in which the attributes are being stored.
+  The name of the domain in which the attributes are being stored.
 
 
+=head2 B<REQUIRED> Items => ArrayRef[L<Paws::SDB::ReplaceableItem>]
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Items => ArrayRef[Paws::SDB::ReplaceableItem]
-
-  
-
-A list of items on which to perform the operation.
-
-
-
-
-
-
-
-
-
+  A list of items on which to perform the operation.
 
 
 

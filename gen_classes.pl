@@ -5,13 +5,13 @@ use warnings;
 
 use Data::Printer;
 use Data::Dumper;
-use JSON;
-use File::Slurp;
+use JSON::MaybeXS;
+use File::Slurper 'read_binary';
+use Module::Runtime qw/require_module/;
 
 use lib 'builder-lib', 't/lib';
 
-use Module::Runtime qw/require_module/;
-
+use Paws::API::Builder::Paws;
 use Paws::API::ServiceToClass;
  
 my (@files) = @ARGV;
@@ -28,6 +28,9 @@ if (not @files) {
     push @files, $class_version;
   }
 }
+
+my $p = Paws::API::Builder::Paws->new;
+$p->process;
 
 my @failures;
 foreach my $file (@files) {
@@ -48,7 +51,7 @@ print @failures;
 sub process_api {
   my ($api, $file) = @_;
 
-  my $struct = from_json(read_file($file));
+  my $struct = decode_json(read_binary($file));
   my $type = $struct->{metadata}->{protocol} or die "Type of API call not found";
 
   my $overrides = { 'Paws::EC2' => 'EC2' };

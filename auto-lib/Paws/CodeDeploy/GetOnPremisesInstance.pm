@@ -1,14 +1,13 @@
 
-package Paws::CodeDeploy::GetOnPremisesInstance {
+package Paws::CodeDeploy::GetOnPremisesInstance;
   use Moose;
-  has instanceName => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetOnPremisesInstance');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::GetOnPremisesInstanceOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method GetOnPremisesIn
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method GetOnPremisesInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetOnPremisesInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetOnPremisesInstance.
 
 As an example:
 
@@ -33,20 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> instanceName => Str
 
-  
+=head2 B<REQUIRED> InstanceName => Str
 
-The name of the on-premises instance to get information about
-
-
-
-
-
-
-
-
-
+  The name of the on-premises instance to get information about
 
 
 

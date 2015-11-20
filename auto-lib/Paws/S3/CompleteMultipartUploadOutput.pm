@@ -1,5 +1,5 @@
 
-package Paws::S3::CompleteMultipartUploadOutput {
+package Paws::S3::CompleteMultipartUploadOutput;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str');
   has ETag => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::S3::CompleteMultipartUploadOutput {
   has SSEKMSKeyId => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Simple Storage Service service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -36,100 +35,54 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Bucket => Str
 
   
 
+
 =head2 ETag => Str
 
-  
-
-Entity tag of the object.
-
-
-
-
-
-
-
-
+  Entity tag of the object.
 
 
 =head2 Expiration => Str
 
-  
-
-If the object expiration is configured, this will contain the
+  If the object expiration is configured, this will contain the
 expiration date (expiry-date) and rule ID (rule-id). The value of
 rule-id is URL encoded.
-
-
-
-
-
-
-
-
 
 
 =head2 Key => Str
 
   
 
+
 =head2 Location => Str
 
   
+
 
 =head2 RequestCharged => Str
 
   
 
+
 =head2 ServerSideEncryption => Str
 
-  
-
-The Server-side encryption algorithm used when storing this object in
+  The Server-side encryption algorithm used when storing this object in
 S3 (e.g., AES256, aws:kms).
-
-
-
-
-
-
-
-
 
 
 =head2 SSEKMSKeyId => Str
 
-  
-
-If present, specifies the ID of the AWS Key Management Service (KMS)
+  If present, specifies the ID of the AWS Key Management Service (KMS)
 master encryption key that was used for the object.
-
-
-
-
-
-
-
-
 
 
 =head2 VersionId => Str
 
-  
-
-Version of the object.
-
-
-
-
-
-
-
-
-
+  Version of the object.
 
 
 

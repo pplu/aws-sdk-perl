@@ -1,5 +1,5 @@
 
-package Paws::EMR::RemoveTags {
+package Paws::EMR::RemoveTags;
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -9,7 +9,6 @@ package Paws::EMR::RemoveTags {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RemoveTags');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::RemoveTagsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method RemoveTags on t
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method RemoveTags.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTags.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RemoveTags.
 
 As an example:
 
@@ -34,36 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ResourceId => Str
 
-  
-
-The Amazon EMR resource identifier from which tags will be removed.
+  The Amazon EMR resource identifier from which tags will be removed.
 This value must be a cluster identifier.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
-  
-
-A list of tag keys to remove from a resource.
-
-
-
-
-
-
-
-
-
+  A list of tag keys to remove from a resource.
 
 
 

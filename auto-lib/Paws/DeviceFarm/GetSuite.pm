@@ -1,14 +1,13 @@
 
-package Paws::DeviceFarm::GetSuite {
+package Paws::DeviceFarm::GetSuite;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str', required => 1);
+  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSuite');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::GetSuiteResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method GetSuite on the
 AWS Device Farm service. Use the attributes of this class
 as arguments to method GetSuite.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetSuite.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSuite.
 
 As an example:
 
@@ -33,20 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> arn => Str
 
-  
+=head2 B<REQUIRED> Arn => Str
 
-The suite's ARN.
-
-
-
-
-
-
-
-
-
+  The suite's ARN.
 
 
 

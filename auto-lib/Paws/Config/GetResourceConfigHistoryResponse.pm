@@ -1,10 +1,9 @@
 
-package Paws::Config::GetResourceConfigHistoryResponse {
+package Paws::Config::GetResourceConfigHistoryResponse;
   use Moose;
-  has configurationItems => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConfigurationItem]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has ConfigurationItems => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConfigurationItem]', traits => ['Unwrapped'], xmlname => 'configurationItems' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,35 +13,16 @@ Paws::Config::GetResourceConfigHistoryResponse
 
 =head1 ATTRIBUTES
 
-=head2 configurationItems => ArrayRef[Paws::Config::ConfigurationItem]
 
-  
+=head2 ConfigurationItems => ArrayRef[L<Paws::Config::ConfigurationItem>]
 
-A list that contains the configuration history of one or more
+  A list that contains the configuration history of one or more
 resources.
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-A token used for pagination of results.
-
-
-
-
-
-
-
-
-
+  The string that you use in a subsequent request to get the next page of
+results in a paginated response.
 
 
 =cut

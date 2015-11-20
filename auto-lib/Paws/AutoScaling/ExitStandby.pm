@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::ExitStandby {
+package Paws::AutoScaling::ExitStandby;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -9,7 +9,6 @@ package Paws::AutoScaling::ExitStandby {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ExitStandby');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::ExitStandbyAnswer');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ExitStandbyResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ExitStandby on 
 Auto Scaling service. Use the attributes of this class
 as arguments to method ExitStandby.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ExitStandby.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ExitStandby.
 
 As an example:
 
@@ -34,35 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the Auto Scaling group.
-
-
-
-
-
-
-
-
+  The name of the Auto Scaling group.
 
 
 =head2 InstanceIds => ArrayRef[Str]
 
-  
-
-One or more instance IDs. You must specify at least one instance ID.
-
-
-
-
-
-
-
-
-
+  One or more instance IDs. You must specify at least one instance ID.
 
 
 

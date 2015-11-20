@@ -1,7 +1,7 @@
 
-package Paws::RDS::DeleteDBCluster {
+package Paws::RDS::DeleteDBCluster;
   use Moose;
-  has DBClusterIdentifier => (is => 'ro', isa => 'Str');
+  has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has FinalDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SkipFinalSnapshot => (is => 'ro', isa => 'Bool');
 
@@ -10,7 +10,6 @@ package Paws::RDS::DeleteDBCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDBCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DeleteDBClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDBClusterResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DeleteDBCluster
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DeleteDBCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDBCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteDBCluster.
 
 As an example:
 
@@ -35,11 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 DBClusterIdentifier => Str
 
-  
+=head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The DB cluster identifier for the DB cluster to be deleted. This
+  The DB cluster identifier for the DB cluster to be deleted. This
 parameter isn't case-sensitive.
 
 Constraints:
@@ -56,18 +54,9 @@ Constraints:
 
 
 
-
-
-
-
-
-
-
 =head2 FinalDBSnapshotIdentifier => Str
 
-  
-
-The DB cluster snapshot identifier of the new DB cluster snapshot
+  The DB cluster snapshot identifier of the new DB cluster snapshot
 created when C<SkipFinalSnapshot> is set to C<false>.
 
 Specifying this parameter and also setting the C<SkipFinalShapshot>
@@ -87,18 +76,9 @@ Constraints:
 
 
 
-
-
-
-
-
-
-
 =head2 SkipFinalSnapshot => Bool
 
-  
-
-Determines whether a final DB cluster snapshot is created before the DB
+  Determines whether a final DB cluster snapshot is created before the DB
 cluster is deleted. If C<true> is specified, no DB cluster snapshot is
 created. If C<false> is specified, a DB cluster snapshot is created
 before the DB cluster is deleted.
@@ -107,15 +87,6 @@ You must specify a C<FinalDBSnapshotIdentifier> parameter if
 C<SkipFinalSnapshot> is C<false>.
 
 Default: C<false>
-
-
-
-
-
-
-
-
-
 
 
 

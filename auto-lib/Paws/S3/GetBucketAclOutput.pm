@@ -1,10 +1,9 @@
 
-package Paws::S3::GetBucketAclOutput {
+package Paws::S3::GetBucketAclOutput;
   use Moose;
   has Grants => (is => 'ro', isa => 'ArrayRef[Paws::S3::Grant]', traits => ['Unwrapped'], xmlname => 'Grant');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -19,7 +18,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Simple Storage Service service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -29,22 +28,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Grants => ArrayRef[Paws::S3::Grant]
 
-  
+=head2 Grants => ArrayRef[L<Paws::S3::Grant>]
 
-A list of grants.
-
+  A list of grants.
 
 
-
-
-
-
-
-
-
-=head2 Owner => Paws::S3::Owner
+=head2 Owner => L<Paws::S3::Owner>
 
   
 

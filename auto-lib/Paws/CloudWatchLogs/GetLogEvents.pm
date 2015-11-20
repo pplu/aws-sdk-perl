@@ -1,20 +1,19 @@
 
-package Paws::CloudWatchLogs::GetLogEvents {
+package Paws::CloudWatchLogs::GetLogEvents;
   use Moose;
-  has endTime => (is => 'ro', isa => 'Int');
-  has limit => (is => 'ro', isa => 'Int');
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has logStreamName => (is => 'ro', isa => 'Str', required => 1);
-  has nextToken => (is => 'ro', isa => 'Str');
-  has startFromHead => (is => 'ro', isa => 'Bool');
-  has startTime => (is => 'ro', isa => 'Int');
+  has EndTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'endTime' );
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has LogStreamName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logStreamName' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has StartFromHead => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'startFromHead' );
+  has StartTime => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'startTime' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetLogEvents');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::GetLogEventsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ This class represents the parameters used for calling the method GetLogEvents on
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method GetLogEvents.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetLogEvents.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetLogEvents.
 
 As an example:
 
@@ -39,92 +38,44 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 endTime => Int
+
+=head2 EndTime => Int
 
   
 
-=head2 limit => Int
 
-  
+=head2 Limit => Int
 
-The maximum number of log events returned in the response. If you don't
+  The maximum number of log events returned in the response. If you don't
 specify a value, the request would return as many log events as can fit
 in a response size of 1MB, up to 10,000 log events.
 
 
+=head2 B<REQUIRED> LogGroupName => Str
+
+  The name of the log group to query.
 
 
+=head2 B<REQUIRED> LogStreamName => Str
+
+  The name of the log stream to query.
 
 
+=head2 NextToken => Str
 
-
-
-
-=head2 B<REQUIRED> logGroupName => Str
-
-  
-
-The name of the log group to query.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> logStreamName => Str
-
-  
-
-The name of the log stream to query.
-
-
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-A string token used for pagination that points to the next page of
+  A string token used for pagination that points to the next page of
 results. It must be a value obtained from the C<nextForwardToken> or
 C<nextBackwardToken> fields in the response of the previous
 C<GetLogEvents> request.
 
 
+=head2 StartFromHead => Bool
 
-
-
-
-
-
-
-
-=head2 startFromHead => Bool
-
-  
-
-If set to true, the earliest log events would be returned first. The
+  If set to true, the earliest log events would be returned first. The
 default is false (the latest log events are returned first).
 
 
-
-
-
-
-
-
-
-
-=head2 startTime => Int
+=head2 StartTime => Int
 
   
 

@@ -1,9 +1,8 @@
 
-package Paws::IAM::CreateLoginProfileResponse {
+package Paws::IAM::CreateLoginProfileResponse;
   use Moose;
   has LoginProfile => (is => 'ro', isa => 'Paws::IAM::LoginProfile', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::IAM::CreateLoginProfileResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> LoginProfile => Paws::IAM::LoginProfile
 
-  
+=head2 B<REQUIRED> LoginProfile => L<Paws::IAM::LoginProfile>
 
-The user name and password create date.
-
-
-
-
-
-
-
-
-
+  The user name and password create date.
 
 
 =cut

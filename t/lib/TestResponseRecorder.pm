@@ -2,9 +2,9 @@ package TestResponseRecorder {
   use Moose;
   extends 'Paws::Net::Caller';
 
-  use Hash::MD5;
-  use File::Slurp;
-  use JSON;
+  use Digest::MD5 qw(md5_hex);
+  use File::Slurper qw(read_text write_text);
+  use JSON::MaybeXS;
 
   has replay_calls => (is => 'ro', isa => 'Bool', required => 1, default => sub { not defined $ENV{PAWS_CONVERSATION_DIR} });
   has conversation_dir => (is => 'ro', isa => 'Str', required => 1, default => sub { $ENV{PAWS_CONVERSATION_DIR} });
@@ -17,7 +17,7 @@ package TestResponseRecorder {
     $h->{ _service } = $service->service;
     $h->{ _call } = $call_object->_api_call;
 
-    my $sig = Hash::MD5::sum_hash($h);
+    my $sig = md5_hex(JSON::MaybeXS->new(canonical => 1)->encode($h));
     my $req_num = $self->_request_nums->{ $sig } ++;
     my $req_id = $service->service . '.' . $call_object->_api_call . ".$sig.$req_num";
     my $test_file = $self->conversation_dir . '/' . $req_id;
@@ -25,7 +25,7 @@ package TestResponseRecorder {
     my $res;
     if ($self->replay_calls) {
       #LOAD HTTP request from file
-      my $response = decode_json(read_file($test_file));
+      my $response = decode_json(read_text($test_file));
       $res = $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});  
     } else {
       my $requestObj = $service->prepare_request_for_call($call_object);
@@ -54,7 +54,7 @@ package TestResponseRecorder {
         $response->{headers}->{ "x-amz-request-id" }  = '000000000000000000000000000000000000' 
       }
 
-      write_file($test_file, encode_json({ 
+      write_text($test_file, encode_json({ 
         content => $response->{content}, 
         headers => $response->{headers},
         status  => $response->{status}, 

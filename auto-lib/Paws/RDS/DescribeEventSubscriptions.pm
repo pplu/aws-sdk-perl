@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeEventSubscriptions {
+package Paws::RDS::DescribeEventSubscriptions;
   use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::RDS::DescribeEventSubscriptions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::EventSubscriptionsMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventSubscriptionsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method DescribeEventSu
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribeEventSubscriptions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEventSubscriptions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEventSubscriptions.
 
 As an example:
 
@@ -36,44 +35,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
 
-  
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
-
-
-
-
-
-
-
-
+  This parameter is not currently supported.
 
 
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous
+  An optional pagination token provided by a previous
 DescribeOrderableDBInstanceOptions request. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by C<MaxRecords> .
 
 
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of records to include in the response. If more
+  The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
 results can be retrieved.
@@ -83,29 +61,10 @@ Default: 100
 Constraints: Minimum 20, maximum 100.
 
 
-
-
-
-
-
-
-
-
 =head2 SubscriptionName => Str
 
-  
-
-The name of the RDS event notification subscription you want to
+  The name of the RDS event notification subscription you want to
 describe.
-
-
-
-
-
-
-
-
-
 
 
 

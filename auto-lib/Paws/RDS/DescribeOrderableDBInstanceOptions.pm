@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeOrderableDBInstanceOptions {
+package Paws::RDS::DescribeOrderableDBInstanceOptions;
   use Moose;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
@@ -15,7 +15,6 @@ package Paws::RDS::DescribeOrderableDBInstanceOptions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOrderableDBInstanceOptions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::OrderableDBInstanceOptionsMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOrderableDBInstanceOptionsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +29,7 @@ This class represents the parameters used for calling the method DescribeOrderab
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribeOrderableDBInstanceOptions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeOrderableDBInstanceOptions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeOrderableDBInstanceOptions.
 
 As an example:
 
@@ -40,107 +39,46 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DBInstanceClass => Str
 
-  
-
-The DB instance class filter value. Specify this parameter to show only
+  The DB instance class filter value. Specify this parameter to show only
 the available offerings matching the specified DB instance class.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> Engine => Str
 
-  
-
-The name of the engine to retrieve DB instance options for.
-
-
-
-
-
-
-
-
+  The name of the engine to retrieve DB instance options for.
 
 
 =head2 EngineVersion => Str
 
-  
-
-The engine version filter value. Specify this parameter to show only
+  The engine version filter value. Specify this parameter to show only
 the available offerings matching the specified engine version.
 
 
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
-
-  
-
-This parameter is not currently supported.
-
-
-
-
-
-
-
-
+  This parameter is not currently supported.
 
 
 =head2 LicenseModel => Str
 
-  
-
-The license model filter value. Specify this parameter to show only the
+  The license model filter value. Specify this parameter to show only the
 available offerings matching the specified license model.
-
-
-
-
-
-
-
-
 
 
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous
+  An optional pagination token provided by a previous
 DescribeOrderableDBInstanceOptions request. If this parameter is
 specified, the response includes only records beyond the marker, up to
 the value specified by C<MaxRecords> .
 
 
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of records to include in the response. If more
+  The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
 results can be retrieved.
@@ -150,29 +88,10 @@ Default: 100
 Constraints: Minimum 20, maximum 100.
 
 
-
-
-
-
-
-
-
-
 =head2 Vpc => Bool
 
-  
-
-The VPC filter value. Specify this parameter to show only the available
+  The VPC filter value. Specify this parameter to show only the available
 VPC or non-VPC offerings.
-
-
-
-
-
-
-
-
-
 
 
 

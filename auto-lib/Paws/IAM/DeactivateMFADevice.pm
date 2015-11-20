@@ -1,5 +1,5 @@
 
-package Paws::IAM::DeactivateMFADevice {
+package Paws::IAM::DeactivateMFADevice;
   use Moose;
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::IAM::DeactivateMFADevice {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeactivateMFADevice');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DeactivateMFADe
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method DeactivateMFADevice.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeactivateMFADevice.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeactivateMFADevice.
 
 As an example:
 
@@ -34,36 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SerialNumber => Str
 
-  
-
-The serial number that uniquely identifies the MFA device. For virtual
+  The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the device ARN.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user whose MFA device you want to deactivate.
-
-
-
-
-
-
-
-
-
+  The name of the user whose MFA device you want to deactivate.
 
 
 

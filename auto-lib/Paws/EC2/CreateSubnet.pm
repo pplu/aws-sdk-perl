@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateSubnet {
+package Paws::EC2::CreateSubnet;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has CidrBlock => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::EC2::CreateSubnet {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateSubnet');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateSubnetResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CreateSubnet on
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateSubnet.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateSubnet.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateSubnet.
 
 As an example:
 
@@ -36,71 +35,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZone => Str
 
-  
+  The Availability Zone for the subnet.
 
-The Availability Zone for the subnet.
-
-Default: Amazon EC2 selects one for you (recommended).
-
-
-
-
-
-
-
-
+Default: AWS selects one for you. If you create more than one subnet in
+your VPC, we may not necessarily select a different zone for each
+subnet.
 
 
 =head2 B<REQUIRED> CidrBlock => Str
 
-  
-
-The network range for the subnet, in CIDR notation. For example,
+  The network range for the subnet, in CIDR notation. For example,
 C<10.0.0.0/24>.
-
-
-
-
-
-
-
-
 
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VpcId => Str
 
-  
-
-The ID of the VPC.
-
-
-
-
-
-
-
-
-
+  The ID of the VPC.
 
 
 

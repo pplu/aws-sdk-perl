@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::DescribeAppsResult {
+package Paws::OpsWorks::DescribeAppsResult;
   use Moose;
   has Apps => (is => 'ro', isa => 'ArrayRef[Paws::OpsWorks::App]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::OpsWorks::DescribeAppsResult
 
 =head1 ATTRIBUTES
 
-=head2 Apps => ArrayRef[Paws::OpsWorks::App]
 
-  
+=head2 Apps => ArrayRef[L<Paws::OpsWorks::App>]
 
-An array of C<App> objects that describe the specified apps.
-
-
-
-
-
-
-
-
-
+  An array of C<App> objects that describe the specified apps.
 
 
 =cut

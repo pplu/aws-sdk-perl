@@ -1,5 +1,5 @@
 
-package Paws::CloudFormation::DescribeStackResource {
+package Paws::CloudFormation::DescribeStackResource;
   use Moose;
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has StackName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::CloudFormation::DescribeStackResource {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeStackResource');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFormation::DescribeStackResourceOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeStackResourceResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DescribeStackRe
 AWS CloudFormation service. Use the attributes of this class
 as arguments to method DescribeStackResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStackResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeStackResource.
 
 As an example:
 
@@ -34,28 +33,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> LogicalResourceId => Str
 
-  
-
-The logical name of the resource as specified in the template.
+  The logical name of the resource as specified in the template.
 
 Default: There is no default value.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> StackName => Str
 
-  
-
-The name or the unique stack ID that is associated with the stack,
+  The name or the unique stack ID that is associated with the stack,
 which are not always interchangeable:
 
 =over
@@ -68,15 +56,6 @@ unique stack ID.
 =back
 
 Default: There is no default value.
-
-
-
-
-
-
-
-
-
 
 
 

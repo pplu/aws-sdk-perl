@@ -8,7 +8,7 @@ package Paws::Net::V4Signature {
   sub sign {
     my ($self, $request) = @_;
 
-    $request->header( Date => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
+    $request->header( Date => $request->header('X-Amz-Date') // strftime( '%Y%m%dT%H%M%SZ', gmtime ) );
     $request->header( Host => $self->endpoint_host );
     if ($self->session_token) {
       $request->header( 'X-Amz-Security-Token' => $self->session_token );

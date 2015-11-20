@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetDeviceResult {
+package Paws::DeviceFarm::GetDeviceResult;
   use Moose;
-  has device => (is => 'ro', isa => 'Paws::DeviceFarm::Device');
+  has Device => (is => 'ro', isa => 'Paws::DeviceFarm::Device', traits => ['Unwrapped'], xmlname => 'device' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,8 @@ Paws::DeviceFarm::GetDeviceResult
 
 =head1 ATTRIBUTES
 
-=head2 device => Paws::DeviceFarm::Device
+
+=head2 Device => L<Paws::DeviceFarm::Device>
 
   
 

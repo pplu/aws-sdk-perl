@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::ModifyCacheCluster {
+package Paws::ElastiCache::ModifyCacheCluster;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
@@ -23,7 +23,6 @@ package Paws::ElastiCache::ModifyCacheCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyCacheCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::ModifyCacheClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ModifyCacheClusterResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +37,7 @@ This class represents the parameters used for calling the method ModifyCacheClus
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method ModifyCacheCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyCacheCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyCacheCluster.
 
 As an example:
 
@@ -48,11 +47,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplyImmediately => Bool
 
-  
-
-If C<true>, this parameter causes the modifications in this request and
+  If C<true>, this parameter causes the modifications in this request and
 any pending modifications to be applied, asynchronously and as soon as
 possible, regardless of the I<PreferredMaintenanceWindow> setting for
 the cache cluster.
@@ -69,34 +67,14 @@ Valid values: C<true> | C<false>
 Default: C<false>
 
 
-
-
-
-
-
-
-
-
 =head2 AutoMinorVersionUpgrade => Bool
 
-  
-
-This parameter is currently disabled.
-
-
-
-
-
-
-
-
+  This parameter is currently disabled.
 
 
 =head2 AZMode => Str
 
-  
-
-Specifies whether the new nodes in this Memcached cache cluster are all
+  Specifies whether the new nodes in this Memcached cache cluster are all
 created in a single Availability Zone or created across multiple
 Availability Zones.
 
@@ -115,35 +93,15 @@ different Availability Zones, see the B<Availability Zone
 Considerations> section of Cache Node Considerations for Memcached.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> CacheClusterId => Str
 
-  
-
-The cache cluster identifier. This value is stored as a lowercase
+  The cache cluster identifier. This value is stored as a lowercase
 string.
-
-
-
-
-
-
-
-
 
 
 =head2 CacheNodeIdsToRemove => ArrayRef[Str]
 
-  
-
-A list of cache node IDs to be removed. A node ID is a numeric
+  A list of cache node IDs to be removed. A node ID is a numeric
 identifier (0001, 0002, etc.). This parameter is only valid when
 I<NumCacheNodes> is less than the existing number of cache nodes. The
 number of cache node IDs supplied in this parameter must match the
@@ -156,37 +114,17 @@ and the number of cache nodes in this C<ModifyCacheCluser> call is 5,
 you must list 2 (7 - 5) cache node IDs to remove.
 
 
-
-
-
-
-
-
-
-
 =head2 CacheParameterGroupName => Str
 
-  
-
-The name of the cache parameter group to apply to this cache cluster.
+  The name of the cache parameter group to apply to this cache cluster.
 This change is asynchronously applied as soon as possible for
 parameters when the I<ApplyImmediately> parameter is specified as
 I<true> for this request.
 
 
-
-
-
-
-
-
-
-
 =head2 CacheSecurityGroupNames => ArrayRef[Str]
 
-  
-
-A list of cache security group names to authorize on this cache
+  A list of cache security group names to authorize on this cache
 cluster. This change is asynchronously applied as soon as possible.
 
 This parameter can be used only with clusters that are created outside
@@ -196,34 +134,14 @@ Constraints: Must contain no more than 255 alphanumeric characters.
 Must not be "Default".
 
 
-
-
-
-
-
-
-
-
 =head2 EngineVersion => Str
 
-  
-
-The upgraded version of the cache engine to be run on the cache nodes.
-
-
-
-
-
-
-
-
+  The upgraded version of the cache engine to be run on the cache nodes.
 
 
 =head2 NewAvailabilityZones => ArrayRef[Str]
 
-  
-
-The list of Availability Zones where the new Memcached cache nodes will
+  The list of Availability Zones where the new Memcached cache nodes will
 be created.
 
 This parameter is only valid when I<NumCacheNodes> in the request is
@@ -319,55 +237,25 @@ Example:
 C<NewAvailabilityZones.member.1=us-west-2a&NewAvailabilityZones.member.2=us-west-2b&NewAvailabilityZones.member.3=us-west-2c>
 
 
-
-
-
-
-
-
-
-
 =head2 NotificationTopicArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon SNS topic to which
+  The Amazon Resource Name (ARN) of the Amazon SNS topic to which
 notifications will be sent.
 
 The Amazon SNS topic owner must be same as the cache cluster owner.
 
 
-
-
-
-
-
-
-
-
 =head2 NotificationTopicStatus => Str
 
-  
-
-The status of the Amazon SNS notification topic. Notifications are sent
+  The status of the Amazon SNS notification topic. Notifications are sent
 only if the status is I<active>.
 
 Valid values: C<active> | C<inactive>
 
 
-
-
-
-
-
-
-
-
 =head2 NumCacheNodes => Int
 
-  
-
-The number of cache nodes that the cache cluster should have. If the
+  The number of cache nodes that the cache cluster should have. If the
 value for C<NumCacheNodes> is greater than the sum of the number of
 current cache nodes and the number of cache nodes pending creation
 (which may be zero), then more nodes will be added. If the value is
@@ -406,19 +294,9 @@ C<ModifyCacheCluster> request and set I<NumCacheNodes> equal to the
 number of cache nodes currently in the cache cluster.
 
 
-
-
-
-
-
-
-
-
 =head2 PreferredMaintenanceWindow => Str
 
-  
-
-Specifies the weekly time range during which maintenance on the cache
+  Specifies the weekly time range during which maintenance on the cache
 cluster is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
 is a 60 minute period. Valid values for C<ddd> are:
@@ -444,37 +322,17 @@ is a 60 minute period. Valid values for C<ddd> are:
 Example: C<sun:05:00-sun:09:00>
 
 
-
-
-
-
-
-
-
-
 =head2 SecurityGroupIds => ArrayRef[Str]
 
-  
-
-Specifies the VPC Security Groups associated with the cache cluster.
+  Specifies the VPC Security Groups associated with the cache cluster.
 
 This parameter can be used only with clusters that are created in an
 Amazon Virtual Private Cloud (VPC).
 
 
-
-
-
-
-
-
-
-
 =head2 SnapshotRetentionLimit => Int
 
-  
-
-The number of days for which ElastiCache will retain automatic cache
+  The number of days for which ElastiCache will retain automatic cache
 cluster snapshots before deleting them. For example, if you set
 I<SnapshotRetentionLimit> to 5, then a snapshot that was taken today
 will be retained for 5 days before being deleted.
@@ -485,29 +343,10 @@ If the value of SnapshotRetentionLimit is set to zero (0), backups are
 turned off.
 
 
-
-
-
-
-
-
-
-
 =head2 SnapshotWindow => Str
 
-  
-
-The daily time range (in UTC) during which ElastiCache will begin
+  The daily time range (in UTC) during which ElastiCache will begin
 taking a daily snapshot of your cache cluster.
-
-
-
-
-
-
-
-
-
 
 
 

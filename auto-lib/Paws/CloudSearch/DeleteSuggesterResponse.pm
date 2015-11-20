@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::DeleteSuggesterResponse {
+package Paws::CloudSearch::DeleteSuggesterResponse;
   use Moose;
   has Suggester => (is => 'ro', isa => 'Paws::CloudSearch::SuggesterStatus', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::CloudSearch::DeleteSuggesterResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Suggester => Paws::CloudSearch::SuggesterStatus
 
-  
+=head2 B<REQUIRED> Suggester => L<Paws::CloudSearch::SuggesterStatus>
 
-The status of the suggester being deleted.
-
-
-
-
-
-
-
-
-
+  The status of the suggester being deleted.
 
 
 =cut

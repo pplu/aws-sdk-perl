@@ -1,5 +1,5 @@
 
-package Paws::EC2::AttachVolume {
+package Paws::EC2::AttachVolume;
   use Moose;
   has Device => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -11,7 +11,6 @@ package Paws::EC2::AttachVolume {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AttachVolume');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::VolumeAttachment');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method AttachVolume on
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method AttachVolume.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AttachVolume.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AttachVolume.
 
 As an example:
 
@@ -36,70 +35,30 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Device => Str
 
-  
-
-The device name to expose to the instance (for example, C</dev/sdh> or
+  The device name to expose to the instance (for example, C</dev/sdh> or
 C<xvdh>).
-
-
-
-
-
-
-
-
 
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 
 =head2 B<REQUIRED> VolumeId => Str
 
-  
-
-The ID of the EBS volume. The volume and instance must be within the
+  The ID of the EBS volume. The volume and instance must be within the
 same Availability Zone.
-
-
-
-
-
-
-
-
-
 
 
 

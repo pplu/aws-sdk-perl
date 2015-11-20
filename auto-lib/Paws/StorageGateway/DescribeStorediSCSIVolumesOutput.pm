@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::DescribeStorediSCSIVolumesOutput {
+package Paws::StorageGateway::DescribeStorediSCSIVolumesOutput;
   use Moose;
   has StorediSCSIVolumes => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::StorediSCSIVolume]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,8 @@ Paws::StorageGateway::DescribeStorediSCSIVolumesOutput
 
 =head1 ATTRIBUTES
 
-=head2 StorediSCSIVolumes => ArrayRef[Paws::StorageGateway::StorediSCSIVolume]
+
+=head2 StorediSCSIVolumes => ArrayRef[L<Paws::StorageGateway::StorediSCSIVolume>]
 
   
 

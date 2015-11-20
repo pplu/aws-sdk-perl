@@ -1,5 +1,5 @@
 
-package Paws::SNS::ListTopics {
+package Paws::SNS::ListTopics;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -8,7 +8,6 @@ package Paws::SNS::ListTopics {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTopics');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::ListTopicsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListTopicsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method ListTopics on t
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method ListTopics.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListTopics.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTopics.
 
 As an example:
 
@@ -33,20 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
-  
-
-Token returned by the previous C<ListTopics> request.
-
-
-
-
-
-
-
-
-
+  Token returned by the previous C<ListTopics> request.
 
 
 

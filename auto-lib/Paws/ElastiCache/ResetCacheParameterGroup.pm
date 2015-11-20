@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::ResetCacheParameterGroup {
+package Paws::ElastiCache::ResetCacheParameterGroup;
   use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ParameterNameValue]', required => 1);
@@ -10,7 +10,6 @@ package Paws::ElastiCache::ResetCacheParameterGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ResetCacheParameterGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CacheParameterGroupNameMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ResetCacheParameterGroupResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method ResetCacheParam
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method ResetCacheParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ResetCacheParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ResetCacheParameterGroup.
 
 As an example:
 
@@ -35,55 +34,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CacheParameterGroupName => Str
 
-  
-
-The name of the cache parameter group to reset.
+  The name of the cache parameter group to reset.
 
 
+=head2 B<REQUIRED> ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>]
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> ParameterNameValues => ArrayRef[Paws::ElastiCache::ParameterNameValue]
-
-  
-
-An array of parameter names to be reset. If you are not resetting the
+  An array of parameter names to be reset. If you are not resetting the
 entire cache parameter group, you must specify at least one parameter
 name.
 
 
-
-
-
-
-
-
-
-
 =head2 ResetAllParameters => Bool
 
-  
-
-If I<true>, all parameters in the cache parameter group will be reset
+  If I<true>, all parameters in the cache parameter group will be reset
 to default values. If I<false>, no such action occurs.
 
 Valid values: C<true> | C<false>
-
-
-
-
-
-
-
-
-
 
 
 

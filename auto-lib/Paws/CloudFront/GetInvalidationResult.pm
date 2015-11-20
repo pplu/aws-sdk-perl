@@ -1,9 +1,8 @@
 
-package Paws::CloudFront::GetInvalidationResult {
+package Paws::CloudFront::GetInvalidationResult;
   use Moose;
   has Invalidation => (is => 'ro', isa => 'Paws::CloudFront::Invalidation');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -18,7 +17,7 @@ This class represents the parameters used for calling the method  on the
 Amazon CloudFront service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -28,20 +27,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Invalidation => Paws::CloudFront::Invalidation
 
-  
+=head2 Invalidation => L<Paws::CloudFront::Invalidation>
 
-The invalidation's information.
-
-
-
-
-
-
-
-
-
+  The invalidation's information.
 
 
 

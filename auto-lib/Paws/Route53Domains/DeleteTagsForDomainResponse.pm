@@ -1,8 +1,7 @@
 
-package Paws::Route53Domains::DeleteTagsForDomainResponse {
+package Paws::Route53Domains::DeleteTagsForDomainResponse;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

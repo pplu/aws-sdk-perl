@@ -1,5 +1,5 @@
 
-package Paws::Kinesis::GetShardIterator {
+package Paws::Kinesis::GetShardIterator;
   use Moose;
   has ShardId => (is => 'ro', isa => 'Str', required => 1);
   has ShardIteratorType => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::Kinesis::GetShardIterator {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetShardIterator');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Kinesis::GetShardIteratorOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method GetShardIterato
 Amazon Kinesis service. Use the attributes of this class
 as arguments to method GetShardIterator.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetShardIterator.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetShardIterator.
 
 As an example:
 
@@ -36,26 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ShardId => Str
 
-  
-
-The shard ID of the shard to get the iterator for.
-
-
-
-
-
-
-
-
+  The shard ID of the shard to get the iterator for.
 
 
 =head2 B<REQUIRED> ShardIteratorType => Str
 
-  
-
-Determines how the shard iterator is used to start reading data records
+  Determines how the shard iterator is used to start reading data records
 from the shard.
 
 The following are the valid shard iterator types:
@@ -78,43 +66,15 @@ shard, so that you always read the most recent data in the shard.
 
 
 
-
-
-
-
-
-
-
 =head2 StartingSequenceNumber => Str
 
-  
-
-The sequence number of the data record in the shard from which to start
+  The sequence number of the data record in the shard from which to start
 reading from.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> StreamName => Str
 
-  
-
-The name of the stream.
-
-
-
-
-
-
-
-
-
+  The name of the stream.
 
 
 

@@ -1,5 +1,5 @@
 
-package Paws::STS::GetFederationToken {
+package Paws::STS::GetFederationToken;
   use Moose;
   has DurationSeconds => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::STS::GetFederationToken {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetFederationToken');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::STS::GetFederationTokenResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetFederationTokenResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method GetFederationTo
 AWS Security Token Service service. Use the attributes of this class
 as arguments to method GetFederationToken.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetFederationToken.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetFederationToken.
 
 As an example:
 
@@ -35,11 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DurationSeconds => Int
 
-  
-
-The duration, in seconds, that the session should last. Acceptable
+  The duration, in seconds, that the session should last. Acceptable
 durations for federation sessions range from 900 seconds (15 minutes)
 to 129600 seconds (36 hours), with 43200 seconds (12 hours) as the
 default. Sessions obtained using AWS account (root) credentials are
@@ -48,37 +46,17 @@ duration is longer than one hour, the session obtained by using AWS
 account (root) credentials defaults to one hour.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the federated user. The name is used as an identifier for
+  The name of the federated user. The name is used as an identifier for
 the temporary security credentials (such as C<Bob>). For example, you
 can reference the federated user name in a resource-based policy, such
 as in an Amazon S3 bucket policy.
 
 
-
-
-
-
-
-
-
-
 =head2 Policy => Str
 
-  
-
-An IAM policy in JSON format that is passed with the
+  An IAM policy in JSON format that is passed with the
 C<GetFederationToken> call and evaluated along with the policy or
 policies that are attached to the IAM user whose credentials are used
 to call C<GetFederationToken>. The passed policy is used to scope down
@@ -103,15 +81,6 @@ equaling the maximum allowed size.
 
 For more information about how permissions work, see Permissions for
 GetFederationToken.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,7 +1,7 @@
 package TestCaller {
   use Moose::Role;
   with 'Paws::Net::Caller';
-  use File::Slurp;
+  use File::Slurper 'write_text';
   use YAML qw/DumpFile/;
 
   has _doing_call => (is => 'rw', clearer => '_doing_call_clear');
@@ -50,7 +50,7 @@ package TestCaller {
 
     DumpFile("$test_file\.test\.yml", $test);
 
-    write_file($test_file, $data);
+    write_text($test_file, $data);
   }; 
 }
 

@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::UpdateBandwidthRateLimit {
+package Paws::StorageGateway::UpdateBandwidthRateLimit;
   use Moose;
   has AverageDownloadRateLimitInBitsPerSec => (is => 'ro', isa => 'Int');
   has AverageUploadRateLimitInBitsPerSec => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::StorageGateway::UpdateBandwidthRateLimit {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateBandwidthRateLimit');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::UpdateBandwidthRateLimitOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method UpdateBandwidth
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method UpdateBandwidthRateLimit.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateBandwidthRateLimit.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateBandwidthRateLimit.
 
 As an example:
 
@@ -35,34 +34,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AverageDownloadRateLimitInBitsPerSec => Int
 
-  
-
-The average download bandwidth rate limit in bits per second.
-
-
-
-
-
-
-
-
+  The average download bandwidth rate limit in bits per second.
 
 
 =head2 AverageUploadRateLimitInBitsPerSec => Int
 
-  
-
-The average upload bandwidth rate limit in bits per second.
-
-
-
-
-
-
-
-
+  The average upload bandwidth rate limit in bits per second.
 
 
 =head2 B<REQUIRED> GatewayARN => Str

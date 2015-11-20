@@ -1,14 +1,13 @@
 
-package Paws::ECS::CreateCluster {
+package Paws::ECS::CreateCluster;
   use Moose;
-  has clusterName => (is => 'ro', isa => 'Str');
+  has ClusterName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clusterName' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::CreateClusterResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method CreateCluster o
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method CreateCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCluster.
 
 As an example:
 
@@ -33,23 +32,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 clusterName => Str
 
-  
+=head2 ClusterName => Str
 
-The name of your cluster. If you do not specify a name for your
-cluster, you will create a cluster named C<default>. Up to 255 letters
+  The name of your cluster. If you do not specify a name for your
+cluster, you create a cluster named C<default>. Up to 255 letters
 (uppercase and lowercase), numbers, hyphens, and underscores are
 allowed.
-
-
-
-
-
-
-
-
-
 
 
 

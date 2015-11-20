@@ -1,0 +1,28 @@
+---
+call: DeleteTable
+service: DynamoDB
+tests:
+  - expected: 0
+    op: eq
+    path: TableDescription.TableSizeBytes
+  - expected: 1
+    op: eq
+    path: TableDescription.ProvisionedThroughput.WriteCapacityUnits
+  - expected: Emails
+    op: eq
+    path: TableDescription.TableName
+  - expected: 0
+    op: eq
+    path: TableDescription.ProvisionedThroughput.NumberOfDecreasesToday
+  - expected: 1
+    op: eq
+    path: TableDescription.ProvisionedThroughput.ReadCapacityUnits
+  - expected: arn:aws:dynamodb:eu-west-1:000000000000:table/Emails
+    op: eq
+    path: TableDescription.TableArn
+  - expected: 0
+    op: eq
+    path: TableDescription.ItemCount
+  - expected: DELETING
+    op: eq
+    path: TableDescription.TableStatus

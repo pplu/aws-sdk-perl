@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::RegisterInstanceResult {
+package Paws::OpsWorks::RegisterInstanceResult;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::OpsWorks::RegisterInstanceResult
 
 =head1 ATTRIBUTES
 
+
 =head2 InstanceId => Str
 
-  
-
-The registered instance's AWS OpsWorks ID.
-
-
-
-
-
-
-
-
-
+  The registered instance's AWS OpsWorks ID.
 
 
 =cut

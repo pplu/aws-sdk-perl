@@ -1,14 +1,13 @@
 
-package Paws::CodeDeploy::ListDeploymentConfigs {
+package Paws::CodeDeploy::ListDeploymentConfigs;
   use Moose;
-  has nextToken => (is => 'ro', isa => 'Str');
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDeploymentConfigs');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::ListDeploymentConfigsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method ListDeploymentC
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method ListDeploymentConfigs.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListDeploymentConfigs.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDeploymentConfigs.
 
 As an example:
 
@@ -33,22 +32,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 nextToken => Str
 
-  
+=head2 NextToken => Str
 
-An identifier that was returned from the previous list deployment
+  An identifier that was returned from the previous list deployment
 configurations call, which can be used to return the next set of
 deployment configurations in the list.
-
-
-
-
-
-
-
-
-
 
 
 

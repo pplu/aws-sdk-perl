@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::DescribeDataset {
+package Paws::CognitoSync::DescribeDataset;
   use Moose;
   has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DatasetName' , required => 1);
   has IdentityId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityId' , required => 1);
@@ -12,7 +12,6 @@ package Paws::CognitoSync::DescribeDataset {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::DescribeDatasetResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDatasetResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method DescribeDataset
 Amazon Cognito Sync service. Use the attributes of this class
 as arguments to method DescribeDataset.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDataset.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDataset.
 
 As an example:
 
@@ -37,55 +36,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DatasetName => Str
 
-  
-
-A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
+  A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
 '_' (underscore), '-' (dash), and '.' (dot).
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> IdentityId => Str
 
-  
-
-A name-spaced GUID (for example,
+  A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-A name-spaced GUID (for example,
+  A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,9 +1,8 @@
 
-package Paws::RDS::DBParameterGroupNameMessage {
+package Paws::RDS::DBParameterGroupNameMessage;
   use Moose;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::RDS::DBParameterGroupNameMessage
 
 =head1 ATTRIBUTES
 
+
 =head2 DBParameterGroupName => Str
 
-  
-
-Provides the name of the DB parameter group.
-
-
-
-
-
-
-
-
-
+  Provides the name of the DB parameter group.
 
 
 =cut

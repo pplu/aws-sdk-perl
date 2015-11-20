@@ -1,10 +1,9 @@
 
-package Paws::CodeCommit::BatchGetRepositoriesOutput {
+package Paws::CodeCommit::BatchGetRepositoriesOutput;
   use Moose;
-  has repositories => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryMetadata]');
-  has repositoriesNotFound => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Repositories => (is => 'ro', isa => 'ArrayRef[Paws::CodeCommit::RepositoryMetadata]', traits => ['Unwrapped'], xmlname => 'repositories' );
+  has RepositoriesNotFound => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'repositoriesNotFound' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,36 +13,16 @@ Paws::CodeCommit::BatchGetRepositoriesOutput
 
 =head1 ATTRIBUTES
 
-=head2 repositories => ArrayRef[Paws::CodeCommit::RepositoryMetadata]
 
-  
+=head2 Repositories => ArrayRef[L<Paws::CodeCommit::RepositoryMetadata>]
 
-A list of repositories returned by the batch get repositories
+  A list of repositories returned by the batch get repositories
 operation.
 
+=head2 RepositoriesNotFound => ArrayRef[Str]
 
-
-
-
-
-
-
-
-=head2 repositoriesNotFound => ArrayRef[Str]
-
-  
-
-Returns a list of repository names for which information could not be
+  Returns a list of repository names for which information could not be
 found.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::DescribeCacheSubnetGroups {
+package Paws::ElastiCache::DescribeCacheSubnetGroups;
   use Moose;
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Marker => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::ElastiCache::DescribeCacheSubnetGroups {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCacheSubnetGroups');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CacheSubnetGroupMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeCacheSubnetGroupsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeCacheSu
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method DescribeCacheSubnetGroups.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCacheSubnetGroups.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCacheSubnetGroups.
 
 As an example:
 
@@ -35,44 +34,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 CacheSubnetGroupName => Str
 
-  
-
-The name of the cache subnet group to return details for.
-
-
-
-
-
-
-
-
+  The name of the cache subnet group to return details for.
 
 
 =head2 Marker => Str
 
-  
-
-An optional marker returned from a prior request. Use this marker for
+  An optional marker returned from a prior request. Use this marker for
 pagination of results from this action. If this parameter is specified,
 the response includes only records beyond the marker, up to the value
 specified by I<MaxRecords>.
 
 
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of records to include in the response. If more
+  The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a marker is
 included in the response so that the remaining results can be
 retrieved.
@@ -80,15 +58,6 @@ retrieved.
 Default: 100
 
 Constraints: minimum 20; maximum 100.
-
-
-
-
-
-
-
-
-
 
 
 

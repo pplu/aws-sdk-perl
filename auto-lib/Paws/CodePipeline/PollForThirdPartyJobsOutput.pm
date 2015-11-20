@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::PollForThirdPartyJobsOutput {
+package Paws::CodePipeline::PollForThirdPartyJobsOutput;
   use Moose;
-  has jobs => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ThirdPartyJob]');
+  has Jobs => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ThirdPartyJob]', traits => ['Unwrapped'], xmlname => 'jobs' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::CodePipeline::PollForThirdPartyJobsOutput
 
 =head1 ATTRIBUTES
 
-=head2 jobs => ArrayRef[Paws::CodePipeline::ThirdPartyJob]
 
-  
+=head2 Jobs => ArrayRef[L<Paws::CodePipeline::ThirdPartyJob>]
 
-Information about the jobs to take action on.
-
-
-
-
-
-
-
-
-
+  Information about the jobs to take action on.
 
 
 =cut

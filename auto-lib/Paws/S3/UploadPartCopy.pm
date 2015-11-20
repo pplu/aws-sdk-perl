@@ -1,5 +1,5 @@
 
-package Paws::S3::UploadPartCopy {
+package Paws::S3::UploadPartCopy;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
   has CopySource => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source' , required => 1);
@@ -26,7 +26,6 @@ package Paws::S3::UploadPartCopy {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::UploadPartCopyOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -37,187 +36,79 @@ Paws::S3::UploadPartCopyOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Bucket => Str
 
   
+
 =head2 B<REQUIRED> CopySource => Str
 
-  
-
-The name of the source bucket and key name of the source object,
+  The name of the source bucket and key name of the source object,
 separated by a slash (/). Must be URL-encoded.
-
-
-
-
-
-
-
-
 
 =head2 CopySourceIfMatch => Str
 
-  
-
-Copies the object if its entity tag (ETag) matches the specified tag.
-
-
-
-
-
-
-
-
+  Copies the object if its entity tag (ETag) matches the specified tag.
 
 =head2 CopySourceIfModifiedSince => Str
 
-  
-
-Copies the object if it has been modified since the specified time.
-
-
-
-
-
-
-
-
+  Copies the object if it has been modified since the specified time.
 
 =head2 CopySourceIfNoneMatch => Str
 
-  
-
-Copies the object if its entity tag (ETag) is different than the
+  Copies the object if its entity tag (ETag) is different than the
 specified ETag.
-
-
-
-
-
-
-
-
 
 =head2 CopySourceIfUnmodifiedSince => Str
 
-  
-
-Copies the object if it hasn't been modified since the specified time.
-
-
-
-
-
-
-
-
+  Copies the object if it hasn't been modified since the specified time.
 
 =head2 CopySourceRange => Str
 
-  
-
-The range of bytes to copy from the source object. The range value must
+  The range of bytes to copy from the source object. The range value must
 use the form bytes=first-last, where the first and last are the
 zero-based byte offsets to copy. For example, bytes=0-9 indicates that
 you want to copy the first ten bytes of the source. You can copy a
 range only if the source object is greater than 5 GB.
 
-
-
-
-
-
-
-
-
 =head2 CopySourceSSECustomerAlgorithm => Str
 
-  
-
-Specifies the algorithm to use when decrypting the source object (e.g.,
+  Specifies the algorithm to use when decrypting the source object (e.g.,
 AES256).
-
-
-
-
-
-
-
-
 
 =head2 CopySourceSSECustomerKey => Str
 
-  
-
-Specifies the customer-provided encryption key for Amazon S3 to use to
+  Specifies the customer-provided encryption key for Amazon S3 to use to
 decrypt the source object. The encryption key provided in this header
 must be one that was used when the source object was created.
 
-
-
-
-
-
-
-
-
 =head2 CopySourceSSECustomerKeyMD5 => Str
 
-  
-
-Specifies the 128-bit MD5 digest of the encryption key according to RFC
+  Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
 ensure the encryption key was transmitted without error.
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> Key => Str
 
   
+
 =head2 B<REQUIRED> PartNumber => Int
 
-  
-
-Part number of part being copied. This is a positive integer between 1
+  Part number of part being copied. This is a positive integer between 1
 and 10,000.
-
-
-
-
-
-
-
-
 
 =head2 RequestPayer => Str
 
   
+
 =head2 SSECustomerAlgorithm => Str
 
-  
-
-Specifies the algorithm to use to when encrypting the object (e.g.,
+  Specifies the algorithm to use to when encrypting the object (e.g.,
 AES256).
-
-
-
-
-
-
-
-
 
 =head2 SSECustomerKey => Str
 
-  
-
-Specifies the customer-provided encryption key for Amazon S3 to use in
+  Specifies the customer-provided encryption key for Amazon S3 to use in
 encrypting data. This value is used to store the object and then it is
 discarded; Amazon does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
@@ -225,44 +116,15 @@ x-amz-server-side-encryption-customer-algorithm header. This must be
 the same encryption key specified in the initiate multipart upload
 request.
 
-
-
-
-
-
-
-
-
 =head2 SSECustomerKeyMD5 => Str
 
-  
-
-Specifies the 128-bit MD5 digest of the encryption key according to RFC
+  Specifies the 128-bit MD5 digest of the encryption key according to RFC
 1321. Amazon S3 uses this header for a message integrity check to
 ensure the encryption key was transmitted without error.
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> UploadId => Str
 
-  
-
-Upload ID identifying the multipart upload whose part is being copied.
-
-
-
-
-
-
-
-
-
+  Upload ID identifying the multipart upload whose part is being copied.
 
 
 =cut

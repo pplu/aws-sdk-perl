@@ -1,6 +1,6 @@
 package Paws::Net::JsonCaller {
   use Moose::Role;
-  use JSON;
+  use JSON::MaybeXS;
   use POSIX qw(strftime);
   requires 'json_version';
 
@@ -52,10 +52,11 @@ package Paws::Net::JsonCaller {
     $request->uri('/');
     $request->method('POST');
 
+    my @time = gmtime;
     $request->parameters({ Action => $call->_api_call,
                            Version => $self->version,
                            AWSAccessKeyId => $self->access_key,
-                           Timestamp => strftime("%Y-%m-%dT%H:%M:%SZ",gmtime),
+                           Timestamp => strftime("%Y-%m-%dT%H:%M:%SZ",@time),
                         });
     $request->header('X-Amz-Target', sprintf('%s.%s', $self->target_prefix, $call->_api_call));
 
@@ -63,11 +64,11 @@ package Paws::Net::JsonCaller {
     $request->headers->content_type("application/x-amz-json-$j_version");
 
     #$request->header('Content-Encoding', 'amz-1.0');
-    $request->header( 'X-Amz-Date' => strftime( '%Y%m%dT%H%M%SZ', gmtime) );
+    $request->header( 'X-Amz-Date' => strftime( '%Y%m%dT%H%M%SZ', @time ) );
     $request->header( Host => $self->endpoint_host );
 
     my $data = $self->_to_jsoncaller_params($call);
-    $request->content(to_json($data));
+    $request->content(encode_json($data));
 
     $self->sign($request);
 

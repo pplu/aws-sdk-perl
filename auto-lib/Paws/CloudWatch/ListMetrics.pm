@@ -1,5 +1,5 @@
 
-package Paws::CloudWatch::ListMetrics {
+package Paws::CloudWatch::ListMetrics;
   use Moose;
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::DimensionFilter]');
   has MetricName => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::CloudWatch::ListMetrics {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListMetrics');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::ListMetricsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListMetricsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method ListMetrics on 
 Amazon CloudWatch service. Use the attributes of this class
 as arguments to method ListMetrics.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListMetrics.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListMetrics.
 
 As an example:
 
@@ -36,66 +35,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Dimensions => ArrayRef[Paws::CloudWatch::DimensionFilter]
 
-  
+=head2 Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>]
 
-A list of dimensions to filter against.
-
-
-
-
-
-
-
-
+  A list of dimensions to filter against.
 
 
 =head2 MetricName => Str
 
-  
-
-The name of the metric to filter against.
-
-
-
-
-
-
-
-
+  The name of the metric to filter against.
 
 
 =head2 Namespace => Str
 
-  
-
-The namespace to filter against.
-
-
-
-
-
-
-
-
+  The namespace to filter against.
 
 
 =head2 NextToken => Str
 
-  
-
-The token returned by a previous call to indicate that there is more
+  The token returned by a previous call to indicate that there is more
 data available.
-
-
-
-
-
-
-
-
-
 
 
 

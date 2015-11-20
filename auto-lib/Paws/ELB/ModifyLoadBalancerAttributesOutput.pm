@@ -1,10 +1,9 @@
 
-package Paws::ELB::ModifyLoadBalancerAttributesOutput {
+package Paws::ELB::ModifyLoadBalancerAttributesOutput;
   use Moose;
   has LoadBalancerAttributes => (is => 'ro', isa => 'Paws::ELB::LoadBalancerAttributes');
   has LoadBalancerName => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -15,23 +14,14 @@ Paws::ELB::ModifyLoadBalancerAttributesOutput
 
 =head1 ATTRIBUTES
 
-=head2 LoadBalancerAttributes => Paws::ELB::LoadBalancerAttributes
+
+=head2 LoadBalancerAttributes => L<Paws::ELB::LoadBalancerAttributes>
 
   
+
 =head2 LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 
 =cut

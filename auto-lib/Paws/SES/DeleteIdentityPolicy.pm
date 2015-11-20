@@ -1,5 +1,5 @@
 
-package Paws::SES::DeleteIdentityPolicy {
+package Paws::SES::DeleteIdentityPolicy;
   use Moose;
   has Identity => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::SES::DeleteIdentityPolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteIdentityPolicy');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::DeleteIdentityPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteIdentityPolicyResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DeleteIdentityP
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method DeleteIdentityPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteIdentityPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteIdentityPolicy.
 
 As an example:
 
@@ -34,11 +33,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Identity => Str
 
-  
-
-The identity that is associated with the policy that you want to
+  The identity that is associated with the policy that you want to
 delete. You can specify the identity by using its name or by using its
 Amazon Resource Name (ARN). Examples: C<user@example.com>,
 C<example.com>,
@@ -47,28 +45,9 @@ C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
 To successfully call this API, you must own the identity.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The name of the policy to be deleted.
-
-
-
-
-
-
-
-
-
+  The name of the policy to be deleted.
 
 
 

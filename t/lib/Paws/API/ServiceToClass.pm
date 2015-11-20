@@ -3,6 +3,7 @@ package Paws::API::ServiceToClass {
   use warnings;
 
   our $services_to_classes = {
+    apigateway => 'ApiGateway',
     autoscaling => 'AutoScaling',
     cloudformation => 'CloudFormation',
     cloudfront => 'CloudFront',
@@ -33,15 +34,21 @@ package Paws::API::ServiceToClass {
     ecs => 'ECS',
     elasticmapreduce => 'EMR',
     emr => 'EMR',
+    es => 'ES',
     email => undef,
+    firehose => 'Firehose',
     glacier => 'Glacier',
     iam => 'IAM',
+    iot => 'IoT',
+   'iot-data' => 'IoTData',
+    inspector => 'Inspector',
     importexport => 'ImportExport',
     kinesis => 'Kinesis',
     kms => 'KMS',
     lambda => 'Lambda',
     logs => 'CloudWatchLogs',
     machinelearning => 'MachineLearning',
+    marketplacecommerceanalytics => 'MarketplaceCommerceAnalytics',
     monitoring => 'CloudWatch',
     opsworks => 'OpsWorks',
     rds => 'RDS',
@@ -60,6 +67,7 @@ package Paws::API::ServiceToClass {
     sts => 'STS',
     support => 'Support',
     sdb => 'SDB',
+    waf => 'WAF',
     workspaces => 'WorkSpaces',
   };
   
@@ -72,6 +80,10 @@ package Paws::API::ServiceToClass {
 
   sub services {
     keys %$services_to_classes;
+  }
+
+  sub classes {
+    grep { defined $_ } values %$services_to_classes;
   }
 }
 1;

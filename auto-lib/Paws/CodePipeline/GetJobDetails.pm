@@ -1,14 +1,13 @@
 
-package Paws::CodePipeline::GetJobDetails {
+package Paws::CodePipeline::GetJobDetails;
   use Moose;
-  has jobId => (is => 'ro', isa => 'Str', required => 1);
+  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetJobDetails');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::GetJobDetailsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method GetJobDetails o
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method GetJobDetails.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetJobDetails.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetJobDetails.
 
 As an example:
 
@@ -33,20 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> jobId => Str
 
-  
+=head2 B<REQUIRED> JobId => Str
 
-The unique system-generated ID for the job.
-
-
-
-
-
-
-
-
-
+  The unique system-generated ID for the job.
 
 
 

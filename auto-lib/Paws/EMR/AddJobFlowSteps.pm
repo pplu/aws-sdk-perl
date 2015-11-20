@@ -1,5 +1,5 @@
 
-package Paws::EMR::AddJobFlowSteps {
+package Paws::EMR::AddJobFlowSteps;
   use Moose;
   has JobFlowId => (is => 'ro', isa => 'Str', required => 1);
   has Steps => (is => 'ro', isa => 'ArrayRef[Paws::EMR::StepConfig]', required => 1);
@@ -9,7 +9,6 @@ package Paws::EMR::AddJobFlowSteps {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AddJobFlowSteps');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EMR::AddJobFlowStepsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method AddJobFlowSteps
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method AddJobFlowSteps.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AddJobFlowSteps.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AddJobFlowSteps.
 
 As an example:
 
@@ -34,36 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> JobFlowId => Str
 
-  
-
-A string that uniquely identifies the job flow. This identifier is
+  A string that uniquely identifies the job flow. This identifier is
 returned by RunJobFlow and can also be obtained from ListClusters.
 
 
+=head2 B<REQUIRED> Steps => ArrayRef[L<Paws::EMR::StepConfig>]
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Steps => ArrayRef[Paws::EMR::StepConfig]
-
-  
-
-A list of StepConfig to be executed by the job flow.
-
-
-
-
-
-
-
-
-
+  A list of StepConfig to be executed by the job flow.
 
 
 

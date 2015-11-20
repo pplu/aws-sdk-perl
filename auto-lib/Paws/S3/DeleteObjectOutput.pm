@@ -1,11 +1,10 @@
 
-package Paws::S3::DeleteObjectOutput {
+package Paws::S3::DeleteObjectOutput;
   use Moose;
   has DeleteMarker => (is => 'ro', isa => 'Bool');
   has RequestCharged => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +19,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Simple Storage Service service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -30,41 +29,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DeleteMarker => Bool
 
-  
-
-Specifies whether the versioned object that was permanently deleted was
+  Specifies whether the versioned object that was permanently deleted was
 (true) or was not (false) a delete marker.
-
-
-
-
-
-
-
-
 
 
 =head2 RequestCharged => Str
 
   
 
+
 =head2 VersionId => Str
 
-  
-
-Returns the version ID of the delete marker created as a result of the
+  Returns the version ID of the delete marker created as a result of the
 DELETE operation.
-
-
-
-
-
-
-
-
-
 
 
 

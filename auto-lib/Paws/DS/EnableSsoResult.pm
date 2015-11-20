@@ -1,8 +1,7 @@
 
-package Paws::DS::EnableSsoResult {
+package Paws::DS::EnableSsoResult;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

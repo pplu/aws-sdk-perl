@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeEventCategories {
+package Paws::RDS::DescribeEventCategories;
   use Moose;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
   has SourceType => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::RDS::DescribeEventCategories {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEventCategories');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::EventCategoriesMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventCategoriesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DescribeEventCa
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribeEventCategories.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEventCategories.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEventCategories.
 
 As an example:
 
@@ -34,38 +33,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
 
-  
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-This parameter is not currently supported.
-
-
-
-
-
-
-
-
+  This parameter is not currently supported.
 
 
 =head2 SourceType => Str
 
-  
-
-The type of source that will be generating the events.
+  The type of source that will be generating the events.
 
 Valid values: db-instance | db-parameter-group | db-security-group |
 db-snapshot
-
-
-
-
-
-
-
-
-
 
 
 

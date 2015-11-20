@@ -1,15 +1,14 @@
 
-package Paws::ECS::ListClusters {
+package Paws::ECS::ListClusters;
   use Moose;
-  has maxResults => (is => 'ro', isa => 'Int');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListClusters');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::ListClustersResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ListClusters on
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method ListClusters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListClusters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListClusters.
 
 As an example:
 
@@ -34,11 +33,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 maxResults => Int
 
-  
+=head2 MaxResults => Int
 
-The maximum number of cluster results returned by C<ListClusters> in
+  The maximum number of cluster results returned by C<ListClusters> in
 paginated output. When this parameter is used, C<ListClusters> only
 returns C<maxResults> results in a single page along with a
 C<nextToken> response element. The remaining results of the initial
@@ -48,32 +46,13 @@ this parameter is not used, then C<ListClusters> returns up to 100
 results and a C<nextToken> value if applicable.
 
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-The C<nextToken> value returned from a previous paginated
+  The C<nextToken> value returned from a previous paginated
 C<ListClusters> request where C<maxResults> was used and the results
 exceeded the value of that parameter. Pagination continues from the end
 of the previous results that returned the C<nextToken> value. This
 value is C<null> when there are no more results to return.
-
-
-
-
-
-
-
-
-
 
 
 

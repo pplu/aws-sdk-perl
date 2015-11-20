@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::ResetCacheOutput {
+package Paws::StorageGateway::ResetCacheOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -12,6 +11,7 @@ package Paws::StorageGateway::ResetCacheOutput {
 Paws::StorageGateway::ResetCacheOutput
 
 =head1 ATTRIBUTES
+
 
 =head2 GatewayARN => Str
 

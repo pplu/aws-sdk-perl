@@ -1,16 +1,15 @@
 
-package Paws::SimpleWorkflow::RequestCancelWorkflowExecution {
+package Paws::SimpleWorkflow::RequestCancelWorkflowExecution;
   use Moose;
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has runId => (is => 'ro', isa => 'Str');
-  has workflowId => (is => 'ro', isa => 'Str', required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has RunId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'runId' );
+  has WorkflowId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workflowId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RequestCancelWorkflowExecution');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method RequestCancelWo
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method RequestCancelWorkflowExecution.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RequestCancelWorkflowExecution.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RequestCancelWorkflowExecution.
 
 As an example:
 
@@ -35,50 +34,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domain => Str
 
-  
+=head2 B<REQUIRED> Domain => Str
 
-The name of the domain containing the workflow execution to cancel.
-
+  The name of the domain containing the workflow execution to cancel.
 
 
+=head2 RunId => Str
+
+  The runId of the workflow execution to cancel.
 
 
+=head2 B<REQUIRED> WorkflowId => Str
 
-
-
-
-
-=head2 runId => Str
-
-  
-
-The runId of the workflow execution to cancel.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> workflowId => Str
-
-  
-
-The workflowId of the workflow execution to cancel.
-
-
-
-
-
-
-
-
-
+  The workflowId of the workflow execution to cancel.
 
 
 

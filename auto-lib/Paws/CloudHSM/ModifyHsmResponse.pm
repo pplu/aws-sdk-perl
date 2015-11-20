@@ -1,9 +1,8 @@
 
-package Paws::CloudHSM::ModifyHsmResponse {
+package Paws::CloudHSM::ModifyHsmResponse;
   use Moose;
   has HsmArn => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::CloudHSM::ModifyHsmResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 HsmArn => Str
 
-  
-
-The ARN of the HSM.
-
-
-
-
-
-
-
-
-
+  The ARN of the HSM.
 
 
 =cut

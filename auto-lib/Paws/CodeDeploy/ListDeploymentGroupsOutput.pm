@@ -1,11 +1,10 @@
 
-package Paws::CodeDeploy::ListDeploymentGroupsOutput {
+package Paws::CodeDeploy::ListDeploymentGroupsOutput;
   use Moose;
-  has applicationName => (is => 'ro', isa => 'Str');
-  has deploymentGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'applicationName' );
+  has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'deploymentGroups' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,51 +14,21 @@ Paws::CodeDeploy::ListDeploymentGroupsOutput
 
 =head1 ATTRIBUTES
 
-=head2 applicationName => Str
 
-  
+=head2 ApplicationName => Str
 
-The application name.
+  The application name.
 
+=head2 DeploymentGroups => ArrayRef[Str]
 
+  A list of corresponding deployment group names.
 
+=head2 NextToken => Str
 
-
-
-
-
-
-=head2 deploymentGroups => ArrayRef[Str]
-
-  
-
-A list of corresponding deployment group names.
-
-
-
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-If the amount of information that is returned is significantly large,
+  If the amount of information that is returned is significantly large,
 an identifier will also be returned, which can be used in a subsequent
 list deployment groups call to return the next set of deployment groups
 in the list.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -1,17 +1,16 @@
 
-package Paws::DeviceFarm::CreateDevicePool {
+package Paws::DeviceFarm::CreateDevicePool;
   use Moose;
-  has description => (is => 'ro', isa => 'Str');
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has projectArn => (is => 'ro', isa => 'Str', required => 1);
-  has rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]', required => 1);
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
+  has Rules => (is => 'ro', isa => 'ArrayRef[Paws::DeviceFarm::Rule]', traits => ['NameInRequest'], request_name => 'rules' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDevicePool');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::CreateDevicePoolResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CreateDevicePoo
 AWS Device Farm service. Use the attributes of this class
 as arguments to method CreateDevicePool.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDevicePool.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDevicePool.
 
 As an example:
 
@@ -36,65 +35,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 description => Str
 
-  
+=head2 Description => Str
 
-The device pool's description.
-
+  The device pool's description.
 
 
+=head2 B<REQUIRED> Name => Str
+
+  The device pool's name.
 
 
+=head2 B<REQUIRED> ProjectArn => Str
+
+  The ARN of the project for the device pool.
 
 
+=head2 B<REQUIRED> Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]
 
-
-
-=head2 B<REQUIRED> name => Str
-
-  
-
-The device pool's name.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> projectArn => Str
-
-  
-
-The ARN of the project for the device pool.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> rules => ArrayRef[Paws::DeviceFarm::Rule]
-
-  
-
-The device pool's rules.
-
-
-
-
-
-
-
-
-
+  The device pool's rules.
 
 
 

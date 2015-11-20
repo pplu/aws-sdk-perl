@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetRunResult {
+package Paws::DeviceFarm::GetRunResult;
   use Moose;
-  has run => (is => 'ro', isa => 'Paws::DeviceFarm::Run');
+  has Run => (is => 'ro', isa => 'Paws::DeviceFarm::Run', traits => ['Unwrapped'], xmlname => 'run' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,8 @@ Paws::DeviceFarm::GetRunResult
 
 =head1 ATTRIBUTES
 
-=head2 run => Paws::DeviceFarm::Run
+
+=head2 Run => L<Paws::DeviceFarm::Run>
 
   
 

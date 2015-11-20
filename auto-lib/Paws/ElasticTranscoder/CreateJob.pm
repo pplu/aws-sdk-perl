@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::CreateJob {
+package Paws::ElasticTranscoder::CreateJob;
   use Moose;
   has Input => (is => 'ro', isa => 'Paws::ElasticTranscoder::JobInput', required => 1);
   has Output => (is => 'ro', isa => 'Paws::ElasticTranscoder::CreateJobOutput');
@@ -16,7 +16,6 @@ package Paws::ElasticTranscoder::CreateJob {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::CreateJobResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateJobResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +30,7 @@ This class represents the parameters used for calling the method CreateJob on th
 Amazon Elastic Transcoder service. Use the attributes of this class
 as arguments to method CreateJob.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateJob.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateJob.
 
 As an example:
 
@@ -41,84 +40,44 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Input => Paws::ElasticTranscoder::JobInput
 
-  
+=head2 B<REQUIRED> Input => L<Paws::ElasticTranscoder::JobInput>
 
-A section of the request body that provides information about the file
+  A section of the request body that provides information about the file
 that is being transcoded.
 
 
-
-
-
-
-
-
-
-
-=head2 Output => Paws::ElasticTranscoder::CreateJobOutput
+=head2 Output => L<Paws::ElasticTranscoder::CreateJobOutput>
 
   
+
 
 =head2 OutputKeyPrefix => Str
 
-  
-
-The value, if any, that you want Elastic Transcoder to prepend to the
+  The value, if any, that you want Elastic Transcoder to prepend to the
 names of all files that this job creates, including output files,
 thumbnails, and playlists.
 
 
+=head2 Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>]
 
-
-
-
-
-
-
-
-=head2 Outputs => ArrayRef[Paws::ElasticTranscoder::CreateJobOutput]
-
-  
-
-A section of the request body that provides information about the
+  A section of the request body that provides information about the
 transcoded (target) files. We recommend that you use the C<Outputs>
 syntax instead of the C<Output> syntax.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PipelineId => Str
 
-  
-
-The C<Id> of the pipeline that you want Elastic Transcoder to use for
+  The C<Id> of the pipeline that you want Elastic Transcoder to use for
 transcoding. The pipeline determines several settings, including the
 Amazon S3 bucket from which Elastic Transcoder gets the files to
 transcode and the bucket into which Elastic Transcoder puts the
 transcoded files.
 
 
+=head2 Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>]
 
-
-
-
-
-
-
-
-=head2 Playlists => ArrayRef[Paws::ElasticTranscoder::CreateJobPlaylist]
-
-  
-
-If you specify a preset in C<PresetId> for which the value of
+  If you specify a preset in C<PresetId> for which the value of
 C<Container> is fmp4 (Fragmented MP4) or ts (MPEG-TS), Playlists
 contains information about the master playlists that you want Elastic
 Transcoder to create.
@@ -126,32 +85,13 @@ Transcoder to create.
 The maximum number of master playlists in a job is 30.
 
 
+=head2 UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>
 
-
-
-
-
-
-
-
-=head2 UserMetadata => Paws::ElasticTranscoder::UserMetadata
-
-  
-
-User-defined metadata that you want to associate with an Elastic
+  User-defined metadata that you want to associate with an Elastic
 Transcoder job. You specify metadata in C<key/value> pairs, and you can
 add up to 10 C<key/value> pairs per job. Elastic Transcoder does not
 guarantee that C<key/value> pairs will be returned in the same order in
 which you specify them.
-
-
-
-
-
-
-
-
-
 
 
 

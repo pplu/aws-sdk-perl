@@ -1,8 +1,7 @@
 
-package Paws::SES::SetIdentityDkimEnabledResponse {
+package Paws::SES::SetIdentityDkimEnabledResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

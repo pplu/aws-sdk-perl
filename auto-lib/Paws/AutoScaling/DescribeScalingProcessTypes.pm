@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::DescribeScalingProcessTypes {
+package Paws::AutoScaling::DescribeScalingProcessTypes;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::AutoScaling::DescribeScalingProcessTypes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeScalingProcessTypes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::ProcessesType');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeScalingProcessTypesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method DescribeScaling
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribeScalingProcessTypes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeScalingProcessTypes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeScalingProcessTypes.
 
 As an example:
 

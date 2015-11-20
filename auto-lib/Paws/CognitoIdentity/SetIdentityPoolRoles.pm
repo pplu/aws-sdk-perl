@@ -1,5 +1,5 @@
 
-package Paws::CognitoIdentity::SetIdentityPoolRoles {
+package Paws::CognitoIdentity::SetIdentityPoolRoles;
   use Moose;
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
   has Roles => (is => 'ro', isa => 'Paws::CognitoIdentity::RolesMap', required => 1);
@@ -9,7 +9,6 @@ package Paws::CognitoIdentity::SetIdentityPoolRoles {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetIdentityPoolRoles');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method SetIdentityPool
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method SetIdentityPoolRoles.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetIdentityPoolRoles.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetIdentityPoolRoles.
 
 As an example:
 
@@ -34,37 +33,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-An identity pool ID in the format REGION:GUID.
+  An identity pool ID in the format REGION:GUID.
 
 
+=head2 B<REQUIRED> Roles => L<Paws::CognitoIdentity::RolesMap>
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> Roles => Paws::CognitoIdentity::RolesMap
-
-  
-
-The map of roles associated with this pool. For a given role, the key
+  The map of roles associated with this pool. For a given role, the key
 will be either "authenticated" or "unauthenticated" and the value will
 be the Role ARN.
-
-
-
-
-
-
-
-
-
 
 
 

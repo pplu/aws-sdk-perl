@@ -1,5 +1,5 @@
 
-package Paws::SES::DeleteIdentity {
+package Paws::SES::DeleteIdentity;
   use Moose;
   has Identity => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::SES::DeleteIdentity {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteIdentity');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::DeleteIdentityResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteIdentityResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteIdentity 
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method DeleteIdentity.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteIdentity.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteIdentity.
 
 As an example:
 
@@ -33,21 +32,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Identity => Str
 
-  
-
-The identity to be removed from the list of identities for the AWS
+  The identity to be removed from the list of identities for the AWS
 Account.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,9 +1,8 @@
 
-package Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer {
+package Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer;
   use Moose;
   has AutoScalingNotificationTypes => (is => 'ro', isa => 'ArrayRef[Str]');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,11 +13,10 @@ Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoScalingNotificationTypes => ArrayRef[Str]
 
-  
-
-One or more of the following notification types:
+  One or more of the following notification types:
 
 =over
 
@@ -43,14 +41,6 @@ C<autoscaling:EC2_INSTANCE_TERMINATE_ERROR>
 C<autoscaling:TEST_NOTIFICATION>
 
 =back
-
-
-
-
-
-
-
-
 
 
 

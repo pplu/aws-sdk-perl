@@ -1,10 +1,9 @@
 
-package Paws::AutoScaling::ActivitiesType {
+package Paws::AutoScaling::ActivitiesType;
   use Moose;
   has Activities => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Activity]', required => 1);
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -15,35 +14,15 @@ Paws::AutoScaling::ActivitiesType
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Activities => ArrayRef[Paws::AutoScaling::Activity]
 
-  
+=head2 B<REQUIRED> Activities => ArrayRef[L<Paws::AutoScaling::Activity>]
 
-The scaling activities.
-
-
-
-
-
-
-
-
+  The scaling activities.
 
 =head2 NextToken => Str
 
-  
-
-The token to use when requesting the next set of items. If there are no
+  The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
-
-
-
-
-
-
-
-
-
 
 
 =cut

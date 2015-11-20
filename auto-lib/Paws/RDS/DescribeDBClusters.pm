@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeDBClusters {
+package Paws::RDS::DescribeDBClusters;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
@@ -11,7 +11,6 @@ package Paws::RDS::DescribeDBClusters {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDBClusters');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::DBClusterMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeDBClustersResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method DescribeDBClust
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribeDBClusters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBClusters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDBClusters.
 
 As an example:
 
@@ -36,11 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DBClusterIdentifier => Str
 
-  
-
-The user-supplied DB cluster identifier. If this parameter is
+  The user-supplied DB cluster identifier. If this parameter is
 specified, information from only the specific DB cluster is returned.
 This parameter isn't case-sensitive.
 
@@ -58,50 +56,21 @@ Constraints:
 
 
 
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
-
-  
-
-This parameter is not currently supported.
-
-
-
-
-
-
-
-
+  This parameter is not currently supported.
 
 
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous DescribeDBClusters
+  An optional pagination token provided by a previous DescribeDBClusters
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by C<MaxRecords>.
 
 
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of records to include in the response. If more
+  The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
 results can be retrieved.
@@ -109,15 +78,6 @@ results can be retrieved.
 Default: 100
 
 Constraints: Minimum 20, maximum 100.
-
-
-
-
-
-
-
-
-
 
 
 

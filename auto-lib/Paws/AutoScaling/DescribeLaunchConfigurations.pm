@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::DescribeLaunchConfigurations {
+package Paws::AutoScaling::DescribeLaunchConfigurations;
   use Moose;
   has LaunchConfigurationNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has MaxRecords => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::AutoScaling::DescribeLaunchConfigurations {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLaunchConfigurations');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::LaunchConfigurationsType');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLaunchConfigurationsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeLaunchC
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribeLaunchConfigurations.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLaunchConfigurations.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLaunchConfigurations.
 
 As an example:
 
@@ -35,52 +34,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 LaunchConfigurationNames => ArrayRef[Str]
 
-  
-
-The launch configuration names.
-
-
-
-
-
-
-
-
+  The launch configuration names.
 
 
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of items to return with this call. The default is
+  The maximum number of items to return with this call. The default is
 100.
-
-
-
-
-
-
-
-
 
 
 =head2 NextToken => Str
 
-  
-
-The token for the next set of items to return. (You received this token
+  The token for the next set of items to return. (You received this token
 from a previous call.)
-
-
-
-
-
-
-
-
-
 
 
 

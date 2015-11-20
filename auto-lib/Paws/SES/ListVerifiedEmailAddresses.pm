@@ -1,5 +1,5 @@
 
-package Paws::SES::ListVerifiedEmailAddresses {
+package Paws::SES::ListVerifiedEmailAddresses;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::SES::ListVerifiedEmailAddresses {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListVerifiedEmailAddresses');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::ListVerifiedEmailAddressesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListVerifiedEmailAddressesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method ListVerifiedEma
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method ListVerifiedEmailAddresses.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListVerifiedEmailAddresses.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListVerifiedEmailAddresses.
 
 As an example:
 

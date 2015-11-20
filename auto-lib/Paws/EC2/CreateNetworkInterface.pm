@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateNetworkInterface {
+package Paws::EC2::CreateNetworkInterface;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -14,7 +14,6 @@ package Paws::EC2::CreateNetworkInterface {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateNetworkInterface');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateNetworkInterfaceResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ This class represents the parameters used for calling the method CreateNetworkIn
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateNetworkInterface.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateNetworkInterface.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateNetworkInterface.
 
 As an example:
 
@@ -39,93 +38,42 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
-  
-
-A description for the network interface.
-
-
-
-
-
-
-
-
+  A description for the network interface.
 
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
-
-
-
-
-
-
-
-
 =head2 Groups => ArrayRef[Str]
 
-  
-
-The IDs of one or more security groups.
-
-
-
-
-
-
-
-
+  The IDs of one or more security groups.
 
 
 =head2 PrivateIpAddress => Str
 
-  
-
-The primary private IP address of the network interface. If you don't
+  The primary private IP address of the network interface. If you don't
 specify an IP address, Amazon EC2 selects one for you from the subnet
 range. If you specify an IP address, you cannot indicate any IP
 addresses specified in C<privateIpAddresses> as primary (only one IP
 address can be designated as primary).
 
 
+=head2 PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]
 
-
-
-
-
-
-
-
-=head2 PrivateIpAddresses => ArrayRef[Paws::EC2::PrivateIpAddressSpecification]
-
-  
-
-One or more private IP addresses.
-
-
-
-
-
-
-
-
+  One or more private IP addresses.
 
 
 =head2 SecondaryPrivateIpAddressCount => Int
 
-  
-
-The number of secondary private IP addresses to assign to a network
+  The number of secondary private IP addresses to assign to a network
 interface. When you specify a number of secondary IP addresses, Amazon
 EC2 selects these IP addresses within the subnet range. You can't
 specify this option and specify more than one private IP address using
@@ -137,28 +85,9 @@ ENI Per Instance Type in the I<Amazon Elastic Compute Cloud User
 Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SubnetId => Str
 
-  
-
-The ID of the subnet to associate with the network interface.
-
-
-
-
-
-
-
-
-
+  The ID of the subnet to associate with the network interface.
 
 
 

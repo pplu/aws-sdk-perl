@@ -1,5 +1,5 @@
 
-package Paws::CognitoSync::ListRecordsResponse {
+package Paws::CognitoSync::ListRecordsResponse;
   use Moose;
   has Count => (is => 'ro', isa => 'Int');
   has DatasetDeletedAfterRequestedSyncCount => (is => 'ro', isa => 'Bool');
@@ -11,7 +11,6 @@ package Paws::CognitoSync::ListRecordsResponse {
   has Records => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::Record]');
   has SyncSessionToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,132 +21,42 @@ Paws::CognitoSync::ListRecordsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Count => Int
 
-  
-
-Total number of records.
-
-
-
-
-
-
-
-
+  Total number of records.
 
 =head2 DatasetDeletedAfterRequestedSyncCount => Bool
 
-  
-
-A boolean value specifying whether to delete the dataset locally.
-
-
-
-
-
-
-
-
+  A boolean value specifying whether to delete the dataset locally.
 
 =head2 DatasetExists => Bool
 
-  
-
-Indicates whether the dataset exists.
-
-
-
-
-
-
-
-
+  Indicates whether the dataset exists.
 
 =head2 DatasetSyncCount => Int
 
-  
-
-Server sync count for this dataset.
-
-
-
-
-
-
-
-
+  Server sync count for this dataset.
 
 =head2 LastModifiedBy => Str
 
-  
-
-The user/device that made the last change to this record.
-
-
-
-
-
-
-
-
+  The user/device that made the last change to this record.
 
 =head2 MergedDatasetNames => ArrayRef[Str]
 
-  
-
-Names of merged datasets.
-
-
-
-
-
-
-
-
+  Names of merged datasets.
 
 =head2 NextToken => Str
 
-  
+  A pagination token for obtaining the next page of results.
 
-A pagination token for obtaining the next page of results.
+=head2 Records => ArrayRef[L<Paws::CognitoSync::Record>]
 
-
-
-
-
-
-
-
-
-=head2 Records => ArrayRef[Paws::CognitoSync::Record]
-
-  
-
-A list of all records.
-
-
-
-
-
-
-
-
+  A list of all records.
 
 =head2 SyncSessionToken => Str
 
-  
-
-A token containing a session ID, identity ID, and expiration.
-
-
-
-
-
-
-
-
-
+  A token containing a session ID, identity ID, and expiration.
 
 
 =cut

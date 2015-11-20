@@ -1,9 +1,8 @@
 
-package Paws::Config::DescribeDeliveryChannelStatusResponse {
+package Paws::Config::DescribeDeliveryChannelStatusResponse;
   use Moose;
   has DeliveryChannelsStatus => (is => 'ro', isa => 'ArrayRef[Paws::Config::DeliveryChannelStatus]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::Config::DescribeDeliveryChannelStatusResponse
 
 =head1 ATTRIBUTES
 
-=head2 DeliveryChannelsStatus => ArrayRef[Paws::Config::DeliveryChannelStatus]
 
-  
+=head2 DeliveryChannelsStatus => ArrayRef[L<Paws::Config::DeliveryChannelStatus>]
 
-A list that contains the status of a specified delivery channel.
-
-
-
-
-
-
-
-
-
+  A list that contains the status of a specified delivery channel.
 
 
 =cut

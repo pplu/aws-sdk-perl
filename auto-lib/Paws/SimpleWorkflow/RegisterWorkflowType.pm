@@ -1,23 +1,22 @@
 
-package Paws::SimpleWorkflow::RegisterWorkflowType {
+package Paws::SimpleWorkflow::RegisterWorkflowType;
   use Moose;
-  has defaultChildPolicy => (is => 'ro', isa => 'Str');
-  has defaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str');
-  has defaultLambdaRole => (is => 'ro', isa => 'Str');
-  has defaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList');
-  has defaultTaskPriority => (is => 'ro', isa => 'Str');
-  has defaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str');
-  has description => (is => 'ro', isa => 'Str');
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has name => (is => 'ro', isa => 'Str', required => 1);
-  has version => (is => 'ro', isa => 'Str', required => 1);
+  has DefaultChildPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultChildPolicy' );
+  has DefaultExecutionStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultExecutionStartToCloseTimeout' );
+  has DefaultLambdaRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultLambdaRole' );
+  has DefaultTaskList => (is => 'ro', isa => 'Paws::SimpleWorkflow::TaskList', traits => ['NameInRequest'], request_name => 'defaultTaskList' );
+  has DefaultTaskPriority => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskPriority' );
+  has DefaultTaskStartToCloseTimeout => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultTaskStartToCloseTimeout' );
+  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterWorkflowType');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +31,7 @@ This class represents the parameters used for calling the method RegisterWorkflo
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method RegisterWorkflowType.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RegisterWorkflowType.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterWorkflowType.
 
 As an example:
 
@@ -42,11 +41,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 defaultChildPolicy => Str
 
-  
+=head2 DefaultChildPolicy => Str
 
-If set, specifies the default policy to use for the child workflow
+  If set, specifies the default policy to use for the child workflow
 executions when a workflow execution of this type is terminated, by
 calling the TerminateWorkflowExecution action explicitly or due to an
 expired timeout. This default can be overridden when starting a
@@ -71,18 +69,9 @@ continue to run.
 
 
 
+=head2 DefaultExecutionStartToCloseTimeout => Str
 
-
-
-
-
-
-
-=head2 defaultExecutionStartToCloseTimeout => Str
-
-  
-
-If set, specifies the default maximum duration for executions of this
+  If set, specifies the default maximum duration for executions of this
 workflow type. You can override this default when starting an execution
 through the StartWorkflowExecution action or
 C<StartChildWorkflowExecution> decision.
@@ -95,19 +84,9 @@ on the time that a workflow execution can run. Exceeding this limit
 will always cause the workflow execution to time out.
 
 
+=head2 DefaultLambdaRole => Str
 
-
-
-
-
-
-
-
-=head2 defaultLambdaRole => Str
-
-  
-
-The ARN of the default IAM role to use when a workflow execution of
+  The ARN of the default IAM role to use when a workflow execution of
 this type invokes AWS Lambda functions.
 
 This default can be overridden when starting a workflow execution using
@@ -115,38 +94,18 @@ the StartWorkflowExecution action or the C<StartChildWorkflowExecution>
 and C<ContinueAsNewWorkflowExecution> decision.
 
 
+=head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
-
-
-
-
-
-
-
-=head2 defaultTaskList => Paws::SimpleWorkflow::TaskList
-
-  
-
-If set, specifies the default task list to use for scheduling decision
+  If set, specifies the default task list to use for scheduling decision
 tasks for executions of this workflow type. This default is used only
 if a task list is not provided when starting the execution through the
 StartWorkflowExecution action or C<StartChildWorkflowExecution>
 decision.
 
 
+=head2 DefaultTaskPriority => Str
 
-
-
-
-
-
-
-
-=head2 defaultTaskPriority => Str
-
-  
-
-The default task priority to assign to the workflow type. If not
+  The default task priority to assign to the workflow type. If not
 assigned, then "0" will be used. Valid values are integers that range
 from Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 (2147483647). Higher numbers indicate higher priority.
@@ -155,19 +114,9 @@ For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
 
+=head2 DefaultTaskStartToCloseTimeout => Str
 
-
-
-
-
-
-
-
-=head2 defaultTaskStartToCloseTimeout => Str
-
-  
-
-If set, specifies the default maximum duration of decision tasks for
+  If set, specifies the default maximum duration of decision tasks for
 this workflow type. This default can be overridden when starting a
 workflow execution using the StartWorkflowExecution action or the
 C<StartChildWorkflowExecution> decision.
@@ -176,49 +125,19 @@ The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
 
+=head2 Description => Str
+
+  Textual description of the workflow type.
 
 
+=head2 B<REQUIRED> Domain => Str
+
+  The name of the domain in which to register the workflow type.
 
 
+=head2 B<REQUIRED> Name => Str
 
-
-
-
-=head2 description => Str
-
-  
-
-Textual description of the workflow type.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> domain => Str
-
-  
-
-The name of the domain in which to register the workflow type.
-
-
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> name => Str
-
-  
-
-The name of the workflow type.
+  The name of the workflow type.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
@@ -226,19 +145,9 @@ control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
 
+=head2 B<REQUIRED> Version => Str
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> version => Str
-
-  
-
-The version of the workflow type.
+  The version of the workflow type.
 
 The workflow type consists of the name and version, the combination of
 which must be unique within the domain. To get a list of all currently
@@ -248,15 +157,6 @@ The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
-
-
-
-
-
-
-
-
-
 
 
 

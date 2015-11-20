@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::CreatePipeline {
+package Paws::ElasticTranscoder::CreatePipeline;
   use Moose;
   has AwsKmsKeyArn => (is => 'ro', isa => 'Str');
   has ContentConfig => (is => 'ro', isa => 'Paws::ElasticTranscoder::PipelineOutputConfig');
@@ -17,7 +17,6 @@ package Paws::ElasticTranscoder::CreatePipeline {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::CreatePipelineResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePipelineResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +31,7 @@ This class represents the parameters used for calling the method CreatePipeline 
 Amazon Elastic Transcoder service. Use the attributes of this class
 as arguments to method CreatePipeline.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreatePipeline.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePipeline.
 
 As an example:
 
@@ -42,11 +41,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AwsKmsKeyArn => Str
 
-  
-
-The AWS Key Management Service (AWS KMS) key that you want to use with
+  The AWS Key Management Service (AWS KMS) key that you want to use with
 this pipeline.
 
 If you use either C<S3> or C<S3-AWS-KMS> as your C<Encryption:Mode>,
@@ -57,19 +55,9 @@ key, or if you are using an C<Encryption:Mode> of C<AES-PKCS7>,
 C<AES-CTR>, or C<AES-GCM>.
 
 
+=head2 ContentConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
 
-
-
-
-
-
-
-
-=head2 ContentConfig => Paws::ElasticTranscoder::PipelineOutputConfig
-
-  
-
-The optional C<ContentConfig> object specifies information about the
+  The optional C<ContentConfig> object specifies information about the
 Amazon S3 bucket in which you want Elastic Transcoder to save
 transcoded files and playlists: which bucket to use, which users you
 want to have access to the files, the type of access you want users to
@@ -151,52 +139,23 @@ video files and playlists that it stores in your Amazon S3 bucket.
 
 
 
-
-
-
-
-
-
-
 =head2 B<REQUIRED> InputBucket => Str
 
-  
-
-The Amazon S3 bucket in which you saved the media files that you want
+  The Amazon S3 bucket in which you saved the media files that you want
 to transcode.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the pipeline. We recommend that the name be unique within
+  The name of the pipeline. We recommend that the name be unique within
 the AWS account, but uniqueness is not enforced.
 
 Constraints: Maximum 40 characters.
 
 
+=head2 Notifications => L<Paws::ElasticTranscoder::Notifications>
 
-
-
-
-
-
-
-
-=head2 Notifications => Paws::ElasticTranscoder::Notifications
-
-  
-
-The Amazon Simple Notification Service (Amazon SNS) topic that you want
+  The Amazon Simple Notification Service (Amazon SNS) topic that you want
 to notify to report job status.
 
 To receive notifications, you must also subscribe to the new topic in
@@ -230,18 +189,9 @@ returned when you created the topic.
 
 
 
-
-
-
-
-
-
-
 =head2 OutputBucket => Str
 
-  
-
-The Amazon S3 bucket in which you want Elastic Transcoder to save the
+  The Amazon S3 bucket in which you want Elastic Transcoder to save the
 transcoded files. (Use this, or use ContentConfig:Bucket plus
 ThumbnailConfig:Bucket.)
 
@@ -272,35 +222,15 @@ Amazon S3 storage class, omit C<OutputBucket> and specify values for
 C<ContentConfig> and C<ThumbnailConfig> instead.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Role => Str
 
-  
-
-The IAM Amazon Resource Name (ARN) for the role that you want Elastic
+  The IAM Amazon Resource Name (ARN) for the role that you want Elastic
 Transcoder to use to create the pipeline.
 
 
+=head2 ThumbnailConfig => L<Paws::ElasticTranscoder::PipelineOutputConfig>
 
-
-
-
-
-
-
-
-=head2 ThumbnailConfig => Paws::ElasticTranscoder::PipelineOutputConfig
-
-  
-
-The C<ThumbnailConfig> object specifies several values, including the
+  The C<ThumbnailConfig> object specifies several values, including the
 Amazon S3 bucket in which you want Elastic Transcoder to save thumbnail
 files, which users you want to have access to the files, the type of
 access you want users to have, and the storage class that you want to
@@ -376,14 +306,6 @@ C<ReducedRedundancy>, that you want Elastic Transcoder to assign to the
 thumbnails that it stores in your Amazon S3 bucket.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

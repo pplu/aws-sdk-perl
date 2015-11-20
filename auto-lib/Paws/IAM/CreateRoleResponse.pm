@@ -1,9 +1,8 @@
 
-package Paws::IAM::CreateRoleResponse {
+package Paws::IAM::CreateRoleResponse;
   use Moose;
   has Role => (is => 'ro', isa => 'Paws::IAM::Role', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::IAM::CreateRoleResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Role => Paws::IAM::Role
 
-  
+=head2 B<REQUIRED> Role => L<Paws::IAM::Role>
 
-Information about the role.
-
-
-
-
-
-
-
-
-
+  Information about the role.
 
 
 =cut

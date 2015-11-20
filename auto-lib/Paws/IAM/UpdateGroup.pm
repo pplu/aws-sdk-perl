@@ -1,5 +1,5 @@
 
-package Paws::IAM::UpdateGroup {
+package Paws::IAM::UpdateGroup;
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has NewGroupName => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::IAM::UpdateGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateGroup');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method UpdateGroup on 
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method UpdateGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateGroup.
 
 As an example:
 
@@ -35,51 +34,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GroupName => Str
 
-  
-
-Name of the group to update. If you're changing the name of the group,
+  Name of the group to update. If you're changing the name of the group,
 this is the original name.
-
-
-
-
-
-
-
-
 
 
 =head2 NewGroupName => Str
 
-  
-
-New name for the group. Only include this if changing the group's name.
-
-
-
-
-
-
-
-
+  New name for the group. Only include this if changing the group's name.
 
 
 =head2 NewPath => Str
 
-  
-
-New path for the group. Only include this if changing the group's path.
-
-
-
-
-
-
-
-
-
+  New path for the group. Only include this if changing the group's path.
 
 
 

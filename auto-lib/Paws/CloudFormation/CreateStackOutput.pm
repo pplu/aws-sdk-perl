@@ -1,9 +1,8 @@
 
-package Paws::CloudFormation::CreateStackOutput {
+package Paws::CloudFormation::CreateStackOutput;
   use Moose;
   has StackId => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::CloudFormation::CreateStackOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 StackId => Str
 
-  
-
-Unique identifier of the stack.
-
-
-
-
-
-
-
-
-
+  Unique identifier of the stack.
 
 
 =cut

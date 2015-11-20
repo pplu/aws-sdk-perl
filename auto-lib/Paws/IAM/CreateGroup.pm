@@ -1,5 +1,5 @@
 
-package Paws::IAM::CreateGroup {
+package Paws::IAM::CreateGroup;
   use Moose;
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has Path => (is => 'ro', isa => 'Str');
@@ -9,7 +9,6 @@ package Paws::IAM::CreateGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::CreateGroupResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateGroupResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method CreateGroup on 
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method CreateGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateGroup.
 
 As an example:
 
@@ -34,39 +33,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GroupName => Str
 
-  
-
-The name of the group to create. Do not include the path in this value.
-
-
-
-
-
-
-
-
+  The name of the group to create. Do not include the path in this value.
 
 
 =head2 Path => Str
 
-  
-
-The path to the group. For more information about paths, see IAM
+  The path to the group. For more information about paths, see IAM
 Identifiers in the I<Using IAM> guide.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
-
-
-
-
-
-
-
-
-
 
 
 

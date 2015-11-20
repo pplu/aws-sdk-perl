@@ -1,17 +1,16 @@
 
-package Paws::CloudWatchLogs::DescribeSubscriptionFilters {
+package Paws::CloudWatchLogs::DescribeSubscriptionFilters;
   use Moose;
-  has filterNamePrefix => (is => 'ro', isa => 'Str');
-  has limit => (is => 'ro', isa => 'Int');
-  has logGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has nextToken => (is => 'ro', isa => 'Str');
+  has FilterNamePrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterNamePrefix' );
+  has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
+  has LogGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'logGroupName' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeSubscriptionFilters');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method DescribeSubscri
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method DescribeSubscriptionFilters.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSubscriptionFilters.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeSubscriptionFilters.
 
 As an example:
 
@@ -36,43 +35,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 filterNamePrefix => Str
 
-  
+=head2 FilterNamePrefix => Str
 
-Will only return subscription filters that match the provided
+  Will only return subscription filters that match the provided
 filterNamePrefix. If you don't specify a value, no prefix filter is
 applied.
 
 
-
-
-
-
-
-
-
-
-=head2 limit => Int
+=head2 Limit => Int
 
   
 
-=head2 B<REQUIRED> logGroupName => Str
 
-  
+=head2 B<REQUIRED> LogGroupName => Str
 
-The log group name for which subscription filters are to be listed.
-
+  The log group name for which subscription filters are to be listed.
 
 
-
-
-
-
-
-
-
-=head2 nextToken => Str
+=head2 NextToken => Str
 
   
 

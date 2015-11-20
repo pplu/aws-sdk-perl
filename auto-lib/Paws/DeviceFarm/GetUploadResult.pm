@@ -1,9 +1,8 @@
 
-package Paws::DeviceFarm::GetUploadResult {
+package Paws::DeviceFarm::GetUploadResult;
   use Moose;
-  has upload => (is => 'ro', isa => 'Paws::DeviceFarm::Upload');
+  has Upload => (is => 'ro', isa => 'Paws::DeviceFarm::Upload', traits => ['Unwrapped'], xmlname => 'upload' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,8 @@ Paws::DeviceFarm::GetUploadResult
 
 =head1 ATTRIBUTES
 
-=head2 upload => Paws::DeviceFarm::Upload
+
+=head2 Upload => L<Paws::DeviceFarm::Upload>
 
   
 

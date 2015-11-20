@@ -1,7 +1,68 @@
-package Paws::CloudWatchLogs::RejectedLogEventsInfo {
+package Paws::CloudWatchLogs::RejectedLogEventsInfo;
   use Moose;
-  has expiredLogEventEndIndex => (is => 'ro', isa => 'Int');
-  has tooNewLogEventStartIndex => (is => 'ro', isa => 'Int');
-  has tooOldLogEventEndIndex => (is => 'ro', isa => 'Int');
-}
+  has ExpiredLogEventEndIndex => (is => 'ro', isa => 'Int', xmlname => 'expiredLogEventEndIndex', request_name => 'expiredLogEventEndIndex', traits => ['Unwrapped','NameInRequest']);
+  has TooNewLogEventStartIndex => (is => 'ro', isa => 'Int', xmlname => 'tooNewLogEventStartIndex', request_name => 'tooNewLogEventStartIndex', traits => ['Unwrapped','NameInRequest']);
+  has TooOldLogEventEndIndex => (is => 'ro', isa => 'Int', xmlname => 'tooOldLogEventEndIndex', request_name => 'tooOldLogEventEndIndex', traits => ['Unwrapped','NameInRequest']);
 1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::CloudWatchLogs::RejectedLogEventsInfo
+
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::CloudWatchLogs::RejectedLogEventsInfo object:
+
+  $service_obj->Method(Att1 => { ExpiredLogEventEndIndex => $value, ..., TooOldLogEventEndIndex => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchLogs::RejectedLogEventsInfo object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->ExpiredLogEventEndIndex
+
+=head1 DESCRIPTION
+
+This class has no description
+
+=head1 ATTRIBUTES
+
+
+=head2 ExpiredLogEventEndIndex => Int
+
+  
+
+
+=head2 TooNewLogEventStartIndex => Int
+
+  
+
+
+=head2 TooOldLogEventEndIndex => Int
+
+  
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::CloudWatchLogs>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

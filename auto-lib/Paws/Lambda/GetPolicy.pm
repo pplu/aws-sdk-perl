@@ -1,16 +1,16 @@
 
-package Paws::Lambda::GetPolicy {
+package Paws::Lambda::GetPolicy;
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
+  has Qualifier => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetPolicy');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/versions/HEAD/policy');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/policy');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::GetPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetPolicyResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +25,7 @@ This class represents the parameters used for calling the method GetPolicy on th
 AWS Lambda service. Use the attributes of this class
 as arguments to method GetPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetPolicy.
 
 As an example:
 
@@ -35,11 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-Function name whose access policy you want to retrieve.
+  Function name whose resource policy you want to retrieve.
 
 You can specify an unqualified function name (for example, "Thumbnail")
 or you can specify Amazon Resource Name (ARN) of the function (for
@@ -50,13 +49,13 @@ applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
 
+=head2 Qualifier => Str
 
-
-
-
-
-
-
+  You can specify this optional query parameter to specify function
+version or alias name in which case this API will return all
+permissions associated with the specific ARN. If you don't provide this
+parameter, the API will return permissions that apply to the
+unqualified function ARN.
 
 
 

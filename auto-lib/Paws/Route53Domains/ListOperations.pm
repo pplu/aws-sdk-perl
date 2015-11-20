@@ -1,5 +1,5 @@
 
-package Paws::Route53Domains::ListOperations {
+package Paws::Route53Domains::ListOperations;
   use Moose;
   has Marker => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
@@ -9,7 +9,6 @@ package Paws::Route53Domains::ListOperations {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListOperations');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::ListOperationsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ListOperations 
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method ListOperations.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListOperations.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListOperations.
 
 As an example:
 
@@ -34,11 +33,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Marker => Str
 
-  
-
-For an initial request for a list of operations, omit this element. If
+  For an initial request for a list of operations, omit this element. If
 the number of operations that are not yet complete is greater than the
 value that you specified for C<MaxItems>, you can use C<Marker> to
 return additional operations. Get the value of C<NextPageMarker> from
@@ -52,19 +50,9 @@ Default: None
 Required: No
 
 
-
-
-
-
-
-
-
-
 =head2 MaxItems => Int
 
-  
-
-Number of domains to be returned.
+  Number of domains to be returned.
 
 Type: Integer
 
@@ -73,15 +61,6 @@ Default: 20
 Constraints: A value between 1 and 100.
 
 Required: No
-
-
-
-
-
-
-
-
-
 
 
 

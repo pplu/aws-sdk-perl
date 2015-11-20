@@ -1,9 +1,13 @@
-package Paws::DS {
+package Paws::DS;
   use Moose;
   sub service { 'ds' }
   sub version { '2015-04-16' }
   sub target_prefix { 'DirectoryService_20150416' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -93,7 +97,9 @@ package Paws::DS {
     my $call_object = $self->new_with_coercions('Paws::DS::UpdateRadius', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
+
+  sub operations { qw/ConnectDirectory CreateAlias CreateComputer CreateDirectory CreateSnapshot DeleteDirectory DeleteSnapshot DescribeDirectories DescribeSnapshots DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits RestoreFromSnapshot UpdateRadius / }
+
 1;
 
 ### main pod documentation begin ###
@@ -106,7 +112,7 @@ Paws::DS - Perl Interface to AWS AWS Directory Service
 
   use Paws;
 
-  my $obj = Paws->service('DS')->new;
+  my $obj = Paws->service('DS');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],
@@ -120,43 +126,21 @@ Paws::DS - Perl Interface to AWS AWS Directory Service
 
 =head1 DESCRIPTION
 
-
-
 AWS Directory Service
 
 This is the I<AWS Directory Service API Reference>. This guide provides
 detailed information about AWS Directory Service operations, data
 types, parameters, and errors.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
-=head2 ConnectDirectory(ConnectSettings => Paws::DS::DirectoryConnectSettings, Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str])
+=head2 ConnectDirectory(ConnectSettings => L<Paws::DS::DirectoryConnectSettings>, Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str])
 
 Each argument is described in detail in: L<Paws::DS::ConnectDirectory>
 
 Returns: a L<Paws::DS::ConnectDirectoryResult> instance
 
-  
-
-Creates an AD Connector to connect an on-premises directory.
-
-
-
-
-
-
-
-
-
+  Creates an AD Connector to connect an on-premises directory.
 
 
 =head2 CreateAlias(Alias => Str, DirectoryId => Str)
@@ -165,9 +149,7 @@ Each argument is described in detail in: L<Paws::DS::CreateAlias>
 
 Returns: a L<Paws::DS::CreateAliasResult> instance
 
-  
-
-Creates an alias for a directory and assigns the alias to the
+  Creates an alias for a directory and assigns the alias to the
 directory. The alias is used to construct the access URL for the
 directory, such as C<http://E<lt>aliasE<gt>.awsapps.com>.
 
@@ -175,54 +157,23 @@ After an alias has been created, it cannot be deleted or reused, so
 this operation should only be used when absolutely necessary.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateComputer(ComputerName => Str, DirectoryId => Str, Password => Str, [ComputerAttributes => ArrayRef[Paws::DS::Attribute], OrganizationalUnitDistinguishedName => Str])
+=head2 CreateComputer(ComputerName => Str, DirectoryId => Str, Password => Str, [ComputerAttributes => ArrayRef[L<Paws::DS::Attribute>], OrganizationalUnitDistinguishedName => Str])
 
 Each argument is described in detail in: L<Paws::DS::CreateComputer>
 
 Returns: a L<Paws::DS::CreateComputerResult> instance
 
-  
-
-Creates a computer account in the specified directory, and joins the
+  Creates a computer account in the specified directory, and joins the
 computer to the directory.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateDirectory(Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str, VpcSettings => Paws::DS::DirectoryVpcSettings])
+=head2 CreateDirectory(Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str, VpcSettings => L<Paws::DS::DirectoryVpcSettings>])
 
 Each argument is described in detail in: L<Paws::DS::CreateDirectory>
 
 Returns: a L<Paws::DS::CreateDirectoryResult> instance
 
-  
-
-Creates a Simple AD directory.
-
-
-
-
-
-
-
-
-
+  Creates a Simple AD directory.
 
 
 =head2 CreateSnapshot(DirectoryId => Str, [Name => Str])
@@ -231,20 +182,9 @@ Each argument is described in detail in: L<Paws::DS::CreateSnapshot>
 
 Returns: a L<Paws::DS::CreateSnapshotResult> instance
 
-  
-
-Creates a snapshot of an existing directory.
+  Creates a snapshot of an existing directory.
 
 You cannot take snapshots of extended or connected directories.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteDirectory(DirectoryId => Str)
@@ -253,18 +193,7 @@ Each argument is described in detail in: L<Paws::DS::DeleteDirectory>
 
 Returns: a L<Paws::DS::DeleteDirectoryResult> instance
 
-  
-
-Deletes an AWS Directory Service directory.
-
-
-
-
-
-
-
-
-
+  Deletes an AWS Directory Service directory.
 
 
 =head2 DeleteSnapshot(SnapshotId => Str)
@@ -273,18 +202,7 @@ Each argument is described in detail in: L<Paws::DS::DeleteSnapshot>
 
 Returns: a L<Paws::DS::DeleteSnapshotResult> instance
 
-  
-
-Deletes a directory snapshot.
-
-
-
-
-
-
-
-
-
+  Deletes a directory snapshot.
 
 
 =head2 DescribeDirectories([DirectoryIds => ArrayRef[Str], Limit => Int, NextToken => Str])
@@ -293,9 +211,7 @@ Each argument is described in detail in: L<Paws::DS::DescribeDirectories>
 
 Returns: a L<Paws::DS::DescribeDirectoriesResult> instance
 
-  
-
-Obtains information about the directories that belong to this account.
+  Obtains information about the directories that belong to this account.
 
 You can retrieve information about specific directories by passing the
 directory identifiers in the I<DirectoryIds> parameter. Otherwise, all
@@ -311,24 +227,13 @@ You can also specify a maximum number of return results with the
 I<Limit> parameter.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeSnapshots([DirectoryId => Str, Limit => Int, NextToken => Str, SnapshotIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::DS::DescribeSnapshots>
 
 Returns: a L<Paws::DS::DescribeSnapshotsResult> instance
 
-  
-
-Obtains information about the directory snapshots that belong to this
+  Obtains information about the directory snapshots that belong to this
 account.
 
 This operation supports pagination with the use of the I<NextToken>
@@ -340,34 +245,14 @@ You can also specify a maximum number of return results with the
 I<Limit> parameter.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DisableRadius(DirectoryId => Str)
 
 Each argument is described in detail in: L<Paws::DS::DisableRadius>
 
 Returns: a L<Paws::DS::DisableRadiusResult> instance
 
-  
-
-Disables multi-factor authentication (MFA) with Remote Authentication
+  Disables multi-factor authentication (MFA) with Remote Authentication
 Dial In User Service (RADIUS) for an AD Connector directory.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DisableSso(DirectoryId => Str, [Password => Str, UserName => Str])
@@ -376,39 +261,17 @@ Each argument is described in detail in: L<Paws::DS::DisableSso>
 
 Returns: a L<Paws::DS::DisableSsoResult> instance
 
-  
-
-Disables single-sign on for a directory.
+  Disables single-sign on for a directory.
 
 
-
-
-
-
-
-
-
-
-
-=head2 EnableRadius(DirectoryId => Str, RadiusSettings => Paws::DS::RadiusSettings)
+=head2 EnableRadius(DirectoryId => Str, RadiusSettings => L<Paws::DS::RadiusSettings>)
 
 Each argument is described in detail in: L<Paws::DS::EnableRadius>
 
 Returns: a L<Paws::DS::EnableRadiusResult> instance
 
-  
-
-Enables multi-factor authentication (MFA) with Remote Authentication
+  Enables multi-factor authentication (MFA) with Remote Authentication
 Dial In User Service (RADIUS) for an AD Connector directory.
-
-
-
-
-
-
-
-
-
 
 
 =head2 EnableSso(DirectoryId => Str, [Password => Str, UserName => Str])
@@ -417,38 +280,16 @@ Each argument is described in detail in: L<Paws::DS::EnableSso>
 
 Returns: a L<Paws::DS::EnableSsoResult> instance
 
-  
-
-Enables single-sign on for a directory.
+  Enables single-sign on for a directory.
 
 
-
-
-
-
-
-
-
-
-
-=head2 GetDirectoryLimits( => )
+=head2 GetDirectoryLimits()
 
 Each argument is described in detail in: L<Paws::DS::GetDirectoryLimits>
 
 Returns: a L<Paws::DS::GetDirectoryLimitsResult> instance
 
-  
-
-Obtains directory limit information for the current region.
-
-
-
-
-
-
-
-
-
+  Obtains directory limit information for the current region.
 
 
 =head2 GetSnapshotLimits(DirectoryId => Str)
@@ -457,18 +298,7 @@ Each argument is described in detail in: L<Paws::DS::GetSnapshotLimits>
 
 Returns: a L<Paws::DS::GetSnapshotLimitsResult> instance
 
-  
-
-Obtains the manual snapshot limits for a directory.
-
-
-
-
-
-
-
-
-
+  Obtains the manual snapshot limits for a directory.
 
 
 =head2 RestoreFromSnapshot(SnapshotId => Str)
@@ -477,9 +307,7 @@ Each argument is described in detail in: L<Paws::DS::RestoreFromSnapshot>
 
 Returns: a L<Paws::DS::RestoreFromSnapshotResult> instance
 
-  
-
-Restores a directory using an existing directory snapshot.
+  Restores a directory using an existing directory snapshot.
 
 When you restore a directory from a snapshot, any changes made to the
 directory after the snapshot date are overwritten.
@@ -491,34 +319,14 @@ B<DirectoryDescription.Stage> value changes to C<Active>, the restore
 operation is complete.
 
 
-
-
-
-
-
-
-
-
-
-=head2 UpdateRadius(DirectoryId => Str, RadiusSettings => Paws::DS::RadiusSettings)
+=head2 UpdateRadius(DirectoryId => Str, RadiusSettings => L<Paws::DS::RadiusSettings>)
 
 Each argument is described in detail in: L<Paws::DS::UpdateRadius>
 
 Returns: a L<Paws::DS::UpdateRadiusResult> instance
 
-  
-
-Updates the Remote Authentication Dial In User Service (RADIUS) server
+  Updates the Remote Authentication Dial In User Service (RADIUS) server
 information for an AD Connector directory.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

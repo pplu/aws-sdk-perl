@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::DescribeLifecycleHooks {
+package Paws::AutoScaling::DescribeLifecycleHooks;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has LifecycleHookNames => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -9,7 +9,6 @@ package Paws::AutoScaling::DescribeLifecycleHooks {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLifecycleHooks');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::DescribeLifecycleHooksAnswer');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLifecycleHooksResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DescribeLifecyc
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribeLifecycleHooks.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLifecycleHooks.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLifecycleHooks.
 
 As an example:
 
@@ -34,35 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the group.
-
-
-
-
-
-
-
-
+  The name of the group.
 
 
 =head2 LifecycleHookNames => ArrayRef[Str]
 
-  
-
-The names of one or more lifecycle hooks.
-
-
-
-
-
-
-
-
-
+  The names of one or more lifecycle hooks.
 
 
 

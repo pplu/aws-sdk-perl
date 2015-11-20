@@ -1,5 +1,5 @@
 
-package Paws::SNS::CreatePlatformEndpoint {
+package Paws::SNS::CreatePlatformEndpoint;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
   has CustomUserData => (is => 'ro', isa => 'Str');
@@ -11,7 +11,6 @@ package Paws::SNS::CreatePlatformEndpoint {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePlatformEndpoint');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::CreateEndpointResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePlatformEndpointResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CreatePlatformE
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method CreatePlatformEndpoint.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreatePlatformEndpoint.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePlatformEndpoint.
 
 As an example:
 
@@ -36,72 +35,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::SNS::MapStringToString
 
-  
+=head2 Attributes => L<Paws::SNS::MapStringToString>
 
-For a list of attributes, see SetEndpointAttributes.
-
-
-
-
-
-
-
-
+  For a list of attributes, see SetEndpointAttributes.
 
 
 =head2 CustomUserData => Str
 
-  
-
-Arbitrary user data to associate with the endpoint. Amazon SNS does not
+  Arbitrary user data to associate with the endpoint. Amazon SNS does not
 use this data. The data must be in UTF-8 format and less than 2KB.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> PlatformApplicationArn => Str
 
-  
-
-PlatformApplicationArn returned from CreatePlatformApplication is used
+  PlatformApplicationArn returned from CreatePlatformApplication is used
 to create a an endpoint.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> Token => Str
 
-  
-
-Unique identifier created by the notification service for an app on a
+  Unique identifier created by the notification service for an app on a
 device. The specific name for Token will vary, depending on which
 notification service is being used. For example, when using APNS as the
 notification service, you need the device token. Alternatively, when
 using GCM or ADM, the device token equivalent is called the
 registration ID.
-
-
-
-
-
-
-
-
-
 
 
 

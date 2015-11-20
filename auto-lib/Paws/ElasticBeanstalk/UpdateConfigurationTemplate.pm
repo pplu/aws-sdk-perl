@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::UpdateConfigurationTemplate {
+package Paws::ElasticBeanstalk::UpdateConfigurationTemplate;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
@@ -12,7 +12,6 @@ package Paws::ElasticBeanstalk::UpdateConfigurationTemplate {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationTemplate');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::ConfigurationSettingsDescription');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateConfigurationTemplateResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method UpdateConfigura
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method UpdateConfigurationTemplate.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateConfigurationTemplate.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateConfigurationTemplate.
 
 As an example:
 
@@ -37,11 +36,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> ApplicationName => Str
 
-  
-
-The name of the application associated with the configuration template
+  The name of the application associated with the configuration template
 to update.
 
 If no application is found with this name,
@@ -49,80 +47,31 @@ C<UpdateConfigurationTemplate> returns an C<InvalidParameterValue>
 error.
 
 
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
-
-A new description for the configuration.
+  A new description for the configuration.
 
 
+=head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
-
-
-
-
-
-
-
-=head2 OptionSettings => ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]
-
-  
-
-A list of configuration option settings to update with the new
+  A list of configuration option settings to update with the new
 specified option value.
 
 
+=head2 OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
 
-
-
-
-
-
-
-
-=head2 OptionsToRemove => ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]
-
-  
-
-A list of configuration options to remove from the configuration set.
+  A list of configuration options to remove from the configuration set.
 
 Constraint: You can remove only C<UserDefined> configuration options.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TemplateName => Str
 
-  
-
-The name of the configuration template to update.
+  The name of the configuration template to update.
 
 If no configuration template is found with this name,
 C<UpdateConfigurationTemplate> returns an C<InvalidParameterValue>
 error.
-
-
-
-
-
-
-
-
-
 
 
 

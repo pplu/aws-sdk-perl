@@ -1,5 +1,5 @@
 
-package Paws::EC2::DescribeVpcEndpoints {
+package Paws::EC2::DescribeVpcEndpoints;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
@@ -12,7 +12,6 @@ package Paws::EC2::DescribeVpcEndpoints {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVpcEndpoints');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::DescribeVpcEndpointsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method DescribeVpcEndp
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DescribeVpcEndpoints.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVpcEndpoints.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVpcEndpoints.
 
 As an example:
 
@@ -37,29 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+=head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::EC2::Filter]
-
-  
-
-One or more filters.
+  One or more filters.
 
 =over
 
@@ -84,18 +72,9 @@ C<available> | C<deleting> | C<deleted>)
 
 
 
-
-
-
-
-
-
-
 =head2 MaxResults => Int
 
-  
-
-The maximum number of items to return for this request. The request
+  The maximum number of items to return for this request. The request
 returns a token that you can specify in a subsequent call to get the
 next set of results.
 
@@ -103,44 +82,15 @@ Constraint: If the value is greater than 1000, we return only 1000
 items.
 
 
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The token for the next set of items to return. (You received this token
+  The token for the next set of items to return. (You received this token
 from a prior call.)
-
-
-
-
-
-
-
-
 
 
 =head2 VpcEndpointIds => ArrayRef[Str]
 
-  
-
-One or more endpoint IDs.
-
-
-
-
-
-
-
-
-
+  One or more endpoint IDs.
 
 
 

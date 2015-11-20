@@ -1,6 +1,7 @@
 package Paws::Credential::File {
   use Moose;
   use Config::INI::Reader;
+  use File::HomeDir;
 
   has profile => (is => 'ro', default => sub { $ENV{ AWS_DEFAULT_PROFILE } or 'default' });
 
@@ -14,7 +15,7 @@ package Paws::Credential::File {
   });
 
   has file_name => (is => 'ro', default => sub { 'credentials' });
-  has path => (is => 'ro', default => sub { return $ENV{HOME} . '/.aws/' });
+  has path => (is => 'ro', default => sub { return File::HomeDir->my_home . '/.aws/' });
 
   has _ini_contents => (is => 'ro', isa => 'HashRef', lazy => 1, default => sub {
     my $self = shift;

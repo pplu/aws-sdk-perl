@@ -1,5 +1,5 @@
 
-package Paws::CloudFormation::SignalResource {
+package Paws::CloudFormation::SignalResource;
   use Moose;
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has StackName => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::CloudFormation::SignalResource {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SignalResource');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method SignalResource 
 AWS CloudFormation service. Use the attributes of this class
 as arguments to method SignalResource.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SignalResource.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SignalResource.
 
 As an example:
 
@@ -36,73 +35,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> LogicalResourceId => Str
 
-  
-
-The logical ID of the resource that you want to signal. The logical ID
+  The logical ID of the resource that you want to signal. The logical ID
 is the name of the resource that given in the template.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> StackName => Str
 
-  
-
-The stack name or unique stack ID that includes the resource that you
+  The stack name or unique stack ID that includes the resource that you
 want to signal.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The status of the signal, which is either success or failure. A failure
+  The status of the signal, which is either success or failure. A failure
 signal causes AWS CloudFormation to immediately fail the stack creation
 or update.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> UniqueId => Str
 
-  
-
-A unique ID of the signal. When you signal Amazon EC2 instances or Auto
+  A unique ID of the signal. When you signal Amazon EC2 instances or Auto
 Scaling groups, specify the instance ID that you are signaling as the
 unique ID. If you send multiple signals to a single resource (such as
 signaling a wait condition), each signal requires a different unique
 ID.
-
-
-
-
-
-
-
-
-
 
 
 

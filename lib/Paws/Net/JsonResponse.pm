@@ -1,6 +1,6 @@
 package Paws::Net::JsonResponse {
   use Moose::Role;
-  use JSON;
+  use JSON::MaybeXS;
   use Carp qw(croak);
   use Paws::Exception;
   
@@ -9,7 +9,7 @@ package Paws::Net::JsonResponse {
 
     return {} if ($data eq '');
 
-    my $json = from_json( $data );
+    my $json = decode_json( $data );
     return $json;
   }
 
@@ -54,7 +54,7 @@ package Paws::Net::JsonResponse {
 
     my $inner_class = $att_class->meta->get_attribute('Map')->type_constraint->name;
     ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
-    Module::Runtime::require_module("$inner_class");
+    Paws->load_class("$inner_class");
 
     if (not defined $value){
       return $att_class->new(Map => {});

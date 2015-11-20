@@ -1,9 +1,8 @@
 
-package Paws::SNS::GetTopicAttributesResponse {
+package Paws::SNS::GetTopicAttributesResponse;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::SNS::TopicAttributesMap');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,11 +13,10 @@ Paws::SNS::GetTopicAttributesResponse
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::SNS::TopicAttributesMap
 
-  
+=head2 Attributes => L<Paws::SNS::TopicAttributesMap>
 
-A map of the topic's attributes. Attributes in this map include the
+  A map of the topic's attributes. Attributes in this map include the
 following:
 
 =over
@@ -49,14 +47,6 @@ delivery policy
 effective delivery policy that takes into account system defaults
 
 =back
-
-
-
-
-
-
-
-
 
 
 

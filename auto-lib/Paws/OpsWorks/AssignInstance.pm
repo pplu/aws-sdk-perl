@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::AssignInstance {
+package Paws::OpsWorks::AssignInstance;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has LayerIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -9,7 +9,6 @@ package Paws::OpsWorks::AssignInstance {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'AssignInstance');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method AssignInstance 
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method AssignInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to AssignInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to AssignInstance.
 
 As an example:
 
@@ -34,36 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The instance ID.
-
-
-
-
-
-
-
-
+  The instance ID.
 
 
 =head2 B<REQUIRED> LayerIds => ArrayRef[Str]
 
-  
-
-The layer ID, which must correspond to a custom layer. You cannot
+  The layer ID, which must correspond to a custom layer. You cannot
 assign a registered instance to a built-in layer.
-
-
-
-
-
-
-
-
-
 
 
 

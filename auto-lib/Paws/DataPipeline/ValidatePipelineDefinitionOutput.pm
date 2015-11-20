@@ -1,11 +1,10 @@
 
-package Paws::DataPipeline::ValidatePipelineDefinitionOutput {
+package Paws::DataPipeline::ValidatePipelineDefinitionOutput;
   use Moose;
-  has errored => (is => 'ro', isa => 'Bool', required => 1);
-  has validationErrors => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationError]');
-  has validationWarnings => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationWarning]');
+  has Errored => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'errored' , required => 1);
+  has ValidationErrors => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationError]', traits => ['Unwrapped'], xmlname => 'validationErrors' );
+  has ValidationWarnings => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ValidationWarning]', traits => ['Unwrapped'], xmlname => 'validationWarnings' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,48 +14,18 @@ Paws::DataPipeline::ValidatePipelineDefinitionOutput
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> errored => Bool
 
-  
+=head2 B<REQUIRED> Errored => Bool
 
-Indicates whether there were validation errors.
+  Indicates whether there were validation errors.
 
+=head2 ValidationErrors => ArrayRef[L<Paws::DataPipeline::ValidationError>]
 
+  Any validation errors that were found.
 
+=head2 ValidationWarnings => ArrayRef[L<Paws::DataPipeline::ValidationWarning>]
 
-
-
-
-
-
-=head2 validationErrors => ArrayRef[Paws::DataPipeline::ValidationError]
-
-  
-
-Any validation errors that were found.
-
-
-
-
-
-
-
-
-
-=head2 validationWarnings => ArrayRef[Paws::DataPipeline::ValidationWarning]
-
-  
-
-Any validation warnings that were found.
-
-
-
-
-
-
-
-
-
+  Any validation warnings that were found.
 
 
 =cut

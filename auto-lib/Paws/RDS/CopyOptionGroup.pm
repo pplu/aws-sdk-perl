@@ -1,5 +1,5 @@
 
-package Paws::RDS::CopyOptionGroup {
+package Paws::RDS::CopyOptionGroup;
   use Moose;
   has SourceOptionGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
@@ -11,7 +11,6 @@ package Paws::RDS::CopyOptionGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyOptionGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CopyOptionGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyOptionGroupResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CopyOptionGroup
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CopyOptionGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CopyOptionGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyOptionGroup.
 
 As an example:
 
@@ -36,11 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SourceOptionGroupIdentifier => Str
 
-  
-
-The identifier or ARN for the source option group. For information
+  The identifier or ARN for the source option group. For information
 about creating an ARN, see Constructing an RDS Amazon Resource Name
 (ARN).
 
@@ -62,37 +60,19 @@ C<arn:aws:rds:us-west-2:123456789012:og:special-options>.
 
 
 
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
+
 
 =head2 B<REQUIRED> TargetOptionGroupDescription => Str
 
-  
-
-The description for the copied option group.
-
-
-
-
-
-
-
-
+  The description for the copied option group.
 
 
 =head2 B<REQUIRED> TargetOptionGroupIdentifier => Str
 
-  
-
-The identifier for the copied option group.
+  The identifier for the copied option group.
 
 Constraints:
 
@@ -109,15 +89,6 @@ Constraints:
 =back
 
 Example: C<my-option-group>
-
-
-
-
-
-
-
-
-
 
 
 

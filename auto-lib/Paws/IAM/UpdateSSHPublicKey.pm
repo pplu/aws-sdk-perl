@@ -1,5 +1,5 @@
 
-package Paws::IAM::UpdateSSHPublicKey {
+package Paws::IAM::UpdateSSHPublicKey;
   use Moose;
   has SSHPublicKeyId => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::IAM::UpdateSSHPublicKey {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSSHPublicKey');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method UpdateSSHPublic
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method UpdateSSHPublicKey.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateSSHPublicKey.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateSSHPublicKey.
 
 As an example:
 
@@ -35,52 +34,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SSHPublicKeyId => Str
 
-  
-
-The unique identifier for the SSH public key.
-
-
-
-
-
-
-
-
+  The unique identifier for the SSH public key.
 
 
 =head2 B<REQUIRED> Status => Str
 
-  
-
-The status to assign to the SSH public key. C<Active> means the key can
+  The status to assign to the SSH public key. C<Active> means the key can
 be used for authentication with an AWS CodeCommit repository.
 C<Inactive> means the key cannot be used.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the IAM user associated with the SSH public key.
-
-
-
-
-
-
-
-
-
+  The name of the IAM user associated with the SSH public key.
 
 
 

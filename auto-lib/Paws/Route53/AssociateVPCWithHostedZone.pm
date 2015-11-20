@@ -1,5 +1,5 @@
 
-package Paws::Route53::AssociateVPCWithHostedZone {
+package Paws::Route53::AssociateVPCWithHostedZone;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
@@ -12,7 +12,6 @@ package Paws::Route53::AssociateVPCWithHostedZone {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::AssociateVPCWithHostedZoneResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,52 +22,22 @@ Paws::Route53::AssociateVPCWithHostedZoneResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Comment => Str
 
-  
-
-I<Optional:> Any comments you want to include about a
+  I<Optional:> Any comments you want to include about a
 C<AssociateVPCWithHostedZoneRequest>.
-
-
-
-
-
-
-
-
 
 =head2 B<REQUIRED> HostedZoneId => Str
 
-  
-
-The ID of the hosted zone you want to associate your VPC with.
+  The ID of the hosted zone you want to associate your VPC with.
 
 Note that you cannot associate a VPC with a hosted zone that doesn't
 have an existing VPC association.
 
+=head2 B<REQUIRED> VPC => L<Paws::Route53::VPC>
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> VPC => Paws::Route53::VPC
-
-  
-
-The VPC that you want your hosted zone to be associated with.
-
-
-
-
-
-
-
-
-
+  The VPC that you want your hosted zone to be associated with.
 
 
 =cut

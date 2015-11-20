@@ -1,5 +1,5 @@
 
-package Paws::DS::DescribeDirectories {
+package Paws::DS::DescribeDirectories;
   use Moose;
   has DirectoryIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has Limit => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::DS::DescribeDirectories {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeDirectories');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::DescribeDirectoriesResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeDirecto
 AWS Directory Service service. Use the attributes of this class
 as arguments to method DescribeDirectories.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDirectories.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeDirectories.
 
 As an example:
 
@@ -35,57 +34,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 DirectoryIds => ArrayRef[Str]
 
-  
-
-A list of identifiers of the directories to obtain the information for.
+  A list of identifiers of the directories to obtain the information for.
 If this member is null, all directories that belong to the current
 account are returned.
 
 An empty list results in an C<InvalidParameterException> being thrown.
 
 
-
-
-
-
-
-
-
-
 =head2 Limit => Int
 
-  
-
-The maximum number of items to return. If this value is zero, the
+  The maximum number of items to return. If this value is zero, the
 maximum number of items is specified by the limitations of the
 operation.
 
 
-
-
-
-
-
-
-
-
 =head2 NextToken => Str
 
-  
-
-The I<DescribeDirectoriesResult.NextToken> value from a previous call
+  The I<DescribeDirectoriesResult.NextToken> value from a previous call
 to DescribeDirectories. Pass null if this is the first call.
-
-
-
-
-
-
-
-
-
 
 
 

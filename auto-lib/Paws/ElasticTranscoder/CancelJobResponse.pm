@@ -1,8 +1,7 @@
 
-package Paws::ElasticTranscoder::CancelJobResponse {
+package Paws::ElasticTranscoder::CancelJobResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

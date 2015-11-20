@@ -1,9 +1,8 @@
 
-package Paws::ELB::DeregisterEndPointsOutput {
+package Paws::ELB::DeregisterEndPointsOutput;
   use Moose;
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Instance]');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::ELB::DeregisterEndPointsOutput
 
 =head1 ATTRIBUTES
 
-=head2 Instances => ArrayRef[Paws::ELB::Instance]
 
-  
+=head2 Instances => ArrayRef[L<Paws::ELB::Instance>]
 
-The remaining instances registered with the load balancer.
-
-
-
-
-
-
-
-
-
+  The remaining instances registered with the load balancer.
 
 
 =cut

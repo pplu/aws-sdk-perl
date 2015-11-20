@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::DeregisterVolume {
+package Paws::OpsWorks::DeregisterVolume;
   use Moose;
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::OpsWorks::DeregisterVolume {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeregisterVolume');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeregisterVolum
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DeregisterVolume.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterVolume.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeregisterVolume.
 
 As an example:
 
@@ -33,22 +32,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> VolumeId => Str
 
-  
-
-The AWS OpsWorks volume ID, which is the GUID that AWS OpsWorks
+  The AWS OpsWorks volume ID, which is the GUID that AWS OpsWorks
 assigned to the instance when you registered the volume with the stack,
 not the Amazon EC2 volume ID.
-
-
-
-
-
-
-
-
-
 
 
 

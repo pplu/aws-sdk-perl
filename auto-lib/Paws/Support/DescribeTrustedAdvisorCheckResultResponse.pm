@@ -1,9 +1,8 @@
 
-package Paws::Support::DescribeTrustedAdvisorCheckResultResponse {
+package Paws::Support::DescribeTrustedAdvisorCheckResultResponse;
   use Moose;
-  has result => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCheckResult');
+  has Result => (is => 'ro', isa => 'Paws::Support::TrustedAdvisorCheckResult', traits => ['Unwrapped'], xmlname => 'result' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::Support::DescribeTrustedAdvisorCheckResultResponse
 
 =head1 ATTRIBUTES
 
-=head2 result => Paws::Support::TrustedAdvisorCheckResult
 
-  
+=head2 Result => L<Paws::Support::TrustedAdvisorCheckResult>
 
-The detailed results of the Trusted Advisor check.
-
-
-
-
-
-
-
-
-
+  The detailed results of the Trusted Advisor check.
 
 
 =cut

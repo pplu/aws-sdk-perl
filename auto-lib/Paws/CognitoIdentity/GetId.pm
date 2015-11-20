@@ -1,5 +1,5 @@
 
-package Paws::CognitoIdentity::GetId {
+package Paws::CognitoIdentity::GetId;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::CognitoIdentity::GetId {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetId');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdentity::GetIdResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method GetId on the
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method GetId.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetId.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetId.
 
 As an example:
 
@@ -35,41 +34,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AccountId => Str
 
-  
-
-A standard AWS account ID (9+ digits).
-
-
-
-
-
-
-
-
+  A standard AWS account ID (9+ digits).
 
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-An identity pool ID in the format REGION:GUID.
+  An identity pool ID in the format REGION:GUID.
 
 
+=head2 Logins => L<Paws::CognitoIdentity::LoginsMap>
 
-
-
-
-
-
-
-
-=head2 Logins => Paws::CognitoIdentity::LoginsMap
-
-  
-
-A set of optional name-value pairs that map provider names to provider
+  A set of optional name-value pairs that map provider names to provider
 tokens.
 
 The available provider names for C<Logins> are as follows:
@@ -82,19 +60,11 @@ The available provider names for C<Logins> are as follows:
 
 =item * Amazon: C<www.amazon.com>
 
-=item * Twitter: C<www.twitter.com>
+=item * Twitter: C<api.twitter.com>
 
 =item * Digits: C<www.digits.com>
 
 =back
-
-
-
-
-
-
-
-
 
 
 

@@ -1,9 +1,8 @@
 
-package Paws::DirectConnect::ConfirmPublicVirtualInterfaceResponse {
+package Paws::DirectConnect::ConfirmPublicVirtualInterfaceResponse;
   use Moose;
-  has virtualInterfaceState => (is => 'ro', isa => 'Str');
+  has VirtualInterfaceState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'virtualInterfaceState' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,8 @@ Paws::DirectConnect::ConfirmPublicVirtualInterfaceResponse
 
 =head1 ATTRIBUTES
 
-=head2 virtualInterfaceState => Str
+
+=head2 VirtualInterfaceState => Str
 
   
 

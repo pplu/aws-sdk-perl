@@ -1,5 +1,5 @@
 
-package Paws::Route53Domains::UpdateDomainContact {
+package Paws::Route53Domains::UpdateDomainContact;
   use Moose;
   has AdminContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::Route53Domains::UpdateDomainContact {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDomainContact');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::UpdateDomainContactResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method UpdateDomainCon
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method UpdateDomainContact.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDomainContact.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateDomainContact.
 
 As an example:
 
@@ -36,11 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 AdminContact => Paws::Route53Domains::ContactDetail
 
-  
+=head2 AdminContact => L<Paws::Route53Domains::ContactDetail>
 
-Provides detailed contact information.
+  Provides detailed contact information.
 
 Type: Complex
 
@@ -52,19 +50,9 @@ C<ExtraParams>
 Required: Yes
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DomainName => Str
 
-  
-
-The name of a domain.
+  The name of a domain.
 
 Type: String
 
@@ -77,19 +65,9 @@ are not supported.
 Required: Yes
 
 
+=head2 RegistrantContact => L<Paws::Route53Domains::ContactDetail>
 
-
-
-
-
-
-
-
-=head2 RegistrantContact => Paws::Route53Domains::ContactDetail
-
-  
-
-Provides detailed contact information.
+  Provides detailed contact information.
 
 Type: Complex
 
@@ -101,19 +79,9 @@ C<ExtraParams>
 Required: Yes
 
 
+=head2 TechContact => L<Paws::Route53Domains::ContactDetail>
 
-
-
-
-
-
-
-
-=head2 TechContact => Paws::Route53Domains::ContactDetail
-
-  
-
-Provides detailed contact information.
+  Provides detailed contact information.
 
 Type: Complex
 
@@ -123,15 +91,6 @@ C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
 C<ExtraParams>
 
 Required: Yes
-
-
-
-
-
-
-
-
-
 
 
 

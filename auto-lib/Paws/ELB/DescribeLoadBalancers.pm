@@ -1,5 +1,5 @@
 
-package Paws::ELB::DescribeLoadBalancers {
+package Paws::ELB::DescribeLoadBalancers;
   use Moose;
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has Marker => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::ELB::DescribeLoadBalancers {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancers');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::DescribeAccessPointsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeLoadBalancersResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method DescribeLoadBal
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method DescribeLoadBalancers.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLoadBalancers.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeLoadBalancers.
 
 As an example:
 
@@ -35,52 +34,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 LoadBalancerNames => ArrayRef[Str]
 
-  
-
-The names of the load balancers.
-
-
-
-
-
-
-
-
+  The names of the load balancers.
 
 
 =head2 Marker => Str
 
-  
-
-The marker for the next set of results. (You received this marker from
+  The marker for the next set of results. (You received this marker from
 a previous call.)
-
-
-
-
-
-
-
-
 
 
 =head2 PageSize => Int
 
-  
-
-The maximum number of results to return with this call (a number from 1
+  The maximum number of results to return with this call (a number from 1
 to 400). The default is 400.
-
-
-
-
-
-
-
-
-
 
 
 

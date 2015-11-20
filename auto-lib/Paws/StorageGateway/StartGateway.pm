@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::StartGateway {
+package Paws::StorageGateway::StartGateway;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::StorageGateway::StartGateway {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'StartGateway');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::StartGatewayOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method StartGateway on
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method StartGateway.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StartGateway.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StartGateway.
 
 As an example:
 
@@ -32,6 +31,7 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
 
 =head2 B<REQUIRED> GatewayARN => Str
 

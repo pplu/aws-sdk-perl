@@ -1,9 +1,8 @@
 
-package Paws::Support::DescribeTrustedAdvisorChecksResponse {
+package Paws::Support::DescribeTrustedAdvisorChecksResponse;
   use Moose;
-  has checks => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckDescription]', required => 1);
+  has Checks => (is => 'ro', isa => 'ArrayRef[Paws::Support::TrustedAdvisorCheckDescription]', traits => ['Unwrapped'], xmlname => 'checks' , required => 1);
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::Support::DescribeTrustedAdvisorChecksResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> checks => ArrayRef[Paws::Support::TrustedAdvisorCheckDescription]
 
-  
+=head2 B<REQUIRED> Checks => ArrayRef[L<Paws::Support::TrustedAdvisorCheckDescription>]
 
-Information about all available Trusted Advisor checks.
-
-
-
-
-
-
-
-
-
+  Information about all available Trusted Advisor checks.
 
 
 =cut

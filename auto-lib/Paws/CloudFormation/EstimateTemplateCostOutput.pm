@@ -1,9 +1,8 @@
 
-package Paws::CloudFormation::EstimateTemplateCostOutput {
+package Paws::CloudFormation::EstimateTemplateCostOutput;
   use Moose;
   has Url => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,21 +13,11 @@ Paws::CloudFormation::EstimateTemplateCostOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 Url => Str
 
-  
-
-An AWS Simple Monthly Calculator URL with a query string that describes
+  An AWS Simple Monthly Calculator URL with a query string that describes
 the resources required to run the template.
-
-
-
-
-
-
-
-
-
 
 
 =cut

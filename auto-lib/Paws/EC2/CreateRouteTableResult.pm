@@ -1,9 +1,8 @@
 
-package Paws::EC2::CreateRouteTableResult {
+package Paws::EC2::CreateRouteTableResult;
   use Moose;
   has RouteTable => (is => 'ro', isa => 'Paws::EC2::RouteTable', xmlname => 'routeTable', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::EC2::CreateRouteTableResult
 
 =head1 ATTRIBUTES
 
-=head2 RouteTable => Paws::EC2::RouteTable
 
-  
+=head2 RouteTable => L<Paws::EC2::RouteTable>
 
-Information about the route table.
-
-
-
-
-
-
-
-
-
+  Information about the route table.
 
 
 =cut

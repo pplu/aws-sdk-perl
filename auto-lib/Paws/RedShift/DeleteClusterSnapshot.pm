@@ -1,5 +1,5 @@
 
-package Paws::RedShift::DeleteClusterSnapshot {
+package Paws::RedShift::DeleteClusterSnapshot;
   use Moose;
   has SnapshotClusterIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::RedShift::DeleteClusterSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteClusterSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::DeleteClusterSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteClusterSnapshotResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DeleteClusterSn
 Amazon Redshift service. Use the attributes of this class
 as arguments to method DeleteClusterSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteClusterSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteClusterSnapshot.
 
 As an example:
 
@@ -34,11 +33,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 SnapshotClusterIdentifier => Str
 
-  
-
-The unique identifier of the cluster the snapshot was created from.
+  The unique identifier of the cluster the snapshot was created from.
 This parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.
@@ -46,31 +44,12 @@ cluster name.
 Constraints: Must be the name of valid cluster.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
-  
-
-The unique identifier of the manual snapshot to be deleted.
+  The unique identifier of the manual snapshot to be deleted.
 
 Constraints: Must be the name of an existing snapshot that is in the
 C<available> state.
-
-
-
-
-
-
-
-
-
 
 
 

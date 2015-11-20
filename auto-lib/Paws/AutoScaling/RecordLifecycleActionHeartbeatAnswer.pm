@@ -1,8 +1,7 @@
 
-package Paws::AutoScaling::RecordLifecycleActionHeartbeatAnswer {
+package Paws::AutoScaling::RecordLifecycleActionHeartbeatAnswer;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

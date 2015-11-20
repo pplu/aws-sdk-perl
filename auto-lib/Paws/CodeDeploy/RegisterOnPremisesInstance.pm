@@ -1,15 +1,14 @@
 
-package Paws::CodeDeploy::RegisterOnPremisesInstance {
+package Paws::CodeDeploy::RegisterOnPremisesInstance;
   use Moose;
-  has iamUserArn => (is => 'ro', isa => 'Str', required => 1);
-  has instanceName => (is => 'ro', isa => 'Str', required => 1);
+  has IamUserArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamUserArn' , required => 1);
+  has InstanceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceName' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RegisterOnPremisesInstance');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method RegisterOnPremi
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method RegisterOnPremisesInstance.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RegisterOnPremisesInstance.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RegisterOnPremisesInstance.
 
 As an example:
 
@@ -34,35 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> iamUserArn => Str
 
-  
+=head2 B<REQUIRED> IamUserArn => Str
 
-The ARN of the IAM user to associate with the on-premises instance.
-
+  The ARN of the IAM user to associate with the on-premises instance.
 
 
+=head2 B<REQUIRED> InstanceName => Str
 
-
-
-
-
-
-
-=head2 B<REQUIRED> instanceName => Str
-
-  
-
-The name of the on-premises instance to register.
-
-
-
-
-
-
-
-
-
+  The name of the on-premises instance to register.
 
 
 

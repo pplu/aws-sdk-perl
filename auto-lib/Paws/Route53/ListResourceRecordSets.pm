@@ -1,5 +1,5 @@
 
-package Paws::Route53::ListResourceRecordSets {
+package Paws::Route53::ListResourceRecordSets;
   use Moose;
   has HostedZoneId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Id' , required => 1);
   has MaxItems => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'maxitems' );
@@ -14,7 +14,6 @@ package Paws::Route53::ListResourceRecordSets {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListResourceRecordSetsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,73 +24,32 @@ Paws::Route53::ListResourceRecordSetsResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> HostedZoneId => Str
 
-  
-
-The ID of the hosted zone that contains the resource record sets that
+  The ID of the hosted zone that contains the resource record sets that
 you want to get.
-
-
-
-
-
-
-
-
 
 =head2 MaxItems => Str
 
-  
-
-The maximum number of records you want in the response body.
-
-
-
-
-
-
-
-
+  The maximum number of records you want in the response body.
 
 =head2 StartRecordIdentifier => Str
 
-  
-
-I<Weighted resource record sets only:> If results were truncated for a
+  I<Weighted resource record sets only:> If results were truncated for a
 given DNS name and type, specify the value of
 C<ListResourceRecordSetsResponse$NextRecordIdentifier> from the
 previous response to get the next resource record set that has the
 current DNS name and type.
 
-
-
-
-
-
-
-
-
 =head2 StartRecordName => Str
 
-  
-
-The first name in the lexicographic ordering of domain names that you
+  The first name in the lexicographic ordering of domain names that you
 want the C<ListResourceRecordSets> request to list.
-
-
-
-
-
-
-
-
 
 =head2 StartRecordType => Str
 
-  
-
-The DNS type at which to begin the listing of resource record sets.
+  The DNS type at which to begin the listing of resource record sets.
 
 Valid values: C<A> | C<AAAA> | C<CNAME> | C<MX> | C<NS> | C<PTR> |
 C<SOA> | C<SPF> | C<SRV> | C<TXT>
@@ -106,15 +64,6 @@ Values for Alias Resource Record Sets: C<A> | C<AAAA>
 
 Constraint: Specifying C<type> without specifying C<name> returns an
 InvalidInput error.
-
-
-
-
-
-
-
-
-
 
 
 =cut

@@ -1,5 +1,5 @@
 
-package Paws::RDS::CopyDBParameterGroup {
+package Paws::RDS::CopyDBParameterGroup;
   use Moose;
   has SourceDBParameterGroupIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
@@ -11,7 +11,6 @@ package Paws::RDS::CopyDBParameterGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyDBParameterGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CopyDBParameterGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CopyDBParameterGroupResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CopyDBParameter
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CopyDBParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CopyDBParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyDBParameterGroup.
 
 As an example:
 
@@ -36,11 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> SourceDBParameterGroupIdentifier => Str
 
-  
-
-The identifier or ARN for the source DB parameter group. For
+  The identifier or ARN for the source DB parameter group. For
 information about creating an ARN, see Constructing an RDS Amazon
 Resource Name (ARN).
 
@@ -62,37 +60,19 @@ C<arn:aws:rds:us-west-2:123456789012:pg:special-parameters>.
 
 
 
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
+
 
 =head2 B<REQUIRED> TargetDBParameterGroupDescription => Str
 
-  
-
-A description for the copied DB parameter group.
-
-
-
-
-
-
-
-
+  A description for the copied DB parameter group.
 
 
 =head2 B<REQUIRED> TargetDBParameterGroupIdentifier => Str
 
-  
-
-The identifier for the copied DB parameter group.
+  The identifier for the copied DB parameter group.
 
 Constraints:
 
@@ -109,15 +89,6 @@ Constraints:
 =back
 
 Example: C<my-db-parameter-group>
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,5 +1,5 @@
 
-package Paws::EMR::SetTerminationProtection {
+package Paws::EMR::SetTerminationProtection;
   use Moose;
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has TerminationProtected => (is => 'ro', isa => 'Bool', required => 1);
@@ -9,7 +9,6 @@ package Paws::EMR::SetTerminationProtection {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetTerminationProtection');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method SetTerminationP
 Amazon Elastic MapReduce service. Use the attributes of this class
 as arguments to method SetTerminationProtection.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SetTerminationProtection.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SetTerminationProtection.
 
 As an example:
 
@@ -34,39 +33,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> JobFlowIds => ArrayRef[Str]
 
-  
-
-A list of strings that uniquely identify the job flows to protect. This
+  A list of strings that uniquely identify the job flows to protect. This
 identifier is returned by RunJobFlow and can also be obtained from
 DescribeJobFlows .
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TerminationProtected => Bool
 
-  
-
-A Boolean that indicates whether to protect the job flow and prevent
+  A Boolean that indicates whether to protect the job flow and prevent
 the Amazon EC2 instances in the cluster from shutting down due to API
 calls, user intervention, or job-flow error.
-
-
-
-
-
-
-
-
-
 
 
 

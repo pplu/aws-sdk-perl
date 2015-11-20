@@ -1,5 +1,5 @@
 
-package Paws::SES::GetIdentityDkimAttributes {
+package Paws::SES::GetIdentityDkimAttributes;
   use Moose;
   has Identities => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::SES::GetIdentityDkimAttributes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetIdentityDkimAttributes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::GetIdentityDkimAttributesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetIdentityDkimAttributesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method GetIdentityDkim
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method GetIdentityDkimAttributes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetIdentityDkimAttributes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetIdentityDkimAttributes.
 
 As an example:
 
@@ -33,21 +32,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Identities => ArrayRef[Str]
 
-  
-
-A list of one or more verified identities - email addresses, domains,
+  A list of one or more verified identities - email addresses, domains,
 or both.
-
-
-
-
-
-
-
-
-
 
 
 

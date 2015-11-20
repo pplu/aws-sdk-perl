@@ -1,9 +1,8 @@
 
-package Paws::RDS::RevokeDBSecurityGroupIngressResult {
+package Paws::RDS::RevokeDBSecurityGroupIngressResult;
   use Moose;
   has DBSecurityGroup => (is => 'ro', isa => 'Paws::RDS::DBSecurityGroup');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,8 @@ Paws::RDS::RevokeDBSecurityGroupIngressResult
 
 =head1 ATTRIBUTES
 
-=head2 DBSecurityGroup => Paws::RDS::DBSecurityGroup
+
+=head2 DBSecurityGroup => L<Paws::RDS::DBSecurityGroup>
 
   
 

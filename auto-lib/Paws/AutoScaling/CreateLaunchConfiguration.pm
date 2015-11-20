@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::CreateLaunchConfiguration {
+package Paws::AutoScaling::CreateLaunchConfiguration;
   use Moose;
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::BlockDeviceMapping]');
@@ -25,7 +25,6 @@ package Paws::AutoScaling::CreateLaunchConfiguration {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateLaunchConfiguration');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +39,7 @@ This class represents the parameters used for calling the method CreateLaunchCon
 Auto Scaling service. Use the attributes of this class
 as arguments to method CreateLaunchConfiguration.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateLaunchConfiguration.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateLaunchConfiguration.
 
 As an example:
 
@@ -50,11 +49,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AssociatePublicIpAddress => Bool
 
-  
-
-Used for groups that launch instances into a virtual private cloud
+  Used for groups that launch instances into a virtual private cloud
 (VPC). Specifies whether to assign a public IP address to each
 instance. For more information, see Auto Scaling and Amazon Virtual
 Private Cloud in the I<Auto Scaling Developer Guide>.
@@ -69,72 +67,32 @@ default is C<false>. For more information, see Supported Platforms in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::AutoScaling::BlockDeviceMapping>]
 
-
-
-
-
-
-
-
-=head2 BlockDeviceMappings => ArrayRef[Paws::AutoScaling::BlockDeviceMapping]
-
-  
-
-One or more mappings that specify how block devices are exposed to the
+  One or more mappings that specify how block devices are exposed to the
 instance. For more information, see Block Device Mapping in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 ClassicLinkVPCId => Str
 
-  
-
-The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
+  The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
 to. This parameter is supported only if you are launching EC2-Classic
 instances. For more information, see ClassicLink in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str]
 
-  
-
-The IDs of one or more security groups for the VPC specified in
+  The IDs of one or more security groups for the VPC specified in
 C<ClassicLinkVPCId>. This parameter is required if C<ClassicLinkVPCId>
 is specified, and is not supported otherwise. For more information, see
 ClassicLink in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 EbsOptimized => Bool
 
-  
-
-Indicates whether the instance is optimized for Amazon EBS I/O. By
+  Indicates whether the instance is optimized for Amazon EBS I/O. By
 default, the instance is not optimized for EBS I/O. The optimization
 provides dedicated throughput to Amazon EBS and an optimized
 configuration stack to provide optimal I/O performance. This
@@ -143,19 +101,9 @@ charges apply. For more information, see Amazon EBS-Optimized Instances
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 IamInstanceProfile => Str
 
-  
-
-The name or the Amazon Resource Name (ARN) of the instance profile
+  The name or the Amazon Resource Name (ARN) of the instance profile
 associated with the IAM role for the instance.
 
 EC2 instances launched with an IAM role will automatically have AWS
@@ -166,36 +114,16 @@ Auto Scaling Instances with an IAM Role in the I<Auto Scaling Developer
 Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 ImageId => Str
 
-  
-
-The ID of the Amazon Machine Image (AMI) to use to launch your EC2
+  The ID of the Amazon Machine Image (AMI) to use to launch your EC2
 instances. For more information, see Finding an AMI in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 InstanceId => Str
 
-  
-
-The ID of the EC2 instance to use to create the launch configuration.
+  The ID of the EC2 instance to use to create the launch configuration.
 
 The new launch configuration derives attributes from the instance, with
 the exception of the block device mapping.
@@ -208,19 +136,9 @@ For more information, see Create a Launch Configuration Using an EC2
 Instance in the I<Auto Scaling Developer Guide>.
 
 
+=head2 InstanceMonitoring => L<Paws::AutoScaling::InstanceMonitoring>
 
-
-
-
-
-
-
-
-=head2 InstanceMonitoring => Paws::AutoScaling::InstanceMonitoring
-
-  
-
-Enables detailed monitoring if it is disabled. Detailed monitoring is
+  Enables detailed monitoring if it is disabled. Detailed monitoring is
 enabled by default.
 
 When detailed monitoring is enabled, Amazon CloudWatch generates
@@ -230,83 +148,33 @@ generates metrics every 5 minutes. For more information, see Monitor
 Your Auto Scaling Instances in the I<Auto Scaling Developer Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 InstanceType => Str
 
-  
-
-The instance type of the EC2 instance. For information about available
+  The instance type of the EC2 instance. For information about available
 instance types, see Available Instance Types in the I<Amazon Elastic
-Cloud Compute User Guide.>
-
-
-
-
-
-
-
-
+Compute Cloud User Guide.>
 
 
 =head2 KernelId => Str
 
-  
-
-The ID of the kernel associated with the AMI.
-
-
-
-
-
-
-
-
+  The ID of the kernel associated with the AMI.
 
 
 =head2 KeyName => Str
 
-  
-
-The name of the key pair. For more information, see Amazon EC2 Key
+  The name of the key pair. For more information, see Amazon EC2 Key
 Pairs in the I<Amazon Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> LaunchConfigurationName => Str
 
-  
-
-The name of the launch configuration. This name must be unique within
+  The name of the launch configuration. This name must be unique within
 the scope of your AWS account.
-
-
-
-
-
-
-
-
 
 
 =head2 PlacementTenancy => Str
 
-  
-
-The tenancy of the instance. An instance with a tenancy of C<dedicated>
+  The tenancy of the instance. An instance with a tenancy of C<dedicated>
 runs on single-tenant hardware and can only be launched into a VPC.
 
 You must set the value of this parameter to C<dedicated> if want to
@@ -323,34 +191,14 @@ in the I<Auto Scaling Developer Guide>.
 Valid values: C<default> | C<dedicated>
 
 
-
-
-
-
-
-
-
-
 =head2 RamdiskId => Str
 
-  
-
-The ID of the RAM disk associated with the AMI.
-
-
-
-
-
-
-
-
+  The ID of the RAM disk associated with the AMI.
 
 
 =head2 SecurityGroups => ArrayRef[Str]
 
-  
-
-One or more security groups with which to associate the instances.
+  One or more security groups with which to associate the instances.
 
 If your instances are launched in EC2-Classic, you can either specify
 security group names or the security group IDs. For more information
@@ -362,52 +210,23 @@ For more information, see Security Groups for Your VPC in the I<Amazon
 Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 SpotPrice => Str
 
-  
-
-The maximum hourly price to be paid for any Spot Instance launched to
+  The maximum hourly price to be paid for any Spot Instance launched to
 fulfill the request. Spot Instances are launched when the price you
 specify exceeds the current Spot market price. For more information,
 see Launch Spot Instances in Your Auto Scaling Group in the I<Auto
 Scaling Developer Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 UserData => Str
 
-  
-
-The user data to make available to the launched EC2 instances. For more
+  The user data to make available to the launched EC2 instances. For more
 information, see Instance Metadata and User Data in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
 At this time, launch configurations don't support compressed (zipped)
 user data files.
-
-
-
-
-
-
-
-
-
 
 
 

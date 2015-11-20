@@ -1,9 +1,8 @@
 
-package Paws::EC2::CreateVpnGatewayResult {
+package Paws::EC2::CreateVpnGatewayResult;
   use Moose;
   has VpnGateway => (is => 'ro', isa => 'Paws::EC2::VpnGateway', xmlname => 'vpnGateway', traits => ['Unwrapped',]);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::EC2::CreateVpnGatewayResult
 
 =head1 ATTRIBUTES
 
-=head2 VpnGateway => Paws::EC2::VpnGateway
 
-  
+=head2 VpnGateway => L<Paws::EC2::VpnGateway>
 
-Information about the virtual private gateway.
-
-
-
-
-
-
-
-
-
+  Information about the virtual private gateway.
 
 
 =cut

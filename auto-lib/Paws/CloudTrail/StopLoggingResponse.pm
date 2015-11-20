@@ -1,8 +1,7 @@
 
-package Paws::CloudTrail::StopLoggingResponse {
+package Paws::CloudTrail::StopLoggingResponse;
   use Moose;
 
-}
 
 ### main pod documentation begin ###
 

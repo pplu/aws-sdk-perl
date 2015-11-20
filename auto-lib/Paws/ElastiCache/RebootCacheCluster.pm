@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::RebootCacheCluster {
+package Paws::ElastiCache::RebootCacheCluster;
   use Moose;
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
   has CacheNodeIdsToReboot => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
@@ -9,7 +9,6 @@ package Paws::ElastiCache::RebootCacheCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RebootCacheCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::RebootCacheClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RebootCacheClusterResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method RebootCacheClus
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method RebootCacheCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RebootCacheCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RebootCacheCluster.
 
 As an example:
 
@@ -34,38 +33,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> CacheClusterId => Str
 
-  
-
-The cache cluster identifier. This parameter is stored as a lowercase
+  The cache cluster identifier. This parameter is stored as a lowercase
 string.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> CacheNodeIdsToReboot => ArrayRef[Str]
 
-  
-
-A list of cache node IDs to reboot. A node ID is a numeric identifier
+  A list of cache node IDs to reboot. A node ID is a numeric identifier
 (0001, 0002, etc.). To reboot an entire cache cluster, specify all of
 the cache node IDs.
-
-
-
-
-
-
-
-
-
 
 
 

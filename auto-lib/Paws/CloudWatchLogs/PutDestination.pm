@@ -1,16 +1,15 @@
 
-package Paws::CloudWatchLogs::PutDestination {
+package Paws::CloudWatchLogs::PutDestination;
   use Moose;
-  has destinationName => (is => 'ro', isa => 'Str', required => 1);
-  has roleArn => (is => 'ro', isa => 'Str', required => 1);
-  has targetArn => (is => 'ro', isa => 'Str', required => 1);
+  has DestinationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationName' , required => 1);
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
+  has TargetArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'targetArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutDestination');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatchLogs::PutDestinationResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method PutDestination 
 Amazon CloudWatch Logs service. Use the attributes of this class
 as arguments to method PutDestination.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutDestination.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutDestination.
 
 As an example:
 
@@ -35,51 +34,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> destinationName => Str
 
-  
+=head2 B<REQUIRED> DestinationName => Str
 
-A name for the destination.
-
+  A name for the destination.
 
 
+=head2 B<REQUIRED> RoleArn => Str
 
-
-
-
-
-
-
-=head2 B<REQUIRED> roleArn => Str
-
-  
-
-The ARN of an IAM role that grants Amazon CloudWatch Logs permissions
+  The ARN of an IAM role that grants Amazon CloudWatch Logs permissions
 to do Amazon Kinesis PutRecord requests on the desitnation stream.
 
 
+=head2 B<REQUIRED> TargetArn => Str
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> targetArn => Str
-
-  
-
-The ARN of an Amazon Kinesis stream to deliver matching log events to.
-
-
-
-
-
-
-
-
-
+  The ARN of an Amazon Kinesis stream to deliver matching log events to.
 
 
 

@@ -1,5 +1,5 @@
 
-package Paws::SNS::ListEndpointsByPlatformApplication {
+package Paws::SNS::ListEndpointsByPlatformApplication;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
   has PlatformApplicationArn => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::SNS::ListEndpointsByPlatformApplication {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListEndpointsByPlatformApplication');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SNS::ListEndpointsByPlatformApplicationResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListEndpointsByPlatformApplicationResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ListEndpointsBy
 Amazon Simple Notification Service service. Use the attributes of this class
 as arguments to method ListEndpointsByPlatformApplication.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListEndpointsByPlatformApplication.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListEndpointsByPlatformApplication.
 
 As an example:
 
@@ -34,38 +33,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
-  
-
-NextToken string is used when calling
+  NextToken string is used when calling
 ListEndpointsByPlatformApplication action to retrieve additional
 records that are available after the first page results.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> PlatformApplicationArn => Str
 
-  
-
-PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+  PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
 action.
-
-
-
-
-
-
-
-
-
 
 
 

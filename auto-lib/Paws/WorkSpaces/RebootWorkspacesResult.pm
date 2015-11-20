@@ -1,9 +1,8 @@
 
-package Paws::WorkSpaces::RebootWorkspacesResult {
+package Paws::WorkSpaces::RebootWorkspacesResult;
   use Moose;
   has FailedRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::FailedWorkspaceChangeRequest]');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,21 +12,11 @@ Paws::WorkSpaces::RebootWorkspacesResult
 
 =head1 ATTRIBUTES
 
-=head2 FailedRequests => ArrayRef[Paws::WorkSpaces::FailedWorkspaceChangeRequest]
 
-  
+=head2 FailedRequests => ArrayRef[L<Paws::WorkSpaces::FailedWorkspaceChangeRequest>]
 
-An array of structures that represent any WorkSpaces that could not be
+  An array of structures that represent any WorkSpaces that could not be
 rebooted.
-
-
-
-
-
-
-
-
-
 
 
 =cut

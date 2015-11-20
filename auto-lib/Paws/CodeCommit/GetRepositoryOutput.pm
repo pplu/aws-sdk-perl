@@ -1,9 +1,8 @@
 
-package Paws::CodeCommit::GetRepositoryOutput {
+package Paws::CodeCommit::GetRepositoryOutput;
   use Moose;
-  has repositoryMetadata => (is => 'ro', isa => 'Paws::CodeCommit::RepositoryMetadata');
+  has RepositoryMetadata => (is => 'ro', isa => 'Paws::CodeCommit::RepositoryMetadata', traits => ['Unwrapped'], xmlname => 'repositoryMetadata' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::CodeCommit::GetRepositoryOutput
 
 =head1 ATTRIBUTES
 
-=head2 repositoryMetadata => Paws::CodeCommit::RepositoryMetadata
 
-  
+=head2 RepositoryMetadata => L<Paws::CodeCommit::RepositoryMetadata>
 
-Information about the repository.
-
-
-
-
-
-
-
-
-
+  Information about the repository.
 
 
 =cut

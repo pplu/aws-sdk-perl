@@ -1,9 +1,8 @@
 
-package Paws::OpsWorks::CreateLayerResult {
+package Paws::OpsWorks::CreateLayerResult;
   use Moose;
   has LayerId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::OpsWorks::CreateLayerResult
 
 =head1 ATTRIBUTES
 
+
 =head2 LayerId => Str
 
-  
-
-The layer ID.
-
-
-
-
-
-
-
-
-
+  The layer ID.
 
 
 =cut

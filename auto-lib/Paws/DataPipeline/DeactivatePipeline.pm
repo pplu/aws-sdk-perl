@@ -1,15 +1,14 @@
 
-package Paws::DataPipeline::DeactivatePipeline {
+package Paws::DataPipeline::DeactivatePipeline;
   use Moose;
-  has cancelActive => (is => 'ro', isa => 'Bool');
-  has pipelineId => (is => 'ro', isa => 'Str', required => 1);
+  has CancelActive => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'cancelActive' );
+  has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeactivatePipeline');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DataPipeline::DeactivatePipelineOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DeactivatePipel
 AWS Data Pipeline service. Use the attributes of this class
 as arguments to method DeactivatePipeline.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeactivatePipeline.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeactivatePipeline.
 
 As an example:
 
@@ -34,38 +33,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cancelActive => Bool
 
-  
+=head2 CancelActive => Bool
 
-Indicates whether to cancel any running objects. The default is true,
+  Indicates whether to cancel any running objects. The default is true,
 which sets the state of any running objects to C<CANCELED>. If this
 value is false, the pipeline is deactivated after all running objects
 finish.
 
 
+=head2 B<REQUIRED> PipelineId => Str
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> pipelineId => Str
-
-  
-
-The ID of the pipeline.
-
-
-
-
-
-
-
-
-
+  The ID of the pipeline.
 
 
 

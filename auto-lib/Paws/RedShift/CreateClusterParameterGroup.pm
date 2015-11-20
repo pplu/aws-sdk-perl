@@ -1,5 +1,5 @@
 
-package Paws::RedShift::CreateClusterParameterGroup {
+package Paws::RedShift::CreateClusterParameterGroup;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', required => 1);
   has ParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::RedShift::CreateClusterParameterGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateClusterParameterGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::CreateClusterParameterGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateClusterParameterGroupResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CreateClusterPa
 Amazon Redshift service. Use the attributes of this class
 as arguments to method CreateClusterParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateClusterParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateClusterParameterGroup.
 
 As an example:
 
@@ -36,26 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Description => Str
 
-  
-
-A description of the parameter group.
-
-
-
-
-
-
-
-
+  A description of the parameter group.
 
 
 =head2 B<REQUIRED> ParameterGroupFamily => Str
 
-  
-
-The Amazon Redshift engine version to which the cluster parameter group
+  The Amazon Redshift engine version to which the cluster parameter group
 applies. The cluster engine version determines the set of parameters.
 
 To get a list of valid parameter group family names, you can call
@@ -67,19 +55,9 @@ parameter groups provide you the valid values. For example, a valid
 family name is "redshift-1.0".
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ParameterGroupName => Str
 
-  
-
-The name of the cluster parameter group.
+  The name of the cluster parameter group.
 
 Constraints:
 
@@ -98,28 +76,9 @@ Constraints:
 This value is stored as a lower-case string.
 
 
+=head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RedShift::Tag]
-
-  
-
-A list of tag instances.
-
-
-
-
-
-
-
-
-
+  A list of tag instances.
 
 
 

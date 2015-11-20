@@ -1,5 +1,5 @@
 
-package Paws::ImportExport::UpdateJob {
+package Paws::ImportExport::UpdateJob;
   use Moose;
   has APIVersion => (is => 'ro', isa => 'Str');
   has JobId => (is => 'ro', isa => 'Str', required => 1);
@@ -12,7 +12,6 @@ package Paws::ImportExport::UpdateJob {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateJob');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ImportExport::UpdateJobOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateJobResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method UpdateJob on th
 AWS Import/Export service. Use the attributes of this class
 as arguments to method UpdateJob.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateJob.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateJob.
 
 As an example:
 
@@ -37,21 +36,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 APIVersion => Str
 
   
+
 
 =head2 B<REQUIRED> JobId => Str
 
   
 
+
 =head2 B<REQUIRED> JobType => Str
 
   
 
+
 =head2 B<REQUIRED> Manifest => Str
 
   
+
 
 =head2 B<REQUIRED> ValidateOnly => Bool
 

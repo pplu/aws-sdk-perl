@@ -1,5 +1,5 @@
 
-package Paws::SSM::CreateDocument {
+package Paws::SSM::CreateDocument;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::SSM::CreateDocument {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDocument');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateDocumentResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method CreateDocument 
 Amazon Simple Systems Management Service service. Use the attributes of this class
 as arguments to method CreateDocument.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDocument.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDocument.
 
 As an example:
 
@@ -34,36 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Content => Str
 
-  
-
-A valid JSON file. For more information about the contents of this
-file, see Configuration Document.
-
-
-
-
-
-
-
-
+  A valid JSON string. For more information about the contents of this
+string, see SSM Document.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-A name for the configuration document.
-
-
-
-
-
-
-
-
-
+  A name for the SSM document.
 
 
 

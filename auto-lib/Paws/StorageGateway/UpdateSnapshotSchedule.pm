@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::UpdateSnapshotSchedule {
+package Paws::StorageGateway::UpdateSnapshotSchedule;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has RecurrenceInHours => (is => 'ro', isa => 'Int', required => 1);
@@ -11,7 +11,6 @@ package Paws::StorageGateway::UpdateSnapshotSchedule {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateSnapshotSchedule');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::UpdateSnapshotScheduleOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method UpdateSnapshotS
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method UpdateSnapshotSchedule.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateSnapshotSchedule.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateSnapshotSchedule.
 
 As an example:
 
@@ -36,69 +35,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
-  
-
-Optional description of the snapshot that overwrites the existing
+  Optional description of the snapshot that overwrites the existing
 description.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> RecurrenceInHours => Int
 
-  
-
-Frequency of snapshots. Specify the number of hours between snapshots.
-
-
-
-
-
-
-
-
+  Frequency of snapshots. Specify the number of hours between snapshots.
 
 
 =head2 B<REQUIRED> StartAt => Int
 
-  
-
-The hour of the day at which the snapshot schedule begins represented
+  The hour of the day at which the snapshot schedule begins represented
 as I<hh>, where I<hh> is the hour (0 to 23). The hour of the day is in
 the time zone of the gateway.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> VolumeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
+  The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
 operation to return a list of gateway volumes.
-
-
-
-
-
-
-
-
-
 
 
 

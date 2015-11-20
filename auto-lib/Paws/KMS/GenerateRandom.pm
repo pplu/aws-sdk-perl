@@ -1,5 +1,5 @@
 
-package Paws::KMS::GenerateRandom {
+package Paws::KMS::GenerateRandom;
   use Moose;
   has NumberOfBytes => (is => 'ro', isa => 'Int');
 
@@ -8,7 +8,6 @@ package Paws::KMS::GenerateRandom {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GenerateRandom');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::GenerateRandomResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method GenerateRandom 
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method GenerateRandom.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GenerateRandom.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GenerateRandom.
 
 As an example:
 
@@ -33,21 +32,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 NumberOfBytes => Int
 
-  
-
-Integer that contains the number of bytes to generate. Common values
+  Integer that contains the number of bytes to generate. Common values
 are 128, 256, 512, 1024 and so on. The current limit is 1024 bytes.
-
-
-
-
-
-
-
-
-
 
 
 

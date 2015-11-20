@@ -1,8 +1,7 @@
 
-package Paws::ELB::SetLoadBalancerPoliciesForBackendServerOutput {
+package Paws::ELB::SetLoadBalancerPoliciesForBackendServerOutput;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,5 +1,5 @@
 
-package Paws::ElasticBeanstalk::DescribeEvents {
+package Paws::ElasticBeanstalk::DescribeEvents;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
@@ -18,7 +18,6 @@ package Paws::ElasticBeanstalk::DescribeEvents {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticBeanstalk::EventDescriptionsMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -33,7 +32,7 @@ This class represents the parameters used for calling the method DescribeEvents 
 AWS Elastic Beanstalk service. Use the attributes of this class
 as arguments to method DescribeEvents.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEvents.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEvents.
 
 As an example:
 
@@ -43,181 +42,71 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ApplicationName => Str
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to include only those associated with this application.
-
-
-
-
-
-
-
-
 
 
 =head2 EndTime => Str
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to those that occur up to, but not including, the C<EndTime>.
-
-
-
-
-
-
-
-
 
 
 =head2 EnvironmentId => Str
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to those associated with this environment.
-
-
-
-
-
-
-
-
 
 
 =head2 EnvironmentName => Str
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to those associated with this environment.
-
-
-
-
-
-
-
-
 
 
 =head2 MaxRecords => Int
 
-  
-
-Specifies the maximum number of events that can be returned, beginning
+  Specifies the maximum number of events that can be returned, beginning
 with the most recent event.
-
-
-
-
-
-
-
-
 
 
 =head2 NextToken => Str
 
-  
-
-Pagination token. If specified, the events return the next batch of
+  Pagination token. If specified, the events return the next batch of
 results.
-
-
-
-
-
-
-
-
 
 
 =head2 RequestId => Str
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the described events to
+  If specified, AWS Elastic Beanstalk restricts the described events to
 include only those associated with this request ID.
-
-
-
-
-
-
-
-
 
 
 =head2 Severity => Str
 
-  
-
-If specified, limits the events returned from this call to include only
+  If specified, limits the events returned from this call to include only
 those with the specified severity or higher.
-
-
-
-
-
-
-
-
 
 
 =head2 StartTime => Str
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to those that occur on or after this time.
-
-
-
-
-
-
-
-
 
 
 =head2 TemplateName => Str
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to those that are associated with this environment configuration.
-
-
-
-
-
-
-
-
 
 
 =head2 VersionLabel => Str
 
-  
-
-If specified, AWS Elastic Beanstalk restricts the returned descriptions
+  If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to those associated with this application version.
-
-
-
-
-
-
-
-
-
 
 
 

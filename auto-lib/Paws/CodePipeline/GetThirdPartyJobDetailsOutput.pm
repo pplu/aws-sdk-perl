@@ -1,9 +1,8 @@
 
-package Paws::CodePipeline::GetThirdPartyJobDetailsOutput {
+package Paws::CodePipeline::GetThirdPartyJobDetailsOutput;
   use Moose;
-  has jobDetails => (is => 'ro', isa => 'Paws::CodePipeline::ThirdPartyJobDetails');
+  has JobDetails => (is => 'ro', isa => 'Paws::CodePipeline::ThirdPartyJobDetails', traits => ['Unwrapped'], xmlname => 'jobDetails' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,21 +12,11 @@ Paws::CodePipeline::GetThirdPartyJobDetailsOutput
 
 =head1 ATTRIBUTES
 
-=head2 jobDetails => Paws::CodePipeline::ThirdPartyJobDetails
 
-  
+=head2 JobDetails => L<Paws::CodePipeline::ThirdPartyJobDetails>
 
-The details of the job, including any protected values defined for the
+  The details of the job, including any protected values defined for the
 job.
-
-
-
-
-
-
-
-
-
 
 
 =cut

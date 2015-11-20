@@ -1,17 +1,16 @@
 
-package Paws::ECS::SubmitTaskStateChange {
+package Paws::ECS::SubmitTaskStateChange;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has reason => (is => 'ro', isa => 'Str');
-  has status => (is => 'ro', isa => 'Str');
-  has task => (is => 'ro', isa => 'Str');
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
+  has Task => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'task' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SubmitTaskStateChange');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::SubmitTaskStateChangeResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method SubmitTaskState
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method SubmitTaskStateChange.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to SubmitTaskStateChange.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to SubmitTaskStateChange.
 
 As an example:
 
@@ -36,67 +35,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
 
-  
+=head2 Cluster => Str
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
+  The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the task.
 
 
+=head2 Reason => Str
+
+  The reason for the state change request.
 
 
+=head2 Status => Str
+
+  The status of the state change request.
 
 
+=head2 Task => Str
 
-
-
-
-=head2 reason => Str
-
-  
-
-The reason for the state change request.
-
-
-
-
-
-
-
-
-
-
-=head2 status => Str
-
-  
-
-The status of the state change request.
-
-
-
-
-
-
-
-
-
-
-=head2 task => Str
-
-  
-
-The task UUID or full Amazon Resource Name (ARN) of the task in the
-state change request.
-
-
-
-
-
-
-
-
-
+  The task ID or full Amazon Resource Name (ARN) of the task in the state
+change request.
 
 
 

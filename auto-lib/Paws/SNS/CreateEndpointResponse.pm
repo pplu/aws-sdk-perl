@@ -1,9 +1,8 @@
 
-package Paws::SNS::CreateEndpointResponse {
+package Paws::SNS::CreateEndpointResponse;
   use Moose;
   has EndpointArn => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::SNS::CreateEndpointResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 EndpointArn => Str
 
-  
-
-EndpointArn returned from CreateEndpoint action.
-
-
-
-
-
-
-
-
-
+  EndpointArn returned from CreateEndpoint action.
 
 
 =cut

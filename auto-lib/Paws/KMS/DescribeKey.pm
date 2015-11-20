@@ -1,6 +1,7 @@
 
-package Paws::KMS::DescribeKey {
+package Paws::KMS::DescribeKey;
   use Moose;
+  has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -8,7 +9,6 @@ package Paws::KMS::DescribeKey {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeKey');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::DescribeKeyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +23,7 @@ This class represents the parameters used for calling the method DescribeKey on 
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method DescribeKey.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeKey.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeKey.
 
 As an example:
 
@@ -33,11 +33,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
+=head2 GrantTokens => ArrayRef[Str]
+
+  A list of grant tokens.
+
+For more information, go to Grant Tokens in the I<AWS Key Management
+Service Developer Guide>.
+
+
 =head2 B<REQUIRED> KeyId => Str
 
-  
-
-A unique identifier for the customer master key. This value can be a
+  A unique identifier for the customer master key. This value can be a
 globally unique identifier, a fully specified ARN to either an alias or
 a key, or an alias name prefixed by "alias/".
 
@@ -55,14 +62,6 @@ arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 =item * Alias Name Example - alias/MyAliasName
 
 =back
-
-
-
-
-
-
-
-
 
 
 

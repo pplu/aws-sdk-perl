@@ -1,15 +1,14 @@
 
-package Paws::DirectConnect::ConfirmPrivateVirtualInterface {
+package Paws::DirectConnect::ConfirmPrivateVirtualInterface;
   use Moose;
-  has virtualGatewayId => (is => 'ro', isa => 'Str', required => 1);
-  has virtualInterfaceId => (is => 'ro', isa => 'Str', required => 1);
+  has VirtualGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualGatewayId' , required => 1);
+  has VirtualInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualInterfaceId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConfirmPrivateVirtualInterface');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::ConfirmPrivateVirtualInterfaceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ConfirmPrivateV
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method ConfirmPrivateVirtualInterface.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ConfirmPrivateVirtualInterface.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ConfirmPrivateVirtualInterface.
 
 As an example:
 
@@ -34,11 +33,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> virtualGatewayId => Str
 
-  
+=head2 B<REQUIRED> VirtualGatewayId => Str
 
-ID of the virtual private gateway that will be attached to the virtual
+  ID of the virtual private gateway that will be attached to the virtual
 interface.
 
 A virtual private gateway can be managed via the Amazon Virtual Private
@@ -47,15 +45,7 @@ Cloud (VPC) console or the EC2 CreateVpnGateway action.
 Default: None
 
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> virtualInterfaceId => Str
+=head2 B<REQUIRED> VirtualInterfaceId => Str
 
   
 

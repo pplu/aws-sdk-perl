@@ -1,10 +1,9 @@
 
-package Paws::S3::GetObjectTorrentOutput {
+package Paws::S3::GetObjectTorrentOutput;
   use Moose;
   has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
   has RequestCharged => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -19,7 +18,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Simple Storage Service service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -29,9 +28,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Body => Str
 
   
+
 
 =head2 RequestCharged => Str
 

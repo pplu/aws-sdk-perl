@@ -1,8 +1,7 @@
 
-package Paws::ELB::AddTagsOutput {
+package Paws::ELB::AddTagsOutput;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

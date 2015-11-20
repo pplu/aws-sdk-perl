@@ -1,12 +1,11 @@
 
-package Paws::CognitoSync::ListIdentityPoolUsageResponse {
+package Paws::CognitoSync::ListIdentityPoolUsageResponse;
   use Moose;
   has Count => (is => 'ro', isa => 'Int');
   has IdentityPoolUsages => (is => 'ro', isa => 'ArrayRef[Paws::CognitoSync::IdentityPoolUsage]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -17,62 +16,22 @@ Paws::CognitoSync::ListIdentityPoolUsageResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Count => Int
 
-  
+  Total number of identities for the identity pool.
 
-Total number of identities for the identity pool.
+=head2 IdentityPoolUsages => ArrayRef[L<Paws::CognitoSync::IdentityPoolUsage>]
 
-
-
-
-
-
-
-
-
-=head2 IdentityPoolUsages => ArrayRef[Paws::CognitoSync::IdentityPoolUsage]
-
-  
-
-Usage information for the identity pools.
-
-
-
-
-
-
-
-
+  Usage information for the identity pools.
 
 =head2 MaxResults => Int
 
-  
-
-The maximum number of results to be returned.
-
-
-
-
-
-
-
-
+  The maximum number of results to be returned.
 
 =head2 NextToken => Str
 
-  
-
-A pagination token for obtaining the next page of results.
-
-
-
-
-
-
-
-
-
+  A pagination token for obtaining the next page of results.
 
 
 =cut

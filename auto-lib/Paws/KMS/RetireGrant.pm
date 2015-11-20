@@ -1,5 +1,5 @@
 
-package Paws::KMS::RetireGrant {
+package Paws::KMS::RetireGrant;
   use Moose;
   has GrantId => (is => 'ro', isa => 'Str');
   has GrantToken => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::KMS::RetireGrant {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RetireGrant');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method RetireGrant on 
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method RetireGrant.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RetireGrant.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RetireGrant.
 
 As an example:
 
@@ -35,11 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 GrantId => Str
 
-  
-
-Unique identifier of the grant to be retired. The grant ID is returned
+  Unique identifier of the grant to be retired. The grant ID is returned
 by the C<CreateGrant> function.
 
 =over
@@ -51,33 +49,14 @@ by the C<CreateGrant> function.
 
 
 
-
-
-
-
-
-
-
 =head2 GrantToken => Str
 
-  
-
-Token that identifies the grant to be retired.
-
-
-
-
-
-
-
-
+  Token that identifies the grant to be retired.
 
 
 =head2 KeyId => Str
 
-  
-
-A unique identifier for the customer master key associated with the
+  A unique identifier for the customer master key associated with the
 grant. This value can be a globally unique identifier or a fully
 specified ARN of the key.
 
@@ -90,14 +69,6 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 12345678-1234-1234-1234-123456789012
 
 =back
-
-
-
-
-
-
-
-
 
 
 

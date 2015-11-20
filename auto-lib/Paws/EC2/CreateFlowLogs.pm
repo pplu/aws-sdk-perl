@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateFlowLogs {
+package Paws::EC2::CreateFlowLogs;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
   has DeliverLogsPermissionArn => (is => 'ro', isa => 'Str', required => 1);
@@ -13,7 +13,6 @@ package Paws::EC2::CreateFlowLogs {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateFlowLogs');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateFlowLogsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +27,7 @@ This class represents the parameters used for calling the method CreateFlowLogs 
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateFlowLogs.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateFlowLogs.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateFlowLogs.
 
 As an example:
 
@@ -38,97 +37,37 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClientToken => Str
 
-  
-
-Unique, case-sensitive identifier you provide to ensure the idempotency
+  Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. For more information, see How to Ensure Idempotency.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> DeliverLogsPermissionArn => Str
 
-  
-
-The ARN for the IAM role that's used to post flow logs to a CloudWatch
+  The ARN for the IAM role that's used to post flow logs to a CloudWatch
 Logs log group.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-  
-
-The name of the CloudWatch log group.
-
-
-
-
-
-
-
-
+  The name of the CloudWatch log group.
 
 
 =head2 B<REQUIRED> ResourceIds => ArrayRef[Str]
 
-  
-
-One or more subnet, network interface, or VPC IDs.
-
-
-
-
-
-
-
-
+  One or more subnet, network interface, or VPC IDs.
 
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  
-
-The type of resource on which to create the flow log.
-
-
-
-
-
-
-
-
+  The type of resource on which to create the flow log.
 
 
 =head2 B<REQUIRED> TrafficType => Str
 
-  
-
-The type of traffic to log.
-
-
-
-
-
-
-
-
-
+  The type of traffic to log.
 
 
 

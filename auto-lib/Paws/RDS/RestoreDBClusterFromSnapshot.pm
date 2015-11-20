@@ -1,5 +1,5 @@
 
-package Paws::RDS::RestoreDBClusterFromSnapshot {
+package Paws::RDS::RestoreDBClusterFromSnapshot;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has DatabaseName => (is => 'ro', isa => 'Str');
@@ -18,7 +18,6 @@ package Paws::RDS::RestoreDBClusterFromSnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromSnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBClusterFromSnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromSnapshotResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -33,7 +32,7 @@ This class represents the parameters used for calling the method RestoreDBCluste
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method RestoreDBClusterFromSnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBClusterFromSnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBClusterFromSnapshot.
 
 As an example:
 
@@ -43,42 +42,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  
-
-Provides the list of EC2 Availability Zones that instances in the
+  Provides the list of EC2 Availability Zones that instances in the
 restored DB cluster can be created in.
-
-
-
-
-
-
-
-
 
 
 =head2 DatabaseName => Str
 
-  
-
-The database name for the restored DB cluster.
-
-
-
-
-
-
-
-
+  The database name for the restored DB cluster.
 
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-  
-
-The name of the DB cluster to create from the DB cluster snapshot. This
+  The name of the DB cluster to create from the DB cluster snapshot. This
 parameter isn't case-sensitive.
 
 Constraints:
@@ -96,102 +74,42 @@ Constraints:
 Example: C<my-snapshot-id>
 
 
-
-
-
-
-
-
-
-
 =head2 DBSubnetGroupName => Str
 
-  
-
-The name of the DB subnet group to use for the new DB cluster.
-
-
-
-
-
-
-
-
+  The name of the DB subnet group to use for the new DB cluster.
 
 
 =head2 B<REQUIRED> Engine => Str
 
-  
-
-The database engine to use for the new DB cluster.
+  The database engine to use for the new DB cluster.
 
 Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
 
 
-
-
-
-
-
-
-
-
 =head2 EngineVersion => Str
 
-  
-
-The version of the database engine to use for the new DB cluster.
-
-
-
-
-
-
-
-
+  The version of the database engine to use for the new DB cluster.
 
 
 =head2 OptionGroupName => Str
 
-  
-
-The name of the option group to use for the restored DB cluster.
-
-
-
-
-
-
-
-
+  The name of the option group to use for the restored DB cluster.
 
 
 =head2 Port => Int
 
-  
-
-The port number on which the new DB cluster accepts connections.
+  The port number on which the new DB cluster accepts connections.
 
 Constraints: Value must be C<1150-65535>
 
 Default: The same port as the original DB cluster.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
-  
-
-The identifier for the DB cluster snapshot to restore from.
+  The identifier for the DB cluster snapshot to restore from.
 
 Constraints:
 
@@ -207,42 +125,14 @@ Constraints:
 
 
 
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
-
-  
-
-The tags to be assigned to the restored DB cluster.
-
-
-
-
-
-
-
-
+  The tags to be assigned to the restored DB cluster.
 
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  
-
-A list of VPC security groups that the new DB cluster will belong to.
-
-
-
-
-
-
-
-
-
+  A list of VPC security groups that the new DB cluster will belong to.
 
 
 

@@ -1,5 +1,5 @@
 
-package Paws::SES::ListIdentities {
+package Paws::SES::ListIdentities;
   use Moose;
   has IdentityType => (is => 'ro', isa => 'Str');
   has MaxItems => (is => 'ro', isa => 'Int');
@@ -10,7 +10,6 @@ package Paws::SES::ListIdentities {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListIdentities');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::ListIdentitiesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListIdentitiesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method ListIdentities 
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method ListIdentities.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListIdentities.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListIdentities.
 
 As an example:
 
@@ -35,53 +34,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 IdentityType => Str
 
-  
-
-The type of the identities to list. Possible values are "EmailAddress"
+  The type of the identities to list. Possible values are "EmailAddress"
 and "Domain". If this parameter is omitted, then all identities will be
 listed.
 
 
-
-
-
-
-
-
-
-
 =head2 MaxItems => Int
 
-  
-
-The maximum number of identities per page. Possible values are 1-1000
+  The maximum number of identities per page. Possible values are 1-1000
 inclusive.
-
-
-
-
-
-
-
-
 
 
 =head2 NextToken => Str
 
-  
-
-The token to use for pagination.
-
-
-
-
-
-
-
-
-
+  The token to use for pagination.
 
 
 

@@ -1,6 +1,6 @@
 package Paws::Net::SigninCaller {
   use Moose::Role;
-  use JSON;
+  use JSON::MaybeXS;
   use URI::Template;
 
   sub _call_uri {

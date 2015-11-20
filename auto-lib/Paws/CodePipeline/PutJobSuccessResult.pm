@@ -1,17 +1,16 @@
 
-package Paws::CodePipeline::PutJobSuccessResult {
+package Paws::CodePipeline::PutJobSuccessResult;
   use Moose;
-  has continuationToken => (is => 'ro', isa => 'Str');
-  has currentRevision => (is => 'ro', isa => 'Paws::CodePipeline::CurrentRevision');
-  has executionDetails => (is => 'ro', isa => 'Paws::CodePipeline::ExecutionDetails');
-  has jobId => (is => 'ro', isa => 'Str', required => 1);
+  has ContinuationToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'continuationToken' );
+  has CurrentRevision => (is => 'ro', isa => 'Paws::CodePipeline::CurrentRevision', traits => ['NameInRequest'], request_name => 'currentRevision' );
+  has ExecutionDetails => (is => 'ro', isa => 'Paws::CodePipeline::ExecutionDetails', traits => ['NameInRequest'], request_name => 'executionDetails' );
+  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutJobSuccessResult');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method PutJobSuccessRe
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method PutJobSuccessResult.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutJobSuccessResult.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutJobSuccessResult.
 
 As an example:
 
@@ -36,69 +35,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 continuationToken => Str
 
-  
+=head2 ContinuationToken => Str
 
-A system-generated token, such as a AWS CodeDeploy deployment ID, that
+  A system-generated token, such as a AWS CodeDeploy deployment ID, that
 the successful job used to complete a job asynchronously.
 
 
+=head2 CurrentRevision => L<Paws::CodePipeline::CurrentRevision>
 
-
-
-
-
-
-
-
-=head2 currentRevision => Paws::CodePipeline::CurrentRevision
-
-  
-
-The ID of the current revision of the artifact successfully worked upon
+  The ID of the current revision of the artifact successfully worked upon
 by the job.
 
 
+=head2 ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>
 
-
-
-
-
-
-
-
-=head2 executionDetails => Paws::CodePipeline::ExecutionDetails
-
-  
-
-The execution details of the successful job, such as the actions taken
+  The execution details of the successful job, such as the actions taken
 by the job worker.
 
 
+=head2 B<REQUIRED> JobId => Str
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> jobId => Str
-
-  
-
-The unique system-generated ID of the job that succeeded. This is the
+  The unique system-generated ID of the job that succeeded. This is the
 same ID returned from PollForJobs.
-
-
-
-
-
-
-
-
-
 
 
 

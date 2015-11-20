@@ -1,10 +1,9 @@
 
-package Paws::MachineLearning::CreateRealtimeEndpointOutput {
+package Paws::MachineLearning::CreateRealtimeEndpointOutput;
   use Moose;
   has MLModelId => (is => 'ro', isa => 'Str');
   has RealtimeEndpointInfo => (is => 'ro', isa => 'Paws::MachineLearning::RealtimeEndpointInfo');
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,35 +13,15 @@ Paws::MachineLearning::CreateRealtimeEndpointOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 MLModelId => Str
 
-  
-
-A user-supplied ID that uniquely identifies the C<MLModel>. This value
+  A user-supplied ID that uniquely identifies the C<MLModel>. This value
 should be identical to the value of the C<MLModelId> in the request.
 
+=head2 RealtimeEndpointInfo => L<Paws::MachineLearning::RealtimeEndpointInfo>
 
-
-
-
-
-
-
-
-=head2 RealtimeEndpointInfo => Paws::MachineLearning::RealtimeEndpointInfo
-
-  
-
-The endpoint information of the C<MLModel>
-
-
-
-
-
-
-
-
-
+  The endpoint information of the C<MLModel>
 
 
 =cut

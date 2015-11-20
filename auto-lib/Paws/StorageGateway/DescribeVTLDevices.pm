@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::DescribeVTLDevices {
+package Paws::StorageGateway::DescribeVTLDevices;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
   has Limit => (is => 'ro', isa => 'Int');
@@ -11,7 +11,6 @@ package Paws::StorageGateway::DescribeVTLDevices {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeVTLDevices');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::DescribeVTLDevicesOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method DescribeVTLDevi
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DescribeVTLDevices.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVTLDevices.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeVTLDevices.
 
 As an example:
 
@@ -36,61 +35,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> GatewayARN => Str
 
   
 
+
 =head2 Limit => Int
 
-  
-
-Specifies that the number of VTL devices described be limited to the
+  Specifies that the number of VTL devices described be limited to the
 specified number.
-
-
-
-
-
-
-
-
 
 
 =head2 Marker => Str
 
-  
-
-An opaque string that indicates the position at which to begin
+  An opaque string that indicates the position at which to begin
 describing the VTL devices.
-
-
-
-
-
-
-
-
 
 
 =head2 VTLDeviceARNs => ArrayRef[Str]
 
-  
-
-An array of strings, where each string represents the Amazon Resource
+  An array of strings, where each string represents the Amazon Resource
 Name (ARN) of a VTL device.
 
 All of the specified VTL devices must be from the same gateway. If no
 VTL devices are specified, the result will contain all devices on the
 specified gateway.
-
-
-
-
-
-
-
-
-
 
 
 

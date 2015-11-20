@@ -1,10 +1,9 @@
 
-package Paws::ECS::DescribeTasksResponse {
+package Paws::ECS::DescribeTasksResponse;
   use Moose;
-  has failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]');
-  has tasks => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Task]');
+  has Failures => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Failure]', traits => ['Unwrapped'], xmlname => 'failures' );
+  has Tasks => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Task]', traits => ['Unwrapped'], xmlname => 'tasks' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,23 +13,14 @@ Paws::ECS::DescribeTasksResponse
 
 =head1 ATTRIBUTES
 
-=head2 failures => ArrayRef[Paws::ECS::Failure]
 
-  
-=head2 tasks => ArrayRef[Paws::ECS::Task]
+=head2 Failures => ArrayRef[L<Paws::ECS::Failure>]
 
-  
+  Any failures associated with the call.
 
-The list of tasks.
+=head2 Tasks => ArrayRef[L<Paws::ECS::Task>]
 
-
-
-
-
-
-
-
-
+  The list of tasks.
 
 
 =cut

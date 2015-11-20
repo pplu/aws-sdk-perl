@@ -1,15 +1,14 @@
 
-package Paws::ECS::DiscoverPollEndpoint {
+package Paws::ECS::DiscoverPollEndpoint;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has containerInstance => (is => 'ro', isa => 'Str');
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has ContainerInstance => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'containerInstance' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DiscoverPollEndpoint');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DiscoverPollEndpointResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DiscoverPollEnd
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method DiscoverPollEndpoint.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DiscoverPollEndpoint.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DiscoverPollEndpoint.
 
 As an example:
 
@@ -34,40 +33,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
 
-  
+=head2 Cluster => Str
 
-The cluster that the container instance belongs to.
-
+  The cluster that the container instance belongs to.
 
 
+=head2 ContainerInstance => Str
 
-
-
-
-
-
-
-=head2 containerInstance => Str
-
-  
-
-The container instance UUID or full Amazon Resource Name (ARN) of the
+  The container instance ID or full Amazon Resource Name (ARN) of the
 container instance. The ARN contains the C<arn:aws:ecs> namespace,
 followed by the region of the container instance, the AWS account ID of
 the container instance owner, the C<container-instance> namespace, and
-then the container instance UUID. For example,
-arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_UUID>.
-
-
-
-
-
-
-
-
-
+then the container instance ID. For example,
+arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>.
 
 
 

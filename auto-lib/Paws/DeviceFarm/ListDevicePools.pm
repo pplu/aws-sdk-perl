@@ -1,16 +1,15 @@
 
-package Paws::DeviceFarm::ListDevicePools {
+package Paws::DeviceFarm::ListDevicePools;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str', required => 1);
-  has nextToken => (is => 'ro', isa => 'Str');
-  has type => (is => 'ro', isa => 'Str');
+  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDevicePools');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::ListDevicePoolsResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method ListDevicePools
 AWS Device Farm service. Use the attributes of this class
 as arguments to method ListDevicePools.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListDevicePools.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDevicePools.
 
 As an example:
 
@@ -35,43 +34,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> arn => Str
 
-  
+=head2 B<REQUIRED> Arn => Str
 
-The project ARN.
-
+  The project ARN.
 
 
+=head2 NextToken => Str
 
-
-
-
-
-
-
-=head2 nextToken => Str
-
-  
-
-An identifier that was returned from the previous call to this
+  An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the
 list.
 
 
+=head2 Type => Str
 
-
-
-
-
-
-
-
-=head2 type => Str
-
-  
-
-The device pools' type.
+  The device pools' type.
 
 Allowed values include:
 
@@ -87,14 +65,6 @@ PRIVATE: A device pool that is created and managed by the device pool
 developer.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

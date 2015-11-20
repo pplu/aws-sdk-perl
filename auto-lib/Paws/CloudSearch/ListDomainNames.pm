@@ -1,5 +1,5 @@
 
-package Paws::CloudSearch::ListDomainNames {
+package Paws::CloudSearch::ListDomainNames;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::CloudSearch::ListDomainNames {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDomainNames');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearch::ListDomainNamesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListDomainNamesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method ListDomainNames
 Amazon CloudSearch service. Use the attributes of this class
 as arguments to method ListDomainNames.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListDomainNames.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListDomainNames.
 
 As an example:
 

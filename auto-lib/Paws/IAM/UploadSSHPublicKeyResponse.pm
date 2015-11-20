@@ -1,9 +1,8 @@
 
-package Paws::IAM::UploadSSHPublicKeyResponse {
+package Paws::IAM::UploadSSHPublicKeyResponse;
   use Moose;
   has SSHPublicKey => (is => 'ro', isa => 'Paws::IAM::SSHPublicKey');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::IAM::UploadSSHPublicKeyResponse
 
 =head1 ATTRIBUTES
 
-=head2 SSHPublicKey => Paws::IAM::SSHPublicKey
 
-  
+=head2 SSHPublicKey => L<Paws::IAM::SSHPublicKey>
 
-Contains information about the SSH public key.
-
-
-
-
-
-
-
-
-
+  Contains information about the SSH public key.
 
 
 =cut

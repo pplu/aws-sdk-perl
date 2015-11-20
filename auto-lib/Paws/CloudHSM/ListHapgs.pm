@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::ListHapgs {
+package Paws::CloudHSM::ListHapgs;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -8,7 +8,6 @@ package Paws::CloudHSM::ListHapgs {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListHapgs');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::ListHapgsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method ListHapgs on th
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method ListHapgs.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListHapgs.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListHapgs.
 
 As an example:
 
@@ -33,21 +32,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 NextToken => Str
 
-  
-
-The I<NextToken> value from a previous call to ListHapgs. Pass null if
+  The I<NextToken> value from a previous call to ListHapgs. Pass null if
 this is the first call.
-
-
-
-
-
-
-
-
-
 
 
 

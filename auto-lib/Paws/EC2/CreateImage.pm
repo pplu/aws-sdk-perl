@@ -1,5 +1,5 @@
 
-package Paws::EC2::CreateImage {
+package Paws::EC2::CreateImage;
   use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'blockDeviceMapping' );
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
@@ -13,7 +13,6 @@ package Paws::EC2::CreateImage {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateImage');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreateImageResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +27,7 @@ This class represents the parameters used for calling the method CreateImage on 
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CreateImage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateImage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateImage.
 
 As an example:
 
@@ -38,107 +37,47 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping]
 
-  
+=head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-Information about one or more block device mappings.
-
-
-
-
-
-
-
-
+  Information about one or more block device mappings.
 
 
 =head2 Description => Str
 
-  
-
-A description for the new image.
-
-
-
-
-
-
-
-
+  A description for the new image.
 
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-A name for the new image.
+  A name for the new image.
 
 Constraints: 3-128 alphanumeric characters, parentheses (()), square
 brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single
 quotes ('), at-signs (@), or underscores(_)
 
 
-
-
-
-
-
-
-
-
 =head2 NoReboot => Bool
 
-  
-
-By default, this parameter is set to C<false>, which means Amazon EC2
+  By default, this parameter is set to C<false>, which means Amazon EC2
 attempts to shut down the instance cleanly before image creation and
 then reboots the instance. When the parameter is set to C<true>, Amazon
 EC2 doesn't shut down the instance before creating the image. When this
 option is used, file system integrity on the created image can't be
 guaranteed.
-
-
-
-
-
-
-
-
-
 
 
 

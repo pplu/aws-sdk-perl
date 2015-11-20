@@ -1,15 +1,14 @@
 
-package Paws::ECS::DeleteService {
+package Paws::ECS::DeleteService;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has service => (is => 'ro', isa => 'Str', required => 1);
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteService');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DeleteServiceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DeleteService o
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method DeleteService.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteService.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteService.
 
 As an example:
 
@@ -34,35 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
 
-  
+=head2 Cluster => Str
 
-The name of the cluster that hosts the service you want to delete.
-
-
+  The name of the cluster that hosts the service to delete. If you do not
+specify a cluster, the default cluster is assumed.
 
 
+=head2 B<REQUIRED> Service => Str
 
-
-
-
-
-
-=head2 B<REQUIRED> service => Str
-
-  
-
-The name of the service you want to delete.
-
-
-
-
-
-
-
-
-
+  The name of the service to delete.
 
 
 

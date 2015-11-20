@@ -1,5 +1,5 @@
 
-package Paws::EC2::CopySnapshot {
+package Paws::EC2::CopySnapshot;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DestinationRegion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationRegion' );
@@ -15,7 +15,6 @@ package Paws::EC2::CopySnapshot {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopySnapshot');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CopySnapshotResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +29,7 @@ This class represents the parameters used for calling the method CopySnapshot on
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CopySnapshot.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CopySnapshot.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopySnapshot.
 
 As an example:
 
@@ -40,26 +39,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Description => Str
 
-  
-
-A description for the EBS snapshot.
-
-
-
-
-
-
-
-
+  A description for the EBS snapshot.
 
 
 =head2 DestinationRegion => Str
 
-  
-
-The destination region to use in the C<PresignedUrl> parameter of a
+  The destination region to use in the C<PresignedUrl> parameter of a
 snapshot copy operation. This parameter is only valid for specifying
 the destination region in a C<PresignedUrl> parameter, where it is
 required.
@@ -70,37 +58,17 @@ you send the HTTP request to, such as C<ec2.us-east-1.amazonaws.com>
 the default region in your AWS configuration file).
 
 
-
-
-
-
-
-
-
-
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
-
-
-
-
-
-
-
-
 =head2 Encrypted => Bool
 
-  
-
-Specifies whether the destination snapshot should be encrypted. There
+  Specifies whether the destination snapshot should be encrypted. There
 is no way to create an unencrypted snapshot copy from an encrypted
 snapshot; however, you can encrypt a copy of an unencrypted snapshot
 with this flag. The default CMK for EBS is used unless a non-default
@@ -109,19 +77,9 @@ For more information, see Amazon EBS Encryption in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 KmsKeyId => Str
 
-  
-
-The full ARN of the AWS Key Management Service (AWS KMS) CMK to use
+  The full ARN of the AWS Key Management Service (AWS KMS) CMK to use
 when creating the snapshot copy. This parameter is only required if you
 want to use a non-default CMK; if this parameter is not specified, the
 default CMK for EBS is used. The ARN contains the C<arn:aws:kms>
@@ -133,19 +91,9 @@ copied to. If a C<KmsKeyId> is specified, the C<Encrypted> flag must
 also be set.
 
 
-
-
-
-
-
-
-
-
 =head2 PresignedUrl => Str
 
-  
-
-The pre-signed URL that facilitates copying an encrypted snapshot. This
+  The pre-signed URL that facilitates copying an encrypted snapshot. This
 parameter is only required when copying an encrypted snapshot with the
 Amazon EC2 Query API; it is available as an optional parameter in all
 other cases. The C<PresignedUrl> should use the snapshot source
@@ -160,43 +108,14 @@ improperly signed C<PresignedUrl> will cause the copy operation to fail
 asynchronously, and the snapshot will move to an C<error> state.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SourceRegion => Str
 
-  
-
-The ID of the region that contains the snapshot to be copied.
-
-
-
-
-
-
-
-
+  The ID of the region that contains the snapshot to be copied.
 
 
 =head2 B<REQUIRED> SourceSnapshotId => Str
 
-  
-
-The ID of the EBS snapshot to copy.
-
-
-
-
-
-
-
-
-
+  The ID of the EBS snapshot to copy.
 
 
 

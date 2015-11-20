@@ -1,5 +1,5 @@
 
-package Paws::ElasticTranscoder::CreatePreset {
+package Paws::ElasticTranscoder::CreatePreset;
   use Moose;
   has Audio => (is => 'ro', isa => 'Paws::ElasticTranscoder::AudioParameters');
   has Container => (is => 'ro', isa => 'Str', required => 1);
@@ -15,7 +15,6 @@ package Paws::ElasticTranscoder::CreatePreset {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::CreatePresetResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePresetResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +29,7 @@ This class represents the parameters used for calling the method CreatePreset on
 Amazon Elastic Transcoder service. Use the attributes of this class
 as arguments to method CreatePreset.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreatePreset.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreatePreset.
 
 As an example:
 
@@ -40,99 +39,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Audio => Paws::ElasticTranscoder::AudioParameters
 
-  
+=head2 Audio => L<Paws::ElasticTranscoder::AudioParameters>
 
-A section of the request body that specifies the audio parameters.
-
-
-
-
-
-
-
-
+  A section of the request body that specifies the audio parameters.
 
 
 =head2 B<REQUIRED> Container => Str
 
-  
-
-The container type for the output file. Valid values include C<flac>,
+  The container type for the output file. Valid values include C<flac>,
 C<flv>, C<fmp4>, C<gif>, C<mp3>, C<mp4>, C<mpg>, C<mxf>, C<oga>,
 C<ogg>, C<ts>, and C<webm>.
 
 
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
-
-A description of the preset.
-
-
-
-
-
-
-
-
+  A description of the preset.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the preset. We recommend that the name be unique within the
+  The name of the preset. We recommend that the name be unique within the
 AWS account, but uniqueness is not enforced.
 
 
+=head2 Thumbnails => L<Paws::ElasticTranscoder::Thumbnails>
 
-
-
-
-
-
-
-
-=head2 Thumbnails => Paws::ElasticTranscoder::Thumbnails
-
-  
-
-A section of the request body that specifies the thumbnail parameters,
+  A section of the request body that specifies the thumbnail parameters,
 if any.
 
 
+=head2 Video => L<Paws::ElasticTranscoder::VideoParameters>
 
-
-
-
-
-
-
-
-=head2 Video => Paws::ElasticTranscoder::VideoParameters
-
-  
-
-A section of the request body that specifies the video parameters.
-
-
-
-
-
-
-
-
-
+  A section of the request body that specifies the video parameters.
 
 
 

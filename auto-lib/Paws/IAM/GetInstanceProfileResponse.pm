@@ -1,9 +1,8 @@
 
-package Paws::IAM::GetInstanceProfileResponse {
+package Paws::IAM::GetInstanceProfileResponse;
   use Moose;
   has InstanceProfile => (is => 'ro', isa => 'Paws::IAM::InstanceProfile', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::IAM::GetInstanceProfileResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> InstanceProfile => Paws::IAM::InstanceProfile
 
-  
+=head2 B<REQUIRED> InstanceProfile => L<Paws::IAM::InstanceProfile>
 
-Information about the instance profile.
-
-
-
-
-
-
-
-
-
+  Information about the instance profile.
 
 
 =cut

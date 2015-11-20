@@ -1,5 +1,5 @@
 
-package Paws::KMS::CreateAlias {
+package Paws::KMS::CreateAlias;
   use Moose;
   has AliasName => (is => 'ro', isa => 'Str', required => 1);
   has TargetKeyId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::KMS::CreateAlias {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAlias');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method CreateAlias on 
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method CreateAlias.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateAlias.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAlias.
 
 As an example:
 
@@ -34,28 +33,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AliasName => Str
 
-  
-
-String that contains the display name. The name must start with the
+  String that contains the display name. The name must start with the
 word "alias" followed by a forward slash (alias/). Aliases that begin
 with "alias/AWS" are reserved.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TargetKeyId => Str
 
-  
-
-An identifier of the key for which you are creating the alias. This
+  An identifier of the key for which you are creating the alias. This
 value cannot be another alias but can be a globally unique identifier
 or a fully specified ARN to a key.
 
@@ -68,14 +56,6 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 12345678-1234-1234-1234-123456789012
 
 =back
-
-
-
-
-
-
-
-
 
 
 

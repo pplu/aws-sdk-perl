@@ -1,9 +1,8 @@
 
-package Paws::Route53::GetReusableDelegationSetResponse {
+package Paws::Route53::GetReusableDelegationSetResponse;
   use Moose;
   has DelegationSet => (is => 'ro', isa => 'Paws::Route53::DelegationSet', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -18,7 +17,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Route 53 service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -28,21 +27,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DelegationSet => Paws::Route53::DelegationSet
 
-  
+=head2 B<REQUIRED> DelegationSet => L<Paws::Route53::DelegationSet>
 
-A complex type that contains the information about the nameservers for
+  A complex type that contains the information about the nameservers for
 the specified delegation set ID.
-
-
-
-
-
-
-
-
-
 
 
 

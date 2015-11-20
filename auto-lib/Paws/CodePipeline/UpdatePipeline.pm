@@ -1,14 +1,13 @@
 
-package Paws::CodePipeline::UpdatePipeline {
+package Paws::CodePipeline::UpdatePipeline;
   use Moose;
-  has pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', required => 1);
+  has Pipeline => (is => 'ro', isa => 'Paws::CodePipeline::PipelineDeclaration', traits => ['NameInRequest'], request_name => 'pipeline' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdatePipeline');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodePipeline::UpdatePipelineOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method UpdatePipeline 
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method UpdatePipeline.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipeline.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdatePipeline.
 
 As an example:
 
@@ -33,20 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> pipeline => Paws::CodePipeline::PipelineDeclaration
 
-  
+=head2 B<REQUIRED> Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
 
-The name of the pipeline to be updated.
-
-
-
-
-
-
-
-
-
+  The name of the pipeline to be updated.
 
 
 

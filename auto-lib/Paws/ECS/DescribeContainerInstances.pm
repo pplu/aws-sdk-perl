@@ -1,15 +1,14 @@
 
-package Paws::ECS::DescribeContainerInstances {
+package Paws::ECS::DescribeContainerInstances;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has containerInstances => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeContainerInstances');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::DescribeContainerInstancesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DescribeContain
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method DescribeContainerInstances.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeContainerInstances.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeContainerInstances.
 
 As an example:
 
@@ -34,38 +33,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
 
-  
+=head2 Cluster => Str
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the container instances you want to describe. If you do not
-specify a cluster, the default cluster is assumed.
-
+  The short name or full Amazon Resource Name (ARN) of the cluster that
+hosts the container instances to describe. If you do not specify a
+cluster, the default cluster is assumed.
 
 
+=head2 B<REQUIRED> ContainerInstances => ArrayRef[Str]
 
-
-
-
-
-
-
-=head2 B<REQUIRED> containerInstances => ArrayRef[Str]
-
-  
-
-A space-separated list of container instance UUIDs or full Amazon
+  A space-separated list of container instance IDs or full Amazon
 Resource Name (ARN) entries.
-
-
-
-
-
-
-
-
-
 
 
 

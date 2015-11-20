@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::DescribeMyUserProfile {
+package Paws::OpsWorks::DescribeMyUserProfile;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::OpsWorks::DescribeMyUserProfile {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMyUserProfile');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::DescribeMyUserProfileResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method DescribeMyUserP
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method DescribeMyUserProfile.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeMyUserProfile.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeMyUserProfile.
 
 As an example:
 

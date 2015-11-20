@@ -1,5 +1,5 @@
 
-package Paws::EC2::DetachVolume {
+package Paws::EC2::DetachVolume;
   use Moose;
   has Device => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
@@ -12,7 +12,6 @@ package Paws::EC2::DetachVolume {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DetachVolume');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::VolumeAttachment');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method DetachVolume on
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method DetachVolume.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DetachVolume.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DetachVolume.
 
 As an example:
 
@@ -37,44 +36,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Device => Str
 
-  
-
-The device name.
-
-
-
-
-
-
-
-
+  The device name.
 
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
-
-
-
-
-
-
-
-
 =head2 Force => Bool
 
-  
-
-Forces detachment if the previous detachment attempt did not occur
+  Forces detachment if the previous detachment attempt did not occur
 cleanly (for example, logging into an instance, unmounting the volume,
 and detaching normally). This option can lead to data loss or a
 corrupted file system. Use this option only as a last resort to detach
@@ -83,43 +61,14 @@ to flush file system caches or file system metadata. If you use this
 option, you must perform file system check and repair procedures.
 
 
-
-
-
-
-
-
-
-
 =head2 InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
+  The ID of the instance.
 
 
 =head2 B<REQUIRED> VolumeId => Str
 
-  
-
-The ID of the volume.
-
-
-
-
-
-
-
-
-
+  The ID of the volume.
 
 
 

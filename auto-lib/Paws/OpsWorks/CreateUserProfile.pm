@@ -1,5 +1,5 @@
 
-package Paws::OpsWorks::CreateUserProfile {
+package Paws::OpsWorks::CreateUserProfile;
   use Moose;
   has AllowSelfManagement => (is => 'ro', isa => 'Bool');
   has IamUserArn => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::OpsWorks::CreateUserProfile {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateUserProfile');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::OpsWorks::CreateUserProfileResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CreateUserProfi
 AWS OpsWorks service. Use the attributes of this class
 as arguments to method CreateUserProfile.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateUserProfile.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateUserProfile.
 
 As an example:
 
@@ -36,71 +35,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AllowSelfManagement => Bool
 
-  
-
-Whether users can specify their own SSH public key through the My
+  Whether users can specify their own SSH public key through the My
 Settings page. For more information, see Setting an IAM User's Public
 SSH Key.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> IamUserArn => Str
 
-  
-
-The user's IAM ARN.
-
-
-
-
-
-
-
-
+  The user's IAM ARN.
 
 
 =head2 SshPublicKey => Str
 
-  
-
-The user's public SSH key.
-
-
-
-
-
-
-
-
+  The user's public SSH key.
 
 
 =head2 SshUsername => Str
 
-  
-
-The user's SSH user name. The allowable characters are [a-z], [A-Z],
+  The user's SSH user name. The allowable characters are [a-z], [A-Z],
 [0-9], '-', and '_'. If the specified name includes other punctuation
 marks, AWS OpsWorks removes them. For example, C<my.name> will be
 changed to C<myname>. If you do not specify an SSH user name, AWS
 OpsWorks generates one from the IAM user name.
-
-
-
-
-
-
-
-
-
 
 
 

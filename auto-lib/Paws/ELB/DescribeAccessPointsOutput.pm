@@ -1,10 +1,9 @@
 
-package Paws::ELB::DescribeAccessPointsOutput {
+package Paws::ELB::DescribeAccessPointsOutput;
   use Moose;
   has LoadBalancerDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::LoadBalancerDescription]');
   has NextMarker => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -15,35 +14,15 @@ Paws::ELB::DescribeAccessPointsOutput
 
 =head1 ATTRIBUTES
 
-=head2 LoadBalancerDescriptions => ArrayRef[Paws::ELB::LoadBalancerDescription]
 
-  
+=head2 LoadBalancerDescriptions => ArrayRef[L<Paws::ELB::LoadBalancerDescription>]
 
-Information about the load balancers.
-
-
-
-
-
-
-
-
+  Information about the load balancers.
 
 =head2 NextMarker => Str
 
-  
-
-The marker to use when requesting the next set of results. If there are
+  The marker to use when requesting the next set of results. If there are
 no additional results, the string is empty.
-
-
-
-
-
-
-
-
-
 
 
 =cut

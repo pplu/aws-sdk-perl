@@ -1,8 +1,12 @@
-package Paws::EC2 {
+package Paws::EC2;
   use Moose;
   sub service { 'ec2' }
-  sub version { '2015-04-15' }
+  sub version { '2015-10-01' }
   sub flattened_arrays { 1 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::EC2Caller', 'Paws::Net::XMLResponse';
 
@@ -762,6 +766,11 @@ package Paws::EC2 {
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifySnapshotAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifySpotFleetRequest {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifySpotFleetRequest', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifySubnetAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifySubnetAttribute', @_);
@@ -1015,6 +1024,20 @@ package Paws::EC2 {
 
     return 'Paws::EC2::DescribeTags'->_returns->new(Tags => $array);
   }
+  sub DescribeAllVolumes {
+    my $self = shift;
+
+    my $result = $self->DescribeVolumes(@_);
+    my $array = [];
+    push @$array, @{ $result->Volumes };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->Volumes };
+    }
+
+    return 'Paws::EC2::DescribeVolumes'->_returns->new(Volumes => $array);
+  }
   sub DescribeAllVolumeStatus {
     my $self = shift;
 
@@ -1029,7 +1052,9 @@ package Paws::EC2 {
 
     return 'Paws::EC2::DescribeVolumeStatus'->_returns->new(VolumeStatuses => $array);
   }
-}
+
+  sub operations { qw/AcceptVpcPeeringConnection AllocateAddress AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink GetConsoleOutput GetPasswordData ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyImageAttribute ModifyInstanceAttribute ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint MonitorInstances MoveAddressToVpc PurchaseReservedInstancesOffering RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
+
 1;
 
 ### main pod documentation begin ###
@@ -1042,7 +1067,7 @@ Paws::EC2 - Perl Interface to AWS Amazon Elastic Compute Cloud
 
   use Paws;
 
-  my $obj = Paws->service('EC2')->new;
+  my $obj = Paws->service('EC2');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],
@@ -1056,23 +1081,12 @@ Paws::EC2 - Perl Interface to AWS Amazon Elastic Compute Cloud
 
 =head1 DESCRIPTION
 
-
-
 Amazon Elastic Compute Cloud
 
 Amazon Elastic Compute Cloud (Amazon EC2) provides resizable computing
 capacity in the Amazon Web Services (AWS) cloud. Using Amazon EC2
 eliminates your need to invest in hardware up front, so you can develop
 and deploy applications faster.
-
-
-
-
-
-
-
-
-
 
 =head1 METHODS
 
@@ -1082,22 +1096,11 @@ Each argument is described in detail in: L<Paws::EC2::AcceptVpcPeeringConnection
 
 Returns: a L<Paws::EC2::AcceptVpcPeeringConnectionResult> instance
 
-  
-
-Accept a VPC peering connection request. To accept a request, the VPC
+  Accept a VPC peering connection request. To accept a request, the VPC
 peering connection must be in the C<pending-acceptance> state, and you
 must be the owner of the peer VPC. Use the
 C<DescribeVpcPeeringConnections> request to view your outstanding VPC
 peering connection requests.
-
-
-
-
-
-
-
-
-
 
 
 =head2 AllocateAddress([Domain => Str, DryRun => Bool])
@@ -1106,22 +1109,11 @@ Each argument is described in detail in: L<Paws::EC2::AllocateAddress>
 
 Returns: a L<Paws::EC2::AllocateAddressResult> instance
 
-  
-
-Acquires an Elastic IP address.
+  Acquires an Elastic IP address.
 
 An Elastic IP address is for use either in the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses in the
 I<Amazon Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 AssignPrivateIpAddresses(NetworkInterfaceId => Str, [AllowReassignment => Bool, PrivateIpAddresses => ArrayRef[Str], SecondaryPrivateIpAddressCount => Int])
@@ -1130,9 +1122,7 @@ Each argument is described in detail in: L<Paws::EC2::AssignPrivateIpAddresses>
 
 Returns: nothing
 
-  
-
-Assigns one or more secondary private IP addresses to the specified
+  Assigns one or more secondary private IP addresses to the specified
 network interface. You can specify one or more specific secondary IP
 addresses, or you can specify the number of secondary IP addresses to
 be automatically assigned within the subnet's CIDR block range. The
@@ -1145,24 +1135,13 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 AssignPrivateIpAddresses is available only in EC2-VPC.
 
 
-
-
-
-
-
-
-
-
-
 =head2 AssociateAddress([AllocationId => Str, AllowReassociation => Bool, DryRun => Bool, InstanceId => Str, NetworkInterfaceId => Str, PrivateIpAddress => Str, PublicIp => Str])
 
 Each argument is described in detail in: L<Paws::EC2::AssociateAddress>
 
 Returns: a L<Paws::EC2::AssociateAddressResult> instance
 
-  
-
-Associates an Elastic IP address with an instance or a network
+  Associates an Elastic IP address with an instance or a network
 interface.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
@@ -1183,24 +1162,13 @@ This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error.
 
 
-
-
-
-
-
-
-
-
-
 =head2 AssociateDhcpOptions(DhcpOptionsId => Str, VpcId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::AssociateDhcpOptions>
 
 Returns: nothing
 
-  
-
-Associates a set of DHCP options (that you've previously created) with
+  Associates a set of DHCP options (that you've previously created) with
 the specified VPC, or associates no DHCP options with the VPC.
 
 After you associate the options with the VPC, any existing instances
@@ -1214,24 +1182,13 @@ For more information, see DHCP Options Sets in the I<Amazon Virtual
 Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 AssociateRouteTable(RouteTableId => Str, SubnetId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::AssociateRouteTable>
 
 Returns: a L<Paws::EC2::AssociateRouteTableResult> instance
 
-  
-
-Associates a subnet with a route table. The subnet and route table must
+  Associates a subnet with a route table. The subnet and route table must
 be in the same VPC. This association causes traffic originating from
 the subnet to be routed according to the routes in the route table. The
 action returns an association ID, which you need in order to
@@ -1242,24 +1199,13 @@ For more information about route tables, see Route Tables in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 AttachClassicLinkVpc(Groups => ArrayRef[Str], InstanceId => Str, VpcId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::AttachClassicLinkVpc>
 
 Returns: a L<Paws::EC2::AttachClassicLinkVpcResult> instance
 
-  
-
-Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
+  Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
 or more of the VPC's security groups. You cannot link an EC2-Classic
 instance to more than one VPC at a time. You can only link an instance
 that's in the C<running> state. An instance is automatically unlinked
@@ -1274,35 +1220,15 @@ Linking your instance to a VPC is sometimes referred to as I<attaching>
 your instance.
 
 
-
-
-
-
-
-
-
-
-
 =head2 AttachInternetGateway(InternetGatewayId => Str, VpcId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::AttachInternetGateway>
 
 Returns: nothing
 
-  
-
-Attaches an Internet gateway to a VPC, enabling connectivity between
+  Attaches an Internet gateway to a VPC, enabling connectivity between
 the Internet and the VPC. For more information about your VPC and
 Internet gateway, see the Amazon Virtual Private Cloud User Guide.
-
-
-
-
-
-
-
-
-
 
 
 =head2 AttachNetworkInterface(DeviceIndex => Int, InstanceId => Str, NetworkInterfaceId => Str, [DryRun => Bool])
@@ -1311,18 +1237,7 @@ Each argument is described in detail in: L<Paws::EC2::AttachNetworkInterface>
 
 Returns: a L<Paws::EC2::AttachNetworkInterfaceResult> instance
 
-  
-
-Attaches a network interface to an instance.
-
-
-
-
-
-
-
-
-
+  Attaches a network interface to an instance.
 
 
 =head2 AttachVolume(Device => Str, InstanceId => Str, VolumeId => Str, [DryRun => Bool])
@@ -1331,9 +1246,7 @@ Each argument is described in detail in: L<Paws::EC2::AttachVolume>
 
 Returns: a L<Paws::EC2::VolumeAttachment> instance
 
-  
-
-Attaches an EBS volume to a running or stopped instance and exposes it
+  Attaches an EBS volume to a running or stopped instance and exposes it
 to the instance with the specified device name.
 
 Encrypted EBS volumes may only be attached to instances that support
@@ -1369,46 +1282,24 @@ For more information about EBS volumes, see Attaching Amazon EBS
 Volumes in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 AttachVpnGateway(VpcId => Str, VpnGatewayId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::AttachVpnGateway>
 
 Returns: a L<Paws::EC2::AttachVpnGatewayResult> instance
 
-  
-
-Attaches a virtual private gateway to a VPC. For more information, see
+  Attaches a virtual private gateway to a VPC. For more information, see
 Adding a Hardware Virtual Private Gateway to Your VPC in the I<Amazon
 Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 AuthorizeSecurityGroupEgress(GroupId => Str, [CidrIp => Str, DryRun => Bool, FromPort => Int, IpPermissions => ArrayRef[Paws::EC2::IpPermission], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
+=head2 AuthorizeSecurityGroupEgress(GroupId => Str, [CidrIp => Str, DryRun => Bool, FromPort => Int, IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
 
 Each argument is described in detail in: L<Paws::EC2::AuthorizeSecurityGroupEgress>
 
 Returns: nothing
 
-  
-
-Adds one or more egress rules to a security group for use with a VPC.
+  Adds one or more egress rules to a security group for use with a VPC.
 Specifically, this action permits instances to send traffic to one or
 more destination CIDR IP address ranges, or to one or more destination
 security groups for the same VPC.
@@ -1431,24 +1322,13 @@ Rule changes are propagated to affected instances as quickly as
 possible. However, a small delay might occur.
 
 
-
-
-
-
-
-
-
-
-
-=head2 AuthorizeSecurityGroupIngress([CidrIp => Str, DryRun => Bool, FromPort => Int, GroupId => Str, GroupName => Str, IpPermissions => ArrayRef[Paws::EC2::IpPermission], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
+=head2 AuthorizeSecurityGroupIngress([CidrIp => Str, DryRun => Bool, FromPort => Int, GroupId => Str, GroupName => Str, IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
 
 Each argument is described in detail in: L<Paws::EC2::AuthorizeSecurityGroupIngress>
 
 Returns: nothing
 
-  
-
-Adds one or more ingress rules to a security group.
+  Adds one or more ingress rules to a security group.
 
 EC2-Classic: You can have up to 100 rules per group.
 
@@ -1471,24 +1351,13 @@ access a security group for your VPC. The security groups must all be
 for the same VPC.
 
 
-
-
-
-
-
-
-
-
-
-=head2 BundleInstance(InstanceId => Str, Storage => Paws::EC2::Storage, [DryRun => Bool])
+=head2 BundleInstance(InstanceId => Str, Storage => L<Paws::EC2::Storage>, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::BundleInstance>
 
 Returns: a L<Paws::EC2::BundleInstanceResult> instance
 
-  
-
-Bundles an Amazon instance store-backed Windows instance.
+  Bundles an Amazon instance store-backed Windows instance.
 
 During bundling, only the root device volume (C:\) is bundled. Data on
 other instance store volumes is not preserved.
@@ -1500,34 +1369,14 @@ For more information, see Creating an Instance Store-Backed Windows
 AMI.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CancelBundleTask(BundleId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CancelBundleTask>
 
 Returns: a L<Paws::EC2::CancelBundleTaskResult> instance
 
-  
-
-Cancels a bundling operation for an instance store-backed Windows
+  Cancels a bundling operation for an instance store-backed Windows
 instance.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CancelConversionTask(ConversionTaskId => Str, [DryRun => Bool, ReasonMessage => Str])
@@ -1536,9 +1385,7 @@ Each argument is described in detail in: L<Paws::EC2::CancelConversionTask>
 
 Returns: nothing
 
-  
-
-Cancels an active conversion task. The task can be the import of an
+  Cancels an active conversion task. The task can be the import of an
 instance or volume. The action removes all artifacts of the conversion,
 including a partially uploaded volume or instance. If the conversion is
 complete or is in the process of transferring the final disk image, the
@@ -1549,36 +1396,16 @@ Virtual Machine to Amazon EC2 in the I<Amazon Elastic Compute Cloud
 User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CancelExportTask(ExportTaskId => Str)
 
 Each argument is described in detail in: L<Paws::EC2::CancelExportTask>
 
 Returns: nothing
 
-  
-
-Cancels an active export task. The request removes all artifacts of the
+  Cancels an active export task. The request removes all artifacts of the
 export, including any partially-created Amazon S3 objects. If the
 export task is complete or is in the process of transferring the final
 disk image, the command fails and returns an error.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CancelImportTask([CancelReason => Str, DryRun => Bool, ImportTaskId => Str])
@@ -1587,18 +1414,7 @@ Each argument is described in detail in: L<Paws::EC2::CancelImportTask>
 
 Returns: a L<Paws::EC2::CancelImportTaskResult> instance
 
-  
-
-Cancels an in-process import virtual machine or import snapshot task.
-
-
-
-
-
-
-
-
-
+  Cancels an in-process import virtual machine or import snapshot task.
 
 
 =head2 CancelReservedInstancesListing(ReservedInstancesListingId => Str)
@@ -1607,22 +1423,11 @@ Each argument is described in detail in: L<Paws::EC2::CancelReservedInstancesLis
 
 Returns: a L<Paws::EC2::CancelReservedInstancesListingResult> instance
 
-  
-
-Cancels the specified Reserved Instance listing in the Reserved
+  Cancels the specified Reserved Instance listing in the Reserved
 Instance Marketplace.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
 Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CancelSpotFleetRequests(SpotFleetRequestIds => ArrayRef[Str], TerminateInstances => Bool, [DryRun => Bool])
@@ -1631,18 +1436,15 @@ Each argument is described in detail in: L<Paws::EC2::CancelSpotFleetRequests>
 
 Returns: a L<Paws::EC2::CancelSpotFleetRequestsResponse> instance
 
-  
+  Cancels the specified Spot fleet requests.
 
-Cancels the specified Spot fleet requests.
-
-
-
-
-
-
-
-
-
+After you cancel a Spot fleet request, the Spot fleet launches no new
+Spot instances. You must specify whether the Spot fleet should also
+terminate its Spot instances. If you terminate the instances, the Spot
+fleet request enters the C<cancelled_terminating> state. Otherwise, the
+Spot fleet request enters the C<cancelled_running> state and the
+instances continue to run until they are interrupted or you terminate
+them manually.
 
 
 =head2 CancelSpotInstanceRequests(SpotInstanceRequestIds => ArrayRef[Str], [DryRun => Bool])
@@ -1651,26 +1453,15 @@ Each argument is described in detail in: L<Paws::EC2::CancelSpotInstanceRequests
 
 Returns: a L<Paws::EC2::CancelSpotInstanceRequestsResult> instance
 
-  
-
-Cancels one or more Spot Instance requests. Spot Instances are
+  Cancels one or more Spot instance requests. Spot instances are
 instances that Amazon EC2 starts on your behalf when the bid price that
-you specify exceeds the current Spot Price. Amazon EC2 periodically
-sets the Spot Price based on available Spot Instance capacity and
-current Spot Instance requests. For more information, see Spot Instance
+you specify exceeds the current Spot price. Amazon EC2 periodically
+sets the Spot price based on available Spot instance capacity and
+current Spot instance requests. For more information, see Spot Instance
 Requests in the I<Amazon Elastic Compute Cloud User Guide>.
 
-Canceling a Spot Instance request does not terminate running Spot
-Instances associated with the request.
-
-
-
-
-
-
-
-
-
+Canceling a Spot instance request does not terminate running Spot
+instances associated with the request.
 
 
 =head2 ConfirmProductInstance(InstanceId => Str, ProductCode => Str, [DryRun => Bool])
@@ -1679,21 +1470,10 @@ Each argument is described in detail in: L<Paws::EC2::ConfirmProductInstance>
 
 Returns: a L<Paws::EC2::ConfirmProductInstanceResult> instance
 
-  
-
-Determines whether a product code is associated with an instance. This
+  Determines whether a product code is associated with an instance. This
 action can only be used by the owner of the product code. It is useful
 when a product code owner needs to verify whether another user's
 instance is eligible for support.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CopyImage(Name => Str, SourceImageId => Str, SourceRegion => Str, [ClientToken => Str, Description => Str, DryRun => Bool])
@@ -1702,9 +1482,7 @@ Each argument is described in detail in: L<Paws::EC2::CopyImage>
 
 Returns: a L<Paws::EC2::CopyImageResult> instance
 
-  
-
-Initiates the copy of an AMI from the specified source region to the
+  Initiates the copy of an AMI from the specified source region to the
 current region. You specify the destination region by using its
 endpoint when making the request. AMIs that use encrypted EBS snapshots
 cannot be copied with this method.
@@ -1713,24 +1491,13 @@ For more information, see Copying AMIs in the I<Amazon Elastic Compute
 Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CopySnapshot(SourceRegion => Str, SourceSnapshotId => Str, [Description => Str, DestinationRegion => Str, DryRun => Bool, Encrypted => Bool, KmsKeyId => Str, PresignedUrl => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CopySnapshot>
 
 Returns: a L<Paws::EC2::CopySnapshotResult> instance
 
-  
-
-Copies a point-in-time snapshot of an EBS volume and stores it in
+  Copies a point-in-time snapshot of an EBS volume and stores it in
 Amazon S3. You can copy the snapshot within the same region or from one
 region to another. You can use the snapshot to create EBS volumes or
 Amazon Machine Images (AMIs). The snapshot is copied to the regional
@@ -1747,29 +1514,18 @@ For more information, see Copying an Amazon EBS Snapshot in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateCustomerGateway(BgpAsn => Int, PublicIp => Str, Type => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateCustomerGateway>
 
 Returns: a L<Paws::EC2::CreateCustomerGatewayResult> instance
 
-  
-
-Provides information to AWS about your VPN customer gateway device. The
+  Provides information to AWS about your VPN customer gateway device. The
 customer gateway is the appliance at your end of the VPN connection.
 (The device on the AWS side of the VPN connection is the virtual
 private gateway.) You must provide the Internet-routable IP address of
 the customer gateway's external interface. The IP address must be
-static and can't be behind a device performing network address
+static and may be behind a device performing network address
 translation (NAT).
 
 For devices that use Border Gateway Protocol (BGP), you can also
@@ -1793,24 +1549,13 @@ customer gateway. The subsequent requests do not create new customer
 gateway resources.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateDhcpOptions(DhcpConfigurations => ArrayRef[Paws::EC2::NewDhcpConfiguration], [DryRun => Bool])
+=head2 CreateDhcpOptions(DhcpConfigurations => ArrayRef[L<Paws::EC2::NewDhcpConfiguration>], [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateDhcpOptions>
 
 Returns: a L<Paws::EC2::CreateDhcpOptionsResult> instance
 
-  
-
-Creates a set of DHCP options for your VPC. After creating the set, you
+  Creates a set of DHCP options for your VPC. After creating the set, you
 must associate it with the VPC, causing all existing and new instances
 that you launch in the VPC to use this set of DHCP options. The
 following are the individual DHCP options you can specify. For more
@@ -1857,24 +1602,13 @@ more information about DHCP options, see DHCP Options Sets in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateFlowLogs(DeliverLogsPermissionArn => Str, LogGroupName => Str, ResourceIds => ArrayRef[Str], ResourceType => Str, TrafficType => Str, [ClientToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateFlowLogs>
 
 Returns: a L<Paws::EC2::CreateFlowLogsResult> instance
 
-  
-
-Creates one or more flow logs to capture IP traffic for a specific
+  Creates one or more flow logs to capture IP traffic for a specific
 network interface, subnet, or VPC. Flow logs are delivered to a
 specified log group in Amazon CloudWatch Logs. If you specify a VPC or
 subnet in the request, a log stream is created in CloudWatch Logs for
@@ -1886,24 +1620,13 @@ In your request, you must also specify an IAM role that has permission
 to publish logs to CloudWatch Logs.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateImage(InstanceId => Str, Name => Str, [BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping], Description => Str, DryRun => Bool, NoReboot => Bool])
+=head2 CreateImage(InstanceId => Str, Name => Str, [BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], Description => Str, DryRun => Bool, NoReboot => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateImage>
 
 Returns: a L<Paws::EC2::CreateImageResult> instance
 
-  
-
-Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance
+  Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance
 that is either running or stopped.
 
 If you customized your instance with instance store volumes or EBS
@@ -1916,38 +1639,18 @@ For more information, see Creating Amazon EBS-Backed Linux AMIs in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateInstanceExportTask(InstanceId => Str, [Description => Str, ExportToS3Task => Paws::EC2::ExportToS3TaskSpecification, TargetEnvironment => Str])
+=head2 CreateInstanceExportTask(InstanceId => Str, [Description => Str, ExportToS3Task => L<Paws::EC2::ExportToS3TaskSpecification>, TargetEnvironment => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateInstanceExportTask>
 
 Returns: a L<Paws::EC2::CreateInstanceExportTaskResult> instance
 
-  
-
-Exports a running or stopped instance to an S3 bucket.
+  Exports a running or stopped instance to an S3 bucket.
 
 For information about the supported operating systems, image formats,
 and known limitations for the types of instances you can export, see
 Exporting EC2 Instances in the I<Amazon Elastic Compute Cloud User
 Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreateInternetGateway([DryRun => Bool])
@@ -1956,22 +1659,11 @@ Each argument is described in detail in: L<Paws::EC2::CreateInternetGateway>
 
 Returns: a L<Paws::EC2::CreateInternetGatewayResult> instance
 
-  
-
-Creates an Internet gateway for use with a VPC. After creating the
+  Creates an Internet gateway for use with a VPC. After creating the
 Internet gateway, you attach it to a VPC using AttachInternetGateway.
 
 For more information about your VPC and Internet gateway, see the
 Amazon Virtual Private Cloud User Guide.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreateKeyPair(KeyName => Str, [DryRun => Bool])
@@ -1980,9 +1672,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateKeyPair>
 
 Returns: a L<Paws::EC2::KeyPair> instance
 
-  
-
-Creates a 2048-bit RSA key pair with the specified name. Amazon EC2
+  Creates a 2048-bit RSA key pair with the specified name. Amazon EC2
 stores the public key and displays the private key for you to save to a
 file. The private key is returned as an unencrypted PEM encoded PKCS
 private key. If a key with the specified name already exists, Amazon
@@ -1998,24 +1688,13 @@ For more information about key pairs, see Key Pairs in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateNetworkAcl(VpcId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateNetworkAcl>
 
 Returns: a L<Paws::EC2::CreateNetworkAclResult> instance
 
-  
-
-Creates a network ACL in a VPC. Network ACLs provide an optional layer
+  Creates a network ACL in a VPC. Network ACLs provide an optional layer
 of security (in addition to security groups) for the instances in your
 VPC.
 
@@ -2023,24 +1702,13 @@ For more information about network ACLs, see Network ACLs in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateNetworkAclEntry(CidrBlock => Str, Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [DryRun => Bool, IcmpTypeCode => Paws::EC2::IcmpTypeCode, PortRange => Paws::EC2::PortRange])
+=head2 CreateNetworkAclEntry(CidrBlock => Str, Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [DryRun => Bool, IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>, PortRange => L<Paws::EC2::PortRange>])
 
 Each argument is described in detail in: L<Paws::EC2::CreateNetworkAclEntry>
 
 Returns: nothing
 
-  
-
-Creates an entry (a rule) in a network ACL with the specified rule
+  Creates an entry (a rule) in a network ACL with the specified rule
 number. Each network ACL has a set of numbered ingress rules and a
 separate set of numbered egress rules. When determining whether a
 packet should be allowed in or out of a subnet associated with the ACL,
@@ -2060,36 +1728,16 @@ For more information about network ACLs, see Network ACLs in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateNetworkInterface(SubnetId => Str, [Description => Str, DryRun => Bool, Groups => ArrayRef[Str], PrivateIpAddress => Str, PrivateIpAddresses => ArrayRef[Paws::EC2::PrivateIpAddressSpecification], SecondaryPrivateIpAddressCount => Int])
+=head2 CreateNetworkInterface(SubnetId => Str, [Description => Str, DryRun => Bool, Groups => ArrayRef[Str], PrivateIpAddress => Str, PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>], SecondaryPrivateIpAddressCount => Int])
 
 Each argument is described in detail in: L<Paws::EC2::CreateNetworkInterface>
 
 Returns: a L<Paws::EC2::CreateNetworkInterfaceResult> instance
 
-  
-
-Creates a network interface in the specified subnet.
+  Creates a network interface in the specified subnet.
 
 For more information about network interfaces, see Elastic Network
 Interfaces in the I<Amazon Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreatePlacementGroup(GroupName => Str, Strategy => Str, [DryRun => Bool])
@@ -2098,9 +1746,7 @@ Each argument is described in detail in: L<Paws::EC2::CreatePlacementGroup>
 
 Returns: nothing
 
-  
-
-Creates a placement group that you launch cluster instances into. You
+  Creates a placement group that you launch cluster instances into. You
 must give the group a name that's unique within the scope of your
 account.
 
@@ -2108,24 +1754,13 @@ For more information about placement groups and cluster instances, see
 Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateReservedInstancesListing(ClientToken => Str, InstanceCount => Int, PriceSchedules => ArrayRef[Paws::EC2::PriceScheduleSpecification], ReservedInstancesId => Str)
+=head2 CreateReservedInstancesListing(ClientToken => Str, InstanceCount => Int, PriceSchedules => ArrayRef[L<Paws::EC2::PriceScheduleSpecification>], ReservedInstancesId => Str)
 
 Each argument is described in detail in: L<Paws::EC2::CreateReservedInstancesListing>
 
 Returns: a L<Paws::EC2::CreateReservedInstancesListingResult> instance
 
-  
-
-Creates a listing for Amazon EC2 Reserved Instances to be sold in the
+  Creates a listing for Amazon EC2 Reserved Instances to be sold in the
 Reserved Instance Marketplace. You can submit one Reserved Instance
 listing at a time. To get a list of your Reserved Instances, you can
 use the DescribeReservedInstances operation.
@@ -2148,24 +1783,13 @@ For more information, see Reserved Instance Marketplace in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateRoute(DestinationCidrBlock => Str, RouteTableId => Str, [DryRun => Bool, GatewayId => Str, InstanceId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateRoute>
 
 Returns: a L<Paws::EC2::CreateRouteResult> instance
 
-  
-
-Creates a route in a route table within a VPC.
+  Creates a route in a route table within a VPC.
 
 You must specify one of the following targets: Internet gateway or
 virtual private gateway, NAT instance, VPC peering connection, or
@@ -2196,37 +1820,17 @@ For more information about route tables, see Route Tables in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateRouteTable(VpcId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateRouteTable>
 
 Returns: a L<Paws::EC2::CreateRouteTableResult> instance
 
-  
-
-Creates a route table for the specified VPC. After you create a route
+  Creates a route table for the specified VPC. After you create a route
 table, you can add routes and associate the table with a subnet.
 
 For more information about route tables, see Route Tables in the
 I<Amazon Virtual Private Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreateSecurityGroup(Description => Str, GroupName => Str, [DryRun => Bool, VpcId => Str])
@@ -2235,9 +1839,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateSecurityGroup>
 
 Returns: a L<Paws::EC2::CreateSecurityGroupResult> instance
 
-  
-
-Creates a security group.
+  Creates a security group.
 
 A security group is for use with instances either in the EC2-Classic
 platform or in a specific VPC. For more information, see Amazon EC2
@@ -2267,24 +1869,13 @@ AuthorizeSecurityGroupIngress, AuthorizeSecurityGroupEgress,
 RevokeSecurityGroupIngress, and RevokeSecurityGroupEgress.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateSnapshot(VolumeId => Str, [Description => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateSnapshot>
 
 Returns: a L<Paws::EC2::Snapshot> instance
 
-  
-
-Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
+  Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
 use snapshots for backups, to make copies of EBS volumes, and to save
 data before shutting down an instance.
 
@@ -2314,36 +1905,16 @@ For more information, see Amazon Elastic Block Store and Amazon EBS
 Encryption in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateSpotDatafeedSubscription(Bucket => Str, [DryRun => Bool, Prefix => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateSpotDatafeedSubscription>
 
 Returns: a L<Paws::EC2::CreateSpotDatafeedSubscriptionResult> instance
 
-  
-
-Creates a data feed for Spot Instances, enabling you to view Spot
-Instance usage logs. You can create one data feed per AWS account. For
+  Creates a data feed for Spot instances, enabling you to view Spot
+instance usage logs. You can create one data feed per AWS account. For
 more information, see Spot Instance Data Feed in the I<Amazon Elastic
 Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreateSubnet(CidrBlock => Str, VpcId => Str, [AvailabilityZone => Str, DryRun => Bool])
@@ -2352,9 +1923,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateSubnet>
 
 Returns: a L<Paws::EC2::CreateSubnetResult> instance
 
-  
-
-Creates a subnet in an existing VPC.
+  Creates a subnet in an existing VPC.
 
 When you create each subnet, you provide the VPC ID and the CIDR block
 you want for the subnet. After you create a subnet, you can't change
@@ -2382,39 +1951,22 @@ For more information about subnets, see Your VPC and Subnets in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateTags(Resources => ArrayRef[Str], Tags => ArrayRef[Paws::EC2::Tag], [DryRun => Bool])
+=head2 CreateTags(Resources => ArrayRef[Str], Tags => ArrayRef[L<Paws::EC2::Tag>], [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateTags>
 
 Returns: nothing
 
-  
-
-Adds or overwrites one or more tags for the specified Amazon EC2
+  Adds or overwrites one or more tags for the specified Amazon EC2
 resource or resources. Each resource can have a maximum of 10 tags.
 Each tag consists of a key and optional value. Tag keys must be unique
 per resource.
 
 For more information about tags, see Tagging Your Resources in the
-I<Amazon Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
+I<Amazon Elastic Compute Cloud User Guide>. For more information about
+creating IAM policies that control users' access to resources based on
+tags, see Supported Resource-Level Permissions for Amazon EC2 API
+Actions in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateVolume(AvailabilityZone => Str, [DryRun => Bool, Encrypted => Bool, Iops => Int, KmsKeyId => Str, Size => Int, SnapshotId => Str, VolumeType => Str])
@@ -2423,9 +1975,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateVolume>
 
 Returns: a L<Paws::EC2::Volume> instance
 
-  
-
-Creates an EBS volume that can be attached to an instance in the same
+  Creates an EBS volume that can be attached to an instance in the same
 Availability Zone. The volume is created in the regional endpoint that
 you send the HTTP request to. For more information see Regions and
 Endpoints.
@@ -2444,24 +1994,13 @@ For more information, see Creating or Restoring an Amazon EBS Volume in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateVpc(CidrBlock => Str, [DryRun => Bool, InstanceTenancy => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpc>
 
 Returns: a L<Paws::EC2::CreateVpcResult> instance
 
-  
-
-Creates a VPC with the specified CIDR block.
+  Creates a VPC with the specified CIDR block.
 
 The smallest VPC you can create uses a /28 netmask (16 IP addresses),
 and the largest uses a /16 netmask (65,536 IP addresses). To help you
@@ -2474,24 +2013,13 @@ options, which includes only a default DNS server that we provide
 Options Sets in the I<Amazon Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateVpcEndpoint(ServiceName => Str, VpcId => Str, [ClientToken => Str, DryRun => Bool, PolicyDocument => Str, RouteTableIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpcEndpoint>
 
 Returns: a L<Paws::EC2::CreateVpcEndpointResult> instance
 
-  
-
-Creates a VPC endpoint for a specified AWS service. An endpoint enables
+  Creates a VPC endpoint for a specified AWS service. An endpoint enables
 you to create a private connection between your VPC and another AWS
 service in your account. You can specify an endpoint policy to attach
 to the endpoint that will control access to the service from your VPC.
@@ -2500,24 +2028,13 @@ You can also specify the VPC route tables that use the endpoint.
 Currently, only endpoints to Amazon S3 are supported.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateVpcPeeringConnection([DryRun => Bool, PeerOwnerId => Str, PeerVpcId => Str, VpcId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpcPeeringConnection>
 
 Returns: a L<Paws::EC2::CreateVpcPeeringConnectionResult> instance
 
-  
-
-Requests a VPC peering connection between two VPCs: a requester VPC
+  Requests a VPC peering connection between two VPCs: a requester VPC
 that you own and a peer VPC with which to create the connection. The
 peer VPC can belong to another AWS account. The requester VPC and peer
 VPC cannot have overlapping CIDR blocks.
@@ -2531,24 +2048,13 @@ CIDR blocks results in the VPC peering connection having a status of
 C<failed>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 CreateVpnConnection(CustomerGatewayId => Str, Type => Str, VpnGatewayId => Str, [DryRun => Bool, Options => Paws::EC2::VpnConnectionOptionsSpecification])
+=head2 CreateVpnConnection(CustomerGatewayId => Str, Type => Str, VpnGatewayId => Str, [DryRun => Bool, Options => L<Paws::EC2::VpnConnectionOptionsSpecification>])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpnConnection>
 
 Returns: a L<Paws::EC2::CreateVpnConnectionResult> instance
 
-  
-
-Creates a VPN connection between an existing virtual private gateway
+  Creates a VPN connection between an existing virtual private gateway
 and a VPN customer gateway. The only supported connection type is
 C<ipsec.1>.
 
@@ -2568,24 +2074,13 @@ Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
 Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateVpnConnectionRoute(DestinationCidrBlock => Str, VpnConnectionId => Str)
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpnConnectionRoute>
 
 Returns: nothing
 
-  
-
-Creates a static route associated with a VPN connection between an
+  Creates a static route associated with a VPN connection between an
 existing virtual private gateway and a VPN customer gateway. The static
 route allows traffic to be routed from the virtual private gateway to
 the VPN customer gateway.
@@ -2595,24 +2090,13 @@ Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
 Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 CreateVpnGateway(Type => Str, [AvailabilityZone => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::CreateVpnGateway>
 
 Returns: a L<Paws::EC2::CreateVpnGatewayResult> instance
 
-  
-
-Creates a virtual private gateway. A virtual private gateway is the
+  Creates a virtual private gateway. A virtual private gateway is the
 endpoint on the VPC side of your VPN connection. You can create a
 virtual private gateway before creating the VPC itself.
 
@@ -2621,34 +2105,14 @@ Hardware Virtual Private Gateway to Your VPC in the I<Amazon Virtual
 Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteCustomerGateway(CustomerGatewayId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DeleteCustomerGateway>
 
 Returns: nothing
 
-  
-
-Deletes the specified customer gateway. You must delete the VPN
+  Deletes the specified customer gateway. You must delete the VPN
 connection before you can delete the customer gateway.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteDhcpOptions(DhcpOptionsId => Str, [DryRun => Bool])
@@ -2657,21 +2121,10 @@ Each argument is described in detail in: L<Paws::EC2::DeleteDhcpOptions>
 
 Returns: nothing
 
-  
-
-Deletes the specified set of DHCP options. You must disassociate the
+  Deletes the specified set of DHCP options. You must disassociate the
 set of DHCP options before you can delete it. You can disassociate the
 set of DHCP options by associating either a new set of options or the
 default set of options with the VPC.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteFlowLogs(FlowLogIds => ArrayRef[Str])
@@ -2680,18 +2133,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteFlowLogs>
 
 Returns: a L<Paws::EC2::DeleteFlowLogsResult> instance
 
-  
-
-Deletes one or more flow logs.
-
-
-
-
-
-
-
-
-
+  Deletes one or more flow logs.
 
 
 =head2 DeleteInternetGateway(InternetGatewayId => Str, [DryRun => Bool])
@@ -2700,19 +2142,8 @@ Each argument is described in detail in: L<Paws::EC2::DeleteInternetGateway>
 
 Returns: nothing
 
-  
-
-Deletes the specified Internet gateway. You must detach the Internet
+  Deletes the specified Internet gateway. You must detach the Internet
 gateway from the VPC before you can delete it.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteKeyPair(KeyName => Str, [DryRun => Bool])
@@ -2721,19 +2152,8 @@ Each argument is described in detail in: L<Paws::EC2::DeleteKeyPair>
 
 Returns: nothing
 
-  
-
-Deletes the specified key pair, by removing the public key from Amazon
+  Deletes the specified key pair, by removing the public key from Amazon
 EC2.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteNetworkAcl(NetworkAclId => Str, [DryRun => Bool])
@@ -2742,19 +2162,8 @@ Each argument is described in detail in: L<Paws::EC2::DeleteNetworkAcl>
 
 Returns: nothing
 
-  
-
-Deletes the specified network ACL. You can't delete the ACL if it's
+  Deletes the specified network ACL. You can't delete the ACL if it's
 associated with any subnets. You can't delete the default network ACL.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteNetworkAclEntry(Egress => Bool, NetworkAclId => Str, RuleNumber => Int, [DryRun => Bool])
@@ -2763,19 +2172,8 @@ Each argument is described in detail in: L<Paws::EC2::DeleteNetworkAclEntry>
 
 Returns: nothing
 
-  
-
-Deletes the specified ingress or egress entry (rule) from the specified
+  Deletes the specified ingress or egress entry (rule) from the specified
 network ACL.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteNetworkInterface(NetworkInterfaceId => Str, [DryRun => Bool])
@@ -2784,19 +2182,8 @@ Each argument is described in detail in: L<Paws::EC2::DeleteNetworkInterface>
 
 Returns: nothing
 
-  
-
-Deletes the specified network interface. You must detach the network
+  Deletes the specified network interface. You must detach the network
 interface before you can delete it.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeletePlacementGroup(GroupName => Str, [DryRun => Bool])
@@ -2805,21 +2192,10 @@ Each argument is described in detail in: L<Paws::EC2::DeletePlacementGroup>
 
 Returns: nothing
 
-  
-
-Deletes the specified placement group. You must terminate all instances
+  Deletes the specified placement group. You must terminate all instances
 in the placement group before you can delete the placement group. For
 more information about placement groups and cluster instances, see
 Cluster Instances in the I<Amazon Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteRoute(DestinationCidrBlock => Str, RouteTableId => Str, [DryRun => Bool])
@@ -2828,18 +2204,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteRoute>
 
 Returns: nothing
 
-  
-
-Deletes the specified route from the specified route table.
-
-
-
-
-
-
-
-
-
+  Deletes the specified route from the specified route table.
 
 
 =head2 DeleteRouteTable(RouteTableId => Str, [DryRun => Bool])
@@ -2848,20 +2213,9 @@ Each argument is described in detail in: L<Paws::EC2::DeleteRouteTable>
 
 Returns: nothing
 
-  
-
-Deletes the specified route table. You must disassociate the route
+  Deletes the specified route table. You must disassociate the route
 table from any subnets before you can delete it. You can't delete the
 main route table.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteSecurityGroup([DryRun => Bool, GroupId => Str, GroupName => Str])
@@ -2870,23 +2224,12 @@ Each argument is described in detail in: L<Paws::EC2::DeleteSecurityGroup>
 
 Returns: nothing
 
-  
-
-Deletes a security group.
+  Deletes a security group.
 
 If you attempt to delete a security group that is associated with an
 instance, or is referenced by another security group, the operation
 fails with C<InvalidGroup.InUse> in EC2-Classic or
 C<DependencyViolation> in EC2-VPC.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteSnapshot(SnapshotId => Str, [DryRun => Bool])
@@ -2895,9 +2238,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteSnapshot>
 
 Returns: nothing
 
-  
-
-Deletes the specified snapshot.
+  Deletes the specified snapshot.
 
 When you make periodic snapshots of a volume, the snapshots are
 incremental, and only the blocks on the device that have changed since
@@ -2915,35 +2256,13 @@ For more information, see Deleting an Amazon EBS Snapshot in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteSpotDatafeedSubscription([DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DeleteSpotDatafeedSubscription>
 
 Returns: nothing
 
-  
-
-Deletes the data feed for Spot Instances. For more information, see
-Spot Instance Data Feed in the I<Amazon Elastic Compute Cloud User
-Guide>.
-
-
-
-
-
-
-
-
-
+  Deletes the data feed for Spot instances.
 
 
 =head2 DeleteSubnet(SubnetId => Str, [DryRun => Bool])
@@ -2952,43 +2271,21 @@ Each argument is described in detail in: L<Paws::EC2::DeleteSubnet>
 
 Returns: nothing
 
-  
-
-Deletes the specified subnet. You must terminate all running instances
+  Deletes the specified subnet. You must terminate all running instances
 in the subnet before you can delete the subnet.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DeleteTags(Resources => ArrayRef[Str], [DryRun => Bool, Tags => ArrayRef[Paws::EC2::Tag]])
+=head2 DeleteTags(Resources => ArrayRef[Str], [DryRun => Bool, Tags => ArrayRef[L<Paws::EC2::Tag>]])
 
 Each argument is described in detail in: L<Paws::EC2::DeleteTags>
 
 Returns: nothing
 
-  
-
-Deletes the specified set of tags from the specified set of resources.
+  Deletes the specified set of tags from the specified set of resources.
 This call is designed to follow a C<DescribeTags> request.
 
 For more information about tags, see Tagging Your Resources in the
 I<Amazon Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteVolume(VolumeId => Str, [DryRun => Bool])
@@ -2997,9 +2294,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVolume>
 
 Returns: nothing
 
-  
-
-Deletes the specified EBS volume. The volume must be in the
+  Deletes the specified EBS volume. The volume must be in the
 C<available> state (not attached to an instance).
 
 The volume may remain in the C<deleting> state for several minutes.
@@ -3008,38 +2303,18 @@ For more information, see Deleting an Amazon EBS Volume in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteVpc(VpcId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DeleteVpc>
 
 Returns: nothing
 
-  
-
-Deletes the specified VPC. You must detach or delete all gateways and
+  Deletes the specified VPC. You must detach or delete all gateways and
 resources that are associated with the VPC before you can delete it.
 For example, you must terminate all instances running in the VPC,
 delete all security groups associated with the VPC (except the default
 one), delete all route tables associated with the VPC (except the
 default one), and so on.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteVpcEndpoints(VpcEndpointIds => ArrayRef[Str], [DryRun => Bool])
@@ -3048,20 +2323,9 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpcEndpoints>
 
 Returns: a L<Paws::EC2::DeleteVpcEndpointsResult> instance
 
-  
-
-Deletes one or more specified VPC endpoints. Deleting the endpoint also
+  Deletes one or more specified VPC endpoints. Deleting the endpoint also
 deletes the endpoint routes in the route tables that were associated
 with the endpoint.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteVpcPeeringConnection(VpcPeeringConnectionId => Str, [DryRun => Bool])
@@ -3070,21 +2334,10 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpcPeeringConnection
 
 Returns: a L<Paws::EC2::DeleteVpcPeeringConnectionResult> instance
 
-  
-
-Deletes a VPC peering connection. Either the owner of the requester VPC
+  Deletes a VPC peering connection. Either the owner of the requester VPC
 or the owner of the peer VPC can delete the VPC peering connection if
 it's in the C<active> state. The owner of the requester VPC can delete
 a VPC peering connection in the C<pending-acceptance> state.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteVpnConnection(VpnConnectionId => Str, [DryRun => Bool])
@@ -3093,9 +2346,7 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpnConnection>
 
 Returns: nothing
 
-  
-
-Deletes the specified VPN connection.
+  Deletes the specified VPN connection.
 
 If you're deleting the VPC and its associated components, we recommend
 that you detach the virtual private gateway from the VPC and delete the
@@ -3108,36 +2359,16 @@ using the new configuration information returned with the new VPN
 connection ID.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DeleteVpnConnectionRoute(DestinationCidrBlock => Str, VpnConnectionId => Str)
 
 Each argument is described in detail in: L<Paws::EC2::DeleteVpnConnectionRoute>
 
 Returns: nothing
 
-  
-
-Deletes the specified static route associated with a VPN connection
+  Deletes the specified static route associated with a VPN connection
 between an existing virtual private gateway and a VPN customer gateway.
 The static route allows traffic to be routed from the virtual private
 gateway to the VPN customer gateway.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeleteVpnGateway(VpnGatewayId => Str, [DryRun => Bool])
@@ -3146,22 +2377,11 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpnGateway>
 
 Returns: nothing
 
-  
-
-Deletes the specified virtual private gateway. We recommend that before
+  Deletes the specified virtual private gateway. We recommend that before
 you delete a virtual private gateway, you detach it from the VPC and
 delete the VPN connection. Note that you don't need to delete the
 virtual private gateway if you plan to delete and recreate the VPN
 connection between your VPC and your network.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DeregisterImage(ImageId => Str, [DryRun => Bool])
@@ -3170,21 +2390,10 @@ Each argument is described in detail in: L<Paws::EC2::DeregisterImage>
 
 Returns: nothing
 
-  
-
-Deregisters the specified AMI. After you deregister an AMI, it can't be
+  Deregisters the specified AMI. After you deregister an AMI, it can't be
 used to launch new instances.
 
 This command does not delete the AMI.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeAccountAttributes([AttributeNames => ArrayRef[Str], DryRun => Bool])
@@ -3193,9 +2402,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeAccountAttributes>
 
 Returns: a L<Paws::EC2::DescribeAccountAttributesResult> instance
 
-  
-
-Describes attributes of your AWS account. The following are the
+  Describes attributes of your AWS account. The following are the
 supported account attributes:
 
 =over
@@ -3233,47 +2440,26 @@ you can allocate for use with EC2-VPC.
 
 
 
-
-
-
-
-
-
-
-
-=head2 DescribeAddresses([AllocationIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], PublicIps => ArrayRef[Str]])
+=head2 DescribeAddresses([AllocationIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], PublicIps => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeAddresses>
 
 Returns: a L<Paws::EC2::DescribeAddressesResult> instance
 
-  
-
-Describes one or more of your Elastic IP addresses.
+  Describes one or more of your Elastic IP addresses.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see Elastic IP Addresses in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeAvailabilityZones([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], ZoneNames => ArrayRef[Str]])
+=head2 DescribeAvailabilityZones([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ZoneNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeAvailabilityZones>
 
 Returns: a L<Paws::EC2::DescribeAvailabilityZonesResult> instance
 
-  
-
-Describes one or more of the Availability Zones that are available to
+  Describes one or more of the Availability Zones that are available to
 you. The results include zones only for the region you're currently
 using. If there is an event impacting an Availability Zone, you can use
 this request to view the state and any provided message for that
@@ -3283,24 +2469,13 @@ For more information, see Regions and Availability Zones in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeBundleTasks([BundleIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeBundleTasks([BundleIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeBundleTasks>
 
 Returns: a L<Paws::EC2::DescribeBundleTasksResult> instance
 
-  
-
-Describes one or more of your bundling tasks.
+  Describes one or more of your bundling tasks.
 
 Completed bundle tasks are listed for only a limited time. If your
 bundle task is no longer in the list, you can still register an AMI
@@ -3308,105 +2483,52 @@ from it. Just use C<RegisterImage> with the Amazon S3 bucket name and
 image manifest name you provided to the bundle task.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeClassicLinkInstances([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], InstanceIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+=head2 DescribeClassicLinkInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeClassicLinkInstances>
 
 Returns: a L<Paws::EC2::DescribeClassicLinkInstancesResult> instance
 
-  
-
-Describes one or more of your linked EC2-Classic instances. This
+  Describes one or more of your linked EC2-Classic instances. This
 request only returns information about EC2-Classic instances linked to
 a VPC through ClassicLink; you cannot use this request to return
 information about other instances.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeConversionTasks([ConversionTaskIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeConversionTasks([ConversionTaskIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeConversionTasks>
 
 Returns: a L<Paws::EC2::DescribeConversionTasksResult> instance
 
-  
-
-Describes one or more of your conversion tasks. For more information,
+  Describes one or more of your conversion tasks. For more information,
 see Using the Command Line Tools to Import Your Virtual Machine to
 Amazon EC2 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeCustomerGateways([CustomerGatewayIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeCustomerGateways([CustomerGatewayIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeCustomerGateways>
 
 Returns: a L<Paws::EC2::DescribeCustomerGatewaysResult> instance
 
-  
-
-Describes one or more of your VPN customer gateways.
+  Describes one or more of your VPN customer gateways.
 
 For more information about VPN customer gateways, see Adding a Hardware
 Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
 Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeDhcpOptions([DhcpOptionsIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter]])
+=head2 DescribeDhcpOptions([DhcpOptionsIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeDhcpOptions>
 
 Returns: a L<Paws::EC2::DescribeDhcpOptionsResult> instance
 
-  
-
-Describes one or more of your DHCP options sets.
+  Describes one or more of your DHCP options sets.
 
 For more information about DHCP options sets, see DHCP Options Sets in
 the I<Amazon Virtual Private Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeExportTasks([ExportTaskIds => ArrayRef[Str]])
@@ -3415,40 +2537,18 @@ Each argument is described in detail in: L<Paws::EC2::DescribeExportTasks>
 
 Returns: a L<Paws::EC2::DescribeExportTasksResult> instance
 
-  
-
-Describes one or more of your export tasks.
+  Describes one or more of your export tasks.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeFlowLogs([Filter => ArrayRef[Paws::EC2::Filter], FlowLogIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+=head2 DescribeFlowLogs([Filter => ArrayRef[L<Paws::EC2::Filter>], FlowLogIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeFlowLogs>
 
 Returns: a L<Paws::EC2::DescribeFlowLogsResult> instance
 
-  
-
-Describes one or more flow logs. To view the information in your flow
+  Describes one or more flow logs. To view the information in your flow
 logs (the log streams for the network interfaces), you must use the
 CloudWatch Logs console or the CloudWatch Logs API.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeImageAttribute(Attribute => Str, ImageId => Str, [DryRun => Bool])
@@ -3457,30 +2557,17 @@ Each argument is described in detail in: L<Paws::EC2::DescribeImageAttribute>
 
 Returns: a L<Paws::EC2::ImageAttribute> instance
 
-  
-
-Describes the specified attribute of the specified AMI. You can specify
+  Describes the specified attribute of the specified AMI. You can specify
 only one attribute at a time.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeImages([DryRun => Bool, ExecutableUsers => ArrayRef[Str], Filters => ArrayRef[Paws::EC2::Filter], ImageIds => ArrayRef[Str], Owners => ArrayRef[Str]])
+=head2 DescribeImages([DryRun => Bool, ExecutableUsers => ArrayRef[Str], Filters => ArrayRef[L<Paws::EC2::Filter>], ImageIds => ArrayRef[Str], Owners => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeImages>
 
 Returns: a L<Paws::EC2::DescribeImagesResult> instance
 
-  
-
-Describes one or more of the images (AMIs, AKIs, and ARIs) available to
+  Describes one or more of the images (AMIs, AKIs, and ARIs) available to
 you. Images available to you include public images, private images that
 you own, and private images owned by other AWS accounts but for which
 you have explicit launch permissions.
@@ -3489,54 +2576,23 @@ Deregistered images are included in the returned results for an
 unspecified interval after deregistration.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeImportImageTasks([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], ImportTaskIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+=head2 DescribeImportImageTasks([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImportTaskIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeImportImageTasks>
 
 Returns: a L<Paws::EC2::DescribeImportImageTasksResult> instance
 
-  
-
-Displays details about an import virtual machine or import snapshot
+  Displays details about an import virtual machine or import snapshot
 tasks that are already created.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeImportSnapshotTasks([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], ImportTaskIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+=head2 DescribeImportSnapshotTasks([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImportTaskIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeImportSnapshotTasks>
 
 Returns: a L<Paws::EC2::DescribeImportSnapshotTasksResult> instance
 
-  
-
-Describes your import snapshot tasks.
-
-
-
-
-
-
-
-
-
+  Describes your import snapshot tasks.
 
 
 =head2 DescribeInstanceAttribute(Attribute => Str, InstanceId => Str, [DryRun => Bool])
@@ -3545,9 +2601,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstanceAttribute>
 
 Returns: a L<Paws::EC2::InstanceAttribute> instance
 
-  
-
-Describes the specified attribute of the specified instance. You can
+  Describes the specified attribute of the specified instance. You can
 specify only one attribute at a time. Valid attribute values are:
 C<instanceType> | C<kernel> | C<ramdisk> | C<userData> |
 C<disableApiTermination> | C<instanceInitiatedShutdownBehavior> |
@@ -3555,24 +2609,13 @@ C<rootDeviceName> | C<blockDeviceMapping> | C<productCodes> |
 C<sourceDestCheck> | C<groupSet> | C<ebsOptimized> | C<sriovNetSupport>
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeInstances([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], InstanceIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+=head2 DescribeInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeInstances>
 
 Returns: a L<Paws::EC2::DescribeInstancesResult> instance
 
-  
-
-Describes one or more of your instances.
+  Describes one or more of your instances.
 
 If you specify one or more instance IDs, Amazon EC2 returns information
 for those instances. If you do not specify instance IDs, Amazon EC2
@@ -3585,24 +2628,13 @@ Recently terminated instances might appear in the returned results.
 This interval is usually less than one hour.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeInstanceStatus([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], IncludeAllInstances => Bool, InstanceIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
+=head2 DescribeInstanceStatus([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeAllInstances => Bool, InstanceIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeInstanceStatus>
 
 Returns: a L<Paws::EC2::DescribeInstanceStatusResult> instance
 
-  
-
-Describes the status of one or more instances.
+  Describes the status of one or more instances.
 
 Instance status includes the following components:
 
@@ -3634,101 +2666,49 @@ Instance Lifecycle in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
-
-
-
-
-
-
-
-
-=head2 DescribeInternetGateways([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], InternetGatewayIds => ArrayRef[Str]])
+=head2 DescribeInternetGateways([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InternetGatewayIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeInternetGateways>
 
 Returns: a L<Paws::EC2::DescribeInternetGatewaysResult> instance
 
-  
-
-Describes one or more of your Internet gateways.
+  Describes one or more of your Internet gateways.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeKeyPairs([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], KeyNames => ArrayRef[Str]])
+=head2 DescribeKeyPairs([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], KeyNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeKeyPairs>
 
 Returns: a L<Paws::EC2::DescribeKeyPairsResult> instance
 
-  
-
-Describes one or more of your key pairs.
+  Describes one or more of your key pairs.
 
 For more information about key pairs, see Key Pairs in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeMovingAddresses([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str]])
+=head2 DescribeMovingAddresses([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeMovingAddresses>
 
 Returns: a L<Paws::EC2::DescribeMovingAddressesResult> instance
 
-  
-
-Describes your Elastic IP addresses that are being moved to the EC2-VPC
+  Describes your Elastic IP addresses that are being moved to the EC2-VPC
 platform, or that are being restored to the EC2-Classic platform. This
 request does not return information about any other Elastic IP
 addresses in your account.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeNetworkAcls([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], NetworkAclIds => ArrayRef[Str]])
+=head2 DescribeNetworkAcls([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], NetworkAclIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeNetworkAcls>
 
 Returns: a L<Paws::EC2::DescribeNetworkAclsResult> instance
 
-  
-
-Describes one or more of your network ACLs.
+  Describes one or more of your network ACLs.
 
 For more information about network ACLs, see Network ACLs in the
 I<Amazon Virtual Private Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeNetworkInterfaceAttribute(NetworkInterfaceId => Str, [Attribute => Str, DryRun => Bool])
@@ -3737,142 +2717,74 @@ Each argument is described in detail in: L<Paws::EC2::DescribeNetworkInterfaceAt
 
 Returns: a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> instance
 
-  
-
-Describes a network interface attribute. You can specify only one
+  Describes a network interface attribute. You can specify only one
 attribute at a time.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeNetworkInterfaces([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], NetworkInterfaceIds => ArrayRef[Str]])
+=head2 DescribeNetworkInterfaces([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], NetworkInterfaceIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeNetworkInterfaces>
 
 Returns: a L<Paws::EC2::DescribeNetworkInterfacesResult> instance
 
-  
-
-Describes one or more of your network interfaces.
+  Describes one or more of your network interfaces.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribePlacementGroups([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], GroupNames => ArrayRef[Str]])
+=head2 DescribePlacementGroups([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], GroupNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribePlacementGroups>
 
 Returns: a L<Paws::EC2::DescribePlacementGroupsResult> instance
 
-  
-
-Describes one or more of your placement groups. For more information
+  Describes one or more of your placement groups. For more information
 about placement groups and cluster instances, see Cluster Instances in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribePrefixLists([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str]])
+=head2 DescribePrefixLists([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribePrefixLists>
 
 Returns: a L<Paws::EC2::DescribePrefixListsResult> instance
 
-  
-
-Describes available AWS services in a prefix list format, which
+  Describes available AWS services in a prefix list format, which
 includes the prefix list name and prefix list ID of the service and the
 IP address range for the service. A prefix list ID is required for
 creating an outbound security group rule that allows traffic from a VPC
 to access an AWS service through a VPC endpoint.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeRegions([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], RegionNames => ArrayRef[Str]])
+=head2 DescribeRegions([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], RegionNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeRegions>
 
 Returns: a L<Paws::EC2::DescribeRegionsResult> instance
 
-  
-
-Describes one or more regions that are currently available to you.
+  Describes one or more regions that are currently available to you.
 
 For a list of the regions supported by Amazon EC2, see Regions and
 Endpoints.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeReservedInstances([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], OfferingType => Str, ReservedInstancesIds => ArrayRef[Str]])
+=head2 DescribeReservedInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], OfferingType => Str, ReservedInstancesIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstances>
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesResult> instance
 
-  
-
-Describes one or more of the Reserved Instances that you purchased.
+  Describes one or more of the Reserved Instances that you purchased.
 
 For more information about Reserved Instances, see Reserved Instances
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeReservedInstancesListings([Filters => ArrayRef[Paws::EC2::Filter], ReservedInstancesId => Str, ReservedInstancesListingId => Str])
+=head2 DescribeReservedInstancesListings([Filters => ArrayRef[L<Paws::EC2::Filter>], ReservedInstancesId => Str, ReservedInstancesListingId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesListings>
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesListingsResult> instance
 
-  
-
-Describes your account's Reserved Instance listings in the Reserved
+  Describes your account's Reserved Instance listings in the Reserved
 Instance Marketplace.
 
 The Reserved Instance Marketplace matches sellers who want to resell
@@ -3897,24 +2809,13 @@ For more information, see Reserved Instance Marketplace in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeReservedInstancesModifications([Filters => ArrayRef[Paws::EC2::Filter], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str]])
+=head2 DescribeReservedInstancesModifications([Filters => ArrayRef[L<Paws::EC2::Filter>], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesModifications>
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesModificationsResult> instance
 
-  
-
-Describes the modifications made to your Reserved Instances. If no
+  Describes the modifications made to your Reserved Instances. If no
 parameter is specified, information about all your Reserved Instances
 modification requests is returned. If a modification ID is specified,
 only information about the specific modification is returned.
@@ -3923,24 +2824,13 @@ For more information, see Modifying Reserved Instances in the Amazon
 Elastic Compute Cloud User Guide.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str]])
+=head2 DescribeReservedInstancesOfferings([AvailabilityZone => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeMarketplace => Bool, InstanceTenancy => Str, InstanceType => Str, MaxDuration => Int, MaxInstanceCount => Int, MaxResults => Int, MinDuration => Int, NextToken => Str, OfferingType => Str, ProductDescription => Str, ReservedInstancesOfferingIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesOfferings>
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesOfferingsResult> instance
 
-  
-
-Describes Reserved Instance offerings that are available for purchase.
+  Describes Reserved Instance offerings that are available for purchase.
 With Reserved Instances, you purchase the right to launch instances for
 a period of time. During that time period, you do not receive
 insufficient capacity errors, and you pay a lower usage rate than the
@@ -3950,24 +2840,13 @@ For more information, see Reserved Instance Marketplace in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeRouteTables([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], RouteTableIds => ArrayRef[Str]])
+=head2 DescribeRouteTables([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], RouteTableIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeRouteTables>
 
 Returns: a L<Paws::EC2::DescribeRouteTablesResult> instance
 
-  
-
-Describes one or more of your route tables.
+  Describes one or more of your route tables.
 
 Each subnet in your VPC must be associated with a route table. If a
 subnet is not explicitly associated with any route table, it is
@@ -3978,24 +2857,13 @@ For more information about route tables, see Route Tables in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeSecurityGroups([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], GroupIds => ArrayRef[Str], GroupNames => ArrayRef[Str]])
+=head2 DescribeSecurityGroups([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], GroupIds => ArrayRef[Str], GroupNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSecurityGroups>
 
 Returns: a L<Paws::EC2::DescribeSecurityGroupsResult> instance
 
-  
-
-Describes one or more of your security groups.
+  Describes one or more of your security groups.
 
 A security group is for use with instances either in the EC2-Classic
 platform or in a specific VPC. For more information, see Amazon EC2
@@ -4004,48 +2872,26 @@ Security Groups for Your VPC in the I<Amazon Virtual Private Cloud User
 Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeSnapshotAttribute(Attribute => Str, SnapshotId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSnapshotAttribute>
 
 Returns: a L<Paws::EC2::DescribeSnapshotAttributeResult> instance
 
-  
-
-Describes the specified attribute of the specified snapshot. You can
+  Describes the specified attribute of the specified snapshot. You can
 specify only one attribute at a time.
 
 For more information about EBS snapshots, see Amazon EBS Snapshots in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeSnapshots([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, OwnerIds => ArrayRef[Str], RestorableByUserIds => ArrayRef[Str], SnapshotIds => ArrayRef[Str]])
+=head2 DescribeSnapshots([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, OwnerIds => ArrayRef[Str], RestorableByUserIds => ArrayRef[Str], SnapshotIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSnapshots>
 
 Returns: a L<Paws::EC2::DescribeSnapshotsResult> instance
 
-  
-
-Describes one or more of the EBS snapshots available to you. Available
+  Describes one or more of the EBS snapshots available to you. Available
 snapshots include public snapshots available for any AWS account to
 launch, private snapshots that you own, and private snapshots owned by
 another AWS account but for which you've been given explicit create
@@ -4100,35 +2946,15 @@ For more information about EBS snapshots, see Amazon EBS Snapshots in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeSpotDatafeedSubscription([DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSpotDatafeedSubscription>
 
 Returns: a L<Paws::EC2::DescribeSpotDatafeedSubscriptionResult> instance
 
-  
-
-Describes the data feed for Spot Instances. For more information, see
+  Describes the data feed for Spot instances. For more information, see
 Spot Instance Data Feed in the I<Amazon Elastic Compute Cloud User
 Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeSpotFleetInstances(SpotFleetRequestId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
@@ -4137,18 +2963,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetInstances
 
 Returns: a L<Paws::EC2::DescribeSpotFleetInstancesResponse> instance
 
-  
-
-Describes the running instances for the specified Spot fleet.
-
-
-
-
-
-
-
-
-
+  Describes the running instances for the specified Spot fleet.
 
 
 =head2 DescribeSpotFleetRequestHistory(SpotFleetRequestId => Str, StartTime => Str, [DryRun => Bool, EventType => Str, MaxResults => Int, NextToken => Str])
@@ -4157,23 +2972,12 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetRequestHi
 
 Returns: a L<Paws::EC2::DescribeSpotFleetRequestHistoryResponse> instance
 
-  
-
-Describes the events for the specified Spot fleet request during the
+  Describes the events for the specified Spot fleet request during the
 specified time.
 
 Spot fleet events are delayed by up to 30 seconds before they can be
 described. This ensures that you can query by the last evaluated time
 and not miss a recorded event.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeSpotFleetRequests([DryRun => Bool, MaxResults => Int, NextToken => Str, SpotFleetRequestIds => ArrayRef[Str]])
@@ -4182,62 +2986,38 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetRequests>
 
 Returns: a L<Paws::EC2::DescribeSpotFleetRequestsResponse> instance
 
-  
-
-Describes your Spot fleet requests.
+  Describes your Spot fleet requests.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeSpotInstanceRequests([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], SpotInstanceRequestIds => ArrayRef[Str]])
+=head2 DescribeSpotInstanceRequests([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], SpotInstanceRequestIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSpotInstanceRequests>
 
 Returns: a L<Paws::EC2::DescribeSpotInstanceRequestsResult> instance
 
-  
-
-Describes the Spot Instance requests that belong to your account. Spot
-Instances are instances that Amazon EC2 launches when the bid price
-that you specify exceeds the current Spot Price. Amazon EC2
-periodically sets the Spot Price based on available Spot Instance
-capacity and current Spot Instance requests. For more information, see
+  Describes the Spot instance requests that belong to your account. Spot
+instances are instances that Amazon EC2 launches when the bid price
+that you specify exceeds the current Spot price. Amazon EC2
+periodically sets the Spot price based on available Spot instance
+capacity and current Spot instance requests. For more information, see
 Spot Instance Requests in the I<Amazon Elastic Compute Cloud User
 Guide>.
 
 You can use C<DescribeSpotInstanceRequests> to find a running Spot
-Instance by examining the response. If the status of the Spot Instance
+instance by examining the response. If the status of the Spot instance
 is C<fulfilled>, the instance ID appears in the response and contains
 the identifier of the instance. Alternatively, you can use
 DescribeInstances with a filter to look for instances where the
 instance lifecycle is C<spot>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeSpotPriceHistory([AvailabilityZone => Str, DryRun => Bool, EndTime => Str, Filters => ArrayRef[Paws::EC2::Filter], InstanceTypes => ArrayRef[Str], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str], StartTime => Str])
+=head2 DescribeSpotPriceHistory([AvailabilityZone => Str, DryRun => Bool, EndTime => Str, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceTypes => ArrayRef[Str], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str], StartTime => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSpotPriceHistory>
 
 Returns: a L<Paws::EC2::DescribeSpotPriceHistoryResult> instance
 
-  
-
-Describes the Spot Price history. The prices returned are listed in
+  Describes the Spot price history. The prices returned are listed in
 chronological order, from the oldest to the most recent, for up to the
 past 90 days. For more information, see Spot Instance Pricing History
 in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -4249,59 +3029,28 @@ period that you specified; the response merely indicates the last time
 that the price changed.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeSubnets([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], SubnetIds => ArrayRef[Str]])
+=head2 DescribeSubnets([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], SubnetIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSubnets>
 
 Returns: a L<Paws::EC2::DescribeSubnetsResult> instance
 
-  
-
-Describes one or more of your subnets.
+  Describes one or more of your subnets.
 
 For more information about subnets, see Your VPC and Subnets in the
 I<Amazon Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeTags([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str])
+=head2 DescribeTags([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeTags>
 
 Returns: a L<Paws::EC2::DescribeTagsResult> instance
 
-  
-
-Describes one or more of the tags for your EC2 resources.
+  Describes one or more of the tags for your EC2 resources.
 
 For more information about tags, see Tagging Your Resources in the
 I<Amazon Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DescribeVolumeAttribute(VolumeId => Str, [Attribute => Str, DryRun => Bool])
@@ -4310,33 +3059,20 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVolumeAttribute>
 
 Returns: a L<Paws::EC2::DescribeVolumeAttributeResult> instance
 
-  
-
-Describes the specified attribute of the specified volume. You can
+  Describes the specified attribute of the specified volume. You can
 specify only one attribute at a time.
 
 For more information about EBS volumes, see Amazon EBS Volumes in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeVolumes([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str]])
+=head2 DescribeVolumes([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVolumes>
 
 Returns: a L<Paws::EC2::DescribeVolumesResult> instance
 
-  
-
-Describes the specified EBS volumes.
+  Describes the specified EBS volumes.
 
 If you are describing a long list of volumes, you can paginate the
 output to make the list more manageable. The C<MaxResults> parameter
@@ -4350,24 +3086,13 @@ For more information about EBS volumes, see Amazon EBS Volumes in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeVolumeStatus([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str]])
+=head2 DescribeVolumeStatus([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VolumeIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVolumeStatus>
 
 Returns: a L<Paws::EC2::DescribeVolumeStatusResult> instance
 
-  
-
-Describes the status of the specified volumes. Volume status provides
+  Describes the status of the specified volumes. Volume status provides
 the result of the checks performed on your volumes to determine events
 that can impair the performance of your volumes. The performance of a
 volume can be affected if an issue occurs on the volume's underlying
@@ -4409,74 +3134,32 @@ volumes in the C<error> state (for example, when a volume is incapable
 of accepting I/O.)
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeVpcAttribute(VpcId => Str, [Attribute => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcAttribute>
 
 Returns: a L<Paws::EC2::DescribeVpcAttributeResult> instance
 
-  
-
-Describes the specified attribute of the specified VPC. You can specify
+  Describes the specified attribute of the specified VPC. You can specify
 only one attribute at a time.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeVpcClassicLink([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], VpcIds => ArrayRef[Str]])
+=head2 DescribeVpcClassicLink([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], VpcIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcClassicLink>
 
 Returns: a L<Paws::EC2::DescribeVpcClassicLinkResult> instance
 
-  
-
-Describes the ClassicLink status of one or more VPCs.
+  Describes the ClassicLink status of one or more VPCs.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeVpcEndpoints([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str]])
+=head2 DescribeVpcEndpoints([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpoints>
 
 Returns: a L<Paws::EC2::DescribeVpcEndpointsResult> instance
 
-  
-
-Describes one or more of your VPC endpoints.
-
-
-
-
-
-
-
-
-
+  Describes one or more of your VPC endpoints.
 
 
 =head2 DescribeVpcEndpointServices([DryRun => Bool, MaxResults => Int, NextToken => Str])
@@ -4485,107 +3168,52 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpointService
 
 Returns: a L<Paws::EC2::DescribeVpcEndpointServicesResult> instance
 
-  
-
-Describes all supported AWS services that can be specified when
+  Describes all supported AWS services that can be specified when
 creating a VPC endpoint.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeVpcPeeringConnections([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], VpcPeeringConnectionIds => ArrayRef[Str]])
+=head2 DescribeVpcPeeringConnections([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], VpcPeeringConnectionIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcPeeringConnections>
 
 Returns: a L<Paws::EC2::DescribeVpcPeeringConnectionsResult> instance
 
-  
-
-Describes one or more of your VPC peering connections.
+  Describes one or more of your VPC peering connections.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeVpcs([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], VpcIds => ArrayRef[Str]])
+=head2 DescribeVpcs([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], VpcIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcs>
 
 Returns: a L<Paws::EC2::DescribeVpcsResult> instance
 
-  
-
-Describes one or more of your VPCs.
+  Describes one or more of your VPCs.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeVpnConnections([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], VpnConnectionIds => ArrayRef[Str]])
+=head2 DescribeVpnConnections([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], VpnConnectionIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpnConnections>
 
 Returns: a L<Paws::EC2::DescribeVpnConnectionsResult> instance
 
-  
-
-Describes one or more of your VPN connections.
+  Describes one or more of your VPN connections.
 
 For more information about VPN connections, see Adding a Hardware
 Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
 Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 DescribeVpnGateways([DryRun => Bool, Filters => ArrayRef[Paws::EC2::Filter], VpnGatewayIds => ArrayRef[Str]])
+=head2 DescribeVpnGateways([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], VpnGatewayIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpnGateways>
 
 Returns: a L<Paws::EC2::DescribeVpnGatewaysResult> instance
 
-  
-
-Describes one or more of your virtual private gateways.
+  Describes one or more of your virtual private gateways.
 
 For more information about virtual private gateways, see Adding an
 IPsec Hardware VPN to Your VPC in the I<Amazon Virtual Private Cloud
 User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DetachClassicLinkVpc(InstanceId => Str, VpcId => Str, [DryRun => Bool])
@@ -4594,21 +3222,10 @@ Each argument is described in detail in: L<Paws::EC2::DetachClassicLinkVpc>
 
 Returns: a L<Paws::EC2::DetachClassicLinkVpcResult> instance
 
-  
-
-Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
+  Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
 instance has been unlinked, the VPC security groups are no longer
 associated with it. An instance is automatically unlinked from a VPC
 when it's stopped.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DetachInternetGateway(InternetGatewayId => Str, VpcId => Str, [DryRun => Bool])
@@ -4617,20 +3234,9 @@ Each argument is described in detail in: L<Paws::EC2::DetachInternetGateway>
 
 Returns: nothing
 
-  
-
-Detaches an Internet gateway from a VPC, disabling connectivity between
+  Detaches an Internet gateway from a VPC, disabling connectivity between
 the Internet and the VPC. The VPC must not contain any running
 instances with Elastic IP addresses.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DetachNetworkInterface(AttachmentId => Str, [DryRun => Bool, Force => Bool])
@@ -4639,18 +3245,7 @@ Each argument is described in detail in: L<Paws::EC2::DetachNetworkInterface>
 
 Returns: nothing
 
-  
-
-Detaches a network interface from an instance.
-
-
-
-
-
-
-
-
-
+  Detaches a network interface from an instance.
 
 
 =head2 DetachVolume(VolumeId => Str, [Device => Str, DryRun => Bool, Force => Bool, InstanceId => Str])
@@ -4659,9 +3254,7 @@ Each argument is described in detail in: L<Paws::EC2::DetachVolume>
 
 Returns: a L<Paws::EC2::VolumeAttachment> instance
 
-  
-
-Detaches an EBS volume from an instance. Make sure to unmount any file
+  Detaches an EBS volume from an instance. Make sure to unmount any file
 systems on the device within your operating system before detaching the
 volume. Failure to do so results in the volume being stuck in a busy
 state while detaching.
@@ -4677,24 +3270,13 @@ For more information, see Detaching an Amazon EBS Volume in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DetachVpnGateway(VpcId => Str, VpnGatewayId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DetachVpnGateway>
 
 Returns: nothing
 
-  
-
-Detaches a virtual private gateway from a VPC. You do this if you're
+  Detaches a virtual private gateway from a VPC. You do this if you're
 planning to turn off the VPC and not use it anymore. You can confirm a
 virtual private gateway has been completely detached from a VPC by
 describing the virtual private gateway (any attachments to the virtual
@@ -4705,34 +3287,14 @@ before you can delete the VPC or attach a different VPC to the virtual
 private gateway.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DisableVgwRoutePropagation(GatewayId => Str, RouteTableId => Str)
 
 Each argument is described in detail in: L<Paws::EC2::DisableVgwRoutePropagation>
 
 Returns: nothing
 
-  
-
-Disables a virtual private gateway (VGW) from propagating routes to a
+  Disables a virtual private gateway (VGW) from propagating routes to a
 specified route table of a VPC.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DisableVpcClassicLink(VpcId => Str, [DryRun => Bool])
@@ -4741,19 +3303,8 @@ Each argument is described in detail in: L<Paws::EC2::DisableVpcClassicLink>
 
 Returns: a L<Paws::EC2::DisableVpcClassicLinkResult> instance
 
-  
-
-Disables ClassicLink for a VPC. You cannot disable ClassicLink for a
+  Disables ClassicLink for a VPC. You cannot disable ClassicLink for a
 VPC that has EC2-Classic instances linked to it.
-
-
-
-
-
-
-
-
-
 
 
 =head2 DisassociateAddress([AssociationId => Str, DryRun => Bool, PublicIp => Str])
@@ -4762,9 +3313,7 @@ Each argument is described in detail in: L<Paws::EC2::DisassociateAddress>
 
 Returns: nothing
 
-  
-
-Disassociates an Elastic IP address from the instance or network
+  Disassociates an Elastic IP address from the instance or network
 interface it's associated with.
 
 An Elastic IP address is for use in either the EC2-Classic platform or
@@ -4775,38 +3324,18 @@ This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DisassociateRouteTable(AssociationId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DisassociateRouteTable>
 
 Returns: nothing
 
-  
-
-Disassociates a subnet from a route table.
+  Disassociates a subnet from a route table.
 
 After you perform this action, the subnet no longer uses the routes in
 the route table. Instead, it uses the routes in the VPC's main route
 table. For more information about route tables, see Route Tables in the
 I<Amazon Virtual Private Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 EnableVgwRoutePropagation(GatewayId => Str, RouteTableId => Str)
@@ -4815,19 +3344,8 @@ Each argument is described in detail in: L<Paws::EC2::EnableVgwRoutePropagation>
 
 Returns: nothing
 
-  
-
-Enables a virtual private gateway (VGW) to propagate routes to the
+  Enables a virtual private gateway (VGW) to propagate routes to the
 specified route table of a VPC.
-
-
-
-
-
-
-
-
-
 
 
 =head2 EnableVolumeIO(VolumeId => Str, [DryRun => Bool])
@@ -4836,19 +3354,8 @@ Each argument is described in detail in: L<Paws::EC2::EnableVolumeIO>
 
 Returns: nothing
 
-  
-
-Enables I/O operations for a volume that had I/O operations disabled
+  Enables I/O operations for a volume that had I/O operations disabled
 because the data on the volume was potentially inconsistent.
-
-
-
-
-
-
-
-
-
 
 
 =head2 EnableVpcClassicLink(VpcId => Str, [DryRun => Bool])
@@ -4857,9 +3364,7 @@ Each argument is described in detail in: L<Paws::EC2::EnableVpcClassicLink>
 
 Returns: a L<Paws::EC2::EnableVpcClassicLinkResult> instance
 
-  
-
-Enables a VPC for ClassicLink. You can then link EC2-Classic instances
+  Enables a VPC for ClassicLink. You can then link EC2-Classic instances
 to your ClassicLink-enabled VPC to allow communication over private IP
 addresses. You cannot enable your VPC for ClassicLink if any of your
 VPC's route tables have existing routes for address ranges within the
@@ -4869,24 +3374,13 @@ information, see ClassicLink in the Amazon Elastic Compute Cloud User
 Guide.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetConsoleOutput(InstanceId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::GetConsoleOutput>
 
 Returns: a L<Paws::EC2::GetConsoleOutputResult> instance
 
-  
-
-Gets the console output for the specified instance.
+  Gets the console output for the specified instance.
 
 Instances do not have a physical monitor through which you can view
 their console output. They also lack physical controls that allow you
@@ -4908,24 +3402,13 @@ For Windows instances, the instance console output includes output from
 the EC2Config service.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetPasswordData(InstanceId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::GetPasswordData>
 
 Returns: a L<Paws::EC2::GetPasswordDataResult> instance
 
-  
-
-Retrieves the encrypted administrator password for an instance running
+  Retrieves the encrypted administrator password for an instance running
 Windows.
 
 The Windows password is generated at boot if the C<EC2Config> service
@@ -4943,45 +3426,23 @@ that you wait up to 15 minutes after launching an instance before
 trying to retrieve the generated password.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ImportImage([Architecture => Str, ClientData => Paws::EC2::ClientData, ClientToken => Str, Description => Str, DiskContainers => ArrayRef[Paws::EC2::ImageDiskContainer], DryRun => Bool, Hypervisor => Str, LicenseType => Str, Platform => Str, RoleName => Str])
+=head2 ImportImage([Architecture => Str, ClientData => L<Paws::EC2::ClientData>, ClientToken => Str, Description => Str, DiskContainers => ArrayRef[L<Paws::EC2::ImageDiskContainer>], DryRun => Bool, Hypervisor => Str, LicenseType => Str, Platform => Str, RoleName => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ImportImage>
 
 Returns: a L<Paws::EC2::ImportImageResult> instance
 
-  
-
-Import single or multi-volume disk images or EBS snapshots into an
+  Import single or multi-volume disk images or EBS snapshots into an
 Amazon Machine Image (AMI).
 
 
-
-
-
-
-
-
-
-
-
-=head2 ImportInstance(Platform => Str, [Description => Str, DiskImages => ArrayRef[Paws::EC2::DiskImage], DryRun => Bool, LaunchSpecification => Paws::EC2::ImportInstanceLaunchSpecification])
+=head2 ImportInstance(Platform => Str, [Description => Str, DiskImages => ArrayRef[L<Paws::EC2::DiskImage>], DryRun => Bool, LaunchSpecification => L<Paws::EC2::ImportInstanceLaunchSpecification>])
 
 Each argument is described in detail in: L<Paws::EC2::ImportInstance>
 
 Returns: a L<Paws::EC2::ImportInstanceResult> instance
 
-  
-
-Creates an import instance task using metadata from the specified disk
+  Creates an import instance task using metadata from the specified disk
 image. C<ImportInstance> only supports single-volume VMs. To import
 multi-volume VMs, use ImportImage. After importing the image, you then
 upload it using the C<ec2-import-volume> command in the EC2 command
@@ -4990,24 +3451,13 @@ Import Your Virtual Machine to Amazon EC2 in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ImportKeyPair(KeyName => Str, PublicKeyMaterial => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::ImportKeyPair>
 
 Returns: a L<Paws::EC2::ImportKeyPairResult> instance
 
-  
-
-Imports the public key from an RSA key pair that you created with a
+  Imports the public key from an RSA key pair that you created with a
 third-party tool. Compare this with CreateKeyPair, in which AWS creates
 the key pair and gives the keys to you (AWS keeps a copy of the public
 key). With ImportKeyPair, you create the key pair and give AWS just the
@@ -5017,44 +3467,22 @@ For more information about key pairs, see Key Pairs in the I<Amazon
 Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ImportSnapshot([ClientData => Paws::EC2::ClientData, ClientToken => Str, Description => Str, DiskContainer => Paws::EC2::SnapshotDiskContainer, DryRun => Bool, RoleName => Str])
+=head2 ImportSnapshot([ClientData => L<Paws::EC2::ClientData>, ClientToken => Str, Description => Str, DiskContainer => L<Paws::EC2::SnapshotDiskContainer>, DryRun => Bool, RoleName => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ImportSnapshot>
 
 Returns: a L<Paws::EC2::ImportSnapshotResult> instance
 
-  
-
-Imports a disk into an EBS snapshot.
+  Imports a disk into an EBS snapshot.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ImportVolume(AvailabilityZone => Str, Image => Paws::EC2::DiskImageDetail, Volume => Paws::EC2::VolumeDetail, [Description => Str, DryRun => Bool])
+=head2 ImportVolume(AvailabilityZone => Str, Image => L<Paws::EC2::DiskImageDetail>, Volume => L<Paws::EC2::VolumeDetail>, [Description => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::ImportVolume>
 
 Returns: a L<Paws::EC2::ImportVolumeResult> instance
 
-  
-
-Creates an import volume task using metadata from the specified disk
+  Creates an import volume task using metadata from the specified disk
 image. After importing the image, you then upload it using the
 C<ec2-import-volume> command in the Amazon EC2 command-line interface
 (CLI) tools. For more information, see Using the Command Line Tools to
@@ -5062,48 +3490,26 @@ Import Your Virtual Machine to Amazon EC2 in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ModifyImageAttribute(ImageId => Str, [Attribute => Str, Description => Paws::EC2::AttributeValue, DryRun => Bool, LaunchPermission => Paws::EC2::LaunchPermissionModifications, OperationType => Str, ProductCodes => ArrayRef[Str], UserGroups => ArrayRef[Str], UserIds => ArrayRef[Str], Value => Str])
+=head2 ModifyImageAttribute(ImageId => Str, [Attribute => Str, Description => L<Paws::EC2::AttributeValue>, DryRun => Bool, LaunchPermission => L<Paws::EC2::LaunchPermissionModifications>, OperationType => Str, ProductCodes => ArrayRef[Str], UserGroups => ArrayRef[Str], UserIds => ArrayRef[Str], Value => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyImageAttribute>
 
 Returns: nothing
 
-  
-
-Modifies the specified attribute of the specified AMI. You can specify
+  Modifies the specified attribute of the specified AMI. You can specify
 only one attribute at a time.
 
 AWS Marketplace product codes cannot be modified. Images with an AWS
 Marketplace product code cannot be made public.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ModifyInstanceAttribute(InstanceId => Str, [Attribute => Str, BlockDeviceMappings => ArrayRef[Paws::EC2::InstanceBlockDeviceMappingSpecification], DisableApiTermination => Paws::EC2::AttributeBooleanValue, DryRun => Bool, EbsOptimized => Paws::EC2::AttributeBooleanValue, Groups => ArrayRef[Str], InstanceInitiatedShutdownBehavior => Paws::EC2::AttributeValue, InstanceType => Paws::EC2::AttributeValue, Kernel => Paws::EC2::AttributeValue, Ramdisk => Paws::EC2::AttributeValue, SourceDestCheck => Paws::EC2::AttributeBooleanValue, SriovNetSupport => Paws::EC2::AttributeValue, UserData => Paws::EC2::BlobAttributeValue, Value => Str])
+=head2 ModifyInstanceAttribute(InstanceId => Str, [Attribute => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>], DisableApiTermination => L<Paws::EC2::AttributeBooleanValue>, DryRun => Bool, EbsOptimized => L<Paws::EC2::AttributeBooleanValue>, Groups => ArrayRef[Str], InstanceInitiatedShutdownBehavior => L<Paws::EC2::AttributeValue>, InstanceType => L<Paws::EC2::AttributeValue>, Kernel => L<Paws::EC2::AttributeValue>, Ramdisk => L<Paws::EC2::AttributeValue>, SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>, SriovNetSupport => L<Paws::EC2::AttributeValue>, UserData => L<Paws::EC2::BlobAttributeValue>, Value => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyInstanceAttribute>
 
 Returns: nothing
 
-  
-
-Modifies the specified attribute of the specified instance. You can
+  Modifies the specified attribute of the specified instance. You can
 specify only one attribute at a time.
 
 To modify some attributes, the instance must be stopped. For more
@@ -5111,45 +3517,23 @@ information, see Modifying Attributes of a Stopped Instance in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ModifyNetworkInterfaceAttribute(NetworkInterfaceId => Str, [Attachment => Paws::EC2::NetworkInterfaceAttachmentChanges, Description => Paws::EC2::AttributeValue, DryRun => Bool, Groups => ArrayRef[Str], SourceDestCheck => Paws::EC2::AttributeBooleanValue])
+=head2 ModifyNetworkInterfaceAttribute(NetworkInterfaceId => Str, [Attachment => L<Paws::EC2::NetworkInterfaceAttachmentChanges>, Description => L<Paws::EC2::AttributeValue>, DryRun => Bool, Groups => ArrayRef[Str], SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyNetworkInterfaceAttribute>
 
 Returns: nothing
 
-  
-
-Modifies the specified network interface attribute. You can specify
+  Modifies the specified network interface attribute. You can specify
 only one attribute at a time.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ModifyReservedInstances(ReservedInstancesIds => ArrayRef[Str], TargetConfigurations => ArrayRef[Paws::EC2::ReservedInstancesConfiguration], [ClientToken => Str])
+=head2 ModifyReservedInstances(ReservedInstancesIds => ArrayRef[Str], TargetConfigurations => ArrayRef[L<Paws::EC2::ReservedInstancesConfiguration>], [ClientToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyReservedInstances>
 
 Returns: a L<Paws::EC2::ModifyReservedInstancesResult> instance
 
-  
-
-Modifies the Availability Zone, instance count, instance type, or
+  Modifies the Availability Zone, instance count, instance type, or
 network platform (EC2-Classic or EC2-VPC) of your Reserved Instances.
 The Reserved Instances to be modified must be identical, except for
 Availability Zone, network platform, and instance type.
@@ -5158,24 +3542,13 @@ For more information, see Modifying Reserved Instances in the Amazon
 Elastic Compute Cloud User Guide.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ModifySnapshotAttribute(SnapshotId => Str, [Attribute => Str, CreateVolumePermission => Paws::EC2::CreateVolumePermissionModifications, DryRun => Bool, GroupNames => ArrayRef[Str], OperationType => Str, UserIds => ArrayRef[Str]])
+=head2 ModifySnapshotAttribute(SnapshotId => Str, [Attribute => Str, CreateVolumePermission => L<Paws::EC2::CreateVolumePermissionModifications>, DryRun => Bool, GroupNames => ArrayRef[Str], OperationType => Str, UserIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::ModifySnapshotAttribute>
 
 Returns: nothing
 
-  
-
-Adds or removes permission settings for the specified snapshot. You may
+  Adds or removes permission settings for the specified snapshot. You may
 add or remove specified AWS account IDs from a snapshot's list of
 create volume permissions, but you cannot do both in a single API call.
 If you need to both add and remove account IDs for a snapshot, you must
@@ -5187,44 +3560,53 @@ Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
 Snapshots with AWS Marketplace product codes cannot be made public.
 
 
+=head2 ModifySpotFleetRequest(SpotFleetRequestId => Str, [ExcessCapacityTerminationPolicy => Str, TargetCapacity => Int])
+
+Each argument is described in detail in: L<Paws::EC2::ModifySpotFleetRequest>
+
+Returns: a L<Paws::EC2::ModifySpotFleetRequestResponse> instance
+
+  Modifies the specified Spot fleet request.
+
+While the Spot fleet request is being modified, it is in the
+C<modifying> state.
+
+To scale up your Spot fleet, increase its target capacity. The Spot
+fleet launches the additional Spot instances according to the
+allocation strategy for the Spot fleet request. If the allocation
+strategy is C<lowestPrice>, the Spot fleet launches instances using the
+Spot pool with the lowest price. If the allocation strategy is
+C<diversified>, the Spot fleet distributes the instances across the
+Spot pools.
+
+To scale down your Spot fleet, decrease its target capacity. First, the
+Spot fleet cancels any open bids that exceed the new target capacity.
+You can request that the Spot fleet terminate Spot instances until the
+size of the fleet no longer exceeds the new target capacity. If the
+allocation strategy is C<lowestPrice>, the Spot fleet terminates the
+instances with the highest price per unit. If the allocation strategy
+is C<diversified>, the Spot fleet terminates instances across the Spot
+pools. Alternatively, you can request that the Spot fleet keep the
+fleet at its current size, but not replace any Spot instances that are
+interrupted or that you terminate manually.
 
 
-
-
-
-
-
-
-
-=head2 ModifySubnetAttribute(SubnetId => Str, [MapPublicIpOnLaunch => Paws::EC2::AttributeBooleanValue])
+=head2 ModifySubnetAttribute(SubnetId => Str, [MapPublicIpOnLaunch => L<Paws::EC2::AttributeBooleanValue>])
 
 Each argument is described in detail in: L<Paws::EC2::ModifySubnetAttribute>
 
 Returns: nothing
 
-  
-
-Modifies a subnet attribute.
+  Modifies a subnet attribute.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ModifyVolumeAttribute(VolumeId => Str, [AutoEnableIO => Paws::EC2::AttributeBooleanValue, DryRun => Bool])
+=head2 ModifyVolumeAttribute(VolumeId => Str, [AutoEnableIO => L<Paws::EC2::AttributeBooleanValue>, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyVolumeAttribute>
 
 Returns: nothing
 
-  
-
-Modifies a volume attribute.
+  Modifies a volume attribute.
 
 By default, all I/O operations for the volume are suspended when the
 data on the volume is determined to be potentially inconsistent, to
@@ -5237,33 +3619,13 @@ recommend that you change this only for boot volumes or for volumes
 that are stateless or disposable.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ModifyVpcAttribute(VpcId => Str, [EnableDnsHostnames => Paws::EC2::AttributeBooleanValue, EnableDnsSupport => Paws::EC2::AttributeBooleanValue])
+=head2 ModifyVpcAttribute(VpcId => Str, [EnableDnsHostnames => L<Paws::EC2::AttributeBooleanValue>, EnableDnsSupport => L<Paws::EC2::AttributeBooleanValue>])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyVpcAttribute>
 
 Returns: nothing
 
-  
-
-Modifies the specified attribute of the specified VPC.
-
-
-
-
-
-
-
-
-
+  Modifies the specified attribute of the specified VPC.
 
 
 =head2 ModifyVpcEndpoint(VpcEndpointId => Str, [AddRouteTableIds => ArrayRef[Str], DryRun => Bool, PolicyDocument => Str, RemoveRouteTableIds => ArrayRef[Str], ResetPolicy => Bool])
@@ -5272,20 +3634,9 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpoint>
 
 Returns: a L<Paws::EC2::ModifyVpcEndpointResult> instance
 
-  
-
-Modifies attributes of a specified VPC endpoint. You can modify the
+  Modifies attributes of a specified VPC endpoint. You can modify the
 policy associated with the endpoint, and you can add and remove route
 tables associated with the endpoint.
-
-
-
-
-
-
-
-
-
 
 
 =head2 MonitorInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])
@@ -5294,20 +3645,9 @@ Each argument is described in detail in: L<Paws::EC2::MonitorInstances>
 
 Returns: a L<Paws::EC2::MonitorInstancesResult> instance
 
-  
-
-Enables monitoring for a running instance. For more information about
+  Enables monitoring for a running instance. For more information about
 monitoring instances, see Monitoring Your Instances and Volumes in the
 I<Amazon Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 MoveAddressToVpc(PublicIp => Str, [DryRun => Bool])
@@ -5316,9 +3656,7 @@ Each argument is described in detail in: L<Paws::EC2::MoveAddressToVpc>
 
 Returns: a L<Paws::EC2::MoveAddressToVpcResult> instance
 
-  
-
-Moves an Elastic IP address from the EC2-Classic platform to the
+  Moves an Elastic IP address from the EC2-Classic platform to the
 EC2-VPC platform. The Elastic IP address must be allocated to your
 account, and it must not be associated with an instance. After the
 Elastic IP address is moved, it is no longer available for use in the
@@ -5328,24 +3666,13 @@ that's allocated for use in the EC2-VPC platform to the EC2-Classic
 platform.
 
 
-
-
-
-
-
-
-
-
-
-=head2 PurchaseReservedInstancesOffering(InstanceCount => Int, ReservedInstancesOfferingId => Str, [DryRun => Bool, LimitPrice => Paws::EC2::ReservedInstanceLimitPrice])
+=head2 PurchaseReservedInstancesOffering(InstanceCount => Int, ReservedInstancesOfferingId => Str, [DryRun => Bool, LimitPrice => L<Paws::EC2::ReservedInstanceLimitPrice>])
 
 Each argument is described in detail in: L<Paws::EC2::PurchaseReservedInstancesOffering>
 
 Returns: a L<Paws::EC2::PurchaseReservedInstancesOfferingResult> instance
 
-  
-
-Purchases a Reserved Instance for use with your account. With Amazon
+  Purchases a Reserved Instance for use with your account. With Amazon
 EC2 Reserved Instances, you obtain a capacity reservation for a certain
 instance configuration over a specified period of time and pay a lower
 hourly rate compared to on-Demand Instance pricing.
@@ -5359,24 +3686,13 @@ For more information, see Reserved Instances and Reserved Instance
 Marketplace in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 RebootInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::RebootInstances>
 
 Returns: nothing
 
-  
-
-Requests a reboot of one or more instances. This operation is
+  Requests a reboot of one or more instances. This operation is
 asynchronous; it only queues a request to reboot the specified
 instances. The operation succeeds if the instances are valid and belong
 to you. Requests to reboot terminated instances are ignored.
@@ -5389,40 +3705,38 @@ and Rebooting Instances in the I<Amazon Elastic Compute Cloud User
 Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RegisterImage(Name => Str, [Architecture => Str, BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping], Description => Str, DryRun => Bool, ImageLocation => Str, KernelId => Str, RamdiskId => Str, RootDeviceName => Str, SriovNetSupport => Str, VirtualizationType => Str])
+=head2 RegisterImage(Name => Str, [Architecture => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], Description => Str, DryRun => Bool, ImageLocation => Str, KernelId => Str, RamdiskId => Str, RootDeviceName => Str, SriovNetSupport => Str, VirtualizationType => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RegisterImage>
 
 Returns: a L<Paws::EC2::RegisterImageResult> instance
 
-  
-
-Registers an AMI. When you're creating an AMI, this is the final step
-you must complete before you can launch an instance from the AMI. This
-step is required if you're creating an instance store-backed Linux or
-Windows AMI. For more information, see Creating an Instance
-Store-Backed Linux AMI and Creating an Instance Store-Backed Windows
-AMI in the I<Amazon Elastic Compute Cloud User Guide>.
+  Registers an AMI. When you're creating an AMI, this is the final step
+you must complete before you can launch an instance from the AMI. For
+more information about creating AMIs, see Creating Your Own AMIs in the
+I<Amazon Elastic Compute Cloud User Guide>.
 
 For Amazon EBS-backed instances, CreateImage creates and registers the
 AMI in a single request, so you don't have to register the AMI
 yourself.
 
-You can also use C<RegisterImage> to create an Amazon EBS-backed AMI
-from a snapshot of a root device volume. For more information, see
-Launching an Instance from a Backup in the I<Amazon Elastic Compute
-Cloud User Guide>. Note that although you can create a Windows AMI from
-a snapshot, you can't launch an instance from the AMI - use the
-CreateImage command instead.
+You can also use C<RegisterImage> to create an Amazon EBS-backed Linux
+AMI from a snapshot of a root device volume. For more information, see
+Launching an Instance from a Snapshot in the I<Amazon Elastic Compute
+Cloud User Guide>.
+
+Some Linux distributions, such as Red Hat Enterprise Linux (RHEL) and
+SUSE Linux Enterprise Server (SLES), use the EC2 C<billingProduct> code
+associated with an AMI to verify subscription status for package
+updates. Creating an AMI from an EBS snapshot does not maintain this
+billing code, and subsequent instances launched from such an AMI will
+not be able to connect to package update infrastructure.
+
+Similarly, although you can create a Windows AMI from a snapshot, you
+can't successfully launch an instance from the AMI.
+
+To create Windows AMIs or to create AMIs for Linux operating systems
+that must retain AMI billing codes to work properly, see CreateImage.
 
 If needed, you can deregister an AMI at any time. Any modifications you
 make to an AMI backed by an instance store volume invalidates its
@@ -5433,38 +3747,18 @@ You can't register an image where a secondary (non-root) snapshot has
 AWS Marketplace product codes.
 
 
-
-
-
-
-
-
-
-
-
 =head2 RejectVpcPeeringConnection(VpcPeeringConnectionId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::RejectVpcPeeringConnection>
 
 Returns: a L<Paws::EC2::RejectVpcPeeringConnectionResult> instance
 
-  
-
-Rejects a VPC peering connection request. The VPC peering connection
+  Rejects a VPC peering connection request. The VPC peering connection
 must be in the C<pending-acceptance> state. Use the
 DescribeVpcPeeringConnections request to view your outstanding VPC
 peering connection requests. To delete an active VPC peering
 connection, or to delete a VPC peering connection request that you
 initiated, use DeleteVpcPeeringConnection.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ReleaseAddress([AllocationId => Str, DryRun => Bool, PublicIp => Str])
@@ -5473,9 +3767,7 @@ Each argument is described in detail in: L<Paws::EC2::ReleaseAddress>
 
 Returns: nothing
 
-  
-
-Releases the specified Elastic IP address.
+  Releases the specified Elastic IP address.
 
 After releasing an Elastic IP address, it is released to the IP address
 pool and might be unavailable to you. Be sure to update your DNS
@@ -5494,58 +3786,27 @@ Elastic IP address before you try to release it. Otherwise, Amazon EC2
 returns an error (C<InvalidIPAddress.InUse>).
 
 
-
-
-
-
-
-
-
-
-
 =head2 ReplaceNetworkAclAssociation(AssociationId => Str, NetworkAclId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::ReplaceNetworkAclAssociation>
 
 Returns: a L<Paws::EC2::ReplaceNetworkAclAssociationResult> instance
 
-  
-
-Changes which network ACL a subnet is associated with. By default when
+  Changes which network ACL a subnet is associated with. By default when
 you create a subnet, it's automatically associated with the default
 network ACL. For more information about network ACLs, see Network ACLs
 in the I<Amazon Virtual Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 ReplaceNetworkAclEntry(CidrBlock => Str, Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [DryRun => Bool, IcmpTypeCode => Paws::EC2::IcmpTypeCode, PortRange => Paws::EC2::PortRange])
+=head2 ReplaceNetworkAclEntry(CidrBlock => Str, Egress => Bool, NetworkAclId => Str, Protocol => Str, RuleAction => Str, RuleNumber => Int, [DryRun => Bool, IcmpTypeCode => L<Paws::EC2::IcmpTypeCode>, PortRange => L<Paws::EC2::PortRange>])
 
 Each argument is described in detail in: L<Paws::EC2::ReplaceNetworkAclEntry>
 
 Returns: nothing
 
-  
-
-Replaces an entry (rule) in a network ACL. For more information about
+  Replaces an entry (rule) in a network ACL. For more information about
 network ACLs, see Network ACLs in the I<Amazon Virtual Private Cloud
 User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ReplaceRoute(DestinationCidrBlock => Str, RouteTableId => Str, [DryRun => Bool, GatewayId => Str, InstanceId => Str, NetworkInterfaceId => Str, VpcPeeringConnectionId => Str])
@@ -5554,23 +3815,12 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceRoute>
 
 Returns: nothing
 
-  
-
-Replaces an existing route within a route table in a VPC. You must
+  Replaces an existing route within a route table in a VPC. You must
 provide only one of the following: Internet gateway or virtual private
 gateway, NAT instance, VPC peering connection, or network interface.
 
 For more information about route tables, see Route Tables in the
 I<Amazon Virtual Private Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ReplaceRouteTableAssociation(AssociationId => Str, RouteTableId => Str, [DryRun => Bool])
@@ -5579,9 +3829,7 @@ Each argument is described in detail in: L<Paws::EC2::ReplaceRouteTableAssociati
 
 Returns: a L<Paws::EC2::ReplaceRouteTableAssociationResult> instance
 
-  
-
-Changes the route table associated with a given subnet in a VPC. After
+  Changes the route table associated with a given subnet in a VPC. After
 the operation completes, the subnet uses the routes in the new route
 table it's associated with. For more information about route tables,
 see Route Tables in the I<Amazon Virtual Private Cloud User Guide>.
@@ -5592,24 +3840,13 @@ table's association ID and the route table to be the new main route
 table.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ReportInstanceStatus(Instances => ArrayRef[Str], ReasonCodes => ArrayRef[Str], Status => Str, [Description => Str, DryRun => Bool, EndTime => Str, StartTime => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ReportInstanceStatus>
 
 Returns: nothing
 
-  
-
-Submits feedback about the status of an instance. The instance must be
+  Submits feedback about the status of an instance. The instance must be
 in the C<running> state. If your experience with the instance differs
 from the instance status returned by DescribeInstanceStatus, use
 ReportInstanceStatus to report your experience with the instance.
@@ -5620,61 +3857,45 @@ Use of this action does not change the value returned by
 DescribeInstanceStatus.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RequestSpotFleet(SpotFleetRequestConfig => Paws::EC2::SpotFleetRequestConfigData, [DryRun => Bool])
+=head2 RequestSpotFleet(SpotFleetRequestConfig => L<Paws::EC2::SpotFleetRequestConfigData>, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::RequestSpotFleet>
 
 Returns: a L<Paws::EC2::RequestSpotFleetResponse> instance
 
-  
+  Creates a Spot fleet request.
 
-Creates a Spot fleet request.
+You can submit a single request that includes multiple launch
+specifications that vary by instance type, AMI, Availability Zone, or
+subnet.
 
-For more information, see Spot Fleets in the I<Amazon Elastic Compute
-Cloud User Guide>.
+By default, the Spot fleet requests Spot instances in the Spot pool
+where the price per unit is the lowest. Each launch specification can
+include its own instance weighting that reflects the value of the
+instance type to your application workload.
+
+Alternatively, you can specify that the Spot fleet distribute the
+target capacity across the Spot pools included in its launch
+specifications. By ensuring that the Spot instances in your Spot fleet
+are in different Spot pools, you can improve the availability of your
+fleet.
+
+For more information, see Spot Fleet Requests in the I<Amazon Elastic
+Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RequestSpotInstances(SpotPrice => Str, [AvailabilityZoneGroup => Str, ClientToken => Str, DryRun => Bool, InstanceCount => Int, LaunchGroup => Str, LaunchSpecification => Paws::EC2::RequestSpotLaunchSpecification, Type => Str, ValidFrom => Str, ValidUntil => Str])
+=head2 RequestSpotInstances(SpotPrice => Str, [AvailabilityZoneGroup => Str, BlockDurationMinutes => Int, ClientToken => Str, DryRun => Bool, InstanceCount => Int, LaunchGroup => Str, LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>, Type => Str, ValidFrom => Str, ValidUntil => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RequestSpotInstances>
 
 Returns: a L<Paws::EC2::RequestSpotInstancesResult> instance
 
-  
-
-Creates a Spot Instance request. Spot Instances are instances that
+  Creates a Spot instance request. Spot instances are instances that
 Amazon EC2 launches when the bid price that you specify exceeds the
-current Spot Price. Amazon EC2 periodically sets the Spot Price based
-on available Spot Instance capacity and current Spot Instance requests.
+current Spot price. Amazon EC2 periodically sets the Spot price based
+on available Spot Instance capacity and current Spot instance requests.
 For more information, see Spot Instance Requests in the I<Amazon
 Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ResetImageAttribute(Attribute => Str, ImageId => Str, [DryRun => Bool])
@@ -5683,20 +3904,9 @@ Each argument is described in detail in: L<Paws::EC2::ResetImageAttribute>
 
 Returns: nothing
 
-  
-
-Resets an attribute of an AMI to its default value.
+  Resets an attribute of an AMI to its default value.
 
 The productCodes attribute can't be reset.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ResetInstanceAttribute(Attribute => Str, InstanceId => Str, [DryRun => Bool])
@@ -5705,9 +3915,7 @@ Each argument is described in detail in: L<Paws::EC2::ResetInstanceAttribute>
 
 Returns: nothing
 
-  
-
-Resets an attribute of an instance to its default value. To reset the
+  Resets an attribute of an instance to its default value. To reset the
 C<kernel> or C<ramdisk>, the instance must be in a stopped state. To
 reset the C<SourceDestCheck>, the instance can be either running or
 stopped.
@@ -5719,34 +3927,14 @@ NAT. For more information, see NAT Instances in the I<Amazon Virtual
 Private Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ResetNetworkInterfaceAttribute(NetworkInterfaceId => Str, [DryRun => Bool, SourceDestCheck => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ResetNetworkInterfaceAttribute>
 
 Returns: nothing
 
-  
-
-Resets a network interface attribute. You can specify only one
+  Resets a network interface attribute. You can specify only one
 attribute at a time.
-
-
-
-
-
-
-
-
-
 
 
 =head2 ResetSnapshotAttribute(Attribute => Str, SnapshotId => Str, [DryRun => Bool])
@@ -5755,21 +3943,10 @@ Each argument is described in detail in: L<Paws::EC2::ResetSnapshotAttribute>
 
 Returns: nothing
 
-  
-
-Resets permission settings for the specified snapshot.
+  Resets permission settings for the specified snapshot.
 
 For more information on modifying snapshot permissions, see Sharing
 Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 RestoreAddressToClassic(PublicIp => Str, [DryRun => Bool])
@@ -5778,33 +3955,20 @@ Each argument is described in detail in: L<Paws::EC2::RestoreAddressToClassic>
 
 Returns: a L<Paws::EC2::RestoreAddressToClassicResult> instance
 
-  
-
-Restores an Elastic IP address that was previously moved to the EC2-VPC
+  Restores an Elastic IP address that was previously moved to the EC2-VPC
 platform back to the EC2-Classic platform. You cannot move an Elastic
 IP address that was originally allocated for use in EC2-VPC. The
 Elastic IP address must not be associated with an instance or network
 interface.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RevokeSecurityGroupEgress(GroupId => Str, [CidrIp => Str, DryRun => Bool, FromPort => Int, IpPermissions => ArrayRef[Paws::EC2::IpPermission], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
+=head2 RevokeSecurityGroupEgress(GroupId => Str, [CidrIp => Str, DryRun => Bool, FromPort => Int, IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
 
 Each argument is described in detail in: L<Paws::EC2::RevokeSecurityGroupEgress>
 
 Returns: nothing
 
-  
-
-Removes one or more egress rules from a security group for EC2-VPC. The
+  Removes one or more egress rules from a security group for EC2-VPC. The
 values that you specify in the revoke request (for example, ports) must
 match the existing rule's values for the rule to be revoked.
 
@@ -5817,24 +3981,13 @@ Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RevokeSecurityGroupIngress([CidrIp => Str, DryRun => Bool, FromPort => Int, GroupId => Str, GroupName => Str, IpPermissions => ArrayRef[Paws::EC2::IpPermission], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
+=head2 RevokeSecurityGroupIngress([CidrIp => Str, DryRun => Bool, FromPort => Int, GroupId => Str, GroupName => Str, IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
 
 Each argument is described in detail in: L<Paws::EC2::RevokeSecurityGroupIngress>
 
 Returns: nothing
 
-  
-
-Removes one or more ingress rules from a security group. The values
+  Removes one or more ingress rules from a security group. The values
 that you specify in the revoke request (for example, ports) must match
 the existing rule's values for the rule to be removed.
 
@@ -5847,24 +4000,13 @@ Rule changes are propagated to instances within the security group as
 quickly as possible. However, a small delay might occur.
 
 
-
-
-
-
-
-
-
-
-
-=head2 RunInstances(ImageId => Str, MaxCount => Int, MinCount => Int, [AdditionalInfo => Str, BlockDeviceMappings => ArrayRef[Paws::EC2::BlockDeviceMapping], ClientToken => Str, DisableApiTermination => Bool, DryRun => Bool, EbsOptimized => Bool, IamInstanceProfile => Paws::EC2::IamInstanceProfileSpecification, InstanceInitiatedShutdownBehavior => Str, InstanceType => Str, KernelId => Str, KeyName => Str, Monitoring => Paws::EC2::RunInstancesMonitoringEnabled, NetworkInterfaces => ArrayRef[Paws::EC2::InstanceNetworkInterfaceSpecification], Placement => Paws::EC2::Placement, PrivateIpAddress => Str, RamdiskId => Str, SecurityGroupIds => ArrayRef[Str], SecurityGroups => ArrayRef[Str], SubnetId => Str, UserData => Str])
+=head2 RunInstances(ImageId => Str, MaxCount => Int, MinCount => Int, [AdditionalInfo => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], ClientToken => Str, DisableApiTermination => Bool, DryRun => Bool, EbsOptimized => Bool, IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>, InstanceInitiatedShutdownBehavior => Str, InstanceType => Str, KernelId => Str, KeyName => Str, Monitoring => L<Paws::EC2::RunInstancesMonitoringEnabled>, NetworkInterfaces => ArrayRef[L<Paws::EC2::InstanceNetworkInterfaceSpecification>], Placement => L<Paws::EC2::Placement>, PrivateIpAddress => Str, RamdiskId => Str, SecurityGroupIds => ArrayRef[Str], SecurityGroups => ArrayRef[Str], SubnetId => Str, UserData => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RunInstances>
 
 Returns: a L<Paws::EC2::Reservation> instance
 
-  
-
-Launches the specified number of instances using an AMI for which you
+  Launches the specified number of instances using an AMI for which you
 have permissions.
 
 When you launch an instance, it enters the C<pending> state. After the
@@ -5874,6 +4016,12 @@ state of your instance, call DescribeInstances.
 If you don't specify a security group when launching an instance,
 Amazon EC2 uses the default security group. For more information, see
 Security Groups in the I<Amazon Elastic Compute Cloud User Guide>.
+
+[EC2-VPC only accounts] If you don't specify a subnet in the request,
+we choose a default subnet from your default VPC for you.
+
+[EC2-Classic accounts] If you're launching into EC2-Classic and you
+don't specify an Availability Zone, we choose one for you.
 
 Linux instances have access to the public key of the key pair at boot.
 You can use this key to provide secure access to the instance. Amazon
@@ -5897,24 +4045,13 @@ Instance Immediately Terminates, and Troubleshooting Connecting to Your
 Instance in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 StartInstances(InstanceIds => ArrayRef[Str], [AdditionalInfo => Str, DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::StartInstances>
 
 Returns: a L<Paws::EC2::StartInstancesResult> instance
 
-  
-
-Starts an Amazon EBS-backed AMI that you've previously stopped.
+  Starts an Amazon EBS-backed AMI that you've previously stopped.
 
 Instances that use Amazon EBS volumes as their root devices can be
 quickly stopped and started. When an instance is stopped, the compute
@@ -5937,24 +4074,13 @@ For more information, see Stopping Instances in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 StopInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool, Force => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::StopInstances>
 
 Returns: a L<Paws::EC2::StopInstancesResult> instance
 
-  
-
-Stops an Amazon EBS-backed instance. Each time you transition an
+  Stops an Amazon EBS-backed instance. Each time you transition an
 instance from stopped to started, Amazon EC2 charges a full instance
 hour, even if transitions happen multiple times within a single hour.
 
@@ -5989,24 +4115,13 @@ Stopping Your Instance in the I<Amazon Elastic Compute Cloud User
 Guide>.
 
 
-
-
-
-
-
-
-
-
-
 =head2 TerminateInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::TerminateInstances>
 
 Returns: a L<Paws::EC2::TerminateInstancesResult> instance
 
-  
-
-Shuts down one or more instances. This operation is idempotent; if you
+  Shuts down one or more instances. This operation is idempotent; if you
 terminate an instance more than once, each call succeeds.
 
 Terminated instances remain visible after termination (for
@@ -6020,24 +4135,15 @@ You can stop, start, and terminate EBS-backed instances. You can only
 terminate instance store-backed instances. What happens to an instance
 differs if you stop it or terminate it. For example, when you stop an
 instance, the root device and any other devices attached to the
-instance persist. When you terminate an instance, the root device and
-any other devices attached during the instance launch are automatically
-deleted. For more information about the differences between stopping
-and terminating instances, see Instance Lifecycle in the I<Amazon
-Elastic Compute Cloud User Guide>.
+instance persist. When you terminate an instance, any attached EBS
+volumes with the C<DeleteOnTermination> block device mapping parameter
+set to C<true> are automatically deleted. For more information about
+the differences between stopping and terminating instances, see
+Instance Lifecycle in the I<Amazon Elastic Compute Cloud User Guide>.
 
 For more information about troubleshooting, see Troubleshooting
 Terminating Your Instance in the I<Amazon Elastic Compute Cloud User
 Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head2 UnassignPrivateIpAddresses(NetworkInterfaceId => Str, PrivateIpAddresses => ArrayRef[Str])
@@ -6046,19 +4152,8 @@ Each argument is described in detail in: L<Paws::EC2::UnassignPrivateIpAddresses
 
 Returns: nothing
 
-  
-
-Unassigns one or more secondary private IP addresses from a network
+  Unassigns one or more secondary private IP addresses from a network
 interface.
-
-
-
-
-
-
-
-
-
 
 
 =head2 UnmonitorInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])
@@ -6067,20 +4162,9 @@ Each argument is described in detail in: L<Paws::EC2::UnmonitorInstances>
 
 Returns: a L<Paws::EC2::UnmonitorInstancesResult> instance
 
-  
-
-Disables monitoring for a running instance. For more information about
+  Disables monitoring for a running instance. For more information about
 monitoring instances, see Monitoring Your Instances and Volumes in the
 I<Amazon Elastic Compute Cloud User Guide>.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

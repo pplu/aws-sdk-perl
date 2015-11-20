@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::DescribeMetricCollectionTypes {
+package Paws::AutoScaling::DescribeMetricCollectionTypes;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::AutoScaling::DescribeMetricCollectionTypes {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeMetricCollectionTypes');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::AutoScaling::DescribeMetricCollectionTypesAnswer');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeMetricCollectionTypesResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method DescribeMetricC
 Auto Scaling service. Use the attributes of this class
 as arguments to method DescribeMetricCollectionTypes.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeMetricCollectionTypes.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeMetricCollectionTypes.
 
 As an example:
 

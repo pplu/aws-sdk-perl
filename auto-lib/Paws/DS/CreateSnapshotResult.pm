@@ -1,9 +1,8 @@
 
-package Paws::DS::CreateSnapshotResult {
+package Paws::DS::CreateSnapshotResult;
   use Moose;
   has SnapshotId => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::DS::CreateSnapshotResult
 
 =head1 ATTRIBUTES
 
+
 =head2 SnapshotId => Str
 
-  
-
-The identifier of the snapshot that was created.
-
-
-
-
-
-
-
-
-
+  The identifier of the snapshot that was created.
 
 
 =cut

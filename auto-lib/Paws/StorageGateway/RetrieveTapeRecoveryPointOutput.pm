@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::RetrieveTapeRecoveryPointOutput {
+package Paws::StorageGateway::RetrieveTapeRecoveryPointOutput;
   use Moose;
   has TapeARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,21 +12,11 @@ Paws::StorageGateway::RetrieveTapeRecoveryPointOutput
 
 =head1 ATTRIBUTES
 
+
 =head2 TapeARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the virtual tape for which the
+  The Amazon Resource Name (ARN) of the virtual tape for which the
 recovery point was retrieved.
-
-
-
-
-
-
-
-
-
 
 
 =cut

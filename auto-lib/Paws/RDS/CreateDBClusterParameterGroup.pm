@@ -1,5 +1,5 @@
 
-package Paws::RDS::CreateDBClusterParameterGroup {
+package Paws::RDS::CreateDBClusterParameterGroup;
   use Moose;
   has DBClusterParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupFamily => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +11,6 @@ package Paws::RDS::CreateDBClusterParameterGroup {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBClusterParameterGroup');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBClusterParameterGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBClusterParameterGroupResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +25,7 @@ This class represents the parameters used for calling the method CreateDBCluster
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method CreateDBClusterParameterGroup.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBClusterParameterGroup.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBClusterParameterGroup.
 
 As an example:
 
@@ -36,11 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DBClusterParameterGroupName => Str
 
-  
-
-The name of the DB cluster parameter group.
+  The name of the DB cluster parameter group.
 
 Constraints:
 
@@ -57,49 +55,21 @@ Constraints:
 This value is stored as a lowercase string.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DBParameterGroupFamily => Str
 
-  
-
-The DB cluster parameter group family name. A DB cluster parameter
+  The DB cluster parameter group family name. A DB cluster parameter
 group can be associated with one and only one DB cluster parameter
 group family, and can be applied only to a DB cluster running a
 database engine and engine version compatible with that DB cluster
 parameter group family.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Description => Str
 
-  
-
-The description for the DB cluster parameter group.
+  The description for the DB cluster parameter group.
 
 
-
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
 

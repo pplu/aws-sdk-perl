@@ -1,11 +1,10 @@
 
-package Paws::DynamoDB::DeleteItemOutput {
+package Paws::DynamoDB::DeleteItemOutput;
   use Moose;
   has Attributes => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
   has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
   has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetrics');
 
-}
 
 ### main pod documentation begin ###
 
@@ -15,31 +14,21 @@ Paws::DynamoDB::DeleteItemOutput
 
 =head1 ATTRIBUTES
 
-=head2 Attributes => Paws::DynamoDB::AttributeMap
 
-  
+=head2 Attributes => L<Paws::DynamoDB::AttributeMap>
 
-A map of attribute names to I<AttributeValue> objects, representing the
+  A map of attribute names to I<AttributeValue> objects, representing the
 item as it appeared before the I<DeleteItem> operation. This map
 appears in the response only if I<ReturnValues> was specified as
 C<ALL_OLD> in the request.
 
-
-
-
-
-
-
-
-
-=head2 ConsumedCapacity => Paws::DynamoDB::ConsumedCapacity
-
-  
-=head2 ItemCollectionMetrics => Paws::DynamoDB::ItemCollectionMetrics
+=head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
 
   
 
-Information about item collections, if any, that were affected by the
+=head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetrics>
+
+  Information about item collections, if any, that were affected by the
 operation. I<ItemCollectionMetrics> is only returned if the request
 asked for it. If the table does not have any local secondary indexes,
 this information is not returned in the response.
@@ -67,14 +56,6 @@ The estimate is subject to change over time; therefore, do not rely on
 the precision or accuracy of the estimate.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

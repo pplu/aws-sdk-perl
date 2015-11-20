@@ -1,9 +1,8 @@
 
-package Paws::CloudSearch::DescribeDomainsResponse {
+package Paws::CloudSearch::DescribeDomainsResponse;
   use Moose;
   has DomainStatusList => (is => 'ro', isa => 'ArrayRef[Paws::CloudSearch::DomainStatus]', required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,8 @@ Paws::CloudSearch::DescribeDomainsResponse
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> DomainStatusList => ArrayRef[Paws::CloudSearch::DomainStatus]
+
+=head2 B<REQUIRED> DomainStatusList => ArrayRef[L<Paws::CloudSearch::DomainStatus>]
 
   
 

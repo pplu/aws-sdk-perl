@@ -3,7 +3,7 @@ package Paws::Net::RestJsonCaller {
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
   use URI::Template;
-  use JSON;
+  use JSON::MaybeXS;
 
   sub _is_internal_type {
     my ($self, $att_type) = @_;
@@ -75,7 +75,7 @@ package Paws::Net::RestJsonCaller {
     $request->url($url);
     
     my $data = $self->_to_jsoncaller_params($call);
-    $request->content(to_json($data));
+    $request->content(encode_json($data));
     
     $request->method($call->_api_method);
 

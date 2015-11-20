@@ -1,14 +1,13 @@
 
-package Paws::DeviceFarm::GetUpload {
+package Paws::DeviceFarm::GetUpload;
   use Moose;
-  has arn => (is => 'ro', isa => 'Str', required => 1);
+  has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetUpload');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DeviceFarm::GetUploadResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method GetUpload on th
 AWS Device Farm service. Use the attributes of this class
 as arguments to method GetUpload.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetUpload.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUpload.
 
 As an example:
 
@@ -33,20 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> arn => Str
 
-  
+=head2 B<REQUIRED> Arn => Str
 
-The upload's ARN.
-
-
-
-
-
-
-
-
-
+  The upload's ARN.
 
 
 

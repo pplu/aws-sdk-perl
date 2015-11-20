@@ -1,5 +1,5 @@
 
-package Paws::ELB::ConfigureHealthCheck {
+package Paws::ELB::ConfigureHealthCheck;
   use Moose;
   has HealthCheck => (is => 'ro', isa => 'Paws::ELB::HealthCheck', required => 1);
   has LoadBalancerName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::ELB::ConfigureHealthCheck {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConfigureHealthCheck');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ELB::ConfigureHealthCheckOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ConfigureHealthCheckResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ConfigureHealth
 Elastic Load Balancing service. Use the attributes of this class
 as arguments to method ConfigureHealthCheck.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ConfigureHealthCheck.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ConfigureHealthCheck.
 
 As an example:
 
@@ -34,35 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> HealthCheck => Paws::ELB::HealthCheck
 
-  
+=head2 B<REQUIRED> HealthCheck => L<Paws::ELB::HealthCheck>
 
-The configuration information for the new health check.
-
-
-
-
-
-
-
-
+  The configuration information for the new health check.
 
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-  
-
-The name of the load balancer.
-
-
-
-
-
-
-
-
-
+  The name of the load balancer.
 
 
 

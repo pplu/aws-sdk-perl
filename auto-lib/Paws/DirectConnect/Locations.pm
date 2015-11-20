@@ -1,9 +1,8 @@
 
-package Paws::DirectConnect::Locations {
+package Paws::DirectConnect::Locations;
   use Moose;
-  has locations => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Location]');
+  has Locations => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Location]', traits => ['Unwrapped'], xmlname => 'locations' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,7 +12,8 @@ Paws::DirectConnect::Locations
 
 =head1 ATTRIBUTES
 
-=head2 locations => ArrayRef[Paws::DirectConnect::Location]
+
+=head2 Locations => ArrayRef[L<Paws::DirectConnect::Location>]
 
   
 

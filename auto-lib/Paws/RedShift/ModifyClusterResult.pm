@@ -1,9 +1,8 @@
 
-package Paws::RedShift::ModifyClusterResult {
+package Paws::RedShift::ModifyClusterResult;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Paws::RedShift::Cluster');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,8 @@ Paws::RedShift::ModifyClusterResult
 
 =head1 ATTRIBUTES
 
-=head2 Cluster => Paws::RedShift::Cluster
+
+=head2 Cluster => L<Paws::RedShift::Cluster>
 
   
 

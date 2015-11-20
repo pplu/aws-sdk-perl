@@ -1,10 +1,11 @@
 
-package Paws::KMS::CreateGrant {
+package Paws::KMS::CreateGrant;
   use Moose;
   has Constraints => (is => 'ro', isa => 'Paws::KMS::GrantConstraints');
   has GranteePrincipal => (is => 'ro', isa => 'Str', required => 1);
   has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
+  has Name => (is => 'ro', isa => 'Str');
   has Operations => (is => 'ro', isa => 'ArrayRef[Str]');
   has RetiringPrincipal => (is => 'ro', isa => 'Str');
 
@@ -13,7 +14,6 @@ package Paws::KMS::CreateGrant {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateGrant');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::KMS::CreateGrantResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +28,7 @@ This class represents the parameters used for calling the method CreateGrant on 
 AWS Key Management Service service. Use the attributes of this class
 as arguments to method CreateGrant.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateGrant.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateGrant.
 
 As an example:
 
@@ -38,130 +38,114 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 Constraints => Paws::KMS::GrantConstraints
 
-  
+=head2 Constraints => L<Paws::KMS::GrantConstraints>
 
-Specifies the conditions under which the actions specified by the
-C<Operations> parameter are allowed.
+  The conditions under which the operations permitted by the grant are
+allowed.
 
-
-
-
-
-
-
-
+You can use this value to allow the operations permitted by the grant
+only when a specified encryption context is present. For more
+information, see Encryption Context in the I<AWS Key Management Service
+Developer Guide>.
 
 
 =head2 B<REQUIRED> GranteePrincipal => Str
 
-  
+  The principal that is given permission to perform the operations that
+the grant permits.
 
-Principal given permission by the grant to use the key identified by
-the C<keyId> parameter.
-
-
-
-
-
-
-
-
+To specify the principal, use the Amazon Resource Name (ARN) of an AWS
+principal. Valid AWS principals include AWS accounts (root), IAM users,
+federated users, and assumed role users. For examples of the ARN syntax
+to use for specifying a principal, see AWS Identity and Access
+Management (IAM) in the Example ARNs section of the I<AWS General
+Reference>.
 
 
 =head2 GrantTokens => ArrayRef[Str]
 
-  
+  A list of grant tokens.
 
-For more information, see Grant Tokens.
-
-
-
-
-
-
-
-
+For more information, go to Grant Tokens in the I<AWS Key Management
+Service Developer Guide>.
 
 
 =head2 B<REQUIRED> KeyId => Str
 
-  
+  The unique identifier for the customer master key (CMK) that the grant
+applies to.
 
-A unique identifier for the customer master key. This value can be a
-globally unique identifier or the fully specified ARN to a key.
+To specify this value, use the globally unique key ID or the Amazon
+Resource Name (ARN) of the key. Examples:
 
 =over
 
-=item * Key ARN Example -
-arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
+=item * Globally unique key ID: 12345678-1234-1234-1234-123456789012
 
-=item * Globally Unique Key ID Example -
-12345678-1234-1234-1234-123456789012
+=item * Key ARN:
+arn:aws:kms:us-west-2:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =back
 
 
 
+=head2 Name => Str
 
+  A friendly name for identifying the grant. Use this value to prevent
+unintended creation of duplicate grants when retrying this request.
 
+When this value is absent, all C<CreateGrant> requests result in a new
+grant with a unique C<GrantId> even if all the supplied parameters are
+identical. This can result in unintended duplicates when you retry the
+C<CreateGrant> request.
 
-
-
+When this value is present, you can retry a C<CreateGrant> request with
+identical parameters; if the grant already exists, the original
+C<GrantId> is returned without creating a new grant. Note that the
+returned grant token is unique with every C<CreateGrant> request, even
+when a duplicate C<GrantId> is returned. All grant tokens obtained in
+this way can be used interchangeably.
 
 
 =head2 Operations => ArrayRef[Str]
 
-  
-
-List of operations permitted by the grant. This can be any combination
-of one or more of the following values:
+  A list of operations that the grant permits. The list can contain any
+combination of one or more of the following values:
 
 =over
 
-=item 1. Decrypt
+=item * Decrypt
 
-=item 2. Encrypt
+=item * Encrypt
 
-=item 3. GenerateDataKey
+=item * GenerateDataKey
 
-=item 4. GenerateDataKeyWithoutPlaintext
+=item * GenerateDataKeyWithoutPlaintext
 
-=item 5. ReEncryptFrom
+=item * ReEncryptFrom
 
-=item 6. ReEncryptTo
+=item * ReEncryptTo
 
-=item 7. CreateGrant
+=item * CreateGrant
 
-=item 8. RetireGrant
+=item * RetireGrant
 
 =back
-
-
-
-
-
-
-
 
 
 
 =head2 RetiringPrincipal => Str
 
-  
+  The principal that is given permission to retire the grant by using
+RetireGrant operation.
 
-Principal given permission to retire the grant. For more information,
-see RetireGrant.
-
-
-
-
-
-
-
-
-
+To specify the principal, use the Amazon Resource Name (ARN) of an AWS
+principal. Valid AWS principals include AWS accounts (root), IAM users,
+federated users, and assumed role users. For examples of the ARN syntax
+to use for specifying a principal, see AWS Identity and Access
+Management (IAM) in the Example ARNs section of the I<AWS General
+Reference>.
 
 
 

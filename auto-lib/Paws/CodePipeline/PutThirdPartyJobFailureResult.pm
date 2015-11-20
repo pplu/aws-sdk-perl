@@ -1,16 +1,15 @@
 
-package Paws::CodePipeline::PutThirdPartyJobFailureResult {
+package Paws::CodePipeline::PutThirdPartyJobFailureResult;
   use Moose;
-  has clientToken => (is => 'ro', isa => 'Str', required => 1);
-  has failureDetails => (is => 'ro', isa => 'Paws::CodePipeline::FailureDetails', required => 1);
-  has jobId => (is => 'ro', isa => 'Str', required => 1);
+  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' , required => 1);
+  has FailureDetails => (is => 'ro', isa => 'Paws::CodePipeline::FailureDetails', traits => ['NameInRequest'], request_name => 'failureDetails' , required => 1);
+  has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PutThirdPartyJobFailureResult');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method PutThirdPartyJo
 AWS CodePipeline service. Use the attributes of this class
 as arguments to method PutThirdPartyJobFailureResult.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PutThirdPartyJobFailureResult.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PutThirdPartyJobFailureResult.
 
 As an example:
 
@@ -35,42 +34,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> clientToken => Str
 
-  
+=head2 B<REQUIRED> ClientToken => Str
 
-The clientToken portion of the clientId and clientToken pair used to
+  The clientToken portion of the clientId and clientToken pair used to
 verify that the calling entity is allowed access to the job and its
 details.
 
 
-
-
-
-
-
-
-
-
-=head2 B<REQUIRED> failureDetails => Paws::CodePipeline::FailureDetails
+=head2 B<REQUIRED> FailureDetails => L<Paws::CodePipeline::FailureDetails>
 
   
 
-=head2 B<REQUIRED> jobId => Str
 
-  
+=head2 B<REQUIRED> JobId => Str
 
-The ID of the job that failed. This is the same ID returned from
+  The ID of the job that failed. This is the same ID returned from
 PollForThirdPartyJobs.
-
-
-
-
-
-
-
-
-
 
 
 

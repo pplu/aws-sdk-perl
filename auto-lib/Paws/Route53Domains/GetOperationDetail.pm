@@ -1,5 +1,5 @@
 
-package Paws::Route53Domains::GetOperationDetail {
+package Paws::Route53Domains::GetOperationDetail;
   use Moose;
   has OperationId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::Route53Domains::GetOperationDetail {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetOperationDetail');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53Domains::GetOperationDetailResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method GetOperationDet
 Amazon Route 53 Domains service. Use the attributes of this class
 as arguments to method GetOperationDetail.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetOperationDetail.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetOperationDetail.
 
 As an example:
 
@@ -33,11 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> OperationId => Str
 
-  
-
-The identifier for the operation for which you want to get the status.
+  The identifier for the operation for which you want to get the status.
 Amazon Route 53 returned the identifier in the response to the original
 request.
 
@@ -46,15 +44,6 @@ Type: String
 Default: None
 
 Required: Yes
-
-
-
-
-
-
-
-
-
 
 
 

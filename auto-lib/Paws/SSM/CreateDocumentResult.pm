@@ -1,9 +1,8 @@
 
-package Paws::SSM::CreateDocumentResult {
+package Paws::SSM::CreateDocumentResult;
   use Moose;
   has DocumentDescription => (is => 'ro', isa => 'Paws::SSM::DocumentDescription');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::SSM::CreateDocumentResult
 
 =head1 ATTRIBUTES
 
-=head2 DocumentDescription => Paws::SSM::DocumentDescription
 
-  
+=head2 DocumentDescription => L<Paws::SSM::DocumentDescription>
 
-Information about the configuration document.
-
-
-
-
-
-
-
-
-
+  Information about the SSM document.
 
 
 =cut

@@ -1,5 +1,5 @@
 
-package Paws::IAM::GetUserPolicy {
+package Paws::IAM::GetUserPolicy;
   use Moose;
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::IAM::GetUserPolicy {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetUserPolicy');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IAM::GetUserPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetUserPolicyResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method GetUserPolicy o
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method GetUserPolicy.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetUserPolicy.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetUserPolicy.
 
 As an example:
 
@@ -34,35 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> PolicyName => Str
 
-  
-
-The name of the policy document to get.
-
-
-
-
-
-
-
-
+  The name of the policy document to get.
 
 
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user who the policy is associated with.
-
-
-
-
-
-
-
-
-
+  The name of the user who the policy is associated with.
 
 
 

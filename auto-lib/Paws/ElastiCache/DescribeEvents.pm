@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::DescribeEvents {
+package Paws::ElastiCache::DescribeEvents;
   use Moose;
   has Duration => (is => 'ro', isa => 'Int');
   has EndTime => (is => 'ro', isa => 'Str');
@@ -14,7 +14,6 @@ package Paws::ElastiCache::DescribeEvents {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeEvents');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::EventsMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeEventsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ This class represents the parameters used for calling the method DescribeEvents 
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method DescribeEvents.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEvents.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeEvents.
 
 As an example:
 
@@ -39,60 +38,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 Duration => Int
 
-  
-
-The number of minutes' worth of events to retrieve.
-
-
-
-
-
-
-
-
+  The number of minutes' worth of events to retrieve.
 
 
 =head2 EndTime => Str
 
-  
-
-The end of the time interval for which to retrieve events, specified in
+  The end of the time interval for which to retrieve events, specified in
 ISO 8601 format.
-
-
-
-
-
-
-
-
 
 
 =head2 Marker => Str
 
-  
-
-An optional marker returned from a prior request. Use this marker for
+  An optional marker returned from a prior request. Use this marker for
 pagination of results from this action. If this parameter is specified,
 the response includes only records beyond the marker, up to the value
 specified by I<MaxRecords>.
 
 
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of records to include in the response. If more
+  The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a marker is
 included in the response so that the remaining results can be
 retrieved.
@@ -102,64 +70,25 @@ Default: 100
 Constraints: minimum 20; maximum 100.
 
 
-
-
-
-
-
-
-
-
 =head2 SourceIdentifier => Str
 
-  
-
-The identifier of the event source for which events will be returned.
+  The identifier of the event source for which events will be returned.
 If not specified, then all sources are included in the response.
-
-
-
-
-
-
-
-
 
 
 =head2 SourceType => Str
 
-  
-
-The event source to retrieve events for. If no value is specified, all
+  The event source to retrieve events for. If no value is specified, all
 events are returned.
 
 Valid values are: C<cache-cluster> | C<cache-parameter-group> |
 C<cache-security-group> | C<cache-subnet-group>
 
 
-
-
-
-
-
-
-
-
 =head2 StartTime => Str
 
-  
-
-The beginning of the time interval to retrieve events for, specified in
+  The beginning of the time interval to retrieve events for, specified in
 ISO 8601 format.
-
-
-
-
-
-
-
-
-
 
 
 

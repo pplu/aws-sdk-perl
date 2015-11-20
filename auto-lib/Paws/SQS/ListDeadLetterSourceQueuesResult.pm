@@ -1,9 +1,8 @@
 
-package Paws::SQS::ListDeadLetterSourceQueuesResult {
+package Paws::SQS::ListDeadLetterSourceQueuesResult;
   use Moose;
-  has queueUrls => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'QueueUrl', traits => ['Unwrapped',], required => 1);
+  has QueueUrls => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'QueueUrl', traits => ['Unwrapped',], required => 1);
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,21 +13,11 @@ Paws::SQS::ListDeadLetterSourceQueuesResult
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> queueUrls => ArrayRef[Str]
 
-  
+=head2 B<REQUIRED> QueueUrls => ArrayRef[Str]
 
-A list of source queue URLs that have the RedrivePolicy queue attribute
+  A list of source queue URLs that have the RedrivePolicy queue attribute
 configured with a dead letter queue.
-
-
-
-
-
-
-
-
-
 
 
 =cut

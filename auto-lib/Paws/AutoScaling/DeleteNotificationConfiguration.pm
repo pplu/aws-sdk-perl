@@ -1,5 +1,5 @@
 
-package Paws::AutoScaling::DeleteNotificationConfiguration {
+package Paws::AutoScaling::DeleteNotificationConfiguration;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has TopicARN => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::AutoScaling::DeleteNotificationConfiguration {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNotificationConfiguration');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DeleteNotificat
 Auto Scaling service. Use the attributes of this class
 as arguments to method DeleteNotificationConfiguration.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteNotificationConfiguration.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteNotificationConfiguration.
 
 As an example:
 
@@ -34,36 +33,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  
-
-The name of the Auto Scaling group.
-
-
-
-
-
-
-
-
+  The name of the Auto Scaling group.
 
 
 =head2 B<REQUIRED> TopicARN => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon Simple Notification
+  The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) topic.
-
-
-
-
-
-
-
-
-
 
 
 

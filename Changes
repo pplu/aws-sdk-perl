@@ -1,7 +1,104 @@
-0.15
- - fix unicode issues in test t/10_responses.t (ioanrogers)
+0.20
+ - Better schema validation in builders (by Oriol Soriano) 
+ - EC2 docu update
+ - RDS support for cross account snapshot sharing. New instance types too
 
-0.14
+0.19 12 Nov 2015
+ - Fix issues with POD documentation. Some head2 tags didn't have a newline above
+   them, causing them to not behave as head tags
+ - We were having problems checking error messages for dns and connection failures
+   Different messages on different platforms / locales were making tests fail, and
+   Paws harder to install
+ - Generate JSON API Maps without xml_keys and xml_values. Not needed.
+ - add preloading and immutabilizing to documentation
+ - SQS docu update
+ - ApiGateway support for variables
+ - S3 API Update: support for ServerSideEncryption in UploadPart 
+
+0.18 6 Nov 2015 
+ - Important change: Paws license has been changed to a more permissive Apache 2.0
+ - IAM update: SimulateCustomPolicy updated. Docs updated too
+ - Autoscaling update: Encryption for EBS volumes flag. Docu update too
+ - SSM update: new functionalities (SendCommand) for mangaging Windows boxes in AWS
+ - new API Gateway service
+ - STS docu update
+ - DeviceFarm update: New Update and Delete methods
+ - ELB docu update
+
+0.17 22 Oct 2015
+ - Pass tests on MacOSX by Roger Pettett
+ - BREAKING CHANGE: All API methods and attributes have been properly CamelCased. Before
+   that, some services were being generated with method names and attributes starting with
+   lowercase. For example, in CloudWatchLogs, method DescribeLogGroups would expect:
+     limit => Int, logGroupNamePrefix => Str
+   Now it expects
+     Limit => Int, LogGroupNamePrefix => Str
+   The affected services are CloudSearchDomain, CloudTrail, CloudWatchLogs, CodeCommit,
+   CodeDeploy, CodePipeline, Support, SimpleWorkflow, Glacier, ECS, DirectConnect, 
+   DeviceFarm, DataPipeline, Config. 
+
+   This change also applies to never-released-to-cpan services: MarketplaceCommerceAnalytics,
+   IoT, IoTData, Inspector.
+
+ - loaded classes can be made immutable for better performance vs a bit more load time
+ - services can be preloaded via Paws->preload (see examples/preload.pl)
+ - Experimental Furl caller
+ - Proper linking of documentation to appropiate classes
+ - All classes now have doc (some innner shapes docs were not being generated) 
+ - CloudFront methods had dates appended to them. Now all methods don't have the
+   date appended, so anyone using CloudFront should be aware of that API change
+ - New iterators for EC2 and Glacier
+ - New caller: Paws::Net::FurlCaller. Uses Furl to do HTTP calls
+
+ - S3 API update: Support for ServerSideEncryption 
+ - KMS API update: New operations: CancelKeyDeletion ListRetirableGrants ScheduleKeyDeletion and docu update
+
+0.16 09 Oct 2015
+ - docu fixes by Gimpson
+ - Timeout for all user agents set to 60 seconds. Will be configurable soon
+ - S3 Update: Support for S3 Standard - Infrequent Access 
+ - CloudWatchLogs Update: Export tasks
+ - CloudFormation API Update: support for ResourceTypes
+ - EC2 API update: Update to SpotFleet requests
+ - SES API update: Support for Incoming mail
+ - RDS API update: Changes to API for Aurora DBs (DBCluster operations)
+ - CloudTrail API update: Log File Integrity Verification and Tagging
+ - Workspaces API update: Volume encrytption
+ - New ElasticSearch API (ES)
+ - New WAF API (Web Application Firewall)
+ - New Firehose API
+ - New Inspector API
+ - New MarketplaceCommerceAnalytics API
+ - Config API update: Compliance rules
+ - CloudFront API update
+ - Kinesis API update: adjust the data retention window
+ - EC2 API update: Spot blocks for Defined-Duration workloads
+ - Lambda API update: Support for Aliases
+ - ECS API update: new functionalities
+ - New IoT and IoTData APIs
+
+0.15 16 Sep 2015
+ - fix unicode issues in test t/10_responses.t (ioanrogers)
+ - fix bug handling responses with ArrayRef of Maps (DynamoDB reported by stevecaldwell77)
+ - fix S3 to be able to use temporary credentials (stevecaldwell77)
+ - fix bug that could produce different timestamps in Date and X-Amz-Date headers (ilmari)
+ - Pull Request #53 (karenetheridge): "Update some module dependencies"
+   - JSON Parsing now depending on JSON::MaybeXS
+   - include META.json in package
+   - remove uri_escape code for perl 5.8
+ - ElasticBeanstalk API update: support for Instance and Environment health 
+ - Codepipeline API update: support for encription key
+ - Config API update: ListDiscoveredResources
+ - EC2 API update: Resource oriented bidding for spot instances
+ - StorageGateway API update: tagging
+ - S3 API update: event filtering
+ - IAM API update: Policy simulation methods
+ - Kinesis API update: Appoximate arrival timestamp on Record object
+ - Elastic File System API update
+ - Route53: Child and Inverted Health Checks
+ - EC2 API update: DataEncryptionKeyId and StateMessage in snapshots. Spot fleet allocation strategy
+
+0.14 06 Aug 2015
  - LWP Caller (Paws::Net::LWPCaller). Paws supports calling behind HTTPS proxies with LWP (dtikhonov)
  - Maps in JSON type APIS are correctly handled (Issue #40 and #45, PR #46). Thanks to vivus-ignis and dtikhonov
  - Fixes to Paws.pm documentation (arc)

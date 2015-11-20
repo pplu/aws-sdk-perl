@@ -1,9 +1,8 @@
 
-package Paws::IAM::ListSAMLProvidersResponse {
+package Paws::IAM::ListSAMLProvidersResponse;
   use Moose;
   has SAMLProviderList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::SAMLProviderListEntry]');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,20 +13,10 @@ Paws::IAM::ListSAMLProvidersResponse
 
 =head1 ATTRIBUTES
 
-=head2 SAMLProviderList => ArrayRef[Paws::IAM::SAMLProviderListEntry]
 
-  
+=head2 SAMLProviderList => ArrayRef[L<Paws::IAM::SAMLProviderListEntry>]
 
-The list of SAML providers for this account.
-
-
-
-
-
-
-
-
-
+  The list of SAML providers for this account.
 
 
 =cut

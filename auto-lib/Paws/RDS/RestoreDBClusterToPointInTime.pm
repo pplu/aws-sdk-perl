@@ -1,5 +1,5 @@
 
-package Paws::RDS::RestoreDBClusterToPointInTime {
+package Paws::RDS::RestoreDBClusterToPointInTime;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
@@ -16,7 +16,6 @@ package Paws::RDS::RestoreDBClusterToPointInTime {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterToPointInTime');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBClusterToPointInTimeResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterToPointInTimeResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -31,7 +30,7 @@ This class represents the parameters used for calling the method RestoreDBCluste
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method RestoreDBClusterToPointInTime.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBClusterToPointInTime.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBClusterToPointInTime.
 
 As an example:
 
@@ -41,11 +40,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-  
-
-The name of the new DB cluster to be created.
+  The name of the new DB cluster to be created.
 
 Constraints:
 
@@ -61,67 +59,28 @@ Constraints:
 
 
 
-
-
-
-
-
-
-
 =head2 DBSubnetGroupName => Str
 
-  
-
-The DB subnet group name to use for the new DB cluster.
-
-
-
-
-
-
-
-
+  The DB subnet group name to use for the new DB cluster.
 
 
 =head2 OptionGroupName => Str
 
-  
-
-The name of the option group for the new DB cluster.
-
-
-
-
-
-
-
-
+  The name of the option group for the new DB cluster.
 
 
 =head2 Port => Int
 
-  
-
-The port number on which the new DB cluster accepts connections.
+  The port number on which the new DB cluster accepts connections.
 
 Constraints: Value must be C<1150-65535>
 
 Default: The same port as the original DB cluster.
 
 
-
-
-
-
-
-
-
-
 =head2 RestoreToTime => Str
 
-  
-
-The date and time to restore the DB cluster to.
+  The date and time to restore the DB cluster to.
 
 Valid Values: Value must be a time in Universal Coordinated Time (UTC)
 format
@@ -140,19 +99,9 @@ true
 Example: C<2015-03-07T23:45:00Z>
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> SourceDBClusterIdentifier => Str
 
-  
-
-The identifier of the source DB cluster from which to restore.
+  The identifier of the source DB cluster from which to restore.
 
 Constraints:
 
@@ -170,22 +119,14 @@ Constraints:
 
 
 
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::RDS::Tag]
+=head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
   
+
 
 =head2 UseLatestRestorableTime => Bool
 
-  
-
-A value that is set to C<true> to restore the DB cluster to the latest
+  A value that is set to C<true> to restore the DB cluster to the latest
 restorable backup time, and C<false> otherwise.
 
 Default: C<false>
@@ -194,28 +135,9 @@ Constraints: Cannot be specified if C<RestoreToTime> parameter is
 provided.
 
 
-
-
-
-
-
-
-
-
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  
-
-A lst of VPC security groups that the new DB cluster belongs to.
-
-
-
-
-
-
-
-
-
+  A lst of VPC security groups that the new DB cluster belongs to.
 
 
 

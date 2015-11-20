@@ -1,9 +1,8 @@
 
-package Paws::CodeDeploy::BatchGetOnPremisesInstancesOutput {
+package Paws::CodeDeploy::BatchGetOnPremisesInstancesOutput;
   use Moose;
-  has instanceInfos => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::InstanceInfo]');
+  has InstanceInfos => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::InstanceInfo]', traits => ['Unwrapped'], xmlname => 'instanceInfos' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::CodeDeploy::BatchGetOnPremisesInstancesOutput
 
 =head1 ATTRIBUTES
 
-=head2 instanceInfos => ArrayRef[Paws::CodeDeploy::InstanceInfo]
 
-  
+=head2 InstanceInfos => ArrayRef[L<Paws::CodeDeploy::InstanceInfo>]
 
-Information about the on-premises instances.
-
-
-
-
-
-
-
-
-
+  Information about the on-premises instances.
 
 
 =cut

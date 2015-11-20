@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::ModifyLunaClient {
+package Paws::CloudHSM::ModifyLunaClient;
   use Moose;
   has Certificate => (is => 'ro', isa => 'Str', required => 1);
   has ClientArn => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::CloudHSM::ModifyLunaClient {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ModifyLunaClient');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudHSM::ModifyLunaClientResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method ModifyLunaClien
 Amazon CloudHSM service. Use the attributes of this class
 as arguments to method ModifyLunaClient.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ModifyLunaClient.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ModifyLunaClient.
 
 As an example:
 
@@ -34,35 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> Certificate => Str
 
-  
-
-The new certificate for the client.
-
-
-
-
-
-
-
-
+  The new certificate for the client.
 
 
 =head2 B<REQUIRED> ClientArn => Str
 
-  
-
-The ARN of the client.
-
-
-
-
-
-
-
-
-
+  The ARN of the client.
 
 
 

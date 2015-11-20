@@ -1,15 +1,14 @@
 
-package Paws::CodeDeploy::CreateDeploymentConfig {
+package Paws::CodeDeploy::CreateDeploymentConfig;
   use Moose;
-  has deploymentConfigName => (is => 'ro', isa => 'Str', required => 1);
-  has minimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts');
+  has DeploymentConfigName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'deploymentConfigName' , required => 1);
+  has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', traits => ['NameInRequest'], request_name => 'minimumHealthyHosts' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDeploymentConfig');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CodeDeploy::CreateDeploymentConfigOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method CreateDeploymen
 AWS CodeDeploy service. Use the attributes of this class
 as arguments to method CreateDeploymentConfig.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeploymentConfig.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDeploymentConfig.
 
 As an example:
 
@@ -34,26 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> deploymentConfigName => Str
 
-  
+=head2 B<REQUIRED> DeploymentConfigName => Str
 
-The name of the deployment configuration to create.
-
+  The name of the deployment configuration to create.
 
 
+=head2 MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
 
-
-
-
-
-
-
-=head2 minimumHealthyHosts => Paws::CodeDeploy::MinimumHealthyHosts
-
-  
-
-The minimum number of healthy instances that should be available at any
+  The minimum number of healthy instances that should be available at any
 time during the deployment. There are two parameters expected in the
 input: type and value.
 
@@ -76,15 +64,6 @@ The value parameter takes an integer.
 
 For example, to set a minimum of 95% healthy instances, specify a type
 of FLEET_PERCENT and a value of 95.
-
-
-
-
-
-
-
-
-
 
 
 

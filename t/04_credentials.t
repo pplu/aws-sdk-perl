@@ -1,10 +1,10 @@
 #!/usr/bin/env perl
 
 use lib 't/lib';
+use Paws;
 use Paws::Credential::Environment;
 use Paws::Credential::InstanceProfile;
 use Paws::Credential::ProviderChain;
-use Data::Printer;
 use Test::More;
 use Test::Exception;
 use Test04::StubUAForMetadata;

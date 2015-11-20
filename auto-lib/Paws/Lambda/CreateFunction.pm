@@ -1,11 +1,12 @@
 
-package Paws::Lambda::CreateFunction {
+package Paws::Lambda::CreateFunction;
   use Moose;
   has Code => (is => 'ro', isa => 'Paws::Lambda::FunctionCode', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
   has Handler => (is => 'ro', isa => 'Str', required => 1);
   has MemorySize => (is => 'ro', isa => 'Int');
+  has Publish => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str', required => 1);
   has Runtime => (is => 'ro', isa => 'Str', required => 1);
   has Timeout => (is => 'ro', isa => 'Int');
@@ -17,7 +18,6 @@ package Paws::Lambda::CreateFunction {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateFunctionResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +32,7 @@ This class represents the parameters used for calling the method CreateFunction 
 AWS Lambda service. Use the attributes of this class
 as arguments to method CreateFunction.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateFunction.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateFunction.
 
 As an example:
 
@@ -42,42 +42,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> Code => Paws::Lambda::FunctionCode
 
-  
+=head2 B<REQUIRED> Code => L<Paws::Lambda::FunctionCode>
 
-The code for the Lambda function.
-
-
-
-
-
-
-
-
+  The code for the Lambda function.
 
 
 =head2 Description => Str
 
-  
-
-A short, user-defined function description. Lambda does not use this
+  A short, user-defined function description. Lambda does not use this
 value. Assign a meaningful description as you see fit.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  
-
-The name you want to assign to the function you are uploading. You can
+  The name you want to assign to the function you are uploading. You can
 specify an unqualified function name (for example, "Thumbnail") or you
 can specify Amazon Resource Name (ARN) of the function (for example,
 "arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS Lambda
@@ -89,38 +68,18 @@ returned in the ListFunctions API. Function names are used to specify
 functions to other AWS Lambda APIs, such as Invoke.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Handler => Str
 
-  
-
-The function within your code that Lambda calls to begin execution. For
+  The function within your code that Lambda calls to begin execution. For
 Node.js, it is the I<module-name>.I<export> value in your function. For
 Java, it can be C<package.class-name::handler> or
 C<package.class-name>. For more information, see Lambda Function
 Handler (Java).
 
 
-
-
-
-
-
-
-
-
 =head2 MemorySize => Int
 
-  
-
-The amount of memory, in MB, your Lambda function is given. Lambda uses
+  The amount of memory, in MB, your Lambda function is given. Lambda uses
 this memory size to infer the amount of CPU and memory allocated to
 your function. Your function use-case determines your CPU and memory
 requirements. For example, a database operation might need less memory
@@ -128,64 +87,31 @@ compared to an image processing function. The default value is 128 MB.
 The value must be a multiple of 64 MB.
 
 
+=head2 Publish => Bool
 
-
-
-
-
-
+  This boolean parameter can be used to request AWS Lambda to create the
+Lambda function and publish a version as an atomic operation.
 
 
 =head2 B<REQUIRED> Role => Str
 
-  
-
-The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when
+  The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when
 it executes your function to access any other Amazon Web Services (AWS)
 resources. For more information, see AWS Lambda: How it Works
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Runtime => Str
 
-  
-
-The runtime environment for the Lambda function you are uploading.
+  The runtime environment for the Lambda function you are uploading.
 Currently, Lambda supports "java" and "nodejs" as the runtime.
-
-
-
-
-
-
-
-
 
 
 =head2 Timeout => Int
 
-  
-
-The function execution time at which Lambda should terminate the
+  The function execution time at which Lambda should terminate the
 function. Because the execution time has cost implications, we
 recommend you set this value based on your expected execution time. The
 default is 3 seconds.
-
-
-
-
-
-
-
-
-
 
 
 

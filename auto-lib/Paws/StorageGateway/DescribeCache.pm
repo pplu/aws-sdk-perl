@@ -1,5 +1,5 @@
 
-package Paws::StorageGateway::DescribeCache {
+package Paws::StorageGateway::DescribeCache;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::StorageGateway::DescribeCache {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeCache');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::StorageGateway::DescribeCacheOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DescribeCache o
 AWS Storage Gateway service. Use the attributes of this class
 as arguments to method DescribeCache.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCache.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeCache.
 
 As an example:
 
@@ -32,6 +31,7 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
 
 =head2 B<REQUIRED> GatewayARN => Str
 

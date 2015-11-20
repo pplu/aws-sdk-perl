@@ -1,10 +1,9 @@
 
-package Paws::CloudWatch::DescribeAlarmHistoryOutput {
+package Paws::CloudWatch::DescribeAlarmHistoryOutput;
   use Moose;
   has AlarmHistoryItems => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::AlarmHistoryItem]');
   has NextToken => (is => 'ro', isa => 'Str');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -15,34 +14,14 @@ Paws::CloudWatch::DescribeAlarmHistoryOutput
 
 =head1 ATTRIBUTES
 
-=head2 AlarmHistoryItems => ArrayRef[Paws::CloudWatch::AlarmHistoryItem]
 
-  
+=head2 AlarmHistoryItems => ArrayRef[L<Paws::CloudWatch::AlarmHistoryItem>]
 
-A list of alarm histories in JSON format.
-
-
-
-
-
-
-
-
+  A list of alarm histories in JSON format.
 
 =head2 NextToken => Str
 
-  
-
-A string that marks the start of the next batch of returned results.
-
-
-
-
-
-
-
-
-
+  A string that marks the start of the next batch of returned results.
 
 
 =cut

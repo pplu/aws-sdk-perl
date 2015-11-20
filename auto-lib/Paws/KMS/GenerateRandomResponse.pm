@@ -1,9 +1,8 @@
 
-package Paws::KMS::GenerateRandomResponse {
+package Paws::KMS::GenerateRandomResponse;
   use Moose;
   has Plaintext => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -13,20 +12,10 @@ Paws::KMS::GenerateRandomResponse
 
 =head1 ATTRIBUTES
 
+
 =head2 Plaintext => Str
 
-  
-
-Plaintext that contains the unpredictable byte string.
-
-
-
-
-
-
-
-
-
+  Plaintext that contains the unpredictable byte string.
 
 
 =cut

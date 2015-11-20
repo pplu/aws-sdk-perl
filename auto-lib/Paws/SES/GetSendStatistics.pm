@@ -1,5 +1,5 @@
 
-package Paws::SES::GetSendStatistics {
+package Paws::SES::GetSendStatistics;
   use Moose;
 
   use MooseX::ClassAttribute;
@@ -7,7 +7,6 @@ package Paws::SES::GetSendStatistics {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'GetSendStatistics');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SES::GetSendStatisticsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSendStatisticsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +21,7 @@ This class represents the parameters used for calling the method GetSendStatisti
 Amazon Simple Email Service service. Use the attributes of this class
 as arguments to method GetSendStatistics.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to GetSendStatistics.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to GetSendStatistics.
 
 As an example:
 

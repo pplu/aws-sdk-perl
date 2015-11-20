@@ -1,5 +1,5 @@
 
-package Paws::RDS::PromoteReadReplica {
+package Paws::RDS::PromoteReadReplica;
   use Moose;
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -10,7 +10,6 @@ package Paws::RDS::PromoteReadReplica {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PromoteReadReplica');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::PromoteReadReplicaResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'PromoteReadReplicaResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method PromoteReadRepl
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method PromoteReadReplica.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PromoteReadReplica.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PromoteReadReplica.
 
 As an example:
 
@@ -35,11 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 BackupRetentionPeriod => Int
 
-  
-
-The number of days to retain automated backups. Setting this parameter
+  The number of days to retain automated backups. Setting this parameter
 to a positive number enables backups. Setting this parameter to 0
 disables automated backups.
 
@@ -55,18 +53,9 @@ Constraints:
 
 
 
-
-
-
-
-
-
-
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  
-
-The DB instance identifier. This value is stored as a lowercase string.
+  The DB instance identifier. This value is stored as a lowercase string.
 
 Constraints:
 
@@ -82,22 +71,12 @@ Constraints:
 
 =back
 
-Example: mydbinstance
-
-
-
-
-
-
-
-
+Example: C<mydbinstance>
 
 
 =head2 PreferredBackupWindow => Str
 
-  
-
-The daily time range during which automated backups are created if
+  The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter.
 
@@ -118,14 +97,6 @@ Constraints:
 =item * Must be at least 30 minutes.
 
 =back
-
-
-
-
-
-
-
-
 
 
 

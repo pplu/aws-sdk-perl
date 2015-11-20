@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::CreateTable {
+package Paws::DynamoDB::CreateTable;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]', required => 1);
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndex]');
@@ -14,7 +14,6 @@ package Paws::DynamoDB::CreateTable {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateTable');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::CreateTableOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -29,7 +28,7 @@ This class represents the parameters used for calling the method CreateTable on 
 Amazon DynamoDB service. Use the attributes of this class
 as arguments to method CreateTable.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateTable.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateTable.
 
 As an example:
 
@@ -39,27 +38,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> AttributeDefinitions => ArrayRef[Paws::DynamoDB::AttributeDefinition]
 
-  
+=head2 B<REQUIRED> AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
 
-An array of attributes that describe the key schema for the table and
+  An array of attributes that describe the key schema for the table and
 indexes.
 
 
+=head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]
 
-
-
-
-
-
-
-
-=head2 GlobalSecondaryIndexes => ArrayRef[Paws::DynamoDB::GlobalSecondaryIndex]
-
-  
-
-One or more global secondary indexes (the maximum is five) to be
+  One or more global secondary indexes (the maximum is five) to be
 created on the table. Each global secondary index in the array includes
 the following:
 
@@ -125,18 +113,9 @@ global secondary index, consisting of read and write capacity units.
 
 
 
+=head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
-
-
-
-
-
-
-=head2 B<REQUIRED> KeySchema => ArrayRef[Paws::DynamoDB::KeySchemaElement]
-
-  
-
-Specifies the attributes that make up the primary key for a table or an
+  Specifies the attributes that make up the primary key for a table or an
 index. The attributes in I<KeySchema> must also be defined in the
 I<AttributeDefinitions> array. For more information, see Data Model in
 the I<Amazon DynamoDB Developer Guide>.
@@ -168,19 +147,9 @@ For more information, see Specifying the Primary Key in the I<Amazon
 DynamoDB Developer Guide>.
 
 
+=head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]
 
-
-
-
-
-
-
-
-=head2 LocalSecondaryIndexes => ArrayRef[Paws::DynamoDB::LocalSecondaryIndex]
-
-  
-
-One or more local secondary indexes (the maximum is five) to be created
+  One or more local secondary indexes (the maximum is five) to be created
 on the table. Each index is scoped to a given hash key value. There is
 a 10 GB size limit per hash key; otherwise, the size of a local
 secondary index is unconstrained.
@@ -246,22 +215,14 @@ attributes when determining the total.
 
 
 
-
-
-
-
-
-
-
-=head2 B<REQUIRED> ProvisionedThroughput => Paws::DynamoDB::ProvisionedThroughput
+=head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
   
 
-=head2 StreamSpecification => Paws::DynamoDB::StreamSpecification
 
-  
+=head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>
 
-The settings for DynamoDB Streams on the table. These settings consist
+  The settings for DynamoDB Streams on the table. These settings consist
 of:
 
 =over
@@ -305,27 +266,9 @@ item are written to the stream.
 
 
 
-
-
-
-
-
-
-
 =head2 B<REQUIRED> TableName => Str
 
-  
-
-The name of the table to create.
-
-
-
-
-
-
-
-
-
+  The name of the table to create.
 
 
 

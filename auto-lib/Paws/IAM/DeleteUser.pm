@@ -1,5 +1,5 @@
 
-package Paws::IAM::DeleteUser {
+package Paws::IAM::DeleteUser;
   use Moose;
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,6 @@ package Paws::IAM::DeleteUser {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteUser');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +22,7 @@ This class represents the parameters used for calling the method DeleteUser on t
 AWS Identity and Access Management service. Use the attributes of this class
 as arguments to method DeleteUser.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeleteUser.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeleteUser.
 
 As an example:
 
@@ -33,20 +32,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> UserName => Str
 
-  
-
-The name of the user to delete.
-
-
-
-
-
-
-
-
-
+  The name of the user to delete.
 
 
 

@@ -1,9 +1,8 @@
 
-package Paws::RedShift::RebootClusterResult {
+package Paws::RedShift::RebootClusterResult;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Paws::RedShift::Cluster');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -14,7 +13,8 @@ Paws::RedShift::RebootClusterResult
 
 =head1 ATTRIBUTES
 
-=head2 Cluster => Paws::RedShift::Cluster
+
+=head2 Cluster => L<Paws::RedShift::Cluster>
 
   
 

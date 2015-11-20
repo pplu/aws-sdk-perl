@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::ShutdownGatewayOutput {
+package Paws::StorageGateway::ShutdownGatewayOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -12,6 +11,7 @@ package Paws::StorageGateway::ShutdownGatewayOutput {
 Paws::StorageGateway::ShutdownGatewayOutput
 
 =head1 ATTRIBUTES
+
 
 =head2 GatewayARN => Str
 

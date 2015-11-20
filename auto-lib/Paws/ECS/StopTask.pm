@@ -1,15 +1,14 @@
 
-package Paws::ECS::StopTask {
+package Paws::ECS::StopTask;
   use Moose;
-  has cluster => (is => 'ro', isa => 'Str');
-  has task => (is => 'ro', isa => 'Str', required => 1);
+  has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Task => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'task' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'StopTask');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ECS::StopTaskResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method StopTask on the
 Amazon EC2 Container Service service. Use the attributes of this class
 as arguments to method StopTask.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to StopTask.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to StopTask.
 
 As an example:
 
@@ -34,38 +33,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 cluster => Str
 
-  
+=head2 Cluster => Str
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the task you want to stop. If you do not specify a cluster, the
-default cluster is assumed..
-
+  The short name or full Amazon Resource Name (ARN) of the cluster that
+hosts the task to stop. If you do not specify a cluster, the default
+cluster is assumed..
 
 
+=head2 B<REQUIRED> Task => Str
 
-
-
-
-
-
-
-=head2 B<REQUIRED> task => Str
-
-  
-
-The task UUIDs or full Amazon Resource Name (ARN) entry of the task you
-would like to stop.
-
-
-
-
-
-
-
-
-
+  The task ID or full Amazon Resource Name (ARN) entry of the task to
+stop.
 
 
 

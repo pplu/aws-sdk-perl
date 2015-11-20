@@ -1,5 +1,5 @@
 
-package Paws::EC2::CopyImage {
+package Paws::EC2::CopyImage;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::EC2::CopyImage {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CopyImage');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CopyImageResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +27,7 @@ This class represents the parameters used for calling the method CopyImage on th
 Amazon Elastic Compute Cloud service. Use the attributes of this class
 as arguments to method CopyImage.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CopyImage.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CopyImage.
 
 As an example:
 
@@ -38,100 +37,40 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 ClientToken => Str
 
-  
-
-Unique, case-sensitive identifier you provide to ensure idempotency of
+  Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see How to Ensure Idempotency in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
-
-
-
-
-
-
-
-
 =head2 Description => Str
 
-  
-
-A description for the new AMI in the destination region.
-
-
-
-
-
-
-
-
+  A description for the new AMI in the destination region.
 
 
 =head2 DryRun => Bool
 
-  
-
-Checks whether you have the required permissions for the action,
+  Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the new AMI in the destination region.
-
-
-
-
-
-
-
-
+  The name of the new AMI in the destination region.
 
 
 =head2 B<REQUIRED> SourceImageId => Str
 
-  
-
-The ID of the AMI to copy.
-
-
-
-
-
-
-
-
+  The ID of the AMI to copy.
 
 
 =head2 B<REQUIRED> SourceRegion => Str
 
-  
-
-The name of the region that contains the AMI to copy.
-
-
-
-
-
-
-
-
-
+  The name of the region that contains the AMI to copy.
 
 
 

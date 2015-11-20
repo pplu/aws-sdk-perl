@@ -1,15 +1,15 @@
 
-package Paws::SSM::CreateAssociation {
+package Paws::SSM::CreateAssociation;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAssociation');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::SSM::CreateAssociationResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +24,7 @@ This class represents the parameters used for calling the method CreateAssociati
 Amazon Simple Systems Management Service service. Use the attributes of this class
 as arguments to method CreateAssociation.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateAssociation.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAssociation.
 
 As an example:
 
@@ -34,35 +34,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
-  
-
-The ID of the instance.
-
-
-
-
-
-
-
-
+  The instance ID.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The name of the configuration document.
+  The name of the SSM document.
 
 
+=head2 Parameters => L<Paws::SSM::Parameters>
 
-
-
-
-
-
-
+  The parameters for the documentE<rsquo>s runtime configuration.
 
 
 

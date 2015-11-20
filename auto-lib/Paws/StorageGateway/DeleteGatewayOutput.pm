@@ -1,9 +1,8 @@
 
-package Paws::StorageGateway::DeleteGatewayOutput {
+package Paws::StorageGateway::DeleteGatewayOutput;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
 
-}
 
 ### main pod documentation begin ###
 
@@ -12,6 +11,7 @@ package Paws::StorageGateway::DeleteGatewayOutput {
 Paws::StorageGateway::DeleteGatewayOutput
 
 =head1 ATTRIBUTES
+
 
 =head2 GatewayARN => Str
 

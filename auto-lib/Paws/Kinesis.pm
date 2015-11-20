@@ -1,9 +1,13 @@
-package Paws::Kinesis {
+package Paws::Kinesis;
   use Moose;
   sub service { 'kinesis' }
   sub version { '2013-12-02' }
   sub target_prefix { 'Kinesis_20131202' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -16,6 +20,11 @@ package Paws::Kinesis {
   sub CreateStream {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::CreateStream', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DecreaseStreamRetentionPeriod {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::DecreaseStreamRetentionPeriod', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteStream {
@@ -36,6 +45,11 @@ package Paws::Kinesis {
   sub GetShardIterator {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::GetShardIterator', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub IncreaseStreamRetentionPeriod {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kinesis::IncreaseStreamRetentionPeriod', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListStreams {
@@ -73,7 +87,9 @@ package Paws::Kinesis {
     my $call_object = $self->new_with_coercions('Paws::Kinesis::SplitShard', @_);
     return $self->caller->do_call($self, $call_object);
   }
-}
+
+  sub operations { qw/AddTagsToStream CreateStream DecreaseStreamRetentionPeriod DeleteStream DescribeStream GetRecords GetShardIterator IncreaseStreamRetentionPeriod ListStreams ListTagsForStream MergeShards PutRecord PutRecords RemoveTagsFromStream SplitShard / }
+
 1;
 
 ### main pod documentation begin ###
@@ -86,7 +102,7 @@ Paws::Kinesis - Perl Interface to AWS Amazon Kinesis
 
   use Paws;
 
-  my $obj = Paws->service('Kinesis')->new;
+  my $obj = Paws->service('Kinesis');
   my $res = $obj->Method(
     Arg1 => $val1,
     Arg2 => [ 'V1', 'V2' ],
@@ -100,46 +116,24 @@ Paws::Kinesis - Perl Interface to AWS Amazon Kinesis
 
 =head1 DESCRIPTION
 
-
-
 Amazon Kinesis Service API Reference
 
 Amazon Kinesis is a managed service that scales elastically for real
 time processing of streaming big data.
 
-
-
-
-
-
-
-
-
-
 =head1 METHODS
 
-=head2 AddTagsToStream(StreamName => Str, Tags => Paws::Kinesis::TagMap)
+=head2 AddTagsToStream(StreamName => Str, Tags => L<Paws::Kinesis::TagMap>)
 
 Each argument is described in detail in: L<Paws::Kinesis::AddTagsToStream>
 
 Returns: nothing
 
-  
-
-Adds or updates tags for the specified Amazon Kinesis stream. Each
+  Adds or updates tags for the specified Amazon Kinesis stream. Each
 stream can have up to 10 tags.
 
 If tags have already been assigned to the stream, C<AddTagsToStream>
 overwrites any existing tags that correspond to the specified tag keys.
-
-
-
-
-
-
-
-
-
 
 
 =head2 CreateStream(ShardCount => Int, StreamName => Str)
@@ -148,21 +142,19 @@ Each argument is described in detail in: L<Paws::Kinesis::CreateStream>
 
 Returns: nothing
 
-  
-
-Creates a Amazon Kinesis stream. A stream captures and transports data
+  Creates a Amazon Kinesis stream. A stream captures and transports data
 records that are continuously emitted from different data sources or
 I<producers>. Scale-out within an Amazon Kinesis stream is explicitly
 supported by means of shards, which are uniquely identified groups of
 data records in an Amazon Kinesis stream.
 
 You specify and control the number of shards that a stream is composed
-of. Each open shard can support up to 5 read transactions per second,
-up to a maximum total of 2 MB of data read per second. Each shard can
-support up to 1000 records written per second, up to a maximum total of
-1 MB data written per second. You can add shards to a stream if the
-amount of data input increases and you can remove shards if the amount
-of data input decreases.
+of. Each shard can support reads up to 5 transactions per second, up to
+a maximum data read total of 2 MB per second. Each shard can support
+writes up to 1,000 records per second, up to a maximum data write total
+of 1 MB per second. You can add shards to a stream if the amount of
+data input increases and you can remove shards if the amount of data
+input decreases.
 
 The stream name identifies the stream. The name is scoped to the AWS
 account used by the application. It is also scoped by region. That is,
@@ -189,7 +181,7 @@ point in time.
 =back
 
 For the default shard limit for an AWS account, see Amazon Kinesis
-Limits. If you need to increase this limit, contact AWS Support
+Limits. If you need to increase this limit, contact AWS Support.
 
 You can use C<DescribeStream> to check the stream status, which is
 returned in C<StreamStatus>.
@@ -197,13 +189,19 @@ returned in C<StreamStatus>.
 CreateStream has a limit of 5 transactions per second per account.
 
 
+=head2 DecreaseStreamRetentionPeriod(RetentionPeriodHours => Int, StreamName => Str)
 
+Each argument is described in detail in: L<Paws::Kinesis::DecreaseStreamRetentionPeriod>
 
+Returns: nothing
 
+  Decreases the stream's retention period, which is the length of time
+data records are accessible after they are added to the stream. The
+minimum value of a streamE<rsquo>s retention period is 24 hours.
 
-
-
-
+This operation may result in lost data. For example, if the stream's
+retention period is 48 hours and is decreased to 24 hours, any data
+already in the stream that is older than 24 hours is inaccessible.
 
 
 =head2 DeleteStream(StreamName => Str)
@@ -212,9 +210,7 @@ Each argument is described in detail in: L<Paws::Kinesis::DeleteStream>
 
 Returns: nothing
 
-  
-
-Deletes a stream and all its shards and data. You must shut down any
+  Deletes a stream and all its shards and data. You must shut down any
 applications that are operating on the stream before you delete the
 stream. If an application attempts to operate on a deleted stream, it
 will receive the exception C<ResourceNotFoundException>.
@@ -236,24 +232,13 @@ stream, which is returned in C<StreamStatus>.
 DeleteStream has a limit of 5 transactions per second per account.
 
 
-
-
-
-
-
-
-
-
-
 =head2 DescribeStream(StreamName => Str, [ExclusiveStartShardId => Str, Limit => Int])
 
 Each argument is described in detail in: L<Paws::Kinesis::DescribeStream>
 
 Returns: a L<Paws::Kinesis::DescribeStreamOutput> instance
 
-  
-
-Describes the specified stream.
+  Describes the specified stream.
 
 The information about the stream includes its current status, its
 Amazon Resource Name (ARN), and an array of shard objects. For each
@@ -278,24 +263,13 @@ a subsequent request to C<DescribeStream>.
 DescribeStream has a limit of 10 transactions per second per account.
 
 
-
-
-
-
-
-
-
-
-
 =head2 GetRecords(ShardIterator => Str, [Limit => Int])
 
 Each argument is described in detail in: L<Paws::Kinesis::GetRecords>
 
 Returns: a L<Paws::Kinesis::GetRecordsOutput> instance
 
-  
-
-Gets data records from a shard.
+  Gets data records from a shard.
 
 Specify a shard iterator using the C<ShardIterator> parameter. The
 shard iterator specifies the position in the shard from which you want
@@ -317,13 +291,11 @@ terminate the loop when the shard is closed, or when the shard iterator
 reaches the record with the sequence number or other attribute that
 marks it as the last record to process.
 
-Each data record can be up to 50 KB in size, and each shard can read up
+Each data record can be up to 1 MB in size, and each shard can read up
 to 2 MB per second. You can ensure that your calls don't exceed the
 maximum supported size or throughput by using the C<Limit> parameter to
 specify the maximum number of records that GetRecords can return.
-Consider your average record size when determining this limit. For
-example, if your average record size is 40 KB, you can limit the data
-returned to about 1 MB per call by specifying 25 as the limit.
+Consider your average record size when determining this limit.
 
 The size of the data returned by GetRecords will vary depending on the
 utilization of the shard. The maximum size of data that GetRecords can
@@ -339,18 +311,18 @@ exceptions for longer than 1 second.
 
 To detect whether the application is falling behind in processing, you
 can use the C<MillisBehindLatest> response attribute. You can also
-monitor the amount of data in a stream using the CloudWatch metrics.
-For more information, see Monitoring Amazon Kinesis with Amazon
-CloudWatch in the I<Amazon Kinesis Developer Guide>.
+monitor the stream using CloudWatch metrics (see Monitoring Amazon
+Kinesis in the I<Amazon Kinesis Developer Guide>).
 
-
-
-
-
-
-
-
-
+Each Amazon Kinesis record includes a value,
+C<ApproximateArrivalTimestamp>, that is set when an Amazon Kinesis
+stream successfully receives and stores a record. This is commonly
+referred to as a server-side timestamp, which is different than a
+client-side timestamp, where the timestamp is set when a data producer
+creates or sends the record to a stream. The timestamp has millisecond
+precision. There are no guarantees about the timestamp accuracy, or
+that the timestamp is always increasing. For example, records in a
+shard or across a stream might have timestamps that are out of order.
 
 
 =head2 GetShardIterator(ShardId => Str, ShardIteratorType => Str, StreamName => Str, [StartingSequenceNumber => Str])
@@ -359,9 +331,7 @@ Each argument is described in detail in: L<Paws::Kinesis::GetShardIterator>
 
 Returns: a L<Paws::Kinesis::GetShardIteratorOutput> instance
 
-  
-
-Gets a shard iterator. A shard iterator expires five minutes after it
+  Gets a shard iterator. A shard iterator expires five minutes after it
 is returned to the requester.
 
 A shard iterator specifies the position in the shard from which to
@@ -404,13 +374,25 @@ GetShardIterator has a limit of 5 transactions per second per account
 per open shard.
 
 
+=head2 IncreaseStreamRetentionPeriod(RetentionPeriodHours => Int, StreamName => Str)
 
+Each argument is described in detail in: L<Paws::Kinesis::IncreaseStreamRetentionPeriod>
 
+Returns: nothing
 
+  Increases the stream's retention period, which is the length of time
+data records are accessible after they are added to the stream. The
+maximum value of a streamE<rsquo>s retention period is 168 hours (7
+days).
 
-
-
-
+Upon choosing a longer stream retention period, this operation will
+increase the time period records are accessible that have not yet
+expired. However, it will not make previous data that has expired
+(older than the streamE<rsquo>s previous retention period) accessible
+after the operation has been called. For example, if a streamE<rsquo>s
+retention period is set to 24 hours and is increased to 168 hours, any
+data that is older than 24 hours will remain inaccessible to consumer
+applications.
 
 
 =head2 ListStreams([ExclusiveStartStreamName => Str, Limit => Int])
@@ -419,9 +401,7 @@ Each argument is described in detail in: L<Paws::Kinesis::ListStreams>
 
 Returns: a L<Paws::Kinesis::ListStreamsOutput> instance
 
-  
-
-Lists your streams.
+  Lists your streams.
 
 The number of streams may be too large to return from a single call to
 C<ListStreams>. You can limit the number of returned streams using the
@@ -441,33 +421,13 @@ all the stream names have been collected in the list.
 ListStreams has a limit of 5 transactions per second per account.
 
 
-
-
-
-
-
-
-
-
-
 =head2 ListTagsForStream(StreamName => Str, [ExclusiveStartTagKey => Str, Limit => Int])
 
 Each argument is described in detail in: L<Paws::Kinesis::ListTagsForStream>
 
 Returns: a L<Paws::Kinesis::ListTagsForStreamOutput> instance
 
-  
-
-Lists the tags for the specified Amazon Kinesis stream.
-
-
-
-
-
-
-
-
-
+  Lists the tags for the specified Amazon Kinesis stream.
 
 
 =head2 MergeShards(AdjacentShardToMerge => Str, ShardToMerge => Str, StreamName => Str)
@@ -476,9 +436,7 @@ Each argument is described in detail in: L<Paws::Kinesis::MergeShards>
 
 Returns: nothing
 
-  
-
-Merges two adjacent shards in a stream and combines them into a single
+  Merges two adjacent shards in a stream and combines them into a single
 shard to reduce the stream's capacity to ingest and transport data. Two
 shards are considered adjacent if the union of the hash key ranges for
 the two shards form a contiguous set with no gaps. For example, if you
@@ -520,29 +478,18 @@ receive a C<LimitExceededException>.
 C<MergeShards> has limit of 5 transactions per second per account.
 
 
-
-
-
-
-
-
-
-
-
 =head2 PutRecord(Data => Str, PartitionKey => Str, StreamName => Str, [ExplicitHashKey => Str, SequenceNumberForOrdering => Str])
 
 Each argument is described in detail in: L<Paws::Kinesis::PutRecord>
 
 Returns: a L<Paws::Kinesis::PutRecordOutput> instance
 
-  
-
-Puts (writes) a single data record from a producer into an Amazon
-Kinesis stream. Call C<PutRecord> to send data from the producer into
-the Amazon Kinesis stream for real-time ingestion and subsequent
-processing, one record at a time. Each shard can support up to 1000
-records written per second, up to a maximum total of 1 MB data written
-per second.
+  Writes a single data record from a producer into an Amazon Kinesis
+stream. Call C<PutRecord> to send data from the producer into the
+Amazon Kinesis stream for real-time ingestion and subsequent
+processing, one record at a time. Each shard can support writes up to
+1,000 records per second, up to a maximum data write total of 1 MB per
+second.
 
 You must specify the name of the stream that captures, stores, and
 transports the data; a partition key; and the data blob itself.
@@ -578,37 +525,34 @@ If a C<PutRecord> request cannot be processed because of insufficient
 provisioned throughput on the shard involved in the request,
 C<PutRecord> throws C<ProvisionedThroughputExceededException>.
 
-Data records are accessible for only 24 hours from the time that they
-are added to an Amazon Kinesis stream.
+By default, data records are accessible for only 24 hours from the time
+that they are added to an Amazon Kinesis stream. This retention period
+can be modified using the DecreaseStreamRetentionPeriod and
+IncreaseStreamRetentionPeriod operations.
 
 
-
-
-
-
-
-
-
-
-
-=head2 PutRecords(Records => ArrayRef[Paws::Kinesis::PutRecordsRequestEntry], StreamName => Str)
+=head2 PutRecords(Records => ArrayRef[L<Paws::Kinesis::PutRecordsRequestEntry>], StreamName => Str)
 
 Each argument is described in detail in: L<Paws::Kinesis::PutRecords>
 
 Returns: a L<Paws::Kinesis::PutRecordsOutput> instance
 
-  
+  Writes multiple data records from a producer into an Amazon Kinesis
+stream in a single call (also referred to as a C<PutRecords> request).
+Use this operation to send data from a data producer into the Amazon
+Kinesis stream for data ingestion and processing.
 
-Puts (writes) multiple data records from a producer into an Amazon
-Kinesis stream in a single call (also referred to as a C<PutRecords>
-request). Use this operation to send data from a data producer into the
-Amazon Kinesis stream for real-time ingestion and processing. Each
-shard can support up to 1000 records written per second, up to a
-maximum total of 1 MB data written per second.
+Each C<PutRecords> request can support up to 500 records. Each record
+in the request can be as large as 1 MB, up to a limit of 5 MB for the
+entire request, including partition keys. Each shard can support writes
+up to 1,000 records per second, up to a maximum data write total of 1
+MB per second.
 
 You must specify the name of the stream that captures, stores, and
 transports the data; and an array of request C<Records>, with each
-record in the array requiring a partition key and data blob.
+record in the array requiring a partition key and data blob. The record
+size limit applies to the total size of the partition key and data
+blob.
 
 The data blob can be any type of data; for example, a segment from a
 log file, geographic/location data, website clickstream data, and so
@@ -656,17 +600,10 @@ For more information about partially successful responses, see Adding
 Multiple Records with PutRecords in the I<Amazon Kinesis Developer
 Guide>.
 
-Data records are accessible for only 24 hours from the time that they
-are added to an Amazon Kinesis stream.
-
-
-
-
-
-
-
-
-
+By default, data records are accessible for only 24 hours from the time
+that they are added to an Amazon Kinesis stream. This retention period
+can be modified using the DecreaseStreamRetentionPeriod and
+IncreaseStreamRetentionPeriod operations.
 
 
 =head2 RemoveTagsFromStream(StreamName => Str, TagKeys => ArrayRef[Str])
@@ -675,20 +612,9 @@ Each argument is described in detail in: L<Paws::Kinesis::RemoveTagsFromStream>
 
 Returns: nothing
 
-  
-
-Deletes tags from the specified Amazon Kinesis stream.
+  Deletes tags from the specified Amazon Kinesis stream.
 
 If you specify a tag that does not exist, it is ignored.
-
-
-
-
-
-
-
-
-
 
 
 =head2 SplitShard(NewStartingHashKey => Str, ShardToSplit => Str, StreamName => Str)
@@ -697,9 +623,7 @@ Each argument is described in detail in: L<Paws::Kinesis::SplitShard>
 
 Returns: nothing
 
-  
-
-Splits a shard into two new shards in the stream, to increase the
+  Splits a shard into two new shards in the stream, to increase the
 stream's capacity to ingest and transport data. C<SplitShard> is called
 when there is a need to increase the overall capacity of stream because
 of an expected increase in the volume of data records being ingested.
@@ -740,22 +664,13 @@ C<ResourceNotFoundException>. If you try to create more shards than are
 authorized for your account, you receive a C<LimitExceededException>.
 
 For the default shard limit for an AWS account, see Amazon Kinesis
-Limits. If you need to increase this limit, contact AWS Support
+Limits. If you need to increase this limit, contact AWS Support.
 
 If you try to operate on too many streams in parallel using
 CreateStream, DeleteStream, MergeShards or SplitShard, you receive a
 C<LimitExceededException>.
 
 C<SplitShard> has limit of 5 transactions per second per account.
-
-
-
-
-
-
-
-
-
 
 
 =head1 SEE ALSO

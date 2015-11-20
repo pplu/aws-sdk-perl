@@ -1,5 +1,5 @@
 
-package Paws::S3::ListObjectVersionsOutput {
+package Paws::S3::ListObjectVersionsOutput;
   use Moose;
   has CommonPrefixes => (is => 'ro', isa => 'ArrayRef[Paws::S3::CommonPrefix]');
   has DeleteMarkers => (is => 'ro', isa => 'ArrayRef[Paws::S3::DeleteMarkerEntry]');
@@ -15,7 +15,6 @@ package Paws::S3::ListObjectVersionsOutput {
   has VersionIdMarker => (is => 'ro', isa => 'Str');
   has Versions => (is => 'ro', isa => 'ArrayRef[Paws::S3::ObjectVersion]');
 
-}
 1;
 
 ### main pod documentation begin ###
@@ -30,7 +29,7 @@ This class represents the parameters used for calling the method  on the
 Amazon Simple Storage Service service. Use the attributes of this class
 as arguments to method .
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to .
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to .
 
 As an example:
 
@@ -40,116 +39,74 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 CommonPrefixes => ArrayRef[Paws::S3::CommonPrefix]
+
+=head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
 
   
 
-=head2 DeleteMarkers => ArrayRef[Paws::S3::DeleteMarkerEntry]
+
+=head2 DeleteMarkers => ArrayRef[L<Paws::S3::DeleteMarkerEntry>]
 
   
+
 
 =head2 Delimiter => Str
 
   
 
+
 =head2 EncodingType => Str
 
-  
-
-Encoding type used by Amazon S3 to encode object keys in the response.
-
-
-
-
-
-
-
-
+  Encoding type used by Amazon S3 to encode object keys in the response.
 
 
 =head2 IsTruncated => Bool
 
-  
-
-A flag that indicates whether or not Amazon S3 returned all of the
+  A flag that indicates whether or not Amazon S3 returned all of the
 results that satisfied the search criteria. If your results were
 truncated, you can make a follow-up paginated request using the
 NextKeyMarker and NextVersionIdMarker response parameters as a starting
 place in another request to return the rest of the results.
 
 
-
-
-
-
-
-
-
-
 =head2 KeyMarker => Str
 
-  
-
-Marks the last Key returned in a truncated response.
-
-
-
-
-
-
-
-
+  Marks the last Key returned in a truncated response.
 
 
 =head2 MaxKeys => Int
 
   
 
+
 =head2 Name => Str
 
   
 
+
 =head2 NextKeyMarker => Str
 
-  
-
-Use this value for the key marker request parameter in a subsequent
+  Use this value for the key marker request parameter in a subsequent
 request.
-
-
-
-
-
-
-
-
 
 
 =head2 NextVersionIdMarker => Str
 
-  
-
-Use this value for the next version id marker parameter in a subsequent
+  Use this value for the next version id marker parameter in a subsequent
 request.
-
-
-
-
-
-
-
-
 
 
 =head2 Prefix => Str
 
   
 
+
 =head2 VersionIdMarker => Str
 
   
 
-=head2 Versions => ArrayRef[Paws::S3::ObjectVersion]
+
+=head2 Versions => ArrayRef[L<Paws::S3::ObjectVersion>]
 
   
 

@@ -1,5 +1,5 @@
 
-package Paws::CognitoIdentity::UpdateIdentityPool {
+package Paws::CognitoIdentity::UpdateIdentityPool;
   use Moose;
   has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
   has DeveloperProviderName => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::CognitoIdentity::UpdateIdentityPool {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateIdentityPool');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoIdentity::IdentityPool');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +27,7 @@ This class represents the parameters used for calling the method UpdateIdentityP
 Amazon Cognito Identity service. Use the attributes of this class
 as arguments to method UpdateIdentityPool.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to UpdateIdentityPool.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateIdentityPool.
 
 As an example:
 
@@ -38,95 +37,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> AllowUnauthenticatedIdentities => Bool
 
-  
-
-TRUE if the identity pool supports unauthenticated logins.
-
-
-
-
-
-
-
-
+  TRUE if the identity pool supports unauthenticated logins.
 
 
 =head2 DeveloperProviderName => Str
 
-  
-
-The "domain" by which Cognito will refer to your users.
-
-
-
-
-
-
-
-
+  The "domain" by which Cognito will refer to your users.
 
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  
-
-An identity pool ID in the format REGION:GUID.
-
-
-
-
-
-
-
-
+  An identity pool ID in the format REGION:GUID.
 
 
 =head2 B<REQUIRED> IdentityPoolName => Str
 
-  
-
-A string that you provide.
-
-
-
-
-
-
-
-
+  A string that you provide.
 
 
 =head2 OpenIdConnectProviderARNs => ArrayRef[Str]
 
-  
-
-A list of OpendID Connect provider ARNs.
+  A list of OpendID Connect provider ARNs.
 
 
+=head2 SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>
 
-
-
-
-
-
-
-
-=head2 SupportedLoginProviders => Paws::CognitoIdentity::IdentityProviders
-
-  
-
-Optional key:value pairs mapping provider names to provider app IDs.
-
-
-
-
-
-
-
-
-
+  Optional key:value pairs mapping provider names to provider app IDs.
 
 
 

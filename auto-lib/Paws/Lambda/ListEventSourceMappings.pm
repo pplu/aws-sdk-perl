@@ -1,5 +1,5 @@
 
-package Paws::Lambda::ListEventSourceMappings {
+package Paws::Lambda::ListEventSourceMappings;
   use Moose;
   has EventSourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'EventSourceArn' );
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FunctionName' );
@@ -13,7 +13,6 @@ package Paws::Lambda::ListEventSourceMappings {
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::ListEventSourceMappingsResponse');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListEventSourceMappingsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +27,7 @@ This class represents the parameters used for calling the method ListEventSource
 AWS Lambda service. Use the attributes of this class
 as arguments to method ListEventSourceMappings.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ListEventSourceMappings.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListEventSourceMappings.
 
 As an example:
 
@@ -38,26 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 EventSourceArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon Kinesis stream.
-
-
-
-
-
-
-
-
+  The Amazon Resource Name (ARN) of the Amazon Kinesis stream.
 
 
 =head2 FunctionName => Str
 
-  
-
-The name of the Lambda function.
+  The name of the Lambda function.
 
 You can specify an unqualified function name (for example, "Thumbnail")
 or you can specify Amazon Resource Name (ARN) of the function (for
@@ -68,46 +56,17 @@ applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
 
-
-
-
-
-
-
-
-
 =head2 Marker => Str
 
-  
-
-Optional string. An opaque pagination token returned from a previous
+  Optional string. An opaque pagination token returned from a previous
 C<ListEventSourceMappings> operation. If present, specifies to continue
 the list from where the returning call left off.
 
 
-
-
-
-
-
-
-
-
 =head2 MaxItems => Int
 
-  
-
-Optional integer. Specifies the maximum number of event sources to
+  Optional integer. Specifies the maximum number of event sources to
 return in response. This value must be greater than 0.
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,5 +1,5 @@
 
-package Paws::DS::ConnectDirectory {
+package Paws::DS::ConnectDirectory;
   use Moose;
   has ConnectSettings => (is => 'ro', isa => 'Paws::DS::DirectoryConnectSettings', required => 1);
   has Description => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::DS::ConnectDirectory {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ConnectDirectory');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DS::ConnectDirectoryResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +27,7 @@ This class represents the parameters used for calling the method ConnectDirector
 AWS Directory Service service. Use the attributes of this class
 as arguments to method ConnectDirectory.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to ConnectDirectory.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ConnectDirectory.
 
 As an example:
 
@@ -38,97 +37,37 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> ConnectSettings => Paws::DS::DirectoryConnectSettings
 
-  
+=head2 B<REQUIRED> ConnectSettings => L<Paws::DS::DirectoryConnectSettings>
 
-A DirectoryConnectSettings object that contains additional information
+  A DirectoryConnectSettings object that contains additional information
 for the operation.
-
-
-
-
-
-
-
-
 
 
 =head2 Description => Str
 
-  
-
-A textual description for the directory.
-
-
-
-
-
-
-
-
+  A textual description for the directory.
 
 
 =head2 B<REQUIRED> Name => Str
 
-  
-
-The fully-qualified name of the on-premises directory, such as
+  The fully-qualified name of the on-premises directory, such as
 C<corp.example.com>.
-
-
-
-
-
-
-
-
 
 
 =head2 B<REQUIRED> Password => Str
 
-  
-
-The password for the on-premises user account.
-
-
-
-
-
-
-
-
+  The password for the on-premises user account.
 
 
 =head2 ShortName => Str
 
-  
-
-The NetBIOS name of the on-premises directory, such as C<CORP>.
-
-
-
-
-
-
-
-
+  The NetBIOS name of the on-premises directory, such as C<CORP>.
 
 
 =head2 B<REQUIRED> Size => Str
 
-  
-
-The size of the directory.
-
-
-
-
-
-
-
-
-
+  The size of the directory.
 
 
 

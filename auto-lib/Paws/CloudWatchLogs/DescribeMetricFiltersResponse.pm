@@ -1,10 +1,9 @@
 
-package Paws::CloudWatchLogs::DescribeMetricFiltersResponse {
+package Paws::CloudWatchLogs::DescribeMetricFiltersResponse;
   use Moose;
-  has metricFilters => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricFilter]');
-  has nextToken => (is => 'ro', isa => 'Str');
+  has MetricFilters => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatchLogs::MetricFilter]', traits => ['Unwrapped'], xmlname => 'metricFilters' );
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
 
-}
 
 ### main pod documentation begin ###
 
@@ -14,10 +13,12 @@ Paws::CloudWatchLogs::DescribeMetricFiltersResponse
 
 =head1 ATTRIBUTES
 
-=head2 metricFilters => ArrayRef[Paws::CloudWatchLogs::MetricFilter]
+
+=head2 MetricFilters => ArrayRef[L<Paws::CloudWatchLogs::MetricFilter>]
 
   
-=head2 nextToken => Str
+
+=head2 NextToken => Str
 
   
 

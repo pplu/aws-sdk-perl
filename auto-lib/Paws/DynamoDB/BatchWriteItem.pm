@@ -1,5 +1,5 @@
 
-package Paws::DynamoDB::BatchWriteItem {
+package Paws::DynamoDB::BatchWriteItem;
   use Moose;
   has RequestItems => (is => 'ro', isa => 'Paws::DynamoDB::BatchWriteItemRequestMap', required => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
@@ -10,7 +10,6 @@ package Paws::DynamoDB::BatchWriteItem {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'BatchWriteItem');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DynamoDB::BatchWriteItemOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method BatchWriteItem 
 Amazon DynamoDB service. Use the attributes of this class
 as arguments to method BatchWriteItem.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to BatchWriteItem.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to BatchWriteItem.
 
 As an example:
 
@@ -35,11 +34,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> RequestItems => Paws::DynamoDB::BatchWriteItemRequestMap
 
-  
+=head2 B<REQUIRED> RequestItems => L<Paws::DynamoDB::BatchWriteItemRequestMap>
 
-A map of one or more table names and, for each table, a list of
+  A map of one or more table names and, for each table, a list of
 operations to be performed (I<DeleteRequest> or I<PutRequest>). Each
 element in the map consists of the following:
 
@@ -90,34 +88,17 @@ table's attribute definition.
 
 
 
-
-
-
-
-
-
-
 =head2 ReturnConsumedCapacity => Str
 
   
 
+
 =head2 ReturnItemCollectionMetrics => Str
 
-  
-
-Determines whether item collection metrics are returned. If set to
+  Determines whether item collection metrics are returned. If set to
 C<SIZE>, the response includes statistics about item collections, if
 any, that were modified during the operation are returned in the
 response. If set to C<NONE> (the default), no statistics are returned.
-
-
-
-
-
-
-
-
-
 
 
 

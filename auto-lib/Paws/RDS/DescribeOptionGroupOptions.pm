@@ -1,5 +1,5 @@
 
-package Paws::RDS::DescribeOptionGroupOptions {
+package Paws::RDS::DescribeOptionGroupOptions;
   use Moose;
   has EngineName => (is => 'ro', isa => 'Str', required => 1);
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
@@ -12,7 +12,6 @@ package Paws::RDS::DescribeOptionGroupOptions {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupOptions');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::OptionGroupOptionsMessage');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeOptionGroupOptionsResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +26,7 @@ This class represents the parameters used for calling the method DescribeOptionG
 Amazon Relational Database Service service. Use the attributes of this class
 as arguments to method DescribeOptionGroupOptions.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeOptionGroupOptions.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeOptionGroupOptions.
 
 As an example:
 
@@ -37,75 +36,34 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 B<REQUIRED> EngineName => Str
 
-  
-
-A required parameter. Options available for the given engine name will
+  A required parameter. Options available for the given engine name will
 be described.
 
 
+=head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-
-
-
-
-
-
-
-=head2 Filters => ArrayRef[Paws::RDS::Filter]
-
-  
-
-This parameter is not currently supported.
-
-
-
-
-
-
-
-
+  This parameter is not currently supported.
 
 
 =head2 MajorEngineVersion => Str
 
-  
-
-If specified, filters the results to include only options for the
+  If specified, filters the results to include only options for the
 specified major engine version.
-
-
-
-
-
-
-
-
 
 
 =head2 Marker => Str
 
-  
-
-An optional pagination token provided by a previous request. If this
+  An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
 
-
-
-
-
-
-
-
-
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of records to include in the response. If more
+  The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
 results can be retrieved.
@@ -113,15 +71,6 @@ results can be retrieved.
 Default: 100
 
 Constraints: Minimum 20, maximum 100.
-
-
-
-
-
-
-
-
-
 
 
 

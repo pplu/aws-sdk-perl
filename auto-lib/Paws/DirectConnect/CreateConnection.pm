@@ -1,16 +1,15 @@
 
-package Paws::DirectConnect::CreateConnection {
+package Paws::DirectConnect::CreateConnection;
   use Moose;
-  has bandwidth => (is => 'ro', isa => 'Str', required => 1);
-  has connectionName => (is => 'ro', isa => 'Str', required => 1);
-  has location => (is => 'ro', isa => 'Str', required => 1);
+  has Bandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bandwidth' , required => 1);
+  has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' , required => 1);
+  has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateConnection');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::DirectConnect::Connection');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +24,7 @@ This class represents the parameters used for calling the method CreateConnectio
 AWS Direct Connect service. Use the attributes of this class
 as arguments to method CreateConnection.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateConnection.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateConnection.
 
 As an example:
 
@@ -35,15 +34,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> bandwidth => Str
+
+=head2 B<REQUIRED> Bandwidth => Str
 
   
 
-=head2 B<REQUIRED> connectionName => Str
+
+=head2 B<REQUIRED> ConnectionName => Str
 
   
 
-=head2 B<REQUIRED> location => Str
+
+=head2 B<REQUIRED> Location => Str
 
   
 

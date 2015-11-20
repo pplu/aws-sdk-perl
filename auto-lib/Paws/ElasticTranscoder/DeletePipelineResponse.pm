@@ -1,8 +1,7 @@
 
-package Paws::ElasticTranscoder::DeletePipelineResponse {
+package Paws::ElasticTranscoder::DeletePipelineResponse;
   use Moose;
 
-}
 1;
 
 ### main pod documentation begin ###

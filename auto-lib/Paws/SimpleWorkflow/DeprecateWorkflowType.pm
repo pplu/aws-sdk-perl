@@ -1,15 +1,14 @@
 
-package Paws::SimpleWorkflow::DeprecateWorkflowType {
+package Paws::SimpleWorkflow::DeprecateWorkflowType;
   use Moose;
-  has domain => (is => 'ro', isa => 'Str', required => 1);
-  has workflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', required => 1);
+  has Domain => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domain' , required => 1);
+  has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', traits => ['NameInRequest'], request_name => 'workflowType' , required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeprecateWorkflowType');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method DeprecateWorkfl
 Amazon Simple Workflow Service service. Use the attributes of this class
 as arguments to method DeprecateWorkflowType.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DeprecateWorkflowType.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DeprecateWorkflowType.
 
 As an example:
 
@@ -34,35 +33,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
-=head2 B<REQUIRED> domain => Str
 
-  
+=head2 B<REQUIRED> Domain => Str
 
-The name of the domain in which the workflow type is registered.
-
+  The name of the domain in which the workflow type is registered.
 
 
+=head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
-
-
-
-
-
-
-=head2 B<REQUIRED> workflowType => Paws::SimpleWorkflow::WorkflowType
-
-  
-
-The workflow type to deprecate.
-
-
-
-
-
-
-
-
-
+  The workflow type to deprecate.
 
 
 

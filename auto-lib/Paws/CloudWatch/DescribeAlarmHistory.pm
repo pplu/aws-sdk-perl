@@ -1,5 +1,5 @@
 
-package Paws::CloudWatch::DescribeAlarmHistory {
+package Paws::CloudWatch::DescribeAlarmHistory;
   use Moose;
   has AlarmName => (is => 'ro', isa => 'Str');
   has EndDate => (is => 'ro', isa => 'Str');
@@ -13,7 +13,6 @@ package Paws::CloudWatch::DescribeAlarmHistory {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DescribeAlarmHistory');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudWatch::DescribeAlarmHistoryOutput');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeAlarmHistoryResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +27,7 @@ This class represents the parameters used for calling the method DescribeAlarmHi
 Amazon CloudWatch service. Use the attributes of this class
 as arguments to method DescribeAlarmHistory.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAlarmHistory.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to DescribeAlarmHistory.
 
 As an example:
 
@@ -38,96 +37,36 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AlarmName => Str
 
-  
-
-The name of the alarm.
-
-
-
-
-
-
-
-
+  The name of the alarm.
 
 
 =head2 EndDate => Str
 
-  
-
-The ending date to retrieve alarm history.
-
-
-
-
-
-
-
-
+  The ending date to retrieve alarm history.
 
 
 =head2 HistoryItemType => Str
 
-  
-
-The type of alarm histories to retrieve.
-
-
-
-
-
-
-
-
+  The type of alarm histories to retrieve.
 
 
 =head2 MaxRecords => Int
 
-  
-
-The maximum number of alarm history records to retrieve.
-
-
-
-
-
-
-
-
+  The maximum number of alarm history records to retrieve.
 
 
 =head2 NextToken => Str
 
-  
-
-The token returned by a previous call to indicate that there is more
+  The token returned by a previous call to indicate that there is more
 data available.
-
-
-
-
-
-
-
-
 
 
 =head2 StartDate => Str
 
-  
-
-The starting date to retrieve alarm history.
-
-
-
-
-
-
-
-
-
+  The starting date to retrieve alarm history.
 
 
 

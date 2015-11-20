@@ -1,5 +1,5 @@
 
-package Paws::ElastiCache::CreateCacheCluster {
+package Paws::ElastiCache::CreateCacheCluster;
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AZMode => (is => 'ro', isa => 'Str');
@@ -29,7 +29,6 @@ package Paws::ElastiCache::CreateCacheCluster {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateCacheCluster');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElastiCache::CreateCacheClusterResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateCacheClusterResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +43,7 @@ This class represents the parameters used for calling the method CreateCacheClus
 Amazon ElastiCache service. Use the attributes of this class
 as arguments to method CreateCacheCluster.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateCacheCluster.
 
 As an example:
 
@@ -54,26 +53,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 AutoMinorVersionUpgrade => Bool
 
-  
-
-This parameter is currently disabled.
-
-
-
-
-
-
-
-
+  This parameter is currently disabled.
 
 
 =head2 AZMode => Str
 
-  
-
-Specifies whether the nodes in this Memcached node group are created in
+  Specifies whether the nodes in this Memcached node group are created in
 a single Availability Zone or created across multiple Availability
 Zones in the cluster's region.
 
@@ -83,19 +71,9 @@ If the C<AZMode> and C<PreferredAvailabilityZones> are not specified,
 ElastiCache assumes C<single-az> mode.
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> CacheClusterId => Str
 
-  
-
-The node group identifier. This parameter is stored as a lowercase
+  The node group identifier. This parameter is stored as a lowercase
 string.
 
 Constraints:
@@ -114,18 +92,9 @@ hyphens.
 
 
 
-
-
-
-
-
-
-
 =head2 CacheNodeType => Str
 
-  
-
-The compute and memory capacity of the nodes in the node group.
+  The compute and memory capacity of the nodes in the node group.
 
 Valid node types are as follows:
 
@@ -180,126 +149,56 @@ Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
 
-
-
-
-
-
-
-
-
 =head2 CacheParameterGroupName => Str
 
-  
-
-The name of the parameter group to associate with this cache cluster.
+  The name of the parameter group to associate with this cache cluster.
 If this argument is omitted, the default parameter group for the
 specified engine is used.
 
 
-
-
-
-
-
-
-
-
 =head2 CacheSecurityGroupNames => ArrayRef[Str]
 
-  
-
-A list of security group names to associate with this cache cluster.
+  A list of security group names to associate with this cache cluster.
 
 Use this parameter only when you are creating a cache cluster outside
 of an Amazon Virtual Private Cloud (VPC).
 
 
-
-
-
-
-
-
-
-
 =head2 CacheSubnetGroupName => Str
 
-  
-
-The name of the subnet group to be used for the cache cluster.
+  The name of the subnet group to be used for the cache cluster.
 
 Use this parameter only when you are creating a cache cluster in an
 Amazon Virtual Private Cloud (VPC).
 
 
-
-
-
-
-
-
-
-
 =head2 Engine => Str
 
-  
-
-The name of the cache engine to be used for this cache cluster.
+  The name of the cache engine to be used for this cache cluster.
 
 Valid values for this parameter are:
 
 C<memcached> | C<redis>
 
 
-
-
-
-
-
-
-
-
 =head2 EngineVersion => Str
 
-  
-
-The version number of the cache engine to be used for this cache
+  The version number of the cache engine to be used for this cache
 cluster. To view the supported cache engine versions, use the
 I<DescribeCacheEngineVersions> action.
 
 
-
-
-
-
-
-
-
-
 =head2 NotificationTopicArn => Str
 
-  
-
-The Amazon Resource Name (ARN) of the Amazon Simple Notification
+  The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) topic to which notifications will be sent.
 
 The Amazon SNS topic owner must be the same as the cache cluster owner.
 
 
-
-
-
-
-
-
-
-
 =head2 NumCacheNodes => Int
 
-  
-
-The initial number of cache nodes that the cache cluster will have.
+  The initial number of cache nodes that the cache cluster will have.
 
 For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
@@ -309,35 +208,15 @@ out the ElastiCache Limit Increase Request form at
 http://aws.amazon.com/contact-us/elasticache-node-limit-request/.
 
 
-
-
-
-
-
-
-
-
 =head2 Port => Int
 
-  
-
-The port number on which each of the cache nodes will accept
+  The port number on which each of the cache nodes will accept
 connections.
-
-
-
-
-
-
-
-
 
 
 =head2 PreferredAvailabilityZone => Str
 
-  
-
-The EC2 Availability Zone in which the cache cluster will be created.
+  The EC2 Availability Zone in which the cache cluster will be created.
 
 All nodes belonging to this Memcached cache cluster are placed in the
 preferred Availability Zone. If you want to create your nodes across
@@ -346,19 +225,9 @@ multiple Availability Zones, use C<PreferredAvailabilityZones>.
 Default: System chosen Availability Zone.
 
 
-
-
-
-
-
-
-
-
 =head2 PreferredAvailabilityZones => ArrayRef[Str]
 
-  
-
-A list of the Availability Zones in which cache nodes will be created.
+  A list of the Availability Zones in which cache nodes will be created.
 The order of the zones in the list is not important.
 
 This option is only supported on Memcached.
@@ -384,19 +253,9 @@ Example: All three Memcached nodes in one Availability Zone:
 C<PreferredAvailabilityZones.member.1=us-west-2a&PreferredAvailabilityZones.member.2=us-west-2a&PreferredAvailabilityZones.member.3=us-west-2a>
 
 
-
-
-
-
-
-
-
-
 =head2 PreferredMaintenanceWindow => Str
 
-  
-
-Specifies the weekly time range during which maintenance on the cache
+  Specifies the weekly time range during which maintenance on the cache
 cluster is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
 is a 60 minute period. Valid values for C<ddd> are:
@@ -422,19 +281,9 @@ is a 60 minute period. Valid values for C<ddd> are:
 Example: C<sun:05:00-sun:09:00>
 
 
-
-
-
-
-
-
-
-
 =head2 ReplicationGroupId => Str
 
-  
-
-The ID of the replication group to which this cache cluster should
+  The ID of the replication group to which this cache cluster should
 belong. If this parameter is specified, the cache cluster will be added
 to the specified replication group as a read replica; otherwise, the
 cache cluster will be a standalone primary that is not part of any
@@ -449,37 +298,17 @@ B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.
 
 
-
-
-
-
-
-
-
-
 =head2 SecurityGroupIds => ArrayRef[Str]
 
-  
-
-One or more VPC security groups associated with the cache cluster.
+  One or more VPC security groups associated with the cache cluster.
 
 Use this parameter only when you are creating a cache cluster in an
 Amazon Virtual Private Cloud (VPC).
 
 
-
-
-
-
-
-
-
-
 =head2 SnapshotArns => ArrayRef[Str]
 
-  
-
-A single-element string list containing an Amazon Resource Name (ARN)
+  A single-element string list containing an Amazon Resource Name (ARN)
 that uniquely identifies a Redis RDB snapshot file stored in Amazon S3.
 The snapshot file will be used to populate the node group. The Amazon
 S3 object name in the ARN cannot contain any commas.
@@ -490,19 +319,9 @@ C<redis>.
 Example of an Amazon S3 ARN: C<arn:aws:s3:::my_bucket/snapshot1.rdb>
 
 
-
-
-
-
-
-
-
-
 =head2 SnapshotName => Str
 
-  
-
-The name of a snapshot from which to restore data into the new node
+  The name of a snapshot from which to restore data into the new node
 group. The snapshot status changes to C<restoring> while the new node
 group is being created.
 
@@ -510,19 +329,9 @@ B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.
 
 
-
-
-
-
-
-
-
-
 =head2 SnapshotRetentionLimit => Int
 
-  
-
-The number of days for which ElastiCache will retain automatic
+  The number of days for which ElastiCache will retain automatic
 snapshots before deleting them. For example, if you set
 C<SnapshotRetentionLimit> to 5, then a snapshot that was taken today
 will be retained for 5 days before being deleted.
@@ -534,19 +343,9 @@ Default: 0 (i.e., automatic backups are disabled for this cache
 cluster).
 
 
-
-
-
-
-
-
-
-
 =head2 SnapshotWindow => Str
 
-  
-
-The daily time range (in UTC) during which ElastiCache will begin
+  The daily time range (in UTC) during which ElastiCache will begin
 taking a daily snapshot of your node group.
 
 Example: C<05:00-09:00>
@@ -558,29 +357,10 @@ B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.
 
 
+=head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 
-
-
-
-
-
-
-
-=head2 Tags => ArrayRef[Paws::ElastiCache::Tag]
-
-  
-
-A list of cost allocation tags to be added to this resource. A tag is a
+  A list of cost allocation tags to be added to this resource. A tag is a
 key-value pair. A tag key must be accompanied by a tag value.
-
-
-
-
-
-
-
-
-
 
 
 

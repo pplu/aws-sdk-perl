@@ -1,5 +1,5 @@
 
-package Paws::RedShift::PurchaseReservedNodeOffering {
+package Paws::RedShift::PurchaseReservedNodeOffering;
   use Moose;
   has NodeCount => (is => 'ro', isa => 'Int');
   has ReservedNodeOfferingId => (is => 'ro', isa => 'Str', required => 1);
@@ -9,7 +9,6 @@ package Paws::RedShift::PurchaseReservedNodeOffering {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOffering');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RedShift::PurchaseReservedNodeOfferingResult');
   class_has _result_key => (isa => 'Str', is => 'ro', default => 'PurchaseReservedNodeOfferingResult');
-}
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +23,7 @@ This class represents the parameters used for calling the method PurchaseReserve
 Amazon Redshift service. Use the attributes of this class
 as arguments to method PurchaseReservedNodeOffering.
 
-You shouln't make instances of this class. Each attribute should be used as a named argument in the call to PurchaseReservedNodeOffering.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to PurchaseReservedNodeOffering.
 
 As an example:
 
@@ -34,38 +33,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head1 ATTRIBUTES
 
+
 =head2 NodeCount => Int
 
-  
-
-The number of reserved nodes you want to purchase.
+  The number of reserved nodes you want to purchase.
 
 Default: C<1>
 
 
-
-
-
-
-
-
-
-
 =head2 B<REQUIRED> ReservedNodeOfferingId => Str
 
-  
-
-The unique identifier of the reserved node offering you want to
+  The unique identifier of the reserved node offering you want to
 purchase.
-
-
-
-
-
-
-
-
-
 
 
 
