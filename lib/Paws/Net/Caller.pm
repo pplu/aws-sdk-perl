@@ -34,7 +34,7 @@ package Paws::Net::Caller {
       max_tries => $service->max_attempts
     );
 
-    while ($tracker->still_has_retries) {
+    while (not $tracker->return and $tracker->can_retry) {
       $tracker->one_more_try;
 
       my $response = $self->ua->request(
