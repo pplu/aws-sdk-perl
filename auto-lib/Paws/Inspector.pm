@@ -225,7 +225,7 @@ For more information, see Amazon Inspector User Guide.
 
 =head1 METHODS
 
-=head2 AddAttributesToFindings([Attributes => ArrayRef[L<Paws::Inspector::Attribute>], FindingArns => ArrayRef[Str]])
+=head2 AddAttributesToFindings(Attributes => ArrayRef[L<Paws::Inspector::Attribute>], FindingArns => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::Inspector::AddAttributesToFindings>
 
@@ -235,7 +235,7 @@ Returns: a L<Paws::Inspector::AddAttributesToFindingsResponse> instance
 the findings' ARNs.
 
 
-=head2 AttachAssessmentAndRulesPackage([AssessmentArn => Str, RulesPackageArn => Str])
+=head2 AttachAssessmentAndRulesPackage(AssessmentArn => Str, RulesPackageArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::AttachAssessmentAndRulesPackage>
 
@@ -245,7 +245,7 @@ Returns: a L<Paws::Inspector::AttachAssessmentAndRulesPackageResponse> instance
 assessment specified by the assessment ARN.
 
 
-=head2 CreateApplication([ApplicationName => Str, ResourceGroupArn => Str])
+=head2 CreateApplication(ApplicationName => Str, ResourceGroupArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::CreateApplication>
 
@@ -257,7 +257,7 @@ account. You can run up to 500 concurrent agents per AWS account. For
 more information, see Inspector Applications.
 
 
-=head2 CreateAssessment([ApplicationArn => Str, AssessmentName => Str, DurationInSeconds => Int, UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]])
+=head2 CreateAssessment(ApplicationArn => Str, AssessmentName => Str, DurationInSeconds => Int, [UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]])
 
 Each argument is described in detail in: L<Paws::Inspector::CreateAssessment>
 
@@ -267,7 +267,7 @@ Returns: a L<Paws::Inspector::CreateAssessmentResponse> instance
 ARN. You can create up to 500 assessments per AWS account.
 
 
-=head2 CreateResourceGroup([ResourceGroupTags => Str])
+=head2 CreateResourceGroup(ResourceGroupTags => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::CreateResourceGroup>
 
@@ -279,7 +279,7 @@ Inspector application. The created resource group is then used to
 create an Inspector application.
 
 
-=head2 DeleteApplication([ApplicationArn => Str])
+=head2 DeleteApplication(ApplicationArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::DeleteApplication>
 
@@ -288,7 +288,7 @@ Returns: a L<Paws::Inspector::DeleteApplicationResponse> instance
   Deletes the application specified by the application ARN.
 
 
-=head2 DeleteAssessment([AssessmentArn => Str])
+=head2 DeleteAssessment(AssessmentArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::DeleteAssessment>
 
@@ -297,7 +297,7 @@ Returns: a L<Paws::Inspector::DeleteAssessmentResponse> instance
   Deletes the assessment specified by the assessment ARN.
 
 
-=head2 DeleteRun([RunArn => Str])
+=head2 DeleteRun(RunArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::DeleteRun>
 
@@ -306,7 +306,7 @@ Returns: a L<Paws::Inspector::DeleteRunResponse> instance
   Deletes the assessment run specified by the run ARN.
 
 
-=head2 DescribeApplication([ApplicationArn => Str])
+=head2 DescribeApplication(ApplicationArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeApplication>
 
@@ -315,7 +315,7 @@ Returns: a L<Paws::Inspector::DescribeApplicationResponse> instance
   Describes the application specified by the application ARN.
 
 
-=head2 DescribeAssessment([AssessmentArn => Str])
+=head2 DescribeAssessment(AssessmentArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeAssessment>
 
@@ -334,7 +334,7 @@ Returns: a L<Paws::Inspector::DescribeCrossAccountAccessRoleResponse> instance
 account.
 
 
-=head2 DescribeFinding([FindingArn => Str])
+=head2 DescribeFinding(FindingArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeFinding>
 
@@ -343,7 +343,7 @@ Returns: a L<Paws::Inspector::DescribeFindingResponse> instance
   Describes the finding specified by the finding ARN.
 
 
-=head2 DescribeResourceGroup([ResourceGroupArn => Str])
+=head2 DescribeResourceGroup(ResourceGroupArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeResourceGroup>
 
@@ -352,7 +352,7 @@ Returns: a L<Paws::Inspector::DescribeResourceGroupResponse> instance
   Describes the resource group specified by the resource group ARN.
 
 
-=head2 DescribeRulesPackage([RulesPackageArn => Str])
+=head2 DescribeRulesPackage(RulesPackageArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeRulesPackage>
 
@@ -361,7 +361,7 @@ Returns: a L<Paws::Inspector::DescribeRulesPackageResponse> instance
   Describes the rules package specified by the rules package ARN.
 
 
-=head2 DescribeRun([RunArn => Str])
+=head2 DescribeRun(RunArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::DescribeRun>
 
@@ -370,7 +370,7 @@ Returns: a L<Paws::Inspector::DescribeRunResponse> instance
   Describes the assessment run specified by the run ARN.
 
 
-=head2 DetachAssessmentAndRulesPackage([AssessmentArn => Str, RulesPackageArn => Str])
+=head2 DetachAssessmentAndRulesPackage(AssessmentArn => Str, RulesPackageArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::DetachAssessmentAndRulesPackage>
 
@@ -380,7 +380,7 @@ Returns: a L<Paws::Inspector::DetachAssessmentAndRulesPackageResponse> instance
 assessment specified by the assessment ARN.
 
 
-=head2 GetAssessmentTelemetry([AssessmentArn => Str])
+=head2 GetAssessmentTelemetry(AssessmentArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::GetAssessmentTelemetry>
 
@@ -400,7 +400,7 @@ Returns: a L<Paws::Inspector::ListApplicationsResponse> instance
 information about applications, see Inspector Applications.
 
 
-=head2 ListAssessmentAgents([AssessmentArn => Str, Filter => L<Paws::Inspector::AgentsFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentAgents(AssessmentArn => Str, [Filter => L<Paws::Inspector::AgentsFilter>, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListAssessmentAgents>
 
@@ -419,7 +419,7 @@ Returns: a L<Paws::Inspector::ListAssessmentsResponse> instance
 applications' ARNs.
 
 
-=head2 ListAttachedAssessments([Filter => L<Paws::Inspector::AssessmentsFilter>, MaxResults => Int, NextToken => Str, RulesPackageArn => Str])
+=head2 ListAttachedAssessments(RulesPackageArn => Str, [Filter => L<Paws::Inspector::AssessmentsFilter>, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListAttachedAssessments>
 
@@ -429,7 +429,7 @@ Returns: a L<Paws::Inspector::ListAttachedAssessmentsResponse> instance
 rules package ARN.
 
 
-=head2 ListAttachedRulesPackages([AssessmentArn => Str, MaxResults => Int, NextToken => Str])
+=head2 ListAttachedRulesPackages(AssessmentArn => Str, [MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListAttachedRulesPackages>
 
@@ -468,7 +468,7 @@ Returns: a L<Paws::Inspector::ListRunsResponse> instance
 the assessment ARNs.
 
 
-=head2 ListTagsForResource([ResourceArn => Str])
+=head2 ListTagsForResource(ResourceArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::ListTagsForResource>
 
@@ -477,7 +477,7 @@ Returns: a L<Paws::Inspector::ListTagsForResourceResponse> instance
   Lists all tags associated with a resource.
 
 
-=head2 LocalizeText([Locale => Str, LocalizedTexts => ArrayRef[L<Paws::Inspector::LocalizedText>]])
+=head2 LocalizeText(Locale => Str, LocalizedTexts => ArrayRef[L<Paws::Inspector::LocalizedText>])
 
 Each argument is described in detail in: L<Paws::Inspector::LocalizeText>
 
@@ -487,7 +487,7 @@ Returns: a L<Paws::Inspector::LocalizeTextResponse> instance
 specified locale.
 
 
-=head2 PreviewAgentsForResourceGroup([MaxResults => Int, NextToken => Str, ResourceGroupArn => Str])
+=head2 PreviewAgentsForResourceGroup(ResourceGroupArn => Str, [MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::PreviewAgentsForResourceGroup>
 
@@ -497,7 +497,7 @@ Returns: a L<Paws::Inspector::PreviewAgentsForResourceGroupResponse> instance
 the application created with the specified resource group.
 
 
-=head2 RegisterCrossAccountAccessRole([RoleArn => Str])
+=head2 RegisterCrossAccountAccessRole(RoleArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::RegisterCrossAccountAccessRole>
 
@@ -507,7 +507,7 @@ Returns: a L<Paws::Inspector::RegisterCrossAccountAccessRoleResponse> instance
 the assessment.
 
 
-=head2 RemoveAttributesFromFindings([AttributeKeys => ArrayRef[Str], FindingArns => ArrayRef[Str]])
+=head2 RemoveAttributesFromFindings(AttributeKeys => ArrayRef[Str], FindingArns => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::Inspector::RemoveAttributesFromFindings>
 
@@ -518,7 +518,7 @@ specified by the finding ARNs where an attribute with the specified key
 exists.
 
 
-=head2 RunAssessment([AssessmentArn => Str, RunName => Str])
+=head2 RunAssessment(AssessmentArn => Str, RunName => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::RunAssessment>
 
@@ -529,7 +529,7 @@ selected rule packages for the assessment specified by the assessment
 ARN.
 
 
-=head2 SetTagsForResource([ResourceArn => Str, Tags => ArrayRef[L<Paws::Inspector::Tag>]])
+=head2 SetTagsForResource(ResourceArn => Str, [Tags => ArrayRef[L<Paws::Inspector::Tag>]])
 
 Each argument is described in detail in: L<Paws::Inspector::SetTagsForResource>
 
@@ -539,7 +539,7 @@ Returns: a L<Paws::Inspector::SetTagsForResourceResponse> instance
 assessment ARN.
 
 
-=head2 StartDataCollection([AssessmentArn => Str])
+=head2 StartDataCollection(AssessmentArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::StartDataCollection>
 
@@ -550,7 +550,7 @@ ARN. For this API to function properly, you must not exceed the limit
 of running up to 500 concurrent agents per AWS account.
 
 
-=head2 StopDataCollection([AssessmentArn => Str])
+=head2 StopDataCollection(AssessmentArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::StopDataCollection>
 
@@ -560,7 +560,7 @@ Returns: a L<Paws::Inspector::StopDataCollectionResponse> instance
 ARN.
 
 
-=head2 UpdateApplication([ApplicationArn => Str, ApplicationName => Str, ResourceGroupArn => Str])
+=head2 UpdateApplication(ApplicationArn => Str, ApplicationName => Str, ResourceGroupArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::UpdateApplication>
 
@@ -569,7 +569,7 @@ Returns: a L<Paws::Inspector::UpdateApplicationResponse> instance
   Updates application specified by the application ARN.
 
 
-=head2 UpdateAssessment([AssessmentArn => Str, AssessmentName => Str, DurationInSeconds => Int])
+=head2 UpdateAssessment(AssessmentArn => Str, AssessmentName => Str, DurationInSeconds => Int)
 
 Each argument is described in detail in: L<Paws::Inspector::UpdateAssessment>
 

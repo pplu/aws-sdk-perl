@@ -1,7 +1,7 @@
 
 package Paws::Inspector::RegisterCrossAccountAccessRole;
   use Moose;
-  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' );
+  has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 RoleArn => Str
+=head2 B<REQUIRED> RoleArn => Str
 
   The ARN of the IAM role that Inspector uses to list your EC2 instances
 during the assessment.

@@ -1,8 +1,8 @@
 
 package Paws::Inspector::RemoveAttributesFromFindings;
   use Moose;
-  has AttributeKeys => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'attributeKeys' );
-  has FindingArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'findingArns' );
+  has AttributeKeys => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'attributeKeys' , required => 1);
+  has FindingArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'findingArns' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,13 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributeKeys => ArrayRef[Str]
+=head2 B<REQUIRED> AttributeKeys => ArrayRef[Str]
 
   The array of attribute keys that you want to remove from specified
 findings.
 
 
-=head2 FindingArns => ArrayRef[Str]
+=head2 B<REQUIRED> FindingArns => ArrayRef[Str]
 
   The ARNs specifying the findings that you want to remove attributes
 from.

@@ -1,9 +1,9 @@
 
 package Paws::Inspector::CreateAssessment;
   use Moose;
-  has ApplicationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationArn' );
-  has AssessmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentName' );
-  has DurationInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'durationInSeconds' );
+  has ApplicationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationArn' , required => 1);
+  has AssessmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentName' , required => 1);
+  has DurationInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'durationInSeconds' , required => 1);
   has UserAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', traits => ['NameInRequest'], request_name => 'userAttributesForFindings' );
 
   use MooseX::ClassAttribute;
@@ -36,13 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationArn => Str
+=head2 B<REQUIRED> ApplicationArn => Str
 
   The ARN specifying the application for which you want to create an
 assessment.
 
 
-=head2 AssessmentName => Str
+=head2 B<REQUIRED> AssessmentName => Str
 
   The user-defined name identifying the assessment that you want to
 create. You can create several assessments for an application. The
@@ -50,7 +50,7 @@ names of the assessments corresponding to a particular application must
 be unique.
 
 
-=head2 DurationInSeconds => Int
+=head2 B<REQUIRED> DurationInSeconds => Int
 
   The duration of the assessment in seconds. The default value is 3600
 seconds (one hour). The maximum value is 86400 seconds (one day).

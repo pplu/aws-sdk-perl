@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeApplication;
   use Moose;
-  has ApplicationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationArn' );
+  has ApplicationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationArn => Str
+=head2 B<REQUIRED> ApplicationArn => Str
 
   The ARN specifying the application that you want to describe.
 

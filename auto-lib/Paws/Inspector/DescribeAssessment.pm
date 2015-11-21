@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeAssessment;
   use Moose;
-  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' );
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AssessmentArn => Str
+=head2 B<REQUIRED> AssessmentArn => Str
 
   The ARN specifying the assessment that you want to describe.
 

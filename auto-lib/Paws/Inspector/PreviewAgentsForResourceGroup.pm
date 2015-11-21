@@ -3,7 +3,7 @@ package Paws::Inspector::PreviewAgentsForResourceGroup;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' );
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -51,7 +51,7 @@ fill B<nextToken> in the request with the value of B<NextToken> from
 previous response to continue listing data.
 
 
-=head2 ResourceGroupArn => Str
+=head2 B<REQUIRED> ResourceGroupArn => Str
 
   The ARN of the resource group that is used to create an application.
 

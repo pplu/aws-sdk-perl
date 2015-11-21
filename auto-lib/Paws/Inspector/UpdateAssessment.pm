@@ -1,9 +1,9 @@
 
 package Paws::Inspector::UpdateAssessment;
   use Moose;
-  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' );
-  has AssessmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentName' );
-  has DurationInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'durationInSeconds' );
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' , required => 1);
+  has AssessmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentName' , required => 1);
+  has DurationInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'durationInSeconds' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,17 +35,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AssessmentArn => Str
+=head2 B<REQUIRED> AssessmentArn => Str
 
   Asessment ARN that you want to update.
 
 
-=head2 AssessmentName => Str
+=head2 B<REQUIRED> AssessmentName => Str
 
   Assessment name that you want to update.
 
 
-=head2 DurationInSeconds => Int
+=head2 B<REQUIRED> DurationInSeconds => Int
 
   Assessment duration in seconds that you want to update. The default
 value is 3600 seconds (one hour). The maximum value is 86400 seconds

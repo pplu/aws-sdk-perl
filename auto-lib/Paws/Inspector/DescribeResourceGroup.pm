@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeResourceGroup;
   use Moose;
-  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' );
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ResourceGroupArn => Str
+=head2 B<REQUIRED> ResourceGroupArn => Str
 
   The ARN specifying the resource group that you want to describe.
 
