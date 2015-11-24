@@ -4,6 +4,9 @@
  - RDS support for cross account snapshot sharing. New instance types too
  - Inspector API update
  - DeviceFarm API update
+ - EC2 API update: dedicated hosts
+ - ECS API update
+ - ElasticBeanstalk API update
 
 0.19 12 Nov 2015
  - Fix issues with POD documentation. Some head2 tags didn't have a newline above
