@@ -1,9 +1,11 @@
 
 package Paws::ElasticBeanstalk::UpdateEnvironment;
   use Moose;
+  has ApplicationName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
+  has GroupName => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
@@ -41,6 +43,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 ApplicationName => Str
+
+  The name of the application with which the environment is associated.
+
+
 =head2 Description => Str
 
   If this parameter is specified, AWS Elastic Beanstalk updates the
@@ -68,6 +75,14 @@ error.
 Condition: You must specify either this or an EnvironmentId, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
+
+
+=head2 GroupName => Str
+
+  The name of the group to which the target environment belongs. Specify
+a group name only if the environment's name is specified in an
+environment manifest and not with the environment name or environment
+ID parameters. See Environment Manifest (env.yaml) for details.
 
 
 =head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
