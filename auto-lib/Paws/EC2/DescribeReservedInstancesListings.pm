@@ -43,16 +43,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =item *
 
-C<reserved-instances-id> - The ID of the Reserved Instances.
+C<reserved-instances-id> - The ID of the Reserved instances.
 
 =item *
 
-C<reserved-instances-listing-id> - The ID of the Reserved Instances
+C<reserved-instances-listing-id> - The ID of the Reserved instances
 listing.
 
 =item *
 
-C<status> - The status of the Reserved Instance listing (C<pending> |
+C<status> - The status of the Reserved instance listing (C<pending> |
 C<active> | C<cancelled> | C<closed>).
 
 =item *
@@ -65,12 +65,12 @@ C<status-message> - The reason for the status.
 
 =head2 ReservedInstancesId => Str
 
-  One or more Reserved Instance IDs.
+  One or more Reserved instance IDs.
 
 
 =head2 ReservedInstancesListingId => Str
 
-  One or more Reserved Instance Listing IDs.
+  One or more Reserved instance Listing IDs.
 
 
 

@@ -125,7 +125,7 @@ charges apply when using an EBS Optimized instance.
 
 =head2 InstanceLifecycle => Str
 
-  Indicates whether this is a Spot Instance.
+  Indicates whether this is a Spot instance.
 
 
 =head2 InstanceType => Str

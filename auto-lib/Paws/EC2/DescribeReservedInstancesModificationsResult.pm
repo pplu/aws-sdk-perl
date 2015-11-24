@@ -22,7 +22,7 @@ C<null> when there are no more results to return.
 
 =head2 ReservedInstancesModifications => ArrayRef[L<Paws::EC2::ReservedInstancesModification>]
 
-  The Reserved Instance modification information.
+  The Reserved instance modification information.
 
 
 =cut

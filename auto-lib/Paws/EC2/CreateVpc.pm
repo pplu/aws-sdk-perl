@@ -58,6 +58,9 @@ VPC are launched as dedicated tenancy instances regardless of the
 tenancy assigned to the instance at launch. Dedicated tenancy instances
 run on single-tenant hardware.
 
+B<Important:> The C<host> value cannot be used with this parameter. Use
+the C<default> or C<dedicated> values only.
+
 Default: C<default>
 
 

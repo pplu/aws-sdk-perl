@@ -53,31 +53,31 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =item *
 
 C<availability-zone> - The Availability Zone where the Reserved
-Instance can be used.
+instance can be used.
 
 =item *
 
-C<duration> - The duration of the Reserved Instance (one year or three
+C<duration> - The duration of the Reserved instance (one year or three
 years), in seconds (C<31536000> | C<94608000>).
 
 =item *
 
-C<end> - The time when the Reserved Instance expires (for example,
+C<end> - The time when the Reserved instance expires (for example,
 2015-08-07T11:54:42.000Z).
 
 =item *
 
-C<fixed-price> - The purchase price of the Reserved Instance (for
+C<fixed-price> - The purchase price of the Reserved instance (for
 example, 9800.0).
 
 =item *
 
-C<instance-type> - The instance type on which the Reserved Instance can
+C<instance-type> - The instance type on which the Reserved instance can
 be used.
 
 =item *
 
-C<product-description> - The Reserved Instance product platform
+C<product-description> - The Reserved instance product platform
 description. Instances that include C<(Amazon VPC)> in the product
 platform description will only be displayed to EC2-Classic account
 holders and are for use with Amazon VPC. (C<Linux/UNIX> | C<Linux/UNIX
@@ -91,16 +91,16 @@ Server Enterprise (Amazon VPC)>).
 
 =item *
 
-C<reserved-instances-id> - The ID of the Reserved Instance.
+C<reserved-instances-id> - The ID of the Reserved instance.
 
 =item *
 
-C<start> - The time at which the Reserved Instance purchase request was
+C<start> - The time at which the Reserved instance purchase request was
 placed (for example, 2014-08-07T11:54:42.000Z).
 
 =item *
 
-C<state> - The state of the Reserved Instance (C<payment-pending> |
+C<state> - The state of the Reserved instance (C<payment-pending> |
 C<active> | C<payment-failed> | C<retired>).
 
 =item *
@@ -125,7 +125,7 @@ is independent of the C<tag-key> filter.
 
 =item *
 
-C<usage-price> - The usage price of the Reserved Instance, per hour
+C<usage-price> - The usage price of the Reserved instance, per hour
 (for example, 0.84).
 
 =back
@@ -134,16 +134,16 @@ C<usage-price> - The usage price of the Reserved Instance, per hour
 
 =head2 OfferingType => Str
 
-  The Reserved Instance offering type. If you are using tools that
+  The Reserved instance offering type. If you are using tools that
 predate the 2011-11-01 API version, you only have access to the
-C<Medium Utilization> Reserved Instance offering type.
+C<Medium Utilization> Reserved instance offering type.
 
 
 =head2 ReservedInstancesIds => ArrayRef[Str]
 
-  One or more Reserved Instance IDs.
+  One or more Reserved instance IDs.
 
-Default: Describes all your Reserved Instances, or only those otherwise
+Default: Describes all your Reserved instances, or only those otherwise
 specified.
 
 

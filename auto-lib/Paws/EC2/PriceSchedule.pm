@@ -55,7 +55,7 @@ two months of the term, will be active for months 2 and 1.
 
 =head2 CurrencyCode => Str
 
-  The currency for transacting the Reserved Instance resale. At this
+  The currency for transacting the Reserved instance resale. At this
 time, the only supported currency is C<USD>.
 
 

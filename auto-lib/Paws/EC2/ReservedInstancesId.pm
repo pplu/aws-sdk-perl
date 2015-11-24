@@ -38,7 +38,7 @@ This class has no description
 
 =head2 ReservedInstancesId => Str
 
-  The ID of the Reserved Instance.
+  The ID of the Reserved instance.
 
 
 

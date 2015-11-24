@@ -67,7 +67,7 @@ association.
 =item *
 
 C<association.main> - Indicates whether the route table is the main
-route table for the VPC.
+route table for the VPC (C<true> | C<false>).
 
 =item *
 
