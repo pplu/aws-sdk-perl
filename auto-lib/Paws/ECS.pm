@@ -210,7 +210,37 @@ Returns: a L<Paws::ECS::CreateServiceResponse> instance
   Runs and maintains a desired number of tasks from a specified task
 definition. If the number of tasks running in a service drops below
 C<desiredCount>, Amazon ECS spawns another instantiation of the task in
-the specified cluster.
+the specified cluster. To update an existing service, see
+UpdateService.
+
+When the service scheduler launches new tasks, it attempts to balance
+them across the Availability Zones in your cluster with the following
+logic:
+
+=over
+
+=item *
+
+Determine which of the container instances in your cluster can support
+your service's task definition (for example, they have the required
+CPU, memory, ports, and container instance attributes).
+
+=item *
+
+Sort the valid container instances by the fewest number of running
+tasks for this service in the same Availability Zone as the instance.
+For example, if zone A has one running service task and zones B and C
+each have zero, valid container instances in either zone B or C are
+considered optimal for placement.
+
+=item *
+
+Place the new service task on a valid container instance in an optimal
+Availability Zone (based on the previous steps), favoring container
+instances with the fewest number of running tasks for this service.
+
+=back
+
 
 
 =head2 DeleteCluster(Cluster => Str)
@@ -231,7 +261,22 @@ Each argument is described in detail in: L<Paws::ECS::DeleteService>
 
 Returns: a L<Paws::ECS::DeleteServiceResponse> instance
 
-  Deletes a specified service within a cluster.
+  Deletes a specified service within a cluster. You can delete a service
+if you have no running tasks in it and the desired task count is zero.
+If the service is actively maintaining tasks, you cannot delete it, and
+you must update the service to a desired task count of zero. For more
+information, see UpdateService.
+
+When you delete a service, if there are still running tasks that
+require cleanup, the service status moves from C<ACTIVE> to
+C<DRAINING>, and the service is no longer visible in the console or in
+ListServices API operations. After the tasks have stopped, then the
+service status moves from C<DRAINING> to C<INACTIVE>. Services in the
+C<DRAINING> or C<INACTIVE> status can still be viewed with
+DescribeServices API operations; however, in the future, C<INACTIVE>
+services may be cleaned up and purged from Amazon ECS record keeping,
+and DescribeServices API operations on those services will return a
+C<ServiceNotFoundException> error.
 
 
 =head2 DeregisterContainerInstance(ContainerInstance => Str, [Cluster => Str, Force => Bool])
@@ -457,7 +502,7 @@ scheduler to place your task, use C<RunTask> instead.
 The list of container instances to start tasks on is limited to 10.
 
 
-=head2 StopTask(Task => Str, [Cluster => Str])
+=head2 StopTask(Task => Str, [Cluster => Str, Reason => Str])
 
 Each argument is described in detail in: L<Paws::ECS::StopTask>
 
@@ -547,6 +592,35 @@ results in a C<SIGTERM> and a 30-second timeout, after which C<SIGKILL>
 is sent and the containers are forcibly stopped. If the container
 handles the C<SIGTERM> gracefully and exits within 30 seconds from
 receiving it, no C<SIGKILL> is sent.
+
+When the service scheduler launches new tasks, it attempts to balance
+them across the Availability Zones in your cluster with the following
+logic:
+
+=over
+
+=item *
+
+Determine which of the container instances in your cluster can support
+your service's task definition (for example, they have the required
+CPU, memory, ports, and container instance attributes).
+
+=item *
+
+Sort the valid container instances by the fewest number of running
+tasks for this service in the same Availability Zone as the instance.
+For example, if zone A has one running service task and zones B and C
+each have zero, valid container instances in either zone B or C are
+considered optimal for placement.
+
+=item *
+
+Place the new service task on a valid container instance in an optimal
+Availability Zone (based on the previous steps), favoring container
+instances with the fewest number of running tasks for this service.
+
+=back
+
 
 
 =head1 SEE ALSO

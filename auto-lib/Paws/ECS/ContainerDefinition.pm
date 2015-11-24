@@ -182,6 +182,9 @@ see https://docs.docker.com/reference/builder/
 to C<Env> in the Create a container section of the Docker Remote API
 and the C<--env> option to docker run.
 
+We do not recommend using plain text environment variables for
+sensitive information, such as credential data.
+
 
 =head2 Essential => Bool
 
@@ -260,7 +263,10 @@ I<Amazon EC2 Container Service Developer Guide>.
 
 =head2 Memory => Int
 
-  The number of MiB of memory reserved for the container. If your
+  The number of MiB of memory to reserve for the container. You must
+specify a non-zero integer for this parameter; the Docker daemon
+reserves a minimum of 4 MiB of memory for a container, so you should
+not specify fewer than 4 MiB of memory for your containers. If your
 container attempts to exceed the memory allocated here, the container
 is killed. This parameter maps to C<Memory> in the Create a container
 section of the Docker Remote API and the C<--memory> option to docker
