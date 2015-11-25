@@ -82,11 +82,9 @@ package Paws::Net::RestXmlCaller {
 
   sub _to_header_params {
     my ($self, $request, $call) = @_;
-    foreach my $att_name ( keys %{$request->parameters} )
-    {
-      my $attribute = $call->meta->get_attribute($att_name);
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader')) {
-        $request->headers->header( $attribute->header_name =>$request->{parameters}->{$att_name});
+    foreach my $attribute ($call->meta->get_all_attributes) {
+      if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and $attribute->has_value($call)) {
+        $request->headers->header( $attribute->header_name => $attribute->get_value($call) );
       }
     }
   }
