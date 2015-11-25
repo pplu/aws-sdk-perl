@@ -103,6 +103,29 @@ package Paws::Net::RestXmlCaller {
     return $str;
   }
 
+  sub _to_xml_body {
+    my ($self, $call) = @_;
+
+    my $xml = '';
+    foreach my $attribute ($call->meta->get_all_attributes) {
+      if ($attribute->has_value($call) and 
+          not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and
+          not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery') and
+          not $attribute->does('Paws::API::Attribute::Trait::ParamInURI') and
+          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody')
+         ) {
+        #TODO: from these selected attributes, try to build an XML
+        print STDERR "Make XML out of: " . $attribute->name . ": " . $attribute->get_value($call) . "\n";
+      }
+    }
+
+    if (1) {
+      return undef;
+    }
+    # And return it
+    return $xml;
+  }
+
   sub prepare_request_for_call {
     my ($self, $call) = @_;
 
@@ -118,10 +141,16 @@ package Paws::Net::RestXmlCaller {
     $request->uri($uri);
 
     my $url = $self->_api_endpoint . $uri; #in Paws::API::EndPointResolver
-    $request->parameters({ $self->_to_querycaller_params($call) });
-    $request->url($url);
 
+    #TODO: I'm not sure if any of the REST style APIs want things as query parameters
+    $request->parameters({ $self->_to_querycaller_params($call) });
+
+    $request->url($url);
     $request->method($call->_api_method);
+
+    if (my $xml_body = $self->_to_xml_body($call)){
+      $self->content($xml_body);
+    }
 
     $self->_to_header_params($request, $call);
 
