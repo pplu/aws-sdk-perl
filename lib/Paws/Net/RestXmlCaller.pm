@@ -149,7 +149,7 @@ package Paws::Net::RestXmlCaller {
     $request->method($call->_api_method);
 
     if (my $xml_body = $self->_to_xml_body($call)){
-      $self->content($xml_body);
+      $request->content($xml_body);
     }
 
     $self->_to_header_params($request, $call);
