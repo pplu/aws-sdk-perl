@@ -4,6 +4,7 @@ package Paws::Net::RestXmlCaller {
   use POSIX qw(strftime);
   use URI::Template;
   use URI::Escape;
+  use Moose::Util;
 
   sub array_flatten_string {
     my $self = shift;
@@ -103,6 +104,21 @@ package Paws::Net::RestXmlCaller {
     return $str;
   }
 
+  sub _to_xml {
+    my ($self, $value) = @_;
+
+    my $xml = '';
+    foreach my $attribute ($value->meta->get_all_attributes) {
+      my $att_name = $attribute->name;
+      if (Moose::Util::find_meta($attribute->type_constraint->name)) { 
+        $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($value)), $att_name;
+      } else {
+        $xml .= sprintf '<%s>%s</%s>', $att_name, $attribute->get_value($value), $att_name;
+      }
+    }
+    return $xml; 
+  }
+
   sub _to_xml_body {
     my ($self, $call) = @_;
 
@@ -114,15 +130,12 @@ package Paws::Net::RestXmlCaller {
           not $attribute->does('Paws::API::Attribute::Trait::ParamInURI') and
           not $attribute->does('Paws::API::Attribute::Trait::ParamInBody')
          ) {
-        #TODO: from these selected attributes, try to build an XML
-        print STDERR "Make XML out of: " . $attribute->name . ": " . $attribute->get_value($call) . "\n";
+        my $att_name = $attribute->name;
+        $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($call)), $att_name;
       }
     }
 
-    if (1) {
-      return undef;
-    }
-    # And return it
+    return undef if (not $xml);
     return $xml;
   }
 
