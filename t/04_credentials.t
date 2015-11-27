@@ -5,8 +5,10 @@ use Paws;
 use Paws::Credential::Environment;
 use Paws::Credential::InstanceProfile;
 use Paws::Credential::ProviderChain;
+use Paws::Credential::File;
 use Test::More;
 use Test::Exception;
+use Test::Warnings;
 use Test04::StubUAForMetadata;
 use Test04::StubUANoMetadata;
 
@@ -82,4 +84,19 @@ reset_env_creds;
  
 }
 
+## File provider testing
+reset_env_creds;
+
+{
+  my $creds = Paws::Credential::File->new;
+  ok(not($creds->are_set), 'No creds when no ENV');
+}
+
+# Test for users not having HOME
+{
+  my $old_home = $ENV{'HOME'};
+  $ENV{'HOME'} = '';
+
+  my $creds = Paws::Credential::File->new;
+}
 done_testing;
