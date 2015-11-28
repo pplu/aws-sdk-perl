@@ -48,10 +48,30 @@ cd aws-sdk-perl
 With carton you can install all the dependencies needed in a local environment, so you can play around with dependencies without
 affecting the system libraries. The cpanfile is used to track the dependencies needed.
 
-It's possible that you need -dev libraries for compiling some of these modules. In Debian/Ubuntu these packages are
+It's possible that you need -dev libraries for compiling some of these modules. These packages are: 
+
+* In Debian/Ubuntu:
 
 ```
 sudo apt-get install libxml2-dev libssl-dev
+```
+
+* In Red Hat/CentOS:
+
+```
+sudo yum install libxml2-devel openssl-devel
+```
+
+* In Mac OS X:
+
+```
+brew install openssl
+```
+
+If yo are using Mac OS X - El Capitan(10.11) you will probably need to force the link of the openssl header to /usr/local:
+
+```
+brew link openssl --force
 ```
 
 And now tell carton to install the dependecies in a local lib
