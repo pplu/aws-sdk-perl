@@ -2,16 +2,61 @@
 
 use strict;
 use warnings;
+use v5.10;
 
 use lib 'auto-lib', 'lib', 'examples/lib';
 
 use Paws;
+use Future;
+
+#use Mojo::IOLoop;
+#use Paws::Net::MojoAsyncCaller;
 
 use Data::Dumper;
-my $aws = Paws->new(config => Paws::SDK::Config->new(caller => 'Paws::Net::MojoAsyncCaller') );
 
-my $as = $aws->service('EC2', 
-    region => 'us-west-1',
-);
+#my $loop = Mojo::IOLoop->new;
+#my $aws = Paws->new(config => { caller => Paws::Net::MojoAsyncCaller->new(loop => $loop) } );
 
-print Dumper $as->DescribeSecurityGroups->get;
+my $aws = Paws->new(config => { caller => 'Paws::Net::MojoAsyncCaller' } );
+
+my @fs;
+
+my $f = $aws->service('EC2', region => 'eu-west-1')->DescribeRegions->then(sub {
+  my $res = shift;
+
+  foreach my $reg (map { $_->RegionName } @{ $res->Regions }) {
+    my $as = $aws->service('EC2', 
+      region => $reg,
+    );
+  
+    my $f = $as->DescribeSecurityGroups->then(sub {
+      my ($res) = @_;
+      my @sg_names = map { $_->GroupName . " (" . $_->GroupId . ")" } @{ $res->SecurityGroups };
+      say scalar(localtime) . " Got for $reg";
+      Future->done(@sg_names)
+    })->else(sub {
+      say scalar(localtime) . " Failed $reg";
+      Future->done('Handled error');
+    })->then(sub {
+      my @res = @_;
+      say join "\n", scalar(localtime), @res;
+      say scalar(localtime) . " End for $reg"; 
+      Future->done('DONE');
+    });
+    push @fs, $f;
+  }
+  Future->needs_all(@fs);
+});
+  
+
+$f->on_ready( sub {
+  my $f = shift;
+  my $res = $f->get;
+  say scalar(localtime) . ' Done';
+  Mojo::IOLoop->stop;
+  return Future->done($res);
+});
+
+Mojo::IOLoop->start;
+
+print scalar(localtime) . " Done ioloop\n";
