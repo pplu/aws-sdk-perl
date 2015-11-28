@@ -42,7 +42,8 @@ on 'develop' => sub {
   requires 'Test::Pod';
   # For developing / testing the pluggable callers
   requires 'Mojolicious';
-  requires 'MojoX::IOLoop::Future';
+  requires 'Future::Mojo';
+  requires 'EV';
   requires 'LWP::UserAgent';
   requires 'Furl';
 };
