@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use v5.10;
 
-use lib 'auto-lib', 'lib', 'examples/lib';
+use lib 'auto-lib', 'lib';
 
 use Paws;
 use Future;
@@ -36,7 +36,7 @@ my $f = $aws->service('EC2', region => 'eu-west-1')->DescribeRegions->then(sub {
       Future->done(@sg_names)
     })->else(sub {
       say scalar(localtime) . " Failed $reg";
-      Future->done('Handled error');
+      Future->fail('Handled error');
     })->then(sub {
       my @res = @_;
       say join "\n", scalar(localtime), @res;
@@ -57,6 +57,12 @@ $f->on_ready( sub {
   return Future->done($res);
 });
 
-Mojo::IOLoop->start;
+$f->on_fail( sub {
+  say "Something failed spectacularly";
+});
 
-print scalar(localtime) . " Done ioloop\n";
+#Mojo::IOLoop->start;
+my $x = $f->get;
+
+say scalar(localtime) . " " . Dumper($x);
+say scalar(localtime) . " Done ioloop";
