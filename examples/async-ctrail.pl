@@ -2,8 +2,9 @@
 
 use strict;
 use warnings;
+use v5.10;
 
-use lib 'auto-lib', 'lib', 'examples/lib';
+use lib 'auto-lib', 'lib';
 
 use Paws;
 use Data::Dumper;
@@ -13,45 +14,62 @@ use Future;
 use Future::Utils;
 
 my $aws = Paws->new(
-  config => Paws::SDK::Config->new(caller => 'Paws::Net::MojoAsyncCaller')
+  config => { caller => 'Paws::Net::MojoAsyncCaller' }
 );
 
-my $regions = { 
-  map { ($_ => { client => $aws->service('CloudTrail', region => $_) }) } (
+my $regions = {};
+
+my @ops;
+foreach my $region (
           "us-east-1", "ap-northeast-1", "sa-east-1",
           "ap-southeast-1", "ap-southeast-2", "us-west-2",
           "us-west-1", "eu-west-1", "eu-central-1",
-#          "xxx",
-        )
-};
-
-my @ops;
-foreach my $region (keys %$regions) {
-  push @ops, $regions->{ $region }->{ client }->DescribeTrails->then(sub {
+          ) {
+  push @ops, $aws->service('CloudTrail', region => $region)->DescribeTrails->then(sub {
     my $res = shift;
-    if (scalar(@{ $res->trailList }) == 1) {
+    print "Got response from DescribeTrails\n";
+    if (scalar(@{ $res->TrailList }) == 1) {
       $regions->{ $region }->{ active } = 1;
-      $regions->{ $region }->{ global } = $res->trailList->[0]->IncludeGlobalServiceEvents;
-      $regions->{ $region }->{ name   } = $res->trailList->[0]->Name;
+      $regions->{ $region }->{ global } = $res->TrailList->[0]->IncludeGlobalServiceEvents;
+      $regions->{ $region }->{ name   } = $res->TrailList->[0]->Name;
 
-      return $regions->{ $region }->{ client }->GetTrailStatus(Name => $res->trailList->[0]->Name)->then(sub {
+      return $aws->service('CloudTrail', region => $region)->GetTrailStatus(
+        Name => $res->TrailList->[0]->Name
+      )->then(sub {
         my $res = shift;
+        print "Got response from GetTrailStatus\n";
         $regions->{ $region }->{ logging } = $res->IsLogging;
-        return Future->done;
+        Future->done;
       })->else(sub {
-        $regions->{ $region }->{ client } = undef;
-        delete $regions->{ $region }->{ active };
+        Future->fail("Failed (2) getting info for region $region");
       });
     } else {
       $regions->{ $region }->{ active } = 0;
-      return Future->done;
+      Future->done;
     }
   })->else(sub {
-    $regions->{ $region }->{ client } = undef;
-    delete $regions->{ $region }->{ active };
+    Future->fail("Failed (1) getting info for region $region");
   });
 };
 
-Future->needs_all(@ops)->get;
+my $f = Future->needs_all(@ops);
+
+$f->on_ready( sub {
+  my $f = shift;
+  my $res = $f->get;
+  print scalar(localtime) . '-' . Dumper($res);
+  Mojo::IOLoop->stop;
+  return Future->done;
+})->on_fail( sub {
+  say "Something failed!";
+  return Future->done;
+});
+
+Mojo::IOLoop->start;
+#$f->get;
+
+print Dumper($f);
+print "FAILED!!!" if ($f->is_failed);
+
 
 p $regions;
