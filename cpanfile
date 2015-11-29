@@ -52,4 +52,5 @@ on 'test' => sub {
   requires 'Test::More';
   requires 'Test::Timer';
   requires 'Test::Exception';
+  requires 'Test::Warnings';
 };
