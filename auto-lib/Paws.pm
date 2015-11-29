@@ -563,6 +563,8 @@ This code is distributed under the Apache 2 License. The full text of the licens
 Luis Alberto Gimenez (@agimenez) for 
  - The git-fu cleaning up the "pull other sdks" code
  - Credential Providers code
+ - Fixes for users that have no HOME env variable
+ - FileCaller to fully mock responses
 
 Srinvas (@kidambisrinivas) for testing, bug reporting and fixing
 
