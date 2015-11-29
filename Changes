@@ -1,5 +1,6 @@
 0.20
  - Better schema validation in builders (by Oriol Soriano) 
+ - Paws::Credential::File doesn't throw warnings when users don't have $ENV{HOME} (by A.Gimenez)
  - EC2 docu update
  - RDS support for cross account snapshot sharing. New instance types too
  - Inspector API update
