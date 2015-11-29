@@ -1,6 +1,7 @@
 package Paws::Net::Caller {
   use Moose;
   use Carp qw(croak);
+  use Time::HiRes 'sleep';
   with 'Paws::Net::CallerRole';
   use Paws::API::Retry;
 
@@ -15,11 +16,6 @@ package Paws::Net::Caller {
     }
   );
 
-  sub is_retriable {
-    my ($self, $exception) = @_;
-    1;
-  }
-
   sub do_call {
     my ($self, $service, $call_object) = @_;
     my $requestObj = $service->prepare_request_for_call($call_object); 
@@ -27,16 +23,12 @@ package Paws::Net::Caller {
     # HTTP::Tiny derives the Host header from the URL. It's an error to set it.
     delete $headers->{Host};
     
-    # Async retries should not simply 'sleep'
-    my $retry_tracker_class = $self->isa('Paws::Net::MojoAsyncCaller')
-      ? 'Paws::API::Retry::Async'
-      : 'Paws::API::Retry';
-    my $tracker = $retry_tracker_class->new(
+    my $tracker = Paws::API::Retry->new(
       %{ $service->retry }, 
       max_tries => $service->max_attempts
     );
 
-    while ($tracker->should_retry) {
+    do {
       $tracker->one_more_try;
       my $response = $self->ua->request(
         $requestObj->method,
@@ -46,15 +38,22 @@ package Paws::Net::Caller {
           (defined $requestObj->content)?(content => $requestObj->content):(),
         }
       );
-      # closure over stuff Paws::API::Retry doesnt need to know about
-      my $service_response_handler = sub { 
-        $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers}) 
-      };
-      $tracker->handle_response($response, $service_response_handler);
-      $tracker->backoff  if($tracker->should_retry);
-    }
 
-    return $tracker->return;
+      if ($response->{status} == 599){
+        $tracker->operation_result(Paws::Exception->new(message => $response->{content}, code => 'ConnectionError', request_id => ''));
+      } else {
+        my $res = $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});
+        $tracker->operation_result($res);
+      }
+
+      sleep $tracker->sleep_time if($tracker->should_retry);
+    } while ($tracker->should_retry);
+
+    if ($tracker->result_is_exception){
+      $tracker->operation_result->throw;
+    } else {
+      return $tracker->operation_result;
+    }
   }
 }
 
