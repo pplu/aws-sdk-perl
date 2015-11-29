@@ -75,7 +75,7 @@ reset_env_creds;
 reset_env_creds;
 
 {
-  my $creds = Paws::Credential::ProviderChain->new(providers => [ 'Test::CustomCredentials', 'Paws::Credentail::Enviromnent' ]);
+  my $creds = Paws::Credential::ProviderChain->new(providers => [ 'Test::CustomCredentials', 'Paws::Credentail::Environment' ]);
   ok($creds->are_set, 'Creds are set');
   cmp_ok($creds->access_key, 'eq', 'CustomAK', 'Access Key short style');
   cmp_ok($creds->secret_key, 'eq', 'CustomSK', 'Secret Key short style');
