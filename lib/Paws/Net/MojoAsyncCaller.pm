@@ -5,10 +5,6 @@ package Paws::Net::MojoAsyncCaller {
   use Future::Mojo;
   use Mojo::UserAgent;
 
-  has loop => (is => 'ro', default => sub {
-    return Mojo::IOLoop->singleton;
-  });
-
   has ua => (is => 'ro', isa => 'Mojo::UserAgent', default => sub {
     Mojo::UserAgent->new->connect_timeout(15)->inactivity_timeout(60);
   });
@@ -22,7 +18,7 @@ package Paws::Net::MojoAsyncCaller {
     my $method = lc($requestObj->method);
     my $response_class = $call_object->_returns;
 
-    my $future = Future::Mojo->new($self->loop);
+    my $future = Future::Mojo->new;
     $self->ua->$method(
       $requestObj->url =>  
       $headers => 
