@@ -1,77 +1,72 @@
 package Paws::API::Retry;
   use Moose;
-  use Time::HiRes 'sleep';
   use Paws::Exception;  
   
   has max_tries => (is => 'ro', required => 1);
   has type => (is => 'ro', required => 1);
-  has base => (is => 'ro', required => 1);
+  has base => (is => 'ro', required => 1, isa => 'Num');
   has growth_factor => (is => 'ro', isa => 'Int');
 
-  has tries => (is => 'rw', init_arg => undef, default => 0);
+  has tries => (is => 'rw', default => 0);
   has error_for_die => (is => 'rw');
-  has return => (is => 'rw');
+  has operation_result => (is => 'rw');
 
+  has generator => (is => 'ro');
 
-  
-  # if    status == success   ==> retry = false
-  # elsif status == not_ready ==> retry = true
-  # elsif status == throttled ==> retry = true
-  # else retry = false # something not related to throttling went wrong
+  around BUILDARGS => sub {
+    my ($orig, $class, %args) = @_;
+
+    my $base = $args{ base };
+    $base = rand() if ($args{ base } eq 'rand');
+    $base = 0.01 if ($base == 0);
+    $args{ base } = $base;
+
+    if ($args{ type } eq 'exponential') {
+      $args{ generator } = sub {
+        my $self = shift;
+        $self->base * ($self->growth_factor * ($self->tries - 1))
+      };
+    } else {
+      die "Don't know how to make a retry type of $args{ type }";
+    }
+
+    return $class->$orig(%args);
+  };
+
   sub should_retry {
     my $self = shift;
-    return 0  if($self->return);
-    $self->error_for_die->throw  if($self->error_for_die and not $self->_still_has_retries);
-    $self->error_for_die->throw  if(not $self->_is_retriable);
-    $self->_still_has_retries;
-  }
-  
-  
-  sub backoff {
-    sleep(shift->_sleep_time);  
-  }
-  
+    my $res = $self->operation_result;
 
+    if ($self->result_is_exception and $self->_still_has_retries){
+      return 1;
+    }
+    return 0; #Anything not exception should not be retried
+  }
+
+  sub result_is_exception {
+    my $self = shift;
+
+    die "Don't have an operation_result set yet" if (not defined $self->operation_result);
+
+    return 0 if (not ref($self->operation_result));                  # Scalar results
+    return 1 if (ref($self->operation_result) eq 'Paws::Exception'); # Exceptions
+    return 0;                                                        # Rest of objects
+  }
+  
   sub one_more_try {
     my $self = shift;
     $self->tries($self->tries + 1);
   }
   
-  
-  sub handle_response {
-    my ($self, $response, $service_response_handler) = @_;
-    if ($response->{status} == 599){
-        $self->error_for_die(Paws::Exception->new(message => $response->{content}, code => 'ConnectionError', request_id => ''));
-    } else {
-      my $res = $service_response_handler->();
-      if (not ref($res)){
-        $self->return($res);
-      } elsif ($res->isa('Paws::Exception')) {
-        $self->error_for_die($res);
-      } else {
-        $self->return($res);
-      }
-    }
-  }
-  
-  
-  sub _sleep_time { 
+  sub sleep_time { 
     my $self = shift;
-    my $base = $self->base eq 'rand'
-             ? 100 * (1 + rand)
-             : 100;
-    my $sleep_ms = $self->type eq 'exponential'
-             ? $base ** ($self->growth_factor * ($self->tries - 1))
-             : $base *  ($self->growth_factor * ($self->tries - 1));
-    return $sleep_ms / 1000;
+    return $self->generator->($self);
   }
-
 
   sub _still_has_retries {
     my $self = shift;
     $self->tries < $self->max_tries;
   }
-  
   
   sub _is_retriable {
     my $self = shift;
@@ -79,7 +74,6 @@ package Paws::API::Retry;
     return 1;
   }
   
-
   __PACKAGE__->meta->make_immutable;
   
 1;
