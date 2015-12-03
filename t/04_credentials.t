@@ -88,8 +88,10 @@ reset_env_creds;
 reset_env_creds;
 
 {
-  my $creds = Paws::Credential::File->new;
-  ok(not($creds->are_set), 'No creds when no ENV');
+  my $creds = Paws::Credential::File->new(
+    path => 't/'
+  );
+  ok(not($creds->are_set), 'No creds when no file is present');
 }
 
 # Test for users not having HOME
