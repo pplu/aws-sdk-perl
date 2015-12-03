@@ -23,7 +23,7 @@ package [% c.api %]::[% op_name %];
   [%- IF (shape.members.$param_name.location == 'header') %], traits => ['ParamInHeader'], header_name => '[% shape.members.$param_name.locationName %]' [% END %]
   [%- IF (shape.members.$param_name.location == 'querystring') %], traits => ['ParamInQuery'], query_name => '[% shape.members.$param_name.locationName %]' [% END %]
   [%- IF (shape.members.$param_name.location == 'uri') %], traits => ['ParamInURI'], uri_name => '[% shape.members.$param_name.locationName %]' [% END %]
-  [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% END %]
+  [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% stream_param = param_name %][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
   use MooseX::ClassAttribute;
@@ -33,6 +33,7 @@ package [% c.api %]::[% op_name %];
   class_has _api_method  => (isa => 'Str', is => 'ro', default => '[% operation.http.method %]');
   class_has _returns => (isa => 'Str', is => 'ro'[% IF (operation.output.keys.size) %], default => '[% c.api %]::[% c.shapename_for_operation_output(op_name) %]'[% END %]);
   class_has _result_key => (isa => 'Str', is => 'ro');
+  [% IF (stream_param) %]class_has _stream_param => (is => 'ro', default => '[% stream_param %]');[% END %]
 1;
 [% c.class_documentation_template | eval %]
 #);
@@ -48,9 +49,13 @@ package [% c.api %]::[% c.shapename_for_operation_output(op_name) %];
   has [% param_name %] => (is => 'ro', isa => '[% member.perl_type %]'
   [%- IF (member.member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.member.locationName %]'[% END %]
   [%- IF (member.locationName) %], traits => ['Unwrapped'], xmlname => '[% member.locationName %]'[% END %]
-  [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% END %]
+  [%- IF (shape.members.$param_name.streaming == 1) %], traits => ['ParamInBody'][% stream_param = param_name %][% END %]
   [%- IF (c.required_in_shape(shape,param_name)) %], required => 1[% END %]);
 [% END %]
+  [%- IF (stream_param) -%]
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => '[% stream_param %]');
+  [%- END -%]
 [%- END %]
 1;
 [% c.callclass_documentation_template | eval %]

@@ -90,14 +90,29 @@ package Paws::API::Caller {
   sub handle_response {
     my ($self, $call_object, $http_status, $content, $headers) = @_;
 
+    my $ret_class = $call_object->meta->name->_returns;
+    Paws->load_class($ret_class);
+
     my $unserialized_struct;
-    $unserialized_struct = $self->unserialize_response( $content );
+    if ($ret_class->can('_stream_param')){
+      $unserialized_struct = $self->unserialize_body_response($ret_class, $http_status, $content, $headers);
+    } else {
+      $unserialized_struct = $self->unserialize_response( $content );
+    }
 
     if ( $http_status >= 300 ) {
         return $self->error_to_exception($unserialized_struct, $call_object, $http_status, $content, $headers);
     } else {
         return $self->response_to_object($unserialized_struct, $call_object, $http_status, $content, $headers);
     }
+  }
+
+  sub unserialize_body_response { 
+    my ($self, $ret_class, $http_status, $content, $headers) = @_;
+    my $unserialized_struct = {
+        $ret_class->_stream_param => $content, 
+    };
+    return $unserialized_struct;
   }
 
   sub response_to_object {

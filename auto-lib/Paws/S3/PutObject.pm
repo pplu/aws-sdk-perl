@@ -34,6 +34,7 @@ package Paws::S3::PutObject;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  class_has _stream_param => (is => 'ro', default => 'Body');
 1;
 
 ### main pod documentation begin ###
