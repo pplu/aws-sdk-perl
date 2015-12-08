@@ -63,27 +63,27 @@ request is idempotent. For more information, see Ensuring Idempotency.
 
 =head2 PriceSchedules => ArrayRef[L<Paws::EC2::PriceSchedule>]
 
-  The price of the Reserved Instance listing.
+  The price of the Reserved instance listing.
 
 
 =head2 ReservedInstancesId => Str
 
-  The ID of the Reserved Instance.
+  The ID of the Reserved instance.
 
 
 =head2 ReservedInstancesListingId => Str
 
-  The ID of the Reserved Instance listing.
+  The ID of the Reserved instance listing.
 
 
 =head2 Status => Str
 
-  The status of the Reserved Instance listing.
+  The status of the Reserved instance listing.
 
 
 =head2 StatusMessage => Str
 
-  The reason for the current status of the Reserved Instance listing. The
+  The reason for the current status of the Reserved instance listing. The
 response can be blank.
 
 

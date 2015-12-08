@@ -48,7 +48,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone in which the Reserved Instance can be used.
+  The Availability Zone in which the Reserved instance can be used.
 
 
 =head2 DryRun => Bool
@@ -68,21 +68,21 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =item *
 
 C<availability-zone> - The Availability Zone where the Reserved
-Instance can be used.
+instance can be used.
 
 =item *
 
-C<duration> - The duration of the Reserved Instance (for example, one
+C<duration> - The duration of the Reserved instance (for example, one
 year or three years), in seconds (C<31536000> | C<94608000>).
 
 =item *
 
-C<fixed-price> - The purchase price of the Reserved Instance (for
+C<fixed-price> - The purchase price of the Reserved instance (for
 example, 9800.0).
 
 =item *
 
-C<instance-type> - The instance type on which the Reserved Instance can
+C<instance-type> - The instance type on which the Reserved instance can
 be used.
 
 =item *
@@ -94,7 +94,7 @@ Marketplace are listed.
 
 =item *
 
-C<product-description> - The Reserved Instance product platform
+C<product-description> - The Reserved instance product platform
 description. Instances that include C<(Amazon VPC)> in the product
 platform description will only be displayed to EC2-Classic account
 holders and are for use with Amazon VPC. (C<Linux/UNIX> | C<Linux/UNIX
@@ -108,11 +108,11 @@ Server Enterprise (Amazon VPC)>)
 
 =item *
 
-C<reserved-instances-offering-id> - The Reserved Instances offering ID.
+C<reserved-instances-offering-id> - The Reserved instances offering ID.
 
 =item *
 
-C<usage-price> - The usage price of the Reserved Instance, per hour
+C<usage-price> - The usage price of the Reserved instance, per hour
 (for example, 0.84).
 
 =back
@@ -121,21 +121,21 @@ C<usage-price> - The usage price of the Reserved Instance, per hour
 
 =head2 IncludeMarketplace => Bool
 
-  Include Marketplace offerings in the response.
+  Include Reserved Instance Marketplace offerings in the response.
 
 
 =head2 InstanceTenancy => Str
 
-  The tenancy of the Reserved Instance offering. A Reserved Instance with
-C<dedicated> tenancy runs on single-tenant hardware and can only be
-launched within a VPC.
+  The tenancy of the Reserved instance offering. A Reserved instance with
+C<dedicated> tenancy is applied to instances that run on single-tenant
+hardware and can only be launched within a VPC.
 
 Default: C<default>
 
 
 =head2 InstanceType => Str
 
-  The instance type on which the Reserved Instance can be used. For more
+  The instance type on which the Reserved instance can be used. For more
 information, see Instance Types in the I<Amazon Elastic Compute Cloud
 User Guide>.
 
@@ -180,20 +180,20 @@ Default: 2592000 (1 month)
 
 =head2 OfferingType => Str
 
-  The Reserved Instance offering type. If you are using tools that
+  The Reserved instance offering type. If you are using tools that
 predate the 2011-11-01 API version, you only have access to the
-C<Medium Utilization> Reserved Instance offering type.
+C<Medium Utilization> Reserved instance offering type.
 
 
 =head2 ProductDescription => Str
 
-  The Reserved Instance product platform description. Instances that
+  The Reserved instance product platform description. Instances that
 include C<(Amazon VPC)> in the description are for use with Amazon VPC.
 
 
 =head2 ReservedInstancesOfferingIds => ArrayRef[Str]
 
-  One or more Reserved Instances offering IDs.
+  One or more Reserved instances offering IDs.
 
 
 

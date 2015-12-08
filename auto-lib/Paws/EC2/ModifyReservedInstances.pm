@@ -44,12 +44,12 @@ Idempotency.
 
 =head2 B<REQUIRED> ReservedInstancesIds => ArrayRef[Str]
 
-  The IDs of the Reserved Instances to modify.
+  The IDs of the Reserved instances to modify.
 
 
 =head2 B<REQUIRED> TargetConfigurations => ArrayRef[L<Paws::EC2::ReservedInstancesConfiguration>]
 
-  The configuration settings for the Reserved Instances to modify.
+  The configuration settings for the Reserved instances to modify.
 
 
 

@@ -256,7 +256,7 @@ in your VPC.
 
 =item *
 
-C<spot-instance-request-id> - The ID of the Spot Instance request.
+C<spot-instance-request-id> - The ID of the Spot instance request.
 
 =item *
 

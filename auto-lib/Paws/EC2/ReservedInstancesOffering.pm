@@ -50,24 +50,24 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone in which the Reserved Instance can be used.
+  The Availability Zone in which the Reserved instance can be used.
 
 
 =head2 CurrencyCode => Str
 
-  The currency of the Reserved Instance offering you are purchasing. It's
+  The currency of the Reserved instance offering you are purchasing. It's
 specified using ISO 4217 standard currency codes. At this time, the
 only supported currency is C<USD>.
 
 
 =head2 Duration => Int
 
-  The duration of the Reserved Instance, in seconds.
+  The duration of the Reserved instance, in seconds.
 
 
 =head2 FixedPrice => Num
 
-  The purchase price of the Reserved Instance.
+  The purchase price of the Reserved instance.
 
 
 =head2 InstanceTenancy => Str
@@ -77,7 +77,7 @@ only supported currency is C<USD>.
 
 =head2 InstanceType => Str
 
-  The instance type on which the Reserved Instance can be used.
+  The instance type on which the Reserved instance can be used.
 
 
 =head2 Marketplace => Bool
@@ -89,17 +89,17 @@ Marketplace offering, this is C<true>.
 
 =head2 OfferingType => Str
 
-  The Reserved Instance offering type.
+  The Reserved instance offering type.
 
 
 =head2 PricingDetails => ArrayRef[L<Paws::EC2::PricingDetail>]
 
-  The pricing details of the Reserved Instance offering.
+  The pricing details of the Reserved instance offering.
 
 
 =head2 ProductDescription => Str
 
-  The Reserved Instance product platform description.
+  The Reserved instance product platform description.
 
 
 =head2 RecurringCharges => ArrayRef[L<Paws::EC2::RecurringCharge>]
@@ -109,12 +109,12 @@ Marketplace offering, this is C<true>.
 
 =head2 ReservedInstancesOfferingId => Str
 
-  The ID of the Reserved Instance offering.
+  The ID of the Reserved instance offering.
 
 
 =head2 UsagePrice => Num
 
-  The usage price of the Reserved Instance, per hour.
+  The usage price of the Reserved instance, per hour.
 
 
 

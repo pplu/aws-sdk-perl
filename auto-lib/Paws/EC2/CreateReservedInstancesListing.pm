@@ -45,21 +45,21 @@ information, see Ensuring Idempotency.
 
 =head2 B<REQUIRED> InstanceCount => Int
 
-  The number of instances that are a part of a Reserved Instance account
+  The number of instances that are a part of a Reserved instance account
 to be listed in the Reserved Instance Marketplace. This number should
 be less than or equal to the instance count associated with the
-Reserved Instance ID specified in this call.
+Reserved instance ID specified in this call.
 
 
 =head2 B<REQUIRED> PriceSchedules => ArrayRef[L<Paws::EC2::PriceScheduleSpecification>]
 
-  A list specifying the price of the Reserved Instance for each month
-remaining in the Reserved Instance term.
+  A list specifying the price of the Reserved instance for each month
+remaining in the Reserved instance term.
 
 
 =head2 B<REQUIRED> ReservedInstancesId => Str
 
-  The ID of the active Reserved Instance.
+  The ID of the active Reserved instance.
 
 
 

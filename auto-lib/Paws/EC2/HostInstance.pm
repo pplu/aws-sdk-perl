@@ -1,14 +1,14 @@
-package Paws::EC2::InstanceCount;
+package Paws::EC2::HostInstance;
   use Moose;
-  has InstanceCount => (is => 'ro', isa => 'Int', xmlname => 'instanceCount', traits => ['Unwrapped']);
-  has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
+  has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
+  has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::EC2::InstanceCount
+Paws::EC2::HostInstance
 
 =head1 USAGE
 
@@ -19,16 +19,16 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::EC2::InstanceCount object:
+As an example, if Att1 is expected to be a Paws::EC2::HostInstance object:
 
-  $service_obj->Method(Att1 => { InstanceCount => $value, ..., State => $value  });
+  $service_obj->Method(Att1 => { InstanceId => $value, ..., InstanceType => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::InstanceCount object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::HostInstance object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->InstanceCount
+  $result->Att1->InstanceId
 
 =head1 DESCRIPTION
 
@@ -37,15 +37,14 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 InstanceCount => Int
+=head2 InstanceId => Str
 
-  The number of listed Reserved instances in the state specified by the
-C<state>.
+  the IDs of instances that are running on the Dedicated host.
 
 
-=head2 State => Str
+=head2 InstanceType => Str
 
-  The states of the listed Reserved instances.
+  The instance type size (e.g., m3.medium) of the running instance.
 
 
 
