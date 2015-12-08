@@ -37,9 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DirectoryIds => ArrayRef[Str]
 
-  A list of identifiers of the directories to obtain the information for.
-If this member is null, all directories that belong to the current
-account are returned.
+  A list of identifiers of the directories for which to obtain the
+information. If this member is null, all directories that belong to the
+current account are returned.
 
 An empty list results in an C<InvalidParameterException> being thrown.
 

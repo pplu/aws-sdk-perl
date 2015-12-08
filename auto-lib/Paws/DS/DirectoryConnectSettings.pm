@@ -66,13 +66,13 @@ privileges:
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
-  A list of subnet identifiers in the VPC that the AD Connector is
-created in.
+  A list of subnet identifiers in the VPC in which the AD Connector is
+created.
 
 
 =head2 B<REQUIRED> VpcId => Str
 
-  The identifier of the VPC that the AD Connector is created in.
+  The identifier of the VPC in which the AD Connector is created.
 
 
 

@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DirectoryId => Str
 
-  The identifier of the directory to retrieve snapshot information for.
+  The identifier of the directory for which to retrieve snapshot
+information.
 
 
 =head2 Limit => Int

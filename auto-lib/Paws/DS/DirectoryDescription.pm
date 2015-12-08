@@ -55,13 +55,16 @@ Contains information about an AWS Directory Service directory.
 
 =head2 AccessUrl => Str
 
-  The access URL for the directory, such as
-C<http://E<lt>aliasE<gt>.awsapps.com>.
+  The access URL for the directory, such as C<http://alias.awsapps.com>.
+If no alias has been created for the directory, C<alias> is the
+directory identifier, such as C<d-XXXXXXXXXX>.
 
 
 =head2 Alias => Str
 
-  The alias for the directory.
+  The alias for the directory. If no alias has been created for the
+directory, the alias is the directory identifier, such as
+C<d-XXXXXXXXXX>.
 
 
 =head2 ConnectSettings => L<Paws::DS::DirectoryConnectSettingsDescription>
@@ -84,10 +87,10 @@ present if the directory is an AD Connector directory.
 =head2 DnsIpAddrs => ArrayRef[Str]
 
   The IP addresses of the DNS servers for the directory. For a Simple AD
-directory, these are the IP addresses of the Simple AD directory
-servers. For an AD Connector directory, these are the IP addresses of
-the DNS servers or domain controllers in the on-premises directory that
-the AD Connector is connected to.
+or Microsoft AD directory, these are the IP addresses of the Simple AD
+or Microsoft AD directory servers. For an AD Connector directory, these
+are the IP addresses of the DNS servers or domain controllers in the
+on-premises directory to which the AD Connector is connected.
 
 
 =head2 LaunchTime => Str
@@ -150,8 +153,8 @@ information, see EnableSso and DisableSso.
 =head2 VpcSettings => L<Paws::DS::DirectoryVpcSettingsDescription>
 
   A DirectoryVpcSettingsDescription object that contains additional
-information about a Simple AD directory. This member is only present if
-the directory is a Simple AD directory.
+information about a directory. This member is only present if the
+directory is a Simple AD or Managed AD directory.
 
 
 

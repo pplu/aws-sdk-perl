@@ -32,9 +32,19 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::CreateDirectory', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateMicrosoftAD {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::CreateMicrosoftAD', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::CreateSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTrust {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::CreateTrust', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDirectory {
@@ -47,6 +57,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::DeleteSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteTrust {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DeleteTrust', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDirectories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DescribeDirectories', @_);
@@ -55,6 +70,11 @@ package Paws::DS;
   sub DescribeSnapshots {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DescribeSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTrusts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DescribeTrusts', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisableRadius {
@@ -97,8 +117,13 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::UpdateRadius', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub VerifyTrust {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::VerifyTrust', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
 
-  sub operations { qw/ConnectDirectory CreateAlias CreateComputer CreateDirectory CreateSnapshot DeleteDirectory DeleteSnapshot DescribeDirectories DescribeSnapshots DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits RestoreFromSnapshot UpdateRadius / }
+  sub operations { qw/ConnectDirectory CreateAlias CreateComputer CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteDirectory DeleteSnapshot DeleteTrust DescribeDirectories DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits RestoreFromSnapshot UpdateRadius VerifyTrust / }
 
 1;
 
@@ -140,7 +165,7 @@ Each argument is described in detail in: L<Paws::DS::ConnectDirectory>
 
 Returns: a L<Paws::DS::ConnectDirectoryResult> instance
 
-  Creates an AD Connector to connect an on-premises directory.
+  Creates an AD Connector to connect to an on-premises directory.
 
 
 =head2 CreateAlias(Alias => Str, DirectoryId => Str)
@@ -151,7 +176,7 @@ Returns: a L<Paws::DS::CreateAliasResult> instance
 
   Creates an alias for a directory and assigns the alias to the
 directory. The alias is used to construct the access URL for the
-directory, such as C<http://E<lt>aliasE<gt>.awsapps.com>.
+directory, such as C<http://alias.awsapps.com>.
 
 After an alias has been created, it cannot be deleted or reused, so
 this operation should only be used when absolutely necessary.
@@ -176,15 +201,42 @@ Returns: a L<Paws::DS::CreateDirectoryResult> instance
   Creates a Simple AD directory.
 
 
+=head2 CreateMicrosoftAD(Name => Str, Password => Str, VpcSettings => L<Paws::DS::DirectoryVpcSettings>, [Description => Str, ShortName => Str])
+
+Each argument is described in detail in: L<Paws::DS::CreateMicrosoftAD>
+
+Returns: a L<Paws::DS::CreateMicrosoftADResult> instance
+
+  Creates a Microsoft AD in the AWS cloud.
+
+
 =head2 CreateSnapshot(DirectoryId => Str, [Name => Str])
 
 Each argument is described in detail in: L<Paws::DS::CreateSnapshot>
 
 Returns: a L<Paws::DS::CreateSnapshotResult> instance
 
-  Creates a snapshot of an existing directory.
+  Creates a snapshot of a Simple AD directory.
 
-You cannot take snapshots of extended or connected directories.
+You cannot take snapshots of AD Connector directories.
+
+
+=head2 CreateTrust(DirectoryId => Str, RemoteDomainName => Str, TrustDirection => Str, TrustPassword => Str, [TrustType => Str])
+
+Each argument is described in detail in: L<Paws::DS::CreateTrust>
+
+Returns: a L<Paws::DS::CreateTrustResult> instance
+
+  AWS Directory Service for Microsoft Active Directory allows you to
+configure trust relationships. For example, you can establish a trust
+between your Microsoft AD in the AWS cloud, and your existing
+on-premises Microsoft Active Directory. This would allow you to provide
+users and groups access to resources in either domain, with a single
+set of credentials.
+
+This action initiates the creation of the AWS side of a trust
+relationship between a Microsoft AD in the AWS cloud and an external
+domain.
 
 
 =head2 DeleteDirectory(DirectoryId => Str)
@@ -203,6 +255,16 @@ Each argument is described in detail in: L<Paws::DS::DeleteSnapshot>
 Returns: a L<Paws::DS::DeleteSnapshotResult> instance
 
   Deletes a directory snapshot.
+
+
+=head2 DeleteTrust(TrustId => Str)
+
+Each argument is described in detail in: L<Paws::DS::DeleteTrust>
+
+Returns: a L<Paws::DS::DeleteTrustResult> instance
+
+  Deletes an existing trust relationship between your Microsoft AD in the
+AWS cloud and an external domain.
 
 
 =head2 DescribeDirectories([DirectoryIds => ArrayRef[Str], Limit => Int, NextToken => Str])
@@ -245,14 +307,28 @@ You can also specify a maximum number of return results with the
 I<Limit> parameter.
 
 
+=head2 DescribeTrusts([DirectoryId => Str, Limit => Int, NextToken => Str, TrustIds => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::DS::DescribeTrusts>
+
+Returns: a L<Paws::DS::DescribeTrustsResult> instance
+
+  Obtains information about the trust relationships for this account.
+
+If no input parameters are provided, such as DirectoryId or TrustIds,
+this request describes all the trust relationships belonging to the
+account.
+
+
 =head2 DisableRadius(DirectoryId => Str)
 
 Each argument is described in detail in: L<Paws::DS::DisableRadius>
 
 Returns: a L<Paws::DS::DisableRadiusResult> instance
 
-  Disables multi-factor authentication (MFA) with Remote Authentication
-Dial In User Service (RADIUS) for an AD Connector directory.
+  Disables multi-factor authentication (MFA) with the Remote
+Authentication Dial In User Service (RADIUS) server for an AD Connector
+directory.
 
 
 =head2 DisableSso(DirectoryId => Str, [Password => Str, UserName => Str])
@@ -270,8 +346,9 @@ Each argument is described in detail in: L<Paws::DS::EnableRadius>
 
 Returns: a L<Paws::DS::EnableRadiusResult> instance
 
-  Enables multi-factor authentication (MFA) with Remote Authentication
-Dial In User Service (RADIUS) for an AD Connector directory.
+  Enables multi-factor authentication (MFA) with the Remote
+Authentication Dial In User Service (RADIUS) server for an AD Connector
+directory.
 
 
 =head2 EnableSso(DirectoryId => Str, [Password => Str, UserName => Str])
@@ -327,6 +404,19 @@ Returns: a L<Paws::DS::UpdateRadiusResult> instance
 
   Updates the Remote Authentication Dial In User Service (RADIUS) server
 information for an AD Connector directory.
+
+
+=head2 VerifyTrust(TrustId => Str)
+
+Each argument is described in detail in: L<Paws::DS::VerifyTrust>
+
+Returns: a L<Paws::DS::VerifyTrustResult> instance
+
+  AWS Directory Service for Microsoft Active Directory allows you to
+configure and verify trust relationships.
+
+This action verifies a trust relationship between your Microsoft AD in
+the AWS cloud and an external domain.
 
 
 =head1 SEE ALSO
