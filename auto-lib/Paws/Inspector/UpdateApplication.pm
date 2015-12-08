@@ -1,9 +1,9 @@
 
 package Paws::Inspector::UpdateApplication;
   use Moose;
-  has ApplicationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationArn' );
-  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' );
-  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' );
+  has ApplicationArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationArn' , required => 1);
+  has ApplicationName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'applicationName' , required => 1);
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceGroupArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -35,17 +35,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ApplicationArn => Str
+=head2 B<REQUIRED> ApplicationArn => Str
 
   Application ARN that you want to update.
 
 
-=head2 ApplicationName => Str
+=head2 B<REQUIRED> ApplicationName => Str
 
   Application name that you want to update.
 
 
-=head2 ResourceGroupArn => Str
+=head2 B<REQUIRED> ResourceGroupArn => Str
 
   The resource group ARN that you want to update.
 

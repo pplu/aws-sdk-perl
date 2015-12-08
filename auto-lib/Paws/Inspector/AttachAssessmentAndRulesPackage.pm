@@ -1,8 +1,8 @@
 
 package Paws::Inspector::AttachAssessmentAndRulesPackage;
   use Moose;
-  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' );
-  has RulesPackageArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'rulesPackageArn' );
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' , required => 1);
+  has RulesPackageArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'rulesPackageArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,13 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AssessmentArn => Str
+=head2 B<REQUIRED> AssessmentArn => Str
 
   The ARN specifying the assessment to which you want to attach a rules
 package.
 
 
-=head2 RulesPackageArn => Str
+=head2 B<REQUIRED> RulesPackageArn => Str
 
   The ARN specifying the rules package that you want to attach to the
 assessment.

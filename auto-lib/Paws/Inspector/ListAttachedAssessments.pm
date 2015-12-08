@@ -4,7 +4,7 @@ package Paws::Inspector::ListAttachedAssessments;
   has Filter => (is => 'ro', isa => 'Paws::Inspector::AssessmentsFilter', traits => ['NameInRequest'], request_name => 'filter' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
-  has RulesPackageArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'rulesPackageArn' );
+  has RulesPackageArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'rulesPackageArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -62,7 +62,7 @@ B<nextToken> in the request with the value of B<NextToken> from
 previous response to continue listing data.
 
 
-=head2 RulesPackageArn => Str
+=head2 B<REQUIRED> RulesPackageArn => Str
 
   The ARN specifying the rules package whose assessments you want to
 list.

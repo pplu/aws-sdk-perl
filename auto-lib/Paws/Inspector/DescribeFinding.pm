@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeFinding;
   use Moose;
-  has FindingArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingArn' );
+  has FindingArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingArn' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 FindingArn => Str
+=head2 B<REQUIRED> FindingArn => Str
 
   The ARN specifying the finding that you want to describe.
 

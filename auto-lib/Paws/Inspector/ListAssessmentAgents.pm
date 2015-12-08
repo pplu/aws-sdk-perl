@@ -1,7 +1,7 @@
 
 package Paws::Inspector::ListAssessmentAgents;
   use Moose;
-  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' );
+  has AssessmentArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'assessmentArn' , required => 1);
   has Filter => (is => 'ro', isa => 'Paws::Inspector::AgentsFilter', traits => ['NameInRequest'], request_name => 'filter' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AssessmentArn => Str
+=head2 B<REQUIRED> AssessmentArn => Str
 
   The ARN specifying the assessment whose agents you want to list.
 
