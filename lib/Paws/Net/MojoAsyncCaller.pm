@@ -2,7 +2,7 @@ package Paws::Net::MojoAsyncCaller {
   use Moose;
   with 'Paws::Net::CallerRole';
 
-  use MojoX::IOLoop::Future;
+  use Future::Mojo;
   use Mojo::UserAgent;
 
   has ua => (is => 'ro', isa => 'Mojo::UserAgent', default => sub {
@@ -18,16 +18,16 @@ package Paws::Net::MojoAsyncCaller {
     my $method = lc($requestObj->method);
     my $response_class = $call_object->_returns;
 
-    my $future = MojoX::IOLoop::Future->new;
+    my $future = Future::Mojo->new;
     $self->ua->$method(
       $requestObj->url =>  
       $headers => 
       ($requestObj->content)?$requestObj->content:() =>
       sub {
         my ( $ua, $response ) = @_;
-
         if (my $err = $response->error and not defined $response->error->{ code }){
           $future->fail(Paws::Exception->new(message => $err->{ message }, code => 'ConnectionError', request_id => ''));
+          #$future->fail(Paws::Exception->new(code => 'No Region', message => $response->error->{ message }));
         } else {
           my $res = $service->handle_response($call_object, $response->res->code, $response->res->body, $response->res->headers->to_hash);
 
@@ -39,7 +39,8 @@ package Paws::Net::MojoAsyncCaller {
             $future->done($res);
           }
         }
-      }   
+        return $future;
+      } 
     );
     return $future;   
   }
