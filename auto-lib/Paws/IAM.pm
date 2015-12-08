@@ -949,9 +949,6 @@ roles, go to Working with Roles. For information about limitations on
 role names and the number of roles you can create, go to Limitations on
 IAM Entities in the I<IAM User Guide>.
 
-The policy in the following example grants permission to an EC2
-instance to assume the role.
-
 
 =head2 CreateSAMLProvider(Name => Str, SAMLMetadataDocument => Str)
 
