@@ -97,8 +97,20 @@ UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
 
 XCTEST_TEST_PACKAGE: An XCode test package upload.
 
+=item *
+
+APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package
+upload.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package
+upload.
+
 =back
 
+B<Note> If you call C<CreateUpload> with C<WEB_APP> specified, AWS
+Device Farm throws an ArgumentException error.
 
 
 

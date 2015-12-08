@@ -298,7 +298,7 @@ Returns: a L<Paws::DeviceFarm::GetDevicePoolResult> instance
   Gets information about a device pool.
 
 
-=head2 GetDevicePoolCompatibility(AppArn => Str, DevicePoolArn => Str, [TestType => Str])
+=head2 GetDevicePoolCompatibility(DevicePoolArn => Str, [AppArn => Str, TestType => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetDevicePoolCompatibility>
 
@@ -460,7 +460,7 @@ Returns: a L<Paws::DeviceFarm::ListUploadsResult> instance
   Gets information about uploads.
 
 
-=head2 ScheduleRun(AppArn => Str, DevicePoolArn => Str, ProjectArn => Str, Test => L<Paws::DeviceFarm::ScheduleRunTest>, [Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>, Name => Str])
+=head2 ScheduleRun(DevicePoolArn => Str, ProjectArn => Str, Test => L<Paws::DeviceFarm::ScheduleRunTest>, [AppArn => Str, Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>, Name => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ScheduleRun>
 

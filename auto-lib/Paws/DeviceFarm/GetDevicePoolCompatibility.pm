@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetDevicePoolCompatibility;
   use Moose;
-  has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' , required => 1);
+  has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' );
   has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' , required => 1);
   has TestType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'testType' );
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AppArn => Str
+=head2 AppArn => Str
 
   The ARN of the app that is associated with the specified device pool.
 
