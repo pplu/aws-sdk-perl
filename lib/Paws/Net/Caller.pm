@@ -27,7 +27,7 @@ package Paws::Net::Caller {
     
     my $tracker = Paws::API::Retry->new(
       %{ $service->retry }, 
-      max_tries => $service->max_attempts
+      max_tries => 1, # This should be $service->max_attempts once retries are officially working
     );
 
     do {
