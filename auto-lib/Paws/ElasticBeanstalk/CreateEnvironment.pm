@@ -4,7 +4,8 @@ package Paws::ElasticBeanstalk::CreateEnvironment;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has CNAMEPrefix => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has EnvironmentName => (is => 'ro', isa => 'Str', required => 1);
+  has EnvironmentName => (is => 'ro', isa => 'Str');
+  has GroupName => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
@@ -63,7 +64,7 @@ by appending a random alphanumeric string to the environment name.
   Describes this environment.
 
 
-=head2 B<REQUIRED> EnvironmentName => Str
+=head2 EnvironmentName => Str
 
   A unique name for the deployment environment. Used in the application
 URL.
@@ -77,6 +78,14 @@ C<InvalidParameterValue> error.
 Default: If the CNAME parameter is not specified, the environment name
 becomes part of the CNAME, and therefore part of the visible URL for
 your application.
+
+
+=head2 GroupName => Str
+
+  The name of the group to which the target environment belongs. Specify
+a group name only if the environment's name is specified in an
+environment manifest and not with the environment name parameter. See
+Environment Manifest (env.yaml) for details.
 
 
 =head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]

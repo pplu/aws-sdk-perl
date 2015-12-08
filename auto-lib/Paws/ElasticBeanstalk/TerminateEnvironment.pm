@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::TerminateEnvironment;
   use Moose;
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
+  has ForceTerminate => (is => 'ro', isa => 'Bool');
   has TerminateResources => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
@@ -53,17 +54,16 @@ If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
 
+=head2 ForceTerminate => Bool
+
+  Terminates the target environment even if another environment in the
+same group is dependent on it.
+
+
 =head2 TerminateResources => Bool
 
   Indicates whether the associated AWS resources should shut down when
 the environment is terminated:
-
-C<true>: (default) The user AWS resources (for example, the Auto
-Scaling group, LoadBalancer, etc.) are terminated along with the
-environment.
-
-C<false>: The environment is removed from the AWS Elastic Beanstalk but
-the AWS resources continue to operate.
 
 =over
 

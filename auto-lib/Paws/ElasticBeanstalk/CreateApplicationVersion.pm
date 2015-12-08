@@ -4,6 +4,7 @@ package Paws::ElasticBeanstalk::CreateApplicationVersion;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has AutoCreateApplication => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
+  has Process => (is => 'ro', isa => 'Bool');
   has SourceBundle => (is => 'ro', isa => 'Paws::ElasticBeanstalk::S3Location');
   has VersionLabel => (is => 'ro', isa => 'Str', required => 1);
 
@@ -49,12 +50,6 @@ C<InvalidParameterValue> error.
   Determines how the system behaves if the specified application for this
 version does not already exist:
 
-C<true>: Automatically creates the specified application for this
-version if it does not already exist.
-
-C<false>: Returns an C<InvalidParameterValue> if the specified
-application for this version does not already exist.
-
 =over
 
 =item * C<true> : Automatically creates the specified application for
@@ -73,6 +68,13 @@ Valid Values: C<true> | C<false>
 =head2 Description => Str
 
   Describes this version.
+
+
+=head2 Process => Bool
+
+  Preprocesses and validates the environment manifest and configuration
+files in the source bundle. Validating configuration files can identify
+issues prior to deploying the application version to an environment.
 
 
 =head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>

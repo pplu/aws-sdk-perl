@@ -40,18 +40,6 @@ Paws::ElasticBeanstalk::ConfigurationSettingsDescription
 C<DeploymentStatus> parameter indicates the deployment status of this
 configuration set:
 
-C<null>: This configuration is not associated with a running
-environment.
-
-C<pending>: This is a draft configuration that is not deployed to the
-associated environment but is in the process of deploying.
-
-C<deployed>: This is the configuration that is currently deployed to
-the associated running environment.
-
-C<failed>: This is a draft configuration, that failed to successfully
-deploy.
-
 =over
 
 =item * C<null>: This configuration is not associated with a running

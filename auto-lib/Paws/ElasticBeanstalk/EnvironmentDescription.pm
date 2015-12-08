@@ -9,6 +9,7 @@ package Paws::ElasticBeanstalk::EnvironmentDescription;
   has Description => (is => 'ro', isa => 'Str');
   has EndpointURL => (is => 'ro', isa => 'Str');
   has EnvironmentId => (is => 'ro', isa => 'Str');
+  has EnvironmentLinks => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::EnvironmentLink]');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has Health => (is => 'ro', isa => 'Str');
   has HealthStatus => (is => 'ro', isa => 'Str');
@@ -69,6 +70,10 @@ instance.
 
   The ID of this environment.
 
+=head2 EnvironmentLinks => ArrayRef[L<Paws::ElasticBeanstalk::EnvironmentLink>]
+
+  A list of links to other environments in the same group.
+
 =head2 EnvironmentName => Str
 
   The name of this environment.
@@ -77,13 +82,6 @@ instance.
 
   Describes the health status of the environment. AWS Elastic Beanstalk
 indicates the failure levels for a running environment:
-
-C<Red> : Indicates the environment is not working.
-
-C<Yellow>: Indicates that something is wrong, the application might not
-be available, but the instances appear running.
-
-C<Green>: Indicates the environment is healthy and fully functional.
 
 =over
 

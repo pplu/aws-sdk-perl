@@ -19,10 +19,6 @@ Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage
 
   Indicates if the specified CNAME is available:
 
-C<true> : The CNAME is available.
-
-C<true> : The CNAME is not available.
-
 =over
 
 =item * C<true> : The CNAME is available.
