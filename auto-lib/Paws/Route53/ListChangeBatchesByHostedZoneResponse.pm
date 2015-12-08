@@ -1,7 +1,11 @@
 
-package Paws::Route53::GetHealthCheckStatusResponse;
+package Paws::Route53::ListChangeBatchesByHostedZoneResponse;
   use Moose;
-  has HealthCheckObservations => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HealthCheckObservation]', traits => ['Unwrapped'], xmlname => 'HealthCheckObservation', required => 1);
+  has ChangeBatchRecords => (is => 'ro', isa => 'ArrayRef[Paws::Route53::ChangeBatchRecord]', traits => ['Unwrapped'], xmlname => 'ChangeBatchRecord', required => 1);
+  has IsTruncated => (is => 'ro', isa => 'Bool');
+  has Marker => (is => 'ro', isa => 'Str', required => 1);
+  has MaxItems => (is => 'ro', isa => 'Str', required => 1);
+  has NextMarker => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -28,10 +32,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HealthCheckObservations => ArrayRef[L<Paws::Route53::HealthCheckObservation>]
+=head2 B<REQUIRED> ChangeBatchRecords => ArrayRef[L<Paws::Route53::ChangeBatchRecord>]
 
-  A list that contains one C<HealthCheckObservation> element for each
-Amazon Route 53 health checker.
+  The change batches within the given hosted zone and time period.
+
+
+=head2 IsTruncated => Bool
+
+  A flag that indicates if there are more change batches to list.
+
+
+=head2 B<REQUIRED> Marker => Str
+
+  The page marker.
+
+
+=head2 B<REQUIRED> MaxItems => Str
+
+  The maximum number of items on a page.
+
+
+=head2 NextMarker => Str
+
+  The next page marker.
 
 
 

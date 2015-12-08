@@ -1,7 +1,7 @@
 
-package Paws::Route53::GetHealthCheckStatusResponse;
+package Paws::Route53::GetTrafficPolicyResponse;
   use Moose;
-  has HealthCheckObservations => (is => 'ro', isa => 'ArrayRef[Paws::Route53::HealthCheckObservation]', traits => ['Unwrapped'], xmlname => 'HealthCheckObservation', required => 1);
+  has TrafficPolicy => (is => 'ro', isa => 'Paws::Route53::TrafficPolicy', required => 1);
 
 1;
 
@@ -28,10 +28,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> HealthCheckObservations => ArrayRef[L<Paws::Route53::HealthCheckObservation>]
+=head2 B<REQUIRED> TrafficPolicy => L<Paws::Route53::TrafficPolicy>
 
-  A list that contains one C<HealthCheckObservation> element for each
-Amazon Route 53 health checker.
+  A complex type that contains settings for the specified traffic policy.
 
 
 

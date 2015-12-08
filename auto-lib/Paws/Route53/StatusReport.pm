@@ -43,8 +43,7 @@ for the current observation.
   The date and time the health check status was observed, in the format
 C<YYYY-MM-DDThh:mm:ssZ>, as specified in the ISO 8601 standard (for
 example, 2009-11-19T19:37:58Z). The C<Z> after the time indicates that
-the time is listed in Coordinated Universal Time (UTC), which is
-synonymous with Greenwich Mean Time in this context.
+the time is listed in Coordinated Universal Time (UTC).
 
 
 =head2 Status => Str
