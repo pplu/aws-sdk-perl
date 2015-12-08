@@ -327,7 +327,7 @@ If there is no DB subnet group, then it is a non-VPC DB instance.
 
 Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
 C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
-C<sqlserver-web> | C<postgres>
+C<sqlserver-web> | C<postgres> | C<aurora>
 
 Not every database engine is available for every AWS region.
 
@@ -429,9 +429,10 @@ ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
 us-west-1, us-west-2):> C< 9.3.1 | 9.3.2>
 
 =item * B<Version 9.3 (Available in all regions):> C< 9.3.3 | 9.3.5 |
-9.3.6>
+9.3.6 | 9.3.9 | 9.3.10>
 
-=item * B<Version 9.4 (Available in all regions):> C< 9.4.1>
+=item * B<Version 9.4 (Available in all regions):> C< 9.4.1 | 9.4.4 |
+9.4.5>
 
 =back
 

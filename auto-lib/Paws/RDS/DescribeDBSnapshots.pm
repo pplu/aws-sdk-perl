@@ -156,8 +156,8 @@ C<IncludePublic> parameter to C<true>.
 
 The C<IncludeShared> and C<IncludePublic> parameters do not apply for
 C<SnapshotType> values of C<manual> or C<automated>. The
-C<IncludePublic> paramter does not apply when C<SnapshotType> is set to
-C<shared>. the C<IncludeShared> parameter does not apply when
+C<IncludePublic> parameter does not apply when C<SnapshotType> is set
+to C<shared>. the C<IncludeShared> parameter does not apply when
 C<SnapshotType> is set to C<public>.
 
 
