@@ -46,7 +46,7 @@ package Paws::API::Builder {
   });
   has retry => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
-    $self->retry_struct->{ $self->service };
+    $self->retry_struct->{ $self->service }->{ __default__ };
   });
   has service_max_attempts => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
