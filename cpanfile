@@ -43,7 +43,7 @@ on 'develop' => sub {
   requires 'Test::Pod';
   # For developing / testing the pluggable callers
   requires 'Mojolicious';
-  requires 'Future::Mojo', '>= 0.03';
+  requires 'Future::Mojo', '>= 0.003';
   requires 'EV';
   requires 'LWP::UserAgent';
   requires 'Furl';
