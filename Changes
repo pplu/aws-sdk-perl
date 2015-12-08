@@ -1,4 +1,5 @@
 0.21
+ - MojoAsyncCaller starts using Future::Mojo, a better alternative to MojoX::IOLoop::Future
  - Directory Service API update
  - Route53 API update: traffic policies
  - RDS API update: support for PortNumbers
