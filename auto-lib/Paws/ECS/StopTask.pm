@@ -2,6 +2,7 @@
 package Paws::ECS::StopTask;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has Reason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'reason' );
   has Task => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'task' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -39,6 +40,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the task to stop. If you do not specify a cluster, the default
 cluster is assumed..
+
+
+=head2 Reason => Str
+
+  An optional message specified when a task is stopped. For example, if
+you are using a custom scheduler, you can use this parameter to specify
+the reason for stopping the task here, and the message will appear in
+subsequent DescribeTasks API operations on this task. Up to 255
+characters are allowed in this message.
 
 
 =head2 B<REQUIRED> Task => Str
