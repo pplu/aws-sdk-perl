@@ -1,4 +1,14 @@
-0.20
+0.21
+ - Directory Service API update
+ - Route53 API update: traffic policies
+ - RDS API update: support for PortNumbers
+ - Inspector API update
+ - ElasticBeanstalk API update
+ - EC2 API update: suport for Dedicated Hosts
+ - DeviceFarm API update
+ - ECS API update: more info about tasks
+
+0.20 3 Dec 2015
  - Better schema validation in builders (by Oriol Soriano) 
  - EC2 docu update
  - RDS support for cross account snapshot sharing. New instance types too
