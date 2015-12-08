@@ -50,7 +50,8 @@ to the computer account.
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-  The identifier of the directory to create the computer account in.
+  The identifier of the directory in which to create the computer
+account.
 
 
 =head2 OrganizationalUnitDistinguishedName => Str

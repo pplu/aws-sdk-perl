@@ -4,6 +4,10 @@ package Paws::DynamoDBStreams;
   sub version { '2012-08-10' }
   sub target_prefix { 'DynamoDBStreams_20120810' }
   sub json_version { "1.0" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 

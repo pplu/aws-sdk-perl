@@ -3,6 +3,9 @@ package Paws::DS::DirectoryLimits;
   has CloudOnlyDirectoriesCurrentCount => (is => 'ro', isa => 'Int');
   has CloudOnlyDirectoriesLimit => (is => 'ro', isa => 'Int');
   has CloudOnlyDirectoriesLimitReached => (is => 'ro', isa => 'Bool');
+  has CloudOnlyMicrosoftADCurrentCount => (is => 'ro', isa => 'Int');
+  has CloudOnlyMicrosoftADLimit => (is => 'ro', isa => 'Int');
+  has CloudOnlyMicrosoftADLimitReached => (is => 'ro', isa => 'Bool');
   has ConnectedDirectoriesCurrentCount => (is => 'ro', isa => 'Int');
   has ConnectedDirectoriesLimit => (is => 'ro', isa => 'Int');
   has ConnectedDirectoriesLimitReached => (is => 'ro', isa => 'Bool');
@@ -54,6 +57,21 @@ Contains directory limit information for a region.
 =head2 CloudOnlyDirectoriesLimitReached => Bool
 
   Indicates if the cloud directory limit has been reached.
+
+
+=head2 CloudOnlyMicrosoftADCurrentCount => Int
+
+  The current number of Microsoft AD directories in the region.
+
+
+=head2 CloudOnlyMicrosoftADLimit => Int
+
+  The maximum number of Microsoft AD directories allowed in the region.
+
+
+=head2 CloudOnlyMicrosoftADLimitReached => Bool
+
+  Indicates if the Microsoft AD directory limit has been reached.
 
 
 =head2 ConnectedDirectoriesCurrentCount => Int

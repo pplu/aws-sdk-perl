@@ -3,6 +3,10 @@ package Paws::IAM;
   sub service { 'iam' }
   sub version { '2010-05-08' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -944,9 +948,6 @@ Returns: a L<Paws::IAM::CreateRoleResponse> instance
 roles, go to Working with Roles. For information about limitations on
 role names and the number of roles you can create, go to Limitations on
 IAM Entities in the I<IAM User Guide>.
-
-The policy in the following example grants permission to an EC2
-instance to assume the role.
 
 
 =head2 CreateSAMLProvider(Name => Str, SAMLMetadataDocument => Str)

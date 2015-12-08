@@ -11,6 +11,7 @@ package Paws::RDS::ModifyDBInstance;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
+  has DBPortNumber => (is => 'ro', isa => 'Int');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
@@ -273,6 +274,48 @@ Default: Uses existing setting
 
 Constraints: The DB parameter group must be in the same DB parameter
 group family as this DB instance.
+
+
+=head2 DBPortNumber => Int
+
+  The port number on which the database accepts connections.
+
+B<MySQL>
+
+Default: C<3306>
+
+Valid Values: C<1150-65535>
+
+B<MariaDB>
+
+Default: C<3306>
+
+Valid Values: C<1150-65535>
+
+B<PostgreSQL>
+
+Default: C<5432>
+
+Valid Values: C<1150-65535>
+
+B<Oracle>
+
+Default: C<1521>
+
+Valid Values: C<1150-65535>
+
+B<SQL Server>
+
+Default: C<1433>
+
+Valid Values: C<1150-65535> except for C<1434>, C<3389>, C<47001>,
+C<49152>, and C<49152> through C<49156>.
+
+B<Amazon Aurora>
+
+Default: C<3306>
+
+Valid Values: C<1150-65535>
 
 
 =head2 DBSecurityGroups => ArrayRef[Str]

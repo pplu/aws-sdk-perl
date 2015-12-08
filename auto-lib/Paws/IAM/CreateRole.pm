@@ -37,7 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssumeRolePolicyDocument => Str
 
-  The policy that grants an entity permission to assume the role.
+  The trust relationship policy document that grants an entity permission
+to assume the role.
 
 
 =head2 Path => Str

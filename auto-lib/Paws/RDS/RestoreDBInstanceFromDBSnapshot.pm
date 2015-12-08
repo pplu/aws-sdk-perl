@@ -151,7 +151,7 @@ Constraint: Must be compatible with the engine of the source
 
 Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
 C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
-C<sqlserver-web> | C<postgres>
+C<sqlserver-web> | C<postgres> | C<aurora>
 
 
 =head2 Iops => Int

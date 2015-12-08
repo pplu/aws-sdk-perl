@@ -52,10 +52,10 @@ zone.
 =head2 B<REQUIRED> Name => Str
 
   The name of the domain. This must be a fully-specified domain, for
-example, www.example.com. The trailing dot is optional; Route 53
-assumes that the domain name is fully qualified. This means that Route
-53 treats www.example.com (without a trailing dot) and www.example.com.
-(with a trailing dot) as identical.
+example, www.example.com. The trailing dot is optional; Amazon Route 53
+assumes that the domain name is fully qualified. This means that Amazon
+Route 53 treats www.example.com (without a trailing dot) and
+www.example.com. (with a trailing dot) as identical.
 
 This is the name you have registered with your DNS registrar. You
 should ask your registrar to change the authoritative name servers for

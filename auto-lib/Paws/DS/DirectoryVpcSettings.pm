@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Directo
 
 =head1 DESCRIPTION
 
-Contains information for the CreateDirectory operation when a Simple AD
-directory is being created.
+Contains VPC information for the CreateDirectory or CreateMicrosoftAD
+operation.
 
 =head1 ATTRIBUTES
 
@@ -47,7 +47,7 @@ creates a directory server and a DNS server in each of these subnets.
 
 =head2 B<REQUIRED> VpcId => Str
 
-  The identifier of the VPC to create the Simple AD directory in.
+  The identifier of the VPC in which to create the directory.
 
 
 

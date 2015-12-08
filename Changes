@@ -1,3 +1,8 @@
+0.21
+ - Directory Service API update
+ - Route53 API update: traffic policies
+ - RDS API update: support for PortNumbers
+
 0.20 3 Dec 2015
  - S3 can now get and put objects. Entire API should now be working correctly (glenveegee)
  - Better schema validation in builders (by Oriol Soriano) 

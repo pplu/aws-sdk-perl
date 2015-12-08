@@ -4,8 +4,12 @@ package Paws::Route53;
   sub service { 'route53' }
   sub version { '2013-04-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
 
-  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V3HTTPSSignature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
+  with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
   has '+region_rules' => (default => sub {
     my $regioninfo;
@@ -18,6 +22,11 @@ package Paws::Route53;
           'cn-'
         ]
       ],
+      properties => {
+        credentialScope => {
+          region => 'us-east-1'
+        }
+      },
       uri => 'https://route53.amazonaws.com'
     }
   ];
@@ -56,6 +65,21 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::CreateReusableDelegationSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTrafficPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::CreateTrafficPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTrafficPolicyInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::CreateTrafficPolicyInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTrafficPolicyVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::CreateTrafficPolicyVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteHealthCheck {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::DeleteHealthCheck', @_);
@@ -71,6 +95,16 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::DeleteReusableDelegationSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteTrafficPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::DeleteTrafficPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTrafficPolicyInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::DeleteTrafficPolicyInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateVPCFromHostedZone {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::DisassociateVPCFromHostedZone', @_);
@@ -79,6 +113,11 @@ package Paws::Route53;
   sub GetChange {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::GetChange', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetChangeDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetChangeDetails', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetCheckerIpRanges {
@@ -126,6 +165,31 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::GetReusableDelegationSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetTrafficPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetTrafficPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetTrafficPolicyInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetTrafficPolicyInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetTrafficPolicyInstanceCount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::GetTrafficPolicyInstanceCount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListChangeBatchesByHostedZone {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListChangeBatchesByHostedZone', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListChangeBatchesByRRSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListChangeBatchesByRRSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListGeoLocations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::ListGeoLocations', @_);
@@ -166,6 +230,31 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::ListTagsForResources', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTrafficPolicies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListTrafficPolicies', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTrafficPolicyInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListTrafficPolicyInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTrafficPolicyInstancesByHostedZone {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListTrafficPolicyInstancesByHostedZone', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTrafficPolicyInstancesByPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListTrafficPolicyInstancesByPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTrafficPolicyVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::ListTrafficPolicyVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateHealthCheck {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53::UpdateHealthCheck', @_);
@@ -176,8 +265,18 @@ package Paws::Route53;
     my $call_object = $self->new_with_coercions('Paws::Route53::UpdateHostedZoneComment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateTrafficPolicyComment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::UpdateTrafficPolicyComment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTrafficPolicyInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53::UpdateTrafficPolicyInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
 
-  sub operations { qw/AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateReusableDelegationSet DeleteHealthCheck DeleteHostedZone DeleteReusableDelegationSet DisassociateVPCFromHostedZone GetChange GetCheckerIpRanges GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetReusableDelegationSet ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources UpdateHealthCheck UpdateHostedZoneComment / }
+  sub operations { qw/AssociateVPCWithHostedZone ChangeResourceRecordSets ChangeTagsForResource CreateHealthCheck CreateHostedZone CreateReusableDelegationSet CreateTrafficPolicy CreateTrafficPolicyInstance CreateTrafficPolicyVersion DeleteHealthCheck DeleteHostedZone DeleteReusableDelegationSet DeleteTrafficPolicy DeleteTrafficPolicyInstance DisassociateVPCFromHostedZone GetChange GetChangeDetails GetCheckerIpRanges GetGeoLocation GetHealthCheck GetHealthCheckCount GetHealthCheckLastFailureReason GetHealthCheckStatus GetHostedZone GetHostedZoneCount GetReusableDelegationSet GetTrafficPolicy GetTrafficPolicyInstance GetTrafficPolicyInstanceCount ListChangeBatchesByHostedZone ListChangeBatchesByRRSet ListGeoLocations ListHealthChecks ListHostedZones ListHostedZonesByName ListResourceRecordSets ListReusableDelegationSets ListTagsForResource ListTagsForResources ListTrafficPolicies ListTrafficPolicyInstances ListTrafficPolicyInstancesByHostedZone ListTrafficPolicyInstancesByPolicy ListTrafficPolicyVersions UpdateHealthCheck UpdateHostedZoneComment UpdateTrafficPolicyComment UpdateTrafficPolicyInstance / }
 
 1;
 
@@ -255,29 +354,35 @@ C<ChangeResourceRecordSetsRequest> element.
 
 Changes are a list of change items and are considered transactional.
 For more information on transactional changes, also known as change
-batches, see Creating, Changing, and Deleting Resource Record Sets
-Using the Route 53 API in the I<Amazon Route 53 Developer Guide>.
+batches, see POST ChangeResourceRecordSets in the I<Amazon Route 53 API
+Reference>.
 
 Due to the nature of transactional changes, you cannot delete the same
 resource record set more than once in a single change batch. If you
-attempt to delete the same change batch more than once, Route 53
+attempt to delete the same change batch more than once, Amazon Route 53
 returns an C<InvalidChangeBatch> error.
 
 In response to a C<ChangeResourceRecordSets> request, your DNS data is
-changed on all Route 53 DNS servers. Initially, the status of a change
-is C<PENDING>. This means the change has not yet propagated to all the
-authoritative Route 53 DNS servers. When the change is propagated to
-all hosts, the change returns a status of C<INSYNC>.
+changed on all Amazon Route 53 DNS servers. Initially, the status of a
+change is C<PENDING>. This means the change has not yet propagated to
+all the authoritative Amazon Route 53 DNS servers. When the change is
+propagated to all hosts, the change returns a status of C<INSYNC>.
 
 Note the following limitations on a C<ChangeResourceRecordSets>
 request:
 
-- A request cannot contain more than 100 Change elements.
+=over
 
-- A request cannot contain more than 1000 ResourceRecord elements.
+=item * A request cannot contain more than 100 Change elements.
 
-The sum of the number of characters (including spaces) in all C<Value>
-elements in a request cannot exceed 32,000 characters.
+=item * A request cannot contain more than 1000 ResourceRecord
+elements.
+
+=item * The sum of the number of characters (including spaces) in all
+C<Value> elements in a request cannot exceed 32,000 characters.
+
+=back
+
 
 
 =head2 ChangeTagsForResource(ResourceId => Str, ResourceType => Str, [AddTags => ArrayRef[L<Paws::Route53::Tag>], RemoveTagKeys => ArrayRef[Str]])
@@ -318,16 +423,17 @@ document with a C<CreateHostedZoneRequest> element. The response
 returns the C<CreateHostedZoneResponse> element that contains metadata
 about the hosted zone.
 
-Route 53 automatically creates a default SOA record and four NS records
-for the zone. The NS records in the hosted zone are the name servers
-you give your registrar to delegate your domain to. For more
-information about SOA and NS records, see NS and SOA Records that Route
-53 Creates for a Hosted Zone in the I<Amazon Route 53 Developer Guide>.
+Amazon Route 53 automatically creates a default SOA record and four NS
+records for the zone. The NS records in the hosted zone are the name
+servers you give your registrar to delegate your domain to. For more
+information about SOA and NS records, see NS and SOA Records that
+Amazon Route 53 Creates for a Hosted Zone in the I<Amazon Route 53
+Developer Guide>.
 
 When you create a zone, its initial status is C<PENDING>. This means
 that it is not yet available on all DNS servers. The status of the zone
 changes to C<INSYNC> when the NS and SOA records are available on all
-Route 53 DNS servers.
+Amazon Route 53 DNS servers.
 
 When trying to create a hosted zone using a reusable delegation set,
 you could specify an optional DelegationSetId, and Route53 would assign
@@ -352,6 +458,66 @@ If the optional parameter HostedZoneId is specified, it marks the
 delegationSet associated with that particular hosted zone as reusable.
 
 
+=head2 CreateTrafficPolicy(Document => Str, Name => Str, [Comment => Str])
+
+Each argument is described in detail in: L<Paws::Route53::CreateTrafficPolicy>
+
+Returns: a L<Paws::Route53::CreateTrafficPolicyResponse> instance
+
+  Creates a traffic policy, which you use to create multiple DNS resource
+record sets for one domain name (such as example.com) or one subdomain
+name (such as www.example.com).
+
+To create a traffic policy, send a C<POST> request to the
+C<2013-04-01/trafficpolicy> resource. The request body must include an
+XML document with a C<CreateTrafficPolicyRequest> element. The response
+includes the C<CreateTrafficPolicyResponse> element, which contains
+information about the new traffic policy.
+
+
+=head2 CreateTrafficPolicyInstance(HostedZoneId => Str, Name => Str, TrafficPolicyId => Str, TrafficPolicyVersion => Int, TTL => Int)
+
+Each argument is described in detail in: L<Paws::Route53::CreateTrafficPolicyInstance>
+
+Returns: a L<Paws::Route53::CreateTrafficPolicyInstanceResponse> instance
+
+  Creates resource record sets in a specified hosted zone based on the
+settings in a specified traffic policy version. In addition,
+C<CreateTrafficPolicyInstance> associates the resource record sets with
+a specified domain name (such as example.com) or subdomain name (such
+as www.example.com). Amazon Route 53 responds to DNS queries for the
+domain or subdomain name by using the resource record sets that
+C<CreateTrafficPolicyInstance> created.
+
+To create a traffic policy instance, send a C<POST> request to the
+C<2013-04-01/trafficpolicyinstance> resource. The request body must
+include an XML document with a C<CreateTrafficPolicyRequest> element.
+The response returns the C<CreateTrafficPolicyInstanceResponse>
+element, which contains information about the traffic policy instance.
+
+
+=head2 CreateTrafficPolicyVersion(Document => Str, Id => Str, [Comment => Str])
+
+Each argument is described in detail in: L<Paws::Route53::CreateTrafficPolicyVersion>
+
+Returns: a L<Paws::Route53::CreateTrafficPolicyVersionResponse> instance
+
+  Creates a new version of an existing traffic policy. When you create a
+new version of a traffic policy, you specify the ID of the traffic
+policy that you want to update and a JSON-formatted document that
+describes the new version.
+
+You use traffic policies to create multiple DNS resource record sets
+for one domain name (such as example.com) or one subdomain name (such
+as www.example.com).
+
+To create a new version, send a C<POST> request to the
+C<2013-04-01/trafficpolicy/> resource. The request body includes an XML
+document with a C<CreateTrafficPolicyVersionRequest> element. The
+response returns the C<CreateTrafficPolicyVersionResponse> element,
+which contains information about the new version of the traffic policy.
+
+
 =head2 DeleteHealthCheck(HealthCheckId => Str)
 
 Each argument is described in detail in: L<Paws::Route53::DeleteHealthCheck>
@@ -366,8 +532,8 @@ You can delete a health check only if there are no resource record sets
 associated with this health check. If resource record sets are
 associated with this health check, you must disassociate them before
 you can delete your health check. If you try to delete a health check
-that is associated with resource record sets, Route 53 will deny your
-request with a C<HealthCheckInUse> error. For information about
+that is associated with resource record sets, Amazon Route 53 will deny
+your request with a C<HealthCheckInUse> error. For information about
 disassociating the records from your health check, see
 ChangeResourceRecordSets.
 
@@ -389,9 +555,10 @@ You can delete a hosted zone only if there are no resource record sets
 other than the default SOA record and NS resource record sets. If your
 hosted zone contains other resource record sets, you must delete them
 before you can delete your hosted zone. If you try to delete a hosted
-zone that contains other resource record sets, Route 53 will deny your
-request with a C<HostedZoneNotEmpty> error. For information about
-deleting records from your hosted zone, see ChangeResourceRecordSets.
+zone that contains other resource record sets, Amazon Route 53 will
+deny your request with a C<HostedZoneNotEmpty> error. For information
+about deleting records from your hosted zone, see
+ChangeResourceRecordSets.
 
 
 =head2 DeleteReusableDelegationSet(Id => Str)
@@ -408,8 +575,35 @@ You can delete a reusable delegation set only if there are no
 associated hosted zones. If your reusable delegation set contains
 associated hosted zones, you must delete them before you can delete
 your reusable delegation set. If you try to delete a reusable
-delegation set that contains associated hosted zones, Route 53 will
-deny your request with a C<DelegationSetInUse> error.
+delegation set that contains associated hosted zones, Amazon Route 53
+will deny your request with a C<DelegationSetInUse> error.
+
+
+=head2 DeleteTrafficPolicy(Id => Str, Version => Int)
+
+Each argument is described in detail in: L<Paws::Route53::DeleteTrafficPolicy>
+
+Returns: a L<Paws::Route53::DeleteTrafficPolicyResponse> instance
+
+  Deletes a traffic policy. To delete a traffic policy, send a C<DELETE>
+request to the C<2013-04-01/trafficpolicy> resource.
+
+
+=head2 DeleteTrafficPolicyInstance(Id => Str)
+
+Each argument is described in detail in: L<Paws::Route53::DeleteTrafficPolicyInstance>
+
+Returns: a L<Paws::Route53::DeleteTrafficPolicyInstanceResponse> instance
+
+  Deletes a traffic policy instance and all of the resource record sets
+that Amazon Route 53 created when you created the instance.
+
+To delete a traffic policy instance, send a C<DELETE> request to the
+C<2013-04-01/trafficpolicy/I<traffic policy instance ID>> resource.
+
+When you delete a traffic policy instance, Amazon Route 53 also deletes
+all of the resource record sets that were created when you created the
+traffic policy instance.
 
 
 =head2 DisassociateVPCFromHostedZone(HostedZoneId => Str, VPC => L<Paws::Route53::VPC>, [Comment => Str])
@@ -440,11 +634,20 @@ Returns: a L<Paws::Route53::GetChangeResponse> instance
 status is one of the following values:
 
 - C<PENDING> indicates that the changes in this request have not
-replicated to all Route 53 DNS servers. This is the initial status of
-all change batch requests.
+replicated to all Amazon Route 53 DNS servers. This is the initial
+status of all change batch requests.
 
 - C<INSYNC> indicates that the changes have replicated to all Amazon
 Route 53 DNS servers.
+
+
+=head2 GetChangeDetails(Id => Str)
+
+Each argument is described in detail in: L<Paws::Route53::GetChangeDetails>
+
+Returns: a L<Paws::Route53::GetChangeDetailsResponse> instance
+
+  This action returns the status and changes of a change batch request.
 
 
 =head2 GetCheckerIpRanges()
@@ -523,8 +726,8 @@ Returns: a L<Paws::Route53::GetHostedZoneResponse> instance
 
   To retrieve the delegation set for a hosted zone, send a C<GET> request
 to the C<2013-04-01/hostedzone/I<hosted zone ID>> resource. The
-delegation set is the four Route 53 name servers that were assigned to
-the hosted zone when you created it.
+delegation set is the four Amazon Route 53 name servers that were
+assigned to the hosted zone when you created it.
 
 
 =head2 GetHostedZoneCount()
@@ -545,6 +748,68 @@ Returns: a L<Paws::Route53::GetReusableDelegationSetResponse> instance
 
   To retrieve the reusable delegation set, send a C<GET> request to the
 C<2013-04-01/delegationset/I<delegation set ID>> resource.
+
+
+=head2 GetTrafficPolicy(Id => Str, Version => Int)
+
+Each argument is described in detail in: L<Paws::Route53::GetTrafficPolicy>
+
+Returns: a L<Paws::Route53::GetTrafficPolicyResponse> instance
+
+  Gets information about a specific traffic policy version. To get the
+information, send a C<GET> request to the C<2013-04-01/trafficpolicy>
+resource.
+
+
+=head2 GetTrafficPolicyInstance(Id => Str)
+
+Each argument is described in detail in: L<Paws::Route53::GetTrafficPolicyInstance>
+
+Returns: a L<Paws::Route53::GetTrafficPolicyInstanceResponse> instance
+
+  Gets information about a specified traffic policy instance.
+
+To get information about the traffic policy instance, send a C<GET>
+request to the C<2013-04-01/trafficpolicyinstance> resource.
+
+After you submit a C<CreateTrafficPolicyInstance> or an
+C<UpdateTrafficPolicyInstance> request, there's a brief delay while
+Amazon Route 53 creates the resource record sets that are specified in
+the traffic policy definition. For more information, see the State
+response element.
+
+
+=head2 GetTrafficPolicyInstanceCount()
+
+Each argument is described in detail in: L<Paws::Route53::GetTrafficPolicyInstanceCount>
+
+Returns: a L<Paws::Route53::GetTrafficPolicyInstanceCountResponse> instance
+
+  Gets the number of traffic policy instances that are associated with
+the current AWS account.
+
+To get the number of traffic policy instances, send a C<GET> request to
+the C<2013-04-01/trafficpolicyinstancecount> resource.
+
+
+=head2 ListChangeBatchesByHostedZone(EndDate => Str, HostedZoneId => Str, StartDate => Str, [Marker => Str, MaxItems => Str])
+
+Each argument is described in detail in: L<Paws::Route53::ListChangeBatchesByHostedZone>
+
+Returns: a L<Paws::Route53::ListChangeBatchesByHostedZoneResponse> instance
+
+  This action gets the list of ChangeBatches in a given time period for a
+given hosted zone.
+
+
+=head2 ListChangeBatchesByRRSet(EndDate => Str, HostedZoneId => Str, Name => Str, StartDate => Str, Type => Str, [Marker => Str, MaxItems => Str, SetIdentifier => Str])
+
+Each argument is described in detail in: L<Paws::Route53::ListChangeBatchesByRRSet>
+
+Returns: a L<Paws::Route53::ListChangeBatchesByRRSetResponse> instance
+
+  This action gets the list of ChangeBatches in a given time period for a
+given hosted zone and RRSet.
 
 
 =head2 ListGeoLocations([MaxItems => Str, StartContinentCode => Str, StartCountryCode => Str, StartSubdivisionCode => Str])
@@ -714,13 +979,282 @@ Returns: a L<Paws::Route53::ListTagsForResourceResponse> instance
   
 
 
-=head2 ListTagsForResources(ResourceType => Str)
+=head2 ListTagsForResources(ResourceIds => ArrayRef[Str], ResourceType => Str)
 
 Each argument is described in detail in: L<Paws::Route53::ListTagsForResources>
 
 Returns: a L<Paws::Route53::ListTagsForResourcesResponse> instance
 
   
+
+
+=head2 ListTrafficPolicies([MaxItems => Str, TrafficPolicyIdMarker => Str])
+
+Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicies>
+
+Returns: a L<Paws::Route53::ListTrafficPoliciesResponse> instance
+
+  Gets information about the latest version for every traffic policy that
+is associated with the current AWS account. To get the information,
+send a C<GET> request to the C<2013-04-01/trafficpolicy> resource.
+
+Amazon Route 53 returns a maximum of 100 items in each response. If you
+have a lot of traffic policies, you can use the C<maxitems> parameter
+to list them in groups of up to 100.
+
+The response includes three values that help you navigate from one
+group of C<maxitems> traffic policies to the next:
+
+=over
+
+=item * B<IsTruncated>
+
+If the value of C<IsTruncated> in the response is C<true>, there are
+more traffic policies associated with the current AWS account.
+
+If C<IsTruncated> is C<false>, this response includes the last traffic
+policy that is associated with the current account.
+
+=item * B<TrafficPolicyIdMarker>
+
+If C<IsTruncated> is C<true>, C<TrafficPolicyIdMarker> is the ID of the
+first traffic policy in the next group of C<MaxItems> traffic policies.
+If you want to list more traffic policies, make another call to
+C<ListTrafficPolicies>, and specify the value of the
+C<TrafficPolicyIdMarker> element from the response in the
+C<TrafficPolicyIdMarker> request parameter.
+
+If C<IsTruncated> is C<false>, the C<TrafficPolicyIdMarker> element is
+omitted from the response.
+
+=item * B<MaxItems>
+
+The value that you specified for the C<MaxItems> parameter in the
+request that produced the current response.
+
+=back
+
+
+
+=head2 ListTrafficPolicyInstances([HostedZoneIdMarker => Str, MaxItems => Str, TrafficPolicyInstanceNameMarker => Str, TrafficPolicyInstanceTypeMarker => Str])
+
+Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyInstances>
+
+Returns: a L<Paws::Route53::ListTrafficPolicyInstancesResponse> instance
+
+  Gets information about the traffic policy instances that you created by
+using the current AWS account.
+
+After you submit an C<UpdateTrafficPolicyInstance> request, there's a
+brief delay while Amazon Route 53 creates the resource record sets that
+are specified in the traffic policy definition. For more information,
+see the State response element.
+
+To get information about the traffic policy instances that are
+associated with the current AWS account, send a C<GET> request to the
+C<2013-04-01/trafficpolicyinstance> resource.
+
+Amazon Route 53 returns a maximum of 100 items in each response. If you
+have a lot of traffic policy instances, you can use the C<MaxItems>
+parameter to list them in groups of up to 100.
+
+The response includes five values that help you navigate from one group
+of C<MaxItems> traffic policy instances to the next:
+
+=over
+
+=item * B<IsTruncated>
+
+If the value of C<IsTruncated> in the response is C<true>, there are
+more traffic policy instances associated with the current AWS account.
+
+If C<IsTruncated> is C<false>, this response includes the last traffic
+policy instance that is associated with the current account.
+
+=item * B<MaxItems>
+
+The value that you specified for the C<MaxItems> parameter in the
+request that produced the current response.
+
+=item * B<HostedZoneIdMarker>, B<TrafficPolicyInstanceNameMarker>, and
+B<TrafficPolicyInstanceTypeMarker>
+
+If C<IsTruncated> is C<true>, these three values in the response
+represent the first traffic policy instance in the next group of
+C<MaxItems> traffic policy instances. To list more traffic policy
+instances, make another call to C<ListTrafficPolicyInstances>, and
+specify these values in the corresponding request parameters.
+
+If C<IsTruncated> is C<false>, all three elements are omitted from the
+response.
+
+=back
+
+
+
+=head2 ListTrafficPolicyInstancesByHostedZone(HostedZoneId => Str, [MaxItems => Str, TrafficPolicyInstanceNameMarker => Str, TrafficPolicyInstanceTypeMarker => Str])
+
+Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyInstancesByHostedZone>
+
+Returns: a L<Paws::Route53::ListTrafficPolicyInstancesByHostedZoneResponse> instance
+
+  Gets information about the traffic policy instances that you created in
+a specified hosted zone.
+
+After you submit an C<UpdateTrafficPolicyInstance> request, there's a
+brief delay while Amazon Route 53 creates the resource record sets that
+are specified in the traffic policy definition. For more information,
+see the State response element.
+
+To get information about the traffic policy instances that you created
+in a specified hosted zone, send a C<GET> request to the
+C<2013-04-01/trafficpolicyinstance> resource and include the ID of the
+hosted zone.
+
+Amazon Route 53 returns a maximum of 100 items in each response. If you
+have a lot of traffic policy instances, you can use the C<MaxItems>
+parameter to list them in groups of up to 100.
+
+The response includes four values that help you navigate from one group
+of C<MaxItems> traffic policy instances to the next:
+
+=over
+
+=item * B<IsTruncated>
+
+If the value of C<IsTruncated in the response is C<true>, there are
+more traffic policy instances associated with the current AWS account.>
+
+If C<IsTruncated> is C<false>, this response includes the last traffic
+policy instance that is associated with the current account.
+
+=item * B<MaxItems>
+
+The value that you specified for the C<MaxItems> parameter in the
+request that produced the current response.
+
+=item * B<TrafficPolicyInstanceNameMarker> and
+B<TrafficPolicyInstanceTypeMarker>
+
+If C<IsTruncated> is C<true>, these two values in the response
+represent the first traffic policy instance in the next group of
+C<MaxItems> traffic policy instances. To list more traffic policy
+instances, make another call to
+C<ListTrafficPolicyInstancesByHostedZone>, and specify these values in
+the corresponding request parameters.
+
+If C<IsTruncated> is C<false>, all three elements are omitted from the
+response.
+
+=back
+
+
+
+=head2 ListTrafficPolicyInstancesByPolicy(TrafficPolicyId => Str, TrafficPolicyVersion => Int, [HostedZoneIdMarker => Str, MaxItems => Str, TrafficPolicyInstanceNameMarker => Str, TrafficPolicyInstanceTypeMarker => Str])
+
+Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyInstancesByPolicy>
+
+Returns: a L<Paws::Route53::ListTrafficPolicyInstancesByPolicyResponse> instance
+
+  Gets information about the traffic policy instances that you created by
+using a specify traffic policy version.
+
+After you submit a C<CreateTrafficPolicyInstance> or an
+C<UpdateTrafficPolicyInstance> request, there's a brief delay while
+Amazon Route 53 creates the resource record sets that are specified in
+the traffic policy definition. For more information, see the State
+response element.
+
+To get information about the traffic policy instances that you created
+by using a specify traffic policy version, send a C<GET> request to the
+C<2013-04-01/trafficpolicyinstance> resource and include the ID and
+version of the traffic policy.
+
+Amazon Route 53 returns a maximum of 100 items in each response. If you
+have a lot of traffic policy instances, you can use the C<MaxItems>
+parameter to list them in groups of up to 100.
+
+The response includes five values that help you navigate from one group
+of C<MaxItems> traffic policy instances to the next:
+
+=over
+
+=item * B<IsTruncated>
+
+If the value of C<IsTruncated> in the response is C<true>, there are
+more traffic policy instances associated with the specified traffic
+policy.
+
+If C<IsTruncated> is C<false>, this response includes the last traffic
+policy instance that is associated with the specified traffic policy.
+
+=item * B<MaxItems>
+
+The value that you specified for the C<MaxItems> parameter in the
+request that produced the current response.
+
+=item * B<HostedZoneIdMarker>, B<TrafficPolicyInstanceNameMarker>, and
+B<TrafficPolicyInstanceTypeMarker>
+
+If C<IsTruncated> is C<true>, these values in the response represent
+the first traffic policy instance in the next group of C<MaxItems>
+traffic policy instances. To list more traffic policy instances, make
+another call to C<ListTrafficPolicyInstancesByPolicy>, and specify
+these values in the corresponding request parameters.
+
+If C<IsTruncated> is C<false>, all three elements are omitted from the
+response.
+
+=back
+
+
+
+=head2 ListTrafficPolicyVersions(Id => Str, [MaxItems => Str, TrafficPolicyVersionMarker => Str])
+
+Each argument is described in detail in: L<Paws::Route53::ListTrafficPolicyVersions>
+
+Returns: a L<Paws::Route53::ListTrafficPolicyVersionsResponse> instance
+
+  Gets information about all of the versions for a specified traffic
+policy. C<ListTrafficPolicyVersions> lists only versions that have not
+been deleted.
+
+Amazon Route 53 returns a maximum of 100 items in each response. If you
+have a lot of traffic policies, you can use the C<maxitems> parameter
+to list them in groups of up to 100.
+
+The response includes three values that help you navigate from one
+group of C<maxitems>maxitems traffic policies to the next:
+
+=over
+
+=item * B<IsTruncated>
+
+If the value of C<IsTruncated> in the response is C<true>, there are
+more traffic policy versions associated with the specified traffic
+policy.
+
+If C<IsTruncated> is C<false>, this response includes the last traffic
+policy version that is associated with the specified traffic policy.
+
+=item * B<TrafficPolicyVersionMarker>
+
+The ID of the next traffic policy version that is associated with the
+current AWS account. If you want to list more traffic policies, make
+another call to C<ListTrafficPolicyVersions>, and specify the value of
+the C<TrafficPolicyVersionMarker> element in the
+C<TrafficPolicyVersionMarker> request parameter.
+
+If C<IsTruncated> is C<false>, Amazon Route 53 omits the
+C<TrafficPolicyVersionMarker> element from the response.
+
+=item * B<MaxItems>
+
+The value that you specified for the C<MaxItems> parameter in the
+request that produced the current response.
+
+=back
+
 
 
 =head2 UpdateHealthCheck(HealthCheckId => Str, [ChildHealthChecks => ArrayRef[Str], FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Int, HealthThreshold => Int, Inverted => Bool, IPAddress => Str, Port => Int, ResourcePath => Str, SearchString => Str])
@@ -751,6 +1285,63 @@ element. The response to this request includes the modified
 C<HostedZone> element.
 
 The comment can have a maximum length of 256 characters.
+
+
+=head2 UpdateTrafficPolicyComment(Comment => Str, Id => Str, Version => Int)
+
+Each argument is described in detail in: L<Paws::Route53::UpdateTrafficPolicyComment>
+
+Returns: a L<Paws::Route53::UpdateTrafficPolicyCommentResponse> instance
+
+  Updates the comment for a specified traffic policy version.
+
+To update the comment, send a C<POST> request to the
+C</2013-04-01/trafficpolicy/> resource.
+
+The request body must include an XML document with an
+C<UpdateTrafficPolicyCommentRequest> element.
+
+
+=head2 UpdateTrafficPolicyInstance(Id => Str, TrafficPolicyId => Str, TrafficPolicyVersion => Int, TTL => Int)
+
+Each argument is described in detail in: L<Paws::Route53::UpdateTrafficPolicyInstance>
+
+Returns: a L<Paws::Route53::UpdateTrafficPolicyInstanceResponse> instance
+
+  Updates the resource record sets in a specified hosted zone that were
+created based on the settings in a specified traffic policy version.
+
+The DNS type of the resource record sets that you're updating must
+match the DNS type in the JSON document that is associated with the
+traffic policy version that you're using to update the traffic policy
+instance.
+
+When you update a traffic policy instance, Amazon Route 53 continues to
+respond to DNS queries for the root resource record set name (such as
+example.com) while it replaces one group of resource record sets with
+another. Amazon Route 53 performs the following operations:
+
+=over
+
+=item 1. Amazon Route 53 creates a new group of resource record sets
+based on the specified traffic policy. This is true regardless of how
+substantial the differences are between the existing resource record
+sets and the new resource record sets.
+
+=item 2. When all of the new resource record sets have been created,
+Amazon Route 53 starts to respond to DNS queries for the root resource
+record set name (such as example.com) by using the new resource record
+sets.
+
+=item 3. Amazon Route 53 deletes the old group of resource record sets
+that are associated with the root resource record set name.
+
+=back
+
+To update a traffic policy instance, send a C<POST> request to the
+C</2013-04-01/trafficpolicyinstance/I<traffic policy ID>> resource. The
+request body must include an XML document with an
+C<UpdateTrafficPolicyInstanceRequest> element.
 
 
 =head1 SEE ALSO
