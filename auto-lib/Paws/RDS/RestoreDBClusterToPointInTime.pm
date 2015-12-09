@@ -3,6 +3,7 @@ package Paws::RDS::RestoreDBClusterToPointInTime;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has RestoreToTime => (is => 'ro', isa => 'Str');
@@ -62,6 +63,17 @@ Constraints:
 =head2 DBSubnetGroupName => Str
 
   The DB subnet group name to use for the new DB cluster.
+
+
+=head2 KmsKeyId => Str
+
+  The KMS key identifier to use when restoring an encrypted DB cluster.
+
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are restoring a DB cluster with the same AWS
+account that owns the KMS encryption key used to encrypt the new DB
+cluster, then you can use the KMS key alias instead of the ARN for the
+KMS encryption key.
 
 
 =head2 OptionGroupName => Str

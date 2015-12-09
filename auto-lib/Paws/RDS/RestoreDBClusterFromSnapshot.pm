@@ -7,6 +7,7 @@ package Paws::RDS::RestoreDBClusterFromSnapshot;
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -91,6 +92,17 @@ Constraint: Must be compatible with the engine of the source
 =head2 EngineVersion => Str
 
   The version of the database engine to use for the new DB cluster.
+
+
+=head2 KmsKeyId => Str
+
+  The KMS key identifier to use when restoring an encrypted DB cluster.
+
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are restoring a DB cluster with the same AWS
+account that owns the KMS encryption key used to encrypt the new DB
+cluster, then you can use the KMS key alias instead of the ARN for the
+KMS encryption key.
 
 
 =head2 OptionGroupName => Str

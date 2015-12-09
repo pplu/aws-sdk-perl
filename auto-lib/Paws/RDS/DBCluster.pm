@@ -9,12 +9,14 @@ package Paws::RDS::DBCluster;
   has DBClusterMembers => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterMember]');
   has DBClusterOptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterOptionGroupStatus]');
   has DBClusterParameterGroup => (is => 'ro', isa => 'Str');
+  has DbClusterResourceId => (is => 'ro', isa => 'Str');
   has DBSubnetGroup => (is => 'ro', isa => 'Str');
   has EarliestRestorableTime => (is => 'ro', isa => 'Str');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has PercentProgress => (is => 'ro', isa => 'Str');
@@ -22,6 +24,7 @@ package Paws::RDS::DBCluster;
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]');
 1;
 
@@ -128,6 +131,14 @@ unique key that identifies a DB cluster.
 cluster.
 
 
+=head2 DbClusterResourceId => Str
+
+  If C<StorageEncrypted> is true, the region-unique, immutable identifier
+for the encrypted DB cluster. This identifier is found in AWS
+CloudTrail log entries whenever the KMS key for the DB cluster is
+accessed.
+
+
 =head2 DBSubnetGroup => Str
 
   Specifies information on the subnet group associated with the DB
@@ -162,6 +173,12 @@ cluster.
 
   Specifies the ID that Amazon Route 53 assigns when you create a hosted
 zone.
+
+
+=head2 KmsKeyId => Str
+
+  If C<StorageEncrypted> is true, the KMS key identifier for the
+encrypted DB cluster.
 
 
 =head2 LatestRestorableTime => Str
@@ -201,6 +218,11 @@ occur, in Universal Coordinated Time (UTC).
 =head2 Status => Str
 
   Specifies the current state of this DB cluster.
+
+
+=head2 StorageEncrypted => Bool
+
+  Specifies whetehr the DB cluster is encrypted.
 
 
 =head2 VpcSecurityGroups => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]

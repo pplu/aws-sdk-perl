@@ -7,6 +7,7 @@ package Paws::RDS::DBClusterSnapshot;
   has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has PercentProgress => (is => 'ro', isa => 'Int');
@@ -14,6 +15,7 @@ package Paws::RDS::DBClusterSnapshot;
   has SnapshotCreateTime => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has VpcId => (is => 'ro', isa => 'Str');
 1;
 
@@ -101,6 +103,12 @@ cluster snapshot was created from.
 snapshot.
 
 
+=head2 KmsKeyId => Str
+
+  If C<StorageEncrypted> is true, the KMS key identifier for the
+encrypted DB cluster snapshot.
+
+
 =head2 LicenseModel => Str
 
   Provides the license model information for this DB cluster snapshot.
@@ -137,6 +145,11 @@ Time (UTC).
 =head2 Status => Str
 
   Specifies the status of this DB cluster snapshot.
+
+
+=head2 StorageEncrypted => Bool
+
+  Specifies whether the DB cluster snapshot is encrypted.
 
 
 =head2 VpcId => Str

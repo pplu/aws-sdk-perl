@@ -10,12 +10,14 @@ package Paws::RDS::CreateDBCluster;
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
   has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -147,6 +149,23 @@ B<Aurora>
 Example: C<5.6.10a>
 
 
+=head2 KmsKeyId => Str
+
+  The KMS key identifier for an encrypted DB cluster.
+
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are creating a DB cluster with the same AWS
+account that owns the KMS encryption key used to encrypt the new DB
+cluster, then you can use the KMS key alias instead of the ARN for the
+KM encryption key.
+
+If the C<StorageEncrypted> parameter is true, and you do not specify a
+value for the C<KmsKeyId> parameter, then Amazon RDS will use your
+default encryption key. AWS KMS creates the default encryption key for
+your AWS account. Your AWS account has a different default encryption
+key for each AWS region.
+
+
 =head2 B<REQUIRED> MasterUsername => Str
 
   The name of the master user for the client DB cluster.
@@ -232,6 +251,11 @@ I<Amazon RDS User Guide.>
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Constraints: Minimum 30-minute window.
+
+
+=head2 StorageEncrypted => Bool
+
+  Specifies whether the DB cluster is encrypted.
 
 
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]

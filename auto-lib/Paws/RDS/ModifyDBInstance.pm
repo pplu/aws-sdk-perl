@@ -280,6 +280,13 @@ group family as this DB instance.
 
   The port number on which the database accepts connections.
 
+The value of the C<DBPortNumber> parameter must not match any of the
+port values specified for options in the option group for the DB
+instance.
+
+Your database will restart when you change the C<DBPortNumber> value
+regardless of the value of the C<ApplyImmediately> parameter.
+
 B<MySQL>
 
 Default: C<3306>
