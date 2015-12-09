@@ -236,6 +236,11 @@ package Paws::AutoScaling;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::SetInstanceHealth', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SetInstanceProtection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::SetInstanceProtection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SuspendProcesses {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::SuspendProcesses', @_);
@@ -252,7 +257,7 @@ package Paws::AutoScaling;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AttachInstances AttachLoadBalancers CompleteLifecycleAction CreateAutoScalingGroup CreateLaunchConfiguration CreateOrUpdateTags DeleteAutoScalingGroup DeleteLaunchConfiguration DeleteLifecycleHook DeleteNotificationConfiguration DeletePolicy DeleteScheduledAction DeleteTags DescribeAccountLimits DescribeAdjustmentTypes DescribeAutoScalingGroups DescribeAutoScalingInstances DescribeAutoScalingNotificationTypes DescribeLaunchConfigurations DescribeLifecycleHooks DescribeLifecycleHookTypes DescribeLoadBalancers DescribeMetricCollectionTypes DescribeNotificationConfigurations DescribePolicies DescribeScalingActivities DescribeScalingProcessTypes DescribeScheduledActions DescribeTags DescribeTerminationPolicyTypes DetachInstances DetachLoadBalancers DisableMetricsCollection EnableMetricsCollection EnterStandby ExecutePolicy ExitStandby PutLifecycleHook PutNotificationConfiguration PutScalingPolicy PutScheduledUpdateGroupAction RecordLifecycleActionHeartbeat ResumeProcesses SetDesiredCapacity SetInstanceHealth SuspendProcesses TerminateInstanceInAutoScalingGroup UpdateAutoScalingGroup / }
+  sub operations { qw/AttachInstances AttachLoadBalancers CompleteLifecycleAction CreateAutoScalingGroup CreateLaunchConfiguration CreateOrUpdateTags DeleteAutoScalingGroup DeleteLaunchConfiguration DeleteLifecycleHook DeleteNotificationConfiguration DeletePolicy DeleteScheduledAction DeleteTags DescribeAccountLimits DescribeAdjustmentTypes DescribeAutoScalingGroups DescribeAutoScalingInstances DescribeAutoScalingNotificationTypes DescribeLaunchConfigurations DescribeLifecycleHooks DescribeLifecycleHookTypes DescribeLoadBalancers DescribeMetricCollectionTypes DescribeNotificationConfigurations DescribePolicies DescribeScalingActivities DescribeScalingProcessTypes DescribeScheduledActions DescribeTags DescribeTerminationPolicyTypes DetachInstances DetachLoadBalancers DisableMetricsCollection EnableMetricsCollection EnterStandby ExecutePolicy ExitStandby PutLifecycleHook PutNotificationConfiguration PutScalingPolicy PutScheduledUpdateGroupAction RecordLifecycleActionHeartbeat ResumeProcesses SetDesiredCapacity SetInstanceHealth SetInstanceProtection SuspendProcesses TerminateInstanceInAutoScalingGroup UpdateAutoScalingGroup / }
 
 1;
 
@@ -296,6 +301,11 @@ Each argument is described in detail in: L<Paws::AutoScaling::AttachInstances>
 Returns: nothing
 
   Attaches one or more EC2 instances to the specified Auto Scaling group.
+
+When you attach instances, Auto Scaling increases the desired capacity
+of the group by the number of instances being attached. If the number
+of instances being attached plus the desired capacity of the group
+exceeds the maximum size of the group, the operation fails.
 
 For more information, see Attach EC2 Instances to Your Auto Scaling
 Group in the I<Auto Scaling Developer Guide>.
@@ -352,7 +362,7 @@ For more information, see Auto Scaling Pending State and Auto Scaling
 Terminating State in the I<Auto Scaling Developer Guide>.
 
 
-=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LoadBalancerNames => ArrayRef[Str], PlacementGroup => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
+=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LoadBalancerNames => ArrayRef[Str], NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CreateAutoScalingGroup>
 
@@ -415,11 +425,21 @@ Returns: nothing
 
   Deletes the specified Auto Scaling group.
 
-The group must have no instances and no scaling activities in progress.
+If the group has instances or scaling activities in progress, you must
+specify the option to force the deletion in order for it to succeed.
 
-To remove all instances before calling C<DeleteAutoScalingGroup>, call
-UpdateAutoScalingGroup to set the minimum and maximum size of the Auto
-Scaling group to zero.
+If the group has policies, deleting the group deletes the policies, the
+underlying alarm actions, and any alarm that no longer has an
+associated action.
+
+To remove instances from the Auto Scaling group before deleting it,
+call DetachInstances with the list of instances and the option to
+decrement the desired capacity so that Auto Scaling does not launch
+replacement instances.
+
+To terminate all instances before deleting the Auto Scaling group, call
+UpdateAutoScalingGroup and set the minimum size and desired capacity of
+the Auto Scaling group to zero.
 
 
 =head2 DeleteLaunchConfiguration(LaunchConfigurationName => Str)
@@ -464,6 +484,9 @@ Each argument is described in detail in: L<Paws::AutoScaling::DeletePolicy>
 Returns: nothing
 
   Deletes the specified Auto Scaling policy.
+
+Deleting a policy deletes the underlying alarm action, but does not
+delete the alarm, even if it no longer has an associated action.
 
 
 =head2 DeleteScheduledAction(ScheduledActionName => Str, [AutoScalingGroupName => Str])
@@ -671,8 +694,12 @@ Each argument is described in detail in: L<Paws::AutoScaling::DetachInstances>
 Returns: a L<Paws::AutoScaling::DetachInstancesAnswer> instance
 
   Removes one or more instances from the specified Auto Scaling group.
+
 After the instances are detached, you can manage them independently
 from the rest of the Auto Scaling group.
+
+If you do not specify the option to decrement the desired capacity,
+Auto Scaling launches instances to replace the ones that are detached.
 
 For more information, see Detach EC2 Instances from Your Auto Scaling
 Group in the I<Auto Scaling Developer Guide>.
@@ -912,6 +939,18 @@ For more information, see Health Checks in the I<Auto Scaling Developer
 Guide>.
 
 
+=head2 SetInstanceProtection(AutoScalingGroupName => Str, InstanceIds => ArrayRef[Str], ProtectedFromScaleIn => Bool)
+
+Each argument is described in detail in: L<Paws::AutoScaling::SetInstanceProtection>
+
+Returns: a L<Paws::AutoScaling::SetInstanceProtectionAnswer> instance
+
+  Updates the instance protection settings of the specified instances.
+
+For more information, see Instance Protection in the I<Auto Scaling
+Developer Guide>.
+
+
 =head2 SuspendProcesses(AutoScalingGroupName => Str, [ScalingProcesses => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::AutoScaling::SuspendProcesses>
@@ -945,7 +984,7 @@ This call simply makes a termination request. The instance is not
 terminated immediately.
 
 
-=head2 UpdateAutoScalingGroup(AutoScalingGroupName => Str, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, LaunchConfigurationName => Str, MaxSize => Int, MinSize => Int, PlacementGroup => Str, TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
+=head2 UpdateAutoScalingGroup(AutoScalingGroupName => Str, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, LaunchConfigurationName => Str, MaxSize => Int, MinSize => Int, NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::UpdateAutoScalingGroup>
 

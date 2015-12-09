@@ -12,6 +12,7 @@ package Paws::AutoScaling::CreateAutoScalingGroup;
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
+  has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::Tag]');
   has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -63,10 +64,10 @@ parameter.
 =head2 DefaultCooldown => Int
 
   The amount of time, in seconds, after a scaling activity completes
-before another scaling activity can start.
+before another scaling activity can start. The default is 300.
 
-The default is 300. For more information, see Understanding Auto
-Scaling Cooldowns in the I<Auto Scaling Developer Guide>.
+For more information, see Understanding Auto Scaling Cooldowns in the
+I<Auto Scaling Developer Guide>.
 
 
 =head2 DesiredCapacity => Int
@@ -78,18 +79,15 @@ and less than or equal to the maximum size of the group.
 
 =head2 HealthCheckGracePeriod => Int
 
-  The amount of time, in seconds, after an EC2 instance comes into
-service that Auto Scaling starts checking its health. During this time,
-any health check failures for the instance are ignored.
+  The amount of time, in seconds, that Auto Scaling waits before checking
+the health status of an EC2 instance that has come into service. During
+this time, any health check failures for the instance are ignored. The
+default is 300.
 
 This parameter is required if you are adding an C<ELB> health check.
-Frequently, new instances need to warm up, briefly, before they can
-pass a health check. To provide ample warm-up time, set the health
-check grace period of the group to match the expected startup period of
-your application.
 
-For more information, see Add an Elastic Load Balancing Health Check to
-Your Auto Scaling Group in the I<Auto Scaling Developer Guide>.
+For more information, see Health Checks for Auto Scaling Instances in
+the I<Auto Scaling Developer Guide>.
 
 
 =head2 HealthCheckType => Str
@@ -140,6 +138,12 @@ I<Auto Scaling Developer Guide>.
 =head2 B<REQUIRED> MinSize => Int
 
   The minimum size of the group.
+
+
+=head2 NewInstancesProtectedFromScaleIn => Bool
+
+  Indicates whether newly launched instances are protected from
+termination by Auto Scaling when scaling in.
 
 
 =head2 PlacementGroup => Str
