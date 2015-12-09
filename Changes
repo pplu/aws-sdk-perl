@@ -3,6 +3,8 @@
  - Directory Service API update
  - Route53 API update: traffic policies
  - RDS API update: support for PortNumbers
+ - RDS API update: support for KMS encrypted clusters
+ - AutoScaling API update: InstanceProtection from scale in
 
 0.20 3 Dec 2015
  - S3 can now get and put objects. Entire API should now be working correctly (glenveegee)
