@@ -24,6 +24,7 @@ requires 'Module::Find';
 requires 'Getopt::Long';
 recommends 'Browser::Open';
 requires 'File::HomeDir';
+requires 'String::CRC32';
 
 on 'develop' => sub {
   requires 'Template';

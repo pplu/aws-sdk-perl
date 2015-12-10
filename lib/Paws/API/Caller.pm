@@ -93,6 +93,16 @@ package Paws::API::Caller {
     my $unserialized_struct;
     $unserialized_struct = $self->unserialize_response( $content );
 
+    if (defined $headers->{ x-amz-crc32 }) {
+      requires String::CRC32;
+      my $crc = crc32($content);
+      return Paws::Exception->new(
+        code => 'Crc32Error',
+        message => 'Content CRC32 mismatch',
+        request_id => $headers->{ 'x-amzn-requestid' }
+      );
+    }
+
     if ( $http_status >= 300 ) {
         return $self->error_to_exception($unserialized_struct, $call_object, $http_status, $content, $headers);
     } else {
