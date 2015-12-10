@@ -93,8 +93,8 @@ package Paws::API::Caller {
     my $unserialized_struct;
     $unserialized_struct = $self->unserialize_response( $content );
 
-    if (defined $headers->{ x-amz-crc32 }) {
-      requires String::CRC32;
+    if (defined $headers->{ 'x-amz-crc32' }) {
+      require String::CRC32;
       my $crc = crc32($content);
       return Paws::Exception->new(
         code => 'Crc32Error',
