@@ -4,10 +4,14 @@ package Paws::DynamoDB;
   sub version { '2012-08-10' }
   sub target_prefix { 'DynamoDB_20120810' }
   sub json_version { "1.0" }
-  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has max_attempts => (is => 'ro', isa => 'Int', default => 10);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
-    { base => 'rand', type => 'exponential', growth_factor => 2 }
+    { base => '0.05', type => 'exponential', growth_factor => 2 }
   });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+       sub { $_[0]->code eq 'Crc32Error' },
+       sub { $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 

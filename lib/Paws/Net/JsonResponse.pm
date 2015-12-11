@@ -35,7 +35,8 @@ package Paws::Net::JsonResponse {
     Paws::Exception->new(
       message => $message,
       code => $code,
-      request_id => $request_id
+      request_id => $request_id,
+      http_status => $http_status,
     );
   }
 
