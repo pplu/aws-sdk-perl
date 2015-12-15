@@ -91,10 +91,14 @@ package Paws::API::Caller {
     my ($self, $call_object, $http_status, $content, $headers) = @_;
 
     my $ret_class = $call_object->meta->name->_returns;
-    Paws->load_class($ret_class);
+	my $has_streaming = 0;
+	if (defined $ret_class){
+      Paws->load_class($ret_class);
+	  $has_streaming = $ret_class->can('_stream_param');
+	}
 
     my $unserialized_struct;
-    if ($ret_class->can('_stream_param')){
+    if ($has_streaming) {
       $unserialized_struct = $self->unserialize_body_response($ret_class, $http_status, $content, $headers);
     } else {
       $unserialized_struct = $self->unserialize_response( $content );
