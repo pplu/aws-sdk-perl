@@ -1,5 +1,5 @@
-0.21
- - Bug fix: calls supposed to not return any object were failing (jare)
+0.21 16 Dec 2015
+ - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)
  - MojoAsyncCaller starts using Future::Mojo, a better alternative to MojoX::IOLoop::Future
  - Directory Service API update
  - Route53 API update: traffic policies
