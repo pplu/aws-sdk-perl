@@ -1,10 +1,14 @@
-<ListIdentitiesResponse xmlns="http://ses.amazonaws.com/doc/2010-12-01/">
-  <ListIdentitiesResult>
-    <Identities>
-      <member>test@example.com</member>
-    </Identities>
-  </ListIdentitiesResult>
-  <ResponseMetadata>
-    <RequestId>e9975318-06f5-11e4-ac87-3bfe90e7c745</RequestId>
-  </ResponseMetadata>
-</ListIdentitiesResponse>
+---
+content: |
+  <ListIdentitiesResponse xmlns="http://ses.amazonaws.com/doc/2010-12-01/">
+    <ListIdentitiesResult>
+      <Identities>
+        <member>test@example.com</member>
+      </Identities>
+    </ListIdentitiesResult>
+    <ResponseMetadata>
+      <RequestId>e9975318-06f5-11e4-ac87-3bfe90e7c745</RequestId>
+    </ResponseMetadata>
+  </ListIdentitiesResponse>
+headers: []
+status: 200

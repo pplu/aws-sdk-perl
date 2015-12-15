@@ -1,1 +1,4 @@
-{"TableDescription":{"ItemCount":0,"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":1,"WriteCapacityUnits":1},"TableArn":"arn:aws:dynamodb:us-east-1:000000000000:table/Table1","TableName":"Table1","TableSizeBytes":0,"TableStatus":"DELETING"}}
+---
+content: "{\"TableDescription\":{\"ItemCount\":0,\"ProvisionedThroughput\":{\"NumberOfDecreasesToday\":0,\"ReadCapacityUnits\":1,\"WriteCapacityUnits\":1},\"TableArn\":\"arn:aws:dynamodb:us-east-1:000000000000:table/Table1\",\"TableName\":\"Table1\",\"TableSizeBytes\":0,\"TableStatus\":\"DELETING\"}}\n"
+headers: []
+status: 200

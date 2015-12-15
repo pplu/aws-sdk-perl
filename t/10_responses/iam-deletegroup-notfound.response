@@ -1,0 +1,12 @@
+---
+content: |
+  <ErrorResponse xmlns="https://iam.amazonaws.com/doc/2010-05-08/">
+    <Error>
+      <Type>Sender</Type>
+      <Code>NoSuchEntity</Code>
+      <Message>The group with name Test1 cannot be found.</Message>
+    </Error>
+    <RequestId>11ac105f-a378-11e5-9edb-976c4a6249c9</RequestId>
+  </ErrorResponse>
+headers: []
+status: 200
