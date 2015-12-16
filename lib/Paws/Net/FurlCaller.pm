@@ -1,7 +1,5 @@
 package Paws::Net::FurlCaller {
-  # This caller uses Furl
   use Moose;
-  use Carp qw(croak);
   with 'Paws::Net::CallerRole';
   use Furl;
 
@@ -16,9 +14,8 @@ package Paws::Net::FurlCaller {
     }
   );
 
-  sub do_call {
+  sub send_request {
     my ($self, $service, $call_object) = @_;
-
     my $requestObj = $service->prepare_request_for_call($call_object); 
 
     my $headers = $requestObj->header_hash;
@@ -34,7 +31,7 @@ package Paws::Net::FurlCaller {
     );
 
     if ($response->code == 500 and defined $response->header('x-internal-response')) {
-        Paws::Exception->throw(message => $response->content, code => 'ConnectionError', request_id => '');
+        return Paws::Exception->new(message => $response->content, code => 'ConnectionError', request_id => '');
     } else {
       my $res = $service->handle_response($call_object, $response->code, $response->content, $response->headers);
       if (not ref($res)){
