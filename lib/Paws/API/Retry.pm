@@ -48,6 +48,8 @@ package Paws::API::Retry;
 
   sub exception_is_retriable {
     my $self = shift;
+    return 1 if ($self->operation_result->code eq 'ConnectionError');
+
     foreach my $rule (@{ $self->retry_rules }){
       return 1 if ($rule->($self->operation_result));
     }
