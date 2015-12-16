@@ -80,7 +80,7 @@ C<USD>.
 
 =head2 InstanceCount => Int
 
-  The number of Reserved instances purchased.
+  The number of reservations purchased.
 
 
 =head2 InstanceTenancy => Str

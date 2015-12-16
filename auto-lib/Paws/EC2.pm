@@ -1345,18 +1345,16 @@ Each argument is described in detail in: L<Paws::EC2::AuthorizeSecurityGroupEgre
 
 Returns: nothing
 
-  Adds one or more egress rules to a security group for use with a VPC.
-Specifically, this action permits instances to send traffic to one or
-more destination CIDR IP address ranges, or to one or more destination
-security groups for the same VPC.
+  [EC2-VPC only] Adds one or more egress rules to a security group for
+use with a VPC. Specifically, this action permits instances to send
+traffic to one or more destination CIDR IP address ranges, or to one or
+more destination security groups for the same VPC. This action doesn't
+apply to security groups for use in EC2-Classic. For more information,
+see Security Groups for Your VPC in the I<Amazon Virtual Private Cloud
+User Guide>.
 
 You can have up to 50 rules per security group (covering both ingress
 and egress rules).
-
-A security group is for use with instances either in the EC2-Classic
-platform or in a specific VPC. This action doesn't apply to security
-groups for use in EC2-Classic. For more information, see Security
-Groups for Your VPC in the I<Amazon Virtual Private Cloud User Guide>.
 
 Each rule consists of the protocol (for example, TCP), plus either a
 CIDR range or a source group. For the TCP and UDP protocols, you must
@@ -1522,7 +1520,7 @@ when a product code owner needs to verify whether another user's
 instance is eligible for support.
 
 
-=head2 CopyImage(Name => Str, SourceImageId => Str, SourceRegion => Str, [ClientToken => Str, Description => Str, DryRun => Bool])
+=head2 CopyImage(Name => Str, SourceImageId => Str, SourceRegion => Str, [ClientToken => Str, Description => Str, DryRun => Bool, Encrypted => Bool, KmsKeyId => Str])
 
 Each argument is described in detail in: L<Paws::EC2::CopyImage>
 
@@ -1820,7 +1818,7 @@ Reserved instances.
 To sell your Reserved instances, you must first register as a seller in
 the Reserved Instance Marketplace. After completing the registration
 process, you can create a Reserved Instance Marketplace listing of some
-or all of your Reserved Instances, and specify the upfront price to
+or all of your Reserved instances, and specify the upfront price to
 receive for them. Your Reserved instance listings then become available
 for purchase. To view the details of your Reserved instance listing,
 you can use the DescribeReservedInstancesListings operation.
@@ -2608,7 +2606,7 @@ Returns: a L<Paws::EC2::DescribeHostsResult> instance
 The results describe only the Dedicated hosts in the region you're
 currently using. All listed instances consume capacity on your
 Dedicated host. Dedicated hosts that have recently been released will
-be listed with the status "released".
+be listed with the state C<released>.
 
 
 =head2 DescribeIdFormat([Resource => Str])
@@ -2900,7 +2898,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesM
 Returns: a L<Paws::EC2::DescribeReservedInstancesModificationsResult> instance
 
   Describes the modifications made to your Reserved instances. If no
-parameter is specified, information about all your Reserved Instances
+parameter is specified, information about all your Reserved instances
 modification requests is returned. If a modification ID is specified,
 only information about the specific modification is returned.
 
@@ -2919,6 +2917,10 @@ With Reserved instances, you purchase the right to launch instances for
 a period of time. During that time period, you do not receive
 insufficient capacity errors, and you pay a lower usage rate than the
 rate charged for On-Demand instances for the actual time used.
+
+If you have listed your own Reserved instances for sale in the Reserved
+Instance Marketplace, they will be excluded from these results. This is
+to ensure that you do not purchase your own Reserved instances.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
 Elastic Compute Cloud User Guide>.
@@ -3218,7 +3220,7 @@ volumes in the C<error> state (for example, when a volume is incapable
 of accepting I/O.)
 
 
-=head2 DescribeVpcAttribute(VpcId => Str, [Attribute => Str, DryRun => Bool])
+=head2 DescribeVpcAttribute(Attribute => Str, VpcId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcAttribute>
 
@@ -3683,8 +3685,8 @@ Each argument is described in detail in: L<Paws::EC2::ModifyReservedInstances>
 Returns: a L<Paws::EC2::ModifyReservedInstancesResult> instance
 
   Modifies the Availability Zone, instance count, instance type, or
-network platform (EC2-Classic or EC2-VPC) of your Reserved Instances.
-The Reserved Instances to be modified must be identical, except for
+network platform (EC2-Classic or EC2-VPC) of your Reserved instances.
+The Reserved instances to be modified must be identical, except for
 Availability Zone, network platform, and instance type.
 
 For more information, see Modifying Reserved Instances in the Amazon
@@ -3942,7 +3944,7 @@ Each argument is described in detail in: L<Paws::EC2::ReleaseHosts>
 Returns: a L<Paws::EC2::ReleaseHostsResult> instance
 
   When you no longer want to use a Dedicated host it can be released.
-On-Demand billing is stopped and the host goes into "released" state.
+On-Demand billing is stopped and the host goes into C<released> state.
 The host ID of Dedicated hosts that have been released can no longer be
 specified in another request, e.g., ModifyHosts. You must stop or
 terminate all instances on a host before it can be released.
@@ -4137,9 +4139,11 @@ Each argument is described in detail in: L<Paws::EC2::RevokeSecurityGroupEgress>
 
 Returns: nothing
 
-  Removes one or more egress rules from a security group for EC2-VPC. The
-values that you specify in the revoke request (for example, ports) must
-match the existing rule's values for the rule to be revoked.
+  [EC2-VPC only] Removes one or more egress rules from a security group
+for EC2-VPC. This action doesn't apply to security groups for use in
+EC2-Classic. The values that you specify in the revoke request (for
+example, ports) must match the existing rule's values for the rule to
+be revoked.
 
 Each rule consists of the protocol and the CIDR range or source
 security group. For the TCP and UDP protocols, you must also specify

@@ -16,7 +16,7 @@ Paws::EC2::ModifyInstancePlacementResult
 
 =head2 Return => Bool
 
-  Is true if the request succeeds, and an error otherwise.
+  Is C<true> if the request succeeds, and an error otherwise.
 
 
 =cut

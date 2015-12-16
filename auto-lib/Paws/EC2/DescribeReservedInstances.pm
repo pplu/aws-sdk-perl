@@ -72,15 +72,15 @@ example, 9800.0).
 
 =item *
 
-C<instance-type> - The instance type on which the Reserved instance can
-be used.
+C<instance-type> - The instance type that is covered by the
+reservation.
 
 =item *
 
 C<product-description> - The Reserved instance product platform
 description. Instances that include C<(Amazon VPC)> in the product
 platform description will only be displayed to EC2-Classic account
-holders and are for use with Amazon VPC. (C<Linux/UNIX> | C<Linux/UNIX
+holders and are for use with Amazon VPC (C<Linux/UNIX> | C<Linux/UNIX
 (Amazon VPC)> | C<SUSE Linux> | C<SUSE Linux (Amazon VPC)> | C<Red Hat
 Enterprise Linux> | C<Red Hat Enterprise Linux (Amazon VPC)> |
 C<Windows> | C<Windows (Amazon VPC)> | C<Windows with SQL Server

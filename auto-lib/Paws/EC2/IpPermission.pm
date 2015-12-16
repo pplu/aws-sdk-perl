@@ -49,13 +49,11 @@ number. A value of C<-1> indicates all ICMP types.
 
 =head2 IpProtocol => Str
 
-  The protocol.
+  The IP protocol name (for C<tcp>, C<udp>, and C<icmp>) or number (see
+Protocol Numbers).
 
-When you call DescribeSecurityGroups, the protocol value returned is
-the number. Exception: For TCP, UDP, and ICMP, the value returned is
-the name (for example, C<tcp>, C<udp>, or C<icmp>). For a list of
-protocol numbers, see Protocol Numbers. (VPC only) When you call
-AuthorizeSecurityGroupIngress, you can use C<-1> to specify all.
+[EC2-VPC only] When you authorize or revoke security group rules, you
+can use C<-1> to specify all.
 
 
 =head2 IpRanges => ArrayRef[L<Paws::EC2::IpRange>]

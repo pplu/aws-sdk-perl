@@ -82,14 +82,14 @@ example, 9800.0).
 
 =item *
 
-C<instance-type> - The instance type on which the Reserved instance can
-be used.
+C<instance-type> - The instance type that is covered by the
+reservation.
 
 =item *
 
 C<marketplace> - Set to C<true> to show only Reserved Instance
 Marketplace offerings. When this filter is not used, which is the
-default behavior, all offerings from AWS and Reserved Instance
+default behavior, all offerings from both AWS and the Reserved Instance
 Marketplace are listed.
 
 =item *
@@ -108,7 +108,8 @@ Server Enterprise (Amazon VPC)>)
 
 =item *
 
-C<reserved-instances-offering-id> - The Reserved instances offering ID.
+C<reserved-instances-offering-id> - The Reserved instances' offering
+ID.
 
 =item *
 
@@ -126,18 +127,18 @@ C<usage-price> - The usage price of the Reserved instance, per hour
 
 =head2 InstanceTenancy => Str
 
-  The tenancy of the Reserved instance offering. A Reserved instance with
-C<dedicated> tenancy is applied to instances that run on single-tenant
-hardware and can only be launched within a VPC.
+  The tenancy of the instances covered by the reservation. A Reserved
+instance with a tenancy of C<dedicated> is applied to instances that
+run in a VPC on single-tenant hardware (i.e., Dedicated instances).
 
 Default: C<default>
 
 
 =head2 InstanceType => Str
 
-  The instance type on which the Reserved instance can be used. For more
-information, see Instance Types in the I<Amazon Elastic Compute Cloud
-User Guide>.
+  The instance type that the reservation will cover (for example,
+C<m1.small>). For more information, see Instance Types in the I<Amazon
+Elastic Compute Cloud User Guide>.
 
 
 =head2 MaxDuration => Int
