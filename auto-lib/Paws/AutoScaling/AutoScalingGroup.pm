@@ -14,6 +14,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has MaxSize => (is => 'ro', isa => 'Int', required => 1);
   has MinSize => (is => 'ro', isa => 'Int', required => 1);
+  has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SuspendedProcesses => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::SuspendedProcess]');
@@ -77,8 +78,8 @@ Describes an Auto Scaling group.
 
 =head2 B<REQUIRED> DefaultCooldown => Int
 
-  The number of seconds after a scaling activity completes before any
-further scaling activities can start.
+  The amount of time, in seconds, after a scaling activity completes
+before another scaling activity can start.
 
 
 =head2 B<REQUIRED> DesiredCapacity => Int
@@ -93,15 +94,14 @@ further scaling activities can start.
 
 =head2 HealthCheckGracePeriod => Int
 
-  The amount of time that Auto Scaling waits before checking an
-instance's health status. The grace period begins when an instance
-comes into service.
+  The amount of time, in seconds, that Auto Scaling waits before checking
+the health status of an EC2 instance that has come into service.
 
 
 =head2 B<REQUIRED> HealthCheckType => Str
 
-  The service of interest for the health status check, which can be
-either C<EC2> for Amazon EC2 or C<ELB> for Elastic Load Balancing.
+  The service to use for the health checks. The valid values are C<EC2>
+and C<ELB>.
 
 
 =head2 Instances => ArrayRef[L<Paws::AutoScaling::Instance>]
@@ -127,6 +127,12 @@ either C<EC2> for Amazon EC2 or C<ELB> for Elastic Load Balancing.
 =head2 B<REQUIRED> MinSize => Int
 
   The minimum size of the group.
+
+
+=head2 NewInstancesProtectedFromScaleIn => Bool
+
+  Indicates whether newly launched instances are protected from
+termination by Auto Scaling when scaling in.
 
 
 =head2 PlacementGroup => Str

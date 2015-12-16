@@ -43,8 +43,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CidrIp => Str
 
-  The CIDR IP address range. You can't specify this parameter when
-specifying a source security group.
+  The CIDR IP address range. We recommend that you specify the CIDR range
+in a set of IP permissions instead.
 
 
 =head2 DryRun => Bool
@@ -58,7 +58,8 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 FromPort => Int
 
   The start of port range for the TCP and UDP protocols, or an ICMP type
-number. For the ICMP type number, use C<-1> to specify all ICMP types.
+number. We recommend that you specify the port range in a set of IP
+permissions instead.
 
 
 =head2 B<REQUIRED> GroupId => Str
@@ -74,8 +75,8 @@ and a CIDR IP address range.
 
 =head2 IpProtocol => Str
 
-  The IP protocol name (C<tcp>, C<udp>, C<icmp>) or number (see Protocol
-Numbers). Use C<-1> to specify all.
+  The IP protocol name or number. We recommend that you specify the
+protocol in a set of IP permissions instead.
 
 
 =head2 SourceSecurityGroupName => Str
@@ -94,9 +95,9 @@ use a set of IP permissions instead.
 
 =head2 ToPort => Int
 
-  The end of port range for the TCP and UDP protocols, or an ICMP code
-number. For the ICMP code number, use C<-1> to specify all ICMP codes
-for the ICMP type.
+  The end of port range for the TCP and UDP protocols, or an ICMP type
+number. We recommend that you specify the port range in a set of IP
+permissions instead.
 
 
 

@@ -53,6 +53,11 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =item *
 
+C<affinity> - The affinity setting for an instance running on a
+Dedicated host (C<default> | C<host>).
+
+=item *
+
 C<architecture> - The instance architecture (C<i386> | C<x86_64>).
 
 =item *
@@ -101,6 +106,11 @@ EC2-Classic only.
 
 C<group-name> - The name of the security group for the instance.
 EC2-Classic only.
+
+=item *
+
+C<host-Id> - The ID of the Dedicated host on which the instance is
+running, if applicable.
 
 =item *
 
@@ -292,7 +302,8 @@ is independent of the C<tag-key> filter.
 
 =item *
 
-C<tenancy> - The tenancy of an instance (C<dedicated> | C<default>).
+C<tenancy> - The tenancy of an instance (C<dedicated> | C<default> |
+C<host>).
 
 =item *
 

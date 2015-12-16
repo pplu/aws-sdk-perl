@@ -4,8 +4,9 @@ package Paws::AutoScaling::AutoScalingInstanceDetails;
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has LaunchConfigurationName => (is => 'ro', isa => 'Str');
+  has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
+  has ProtectedFromScaleIn => (is => 'ro', isa => 'Bool', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AutoScaling::AutoScalingInstanceDetails object:
 
-  $service_obj->Method(Att1 => { AutoScalingGroupName => $value, ..., LifecycleState => $value  });
+  $service_obj->Method(Att1 => { AutoScalingGroupName => $value, ..., ProtectedFromScaleIn => $value  });
 
 =head3 Results returned from an API call
 
@@ -63,7 +64,7 @@ instance is unhealthy and Auto Scaling should terminate and replace it.
   The ID of the instance.
 
 
-=head2 LaunchConfigurationName => Str
+=head2 B<REQUIRED> LaunchConfigurationName => Str
 
   The launch configuration associated with the instance.
 
@@ -72,6 +73,12 @@ instance is unhealthy and Auto Scaling should terminate and replace it.
 
   The lifecycle state for the instance. For more information, see Auto
 Scaling Instance States in the I<Auto Scaling Developer Guide>.
+
+
+=head2 B<REQUIRED> ProtectedFromScaleIn => Bool
+
+  Indicates whether the instance is protected from termination by Auto
+Scaling when scaling in.
 
 
 

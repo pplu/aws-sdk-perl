@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.19';
+our $VERSION = '0.21';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -99,7 +99,7 @@ sub available_services {
   $self = $self->get_self;
 
   my $skip_list = {
-    API => 1, Credential => 1, Exception => 1
+    API => 1, Credential => 1, Exception => 1, RegionInfo => 1,
   };
   require Module::Find;
   my $class_prefix = $self->_class_prefix;
@@ -563,6 +563,8 @@ This code is distributed under the Apache 2 License. The full text of the licens
 Luis Alberto Gimenez (@agimenez) for 
  - The git-fu cleaning up the "pull other sdks" code
  - Credential Providers code
+ - Fixes for users that have no HOME env variable
+ - FileCaller to fully mock responses
 
 Srinvas (@kidambisrinivas) for testing, bug reporting and fixing
 
@@ -599,6 +601,10 @@ Roger Pettett for testing and contributing fixes for tests on MacOSX
 Henri Yandell for help with licensing issues
 
 Oriol Soriano (@ureesoriano) for contribution to API builders
+
+H. Daniel Cesario (@maneta) for devel setup instructions on RH and MacOSX
+
+Glen van Ginkel for contributions to get S3 working
 
 
 =cut

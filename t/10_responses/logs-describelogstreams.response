@@ -1,1 +1,4 @@
-{"logStreams":[{"arn":"arn:aws:logs:eu-west-1:000000000000:log-group:test_log_group:log-stream:test_stream_name","creationTime":1431545388246,"lastIngestionTime":1431554069632,"logStreamName":"test_stream_name","storedBytes":0,"uploadSequenceToken":"49545729768044048309158352465459424171909606459303791266"}]}
+---
+content: '{"logStreams":[{"arn":"arn:aws:logs:eu-west-1:000000000000:log-group:test_log_group:log-stream:test_stream_name","creationTime":1431545388246,"lastIngestionTime":1431554069632,"logStreamName":"test_stream_name","storedBytes":0,"uploadSequenceToken":"49545729768044048309158352465459424171909606459303791266"}]}'
+headers: []
+status: 200

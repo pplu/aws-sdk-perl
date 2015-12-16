@@ -1,1 +1,4 @@
-{"Domains":[{"AutoRenew":true,"DomainName":"example.net","Expiry":1.454954662E9,"TransferLock":true}]}
+---
+content: "{\"Domains\":[{\"AutoRenew\":true,\"DomainName\":\"example.net\",\"Expiry\":1.454954662E9,\"TransferLock\":true}]}\n"
+headers: []
+status: 200

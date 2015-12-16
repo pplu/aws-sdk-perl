@@ -39,7 +39,8 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone.
+  The Availability Zones. To specify multiple Availability Zones,
+separate them using commas; for example, "us-west-2a, us-west-2b".
 
 
 =head2 GroupName => Str

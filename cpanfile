@@ -16,6 +16,7 @@ requires 'URL::Encode::XS';
 requires 'URI::Template';
 requires 'Digest::HMAC';
 requires 'Config::INI';
+requires 'Crypt::Digest::SHA256';
 # For the paws CLI
 requires 'Hash::Flatten';
 requires 'MooseX::Getopt';
@@ -43,7 +44,8 @@ on 'develop' => sub {
   requires 'Test::Pod';
   # For developing / testing the pluggable callers
   requires 'Mojolicious';
-  requires 'MojoX::IOLoop::Future';
+  requires 'Future::Mojo', '>= 0.003';
+  requires 'EV';
   requires 'LWP::UserAgent';
   requires 'Furl';
 };
@@ -53,4 +55,5 @@ on 'test' => sub {
   requires 'Test::More';
   requires 'Test::Timer';
   requires 'Test::Exception';
+  requires 'Test::Warnings';
 };

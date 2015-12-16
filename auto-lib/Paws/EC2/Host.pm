@@ -79,7 +79,7 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 HostReservationId => Str
 
-  The reservation ID of the Dedicated host. This returns a "null"
+  The reservation ID of the Dedicated host. This returns a C<null>
 response if the Dedicated host doesn't have an associated reservation.
 
 
@@ -91,8 +91,7 @@ host.
 
 =head2 State => Str
 
-  The Dedicated host's state. Can be "available", "under assessment, or
-"released".
+  The Dedicated host's state.
 
 
 

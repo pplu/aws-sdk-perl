@@ -3,8 +3,9 @@ package Paws::AutoScaling::Instance;
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has LaunchConfigurationName => (is => 'ro', isa => 'Str');
+  has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
+  has ProtectedFromScaleIn => (is => 'ro', isa => 'Bool', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AutoScaling::Instance object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., LifecycleState => $value  });
+  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., ProtectedFromScaleIn => $value  });
 
 =head3 Results returned from an API call
 
@@ -55,7 +56,7 @@ Describes an EC2 instance.
   The ID of the instance.
 
 
-=head2 LaunchConfigurationName => Str
+=head2 B<REQUIRED> LaunchConfigurationName => Str
 
   The launch configuration associated with the instance.
 
@@ -64,6 +65,12 @@ Describes an EC2 instance.
 
   A description of the current lifecycle state. Note that the
 C<Quarantined> state is not used.
+
+
+=head2 B<REQUIRED> ProtectedFromScaleIn => Bool
+
+  Indicates whether the instance is protected from termination by Auto
+Scaling when scaling in.
 
 
 

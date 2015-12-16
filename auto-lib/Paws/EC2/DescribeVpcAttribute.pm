@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeVpcAttribute;
   use Moose;
-  has Attribute => (is => 'ro', isa => 'Str');
+  has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Attribute => Str
+=head2 B<REQUIRED> Attribute => Str
 
   The VPC attribute.
 

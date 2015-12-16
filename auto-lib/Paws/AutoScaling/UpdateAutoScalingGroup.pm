@@ -10,6 +10,7 @@ package Paws::AutoScaling::UpdateAutoScalingGroup;
   has LaunchConfigurationName => (is => 'ro', isa => 'Str');
   has MaxSize => (is => 'ro', isa => 'Int');
   has MinSize => (is => 'ro', isa => 'Int');
+  has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
   has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
@@ -57,9 +58,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 DefaultCooldown => Int
 
   The amount of time, in seconds, after a scaling activity completes
-before another scaling activity can start. For more information, see
-Understanding Auto Scaling Cooldowns in the I<Auto Scaling Developer
-Guide>.
+before another scaling activity can start. The default is 300.
+
+For more information, see Understanding Auto Scaling Cooldowns in the
+I<Auto Scaling Developer Guide>.
 
 
 =head2 DesiredCapacity => Int
@@ -72,17 +74,17 @@ the group and less than or equal to the maximum size of the group.
 =head2 HealthCheckGracePeriod => Int
 
   The amount of time, in seconds, that Auto Scaling waits before checking
-the health status of an instance. The grace period begins when the
-instance passes the system status and instance status checks from
-Amazon EC2. For more information, see Health Checks in the I<Auto
-Scaling Developer Guide>.
+the health status of an EC2 instance that has come into service. The
+default is 300.
+
+For more information, see Health Checks For Auto Scaling Instances in
+the I<Auto Scaling Developer Guide>.
 
 
 =head2 HealthCheckType => Str
 
-  The type of health check for the instances in the Auto Scaling group.
-The health check type can either be C<EC2> for Amazon EC2 or C<ELB> for
-Elastic Load Balancing.
+  The service to use for the health checks. The valid values are C<EC2>
+and C<ELB>.
 
 
 =head2 LaunchConfigurationName => Str
@@ -98,6 +100,12 @@ Elastic Load Balancing.
 =head2 MinSize => Int
 
   The minimum size of the Auto Scaling group.
+
+
+=head2 NewInstancesProtectedFromScaleIn => Bool
+
+  Indicates whether newly launched instances are protected from
+termination by Auto Scaling when scaling in.
 
 
 =head2 PlacementGroup => Str

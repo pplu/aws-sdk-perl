@@ -15,8 +15,9 @@ package Paws::Net::Caller {
 
   sub send_request {
     my ($self, $service, $call_object) = @_;
-    my $requestObj = $service->prepare_request_for_call($call_object);
+    my $requestObj = $service->prepare_request_for_call($call_object); 
     my $headers    = $requestObj->header_hash;
+
     # HTTP::Tiny derives the Host header from the URL. It's an error to set it.
     delete $headers->{Host}; 
 

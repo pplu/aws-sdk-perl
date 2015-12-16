@@ -1,0 +1,9 @@
+---
+content: |
+  <DeleteGroupResponse xmlns="https://iam.amazonaws.com/doc/2010-05-08/">
+    <ResponseMetadata>
+      <RequestId>49dcac9e-a378-11e5-a392-d5ea3c3fc695</RequestId>
+    </ResponseMetadata>
+  </DeleteGroupResponse>
+headers: []
+status: 200

@@ -1,0 +1,2 @@
+- unserialize_body_response in Paws::API::Caller needs code to turn headers into a datascructure
+- ack "\"streaming\"" botocore/botocore/data/ finds other APIs with responses in body

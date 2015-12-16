@@ -53,10 +53,11 @@ This class has no description
 
   Information about the error that occurred. C<Rate limited> indicates
 that CloudWatch logs throttling has been applied for one or more
-network interfaces. C<Access error> indicates that the IAM role
-associated with the flow log does not have sufficient permissions to
-publish to CloudWatch Logs. C<Unknown error> indicates an internal
-error.
+network interfaces, or that you've reached the limit on the number of
+CloudWatch Logs log groups that you can create. C<Access error>
+indicates that the IAM role associated with the flow log does not have
+sufficient permissions to publish to CloudWatch Logs. C<Unknown error>
+indicates an internal error.
 
 
 =head2 DeliverLogsPermissionArn => Str

@@ -1,17 +1,23 @@
-0.21
+0.21 16 Dec 2015
+ - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)
+ - MojoAsyncCaller starts using Future::Mojo, a better alternative to MojoX::IOLoop::Future
  - Directory Service API update
  - Route53 API update: traffic policies
  - RDS API update: support for PortNumbers
- - Inspector API update
- - ElasticBeanstalk API update
- - EC2 API update: suport for Dedicated Hosts
- - DeviceFarm API update
- - ECS API update: more info about tasks
+ - RDS API update: support for KMS encrypted clusters
+ - AutoScaling API update: InstanceProtection from scale in
 
 0.20 3 Dec 2015
+ - S3 can now get and put objects. Entire API should now be working correctly (glenveegee)
  - Better schema validation in builders (by Oriol Soriano) 
+ - Paws::Credential::File doesn't throw warnings when users don't have $ENV{HOME} (by A.Gimenez)
  - EC2 docu update
  - RDS support for cross account snapshot sharing. New instance types too
+ - Inspector API update
+ - DeviceFarm API update
+ - EC2 API update: dedicated hosts
+ - ECS API update
+ - ElasticBeanstalk API update
 
 0.19 12 Nov 2015
  - Fix issues with POD documentation. Some head2 tags didn't have a newline above

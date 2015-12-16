@@ -4,6 +4,8 @@ package Paws::EC2::CopyImage;
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
+  has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kmsKeyId' );
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has SourceImageId => (is => 'ro', isa => 'Str', required => 1);
   has SourceRegion => (is => 'ro', isa => 'Str', required => 1);
@@ -56,6 +58,30 @@ I<Amazon Elastic Compute Cloud User Guide>.
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+=head2 Encrypted => Bool
+
+  Specifies whether the destination snapshots of the copied image should
+be encrypted. The default CMK for EBS is used unless a non-default AWS
+Key Management Service (AWS KMS) CMK is specified with C<KmsKeyId>. For
+more information, see Amazon EBS Encryption in the I<Amazon Elastic
+Compute Cloud User Guide>.
+
+
+=head2 KmsKeyId => Str
+
+  The full ARN of the AWS Key Management Service (AWS KMS) CMK to use
+when encrypting the snapshots of an image during a copy operation. This
+parameter is only required if you want to use a non-default CMK; if
+this parameter is not specified, the default CMK for EBS is used. The
+ARN contains the C<arn:aws:kms> namespace, followed by the region of
+the CMK, the AWS account ID of the CMK owner, the C<key> namespace, and
+then the CMK ID. For example,
+arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
+The specified CMK must exist in the region that the snapshot is being
+copied to. If a C<KmsKeyId> is specified, the C<Encrypted> flag must
+also be set.
 
 
 =head2 B<REQUIRED> Name => Str
