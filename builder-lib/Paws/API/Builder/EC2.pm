@@ -83,7 +83,7 @@ package [% c.api %];
   [%- FOREACH key IN c.retry.policies.keys %]
      [%- policy = c.retry.policies.$key.applies_when.response %]
      [%- IF (policy.service_error_code) %]
-       sub { $_[0]->http_status == [% policy.http_status_code %] and $_[0]->code eq '[% policy.service_error_code %]' },
+       sub { defined $_[0]->http_status and $_[0]->http_status == [% policy.http_status_code %] and $_[0]->code eq '[% policy.service_error_code %]' },
      [%- ELSIF (policy.crc32body) %]
        sub { $_[0]->code eq 'Crc32Error' },
      [%- ELSE %]

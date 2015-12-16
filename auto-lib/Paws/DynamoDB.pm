@@ -10,7 +10,7 @@ package Paws::DynamoDB;
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
        sub { $_[0]->code eq 'Crc32Error' },
-       sub { $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
+       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';

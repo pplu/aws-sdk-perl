@@ -8,7 +8,7 @@ package Paws::CloudSearch;
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
-       sub { $_[0]->http_status == 509 and $_[0]->code eq 'BandwidthLimitExceeded' },
+       sub { defined $_[0]->http_status and $_[0]->http_status == 509 and $_[0]->code eq 'BandwidthLimitExceeded' },
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
