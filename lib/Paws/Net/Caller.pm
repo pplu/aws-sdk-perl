@@ -1,6 +1,6 @@
 package Paws::Net::Caller {
   use Moose;
-  with 'Paws::Net::CallerRole';
+  with 'Paws::Net::RetryCallerRole';
 
   has debug              => ( is => 'rw', required => 0, default => sub { 0 } );
   has ua => (is => 'rw', required => 1, lazy => 1,
