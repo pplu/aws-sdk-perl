@@ -2,6 +2,8 @@ package Paws::Net::MojoAsyncCaller {
   use Moose;
   with 'Paws::Net::CallerRole';
 
+  use Paws::API::Retry;
+  use Future;
   use Future::Mojo;
   use Mojo::UserAgent;
 
@@ -10,6 +12,34 @@ package Paws::Net::MojoAsyncCaller {
   });
 
   sub do_call {
+    my ($self, $service, $call_object, $tracker) = @_;
+
+    $tracker = Paws::API::Retry->new(
+      %{ $service->retry }, 
+      max_tries => $service->max_attempts,
+      retry_rules => $service->retriables,
+    ) if (not defined $tracker);
+
+    $tracker->one_more_try;
+    my $f = $self->send_request($service, $call_object);
+    $f->on_fail(sub {
+      my $fail = shift;
+      $tracker->operation_result($fail);
+
+      if ($tracker->should_retry) {
+        #my $sleep = Future::Mojo->new_timer(int($tracker->sleep_time));
+        #$sleep->on_done(sub {
+          return $self->do_call($service, $call_object, $tracker);
+        #});
+        #return $sleep;
+      } else {
+        Future->fail($fail);
+      }
+    });
+    return $f;
+  }
+
+  sub send_request {
     my ($self, $service, $call_object) = @_;
 
     my $requestObj = $service->prepare_request_for_call($call_object); 
@@ -27,7 +57,6 @@ package Paws::Net::MojoAsyncCaller {
         my ( $ua, $response ) = @_;
         if (my $err = $response->error and not defined $response->error->{ code }){
           $future->fail(Paws::Exception->new(message => $err->{ message }, code => 'ConnectionError', request_id => ''));
-          #$future->fail(Paws::Exception->new(code => 'No Region', message => $response->error->{ message }));
         } else {
           my $res = $service->handle_response($call_object, $response->res->code, $response->res->body, $response->res->headers->to_hash);
 
