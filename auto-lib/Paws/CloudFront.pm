@@ -2,7 +2,7 @@ package Paws::CloudFront;
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudfront' }
-  sub version { '2015-07-27' }
+  sub version { '2015-09-17' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -178,198 +178,198 @@ Paws::CloudFront - Perl Interface to AWS Amazon CloudFront
 
 =head1 METHODS
 
-=head2 CreateCloudFrontOriginAccessIdentity2015_07_27( => )
+=head2 CreateCloudFrontOriginAccessIdentity2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2015_07_27>
-
-Returns: nothing
-
-  
-
-
-=head2 CreateDistribution2015_07_27( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2015_09_17>
 
 Returns: nothing
 
   
 
 
-=head2 CreateInvalidation2015_07_27( => )
+=head2 CreateDistribution2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation2015_07_27>
-
-Returns: nothing
-
-  
-
-
-=head2 CreateStreamingDistribution2015_07_27( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDistribution2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution2015_09_17>
 
 Returns: nothing
 
   
 
 
-=head2 DeleteCloudFrontOriginAccessIdentity2015_07_27( => )
+=head2 CreateInvalidation2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity2015_07_27>
-
-Returns: nothing
-
-  
-
-
-=head2 DeleteDistribution2015_07_27( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::DeleteDistribution2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation2015_09_17>
 
 Returns: nothing
 
   
 
 
-=head2 DeleteStreamingDistribution2015_07_27( => )
+=head2 CreateStreamingDistribution2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::DeleteStreamingDistribution2015_07_27>
-
-Returns: nothing
-
-  
-
-
-=head2 GetCloudFrontOriginAccessIdentity2015_07_27( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentity2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDistribution2015_09_17>
 
 Returns: nothing
 
   
 
 
-=head2 GetCloudFrontOriginAccessIdentityConfig2015_07_27( => )
+=head2 DeleteCloudFrontOriginAccessIdentity2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig2015_07_27>
-
-Returns: nothing
-
-  
-
-
-=head2 GetDistribution2015_07_27( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetDistribution2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity2015_09_17>
 
 Returns: nothing
 
   
 
 
-=head2 GetDistributionConfig2015_07_27( => )
+=head2 DeleteDistribution2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::GetDistributionConfig2015_07_27>
-
-Returns: nothing
-
-  
-
-
-=head2 GetInvalidation2015_07_27( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetInvalidation2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::DeleteDistribution2015_09_17>
 
 Returns: nothing
 
   
 
 
-=head2 GetStreamingDistribution2015_07_27( => )
+=head2 DeleteStreamingDistribution2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistribution2015_07_27>
-
-Returns: nothing
-
-  
-
-
-=head2 GetStreamingDistributionConfig2015_07_27( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistributionConfig2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::DeleteStreamingDistribution2015_09_17>
 
 Returns: nothing
 
   
 
 
-=head2 ListCloudFrontOriginAccessIdentities2015_07_27( => )
+=head2 GetCloudFrontOriginAccessIdentity2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::ListCloudFrontOriginAccessIdentities2015_07_27>
-
-Returns: nothing
-
-  
-
-
-=head2 ListDistributions2015_07_27( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::ListDistributions2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentity2015_09_17>
 
 Returns: nothing
 
   
 
 
-=head2 ListDistributionsByWebACLId2015_07_27( => )
+=head2 GetCloudFrontOriginAccessIdentityConfig2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::ListDistributionsByWebACLId2015_07_27>
-
-Returns: nothing
-
-  
-
-
-=head2 ListInvalidations2015_07_27( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig2015_09_17>
 
 Returns: nothing
 
   
 
 
-=head2 ListStreamingDistributions2015_07_27( => )
+=head2 GetDistribution2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::ListStreamingDistributions2015_07_27>
-
-Returns: nothing
-
-  
-
-
-=head2 UpdateCloudFrontOriginAccessIdentity2015_07_27( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::GetDistribution2015_09_17>
 
 Returns: nothing
 
   
 
 
-=head2 UpdateDistribution2015_07_27( => )
+=head2 GetDistributionConfig2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::UpdateDistribution2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::GetDistributionConfig2015_09_17>
 
 Returns: nothing
 
   
 
 
-=head2 UpdateStreamingDistribution2015_07_27( => )
+=head2 GetInvalidation2015_09_17( => )
 
-Each argument is described in detail in: L<Paws::CloudFront::UpdateStreamingDistribution2015_07_27>
+Each argument is described in detail in: L<Paws::CloudFront::GetInvalidation2015_09_17>
+
+Returns: nothing
+
+  
+
+
+=head2 GetStreamingDistribution2015_09_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistribution2015_09_17>
+
+Returns: nothing
+
+  
+
+
+=head2 GetStreamingDistributionConfig2015_09_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistributionConfig2015_09_17>
+
+Returns: nothing
+
+  
+
+
+=head2 ListCloudFrontOriginAccessIdentities2015_09_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::ListCloudFrontOriginAccessIdentities2015_09_17>
+
+Returns: nothing
+
+  
+
+
+=head2 ListDistributions2015_09_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::ListDistributions2015_09_17>
+
+Returns: nothing
+
+  
+
+
+=head2 ListDistributionsByWebACLId2015_09_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::ListDistributionsByWebACLId2015_09_17>
+
+Returns: nothing
+
+  
+
+
+=head2 ListInvalidations2015_09_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations2015_09_17>
+
+Returns: nothing
+
+  
+
+
+=head2 ListStreamingDistributions2015_09_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::ListStreamingDistributions2015_09_17>
+
+Returns: nothing
+
+  
+
+
+=head2 UpdateCloudFrontOriginAccessIdentity2015_09_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2015_09_17>
+
+Returns: nothing
+
+  
+
+
+=head2 UpdateDistribution2015_09_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdateDistribution2015_09_17>
+
+Returns: nothing
+
+  
+
+
+=head2 UpdateStreamingDistribution2015_09_17( => )
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdateStreamingDistribution2015_09_17>
 
 Returns: nothing
 

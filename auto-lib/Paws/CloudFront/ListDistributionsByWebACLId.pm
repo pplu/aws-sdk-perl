@@ -8,7 +8,7 @@ package Paws::CloudFront::ListDistributionsByWebACLId;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListDistributionsByWebACLId');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-07-27/distributionsByWebACLId/{WebACLId}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-09-17/distributionsByWebACLId/{WebACLId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListDistributionsByWebACLIdResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
