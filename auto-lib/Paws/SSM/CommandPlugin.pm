@@ -45,10 +45,10 @@ Describes plugin details.
 
 =head2 Name => Str
 
-  The name of the plugin. Must be one of the following:
-AWS-JoinDirectoryServiceDomain, AWS-InstallApplication,
-AWS-RunPowerShellScript, AWS-InstallPowerShellModule,
-AWS-ConfigureCloudWatch.
+  The name of the plugin. Must be one of the following: aws:updateAgent,
+aws:domainjoin, aws:applications, aws:runPowerShellScript,
+aws:psmodule, aws:cloudWatch, aws:runShellScript, or
+aws:updateSSMAgent.
 
 
 =head2 Output => Str
