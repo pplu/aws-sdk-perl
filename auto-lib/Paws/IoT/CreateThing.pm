@@ -39,8 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AttributePayload => L<Paws::IoT::AttributePayload>
 
   The attribute payload. Which consists of up to 3 name/value pairs in a
-JSON document. For example:
-{\"attributes\":{\"string1\":\"string2\E<rdquo>}}
+JSON document. For example: {\"attributes\":{\"string1\":\"string2\"}}
 
 
 =head2 B<REQUIRED> ThingName => Str

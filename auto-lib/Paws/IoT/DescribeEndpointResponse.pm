@@ -16,7 +16,8 @@ Paws::IoT::DescribeEndpointResponse
 
 =head2 EndpointAddress => Str
 
-  The address.
+  The endpoint. The format of the endpoint is as follows:
+I<identifier>.iot.I<region>.amazonaws.com.
 
 
 =cut

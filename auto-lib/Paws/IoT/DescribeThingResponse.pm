@@ -20,9 +20,8 @@ Paws::IoT::DescribeThingResponse
 
   The attributes which are name/value pairs in JSON format. For example:
 
-{\"attributes\":{\"some-name1\":\"some-value1\E<rdquo>},
-{\"some-name2\":\"some-value2\E<rdquo>},
-{\"some-name3\":\"some-value3\E<rdquo>}}
+{\"attributes\":{\"some-name1\":\"some-value1\"},
+{\"some-name2\":\"some-value2\"}, {\"some-name3\":\"some-value3\"}}
 
 =head2 DefaultClientId => Str
 

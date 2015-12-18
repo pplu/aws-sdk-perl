@@ -61,9 +61,7 @@ Paws::IoTData - Perl Interface to AWS AWS IoT Data Plane
 
 =head1 DESCRIPTION
 
-AWS IoT (Beta)
-
-B<AWS IoT is considered a beta service as defined in the Service Terms>
+AWS IoT
 
 AWS IoT-Data enables secure, bi-directional communication between
 Internet-connected things (such as sensors, actuators, embedded

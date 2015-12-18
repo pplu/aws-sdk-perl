@@ -236,9 +236,7 @@ Paws::IoT - Perl Interface to AWS AWS IoT
 
 =head1 DESCRIPTION
 
-AWS IoT (Beta)
-
-B<AWS IoT is in beta and is subject to change>
+AWS IoT
 
 AWS IoT provides secure, bi-directional communication between
 Internet-connected things (such as sensors, actuators, embedded
@@ -315,6 +313,45 @@ request.
 B<Note> Reusing the same certificate signing request (CSR) results in a
 distinct certificate.
 
+You can create multiple certificates in a batch by creating a directory
+and copying multiple .csr files into that directory and specifying that
+directory on the command line. The following commands show how to
+create a batch of certificates given a batch of CSRs.
+
+Assuming a set of CSRs are located inside of the directory
+my-csr-directory:
+
+E<gt>
+
+On Linux and OSX, the command is:
+
+$ ls my-csr-directory/ | xargs -I {} aws iot
+create-certificate-from-csr --certificate-signing-request
+file://my-csr-directory/{}
+
+This command lists all of the CSRs in my-csr-directory and pipes each
+CSR filename to the aws iot create-certificate-from-csr AWS CLI command
+to create a certificate for the corresponding CSR.
+
+The aws iot create-certificate-from-csr part of the command can also be
+run in parallel to speed up the certificate creation process:
+
+$ ls my-csr-directory/ | xargs -P 10 -I {} aws iot
+create-certificate-from-csr --certificate-signing-request
+file://my-csr-directory/{}
+
+On Windows PowerShell, the command to create certificates for all CSRs
+in my-csr-directory is:
+
+E<gt> ls -Name my-csr-directory | %{aws iot create-certificate-from-csr
+--certificate-signing-request file://my-csr-directory/$_}
+
+On Windows Command Prompt, the command to create certificates for all
+CSRs in my-csr-directory is:
+
+E<gt> forfiles /p my-csr-directory /c "cmd /c aws iot
+create-certificate-from-csr --certificate-signing-request file://@path"
+
 
 =head2 CreateKeysAndCertificate([SetAsActive => Bool])
 
@@ -348,7 +385,16 @@ Each argument is described in detail in: L<Paws::IoT::CreatePolicyVersion>
 
 Returns: a L<Paws::IoT::CreatePolicyVersionResponse> instance
 
-  Creates a new version of the specified AWS IoT policy.
+  Creates a new version of the specified AWS IoT policy. To update a
+policy, create a new policy version. A managed policy can have up to
+five versions. If the policy has five versions, you must delete an
+existing version using DeletePolicyVersion before you create a new
+version.
+
+Optionally, you can set the new version as the policy's default
+version. The default version is the operative version; that is, the
+version that is in effect for the certificates that the policy is
+attached to.
 
 
 =head2 CreateThing(ThingName => Str, [AttributePayload => L<Paws::IoT::AttributePayload>])
@@ -377,13 +423,10 @@ Returns: nothing
 
   Deletes the specified certificate.
 
-A certificate cannot be deleted if it has a policy attached to it. To
-delete a certificate, first detach all policies using the
-DetachPrincipalPolicy operation.
-
-In addition, a certificate cannot be deleted if it is in ACTIVE status.
-To delete a certificate, first change the status to INACTIVE using the
-UpdateCertificate operation.
+A certificate cannot be deleted if it has a policy attached to it or if
+its status is set to ACTIVE. To delete a certificate, first detach all
+policies using the DetachPrincipalPolicy API. Next use the
+UpdateCertificate API to set the certificate to the INACTIVE status.
 
 
 =head2 DeletePolicy(PolicyName => Str)
@@ -394,20 +437,16 @@ Returns: nothing
 
   Deletes the specified policy.
 
-A policy cannot be deleted if:
+A policy cannot be deleted if it has non-default versions and/or it is
+attached to any certificate.
 
-- it has non-default versions
+To delete a policy, delete all non-default versions of the policy using
+the DeletePolicyVersion API, detach the policy from any certificate
+using the DetachPrincipalPolicy API, and then use the DeletePolicy API
+to delete the policy.
 
-- it is attached to any certificate
-
-To delete a policy:
-
-- First delete all the non-default versions of the policy using the
-DeletePolicyVersion API.
-
-- Detach it from any certificate using the DetachPrincipalPolicy API.
-
-When a policy is deleted, its default version is deleted with it.
+When a policy is deleted using DeletePolicy, its default version is
+deleted with it.
 
 
 =head2 DeletePolicyVersion(PolicyName => Str, PolicyVersionId => Str)
@@ -416,11 +455,11 @@ Each argument is described in detail in: L<Paws::IoT::DeletePolicyVersion>
 
 Returns: nothing
 
-  Deletes the specified version of the specified policy. The default
-version of the policy cannot be deleted.
-
-To delete the default version use the DeletePolicy API or mark the
-policy as non-default and then delete it.
+  Deletes the specified version of the specified policy. You cannot
+delete the default version of a policy using this API. To delete the
+default version of a policy, use DeletePolicy. To find out which
+version of a policy is marked as the default version, use
+ListPolicyVersions.
 
 
 =head2 DeleteThing(ThingName => Str)
@@ -456,9 +495,9 @@ Each argument is described in detail in: L<Paws::IoT::DescribeEndpoint>
 
 Returns: a L<Paws::IoT::DescribeEndpointResponse> instance
 
-  Returns a unique URL specific to the AWS account making the call. The
-URL points to the AWS IoT data plane endpoint. The customer-specific
-endpoint should be provided to all data plane operations.
+  Returns a unique endpoint specific to the AWS account making the call.
+You specify the following URI when updating state information for your
+thing: https://I<endpoint>/things/I<thingName>/shadow.
 
 
 =head2 DescribeThing(ThingName => Str)
@@ -639,8 +678,10 @@ Each argument is described in detail in: L<Paws::IoT::SetDefaultPolicyVersion>
 
 Returns: nothing
 
-  Sets the specified policy version as the default for the specified
-policy.
+  Sets the specified version of the specified policy as the policy's
+default (operative) version. This action affects all certificates that
+the policy is attached to. To list the principals the policy is
+attached to, use the ListPrincipalPolicy API.
 
 
 =head2 SetLoggingOptions([LoggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>])

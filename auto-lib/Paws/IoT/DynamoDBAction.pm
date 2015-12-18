@@ -72,7 +72,7 @@ C<"rangeKeyValue": "${timestamp()}">
 
 =head2 PayloadField => Str
 
-  The action payload.
+  The action payload, this name can be customized.
 
 
 =head2 B<REQUIRED> RangeKeyField => Str

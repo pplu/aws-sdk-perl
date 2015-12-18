@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The attribute payload, a JSON string containing up to three key-value
 pairs.
 
-For example: {\"attributes\":{\"string1\":\"string2\E<rdquo>}}
+For example: {\"attributes\":{\"string1\":\"string2\"}}
 
 
 =head2 B<REQUIRED> ThingName => Str
