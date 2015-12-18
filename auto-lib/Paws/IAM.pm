@@ -1241,6 +1241,11 @@ Returns: nothing
 
   Deletes the specified server certificate.
 
+For more information about working with server certificates, including
+a list of AWS services that can use the server certificates that you
+manage with IAM, go to Working with Server Certificates in the I<IAM
+User Guide>.
+
 If you are using a server certificate with Elastic Load Balancing,
 deleting the certificate could have implications for your application.
 If Elastic Load Balancing doesn't detect the deletion of bound
@@ -1649,6 +1654,11 @@ Returns: a L<Paws::IAM::GetServerCertificateResponse> instance
 
   Retrieves information about the specified server certificate.
 
+For more information about working with server certificates, including
+a list of AWS services that can use the server certificates that you
+manage with IAM, go to Working with Server Certificates in the I<IAM
+User Guide>.
+
 
 =head2 GetSSHPublicKey(Encoding => Str, SSHPublicKeyId => Str, UserName => Str)
 
@@ -1995,6 +2005,11 @@ none exist, the action returns an empty list.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
+
+For more information about working with server certificates, including
+a list of AWS services that can use the server certificates that you
+manage with IAM, go to Working with Server Certificates in the I<IAM
+User Guide>.
 
 
 =head2 ListSigningCertificates([Marker => Str, MaxItems => Int, UserName => Str])
@@ -2421,15 +2436,20 @@ Returns: nothing
 
   Updates the name and/or the path of the specified server certificate.
 
+For more information about working with server certificates, including
+a list of AWS services that can use the server certificates that you
+manage with IAM, go to Working with Server Certificates in the I<IAM
+User Guide>.
+
 You should understand the implications of changing a server
-certificate's path or name. For more information, see Managing Server
-Certificates in the I<IAM User Guide>. To change a server certificate
+certificate's path or name. For more information, see Renaming a Server
+Certificate in the I<IAM User Guide>. To change a server certificate
 name the requester must have appropriate permissions on both the source
 object and the target object. For example, to change the name from
 ProductionCert to ProdCert, the entity making the request must have
 permission on ProductionCert and ProdCert, or must have permission on
-all (*). For more information about permissions, see Permissions and
-Policies.
+all (*). For more information about permissions, see Access Management
+in the I<IAM User Guide>.
 
 
 =head2 UpdateSigningCertificate(CertificateId => Str, Status => Str, [UserName => Str])
@@ -2494,16 +2514,21 @@ Returns: a L<Paws::IAM::UploadServerCertificateResponse> instance
 certificate entity includes a public key certificate, a private key,
 and an optional certificate chain, which should all be PEM-encoded.
 
+For more information about working with server certificates, including
+a list of AWS services that can use the server certificates that you
+manage with IAM, go to Working with Server Certificates in the I<IAM
+User Guide>.
+
 For information about the number of server certificates you can upload,
-see Limitations on IAM Entities in the I<IAM User Guide>.
+see Limitations on IAM Entities and Objects in the I<IAM User Guide>.
 
 Because the body of the public key certificate, private key, and the
 certificate chain can be large, you should use POST rather than GET
 when calling C<UploadServerCertificate>. For information about setting
 up signatures and authorization through the API, go to Signing AWS API
 Requests in the I<AWS General Reference>. For general information about
-using the Query API with IAM, go to Making Query Requests in the I<IAM
-User Guide>.
+using the Query API with IAM, go to Calling the API by Making HTTP
+Query Requests in the I<IAM User Guide>.
 
 
 =head2 UploadSigningCertificate(CertificateBody => Str, [UserName => Str])
