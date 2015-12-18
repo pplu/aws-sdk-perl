@@ -1,6 +1,7 @@
 package Paws::Config::RecordingGroup;
   use Moose;
   has AllSupported => (is => 'ro', isa => 'Bool', xmlname => 'allSupported', request_name => 'allSupported', traits => ['Unwrapped','NameInRequest']);
+  has IncludeGlobalResourceTypes => (is => 'ro', isa => 'Bool', xmlname => 'includeGlobalResourceTypes', request_name => 'includeGlobalResourceTypes', traits => ['Unwrapped','NameInRequest']);
   has ResourceTypes => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'resourceTypes', request_name => 'resourceTypes', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -32,31 +33,83 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Rec
 
 =head1 DESCRIPTION
 
-The group of AWS resource types that AWS Config records when starting
-the configuration recorder.
+Specifies the types of AWS resource for which AWS Config records
+configuration changes.
 
-B<recordingGroup> can have one and only one parameter. Choose either
-B<allSupported> or B<resourceTypes>.
+In the recording group, you specify whether all supported types or
+specific types of resources are recorded.
+
+By default, AWS Config records configuration changes for all supported
+types of regional resources that AWS Config discovers in the region in
+which it is running. Regional resources are tied to a region and can be
+used only in that region. Examples of regional resources are EC2
+instances and EBS volumes.
+
+You can also have AWS Config record configuration changes for supported
+types of global resources. Global resources are not tied to an
+individual region and can be used in all regions.
+
+The configuration details for any global resource are the same in all
+regions. If you customize AWS Config in multiple regions to record
+global resources, it will create multiple configuration items each time
+a global resource changes: one configuration item for each region.
+These configuration items will contain identical data. To prevent
+duplicate configuration items, you should consider customizing AWS
+Config in only one region to record global resources, unless you want
+the configuration items to be available in multiple regions.
+
+If you don't want AWS Config to record all resources, you can specify
+which types of resources it will record with the C<resourceTypes>
+parameter.
+
+For a list of supported resource types, see Supported resource types.
+
+For more information, see Selecting Which Resources AWS Config Records.
 
 =head1 ATTRIBUTES
 
 
 =head2 AllSupported => Bool
 
-  Records all supported resource types in the recording group. For a list
-of supported resource types, see Supported resource types. If you
-specify B<allSupported>, you cannot enumerate a list of
-B<resourceTypes>.
+  Specifies whether AWS Config records configuration changes for every
+supported type of regional resource.
+
+If you set this option to C<true>, when AWS Config adds support for a
+new type of regional resource, it automatically starts recording
+resources of that type.
+
+If you set this option to C<true>, you cannot enumerate a list of
+C<resourceTypes>.
+
+
+=head2 IncludeGlobalResourceTypes => Bool
+
+  Specifies whether AWS Config includes all supported types of global
+resources with the resources that it records.
+
+Before you can set this option to C<true>, you must set the
+C<allSupported> option to C<true>.
+
+If you set this option to C<true>, when AWS Config adds support for a
+new type of global resource, it automatically starts recording
+resources of that type.
 
 
 =head2 ResourceTypes => ArrayRef[Str]
 
-  A comma-separated list of strings representing valid AWS resource types
-(for example, C<AWS::EC2::Instance> or C<AWS::CloudTrail::Trail>).
-B<resourceTypes> is only valid if you have chosen not to select
-B<allSupported>. For a list of valid B<resourceTypes> values, see the
-B<resourceType Value> column in the following topic: Supported AWS
-Resource Types.
+  A comma-separated list that specifies the types of AWS resources for
+which AWS Config records configuration changes (for example,
+C<AWS::EC2::Instance> or C<AWS::CloudTrail::Trail>).
+
+Before you can set this option to C<true>, you must set the
+C<allSupported> option to C<false>.
+
+If you set this option to C<true>, when AWS Config adds support for a
+new type of resource, it will not record resources of that type unless
+you manually add that type to your recording group.
+
+For a list of valid C<resourceTypes> values, see the B<resourceType
+Value> column in Supported AWS Resource Types.
 
 
 
