@@ -5,6 +5,7 @@ package Paws::EC2::Route;
   has GatewayId => (is => 'ro', isa => 'Str', xmlname => 'gatewayId', traits => ['Unwrapped']);
   has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
   has InstanceOwnerId => (is => 'ro', isa => 'Str', xmlname => 'instanceOwnerId', traits => ['Unwrapped']);
+  has NatGatewayId => (is => 'ro', isa => 'Str', xmlname => 'natGatewayId', traits => ['Unwrapped']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped']);
   has Origin => (is => 'ro', isa => 'Str', xmlname => 'origin', traits => ['Unwrapped']);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
@@ -67,6 +68,11 @@ This class has no description
 =head2 InstanceOwnerId => Str
 
   The AWS account ID of the owner of the instance.
+
+
+=head2 NatGatewayId => Str
+
+  The ID of a NAT gateway.
 
 
 =head2 NetworkInterfaceId => Str

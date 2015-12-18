@@ -95,6 +95,10 @@ the table.
 
 =item *
 
+C<route.nat-gateway-id> - The ID of a NAT gateway.
+
+=item *
+
 C<route.origin> - Describes how the route was created.
 C<CreateRouteTable> indicates that the route was automatically created
 when the route table was created; C<CreateRoute> indicates that the

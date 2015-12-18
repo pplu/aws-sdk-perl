@@ -5,6 +5,7 @@ package Paws::EC2::ReplaceRoute;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' );
+  has NatGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'natGatewayId' );
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcPeeringConnectionId' );
@@ -61,6 +62,11 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 InstanceId => Str
 
   The ID of a NAT instance in your VPC.
+
+
+=head2 NatGatewayId => Str
+
+  The ID of a NAT gateway.
 
 
 =head2 NetworkInterfaceId => Str
