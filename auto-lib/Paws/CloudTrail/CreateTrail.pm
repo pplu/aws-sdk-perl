@@ -5,6 +5,7 @@ package Paws::CloudTrail::CreateTrail;
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
   has EnableLogFileValidation => (is => 'ro', isa => 'Bool');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
+  has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
@@ -75,6 +76,12 @@ logging or delete a trail.
 
   Specifies whether the trail is publishing events from global services
 such as IAM to the log files.
+
+
+=head2 IsMultiRegionTrail => Bool
+
+  Specifies whether the trail is created in the current region or in all
+regions. The default is false.
 
 
 =head2 KmsKeyId => Str

@@ -137,17 +137,19 @@ Returns: a L<Paws::CloudTrail::AddTagsResponse> instance
 unique per trail. Overwrites an existing tag's value when a new value
 is specified for an existing tag key. If you specify a key without a
 value, the tag will be created with the specified key and a value of
-null.
+null. You can tag a trail that applies to all regions only from the
+region in which the trail was created (that is, from its home region).
 
 
-=head2 CreateTrail(Name => Str, S3BucketName => Str, [CloudWatchLogsLogGroupArn => Str, CloudWatchLogsRoleArn => Str, EnableLogFileValidation => Bool, IncludeGlobalServiceEvents => Bool, KmsKeyId => Str, S3KeyPrefix => Str, SnsTopicName => Str])
+=head2 CreateTrail(Name => Str, S3BucketName => Str, [CloudWatchLogsLogGroupArn => Str, CloudWatchLogsRoleArn => Str, EnableLogFileValidation => Bool, IncludeGlobalServiceEvents => Bool, IsMultiRegionTrail => Bool, KmsKeyId => Str, S3KeyPrefix => Str, SnsTopicName => Str])
 
 Each argument is described in detail in: L<Paws::CloudTrail::CreateTrail>
 
 Returns: a L<Paws::CloudTrail::CreateTrailResponse> instance
 
   Creates a trail that specifies the settings for delivery of log data to
-an Amazon S3 bucket.
+an Amazon S3 bucket. A maximum of five trails can exist in a region,
+irrespective of the region in which they were created.
 
 
 =head2 DeleteTrail(Name => Str)
@@ -157,10 +159,12 @@ Each argument is described in detail in: L<Paws::CloudTrail::DeleteTrail>
 Returns: a L<Paws::CloudTrail::DeleteTrailResponse> instance
 
   Deletes a trail. This operation must be called from the region in which
-the trail was created.
+the trail was created. C<DeleteTrail> cannot be called on the shadow
+trails (replicated trails in other regions) of a trail that is enabled
+in all regions.
 
 
-=head2 DescribeTrails([TrailNameList => ArrayRef[Str]])
+=head2 DescribeTrails([IncludeShadowTrails => Bool, TrailNameList => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::CloudTrail::DescribeTrails>
 
@@ -206,7 +210,9 @@ Each argument is described in detail in: L<Paws::CloudTrail::ListTags>
 
 Returns: a L<Paws::CloudTrail::ListTagsResponse> instance
 
-  Lists the tags for the trail in the current region.
+  Lists the tags for the specified trail or trails in the current region.
+
+Lists the tags for the trail in the current region.
 
 
 =head2 LookupEvents([EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
@@ -249,7 +255,10 @@ Each argument is described in detail in: L<Paws::CloudTrail::StartLogging>
 Returns: a L<Paws::CloudTrail::StartLoggingResponse> instance
 
   Starts the recording of AWS API calls and log file delivery for a
-trail.
+trail. For a trail that is enabled in all regions, this operation must
+be called from the region in which the trail was created. This
+operation cannot be called on the shadow trails (replicated trails in
+other regions) of a trail that is enabled in all regions.
 
 
 =head2 StopLogging(Name => Str)
@@ -261,10 +270,14 @@ Returns: a L<Paws::CloudTrail::StopLoggingResponse> instance
   Suspends the recording of AWS API calls and log file delivery for the
 specified trail. Under most circumstances, there is no need to use this
 action. You can update a trail without stopping it first. This action
-is the only way to stop recording.
+is the only way to stop recording. For a trail enabled in all regions,
+this operation must be called from the region in which the trail was
+created, or an C<InvalidHomeRegionException> will occur. This operation
+cannot be called on the shadow trails (replicated trails in other
+regions) of a trail enabled in all regions.
 
 
-=head2 UpdateTrail(Name => Str, [CloudWatchLogsLogGroupArn => Str, CloudWatchLogsRoleArn => Str, EnableLogFileValidation => Bool, IncludeGlobalServiceEvents => Bool, KmsKeyId => Str, S3BucketName => Str, S3KeyPrefix => Str, SnsTopicName => Str])
+=head2 UpdateTrail(Name => Str, [CloudWatchLogsLogGroupArn => Str, CloudWatchLogsRoleArn => Str, EnableLogFileValidation => Bool, IncludeGlobalServiceEvents => Bool, IsMultiRegionTrail => Bool, KmsKeyId => Str, S3BucketName => Str, S3KeyPrefix => Str, SnsTopicName => Str])
 
 Each argument is described in detail in: L<Paws::CloudTrail::UpdateTrail>
 
@@ -274,7 +287,9 @@ Returns: a L<Paws::CloudTrail::UpdateTrailResponse> instance
 trail do not require stopping the CloudTrail service. Use this action
 to designate an existing bucket for log delivery. If the existing
 bucket has previously been a target for CloudTrail log files, an IAM
-policy exists for the bucket.
+policy exists for the bucket. C<UpdateTrail> must be called from the
+region in which the trail was created; otherwise, an
+C<InvalidHomeRegionException> is thrown.
 
 
 =head1 SEE ALSO

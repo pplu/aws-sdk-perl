@@ -4,6 +4,7 @@ package Paws::CloudTrail::UpdateTrailResponse;
   has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
+  has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LogFileValidationEnabled => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
@@ -36,6 +37,10 @@ to a user's log group.
 
   Specifies whether the trail is publishing events from global services
 such as IAM to the log files.
+
+=head2 IsMultiRegionTrail => Bool
+
+  Specifies whether the trail exists in one region or in all regions.
 
 =head2 KmsKeyId => Str
 

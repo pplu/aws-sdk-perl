@@ -5,6 +5,7 @@ package Paws::CloudTrail::UpdateTrail;
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
   has EnableLogFileValidation => (is => 'ro', isa => 'Bool');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
+  has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has S3BucketName => (is => 'ro', isa => 'Str');
@@ -74,6 +75,17 @@ logging or delete a trail.
 
   Specifies whether the trail is publishing events from global services
 such as IAM to the log files.
+
+
+=head2 IsMultiRegionTrail => Bool
+
+  Specifies whether the trail applies only to the current region or to
+all regions. The default is false. If the trail exists only in the
+current region and this value is set to true, shadow trails
+(replications of the trail) will be created in the other regions. If
+the trail exists in all regions and this value is set to false, the
+trail will remain in the region where it was created, and its shadow
+trails in other regions will be deleted.
 
 
 =head2 KmsKeyId => Str
