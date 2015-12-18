@@ -42,9 +42,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EndTime => Int
 
-  A unix timestamp indicating the end time of the range for the request.
-If provided, events with a timestamp later than this time will not be
-returned.
+  A point in time expressed as the number of milliseconds since Jan 1,
+1970 00:00:00 UTC. If provided, events with a timestamp later than this
+time are not returned.
 
 
 =head2 FilterPattern => Str
@@ -82,14 +82,15 @@ search. Defaults to all the log streams in the log group.
 =head2 NextToken => Str
 
   A pagination token obtained from a C<FilterLogEvents> response to
-continue paginating the FilterLogEvents results.
+continue paginating the FilterLogEvents results. This token is omitted
+from the response when there are no other events to display.
 
 
 =head2 StartTime => Int
 
-  A unix timestamp indicating the start time of the range for the
-request. If provided, events with a timestamp prior to this time will
-not be returned.
+  A point in time expressed as the number of milliseconds since Jan 1,
+1970 00:00:00 UTC. If provided, events with a timestamp prior to this
+time are not returned.
 
 
 

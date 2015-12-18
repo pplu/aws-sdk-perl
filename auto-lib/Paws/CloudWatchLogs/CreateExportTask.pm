@@ -54,7 +54,8 @@ exported. If not specified, this defaults to 'exportedlogs'.
 
 =head2 B<REQUIRED> From => Int
 
-  A unix timestamp indicating the start time of the range for the
+  A point in time expressed as the number of milliseconds since Jan 1,
+1970 00:00:00 UTC. It indicates the start time of the range for the
 request. Events with a timestamp prior to this time will not be
 exported.
 
@@ -78,8 +79,10 @@ applied.
 
 =head2 B<REQUIRED> To => Int
 
-  A unix timestamp indicating the end time of the range for the request.
-Events with a timestamp later than this time will not be exported.
+  A point in time expressed as the number of milliseconds since Jan 1,
+1970 00:00:00 UTC. It indicates the end time of the range for the
+request. Events with a timestamp later than this time will not be
+exported.
 
 
 

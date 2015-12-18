@@ -256,6 +256,11 @@ provided, this API will initiate an export task and respond with the
 task Id. Once started, C<DescribeExportTasks> can be used to get the
 status of an export task.
 
+You can export logs from multiple log groups or multiple time ranges to
+the same Amazon S3 bucket. To separate out log data for each export
+task, you can specify a prefix that will be used as the Amazon S3 key
+prefix for all exported objects.
+
 
 =head2 CreateLogGroup(LogGroupName => Str)
 

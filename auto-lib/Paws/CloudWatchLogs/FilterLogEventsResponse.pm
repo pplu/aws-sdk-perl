@@ -23,7 +23,8 @@ from the request.
 =head2 NextToken => Str
 
   A pagination token obtained from a C<FilterLogEvents> response to
-continue paginating the FilterLogEvents results.
+continue paginating the FilterLogEvents results. This token is omitted
+from the response when there are no other events to display.
 
 =head2 SearchedLogStreams => ArrayRef[L<Paws::CloudWatchLogs::SearchedLogStream>]
 
