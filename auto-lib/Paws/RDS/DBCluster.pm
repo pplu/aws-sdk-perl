@@ -222,7 +222,7 @@ occur, in Universal Coordinated Time (UTC).
 
 =head2 StorageEncrypted => Bool
 
-  Specifies whetehr the DB cluster is encrypted.
+  Specifies whether the DB cluster is encrypted.
 
 
 =head2 VpcSecurityGroups => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]

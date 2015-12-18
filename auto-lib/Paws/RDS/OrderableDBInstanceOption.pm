@@ -8,6 +8,7 @@ package Paws::RDS::OrderableDBInstanceOption;
   has MultiAZCapable => (is => 'ro', isa => 'Bool');
   has ReadReplicaCapable => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
+  has SupportsEnhancedMonitoring => (is => 'ro', isa => 'Bool');
   has SupportsIops => (is => 'ro', isa => 'Bool');
   has SupportsStorageEncryption => (is => 'ro', isa => 'Bool');
   has Vpc => (is => 'ro', isa => 'Bool');
@@ -87,6 +88,12 @@ DescribeOrderableDBInstanceOptions action.
 =head2 StorageType => Str
 
   Indicates the storage type for this orderable DB instance.
+
+
+=head2 SupportsEnhancedMonitoring => Bool
+
+  Indicates whether the DB instance supports enhanced monitoring at
+intervals from 1 to 60 seconds.
 
 
 =head2 SupportsIops => Bool

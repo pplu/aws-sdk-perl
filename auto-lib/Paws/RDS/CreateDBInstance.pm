@@ -21,6 +21,8 @@ package Paws::RDS::CreateDBInstance;
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
+  has MonitoringInterval => (is => 'ro', isa => 'Int');
+  has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -659,6 +661,30 @@ Constraints: Must contain from 8 to 128 characters.
 B<Amazon Aurora>
 
 Constraints: Must contain from 8 to 41 characters.
+
+
+=head2 MonitoringInterval => Int
+
+  The interval, in seconds, between points when Enhanced Monitoring
+metrics are collected for the DB instance. To disable collecting
+Enhanced Monitoring metrics, specify 0. The default is 60.
+
+If C<MonitoringRoleArn> is specified, then you must also set
+C<MonitoringInterval> to a value other than 0.
+
+Valid Values: C<0, 1, 5, 10, 15, 30, 60>
+
+
+=head2 MonitoringRoleArn => Str
+
+  The ARN for the IAM role that permits RDS to send enhanced monitoring
+metrics to CloudWatch Logs. For example,
+C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
+a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
+Monitoring.
+
+If C<MonitoringInterval> is set to a value other than 0, then you must
+supply a C<MonitoringRoleArn> value.
 
 
 =head2 MultiAZ => Bool

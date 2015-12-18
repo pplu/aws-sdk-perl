@@ -20,12 +20,15 @@ package Paws::RDS::DBInstance;
   has Endpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has EnhancedMonitoringResourceArn => (is => 'ro', isa => 'Str');
   has InstanceCreateTime => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
+  has MonitoringInterval => (is => 'ro', isa => 'Int');
+  has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroupMembership]');
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RDS::PendingModifiedValues');
@@ -222,6 +225,12 @@ instance.
   Indicates the database engine version.
 
 
+=head2 EnhancedMonitoringResourceArn => Str
+
+  The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream
+that receives the Enhanced Monitoring metrics data for the DB instance.
+
+
 =head2 InstanceCreateTime => Str
 
   Provides the date and time the DB instance was created.
@@ -252,6 +261,18 @@ point-in-time restore.
 =head2 MasterUsername => Str
 
   Contains the master username for the DB instance.
+
+
+=head2 MonitoringInterval => Int
+
+  The interval, in seconds, between points when Enhanced Monitoring
+metrics are collected for the DB instance.
+
+
+=head2 MonitoringRoleArn => Str
+
+  The ARN for the IAM role that permits RDS to send Enhanced Monitoring
+metrics to CloudWatch Logs.
 
 
 =head2 MultiAZ => Bool
