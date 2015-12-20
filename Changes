@@ -1,4 +1,5 @@
 0.22
+ - Fix bug where a StrToObj map of complex objects would not instance the object correctly
  - EC2 API update: support for NatGateways
  - RDS API update: support for enhanced monitoring, and more new features
  - CloudFront API update: support for compressing
