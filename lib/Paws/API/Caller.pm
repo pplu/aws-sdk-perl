@@ -25,7 +25,12 @@ package Paws::API::Caller {
       if ($class->does('Paws::API::StrToObjMapParser')) {
         my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
         Paws->load_class($subtype);
-        $p{ Map }->{ $att } = $subtype->new(%{ $params{ $att } });
+        if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
+          $p{ Map }->{ $att } = $subtype->new(%{ $params{ $att } });
+        } else {
+          $p{ Map }->{ $att } = $self->new_with_coercions("$subtype", %{ $params{ $att } });
+        }
+
       } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
         $p{ Map }->{ $att } = $params{ $att };
       } else {
