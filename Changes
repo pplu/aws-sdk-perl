@@ -1,3 +1,10 @@
+0.22
+ - EC2 API update: support for NatGateways
+ - RDS API update: support for enhanced monitoring, and more new features
+ - CloudFront API update: support for compressing
+ - CloudTrail API update: support for multiregion trails
+ - Config API update
+
 0.21 16 Dec 2015
  - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)
  - MojoAsyncCaller starts using Future::Mojo, a better alternative to MojoX::IOLoop::Future

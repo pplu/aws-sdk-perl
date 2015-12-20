@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.21';
+our $VERSION = '0.22';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -605,6 +605,8 @@ Oriol Soriano (@ureesoriano) for contribution to API builders
 H. Daniel Cesario (@maneta) for devel setup instructions on RH and MacOSX
 
 Glen van Ginkel for contributions to get S3 working
+
+Javier Arellano for discovering Tagging bug
 
 
 =cut
