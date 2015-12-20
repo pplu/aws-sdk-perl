@@ -279,7 +279,36 @@ $test_params = {
 
 request_contentjson($test_params, $request);
 
+$request = $dynamo->PutItem(
+  TableName => 'my-test',
+  Item => {
+    'email' => { 'S' => 'e1@test.com' },
+    'count' => { 'N' => 33 },
+    'things' => {
+      'M' => {
+        'those' => {
+          'L' => [
+            {
+              'N' => 1
+            },
+            {
+              'N' => 2
+            },
+            {
+              'N' => 3
+            }
+          ]
+        },
+        'foo' => {
+          'S' => 'bar'
+        }
+      }
+    }
+  }
+);
 
+$test_params = decode_json('{"Item":{"count":{"N":33},"things":{"M":{"foo":{"S":"bar"},"those":{"L":[{"N":1},{"N":2},{"N":3}]}}},"email":{"S":"e1@test.com"}},"TableName":"my-test"}');
 
+request_contentjson($test_params, $request);
 
 done_testing;
