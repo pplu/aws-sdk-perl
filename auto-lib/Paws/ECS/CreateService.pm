@@ -3,6 +3,7 @@ package Paws::ECS::CreateService;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken' );
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' , required => 1);
   has LoadBalancers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::LoadBalancer]', traits => ['NameInRequest'], request_name => 'loadBalancers' );
   has Role => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'role' );
@@ -50,6 +51,12 @@ of the request. Up to 32 ASCII characters are allowed.
   The short name or full Amazon Resource Name (ARN) of the cluster on
 which to run your service. If you do not specify a cluster, the default
 cluster is assumed.
+
+
+=head2 DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>
+
+  Optional deployment parameters that control how many tasks run during
+the deployment and the ordering of stopping and starting tasks.
 
 
 =head2 B<REQUIRED> DesiredCount => Int

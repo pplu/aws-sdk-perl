@@ -1,6 +1,7 @@
 package Paws::ECS::Service;
   use Moose;
   has ClusterArn => (is => 'ro', isa => 'Str', xmlname => 'clusterArn', request_name => 'clusterArn', traits => ['Unwrapped','NameInRequest']);
+  has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', xmlname => 'deploymentConfiguration', request_name => 'deploymentConfiguration', traits => ['Unwrapped','NameInRequest']);
   has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Deployment]', xmlname => 'deployments', request_name => 'deployments', traits => ['Unwrapped','NameInRequest']);
   has DesiredCount => (is => 'ro', isa => 'Int', xmlname => 'desiredCount', request_name => 'desiredCount', traits => ['Unwrapped','NameInRequest']);
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceEvent]', xmlname => 'events', request_name => 'events', traits => ['Unwrapped','NameInRequest']);
@@ -51,6 +52,12 @@ Details on a service within a cluster
 
   The Amazon Resource Name (ARN) of the of the cluster that hosts the
 service.
+
+
+=head2 DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>
+
+  Optional deployment parameters that control how many tasks run during
+the deployment and the ordering of stopping and starting tasks.
 
 
 =head2 Deployments => ArrayRef[L<Paws::ECS::Deployment>]
@@ -106,7 +113,10 @@ arn:aws:ecs:I<region>:I<012345678910>:service/I<my-service>.
 
 =head2 ServiceName => Str
 
-  A user-generated string that you can use to identify your service.
+  The name of your service. Up to 255 letters (uppercase and lowercase),
+numbers, hyphens, and underscores are allowed. Service names must be
+unique within a cluster, but you can have similarly named services in
+multiple clusters within a region or across multiple regions.
 
 
 =head2 Status => Str

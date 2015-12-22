@@ -205,7 +205,7 @@ However, you can create your own cluster with a unique name with the
 C<CreateCluster> action.
 
 
-=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], Role => Str])
+=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], Role => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -216,6 +216,32 @@ definition. If the number of tasks running in a service drops below
 C<desiredCount>, Amazon ECS spawns another instantiation of the task in
 the specified cluster. To update an existing service, see
 UpdateService.
+
+You can optionally specify a deployment configuration for your service.
+During a deployment (which is triggered by changing the task definition
+of a service with an UpdateService operation), the service scheduler
+uses the C<minimumHealthyPercent> and C<maximumPercent> parameters to
+determine the deployment strategy.
+
+If the C<minimumHealthyPercent> is below 100%, the scheduler can ignore
+the C<desiredCount> temporarily during a deployment. For example, if
+your service has a C<desiredCount> of four tasks, a
+C<minimumHealthyPercent> of 50% allows the scheduler to stop two
+existing tasks before starting two new tasks. Tasks for services that
+I<do not> use a load balancer are considered healthy if they are in the
+C<RUNNING> state; tasks for services that I<do> use a load balancer are
+considered healthy if they are in the C<RUNNING> state and the
+container instance it is hosted on is reported as healthy by the load
+balancer. The default value for C<minimumHealthyPercent> is 50% in the
+console and 100% for the AWS CLI, the AWS SDKs, and the APIs.
+
+The C<maximumPercent> parameter represents an upper limit on the number
+of running tasks during a deployment, which enables you to define the
+deployment batch size. For example, if your service has a
+C<desiredCount> of four tasks, a C<maximumPercent> value of 200% starts
+four new tasks before stopping the four older tasks (provided that the
+cluster resources required to do this are available). The default value
+for C<maximumPercent> is 200%.
 
 When the service scheduler launches new tasks, it attempts to balance
 them across the Availability Zones in your cluster with the following
@@ -566,31 +592,47 @@ Manually Updating the Amazon ECS Container Agent in the I<Amazon EC2
 Container Service Developer Guide>.
 
 
-=head2 UpdateService(Service => Str, [Cluster => Str, DesiredCount => Int, TaskDefinition => Str])
+=head2 UpdateService(Service => Str, [Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, DesiredCount => Int, TaskDefinition => Str])
 
 Each argument is described in detail in: L<Paws::ECS::UpdateService>
 
 Returns: a L<Paws::ECS::UpdateServiceResponse> instance
 
-  Modify the desired count or task definition used in a service.
+  Modifies the desired count, deployment configuration, or task
+definition used in a service.
 
 You can add to or subtract from the number of instantiations of a task
 definition in a service by specifying the cluster that the service is
 running in and a new C<desiredCount> parameter.
 
-You can use C<UpdateService> to modify your task definition and deploy
-a new version of your service, one task at a time. If you modify the
-task definition with C<UpdateService>, Amazon ECS spawns a task with
-the new version of the task definition and then stops an old task after
-the new version is running. Because C<UpdateService> starts a new
-version of the task before stopping an old version, your cluster must
-have capacity to support one more instantiation of the task when
-C<UpdateService> is run. If your cluster cannot support another
-instantiation of the task used in your service, you can reduce the
-desired count of your service by one before modifying the task
-definition.
+You can use UpdateService to modify your task definition and deploy a
+new version of your service.
 
-When UpdateService replaces a task during an update, the equivalent of
+You can also update the deployment configuration of a service. When a
+deployment is triggered by updating the task definition of a service,
+the service scheduler uses the deployment configuration parameters,
+C<minimumHealthyPercent> and C<maximumPercent>, to determine the
+deployment strategy.
+
+If the C<minimumHealthyPercent> is below 100%, the scheduler can ignore
+the C<desiredCount> temporarily during a deployment. For example, if
+your service has a C<desiredCount> of four tasks, a
+C<minimumHealthyPercent> of 50% allows the scheduler to stop two
+existing tasks before starting two new tasks. Tasks for services that
+I<do not> use a load balancer are considered healthy if they are in the
+C<RUNNING> state; tasks for services that I<do> use a load balancer are
+considered healthy if they are in the C<RUNNING> state and the
+container instance it is hosted on is reported as healthy by the load
+balancer.
+
+The C<maximumPercent> parameter represents an upper limit on the number
+of running tasks during a deployment, which enables you to define the
+deployment batch size. For example, if your service has a
+C<desiredCount> of four tasks, a C<maximumPercent> value of 200% starts
+four new tasks before stopping the four older tasks (provided that the
+cluster resources required to do this are available).
+
+When UpdateService stops a task during a deployment, the equivalent of
 C<docker stop> is issued to the containers running in the task. This
 results in a C<SIGTERM> and a 30-second timeout, after which C<SIGKILL>
 is sent and the containers are forcibly stopped. If the container

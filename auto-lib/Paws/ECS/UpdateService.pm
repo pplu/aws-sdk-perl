@@ -2,6 +2,7 @@
 package Paws::ECS::UpdateService;
   use Moose;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
+  has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
   has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' );
@@ -41,6 +42,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The short name or full Amazon Resource Name (ARN) of the cluster that
 your service is running on. If you do not specify a cluster, the
 default cluster is assumed.
+
+
+=head2 DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>
+
+  Optional deployment parameters that control how many tasks run during
+the deployment and the ordering of stopping and starting tasks.
 
 
 =head2 DesiredCount => Int

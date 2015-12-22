@@ -45,7 +45,9 @@ registered.
 
 =head2 Value => Str
 
-  The value of the container instance attribute.
+  The value of the container instance attribute (at this time, the value
+here is C<Null>, but this could change in future revisions for
+expandability).
 
 
 
