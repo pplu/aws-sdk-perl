@@ -12,6 +12,7 @@ package Paws::EMR::JobFlowInstancesConfig;
   has KeepJobFlowAliveWhenNoSteps => (is => 'ro', isa => 'Bool');
   has MasterInstanceType => (is => 'ro', isa => 'Str');
   has Placement => (is => 'ro', isa => 'Paws::EMR::PlacementType');
+  has ServiceAccessSecurityGroup => (is => 'ro', isa => 'Str');
   has SlaveInstanceType => (is => 'ro', isa => 'Str');
   has TerminationProtected => (is => 'ro', isa => 'Bool');
 1;
@@ -84,14 +85,12 @@ instance type for nodes of a job flow launched in a Amazon VPC.
 
 =head2 EmrManagedMasterSecurityGroup => Str
 
-  The identifier of the Amazon EC2 security group (managed by Amazon
-ElasticMapReduce) for the master node.
+  The identifier of the Amazon EC2 security group for the master node.
 
 
 =head2 EmrManagedSlaveSecurityGroup => Str
 
-  The identifier of the Amazon EC2 security group (managed by Amazon
-ElasticMapReduce) for the slave nodes.
+  The identifier of the Amazon EC2 security group for the slave nodes.
 
 
 =head2 HadoopVersion => Str
@@ -128,6 +127,12 @@ all steps.
 =head2 Placement => L<Paws::EMR::PlacementType>
 
   The Availability Zone the job flow will run in.
+
+
+=head2 ServiceAccessSecurityGroup => Str
+
+  The identifier of the Amazon EC2 security group for the Amazon EMR
+service to access clusters in VPC private subnets.
 
 
 =head2 SlaveInstanceType => Str

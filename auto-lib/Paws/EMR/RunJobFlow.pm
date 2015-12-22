@@ -107,9 +107,10 @@ to run the job flow.
 
 =head2 JobFlowRole => Str
 
-  An IAM role for the job flow. The EC2 instances of the job flow assume
-this role. The default role is C<EMRJobflowDefault>. In order to use
-the default role, you must have already created it using the CLI.
+  Also called instance profile and EC2 role. An IAM role for an EMR
+cluster. The EC2 instances of the cluster assume this role. The default
+role is C<EMR_EC2_DefaultRole>. In order to use the default role, you
+must have already created it using the CLI or console.
 
 
 =head2 LogUri => Str
