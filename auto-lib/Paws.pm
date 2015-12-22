@@ -282,6 +282,8 @@ L<Paws::DynamoDBStreams>
 
 L<Paws::EC2>
 
+L<Paws::ECR>
+
 L<Paws::ECS>
 
 L<Paws::EFS>

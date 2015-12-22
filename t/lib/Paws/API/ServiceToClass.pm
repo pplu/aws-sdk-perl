@@ -25,6 +25,7 @@ package Paws::API::ServiceToClass {
     dynamodb => 'DynamoDB',
     dynamodbstreams => 'DynamoDBStreams',
     ec2 => 'EC2',
+    ecr => 'ECR',
     efs => 'EFS',
     elasticache => 'ElastiCache',
     elasticbeanstalk => 'ElasticBeanstalk',
