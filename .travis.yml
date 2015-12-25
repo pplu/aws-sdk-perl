@@ -10,10 +10,10 @@ perl:
   - "5.14"
   - "5.12"
   - "5.10"
-  - "5.8"
 matrix:
   allow_failures:
     - perl: dev
+    - "5.8"
 sudo: false
 before_install:
   - eval $(curl https://travis-perl.github.io/init) --auto
