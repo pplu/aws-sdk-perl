@@ -1,4 +1,4 @@
-package Paws::Net::RestJsonResponse {
+package Paws::Net::RestJsonResponse;
   use Moose::Role;
   use JSON::MaybeXS;
   use Carp qw(croak);
@@ -62,7 +62,4 @@ package Paws::Net::RestJsonResponse {
       });
     }
   }
-
-}
-
 1;

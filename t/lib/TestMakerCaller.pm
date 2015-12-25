@@ -1,4 +1,4 @@
-package TestMakerCaller {
+package TestMakerCaller;
   use Moose;
   extends 'Paws::Net::Caller';
   use Carp;
@@ -50,5 +50,4 @@ package TestMakerCaller {
     print "Written test case to ${test_file_name}.test.yml\n";
     return $result;
   };
-
-}
+1;

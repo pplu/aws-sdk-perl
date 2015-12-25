@@ -1,4 +1,4 @@
-package Paws::Signin {
+package Paws::Signin;
   use Moose;
   sub service { 'signin' }
   sub version { '2010-05-08' }
@@ -41,7 +41,6 @@ package Paws::Signin {
 
     return $self->response_to_object({ URL => $requestObj->url }, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

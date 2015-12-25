@@ -1,4 +1,4 @@
-package TestResponseRecorder {
+package TestResponseRecorder;
   use Moose;
   extends 'Paws::Net::Caller';
 
@@ -69,7 +69,4 @@ package TestResponseRecorder {
       return $res;
     }
   }
-
-}
-
 1;

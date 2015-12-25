@@ -1,4 +1,4 @@
-package Test04::StubUAForMetadata {
+package Test04::StubUAForMetadata;
   use Moose;
 
   has calls => (is => 'rw', isa => 'Int', default => 0, traits => ['Counter'],
@@ -30,6 +30,4 @@ package Test04::StubUAForMetadata {
     }
     die "Unknown URL in StubUA $url";
   }
-}
-
 1;

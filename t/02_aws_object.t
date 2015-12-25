@@ -2,17 +2,15 @@
 
 use lib 't/lib';
 
-package A::NEW::CALLER {
+package A::NEW::CALLER;
   use Moose;
   with 'Paws::Net::CallerRole';
   sub do_call { return 'CALLER1' }
-};
-package A::NEW::CALLER2 {
+
+package A::NEW::CALLER2;
   use Moose;
   with 'Paws::Net::CallerRole';
   sub do_call { return 'CALLER2' }
-};
-
 
 use strict;
 use warnings;

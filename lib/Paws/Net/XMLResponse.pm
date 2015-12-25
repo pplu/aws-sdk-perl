@@ -1,4 +1,4 @@
-package Paws::Net::XMLResponse {
+package Paws::Net::XMLResponse;
   use Moose::Role;
   use XML::Simple qw//;
   use Carp qw(croak);
@@ -107,6 +107,4 @@ package Paws::Net::XMLResponse {
       return $att_class->new(Map => {});
     }  
   }
-}
-
 1;

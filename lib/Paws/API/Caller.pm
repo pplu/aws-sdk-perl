@@ -1,4 +1,4 @@
-package Paws::API::Caller {
+package Paws::API::Caller;
   use Moose::Role;
   use Carp;
   use Paws::Net::APIRequest;
@@ -268,5 +268,4 @@ package Paws::API::Caller {
     }
     $class->new(%args);
   }
-}
 1;

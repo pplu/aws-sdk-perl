@@ -23,7 +23,7 @@
 # 	- reponse_file attribute at object creation time
 # 	- environment variable PAWS_RESPONSE_FILE
 
-package FileCaller {
+package FileCaller;
 	use Moose;
 	use Carp qw(croak);
 	use YAML qw/LoadFile/;
@@ -59,6 +59,5 @@ package FileCaller {
 
 
 	no Moose;
-}
 
 1;

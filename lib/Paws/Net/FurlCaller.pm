@@ -1,4 +1,4 @@
-package Paws::Net::FurlCaller {
+package Paws::Net::FurlCaller;
   # This caller uses Furl
   use Moose;
   use Carp qw(croak);
@@ -46,6 +46,4 @@ package Paws::Net::FurlCaller {
       }
     }
   }
-}
-
 1;

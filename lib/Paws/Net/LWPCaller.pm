@@ -1,4 +1,4 @@
-package Paws::Net::LWPCaller {
+package Paws::Net::LWPCaller;
   # This caller uses LWP::UserAgent -- thus HTTPS proxies are supported.
   use Moose;
   use Carp qw(croak);
@@ -44,6 +44,4 @@ package Paws::Net::LWPCaller {
       }
     }
   }
-}
-
 1;

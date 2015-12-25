@@ -8,12 +8,13 @@ use Data::Dumper;
 use lib 't/lib';
 use Test::CustomCredentials;
 
-package Test11Caller {
+package Test11Caller;
   use Moose;
   extends 'TestResponseRecorder';
 
   has '+conversation_dir' => (default => 't/11_client_exceptions/');
-}
+
+package main;
 
 my $do_real_calls = $ENV{'PAWS_RUN_REAL_CALLS'} || 0;
 my $caller = Test11Caller->new(

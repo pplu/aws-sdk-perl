@@ -1,4 +1,4 @@
-package Paws::API::ServiceToClass {
+package Paws::API::ServiceToClass;
   use strict;
   use warnings;
 
@@ -86,5 +86,4 @@ package Paws::API::ServiceToClass {
   sub classes {
     grep { defined $_ } values %$services_to_classes;
   }
-}
 1;

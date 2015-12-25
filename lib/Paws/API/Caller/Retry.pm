@@ -1,4 +1,4 @@
-package Paws::API::Caller::Retry {
+package Paws::API::Caller::Retry;
   use Moose::Role;
   
   requires 'do_call';
@@ -31,7 +31,4 @@ package Paws::API::Caller::Retry {
     # verify res status
     # state of mapping between response error and it being a throlling @ service classes
   }
-
-}
-
 1;

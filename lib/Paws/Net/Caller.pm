@@ -1,4 +1,4 @@
-package Paws::Net::Caller {
+package Paws::Net::Caller;
   use Moose;
   use Carp qw(croak);
   use Time::HiRes 'sleep';
@@ -57,6 +57,4 @@ package Paws::Net::Caller {
       return $tracker->operation_result;
     }
   }
-}
-
 1;

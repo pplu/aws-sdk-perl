@@ -1,4 +1,4 @@
-package Test05Caller {
+package Test05Caller;
   use Moose;
   with 'Paws::Net::CallerRole';
 
@@ -9,7 +9,4 @@ package Test05Caller {
 
     return $requestObj;
   }
-
-}
-
 1;

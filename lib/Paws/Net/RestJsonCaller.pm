@@ -1,4 +1,4 @@
-package Paws::Net::RestJsonCaller {
+package Paws::Net::RestJsonCaller;
   use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
@@ -83,6 +83,4 @@ package Paws::Net::RestJsonCaller {
 
     return $request;
   }
-}
-
 1;

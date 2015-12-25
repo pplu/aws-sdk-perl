@@ -1,4 +1,4 @@
-package Paws::Net::MojoAsyncCaller {
+package Paws::Net::MojoAsyncCaller;
   use Moose;
   with 'Paws::Net::CallerRole';
 
@@ -44,6 +44,4 @@ package Paws::Net::MojoAsyncCaller {
     );
     return $future;   
   }
-}
-
 1;

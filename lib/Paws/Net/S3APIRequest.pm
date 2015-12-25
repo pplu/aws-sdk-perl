@@ -1,4 +1,4 @@
-package Paws::Net::S3APIRequest {
+package Paws::Net::S3APIRequest;
   use Moose;
   extends 'Paws::Net::APIRequest';
 
@@ -77,6 +77,4 @@ package Paws::Net::S3APIRequest {
     $value =~ s/\s+$//;
     return $value;
   }
-}
-
 1;
