@@ -1,5 +1,6 @@
 requires 'Moose';
 requires 'MooseX::ClassAttribute';
+requires 'HTTP::Tiny';
 requires 'Throwable::Error';
 requires 'Data::Compare';
 requires 'URI';
