@@ -16,7 +16,9 @@ Paws::CloudSearch::DescribeScalingParametersResponse
 
 =head2 B<REQUIRED> ScalingParameters => L<Paws::CloudSearch::ScalingParametersStatus>
 
-  
+
+
+
 
 
 =cut

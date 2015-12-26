@@ -15,7 +15,9 @@ Paws::StorageGateway::UpdateBandwidthRateLimitOutput
 
 =head2 GatewayARN => Str
 
-  
+
+
+
 
 
 =cut

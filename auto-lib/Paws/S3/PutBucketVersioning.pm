@@ -27,20 +27,28 @@ Paws::S3::
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
+
+
+
 
 =head2 ContentMD5 => Str
 
-  
+
+
+
 
 =head2 MFA => Str
 
-  The concatenation of the authentication device's serial number, a
+The concatenation of the authentication device's serial number, a
 space, and the value that is displayed on your authentication device.
+
+
 
 =head2 B<REQUIRED> VersioningConfiguration => L<Paws::S3::VersioningConfiguration>
 
-  
+
+
+
 
 
 =cut

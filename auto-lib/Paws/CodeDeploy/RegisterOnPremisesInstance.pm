@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IamUserArn => Str
 
-  The ARN of the IAM user to associate with the on-premises instance.
+The ARN of the IAM user to associate with the on-premises instance.
+
 
 
 =head2 B<REQUIRED> InstanceName => Str
 
-  The name of the on-premises instance to register.
+The name of the on-premises instance to register.
+
 
 
 

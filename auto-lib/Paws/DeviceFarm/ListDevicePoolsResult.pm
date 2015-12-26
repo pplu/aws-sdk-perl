@@ -16,14 +16,18 @@ Paws::DeviceFarm::ListDevicePoolsResult
 
 =head2 DevicePools => ArrayRef[L<Paws::DeviceFarm::DevicePool>]
 
-  Information about the device pools.
+Information about the device pools.
+
+
 
 =head2 NextToken => Str
 
-  If the number of items that are returned is significantly large, this
+If the number of items that are returned is significantly large, this
 is an identifier that is also returned, which can be used in a
 subsequent call to this operation to return the next set of items in
 the list.
+
+
 
 
 =cut

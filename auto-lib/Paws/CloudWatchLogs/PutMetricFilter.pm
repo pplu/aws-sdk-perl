@@ -38,24 +38,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FilterName => Str
 
-  A name for the metric filter.
+A name for the metric filter.
+
 
 
 =head2 B<REQUIRED> FilterPattern => Str
 
-  A valid CloudWatch Logs filter pattern for extracting metric data out
+A valid CloudWatch Logs filter pattern for extracting metric data out
 of ingested log events.
+
 
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-  The name of the log group to associate the metric filter with.
+The name of the log group to associate the metric filter with.
+
 
 
 =head2 B<REQUIRED> MetricTransformations => ArrayRef[L<Paws::CloudWatchLogs::MetricTransformation>]
 
-  A collection of information needed to define how metric data gets
+A collection of information needed to define how metric data gets
 emitted.
+
 
 
 

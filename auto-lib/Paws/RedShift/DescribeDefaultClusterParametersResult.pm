@@ -16,7 +16,9 @@ Paws::RedShift::DescribeDefaultClusterParametersResult
 
 =head2 DefaultClusterParameters => L<Paws::RedShift::DefaultClusterParameters>
 
-  
+
+
+
 
 
 =cut

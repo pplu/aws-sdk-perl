@@ -16,7 +16,9 @@ Paws::ELB::AddAvailabilityZonesOutput
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  The updated list of Availability Zones for the load balancer.
+The updated list of Availability Zones for the load balancer.
+
+
 
 
 =cut

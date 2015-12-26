@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateBody => Str
 
-  The contents of the signing certificate.
+The contents of the signing certificate.
+
 
 
 =head2 UserName => Str
 
-  The name of the user the signing certificate is for.
+The name of the user the signing certificate is for.
+
 
 
 

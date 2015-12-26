@@ -40,32 +40,38 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DataSetPublicationDate => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> DataSetType => Str
 
-  
 
+
+Valid values are: C<"customer_subscriber_hourly_monthly_subscriptions">, C<"customer_subscriber_annual_subscriptions">, C<"daily_business_usage_by_instance_type">, C<"daily_business_fees">, C<"daily_business_free_trial_conversions">, C<"daily_business_new_instances">, C<"daily_business_new_product_subscribers">, C<"daily_business_canceled_product_subscribers">, C<"monthly_revenue_billing_and_revenue_data">, C<"monthly_revenue_annual_subscriptions">, C<"disbursed_amount_by_product">, C<"disbursed_amount_by_customer_geo">, C<"disbursed_amount_by_age_of_uncollected_funds">, C<"disbursed_amount_by_age_of_disbursed_funds">, C<"customer_profile_by_industry">, C<"customer_profile_by_revenue">
 
 =head2 B<REQUIRED> DestinationS3BucketName => Str
 
-  
+
+
 
 
 =head2 DestinationS3Prefix => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> RoleNameArn => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> SnsTopicArn => Str
 
-  
+
+
 
 
 

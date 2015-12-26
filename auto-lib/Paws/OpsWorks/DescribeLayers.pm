@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LayerIds => ArrayRef[Str]
 
-  An array of layer IDs that specify the layers to be described. If you
+An array of layer IDs that specify the layers to be described. If you
 omit this parameter, C<DescribeLayers> returns a description of every
 layer in the specified stack.
 
 
+
 =head2 StackId => Str
 
-  The stack ID.
+The stack ID.
+
 
 
 

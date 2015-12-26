@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PolicyArn => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> RoleName => Str
 
-  The name (friendly name, not ARN) of the role to attach the policy to.
+The name (friendly name, not ARN) of the role to attach the policy to.
+
 
 
 

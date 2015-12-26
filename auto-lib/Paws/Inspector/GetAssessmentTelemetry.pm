@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssessmentArn => Str
 
-  The ARN specifying the assessment the telemetry of which you want to
+The ARN specifying the assessment the telemetry of which you want to
 obtain.
+
 
 
 

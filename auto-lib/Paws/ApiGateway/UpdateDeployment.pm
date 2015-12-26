@@ -39,20 +39,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeploymentId => Str
 
-  The replacment identifier for the Deployment resource to change
+The replacment identifier for the Deployment resource to change
 information about.
+
 
 
 =head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
 
-  A list of operations describing the updates to apply to the specified
+A list of operations describing the updates to apply to the specified
 resource. The patches are applied in the order specified in the list.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The replacement identifier of the RestApi resource for the Deployment
+The replacement identifier of the RestApi resource for the Deployment
 resource to change information about.
+
 
 
 

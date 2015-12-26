@@ -17,11 +17,15 @@ Paws::SQS::ChangeMessageVisibilityBatchResult
 
 =head2 B<REQUIRED> Failed => ArrayRef[L<Paws::SQS::BatchResultErrorEntry>]
 
-  A list of BatchResultErrorEntry items.
+A list of BatchResultErrorEntry items.
+
+
 
 =head2 B<REQUIRED> Successful => ArrayRef[L<Paws::SQS::ChangeMessageVisibilityBatchResultEntry>]
 
-  A list of ChangeMessageVisibilityBatchResultEntry items.
+A list of ChangeMessageVisibilityBatchResultEntry items.
+
+
 
 
 =cut

@@ -16,7 +16,9 @@ Paws::ApiGateway::Stages
 
 =head2 Item => ArrayRef[L<Paws::ApiGateway::Stage>]
 
-  An individual Stage resource.
+An individual Stage resource.
+
+
 
 
 =cut

@@ -38,29 +38,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GatewayARN => Str
 
-  
+
+
 
 
 =head2 Limit => Int
 
-  Specifies that the number of VTL devices described be limited to the
+Specifies that the number of VTL devices described be limited to the
 specified number.
+
 
 
 =head2 Marker => Str
 
-  An opaque string that indicates the position at which to begin
+An opaque string that indicates the position at which to begin
 describing the VTL devices.
+
 
 
 =head2 VTLDeviceARNs => ArrayRef[Str]
 
-  An array of strings, where each string represents the Amazon Resource
+An array of strings, where each string represents the Amazon Resource
 Name (ARN) of a VTL device.
 
 All of the specified VTL devices must be from the same gateway. If no
 VTL devices are specified, the result will contain all devices on the
 specified gateway.
+
 
 
 

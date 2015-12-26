@@ -15,7 +15,9 @@ Paws::StorageGateway::DeleteGatewayOutput
 
 =head2 GatewayARN => Str
 
-  
+
+
+
 
 
 =cut

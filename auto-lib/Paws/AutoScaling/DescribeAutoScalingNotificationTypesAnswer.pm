@@ -16,7 +16,7 @@ Paws::AutoScaling::DescribeAutoScalingNotificationTypesAnswer
 
 =head2 AutoScalingNotificationTypes => ArrayRef[Str]
 
-  One or more of the following notification types:
+One or more of the following notification types:
 
 =over
 
@@ -41,6 +41,8 @@ C<autoscaling:EC2_INSTANCE_TERMINATE_ERROR>
 C<autoscaling:TEST_NOTIFICATION>
 
 =back
+
+
 
 
 

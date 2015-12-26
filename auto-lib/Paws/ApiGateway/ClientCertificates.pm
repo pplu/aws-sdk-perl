@@ -17,11 +17,15 @@ Paws::ApiGateway::ClientCertificates
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::ClientCertificate>]
 
-  
+
+
+
 
 =head2 Position => Str
 
-  
+
+
+
 
 
 =cut

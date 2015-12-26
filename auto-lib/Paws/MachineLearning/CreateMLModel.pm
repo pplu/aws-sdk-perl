@@ -41,17 +41,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MLModelId => Str
 
-  A user-supplied ID that uniquely identifies the C<MLModel>.
+A user-supplied ID that uniquely identifies the C<MLModel>.
+
 
 
 =head2 MLModelName => Str
 
-  A user-supplied name or description of the C<MLModel>.
+A user-supplied name or description of the C<MLModel>.
+
 
 
 =head2 B<REQUIRED> MLModelType => Str
 
-  The category of supervised learning that this C<MLModel> will address.
+The category of supervised learning that this C<MLModel> will address.
 Choose from the following types:
 
 =over
@@ -69,10 +71,11 @@ number of values.
 
 For more information, see the Amazon Machine Learning Developer Guide.
 
+Valid values are: C<"REGRESSION">, C<"BINARY">, C<"MULTICLASS">
 
 =head2 Parameters => L<Paws::MachineLearning::TrainingParameters>
 
-  A list of the training parameters in the C<MLModel>. The list is
+A list of the training parameters in the C<MLModel>. The list is
 implemented as a map of key/value pairs.
 
 The following is the current set of training parameters:
@@ -121,24 +124,28 @@ default value is 33554432.
 
 
 
+
 =head2 Recipe => Str
 
-  The data recipe for creating C<MLModel>. You must specify either the
+The data recipe for creating C<MLModel>. You must specify either the
 recipe or its URI. If you donE<rsquo>t specify a recipe or its URI,
 Amazon ML creates a default.
 
 
+
 =head2 RecipeUri => Str
 
-  The Amazon Simple Storage Service (Amazon S3) location and file name
+The Amazon Simple Storage Service (Amazon S3) location and file name
 that contains the C<MLModel> recipe. You must specify either the recipe
 or its URI. If you donE<rsquo>t specify a recipe or its URI, Amazon ML
 creates a default.
 
 
+
 =head2 B<REQUIRED> TrainingDataSourceId => Str
 
-  The C<DataSource> that points to the training data.
+The C<DataSource> that points to the training data.
+
 
 
 

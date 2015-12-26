@@ -35,10 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 SourceType => Str
 
-  The source type, such as cluster or parameter group, to which the
+The source type, such as cluster or parameter group, to which the
 described event categories apply.
 
 Valid values: cluster, snapshot, parameter group, and security group.
+
 
 
 

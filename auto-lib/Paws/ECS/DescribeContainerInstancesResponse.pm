@@ -16,11 +16,15 @@ Paws::ECS::DescribeContainerInstancesResponse
 
 =head2 ContainerInstances => ArrayRef[L<Paws::ECS::ContainerInstance>]
 
-  The list of container instances.
+The list of container instances.
+
+
 
 =head2 Failures => ArrayRef[L<Paws::ECS::Failure>]
 
-  Any failures associated with the call.
+Any failures associated with the call.
+
+
 
 
 =cut

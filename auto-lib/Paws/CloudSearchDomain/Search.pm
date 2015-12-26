@@ -49,7 +49,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Cursor => Str
 
-  Retrieves a cursor value you can use to page through large result sets.
+Retrieves a cursor value you can use to page through large result sets.
 Use the C<size> parameter to control the number of hits to include in
 each response. You can specify either the C<cursor> or C<start>
 parameter in a request; they are mutually exclusive. To get the first
@@ -60,9 +60,10 @@ For more information, see Paginating Results in the I<Amazon
 CloudSearch Developer Guide>.
 
 
+
 =head2 Expr => Str
 
-  Defines one or more numeric expressions that can be used to sort
+Defines one or more numeric expressions that can be used to sort
 results or specify search or filter criteria. You can also specify
 expressions as return fields.
 
@@ -77,9 +78,10 @@ use in expressions, see Writing Expressions in the I<Amazon CloudSearch
 Developer Guide>.
 
 
+
 =head2 Facet => Str
 
-  Specifies one or more fields for which to get facet information, and
+Specifies one or more fields for which to get facet information, and
 options that control how the facet information is returned. Each
 specified field must be facet-enabled in the domain configuration. The
 fields and options are specified in JSON using the form
@@ -144,9 +146,10 @@ For more information, see Getting and Using Facet Information in the
 I<Amazon CloudSearch Developer Guide>.
 
 
+
 =head2 FilterQuery => Str
 
-  Specifies a structured query that filters the results of a search
+Specifies a structured query that filters the results of a search
 without affecting how the results are scored and sorted. You use
 C<filterQuery> in conjunction with the C<query> parameter to filter the
 documents that match the constraints specified in the C<query>
@@ -159,9 +162,10 @@ For more information about using filters, see Filtering Matching
 Documents in the I<Amazon CloudSearch Developer Guide>.
 
 
+
 =head2 Highlight => Str
 
-  Retrieves highlights for matches in the specified C<text> or
+Retrieves highlights for matches in the specified C<text> or
 C<text-array> fields. Each specified field must be highlight enabled in
 the domain configuration. The fields and options are specified in JSON
 using the form
@@ -200,9 +204,10 @@ C<{ "actors": {}, "title": {"format": "text","max_phrases":
 2,"pre_tag": "B<","post_tag": ">"} }>
 
 
+
 =head2 Partial => Bool
 
-  Enables partial results to be returned if one or more index partitions
+Enables partial results to be returned if one or more index partitions
 are unavailable. When your search index is partitioned across multiple
 search instances, by default Amazon CloudSearch only returns results if
 every partition can be queried. This means that the failure of a single
@@ -216,9 +221,10 @@ message indicating that the results might be incomplete due to a
 temporary system outage.
 
 
+
 =head2 B<REQUIRED> Query => Str
 
-  Specifies the search criteria for the request. How you specify the
+Specifies the search criteria for the request. How you specify the
 search criteria depends on the query parser used for the request and
 the parser options specified in the C<queryOptions> parameter. By
 default, the C<simple> query parser is used to process requests. To use
@@ -229,9 +235,10 @@ For more information about specifying search criteria, see Searching
 Your Data in the I<Amazon CloudSearch Developer Guide>.
 
 
+
 =head2 QueryOptions => Str
 
-  Configures options for the query parser specified in the C<queryParser>
+Configures options for the query parser specified in the C<queryParser>
 parameter. You specify the options in JSON using the following form
 C<{"OPTION1":"VALUE1","OPTION2":VALUE2"..."OPTIONN":"VALUEN"}.>
 
@@ -336,9 +343,10 @@ the scores from all fields (pure sum): C<"tieBreaker":1>. Valid values:
 
 
 
+
 =head2 QueryParser => Str
 
-  Specifies which query parser to use to process the request. If
+Specifies which query parser to use to process the request. If
 C<queryParser> is not specified, Amazon CloudSearch uses the C<simple>
 query parser.
 
@@ -376,10 +384,11 @@ information, see DisMax Query Parser Syntax.
 =back
 
 
+Valid values are: C<"simple">, C<"structured">, C<"lucene">, C<"dismax">
 
 =head2 Return => Str
 
-  Specifies the field and expression values to include in the response.
+Specifies the field and expression values to include in the response.
 Multiple fields or expressions are specified as a comma-separated list.
 By default, a search response includes all return enabled fields
 (C<_all_fields>). To return only the document IDs for the matching
@@ -387,14 +396,16 @@ documents, specify C<_no_fields>. To retrieve the relevance score
 calculated for each document, specify C<_score>.
 
 
+
 =head2 Size => Int
 
-  Specifies the maximum number of search hits to include in the response.
+Specifies the maximum number of search hits to include in the response.
+
 
 
 =head2 Sort => Str
 
-  Specifies the fields or custom expressions to use to sort the search
+Specifies the fields or custom expressions to use to sort the search
 results. Multiple fields or expressions are specified as a
 comma-separated list. You must specify the sort direction (C<asc> or
 C<desc>) for each field; for example, C<year desc,title asc>. To use a
@@ -408,15 +419,17 @@ For more information, see Sorting Results in the I<Amazon CloudSearch
 Developer Guide>.
 
 
+
 =head2 Start => Int
 
-  Specifies the offset of the first search hit you want to return. Note
+Specifies the offset of the first search hit you want to return. Note
 that the result set is zero-based; the first result is at index 0. You
 can specify either the C<start> or C<cursor> parameter in a request,
 they are mutually exclusive.
 
 For more information, see Paginating Results in the I<Amazon
 CloudSearch Developer Guide>.
+
 
 
 

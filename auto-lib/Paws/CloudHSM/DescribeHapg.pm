@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HapgArn => Str
 
-  The ARN of the high-availability partition group to describe.
+The ARN of the high-availability partition group to describe.
+
 
 
 

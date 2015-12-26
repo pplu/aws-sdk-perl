@@ -34,27 +34,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeBatchRecords => ArrayRef[L<Paws::Route53::ChangeBatchRecord>]
 
-  The change batches within the given hosted zone and time period.
+The change batches within the given hosted zone and time period.
+
 
 
 =head2 IsTruncated => Bool
 
-  A flag that indicates if there are more change batches to list.
+A flag that indicates if there are more change batches to list.
+
 
 
 =head2 B<REQUIRED> Marker => Str
 
-  The page marker.
+The page marker.
+
 
 
 =head2 B<REQUIRED> MaxItems => Str
 
-  The maximum number of items on a page.
+The maximum number of items on a page.
+
 
 
 =head2 NextMarker => Str
 
-  The next page marker.
+The next page marker.
+
 
 
 

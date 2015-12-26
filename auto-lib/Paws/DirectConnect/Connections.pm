@@ -15,7 +15,9 @@ Paws::DirectConnect::Connections
 
 =head2 Connections => ArrayRef[L<Paws::DirectConnect::Connection>]
 
-  A list of connections.
+A list of connections.
+
+
 
 
 =cut

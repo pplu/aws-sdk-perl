@@ -15,7 +15,9 @@ Paws::CloudHSM::DeleteLunaClientResponse
 
 =head2 B<REQUIRED> Status => Str
 
-  The status of the action.
+The status of the action.
+
+
 
 
 =cut

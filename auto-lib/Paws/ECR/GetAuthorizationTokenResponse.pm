@@ -15,8 +15,10 @@ Paws::ECR::GetAuthorizationTokenResponse
 
 =head2 AuthorizationData => ArrayRef[L<Paws::ECR::AuthorizationData>]
 
-  A list of authorization token data objects that correspond to the
+A list of authorization token data objects that correspond to the
 C<registryIds> values in the request.
+
+
 
 
 =cut

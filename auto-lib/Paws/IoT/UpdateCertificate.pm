@@ -38,13 +38,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateId => Str
 
-  The ID of the certificate.
+The ID of the certificate.
+
 
 
 =head2 B<REQUIRED> NewStatus => Str
 
-  The new status.
+The new status.
 
+Valid values are: C<"ACTIVE">, C<"INACTIVE">, C<"REVOKED">, C<"PENDING_TRANSFER">
 
 
 =head1 SEE ALSO

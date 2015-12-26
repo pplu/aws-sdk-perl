@@ -16,13 +16,17 @@ Paws::CloudTrail::ListPublicKeysResponse
 
 =head2 NextToken => Str
 
-  Reserved for future use.
+Reserved for future use.
+
+
 
 =head2 PublicKeyList => ArrayRef[L<Paws::CloudTrail::PublicKey>]
 
-  Contains an array of PublicKey objects.
+Contains an array of PublicKey objects.
 
 The returned public keys may have validity time ranges that overlap.
+
+
 
 
 =cut

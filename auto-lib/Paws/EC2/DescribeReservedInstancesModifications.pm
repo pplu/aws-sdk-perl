@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-  One or more filters.
+One or more filters.
 
 =over
 
@@ -106,14 +106,17 @@ updated.
 
 
 
+
 =head2 NextToken => Str
 
-  The token to retrieve the next page of results.
+The token to retrieve the next page of results.
+
 
 
 =head2 ReservedInstancesModificationIds => ArrayRef[Str]
 
-  IDs for the submitted modification request.
+IDs for the submitted modification request.
+
 
 
 

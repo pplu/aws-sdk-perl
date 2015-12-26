@@ -15,9 +15,11 @@ Paws::Route53Domains::RetrieveDomainAuthCodeResponse
 
 =head2 B<REQUIRED> AuthCode => Str
 
-  The authorization code for the domain.
+The authorization code for the domain.
 
 Type: String
+
+
 
 
 =cut

@@ -56,7 +56,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutomaticFailoverEnabled => Bool
 
-  Specifies whether a read-only replica will be automatically promoted to
+Specifies whether a read-only replica will be automatically promoted to
 read/write primary if the existing primary fails.
 
 If C<true>, Multi-AZ is enabled for this replication group. If
@@ -76,14 +76,16 @@ ElastiCache Multi-AZ replication groups is not supported on:
 
 
 
+
 =head2 AutoMinorVersionUpgrade => Bool
 
-  This parameter is currently disabled.
+This parameter is currently disabled.
+
 
 
 =head2 CacheNodeType => Str
 
-  The compute and memory capacity of the nodes in the node group.
+The compute and memory capacity of the nodes in the node group.
 
 Valid node types are as follows:
 
@@ -138,51 +140,58 @@ Type-Specific Parameters for Memcached or Cache Node Type-Specific
 Parameters for Redis.
 
 
+
 =head2 CacheParameterGroupName => Str
 
-  The name of the parameter group to associate with this replication
+The name of the parameter group to associate with this replication
 group. If this argument is omitted, the default cache parameter group
 for the specified engine is used.
 
 
+
 =head2 CacheSecurityGroupNames => ArrayRef[Str]
 
-  A list of cache security group names to associate with this replication
+A list of cache security group names to associate with this replication
 group.
+
 
 
 =head2 CacheSubnetGroupName => Str
 
-  The name of the cache subnet group to be used for the replication
+The name of the cache subnet group to be used for the replication
 group.
+
 
 
 =head2 Engine => Str
 
-  The name of the cache engine to be used for the cache clusters in this
+The name of the cache engine to be used for the cache clusters in this
 replication group.
 
 Default: redis
 
 
+
 =head2 EngineVersion => Str
 
-  The version number of the cache engine to be used for the cache
+The version number of the cache engine to be used for the cache
 clusters in this replication group. To view the supported cache engine
 versions, use the I<DescribeCacheEngineVersions> action.
 
 
+
 =head2 NotificationTopicArn => Str
 
-  The Amazon Resource Name (ARN) of the Amazon Simple Notification
+The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) topic to which notifications will be sent.
 
 The Amazon SNS topic owner must be the same as the cache cluster owner.
 
 
+
 =head2 NumCacheClusters => Int
 
-  The number of cache clusters this replication group will initially
+The number of cache clusters this replication group will initially
 have.
 
 If I<Multi-AZ> is C<enabled>, the value of this parameter must be at
@@ -194,15 +203,17 @@ ElastiCache Limit Increase Request form at
 http://aws.amazon.com/contact-us/elasticache-node-limit-request.
 
 
+
 =head2 Port => Int
 
-  The port number on which each member of the replication group will
+The port number on which each member of the replication group will
 accept connections.
+
 
 
 =head2 PreferredCacheClusterAZs => ArrayRef[Str]
 
-  A list of EC2 availability zones in which the replication group's cache
+A list of EC2 availability zones in which the replication group's cache
 clusters will be created. The order of the availability zones in the
 list is not important.
 
@@ -221,9 +232,10 @@ PreferredAvailabilityZones.member.2=us-west-2c
 PreferredAvailabilityZones.member.3=us-west-2c
 
 
+
 =head2 PreferredMaintenanceWindow => Str
 
-  Specifies the weekly time range during which maintenance on the cache
+Specifies the weekly time range during which maintenance on the cache
 cluster is performed. It is specified as a range in the format
 ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window
 is a 60 minute period. Valid values for C<ddd> are:
@@ -249,23 +261,26 @@ is a 60 minute period. Valid values for C<ddd> are:
 Example: C<sun:05:00-sun:09:00>
 
 
+
 =head2 PrimaryClusterId => Str
 
-  The identifier of the cache cluster that will serve as the primary for
+The identifier of the cache cluster that will serve as the primary for
 this replication group. This cache cluster must already exist and have
 a status of I<available>.
 
 This parameter is not required if I<NumCacheClusters> is specified.
 
 
+
 =head2 B<REQUIRED> ReplicationGroupDescription => Str
 
-  A user-created description for the replication group.
+A user-created description for the replication group.
+
 
 
 =head2 B<REQUIRED> ReplicationGroupId => Str
 
-  The replication group identifier. This parameter is stored as a
+The replication group identifier. This parameter is stored as a
 lowercase string.
 
 Constraints:
@@ -284,18 +299,20 @@ hyphens.
 
 
 
+
 =head2 SecurityGroupIds => ArrayRef[Str]
 
-  One or more Amazon VPC security groups associated with this replication
+One or more Amazon VPC security groups associated with this replication
 group.
 
 Use this parameter only when you are creating a replication group in an
 Amazon Virtual Private Cloud (VPC).
 
 
+
 =head2 SnapshotArns => ArrayRef[Str]
 
-  A single-element string list containing an Amazon Resource Name (ARN)
+A single-element string list containing an Amazon Resource Name (ARN)
 that uniquely identifies a Redis RDB snapshot file stored in Amazon S3.
 The snapshot file will be used to populate the node group. The Amazon
 S3 object name in the ARN cannot contain any commas.
@@ -306,9 +323,10 @@ C<redis>.
 Example of an Amazon S3 ARN: C<arn:aws:s3:::my_bucket/snapshot1.rdb>
 
 
+
 =head2 SnapshotName => Str
 
-  The name of a snapshot from which to restore data into the new node
+The name of a snapshot from which to restore data into the new node
 group. The snapshot status changes to C<restoring> while the new node
 group is being created.
 
@@ -316,9 +334,10 @@ B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.
 
 
+
 =head2 SnapshotRetentionLimit => Int
 
-  The number of days for which ElastiCache will retain automatic
+The number of days for which ElastiCache will retain automatic
 snapshots before deleting them. For example, if you set
 C<SnapshotRetentionLimit> to 5, then a snapshot that was taken today
 will be retained for 5 days before being deleted.
@@ -330,9 +349,10 @@ Default: 0 (i.e., automatic backups are disabled for this cache
 cluster).
 
 
+
 =head2 SnapshotWindow => Str
 
-  The daily time range (in UTC) during which ElastiCache will begin
+The daily time range (in UTC) during which ElastiCache will begin
 taking a daily snapshot of your node group.
 
 Example: C<05:00-09:00>
@@ -344,10 +364,12 @@ B<Note:> This parameter is only valid if the C<Engine> parameter is
 C<redis>.
 
 
+
 =head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 
-  A list of cost allocation tags to be added to this resource. A tag is a
+A list of cost allocation tags to be added to this resource. A tag is a
 key-value pair. A tag key must be accompanied by a tag value.
+
 
 
 

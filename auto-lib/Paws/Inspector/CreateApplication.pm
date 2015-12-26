@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The user-defined name identifying the application that you want to
+The user-defined name identifying the application that you want to
 create. The name must be unique within the AWS account.
+
 
 
 =head2 B<REQUIRED> ResourceGroupArn => Str
 
-  The ARN specifying the resource group that is used to create the
+The ARN specifying the resource group that is used to create the
 application.
+
 
 
 

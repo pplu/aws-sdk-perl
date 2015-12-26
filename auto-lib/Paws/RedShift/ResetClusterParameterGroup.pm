@@ -37,24 +37,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ParameterGroupName => Str
 
-  The name of the cluster parameter group to be reset.
+The name of the cluster parameter group to be reset.
+
 
 
 =head2 Parameters => ArrayRef[L<Paws::RedShift::Parameter>]
 
-  An array of names of parameters to be reset. If I<ResetAllParameters>
+An array of names of parameters to be reset. If I<ResetAllParameters>
 option is not used, then at least one parameter name must be supplied.
 
 Constraints: A maximum of 20 parameters can be reset in a single
 request.
 
 
+
 =head2 ResetAllParameters => Bool
 
-  If C<true>, all parameters in the specified parameter group will be
+If C<true>, all parameters in the specified parameter group will be
 reset to their default values.
 
 Default: C<true>
+
 
 
 

@@ -315,7 +315,10 @@ package Paws::API::Builder {
   [%- member = c.shape(shape.members.$param_name.shape) %]
 =head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
-  [% c.doc_for_param_name_in_shape(shape, param_name) %]
+[% c.doc_for_param_name_in_shape(shape, param_name) %]
+
+[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%]
+
 [% END %]
 
 =cut
@@ -348,7 +351,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   [%- member = c.shape(shape.members.$param_name.shape) %]
 =head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
-  [% c.doc_for_param_name_in_shape(shape, param_name) %]
+[% c.doc_for_param_name_in_shape(shape, param_name) %]
+
+[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%]
 
 [% END %]
 

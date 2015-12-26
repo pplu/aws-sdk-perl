@@ -16,12 +16,16 @@ Paws::MachineLearning::CreateRealtimeEndpointOutput
 
 =head2 MLModelId => Str
 
-  A user-supplied ID that uniquely identifies the C<MLModel>. This value
+A user-supplied ID that uniquely identifies the C<MLModel>. This value
 should be identical to the value of the C<MLModelId> in the request.
+
+
 
 =head2 RealtimeEndpointInfo => L<Paws::MachineLearning::RealtimeEndpointInfo>
 
-  The endpoint information of the C<MLModel>
+The endpoint information of the C<MLModel>
+
+
 
 
 =cut

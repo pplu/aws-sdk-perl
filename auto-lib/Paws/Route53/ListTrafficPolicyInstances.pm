@@ -13,6 +13,7 @@ package Paws::Route53::ListTrafficPolicyInstances;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ListTrafficPolicyInstancesResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +27,7 @@ Paws::Route53::ListTrafficPolicyInstancesResponse
 
 =head2 HostedZoneIdMarker => Str
 
-  For the first request to C<ListTrafficPolicyInstances>, omit this
+For the first request to C<ListTrafficPolicyInstances>, omit this
 value.
 
 If the value of C<IsTruncated> in the previous response was C<true>,
@@ -41,9 +42,11 @@ instances.
 If the value of C<IsTruncated> in the previous response was C<false>,
 there are no more traffic policy instances to get.
 
+
+
 =head2 MaxItems => Str
 
-  The maximum number of traffic policy instances to be included in the
+The maximum number of traffic policy instances to be included in the
 response body for this request. If you have more than C<MaxItems>
 traffic policy instances, the value of the C<IsTruncated> element in
 the response is C<true>, and the values of C<HostedZoneIdMarker>,
@@ -51,9 +54,11 @@ C<TrafficPolicyInstanceNameMarker>, and
 C<TrafficPolicyInstanceTypeMarker> represent the first traffic policy
 instance in the next group of C<MaxItems> traffic policy instances.
 
+
+
 =head2 TrafficPolicyInstanceNameMarker => Str
 
-  For the first request to C<ListTrafficPolicyInstances>, omit this
+For the first request to C<ListTrafficPolicyInstances>, omit this
 value.
 
 If the value of C<IsTruncated> in the previous response was C<true>,
@@ -64,9 +69,11 @@ instances.
 If the value of C<IsTruncated> in the previous response was C<false>,
 there are no more traffic policy instances to get.
 
+
+
 =head2 TrafficPolicyInstanceTypeMarker => Str
 
-  For the first request to C<ListTrafficPolicyInstances>, omit this
+For the first request to C<ListTrafficPolicyInstances>, omit this
 value.
 
 If the value of C<IsTruncated> in the previous response was C<true>,
@@ -76,6 +83,8 @@ instances.
 
 If the value of C<IsTruncated> in the previous response was C<false>,
 there are no more traffic policy instances to get.
+
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
 
 
 =cut

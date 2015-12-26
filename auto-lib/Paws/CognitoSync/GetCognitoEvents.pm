@@ -37,7 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  The Cognito Identity Pool ID for the request
+The Cognito Identity Pool ID for the request
+
 
 
 

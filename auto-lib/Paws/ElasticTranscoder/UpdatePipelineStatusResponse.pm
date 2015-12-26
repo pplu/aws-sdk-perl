@@ -16,8 +16,10 @@ Paws::ElasticTranscoder::UpdatePipelineStatusResponse
 
 =head2 Pipeline => L<Paws::ElasticTranscoder::Pipeline>
 
-  A section of the response body that provides information about the
+A section of the response body that provides information about the
 pipeline.
+
+
 
 
 =cut

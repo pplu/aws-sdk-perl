@@ -37,17 +37,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MLModelId => Str
 
-  The ID assigned to the C<MLModel> during creation.
+The ID assigned to the C<MLModel> during creation.
+
 
 
 =head2 MLModelName => Str
 
-  A user-supplied name or description of the C<MLModel>.
+A user-supplied name or description of the C<MLModel>.
+
 
 
 =head2 ScoreThreshold => Num
 
-  The C<ScoreThreshold> used in binary classification C<MLModel> that
+The C<ScoreThreshold> used in binary classification C<MLModel> that
 marks the boundary between a positive prediction and a negative
 prediction.
 
@@ -55,6 +57,7 @@ Output values greater than or equal to the C<ScoreThreshold> receive a
 positive result from the C<MLModel>, such as C<true>. Output values
 less than the C<ScoreThreshold> receive a negative response from the
 C<MLModel>, such as C<false>.
+
 
 
 

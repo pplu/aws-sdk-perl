@@ -18,15 +18,21 @@ Paws::EC2::CancelImportTaskResult
 
 =head2 ImportTaskId => Str
 
-  The ID of the task being canceled.
+The ID of the task being canceled.
+
+
 
 =head2 PreviousState => Str
 
-  The current state of the task being canceled.
+The current state of the task being canceled.
+
+
 
 =head2 State => Str
 
-  The current state of the task being canceled.
+The current state of the task being canceled.
+
+
 
 
 =cut

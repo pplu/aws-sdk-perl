@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  Specifies that the list of gateways returned be limited to the
+Specifies that the list of gateways returned be limited to the
 specified number of items.
+
 
 
 =head2 Marker => Str
 
-  An opaque string that indicates the position at which to begin the
+An opaque string that indicates the position at which to begin the
 returned list of gateways.
+
 
 
 

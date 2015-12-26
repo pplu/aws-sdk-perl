@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBSubnetGroupName => Str
 
-  The name of the database subnet group to delete.
+The name of the database subnet group to delete.
 
 You cannot delete the default subnet group.
 
@@ -50,6 +50,7 @@ Constraints:
 =item * Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
+
 
 
 

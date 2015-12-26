@@ -37,12 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBSecurityGroupDescription => Str
 
-  The description for the DB security group.
+The description for the DB security group.
+
 
 
 =head2 B<REQUIRED> DBSecurityGroupName => Str
 
-  The name for the DB security group. This value is stored as a lowercase
+The name for the DB security group. This value is stored as a lowercase
 string.
 
 Constraints:
@@ -64,9 +65,11 @@ Constraints:
 Example: C<mysecuritygroup>
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-  
+
+
 
 
 

@@ -16,12 +16,16 @@ Paws::ECR::BatchCheckLayerAvailabilityResponse
 
 =head2 Failures => ArrayRef[L<Paws::ECR::LayerFailure>]
 
-  Any failures associated with the call.
+Any failures associated with the call.
+
+
 
 =head2 Layers => ArrayRef[L<Paws::ECR::Layer>]
 
-  A list of image layer objects corresponding to the image layer
+A list of image layer objects corresponding to the image layer
 references in the request.
+
+
 
 
 =cut

@@ -15,7 +15,9 @@ Paws::CodeCommit::GetRepositoryOutput
 
 =head2 RepositoryMetadata => L<Paws::CodeCommit::RepositoryMetadata>
 
-  Information about the repository.
+Information about the repository.
+
+
 
 
 =cut

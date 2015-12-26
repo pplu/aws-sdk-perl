@@ -16,7 +16,9 @@ Paws::CloudSearch::DefineSuggesterResponse
 
 =head2 B<REQUIRED> Suggester => L<Paws::CloudSearch::SuggesterStatus>
 
-  
+
+
+
 
 
 =cut

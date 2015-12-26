@@ -15,7 +15,9 @@ Paws::CodePipeline::UpdatePipelineOutput
 
 =head2 Pipeline => L<Paws::CodePipeline::PipelineDeclaration>
 
-  The structure of the updated pipeline.
+The structure of the updated pipeline.
+
+
 
 
 =cut

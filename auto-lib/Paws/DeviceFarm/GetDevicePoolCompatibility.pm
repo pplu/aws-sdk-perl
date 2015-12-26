@@ -37,17 +37,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AppArn => Str
 
-  The ARN of the app that is associated with the specified device pool.
+The ARN of the app that is associated with the specified device pool.
+
 
 
 =head2 B<REQUIRED> DevicePoolArn => Str
 
-  The device pool's ARN.
+The device pool's ARN.
+
 
 
 =head2 TestType => Str
 
-  The test type for the specified device pool.
+The test type for the specified device pool.
 
 Allowed values include the following:
 
@@ -94,6 +96,7 @@ XCTEST: The XCode test type.
 =back
 
 
+Valid values are: C<"BUILTIN_FUZZ">, C<"BUILTIN_EXPLORER">, C<"APPIUM_JAVA_JUNIT">, C<"APPIUM_JAVA_TESTNG">, C<"APPIUM_WEB_JAVA_JUNIT">, C<"APPIUM_WEB_JAVA_TESTNG">, C<"CALABASH">, C<"INSTRUMENTATION">, C<"UIAUTOMATION">, C<"UIAUTOMATOR">, C<"XCTEST">
 
 
 =head1 SEE ALSO

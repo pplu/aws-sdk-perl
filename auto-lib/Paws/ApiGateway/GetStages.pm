@@ -38,12 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DeploymentId => Str
 
-  The stages' deployment identifiers.
+The stages' deployment identifiers.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The stages' API identifiers.
+The stages' API identifiers.
+
 
 
 

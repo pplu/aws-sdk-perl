@@ -30,8 +30,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LocationConstraint => Str
 
-  
 
+
+Valid values are: C<"EU">, C<"eu-west-1">, C<"us-west-1">, C<"us-west-2">, C<"ap-southeast-1">, C<"ap-southeast-2">, C<"ap-northeast-1">, C<"sa-east-1">, C<"cn-north-1">, C<"eu-central-1">
 
 
 =head1 SEE ALSO

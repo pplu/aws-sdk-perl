@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplicationName => Str
 
-  The current name of the application that you want to change.
+The current name of the application that you want to change.
+
 
 
 =head2 NewApplicationName => Str
 
-  The new name that you want to change the application to.
+The new name that you want to change the application to.
+
 
 
 

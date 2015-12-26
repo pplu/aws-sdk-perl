@@ -16,11 +16,15 @@ Paws::ECR::GetDownloadUrlForLayerResponse
 
 =head2 DownloadUrl => Str
 
-  The pre-signed Amazon S3 download URL for the requested layer.
+The pre-signed Amazon S3 download URL for the requested layer.
+
+
 
 =head2 LayerDigest => Str
 
-  The digest of the image layer to download.
+The digest of the image layer to download.
+
+
 
 
 =cut

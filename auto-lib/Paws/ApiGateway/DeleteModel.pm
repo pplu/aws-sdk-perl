@@ -38,12 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ModelName => Str
 
-  The name of the model to delete.
+The name of the model to delete.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi under which the model will be deleted.
+The RestApi under which the model will be deleted.
+
 
 
 

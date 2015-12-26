@@ -1,4 +1,5 @@
 0.22
+ - Better documentation: show the valid values for an attribute when it's an enum
  - Fix bug where a StrToObj map of complex objects would not instance the object correctly
  - New Service: ECR (EC2 Container Registry)
  - EC2 API update: support for NatGateways

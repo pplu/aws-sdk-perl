@@ -15,7 +15,9 @@ Paws::DeviceFarm::GetDevicePoolResult
 
 =head2 DevicePool => L<Paws::DeviceFarm::DevicePool>
 
-  
+
+
+
 
 
 =cut

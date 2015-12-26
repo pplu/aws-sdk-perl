@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DeploymentIds => ArrayRef[Str]
 
-  A list of deployment IDs, with multiple deployment IDs separated by
+A list of deployment IDs, with multiple deployment IDs separated by
 spaces.
+
 
 
 

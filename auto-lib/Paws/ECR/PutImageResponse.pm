@@ -15,7 +15,9 @@ Paws::ECR::PutImageResponse
 
 =head2 Image => L<Paws::ECR::Image>
 
-  Details of the image uploaded.
+Details of the image uploaded.
+
+
 
 
 =cut

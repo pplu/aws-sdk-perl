@@ -17,12 +17,16 @@ Paws::EC2::ReleaseHostsResult
 
 =head2 Successful => ArrayRef[Str]
 
-  The IDs of the Dedicated hosts that were successfully released.
+The IDs of the Dedicated hosts that were successfully released.
+
+
 
 =head2 Unsuccessful => ArrayRef[L<Paws::EC2::UnsuccessfulItem>]
 
-  The IDs of the Dedicated hosts that could not be released, including an
+The IDs of the Dedicated hosts that could not be released, including an
 error message.
+
+
 
 
 =cut

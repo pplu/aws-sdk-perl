@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GroupName => Str
 
-  The name of the group to delete.
+The name of the group to delete.
+
 
 
 

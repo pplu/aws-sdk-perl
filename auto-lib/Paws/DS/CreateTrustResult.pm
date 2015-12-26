@@ -15,7 +15,9 @@ Paws::DS::CreateTrustResult
 
 =head2 TrustId => Str
 
-  A unique identifier for the trust relationship that was created.
+A unique identifier for the trust relationship that was created.
+
+
 
 
 =cut

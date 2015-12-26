@@ -36,13 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> JobFlowId => Str
 
-  A string that uniquely identifies the job flow. This identifier is
+A string that uniquely identifies the job flow. This identifier is
 returned by RunJobFlow and can also be obtained from ListClusters.
+
 
 
 =head2 B<REQUIRED> Steps => ArrayRef[L<Paws::EMR::StepConfig>]
 
-  A list of StepConfig to be executed by the job flow.
+A list of StepConfig to be executed by the job flow.
+
 
 
 

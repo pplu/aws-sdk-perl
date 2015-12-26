@@ -37,14 +37,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 KmsKeyId => Str
 
-  The unique identifier of the customer master key (CMK) to which to
+The unique identifier of the customer master key (CMK) to which to
 grant Amazon Redshift permission. If no key is specified, the default
 key is used.
 
 
+
 =head2 B<REQUIRED> SnapshotCopyGrantName => Str
 
-  The name of the snapshot copy grant. This name must be unique in the
+The name of the snapshot copy grant. This name must be unique in the
 region for the AWS account.
 
 Constraints:
@@ -65,9 +66,11 @@ Constraints:
 
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-  A list of tag instances.
+A list of tag instances.
+
 
 
 

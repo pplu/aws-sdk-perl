@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterSubnetGroupName => Str
 
-  The name for the subnet group. Amazon Redshift stores the value as a
+The name for the subnet group. Amazon Redshift stores the value as a
 lowercase string.
 
 Constraints:
@@ -58,20 +58,24 @@ AWS account.
 Example: C<examplesubnetgroup>
 
 
+
 =head2 B<REQUIRED> Description => Str
 
-  A description for the subnet group.
+A description for the subnet group.
+
 
 
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str]
 
-  An array of VPC subnet IDs. A maximum of 20 subnets can be modified in
+An array of VPC subnet IDs. A maximum of 20 subnets can be modified in
 a single request.
+
 
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-  A list of tag instances.
+A list of tag instances.
+
 
 
 

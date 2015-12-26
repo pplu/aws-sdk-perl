@@ -16,14 +16,18 @@ Paws::Inspector::ListAssessmentAgentsResponse
 
 =head2 AgentList => ArrayRef[L<Paws::Inspector::Agent>]
 
-  A list of ARNs specifying the agents returned by the action.
+A list of ARNs specifying the agents returned by the action.
+
+
 
 =head2 NextToken => Str
 
-  When a response is generated, if there is more data to be listed, this
+When a response is generated, if there is more data to be listed, this
 parameter is present in the response and contains the value to use for
 the B<nextToken> parameter in a subsequent pagination request. If there
 is no more data to be listed, this parameter is set to 'null'.
+
+
 
 
 =cut

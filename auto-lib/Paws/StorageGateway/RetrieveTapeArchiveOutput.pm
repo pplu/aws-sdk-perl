@@ -15,7 +15,9 @@ Paws::StorageGateway::RetrieveTapeArchiveOutput
 
 =head2 TapeARN => Str
 
-  The Amazon Resource Name (ARN) of the retrieved virtual tape.
+The Amazon Resource Name (ARN) of the retrieved virtual tape.
+
+
 
 
 =cut

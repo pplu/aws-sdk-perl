@@ -16,7 +16,9 @@ Paws::RedShift::AuthorizeSnapshotAccessResult
 
 =head2 Snapshot => L<Paws::RedShift::Snapshot>
 
-  
+
+
+
 
 
 =cut

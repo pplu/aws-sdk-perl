@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TrustId => Str
 
-  The unique Trust ID of the trust relationship to verify.
+The unique Trust ID of the trust relationship to verify.
+
 
 
 

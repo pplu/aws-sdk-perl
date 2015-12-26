@@ -39,18 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Flatten => Bool
 
-  Resolves all external model references and returns a flattened model
+Resolves all external model references and returns a flattened model
 schema.
+
 
 
 =head2 B<REQUIRED> ModelName => Str
 
-  The name of the model as an identifier.
+The name of the model as an identifier.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi identifier under which the Model exists.
+The RestApi identifier under which the Model exists.
+
 
 
 

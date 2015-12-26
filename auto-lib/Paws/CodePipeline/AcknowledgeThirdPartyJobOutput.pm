@@ -15,7 +15,9 @@ Paws::CodePipeline::AcknowledgeThirdPartyJobOutput
 
 =head2 Status => Str
 
-  The status information for the third party job, if any.
+The status information for the third party job, if any.
+
+Valid values are: C<"Created">, C<"Queued">, C<"Dispatched">, C<"InProgress">, C<"TimedOut">, C<"Succeeded">, C<"Failed">
 
 
 =cut

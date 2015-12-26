@@ -13,6 +13,7 @@ package Paws::Route53::UpdateTrafficPolicyInstance;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::UpdateTrafficPolicyInstanceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -26,23 +27,31 @@ Paws::Route53::UpdateTrafficPolicyInstanceResponse
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the traffic policy instance that you want to update.
+The ID of the traffic policy instance that you want to update.
+
+
 
 =head2 B<REQUIRED> TrafficPolicyId => Str
 
-  The ID of the traffic policy that you want Amazon Route 53 to use to
+The ID of the traffic policy that you want Amazon Route 53 to use to
 update resource record sets for the specified traffic policy instance.
+
+
 
 =head2 B<REQUIRED> TrafficPolicyVersion => Int
 
-  The version of the traffic policy that you want Amazon Route 53 to use
+The version of the traffic policy that you want Amazon Route 53 to use
 to update resource record sets for the specified traffic policy
 instance.
 
+
+
 =head2 B<REQUIRED> TTL => Int
 
-  The TTL that you want Amazon Route 53 to assign to all of the updated
+The TTL that you want Amazon Route 53 to assign to all of the updated
 resource record sets.
+
+
 
 
 =cut

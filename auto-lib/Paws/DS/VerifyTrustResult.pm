@@ -15,7 +15,9 @@ Paws::DS::VerifyTrustResult
 
 =head2 TrustId => Str
 
-  The unique Trust ID of the trust relationship that was verified.
+The unique Trust ID of the trust relationship that was verified.
+
+
 
 
 =cut

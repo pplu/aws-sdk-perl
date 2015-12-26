@@ -36,13 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccessKeyId => Str
 
-  The access key ID for the access key ID and secret access key you want
+The access key ID for the access key ID and secret access key you want
 to delete.
+
 
 
 =head2 UserName => Str
 
-  The name of the user whose key you want to delete.
+The name of the user whose key you want to delete.
+
 
 
 

@@ -16,11 +16,15 @@ Paws::CloudWatchLogs::DescribeLogStreamsResponse
 
 =head2 LogStreams => ArrayRef[L<Paws::CloudWatchLogs::LogStream>]
 
-  
+
+
+
 
 =head2 NextToken => Str
 
-  
+
+
+
 
 
 =cut

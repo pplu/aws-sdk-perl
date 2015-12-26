@@ -17,11 +17,15 @@ Paws::EC2::MoveAddressToVpcResult
 
 =head2 AllocationId => Str
 
-  The allocation ID for the Elastic IP address.
+The allocation ID for the Elastic IP address.
+
+
 
 =head2 Status => Str
 
-  The status of the move of the IP address.
+The status of the move of the IP address.
+
+Valid values are: C<"MoveInProgress">, C<"InVpc">, C<"InClassic">
 
 
 =cut

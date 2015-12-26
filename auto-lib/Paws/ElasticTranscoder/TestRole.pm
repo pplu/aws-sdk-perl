@@ -40,26 +40,30 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InputBucket => Str
 
-  The Amazon S3 bucket that contains media files to be transcoded. The
+The Amazon S3 bucket that contains media files to be transcoded. The
 action attempts to read from this bucket.
+
 
 
 =head2 B<REQUIRED> OutputBucket => Str
 
-  The Amazon S3 bucket that Elastic Transcoder will write transcoded
+The Amazon S3 bucket that Elastic Transcoder will write transcoded
 media files to. The action attempts to read from this bucket.
+
 
 
 =head2 B<REQUIRED> Role => Str
 
-  The IAM Amazon Resource Name (ARN) for the role that you want Elastic
+The IAM Amazon Resource Name (ARN) for the role that you want Elastic
 Transcoder to test.
+
 
 
 =head2 B<REQUIRED> Topics => ArrayRef[Str]
 
-  The ARNs of one or more Amazon Simple Notification Service (Amazon SNS)
+The ARNs of one or more Amazon Simple Notification Service (Amazon SNS)
 topics that you want the action to send a test notification to.
+
 
 
 

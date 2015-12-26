@@ -11,6 +11,7 @@ package Paws::Route53::GetTrafficPolicy;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::GetTrafficPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -24,12 +25,16 @@ Paws::Route53::GetTrafficPolicyResponse
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the traffic policy that you want to get information about.
+The ID of the traffic policy that you want to get information about.
+
+
 
 =head2 B<REQUIRED> Version => Int
 
-  The version number of the traffic policy that you want to get
+The version number of the traffic policy that you want to get
 information about.
+
+
 
 
 =cut

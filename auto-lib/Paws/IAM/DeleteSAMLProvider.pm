@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SAMLProviderArn => Str
 
-  The Amazon Resource Name (ARN) of the SAML provider to delete.
+The Amazon Resource Name (ARN) of the SAML provider to delete.
+
 
 
 

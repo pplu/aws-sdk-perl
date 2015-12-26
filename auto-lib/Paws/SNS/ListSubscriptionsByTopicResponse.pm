@@ -17,12 +17,16 @@ Paws::SNS::ListSubscriptionsByTopicResponse
 
 =head2 NextToken => Str
 
-  Token to pass along to the next C<ListSubscriptionsByTopic> request.
+Token to pass along to the next C<ListSubscriptionsByTopic> request.
 This element is returned if there are more subscriptions to retrieve.
+
+
 
 =head2 Subscriptions => ArrayRef[L<Paws::SNS::Subscription>]
 
-  A list of subscriptions.
+A list of subscriptions.
+
+
 
 
 =cut

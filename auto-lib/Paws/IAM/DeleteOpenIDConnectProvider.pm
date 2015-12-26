@@ -35,9 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> OpenIDConnectProviderArn => Str
 
-  The Amazon Resource Name (ARN) of the IAM OpenID Connect provider to
+The Amazon Resource Name (ARN) of the IAM OpenID Connect provider to
 delete. You can get a list of OpenID Connect provider ARNs by using the
 ListOpenIDConnectProviders action.
+
 
 
 

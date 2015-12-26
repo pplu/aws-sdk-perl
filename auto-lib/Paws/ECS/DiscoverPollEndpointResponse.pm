@@ -16,11 +16,15 @@ Paws::ECS::DiscoverPollEndpointResponse
 
 =head2 Endpoint => Str
 
-  The endpoint for the Amazon ECS agent to poll.
+The endpoint for the Amazon ECS agent to poll.
+
+
 
 =head2 TelemetryEndpoint => Str
 
-  The telemetry endpoint for the Amazon ECS agent.
+The telemetry endpoint for the Amazon ECS agent.
+
+
 
 
 =cut

@@ -15,7 +15,9 @@ Paws::Inspector::DescribeRulesPackageResponse
 
 =head2 RulesPackage => L<Paws::Inspector::RulesPackage>
 
-  Information about the rules package.
+Information about the rules package.
+
+
 
 
 =cut

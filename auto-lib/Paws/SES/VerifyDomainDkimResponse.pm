@@ -16,7 +16,7 @@ Paws::SES::VerifyDomainDkimResponse
 
 =head2 B<REQUIRED> DkimTokens => ArrayRef[Str]
 
-  A set of character strings that represent the domain's identity. If the
+A set of character strings that represent the domain's identity. If the
 identity is an email address, the tokens represent the domain of that
 address.
 
@@ -29,6 +29,8 @@ domain.
 
 For more information about creating DNS records using DKIM tokens, go
 to the Amazon SES Developer Guide.
+
+
 
 
 =cut

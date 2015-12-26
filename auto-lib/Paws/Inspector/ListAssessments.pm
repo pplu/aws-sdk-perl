@@ -38,13 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplicationArns => ArrayRef[Str]
 
-  A list of ARNs specifying the applications the assessments of which you
+A list of ARNs specifying the applications the assessments of which you
 want to list.
+
 
 
 =head2 Filter => L<Paws::Inspector::AssessmentsFilter>
 
-  You can use this parameter to specify a subset of data to be included
+You can use this parameter to specify a subset of data to be included
 in the action's response.
 
 For a record to match a filter, all specified filter attributes must
@@ -52,20 +53,23 @@ match. When multiple values are specified for a filter attribute, any
 of the values can match.
 
 
+
 =head2 MaxResults => Int
 
-  You can use this parameter to indicate the maximum number of items you
+You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is
 500.
 
 
+
 =head2 NextToken => Str
 
-  You can use this parameter when paginating results. Set the value of
+You can use this parameter when paginating results. Set the value of
 this parameter to 'null' on your first call to the B<ListAssessments>
 action. Subsequent calls to the action fill B<nextToken> in the request
 with the value of B<NextToken> from previous response to continue
 listing data.
+
 
 
 

@@ -16,7 +16,9 @@ Paws::RedShift::RestoreFromClusterSnapshotResult
 
 =head2 Cluster => L<Paws::RedShift::Cluster>
 
-  
+
+
+
 
 
 =cut

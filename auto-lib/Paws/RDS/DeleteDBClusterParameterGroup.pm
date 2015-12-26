@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBClusterParameterGroupName => Str
 
-  The name of the DB cluster parameter group.
+The name of the DB cluster parameter group.
 
 Constraints:
 
@@ -48,6 +48,7 @@ Constraints:
 =item * Cannot be associated with any DB clusters.
 
 =back
+
 
 
 

@@ -37,7 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The Elasticsearch domain that you want to get information about.
+The Elasticsearch domain that you want to get information about.
+
 
 
 

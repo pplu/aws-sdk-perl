@@ -12,6 +12,7 @@ package Paws::Route53::CreateTrafficPolicy;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::CreateTrafficPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -25,15 +26,21 @@ Paws::Route53::CreateTrafficPolicyResponse
 
 =head2 Comment => Str
 
-  Any comments that you want to include about the traffic policy.
+Any comments that you want to include about the traffic policy.
+
+
 
 =head2 B<REQUIRED> Document => Str
 
-  The definition of this traffic policy in JSON format.
+The definition of this traffic policy in JSON format.
+
+
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the traffic policy.
+The name of the traffic policy.
+
+
 
 
 =cut

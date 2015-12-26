@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-  The C<AccountId> value is the AWS account ID. This value must match the
+The C<AccountId> value is the AWS account ID. This value must match the
 AWS account ID associated with the credentials used to sign the
 request. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
@@ -48,15 +48,18 @@ you specify your account ID, do not include any hyphens (apos-apos) in
 the ID.
 
 
+
 =head2 B<REQUIRED> LockId => Str
 
-  The C<lockId> value is the lock ID obtained from a InitiateVaultLock
+The C<lockId> value is the lock ID obtained from a InitiateVaultLock
 request.
+
 
 
 =head2 B<REQUIRED> VaultName => Str
 
-  The name of the vault.
+The name of the vault.
+
 
 
 

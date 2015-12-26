@@ -61,7 +61,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllocatedStorage => Int
 
-  The new storage capacity of the RDS instance. Changing this setting
+The new storage capacity of the RDS instance. Changing this setting
 does not result in an outage and the change is applied during the next
 maintenance window unless C<ApplyImmediately> is set to C<true> for
 this request.
@@ -136,9 +136,10 @@ instance, deleting the instance, creating a Read Replica for the
 instance, and creating a DB snapshot of the instance.
 
 
+
 =head2 AllowMajorVersionUpgrade => Bool
 
-  Indicates that major version upgrades are allowed. Changing this
+Indicates that major version upgrades are allowed. Changing this
 parameter does not result in an outage and the change is asynchronously
 applied as soon as possible.
 
@@ -147,9 +148,10 @@ for the EngineVersion parameter that is a different major version than
 the DB instance's current version.
 
 
+
 =head2 ApplyImmediately => Bool
 
-  Specifies whether the modifications in this request and any pending
+Specifies whether the modifications in this request and any pending
 modifications are asynchronously applied as soon as possible,
 regardless of the C<PreferredMaintenanceWindow> setting for the DB
 instance.
@@ -166,9 +168,10 @@ changes will be applied.
 Default: C<false>
 
 
+
 =head2 AutoMinorVersionUpgrade => Bool
 
-  Indicates that minor version upgrades will be applied automatically to
+Indicates that minor version upgrades will be applied automatically to
 the DB instance during the maintenance window. Changing this parameter
 does not result in an outage except in the following case and the
 change is asynchronously applied as soon as possible. An outage will
@@ -177,9 +180,10 @@ window, and a newer minor version is available, and RDS has enabled
 auto patching for that engine version.
 
 
+
 =head2 BackupRetentionPeriod => Int
 
-  The number of days to retain automated backups. Setting this parameter
+The number of days to retain automated backups. Setting this parameter
 to a positive number enables backups. Setting this parameter to 0
 disables automated backups.
 
@@ -211,21 +215,24 @@ Replicas
 
 
 
+
 =head2 CACertificateIdentifier => Str
 
-  Indicates the certificate that needs to be associated with the
+Indicates the certificate that needs to be associated with the
 instance.
+
 
 
 =head2 CopyTagsToSnapshot => Bool
 
-  True to copy all tags from the DB instance to snapshots of the DB
+True to copy all tags from the DB instance to snapshots of the DB
 instance; otherwise false. The default is false.
+
 
 
 =head2 DBInstanceClass => Str
 
-  The new compute and memory capacity of the DB instance. To determine
+The new compute and memory capacity of the DB instance. To determine
 the instance classes that are available for a particular DB engine, use
 the DescribeOrderableDBInstanceOptions action.
 
@@ -243,9 +250,10 @@ db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge |
 db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
 
 
+
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  The DB instance identifier. This value is stored as a lowercase string.
+The DB instance identifier. This value is stored as a lowercase string.
 
 Constraints:
 
@@ -263,9 +271,10 @@ Constraints:
 
 
 
+
 =head2 DBParameterGroupName => Str
 
-  The name of the DB parameter group to apply to the DB instance.
+The name of the DB parameter group to apply to the DB instance.
 Changing this setting does not result in an outage. The parameter group
 name itself is changed immediately, but the actual parameter changes
 are not applied until you reboot the instance without failover. The db
@@ -278,9 +287,10 @@ Constraints: The DB parameter group must be in the same DB parameter
 group family as this DB instance.
 
 
+
 =head2 DBPortNumber => Int
 
-  The port number on which the database accepts connections.
+The port number on which the database accepts connections.
 
 The value of the C<DBPortNumber> parameter must not match any of the
 port values specified for options in the option group for the DB
@@ -327,9 +337,10 @@ Default: C<3306>
 Valid Values: C<1150-65535>
 
 
+
 =head2 DBSecurityGroups => ArrayRef[Str]
 
-  A list of DB security groups to authorize on this DB instance. Changing
+A list of DB security groups to authorize on this DB instance. Changing
 this setting does not result in an outage and the change is
 asynchronously applied as soon as possible.
 
@@ -347,9 +358,10 @@ Constraints:
 
 
 
+
 =head2 EngineVersion => Str
 
-  The version number of the database engine to upgrade to. Changing this
+The version number of the database engine to upgrade to. Changing this
 parameter results in an outage and the change is applied during the
 next maintenance window unless the C<ApplyImmediately> parameter is set
 to C<true> for this request.
@@ -362,9 +374,10 @@ parameter group can be the default for that DB parameter group family.
 For a list of valid engine versions, see CreateDBInstance.
 
 
+
 =head2 Iops => Int
 
-  The new Provisioned IOPS (I/O operations per second) value for the RDS
+The new Provisioned IOPS (I/O operations per second) value for the RDS
 instance. Changing this setting does not result in an outage and the
 change is applied during the next maintenance window unless the
 C<ApplyImmediately> parameter is set to C<true> for this request.
@@ -401,9 +414,10 @@ instance, deleting the instance, creating a Read Replica for the
 instance, and creating a DB snapshot of the instance.
 
 
+
 =head2 MasterUserPassword => Str
 
-  The new password for the DB instance master user. Can be any printable
+The new password for the DB instance master user. Can be any printable
 ASCII character except "/", """, or "@".
 
 Changing this parameter does not result in an outage and the change is
@@ -424,9 +438,10 @@ password is lost. This includes restoring privileges that might have
 been accidentally revoked.
 
 
+
 =head2 MonitoringInterval => Int
 
-  The interval, in seconds, between points when Enhanced Monitoring
+The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB instance. To disable collecting
 Enhanced Monitoring metrics, specify 0. The default is 60.
 
@@ -436,9 +451,10 @@ C<MonitoringInterval> to a value other than 0.
 Valid Values: C<0, 1, 5, 10, 15, 30, 60>
 
 
+
 =head2 MonitoringRoleArn => Str
 
-  The ARN for the IAM role that permits RDS to send enhanced monitoring
+The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
@@ -448,9 +464,10 @@ If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
 
 
+
 =head2 MultiAZ => Bool
 
-  Specifies if the DB instance is a Multi-AZ deployment. Changing this
+Specifies if the DB instance is a Multi-AZ deployment. Changing this
 parameter does not result in an outage and the change is applied during
 the next maintenance window unless the C<ApplyImmediately> parameter is
 set to C<true> for this request.
@@ -461,9 +478,10 @@ for SQL Server DB instances is set using the Mirroring option in an
 option group associated with the DB instance.
 
 
+
 =head2 NewDBInstanceIdentifier => Str
 
-  The new DB instance identifier for the DB instance when renaming a DB
+The new DB instance identifier for the DB instance when renaming a DB
 instance. When you change the DB instance identifier, an instance
 reboot will occur immediately if you set C<Apply Immediately> to true,
 or will occur during the next maintenance window if C<Apply
@@ -483,9 +501,10 @@ Constraints:
 
 
 
+
 =head2 OptionGroupName => Str
 
-  Indicates that the DB instance should be associated with the specified
+Indicates that the DB instance should be associated with the specified
 option group. Changing this parameter does not result in an outage
 except in the following case and the change is applied during the next
 maintenance window unless the C<ApplyImmediately> parameter is set to
@@ -500,9 +519,10 @@ cannot be removed from a DB instance once it is associated with a DB
 instance
 
 
+
 =head2 PreferredBackupWindow => Str
 
-  The daily time range during which automated backups are created if
+The daily time range during which automated backups are created if
 automated backups are enabled, as determined by the
 C<BackupRetentionPeriod> parameter. Changing this parameter does not
 result in an outage and the change is asynchronously applied as soon as
@@ -524,9 +544,10 @@ Constraints:
 
 
 
+
 =head2 PreferredMaintenanceWindow => Str
 
-  The weekly time range (in UTC) during which system maintenance can
+The weekly time range (in UTC) during which system maintenance can
 occur, which might result in an outage. Changing this parameter does
 not result in an outage, except in the following situation, and the
 change is asynchronously applied as soon as possible. If there are
@@ -545,9 +566,10 @@ Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 Constraints: Must be at least 30 minutes
 
 
+
 =head2 PubliclyAccessible => Bool
 
-  True to make the DB instance Internet-facing with a publicly resolvable
+True to make the DB instance Internet-facing with a publicly resolvable
 DNS name, which resolves to a public IP address. False to make the DB
 instance internal with a DNS name that resolves to a private IP
 address.
@@ -562,9 +584,10 @@ regardless of the value of the C<ApplyImmediately> parameter.
 Default: false
 
 
+
 =head2 StorageType => Str
 
-  Specifies the storage type to be associated with the DB instance.
+Specifies the storage type to be associated with the DB instance.
 
 Valid values: C<standard | gp2 | io1>
 
@@ -575,21 +598,24 @@ Default: C<io1> if the C<Iops> parameter is specified; otherwise
 C<standard>
 
 
+
 =head2 TdeCredentialArn => Str
 
-  The ARN from the Key Store with which to associate the instance for TDE
+The ARN from the Key Store with which to associate the instance for TDE
 encryption.
+
 
 
 =head2 TdeCredentialPassword => Str
 
-  The password for the given ARN from the Key Store in order to access
+The password for the given ARN from the Key Store in order to access
 the device.
+
 
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  A list of EC2 VPC security groups to authorize on this DB instance.
+A list of EC2 VPC security groups to authorize on this DB instance.
 This change is asynchronously applied as soon as possible.
 
 Constraints:
@@ -603,6 +629,7 @@ Constraints:
 =item * Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
+
 
 
 

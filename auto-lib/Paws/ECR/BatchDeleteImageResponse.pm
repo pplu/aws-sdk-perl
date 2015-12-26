@@ -16,11 +16,15 @@ Paws::ECR::BatchDeleteImageResponse
 
 =head2 Failures => ArrayRef[L<Paws::ECR::ImageFailure>]
 
-  Any failures associated with the call.
+Any failures associated with the call.
+
+
 
 =head2 ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]
 
-  The image IDs of the deleted images.
+The image IDs of the deleted images.
+
+
 
 
 =cut

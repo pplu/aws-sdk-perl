@@ -38,22 +38,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ContentType => Str
 
-  The upload's content type (for example, "application/octet-stream").
+The upload's content type (for example, "application/octet-stream").
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The upload's file name.
+The upload's file name.
+
 
 
 =head2 B<REQUIRED> ProjectArn => Str
 
-  The ARN of the project for the upload.
+The ARN of the project for the upload.
+
 
 
 =head2 B<REQUIRED> Type => Str
 
-  The upload's upload type.
+The upload's upload type.
 
 Must be one of the following values:
 
@@ -112,6 +115,7 @@ upload.
 B<Note> If you call C<CreateUpload> with C<WEB_APP> specified, AWS
 Device Farm throws an ArgumentException error.
 
+Valid values are: C<"ANDROID_APP">, C<"IOS_APP">, C<"WEB_APP">, C<"EXTERNAL_DATA">, C<"APPIUM_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE">, C<"CALABASH_TEST_PACKAGE">, C<"INSTRUMENTATION_TEST_PACKAGE">, C<"UIAUTOMATION_TEST_PACKAGE">, C<"UIAUTOMATOR_TEST_PACKAGE">, C<"XCTEST_TEST_PACKAGE">
 
 
 =head1 SEE ALSO

@@ -16,8 +16,10 @@ Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage
 
 =head2 ApplicationVersions => ArrayRef[L<Paws::ElasticBeanstalk::ApplicationVersionDescription>]
 
-  List of C<ApplicationVersionDescription> objects sorted by order of
+List of C<ApplicationVersionDescription> objects sorted by order of
 creation.
+
+
 
 
 =cut

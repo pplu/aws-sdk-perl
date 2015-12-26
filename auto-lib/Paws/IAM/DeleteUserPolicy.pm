@@ -36,13 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PolicyName => Str
 
-  The name identifying the policy document to delete.
+The name identifying the policy document to delete.
+
 
 
 =head2 B<REQUIRED> UserName => Str
 
-  The name (friendly name, not ARN) identifying the user that the policy
+The name (friendly name, not ARN) identifying the user that the policy
 is embedded in.
+
 
 
 

@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The domain for which you want to add or update tags.
+The domain for which you want to add or update tags.
 
 The name of a domain.
 
@@ -54,9 +54,10 @@ Punycode.
 Required: Yes
 
 
+
 =head2 TagsToUpdate => ArrayRef[L<Paws::Route53Domains::Tag>]
 
-  A list of the tag keys and values that you want to add or update. If
+A list of the tag keys and values that you want to add or update. If
 you specify a key that already exists, the corresponding value will be
 replaced.
 
@@ -107,6 +108,7 @@ Constraints: Each value can be 0-256 characters long.
 Required: Yes
 
 =back
+
 
 
 

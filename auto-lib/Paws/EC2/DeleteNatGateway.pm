@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> NatGatewayId => Str
 
-  The ID of the NAT gateway.
+The ID of the NAT gateway.
+
 
 
 

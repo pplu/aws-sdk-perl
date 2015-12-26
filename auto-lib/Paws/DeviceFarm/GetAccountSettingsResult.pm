@@ -15,7 +15,9 @@ Paws::DeviceFarm::GetAccountSettingsResult
 
 =head2 AccountSettings => L<Paws::DeviceFarm::AccountSettings>
 
-  
+
+
+
 
 
 =cut

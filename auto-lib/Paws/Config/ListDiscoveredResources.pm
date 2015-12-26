@@ -40,41 +40,47 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 IncludeDeletedResources => Bool
 
-  Specifies whether AWS Config includes deleted resources in the results.
+Specifies whether AWS Config includes deleted resources in the results.
 By default, deleted resources are not included.
+
 
 
 =head2 Limit => Int
 
-  The maximum number of resource identifiers returned on each page. The
+The maximum number of resource identifiers returned on each page. The
 default is 100. You cannot specify a limit greater than 100. If you
 specify 0, AWS Config uses the default.
 
 
+
 =head2 NextToken => Str
 
-  The C<nextToken> string returned on a previous page that you use to get
+The C<nextToken> string returned on a previous page that you use to get
 the next page of results in a paginated response.
+
 
 
 =head2 ResourceIds => ArrayRef[Str]
 
-  The IDs of only those resources that you want AWS Config to list in the
+The IDs of only those resources that you want AWS Config to list in the
 response. If you do not specify this parameter, AWS Config lists all
 resources of the specified type that it has discovered.
 
 
+
 =head2 ResourceName => Str
 
-  The custom name of only those resources that you want AWS Config to
+The custom name of only those resources that you want AWS Config to
 list in the response. If you do not specify this parameter, AWS Config
 lists all resources of the specified type that it has discovered.
 
 
+
 =head2 B<REQUIRED> ResourceType => Str
 
-  The type of resources that you want AWS Config to list in the response.
+The type of resources that you want AWS Config to list in the response.
 
+Valid values are: C<"AWS::EC2::CustomerGateway">, C<"AWS::EC2::EIP">, C<"AWS::EC2::Host">, C<"AWS::EC2::Instance">, C<"AWS::EC2::InternetGateway">, C<"AWS::EC2::NetworkAcl">, C<"AWS::EC2::NetworkInterface">, C<"AWS::EC2::RouteTable">, C<"AWS::EC2::SecurityGroup">, C<"AWS::EC2::Subnet">, C<"AWS::CloudTrail::Trail">, C<"AWS::EC2::Volume">, C<"AWS::EC2::VPC">, C<"AWS::EC2::VPNConnection">, C<"AWS::EC2::VPNGateway">, C<"AWS::IAM::Group">, C<"AWS::IAM::Policy">, C<"AWS::IAM::Role">, C<"AWS::IAM::User">
 
 
 =head1 SEE ALSO

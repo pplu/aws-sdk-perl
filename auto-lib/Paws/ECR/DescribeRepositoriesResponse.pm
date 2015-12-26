@@ -16,15 +16,19 @@ Paws::ECR::DescribeRepositoriesResponse
 
 =head2 NextToken => Str
 
-  The C<nextToken> value to include in a future C<DescribeRepositories>
+The C<nextToken> value to include in a future C<DescribeRepositories>
 request. When the results of a C<DescribeRepositories> request exceed
 C<maxResults>, this value can be used to retrieve the next page of
 results. This value is C<null> when there are no more results to
 return.
 
+
+
 =head2 Repositories => ArrayRef[L<Paws::ECR::Repository>]
 
-  A list of repository objects corresponding to valid repositories.
+A list of repository objects corresponding to valid repositories.
+
+
 
 
 =cut

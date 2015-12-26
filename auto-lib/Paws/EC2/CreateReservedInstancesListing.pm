@@ -38,28 +38,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientToken => Str
 
-  Unique, case-sensitive identifier you provide to ensure idempotency of
+Unique, case-sensitive identifier you provide to ensure idempotency of
 your listings. This helps avoid duplicate listings. For more
 information, see Ensuring Idempotency.
 
 
+
 =head2 B<REQUIRED> InstanceCount => Int
 
-  The number of instances that are a part of a Reserved instance account
+The number of instances that are a part of a Reserved instance account
 to be listed in the Reserved Instance Marketplace. This number should
 be less than or equal to the instance count associated with the
 Reserved instance ID specified in this call.
 
 
+
 =head2 B<REQUIRED> PriceSchedules => ArrayRef[L<Paws::EC2::PriceScheduleSpecification>]
 
-  A list specifying the price of the Reserved instance for each month
+A list specifying the price of the Reserved instance for each month
 remaining in the Reserved instance term.
+
 
 
 =head2 B<REQUIRED> ReservedInstancesId => Str
 
-  The ID of the active Reserved instance.
+The ID of the active Reserved instance.
+
 
 
 

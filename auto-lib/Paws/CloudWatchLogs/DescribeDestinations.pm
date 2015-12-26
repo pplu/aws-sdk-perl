@@ -37,19 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DestinationNamePrefix => Str
 
-  Will only return destinations that match the provided
+Will only return destinations that match the provided
 destinationNamePrefix. If you don't specify a value, no prefix is
 applied.
 
 
+
 =head2 Limit => Int
 
-  
+
+
 
 
 =head2 NextToken => Str
 
-  
+
+
 
 
 

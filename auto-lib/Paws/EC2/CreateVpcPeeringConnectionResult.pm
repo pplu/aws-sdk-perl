@@ -16,7 +16,9 @@ Paws::EC2::CreateVpcPeeringConnectionResult
 
 =head2 VpcPeeringConnection => L<Paws::EC2::VpcPeeringConnection>
 
-  Information about the VPC peering connection.
+Information about the VPC peering connection.
+
+
 
 
 =cut

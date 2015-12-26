@@ -15,7 +15,7 @@ Paws::OpsWorks::DescribePermissionsResult
 
 =head2 Permissions => ArrayRef[L<Paws::OpsWorks::Permission>]
 
-  An array of C<Permission> objects that describe the stack permissions.
+An array of C<Permission> objects that describe the stack permissions.
 
 =over
 
@@ -32,6 +32,8 @@ contains a single C<Permission> object with permissions for the
 specified stack and IAM ARN.
 
 =back
+
+
 
 
 

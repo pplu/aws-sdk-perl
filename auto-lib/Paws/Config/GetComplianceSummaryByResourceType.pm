@@ -35,13 +35,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ResourceTypes => ArrayRef[Str]
 
-  Specify one or more resource types to get the number of resources that
+Specify one or more resource types to get the number of resources that
 are compliant and the number that are noncompliant for each resource
 type.
 
 For this request, you can specify an AWS resource type such as
 C<AWS::EC2::Instance>, and you can specify that the resource type is an
 AWS account by specifying C<AWS::::Account>.
+
 
 
 

@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Arn => Str
 
-  The tests' ARNs.
+The tests' ARNs.
+
 
 
 =head2 NextToken => Str
 
-  An identifier that was returned from the previous call to this
+An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the
 list.
+
 
 
 

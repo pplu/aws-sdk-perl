@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DBClusterIdentifier => Str
 
-  A DB cluster identifier to force a failover for. This parameter is not
+A DB cluster identifier to force a failover for. This parameter is not
 case-sensitive.
 
 Constraints:
@@ -49,6 +49,7 @@ Constraints:
 =item * Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
+
 
 
 

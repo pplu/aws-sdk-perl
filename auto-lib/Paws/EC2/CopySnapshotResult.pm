@@ -16,7 +16,9 @@ Paws::EC2::CopySnapshotResult
 
 =head2 SnapshotId => Str
 
-  The ID of the new snapshot.
+The ID of the new snapshot.
+
+
 
 
 =cut

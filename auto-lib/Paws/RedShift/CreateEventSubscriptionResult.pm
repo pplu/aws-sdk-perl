@@ -16,7 +16,9 @@ Paws::RedShift::CreateEventSubscriptionResult
 
 =head2 EventSubscription => L<Paws::RedShift::EventSubscription>
 
-  
+
+
+
 
 
 =cut

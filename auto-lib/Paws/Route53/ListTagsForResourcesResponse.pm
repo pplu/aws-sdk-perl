@@ -30,8 +30,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceTagSets => ArrayRef[L<Paws::Route53::ResourceTagSet>]
 
-  A list of C<ResourceTagSet>s containing tags associated with the
+A list of C<ResourceTagSet>s containing tags associated with the
 specified resources.
+
 
 
 

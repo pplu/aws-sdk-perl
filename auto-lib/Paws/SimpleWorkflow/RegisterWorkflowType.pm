@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DefaultChildPolicy => Str
 
-  If set, specifies the default policy to use for the child workflow
+If set, specifies the default policy to use for the child workflow
 executions when a workflow execution of this type is terminated, by
 calling the TerminateWorkflowExecution action explicitly or due to an
 expired timeout. This default can be overridden when starting a
@@ -68,10 +68,11 @@ continue to run.
 =back
 
 
+Valid values are: C<"TERMINATE">, C<"REQUEST_CANCEL">, C<"ABANDON">
 
 =head2 DefaultExecutionStartToCloseTimeout => Str
 
-  If set, specifies the default maximum duration for executions of this
+If set, specifies the default maximum duration for executions of this
 workflow type. You can override this default when starting an execution
 through the StartWorkflowExecution action or
 C<StartChildWorkflowExecution> decision.
@@ -84,9 +85,10 @@ on the time that a workflow execution can run. Exceeding this limit
 will always cause the workflow execution to time out.
 
 
+
 =head2 DefaultLambdaRole => Str
 
-  The ARN of the default IAM role to use when a workflow execution of
+The ARN of the default IAM role to use when a workflow execution of
 this type invokes AWS Lambda functions.
 
 This default can be overridden when starting a workflow execution using
@@ -94,18 +96,20 @@ the StartWorkflowExecution action or the C<StartChildWorkflowExecution>
 and C<ContinueAsNewWorkflowExecution> decision.
 
 
+
 =head2 DefaultTaskList => L<Paws::SimpleWorkflow::TaskList>
 
-  If set, specifies the default task list to use for scheduling decision
+If set, specifies the default task list to use for scheduling decision
 tasks for executions of this workflow type. This default is used only
 if a task list is not provided when starting the execution through the
 StartWorkflowExecution action or C<StartChildWorkflowExecution>
 decision.
 
 
+
 =head2 DefaultTaskPriority => Str
 
-  The default task priority to assign to the workflow type. If not
+The default task priority to assign to the workflow type. If not
 assigned, then "0" will be used. Valid values are integers that range
 from Java's C<Integer.MIN_VALUE> (-2147483648) to C<Integer.MAX_VALUE>
 (2147483647). Higher numbers indicate higher priority.
@@ -114,9 +118,10 @@ For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
 
+
 =head2 DefaultTaskStartToCloseTimeout => Str
 
-  If set, specifies the default maximum duration of decision tasks for
+If set, specifies the default maximum duration of decision tasks for
 this workflow type. This default can be overridden when starting a
 workflow execution using the StartWorkflowExecution action or the
 C<StartChildWorkflowExecution> decision.
@@ -125,19 +130,22 @@ The duration is specified in seconds; an integer greater than or equal
 to 0. The value "NONE" can be used to specify unlimited duration.
 
 
+
 =head2 Description => Str
 
-  Textual description of the workflow type.
+Textual description of the workflow type.
+
 
 
 =head2 B<REQUIRED> Domain => Str
 
-  The name of the domain in which to register the workflow type.
+The name of the domain in which to register the workflow type.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the workflow type.
+The name of the workflow type.
 
 The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
@@ -145,9 +153,10 @@ control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
 
+
 =head2 B<REQUIRED> Version => Str
 
-  The version of the workflow type.
+The version of the workflow type.
 
 The workflow type consists of the name and version, the combination of
 which must be unique within the domain. To get a list of all currently
@@ -157,6 +166,7 @@ The specified string must not start or end with whitespace. It must not
 contain a C<:> (colon), C</> (slash), C<|> (vertical bar), or any
 control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
+
 
 
 

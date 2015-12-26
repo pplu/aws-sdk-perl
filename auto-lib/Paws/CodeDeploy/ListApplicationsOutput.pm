@@ -16,14 +16,18 @@ Paws::CodeDeploy::ListApplicationsOutput
 
 =head2 Applications => ArrayRef[Str]
 
-  A list of application names.
+A list of application names.
+
+
 
 =head2 NextToken => Str
 
-  If the amount of information that is returned is significantly large,
+If the amount of information that is returned is significantly large,
 an identifier will also be returned, which can be used in a subsequent
 list applications call to return the next set of applications in the
 list.
+
+
 
 
 =cut

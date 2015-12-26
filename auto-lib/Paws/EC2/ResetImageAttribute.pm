@@ -37,21 +37,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Attribute => Str
 
-  The attribute to reset (currently you can only reset the launch
+The attribute to reset (currently you can only reset the launch
 permission attribute).
 
+Valid values are: C<"launchPermission">
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 B<REQUIRED> ImageId => Str
 
-  The ID of the AMI.
+The ID of the AMI.
+
 
 
 

@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  Token returned by the previous C<ListSubscriptionsByTopic> request.
+Token returned by the previous C<ListSubscriptionsByTopic> request.
+
 
 
 =head2 B<REQUIRED> TopicArn => Str
 
-  The ARN of the topic for which you wish to find subscriptions.
+The ARN of the topic for which you wish to find subscriptions.
+
 
 
 

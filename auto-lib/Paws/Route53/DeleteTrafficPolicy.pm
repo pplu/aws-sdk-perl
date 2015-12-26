@@ -11,6 +11,7 @@ package Paws::Route53::DeleteTrafficPolicy;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::DeleteTrafficPolicyResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -24,11 +25,15 @@ Paws::Route53::DeleteTrafficPolicyResponse
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the traffic policy that you want to delete.
+The ID of the traffic policy that you want to delete.
+
+
 
 =head2 B<REQUIRED> Version => Int
 
-  The version number of the traffic policy that you want to delete.
+The version number of the traffic policy that you want to delete.
+
+
 
 
 =cut

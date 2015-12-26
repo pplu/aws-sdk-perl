@@ -37,20 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 InstanceIds => ArrayRef[Str]
 
-  One or more Auto Scaling instances to describe, up to 50 instances. If
+One or more Auto Scaling instances to describe, up to 50 instances. If
 you omit this parameter, all Auto Scaling instances are described. If
 you specify an ID that does not exist, it is ignored with no error.
 
 
+
 =head2 MaxRecords => Int
 
-  The maximum number of items to return with this call.
+The maximum number of items to return with this call.
+
 
 
 =head2 NextToken => Str
 
-  The token for the next set of items to return. (You received this token
+The token for the next set of items to return. (You received this token
 from a previous call.)
+
 
 
 

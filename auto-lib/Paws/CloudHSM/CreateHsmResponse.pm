@@ -15,7 +15,9 @@ Paws::CloudHSM::CreateHsmResponse
 
 =head2 HsmArn => Str
 
-  The ARN of the HSM.
+The ARN of the HSM.
+
+
 
 
 =cut

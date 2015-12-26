@@ -17,15 +17,21 @@ Paws::DataPipeline::GetPipelineDefinitionOutput
 
 =head2 ParameterObjects => ArrayRef[L<Paws::DataPipeline::ParameterObject>]
 
-  The parameter objects used in the pipeline definition.
+The parameter objects used in the pipeline definition.
+
+
 
 =head2 ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>]
 
-  The parameter values used in the pipeline definition.
+The parameter values used in the pipeline definition.
+
+
 
 =head2 PipelineObjects => ArrayRef[L<Paws::DataPipeline::PipelineObject>]
 
-  The objects defined in the pipeline.
+The objects defined in the pipeline.
+
+
 
 
 =cut

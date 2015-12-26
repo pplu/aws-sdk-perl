@@ -17,12 +17,16 @@ Paws::EC2::CreateNatGatewayResult
 
 =head2 ClientToken => Str
 
-  Unique, case-sensitive identifier to ensure the idempotency of the
+Unique, case-sensitive identifier to ensure the idempotency of the
 request. Only returned if a client token was provided in the request.
+
+
 
 =head2 NatGateway => L<Paws::EC2::NatGateway>
 
-  Information about the NAT gateway.
+Information about the NAT gateway.
+
+
 
 
 =cut

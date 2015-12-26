@@ -38,23 +38,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterId => Str
 
-  The identifier of the cluster for which to list the instances.
+The identifier of the cluster for which to list the instances.
+
 
 
 =head2 InstanceGroupId => Str
 
-  The identifier of the instance group for which to list the instances.
+The identifier of the instance group for which to list the instances.
+
 
 
 =head2 InstanceGroupTypes => ArrayRef[Str]
 
-  The type of instance group for which to list the instances.
+The type of instance group for which to list the instances.
+
 
 
 =head2 Marker => Str
 
-  The pagination token that indicates the next set of results to
+The pagination token that indicates the next set of results to
 retrieve.
+
 
 
 

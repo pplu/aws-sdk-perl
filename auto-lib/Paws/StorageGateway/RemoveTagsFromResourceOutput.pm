@@ -15,8 +15,10 @@ Paws::StorageGateway::RemoveTagsFromResourceOutput
 
 =head2 ResourceARN => Str
 
-  The Amazon Resource Name (ARN) of the resource that the tags were
+The Amazon Resource Name (ARN) of the resource that the tags were
 removed from.
+
+
 
 
 =cut
