@@ -12,7 +12,7 @@ perl:
   - "5.10"
 matrix:
   allow_failures:
-    - perl: 
+    perl: 
       - dev
       - "5.8"
 sudo: false
