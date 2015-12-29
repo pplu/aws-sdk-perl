@@ -1,2 +1,3 @@
-- unserialize_body_response in Paws::API::Caller needs code to turn headers into a datascructure
-- ack "\"streaming\"" botocore/botocore/data/ finds other APIs with responses in body
+- stop generating map classes for everything that's not an enum map
+- fix new_with_coercions to handle new maps
+- fix result to object to handle new maps
