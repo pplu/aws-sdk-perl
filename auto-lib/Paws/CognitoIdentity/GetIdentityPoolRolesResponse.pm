@@ -2,7 +2,7 @@
 package Paws::CognitoIdentity::GetIdentityPoolRolesResponse;
   use Moose;
   has IdentityPoolId => (is => 'ro', isa => 'Str');
-  has Roles => (is => 'ro', isa => 'Paws::CognitoIdentity::RolesMap');
+  has Roles => (is => 'ro', isa => 'HashRef[Str]');
 
 
 ### main pod documentation begin ###
@@ -18,7 +18,7 @@ Paws::CognitoIdentity::GetIdentityPoolRolesResponse
 
   An identity pool ID in the format REGION:GUID.
 
-=head2 Roles => L<Paws::CognitoIdentity::RolesMap>
+=head2 Roles => HashRef[Str]
 
   The map of roles associated with this pool. Currently only
 authenticated and unauthenticated roles are supported.

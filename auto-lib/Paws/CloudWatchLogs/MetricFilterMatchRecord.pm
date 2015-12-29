@@ -2,7 +2,7 @@ package Paws::CloudWatchLogs::MetricFilterMatchRecord;
   use Moose;
   has EventMessage => (is => 'ro', isa => 'Str', xmlname => 'eventMessage', request_name => 'eventMessage', traits => ['Unwrapped','NameInRequest']);
   has EventNumber => (is => 'ro', isa => 'Int', xmlname => 'eventNumber', request_name => 'eventNumber', traits => ['Unwrapped','NameInRequest']);
-  has ExtractedValues => (is => 'ro', isa => 'Paws::CloudWatchLogs::ExtractedValues', xmlname => 'extractedValues', request_name => 'extractedValues', traits => ['Unwrapped','NameInRequest']);
+  has ExtractedValues => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'extractedValues', request_name => 'extractedValues', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +48,7 @@ This class has no description
   
 
 
-=head2 ExtractedValues => L<Paws::CloudWatchLogs::ExtractedValues>
+=head2 ExtractedValues => HashRef[Str]
 
   
 

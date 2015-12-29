@@ -3,7 +3,7 @@ package Paws::ElasticTranscoder::VideoParameters;
   has AspectRatio => (is => 'ro', isa => 'Str');
   has BitRate => (is => 'ro', isa => 'Str');
   has Codec => (is => 'ro', isa => 'Str');
-  has CodecOptions => (is => 'ro', isa => 'Paws::ElasticTranscoder::CodecOptions');
+  has CodecOptions => (is => 'ro', isa => 'HashRef[Str]');
   has DisplayAspectRatio => (is => 'ro', isa => 'Str');
   has FixedGOP => (is => 'ro', isa => 'Str');
   has FrameRate => (is => 'ro', isa => 'Str');
@@ -120,7 +120,7 @@ container type is C<webm>, C<gif> when the container type is C<gif>,
 and C<mpeg2> when the container type is C<mpg>.
 
 
-=head2 CodecOptions => L<Paws::ElasticTranscoder::CodecOptions>
+=head2 CodecOptions => HashRef[Str]
 
   B<Profile (H.264/VP8 Only)>
 

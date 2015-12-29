@@ -3,12 +3,12 @@ package Paws::ApiGateway::TestInvokeMethod;
   use Moose;
   has Body => (is => 'ro', isa => 'Str');
   has ClientCertificateId => (is => 'ro', isa => 'Str');
-  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfHeaderValues');
+  has Headers => (is => 'ro', isa => 'HashRef[Str]');
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
   has PathWithQueryString => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
-  has StageVariables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has StageVariables => (is => 'ro', isa => 'HashRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -52,7 +52,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 
-=head2 Headers => L<Paws::ApiGateway::MapOfHeaderValues>
+=head2 Headers => HashRef[Str]
 
   
 
@@ -77,7 +77,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 
-=head2 StageVariables => L<Paws::ApiGateway::MapOfStringToString>
+=head2 StageVariables => HashRef[Str]
 
   
 

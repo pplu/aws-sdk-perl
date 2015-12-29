@@ -1,7 +1,7 @@
 
 package Paws::DynamoDB::BatchGetItem;
   use Moose;
-  has RequestItems => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetRequestMap', required => 1);
+  has RequestItems => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::KeysAndAttributes]', required => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> RequestItems => L<Paws::DynamoDB::BatchGetRequestMap>
+=head2 B<REQUIRED> RequestItems => HashRef[L<Paws::DynamoDB::KeysAndAttributes>]
 
   A map of one or more table names and, for each table, a map that
 describes one or more items to retrieve from that table. Each table

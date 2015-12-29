@@ -4,15 +4,15 @@ package Paws::DynamoDB::Scan;
   has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
   has ConditionalOperator => (is => 'ro', isa => 'Str');
   has ConsistentRead => (is => 'ro', isa => 'Bool');
-  has ExclusiveStartKey => (is => 'ro', isa => 'Paws::DynamoDB::Key');
-  has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
-  has ExpressionAttributeValues => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeValueMap');
+  has ExclusiveStartKey => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]');
+  has ExpressionAttributeNames => (is => 'ro', isa => 'HashRef[Str]');
+  has ExpressionAttributeValues => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]');
   has FilterExpression => (is => 'ro', isa => 'Str');
   has IndexName => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has ProjectionExpression => (is => 'ro', isa => 'Str');
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
-  has ScanFilter => (is => 'ro', isa => 'Paws::DynamoDB::FilterConditionMap');
+  has ScanFilter => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::Condition]');
   has Segment => (is => 'ro', isa => 'Int');
   has Select => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str', required => 1);
@@ -128,7 +128,7 @@ indexes. If you scan a global secondary index with I<ConsistentRead>
 set to true, you will receive a I<ValidationException>.
 
 
-=head2 ExclusiveStartKey => L<Paws::DynamoDB::Key>
+=head2 ExclusiveStartKey => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   The primary key of the first item that this operation will evaluate.
 Use the value that was returned for I<LastEvaluatedKey> in the previous
@@ -142,7 +142,7 @@ I<ExclusiveStartKey> must specify the same segment whose previous
 I<Scan> returned the corresponding value of I<LastEvaluatedKey>.
 
 
-=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
+=head2 ExpressionAttributeNames => HashRef[Str]
 
   One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
@@ -209,7 +209,7 @@ For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
+=head2 ExpressionAttributeValues => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   One or more values that can be substituted in an expression.
 
@@ -295,7 +295,7 @@ parameter.
   
 
 
-=head2 ScanFilter => L<Paws::DynamoDB::FilterConditionMap>
+=head2 ScanFilter => HashRef[L<Paws::DynamoDB::Condition>]
 
   This is a legacy parameter, for backward compatibility. New
 applications should use I<FilterExpression> instead. Do not combine

@@ -1,7 +1,7 @@
 
 package Paws::SNS::CreatePlatformEndpoint;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
+  has Attributes => (is => 'ro', isa => 'HashRef[Str]');
   has CustomUserData => (is => 'ro', isa => 'Str');
   has PlatformApplicationArn => (is => 'ro', isa => 'Str', required => 1);
   has Token => (is => 'ro', isa => 'Str', required => 1);
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::MapStringToString>
+=head2 Attributes => HashRef[Str]
 
   For a list of attributes, see SetEndpointAttributes.
 

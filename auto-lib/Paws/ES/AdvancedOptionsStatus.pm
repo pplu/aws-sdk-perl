@@ -1,6 +1,6 @@
 package Paws::ES::AdvancedOptionsStatus;
   use Moose;
-  has Options => (is => 'ro', isa => 'Paws::ES::AdvancedOptions', required => 1);
+  has Options => (is => 'ro', isa => 'HashRef[Str]', required => 1);
   has Status => (is => 'ro', isa => 'Paws::ES::OptionStatus', required => 1);
 1;
 
@@ -52,7 +52,7 @@ For more information, see Configuring Advanced Options.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Options => L<Paws::ES::AdvancedOptions>
+=head2 B<REQUIRED> Options => HashRef[Str]
 
   Specifies the status of advanced options for the specified
 Elasticsearch domain.

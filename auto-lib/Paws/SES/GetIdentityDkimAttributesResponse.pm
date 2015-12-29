@@ -1,7 +1,7 @@
 
 package Paws::SES::GetIdentityDkimAttributesResponse;
   use Moose;
-  has DkimAttributes => (is => 'ro', isa => 'Paws::SES::DkimAttributes', required => 1);
+  has DkimAttributes => (is => 'ro', isa => 'HashRef[Paws::SES::IdentityDkimAttributes]', required => 1);
 
 1;
 
@@ -14,7 +14,7 @@ Paws::SES::GetIdentityDkimAttributesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DkimAttributes => L<Paws::SES::DkimAttributes>
+=head2 B<REQUIRED> DkimAttributes => HashRef[L<Paws::SES::IdentityDkimAttributes>]
 
   The DKIM attributes for an email address or a domain.
 

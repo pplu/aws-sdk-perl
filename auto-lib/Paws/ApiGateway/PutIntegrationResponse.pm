@@ -3,8 +3,8 @@ package Paws::ApiGateway::PutIntegrationResponse;
   use Moose;
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has ResponseParameters => (is => 'ro', isa => 'HashRef[Str]');
+  has ResponseTemplates => (is => 'ro', isa => 'HashRef[Str]');
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
   has SelectionPattern => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'statusCode' , required => 1);
@@ -51,7 +51,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   Specifies a put integration response request's resource identifier.
 
 
-=head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseParameters => HashRef[Str]
 
   Represents response parameters that can be read from the backend
 response. Response parameters are represented as a key/value map, with
@@ -62,7 +62,7 @@ specified using enclosing single quotes, and backend response headers
 can be read using the pattern C<integration.response.header.{name}>.
 
 
-=head2 ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseTemplates => HashRef[Str]
 
   Specifies a put integration response's templates.
 

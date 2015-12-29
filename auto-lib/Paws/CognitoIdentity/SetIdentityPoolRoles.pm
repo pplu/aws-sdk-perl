@@ -2,7 +2,7 @@
 package Paws::CognitoIdentity::SetIdentityPoolRoles;
   use Moose;
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has Roles => (is => 'ro', isa => 'Paws::CognitoIdentity::RolesMap', required => 1);
+  has Roles => (is => 'ro', isa => 'HashRef[Str]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   An identity pool ID in the format REGION:GUID.
 
 
-=head2 B<REQUIRED> Roles => L<Paws::CognitoIdentity::RolesMap>
+=head2 B<REQUIRED> Roles => HashRef[Str]
 
   The map of roles associated with this pool. For a given role, the key
 will be either "authenticated" or "unauthenticated" and the value will

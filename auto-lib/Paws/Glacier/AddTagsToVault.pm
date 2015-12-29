@@ -2,7 +2,7 @@
 package Paws::Glacier::AddTagsToVault;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId' , required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Glacier::TagMap');
+  has Tags => (is => 'ro', isa => 'HashRef[Str]');
   has VaultName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'vaultName' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -47,7 +47,7 @@ you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
 
-=head2 Tags => L<Paws::Glacier::TagMap>
+=head2 Tags => HashRef[Str]
 
   The tags to add to the vault. Each tag is composed of a key and a
 value. The value can be an empty string.

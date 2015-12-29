@@ -206,7 +206,7 @@ its Amazon Resource Name (ARN). This call requires an AWS signature
 only when the C<AuthenticateOnUnsubscribe> flag is set to "true".
 
 
-=head2 CreatePlatformApplication(Attributes => L<Paws::SNS::MapStringToString>, Name => Str, Platform => Str)
+=head2 CreatePlatformApplication(Attributes => HashRef[Str], Name => Str, Platform => Str)
 
 Each argument is described in detail in: L<Paws::SNS::CreatePlatformApplication>
 
@@ -229,7 +229,7 @@ C<CreatePlatformEndpoint> action. For more information, see Using
 Amazon SNS Mobile Push Notifications.
 
 
-=head2 CreatePlatformEndpoint(PlatformApplicationArn => Str, Token => Str, [Attributes => L<Paws::SNS::MapStringToString>, CustomUserData => Str])
+=head2 CreatePlatformEndpoint(PlatformApplicationArn => Str, Token => Str, [Attributes => HashRef[Str], CustomUserData => Str])
 
 Each argument is described in detail in: L<Paws::SNS::CreatePlatformEndpoint>
 
@@ -412,7 +412,7 @@ also returned. Use the C<NextToken> parameter in a new C<ListTopics>
 call to get further results.
 
 
-=head2 Publish(Message => Str, [MessageAttributes => L<Paws::SNS::MessageAttributeMap>, MessageStructure => Str, Subject => Str, TargetArn => Str, TopicArn => Str])
+=head2 Publish(Message => Str, [MessageAttributes => HashRef[L<Paws::SNS::MessageAttributeValue>], MessageStructure => Str, Subject => Str, TargetArn => Str, TopicArn => Str])
 
 Each argument is described in detail in: L<Paws::SNS::Publish>
 
@@ -440,7 +440,7 @@ Returns: nothing
   Removes a statement from a topic's access control policy.
 
 
-=head2 SetEndpointAttributes(Attributes => L<Paws::SNS::MapStringToString>, EndpointArn => Str)
+=head2 SetEndpointAttributes(Attributes => HashRef[Str], EndpointArn => Str)
 
 Each argument is described in detail in: L<Paws::SNS::SetEndpointAttributes>
 
@@ -451,7 +451,7 @@ supported push notification services, such as GCM and APNS. For more
 information, see Using Amazon SNS Mobile Push Notifications.
 
 
-=head2 SetPlatformApplicationAttributes(Attributes => L<Paws::SNS::MapStringToString>, PlatformApplicationArn => Str)
+=head2 SetPlatformApplicationAttributes(Attributes => HashRef[Str], PlatformApplicationArn => Str)
 
 Each argument is described in detail in: L<Paws::SNS::SetPlatformApplicationAttributes>
 

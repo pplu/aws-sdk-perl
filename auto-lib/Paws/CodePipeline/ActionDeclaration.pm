@@ -1,7 +1,7 @@
 package Paws::CodePipeline::ActionDeclaration;
   use Moose;
   has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', xmlname => 'actionTypeId', request_name => 'actionTypeId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap', xmlname => 'configuration', request_name => 'configuration', traits => ['Unwrapped','NameInRequest']);
+  has Configuration => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'configuration', request_name => 'configuration', traits => ['Unwrapped','NameInRequest']);
   has InputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::InputArtifact]', xmlname => 'inputArtifacts', request_name => 'inputArtifacts', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
   has OutputArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::OutputArtifact]', xmlname => 'outputArtifacts', request_name => 'outputArtifacts', traits => ['Unwrapped','NameInRequest']);
@@ -47,7 +47,7 @@ Represents information about an action declaration.
   The configuration information for the action type.
 
 
-=head2 Configuration => L<Paws::CodePipeline::ActionConfigurationMap>
+=head2 Configuration => HashRef[Str]
 
   The action declaration's configuration.
 

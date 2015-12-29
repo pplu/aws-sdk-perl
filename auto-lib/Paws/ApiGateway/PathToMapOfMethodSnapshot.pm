@@ -2,7 +2,7 @@ package Paws::ApiGateway::PathToMapOfMethodSnapshot;
   use Moose;
   with 'Paws::API::StrToObjMapParser';
 
-  has Map => (is => 'ro', isa => 'HashRef[Paws::ApiGateway::MapOfMethodSnapshot]');
+  has Map => (is => 'ro', isa => 'HashRef[HashRef[Paws::ApiGateway::MethodSnapshot]]');
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +37,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => L<Paws::ApiGateway::MapOfMethodSnapshot>
+=head2 Map => HashRef[L<Paws::ApiGateway::MethodSnapshot>]
 
 Use the Map method to retrieve a HashRef to the map
 

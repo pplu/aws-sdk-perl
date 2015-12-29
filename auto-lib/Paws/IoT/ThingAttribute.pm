@@ -1,6 +1,6 @@
 package Paws::IoT::ThingAttribute;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
+  has Attributes => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
   has ThingName => (is => 'ro', isa => 'Str', xmlname => 'thingName', request_name => 'thingName', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -37,7 +37,7 @@ Describes a thing attribute.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::IoT::Attributes>
+=head2 Attributes => HashRef[Str]
 
   The attributes.
 

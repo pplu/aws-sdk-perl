@@ -334,7 +334,7 @@ to encrypt customer data. For more information about data keys, see
 GenerateDataKey and GenerateDataKeyWithoutPlaintext.
 
 
-=head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str]])
+=head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => HashRef[Str], GrantTokens => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::KMS::Decrypt>
 
@@ -423,7 +423,7 @@ Returns: nothing
   Enables rotation of the specified customer master key.
 
 
-=head2 Encrypt(KeyId => Str, Plaintext => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str]])
+=head2 Encrypt(KeyId => Str, Plaintext => Str, [EncryptionContext => HashRef[Str], GrantTokens => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::KMS::Encrypt>
 
@@ -458,7 +458,7 @@ key and a copy of the key encrypted under the customer master key (CMK)
 of your choosing.
 
 
-=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
+=head2 GenerateDataKey(KeyId => Str, [EncryptionContext => HashRef[Str], GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKey>
 
@@ -500,7 +500,7 @@ the key. The encryption context is logged by CloudTrail, and you can
 use this log to help track the use of particular data.
 
 
-=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
+=head2 GenerateDataKeyWithoutPlaintext(KeyId => Str, [EncryptionContext => HashRef[Str], GrantTokens => ArrayRef[Str], KeySpec => Str, NumberOfBytes => Int])
 
 Each argument is described in detail in: L<Paws::KMS::GenerateDataKeyWithoutPlaintext>
 
@@ -599,7 +599,7 @@ Returns: nothing
   Attaches a policy to the specified key.
 
 
-=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>])
+=head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => HashRef[Str], GrantTokens => ArrayRef[Str], SourceEncryptionContext => HashRef[Str]])
 
 Each argument is described in detail in: L<Paws::KMS::ReEncrypt>
 

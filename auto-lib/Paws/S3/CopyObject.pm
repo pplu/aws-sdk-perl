@@ -22,7 +22,7 @@ package Paws::S3::CopyObject;
   has GrantReadACP => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-read-acp' );
   has GrantWriteACP => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-write-acp' );
   has Key => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Key' , required => 1);
-  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata');
+  has Metadata => (is => 'ro', isa => 'HashRef[Str]');
   has MetadataDirective => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-metadata-directive' );
   has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
   has ServerSideEncryption => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption' );
@@ -146,7 +146,7 @@ object.
 
   
 
-=head2 Metadata => L<Paws::S3::Metadata>
+=head2 Metadata => HashRef[Str]
 
   A map of metadata to store with the object in S3.
 

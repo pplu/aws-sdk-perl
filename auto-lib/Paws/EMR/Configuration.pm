@@ -2,7 +2,7 @@ package Paws::EMR::Configuration;
   use Moose;
   has Classification => (is => 'ro', isa => 'Str');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
-  has Properties => (is => 'ro', isa => 'Paws::EMR::StringMap');
+  has Properties => (is => 'ro', isa => 'HashRef[Str]');
 1;
 
 ### main pod documentation begin ###
@@ -56,7 +56,7 @@ EMR Configurations.
   A list of configurations you apply to this configuration object.
 
 
-=head2 Properties => L<Paws::EMR::StringMap>
+=head2 Properties => HashRef[Str]
 
   A set of properties supplied to the Configuration object.
 

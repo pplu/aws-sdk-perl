@@ -1,7 +1,7 @@
 package Paws::StorageGateway::StorageGatewayError;
   use Moose;
   has ErrorCode => (is => 'ro', isa => 'Str', xmlname => 'errorCode', request_name => 'errorCode', traits => ['Unwrapped','NameInRequest']);
-  has ErrorDetails => (is => 'ro', isa => 'Paws::StorageGateway::ErrorDetails', xmlname => 'errorDetails', request_name => 'errorDetails', traits => ['Unwrapped','NameInRequest']);
+  has ErrorDetails => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'errorDetails', request_name => 'errorDetails', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +44,7 @@ more information about the error.
   Additional information about the error.
 
 
-=head2 ErrorDetails => L<Paws::StorageGateway::ErrorDetails>
+=head2 ErrorDetails => HashRef[Str]
 
   Human-readable text that provides detail about the error that occurred.
 

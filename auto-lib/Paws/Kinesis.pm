@@ -123,7 +123,7 @@ time processing of streaming big data.
 
 =head1 METHODS
 
-=head2 AddTagsToStream(StreamName => Str, Tags => L<Paws::Kinesis::TagMap>)
+=head2 AddTagsToStream(StreamName => Str, Tags => HashRef[Str])
 
 Each argument is described in detail in: L<Paws::Kinesis::AddTagsToStream>
 

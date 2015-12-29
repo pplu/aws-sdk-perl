@@ -3,7 +3,7 @@ package Paws::MachineLearning::Predict;
   use Moose;
   has MLModelId => (is => 'ro', isa => 'Str', required => 1);
   has PredictEndpoint => (is => 'ro', isa => 'Str', required => 1);
-  has Record => (is => 'ro', isa => 'Paws::MachineLearning::Record', required => 1);
+  has Record => (is => 'ro', isa => 'HashRef[Str]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -45,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   
 
 
-=head2 B<REQUIRED> Record => L<Paws::MachineLearning::Record>
+=head2 B<REQUIRED> Record => HashRef[Str]
 
   
 

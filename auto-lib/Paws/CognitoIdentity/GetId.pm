@@ -3,7 +3,7 @@ package Paws::CognitoIdentity::GetId;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
-  has Logins => (is => 'ro', isa => 'Paws::CognitoIdentity::LoginsMap');
+  has Logins => (is => 'ro', isa => 'HashRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -45,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   An identity pool ID in the format REGION:GUID.
 
 
-=head2 Logins => L<Paws::CognitoIdentity::LoginsMap>
+=head2 Logins => HashRef[Str]
 
   A set of optional name-value pairs that map provider names to provider
 tokens.

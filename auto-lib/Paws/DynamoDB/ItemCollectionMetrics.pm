@@ -1,6 +1,6 @@
 package Paws::DynamoDB::ItemCollectionMetrics;
   use Moose;
-  has ItemCollectionKey => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionKeyAttributeMap');
+  has ItemCollectionKey => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]');
   has SizeEstimateRangeGB => (is => 'ro', isa => 'ArrayRef[Num]');
 1;
 
@@ -40,7 +40,7 @@ this information is not returned in the response.
 =head1 ATTRIBUTES
 
 
-=head2 ItemCollectionKey => L<Paws::DynamoDB::ItemCollectionKeyAttributeMap>
+=head2 ItemCollectionKey => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   The hash key value of the item collection. This value is the same as
 the hash key of the item.

@@ -1,8 +1,8 @@
 
 package Paws::ApiGateway::IntegrationResponse;
   use Moose;
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has ResponseTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has ResponseParameters => (is => 'ro', isa => 'HashRef[Str]');
+  has ResponseTemplates => (is => 'ro', isa => 'HashRef[Str]');
   has SelectionPattern => (is => 'ro', isa => 'Str');
   has StatusCode => (is => 'ro', isa => 'Str');
 
@@ -17,7 +17,7 @@ Paws::ApiGateway::IntegrationResponse
 =head1 ATTRIBUTES
 
 
-=head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseParameters => HashRef[Str]
 
   Represents response parameters that can be read from the backend
 response. Response parameters are represented as a key/value map, with
@@ -27,7 +27,7 @@ header from the backend response, or a static value. Static values are
 specified using enclosing single quotes, and backend response headers
 can be read using the pattern C<integration.response.header.{name}>.
 
-=head2 ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseTemplates => HashRef[Str]
 
   Specifies the templates used to transform the integration response
 body. Response templates are represented as a key/value map, with a

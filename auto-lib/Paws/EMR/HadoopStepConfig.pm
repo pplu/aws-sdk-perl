@@ -3,7 +3,7 @@ package Paws::EMR::HadoopStepConfig;
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Jar => (is => 'ro', isa => 'Str');
   has MainClass => (is => 'ro', isa => 'Str');
-  has Properties => (is => 'ro', isa => 'Paws::EMR::StringMap');
+  has Properties => (is => 'ro', isa => 'HashRef[Str]');
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +59,7 @@ specified, the JAR file should specify a main class in its manifest
 file.
 
 
-=head2 Properties => L<Paws::EMR::StringMap>
+=head2 Properties => HashRef[Str]
 
   The list of Java properties that are set when the step runs. You can
 use these properties to pass key value pairs to your main function.

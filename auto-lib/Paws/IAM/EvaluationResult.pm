@@ -2,7 +2,7 @@ package Paws::IAM::EvaluationResult;
   use Moose;
   has EvalActionName => (is => 'ro', isa => 'Str', required => 1);
   has EvalDecision => (is => 'ro', isa => 'Str', required => 1);
-  has EvalDecisionDetails => (is => 'ro', isa => 'Paws::IAM::EvalDecisionDetailsType');
+  has EvalDecisionDetails => (is => 'ro', isa => 'HashRef[Str]');
   has EvalResourceName => (is => 'ro', isa => 'Str');
   has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
   has MissingContextValues => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -54,7 +54,7 @@ This data type is used by the return parameter of C<SimulatePolicy>.
   The result of the simulation.
 
 
-=head2 EvalDecisionDetails => L<Paws::IAM::EvalDecisionDetailsType>
+=head2 EvalDecisionDetails => HashRef[Str]
 
   Additional details about the results of the evaluation decision. When
 there are both IAM policies and resource policies, this parameter

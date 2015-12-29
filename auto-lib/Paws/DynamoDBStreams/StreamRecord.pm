@@ -1,8 +1,8 @@
 package Paws::DynamoDBStreams::StreamRecord;
   use Moose;
-  has Keys => (is => 'ro', isa => 'Paws::DynamoDBStreams::AttributeMap');
-  has NewImage => (is => 'ro', isa => 'Paws::DynamoDBStreams::AttributeMap');
-  has OldImage => (is => 'ro', isa => 'Paws::DynamoDBStreams::AttributeMap');
+  has Keys => (is => 'ro', isa => 'HashRef[Paws::DynamoDBStreams::AttributeValue]');
+  has NewImage => (is => 'ro', isa => 'HashRef[Paws::DynamoDBStreams::AttributeValue]');
+  has OldImage => (is => 'ro', isa => 'HashRef[Paws::DynamoDBStreams::AttributeValue]');
   has SequenceNumber => (is => 'ro', isa => 'Str');
   has SizeBytes => (is => 'ro', isa => 'Int');
   has StreamViewType => (is => 'ro', isa => 'Str');
@@ -42,17 +42,17 @@ item in a DynamoDB table.
 =head1 ATTRIBUTES
 
 
-=head2 Keys => L<Paws::DynamoDBStreams::AttributeMap>
+=head2 Keys => HashRef[L<Paws::DynamoDBStreams::AttributeValue>]
 
   The primary key attribute(s) for the DynamoDB item that was modified.
 
 
-=head2 NewImage => L<Paws::DynamoDBStreams::AttributeMap>
+=head2 NewImage => HashRef[L<Paws::DynamoDBStreams::AttributeValue>]
 
   The item in the DynamoDB table as it appeared after it was modified.
 
 
-=head2 OldImage => L<Paws::DynamoDBStreams::AttributeMap>
+=head2 OldImage => HashRef[L<Paws::DynamoDBStreams::AttributeValue>]
 
   The item in the DynamoDB table as it appeared before it was modified.
 

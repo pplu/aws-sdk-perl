@@ -1,8 +1,8 @@
 package Paws::DynamoDB::ConsumedCapacity;
   use Moose;
   has CapacityUnits => (is => 'ro', isa => 'Num');
-  has GlobalSecondaryIndexes => (is => 'ro', isa => 'Paws::DynamoDB::SecondaryIndexesCapacityMap');
-  has LocalSecondaryIndexes => (is => 'ro', isa => 'Paws::DynamoDB::SecondaryIndexesCapacityMap');
+  has GlobalSecondaryIndexes => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::Capacity]');
+  has LocalSecondaryIndexes => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::Capacity]');
   has Table => (is => 'ro', isa => 'Paws::DynamoDB::Capacity');
   has TableName => (is => 'ro', isa => 'Str');
 1;
@@ -50,13 +50,13 @@ Developer Guide>.
   The total number of capacity units consumed by the operation.
 
 
-=head2 GlobalSecondaryIndexes => L<Paws::DynamoDB::SecondaryIndexesCapacityMap>
+=head2 GlobalSecondaryIndexes => HashRef[L<Paws::DynamoDB::Capacity>]
 
   The amount of throughput consumed on each global index affected by the
 operation.
 
 
-=head2 LocalSecondaryIndexes => L<Paws::DynamoDB::SecondaryIndexesCapacityMap>
+=head2 LocalSecondaryIndexes => HashRef[L<Paws::DynamoDB::Capacity>]
 
   The amount of throughput consumed on each local index affected by the
 operation.

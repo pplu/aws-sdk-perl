@@ -2,10 +2,10 @@
 package Paws::KMS::ReEncrypt;
   use Moose;
   has CiphertextBlob => (is => 'ro', isa => 'Str', required => 1);
-  has DestinationEncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
+  has DestinationEncryptionContext => (is => 'ro', isa => 'HashRef[Str]');
   has DestinationKeyId => (is => 'ro', isa => 'Str', required => 1);
   has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SourceEncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
+  has SourceEncryptionContext => (is => 'ro', isa => 'HashRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   Ciphertext of the data to re-encrypt.
 
 
-=head2 DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>
+=head2 DestinationEncryptionContext => HashRef[Str]
 
   Encryption context to be used when the data is re-encrypted.
 
@@ -78,7 +78,7 @@ For more information, go to Grant Tokens in the I<AWS Key Management
 Service Developer Guide>.
 
 
-=head2 SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>
+=head2 SourceEncryptionContext => HashRef[Str]
 
   Encryption context used to encrypt and decrypt the data specified in
 the C<CiphertextBlob> parameter.

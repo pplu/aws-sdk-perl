@@ -1,13 +1,13 @@
 
 package Paws::DynamoDB::UpdateItem;
   use Moose;
-  has AttributeUpdates => (is => 'ro', isa => 'Paws::DynamoDB::AttributeUpdates');
+  has AttributeUpdates => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValueUpdate]');
   has ConditionalOperator => (is => 'ro', isa => 'Str');
   has ConditionExpression => (is => 'ro', isa => 'Str');
-  has Expected => (is => 'ro', isa => 'Paws::DynamoDB::ExpectedAttributeMap');
-  has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
-  has ExpressionAttributeValues => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeValueMap');
-  has Key => (is => 'ro', isa => 'Paws::DynamoDB::Key', required => 1);
+  has Expected => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::ExpectedAttributeValue]');
+  has ExpressionAttributeNames => (is => 'ro', isa => 'HashRef[Str]');
+  has ExpressionAttributeValues => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]');
+  has Key => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]', required => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
   has ReturnItemCollectionMetrics => (is => 'ro', isa => 'Str');
   has ReturnValues => (is => 'ro', isa => 'Str');
@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributeUpdates => L<Paws::DynamoDB::AttributeUpdates>
+=head2 AttributeUpdates => HashRef[L<Paws::DynamoDB::AttributeValueUpdate>]
 
   This is a legacy parameter, for backward compatibility. New
 applications should use I<UpdateExpression> instead. Do not combine
@@ -242,7 +242,7 @@ I<ConditionExpression> replaces the legacy I<ConditionalOperator> and
 I<Expected> parameters.
 
 
-=head2 Expected => L<Paws::DynamoDB::ExpectedAttributeMap>
+=head2 Expected => HashRef[L<Paws::DynamoDB::ExpectedAttributeValue>]
 
   This is a legacy parameter, for backward compatibility. New
 applications should use I< ConditionExpression > instead. Do not
@@ -516,7 +516,7 @@ I<ValidationException> exception.
 This parameter does not support attributes of type List or Map.
 
 
-=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
+=head2 ExpressionAttributeNames => HashRef[Str]
 
   One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
@@ -583,7 +583,7 @@ For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
+=head2 ExpressionAttributeValues => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   One or more values that can be substituted in an expression.
 
@@ -607,7 +607,7 @@ For more information on expression attribute values, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
+=head2 B<REQUIRED> Key => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   The primary key of the item to be updated. Each element consists of an
 attribute name and a value for that attribute.

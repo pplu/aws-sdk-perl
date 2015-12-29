@@ -2,7 +2,7 @@ package Paws::SQS::SendMessageBatchRequestEntry;
   use Moose;
   has DelaySeconds => (is => 'ro', isa => 'Int');
   has Id => (is => 'ro', isa => 'Str', required => 1);
-  has MessageAttributes => (is => 'ro', isa => 'Paws::SQS::MessageAttributeMap', xmlname => 'MessageAttribute', request_name => 'MessageAttribute', traits => ['Unwrapped','NameInRequest']);
+  has MessageAttributes => (is => 'ro', isa => 'HashRef[Paws::SQS::MessageAttributeValue]', xmlname => 'MessageAttribute', request_name => 'MessageAttribute', traits => ['Unwrapped','NameInRequest']);
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -51,7 +51,7 @@ communicate the result. Note that the C<Id>s of a batch request need to
 be unique within the request.
 
 
-=head2 MessageAttributes => L<Paws::SQS::MessageAttributeMap>
+=head2 MessageAttributes => HashRef[L<Paws::SQS::MessageAttributeValue>]
 
   Each message attribute consists of a Name, Type, and Value. For more
 information, see Message Attribute Items.

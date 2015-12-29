@@ -630,7 +630,7 @@ Returns: nothing
 C<Label> parameter. Only the owner of the queue can remove permissions.
 
 
-=head2 SendMessage(MessageBody => Str, QueueUrl => Str, [DelaySeconds => Int, MessageAttributes => L<Paws::SQS::MessageAttributeMap>])
+=head2 SendMessage(MessageBody => Str, QueueUrl => Str, [DelaySeconds => Int, MessageAttributes => HashRef[L<Paws::SQS::MessageAttributeValue>]])
 
 Each argument is described in detail in: L<Paws::SQS::SendMessage>
 

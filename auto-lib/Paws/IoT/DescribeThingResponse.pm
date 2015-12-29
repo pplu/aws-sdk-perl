@@ -1,7 +1,7 @@
 
 package Paws::IoT::DescribeThingResponse;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes');
+  has Attributes => (is => 'ro', isa => 'HashRef[Str]');
   has DefaultClientId => (is => 'ro', isa => 'Str');
   has ThingName => (is => 'ro', isa => 'Str');
 
@@ -16,7 +16,7 @@ Paws::IoT::DescribeThingResponse
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::IoT::Attributes>
+=head2 Attributes => HashRef[Str]
 
   The attributes which are name/value pairs in JSON format. For example:
 

@@ -1,7 +1,7 @@
 package Paws::DeviceFarm::ScheduleRunTest;
   use Moose;
   has Filter => (is => 'ro', isa => 'Str', xmlname => 'filter', request_name => 'filter', traits => ['Unwrapped','NameInRequest']);
-  has Parameters => (is => 'ro', isa => 'Paws::DeviceFarm::TestParameters', xmlname => 'parameters', request_name => 'parameters', traits => ['Unwrapped','NameInRequest']);
+  has Parameters => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'parameters', request_name => 'parameters', traits => ['Unwrapped','NameInRequest']);
   has TestPackageArn => (is => 'ro', isa => 'Str', xmlname => 'testPackageArn', request_name => 'testPackageArn', traits => ['Unwrapped','NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
@@ -44,7 +44,7 @@ Represents additional test settings.
   The test's filter.
 
 
-=head2 Parameters => L<Paws::DeviceFarm::TestParameters>
+=head2 Parameters => HashRef[Str]
 
   The test's parameters, such as test framework parameters and fixture
 settings.

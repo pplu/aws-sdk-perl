@@ -6,7 +6,7 @@ package Paws::SSM::SendCommand;
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
   has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
+  has Parameters => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]');
   has TimeoutSeconds => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -68,7 +68,7 @@ stored.
 be stored.
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => HashRef[ArrayRef[Str]]
 
   The required and optional parameters specified in the SSM document
 being executed.

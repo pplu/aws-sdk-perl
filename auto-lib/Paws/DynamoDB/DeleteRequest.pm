@@ -1,6 +1,6 @@
 package Paws::DynamoDB::DeleteRequest;
   use Moose;
-  has Key => (is => 'ro', isa => 'Paws::DynamoDB::Key', required => 1);
+  has Key => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ Represents a request to perform a I<DeleteItem> operation on an item.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
+=head2 B<REQUIRED> Key => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   A map of attribute name to attribute values, representing the primary
 key of the item to delete. All of the table's primary key attributes

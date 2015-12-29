@@ -3,7 +3,7 @@ package Paws::CodePipeline::PollForJobs;
   use Moose;
   has ActionTypeId => (is => 'ro', isa => 'Paws::CodePipeline::ActionTypeId', traits => ['NameInRequest'], request_name => 'actionTypeId' , required => 1);
   has MaxBatchSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxBatchSize' );
-  has QueryParam => (is => 'ro', isa => 'Paws::CodePipeline::QueryParamMap', traits => ['NameInRequest'], request_name => 'queryParam' );
+  has QueryParam => (is => 'ro', isa => 'HashRef[Str]', traits => ['NameInRequest'], request_name => 'queryParam' );
 
   use MooseX::ClassAttribute;
 
@@ -45,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The maximum number of jobs to return in a poll for jobs call.
 
 
-=head2 QueryParam => L<Paws::CodePipeline::QueryParamMap>
+=head2 QueryParam => HashRef[Str]
 
   A map of property names and values. For an action type with no
 queryable properties, this value must be null or an empty map. For an

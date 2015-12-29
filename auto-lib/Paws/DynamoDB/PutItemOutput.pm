@@ -1,7 +1,7 @@
 
 package Paws::DynamoDB::PutItemOutput;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
+  has Attributes => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]');
   has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
   has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetrics');
 
@@ -15,7 +15,7 @@ Paws::DynamoDB::PutItemOutput
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::DynamoDB::AttributeMap>
+=head2 Attributes => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   The attribute values as they appeared before the I<PutItem> operation,
 but only if I<ReturnValues> is specified as C<ALL_OLD> in the request.

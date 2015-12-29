@@ -4,8 +4,8 @@ package Paws::ApiGateway::PutMethod;
   has ApiKeyRequired => (is => 'ro', isa => 'Bool');
   has AuthorizationType => (is => 'ro', isa => 'Str', required => 1);
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
-  has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
+  has RequestModels => (is => 'ro', isa => 'HashRef[Str]');
+  has RequestParameters => (is => 'ro', isa => 'HashRef[Bool]');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
 
@@ -56,14 +56,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   Specifies the put method request's HTTP method type.
 
 
-=head2 RequestModels => L<Paws::ApiGateway::MapOfStringToString>
+=head2 RequestModels => HashRef[Str]
 
   Specifies the Model resources used for the request's content type.
 Request models are represented as a key/value map, with a content type
 as the key and a Model name as the value.
 
 
-=head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
+=head2 RequestParameters => HashRef[Bool]
 
   Represents requests parameters that are sent with the backend request.
 Request parameters are represented as a key/value map, with a

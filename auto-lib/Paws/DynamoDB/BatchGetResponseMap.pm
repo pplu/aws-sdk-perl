@@ -2,7 +2,7 @@ package Paws::DynamoDB::BatchGetResponseMap;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
-  has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::DynamoDB::AttributeMap]]');
+  has Map => (is => 'ro', isa => 'HashRef[ArrayRef[HashRef[Paws::DynamoDB::AttributeValue]]]');
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +37,7 @@ This class has no description
 
 =head1 ATTRIBUTES
 
-=head2 Map => ArrayRef[L<Paws::DynamoDB::AttributeMap>]
+=head2 Map => ArrayRef[L<HashRef[Paws::DynamoDB::AttributeValue]>]
 
 Use the Map method to retrieve a HashRef to the map
 

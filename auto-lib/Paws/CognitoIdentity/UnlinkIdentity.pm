@@ -2,7 +2,7 @@
 package Paws::CognitoIdentity::UnlinkIdentity;
   use Moose;
   has IdentityId => (is => 'ro', isa => 'Str', required => 1);
-  has Logins => (is => 'ro', isa => 'Paws::CognitoIdentity::LoginsMap', required => 1);
+  has Logins => (is => 'ro', isa => 'HashRef[Str]', required => 1);
   has LoginsToRemove => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   use MooseX::ClassAttribute;
@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   A unique identifier in the format REGION:GUID.
 
 
-=head2 B<REQUIRED> Logins => L<Paws::CognitoIdentity::LoginsMap>
+=head2 B<REQUIRED> Logins => HashRef[Str]
 
   A set of optional name-value pairs that map provider names to provider
 tokens.

@@ -2,8 +2,8 @@
 package Paws::DynamoDB::BatchGetItemOutput;
   use Moose;
   has ConsumedCapacity => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ConsumedCapacity]');
-  has Responses => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetResponseMap');
-  has UnprocessedKeys => (is => 'ro', isa => 'Paws::DynamoDB::BatchGetRequestMap');
+  has Responses => (is => 'ro', isa => 'HashRef[ArrayRef[HashRef[Paws::DynamoDB::AttributeValue]]]');
+  has UnprocessedKeys => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::KeysAndAttributes]');
 
 
 ### main pod documentation begin ###
@@ -34,13 +34,13 @@ I<CapacityUnits> - The total number of capacity units consumed.
 =back
 
 
-=head2 Responses => L<Paws::DynamoDB::BatchGetResponseMap>
+=head2 Responses => HashRef[L<ArrayRef[HashRef[Paws::DynamoDB::AttributeValue]]>]
 
   A map of table name to a list of items. Each object in I<Responses>
 consists of a table name, along with a map of attribute data consisting
 of the data type and attribute value.
 
-=head2 UnprocessedKeys => L<Paws::DynamoDB::BatchGetRequestMap>
+=head2 UnprocessedKeys => HashRef[L<Paws::DynamoDB::KeysAndAttributes>]
 
   A map of tables and their respective keys that were not processed with
 the current response. The I<UnprocessedKeys> value is in the same form

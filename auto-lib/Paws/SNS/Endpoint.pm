@@ -1,6 +1,6 @@
 package Paws::SNS::Endpoint;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
+  has Attributes => (is => 'ro', isa => 'HashRef[Str]');
   has EndpointArn => (is => 'ro', isa => 'Str');
 1;
 
@@ -37,7 +37,7 @@ Endpoint for mobile app and device.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::MapStringToString>
+=head2 Attributes => HashRef[Str]
 
   Attributes for endpoint.
 

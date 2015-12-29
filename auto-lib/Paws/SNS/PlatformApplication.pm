@@ -1,6 +1,6 @@
 package Paws::SNS::PlatformApplication;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
+  has Attributes => (is => 'ro', isa => 'HashRef[Str]');
   has PlatformApplicationArn => (is => 'ro', isa => 'Str');
 1;
 
@@ -37,7 +37,7 @@ Platform application object.
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::MapStringToString>
+=head2 Attributes => HashRef[Str]
 
   Attributes for platform application object.
 

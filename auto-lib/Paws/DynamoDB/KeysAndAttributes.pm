@@ -2,8 +2,8 @@ package Paws::DynamoDB::KeysAndAttributes;
   use Moose;
   has AttributesToGet => (is => 'ro', isa => 'ArrayRef[Str]');
   has ConsistentRead => (is => 'ro', isa => 'Bool');
-  has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
-  has Keys => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::Key]', required => 1);
+  has ExpressionAttributeNames => (is => 'ro', isa => 'HashRef[Str]');
+  has Keys => (is => 'ro', isa => 'ArrayRef[HashRef[Paws::DynamoDB::AttributeValue]]', required => 1);
   has ProjectionExpression => (is => 'ro', isa => 'Str');
 1;
 
@@ -61,7 +61,7 @@ consistent read is used; otherwise, an eventually consistent read is
 used.
 
 
-=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
+=head2 ExpressionAttributeNames => HashRef[Str]
 
   One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
@@ -128,7 +128,7 @@ For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 B<REQUIRED> Keys => ArrayRef[L<Paws::DynamoDB::Key>]
+=head2 B<REQUIRED> Keys => ArrayRef[L<HashRef[Paws::DynamoDB::AttributeValue]>]
 
   The primary key attribute values that define the items and the
 attributes associated with the items.

@@ -9,9 +9,9 @@ package Paws::ApiGateway::Stage;
   has DeploymentId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has LastUpdatedDate => (is => 'ro', isa => 'Str');
-  has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings');
+  has MethodSettings => (is => 'ro', isa => 'HashRef[Paws::ApiGateway::MethodSetting]');
   has StageName => (is => 'ro', isa => 'Str');
-  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has Variables => (is => 'ro', isa => 'HashRef[Str]');
 
 1;
 
@@ -57,7 +57,7 @@ Paws::ApiGateway::Stage
   The date and time that information about the stage was last updated, in
 ISO 8601 format.
 
-=head2 MethodSettings => L<Paws::ApiGateway::MapOfMethodSettings>
+=head2 MethodSettings => HashRef[L<Paws::ApiGateway::MethodSetting>]
 
   A map that defines the method settings for a Stage resource. Keys are
 defined as C<{resource_path}/{http_method}> for an individual method
@@ -69,7 +69,7 @@ stage.
   The name of the stage is the first path segment in the Uniform Resource
 Identifier (URI) of a call to Amazon API Gateway.
 
-=head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Variables => HashRef[Str]
 
   A map that defines the stage variables for a Stage resource. Variable
 names can have alphabetic characters, and the values must match

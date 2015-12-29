@@ -5,9 +5,9 @@ package Paws::ApiGateway::Integration;
   has CacheNamespace => (is => 'ro', isa => 'Str');
   has Credentials => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str');
-  has IntegrationResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfIntegrationResponse');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has IntegrationResponses => (is => 'ro', isa => 'HashRef[Paws::ApiGateway::IntegrationResponse]');
+  has RequestParameters => (is => 'ro', isa => 'HashRef[Str]');
+  has RequestTemplates => (is => 'ro', isa => 'HashRef[Str]');
   has Type => (is => 'ro', isa => 'Str');
   has Uri => (is => 'ro', isa => 'Str');
 
@@ -43,11 +43,11 @@ resource-based permissions on supported AWS services, specify null.
 
   Specifies the integration's HTTP method type.
 
-=head2 IntegrationResponses => L<Paws::ApiGateway::MapOfIntegrationResponse>
+=head2 IntegrationResponses => HashRef[L<Paws::ApiGateway::IntegrationResponse>]
 
   Specifies the integration's responses.
 
-=head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 RequestParameters => HashRef[Str]
 
   Represents requests parameters that are sent with the backend request.
 Request parameters are represented as a key/value map, with a
@@ -59,7 +59,7 @@ C<integration.request.{location}.{name}>, where C<location> is either
 querystring, path, or header. C<name> must be a valid, unique parameter
 name.
 
-=head2 RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>
+=head2 RequestTemplates => HashRef[Str]
 
   Specifies the integration's request templates.
 

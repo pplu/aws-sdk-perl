@@ -349,7 +349,7 @@ operation multiple times, if the vault lock is in the C<InProgress>
 state or if there is no policy associated with the vault.
 
 
-=head2 AddTagsToVault(AccountId => Str, VaultName => Str, [Tags => L<Paws::Glacier::TagMap>])
+=head2 AddTagsToVault(AccountId => Str, VaultName => Str, [Tags => HashRef[Str]])
 
 Each argument is described in detail in: L<Paws::Glacier::AddTagsToVault>
 

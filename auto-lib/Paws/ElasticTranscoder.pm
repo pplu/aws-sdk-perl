@@ -201,7 +201,7 @@ a pipeline from starting to process a job while you're getting the job
 identifier, use UpdatePipelineStatus to temporarily pause the pipeline.
 
 
-=head2 CreateJob(Input => L<Paws::ElasticTranscoder::JobInput>, PipelineId => Str, [Output => L<Paws::ElasticTranscoder::CreateJobOutput>, OutputKeyPrefix => Str, Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>], Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>], UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>])
+=head2 CreateJob(Input => L<Paws::ElasticTranscoder::JobInput>, PipelineId => Str, [Output => L<Paws::ElasticTranscoder::CreateJobOutput>, OutputKeyPrefix => Str, Outputs => ArrayRef[L<Paws::ElasticTranscoder::CreateJobOutput>], Playlists => ArrayRef[L<Paws::ElasticTranscoder::CreateJobPlaylist>], UserMetadata => HashRef[Str]])
 
 Each argument is described in detail in: L<Paws::ElasticTranscoder::CreateJob>
 

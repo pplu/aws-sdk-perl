@@ -2,7 +2,7 @@
 package Paws::ES::UpdateElasticsearchDomainConfig;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Str');
-  has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
+  has AdvancedOptions => (is => 'ro', isa => 'HashRef[Str]');
   has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DomainName' , required => 1);
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig');
@@ -45,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   IAM access policy as a JSON-formatted string.
 
 
-=head2 AdvancedOptions => L<Paws::ES::AdvancedOptions>
+=head2 AdvancedOptions => HashRef[Str]
 
   Modifies the advanced option to allow references to indices in an HTTP
 request body. Must be C<false> when configuring access to individual

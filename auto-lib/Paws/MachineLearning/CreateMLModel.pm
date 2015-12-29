@@ -4,7 +4,7 @@ package Paws::MachineLearning::CreateMLModel;
   has MLModelId => (is => 'ro', isa => 'Str', required => 1);
   has MLModelName => (is => 'ro', isa => 'Str');
   has MLModelType => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::MachineLearning::TrainingParameters');
+  has Parameters => (is => 'ro', isa => 'HashRef[Str]');
   has Recipe => (is => 'ro', isa => 'Str');
   has RecipeUri => (is => 'ro', isa => 'Str');
   has TrainingDataSourceId => (is => 'ro', isa => 'Str', required => 1);
@@ -70,7 +70,7 @@ number of values.
 For more information, see the Amazon Machine Learning Developer Guide.
 
 
-=head2 Parameters => L<Paws::MachineLearning::TrainingParameters>
+=head2 Parameters => HashRef[Str]
 
   A list of the training parameters in the C<MLModel>. The list is
 implemented as a map of key/value pairs.

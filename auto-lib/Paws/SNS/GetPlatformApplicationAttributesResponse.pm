@@ -1,7 +1,7 @@
 
 package Paws::SNS::GetPlatformApplicationAttributesResponse;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString');
+  has Attributes => (is => 'ro', isa => 'HashRef[Str]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::SNS::GetPlatformApplicationAttributesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::MapStringToString>
+=head2 Attributes => HashRef[Str]
 
   Attributes include the following:
 

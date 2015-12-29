@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::GetSdk;
   use Moose;
-  has Parameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString', traits => ['ParamInQuery'], query_name => 'parameters' );
+  has Parameters => (is => 'ro', isa => 'HashRef[Str]', traits => ['ParamInQuery'], query_name => 'parameters' );
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
   has SdkType => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'sdkType' , required => 1);
   has StageName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'stageName' , required => 1);
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Parameters => HashRef[Str]
 
   
 

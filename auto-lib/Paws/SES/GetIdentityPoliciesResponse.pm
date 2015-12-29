@@ -1,7 +1,7 @@
 
 package Paws::SES::GetIdentityPoliciesResponse;
   use Moose;
-  has Policies => (is => 'ro', isa => 'Paws::SES::PolicyMap', required => 1);
+  has Policies => (is => 'ro', isa => 'HashRef[Str]', required => 1);
 
 1;
 
@@ -14,7 +14,7 @@ Paws::SES::GetIdentityPoliciesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Policies => L<Paws::SES::PolicyMap>
+=head2 B<REQUIRED> Policies => HashRef[Str]
 
   A map of policy names to policies.
 

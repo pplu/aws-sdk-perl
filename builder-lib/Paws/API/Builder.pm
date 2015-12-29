@@ -637,7 +637,14 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
       # TODO: check
       $type = 'Str';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'map') {
-      $type = $self->namespace_shape($for_shape);
+      my $inner_class = $self->get_caller_class_type($param_props->{ value }->{ shape });
+      my $key = $self->shape($param_props->{ key }->{ shape });
+
+      if (exists $key->{ enum }) {
+        $type = $self->namespace_shape($for_shape);
+      } else {
+        $type = "HashRef[$inner_class]";
+      } 
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'structure') {
       $type = $self->namespace_shape($for_shape);
     }

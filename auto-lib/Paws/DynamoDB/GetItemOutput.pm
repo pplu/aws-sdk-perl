@@ -2,7 +2,7 @@
 package Paws::DynamoDB::GetItemOutput;
   use Moose;
   has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
-  has Item => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
+  has Item => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]');
 
 
 ### main pod documentation begin ###
@@ -18,7 +18,7 @@ Paws::DynamoDB::GetItemOutput
 
   
 
-=head2 Item => L<Paws::DynamoDB::AttributeMap>
+=head2 Item => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   A map of attribute names to I<AttributeValue> objects, as specified by
 I<AttributesToGet>.

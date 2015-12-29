@@ -1,7 +1,7 @@
 
 package Paws::SNS::SetPlatformApplicationAttributes;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::MapStringToString', required => 1);
+  has Attributes => (is => 'ro', isa => 'HashRef[Str]', required => 1);
   has PlatformApplicationArn => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +34,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Attributes => L<Paws::SNS::MapStringToString>
+=head2 B<REQUIRED> Attributes => HashRef[Str]
 
   A map of the platform application attributes. Attributes in this map
 include the following:

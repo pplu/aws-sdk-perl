@@ -1,6 +1,6 @@
 package Paws::CodePipeline::ActionConfiguration;
   use Moose;
-  has Configuration => (is => 'ro', isa => 'Paws::CodePipeline::ActionConfigurationMap', xmlname => 'configuration', request_name => 'configuration', traits => ['Unwrapped','NameInRequest']);
+  has Configuration => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'configuration', request_name => 'configuration', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ Represents information about an action configuration.
 =head1 ATTRIBUTES
 
 
-=head2 Configuration => L<Paws::CodePipeline::ActionConfigurationMap>
+=head2 Configuration => HashRef[Str]
 
   The configuration data for the action.
 

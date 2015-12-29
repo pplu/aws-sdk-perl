@@ -1,7 +1,7 @@
 
 package Paws::SNS::GetTopicAttributesResponse;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::TopicAttributesMap');
+  has Attributes => (is => 'ro', isa => 'HashRef[Str]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::SNS::GetTopicAttributesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::TopicAttributesMap>
+=head2 Attributes => HashRef[Str]
 
   A map of the topic's attributes. Attributes in this map include the
 following:

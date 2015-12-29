@@ -326,7 +326,7 @@ You can use the GetEvaluation operation to check progress of the
 evaluation during the creation operation.
 
 
-=head2 CreateMLModel(MLModelId => Str, MLModelType => Str, TrainingDataSourceId => Str, [MLModelName => Str, Parameters => L<Paws::MachineLearning::TrainingParameters>, Recipe => Str, RecipeUri => Str])
+=head2 CreateMLModel(MLModelId => Str, MLModelType => Str, TrainingDataSourceId => Str, [MLModelName => Str, Parameters => HashRef[Str], Recipe => Str, RecipeUri => Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::CreateMLModel>
 
@@ -526,7 +526,7 @@ information as well as the current status of the C<MLModel>.
 C<GetMLModel> provides results in normal or verbose format.
 
 
-=head2 Predict(MLModelId => Str, PredictEndpoint => Str, Record => L<Paws::MachineLearning::Record>)
+=head2 Predict(MLModelId => Str, PredictEndpoint => Str, Record => HashRef[Str])
 
 Each argument is described in detail in: L<Paws::MachineLearning::Predict>
 

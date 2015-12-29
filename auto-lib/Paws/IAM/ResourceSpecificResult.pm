@@ -1,6 +1,6 @@
 package Paws::IAM::ResourceSpecificResult;
   use Moose;
-  has EvalDecisionDetails => (is => 'ro', isa => 'Paws::IAM::EvalDecisionDetailsType');
+  has EvalDecisionDetails => (is => 'ro', isa => 'HashRef[Str]');
   has EvalResourceDecision => (is => 'ro', isa => 'Str', required => 1);
   has EvalResourceName => (is => 'ro', isa => 'Str', required => 1);
   has MatchedStatements => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Statement]');
@@ -43,7 +43,7 @@ This data type is used by a member of the EvaluationResult data type.
 =head1 ATTRIBUTES
 
 
-=head2 EvalDecisionDetails => L<Paws::IAM::EvalDecisionDetailsType>
+=head2 EvalDecisionDetails => HashRef[Str]
 
   Additional details about the results of the evaluation decision. When
 there are both IAM policies and resource policies, this parameter

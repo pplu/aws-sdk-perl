@@ -3,8 +3,8 @@ package Paws::ApiGateway::PutMethodResponse;
   use Moose;
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
-  has ResponseModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
+  has ResponseModels => (is => 'ro', isa => 'HashRef[Str]');
+  has ResponseParameters => (is => 'ro', isa => 'HashRef[Bool]');
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
   has StatusCode => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'statusCode' , required => 1);
 
@@ -50,14 +50,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The Resource identifier for the Method resource.
 
 
-=head2 ResponseModels => L<Paws::ApiGateway::MapOfStringToString>
+=head2 ResponseModels => HashRef[Str]
 
   Specifies the Model resources used for the response's content type.
 Response models are represented as a key/value map, with a content type
 as the key and a Model name as the value.
 
 
-=head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
+=head2 ResponseParameters => HashRef[Bool]
 
   Represents response parameters that can be sent back to the caller by
 Amazon API Gateway. Response parameters are represented as a key/value

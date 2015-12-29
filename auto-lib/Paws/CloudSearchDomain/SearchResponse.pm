@@ -1,7 +1,7 @@
 
 package Paws::CloudSearchDomain::SearchResponse;
   use Moose;
-  has Facets => (is => 'ro', isa => 'Paws::CloudSearchDomain::Facets');
+  has Facets => (is => 'ro', isa => 'HashRef[Paws::CloudSearchDomain::BucketInfo]');
   has Hits => (is => 'ro', isa => 'Paws::CloudSearchDomain::Hits');
   has Status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SearchStatus');
 
@@ -16,7 +16,7 @@ Paws::CloudSearchDomain::SearchResponse
 =head1 ATTRIBUTES
 
 
-=head2 Facets => L<Paws::CloudSearchDomain::Facets>
+=head2 Facets => HashRef[L<Paws::CloudSearchDomain::BucketInfo>]
 
   The requested facet information.
 

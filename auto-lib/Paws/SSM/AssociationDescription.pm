@@ -3,7 +3,7 @@ package Paws::SSM::AssociationDescription;
   has Date => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
+  has Parameters => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]');
   has Status => (is => 'ro', isa => 'Paws::SSM::AssociationStatus');
 1;
 
@@ -55,7 +55,7 @@ Describes the parameters for a document.
   The name of the SSM document.
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => HashRef[ArrayRef[Str]]
 
   A description of the parameters for a document.
 

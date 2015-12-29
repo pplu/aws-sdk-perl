@@ -3,10 +3,10 @@ package Paws::DynamoDB::PutItem;
   use Moose;
   has ConditionalOperator => (is => 'ro', isa => 'Str');
   has ConditionExpression => (is => 'ro', isa => 'Str');
-  has Expected => (is => 'ro', isa => 'Paws::DynamoDB::ExpectedAttributeMap');
-  has ExpressionAttributeNames => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeNameMap');
-  has ExpressionAttributeValues => (is => 'ro', isa => 'Paws::DynamoDB::ExpressionAttributeValueMap');
-  has Item => (is => 'ro', isa => 'Paws::DynamoDB::PutItemInputAttributeMap', required => 1);
+  has Expected => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::ExpectedAttributeValue]');
+  has ExpressionAttributeNames => (is => 'ro', isa => 'HashRef[Str]');
+  has ExpressionAttributeValues => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]');
+  has Item => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]', required => 1);
   has ReturnConsumedCapacity => (is => 'ro', isa => 'Str');
   has ReturnItemCollectionMetrics => (is => 'ro', isa => 'Str');
   has ReturnValues => (is => 'ro', isa => 'Str');
@@ -106,7 +106,7 @@ I<ConditionExpression> replaces the legacy I<ConditionalOperator> and
 I<Expected> parameters.
 
 
-=head2 Expected => L<Paws::DynamoDB::ExpectedAttributeMap>
+=head2 Expected => HashRef[L<Paws::DynamoDB::ExpectedAttributeValue>]
 
   This is a legacy parameter, for backward compatibility. New
 applications should use I<ConditionExpression> instead. Do not combine
@@ -379,7 +379,7 @@ both sets of parameters at once, DynamoDB will return a
 I<ValidationException> exception.
 
 
-=head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
+=head2 ExpressionAttributeNames => HashRef[Str]
 
   One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
@@ -446,7 +446,7 @@ For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
+=head2 ExpressionAttributeValues => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   One or more values that can be substituted in an expression.
 
@@ -470,7 +470,7 @@ For more information on expression attribute values, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 B<REQUIRED> Item => L<Paws::DynamoDB::PutItemInputAttributeMap>
+=head2 B<REQUIRED> Item => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   A map of attribute name/value pairs, one for each attribute. Only the
 primary key attributes are required; you can optionally provide other

@@ -516,7 +516,7 @@ Returns: a L<Paws::ApiGateway::BasePathMapping> instance
   Creates a new BasePathMapping resource.
 
 
-=head2 CreateDeployment(RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, StageDescription => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
+=head2 CreateDeployment(RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, StageDescription => Str, Variables => HashRef[Str]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateDeployment>
 
@@ -562,7 +562,7 @@ Returns: a L<Paws::ApiGateway::RestApi> instance
   Creates a new RestApi resource.
 
 
-=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, Variables => L<Paws::ApiGateway::MapOfStringToString>])
+=head2 CreateStage(DeploymentId => Str, RestApiId => Str, StageName => Str, [CacheClusterEnabled => Bool, CacheClusterSize => Str, Description => Str, Variables => HashRef[Str]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateStage>
 
@@ -907,7 +907,7 @@ Returns: a L<Paws::ApiGateway::RestApis> instance
   Lists the RestApis resources for your collection.
 
 
-=head2 GetSdk(RestApiId => Str, SdkType => Str, StageName => Str, [Parameters => L<Paws::ApiGateway::MapOfStringToString>])
+=head2 GetSdk(RestApiId => Str, SdkType => Str, StageName => Str, [Parameters => HashRef[Str]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::GetSdk>
 
@@ -934,7 +934,7 @@ Returns: a L<Paws::ApiGateway::Stages> instance
   Gets information about one or more Stage resources.
 
 
-=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str], CacheNamespace => Str, Credentials => Str, IntegrationHttpMethod => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, Uri => Str])
+=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str], CacheNamespace => Str, Credentials => Str, IntegrationHttpMethod => Str, RequestParameters => HashRef[Str], RequestTemplates => HashRef[Str], Uri => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutIntegration>
 
@@ -943,7 +943,7 @@ Returns: a L<Paws::ApiGateway::Integration> instance
   Represents a put integration.
 
 
-=head2 PutIntegrationResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str, [ResponseParameters => L<Paws::ApiGateway::MapOfStringToString>, ResponseTemplates => L<Paws::ApiGateway::MapOfStringToString>, SelectionPattern => Str])
+=head2 PutIntegrationResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str, [ResponseParameters => HashRef[Str], ResponseTemplates => HashRef[Str], SelectionPattern => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutIntegrationResponse>
 
@@ -952,7 +952,7 @@ Returns: a L<Paws::ApiGateway::IntegrationResponse> instance
   Represents a put integration.
 
 
-=head2 PutMethod(AuthorizationType => Str, HttpMethod => Str, ResourceId => Str, RestApiId => Str, [ApiKeyRequired => Bool, RequestModels => L<Paws::ApiGateway::MapOfStringToString>, RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>])
+=head2 PutMethod(AuthorizationType => Str, HttpMethod => Str, ResourceId => Str, RestApiId => Str, [ApiKeyRequired => Bool, RequestModels => HashRef[Str], RequestParameters => HashRef[Bool]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutMethod>
 
@@ -961,7 +961,7 @@ Returns: a L<Paws::ApiGateway::Method> instance
   Add a method to an existing Resource resource.
 
 
-=head2 PutMethodResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str, [ResponseModels => L<Paws::ApiGateway::MapOfStringToString>, ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>])
+=head2 PutMethodResponse(HttpMethod => Str, ResourceId => Str, RestApiId => Str, StatusCode => Str, [ResponseModels => HashRef[Str], ResponseParameters => HashRef[Bool]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutMethodResponse>
 
@@ -970,7 +970,7 @@ Returns: a L<Paws::ApiGateway::MethodResponse> instance
   Adds a MethodResponse to an existing Method resource.
 
 
-=head2 TestInvokeMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [Body => Str, ClientCertificateId => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
+=head2 TestInvokeMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [Body => Str, ClientCertificateId => Str, Headers => HashRef[Str], PathWithQueryString => Str, StageVariables => HashRef[Str]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::TestInvokeMethod>
 

@@ -2,7 +2,7 @@
 package Paws::SQS::SendMessage;
   use Moose;
   has DelaySeconds => (is => 'ro', isa => 'Int');
-  has MessageAttributes => (is => 'ro', isa => 'Paws::SQS::MessageAttributeMap', traits => ['NameInRequest'], request_name => 'MessageAttribute' );
+  has MessageAttributes => (is => 'ro', isa => 'HashRef[Paws::SQS::MessageAttributeValue]', traits => ['NameInRequest'], request_name => 'MessageAttribute' );
   has MessageBody => (is => 'ro', isa => 'Str', required => 1);
   has QueueUrl => (is => 'ro', isa => 'Str', required => 1);
 
@@ -44,7 +44,7 @@ available for processing after the delay time is finished. If you don't
 specify a value, the default value for the queue applies.
 
 
-=head2 MessageAttributes => L<Paws::SQS::MessageAttributeMap>
+=head2 MessageAttributes => HashRef[L<Paws::SQS::MessageAttributeValue>]
 
   Each message attribute consists of a Name, Type, and Value. For more
 information, see Message Attribute Items.

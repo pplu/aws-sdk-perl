@@ -1,12 +1,12 @@
 package Paws::OpsWorks::WeeklyAutoScalingSchedule;
   use Moose;
-  has Friday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Monday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Saturday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Sunday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Thursday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Tuesday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
-  has Wednesday => (is => 'ro', isa => 'Paws::OpsWorks::DailyAutoScalingSchedule');
+  has Friday => (is => 'ro', isa => 'HashRef[Str]');
+  has Monday => (is => 'ro', isa => 'HashRef[Str]');
+  has Saturday => (is => 'ro', isa => 'HashRef[Str]');
+  has Sunday => (is => 'ro', isa => 'HashRef[Str]');
+  has Thursday => (is => 'ro', isa => 'HashRef[Str]');
+  has Tuesday => (is => 'ro', isa => 'HashRef[Str]');
+  has Wednesday => (is => 'ro', isa => 'HashRef[Str]');
 1;
 
 ### main pod documentation begin ###
@@ -64,37 +64,37 @@ C<{ "12":"on", "13":"on", "14":"on", "15":"on" }>
 =head1 ATTRIBUTES
 
 
-=head2 Friday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Friday => HashRef[Str]
 
   The schedule for Friday.
 
 
-=head2 Monday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Monday => HashRef[Str]
 
   The schedule for Monday.
 
 
-=head2 Saturday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Saturday => HashRef[Str]
 
   The schedule for Saturday.
 
 
-=head2 Sunday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Sunday => HashRef[Str]
 
   The schedule for Sunday.
 
 
-=head2 Thursday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Thursday => HashRef[Str]
 
   The schedule for Thursday.
 
 
-=head2 Tuesday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Tuesday => HashRef[Str]
 
   The schedule for Tuesday.
 
 
-=head2 Wednesday => L<Paws::OpsWorks::DailyAutoScalingSchedule>
+=head2 Wednesday => HashRef[Str]
 
   The schedule for Wednesday.
 

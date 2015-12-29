@@ -321,7 +321,7 @@ This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 
 
-=head2 SetCognitoEvents(Events => L<Paws::CognitoSync::Events>, IdentityPoolId => Str)
+=head2 SetCognitoEvents(Events => HashRef[Str], IdentityPoolId => Str)
 
 Each argument is described in detail in: L<Paws::CognitoSync::SetCognitoEvents>
 

@@ -5,9 +5,9 @@ package Paws::ApiGateway::Method;
   has AuthorizationType => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str');
   has MethodIntegration => (is => 'ro', isa => 'Paws::ApiGateway::Integration');
-  has MethodResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodResponse');
-  has RequestModels => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToBoolean');
+  has MethodResponses => (is => 'ro', isa => 'HashRef[Paws::ApiGateway::MethodResponse]');
+  has RequestModels => (is => 'ro', isa => 'HashRef[Str]');
+  has RequestParameters => (is => 'ro', isa => 'HashRef[Bool]');
 
 1;
 
@@ -36,20 +36,20 @@ Paws::ApiGateway::Method
 
   The method's integration.
 
-=head2 MethodResponses => L<Paws::ApiGateway::MapOfMethodResponse>
+=head2 MethodResponses => HashRef[L<Paws::ApiGateway::MethodResponse>]
 
   Represents available responses that can be sent to the caller. Method
 responses are represented as a key/value map, with an HTTP status code
 as the key and a MethodResponse as the value. The status codes are
 available for the Integration responses to map to.
 
-=head2 RequestModels => L<Paws::ApiGateway::MapOfStringToString>
+=head2 RequestModels => HashRef[Str]
 
   Specifies the Model resources used for the request's content type.
 Request models are represented as a key/value map, with a content type
 as the key and a Model name as the value.
 
-=head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
+=head2 RequestParameters => HashRef[Bool]
 
   Represents request parameters that can be accepted by Amazon API
 Gateway. Request parameters are represented as a key/value map, with a

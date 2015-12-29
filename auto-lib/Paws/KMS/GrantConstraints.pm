@@ -1,7 +1,7 @@
 package Paws::KMS::GrantConstraints;
   use Moose;
-  has EncryptionContextEquals => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
-  has EncryptionContextSubset => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
+  has EncryptionContextEquals => (is => 'ro', isa => 'HashRef[Str]');
+  has EncryptionContextSubset => (is => 'ro', isa => 'HashRef[Str]');
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +43,7 @@ I<AWS Key Management Service Developer Guide>.
 =head1 ATTRIBUTES
 
 
-=head2 EncryptionContextEquals => L<Paws::KMS::EncryptionContextType>
+=head2 EncryptionContextEquals => HashRef[Str]
 
   Contains a list of key-value pairs that must be present in the
 encryption context of a subsequent operation permitted by the grant.
@@ -52,7 +52,7 @@ encryption context that matches this list, the grant allows the
 operation. Otherwise, the operation is not allowed.
 
 
-=head2 EncryptionContextSubset => L<Paws::KMS::EncryptionContextType>
+=head2 EncryptionContextSubset => HashRef[Str]
 
   Contains a list of key-value pairs, a subset of which must be present
 in the encryption context of a subsequent operation permitted by the

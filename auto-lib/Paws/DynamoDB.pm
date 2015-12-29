@@ -279,7 +279,7 @@ Guide>.
 
 =head1 METHODS
 
-=head2 BatchGetItem(RequestItems => L<Paws::DynamoDB::BatchGetRequestMap>, [ReturnConsumedCapacity => Str])
+=head2 BatchGetItem(RequestItems => HashRef[L<Paws::DynamoDB::KeysAndAttributes>], [ReturnConsumedCapacity => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::BatchGetItem>
 
@@ -346,7 +346,7 @@ according to the type of read. For more information, see Capacity Units
 Calculations in the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 BatchWriteItem(RequestItems => L<Paws::DynamoDB::BatchWriteItemRequestMap>, [ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str])
+=head2 BatchWriteItem(RequestItems => HashRef[L<ArrayRef[Paws::DynamoDB::WriteRequest]>], [ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::BatchWriteItem>
 
@@ -473,7 +473,7 @@ C<CREATING> state at any given time.
 You can use the I<DescribeTable> API to check the table status.
 
 
-=head2 DeleteItem(Key => L<Paws::DynamoDB::Key>, TableName => Str, [ConditionalOperator => Str, ConditionExpression => Str, Expected => L<Paws::DynamoDB::ExpectedAttributeMap>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str])
+=head2 DeleteItem(Key => HashRef[L<Paws::DynamoDB::AttributeValue>], TableName => Str, [ConditionalOperator => Str, ConditionExpression => Str, Expected => HashRef[L<Paws::DynamoDB::ExpectedAttributeValue>], ExpressionAttributeNames => HashRef[Str], ExpressionAttributeValues => HashRef[L<Paws::DynamoDB::AttributeValue>], ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::DeleteItem>
 
@@ -541,7 +541,7 @@ metadata for your table might not be available at that moment. Wait for
 a few seconds, and then try the DescribeTable request again.
 
 
-=head2 GetItem(Key => L<Paws::DynamoDB::Key>, TableName => Str, [AttributesToGet => ArrayRef[Str], ConsistentRead => Bool, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ProjectionExpression => Str, ReturnConsumedCapacity => Str])
+=head2 GetItem(Key => HashRef[L<Paws::DynamoDB::AttributeValue>], TableName => Str, [AttributesToGet => ArrayRef[Str], ConsistentRead => Bool, ExpressionAttributeNames => HashRef[Str], ProjectionExpression => Str, ReturnConsumedCapacity => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::GetItem>
 
@@ -569,7 +569,7 @@ endpoint. The output from I<ListTables> is paginated, with each page
 returning a maximum of 100 table names.
 
 
-=head2 PutItem(Item => L<Paws::DynamoDB::PutItemInputAttributeMap>, TableName => Str, [ConditionalOperator => Str, ConditionExpression => Str, Expected => L<Paws::DynamoDB::ExpectedAttributeMap>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str])
+=head2 PutItem(Item => HashRef[L<Paws::DynamoDB::AttributeValue>], TableName => Str, [ConditionalOperator => Str, ConditionExpression => Str, Expected => HashRef[L<Paws::DynamoDB::ExpectedAttributeValue>], ExpressionAttributeNames => HashRef[Str], ExpressionAttributeValues => HashRef[L<Paws::DynamoDB::AttributeValue>], ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::PutItem>
 
@@ -605,7 +605,7 @@ For more information about using this API, see Working with Items in
 the I<Amazon DynamoDB Developer Guide>.
 
 
-=head2 Query(TableName => Str, [AttributesToGet => ArrayRef[Str], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => L<Paws::DynamoDB::KeyConditions>, Limit => Int, ProjectionExpression => Str, QueryFilter => L<Paws::DynamoDB::FilterConditionMap>, ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])
+=head2 Query(TableName => Str, [AttributesToGet => ArrayRef[Str], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => HashRef[L<Paws::DynamoDB::AttributeValue>], ExpressionAttributeNames => HashRef[Str], ExpressionAttributeValues => HashRef[L<Paws::DynamoDB::AttributeValue>], FilterExpression => Str, IndexName => Str, KeyConditionExpression => Str, KeyConditions => HashRef[L<Paws::DynamoDB::Condition>], Limit => Int, ProjectionExpression => Str, QueryFilter => HashRef[L<Paws::DynamoDB::Condition>], ReturnConsumedCapacity => Str, ScanIndexForward => Bool, Select => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::Query>
 
@@ -641,7 +641,7 @@ consistent reads only, so do not specify I<ConsistentRead> when
 querying a global secondary index.
 
 
-=head2 Scan(TableName => Str, [AttributesToGet => ArrayRef[Str], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => L<Paws::DynamoDB::Key>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, FilterExpression => Str, IndexName => Str, Limit => Int, ProjectionExpression => Str, ReturnConsumedCapacity => Str, ScanFilter => L<Paws::DynamoDB::FilterConditionMap>, Segment => Int, Select => Str, TotalSegments => Int])
+=head2 Scan(TableName => Str, [AttributesToGet => ArrayRef[Str], ConditionalOperator => Str, ConsistentRead => Bool, ExclusiveStartKey => HashRef[L<Paws::DynamoDB::AttributeValue>], ExpressionAttributeNames => HashRef[Str], ExpressionAttributeValues => HashRef[L<Paws::DynamoDB::AttributeValue>], FilterExpression => Str, IndexName => Str, Limit => Int, ProjectionExpression => Str, ReturnConsumedCapacity => Str, ScanFilter => HashRef[L<Paws::DynamoDB::Condition>], Segment => Int, Select => Str, TotalSegments => Int])
 
 Each argument is described in detail in: L<Paws::DynamoDB::Scan>
 
@@ -669,7 +669,7 @@ strongly consistent reads instead by setting the I<ConsistentRead>
 parameter to I<true>.
 
 
-=head2 UpdateItem(Key => L<Paws::DynamoDB::Key>, TableName => Str, [AttributeUpdates => L<Paws::DynamoDB::AttributeUpdates>, ConditionalOperator => Str, ConditionExpression => Str, Expected => L<Paws::DynamoDB::ExpectedAttributeMap>, ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>, ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>, ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str, UpdateExpression => Str])
+=head2 UpdateItem(Key => HashRef[L<Paws::DynamoDB::AttributeValue>], TableName => Str, [AttributeUpdates => HashRef[L<Paws::DynamoDB::AttributeValueUpdate>], ConditionalOperator => Str, ConditionExpression => Str, Expected => HashRef[L<Paws::DynamoDB::ExpectedAttributeValue>], ExpressionAttributeNames => HashRef[Str], ExpressionAttributeValues => HashRef[L<Paws::DynamoDB::AttributeValue>], ReturnConsumedCapacity => Str, ReturnItemCollectionMetrics => Str, ReturnValues => Str, UpdateExpression => Str])
 
 Each argument is described in detail in: L<Paws::DynamoDB::UpdateItem>
 

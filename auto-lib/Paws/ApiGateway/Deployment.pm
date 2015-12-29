@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::Deployment;
   use Moose;
-  has ApiSummary => (is => 'ro', isa => 'Paws::ApiGateway::PathToMapOfMethodSnapshot');
+  has ApiSummary => (is => 'ro', isa => 'HashRef[HashRef[Paws::ApiGateway::MethodSnapshot]]');
   has CreatedDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
@@ -17,7 +17,7 @@ Paws::ApiGateway::Deployment
 =head1 ATTRIBUTES
 
 
-=head2 ApiSummary => L<Paws::ApiGateway::PathToMapOfMethodSnapshot>
+=head2 ApiSummary => HashRef[L<HashRef[Paws::ApiGateway::MethodSnapshot]>]
 
   Gets a summary of the RestApi at the date and time that the deployment
 resource was created.

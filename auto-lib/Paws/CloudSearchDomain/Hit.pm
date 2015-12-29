@@ -1,8 +1,8 @@
 package Paws::CloudSearchDomain::Hit;
   use Moose;
-  has Exprs => (is => 'ro', isa => 'Paws::CloudSearchDomain::Exprs', xmlname => 'exprs', request_name => 'exprs', traits => ['Unwrapped','NameInRequest']);
-  has Fields => (is => 'ro', isa => 'Paws::CloudSearchDomain::Fields', xmlname => 'fields', request_name => 'fields', traits => ['Unwrapped','NameInRequest']);
-  has Highlights => (is => 'ro', isa => 'Paws::CloudSearchDomain::Highlights', xmlname => 'highlights', request_name => 'highlights', traits => ['Unwrapped','NameInRequest']);
+  has Exprs => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'exprs', request_name => 'exprs', traits => ['Unwrapped','NameInRequest']);
+  has Fields => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]', xmlname => 'fields', request_name => 'fields', traits => ['Unwrapped','NameInRequest']);
+  has Highlights => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'highlights', request_name => 'highlights', traits => ['Unwrapped','NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -39,18 +39,18 @@ Information about a document that matches the search request.
 =head1 ATTRIBUTES
 
 
-=head2 Exprs => L<Paws::CloudSearchDomain::Exprs>
+=head2 Exprs => HashRef[Str]
 
   The expressions returned from a document that matches the search
 request.
 
 
-=head2 Fields => L<Paws::CloudSearchDomain::Fields>
+=head2 Fields => HashRef[ArrayRef[Str]]
 
   The fields returned from a document that matches the search request.
 
 
-=head2 Highlights => L<Paws::CloudSearchDomain::Highlights>
+=head2 Highlights => HashRef[Str]
 
   The highlights returned from a document that matches the search
 request.

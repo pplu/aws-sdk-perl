@@ -2,7 +2,7 @@
 package Paws::ApiGateway::TestInvokeMethodResponse;
   use Moose;
   has Body => (is => 'ro', isa => 'Str');
-  has Headers => (is => 'ro', isa => 'Paws::ApiGateway::MapOfHeaderValues');
+  has Headers => (is => 'ro', isa => 'HashRef[Str]');
   has Latency => (is => 'ro', isa => 'Int');
   has Log => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Int');
@@ -22,7 +22,7 @@ Paws::ApiGateway::TestInvokeMethodResponse
 
   The body of HTTP response.
 
-=head2 Headers => L<Paws::ApiGateway::MapOfHeaderValues>
+=head2 Headers => HashRef[Str]
 
   The headers of HTTP response.
 

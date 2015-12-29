@@ -1,7 +1,7 @@
 package Paws::ECS::LogConfiguration;
   use Moose;
   has LogDriver => (is => 'ro', isa => 'Str', xmlname => 'logDriver', request_name => 'logDriver', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has Options => (is => 'ro', isa => 'Paws::ECS::LogConfigurationOptionsMap', xmlname => 'options', request_name => 'options', traits => ['Unwrapped','NameInRequest']);
+  has Options => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'options', request_name => 'options', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -47,7 +47,7 @@ instance, log into your container instance and run the following
 command: C<sudo docker version | grep "Server API version">
 
 
-=head2 Options => L<Paws::ECS::LogConfigurationOptionsMap>
+=head2 Options => HashRef[Str]
 
   The configuration options to send to the log driver. This parameter
 requires version 1.19 of the Docker Remote API or greater on your

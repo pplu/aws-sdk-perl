@@ -15,7 +15,7 @@ package Paws::MachineLearning::MLModel;
   has SizeInBytes => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has TrainingDataSourceId => (is => 'ro', isa => 'Str');
-  has TrainingParameters => (is => 'ro', isa => 'Paws::MachineLearning::TrainingParameters');
+  has TrainingParameters => (is => 'ro', isa => 'HashRef[Str]');
 1;
 
 ### main pod documentation begin ###
@@ -180,7 +180,7 @@ usable.
 the C<TrainingDataSourceId>.
 
 
-=head2 TrainingParameters => L<Paws::MachineLearning::TrainingParameters>
+=head2 TrainingParameters => HashRef[Str]
 
   A list of the training parameters in the C<MLModel>. The list is
 implemented as a map of key/value pairs.

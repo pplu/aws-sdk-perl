@@ -2,7 +2,7 @@
 package Paws::Kinesis::AddTagsToStream;
   use Moose;
   has StreamName => (is => 'ro', isa => 'Str', required => 1);
-  has Tags => (is => 'ro', isa => 'Paws::Kinesis::TagMap', required => 1);
+  has Tags => (is => 'ro', isa => 'HashRef[Str]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The name of the stream.
 
 
-=head2 B<REQUIRED> Tags => L<Paws::Kinesis::TagMap>
+=head2 B<REQUIRED> Tags => HashRef[Str]
 
   The set of key-value pairs to use to create the tags.
 

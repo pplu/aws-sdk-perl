@@ -15,7 +15,7 @@ package Paws::Config::ConfigurationItem;
   has ResourceId => (is => 'ro', isa => 'Str', xmlname => 'resourceId', request_name => 'resourceId', traits => ['Unwrapped','NameInRequest']);
   has ResourceName => (is => 'ro', isa => 'Str', xmlname => 'resourceName', request_name => 'resourceName', traits => ['Unwrapped','NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', xmlname => 'resourceType', request_name => 'resourceType', traits => ['Unwrapped','NameInRequest']);
-  has Tags => (is => 'ro', isa => 'Paws::Config::Tags', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest']);
+  has Tags => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -141,7 +141,7 @@ initiated by any event.
   The type of AWS resource.
 
 
-=head2 Tags => L<Paws::Config::Tags>
+=head2 Tags => HashRef[Str]
 
   A mapping of key value tags associated with the resource.
 

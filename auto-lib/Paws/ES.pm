@@ -115,7 +115,7 @@ case-sensitive key value pairs. An Elasticsearch domain may have up to
 information.
 
 
-=head2 CreateElasticsearchDomain(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, SnapshotOptions => L<Paws::ES::SnapshotOptions>])
+=head2 CreateElasticsearchDomain(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => HashRef[Str], EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, SnapshotOptions => L<Paws::ES::SnapshotOptions>])
 
 Each argument is described in detail in: L<Paws::ES::CreateElasticsearchDomain>
 
@@ -198,7 +198,7 @@ Returns: nothing
 domain.
 
 
-=head2 UpdateElasticsearchDomainConfig(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => L<Paws::ES::AdvancedOptions>, EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, SnapshotOptions => L<Paws::ES::SnapshotOptions>])
+=head2 UpdateElasticsearchDomainConfig(DomainName => Str, [AccessPolicies => Str, AdvancedOptions => HashRef[Str], EBSOptions => L<Paws::ES::EBSOptions>, ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>, SnapshotOptions => L<Paws::ES::SnapshotOptions>])
 
 Each argument is described in detail in: L<Paws::ES::UpdateElasticsearchDomainConfig>
 

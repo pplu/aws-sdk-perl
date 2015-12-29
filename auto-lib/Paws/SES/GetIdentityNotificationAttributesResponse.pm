@@ -1,7 +1,7 @@
 
 package Paws::SES::GetIdentityNotificationAttributesResponse;
   use Moose;
-  has NotificationAttributes => (is => 'ro', isa => 'Paws::SES::NotificationAttributes', required => 1);
+  has NotificationAttributes => (is => 'ro', isa => 'HashRef[Paws::SES::IdentityNotificationAttributes]', required => 1);
 
 1;
 
@@ -14,7 +14,7 @@ Paws::SES::GetIdentityNotificationAttributesResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> NotificationAttributes => L<Paws::SES::NotificationAttributes>
+=head2 B<REQUIRED> NotificationAttributes => HashRef[L<Paws::SES::IdentityNotificationAttributes>]
 
   A map of Identity to IdentityNotificationAttributes.
 

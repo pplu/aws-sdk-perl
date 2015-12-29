@@ -2,7 +2,7 @@
 package Paws::SNS::Publish;
   use Moose;
   has Message => (is => 'ro', isa => 'Str', required => 1);
-  has MessageAttributes => (is => 'ro', isa => 'Paws::SNS::MessageAttributeMap');
+  has MessageAttributes => (is => 'ro', isa => 'HashRef[Paws::SNS::MessageAttributeValue]');
   has MessageStructure => (is => 'ro', isa => 'Str');
   has Subject => (is => 'ro', isa => 'Str');
   has TargetArn => (is => 'ro', isa => 'Str');
@@ -87,7 +87,7 @@ delivery).
 
 
 
-=head2 MessageAttributes => L<Paws::SNS::MessageAttributeMap>
+=head2 MessageAttributes => HashRef[L<Paws::SNS::MessageAttributeValue>]
 
   Message attributes for Publish action.
 

@@ -2,7 +2,7 @@
 package Paws::CognitoIdentity::GetOpenIdToken;
   use Moose;
   has IdentityId => (is => 'ro', isa => 'Str', required => 1);
-  has Logins => (is => 'ro', isa => 'Paws::CognitoIdentity::LoginsMap');
+  has Logins => (is => 'ro', isa => 'HashRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   A unique identifier in the format REGION:GUID.
 
 
-=head2 Logins => L<Paws::CognitoIdentity::LoginsMap>
+=head2 Logins => HashRef[Str]
 
   A set of optional name-value pairs that map provider names to provider
 tokens. When using graph.facebook.com and www.amazon.com, supply the

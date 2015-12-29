@@ -7,7 +7,7 @@ package Paws::SSM::Command;
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
   has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
+  has Parameters => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]');
   has RequestedDateTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -86,7 +86,7 @@ command executions should be stored. This was requested when issuing
 the command.
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => HashRef[ArrayRef[Str]]
 
   The parameter values to be inserted in the SSM document when executing
 the command.

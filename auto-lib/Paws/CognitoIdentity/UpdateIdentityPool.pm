@@ -6,7 +6,7 @@ package Paws::CognitoIdentity::UpdateIdentityPool;
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
   has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
   has OpenIdConnectProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SupportedLoginProviders => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityProviders');
+  has SupportedLoginProviders => (is => 'ro', isa => 'HashRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -63,7 +63,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   A list of OpendID Connect provider ARNs.
 
 
-=head2 SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>
+=head2 SupportedLoginProviders => HashRef[Str]
 
   Optional key:value pairs mapping provider names to provider app IDs.
 

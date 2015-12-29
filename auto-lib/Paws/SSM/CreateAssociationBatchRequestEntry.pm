@@ -2,7 +2,7 @@ package Paws::SSM::CreateAssociationBatchRequestEntry;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
+  has Parameters => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]');
 1;
 
 ### main pod documentation begin ###
@@ -48,7 +48,7 @@ Describes the association of an SSM document and an instance.
   The name of the configuration document.
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => HashRef[ArrayRef[Str]]
 
   A description of the parameters for a document.
 

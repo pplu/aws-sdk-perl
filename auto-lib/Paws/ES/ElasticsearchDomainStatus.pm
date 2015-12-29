@@ -1,7 +1,7 @@
 package Paws::ES::ElasticsearchDomainStatus;
   use Moose;
   has AccessPolicies => (is => 'ro', isa => 'Str');
-  has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
+  has AdvancedOptions => (is => 'ro', isa => 'HashRef[Str]');
   has ARN => (is => 'ro', isa => 'Str', required => 1);
   has Created => (is => 'ro', isa => 'Bool');
   has Deleted => (is => 'ro', isa => 'Bool');
@@ -52,7 +52,7 @@ The current status of an Elasticsearch domain.
   IAM access policy as a JSON-formatted string.
 
 
-=head2 AdvancedOptions => L<Paws::ES::AdvancedOptions>
+=head2 AdvancedOptions => HashRef[Str]
 
   Specifies the status of the C<AdvancedOptions>
 

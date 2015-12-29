@@ -4,7 +4,7 @@ package Paws::DynamoDBStreams::AttributeValue;
   has BOOL => (is => 'ro', isa => 'Bool');
   has BS => (is => 'ro', isa => 'ArrayRef[Str]');
   has L => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::AttributeValue]');
-  has M => (is => 'ro', isa => 'Paws::DynamoDBStreams::MapAttributeValue');
+  has M => (is => 'ro', isa => 'HashRef[Paws::DynamoDBStreams::AttributeValue]');
   has N => (is => 'ro', isa => 'Str');
   has NS => (is => 'ro', isa => 'ArrayRef[Str]');
   has NULL => (is => 'ro', isa => 'Bool');
@@ -72,7 +72,7 @@ allowed.
   A List data type.
 
 
-=head2 M => L<Paws::DynamoDBStreams::MapAttributeValue>
+=head2 M => HashRef[L<Paws::DynamoDBStreams::AttributeValue>]
 
   A Map data type.
 

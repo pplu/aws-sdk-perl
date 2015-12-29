@@ -1,7 +1,7 @@
 
 package Paws::DynamoDB::UpdateItemOutput;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::DynamoDB::AttributeMap');
+  has Attributes => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]');
   has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
   has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetrics');
 
@@ -15,7 +15,7 @@ Paws::DynamoDB::UpdateItemOutput
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::DynamoDB::AttributeMap>
+=head2 Attributes => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   A map of attribute values as they appeared before the I<UpdateItem>
 operation. This map only appears if I<ReturnValues> was specified as

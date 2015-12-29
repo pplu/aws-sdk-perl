@@ -3,7 +3,7 @@ package Paws::SSM::CreateAssociation;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
+  has Parameters => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]');
 
   use MooseX::ClassAttribute;
 
@@ -45,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   The name of the SSM document.
 
 
-=head2 Parameters => L<Paws::SSM::Parameters>
+=head2 Parameters => HashRef[ArrayRef[Str]]
 
   The parameters for the documents runtime configuration.
 

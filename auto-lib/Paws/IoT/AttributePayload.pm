@@ -1,6 +1,6 @@
 package Paws::IoT::AttributePayload;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::IoT::Attributes', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
+  has Attributes => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +39,7 @@ For example: {\"attributes\":{\"string1\":\"string2\"}}
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::IoT::Attributes>
+=head2 Attributes => HashRef[Str]
 
   A JSON string containing up to three key-value pair in JSON format.
 

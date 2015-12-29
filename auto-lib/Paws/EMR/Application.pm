@@ -1,6 +1,6 @@
 package Paws::EMR::Application;
   use Moose;
-  has AdditionalInfo => (is => 'ro', isa => 'Paws::EMR::StringMap');
+  has AdditionalInfo => (is => 'ro', isa => 'HashRef[Str]');
   has Args => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str');
@@ -61,7 +61,7 @@ configuration for each application.
 =head1 ATTRIBUTES
 
 
-=head2 AdditionalInfo => L<Paws::EMR::StringMap>
+=head2 AdditionalInfo => HashRef[Str]
 
   This option is for advanced users only. This is meta information about
 third-party applications that third-party vendors use for testing

@@ -4,7 +4,7 @@ package Paws::SQS::Message;
   has Body => (is => 'ro', isa => 'Str');
   has MD5OfBody => (is => 'ro', isa => 'Str');
   has MD5OfMessageAttributes => (is => 'ro', isa => 'Str');
-  has MessageAttributes => (is => 'ro', isa => 'Paws::SQS::MessageAttributeMap', xmlname => 'MessageAttribute', request_name => 'MessageAttribute', traits => ['Unwrapped','NameInRequest']);
+  has MessageAttributes => (is => 'ro', isa => 'HashRef[Paws::SQS::MessageAttributeValue]', xmlname => 'MessageAttribute', request_name => 'MessageAttribute', traits => ['Unwrapped','NameInRequest']);
   has MessageId => (is => 'ro', isa => 'Str');
   has ReceiptHandle => (is => 'ro', isa => 'Str');
 1;
@@ -69,7 +69,7 @@ digest. For information about MD5, go to
 http://www.faqs.org/rfcs/rfc1321.html.
 
 
-=head2 MessageAttributes => L<Paws::SQS::MessageAttributeMap>
+=head2 MessageAttributes => HashRef[L<Paws::SQS::MessageAttributeValue>]
 
   Each message attribute consists of a Name, Type, and Value. For more
 information, see Message Attribute Items.

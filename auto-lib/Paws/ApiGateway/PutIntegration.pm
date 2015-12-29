@@ -6,8 +6,8 @@ package Paws::ApiGateway::PutIntegration;
   has Credentials => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
   has IntegrationHttpMethod => (is => 'ro', isa => 'Str');
-  has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
-  has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has RequestParameters => (is => 'ro', isa => 'HashRef[Str]');
+  has RequestTemplates => (is => 'ro', isa => 'HashRef[Str]');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
@@ -70,7 +70,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   Specifies a put integration HTTP method.
 
 
-=head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToString>
+=head2 RequestParameters => HashRef[Str]
 
   Represents request parameters that are sent with the backend request.
 Request parameters are represented as a key/value map, with a
@@ -83,7 +83,7 @@ querystring, path, or header. C<name> must be a valid, unique parameter
 name.
 
 
-=head2 RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>
+=head2 RequestTemplates => HashRef[Str]
 
   Specifies the templates used to transform the method request body.
 Request templates are represented as a key/value map, with a

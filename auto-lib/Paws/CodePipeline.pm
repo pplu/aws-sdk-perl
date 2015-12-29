@@ -445,7 +445,7 @@ Returns: a L<Paws::CodePipeline::ListPipelinesOutput> instance
   Gets a summary of all of the pipelines associated with your account.
 
 
-=head2 PollForJobs(ActionTypeId => L<Paws::CodePipeline::ActionTypeId>, [MaxBatchSize => Int, QueryParam => L<Paws::CodePipeline::QueryParamMap>])
+=head2 PollForJobs(ActionTypeId => L<Paws::CodePipeline::ActionTypeId>, [MaxBatchSize => Int, QueryParam => HashRef[Str]])
 
 Each argument is described in detail in: L<Paws::CodePipeline::PollForJobs>
 

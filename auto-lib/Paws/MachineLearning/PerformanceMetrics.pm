@@ -1,6 +1,6 @@
 package Paws::MachineLearning::PerformanceMetrics;
   use Moose;
-  has Properties => (is => 'ro', isa => 'Paws::MachineLearning::PerformanceMetricsProperties');
+  has Properties => (is => 'ro', isa => 'HashRef[Str]');
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +61,7 @@ Machine Learning Developer Guide.
 =head1 ATTRIBUTES
 
 
-=head2 Properties => L<Paws::MachineLearning::PerformanceMetricsProperties>
+=head2 Properties => HashRef[Str]
 
   
 

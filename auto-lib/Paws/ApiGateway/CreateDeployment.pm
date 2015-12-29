@@ -7,7 +7,7 @@ package Paws::ApiGateway::CreateDeployment;
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
   has StageDescription => (is => 'ro', isa => 'Str');
   has StageName => (is => 'ro', isa => 'Str', required => 1);
-  has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
+  has Variables => (is => 'ro', isa => 'HashRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -73,7 +73,7 @@ create.
   The name of the Stage resource for the Deployment resource to create.
 
 
-=head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
+=head2 Variables => HashRef[Str]
 
   A map that defines the stage variables for the Stage resource that is
 associated with the new deployment. Variable names can have alphabetic

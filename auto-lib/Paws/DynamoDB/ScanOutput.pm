@@ -3,8 +3,8 @@ package Paws::DynamoDB::ScanOutput;
   use Moose;
   has ConsumedCapacity => (is => 'ro', isa => 'Paws::DynamoDB::ConsumedCapacity');
   has Count => (is => 'ro', isa => 'Int');
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeMap]');
-  has LastEvaluatedKey => (is => 'ro', isa => 'Paws::DynamoDB::Key');
+  has Items => (is => 'ro', isa => 'ArrayRef[HashRef[Paws::DynamoDB::AttributeValue]]');
+  has LastEvaluatedKey => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]');
   has ScannedCount => (is => 'ro', isa => 'Int');
 
 
@@ -32,13 +32,13 @@ number of matching items before the filter was applied.
 If you did not use a filter in the request, then I<Count> is the same
 as I<ScannedCount>.
 
-=head2 Items => ArrayRef[L<Paws::DynamoDB::AttributeMap>]
+=head2 Items => ArrayRef[L<HashRef[Paws::DynamoDB::AttributeValue]>]
 
   An array of item attributes that match the scan criteria. Each element
 in this array consists of an attribute name and the value for that
 attribute.
 
-=head2 LastEvaluatedKey => L<Paws::DynamoDB::Key>
+=head2 LastEvaluatedKey => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   The primary key of the item where the operation stopped, inclusive of
 the previous result set. Use this value to start a new operation,

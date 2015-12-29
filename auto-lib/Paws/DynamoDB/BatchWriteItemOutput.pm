@@ -2,8 +2,8 @@
 package Paws::DynamoDB::BatchWriteItemOutput;
   use Moose;
   has ConsumedCapacity => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::ConsumedCapacity]');
-  has ItemCollectionMetrics => (is => 'ro', isa => 'Paws::DynamoDB::ItemCollectionMetricsPerTable');
-  has UnprocessedItems => (is => 'ro', isa => 'Paws::DynamoDB::BatchWriteItemRequestMap');
+  has ItemCollectionMetrics => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::DynamoDB::ItemCollectionMetrics]]');
+  has UnprocessedItems => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::DynamoDB::WriteRequest]]');
 
 
 ### main pod documentation begin ###
@@ -34,7 +34,7 @@ I<CapacityUnits> - The total number of capacity units consumed.
 =back
 
 
-=head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetricsPerTable>
+=head2 ItemCollectionMetrics => HashRef[L<ArrayRef[Paws::DynamoDB::ItemCollectionMetrics]>]
 
   A list of tables that were processed by I<BatchWriteItem> and, for each
 table, information about any item collections that were affected by
@@ -64,7 +64,7 @@ the precision or accuracy of the estimate.
 =back
 
 
-=head2 UnprocessedItems => L<Paws::DynamoDB::BatchWriteItemRequestMap>
+=head2 UnprocessedItems => HashRef[L<ArrayRef[Paws::DynamoDB::WriteRequest]>]
 
   A map of tables and requests against those tables that were not
 processed. The I<UnprocessedItems> value is in the same form as

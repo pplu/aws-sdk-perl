@@ -2,7 +2,7 @@
 package Paws::OpsWorks::DescribeStackProvisioningParametersResult;
   use Moose;
   has AgentInstallerUrl => (is => 'ro', isa => 'Str');
-  has Parameters => (is => 'ro', isa => 'Paws::OpsWorks::Parameters');
+  has Parameters => (is => 'ro', isa => 'HashRef[Str]');
 
 
 ### main pod documentation begin ###
@@ -18,7 +18,7 @@ Paws::OpsWorks::DescribeStackProvisioningParametersResult
 
   The AWS OpsWorks agent installer's URL.
 
-=head2 Parameters => L<Paws::OpsWorks::Parameters>
+=head2 Parameters => HashRef[Str]
 
   An embedded object that contains the provisioning parameters.
 

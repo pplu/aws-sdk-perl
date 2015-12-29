@@ -15,7 +15,7 @@ package Paws::S3::GetObjectOutput;
   has Expiration => (is => 'ro', isa => 'Str');
   has Expires => (is => 'ro', isa => 'Str');
   has LastModified => (is => 'ro', isa => 'Str');
-  has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata');
+  has Metadata => (is => 'ro', isa => 'HashRef[Str]');
   has MissingMeta => (is => 'ro', isa => 'Int');
   has ReplicationStatus => (is => 'ro', isa => 'Str');
   has RequestCharged => (is => 'ro', isa => 'Str');
@@ -132,7 +132,7 @@ the rule-id is URL encoded.
   Last modified date of the object
 
 
-=head2 Metadata => L<Paws::S3::Metadata>
+=head2 Metadata => HashRef[Str]
 
   A map of metadata to store with the object in S3.
 

@@ -1,6 +1,6 @@
 package Paws::OpsWorks::DeploymentCommand;
   use Moose;
-  has Args => (is => 'ro', isa => 'Paws::OpsWorks::DeploymentCommandArgs');
+  has Args => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -37,7 +37,7 @@ Used to specify a stack or deployment command.
 =head1 ATTRIBUTES
 
 
-=head2 Args => L<Paws::OpsWorks::DeploymentCommandArgs>
+=head2 Args => HashRef[ArrayRef[Str]]
 
   The arguments of those commands that take arguments. It should be set
 to a JSON object with the following format:

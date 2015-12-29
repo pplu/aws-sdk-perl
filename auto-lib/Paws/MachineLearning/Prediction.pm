@@ -2,7 +2,7 @@ package Paws::MachineLearning::Prediction;
   use Moose;
   has Details => (is => 'ro', isa => 'Paws::MachineLearning::DetailsMap', xmlname => 'details', request_name => 'details', traits => ['Unwrapped','NameInRequest']);
   has PredictedLabel => (is => 'ro', isa => 'Str', xmlname => 'predictedLabel', request_name => 'predictedLabel', traits => ['Unwrapped','NameInRequest']);
-  has PredictedScores => (is => 'ro', isa => 'Paws::MachineLearning::ScoreValuePerLabelMap', xmlname => 'predictedScores', request_name => 'predictedScores', traits => ['Unwrapped','NameInRequest']);
+  has PredictedScores => (is => 'ro', isa => 'HashRef[Num]', xmlname => 'predictedScores', request_name => 'predictedScores', traits => ['Unwrapped','NameInRequest']);
   has PredictedValue => (is => 'ro', isa => 'Num', xmlname => 'predictedValue', request_name => 'predictedValue', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -74,7 +74,7 @@ C<PredictedValue> - Present for a REGRESSION C<MLModel> request.
   The prediction label for either a BINARY or MULTICLASS C<MLModel>.
 
 
-=head2 PredictedScores => L<Paws::MachineLearning::ScoreValuePerLabelMap>
+=head2 PredictedScores => HashRef[Num]
 
   
 

@@ -4,7 +4,7 @@ package Paws::DynamoDB::AttributeValue;
   has BOOL => (is => 'ro', isa => 'Bool');
   has BS => (is => 'ro', isa => 'ArrayRef[Str]');
   has L => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeValue]');
-  has M => (is => 'ro', isa => 'Paws::DynamoDB::MapAttributeValue');
+  has M => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]');
   has N => (is => 'ro', isa => 'Str');
   has NS => (is => 'ro', isa => 'ArrayRef[Str]');
   has NULL => (is => 'ro', isa => 'Bool');
@@ -72,7 +72,7 @@ allowed.
   A List of attribute values.
 
 
-=head2 M => L<Paws::DynamoDB::MapAttributeValue>
+=head2 M => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   A Map of attribute values.
 

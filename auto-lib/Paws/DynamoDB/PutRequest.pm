@@ -1,6 +1,6 @@
 package Paws::DynamoDB::PutRequest;
   use Moose;
-  has Item => (is => 'ro', isa => 'Paws::DynamoDB::PutItemInputAttributeMap', required => 1);
+  has Item => (is => 'ro', isa => 'HashRef[Paws::DynamoDB::AttributeValue]', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -36,7 +36,7 @@ Represents a request to perform a I<PutItem> operation on an item.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Item => L<Paws::DynamoDB::PutItemInputAttributeMap>
+=head2 B<REQUIRED> Item => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
   A map of attribute name to attribute values, representing the primary
 key of an item to be processed by I<PutItem>. All of the table's

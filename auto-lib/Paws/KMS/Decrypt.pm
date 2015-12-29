@@ -2,7 +2,7 @@
 package Paws::KMS::Decrypt;
   use Moose;
   has CiphertextBlob => (is => 'ro', isa => 'Str', required => 1);
-  has EncryptionContext => (is => 'ro', isa => 'Paws::KMS::EncryptionContextType');
+  has EncryptionContext => (is => 'ro', isa => 'HashRef[Str]');
   has GrantTokens => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   Ciphertext to be decrypted. The blob includes metadata.
 
 
-=head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
+=head2 EncryptionContext => HashRef[Str]
 
   The encryption context. If this was specified in the Encrypt function,
 it must be specified here or the decryption operation will fail. For

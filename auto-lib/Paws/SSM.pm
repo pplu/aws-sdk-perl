@@ -205,7 +205,7 @@ guarantee that the command will be terminated and the underlying
 process stopped.
 
 
-=head2 CreateAssociation(InstanceId => Str, Name => Str, [Parameters => L<Paws::SSM::Parameters>])
+=head2 CreateAssociation(InstanceId => Str, Name => Str, [Parameters => HashRef[ArrayRef[Str]]])
 
 Each argument is described in detail in: L<Paws::SSM::CreateAssociation>
 
@@ -362,7 +362,7 @@ Returns: a L<Paws::SSM::ListDocumentsResult> instance
   Describes one or more of your SSM documents.
 
 
-=head2 SendCommand(DocumentName => Str, InstanceIds => ArrayRef[Str], [Comment => Str, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, Parameters => L<Paws::SSM::Parameters>, TimeoutSeconds => Int])
+=head2 SendCommand(DocumentName => Str, InstanceIds => ArrayRef[Str], [Comment => Str, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, Parameters => HashRef[ArrayRef[Str]], TimeoutSeconds => Int])
 
 Each argument is described in detail in: L<Paws::SSM::SendCommand>
 

@@ -1,7 +1,7 @@
 package Paws::DataPipeline::TaskObject;
   use Moose;
   has AttemptId => (is => 'ro', isa => 'Str', xmlname => 'attemptId', request_name => 'attemptId', traits => ['Unwrapped','NameInRequest']);
-  has Objects => (is => 'ro', isa => 'Paws::DataPipeline::PipelineObjectMap', xmlname => 'objects', request_name => 'objects', traits => ['Unwrapped','NameInRequest']);
+  has Objects => (is => 'ro', isa => 'HashRef[Paws::DataPipeline::PipelineObject]', xmlname => 'objects', request_name => 'objects', traits => ['Unwrapped','NameInRequest']);
   has PipelineId => (is => 'ro', isa => 'Str', xmlname => 'pipelineId', request_name => 'pipelineId', traits => ['Unwrapped','NameInRequest']);
   has TaskId => (is => 'ro', isa => 'Str', xmlname => 'taskId', request_name => 'taskId', traits => ['Unwrapped','NameInRequest']);
 1;
@@ -46,7 +46,7 @@ runner.
 value to track how many times a task is attempted.
 
 
-=head2 Objects => L<Paws::DataPipeline::PipelineObjectMap>
+=head2 Objects => HashRef[L<Paws::DataPipeline::PipelineObject>]
 
   Connection information for the location where the task runner will
 publish the output of the task.

@@ -5,7 +5,7 @@ package Paws::ECS::ContainerDefinition;
   has DisableNetworking => (is => 'ro', isa => 'Bool', xmlname => 'disableNetworking', request_name => 'disableNetworking', traits => ['Unwrapped','NameInRequest']);
   has DnsSearchDomains => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'dnsSearchDomains', request_name => 'dnsSearchDomains', traits => ['Unwrapped','NameInRequest']);
   has DnsServers => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'dnsServers', request_name => 'dnsServers', traits => ['Unwrapped','NameInRequest']);
-  has DockerLabels => (is => 'ro', isa => 'Paws::ECS::DockerLabelsMap', xmlname => 'dockerLabels', request_name => 'dockerLabels', traits => ['Unwrapped','NameInRequest']);
+  has DockerLabels => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'dockerLabels', request_name => 'dockerLabels', traits => ['Unwrapped','NameInRequest']);
   has DockerSecurityOptions => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'dockerSecurityOptions', request_name => 'dockerSecurityOptions', traits => ['Unwrapped','NameInRequest']);
   has EntryPoint => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'entryPoint', request_name => 'entryPoint', traits => ['Unwrapped','NameInRequest']);
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::ECS::KeyValuePair]', xmlname => 'environment', request_name => 'environment', traits => ['Unwrapped','NameInRequest']);
@@ -137,7 +137,7 @@ parameter maps to C<Dns> in the Create a container section of the
 Docker Remote API and the C<--dns> option to docker run.
 
 
-=head2 DockerLabels => L<Paws::ECS::DockerLabelsMap>
+=head2 DockerLabels => HashRef[Str]
 
   A key/value map of labels to add to the container. This parameter maps
 to C<Labels> in the Create a container section of the Docker Remote API

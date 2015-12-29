@@ -1,7 +1,7 @@
 
 package Paws::SNS::GetSubscriptionAttributesResponse;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'Paws::SNS::SubscriptionAttributesMap');
+  has Attributes => (is => 'ro', isa => 'HashRef[Str]');
 
 1;
 
@@ -14,7 +14,7 @@ Paws::SNS::GetSubscriptionAttributesResponse
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => L<Paws::SNS::SubscriptionAttributesMap>
+=head2 Attributes => HashRef[Str]
 
   A map of the subscription's attributes. Attributes in this map include
 the following:

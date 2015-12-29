@@ -10,7 +10,7 @@ package Paws::ElasticTranscoder::Job;
   has Playlists => (is => 'ro', isa => 'ArrayRef[Paws::ElasticTranscoder::Playlist]');
   has Status => (is => 'ro', isa => 'Str');
   has Timing => (is => 'ro', isa => 'Paws::ElasticTranscoder::Timing');
-  has UserMetadata => (is => 'ro', isa => 'Paws::ElasticTranscoder::UserMetadata');
+  has UserMetadata => (is => 'ro', isa => 'HashRef[Str]');
 1;
 
 ### main pod documentation begin ###
@@ -126,7 +126,7 @@ C<Canceled>, or C<Error>.
   Details about the timing of a job.
 
 
-=head2 UserMetadata => L<Paws::ElasticTranscoder::UserMetadata>
+=head2 UserMetadata => HashRef[Str]
 
   User-defined metadata that you want to associate with an Elastic
 Transcoder job. You specify metadata in C<key/value> pairs, and you can

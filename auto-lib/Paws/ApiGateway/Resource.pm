@@ -5,7 +5,7 @@ package Paws::ApiGateway::Resource;
   has ParentId => (is => 'ro', isa => 'Str');
   has Path => (is => 'ro', isa => 'Str');
   has PathPart => (is => 'ro', isa => 'Str');
-  has ResourceMethods => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethod');
+  has ResourceMethods => (is => 'ro', isa => 'HashRef[Paws::ApiGateway::Method]');
 
 1;
 
@@ -34,7 +34,7 @@ Paws::ApiGateway::Resource
 
   The last path segment for this resource.
 
-=head2 ResourceMethods => L<Paws::ApiGateway::MapOfMethod>
+=head2 ResourceMethods => HashRef[L<Paws::ApiGateway::Method>]
 
   Map of methods for this resource, which is included only if requested
 using the B<embed> option.

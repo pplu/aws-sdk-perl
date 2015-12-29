@@ -1,7 +1,7 @@
 
 package Paws::CognitoSync::SetCognitoEvents;
   use Moose;
-  has Events => (is => 'ro', isa => 'Paws::CognitoSync::Events', required => 1);
+  has Events => (is => 'ro', isa => 'HashRef[Str]', required => 1);
   has IdentityPoolId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'IdentityPoolId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Events => L<Paws::CognitoSync::Events>
+=head2 B<REQUIRED> Events => HashRef[Str]
 
   The events to configure
 
