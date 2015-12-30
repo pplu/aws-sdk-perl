@@ -1,7 +1,7 @@
 package Paws::Net::FurlCaller;
   # This caller uses Furl
   use Moose;
-  with 'Paws::Net::RetryCallerRole';
+  with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
   use Furl;
 
   has debug              => ( is => 'rw', required => 0, default => sub { 0 } );
