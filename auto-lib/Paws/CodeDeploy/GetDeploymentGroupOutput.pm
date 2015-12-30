@@ -15,7 +15,9 @@ Paws::CodeDeploy::GetDeploymentGroupOutput
 
 =head2 DeploymentGroupInfo => L<Paws::CodeDeploy::DeploymentGroupInfo>
 
-  Information about the deployment group.
+Information about the deployment group.
+
+
 
 
 =cut

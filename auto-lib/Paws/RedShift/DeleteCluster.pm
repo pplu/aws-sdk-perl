@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  The identifier of the cluster to be deleted.
+The identifier of the cluster to be deleted.
 
 Constraints:
 
@@ -55,9 +55,10 @@ Constraints:
 
 
 
+
 =head2 FinalClusterSnapshotIdentifier => Str
 
-  The identifier of the final snapshot that is to be created immediately
+The identifier of the final snapshot that is to be created immediately
 before deleting the cluster. If this parameter is provided,
 I<SkipFinalClusterSnapshot> must be C<false>.
 
@@ -75,9 +76,10 @@ Constraints:
 
 
 
+
 =head2 SkipFinalClusterSnapshot => Bool
 
-  Determines whether a final snapshot of the cluster is created before
+Determines whether a final snapshot of the cluster is created before
 Amazon Redshift deletes the cluster. If C<true>, a final cluster
 snapshot is not created. If C<false>, a final cluster snapshot is
 created before the cluster is deleted.
@@ -86,6 +88,7 @@ The I<FinalClusterSnapshotIdentifier> parameter must be specified if
 I<SkipFinalClusterSnapshot> is C<false>.
 
 Default: C<false>
+
 
 
 

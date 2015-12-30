@@ -38,13 +38,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
 
-  A list of operations describing the updates to apply to the specified
+A list of operations describing the updates to apply to the specified
 resource. The patches are applied in the order specified in the list.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The ID of the RestApi you want to update.
+The ID of the RestApi you want to update.
+
 
 
 

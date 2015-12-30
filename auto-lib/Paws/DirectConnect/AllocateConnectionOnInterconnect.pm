@@ -39,34 +39,37 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Bandwidth => Str
 
-  Bandwidth of the connection.
+Bandwidth of the connection.
 
 Example: "I<500Mbps>"
 
 Default: None
 
 
+
 =head2 B<REQUIRED> ConnectionName => Str
 
-  Name of the provisioned connection.
+Name of the provisioned connection.
 
 Example: "I<500M Connection to AWS>"
 
 Default: None
 
 
+
 =head2 B<REQUIRED> InterconnectId => Str
 
-  ID of the interconnect on which the connection will be provisioned.
+ID of the interconnect on which the connection will be provisioned.
 
 Example: dxcon-456abc78
 
 Default: None
 
 
+
 =head2 B<REQUIRED> OwnerAccount => Str
 
-  Numeric account Id of the customer for whom the connection will be
+Numeric account Id of the customer for whom the connection will be
 provisioned.
 
 Example: 123443215678
@@ -74,13 +77,15 @@ Example: 123443215678
 Default: None
 
 
+
 =head2 B<REQUIRED> Vlan => Int
 
-  The dedicated VLAN provisioned to the connection.
+The dedicated VLAN provisioned to the connection.
 
 Example: 101
 
 Default: None
+
 
 
 

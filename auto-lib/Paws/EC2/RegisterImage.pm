@@ -45,63 +45,72 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Architecture => Str
 
-  The architecture of the AMI.
+The architecture of the AMI.
 
 Default: For Amazon EBS-backed AMIs, C<i386>. For instance store-backed
 AMIs, the architecture specified in the manifest file.
 
+Valid values are: C<"i386">, C<"x86_64">
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-  One or more block device mapping entries.
+One or more block device mapping entries.
+
 
 
 =head2 Description => Str
 
-  A description for your AMI.
+A description for your AMI.
+
 
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 ImageLocation => Str
 
-  The full path to your AMI manifest in Amazon S3 storage.
+The full path to your AMI manifest in Amazon S3 storage.
+
 
 
 =head2 KernelId => Str
 
-  The ID of the kernel.
+The ID of the kernel.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  A name for your AMI.
+A name for your AMI.
 
 Constraints: 3-128 alphanumeric characters, parentheses (()), square
 brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single
 quotes ('), at-signs (@), or underscores(_)
 
 
+
 =head2 RamdiskId => Str
 
-  The ID of the RAM disk.
+The ID of the RAM disk.
+
 
 
 =head2 RootDeviceName => Str
 
-  The name of the root device (for example, C</dev/sda1>, or
+The name of the root device (for example, C</dev/sda1>, or
 C</dev/xvda>).
+
 
 
 =head2 SriovNetSupport => Str
 
-  Set to C<simple> to enable enhanced networking for the AMI and any
+Set to C<simple> to enable enhanced networking for the AMI and any
 instances that you launch from the AMI.
 
 There is no way to disable enhanced networking at this time.
@@ -110,11 +119,13 @@ This option is supported only for HVM AMIs. Specifying this option with
 a PV AMI can make instances launched from the AMI unreachable.
 
 
+
 =head2 VirtualizationType => Str
 
-  The type of virtualization.
+The type of virtualization.
 
 Default: C<paravirtual>
+
 
 
 

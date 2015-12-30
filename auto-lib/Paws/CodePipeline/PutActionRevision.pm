@@ -38,24 +38,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ActionName => Str
 
-  The name of the action that will process the revision.
+The name of the action that will process the revision.
+
 
 
 =head2 B<REQUIRED> ActionRevision => L<Paws::CodePipeline::ActionRevision>
 
-  
+
+
 
 
 =head2 B<REQUIRED> PipelineName => Str
 
-  The name of the pipeline that will start processing the revision to the
+The name of the pipeline that will start processing the revision to the
 source.
+
 
 
 =head2 B<REQUIRED> StageName => Str
 
-  The name of the stage that contains the action that will act upon the
+The name of the stage that contains the action that will act upon the
 revision.
+
 
 
 

@@ -25,11 +25,15 @@ Paws::S3::
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
+
+
+
 
 =head2 LifecycleConfiguration => L<Paws::S3::BucketLifecycleConfiguration>
 
-  
+
+
+
 
 
 =cut

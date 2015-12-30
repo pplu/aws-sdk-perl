@@ -37,21 +37,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 GroupId => Str
 
-  The ID of the security group. Required for a nondefault VPC.
+The ID of the security group. Required for a nondefault VPC.
+
 
 
 =head2 GroupName => Str
 
-  [EC2-Classic, default VPC] The name of the security group. You can
+[EC2-Classic, default VPC] The name of the security group. You can
 specify either the security group name or the security group ID.
+
 
 
 

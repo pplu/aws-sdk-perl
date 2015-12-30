@@ -19,23 +19,33 @@ Paws::CloudHSM::DescribeLunaClientResponse
 
 =head2 Certificate => Str
 
-  The certificate installed on the HSMs used by this client.
+The certificate installed on the HSMs used by this client.
+
+
 
 =head2 CertificateFingerprint => Str
 
-  The certificate fingerprint.
+The certificate fingerprint.
+
+
 
 =head2 ClientArn => Str
 
-  The ARN of the client.
+The ARN of the client.
+
+
 
 =head2 Label => Str
 
-  The label of the client.
+The label of the client.
+
+
 
 =head2 LastModifiedTimestamp => Str
 
-  The date and time the client was last modified.
+The date and time the client was last modified.
+
+
 
 
 =cut

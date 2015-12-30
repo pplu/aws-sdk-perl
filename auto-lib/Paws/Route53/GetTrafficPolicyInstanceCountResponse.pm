@@ -30,8 +30,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TrafficPolicyInstanceCount => Int
 
-  The number of traffic policy instances that are associated with the
+The number of traffic policy instances that are associated with the
 current AWS account.
+
 
 
 

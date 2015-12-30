@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Label => Str
 
-  The label of the new high-availability partition group.
+The label of the new high-availability partition group.
+
 
 
 

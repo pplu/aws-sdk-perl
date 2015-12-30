@@ -17,12 +17,16 @@ Paws::CloudFormation::DescribeStacksOutput
 
 =head2 NextToken => Str
 
-  String that identifies the start of the next list of stacks, if there
+String that identifies the start of the next list of stacks, if there
 is one.
+
+
 
 =head2 Stacks => ArrayRef[L<Paws::CloudFormation::Stack>]
 
-  A list of stack structures.
+A list of stack structures.
+
+
 
 
 =cut

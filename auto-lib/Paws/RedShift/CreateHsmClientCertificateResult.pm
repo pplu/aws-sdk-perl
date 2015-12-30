@@ -16,7 +16,9 @@ Paws::RedShift::CreateHsmClientCertificateResult
 
 =head2 HsmClientCertificate => L<Paws::RedShift::HsmClientCertificate>
 
-  
+
+
+
 
 
 =cut

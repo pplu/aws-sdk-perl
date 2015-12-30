@@ -17,11 +17,15 @@ Paws::ApiGateway::Models
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::Model>]
 
-  Gets the current Model resource in the collection.
+Gets the current Model resource in the collection.
+
+
 
 =head2 Position => Str
 
-  
+
+
+
 
 
 =cut

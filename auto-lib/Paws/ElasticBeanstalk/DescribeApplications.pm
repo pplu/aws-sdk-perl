@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplicationNames => ArrayRef[Str]
 
-  If specified, AWS Elastic Beanstalk restricts the returned descriptions
+If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to only include those with the specified names.
+
 
 
 

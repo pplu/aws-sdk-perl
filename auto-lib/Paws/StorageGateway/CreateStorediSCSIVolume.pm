@@ -40,18 +40,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DiskId => Str
 
-  The unique identifier for the gateway local disk that is configured as
+The unique identifier for the gateway local disk that is configured as
 a stored volume. Use ListLocalDisks to list disk IDs for a gateway.
+
 
 
 =head2 B<REQUIRED> GatewayARN => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> NetworkInterfaceId => Str
 
-  The network interface of the gateway on which to expose the iSCSI
+The network interface of the gateway on which to expose the iSCSI
 target. Only IPv4 addresses are accepted. Use
 DescribeGatewayInformation to get a list of the network interfaces
 available on a gateway.
@@ -59,31 +61,35 @@ available on a gateway.
 I<Valid Values>: A valid IP address.
 
 
+
 =head2 B<REQUIRED> PreserveExistingData => Bool
 
-  Specify this field as true if you want to preserve the data on the
+Specify this field as true if you want to preserve the data on the
 local disk. Otherwise, specifying this field as false creates an empty
 volume.
 
 I<Valid Values>: true, false
 
 
+
 =head2 SnapshotId => Str
 
-  The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as
+The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as
 the new stored volume. Specify this field if you want to create the
 iSCSI storage volume from a snapshot otherwise do not include this
 field. To list snapshots for your account use DescribeSnapshots in the
 I<Amazon Elastic Compute Cloud API Reference>.
 
 
+
 =head2 B<REQUIRED> TargetName => Str
 
-  The name of the iSCSI target used by initiators to connect to the
+The name of the iSCSI target used by initiators to connect to the
 target and as a suffix for the target ARN. For example, specifying
 C<TargetName> as I<myvolume> results in the target ARN of
 arn:aws:storagegateway:us-east-1:111122223333:gateway/mygateway/target/iqn.1997-05.com.amazon:myvolume.
 The target name must be unique across all volumes of a gateway.
+
 
 
 

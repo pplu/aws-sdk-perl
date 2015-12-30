@@ -17,12 +17,16 @@ Paws::EC2::DescribeInstancesResult
 
 =head2 NextToken => Str
 
-  The token to use to retrieve the next page of results. This value is
+The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
+
+
 
 =head2 Reservations => ArrayRef[L<Paws::EC2::Reservation>]
 
-  Zero or more reservations.
+Zero or more reservations.
+
+
 
 
 =cut

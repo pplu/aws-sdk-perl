@@ -21,27 +21,39 @@ Paws::EC2::VolumeAttachment
 
 =head2 AttachTime => Str
 
-  The time stamp when the attachment initiated.
+The time stamp when the attachment initiated.
+
+
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether the EBS volume is deleted on instance termination.
+Indicates whether the EBS volume is deleted on instance termination.
+
+
 
 =head2 Device => Str
 
-  The device name.
+The device name.
+
+
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
+
+
 
 =head2 State => Str
 
-  The attachment state of the volume.
+The attachment state of the volume.
+
+Valid values are: C<"attaching">, C<"attached">, C<"detaching">, C<"detached">
 
 =head2 VolumeId => Str
 
-  The ID of the volume.
+The ID of the volume.
+
+
 
 
 =cut

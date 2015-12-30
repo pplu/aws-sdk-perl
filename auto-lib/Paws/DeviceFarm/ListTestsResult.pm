@@ -16,14 +16,18 @@ Paws::DeviceFarm::ListTestsResult
 
 =head2 NextToken => Str
 
-  If the number of items that are returned is significantly large, this
+If the number of items that are returned is significantly large, this
 is an identifier that is also returned, which can be used in a
 subsequent call to this operation to return the next set of items in
 the list.
 
+
+
 =head2 Tests => ArrayRef[L<Paws::DeviceFarm::Test>]
 
-  Information about the tests.
+Information about the tests.
+
+
 
 
 =cut

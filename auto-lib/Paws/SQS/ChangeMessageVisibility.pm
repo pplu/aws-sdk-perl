@@ -37,20 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> QueueUrl => Str
 
-  The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue to take action on.
+
 
 
 =head2 B<REQUIRED> ReceiptHandle => Str
 
-  The receipt handle associated with the message whose visibility timeout
+The receipt handle associated with the message whose visibility timeout
 should be changed. This parameter is returned by the ReceiveMessage
 action.
 
 
+
 =head2 B<REQUIRED> VisibilityTimeout => Int
 
-  The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the
+The new value (in seconds - from 0 to 43200 - maximum 12 hours) for the
 message's visibility timeout.
+
 
 
 

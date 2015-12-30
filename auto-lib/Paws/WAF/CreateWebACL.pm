@@ -38,28 +38,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  The value returned by the most recent call to GetChangeToken.
+The value returned by the most recent call to GetChangeToken.
+
 
 
 =head2 B<REQUIRED> DefaultAction => L<Paws::WAF::WafAction>
 
-  The action that you want AWS WAF to take when a request doesn't match
+The action that you want AWS WAF to take when a request doesn't match
 the criteria specified in any of the C<Rule> objects that are
 associated with the C<WebACL>.
 
 
+
 =head2 B<REQUIRED> MetricName => Str
 
-  A friendly name or description for the metrics for this C<WebACL>. The
+A friendly name or description for the metrics for this C<WebACL>. The
 name can contain only alphanumeric characters (A-Z, a-z, 0-9); the name
 can't contain whitespace. You can't change C<MetricName> after you
 create the C<WebACL>.
 
 
+
 =head2 B<REQUIRED> Name => Str
 
-  A friendly name or description of the WebACL. You can't change C<Name>
+A friendly name or description of the WebACL. You can't change C<Name>
 after you create the C<WebACL>.
+
 
 
 

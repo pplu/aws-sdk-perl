@@ -38,25 +38,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::SDB::ReplaceableAttribute>]
 
-  The list of attributes.
+The list of attributes.
+
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The name of the domain in which to perform the operation.
+The name of the domain in which to perform the operation.
+
 
 
 =head2 Expected => L<Paws::SDB::UpdateCondition>
 
-  The update condition which, if specified, determines whether the
+The update condition which, if specified, determines whether the
 specified attributes will be updated or not. The update condition must
 be satisfied in order for this request to be processed and the
 attributes to be updated.
 
 
+
 =head2 B<REQUIRED> ItemName => Str
 
-  The name of the item.
+The name of the item.
+
 
 
 

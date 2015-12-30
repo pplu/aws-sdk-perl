@@ -36,13 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  The value returned by the most recent call to GetChangeToken.
+The value returned by the most recent call to GetChangeToken.
+
 
 
 =head2 B<REQUIRED> RuleId => Str
 
-  The C<RuleId> of the Rule that you want to delete. C<RuleId> is
+The C<RuleId> of the Rule that you want to delete. C<RuleId> is
 returned by CreateRule and by ListRules.
+
 
 
 

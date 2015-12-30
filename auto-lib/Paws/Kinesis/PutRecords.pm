@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Records => ArrayRef[L<Paws::Kinesis::PutRecordsRequestEntry>]
 
-  The records associated with the request.
+The records associated with the request.
+
 
 
 =head2 B<REQUIRED> StreamName => Str
 
-  The stream name associated with the request.
+The stream name associated with the request.
+
 
 
 

@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  The name of the group.
+The name of the group.
+
 
 
 =head2 LifecycleHookNames => ArrayRef[Str]
 
-  The names of one or more lifecycle hooks.
+The names of one or more lifecycle hooks.
+
 
 
 

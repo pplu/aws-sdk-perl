@@ -16,13 +16,17 @@ Paws::ECR::InitiateLayerUploadResponse
 
 =head2 PartSize => Int
 
-  The size, in bytes, that Amazon ECR expects future layer part uploads
+The size, in bytes, that Amazon ECR expects future layer part uploads
 to be.
+
+
 
 =head2 UploadId => Str
 
-  The upload ID for the layer upload. This parameter is passed to further
+The upload ID for the layer upload. This parameter is passed to further
 UploadLayerPart and CompleteLayerUpload operations.
+
+
 
 
 =cut

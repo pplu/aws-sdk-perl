@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SubscriptionArn => Str
 
-  The ARN of the subscription whose properties you want to get.
+The ARN of the subscription whose properties you want to get.
+
 
 
 

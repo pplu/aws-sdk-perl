@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CurrentDeliveryStreamVersionId => Str
 
-  Obtain this value from the C<VersionId> result of the
+Obtain this value from the C<VersionId> result of the
 DeliveryStreamDescription operation. This value is required, and helps
 the service to perform conditional operations. For example, if there is
 a interleaving update and this value is null, then the update
@@ -48,24 +48,29 @@ value is updated. The service then performs a merge of the old
 configuration with the new configuration.
 
 
+
 =head2 B<REQUIRED> DeliveryStreamName => Str
 
-  The name of the delivery stream.
+The name of the delivery stream.
+
 
 
 =head2 B<REQUIRED> DestinationId => Str
 
-  The ID of the destination.
+The ID of the destination.
+
 
 
 =head2 RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>
 
-  
+
+
 
 
 =head2 S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>
 
-  
+
+
 
 
 

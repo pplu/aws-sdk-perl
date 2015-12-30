@@ -36,13 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The name of the application that corresponds to the revision.
+The name of the application that corresponds to the revision.
+
 
 
 =head2 B<REQUIRED> Revision => L<Paws::CodeDeploy::RevisionLocation>
 
-  Information about the application revision to get, including the
+Information about the application revision to get, including the
 revision's type and its location.
+
 
 
 

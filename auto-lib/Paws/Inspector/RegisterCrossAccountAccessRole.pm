@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  The ARN of the IAM role that Inspector uses to list your EC2 instances
+The ARN of the IAM role that Inspector uses to list your EC2 instances
 during the assessment.
+
 
 
 

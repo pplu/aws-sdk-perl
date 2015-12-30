@@ -15,7 +15,9 @@ Paws::ECS::SubmitTaskStateChangeResponse
 
 =head2 Acknowledgment => Str
 
-  Acknowledgement of the state change.
+Acknowledgement of the state change.
+
+
 
 
 =cut

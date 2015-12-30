@@ -20,23 +20,33 @@ Paws::EC2::DescribeNetworkInterfaceAttributeResult
 
 =head2 Attachment => L<Paws::EC2::NetworkInterfaceAttachment>
 
-  The attachment (if any) of the network interface.
+The attachment (if any) of the network interface.
+
+
 
 =head2 Description => L<Paws::EC2::AttributeValue>
 
-  The description of the network interface.
+The description of the network interface.
+
+
 
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
-  The security groups associated with the network interface.
+The security groups associated with the network interface.
+
+
 
 =head2 NetworkInterfaceId => Str
 
-  The ID of the network interface.
+The ID of the network interface.
+
+
 
 =head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
 
-  Indicates whether source/destination checking is enabled.
+Indicates whether source/destination checking is enabled.
+
+
 
 
 =cut

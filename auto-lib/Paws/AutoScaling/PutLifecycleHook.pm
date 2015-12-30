@@ -42,50 +42,56 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  The name of the Auto Scaling group to which you want to assign the
+The name of the Auto Scaling group to which you want to assign the
 lifecycle hook.
+
 
 
 =head2 DefaultResult => Str
 
-  Defines the action the Auto Scaling group should take when the
+Defines the action the Auto Scaling group should take when the
 lifecycle hook timeout elapses or if an unexpected failure occurs. The
 value for this parameter can be either C<CONTINUE> or C<ABANDON>. The
 default value for this parameter is C<ABANDON>.
 
 
+
 =head2 HeartbeatTimeout => Int
 
-  The amount of time, in seconds, that can elapse before the lifecycle
+The amount of time, in seconds, that can elapse before the lifecycle
 hook times out. When the lifecycle hook times out, Auto Scaling
 performs the action defined in the C<DefaultResult> parameter. You can
 prevent the lifecycle hook from timing out by calling
 RecordLifecycleActionHeartbeat. The default is 3600 seconds (1 hour).
 
 
+
 =head2 B<REQUIRED> LifecycleHookName => Str
 
-  The name of the lifecycle hook.
+The name of the lifecycle hook.
+
 
 
 =head2 LifecycleTransition => Str
 
-  The instance state to which you want to attach the lifecycle hook. For
+The instance state to which you want to attach the lifecycle hook. For
 a list of lifecycle hook types, see DescribeLifecycleHookTypes.
 
 This parameter is required for new lifecycle hooks, but optional when
 updating existing hooks.
 
 
+
 =head2 NotificationMetadata => Str
 
-  Contains additional information that you want to include any time Auto
+Contains additional information that you want to include any time Auto
 Scaling sends a message to the notification target.
+
 
 
 =head2 NotificationTargetARN => Str
 
-  The ARN of the notification target that Auto Scaling will use to notify
+The ARN of the notification target that Auto Scaling will use to notify
 you when an instance is in the transition state for the lifecycle hook.
 This ARN target can be either an SQS queue or an SNS topic.
 
@@ -121,13 +127,15 @@ notification target. This test message contains an additional key/value
 pair: C<Event:autoscaling:TEST_NOTIFICATION>.
 
 
+
 =head2 RoleARN => Str
 
-  The ARN of the IAM role that allows the Auto Scaling group to publish
+The ARN of the IAM role that allows the Auto Scaling group to publish
 to the specified notification target.
 
 This parameter is required for new lifecycle hooks, but optional when
 updating existing hooks.
+
 
 
 

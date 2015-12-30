@@ -16,8 +16,10 @@ Paws::IAM::UploadServerCertificateResponse
 
 =head2 ServerCertificateMetadata => L<Paws::IAM::ServerCertificateMetadata>
 
-  The meta information of the uploaded server certificate without its
+The meta information of the uploaded server certificate without its
 certificate body, certificate chain, and private key.
+
+
 
 
 =cut

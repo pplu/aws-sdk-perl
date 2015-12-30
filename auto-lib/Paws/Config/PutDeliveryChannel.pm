@@ -35,9 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeliveryChannel => L<Paws::Config::DeliveryChannel>
 
-  The configuration delivery channel object that delivers the
+The configuration delivery channel object that delivers the
 configuration information to an Amazon S3 bucket, and to an Amazon SNS
 topic.
+
 
 
 

@@ -16,7 +16,9 @@ Paws::ELB::RemoveAvailabilityZonesOutput
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  The remaining Availability Zones for the load balancer.
+The remaining Availability Zones for the load balancer.
+
+
 
 
 =cut

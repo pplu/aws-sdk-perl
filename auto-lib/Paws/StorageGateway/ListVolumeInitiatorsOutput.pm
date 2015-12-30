@@ -15,8 +15,10 @@ Paws::StorageGateway::ListVolumeInitiatorsOutput
 
 =head2 Initiators => ArrayRef[Str]
 
-  The host names and port numbers of all iSCSI initiators that are
+The host names and port numbers of all iSCSI initiators that are
 connected to the gateway.
+
+
 
 
 =cut

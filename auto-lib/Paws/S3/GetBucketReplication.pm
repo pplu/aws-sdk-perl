@@ -24,7 +24,9 @@ Paws::S3::GetBucketReplicationOutput
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
+
+
+
 
 
 =cut

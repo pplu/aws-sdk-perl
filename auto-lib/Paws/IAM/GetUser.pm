@@ -35,10 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 UserName => Str
 
-  The name of the user to get information about.
+The name of the user to get information about.
 
 This parameter is optional. If it is not included, it defaults to the
 user making the request.
+
 
 
 

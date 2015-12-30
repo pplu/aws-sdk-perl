@@ -37,17 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationArn => Str
 
-  Application ARN that you want to update.
+Application ARN that you want to update.
+
 
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  Application name that you want to update.
+Application name that you want to update.
+
 
 
 =head2 B<REQUIRED> ResourceGroupArn => Str
 
-  The resource group ARN that you want to update.
+The resource group ARN that you want to update.
+
 
 
 

@@ -16,8 +16,10 @@ Paws::IAM::CreateOpenIDConnectProviderResponse
 
 =head2 OpenIDConnectProviderArn => Str
 
-  The Amazon Resource Name (ARN) of the IAM OpenID Connect provider that
+The Amazon Resource Name (ARN) of the IAM OpenID Connect provider that
 was created. For more information, see OpenIDConnectProviderListEntry.
+
+
 
 
 =cut

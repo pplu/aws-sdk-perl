@@ -3,6 +3,7 @@
         travis testing. This should not be thought of as long term commitment to supporting such
         old perl versions, but at least it can be viewed as we'll know exactly when we stop
         supporting them (and that will be announced in the changelog)
+ - Better documentation: show the valid values for an attribute when it's an enum
  - Fix bug where a StrToObj map of complex objects would not instance the object correctly
  - New Service: ECR (EC2 Container Registry)
  - EC2 API update: support for NatGateways

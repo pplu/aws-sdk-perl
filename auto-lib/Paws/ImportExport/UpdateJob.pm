@@ -39,27 +39,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 APIVersion => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> JobId => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> JobType => Str
 
-  
 
+
+Valid values are: C<"Import">, C<"Export">
 
 =head2 B<REQUIRED> Manifest => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> ValidateOnly => Bool
 
-  
+
+
 
 
 

@@ -15,7 +15,9 @@ Paws::DirectConnect::ConfirmPublicVirtualInterfaceResponse
 
 =head2 VirtualInterfaceState => Str
 
-  
+
+
+Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"deleting">, C<"deleted">, C<"rejected">
 
 
 =cut

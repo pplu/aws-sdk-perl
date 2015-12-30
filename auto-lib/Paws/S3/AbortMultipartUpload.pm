@@ -27,19 +27,27 @@ Paws::S3::AbortMultipartUploadOutput
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
+
+
+
 
 =head2 B<REQUIRED> Key => Str
 
-  
+
+
+
 
 =head2 RequestPayer => Str
 
-  
+
+
+Valid values are: C<"requester">
 
 =head2 B<REQUIRED> UploadId => Str
 
-  
+
+
+
 
 
 =cut

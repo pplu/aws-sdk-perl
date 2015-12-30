@@ -39,17 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CloneFrom => Str
 
-  The name of the RestApi that you want to clone from.
+The name of the RestApi that you want to clone from.
+
 
 
 =head2 Description => Str
 
-  The description of the RestApi.
+The description of the RestApi.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the RestApi.
+The name of the RestApi.
+
 
 
 

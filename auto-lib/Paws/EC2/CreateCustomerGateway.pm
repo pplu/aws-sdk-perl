@@ -38,30 +38,34 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BgpAsn => Int
 
-  For devices that support BGP, the customer gateway's BGP ASN.
+For devices that support BGP, the customer gateway's BGP ASN.
 
 Default: 65000
 
 
+
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 B<REQUIRED> PublicIp => Str
 
-  The Internet-routable IP address for the customer gateway's outside
+The Internet-routable IP address for the customer gateway's outside
 interface. The address must be static.
+
 
 
 =head2 B<REQUIRED> Type => Str
 
-  The type of VPN connection that this customer gateway supports
+The type of VPN connection that this customer gateway supports
 (C<ipsec.1>).
 
+Valid values are: C<"ipsec.1">
 
 
 =head1 SEE ALSO

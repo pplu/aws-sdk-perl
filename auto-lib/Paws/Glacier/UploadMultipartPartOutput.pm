@@ -16,8 +16,10 @@ Paws::Glacier::UploadMultipartPartOutput
 
 =head2 Checksum => Str
 
-  The SHA256 tree hash that Amazon Glacier computed for the uploaded
+The SHA256 tree hash that Amazon Glacier computed for the uploaded
 part.
+
+
 
 
 =cut

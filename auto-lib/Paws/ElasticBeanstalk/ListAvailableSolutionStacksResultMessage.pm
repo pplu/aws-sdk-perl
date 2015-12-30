@@ -17,11 +17,15 @@ Paws::ElasticBeanstalk::ListAvailableSolutionStacksResultMessage
 
 =head2 SolutionStackDetails => ArrayRef[L<Paws::ElasticBeanstalk::SolutionStackDescription>]
 
-  A list of available solution stacks and their SolutionStackDescription.
+A list of available solution stacks and their SolutionStackDescription.
+
+
 
 =head2 SolutionStacks => ArrayRef[Str]
 
-  A list of available solution stacks.
+A list of available solution stacks.
+
+
 
 
 =cut

@@ -17,13 +17,17 @@ Paws::RDS::EventsMessage
 
 =head2 Events => ArrayRef[L<Paws::RDS::Event>]
 
-  A list of Event instances.
+A list of Event instances.
+
+
 
 =head2 Marker => Str
 
-  An optional pagination token provided by a previous Events request. If
+An optional pagination token provided by a previous Events request. If
 this parameter is specified, the response includes only records beyond
 the marker, up to the value specified by C<MaxRecords> .
+
+
 
 
 =cut

@@ -20,37 +20,49 @@ Paws::Route53Domains::GetOperationDetailResponse
 
 =head2 DomainName => Str
 
-  The name of a domain.
+The name of a domain.
 
 Type: String
+
+
 
 =head2 Message => Str
 
-  Detailed information on the status including possible errors.
+Detailed information on the status including possible errors.
 
 Type: String
+
+
 
 =head2 OperationId => Str
 
-  The identifier for the operation.
+The identifier for the operation.
 
 Type: String
+
+
 
 =head2 Status => Str
 
-  The current status of the requested operation in the system.
+The current status of the requested operation in the system.
 
 Type: String
+
+Valid values are: C<"SUBMITTED">, C<"IN_PROGRESS">, C<"ERROR">, C<"SUCCESSFUL">, C<"FAILED">
 
 =head2 SubmittedDate => Str
 
-  The date when the request was submitted.
+The date when the request was submitted.
+
+
 
 =head2 Type => Str
 
-  The type of operation that was requested.
+The type of operation that was requested.
 
 Type: String
+
+Valid values are: C<"REGISTER_DOMAIN">, C<"DELETE_DOMAIN">, C<"TRANSFER_IN_DOMAIN">, C<"UPDATE_DOMAIN_CONTACT">, C<"UPDATE_NAMESERVER">, C<"CHANGE_PRIVACY_PROTECTION">, C<"DOMAIN_LOCK">
 
 
 =cut

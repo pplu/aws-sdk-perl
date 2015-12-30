@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IdentityIdsToDelete => ArrayRef[Str]
 
-  A list of 1-60 identities that you want to delete.
+A list of 1-60 identities that you want to delete.
+
 
 
 

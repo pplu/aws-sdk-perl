@@ -38,15 +38,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-  One or more filters.
+One or more filters.
 
 =over
 
@@ -132,19 +133,22 @@ C<usage-price> - The usage price of the Reserved instance, per hour
 
 
 
+
 =head2 OfferingType => Str
 
-  The Reserved instance offering type. If you are using tools that
+The Reserved instance offering type. If you are using tools that
 predate the 2011-11-01 API version, you only have access to the
 C<Medium Utilization> Reserved instance offering type.
 
+Valid values are: C<"Heavy Utilization">, C<"Medium Utilization">, C<"Light Utilization">, C<"No Upfront">, C<"Partial Upfront">, C<"All Upfront">
 
 =head2 ReservedInstancesIds => ArrayRef[Str]
 
-  One or more Reserved instance IDs.
+One or more Reserved instance IDs.
 
 Default: Describes all your Reserved instances, or only those otherwise
 specified.
+
 
 
 

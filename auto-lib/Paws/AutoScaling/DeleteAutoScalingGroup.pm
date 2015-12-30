@@ -36,15 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  The name of the group to delete.
+The name of the group to delete.
+
 
 
 =head2 ForceDelete => Bool
 
-  Specifies that the group will be deleted along with all instances
+Specifies that the group will be deleted along with all instances
 associated with the group, without waiting for all instances to be
 terminated. This parameter also deletes any lifecycle actions
 associated with the group.
+
 
 
 

@@ -16,11 +16,15 @@ Paws::DeviceFarm::GetDevicePoolCompatibilityResult
 
 =head2 CompatibleDevices => ArrayRef[L<Paws::DeviceFarm::DevicePoolCompatibilityResult>]
 
-  Information about compatible devices.
+Information about compatible devices.
+
+
 
 =head2 IncompatibleDevices => ArrayRef[L<Paws::DeviceFarm::DevicePoolCompatibilityResult>]
 
-  Information about incompatible devices.
+Information about incompatible devices.
+
+
 
 
 =cut

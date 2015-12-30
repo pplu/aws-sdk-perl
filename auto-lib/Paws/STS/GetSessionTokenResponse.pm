@@ -16,7 +16,9 @@ Paws::STS::GetSessionTokenResponse
 
 =head2 Credentials => L<Paws::STS::Credentials>
 
-  The session credentials for API authentication.
+The session credentials for API authentication.
+
+
 
 
 =cut

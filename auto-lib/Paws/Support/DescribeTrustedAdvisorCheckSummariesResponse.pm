@@ -15,7 +15,9 @@ Paws::Support::DescribeTrustedAdvisorCheckSummariesResponse
 
 =head2 B<REQUIRED> Summaries => ArrayRef[L<Paws::Support::TrustedAdvisorCheckSummary>]
 
-  The summary information for the requested Trusted Advisor checks.
+The summary information for the requested Trusted Advisor checks.
+
+
 
 
 =cut

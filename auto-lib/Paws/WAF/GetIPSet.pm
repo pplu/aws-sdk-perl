@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IPSetId => Str
 
-  The C<IPSetId> of the IPSet that you want to get. C<IPSetId> is
+The C<IPSetId> of the IPSet that you want to get. C<IPSetId> is
 returned by CreateIPSet and by ListIPSets.
+
 
 
 

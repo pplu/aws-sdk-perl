@@ -36,15 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 RegistryId => Str
 
-  The AWS account ID associated with the registry that contains the
+The AWS account ID associated with the registry that contains the
 repository policy to delete. If you do not specify a registry, the
 default registry is assumed.
 
 
+
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The name of the repository that is associated with the repository
+The name of the repository that is associated with the repository
 policy to delete.
+
 
 
 

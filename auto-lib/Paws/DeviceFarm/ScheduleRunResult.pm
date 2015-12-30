@@ -15,7 +15,9 @@ Paws::DeviceFarm::ScheduleRunResult
 
 =head2 Run => L<Paws::DeviceFarm::Run>
 
-  Information about the scheduled run.
+Information about the scheduled run.
+
+
 
 
 =cut

@@ -12,6 +12,7 @@ package Paws::Route53::CreateTrafficPolicyVersion;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::CreateTrafficPolicyVersionResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -25,20 +26,26 @@ Paws::Route53::CreateTrafficPolicyVersionResponse
 
 =head2 Comment => Str
 
-  Any comments that you want to include about the new traffic policy
+Any comments that you want to include about the new traffic policy
 version.
+
+
 
 =head2 B<REQUIRED> Document => Str
 
-  The definition of a new traffic policy version, in JSON format. You
+The definition of a new traffic policy version, in JSON format. You
 must specify the full definition of the new traffic policy. You cannot
 specify just the differences between the new version and a previous
 version.
 
+
+
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the traffic policy for which you want to create a new
+The ID of the traffic policy for which you want to create a new
 version.
+
+
 
 
 =cut

@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-  A filter that specifies one or more resources to return pending
+A filter that specifies one or more resources to return pending
 maintenance actions for.
 
 Supported filters:
@@ -54,17 +54,19 @@ these ARNs.
 
 
 
+
 =head2 Marker => Str
 
-  An optional pagination token provided by a previous
+An optional pagination token provided by a previous
 C<DescribePendingMaintenanceActions> request. If this parameter is
 specified, the response includes only records beyond the marker, up to
 a number of records specified by C<MaxRecords>.
 
 
+
 =head2 MaxRecords => Int
 
-  The maximum number of records to include in the response. If more
+The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
 results can be retrieved.
@@ -74,9 +76,11 @@ Default: 100
 Constraints: Minimum 20, maximum 100.
 
 
+
 =head2 ResourceIdentifier => Str
 
-  The ARN of a resource to return pending maintenance actions for.
+The ARN of a resource to return pending maintenance actions for.
+
 
 
 

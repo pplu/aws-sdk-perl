@@ -17,12 +17,16 @@ Paws::EC2::ModifyHostsResult
 
 =head2 Successful => ArrayRef[Str]
 
-  The IDs of the Dedicated hosts that were successfully modified.
+The IDs of the Dedicated hosts that were successfully modified.
+
+
 
 =head2 Unsuccessful => ArrayRef[L<Paws::EC2::UnsuccessfulItem>]
 
-  The IDs of the Dedicated hosts that could not be modified. Check
+The IDs of the Dedicated hosts that could not be modified. Check
 whether the setting you requested can be used.
+
+
 
 
 =cut

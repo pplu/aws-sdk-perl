@@ -37,22 +37,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ExclusiveStartTagKey => Str
 
-  The key to use as the starting point for the list of tags. If this
+The key to use as the starting point for the list of tags. If this
 parameter is set, C<ListTagsForStream> gets all tags that occur after
 C<ExclusiveStartTagKey>.
 
 
+
 =head2 Limit => Int
 
-  The number of tags to return. If this number is less than the total
+The number of tags to return. If this number is less than the total
 number of tags associated with the stream, C<HasMoreTags> is set to
 C<true>. To list additional tags, set C<ExclusiveStartTagKey> to the
 last key in the response.
 
 
+
 =head2 B<REQUIRED> StreamName => Str
 
-  The name of the stream.
+The name of the stream.
+
 
 
 

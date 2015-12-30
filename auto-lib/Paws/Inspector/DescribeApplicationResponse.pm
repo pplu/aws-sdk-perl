@@ -15,7 +15,9 @@ Paws::Inspector::DescribeApplicationResponse
 
 =head2 Application => L<Paws::Inspector::Application>
 
-  Information about the application.
+Information about the application.
+
+
 
 
 =cut

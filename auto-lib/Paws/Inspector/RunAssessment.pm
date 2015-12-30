@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssessmentArn => Str
 
-  The ARN of the assessment that you want to run.
+The ARN of the assessment that you want to run.
+
 
 
 =head2 B<REQUIRED> RunName => Str
 
-  A name specifying the run of the assessment.
+A name specifying the run of the assessment.
+
 
 
 

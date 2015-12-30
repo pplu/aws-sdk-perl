@@ -41,28 +41,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ContentType => Str
 
-  The content-type for the model.
+The content-type for the model.
+
 
 
 =head2 Description => Str
 
-  The description of the model.
+The description of the model.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the model.
+The name of the model.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi identifier under which the Model will be created.
+The RestApi identifier under which the Model will be created.
+
 
 
 =head2 Schema => Str
 
-  The schema for the model. For C<application/json> models, this should
+The schema for the model. For C<application/json> models, this should
 be JSON-schema draft v4 model.
+
 
 
 

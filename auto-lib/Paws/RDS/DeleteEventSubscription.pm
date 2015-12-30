@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SubscriptionName => Str
 
-  The name of the RDS event notification subscription you want to delete.
+The name of the RDS event notification subscription you want to delete.
+
 
 
 

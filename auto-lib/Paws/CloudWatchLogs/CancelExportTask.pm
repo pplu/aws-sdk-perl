@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TaskId => Str
 
-  Id of the export task to cancel.
+Id of the export task to cancel.
+
 
 
 

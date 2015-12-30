@@ -37,18 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientArn => Str
 
-  The ARN of the client.
+The ARN of the client.
+
 
 
 =head2 B<REQUIRED> ClientVersion => Str
 
-  The client version.
+The client version.
 
+Valid values are: C<"5.1">, C<"5.3">
 
 =head2 B<REQUIRED> HapgList => ArrayRef[Str]
 
-  A list of ARNs that identify the high-availability partition groups
+A list of ARNs that identify the high-availability partition groups
 that are associated with the client.
+
 
 
 

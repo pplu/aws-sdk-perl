@@ -16,8 +16,10 @@ Paws::EC2::AllocateHostsResult
 
 =head2 HostIds => ArrayRef[Str]
 
-  The ID of the allocated Dedicated host. This is used when you want to
+The ID of the allocated Dedicated host. This is used when you want to
 launch an instance onto a specific host.
+
+
 
 
 =cut

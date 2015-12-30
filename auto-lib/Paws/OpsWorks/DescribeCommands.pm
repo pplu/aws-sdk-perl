@@ -37,23 +37,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CommandIds => ArrayRef[Str]
 
-  An array of command IDs. If you include this parameter,
+An array of command IDs. If you include this parameter,
 C<DescribeCommands> returns a description of the specified commands.
 Otherwise, it returns a description of every command.
 
 
+
 =head2 DeploymentId => Str
 
-  The deployment ID. If you include this parameter, C<DescribeCommands>
+The deployment ID. If you include this parameter, C<DescribeCommands>
 returns a description of the commands associated with the specified
 deployment.
 
 
+
 =head2 InstanceId => Str
 
-  The instance ID. If you include this parameter, C<DescribeCommands>
+The instance ID. If you include this parameter, C<DescribeCommands>
 returns a description of the commands associated with the specified
 instance.
+
 
 
 

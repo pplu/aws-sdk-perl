@@ -38,23 +38,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Affinity => Str
 
-  The new affinity setting for the instance.
+The new affinity setting for the instance.
 
+Valid values are: C<"default">, C<"host">
 
 =head2 HostId => Str
 
-  The ID of the Dedicated host that the instance will have affinity with.
+The ID of the Dedicated host that the instance will have affinity with.
+
 
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  The ID of the instance that you are modifying.
+The ID of the instance that you are modifying.
+
 
 
 =head2 Tenancy => Str
 
-  The tenancy of the instance that you are modifying.
+The tenancy of the instance that you are modifying.
 
+Valid values are: C<"dedicated">, C<"host">
 
 
 =head1 SEE ALSO

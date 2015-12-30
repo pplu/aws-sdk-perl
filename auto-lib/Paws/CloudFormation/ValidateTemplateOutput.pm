@@ -19,25 +19,33 @@ Paws::CloudFormation::ValidateTemplateOutput
 
 =head2 Capabilities => ArrayRef[Str]
 
-  The capabilities found within the template. Currently, AWS
+The capabilities found within the template. Currently, AWS
 CloudFormation supports only the CAPABILITY_IAM capability. If your
 template contains IAM resources, you must specify the CAPABILITY_IAM
 value for this parameter when you use the CreateStack or UpdateStack
 actions with your template; otherwise, those actions return an
 InsufficientCapabilities error.
 
+
+
 =head2 CapabilitiesReason => Str
 
-  The list of resources that generated the values in the C<Capabilities>
+The list of resources that generated the values in the C<Capabilities>
 response element.
+
+
 
 =head2 Description => Str
 
-  The description found within the template.
+The description found within the template.
+
+
 
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::TemplateParameter>]
 
-  A list of C<TemplateParameter> structures.
+A list of C<TemplateParameter> structures.
+
+
 
 
 =cut

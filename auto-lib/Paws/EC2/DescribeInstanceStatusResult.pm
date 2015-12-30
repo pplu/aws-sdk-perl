@@ -17,12 +17,16 @@ Paws::EC2::DescribeInstanceStatusResult
 
 =head2 InstanceStatuses => ArrayRef[L<Paws::EC2::InstanceStatus>]
 
-  One or more instance status descriptions.
+One or more instance status descriptions.
+
+
 
 =head2 NextToken => Str
 
-  The token to use to retrieve the next page of results. This value is
+The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
+
+
 
 
 =cut

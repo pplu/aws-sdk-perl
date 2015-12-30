@@ -26,15 +26,21 @@ Paws::S3::
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
+
+
+
 
 =head2 ContentMD5 => Str
 
-  
+
+
+
 
 =head2 B<REQUIRED> Policy => Str
 
-  The bucket policy as a JSON document.
+The bucket policy as a JSON document.
+
+
 
 
 =cut

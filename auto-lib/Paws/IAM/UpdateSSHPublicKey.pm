@@ -37,19 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SSHPublicKeyId => Str
 
-  The unique identifier for the SSH public key.
+The unique identifier for the SSH public key.
+
 
 
 =head2 B<REQUIRED> Status => Str
 
-  The status to assign to the SSH public key. C<Active> means the key can
+The status to assign to the SSH public key. C<Active> means the key can
 be used for authentication with an AWS CodeCommit repository.
 C<Inactive> means the key cannot be used.
 
+Valid values are: C<"Active">, C<"Inactive">
 
 =head2 B<REQUIRED> UserName => Str
 
-  The name of the IAM user associated with the SSH public key.
+The name of the IAM user associated with the SSH public key.
+
 
 
 

@@ -36,15 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  The instance's AWS OpsWorks ID.
+The instance's AWS OpsWorks ID.
+
 
 
 =head2 ValidForInMinutes => Int
 
-  The length of time (in minutes) that the grant is valid. When the grant
+The length of time (in minutes) that the grant is valid. When the grant
 expires at the end of this period, the user will no longer be able to
 use the credentials to log in. If the user is logged in at the time, he
 or she automatically will be logged out.
+
 
 
 

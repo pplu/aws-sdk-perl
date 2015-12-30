@@ -16,11 +16,15 @@ Paws::Inspector::LocalizeTextResponse
 
 =head2 Message => Str
 
-  Confirmation details of the action performed.
+Confirmation details of the action performed.
+
+
 
 =head2 Results => ArrayRef[Str]
 
-  The resulting list of user-readable texts.
+The resulting list of user-readable texts.
+
+
 
 
 =cut

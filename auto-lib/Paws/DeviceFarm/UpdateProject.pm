@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Arn => Str
 
-  The Amazon Resource Name (ARN) of the project whose name you wish to
+The Amazon Resource Name (ARN) of the project whose name you wish to
 update.
+
 
 
 =head2 Name => Str
 
-  A string representing the new name of the project that you are
+A string representing the new name of the project that you are
 updating.
+
 
 
 

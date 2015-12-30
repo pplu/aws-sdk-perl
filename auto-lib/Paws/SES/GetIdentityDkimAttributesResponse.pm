@@ -16,7 +16,9 @@ Paws::SES::GetIdentityDkimAttributesResponse
 
 =head2 B<REQUIRED> DkimAttributes => L<Paws::SES::DkimAttributes>
 
-  The DKIM attributes for an email address or a domain.
+The DKIM attributes for an email address or a domain.
+
+
 
 
 =cut

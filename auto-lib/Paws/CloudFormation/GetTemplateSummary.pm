@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 StackName => Str
 
-  The name or the stack ID that is associated with the stack, which are
+The name or the stack ID that is associated with the stack, which are
 not always interchangeable. For running stacks, you can specify either
 the stack's name or its unique stack ID. For deleted stack, you must
 specify the unique stack ID.
@@ -46,9 +46,10 @@ Conditional: You must specify only one of the following parameters:
 C<StackName>, C<TemplateBody>, or C<TemplateURL>.
 
 
+
 =head2 TemplateBody => Str
 
-  Structure containing the template body with a minimum length of 1 byte
+Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. For more information about
 templates, see Template Anatomy in the AWS CloudFormation User Guide.
 
@@ -56,15 +57,17 @@ Conditional: You must specify only one of the following parameters:
 C<StackName>, C<TemplateBody>, or C<TemplateURL>.
 
 
+
 =head2 TemplateURL => Str
 
-  Location of file containing the template body. The URL must point to a
+Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
 bucket. For more information about templates, see Template Anatomy in
 the AWS CloudFormation User Guide.
 
 Conditional: You must specify only one of the following parameters:
 C<StackName>, C<TemplateBody>, or C<TemplateURL>.
+
 
 
 

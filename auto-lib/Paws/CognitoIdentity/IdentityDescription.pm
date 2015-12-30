@@ -18,20 +18,28 @@ Paws::CognitoIdentity::IdentityDescription
 
 =head2 CreationDate => Str
 
-  Date on which the identity was created.
+Date on which the identity was created.
+
+
 
 =head2 IdentityId => Str
 
-  A unique identifier in the format REGION:GUID.
+A unique identifier in the format REGION:GUID.
+
+
 
 =head2 LastModifiedDate => Str
 
-  Date on which the identity was last modified.
+Date on which the identity was last modified.
+
+
 
 =head2 Logins => ArrayRef[Str]
 
-  A set of optional name-value pairs that map provider names to provider
+A set of optional name-value pairs that map provider names to provider
 tokens.
+
+
 
 
 =cut

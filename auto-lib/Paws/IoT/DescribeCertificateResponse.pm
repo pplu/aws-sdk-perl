@@ -16,7 +16,9 @@ Paws::IoT::DescribeCertificateResponse
 
 =head2 CertificateDescription => L<Paws::IoT::CertificateDescription>
 
-  The description of the certificate.
+The description of the certificate.
+
+
 
 
 =cut

@@ -38,28 +38,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DirectoryId => Str
 
-  The Directory ID of the AWS directory that is a part of the requested
+The Directory ID of the AWS directory that is a part of the requested
 trust relationship.
+
 
 
 =head2 Limit => Int
 
-  The maximum number of objects to return.
+The maximum number of objects to return.
+
 
 
 =head2 NextToken => Str
 
-  The I<DescribeTrustsResult.NextToken> value from a previous call to
+The I<DescribeTrustsResult.NextToken> value from a previous call to
 DescribeTrusts. Pass null if this is the first call.
+
 
 
 =head2 TrustIds => ArrayRef[Str]
 
-  A list of identifiers of the trust relationships for which to obtain
+A list of identifiers of the trust relationships for which to obtain
 the information. If this member is null, all trust relationships that
 belong to the current account are returned.
 
 An empty list results in an C<InvalidParameterException> being thrown.
+
 
 
 

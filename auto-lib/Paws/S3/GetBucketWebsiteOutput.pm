@@ -33,22 +33,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ErrorDocument => L<Paws::S3::ErrorDocument>
 
-  
+
+
 
 
 =head2 IndexDocument => L<Paws::S3::IndexDocument>
 
-  
+
+
 
 
 =head2 RedirectAllRequestsTo => L<Paws::S3::RedirectAllRequestsTo>
 
-  
+
+
 
 
 =head2 RoutingRules => ArrayRef[L<Paws::S3::RoutingRule>]
 
-  
+
+
 
 
 

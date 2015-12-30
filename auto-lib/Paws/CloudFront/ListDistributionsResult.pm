@@ -30,7 +30,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DistributionList => L<Paws::CloudFront::DistributionList>
 
-  The DistributionList type.
+The DistributionList type.
+
 
 
 

@@ -37,17 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  The Windows Server instance ID.
+The Windows Server instance ID.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the SSM document.
+The name of the SSM document.
+
 
 
 =head2 Parameters => L<Paws::SSM::Parameters>
 
-  The parameters for the documents runtime configuration.
+The parameters for the documents runtime configuration.
+
 
 
 

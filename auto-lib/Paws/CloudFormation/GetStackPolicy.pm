@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> StackName => Str
 
-  The name or unique stack ID that is associated with the stack whose
+The name or unique stack ID that is associated with the stack whose
 policy you want to get.
+
 
 
 

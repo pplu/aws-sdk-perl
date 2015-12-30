@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> StreamName => Str
 
-  The name of the stream.
+The name of the stream.
+
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
-  A list of tag keys. Each corresponding tag is removed from the stream.
+A list of tag keys. Each corresponding tag is removed from the stream.
+
 
 
 

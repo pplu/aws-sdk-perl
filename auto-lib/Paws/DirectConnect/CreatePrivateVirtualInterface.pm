@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> NewPrivateVirtualInterface => L<Paws::DirectConnect::NewPrivateVirtualInterface>
 
-  Detailed information for the private virtual interface to be created.
+Detailed information for the private virtual interface to be created.
 
 Default: None
+
 
 
 

@@ -16,7 +16,9 @@ Paws::EC2::CreateImageResult
 
 =head2 ImageId => Str
 
-  The ID of the new AMI.
+The ID of the new AMI.
+
+
 
 
 =cut

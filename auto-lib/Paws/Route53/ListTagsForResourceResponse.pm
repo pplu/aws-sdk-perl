@@ -30,8 +30,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceTagSet => L<Paws::Route53::ResourceTagSet>
 
-  A C<ResourceTagSet> containing tags associated with the specified
+A C<ResourceTagSet> containing tags associated with the specified
 resource.
+
 
 
 

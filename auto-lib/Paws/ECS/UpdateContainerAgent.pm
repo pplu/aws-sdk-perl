@@ -36,16 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Cluster => Str
 
-  The short name or full Amazon Resource Name (ARN) of the cluster that
+The short name or full Amazon Resource Name (ARN) of the cluster that
 your container instance is running on. If you do not specify a cluster,
 the default cluster is assumed.
 
 
+
 =head2 B<REQUIRED> ContainerInstance => Str
 
-  The container instance ID or full Amazon Resource Name (ARN) entries
+The container instance ID or full Amazon Resource Name (ARN) entries
 for the container instance on which you would like to update the Amazon
 ECS container agent.
+
 
 
 

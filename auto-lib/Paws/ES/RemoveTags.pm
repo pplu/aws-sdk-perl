@@ -38,14 +38,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ARN => Str
 
-  Specifies the C<ARN> for the Elasticsearch domain from which you want
+Specifies the C<ARN> for the Elasticsearch domain from which you want
 to delete the specified tags.
+
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
-  Specifies the C<TagKey> list which you want to remove from the
+Specifies the C<TagKey> list which you want to remove from the
 Elasticsearch domain.
+
 
 
 

@@ -16,7 +16,9 @@ Paws::AutoScaling::EnterStandbyAnswer
 
 =head2 Activities => ArrayRef[L<Paws::AutoScaling::Activity>]
 
-  The activities related to moving instances into C<Standby> mode.
+The activities related to moving instances into C<Standby> mode.
+
+
 
 
 =cut

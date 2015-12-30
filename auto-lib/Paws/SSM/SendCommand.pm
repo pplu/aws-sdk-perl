@@ -41,43 +41,50 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Comment => Str
 
-  User-specified information about the command, such as a brief
+User-specified information about the command, such as a brief
 description of what the command should do.
+
 
 
 =head2 B<REQUIRED> DocumentName => Str
 
-  Required. The name of the SSM document to execute. This can be an SSM
+Required. The name of the SSM document to execute. This can be an SSM
 public document or a custom document.
+
 
 
 =head2 B<REQUIRED> InstanceIds => ArrayRef[Str]
 
-  Required. The instance IDs where the command should execute.
+Required. The instance IDs where the command should execute.
+
 
 
 =head2 OutputS3BucketName => Str
 
-  The name of the S3 bucket where command execution responses should be
+The name of the S3 bucket where command execution responses should be
 stored.
+
 
 
 =head2 OutputS3KeyPrefix => Str
 
-  The directory structure within the S3 bucket where the responses should
+The directory structure within the S3 bucket where the responses should
 be stored.
+
 
 
 =head2 Parameters => L<Paws::SSM::Parameters>
 
-  The required and optional parameters specified in the SSM document
+The required and optional parameters specified in the SSM document
 being executed.
+
 
 
 =head2 TimeoutSeconds => Int
 
-  If this time is reached and the command has not already started
+If this time is reached and the command has not already started
 executing, it will not execute.
+
 
 
 

@@ -37,10 +37,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-  The identifier of the job that you want to cancel.
+The identifier of the job that you want to cancel.
 
 To get a list of the jobs (including their C<jobId>) that have a status
 of C<Submitted>, use the ListJobsByStatus API action.
+
 
 
 

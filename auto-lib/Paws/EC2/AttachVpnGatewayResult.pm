@@ -16,7 +16,9 @@ Paws::EC2::AttachVpnGatewayResult
 
 =head2 VpcAttachment => L<Paws::EC2::VpcAttachment>
 
-  Information about the attachment.
+Information about the attachment.
+
+
 
 
 =cut

@@ -30,8 +30,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TrafficPolicyInstance => L<Paws::Route53::TrafficPolicyInstance>
 
-  A complex type that contains settings for the updated traffic policy
+A complex type that contains settings for the updated traffic policy
 instance.
+
 
 
 

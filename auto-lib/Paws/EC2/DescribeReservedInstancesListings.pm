@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-  One or more filters.
+One or more filters.
 
 =over
 
@@ -63,14 +63,17 @@ C<status-message> - The reason for the status.
 
 
 
+
 =head2 ReservedInstancesId => Str
 
-  One or more Reserved instance IDs.
+One or more Reserved instance IDs.
+
 
 
 =head2 ReservedInstancesListingId => Str
 
-  One or more Reserved instance Listing IDs.
+One or more Reserved instance Listing IDs.
+
 
 
 

@@ -45,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplyImmediately => Bool
 
-  A value that specifies whether the modifications in this request and
+A value that specifies whether the modifications in this request and
 any pending modifications are asynchronously applied as soon as
 possible, regardless of the C<PreferredMaintenanceWindow> setting for
 the DB cluster.
@@ -56,9 +56,10 @@ applied during the next maintenance window.
 Default: C<false>
 
 
+
 =head2 BackupRetentionPeriod => Int
 
-  The number of days for which automated backups are retained. You must
+The number of days for which automated backups are retained. You must
 specify a minimum value of 1.
 
 Default: 1
@@ -73,9 +74,10 @@ Constraints:
 
 
 
+
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-  The DB cluster identifier for the cluster being modified. This
+The DB cluster identifier for the cluster being modified. This
 parameter is not case-sensitive.
 
 Constraints:
@@ -94,22 +96,25 @@ Constraints:
 
 
 
+
 =head2 DBClusterParameterGroupName => Str
 
-  The name of the DB cluster parameter group to use for the DB cluster.
+The name of the DB cluster parameter group to use for the DB cluster.
+
 
 
 =head2 MasterUserPassword => Str
 
-  The new password for the master database user. This password can
+The new password for the master database user. This password can
 contain any printable ASCII character except "/", """, or "@".
 
 Constraints: Must contain from 8 to 41 characters.
 
 
+
 =head2 NewDBClusterIdentifier => Str
 
-  The new DB cluster identifier for the DB cluster when renaming a DB
+The new DB cluster identifier for the DB cluster when renaming a DB
 cluster. This value is stored as a lowercase string.
 
 Constraints:
@@ -127,9 +132,10 @@ Constraints:
 Example: C<my-cluster2>
 
 
+
 =head2 OptionGroupName => Str
 
-  A value that indicates that the DB cluster should be associated with
+A value that indicates that the DB cluster should be associated with
 the specified option group. Changing this parameter does not result in
 an outage except in the following case, and the change is applied
 during the next maintenance window unless the C<ApplyImmediately>
@@ -143,18 +149,20 @@ group cannot be removed from a DB cluster once it is associated with a
 DB cluster.
 
 
+
 =head2 Port => Int
 
-  The port number on which the DB cluster accepts connections.
+The port number on which the DB cluster accepts connections.
 
 Constraints: Value must be C<1150-65535>
 
 Default: The same port as the original DB cluster.
 
 
+
 =head2 PreferredBackupWindow => Str
 
-  The daily time range during which automated backups are created if
+The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter.
 
@@ -178,9 +186,10 @@ Constraints:
 
 
 
+
 =head2 PreferredMaintenanceWindow => Str
 
-  The weekly time range during which system maintenance can occur, in
+The weekly time range during which system maintenance can occur, in
 Universal Coordinated Time (UTC).
 
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
@@ -195,9 +204,11 @@ Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 Constraints: Minimum 30-minute window.
 
 
+
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  A lst of VPC security groups that the DB cluster will belong to.
+A lst of VPC security groups that the DB cluster will belong to.
+
 
 
 

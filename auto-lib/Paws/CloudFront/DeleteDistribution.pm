@@ -25,12 +25,16 @@ Paws::CloudFront::
 
 =head2 B<REQUIRED> Id => Str
 
-  The distribution id.
+The distribution id.
+
+
 
 =head2 IfMatch => Str
 
-  The value of the ETag header you received when you disabled the
+The value of the ETag header you received when you disabled the
 distribution. For example: E2QWRUHAPOMQZL.
+
+
 
 
 =cut

@@ -16,7 +16,9 @@ Paws::Glacier::InitiateVaultLockOutput
 
 =head2 LockId => Str
 
-  The lock ID, which is used to complete the vault locking process.
+The lock ID, which is used to complete the vault locking process.
+
+
 
 
 =cut

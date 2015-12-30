@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoPlacement => Str
 
-  Specify whether to enable or disable auto-placement.
+Specify whether to enable or disable auto-placement.
 
+Valid values are: C<"on">, C<"off">
 
 =head2 B<REQUIRED> HostIds => ArrayRef[Str]
 
-  The host IDs of the Dedicated hosts you want to modify.
+The host IDs of the Dedicated hosts you want to modify.
+
 
 
 

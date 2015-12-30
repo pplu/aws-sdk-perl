@@ -16,9 +16,11 @@ Paws::CloudFormation::GetStackPolicyOutput
 
 =head2 StackPolicyBody => Str
 
-  Structure containing the stack policy body. (For more information, go
+Structure containing the stack policy body. (For more information, go
 to Prevent Updates to Stack Resources in the AWS CloudFormation User
 Guide.)
+
+
 
 
 =cut

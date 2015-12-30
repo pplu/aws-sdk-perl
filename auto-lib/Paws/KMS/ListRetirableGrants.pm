@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  When paginating results, specify the maximum number of items to return
+When paginating results, specify the maximum number of items to return
 in the response. If additional items exist beyond the number you
 specify, the C<Truncated> element in the response is set to true.
 
@@ -45,17 +45,19 @@ This value is optional. If you include a value, it must be between 1
 and 100, inclusive. If you do not include a value, it defaults to 50.
 
 
+
 =head2 Marker => Str
 
-  Use this parameter only when paginating results and only in a
+Use this parameter only when paginating results and only in a
 subsequent request after you've received a response with truncated
 results. Set it to the value of C<NextMarker> from the response you
 just received.
 
 
+
 =head2 B<REQUIRED> RetiringPrincipal => Str
 
-  The retiring principal for which to list grants.
+The retiring principal for which to list grants.
 
 To specify the retiring principal, use the Amazon Resource Name (ARN)
 of an AWS principal. Valid AWS principals include AWS accounts (root),
@@ -63,6 +65,7 @@ IAM users, federated users, and assumed role users. For examples of the
 ARN syntax for specifying a principal, go to AWS Identity and Access
 Management (IAM) in the Example ARNs section of the I<Amazon Web
 Services General Reference>.
+
 
 
 

@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SourceIdentifier => Str
 
-  The identifier of the event source to be added. An identifier must
+The identifier of the event source to be added. An identifier must
 begin with a letter and must contain only ASCII letters, digits, and
 hyphens; it cannot end with a hyphen or contain two consecutive
 hyphens.
@@ -61,10 +61,12 @@ must be supplied.
 
 
 
+
 =head2 B<REQUIRED> SubscriptionName => Str
 
-  The name of the RDS event notification subscription you want to add a
+The name of the RDS event notification subscription you want to add a
 source identifier to.
+
 
 
 

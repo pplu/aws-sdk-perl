@@ -16,7 +16,9 @@ Paws::EC2::DeleteVpcEndpointsResult
 
 =head2 Unsuccessful => ArrayRef[L<Paws::EC2::UnsuccessfulItem>]
 
-  Information about the endpoints that were not successfully deleted.
+Information about the endpoints that were not successfully deleted.
+
+
 
 
 =cut

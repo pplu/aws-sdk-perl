@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DBSnapshotIdentifier => Str
 
-  The identifier for the DB snapshot to modify the attributes for.
+The identifier for the DB snapshot to modify the attributes for.
+
 
 
 

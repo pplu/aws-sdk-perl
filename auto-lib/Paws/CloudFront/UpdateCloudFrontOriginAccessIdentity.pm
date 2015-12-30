@@ -26,16 +26,22 @@ Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult
 
 =head2 B<REQUIRED> CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>
 
-  The identity's configuration information.
+The identity's configuration information.
+
+
 
 =head2 B<REQUIRED> Id => Str
 
-  The identity's id.
+The identity's id.
+
+
 
 =head2 IfMatch => Str
 
-  The value of the ETag header you received when retrieving the
+The value of the ETag header you received when retrieving the
 identity's configuration. For example: E2QWRUHAPOMQZL.
+
+
 
 
 =cut

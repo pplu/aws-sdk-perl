@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeploymentId => Str
 
-  An existing deployment ID associated with the applicable IAM user or
+An existing deployment ID associated with the applicable IAM user or
 AWS account.
+
 
 
 

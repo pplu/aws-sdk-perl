@@ -24,7 +24,9 @@ Paws::CloudFront::GetDistributionResult
 
 =head2 B<REQUIRED> Id => Str
 
-  The distribution's id.
+The distribution's id.
+
+
 
 
 =cut

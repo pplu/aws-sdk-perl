@@ -26,16 +26,22 @@ Paws::CloudFront::UpdateDistributionResult
 
 =head2 B<REQUIRED> DistributionConfig => L<Paws::CloudFront::DistributionConfig>
 
-  The distribution's configuration information.
+The distribution's configuration information.
+
+
 
 =head2 B<REQUIRED> Id => Str
 
-  The distribution's id.
+The distribution's id.
+
+
 
 =head2 IfMatch => Str
 
-  The value of the ETag header you received when retrieving the
+The value of the ETag header you received when retrieving the
 distribution's configuration. For example: E2QWRUHAPOMQZL.
+
+
 
 
 =cut

@@ -16,7 +16,9 @@ Paws::EC2::CreateCustomerGatewayResult
 
 =head2 CustomerGateway => L<Paws::EC2::CustomerGateway>
 
-  Information about the customer gateway.
+Information about the customer gateway.
+
+
 
 
 =cut

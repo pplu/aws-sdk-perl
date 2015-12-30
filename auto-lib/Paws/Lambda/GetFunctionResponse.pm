@@ -17,11 +17,15 @@ Paws::Lambda::GetFunctionResponse
 
 =head2 Code => L<Paws::Lambda::FunctionCodeLocation>
 
-  
+
+
+
 
 =head2 Configuration => L<Paws::Lambda::FunctionConfiguration>
 
-  
+
+
+
 
 
 =cut

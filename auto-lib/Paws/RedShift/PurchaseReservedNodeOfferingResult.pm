@@ -16,7 +16,9 @@ Paws::RedShift::PurchaseReservedNodeOfferingResult
 
 =head2 ReservedNode => L<Paws::RedShift::ReservedNode>
 
-  
+
+
+
 
 
 =cut

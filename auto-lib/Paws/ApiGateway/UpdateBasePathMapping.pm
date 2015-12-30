@@ -39,18 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BasePath => Str
 
-  The base path of the BasePathMapping resource to change.
+The base path of the BasePathMapping resource to change.
+
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The domain name of the BasePathMapping resource to change.
+The domain name of the BasePathMapping resource to change.
+
 
 
 =head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
 
-  A list of operations describing the updates to apply to the specified
+A list of operations describing the updates to apply to the specified
 resource. The patches are applied in the order specified in the list.
+
 
 
 

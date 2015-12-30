@@ -33,7 +33,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IsTruncated => Bool
 
-  A flag that indicates whether there are more traffic policies to be
+A flag that indicates whether there are more traffic policies to be
 listed. If the response was truncated, you can get the next group of
 C<MaxItems> traffic policies by calling C<ListTrafficPolicies> again
 and specifying the value of the C<TrafficPolicyIdMarker> element in the
@@ -42,23 +42,27 @@ C<TrafficPolicyIdMarker> request parameter.
 Valid Values: C<true> | C<false>
 
 
+
 =head2 B<REQUIRED> MaxItems => Str
 
-  The value that you specified for the C<MaxItems> parameter in the call
+The value that you specified for the C<MaxItems> parameter in the call
 to C<ListTrafficPolicies> that produced the current response.
+
 
 
 =head2 B<REQUIRED> TrafficPolicyIdMarker => Str
 
-  If the value of C<IsTruncated> is C<true>, C<TrafficPolicyIdMarker> is
+If the value of C<IsTruncated> is C<true>, C<TrafficPolicyIdMarker> is
 the ID of the first traffic policy in the next group of C<MaxItems>
 traffic policies.
 
 
+
 =head2 B<REQUIRED> TrafficPolicySummaries => ArrayRef[L<Paws::Route53::TrafficPolicySummary>]
 
-  A list that contains one C<TrafficPolicySummary> element for each
+A list that contains one C<TrafficPolicySummary> element for each
 traffic policy that was created by the current AWS account.
+
 
 
 

@@ -38,30 +38,34 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PipelineName => Str
 
-  The name of the pipeline in which you want to disable the flow of
+The name of the pipeline in which you want to disable the flow of
 artifacts from one stage to another.
+
 
 
 =head2 B<REQUIRED> Reason => Str
 
-  The reason given to the user why a stage is disabled, such as waiting
+The reason given to the user why a stage is disabled, such as waiting
 for manual approval or manual tests. This message is displayed in the
 pipeline console UI.
 
 
+
 =head2 B<REQUIRED> StageName => Str
 
-  The name of the stage where you want to disable the inbound or outbound
+The name of the stage where you want to disable the inbound or outbound
 transition of artifacts.
+
 
 
 =head2 B<REQUIRED> TransitionType => Str
 
-  Specifies whether artifacts will be prevented from transitioning into
+Specifies whether artifacts will be prevented from transitioning into
 the stage and being processed by the actions in that stage (inbound),
 or prevented from transitioning from the stage after they have been
 processed by the actions in that stage (outbound).
 
+Valid values are: C<"Inbound">, C<"Outbound">
 
 
 =head1 SEE ALSO

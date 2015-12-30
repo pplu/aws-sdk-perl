@@ -17,12 +17,16 @@ Paws::CloudFormation::DescribeStackEventsOutput
 
 =head2 NextToken => Str
 
-  String that identifies the start of the next list of events, if there
+String that identifies the start of the next list of events, if there
 is one.
+
+
 
 =head2 StackEvents => ArrayRef[L<Paws::CloudFormation::StackEvent>]
 
-  A list of C<StackEvents> structures.
+A list of C<StackEvents> structures.
+
+
 
 
 =cut

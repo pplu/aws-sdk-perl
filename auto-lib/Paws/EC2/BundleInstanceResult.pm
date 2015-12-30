@@ -16,7 +16,9 @@ Paws::EC2::BundleInstanceResult
 
 =head2 BundleTask => L<Paws::EC2::BundleTask>
 
-  Information about the bundle task.
+Information about the bundle task.
+
+
 
 
 =cut

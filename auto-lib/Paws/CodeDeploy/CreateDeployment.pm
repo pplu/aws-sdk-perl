@@ -40,13 +40,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The name of an existing AWS CodeDeploy application associated with the
+The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
+
 
 
 =head2 DeploymentConfigName => Str
 
-  The name of an existing deployment configuration associated with the
+The name of an existing deployment configuration associated with the
 applicable IAM user or AWS account.
 
 If not specified, the value configured in the deployment group will be
@@ -55,19 +56,22 @@ configuration associated with it, then CodeDeployDefault.OneAtATime
 will be used by default.
 
 
+
 =head2 DeploymentGroupName => Str
 
-  The deployment group's name.
+The deployment group's name.
+
 
 
 =head2 Description => Str
 
-  A comment about the deployment.
+A comment about the deployment.
+
 
 
 =head2 IgnoreApplicationStopFailures => Bool
 
-  If set to true, then if the deployment causes the ApplicationStop
+If set to true, then if the deployment causes the ApplicationStop
 deployment lifecycle event to fail to a specific instance, the
 deployment will not be considered to have failed to that instance at
 that point and will continue on to the BeforeInstall deployment
@@ -79,10 +83,12 @@ instance, the deployment will stop to that instance, and the deployment
 to that instance will be considered to have failed.
 
 
+
 =head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
 
-  The type of revision to deploy, along with information about the
+The type of revision to deploy, along with information about the
 revision's location.
+
 
 
 

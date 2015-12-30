@@ -19,23 +19,33 @@ Paws::StorageGateway::DescribeSnapshotScheduleOutput
 
 =head2 Description => Str
 
-  
+
+
+
 
 =head2 RecurrenceInHours => Int
 
-  
+
+
+
 
 =head2 StartAt => Int
 
-  
+
+
+
 
 =head2 Timezone => Str
 
-  
+
+
+
 
 =head2 VolumeARN => Str
 
-  
+
+
+
 
 
 =cut

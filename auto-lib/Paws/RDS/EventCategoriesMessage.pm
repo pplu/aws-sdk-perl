@@ -16,7 +16,9 @@ Paws::RDS::EventCategoriesMessage
 
 =head2 EventCategoriesMapList => ArrayRef[L<Paws::RDS::EventCategoriesMap>]
 
-  A list of EventCategoriesMap data types.
+A list of EventCategoriesMap data types.
+
+
 
 
 =cut

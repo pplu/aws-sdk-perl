@@ -16,17 +16,21 @@ Paws::KMS::CreateGrantResponse
 
 =head2 GrantId => Str
 
-  The unique identifier for the grant.
+The unique identifier for the grant.
 
 You can use the C<GrantId> in a subsequent RetireGrant or RevokeGrant
 operation.
 
+
+
 =head2 GrantToken => Str
 
-  The grant token.
+The grant token.
 
 For more information about using grant tokens, see Grant Tokens in the
 I<AWS Key Management Service Developer Guide>.
+
+
 
 
 =cut

@@ -15,7 +15,9 @@ Paws::CodeDeploy::GetDeploymentInstanceOutput
 
 =head2 InstanceSummary => L<Paws::CodeDeploy::InstanceSummary>
 
-  Information about the instance.
+Information about the instance.
+
+
 
 
 =cut

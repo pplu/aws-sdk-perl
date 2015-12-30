@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBParameterGroupName => Str
 
-  The name of the DB parameter group.
+The name of the DB parameter group.
 
 Constraints:
 
@@ -48,6 +48,7 @@ Constraints:
 =item * Cannot be associated with any DB instances
 
 =back
+
 
 
 

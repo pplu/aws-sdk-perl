@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  The change token for which you want to get the status. This change
+The change token for which you want to get the status. This change
 token was previously returned in the C<GetChangeToken> response.
+
 
 
 

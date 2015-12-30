@@ -17,12 +17,16 @@ Paws::EC2::DescribeNatGatewaysResult
 
 =head2 NatGateways => ArrayRef[L<Paws::EC2::NatGateway>]
 
-  Information about the NAT gateways.
+Information about the NAT gateways.
+
+
 
 =head2 NextToken => Str
 
-  The token to use to retrieve the next page of results. This value is
+The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
+
+
 
 
 =cut

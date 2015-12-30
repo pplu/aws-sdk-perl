@@ -16,7 +16,9 @@ Paws::CloudSearch::DefineAnalysisSchemeResponse
 
 =head2 B<REQUIRED> AnalysisScheme => L<Paws::CloudSearch::AnalysisSchemeStatus>
 
-  
+
+
+
 
 
 =cut

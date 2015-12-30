@@ -15,7 +15,9 @@ Paws::StorageGateway::DisableGatewayOutput
 
 =head2 GatewayARN => Str
 
-  The unique Amazon Resource Name of the disabled gateway.
+The unique Amazon Resource Name of the disabled gateway.
+
+
 
 
 =cut

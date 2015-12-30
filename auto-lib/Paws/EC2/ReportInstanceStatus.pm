@@ -41,30 +41,34 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  Descriptive text about the health state of your instance.
+Descriptive text about the health state of your instance.
+
 
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 EndTime => Str
 
-  The time at which the reported instance health state ended.
+The time at which the reported instance health state ended.
+
 
 
 =head2 B<REQUIRED> Instances => ArrayRef[Str]
 
-  One or more instances.
+One or more instances.
+
 
 
 =head2 B<REQUIRED> ReasonCodes => ArrayRef[Str]
 
-  One or more reason codes that describes the health state of your
+One or more reason codes that describes the health state of your
 instance.
 
 =over
@@ -113,15 +117,18 @@ C<other>: [explain using the description parameter]
 
 
 
+
 =head2 StartTime => Str
 
-  The time at which the reported instance health state began.
+The time at which the reported instance health state began.
+
 
 
 =head2 B<REQUIRED> Status => Str
 
-  The status of all instances listed.
+The status of all instances listed.
 
+Valid values are: C<"ok">, C<"impaired">
 
 
 =head1 SEE ALSO

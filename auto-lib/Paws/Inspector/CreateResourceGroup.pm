@@ -35,9 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceGroupTags => Str
 
-  A collection of keys and an array of possible values in JSON format.
+A collection of keys and an array of possible values in JSON format.
 
 For example, [{ "key1" : ["Value1","Value2"]},{"Key2": ["Value3"]}]
+
 
 
 

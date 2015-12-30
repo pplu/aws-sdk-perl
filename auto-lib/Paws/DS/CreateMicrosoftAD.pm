@@ -39,33 +39,38 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  A textual description for the directory. This label will appear on the
+A textual description for the directory. This label will appear on the
 AWS console C<Directory Details> page after the directory is created.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The fully qualified domain name for the directory, such as
+The fully qualified domain name for the directory, such as
 C<corp.example.com>. This name will resolve inside your VPC only. It
 does not need to be publicly resolvable.
 
 
+
 =head2 B<REQUIRED> Password => Str
 
-  The password for the default administrative user named C<Admin>.
+The password for the default administrative user named C<Admin>.
+
 
 
 =head2 ShortName => Str
 
-  The NetBIOS name for your domain. A short identifier for your domain,
+The NetBIOS name for your domain. A short identifier for your domain,
 such as C<CORP>. If you don't specify a NetBIOS name, it will default
 to the first part of your directory DNS. For example, C<CORP> for the
 directory DNS C<corp.example.com>.
 
 
+
 =head2 B<REQUIRED> VpcSettings => L<Paws::DS::DirectoryVpcSettings>
 
-  
+
+
 
 
 

@@ -16,7 +16,9 @@ Paws::ElasticTranscoder::ReadJobResponse
 
 =head2 Job => L<Paws::ElasticTranscoder::Job>
 
-  A section of the response body that provides information about the job.
+A section of the response body that provides information about the job.
+
+
 
 
 =cut

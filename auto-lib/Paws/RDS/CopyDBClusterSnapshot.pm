@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SourceDBClusterSnapshotIdentifier => Str
 
-  The identifier of the DB cluster snapshot to copy. This parameter is
+The identifier of the DB cluster snapshot to copy. This parameter is
 not case-sensitive.
 
 Constraints:
@@ -55,14 +55,16 @@ Constraints:
 Example: C<my-cluster-snapshot1>
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-  
+
+
 
 
 =head2 B<REQUIRED> TargetDBClusterSnapshotIdentifier => Str
 
-  The identifier of the new DB cluster snapshot to create from the source
+The identifier of the new DB cluster snapshot to create from the source
 DB cluster snapshot. This parameter is not case-sensitive.
 
 Constraints:
@@ -78,6 +80,7 @@ Constraints:
 =back
 
 Example: C<my-cluster-snapshot2>
+
 
 
 

@@ -17,13 +17,17 @@ Paws::CloudFormation::DescribeAccountLimitsOutput
 
 =head2 AccountLimits => ArrayRef[L<Paws::CloudFormation::AccountLimit>]
 
-  An account limit structure that contain a list of AWS CloudFormation
+An account limit structure that contain a list of AWS CloudFormation
 account limits and their values.
+
+
 
 =head2 NextToken => Str
 
-  A string that identifies the next page of limits. If no additional page
+A string that identifies the next page of limits. If no additional page
 exists, this value is null.
+
+
 
 
 =cut

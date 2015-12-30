@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  The DB instance identifier. This is the unique key that identifies a DB
+The DB instance identifier. This is the unique key that identifies a DB
 instance.
 
 Constraints:
@@ -54,9 +54,10 @@ Constraints:
 
 
 
+
 =head2 B<REQUIRED> DBSnapshotIdentifier => Str
 
-  The identifier for the DB snapshot.
+The identifier for the DB snapshot.
 
 Constraints:
 
@@ -75,9 +76,11 @@ Constraints:
 Example: C<my-snapshot-id>
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-  
+
+
 
 
 

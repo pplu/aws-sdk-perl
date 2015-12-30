@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ParameterGroupName => Str
 
-  The name of the parameter group to be deleted.
+The name of the parameter group to be deleted.
 
 Constraints:
 
@@ -46,6 +46,7 @@ Constraints:
 =item * Cannot delete a default cluster parameter group.
 
 =back
+
 
 
 

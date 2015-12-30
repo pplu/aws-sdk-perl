@@ -40,22 +40,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
 
-  
+
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> SdkType => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> StageName => Str
 
-  
+
+
 
 
 

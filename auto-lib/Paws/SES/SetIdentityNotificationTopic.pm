@@ -37,23 +37,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Identity => Str
 
-  The identity for which the Amazon SNS topic will be set. You can
+The identity for which the Amazon SNS topic will be set. You can
 specify an identity by using its name or by using its Amazon Resource
 Name (ARN). Examples: C<user@example.com>, C<example.com>,
 C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
 
 
+
 =head2 B<REQUIRED> NotificationType => Str
 
-  The type of notifications that will be published to the specified
+The type of notifications that will be published to the specified
 Amazon SNS topic.
 
+Valid values are: C<"Bounce">, C<"Complaint">, C<"Delivery">
 
 =head2 SnsTopic => Str
 
-  The Amazon Resource Name (ARN) of the Amazon SNS topic. If the
+The Amazon Resource Name (ARN) of the Amazon SNS topic. If the
 parameter is omitted from the request or a null value is passed,
 C<SnsTopic> is cleared and publishing is disabled.
+
 
 
 
