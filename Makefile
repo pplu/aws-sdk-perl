@@ -16,11 +16,18 @@ pull-boto-develop:
 	cd botocore && git pull boto develop
 
 gen-classes:
-	mkdir auto-lib/Paws/DeleteMe
-	rm -r auto-lib/Paws/*
-	./gen_classes.pl
+	perl -I builder-lib builder-bin/generate-paws-classes --withpaws --dir botocore/botocore/data
 
 copy-tests:
 	cp botocore/tests/unit/response_parsing/xml/responses/* t/10_responses/
 	rm t/10_responses/cloudfront-* t/10_responses/s3-*
 	rm t/10_responses/*.json
+
+dist-builder:
+	cp cpanfile-ext-builder cpanfile
+	cp dist.ini-ext-builder dist.ini
+	dzil build
+dist-paws:
+	cp cpanfile-paws cpanfile
+	cp dist.ini-paws dist.ini
+	dzil build
