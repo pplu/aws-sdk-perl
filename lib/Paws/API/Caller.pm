@@ -111,12 +111,12 @@ package Paws::API::Caller;
 
     if (defined $headers->{ 'x-amz-crc32' }) {
       require String::CRC32;
-      my $crc = crc32($content);
+      my $crc = String::CRC32::crc32($content);
       return Paws::Exception->new(
         code => 'Crc32Error',
         message => 'Content CRC32 mismatch',
         request_id => $headers->{ 'x-amzn-requestid' }
-      );
+      ) if ($crc != $headers->{ 'x-amz-crc32' });
     }
 
     if ( $http_status >= 300 ) {
