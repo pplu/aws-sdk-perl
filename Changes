@@ -3,6 +3,9 @@
         travis testing. This should not be thought of as long term commitment to supporting such
         old perl versions, but at least it can be viewed as we'll know exactly when we stop
         supporting them (and that will be announced in the changelog)
+ - New: Paws::Net::Caller, LWPCaller  and FurlCaller now implement retry logic in case APIs
+        return a retriable HTTP error
+ - New: DynamoDB now benefits from crc-32 errors, and being able to retry the call
  - Better documentation: show the valid values for an attribute when it's an enum
  - Fix bug where a StrToObj map of complex objects would not instance the object correctly
  - New Service: ECR (EC2 Container Registry)
