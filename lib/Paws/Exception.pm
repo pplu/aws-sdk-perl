@@ -13,4 +13,9 @@ package Paws::Exception;
     isa => 'Str',
     required => 1,
   );
+
+  has http_status => (
+    is => 'ro',
+    isa => 'Int',
+  );
 1;

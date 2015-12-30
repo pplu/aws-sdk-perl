@@ -36,6 +36,7 @@ package Paws::Net::RestXMLResponse;
       code => $code,
       request_id => $request_id,
       host_id => $host_id,
+      http_status => $http_status,
     );
   }
 

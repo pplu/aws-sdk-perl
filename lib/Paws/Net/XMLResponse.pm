@@ -36,7 +36,8 @@ package Paws::Net::XMLResponse;
     Paws::Exception->new(
       message => $error->{Message}, 
       code => $code, 
-      request_id => $request_id
+      request_id => $request_id,
+      http_status => $http_status,
     );
   }
 
