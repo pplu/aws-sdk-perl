@@ -37,6 +37,9 @@ package FileCaller;
 		my ($self, $service, $call_object) = @_;
 
 		my $response = $self->_file_response;
+
+                if (ref($response->{headers}) eq 'ARRAY') { $response->{headers} = {} }
+
 		my $res = $service->handle_response($call_object, $response->{status},
 				$response->{content}, $response->{headers});
 
