@@ -1,4 +1,4 @@
-package Paws::Net::RetryCallerRole {
+package Paws::Net::RetryCallerRole;
   use Moose::Role;
   use Time::HiRes 'sleep';
   use Paws::API::Retry;
@@ -28,6 +28,4 @@ package Paws::Net::RetryCallerRole {
   }
 
   requires 'send_request';
-
-}
 1;
