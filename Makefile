@@ -23,11 +23,13 @@ copy-tests:
 	rm t/10_responses/cloudfront-* t/10_responses/s3-*
 	rm t/10_responses/*.json
 
+dist: dist-builder dist-paws
+
 dist-builder:
 	cp cpanfile-ext-builder cpanfile
 	cp dist.ini-ext-builder dist.ini
-	dzil build
+	carton exec dzil build
 dist-paws:
 	cp cpanfile-paws cpanfile
 	cp dist.ini-paws dist.ini
-	dzil build
+	carton exec dzil build
