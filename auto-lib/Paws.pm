@@ -610,5 +610,7 @@ Glen van Ginkel for contributions to get S3 working
 
 Javier Arellano for discovering Tagging bug
 
+Ioan Rogers for contributing AssumeRoleWithSAML with ADFS auth example
+
 
 =cut
