@@ -46,8 +46,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Details => Bool
 
-(Optional) If set this returns the response of the command executions.
-By default this is set to False.
+(Optional) If set this returns the response of the command executions
+and any command output. By default this is set to False.
 
 
 
