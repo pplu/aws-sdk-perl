@@ -254,6 +254,8 @@ L<Paws::CloudWatch>
 
 L<Paws::CloudWatch>
 
+L<Paws::CloudWatchEvents>
+
 L<Paws::CloudWatchLogs>
 
 L<Paws::CodeCommit>
