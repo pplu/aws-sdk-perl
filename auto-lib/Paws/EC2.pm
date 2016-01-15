@@ -569,6 +569,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeRouteTables', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeScheduledInstanceAvailability {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeScheduledInstanceAvailability', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeScheduledInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeScheduledInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSecurityGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSecurityGroups', @_);
@@ -649,6 +659,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcClassicLink', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeVpcClassicLinkDnsSupport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcClassicLinkDnsSupport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeVpcEndpoints {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVpcEndpoints', @_);
@@ -714,6 +729,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisableVpcClassicLink', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableVpcClassicLinkDnsSupport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisableVpcClassicLinkDnsSupport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateAddress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateAddress', @_);
@@ -737,6 +757,11 @@ package Paws::EC2;
   sub EnableVpcClassicLink {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::EnableVpcClassicLink', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableVpcClassicLinkDnsSupport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::EnableVpcClassicLinkDnsSupport', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetConsoleOutput {
@@ -854,6 +879,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::PurchaseReservedInstancesOffering', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PurchaseScheduledInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::PurchaseScheduledInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RebootInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RebootInstances', @_);
@@ -952,6 +982,11 @@ package Paws::EC2;
   sub RunInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RunInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RunScheduledInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RunScheduledInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartInstances {
@@ -1106,7 +1141,7 @@ package Paws::EC2;
     return 'Paws::EC2::DescribeVolumeStatus'->_returns->new(VolumeStatuses => $array);
   }
 
-  sub operations { qw/AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHosts DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink GetConsoleOutput GetPasswordData ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint MonitorInstances MoveAddressToVpc PurchaseReservedInstancesOffering RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
+  sub operations { qw/AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHosts DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetPasswordData ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint MonitorInstances MoveAddressToVpc PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
 
 1;
 
@@ -1485,7 +1520,7 @@ Each argument is described in detail in: L<Paws::EC2::CancelReservedInstancesLis
 
 Returns: a L<Paws::EC2::CancelReservedInstancesListingResult> instance
 
-  Cancels the specified Reserved instance listing in the Reserved
+  Cancels the specified Reserved Instance listing in the Reserved
 Instance Marketplace.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
@@ -1835,23 +1870,23 @@ Each argument is described in detail in: L<Paws::EC2::CreateReservedInstancesLis
 
 Returns: a L<Paws::EC2::CreateReservedInstancesListingResult> instance
 
-  Creates a listing for Amazon EC2 Reserved instances to be sold in the
-Reserved Instance Marketplace. You can submit one Reserved instance
-listing at a time. To get a list of your Reserved instances, you can
+  Creates a listing for Amazon EC2 Reserved Instances to be sold in the
+Reserved Instance Marketplace. You can submit one Reserved Instance
+listing at a time. To get a list of your Reserved Instances, you can
 use the DescribeReservedInstances operation.
 
 The Reserved Instance Marketplace matches sellers who want to resell
-Reserved instance capacity that they no longer need with buyers who
-want to purchase additional capacity. Reserved instances bought and
+Reserved Instance capacity that they no longer need with buyers who
+want to purchase additional capacity. Reserved Instances bought and
 sold through the Reserved Instance Marketplace work like any other
-Reserved instances.
+Reserved Instances.
 
-To sell your Reserved instances, you must first register as a seller in
+To sell your Reserved Instances, you must first register as a seller in
 the Reserved Instance Marketplace. After completing the registration
 process, you can create a Reserved Instance Marketplace listing of some
-or all of your Reserved instances, and specify the upfront price to
-receive for them. Your Reserved instance listings then become available
-for purchase. To view the details of your Reserved instance listing,
+or all of your Reserved Instances, and specify the upfront price to
+receive for them. Your Reserved Instance listings then become available
+for purchase. To view the details of your Reserved Instance listing,
 you can use the DescribeReservedInstancesListings operation.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
@@ -2658,10 +2693,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeIdFormat>
 
 Returns: a L<Paws::EC2::DescribeIdFormatResult> instance
 
-  B<Important: This command is reserved for future use, and is currently
-not available for you to use.>
-
-Describes the ID format settings for your resources on a per-region
+  Describes the ID format settings for your resources on a per-region
 basis, for example, to view which resource types are enabled for longer
 IDs. This request only returns information about resource types whose
 ID formats can be modified; it does not return information about other
@@ -2909,9 +2941,9 @@ Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstances>
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesResult> instance
 
-  Describes one or more of the Reserved instances that you purchased.
+  Describes one or more of the Reserved Instances that you purchased.
 
-For more information about Reserved instances, see Reserved Instances
+For more information about Reserved Instances, see Reserved Instances
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -2921,24 +2953,24 @@ Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesL
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesListingsResult> instance
 
-  Describes your account's Reserved instance listings in the Reserved
+  Describes your account's Reserved Instance listings in the Reserved
 Instance Marketplace.
 
 The Reserved Instance Marketplace matches sellers who want to resell
-Reserved instance capacity that they no longer need with buyers who
-want to purchase additional capacity. Reserved instances bought and
+Reserved Instance capacity that they no longer need with buyers who
+want to purchase additional capacity. Reserved Instances bought and
 sold through the Reserved Instance Marketplace work like any other
 Reserved Instances.
 
-As a seller, you choose to list some or all of your Reserved instances,
+As a seller, you choose to list some or all of your Reserved Instances,
 and you specify the upfront price to receive for them. Your Reserved
-instances are then listed in the Reserved Instance Marketplace and are
+Instances are then listed in the Reserved Instance Marketplace and are
 available for purchase.
 
-As a buyer, you specify the configuration of the Reserved instance to
+As a buyer, you specify the configuration of the Reserved Instance to
 purchase, and the Marketplace matches what you're searching for with
 what's available. The Marketplace first sells the lowest priced
-Reserved instances to you, and continues to sell available Reserved
+Reserved Instances to you, and continues to sell available Reserved
 Instance listings to you until your demand is met. You are charged
 based on the total price of all of the listings that you purchase.
 
@@ -2952,8 +2984,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesM
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesModificationsResult> instance
 
-  Describes the modifications made to your Reserved instances. If no
-parameter is specified, information about all your Reserved instances
+  Describes the modifications made to your Reserved Instances. If no
+parameter is specified, information about all your Reserved Instances
 modification requests is returned. If a modification ID is specified,
 only information about the specific modification is returned.
 
@@ -2967,15 +2999,15 @@ Each argument is described in detail in: L<Paws::EC2::DescribeReservedInstancesO
 
 Returns: a L<Paws::EC2::DescribeReservedInstancesOfferingsResult> instance
 
-  Describes Reserved instance offerings that are available for purchase.
-With Reserved instances, you purchase the right to launch instances for
+  Describes Reserved Instance offerings that are available for purchase.
+With Reserved Instances, you purchase the right to launch instances for
 a period of time. During that time period, you do not receive
 insufficient capacity errors, and you pay a lower usage rate than the
 rate charged for On-Demand instances for the actual time used.
 
-If you have listed your own Reserved instances for sale in the Reserved
+If you have listed your own Reserved Instances for sale in the Reserved
 Instance Marketplace, they will be excluded from these results. This is
-to ensure that you do not purchase your own Reserved instances.
+to ensure that you do not purchase your own Reserved Instances.
 
 For more information, see Reserved Instance Marketplace in the I<Amazon
 Elastic Compute Cloud User Guide>.
@@ -2996,6 +3028,34 @@ return the subnet ID for implicit associations.
 
 For more information about route tables, see Route Tables in the
 I<Amazon Virtual Private Cloud User Guide>.
+
+
+=head2 DescribeScheduledInstanceAvailability(FirstSlotStartTimeRange => L<Paws::EC2::SlotDateTimeRangeRequest>, Recurrence => L<Paws::EC2::ScheduledInstanceRecurrenceRequest>, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, MaxSlotDurationInHours => Int, MinSlotDurationInHours => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeScheduledInstanceAvailability>
+
+Returns: a L<Paws::EC2::DescribeScheduledInstanceAvailabilityResult> instance
+
+  Finds available schedules that meet the specified criteria.
+
+You can search for an available schedule no more than 3 months in
+advance. You must meet the minimum required duration of 1,200 hours per
+year. For example, the minimum daily schedule is 4 hours, the minimum
+weekly schedule is 24 hours, and the minimum monthly schedule is 100
+hours.
+
+After you find a schedule that meets your needs, call
+PurchaseScheduledInstances to purchase Scheduled Instances with that
+schedule.
+
+
+=head2 DescribeScheduledInstances([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ScheduledInstanceIds => ArrayRef[Str], SlotStartTimeRange => L<Paws::EC2::SlotStartTimeRangeRequest>])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeScheduledInstances>
+
+Returns: a L<Paws::EC2::DescribeScheduledInstancesResult> instance
+
+  Describes one or more of your Scheduled Instances.
 
 
 =head2 DescribeSecurityGroups([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], GroupIds => ArrayRef[Str], GroupNames => ArrayRef[Str]])
@@ -3294,6 +3354,21 @@ Returns: a L<Paws::EC2::DescribeVpcClassicLinkResult> instance
   Describes the ClassicLink status of one or more VPCs.
 
 
+=head2 DescribeVpcClassicLinkDnsSupport([MaxResults => Int, NextToken => Str, VpcIds => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeVpcClassicLinkDnsSupport>
+
+Returns: a L<Paws::EC2::DescribeVpcClassicLinkDnsSupportResult> instance
+
+  Describes the ClassicLink DNS support status of one or more VPCs. If
+enabled, the DNS hostname of a linked EC2-Classic instance resolves to
+its private IP address when addressed from an instance in the VPC to
+which it's linked. Similarly, the DNS hostname of an instance in a VPC
+resolves to its private IP address when addressed from a linked
+EC2-Classic instance. For more information about ClassicLink, see
+ClassicLink in the Amazon Elastic Compute Cloud User Guide.
+
+
 =head2 DescribeVpcEndpoints([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, VpcEndpointIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeVpcEndpoints>
@@ -3448,6 +3523,19 @@ Returns: a L<Paws::EC2::DisableVpcClassicLinkResult> instance
 VPC that has EC2-Classic instances linked to it.
 
 
+=head2 DisableVpcClassicLinkDnsSupport([VpcId => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DisableVpcClassicLinkDnsSupport>
+
+Returns: a L<Paws::EC2::DisableVpcClassicLinkDnsSupportResult> instance
+
+  Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames
+resolve to public IP addresses when addressed between a linked
+EC2-Classic instance and instances in the VPC to which it's linked. For
+more information about ClassicLink, see ClassicLink in the Amazon
+Elastic Compute Cloud User Guide.
+
+
 =head2 DisassociateAddress([AssociationId => Str, DryRun => Bool, PublicIp => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DisassociateAddress>
@@ -3513,6 +3601,21 @@ C<10.0.0.0/8> IP address range, excluding local routes for VPCs in the
 C<10.0.0.0/16> and C<10.1.0.0/16> IP address ranges. For more
 information, see ClassicLink in the Amazon Elastic Compute Cloud User
 Guide.
+
+
+=head2 EnableVpcClassicLinkDnsSupport([VpcId => Str])
+
+Each argument is described in detail in: L<Paws::EC2::EnableVpcClassicLinkDnsSupport>
+
+Returns: a L<Paws::EC2::EnableVpcClassicLinkDnsSupportResult> instance
+
+  Enables a VPC to support DNS hostname resolution for ClassicLink. If
+enabled, the DNS hostname of a linked EC2-Classic instance resolves to
+its private IP address when addressed from an instance in the VPC to
+which it's linked. Similarly, the DNS hostname of an instance in a VPC
+resolves to its private IP address when addressed from a linked
+EC2-Classic instance. For more information about ClassicLink, see
+ClassicLink in the Amazon Elastic Compute Cloud User Guide.
 
 
 =head2 GetConsoleOutput(InstanceId => Str, [DryRun => Bool])
@@ -3653,10 +3756,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyIdFormat>
 
 Returns: nothing
 
-  B<Important: This command is reserved for future use, and is currently
-not available for you to use.>
-
-Modifies the ID format for the specified resource on a per-region
+  Modifies the ID format for the specified resource on a per-region
 basis. You can specify that resources should receive longer IDs
 (17-character IDs) when they are created. The following resource types
 support longer IDs: C<instance> | C<reservation>.
@@ -3742,8 +3842,8 @@ Each argument is described in detail in: L<Paws::EC2::ModifyReservedInstances>
 Returns: a L<Paws::EC2::ModifyReservedInstancesResult> instance
 
   Modifies the Availability Zone, instance count, instance type, or
-network platform (EC2-Classic or EC2-VPC) of your Reserved instances.
-The Reserved instances to be modified must be identical, except for
+network platform (EC2-Classic or EC2-VPC) of your Reserved Instances.
+The Reserved Instances to be modified must be identical, except for
 Availability Zone, network platform, and instance type.
 
 For more information, see Modifying Reserved Instances in the Amazon
@@ -3882,18 +3982,32 @@ Each argument is described in detail in: L<Paws::EC2::PurchaseReservedInstancesO
 
 Returns: a L<Paws::EC2::PurchaseReservedInstancesOfferingResult> instance
 
-  Purchases a Reserved instance for use with your account. With Amazon
-EC2 Reserved instances, you obtain a capacity reservation for a certain
-instance configuration over a specified period of time and pay a lower
-hourly rate compared to On-Demand Instance pricing.
+  Purchases a Reserved Instance for use with your account. With Reserved
+Instances, you obtain a capacity reservation for a certain instance
+configuration over a specified period of time and pay a lower hourly
+rate compared to On-Demand instance pricing.
 
 Use DescribeReservedInstancesOfferings to get a list of Reserved
-instance offerings that match your specifications. After you've
-purchased a Reserved instance, you can check for your new Reserved
-instance with DescribeReservedInstances.
+Instance offerings that match your specifications. After you've
+purchased a Reserved Instance, you can check for your new Reserved
+Instance with DescribeReservedInstances.
 
 For more information, see Reserved Instances and Reserved Instance
 Marketplace in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 PurchaseScheduledInstances(PurchaseRequests => ArrayRef[L<Paws::EC2::PurchaseRequest>], [ClientToken => Str, DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::PurchaseScheduledInstances>
+
+Returns: a L<Paws::EC2::PurchaseScheduledInstancesResult> instance
+
+  Purchases one or more Scheduled Instances with the specified schedule.
+
+Scheduled Instances enable you to purchase Amazon EC2 compute capacity
+by the hour for a one-year term. Before you can purchase a Scheduled
+Instance, you must call DescribeScheduledInstanceAvailability to check
+for available schedules and obtain a purchase token.
 
 
 =head2 RebootInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])
@@ -4278,6 +4392,24 @@ C<RunInstances> fails.
 For more information about troubleshooting, see What To Do If An
 Instance Immediately Terminates, and Troubleshooting Connecting to Your
 Instance in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 RunScheduledInstances(LaunchSpecification => L<Paws::EC2::ScheduledInstancesLaunchSpecification>, ScheduledInstanceId => Str, [ClientToken => Str, DryRun => Bool, InstanceCount => Int])
+
+Each argument is described in detail in: L<Paws::EC2::RunScheduledInstances>
+
+Returns: a L<Paws::EC2::RunScheduledInstancesResult> instance
+
+  Launches the specified Scheduled Instances.
+
+Before you can launch a Scheduled Instance, you must purchase it and
+obtain an identifier using PurchaseScheduledInstances.
+
+You must launch a Scheduled Instance during its scheduled time period.
+You can't stop or reboot a Scheduled Instance, but you can terminate it
+as needed. If you terminate a Scheduled Instance before the current
+scheduled time period ends, you can launch it again after a few
+minutes.
 
 
 =head2 StartInstances(InstanceIds => ArrayRef[Str], [AdditionalInfo => Str, DryRun => Bool])

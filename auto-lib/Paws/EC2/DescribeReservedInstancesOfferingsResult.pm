@@ -24,7 +24,7 @@ C<null> when there are no more results to return.
 
 =head2 ReservedInstancesOfferings => ArrayRef[L<Paws::EC2::ReservedInstancesOffering>]
 
-A list of Reserved instances offerings.
+A list of Reserved Instances offerings.
 
 
 

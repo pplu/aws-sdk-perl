@@ -11,7 +11,7 @@
  - Better documentation: show the valid values for an attribute when it's an enum
  - Fix bug where a StrToObj map of complex objects would not instance the object correctly
  - New Service: ECR (EC2 Container Registry)
- - EC2 API update: support for NatGateways
+ - EC2 API update: support for NatGateways, VpcClassicLinkDnsSupport, and ScheduledInstances
  - RDS API update: support for enhanced monitoring, and more new features
  - CloudFront API update: support for compressing
  - CloudTrail API update: support for multiregion trails

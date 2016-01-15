@@ -24,7 +24,7 @@ C<null> when there are no more results to return.
 
 =head2 ReservedInstancesModifications => ArrayRef[L<Paws::EC2::ReservedInstancesModification>]
 
-The Reserved instance modification information.
+The Reserved Instance modification information.
 
 
 

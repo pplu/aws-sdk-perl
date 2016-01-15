@@ -47,21 +47,21 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 B<REQUIRED> InstanceCount => Int
 
-The number of Reserved instances to purchase.
+The number of Reserved Instances to purchase.
 
 
 
 =head2 LimitPrice => L<Paws::EC2::ReservedInstanceLimitPrice>
 
 Specified for Reserved Instance Marketplace offerings to limit the
-total order and ensure that the Reserved instances are not purchased at
+total order and ensure that the Reserved Instances are not purchased at
 unexpected prices.
 
 
 
 =head2 B<REQUIRED> ReservedInstancesOfferingId => Str
 
-The ID of the Reserved instance offering to purchase.
+The ID of the Reserved Instance offering to purchase.
 
 
 

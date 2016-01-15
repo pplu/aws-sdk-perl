@@ -53,29 +53,29 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone in which the Reserved instance can be used.
+  The Availability Zone in which the Reserved Instance can be used.
 
 
 =head2 CurrencyCode => Str
 
-  The currency of the Reserved instance. It's specified using ISO 4217
+  The currency of the Reserved Instance. It's specified using ISO 4217
 standard currency codes. At this time, the only supported currency is
 C<USD>.
 
 
 =head2 Duration => Int
 
-  The duration of the Reserved instance, in seconds.
+  The duration of the Reserved Instance, in seconds.
 
 
 =head2 End => Str
 
-  The time when the Reserved instance expires.
+  The time when the Reserved Instance expires.
 
 
 =head2 FixedPrice => Num
 
-  The purchase price of the Reserved instance.
+  The purchase price of the Reserved Instance.
 
 
 =head2 InstanceCount => Int
@@ -85,22 +85,22 @@ C<USD>.
 
 =head2 InstanceTenancy => Str
 
-  The tenancy of the reserved instance.
+  The tenancy of the instance.
 
 
 =head2 InstanceType => Str
 
-  The instance type on which the Reserved instance can be used.
+  The instance type on which the Reserved Instance can be used.
 
 
 =head2 OfferingType => Str
 
-  The Reserved instance offering type.
+  The Reserved Instance offering type.
 
 
 =head2 ProductDescription => Str
 
-  The Reserved instance product platform description.
+  The Reserved Instance product platform description.
 
 
 =head2 RecurringCharges => ArrayRef[L<Paws::EC2::RecurringCharge>]
@@ -110,17 +110,17 @@ C<USD>.
 
 =head2 ReservedInstancesId => Str
 
-  The ID of the Reserved instance.
+  The ID of the Reserved Instance.
 
 
 =head2 Start => Str
 
-  The date and time the Reserved instance started.
+  The date and time the Reserved Instance started.
 
 
 =head2 State => Str
 
-  The state of the Reserved instance purchase.
+  The state of the Reserved Instance purchase.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
@@ -130,7 +130,7 @@ C<USD>.
 
 =head2 UsagePrice => Num
 
-  The usage price of the Reserved instance, per hour.
+  The usage price of the Reserved Instance, per hour.
 
 
 

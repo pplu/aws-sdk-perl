@@ -260,7 +260,11 @@ Default: Amazon EC2 uses the default security group.
 
 =head2 UserData => Str
 
-The Base64-encoded MIME user data for the instances.
+Data to configure the instance, or a script to run during instance
+launch. For more information, see Running Commands on Your Linux
+Instance at Launch (Linux) and Adding User Data (Windows). For API
+calls, the text must be base64-encoded. Command line tools perform
+encoding for you.
 
 
 

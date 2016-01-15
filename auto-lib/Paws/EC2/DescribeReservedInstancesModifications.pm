@@ -56,32 +56,32 @@ C<effective-date> - The time when the modification becomes effective.
 =item *
 
 C<modification-result.reserved-instances-id> - The ID for the Reserved
-instances created as part of the modification request. This ID is only
+Instances created as part of the modification request. This ID is only
 available when the status of the modification is C<fulfilled>.
 
 =item *
 
 C<modification-result.target-configuration.availability-zone> - The
-Availability Zone for the new Reserved instances.
+Availability Zone for the new Reserved Instances.
 
 =item *
 
 C<modification-result.target-configuration.instance-count > - The
-number of new Reserved instances.
+number of new Reserved Instances.
 
 =item *
 
 C<modification-result.target-configuration.instance-type> - The
-instance type of the new Reserved instances.
+instance type of the new Reserved Instances.
 
 =item *
 
 C<modification-result.target-configuration.platform> - The network
-platform of the new Reserved instances (C<EC2-Classic> | C<EC2-VPC>).
+platform of the new Reserved Instances (C<EC2-Classic> | C<EC2-VPC>).
 
 =item *
 
-C<reserved-instances-id> - The ID of the Reserved instances modified.
+C<reserved-instances-id> - The ID of the Reserved Instances modified.
 
 =item *
 
@@ -90,7 +90,7 @@ request.
 
 =item *
 
-C<status> - The status of the Reserved instances modification request
+C<status> - The status of the Reserved Instances modification request
 (C<processing> | C<fulfilled> | C<failed>).
 
 =item *

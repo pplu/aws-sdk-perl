@@ -367,7 +367,7 @@ interface.
 
 =item *
 
-C<network-interface-private-dns-name> - The private DNS name of the
+C<network-interface.private-dns-name> - The private DNS name of the
 network interface.
 
 =item *
