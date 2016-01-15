@@ -37,6 +37,7 @@ package Paws::API::ServiceToClass;
     emr => 'EMR',
     es => 'ES',
     email => undef,
+    events => 'CloudWatchEvents',
     firehose => 'Firehose',
     glacier => 'Glacier',
     iam => 'IAM',
