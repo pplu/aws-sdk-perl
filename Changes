@@ -13,7 +13,7 @@
  - New Service: ECR (EC2 Container Registry)
  - EC2 API update: support for NatGateways, VpcClassicLinkDnsSupport, and ScheduledInstances
  - RDS API update: support for enhanced monitoring, and more new features
- - CloudFront API update: support for compressing
+ - CloudFront API update: support for compressing and SSL to origin
  - CloudTrail API update: support for multiregion trails
  - Config API update
  - EMR API update: support for VPC EMR

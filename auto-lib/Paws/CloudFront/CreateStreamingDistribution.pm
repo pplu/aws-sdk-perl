@@ -6,7 +6,7 @@ package Paws::CloudFront::CreateStreamingDistribution;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStreamingDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-09-17/streaming-distribution');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-01-13/streaming-distribution');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateStreamingDistributionResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
