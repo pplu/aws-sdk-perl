@@ -399,7 +399,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =head1 METHODS
 [% FOR op IN c.api_struct.operations.keys.sort %]
-  [%- op_name = c.api_struct.operations.$op.name %]
+  [%- op_name = op %]
 =head2 [% op_name %](
 [%- out_shape = c.input_for_operation(op_name) %]
 [%- req_list = out_shape.required.sort %]
