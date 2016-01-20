@@ -33,8 +33,13 @@ package Paws::Net::JsonCaller;
           $p{ $key } = $params->$att;
         } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){ 
           $p{ $key } = { %{ $params->$att->Map }  };
-        } elsif ($params->$att->does('Paws::API::StrToObjMapParser')){ 
-          $p{ $key } = { map { $_ => $self->_to_jsoncaller_params($params->$att->Map->{$_}) } keys %{ $params->$att->Map } };
+        } elsif ($params->$att->does('Paws::API::StrToObjMapParser')){
+          my $type = $params->$att->meta->get_attribute('Map')->type_constraint;
+          if (my ($inner) = ("$type" =~ m/^HashRef\[ArrayRef\[(.*?)\]/)) {
+            $p{ $key } = { map { my $k = $_; ( $k => [ map { $self->_to_jsoncaller_params($_) } @{$params->$att->Map->{$_} } ] ) } keys %{ $params->$att->Map } };
+          } else {
+            $p{ $key } = { map { $_ => $self->_to_jsoncaller_params($params->$att->Map->{$_}) } keys %{ $params->$att->Map } };
+          }
         } else {
           $p{ $key } = $self->_to_jsoncaller_params($params->$att);
         }
