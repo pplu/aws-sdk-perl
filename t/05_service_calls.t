@@ -311,4 +311,37 @@ $test_params = decode_json('{"Item":{"count":{"N":33},"things":{"M":{"foo":{"S":
 
 request_contentjson($test_params, $request);
 
+$request = $dynamo->BatchWriteItem(
+  RequestItems=>{
+    Table => [ 
+      { PutRequest => {
+          Item => {
+            pagekey => { S => 'ho' },
+            job_count => { N => '123' },
+            drilldown => { S => 'hello' }
+          }
+        }
+      }
+    ]
+  }
+);
+
+$test_params = decode_json('{"RequestItems":{"Table":[{"PutRequest":{"Item":{"pagekey":{"S":"ho"},"job_count":{"N":"123"},"drilldown":{"S":"hello"}}}}]}}');
+
+request_contentjson($test_params, $request);
+
+my $ssm = $aws->service('SSM');
+
+$request = $ssm->SendCommand(
+  DocumentName => 'mydoc',
+  InstanceIds => [ 'i-12345678' ],
+  Parameters => {
+    Param1 => [ 'Value1', 'Value2' ],
+  }
+);
+
+$test_params = decode_json('{"DocumentName":"mydoc","InstanceIds":["i-12345678"],"Parameters":{"Param1":["Value1","Value2"]}}');
+
+request_contentjson($test_params, $request);
+
 done_testing;
