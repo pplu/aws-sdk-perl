@@ -110,9 +110,10 @@ Whether to clone the source stack's permissions.
 
 =head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
 
-The configuration manager. When you clone a Linux stack we recommend
-that you use the configuration manager to specify the Chef version:
-0.9, 11.4, or 11.10. The default value is currently 11.10.
+The configuration manager. When you clone a stack we recommend that you
+use the configuration manager to specify the Chef version: 12, 11.10,
+or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value
+for Linux stacks is currently 11.4.
 
 
 

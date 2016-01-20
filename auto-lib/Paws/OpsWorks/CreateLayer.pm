@@ -85,7 +85,8 @@ more information about IAM ARNs, see Using Identifiers.
 
 A JSON-formatted string containing custom stack configuration and
 deployment attributes to be installed on the layer's instances. For
-more information, see Using Custom JSON.
+more information, see Using Custom JSON. This feature is supported as
+of version 1.7.42 of the AWS CLI.
 
 
 

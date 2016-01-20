@@ -107,7 +107,8 @@ Endpoints.
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>]
 
 An array of C<BlockDeviceMapping> objects that specify the instance's
-block devices. For more information, see Block Device Mapping.
+block devices. For more information, see Block Device Mapping. Note
+that block device mappings are not supported for custom AMIs.
 
 
 
@@ -176,7 +177,8 @@ OpsWorks Operating Systems.
 
 The default option is the current Amazon Linux version. If you set this
 parameter to C<Custom>, you must use the CreateInstance action's AmiId
-parameter to specify the custom AMI that you want to use. For more
+parameter to specify the custom AMI that you want to use. Block device
+mappings are not supported if the value is C<Custom>. For more
 information on the supported operating systems, see Operating
 SystemsFor more information on how to use custom AMIs with AWS
 OpsWorks, see Using Custom AMIs.

@@ -68,10 +68,10 @@ automatically installs that version on the stack's instances.
 
 =back
 
-The default setting is C<LATEST>. To specify an agent version, you must
-use the complete version number, not the abbreviated number shown on
-the console. For a list of available agent version numbers, call
-DescribeAgentVersions.
+The default setting is the most recent release of the agent. To specify
+an agent version, you must use the complete version number, not the
+abbreviated number shown on the console. For a list of available agent
+version numbers, call DescribeAgentVersions.
 
 You can also specify an agent version when you create or update an
 instance, which overrides the stack's default setting.
@@ -95,9 +95,10 @@ information, see Create a New Stack.
 
 =head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
 
-The configuration manager. When you clone a stack we recommend that you
-use the configuration manager to specify the Chef version: 0.9, 11.4,
-or 11.10. The default value is currently 11.4.
+The configuration manager. When you create a stack we recommend that
+you use the configuration manager to specify the Chef version: 12,
+11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The
+default value for Linux stacks is currently 11.4.
 
 
 
