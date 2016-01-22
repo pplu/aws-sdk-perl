@@ -12,6 +12,7 @@
  - Fix bug where a StrToObj map of complex objects would not instance the object correctly
  - New Service: ECR (EC2 Container Registry)
  - New Service: CloudWatch Events
+ - New Service: ACM (AWS Certificate Manager)
  - EC2 API update: support for NatGateways, VpcClassicLinkDnsSupport, and ScheduledInstances
  - RDS API update: support for enhanced monitoring, and more new features
  - CloudFront API update: support for compressing and SSL to origin

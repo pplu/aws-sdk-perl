@@ -234,6 +234,8 @@ kept stable, and changes to it should be notified via ChangeLog
 =head1 SUPPORTED SERVICES
 
 
+L<Paws::ACM>
+
 L<Paws::ApiGateway>
 
 L<Paws::AutoScaling>
