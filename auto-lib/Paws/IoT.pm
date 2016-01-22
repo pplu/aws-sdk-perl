@@ -114,6 +114,16 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DetachThingPrincipal', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableTopicRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DisableTopicRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableTopicRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::EnableTopicRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetLoggingOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetLoggingOptions', @_);
@@ -210,7 +220,7 @@ package Paws::IoT;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateTopicRule DeleteCertificate DeletePolicy DeletePolicyVersion DeleteThing DeleteTopicRule DescribeCertificate DescribeEndpoint DescribeThing DetachPrincipalPolicy DetachThingPrincipal GetLoggingOptions GetPolicy GetPolicyVersion GetTopicRule ListCertificates ListPolicies ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListTopicRules RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCertificate UpdateThing / }
+  sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateTopicRule DeleteCertificate DeletePolicy DeletePolicyVersion DeleteThing DeleteTopicRule DescribeCertificate DescribeEndpoint DescribeThing DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetLoggingOptions GetPolicy GetPolicyVersion GetTopicRule ListCertificates ListPolicies ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListTopicRules RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCertificate UpdateThing / }
 
 1;
 
@@ -529,6 +539,24 @@ Returns: a L<Paws::IoT::DetachThingPrincipalResponse> instance
   Detaches the specified principal from the specified thing.
 
 
+=head2 DisableTopicRule(RuleName => Str)
+
+Each argument is described in detail in: L<Paws::IoT::DisableTopicRule>
+
+Returns: nothing
+
+  Disables the specified rule
+
+
+=head2 EnableTopicRule(RuleName => Str)
+
+Each argument is described in detail in: L<Paws::IoT::EnableTopicRule>
+
+Returns: nothing
+
+  Enables the specified rule.
+
+
 =head2 GetLoggingOptions()
 
 Each argument is described in detail in: L<Paws::IoT::GetLoggingOptions>
@@ -686,7 +714,7 @@ the policy is attached to. To list the principals the policy is
 attached to, use the ListPrincipalPolicy API.
 
 
-=head2 SetLoggingOptions([LoggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>])
+=head2 SetLoggingOptions(LoggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>)
 
 Each argument is described in detail in: L<Paws::IoT::SetLoggingOptions>
 

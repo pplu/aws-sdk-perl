@@ -45,7 +45,7 @@ The maximum number of principals to return.
 
 =head2 NextToken => Str
 
-
+A token used to retrieve the next value.
 
 
 
