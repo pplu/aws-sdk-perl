@@ -20,6 +20,7 @@
  - EMR API update: support for VPC EMR
  - ECS API update: deployment options
  - IoT API update: Topic rules 
+ - CloudFormation API update: ContinueUpdateRollback method
 
 0.21 16 Dec 2015
  - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)

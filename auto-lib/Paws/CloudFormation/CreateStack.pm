@@ -94,7 +94,7 @@ Valid values are: C<"DO_NOTHING">, C<"ROLLBACK">, C<"DELETE">
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
 A list of C<Parameter> structures that specify input parameters for the
-stack.
+stack. For more information, see the Parameter data type.
 
 
 
@@ -126,7 +126,7 @@ the region in which you are creating the stack.
 
 A stack name can contain only alphanumeric characters (case sensitive)
 and hyphens. It must start with an alphabetic character and cannot be
-longer than 255 characters.
+longer than 128 characters.
 
 
 
@@ -150,10 +150,9 @@ C<StackPolicyURL> parameter, but not both.
 
 =head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
 
-A set of user-defined C<Tags> to associate with this stack, represented
-by key/value pairs. Tags defined for the stack are propagated to EC2
-resources that are created as part of the stack. A maximum number of 10
-tags can be specified.
+Key-value pairs to associate with this stack. AWS CloudFormation also
+propagates these tags to the resources created in the stack. A maximum
+number of 10 tags can be specified.
 
 
 

@@ -36,10 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-String that identifies the start of the next list of events, if there
-is one.
-
-Default: There is no default value.
+A string that identifies the next page of events that you want to
+retrieve.
 
 
 
