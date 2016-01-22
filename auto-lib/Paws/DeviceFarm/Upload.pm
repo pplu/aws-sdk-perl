@@ -137,6 +137,10 @@ upload.
 
 =item *
 
+APPIUM_PYTHON_TEST_PACKAGE: An Appium Python test package upload.
+
+=item *
+
 CALABASH_TEST_PACKAGE: A Calabash test package upload.
 
 =item *
@@ -160,6 +164,10 @@ upload.
 
 APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE: An Appium Java TestNG test package
 upload.
+
+=item *
+
+APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload.
 
 =back
 

@@ -74,6 +74,14 @@ APPIUM_JAVA_XML_OUTPUT: The Appium Java XML output type.
 
 =item *
 
+APPIUM_PYTHON_OUTPUT: The Appium Python output type.
+
+=item *
+
+APPIUM_PYTHON_XML_OUTPUT: The Appium Python XML output type.
+
+=item *
+
 APPIUM_SERVER_OUTPUT: The Appium server output type.
 
 =item *
