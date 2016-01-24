@@ -344,4 +344,15 @@ $test_params = decode_json('{"DocumentName":"mydoc","InstanceIds":["i-12345678"]
 
 request_contentjson($test_params, $request);
 
+$request = $dynamo->BatchGetItem(
+  RequestItems => {
+    table => { Keys => [ { email => { S => 'e1@test.com' } } , { email => { S => 'e2@test.com' } } ] },
+  },
+  ReturnConsumedCapacity => 'TOTAL'
+);
+
+$test_params = decode_json('{}');
+
+request_contentjson($test_params, $request);
+
 done_testing;
