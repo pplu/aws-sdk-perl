@@ -29,18 +29,17 @@ package Paws::Net::LWPCaller;
         %$headers,
         (defined $requestObj->content)?(Content => $requestObj->content):(),
     );
+    
+    $self->caller_to_response($service, $call_object, $response->code, $response->content, { $response->headers->flatten });
+  }
 
-    if ($response->code == 500 and $response->header('client-warning') eq 'Internal response') {
-        return Paws::Exception->new(message => $response->content, code => 'ConnectionError', request_id => '');
+  sub caller_to_response {
+    my ($self, $service, $call_object, $status, $content, $headers) = @_;
+    
+    if ($status == 500 and $headers->{'client-warning'} eq 'Internal response') {
+      return Paws::Exception->new(message => $content, code => 'ConnectionError', request_id => '');
     } else {
-      my $res = $service->handle_response($call_object, $response->code, $response->content, $response->headers);
-      if (not ref($res)){
-        return $res;
-      } elsif ($res->isa('Paws::Exception')) {
-        $res->throw;
-      } else {
-        return $res;
-      }
+      return $service->handle_response($call_object, $status, $content, $headers);
     }
   }
 1;
