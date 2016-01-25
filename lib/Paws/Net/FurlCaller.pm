@@ -23,7 +23,7 @@ package Paws::Net::FurlCaller;
     # HTTP::Tiny derives the Host header from the URL. It's an error to set it.
     delete $headers->{Host};
 
-    my $method = lc $requestObj->method;
+    my $method = uc $requestObj->method;
     my $response = $self->ua->request(
       url => $requestObj->url,
       headers => [ %$headers ],
