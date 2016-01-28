@@ -29,8 +29,11 @@ package Paws::Net::LWPCaller;
         %$headers,
         (defined $requestObj->content)?(Content => $requestObj->content):(),
     );
-    
-    $self->caller_to_response($service, $call_object, $response->code, $response->content, { $response->headers->flatten });
+   
+    my $lcheaders = { $response->headers->flatten };
+    $lcheaders->{ lc $_ } = delete $lcheaders->{ $_ } for (keys %$lcheaders);
+
+    $self->caller_to_response($service, $call_object, $response->code, $response->content, $lcheaders);
   }
 
   sub caller_to_response {
