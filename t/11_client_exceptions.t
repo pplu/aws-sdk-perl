@@ -13,9 +13,7 @@ use FurlResponseRecorder;
 
 my $do_real_calls = $ENV{'PAWS_RUN_REAL_CALLS'} || 0;
 
-#foreach $caller_code ('Furl', 'HTTPTiny', 'LWP') {
-#foreach $caller_code ('Furl', 'LWP') {
-foreach $caller_code ('LWP') {
+foreach $caller_code ('Furl', 'HTTPTiny', 'LWP') {
   my $caller_name = "${caller_code}ResponseRecorder";
   my $caller_dir = 't/11_client_exceptions_' . lc($caller_code) . '/';
   diag "Testing with caller $caller_name";
@@ -42,12 +40,12 @@ foreach $caller_code ('LWP') {
   # so I had to do it by hand.
   my $t1 = time;
   throws_ok {
-    $p->service('EC2', region => 'xxx')->DescribeInstances;
+    $p->service('EC2', region => 'www')->DescribeInstances;
   } 'Paws::Exception', 'got exception';
   my $t2 = time;
   cmp_ok($t2 - $t1, '>', 1, 'Got the exception after some retries');
   
-  cmp_ok($@->message, 'eq', "Could not connect to \'ec2.www.amazonaws.com:443\': Name or service not known\n", 'EC2 exception');
+  like($@->message, qr/ec2\.www\.amazonaws\.com/, 'EC2 exception says something about an invalid ec2.www.amazonaws.com');
   cmp_ok($@->code, 'eq', 'ConnectionError', 'Correct code');
   cmp_ok($@->request_id, 'eq', '', 'No Request ID for a connection error');
   
@@ -80,16 +78,16 @@ foreach $caller_code ('LWP') {
     $p->service('S3', region => 'eu-west-1')->ListBuckets;
   } 'Paws::Exception', 'got exception';
   
-  cmp_ok($@->message, 'eq', 'Bad Request', 'S3 exception');
-  cmp_ok($@->code, 'eq', '400', 'Correct code');
+  cmp_ok($@->message, 'eq', 'Forbidden', 'S3 exception');
+  cmp_ok($@->code, 'eq', '403', 'Correct code');
   cmp_ok($@->request_id, 'eq', '000000000000000000000000000000000000', 'Correct Request ID');
   
   throws_ok {
     $p->service('Route53', region => 'eu-west-1')->ListHostedZones;
   } 'Paws::Exception', 'got exception';
   
-  cmp_ok($@->message, 'eq', 'Bad Request', 'Route53 exception');
-  cmp_ok($@->code, 'eq', '400', 'Correct code');
+  cmp_ok($@->message, 'eq', 'Forbidden', 'Route53 exception');
+  cmp_ok($@->code, 'eq', '403', 'Correct code');
   cmp_ok($@->request_id, 'eq', '000000000000000000000000000000000000', 'Correct Request ID');
   
   throws_ok {
@@ -104,16 +102,16 @@ foreach $caller_code ('LWP') {
     $p->service('CloudWatchLogs', region => 'eu-west-1')->DescribeLogGroups;
   } 'Paws::Exception', 'got exception';
   
-  cmp_ok($@->message, 'eq', 'Signature expired: 20150605T230052Z is now earlier than 20150605T230936Z (20150605T231436Z - 5 min.)', 'CloudWatchLogs exception');
-  cmp_ok($@->code, 'eq', 'InvalidSignatureException', 'Correct code');
+  cmp_ok($@->message, 'eq', 'The security token included in the request is invalid.', 'CloudWatchLogs exception');
+  cmp_ok($@->code, 'eq', 'UnrecognizedClientException', 'Correct code');
   cmp_ok($@->request_id, 'eq', '000000000000000000000000000000000000', 'Correct Request ID');
   
   throws_ok {
     $p->service('Lambda', region => 'eu-west-1')->ListFunctions;
   } 'Paws::Exception', 'got exception';
   
-  cmp_ok($@->message, 'eq', 'Signature expired: 20150605T230053Z is now earlier than 20150605T230937Z (20150605T231437Z - 5 min.)', 'Lambda exception');
-  cmp_ok($@->code, 'eq', 'InvalidSignatureException', 'Correct code');
+  cmp_ok($@->message, 'eq', 'The security token included in the request is invalid.', 'Lambda exception');
+  cmp_ok($@->code, 'eq', 'UnrecognizedClientException', 'Correct code');
   cmp_ok($@->request_id, 'eq', '000000000000000000000000000000000000', 'Correct Request ID');
   
   throws_ok {

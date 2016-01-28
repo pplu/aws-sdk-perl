@@ -1,0 +1,1 @@
+{"headers":{"content-length":"109","connection":"close","date":"Thu, 28 Jan 2016 20:47:20 GMT","x-amzn-requestid":"000000000000000000000000000000000000"},"status":400,"content":"{\"code\":\"MissingParameterValueException\",\"message\":\"Required parameter missing: API version\",\"type\":\"Client\"}"}
