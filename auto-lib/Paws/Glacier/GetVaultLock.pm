@@ -10,7 +10,7 @@ package Paws::Glacier::GetVaultLock;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/lock-policy');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::GetVaultLockOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetVaultLockResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
