@@ -1,0 +1,7 @@
+---
+call: ListDomainNames
+service: ES
+tests:
+  - expected: esdomain1
+    op: eq
+    path: DomainNames.0.DomainName
