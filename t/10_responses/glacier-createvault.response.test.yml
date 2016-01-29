@@ -1,0 +1,4 @@
+---
+call: CreateVault
+service: Glacier
+tests: []
