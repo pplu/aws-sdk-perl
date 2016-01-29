@@ -1,6 +1,8 @@
-package Paws::WAF::SqlInjectionMatchTuple;
+package Paws::WAF::SizeConstraint;
   use Moose;
+  has ComparisonOperator => (is => 'ro', isa => 'Str', required => 1);
   has FieldToMatch => (is => 'ro', isa => 'Paws::WAF::FieldToMatch', required => 1);
+  has Size => (is => 'ro', isa => 'Int', required => 1);
   has TextTransformation => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -8,7 +10,7 @@ package Paws::WAF::SqlInjectionMatchTuple;
 
 =head1 NAME
 
-Paws::WAF::SqlInjectionMatchTuple
+Paws::WAF::SizeConstraint
 
 =head1 USAGE
 
@@ -19,29 +21,74 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::WAF::SqlInjectionMatchTuple object:
+As an example, if Att1 is expected to be a Paws::WAF::SizeConstraint object:
 
-  $service_obj->Method(Att1 => { FieldToMatch => $value, ..., TextTransformation => $value  });
+  $service_obj->Method(Att1 => { ComparisonOperator => $value, ..., TextTransformation => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::SqlInjectionMatchTuple object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::SizeConstraint object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->FieldToMatch
+  $result->Att1->ComparisonOperator
 
 =head1 DESCRIPTION
 
-Specifies the part of a web request that you want AWS WAF to inspect
-for snippets of malicious SQL code and, if you want AWS WAF to inspect
-a header, the name of the header.
+Specifies a constraint on the size of a part of the web request. AWS
+WAF uses the C<Size>, C<ComparisonOperator>, and C<FieldToMatch> to
+build an expression in the form of "C<Size> C<ComparisonOperator> size
+in bytes of C<FieldToMatch>". If that expression is true, the
+C<SizeConstraint> is considered to match.
 
 =head1 ATTRIBUTES
+
+
+=head2 B<REQUIRED> ComparisonOperator => Str
+
+  The type of comparison you want AWS WAF to perform. AWS WAF uses this
+in combination with the provided C<Size> and C<FieldToMatch> to build
+an expression in the form of "C<Size> C<ComparisonOperator> size in
+bytes of C<FieldToMatch>". If that expression is true, the
+C<SizeConstraint> is considered to match.
+
+B<EQ>: Used to test if the C<Size> is equal to the size of the
+C<FieldToMatch>
+
+B<NE>: Used to test if the C<Size> is not equal to the size of the
+C<FieldToMatch>
+
+B<LE>: Used to test if the C<Size> is less than or equal to the size of
+the C<FieldToMatch>
+
+B<LT>: Used to test if the C<Size> is strictly less than the size of
+the C<FieldToMatch>
+
+B<GE>: Used to test if the C<Size> is greater than or equal to the size
+of the C<FieldToMatch>
+
+B<GT>: Used to test if the C<Size> is strictly greater than the size of
+the C<FieldToMatch>
 
 
 =head2 B<REQUIRED> FieldToMatch => L<Paws::WAF::FieldToMatch>
 
   
+
+
+=head2 B<REQUIRED> Size => Int
+
+  The size in bytes that you want AWS WAF to compare against the size of
+the specified C<FieldToMatch>. AWS WAF uses this in combination with
+C<ComparisonOperator> and C<FieldToMatch> to build an expression in the
+form of "C<Size> C<ComparisonOperator> size in bytes of
+C<FieldToMatch>". If that expression is true, the C<SizeConstraint> is
+considered to match.
+
+Valid values for size are 0 - 21474836480 bytes (0 - 20 GB).
+
+If you specify C<URI> for the value of C<Type>, the / in the URI counts
+as one character. For example, the URI C</logo.jpg> is nine characters
+long.
 
 
 =head2 B<REQUIRED> TextTransformation => Str
@@ -51,10 +98,18 @@ attackers use in web requests in an effort to bypass AWS WAF. If you
 specify a transformation, AWS WAF performs the transformation on
 C<FieldToMatch> before inspecting a request for a match.
 
+Note that if you choose C<BODY> for the value of C<Type>, you must
+choose C<NONE> for C<TextTransformation> because CloudFront forwards
+only the first 8192 bytes for inspection.
+
+B<NONE>
+
+Specify C<NONE> if you don't want to perform any text transformations.
+
 B<CMD_LINE>
 
 When you're concerned that attackers are injecting an operating system
-commandline command and using unusual formatting to disguise some or
+command line command and using unusual formatting to disguise some or
 all of the command, use this option to perform the following
 transformations:
 
@@ -126,10 +181,6 @@ Use this option to convert uppercase letters (A-Z) to lowercase (a-z).
 B<URL_DECODE>
 
 Use this option to decode a URL-encoded value.
-
-B<NONE>
-
-Specify C<NONE> if you don't want to perform any text transformations.
 
 
 

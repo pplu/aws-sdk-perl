@@ -129,6 +129,14 @@ C<?> character.
 part of a URL that identifies a resource, for example,
 C</images/daily-ad.jpg>.
 
+=item * C<BODY>: The part of a request that contains any additional
+data that you want to send to your web server as the HTTP request body,
+such as data from a form. The request body immediately follows the
+request headers. Note that only the first C<8192> bytes of the request
+body are forwarded to AWS WAF for inspection. To allow or block
+requests based on the length of the body, you can create a size
+constraint set. For more information, see CreateSizeConstraintSet.
+
 =back
 
 If C<TargetString> includes alphabetic characters A-Z and a-z, note
@@ -219,10 +227,10 @@ characters. C<HTML_ENTITY_DECODE> performs the following operations:
 =item * Replaces C<(ampersand)gt;> with C<E<gt>>
 
 =item * Replaces characters that are represented in hexadecimal format,
-C<(ampersand)(hash)xhhhh;>, with the corresponding characters
+C<(ampersand)
 
 =item * Replaces characters that are represented in decimal format,
-C<(ampersand)(hash)nnnn;>, with the corresponding characters
+C<(ampersand)
 
 =back
 
