@@ -8,6 +8,8 @@
  - New: Paws::Net::Caller, LWPCaller  and FurlCaller now implement retry logic in case APIs
         return a retriable HTTP error
  - New: DynamoDB now benefits from crc-32 errors, and being able to retry the call
+ - Work to get RestJson services. Some can now be called correctly (ES is working, for example
+   others need tests)
  - Better documentation: show the valid values for an attribute when it's an enum
  - Fix bug where a call to DescribeAutoScalingGroups would die if the API was not returning the LaunchConfigurationName attribute for the Instance shape (reported by msoriano)
  - Fix bug where a StrToObj map of complex objects would not instance the object correctly
@@ -23,6 +25,7 @@
  - ECS API update: deployment options
  - IoT API update: Topic rules 
  - CloudFormation API update: ContinueUpdateRollback method
+ - WAF API update
 
 0.21 16 Dec 2015
  - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)

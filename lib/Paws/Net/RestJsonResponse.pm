@@ -6,6 +6,9 @@ package Paws::Net::RestJsonResponse;
   
   sub unserialize_response {
     my ($self, $data) = @_;
+
+    return {} if (not defined $data or $data eq '');
+
     my $json = decode_json( $data );
     return $json;
   }

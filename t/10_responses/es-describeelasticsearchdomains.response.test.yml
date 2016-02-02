@@ -1,0 +1,61 @@
+---
+call: DescribeElasticsearchDomains
+service: ES
+tests:
+  - expected: 1
+    op: eq
+    path: DomainStatusList.0.ElasticsearchClusterConfig.InstanceCount
+  - expected: 1
+    op: eq
+    path: DomainStatusList.0.Created
+  - expected: 10
+    op: eq
+    path: DomainStatusList.0.EBSOptions.VolumeSize
+  - expected: 0
+    op: eq
+    path: DomainStatusList.0.EBSOptions.Iops
+  - expected: 0
+    op: eq
+    path: DomainStatusList.0.ElasticsearchClusterConfig.ZoneAwarenessEnabled
+  - expected: 1
+    op: eq
+    path: DomainStatusList.0.Deleted
+  - expected: t2.micro.elasticsearch
+    op: eq
+    path: DomainStatusList.0.ElasticsearchClusterConfig.InstanceType
+  - expected: esdomain1
+    op: eq
+    path: DomainStatusList.0.DomainName
+  - expected: ''
+    op: eq
+    path: DomainStatusList.0.AccessPolicies
+  - expected: 0
+    op: eq
+    path: DomainStatusList.0.SnapshotOptions.AutomatedSnapshotStartHour
+  - expected: true
+    op: eq
+    path: DomainStatusList.0.AdvancedOptions.Map.{rest.action.multi.allow_explicit_index}
+  - expected: 1
+    op: eq
+    path: DomainStatusList.0.Processing
+  - expected: ''
+    op: eq
+    path: DomainStatusList.0.AdvancedOptions.Map.{indices.fielddata.cache.size}
+  - expected: 0
+    op: eq
+    path: DomainStatusList.0.ElasticsearchClusterConfig.DedicatedMasterEnabled
+  - expected: 384647462792/esdomain1
+    op: eq
+    path: DomainStatusList.0.DomainId
+  - expected: 1
+    op: eq
+    path: DomainStatusList.0.EBSOptions.EBSEnabled
+  - expected: standard
+    op: eq
+    path: DomainStatusList.0.EBSOptions.VolumeType
+  - expected: search-esdomain1-q34bly73ntvrr3264n2o5tnyfa.eu-west-1.es.amazonaws.com
+    op: eq
+    path: DomainStatusList.0.Endpoint
+  - expected: arn:aws:es:eu-west-1:384647462792:domain/esdomain1
+    op: eq
+    path: DomainStatusList.0.ARN

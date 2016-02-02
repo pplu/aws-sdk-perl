@@ -29,11 +29,15 @@ package Paws::Net::Caller;
         (defined $requestObj->content)?(content => $requestObj->content):(),
       }
     );
+    $self->caller_to_response($service, $call_object, $response->{status}, $response->{content}, $response->{headers});
+  }
 
-    if ($response->{status} == 599){
-      return Paws::Exception->new(message => $response->{content}, code => 'ConnectionError', request_id => '');
+  sub caller_to_response {
+    my ($self, $service, $call_object, $status, $content, $headers) = @_;
+    if ($status == 599){
+      return Paws::Exception->new(message => $content, code => 'ConnectionError', request_id => '');
     } else {
-      return $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});
+      return $service->handle_response($call_object, $status, $content, $headers);
     }
   }
 1;

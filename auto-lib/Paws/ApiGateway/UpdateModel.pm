@@ -11,7 +11,7 @@ package Paws::ApiGateway::UpdateModel;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/models/{model_name}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Model');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateModelResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###

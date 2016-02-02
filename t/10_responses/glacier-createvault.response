@@ -1,0 +1,9 @@
+---
+content: '{}'
+headers:
+  content-length: 2
+  content-type: application/json
+  date: 'Thu, 28 Jan 2016 23:39:15 GMT'
+  location: /384647462792/vaults/test_vault
+  x-amzn-requestid: dmYMSyT--FsJ2O3MRqqxjYamI4t5DZNl2DJWsSLGR_nX8hk
+status: 201

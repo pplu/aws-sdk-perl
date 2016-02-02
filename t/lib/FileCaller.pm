@@ -24,43 +24,46 @@
 # 	- environment variable PAWS_RESPONSE_FILE
 
 package FileCaller;
-	use Moose;
-	use Carp qw(croak);
-	use YAML qw/LoadFile/;
+  use Moose;
+  use Carp qw(croak);
+  use YAML qw/LoadFile/;
 
-	with 'Paws::Net::CallerRole';
+  with 'Paws::Net::CallerRole';
 
-	has response_file => ( is => 'rw', default => sub { $ENV{'PAWS_RESPONSE_FILE'} } );
-	has debug => ( is => 'rw', default => 0 );
+  has response_file => ( is => 'rw', default => sub { $ENV{'PAWS_RESPONSE_FILE'} } );
+  has debug => ( is => 'rw', default => 0 );
 
-	sub do_call {
-		my ($self, $service, $call_object) = @_;
+  sub do_call {
+    my ($self, $service, $call_object) = @_;
 
-		my $response = $self->_file_response;
+    my $response = $self->_file_response;
 
-                if (ref($response->{headers}) eq 'ARRAY') { $response->{headers} = {} }
+    if (ref($response->{headers}) eq 'ARRAY') { $response->{headers} = {} }
 
-		my $res = $service->handle_response($call_object, $response->{status},
-				$response->{content}, $response->{headers});
+    return $self->caller_to_response($service, $call_object, $response->{status}, $response->{content}, $response->{headers});
+  }
 
-		return $res;
-	}
+  sub caller_to_response {
+    my ($self, $service, $call_object, $status, $content, $headers) = @_;
 
-	# Return a fake HTTP-like response cooked in a YAML file
-	sub _file_response {
-		my ($self) = @_;
+    my $res = $service->handle_response($call_object, $status, $content, $headers);
 
-		my $res = LoadFile($self->response_file);
-		if ($self->debug) {
-			print STDERR "Loading from file " . $self->response_file . "\n";
-			use Data::Dumper;
-			print Dumper($res);
-		}
+    return $res;
+  }
 
-		return $res;
-	}
+  # Return a fake HTTP-like response cooked in a YAML file
+  sub _file_response {
+    my ($self) = @_;
 
+    my $res = LoadFile($self->response_file);
+    if ($self->debug) {
+      print STDERR "Loading from file " . $self->response_file . "\n";
+      use Data::Dumper;
+      print Dumper($res);
+    }
 
-	no Moose;
+    return $res;
+  }
 
+  no Moose;
 1;
