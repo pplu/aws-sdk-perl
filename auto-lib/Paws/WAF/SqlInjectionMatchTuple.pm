@@ -49,7 +49,7 @@ a header, the name of the header.
   Text transformations eliminate some of the unusual formatting that
 attackers use in web requests in an effort to bypass AWS WAF. If you
 specify a transformation, AWS WAF performs the transformation on
-C<TargetString> before inspecting a request for a match.
+C<FieldToMatch> before inspecting a request for a match.
 
 B<CMD_LINE>
 
@@ -112,10 +112,10 @@ characters. C<HTML_ENTITY_DECODE> performs the following operations:
 =item * Replaces C<(ampersand)gt;> with C<E<gt>>
 
 =item * Replaces characters that are represented in hexadecimal format,
-C<(ampersand)(hash)xhhhh;>, with the corresponding characters
+C<(ampersand)
 
 =item * Replaces characters that are represented in decimal format,
-C<(ampersand)(hash)nnnn;>, with the corresponding characters
+C<(ampersand)
 
 =back
 

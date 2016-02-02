@@ -2,6 +2,8 @@ package Test05Caller;
   use Moose;
   with 'Paws::Net::CallerRole';
 
+  sub caller_to_response {}
+
   sub do_call {
     my ($self, $service, $call_object) = @_;
 

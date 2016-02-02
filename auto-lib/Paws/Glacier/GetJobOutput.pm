@@ -12,7 +12,7 @@ package Paws::Glacier::GetJobOutput;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/jobs/{jobId}/output');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::GetJobOutputOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetJobOutputResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###

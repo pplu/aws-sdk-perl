@@ -1,0 +1,19 @@
+---
+call: DescribeVault
+service: Glacier
+tests:
+  - expected: test_vault
+    op: eq
+    path: VaultName
+  - expected: arn:aws:glacier:eu-west-1:000000000000:vaults/test_vault
+    op: eq
+    path: VaultARN
+  - expected: 0
+    op: eq
+    path: SizeInBytes
+  - expected: 2016-01-28T23:39:16.532Z
+    op: eq
+    path: CreationDate
+  - expected: 0
+    op: eq
+    path: NumberOfArchives

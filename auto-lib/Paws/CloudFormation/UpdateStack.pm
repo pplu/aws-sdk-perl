@@ -63,8 +63,9 @@ InsufficientCapabilities error.
 
 =head2 NotificationARNs => ArrayRef[Str]
 
-Update the ARNs for the Amazon SNS topics that are associated with the
-stack.
+Amazon Simple Notification Service topic Amazon Resource Names (ARNs)
+that AWS CloudFormation associates with the stack. Specify an empty
+list to remove all notification topics.
 
 
 
@@ -86,7 +87,7 @@ updating, the stack update fails. By default, AWS CloudFormation grants
 permissions to all resource types. AWS Identity and Access Management
 (IAM) uses this parameter for AWS CloudFormation-specific condition
 keys in IAM policies. For more information, see Controlling Access with
-AWS Identity and Access Management
+AWS Identity and Access Management.
 
 
 

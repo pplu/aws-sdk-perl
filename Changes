@@ -8,10 +8,14 @@
  - New: Paws::Net::Caller, LWPCaller  and FurlCaller now implement retry logic in case APIs
         return a retriable HTTP error
  - New: DynamoDB now benefits from crc-32 errors, and being able to retry the call
+ - Work to get RestJson services. Some can now be called correctly (ES is working, for example
+   others need tests)
  - Better documentation: show the valid values for an attribute when it's an enum
+ - Fix bug where a call to DescribeAutoScalingGroups would die if the API was not returning the LaunchConfigurationName attribute for the Instance shape (reported by msoriano)
  - Fix bug where a StrToObj map of complex objects would not instance the object correctly
  - New Service: ECR (EC2 Container Registry)
  - New Service: CloudWatch Events
+ - New Service: ACM (AWS Certificate Manager)
  - EC2 API update: support for NatGateways, VpcClassicLinkDnsSupport, and ScheduledInstances
  - RDS API update: support for enhanced monitoring, and more new features
  - CloudFront API update: support for compressing and SSL to origin
@@ -19,7 +23,9 @@
  - Config API update
  - EMR API update: support for VPC EMR
  - ECS API update: deployment options
- - EC2 docu update
+ - IoT API update: Topic rules 
+ - CloudFormation API update: ContinueUpdateRollback method
+ - WAF API update
 
 0.21 16 Dec 2015
  - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)

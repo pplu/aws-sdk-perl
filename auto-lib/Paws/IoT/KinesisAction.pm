@@ -45,7 +45,7 @@ Describes an action to write data to an Amazon Kinesis stream.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  The ARN of the IAM role that grants access.
+  The ARN of the IAM role that grants access to the Kinesis stream.
 
 
 =head2 B<REQUIRED> StreamName => Str

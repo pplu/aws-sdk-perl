@@ -1,0 +1,1 @@
+{"headers":{"date":"Thu, 28 Jan 2016 20:47:17 GMT","x-amzn-requestid":"000000000000000000000000000000000000","content-type":"application/x-amz-json-1.0","content-length":"132","x-amz-crc32":"3880715766"},"status":400,"content":"{\"__type\":\"com.amazon.coral.service#UnrecognizedClientException\",\"message\":\"The security token included in the request is invalid.\"}"}

@@ -1,0 +1,16 @@
+---
+call: ListTagsForVault
+service: Glacier
+tests:
+  - expected: Tag1
+    op: eq
+    path: Tags.Map.Name
+  - expected: v1
+    op: eq
+    path: Tags.Map.t1
+  - expected: Tag1Value
+    op: eq
+    path: Tags.Map.Value
+  - expected: v2
+    op: eq
+    path: Tags.Map.t2

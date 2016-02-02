@@ -17,8 +17,9 @@ Paws::CloudFormation::ListStackResourcesOutput
 
 =head2 NextToken => Str
 
-String that identifies the start of the next list of stack resources,
-if there is one.
+If the output exceeds 1 MB in size, a string that identifies the next
+page of stack resources. If no additional page exists, this value is
+null.
 
 
 

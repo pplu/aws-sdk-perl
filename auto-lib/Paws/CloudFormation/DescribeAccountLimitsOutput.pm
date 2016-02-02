@@ -24,8 +24,8 @@ account limits and their values.
 
 =head2 NextToken => Str
 
-A string that identifies the next page of limits. If no additional page
-exists, this value is null.
+If the output exceeds 1 MB in size, a string that identifies the next
+page of limits. If no additional page exists, this value is null.
 
 
 

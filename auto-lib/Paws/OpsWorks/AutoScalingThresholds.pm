@@ -59,7 +59,8 @@ on Your Behalf.
 
 =head2 CpuThreshold => Num
 
-  The CPU utilization threshold, as a percent of the available CPU.
+  The CPU utilization threshold, as a percent of the available CPU. A
+value of -1 disables the threshold.
 
 
 =head2 IgnoreMetricsTime => Int
@@ -82,13 +83,14 @@ threshold.
 
 =head2 LoadThreshold => Num
 
-  The load threshold. For more information about how load is computed,
-see Load (computing).
+  The load threshold. A value of -1 disables the threshold. For more
+information about how load is computed, see Load (computing).
 
 
 =head2 MemoryThreshold => Num
 
   The memory utilization threshold, as a percent of the available memory.
+A value of -1 disables the threshold.
 
 
 =head2 ThresholdsWaitTime => Int
