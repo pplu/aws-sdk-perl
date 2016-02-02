@@ -1,0 +1,38 @@
+---
+desc: Test that we don't die if the call doesn't return the LaunchConfigurationName for the Paws::Autoscaling::Instance. This happens when the user has deleted the LC with which the instance was launched
+call: DescribeAutoScalingGroups
+service: AutoScaling
+tests:
+  - expected: arn:aws:autoscaling:eu-west-1:000000000000:autoScalingGroup:00000000-0000-0000-0000-000000000000:autoScalingGroupName/Name-0000000000000
+    op: eq
+    path: AutoScalingGroups.0.AutoScalingGroupARN
+  - expected: Name-0000000000
+    op: eq
+    path: AutoScalingGroups.0.AutoScalingGroupName
+  - expected: eu-west-1a
+    op: eq
+    path: AutoScalingGroups.0.AvailabilityZones.0
+  - expected: eu-west-1b
+    op: eq
+    path: AutoScalingGroups.0.AvailabilityZones.1
+  - expected: 3
+    op: ==
+    path: AutoScalingGroups.0.DesiredCapacity
+  - expected: EC2
+    op: eq
+    path: AutoScalingGroups.0.HealthCheckType
+  - expected: Name-LC-0000000000000-0000000000
+    op: eq
+    path: AutoScalingGroups.0.LaunchConfigurationName
+  - expected: i-00000000
+    op: eq
+    path: AutoScalingGroups.0.Instances.0.InstanceId
+  - expected: Healthy
+    op: eq
+    path: AutoScalingGroups.0.Instances.0.HealthStatus
+  - expected: i-00000001
+    op: eq
+    path: AutoScalingGroups.0.Instances.1.InstanceId
+  - expected: i-00000002
+    op: eq
+    path: AutoScalingGroups.0.Instances.2.InstanceId
