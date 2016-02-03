@@ -1,7 +1,7 @@
 package Paws::API::Builder {
   use Moose;
 
-  our $VERSION = '0.01';
+  our $VERSION = '0.02';
 
   use Data::Compare;
   use Data::Dumper;
