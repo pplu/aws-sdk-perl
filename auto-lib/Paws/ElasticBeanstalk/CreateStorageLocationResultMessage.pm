@@ -16,7 +16,9 @@ Paws::ElasticBeanstalk::CreateStorageLocationResultMessage
 
 =head2 S3Bucket => Str
 
-  The name of the Amazon S3 bucket created.
+The name of the Amazon S3 bucket created.
+
+
 
 
 =cut

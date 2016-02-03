@@ -15,7 +15,9 @@ Paws::Inspector::CreateResourceGroupResponse
 
 =head2 ResourceGroupArn => Str
 
-  The ARN specifying the resource group that is created.
+The ARN specifying the resource group that is created.
+
+
 
 
 =cut

@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBSecurityGroupName => Str
 
-  The name of the DB security group to delete.
+The name of the DB security group to delete.
 
 You cannot delete the default DB security group.
 
@@ -54,6 +54,7 @@ Constraints:
 =item * Cannot contain spaces
 
 =back
+
 
 
 

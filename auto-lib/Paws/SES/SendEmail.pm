@@ -41,23 +41,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Destination => L<Paws::SES::Destination>
 
-  The destination for this email, composed of To:, CC:, and BCC: fields.
+The destination for this email, composed of To:, CC:, and BCC: fields.
+
 
 
 =head2 B<REQUIRED> Message => L<Paws::SES::Message>
 
-  The message to be sent.
+The message to be sent.
+
 
 
 =head2 ReplyToAddresses => ArrayRef[Str]
 
-  The reply-to email address(es) for the message. If the recipient
+The reply-to email address(es) for the message. If the recipient
 replies to the message, each reply-to address will receive the reply.
+
 
 
 =head2 ReturnPath => Str
 
-  The email address to which bounces and complaints are to be forwarded
+The email address to which bounces and complaints are to be forwarded
 when feedback forwarding is enabled. If the message cannot be delivered
 to the recipient, then an error message will be returned from the
 recipient's ISP; this message will then be forwarded to the email
@@ -67,9 +70,10 @@ individually verified with Amazon SES, or from a domain that has been
 verified with Amazon SES.
 
 
+
 =head2 ReturnPathArn => Str
 
-  This parameter is used only for sending authorization. It is the ARN of
+This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
 that permits you to use the email address specified in the
 C<ReturnPath> parameter.
@@ -85,9 +89,10 @@ For more information about sending authorization, see the Amazon SES
 Developer Guide.
 
 
+
 =head2 B<REQUIRED> Source => Str
 
-  The email address that is sending the email. This email address must be
+The email address that is sending the email. This email address must be
 either individually verified with Amazon SES, or from a domain that has
 been verified with Amazon SES. For information about verifying
 identities, see the Amazon SES Developer Guide.
@@ -104,9 +109,10 @@ uses the following form: C<=?charset?encoding?encoded-text?=>. For more
 information, see RFC 2047.
 
 
+
 =head2 SourceArn => Str
 
-  This parameter is used only for sending authorization. It is the ARN of
+This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
 that permits you to send for the email address specified in the
 C<Source> parameter.
@@ -120,6 +126,7 @@ C<Source> to be C<user@example.com>.
 
 For more information about sending authorization, see the Amazon SES
 Developer Guide.
+
 
 
 

@@ -15,7 +15,9 @@ Paws::DirectConnect::ConfirmConnectionResponse
 
 =head2 ConnectionState => Str
 
-  
+
+
+Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
 
 
 =cut

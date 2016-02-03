@@ -16,7 +16,7 @@ Paws::SNS::GetTopicAttributesResponse
 
 =head2 Attributes => L<Paws::SNS::TopicAttributesMap>
 
-  A map of the topic's attributes. Attributes in this map include the
+A map of the topic's attributes. Attributes in this map include the
 following:
 
 =over
@@ -47,6 +47,8 @@ delivery policy
 effective delivery policy that takes into account system defaults
 
 =back
+
+
 
 
 

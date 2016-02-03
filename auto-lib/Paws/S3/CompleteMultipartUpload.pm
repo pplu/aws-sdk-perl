@@ -28,23 +28,33 @@ Paws::S3::CompleteMultipartUploadOutput
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
+
+
+
 
 =head2 B<REQUIRED> Key => Str
 
-  
+
+
+
 
 =head2 MultipartUpload => L<Paws::S3::CompletedMultipartUpload>
 
-  
+
+
+
 
 =head2 RequestPayer => Str
 
-  
+
+
+Valid values are: C<"requester">
 
 =head2 B<REQUIRED> UploadId => Str
 
-  
+
+
+
 
 
 =cut

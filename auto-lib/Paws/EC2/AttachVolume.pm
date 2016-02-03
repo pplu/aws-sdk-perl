@@ -38,27 +38,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Device => Str
 
-  The device name to expose to the instance (for example, C</dev/sdh> or
+The device name to expose to the instance (for example, C</dev/sdh> or
 C<xvdh>).
+
 
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
+
 
 
 =head2 B<REQUIRED> VolumeId => Str
 
-  The ID of the EBS volume. The volume and instance must be within the
+The ID of the EBS volume. The volume and instance must be within the
 same Availability Zone.
+
 
 
 

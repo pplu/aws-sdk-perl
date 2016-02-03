@@ -68,7 +68,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllocatedStorage => Int
 
-  The amount of storage (in gigabytes) to be initially allocated for the
+The amount of storage (in gigabytes) to be initially allocated for the
 database instance.
 
 Type: Integer
@@ -96,17 +96,19 @@ Enterprise Edition) or from 20 to 4096 (Express Edition and Web
 Edition)
 
 
+
 =head2 AutoMinorVersionUpgrade => Bool
 
-  Indicates that minor engine upgrades will be applied automatically to
+Indicates that minor engine upgrades will be applied automatically to
 the DB instance during the maintenance window.
 
 Default: C<true>
 
 
+
 =head2 AvailabilityZone => Str
 
-  The EC2 Availability Zone that the database instance will be created
+The EC2 Availability Zone that the database instance will be created
 in. For information on regions and Availability Zones, see Regions and
 Availability Zones.
 
@@ -120,9 +122,10 @@ MultiAZ parameter is set to C<true>. The specified Availability Zone
 must be in the same region as the current endpoint.
 
 
+
 =head2 BackupRetentionPeriod => Int
 
-  The number of days for which automated backups are retained. Setting
+The number of days for which automated backups are retained. Setting
 this parameter to a positive number enables backups. Setting this
 parameter to 0 disables automated backups.
 
@@ -141,30 +144,34 @@ Replicas
 
 
 
+
 =head2 CharacterSetName => Str
 
-  For supported engines, indicates that the DB instance should be
+For supported engines, indicates that the DB instance should be
 associated with the specified CharacterSet.
+
 
 
 =head2 CopyTagsToSnapshot => Bool
 
-  True to copy all tags from the DB instance to snapshots of the DB
+True to copy all tags from the DB instance to snapshots of the DB
 instance; otherwise false. The default is false.
+
 
 
 =head2 DBClusterIdentifier => Str
 
-  The identifier of the DB cluster that the instance will belong to.
+The identifier of the DB cluster that the instance will belong to.
 
 For information on creating a DB cluster, see CreateDBCluster.
 
 Type: String
 
 
+
 =head2 B<REQUIRED> DBInstanceClass => Str
 
-  The compute and memory capacity of the DB instance.
+The compute and memory capacity of the DB instance.
 
 Valid Values: C<db.t1.micro | db.m1.small | db.m1.medium | db.m1.large
 | db.m1.xlarge | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge |
@@ -174,9 +181,10 @@ db.r3.large | db.r3.xlarge | db.r3.2xlarge | db.r3.4xlarge |
 db.r3.8xlarge | db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
 
 
+
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  The DB instance identifier. This parameter is stored as a lowercase
+The DB instance identifier. This parameter is stored as a lowercase
 string.
 
 Constraints:
@@ -195,9 +203,10 @@ to 15 for SQL Server).
 Example: C<mydbinstance>
 
 
+
 =head2 DBName => Str
 
-  The meaning of this parameter differs according to the database engine
+The meaning of this parameter differs according to the database engine
 you use.
 
 Type: String
@@ -289,9 +298,10 @@ Constraints:
 
 
 
+
 =head2 DBParameterGroupName => Str
 
-  The name of the DB parameter group to associate with this DB instance.
+The name of the DB parameter group to associate with this DB instance.
 If this argument is omitted, the default DBParameterGroup for the
 specified engine will be used.
 
@@ -309,23 +319,26 @@ Constraints:
 
 
 
+
 =head2 DBSecurityGroups => ArrayRef[Str]
 
-  A list of DB security groups to associate with this DB instance.
+A list of DB security groups to associate with this DB instance.
 
 Default: The default DB security group for the database engine.
 
 
+
 =head2 DBSubnetGroupName => Str
 
-  A DB subnet group to associate with this DB instance.
+A DB subnet group to associate with this DB instance.
 
 If there is no DB subnet group, then it is a non-VPC DB instance.
 
 
+
 =head2 B<REQUIRED> Engine => Str
 
-  The name of the database engine to be used for this instance.
+The name of the database engine to be used for this instance.
 
 Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
 C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
@@ -334,9 +347,10 @@ C<sqlserver-web> | C<postgres> | C<aurora>
 Not every database engine is available for every AWS region.
 
 
+
 =head2 EngineVersion => Str
 
-  The version number of the database engine to use.
+The version number of the database engine to use.
 
 The following are the database engines and major and minor versions
 that are available with Amazon RDS. Not every database engine is
@@ -521,18 +535,20 @@ B<Microsoft SQL Server Web Edition (sqlserver-web)>
 
 
 
+
 =head2 Iops => Int
 
-  The amount of Provisioned IOPS (input/output operations per second) to
+The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance.
 
 Constraints: To use PIOPS, this value must be an integer greater than
 1000.
 
 
+
 =head2 KmsKeyId => Str
 
-  The KMS key identifier for an encrypted DB instance.
+The KMS key identifier for an encrypted DB instance.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 encryption key. If you are creating a DB instance with the same AWS
@@ -547,17 +563,19 @@ your AWS account. Your AWS account has a different default encryption
 key for each AWS region.
 
 
+
 =head2 LicenseModel => Str
 
-  License model information for this DB instance.
+License model information for this DB instance.
 
 Valid values: C<license-included> | C<bring-your-own-license> |
 C<general-public-license>
 
 
+
 =head2 MasterUsername => Str
 
-  The name of master user for the client DB instance.
+The name of master user for the client DB instance.
 
 B<MySQL>
 
@@ -631,9 +649,10 @@ Constraints:
 
 
 
+
 =head2 MasterUserPassword => Str
 
-  The password for the master database user. Can be any printable ASCII
+The password for the master database user. Can be any printable ASCII
 character except "/", """, or "@".
 
 Type: String
@@ -663,9 +682,10 @@ B<Amazon Aurora>
 Constraints: Must contain from 8 to 41 characters.
 
 
+
 =head2 MonitoringInterval => Int
 
-  The interval, in seconds, between points when Enhanced Monitoring
+The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB instance. To disable collecting
 Enhanced Monitoring metrics, specify 0. The default is 60.
 
@@ -675,9 +695,10 @@ C<MonitoringInterval> to a value other than 0.
 Valid Values: C<0, 1, 5, 10, 15, 30, 60>
 
 
+
 =head2 MonitoringRoleArn => Str
 
-  The ARN for the IAM role that permits RDS to send enhanced monitoring
+The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
@@ -687,18 +708,20 @@ If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
 
 
+
 =head2 MultiAZ => Bool
 
-  Specifies if the DB instance is a Multi-AZ deployment. You cannot set
+Specifies if the DB instance is a Multi-AZ deployment. You cannot set
 the AvailabilityZone parameter if the MultiAZ parameter is set to true.
 Do not set this value if you want a Multi-AZ deployment for a SQL
 Server DB instance. Multi-AZ for SQL Server is set using the Mirroring
 option in an option group.
 
 
+
 =head2 OptionGroupName => Str
 
-  Indicates that the DB instance should be associated with the specified
+Indicates that the DB instance should be associated with the specified
 option group.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
@@ -707,9 +730,10 @@ cannot be removed from a DB instance once it is associated with a DB
 instance
 
 
+
 =head2 Port => Int
 
-  The port number on which the database accepts connections.
+The port number on which the database accepts connections.
 
 B<MySQL>
 
@@ -757,9 +781,10 @@ Valid Values: C<1150-65535>
 Type: Integer
 
 
+
 =head2 PreferredBackupWindow => Str
 
-  The daily time range during which automated backups are created if
+The daily time range during which automated backups are created if
 automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter. For more information, see DB Instance Backups.
 
@@ -783,9 +808,10 @@ Constraints:
 
 
 
+
 =head2 PreferredMaintenanceWindow => Str
 
-  The weekly time range during which system maintenance can occur, in
+The weekly time range during which system maintenance can occur, in
 Universal Coordinated Time (UTC). For more information, see DB Instance
 Maintenance.
 
@@ -801,9 +827,10 @@ Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 Constraints: Minimum 30-minute window.
 
 
+
 =head2 PubliclyAccessible => Bool
 
-  Specifies the accessibility options for the DB instance. A value of
+Specifies the accessibility options for the DB instance. A value of
 true specifies an Internet-facing instance with a publicly resolvable
 DNS name, which resolves to a public IP address. A value of false
 specifies an internal instance with a DNS name that resolves to a
@@ -828,16 +855,18 @@ as part of the request and the PubliclyAccessible value has not been
 set, the DB instance will be private.
 
 
+
 =head2 StorageEncrypted => Bool
 
-  Specifies whether the DB instance is encrypted.
+Specifies whether the DB instance is encrypted.
 
 Default: false
 
 
+
 =head2 StorageType => Str
 
-  Specifies the storage type to be associated with the DB instance.
+Specifies the storage type to be associated with the DB instance.
 
 Valid values: C<standard | gp2 | io1>
 
@@ -848,29 +877,34 @@ Default: C<io1> if the C<Iops> parameter is specified; otherwise
 C<standard>
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-  
+
+
 
 
 =head2 TdeCredentialArn => Str
 
-  The ARN from the Key Store with which to associate the instance for TDE
+The ARN from the Key Store with which to associate the instance for TDE
 encryption.
+
 
 
 =head2 TdeCredentialPassword => Str
 
-  The password for the given ARN from the Key Store in order to access
+The password for the given ARN from the Key Store in order to access
 the device.
+
 
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  A list of EC2 VPC security groups to associate with this DB instance.
+A list of EC2 VPC security groups to associate with this DB instance.
 
 Default: The default EC2 VPC security group for the DB subnet group's
 VPC.
+
 
 
 

@@ -36,15 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ActionOwnerFilter => Str
 
-  Filters the list of action types to those created by a specified
+Filters the list of action types to those created by a specified
 entity.
 
+Valid values are: C<"AWS">, C<"ThirdParty">, C<"Custom">
 
 =head2 NextToken => Str
 
-  An identifier that was returned from the previous list action types
+An identifier that was returned from the previous list action types
 call, which can be used to return the next set of action types in the
 list.
+
 
 
 

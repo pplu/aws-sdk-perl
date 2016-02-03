@@ -8,6 +8,8 @@ package Paws::WAF;
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -50,6 +52,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::CreateRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateSizeConstraintSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::CreateSizeConstraintSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSqlInjectionMatchSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::CreateSqlInjectionMatchSet', @_);
@@ -73,6 +80,11 @@ package Paws::WAF;
   sub DeleteRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::DeleteRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSizeConstraintSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::DeleteSizeConstraintSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSqlInjectionMatchSet {
@@ -115,6 +127,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::GetSampledRequests', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSizeConstraintSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::GetSizeConstraintSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetSqlInjectionMatchSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::GetSqlInjectionMatchSet', @_);
@@ -138,6 +155,11 @@ package Paws::WAF;
   sub ListRules {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSizeConstraintSets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::ListSizeConstraintSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListSqlInjectionMatchSets {
@@ -165,6 +187,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::UpdateRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateSizeConstraintSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::UpdateSizeConstraintSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateSqlInjectionMatchSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::UpdateSqlInjectionMatchSet', @_);
@@ -176,7 +203,7 @@ package Paws::WAF;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CreateByteMatchSet CreateIPSet CreateRule CreateSqlInjectionMatchSet CreateWebACL DeleteByteMatchSet DeleteIPSet DeleteRule DeleteSqlInjectionMatchSet DeleteWebACL GetByteMatchSet GetChangeToken GetChangeTokenStatus GetIPSet GetRule GetSampledRequests GetSqlInjectionMatchSet GetWebACL ListByteMatchSets ListIPSets ListRules ListSqlInjectionMatchSets ListWebACLs UpdateByteMatchSet UpdateIPSet UpdateRule UpdateSqlInjectionMatchSet UpdateWebACL / }
+  sub operations { qw/CreateByteMatchSet CreateIPSet CreateRule CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL DeleteByteMatchSet DeleteIPSet DeleteRule DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL GetByteMatchSet GetChangeToken GetChangeTokenStatus GetIPSet GetRule GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL ListByteMatchSets ListIPSets ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListWebACLs UpdateByteMatchSet UpdateIPSet UpdateRule UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL / }
 
 1;
 
@@ -329,6 +356,43 @@ you want to include in the C<Rule>.
 
 =item 6. Create and update a C<WebACL> that contains the C<Rule>. For
 more information, see CreateWebACL.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide.
+
+
+=head2 CreateSizeConstraintSet(ChangeToken => Str, Name => Str)
+
+Each argument is described in detail in: L<Paws::WAF::CreateSizeConstraintSet>
+
+Returns: a L<Paws::WAF::CreateSizeConstraintSetResponse> instance
+
+  Creates a C<SizeConstraintSet>. You then use UpdateSizeConstraintSet to
+identify the part of a web request that you want AWS WAF to check for
+length, such as the length of the C<User-Agent> header or the length of
+the query string. For example, you can create a C<SizeConstraintSet>
+that matches any requests that have a query string that is longer than
+100 bytes. You can then configure AWS WAF to reject those requests.
+
+To create and configure a C<SizeConstraintSet>, perform the following
+steps:
+
+=over
+
+=item 1. Use GetChangeToken to get the change token that you provide in
+the C<ChangeToken> parameter of a C<CreateSizeConstraintSet> request.
+
+=item 2. Submit a C<CreateSizeConstraintSet> request.
+
+=item 3. Use C<GetChangeToken> to get the change token that you provide
+in the C<ChangeToken> parameter of an C<UpdateSizeConstraintSet>
+request.
+
+=item 4. Submit an UpdateSizeConstraintSet request to specify the part
+of the request that you want AWS WAF to inspect (for example, the
+header or the URI) and the value that you want AWS WAF to watch for.
 
 =back
 
@@ -504,6 +568,36 @@ the C<ChangeToken> parameter of a C<DeleteRule> request.
 
 
 
+=head2 DeleteSizeConstraintSet(ChangeToken => Str, SizeConstraintSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAF::DeleteSizeConstraintSet>
+
+Returns: a L<Paws::WAF::DeleteSizeConstraintSetResponse> instance
+
+  Permanently deletes a SizeConstraintSet. You can't delete a
+C<SizeConstraintSet> if it's still used in any C<Rules> or if it still
+includes any SizeConstraint objects (any filters).
+
+If you just want to remove a C<SizeConstraintSet> from a C<Rule>, use
+UpdateRule.
+
+To permanently delete a C<SizeConstraintSet>, perform the following
+steps:
+
+=over
+
+=item 1. Update the C<SizeConstraintSet> to remove filters, if any. For
+more information, see UpdateSizeConstraintSet.
+
+=item 2. Use GetChangeToken to get the change token that you provide in
+the C<ChangeToken> parameter of a C<DeleteSizeConstraintSet> request.
+
+=item 3. Submit a C<DeleteSizeConstraintSet> request.
+
+=back
+
+
+
 =head2 DeleteSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::DeleteSqlInjectionMatchSet>
@@ -655,6 +749,15 @@ range. This new time range indicates the actual period during which AWS
 WAF selected the requests in the sample.
 
 
+=head2 GetSizeConstraintSet(SizeConstraintSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAF::GetSizeConstraintSet>
+
+Returns: a L<Paws::WAF::GetSizeConstraintSetResponse> instance
+
+  Returns the SizeConstraintSet specified by C<SizeConstraintSetId>.
+
+
 =head2 GetSqlInjectionMatchSet(SqlInjectionMatchSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::GetSqlInjectionMatchSet>
@@ -699,6 +802,15 @@ Each argument is described in detail in: L<Paws::WAF::ListRules>
 Returns: a L<Paws::WAF::ListRulesResponse> instance
 
   Returns an array of RuleSummary objects.
+
+
+=head2 ListSizeConstraintSets(Limit => Int, [NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAF::ListSizeConstraintSets>
+
+Returns: a L<Paws::WAF::ListSizeConstraintSetsResponse> instance
+
+  Returns an array of SizeConstraintSetSummary objects.
 
 
 =head2 ListSqlInjectionMatchSets(Limit => Int, [NextMarker => Str])
@@ -882,6 +994,68 @@ CreateWebACL.
 
 If you want to replace one C<ByteMatchSet> or C<IPSet> with another,
 you delete the existing one and add the new one.
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide.
+
+
+=head2 UpdateSizeConstraintSet(ChangeToken => Str, SizeConstraintSetId => Str, Updates => ArrayRef[L<Paws::WAF::SizeConstraintSetUpdate>])
+
+Each argument is described in detail in: L<Paws::WAF::UpdateSizeConstraintSet>
+
+Returns: a L<Paws::WAF::UpdateSizeConstraintSetResponse> instance
+
+  Inserts or deletes SizeConstraint objects (filters) in a
+SizeConstraintSet. For each C<SizeConstraint> object, you specify the
+following values:
+
+=over
+
+=item * Whether to insert or delete the object from the array. If you
+want to change a C<SizeConstraintSetUpdate> object, you delete the
+existing object and add a new one.
+
+=item * The part of a web request that you want AWS WAF to evaluate,
+such as the length of a query string or the length of the C<User-Agent>
+header.
+
+=item * Whether to perform any transformations on the request, such as
+converting it to lowercase, before checking its length. Note that
+transformations of the request body are not supported because the AWS
+resource forwards only the first C<8192> bytes of your request to AWS
+WAF.
+
+=item * A C<ComparisonOperator> used for evaluating the selected part
+of the request against the specified C<Size>, such as equals, greater
+than, less than, and so on.
+
+=item * The length, in bytes, that you want AWS WAF to watch for in
+selected part of the request. The length is computed after applying the
+transformation.
+
+=back
+
+For example, you can add a C<SizeConstraintSetUpdate> object that
+matches web requests in which the length of the C<User-Agent> header is
+greater than 100 bytes. You can then configure AWS WAF to block those
+requests.
+
+To create and configure a C<SizeConstraintSet>, perform the following
+steps:
+
+=over
+
+=item 1. Create a C<SizeConstraintSet.> For more information, see
+CreateSizeConstraintSet.
+
+=item 2. Use GetChangeToken to get the change token that you provide in
+the C<ChangeToken> parameter of an C<UpdateSizeConstraintSet> request.
+
+=item 3. Submit an C<UpdateSizeConstraintSet> request to specify the
+part of the request that you want AWS WAF to inspect (for example, the
+header or the URI) and the value that you want AWS WAF to watch for.
+
+=back
 
 For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.

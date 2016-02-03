@@ -24,19 +24,25 @@ Paws::ElasticBeanstalk::ConfigurationSettingsDescription
 
 =head2 ApplicationName => Str
 
-  The name of the application associated with this configuration set.
+The name of the application associated with this configuration set.
+
+
 
 =head2 DateCreated => Str
 
-  The date (in UTC time) when this configuration set was created.
+The date (in UTC time) when this configuration set was created.
+
+
 
 =head2 DateUpdated => Str
 
-  The date (in UTC time) when this configuration set was last modified.
+The date (in UTC time) when this configuration set was last modified.
+
+
 
 =head2 DeploymentStatus => Str
 
-  If this configuration set is associated with an environment, the
+If this configuration set is associated with an environment, the
 C<DeploymentStatus> parameter indicates the deployment status of this
 configuration set:
 
@@ -57,27 +63,39 @@ successfully deploy.
 =back
 
 
+Valid values are: C<"deployed">, C<"pending">, C<"failed">
+
 =head2 Description => Str
 
-  Describes this configuration set.
+Describes this configuration set.
+
+
 
 =head2 EnvironmentName => Str
 
-  If not C<null>, the name of the environment for this configuration set.
+If not C<null>, the name of the environment for this configuration set.
+
+
 
 =head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
-  A list of the configuration options and their values in this
+A list of the configuration options and their values in this
 configuration set.
+
+
 
 =head2 SolutionStackName => Str
 
-  The name of the solution stack this configuration set uses.
+The name of the solution stack this configuration set uses.
+
+
 
 =head2 TemplateName => Str
 
-  If not C<null>, the name of the configuration template for this
+If not C<null>, the name of the configuration template for this
 configuration set.
+
+
 
 
 =cut

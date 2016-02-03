@@ -37,20 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LayerDigests => ArrayRef[Str]
 
-  The digests of the image layers to check.
+The digests of the image layers to check.
+
 
 
 =head2 RegistryId => Str
 
-  The AWS account ID associated with the registry that contains the image
+The AWS account ID associated with the registry that contains the image
 layers to check. If you do not specify a registry, the default registry
 is assumed.
 
 
+
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The name of the repository that is associated with the image layers to
+The name of the repository that is associated with the image layers to
 check.
+
 
 
 

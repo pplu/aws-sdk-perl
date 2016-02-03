@@ -8,6 +8,8 @@ package Paws::OpsWorks;
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -438,14 +440,13 @@ B<Chef Versions>
 
 When you call CreateStack, CloneStack, or UpdateStack we recommend you
 use the C<ConfigurationManager> parameter to specify the Chef version.
-The recommended value for Linux stacks, which is also the default
-value, is currently 11.10. Windows stacks use Chef 12.2. For more
-information, see Chef Versions.
+The recommended value for Linux stacks is currently 12 (the default is
+11.4). Windows stacks use Chef 12.2. For more information, see Chef
+Versions.
 
-You can also specify Chef 11.4 or Chef 0.9 for your Linux stack.
-However, Chef 0.9 has been deprecated. We do not recommend using Chef
-0.9 for new stacks, and we recommend migrating your existing Chef 0.9
-stacks to Chef 11.10 as soon as possible.
+You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
+recommend migrating your existing Linux stacks to Chef 12 as soon as
+possible.
 
 =head1 METHODS
 

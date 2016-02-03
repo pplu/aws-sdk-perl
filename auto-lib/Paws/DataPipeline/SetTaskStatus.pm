@@ -39,39 +39,44 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ErrorId => Str
 
-  If an error occurred during the task, this value specifies the error
+If an error occurred during the task, this value specifies the error
 code. This value is set on the physical attempt object. It is used to
 display error information to the user. It should not start with string
 "Service_" which is reserved by the system.
 
 
+
 =head2 ErrorMessage => Str
 
-  If an error occurred during the task, this value specifies a text
+If an error occurred during the task, this value specifies a text
 description of the error. This value is set on the physical attempt
 object. It is used to display error information to the user. The web
 service does not parse this value.
 
 
+
 =head2 ErrorStackTrace => Str
 
-  If an error occurred during the task, this value specifies the stack
+If an error occurred during the task, this value specifies the stack
 trace associated with the error. This value is set on the physical
 attempt object. It is used to display error information to the user.
 The web service does not parse this value.
 
 
+
 =head2 B<REQUIRED> TaskId => Str
 
-  The ID of the task assigned to the task runner. This value is provided
+The ID of the task assigned to the task runner. This value is provided
 in the response for PollForTask.
+
 
 
 =head2 B<REQUIRED> TaskStatus => Str
 
-  If C<FINISHED>, the task successfully completed. If C<FAILED>, the task
+If C<FINISHED>, the task successfully completed. If C<FAILED>, the task
 ended unsuccessfully. Preconditions use false.
 
+Valid values are: C<"FINISHED">, C<"FAILED">, C<"FALSE">
 
 
 =head1 SEE ALSO

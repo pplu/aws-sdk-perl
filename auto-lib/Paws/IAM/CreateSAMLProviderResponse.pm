@@ -16,7 +16,9 @@ Paws::IAM::CreateSAMLProviderResponse
 
 =head2 SAMLProviderArn => Str
 
-  The Amazon Resource Name (ARN) of the SAML provider.
+The Amazon Resource Name (ARN) of the SAML provider.
+
+
 
 
 =cut

@@ -37,15 +37,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-  One or more filters.
+One or more filters.
 
 =over
 
@@ -86,11 +87,13 @@ is independent of the C<tag-key> filter.
 
 
 
+
 =head2 InternetGatewayIds => ArrayRef[Str]
 
-  One or more Internet gateway IDs.
+One or more Internet gateway IDs.
 
 Default: Describes all your Internet gateways.
+
 
 
 

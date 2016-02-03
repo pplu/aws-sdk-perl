@@ -36,13 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FailureDetails => L<Paws::CodePipeline::FailureDetails>
 
-  The details about the failure of a job.
+The details about the failure of a job.
+
 
 
 =head2 B<REQUIRED> JobId => Str
 
-  The unique system-generated ID of the job that failed. This is the same
+The unique system-generated ID of the job that failed. This is the same
 ID returned from PollForJobs.
+
 
 
 

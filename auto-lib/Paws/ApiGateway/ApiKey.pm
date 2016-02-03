@@ -22,31 +22,45 @@ Paws::ApiGateway::ApiKey
 
 =head2 CreatedDate => Str
 
-  The date when the API Key was created, in ISO 8601 format.
+The date when the API Key was created, in ISO 8601 format.
+
+
 
 =head2 Description => Str
 
-  The description of the API Key.
+The description of the API Key.
+
+
 
 =head2 Enabled => Bool
 
-  Specifies whether the API Key can be used by callers.
+Specifies whether the API Key can be used by callers.
+
+
 
 =head2 Id => Str
 
-  The identifier of the API Key.
+The identifier of the API Key.
+
+
 
 =head2 LastUpdatedDate => Str
 
-  When the API Key was last updated, in ISO 8601 format.
+When the API Key was last updated, in ISO 8601 format.
+
+
 
 =head2 Name => Str
 
-  The name of the API Key.
+The name of the API Key.
+
+
 
 =head2 StageKeys => ArrayRef[Str]
 
-  A list of Stage resources that are associated with the ApiKey resource.
+A list of Stage resources that are associated with the ApiKey resource.
+
+
 
 
 =cut

@@ -16,11 +16,15 @@ Paws::CloudWatchLogs::DescribeLogGroupsResponse
 
 =head2 LogGroups => ArrayRef[L<Paws::CloudWatchLogs::LogGroup>]
 
-  
+
+
+
 
 =head2 NextToken => Str
 
-  
+
+
+
 
 
 =cut

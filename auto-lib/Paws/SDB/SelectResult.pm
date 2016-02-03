@@ -17,13 +17,17 @@ Paws::SDB::SelectResult
 
 =head2 Items => ArrayRef[L<Paws::SDB::Item>]
 
-  A list of items that match the select expression.
+A list of items that match the select expression.
+
+
 
 =head2 NextToken => Str
 
-  An opaque token indicating that more items than C<MaxNumberOfItems>
+An opaque token indicating that more items than C<MaxNumberOfItems>
 were matched, the response size exceeded 1 megabyte, or the execution
 time exceeded 5 seconds.
+
+
 
 
 =cut

@@ -10,7 +10,7 @@ package Paws::Lambda::InvokeAsync;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2014-11-13/functions/{FunctionName}/invoke-async/');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::InvokeAsyncResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'InvokeAsyncResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  The Lambda function name.
+The Lambda function name.
+
 
 
 =head2 B<REQUIRED> InvokeArgs => Str
 
-  JSON that you want to provide to your Lambda function as input.
+JSON that you want to provide to your Lambda function as input.
+
 
 
 

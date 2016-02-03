@@ -87,7 +87,7 @@ C<"rangeKeyValue": "${timestamp()}">
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  The ARN of the IAM role that grants access.
+  The ARN of the IAM role that grants access to the DynamoDB table.
 
 
 =head2 B<REQUIRED> TableName => Str

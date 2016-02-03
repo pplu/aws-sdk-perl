@@ -37,20 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  Specifies that the list of tags returned be limited to the specified
+Specifies that the list of tags returned be limited to the specified
 number of items.
+
 
 
 =head2 Marker => Str
 
-  An opaque string that indicates the position at which to begin
+An opaque string that indicates the position at which to begin
 returning the list of tags.
+
 
 
 =head2 ResourceARN => Str
 
-  The Amazon Resource Name (ARN) of the resource for which you want to
+The Amazon Resource Name (ARN) of the resource for which you want to
 list tags.
+
 
 
 

@@ -16,11 +16,15 @@ Paws::Support::DescribeCommunicationsResponse
 
 =head2 Communications => ArrayRef[L<Paws::Support::Communication>]
 
-  The communications for the case.
+The communications for the case.
+
+
 
 =head2 NextToken => Str
 
-  A resumption point for pagination.
+A resumption point for pagination.
+
+
 
 
 =cut

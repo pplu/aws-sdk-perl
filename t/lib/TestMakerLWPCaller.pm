@@ -1,4 +1,4 @@
-package TestMakerLWPCaller {
+package TestMakerLWPCaller;
   # A copy of TestMakerCaller, but using Paws::Net::LWPCaller
   use Moose;
   extends 'Paws::Net::LWPCaller';
@@ -51,4 +51,4 @@ package TestMakerLWPCaller {
     return $result;
   };
 
-}
+1;

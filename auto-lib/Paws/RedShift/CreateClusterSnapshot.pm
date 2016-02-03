@@ -37,12 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
-  The cluster identifier for which you want a snapshot.
+The cluster identifier for which you want a snapshot.
+
 
 
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
-  A unique identifier for the snapshot that you are requesting. This
+A unique identifier for the snapshot that you are requesting. This
 identifier must be unique for all snapshots within the AWS account.
 
 Constraints:
@@ -62,9 +63,11 @@ Constraints:
 Example: C<my-snapshot-id>
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-  A list of tag instances.
+A list of tag instances.
+
 
 
 

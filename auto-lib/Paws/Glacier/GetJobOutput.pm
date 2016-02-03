@@ -12,7 +12,7 @@ package Paws::Glacier::GetJobOutput;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/jobs/{jobId}/output');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::GetJobOutputOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetJobOutputResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-  The C<AccountId> value is the AWS account ID of the account that owns
+The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
@@ -48,22 +48,26 @@ you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
 
+
 =head2 B<REQUIRED> JobId => Str
 
-  The job ID whose data is downloaded.
+The job ID whose data is downloaded.
+
 
 
 =head2 Range => Str
 
-  The range of bytes to retrieve from the output. For example, if you
+The range of bytes to retrieve from the output. For example, if you
 want to download the first 1,048,576 bytes, specify "Range:
 bytes=0-1048575". By default, this operation downloads the entire
 output.
 
 
+
 =head2 B<REQUIRED> VaultName => Str
 
-  The name of the vault.
+The name of the vault.
+
 
 
 

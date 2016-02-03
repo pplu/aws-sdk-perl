@@ -2,12 +2,14 @@ package Paws::CloudFront;
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudfront' }
-  sub version { '2015-09-17' }
+  sub version { '2016-01-28' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
@@ -178,202 +180,203 @@ Paws::CloudFront - Perl Interface to AWS Amazon CloudFront
 
 =head1 METHODS
 
-=head2 CreateCloudFrontOriginAccessIdentity2015_09_17( => )
+=head2 CreateCloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>)
 
-Each argument is described in detail in: L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentity2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentity>
 
-Returns: nothing
+Returns: a L<Paws::CloudFront::CreateCloudFrontOriginAccessIdentityResult> instance
 
-  
-
-
-=head2 CreateDistribution2015_09_17( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution2015_09_17>
-
-Returns: nothing
-
-  
+  Create a new origin access identity.
 
 
-=head2 CreateInvalidation2015_09_17( => )
+=head2 CreateDistribution(DistributionConfig => L<Paws::CloudFront::DistributionConfig>)
 
-Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::CreateDistribution>
 
-Returns: nothing
+Returns: a L<Paws::CloudFront::CreateDistributionResult> instance
 
-  
-
-
-=head2 CreateStreamingDistribution2015_09_17( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDistribution2015_09_17>
-
-Returns: nothing
-
-  
+  Create a new distribution.
 
 
-=head2 DeleteCloudFrontOriginAccessIdentity2015_09_17( => )
+=head2 CreateInvalidation(DistributionId => Str, InvalidationBatch => L<Paws::CloudFront::InvalidationBatch>)
 
-Each argument is described in detail in: L<Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation>
 
-Returns: nothing
+Returns: a L<Paws::CloudFront::CreateInvalidationResult> instance
 
-  
+  Create a new invalidation.
 
 
-=head2 DeleteDistribution2015_09_17( => )
+=head2 CreateStreamingDistribution(StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>)
 
-Each argument is described in detail in: L<Paws::CloudFront::DeleteDistribution2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDistribution>
+
+Returns: a L<Paws::CloudFront::CreateStreamingDistributionResult> instance
+
+  Create a new streaming distribution.
+
+
+=head2 DeleteCloudFrontOriginAccessIdentity(Id => Str, [IfMatch => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::DeleteCloudFrontOriginAccessIdentity>
 
 Returns: nothing
 
-  
+  Delete an origin access identity.
 
 
-=head2 DeleteStreamingDistribution2015_09_17( => )
+=head2 DeleteDistribution(Id => Str, [IfMatch => Str])
 
-Each argument is described in detail in: L<Paws::CloudFront::DeleteStreamingDistribution2015_09_17>
-
-Returns: nothing
-
-  
-
-
-=head2 GetCloudFrontOriginAccessIdentity2015_09_17( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentity2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::DeleteDistribution>
 
 Returns: nothing
 
-  
+  Delete a distribution.
 
 
-=head2 GetCloudFrontOriginAccessIdentityConfig2015_09_17( => )
+=head2 DeleteStreamingDistribution(Id => Str, [IfMatch => Str])
 
-Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig2015_09_17>
-
-Returns: nothing
-
-  
-
-
-=head2 GetDistribution2015_09_17( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetDistribution2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::DeleteStreamingDistribution>
 
 Returns: nothing
 
-  
+  Delete a streaming distribution.
 
 
-=head2 GetDistributionConfig2015_09_17( => )
+=head2 GetCloudFrontOriginAccessIdentity(Id => Str)
 
-Each argument is described in detail in: L<Paws::CloudFront::GetDistributionConfig2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentity>
 
-Returns: nothing
+Returns: a L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityResult> instance
 
-  
-
-
-=head2 GetInvalidation2015_09_17( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetInvalidation2015_09_17>
-
-Returns: nothing
-
-  
+  Get the information about an origin access identity.
 
 
-=head2 GetStreamingDistribution2015_09_17( => )
+=head2 GetCloudFrontOriginAccessIdentityConfig(Id => Str)
 
-Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistribution2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfig>
 
-Returns: nothing
+Returns: a L<Paws::CloudFront::GetCloudFrontOriginAccessIdentityConfigResult> instance
 
-  
-
-
-=head2 GetStreamingDistributionConfig2015_09_17( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistributionConfig2015_09_17>
-
-Returns: nothing
-
-  
+  Get the configuration information about an origin access identity.
 
 
-=head2 ListCloudFrontOriginAccessIdentities2015_09_17( => )
+=head2 GetDistribution(Id => Str)
 
-Each argument is described in detail in: L<Paws::CloudFront::ListCloudFrontOriginAccessIdentities2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::GetDistribution>
 
-Returns: nothing
+Returns: a L<Paws::CloudFront::GetDistributionResult> instance
 
-  
-
-
-=head2 ListDistributions2015_09_17( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::ListDistributions2015_09_17>
-
-Returns: nothing
-
-  
+  Get the information about a distribution.
 
 
-=head2 ListDistributionsByWebACLId2015_09_17( => )
+=head2 GetDistributionConfig(Id => Str)
 
-Each argument is described in detail in: L<Paws::CloudFront::ListDistributionsByWebACLId2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::GetDistributionConfig>
 
-Returns: nothing
+Returns: a L<Paws::CloudFront::GetDistributionConfigResult> instance
 
-  
-
-
-=head2 ListInvalidations2015_09_17( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations2015_09_17>
-
-Returns: nothing
-
-  
+  Get the configuration information about a distribution.
 
 
-=head2 ListStreamingDistributions2015_09_17( => )
+=head2 GetInvalidation(DistributionId => Str, Id => Str)
 
-Each argument is described in detail in: L<Paws::CloudFront::ListStreamingDistributions2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::GetInvalidation>
 
-Returns: nothing
+Returns: a L<Paws::CloudFront::GetInvalidationResult> instance
 
-  
-
-
-=head2 UpdateCloudFrontOriginAccessIdentity2015_09_17( => )
-
-Each argument is described in detail in: L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity2015_09_17>
-
-Returns: nothing
-
-  
+  Get the information about an invalidation.
 
 
-=head2 UpdateDistribution2015_09_17( => )
+=head2 GetStreamingDistribution(Id => Str)
 
-Each argument is described in detail in: L<Paws::CloudFront::UpdateDistribution2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistribution>
 
-Returns: nothing
+Returns: a L<Paws::CloudFront::GetStreamingDistributionResult> instance
 
-  
+  Get the information about a streaming distribution.
 
 
-=head2 UpdateStreamingDistribution2015_09_17( => )
+=head2 GetStreamingDistributionConfig(Id => Str)
 
-Each argument is described in detail in: L<Paws::CloudFront::UpdateStreamingDistribution2015_09_17>
+Each argument is described in detail in: L<Paws::CloudFront::GetStreamingDistributionConfig>
 
-Returns: nothing
+Returns: a L<Paws::CloudFront::GetStreamingDistributionConfigResult> instance
 
-  
+  Get the configuration information about a streaming distribution.
+
+
+=head2 ListCloudFrontOriginAccessIdentities([Marker => Str, MaxItems => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::ListCloudFrontOriginAccessIdentities>
+
+Returns: a L<Paws::CloudFront::ListCloudFrontOriginAccessIdentitiesResult> instance
+
+  List origin access identities.
+
+
+=head2 ListDistributions([Marker => Str, MaxItems => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::ListDistributions>
+
+Returns: a L<Paws::CloudFront::ListDistributionsResult> instance
+
+  List distributions.
+
+
+=head2 ListDistributionsByWebACLId(WebACLId => Str, [Marker => Str, MaxItems => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::ListDistributionsByWebACLId>
+
+Returns: a L<Paws::CloudFront::ListDistributionsByWebACLIdResult> instance
+
+  List the distributions that are associated with a specified AWS WAF web
+ACL.
+
+
+=head2 ListInvalidations(DistributionId => Str, [Marker => Str, MaxItems => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::ListInvalidations>
+
+Returns: a L<Paws::CloudFront::ListInvalidationsResult> instance
+
+  List invalidation batches.
+
+
+=head2 ListStreamingDistributions([Marker => Str, MaxItems => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::ListStreamingDistributions>
+
+Returns: a L<Paws::CloudFront::ListStreamingDistributionsResult> instance
+
+  List streaming distributions.
+
+
+=head2 UpdateCloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>, Id => Str, [IfMatch => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity>
+
+Returns: a L<Paws::CloudFront::UpdateCloudFrontOriginAccessIdentityResult> instance
+
+  Update an origin access identity.
+
+
+=head2 UpdateDistribution(DistributionConfig => L<Paws::CloudFront::DistributionConfig>, Id => Str, [IfMatch => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdateDistribution>
+
+Returns: a L<Paws::CloudFront::UpdateDistributionResult> instance
+
+  Update a distribution.
+
+
+=head2 UpdateStreamingDistribution(Id => Str, StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>, [IfMatch => Str])
+
+Each argument is described in detail in: L<Paws::CloudFront::UpdateStreamingDistribution>
+
+Returns: a L<Paws::CloudFront::UpdateStreamingDistributionResult> instance
+
+  Update a streaming distribution.
 
 
 =head1 SEE ALSO

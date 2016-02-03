@@ -17,12 +17,16 @@ Paws::ApiGateway::DomainNames
 
 =head2 Items => ArrayRef[L<Paws::ApiGateway::DomainName>]
 
-  The current page of any DomainName resources in the collection of
+The current page of any DomainName resources in the collection of
 DomainName resources.
+
+
 
 =head2 Position => Str
 
-  
+
+
+
 
 
 =cut

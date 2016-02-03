@@ -43,49 +43,56 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttachmentSetId => Str
 
-  The ID of a set of one or more attachments for the case. Create the set
+The ID of a set of one or more attachments for the case. Create the set
 by using AddAttachmentsToSet.
+
 
 
 =head2 CategoryCode => Str
 
-  The category of problem for the AWS Support case.
+The category of problem for the AWS Support case.
+
 
 
 =head2 CcEmailAddresses => ArrayRef[Str]
 
-  A list of email addresses that AWS Support copies on case
+A list of email addresses that AWS Support copies on case
 correspondence.
+
 
 
 =head2 B<REQUIRED> CommunicationBody => Str
 
-  The communication body text when you create an AWS Support case by
+The communication body text when you create an AWS Support case by
 calling CreateCase.
+
 
 
 =head2 IssueType => Str
 
-  The type of issue for the case. You can specify either
+The type of issue for the case. You can specify either
 "customer-service" or "technical." If you do not indicate a value, the
 default is "technical."
 
 
+
 =head2 Language => Str
 
-  The ISO 639-1 code for the language in which AWS provides support. AWS
+The ISO 639-1 code for the language in which AWS provides support. AWS
 Support currently supports English ("en") and Japanese ("ja"). Language
 parameters must be passed explicitly for operations that take them.
 
 
+
 =head2 ServiceCode => Str
 
-  The code for the AWS service returned by the call to DescribeServices.
+The code for the AWS service returned by the call to DescribeServices.
+
 
 
 =head2 SeverityCode => Str
 
-  The code for the severity level returned by the call to
+The code for the severity level returned by the call to
 DescribeSeverityLevels.
 
 The availability of severity levels depends on each customer's support
@@ -93,9 +100,11 @@ subscription. In other words, your subscription may not necessarily
 require the urgent level of response time.
 
 
+
 =head2 B<REQUIRED> Subject => Str
 
-  The title of the AWS Support case.
+The title of the AWS Support case.
+
 
 
 

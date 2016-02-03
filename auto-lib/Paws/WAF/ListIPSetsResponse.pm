@@ -16,15 +16,19 @@ Paws::WAF::ListIPSetsResponse
 
 =head2 IPSets => ArrayRef[L<Paws::WAF::IPSetSummary>]
 
-  An array of IPSetSummary objects.
+An array of IPSetSummary objects.
+
+
 
 =head2 NextMarker => Str
 
-  If you have more C<IPSet> objects than the number that you specified
+If you have more C<IPSet> objects than the number that you specified
 for C<Limit> in the request, the response includes a C<NextMarker>
 value. To list more C<IPSet> objects, submit another C<ListIPSets>
 request, and specify the C<NextMarker> value from the response in the
 C<NextMarker> value in the next request.
+
+
 
 
 =cut

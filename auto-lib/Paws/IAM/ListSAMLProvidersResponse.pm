@@ -16,7 +16,9 @@ Paws::IAM::ListSAMLProvidersResponse
 
 =head2 SAMLProviderList => ArrayRef[L<Paws::IAM::SAMLProviderListEntry>]
 
-  The list of SAML providers for this account.
+The list of SAML providers for this account.
+
+
 
 
 =cut

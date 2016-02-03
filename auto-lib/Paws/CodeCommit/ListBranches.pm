@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  An enumeration token that allows the operation to batch the results.
+An enumeration token that allows the operation to batch the results.
+
 
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The name of the repository that contains the branches.
+The name of the repository that contains the branches.
+
 
 
 

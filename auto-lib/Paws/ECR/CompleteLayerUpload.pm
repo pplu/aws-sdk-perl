@@ -38,25 +38,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LayerDigests => ArrayRef[Str]
 
-  The C<sha256> digest of the image layer.
+The C<sha256> digest of the image layer.
+
 
 
 =head2 RegistryId => Str
 
-  The AWS account ID associated with the registry to which to upload
+The AWS account ID associated with the registry to which to upload
 layers. If you do not specify a registry, the default registry is
 assumed.
 
 
+
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The name of the repository to associate with the image layer.
+The name of the repository to associate with the image layer.
+
 
 
 =head2 B<REQUIRED> UploadId => Str
 
-  The upload ID from a previous InitiateLayerUpload operation to
+The upload ID from a previous InitiateLayerUpload operation to
 associate with the image layer.
+
 
 
 

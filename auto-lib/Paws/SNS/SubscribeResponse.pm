@@ -16,9 +16,11 @@ Paws::SNS::SubscribeResponse
 
 =head2 SubscriptionArn => Str
 
-  The ARN of the subscription, if the service was able to create a
+The ARN of the subscription, if the service was able to create a
 subscription immediately (without requiring endpoint owner
 confirmation).
+
+
 
 
 =cut

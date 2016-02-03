@@ -63,22 +63,22 @@ request is idempotent. For more information, see Ensuring Idempotency.
 =head2 ModificationResults => ArrayRef[L<Paws::EC2::ReservedInstancesModificationResult>]
 
   Contains target configurations along with their corresponding new
-Reserved instance IDs.
+Reserved Instance IDs.
 
 
 =head2 ReservedInstancesIds => ArrayRef[L<Paws::EC2::ReservedInstancesId>]
 
-  The IDs of one or more Reserved instances.
+  The IDs of one or more Reserved Instances.
 
 
 =head2 ReservedInstancesModificationId => Str
 
-  A unique ID for the Reserved instance modification.
+  A unique ID for the Reserved Instance modification.
 
 
 =head2 Status => Str
 
-  The status of the Reserved instances modification request.
+  The status of the Reserved Instances modification request.
 
 
 =head2 StatusMessage => Str

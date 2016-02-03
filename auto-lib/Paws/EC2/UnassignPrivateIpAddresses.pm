@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> NetworkInterfaceId => Str
 
-  The ID of the network interface.
+The ID of the network interface.
+
 
 
 =head2 B<REQUIRED> PrivateIpAddresses => ArrayRef[Str]
 
-  The secondary private IP addresses to unassign from the network
+The secondary private IP addresses to unassign from the network
 interface. You can specify this option multiple times to unassign more
 than one IP address.
+
 
 
 

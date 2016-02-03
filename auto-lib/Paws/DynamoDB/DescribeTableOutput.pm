@@ -15,7 +15,9 @@ Paws::DynamoDB::DescribeTableOutput
 
 =head2 Table => L<Paws::DynamoDB::TableDescription>
 
-  
+
+
+
 
 
 =cut

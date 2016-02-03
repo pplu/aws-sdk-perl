@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> WebACLId => Str
 
-  The C<WebACLId> of the WebACL that you want to get. C<WebACLId> is
+The C<WebACLId> of the WebACL that you want to get. C<WebACLId> is
 returned by CreateWebACL and by ListWebACLs.
+
 
 
 

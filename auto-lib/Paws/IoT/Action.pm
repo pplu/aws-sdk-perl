@@ -50,7 +50,7 @@ Describes the actions associated with a rule.
 
 =head2 Firehose => L<Paws::IoT::FirehoseAction>
 
-  
+  Write to a Kinesis Firehose stream.
 
 
 =head2 Kinesis => L<Paws::IoT::KinesisAction>

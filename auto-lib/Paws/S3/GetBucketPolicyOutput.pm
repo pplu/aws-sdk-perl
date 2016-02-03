@@ -30,7 +30,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Policy => Str
 
-  The bucket policy as a JSON document.
+The bucket policy as a JSON document.
+
 
 
 

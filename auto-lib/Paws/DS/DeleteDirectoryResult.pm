@@ -15,7 +15,9 @@ Paws::DS::DeleteDirectoryResult
 
 =head2 DirectoryId => Str
 
-  The directory identifier.
+The directory identifier.
+
+
 
 
 =cut

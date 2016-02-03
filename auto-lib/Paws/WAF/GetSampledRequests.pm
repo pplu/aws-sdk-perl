@@ -38,16 +38,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MaxItems => Int
 
-  The number of requests that you want AWS WAF to return from among the
+The number of requests that you want AWS WAF to return from among the
 first 5,000 requests that your AWS resource received during the time
 range. If your resource received fewer requests than the value of
 C<MaxItems>, C<GetSampledRequests> returns information about all of
 them.
 
 
+
 =head2 B<REQUIRED> RuleId => Str
 
-  C<RuleId> is one of two values:
+C<RuleId> is one of two values:
 
 =over
 
@@ -62,18 +63,21 @@ specified C<WebACL>.
 
 
 
+
 =head2 B<REQUIRED> TimeWindow => L<Paws::WAF::TimeWindow>
 
-  The start date and time and the end date and time of the range for
+The start date and time and the end date and time of the range for
 which you want C<GetSampledRequests> to return a sample of requests.
 Specify the date and time in Unix time format (in seconds). You can
 specify any time range in the previous three hours.
 
 
+
 =head2 B<REQUIRED> WebAclId => Str
 
-  The C<WebACLId> of the C<WebACL> for which you want
+The C<WebACLId> of the C<WebACL> for which you want
 C<GetSampledRequests> to return a sample of requests.
+
 
 
 

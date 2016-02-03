@@ -8,6 +8,9 @@ package Paws::API::Retry;
   has growth_factor => (is => 'ro', isa => 'Int');
 
   has tries => (is => 'rw', default => 0);
+
+  has retry_rules => (is => 'ro', required => 1);
+
   has error_for_die => (is => 'rw');
   has operation_result => (is => 'rw');
 
@@ -37,10 +40,19 @@ package Paws::API::Retry;
     my $self = shift;
     my $res = $self->operation_result;
 
-    if ($self->result_is_exception and $self->_still_has_retries){
+    if ($self->result_is_exception and $self->_still_has_retries and $self->exception_is_retriable){
       return 1;
     }
     return 0; #Anything not exception should not be retried
+  }
+
+  sub exception_is_retriable {
+    my $self = shift;
+    return 1 if ($self->operation_result->code eq 'ConnectionError');
+
+    foreach my $rule (@{ $self->retry_rules }){
+      return 1 if ($rule->($self->operation_result));
+    }
   }
 
   sub result_is_exception {

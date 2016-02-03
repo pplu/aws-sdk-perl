@@ -17,15 +17,21 @@ Paws::CloudWatchLogs::GetLogEventsResponse
 
 =head2 Events => ArrayRef[L<Paws::CloudWatchLogs::OutputLogEvent>]
 
-  
+
+
+
 
 =head2 NextBackwardToken => Str
 
-  
+
+
+
 
 =head2 NextForwardToken => Str
 
-  
+
+
+
 
 
 =cut

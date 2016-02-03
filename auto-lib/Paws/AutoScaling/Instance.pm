@@ -3,7 +3,7 @@ package Paws::AutoScaling::Instance;
   has AvailabilityZone => (is => 'ro', isa => 'Str', required => 1);
   has HealthStatus => (is => 'ro', isa => 'Str', required => 1);
   has InstanceId => (is => 'ro', isa => 'Str', required => 1);
-  has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
+  has LaunchConfigurationName => (is => 'ro', isa => 'Str');
   has LifecycleState => (is => 'ro', isa => 'Str', required => 1);
   has ProtectedFromScaleIn => (is => 'ro', isa => 'Bool', required => 1);
 1;
@@ -56,7 +56,7 @@ Describes an EC2 instance.
   The ID of the instance.
 
 
-=head2 B<REQUIRED> LaunchConfigurationName => Str
+=head2 LaunchConfigurationName => Str
 
   The launch configuration associated with the instance.
 

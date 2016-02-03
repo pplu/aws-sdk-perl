@@ -16,7 +16,9 @@ Paws::EC2::DescribeReservedInstancesResult
 
 =head2 ReservedInstances => ArrayRef[L<Paws::EC2::ReservedInstances>]
 
-  A list of Reserved instances.
+A list of Reserved Instances.
+
+
 
 
 =cut

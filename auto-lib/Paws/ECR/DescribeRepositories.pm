@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-  The maximum number of repository results returned by
+The maximum number of repository results returned by
 C<DescribeRepositories> in paginated output. When this parameter is
 used, C<DescribeRepositories> only returns C<maxResults> results in a
 single page along with a C<nextToken> response element. The remaining
@@ -49,26 +49,30 @@ then C<DescribeRepositories> returns up to 100 results and a
 C<nextToken> value, if applicable.
 
 
+
 =head2 NextToken => Str
 
-  The C<nextToken> value returned from a previous paginated
+The C<nextToken> value returned from a previous paginated
 C<DescribeRepositories> request where C<maxResults> was used and the
 results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the C<nextToken> value.
 This value is C<null> when there are no more results to return.
 
 
+
 =head2 RegistryId => Str
 
-  The AWS account ID associated with the registry that contains the
+The AWS account ID associated with the registry that contains the
 repositories to be described. If you do not specify a registry, the
 default registry is assumed.
 
 
+
 =head2 RepositoryNames => ArrayRef[Str]
 
-  A list of repositories to describe. If this parameter is omitted, then
+A list of repositories to describe. If this parameter is omitted, then
 all repositories in a registry are described.
+
 
 
 

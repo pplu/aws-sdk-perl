@@ -16,7 +16,9 @@ Paws::EC2::DescribeIdFormatResult
 
 =head2 Statuses => ArrayRef[L<Paws::EC2::IdFormat>]
 
-  Information about the ID format for the resource.
+Information about the ID format for the resource.
+
+
 
 
 =cut

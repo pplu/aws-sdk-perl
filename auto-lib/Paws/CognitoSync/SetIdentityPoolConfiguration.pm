@@ -11,7 +11,7 @@ package Paws::CognitoSync::SetIdentityPoolConfiguration;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/configuration');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::SetIdentityPoolConfigurationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SetIdentityPoolConfigurationResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,19 +39,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CognitoStreams => L<Paws::CognitoSync::CognitoStreams>
 
-  Options to apply to this identity pool for Amazon Cognito streams.
+Options to apply to this identity pool for Amazon Cognito streams.
+
 
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  A name-spaced GUID (for example,
+A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. This is the ID of the pool to modify.
 
 
+
 =head2 PushSync => L<Paws::CognitoSync::PushSync>
 
-  Options to apply to this identity pool for push synchronization.
+Options to apply to this identity pool for push synchronization.
+
 
 
 

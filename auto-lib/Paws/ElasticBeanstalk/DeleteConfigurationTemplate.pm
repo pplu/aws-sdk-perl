@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The name of the application to delete the configuration template from.
+The name of the application to delete the configuration template from.
+
 
 
 =head2 B<REQUIRED> TemplateName => Str
 
-  The name of the configuration template to delete.
+The name of the configuration template to delete.
+
 
 
 

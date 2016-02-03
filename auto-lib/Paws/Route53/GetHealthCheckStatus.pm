@@ -24,7 +24,7 @@ Paws::Route53::GetHealthCheckStatusResponse
 
 =head2 B<REQUIRED> HealthCheckId => Str
 
-  If you want Amazon Route 53 to return this resource record set in
+If you want Amazon Route 53 to return this resource record set in
 response to a DNS query only when a health check is passing, include
 the C<HealthCheckId> element and specify the ID of the applicable
 health check.
@@ -92,6 +92,8 @@ In this configuration, if you create a health check for which the value
 of C<FullyQualifiedDomainName> matches the name of the resource record
 sets and then associate the health check with those resource record
 sets, health check results will be unpredictable.
+
+
 
 
 =cut

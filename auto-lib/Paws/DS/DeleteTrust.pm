@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> TrustId => Str
 
-  The Trust ID of the trust relationship to be deleted.
+The Trust ID of the trust relationship to be deleted.
+
 
 
 

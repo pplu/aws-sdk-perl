@@ -1,4 +1,4 @@
-package TestCaller {
+package TestCaller;
   use Moose::Role;
   with 'Paws::Net::Caller';
   use File::Slurper 'write_text';
@@ -52,6 +52,4 @@ package TestCaller {
 
     write_text($test_file, $data);
   }; 
-}
-
 1;

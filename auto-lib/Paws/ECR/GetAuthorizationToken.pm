@@ -35,9 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 RegistryIds => ArrayRef[Str]
 
-  A list of AWS account IDs that are associated with the registries for
+A list of AWS account IDs that are associated with the registries for
 which to get authorization tokens. If you do not specify a registry,
 the default registry is assumed.
+
 
 
 

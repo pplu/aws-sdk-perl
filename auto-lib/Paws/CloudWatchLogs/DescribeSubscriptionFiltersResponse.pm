@@ -16,11 +16,15 @@ Paws::CloudWatchLogs::DescribeSubscriptionFiltersResponse
 
 =head2 NextToken => Str
 
-  
+
+
+
 
 =head2 SubscriptionFilters => ArrayRef[L<Paws::CloudWatchLogs::SubscriptionFilter>]
 
-  
+
+
+
 
 
 =cut

@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Resource => Str
 
-  The type of resource.
+The type of resource.
+
 
 
 =head2 B<REQUIRED> UseLongIds => Bool
 
-  Indicate whether the resource should use longer IDs (17-character IDs).
+Indicate whether the resource should use longer IDs (17-character IDs).
+
 
 
 

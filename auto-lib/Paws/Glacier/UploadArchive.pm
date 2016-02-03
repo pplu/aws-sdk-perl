@@ -13,7 +13,7 @@ package Paws::Glacier::UploadArchive;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/archives');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ArchiveCreationOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadArchiveResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-  The C<AccountId> value is the AWS account ID of the account that owns
+The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
@@ -49,24 +49,29 @@ you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
 
+
 =head2 ArchiveDescription => Str
 
-  The optional description of the archive you are uploading.
+The optional description of the archive you are uploading.
+
 
 
 =head2 Body => Str
 
-  The data to upload.
+The data to upload.
+
 
 
 =head2 Checksum => Str
 
-  The SHA256 tree hash of the data being uploaded.
+The SHA256 tree hash of the data being uploaded.
+
 
 
 =head2 B<REQUIRED> VaultName => Str
 
-  The name of the vault.
+The name of the vault.
+
 
 
 

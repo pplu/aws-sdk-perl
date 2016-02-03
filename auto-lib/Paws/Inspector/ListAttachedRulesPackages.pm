@@ -37,24 +37,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssessmentArn => Str
 
-  The ARN specifying the assessment whose rules packages you want to
+The ARN specifying the assessment whose rules packages you want to
 list.
+
 
 
 =head2 MaxResults => Int
 
-  You can use this parameter to indicate the maximum number of items you
+You can use this parameter to indicate the maximum number of items you
 want in the response. The default value is 10. The maximum value is
 500.
 
 
+
 =head2 NextToken => Str
 
-  You can use this parameter when paginating results. Set the value of
+You can use this parameter when paginating results. Set the value of
 this parameter to 'null' on your first call to the
 B<ListAttachedRulesPackages> action. Subsequent calls to the action
 fill B<nextToken> in the request with the value of B<NextToken> from
 previous response to continue listing data.
+
 
 
 

@@ -16,7 +16,7 @@ package Paws::ApiGateway::TestInvokeMethod;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::TestInvokeMethodResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'TestInvokeMethodResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -44,42 +44,50 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Body => Str
 
-  
+
+
 
 
 =head2 ClientCertificateId => Str
 
-  
+
+
 
 
 =head2 Headers => L<Paws::ApiGateway::MapOfHeaderValues>
 
-  
+
+
 
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-  
+
+
 
 
 =head2 PathWithQueryString => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  
+
+
 
 
 =head2 StageVariables => L<Paws::ApiGateway::MapOfStringToString>
 
-  
+
+
 
 
 

@@ -16,7 +16,9 @@ Paws::EC2::DescribePlacementGroupsResult
 
 =head2 PlacementGroups => ArrayRef[L<Paws::EC2::PlacementGroup>]
 
-  One or more placement groups.
+One or more placement groups.
+
+
 
 
 =cut

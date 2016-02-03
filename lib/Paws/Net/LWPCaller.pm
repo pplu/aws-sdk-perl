@@ -1,8 +1,7 @@
-package Paws::Net::LWPCaller {
+package Paws::Net::LWPCaller;
   # This caller uses LWP::UserAgent -- thus HTTPS proxies are supported.
   use Moose;
-  use Carp qw(croak);
-  with 'Paws::Net::CallerRole';
+  with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
 
   has debug              => ( is => 'rw', required => 0, default => sub { 0 } );
   has ua => (is => 'rw', required => 1, lazy => 1,
@@ -15,7 +14,7 @@ package Paws::Net::LWPCaller {
     }
   );
 
-  sub do_call {
+  sub send_request {
     my ($self, $service, $call_object) = @_;
 
     my $requestObj = $service->prepare_request_for_call($call_object); 
@@ -30,20 +29,21 @@ package Paws::Net::LWPCaller {
         %$headers,
         (defined $requestObj->content)?(Content => $requestObj->content):(),
     );
+   
 
-    if ($response->code == 500 and $response->header('client-warning') eq 'Internal response') {
-        Paws::Exception->throw(message => $response->content, code => 'ConnectionError', request_id => '');
+   my $lcheaders = {};
+   $response->headers->scan(sub { $lcheaders->{ lc$_[0] } = $_[1] });
+
+    $self->caller_to_response($service, $call_object, $response->code, $response->content, $lcheaders);
+  }
+
+  sub caller_to_response {
+    my ($self, $service, $call_object, $status, $content, $headers) = @_;
+    
+    if ($status == 500 and $headers->{'client-warning'} eq 'Internal response') {
+      return Paws::Exception->new(message => $content, code => 'ConnectionError', request_id => '');
     } else {
-      my $res = $service->handle_response($call_object, $response->code, $response->content, $response->headers);
-      if (not ref($res)){
-        return $res;
-      } elsif ($res->isa('Paws::Exception')) {
-        $res->throw;
-      } else {
-        return $res;
-      }
+      return $service->handle_response($call_object, $status, $content, $headers);
     }
   }
-}
-
 1;

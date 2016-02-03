@@ -41,31 +41,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The name of the application to associate with this configuration
+The name of the application to associate with this configuration
 template. If no application is found with this name, AWS Elastic
 Beanstalk returns an C<InvalidParameterValue> error.
 
 
+
 =head2 Description => Str
 
-  Describes this configuration.
+Describes this configuration.
+
 
 
 =head2 EnvironmentId => Str
 
-  The ID of the environment used with this configuration template.
+The ID of the environment used with this configuration template.
+
 
 
 =head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
-  If specified, AWS Elastic Beanstalk sets the specified configuration
+If specified, AWS Elastic Beanstalk sets the specified configuration
 option to the requested value. The new value overrides the value
 obtained from the solution stack or the source configuration template.
 
 
+
 =head2 SolutionStackName => Str
 
-  The name of the solution stack used by this configuration. The solution
+The name of the solution stack used by this configuration. The solution
 stack specifies the operating system, architecture, and application
 server for a configuration template. It determines the set of
 configuration options as well as the possible and default values.
@@ -82,9 +86,10 @@ parameter is specified, AWS Elastic Beanstalk uses the same solution
 stack as the source configuration template.
 
 
+
 =head2 SourceConfiguration => L<Paws::ElasticBeanstalk::SourceConfiguration>
 
-  If specified, AWS Elastic Beanstalk uses the configuration values from
+If specified, AWS Elastic Beanstalk uses the configuration values from
 the specified configuration template to create a new configuration.
 
 Values specified in the C<OptionSettings> parameter of this call
@@ -100,14 +105,16 @@ name or else AWS Elastic Beanstalk returns an
 C<InvalidParameterCombination> error.
 
 
+
 =head2 B<REQUIRED> TemplateName => Str
 
-  The name of the configuration template.
+The name of the configuration template.
 
 Constraint: This name must be unique per application.
 
 Default: If a configuration template already exists with this name, AWS
 Elastic Beanstalk returns an C<InvalidParameterValue> error.
+
 
 
 

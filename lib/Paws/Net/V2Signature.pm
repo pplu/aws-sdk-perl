@@ -1,4 +1,4 @@
-package Paws::Net::V2Signature {
+package Paws::Net::V2Signature;
   use Moose::Role;
   use Digest::SHA qw(hmac_sha256);
   use MIME::Base64 qw(encode_base64);
@@ -119,8 +119,6 @@ sub _request {
     my $params = shift;
 
     return $self->ua->post_form( $self->base_url, $params );
-}
-
 }
 
 1;

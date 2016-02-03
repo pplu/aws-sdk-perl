@@ -37,17 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DeleteElasticIp => Bool
 
-  Whether to delete the instance Elastic IP address.
+Whether to delete the instance Elastic IP address.
+
 
 
 =head2 DeleteVolumes => Bool
 
-  Whether to delete the instance's Amazon EBS volumes.
+Whether to delete the instance's Amazon EBS volumes.
+
 
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  The instance ID.
+The instance ID.
+
 
 
 

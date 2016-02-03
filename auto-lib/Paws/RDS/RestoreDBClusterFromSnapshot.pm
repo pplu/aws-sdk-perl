@@ -46,18 +46,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  Provides the list of EC2 Availability Zones that instances in the
+Provides the list of EC2 Availability Zones that instances in the
 restored DB cluster can be created in.
+
 
 
 =head2 DatabaseName => Str
 
-  The database name for the restored DB cluster.
+The database name for the restored DB cluster.
+
 
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-  The name of the DB cluster to create from the DB cluster snapshot. This
+The name of the DB cluster to create from the DB cluster snapshot. This
 parameter isn't case-sensitive.
 
 Constraints:
@@ -75,28 +77,32 @@ Constraints:
 Example: C<my-snapshot-id>
 
 
+
 =head2 DBSubnetGroupName => Str
 
-  The name of the DB subnet group to use for the new DB cluster.
+The name of the DB subnet group to use for the new DB cluster.
+
 
 
 =head2 B<REQUIRED> Engine => Str
 
-  The database engine to use for the new DB cluster.
+The database engine to use for the new DB cluster.
 
 Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
 
 
+
 =head2 EngineVersion => Str
 
-  The version of the database engine to use for the new DB cluster.
+The version of the database engine to use for the new DB cluster.
+
 
 
 =head2 KmsKeyId => Str
 
-  The KMS key identifier to use when restoring an encrypted DB cluster
+The KMS key identifier to use when restoring an encrypted DB cluster
 from an encrypted DB cluster snapshot.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
@@ -124,23 +130,26 @@ encrypted, and you specify a value for the C<KmsKeyId> parameter, then
 the restore request is rejected.
 
 
+
 =head2 OptionGroupName => Str
 
-  The name of the option group to use for the restored DB cluster.
+The name of the option group to use for the restored DB cluster.
+
 
 
 =head2 Port => Int
 
-  The port number on which the new DB cluster accepts connections.
+The port number on which the new DB cluster accepts connections.
 
 Constraints: Value must be C<1150-65535>
 
 Default: The same port as the original DB cluster.
 
 
+
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
-  The identifier for the DB cluster snapshot to restore from.
+The identifier for the DB cluster snapshot to restore from.
 
 Constraints:
 
@@ -156,14 +165,17 @@ Constraints:
 
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-  The tags to be assigned to the restored DB cluster.
+The tags to be assigned to the restored DB cluster.
+
 
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  A list of VPC security groups that the new DB cluster will belong to.
+A list of VPC security groups that the new DB cluster will belong to.
+
 
 
 

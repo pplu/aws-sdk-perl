@@ -7,7 +7,7 @@ package Paws::CloudFront::DeleteDistribution;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-09-17/distribution/{Id}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-01-28/distribution/{Id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -25,12 +25,16 @@ Paws::CloudFront::
 
 =head2 B<REQUIRED> Id => Str
 
-  The distribution id.
+The distribution id.
+
+
 
 =head2 IfMatch => Str
 
-  The value of the ETag header you received when you disabled the
+The value of the ETag header you received when you disabled the
 distribution. For example: E2QWRUHAPOMQZL.
+
+
 
 
 =cut

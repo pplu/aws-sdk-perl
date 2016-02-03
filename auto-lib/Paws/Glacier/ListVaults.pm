@@ -11,7 +11,7 @@ package Paws::Glacier::ListVaults;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ListVaultsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListVaultsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-  The C<AccountId> value is the AWS account ID. This value must match the
+The C<AccountId> value is the AWS account ID. This value must match the
 AWS account ID associated with the credentials used to sign the
 request. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
@@ -48,16 +48,19 @@ you specify your account ID, do not include any hyphens (apos-apos) in
 the ID.
 
 
+
 =head2 Limit => Str
 
-  The maximum number of items returned in the response. If you don't
+The maximum number of items returned in the response. If you don't
 specify a value, the List Vaults operation returns up to 1,000 items.
+
 
 
 =head2 Marker => Str
 
-  A string used for pagination. The marker specifies the vault ARN after
+A string used for pagination. The marker specifies the vault ARN after
 which the listing of vaults should begin.
+
 
 
 

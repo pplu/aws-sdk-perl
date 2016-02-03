@@ -28,23 +28,33 @@ Paws::S3::RestoreObjectOutput
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
+
+
+
 
 =head2 B<REQUIRED> Key => Str
 
-  
+
+
+
 
 =head2 RequestPayer => Str
 
-  
+
+
+Valid values are: C<"requester">
 
 =head2 RestoreRequest => L<Paws::S3::RestoreRequest>
 
-  
+
+
+
 
 =head2 VersionId => Str
 
-  
+
+
+
 
 
 =cut

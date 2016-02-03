@@ -36,12 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> OriginalRuleSetName => Str
 
-  The name of the rule set to clone.
+The name of the rule set to clone.
+
 
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-  The name of the rule set to create. The name must:
+The name of the rule set to create. The name must:
 
 =over
 
@@ -53,6 +54,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =item * Contain less than 64 characters.
 
 =back
+
 
 
 

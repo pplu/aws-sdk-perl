@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceProfileName => Str
 
-  The name of the instance profile to update.
+The name of the instance profile to update.
+
 
 
 =head2 B<REQUIRED> RoleName => Str
 
-  The name of the role to add.
+The name of the role to add.
+
 
 
 

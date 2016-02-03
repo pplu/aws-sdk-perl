@@ -15,7 +15,9 @@ Paws::DirectConnect::VirtualInterfaces
 
 =head2 VirtualInterfaces => ArrayRef[L<Paws::DirectConnect::VirtualInterface>]
 
-  A list of virtual interfaces.
+A list of virtual interfaces.
+
+
 
 
 =cut

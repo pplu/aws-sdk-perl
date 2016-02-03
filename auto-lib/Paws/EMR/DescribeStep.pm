@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterId => Str
 
-  The identifier of the cluster with steps to describe.
+The identifier of the cluster with steps to describe.
+
 
 
 =head2 B<REQUIRED> StepId => Str
 
-  The identifier of the step to describe.
+The identifier of the step to describe.
+
 
 
 

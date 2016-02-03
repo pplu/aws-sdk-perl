@@ -36,15 +36,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  NextToken string is used when calling
+NextToken string is used when calling
 ListEndpointsByPlatformApplication action to retrieve additional
 records that are available after the first page results.
 
 
+
 =head2 B<REQUIRED> PlatformApplicationArn => Str
 
-  PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
+PlatformApplicationArn for ListEndpointsByPlatformApplicationInput
 action.
+
 
 
 

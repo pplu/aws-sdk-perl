@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConfigurationManager => L<Paws::OpsWorks::StackConfigurationManager>
 
-  The configuration manager.
+The configuration manager.
+
 
 
 =head2 StackId => Str
 
-  The stack ID.
+The stack ID.
+
 
 
 

@@ -13,7 +13,7 @@ package Paws::ApiGateway::CreateModel;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/models');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Model');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateModelResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -41,28 +41,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ContentType => Str
 
-  The content-type for the model.
+The content-type for the model.
+
 
 
 =head2 Description => Str
 
-  The description of the model.
+The description of the model.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the model.
+The name of the model.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi identifier under which the Model will be created.
+The RestApi identifier under which the Model will be created.
+
 
 
 =head2 Schema => Str
 
-  The schema for the model. For C<application/json> models, this should
+The schema for the model. For C<application/json> models, this should
 be JSON-schema draft v4 model.
+
 
 
 

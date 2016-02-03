@@ -16,7 +16,9 @@ Paws::CognitoSync::DescribeIdentityPoolUsageResponse
 
 =head2 IdentityPoolUsage => L<Paws::CognitoSync::IdentityPoolUsage>
 
-  Information about the usage of the identity pool.
+Information about the usage of the identity pool.
+
+
 
 
 =cut

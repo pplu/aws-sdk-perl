@@ -1,5 +1,4 @@
-
-package Paws::Signin::GetSigninToken {
+package Paws::Signin::GetSigninToken;
   use Moose;
   has SessionId => (is => 'ro', isa => 'Str', required => 1);
   has SessionKey => (is => 'ro', isa => 'Str', required => 1);
@@ -11,7 +10,7 @@ package Paws::Signin::GetSigninToken {
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'getSigninToken');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Signin::GetSigninTokenResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
-}
+
 1;
 
 ### main pod documentation begin ###

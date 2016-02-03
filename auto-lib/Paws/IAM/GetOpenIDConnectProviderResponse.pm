@@ -19,25 +19,33 @@ Paws::IAM::GetOpenIDConnectProviderResponse
 
 =head2 ClientIDList => ArrayRef[Str]
 
-  A list of client IDs (also known as audiences) that are associated with
+A list of client IDs (also known as audiences) that are associated with
 the specified IAM OpenID Connect provider. For more information, see
 CreateOpenIDConnectProvider.
 
+
+
 =head2 CreateDate => Str
 
-  The date and time when the IAM OpenID Connect provider entity was
+The date and time when the IAM OpenID Connect provider entity was
 created in the AWS account.
+
+
 
 =head2 ThumbprintList => ArrayRef[Str]
 
-  A list of certificate thumbprints that are associated with the
+A list of certificate thumbprints that are associated with the
 specified IAM OpenID Connect provider. For more information, see
 CreateOpenIDConnectProvider.
 
+
+
 =head2 Url => Str
 
-  The URL that the IAM OpenID Connect provider is associated with. For
+The URL that the IAM OpenID Connect provider is associated with. For
 more information, see CreateOpenIDConnectProvider.
+
+
 
 
 =cut

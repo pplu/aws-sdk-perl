@@ -10,7 +10,7 @@ package Paws::ElasticTranscoder::ListPipelines;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/pipelines');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ListPipelinesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListPipelinesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,16 +38,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Ascending => Str
 
-  To list pipelines in chronological order by the date and time that they
+To list pipelines in chronological order by the date and time that they
 were created, enter C<true>. To list pipelines in reverse chronological
 order, enter C<false>.
 
 
+
 =head2 PageToken => Str
 
-  When Elastic Transcoder returns more than one page of results, use
+When Elastic Transcoder returns more than one page of results, use
 C<pageToken> in subsequent C<GET> requests to get each successive page
 of results.
+
 
 
 

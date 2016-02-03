@@ -9,7 +9,7 @@ package Paws::ElasticTranscoder::ReadPreset;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/presets/{Id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::ReadPresetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ReadPresetResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -37,8 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-  The identifier of the preset for which you want to get detailed
+The identifier of the preset for which you want to get detailed
 information.
+
 
 
 

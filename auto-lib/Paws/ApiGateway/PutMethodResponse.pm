@@ -14,7 +14,7 @@ package Paws::ApiGateway::PutMethodResponse;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::MethodResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PutMethodResponseResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -42,24 +42,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-  The HTTP verb that identifies the Method resource.
+The HTTP verb that identifies the Method resource.
+
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  The Resource identifier for the Method resource.
+The Resource identifier for the Method resource.
+
 
 
 =head2 ResponseModels => L<Paws::ApiGateway::MapOfStringToString>
 
-  Specifies the Model resources used for the response's content type.
+Specifies the Model resources used for the response's content type.
 Response models are represented as a key/value map, with a content type
 as the key and a Model name as the value.
 
 
+
 =head2 ResponseParameters => L<Paws::ApiGateway::MapOfStringToBoolean>
 
-  Represents response parameters that can be sent back to the caller by
+Represents response parameters that can be sent back to the caller by
 Amazon API Gateway. Response parameters are represented as a key/value
 map, with a destination as the key and a Boolean flag as the value. The
 Boolean flag is used to specify whether the parameter is required. A
@@ -69,14 +72,17 @@ here are available to the integration for mapping from integration
 response parameters.
 
 
+
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi identifier for the Method resource.
+The RestApi identifier for the Method resource.
+
 
 
 =head2 B<REQUIRED> StatusCode => Str
 
-  The method response's status code.
+The method response's status code.
+
 
 
 

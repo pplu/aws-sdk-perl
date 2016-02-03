@@ -1,4 +1,4 @@
-package Paws::Credential::File {
+package Paws::Credential::File;
   use Moose;
   use Config::INI::Reader;
   use File::HomeDir;
@@ -49,9 +49,4 @@ package Paws::Credential::File {
   with 'Paws::Credential';
 
   no Moose;
-}
-
 1;
-
-
-

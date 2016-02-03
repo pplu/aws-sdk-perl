@@ -17,12 +17,16 @@ Paws::EC2::CreateVpcEndpointResult
 
 =head2 ClientToken => Str
 
-  Unique, case-sensitive identifier you provide to ensure the idempotency
+Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request.
+
+
 
 =head2 VpcEndpoint => L<Paws::EC2::VpcEndpoint>
 
-  Information about the endpoint.
+Information about the endpoint.
+
+
 
 
 =cut

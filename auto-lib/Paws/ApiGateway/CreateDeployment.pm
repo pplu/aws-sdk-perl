@@ -15,7 +15,7 @@ package Paws::ApiGateway::CreateDeployment;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/deployments');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Deployment');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDeploymentResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -43,41 +43,48 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CacheClusterEnabled => Bool
 
-  Enables a cache cluster for the Stage resource specified in the input.
+Enables a cache cluster for the Stage resource specified in the input.
+
 
 
 =head2 CacheClusterSize => Str
 
-  Specifies the cache cluster size for the Stage resource specified in
+Specifies the cache cluster size for the Stage resource specified in
 the input, if a cache cluster is enabled.
 
+Valid values are: C<"0.5">, C<"1.6">, C<"6.1">, C<"13.5">, C<"28.4">, C<"58.2">, C<"118">, C<"237">
 
 =head2 Description => Str
 
-  The description for the Deployment resource to create.
+The description for the Deployment resource to create.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi resource identifier for the Deployment resource to create.
+The RestApi resource identifier for the Deployment resource to create.
+
 
 
 =head2 StageDescription => Str
 
-  The description of the Stage resource for the Deployment resource to
+The description of the Stage resource for the Deployment resource to
 create.
+
 
 
 =head2 B<REQUIRED> StageName => Str
 
-  The name of the Stage resource for the Deployment resource to create.
+The name of the Stage resource for the Deployment resource to create.
+
 
 
 =head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
 
-  A map that defines the stage variables for the Stage resource that is
+A map that defines the stage variables for the Stage resource that is
 associated with the new deployment. Variable names can have alphabetic
 characters, and the values must match [A-Za-z0-9-._~:/?
+
 
 
 

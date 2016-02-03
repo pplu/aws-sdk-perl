@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LayerIds => ArrayRef[Str]
 
-  A list of layer IDs. The action describes the Elastic Load Balancing
+A list of layer IDs. The action describes the Elastic Load Balancing
 instances for the specified layers.
+
 
 
 =head2 StackId => Str
 
-  A stack ID. The action describes the stack's Elastic Load Balancing
+A stack ID. The action describes the stack's Elastic Load Balancing
 instances.
+
 
 
 

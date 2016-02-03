@@ -11,7 +11,7 @@ package Paws::EFS::DescribeTags;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/tags/{FileSystemId}/');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EFS::DescribeTagsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeTagsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,20 +39,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-  The ID of the file system whose tag set you want to retrieve.
+The ID of the file system whose tag set you want to retrieve.
+
 
 
 =head2 Marker => Str
 
-  Optional. String. Opaque pagination token returned from a previous
+Optional. String. Opaque pagination token returned from a previous
 C<DescribeTags> operation. If present, it specifies to continue the
 list from where the previous call left off.
 
 
+
 =head2 MaxItems => Int
 
-  Optional. Maximum number of file system tags to return in the response.
+Optional. Maximum number of file system tags to return in the response.
 It must be an integer with a value greater than zero.
+
 
 
 

@@ -10,7 +10,7 @@ package Paws::Lambda::GetFunctionConfiguration;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/configuration');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::FunctionConfiguration');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetFunctionConfigurationResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  The name of the Lambda function for which you want to retrieve the
+The name of the Lambda function for which you want to retrieve the
 configuration information.
 
 You can specify an unqualified function name (for example, "Thumbnail")
@@ -50,9 +50,10 @@ applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
 
+
 =head2 Qualifier => Str
 
-  Using this optional parameter you can specify function version or alias
+Using this optional parameter you can specify function version or alias
 name. If you specify function version, the API uses qualified function
 ARN and returns information about the specific function version. if you
 specify alias name, the API uses alias ARN and returns information
@@ -60,6 +61,7 @@ about the function version to which the alias points.
 
 If you don't specify this parameter, the API uses unqualified function
 ARN, and returns information about the $LATEST function version.
+
 
 
 

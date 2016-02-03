@@ -39,31 +39,36 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-  The Directory ID of the Microsoft AD in the AWS cloud for which to
+The Directory ID of the Microsoft AD in the AWS cloud for which to
 establish the trust relationship.
+
 
 
 =head2 B<REQUIRED> RemoteDomainName => Str
 
-  The Fully Qualified Domain Name (FQDN) of the external domain for which
+The Fully Qualified Domain Name (FQDN) of the external domain for which
 to create the trust relationship.
+
 
 
 =head2 B<REQUIRED> TrustDirection => Str
 
-  The direction of the trust relationship.
+The direction of the trust relationship.
 
+Valid values are: C<"One-Way: Outgoing">, C<"One-Way: Incoming">, C<"Two-Way">
 
 =head2 B<REQUIRED> TrustPassword => Str
 
-  The trust password. The must be the same password that was used when
+The trust password. The must be the same password that was used when
 creating the trust relationship on the external domain.
+
 
 
 =head2 TrustType => Str
 
-  The trust relationship type.
+The trust relationship type.
 
+Valid values are: C<"Forest">
 
 
 =head1 SEE ALSO

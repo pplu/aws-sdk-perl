@@ -1,5 +1,4 @@
-package Paws::API::StrToNativeMapParser {
+package Paws::API::StrToNativeMapParser;
   use Moose::Role;
-}
 
 1;

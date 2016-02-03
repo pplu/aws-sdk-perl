@@ -18,15 +18,22 @@ Paws::EC2::GetConsoleOutputResult
 
 =head2 InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
+
+
 
 =head2 Output => Str
 
-  The console output, Base64 encoded.
+The console output, Base64 encoded. If using a command line tool, the
+tools decode the output for you.
+
+
 
 =head2 Timestamp => Str
 
-  The time the output was last updated.
+The time the output was last updated.
+
+
 
 
 =cut

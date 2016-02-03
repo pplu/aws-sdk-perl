@@ -11,7 +11,7 @@ package Paws::ApiGateway::UpdateResource;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Resource');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateResourceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,18 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
 
-  A list of operations describing the updates to apply to the specified
+A list of operations describing the updates to apply to the specified
 resource. The patches are applied in the order specified in the list.
+
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  The identifier of the Resource resource.
+The identifier of the Resource resource.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi identifier for the Resource resource.
+The RestApi identifier for the Resource resource.
+
 
 
 

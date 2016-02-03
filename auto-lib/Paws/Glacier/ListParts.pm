@@ -13,7 +13,7 @@ package Paws::Glacier::ListParts;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::ListPartsOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListPartsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-  The C<AccountId> value is the AWS account ID of the account that owns
+The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
@@ -49,30 +49,35 @@ you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
 
+
 =head2 Limit => Str
 
-  Specifies the maximum number of parts returned in the response body. If
+Specifies the maximum number of parts returned in the response body. If
 this value is not specified, the List Parts operation returns up to
 1,000 uploads.
 
 
+
 =head2 Marker => Str
 
-  An opaque string used for pagination. This value specifies the part at
+An opaque string used for pagination. This value specifies the part at
 which the listing of parts should begin. Get the marker value from the
 response of a previous List Parts response. You need only include the
 marker if you are continuing the pagination of results started in a
 previous List Parts request.
 
 
+
 =head2 B<REQUIRED> UploadId => Str
 
-  The upload ID of the multipart upload.
+The upload ID of the multipart upload.
+
 
 
 =head2 B<REQUIRED> VaultName => Str
 
-  The name of the vault.
+The name of the vault.
+
 
 
 

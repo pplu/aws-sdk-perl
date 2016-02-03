@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> StackName => Str
 
-  The name or the unique stack ID that is associated with the stack,
+The name or the unique stack ID that is associated with the stack,
 which are not always interchangeable:
 
 =over
@@ -48,6 +48,7 @@ unique stack ID.
 =back
 
 Default: There is no default value.
+
 
 
 

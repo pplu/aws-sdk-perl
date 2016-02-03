@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Identity => Str
 
-  The identity to which the policy will apply. You can specify an
+The identity to which the policy will apply. You can specify an
 identity by using its name or by using its Amazon Resource Name (ARN).
 Examples: C<user@example.com>, C<example.com>,
 C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
@@ -45,20 +45,23 @@ C<arn:aws:ses:us-east-1:123456789012:identity/example.com>.
 To successfully call this API, you must own the identity.
 
 
+
 =head2 B<REQUIRED> Policy => Str
 
-  The text of the policy in JSON format. The policy cannot exceed 4 KB.
+The text of the policy in JSON format. The policy cannot exceed 4 KB.
 
 For information about the syntax of sending authorization policies, see
 the Amazon SES Developer Guide.
 
 
+
 =head2 B<REQUIRED> PolicyName => Str
 
-  The name of the policy.
+The name of the policy.
 
 The policy name cannot exceed 64 characters and can only include
 alphanumeric characters, dashes, and underscores.
+
 
 
 

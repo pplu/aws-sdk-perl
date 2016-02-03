@@ -37,19 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Arn => Str
 
-  The project ARN.
+The project ARN.
+
 
 
 =head2 NextToken => Str
 
-  An identifier that was returned from the previous call to this
+An identifier that was returned from the previous call to this
 operation, which can be used to return the next set of items in the
 list.
 
 
+
 =head2 Type => Str
 
-  The device pools' type.
+The device pools' type.
 
 Allowed values include:
 
@@ -67,6 +69,7 @@ developer.
 =back
 
 
+Valid values are: C<"CURATED">, C<"PRIVATE">
 
 
 =head1 SEE ALSO

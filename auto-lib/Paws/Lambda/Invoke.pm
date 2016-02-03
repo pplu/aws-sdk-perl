@@ -14,7 +14,7 @@ package Paws::Lambda::Invoke;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/invocations');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::InvocationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'InvokeResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ClientContext => Str
 
-  Using the C<ClientContext> you can pass client-specific information to
+Using the C<ClientContext> you can pass client-specific information to
 the Lambda function you are invoking. You can then process the client
 information in your Lambda function as you choose through the context
 variable. For an example of a ClientContext JSON, go to PutEvents in
@@ -51,9 +51,10 @@ the I<Amazon Mobile Analytics API Reference and User Guide>.
 The ClientContext JSON must be base64-encoded.
 
 
+
 =head2 B<REQUIRED> FunctionName => Str
 
-  The Lambda function name.
+The Lambda function name.
 
 You can specify an unqualified function name (for example, "Thumbnail")
 or you can specify Amazon Resource Name (ARN) of the function (for
@@ -64,9 +65,10 @@ applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
 
+
 =head2 InvocationType => Str
 
-  By default, the C<Invoke> API assumes "RequestResponse" invocation
+By default, the C<Invoke> API assumes "RequestResponse" invocation
 type. You can optionally request asynchronous execution by specifying
 "Event" as the C<InvocationType>. You can also use this parameter to
 request AWS Lambda to not execute the function but do some
@@ -76,24 +78,27 @@ function and if the inputs are valid. You request this by specifying
 scenario when you want to verify access to a function without running
 it.
 
+Valid values are: C<"Event">, C<"RequestResponse">, C<"DryRun">
 
 =head2 LogType => Str
 
-  You can set this optional parameter to "Tail" in the request only if
+You can set this optional parameter to "Tail" in the request only if
 you specify the C<InvocationType> parameter with value
 "RequestResponse". In this case, AWS Lambda returns the base64-encoded
 last 4 KB of log data produced by your Lambda function in the
 C<x-amz-log-results> header.
 
+Valid values are: C<"None">, C<"Tail">
 
 =head2 Payload => Str
 
-  JSON that you want to provide to your Lambda function as input.
+JSON that you want to provide to your Lambda function as input.
+
 
 
 =head2 Qualifier => Str
 
-  You can use this optional paramter to specify a Lambda function version
+You can use this optional paramter to specify a Lambda function version
 or alias name. If you specify function version, the API uses qualified
 function ARN to invoke a specific Lambda function. If you specify alias
 name, the API uses the alias ARN to invoke the Lambda function version
@@ -101,6 +106,7 @@ to which the alias points.
 
 If you don't provide this parameter, then the API uses unqualified
 function ARN which results in invocation of the $LATEST version.
+
 
 
 

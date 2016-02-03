@@ -13,7 +13,7 @@ package Paws::ApiGateway::CreateDomainName;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DomainName');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDomainNameResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -41,13 +41,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateBody => Str
 
-  The body of the server certificate provided by your certificate
+The body of the server certificate provided by your certificate
 authority.
+
 
 
 =head2 B<REQUIRED> CertificateChain => Str
 
-  The intermediate certificates and optionally the root certificate, one
+The intermediate certificates and optionally the root certificate, one
 after the other without any blank lines. If you include the root
 certificate, your certificate chain must start with intermediate
 certificates and end with the root certificate. Use the intermediate
@@ -55,19 +56,23 @@ certificates that were provided by your certificate authority. Do not
 include any intermediaries that are not in the chain of trust path.
 
 
+
 =head2 B<REQUIRED> CertificateName => Str
 
-  The name of the certificate.
+The name of the certificate.
+
 
 
 =head2 B<REQUIRED> CertificatePrivateKey => Str
 
-  Your certificate's private key.
+Your certificate's private key.
+
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The name of the DomainName resource.
+The name of the DomainName resource.
+
 
 
 

@@ -18,16 +18,22 @@ Paws::IAM::GetCredentialReportResponse
 
 =head2 Content => Str
 
-  Contains the credential report. The report is Base64-encoded.
+Contains the credential report. The report is Base64-encoded.
+
+
 
 =head2 GeneratedTime => Str
 
-  The date and time when the credential report was created, in ISO 8601
+The date and time when the credential report was created, in ISO 8601
 date-time format.
+
+
 
 =head2 ReportFormat => Str
 
-  The format (MIME type) of the credential report.
+The format (MIME type) of the credential report.
+
+Valid values are: C<"text/csv">
 
 
 =cut

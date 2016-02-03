@@ -15,7 +15,9 @@ Paws::OpsWorks::RegisterVolumeResult
 
 =head2 VolumeId => Str
 
-  The volume ID.
+The volume ID.
+
+
 
 
 =cut

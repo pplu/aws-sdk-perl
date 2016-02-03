@@ -1,5 +1,6 @@
 requires 'Moose';
 requires 'MooseX::ClassAttribute';
+requires 'HTTP::Tiny';
 requires 'Throwable::Error';
 requires 'Data::Compare';
 requires 'URI';
@@ -25,6 +26,7 @@ requires 'Module::Find';
 requires 'Getopt::Long';
 recommends 'Browser::Open';
 requires 'File::HomeDir';
+requires 'String::CRC32';
 
 on 'develop' => sub {
   requires 'Template';

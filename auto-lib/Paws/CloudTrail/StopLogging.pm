@@ -35,9 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Name => Str
 
-  Specifies the name or the CloudTrail ARN of the trail for which
+Specifies the name or the CloudTrail ARN of the trail for which
 CloudTrail will stop logging AWS API calls. The format of a trail ARN
 is C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
+
 
 
 

@@ -38,12 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  The identifier of the Resource resource.
+The identifier of the Resource resource.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi identifier for the Resource resource.
+The RestApi identifier for the Resource resource.
+
 
 
 

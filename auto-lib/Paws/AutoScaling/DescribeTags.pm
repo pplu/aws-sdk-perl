@@ -37,18 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Filters => ArrayRef[L<Paws::AutoScaling::Filter>]
 
-  A filter used to scope the tags to return.
+A filter used to scope the tags to return.
+
 
 
 =head2 MaxRecords => Int
 
-  The maximum number of items to return with this call.
+The maximum number of items to return with this call.
+
 
 
 =head2 NextToken => Str
 
-  The token for the next set of items to return. (You received this token
+The token for the next set of items to return. (You received this token
 from a previous call.)
+
 
 
 

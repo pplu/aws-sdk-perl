@@ -15,7 +15,9 @@ Paws::StorageGateway::StartGatewayOutput
 
 =head2 GatewayARN => Str
 
-  
+
+
+
 
 
 =cut

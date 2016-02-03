@@ -16,7 +16,9 @@ Paws::IAM::UploadSigningCertificateResponse
 
 =head2 B<REQUIRED> Certificate => L<Paws::IAM::SigningCertificate>
 
-  Information about the certificate.
+Information about the certificate.
+
+
 
 
 =cut

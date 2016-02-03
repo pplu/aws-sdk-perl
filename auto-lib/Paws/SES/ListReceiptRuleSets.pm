@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  A token returned from a previous call to C<ListReceiptRuleSets> to
+A token returned from a previous call to C<ListReceiptRuleSets> to
 indicate the position in the receipt rule set list.
+
 
 
 

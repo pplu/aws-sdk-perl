@@ -40,32 +40,38 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientToken => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> GatewayARN => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> NetworkInterfaceId => Str
 
-  
+
+
 
 
 =head2 SnapshotId => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> TargetName => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> VolumeSizeInBytes => Int
 
-  
+
+
 
 
 

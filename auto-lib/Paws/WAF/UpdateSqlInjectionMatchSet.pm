@@ -37,19 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  The value returned by the most recent call to GetChangeToken.
+The value returned by the most recent call to GetChangeToken.
+
 
 
 =head2 B<REQUIRED> SqlInjectionMatchSetId => Str
 
-  The C<SqlInjectionMatchSetId> of the C<SqlInjectionMatchSet> that you
+The C<SqlInjectionMatchSetId> of the C<SqlInjectionMatchSet> that you
 want to update. C<SqlInjectionMatchSetId> is returned by
 CreateSqlInjectionMatchSet and by ListSqlInjectionMatchSets.
 
 
+
 =head2 B<REQUIRED> Updates => ArrayRef[L<Paws::WAF::SqlInjectionMatchSetUpdate>]
 
-  An array of C<SqlInjectionMatchSetUpdate> objects that you want to
+An array of C<SqlInjectionMatchSetUpdate> objects that you want to
 insert into or delete from a SqlInjectionMatchSet. For more
 information, see the applicable data types:
 
@@ -64,6 +66,7 @@ C<TextTransformation>
 =item * FieldToMatch: Contains C<Data> and C<Type>
 
 =back
+
 
 
 

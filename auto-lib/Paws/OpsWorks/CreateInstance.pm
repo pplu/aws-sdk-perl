@@ -51,7 +51,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AgentVersion => Str
 
-  The default AWS OpsWorks agent version. You have the following options:
+The default AWS OpsWorks agent version. You have the following options:
 
 =over
 
@@ -70,54 +70,63 @@ on the console. For a list of available agent version numbers, call
 DescribeAgentVersions.
 
 
+
 =head2 AmiId => Str
 
-  A custom AMI ID to be used to create the instance. The AMI should be
+A custom AMI ID to be used to create the instance. The AMI should be
 based on one of the supported operating systems. For more information,
 see Using Custom AMIs.
 
 If you specify a custom AMI, you must set C<Os> to C<Custom>.
 
 
+
 =head2 Architecture => Str
 
-  The instance architecture. The default option is C<x86_64>. Instance
+The instance architecture. The default option is C<x86_64>. Instance
 types do not necessarily support both architectures. For a list of the
 architectures that are supported by the different instance types, see
 Instance Families and Types.
 
+Valid values are: C<"x86_64">, C<"i386">
 
 =head2 AutoScalingType => Str
 
-  For load-based or time-based instances, the type. Windows stacks can
+For load-based or time-based instances, the type. Windows stacks can
 use only time-based instances.
 
+Valid values are: C<"load">, C<"timer">
 
 =head2 AvailabilityZone => Str
 
-  The instance Availability Zone. For more information, see Regions and
+The instance Availability Zone. For more information, see Regions and
 Endpoints.
+
 
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>]
 
-  An array of C<BlockDeviceMapping> objects that specify the instance's
-block devices. For more information, see Block Device Mapping.
+An array of C<BlockDeviceMapping> objects that specify the instance's
+block devices. For more information, see Block Device Mapping. Note
+that block device mappings are not supported for custom AMIs.
+
 
 
 =head2 EbsOptimized => Bool
 
-  Whether to create an Amazon EBS-optimized instance.
+Whether to create an Amazon EBS-optimized instance.
+
 
 
 =head2 Hostname => Str
 
-  The instance host name.
+The instance host name.
+
 
 
 =head2 InstallUpdatesOnBoot => Bool
 
-  Whether to install operating system and package updates when the
+Whether to install operating system and package updates when the
 instance boots. The default value is C<true>. To control when updates
 are installed, set this value to C<false>. You must then update your
 instances manually by using CreateDeployment to run the
@@ -128,9 +137,10 @@ We strongly recommend using the default value of C<true> to ensure that
 your instances have the latest security updates.
 
 
+
 =head2 B<REQUIRED> InstanceType => Str
 
-  The instance type, such as C<t2.micro>. For a list of supported
+The instance type, such as C<t2.micro>. For a list of supported
 instance types, open the stack in the console, choose B<Instances>, and
 choose B<+ Instance>. The B<Size> list contains the currently supported
 types. For more information, see Instance Families and Types. The
@@ -138,14 +148,16 @@ parameter values that you use to specify the various types are in the
 B<API Name> column of the B<Available Instance Types> table.
 
 
+
 =head2 B<REQUIRED> LayerIds => ArrayRef[Str]
 
-  An array that contains the instance's layer IDs.
+An array that contains the instance's layer IDs.
+
 
 
 =head2 Os => Str
 
-  The instance's operating system, which must be set to one of the
+The instance's operating system, which must be set to one of the
 following.
 
 =over
@@ -165,38 +177,45 @@ OpsWorks Operating Systems.
 
 The default option is the current Amazon Linux version. If you set this
 parameter to C<Custom>, you must use the CreateInstance action's AmiId
-parameter to specify the custom AMI that you want to use. For more
+parameter to specify the custom AMI that you want to use. Block device
+mappings are not supported if the value is C<Custom>. For more
 information on the supported operating systems, see Operating
 SystemsFor more information on how to use custom AMIs with AWS
 OpsWorks, see Using Custom AMIs.
 
 
+
 =head2 RootDeviceType => Str
 
-  The instance root device type. For more information, see Storage for
+The instance root device type. For more information, see Storage for
 the Root Device.
 
+Valid values are: C<"ebs">, C<"instance-store">
 
 =head2 SshKeyName => Str
 
-  The instance's Amazon EC2 key-pair name.
+The instance's Amazon EC2 key-pair name.
+
 
 
 =head2 B<REQUIRED> StackId => Str
 
-  The stack ID.
+The stack ID.
+
 
 
 =head2 SubnetId => Str
 
-  The ID of the instance's subnet. If the stack is running in a VPC, you
+The ID of the instance's subnet. If the stack is running in a VPC, you
 can use this parameter to override the stack's default subnet ID value
 and direct AWS OpsWorks to launch the instance in a different subnet.
 
 
+
 =head2 VirtualizationType => Str
 
-  The instance's virtualization type, C<paravirtual> or C<hvm>.
+The instance's virtualization type, C<paravirtual> or C<hvm>.
+
 
 
 

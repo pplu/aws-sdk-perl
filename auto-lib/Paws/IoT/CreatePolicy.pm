@@ -10,7 +10,7 @@ package Paws::IoT::CreatePolicy;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/policies/{policyName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreatePolicyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePolicyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,14 +38,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PolicyDocument => Str
 
-  The JSON document that describes the policy. The length of the
+The JSON document that describes the policy. The length of the
 B<policyDocument> must be a minimum length of 1, with a maximum length
 of 2048, excluding whitespace.
 
 
+
 =head2 B<REQUIRED> PolicyName => Str
 
-  The policy name.
+The policy name.
+
 
 
 

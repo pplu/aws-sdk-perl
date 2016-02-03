@@ -10,7 +10,7 @@ package Paws::IoTData::UpdateThingShadow;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}/shadow');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoTData::UpdateThingShadowResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateThingShadowResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Payload => Str
 
-  The state information, in JSON format.
+The state information, in JSON format.
+
 
 
 =head2 B<REQUIRED> ThingName => Str
 
-  The name of the thing.
+The name of the thing.
+
 
 
 

@@ -37,19 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ImageManifest => Str
 
-  The image manifest corresponding to the image to be uploaded.
+The image manifest corresponding to the image to be uploaded.
+
 
 
 =head2 RegistryId => Str
 
-  The AWS account ID associated with the registry that contains the
+The AWS account ID associated with the registry that contains the
 repository in which to put the image. If you do not specify a registry,
 the default registry is assumed.
 
 
+
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The name of the repository in which to put the image.
+The name of the repository in which to put the image.
+
 
 
 

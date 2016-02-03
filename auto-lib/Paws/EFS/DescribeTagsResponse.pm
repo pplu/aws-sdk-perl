@@ -18,20 +18,26 @@ Paws::EFS::DescribeTagsResponse
 
 =head2 Marker => Str
 
-  If the request included a C<Marker>, the response returns that value in
+If the request included a C<Marker>, the response returns that value in
 this field.
+
+
 
 =head2 NextMarker => Str
 
-  If a value is present, there are more tags to return. In a subsequent
+If a value is present, there are more tags to return. In a subsequent
 request, you can provide the value of C<NextMarker> as the value of the
 C<Marker> parameter in your next request to retrieve the next set of
 tags.
 
+
+
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::EFS::Tag>]
 
-  Returns tags associated with the file system as an array of C<Tag>
+Returns tags associated with the file system as an array of C<Tag>
 objects.
+
+
 
 
 =cut

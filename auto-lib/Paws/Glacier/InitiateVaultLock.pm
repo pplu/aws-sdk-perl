@@ -11,7 +11,7 @@ package Paws::Glacier::InitiateVaultLock;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/{accountId}/vaults/{vaultName}/lock-policy');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Glacier::InitiateVaultLockOutput');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'InitiateVaultLockResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-  The C<AccountId> value is the AWS account ID. This value must match the
+The C<AccountId> value is the AWS account ID. This value must match the
 AWS account ID associated with the credentials used to sign the
 request. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
@@ -48,15 +48,18 @@ you specify your account ID, do not include any hyphens (apos-apos) in
 the ID.
 
 
+
 =head2 Policy => L<Paws::Glacier::VaultLockPolicy>
 
-  The vault lock policy as a JSON string, which uses "\" as an escape
+The vault lock policy as a JSON string, which uses "\" as an escape
 character.
+
 
 
 =head2 B<REQUIRED> VaultName => Str
 
-  The name of the vault.
+The name of the vault.
+
 
 
 

@@ -31,13 +31,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Location => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> TrafficPolicy => L<Paws::Route53::TrafficPolicy>
 
-  A complex type that contains settings for the new version of the
+A complex type that contains settings for the new version of the
 traffic policy.
+
 
 
 

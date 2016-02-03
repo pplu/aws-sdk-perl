@@ -38,12 +38,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Description => Str
 
-  A description of the parameter group.
+A description of the parameter group.
+
 
 
 =head2 B<REQUIRED> ParameterGroupFamily => Str
 
-  The Amazon Redshift engine version to which the cluster parameter group
+The Amazon Redshift engine version to which the cluster parameter group
 applies. The cluster engine version determines the set of parameters.
 
 To get a list of valid parameter group family names, you can call
@@ -55,9 +56,10 @@ parameter groups provide you the valid values. For example, a valid
 family name is "redshift-1.0".
 
 
+
 =head2 B<REQUIRED> ParameterGroupName => Str
 
-  The name of the cluster parameter group.
+The name of the cluster parameter group.
 
 Constraints:
 
@@ -76,9 +78,11 @@ Constraints:
 This value is stored as a lower-case string.
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-  A list of tag instances.
+A list of tag instances.
+
 
 
 

@@ -1,0 +1,8 @@
+---
+content: '{"Tags":{"Name":"Tag1","Value":"Tag1Value","t1":"v1","t2":"v2"}}'
+headers:
+  content-length: 64
+  content-type: application/json
+  date: 'Thu, 28 Jan 2016 23:49:12 GMT'
+  x-amzn-requestid: pIE7bNeB9wXdka07AdAZ32-g_RTs5X6JoWf9NN4GdVuZ5kc
+status: 200

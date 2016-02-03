@@ -3,6 +3,7 @@ package Paws::CloudFront::CustomOriginConfig;
   has HTTPPort => (is => 'ro', isa => 'Int', required => 1);
   has HTTPSPort => (is => 'ro', isa => 'Int', required => 1);
   has OriginProtocolPolicy => (is => 'ro', isa => 'Str', required => 1);
+  has OriginSslProtocols => (is => 'ro', isa => 'Paws::CloudFront::OriginSslProtocols');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudFront::CustomOriginConfig object:
 
-  $service_obj->Method(Att1 => { HTTPPort => $value, ..., OriginProtocolPolicy => $value  });
+  $service_obj->Method(Att1 => { HTTPPort => $value, ..., OriginSslProtocols => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,6 +52,12 @@ A customer origin.
 =head2 B<REQUIRED> OriginProtocolPolicy => Str
 
   The origin protocol policy to apply to your origin.
+
+
+=head2 OriginSslProtocols => L<Paws::CloudFront::OriginSslProtocols>
+
+  The SSL/TLS protocols that you want CloudFront to use when
+communicating with your origin over HTTPS.
 
 
 

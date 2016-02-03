@@ -35,9 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 StackIds => ArrayRef[Str]
 
-  An array of stack IDs that specify the stacks to be described. If you
+An array of stack IDs that specify the stacks to be described. If you
 omit this parameter, C<DescribeStacks> returns a description of every
 stack.
+
 
 
 

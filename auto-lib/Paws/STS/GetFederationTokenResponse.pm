@@ -18,20 +18,33 @@ Paws::STS::GetFederationTokenResponse
 
 =head2 Credentials => L<Paws::STS::Credentials>
 
-  Credentials for the service API authentication.
+The temporary security credentials, which include an access key ID, a
+secret access key, and a security (or session) token.
+
+B<Note:> The size of the security token that STS APIs return is not
+fixed. We strongly recommend that you make no assumptions about the
+maximum size. As of this writing, the typical size is less than 4096
+bytes, but that can vary. Also, future updates to AWS might require
+larger sizes.
+
+
 
 =head2 FederatedUser => L<Paws::STS::FederatedUser>
 
-  Identifiers for the federated user associated with the credentials
+Identifiers for the federated user associated with the credentials
 (such as C<arn:aws:sts::123456789012:federated-user/Bob> or
 C<123456789012:Bob>). You can use the federated user's ARN in your
 resource-based policies, such as an Amazon S3 bucket policy.
 
+
+
 =head2 PackedPolicySize => Int
 
-  A percentage value indicating the size of the policy in packed form.
+A percentage value indicating the size of the policy in packed form.
 The service rejects policies for which the packed size is greater than
 100 percent of the allowed value.
+
+
 
 
 =cut

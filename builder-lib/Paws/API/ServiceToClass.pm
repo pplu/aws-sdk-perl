@@ -1,8 +1,9 @@
-package Paws::API::ServiceToClass {
+package Paws::API::ServiceToClass;
   use strict;
   use warnings;
 
   our $services_to_classes = {
+    acm => 'ACM',
     apigateway => 'ApiGateway',
     autoscaling => 'AutoScaling',
     cloudformation => 'CloudFormation',
@@ -37,6 +38,7 @@ package Paws::API::ServiceToClass {
     emr => 'EMR',
     es => 'ES',
     email => undef,
+    events => 'CloudWatchEvents',
     firehose => 'Firehose',
     glacier => 'Glacier',
     iam => 'IAM',
@@ -86,5 +88,4 @@ package Paws::API::ServiceToClass {
   sub classes {
     grep { defined $_ } values %$services_to_classes;
   }
-}
 1;

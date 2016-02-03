@@ -41,48 +41,55 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Destination => Str
 
-  Name of Amazon S3 bucket to which the log data will be exported.
+Name of Amazon S3 bucket to which the log data will be exported.
 
 B<NOTE: Only buckets in the same AWS region are supported>
 
 
+
 =head2 DestinationPrefix => Str
 
-  Prefix that will be used as the start of Amazon S3 key for every object
+Prefix that will be used as the start of Amazon S3 key for every object
 exported. If not specified, this defaults to 'exportedlogs'.
+
 
 
 =head2 B<REQUIRED> From => Int
 
-  A point in time expressed as the number of milliseconds since Jan 1,
+A point in time expressed as the number of milliseconds since Jan 1,
 1970 00:00:00 UTC. It indicates the start time of the range for the
 request. Events with a timestamp prior to this time will not be
 exported.
 
 
+
 =head2 B<REQUIRED> LogGroupName => Str
 
-  The name of the log group to export.
+The name of the log group to export.
+
 
 
 =head2 LogStreamNamePrefix => Str
 
-  Will only export log streams that match the provided
+Will only export log streams that match the provided
 logStreamNamePrefix. If you don't specify a value, no prefix filter is
 applied.
 
 
+
 =head2 TaskName => Str
 
-  The name of the export task.
+The name of the export task.
+
 
 
 =head2 B<REQUIRED> To => Int
 
-  A point in time expressed as the number of milliseconds since Jan 1,
+A point in time expressed as the number of milliseconds since Jan 1,
 1970 00:00:00 UTC. It indicates the end time of the range for the
 request. Events with a timestamp later than this time will not be
 exported.
+
 
 
 

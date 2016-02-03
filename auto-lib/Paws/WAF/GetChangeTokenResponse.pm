@@ -15,9 +15,11 @@ Paws::WAF::GetChangeTokenResponse
 
 =head2 ChangeToken => Str
 
-  The C<ChangeToken> that you used in the request. Use this value in a
+The C<ChangeToken> that you used in the request. Use this value in a
 C<GetChangeTokenStatus> request to get the current status of the
 request.
+
+
 
 
 =cut

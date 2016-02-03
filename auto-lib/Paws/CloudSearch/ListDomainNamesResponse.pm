@@ -16,7 +16,9 @@ Paws::CloudSearch::ListDomainNamesResponse
 
 =head2 DomainNames => L<Paws::CloudSearch::DomainNameMap>
 
-  The names of the search domains owned by an account.
+The names of the search domains owned by an account.
+
+
 
 
 =cut

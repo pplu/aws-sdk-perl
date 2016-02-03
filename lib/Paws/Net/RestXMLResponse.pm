@@ -1,4 +1,4 @@
-package Paws::Net::RestXMLResponse {
+package Paws::Net::RestXMLResponse;
   use Moose::Role;
   use XML::Simple qw//;
   use Carp qw(croak);
@@ -36,6 +36,7 @@ package Paws::Net::RestXMLResponse {
       code => $code,
       request_id => $request_id,
       host_id => $host_id,
+      http_status => $http_status,
     );
   }
 
@@ -96,7 +97,4 @@ package Paws::Net::RestXMLResponse {
       return $att_class->new(Map => { $value->{ $xml_keys } => $value->{ $xml_values } } );
     }
   }
-
-}
-
 1;

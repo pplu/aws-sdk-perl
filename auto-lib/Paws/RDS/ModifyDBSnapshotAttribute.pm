@@ -38,20 +38,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeName => Str
 
-  The name of the DB snapshot attribute to modify.
+The name of the DB snapshot attribute to modify.
 
 To manage authorization for other AWS accounts to copy or restore a
 manual DB snapshot, this value is C<restore>.
 
 
+
 =head2 B<REQUIRED> DBSnapshotIdentifier => Str
 
-  The identifier for the DB snapshot to modify the attributes for.
+The identifier for the DB snapshot to modify the attributes for.
+
 
 
 =head2 ValuesToAdd => ArrayRef[Str]
 
-  A list of DB snapshot attributes to add to the attribute specified by
+A list of DB snapshot attributes to add to the attribute specified by
 C<AttributeName>.
 
 To authorize other AWS Accounts to copy or restore a manual snapshot,
@@ -61,9 +63,10 @@ value for any manual DB snapshots that contain private information that
 you do not want to be available to all AWS accounts.
 
 
+
 =head2 ValuesToRemove => ArrayRef[Str]
 
-  A list of DB snapshot attributes to remove from the attribute specified
+A list of DB snapshot attributes to remove from the attribute specified
 by C<AttributeName>.
 
 To remove authorization for other AWS Accounts to copy or restore a
@@ -72,6 +75,7 @@ to remove authorization for any AWS account to copy or restore the DB
 snapshot. If you specify C<all>, AWS accounts that have their account
 identifier explicitly added to the C<restore> attribute can still copy
 or restore the manual DB snapshot.
+
 
 
 

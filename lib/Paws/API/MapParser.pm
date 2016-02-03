@@ -1,5 +1,4 @@
-package Paws::API::MapParser {
+package Paws::API::MapParser;
   use Moose::Role;
-}
 
 1;

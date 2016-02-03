@@ -40,29 +40,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoScalingGroupName => Str
 
-  The name of the group.
+The name of the group.
+
 
 
 =head2 EndTime => Str
 
-  The latest scheduled start time to return. If scheduled action names
+The latest scheduled start time to return. If scheduled action names
 are provided, this parameter is ignored.
+
 
 
 =head2 MaxRecords => Int
 
-  The maximum number of items to return with this call.
+The maximum number of items to return with this call.
+
 
 
 =head2 NextToken => Str
 
-  The token for the next set of items to return. (You received this token
+The token for the next set of items to return. (You received this token
 from a previous call.)
+
 
 
 =head2 ScheduledActionNames => ArrayRef[Str]
 
-  Describes one or more scheduled actions. If you omit this list, the
+Describes one or more scheduled actions. If you omit this list, the
 call describes all scheduled actions. If you specify an unknown
 scheduled action it is ignored with no error.
 
@@ -72,10 +76,12 @@ next set of items, repeat the call with the returned token in the
 C<NextToken> parameter.
 
 
+
 =head2 StartTime => Str
 
-  The earliest scheduled start time to return. If scheduled action names
+The earliest scheduled start time to return. If scheduled action names
 are provided, this parameter is ignored.
+
 
 
 

@@ -37,17 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ExclusiveStartShardId => Str
 
-  The shard ID of the shard to start with.
+The shard ID of the shard to start with.
+
 
 
 =head2 Limit => Int
 
-  The maximum number of shards to return.
+The maximum number of shards to return.
+
 
 
 =head2 B<REQUIRED> StreamName => Str
 
-  The name of the stream to describe.
+The name of the stream to describe.
+
 
 
 

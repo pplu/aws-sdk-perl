@@ -37,19 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Category => Str
 
-  The category of the custom action that you want to delete, such as
+The category of the custom action that you want to delete, such as
 source or deploy.
 
+Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">
 
 =head2 B<REQUIRED> Provider => Str
 
-  The provider of the service used in the custom action, such as AWS
+The provider of the service used in the custom action, such as AWS
 CodeDeploy.
+
 
 
 =head2 B<REQUIRED> Version => Str
 
-  The version of the custom action to delete.
+The version of the custom action to delete.
+
 
 
 

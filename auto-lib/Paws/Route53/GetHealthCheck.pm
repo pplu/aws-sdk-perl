@@ -24,7 +24,9 @@ Paws::Route53::GetHealthCheckResponse
 
 =head2 B<REQUIRED> HealthCheckId => Str
 
-  The ID of the health check to retrieve.
+The ID of the health check to retrieve.
+
+
 
 
 =cut

@@ -36,15 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  String that identifies the start of the next list of events, if there
-is one.
+A string that identifies the next page of events that you want to
+retrieve.
 
-Default: There is no default value.
 
 
 =head2 StackName => Str
 
-  The name or the unique stack ID that is associated with the stack,
+The name or the unique stack ID that is associated with the stack,
 which are not always interchangeable:
 
 =over
@@ -57,6 +56,7 @@ unique stack ID.
 =back
 
 Default: There is no default value.
+
 
 
 

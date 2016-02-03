@@ -15,7 +15,9 @@ Paws::StorageGateway::AddUploadBufferOutput
 
 =head2 GatewayARN => Str
 
-  
+
+
+
 
 
 =cut

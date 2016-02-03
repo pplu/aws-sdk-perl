@@ -16,8 +16,10 @@ Paws::CloudFormation::GetTemplateOutput
 
 =head2 TemplateBody => Str
 
-  Structure containing the template body. (For more information, go to
+Structure containing the template body. (For more information, go to
 Template Anatomy in the AWS CloudFormation User Guide.)
+
+
 
 
 =cut

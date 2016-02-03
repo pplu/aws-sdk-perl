@@ -1,4 +1,4 @@
-package Paws::Net::S3Signature {
+package Paws::Net::S3Signature;
   use Moose::Role;
   requires 'service';
 
@@ -28,6 +28,4 @@ package Paws::Net::S3Signature {
     return $signed_req;
 
   }
-}
-
 1;

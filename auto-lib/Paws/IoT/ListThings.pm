@@ -12,7 +12,7 @@ package Paws::IoT::ListThings;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListThingsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListThingsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -40,22 +40,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeName => Str
 
-  The attribute name.
+The attribute name.
+
 
 
 =head2 AttributeValue => Str
 
-  The attribute value.
+The attribute value.
+
 
 
 =head2 MaxResults => Int
 
-  The maximum number of results.
+The maximum number of results.
+
 
 
 =head2 NextToken => Str
 
-  The token for the next value.
+The token for the next value.
+
 
 
 

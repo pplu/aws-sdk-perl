@@ -17,11 +17,15 @@ Paws::IoT::ListPrincipalThingsResponse
 
 =head2 NextToken => Str
 
-  A token used to retrieve the next value.
+A token used to retrieve the next value.
+
+
 
 =head2 Things => ArrayRef[Str]
 
-  The things.
+The things.
+
+
 
 
 =cut

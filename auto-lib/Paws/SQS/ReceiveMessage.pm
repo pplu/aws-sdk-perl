@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeNames => ArrayRef[Str]
 
-  A list of attributes that need to be returned along with each message.
+A list of attributes that need to be returned along with each message.
 
 The following lists the names and descriptions of the attributes that
 can be returned:
@@ -65,18 +65,20 @@ to the queue (epoch time in milliseconds).
 
 
 
+
 =head2 MaxNumberOfMessages => Int
 
-  The maximum number of messages to return. Amazon SQS never returns more
+The maximum number of messages to return. Amazon SQS never returns more
 messages than this value but may return fewer. Values can be from 1 to
 10. Default is 1.
 
 All of the messages are not necessarily returned.
 
 
+
 =head2 MessageAttributeNames => ArrayRef[Str]
 
-  The name of the message attribute, where I<N> is the index. The message
+The name of the message attribute, where I<N> is the index. The message
 attribute name can contain the following characters: A-Z, a-z, 0-9,
 underscore (_), hyphen (-), and period (.). The name must not start or
 end with a period, and it should not have successive periods. The name
@@ -91,23 +93,27 @@ receive, or you can return all of the attributes by specifying "All" or
 attributes starting with the "foo" prefix.
 
 
+
 =head2 B<REQUIRED> QueueUrl => Str
 
-  The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue to take action on.
+
 
 
 =head2 VisibilityTimeout => Int
 
-  The duration (in seconds) that the received messages are hidden from
+The duration (in seconds) that the received messages are hidden from
 subsequent retrieve requests after being retrieved by a
 C<ReceiveMessage> request.
 
 
+
 =head2 WaitTimeSeconds => Int
 
-  The duration (in seconds) for which the call will wait for a message to
+The duration (in seconds) for which the call will wait for a message to
 arrive in the queue before returning. If a message is available, the
 call will return sooner than WaitTimeSeconds.
+
 
 
 

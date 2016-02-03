@@ -15,7 +15,9 @@ Paws::Config::DescribeConfigurationRecorderStatusResponse
 
 =head2 ConfigurationRecordersStatus => ArrayRef[L<Paws::Config::ConfigurationRecorderStatus>]
 
-  A list that contains status of the specified recorders.
+A list that contains status of the specified recorders.
+
+
 
 
 =cut

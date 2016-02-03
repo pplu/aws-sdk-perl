@@ -18,15 +18,21 @@ Paws::ApiGateway::SdkResponse
 
 =head2 Body => Str
 
-  
+
+
+
 
 =head2 ContentDisposition => Str
 
-  
+
+
+
 
 =head2 ContentType => Str
 
-  
+
+
+
 
 
 =cut

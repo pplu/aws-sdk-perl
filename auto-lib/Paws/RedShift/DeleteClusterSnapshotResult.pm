@@ -16,7 +16,9 @@ Paws::RedShift::DeleteClusterSnapshotResult
 
 =head2 Snapshot => L<Paws::RedShift::Snapshot>
 
-  
+
+
+
 
 
 =cut

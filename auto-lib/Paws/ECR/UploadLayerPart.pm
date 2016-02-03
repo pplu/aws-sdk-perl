@@ -40,35 +40,41 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LayerPartBlob => Str
 
-  The base64-encoded layer part payload.
+The base64-encoded layer part payload.
+
 
 
 =head2 B<REQUIRED> PartFirstByte => Int
 
-  The integer value of the first byte of the layer part.
+The integer value of the first byte of the layer part.
+
 
 
 =head2 B<REQUIRED> PartLastByte => Int
 
-  The integer value of the last byte of the layer part.
+The integer value of the last byte of the layer part.
+
 
 
 =head2 RegistryId => Str
 
-  The AWS account ID associated with the registry that you are uploading
+The AWS account ID associated with the registry that you are uploading
 layer parts to. If you do not specify a registry, the default registry
 is assumed.
 
 
+
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The name of the repository that you are uploading layer parts to.
+The name of the repository that you are uploading layer parts to.
+
 
 
 =head2 B<REQUIRED> UploadId => Str
 
-  The upload ID from a previous InitiateLayerUpload operation to
+The upload ID from a previous InitiateLayerUpload operation to
 associate with the layer part upload.
+
 
 
 

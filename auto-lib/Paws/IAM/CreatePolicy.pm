@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  A friendly description of the policy.
+A friendly description of the policy.
 
 Typically used to store information about the permissions defined in
 the policy. For example, "Grants access to production DynamoDB tables."
@@ -47,9 +47,10 @@ The policy description is immutable. After a value is assigned, it
 cannot be changed.
 
 
+
 =head2 Path => Str
 
-  The path for the policy.
+The path for the policy.
 
 For more information about paths, see IAM Identifiers in the I<IAM User
 Guide>.
@@ -58,14 +59,17 @@ This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
 
+
 =head2 B<REQUIRED> PolicyDocument => Str
 
-  The policy document.
+The policy document.
+
 
 
 =head2 B<REQUIRED> PolicyName => Str
 
-  The name of the policy document.
+The name of the policy document.
+
 
 
 

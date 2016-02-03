@@ -36,14 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 IncludeShadowTrails => Bool
 
-  Specifies whether to include shadow trails in the response. A shadow
+Specifies whether to include shadow trails in the response. A shadow
 trail is the replication in a region of a trail that was created in a
 different region. The default is true.
 
 
+
 =head2 TrailNameList => ArrayRef[Str]
 
-  Specifies a list of trail names, trail ARNs, or both, of the trails to
+Specifies a list of trail names, trail ARNs, or both, of the trails to
 describe. The format of a trail ARN is
 C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>. If an empty
 list is specified, information for the trail in the current region is
@@ -65,6 +66,7 @@ If one or more trail names are specified, information is returned only
 if the names match the names of trails belonging only to the current
 region. To return information about a trail in another region, you must
 specify its trail ARN.
+
 
 
 

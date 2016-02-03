@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterSecurityGroupName => Str
 
-  The name for the security group. Amazon Redshift stores the value as a
+The name for the security group. Amazon Redshift stores the value as a
 lowercase string.
 
 Constraints:
@@ -57,14 +57,17 @@ AWS account.
 Example: C<examplesecuritygroup>
 
 
+
 =head2 B<REQUIRED> Description => Str
 
-  A description for the security group.
+A description for the security group.
+
 
 
 =head2 Tags => ArrayRef[L<Paws::RedShift::Tag>]
 
-  A list of tag instances.
+A list of tag instances.
+
 
 
 
