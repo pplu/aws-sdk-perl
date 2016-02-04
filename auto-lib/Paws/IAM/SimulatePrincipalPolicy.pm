@@ -45,14 +45,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ActionNames => ArrayRef[Str]
 
-  A list of names of API actions to evaluate in the simulation. Each
+A list of names of API actions to evaluate in the simulation. Each
 action is evaluated for each resource. Each action must include the
 service identifier, such as C<iam:CreateUser>.
 
 
+
 =head2 CallerArn => Str
 
-  The ARN of the user that you want to specify as the simulated caller of
+The ARN of the user that you want to specify as the simulated caller of
 the APIs. If you do not specify a C<CallerArn>, it defaults to the ARN
 of the user that you specify in C<PolicySourceArn>, if you specified a
 user. If you include both a C<PolicySourceArn> (for example,
@@ -69,24 +70,27 @@ that the resource-based policy's C<Principal> element has a value to
 use in evaluating the policy.
 
 
+
 =head2 ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]
 
-  A list of context keys and corresponding values for the simulation to
+A list of context keys and corresponding values for the simulation to
 use. Whenever a context key is evaluated by a C<Condition> element in
 one of the simulated policies, the corresponding value is supplied.
 
 
+
 =head2 Marker => Str
 
-  Use this parameter only when paginating results and only after you
+Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to
 the value of the C<Marker> element in the response that you received to
 indicate where the next call should start.
 
 
+
 =head2 MaxItems => Int
 
-  Use this only when paginating results to indicate the maximum number of
+Use this only when paginating results to indicate the maximum number of
 items you want in the response. If additional items exist beyond the
 maximum you specify, the C<IsTruncated> response element is C<true>.
 
@@ -97,25 +101,28 @@ returns C<true> and C<Marker> contains a value to include in the
 subsequent call that tells the service where to continue from.
 
 
+
 =head2 PolicyInputList => ArrayRef[Str]
 
-  An optional list of additional policy documents to include in the
+An optional list of additional policy documents to include in the
 simulation. Each document is specified as a string containing the
 complete, valid JSON text of an IAM policy.
 
 
+
 =head2 B<REQUIRED> PolicySourceArn => Str
 
-  The Amazon Resource Name (ARN) of a user, group, or role whose policies
+The Amazon Resource Name (ARN) of a user, group, or role whose policies
 you want to include in the simulation. If you specify a user, group, or
 role, the simulation includes all policies that are associated with
 that entity. If you specify a user, the simulation also includes all
 policies that are attached to any groups the user belongs to.
 
 
+
 =head2 ResourceArns => ArrayRef[Str]
 
-  A list of ARNs of AWS resources to include in the simulation. If this
+A list of ARNs of AWS resources to include in the simulation. If this
 parameter is not provided then the value defaults to C<*> (all
 resources). Each API in the C<ActionNames> parameter is evaluated for
 each resource in this list. The simulation determines the access result
@@ -127,9 +134,10 @@ simulation, then you must include the policy as a string in the
 C<ResourcePolicy> parameter.
 
 
+
 =head2 ResourceHandlingOption => Str
 
-  Specifies the type of simulation to run. Different APIs that support
+Specifies the type of simulation to run. Different APIs that support
 resource-based policies require different combinations of resources. By
 specifying the type of simulation to run, you enable the policy
 simulator to enforce the presence of the required resources to ensure
@@ -188,9 +196,10 @@ instance, image, security-group, network-interface, subnet, volume
 
 
 
+
 =head2 ResourceOwner => Str
 
-  An AWS account ID that specifies the owner of any simulated resource
+An AWS account ID that specifies the owner of any simulated resource
 that does not identify its owner in the resource ARN, such as an S3
 bucket or object. If C<ResourceOwner> is specified, it is also used as
 the account owner of any C<ResourcePolicy> included in the simulation.
@@ -202,12 +211,14 @@ is different from the account that owns the simulated calling user
 C<CallerArn>.
 
 
+
 =head2 ResourcePolicy => Str
 
-  A resource-based policy to include in the simulation provided as a
+A resource-based policy to include in the simulation provided as a
 string. Each resource in the simulation is treated as if it had this
 policy attached. You can include only one resource-based policy in a
 simulation.
+
 
 
 

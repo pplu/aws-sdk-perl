@@ -1,8 +1,15 @@
-package Paws::Signin {
+package Paws::Signin;
   use Moose;
   sub service { 'signin' }
   sub version { '2010-05-08' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
+
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::NoSignature', 'Paws::Net::SigninCaller', 'Paws::Net::JsonResponse';
  
@@ -41,7 +48,6 @@ package Paws::Signin {
 
     return $self->response_to_object({ URL => $requestObj->url }, $call_object);
   }
-}
 1;
 
 ### main pod documentation begin ###

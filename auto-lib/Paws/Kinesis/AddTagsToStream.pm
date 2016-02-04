@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> StreamName => Str
 
-  The name of the stream.
+The name of the stream.
+
 
 
 =head2 B<REQUIRED> Tags => HashRef[Str]
 
-  The set of key-value pairs to use to create the tags.
+The set of key-value pairs to use to create the tags.
+
 
 
 

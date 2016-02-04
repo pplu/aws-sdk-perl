@@ -19,20 +19,28 @@ Paws::IoT::CreateKeysAndCertificateResponse
 
 =head2 CertificateArn => Str
 
-  The ARN of the certificate.
+The ARN of the certificate.
+
+
 
 =head2 CertificateId => Str
 
-  The ID of the certificate. AWS IoT issues a default subject name for
+The ID of the certificate. AWS IoT issues a default subject name for
 the certificate (e.g., AWS IoT Certificate).
+
+
 
 =head2 CertificatePem => Str
 
-  The certificate data, in PEM format.
+The certificate data, in PEM format.
+
+
 
 =head2 KeyPair => L<Paws::IoT::KeyPair>
 
-  The generated key pair.
+The generated key pair.
+
+
 
 
 =cut

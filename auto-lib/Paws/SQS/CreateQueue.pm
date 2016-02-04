@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Attributes => L<Paws::SQS::QueueAttributeMap>
 
-  A map of attributes with their corresponding values.
+A map of attributes with their corresponding values.
 
 The following lists the names, descriptions, and values of the special
 request parameters the C<CreateQueue> action uses:
@@ -73,9 +73,11 @@ Timeout in the I<Amazon SQS Developer Guide>.
 
 
 
+
 =head2 B<REQUIRED> QueueName => Str
 
-  The name for the queue to be created.
+The name for the queue to be created.
+
 
 
 

@@ -37,12 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeploymentId => Str
 
-  The unique ID of a deployment.
+The unique ID of a deployment.
+
 
 
 =head2 InstanceStatusFilter => ArrayRef[Str]
 
-  A subset of instances to list, by status:
+A subset of instances to list, by status:
 
 =over
 
@@ -68,11 +69,13 @@ deployments in an unknown state.
 
 
 
+
 =head2 NextToken => Str
 
-  An identifier that was returned from the previous list deployment
+An identifier that was returned from the previous list deployment
 instances call, which can be used to return the next set of deployment
 instances in the list.
+
 
 
 

@@ -15,7 +15,9 @@ Paws::DeviceFarm::CreateDevicePoolResult
 
 =head2 DevicePool => L<Paws::DeviceFarm::DevicePool>
 
-  The newly created device pool.
+The newly created device pool.
+
+
 
 
 =cut

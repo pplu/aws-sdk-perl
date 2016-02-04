@@ -16,11 +16,15 @@ Paws::CodeCommit::ListBranchesOutput
 
 =head2 Branches => ArrayRef[Str]
 
-  The list of branch names.
+The list of branch names.
+
+
 
 =head2 NextToken => Str
 
-  An enumeration token that returns the batch of the results.
+An enumeration token that returns the batch of the results.
+
+
 
 
 =cut

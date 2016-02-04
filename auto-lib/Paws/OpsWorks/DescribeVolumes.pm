@@ -38,28 +38,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 InstanceId => Str
 
-  The instance ID. If you use this parameter, C<DescribeVolumes> returns
+The instance ID. If you use this parameter, C<DescribeVolumes> returns
 descriptions of the volumes associated with the specified instance.
+
 
 
 =head2 RaidArrayId => Str
 
-  The RAID array ID. If you use this parameter, C<DescribeVolumes>
+The RAID array ID. If you use this parameter, C<DescribeVolumes>
 returns descriptions of the volumes associated with the specified RAID
 array.
 
 
+
 =head2 StackId => Str
 
-  A stack ID. The action describes the stack's registered Amazon EBS
+A stack ID. The action describes the stack's registered Amazon EBS
 volumes.
+
 
 
 =head2 VolumeIds => ArrayRef[Str]
 
-  Am array of volume IDs. If you use this parameter, C<DescribeVolumes>
+Am array of volume IDs. If you use this parameter, C<DescribeVolumes>
 returns descriptions of the specified volumes. Otherwise, it returns a
 description of every volume.
+
 
 
 

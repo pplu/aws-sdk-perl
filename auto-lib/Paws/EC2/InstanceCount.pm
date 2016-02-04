@@ -39,13 +39,13 @@ This class has no description
 
 =head2 InstanceCount => Int
 
-  The number of listed Reserved instances in the state specified by the
+  The number of listed Reserved Instances in the state specified by the
 C<state>.
 
 
 =head2 State => Str
 
-  The states of the listed Reserved instances.
+  The states of the listed Reserved Instances.
 
 
 

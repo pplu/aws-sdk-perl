@@ -38,17 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ChangeToken => Str
 
-  The value returned by the most recent call to GetChangeToken.
+The value returned by the most recent call to GetChangeToken.
+
 
 
 =head2 DefaultAction => L<Paws::WAF::WafAction>
 
-  
+
+
 
 
 =head2 Updates => ArrayRef[L<Paws::WAF::WebACLUpdate>]
 
-  An array of updates to make to the WebACL.
+An array of updates to make to the WebACL.
 
 An array of C<WebACLUpdate> objects that you want to insert into or
 delete from a WebACL. For more information, see the applicable data
@@ -66,10 +68,12 @@ types:
 
 
 
+
 =head2 B<REQUIRED> WebACLId => Str
 
-  The C<WebACLId> of the WebACL that you want to update. C<WebACLId> is
+The C<WebACLId> of the WebACL that you want to update. C<WebACLId> is
 returned by CreateWebACL and by ListWebACLs.
+
 
 
 

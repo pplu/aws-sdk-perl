@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 RegistryId => Str
 
-  The AWS account ID associated with the registry that you intend to
+The AWS account ID associated with the registry that you intend to
 upload layers to. If you do not specify a registry, the default
 registry is assumed.
 
 
+
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The name of the repository that you intend to upload layers to.
+The name of the repository that you intend to upload layers to.
+
 
 
 

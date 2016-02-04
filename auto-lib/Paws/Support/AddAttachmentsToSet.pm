@@ -36,16 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Attachments => ArrayRef[L<Paws::Support::Attachment>]
 
-  One or more attachments to add to the set. The limit is 3 attachments
+One or more attachments to add to the set. The limit is 3 attachments
 per set, and the size limit is 5 MB per attachment.
+
 
 
 =head2 AttachmentSetId => Str
 
-  The ID of the attachment set. If an C<AttachmentSetId> is not
+The ID of the attachment set. If an C<AttachmentSetId> is not
 specified, a new attachment set is created, and the ID of the set is
 returned in the response. If an C<AttachmentSetId> is specified, the
 attachments are added to the specified set, if it exists.
+
 
 
 

@@ -29,7 +29,7 @@ Paws::Route53::ListTrafficPolicyInstancesByPolicyResponse
 
 =head2 HostedZoneIdMarker => Str
 
-  For the first request to C<ListTrafficPolicyInstancesByPolicy>, omit
+For the first request to C<ListTrafficPolicyInstancesByPolicy>, omit
 this value.
 
 If the value of C<IsTruncated> in the previous response was C<true>,
@@ -43,9 +43,11 @@ there are no more traffic policy instances to get for this hosted zone.
 If the value of C<IsTruncated> in the previous response was C<false>,
 omit this value.
 
+
+
 =head2 MaxItems => Str
 
-  The maximum number of traffic policy instances to be included in the
+The maximum number of traffic policy instances to be included in the
 response body for this request. If you have more than C<MaxItems>
 traffic policy instances, the value of the C<IsTruncated> element in
 the response is C<true>, and the values of C<HostedZoneIdMarker>,
@@ -53,14 +55,18 @@ C<TrafficPolicyInstanceNameMarker>, and
 C<TrafficPolicyInstanceTypeMarker> represent the first traffic policy
 instance in the next group of C<MaxItems> traffic policy instances.
 
+
+
 =head2 B<REQUIRED> TrafficPolicyId => Str
 
-  The ID of the traffic policy for which you want to list traffic policy
+The ID of the traffic policy for which you want to list traffic policy
 instances.
+
+
 
 =head2 TrafficPolicyInstanceNameMarker => Str
 
-  For the first request to C<ListTrafficPolicyInstancesByPolicy>, omit
+For the first request to C<ListTrafficPolicyInstancesByPolicy>, omit
 this value.
 
 If the value of C<IsTruncated> in the previous response was C<true>,
@@ -74,9 +80,11 @@ there are no more traffic policy instances to get for this hosted zone.
 If the value of C<IsTruncated> in the previous response was C<false>,
 omit this value.
 
+
+
 =head2 TrafficPolicyInstanceTypeMarker => Str
 
-  For the first request to C<ListTrafficPolicyInstancesByPolicy>, omit
+For the first request to C<ListTrafficPolicyInstancesByPolicy>, omit
 this value.
 
 If the value of C<IsTruncated> in the previous response was C<true>,
@@ -87,11 +95,15 @@ instances.
 If the value of C<IsTruncated> in the previous response was C<false>,
 there are no more traffic policy instances to get for this hosted zone.
 
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
+
 =head2 B<REQUIRED> TrafficPolicyVersion => Int
 
-  The version of the traffic policy for which you want to list traffic
+The version of the traffic policy for which you want to list traffic
 policy instances. The version must be associated with the traffic
 policy that is specified by C<TrafficPolicyId>.
+
+
 
 
 =cut

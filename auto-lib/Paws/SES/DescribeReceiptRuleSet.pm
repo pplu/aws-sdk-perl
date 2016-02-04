@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RuleSetName => Str
 
-  The name of the receipt rule set to describe.
+The name of the receipt rule set to describe.
+
 
 
 

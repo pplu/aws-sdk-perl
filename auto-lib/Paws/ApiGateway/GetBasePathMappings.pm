@@ -11,7 +11,7 @@ package Paws::ApiGateway::GetBasePathMappings;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames/{domain_name}/basepathmappings');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::BasePathMappings');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetBasePathMappingsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,20 +39,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The domain name of a BasePathMapping resource.
+The domain name of a BasePathMapping resource.
+
 
 
 =head2 Limit => Int
 
-  The maximum number of BasePathMapping resources in the collection to
+The maximum number of BasePathMapping resources in the collection to
 get information about. The default limit is 25. It should be an integer
 between 1 - 500.
 
 
+
 =head2 Position => Str
 
-  The position of the current BasePathMapping resource in the collection
+The position of the current BasePathMapping resource in the collection
 to get information about.
+
 
 
 

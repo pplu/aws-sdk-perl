@@ -40,44 +40,50 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
-  Information about one or more block device mappings.
+Information about one or more block device mappings.
+
 
 
 =head2 Description => Str
 
-  A description for the new image.
+A description for the new image.
+
 
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 B<REQUIRED> InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  A name for the new image.
+A name for the new image.
 
 Constraints: 3-128 alphanumeric characters, parentheses (()), square
 brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-), single
 quotes ('), at-signs (@), or underscores(_)
 
 
+
 =head2 NoReboot => Bool
 
-  By default, this parameter is set to C<false>, which means Amazon EC2
+By default, this parameter is set to C<false>, which means Amazon EC2
 attempts to shut down the instance cleanly before image creation and
 then reboots the instance. When the parameter is set to C<true>, Amazon
 EC2 doesn't shut down the instance before creating the image. When this
 option is used, file system integrity on the created image can't be
 guaranteed.
+
 
 
 

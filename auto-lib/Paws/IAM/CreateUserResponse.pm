@@ -16,7 +16,9 @@ Paws::IAM::CreateUserResponse
 
 =head2 User => L<Paws::IAM::User>
 
-  Information about the user.
+Information about the user.
+
+
 
 
 =cut

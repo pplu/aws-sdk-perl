@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ExclusiveStartDeliveryStreamName => Str
 
-  The name of the delivery stream to start the list with.
+The name of the delivery stream to start the list with.
+
 
 
 =head2 Limit => Int
 
-  The maximum number of delivery streams to list.
+The maximum number of delivery streams to list.
+
 
 
 

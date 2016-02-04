@@ -16,7 +16,9 @@ Paws::CognitoSync::GetCognitoEventsResponse
 
 =head2 Events => HashRef[Str]
 
-  The Cognito Events returned from the GetCognitoEvents request
+The Cognito Events returned from the GetCognitoEvents request
+
+
 
 
 =cut

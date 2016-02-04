@@ -18,16 +18,22 @@ Paws::ApiGateway::BasePathMapping
 
 =head2 BasePath => Str
 
-  The base path name that callers of the API must provide as part of the
+The base path name that callers of the API must provide as part of the
 URL after the domain name.
+
+
 
 =head2 RestApiId => Str
 
-  The name of the API.
+The name of the API.
+
+
 
 =head2 Stage => Str
 
-  The name of the API's stage.
+The name of the API's stage.
+
+
 
 
 =cut

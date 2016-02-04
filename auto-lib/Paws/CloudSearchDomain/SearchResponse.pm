@@ -18,15 +18,21 @@ Paws::CloudSearchDomain::SearchResponse
 
 =head2 Facets => HashRef[L<Paws::CloudSearchDomain::BucketInfo>]
 
-  The requested facet information.
+The requested facet information.
+
+
 
 =head2 Hits => L<Paws::CloudSearchDomain::Hits>
 
-  The documents that match the search criteria.
+The documents that match the search criteria.
+
+
 
 =head2 Status => L<Paws::CloudSearchDomain::SearchStatus>
 
-  The status information returned for the search request.
+The status information returned for the search request.
+
+
 
 
 =cut

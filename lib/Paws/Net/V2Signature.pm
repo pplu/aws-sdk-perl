@@ -1,4 +1,4 @@
-package Paws::Net::V2Signature {
+package Paws::Net::V2Signature;
   use Moose::Role;
   use Digest::SHA qw(hmac_sha256);
   use MIME::Base64 qw(encode_base64);
@@ -76,8 +76,7 @@ sub sign {
 
     $request->parameters->{ Signature } = $encoded;
 
-    #Since the parameters and the signing goes into the content, we have
-    $request->generate_content_from_parameters;
+    $request->content($self->generate_content_from_parameters($request));
 }
 
 
@@ -119,8 +118,6 @@ sub _request {
     my $params = shift;
 
     return $self->ua->post_form( $self->base_url, $params );
-}
-
 }
 
 1;

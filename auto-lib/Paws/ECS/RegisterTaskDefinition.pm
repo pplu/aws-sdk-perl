@@ -37,22 +37,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>]
 
-  A list of container definitions in JSON format that describe the
+A list of container definitions in JSON format that describe the
 different containers that make up your task.
+
 
 
 =head2 B<REQUIRED> Family => Str
 
-  You must specify a C<family> for a task definition, which allows you to
+You must specify a C<family> for a task definition, which allows you to
 track multiple versions of the same task definition. The C<family> is
 used as a name for your task definition. Up to 255 letters (uppercase
 and lowercase), numbers, hyphens, and underscores are allowed.
 
 
+
 =head2 Volumes => ArrayRef[L<Paws::ECS::Volume>]
 
-  A list of volume definitions in JSON format that containers in your
+A list of volume definitions in JSON format that containers in your
 task may use.
+
 
 
 

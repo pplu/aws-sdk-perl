@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  Token returned by the previous C<ListTopics> request.
+Token returned by the previous C<ListTopics> request.
+
 
 
 

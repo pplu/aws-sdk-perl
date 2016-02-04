@@ -234,6 +234,8 @@ kept stable, and changes to it should be notified via ChangeLog
 =head1 SUPPORTED SERVICES
 
 
+L<Paws::ACM>
+
 L<Paws::ApiGateway>
 
 L<Paws::AutoScaling>
@@ -253,6 +255,8 @@ L<Paws::CloudTrail>
 L<Paws::CloudWatch>
 
 L<Paws::CloudWatch>
+
+L<Paws::CloudWatchEvents>
 
 L<Paws::CloudWatchLogs>
 
@@ -609,6 +613,10 @@ H. Daniel Cesario (@maneta) for devel setup instructions on RH and MacOSX
 Glen van Ginkel for contributions to get S3 working
 
 Javier Arellano for discovering Tagging bug
+
+Ioan Rogers for contributing AssumeRoleWithSAML with ADFS auth example
+
+Miquel Soriano for reporting a bug with DescribeAutoScalingGroups
 
 
 =cut

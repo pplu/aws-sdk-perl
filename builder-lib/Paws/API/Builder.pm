@@ -46,7 +46,7 @@ package Paws::API::Builder {
   });
   has retry => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
-    $self->retry_struct->{ $self->service };
+    $self->retry_struct->{ $self->service }->{ __default__ };
   });
   has service_max_attempts => (is => 'ro', lazy => 1, default => sub {
     my $self = shift;
@@ -315,7 +315,10 @@ package Paws::API::Builder {
   [%- member = c.shape(shape.members.$param_name.shape) %]
 =head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
-  [% c.doc_for_param_name_in_shape(shape, param_name) %]
+[% c.doc_for_param_name_in_shape(shape, param_name) %]
+
+[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%]
+
 [% END %]
 
 =cut
@@ -348,7 +351,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   [%- member = c.shape(shape.members.$param_name.shape) %]
 =head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
-  [% c.doc_for_param_name_in_shape(shape, param_name) %]
+[% c.doc_for_param_name_in_shape(shape, param_name) %]
+
+[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%]
 
 [% END %]
 
@@ -394,7 +399,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =head1 METHODS
 [% FOR op IN c.api_struct.operations.keys.sort %]
-  [%- op_name = c.api_struct.operations.$op.name %]
+  [%- op_name = op %]
 =head2 [% op_name %](
 [%- out_shape = c.input_for_operation(op_name) %]
 [%- req_list = out_shape.required.sort %]

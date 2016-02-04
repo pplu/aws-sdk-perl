@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HealthCheck => L<Paws::ELB::HealthCheck>
 
-  The configuration information for the new health check.
+The configuration information for the new health check.
+
 
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-  The name of the load balancer.
+The name of the load balancer.
+
 
 
 

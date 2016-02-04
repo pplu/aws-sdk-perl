@@ -36,13 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-  The ARN of the assessment that you want to set tags to.
+The ARN of the assessment that you want to set tags to.
+
 
 
 =head2 Tags => ArrayRef[L<Paws::Inspector::Tag>]
 
-  A collection of key and value pairs that you want to set to an
+A collection of key and value pairs that you want to set to an
 assessment.
+
 
 
 

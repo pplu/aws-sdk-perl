@@ -16,7 +16,9 @@ Paws::IAM::GetInstanceProfileResponse
 
 =head2 B<REQUIRED> InstanceProfile => L<Paws::IAM::InstanceProfile>
 
-  Information about the instance profile.
+Information about the instance profile.
+
+
 
 
 =cut

@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SnapshotName => Str
 
-  The name of the snapshot to be deleted.
+The name of the snapshot to be deleted.
+
 
 
 

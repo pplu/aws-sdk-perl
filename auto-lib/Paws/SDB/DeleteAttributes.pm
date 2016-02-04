@@ -1,7 +1,7 @@
 
 package Paws::SDB::DeleteAttributes;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Attribute]');
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::DeletableAttribute]', traits => ['NameInRequest'], request_name => 'Attribute' );
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Expected => (is => 'ro', isa => 'Paws::SDB::UpdateCondition');
   has ItemName => (is => 'ro', isa => 'Str', required => 1);
@@ -36,29 +36,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::SDB::Attribute>]
+=head2 Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>]
 
-  A list of Attributes. Similar to columns on a spreadsheet, attributes
+A list of Attributes. Similar to columns on a spreadsheet, attributes
 represent categories of data that can be assigned to items.
+
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The name of the domain in which to perform the operation.
+The name of the domain in which to perform the operation.
+
 
 
 =head2 Expected => L<Paws::SDB::UpdateCondition>
 
-  The update condition which, if specified, determines whether the
+The update condition which, if specified, determines whether the
 specified attributes will be deleted or not. The update condition must
 be satisfied in order for this request to be processed and the
 attributes to be deleted.
 
 
+
 =head2 B<REQUIRED> ItemName => Str
 
-  The name of the item. Similar to rows on a spreadsheet, items represent
+The name of the item. Similar to rows on a spreadsheet, items represent
 individual objects that contain one or more value-attribute pairs.
+
 
 
 

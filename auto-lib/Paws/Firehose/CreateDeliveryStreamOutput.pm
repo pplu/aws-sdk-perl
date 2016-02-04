@@ -15,7 +15,9 @@ Paws::Firehose::CreateDeliveryStreamOutput
 
 =head2 DeliveryStreamARN => Str
 
-  The ARN of the delivery stream.
+The ARN of the delivery stream.
+
+
 
 
 =cut

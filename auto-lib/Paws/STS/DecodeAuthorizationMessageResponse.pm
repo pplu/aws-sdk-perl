@@ -16,8 +16,10 @@ Paws::STS::DecodeAuthorizationMessageResponse
 
 =head2 DecodedMessage => Str
 
-  An XML document that contains the decoded message. For more
+An XML document that contains the decoded message. For more
 information, see C<DecodeAuthorizationMessage>.
+
+
 
 
 =cut

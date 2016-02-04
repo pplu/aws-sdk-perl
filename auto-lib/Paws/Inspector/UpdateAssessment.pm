@@ -37,19 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssessmentArn => Str
 
-  Asessment ARN that you want to update.
+Asessment ARN that you want to update.
+
 
 
 =head2 B<REQUIRED> AssessmentName => Str
 
-  Assessment name that you want to update.
+Assessment name that you want to update.
+
 
 
 =head2 B<REQUIRED> DurationInSeconds => Int
 
-  Assessment duration in seconds that you want to update. The default
+Assessment duration in seconds that you want to update. The default
 value is 3600 seconds (one hour). The maximum value is 86400 seconds
 (one day).
+
 
 
 

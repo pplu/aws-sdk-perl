@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> KeyId => Str
 
-  The unique identifier for the customer master key (CMK) to delete.
+The unique identifier for the customer master key (CMK) to delete.
 
 To specify this value, use the unique key ID or the Amazon Resource
 Name (ARN) of the CMK. Examples:
@@ -54,13 +54,15 @@ To obtain the unique key ID and key ARN for a given CMK, use ListKeys
 or DescribeKey.
 
 
+
 =head2 PendingWindowInDays => Int
 
-  The waiting period, specified in number of days. After the waiting
+The waiting period, specified in number of days. After the waiting
 period ends, AWS KMS deletes the customer master key (CMK).
 
 This value is optional. If you include a value, it must be between 7
 and 30, inclusive. If you do not include a value, it defaults to 30.
+
 
 
 

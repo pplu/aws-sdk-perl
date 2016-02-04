@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Description => Str
 
-  A description for the security group. This is informational only.
+A description for the security group. This is informational only.
 
 Constraints: Up to 255 characters in length
 
@@ -48,17 +48,19 @@ Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
 ._-:/()
 
 
+
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 B<REQUIRED> GroupName => Str
 
-  The name of the security group.
+The name of the security group.
 
 Constraints: Up to 255 characters in length
 
@@ -68,9 +70,11 @@ Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
 ._-:/()
 
 
+
 =head2 VpcId => Str
 
-  [EC2-VPC] The ID of the VPC. Required for EC2-VPC.
+[EC2-VPC] The ID of the VPC. Required for EC2-VPC.
+
 
 
 

@@ -10,7 +10,7 @@ package Paws::ApiGateway::GetStage;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/stages/{stage_name}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Stage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetStageResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +38,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The identifier of the RestApi resource for the Stage resource to get
+The identifier of the RestApi resource for the Stage resource to get
 information about.
+
 
 
 =head2 B<REQUIRED> StageName => Str
 
-  The name of the Stage resource to get information about.
+The name of the Stage resource to get information about.
+
 
 
 

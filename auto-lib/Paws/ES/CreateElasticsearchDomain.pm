@@ -14,7 +14,7 @@ package Paws::ES::CreateElasticsearchDomain;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/es/domain');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ES::CreateElasticsearchDomainResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateElasticsearchDomainResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -42,41 +42,47 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AccessPolicies => Str
 
-  IAM access policy as a JSON-formatted string.
+IAM access policy as a JSON-formatted string.
+
 
 
 =head2 AdvancedOptions => HashRef[Str]
 
-  Option to allow references to indices in an HTTP request body. Must be
+Option to allow references to indices in an HTTP request body. Must be
 C<false> when configuring access to individual sub-resources. By
 default, the value is C<true>. See Configuration Advanced Options for
 more information.
 
 
+
 =head2 B<REQUIRED> DomainName => Str
 
-  The name of the Elasticsearch domain that you are creating. Domain
+The name of the Elasticsearch domain that you are creating. Domain
 names are unique across the domains owned by an account within an AWS
 region. Domain names must start with a letter or number and can contain
 the following characters: a-z (lowercase), 0-9, and - (hyphen).
 
 
+
 =head2 EBSOptions => L<Paws::ES::EBSOptions>
 
-  Options to enable, disable and specify the type and size of EBS storage
+Options to enable, disable and specify the type and size of EBS storage
 volumes.
+
 
 
 =head2 ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>
 
-  Configuration options for an Elasticsearch domain. Specifies the
+Configuration options for an Elasticsearch domain. Specifies the
 instance type and number of instances in the domain cluster.
+
 
 
 =head2 SnapshotOptions => L<Paws::ES::SnapshotOptions>
 
-  Option to set time, in UTC format, of the daily automated snapshot.
+Option to set time, in UTC format, of the daily automated snapshot.
 Default value is 0 hours.
+
 
 
 

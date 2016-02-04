@@ -38,12 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ARN => Str
 
-  Specify the C<ARN> for which you want to add the tags.
+Specify the C<ARN> for which you want to add the tags.
+
 
 
 =head2 B<REQUIRED> TagList => ArrayRef[L<Paws::ES::Tag>]
 
-  List of C<Tag> that need to be added for the Elasticsearch domain.
+List of C<Tag> that need to be added for the Elasticsearch domain.
+
 
 
 

@@ -1,0 +1,16 @@
+---
+call: GetAttributes
+service: SDB
+tests:
+  - expected: Val1
+    op: eq
+    path: Attributes.1.Value
+  - expected: Val2
+    op: eq
+    path: Attributes.0.Value
+  - expected: Att1
+    op: eq
+    path: Attributes.1.Name
+  - expected: Att2
+    op: eq
+    path: Attributes.0.Name

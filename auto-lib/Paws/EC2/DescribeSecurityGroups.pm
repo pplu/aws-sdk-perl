@@ -38,15 +38,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-  One or more filters. If using multiple filters for rules, the results
+One or more filters. If using multiple filters for rules, the results
 include security groups for which any combination of rules - not
 necessarily a single rule - match all filters.
 
@@ -124,22 +125,25 @@ created.
 
 
 
+
 =head2 GroupIds => ArrayRef[Str]
 
-  One or more security group IDs. Required for security groups in a
+One or more security group IDs. Required for security groups in a
 nondefault VPC.
 
 Default: Describes all your security groups.
 
 
+
 =head2 GroupNames => ArrayRef[Str]
 
-  [EC2-Classic and default VPC only] One or more security group names.
+[EC2-Classic and default VPC only] One or more security group names.
 You can specify either the security group name or the security group
 ID. For security groups in a nondefault VPC, use the C<group-name>
 filter to describe security groups by name.
 
 Default: Describes all your security groups.
+
 
 
 

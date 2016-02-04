@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-  The maximum number of image results returned by C<ListImages> in
+The maximum number of image results returned by C<ListImages> in
 paginated output. When this parameter is used, C<ListImages> only
 returns C<maxResults> results in a single page along with a
 C<nextToken> response element. The remaining results of the initial
@@ -48,25 +48,29 @@ this parameter is not used, then C<ListImages> returns up to 100
 results and a C<nextToken> value, if applicable.
 
 
+
 =head2 NextToken => Str
 
-  The C<nextToken> value returned from a previous paginated C<ListImages>
+The C<nextToken> value returned from a previous paginated C<ListImages>
 request where C<maxResults> was used and the results exceeded the value
 of that parameter. Pagination continues from the end of the previous
 results that returned the C<nextToken> value. This value is C<null>
 when there are no more results to return.
 
 
+
 =head2 RegistryId => Str
 
-  The AWS account ID associated with the registry that contains the
+The AWS account ID associated with the registry that contains the
 repository to list images in. If you do not specify a registry, the
 default registry is assumed.
 
 
+
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The repository whose image IDs are to be listed.
+The repository whose image IDs are to be listed.
+
 
 
 

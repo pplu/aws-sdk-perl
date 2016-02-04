@@ -16,7 +16,9 @@ Paws::EC2::PurchaseReservedInstancesOfferingResult
 
 =head2 ReservedInstancesId => Str
 
-  The IDs of the purchased Reserved instances.
+The IDs of the purchased Reserved Instances.
+
+
 
 
 =cut

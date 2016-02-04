@@ -25,11 +25,15 @@ Paws::Route53::DeleteTrafficPolicyResponse
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the traffic policy that you want to delete.
+The ID of the traffic policy that you want to delete.
+
+
 
 =head2 B<REQUIRED> Version => Int
 
-  The version number of the traffic policy that you want to delete.
+The version number of the traffic policy that you want to delete.
+
+
 
 
 =cut

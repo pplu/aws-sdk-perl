@@ -35,10 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ClusterName => Str
 
-  The name of your cluster. If you do not specify a name for your
+The name of your cluster. If you do not specify a name for your
 cluster, you create a cluster named C<default>. Up to 255 letters
 (uppercase and lowercase), numbers, hyphens, and underscores are
 allowed.
+
 
 
 

@@ -16,7 +16,9 @@ Paws::IoTData::DeleteThingShadowResponse
 
 =head2 B<REQUIRED> Payload => Str
 
-  The state information, in JSON format.
+The state information, in JSON format.
+
+
 
 
 =cut

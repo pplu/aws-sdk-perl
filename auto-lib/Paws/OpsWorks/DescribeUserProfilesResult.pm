@@ -15,7 +15,9 @@ Paws::OpsWorks::DescribeUserProfilesResult
 
 =head2 UserProfiles => ArrayRef[L<Paws::OpsWorks::UserProfile>]
 
-  A C<Users> object that describes the specified users.
+A C<Users> object that describes the specified users.
+
+
 
 
 =cut

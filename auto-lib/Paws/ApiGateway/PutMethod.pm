@@ -15,7 +15,7 @@ package Paws::ApiGateway::PutMethod;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Method');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PutMethodResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -43,29 +43,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApiKeyRequired => Bool
 
-  Specifies whether the method required a valid ApiKey.
+Specifies whether the method required a valid ApiKey.
+
 
 
 =head2 B<REQUIRED> AuthorizationType => Str
 
-  Specifies the type of authorization used for the method.
+Specifies the type of authorization used for the method.
+
 
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-  Specifies the put method request's HTTP method type.
+Specifies the put method request's HTTP method type.
+
 
 
 =head2 RequestModels => HashRef[Str]
 
-  Specifies the Model resources used for the request's content type.
+Specifies the Model resources used for the request's content type.
 Request models are represented as a key/value map, with a content type
 as the key and a Model name as the value.
 
 
+
 =head2 RequestParameters => HashRef[Bool]
 
-  Represents requests parameters that are sent with the backend request.
+Represents requests parameters that are sent with the backend request.
 Request parameters are represented as a key/value map, with a
 destination as the key and a source as the value. A source must match
 an existing method request parameter, or a static value. Static values
@@ -76,14 +80,17 @@ querystring, path, or header. C<name> must be a valid, unique parameter
 name.
 
 
+
 =head2 B<REQUIRED> ResourceId => Str
 
-  The Resource identifier for the new Method resource.
+The Resource identifier for the new Method resource.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi identifier for the new Method resource.
+The RestApi identifier for the new Method resource.
+
 
 
 

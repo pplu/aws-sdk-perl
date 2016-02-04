@@ -20,27 +20,39 @@ Paws::CognitoIdentity::IdentityPool
 
 =head2 B<REQUIRED> AllowUnauthenticatedIdentities => Bool
 
-  TRUE if the identity pool supports unauthenticated logins.
+TRUE if the identity pool supports unauthenticated logins.
+
+
 
 =head2 DeveloperProviderName => Str
 
-  The "domain" by which Cognito will refer to your users.
+The "domain" by which Cognito will refer to your users.
+
+
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  An identity pool ID in the format REGION:GUID.
+An identity pool ID in the format REGION:GUID.
+
+
 
 =head2 B<REQUIRED> IdentityPoolName => Str
 
-  A string that you provide.
+A string that you provide.
+
+
 
 =head2 OpenIdConnectProviderARNs => ArrayRef[Str]
 
-  A list of OpendID Connect provider ARNs.
+A list of OpendID Connect provider ARNs.
+
+
 
 =head2 SupportedLoginProviders => HashRef[Str]
 
-  Optional key:value pairs mapping provider names to provider app IDs.
+Optional key:value pairs mapping provider names to provider app IDs.
+
+
 
 
 =cut

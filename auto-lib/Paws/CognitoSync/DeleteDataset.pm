@@ -11,7 +11,7 @@ package Paws::CognitoSync::DeleteDataset;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::DeleteDatasetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteDatasetResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,22 +39,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DatasetName => Str
 
-  A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
+A string of up to 128 characters. Allowed characters are a-z, A-Z, 0-9,
 '_' (underscore), '-' (dash), and '.' (dot).
+
 
 
 =head2 B<REQUIRED> IdentityId => Str
 
-  A name-spaced GUID (for example,
+A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
+
 
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  A name-spaced GUID (for example,
+A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
+
 
 
 

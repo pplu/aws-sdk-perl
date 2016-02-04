@@ -15,7 +15,9 @@ Paws::Inspector::DescribeResourceGroupResponse
 
 =head2 ResourceGroup => L<Paws::Inspector::ResourceGroup>
 
-  Information about the resource group.
+Information about the resource group.
+
+
 
 
 =cut

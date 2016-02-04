@@ -12,7 +12,7 @@ package Paws::ApiGateway::GetIntegrationResponse;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::IntegrationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetIntegrationResponseResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -40,22 +40,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-  Specifies a get integration response request's HTTP method.
+Specifies a get integration response request's HTTP method.
+
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  Specifies a get integration response request's resource identifier.
+Specifies a get integration response request's resource identifier.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  Specifies a get integration response request's API identifier.
+Specifies a get integration response request's API identifier.
+
 
 
 =head2 B<REQUIRED> StatusCode => Str
 
-  Specifies a get integration response request's status code.
+Specifies a get integration response request's status code.
+
 
 
 

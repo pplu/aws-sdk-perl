@@ -39,17 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-  The HTTP verb that identifies the Method resource.
+The HTTP verb that identifies the Method resource.
+
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  The Resource identifier for the Method resource.
+The Resource identifier for the Method resource.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi identifier for the Method resource.
+The RestApi identifier for the Method resource.
+
 
 
 

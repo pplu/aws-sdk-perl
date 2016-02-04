@@ -37,25 +37,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConnectionId => Str
 
-  The connection ID on which the private virtual interface is
+The connection ID on which the private virtual interface is
 provisioned.
 
 Default: None
+
 
 
 =head2 B<REQUIRED> NewPrivateVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation>
 
-  Detailed information for the private virtual interface to be
+Detailed information for the private virtual interface to be
 provisioned.
 
 Default: None
 
 
+
 =head2 B<REQUIRED> OwnerAccount => Str
 
-  The AWS account that will own the new private virtual interface.
+The AWS account that will own the new private virtual interface.
 
 Default: None
+
 
 
 

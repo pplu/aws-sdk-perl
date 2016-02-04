@@ -16,7 +16,9 @@ Paws::EC2::DescribeAvailabilityZonesResult
 
 =head2 AvailabilityZones => ArrayRef[L<Paws::EC2::AvailabilityZone>]
 
-  Information about one or more Availability Zones.
+Information about one or more Availability Zones.
+
+
 
 
 =cut

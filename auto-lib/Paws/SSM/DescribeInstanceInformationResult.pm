@@ -16,12 +16,16 @@ Paws::SSM::DescribeInstanceInformationResult
 
 =head2 InstanceInformationList => ArrayRef[L<Paws::SSM::InstanceInformation>]
 
-  The instance information list.
+The instance information list.
+
+
 
 =head2 NextToken => Str
 
-  The token to use when requesting the next set of items. If there are no
+The token to use when requesting the next set of items. If there are no
 additional items to return, the string is empty.
+
+
 
 
 =cut

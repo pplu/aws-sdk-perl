@@ -39,22 +39,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AllowSsh => Bool
 
-  The user is allowed to use SSH to communicate with the instance.
+The user is allowed to use SSH to communicate with the instance.
+
 
 
 =head2 AllowSudo => Bool
 
-  The user is allowed to use B<sudo> to elevate privileges.
+The user is allowed to use B<sudo> to elevate privileges.
+
 
 
 =head2 B<REQUIRED> IamUserArn => Str
 
-  The user's IAM ARN.
+The user's IAM ARN.
+
 
 
 =head2 Level => Str
 
-  The user's permission level, which must be set to one of the following
+The user's permission level, which must be set to one of the following
 strings. You cannot set your own permissions level.
 
 =over
@@ -75,9 +78,11 @@ For more information on the permissions associated with these levels,
 see Managing User Permissions.
 
 
+
 =head2 B<REQUIRED> StackId => Str
 
-  The stack ID.
+The stack ID.
+
 
 
 

@@ -1,0 +1,10 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <CreateDomainResponse xmlns="http://sdb.amazonaws.com/doc/2009-04-15/"><ResponseMetadata><RequestId>6d617094-2197-ff9c-98b3-9be62c117a95</RequestId><BoxUsage>0.0055590278</BoxUsage></ResponseMetadata></CreateDomainResponse>
+headers:
+  content-type: text/xml
+  date: 'Thu, 04 Feb 2016 22:49:43 GMT'
+  server: Amazon SimpleDB
+  transfer-encoding: chunked
+status: 200

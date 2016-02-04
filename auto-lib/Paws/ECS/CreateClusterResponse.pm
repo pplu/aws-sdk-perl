@@ -15,7 +15,9 @@ Paws::ECS::CreateClusterResponse
 
 =head2 Cluster => L<Paws::ECS::Cluster>
 
-  The full description of your new cluster.
+The full description of your new cluster.
+
+
 
 
 =cut

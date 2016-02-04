@@ -15,7 +15,9 @@ Paws::SSM::CreateAssociationResult
 
 =head2 AssociationDescription => L<Paws::SSM::AssociationDescription>
 
-  Information about the association.
+Information about the association.
+
+
 
 
 =cut

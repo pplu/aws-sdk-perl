@@ -16,11 +16,15 @@ Paws::Support::DescribeCasesResponse
 
 =head2 Cases => ArrayRef[L<Paws::Support::CaseDetails>]
 
-  The details for the cases that match the request.
+The details for the cases that match the request.
+
+
 
 =head2 NextToken => Str
 
-  A resumption point for pagination.
+A resumption point for pagination.
+
+
 
 
 =cut

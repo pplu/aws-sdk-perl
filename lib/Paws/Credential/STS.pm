@@ -1,4 +1,4 @@
-package Paws::Credential::STS {
+package Paws::Credential::STS;
   use Moose;
   use DateTime;
   use DateTime::Format::ISO8601;
@@ -60,6 +60,4 @@ package Paws::Credential::STS {
   }
 
   no Moose;
-}
-
 1;

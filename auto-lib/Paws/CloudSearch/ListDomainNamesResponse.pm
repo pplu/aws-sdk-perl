@@ -16,7 +16,9 @@ Paws::CloudSearch::ListDomainNamesResponse
 
 =head2 DomainNames => HashRef[Str]
 
-  The names of the search domains owned by an account.
+The names of the search domains owned by an account.
+
+
 
 
 =cut

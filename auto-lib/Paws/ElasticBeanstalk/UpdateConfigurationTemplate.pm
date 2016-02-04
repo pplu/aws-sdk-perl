@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The name of the application associated with the configuration template
+The name of the application associated with the configuration template
 to update.
 
 If no application is found with this name,
@@ -47,31 +47,36 @@ C<UpdateConfigurationTemplate> returns an C<InvalidParameterValue>
 error.
 
 
+
 =head2 Description => Str
 
-  A new description for the configuration.
+A new description for the configuration.
+
 
 
 =head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
-  A list of configuration option settings to update with the new
+A list of configuration option settings to update with the new
 specified option value.
+
 
 
 =head2 OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
 
-  A list of configuration options to remove from the configuration set.
+A list of configuration options to remove from the configuration set.
 
 Constraint: You can remove only C<UserDefined> configuration options.
 
 
+
 =head2 B<REQUIRED> TemplateName => Str
 
-  The name of the configuration template to update.
+The name of the configuration template to update.
 
 If no configuration template is found with this name,
 C<UpdateConfigurationTemplate> returns an C<InvalidParameterValue>
 error.
+
 
 
 

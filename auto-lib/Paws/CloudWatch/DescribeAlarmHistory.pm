@@ -40,33 +40,39 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AlarmName => Str
 
-  The name of the alarm.
+The name of the alarm.
+
 
 
 =head2 EndDate => Str
 
-  The ending date to retrieve alarm history.
+The ending date to retrieve alarm history.
+
 
 
 =head2 HistoryItemType => Str
 
-  The type of alarm histories to retrieve.
+The type of alarm histories to retrieve.
 
+Valid values are: C<"ConfigurationUpdate">, C<"StateUpdate">, C<"Action">
 
 =head2 MaxRecords => Int
 
-  The maximum number of alarm history records to retrieve.
+The maximum number of alarm history records to retrieve.
+
 
 
 =head2 NextToken => Str
 
-  The token returned by a previous call to indicate that there is more
+The token returned by a previous call to indicate that there is more
 data available.
+
 
 
 =head2 StartDate => Str
 
-  The starting date to retrieve alarm history.
+The starting date to retrieve alarm history.
+
 
 
 

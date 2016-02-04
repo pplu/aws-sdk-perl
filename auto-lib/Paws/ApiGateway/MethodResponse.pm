@@ -18,13 +18,15 @@ Paws::ApiGateway::MethodResponse
 
 =head2 ResponseModels => HashRef[Str]
 
-  Specifies the Model resources used for the response's content-type.
+Specifies the Model resources used for the response's content-type.
 Response models are represented as a key/value map, with a content-type
 as the key and a Model name as the value.
 
+
+
 =head2 ResponseParameters => HashRef[Bool]
 
-  Represents response parameters that can be sent back to the caller by
+Represents response parameters that can be sent back to the caller by
 Amazon API Gateway. Response parameters are represented as a key/value
 map, with a destination as the key and a boolean flag as the value,
 which is used to specify whether the parameter is required. A
@@ -33,9 +35,13 @@ where C<name> is a valid, unique header name. Destinations specified
 here are available to the integration for mapping from integration
 response parameters.
 
+
+
 =head2 StatusCode => Str
 
-  The method response's status code.
+The method response's status code.
+
+
 
 
 =cut

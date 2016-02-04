@@ -20,24 +20,34 @@ Paws::ApiGateway::Resource
 
 =head2 Id => Str
 
-  The resource's identifier.
+The resource's identifier.
+
+
 
 =head2 ParentId => Str
 
-  The parent resource's identifier.
+The parent resource's identifier.
+
+
 
 =head2 Path => Str
 
-  The full path for this resource.
+The full path for this resource.
+
+
 
 =head2 PathPart => Str
 
-  The last path segment for this resource.
+The last path segment for this resource.
+
+
 
 =head2 ResourceMethods => HashRef[L<Paws::ApiGateway::Method>]
 
-  Map of methods for this resource, which is included only if requested
+Map of methods for this resource, which is included only if requested
 using the B<embed> option.
+
+
 
 
 =cut

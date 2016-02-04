@@ -32,18 +32,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Deleted => ArrayRef[L<Paws::S3::DeletedObject>]
 
-  
+
+
 
 
 =head2 Errors => ArrayRef[L<Paws::S3::Error>]
 
-  
+
+
 
 
 =head2 RequestCharged => Str
 
-  
 
+
+Valid values are: C<"requester">
 
 
 =head1 SEE ALSO

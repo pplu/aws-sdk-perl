@@ -25,16 +25,18 @@ Paws::Route53::ListTrafficPoliciesResponse
 
 =head2 MaxItems => Str
 
-  The maximum number of traffic policies to be included in the response
+The maximum number of traffic policies to be included in the response
 body for this request. If you have more than C<MaxItems> traffic
 policies, the value of the C<IsTruncated> element in the response is
 C<true>, and the value of the C<TrafficPolicyIdMarker> element is the
 ID of the first traffic policy in the next group of C<MaxItems> traffic
 policies.
 
+
+
 =head2 TrafficPolicyIdMarker => Str
 
-  For your first request to C<ListTrafficPolicies>, do not include the
+For your first request to C<ListTrafficPolicies>, do not include the
 C<TrafficPolicyIdMarker> parameter.
 
 If you have more traffic policies than the value of C<MaxItems>,
@@ -46,6 +48,8 @@ C<TrafficPolicyIdMarker> element that was returned in the previous
 response.
 
 Policies are listed in the order in which they were created.
+
+
 
 
 =cut

@@ -32,45 +32,61 @@ Paws::MachineLearning::GetMLModelOutput
 
 =head2 CreatedAt => Str
 
-  The time that the C<MLModel> was created. The time is expressed in
+The time that the C<MLModel> was created. The time is expressed in
 epoch time.
+
+
 
 =head2 CreatedByIamUser => Str
 
-  The AWS user account from which the C<MLModel> was created. The account
+The AWS user account from which the C<MLModel> was created. The account
 type can be either an AWS root account or an AWS Identity and Access
 Management (IAM) user account.
 
+
+
 =head2 EndpointInfo => L<Paws::MachineLearning::RealtimeEndpointInfo>
 
-  The current endpoint of the C<MLModel>
+The current endpoint of the C<MLModel>
+
+
 
 =head2 InputDataLocationS3 => Str
 
-  The location of the data file or directory in Amazon Simple Storage
+The location of the data file or directory in Amazon Simple Storage
 Service (Amazon S3).
+
+
 
 =head2 LastUpdatedAt => Str
 
-  The time of the most recent edit to the C<MLModel>. The time is
+The time of the most recent edit to the C<MLModel>. The time is
 expressed in epoch time.
+
+
 
 =head2 LogUri => Str
 
-  A link to the file that contains logs of the C<CreateMLModel>
+A link to the file that contains logs of the C<CreateMLModel>
 operation.
+
+
 
 =head2 Message => Str
 
-  Description of the most recent details about accessing the C<MLModel>.
+Description of the most recent details about accessing the C<MLModel>.
+
+
 
 =head2 MLModelId => Str
 
-  The MLModel ID which is same as the C<MLModelId> in the request.
+The MLModel ID which is same as the C<MLModelId> in the request.
+
+
 
 =head2 MLModelType => Str
 
-  Identifies the C<MLModel> category. The following are the available
+Identifies the C<MLModel> category. The following are the available
 types:
 
 =over
@@ -87,29 +103,37 @@ example, "Is this a HIGH, LOW or MEDIUM risk trade?"
 =back
 
 
+Valid values are: C<"REGRESSION">, C<"BINARY">, C<"MULTICLASS">
+
 =head2 Name => Str
 
-  A user-supplied name or description of the C<MLModel>.
+A user-supplied name or description of the C<MLModel>.
+
+
 
 =head2 Recipe => Str
 
-  The recipe to use when training the C<MLModel>. The C<Recipe> provides
+The recipe to use when training the C<MLModel>. The C<Recipe> provides
 detailed information about the observation data to use during training,
 as well as manipulations to perform on the observation data during
 training.
 
 This parameter is provided as part of the verbose format.
 
+
+
 =head2 Schema => Str
 
-  The schema used by all of the data files referenced by the
+The schema used by all of the data files referenced by the
 C<DataSource>.
 
 This parameter is provided as part of the verbose format.
 
+
+
 =head2 ScoreThreshold => Num
 
-  The scoring threshold is used in binary classification C<MLModel>s, and
+The scoring threshold is used in binary classification C<MLModel>s, and
 marks the boundary between a positive prediction and a negative
 prediction.
 
@@ -118,18 +142,24 @@ result from the MLModel, such as C<true>. Output values less than the
 threshold receive a negative response from the MLModel, such as
 C<false>.
 
+
+
 =head2 ScoreThresholdLastUpdatedAt => Str
 
-  The time of the most recent edit to the C<ScoreThreshold>. The time is
+The time of the most recent edit to the C<ScoreThreshold>. The time is
 expressed in epoch time.
+
+
 
 =head2 SizeInBytes => Int
 
-  
+
+
+
 
 =head2 Status => Str
 
-  The current status of the C<MLModel>. This element can have one of the
+The current status of the C<MLModel>. This element can have one of the
 following values:
 
 =over
@@ -150,13 +180,17 @@ usable.
 =back
 
 
+Valid values are: C<"PENDING">, C<"INPROGRESS">, C<"FAILED">, C<"COMPLETED">, C<"DELETED">
+
 =head2 TrainingDataSourceId => Str
 
-  The ID of the training C<DataSource>.
+The ID of the training C<DataSource>.
+
+
 
 =head2 TrainingParameters => HashRef[Str]
 
-  A list of the training parameters in the C<MLModel>. The list is
+A list of the training parameters in the C<MLModel>. The list is
 implemented as a map of key/value pairs.
 
 The following is the current set of training parameters:
@@ -201,6 +235,8 @@ The value is an integer that ranges from 100000 to 2147483648. The
 default value is 33554432.
 
 =back
+
+
 
 
 

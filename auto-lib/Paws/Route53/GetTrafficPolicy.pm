@@ -25,12 +25,16 @@ Paws::Route53::GetTrafficPolicyResponse
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the traffic policy that you want to get information about.
+The ID of the traffic policy that you want to get information about.
+
+
 
 =head2 B<REQUIRED> Version => Int
 
-  The version number of the traffic policy that you want to get
+The version number of the traffic policy that you want to get
 information about.
+
+
 
 
 =cut

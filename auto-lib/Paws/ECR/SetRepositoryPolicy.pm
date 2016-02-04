@@ -38,27 +38,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Force => Bool
 
-  If the policy you are attempting to set on a repository policy would
+If the policy you are attempting to set on a repository policy would
 prevent you from setting another policy in the future, you must force
 the SetRepositoryPolicy operation. This is intended to prevent
 accidental repository lock outs.
 
 
+
 =head2 B<REQUIRED> PolicyText => Str
 
-  The JSON repository policy text to apply to the repository.
+The JSON repository policy text to apply to the repository.
+
 
 
 =head2 RegistryId => Str
 
-  The AWS account ID associated with the registry that contains the
+The AWS account ID associated with the registry that contains the
 repository. If you do not specify a registry, the default registry is
 assumed.
 
 
+
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The name of the repository to receive the policy.
+The name of the repository to receive the policy.
+
 
 
 

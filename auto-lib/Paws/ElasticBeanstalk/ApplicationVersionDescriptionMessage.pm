@@ -16,7 +16,9 @@ Paws::ElasticBeanstalk::ApplicationVersionDescriptionMessage
 
 =head2 ApplicationVersion => L<Paws::ElasticBeanstalk::ApplicationVersionDescription>
 
-  The ApplicationVersionDescription of the application version.
+The ApplicationVersionDescription of the application version.
+
+
 
 
 =cut

@@ -28,23 +28,33 @@ Paws::Route53::ListChangeBatchesByHostedZoneResponse
 
 =head2 B<REQUIRED> EndDate => Str
 
-  The end of the time period you want to see changes for.
+The end of the time period you want to see changes for.
+
+
 
 =head2 B<REQUIRED> HostedZoneId => Str
 
-  The ID of the hosted zone that you want to see changes for.
+The ID of the hosted zone that you want to see changes for.
+
+
 
 =head2 Marker => Str
 
-  The page marker.
+The page marker.
+
+
 
 =head2 MaxItems => Str
 
-  The maximum number of items on a page.
+The maximum number of items on a page.
+
+
 
 =head2 B<REQUIRED> StartDate => Str
 
-  The start of the time period you want to see changes for.
+The start of the time period you want to see changes for.
+
+
 
 
 =cut

@@ -6,7 +6,7 @@ package Paws::CloudFront::CreateDistribution;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-09-17/distribution');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-01-28/distribution');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateDistributionResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -24,7 +24,9 @@ Paws::CloudFront::CreateDistributionResult
 
 =head2 B<REQUIRED> DistributionConfig => L<Paws::CloudFront::DistributionConfig>
 
-  The distribution's configuration information.
+The distribution's configuration information.
+
+
 
 
 =cut

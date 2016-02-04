@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EnvironmentId => Str
 
-  This specifies the ID of the environment with the in-progress update
+This specifies the ID of the environment with the in-progress update
 that you want to cancel.
+
 
 
 =head2 EnvironmentName => Str
 
-  This specifies the name of the environment with the in-progress update
+This specifies the name of the environment with the in-progress update
 that you want to cancel.
+
 
 
 

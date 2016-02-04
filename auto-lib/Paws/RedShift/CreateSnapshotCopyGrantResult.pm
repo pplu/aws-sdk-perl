@@ -16,7 +16,9 @@ Paws::RedShift::CreateSnapshotCopyGrantResult
 
 =head2 SnapshotCopyGrant => L<Paws::RedShift::SnapshotCopyGrant>
 
-  
+
+
+
 
 
 =cut

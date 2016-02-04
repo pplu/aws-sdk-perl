@@ -37,19 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LaunchConfigurationNames => ArrayRef[Str]
 
-  The launch configuration names.
+The launch configuration names.
+
 
 
 =head2 MaxRecords => Int
 
-  The maximum number of items to return with this call. The default is
+The maximum number of items to return with this call. The default is
 100.
+
 
 
 =head2 NextToken => Str
 
-  The token for the next set of items to return. (You received this token
+The token for the next set of items to return. (You received this token
 from a previous call.)
+
 
 
 

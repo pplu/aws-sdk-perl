@@ -19,20 +19,28 @@ Paws::ApiGateway::DomainName
 
 =head2 CertificateName => Str
 
-  The name of the certificate.
+The name of the certificate.
+
+
 
 =head2 CertificateUploadDate => Str
 
-  The date when the certificate was uploaded, in ISO 8601 format.
+The date when the certificate was uploaded, in ISO 8601 format.
+
+
 
 =head2 DistributionDomainName => Str
 
-  The domain name of the Amazon CloudFront distribution. For more
+The domain name of the Amazon CloudFront distribution. For more
 information, see the Amazon CloudFront documentation.
+
+
 
 =head2 DomainName => Str
 
-  The name of the DomainName resource.
+The name of the DomainName resource.
+
+
 
 
 =cut

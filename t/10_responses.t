@@ -150,36 +150,23 @@ sub resolve_path {
   my ($path, $res) = @_;
 
   my ($call, $rest);
-  if ($path =~ m/^\{(.*?)\}\.(.*)$/) {
+  if ($path =~ m/^\{(.*?)\}(?:\.(.*))?$/) {
     ($call, $rest) = ($1, $2);
-  } elsif ($path =~ m/^([^.]+?)\.(.*)$/) {
+  } elsif ($path =~ m/^([^.]+?)(?:\.(.*))?$/) {
     ($call, $rest) = ($1, $2);
   }
 
-  if (defined $call and defined $rest) {
-    if ($call =~ m/^\d+$/){
-      die "Can't access index $call\n" if (not defined $res->[$call]);
-      return resolve_path($rest, $res->[$call]);
-    } else {
-      die "Can't call method $call on an undefined value\n" if (not defined $res);
-      if (blessed($res)){
-        die "Doesn't have accessor $call on path $path\n" if (not $res->can($call));
-        return resolve_path($rest, $res->$call);
-      } else {
-        return resolve_path($rest, $res->{$call});
-      }
-    }
+  if ($call =~ m/^\d+$/){
+    $res = $res->[$call];
+  } elsif (blessed($res)) {
+    $res = $res->$call;
   } else {
-    die "Can't access $path on an undefined value\n" if (not defined $res); 
-    if ($path =~ m/^\d+$/){
-      return $res->[$path];
-    } else {
-      if (blessed($res)){
-        die "Doesn't have accessor $path\n" if (not $res->can($path));
-        return $res->$path;
-      } else {
-        return $res->{$path};
-      }
-    }
+    $res = $res->{$call};
+  }
+
+  if (not defined $rest) {
+    return $res;
+  } else {
+    return resolve_path($rest, $res);
   }
 }

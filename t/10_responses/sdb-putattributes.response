@@ -1,0 +1,10 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <PutAttributesResponse xmlns="http://sdb.amazonaws.com/doc/2009-04-15/"><ResponseMetadata><RequestId>19eed3d7-25f9-3347-0453-b7312e623da0</RequestId><BoxUsage>0.0000219923</BoxUsage></ResponseMetadata></PutAttributesResponse>
+headers:
+  content-type: text/xml
+  date: 'Thu, 04 Feb 2016 22:49:48 GMT'
+  server: Amazon SimpleDB
+  transfer-encoding: chunked
+status: 200

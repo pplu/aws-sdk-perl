@@ -24,8 +24,10 @@ Paws::Route53::GetTrafficPolicyInstanceResponse
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the traffic policy instance that you want to get information
+The ID of the traffic policy instance that you want to get information
 about.
+
+
 
 
 =cut

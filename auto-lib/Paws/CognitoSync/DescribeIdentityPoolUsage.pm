@@ -9,7 +9,7 @@ package Paws::CognitoSync::DescribeIdentityPoolUsage;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::DescribeIdentityPoolUsageResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeIdentityPoolUsageResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -37,9 +37,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  A name-spaced GUID (for example,
+A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
+
 
 
 

@@ -46,62 +46,74 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 APIVersion => Str
 
-  
+
+
 
 
 =head2 City => Str
 
-  
+
+
 
 
 =head2 Company => Str
 
-  
+
+
 
 
 =head2 Country => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> JobIds => ArrayRef[Str]
 
-  
+
+
 
 
 =head2 Name => Str
 
-  
+
+
 
 
 =head2 PhoneNumber => Str
 
-  
+
+
 
 
 =head2 PostalCode => Str
 
-  
+
+
 
 
 =head2 StateOrProvince => Str
 
-  
+
+
 
 
 =head2 Street1 => Str
 
-  
+
+
 
 
 =head2 Street2 => Str
 
-  
+
+
 
 
 =head2 Street3 => Str
 
-  
+
+
 
 
 

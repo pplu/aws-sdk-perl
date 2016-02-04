@@ -37,20 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientToken => Str
 
-  The clientToken portion of the clientId and clientToken pair used to
+The clientToken portion of the clientId and clientToken pair used to
 verify that the calling entity is allowed access to the job and its
 details.
 
 
+
 =head2 B<REQUIRED> FailureDetails => L<Paws::CodePipeline::FailureDetails>
 
-  
+
+
 
 
 =head2 B<REQUIRED> JobId => Str
 
-  The ID of the job that failed. This is the same ID returned from
+The ID of the job that failed. This is the same ID returned from
 PollForThirdPartyJobs.
+
 
 
 

@@ -24,9 +24,11 @@ Paws::Route53::GetChangeDetailsResponse
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the change batch request. The value that you specify here is
+The ID of the change batch request. The value that you specify here is
 the value that C<ChangeResourceRecordSets> returned in the Id element
 when you submitted the request.
+
+
 
 
 =cut

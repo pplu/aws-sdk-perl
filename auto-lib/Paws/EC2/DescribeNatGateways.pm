@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Filter => ArrayRef[L<Paws::EC2::Filter>]
 
-  One or more filters.
+One or more filters.
 
 =over
 
@@ -63,9 +63,10 @@ C<vpc-id> - The ID of the VPC in which the NAT gateway resides.
 
 
 
+
 =head2 MaxResults => Int
 
-  The maximum number of items to return for this request. The request
+The maximum number of items to return for this request. The request
 returns a token that you can specify in a subsequent call to get the
 next set of results.
 
@@ -73,14 +74,17 @@ Constraint: If the value specified is greater than 1000, we return only
 1000 items.
 
 
+
 =head2 NatGatewayIds => ArrayRef[Str]
 
-  One or more NAT gateway IDs.
+One or more NAT gateway IDs.
+
 
 
 =head2 NextToken => Str
 
-  The token to retrieve the next page of results.
+The token to retrieve the next page of results.
+
 
 
 

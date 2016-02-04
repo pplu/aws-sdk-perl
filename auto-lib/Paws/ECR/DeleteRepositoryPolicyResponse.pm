@@ -17,15 +17,21 @@ Paws::ECR::DeleteRepositoryPolicyResponse
 
 =head2 PolicyText => Str
 
-  The JSON repository policy that was deleted from the repository.
+The JSON repository policy that was deleted from the repository.
+
+
 
 =head2 RegistryId => Str
 
-  The registry ID associated with the request.
+The registry ID associated with the request.
+
+
 
 =head2 RepositoryName => Str
 
-  The repository name associated with the request.
+The repository name associated with the request.
+
+
 
 
 =cut

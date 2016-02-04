@@ -10,7 +10,7 @@ package Paws::IoT::TransferCertificate;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/transfer-certificate/{certificateId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::TransferCertificateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'TransferCertificateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateId => Str
 
-  The ID of the certificate.
+The ID of the certificate.
+
 
 
 =head2 B<REQUIRED> TargetAwsAccount => Str
 
-  The AWS account.
+The AWS account.
+
 
 
 

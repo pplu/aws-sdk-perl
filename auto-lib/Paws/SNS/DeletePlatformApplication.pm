@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PlatformApplicationArn => Str
 
-  PlatformApplicationArn of platform application object to delete.
+PlatformApplicationArn of platform application object to delete.
+
 
 
 

@@ -32,17 +32,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LambdaFunctionConfigurations => ArrayRef[L<Paws::S3::LambdaFunctionConfiguration>]
 
-  
+
+
 
 
 =head2 QueueConfigurations => ArrayRef[L<Paws::S3::QueueConfiguration>]
 
-  
+
+
 
 
 =head2 TopicConfigurations => ArrayRef[L<Paws::S3::TopicConfiguration>]
 
-  
+
+
 
 
 

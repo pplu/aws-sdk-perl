@@ -10,7 +10,7 @@ package Paws::Lambda::GetPolicy;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/policy');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::GetPolicyResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetPolicyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  Function name whose resource policy you want to retrieve.
+Function name whose resource policy you want to retrieve.
 
 You can specify an unqualified function name (for example, "Thumbnail")
 or you can specify Amazon Resource Name (ARN) of the function (for
@@ -49,13 +49,15 @@ applies only to the ARN. If you specify only the function name, it is
 limited to 64 character in length.
 
 
+
 =head2 Qualifier => Str
 
-  You can specify this optional query parameter to specify function
+You can specify this optional query parameter to specify function
 version or alias name in which case this API will return all
 permissions associated with the specific ARN. If you don't provide this
 parameter, the API will return permissions that apply to the
 unqualified function ARN.
+
 
 
 

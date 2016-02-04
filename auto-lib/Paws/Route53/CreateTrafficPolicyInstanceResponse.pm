@@ -31,13 +31,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Location => Str
 
-  A unique URL that represents a new traffic policy instance.
+A unique URL that represents a new traffic policy instance.
+
 
 
 =head2 B<REQUIRED> TrafficPolicyInstance => L<Paws::Route53::TrafficPolicyInstance>
 
-  A complex type that contains settings for the new traffic policy
+A complex type that contains settings for the new traffic policy
 instance.
+
 
 
 

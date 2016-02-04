@@ -16,7 +16,9 @@ Paws::SES::GetIdentityVerificationAttributesResponse
 
 =head2 B<REQUIRED> VerificationAttributes => HashRef[L<Paws::SES::IdentityVerificationAttributes>]
 
-  A map of Identities to IdentityVerificationAttributes objects.
+A map of Identities to IdentityVerificationAttributes objects.
+
+
 
 
 =cut

@@ -38,24 +38,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeNames => ArrayRef[Str]
 
-  Specifies the response elements you wish to receive. If no attribute
+Specifies the response elements you wish to receive. If no attribute
 names are specified, AWS Elastic Beanstalk only returns a list of
 instances.
 
 
+
 =head2 EnvironmentId => Str
 
-  Specifies the AWS Elastic Beanstalk environment ID.
+Specifies the AWS Elastic Beanstalk environment ID.
+
 
 
 =head2 EnvironmentName => Str
 
-  Specifies the AWS Elastic Beanstalk environment name.
+Specifies the AWS Elastic Beanstalk environment name.
+
 
 
 =head2 NextToken => Str
 
-  Specifies the next token of the request.
+Specifies the next token of the request.
+
 
 
 

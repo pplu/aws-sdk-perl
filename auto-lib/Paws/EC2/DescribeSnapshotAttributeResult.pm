@@ -18,15 +18,21 @@ Paws::EC2::DescribeSnapshotAttributeResult
 
 =head2 CreateVolumePermissions => ArrayRef[L<Paws::EC2::CreateVolumePermission>]
 
-  A list of permissions for creating volumes from the snapshot.
+A list of permissions for creating volumes from the snapshot.
+
+
 
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
-  A list of product codes.
+A list of product codes.
+
+
 
 =head2 SnapshotId => Str
 
-  The ID of the EBS snapshot.
+The ID of the EBS snapshot.
+
+
 
 
 =cut

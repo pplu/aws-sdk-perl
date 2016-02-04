@@ -15,8 +15,10 @@ Paws::CodePipeline::GetThirdPartyJobDetailsOutput
 
 =head2 JobDetails => L<Paws::CodePipeline::ThirdPartyJobDetails>
 
-  The details of the job, including any protected values defined for the
+The details of the job, including any protected values defined for the
 job.
+
+
 
 
 =cut

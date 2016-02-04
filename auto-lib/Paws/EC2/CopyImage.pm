@@ -42,36 +42,40 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ClientToken => Str
 
-  Unique, case-sensitive identifier you provide to ensure idempotency of
+Unique, case-sensitive identifier you provide to ensure idempotency of
 the request. For more information, see How to Ensure Idempotency in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
 
+
 =head2 Description => Str
 
-  A description for the new AMI in the destination region.
+A description for the new AMI in the destination region.
+
 
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 Encrypted => Bool
 
-  Specifies whether the destination snapshots of the copied image should
+Specifies whether the destination snapshots of the copied image should
 be encrypted. The default CMK for EBS is used unless a non-default AWS
 Key Management Service (AWS KMS) CMK is specified with C<KmsKeyId>. For
 more information, see Amazon EBS Encryption in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
 
+
 =head2 KmsKeyId => Str
 
-  The full ARN of the AWS Key Management Service (AWS KMS) CMK to use
+The full ARN of the AWS Key Management Service (AWS KMS) CMK to use
 when encrypting the snapshots of an image during a copy operation. This
 parameter is only required if you want to use a non-default CMK; if
 this parameter is not specified, the default CMK for EBS is used. The
@@ -84,19 +88,23 @@ copied to. If a C<KmsKeyId> is specified, the C<Encrypted> flag must
 also be set.
 
 
+
 =head2 B<REQUIRED> Name => Str
 
-  The name of the new AMI in the destination region.
+The name of the new AMI in the destination region.
+
 
 
 =head2 B<REQUIRED> SourceImageId => Str
 
-  The ID of the AMI to copy.
+The ID of the AMI to copy.
+
 
 
 =head2 B<REQUIRED> SourceRegion => Str
 
-  The name of the region that contains the AMI to copy.
+The name of the region that contains the AMI to copy.
+
 
 
 

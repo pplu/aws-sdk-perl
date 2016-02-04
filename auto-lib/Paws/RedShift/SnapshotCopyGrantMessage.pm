@@ -17,7 +17,7 @@ Paws::RedShift::SnapshotCopyGrantMessage
 
 =head2 Marker => Str
 
-  An optional parameter that specifies the starting point to return a set
+An optional parameter that specifies the starting point to return a set
 of response records. When the results of a C<DescribeSnapshotCopyGrant>
 request exceed the value specified in C<MaxRecords>, AWS returns a
 value in the C<Marker> field of the response. You can retrieve the next
@@ -27,9 +27,13 @@ C<Marker> parameter and retrying the request.
 Constraints: You can specify either the B<SnapshotCopyGrantName>
 parameter or the B<Marker> parameter, but not both.
 
+
+
 =head2 SnapshotCopyGrants => ArrayRef[L<Paws::RedShift::SnapshotCopyGrant>]
 
-  The list of snapshot copy grants.
+The list of snapshot copy grants.
+
+
 
 
 =cut

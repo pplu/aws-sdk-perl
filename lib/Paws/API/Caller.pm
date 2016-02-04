@@ -1,4 +1,4 @@
-package Paws::API::Caller {
+package Paws::API::Caller;
   use Moose::Role;
   use Carp;
   use Paws::Net::APIRequest;
@@ -96,17 +96,27 @@ package Paws::API::Caller {
     my ($self, $call_object, $http_status, $content, $headers) = @_;
 
     my $ret_class = $call_object->meta->name->_returns;
-	my $has_streaming = 0;
-	if (defined $ret_class){
+    my $has_streaming = 0;
+    if (defined $ret_class){
       Paws->load_class($ret_class);
-	  $has_streaming = $ret_class->can('_stream_param');
-	}
+      $has_streaming = $ret_class->can('_stream_param');
+    }
 
     my $unserialized_struct;
     if ($has_streaming) {
       $unserialized_struct = $self->unserialize_body_response($ret_class, $http_status, $content, $headers);
     } else {
       $unserialized_struct = $self->unserialize_response( $content );
+    }
+
+    if (defined $headers->{ 'x-amz-crc32' }) {
+      require String::CRC32;
+      my $crc = String::CRC32::crc32($content);
+      return Paws::Exception->new(
+        code => 'Crc32Error',
+        message => 'Content CRC32 mismatch',
+        request_id => $headers->{ 'x-amzn-requestid' }
+      ) if ($crc != $headers->{ 'x-amz-crc32' });
     }
 
     if ( $http_status >= 300 ) {
@@ -268,5 +278,4 @@ package Paws::API::Caller {
     }
     $class->new(%args);
   }
-}
 1;

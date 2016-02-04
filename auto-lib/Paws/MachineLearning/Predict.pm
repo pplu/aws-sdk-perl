@@ -37,17 +37,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> MLModelId => Str
 
-  A unique identifier of the C<MLModel>.
+A unique identifier of the C<MLModel>.
+
 
 
 =head2 B<REQUIRED> PredictEndpoint => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> Record => HashRef[Str]
 
-  
+
+
 
 
 

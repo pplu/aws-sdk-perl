@@ -39,15 +39,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
 
-  An array of attributes that describe the key schema for the table and
+An array of attributes that describe the key schema for the table and
 indexes. If you are adding a new global secondary index to the table,
 I<AttributeDefinitions> must include the key element(s) of the new
 index.
 
 
+
 =head2 GlobalSecondaryIndexUpdates => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexUpdate>]
 
-  An array of one or more global secondary indexes for the table. For
+An array of one or more global secondary indexes for the table. For
 each index in the array, you can request one action:
 
 =over
@@ -71,23 +72,27 @@ For more information, see Managing Global Secondary Indexes in the
 I<Amazon DynamoDB Developer Guide>.
 
 
+
 =head2 ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
-  
+
+
 
 
 =head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>
 
-  Represents the DynamoDB Streams configuration for the table.
+Represents the DynamoDB Streams configuration for the table.
 
 You will receive a I<ResourceInUseException> if you attempt to enable a
 stream on a table that already has a stream, or if you attempt to
 disable a stream on a table which does not have a stream.
 
 
+
 =head2 B<REQUIRED> TableName => Str
 
-  The name of the table to be updated.
+The name of the table to be updated.
+
 
 
 

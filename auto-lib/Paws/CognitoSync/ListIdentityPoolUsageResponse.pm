@@ -19,19 +19,27 @@ Paws::CognitoSync::ListIdentityPoolUsageResponse
 
 =head2 Count => Int
 
-  Total number of identities for the identity pool.
+Total number of identities for the identity pool.
+
+
 
 =head2 IdentityPoolUsages => ArrayRef[L<Paws::CognitoSync::IdentityPoolUsage>]
 
-  Usage information for the identity pools.
+Usage information for the identity pools.
+
+
 
 =head2 MaxResults => Int
 
-  The maximum number of results to be returned.
+The maximum number of results to be returned.
+
+
 
 =head2 NextToken => Str
 
-  A pagination token for obtaining the next page of results.
+A pagination token for obtaining the next page of results.
+
+
 
 
 =cut

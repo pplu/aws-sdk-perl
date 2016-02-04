@@ -16,7 +16,9 @@ Paws::SES::GetIdentityPoliciesResponse
 
 =head2 B<REQUIRED> Policies => HashRef[Str]
 
-  A map of policy names to policies.
+A map of policy names to policies.
+
+
 
 
 =cut

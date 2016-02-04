@@ -41,18 +41,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The name of an existing AWS CodeDeploy application associated with the
+The name of an existing AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
+
 
 
 =head2 AutoScalingGroups => ArrayRef[Str]
 
-  A list of associated Auto Scaling groups.
+A list of associated Auto Scaling groups.
+
 
 
 =head2 DeploymentConfigName => Str
 
-  If specified, the deployment configuration name must be one of the
+If specified, the deployment configuration name must be one of the
 predefined values, or it can be a custom deployment configuration:
 
 =over
@@ -94,25 +96,30 @@ To create a custom deployment configuration, call the create deployment
 configuration operation.
 
 
+
 =head2 B<REQUIRED> DeploymentGroupName => Str
 
-  The name of an existing deployment group for the specified application.
+The name of an existing deployment group for the specified application.
+
 
 
 =head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
-  The Amazon EC2 tags to filter on.
+The Amazon EC2 tags to filter on.
+
 
 
 =head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
-  The on-premises instance tags to filter on.
+The on-premises instance tags to filter on.
+
 
 
 =head2 B<REQUIRED> ServiceRoleArn => Str
 
-  A service role ARN that allows AWS CodeDeploy to act on the user's
+A service role ARN that allows AWS CodeDeploy to act on the user's
 behalf when interacting with AWS services.
+
 
 
 

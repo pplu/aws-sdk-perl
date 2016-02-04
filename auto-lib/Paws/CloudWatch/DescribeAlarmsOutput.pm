@@ -17,11 +17,15 @@ Paws::CloudWatch::DescribeAlarmsOutput
 
 =head2 MetricAlarms => ArrayRef[L<Paws::CloudWatch::MetricAlarm>]
 
-  A list of information for the specified alarms.
+A list of information for the specified alarms.
+
+
 
 =head2 NextToken => Str
 
-  A string that marks the start of the next batch of returned results.
+A string that marks the start of the next batch of returned results.
+
+
 
 
 =cut

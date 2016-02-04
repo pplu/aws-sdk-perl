@@ -16,8 +16,10 @@ Paws::ApiGateway::Template
 
 =head2 Value => Str
 
-  The Apache Velocity Template Language (VTL) template content used for
+The Apache Velocity Template Language (VTL) template content used for
 the template resource.
+
+
 
 
 =cut

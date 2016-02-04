@@ -42,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DBInstanceIdentifier => Str
 
-  A DB instance identifier to retrieve the list of DB snapshots for. This
+A DB instance identifier to retrieve the list of DB snapshots for. This
 parameter cannot be used in conjunction with C<DBSnapshotIdentifier>.
 This parameter is not case-sensitive.
 
@@ -60,9 +60,10 @@ Constraints:
 
 
 
+
 =head2 DBSnapshotIdentifier => Str
 
-  A specific DB snapshot identifier to describe. This parameter cannot be
+A specific DB snapshot identifier to describe. This parameter cannot be
 used in conjunction with C<DBInstanceIdentifier>. This value is stored
 as a lowercase string.
 
@@ -83,23 +84,26 @@ C<SnapshotType> parameter must also be specified.
 
 
 
+
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
-  This parameter is not currently supported.
+This parameter is not currently supported.
+
 
 
 =head2 IncludePublic => Bool
 
-  True to include manual DB snapshots that are public and can be copied
+True to include manual DB snapshots that are public and can be copied
 or restored by any AWS account; otherwise false. The default is false.
 
 An manual DB snapshot is shared as public by the
 ModifyDBSnapshotAttribute API.
 
 
+
 =head2 IncludeShared => Bool
 
-  True to include shared manual DB snapshots from other AWS accounts that
+True to include shared manual DB snapshots from other AWS accounts that
 this AWS account has been given permission to copy or restore;
 otherwise false. The default is false.
 
@@ -107,17 +111,19 @@ An AWS account is given permission to restore a manual DB snapshot from
 another AWS account by the ModifyDBSnapshotAttribute API.
 
 
+
 =head2 Marker => Str
 
-  An optional pagination token provided by a previous
+An optional pagination token provided by a previous
 C<DescribeDBSnapshots> request. If this parameter is specified, the
 response includes only records beyond the marker, up to the value
 specified by C<MaxRecords>.
 
 
+
 =head2 MaxRecords => Int
 
-  The maximum number of records to include in the response. If more
+The maximum number of records to include in the response. If more
 records exist than the specified C<MaxRecords> value, a pagination
 token called a marker is included in the response so that the remaining
 results can be retrieved.
@@ -127,9 +133,10 @@ Default: 100
 Constraints: Minimum 20, maximum 100.
 
 
+
 =head2 SnapshotType => Str
 
-  The type of snapshots that will be returned. You can specify one of the
+The type of snapshots that will be returned. You can specify one of the
 following values:
 
 =over
@@ -159,6 +166,7 @@ C<SnapshotType> values of C<manual> or C<automated>. The
 C<IncludePublic> parameter does not apply when C<SnapshotType> is set
 to C<shared>. the C<IncludeShared> parameter does not apply when
 C<SnapshotType> is set to C<public>.
+
 
 
 

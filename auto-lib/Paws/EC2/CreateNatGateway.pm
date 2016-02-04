@@ -37,22 +37,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AllocationId => Str
 
-  The allocation ID of an Elastic IP address to associate with the NAT
+The allocation ID of an Elastic IP address to associate with the NAT
 gateway. If the Elastic IP address is associated with another resource,
 you must first disassociate it.
 
 
+
 =head2 ClientToken => Str
 
-  Unique, case-sensitive identifier you provide to ensure the idempotency
+Unique, case-sensitive identifier you provide to ensure the idempotency
 of the request. For more information, see How to Ensure Idempotency.
 
 Constraint: Maximum 64 ASCII characters.
 
 
+
 =head2 B<REQUIRED> SubnetId => Str
 
-  The subnet in which to create the NAT gateway.
+The subnet in which to create the NAT gateway.
+
 
 
 

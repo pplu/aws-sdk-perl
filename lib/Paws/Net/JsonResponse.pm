@@ -1,4 +1,4 @@
-package Paws::Net::JsonResponse {
+package Paws::Net::JsonResponse;
   use Moose::Role;
   use JSON::MaybeXS;
   use Carp qw(croak);
@@ -35,7 +35,8 @@ package Paws::Net::JsonResponse {
     Paws::Exception->new(
       message => $message,
       code => $code,
-      request_id => $request_id
+      request_id => $request_id,
+      http_status => $http_status,
     );
   }
 
@@ -64,6 +65,4 @@ package Paws::Net::JsonResponse {
       });
     }
   }
-}
-
 1;

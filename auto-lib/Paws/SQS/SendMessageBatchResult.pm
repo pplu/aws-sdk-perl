@@ -17,12 +17,16 @@ Paws::SQS::SendMessageBatchResult
 
 =head2 B<REQUIRED> Failed => ArrayRef[L<Paws::SQS::BatchResultErrorEntry>]
 
-  A list of BatchResultErrorEntry items with the error detail about each
+A list of BatchResultErrorEntry items with the error detail about each
 message that could not be enqueued.
+
+
 
 =head2 B<REQUIRED> Successful => ArrayRef[L<Paws::SQS::SendMessageBatchResultEntry>]
 
-  A list of SendMessageBatchResultEntry items.
+A list of SendMessageBatchResultEntry items.
+
+
 
 
 =cut

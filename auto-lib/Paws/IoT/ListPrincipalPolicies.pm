@@ -12,7 +12,7 @@ package Paws::IoT::ListPrincipalPolicies;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/principal-policies');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListPrincipalPoliciesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListPrincipalPoliciesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -40,23 +40,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AscendingOrder => Bool
 
-  Specifies the order for results. If true, results are returned in
+Specifies the order for results. If true, results are returned in
 ascending creation order.
+
 
 
 =head2 Marker => Str
 
-  The marker for the next set of results.
+The marker for the next set of results.
+
 
 
 =head2 PageSize => Int
 
-  The result page size.
+The result page size.
+
 
 
 =head2 B<REQUIRED> Principal => Str
 
-  The principal.
+The principal.
+
 
 
 

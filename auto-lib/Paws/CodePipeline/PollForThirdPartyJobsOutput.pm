@@ -15,7 +15,9 @@ Paws::CodePipeline::PollForThirdPartyJobsOutput
 
 =head2 Jobs => ArrayRef[L<Paws::CodePipeline::ThirdPartyJob>]
 
-  Information about the jobs to take action on.
+Information about the jobs to take action on.
+
+
 
 
 =cut

@@ -26,15 +26,21 @@ Paws::Route53::CreateTrafficPolicyResponse
 
 =head2 Comment => Str
 
-  Any comments that you want to include about the traffic policy.
+Any comments that you want to include about the traffic policy.
+
+
 
 =head2 B<REQUIRED> Document => Str
 
-  The definition of this traffic policy in JSON format.
+The definition of this traffic policy in JSON format.
+
+
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the traffic policy.
+The name of the traffic policy.
+
+
 
 
 =cut

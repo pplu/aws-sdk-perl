@@ -39,21 +39,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EncryptionContext => HashRef[Str]
 
-  Name:value pair that contains additional data to be authenticated
+Name:value pair that contains additional data to be authenticated
 during the encryption and decryption processes.
+
 
 
 =head2 GrantTokens => ArrayRef[Str]
 
-  A list of grant tokens.
+A list of grant tokens.
 
 For more information, go to Grant Tokens in the I<AWS Key Management
 Service Developer Guide>.
 
 
+
 =head2 B<REQUIRED> KeyId => Str
 
-  A unique identifier for the customer master key. This value can be a
+A unique identifier for the customer master key. This value can be a
 globally unique identifier, a fully specified ARN to either an alias or
 a key, or an alias name prefixed by "alias/".
 
@@ -74,17 +76,20 @@ arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 
 
 
+
 =head2 KeySpec => Str
 
-  Value that identifies the encryption algorithm and key size. Currently
+Value that identifies the encryption algorithm and key size. Currently
 this can be AES_128 or AES_256.
 
+Valid values are: C<"AES_256">, C<"AES_128">
 
 =head2 NumberOfBytes => Int
 
-  Integer that contains the number of bytes to generate. Common values
+Integer that contains the number of bytes to generate. Common values
 are 128, 256, 512, 1024 and so on. We recommend that you use the
 C<KeySpec> parameter instead.
+
 
 
 

@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DeliveryChannelNames => ArrayRef[Str]
 
-  A list of delivery channel names.
+A list of delivery channel names.
+
 
 
 

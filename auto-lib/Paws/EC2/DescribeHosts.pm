@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Filter => ArrayRef[L<Paws::EC2::Filter>]
 
-  One or more filters.
+One or more filters.
 
 =over
 
@@ -76,15 +76,17 @@ C<availability-zone> - The Availability Zone of the host.
 
 
 
+
 =head2 HostIds => ArrayRef[Str]
 
-  The IDs of the Dedicated hosts. The IDs are used for targeted instance
+The IDs of the Dedicated hosts. The IDs are used for targeted instance
 launches.
+
 
 
 =head2 MaxResults => Int
 
-  The maximum number of results to return for the request in a single
+The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
 the returned C<nextToken> value. This value can be between 5 and 500;
 if C<maxResults> is given a larger value than 500, you will receive an
@@ -92,9 +94,11 @@ error. You cannot specify this parameter and the host IDs parameter in
 the same request.
 
 
+
 =head2 NextToken => Str
 
-  The token to retrieve the next page of results.
+The token to retrieve the next page of results.
+
 
 
 

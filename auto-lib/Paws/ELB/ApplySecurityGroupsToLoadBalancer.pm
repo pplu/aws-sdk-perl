@@ -36,13 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LoadBalancerName => Str
 
-  The name of the load balancer.
+The name of the load balancer.
+
 
 
 =head2 B<REQUIRED> SecurityGroups => ArrayRef[Str]
 
-  The IDs of the security groups to associate with the load balancer.
+The IDs of the security groups to associate with the load balancer.
 Note that you cannot specify the name of the security group.
+
 
 
 

@@ -37,19 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GatewayARN => Str
 
-  
+
+
 
 
 =head2 Limit => Int
 
-  Specifies that the number of virtual tape recovery points that are
+Specifies that the number of virtual tape recovery points that are
 described be limited to the specified number.
+
 
 
 =head2 Marker => Str
 
-  An opaque string that indicates the position at which to begin
+An opaque string that indicates the position at which to begin
 describing the virtual tape recovery points.
+
 
 
 

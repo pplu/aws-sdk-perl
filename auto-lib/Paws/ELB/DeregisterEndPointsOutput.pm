@@ -16,7 +16,9 @@ Paws::ELB::DeregisterEndPointsOutput
 
 =head2 Instances => ArrayRef[L<Paws::ELB::Instance>]
 
-  The remaining instances registered with the load balancer.
+The remaining instances registered with the load balancer.
+
+
 
 
 =cut

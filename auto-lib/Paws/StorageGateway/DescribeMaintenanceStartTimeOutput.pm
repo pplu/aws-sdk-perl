@@ -19,23 +19,33 @@ Paws::StorageGateway::DescribeMaintenanceStartTimeOutput
 
 =head2 DayOfWeek => Int
 
-  
+
+
+
 
 =head2 GatewayARN => Str
 
-  
+
+
+
 
 =head2 HourOfDay => Int
 
-  
+
+
+
 
 =head2 MinuteOfHour => Int
 
-  
+
+
+
 
 =head2 Timezone => Str
 
-  
+
+
+
 
 
 =cut

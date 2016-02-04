@@ -49,15 +49,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-  Indicates that minor engine upgrades will be applied automatically to
+Indicates that minor engine upgrades will be applied automatically to
 the Read Replica during the maintenance window.
 
 Default: Inherits from the source DB instance
 
 
+
 =head2 AvailabilityZone => Str
 
-  The Amazon EC2 Availability Zone that the Read Replica will be created
+The Amazon EC2 Availability Zone that the Read Replica will be created
 in.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
@@ -66,15 +67,17 @@ region.
 Example: C<us-east-1d>
 
 
+
 =head2 CopyTagsToSnapshot => Bool
 
-  True to copy all tags from the Read Replica to snapshots of the Read
+True to copy all tags from the Read Replica to snapshots of the Read
 Replica; otherwise false. The default is false.
+
 
 
 =head2 DBInstanceClass => Str
 
-  The compute and memory capacity of the Read Replica.
+The compute and memory capacity of the Read Replica.
 
 Valid Values: C<db.m1.small | db.m1.medium | db.m1.large | db.m1.xlarge
 | db.m2.xlarge |db.m2.2xlarge | db.m2.4xlarge | db.m3.medium |
@@ -86,16 +89,18 @@ db.t2.micro | db.t2.small | db.t2.medium | db.t2.large>
 Default: Inherits from the source DB instance.
 
 
+
 =head2 B<REQUIRED> DBInstanceIdentifier => Str
 
-  The DB instance identifier of the Read Replica. This identifier is the
+The DB instance identifier of the Read Replica. This identifier is the
 unique key that identifies a DB instance. This parameter is stored as a
 lowercase string.
 
 
+
 =head2 DBSubnetGroupName => Str
 
-  Specifies a DB subnet group for the DB instance. The new DB instance
+Specifies a DB subnet group for the DB instance. The new DB instance
 will be created in the VPC associated with the DB subnet group. If no
 DB subnet group is specified, then the new DB instance is not created
 in a VPC.
@@ -127,15 +132,17 @@ created outside of any VPC.
 
 
 
+
 =head2 Iops => Int
 
-  The amount of Provisioned IOPS (input/output operations per second) to
+The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance.
+
 
 
 =head2 MonitoringInterval => Int
 
-  The interval, in seconds, between points when Enhanced Monitoring
+The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the Read Replica. To disable collecting
 Enhanced Monitoring metrics, specify 0. The default is 60.
 
@@ -145,9 +152,10 @@ C<MonitoringInterval> to a value other than 0.
 Valid Values: C<0, 1, 5, 10, 15, 30, 60>
 
 
+
 =head2 MonitoringRoleArn => Str
 
-  The ARN for the IAM role that permits RDS to send enhanced monitoring
+The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to CloudWatch Logs. For example,
 C<arn:aws:iam:123456789012:role/emaccess>. For information on creating
 a monitoring role, go to To create an IAM role for Amazon RDS Enhanced
@@ -157,24 +165,27 @@ If C<MonitoringInterval> is set to a value other than 0, then you must
 supply a C<MonitoringRoleArn> value.
 
 
+
 =head2 OptionGroupName => Str
 
-  The option group the DB instance will be associated with. If omitted,
+The option group the DB instance will be associated with. If omitted,
 the default option group for the engine specified will be used.
+
 
 
 =head2 Port => Int
 
-  The port number that the DB instance uses for connections.
+The port number that the DB instance uses for connections.
 
 Default: Inherits from the source DB instance
 
 Valid Values: C<1150-65535>
 
 
+
 =head2 PubliclyAccessible => Bool
 
-  Specifies the accessibility options for the DB instance. A value of
+Specifies the accessibility options for the DB instance. A value of
 true specifies an Internet-facing instance with a publicly resolvable
 DNS name, which resolves to a public IP address. A value of false
 specifies an internal instance with a DNS name that resolves to a
@@ -199,9 +210,10 @@ as part of the request and the PubliclyAccessible value has not been
 set, the DB instance will be private.
 
 
+
 =head2 B<REQUIRED> SourceDBInstanceIdentifier => Str
 
-  The identifier of the DB instance that will act as the source for the
+The identifier of the DB instance that will act as the source for the
 Read Replica. Each DB instance can have up to five Read Replicas.
 
 Constraints:
@@ -231,9 +243,10 @@ to Constructing a Amazon RDS Amazon Resource Name (ARN).
 
 
 
+
 =head2 StorageType => Str
 
-  Specifies the storage type to be associated with the Read Replica.
+Specifies the storage type to be associated with the Read Replica.
 
 Valid values: C<standard | gp2 | io1>
 
@@ -244,9 +257,11 @@ Default: C<io1> if the C<Iops> parameter is specified; otherwise
 C<standard>
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-  
+
+
 
 
 

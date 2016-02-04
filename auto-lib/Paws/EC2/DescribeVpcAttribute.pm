@@ -37,20 +37,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Attribute => Str
 
-  The VPC attribute.
+The VPC attribute.
 
+Valid values are: C<"enableDnsSupport">, C<"enableDnsHostnames">
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 B<REQUIRED> VpcId => Str
 
-  The ID of the VPC.
+The ID of the VPC.
+
 
 
 

@@ -35,10 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The name to use for the repository. The repository name may be
+The name to use for the repository. The repository name may be
 specified on its own (such as C<nginx-web-app>) or it can be prepended
 with a namespace to group the repository into a category (such as
 C<project-a/nginx-web-app>).
+
 
 
 

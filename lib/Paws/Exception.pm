@@ -1,4 +1,4 @@
-package Paws::Exception {
+package Paws::Exception;
   use Moose;
   extends 'Throwable::Error';
 
@@ -13,5 +13,9 @@ package Paws::Exception {
     isa => 'Str',
     required => 1,
   );
-}
+
+  has http_status => (
+    is => 'ro',
+    isa => 'Int',
+  );
 1;

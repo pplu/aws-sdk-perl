@@ -37,21 +37,24 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ImageIds => ArrayRef[L<Paws::ECR::ImageIdentifier>]
 
-  A list of image ID references that correspond to images to describe.
+A list of image ID references that correspond to images to describe.
 The format of the C<imageIds> reference is C<imageTag=tag> or
 C<imageDigest=digest>.
 
 
+
 =head2 RegistryId => Str
 
-  The AWS account ID associated with the registry that contains the
+The AWS account ID associated with the registry that contains the
 images to describe. If you do not specify a registry, the default
 registry is assumed.
 
 
+
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The repository that contains the images to describe.
+The repository that contains the images to describe.
+
 
 
 

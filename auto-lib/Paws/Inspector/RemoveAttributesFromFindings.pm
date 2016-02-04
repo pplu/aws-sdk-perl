@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AttributeKeys => ArrayRef[Str]
 
-  The array of attribute keys that you want to remove from specified
+The array of attribute keys that you want to remove from specified
 findings.
+
 
 
 =head2 B<REQUIRED> FindingArns => ArrayRef[Str]
 
-  The ARNs specifying the findings that you want to remove attributes
+The ARNs specifying the findings that you want to remove attributes
 from.
+
 
 
 

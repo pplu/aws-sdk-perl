@@ -16,11 +16,15 @@ Paws::SSM::GetDocumentResult
 
 =head2 Content => Str
 
-  The contents of the SSM document.
+The contents of the SSM document.
+
+
 
 =head2 Name => Str
 
-  The name of the SSM document.
+The name of the SSM document.
+
+
 
 
 =cut

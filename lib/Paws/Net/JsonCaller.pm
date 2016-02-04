@@ -1,4 +1,4 @@
-package Paws::Net::JsonCaller {
+package Paws::Net::JsonCaller;
   use Moose::Role;
   use JSON::MaybeXS;
   use POSIX qw(strftime);
@@ -74,6 +74,4 @@ package Paws::Net::JsonCaller {
 
     return $request;
   }
-}
-
 1;

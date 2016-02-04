@@ -16,7 +16,9 @@ Paws::EC2::CancelReservedInstancesListingResult
 
 =head2 ReservedInstancesListings => ArrayRef[L<Paws::EC2::ReservedInstancesListing>]
 
-  The Reserved instance listing.
+The Reserved Instance listing.
+
+
 
 
 =cut

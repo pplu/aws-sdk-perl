@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccountId => Str
 
-  The C<AccountId> value is the AWS account ID of the account that owns
+The C<AccountId> value is the AWS account ID of the account that owns
 the vault. You can either specify an AWS account ID or optionally a
 single aposC<->apos (hyphen), in which case Amazon Glacier uses the AWS
 account ID associated with the credentials used to sign the request. If
@@ -47,15 +47,18 @@ you use an account ID, do not include any hyphens (apos-apos) in the
 ID.
 
 
+
 =head2 Tags => HashRef[Str]
 
-  The tags to add to the vault. Each tag is composed of a key and a
+The tags to add to the vault. Each tag is composed of a key and a
 value. The value can be an empty string.
+
 
 
 =head2 B<REQUIRED> VaultName => Str
 
-  The name of the vault.
+The name of the vault.
+
 
 
 

@@ -1,4 +1,4 @@
-package Paws::Net::RestJsonCaller {
+package Paws::Net::RestJsonCaller;
   use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
@@ -71,7 +71,7 @@ package Paws::Net::RestJsonCaller {
     my $uri = $self->_call_uri($call);
     $request->uri($uri);
 
-    my $url = $self->_api_endpoint($call) . $uri;
+    my $url = $self->_api_endpoint . $uri;
     $request->url($url);
     
     my $data = $self->_to_jsoncaller_params($call);
@@ -83,6 +83,4 @@ package Paws::Net::RestJsonCaller {
 
     return $request;
   }
-}
-
 1;

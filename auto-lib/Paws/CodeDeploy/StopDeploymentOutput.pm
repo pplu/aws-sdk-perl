@@ -16,7 +16,7 @@ Paws::CodeDeploy::StopDeploymentOutput
 
 =head2 Status => Str
 
-  The status of the stop deployment operation:
+The status of the stop deployment operation:
 
 =over
 
@@ -27,9 +27,13 @@ Paws::CodeDeploy::StopDeploymentOutput
 =back
 
 
+Valid values are: C<"Pending">, C<"Succeeded">
+
 =head2 StatusMessage => Str
 
-  An accompanying status message.
+An accompanying status message.
+
+
 
 
 =cut

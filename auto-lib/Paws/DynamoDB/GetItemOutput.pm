@@ -16,12 +16,16 @@ Paws::DynamoDB::GetItemOutput
 
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
 
-  
+
+
+
 
 =head2 Item => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
-  A map of attribute names to I<AttributeValue> objects, as specified by
+A map of attribute names to I<AttributeValue> objects, as specified by
 I<AttributesToGet>.
+
+
 
 
 =cut

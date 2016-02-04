@@ -37,18 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AutoScalingGroupName => Str
 
-  The name of the group.
+The name of the group.
+
 
 
 =head2 B<REQUIRED> InstanceIds => ArrayRef[Str]
 
-  One or more instance IDs.
+One or more instance IDs.
+
 
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool
 
-  Indicates whether the instance is protected from termination by Auto
+Indicates whether the instance is protected from termination by Auto
 Scaling when scaling in.
+
 
 
 

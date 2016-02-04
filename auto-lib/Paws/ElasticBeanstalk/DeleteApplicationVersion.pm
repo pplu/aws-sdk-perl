@@ -37,12 +37,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The name of the application to delete releases from.
+The name of the application to delete releases from.
+
 
 
 =head2 DeleteSourceBundle => Bool
 
-  Indicates whether to delete the associated source bundle from Amazon
+Indicates whether to delete the associated source bundle from Amazon
 S3:
 
 =over
@@ -58,9 +59,11 @@ specified at time of creation.
 Valid Values: C<true> | C<false>
 
 
+
 =head2 B<REQUIRED> VersionLabel => Str
 
-  The label of the version to delete.
+The label of the version to delete.
+
 
 
 

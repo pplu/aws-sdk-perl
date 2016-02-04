@@ -15,7 +15,9 @@ Paws::Inspector::DeleteApplicationResponse
 
 =head2 Message => Str
 
-  Confirmation details of the action performed.
+Confirmation details of the action performed.
+
+
 
 
 =cut

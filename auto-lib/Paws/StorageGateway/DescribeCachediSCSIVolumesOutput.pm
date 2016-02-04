@@ -15,8 +15,10 @@ Paws::StorageGateway::DescribeCachediSCSIVolumesOutput
 
 =head2 CachediSCSIVolumes => ArrayRef[L<Paws::StorageGateway::CachediSCSIVolume>]
 
-  An array of objects where each object contains metadata about one
+An array of objects where each object contains metadata about one
 cached volume.
+
+
 
 
 =cut

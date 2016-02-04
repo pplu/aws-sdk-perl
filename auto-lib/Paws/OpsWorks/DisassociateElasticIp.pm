@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ElasticIp => Str
 
-  The Elastic IP address.
+The Elastic IP address.
+
 
 
 

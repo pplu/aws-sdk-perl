@@ -16,9 +16,11 @@ Paws::SES::DescribeReceiptRuleResponse
 
 =head2 Rule => L<Paws::SES::ReceiptRule>
 
-  A data structure that contains the specified receipt rule's name,
+A data structure that contains the specified receipt rule's name,
 actions, recipients, domains, enabled status, scan status, and
 Transport Layer Security (TLS) policy.
+
+
 
 
 =cut

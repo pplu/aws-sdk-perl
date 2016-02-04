@@ -2,18 +2,19 @@
 
 use lib 't/lib';
 
-package A::NEW::CALLER_2 {
+package A::NEW::CALLER_2;
   use Moose;
   with 'Paws::Net::CallerRole';
   sub do_call { 'CALLER2' }
-};
+  sub caller_to_response {} 
 
-package A::NEW::CALLER_3 {
+package A::NEW::CALLER_3;
   use Moose;
   with 'Paws::Net::CallerRole';
   sub do_call { 'CALLER3' }
-};
+  sub caller_to_response {} 
 
+package main;
 
 use strict;
 use warnings;

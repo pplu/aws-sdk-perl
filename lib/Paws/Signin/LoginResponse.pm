@@ -1,8 +1,6 @@
-
-package Paws::Signin::LoginResponse {
+package Paws::Signin::LoginResponse;
   use Moose;
   has URL => (is => 'ro', isa => 'Str', required => 1);
-}
 1;
 
 ### main pod documentation begin ###

@@ -1,4 +1,4 @@
-package Paws::Net::RestXmlCaller {
+package Paws::Net::RestXmlCaller;
   use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime);
@@ -178,6 +178,4 @@ package Paws::Net::RestXmlCaller {
 
     return $request;
   }
-}
-
 1;

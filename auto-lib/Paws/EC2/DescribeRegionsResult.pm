@@ -16,7 +16,9 @@ Paws::EC2::DescribeRegionsResult
 
 =head2 Regions => ArrayRef[L<Paws::EC2::Region>]
 
-  Information about one or more regions.
+Information about one or more regions.
+
+
 
 
 =cut

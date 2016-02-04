@@ -27,23 +27,31 @@ Paws::Route53::UpdateTrafficPolicyInstanceResponse
 
 =head2 B<REQUIRED> Id => Str
 
-  The ID of the traffic policy instance that you want to update.
+The ID of the traffic policy instance that you want to update.
+
+
 
 =head2 B<REQUIRED> TrafficPolicyId => Str
 
-  The ID of the traffic policy that you want Amazon Route 53 to use to
+The ID of the traffic policy that you want Amazon Route 53 to use to
 update resource record sets for the specified traffic policy instance.
+
+
 
 =head2 B<REQUIRED> TrafficPolicyVersion => Int
 
-  The version of the traffic policy that you want Amazon Route 53 to use
+The version of the traffic policy that you want Amazon Route 53 to use
 to update resource record sets for the specified traffic policy
 instance.
 
+
+
 =head2 B<REQUIRED> TTL => Int
 
-  The TTL that you want Amazon Route 53 to assign to all of the updated
+The TTL that you want Amazon Route 53 to assign to all of the updated
 resource record sets.
+
+
 
 
 =cut

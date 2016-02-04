@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConfigurationRecorder => L<Paws::Config::ConfigurationRecorder>
 
-  The configuration recorder object that records each configuration
+The configuration recorder object that records each configuration
 change made to the resources.
+
 
 
 

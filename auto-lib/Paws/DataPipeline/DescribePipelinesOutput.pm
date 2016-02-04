@@ -15,7 +15,9 @@ Paws::DataPipeline::DescribePipelinesOutput
 
 =head2 B<REQUIRED> PipelineDescriptionList => ArrayRef[L<Paws::DataPipeline::PipelineDescription>]
 
-  An array of descriptions for the specified pipelines.
+An array of descriptions for the specified pipelines.
+
+
 
 
 =cut

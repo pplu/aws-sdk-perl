@@ -7,6 +7,8 @@ package Paws::CloudFormation;
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
     { base => 'rand', type => 'exponential', growth_factor => 2 }
   });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -14,6 +16,11 @@ package Paws::CloudFormation;
   sub CancelUpdateStack {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::CancelUpdateStack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ContinueUpdateRollback {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ContinueUpdateRollback', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateStack {
@@ -102,7 +109,7 @@ package Paws::CloudFormation;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CancelUpdateStack CreateStack DeleteStack DescribeAccountLimits DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost GetStackPolicy GetTemplate GetTemplateSummary ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
+  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateStack DeleteStack DescribeAccountLimits DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost GetStackPolicy GetTemplate GetTemplateSummary ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
 
 1;
 
@@ -151,7 +158,7 @@ Product Page.
 Amazon CloudFormation makes use of other AWS products. If you need
 additional technical information about a specific AWS product, you can
 find the product's technical documentation at
-http://aws.amazon.com/documentation/.
+http://docs.aws.amazon.com/documentation/.
 
 =head1 METHODS
 
@@ -166,6 +173,29 @@ successfully, the stack rolls back the update and reverts to the
 previous stack configuration.
 
 You can cancel only stacks that are in the UPDATE_IN_PROGRESS state.
+
+
+=head2 ContinueUpdateRollback(StackName => Str)
+
+Each argument is described in detail in: L<Paws::CloudFormation::ContinueUpdateRollback>
+
+Returns: a L<Paws::CloudFormation::ContinueUpdateRollbackOutput> instance
+
+  For a specified stack that is in the C<UPDATE_ROLLBACK_FAILED> state,
+continues rolling it back to the C<UPDATE_ROLLBACK_COMPLETE> state.
+Depending on the cause of the failure, you can manually fix the error
+and continue the rollback. By continuing the rollback, you can return
+your stack to a working state (the C<UPDATE_ROLLBACK_COMPLETE> state),
+return the stack to its original settings, and then try to update the
+stack again.
+
+A stack goes into the C<UPDATE_ROLLBACK_FAILED> state when AWS
+CloudFormation cannot roll back all changes after a failed stack
+update. For example, you might have a stack that is rolling back to an
+old database instance that was deleted outside of AWS CloudFormation.
+Because AWS CloudFormation doesn't know the database was deleted, it
+assumes that the database instance still exists and attempts to roll
+back to it, causing the update rollback to fail.
 
 
 =head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str], DisableRollback => Bool, NotificationARNs => ArrayRef[Str], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])

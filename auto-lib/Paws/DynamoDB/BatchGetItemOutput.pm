@@ -17,7 +17,7 @@ Paws::DynamoDB::BatchGetItemOutput
 
 =head2 ConsumedCapacity => ArrayRef[L<Paws::DynamoDB::ConsumedCapacity>]
 
-  The read capacity units consumed by the operation.
+The read capacity units consumed by the operation.
 
 Each element consists of:
 
@@ -34,15 +34,19 @@ I<CapacityUnits> - The total number of capacity units consumed.
 =back
 
 
+
+
 =head2 Responses => HashRef[L<ArrayRef[HashRef[Paws::DynamoDB::AttributeValue]]>]
 
-  A map of table name to a list of items. Each object in I<Responses>
+A map of table name to a list of items. Each object in I<Responses>
 consists of a table name, along with a map of attribute data consisting
 of the data type and attribute value.
 
+
+
 =head2 UnprocessedKeys => HashRef[L<Paws::DynamoDB::KeysAndAttributes>]
 
-  A map of tables and their respective keys that were not processed with
+A map of tables and their respective keys that were not processed with
 the current response. The I<UnprocessedKeys> value is in the same form
 as I<RequestItems>, so the value can be provided directly to a
 subsequent I<BatchGetItem> operation. For more information, see
@@ -73,6 +77,8 @@ eventually consistent read is used.
 
 If there are no unprocessed keys remaining, the response contains an
 empty I<UnprocessedKeys> map.
+
+
 
 
 =cut

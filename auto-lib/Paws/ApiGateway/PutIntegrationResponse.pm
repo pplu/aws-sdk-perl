@@ -15,7 +15,7 @@ package Paws::ApiGateway::PutIntegrationResponse;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::IntegrationResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'PutIntegrationResponseResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -43,17 +43,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-  Specifies a put integration response request's HTTP method.
+Specifies a put integration response request's HTTP method.
+
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  Specifies a put integration response request's resource identifier.
+Specifies a put integration response request's resource identifier.
+
 
 
 =head2 ResponseParameters => HashRef[Str]
 
-  Represents response parameters that can be read from the backend
+Represents response parameters that can be read from the backend
 response. Response parameters are represented as a key/value map, with
 a destination as the key and a source as the value. A destination must
 match an existing response parameter in the Method. The source can be a
@@ -62,25 +64,30 @@ specified using enclosing single quotes, and backend response headers
 can be read using the pattern C<integration.response.header.{name}>.
 
 
+
 =head2 ResponseTemplates => HashRef[Str]
 
-  Specifies a put integration response's templates.
+Specifies a put integration response's templates.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  Specifies a put integration response request's API identifier.
+Specifies a put integration response request's API identifier.
+
 
 
 =head2 SelectionPattern => Str
 
-  Specifies the selection pattern of a put integration response.
+Specifies the selection pattern of a put integration response.
+
 
 
 =head2 B<REQUIRED> StatusCode => Str
 
-  Specifies the status code that is used to map the integration response
+Specifies the status code that is used to map the integration response
 to an existing MethodResponse.
+
 
 
 

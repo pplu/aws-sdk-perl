@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  An identity pool ID in the format REGION:GUID.
+An identity pool ID in the format REGION:GUID.
+
 
 
 =head2 B<REQUIRED> Roles => HashRef[Str]
 
-  The map of roles associated with this pool. For a given role, the key
+The map of roles associated with this pool. For a given role, the key
 will be either "authenticated" or "unauthenticated" and the value will
 be the Role ARN.
+
 
 
 

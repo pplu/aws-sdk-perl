@@ -16,7 +16,9 @@ Paws::CloudFormation::DescribeStackResourcesOutput
 
 =head2 StackResources => ArrayRef[L<Paws::CloudFormation::StackResource>]
 
-  A list of C<StackResource> structures.
+A list of C<StackResource> structures.
+
+
 
 
 =cut

@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The name of a domain.
+The name of a domain.
 
 Type: String
 
@@ -49,9 +49,11 @@ are not supported.
 Required: Yes
 
 
+
 =head2 IdnLangCode => Str
 
-  Reserved for future use.
+Reserved for future use.
+
 
 
 

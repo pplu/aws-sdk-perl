@@ -15,7 +15,9 @@ Paws::KMS::DescribeKeyResponse
 
 =head2 KeyMetadata => L<Paws::KMS::KeyMetadata>
 
-  Metadata associated with the key.
+Metadata associated with the key.
+
+
 
 
 =cut

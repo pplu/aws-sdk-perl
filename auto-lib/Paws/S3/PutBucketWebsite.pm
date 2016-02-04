@@ -26,15 +26,21 @@ Paws::S3::
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
+
+
+
 
 =head2 ContentMD5 => Str
 
-  
+
+
+
 
 =head2 B<REQUIRED> WebsiteConfiguration => L<Paws::S3::WebsiteConfiguration>
 
-  
+
+
+
 
 
 =cut

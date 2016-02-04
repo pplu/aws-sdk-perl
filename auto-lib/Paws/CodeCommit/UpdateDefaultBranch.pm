@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DefaultBranchName => Str
 
-  The name of the branch to set as the default.
+The name of the branch to set as the default.
+
 
 
 =head2 B<REQUIRED> RepositoryName => Str
 
-  The name of the repository to set or change the default branch for.
+The name of the repository to set or change the default branch for.
+
 
 
 

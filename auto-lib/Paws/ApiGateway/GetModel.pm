@@ -11,7 +11,7 @@ package Paws::ApiGateway::GetModel;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/models/{model_name}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Model');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetModelResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,18 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Flatten => Bool
 
-  Resolves all external model references and returns a flattened model
+Resolves all external model references and returns a flattened model
 schema.
+
 
 
 =head2 B<REQUIRED> ModelName => Str
 
-  The name of the model as an identifier.
+The name of the model as an identifier.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi identifier under which the Model exists.
+The RestApi identifier under which the Model exists.
+
 
 
 

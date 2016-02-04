@@ -38,12 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateId => Str
 
-  The ID of the certificate.
+The ID of the certificate.
+
 
 
 =head2 SetAsActive => Bool
 
-  Specifies whether the certificate is active.
+Specifies whether the certificate is active.
+
 
 
 

@@ -21,27 +21,39 @@ Paws::ImportExport::CreateJobOutput
 
 =head2 ArtifactList => ArrayRef[L<Paws::ImportExport::Artifact>]
 
-  
+
+
+
 
 =head2 JobId => Str
 
-  
+
+
+
 
 =head2 JobType => Str
 
-  
+
+
+Valid values are: C<"Import">, C<"Export">
 
 =head2 Signature => Str
 
-  
+
+
+
 
 =head2 SignatureFileContents => Str
 
-  
+
+
+
 
 =head2 WarningMessage => Str
 
-  
+
+
+
 
 
 =cut

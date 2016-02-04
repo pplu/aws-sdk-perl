@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssessmentArn => Str
 
-  The ARN specifying the assessment to which you want to attach a rules
+The ARN specifying the assessment to which you want to attach a rules
 package.
+
 
 
 =head2 B<REQUIRED> RulesPackageArn => Str
 
-  The ARN specifying the rules package that you want to attach to the
+The ARN specifying the rules package that you want to attach to the
 assessment.
+
 
 
 

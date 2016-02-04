@@ -18,15 +18,21 @@ Paws::EC2::ImportSnapshotResult
 
 =head2 Description => Str
 
-  A description of the import snapshot task.
+A description of the import snapshot task.
+
+
 
 =head2 ImportTaskId => Str
 
-  The ID of the import snapshot task.
+The ID of the import snapshot task.
+
+
 
 =head2 SnapshotTaskDetail => L<Paws::EC2::SnapshotTaskDetail>
 
-  Information about the import snapshot task.
+Information about the import snapshot task.
+
+
 
 
 =cut

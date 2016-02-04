@@ -25,16 +25,20 @@ Paws::Route53::ListTagsForResourcesResponse
 
 =head2 B<REQUIRED> ResourceIds => ArrayRef[Str]
 
-  A complex type that contains the ResourceId element for each resource
+A complex type that contains the ResourceId element for each resource
 for which you want to get a list of tags.
+
+
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  The type of the resources.
+The type of the resources.
 
 - The resource type for health checks is C<healthcheck>.
 
 - The resource type for hosted zones is C<hostedzone>.
+
+Valid values are: C<"healthcheck">, C<"hostedzone">
 
 
 =cut

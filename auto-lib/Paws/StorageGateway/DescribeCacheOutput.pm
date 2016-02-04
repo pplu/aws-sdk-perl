@@ -21,31 +21,45 @@ Paws::StorageGateway::DescribeCacheOutput
 
 =head2 CacheAllocatedInBytes => Int
 
-  
+
+
+
 
 =head2 CacheDirtyPercentage => Num
 
-  
+
+
+
 
 =head2 CacheHitPercentage => Num
 
-  
+
+
+
 
 =head2 CacheMissPercentage => Num
 
-  
+
+
+
 
 =head2 CacheUsedPercentage => Num
 
-  
+
+
+
 
 =head2 DiskIds => ArrayRef[Str]
 
-  
+
+
+
 
 =head2 GatewayARN => Str
 
-  
+
+
+
 
 
 =cut

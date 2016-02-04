@@ -16,9 +16,11 @@ Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer
 
 =head2 TerminationPolicyTypes => ArrayRef[Str]
 
-  The termination policies supported by Auto Scaling (C<OldestInstance>,
+The termination policies supported by Auto Scaling (C<OldestInstance>,
 C<OldestLaunchConfiguration>, C<NewestInstance>,
 C<ClosestToNextInstanceHour>, and C<Default>).
+
+
 
 
 =cut
