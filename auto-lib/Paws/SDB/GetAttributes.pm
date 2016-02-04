@@ -1,7 +1,7 @@
 
 package Paws::SDB::GetAttributes;
   use Moose;
-  has AttributeNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AttributeName => (is => 'ro', isa => 'Str');
   has ConsistentRead => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has ItemName => (is => 'ro', isa => 'Str', required => 1);
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributeNames => ArrayRef[Str]
+=head2 AttributeName => Str
 
 The names of the attributes.
 

@@ -234,7 +234,7 @@ If the client requires additional domains, go to
 http://aws.amazon.com/contact-us/simpledb-limit-request/.
 
 
-=head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[L<Paws::SDB::Attribute>], Expected => L<Paws::SDB::UpdateCondition>])
+=head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>], Expected => L<Paws::SDB::UpdateCondition>])
 
 Each argument is described in detail in: L<Paws::SDB::DeleteAttributes>
 
@@ -275,7 +275,7 @@ created, the number of items and attributes in the domain, and the size
 of the attribute names and values.
 
 
-=head2 GetAttributes(DomainName => Str, ItemName => Str, [AttributeNames => ArrayRef[Str], ConsistentRead => Bool])
+=head2 GetAttributes(DomainName => Str, ItemName => Str, [AttributeName => Str, ConsistentRead => Bool])
 
 Each argument is described in detail in: L<Paws::SDB::GetAttributes>
 

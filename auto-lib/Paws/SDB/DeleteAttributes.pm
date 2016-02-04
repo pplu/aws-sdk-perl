@@ -1,7 +1,7 @@
 
 package Paws::SDB::DeleteAttributes;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Attribute]');
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::DeletableAttribute]', traits => ['NameInRequest'], request_name => 'Attribute' );
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Expected => (is => 'ro', isa => 'Paws::SDB::UpdateCondition');
   has ItemName => (is => 'ro', isa => 'Str', required => 1);
@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::SDB::Attribute>]
+=head2 Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>]
 
 A list of Attributes. Similar to columns on a spreadsheet, attributes
 represent categories of data that can be assigned to items.
