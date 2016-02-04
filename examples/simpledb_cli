@@ -1,0 +1,27 @@
+#!/bin/bash
+echo Create
+bin/paws SDB --region eu-west-1 CreateDomain DomainName TestSDB
+echo List
+bin/paws SDB --region eu-west-1 ListDomains
+echo Key1
+bin/paws SDB --region eu-west-1 PutAttributes ItemName Key1 DomainName TestSDB Attributes [ { Name Att1 Value Val1 } { Name Att2 Value Val2 } ]
+echo Key2
+bin/paws SDB --region eu-west-1 PutAttributes ItemName Key2 DomainName TestSDB Attributes [ { Name Att1 Value Val3 } { Name Att2 Value Val4 } ]
+echo Key3
+bin/paws SDB --region eu-west-1 PutAttributes ItemName Key3 DomainName TestSDB Attributes [ { Name Att1 Value Val5 } { Name Att2 Value Val4 } ]
+echo Key4
+bin/paws SDB --region eu-west-1 PutAttributes ItemName Key4 DomainName TestSDB Attributes [ { Name Att1 Value Val7 } { Name Att2 Value Val4 } ]
+echo GetAttributes1
+bin/paws SDB --region eu-west-1 GetAttributes AttributeName Att1 DomainName TestSDB ItemName Key1
+echo GetAttributes2
+bin/paws SDB --region eu-west-1 GetAttributes ItemName Key1 DomainName TestSDB
+echo BatchPut
+bin/paws SDB --region eu-west-1 BatchPutAttributes Items [ { Name B1 Attributes [ { Name Att1 Value Att1Val1 } ] } ] DomainName TestSDB
+echo BatchDelete
+bin/paws SDB --region eu-west-1 BatchDeleteAttributes DomainName TestSDB Items [ { Name B1 Attributes [ { Name Att1 } ] } ]
+echo Select
+bin/paws SDB --region eu-west-1 Select SelectExpression "select Att1 from TestSDB"
+echo Metadata
+bin/paws SDB --region eu-west-1 DomainMetadata DomainName TestSDB
+echo Delete
+bin/paws SDB --region eu-west-1 DeleteDomain DomainName TestSDB

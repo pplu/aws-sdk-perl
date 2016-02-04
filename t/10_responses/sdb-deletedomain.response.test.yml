@@ -1,0 +1,4 @@
+---
+call: DeleteDomain
+service: SDB
+tests: []

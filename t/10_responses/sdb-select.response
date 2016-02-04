@@ -1,0 +1,10 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <SelectResponse xmlns="http://sdb.amazonaws.com/doc/2009-04-15/"><SelectResult><Item><Name>Key1</Name><Attribute><Name>Att1</Name><Value>Val1</Value></Attribute></Item><Item><Name>Key2</Name><Attribute><Name>Att1</Name><Value>Val3</Value></Attribute></Item><Item><Name>Key3</Name><Attribute><Name>Att1</Name><Value>Val5</Value></Attribute></Item><Item><Name>Key4</Name><Attribute><Name>Att1</Name><Value>Val7</Value></Attribute></Item></SelectResult><ResponseMetadata><RequestId>ee787ccb-6176-63f9-397a-517104979be5</RequestId><BoxUsage>0.0000502865</BoxUsage></ResponseMetadata></SelectResponse>
+headers:
+  content-type: text/xml
+  date: 'Thu, 04 Feb 2016 22:49:53 GMT'
+  server: Amazon SimpleDB
+  transfer-encoding: chunked
+status: 200
