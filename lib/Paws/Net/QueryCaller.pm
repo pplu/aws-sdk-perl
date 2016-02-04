@@ -89,7 +89,9 @@ package Paws::Net::QueryCaller;
                            $self->_to_querycaller_params($call) 
     });
 
-    $request->content($self->generate_content_from_parameters($request));
+    if (not $self->does('Paws::Net::V2Signature')){
+      $request->content($self->generate_content_from_parameters($request));
+    }
 
     $self->sign($request);
 
