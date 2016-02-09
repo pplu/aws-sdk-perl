@@ -129,6 +129,15 @@ foreach $caller_code ('Furl', 'HTTPTiny', 'LWP') {
   cmp_ok($@->message, 'eq', 'The security token included in the request is invalid.', 'CloudSearch exception');
   cmp_ok($@->code, 'eq', 'InvalidClientTokenId', 'Correct code');
   cmp_ok($@->request_id, 'eq', '000000000000000000000000000000000000', 'Correct Request ID');
+
+  throws_ok {
+    $p->service('Kinesis', region => 'eu-west-1')->ListStreams;
+  } 'Paws::Exception', 'got exception';
+
+  cmp_ok($@->message, 'eq', '', 'Kinesis blank exception text Issue #82');
+  cmp_ok($@->code, 'eq', 'InternalError', 'Correct code');
+  cmp_ok($@->request_id, 'eq', '000000000000000000000000000000000000', 'Correct Request ID');
+
 }
   
 done_testing;
