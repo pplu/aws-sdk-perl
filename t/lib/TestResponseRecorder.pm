@@ -48,11 +48,13 @@ package TestResponseRecorder;
       $headers->{ "x-amz-request-id" }  = '000000000000000000000000000000000000' 
     }
 
-    write_text($self->_test_file, encode_json({ 
-      content => $content, 
-      headers => $headers,
-      status  => $status, 
-    }));
+    if (not $self->replay_calls){
+      write_text($self->_test_file, encode_json({ 
+        content => $content, 
+        headers => $headers,
+        status  => $status, 
+      }));
+    }
 
     return $self->$orig($service, $call_object, $status, $content, $headers);   
   };
