@@ -51,7 +51,7 @@ site.example.com, and images.example.com.
 The base validation domain that will act as the suffix of the email
 addresses that are used to send the emails. This must be the same as
 the C<Domain> value or a superdomain of the C<Domain> value. For
-example, if you requested a certificate for C<www.example.com> and
+example, if you requested a certificate for C<test.example.com> and
 specify B<DomainValidationOptions> of C<example.com>, ACM sends email
 to the domain registrant, technical contact, and administrative contact
 in WHOIS and the following five addresses:
