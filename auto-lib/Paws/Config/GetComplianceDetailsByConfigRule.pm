@@ -38,8 +38,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ComplianceTypes => ArrayRef[Str]
 
-Specify to filter the results by compliance. The valid values are
-C<Compliant>, C<NonCompliant>, and C<NotApplicable>.
+Filters the results by compliance.
+
+The allowed values are C<COMPLIANT>, C<NON_COMPLIANT>, and
+C<NOT_APPLICABLE>.
 
 
 
