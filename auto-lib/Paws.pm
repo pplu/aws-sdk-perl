@@ -310,6 +310,8 @@ L<Paws::ES>
 
 L<Paws::Firehose>
 
+L<Paws::GameLift>
+
 L<Paws::Glacier>
 
 L<Paws::IAM>
