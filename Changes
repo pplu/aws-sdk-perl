@@ -28,6 +28,7 @@
  - ECS API update: deployment options
  - IoT API update: Topic rules 
  - CloudFormation API update: ContinueUpdateRollback method
+ - MarketplaceCommerceAnalytics API update: support for CustomerDefinedValues
  - WAF API update
 
 0.21 16 Dec 2015
