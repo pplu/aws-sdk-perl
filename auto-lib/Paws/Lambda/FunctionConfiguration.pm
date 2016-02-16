@@ -13,6 +13,7 @@ package Paws::Lambda::FunctionConfiguration;
   has Runtime => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
   has Version => (is => 'ro', isa => 'Str');
+  has VpcConfig => (is => 'ro', isa => 'Paws::Lambda::VpcConfigResponse');
 
 1;
 
@@ -63,7 +64,7 @@ The function Lambda calls to begin executing your function.
 
 =head2 LastModified => Str
 
-The timestamp of the last time you updated the function.
+The time stamp of the last time you updated the function.
 
 
 
@@ -100,6 +101,12 @@ default is 3 seconds.
 =head2 Version => Str
 
 The version of the Lambda function.
+
+
+
+=head2 VpcConfig => L<Paws::Lambda::VpcConfigResponse>
+
+VPC configuration associated with your Lambda function.
 
 
 
