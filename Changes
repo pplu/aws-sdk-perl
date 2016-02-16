@@ -30,6 +30,7 @@
  - CloudFormation API update: ContinueUpdateRollback method
  - MarketplaceCommerceAnalytics API update: support for CustomerDefinedValues
  - WAF API update
+ - APIGateway API update: Authorizer methods
 
 0.21 16 Dec 2015
  - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)
