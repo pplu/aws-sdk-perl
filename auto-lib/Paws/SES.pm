@@ -662,8 +662,8 @@ Returns: a L<Paws::SES::ReorderReceiptRuleSetResponse> instance
   Reorders the receipt rules within a receipt rule set.
 
 All of the rules in the rule set must be represented in this request.
-That is, this API will return an error if the reorder request
-doesnE<rsquo>t explicitly position all of the rules.
+That is, this API will return an error if the reorder request doesn't
+explicitly position all of the rules.
 
 For information about managing receipt rule sets, see the Amazon SES
 Developer Guide.
