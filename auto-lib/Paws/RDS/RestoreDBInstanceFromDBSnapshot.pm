@@ -147,6 +147,11 @@ C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
 
 The DB subnet group name to use for the new instance.
 
+Constraints: Must contain no more than 255 alphanumeric characters,
+periods, underscores, spaces, or hyphens. Must not be default.
+
+Example: C<mySubnetgroup>
+
 
 
 =head2 Engine => Str

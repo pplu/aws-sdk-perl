@@ -130,6 +130,10 @@ created outside of any VPC.
 
 =back
 
+Constraints: Must contain no more than 255 alphanumeric characters,
+periods, underscores, spaces, or hyphens. Must not be default.
+
+Example: C<mySubnetgroup>
 
 
 

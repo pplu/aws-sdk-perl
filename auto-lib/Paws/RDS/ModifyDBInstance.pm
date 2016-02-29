@@ -569,10 +569,11 @@ Constraints: Must be at least 30 minutes
 
 =head2 PubliclyAccessible => Bool
 
-True to make the DB instance Internet-facing with a publicly resolvable
-DNS name, which resolves to a public IP address. False to make the DB
-instance internal with a DNS name that resolves to a private IP
-address.
+Boolean value that indicates if the DB instance has a publicly
+resolvable DNS name. Set to C<True> to make the DB instance
+Internet-facing with a publicly resolvable DNS name, which resolves to
+a public IP address. Set to C<False> to make the DB instance internal
+with a DNS name that resolves to a private IP address.
 
 C<PubliclyAccessible> only applies to DB instances in a VPC. The DB
 instance must be part of a public subnet and C<PubliclyAccessible> must

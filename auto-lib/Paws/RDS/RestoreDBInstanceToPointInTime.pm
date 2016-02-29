@@ -108,6 +108,11 @@ This parameter is not used for the MySQL or MariaDB engines.
 
 The DB subnet group name to use for the new instance.
 
+Constraints: Must contain no more than 255 alphanumeric characters,
+periods, underscores, spaces, or hyphens. Must not be default.
+
+Example: C<mySubnetgroup>
+
 
 
 =head2 Engine => Str
@@ -120,7 +125,7 @@ Constraint: Must be compatible with the engine of the source
 
 Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
 C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
-C<sqlserver-web> | C<postgres>| C<aurora>
+C<sqlserver-web> | C<postgres> | C<aurora>
 
 
 

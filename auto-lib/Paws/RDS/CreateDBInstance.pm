@@ -374,6 +374,8 @@ us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
 =item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
 | 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
 
+=item * B<Version 5.7 (Available in all regions):> C< 5.7.10>
+
 =back
 
 B<MariaDB>
@@ -541,8 +543,10 @@ B<Microsoft SQL Server Web Edition (sqlserver-web)>
 The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance.
 
-Constraints: To use PIOPS, this value must be an integer greater than
-1000.
+Constraints: Must be a multiple between 3 and 10 of the storage amount
+for the DB instance. Must also be an integer multiple of 1000. For
+example, if the size of your DB instance is 500 GB, then your C<Iops>
+value can be 2000, 3000, 4000, or 5000.
 
 
 

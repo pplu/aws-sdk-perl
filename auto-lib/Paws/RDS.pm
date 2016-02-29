@@ -559,13 +559,13 @@ Returns: a L<Paws::RDS::CopyDBParameterGroupResult> instance
   Copies the specified DB parameter group.
 
 
-=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, KmsKeyId => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyDBSnapshot>
 
 Returns: a L<Paws::RDS::CopyDBSnapshotResult> instance
 
-  Copies the specified DBSnapshot. The source DB snapshot must be in the
+  Copies the specified DB Snapshot. The source DB snapshot must be in the
 "available" state.
 
 If you are copying from a shared manual DB snapshot, the
@@ -1335,7 +1335,7 @@ from a manual DB snapshot.
 
 To share a manual DB snapshot with other AWS accounts, specify
 C<restore> as the C<AttributeName> and use the C<ValuesToAdd> parameter
-to add a list of the AWS account ids that are authorized to retore the
+to add a list of the AWS account ids that are authorized to restore the
 manual DB snapshot. Uses the value C<all> to make the manual DB
 snapshot public and can by copied or restored by all AWS accounts. Do
 not add the C<all> value for any manual DB snapshots that contain
@@ -1535,8 +1535,7 @@ Returns: a L<Paws::RDS::RestoreDBInstanceFromDBSnapshotResult> instance
 
   Creates a new DB instance from a DB snapshot. The target database is
 created from the source database restore point with the most of
-original configuration, but in a system chosen availability zone with
-the default security group, the default subnet group, and the default
+original configuration with the default security group and the default
 DB parameter group. By default, the new DB instance is created as a
 single-AZ deployment except when the instance is a SQL Server instance
 that has an option group that is associated with mirroring; in this
@@ -1563,16 +1562,18 @@ Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceToPointIn
 
 Returns: a L<Paws::RDS::RestoreDBInstanceToPointInTimeResult> instance
 
-  Restores a DB instance to an arbitrary point-in-time. Users can restore
-to any point in time before the LatestRestorableTime for up to
-BackupRetentionPeriod days. The target database is created with the
-most of original configuration, but in a system chosen availability
-zone with the default security group, the default subnet group, and the
-default DB parameter group. By default, the new DB instance is created
-as a single-AZ deployment except when the instance is a SQL Server
-instance that has an option group that is associated with mirroring; in
-this case, the instance becomes a mirrored deployment and not a
-single-AZ deployment.
+  Restores a DB instance to an arbitrary point in time. You can restore
+to any point in time before the time identified by the
+LatestRestorableTime property. You can restore to a point up to the
+number of days specified by the BackupRetentionPeriod property.
+
+The target database is created with most of the original configuration,
+but in a system-selected availability zone, with the default security
+group, the default subnet group, and the default DB parameter group. By
+default, the new DB instance is created as a single-AZ deployment
+except when the instance is a SQL Server instance that has an option
+group that is associated with mirroring; in this case, the instance
+becomes a mirrored deployment and not a single-AZ deployment.
 
 
 =head2 RevokeDBSecurityGroupIngress(DBSecurityGroupName => Str, [CIDRIP => Str, EC2SecurityGroupId => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str])

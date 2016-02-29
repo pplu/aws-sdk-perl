@@ -163,10 +163,9 @@ cluster port.
 
 =head2 DbiResourceId => Str
 
-  If C<StorageEncrypted> is true, the region-unique, immutable identifier
-for the encrypted DB instance. This identifier is found in AWS
-CloudTrail log entries whenever the KMS key for the DB instance is
-accessed.
+  The region-unique, immutable identifier for the DB instance. This
+identifier is found in AWS CloudTrail log entries whenever the KMS key
+for the DB instance is accessed.
 
 
 =head2 DBName => Str

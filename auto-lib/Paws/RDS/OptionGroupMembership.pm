@@ -45,8 +45,10 @@ of.
 
 =head2 Status => Str
 
-  The status of the DB instance's option group membership (e.g. in-sync,
-pending, pending-maintenance, applying).
+  The status of the DB instance's option group membership. Valid values
+are: C<in-sync>, C<pending-apply>, C<pending-removal>,
+C<pending-maintenance-apply>, C<pending-maintenance-removal>,
+C<applying>, C<removing>, and C<failed>.
 
 
 
