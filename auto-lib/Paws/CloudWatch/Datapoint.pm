@@ -71,11 +71,7 @@ this datapoint.
 
 =head2 Timestamp => Str
 
-  The time stamp used for the datapoint. Amazon CloudWatch uses
-Coordinated Universal Time (UTC) when returning time stamps, which do
-not accommodate seasonal adjustments such as daylight savings time. For
-more information, see Time stamps in the I<Amazon CloudWatch Developer
-Guide>.
+  The time stamp used for the datapoint.
 
 
 =head2 Unit => Str

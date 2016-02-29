@@ -40,7 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
-The list of dimensions associated with the metric.
+The list of dimensions associated with the metric. If the metric has
+any associated dimensions, you must specify them in order for the
+DescribeAlarmsForMetric to succeed.
 
 
 
