@@ -54,18 +54,17 @@ configuration of your gateway.
 
 =head2 B<REQUIRED> GatewayName => Str
 
-
+The name you configured for your gateway.
 
 
 
 =head2 B<REQUIRED> GatewayRegion => Str
 
-One of the values that indicates the region where you want to store the
-snapshot backups. The gateway region specified must be the same region
-as the region in your C<Host> header in the request. For more
-information about available regions and endpoints for AWS Storage
-Gateway, see Regions and Endpoints in the I<Amazon Web Services
-Glossary>.
+A value that indicates the region where you want to store the snapshot
+backups. The gateway region specified must be the same region as the
+region in your C<Host> header in the request. For more information
+about available regions and endpoints for AWS Storage Gateway, see
+Regions and Endpoints in the I<Amazon Web Services Glossary>.
 
 I<Valid Values>: "us-east-1", "us-west-1", "us-west-2", "eu-west-1",
 "eu-central-1", "ap-northeast-1", "ap-southeast-1", "ap-southeast-2",
@@ -75,17 +74,17 @@ I<Valid Values>: "us-east-1", "us-west-1", "us-west-2", "eu-west-1",
 
 =head2 B<REQUIRED> GatewayTimezone => Str
 
-One of the values that indicates the time zone you want to set for the
-gateway. The time zone is used, for example, for scheduling snapshots
-and your gateway's maintenance schedule.
+A value that indicates the time zone you want to set for the gateway.
+The time zone is used, for example, for scheduling snapshots and your
+gateway's maintenance schedule.
 
 
 
 =head2 GatewayType => Str
 
-One of the values that defines the type of gateway to activate. The
-type specified is critical to all later functions of the gateway and
-cannot be changed after activation. The default value is C<STORED>.
+A value that defines the type of gateway to activate. The type
+specified is critical to all later functions of the gateway and cannot
+be changed after activation. The default value is C<STORED>.
 
 
 

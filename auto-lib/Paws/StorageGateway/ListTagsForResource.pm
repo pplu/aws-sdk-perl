@@ -3,7 +3,7 @@ package Paws::StorageGateway::ListTagsForResource;
   use Moose;
   has Limit => (is => 'ro', isa => 'Int');
   has Marker => (is => 'ro', isa => 'Str');
-  has ResourceARN => (is => 'ro', isa => 'Str');
+  has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -49,7 +49,7 @@ returning the list of tags.
 
 
 
-=head2 ResourceARN => Str
+=head2 B<REQUIRED> ResourceARN => Str
 
 The Amazon Resource Name (ARN) of the resource for which you want to
 list tags.

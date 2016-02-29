@@ -74,6 +74,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateTapes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTapeWithBarcode {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateTapeWithBarcode', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteBandwidthRateLimit {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::DeleteBandwidthRateLimit', @_);
@@ -280,7 +285,7 @@ package Paws::StorageGateway;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes DeleteBandwidthRateLimit DeleteChapCredentials DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListGateways ListLocalDisks ListTagsForResource ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateSnapshotSchedule UpdateVTLDeviceType / }
+  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListGateways ListLocalDisks ListTagsForResource ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateSnapshotSchedule UpdateVTLDeviceType / }
 
 1;
 
@@ -344,6 +349,13 @@ Gateway.
 
 =back
 
+AWS Storage Gateway resource IDs are in uppercase. When you use these
+resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
+lowercase. You must change your resource ID to lowercase to use it with
+the EC2 API. For example, in Storage Gateway the ID for a volume might
+be vol-1122AABB. When you use this ID with the EC2 API, you must change
+it to vol-1122aabb. Otherwise, the EC2 API might not behave as
+expected.
 
 =head1 METHODS
 
@@ -589,6 +601,20 @@ and then archive the tapes.
 
 Cache storage must be allocated to the gateway before you can create
 virtual tapes. Use the AddCache operation to add cache storage to a
+gateway.
+
+
+=head2 CreateTapeWithBarcode(GatewayARN => Str, TapeBarcode => Str, TapeSizeInBytes => Int)
+
+Each argument is described in detail in: L<Paws::StorageGateway::CreateTapeWithBarcode>
+
+Returns: a L<Paws::StorageGateway::CreateTapeWithBarcodeOutput> instance
+
+  Creates a virtual tape by using your own barcode. You write data to the
+virtual tape and then archive the tape.
+
+Cache storage must be allocated to the gateway before you can create a
+virtual tape. Use the AddCache operation to add cache storage to a
 gateway.
 
 
@@ -943,7 +969,7 @@ missing (the disk is no longer connected to the gateway), or mismatch
 disk content is corrupted).
 
 
-=head2 ListTagsForResource([Limit => Int, Marker => Str, ResourceARN => Str])
+=head2 ListTagsForResource(ResourceARN => Str, [Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListTagsForResource>
 
@@ -999,7 +1025,7 @@ response includes a Marker field. You can use this Marker value in your
 subsequent request to retrieve the next set of volumes.
 
 
-=head2 RemoveTagsFromResource([ResourceARN => Str, TagKeys => ArrayRef[Str]])
+=head2 RemoveTagsFromResource(ResourceARN => Str, TagKeys => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::RemoveTagsFromResource>
 
@@ -1160,6 +1186,10 @@ Returns: a L<Paws::StorageGateway::UpdateGatewayInformationOutput> instance
   This operation updates a gateway's metadata, which includes the
 gateway's name and time zone. To specify which gateway to update, use
 the Amazon Resource Name (ARN) of the gateway in your request.
+
+For Gateways activated after September 02, 2015, the gateway's ARN
+contains the gateway id rather than the gateway name. However changing
+the name of the gateway has no effect on the gateway's ARN.
 
 
 =head2 UpdateGatewaySoftwareNow(GatewayARN => Str)
