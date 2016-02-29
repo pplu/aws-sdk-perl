@@ -54,12 +54,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Used for groups that launch instances into a virtual private cloud
 (VPC). Specifies whether to assign a public IP address to each
-instance. For more information, see Auto Scaling and Amazon Virtual
-Private Cloud in the I<Auto Scaling Developer Guide>.
+instance. For more information, see Launching Auto Scaling Instances in
+a VPC in the I<Auto Scaling Developer Guide>.
 
-If you specify a value for this parameter, be sure to specify at least
-one subnet using the I<VPCZoneIdentifier> parameter when you create
-your group.
+If you specify this parameter, be sure to specify at least one subnet
+when you create your group.
 
 Default: If the instance is launched into a default subnet, the default
 is C<true>. If the instance is launched into a nondefault subnet, the
@@ -87,10 +86,11 @@ Elastic Compute Cloud User Guide>.
 
 =head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str]
 
-The IDs of one or more security groups for the VPC specified in
-C<ClassicLinkVPCId>. This parameter is required if C<ClassicLinkVPCId>
-is specified, and is not supported otherwise. For more information, see
-ClassicLink in the I<Amazon Elastic Compute Cloud User Guide>.
+The IDs of one or more security groups for the specified
+ClassicLink-enabled VPC. This parameter is required if you specify a
+ClassicLink-enabled VPC, and is not supported otherwise. For more
+information, see ClassicLink in the I<Amazon Elastic Compute Cloud User
+Guide>.
 
 
 
@@ -130,7 +130,7 @@ Elastic Compute Cloud User Guide>.
 
 =head2 InstanceId => Str
 
-The ID of the EC2 instance to use to create the launch configuration.
+The ID of the instance to use to create the launch configuration.
 
 The new launch configuration derives attributes from the instance, with
 the exception of the block device mapping.
@@ -152,8 +152,9 @@ enabled by default.
 When detailed monitoring is enabled, Amazon CloudWatch generates
 metrics every minute and your account is charged a fee. When you
 disable detailed monitoring, by specifying C<False>, CloudWatch
-generates metrics every 5 minutes. For more information, see Monitor
-Your Auto Scaling Instances in the I<Auto Scaling Developer Guide>.
+generates metrics every 5 minutes. For more information, see Monitoring
+Your Auto Scaling Instances and Groups in the I<Auto Scaling Developer
+Guide>.
 
 
 
@@ -194,12 +195,11 @@ You must set the value of this parameter to C<dedicated> if want to
 launch Dedicated Instances into a shared tenancy VPC (VPC with instance
 placement tenancy attribute set to C<default>).
 
-If you specify a value for this parameter, be sure to specify at least
-one subnet using the I<VPCZoneIdentifier> parameter when you create
-your group.
+If you specify this parameter, be sure to specify at least one subnet
+when you create your group.
 
-For more information, see Auto Scaling and Amazon Virtual Private Cloud
-in the I<Auto Scaling Developer Guide>.
+For more information, see Launching Auto Scaling Instances in a VPC in
+the I<Auto Scaling Developer Guide>.
 
 Valid values: C<default> | C<dedicated>
 
@@ -231,7 +231,7 @@ Virtual Private Cloud User Guide>.
 The maximum hourly price to be paid for any Spot Instance launched to
 fulfill the request. Spot Instances are launched when the price you
 specify exceeds the current Spot market price. For more information,
-see Launch Spot Instances in Your Auto Scaling Group in the I<Auto
+see Launching Spot Instances in Your Auto Scaling Group in the I<Auto
 Scaling Developer Guide>.
 
 
@@ -241,9 +241,6 @@ Scaling Developer Guide>.
 The user data to make available to the launched EC2 instances. For more
 information, see Instance Metadata and User Data in the I<Amazon
 Elastic Compute Cloud User Guide>.
-
-At this time, launch configurations don't support compressed (zipped)
-user data files.
 
 
 

@@ -72,8 +72,7 @@ scheduled action it is ignored with no error.
 
 You can describe up to a maximum of 50 instances with a single call. If
 there are more items to return, the call returns a token. To get the
-next set of items, repeat the call with the returned token in the
-C<NextToken> parameter.
+next set of items, repeat the call with the returned token.
 
 
 

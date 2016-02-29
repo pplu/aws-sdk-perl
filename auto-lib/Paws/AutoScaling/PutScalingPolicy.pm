@@ -68,8 +68,8 @@ specified, the default cooldown period for the group applies.
 This parameter is not supported unless the policy type is
 C<SimpleScaling>.
 
-For more information, see Understanding Auto Scaling Cooldowns in the
-I<Auto Scaling Developer Guide>.
+For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
+Developer Guide>.
 
 
 

@@ -103,10 +103,7 @@ form the boundaries of when the recurring action starts and stops.
 
 =head2 Time => Str
 
-This parameter is deprecated; use C<StartTime> instead.
-
-The time for this action to start. If both C<Time> and C<StartTime> are
-specified, their values must be identical.
+This parameter is deprecated.
 
 
 

@@ -77,9 +77,10 @@ Elastic Compute Cloud User Guide>.
 =head2 ClassicLinkVPCSecurityGroups => ArrayRef[Str]
 
   The IDs of one or more security groups for the VPC specified in
-C<ClassicLinkVPCId>. This parameter is required if C<ClassicLinkVPCId>
-is specified, and cannot be used otherwise. For more information, see
-ClassicLink in the I<Amazon Elastic Compute Cloud User Guide>.
+C<ClassicLinkVPCId>. This parameter is required if you specify a
+ClassicLink-enabled VPC, and cannot be used otherwise. For more
+information, see ClassicLink in the I<Amazon Elastic Compute Cloud User
+Guide>.
 
 
 =head2 B<REQUIRED> CreatedTime => Str

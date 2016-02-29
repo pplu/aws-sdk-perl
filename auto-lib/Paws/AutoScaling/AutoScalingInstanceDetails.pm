@@ -72,7 +72,7 @@ instance is unhealthy and Auto Scaling should terminate and replace it.
 =head2 B<REQUIRED> LifecycleState => Str
 
   The lifecycle state for the instance. For more information, see Auto
-Scaling Instance States in the I<Auto Scaling Developer Guide>.
+Scaling Lifecycle in the I<Auto Scaling Developer Guide>.
 
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool
