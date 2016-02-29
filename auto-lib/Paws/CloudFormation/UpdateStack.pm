@@ -10,6 +10,7 @@ package Paws::CloudFormation::UpdateStack;
   has StackPolicyDuringUpdateBody => (is => 'ro', isa => 'Str');
   has StackPolicyDuringUpdateURL => (is => 'ro', isa => 'Str');
   has StackPolicyURL => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
   has UsePreviousTemplate => (is => 'ro', isa => 'Bool');
@@ -149,6 +150,18 @@ You might update the stack policy, for example, in order to protect a
 new resource that you created during a stack update. If you do not
 specify a stack policy, the current policy that is associated with the
 stack is unchanged.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
+
+Key-value pairs to associate with this stack. AWS CloudFormation also
+propagates these tags to supported resources in the stack. You can
+specify a maximum number of 10 tags.
+
+If you don't specify this parameter, AWS CloudFormation doesn't modify
+the stack's tags. If you specify an empty value, AWS CloudFormation
+removes all associated tags.
 
 
 

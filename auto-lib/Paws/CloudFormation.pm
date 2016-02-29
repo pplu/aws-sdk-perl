@@ -186,8 +186,7 @@ continues rolling it back to the C<UPDATE_ROLLBACK_COMPLETE> state.
 Depending on the cause of the failure, you can manually fix the error
 and continue the rollback. By continuing the rollback, you can return
 your stack to a working state (the C<UPDATE_ROLLBACK_COMPLETE> state),
-return the stack to its original settings, and then try to update the
-stack again.
+and then try to update the stack again.
 
 A stack goes into the C<UPDATE_ROLLBACK_FAILED> state when AWS
 CloudFormation cannot roll back all changes after a failed stack
@@ -209,7 +208,7 @@ successfully, the stack creation starts. You can check the status of
 the stack via the DescribeStacks API.
 
 
-=head2 DeleteStack(StackName => Str)
+=head2 DeleteStack(StackName => Str, [RetainResources => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::CloudFormation::DeleteStack>
 
@@ -399,7 +398,7 @@ API is useful in cases where you want to send signals from anywhere
 other than an Amazon EC2 instance.
 
 
-=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str], NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str], NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStack>
 
@@ -411,9 +410,6 @@ stack via the DescribeStacks action.
 
 To get a copy of the template for an existing stack, you can use the
 GetTemplate action.
-
-Tags that were associated with this stack during creation time will
-still be associated with the stack after an C<UpdateStack> operation.
 
 For more information about creating an update template, updating a
 stack, and monitoring the progress of the update, see Updating a Stack.
