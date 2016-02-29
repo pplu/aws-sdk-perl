@@ -155,6 +155,11 @@ package Paws::API::Caller;
     my ($self, $class, $result) = @_;
     my %args;
  
+    if ($class->does('Paws::API::StrToObjMapParser')) {
+      return $self->handle_response_strtoobjmap($class, $result);
+    } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
+      return $self->handle_response_strtonativemap($class, $result);
+    } else {
     foreach my $att ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($att));
 
@@ -276,5 +281,6 @@ package Paws::API::Caller;
       }
     }
     $class->new(%args);
+    }
   }
 1;
