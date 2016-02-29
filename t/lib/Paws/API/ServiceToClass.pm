@@ -40,6 +40,7 @@ package Paws::API::ServiceToClass;
     email => undef,
     events => 'CloudWatchEvents',
     firehose => 'Firehose',
+    gamelift => 'GameLift',
     glacier => 'Glacier',
     iam => 'IAM',
     iot => 'IoT',
