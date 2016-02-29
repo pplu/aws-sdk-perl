@@ -42,7 +42,7 @@ Information about an application revision.
 
 =head2 DeploymentGroups => ArrayRef[Str]
 
-  A list of deployment groups that use this revision.
+  The deployment groups where this is the current target revision.
 
 
 =head2 Description => Str

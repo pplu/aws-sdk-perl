@@ -8,6 +8,7 @@ package Paws::CodeDeploy::CreateDeploymentGroup;
   has Ec2TagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::EC2TagFilter]', traits => ['NameInRequest'], request_name => 'ec2TagFilters' );
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' , required => 1);
+  has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', traits => ['NameInRequest'], request_name => 'triggerConfigurations' );
 
   use MooseX::ClassAttribute;
 
@@ -54,52 +55,89 @@ A list of associated Auto Scaling groups.
 
 =head2 DeploymentConfigName => Str
 
-If specified, the deployment configuration name must be one of the
-predefined values, or it can be a custom deployment configuration:
+If specified, the deployment configuration name can be either one of
+the predefined configurations provided with AWS CodeDeploy, or a custom
+deployment configuration that you created by calling the create
+deployment configuration operation.
+
+CodeDeployDefault.OneAtATime is the default deployment configuration
+that is used if a configuration isn't specified for either the
+deployment or the deployment group.
+
+The predefined deployment configurations including the following:
 
 =over
 
-=item * CodeDeployDefault.AllAtOnce deploys an application revision to
-up to all of the instances at once. The overall deployment succeeds if
-the application revision deploys to at least one of the instances. The
-overall deployment fails after the application revision fails to deploy
-to all of the instances. For example, for 9 instances, deploy to up to
-all 9 instances at once. The overall deployment succeeds if any of the
-9 instances is successfully deployed to, and it fails if all 9
-instances fail to be deployed to.
+=item *
 
-=item * CodeDeployDefault.HalfAtATime deploys to up to half of the
-instances at a time (with fractions rounded down). The overall
-deployment succeeds if the application revision deploys to at least
-half of the instances (with fractions rounded up); otherwise, the
-deployment fails. For example, for 9 instances, deploy to up to 4
-instances at a time. The overall deployment succeeds if 5 or more
-instances are successfully deployed to; otherwise, the deployment
-fails. Note that the deployment may successfully deploy to some
-instances, even if the overall deployment fails.
+B<CodeDeployDefault.AllAtOnce> attempts to deploy an application
+revision to as many instances as possible at once. The status of the
+overall deployment will be displayed as B<Succeeded> if the application
+revision is deployed to one or more of the instances. The status of the
+overall deployment will be displayed as B<Failed> if the application
+revision is not deployed to any of the instances. Using an example of
+nine instances, CodeDeployDefault.AllAtOnce will attempt to deploy to
+all nine instances at once. The overall deployment will succeed if
+deployment to even a single instance is successful; it will fail only
+if deployments to all nine instances fail.
 
-=item * CodeDeployDefault.OneAtATime deploys the application revision
-to only one of the instances at a time. The overall deployment succeeds
-if the application revision deploys to all of the instances. The
-overall deployment fails after the application revision first fails to
-deploy to any one instances. For example, for 9 instances, deploy to
-one instance at a time. The overall deployment succeeds if all 9
-instances are successfully deployed to, and it fails if any of one of
-the 9 instances fail to be deployed to. Note that the deployment may
+=item *
+
+B<CodeDeployDefault.HalfAtATime> deploys to up to half of the instances
+at a time (with fractions rounded down). The overall deployment
+succeeds if the application revision deploys to at least half of the
+instances (with fractions rounded up); otherwise, the deployment fails.
+For example, for nine instances, deploy to up to four instances at a
+time. The overall deployment succeeds if deployment to five or more
+instances succeed; otherwise, the deployment fails. Note that the
+deployment may successfully deploy to some instances, even if the
+overall deployment fails.
+
+=item *
+
+B<CodeDeployDefault.OneAtATime> deploys the application revision to
+only one instance at a time.
+
+For deployment groups that contain more than one instance:
+
+=over
+
+=item *
+
+The overall deployment succeeds if the application revision deploys to
+all of the instances. The exception to this rule is that if deployment
+to the last instance fails, the overall deployment still succeeds. This
+is because AWS CodeDeploy allows only one instance to be taken offline
+at a time with the CodeDeployDefault.OneAtATime configuration.
+
+=item *
+
+The overall deployment fails as soon as the application revision fails
+to deploy to any but the last instance. Note that the deployment may
 successfully deploy to some instances, even if the overall deployment
-fails. This is the default deployment configuration if a configuration
-isn't specified for either the deployment or the deployment group.
+fails.
+
+=item *
+
+Example: For nine instances, deploy to one instance at a time. The
+overall deployment succeeds if the first eight instances are
+successfully deployed to, but it fails if deployment to any of the
+first eight instances fails.
 
 =back
 
-To create a custom deployment configuration, call the create deployment
-configuration operation.
+For deployment groups that contain only one instance, the overall
+deployment is of course successful only if deployment to the single
+instance succeeds.
+
+=back
+
 
 
 
 =head2 B<REQUIRED> DeploymentGroupName => Str
 
-The name of an existing deployment group for the specified application.
+The name of a new deployment group for the specified application.
 
 
 
@@ -119,6 +157,13 @@ The on-premises instance tags to filter on.
 
 A service role ARN that allows AWS CodeDeploy to act on the user's
 behalf when interacting with AWS services.
+
+
+
+=head2 TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]
+
+Information about triggers to create when the deployment group is
+created.
 
 
 

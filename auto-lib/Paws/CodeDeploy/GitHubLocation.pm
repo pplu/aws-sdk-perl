@@ -40,8 +40,8 @@ in GitHub.
 
 =head2 CommitId => Str
 
-  The SHA1 commit ID of the GitHub commit that references the that
-represents the bundled artifacts for the application revision.
+  The SHA1 commit ID of the GitHub commit that represents the bundled
+artifacts for the application revision.
 
 
 =head2 Repository => Str

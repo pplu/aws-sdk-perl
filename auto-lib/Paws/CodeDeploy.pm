@@ -19,9 +19,19 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::AddTagsToOnPremisesInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchGetApplicationRevisions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetApplicationRevisions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetApplications {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetApplications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchGetDeploymentInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetDeploymentInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub BatchGetDeployments {
@@ -175,7 +185,7 @@ package Paws::CodeDeploy;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplications BatchGetDeployments BatchGetOnPremisesInstances CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances StopDeployment UpdateApplication UpdateDeploymentGroup / }
+  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances StopDeployment UpdateApplication UpdateDeploymentGroup / }
 
 1;
 
@@ -288,6 +298,15 @@ Returns: nothing
   Adds tags to on-premises instances.
 
 
+=head2 BatchGetApplicationRevisions(ApplicationName => Str, Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionLocation>])
+
+Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplicationRevisions>
+
+Returns: a L<Paws::CodeDeploy::BatchGetApplicationRevisionsOutput> instance
+
+  Gets information about one or more application revisions.
+
+
 =head2 BatchGetApplications([ApplicationNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplications>
@@ -295,6 +314,16 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplication
 Returns: a L<Paws::CodeDeploy::BatchGetApplicationsOutput> instance
 
   Gets information about one or more applications.
+
+
+=head2 BatchGetDeploymentInstances(DeploymentId => Str, InstanceIds => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentInstances>
+
+Returns: a L<Paws::CodeDeploy::BatchGetDeploymentInstancesOutput> instance
+
+  Gets information about one or more instances that are part of a
+deployment group.
 
 
 =head2 BatchGetDeployments([DeploymentIds => ArrayRef[Str]])
@@ -342,7 +371,7 @@ Returns: a L<Paws::CodeDeploy::CreateDeploymentConfigOutput> instance
   Creates a new deployment configuration.
 
 
-=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])
+=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentGroup>
 
@@ -572,7 +601,7 @@ Returns: nothing
   Changes an existing application's name.
 
 
-=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], ServiceRoleArn => Str])
+=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], ServiceRoleArn => Str, TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::UpdateDeploymentGroup>
 

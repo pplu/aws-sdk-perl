@@ -70,6 +70,9 @@ reason.
 
   The last portion of the associated diagnostic log.
 
+If available, AWS CodeDeploy returns up to the last 4 KB of the
+associated diagnostic log.
+
 
 =head2 Message => Str
 

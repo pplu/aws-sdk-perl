@@ -9,6 +9,7 @@ package Paws::CodeDeploy::UpdateDeploymentGroup;
   has NewDeploymentGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'newDeploymentGroupName' );
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', traits => ['NameInRequest'], request_name => 'onPremisesInstanceTagFilters' );
   has ServiceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'serviceRoleArn' );
+  has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', traits => ['NameInRequest'], request_name => 'triggerConfigurations' );
 
   use MooseX::ClassAttribute;
 
@@ -49,7 +50,9 @@ The application name corresponding to the deployment group to update.
 =head2 AutoScalingGroups => ArrayRef[Str]
 
 The replacement list of Auto Scaling groups to be included in the
-deployment group, if you want to change them.
+deployment group, if you want to change them. To keep the existing Auto
+Scaling groups, enter their names. To remove Auto Scaling groups, do
+not enter any Auto Scaling group names.
 
 
 
@@ -69,7 +72,8 @@ change it.
 =head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
 The replacement set of Amazon EC2 tags to filter on, if you want to
-change them.
+change them. To keep the existing tags, enter their names. To remove
+tags, do not enter any tag names.
 
 
 
@@ -82,13 +86,21 @@ The new name of the deployment group, if you want to change it.
 =head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
 The replacement set of on-premises instance tags for filter on, if you
-want to change them.
+want to change them. To keep the existing tags, enter their names. To
+remove tags, do not enter any tag names.
 
 
 
 =head2 ServiceRoleArn => Str
 
 A replacement service role's ARN, if you want to change it.
+
+
+
+=head2 TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]
+
+Information about triggers to change when the deployment group is
+updated.
 
 
 

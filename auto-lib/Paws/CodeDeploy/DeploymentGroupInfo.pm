@@ -9,6 +9,7 @@ package Paws::CodeDeploy::DeploymentGroupInfo;
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', xmlname => 'onPremisesInstanceTagFilters', request_name => 'onPremisesInstanceTagFilters', traits => ['Unwrapped','NameInRequest']);
   has ServiceRoleArn => (is => 'ro', isa => 'Str', xmlname => 'serviceRoleArn', request_name => 'serviceRoleArn', traits => ['Unwrapped','NameInRequest']);
   has TargetRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', xmlname => 'targetRevision', request_name => 'targetRevision', traits => ['Unwrapped','NameInRequest']);
+  has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', xmlname => 'triggerConfigurations', request_name => 'triggerConfigurations', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeDeploy::DeploymentGroupInfo object:
 
-  $service_obj->Method(Att1 => { ApplicationName => $value, ..., TargetRevision => $value  });
+  $service_obj->Method(Att1 => { ApplicationName => $value, ..., TriggerConfigurations => $value  });
 
 =head3 Results returned from an API call
 
@@ -88,6 +89,11 @@ Information about a deployment group.
 
   Information about the deployment group's target revision, including the
 revision's type and its location.
+
+
+=head2 TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]
+
+  A list of associated triggers.
 
 
 
