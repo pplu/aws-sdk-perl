@@ -56,6 +56,13 @@ A rule is compliant if all of the resources that the rule evaluates
 comply with it, and it is noncompliant if any of these resources do not
 comply.
 
+AWS Config returns the C<INSUFFICIENT_DATA> value when no evaluation
+results are available for the AWS resource or Config rule.
+
+For the C<Compliance> data type, AWS Config supports only C<COMPLIANT>,
+C<NON_COMPLIANT>, and C<INSUFFICIENT_DATA> values. AWS Config does not
+support the C<NOT_APPLICABLE> value for the C<Compliance> data type.
+
 
 
 =head1 SEE ALSO

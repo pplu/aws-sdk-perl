@@ -257,7 +257,7 @@ A rule is compliant if all of the evaluated resources comply with it,
 and it is noncompliant if any of these resources do not comply.
 
 If AWS Config has no current evaluation results for the rule, it
-returns C<InsufficientData>. This result might indicate one of the
+returns C<INSUFFICIENT_DATA>. This result might indicate one of the
 following conditions:
 
 =over
@@ -296,7 +296,7 @@ that evaluate it. It is noncompliant if it does not comply with one or
 more of these rules.
 
 If AWS Config has no current evaluation results for the resource, it
-returns C<InsufficientData>. This result might indicate one of the
+returns C<INSUFFICIENT_DATA>. This result might indicate one of the
 following conditions about the rules that evaluate the resource:
 
 =over

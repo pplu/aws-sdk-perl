@@ -62,6 +62,16 @@ compliance.
   Indicates whether the AWS resource complies with the AWS Config rule
 that it was evaluated against.
 
+For the C<Evaluation> data type, AWS Config supports only the
+C<COMPLIANT>, C<NON_COMPLIANT>, and C<NOT_APPLICABLE> values. AWS
+Config does not support the C<INSUFFICIENT_DATA> value for this data
+type.
+
+Similarly, AWS Config does not accept C<INSUFFICIENT_DATA> as the value
+for C<ComplianceType> from a C<PutEvaluations> request. For example, an
+AWS Lambda function for a custom Config rule cannot pass an
+C<INSUFFICIENT_DATA> value to AWS Config.
+
 
 =head2 B<REQUIRED> OrderingTimestamp => Str
 
