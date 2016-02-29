@@ -44,11 +44,17 @@ Currently, the supported destinations are:
 
 =over
 
-=item * A Amazon Kinesis stream belonging to the same account as the
+=item * An Amazon Kinesis stream belonging to the same account as the
 subscription filter, for same-account delivery.
 
 =item * A logical destination (used via an ARN of C<Destination>)
 belonging to a different account, for cross-account delivery.
+
+=item * An Amazon Kinesis Firehose stream belonging to the same account
+as the subscription filter, for same-account delivery.
+
+=item * An AWS Lambda function belonging to the same account as the
+subscription filter, for same-account delivery.
 
 =back
 
@@ -76,9 +82,9 @@ The name of the log group to associate the subscription filter with.
 
 =head2 RoleArn => Str
 
-The ARN of an IAM role that grants Amazon CloudWatch Logs permissions
-to deliver ingested log events to the destination stream. You don't
-need to provide the ARN when you are working with a logical destination
+The ARN of an IAM role that grants CloudWatch Logs permissions to
+deliver ingested log events to the destination stream. You don't need
+to provide the ARN when you are working with a logical destination
 (used via an ARN of C<Destination>) for cross-account delivery.
 
 

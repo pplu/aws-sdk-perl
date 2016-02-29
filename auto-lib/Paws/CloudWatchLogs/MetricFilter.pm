@@ -34,9 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 =head1 DESCRIPTION
 
-Metric filters can be used to express how Amazon CloudWatch Logs would
-extract metric observations from ingested log events and transform them
-to metric data in a CloudWatch metric.
+Metric filters can be used to express how CloudWatch Logs would extract
+metric observations from ingested log events and transform them to
+metric data in a CloudWatch metric.
 
 =head1 ATTRIBUTES
 
