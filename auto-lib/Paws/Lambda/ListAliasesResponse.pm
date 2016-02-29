@@ -17,7 +17,7 @@ Paws::Lambda::ListAliasesResponse
 
 =head2 Aliases => ArrayRef[L<Paws::Lambda::AliasConfiguration>]
 
-An list of alises.
+A list of aliases.
 
 
 

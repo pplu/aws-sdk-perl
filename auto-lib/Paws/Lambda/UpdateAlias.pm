@@ -40,8 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-You can optionally change the description of the alias using this
-parameter.
+You can change the description of the alias using this parameter.
 
 
 
@@ -53,8 +52,8 @@ The function name for which the alias is created.
 
 =head2 FunctionVersion => Str
 
-Using this parameter you can optionally change the Lambda function
-version to which the alias to points to.
+Using this parameter you can change the Lambda function version to
+which the alias points.
 
 
 

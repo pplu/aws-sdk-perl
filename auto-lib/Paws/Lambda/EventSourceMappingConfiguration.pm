@@ -58,8 +58,9 @@ The result of the last AWS Lambda invocation of your Lambda function.
 
 =head2 State => Str
 
-The state of the event source mapping. It can be "Creating", "Enabled",
-"Disabled", "Enabling", "Disabling", "Updating", or "Deleting".
+The state of the event source mapping. It can be C<Creating>,
+C<Enabled>, C<Disabled>, C<Enabling>, C<Disabling>, C<Updating>, or
+C<Deleting>.
 
 
 

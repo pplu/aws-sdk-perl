@@ -32,7 +32,7 @@ report an C<Handled> error, see Programming Model.
 =head2 LogResult => Str
 
 It is the base64-encoded logs for the Lambda function invocation. This
-is present only if the invocation type is "RequestResponse" and the
+is present only if the invocation type is C<RequestResponse> and the
 logs were requested.
 
 
@@ -41,7 +41,7 @@ logs were requested.
 
 It is the JSON representation of the object returned by the Lambda
 function. In This is present only if the invocation type is
-"RequestResponse".
+C<RequestResponse>.
 
 In the event of a function error this field contains a message
 describing the error. For the C<Handled> errors the Lambda function
@@ -53,9 +53,9 @@ the message.
 =head2 StatusCode => Int
 
 The HTTP status code will be in the 200 range for successful request.
-For the "RequestResonse" invocation type this status code will be 200.
-For the "Event" invocation type this status code will be 202. For the
-"DryRun" invocation type the status code will be 204.
+For the C<RequestResonse> invocation type this status code will be 200.
+For the C<Event> invocation type this status code will be 202. For the
+C<DryRun> invocation type the status code will be 204.
 
 
 

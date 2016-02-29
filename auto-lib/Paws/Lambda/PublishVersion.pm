@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The SHA256 hash of the deployment package you want to publish. This
 provides validation on the code you are publishing. If you provide this
-parameter value must match the SHA256 of the HEAD version for the
+parameter value must match the SHA256 of the $LATEST version for the
 publication to succeed.
 
 
@@ -49,18 +49,18 @@ publication to succeed.
 =head2 Description => Str
 
 The description for the version you are publishing. If not provided,
-AWS Lambda copies the description from the HEAD version.
+AWS Lambda copies the description from the $LATEST version.
 
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The Lambda function name. You can specify an unqualified function name
-(for example, "Thumbnail") or you can specify Amazon Resource Name
-(ARN) of the function (for example,
-"arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS Lambda
-also allows you to specify only the account ID qualifier (for example,
-"account-id:Thumbnail"). Note that the length constraint applies only
+The Lambda function name. You can specify a function name (for example,
+C<Thumbnail>) or you can specify Amazon Resource Name (ARN) of the
+function (for example,
+C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
+also allows you to specify a partial ARN (for example,
+C<account-id:Thumbnail>). Note that the length constraint applies only
 to the ARN. If you specify only the function name, it is limited to 64
 character in length.
 

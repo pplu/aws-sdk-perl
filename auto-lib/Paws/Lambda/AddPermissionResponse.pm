@@ -17,8 +17,8 @@ Paws::Lambda::AddPermissionResponse
 =head2 Statement => Str
 
 The permission statement you specified in the request. The response
-returns the same as a string using "\" as an escape character in the
-JSON.
+returns the same as a string using a backslash ("\") as an escape
+character in the JSON.
 
 
 
