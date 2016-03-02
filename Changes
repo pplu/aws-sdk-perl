@@ -13,6 +13,7 @@
  - Better documentation: show the valid values for an attribute when it's an enum
  - Fix bug where a call to DescribeAutoScalingGroups would die if the API was not returning the LaunchConfigurationName attribute for the Instance shape (reported by msoriano)
  - Fix bug where a StrToObj map of complex objects would not instance the object correctly
+ - Fix SimpleDB (SDB) API definitions. AWS provided ones were not working
  - New Service: ECR (EC2 Container Registry)
  - New Service: CloudWatch Events
  - New Service: ACM (AWS Certificate Manager)
@@ -20,12 +21,14 @@
  - EC2 API update: support for NatGateways, VpcClassicLinkDnsSupport, and ScheduledInstances
  - RDS API update: support for enhanced monitoring, and more new features
  - CloudFront API update: support for compressing and SSL to origin
+ - CloudFront API update: support for ACM certificates
  - CloudTrail API update: support for multiregion trails
  - Config API update
  - EMR API update: support for VPC EMR
  - ECS API update: deployment options
  - IoT API update: Topic rules 
  - CloudFormation API update: ContinueUpdateRollback method
+ - MarketplaceCommerceAnalytics API update: support for CustomerDefinedValues
  - WAF API update
  - Autoscaling API update: lifecycle improvements
  - CodeDeploy API update: more Batch operations
@@ -38,7 +41,6 @@
  - Lambda update: support for VPC
  - CloudFormation API update: tagging support + RetainResources on delete
  - CloudFront ACM cert support
- - MarketplaceCommerceAnalytics API update
 
 0.21 16 Dec 2015
  - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)

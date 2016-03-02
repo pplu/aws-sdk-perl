@@ -1,0 +1,7 @@
+---
+call: ListDomains
+service: SDB
+tests:
+  - expected: TestSDB
+    op: eq
+    path: DomainNames.0

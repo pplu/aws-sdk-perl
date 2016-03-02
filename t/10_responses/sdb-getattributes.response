@@ -1,0 +1,10 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <GetAttributesResponse xmlns="http://sdb.amazonaws.com/doc/2009-04-15/"><GetAttributesResult><Attribute><Name>Att2</Name><Value>Val2</Value></Attribute><Attribute><Name>Att1</Name><Value>Val1</Value></Attribute></GetAttributesResult><ResponseMetadata><RequestId>481ce9f5-0e0f-c514-9f37-f6efdc3228ef</RequestId><BoxUsage>0.0000093282</BoxUsage></ResponseMetadata></GetAttributesResponse>
+headers:
+  content-type: text/xml
+  date: 'Thu, 04 Feb 2016 22:49:50 GMT'
+  server: Amazon SimpleDB
+  transfer-encoding: chunked
+status: 200

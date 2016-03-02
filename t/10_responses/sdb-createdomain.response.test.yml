@@ -1,0 +1,4 @@
+---
+call: CreateDomain
+service: SDB
+tests: []

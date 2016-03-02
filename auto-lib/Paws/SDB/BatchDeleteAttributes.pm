@@ -2,7 +2,7 @@
 package Paws::SDB::BatchDeleteAttributes;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Items => (is => 'ro', isa => 'ArrayRef[Paws::SDB::DeletableItem]', required => 1);
+  has Items => (is => 'ro', isa => 'ArrayRef[Paws::SDB::DeletableItem]', traits => ['NameInRequest'], request_name => 'Item' , required => 1);
 
   use MooseX::ClassAttribute;
 

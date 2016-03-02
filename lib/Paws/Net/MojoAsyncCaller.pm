@@ -11,6 +11,8 @@ package Paws::Net::MojoAsyncCaller;
     Mojo::UserAgent->new->connect_timeout(15)->inactivity_timeout(60);
   });
 
+  sub caller_to_response {}
+
   sub do_call {
     my ($self, $service, $call_object, $tracker) = @_;
 

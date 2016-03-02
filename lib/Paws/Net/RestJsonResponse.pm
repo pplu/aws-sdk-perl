@@ -23,7 +23,12 @@ package Paws::Net::RestJsonResponse;
     } elsif (exists $struct->{Message}){
       $message = $struct->{Message};
     } else {
-      die "Unrecognized error message format";
+      # Rationale for this condition is in Issue #82 
+      if ($struct->{__type} eq 'InternalError'){
+        $message = '';
+      } else {
+        die "Unrecognized error message format";
+      }
     }
 
     if (exists $headers->{'x-amzn-errortype'}){

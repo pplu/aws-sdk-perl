@@ -1,0 +1,10 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <DeleteDomainResponse xmlns="http://sdb.amazonaws.com/doc/2009-04-15/"><ResponseMetadata><RequestId>1246696a-d0b1-3e3c-4ae6-d8997e505b88</RequestId><BoxUsage>0.0055590278</BoxUsage></ResponseMetadata></DeleteDomainResponse>
+headers:
+  content-type: text/xml
+  date: 'Thu, 04 Feb 2016 22:49:55 GMT'
+  server: Amazon SimpleDB
+  transfer-encoding: chunked
+status: 200

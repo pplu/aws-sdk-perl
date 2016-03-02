@@ -1,0 +1,10 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <BatchDeleteAttributesResponse xmlns="http://sdb.amazonaws.com/doc/2009-04-15/"><ResponseMetadata><RequestId>23f5861b-aece-6bba-bd59-9413d48bf527</RequestId><BoxUsage>0.0000219907</BoxUsage></ResponseMetadata></BatchDeleteAttributesResponse>
+headers:
+  content-type: text/xml
+  date: 'Thu, 04 Feb 2016 22:49:52 GMT'
+  server: Amazon SimpleDB
+  transfer-encoding: chunked
+status: 200

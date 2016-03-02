@@ -76,8 +76,7 @@ sub sign {
 
     $request->parameters->{ Signature } = $encoded;
 
-    #Since the parameters and the signing goes into the content, we have
-    $request->generate_content_from_parameters;
+    $request->content($self->generate_content_from_parameters($request));
 }
 
 

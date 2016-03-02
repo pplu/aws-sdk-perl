@@ -1,0 +1,16 @@
+---
+call: Select
+service: SDB
+tests:
+  - expected: Key2
+    op: eq
+    path: Items.1.Name
+  - expected: Key3
+    op: eq
+    path: Items.2.Name
+  - expected: Key4
+    op: eq
+    path: Items.3.Name
+  - expected: Key1
+    op: eq
+    path: Items.0.Name
