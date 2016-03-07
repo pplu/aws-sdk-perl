@@ -42,6 +42,8 @@
  - CloudFormation API update: tagging support + RetainResources on delete
  - CloudFront ACM cert support
  - CloudSearch API update: stats
+ - DS API update: support for event topics
+ - DynamoDB API update: DescribeLimits
 
 0.21 16 Dec 2015
  - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)
