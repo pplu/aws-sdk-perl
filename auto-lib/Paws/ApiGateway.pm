@@ -129,6 +129,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteStage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub FlushStageAuthorizersCache {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::FlushStageAuthorizersCache', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub FlushStageCache {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::FlushStageCache', @_);
@@ -297,6 +302,11 @@ package Paws::ApiGateway;
   sub PutMethodResponse {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::PutMethodResponse', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TestInvokeAuthorizer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::TestInvokeAuthorizer', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TestInvokeMethod {
@@ -492,7 +502,7 @@ package Paws::ApiGateway;
     return 'Paws::ApiGateway::GetRestApis'->_returns->new(items => $array);
   }
 
-  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDomainName CreateModel CreateResource CreateRestApi CreateStage DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages PutIntegration PutIntegrationResponse PutMethod PutMethodResponse TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage / }
+  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDomainName CreateModel CreateResource CreateRestApi CreateStage DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages PutIntegration PutIntegrationResponse PutMethod PutMethodResponse TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage / }
 
 1;
 
@@ -738,6 +748,15 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteStage>
 Returns: nothing
 
   Deletes a Stage resource.
+
+
+=head2 FlushStageAuthorizersCache(RestApiId => Str, StageName => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::FlushStageAuthorizersCache>
+
+Returns: nothing
+
+  Flushes all authorizer cache entries on a stage.
 
 
 =head2 FlushStageCache(RestApiId => Str, StageName => Str)
@@ -1046,6 +1065,15 @@ Each argument is described in detail in: L<Paws::ApiGateway::PutMethodResponse>
 Returns: a L<Paws::ApiGateway::MethodResponse> instance
 
   Adds a MethodResponse to an existing Method resource.
+
+
+=head2 TestInvokeAuthorizer(AuthorizerId => Str, RestApiId => Str, [AdditionalContext => L<Paws::ApiGateway::MapOfStringToString>, Body => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
+
+Each argument is described in detail in: L<Paws::ApiGateway::TestInvokeAuthorizer>
+
+Returns: a L<Paws::ApiGateway::TestInvokeAuthorizerResponse> instance
+
+  
 
 
 =head2 TestInvokeMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [Body => Str, ClientCertificateId => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
