@@ -86,8 +86,9 @@ The time period for the first schedule to start.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return in a single call. To retrieve
-the remaining results, make another call with the returned C<NextToken>
+The maximum number of results to return in a single call. This value
+can be between 5 and 300. The default value is 300. To retrieve the
+remaining results, make another call with the returned C<NextToken>
 value.
 
 

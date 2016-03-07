@@ -2627,6 +2627,9 @@ Returns: a L<Paws::EC2::DescribeConversionTasksResult> instance
 see Using the Command Line Tools to Import Your Virtual Machine to
 Amazon EC2 in the I<Amazon Elastic Compute Cloud User Guide>.
 
+For information about the import manifest referenced by this API
+action, see VM Import Manifest.
+
 
 =head2 DescribeCustomerGateways([CustomerGatewayIds => ArrayRef[Str], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>]])
 
@@ -3694,6 +3697,9 @@ line tools. For more information, see Using the Command Line Tools to
 Import Your Virtual Machine to Amazon EC2 in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
+For information about the import manifest referenced by this API
+action, see VM Import Manifest.
+
 
 =head2 ImportKeyPair(KeyName => Str, PublicKeyMaterial => Str, [DryRun => Bool])
 
@@ -3733,6 +3739,9 @@ C<ec2-import-volume> command in the Amazon EC2 command-line interface
 Import Your Virtual Machine to Amazon EC2 in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
+For information about the import manifest referenced by this API
+action, see VM Import Manifest.
+
 
 =head2 ModifyHosts(AutoPlacement => Str, HostIds => ArrayRef[Str])
 
@@ -3763,11 +3772,16 @@ support longer IDs: C<instance> | C<reservation>.
 
 This setting applies to the IAM user who makes the request; it does not
 apply to the entire AWS account. By default, an IAM user defaults to
-the same settings as the root user, unless they explicitly override the
-settings by running this request. Resources created with longer IDs are
-visible to all IAM users, regardless of these settings and provided
-that they have permission to use the relevant C<Describe> command for
-the resource type.
+the same settings as the root user. If you're using this action as the
+root user or as an IAM role that has permission to use this action,
+then these settings apply to the entire account, unless an IAM user
+explicitly overrides these settings for themselves. For more
+information, see Controlling Access to Longer ID Settings in the
+I<Amazon Elastic Compute Cloud User Guide>.
+
+Resources created with longer IDs are visible to all IAM users,
+regardless of these settings and provided that they have permission to
+use the relevant C<Describe> command for the resource type.
 
 
 =head2 ModifyImageAttribute(ImageId => Str, [Attribute => Str, Description => L<Paws::EC2::AttributeValue>, DryRun => Bool, LaunchPermission => L<Paws::EC2::LaunchPermissionModifications>, OperationType => Str, ProductCodes => ArrayRef[Str], UserGroups => ArrayRef[Str], UserIds => ArrayRef[Str], Value => Str])
@@ -4362,6 +4376,10 @@ When you launch an instance, it enters the C<pending> state. After the
 instance is ready for you, it enters the C<running> state. To check the
 state of your instance, call DescribeInstances.
 
+To ensure faster instance launches, break up large requests into
+smaller batches. For example, create five separate launch requests for
+100 instances each instead of one launch request for 500 instances.
+
 If you don't specify a security group when launching an instance,
 Amazon EC2 uses the default security group. For more information, see
 Security Groups in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -4385,9 +4403,10 @@ Cloud User Guide>.
 If any of the AMIs have a product code attached for which the user has
 not subscribed, C<RunInstances> fails.
 
-T2 instance types can only be launched into a VPC. If you do not have a
-default VPC, or if you do not specify a subnet ID in the request,
-C<RunInstances> fails.
+Some instance types can only be launched into a VPC. If you do not have
+a default VPC, or if you do not specify a subnet ID in the request,
+C<RunInstances> fails. For more information, see Instance Types
+Available Only in a VPC.
 
 For more information about troubleshooting, see What To Do If An
 Instance Immediately Terminates, and Troubleshooting Connecting to Your

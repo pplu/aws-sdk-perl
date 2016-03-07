@@ -132,8 +132,8 @@ C<instance-id> - The ID of the instance.
 
 =item *
 
-C<instance-lifecycle> - Indicates whether this is a Spot Instance
-(C<spot>).
+C<instance-lifecycle> - Indicates whether this is a Spot Instance or a
+Scheduled Instance (C<spot> | C<scheduled>).
 
 =item *
 

@@ -1,7 +1,7 @@
 package Paws::EC2::PurchaseRequest;
   use Moose;
-  has InstanceCount => (is => 'ro', isa => 'Int');
-  has PurchaseToken => (is => 'ro', isa => 'Str');
+  has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
+  has PurchaseToken => (is => 'ro', isa => 'Str', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +37,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 InstanceCount => Int
+=head2 B<REQUIRED> InstanceCount => Int
 
   The number of instances.
 
 
-=head2 PurchaseToken => Str
+=head2 B<REQUIRED> PurchaseToken => Str
 
   The purchase token.
 

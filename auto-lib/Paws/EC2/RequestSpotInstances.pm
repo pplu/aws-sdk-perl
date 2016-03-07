@@ -70,8 +70,9 @@ Default: Instances are launched in any available Availability Zone.
 
 =head2 BlockDurationMinutes => Int
 
-The required duration for the Spot instances, in minutes. This value
-must be a multiple of 60 (60, 120, 180, 240, 300, or 360).
+The required duration for the Spot instances (also known as Spot
+blocks), in minutes. This value must be a multiple of 60 (60, 120, 180,
+240, 300, or 360).
 
 The duration period starts as soon as your Spot instance receives its
 instance ID. At the end of the duration period, Amazon EC2 marks the

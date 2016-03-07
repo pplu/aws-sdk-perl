@@ -44,7 +44,7 @@ This class has no description
 
 =head2 S3Key => Str
 
-  The key for the disk image.
+  The file name of the disk image.
 
 
 

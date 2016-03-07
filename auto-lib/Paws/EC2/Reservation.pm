@@ -20,7 +20,7 @@ Paws::EC2::Reservation
 
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
-One or more security groups.
+[EC2-Classic only] One or more security groups.
 
 
 

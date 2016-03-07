@@ -2,7 +2,10 @@ package Paws::EC2::UserIdGroupPair;
   use Moose;
   has GroupId => (is => 'ro', isa => 'Str', xmlname => 'groupId', traits => ['Unwrapped']);
   has GroupName => (is => 'ro', isa => 'Str', xmlname => 'groupName', traits => ['Unwrapped']);
+  has PeeringStatus => (is => 'ro', isa => 'Str', xmlname => 'peeringStatus', traits => ['Unwrapped']);
   has UserId => (is => 'ro', isa => 'Str', xmlname => 'userId', traits => ['Unwrapped']);
+  has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
+  has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', xmlname => 'vpcPeeringConnectionId', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::UserIdGroupPair object:
 
-  $service_obj->Method(Att1 => { GroupId => $value, ..., UserId => $value  });
+  $service_obj->Method(Att1 => { GroupId => $value, ..., VpcPeeringConnectionId => $value  });
 
 =head3 Results returned from an API call
 
@@ -50,9 +53,24 @@ security group in EC2-Classic or a default VPC only. For a security
 group in a nondefault VPC, use C<GroupId>.
 
 
+=head2 PeeringStatus => Str
+
+  The status of a VPC peering connection, if applicable.
+
+
 =head2 UserId => Str
 
-  The ID of an AWS account. EC2-Classic only.
+  The ID of an AWS account.
+
+
+=head2 VpcId => Str
+
+  The ID of the VPC for the referenced security group, if applicable.
+
+
+=head2 VpcPeeringConnectionId => Str
+
+  The ID of the VPC peering connection, if applicable.
 
 
 
