@@ -108,24 +108,21 @@ scan:
 
 =item *
 
-If I<ConsistentRead> is C<false>, then I<Scan> will use eventually
-consistent reads. The data returned from I<Scan> might not contain the
-results of other recently completed write operations (PutItem,
-UpdateItem or DeleteItem). The I<Scan> response might include some
-stale data.
+If I<ConsistentRead> is C<false>, then the data returned from I<Scan>
+might not contain the results from other recently completed write
+operations (PutItem, UpdateItem or DeleteItem).
 
 =item *
 
-If I<ConsistentRead> is C<true>, then I<Scan> will use strongly
-consistent reads. All of the write operations that completed before the
-I<Scan> began are guaranteed to be contained in the I<Scan> response.
+If I<ConsistentRead> is C<true>, then all of the write operations that
+completed before the I<Scan> began are guaranteed to be contained in
+the I<Scan> response.
 
 =back
 
-The default setting for I<ConsistentRead> is C<false>, meaning that
-eventually consistent reads will be used.
+The default setting for I<ConsistentRead> is C<false>.
 
-Strongly consistent reads are not supported on global secondary
+The I<ConsistentRead> parameter is not supported on global secondary
 indexes. If you scan a global secondary index with I<ConsistentRead>
 set to true, you will receive a I<ValidationException>.
 

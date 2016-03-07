@@ -48,8 +48,8 @@ Each entry consists of the following subelements:
 
 =item *
 
-I<ItemCollectionKey> - The hash key value of the item collection. This
-is the same as the hash key of the item.
+I<ItemCollectionKey> - The partition key value of the item collection.
+This is the same as the partition key value of the item.
 
 =item *
 
