@@ -93,7 +93,7 @@ Identifier (URI) of a call to Amazon API Gateway.
 
 A map that defines the stage variables for a Stage resource. Variable
 names can have alphanumeric characters, and the values must match
-C<[A-Za-z0-9-._~:/?
+C<[A-Za-z0-9-._~:/?&num;&=,]+>.
 
 
 

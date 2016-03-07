@@ -591,9 +591,7 @@ aggregate write capacity units. Zero them both.
 =item 3. Call I<ListTables> to obtain a list of all your DynamoDB
 tables.
 
-=item 4.
-
-For each table name listed by I<ListTables>, do the following:
+=item 4. For each table name listed by I<ListTables>, do the following:
 
 =over
 

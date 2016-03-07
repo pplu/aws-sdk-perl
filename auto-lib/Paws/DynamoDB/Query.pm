@@ -342,13 +342,13 @@ a reserved word:
 
 =back
 
-To work around this, define a placeholder (such a C<
-the attribute name I<Size>. I<KeyConditionExpression> then is as
-follows:
+To work around this, define a placeholder (such a C<&num;S>) to
+represent the attribute name I<Size>. I<KeyConditionExpression> then is
+as follows:
 
 =over
 
-=item * C<
+=item * C<&num;S = :myval>
 
 =back
 
