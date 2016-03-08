@@ -1,4 +1,4 @@
-package Paws::Credential::AssumeRoleWithSAML {
+package Paws::Credential::AssumeRoleWithSAML;
   use Moose;
   use DateTime;
   use DateTime::Format::ISO8601;
@@ -68,6 +68,5 @@ package Paws::Credential::AssumeRoleWithSAML {
   }
 
   no Moose;
-}
 
 1;

@@ -66,7 +66,7 @@ sub generate_test_case {
 
   my @tests;
 
-  foreach my $path (sort keys $result) {
+  foreach my $path (sort keys %$result) {
     push @tests, {
        path => $path,
        expected => $result->{ $path },
