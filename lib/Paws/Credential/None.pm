@@ -1,4 +1,4 @@
-package Paws::Credential::None {
+package Paws::Credential::None;
   use Moose;
   with 'Paws::Credential';
 
@@ -9,6 +9,5 @@ package Paws::Credential::None {
   sub session_token { q{} }
 
   no Moose;
-}
 
 1;
