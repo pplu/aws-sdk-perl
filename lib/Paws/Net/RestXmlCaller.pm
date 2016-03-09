@@ -57,7 +57,6 @@ package Paws::Net::RestXmlCaller;
 
     my @attribs = $uri_template =~ /{(.+?)}/g;
     my $vars = {};
-    my $qparams = {};
 
     foreach my $attrib (@attribs)
     {
@@ -71,14 +70,10 @@ package Paws::Net::RestXmlCaller;
               $vars->{ $att_name } = $call->$att_name;
           }
       }
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
-        $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
-      }
     }
     my $t = URI::Template->new( $uri_template );
     my $uri = $t->process($vars);
-    $uri->query_form(%$qparams);
-    return $uri->as_string;
+    return $uri;
   }
 
   sub _to_header_params {
@@ -151,7 +146,17 @@ package Paws::Net::RestXmlCaller;
     }
 
     my $uri = $self->_call_uri($call); #in RestXmlCaller
-    $request->uri($uri);
+
+    my $qparams = {};
+    foreach my $attribute ($call->meta->get_all_attributes) {
+      my $att_name = $attribute->name;
+      if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
+        $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
+      }
+    }
+    $uri->query_form(%$qparams);
+
+    $request->uri($uri->as_string);
 
     my $url = $self->_api_endpoint . $uri; #in Paws::API::EndPointResolver
 
