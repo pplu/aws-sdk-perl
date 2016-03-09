@@ -366,7 +366,7 @@ $request = $dynamo->BatchGetItem(
   ReturnConsumedCapacity => 'TOTAL'
 );
 
-$test_params = decode_json('{}');
+$test_params = decode_json('{"RequestItems":{"table":{"Keys":[{"email":{"S":"e1@test.com"}},{"email":{"S":"e2@test.com"}}]}},"ReturnConsumedCapacity":"TOTAL"}');
 
 request_contentjson($test_params, $request);
 
