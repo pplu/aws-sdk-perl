@@ -243,6 +243,21 @@ $test_params = {
 
 request_has_params($test_params, $request);
 
+my $s3 = $aws->service('S3');
+
+$request = $s3->ListObjects(
+  Bucket => 'test_bucket',
+  Prefix => 'A/Prefix',
+  MaxKeys => 5
+);
+
+$test_params = {
+  prefix => 'A/Prefix',
+ 'max-keys' => 5,
+};
+
+request_has_params($test_params, $request);
+
 my $cognito = $aws->service('CognitoIdentity');
 
 $request = $cognito->GetOpenIdTokenForDeveloperIdentity(

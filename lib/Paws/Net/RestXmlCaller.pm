@@ -21,7 +21,7 @@ package Paws::Net::RestXmlCaller;
     my ($self, $params) = @_;
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-      my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
+      my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInQuery')?$params->meta->get_attribute($att)->query_name:$att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
 
