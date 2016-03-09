@@ -1,6 +1,6 @@
 package Paws::DynamoDB::BatchGetResponseMap;
   use Moose;
-  with 'Paws::API::StrToNativeMapParser';
+  with 'Paws::API::StrToObjMapParser';
 
   has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::DynamoDB::AttributeMap]]');
 1;
