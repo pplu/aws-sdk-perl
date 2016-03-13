@@ -1,5 +1,6 @@
 package Paws::IAM::PolicyGroup;
   use Moose;
+  has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
 1;
 
@@ -20,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IAM::PolicyGroup object:
 
-  $service_obj->Method(Att1 => { GroupName => $value, ..., GroupName => $value  });
+  $service_obj->Method(Att1 => { GroupId => $value, ..., GroupName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::PolicyGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->GroupName
+  $result->Att1->GroupId
 
 =head1 DESCRIPTION
 
@@ -41,6 +42,12 @@ For more information about managed policies, refer to Managed Policies
 and Inline Policies in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
+
+
+=head2 GroupId => Str
+
+  The stable and unique string identifying the group. For more
+information about IDs, see IAM Identifiers in the I<IAM User Guide>.
 
 
 =head2 GroupName => Str
