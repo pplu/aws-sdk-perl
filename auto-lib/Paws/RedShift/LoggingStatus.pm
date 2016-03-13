@@ -39,7 +39,7 @@ The last time when logs failed to be delivered.
 
 =head2 LastSuccessfulDeliveryTime => Str
 
-The last time when logs were delivered.
+The last time that logs were delivered.
 
 
 

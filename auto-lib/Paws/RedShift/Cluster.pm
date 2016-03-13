@@ -133,9 +133,44 @@ for cross-region snapshot copy.
 
 =head2 ClusterStatus => Str
 
-  The current state of this cluster. Possible values include
-C<available>, C<creating>, C<deleting>, C<rebooting>, C<renaming>, and
-C<resizing>.
+  The current state of the cluster. Possible values are:
+
+=over
+
+=item * C<available>
+
+=item * C<creating>
+
+=item * C<deleting>
+
+=item * C<final-snapshot>
+
+=item * C<hardware-failure>
+
+=item * C<incompatible-hsm>
+
+=item * C<incompatible-network>
+
+=item * C<incompatible-parameters>
+
+=item * C<incompatible-restore>
+
+=item * C<modifying>
+
+=item * C<rebooting>
+
+=item * C<renaming>
+
+=item * C<resizing>
+
+=item * C<rotating-keys>
+
+=item * C<storage-full>
+
+=item * C<updating-hsm>
+
+=back
+
 
 
 =head2 ClusterSubnetGroupName => Str
@@ -160,7 +195,7 @@ by default.
 
 =head2 ElasticIpStatus => L<Paws::RedShift::ElasticIpStatus>
 
-  Describes the status of the elastic IP (EIP) address.
+  The status of the elastic IP (EIP) address.
 
 
 =head2 Encrypted => Bool

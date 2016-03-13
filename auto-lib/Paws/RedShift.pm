@@ -223,6 +223,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeSnapshotCopyGrants', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTableRestoreStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeTableRestoreStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeTags', @_);
@@ -293,6 +298,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::RestoreFromClusterSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RestoreTableFromClusterSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::RestoreTableFromClusterSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RevokeClusterSecurityGroupIngress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::RevokeClusterSecurityGroupIngress', @_);
@@ -309,7 +319,7 @@ package Paws::RedShift;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy ModifyCluster ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup RestoreFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
+  sub operations { qw/AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy ModifyCluster ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
 
 1;
 
@@ -374,14 +384,17 @@ Returns: a L<Paws::RedShift::AuthorizeClusterSecurityGroupIngressResult> instanc
 
   Adds an inbound (ingress) rule to an Amazon Redshift security group.
 Depending on whether the application accessing your cluster is running
-on the Internet or an EC2 instance, you can authorize inbound access to
-either a Classless Interdomain Routing (CIDR) IP address range or an
-EC2 security group. You can add as many as 20 ingress rules to an
-Amazon Redshift security group.
+on the Internet or an Amazon EC2 instance, you can authorize inbound
+access to either a Classless Interdomain Routing (CIDR)/Internet
+Protocol (IP) range or to an Amazon EC2 security group. You can add as
+many as 20 ingress rules to an Amazon Redshift security group.
 
-The EC2 security group must be defined in the AWS region where the
-cluster resides.
+If you authorize access to an Amazon EC2 security group, specify
+I<EC2SecurityGroupName> and I<EC2SecurityGroupOwnerId>. The Amazon EC2
+security group and Amazon Redshift cluster must be in the same AWS
+region.
 
+If you authorize access to a CIDR/IP address range, specify I<CIDRIP>.
 For an overview of CIDR blocks, see the Wikipedia article on Classless
 Inter-Domain Routing.
 
@@ -426,7 +439,7 @@ For more information about working with snapshots, go to Amazon
 Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[L<Paws::RedShift::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[L<Paws::RedShift::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateCluster>
 
@@ -1060,6 +1073,20 @@ Redshift Database Encryption in the I<Amazon Redshift Cluster
 Management Guide>.
 
 
+=head2 DescribeTableRestoreStatus([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TableRestoreRequestId => Str])
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeTableRestoreStatus>
+
+Returns: a L<Paws::RedShift::TableRestoreStatusMessage> instance
+
+  Lists the status of one or more table restore requests made using the
+RestoreTableFromClusterSnapshot API action. If you don't specify a
+value for the C<TableRestoreRequestId> parameter, then
+C<DescribeTableRestoreStatus> returns the status of all in-progress
+table restore requests. Otherwise C<DescribeTableRestoreStatus> returns
+the status of the table specified by C<TableRestoreRequestId>.
+
+
 =head2 DescribeTags([Marker => Str, MaxRecords => Int, ResourceName => Str, ResourceType => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeTags>
@@ -1141,7 +1168,7 @@ Returns: a L<Paws::RedShift::EnableSnapshotCopyResult> instance
 region for a specified cluster.
 
 
-=head2 ModifyCluster(ClusterIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterType => Str, ClusterVersion => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, MasterUserPassword => Str, NewClusterIdentifier => Str, NodeType => Str, NumberOfNodes => Int, PreferredMaintenanceWindow => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 ModifyCluster(ClusterIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterType => Str, ClusterVersion => Str, ElasticIp => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, MasterUserPassword => Str, NewClusterIdentifier => Str, NodeType => Str, NumberOfNodes => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyCluster>
 
@@ -1250,7 +1277,7 @@ I<ResetAllParameters> parameter. For parameter changes to take effect
 you must reboot any associated clusters.
 
 
-=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ElasticIp => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, KmsKeyId => Str, NodeType => Str, OwnerAccount => Str, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, SnapshotClusterIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ElasticIp => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, KmsKeyId => Str, NodeType => Str, OwnerAccount => Str, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, SnapshotClusterIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::RestoreFromClusterSnapshot>
 
@@ -1271,6 +1298,28 @@ group where you want the cluster restored.
 
 For more information about working with snapshots, go to Amazon
 Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
+
+
+=head2 RestoreTableFromClusterSnapshot(ClusterIdentifier => Str, NewTableName => Str, SnapshotIdentifier => Str, SourceDatabaseName => Str, SourceTableName => Str, [SourceSchemaName => Str, TargetDatabaseName => Str, TargetSchemaName => Str])
+
+Each argument is described in detail in: L<Paws::RedShift::RestoreTableFromClusterSnapshot>
+
+Returns: a L<Paws::RedShift::RestoreTableFromClusterSnapshotResult> instance
+
+  Creates a new table from a table in an Amazon Redshift cluster
+snapshot. You must create the new table within the Amazon Redshift
+cluster that the snapshot was taken from.
+
+You cannot use C<RestoreTableFromClusterSnapshot> to restore a table
+with the same name as an existing table in an Amazon Redshift cluster.
+That is, you cannot overwrite an existing table in a cluster with a
+restored table. If you want to replace your original table with a new,
+restored table, then rename or drop your original table before you call
+C<RestoreTableFromClusterSnapshot>. When you have renamed your original
+table, then you can pass the original name of the table as the
+C<NewTableName> parameter value in the call to
+C<RestoreTableFromClusterSnapshot>. This way, you can replace the
+original table with the table created from the snapshot.
 
 
 =head2 RevokeClusterSecurityGroupIngress(ClusterSecurityGroupName => Str, [CIDRIP => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str])

@@ -1,6 +1,7 @@
 
 package Paws::RedShift::CreateCluster;
   use Moose;
+  has AdditionalInfo => (is => 'ro', isa => 'Str');
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -54,6 +55,12 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdditionalInfo => Str
+
+Reserved.
+
 
 
 =head2 AllowVersionUpgrade => Bool

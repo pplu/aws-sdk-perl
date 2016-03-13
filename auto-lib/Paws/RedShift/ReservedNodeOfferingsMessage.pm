@@ -28,7 +28,7 @@ for the request.
 
 =head2 ReservedNodeOfferings => ArrayRef[L<Paws::RedShift::ReservedNodeOffering>]
 
-A list of reserved node offerings.
+A list of C<ReservedNodeOffering> objects.
 
 
 

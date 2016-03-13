@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NodeCount => Int
 
-The number of reserved nodes you want to purchase.
+The number of reserved nodes that you want to purchase.
 
 Default: C<1>
 

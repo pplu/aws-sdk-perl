@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::E
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes event categories.
 
 =head1 ATTRIBUTES
 
@@ -44,8 +44,8 @@ This class has no description
 
 =head2 SourceType => Str
 
-  The Amazon Redshift source type, such as cluster or cluster-snapshot,
-that the returned categories belong to.
+  The source type, such as cluster or cluster-snapshot, that the returned
+categories belong to.
 
 
 

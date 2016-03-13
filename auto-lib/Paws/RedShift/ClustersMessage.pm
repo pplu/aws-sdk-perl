@@ -17,7 +17,7 @@ Paws::RedShift::ClustersMessage
 
 =head2 Clusters => ArrayRef[L<Paws::RedShift::Cluster>]
 
-A list of Cluster objects, where each object describes one cluster.
+A list of C<Cluster> objects, where each object describes one cluster.
 
 
 

@@ -44,7 +44,7 @@ Describes the status of the elastic IP (EIP) address.
 
 =head2 Status => Str
 
-  Describes the status of the elastic IP (EIP) address.
+  The status of the elastic IP (EIP) address.
 
 
 

@@ -51,7 +51,12 @@ Describes a parameter in a cluster parameter group.
 
 =head2 ApplyType => Str
 
-  Specifies how to apply the parameter. Supported value: C<static>.
+  Specifies how to apply the WLM configuration parameter. Some properties
+can be applied dynamically, while other properties require that any
+associated clusters be rebooted for the configuration changes to be
+applied. For more information about parameters and parameter groups, go
+to Amazon Redshift Parameter Groups in the I<Amazon Redshift Cluster
+Management Guide>.
 
 
 =head2 DataType => Str
