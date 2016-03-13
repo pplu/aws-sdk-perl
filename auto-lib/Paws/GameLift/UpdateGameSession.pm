@@ -5,6 +5,7 @@ package Paws::GameLift::UpdateGameSession;
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
   has PlayerSessionCreationPolicy => (is => 'ro', isa => 'Str');
+  has ProtectionPolicy => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -62,6 +63,23 @@ not need to be unique.
 Policy determining whether or not the game session accepts new players.
 
 Valid values are: C<"ACCEPT_ALL">, C<"DENY_ALL">
+
+=head2 ProtectionPolicy => Str
+
+Game session protection policy to apply to this game session only.
+
+=over
+
+=item * NoProtection: The game session can be terminated during a
+scale-down event.
+
+=item * FullProtection: If the game session is in an ACTIVE status, it
+cannot be terminated during a scale-down event.
+
+=back
+
+
+Valid values are: C<"NoProtection">, C<"FullProtection">
 
 
 =head1 SEE ALSO

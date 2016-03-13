@@ -2,6 +2,7 @@
 package Paws::GameLift::CreateBuild;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
+  has StorageLocation => (is => 'ro', isa => 'Paws::GameLift::S3Location');
   has Version => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -38,6 +39,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Descriptive label associated with this build. Build names do not need
 to be unique. A build name can be changed later using UpdateBuild.
+
+
+
+=head2 StorageLocation => L<Paws::GameLift::S3Location>
+
+
 
 
 

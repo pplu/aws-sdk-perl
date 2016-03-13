@@ -1,8 +1,10 @@
 
 package Paws::GameLift::UpdateFleetCapacity;
   use Moose;
-  has DesiredInstances => (is => 'ro', isa => 'Int', required => 1);
+  has DesiredInstances => (is => 'ro', isa => 'Int');
   has FleetId => (is => 'ro', isa => 'Str', required => 1);
+  has MaxSize => (is => 'ro', isa => 'Int');
+  has MinSize => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -34,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> DesiredInstances => Int
+=head2 DesiredInstances => Int
 
 Number of EC2 instances you want this fleet to host.
 
@@ -43,6 +45,20 @@ Number of EC2 instances you want this fleet to host.
 =head2 B<REQUIRED> FleetId => Str
 
 Unique identifier for the fleet you want to update capacity for.
+
+
+
+=head2 MaxSize => Int
+
+Maximum value allowed for the fleet's instance count. Default if not
+set is 1.
+
+
+
+=head2 MinSize => Int
+
+Minimum value allowed for the fleet's instance count. Default if not
+set is 0.
 
 
 

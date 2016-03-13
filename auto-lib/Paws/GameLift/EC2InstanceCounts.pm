@@ -2,6 +2,9 @@ package Paws::GameLift::EC2InstanceCounts;
   use Moose;
   has ACTIVE => (is => 'ro', isa => 'Int');
   has DESIRED => (is => 'ro', isa => 'Int');
+  has IDLE => (is => 'ro', isa => 'Int');
+  has MAXIMUM => (is => 'ro', isa => 'Int');
+  has MINIMUM => (is => 'ro', isa => 'Int');
   has PENDING => (is => 'ro', isa => 'Int');
   has TERMINATING => (is => 'ro', isa => 'Int');
 1;
@@ -51,6 +54,22 @@ is temporarily affected.
 =head2 DESIRED => Int
 
   Ideal number of active instances in the fleet.
+
+
+=head2 IDLE => Int
+
+  Number of active instances in the fleet that are not currently hosting
+a game session.
+
+
+=head2 MAXIMUM => Int
+
+  Maximum value allowed for the fleet's instance count.
+
+
+=head2 MINIMUM => Int
+
+  Minimum value allowed for the fleet's instance count.
 
 
 =head2 PENDING => Int

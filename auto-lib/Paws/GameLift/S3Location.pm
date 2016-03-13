@@ -2,6 +2,7 @@ package Paws::GameLift::S3Location;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
+  has RoleArn => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GameLift::S3Location object:
 
-  $service_obj->Method(Att1 => { Bucket => $value, ..., Key => $value  });
+  $service_obj->Method(Att1 => { Bucket => $value, ..., RoleArn => $value  });
 
 =head3 Results returned from an API call
 
@@ -48,6 +49,11 @@ to create the build. For more details see the Amazon S3 documentation.
 =head2 Key => Str
 
   Amazon S3 bucket key.
+
+
+=head2 RoleArn => Str
+
+  
 
 
 

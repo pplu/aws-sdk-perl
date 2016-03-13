@@ -4,6 +4,7 @@ package Paws::GameLift::UpdateFleetAttributes;
   has Description => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
+  has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -54,6 +55,25 @@ Descriptive label associated with this fleet. Fleet names do not need
 to be unique.
 
 
+
+=head2 NewGameSessionProtectionPolicy => Str
+
+Game session protection policy to apply to all new instances created in
+this fleet. Instances that already exist will not be affected. You can
+set protection for individual instances using UpdateGameSession.
+
+=over
+
+=item * NoProtection: The game session can be terminated during a
+scale-down event.
+
+=item * FullProtection: If the game session is in an ACTIVE status, it
+cannot be terminated during a scale-down event.
+
+=back
+
+
+Valid values are: C<"NoProtection">, C<"FullProtection">
 
 
 =head1 SEE ALSO
