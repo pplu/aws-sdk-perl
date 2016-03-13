@@ -45,6 +45,9 @@
  - CloudSearch API update: stats
  - DS API update: support for event topics
  - DynamoDB API update: DescribeLimits
+ - Redshift API update: DescribeTableRestoreStatus and Restore tables from snapshot
+ - CodeCommit API update: support for triggers
+ - IAM API update: some operations now require stable Ids, instead of names
 
 0.21 16 Dec 2015
  - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)
