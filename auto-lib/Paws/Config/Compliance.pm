@@ -41,7 +41,7 @@ provides the number of contributors that affect the compliance.
 =head2 ComplianceContributorCount => L<Paws::Config::ComplianceContributorCount>
 
   The number of AWS resources or AWS Config rules that cause a result of
-C<NON_COMPLIANT>, up to a maximum of 25.
+C<NON_COMPLIANT>, up to a maximum number.
 
 
 =head2 ComplianceType => Str

@@ -197,8 +197,8 @@ results.
 
 AWS Config sets the state of a rule to C<DELETING> until the deletion
 is complete. You cannot update a rule while it is in this state. If you
-make a C<PutConfigRule> request for the rule, you will receive a
-C<ResourceInUseException>.
+make a C<PutConfigRule> or C<DeleteConfigRule> request for the rule,
+you will receive a C<ResourceInUseException>.
 
 You can check the state of a rule by using the C<DescribeConfigRules>
 request.
