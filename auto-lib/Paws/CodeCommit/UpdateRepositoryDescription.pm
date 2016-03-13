@@ -36,7 +36,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 RepositoryDescription => Str
 
-The new comment or description for the specified repository.
+The new comment or description for the specified repository. Repository
+descriptions are limited to 1,000 characters.
 
 
 
