@@ -79,6 +79,18 @@ APPIUM_PYTHON: The Appium Python type.
 
 =item *
 
+APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.
+
+=item *
+
+APPIUM_WEB_PYTHON: The Appium Python type for Web apps.
+
+=item *
+
 CALABASH: The Calabash type.
 
 =item *
@@ -99,20 +111,12 @@ XCTEST: The XCode test type.
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.
-
-=item *
-
-APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.
-
-=item *
-
-APPIUM_WEB_PYTHON: The Appium Python type for Web apps.
+XCTEST_UI: The XCode UI test type.
 
 =back
 
 
-Valid values are: C<"BUILTIN_FUZZ">, C<"BUILTIN_EXPLORER">, C<"APPIUM_JAVA_JUNIT">, C<"APPIUM_JAVA_TESTNG">, C<"APPIUM_PYTHON">, C<"APPIUM_WEB_JAVA_JUNIT">, C<"APPIUM_WEB_JAVA_TESTNG">, C<"APPIUM_WEB_PYTHON">, C<"CALABASH">, C<"INSTRUMENTATION">, C<"UIAUTOMATION">, C<"UIAUTOMATOR">, C<"XCTEST">
+Valid values are: C<"BUILTIN_FUZZ">, C<"BUILTIN_EXPLORER">, C<"APPIUM_JAVA_JUNIT">, C<"APPIUM_JAVA_TESTNG">, C<"APPIUM_PYTHON">, C<"APPIUM_WEB_JAVA_JUNIT">, C<"APPIUM_WEB_JAVA_TESTNG">, C<"APPIUM_WEB_PYTHON">, C<"CALABASH">, C<"INSTRUMENTATION">, C<"UIAUTOMATION">, C<"UIAUTOMATOR">, C<"XCTEST">, C<"XCTEST_UI">
 
 
 =head1 SEE ALSO

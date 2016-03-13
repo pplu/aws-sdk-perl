@@ -87,6 +87,18 @@ APPIUM_PYTHON: The Appium Python type.
 
 =item *
 
+APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.
+
+=item *
+
+APPIUM_WEB_PYTHON: The Appium Python type for Web apps.
+
+=item *
+
 CALABASH: The Calabash type.
 
 =item *
@@ -107,15 +119,7 @@ XCTEST: The XCode test type.
 
 =item *
 
-APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.
-
-=item *
-
-APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.
-
-=item *
-
-APPIUM_WEB_PYTHON: The Appium Python type for Web apps.
+XCTEST_UI: The XCode UI test type.
 
 =back
 
