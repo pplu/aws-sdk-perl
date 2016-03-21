@@ -32,18 +32,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Attrib
 =head1 DESCRIPTION
 
 The attribute payload, a JSON string containing up to three key-value
-pairs.
-
-For example: {\"attributes\":{\"string1\":\"string2\"}}
+pairs (for example, {\"attributes\":{\"string1\":\"string2\"}}).
 
 =head1 ATTRIBUTES
 
 
 =head2 Attributes => L<Paws::IoT::Attributes>
 
-  A JSON string containing up to three key-value pair in JSON format.
-
-For example: {\"attributes\":{\"string1\":\"string2\"}}
+  A JSON string containing up to three key-value pair in JSON format (for
+example, {\"attributes\":{\"string1\":\"string2\"}}).
 
 
 

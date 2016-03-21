@@ -69,7 +69,7 @@ Describes a rule.
 =head2 Sql => Str
 
   The SQL statement used to query the topic. When using a SQL query with
-multiple lines, be sure to escape the newline characters properly.
+multiple lines, be sure to escape the newline characters.
 
 
 

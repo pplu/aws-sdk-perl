@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::SqsAct
 
 =head1 DESCRIPTION
 
-Describes an action to publish data to an SQS queue.
+Describes an action to publish data to an Amazon SQS queue.
 
 =head1 ATTRIBUTES
 
