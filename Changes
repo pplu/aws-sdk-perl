@@ -19,6 +19,8 @@
  - New Service: CloudWatch Events
  - New Service: ACM (AWS Certificate Manager)
  - New service: GameLift
+ - New service: DMS (Database Migration Service)
+ - New service: Marketplace Metering
  - EC2 API update: support for NatGateways, VpcClassicLinkDnsSupport, and ScheduledInstances
  - RDS API update: support for enhanced monitoring, and more new features
  - CloudFront API update: support for compressing and SSL to origin
@@ -48,6 +50,10 @@
  - Redshift API update: DescribeTableRestoreStatus and Restore tables from snapshot
  - CodeCommit API update: support for triggers
  - IAM API update: some operations now require stable Ids, instead of names
+ - S3 API update: Incomplete mulitpart upload handling
+ - IoT API update: integrate with CloudWatch and Elasticsearch
+ - CloudHSM API update: support for tags
+ - SES API update: IdentityMailFromDomainAttributes operations
 
 0.21 16 Dec 2015
  - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)
