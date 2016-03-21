@@ -88,9 +88,11 @@ delete @ENV{qw(
 
 # Test for users not having HOME
 {
-  local $ENV{'HOME'};
+  local $ENV{'HOME'} = undef;
 
-  my $creds = Paws::Credential::File->new;
+  my $creds = Paws::Credential::File->new(
+    file_name => 'non_existant_file',
+  );
   ok(not($creds->are_set), 'File: no credentials if no $HOME');
 }
 
