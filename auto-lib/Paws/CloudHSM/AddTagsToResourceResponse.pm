@@ -1,5 +1,5 @@
 
-package Paws::CloudHSM::DeleteHsmResponse;
+package Paws::CloudHSM::AddTagsToResourceResponse;
   use Moose;
   has Status => (is => 'ro', isa => 'Str', required => 1);
 
@@ -8,7 +8,7 @@ package Paws::CloudHSM::DeleteHsmResponse;
 
 =head1 NAME
 
-Paws::CloudHSM::DeleteHsmResponse
+Paws::CloudHSM::AddTagsToResourceResponse
 
 =head1 ATTRIBUTES
 
