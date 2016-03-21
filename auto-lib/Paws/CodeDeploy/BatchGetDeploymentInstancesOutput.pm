@@ -22,7 +22,7 @@ Information about errors that may have occurred during the API call.
 
 =head2 InstancesSummary => ArrayRef[L<Paws::CodeDeploy::InstanceSummary>]
 
-Information about the instances.
+Information about the instance.
 
 
 

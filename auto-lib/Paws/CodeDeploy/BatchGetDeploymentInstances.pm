@@ -42,7 +42,7 @@ The unique ID of a deployment.
 
 =head2 B<REQUIRED> InstanceIds => ArrayRef[Str]
 
-The unique IDs of instances in the deployment's deployment group.
+The unique IDs of instances in the deployment group.
 
 
 

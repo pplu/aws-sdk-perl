@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceNames => ArrayRef[Str]
 
-The names of the on-premises instances to add tags to.
+The names of the on-premises instances to which to add tags.
 
 
 
@@ -44,7 +44,7 @@ The names of the on-premises instances to add tags to.
 
 The tag key-value pairs to add to the on-premises instances.
 
-Keys and values are both required. Keys cannot be nulls or empty
+Keys and values are both required. Keys cannot be null or empty
 strings. Value-only tags are not allowed.
 
 

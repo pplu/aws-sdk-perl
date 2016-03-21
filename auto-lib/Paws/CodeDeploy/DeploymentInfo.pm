@@ -56,7 +56,7 @@ Information about a deployment.
 
 =head2 CompleteTime => Str
 
-  A timestamp indicating when the deployment was completed.
+  A timestamp indicating when the deployment was complete.
 
 
 =head2 CreateTime => Str
@@ -66,7 +66,7 @@ Information about a deployment.
 
 =head2 Creator => Str
 
-  How the deployment was created:
+  The means by which the deployment was created:
 
 =over
 
@@ -111,31 +111,30 @@ Information about a deployment.
 =head2 IgnoreApplicationStopFailures => Bool
 
   If true, then if the deployment causes the ApplicationStop deployment
-lifecycle event to fail to a specific instance, the deployment will not
-be considered to have failed to that instance at that point and will
-continue on to the BeforeInstall deployment lifecycle event.
+lifecycle event to an instance to fail, the deployment to that instance
+will not be considered to have failed at that point and will continue
+on to the BeforeInstall deployment lifecycle event.
 
 If false or not specified, then if the deployment causes the
-ApplicationStop deployment lifecycle event to fail to a specific
-instance, the deployment will stop to that instance, and the deployment
-to that instance will be considered to have failed.
+ApplicationStop deployment lifecycle event to an instance to fail, the
+deployment to that instance will stop, and the deployment to that
+instance will be considered to have failed.
 
 
 =head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
 
-  Information about the location of application artifacts that are stored
-and the service to retrieve them from.
+  Information about the location of stored application artifacts and the
+service from which to retrieve them.
 
 
 =head2 StartTime => Str
 
-  A timestamp indicating when the deployment began deploying to the
+  A timestamp indicating when the deployment was deployed to the
 deployment group.
 
-Note that in some cases, the reported value of the start time may be
-later than the complete time. This is due to differences in the clock
-settings of various back-end servers that participate in the overall
-deployment process.
+In some cases, the reported value of the start time may be later than
+the complete time. This is due to differences in the clock settings of
+back-end servers that participate in the deployment process.
 
 
 =head2 Status => Str

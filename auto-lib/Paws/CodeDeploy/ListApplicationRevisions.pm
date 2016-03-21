@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of an existing AWS CodeDeploy application associated with the
+The name of an AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
 
 
@@ -59,8 +59,7 @@ deployment group.
 =item * exclude: Do not list revisions that are target revisions of a
 deployment group.
 
-=item * ignore: List all revisions, regardless of whether they are
-target revisions of a deployment group.
+=item * ignore: List all revisions.
 
 =back
 
@@ -69,41 +68,41 @@ Valid values are: C<"include">, C<"exclude">, C<"ignore">
 
 =head2 NextToken => Str
 
-An identifier that was returned from the previous list application
-revisions call, which can be used to return the next set of
-applications in the list.
+An identifier returned from the previous list application revisions
+call. It can be used to return the next set of applications in the
+list.
 
 
 
 =head2 S3Bucket => Str
 
-A specific Amazon S3 bucket name to limit the search for revisions.
+An Amazon S3 bucket name to limit the search for revisions.
 
-If set to null, then all of the user's buckets will be searched.
+If set to null, all of the user's buckets will be searched.
 
 
 
 =head2 S3KeyPrefix => Str
 
-A specific key prefix for the set of Amazon S3 objects to limit the
-search for revisions.
+A key prefix for the set of Amazon S3 objects to limit the search for
+revisions.
 
 
 
 =head2 SortBy => Str
 
-The column name to sort the list results by:
+The column name to use to sort the list results:
 
 =over
 
-=item * registerTime: Sort the list results by when the revisions were
-registered with AWS CodeDeploy.
+=item * registerTime: Sort by the time the revisions were registered
+with AWS CodeDeploy.
 
-=item * firstUsedTime: Sort the list results by when the revisions were
-first used by in a deployment.
+=item * firstUsedTime: Sort by the time the revisions were first used
+in a deployment.
 
-=item * lastUsedTime: Sort the list results by when the revisions were
-last used in a deployment.
+=item * lastUsedTime: Sort by the time the revisions were last used in
+a deployment.
 
 =back
 
@@ -114,13 +113,13 @@ Valid values are: C<"registerTime">, C<"firstUsedTime">, C<"lastUsedTime">
 
 =head2 SortOrder => Str
 
-The order to sort the list results by:
+The order in which to sort the list results:
 
 =over
 
-=item * ascending: Sort the list of results in ascending order.
+=item * ascending: ascending order.
 
-=item * descending: Sort the list of results in descending order.
+=item * descending: descending order.
 
 =back
 

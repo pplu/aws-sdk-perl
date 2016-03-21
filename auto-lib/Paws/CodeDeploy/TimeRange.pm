@@ -39,16 +39,16 @@ Information about a time range.
 
 =head2 End => Str
 
-  The time range's end time.
+  The end time of the time range.
 
-Specify null to leave the time range's end time open-ended.
+Specify null to leave the end time open-ended.
 
 
 =head2 Start => Str
 
-  The time range's start time.
+  The start time of the time range.
 
-Specify null to leave the time range's start time open-ended.
+Specify null to leave the start time open-ended.
 
 
 

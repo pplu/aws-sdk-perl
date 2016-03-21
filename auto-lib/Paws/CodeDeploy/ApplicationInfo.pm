@@ -51,7 +51,7 @@ Information about an application.
 
 =head2 CreateTime => Str
 
-  The time that the application was created.
+  The time at which the application was created.
 
 
 =head2 LinkedToGitHub => Bool

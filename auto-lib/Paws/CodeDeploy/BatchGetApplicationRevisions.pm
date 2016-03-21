@@ -36,15 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of an existing AWS CodeDeploy application to get revision
-information about.
+The name of an AWS CodeDeploy application about which to get revision
+information.
 
 
 
 =head2 B<REQUIRED> Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionLocation>]
 
-Information to get about the application revisions, including revision
-type and location.
+Information to get about the application revisions, including type and
+location.
 
 
 

@@ -50,15 +50,15 @@ The application name corresponding to the deployment group to update.
 =head2 AutoScalingGroups => ArrayRef[Str]
 
 The replacement list of Auto Scaling groups to be included in the
-deployment group, if you want to change them. To keep the existing Auto
-Scaling groups, enter their names. To remove Auto Scaling groups, do
-not enter any Auto Scaling group names.
+deployment group, if you want to change them. To keep the Auto Scaling
+groups, enter their names. To remove Auto Scaling groups, do not enter
+any Auto Scaling group names.
 
 
 
 =head2 B<REQUIRED> CurrentDeploymentGroupName => Str
 
-The current name of the existing deployment group.
+The current name of the deployment group.
 
 
 
@@ -71,8 +71,8 @@ change it.
 
 =head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
-The replacement set of Amazon EC2 tags to filter on, if you want to
-change them. To keep the existing tags, enter their names. To remove
+The replacement set of Amazon EC2 tags on which to filter, if you want
+to change them. To keep the existing tags, enter their names. To remove
 tags, do not enter any tag names.
 
 
@@ -85,15 +85,15 @@ The new name of the deployment group, if you want to change it.
 
 =head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
-The replacement set of on-premises instance tags for filter on, if you
-want to change them. To keep the existing tags, enter their names. To
-remove tags, do not enter any tag names.
+The replacement set of on-premises instance tags on which to filter, if
+you want to change them. To keep the existing tags, enter their names.
+To remove tags, do not enter any tag names.
 
 
 
 =head2 ServiceRoleArn => Str
 
-A replacement service role's ARN, if you want to change it.
+A replacement ARN for the service role, if you want to change it.
 
 
 

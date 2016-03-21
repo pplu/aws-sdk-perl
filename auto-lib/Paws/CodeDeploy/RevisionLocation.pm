@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head1 DESCRIPTION
 
-Information about an application revision's location.
+Information about the location of an application revision.
 
 =head1 ATTRIBUTES
 
@@ -45,7 +45,7 @@ Information about an application revision's location.
 
 =head2 RevisionType => Str
 
-  The application revision's type:
+  The type of application revision:
 
 =over
 

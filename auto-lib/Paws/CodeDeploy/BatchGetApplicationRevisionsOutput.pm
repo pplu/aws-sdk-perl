@@ -29,8 +29,8 @@ Information about errors that may have occurred during the API call.
 
 =head2 Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionInfo>]
 
-Additional information about the revisions, including the revision type
-and location.
+Additional information about the revisions, including the type and
+location.
 
 
 

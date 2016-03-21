@@ -68,10 +68,10 @@ reason.
 
 =head2 LogTail => Str
 
-  The last portion of the associated diagnostic log.
+  The last portion of the diagnostic log.
 
 If available, AWS CodeDeploy returns up to the last 4 KB of the
-associated diagnostic log.
+diagnostic log.
 
 
 =head2 Message => Str

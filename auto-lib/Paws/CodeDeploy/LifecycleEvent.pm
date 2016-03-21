@@ -71,7 +71,7 @@ BeforeInstall, AfterInstall, ApplicationStart, or ValidateService.
 
 =item * InProgress: The deployment lifecycle event is in progress.
 
-=item * Succeeded: The deployment lifecycle event has succeeded.
+=item * Succeeded: The deployment lifecycle event ran successfully.
 
 =item * Failed: The deployment lifecycle event has failed.
 

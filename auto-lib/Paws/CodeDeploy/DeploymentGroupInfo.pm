@@ -72,12 +72,12 @@ Information about a deployment group.
 
 =head2 Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
-  The Amazon EC2 tags to filter on.
+  The Amazon EC2 tags on which to filter.
 
 
 =head2 OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]
 
-  The on-premises instance tags to filter on.
+  The on-premises instance tags on which to filter.
 
 
 =head2 ServiceRoleArn => Str
@@ -87,8 +87,8 @@ Information about a deployment group.
 
 =head2 TargetRevision => L<Paws::CodeDeploy::RevisionLocation>
 
-  Information about the deployment group's target revision, including the
-revision's type and its location.
+  Information about the deployment group's target revision, including
+type and location.
 
 
 =head2 TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]

@@ -42,7 +42,7 @@ The unique ID of a deployment.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-The unique ID of an instance in the deployment's deployment group.
+The unique ID of an instance in the deployment group.
 
 
 

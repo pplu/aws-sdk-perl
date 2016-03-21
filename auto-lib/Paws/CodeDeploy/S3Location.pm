@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head1 DESCRIPTION
 
-Information about the location of application artifacts that are stored
-in Amazon S3.
+Information about the location of application artifacts stored in
+Amazon S3.
 
 =head1 ATTRIBUTES
 

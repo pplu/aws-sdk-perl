@@ -16,16 +16,15 @@ Paws::CodeDeploy::ListDeploymentInstancesOutput
 
 =head2 InstancesList => ArrayRef[Str]
 
-A list of instances IDs.
+A list of instance IDs.
 
 
 
 =head2 NextToken => Str
 
-If the amount of information that is returned is significantly large,
-an identifier will also be returned, which can be used in a subsequent
-list deployment instances call to return the next set of deployment
-instances in the list.
+If a large amount of information is returned, an identifier is also
+returned. It can be used in a subsequent list deployment instances call
+to return the next set of deployment instances in the list.
 
 
 

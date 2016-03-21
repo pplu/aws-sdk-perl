@@ -71,7 +71,7 @@ The following event type values are supported:
 
 =head2 TriggerTargetArn => Str
 
-  The arn of the Amazon Simple Notification Service topic through which
+  The ARN of the Amazon Simple Notification Service topic through which
 notifications about deployment or instance events are sent.
 
 
