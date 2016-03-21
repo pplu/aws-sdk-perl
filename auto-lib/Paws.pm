@@ -278,6 +278,8 @@ L<Paws::DeviceFarm>
 
 L<Paws::DirectConnect>
 
+L<Paws::DMS>
+
 L<Paws::DS>
 
 L<Paws::DynamoDB>
@@ -333,6 +335,8 @@ L<Paws::Lambda>
 L<Paws::MachineLearning>
 
 L<Paws::MarketplaceCommerceAnalytics>
+
+L<Paws::MarketplaceMetering>
 
 L<Paws::OpsWorks>
 
