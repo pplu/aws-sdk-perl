@@ -1,4 +1,6 @@
-0.22
+0.23
+
+0.22 21 Mar 2016
  - New: Paws::Credential::AssumeRoleWithSAML for using Paws through STS AssumeRoleWithSAML
         examples/sts-saml has an example of how to retrieve credentials through an ADFS
  - New: perls 5.10 and 5.12 are working after changing package syntax. They've been setup for
