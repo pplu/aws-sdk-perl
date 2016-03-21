@@ -60,7 +60,7 @@ receipt rule.
 
 =head2 Enabled => Bool
 
-  If C<true>, the receipt rule is active. The default value is true.
+  If C<true>, the receipt rule is active. The default value is C<false>.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -90,7 +90,7 @@ recipients under all verified domains.
 =head2 ScanEnabled => Bool
 
   If C<true>, then messages to which this receipt rule applies are
-scanned for spam and viruses. The default value is C<true>.
+scanned for spam and viruses. The default value is C<false>.
 
 
 =head2 TlsPolicy => Str
