@@ -1,4 +1,14 @@
 0.23
+ - t/01-load.t will try to unload classes after using them
+ - Inspector API update: New API published
+ - DeviceFarm API update: Offerings
+ - ElastiCache API update: Modify EC cluster types
+ - RDS API update: SQL Server AD Auth
+ - Redshift API update: ModifyClusterIamRoles
+ - StorageGateway API update: SetLocalConsolePassword
+ - WAF API Update: XssMatchSets
+ - S3 API update: PutObject now returns VersionId
+ - CloudFormation API update: Changesets
 
 0.22 21 Mar 2016
  - New: Paws::Credential::AssumeRoleWithSAML for using Paws through STS AssumeRoleWithSAML
