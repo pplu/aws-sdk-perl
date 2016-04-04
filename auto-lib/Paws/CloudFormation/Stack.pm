@@ -121,8 +121,7 @@ if the stack has been updated at least once.
 
 =head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
 
-  A list of C<Tag>s that specify cost allocation information for the
-stack.
+  A list of C<Tag>s that specify information about the stack.
 
 
 =head2 TimeoutInMinutes => Int

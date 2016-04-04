@@ -48,17 +48,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 Capabilities => ArrayRef[Str]
 
 A list of capabilities that you must specify before AWS CloudFormation
-can create or update certain stacks. Some stack templates might include
-resources that can affect permissions in your AWS account. For those
+can update certain stacks. Some stack templates might include resources
+that can affect permissions in your AWS account, for example, by
+creating new AWS Identity and Access Management (IAM) users. For those
 stacks, you must explicitly acknowledge their capabilities by
-specifying this parameter. Currently, the only valid value is
-C<CAPABILITY_IAM>, which is required for the following resources:
-AWS::IAM::AccessKey, AWS::IAM::Group, AWS::IAM::InstanceProfile,
-AWS::IAM::Policy, AWS::IAM::Role, AWS::IAM::User, and
-AWS::IAM::UserToGroupAddition. If your stack template contains these
-resources, we recommend that you review any permissions associated with
-them. If you don't specify this parameter, this action returns an
-InsufficientCapabilities error.
+specifying this parameter.
+
+Currently, the only valid value is C<CAPABILITY_IAM>, which is required
+for the following resources: AWS::IAM::AccessKey, AWS::IAM::Group,
+AWS::IAM::InstanceProfile, AWS::IAM::Policy, AWS::IAM::Role,
+AWS::IAM::User, and AWS::IAM::UserToGroupAddition. If your stack
+template contains these resources, we recommend that you review all
+permissions associated with them and edit their permissions if
+necessary. If your template contains any of the listed resources and
+you don't specify this parameter, this action returns an
+C<InsufficientCapabilities> error.
 
 
 
