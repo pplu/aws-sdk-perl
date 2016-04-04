@@ -75,7 +75,7 @@ list.
 
 =item * Failed: Include failed deployments in the resulting list.
 
-=item * Aborted: Include aborted deployments in the resulting list.
+=item * Stopped: Include stopped deployments in the resulting list.
 
 =back
 
