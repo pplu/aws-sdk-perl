@@ -205,7 +205,10 @@ Each argument is described in detail in: L<Paws::DMS::AddTagsToResource>
 
 Returns: a L<Paws::DMS::AddTagsToResourceResponse> instance
 
-  For internal use only
+  Adds metadata tags to a DMS resource, including replication instance,
+endpoint, security group, and migration task. These tags can also be
+used with cost allocation reporting to track cost associated with DMS
+resources, or used in a Condition statement in an IAM policy for DMS.
 
 
 =head2 CreateEndpoint(EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, Password => Str, Port => Int, ServerName => Str, Username => Str, [DatabaseName => Str, ExtraConnectionAttributes => Str, KmsKeyId => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
@@ -405,7 +408,7 @@ Each argument is described in detail in: L<Paws::DMS::ListTagsForResource>
 
 Returns: a L<Paws::DMS::ListTagsForResourceResponse> instance
 
-  For internal use only
+  Lists all tags for an AWS DMS resource.
 
 
 =head2 ModifyEndpoint(EndpointArn => Str, [DatabaseName => Str, EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, ExtraConnectionAttributes => Str, Password => Str, Port => Int, ServerName => Str, Username => Str])
@@ -457,7 +460,7 @@ Each argument is described in detail in: L<Paws::DMS::RemoveTagsFromResource>
 
 Returns: a L<Paws::DMS::RemoveTagsFromResourceResponse> instance
 
-  For internal use only
+  Removes metadata tags from a DMS resource.
 
 
 =head2 StartReplicationTask(ReplicationTaskArn => Str, StartReplicationTaskType => Str, [CdcStartTime => Str])
