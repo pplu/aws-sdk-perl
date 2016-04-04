@@ -1,4 +1,7 @@
-0.23
+0.23 04 Apr 2016
+ - t/11_client_exceptions was failing if Furl wasn't installed (andk)
+   We skip the test if the required recorder doesn't load, as this
+   Is causing cpantesters failures and installation failures
  - t/01-load.t will try to unload classes after using them
  - Inspector API update: New API published
  - DeviceFarm API update: Offerings
