@@ -916,7 +916,7 @@ Returns: a L<Paws::S3::PutObjectOutput> instance
   Adds an object to a bucket.
 
 
-=head2 PutObjectAcl(Bucket => Str, Key => Str, [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str, RequestPayer => Str])
+=head2 PutObjectAcl(Bucket => Str, Key => Str, [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str, RequestPayer => Str, VersionId => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutObjectAcl>
 

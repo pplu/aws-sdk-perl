@@ -12,6 +12,7 @@ package Paws::S3::PutObjectAcl;
   has GrantWriteACP => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-write-acp' );
   has Key => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Key' , required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
+  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'versionId' );
 
   use MooseX::ClassAttribute;
 
@@ -99,6 +100,12 @@ Allows grantee to write the ACL for the applicable bucket.
 
 
 Valid values are: C<"requester">
+
+=head2 VersionId => Str
+
+VersionId used to reference a specific version of the object.
+
+
 
 
 =cut
