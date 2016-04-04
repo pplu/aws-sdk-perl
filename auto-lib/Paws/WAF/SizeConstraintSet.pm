@@ -58,7 +58,7 @@ of.
   A unique identifier for a C<SizeConstraintSet>. You use
 C<SizeConstraintSetId> to get information about a C<SizeConstraintSet>
 (see GetSizeConstraintSet), update a C<SizeConstraintSet> (see
-UpdateSizeConstraintSet, insert a C<SizeConstraintSet> into a C<Rule>
+UpdateSizeConstraintSet), insert a C<SizeConstraintSet> into a C<Rule>
 or delete one from a C<Rule> (see UpdateRule), and delete a
 C<SizeConstraintSet> from AWS WAF (see DeleteSizeConstraintSet).
 
