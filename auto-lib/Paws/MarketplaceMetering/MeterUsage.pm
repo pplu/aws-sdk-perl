@@ -3,7 +3,7 @@ package Paws::MarketplaceMetering::MeterUsage;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', required => 1);
   has ProductCode => (is => 'ro', isa => 'Str', required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  has Timestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has UsageDimension => (is => 'ro', isa => 'Str', required => 1);
   has UsageQuantity => (is => 'ro', isa => 'Int', required => 1);
 
@@ -53,7 +53,7 @@ publishing of a new product.
 
 
 
-=head2 B<REQUIRED> Timestamp => Str
+=head2 B<REQUIRED> Timestamp => L<Paws::API::TimeStamp>
 
 Timestamp of the hour, recorded in UTC. The seconds and milliseconds
 portions of the timestamp will be ignored.

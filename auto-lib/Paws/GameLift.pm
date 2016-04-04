@@ -680,7 +680,7 @@ request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
 
 
-=head2 DescribeFleetEvents(FleetId => Str, [EndTime => Str, Limit => Int, NextToken => Str, StartTime => Str])
+=head2 DescribeFleetEvents(FleetId => Str, [EndTime => L<Paws::API::TimeStamp>, Limit => Int, NextToken => Str, StartTime => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeFleetEvents>
 

@@ -3,7 +3,7 @@ package Paws::CloudWatch::MetricAlarm;
   has ActionsEnabled => (is => 'ro', isa => 'Bool');
   has AlarmActions => (is => 'ro', isa => 'ArrayRef[Str]');
   has AlarmArn => (is => 'ro', isa => 'Str');
-  has AlarmConfigurationUpdatedTimestamp => (is => 'ro', isa => 'Str');
+  has AlarmConfigurationUpdatedTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has AlarmDescription => (is => 'ro', isa => 'Str');
   has AlarmName => (is => 'ro', isa => 'Str');
   has ComparisonOperator => (is => 'ro', isa => 'Str');
@@ -16,7 +16,7 @@ package Paws::CloudWatch::MetricAlarm;
   has Period => (is => 'ro', isa => 'Int');
   has StateReason => (is => 'ro', isa => 'Str');
   has StateReasonData => (is => 'ro', isa => 'Str');
-  has StateUpdatedTimestamp => (is => 'ro', isa => 'Str');
+  has StateUpdatedTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has StateValue => (is => 'ro', isa => 'Str');
   has Statistic => (is => 'ro', isa => 'Str');
   has Threshold => (is => 'ro', isa => 'Num');
@@ -75,7 +75,7 @@ Amazon Resource Name (ARN).
   The Amazon Resource Name (ARN) of the alarm.
 
 
-=head2 AlarmConfigurationUpdatedTimestamp => Str
+=head2 AlarmConfigurationUpdatedTimestamp => L<Paws::API::TimeStamp>
 
   The time stamp of the last update to the alarm configuration.
 
@@ -149,7 +149,7 @@ Resource Name (ARN).
   An explanation for the alarm's state in machine-readable JSON format
 
 
-=head2 StateUpdatedTimestamp => Str
+=head2 StateUpdatedTimestamp => L<Paws::API::TimeStamp>
 
   The time stamp of the last update to the alarm's state.
 

@@ -3,14 +3,14 @@ package Paws::Config::ConfigRuleEvaluationStatus;
   has ConfigRuleArn => (is => 'ro', isa => 'Str');
   has ConfigRuleId => (is => 'ro', isa => 'Str');
   has ConfigRuleName => (is => 'ro', isa => 'Str');
-  has FirstActivatedTime => (is => 'ro', isa => 'Str');
+  has FirstActivatedTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has FirstEvaluationStarted => (is => 'ro', isa => 'Bool');
   has LastErrorCode => (is => 'ro', isa => 'Str');
   has LastErrorMessage => (is => 'ro', isa => 'Str');
-  has LastFailedEvaluationTime => (is => 'ro', isa => 'Str');
-  has LastFailedInvocationTime => (is => 'ro', isa => 'Str');
-  has LastSuccessfulEvaluationTime => (is => 'ro', isa => 'Str');
-  has LastSuccessfulInvocationTime => (is => 'ro', isa => 'Str');
+  has LastFailedEvaluationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has LastFailedInvocationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has LastSuccessfulEvaluationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has LastSuccessfulInvocationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +66,7 @@ Config rules.
   The name of the AWS Config rule.
 
 
-=head2 FirstActivatedTime => Str
+=head2 FirstActivatedTime => L<Paws::API::TimeStamp>
 
   The time that you first activated the AWS Config rule.
 
@@ -98,25 +98,25 @@ resources against the rule.
   The error message that AWS Config returned when the rule last failed.
 
 
-=head2 LastFailedEvaluationTime => Str
+=head2 LastFailedEvaluationTime => L<Paws::API::TimeStamp>
 
   The time that AWS Config last failed to evaluate your AWS resources
 against the rule.
 
 
-=head2 LastFailedInvocationTime => Str
+=head2 LastFailedInvocationTime => L<Paws::API::TimeStamp>
 
   The time that AWS Config last failed to invoke the AWS Config rule to
 evaluate your AWS resources.
 
 
-=head2 LastSuccessfulEvaluationTime => Str
+=head2 LastSuccessfulEvaluationTime => L<Paws::API::TimeStamp>
 
   The time that AWS Config last successfully evaluated your AWS resources
 against the rule.
 
 
-=head2 LastSuccessfulInvocationTime => Str
+=head2 LastSuccessfulInvocationTime => L<Paws::API::TimeStamp>
 
   The time that AWS Config last successfully invoked the AWS Config rule
 to evaluate your AWS resources.

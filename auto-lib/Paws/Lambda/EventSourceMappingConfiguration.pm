@@ -4,7 +4,7 @@ package Paws::Lambda::EventSourceMappingConfiguration;
   has BatchSize => (is => 'ro', isa => 'Int');
   has EventSourceArn => (is => 'ro', isa => 'Str');
   has FunctionArn => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
+  has LastModified => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LastProcessingResult => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has StateTransitionReason => (is => 'ro', isa => 'Str');
@@ -43,7 +43,7 @@ stream.
 
 
 
-=head2 LastModified => Str
+=head2 LastModified => L<Paws::API::TimeStamp>
 
 The UTC time string indicating the last time the event mapping was
 updated.

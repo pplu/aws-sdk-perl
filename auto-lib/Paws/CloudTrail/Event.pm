@@ -3,7 +3,7 @@ package Paws::CloudTrail::Event;
   has CloudTrailEvent => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
   has EventName => (is => 'ro', isa => 'Str');
-  has EventTime => (is => 'ro', isa => 'Str');
+  has EventTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Resources => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::Resource]');
   has Username => (is => 'ro', isa => 'Str');
 1;
@@ -57,7 +57,7 @@ request. The result includes a representation of a CloudTrail event.
   The name of the event returned.
 
 
-=head2 EventTime => Str
+=head2 EventTime => L<Paws::API::TimeStamp>
 
   The date and time of the event returned.
 

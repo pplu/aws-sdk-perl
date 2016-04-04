@@ -1,7 +1,7 @@
 package Paws::IAM::AccessKey;
   use Moose;
   has AccessKeyId => (is => 'ro', isa => 'Str', required => 1);
-  has CreateDate => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SecretAccessKey => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
@@ -53,7 +53,7 @@ If you lose a secret access key, you must create a new access key.
   The ID for this access key.
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
   The date when the access key was created.
 

@@ -1,11 +1,11 @@
 package Paws::Config::ConfigExportDeliveryInfo;
   use Moose;
-  has LastAttemptTime => (is => 'ro', isa => 'Str', xmlname => 'lastAttemptTime', request_name => 'lastAttemptTime', traits => ['Unwrapped','NameInRequest']);
+  has LastAttemptTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'lastAttemptTime', request_name => 'lastAttemptTime', traits => ['Unwrapped','NameInRequest']);
   has LastErrorCode => (is => 'ro', isa => 'Str', xmlname => 'lastErrorCode', request_name => 'lastErrorCode', traits => ['Unwrapped','NameInRequest']);
   has LastErrorMessage => (is => 'ro', isa => 'Str', xmlname => 'lastErrorMessage', request_name => 'lastErrorMessage', traits => ['Unwrapped','NameInRequest']);
   has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
-  has LastSuccessfulTime => (is => 'ro', isa => 'Str', xmlname => 'lastSuccessfulTime', request_name => 'lastSuccessfulTime', traits => ['Unwrapped','NameInRequest']);
-  has NextDeliveryTime => (is => 'ro', isa => 'Str', xmlname => 'nextDeliveryTime', request_name => 'nextDeliveryTime', traits => ['Unwrapped','NameInRequest']);
+  has LastSuccessfulTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'lastSuccessfulTime', request_name => 'lastSuccessfulTime', traits => ['Unwrapped','NameInRequest']);
+  has NextDeliveryTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'nextDeliveryTime', request_name => 'nextDeliveryTime', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ or the configuration history to the specified Amazon S3 bucket.
 =head1 ATTRIBUTES
 
 
-=head2 LastAttemptTime => Str
+=head2 LastAttemptTime => L<Paws::API::TimeStamp>
 
   The time of the last attempted delivery.
 
@@ -62,12 +62,12 @@ or the configuration history to the specified Amazon S3 bucket.
   Status of the last attempted delivery.
 
 
-=head2 LastSuccessfulTime => Str
+=head2 LastSuccessfulTime => L<Paws::API::TimeStamp>
 
   The time of the last successful delivery.
 
 
-=head2 NextDeliveryTime => Str
+=head2 NextDeliveryTime => L<Paws::API::TimeStamp>
 
   The time that the next delivery occurs.
 

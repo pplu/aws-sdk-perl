@@ -1,8 +1,8 @@
 
 package Paws::CognitoSync::GetBulkPublishDetailsResponse;
   use Moose;
-  has BulkPublishCompleteTime => (is => 'ro', isa => 'Str');
-  has BulkPublishStartTime => (is => 'ro', isa => 'Str');
+  has BulkPublishCompleteTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has BulkPublishStartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has BulkPublishStatus => (is => 'ro', isa => 'Str');
   has FailureMessage => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str');
@@ -18,14 +18,14 @@ Paws::CognitoSync::GetBulkPublishDetailsResponse
 =head1 ATTRIBUTES
 
 
-=head2 BulkPublishCompleteTime => Str
+=head2 BulkPublishCompleteTime => L<Paws::API::TimeStamp>
 
 If BulkPublishStatus is SUCCEEDED, the time the last bulk publish
 operation completed.
 
 
 
-=head2 BulkPublishStartTime => Str
+=head2 BulkPublishStartTime => L<Paws::API::TimeStamp>
 
 The date/time at which the last bulk publish was initiated.
 

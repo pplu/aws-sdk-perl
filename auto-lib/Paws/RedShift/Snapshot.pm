@@ -4,7 +4,7 @@ package Paws::RedShift::Snapshot;
   has ActualIncrementalBackupSizeInMegaBytes => (is => 'ro', isa => 'Num');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has BackupProgressInMegaBytes => (is => 'ro', isa => 'Num');
-  has ClusterCreateTime => (is => 'ro', isa => 'Str');
+  has ClusterCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
   has CurrentBackupRateInMegaBytesPerSecond => (is => 'ro', isa => 'Num');
@@ -20,7 +20,7 @@ package Paws::RedShift::Snapshot;
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has RestorableNodeTypes => (is => 'ro', isa => 'ArrayRef[Str]');
-  has SnapshotCreateTime => (is => 'ro', isa => 'Str');
+  has SnapshotCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
@@ -86,7 +86,7 @@ snapshot owner.
 backup.
 
 
-=head2 ClusterCreateTime => Str
+=head2 ClusterCreateTime => L<Paws::API::TimeStamp>
 
   The time (UTC) when the cluster was originally created.
 
@@ -178,7 +178,7 @@ snapshot.
 into.
 
 
-=head2 SnapshotCreateTime => Str
+=head2 SnapshotCreateTime => L<Paws::API::TimeStamp>
 
   The time (UTC) when Amazon Redshift began the snapshot. A snapshot
 contains a copy of the cluster data as of this exact time.

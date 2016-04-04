@@ -4,7 +4,7 @@ package Paws::AutoScaling::LaunchConfiguration;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::BlockDeviceMapping]');
   has ClassicLinkVPCId => (is => 'ro', isa => 'Str');
   has ClassicLinkVPCSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
-  has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
+  has CreatedTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
@@ -83,7 +83,7 @@ information, see ClassicLink in the I<Amazon Elastic Compute Cloud User
 Guide>.
 
 
-=head2 B<REQUIRED> CreatedTime => Str
+=head2 B<REQUIRED> CreatedTime => L<Paws::API::TimeStamp>
 
   The creation date and time for the launch configuration.
 

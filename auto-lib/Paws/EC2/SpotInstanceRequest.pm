@@ -3,7 +3,7 @@ package Paws::EC2::SpotInstanceRequest;
   has ActualBlockHourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'actualBlockHourlyPrice', traits => ['Unwrapped']);
   has AvailabilityZoneGroup => (is => 'ro', isa => 'Str', xmlname => 'availabilityZoneGroup', traits => ['Unwrapped']);
   has BlockDurationMinutes => (is => 'ro', isa => 'Int', xmlname => 'blockDurationMinutes', traits => ['Unwrapped']);
-  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', traits => ['Unwrapped']);
+  has CreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createTime', traits => ['Unwrapped']);
   has Fault => (is => 'ro', isa => 'Paws::EC2::SpotInstanceStateFault', xmlname => 'fault', traits => ['Unwrapped']);
   has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
   has LaunchedAvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'launchedAvailabilityZone', traits => ['Unwrapped']);
@@ -16,8 +16,8 @@ package Paws::EC2::SpotInstanceRequest;
   has Status => (is => 'ro', isa => 'Paws::EC2::SpotInstanceStatus', xmlname => 'status', traits => ['Unwrapped']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
   has Type => (is => 'ro', isa => 'Str', xmlname => 'type', traits => ['Unwrapped']);
-  has ValidFrom => (is => 'ro', isa => 'Str', xmlname => 'validFrom', traits => ['Unwrapped']);
-  has ValidUntil => (is => 'ro', isa => 'Str', xmlname => 'validUntil', traits => ['Unwrapped']);
+  has ValidFrom => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'validFrom', traits => ['Unwrapped']);
+  has ValidUntil => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'validUntil', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -72,7 +72,7 @@ in the same Availability Zone.
   The duration for the Spot instance, in minutes.
 
 
-=head2 CreateTime => Str
+=head2 CreateTime => L<Paws::API::TimeStamp>
 
   The date and time when the Spot instance request was created, in UTC
 format (for example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
@@ -144,14 +144,14 @@ request.
   The Spot instance request type.
 
 
-=head2 ValidFrom => Str
+=head2 ValidFrom => L<Paws::API::TimeStamp>
 
   The start date of the request, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). The request becomes active at
 this date and time.
 
 
-=head2 ValidUntil => Str
+=head2 ValidUntil => L<Paws::API::TimeStamp>
 
   The end date of the request, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). If this is a one-time request,

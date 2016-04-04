@@ -3,8 +3,8 @@ package Paws::RDS::Certificate;
   has CertificateIdentifier => (is => 'ro', isa => 'Str');
   has CertificateType => (is => 'ro', isa => 'Str');
   has Thumbprint => (is => 'ro', isa => 'Str');
-  has ValidFrom => (is => 'ro', isa => 'Str');
-  has ValidTill => (is => 'ro', isa => 'Str');
+  has ValidFrom => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has ValidTill => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -55,12 +55,12 @@ A CA certificate for an AWS account.
   The thumbprint of the certificate.
 
 
-=head2 ValidFrom => Str
+=head2 ValidFrom => L<Paws::API::TimeStamp>
 
   The starting date from which the certificate is valid.
 
 
-=head2 ValidTill => Str
+=head2 ValidTill => L<Paws::API::TimeStamp>
 
   The final date that the certificate continues to be valid.
 

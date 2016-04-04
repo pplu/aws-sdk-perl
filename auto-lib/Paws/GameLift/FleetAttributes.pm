@@ -1,7 +1,7 @@
 package Paws::GameLift::FleetAttributes;
   use Moose;
   has BuildId => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
+  has CreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -10,7 +10,7 @@ package Paws::GameLift::FleetAttributes;
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
-  has TerminationTime => (is => 'ro', isa => 'Str');
+  has TerminationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +51,7 @@ General properties describing a fleet.
   Unique identifier for a build.
 
 
-=head2 CreationTime => Str
+=head2 CreationTime => L<Paws::API::TimeStamp>
 
   Time stamp indicating when this object was created. Format is an
 integer representing the number of seconds since the Unix epoch (Unix
@@ -139,7 +139,7 @@ building, or activating the fleet.
 
 
 
-=head2 TerminationTime => Str
+=head2 TerminationTime => L<Paws::API::TimeStamp>
 
   Time stamp indicating when this fleet was terminated. Format is an
 integer representing the number of seconds since the Unix epoch (Unix

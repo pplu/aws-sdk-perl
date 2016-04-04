@@ -3,7 +3,7 @@ package Paws::CodePipeline::ActionExecution;
   has ErrorDetails => (is => 'ro', isa => 'Paws::CodePipeline::ErrorDetails', xmlname => 'errorDetails', request_name => 'errorDetails', traits => ['Unwrapped','NameInRequest']);
   has ExternalExecutionId => (is => 'ro', isa => 'Str', xmlname => 'externalExecutionId', request_name => 'externalExecutionId', traits => ['Unwrapped','NameInRequest']);
   has ExternalExecutionUrl => (is => 'ro', isa => 'Str', xmlname => 'externalExecutionUrl', request_name => 'externalExecutionUrl', traits => ['Unwrapped','NameInRequest']);
-  has LastStatusChange => (is => 'ro', isa => 'Str', xmlname => 'lastStatusChange', request_name => 'lastStatusChange', traits => ['Unwrapped','NameInRequest']);
+  has LastStatusChange => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'lastStatusChange', request_name => 'lastStatusChange', traits => ['Unwrapped','NameInRequest']);
   has PercentComplete => (is => 'ro', isa => 'Int', xmlname => 'percentComplete', request_name => 'percentComplete', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
   has Summary => (is => 'ro', isa => 'Str', xmlname => 'summary', request_name => 'summary', traits => ['Unwrapped','NameInRequest']);
@@ -58,7 +58,7 @@ Represents information about how an action runs.
 the action, for example an external repository URL.
 
 
-=head2 LastStatusChange => Str
+=head2 LastStatusChange => L<Paws::API::TimeStamp>
 
   The last status change of the action.
 

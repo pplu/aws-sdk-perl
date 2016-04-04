@@ -2,7 +2,7 @@ package Paws::S3::DeleteMarkerEntry;
   use Moose;
   has IsLatest => (is => 'ro', isa => 'Bool');
   has Key => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
+  has LastModified => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
   has VersionId => (is => 'ro', isa => 'Str');
 1;
@@ -51,7 +51,7 @@ version of an object.
   The object key.
 
 
-=head2 LastModified => Str
+=head2 LastModified => L<Paws::API::TimeStamp>
 
   Date and time the object was last modified.
 

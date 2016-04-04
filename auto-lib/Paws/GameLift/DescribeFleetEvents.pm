@@ -1,11 +1,11 @@
 
 package Paws::GameLift::DescribeFleetEvents;
   use Moose;
-  has EndTime => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has FleetId => (is => 'ro', isa => 'Str', required => 1);
   has Limit => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 
   use MooseX::ClassAttribute;
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
 Most recent date to retrieve event logs for. If no end time is
 specified, this call returns entries from the specified start time up
@@ -67,7 +67,7 @@ specify the start of the result set, do not specify a value.
 
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
 Earliest date to retrieve event logs for. If no start time is
 specified, this call returns entries starting from when the fleet was

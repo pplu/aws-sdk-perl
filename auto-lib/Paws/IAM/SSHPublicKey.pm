@@ -4,7 +4,7 @@ package Paws::IAM::SSHPublicKey;
   has SSHPublicKeyBody => (is => 'ro', isa => 'Str', required => 1);
   has SSHPublicKeyId => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
-  has UploadDate => (is => 'ro', isa => 'Str');
+  has UploadDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -66,7 +66,7 @@ for authentication with an AWS CodeCommit repository. C<Inactive> means
 the key cannot be used.
 
 
-=head2 UploadDate => Str
+=head2 UploadDate => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the SSH public
 key was uploaded.

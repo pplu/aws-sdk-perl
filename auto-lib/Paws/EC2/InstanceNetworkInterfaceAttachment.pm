@@ -1,7 +1,7 @@
 package Paws::EC2::InstanceNetworkInterfaceAttachment;
   use Moose;
   has AttachmentId => (is => 'ro', isa => 'Str', xmlname => 'attachmentId', traits => ['Unwrapped']);
-  has AttachTime => (is => 'ro', isa => 'Str', xmlname => 'attachTime', traits => ['Unwrapped']);
+  has AttachTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'attachTime', traits => ['Unwrapped']);
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', xmlname => 'deleteOnTermination', traits => ['Unwrapped']);
   has DeviceIndex => (is => 'ro', isa => 'Int', xmlname => 'deviceIndex', traits => ['Unwrapped']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped']);
@@ -45,7 +45,7 @@ This class has no description
   The ID of the network interface attachment.
 
 
-=head2 AttachTime => Str
+=head2 AttachTime => L<Paws::API::TimeStamp>
 
   The time stamp when the attachment initiated.
 

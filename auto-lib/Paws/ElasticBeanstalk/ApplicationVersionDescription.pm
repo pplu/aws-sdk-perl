@@ -1,8 +1,8 @@
 package Paws::ElasticBeanstalk::ApplicationVersionDescription;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
-  has DateCreated => (is => 'ro', isa => 'Str');
-  has DateUpdated => (is => 'ro', isa => 'Str');
+  has DateCreated => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has DateUpdated => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
   has SourceBundle => (is => 'ro', isa => 'Paws::ElasticBeanstalk::S3Location');
   has Status => (is => 'ro', isa => 'Str');
@@ -47,12 +47,12 @@ Describes the properties of an application version.
   The name of the application associated with this release.
 
 
-=head2 DateCreated => Str
+=head2 DateCreated => L<Paws::API::TimeStamp>
 
   The creation date of the application version.
 
 
-=head2 DateUpdated => Str
+=head2 DateUpdated => L<Paws::API::TimeStamp>
 
   The last modified date of the application version.
 

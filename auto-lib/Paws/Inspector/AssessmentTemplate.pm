@@ -2,7 +2,7 @@ package Paws::Inspector::AssessmentTemplate;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest'], required => 1);
   has AssessmentTargetArn => (is => 'ro', isa => 'Str', xmlname => 'assessmentTargetArn', request_name => 'assessmentTargetArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
   has DurationInSeconds => (is => 'ro', isa => 'Int', xmlname => 'durationInSeconds', request_name => 'durationInSeconds', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
   has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest'], required => 1);
@@ -55,7 +55,7 @@ action.
 template.
 
 
-=head2 B<REQUIRED> CreatedAt => Str
+=head2 B<REQUIRED> CreatedAt => L<Paws::API::TimeStamp>
 
   The time at which the assessment template is created.
 

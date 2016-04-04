@@ -1,7 +1,7 @@
 
 package Paws::S3::ListPartsOutput;
   use Moose;
-  has AbortDate => (is => 'ro', isa => 'Str');
+  has AbortDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has AbortRuleId => (is => 'ro', isa => 'Str');
   has Bucket => (is => 'ro', isa => 'Str');
   has Initiator => (is => 'ro', isa => 'Paws::S3::Initiator');
@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AbortDate => Str
+=head2 AbortDate => L<Paws::API::TimeStamp>
 
 Date when multipart upload will become eligible for abort operation by
 lifecycle.

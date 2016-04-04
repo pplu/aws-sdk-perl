@@ -4,7 +4,7 @@ package Paws::DMS::ReplicationInstance;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
-  has InstanceCreateTime => (is => 'ro', isa => 'Str');
+  has InstanceCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::DMS::ReplicationPendingModifiedValues');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -73,7 +73,7 @@ automatically applied to the instance.
   The engine version number of the replication instance.
 
 
-=head2 InstanceCreateTime => Str
+=head2 InstanceCreateTime => L<Paws::API::TimeStamp>
 
   The time the replication instance was created.
 

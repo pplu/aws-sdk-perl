@@ -9,7 +9,7 @@ package Paws::RedShift::EventSubscription;
   has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str]');
   has SourceType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
-  has SubscriptionCreationTime => (is => 'ro', isa => 'Str');
+  has SubscriptionCreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::Tag]');
 1;
 
@@ -117,7 +117,7 @@ subscription was created.
 
 
 
-=head2 SubscriptionCreationTime => Str
+=head2 SubscriptionCreationTime => L<Paws::API::TimeStamp>
 
   The date and time the Amazon Redshift event notification subscription
 was created.

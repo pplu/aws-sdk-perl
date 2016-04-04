@@ -1,8 +1,8 @@
 
 package Paws::EMR::DescribeJobFlows;
   use Moose;
-  has CreatedAfter => (is => 'ro', isa => 'Str');
-  has CreatedBefore => (is => 'ro', isa => 'Str');
+  has CreatedAfter => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has CreatedBefore => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has JobFlowIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has JobFlowStates => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -36,13 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 CreatedAfter => Str
+=head2 CreatedAfter => L<Paws::API::TimeStamp>
 
 Return only job flows created after this date and time.
 
 
 
-=head2 CreatedBefore => Str
+=head2 CreatedBefore => L<Paws::API::TimeStamp>
 
 Return only job flows created before this date and time.
 

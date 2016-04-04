@@ -1,7 +1,7 @@
 package Paws::ElastiCache::CacheCluster;
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
+  has CacheClusterCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CacheClusterId => (is => 'ro', isa => 'Str');
   has CacheClusterStatus => (is => 'ro', isa => 'Str');
   has CacheNodes => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNode]');
@@ -62,7 +62,7 @@ Contains all of the attributes of a specific cache cluster.
   This parameter is currently disabled.
 
 
-=head2 CacheClusterCreateTime => Str
+=head2 CacheClusterCreateTime => L<Paws::API::TimeStamp>
 
   The date and time when the cache cluster was created.
 

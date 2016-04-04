@@ -1,6 +1,6 @@
 package Paws::SSM::DocumentDescription;
   use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentParameter]');
@@ -42,7 +42,7 @@ Describes an SSM document.
 =head1 ATTRIBUTES
 
 
-=head2 CreatedDate => Str
+=head2 CreatedDate => L<Paws::API::TimeStamp>
 
   The date when the SSM document was created.
 

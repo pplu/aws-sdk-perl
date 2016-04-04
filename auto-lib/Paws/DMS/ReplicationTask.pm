@@ -4,10 +4,10 @@ package Paws::DMS::ReplicationTask;
   has MigrationType => (is => 'ro', isa => 'Str');
   has ReplicationInstanceArn => (is => 'ro', isa => 'Str');
   has ReplicationTaskArn => (is => 'ro', isa => 'Str');
-  has ReplicationTaskCreationDate => (is => 'ro', isa => 'Str');
+  has ReplicationTaskCreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has ReplicationTaskIdentifier => (is => 'ro', isa => 'Str');
   has ReplicationTaskSettings => (is => 'ro', isa => 'Str');
-  has ReplicationTaskStartDate => (is => 'ro', isa => 'Str');
+  has ReplicationTaskStartDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has ReplicationTaskStats => (is => 'ro', isa => 'Paws::DMS::ReplicationTaskStats');
   has SourceEndpointArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -69,7 +69,7 @@ instance.
   The Amazon Resource Name (ARN) of the replication task.
 
 
-=head2 ReplicationTaskCreationDate => Str
+=head2 ReplicationTaskCreationDate => L<Paws::API::TimeStamp>
 
   The date the replication task was created.
 
@@ -97,7 +97,7 @@ Constraints:
   The settings for the replication task.
 
 
-=head2 ReplicationTaskStartDate => Str
+=head2 ReplicationTaskStartDate => L<Paws::API::TimeStamp>
 
   The date the replication task is scheduled to start.
 

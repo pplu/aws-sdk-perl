@@ -6,10 +6,10 @@ package Paws::Route53Domains::GetDomainDetailResponse;
   has AdminContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
   has AdminPrivacy => (is => 'ro', isa => 'Bool');
   has AutoRenew => (is => 'ro', isa => 'Bool');
-  has CreationDate => (is => 'ro', isa => 'Str');
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DnsSec => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has ExpirationDate => (is => 'ro', isa => 'Str');
+  has ExpirationDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Nameservers => (is => 'ro', isa => 'ArrayRef[Paws::Route53Domains::Nameserver]', required => 1);
   has RegistrantContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
   has RegistrantPrivacy => (is => 'ro', isa => 'Bool');
@@ -20,7 +20,7 @@ package Paws::Route53Domains::GetDomainDetailResponse;
   has StatusList => (is => 'ro', isa => 'ArrayRef[Str]');
   has TechContact => (is => 'ro', isa => 'Paws::Route53Domains::ContactDetail', required => 1);
   has TechPrivacy => (is => 'ro', isa => 'Bool');
-  has UpdatedDate => (is => 'ro', isa => 'Str');
+  has UpdatedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has WhoIsServer => (is => 'ro', isa => 'Str');
 
 
@@ -85,7 +85,7 @@ Type: Boolean
 
 
 
-=head2 CreationDate => Str
+=head2 CreationDate => L<Paws::API::TimeStamp>
 
 The date when the domain was created as found in the response to a
 WHOIS query. The date format is Unix time.
@@ -106,7 +106,7 @@ Type: String
 
 
 
-=head2 ExpirationDate => Str
+=head2 ExpirationDate => L<Paws::API::TimeStamp>
 
 The date when the registration for the domain is set to expire. The
 date format is Unix time.
@@ -223,7 +223,7 @@ Type: Boolean
 
 
 
-=head2 UpdatedDate => Str
+=head2 UpdatedDate => L<Paws::API::TimeStamp>
 
 The last updated date of the domain as found in the response to a WHOIS
 query. The date format is Unix time.

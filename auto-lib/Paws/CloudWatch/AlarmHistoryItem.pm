@@ -4,7 +4,7 @@ package Paws::CloudWatch::AlarmHistoryItem;
   has HistoryData => (is => 'ro', isa => 'Str');
   has HistoryItemType => (is => 'ro', isa => 'Str');
   has HistorySummary => (is => 'ro', isa => 'Str');
-  has Timestamp => (is => 'ro', isa => 'Str');
+  has Timestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +63,7 @@ of the DescribeAlarmHistoryResult data type.
   A human-readable summary of the alarm history.
 
 
-=head2 Timestamp => Str
+=head2 Timestamp => L<Paws::API::TimeStamp>
 
   The time stamp for the alarm history item.
 

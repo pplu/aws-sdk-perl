@@ -1,7 +1,7 @@
 package Paws::IAM::AccessKeyMetadata;
   use Moose;
   has AccessKeyId => (is => 'ro', isa => 'Str');
-  has CreateDate => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Status => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
 1;
@@ -47,7 +47,7 @@ action.
   The ID for this access key.
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
   The date when the access key was created.
 

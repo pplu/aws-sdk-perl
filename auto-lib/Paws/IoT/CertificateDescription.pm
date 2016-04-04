@@ -3,8 +3,8 @@ package Paws::IoT::CertificateDescription;
   has CertificateArn => (is => 'ro', isa => 'Str', xmlname => 'certificateArn', request_name => 'certificateArn', traits => ['Unwrapped','NameInRequest']);
   has CertificateId => (is => 'ro', isa => 'Str', xmlname => 'certificateId', request_name => 'certificateId', traits => ['Unwrapped','NameInRequest']);
   has CertificatePem => (is => 'ro', isa => 'Str', xmlname => 'certificatePem', request_name => 'certificatePem', traits => ['Unwrapped','NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
-  has LastModifiedDate => (is => 'ro', isa => 'Str', xmlname => 'lastModifiedDate', request_name => 'lastModifiedDate', traits => ['Unwrapped','NameInRequest']);
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
+  has LastModifiedDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'lastModifiedDate', request_name => 'lastModifiedDate', traits => ['Unwrapped','NameInRequest']);
   has OwnedBy => (is => 'ro', isa => 'Str', xmlname => 'ownedBy', request_name => 'ownedBy', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
 1;
@@ -57,12 +57,12 @@ Describes a certificate.
   The certificate data, in PEM format.
 
 
-=head2 CreationDate => Str
+=head2 CreationDate => L<Paws::API::TimeStamp>
 
   The date and time the certificate was created.
 
 
-=head2 LastModifiedDate => Str
+=head2 LastModifiedDate => L<Paws::API::TimeStamp>
 
   The date and time the certificate was last modified.
 

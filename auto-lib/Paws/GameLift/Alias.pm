@@ -1,9 +1,9 @@
 package Paws::GameLift::Alias;
   use Moose;
   has AliasId => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
+  has CreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
-  has LastUpdatedTime => (is => 'ro', isa => 'Str');
+  has LastUpdatedTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Name => (is => 'ro', isa => 'Str');
   has RoutingStrategy => (is => 'ro', isa => 'Paws::GameLift::RoutingStrategy');
 1;
@@ -46,7 +46,7 @@ Properties describing a fleet alias.
   Unique identifier for a fleet alias.
 
 
-=head2 CreationTime => Str
+=head2 CreationTime => L<Paws::API::TimeStamp>
 
   Time stamp indicating when this object was created. Format is an
 integer representing the number of seconds since the Unix epoch (Unix
@@ -58,7 +58,7 @@ time).
   Human-readable description of the alias.
 
 
-=head2 LastUpdatedTime => Str
+=head2 LastUpdatedTime => L<Paws::API::TimeStamp>
 
   Time stamp indicating when this object was last modified. Format is an
 integer representing the number of seconds since the Unix epoch (Unix

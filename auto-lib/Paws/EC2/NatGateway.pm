@@ -1,7 +1,7 @@
 package Paws::EC2::NatGateway;
   use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', traits => ['Unwrapped']);
-  has DeleteTime => (is => 'ro', isa => 'Str', xmlname => 'deleteTime', traits => ['Unwrapped']);
+  has CreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createTime', traits => ['Unwrapped']);
+  has DeleteTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'deleteTime', traits => ['Unwrapped']);
   has FailureCode => (is => 'ro', isa => 'Str', xmlname => 'failureCode', traits => ['Unwrapped']);
   has FailureMessage => (is => 'ro', isa => 'Str', xmlname => 'failureMessage', traits => ['Unwrapped']);
   has NatGatewayAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NatGatewayAddress]', xmlname => 'natGatewayAddressSet', traits => ['Unwrapped']);
@@ -44,12 +44,12 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 CreateTime => Str
+=head2 CreateTime => L<Paws::API::TimeStamp>
 
   The date and time the NAT gateway was created.
 
 
-=head2 DeleteTime => Str
+=head2 DeleteTime => L<Paws::API::TimeStamp>
 
   The date and time the NAT gateway was deleted, if applicable.
 

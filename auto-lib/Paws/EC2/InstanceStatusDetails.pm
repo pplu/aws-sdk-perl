@@ -1,6 +1,6 @@
 package Paws::EC2::InstanceStatusDetails;
   use Moose;
-  has ImpairedSince => (is => 'ro', isa => 'Str', xmlname => 'impairedSince', traits => ['Unwrapped']);
+  has ImpairedSince => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'impairedSince', traits => ['Unwrapped']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', traits => ['Unwrapped']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped']);
 1;
@@ -38,7 +38,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 ImpairedSince => Str
+=head2 ImpairedSince => L<Paws::API::TimeStamp>
 
   The time when a status check failed. For an instance that was launched
 and impaired, this is the time when the instance was launched.

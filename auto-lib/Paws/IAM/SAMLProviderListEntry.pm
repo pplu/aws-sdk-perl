@@ -1,8 +1,8 @@
 package Paws::IAM::SAMLProviderListEntry;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
-  has CreateDate => (is => 'ro', isa => 'Str');
-  has ValidUntil => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has ValidUntil => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -43,12 +43,12 @@ Contains the list of SAML providers for this account.
   The Amazon Resource Name (ARN) of the SAML provider.
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
   The date and time when the SAML provider was created.
 
 
-=head2 ValidUntil => Str
+=head2 ValidUntil => L<Paws::API::TimeStamp>
 
   The expiration date and time for the SAML provider.
 

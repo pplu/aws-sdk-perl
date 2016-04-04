@@ -3,7 +3,7 @@ package Paws::ElasticBeanstalk::EnvironmentInfoDescription;
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has InfoType => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
-  has SampleTimestamp => (is => 'ro', isa => 'Str');
+  has SampleTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -54,7 +54,7 @@ The information retrieved from the Amazon EC2 instances.
   The retrieved information.
 
 
-=head2 SampleTimestamp => Str
+=head2 SampleTimestamp => L<Paws::API::TimeStamp>
 
   The time stamp when this information was retrieved.
 

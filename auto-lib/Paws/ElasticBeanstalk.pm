@@ -470,7 +470,7 @@ Returns: a L<Paws::ElasticBeanstalk::EnvironmentResourceDescriptionsMessage> ins
   Returns AWS resources for this environment.
 
 
-=head2 DescribeEnvironments([ApplicationName => Str, EnvironmentIds => ArrayRef[Str], EnvironmentNames => ArrayRef[Str], IncludedDeletedBackTo => Str, IncludeDeleted => Bool, VersionLabel => Str])
+=head2 DescribeEnvironments([ApplicationName => Str, EnvironmentIds => ArrayRef[Str], EnvironmentNames => ArrayRef[Str], IncludedDeletedBackTo => L<Paws::API::TimeStamp>, IncludeDeleted => Bool, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironments>
 
@@ -479,7 +479,7 @@ Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage> instance
   Returns descriptions for existing environments.
 
 
-=head2 DescribeEvents([ApplicationName => Str, EndTime => Str, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, RequestId => Str, Severity => Str, StartTime => Str, TemplateName => Str, VersionLabel => Str])
+=head2 DescribeEvents([ApplicationName => Str, EndTime => L<Paws::API::TimeStamp>, EnvironmentId => Str, EnvironmentName => Str, MaxRecords => Int, NextToken => Str, RequestId => Str, Severity => Str, StartTime => L<Paws::API::TimeStamp>, TemplateName => Str, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEvents>
 

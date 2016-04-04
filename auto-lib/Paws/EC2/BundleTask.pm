@@ -4,10 +4,10 @@ package Paws::EC2::BundleTask;
   has BundleTaskError => (is => 'ro', isa => 'Paws::EC2::BundleTaskError', xmlname => 'error', traits => ['Unwrapped']);
   has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped']);
   has Progress => (is => 'ro', isa => 'Str', xmlname => 'progress', traits => ['Unwrapped']);
-  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', traits => ['Unwrapped']);
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'startTime', traits => ['Unwrapped']);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
   has Storage => (is => 'ro', isa => 'Paws::EC2::Storage', xmlname => 'storage', traits => ['Unwrapped']);
-  has UpdateTime => (is => 'ro', isa => 'Str', xmlname => 'updateTime', traits => ['Unwrapped']);
+  has UpdateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'updateTime', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +63,7 @@ This class has no description
   The level of task completion, as a percent (for example, 20%).
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
   The time this task started.
 
@@ -78,7 +78,7 @@ This class has no description
   The Amazon S3 storage locations.
 
 
-=head2 UpdateTime => Str
+=head2 UpdateTime => L<Paws::API::TimeStamp>
 
   The time of the most recent update for the task.
 

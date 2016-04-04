@@ -1,6 +1,6 @@
 package Paws::CloudFront::Invalidation;
   use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str', required => 1);
+  has CreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has InvalidationBatch => (is => 'ro', isa => 'Paws::CloudFront::InvalidationBatch', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
@@ -39,7 +39,7 @@ An invalidation.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreateTime => Str
+=head2 B<REQUIRED> CreateTime => L<Paws::API::TimeStamp>
 
   The date and time the invalidation request was first made.
 

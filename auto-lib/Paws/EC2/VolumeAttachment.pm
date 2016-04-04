@@ -1,7 +1,7 @@
 
 package Paws::EC2::VolumeAttachment;
   use Moose;
-  has AttachTime => (is => 'ro', isa => 'Str', xmlname => 'attachTime', traits => ['Unwrapped',]);
+  has AttachTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'attachTime', traits => ['Unwrapped',]);
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', xmlname => 'deleteOnTermination', traits => ['Unwrapped',]);
   has Device => (is => 'ro', isa => 'Str', xmlname => 'device', traits => ['Unwrapped',]);
   has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped',]);
@@ -19,7 +19,7 @@ Paws::EC2::VolumeAttachment
 =head1 ATTRIBUTES
 
 
-=head2 AttachTime => Str
+=head2 AttachTime => L<Paws::API::TimeStamp>
 
 The time stamp when the attachment initiated.
 

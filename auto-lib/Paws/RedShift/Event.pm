@@ -1,6 +1,6 @@
 package Paws::RedShift::Event;
   use Moose;
-  has Date => (is => 'ro', isa => 'Str');
+  has Date => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has EventId => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
@@ -42,7 +42,7 @@ Describes an event.
 =head1 ATTRIBUTES
 
 
-=head2 Date => Str
+=head2 Date => L<Paws::API::TimeStamp>
 
   The date and time of the event.
 

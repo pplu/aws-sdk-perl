@@ -1,8 +1,8 @@
 package Paws::CloudTrail::PublicKey;
   use Moose;
   has Fingerprint => (is => 'ro', isa => 'Str');
-  has ValidityEndTime => (is => 'ro', isa => 'Str');
-  has ValidityStartTime => (is => 'ro', isa => 'Str');
+  has ValidityEndTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has ValidityStartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Value => (is => 'ro', isa => 'Str');
 1;
 
@@ -44,12 +44,12 @@ Contains information about a returned public key.
   The fingerprint of the public key.
 
 
-=head2 ValidityEndTime => Str
+=head2 ValidityEndTime => L<Paws::API::TimeStamp>
 
   The ending time of validity of the public key.
 
 
-=head2 ValidityStartTime => Str
+=head2 ValidityStartTime => L<Paws::API::TimeStamp>
 
   The starting time of validity of the public key.
 

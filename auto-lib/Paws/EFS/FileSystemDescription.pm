@@ -1,7 +1,7 @@
 
 package Paws::EFS::FileSystemDescription;
   use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+  has CreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has CreationToken => (is => 'ro', isa => 'Str', required => 1);
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
   has LifeCycleState => (is => 'ro', isa => 'Str', required => 1);
@@ -21,7 +21,7 @@ Paws::EFS::FileSystemDescription
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreationTime => Str
+=head2 B<REQUIRED> CreationTime => L<Paws::API::TimeStamp>
 
 The time at which the file system was created, in seconds, since
 1970-01-01T00:00:00Z.

@@ -1,6 +1,6 @@
 package Paws::IAM::AccessKeyLastUsed;
   use Moose;
-  has LastUsedDate => (is => 'ro', isa => 'Str', required => 1);
+  has LastUsedDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has Region => (is => 'ro', isa => 'Str', required => 1);
   has ServiceName => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -41,7 +41,7 @@ GetAccessKeyLastUsed action.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LastUsedDate => Str
+=head2 B<REQUIRED> LastUsedDate => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the access key
 was most recently used. This field is null when:

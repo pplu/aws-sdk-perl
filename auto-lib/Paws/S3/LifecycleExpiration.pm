@@ -1,6 +1,6 @@
 package Paws::S3::LifecycleExpiration;
   use Moose;
-  has Date => (is => 'ro', isa => 'Str');
+  has Date => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Days => (is => 'ro', isa => 'Int');
   has ExpiredObjectDeleteMarker => (is => 'ro', isa => 'Bool');
 1;
@@ -38,7 +38,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Date => Str
+=head2 Date => L<Paws::API::TimeStamp>
 
   Indicates at what date the object is to be moved or deleted. Should be
 in GMT ISO 8601 Format.

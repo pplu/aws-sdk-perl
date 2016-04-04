@@ -2,7 +2,7 @@ package Paws::IAM::SSHPublicKeyMetadata;
   use Moose;
   has SSHPublicKeyId => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
-  has UploadDate => (is => 'ro', isa => 'Str', required => 1);
+  has UploadDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -55,7 +55,7 @@ for authentication with an AWS CodeCommit repository. C<Inactive> means
 the key cannot be used.
 
 
-=head2 B<REQUIRED> UploadDate => Str
+=head2 B<REQUIRED> UploadDate => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the SSH public
 key was uploaded.

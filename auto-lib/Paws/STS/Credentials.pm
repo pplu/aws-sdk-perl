@@ -1,7 +1,7 @@
 package Paws::STS::Credentials;
   use Moose;
   has AccessKeyId => (is => 'ro', isa => 'Str', required => 1);
-  has Expiration => (is => 'ro', isa => 'Str', required => 1);
+  has Expiration => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has SecretAccessKey => (is => 'ro', isa => 'Str', required => 1);
   has SessionToken => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -44,7 +44,7 @@ AWS credentials for API authentication.
   The access key ID that identifies the temporary security credentials.
 
 
-=head2 B<REQUIRED> Expiration => Str
+=head2 B<REQUIRED> Expiration => L<Paws::API::TimeStamp>
 
   The date on which the current credentials expire.
 

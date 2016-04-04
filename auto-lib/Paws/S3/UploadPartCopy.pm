@@ -4,9 +4,9 @@ package Paws::S3::UploadPartCopy;
   has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
   has CopySource => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source' , required => 1);
   has CopySourceIfMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-if-match' );
-  has CopySourceIfModifiedSince => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-if-modified-since' );
+  has CopySourceIfModifiedSince => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-if-modified-since' );
   has CopySourceIfNoneMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-if-none-match' );
-  has CopySourceIfUnmodifiedSince => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-if-unmodified-since' );
+  has CopySourceIfUnmodifiedSince => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-if-unmodified-since' );
   has CopySourceRange => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-range' );
   has CopySourceSSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-server-side-encryption-customer-algorithm' );
   has CopySourceSSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-copy-source-server-side-encryption-customer-key' );
@@ -57,7 +57,7 @@ Copies the object if its entity tag (ETag) matches the specified tag.
 
 
 
-=head2 CopySourceIfModifiedSince => Str
+=head2 CopySourceIfModifiedSince => L<Paws::API::TimeStamp>
 
 Copies the object if it has been modified since the specified time.
 
@@ -70,7 +70,7 @@ specified ETag.
 
 
 
-=head2 CopySourceIfUnmodifiedSince => Str
+=head2 CopySourceIfUnmodifiedSince => L<Paws::API::TimeStamp>
 
 Copies the object if it hasn't been modified since the specified time.
 

@@ -1,8 +1,8 @@
 package Paws::IAM::User;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
-  has PasswordLastUsed => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
+  has PasswordLastUsed => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has UserId => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
@@ -67,13 +67,13 @@ information about ARNs and how to use ARNs in policies, see IAM
 Identifiers in the I<Using IAM> guide.
 
 
-=head2 B<REQUIRED> CreateDate => Str
+=head2 B<REQUIRED> CreateDate => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the user was
 created.
 
 
-=head2 PasswordLastUsed => Str
+=head2 PasswordLastUsed => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the user's
 password was last used to sign in to an AWS website. For a list of AWS

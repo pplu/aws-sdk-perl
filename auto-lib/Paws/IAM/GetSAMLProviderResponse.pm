@@ -1,9 +1,9 @@
 
 package Paws::IAM::GetSAMLProviderResponse;
   use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SAMLMetadataDocument => (is => 'ro', isa => 'Str');
-  has ValidUntil => (is => 'ro', isa => 'Str');
+  has ValidUntil => (is => 'ro', isa => 'Paws::API::TimeStamp');
 
 1;
 
@@ -16,7 +16,7 @@ Paws::IAM::GetSAMLProviderResponse
 =head1 ATTRIBUTES
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
 The date and time when the SAML provider was created.
 
@@ -29,7 +29,7 @@ provider.
 
 
 
-=head2 ValidUntil => Str
+=head2 ValidUntil => L<Paws::API::TimeStamp>
 
 The expiration date and time for the SAML provider.
 

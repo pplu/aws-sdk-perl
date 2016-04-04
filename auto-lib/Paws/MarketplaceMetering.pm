@@ -69,7 +69,7 @@ I<MeterUsage>- Submits the metering record for a Marketplace product.
 
 =head1 METHODS
 
-=head2 MeterUsage(DryRun => Bool, ProductCode => Str, Timestamp => Str, UsageDimension => Str, UsageQuantity => Int)
+=head2 MeterUsage(DryRun => Bool, ProductCode => Str, Timestamp => L<Paws::API::TimeStamp>, UsageDimension => Str, UsageQuantity => Int)
 
 Each argument is described in detail in: L<Paws::MarketplaceMetering::MeterUsage>
 

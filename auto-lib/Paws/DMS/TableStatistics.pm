@@ -4,7 +4,7 @@ package Paws::DMS::TableStatistics;
   has Deletes => (is => 'ro', isa => 'Int');
   has FullLoadRows => (is => 'ro', isa => 'Int');
   has Inserts => (is => 'ro', isa => 'Int');
-  has LastUpdateTime => (is => 'ro', isa => 'Str');
+  has LastUpdateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SchemaName => (is => 'ro', isa => 'Str');
   has TableName => (is => 'ro', isa => 'Str');
   has TableState => (is => 'ro', isa => 'Str');
@@ -65,7 +65,7 @@ structure of your tables.
   The number of insert actions performed on a table.
 
 
-=head2 LastUpdateTime => Str
+=head2 LastUpdateTime => L<Paws::API::TimeStamp>
 
   The last time the table was updated.
 

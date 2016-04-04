@@ -1,7 +1,7 @@
 package Paws::Config::EvaluationResultIdentifier;
   use Moose;
   has EvaluationResultQualifier => (is => 'ro', isa => 'Paws::Config::EvaluationResultQualifier');
-  has OrderingTimestamp => (is => 'ro', isa => 'Str');
+  has OrderingTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +43,7 @@ Uniquely identifies an evaluation result.
 provides the type and ID of the evaluated resource.
 
 
-=head2 OrderingTimestamp => Str
+=head2 OrderingTimestamp => L<Paws::API::TimeStamp>
 
   The time of the event that triggered the evaluation of your AWS
 resources. The time can indicate when AWS Config delivered a

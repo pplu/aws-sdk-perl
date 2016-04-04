@@ -22,10 +22,10 @@ package Paws::RDS::DBInstance;
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has EnhancedMonitoringResourceArn => (is => 'ro', isa => 'Str');
-  has InstanceCreateTime => (is => 'ro', isa => 'Str');
+  has InstanceCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LatestRestorableTime => (is => 'ro', isa => 'Str');
+  has LatestRestorableTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
@@ -238,7 +238,7 @@ instance.
 that receives the Enhanced Monitoring metrics data for the DB instance.
 
 
-=head2 InstanceCreateTime => Str
+=head2 InstanceCreateTime => L<Paws::API::TimeStamp>
 
   Provides the date and time the DB instance was created.
 
@@ -254,7 +254,7 @@ that receives the Enhanced Monitoring metrics data for the DB instance.
 encrypted DB instance.
 
 
-=head2 LatestRestorableTime => Str
+=head2 LatestRestorableTime => L<Paws::API::TimeStamp>
 
   Specifies the latest time to which a database can be restored with
 point-in-time restore.

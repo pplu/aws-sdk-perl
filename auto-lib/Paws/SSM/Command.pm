@@ -3,12 +3,12 @@ package Paws::SSM::Command;
   has CommandId => (is => 'ro', isa => 'Str');
   has Comment => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str');
-  has ExpiresAfter => (is => 'ro', isa => 'Str');
+  has ExpiresAfter => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
   has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
-  has RequestedDateTime => (is => 'ro', isa => 'Str');
+  has RequestedDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Status => (is => 'ro', isa => 'Str');
 1;
 
@@ -61,7 +61,7 @@ description of what the command should do.
   The name of the SSM document requested for execution.
 
 
-=head2 ExpiresAfter => Str
+=head2 ExpiresAfter => L<Paws::API::TimeStamp>
 
   If this time is reached and the command has not already started
 executing, it will not execute. Calculated based on the ExpiresAfter
@@ -92,7 +92,7 @@ the command.
 the command.
 
 
-=head2 RequestedDateTime => Str
+=head2 RequestedDateTime => L<Paws::API::TimeStamp>
 
   The date and time the command was requested.
 

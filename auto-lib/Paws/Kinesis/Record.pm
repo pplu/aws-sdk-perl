@@ -1,6 +1,6 @@
 package Paws::Kinesis::Record;
   use Moose;
-  has ApproximateArrivalTimestamp => (is => 'ro', isa => 'Str');
+  has ApproximateArrivalTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Data => (is => 'ro', isa => 'Str', required => 1);
   has PartitionKey => (is => 'ro', isa => 'Str', required => 1);
   has SequenceNumber => (is => 'ro', isa => 'Str', required => 1);
@@ -40,7 +40,7 @@ sequence number, a partition key, and a data blob.
 =head1 ATTRIBUTES
 
 
-=head2 ApproximateArrivalTimestamp => Str
+=head2 ApproximateArrivalTimestamp => L<Paws::API::TimeStamp>
 
   The approximate time that the record was inserted into the stream.
 

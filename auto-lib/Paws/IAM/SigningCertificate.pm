@@ -3,7 +3,7 @@ package Paws::IAM::SigningCertificate;
   has CertificateBody => (is => 'ro', isa => 'Str', required => 1);
   has CertificateId => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
-  has UploadDate => (is => 'ro', isa => 'Str');
+  has UploadDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -59,7 +59,7 @@ UploadSigningCertificate and ListSigningCertificates actions.
 for API calls, while C<Inactive> means it is not.
 
 
-=head2 UploadDate => Str
+=head2 UploadDate => L<Paws::API::TimeStamp>
 
   The date when the signing certificate was uploaded.
 

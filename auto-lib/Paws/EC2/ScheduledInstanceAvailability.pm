@@ -2,7 +2,7 @@ package Paws::EC2::ScheduledInstanceAvailability;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
   has AvailableInstanceCount => (is => 'ro', isa => 'Int', xmlname => 'availableInstanceCount', traits => ['Unwrapped']);
-  has FirstSlotStartTime => (is => 'ro', isa => 'Str', xmlname => 'firstSlotStartTime', traits => ['Unwrapped']);
+  has FirstSlotStartTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'firstSlotStartTime', traits => ['Unwrapped']);
   has HourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'hourlyPrice', traits => ['Unwrapped']);
   has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
   has MaxTermDurationInDays => (is => 'ro', isa => 'Int', xmlname => 'maxTermDurationInDays', traits => ['Unwrapped']);
@@ -58,7 +58,7 @@ This class has no description
   The number of available instances.
 
 
-=head2 FirstSlotStartTime => Str
+=head2 FirstSlotStartTime => L<Paws::API::TimeStamp>
 
   The time period for the first schedule to start.
 

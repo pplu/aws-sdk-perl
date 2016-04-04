@@ -1,10 +1,10 @@
 package Paws::CloudFormation::Stack;
   use Moose;
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str]');
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
+  has CreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has DisableRollback => (is => 'ro', isa => 'Bool');
-  has LastUpdatedTime => (is => 'ro', isa => 'Str');
+  has LastUpdatedTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Output]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
@@ -54,7 +54,7 @@ The Stack data type.
   The capabilities allowed in the stack.
 
 
-=head2 B<REQUIRED> CreationTime => Str
+=head2 B<REQUIRED> CreationTime => L<Paws::API::TimeStamp>
 
   The time at which the stack was created.
 
@@ -78,7 +78,7 @@ The Stack data type.
 
 
 
-=head2 LastUpdatedTime => Str
+=head2 LastUpdatedTime => L<Paws::API::TimeStamp>
 
   The time the stack was last updated. This field will only be returned
 if the stack has been updated at least once.

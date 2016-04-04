@@ -1,8 +1,8 @@
 package Paws::CodeDeploy::DeploymentInfo;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', xmlname => 'applicationName', request_name => 'applicationName', traits => ['Unwrapped','NameInRequest']);
-  has CompleteTime => (is => 'ro', isa => 'Str', xmlname => 'completeTime', request_name => 'completeTime', traits => ['Unwrapped','NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
+  has CompleteTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'completeTime', request_name => 'completeTime', traits => ['Unwrapped','NameInRequest']);
+  has CreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
   has Creator => (is => 'ro', isa => 'Str', xmlname => 'creator', request_name => 'creator', traits => ['Unwrapped','NameInRequest']);
   has DeploymentConfigName => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigName', request_name => 'deploymentConfigName', traits => ['Unwrapped','NameInRequest']);
   has DeploymentGroupName => (is => 'ro', isa => 'Str', xmlname => 'deploymentGroupName', request_name => 'deploymentGroupName', traits => ['Unwrapped','NameInRequest']);
@@ -12,7 +12,7 @@ package Paws::CodeDeploy::DeploymentInfo;
   has ErrorInformation => (is => 'ro', isa => 'Paws::CodeDeploy::ErrorInformation', xmlname => 'errorInformation', request_name => 'errorInformation', traits => ['Unwrapped','NameInRequest']);
   has IgnoreApplicationStopFailures => (is => 'ro', isa => 'Bool', xmlname => 'ignoreApplicationStopFailures', request_name => 'ignoreApplicationStopFailures', traits => ['Unwrapped','NameInRequest']);
   has Revision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -54,12 +54,12 @@ Information about a deployment.
   The application name.
 
 
-=head2 CompleteTime => Str
+=head2 CompleteTime => L<Paws::API::TimeStamp>
 
   A timestamp indicating when the deployment was complete.
 
 
-=head2 CreateTime => Str
+=head2 CreateTime => L<Paws::API::TimeStamp>
 
   A timestamp indicating when the deployment was created.
 
@@ -127,7 +127,7 @@ instance will be considered to have failed.
 service from which to retrieve them.
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
   A timestamp indicating when the deployment was deployed to the
 deployment group.

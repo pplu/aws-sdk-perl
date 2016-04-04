@@ -1,6 +1,6 @@
 package Paws::EC2::FlowLog;
   use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', xmlname => 'creationTime', traits => ['Unwrapped']);
+  has CreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'creationTime', traits => ['Unwrapped']);
   has DeliverLogsErrorMessage => (is => 'ro', isa => 'Str', xmlname => 'deliverLogsErrorMessage', traits => ['Unwrapped']);
   has DeliverLogsPermissionArn => (is => 'ro', isa => 'Str', xmlname => 'deliverLogsPermissionArn', traits => ['Unwrapped']);
   has DeliverLogsStatus => (is => 'ro', isa => 'Str', xmlname => 'deliverLogsStatus', traits => ['Unwrapped']);
@@ -44,7 +44,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 CreationTime => Str
+=head2 CreationTime => L<Paws::API::TimeStamp>
 
   The date and time the flow log was created.
 

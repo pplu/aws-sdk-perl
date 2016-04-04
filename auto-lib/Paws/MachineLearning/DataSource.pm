@@ -1,13 +1,13 @@
 package Paws::MachineLearning::DataSource;
   use Moose;
   has ComputeStatistics => (is => 'ro', isa => 'Bool');
-  has CreatedAt => (is => 'ro', isa => 'Str');
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has DataLocationS3 => (is => 'ro', isa => 'Str');
   has DataRearrangement => (is => 'ro', isa => 'Str');
   has DataSizeInBytes => (is => 'ro', isa => 'Int');
   has DataSourceId => (is => 'ro', isa => 'Str');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
+  has LastUpdatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Message => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has NumberOfFiles => (is => 'ro', isa => 'Int');
@@ -59,7 +59,7 @@ and the current status of the C<DataSource>.
 observation data.
 
 
-=head2 CreatedAt => Str
+=head2 CreatedAt => L<Paws::API::TimeStamp>
 
   The time that the C<DataSource> was created. The time is expressed in
 epoch time.
@@ -95,7 +95,7 @@ C<DataSource> references.
   The ID that is assigned to the C<DataSource> during creation.
 
 
-=head2 LastUpdatedAt => Str
+=head2 LastUpdatedAt => L<Paws::API::TimeStamp>
 
   The time of the most recent edit to the C<BatchPrediction>. The time is
 expressed in epoch time.

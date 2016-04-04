@@ -1,6 +1,6 @@
 package Paws::CognitoSync::RecordPatch;
   use Moose;
-  has DeviceLastModifiedDate => (is => 'ro', isa => 'Str');
+  has DeviceLastModifiedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Key => (is => 'ro', isa => 'Str', required => 1);
   has Op => (is => 'ro', isa => 'Str', required => 1);
   has SyncCount => (is => 'ro', isa => 'Int', required => 1);
@@ -40,7 +40,7 @@ An update operation for a record.
 =head1 ATTRIBUTES
 
 
-=head2 DeviceLastModifiedDate => Str
+=head2 DeviceLastModifiedDate => L<Paws::API::TimeStamp>
 
   The last modified date of the client device.
 

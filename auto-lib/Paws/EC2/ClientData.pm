@@ -1,9 +1,9 @@
 package Paws::EC2::ClientData;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str');
-  has UploadEnd => (is => 'ro', isa => 'Str');
+  has UploadEnd => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has UploadSize => (is => 'ro', isa => 'Num');
-  has UploadStart => (is => 'ro', isa => 'Str');
+  has UploadStart => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -44,7 +44,7 @@ This class has no description
   A user-defined comment about the disk upload.
 
 
-=head2 UploadEnd => Str
+=head2 UploadEnd => L<Paws::API::TimeStamp>
 
   The time that the disk upload ends.
 
@@ -54,7 +54,7 @@ This class has no description
   The size of the uploaded disk image, in GiB.
 
 
-=head2 UploadStart => Str
+=head2 UploadStart => L<Paws::API::TimeStamp>
 
   The time that the disk upload starts.
 

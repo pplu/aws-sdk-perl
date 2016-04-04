@@ -5,7 +5,7 @@ package Paws::ElasticBeanstalk::SingleInstanceHealth;
   has Color => (is => 'ro', isa => 'Str');
   has HealthStatus => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
-  has LaunchedAt => (is => 'ro', isa => 'Str');
+  has LaunchedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has System => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SystemStatus');
 1;
 
@@ -74,7 +74,7 @@ information, see Health Colors and Statuses.
   The ID of the Amazon EC2 instance.
 
 
-=head2 LaunchedAt => Str
+=head2 LaunchedAt => L<Paws::API::TimeStamp>
 
   The time at which the EC2 instance was launched.
 

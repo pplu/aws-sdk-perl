@@ -2,8 +2,8 @@ package Paws::KMS::KeyMetadata;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has AWSAccountId => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
-  has DeletionDate => (is => 'ro', isa => 'Str');
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has DeletionDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has KeyId => (is => 'ro', isa => 'Str', required => 1);
@@ -59,12 +59,12 @@ General Reference>.
   The twelve-digit account ID of the AWS account that owns the key.
 
 
-=head2 CreationDate => Str
+=head2 CreationDate => L<Paws::API::TimeStamp>
 
   The date and time when the key was created.
 
 
-=head2 DeletionDate => Str
+=head2 DeletionDate => L<Paws::API::TimeStamp>
 
   The date and time after which AWS KMS deletes the customer master key
 (CMK). This value is present only when C<KeyState> is

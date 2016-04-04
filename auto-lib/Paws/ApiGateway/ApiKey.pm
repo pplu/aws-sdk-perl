@@ -1,11 +1,11 @@
 
 package Paws::ApiGateway::ApiKey;
   use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str');
+  has LastUpdatedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Name => (is => 'ro', isa => 'Str');
   has StageKeys => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -20,7 +20,7 @@ Paws::ApiGateway::ApiKey
 =head1 ATTRIBUTES
 
 
-=head2 CreatedDate => Str
+=head2 CreatedDate => L<Paws::API::TimeStamp>
 
 The date when the API Key was created, in ISO 8601 format.
 
@@ -44,7 +44,7 @@ The identifier of the API Key.
 
 
 
-=head2 LastUpdatedDate => Str
+=head2 LastUpdatedDate => L<Paws::API::TimeStamp>
 
 When the API Key was last updated, in ISO 8601 format.
 

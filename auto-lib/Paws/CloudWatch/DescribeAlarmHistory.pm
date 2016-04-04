@@ -2,11 +2,11 @@
 package Paws::CloudWatch::DescribeAlarmHistory;
   use Moose;
   has AlarmName => (is => 'ro', isa => 'Str');
-  has EndDate => (is => 'ro', isa => 'Str');
+  has EndDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has HistoryItemType => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has StartDate => (is => 'ro', isa => 'Str');
+  has StartDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
 
   use MooseX::ClassAttribute;
 
@@ -44,7 +44,7 @@ The name of the alarm.
 
 
 
-=head2 EndDate => Str
+=head2 EndDate => L<Paws::API::TimeStamp>
 
 The ending date to retrieve alarm history.
 
@@ -69,7 +69,7 @@ data available.
 
 
 
-=head2 StartDate => Str
+=head2 StartDate => L<Paws::API::TimeStamp>
 
 The starting date to retrieve alarm history.
 

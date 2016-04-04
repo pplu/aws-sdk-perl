@@ -9,7 +9,7 @@ package Paws::EC2::Snapshot;
   has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped',]);
   has Progress => (is => 'ro', isa => 'Str', xmlname => 'progress', traits => ['Unwrapped',]);
   has SnapshotId => (is => 'ro', isa => 'Str', xmlname => 'snapshotId', traits => ['Unwrapped',]);
-  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', traits => ['Unwrapped',]);
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'startTime', traits => ['Unwrapped',]);
   has State => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped',]);
   has StateMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped',]);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped',]);
@@ -85,7 +85,7 @@ it is created.
 
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
 The time stamp when the snapshot was initiated.
 

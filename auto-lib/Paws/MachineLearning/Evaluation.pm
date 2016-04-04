@@ -1,11 +1,11 @@
 package Paws::MachineLearning::Evaluation;
   use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str');
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has EvaluationDataSourceId => (is => 'ro', isa => 'Str');
   has EvaluationId => (is => 'ro', isa => 'Str');
   has InputDataLocationS3 => (is => 'ro', isa => 'Str');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
+  has LastUpdatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Message => (is => 'ro', isa => 'Str');
   has MLModelId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -49,7 +49,7 @@ and the current status of the C<Evaluation>.
 =head1 ATTRIBUTES
 
 
-=head2 CreatedAt => Str
+=head2 CreatedAt => L<Paws::API::TimeStamp>
 
   The time that the C<Evaluation> was created. The time is expressed in
 epoch time.
@@ -78,7 +78,7 @@ be either an AWS root account or an AWS Identity and Access Management
 (Amazon S3) that is used in the evaluation.
 
 
-=head2 LastUpdatedAt => Str
+=head2 LastUpdatedAt => L<Paws::API::TimeStamp>
 
   The time of the most recent edit to the C<Evaluation>. The time is
 expressed in epoch time.

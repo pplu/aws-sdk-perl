@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::WorkflowTypeInfo;
   use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has DeprecationDate => (is => 'ro', isa => 'Str', xmlname => 'deprecationDate', request_name => 'deprecationDate', traits => ['Unwrapped','NameInRequest']);
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has DeprecationDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'deprecationDate', request_name => 'deprecationDate', traits => ['Unwrapped','NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
   has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', xmlname => 'workflowType', request_name => 'workflowType', traits => ['Unwrapped','NameInRequest'], required => 1);
@@ -40,12 +40,12 @@ Contains information about a workflow type.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreationDate => Str
+=head2 B<REQUIRED> CreationDate => L<Paws::API::TimeStamp>
 
   The date when this type was registered.
 
 
-=head2 DeprecationDate => Str
+=head2 DeprecationDate => L<Paws::API::TimeStamp>
 
   If the type is in deprecated state, then it is set to the date when the
 type was deprecated.

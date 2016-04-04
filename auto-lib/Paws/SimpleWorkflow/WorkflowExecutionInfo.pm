@@ -2,11 +2,11 @@ package Paws::SimpleWorkflow::WorkflowExecutionInfo;
   use Moose;
   has CancelRequested => (is => 'ro', isa => 'Bool', xmlname => 'cancelRequested', request_name => 'cancelRequested', traits => ['Unwrapped','NameInRequest']);
   has CloseStatus => (is => 'ro', isa => 'Str', xmlname => 'closeStatus', request_name => 'closeStatus', traits => ['Unwrapped','NameInRequest']);
-  has CloseTimestamp => (is => 'ro', isa => 'Str', xmlname => 'closeTimestamp', request_name => 'closeTimestamp', traits => ['Unwrapped','NameInRequest']);
+  has CloseTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'closeTimestamp', request_name => 'closeTimestamp', traits => ['Unwrapped','NameInRequest']);
   has Execution => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', xmlname => 'execution', request_name => 'execution', traits => ['Unwrapped','NameInRequest'], required => 1);
   has ExecutionStatus => (is => 'ro', isa => 'Str', xmlname => 'executionStatus', request_name => 'executionStatus', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Parent => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecution', xmlname => 'parent', request_name => 'parent', traits => ['Unwrapped','NameInRequest']);
-  has StartTimestamp => (is => 'ro', isa => 'Str', xmlname => 'startTimestamp', request_name => 'startTimestamp', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has StartTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'startTimestamp', request_name => 'startTimestamp', traits => ['Unwrapped','NameInRequest'], required => 1);
   has TagList => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'tagList', request_name => 'tagList', traits => ['Unwrapped','NameInRequest']);
   has WorkflowType => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowType', xmlname => 'workflowType', request_name => 'workflowType', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
@@ -76,7 +76,7 @@ started to carry on the workflow.
 
 
 
-=head2 CloseTimestamp => Str
+=head2 CloseTimestamp => L<Paws::API::TimeStamp>
 
   The time when the workflow execution was closed. Set only if the
 execution status is CLOSED.
@@ -98,7 +98,7 @@ execution status is CLOSED.
 contains the workflow execution that started this execution.
 
 
-=head2 B<REQUIRED> StartTimestamp => Str
+=head2 B<REQUIRED> StartTimestamp => L<Paws::API::TimeStamp>
 
   The time when the execution was started.
 

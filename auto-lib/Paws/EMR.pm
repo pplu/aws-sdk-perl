@@ -248,7 +248,7 @@ configuration, VPC settings, and so on. For information about the
 cluster steps, see ListSteps.
 
 
-=head2 DescribeJobFlows([CreatedAfter => Str, CreatedBefore => Str, JobFlowIds => ArrayRef[Str], JobFlowStates => ArrayRef[Str]])
+=head2 DescribeJobFlows([CreatedAfter => L<Paws::API::TimeStamp>, CreatedBefore => L<Paws::API::TimeStamp>, JobFlowIds => ArrayRef[Str], JobFlowStates => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EMR::DescribeJobFlows>
 
@@ -301,7 +301,7 @@ Returns: a L<Paws::EMR::ListBootstrapActionsOutput> instance
 cluster.
 
 
-=head2 ListClusters([ClusterStates => ArrayRef[Str], CreatedAfter => Str, CreatedBefore => Str, Marker => Str])
+=head2 ListClusters([ClusterStates => ArrayRef[Str], CreatedAfter => L<Paws::API::TimeStamp>, CreatedBefore => L<Paws::API::TimeStamp>, Marker => Str])
 
 Each argument is described in detail in: L<Paws::EMR::ListClusters>
 

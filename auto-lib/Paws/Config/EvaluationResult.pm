@@ -2,9 +2,9 @@ package Paws::Config::EvaluationResult;
   use Moose;
   has Annotation => (is => 'ro', isa => 'Str');
   has ComplianceType => (is => 'ro', isa => 'Str');
-  has ConfigRuleInvokedTime => (is => 'ro', isa => 'Str');
+  has ConfigRuleInvokedTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has EvaluationResultIdentifier => (is => 'ro', isa => 'Paws::Config::EvaluationResultIdentifier');
-  has ResultRecordedTime => (is => 'ro', isa => 'Str');
+  has ResultRecordedTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has ResultToken => (is => 'ro', isa => 'Str');
 1;
 
@@ -60,7 +60,7 @@ Config does not support the C<INSUFFICIENT_DATA> value for the
 C<EvaluationResult> data type.
 
 
-=head2 ConfigRuleInvokedTime => Str
+=head2 ConfigRuleInvokedTime => L<Paws::API::TimeStamp>
 
   The time when the AWS Config rule evaluated the AWS resource.
 
@@ -70,7 +70,7 @@ C<EvaluationResult> data type.
   Uniquely identifies the evaluation result.
 
 
-=head2 ResultRecordedTime => Str
+=head2 ResultRecordedTime => L<Paws::API::TimeStamp>
 
   The time when AWS Config recorded the evaluation result.
 

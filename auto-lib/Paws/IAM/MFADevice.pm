@@ -1,6 +1,6 @@
 package Paws::IAM::MFADevice;
   use Moose;
-  has EnableDate => (is => 'ro', isa => 'Str', required => 1);
+  has EnableDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -41,7 +41,7 @@ action.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EnableDate => Str
+=head2 B<REQUIRED> EnableDate => L<Paws::API::TimeStamp>
 
   The date when the MFA device was enabled for the user.
 

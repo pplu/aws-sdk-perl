@@ -3,7 +3,7 @@ package Paws::Config::ConfigStreamDeliveryInfo;
   has LastErrorCode => (is => 'ro', isa => 'Str', xmlname => 'lastErrorCode', request_name => 'lastErrorCode', traits => ['Unwrapped','NameInRequest']);
   has LastErrorMessage => (is => 'ro', isa => 'Str', xmlname => 'lastErrorMessage', request_name => 'lastErrorMessage', traits => ['Unwrapped','NameInRequest']);
   has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
-  has LastStatusChangeTime => (is => 'ro', isa => 'Str', xmlname => 'lastStatusChangeTime', request_name => 'lastStatusChangeTime', traits => ['Unwrapped','NameInRequest']);
+  has LastStatusChangeTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'lastStatusChangeTime', request_name => 'lastStatusChangeTime', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -59,7 +59,7 @@ optional. If the SNS delivery is turned off, the last status will be
 B<Not_Applicable>.
 
 
-=head2 LastStatusChangeTime => Str
+=head2 LastStatusChangeTime => L<Paws::API::TimeStamp>
 
   The time from the last status change.
 

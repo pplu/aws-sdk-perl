@@ -3,7 +3,7 @@ package Paws::ImportExport::GetStatusOutput;
   use Moose;
   has ArtifactList => (is => 'ro', isa => 'ArrayRef[Paws::ImportExport::Artifact]');
   has Carrier => (is => 'ro', isa => 'Str');
-  has CreationDate => (is => 'ro', isa => 'Str');
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CurrentManifest => (is => 'ro', isa => 'Str');
   has ErrorCount => (is => 'ro', isa => 'Int');
   has JobId => (is => 'ro', isa => 'Str');
@@ -41,7 +41,7 @@ Paws::ImportExport::GetStatusOutput
 
 
 
-=head2 CreationDate => Str
+=head2 CreationDate => L<Paws::API::TimeStamp>
 
 
 

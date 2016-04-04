@@ -2,14 +2,14 @@ package Paws::AutoScaling::ScheduledUpdateGroupAction;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
-  has EndTime => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has MaxSize => (is => 'ro', isa => 'Int');
   has MinSize => (is => 'ro', isa => 'Int');
   has Recurrence => (is => 'ro', isa => 'Str');
   has ScheduledActionARN => (is => 'ro', isa => 'Str');
   has ScheduledActionName => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Time => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has Time => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -55,7 +55,7 @@ Describes a scheduled update to an Auto Scaling group.
   The number of instances you prefer to maintain in the group.
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
   The date and time that the action is scheduled to end. This date and
 time can be up to one month in the future.
@@ -86,7 +86,7 @@ time can be up to one month in the future.
   The name of the scheduled action.
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
   The date and time that the action is scheduled to begin. This date and
 time can be up to one month in the future.
@@ -95,7 +95,7 @@ When C<StartTime> and C<EndTime> are specified with C<Recurrence>, they
 form the boundaries of when the recurring action will start and stop.
 
 
-=head2 Time => Str
+=head2 Time => L<Paws::API::TimeStamp>
 
   This parameter is deprecated.
 

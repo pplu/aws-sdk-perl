@@ -3,13 +3,13 @@ package Paws::AutoScaling::PutScheduledUpdateGroupAction;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has DesiredCapacity => (is => 'ro', isa => 'Int');
-  has EndTime => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has MaxSize => (is => 'ro', isa => 'Int');
   has MinSize => (is => 'ro', isa => 'Int');
   has Recurrence => (is => 'ro', isa => 'Str');
   has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str');
-  has Time => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has Time => (is => 'ro', isa => 'Paws::API::TimeStamp');
 
   use MooseX::ClassAttribute;
 
@@ -53,7 +53,7 @@ The number of EC2 instances that should be running in the group.
 
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
 The time for this action to end.
 
@@ -88,7 +88,7 @@ The name of this scaling action.
 
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
 The time for this action to start, in "YYYY-MM-DDThh:mm:ssZ" format in
 UTC/GMT only (for example, C<2014-06-01T00:00:00Z>).
@@ -101,7 +101,7 @@ form the boundaries of when the recurring action starts and stops.
 
 
 
-=head2 Time => Str
+=head2 Time => L<Paws::API::TimeStamp>
 
 This parameter is deprecated.
 

@@ -1,7 +1,7 @@
 package Paws::Inspector::AssessmentRunStateChange;
   use Moose;
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', request_name => 'state', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StateChangedAt => (is => 'ro', isa => 'Str', xmlname => 'stateChangedAt', request_name => 'stateChangedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has StateChangedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'stateChangedAt', request_name => 'stateChangedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +43,7 @@ type.
   The assessment run state.
 
 
-=head2 B<REQUIRED> StateChangedAt => Str
+=head2 B<REQUIRED> StateChangedAt => L<Paws::API::TimeStamp>
 
   The last time the assessment run state changed.
 

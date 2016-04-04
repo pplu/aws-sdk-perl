@@ -2,14 +2,14 @@
 package Paws::MachineLearning::GetDataSourceOutput;
   use Moose;
   has ComputeStatistics => (is => 'ro', isa => 'Bool');
-  has CreatedAt => (is => 'ro', isa => 'Str');
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has DataLocationS3 => (is => 'ro', isa => 'Str');
   has DataRearrangement => (is => 'ro', isa => 'Str');
   has DataSizeInBytes => (is => 'ro', isa => 'Int');
   has DataSourceId => (is => 'ro', isa => 'Str');
   has DataSourceSchema => (is => 'ro', isa => 'Str');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
+  has LastUpdatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LogUri => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -36,7 +36,7 @@ observation data.
 
 
 
-=head2 CreatedAt => Str
+=head2 CreatedAt => L<Paws::API::TimeStamp>
 
 The time that the C<DataSource> was created. The time is expressed in
 epoch time.
@@ -86,7 +86,7 @@ This parameter is provided as part of the verbose format.
 
 
 
-=head2 LastUpdatedAt => Str
+=head2 LastUpdatedAt => L<Paws::API::TimeStamp>
 
 The time of the most recent edit to the C<DataSource>. The time is
 expressed in epoch time.

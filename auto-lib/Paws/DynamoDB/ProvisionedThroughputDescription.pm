@@ -1,7 +1,7 @@
 package Paws::DynamoDB::ProvisionedThroughputDescription;
   use Moose;
-  has LastDecreaseDateTime => (is => 'ro', isa => 'Str');
-  has LastIncreaseDateTime => (is => 'ro', isa => 'Str');
+  has LastDecreaseDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has LastIncreaseDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has NumberOfDecreasesToday => (is => 'ro', isa => 'Int');
   has ReadCapacityUnits => (is => 'ro', isa => 'Int');
   has WriteCapacityUnits => (is => 'ro', isa => 'Int');
@@ -42,13 +42,13 @@ increases and decreases.
 =head1 ATTRIBUTES
 
 
-=head2 LastDecreaseDateTime => Str
+=head2 LastDecreaseDateTime => L<Paws::API::TimeStamp>
 
   The date and time of the last provisioned throughput decrease for this
 table.
 
 
-=head2 LastIncreaseDateTime => Str
+=head2 LastIncreaseDateTime => L<Paws::API::TimeStamp>
 
   The date and time of the last provisioned throughput increase for this
 table.

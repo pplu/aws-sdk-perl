@@ -1,7 +1,7 @@
 package Paws::EC2::ReservedInstancesListing;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped']);
-  has CreateDate => (is => 'ro', isa => 'Str', xmlname => 'createDate', traits => ['Unwrapped']);
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createDate', traits => ['Unwrapped']);
   has InstanceCounts => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceCount]', xmlname => 'instanceCounts', traits => ['Unwrapped']);
   has PriceSchedules => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PriceSchedule]', xmlname => 'priceSchedules', traits => ['Unwrapped']);
   has ReservedInstancesId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesId', traits => ['Unwrapped']);
@@ -9,7 +9,7 @@ package Paws::EC2::ReservedInstancesListing;
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped']);
   has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', xmlname => 'tagSet', traits => ['Unwrapped']);
-  has UpdateDate => (is => 'ro', isa => 'Str', xmlname => 'updateDate', traits => ['Unwrapped']);
+  has UpdateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'updateDate', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -51,7 +51,7 @@ This class has no description
 request is idempotent. For more information, see Ensuring Idempotency.
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
   The time the listing was created.
 
@@ -92,7 +92,7 @@ response can be blank.
   Any tags assigned to the resource.
 
 
-=head2 UpdateDate => Str
+=head2 UpdateDate => L<Paws::API::TimeStamp>
 
   The last modified timestamp of the listing.
 

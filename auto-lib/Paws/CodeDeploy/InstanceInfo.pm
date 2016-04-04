@@ -1,10 +1,10 @@
 package Paws::CodeDeploy::InstanceInfo;
   use Moose;
-  has DeregisterTime => (is => 'ro', isa => 'Str', xmlname => 'deregisterTime', request_name => 'deregisterTime', traits => ['Unwrapped','NameInRequest']);
+  has DeregisterTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'deregisterTime', request_name => 'deregisterTime', traits => ['Unwrapped','NameInRequest']);
   has IamUserArn => (is => 'ro', isa => 'Str', xmlname => 'iamUserArn', request_name => 'iamUserArn', traits => ['Unwrapped','NameInRequest']);
   has InstanceArn => (is => 'ro', isa => 'Str', xmlname => 'instanceArn', request_name => 'instanceArn', traits => ['Unwrapped','NameInRequest']);
   has InstanceName => (is => 'ro', isa => 'Str', xmlname => 'instanceName', request_name => 'instanceName', traits => ['Unwrapped','NameInRequest']);
-  has RegisterTime => (is => 'ro', isa => 'Str', xmlname => 'registerTime', request_name => 'registerTime', traits => ['Unwrapped','NameInRequest']);
+  has RegisterTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'registerTime', request_name => 'registerTime', traits => ['Unwrapped','NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::Tag]', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -41,7 +41,7 @@ Information about an on-premises instance.
 =head1 ATTRIBUTES
 
 
-=head2 DeregisterTime => Str
+=head2 DeregisterTime => L<Paws::API::TimeStamp>
 
   If the on-premises instance was deregistered, the time at which the
 on-premises instance was deregistered.
@@ -62,7 +62,7 @@ on-premises instance was deregistered.
   The name of the on-premises instance.
 
 
-=head2 RegisterTime => Str
+=head2 RegisterTime => L<Paws::API::TimeStamp>
 
   The time at which the on-premises instance was registered.
 

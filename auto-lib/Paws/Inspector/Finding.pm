@@ -5,7 +5,7 @@ package Paws::Inspector::Finding;
   has AssetType => (is => 'ro', isa => 'Str', xmlname => 'assetType', request_name => 'assetType', traits => ['Unwrapped','NameInRequest']);
   has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Confidence => (is => 'ro', isa => 'Int', xmlname => 'confidence', request_name => 'confidence', traits => ['Unwrapped','NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
   has IndicatorOfCompromise => (is => 'ro', isa => 'Bool', xmlname => 'indicatorOfCompromise', request_name => 'indicatorOfCompromise', traits => ['Unwrapped','NameInRequest']);
@@ -16,7 +16,7 @@ package Paws::Inspector::Finding;
   has ServiceAttributes => (is => 'ro', isa => 'Paws::Inspector::InspectorServiceAttributes', xmlname => 'serviceAttributes', request_name => 'serviceAttributes', traits => ['Unwrapped','NameInRequest']);
   has Severity => (is => 'ro', isa => 'Str', xmlname => 'severity', request_name => 'severity', traits => ['Unwrapped','NameInRequest']);
   has Title => (is => 'ro', isa => 'Str', xmlname => 'title', request_name => 'title', traits => ['Unwrapped','NameInRequest']);
-  has UpdatedAt => (is => 'ro', isa => 'Str', xmlname => 'updatedAt', request_name => 'updatedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has UpdatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'updatedAt', request_name => 'updatedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
   has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'userAttributes', request_name => 'userAttributes', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
@@ -80,7 +80,7 @@ generated.
   This data element is currently not used.
 
 
-=head2 B<REQUIRED> CreatedAt => Str
+=head2 B<REQUIRED> CreatedAt => L<Paws::API::TimeStamp>
 
   The time when the finding was generated.
 
@@ -136,7 +136,7 @@ Informational.
   The name of the finding.
 
 
-=head2 B<REQUIRED> UpdatedAt => Str
+=head2 B<REQUIRED> UpdatedAt => L<Paws::API::TimeStamp>
 
   The time when AddAttributesToFindings API is called.
 

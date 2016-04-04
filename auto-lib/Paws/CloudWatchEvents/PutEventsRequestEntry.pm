@@ -4,7 +4,7 @@ package Paws::CloudWatchEvents::PutEventsRequestEntry;
   has DetailType => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'ArrayRef[Str]');
   has Source => (is => 'ro', isa => 'Str');
-  has Time => (is => 'ro', isa => 'Str');
+  has Time => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -63,7 +63,7 @@ event primarily concerns. Any number, including zero, may be present.
   The source of the event.
 
 
-=head2 Time => Str
+=head2 Time => L<Paws::API::TimeStamp>
 
   Timestamp of event, per RFC3339. If no timestamp is provided, the
 timestamp of the PutEvents call will be used.

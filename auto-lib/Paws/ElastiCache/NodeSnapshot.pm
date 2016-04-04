@@ -1,9 +1,9 @@
 package Paws::ElastiCache::NodeSnapshot;
   use Moose;
-  has CacheNodeCreateTime => (is => 'ro', isa => 'Str');
+  has CacheNodeCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CacheSize => (is => 'ro', isa => 'Str');
-  has SnapshotCreateTime => (is => 'ro', isa => 'Str');
+  has SnapshotCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -39,7 +39,7 @@ Represents an individual cache node in a snapshot of a cache cluster.
 =head1 ATTRIBUTES
 
 
-=head2 CacheNodeCreateTime => Str
+=head2 CacheNodeCreateTime => L<Paws::API::TimeStamp>
 
   The date and time when the cache node was created in the source cache
 cluster.
@@ -55,7 +55,7 @@ cluster.
   The size of the cache on the source cache node.
 
 
-=head2 SnapshotCreateTime => Str
+=head2 SnapshotCreateTime => L<Paws::API::TimeStamp>
 
   The date and time when the source node's metadata and cache data set
 was obtained for the snapshot.

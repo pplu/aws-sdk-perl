@@ -1,7 +1,7 @@
 package Paws::CognitoIdentity::Credentials;
   use Moose;
   has AccessKeyId => (is => 'ro', isa => 'Str');
-  has Expiration => (is => 'ro', isa => 'Str');
+  has Expiration => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SecretKey => (is => 'ro', isa => 'Str');
   has SessionToken => (is => 'ro', isa => 'Str');
 1;
@@ -44,7 +44,7 @@ Credentials for the provided identity ID.
   The Access Key portion of the credentials.
 
 
-=head2 Expiration => Str
+=head2 Expiration => L<Paws::API::TimeStamp>
 
   The date at which these credentials will expire.
 

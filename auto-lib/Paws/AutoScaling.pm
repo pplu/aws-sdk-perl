@@ -648,7 +648,7 @@ Returns: a L<Paws::AutoScaling::ProcessesType> instance
 SuspendProcesses.
 
 
-=head2 DescribeScheduledActions([AutoScalingGroupName => Str, EndTime => Str, MaxRecords => Int, NextToken => Str, ScheduledActionNames => ArrayRef[Str], StartTime => Str])
+=head2 DescribeScheduledActions([AutoScalingGroupName => Str, EndTime => L<Paws::API::TimeStamp>, MaxRecords => Int, NextToken => Str, ScheduledActionNames => ArrayRef[Str], StartTime => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::AutoScaling::DescribeScheduledActions>
 
@@ -855,7 +855,7 @@ limit, see AWS Service Limits in the I<Amazon Web Services General
 Reference>.
 
 
-=head2 PutScheduledUpdateGroupAction(AutoScalingGroupName => Str, ScheduledActionName => Str, [DesiredCapacity => Int, EndTime => Str, MaxSize => Int, MinSize => Int, Recurrence => Str, StartTime => Str, Time => Str])
+=head2 PutScheduledUpdateGroupAction(AutoScalingGroupName => Str, ScheduledActionName => Str, [DesiredCapacity => Int, EndTime => L<Paws::API::TimeStamp>, MaxSize => Int, MinSize => Int, Recurrence => Str, StartTime => L<Paws::API::TimeStamp>, Time => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::AutoScaling::PutScheduledUpdateGroupAction>
 

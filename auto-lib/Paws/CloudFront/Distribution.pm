@@ -5,7 +5,7 @@ package Paws::CloudFront::Distribution;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has InProgressInvalidationBatches => (is => 'ro', isa => 'Int', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+  has LastModifiedTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -76,7 +76,7 @@ d604721fxaaqy9.cloudfront.net.
   The number of invalidation batches currently in progress.
 
 
-=head2 B<REQUIRED> LastModifiedTime => Str
+=head2 B<REQUIRED> LastModifiedTime => L<Paws::API::TimeStamp>
 
   The date and time the distribution was last modified.
 

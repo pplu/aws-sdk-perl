@@ -2,7 +2,7 @@ package Paws::IoT::Certificate;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str', xmlname => 'certificateArn', request_name => 'certificateArn', traits => ['Unwrapped','NameInRequest']);
   has CertificateId => (is => 'ro', isa => 'Str', xmlname => 'certificateId', request_name => 'certificateId', traits => ['Unwrapped','NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -49,7 +49,7 @@ Information about a certificate.
   The ID of the certificate.
 
 
-=head2 CreationDate => Str
+=head2 CreationDate => L<Paws::API::TimeStamp>
 
   The date and time the certificate was created.
 

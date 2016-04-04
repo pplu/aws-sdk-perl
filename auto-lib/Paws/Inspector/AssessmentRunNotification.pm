@@ -1,6 +1,6 @@
 package Paws::Inspector::AssessmentRunNotification;
   use Moose;
-  has Date => (is => 'ro', isa => 'Str', xmlname => 'date', request_name => 'date', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Date => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'date', request_name => 'date', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Error => (is => 'ro', isa => 'Bool', xmlname => 'error', request_name => 'error', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Event => (is => 'ro', isa => 'Str', xmlname => 'event', request_name => 'event', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
@@ -42,7 +42,7 @@ type.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Date => Str
+=head2 B<REQUIRED> Date => L<Paws::API::TimeStamp>
 
   The date of the notification.
 

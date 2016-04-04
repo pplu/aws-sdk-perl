@@ -3,7 +3,7 @@ package Paws::RedShift::Cluster;
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
-  has ClusterCreateTime => (is => 'ro', isa => 'Str');
+  has ClusterCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
   has ClusterNodes => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterNode]');
   has ClusterParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterParameterGroupStatus]');
@@ -83,7 +83,7 @@ cluster during the maintenance window.
   The name of the Availability Zone in which the cluster is located.
 
 
-=head2 ClusterCreateTime => Str
+=head2 ClusterCreateTime => L<Paws::API::TimeStamp>
 
   The date and time that the cluster was created.
 

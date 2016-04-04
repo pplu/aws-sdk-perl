@@ -3170,7 +3170,7 @@ Returns: a L<Paws::EC2::DescribeSpotFleetInstancesResponse> instance
   Describes the running instances for the specified Spot fleet.
 
 
-=head2 DescribeSpotFleetRequestHistory(SpotFleetRequestId => Str, StartTime => Str, [DryRun => Bool, EventType => Str, MaxResults => Int, NextToken => Str])
+=head2 DescribeSpotFleetRequestHistory(SpotFleetRequestId => Str, StartTime => L<Paws::API::TimeStamp>, [DryRun => Bool, EventType => Str, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSpotFleetRequestHistory>
 
@@ -3215,7 +3215,7 @@ DescribeInstances with a filter to look for instances where the
 instance lifecycle is C<spot>.
 
 
-=head2 DescribeSpotPriceHistory([AvailabilityZone => Str, DryRun => Bool, EndTime => Str, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceTypes => ArrayRef[Str], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str], StartTime => Str])
+=head2 DescribeSpotPriceHistory([AvailabilityZone => Str, DryRun => Bool, EndTime => L<Paws::API::TimeStamp>, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceTypes => ArrayRef[Str], MaxResults => Int, NextToken => Str, ProductDescriptions => ArrayRef[Str], StartTime => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSpotPriceHistory>
 
@@ -4199,7 +4199,7 @@ table's association ID and the route table to be the new main route
 table.
 
 
-=head2 ReportInstanceStatus(Instances => ArrayRef[Str], ReasonCodes => ArrayRef[Str], Status => Str, [Description => Str, DryRun => Bool, EndTime => Str, StartTime => Str])
+=head2 ReportInstanceStatus(Instances => ArrayRef[Str], ReasonCodes => ArrayRef[Str], Status => Str, [Description => Str, DryRun => Bool, EndTime => L<Paws::API::TimeStamp>, StartTime => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::EC2::ReportInstanceStatus>
 
@@ -4243,7 +4243,7 @@ For more information, see Spot Fleet Requests in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
 
-=head2 RequestSpotInstances(SpotPrice => Str, [AvailabilityZoneGroup => Str, BlockDurationMinutes => Int, ClientToken => Str, DryRun => Bool, InstanceCount => Int, LaunchGroup => Str, LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>, Type => Str, ValidFrom => Str, ValidUntil => Str])
+=head2 RequestSpotInstances(SpotPrice => Str, [AvailabilityZoneGroup => Str, BlockDurationMinutes => Int, ClientToken => Str, DryRun => Bool, InstanceCount => Int, LaunchGroup => Str, LaunchSpecification => L<Paws::EC2::RequestSpotLaunchSpecification>, Type => Str, ValidFrom => L<Paws::API::TimeStamp>, ValidUntil => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::EC2::RequestSpotInstances>
 

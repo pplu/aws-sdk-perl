@@ -2,12 +2,12 @@
 package Paws::RedShift::DescribeEvents;
   use Moose;
   has Duration => (is => 'ro', isa => 'Int');
-  has EndTime => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 
   use MooseX::ClassAttribute;
 
@@ -50,7 +50,7 @@ Default: C<60>
 
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
 The end of the time interval for which to retrieve events, specified in
 ISO 8601 format. For more information about ISO 8601, go to the ISO8601
@@ -143,7 +143,7 @@ cluster snapshot identifier.
 
 Valid values are: C<"cluster">, C<"cluster-parameter-group">, C<"cluster-security-group">, C<"cluster-snapshot">
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
 The beginning of the time interval to retrieve events for, specified in
 ISO 8601 format. For more information about ISO 8601, go to the ISO8601

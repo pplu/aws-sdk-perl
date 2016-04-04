@@ -1,11 +1,11 @@
 package Paws::CognitoSync::Dataset;
   use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DatasetName => (is => 'ro', isa => 'Str');
   has DataStorage => (is => 'ro', isa => 'Int');
   has IdentityId => (is => 'ro', isa => 'Str');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
+  has LastModifiedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has NumRecords => (is => 'ro', isa => 'Int');
 1;
 
@@ -46,7 +46,7 @@ synced by dataset, and a dataset can hold up to 1MB of key-value pairs.
 =head1 ATTRIBUTES
 
 
-=head2 CreationDate => Str
+=head2 CreationDate => L<Paws::API::TimeStamp>
 
   Date on which the dataset was created.
 
@@ -74,7 +74,7 @@ Cognito. GUID generation is unique within a region.
   The device that made the last change to this dataset.
 
 
-=head2 LastModifiedDate => Str
+=head2 LastModifiedDate => L<Paws::API::TimeStamp>
 
   Date when the dataset was last modified.
 

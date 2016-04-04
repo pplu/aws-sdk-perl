@@ -4,15 +4,15 @@ package Paws::DeviceFarm::Run;
   has BillingMethod => (is => 'ro', isa => 'Str', xmlname => 'billingMethod', request_name => 'billingMethod', traits => ['Unwrapped','NameInRequest']);
   has CompletedJobs => (is => 'ro', isa => 'Int', xmlname => 'completedJobs', request_name => 'completedJobs', traits => ['Unwrapped','NameInRequest']);
   has Counters => (is => 'ro', isa => 'Paws::DeviceFarm::Counters', xmlname => 'counters', request_name => 'counters', traits => ['Unwrapped','NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
+  has Created => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
   has DeviceMinutes => (is => 'ro', isa => 'Paws::DeviceFarm::DeviceMinutes', xmlname => 'deviceMinutes', request_name => 'deviceMinutes', traits => ['Unwrapped','NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', xmlname => 'platform', request_name => 'platform', traits => ['Unwrapped','NameInRequest']);
   has Result => (is => 'ro', isa => 'Str', xmlname => 'result', request_name => 'result', traits => ['Unwrapped','NameInRequest']);
-  has Started => (is => 'ro', isa => 'Str', xmlname => 'started', request_name => 'started', traits => ['Unwrapped','NameInRequest']);
+  has Started => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'started', request_name => 'started', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has Stopped => (is => 'ro', isa => 'Str', xmlname => 'stopped', request_name => 'stopped', traits => ['Unwrapped','NameInRequest']);
+  has Stopped => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'stopped', request_name => 'stopped', traits => ['Unwrapped','NameInRequest']);
   has TotalJobs => (is => 'ro', isa => 'Int', xmlname => 'totalJobs', request_name => 'totalJobs', traits => ['Unwrapped','NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
 1;
@@ -73,7 +73,7 @@ C<unmetered>.
   The run's result counters.
 
 
-=head2 Created => Str
+=head2 Created => L<Paws::API::TimeStamp>
 
   When the run was created.
 
@@ -154,7 +154,7 @@ WARNED: A warning condition.
 
 
 
-=head2 Started => Str
+=head2 Started => L<Paws::API::TimeStamp>
 
   The run's start time.
 
@@ -191,7 +191,7 @@ SCHEDULING: A scheduling status.
 
 
 
-=head2 Stopped => Str
+=head2 Stopped => L<Paws::API::TimeStamp>
 
   The run's stop time.
 

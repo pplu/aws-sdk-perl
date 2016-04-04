@@ -2,7 +2,7 @@ package Paws::IAM::ManagedPolicyDetail;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has AttachmentCount => (is => 'ro', isa => 'Int');
-  has CreateDate => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DefaultVersionId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has IsAttachable => (is => 'ro', isa => 'Bool');
@@ -10,7 +10,7 @@ package Paws::IAM::ManagedPolicyDetail;
   has PolicyId => (is => 'ro', isa => 'Str');
   has PolicyName => (is => 'ro', isa => 'Str');
   has PolicyVersionList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyVersion]');
-  has UpdateDate => (is => 'ro', isa => 'Str');
+  has UpdateDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -65,7 +65,7 @@ Inline Policies in the I<Using IAM> guide.
 policy is attached to.
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the policy was
 created.
@@ -117,7 +117,7 @@ guide.
   A list containing information about the versions of the policy.
 
 
-=head2 UpdateDate => Str
+=head2 UpdateDate => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the policy was
 last updated.

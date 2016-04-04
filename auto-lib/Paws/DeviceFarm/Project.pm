@@ -1,7 +1,7 @@
 package Paws::DeviceFarm::Project;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
+  has Created => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -44,7 +44,7 @@ managing tests.
   The project's ARN.
 
 
-=head2 Created => Str
+=head2 Created => L<Paws::API::TimeStamp>
 
   When the project was created.
 

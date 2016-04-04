@@ -1,6 +1,6 @@
 package Paws::SES::MessageDsn;
   use Moose;
-  has ArrivalDate => (is => 'ro', isa => 'Str');
+  has ArrivalDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has ExtensionFields => (is => 'ro', isa => 'ArrayRef[Paws::SES::ExtensionField]');
   has ReportingMta => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -43,7 +43,7 @@ Amazon SES Developer Guide.
 =head1 ATTRIBUTES
 
 
-=head2 ArrivalDate => Str
+=head2 ArrivalDate => L<Paws::API::TimeStamp>
 
   When the message was received by the reporting mail transfer agent
 (MTA), in RFC 822 date-time format.

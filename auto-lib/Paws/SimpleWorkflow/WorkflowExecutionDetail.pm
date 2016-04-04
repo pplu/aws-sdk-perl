@@ -3,7 +3,7 @@ package Paws::SimpleWorkflow::WorkflowExecutionDetail;
   use Moose;
   has ExecutionConfiguration => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionConfiguration', traits => ['Unwrapped'], xmlname => 'executionConfiguration' , required => 1);
   has ExecutionInfo => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionInfo', traits => ['Unwrapped'], xmlname => 'executionInfo' , required => 1);
-  has LatestActivityTaskTimestamp => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'latestActivityTaskTimestamp' );
+  has LatestActivityTaskTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['Unwrapped'], xmlname => 'latestActivityTaskTimestamp' );
   has LatestExecutionContext => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'latestExecutionContext' );
   has OpenCounts => (is => 'ro', isa => 'Paws::SimpleWorkflow::WorkflowExecutionOpenCounts', traits => ['Unwrapped'], xmlname => 'openCounts' , required => 1);
 
@@ -30,7 +30,7 @@ Information about the workflow execution.
 
 
 
-=head2 LatestActivityTaskTimestamp => Str
+=head2 LatestActivityTaskTimestamp => L<Paws::API::TimeStamp>
 
 The time when the last activity task was scheduled for this workflow
 execution. You can use this information to determine if the workflow

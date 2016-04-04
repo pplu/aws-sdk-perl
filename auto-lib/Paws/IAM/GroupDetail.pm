@@ -2,7 +2,7 @@ package Paws::IAM::GroupDetail;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has AttachedManagedPolicies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AttachedPolicy]');
-  has CreateDate => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has GroupId => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
   has GroupPolicyList => (is => 'ro', isa => 'ArrayRef[Paws::IAM::PolicyDetail]');
@@ -56,7 +56,7 @@ GetAccountAuthorizationDetails action.
   A list of the managed policies attached to the group.
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the group was
 created.

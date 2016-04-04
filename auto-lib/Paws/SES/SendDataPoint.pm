@@ -4,7 +4,7 @@ package Paws::SES::SendDataPoint;
   has Complaints => (is => 'ro', isa => 'Int');
   has DeliveryAttempts => (is => 'ro', isa => 'Int');
   has Rejects => (is => 'ro', isa => 'Int');
-  has Timestamp => (is => 'ro', isa => 'Str');
+  has Timestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +61,7 @@ statistics for a 15-minute period of sending activity.
   Number of emails rejected by Amazon SES.
 
 
-=head2 Timestamp => Str
+=head2 Timestamp => L<Paws::API::TimeStamp>
 
   Time of the data point.
 

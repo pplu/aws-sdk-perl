@@ -3,13 +3,13 @@ package Paws::EC2::DescribeSpotPriceHistory;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'availabilityZone' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime' );
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['NameInRequest'], request_name => 'endTime' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'InstanceType' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has ProductDescriptions => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'ProductDescription' );
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' );
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['NameInRequest'], request_name => 'startTime' );
 
   use MooseX::ClassAttribute;
 
@@ -56,7 +56,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
 The date and time, up to the current date, from which to stop
 retrieving the price history data, in UTC format (for example,
@@ -129,7 +129,7 @@ Filters the results by the specified basic product descriptions.
 
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
 The date and time, up to the past 90 days, from which to start
 retrieving the price history data, in UTC format (for example,

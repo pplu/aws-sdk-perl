@@ -11,7 +11,7 @@ package Paws::RDS::ReservedDBInstance;
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RDS::RecurringCharge]');
   has ReservedDBInstanceId => (is => 'ro', isa => 'Str');
   has ReservedDBInstancesOfferingId => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has State => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
 1;
@@ -106,7 +106,7 @@ actions.
   The offering identifier.
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
   The time the reservation started.
 

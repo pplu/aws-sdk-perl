@@ -2,7 +2,7 @@ package Paws::IAM::UserDetail;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has AttachedManagedPolicies => (is => 'ro', isa => 'ArrayRef[Paws::IAM::AttachedPolicy]');
-  has CreateDate => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has GroupList => (is => 'ro', isa => 'ArrayRef[Str]');
   has Path => (is => 'ro', isa => 'Str');
   has UserId => (is => 'ro', isa => 'Str');
@@ -57,7 +57,7 @@ GetAccountAuthorizationDetails action.
   A list of the managed policies attached to the user.
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the user was
 created.

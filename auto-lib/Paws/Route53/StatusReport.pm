@@ -1,6 +1,6 @@
 package Paws::Route53::StatusReport;
   use Moose;
-  has CheckedTime => (is => 'ro', isa => 'Str');
+  has CheckedTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Status => (is => 'ro', isa => 'Str');
 1;
 
@@ -38,7 +38,7 @@ for the current observation.
 =head1 ATTRIBUTES
 
 
-=head2 CheckedTime => Str
+=head2 CheckedTime => L<Paws::API::TimeStamp>
 
   The date and time the health check status was observed, in the format
 C<YYYY-MM-DDThh:mm:ssZ>, as specified in the ISO 8601 standard (for

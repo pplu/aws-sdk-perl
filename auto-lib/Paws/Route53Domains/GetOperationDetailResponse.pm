@@ -5,7 +5,7 @@ package Paws::Route53Domains::GetOperationDetailResponse;
   has Message => (is => 'ro', isa => 'Str');
   has OperationId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
-  has SubmittedDate => (is => 'ro', isa => 'Str');
+  has SubmittedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Type => (is => 'ro', isa => 'Str');
 
 
@@ -50,7 +50,7 @@ Type: String
 
 Valid values are: C<"SUBMITTED">, C<"IN_PROGRESS">, C<"ERROR">, C<"SUCCESSFUL">, C<"FAILED">
 
-=head2 SubmittedDate => Str
+=head2 SubmittedDate => L<Paws::API::TimeStamp>
 
 The date when the request was submitted.
 

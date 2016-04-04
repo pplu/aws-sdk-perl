@@ -3,10 +3,10 @@ package Paws::MachineLearning::GetBatchPredictionOutput;
   use Moose;
   has BatchPredictionDataSourceId => (is => 'ro', isa => 'Str');
   has BatchPredictionId => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has InputDataLocationS3 => (is => 'ro', isa => 'Str');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
+  has LastUpdatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LogUri => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has MLModelId => (is => 'ro', isa => 'Str');
@@ -38,7 +38,7 @@ be identical to the value of the C<BatchPredictionID> in the request.
 
 
 
-=head2 CreatedAt => Str
+=head2 CreatedAt => L<Paws::API::TimeStamp>
 
 The time when the C<BatchPrediction> was created. The time is expressed
 in epoch time.
@@ -60,7 +60,7 @@ Service (Amazon S3).
 
 
 
-=head2 LastUpdatedAt => Str
+=head2 LastUpdatedAt => L<Paws::API::TimeStamp>
 
 The time of the most recent edit to C<BatchPrediction>. The time is
 expressed in epoch time.

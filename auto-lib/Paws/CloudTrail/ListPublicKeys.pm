@@ -1,9 +1,9 @@
 
 package Paws::CloudTrail::ListPublicKeys;
   use Moose;
-  has EndTime => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has NextToken => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 
   use MooseX::ClassAttribute;
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
 Optionally specifies, in UTC, the end of the time range to look up
 public keys for CloudTrail digest files. If not specified, the current
@@ -49,7 +49,7 @@ Reserved for future use.
 
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
 Optionally specifies, in UTC, the start of the time range to look up
 public keys for CloudTrail digest files. If not specified, the current

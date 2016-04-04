@@ -22,7 +22,7 @@ package Paws::SimpleWorkflow::HistoryEvent;
   has DecisionTaskStartedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskStartedEventAttributes', xmlname => 'decisionTaskStartedEventAttributes', request_name => 'decisionTaskStartedEventAttributes', traits => ['Unwrapped','NameInRequest']);
   has DecisionTaskTimedOutEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::DecisionTaskTimedOutEventAttributes', xmlname => 'decisionTaskTimedOutEventAttributes', request_name => 'decisionTaskTimedOutEventAttributes', traits => ['Unwrapped','NameInRequest']);
   has EventId => (is => 'ro', isa => 'Int', xmlname => 'eventId', request_name => 'eventId', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has EventTimestamp => (is => 'ro', isa => 'Str', xmlname => 'eventTimestamp', request_name => 'eventTimestamp', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has EventTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'eventTimestamp', request_name => 'eventTimestamp', traits => ['Unwrapped','NameInRequest'], required => 1);
   has EventType => (is => 'ro', isa => 'Str', xmlname => 'eventType', request_name => 'eventType', traits => ['Unwrapped','NameInRequest'], required => 1);
   has ExternalWorkflowExecutionCancelRequestedEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExternalWorkflowExecutionCancelRequestedEventAttributes', xmlname => 'externalWorkflowExecutionCancelRequestedEventAttributes', request_name => 'externalWorkflowExecutionCancelRequestedEventAttributes', traits => ['Unwrapped','NameInRequest']);
   has ExternalWorkflowExecutionSignaledEventAttributes => (is => 'ro', isa => 'Paws::SimpleWorkflow::ExternalWorkflowExecutionSignaledEventAttributes', xmlname => 'externalWorkflowExecutionSignaledEventAttributes', request_name => 'externalWorkflowExecutionSignaledEventAttributes', traits => ['Unwrapped','NameInRequest']);
@@ -412,7 +412,7 @@ other event types.
 event with in the workflow execution history.
 
 
-=head2 B<REQUIRED> EventTimestamp => Str
+=head2 B<REQUIRED> EventTimestamp => L<Paws::API::TimeStamp>
 
   The date and time when the event occurred.
 

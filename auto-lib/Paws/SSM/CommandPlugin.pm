@@ -5,8 +5,8 @@ package Paws::SSM::CommandPlugin;
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
   has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
   has ResponseCode => (is => 'ro', isa => 'Int');
-  has ResponseFinishDateTime => (is => 'ro', isa => 'Str');
-  has ResponseStartDateTime => (is => 'ro', isa => 'Str');
+  has ResponseFinishDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has ResponseStartDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Status => (is => 'ro', isa => 'Str');
 1;
 
@@ -74,13 +74,13 @@ the command.
   A numeric response code generated after executing the plugin.
 
 
-=head2 ResponseFinishDateTime => Str
+=head2 ResponseFinishDateTime => L<Paws::API::TimeStamp>
 
   The time the plugin stopped executing. Could stop prematurely if, for
 example, a cancel command was sent.
 
 
-=head2 ResponseStartDateTime => Str
+=head2 ResponseStartDateTime => L<Paws::API::TimeStamp>
 
   The time the plugin started executing.
 

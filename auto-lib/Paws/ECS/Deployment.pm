@@ -1,13 +1,13 @@
 package Paws::ECS::Deployment;
   use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
   has DesiredCount => (is => 'ro', isa => 'Int', xmlname => 'desiredCount', request_name => 'desiredCount', traits => ['Unwrapped','NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
   has PendingCount => (is => 'ro', isa => 'Int', xmlname => 'pendingCount', request_name => 'pendingCount', traits => ['Unwrapped','NameInRequest']);
   has RunningCount => (is => 'ro', isa => 'Int', xmlname => 'runningCount', request_name => 'runningCount', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
   has TaskDefinition => (is => 'ro', isa => 'Str', xmlname => 'taskDefinition', request_name => 'taskDefinition', traits => ['Unwrapped','NameInRequest']);
-  has UpdatedAt => (is => 'ro', isa => 'Str', xmlname => 'updatedAt', request_name => 'updatedAt', traits => ['Unwrapped','NameInRequest']);
+  has UpdatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'updatedAt', request_name => 'updatedAt', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +43,7 @@ The details of an Amazon ECS service deployment.
 =head1 ATTRIBUTES
 
 
-=head2 CreatedAt => Str
+=head2 CreatedAt => L<Paws::API::TimeStamp>
 
   The Unix time in seconds and milliseconds when the service was created.
 
@@ -85,7 +85,7 @@ and C<INACTIVE> (for deployments that have been completely replaced).
 use.
 
 
-=head2 UpdatedAt => Str
+=head2 UpdatedAt => L<Paws::API::TimeStamp>
 
   The Unix time in seconds and milliseconds when the service was last
 updated.

@@ -2,7 +2,7 @@ package Paws::CognitoSync::IdentityPoolUsage;
   use Moose;
   has DataStorage => (is => 'ro', isa => 'Int');
   has IdentityPoolId => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
+  has LastModifiedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SyncSessionsCount => (is => 'ro', isa => 'Int');
 1;
 
@@ -51,7 +51,7 @@ us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. GUID generation is unique within a region.
 
 
-=head2 LastModifiedDate => Str
+=head2 LastModifiedDate => L<Paws::API::TimeStamp>
 
   Date on which the identity pool was last modified.
 

@@ -1,7 +1,7 @@
 
 package Paws::Inspector::DescribeCrossAccountAccessRoleResponse;
   use Moose;
-  has RegisteredAt => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'registeredAt' , required => 1);
+  has RegisteredAt => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['Unwrapped'], xmlname => 'registeredAt' , required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'roleArn' , required => 1);
   has Valid => (is => 'ro', isa => 'Bool', traits => ['Unwrapped'], xmlname => 'valid' , required => 1);
 
@@ -15,7 +15,7 @@ Paws::Inspector::DescribeCrossAccountAccessRoleResponse
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> RegisteredAt => Str
+=head2 B<REQUIRED> RegisteredAt => L<Paws::API::TimeStamp>
 
 The date when the cross account access role was registered.
 

@@ -2,8 +2,8 @@
 package Paws::Config::GetResourceConfigHistory;
   use Moose;
   has ChronologicalOrder => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'chronologicalOrder' );
-  has EarlierTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'earlierTime' );
-  has LaterTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'laterTime' );
+  has EarlierTime => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['NameInRequest'], request_name => 'earlierTime' );
+  has LaterTime => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['NameInRequest'], request_name => 'laterTime' );
   has Limit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'limit' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceId' , required => 1);
@@ -46,7 +46,7 @@ results are listed in reverse chronological order.
 
 Valid values are: C<"Reverse">, C<"Forward">
 
-=head2 EarlierTime => Str
+=head2 EarlierTime => L<Paws::API::TimeStamp>
 
 The time stamp that indicates an earlier time. If not specified, the
 action returns paginated results that contain configuration items that
@@ -54,7 +54,7 @@ start from when the first configuration item was recorded.
 
 
 
-=head2 LaterTime => Str
+=head2 LaterTime => L<Paws::API::TimeStamp>
 
 The time stamp that indicates a later time. If not specified, current
 time is taken.

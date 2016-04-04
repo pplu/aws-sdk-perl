@@ -1,8 +1,8 @@
 package Paws::EMR::InstanceGroupDetail;
   use Moose;
   has BidPrice => (is => 'ro', isa => 'Str');
-  has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
-  has EndDateTime => (is => 'ro', isa => 'Str');
+  has CreationDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
+  has EndDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has InstanceGroupId => (is => 'ro', isa => 'Str');
   has InstanceRequestCount => (is => 'ro', isa => 'Int', required => 1);
   has InstanceRole => (is => 'ro', isa => 'Str', required => 1);
@@ -11,8 +11,8 @@ package Paws::EMR::InstanceGroupDetail;
   has LastStateChangeReason => (is => 'ro', isa => 'Str');
   has Market => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str');
-  has ReadyDateTime => (is => 'ro', isa => 'Str');
-  has StartDateTime => (is => 'ro', isa => 'Str');
+  has ReadyDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has StartDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has State => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -55,12 +55,12 @@ Detailed information about an instance group.
 expressed in USD.
 
 
-=head2 B<REQUIRED> CreationDateTime => Str
+=head2 B<REQUIRED> CreationDateTime => L<Paws::API::TimeStamp>
 
   The date/time the instance group was created.
 
 
-=head2 EndDateTime => Str
+=head2 EndDateTime => L<Paws::API::TimeStamp>
 
   The date/time the instance group was terminated.
 
@@ -105,12 +105,12 @@ expressed in USD.
   Friendly name for the instance group.
 
 
-=head2 ReadyDateTime => Str
+=head2 ReadyDateTime => L<Paws::API::TimeStamp>
 
   The date/time the instance group was available to the cluster.
 
 
-=head2 StartDateTime => Str
+=head2 StartDateTime => L<Paws::API::TimeStamp>
 
   The date/time the instance group was started.
 

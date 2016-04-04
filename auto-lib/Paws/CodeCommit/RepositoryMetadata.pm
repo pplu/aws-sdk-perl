@@ -4,9 +4,9 @@ package Paws::CodeCommit::RepositoryMetadata;
   has Arn => (is => 'ro', isa => 'Str');
   has CloneUrlHttp => (is => 'ro', isa => 'Str', xmlname => 'cloneUrlHttp', request_name => 'cloneUrlHttp', traits => ['Unwrapped','NameInRequest']);
   has CloneUrlSsh => (is => 'ro', isa => 'Str', xmlname => 'cloneUrlSsh', request_name => 'cloneUrlSsh', traits => ['Unwrapped','NameInRequest']);
-  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
   has DefaultBranch => (is => 'ro', isa => 'Str', xmlname => 'defaultBranch', request_name => 'defaultBranch', traits => ['Unwrapped','NameInRequest']);
-  has LastModifiedDate => (is => 'ro', isa => 'Str', xmlname => 'lastModifiedDate', request_name => 'lastModifiedDate', traits => ['Unwrapped','NameInRequest']);
+  has LastModifiedDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'lastModifiedDate', request_name => 'lastModifiedDate', traits => ['Unwrapped','NameInRequest']);
   has RepositoryDescription => (is => 'ro', isa => 'Str', xmlname => 'repositoryDescription', request_name => 'repositoryDescription', traits => ['Unwrapped','NameInRequest']);
   has RepositoryId => (is => 'ro', isa => 'Str', xmlname => 'repositoryId', request_name => 'repositoryId', traits => ['Unwrapped','NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', xmlname => 'repositoryName', request_name => 'repositoryName', traits => ['Unwrapped','NameInRequest']);
@@ -65,7 +65,7 @@ Information about a repository.
   The URL to use for cloning the repository over SSH.
 
 
-=head2 CreationDate => Str
+=head2 CreationDate => L<Paws::API::TimeStamp>
 
   The date and time the repository was created, in timestamp format.
 
@@ -75,7 +75,7 @@ Information about a repository.
   The repository's default branch name.
 
 
-=head2 LastModifiedDate => Str
+=head2 LastModifiedDate => L<Paws::API::TimeStamp>
 
   The date and time the repository was last modified, in timestamp
 format.

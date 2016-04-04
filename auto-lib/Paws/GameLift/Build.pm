@@ -1,7 +1,7 @@
 package Paws::GameLift::Build;
   use Moose;
   has BuildId => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
+  has CreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Name => (is => 'ro', isa => 'Str');
   has SizeOnDisk => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
@@ -46,7 +46,7 @@ Properties describing a game build.
   Unique identifier for a build.
 
 
-=head2 CreationTime => Str
+=head2 CreationTime => L<Paws::API::TimeStamp>
 
   Time stamp indicating when this object was created. Format is an
 integer representing the number of seconds since the Unix epoch (Unix

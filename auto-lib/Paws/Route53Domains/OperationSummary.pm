@@ -2,7 +2,7 @@ package Paws::Route53Domains::OperationSummary;
   use Moose;
   has OperationId => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
-  has SubmittedDate => (is => 'ro', isa => 'Str', required => 1);
+  has SubmittedDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -53,7 +53,7 @@ Type: String
 Type: String
 
 
-=head2 B<REQUIRED> SubmittedDate => Str
+=head2 B<REQUIRED> SubmittedDate => L<Paws::API::TimeStamp>
 
   The date when the request was submitted.
 

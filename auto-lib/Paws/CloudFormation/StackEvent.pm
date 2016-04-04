@@ -9,7 +9,7 @@ package Paws::CloudFormation::StackEvent;
   has ResourceType => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
   has StackName => (is => 'ro', isa => 'Str', required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  has Timestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -92,7 +92,7 @@ Reference in the AWS CloudFormation User Guide.)
   The name associated with a stack.
 
 
-=head2 B<REQUIRED> Timestamp => Str
+=head2 B<REQUIRED> Timestamp => L<Paws::API::TimeStamp>
 
   Time the status was updated.
 

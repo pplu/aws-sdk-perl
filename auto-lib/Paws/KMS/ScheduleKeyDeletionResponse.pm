@@ -1,7 +1,7 @@
 
 package Paws::KMS::ScheduleKeyDeletionResponse;
   use Moose;
-  has DeletionDate => (is => 'ro', isa => 'Str');
+  has DeletionDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has KeyId => (is => 'ro', isa => 'Str');
 
 
@@ -14,7 +14,7 @@ Paws::KMS::ScheduleKeyDeletionResponse
 =head1 ATTRIBUTES
 
 
-=head2 DeletionDate => Str
+=head2 DeletionDate => L<Paws::API::TimeStamp>
 
 The date and time after which AWS KMS deletes the customer master key
 (CMK).

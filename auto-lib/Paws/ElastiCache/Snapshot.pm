@@ -1,7 +1,7 @@
 package Paws::ElastiCache::Snapshot;
   use Moose;
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
-  has CacheClusterCreateTime => (is => 'ro', isa => 'Str');
+  has CacheClusterCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CacheClusterId => (is => 'ro', isa => 'Str');
   has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
@@ -61,7 +61,7 @@ snapshot was taken.
   This parameter is currently disabled.
 
 
-=head2 CacheClusterCreateTime => Str
+=head2 CacheClusterCreateTime => L<Paws::API::TimeStamp>
 
   The date and time when the source cache cluster was created.
 

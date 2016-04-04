@@ -16,7 +16,7 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
-  has RestoreTime => (is => 'ro', isa => 'Str');
+  has RestoreTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SourceDBInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has StorageType => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
@@ -227,7 +227,7 @@ set, the DB instance will be private.
 
 
 
-=head2 RestoreTime => Str
+=head2 RestoreTime => L<Paws::API::TimeStamp>
 
 The date and time to restore from.
 

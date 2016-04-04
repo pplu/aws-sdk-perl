@@ -11,13 +11,13 @@ package Paws::RDS::DBCluster;
   has DBClusterParameterGroup => (is => 'ro', isa => 'Str');
   has DbClusterResourceId => (is => 'ro', isa => 'Str');
   has DBSubnetGroup => (is => 'ro', isa => 'Str');
-  has EarliestRestorableTime => (is => 'ro', isa => 'Str');
+  has EarliestRestorableTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has LatestRestorableTime => (is => 'ro', isa => 'Str');
+  has LatestRestorableTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has PercentProgress => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
@@ -145,7 +145,7 @@ cluster, including the name, description, and subnets in the subnet
 group.
 
 
-=head2 EarliestRestorableTime => Str
+=head2 EarliestRestorableTime => L<Paws::API::TimeStamp>
 
   Specifies the earliest time to which a database can be restored with
 point-in-time restore.
@@ -180,7 +180,7 @@ zone.
 encrypted DB cluster.
 
 
-=head2 LatestRestorableTime => Str
+=head2 LatestRestorableTime => L<Paws::API::TimeStamp>
 
   Specifies the latest time to which a database can be restored with
 point-in-time restore.

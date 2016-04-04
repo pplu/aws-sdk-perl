@@ -2,7 +2,7 @@
 package Paws::ApiGateway::DomainName;
   use Moose;
   has CertificateName => (is => 'ro', isa => 'Str');
-  has CertificateUploadDate => (is => 'ro', isa => 'Str');
+  has CertificateUploadDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DistributionDomainName => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
 
@@ -23,7 +23,7 @@ The name of the certificate.
 
 
 
-=head2 CertificateUploadDate => Str
+=head2 CertificateUploadDate => L<Paws::API::TimeStamp>
 
 The date when the certificate was uploaded, in ISO 8601 format.
 

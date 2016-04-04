@@ -1,6 +1,6 @@
 package Paws::Config::ResourceIdentifier;
   use Moose;
-  has ResourceDeletionTime => (is => 'ro', isa => 'Str', xmlname => 'resourceDeletionTime', request_name => 'resourceDeletionTime', traits => ['Unwrapped','NameInRequest']);
+  has ResourceDeletionTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'resourceDeletionTime', request_name => 'resourceDeletionTime', traits => ['Unwrapped','NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', xmlname => 'resourceId', request_name => 'resourceId', traits => ['Unwrapped','NameInRequest']);
   has ResourceName => (is => 'ro', isa => 'Str', xmlname => 'resourceName', request_name => 'resourceName', traits => ['Unwrapped','NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', xmlname => 'resourceType', request_name => 'resourceType', traits => ['Unwrapped','NameInRequest']);
@@ -41,7 +41,7 @@ name.
 =head1 ATTRIBUTES
 
 
-=head2 ResourceDeletionTime => Str
+=head2 ResourceDeletionTime => L<Paws::API::TimeStamp>
 
   The time that the resource was deleted.
 

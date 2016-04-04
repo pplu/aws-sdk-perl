@@ -5,7 +5,7 @@ package Paws::SSM::CommandInvocation;
   has Comment => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
-  has RequestedDateTime => (is => 'ro', isa => 'Str');
+  has RequestedDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Status => (is => 'ro', isa => 'Str');
   has TraceOutput => (is => 'ro', isa => 'Str');
 1;
@@ -74,7 +74,7 @@ description of what the command should do.
   The instance ID in which this invocation was requested.
 
 
-=head2 RequestedDateTime => Str
+=head2 RequestedDateTime => L<Paws::API::TimeStamp>
 
   The time and date the request was sent to this instance.
 

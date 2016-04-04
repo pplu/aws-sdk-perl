@@ -1,6 +1,6 @@
 package Paws::EC2::EbsInstanceBlockDevice;
   use Moose;
-  has AttachTime => (is => 'ro', isa => 'Str', xmlname => 'attachTime', traits => ['Unwrapped']);
+  has AttachTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'attachTime', traits => ['Unwrapped']);
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', xmlname => 'deleteOnTermination', traits => ['Unwrapped']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped']);
   has VolumeId => (is => 'ro', isa => 'Str', xmlname => 'volumeId', traits => ['Unwrapped']);
@@ -39,7 +39,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 AttachTime => Str
+=head2 AttachTime => L<Paws::API::TimeStamp>
 
   The time stamp when the attachment initiated.
 

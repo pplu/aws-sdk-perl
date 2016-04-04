@@ -7,7 +7,7 @@ package Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult;
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has HealthStatus => (is => 'ro', isa => 'Str');
   has InstancesHealth => (is => 'ro', isa => 'Paws::ElasticBeanstalk::InstanceHealthSummary');
-  has RefreshedAt => (is => 'ro', isa => 'Str');
+  has RefreshedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Status => (is => 'ro', isa => 'Str');
 
 1;
@@ -60,7 +60,7 @@ environment.
 
 
 
-=head2 RefreshedAt => Str
+=head2 RefreshedAt => L<Paws::API::TimeStamp>
 
 The date and time the information was last refreshed.
 

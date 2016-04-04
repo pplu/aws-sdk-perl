@@ -2,10 +2,10 @@ package Paws::Config::ConfigurationRecorderStatus;
   use Moose;
   has LastErrorCode => (is => 'ro', isa => 'Str', xmlname => 'lastErrorCode', request_name => 'lastErrorCode', traits => ['Unwrapped','NameInRequest']);
   has LastErrorMessage => (is => 'ro', isa => 'Str', xmlname => 'lastErrorMessage', request_name => 'lastErrorMessage', traits => ['Unwrapped','NameInRequest']);
-  has LastStartTime => (is => 'ro', isa => 'Str', xmlname => 'lastStartTime', request_name => 'lastStartTime', traits => ['Unwrapped','NameInRequest']);
+  has LastStartTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'lastStartTime', request_name => 'lastStartTime', traits => ['Unwrapped','NameInRequest']);
   has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
-  has LastStatusChangeTime => (is => 'ro', isa => 'Str', xmlname => 'lastStatusChangeTime', request_name => 'lastStatusChangeTime', traits => ['Unwrapped','NameInRequest']);
-  has LastStopTime => (is => 'ro', isa => 'Str', xmlname => 'lastStopTime', request_name => 'lastStopTime', traits => ['Unwrapped','NameInRequest']);
+  has LastStatusChangeTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'lastStatusChangeTime', request_name => 'lastStatusChangeTime', traits => ['Unwrapped','NameInRequest']);
+  has LastStopTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'lastStopTime', request_name => 'lastStopTime', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
   has Recording => (is => 'ro', isa => 'Bool', xmlname => 'recording', request_name => 'recording', traits => ['Unwrapped','NameInRequest']);
 1;
@@ -53,7 +53,7 @@ The current status of the configuration recorder.
   The message indicating that the recording failed due to an error.
 
 
-=head2 LastStartTime => Str
+=head2 LastStartTime => L<Paws::API::TimeStamp>
 
   The time the recorder was last started.
 
@@ -63,12 +63,12 @@ The current status of the configuration recorder.
   The last (previous) status of the recorder.
 
 
-=head2 LastStatusChangeTime => Str
+=head2 LastStatusChangeTime => L<Paws::API::TimeStamp>
 
   The time when the status was last changed.
 
 
-=head2 LastStopTime => Str
+=head2 LastStopTime => L<Paws::API::TimeStamp>
 
   The time the recorder was last stopped.
 

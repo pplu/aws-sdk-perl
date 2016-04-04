@@ -3,9 +3,9 @@ package Paws::S3::GetObject;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Bucket' , required => 1);
   has IfMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Match' );
-  has IfModifiedSince => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Modified-Since' );
+  has IfModifiedSince => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['ParamInHeader'], header_name => 'If-Modified-Since' );
   has IfNoneMatch => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-None-Match' );
-  has IfUnmodifiedSince => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'If-Unmodified-Since' );
+  has IfUnmodifiedSince => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['ParamInHeader'], header_name => 'If-Unmodified-Since' );
   has Key => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Key' , required => 1);
   has Range => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Range' );
   has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
@@ -14,7 +14,7 @@ package Paws::S3::GetObject;
   has ResponseContentEncoding => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'response-content-encoding' );
   has ResponseContentLanguage => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'response-content-language' );
   has ResponseContentType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'response-content-type' );
-  has ResponseExpires => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'response-expires' );
+  has ResponseExpires => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['ParamInQuery'], query_name => 'response-expires' );
   has SSECustomerAlgorithm => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-algorithm' );
   has SSECustomerKey => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key' );
   has SSECustomerKeyMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-server-side-encryption-customer-key-MD5' );
@@ -52,7 +52,7 @@ specified, otherwise return a 412 (precondition failed).
 
 
 
-=head2 IfModifiedSince => Str
+=head2 IfModifiedSince => L<Paws::API::TimeStamp>
 
 Return the object only if it has been modified since the specified
 time, otherwise return a 304 (not modified).
@@ -66,7 +66,7 @@ one specified, otherwise return a 304 (not modified).
 
 
 
-=head2 IfUnmodifiedSince => Str
+=head2 IfUnmodifiedSince => L<Paws::API::TimeStamp>
 
 Return the object only if it has not been modified since the specified
 time, otherwise return a 412 (precondition failed).
@@ -123,7 +123,7 @@ Sets the Content-Type header of the response.
 
 
 
-=head2 ResponseExpires => Str
+=head2 ResponseExpires => L<Paws::API::TimeStamp>
 
 Sets the Expires header of the response.
 

@@ -6,7 +6,7 @@ package Paws::RDS::RestoreDBClusterToPointInTime;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
-  has RestoreToTime => (is => 'ro', isa => 'Str');
+  has RestoreToTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SourceDBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
@@ -128,7 +128,7 @@ Default: The same port as the original DB cluster.
 
 
 
-=head2 RestoreToTime => Str
+=head2 RestoreToTime => L<Paws::API::TimeStamp>
 
 The date and time to restore the DB cluster to.
 

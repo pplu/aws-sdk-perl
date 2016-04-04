@@ -5,7 +5,7 @@ package Paws::CloudFront::StreamingDistributionSummary;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+  has LastModifiedTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has PriceClass => (is => 'ro', isa => 'Str', required => 1);
   has S3Origin => (is => 'ro', isa => 'Paws::CloudFront::S3Origin', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
@@ -74,7 +74,7 @@ content.
   The identifier for the distribution. For example: EDFDVBD632BHDS5.
 
 
-=head2 B<REQUIRED> LastModifiedTime => Str
+=head2 B<REQUIRED> LastModifiedTime => L<Paws::API::TimeStamp>
 
   The date and time the distribution was last modified.
 

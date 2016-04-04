@@ -1,6 +1,6 @@
 package Paws::DS::EventTopic;
   use Moose;
-  has CreatedDateTime => (is => 'ro', isa => 'Str');
+  has CreatedDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DirectoryId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str');
@@ -41,7 +41,7 @@ associations.
 =head1 ATTRIBUTES
 
 
-=head2 CreatedDateTime => Str
+=head2 CreatedDateTime => L<Paws::API::TimeStamp>
 
   The date and time of when you associated your directory with the SNS
 topic.

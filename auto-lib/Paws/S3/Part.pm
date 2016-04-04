@@ -1,7 +1,7 @@
 package Paws::S3::Part;
   use Moose;
   has ETag => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
+  has LastModified => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has PartNumber => (is => 'ro', isa => 'Int');
   has Size => (is => 'ro', isa => 'Int');
 1;
@@ -44,7 +44,7 @@ This class has no description
   Entity tag returned when the part was uploaded.
 
 
-=head2 LastModified => Str
+=head2 LastModified => L<Paws::API::TimeStamp>
 
   Date and time at which the part was uploaded.
 

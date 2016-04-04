@@ -4,7 +4,7 @@ package Paws::SES::RecipientDsnFields;
   has DiagnosticCode => (is => 'ro', isa => 'Str');
   has ExtensionFields => (is => 'ro', isa => 'ArrayRef[Paws::SES::ExtensionField]');
   has FinalRecipient => (is => 'ro', isa => 'Str');
-  has LastAttemptDate => (is => 'ro', isa => 'Str');
+  has LastAttemptDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has RemoteMta => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -78,7 +78,7 @@ Do not prepend the C<FinalRecipient> email address with C<rfc 822;>, as
 described in RFC 3798.
 
 
-=head2 LastAttemptDate => Str
+=head2 LastAttemptDate => L<Paws::API::TimeStamp>
 
   The time the final delivery attempt was made, in RFC 822 date-time
 format.

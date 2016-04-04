@@ -1,9 +1,9 @@
 
 package Paws::CognitoIdentity::IdentityDescription;
   use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has IdentityId => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
+  has LastModifiedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Logins => (is => 'ro', isa => 'ArrayRef[Str]');
 
 
@@ -16,7 +16,7 @@ Paws::CognitoIdentity::IdentityDescription
 =head1 ATTRIBUTES
 
 
-=head2 CreationDate => Str
+=head2 CreationDate => L<Paws::API::TimeStamp>
 
 Date on which the identity was created.
 
@@ -28,7 +28,7 @@ A unique identifier in the format REGION:GUID.
 
 
 
-=head2 LastModifiedDate => Str
+=head2 LastModifiedDate => L<Paws::API::TimeStamp>
 
 Date on which the identity was last modified.
 

@@ -3,7 +3,7 @@ package Paws::CloudWatch::MetricDatum;
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has StatisticValues => (is => 'ro', isa => 'Paws::CloudWatch::StatisticSet');
-  has Timestamp => (is => 'ro', isa => 'Str');
+  has Timestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Unit => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Num');
 1;
@@ -60,7 +60,7 @@ Dimensions.member.N).
   A set of statistical values describing the metric.
 
 
-=head2 Timestamp => Str
+=head2 Timestamp => L<Paws::API::TimeStamp>
 
   The time stamp used for the metric in ISO 8601 Universal Coordinated
 Time (UTC) format. If not specified, the default value is set to the

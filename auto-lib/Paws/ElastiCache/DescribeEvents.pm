@@ -2,12 +2,12 @@
 package Paws::ElastiCache::DescribeEvents;
   use Moose;
   has Duration => (is => 'ro', isa => 'Int');
-  has EndTime => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 
   use MooseX::ClassAttribute;
 
@@ -45,7 +45,7 @@ The number of minutes' worth of events to retrieve.
 
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
 The end of the time interval for which to retrieve events, specified in
 ISO 8601 format.
@@ -91,7 +91,7 @@ C<cache-security-group> | C<cache-subnet-group>
 
 Valid values are: C<"cache-cluster">, C<"cache-parameter-group">, C<"cache-security-group">, C<"cache-subnet-group">
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
 The beginning of the time interval to retrieve events for, specified in
 ISO 8601 format.

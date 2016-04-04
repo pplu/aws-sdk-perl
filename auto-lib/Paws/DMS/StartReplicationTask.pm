@@ -1,7 +1,7 @@
 
 package Paws::DMS::StartReplicationTask;
   use Moose;
-  has CdcStartTime => (is => 'ro', isa => 'Str');
+  has CdcStartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has ReplicationTaskArn => (is => 'ro', isa => 'Str', required => 1);
   has StartReplicationTaskType => (is => 'ro', isa => 'Str', required => 1);
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 CdcStartTime => Str
+=head2 CdcStartTime => L<Paws::API::TimeStamp>
 
 The start time for the Change Data Capture (CDC) operation.
 

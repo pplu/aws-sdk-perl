@@ -1,7 +1,7 @@
 package Paws::IAM::VirtualMFADevice;
   use Moose;
   has Base32StringSeed => (is => 'ro', isa => 'Str');
-  has EnableDate => (is => 'ro', isa => 'Str');
+  has EnableDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has QRCodePNG => (is => 'ro', isa => 'Str');
   has SerialNumber => (is => 'ro', isa => 'Str', required => 1);
   has User => (is => 'ro', isa => 'Paws::IAM::User');
@@ -46,7 +46,7 @@ Contains information about a virtual MFA device.
 C<Base32StringSeed> is Base64-encoded.
 
 
-=head2 EnableDate => Str
+=head2 EnableDate => L<Paws::API::TimeStamp>
 
   The date and time on which the virtual MFA device was enabled.
 

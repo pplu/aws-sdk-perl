@@ -1,6 +1,6 @@
 package Paws::ElastiCache::Event;
   use Moose;
-  has Date => (is => 'ro', isa => 'Str');
+  has Date => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Message => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
@@ -41,7 +41,7 @@ removing a cache node, or rebooting a node.
 =head1 ATTRIBUTES
 
 
-=head2 Date => Str
+=head2 Date => L<Paws::API::TimeStamp>
 
   The date and time when the event occurred.
 

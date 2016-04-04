@@ -2,7 +2,7 @@
 package Paws::IAM::GetCredentialReportResponse;
   use Moose;
   has Content => (is => 'ro', isa => 'Str');
-  has GeneratedTime => (is => 'ro', isa => 'Str');
+  has GeneratedTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has ReportFormat => (is => 'ro', isa => 'Str');
 
 1;
@@ -22,7 +22,7 @@ Contains the credential report. The report is Base64-encoded.
 
 
 
-=head2 GeneratedTime => Str
+=head2 GeneratedTime => L<Paws::API::TimeStamp>
 
 The date and time when the credential report was created, in ISO 8601
 date-time format.

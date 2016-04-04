@@ -11,7 +11,7 @@ package Paws::S3::PutObject;
   has ContentLength => (is => 'ro', isa => 'Int', traits => ['ParamInHeader'], header_name => 'Content-Length' );
   has ContentMD5 => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-MD5' );
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type' );
-  has Expires => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Expires' );
+  has Expires => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['ParamInHeader'], header_name => 'Expires' );
   has GrantFullControl => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-full-control' );
   has GrantRead => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-read' );
   has GrantReadACP => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-read-acp' );
@@ -109,7 +109,7 @@ A standard MIME type describing the format of the object data.
 
 
 
-=head2 Expires => Str
+=head2 Expires => L<Paws::API::TimeStamp>
 
 The date and time at which the object is no longer cacheable.
 

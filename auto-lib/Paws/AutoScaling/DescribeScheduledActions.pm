@@ -2,11 +2,11 @@
 package Paws::AutoScaling::DescribeScheduledActions;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has ScheduledActionNames => (is => 'ro', isa => 'ArrayRef[Str]');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 
   use MooseX::ClassAttribute;
 
@@ -44,7 +44,7 @@ The name of the group.
 
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
 The latest scheduled start time to return. If scheduled action names
 are provided, this parameter is ignored.
@@ -76,7 +76,7 @@ next set of items, repeat the call with the returned token.
 
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
 The earliest scheduled start time to return. If scheduled action names
 are provided, this parameter is ignored.

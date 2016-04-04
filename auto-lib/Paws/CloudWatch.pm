@@ -127,7 +127,7 @@ Returns: nothing
 deleted.
 
 
-=head2 DescribeAlarmHistory([AlarmName => Str, EndDate => Str, HistoryItemType => Str, MaxRecords => Int, NextToken => Str, StartDate => Str])
+=head2 DescribeAlarmHistory([AlarmName => Str, EndDate => L<Paws::API::TimeStamp>, HistoryItemType => Str, MaxRecords => Int, NextToken => Str, StartDate => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::CloudWatch::DescribeAlarmHistory>
 
@@ -183,7 +183,7 @@ Returns: nothing
   Enables actions for the specified alarms.
 
 
-=head2 GetMetricStatistics(EndTime => Str, MetricName => Str, Namespace => Str, Period => Int, StartTime => Str, Statistics => ArrayRef[Str], [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], Unit => Str])
+=head2 GetMetricStatistics(EndTime => L<Paws::API::TimeStamp>, MetricName => Str, Namespace => Str, Period => Int, StartTime => L<Paws::API::TimeStamp>, Statistics => ArrayRef[Str], [Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], Unit => Str])
 
 Each argument is described in detail in: L<Paws::CloudWatch::GetMetricStatistics>
 

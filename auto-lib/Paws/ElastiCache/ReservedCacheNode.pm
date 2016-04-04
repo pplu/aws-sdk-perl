@@ -9,7 +9,7 @@ package Paws::ElastiCache::ReservedCacheNode;
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::RecurringCharge]');
   has ReservedCacheNodeId => (is => 'ro', isa => 'Str');
   has ReservedCacheNodesOfferingId => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has State => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
 1;
@@ -145,7 +145,7 @@ Parameters for Redis.
   The offering identifier.
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
   The time the reservation started.
 

@@ -1,7 +1,7 @@
 package Paws::Inspector::TimestampRange;
   use Moose;
-  has BeginDate => (is => 'ro', isa => 'Str', xmlname => 'beginDate', request_name => 'beginDate', traits => ['Unwrapped','NameInRequest']);
-  has EndDate => (is => 'ro', isa => 'Str', xmlname => 'endDate', request_name => 'endDate', traits => ['Unwrapped','NameInRequest']);
+  has BeginDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'beginDate', request_name => 'beginDate', traits => ['Unwrapped','NameInRequest']);
+  has EndDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'endDate', request_name => 'endDate', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -37,12 +37,12 @@ This data type is used in the AssessmentRunFilter data type.
 =head1 ATTRIBUTES
 
 
-=head2 BeginDate => Str
+=head2 BeginDate => L<Paws::API::TimeStamp>
 
   The minimum value of the timestamp range.
 
 
-=head2 EndDate => Str
+=head2 EndDate => L<Paws::API::TimeStamp>
 
   The maximum value of the timestamp range.
 

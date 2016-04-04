@@ -1,10 +1,10 @@
 package Paws::Inspector::AssessmentTarget;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
   has ResourceGroupArn => (is => 'ro', isa => 'Str', xmlname => 'resourceGroupArn', request_name => 'resourceGroupArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has UpdatedAt => (is => 'ro', isa => 'Str', xmlname => 'updatedAt', request_name => 'updatedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has UpdatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'updatedAt', request_name => 'updatedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -46,7 +46,7 @@ used as the response element in the DescribeAssessmentTargets action.
   The ARN specifying the Inspector assessment target.
 
 
-=head2 B<REQUIRED> CreatedAt => Str
+=head2 B<REQUIRED> CreatedAt => L<Paws::API::TimeStamp>
 
   The time at which the assessment target is created.
 
@@ -62,7 +62,7 @@ used as the response element in the DescribeAssessmentTargets action.
 assessment target.
 
 
-=head2 B<REQUIRED> UpdatedAt => Str
+=head2 B<REQUIRED> UpdatedAt => L<Paws::API::TimeStamp>
 
   The time at which UpdateAssessmentTarget API is called.
 

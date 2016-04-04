@@ -2,7 +2,7 @@ package Paws::EC2::SpotInstanceStatus;
   use Moose;
   has Code => (is => 'ro', isa => 'Str', xmlname => 'code', traits => ['Unwrapped']);
   has Message => (is => 'ro', isa => 'Str', xmlname => 'message', traits => ['Unwrapped']);
-  has UpdateTime => (is => 'ro', isa => 'Str', xmlname => 'updateTime', traits => ['Unwrapped']);
+  has UpdateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'updateTime', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -49,7 +49,7 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
   The description for the status code.
 
 
-=head2 UpdateTime => Str
+=head2 UpdateTime => L<Paws::API::TimeStamp>
 
   The date and time of the most recent status update, in UTC format (for
 example, I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).

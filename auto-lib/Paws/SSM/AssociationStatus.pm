@@ -1,7 +1,7 @@
 package Paws::SSM::AssociationStatus;
   use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str');
-  has Date => (is => 'ro', isa => 'Str', required => 1);
+  has Date => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has Message => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -44,7 +44,7 @@ Describes an association status.
   A user-defined string.
 
 
-=head2 B<REQUIRED> Date => Str
+=head2 B<REQUIRED> Date => L<Paws::API::TimeStamp>
 
   The date when the status changed.
 

@@ -1,14 +1,14 @@
 package Paws::EC2::ReservedInstancesModification;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped']);
-  has CreateDate => (is => 'ro', isa => 'Str', xmlname => 'createDate', traits => ['Unwrapped']);
-  has EffectiveDate => (is => 'ro', isa => 'Str', xmlname => 'effectiveDate', traits => ['Unwrapped']);
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createDate', traits => ['Unwrapped']);
+  has EffectiveDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'effectiveDate', traits => ['Unwrapped']);
   has ModificationResults => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesModificationResult]', xmlname => 'modificationResultSet', traits => ['Unwrapped']);
   has ReservedInstancesIds => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ReservedInstancesId]', xmlname => 'reservedInstancesSet', traits => ['Unwrapped']);
   has ReservedInstancesModificationId => (is => 'ro', isa => 'Str', xmlname => 'reservedInstancesModificationId', traits => ['Unwrapped']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', traits => ['Unwrapped']);
   has StatusMessage => (is => 'ro', isa => 'Str', xmlname => 'statusMessage', traits => ['Unwrapped']);
-  has UpdateDate => (is => 'ro', isa => 'Str', xmlname => 'updateDate', traits => ['Unwrapped']);
+  has UpdateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'updateDate', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -50,12 +50,12 @@ This class has no description
 request is idempotent. For more information, see Ensuring Idempotency.
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
   The time when the modification request was created.
 
 
-=head2 EffectiveDate => Str
+=head2 EffectiveDate => L<Paws::API::TimeStamp>
 
   The time for the modification to become effective.
 
@@ -86,7 +86,7 @@ Reserved Instance IDs.
   The reason for the status.
 
 
-=head2 UpdateDate => Str
+=head2 UpdateDate => L<Paws::API::TimeStamp>
 
   The time when the modification request was last updated.
 

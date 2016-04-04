@@ -1,6 +1,6 @@
 package Paws::S3::MultipartUpload;
   use Moose;
-  has Initiated => (is => 'ro', isa => 'Str');
+  has Initiated => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Initiator => (is => 'ro', isa => 'Paws::S3::Initiator');
   has Key => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
@@ -41,7 +41,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Initiated => Str
+=head2 Initiated => L<Paws::API::TimeStamp>
 
   Date and time at which the multipart upload was initiated.
 

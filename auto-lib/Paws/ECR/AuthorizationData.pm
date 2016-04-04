@@ -1,7 +1,7 @@
 package Paws::ECR::AuthorizationData;
   use Moose;
   has AuthorizationToken => (is => 'ro', isa => 'Str', xmlname => 'authorizationToken', request_name => 'authorizationToken', traits => ['Unwrapped','NameInRequest']);
-  has ExpiresAt => (is => 'ro', isa => 'Str', xmlname => 'expiresAt', request_name => 'expiresAt', traits => ['Unwrapped','NameInRequest']);
+  has ExpiresAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'expiresAt', request_name => 'expiresAt', traits => ['Unwrapped','NameInRequest']);
   has ProxyEndpoint => (is => 'ro', isa => 'Str', xmlname => 'proxyEndpoint', request_name => 'proxyEndpoint', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -46,7 +46,7 @@ presented in the format C<user:password> for private registry
 authentication using C<docker login>.
 
 
-=head2 ExpiresAt => Str
+=head2 ExpiresAt => L<Paws::API::TimeStamp>
 
   The Unix time in seconds and milliseconds when the authorization token
 expires. Authorization tokens are valid for 12 hours.

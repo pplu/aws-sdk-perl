@@ -5,7 +5,7 @@ package Paws::CloudFormation::DescribeChangeSetOutput;
   has Changes => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Change]');
   has ChangeSetId => (is => 'ro', isa => 'Str');
   has ChangeSetName => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
+  has CreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -53,7 +53,7 @@ The name of the change set.
 
 
 
-=head2 CreationTime => Str
+=head2 CreationTime => L<Paws::API::TimeStamp>
 
 The start time when the change set was created, in UTC.
 

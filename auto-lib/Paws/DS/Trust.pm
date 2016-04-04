@@ -1,10 +1,10 @@
 package Paws::DS::Trust;
   use Moose;
-  has CreatedDateTime => (is => 'ro', isa => 'Str');
+  has CreatedDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DirectoryId => (is => 'ro', isa => 'Str');
-  has LastUpdatedDateTime => (is => 'ro', isa => 'Str');
+  has LastUpdatedDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has RemoteDomainName => (is => 'ro', isa => 'Str');
-  has StateLastUpdatedDateTime => (is => 'ro', isa => 'Str');
+  has StateLastUpdatedDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has TrustDirection => (is => 'ro', isa => 'Str');
   has TrustId => (is => 'ro', isa => 'Str');
   has TrustState => (is => 'ro', isa => 'Str');
@@ -45,7 +45,7 @@ and an external domain.
 =head1 ATTRIBUTES
 
 
-=head2 CreatedDateTime => Str
+=head2 CreatedDateTime => L<Paws::API::TimeStamp>
 
   The date and time that the trust relationship was created.
 
@@ -56,7 +56,7 @@ and an external domain.
 relationship.
 
 
-=head2 LastUpdatedDateTime => Str
+=head2 LastUpdatedDateTime => L<Paws::API::TimeStamp>
 
   The date and time that the trust relationship was last updated.
 
@@ -67,7 +67,7 @@ relationship.
 in the trust relationship.
 
 
-=head2 StateLastUpdatedDateTime => Str
+=head2 StateLastUpdatedDateTime => L<Paws::API::TimeStamp>
 
   The date and time that the TrustState was last updated.
 

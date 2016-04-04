@@ -4,7 +4,7 @@ package Paws::ELB::LoadBalancerDescription;
   has BackendServerDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::ELB::BackendServerDescription]');
   has CanonicalHostedZoneName => (is => 'ro', isa => 'Str');
   has CanonicalHostedZoneNameID => (is => 'ro', isa => 'Str');
-  has CreatedTime => (is => 'ro', isa => 'Str');
+  has CreatedTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DNSName => (is => 'ro', isa => 'Str');
   has HealthCheck => (is => 'ro', isa => 'Paws::ELB::HealthCheck');
   has Instances => (is => 'ro', isa => 'ArrayRef[Paws::ELB::Instance]');
@@ -75,7 +75,7 @@ Balancing in the I<Elastic Load Balancing Developer Guide>.
 balancer.
 
 
-=head2 CreatedTime => Str
+=head2 CreatedTime => L<Paws::API::TimeStamp>
 
   The date and time the load balancer was created.
 

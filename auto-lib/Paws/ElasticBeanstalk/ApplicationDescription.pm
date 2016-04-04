@@ -2,8 +2,8 @@ package Paws::ElasticBeanstalk::ApplicationDescription;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
   has ConfigurationTemplates => (is => 'ro', isa => 'ArrayRef[Str]');
-  has DateCreated => (is => 'ro', isa => 'Str');
-  has DateUpdated => (is => 'ro', isa => 'Str');
+  has DateCreated => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has DateUpdated => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
   has Versions => (is => 'ro', isa => 'ArrayRef[Str]');
 1;
@@ -52,12 +52,12 @@ Describes the properties of an application.
 application.
 
 
-=head2 DateCreated => Str
+=head2 DateCreated => L<Paws::API::TimeStamp>
 
   The date when the application was created.
 
 
-=head2 DateUpdated => Str
+=head2 DateUpdated => L<Paws::API::TimeStamp>
 
   The date when the application was last modified.
 

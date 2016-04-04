@@ -1,6 +1,6 @@
 package Paws::StorageGateway::TapeArchive;
   use Moose;
-  has CompletionTime => (is => 'ro', isa => 'Str');
+  has CompletionTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has RetrievedTo => (is => 'ro', isa => 'Str');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str');
@@ -42,7 +42,7 @@ Represents a virtual tape that is archived in the virtual tape shelf
 =head1 ATTRIBUTES
 
 
-=head2 CompletionTime => Str
+=head2 CompletionTime => L<Paws::API::TimeStamp>
 
   The time that the archiving of the virtual tape was completed.
 

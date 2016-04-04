@@ -1,11 +1,11 @@
 package Paws::IAM::ServerCertificateMetadata;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has Expiration => (is => 'ro', isa => 'Str');
+  has Expiration => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has ServerCertificateId => (is => 'ro', isa => 'Str', required => 1);
   has ServerCertificateName => (is => 'ro', isa => 'Str', required => 1);
-  has UploadDate => (is => 'ro', isa => 'Str');
+  has UploadDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -52,7 +52,7 @@ more information about ARNs and how to use them in policies, see IAM
 Identifiers in the I<Using IAM> guide.
 
 
-=head2 Expiration => Str
+=head2 Expiration => L<Paws::API::TimeStamp>
 
   The date on which the certificate is set to expire.
 
@@ -75,7 +75,7 @@ guide.
   The name that identifies the server certificate.
 
 
-=head2 UploadDate => Str
+=head2 UploadDate => L<Paws::API::TimeStamp>
 
   The date when the server certificate was uploaded.
 

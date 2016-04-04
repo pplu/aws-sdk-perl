@@ -2,16 +2,16 @@ package Paws::Inspector::AssessmentRun;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest'], required => 1);
   has AssessmentTemplateArn => (is => 'ro', isa => 'Str', xmlname => 'assessmentTemplateArn', request_name => 'assessmentTemplateArn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has CompletedAt => (is => 'ro', isa => 'Str', xmlname => 'completedAt', request_name => 'completedAt', traits => ['Unwrapped','NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CompletedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'completedAt', request_name => 'completedAt', traits => ['Unwrapped','NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
   has DataCollected => (is => 'ro', isa => 'Bool', xmlname => 'dataCollected', request_name => 'dataCollected', traits => ['Unwrapped','NameInRequest'], required => 1);
   has DurationInSeconds => (is => 'ro', isa => 'Int', xmlname => 'durationInSeconds', request_name => 'durationInSeconds', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunNotification]', xmlname => 'notifications', request_name => 'notifications', traits => ['Unwrapped','NameInRequest'], required => 1);
   has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'rulesPackageArns', request_name => 'rulesPackageArns', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StartedAt => (is => 'ro', isa => 'Str', xmlname => 'startedAt', request_name => 'startedAt', traits => ['Unwrapped','NameInRequest']);
+  has StartedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'startedAt', request_name => 'startedAt', traits => ['Unwrapped','NameInRequest']);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', request_name => 'state', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has StateChangedAt => (is => 'ro', isa => 'Str', xmlname => 'stateChangedAt', request_name => 'stateChangedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has StateChangedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'stateChangedAt', request_name => 'stateChangedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
   has StateChanges => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::AssessmentRunStateChange]', xmlname => 'stateChanges', request_name => 'stateChanges', traits => ['Unwrapped','NameInRequest'], required => 1);
   has UserAttributesForFindings => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'userAttributesForFindings', request_name => 'userAttributesForFindings', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
@@ -64,13 +64,13 @@ DescribeAssessmentRuns action.
 assessment run.
 
 
-=head2 CompletedAt => Str
+=head2 CompletedAt => L<Paws::API::TimeStamp>
 
   Assessment run completion time that corresponds to the rules packages
 evaluation completion time or failure.
 
 
-=head2 B<REQUIRED> CreatedAt => Str
+=head2 B<REQUIRED> CreatedAt => L<Paws::API::TimeStamp>
 
   The time when StartAssessmentRun API was called.
 
@@ -102,7 +102,7 @@ about a particular generated finding is only added to this list once.
   Rules packages selected for the assessment run.
 
 
-=head2 StartedAt => Str
+=head2 StartedAt => L<Paws::API::TimeStamp>
 
   The time when StartAssessmentRun API was called.
 
@@ -112,7 +112,7 @@ about a particular generated finding is only added to this list once.
   The state of the assessment run.
 
 
-=head2 B<REQUIRED> StateChangedAt => Str
+=head2 B<REQUIRED> StateChangedAt => L<Paws::API::TimeStamp>
 
   The last time when the assessment run's state changed.
 

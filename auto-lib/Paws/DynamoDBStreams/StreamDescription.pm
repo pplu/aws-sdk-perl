@@ -1,6 +1,6 @@
 package Paws::DynamoDBStreams::StreamDescription;
   use Moose;
-  has CreationRequestDateTime => (is => 'ro', isa => 'Str');
+  has CreationRequestDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::KeySchemaElement]');
   has LastEvaluatedShardId => (is => 'ro', isa => 'Str');
   has Shards => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDBStreams::Shard]');
@@ -44,7 +44,7 @@ Represents all of the data describing a particular stream.
 =head1 ATTRIBUTES
 
 
-=head2 CreationRequestDateTime => Str
+=head2 CreationRequestDateTime => L<Paws::API::TimeStamp>
 
   The date and time when the request to create this stream was issued.
 

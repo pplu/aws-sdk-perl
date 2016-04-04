@@ -1,9 +1,9 @@
 package Paws::CloudSearch::OptionStatus;
   use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', required => 1);
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has PendingDeletion => (is => 'ro', isa => 'Bool');
   has State => (is => 'ro', isa => 'Str', required => 1);
-  has UpdateDate => (is => 'ro', isa => 'Str', required => 1);
+  has UpdateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has UpdateVersion => (is => 'ro', isa => 'Int');
 1;
 
@@ -40,7 +40,7 @@ The status of domain configuration option.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreationDate => Str
+=head2 B<REQUIRED> CreationDate => L<Paws::API::TimeStamp>
 
   A timestamp for when this option was created.
 
@@ -73,7 +73,7 @@ modify the option value or update or remove the incompatible documents.
 
 
 
-=head2 B<REQUIRED> UpdateDate => Str
+=head2 B<REQUIRED> UpdateDate => L<Paws::API::TimeStamp>
 
   A timestamp for when this option was last updated.
 

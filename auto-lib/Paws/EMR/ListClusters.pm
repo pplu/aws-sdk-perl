@@ -2,8 +2,8 @@
 package Paws::EMR::ListClusters;
   use Moose;
   has ClusterStates => (is => 'ro', isa => 'ArrayRef[Str]');
-  has CreatedAfter => (is => 'ro', isa => 'Str');
-  has CreatedBefore => (is => 'ro', isa => 'Str');
+  has CreatedAfter => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has CreatedBefore => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Marker => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -42,14 +42,14 @@ The cluster state filters to apply when listing clusters.
 
 
 
-=head2 CreatedAfter => Str
+=head2 CreatedAfter => L<Paws::API::TimeStamp>
 
 The creation date and time beginning value filter for listing clusters
 .
 
 
 
-=head2 CreatedBefore => Str
+=head2 CreatedBefore => L<Paws::API::TimeStamp>
 
 The creation date and time end value filter for listing clusters .
 

@@ -2,7 +2,7 @@
 package Paws::ApiGateway::Deployment;
   use Moose;
   has ApiSummary => (is => 'ro', isa => 'Paws::ApiGateway::PathToMapOfMethodSnapshot');
-  has CreatedDate => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
 
@@ -24,7 +24,7 @@ resource was created.
 
 
 
-=head2 CreatedDate => Str
+=head2 CreatedDate => L<Paws::API::TimeStamp>
 
 The date and time that the deployment resource was created.
 

@@ -3,13 +3,13 @@ package Paws::ECS::Task;
   has ClusterArn => (is => 'ro', isa => 'Str', xmlname => 'clusterArn', request_name => 'clusterArn', traits => ['Unwrapped','NameInRequest']);
   has ContainerInstanceArn => (is => 'ro', isa => 'Str', xmlname => 'containerInstanceArn', request_name => 'containerInstanceArn', traits => ['Unwrapped','NameInRequest']);
   has Containers => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Container]', xmlname => 'containers', request_name => 'containers', traits => ['Unwrapped','NameInRequest']);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
   has DesiredStatus => (is => 'ro', isa => 'Str', xmlname => 'desiredStatus', request_name => 'desiredStatus', traits => ['Unwrapped','NameInRequest']);
   has LastStatus => (is => 'ro', isa => 'Str', xmlname => 'lastStatus', request_name => 'lastStatus', traits => ['Unwrapped','NameInRequest']);
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', xmlname => 'overrides', request_name => 'overrides', traits => ['Unwrapped','NameInRequest']);
-  has StartedAt => (is => 'ro', isa => 'Str', xmlname => 'startedAt', request_name => 'startedAt', traits => ['Unwrapped','NameInRequest']);
+  has StartedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'startedAt', request_name => 'startedAt', traits => ['Unwrapped','NameInRequest']);
   has StartedBy => (is => 'ro', isa => 'Str', xmlname => 'startedBy', request_name => 'startedBy', traits => ['Unwrapped','NameInRequest']);
-  has StoppedAt => (is => 'ro', isa => 'Str', xmlname => 'stoppedAt', request_name => 'stoppedAt', traits => ['Unwrapped','NameInRequest']);
+  has StoppedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'stoppedAt', request_name => 'stoppedAt', traits => ['Unwrapped','NameInRequest']);
   has StoppedReason => (is => 'ro', isa => 'Str', xmlname => 'stoppedReason', request_name => 'stoppedReason', traits => ['Unwrapped','NameInRequest']);
   has TaskArn => (is => 'ro', isa => 'Str', xmlname => 'taskArn', request_name => 'taskArn', traits => ['Unwrapped','NameInRequest']);
   has TaskDefinitionArn => (is => 'ro', isa => 'Str', xmlname => 'taskDefinitionArn', request_name => 'taskDefinitionArn', traits => ['Unwrapped','NameInRequest']);
@@ -65,7 +65,7 @@ task.
   The containers associated with the task.
 
 
-=head2 CreatedAt => Str
+=head2 CreatedAt => L<Paws::API::TimeStamp>
 
   The Unix time in seconds and milliseconds when the task was created
 (the task entered the C<PENDING> state).
@@ -86,7 +86,7 @@ task.
   One or more container overrides.
 
 
-=head2 StartedAt => Str
+=head2 StartedAt => L<Paws::API::TimeStamp>
 
   The Unix time in seconds and milliseconds when the task was started
 (the task transitioned from the C<PENDING> state to the C<RUNNING>
@@ -100,7 +100,7 @@ Amazon ECS service, then the C<startedBy> parameter contains the
 deployment ID of the service that starts it.
 
 
-=head2 StoppedAt => Str
+=head2 StoppedAt => L<Paws::API::TimeStamp>
 
   The Unix time in seconds and milliseconds when the task was stopped
 (the task transitioned from the C<RUNNING> state to the C<STOPPED>

@@ -1,6 +1,6 @@
 package Paws::EFS::FileSystemSize;
   use Moose;
-  has Timestamp => (is => 'ro', isa => 'Str');
+  has Timestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Value => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -45,7 +45,7 @@ system was at any instant in time.
 =head1 ATTRIBUTES
 
 
-=head2 Timestamp => Str
+=head2 Timestamp => L<Paws::API::TimeStamp>
 
   The time at which the size of data, returned in the C<Value> field, was
 determined. The value is the integer number of seconds since

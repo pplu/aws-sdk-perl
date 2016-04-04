@@ -2,8 +2,8 @@ package Paws::EC2::InstanceStatusEvent;
   use Moose;
   has Code => (is => 'ro', isa => 'Str', xmlname => 'code', traits => ['Unwrapped']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
-  has NotAfter => (is => 'ro', isa => 'Str', xmlname => 'notAfter', traits => ['Unwrapped']);
-  has NotBefore => (is => 'ro', isa => 'Str', xmlname => 'notBefore', traits => ['Unwrapped']);
+  has NotAfter => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'notAfter', traits => ['Unwrapped']);
+  has NotBefore => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'notBefore', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -53,12 +53,12 @@ to a week. If the event has been completed, this description starts
 with the following text: [Completed].
 
 
-=head2 NotAfter => Str
+=head2 NotAfter => L<Paws::API::TimeStamp>
 
   The latest scheduled end time for the event.
 
 
-=head2 NotBefore => Str
+=head2 NotBefore => L<Paws::API::TimeStamp>
 
   The earliest scheduled start time for the event.
 

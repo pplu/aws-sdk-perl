@@ -2,7 +2,7 @@
 package Paws::MarketplaceCommerceAnalytics::GenerateDataSet;
   use Moose;
   has CustomerDefinedValues => (is => 'ro', isa => 'Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues', traits => ['NameInRequest'], request_name => 'customerDefinedValues' );
-  has DataSetPublicationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSetPublicationDate' , required => 1);
+  has DataSetPublicationDate => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['NameInRequest'], request_name => 'dataSetPublicationDate' , required => 1);
   has DataSetType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'dataSetType' , required => 1);
   has DestinationS3BucketName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationS3BucketName' , required => 1);
   has DestinationS3Prefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationS3Prefix' );
@@ -48,7 +48,7 @@ information from other systems.
 
 
 
-=head2 B<REQUIRED> DataSetPublicationDate => Str
+=head2 B<REQUIRED> DataSetPublicationDate => L<Paws::API::TimeStamp>
 
 The date a data set was published. For daily data sets, provide a date
 with day-level granularity for the desired day. For weekly data sets,

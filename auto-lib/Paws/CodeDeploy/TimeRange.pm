@@ -1,7 +1,7 @@
 package Paws::CodeDeploy::TimeRange;
   use Moose;
-  has End => (is => 'ro', isa => 'Str', xmlname => 'end', request_name => 'end', traits => ['Unwrapped','NameInRequest']);
-  has Start => (is => 'ro', isa => 'Str', xmlname => 'start', request_name => 'start', traits => ['Unwrapped','NameInRequest']);
+  has End => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'end', request_name => 'end', traits => ['Unwrapped','NameInRequest']);
+  has Start => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'start', request_name => 'start', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -37,14 +37,14 @@ Information about a time range.
 =head1 ATTRIBUTES
 
 
-=head2 End => Str
+=head2 End => L<Paws::API::TimeStamp>
 
   The end time of the time range.
 
 Specify null to leave the end time open-ended.
 
 
-=head2 Start => Str
+=head2 Start => L<Paws::API::TimeStamp>
 
   The start time of the time range.
 

@@ -1,7 +1,7 @@
 package Paws::DynamoDB::TableDescription;
   use Moose;
   has AttributeDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::AttributeDefinition]');
-  has CreationDateTime => (is => 'ro', isa => 'Str');
+  has CreationDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has GlobalSecondaryIndexes => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::GlobalSecondaryIndexDescription]');
   has ItemCount => (is => 'ro', isa => 'Int');
   has KeySchema => (is => 'ro', isa => 'ArrayRef[Paws::DynamoDB::KeySchemaElement]');
@@ -70,7 +70,7 @@ I<AttributeType> - The data type for the attribute.
 
 
 
-=head2 CreationDateTime => Str
+=head2 CreationDateTime => L<Paws::API::TimeStamp>
 
   The date and time when the table was created, in UNIX epoch time
 format.

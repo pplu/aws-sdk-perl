@@ -1,13 +1,13 @@
 package Paws::GameLift::PlayerSession;
   use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str');
+  has CreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has FleetId => (is => 'ro', isa => 'Str');
   has GameSessionId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
   has PlayerId => (is => 'ro', isa => 'Str');
   has PlayerSessionId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
-  has TerminationTime => (is => 'ro', isa => 'Str');
+  has TerminationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +43,7 @@ Properties describing a player session.
 =head1 ATTRIBUTES
 
 
-=head2 CreationTime => Str
+=head2 CreationTime => L<Paws::API::TimeStamp>
 
   Time stamp indicating when this object was created. Format is an
 integer representing the number of seconds since the Unix epoch (Unix
@@ -99,7 +99,7 @@ seconds).
 
 
 
-=head2 TerminationTime => Str
+=head2 TerminationTime => L<Paws::API::TimeStamp>
 
   Time stamp indicating when this fleet was terminated. Format is an
 integer representing the number of seconds since the Unix epoch (Unix

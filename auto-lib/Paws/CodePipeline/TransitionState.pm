@@ -2,7 +2,7 @@ package Paws::CodePipeline::TransitionState;
   use Moose;
   has DisabledReason => (is => 'ro', isa => 'Str', xmlname => 'disabledReason', request_name => 'disabledReason', traits => ['Unwrapped','NameInRequest']);
   has Enabled => (is => 'ro', isa => 'Bool', xmlname => 'enabled', request_name => 'enabled', traits => ['Unwrapped','NameInRequest']);
-  has LastChangedAt => (is => 'ro', isa => 'Str', xmlname => 'lastChangedAt', request_name => 'lastChangedAt', traits => ['Unwrapped','NameInRequest']);
+  has LastChangedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'lastChangedAt', request_name => 'lastChangedAt', traits => ['Unwrapped','NameInRequest']);
   has LastChangedBy => (is => 'ro', isa => 'Str', xmlname => 'lastChangedBy', request_name => 'lastChangedBy', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -52,7 +52,7 @@ pipeline was disabled.
 (false).
 
 
-=head2 LastChangedAt => Str
+=head2 LastChangedAt => L<Paws::API::TimeStamp>
 
   The timestamp when the transition state was last changed.
 

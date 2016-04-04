@@ -1,10 +1,10 @@
 package Paws::EMR::JobFlowExecutionStatusDetail;
   use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
-  has EndDateTime => (is => 'ro', isa => 'Str');
+  has CreationDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
+  has EndDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LastStateChangeReason => (is => 'ro', isa => 'Str');
-  has ReadyDateTime => (is => 'ro', isa => 'Str');
-  has StartDateTime => (is => 'ro', isa => 'Str');
+  has ReadyDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has StartDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has State => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -41,12 +41,12 @@ Describes the status of the job flow.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreationDateTime => Str
+=head2 B<REQUIRED> CreationDateTime => L<Paws::API::TimeStamp>
 
   The creation date and time of the job flow.
 
 
-=head2 EndDateTime => Str
+=head2 EndDateTime => L<Paws::API::TimeStamp>
 
   The completion date and time of the job flow.
 
@@ -56,13 +56,13 @@ Describes the status of the job flow.
   Description of the job flow last changed state.
 
 
-=head2 ReadyDateTime => Str
+=head2 ReadyDateTime => L<Paws::API::TimeStamp>
 
   The date and time when the job flow was ready to start running
 bootstrap actions.
 
 
-=head2 StartDateTime => Str
+=head2 StartDateTime => L<Paws::API::TimeStamp>
 
   The start date and time of the job flow.
 

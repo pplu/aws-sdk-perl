@@ -1,6 +1,6 @@
 package Paws::IoT::TopicRuleListItem;
   use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
   has RuleArn => (is => 'ro', isa => 'Str', xmlname => 'ruleArn', request_name => 'ruleArn', traits => ['Unwrapped','NameInRequest']);
   has RuleDisabled => (is => 'ro', isa => 'Bool', xmlname => 'ruleDisabled', request_name => 'ruleDisabled', traits => ['Unwrapped','NameInRequest']);
   has RuleName => (is => 'ro', isa => 'Str', xmlname => 'ruleName', request_name => 'ruleName', traits => ['Unwrapped','NameInRequest']);
@@ -40,7 +40,7 @@ Describes a rule.
 =head1 ATTRIBUTES
 
 
-=head2 CreatedAt => Str
+=head2 CreatedAt => L<Paws::API::TimeStamp>
 
   The date and time the rule was created.
 

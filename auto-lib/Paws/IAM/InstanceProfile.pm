@@ -1,7 +1,7 @@
 package Paws::IAM::InstanceProfile;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has InstanceProfileId => (is => 'ro', isa => 'Str', required => 1);
   has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
   has Path => (is => 'ro', isa => 'Str', required => 1);
@@ -71,7 +71,7 @@ more information about ARNs and how to use them in policies, see IAM
 Identifiers in the I<Using IAM> guide.
 
 
-=head2 B<REQUIRED> CreateDate => Str
+=head2 B<REQUIRED> CreateDate => L<Paws::API::TimeStamp>
 
   The date when the instance profile was created.
 

@@ -2,7 +2,7 @@
 package Paws::IAM::GetOpenIDConnectProviderResponse;
   use Moose;
   has ClientIDList => (is => 'ro', isa => 'ArrayRef[Str]');
-  has CreateDate => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has ThumbprintList => (is => 'ro', isa => 'ArrayRef[Str]');
   has Url => (is => 'ro', isa => 'Str');
 
@@ -25,7 +25,7 @@ CreateOpenIDConnectProvider.
 
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
 The date and time when the IAM OpenID Connect provider entity was
 created in the AWS account.

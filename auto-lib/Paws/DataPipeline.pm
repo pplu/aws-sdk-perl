@@ -165,7 +165,7 @@ service.
 
 =head1 METHODS
 
-=head2 ActivatePipeline(PipelineId => Str, [ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>], StartTimestamp => Str])
+=head2 ActivatePipeline(PipelineId => Str, [ParameterValues => ArrayRef[L<Paws::DataPipeline::ParameterValue>], StartTimestamp => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::DataPipeline::ActivatePipeline>
 

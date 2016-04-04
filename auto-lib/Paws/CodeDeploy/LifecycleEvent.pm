@@ -1,9 +1,9 @@
 package Paws::CodeDeploy::LifecycleEvent;
   use Moose;
   has Diagnostics => (is => 'ro', isa => 'Paws::CodeDeploy::Diagnostics', xmlname => 'diagnostics', request_name => 'diagnostics', traits => ['Unwrapped','NameInRequest']);
-  has EndTime => (is => 'ro', isa => 'Str', xmlname => 'endTime', request_name => 'endTime', traits => ['Unwrapped','NameInRequest']);
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'endTime', request_name => 'endTime', traits => ['Unwrapped','NameInRequest']);
   has LifecycleEventName => (is => 'ro', isa => 'Str', xmlname => 'lifecycleEventName', request_name => 'lifecycleEventName', traits => ['Unwrapped','NameInRequest']);
-  has StartTime => (is => 'ro', isa => 'Str', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'startTime', request_name => 'startTime', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -45,7 +45,7 @@ Information about a deployment lifecycle event.
   Diagnostic information about the deployment lifecycle event.
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
   A timestamp indicating when the deployment lifecycle event ended.
 
@@ -56,7 +56,7 @@ Information about a deployment lifecycle event.
 BeforeInstall, AfterInstall, ApplicationStart, or ValidateService.
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
   A timestamp indicating when the deployment lifecycle event started.
 

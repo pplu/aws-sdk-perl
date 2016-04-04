@@ -1,9 +1,9 @@
 package Paws::ES::OptionStatus;
   use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str', required => 1);
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has PendingDeletion => (is => 'ro', isa => 'Bool');
   has State => (is => 'ro', isa => 'Str', required => 1);
-  has UpdateDate => (is => 'ro', isa => 'Str', required => 1);
+  has UpdateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has UpdateVersion => (is => 'ro', isa => 'Int');
 1;
 
@@ -40,7 +40,7 @@ Provides the current status of the entity.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreationDate => Str
+=head2 B<REQUIRED> CreationDate => L<Paws::API::TimeStamp>
 
   Timestamp which tells the creation date for the entity.
 
@@ -55,7 +55,7 @@ Provides the current status of the entity.
   Provides the C<OptionState> for the Elasticsearch domain.
 
 
-=head2 B<REQUIRED> UpdateDate => Str
+=head2 B<REQUIRED> UpdateDate => L<Paws::API::TimeStamp>
 
   Timestamp which tells the last updated time for the entity.
 

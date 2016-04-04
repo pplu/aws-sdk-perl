@@ -10,8 +10,8 @@ package Paws::EC2::RequestSpotInstances;
   has LaunchSpecification => (is => 'ro', isa => 'Paws::EC2::RequestSpotLaunchSpecification');
   has SpotPrice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spotPrice' , required => 1);
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' );
-  has ValidFrom => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'validFrom' );
-  has ValidUntil => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'validUntil' );
+  has ValidFrom => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['NameInRequest'], request_name => 'validFrom' );
+  has ValidUntil => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['NameInRequest'], request_name => 'validUntil' );
 
   use MooseX::ClassAttribute;
 
@@ -140,7 +140,7 @@ Default: C<one-time>
 
 Valid values are: C<"one-time">, C<"persistent">
 
-=head2 ValidFrom => Str
+=head2 ValidFrom => L<Paws::API::TimeStamp>
 
 The start date of the request. If this is a one-time request, the
 request becomes active at this date and time and remains active until
@@ -152,7 +152,7 @@ Default: The request is effective indefinitely.
 
 
 
-=head2 ValidUntil => Str
+=head2 ValidUntil => L<Paws::API::TimeStamp>
 
 The end date of the request. If this is a one-time request, the request
 remains active until all instances launch, the request is canceled, or

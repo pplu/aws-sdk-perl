@@ -8,8 +8,8 @@ package Paws::EC2::SpotFleetRequestConfigData;
   has SpotPrice => (is => 'ro', isa => 'Str', xmlname => 'spotPrice', traits => ['Unwrapped'], required => 1);
   has TargetCapacity => (is => 'ro', isa => 'Int', xmlname => 'targetCapacity', traits => ['Unwrapped'], required => 1);
   has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool', xmlname => 'terminateInstancesWithExpiration', traits => ['Unwrapped']);
-  has ValidFrom => (is => 'ro', isa => 'Str', xmlname => 'validFrom', traits => ['Unwrapped']);
-  has ValidUntil => (is => 'ro', isa => 'Str', xmlname => 'validUntil', traits => ['Unwrapped']);
+  has ValidFrom => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'validFrom', traits => ['Unwrapped']);
+  has ValidUntil => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'validUntil', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -96,14 +96,14 @@ important to your application workload, such as vCPUs, memory, or I/O.
 Spot fleet request expires.
 
 
-=head2 ValidFrom => Str
+=head2 ValidFrom => L<Paws::API::TimeStamp>
 
   The start date and time of the request, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). The default is to start
 fulfilling the request immediately.
 
 
-=head2 ValidUntil => Str
+=head2 ValidUntil => L<Paws::API::TimeStamp>
 
   The end date and time of the request, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). At this point, no new Spot

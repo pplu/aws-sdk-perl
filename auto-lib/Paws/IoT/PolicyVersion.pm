@@ -1,6 +1,6 @@
 package Paws::IoT::PolicyVersion;
   use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str', xmlname => 'createDate', request_name => 'createDate', traits => ['Unwrapped','NameInRequest']);
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createDate', request_name => 'createDate', traits => ['Unwrapped','NameInRequest']);
   has IsDefaultVersion => (is => 'ro', isa => 'Bool', xmlname => 'isDefaultVersion', request_name => 'isDefaultVersion', traits => ['Unwrapped','NameInRequest']);
   has VersionId => (is => 'ro', isa => 'Str', xmlname => 'versionId', request_name => 'versionId', traits => ['Unwrapped','NameInRequest']);
 1;
@@ -38,7 +38,7 @@ Describes a policy version.
 =head1 ATTRIBUTES
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
   The date and time the policy was created.
 

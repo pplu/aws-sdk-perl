@@ -2,7 +2,7 @@ package Paws::WAF::SampledHTTPRequest;
   use Moose;
   has Action => (is => 'ro', isa => 'Str');
   has Request => (is => 'ro', isa => 'Paws::WAF::HTTPRequest', required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str');
+  has Timestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Weight => (is => 'ro', isa => 'Int', required => 1);
 1;
 
@@ -54,7 +54,7 @@ C<BLOCK>, or C<COUNT>.
   A complex type that contains detailed information about the request.
 
 
-=head2 Timestamp => Str
+=head2 Timestamp => L<Paws::API::TimeStamp>
 
   The time at which AWS WAF received the request from your AWS resource,
 in Unix time format (in seconds).

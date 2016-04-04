@@ -6,7 +6,7 @@ package Paws::DS::DirectoryDescription;
   has Description => (is => 'ro', isa => 'Str');
   has DirectoryId => (is => 'ro', isa => 'Str');
   has DnsIpAddrs => (is => 'ro', isa => 'ArrayRef[Str]');
-  has LaunchTime => (is => 'ro', isa => 'Str');
+  has LaunchTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Name => (is => 'ro', isa => 'Str');
   has RadiusSettings => (is => 'ro', isa => 'Paws::DS::RadiusSettings');
   has RadiusStatus => (is => 'ro', isa => 'Str');
@@ -14,7 +14,7 @@ package Paws::DS::DirectoryDescription;
   has Size => (is => 'ro', isa => 'Str');
   has SsoEnabled => (is => 'ro', isa => 'Bool');
   has Stage => (is => 'ro', isa => 'Str');
-  has StageLastUpdatedDateTime => (is => 'ro', isa => 'Str');
+  has StageLastUpdatedDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has StageReason => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has VpcSettings => (is => 'ro', isa => 'Paws::DS::DirectoryVpcSettingsDescription');
@@ -93,7 +93,7 @@ are the IP addresses of the DNS servers or domain controllers in the
 on-premises directory to which the AD Connector is connected.
 
 
-=head2 LaunchTime => Str
+=head2 LaunchTime => L<Paws::API::TimeStamp>
 
   Specifies when the directory was created.
 
@@ -135,7 +135,7 @@ information, see EnableSso and DisableSso.
   The current stage of the directory.
 
 
-=head2 StageLastUpdatedDateTime => Str
+=head2 StageLastUpdatedDateTime => L<Paws::API::TimeStamp>
 
   The date and time that the stage was last updated.
 

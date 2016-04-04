@@ -2,7 +2,7 @@ package Paws::CloudFormation::ChangeSetSummary;
   use Moose;
   has ChangeSetId => (is => 'ro', isa => 'Str');
   has ChangeSetName => (is => 'ro', isa => 'Str');
-  has CreationTime => (is => 'ro', isa => 'Str');
+  has CreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
@@ -54,7 +54,7 @@ and the stack with which it's associated.
   The name of the change set.
 
 
-=head2 CreationTime => Str
+=head2 CreationTime => L<Paws::API::TimeStamp>
 
   The start time when the change set was created, in UTC.
 

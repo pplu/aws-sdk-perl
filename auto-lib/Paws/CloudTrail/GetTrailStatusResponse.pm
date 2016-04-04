@@ -3,19 +3,19 @@ package Paws::CloudTrail::GetTrailStatusResponse;
   use Moose;
   has IsLogging => (is => 'ro', isa => 'Bool');
   has LatestCloudWatchLogsDeliveryError => (is => 'ro', isa => 'Str');
-  has LatestCloudWatchLogsDeliveryTime => (is => 'ro', isa => 'Str');
+  has LatestCloudWatchLogsDeliveryTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LatestDeliveryAttemptSucceeded => (is => 'ro', isa => 'Str');
   has LatestDeliveryAttemptTime => (is => 'ro', isa => 'Str');
   has LatestDeliveryError => (is => 'ro', isa => 'Str');
-  has LatestDeliveryTime => (is => 'ro', isa => 'Str');
+  has LatestDeliveryTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LatestDigestDeliveryError => (is => 'ro', isa => 'Str');
-  has LatestDigestDeliveryTime => (is => 'ro', isa => 'Str');
+  has LatestDigestDeliveryTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LatestNotificationAttemptSucceeded => (is => 'ro', isa => 'Str');
   has LatestNotificationAttemptTime => (is => 'ro', isa => 'Str');
   has LatestNotificationError => (is => 'ro', isa => 'Str');
-  has LatestNotificationTime => (is => 'ro', isa => 'Str');
-  has StartLoggingTime => (is => 'ro', isa => 'Str');
-  has StopLoggingTime => (is => 'ro', isa => 'Str');
+  has LatestNotificationTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has StartLoggingTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has StopLoggingTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has TimeLoggingStarted => (is => 'ro', isa => 'Str');
   has TimeLoggingStopped => (is => 'ro', isa => 'Str');
 
@@ -42,7 +42,7 @@ attempting to deliver logs to CloudWatch Logs.
 
 
 
-=head2 LatestCloudWatchLogsDeliveryTime => Str
+=head2 LatestCloudWatchLogsDeliveryTime => L<Paws::API::TimeStamp>
 
 Displays the most recent date and time when CloudTrail delivered logs
 to CloudWatch Logs.
@@ -75,7 +75,7 @@ the existing objects so that CloudTrail can again write to the bucket.
 
 
 
-=head2 LatestDeliveryTime => Str
+=head2 LatestDeliveryTime => L<Paws::API::TimeStamp>
 
 Specifies the date and time that CloudTrail last delivered log files to
 an account's Amazon S3 bucket.
@@ -96,7 +96,7 @@ the existing objects so that CloudTrail can again write to the bucket.
 
 
 
-=head2 LatestDigestDeliveryTime => Str
+=head2 LatestDigestDeliveryTime => L<Paws::API::TimeStamp>
 
 Specifies the date and time that CloudTrail last delivered a digest
 file to an account's Amazon S3 bucket.
@@ -123,7 +123,7 @@ SNS errors, see the Amazon SNS Developer Guide.
 
 
 
-=head2 LatestNotificationTime => Str
+=head2 LatestNotificationTime => L<Paws::API::TimeStamp>
 
 Specifies the date and time of the most recent Amazon SNS notification
 that CloudTrail has written a new log file to an account's Amazon S3
@@ -131,14 +131,14 @@ bucket.
 
 
 
-=head2 StartLoggingTime => Str
+=head2 StartLoggingTime => L<Paws::API::TimeStamp>
 
 Specifies the most recent date and time when CloudTrail started
 recording API calls for an AWS account.
 
 
 
-=head2 StopLoggingTime => Str
+=head2 StopLoggingTime => L<Paws::API::TimeStamp>
 
 Specifies the most recent date and time when CloudTrail stopped
 recording API calls for an AWS account.

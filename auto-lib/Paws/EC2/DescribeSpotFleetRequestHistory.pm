@@ -6,7 +6,7 @@ package Paws::EC2::DescribeSpotFleetRequestHistory;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
   has SpotFleetRequestId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spotFleetRequestId' , required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTime' , required => 1);
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['NameInRequest'], request_name => 'startTime' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -74,7 +74,7 @@ The ID of the Spot fleet request.
 
 
 
-=head2 B<REQUIRED> StartTime => Str
+=head2 B<REQUIRED> StartTime => L<Paws::API::TimeStamp>
 
 The starting date and time for the events, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).

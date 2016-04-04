@@ -2,7 +2,7 @@ package Paws::ElasticBeanstalk::EventDescription;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
-  has EventDate => (is => 'ro', isa => 'Str');
+  has EventDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Message => (is => 'ro', isa => 'Str');
   has RequestId => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');
@@ -53,7 +53,7 @@ Describes an event.
   The name of the environment associated with this event.
 
 
-=head2 EventDate => Str
+=head2 EventDate => L<Paws::API::TimeStamp>
 
   The date when the event occurred.
 

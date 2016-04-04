@@ -3,7 +3,7 @@ package Paws::SSM::InstanceInformation;
   has AgentVersion => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has IsLatestVersion => (is => 'ro', isa => 'Bool');
-  has LastPingDateTime => (is => 'ro', isa => 'Str');
+  has LastPingDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has PingStatus => (is => 'ro', isa => 'Str');
   has PlatformName => (is => 'ro', isa => 'Str');
   has PlatformType => (is => 'ro', isa => 'Str');
@@ -59,7 +59,7 @@ Describes a filter for a specific list of instances.
 instance.
 
 
-=head2 LastPingDateTime => Str
+=head2 LastPingDateTime => L<Paws::API::TimeStamp>
 
   The date and time when agent last pinged SSM service.
 

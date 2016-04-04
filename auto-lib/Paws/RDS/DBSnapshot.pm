@@ -7,7 +7,7 @@ package Paws::RDS::DBSnapshot;
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
-  has InstanceCreateTime => (is => 'ro', isa => 'Str');
+  has InstanceCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
@@ -15,7 +15,7 @@ package Paws::RDS::DBSnapshot;
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PercentProgress => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
-  has SnapshotCreateTime => (is => 'ro', isa => 'Str');
+  has SnapshotCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SnapshotType => (is => 'ro', isa => 'Str');
   has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
@@ -107,7 +107,7 @@ snapshot was created from.
   Specifies the version of the database engine.
 
 
-=head2 InstanceCreateTime => Str
+=head2 InstanceCreateTime => L<Paws::API::TimeStamp>
 
   Specifies the time when the snapshot was taken, in Universal
 Coordinated Time (UTC).
@@ -151,7 +151,7 @@ snapshot.
 time of the snapshot.
 
 
-=head2 SnapshotCreateTime => Str
+=head2 SnapshotCreateTime => L<Paws::API::TimeStamp>
 
   Provides the time when the snapshot was taken, in Universal Coordinated
 Time (UTC).

@@ -1,6 +1,6 @@
 package Paws::EC2::VpcEndpoint;
   use Moose;
-  has CreationTimestamp => (is => 'ro', isa => 'Str', xmlname => 'creationTimestamp', traits => ['Unwrapped']);
+  has CreationTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'creationTimestamp', traits => ['Unwrapped']);
   has PolicyDocument => (is => 'ro', isa => 'Str', xmlname => 'policyDocument', traits => ['Unwrapped']);
   has RouteTableIds => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'routeTableIdSet', traits => ['Unwrapped']);
   has ServiceName => (is => 'ro', isa => 'Str', xmlname => 'serviceName', traits => ['Unwrapped']);
@@ -42,7 +42,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 CreationTimestamp => Str
+=head2 CreationTimestamp => L<Paws::API::TimeStamp>
 
   The date and time the VPC endpoint was created.
 

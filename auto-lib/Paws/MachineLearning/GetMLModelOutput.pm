@@ -1,11 +1,11 @@
 
 package Paws::MachineLearning::GetMLModelOutput;
   use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str');
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has EndpointInfo => (is => 'ro', isa => 'Paws::MachineLearning::RealtimeEndpointInfo');
   has InputDataLocationS3 => (is => 'ro', isa => 'Str');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
+  has LastUpdatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LogUri => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has MLModelId => (is => 'ro', isa => 'Str');
@@ -14,7 +14,7 @@ package Paws::MachineLearning::GetMLModelOutput;
   has Recipe => (is => 'ro', isa => 'Str');
   has Schema => (is => 'ro', isa => 'Str');
   has ScoreThreshold => (is => 'ro', isa => 'Num');
-  has ScoreThresholdLastUpdatedAt => (is => 'ro', isa => 'Str');
+  has ScoreThresholdLastUpdatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SizeInBytes => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has TrainingDataSourceId => (is => 'ro', isa => 'Str');
@@ -30,7 +30,7 @@ Paws::MachineLearning::GetMLModelOutput
 =head1 ATTRIBUTES
 
 
-=head2 CreatedAt => Str
+=head2 CreatedAt => L<Paws::API::TimeStamp>
 
 The time that the C<MLModel> was created. The time is expressed in
 epoch time.
@@ -58,7 +58,7 @@ Service (Amazon S3).
 
 
 
-=head2 LastUpdatedAt => Str
+=head2 LastUpdatedAt => L<Paws::API::TimeStamp>
 
 The time of the most recent edit to the C<MLModel>. The time is
 expressed in epoch time.
@@ -144,7 +144,7 @@ C<false>.
 
 
 
-=head2 ScoreThresholdLastUpdatedAt => Str
+=head2 ScoreThresholdLastUpdatedAt => L<Paws::API::TimeStamp>
 
 The time of the most recent edit to the C<ScoreThreshold>. The time is
 expressed in epoch time.

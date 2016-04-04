@@ -3,7 +3,7 @@ package Paws::EC2::GetConsoleOutputResult;
   use Moose;
   has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped',]);
   has Output => (is => 'ro', isa => 'Str', xmlname => 'output', traits => ['Unwrapped',]);
-  has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', traits => ['Unwrapped',]);
+  has Timestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'timestamp', traits => ['Unwrapped',]);
 
 1;
 
@@ -29,7 +29,7 @@ tools decode the output for you.
 
 
 
-=head2 Timestamp => Str
+=head2 Timestamp => L<Paws::API::TimeStamp>
 
 The time the output was last updated.
 

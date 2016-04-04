@@ -3,7 +3,7 @@ package Paws::DS::Snapshot;
   has DirectoryId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has SnapshotId => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Status => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
 1;
@@ -56,7 +56,7 @@ Describes a directory snapshot.
   The snapshot identifier.
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
   The date and time that the snapshot was taken.
 

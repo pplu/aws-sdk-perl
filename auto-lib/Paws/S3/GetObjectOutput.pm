@@ -13,8 +13,8 @@ package Paws::S3::GetObjectOutput;
   has DeleteMarker => (is => 'ro', isa => 'Bool');
   has ETag => (is => 'ro', isa => 'Str');
   has Expiration => (is => 'ro', isa => 'Str');
-  has Expires => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
+  has Expires => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has LastModified => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Metadata => (is => 'ro', isa => 'Paws::S3::Metadata');
   has MissingMeta => (is => 'ro', isa => 'Int');
   has ReplicationStatus => (is => 'ro', isa => 'Str');
@@ -134,13 +134,13 @@ the rule-id is URL encoded.
 
 
 
-=head2 Expires => Str
+=head2 Expires => L<Paws::API::TimeStamp>
 
 The date and time at which the object is no longer cacheable.
 
 
 
-=head2 LastModified => Str
+=head2 LastModified => L<Paws::API::TimeStamp>
 
 Last modified date of the object
 

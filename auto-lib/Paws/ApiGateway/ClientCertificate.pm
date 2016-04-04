@@ -2,9 +2,9 @@
 package Paws::ApiGateway::ClientCertificate;
   use Moose;
   has ClientCertificateId => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
-  has ExpirationDate => (is => 'ro', isa => 'Str');
+  has ExpirationDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has PemEncodedCertificate => (is => 'ro', isa => 'Str');
 
 1;
@@ -24,7 +24,7 @@ Paws::ApiGateway::ClientCertificate
 
 
 
-=head2 CreatedDate => Str
+=head2 CreatedDate => L<Paws::API::TimeStamp>
 
 
 
@@ -36,7 +36,7 @@ Paws::ApiGateway::ClientCertificate
 
 
 
-=head2 ExpirationDate => Str
+=head2 ExpirationDate => L<Paws::API::TimeStamp>
 
 
 

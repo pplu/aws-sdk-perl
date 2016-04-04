@@ -2,7 +2,7 @@ package Paws::IAM::Role;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has AssumeRolePolicyDocument => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute']);
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has RoleId => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str', required => 1);
@@ -72,7 +72,7 @@ Identifiers in the I<Using IAM> guide.
   The policy that grants an entity permission to assume the role.
 
 
-=head2 B<REQUIRED> CreateDate => Str
+=head2 B<REQUIRED> CreateDate => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the role was
 created.

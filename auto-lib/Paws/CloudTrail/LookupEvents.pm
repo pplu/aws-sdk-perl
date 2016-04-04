@@ -1,11 +1,11 @@
 
 package Paws::CloudTrail::LookupEvents;
   use Moose;
-  has EndTime => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LookupAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CloudTrail::LookupAttribute]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 
   use MooseX::ClassAttribute;
 
@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
 Specifies that only events that occur before or at the specified time
 are returned. If the specified end time is before the specified start
@@ -69,7 +69,7 @@ call with NextToken should include those same parameters.
 
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
 Specifies that only events that occur after or at the specified time
 are returned. If the specified start time is after the specified end

@@ -3,7 +3,7 @@ package Paws::CloudFront::StreamingDistribution;
   has ActiveTrustedSigners => (is => 'ro', isa => 'Paws::CloudFront::ActiveTrustedSigners', required => 1);
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str');
+  has LastModifiedTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Status => (is => 'ro', isa => 'Str', required => 1);
   has StreamingDistributionConfig => (is => 'ro', isa => 'Paws::CloudFront::StreamingDistributionConfig', required => 1);
 1;
@@ -66,7 +66,7 @@ example: s5c39gqb8ow64r.cloudfront.net.
 EGTXBD79H29TRA8.
 
 
-=head2 LastModifiedTime => Str
+=head2 LastModifiedTime => L<Paws::API::TimeStamp>
 
   The date and time the distribution was last modified.
 

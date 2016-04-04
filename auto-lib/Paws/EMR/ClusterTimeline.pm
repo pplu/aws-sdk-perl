@@ -1,8 +1,8 @@
 package Paws::EMR::ClusterTimeline;
   use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str');
-  has EndDateTime => (is => 'ro', isa => 'Str');
-  has ReadyDateTime => (is => 'ro', isa => 'Str');
+  has CreationDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has EndDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has ReadyDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +38,17 @@ Represents the timeline of the cluster's lifecycle.
 =head1 ATTRIBUTES
 
 
-=head2 CreationDateTime => Str
+=head2 CreationDateTime => L<Paws::API::TimeStamp>
 
   The creation date and time of the cluster.
 
 
-=head2 EndDateTime => Str
+=head2 EndDateTime => L<Paws::API::TimeStamp>
 
   The date and time when the cluster was terminated.
 
 
-=head2 ReadyDateTime => Str
+=head2 ReadyDateTime => L<Paws::API::TimeStamp>
 
   The date and time when the cluster was ready to execute steps.
 

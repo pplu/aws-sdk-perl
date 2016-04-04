@@ -3,8 +3,8 @@ package Paws::RedShift::LoggingStatus;
   use Moose;
   has BucketName => (is => 'ro', isa => 'Str');
   has LastFailureMessage => (is => 'ro', isa => 'Str');
-  has LastFailureTime => (is => 'ro', isa => 'Str');
-  has LastSuccessfulDeliveryTime => (is => 'ro', isa => 'Str');
+  has LastFailureTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has LastSuccessfulDeliveryTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LoggingEnabled => (is => 'ro', isa => 'Bool');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
 
@@ -31,13 +31,13 @@ The message indicating that logs failed to be delivered.
 
 
 
-=head2 LastFailureTime => Str
+=head2 LastFailureTime => L<Paws::API::TimeStamp>
 
 The last time when logs failed to be delivered.
 
 
 
-=head2 LastSuccessfulDeliveryTime => Str
+=head2 LastSuccessfulDeliveryTime => L<Paws::API::TimeStamp>
 
 The last time that logs were delivered.
 

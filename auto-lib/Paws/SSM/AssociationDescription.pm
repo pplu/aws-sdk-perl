@@ -1,6 +1,6 @@
 package Paws::SSM::AssociationDescription;
   use Moose;
-  has Date => (is => 'ro', isa => 'Str');
+  has Date => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has InstanceId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
@@ -40,7 +40,7 @@ Describes the parameters for a document.
 =head1 ATTRIBUTES
 
 
-=head2 Date => Str
+=head2 Date => L<Paws::API::TimeStamp>
 
   The date when the association was made.
 

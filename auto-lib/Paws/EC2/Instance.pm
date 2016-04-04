@@ -13,7 +13,7 @@ package Paws::EC2::Instance;
   has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
   has KernelId => (is => 'ro', isa => 'Str', xmlname => 'kernelId', traits => ['Unwrapped']);
   has KeyName => (is => 'ro', isa => 'Str', xmlname => 'keyName', traits => ['Unwrapped']);
-  has LaunchTime => (is => 'ro', isa => 'Str', xmlname => 'launchTime', traits => ['Unwrapped']);
+  has LaunchTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'launchTime', traits => ['Unwrapped']);
   has Monitoring => (is => 'ro', isa => 'Paws::EC2::Monitoring', xmlname => 'monitoring', traits => ['Unwrapped']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceNetworkInterface]', xmlname => 'networkInterfaceSet', traits => ['Unwrapped']);
   has Placement => (is => 'ro', isa => 'Paws::EC2::Placement', xmlname => 'placement', traits => ['Unwrapped']);
@@ -144,7 +144,7 @@ charges apply when using an EBS Optimized instance.
 associated key pair.
 
 
-=head2 LaunchTime => Str
+=head2 LaunchTime => L<Paws::API::TimeStamp>
 
   The time the instance was launched.
 

@@ -2,9 +2,9 @@ package Paws::CodeDeploy::GenericRevisionInfo;
   use Moose;
   has DeploymentGroups => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'deploymentGroups', request_name => 'deploymentGroups', traits => ['Unwrapped','NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has FirstUsedTime => (is => 'ro', isa => 'Str', xmlname => 'firstUsedTime', request_name => 'firstUsedTime', traits => ['Unwrapped','NameInRequest']);
-  has LastUsedTime => (is => 'ro', isa => 'Str', xmlname => 'lastUsedTime', request_name => 'lastUsedTime', traits => ['Unwrapped','NameInRequest']);
-  has RegisterTime => (is => 'ro', isa => 'Str', xmlname => 'registerTime', request_name => 'registerTime', traits => ['Unwrapped','NameInRequest']);
+  has FirstUsedTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'firstUsedTime', request_name => 'firstUsedTime', traits => ['Unwrapped','NameInRequest']);
+  has LastUsedTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'lastUsedTime', request_name => 'lastUsedTime', traits => ['Unwrapped','NameInRequest']);
+  has RegisterTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'registerTime', request_name => 'registerTime', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -50,17 +50,17 @@ Information about an application revision.
   A comment about the revision.
 
 
-=head2 FirstUsedTime => Str
+=head2 FirstUsedTime => L<Paws::API::TimeStamp>
 
   When the revision was first used by AWS CodeDeploy.
 
 
-=head2 LastUsedTime => Str
+=head2 LastUsedTime => L<Paws::API::TimeStamp>
 
   When the revision was last used by AWS CodeDeploy.
 
 
-=head2 RegisterTime => Str
+=head2 RegisterTime => L<Paws::API::TimeStamp>
 
   When the revision was registered with AWS CodeDeploy.
 

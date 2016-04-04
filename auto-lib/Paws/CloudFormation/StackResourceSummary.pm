@@ -1,6 +1,6 @@
 package Paws::CloudFormation::StackResourceSummary;
   use Moose;
-  has LastUpdatedTimestamp => (is => 'ro', isa => 'Str', required => 1);
+  has LastUpdatedTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has ResourceStatus => (is => 'ro', isa => 'Str', required => 1);
@@ -41,7 +41,7 @@ Contains high-level information about the specified stack resource.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> LastUpdatedTimestamp => Str
+=head2 B<REQUIRED> LastUpdatedTimestamp => L<Paws::API::TimeStamp>
 
   Time the status was updated.
 

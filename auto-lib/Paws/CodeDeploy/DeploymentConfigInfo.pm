@@ -1,6 +1,6 @@
 package Paws::CodeDeploy::DeploymentConfigInfo;
   use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
+  has CreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
   has DeploymentConfigId => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigId', request_name => 'deploymentConfigId', traits => ['Unwrapped','NameInRequest']);
   has DeploymentConfigName => (is => 'ro', isa => 'Str', xmlname => 'deploymentConfigName', request_name => 'deploymentConfigName', traits => ['Unwrapped','NameInRequest']);
   has MinimumHealthyHosts => (is => 'ro', isa => 'Paws::CodeDeploy::MinimumHealthyHosts', xmlname => 'minimumHealthyHosts', request_name => 'minimumHealthyHosts', traits => ['Unwrapped','NameInRequest']);
@@ -39,7 +39,7 @@ Information about a deployment configuration.
 =head1 ATTRIBUTES
 
 
-=head2 CreateTime => Str
+=head2 CreateTime => L<Paws::API::TimeStamp>
 
   The time at which the deployment configuration was created.
 

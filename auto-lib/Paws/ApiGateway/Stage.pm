@@ -5,10 +5,10 @@ package Paws::ApiGateway::Stage;
   has CacheClusterSize => (is => 'ro', isa => 'Str');
   has CacheClusterStatus => (is => 'ro', isa => 'Str');
   has ClientCertificateId => (is => 'ro', isa => 'Str');
-  has CreatedDate => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DeploymentId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
-  has LastUpdatedDate => (is => 'ro', isa => 'Str');
+  has LastUpdatedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has MethodSettings => (is => 'ro', isa => 'Paws::ApiGateway::MapOfMethodSettings');
   has StageName => (is => 'ro', isa => 'Str');
   has Variables => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
@@ -48,7 +48,7 @@ Valid values are: C<"CREATE_IN_PROGRESS">, C<"AVAILABLE">, C<"DELETE_IN_PROGRESS
 
 
 
-=head2 CreatedDate => Str
+=head2 CreatedDate => L<Paws::API::TimeStamp>
 
 The date and time that the stage was created, in ISO 8601 format.
 
@@ -66,7 +66,7 @@ The stage's description.
 
 
 
-=head2 LastUpdatedDate => Str
+=head2 LastUpdatedDate => L<Paws::API::TimeStamp>
 
 The date and time that information about the stage was last updated, in
 ISO 8601 format.

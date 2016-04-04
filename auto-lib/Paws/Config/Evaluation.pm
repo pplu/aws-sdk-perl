@@ -4,7 +4,7 @@ package Paws::Config::Evaluation;
   has ComplianceResourceId => (is => 'ro', isa => 'Str', required => 1);
   has ComplianceResourceType => (is => 'ro', isa => 'Str', required => 1);
   has ComplianceType => (is => 'ro', isa => 'Str', required => 1);
-  has OrderingTimestamp => (is => 'ro', isa => 'Str', required => 1);
+  has OrderingTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -73,7 +73,7 @@ AWS Lambda function for a custom Config rule cannot pass an
 C<INSUFFICIENT_DATA> value to AWS Config.
 
 
-=head2 B<REQUIRED> OrderingTimestamp => Str
+=head2 B<REQUIRED> OrderingTimestamp => L<Paws::API::TimeStamp>
 
   The time of the event in AWS Config that triggered the evaluation. For
 event-based evaluations, the time indicates when AWS Config created the

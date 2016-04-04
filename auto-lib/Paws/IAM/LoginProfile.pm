@@ -1,6 +1,6 @@
 package Paws::IAM::LoginProfile;
   use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has PasswordResetRequired => (is => 'ro', isa => 'Bool');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -41,7 +41,7 @@ and GetLoginProfile actions.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreateDate => Str
+=head2 B<REQUIRED> CreateDate => L<Paws::API::TimeStamp>
 
   The date when the password for the user was created.
 

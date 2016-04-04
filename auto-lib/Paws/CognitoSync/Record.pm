@@ -1,9 +1,9 @@
 package Paws::CognitoSync::Record;
   use Moose;
-  has DeviceLastModifiedDate => (is => 'ro', isa => 'Str');
+  has DeviceLastModifiedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Key => (is => 'ro', isa => 'Str');
   has LastModifiedBy => (is => 'ro', isa => 'Str');
-  has LastModifiedDate => (is => 'ro', isa => 'Str');
+  has LastModifiedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SyncCount => (is => 'ro', isa => 'Int');
   has Value => (is => 'ro', isa => 'Str');
 1;
@@ -41,7 +41,7 @@ The basic data structure of a dataset.
 =head1 ATTRIBUTES
 
 
-=head2 DeviceLastModifiedDate => Str
+=head2 DeviceLastModifiedDate => L<Paws::API::TimeStamp>
 
   The last modified date of the client device.
 
@@ -56,7 +56,7 @@ The basic data structure of a dataset.
   The user/device that made the last change to this record.
 
 
-=head2 LastModifiedDate => Str
+=head2 LastModifiedDate => L<Paws::API::TimeStamp>
 
   The date on which the record was last modified.
 

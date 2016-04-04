@@ -2,7 +2,7 @@ package Paws::S3::Object;
   use Moose;
   has ETag => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
+  has LastModified => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
   has Size => (is => 'ro', isa => 'Int');
   has StorageClass => (is => 'ro', isa => 'Str');
@@ -51,7 +51,7 @@ This class has no description
   
 
 
-=head2 LastModified => Str
+=head2 LastModified => L<Paws::API::TimeStamp>
 
   
 

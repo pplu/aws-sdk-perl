@@ -4,7 +4,7 @@ package Paws::RedShift::TableRestoreStatus;
   has Message => (is => 'ro', isa => 'Str');
   has NewTableName => (is => 'ro', isa => 'Str');
   has ProgressInMegaBytes => (is => 'ro', isa => 'Int');
-  has RequestTime => (is => 'ro', isa => 'Str');
+  has RequestTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SourceDatabaseName => (is => 'ro', isa => 'Str');
   has SourceSchemaName => (is => 'ro', isa => 'Str');
@@ -73,7 +73,7 @@ request.
   The amount of data restored to the new table so far, in megabytes (MB).
 
 
-=head2 RequestTime => Str
+=head2 RequestTime => L<Paws::API::TimeStamp>
 
   The time that the table restore request was made, in Universal
 Coordinated Time (UTC).

@@ -3,7 +3,7 @@ package Paws::S3::ObjectVersion;
   has ETag => (is => 'ro', isa => 'Str');
   has IsLatest => (is => 'ro', isa => 'Bool');
   has Key => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
+  has LastModified => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Owner => (is => 'ro', isa => 'Paws::S3::Owner');
   has Size => (is => 'ro', isa => 'Int');
   has StorageClass => (is => 'ro', isa => 'Str');
@@ -59,7 +59,7 @@ version of an object.
   The object key.
 
 
-=head2 LastModified => Str
+=head2 LastModified => L<Paws::API::TimeStamp>
 
   Date and time the object was last modified.
 

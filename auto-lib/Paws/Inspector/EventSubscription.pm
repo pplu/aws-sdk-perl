@@ -1,7 +1,7 @@
 package Paws::Inspector::EventSubscription;
   use Moose;
   has Event => (is => 'ro', isa => 'Str', xmlname => 'event', request_name => 'event', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has SubscribedAt => (is => 'ro', isa => 'Str', xmlname => 'subscribedAt', request_name => 'subscribedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has SubscribedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'subscribedAt', request_name => 'subscribedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -43,7 +43,7 @@ This data type is used in the Subscription data type.
 notifications are sent.
 
 
-=head2 B<REQUIRED> SubscribedAt => Str
+=head2 B<REQUIRED> SubscribedAt => L<Paws::API::TimeStamp>
 
   The time at which the SubscribeToEvent API is called.
 

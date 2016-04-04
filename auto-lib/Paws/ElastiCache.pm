@@ -546,7 +546,7 @@ Returns: a L<Paws::ElastiCache::DescribeEngineDefaultParametersResult> instance
 engine and system parameter information for the specified cache engine.
 
 
-=head2 DescribeEvents([Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeEvents([Duration => Int, EndTime => L<Paws::API::TimeStamp>, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::ElastiCache::DescribeEvents>
 

@@ -1,6 +1,6 @@
 package Paws::RDS::Event;
   use Moose;
-  has Date => (is => 'ro', isa => 'Str');
+  has Date => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has Message => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
@@ -41,7 +41,7 @@ action.
 =head1 ATTRIBUTES
 
 
-=head2 Date => Str
+=head2 Date => L<Paws::API::TimeStamp>
 
   Specifies the date and time of the event.
 

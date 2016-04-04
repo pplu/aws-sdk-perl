@@ -1,7 +1,7 @@
 
 package Paws::ApiGateway::RestApi;
   use Moose;
-  has CreatedDate => (is => 'ro', isa => 'Str');
+  has CreatedDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -17,7 +17,7 @@ Paws::ApiGateway::RestApi
 =head1 ATTRIBUTES
 
 
-=head2 CreatedDate => Str
+=head2 CreatedDate => L<Paws::API::TimeStamp>
 
 The date when the API was created, in ISO 8601 format.
 

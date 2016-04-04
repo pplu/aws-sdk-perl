@@ -439,7 +439,7 @@ these numbers for each resource type. The maximum number returned is
 100.
 
 
-=head2 GetResourceConfigHistory(ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => Str, LaterTime => Str, Limit => Int, NextToken => Str])
+=head2 GetResourceConfigHistory(ResourceId => Str, ResourceType => Str, [ChronologicalOrder => Str, EarlierTime => L<Paws::API::TimeStamp>, LaterTime => L<Paws::API::TimeStamp>, Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Config::GetResourceConfigHistory>
 

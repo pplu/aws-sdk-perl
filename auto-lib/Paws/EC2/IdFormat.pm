@@ -1,6 +1,6 @@
 package Paws::EC2::IdFormat;
   use Moose;
-  has Deadline => (is => 'ro', isa => 'Str', xmlname => 'deadline', traits => ['Unwrapped']);
+  has Deadline => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'deadline', traits => ['Unwrapped']);
   has Resource => (is => 'ro', isa => 'Str', xmlname => 'resource', traits => ['Unwrapped']);
   has UseLongIds => (is => 'ro', isa => 'Bool', xmlname => 'useLongIds', traits => ['Unwrapped']);
 1;
@@ -38,7 +38,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Deadline => Str
+=head2 Deadline => L<Paws::API::TimeStamp>
 
   The date in UTC at which you are permanently switched over to using
 longer IDs. If a deadline is not yet available for this resource type,

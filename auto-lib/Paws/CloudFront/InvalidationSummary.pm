@@ -1,6 +1,6 @@
 package Paws::CloudFront::InvalidationSummary;
   use Moose;
-  has CreateTime => (is => 'ro', isa => 'Str', required => 1);
+  has CreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
 1;
@@ -38,7 +38,7 @@ Summary of an invalidation request.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreateTime => Str
+=head2 B<REQUIRED> CreateTime => L<Paws::API::TimeStamp>
 
   
 

@@ -2,14 +2,14 @@
 package Paws::ElasticBeanstalk::DescribeEvents;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has RequestId => (is => 'ro', isa => 'Str');
   has Severity => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has TemplateName => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
@@ -50,7 +50,7 @@ to include only those associated with this application.
 
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
 If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to those that occur up to, but not including, the C<EndTime>.
@@ -99,7 +99,7 @@ those with the specified severity or higher.
 
 Valid values are: C<"TRACE">, C<"DEBUG">, C<"INFO">, C<"WARN">, C<"ERROR">, C<"FATAL">
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
 If specified, AWS Elastic Beanstalk restricts the returned descriptions
 to those that occur on or after this time.

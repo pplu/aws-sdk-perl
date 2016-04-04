@@ -1,7 +1,7 @@
 package Paws::S3::CopyObjectResult;
   use Moose;
   has ETag => (is => 'ro', isa => 'Str');
-  has LastModified => (is => 'ro', isa => 'Str');
+  has LastModified => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -42,7 +42,7 @@ This class has no description
   
 
 
-=head2 LastModified => Str
+=head2 LastModified => L<Paws::API::TimeStamp>
 
   
 

@@ -4,7 +4,7 @@ package Paws::EC2::SpotPrice;
   has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
   has ProductDescription => (is => 'ro', isa => 'Str', xmlname => 'productDescription', traits => ['Unwrapped']);
   has SpotPrice => (is => 'ro', isa => 'Str', xmlname => 'spotPrice', traits => ['Unwrapped']);
-  has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', traits => ['Unwrapped']);
+  has Timestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'timestamp', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -61,7 +61,7 @@ This class has no description
 instance.
 
 
-=head2 Timestamp => Str
+=head2 Timestamp => L<Paws::API::TimeStamp>
 
   The date and time the request was created, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).

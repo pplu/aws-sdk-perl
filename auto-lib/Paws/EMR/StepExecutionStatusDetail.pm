@@ -1,9 +1,9 @@
 package Paws::EMR::StepExecutionStatusDetail;
   use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str', required => 1);
-  has EndDateTime => (is => 'ro', isa => 'Str');
+  has CreationDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
+  has EndDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LastStateChangeReason => (is => 'ro', isa => 'Str');
-  has StartDateTime => (is => 'ro', isa => 'Str');
+  has StartDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has State => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -40,12 +40,12 @@ The execution state of a step.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreationDateTime => Str
+=head2 B<REQUIRED> CreationDateTime => L<Paws::API::TimeStamp>
 
   The creation date and time of the step.
 
 
-=head2 EndDateTime => Str
+=head2 EndDateTime => L<Paws::API::TimeStamp>
 
   The completion date and time of the step.
 
@@ -55,7 +55,7 @@ The execution state of a step.
   A description of the step's current state.
 
 
-=head2 StartDateTime => Str
+=head2 StartDateTime => L<Paws::API::TimeStamp>
 
   The start date and time of the step.
 

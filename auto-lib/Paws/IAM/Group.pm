@@ -1,7 +1,7 @@
 package Paws::IAM::Group;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
-  has CreateDate => (is => 'ro', isa => 'Str', required => 1);
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has GroupId => (is => 'ro', isa => 'Str', required => 1);
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
   has Path => (is => 'ro', isa => 'Str', required => 1);
@@ -60,7 +60,7 @@ information about ARNs and how to use them in policies, see IAM
 Identifiers in the I<Using IAM> guide.
 
 
-=head2 B<REQUIRED> CreateDate => Str
+=head2 B<REQUIRED> CreateDate => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the group was
 created.

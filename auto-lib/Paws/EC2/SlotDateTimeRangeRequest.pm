@@ -1,7 +1,7 @@
 package Paws::EC2::SlotDateTimeRangeRequest;
   use Moose;
-  has EarliestTime => (is => 'ro', isa => 'Str', required => 1);
-  has LatestTime => (is => 'ro', isa => 'Str', required => 1);
+  has EarliestTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
+  has LatestTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -37,13 +37,13 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EarliestTime => Str
+=head2 B<REQUIRED> EarliestTime => L<Paws::API::TimeStamp>
 
   The earliest date and time, in UTC, for the Scheduled Instance to
 start.
 
 
-=head2 B<REQUIRED> LatestTime => Str
+=head2 B<REQUIRED> LatestTime => L<Paws::API::TimeStamp>
 
   The latest date and time, in UTC, for the Scheduled Instance to start.
 This value must be later than or equal to the earliest date and at most

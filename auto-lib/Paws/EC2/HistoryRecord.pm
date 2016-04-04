@@ -2,7 +2,7 @@ package Paws::EC2::HistoryRecord;
   use Moose;
   has EventInformation => (is => 'ro', isa => 'Paws::EC2::EventInformation', xmlname => 'eventInformation', traits => ['Unwrapped'], required => 1);
   has EventType => (is => 'ro', isa => 'Str', xmlname => 'eventType', traits => ['Unwrapped'], required => 1);
-  has Timestamp => (is => 'ro', isa => 'Str', xmlname => 'timestamp', traits => ['Unwrapped'], required => 1);
+  has Timestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'timestamp', traits => ['Unwrapped'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -67,7 +67,7 @@ terminated.
 
 
 
-=head2 B<REQUIRED> Timestamp => Str
+=head2 B<REQUIRED> Timestamp => L<Paws::API::TimeStamp>
 
   The date and time of the event, in UTC format (for example,
 I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).

@@ -2,11 +2,11 @@
 package Paws::CloudWatch::GetMetricStatistics;
   use Moose;
   has Dimensions => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::Dimension]');
-  has EndTime => (is => 'ro', isa => 'Str', required => 1);
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has MetricName => (is => 'ro', isa => 'Str', required => 1);
   has Namespace => (is => 'ro', isa => 'Str', required => 1);
   has Period => (is => 'ro', isa => 'Int', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has Statistics => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has Unit => (is => 'ro', isa => 'Str');
 
@@ -46,7 +46,7 @@ A list of dimensions describing qualities of the metric.
 
 
 
-=head2 B<REQUIRED> EndTime => Str
+=head2 B<REQUIRED> EndTime => L<Paws::API::TimeStamp>
 
 The time stamp to use for determining the last datapoint to return. The
 value specified is exclusive; results will include datapoints up to the
@@ -75,7 +75,7 @@ is 60.
 
 
 
-=head2 B<REQUIRED> StartTime => Str
+=head2 B<REQUIRED> StartTime => L<Paws::API::TimeStamp>
 
 The time stamp to use for determining the first datapoint to return.
 The value specified is inclusive; results include datapoints with the

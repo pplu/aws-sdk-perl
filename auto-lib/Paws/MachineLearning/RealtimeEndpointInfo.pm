@@ -1,6 +1,6 @@
 package Paws::MachineLearning::RealtimeEndpointInfo;
   use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str');
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has EndpointStatus => (is => 'ro', isa => 'Str');
   has EndpointUrl => (is => 'ro', isa => 'Str');
   has PeakRequestsPerSecond => (is => 'ro', isa => 'Int');
@@ -39,7 +39,7 @@ Describes the real-time endpoint information for an C<MLModel>.
 =head1 ATTRIBUTES
 
 
-=head2 CreatedAt => Str
+=head2 CreatedAt => L<Paws::API::TimeStamp>
 
   The time that the request to create the real-time endpoint for the
 C<MLModel> was received. The time is expressed in epoch time.

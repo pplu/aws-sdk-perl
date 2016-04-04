@@ -1,12 +1,12 @@
 package Paws::Firehose::DeliveryStreamDescription;
   use Moose;
-  has CreateTimestamp => (is => 'ro', isa => 'Str');
+  has CreateTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DeliveryStreamARN => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryStreamStatus => (is => 'ro', isa => 'Str', required => 1);
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::Firehose::DestinationDescription]', required => 1);
   has HasMoreDestinations => (is => 'ro', isa => 'Bool', required => 1);
-  has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
+  has LastUpdateTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has VersionId => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -43,7 +43,7 @@ Contains information about a delivery stream.
 =head1 ATTRIBUTES
 
 
-=head2 CreateTimestamp => Str
+=head2 CreateTimestamp => L<Paws::API::TimeStamp>
 
   The date and time that the delivery stream was created.
 
@@ -73,7 +73,7 @@ Contains information about a delivery stream.
   Indicates whether there are more destinations available to list.
 
 
-=head2 LastUpdateTimestamp => Str
+=head2 LastUpdateTimestamp => L<Paws::API::TimeStamp>
 
   The date and time that the delivery stream was last updated.
 

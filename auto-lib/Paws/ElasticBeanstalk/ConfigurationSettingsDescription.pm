@@ -2,8 +2,8 @@
 package Paws::ElasticBeanstalk::ConfigurationSettingsDescription;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str');
-  has DateCreated => (is => 'ro', isa => 'Str');
-  has DateUpdated => (is => 'ro', isa => 'Str');
+  has DateCreated => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has DateUpdated => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DeploymentStatus => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
@@ -28,13 +28,13 @@ The name of the application associated with this configuration set.
 
 
 
-=head2 DateCreated => Str
+=head2 DateCreated => L<Paws::API::TimeStamp>
 
 The date (in UTC time) when this configuration set was created.
 
 
 
-=head2 DateUpdated => Str
+=head2 DateUpdated => L<Paws::API::TimeStamp>
 
 The date (in UTC time) when this configuration set was last modified.
 

@@ -2,7 +2,7 @@ package Paws::CodeDeploy::ApplicationInfo;
   use Moose;
   has ApplicationId => (is => 'ro', isa => 'Str', xmlname => 'applicationId', request_name => 'applicationId', traits => ['Unwrapped','NameInRequest']);
   has ApplicationName => (is => 'ro', isa => 'Str', xmlname => 'applicationName', request_name => 'applicationName', traits => ['Unwrapped','NameInRequest']);
-  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
+  has CreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createTime', request_name => 'createTime', traits => ['Unwrapped','NameInRequest']);
   has LinkedToGitHub => (is => 'ro', isa => 'Bool', xmlname => 'linkedToGitHub', request_name => 'linkedToGitHub', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -49,7 +49,7 @@ Information about an application.
   The application name.
 
 
-=head2 CreateTime => Str
+=head2 CreateTime => L<Paws::API::TimeStamp>
 
   The time at which the application was created.
 

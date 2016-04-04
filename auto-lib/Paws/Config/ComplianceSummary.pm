@@ -1,6 +1,6 @@
 package Paws::Config::ComplianceSummary;
   use Moose;
-  has ComplianceSummaryTimestamp => (is => 'ro', isa => 'Str');
+  has ComplianceSummaryTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CompliantResourceCount => (is => 'ro', isa => 'Paws::Config::ComplianceContributorCount');
   has NonCompliantResourceCount => (is => 'ro', isa => 'Paws::Config::ComplianceContributorCount');
 1;
@@ -39,7 +39,7 @@ noncompliant, up to a maximum.
 =head1 ATTRIBUTES
 
 
-=head2 ComplianceSummaryTimestamp => Str
+=head2 ComplianceSummaryTimestamp => L<Paws::API::TimeStamp>
 
   The time that AWS Config created the compliance summary.
 

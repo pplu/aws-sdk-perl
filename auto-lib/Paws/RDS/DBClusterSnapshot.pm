@@ -2,7 +2,7 @@ package Paws::RDS::DBClusterSnapshot;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
-  has ClusterCreateTime => (is => 'ro', isa => 'Str');
+  has ClusterCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
@@ -12,7 +12,7 @@ package Paws::RDS::DBClusterSnapshot;
   has MasterUsername => (is => 'ro', isa => 'Str');
   has PercentProgress => (is => 'ro', isa => 'Int');
   has Port => (is => 'ro', isa => 'Int');
-  has SnapshotCreateTime => (is => 'ro', isa => 'Str');
+  has SnapshotCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has SnapshotType => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
@@ -75,7 +75,7 @@ DescribeDBClusterSnapshots action.
 cluster snapshot can be restored in.
 
 
-=head2 ClusterCreateTime => Str
+=head2 ClusterCreateTime => L<Paws::API::TimeStamp>
 
   Specifies the time when the DB cluster was created, in Universal
 Coordinated Time (UTC).
@@ -131,7 +131,7 @@ transferred.
 the snapshot.
 
 
-=head2 SnapshotCreateTime => Str
+=head2 SnapshotCreateTime => L<Paws::API::TimeStamp>
 
   Provides the time when the snapshot was taken, in Universal Coordinated
 Time (UTC).

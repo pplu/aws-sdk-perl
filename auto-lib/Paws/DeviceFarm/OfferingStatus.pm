@@ -1,6 +1,6 @@
 package Paws::DeviceFarm::OfferingStatus;
   use Moose;
-  has EffectiveOn => (is => 'ro', isa => 'Str', xmlname => 'effectiveOn', request_name => 'effectiveOn', traits => ['Unwrapped','NameInRequest']);
+  has EffectiveOn => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'effectiveOn', request_name => 'effectiveOn', traits => ['Unwrapped','NameInRequest']);
   has Offering => (is => 'ro', isa => 'Paws::DeviceFarm::Offering', xmlname => 'offering', request_name => 'offering', traits => ['Unwrapped','NameInRequest']);
   has Quantity => (is => 'ro', isa => 'Int', xmlname => 'quantity', request_name => 'quantity', traits => ['Unwrapped','NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', xmlname => 'type', request_name => 'type', traits => ['Unwrapped','NameInRequest']);
@@ -39,7 +39,7 @@ The status of the offering.
 =head1 ATTRIBUTES
 
 
-=head2 EffectiveOn => Str
+=head2 EffectiveOn => L<Paws::API::TimeStamp>
 
   The date on which the offering is effective.
 

@@ -1,11 +1,11 @@
 
 package Paws::CodePipeline::GetPipelineStateOutput;
   use Moose;
-  has Created => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'created' );
+  has Created => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['Unwrapped'], xmlname => 'created' );
   has PipelineName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'pipelineName' );
   has PipelineVersion => (is => 'ro', isa => 'Int', traits => ['Unwrapped'], xmlname => 'pipelineVersion' );
   has StageStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::StageState]', traits => ['Unwrapped'], xmlname => 'stageStates' );
-  has Updated => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'updated' );
+  has Updated => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['Unwrapped'], xmlname => 'updated' );
 
 
 ### main pod documentation begin ###
@@ -17,7 +17,7 @@ Paws::CodePipeline::GetPipelineStateOutput
 =head1 ATTRIBUTES
 
 
-=head2 Created => Str
+=head2 Created => L<Paws::API::TimeStamp>
 
 The date and time the pipeline was created, in timestamp format.
 
@@ -45,7 +45,7 @@ other data.
 
 
 
-=head2 Updated => Str
+=head2 Updated => L<Paws::API::TimeStamp>
 
 The date and time the pipeline was last updated, in timestamp format.
 

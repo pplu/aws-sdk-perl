@@ -1,8 +1,8 @@
 package Paws::SimpleWorkflow::ActivityTypeInfo;
   use Moose;
   has ActivityType => (is => 'ro', isa => 'Paws::SimpleWorkflow::ActivityType', xmlname => 'activityType', request_name => 'activityType', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has DeprecationDate => (is => 'ro', isa => 'Str', xmlname => 'deprecationDate', request_name => 'deprecationDate', traits => ['Unwrapped','NameInRequest']);
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has DeprecationDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'deprecationDate', request_name => 'deprecationDate', traits => ['Unwrapped','NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
@@ -45,13 +45,13 @@ Detailed information about an activity type.
   The ActivityType type structure representing the activity type.
 
 
-=head2 B<REQUIRED> CreationDate => Str
+=head2 B<REQUIRED> CreationDate => L<Paws::API::TimeStamp>
 
   The date and time this activity type was created through
 RegisterActivityType.
 
 
-=head2 DeprecationDate => Str
+=head2 DeprecationDate => L<Paws::API::TimeStamp>
 
   If DEPRECATED, the date and time DeprecateActivityType was called.
 

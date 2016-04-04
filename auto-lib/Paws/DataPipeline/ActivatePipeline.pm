@@ -3,7 +3,7 @@ package Paws::DataPipeline::ActivatePipeline;
   use Moose;
   has ParameterValues => (is => 'ro', isa => 'ArrayRef[Paws::DataPipeline::ParameterValue]', traits => ['NameInRequest'], request_name => 'parameterValues' );
   has PipelineId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pipelineId' , required => 1);
-  has StartTimestamp => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'startTimestamp' );
+  has StartTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp', traits => ['NameInRequest'], request_name => 'startTimestamp' );
 
   use MooseX::ClassAttribute;
 
@@ -47,7 +47,7 @@ The ID of the pipeline.
 
 
 
-=head2 StartTimestamp => Str
+=head2 StartTimestamp => L<Paws::API::TimeStamp>
 
 The date and time to resume the pipeline. By default, the pipeline
 resumes from the last completed execution.

@@ -3,7 +3,7 @@ package Paws::Route53::ChangeInfo;
   has Comment => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str', required => 1);
   has Status => (is => 'ro', isa => 'Str', required => 1);
-  has SubmittedAt => (is => 'ro', isa => 'Str', required => 1);
+  has SubmittedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -66,7 +66,7 @@ request has not yet been applied to all Amazon Route 53 DNS servers.
 Valid Values: C<PENDING> | C<INSYNC>
 
 
-=head2 B<REQUIRED> SubmittedAt => Str
+=head2 B<REQUIRED> SubmittedAt => L<Paws::API::TimeStamp>
 
   The date and time the change was submitted, in the format
 C<YYYY-MM-DDThh:mm:ssZ>, as specified in the ISO 8601 standard (for

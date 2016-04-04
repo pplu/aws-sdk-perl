@@ -1,6 +1,6 @@
 package Paws::IAM::PolicyVersion;
   use Moose;
-  has CreateDate => (is => 'ro', isa => 'Str');
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Document => (is => 'ro', isa => 'Str', decode_as => 'URLJSON', method => 'Policy', traits => ['JSONAttribute']);
   has IsDefaultVersion => (is => 'ro', isa => 'Bool');
   has VersionId => (is => 'ro', isa => 'Str');
@@ -46,7 +46,7 @@ and Inline Policies in the I<Using IAM> guide.
 =head1 ATTRIBUTES
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
   The date and time, in ISO 8601 date-time format, when the policy
 version was created.

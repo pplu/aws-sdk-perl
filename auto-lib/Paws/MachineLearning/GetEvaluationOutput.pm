@@ -1,12 +1,12 @@
 
 package Paws::MachineLearning::GetEvaluationOutput;
   use Moose;
-  has CreatedAt => (is => 'ro', isa => 'Str');
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has EvaluationDataSourceId => (is => 'ro', isa => 'Str');
   has EvaluationId => (is => 'ro', isa => 'Str');
   has InputDataLocationS3 => (is => 'ro', isa => 'Str');
-  has LastUpdatedAt => (is => 'ro', isa => 'Str');
+  has LastUpdatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has LogUri => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has MLModelId => (is => 'ro', isa => 'Str');
@@ -24,7 +24,7 @@ Paws::MachineLearning::GetEvaluationOutput
 =head1 ATTRIBUTES
 
 
-=head2 CreatedAt => Str
+=head2 CreatedAt => L<Paws::API::TimeStamp>
 
 The time that the C<Evaluation> was created. The time is expressed in
 epoch time.
@@ -58,7 +58,7 @@ Service (Amazon S3).
 
 
 
-=head2 LastUpdatedAt => Str
+=head2 LastUpdatedAt => L<Paws::API::TimeStamp>
 
 The time of the most recent edit to the C<BatchPrediction>. The time is
 expressed in epoch time.

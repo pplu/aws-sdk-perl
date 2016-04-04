@@ -839,7 +839,7 @@ groups are returned regardless of whether they have tag keys or values
 associated with them.
 
 
-=head2 DescribeClusterSnapshots([ClusterIdentifier => Str, EndTime => Str, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
+=head2 DescribeClusterSnapshots([ClusterIdentifier => Str, EndTime => L<Paws::API::TimeStamp>, Marker => Str, MaxRecords => Int, OwnerAccount => Str, SnapshotIdentifier => Str, SnapshotType => Str, StartTime => L<Paws::API::TimeStamp>, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeClusterSnapshots>
 
@@ -926,7 +926,7 @@ a specified source type. For a list of the event categories and source
 types, go to Amazon Redshift Event Notifications.
 
 
-=head2 DescribeEvents([Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeEvents([Duration => Int, EndTime => L<Paws::API::TimeStamp>, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeEvents>
 

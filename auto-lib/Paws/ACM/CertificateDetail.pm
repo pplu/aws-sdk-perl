@@ -1,17 +1,17 @@
 package Paws::ACM::CertificateDetail;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str');
-  has CreatedAt => (is => 'ro', isa => 'Str');
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has DomainName => (is => 'ro', isa => 'Str');
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]');
   has InUseBy => (is => 'ro', isa => 'ArrayRef[Str]');
-  has IssuedAt => (is => 'ro', isa => 'Str');
+  has IssuedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Issuer => (is => 'ro', isa => 'Str');
   has KeyAlgorithm => (is => 'ro', isa => 'Str');
-  has NotAfter => (is => 'ro', isa => 'Str');
-  has NotBefore => (is => 'ro', isa => 'Str');
+  has NotAfter => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has NotBefore => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has RevocationReason => (is => 'ro', isa => 'Str');
-  has RevokedAt => (is => 'ro', isa => 'Str');
+  has RevokedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Serial => (is => 'ro', isa => 'Str');
   has SignatureAlgorithm => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -63,7 +63,7 @@ For more information about ARNs, see Amazon Resource Names (ARNs) and
 AWS Service Namespaces.
 
 
-=head2 CreatedAt => Str
+=head2 CreatedAt => L<Paws::API::TimeStamp>
 
   Time at which the certificate was requested.
 
@@ -87,7 +87,7 @@ validation.
 Certificate can be used by multiple AWS resources.
 
 
-=head2 IssuedAt => Str
+=head2 IssuedAt => L<Paws::API::TimeStamp>
 
   Time at which the certificate was issued.
 
@@ -104,12 +104,12 @@ certificate.
 Currently the only supported value is C<RSA_2048>.
 
 
-=head2 NotAfter => Str
+=head2 NotAfter => L<Paws::API::TimeStamp>
 
   Time after which the certificate is not valid.
 
 
-=head2 NotBefore => Str
+=head2 NotBefore => L<Paws::API::TimeStamp>
 
   Time before which the certificate is not valid.
 
@@ -146,7 +146,7 @@ been revoked. This can be one of the following vales:
 
 
 
-=head2 RevokedAt => Str
+=head2 RevokedAt => L<Paws::API::TimeStamp>
 
   The time, if any, at which the certificate was revoked. This value
 exists only if the certificate has been revoked.

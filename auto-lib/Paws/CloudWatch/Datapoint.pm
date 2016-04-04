@@ -5,7 +5,7 @@ package Paws::CloudWatch::Datapoint;
   has Minimum => (is => 'ro', isa => 'Num');
   has SampleCount => (is => 'ro', isa => 'Num');
   has Sum => (is => 'ro', isa => 'Num');
-  has Timestamp => (is => 'ro', isa => 'Str');
+  has Timestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Unit => (is => 'ro', isa => 'Str');
 1;
 
@@ -69,7 +69,7 @@ this datapoint.
   The sum of metric values used for the datapoint.
 
 
-=head2 Timestamp => Str
+=head2 Timestamp => L<Paws::API::TimeStamp>
 
   The time stamp used for the datapoint.
 

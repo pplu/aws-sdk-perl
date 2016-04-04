@@ -8,7 +8,7 @@ package Paws::CloudFront::DistributionSummary;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
-  has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+  has LastModifiedTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has Origins => (is => 'ro', isa => 'Paws::CloudFront::Origins', required => 1);
   has PriceClass => (is => 'ro', isa => 'Str', required => 1);
   has Restrictions => (is => 'ro', isa => 'Paws::CloudFront::Restrictions', required => 1);
@@ -97,7 +97,7 @@ content.
   The identifier for the distribution. For example: EDFDVBD632BHDS5.
 
 
-=head2 B<REQUIRED> LastModifiedTime => Str
+=head2 B<REQUIRED> LastModifiedTime => L<Paws::API::TimeStamp>
 
   The date and time the distribution was last modified.
 

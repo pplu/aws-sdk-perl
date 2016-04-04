@@ -1,8 +1,8 @@
 package Paws::CodePipeline::PipelineSummary;
   use Moose;
-  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
+  has Created => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
-  has Updated => (is => 'ro', isa => 'Str', xmlname => 'updated', request_name => 'updated', traits => ['Unwrapped','NameInRequest']);
+  has Updated => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'updated', request_name => 'updated', traits => ['Unwrapped','NameInRequest']);
   has Version => (is => 'ro', isa => 'Int', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -39,7 +39,7 @@ Returns a summary of a pipeline.
 =head1 ATTRIBUTES
 
 
-=head2 Created => Str
+=head2 Created => L<Paws::API::TimeStamp>
 
   The date and time the pipeline was created, in timestamp format.
 
@@ -49,7 +49,7 @@ Returns a summary of a pipeline.
   The name of the pipeline.
 
 
-=head2 Updated => Str
+=head2 Updated => L<Paws::API::TimeStamp>
 
   The date and time of the last update to the pipeline, in timestamp
 format.

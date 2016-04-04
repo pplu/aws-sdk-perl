@@ -1,8 +1,8 @@
 package Paws::EMR::StepTimeline;
   use Moose;
-  has CreationDateTime => (is => 'ro', isa => 'Str');
-  has EndDateTime => (is => 'ro', isa => 'Str');
-  has StartDateTime => (is => 'ro', isa => 'Str');
+  has CreationDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has EndDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has StartDateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
 1;
 
 ### main pod documentation begin ###
@@ -38,17 +38,17 @@ The timeline of the cluster step lifecycle.
 =head1 ATTRIBUTES
 
 
-=head2 CreationDateTime => Str
+=head2 CreationDateTime => L<Paws::API::TimeStamp>
 
   The date and time when the cluster step was created.
 
 
-=head2 EndDateTime => Str
+=head2 EndDateTime => L<Paws::API::TimeStamp>
 
   The date and time when the cluster step execution completed or failed.
 
 
-=head2 StartDateTime => Str
+=head2 StartDateTime => L<Paws::API::TimeStamp>
 
   The date and time when the cluster step execution started.
 

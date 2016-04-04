@@ -9,7 +9,7 @@ package Paws::RedShift::ReservedNode;
   has RecurringCharges => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::RecurringCharge]');
   has ReservedNodeId => (is => 'ro', isa => 'Str');
   has ReservedNodeOfferingId => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has State => (is => 'ro', isa => 'Str');
   has UsagePrice => (is => 'ro', isa => 'Num');
 1;
@@ -95,7 +95,7 @@ reserved node offering.
   The identifier for the reserved node offering.
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
   The time the reservation started. You purchase a reserved node offering
 for a duration. This is the start time of that duration.

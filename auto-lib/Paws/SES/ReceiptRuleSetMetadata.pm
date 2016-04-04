@@ -1,6 +1,6 @@
 package Paws::SES::ReceiptRuleSetMetadata;
   use Moose;
-  has CreatedTimestamp => (is => 'ro', isa => 'Str');
+  has CreatedTimestamp => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Name => (is => 'ro', isa => 'Str');
 1;
 
@@ -44,7 +44,7 @@ Developer Guide.
 =head1 ATTRIBUTES
 
 
-=head2 CreatedTimestamp => Str
+=head2 CreatedTimestamp => L<Paws::API::TimeStamp>
 
   The date and time the receipt rule set was created.
 

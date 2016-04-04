@@ -1,8 +1,8 @@
 package Paws::CloudFormation::StackSummary;
   use Moose;
-  has CreationTime => (is => 'ro', isa => 'Str', required => 1);
-  has DeletionTime => (is => 'ro', isa => 'Str');
-  has LastUpdatedTime => (is => 'ro', isa => 'Str');
+  has CreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
+  has DeletionTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has LastUpdatedTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
   has StackStatus => (is => 'ro', isa => 'Str', required => 1);
@@ -43,17 +43,17 @@ The StackSummary Data Type
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> CreationTime => Str
+=head2 B<REQUIRED> CreationTime => L<Paws::API::TimeStamp>
 
   The time the stack was created.
 
 
-=head2 DeletionTime => Str
+=head2 DeletionTime => L<Paws::API::TimeStamp>
 
   The time the stack was deleted.
 
 
-=head2 LastUpdatedTime => Str
+=head2 LastUpdatedTime => L<Paws::API::TimeStamp>
 
   The time the stack was last updated. This field will only be returned
 if the stack has been updated at least once.

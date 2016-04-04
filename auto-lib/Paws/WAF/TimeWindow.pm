@@ -1,7 +1,7 @@
 package Paws::WAF::TimeWindow;
   use Moose;
-  has EndTime => (is => 'ro', isa => 'Str', required => 1);
-  has StartTime => (is => 'ro', isa => 'Str', required => 1);
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -48,14 +48,14 @@ received the 5,000th request.
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> EndTime => Str
+=head2 B<REQUIRED> EndTime => L<Paws::API::TimeStamp>
 
   The end of the time range from which you want C<GetSampledRequests> to
 return a sample of the requests that your AWS resource received. You
 can specify any time range in the previous three hours.
 
 
-=head2 B<REQUIRED> StartTime => Str
+=head2 B<REQUIRED> StartTime => L<Paws::API::TimeStamp>
 
   The beginning of the time range from which you want
 C<GetSampledRequests> to return a sample of the requests that your AWS

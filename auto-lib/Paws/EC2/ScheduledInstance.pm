@@ -1,19 +1,19 @@
 package Paws::EC2::ScheduledInstance;
   use Moose;
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
-  has CreateDate => (is => 'ro', isa => 'Str', xmlname => 'createDate', traits => ['Unwrapped']);
+  has CreateDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createDate', traits => ['Unwrapped']);
   has HourlyPrice => (is => 'ro', isa => 'Str', xmlname => 'hourlyPrice', traits => ['Unwrapped']);
   has InstanceCount => (is => 'ro', isa => 'Int', xmlname => 'instanceCount', traits => ['Unwrapped']);
   has InstanceType => (is => 'ro', isa => 'Str', xmlname => 'instanceType', traits => ['Unwrapped']);
   has NetworkPlatform => (is => 'ro', isa => 'Str', xmlname => 'networkPlatform', traits => ['Unwrapped']);
-  has NextSlotStartTime => (is => 'ro', isa => 'Str', xmlname => 'nextSlotStartTime', traits => ['Unwrapped']);
+  has NextSlotStartTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'nextSlotStartTime', traits => ['Unwrapped']);
   has Platform => (is => 'ro', isa => 'Str', xmlname => 'platform', traits => ['Unwrapped']);
-  has PreviousSlotEndTime => (is => 'ro', isa => 'Str', xmlname => 'previousSlotEndTime', traits => ['Unwrapped']);
+  has PreviousSlotEndTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'previousSlotEndTime', traits => ['Unwrapped']);
   has Recurrence => (is => 'ro', isa => 'Paws::EC2::ScheduledInstanceRecurrence', xmlname => 'recurrence', traits => ['Unwrapped']);
   has ScheduledInstanceId => (is => 'ro', isa => 'Str', xmlname => 'scheduledInstanceId', traits => ['Unwrapped']);
   has SlotDurationInHours => (is => 'ro', isa => 'Int', xmlname => 'slotDurationInHours', traits => ['Unwrapped']);
-  has TermEndDate => (is => 'ro', isa => 'Str', xmlname => 'termEndDate', traits => ['Unwrapped']);
-  has TermStartDate => (is => 'ro', isa => 'Str', xmlname => 'termStartDate', traits => ['Unwrapped']);
+  has TermEndDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'termEndDate', traits => ['Unwrapped']);
+  has TermStartDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'termStartDate', traits => ['Unwrapped']);
   has TotalScheduledInstanceHours => (is => 'ro', isa => 'Int', xmlname => 'totalScheduledInstanceHours', traits => ['Unwrapped']);
 1;
 
@@ -55,7 +55,7 @@ This class has no description
   The Availability Zone.
 
 
-=head2 CreateDate => Str
+=head2 CreateDate => L<Paws::API::TimeStamp>
 
   The date when the Scheduled Instance was purchased.
 
@@ -80,7 +80,7 @@ This class has no description
   The network platform (C<EC2-Classic> or C<EC2-VPC>).
 
 
-=head2 NextSlotStartTime => Str
+=head2 NextSlotStartTime => L<Paws::API::TimeStamp>
 
   The time for the next schedule to start.
 
@@ -90,7 +90,7 @@ This class has no description
   The platform (C<Linux/UNIX> or C<Windows>).
 
 
-=head2 PreviousSlotEndTime => Str
+=head2 PreviousSlotEndTime => L<Paws::API::TimeStamp>
 
   The time that the previous schedule ended or will end.
 
@@ -110,12 +110,12 @@ This class has no description
   The number of hours in the schedule.
 
 
-=head2 TermEndDate => Str
+=head2 TermEndDate => L<Paws::API::TimeStamp>
 
   The end date for the Scheduled Instance.
 
 
-=head2 TermStartDate => Str
+=head2 TermStartDate => L<Paws::API::TimeStamp>
 
   The start date for the Scheduled Instance.
 

@@ -1,6 +1,6 @@
 package Paws::ElastiCache::CacheNode;
   use Moose;
-  has CacheNodeCreateTime => (is => 'ro', isa => 'Str');
+  has CacheNodeCreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has CacheNodeId => (is => 'ro', isa => 'Str');
   has CacheNodeStatus => (is => 'ro', isa => 'Str');
   has CustomerAvailabilityZone => (is => 'ro', isa => 'Str');
@@ -96,7 +96,7 @@ Parameters for Redis.
 =head1 ATTRIBUTES
 
 
-=head2 CacheNodeCreateTime => Str
+=head2 CacheNodeCreateTime => L<Paws::API::TimeStamp>
 
   The date and time when the cache node was created.
 

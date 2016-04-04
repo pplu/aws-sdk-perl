@@ -1,10 +1,10 @@
 package Paws::RDS::PendingMaintenanceAction;
   use Moose;
   has Action => (is => 'ro', isa => 'Str');
-  has AutoAppliedAfterDate => (is => 'ro', isa => 'Str');
-  has CurrentApplyDate => (is => 'ro', isa => 'Str');
+  has AutoAppliedAfterDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has CurrentApplyDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
-  has ForcedApplyDate => (is => 'ro', isa => 'Str');
+  has ForcedApplyDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has OptInStatus => (is => 'ro', isa => 'Str');
 1;
 
@@ -47,7 +47,7 @@ Provides information about a pending maintenance action for a resource.
 resource.
 
 
-=head2 AutoAppliedAfterDate => Str
+=head2 AutoAppliedAfterDate => L<Paws::API::TimeStamp>
 
   The date of the maintenance window when the action will be applied. The
 maintenance action will be applied to the resource during its first
@@ -55,7 +55,7 @@ maintenance window after this date. If this date is specified, any
 C<next-maintenance> opt-in requests are ignored.
 
 
-=head2 CurrentApplyDate => Str
+=head2 CurrentApplyDate => L<Paws::API::TimeStamp>
 
   The effective date when the pending maintenance action will be applied
 to the resource. This date takes into account opt-in requests received
@@ -70,7 +70,7 @@ specified as C<AutoAppliedAfterDate> or C<ForcedApplyDate>.
   A description providing more detail about the maintenance action.
 
 
-=head2 ForcedApplyDate => Str
+=head2 ForcedApplyDate => L<Paws::API::TimeStamp>
 
   The date when the maintenance action will be automatically applied. The
 maintenance action will be applied to the resource on this date

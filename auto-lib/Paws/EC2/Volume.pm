@@ -3,7 +3,7 @@ package Paws::EC2::Volume;
   use Moose;
   has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VolumeAttachment]', xmlname => 'attachmentSet', traits => ['Unwrapped',]);
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped',]);
-  has CreateTime => (is => 'ro', isa => 'Str', xmlname => 'createTime', traits => ['Unwrapped',]);
+  has CreateTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createTime', traits => ['Unwrapped',]);
   has Encrypted => (is => 'ro', isa => 'Bool', xmlname => 'encrypted', traits => ['Unwrapped',]);
   has Iops => (is => 'ro', isa => 'Int', xmlname => 'iops', traits => ['Unwrapped',]);
   has KmsKeyId => (is => 'ro', isa => 'Str', xmlname => 'kmsKeyId', traits => ['Unwrapped',]);
@@ -37,7 +37,7 @@ The Availability Zone for the volume.
 
 
 
-=head2 CreateTime => Str
+=head2 CreateTime => L<Paws::API::TimeStamp>
 
 The time stamp when volume creation was initiated.
 

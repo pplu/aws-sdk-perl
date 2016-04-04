@@ -3,7 +3,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   has AutoScalingGroupARN => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
-  has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
+  has CreatedTime => (is => 'ro', isa => 'Paws::API::TimeStamp', required => 1);
   has DefaultCooldown => (is => 'ro', isa => 'Int', required => 1);
   has DesiredCapacity => (is => 'ro', isa => 'Int', required => 1);
   has EnabledMetrics => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::EnabledMetric]');
@@ -71,7 +71,7 @@ Describes an Auto Scaling group.
   One or more Availability Zones for the group.
 
 
-=head2 B<REQUIRED> CreatedTime => Str
+=head2 B<REQUIRED> CreatedTime => L<Paws::API::TimeStamp>
 
   The date and time the group was created.
 

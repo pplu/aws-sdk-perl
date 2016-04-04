@@ -4,8 +4,8 @@ package Paws::ElasticBeanstalk::EnvironmentDescription;
   has AbortableOperationInProgress => (is => 'ro', isa => 'Bool');
   has ApplicationName => (is => 'ro', isa => 'Str');
   has CNAME => (is => 'ro', isa => 'Str');
-  has DateCreated => (is => 'ro', isa => 'Str');
-  has DateUpdated => (is => 'ro', isa => 'Str');
+  has DateCreated => (is => 'ro', isa => 'Paws::API::TimeStamp');
+  has DateUpdated => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Description => (is => 'ro', isa => 'Str');
   has EndpointURL => (is => 'ro', isa => 'Str');
   has EnvironmentId => (is => 'ro', isa => 'Str');
@@ -54,13 +54,13 @@ The URL to the CNAME for this environment.
 
 
 
-=head2 DateCreated => Str
+=head2 DateCreated => L<Paws::API::TimeStamp>
 
 The creation date for this environment.
 
 
 
-=head2 DateUpdated => Str
+=head2 DateUpdated => L<Paws::API::TimeStamp>
 
 The last modified date for this environment.
 

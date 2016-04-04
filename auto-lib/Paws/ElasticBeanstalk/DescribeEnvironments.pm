@@ -4,7 +4,7 @@ package Paws::ElasticBeanstalk::DescribeEnvironments;
   has ApplicationName => (is => 'ro', isa => 'Str');
   has EnvironmentIds => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnvironmentNames => (is => 'ro', isa => 'ArrayRef[Str]');
-  has IncludedDeletedBackTo => (is => 'ro', isa => 'Str');
+  has IncludedDeletedBackTo => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has IncludeDeleted => (is => 'ro', isa => 'Bool');
   has VersionLabel => (is => 'ro', isa => 'Str');
 
@@ -59,7 +59,7 @@ to include only those that have the specified names.
 
 
 
-=head2 IncludedDeletedBackTo => Str
+=head2 IncludedDeletedBackTo => L<Paws::API::TimeStamp>
 
 If specified when C<IncludeDeleted> is set to C<true>, then
 environments deleted after this date are displayed.

@@ -2,7 +2,7 @@ package Paws::DMS::RefreshSchemasStatus;
   use Moose;
   has EndpointArn => (is => 'ro', isa => 'Str');
   has LastFailureMessage => (is => 'ro', isa => 'Str');
-  has LastRefreshDate => (is => 'ro', isa => 'Str');
+  has LastRefreshDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has ReplicationInstanceArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
@@ -51,7 +51,7 @@ endpoint.
   The last failure message for the schema.
 
 
-=head2 LastRefreshDate => Str
+=head2 LastRefreshDate => L<Paws::API::TimeStamp>
 
   The date the schema was last refreshed.
 

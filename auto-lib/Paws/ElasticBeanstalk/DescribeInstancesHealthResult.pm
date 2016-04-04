@@ -3,7 +3,7 @@ package Paws::ElasticBeanstalk::DescribeInstancesHealthResult;
   use Moose;
   has InstanceHealthList => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::SingleInstanceHealth]');
   has NextToken => (is => 'ro', isa => 'Str');
-  has RefreshedAt => (is => 'ro', isa => 'Str');
+  has RefreshedAt => (is => 'ro', isa => 'Paws::API::TimeStamp');
 
 1;
 
@@ -29,7 +29,7 @@ The next token.
 
 
 
-=head2 RefreshedAt => Str
+=head2 RefreshedAt => L<Paws::API::TimeStamp>
 
 The date and time the information was last refreshed.
 

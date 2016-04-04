@@ -3,8 +3,8 @@ package Paws::EC2::VolumeStatusEvent;
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
   has EventId => (is => 'ro', isa => 'Str', xmlname => 'eventId', traits => ['Unwrapped']);
   has EventType => (is => 'ro', isa => 'Str', xmlname => 'eventType', traits => ['Unwrapped']);
-  has NotAfter => (is => 'ro', isa => 'Str', xmlname => 'notAfter', traits => ['Unwrapped']);
-  has NotBefore => (is => 'ro', isa => 'Str', xmlname => 'notBefore', traits => ['Unwrapped']);
+  has NotAfter => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'notAfter', traits => ['Unwrapped']);
+  has NotBefore => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'notBefore', traits => ['Unwrapped']);
 1;
 
 ### main pod documentation begin ###
@@ -55,12 +55,12 @@ This class has no description
   The type of this event.
 
 
-=head2 NotAfter => Str
+=head2 NotAfter => L<Paws::API::TimeStamp>
 
   The latest end time of the event.
 
 
-=head2 NotBefore => Str
+=head2 NotBefore => L<Paws::API::TimeStamp>
 
   The earliest start time of the event.
 

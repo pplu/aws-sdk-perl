@@ -1,7 +1,7 @@
 package Paws::DeviceFarm::OfferingTransaction;
   use Moose;
   has Cost => (is => 'ro', isa => 'Paws::DeviceFarm::MonetaryAmount', xmlname => 'cost', request_name => 'cost', traits => ['Unwrapped','NameInRequest']);
-  has CreatedOn => (is => 'ro', isa => 'Str', xmlname => 'createdOn', request_name => 'createdOn', traits => ['Unwrapped','NameInRequest']);
+  has CreatedOn => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createdOn', request_name => 'createdOn', traits => ['Unwrapped','NameInRequest']);
   has OfferingStatus => (is => 'ro', isa => 'Paws::DeviceFarm::OfferingStatus', xmlname => 'offeringStatus', request_name => 'offeringStatus', traits => ['Unwrapped','NameInRequest']);
   has TransactionId => (is => 'ro', isa => 'Str', xmlname => 'transactionId', request_name => 'transactionId', traits => ['Unwrapped','NameInRequest']);
 1;
@@ -44,7 +44,7 @@ Represents the metadata of an offering transaction.
   The cost of an offering transaction.
 
 
-=head2 CreatedOn => Str
+=head2 CreatedOn => L<Paws::API::TimeStamp>
 
   The date on which an offering transaction was created.
 

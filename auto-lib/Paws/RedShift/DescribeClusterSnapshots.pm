@@ -2,13 +2,13 @@
 package Paws::RedShift::DescribeClusterSnapshots;
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str');
-  has EndTime => (is => 'ro', isa => 'Str');
+  has EndTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has OwnerAccount => (is => 'ro', isa => 'Str');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str');
   has SnapshotType => (is => 'ro', isa => 'Str');
-  has StartTime => (is => 'ro', isa => 'Str');
+  has StartTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
   has TagValues => (is => 'ro', isa => 'ArrayRef[Str]');
 
@@ -49,7 +49,7 @@ requested.
 
 
 
-=head2 EndTime => Str
+=head2 EndTime => L<Paws::API::TimeStamp>
 
 A time value that requests only snapshots created at or before the
 specified time. The time value is specified in ISO 8601 format. For
@@ -109,7 +109,7 @@ Valid Values: C<automated> | C<manual>
 
 
 
-=head2 StartTime => Str
+=head2 StartTime => L<Paws::API::TimeStamp>
 
 A value that requests only snapshots created at or after the specified
 time. The time value is specified in ISO 8601 format. For more

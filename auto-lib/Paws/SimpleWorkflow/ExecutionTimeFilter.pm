@@ -1,7 +1,7 @@
 package Paws::SimpleWorkflow::ExecutionTimeFilter;
   use Moose;
-  has LatestDate => (is => 'ro', isa => 'Str', xmlname => 'latestDate', request_name => 'latestDate', traits => ['Unwrapped','NameInRequest']);
-  has OldestDate => (is => 'ro', isa => 'Str', xmlname => 'oldestDate', request_name => 'oldestDate', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has LatestDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'latestDate', request_name => 'latestDate', traits => ['Unwrapped','NameInRequest']);
+  has OldestDate => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'oldestDate', request_name => 'oldestDate', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -40,12 +40,12 @@ are in the Unix Time format. For example: C<"oldestDate": 1325376070.>
 =head1 ATTRIBUTES
 
 
-=head2 LatestDate => Str
+=head2 LatestDate => L<Paws::API::TimeStamp>
 
   Specifies the latest start or close date and time to return.
 
 
-=head2 B<REQUIRED> OldestDate => Str
+=head2 B<REQUIRED> OldestDate => L<Paws::API::TimeStamp>
 
   Specifies the oldest start or close date and time to return.
 

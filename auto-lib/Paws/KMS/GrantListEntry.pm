@@ -1,7 +1,7 @@
 package Paws::KMS::GrantListEntry;
   use Moose;
   has Constraints => (is => 'ro', isa => 'Paws::KMS::GrantConstraints');
-  has CreationDate => (is => 'ro', isa => 'Str');
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has GranteePrincipal => (is => 'ro', isa => 'Str');
   has GrantId => (is => 'ro', isa => 'Str');
   has IssuingAccount => (is => 'ro', isa => 'Str');
@@ -49,7 +49,7 @@ Contains information about an entry in a list of grants.
   The conditions under which the grant's operations are allowed.
 
 
-=head2 CreationDate => Str
+=head2 CreationDate => L<Paws::API::TimeStamp>
 
   The date and time when the grant was created.
 

@@ -2,7 +2,7 @@ package Paws::DeviceFarm::Upload;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
   has ContentType => (is => 'ro', isa => 'Str', xmlname => 'contentType', request_name => 'contentType', traits => ['Unwrapped','NameInRequest']);
-  has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
+  has Created => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest']);
   has Message => (is => 'ro', isa => 'Str', xmlname => 'message', request_name => 'message', traits => ['Unwrapped','NameInRequest']);
   has Metadata => (is => 'ro', isa => 'Str', xmlname => 'metadata', request_name => 'metadata', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
@@ -55,7 +55,7 @@ uploaded.
   The upload's content type (for example, "application/octet-stream").
 
 
-=head2 Created => Str
+=head2 Created => L<Paws::API::TimeStamp>
 
   When the upload was created.
 

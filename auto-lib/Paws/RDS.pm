@@ -1152,7 +1152,7 @@ categories and source types in the Events topic in the I<Amazon RDS
 User Guide.>
 
 
-=head2 DescribeEvents([Duration => Int, EndTime => Str, EventCategories => ArrayRef[Str], Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
+=head2 DescribeEvents([Duration => Int, EndTime => L<Paws::API::TimeStamp>, EventCategories => ArrayRef[Str], Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeEvents>
 
@@ -1549,7 +1549,7 @@ For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
 
 
-=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, RestoreToTime => L<Paws::API::TimeStamp>, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterToPointInTime>
 
@@ -1595,7 +1595,7 @@ If you are restoring from a shared manual DB snapshot, the
 C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
 
 
-=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
+=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => L<Paws::API::TimeStamp>, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceToPointInTime>
 

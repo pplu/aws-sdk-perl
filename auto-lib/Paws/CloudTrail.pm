@@ -189,7 +189,7 @@ returns trail status from a single region. To return trail status from
 all regions, you must call the operation on each region.
 
 
-=head2 ListPublicKeys([EndTime => Str, NextToken => Str, StartTime => Str])
+=head2 ListPublicKeys([EndTime => L<Paws::API::TimeStamp>, NextToken => Str, StartTime => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::CloudTrail::ListPublicKeys>
 
@@ -217,7 +217,7 @@ Returns: a L<Paws::CloudTrail::ListTagsResponse> instance
 Lists the tags for the trail in the current region.
 
 
-=head2 LookupEvents([EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
+=head2 LookupEvents([EndTime => L<Paws::API::TimeStamp>, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::CloudTrail::LookupEvents>
 

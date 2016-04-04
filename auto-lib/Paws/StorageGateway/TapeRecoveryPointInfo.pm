@@ -1,7 +1,7 @@
 package Paws::StorageGateway::TapeRecoveryPointInfo;
   use Moose;
   has TapeARN => (is => 'ro', isa => 'Str');
-  has TapeRecoveryPointTime => (is => 'ro', isa => 'Str');
+  has TapeRecoveryPointTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has TapeSizeInBytes => (is => 'ro', isa => 'Int');
   has TapeStatus => (is => 'ro', isa => 'Str');
 1;
@@ -44,7 +44,7 @@ Describes a recovery point.
   The Amazon Resource Name (ARN) of the virtual tape.
 
 
-=head2 TapeRecoveryPointTime => Str
+=head2 TapeRecoveryPointTime => L<Paws::API::TimeStamp>
 
   The time when the point-in-time view of the virtual tape was replicated
 for later recovery.

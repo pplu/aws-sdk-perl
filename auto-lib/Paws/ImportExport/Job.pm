@@ -1,6 +1,6 @@
 package Paws::ImportExport::Job;
   use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has IsCanceled => (is => 'ro', isa => 'Bool');
   has JobId => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str');
@@ -39,7 +39,7 @@ Representation of a job returned by the ListJobs operation.
 =head1 ATTRIBUTES
 
 
-=head2 CreationDate => Str
+=head2 CreationDate => L<Paws::API::TimeStamp>
 
   
 

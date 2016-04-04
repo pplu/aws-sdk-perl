@@ -2,7 +2,7 @@ package Paws::GameLift::Event;
   use Moose;
   has EventCode => (is => 'ro', isa => 'Str');
   has EventId => (is => 'ro', isa => 'Str');
-  has EventTime => (is => 'ro', isa => 'Str');
+  has EventTime => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Message => (is => 'ro', isa => 'Str');
   has ResourceId => (is => 'ro', isa => 'Str');
 1;
@@ -51,7 +51,7 @@ Log entry describing an event involving an Amazon GameLift resource
   Unique identifier for a fleet event.
 
 
-=head2 EventTime => Str
+=head2 EventTime => L<Paws::API::TimeStamp>
 
   Time stamp indicating when this event occurred. Format is an integer
 representing the number of seconds since the Unix epoch (Unix time).

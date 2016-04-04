@@ -239,7 +239,7 @@ Returns: a L<Paws::DMS::CreateReplicationSubnetGroupResponse> instance
 VPC.
 
 
-=head2 CreateReplicationTask(MigrationType => Str, ReplicationInstanceArn => Str, ReplicationTaskIdentifier => Str, SourceEndpointArn => Str, TableMappings => Str, TargetEndpointArn => Str, [CdcStartTime => Str, ReplicationTaskSettings => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
+=head2 CreateReplicationTask(MigrationType => Str, ReplicationInstanceArn => Str, ReplicationTaskIdentifier => Str, SourceEndpointArn => Str, TableMappings => Str, TargetEndpointArn => Str, [CdcStartTime => L<Paws::API::TimeStamp>, ReplicationTaskSettings => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
 
 Each argument is described in detail in: L<Paws::DMS::CreateReplicationTask>
 
@@ -463,7 +463,7 @@ Returns: a L<Paws::DMS::RemoveTagsFromResourceResponse> instance
   Removes metadata tags from a DMS resource.
 
 
-=head2 StartReplicationTask(ReplicationTaskArn => Str, StartReplicationTaskType => Str, [CdcStartTime => Str])
+=head2 StartReplicationTask(ReplicationTaskArn => Str, StartReplicationTaskType => Str, [CdcStartTime => L<Paws::API::TimeStamp>])
 
 Each argument is described in detail in: L<Paws::DMS::StartReplicationTask>
 

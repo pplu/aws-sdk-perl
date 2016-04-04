@@ -2,7 +2,7 @@ package Paws::Route53Domains::DomainSummary;
   use Moose;
   has AutoRenew => (is => 'ro', isa => 'Bool');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
-  has Expiry => (is => 'ro', isa => 'Str');
+  has Expiry => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has TransferLock => (is => 'ro', isa => 'Bool');
 1;
 
@@ -55,7 +55,7 @@ Valid values: C<True> | C<False>
 Type: String
 
 
-=head2 Expiry => Str
+=head2 Expiry => L<Paws::API::TimeStamp>
 
   Expiration date of the domain in Coordinated Universal Time (UTC).
 

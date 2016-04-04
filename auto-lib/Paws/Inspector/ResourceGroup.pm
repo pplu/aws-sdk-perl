@@ -1,7 +1,7 @@
 package Paws::Inspector::ResourceGroup;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CreatedAt => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::ResourceGroupTag]', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
@@ -46,7 +46,7 @@ element in the DescribeResourceGroups action.
   The ARN of the resource group.
 
 
-=head2 B<REQUIRED> CreatedAt => Str
+=head2 B<REQUIRED> CreatedAt => L<Paws::API::TimeStamp>
 
   The time at which resource group is created.
 

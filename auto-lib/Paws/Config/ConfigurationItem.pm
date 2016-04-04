@@ -5,13 +5,13 @@ package Paws::Config::ConfigurationItem;
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', request_name => 'availabilityZone', traits => ['Unwrapped','NameInRequest']);
   has AwsRegion => (is => 'ro', isa => 'Str', xmlname => 'awsRegion', request_name => 'awsRegion', traits => ['Unwrapped','NameInRequest']);
   has Configuration => (is => 'ro', isa => 'Str', xmlname => 'configuration', request_name => 'configuration', traits => ['Unwrapped','NameInRequest']);
-  has ConfigurationItemCaptureTime => (is => 'ro', isa => 'Str', xmlname => 'configurationItemCaptureTime', request_name => 'configurationItemCaptureTime', traits => ['Unwrapped','NameInRequest']);
+  has ConfigurationItemCaptureTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'configurationItemCaptureTime', request_name => 'configurationItemCaptureTime', traits => ['Unwrapped','NameInRequest']);
   has ConfigurationItemMD5Hash => (is => 'ro', isa => 'Str', xmlname => 'configurationItemMD5Hash', request_name => 'configurationItemMD5Hash', traits => ['Unwrapped','NameInRequest']);
   has ConfigurationItemStatus => (is => 'ro', isa => 'Str', xmlname => 'configurationItemStatus', request_name => 'configurationItemStatus', traits => ['Unwrapped','NameInRequest']);
   has ConfigurationStateId => (is => 'ro', isa => 'Str', xmlname => 'configurationStateId', request_name => 'configurationStateId', traits => ['Unwrapped','NameInRequest']);
   has RelatedEvents => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'relatedEvents', request_name => 'relatedEvents', traits => ['Unwrapped','NameInRequest']);
   has Relationships => (is => 'ro', isa => 'ArrayRef[Paws::Config::Relationship]', xmlname => 'relationships', request_name => 'relationships', traits => ['Unwrapped','NameInRequest']);
-  has ResourceCreationTime => (is => 'ro', isa => 'Str', xmlname => 'resourceCreationTime', request_name => 'resourceCreationTime', traits => ['Unwrapped','NameInRequest']);
+  has ResourceCreationTime => (is => 'ro', isa => 'Paws::API::TimeStamp', xmlname => 'resourceCreationTime', request_name => 'resourceCreationTime', traits => ['Unwrapped','NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', xmlname => 'resourceId', request_name => 'resourceId', traits => ['Unwrapped','NameInRequest']);
   has ResourceName => (is => 'ro', isa => 'Str', xmlname => 'resourceName', request_name => 'resourceName', traits => ['Unwrapped','NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', xmlname => 'resourceType', request_name => 'resourceType', traits => ['Unwrapped','NameInRequest']);
@@ -80,7 +80,7 @@ components (for example, applications on your Amazon EC2 instances).
   The description of the resource configuration.
 
 
-=head2 ConfigurationItemCaptureTime => Str
+=head2 ConfigurationItemCaptureTime => L<Paws::API::TimeStamp>
 
   The time when the configuration recording was initiated.
 
@@ -121,7 +121,7 @@ initiated by any event.
   A list of related AWS resources.
 
 
-=head2 ResourceCreationTime => Str
+=head2 ResourceCreationTime => L<Paws::API::TimeStamp>
 
   The time stamp when the resource was created.
 

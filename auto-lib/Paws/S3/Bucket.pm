@@ -1,6 +1,6 @@
 package Paws::S3::Bucket;
   use Moose;
-  has CreationDate => (is => 'ro', isa => 'Str');
+  has CreationDate => (is => 'ro', isa => 'Paws::API::TimeStamp');
   has Name => (is => 'ro', isa => 'Str');
 1;
 
@@ -37,7 +37,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 CreationDate => Str
+=head2 CreationDate => L<Paws::API::TimeStamp>
 
   Date the bucket was created.
 
