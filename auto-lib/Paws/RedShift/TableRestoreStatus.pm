@@ -58,7 +58,7 @@ restored to.
 =head2 Message => Str
 
   A description of the status of the table restore request. Status values
-include C<SUCCEEDED>, C<FAILED>, C<CANCELLED>, C<PENDING>,
+include C<SUCCEEDED>, C<FAILED>, C<CANCELED>, C<PENDING>,
 C<IN_PROGRESS>.
 
 
@@ -103,7 +103,7 @@ Coordinated Time (UTC).
 
   A value that describes the current state of the table restore request.
 
-Valid Values: C<SUCCEEDED>, C<FAILED>, C<CANCELLED>, C<PENDING>,
+Valid Values: C<SUCCEEDED>, C<FAILED>, C<CANCELED>, C<PENDING>,
 C<IN_PROGRESS>
 
 

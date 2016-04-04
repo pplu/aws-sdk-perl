@@ -12,6 +12,7 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has ElasticIp => (is => 'ro', isa => 'Str');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
+  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
@@ -176,6 +177,17 @@ cluster uses to retrieve the data encryption keys stored in an HSM.
 Specifies the name of the HSM configuration that contains the
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
+
+
+
+=head2 IamRoles => ArrayRef[Str]
+
+A list of AWS Identity and Access Management (IAM) roles that can be
+used by the cluster to access other AWS services. You must supply the
+IAM roles in their Amazon Resource Name (ARN) format. You can supply up
+to 10 IAM roles in a single request.
+
+A cluster can have up to 10 IAM roles associated at any time.
 
 
 

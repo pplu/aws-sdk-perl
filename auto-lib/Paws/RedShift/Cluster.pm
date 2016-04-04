@@ -19,6 +19,7 @@ package Paws::RedShift::Cluster;
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Endpoint => (is => 'ro', isa => 'Paws::RedShift::Endpoint');
   has HsmStatus => (is => 'ro', isa => 'Paws::RedShift::HsmStatus');
+  has IamRoles => (is => 'ro', isa => 'ArrayRef[Paws::RedShift::ClusterIamRole]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has ModifyStatus => (is => 'ro', isa => 'Str');
@@ -214,6 +215,12 @@ by default.
 HSM settings changes specified in a modify cluster command.
 
 Values: active, applying
+
+
+=head2 IamRoles => ArrayRef[L<Paws::RedShift::ClusterIamRole>]
+
+  A list of AWS Identity and Access Management (IAM) roles that can be
+used by the cluster to access other AWS services.
 
 
 =head2 KmsKeyId => Str

@@ -70,6 +70,8 @@ from.
 =head2 SourceSchemaName => Str
 
 The name of the source schema that contains the table to restore from.
+If you do not specify a C<SourceSchemaName> value, the default is
+C<public>.
 
 
 
