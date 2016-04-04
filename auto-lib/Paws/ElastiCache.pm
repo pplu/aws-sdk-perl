@@ -148,6 +148,11 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeSnapshots', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAllowedNodeTypeModifications {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::ListAllowedNodeTypeModifications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::ListTagsForResource', @_);
@@ -199,7 +204,7 @@ package Paws::ElastiCache;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress / }
+  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress / }
 
 1;
 
@@ -602,6 +607,22 @@ snapshots; it can optionally describe a single snapshot, or just the
 snapshots associated with a particular cache cluster.
 
 
+=head2 ListAllowedNodeTypeModifications([CacheClusterId => Str, ReplicationGroupId => Str])
+
+Each argument is described in detail in: L<Paws::ElastiCache::ListAllowedNodeTypeModifications>
+
+Returns: a L<Paws::ElastiCache::AllowedNodeTypeModificationsMessage> instance
+
+  The C<ListAllowedNodeTypeModifications> action lists all available node
+types that you can scale your Redis cluster's or replication group's
+current node type up to.
+
+When you use the C<ModifyCacheCluster> or C<ModifyReplicationGroup>
+APIs to scale up your cluster or replication group, the value of the
+I<CacheNodeType> parameter must be one of the node types returned by
+this action.
+
+
 =head2 ListTagsForResource(ResourceName => Str)
 
 Each argument is described in detail in: L<Paws::ElastiCache::ListTagsForResource>
@@ -619,7 +640,7 @@ resource. For more information, see Using Cost Allocation Tags in
 Amazon ElastiCache.
 
 
-=head2 ModifyCacheCluster(CacheClusterId => Str, [ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeIdsToRemove => ArrayRef[Str], CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], EngineVersion => Str, NewAvailabilityZones => ArrayRef[Str], NotificationTopicArn => Str, NotificationTopicStatus => Str, NumCacheNodes => Int, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str], SnapshotRetentionLimit => Int, SnapshotWindow => Str])
+=head2 ModifyCacheCluster(CacheClusterId => Str, [ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeIdsToRemove => ArrayRef[Str], CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], EngineVersion => Str, NewAvailabilityZones => ArrayRef[Str], NotificationTopicArn => Str, NotificationTopicStatus => Str, NumCacheNodes => Int, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str], SnapshotRetentionLimit => Int, SnapshotWindow => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyCacheCluster>
 
@@ -652,7 +673,7 @@ Returns: a L<Paws::ElastiCache::ModifyCacheSubnetGroupResult> instance
 group.
 
 
-=head2 ModifyReplicationGroup(ReplicationGroupId => Str, [ApplyImmediately => Bool, AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], EngineVersion => Str, NotificationTopicArn => Str, NotificationTopicStatus => Str, PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, ReplicationGroupDescription => Str, SecurityGroupIds => ArrayRef[Str], SnapshotRetentionLimit => Int, SnapshottingClusterId => Str, SnapshotWindow => Str])
+=head2 ModifyReplicationGroup(ReplicationGroupId => Str, [ApplyImmediately => Bool, AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], EngineVersion => Str, NotificationTopicArn => Str, NotificationTopicStatus => Str, PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, ReplicationGroupDescription => Str, SecurityGroupIds => ArrayRef[Str], SnapshotRetentionLimit => Int, SnapshottingClusterId => Str, SnapshotWindow => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyReplicationGroup>
 

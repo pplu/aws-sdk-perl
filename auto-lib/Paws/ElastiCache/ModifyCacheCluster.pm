@@ -6,6 +6,7 @@ package Paws::ElastiCache::ModifyCacheCluster;
   has AZMode => (is => 'ro', isa => 'Str');
   has CacheClusterId => (is => 'ro', isa => 'Str', required => 1);
   has CacheNodeIdsToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
+  has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -119,6 +120,14 @@ you must list 2 (7 - 5) cache node IDs to remove.
 
 
 
+=head2 CacheNodeType => Str
+
+A valid cache node type that you want to scale this cache cluster to.
+The value of this parameter must be one of the I<ScaleUpModifications>
+values returned by the C<ListAllowedCacheNodeTypeModification> action.
+
+
+
 =head2 CacheParameterGroupName => Str
 
 The name of the cache parameter group to apply to this cache cluster.
@@ -144,6 +153,12 @@ Must not be "Default".
 =head2 EngineVersion => Str
 
 The upgraded version of the cache engine to be run on the cache nodes.
+
+B<Important:> You can upgrade to a newer engine version (see Selecting
+a Cache Engine and Version), but you cannot downgrade to an earlier
+engine version. If you want to use an earlier engine version, you must
+delete the existing cache cluster and create it anew with the earlier
+engine version.
 
 
 
@@ -195,54 +210,69 @@ Memcached.
 
 B<Impact of new add/remove requests upon pending requests>
 
-Scenarios
+=over
 
-Pending action
+=item * Scenario-1
 
-New Request
+=over
 
-Results
+=item * Pending Action: Delete
 
-Scenario-1
+=item * New Request: Delete
 
-Delete
+=item * Result: The new delete, pending or immediate, replaces the
+pending delete.
 
-Delete
+=back
 
-The new delete, pending or immediate, replaces the pending delete.
+=item * Scenario-2
 
-Scenario-2
+=over
 
-Delete
+=item * Pending Action: Delete
 
-Create
+=item * New Request: Create
 
-The new create, pending or immediate, replaces the pending delete.
+=item * Result: The new create, pending or immediate, replaces the
+pending delete.
 
-Scenario-3
+=back
 
-Create
+=item * Scenario-3
 
-Delete
+=over
 
-The new delete, pending or immediate, replaces the pending create.
+=item * Pending Action: Create
 
-Scenario-4
+=item * New Request: Delete
 
-Create
+=item * Result: The new delete, pending or immediate, replaces the
+pending create.
 
-Create
+=back
 
-The new create is added to the pending create.
+=item * Scenario-4
 
+=over
+
+=item * Pending Action: Create
+
+=item * New Request: Create
+
+=item * Result: The new create is added to the pending create.
 B<Important:>
 
 If the new create request is B<Apply Immediately - Yes>, all creates
-are performed immediately. If the new create request is B<Apply
-Immediately - No>, all creates are pending.
+are performed immediately.
 
-Example:
-C<NewAvailabilityZones.member.1=us-west-2a&NewAvailabilityZones.member.2=us-west-2b&NewAvailabilityZones.member.3=us-west-2c>
+If the new create request is B<Apply Immediately - No>, all creates are
+pending.
+
+=back
+
+=back
+
+Example: C<>
 
 
 

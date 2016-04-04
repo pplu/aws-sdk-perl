@@ -179,8 +179,7 @@ this cache cluster.
 
 =head2 EngineVersion => Str
 
-  The version of the cache engine version that is used in this cache
-cluster.
+  The version of the cache engine that is used in this cache cluster.
 
 
 =head2 NotificationConfiguration => L<Paws::ElastiCache::NotificationConfiguration>

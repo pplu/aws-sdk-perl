@@ -47,6 +47,12 @@ Default: C<1>
 
 A customer-specified identifier to track this reservation.
 
+B<Note:>
+
+The Reserved Cache Node ID is an unique customer-specified identifier
+to track this reservation. If this parameter is not specified,
+ElastiCache automatically generates an identifier for the reservation.
+
 Example: myreservationID
 
 
