@@ -36,13 +36,13 @@ foreach my $file (@files) {
 done_testing;
 
 sub is_native {
-  my $native = { Bool => 1, Str => 1, Num => 1, Int => 1 }->{ $_[0] };
+  my $native = { Bool => 1, Str => 1, Num => 1, Int => 1, 'Paws::API::TimeStamp' => 1 }->{ $_[0] };
   return defined $native;
 }
 
 sub get_value_for_type {
   my $type = shift;
-  return { Bool => 0, Str => 'Str', Num => 0.01, Int => 1 }->{ $type };
+  return { Bool => 0, Str => 'Str', Num => 0.01, Int => 1, 'Paws::API::TimeStamp' => '2016-01-01' }->{ $type };
 }
 
 # Just make a valid structure of arguments with values for the required fields

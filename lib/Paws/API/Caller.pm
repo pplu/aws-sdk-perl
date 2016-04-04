@@ -38,6 +38,8 @@ package Paws::API::Caller;
   
         if ($type eq 'Bool') {
           $p{ $att } = ($params{ $att } == 1)?1:0;
+        } elsif ($type eq 'Paws::API::TimeStamp') {
+          $p{ $att } = $params{ $att };
         } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
           $p{ $att } = $params{ $att };
         } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
@@ -177,7 +179,8 @@ package Paws::API::Caller;
 
         if ($att_type =~ m/\:\:/) {
           if ($att_type eq 'Paws::API::TimeStamp'){
-            $args{ $att } = $value;
+            $args{ $att } = $value if (defined $value);
+            next;
           }
           # Make the att_type stringify for module loading
           Paws->load_class("$att_type");
