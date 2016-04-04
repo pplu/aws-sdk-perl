@@ -29,8 +29,8 @@ The number of items in the response.
 
 If you used a I<QueryFilter> in the request, then I<Count> is the
 number of items returned after the filter was applied, and
-I<ScannedCount> is the number of matching items beforeE<gt> the filter
-was applied.
+I<ScannedCount> is the number of matching items before the filter was
+applied.
 
 If you did not use a filter in the request, then I<Count> and
 I<ScannedCount> are the same.

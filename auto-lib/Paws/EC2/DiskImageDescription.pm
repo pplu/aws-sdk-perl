@@ -57,6 +57,9 @@ read the "Query String Request Authentication Alternative" section of
 the Authenticating REST Requests topic in the I<Amazon Simple Storage
 Service Developer Guide>.
 
+For information about the import manifest referenced by this API
+action, see VM Import Manifest.
+
 
 =head2 B<REQUIRED> Size => Int
 

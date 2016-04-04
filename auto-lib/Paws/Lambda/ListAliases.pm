@@ -47,15 +47,16 @@ Lambda function name for which the alias is created.
 =head2 FunctionVersion => Str
 
 If you specify this optional parameter, the API returns only the
-aliases pointing to the specific Lambda function version, otherwise
-returns all aliases created for the Lambda function.
+aliases that are pointing to the specific Lambda function version,
+otherwise the API returns all of the aliases created for the Lambda
+function.
 
 
 
 =head2 Marker => Str
 
 Optional string. An opaque pagination token returned from a previous
-ListAliases operation. If present, indicates where to continue the
+C<ListAliases> operation. If present, indicates where to continue the
 listing.
 
 

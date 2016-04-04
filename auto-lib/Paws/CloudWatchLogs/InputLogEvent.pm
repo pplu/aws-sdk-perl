@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchL
 
 A log event is a record of some activity that was recorded by the
 application or resource being monitored. The log event record that
-Amazon CloudWatch Logs understands contains two properties: the
-timestamp of when the event occurred, and the raw event message.
+CloudWatch Logs understands contains two properties: the timestamp of
+when the event occurred, and the raw event message.
 
 =head1 ATTRIBUTES
 

@@ -2,6 +2,7 @@ package Paws::S3::LifecycleExpiration;
   use Moose;
   has Date => (is => 'ro', isa => 'Str');
   has Days => (is => 'ro', isa => 'Int');
+  has ExpiredObjectDeleteMarker => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::S3::LifecycleExpiration object:
 
-  $service_obj->Method(Att1 => { Date => $value, ..., Days => $value  });
+  $service_obj->Method(Att1 => { Date => $value, ..., ExpiredObjectDeleteMarker => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,6 +48,14 @@ in GMT ISO 8601 Format.
 
   Indicates the lifetime, in days, of the objects that are subject to the
 rule. The value must be a non-zero positive integer.
+
+
+=head2 ExpiredObjectDeleteMarker => Bool
+
+  Indicates whether Amazon S3 will remove a delete marker with no
+noncurrent versions. If set to true, the delete marker will be expired;
+if set to false the policy takes no action. This cannot be specified
+with Days or Date in a Lifecycle Expiration Policy.
 
 
 

@@ -46,7 +46,7 @@ the unhealthy instance.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-The ID of the EC2 instance.
+The ID of the instance.
 
 
 
@@ -57,8 +57,8 @@ C<HealthCheckGracePeriod> specified for the group, by default, this
 call will respect the grace period. Set this to C<False>, if you do not
 want the call to respect the grace period associated with the group.
 
-For more information, see the C<HealthCheckGracePeriod> parameter
-description for CreateAutoScalingGroup.
+For more information, see the description of the health check grace
+period for CreateAutoScalingGroup.
 
 
 

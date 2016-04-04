@@ -7,14 +7,21 @@ use Data::Dumper;
 
 use lib 't/lib';
 use Test::CustomCredentials;
-use HTTPTinyResponseRecorder;
-use LWPResponseRecorder;
-use FurlResponseRecorder;
+use Module::Runtime qw/require_module/;
 
 my $do_real_calls = $ENV{'PAWS_RUN_REAL_CALLS'} || 0;
 
 foreach $caller_code ('Furl', 'HTTPTiny', 'LWP') {
   my $caller_name = "${caller_code}ResponseRecorder";
+
+  eval {
+    require_module $caller_name;
+  };
+  if ($@){
+    diag "Skipping $caller_name due to probem loading: $@";
+    next;
+  }
+
   my $caller_dir = 't/11_client_exceptions_' . lc($caller_code) . '/';
   diag "Testing with caller $caller_name";
   my $caller = $caller_name->new(

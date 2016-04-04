@@ -17,7 +17,7 @@ Paws::RedShift::HsmConfigurationMessage
 
 =head2 HsmConfigurations => ArrayRef[L<Paws::RedShift::HsmConfiguration>]
 
-A list of Amazon Redshift HSM configurations.
+A list of C<HsmConfiguration> objects.
 
 
 

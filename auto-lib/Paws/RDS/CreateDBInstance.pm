@@ -14,6 +14,8 @@ package Paws::RDS::CreateDBInstance;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
@@ -28,6 +30,7 @@ package Paws::RDS::CreateDBInstance;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
@@ -336,6 +339,19 @@ If there is no DB subnet group, then it is a non-VPC DB instance.
 
 
 
+=head2 Domain => Str
+
+Specify the Active Directory Domain to create the instance in.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
+
+
+
 =head2 B<REQUIRED> Engine => Str
 
 The name of the database engine to be used for this instance.
@@ -372,7 +388,9 @@ us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
 | 5.5.42>
 
 =item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23>
+| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23 | 5.6.27>
+
+=item * B<Version 5.7 (Available in all regions):> C< 5.7.10>
 
 =back
 
@@ -541,8 +559,10 @@ B<Microsoft SQL Server Web Edition (sqlserver-web)>
 The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for the DB instance.
 
-Constraints: To use PIOPS, this value must be an integer greater than
-1000.
+Constraints: Must be a multiple between 3 and 10 of the storage amount
+for the DB instance. Must also be an integer multiple of 1000. For
+example, if the size of your DB instance is 500 GB, then your C<Iops>
+value can be 2000, 3000, 4000, or 5000.
 
 
 
@@ -825,6 +845,19 @@ I<Amazon RDS User Guide.>
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Constraints: Minimum 30-minute window.
+
+
+
+=head2 PromotionTier => Int
+
+A value that specifies the order in which an Aurora Replica is promoted
+to the primary instance after a failure of the existing primary
+instance. For more information, see Fault Tolerance for an Aurora DB
+Cluster.
+
+Default: 1
+
+Valid Values: 0 - 15
 
 
 

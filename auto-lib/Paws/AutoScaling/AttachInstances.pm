@@ -42,7 +42,7 @@ The name of the group.
 
 =head2 InstanceIds => ArrayRef[Str]
 
-One or more EC2 instance IDs.
+One or more instance IDs.
 
 
 

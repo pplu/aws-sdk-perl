@@ -1,6 +1,6 @@
 package Paws::Inspector::Attribute;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest']);
+  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest'], required => 1);
   has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -32,14 +32,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-This data type is used as a response element in the
-AddAttributesToFindings action and a request parameter in the
-CreateAssessment action.
+This data type is used as a request parameter in the
+AddAttributesToFindings and CreateAssessmentTemplate actions.
 
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 B<REQUIRED> Key => Str
 
   The attribute key.
 

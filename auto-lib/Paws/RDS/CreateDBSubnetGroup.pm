@@ -48,7 +48,7 @@ The name for the DB subnet group. This value is stored as a lowercase
 string.
 
 Constraints: Must contain no more than 255 alphanumeric characters,
-periods, underscores, or hyphens. Must not be default.
+periods, underscores, spaces, or hyphens. Must not be default.
 
 Example: C<mySubnetgroup>
 

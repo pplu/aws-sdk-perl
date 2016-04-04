@@ -50,7 +50,8 @@ A list of dimensions describing qualities of the metric.
 
 The time stamp to use for determining the last datapoint to return. The
 value specified is exclusive; results will include datapoints up to the
-time stamp specified.
+time stamp specified. The time stamp must be in ISO 8601 UTC format
+(e.g., 2014-09-03T23:00:00Z).
 
 
 
@@ -78,17 +79,25 @@ is 60.
 
 The time stamp to use for determining the first datapoint to return.
 The value specified is inclusive; results include datapoints with the
-time stamp specified.
+time stamp specified. The time stamp must be in ISO 8601 UTC format
+(e.g., 2014-09-03T23:00:00Z).
+
+The specified start time is rounded down to the nearest value.
+Datapoints are returned for start times up to two weeks in the past.
+Specified start times that are more than two weeks in the past will not
+return datapoints for metrics that are older than two weeks.
+
+Data that is timestamped 24 hours or more in the past may take in
+excess of 48 hours to become available from submission time using
+C<GetMetricStatistics>.
 
 
 
 =head2 B<REQUIRED> Statistics => ArrayRef[Str]
 
 The metric statistics to return. For information about specific
-statistics returned by GetMetricStatistics, go to Statistics in the
+statistics returned by GetMetricStatistics, see Statistics in the
 I<Amazon CloudWatch Developer Guide>.
-
-Valid Values: C<Average | Sum | SampleCount | Maximum | Minimum>
 
 
 

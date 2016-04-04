@@ -7,6 +7,7 @@ package Paws::GameLift::CreateFleet;
   has EC2InstanceType => (is => 'ro', isa => 'Str', required => 1);
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str', required => 1);
 
@@ -85,6 +86,26 @@ Descriptive label associated with this fleet. Fleet names do not need
 to be unique.
 
 
+
+=head2 NewGameSessionProtectionPolicy => Str
+
+Game session protection policy to apply to all instances created in
+this fleet. If this parameter is not set, new instances in this fleet
+will default to no protection. Protection can be set for individual
+instances using UpdateGameSession.
+
+=over
+
+=item * NoProtection: The game session can be terminated during a
+scale-down event.
+
+=item * FullProtection: If the game session is in an ACTIVE status, it
+cannot be terminated during a scale-down event.
+
+=back
+
+
+Valid values are: C<"NoProtection">, C<"FullProtection">
 
 =head2 ServerLaunchParameters => Str
 

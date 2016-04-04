@@ -8,6 +8,7 @@ package Paws::RedShift::ModifyCluster;
   has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
   has ClusterType => (is => 'ro', isa => 'Str');
   has ClusterVersion => (is => 'ro', isa => 'Str');
+  has ElasticIp => (is => 'ro', isa => 'Str');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -15,6 +16,7 @@ package Paws::RedShift::ModifyCluster;
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
@@ -148,6 +150,17 @@ Example: C<1.0>
 
 
 
+=head2 ElasticIp => Str
+
+The Elastic IP (EIP) address for the cluster.
+
+Constraints: The cluster must be provisioned in EC2-VPC and
+publicly-accessible through an Internet gateway. For more information
+about provisioning clusters in EC2-VPC, go to Supported Platforms to
+Launch Your Cluster in the Amazon Redshift Cluster Management Guide.
+
+
+
 =head2 HsmClientCertificateIdentifier => Str
 
 Specifies the name of the HSM client certificate the Amazon Redshift
@@ -272,6 +285,13 @@ Format: ddd:hh24:mi-ddd:hh24:mi, for example C<wed:07:30-wed:08:00>.
 Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
 Constraints: Must be at least 30 minutes.
+
+
+
+=head2 PubliclyAccessible => Bool
+
+If C<true>, the cluster can be accessed from a public network. Only
+clusters in VPCs can be set to be publicly available.
 
 
 

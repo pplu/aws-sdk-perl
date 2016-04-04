@@ -53,8 +53,8 @@ terminated
 
 =back
 
-For more information, see Auto Scaling Pending State and Auto Scaling
-Terminating State in the I<Auto Scaling Developer Guide>.
+For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
+Developer Guide>.
 
 =head1 ATTRIBUTES
 
@@ -83,9 +83,9 @@ seconds (48 hours).
 
   The maximum time, in seconds, that can elapse before the lifecycle hook
 times out. The default is 3600 seconds (1 hour). When the lifecycle
-hook times out, Auto Scaling performs the action defined in the
-C<DefaultResult> parameter. You can prevent the lifecycle hook from
-timing out by calling RecordLifecycleActionHeartbeat.
+hook times out, Auto Scaling performs the default action. You can
+prevent the lifecycle hook from timing out by calling
+RecordLifecycleActionHeartbeat.
 
 
 =head2 LifecycleHookName => Str

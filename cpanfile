@@ -43,6 +43,7 @@ on 'develop' => sub {
   requires 'Data::Printer';
   requires 'Carp::Always';
   requires 'Test::Pod';
+  requires 'Class::Unload';
   # For developing / testing the pluggable callers
   requires 'Mojolicious';
   requires 'Future::Mojo', '>= 0.003';

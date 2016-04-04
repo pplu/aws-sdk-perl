@@ -43,7 +43,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Name of Amazon S3 bucket to which the log data will be exported.
 
-B<NOTE: Only buckets in the same AWS region are supported>
+B<Note:> Only buckets in the same AWS region are supported.
 
 
 

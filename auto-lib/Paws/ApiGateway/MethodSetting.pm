@@ -6,8 +6,10 @@ package Paws::ApiGateway::MethodSetting;
   has DataTraceEnabled => (is => 'ro', isa => 'Bool', xmlname => 'dataTraceEnabled', request_name => 'dataTraceEnabled', traits => ['Unwrapped','NameInRequest']);
   has LoggingLevel => (is => 'ro', isa => 'Str', xmlname => 'loggingLevel', request_name => 'loggingLevel', traits => ['Unwrapped','NameInRequest']);
   has MetricsEnabled => (is => 'ro', isa => 'Bool', xmlname => 'metricsEnabled', request_name => 'metricsEnabled', traits => ['Unwrapped','NameInRequest']);
+  has RequireAuthorizationForCacheControl => (is => 'ro', isa => 'Bool', xmlname => 'requireAuthorizationForCacheControl', request_name => 'requireAuthorizationForCacheControl', traits => ['Unwrapped','NameInRequest']);
   has ThrottlingBurstLimit => (is => 'ro', isa => 'Int', xmlname => 'throttlingBurstLimit', request_name => 'throttlingBurstLimit', traits => ['Unwrapped','NameInRequest']);
   has ThrottlingRateLimit => (is => 'ro', isa => 'Num', xmlname => 'throttlingRateLimit', request_name => 'throttlingRateLimit', traits => ['Unwrapped','NameInRequest']);
+  has UnauthorizedCacheControlHeaderStrategy => (is => 'ro', isa => 'Str', xmlname => 'unauthorizedCacheControlHeaderStrategy', request_name => 'unauthorizedCacheControlHeaderStrategy', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ApiGateway::MethodSetting object:
 
-  $service_obj->Method(Att1 => { CacheDataEncrypted => $value, ..., ThrottlingRateLimit => $value  });
+  $service_obj->Method(Att1 => { CacheDataEncrypted => $value, ..., UnauthorizedCacheControlHeaderStrategy => $value  });
 
 =head3 Results returned from an API call
 
@@ -89,6 +91,14 @@ method. The PATCH path for this setting is
 C</{method_setting_key}/metrics/enabled>, and the value is a Boolean.
 
 
+=head2 RequireAuthorizationForCacheControl => Bool
+
+  Specifies whether authorization is required for a cache invalidation
+request. The PATCH path for this setting is
+C</{method_setting_key}/caching/requireAuthorizationForCacheControl>,
+and the value is a Boolean.
+
+
 =head2 ThrottlingBurstLimit => Int
 
   Specifies the throttling burst limit. The PATCH path for this setting
@@ -101,6 +111,15 @@ integer.
   Specifies the throttling rate limit. The PATCH path for this setting is
 C</{method_setting_key}/throttling/rateLimit>, and the value is a
 double.
+
+
+=head2 UnauthorizedCacheControlHeaderStrategy => Str
+
+  Specifies the strategy on how to handle the unauthorized requests for
+cache invalidation. The PATCH path for this setting is
+C</{method_setting_key}/caching/unauthorizedCacheControlHeaderStrategy>,
+and the available values are C<FAIL_WITH_403>,
+C<SUCCEED_WITH_RESPONSE_HEADER>, C<SUCCEED_WITHOUT_RESPONSE_HEADER>.
 
 
 

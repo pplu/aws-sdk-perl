@@ -96,10 +96,17 @@ on the 4th day of the month by 5:00 PM Pacific Time since 2015-02.
 the 4th day of the month by 5:00 PM Pacific Time since 2015-02.
 
 =item * I<disbursed_amount_by_product> - Available every 30 days by
-5:00 PM Pacific Time since 2012-04.
+5:00 PM Pacific Time since 2015-01-26.
+
+=item * I<disbursed_amount_by_product_with_uncollected_funds> -This
+data set is only available from 2012-04-19 until 2015-01-25. After
+2015-01-25, this data set was split into three data sets:
+disbursed_amount_by_product,
+disbursed_amount_by_age_of_uncollected_funds, and
+disbursed_amount_by_age_of_disbursed_funds.
 
 =item * I<disbursed_amount_by_customer_geo> - Available every 30 days
-by 5:00 PM Pacific Time since 2012-04.
+by 5:00 PM Pacific Time since 2012-04-19.
 
 =item * I<disbursed_amount_by_age_of_uncollected_funds> - Available
 every 30 days by 5:00 PM Pacific Time since 2015-01-26.
@@ -119,7 +126,7 @@ Pacific Time since 2015-10-01.
 =back
 
 
-Valid values are: C<"customer_subscriber_hourly_monthly_subscriptions">, C<"customer_subscriber_annual_subscriptions">, C<"daily_business_usage_by_instance_type">, C<"daily_business_fees">, C<"daily_business_free_trial_conversions">, C<"daily_business_new_instances">, C<"daily_business_new_product_subscribers">, C<"daily_business_canceled_product_subscribers">, C<"monthly_revenue_billing_and_revenue_data">, C<"monthly_revenue_annual_subscriptions">, C<"disbursed_amount_by_product">, C<"disbursed_amount_by_customer_geo">, C<"disbursed_amount_by_age_of_uncollected_funds">, C<"disbursed_amount_by_age_of_disbursed_funds">, C<"customer_profile_by_industry">, C<"customer_profile_by_revenue">, C<"customer_profile_by_geography">
+Valid values are: C<"customer_subscriber_hourly_monthly_subscriptions">, C<"customer_subscriber_annual_subscriptions">, C<"daily_business_usage_by_instance_type">, C<"daily_business_fees">, C<"daily_business_free_trial_conversions">, C<"daily_business_new_instances">, C<"daily_business_new_product_subscribers">, C<"daily_business_canceled_product_subscribers">, C<"monthly_revenue_billing_and_revenue_data">, C<"monthly_revenue_annual_subscriptions">, C<"disbursed_amount_by_product">, C<"disbursed_amount_by_product_with_uncollected_funds">, C<"disbursed_amount_by_customer_geo">, C<"disbursed_amount_by_age_of_uncollected_funds">, C<"disbursed_amount_by_age_of_disbursed_funds">, C<"customer_profile_by_industry">, C<"customer_profile_by_revenue">, C<"customer_profile_by_geography">
 
 =head2 B<REQUIRED> DestinationS3BucketName => Str
 

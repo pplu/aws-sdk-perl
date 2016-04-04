@@ -1,6 +1,6 @@
 package Paws::DynamoDB::BatchWriteItemRequestMap;
   use Moose;
-  with 'Paws::API::StrToNativeMapParser';
+  with 'Paws::API::StrToObjMapParser';
 
   has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::DynamoDB::WriteRequest]]');
 1;

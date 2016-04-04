@@ -511,7 +511,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketReplication>
 
 Returns: nothing
 
-  
+  Deletes the replication configuration from the bucket.
 
 
 =head2 DeleteBucketTagging(Bucket => Str)
@@ -642,7 +642,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketReplication>
 
 Returns: a L<Paws::S3::GetBucketReplicationOutput> instance
 
-  
+  Deprecated, see the GetBucketReplicationConfiguration operation.
 
 
 =head2 GetBucketRequestPayment(Bucket => Str)
@@ -916,7 +916,7 @@ Returns: a L<Paws::S3::PutObjectOutput> instance
   Adds an object to a bucket.
 
 
-=head2 PutObjectAcl(Bucket => Str, Key => Str, [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str, RequestPayer => Str])
+=head2 PutObjectAcl(Bucket => Str, Key => Str, [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str, RequestPayer => Str, VersionId => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutObjectAcl>
 

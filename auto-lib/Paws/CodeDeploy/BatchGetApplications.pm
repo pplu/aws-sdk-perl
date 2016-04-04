@@ -35,8 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplicationNames => ArrayRef[Str]
 
-A list of application names, with multiple application names separated
-by spaces.
+A list of application names separated by spaces.
 
 
 

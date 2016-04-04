@@ -2,8 +2,9 @@
 package Paws::AutoScaling::CompleteLifecycleAction;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceId => (is => 'ro', isa => 'Str');
   has LifecycleActionResult => (is => 'ro', isa => 'Str', required => 1);
-  has LifecycleActionToken => (is => 'ro', isa => 'Str', required => 1);
+  has LifecycleActionToken => (is => 'ro', isa => 'Str');
   has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -42,6 +43,12 @@ The name of the group for the lifecycle hook.
 
 
 
+=head2 InstanceId => Str
+
+The ID of the instance.
+
+
+
 =head2 B<REQUIRED> LifecycleActionResult => Str
 
 The action for the group to take. This parameter can be either
@@ -49,7 +56,7 @@ C<CONTINUE> or C<ABANDON>.
 
 
 
-=head2 B<REQUIRED> LifecycleActionToken => Str
+=head2 LifecycleActionToken => Str
 
 A universally unique identifier (UUID) that identifies a specific
 lifecycle action associated with an instance. Auto Scaling sends this

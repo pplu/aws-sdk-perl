@@ -6,6 +6,7 @@ package Paws::GameLift::FleetAttributes;
   has FleetId => (is => 'ro', isa => 'Str');
   has LogPaths => (is => 'ro', isa => 'ArrayRef[Str]');
   has Name => (is => 'ro', isa => 'Str');
+  has NewGameSessionProtectionPolicy => (is => 'ro', isa => 'Str');
   has ServerLaunchParameters => (is => 'ro', isa => 'Str');
   has ServerLaunchPath => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -79,6 +80,23 @@ logs.
 
   Descriptive label associated with this fleet. Fleet names do not need
 to be unique.
+
+
+=head2 NewGameSessionProtectionPolicy => Str
+
+  Type of game session protection to set for all new instances started in
+the fleet.
+
+=over
+
+=item * NoProtection: The game session can be terminated during a
+scale-down event.
+
+=item * FullProtection: If the game session is in an ACTIVE status, it
+cannot be terminated during a scale-down event.
+
+=back
+
 
 
 =head2 ServerLaunchParameters => Str

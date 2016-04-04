@@ -37,9 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 InstanceIds => ArrayRef[Str]
 
-One or more Auto Scaling instances to describe, up to 50 instances. If
-you omit this parameter, all Auto Scaling instances are described. If
-you specify an ID that does not exist, it is ignored with no error.
+The instances to describe; up to 50 instance IDs. If you omit this
+parameter, all Auto Scaling instances are described. If you specify an
+ID that does not exist, it is ignored with no error.
 
 
 

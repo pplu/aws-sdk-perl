@@ -44,8 +44,8 @@ The policy name.
 
 =head2 B<REQUIRED> Principal => Str
 
-The principal which can be a certificate ARN (as returned from the
-CreateCertificate operation) or a Cognito ID.
+The principal, which can be a certificate ARN (as returned from the
+CreateCertificate operation) or an Amazon Cognito ID.
 
 
 

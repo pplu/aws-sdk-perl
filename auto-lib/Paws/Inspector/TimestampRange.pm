@@ -1,7 +1,7 @@
 package Paws::Inspector::TimestampRange;
   use Moose;
-  has Maximum => (is => 'ro', isa => 'Str', xmlname => 'maximum', request_name => 'maximum', traits => ['Unwrapped','NameInRequest']);
-  has Minimum => (is => 'ro', isa => 'Str', xmlname => 'minimum', request_name => 'minimum', traits => ['Unwrapped','NameInRequest']);
+  has BeginDate => (is => 'ro', isa => 'Str', xmlname => 'beginDate', request_name => 'beginDate', traits => ['Unwrapped','NameInRequest']);
+  has EndDate => (is => 'ro', isa => 'Str', xmlname => 'endDate', request_name => 'endDate', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,31 +21,30 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::TimestampRange object:
 
-  $service_obj->Method(Att1 => { Maximum => $value, ..., Minimum => $value  });
+  $service_obj->Method(Att1 => { BeginDate => $value, ..., EndDate => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::TimestampRange object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Maximum
+  $result->Att1->BeginDate
 
 =head1 DESCRIPTION
 
-This data type is used in the AssessmentsFilter and RunsFilter data
-types.
+This data type is used in the AssessmentRunFilter data type.
 
 =head1 ATTRIBUTES
 
 
-=head2 Maximum => Str
-
-  The maximum value of the timestamp range.
-
-
-=head2 Minimum => Str
+=head2 BeginDate => Str
 
   The minimum value of the timestamp range.
+
+
+=head2 EndDate => Str
+
+  The maximum value of the timestamp range.
 
 
 

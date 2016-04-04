@@ -14,6 +14,7 @@ package Paws::CloudSearchDomain::Search;
   has Size => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'size' );
   has Sort => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'sort' );
   has Start => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'start' );
+  has Stats => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'stats' );
 
   use MooseX::ClassAttribute;
 
@@ -429,6 +430,18 @@ they are mutually exclusive.
 
 For more information, see Paginating Results in the I<Amazon
 CloudSearch Developer Guide>.
+
+
+
+=head2 Stats => Str
+
+Specifies one or more fields for which to get statistics information.
+Each specified field must be facet-enabled in the domain configuration.
+The fields are specified in JSON using the form:
+
+C<{"FIELD-A":{},"FIELD-B":{}}>
+
+There are currently no options supported for statistics.
 
 
 

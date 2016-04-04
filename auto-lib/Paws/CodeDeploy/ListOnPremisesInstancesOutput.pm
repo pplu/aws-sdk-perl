@@ -22,10 +22,9 @@ The list of matching on-premises instance names.
 
 =head2 NextToken => Str
 
-If the amount of information that is returned is significantly large,
-an identifier will also be returned, which can be used in a subsequent
-list on-premises instances call to return the next set of on-premises
-instances in the list.
+If a large amount of information is returned, an identifier is also
+returned. It can be used in a subsequent list on-premises instances
+call to return the next set of on-premises instances in the list.
 
 
 

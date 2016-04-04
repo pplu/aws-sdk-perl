@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -278,6 +278,8 @@ L<Paws::DeviceFarm>
 
 L<Paws::DirectConnect>
 
+L<Paws::DMS>
+
 L<Paws::DS>
 
 L<Paws::DynamoDB>
@@ -333,6 +335,8 @@ L<Paws::Lambda>
 L<Paws::MachineLearning>
 
 L<Paws::MarketplaceCommerceAnalytics>
+
+L<Paws::MarketplaceMetering>
 
 L<Paws::OpsWorks>
 
@@ -598,7 +602,8 @@ karenetheridge for bug reporting, pull requests and help
 
 ioanrogers for fixing unicode issues in tests
 
-ilmari for fixing issues with timestamps in Date and X-Amz-Date headers
+ilmari for fixing issues with timestamps in Date and X-Amz-Date headers,
+test fixes and 5.10 support fixes
 
 stevecaldwell77 for contributing support for temporary credentials in S3
 

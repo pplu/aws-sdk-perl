@@ -63,7 +63,7 @@ DescribeDBSubnetGroups action.
 
 =head2 DBSubnetGroupName => Str
 
-  Specifies the name of the DB subnet group.
+  The name of the DB subnet group.
 
 
 =head2 SubnetGroupStatus => Str

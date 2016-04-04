@@ -60,9 +60,11 @@ upload.
 
 =head2 ZipFile => Str
 
-  A base64-encoded .zip file containing your deployment package. For more
-information about creating a .zip file, go to Execution Permissions in
-the I<AWS Lambda Developer Guide>.
+  A zip file containing your deployment package. If you are using the API
+directly, the zip file must be base64-encoded (if you are using the AWS
+SDKs or the AWS CLI, the SDKs or CLI will do the encoding for you). For
+more information about creating a .zip file, go to Execution
+Permissions in the I<AWS Lambda Developer Guide>.
 
 
 

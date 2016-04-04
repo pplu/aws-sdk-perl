@@ -43,13 +43,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 ClientToken => Str
 
 A user-defined token to ensure idempotence. Subsequent calls to this
-action with the same token will be ignored.
+operation with the same token will be ignored.
 
 
 
 =head2 EniIp => Str
 
 The IP address to assign to the HSM's ENI.
+
+If an IP address is not specified, an IP address will be randomly
+chosen from the CIDR range of the subnet.
 
 
 
@@ -80,13 +83,14 @@ The identifier of the subnet in your VPC in which to place the HSM.
 
 =head2 B<REQUIRED> SubscriptionType => Str
 
-The subscription type.
+
 
 Valid values are: C<"PRODUCTION">
 
 =head2 SyslogIp => Str
 
-The IP address for the syslog monitoring server.
+The IP address for the syslog monitoring server. The AWS CloudHSM
+service only supports one syslog monitoring server.
 
 
 

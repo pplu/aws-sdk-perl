@@ -46,8 +46,9 @@ used only in that region. Examples of regional resources are EC2
 instances and EBS volumes.
 
 You can also have AWS Config record configuration changes for supported
-types of global resources. Global resources are not tied to an
-individual region and can be used in all regions.
+types of global resources (for example, IAM resources). Global
+resources are not tied to an individual region and can be used in all
+regions.
 
 The configuration details for any global resource are the same in all
 regions. If you customize AWS Config in multiple regions to record
@@ -85,7 +86,8 @@ C<resourceTypes>.
 =head2 IncludeGlobalResourceTypes => Bool
 
   Specifies whether AWS Config includes all supported types of global
-resources with the resources that it records.
+resources (for example, IAM resources) with the resources that it
+records.
 
 Before you can set this option to C<true>, you must set the
 C<allSupported> option to C<true>.
@@ -93,6 +95,10 @@ C<allSupported> option to C<true>.
 If you set this option to C<true>, when AWS Config adds support for a
 new type of global resource, it automatically starts recording
 resources of that type.
+
+The configuration details for any global resource are the same in all
+regions. To prevent duplicate configuration items, you should consider
+customizing AWS Config in only one region to record global resources.
 
 
 =head2 ResourceTypes => ArrayRef[Str]

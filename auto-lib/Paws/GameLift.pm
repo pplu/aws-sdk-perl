@@ -59,6 +59,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteFleet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteScalingPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DeleteScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeAlias', @_);
@@ -99,6 +104,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeFleetUtilization', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeGameSessionDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeGameSessionDetails', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeGameSessions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeGameSessions', @_);
@@ -107,6 +117,11 @@ package Paws::GameLift;
   sub DescribePlayerSessions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::DescribePlayerSessions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeScalingPolicies {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::DescribeScalingPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetGameSessionLogUrl {
@@ -127,6 +142,11 @@ package Paws::GameLift;
   sub ListFleets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::ListFleets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutScalingPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::PutScalingPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RequestUploadCredentials {
@@ -170,7 +190,7 @@ package Paws::GameLift;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CreateAlias CreateBuild CreateFleet CreateGameSession CreatePlayerSession CreatePlayerSessions DeleteAlias DeleteBuild DeleteFleet DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessions DescribePlayerSessions GetGameSessionLogUrl ListAliases ListBuilds ListFleets RequestUploadCredentials ResolveAlias UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession / }
+  sub operations { qw/CreateAlias CreateBuild CreateFleet CreateGameSession CreatePlayerSession CreatePlayerSessions DeleteAlias DeleteBuild DeleteFleet DeleteScalingPolicy DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessions DescribePlayerSessions DescribeScalingPolicies GetGameSessionLogUrl ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession / }
 
 1;
 
@@ -217,7 +237,50 @@ command-line interface (CLI) tool, which includes commands for
 GameLift. For administrative actions, you can use the Amazon GameLift
 console.
 
-B<Setting Up Your Game Servers>
+B<Managing Game and Player Sessions Through GameLift>
+
+Call these actions from your game clients and/or services to create and
+manage multiplayer game sessions.
+
+=over
+
+=item * B<Game sessions>
+
+=over
+
+=item * CreateGameSession
+
+=item * DescribeGameSessions
+
+=item * DescribeGameSessionDetails
+
+=item * UpdateGameSession
+
+=back
+
+=item * B<Player sessions>
+
+=over
+
+=item * CreatePlayerSession
+
+=item * CreatePlayerSessions
+
+=item * DescribePlayerSessions
+
+=back
+
+=item * B<Other actions:>
+
+=over
+
+=item * GetGameSessionLogUrl
+
+=back
+
+=back
+
+B<Setting Up Game Servers>
 
 Use these administrative actions to configure GameLift to host your
 game servers. When configuring GameLift, you'll need to (1) configure a
@@ -304,44 +367,15 @@ fleets to host game sessions.
 
 =back
 
-=back
-
-B<Managing Game and Player Sessions Through GameLift>
-
-Call these actions from your game clients and/or services to create and
-manage multiplayer game sessions.
+=item * B<Scaling policy actions:>
 
 =over
 
-=item * B<Game sessions>
+=item * PutScalingPolicy
 
-=over
+=item * DescribeScalingPolicies
 
-=item * CreateGameSession
-
-=item * DescribeGameSessions
-
-=item * UpdateGameSession
-
-=back
-
-=item * B<Player sessions>
-
-=over
-
-=item * CreatePlayerSession
-
-=item * CreatePlayerSessions
-
-=item * DescribePlayerSessions
-
-=back
-
-=item * B<Other actions:>
-
-=over
-
-=item * GetGameSessionLogUrl
+=item * DeleteScalingPolicy
 
 =back
 
@@ -350,7 +384,7 @@ manage multiplayer game sessions.
 
 =head1 METHODS
 
-=head2 CreateAlias(Name => Str, [Description => Str, RoutingStrategy => L<Paws::GameLift::RoutingStrategy>])
+=head2 CreateAlias(Name => Str, RoutingStrategy => L<Paws::GameLift::RoutingStrategy>, [Description => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::CreateAlias>
 
@@ -371,7 +405,7 @@ including an alias ID, which you can reference when creating a game
 session. To reassign the alias to another fleet ID, call UpdateAlias.
 
 
-=head2 CreateBuild([Name => Str, Version => Str])
+=head2 CreateBuild([Name => Str, StorageLocation => L<Paws::GameLift::S3Location>, Version => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::CreateBuild>
 
@@ -396,7 +430,7 @@ with an Amazon S3 storage location and AWS account credentials. Use the
 location and credentials to upload your game build.
 
 
-=head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, ServerLaunchPath => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], LogPaths => ArrayRef[Str], ServerLaunchParameters => Str])
+=head2 CreateFleet(BuildId => Str, EC2InstanceType => Str, Name => Str, ServerLaunchPath => Str, [Description => Str, EC2InboundPermissions => ArrayRef[L<Paws::GameLift::IpPermission>], LogPaths => ArrayRef[Str], NewGameSessionProtectionPolicy => Str, ServerLaunchParameters => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::CreateFleet>
 
@@ -416,8 +450,9 @@ in a READY state before they can be used to build fleets. When
 configuring the new fleet, you can optionally (1) provide a set of
 launch parameters to be passed to a game server when activated; (2)
 limit incoming traffic to a specified range of IP addresses and port
-numbers; and (3) configure Amazon GameLift to store game session logs
-by specifying the path to the logs stored in your game server files. If
+numbers; (3) set game session protection for all instances in the
+fleet, and (4) configure Amazon GameLift to store game session logs by
+specifying the path to the logs stored in your game server files. If
 the call is successful, Amazon GameLift performs the following tasks:
 
 =over
@@ -548,6 +583,18 @@ This action removes the fleet's resources and the fleet record. Once a
 fleet is deleted, you can no longer use that fleet.
 
 
+=head2 DeleteScalingPolicy(FleetId => Str, Name => Str)
+
+Each argument is described in detail in: L<Paws::GameLift::DeleteScalingPolicy>
+
+Returns: nothing
+
+  Deletes a fleet scaling policy. This action means that the policy is no
+longer in force and removes all record of it. To delete a scaling
+policy, specify both the scaling policy name and the fleet ID it is
+associated with.
+
+
 =head2 DescribeAlias(AliasId => Str)
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeAlias>
@@ -575,9 +622,21 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeEC2InstanceLi
 
 Returns: a L<Paws::GameLift::DescribeEC2InstanceLimitsOutput> instance
 
-  Retrieves the maximum number of instances allowed, per AWS account, for
-each specified EC2 instance type. The current usage level for the AWS
-account is also retrieved.
+  Retrieves the following information for the specified EC2 instance
+type:
+
+=over
+
+=item * maximum number of instances allowed per AWS account (service
+limit)
+
+=item * current usage level for the AWS account
+
+=back
+
+Service limits vary depending on region. Available regions for GameLift
+can be found in the AWS Management Console for GameLift (see the
+drop-down list in the upper right corner).
 
 
 =head2 DescribeFleetAttributes([FleetIds => ArrayRef[Str], Limit => Int, NextToken => Str])
@@ -665,6 +724,25 @@ request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
 
 
+=head2 DescribeGameSessionDetails([AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
+
+Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessionDetails>
+
+Returns: a L<Paws::GameLift::DescribeGameSessionDetailsOutput> instance
+
+  Retrieves properties, including the protection policy in force, for one
+or more game sessions. This action can be used in several ways: (1)
+provide a I<GameSessionId> to request details for a specific game
+session; (2) provide either a I<FleetId> or an I<AliasId> to request
+properties for all game sessions running on a fleet.
+
+To get game session record(s), specify just one of the following: game
+session ID, fleet ID, or alias ID. You can filter this request by game
+session status. Use the pagination parameters to retrieve results as a
+set of sequential pages. If successful, a GameSessionDetail object is
+returned for each session matching the request.
+
+
 =head2 DescribeGameSessions([AliasId => Str, FleetId => Str, GameSessionId => Str, Limit => Int, NextToken => Str, StatusFilter => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessions>
@@ -672,12 +750,12 @@ Each argument is described in detail in: L<Paws::GameLift::DescribeGameSessions>
 Returns: a L<Paws::GameLift::DescribeGameSessionsOutput> instance
 
   Retrieves properties for one or more game sessions. This action can be
-used in several ways: (1) provide a I<GameSessionId> parameter to
-request properties for a specific game session; (2) provide a
-I<FleetId> or I<AliasId> parameter to request properties for all game
-sessions running on a fleet.
+used in several ways: (1) provide a I<GameSessionId> to request
+properties for a specific game session; (2) provide a I<FleetId> or an
+I<AliasId> to request properties for all game sessions running on a
+fleet.
 
-To get game session record(s), specify only one of the following: game
+To get game session record(s), specify just one of the following: game
 session ID, fleet ID, or alias ID. You can filter this request by game
 session status. Use the pagination parameters to retrieve results as a
 set of sequential pages. If successful, a GameSession object is
@@ -703,6 +781,21 @@ player session ID, a game session ID, or a player ID. You can filter
 this request by player session status. Use the pagination parameters to
 retrieve results as a set of sequential pages. If successful, a
 PlayerSession object is returned for each session matching the request.
+
+
+=head2 DescribeScalingPolicies(FleetId => Str, [Limit => Int, NextToken => Str, StatusFilter => Str])
+
+Each argument is described in detail in: L<Paws::GameLift::DescribeScalingPolicies>
+
+Returns: a L<Paws::GameLift::DescribeScalingPoliciesOutput> instance
+
+  Retrieves all scaling policies applied to a fleet.
+
+To get a fleet's scaling policies, specify the fleet ID. You can filter
+this request by policy status, such as to retrieve only active scaling
+policies. Use the pagination parameters to retrieve results as a set of
+sequential pages. If successful, set of ScalingPolicy objects is
+returned for the fleet.
 
 
 =head2 GetGameSessionLogUrl(GameSessionId => Str)
@@ -759,6 +852,38 @@ retrieve results in sequential pages.
 Fleet records are not listed in any particular order.
 
 
+=head2 PutScalingPolicy(ComparisonOperator => Str, EvaluationPeriods => Int, FleetId => Str, MetricName => Str, Name => Str, ScalingAdjustment => Int, ScalingAdjustmentType => Str, Threshold => Num)
+
+Each argument is described in detail in: L<Paws::GameLift::PutScalingPolicy>
+
+Returns: a L<Paws::GameLift::PutScalingPolicyOutput> instance
+
+  Creates or updates a scaling policy for a fleet. An active scaling
+policy prompts GameLift to track a certain metric for a fleet and
+automatically change the fleet's capacity in specific circumstances.
+Each scaling policy contains one rule statement. Fleets can have
+multiple scaling policies in force simultaneously.
+
+A scaling policy rule statement has the following structure:
+
+If I<[MetricName]> is I<[ComparisonOperator]> I<[Threshold]> for
+I<[EvaluationPeriods]> minutes, then I<[ScalingAdjustmentType]> to/by
+I<[ScalingAdjustment]>.
+
+For example, this policy: "If the number of idle instances exceeds 20
+for more than 15 minutes, then reduce the fleet capacity by 10
+instances" could be implemented as the following rule statement:
+
+If [IdleInstances] is [GreaterThanOrEqualToThreshold] [20] for [15]
+minutes, then [ChangeInCapacity] by [-10].
+
+To create or update a scaling policy, specify a unique combination of
+name and fleet ID, and set the rule values. All parameters for this
+action are required. If successful, the policy name is returned.
+Scaling policies cannot be suspended or made inactive. To stop
+enforcing a scaling policy, call DeleteScalingPolicy.
+
+
 =head2 RequestUploadCredentials(BuildId => Str)
 
 Each argument is described in detail in: L<Paws::GameLift::RequestUploadCredentials>
@@ -813,7 +938,7 @@ provide the new values. If successful, a build object containing the
 updated metadata is returned.
 
 
-=head2 UpdateFleetAttributes(FleetId => Str, [Description => Str, Name => Str])
+=head2 UpdateFleetAttributes(FleetId => Str, [Description => Str, Name => Str, NewGameSessionProtectionPolicy => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateFleetAttributes>
 
@@ -825,7 +950,7 @@ want to change. If successful, the fleet ID for the updated fleet is
 returned.
 
 
-=head2 UpdateFleetCapacity(DesiredInstances => Int, FleetId => Str)
+=head2 UpdateFleetCapacity(FleetId => Str, [DesiredInstances => Int, MaxSize => Int, MinSize => Int])
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateFleetCapacity>
 
@@ -835,6 +960,11 @@ Returns: a L<Paws::GameLift::UpdateFleetCapacityOutput> instance
 number of EC2 instances (hosts) you want this fleet to contain. Before
 calling this action, you may want to call DescribeEC2InstanceLimits to
 get the maximum capacity based on the fleet's EC2 instance type.
+
+If you're using auto-scaling (see PutScalingPolicy), you may want to
+specify a minimum and/or maximum capacity. If you don't provide these
+boundaries, auto-scaling can set capacity anywhere between zero and the
+service limits.
 
 To update fleet capacity, specify the fleet ID and the desired number
 of instances. If successful, Amazon GameLift starts or terminates
@@ -860,17 +990,19 @@ match existing fleet permissions. If successful, the fleet ID for the
 updated fleet is returned.
 
 
-=head2 UpdateGameSession(GameSessionId => Str, [MaximumPlayerSessionCount => Int, Name => Str, PlayerSessionCreationPolicy => Str])
+=head2 UpdateGameSession(GameSessionId => Str, [MaximumPlayerSessionCount => Int, Name => Str, PlayerSessionCreationPolicy => Str, ProtectionPolicy => Str])
 
 Each argument is described in detail in: L<Paws::GameLift::UpdateGameSession>
 
 Returns: a L<Paws::GameLift::UpdateGameSessionOutput> instance
 
   Updates game session properties. This includes the session name,
-maximum player count and the player session creation policy, which
-either allows or denies new players from joining the session. To update
-a game session, specify the game session ID and the values you want to
-change. If successful, an updated GameSession object is returned.
+maximum player count, protection policy, which controls whether or not
+an active game session can be terminated during a scale-down event, and
+the player session creation policy, which controls whether or not new
+players can join the session. To update a game session, specify the
+game session ID and the values you want to change. If successful, an
+updated GameSession object is returned.
 
 
 =head1 SEE ALSO

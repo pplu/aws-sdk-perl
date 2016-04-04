@@ -1,6 +1,7 @@
 
 package Paws::RedShift::RestoreFromClusterSnapshot;
   use Moose;
+  has AdditionalInfo => (is => 'ro', isa => 'Str');
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
@@ -11,6 +12,7 @@ package Paws::RedShift::RestoreFromClusterSnapshot;
   has ElasticIp => (is => 'ro', isa => 'Str');
   has HsmClientCertificateIdentifier => (is => 'ro', isa => 'Str');
   has HsmConfigurationIdentifier => (is => 'ro', isa => 'Str');
+  has IamRoles => (is => 'ro', isa => 'ArrayRef[Str]');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has OwnerAccount => (is => 'ro', isa => 'Str');
@@ -49,6 +51,12 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AdditionalInfo => Str
+
+Reserved.
+
 
 
 =head2 AllowVersionUpgrade => Bool
@@ -169,6 +177,17 @@ cluster uses to retrieve the data encryption keys stored in an HSM.
 Specifies the name of the HSM configuration that contains the
 information the Amazon Redshift cluster can use to retrieve and store
 keys in an HSM.
+
+
+
+=head2 IamRoles => ArrayRef[Str]
+
+A list of AWS Identity and Access Management (IAM) roles that can be
+used by the cluster to access other AWS services. You must supply the
+IAM roles in their Amazon Resource Name (ARN) format. You can supply up
+to 10 IAM roles in a single request.
+
+A cluster can have up to 10 IAM roles associated at any time.
 
 
 

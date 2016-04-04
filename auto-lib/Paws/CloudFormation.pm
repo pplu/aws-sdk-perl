@@ -23,9 +23,19 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ContinueUpdateRollback', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateChangeSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::CreateChangeSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateStack {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::CreateStack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteChangeSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DeleteChangeSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteStack {
@@ -36,6 +46,11 @@ package Paws::CloudFormation;
   sub DescribeAccountLimits {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeAccountLimits', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeChangeSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeChangeSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStackEvents {
@@ -63,6 +78,11 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::EstimateTemplateCost', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ExecuteChangeSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ExecuteChangeSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetStackPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::GetStackPolicy', @_);
@@ -76,6 +96,11 @@ package Paws::CloudFormation;
   sub GetTemplateSummary {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::GetTemplateSummary', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListChangeSets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListChangeSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListStackResources {
@@ -109,7 +134,7 @@ package Paws::CloudFormation;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateStack DeleteStack DescribeAccountLimits DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost GetStackPolicy GetTemplate GetTemplateSummary ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
+  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack DeleteChangeSet DeleteStack DescribeAccountLimits DescribeChangeSet DescribeStackEvents DescribeStackResource DescribeStackResources DescribeStacks EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListStackResources ListStacks SetStackPolicy SignalResource UpdateStack ValidateTemplate / }
 
 1;
 
@@ -186,8 +211,7 @@ continues rolling it back to the C<UPDATE_ROLLBACK_COMPLETE> state.
 Depending on the cause of the failure, you can manually fix the error
 and continue the rollback. By continuing the rollback, you can return
 your stack to a working state (the C<UPDATE_ROLLBACK_COMPLETE> state),
-return the stack to its original settings, and then try to update the
-stack again.
+and then try to update the stack again.
 
 A stack goes into the C<UPDATE_ROLLBACK_FAILED> state when AWS
 CloudFormation cannot roll back all changes after a failed stack
@@ -196,6 +220,28 @@ old database instance that was deleted outside of AWS CloudFormation.
 Because AWS CloudFormation doesn't know the database was deleted, it
 assumes that the database instance still exists and attempts to roll
 back to it, causing the update rollback to fail.
+
+
+=head2 CreateChangeSet(ChangeSetName => Str, StackName => Str, [Capabilities => ArrayRef[Str], ClientToken => Str, Description => Str, NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+
+Each argument is described in detail in: L<Paws::CloudFormation::CreateChangeSet>
+
+Returns: a L<Paws::CloudFormation::CreateChangeSetOutput> instance
+
+  Creates a list of changes for a stack. AWS CloudFormation generates the
+change set by comparing the stack's information with the information
+that you submit. A change set can help you understand which resources
+AWS CloudFormation will change and how it will change them before you
+update your stack. Change sets allow you to check before you make a
+change so that you don't delete or replace critical resources.
+
+AWS CloudFormation doesn't make any changes to the stack when you
+create a change set. To make the specified changes, you must execute
+the change set by using the ExecuteChangeSet action.
+
+After the call successfully completes, AWS CloudFormation starts
+creating the change set. To check the status of the change set, use the
+DescribeChangeSet action.
 
 
 =head2 CreateStack(StackName => Str, [Capabilities => ArrayRef[Str], DisableRollback => Bool, NotificationARNs => ArrayRef[Str], OnFailure => Str, Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, TimeoutInMinutes => Int])
@@ -209,7 +255,20 @@ successfully, the stack creation starts. You can check the status of
 the stack via the DescribeStacks API.
 
 
-=head2 DeleteStack(StackName => Str)
+=head2 DeleteChangeSet(ChangeSetName => Str, [StackName => Str])
+
+Each argument is described in detail in: L<Paws::CloudFormation::DeleteChangeSet>
+
+Returns: a L<Paws::CloudFormation::DeleteChangeSetOutput> instance
+
+  Deletes the specified change set. Deleting change sets ensures that no
+one executes the wrong change set.
+
+If the call successfully completes, AWS CloudFormation successfully
+deleted the change set.
+
+
+=head2 DeleteStack(StackName => Str, [RetainResources => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::CloudFormation::DeleteStack>
 
@@ -228,6 +287,18 @@ Returns: a L<Paws::CloudFormation::DescribeAccountLimitsOutput> instance
 
   Retrieves your account's AWS CloudFormation limits, such as the maximum
 number of stacks that you can create in your account.
+
+
+=head2 DescribeChangeSet(ChangeSetName => Str, [NextToken => Str, StackName => Str])
+
+Each argument is described in detail in: L<Paws::CloudFormation::DescribeChangeSet>
+
+Returns: a L<Paws::CloudFormation::DescribeChangeSetOutput> instance
+
+  Returns the inputs for the change set and a list of changes that AWS
+CloudFormation will make if you execute the change set. For more
+information, see Updating Stacks Using Change Sets in the AWS
+CloudFormation User Guide.
 
 
 =head2 DescribeStackEvents([NextToken => Str, StackName => Str])
@@ -305,6 +376,26 @@ an AWS Simple Monthly Calculator URL with a query string that describes
 the resources required to run the template.
 
 
+=head2 ExecuteChangeSet(ChangeSetName => Str, [StackName => Str])
+
+Each argument is described in detail in: L<Paws::CloudFormation::ExecuteChangeSet>
+
+Returns: a L<Paws::CloudFormation::ExecuteChangeSetOutput> instance
+
+  Updates a stack using the input information that was provided when the
+specified change set was created. After the call successfully
+completes, AWS CloudFormation starts updating the stack. Use the
+DescribeStacks action to view the status of the update.
+
+When you execute a change set, AWS CloudFormation deletes all other
+change sets associated with the stack because they aren't valid for the
+updated stack.
+
+If a stack policy is associated with the stack, AWS CloudFormation
+enforces the policy during the update. You can't specify a temporary
+stack policy that overrides the current policy.
+
+
 =head2 GetStackPolicy(StackName => Str)
 
 Each argument is described in detail in: L<Paws::CloudFormation::GetStackPolicy>
@@ -348,6 +439,17 @@ stack.
 For deleted stacks, C<GetTemplateSummary> returns the template
 information for up to 90 days after the stack has been deleted. If the
 template does not exist, a C<ValidationError> is returned.
+
+
+=head2 ListChangeSets(StackName => Str, [NextToken => Str])
+
+Each argument is described in detail in: L<Paws::CloudFormation::ListChangeSets>
+
+Returns: a L<Paws::CloudFormation::ListChangeSetsOutput> instance
+
+  Returns the ID and status of each active change set for a stack. For
+example, AWS CloudFormation lists change sets that are in the
+C<CREATE_IN_PROGRESS> or C<CREATE_PENDING> state.
 
 
 =head2 ListStackResources(StackName => Str, [NextToken => Str])
@@ -399,7 +501,7 @@ API is useful in cases where you want to send signals from anywhere
 other than an Amazon EC2 instance.
 
 
-=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str], NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
+=head2 UpdateStack(StackName => Str, [Capabilities => ArrayRef[Str], NotificationARNs => ArrayRef[Str], Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>], ResourceTypes => ArrayRef[Str], StackPolicyBody => Str, StackPolicyDuringUpdateBody => Str, StackPolicyDuringUpdateURL => Str, StackPolicyURL => Str, Tags => ArrayRef[L<Paws::CloudFormation::Tag>], TemplateBody => Str, TemplateURL => Str, UsePreviousTemplate => Bool])
 
 Each argument is described in detail in: L<Paws::CloudFormation::UpdateStack>
 
@@ -411,9 +513,6 @@ stack via the DescribeStacks action.
 
 To get a copy of the template for an existing stack, you can use the
 GetTemplate action.
-
-Tags that were associated with this stack during creation time will
-still be associated with the stack after an C<UpdateStack> operation.
 
 For more information about creating an update template, updating a
 stack, and monitoring the progress of the update, see Updating a Stack.

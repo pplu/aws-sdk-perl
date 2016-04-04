@@ -58,16 +58,36 @@ package Paws::Net::JsonResponse;
   sub handle_response_strtoobjmap {
     my ($self, $att_class, $value) = @_;
 
-    my $inner_class = $att_class->meta->get_attribute('Map')->type_constraint->name;
-    ($inner_class) = ($inner_class =~ m/\[(.*)\]$/);
+    my $is_array = 0;
+    my $inner_class;
+    my $class = $att_class->meta->get_attribute('Map')->type_constraint->name;
+
+    if (my ($array_type) = ($class =~ m/^HashRef\[ArrayRef\[(.*)\]\]$/)){
+      $inner_class = $array_type;
+      $is_array = 1;
+    } elsif (my ($inner_type) = ($class =~ m/^HashRef\[(.*)\]$/)) {
+      $inner_class = $inner_type;
+      $is_array = 0;
+    }
+
     Paws->load_class("$inner_class");
 
-    if (not defined $value){
-      return $att_class->new(Map => {});
+    if ($is_array) {
+      if (not defined $value){
+        return $att_class->new(Map => {});
+      } else {
+        return $att_class->new(Map => { 
+          map { my $k = $_; ($k => [ map { $self->new_from_struct($inner_class, $_)  } @{ $value->{ $k } } ] ) } keys %$value 
+        });
+      }
     } else {
-      return $att_class->new(Map => { 
-        map { ($_ => $self->new_from_struct($inner_class, $value->{ $_ }) ) } keys %$value 
-      });
+      if (not defined $value){
+        return $att_class->new(Map => {});
+      } else {
+        return $att_class->new(Map => { 
+          map { ($_ => $self->new_from_struct($inner_class, $value->{ $_ }) ) } keys %$value 
+        });
+      }
     }
   }
 1;

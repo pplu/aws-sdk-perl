@@ -2,7 +2,7 @@
 package Paws::Lambda::GetPolicy;
   use Moose;
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
-  has Qualifier => (is => 'ro', isa => 'Str');
+  has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier' );
 
   use MooseX::ClassAttribute;
 
@@ -40,23 +40,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Function name whose resource policy you want to retrieve.
 
-You can specify an unqualified function name (for example, "Thumbnail")
-or you can specify Amazon Resource Name (ARN) of the function (for
-example, "arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS
-Lambda also allows you to specify only the account ID qualifier (for
-example, "account-id:Thumbnail"). Note that the length constraint
-applies only to the ARN. If you specify only the function name, it is
-limited to 64 character in length.
+You can specify the function name (for example, C<Thumbnail>) or you
+can specify Amazon Resource Name (ARN) of the function (for example,
+C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). If you are
+using versioning, you can also provide a qualified function ARN (ARN
+that is qualified with function version or alias name as suffix). AWS
+Lambda also allows you to specify only the function name with the
+account ID qualifier (for example, C<account-id:Thumbnail>). Note that
+the length constraint applies only to the ARN. If you specify only the
+function name, it is limited to 64 character in length.
 
 
 
 =head2 Qualifier => Str
 
-You can specify this optional query parameter to specify function
-version or alias name in which case this API will return all
-permissions associated with the specific ARN. If you don't provide this
-parameter, the API will return permissions that apply to the
-unqualified function ARN.
+You can specify this optional query parameter to specify a function
+version or an alias name in which case this API will return all
+permissions associated with the specific qualified ARN. If you don't
+provide this parameter, the API will return permissions that apply to
+the unqualified function ARN.
 
 
 

@@ -83,6 +83,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::GetIdentityDkimAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetIdentityMailFromDomainAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::GetIdentityMailFromDomainAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetIdentityNotificationAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::GetIdentityNotificationAttributes', @_);
@@ -173,6 +178,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::SetIdentityFeedbackForwardingEnabled', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SetIdentityMailFromDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::SetIdentityMailFromDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SetIdentityNotificationTopic {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::SetIdentityNotificationTopic', @_);
@@ -209,7 +219,7 @@ package Paws::SES;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CloneReceiptRuleSet CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendEmail SendRawEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityNotificationTopic SetReceiptRulePosition UpdateReceiptRule VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
+  sub operations { qw/CloneReceiptRuleSet CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendEmail SendRawEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition UpdateReceiptRule VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
 
 1;
 
@@ -477,6 +487,19 @@ For more information about creating DNS records using DKIM tokens, go
 to the Amazon SES Developer Guide.
 
 
+=head2 GetIdentityMailFromDomainAttributes(Identities => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::SES::GetIdentityMailFromDomainAttributes>
+
+Returns: a L<Paws::SES::GetIdentityMailFromDomainAttributesResponse> instance
+
+  Returns the custom MAIL FROM attributes for a list of identities (email
+addresses and/or domains).
+
+This action is throttled at one request per second and can only get
+custom MAIL FROM attributes for up to 100 identities at a time.
+
+
 =head2 GetIdentityNotificationAttributes(Identities => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::SES::GetIdentityNotificationAttributes>
@@ -662,8 +685,8 @@ Returns: a L<Paws::SES::ReorderReceiptRuleSetResponse> instance
   Reorders the receipt rules within a receipt rule set.
 
 All of the rules in the rule set must be represented in this request.
-That is, this API will return an error if the reorder request
-doesnE<rsquo>t explicitly position all of the rules.
+That is, this API will return an error if the reorder request doesn't
+explicitly position all of the rules.
 
 For information about managing receipt rule sets, see the Amazon SES
 Developer Guide.
@@ -868,6 +891,24 @@ This action is throttled at one request per second.
 
 For more information about using notifications with Amazon SES, see the
 Amazon SES Developer Guide.
+
+
+=head2 SetIdentityMailFromDomain(Identity => Str, [BehaviorOnMXFailure => Str, MailFromDomain => Str])
+
+Each argument is described in detail in: L<Paws::SES::SetIdentityMailFromDomain>
+
+Returns: a L<Paws::SES::SetIdentityMailFromDomainResponse> instance
+
+  Enables or disables the custom MAIL FROM domain setup for a verified
+identity (email address or domain).
+
+To send emails using the specified MAIL FROM domain, you must add an MX
+record to your MAIL FROM domain's DNS settings. If you want your emails
+to pass Sender Policy Framework (SPF) checks, you must also add or
+update an SPF record. For more information, see the Amazon SES
+Developer Guide.
+
+This action is throttled at one request per second.
 
 
 =head2 SetIdentityNotificationTopic(Identity => Str, NotificationType => Str, [SnsTopic => Str])

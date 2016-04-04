@@ -28,8 +28,8 @@ for the request.
 
 =head2 OrderableClusterOptions => ArrayRef[L<Paws::RedShift::OrderableClusterOption>]
 
-An OrderableClusterOption structure containing information about
-orderable options for the Cluster.
+An C<OrderableClusterOption> structure containing information about
+orderable options for the cluster.
 
 
 

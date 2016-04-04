@@ -40,7 +40,7 @@ Describes an action to write data to an Amazon S3 bucket.
 
 =head2 B<REQUIRED> BucketName => Str
 
-  The S3 bucket.
+  The Amazon S3 bucket.
 
 
 =head2 B<REQUIRED> Key => Str

@@ -76,7 +76,7 @@ priority of the C<Rule>, and the ID of the C<Rule>.
 
   A unique identifier for a C<WebACL>. You use C<WebACLId> to get
 information about a C<WebACL> (see GetWebACL), update a C<WebACL> (see
-UpdateWebACL, and delete a C<WebACL> from AWS WAF (see DeleteWebACL).
+UpdateWebACL), and delete a C<WebACL> from AWS WAF (see DeleteWebACL).
 
 C<WebACLId> is returned by CreateWebACL and by ListWebACLs.
 

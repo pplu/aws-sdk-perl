@@ -2498,12 +2498,13 @@ Returns: nothing
   Updates the name and/or the path of the specified user.
 
 You should understand the implications of changing a user's path or
-name. For more information, see Renaming Users and Groups in the I<IAM
-User Guide>. To change a user name the requester must have appropriate
-permissions on both the source object and the target object. For
-example, to change Bob to Robert, the entity making the request must
-have permission on Bob and Robert, or must have permission on all (*).
-For more information about permissions, see Permissions and Policies.
+name. For more information, see Renaming an IAM User and Renaming an
+IAM Group in the I<IAM User Guide>. To change a user name the requester
+must have appropriate permissions on both the source object and the
+target object. For example, to change Bob to Robert, the entity making
+the request must have permission on Bob and Robert, or must have
+permission on all (*). For more information about permissions, see
+Permissions and Policies.
 
 
 =head2 UploadServerCertificate(CertificateBody => Str, PrivateKey => Str, ServerCertificateName => Str, [CertificateChain => Str, Path => Str])

@@ -29,13 +29,15 @@ Paws::StorageGateway::DescribeGatewayInformationOutput
 
 =head2 GatewayId => Str
 
-The gateway ID.
+The unique identifier assigned to your gateway during activation. This
+id becomes part of the gateway Amazon Resources Name (ARN) which you
+use as input for other operations.
 
 
 
 =head2 GatewayName => Str
 
-The gateway name.
+The name you configured for your gateway.
 
 
 
@@ -48,14 +50,13 @@ network interfaces.
 
 =head2 GatewayState => Str
 
-One of the values that indicates the operating state of the gateway.
+A value that indicates the operating state of the gateway.
 
 
 
 =head2 GatewayTimezone => Str
 
-One of the values that indicates the time zone configured for the
-gateway.
+A value that indicates the time zone configured for the gateway.
 
 
 

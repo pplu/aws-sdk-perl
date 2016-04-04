@@ -71,7 +71,8 @@ Specifies a put integration request's HTTP method.
 
 =head2 IntegrationHttpMethod => Str
 
-Specifies a put integration HTTP method.
+Specifies a put integration HTTP method. When the integration type is
+HTTP or AWS, this field is required.
 
 
 
@@ -118,6 +119,7 @@ Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">
 =head2 Uri => Str
 
 Specifies a put integration input's Uniform Resource Identifier (URI).
+When the integration type is HTTP or AWS, this field is required.
 
 
 

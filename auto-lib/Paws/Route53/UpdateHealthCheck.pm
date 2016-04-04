@@ -2,6 +2,7 @@
 package Paws::Route53::UpdateHealthCheck;
   use Moose;
   has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
   has HealthCheckId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'HealthCheckId' , required => 1);
@@ -36,6 +37,19 @@ Paws::Route53::UpdateHealthCheckResponse
 
 For a specified parent health check, a list of C<HealthCheckId> values
 for the associated child health checks.
+
+Specify this value only if you want to change it.
+
+
+
+=head2 EnableSNI => Bool
+
+Specify whether you want Amazon Route 53 to send the value of
+C<FullyQualifiedDomainName> to the endpoint in the C<client_hello>
+message during TLS negotiation. If you don't specify a value for
+C<EnableSNI>, Amazon Route 53 defaults to C<true> when C<Type> is
+C<HTTPS> or C<HTTPS_STR_MATCH> and defaults to C<false> when C<Type> is
+any other value.
 
 Specify this value only if you want to change it.
 
@@ -133,7 +147,8 @@ Specify this value only if you want to change it.
 If the value of C<Type> is C<HTTP_STR_MATCH> or C<HTTP_STR_MATCH>, the
 string that you want Amazon Route 53 to search for in the response body
 from the specified resource. If the string appears in the response
-body, Amazon Route 53 considers the resource healthy.
+body, Amazon Route 53 considers the resource healthy. Amazon Route 53
+considers case when searching for C<SearchString> in the response body.
 
 Specify this value only if you want to change it.
 

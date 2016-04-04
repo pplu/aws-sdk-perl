@@ -460,25 +460,64 @@ administration tasks, freeing up developers to focus on what makes
 their applications and businesses unique.
 
 Amazon RDS gives you access to the capabilities of a MySQL, MariaDB,
-PostgreSQL, Microsoft SQL Server, Oracle, or Aurora database server.
-This means the code, applications, and tools you already use today with
-your existing databases work with Amazon RDS without modification.
-Amazon RDS automatically backs up your database and maintains the
-database software that powers your DB instance. Amazon RDS is flexible:
-you can scale your database instance's compute resources and storage
-capacity to meet your application's demand. As with all Amazon Web
-Services, there are no up-front investments, and you pay only for the
-resources you use.
+PostgreSQL, Microsoft SQL Server, Oracle, or Amazon Aurora database
+server. These capabilities mean that the code, applications, and tools
+you already use today with your existing databases work with Amazon RDS
+without modification. Amazon RDS automatically backs up your database
+and maintains the database software that powers your DB instance.
+Amazon RDS is flexible: you can scale your database instance's compute
+resources and storage capacity to meet your application's demand. As
+with all Amazon Web Services, there are no up-front investments, and
+you pay only for the resources you use.
 
-This is an interface reference for Amazon RDS. It contains
-documentation for a programming or command line interface you can use
-to manage Amazon RDS. Note that Amazon RDS is asynchronous, which means
-that some interfaces might require techniques such as polling or
-callback functions to determine when a command has been applied. In
-this reference, the parameter descriptions indicate whether a command
-is applied immediately, on the next instance reboot, or during the
-maintenance window. For a summary of the Amazon RDS interfaces, go to
-Available RDS Interfaces.
+This interface reference for Amazon RDS contains documentation for a
+programming or command line interface you can use to manage Amazon RDS.
+Note that Amazon RDS is asynchronous, which means that some interfaces
+might require techniques such as polling or callback functions to
+determine when a command has been applied. In this reference, the
+parameter descriptions indicate whether a command is applied
+immediately, on the next instance reboot, or during the maintenance
+window. The reference structure is as follows, and we list following
+some related topics from the user guide.
+
+B<Amazon RDS API Reference>
+
+=over
+
+=item *
+
+For the alphabetical list of API actions, see API Actions.
+
+=item *
+
+For the alphabetical list of data types, see Data Types.
+
+=item *
+
+For a list of common query parameters, see Common Parameters.
+
+=item *
+
+For descriptions of the error codes, see Common Errors.
+
+=back
+
+B<Amazon RDS User Guide>
+
+=over
+
+=item *
+
+For a summary of the Amazon RDS interfaces, see Available RDS
+Interfaces.
+
+=item *
+
+For more information about how to use the Query API, see Using the
+Query API.
+
+=back
+
 
 =head1 METHODS
 
@@ -559,13 +598,13 @@ Returns: a L<Paws::RDS::CopyDBParameterGroupResult> instance
   Copies the specified DB parameter group.
 
 
-=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, KmsKeyId => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyDBSnapshot>
 
 Returns: a L<Paws::RDS::CopyDBSnapshotResult> instance
 
-  Copies the specified DBSnapshot. The source DB snapshot must be in the
+  Copies the specified DB snapshot. The source DB snapshot must be in the
 "available" state.
 
 If you are copying from a shared manual DB snapshot, the
@@ -639,7 +678,7 @@ Returns: a L<Paws::RDS::CreateDBClusterSnapshotResult> instance
 Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
-=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
@@ -1285,7 +1324,7 @@ DescribeDBClusterParameters command to verify that your DB cluster
 parameter group has been created or modified.
 
 
-=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str], EngineVersion => Str, Iops => Int, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str], Domain => Str, DomainIAMRoleName => Str, EngineVersion => Str, Iops => Int, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBInstance>
 
@@ -1335,7 +1374,7 @@ from a manual DB snapshot.
 
 To share a manual DB snapshot with other AWS accounts, specify
 C<restore> as the C<AttributeName> and use the C<ValuesToAdd> parameter
-to add a list of the AWS account ids that are authorized to retore the
+to add a list of the AWS account ids that are authorized to restore the
 manual DB snapshot. Uses the value C<all> to make the manual DB
 snapshot public and can by copied or restored by all AWS accounts. Do
 not add the C<all> value for any manual DB snapshots that contain
@@ -1527,7 +1566,7 @@ For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
 
 
-=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str])
+=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceFromDBSnapshot>
 
@@ -1535,8 +1574,7 @@ Returns: a L<Paws::RDS::RestoreDBInstanceFromDBSnapshotResult> instance
 
   Creates a new DB instance from a DB snapshot. The target database is
 created from the source database restore point with the most of
-original configuration, but in a system chosen availability zone with
-the default security group, the default subnet group, and the default
+original configuration with the default security group and the default
 DB parameter group. By default, the new DB instance is created as a
 single-AZ deployment except when the instance is a SQL Server instance
 that has an option group that is associated with mirroring; in this
@@ -1557,22 +1595,24 @@ If you are restoring from a shared manual DB snapshot, the
 C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
 
 
-=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
+=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceToPointInTime>
 
 Returns: a L<Paws::RDS::RestoreDBInstanceToPointInTimeResult> instance
 
-  Restores a DB instance to an arbitrary point-in-time. Users can restore
-to any point in time before the LatestRestorableTime for up to
-BackupRetentionPeriod days. The target database is created with the
-most of original configuration, but in a system chosen availability
-zone with the default security group, the default subnet group, and the
-default DB parameter group. By default, the new DB instance is created
-as a single-AZ deployment except when the instance is a SQL Server
-instance that has an option group that is associated with mirroring; in
-this case, the instance becomes a mirrored deployment and not a
-single-AZ deployment.
+  Restores a DB instance to an arbitrary point in time. You can restore
+to any point in time before the time identified by the
+LatestRestorableTime property. You can restore to a point up to the
+number of days specified by the BackupRetentionPeriod property.
+
+The target database is created with most of the original configuration,
+but in a system-selected availability zone, with the default security
+group, the default subnet group, and the default DB parameter group. By
+default, the new DB instance is created as a single-AZ deployment
+except when the instance is a SQL Server instance that has an option
+group that is associated with mirroring; in this case, the instance
+becomes a mirrored deployment and not a single-AZ deployment.
 
 
 =head2 RevokeDBSecurityGroupIngress(DBSecurityGroupName => Str, [CIDRIP => Str, EC2SecurityGroupId => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str])

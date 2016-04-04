@@ -1,0 +1,9 @@
+---
+content: '{"ConsumedCapacity":[{"CapacityUnits":1.0,"TableName":"Emails"}],"Responses":{"Emails":[{"email":{"S":"e2@test.com"}},{"count":{"N":"33"},"email":{"S":"e1@test.com"}}]},"UnprocessedKeys":{}}'
+headers:
+  content-length: 190
+  content-type: application/x-amz-json-1.0
+  date: 'Tue, 02 Feb 2016 22:44:31 GMT'
+  x-amz-crc32: 2543532981
+  x-amzn-requestid: ASK3NAUQHGJ8DUC63UI3SOIACNVV4KQNSO5AEMVJF66Q9ASUAAJG
+status: 200

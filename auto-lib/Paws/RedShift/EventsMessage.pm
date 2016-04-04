@@ -17,7 +17,7 @@ Paws::RedShift::EventsMessage
 
 =head2 Events => ArrayRef[L<Paws::RedShift::Event>]
 
-A list of Event instances.
+A list of C<Event> instances.
 
 
 

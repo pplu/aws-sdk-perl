@@ -58,8 +58,7 @@ your AWS account.
 =head2 AvailabilityZones => ArrayRef[Str]
 
 One or more Availability Zones for the group. This parameter is
-optional if you specify subnets using the C<VPCZoneIdentifier>
-parameter.
+optional if you specify one or more subnets.
 
 
 
@@ -68,8 +67,8 @@ parameter.
 The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default is 300.
 
-For more information, see Understanding Auto Scaling Cooldowns in the
-I<Auto Scaling Developer Guide>.
+For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
+Developer Guide>.
 
 
 
@@ -90,8 +89,8 @@ default is 300.
 
 This parameter is required if you are adding an C<ELB> health check.
 
-For more information, see Health Checks for Auto Scaling Instances in
-the I<Auto Scaling Developer Guide>.
+For more information, see Health Checks in the I<Auto Scaling Developer
+Guide>.
 
 
 
@@ -108,25 +107,24 @@ Checks in the I<Auto Scaling Developer Guide>.
 
 =head2 InstanceId => Str
 
-The ID of the EC2 instance used to create a launch configuration for
-the group. Alternatively, use the C<LaunchConfigurationName> parameter
-to specify a launch configuration instead of an EC2 instance.
+The ID of the instance used to create a launch configuration for the
+group. Alternatively, specify a launch configuration instead of an EC2
+instance.
 
 When you specify an ID of an instance, Auto Scaling creates a new
 launch configuration and associates it with the group. This launch
 configuration derives its attributes from the specified instance, with
 the exception of the block device mapping.
 
-For more information, see Create an Auto Scaling Group from an EC2
+For more information, see Create an Auto Scaling Group Using an EC2
 Instance in the I<Auto Scaling Developer Guide>.
 
 
 
 =head2 LaunchConfigurationName => Str
 
-The name of the launch configuration. Alternatively, use the
-C<InstanceId> parameter to specify an EC2 instance instead of a launch
-configuration.
+The name of the launch configuration. Alternatively, specify an EC2
+instance instead of a launch configuration.
 
 
 
@@ -134,8 +132,8 @@ configuration.
 
 One or more load balancers.
 
-For more information, see Load Balance Your Auto Scaling Group in the
-I<Auto Scaling Developer Guide>.
+For more information, see Using a Load Balancer With an Auto Scaling
+Group in the I<Auto Scaling Developer Guide>.
 
 
 
@@ -168,10 +166,7 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 Tags => ArrayRef[L<Paws::AutoScaling::Tag>]
 
-The tag to be created or updated. Each tag should be defined by its
-resource type, resource ID, key, value, and a propagate flag. Valid
-values: key=I<value>, value=I<value>, propagate=I<true> or I<false>.
-Value and propagate are optional parameters.
+One or more tags.
 
 For more information, see Tagging Auto Scaling Groups and Instances in
 the I<Auto Scaling Developer Guide>.
@@ -184,8 +179,8 @@ One or more termination policies used to select the instance to
 terminate. These policies are executed in the order that they are
 listed.
 
-For more information, see Choosing a Termination Policy for Your Auto
-Scaling Group in the I<Auto Scaling Developer Guide>.
+For more information, see Controlling Which Instances Auto Scaling
+Terminates During Scale In in the I<Auto Scaling Developer Guide>.
 
 
 
@@ -198,8 +193,8 @@ If you specify subnets and Availability Zones with this call, ensure
 that the subnets' Availability Zones match the Availability Zones
 specified.
 
-For more information, see Auto Scaling and Amazon Virtual Private Cloud
-in the I<Auto Scaling Developer Guide>.
+For more information, see Launching Auto Scaling Instances in a VPC in
+the I<Auto Scaling Developer Guide>.
 
 
 

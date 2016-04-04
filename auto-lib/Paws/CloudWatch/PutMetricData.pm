@@ -44,6 +44,10 @@ A list of data describing the metric.
 
 The namespace for the metric data.
 
+You cannot specify a namespace that begins with "AWS/". Namespaces that
+begin with "AWS/" are reserved for other Amazon Web Services products
+that send metrics to Amazon CloudWatch.
+
 
 
 

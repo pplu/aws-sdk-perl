@@ -31,7 +31,7 @@ parameter or the B<Marker> parameter, but not both.
 
 =head2 SnapshotCopyGrants => ArrayRef[L<Paws::RedShift::SnapshotCopyGrant>]
 
-The list of snapshot copy grants.
+The list of C<SnapshotCopyGrant> objects.
 
 
 

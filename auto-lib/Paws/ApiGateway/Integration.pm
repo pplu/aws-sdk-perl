@@ -89,12 +89,12 @@ Specifies the integration's Uniform Resource Identifier (URI). For HTTP
 integrations, the URI must be a fully formed, encoded HTTP(S) URL
 according to the RFC-3986 specification. For AWS integrations, the URI
 should be of the form
-C<arn:aws:apigateway:{region}:{service}:{path|action}/{service_api}>.
-C<Region> and C<service> are used to determine the right endpoint. For
-AWS services that use the C<Action=> query string parameter,
-C<service_api> should be a valid action for the desired service. For
-RESTful AWS service APIs, C<path> is used to indicate that the
-remaining substring in the URI should be treated as the path to the
+C<arn:aws:apigateway:{region}:{subdomain.service|service}:{path|action}/{service_api}>.
+C<Region>, C<subdomain> and C<service> are used to determine the right
+endpoint. For AWS services that use the C<Action=> query string
+parameter, C<service_api> should be a valid action for the desired
+service. For RESTful AWS service APIs, C<path> is used to indicate that
+the remaining substring in the URI should be treated as the path to the
 resource, including the initial C</>.
 
 

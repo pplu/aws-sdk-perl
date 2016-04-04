@@ -1,8 +1,8 @@
 
 package Paws::StorageGateway::RemoveTagsFromResource;
   use Moose;
-  has ResourceARN => (is => 'ro', isa => 'Str');
-  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ResourceARN => (is => 'ro', isa => 'Str', required => 1);
+  has TagKeys => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,14 +34,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ResourceARN => Str
+=head2 B<REQUIRED> ResourceARN => Str
 
 The Amazon Resource Name (ARN) of the resource you want to remove the
 tags from.
 
 
 
-=head2 TagKeys => ArrayRef[Str]
+=head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
 The keys of the tags you want to remove from the specified resource. A
 tag is composed of a key/value pair.

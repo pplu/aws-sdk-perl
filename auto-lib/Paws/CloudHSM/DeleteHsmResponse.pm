@@ -15,7 +15,7 @@ Paws::CloudHSM::DeleteHsmResponse
 
 =head2 B<REQUIRED> Status => Str
 
-The status of the action.
+The status of the operation.
 
 
 

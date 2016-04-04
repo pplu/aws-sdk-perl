@@ -67,8 +67,30 @@ this value.
 
 =head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
-  The complete index key schema, which consists of one or more pairs of
-attribute names and key types (C<HASH> or C<RANGE>).
+  The complete key schema for the local secondary index, consisting of
+one or more pairs of attribute names and key types:
+
+=over
+
+=item *
+
+C<HASH> - partition key
+
+=item *
+
+C<RANGE> - sort key
+
+=back
+
+The partition key of an item is also known as its I<hash attribute>.
+The term "hash attribute" derives from DynamoDB' usage of an internal
+hash function to evenly distribute data items across partitions, based
+on their partition key values.
+
+The sort key of an item is also known as its I<range attribute>. The
+term "range attribute" derives from the way DynamoDB stores items with
+the same partition key physically close together, in sorted order by
+the sort key value.
 
 
 =head2 Projection => L<Paws::DynamoDB::Projection>

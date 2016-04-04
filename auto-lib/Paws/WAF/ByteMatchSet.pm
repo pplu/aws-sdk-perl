@@ -51,7 +51,7 @@ match.
 
   The C<ByteMatchSetId> for a C<ByteMatchSet>. You use C<ByteMatchSetId>
 to get information about a C<ByteMatchSet> (see GetByteMatchSet),
-update a C<ByteMatchSet> (see UpdateByteMatchSet, insert a
+update a C<ByteMatchSet> (see UpdateByteMatchSet), insert a
 C<ByteMatchSet> into a C<Rule> or delete one from a C<Rule> (see
 UpdateRule), and delete a C<ByteMatchSet> from AWS WAF (see
 DeleteByteMatchSet).

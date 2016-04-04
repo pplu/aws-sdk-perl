@@ -1,6 +1,7 @@
 
 package Paws::CloudFormation::DeleteStack;
   use Moose;
+  has RetainResources => (is => 'ro', isa => 'ArrayRef[Str]');
   has StackName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,6 +32,18 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 RetainResources => ArrayRef[Str]
+
+For stacks in the C<DELETE_FAILED> state, a list of resource logical
+IDs that are associated with the resources you want to retain. During
+deletion, AWS CloudFormation deletes the stack but does not delete the
+retained resources.
+
+Retaining resources is useful when you cannot delete a resource, such
+as a non-empty S3 bucket, but you want to delete the stack.
+
 
 
 =head2 B<REQUIRED> StackName => Str

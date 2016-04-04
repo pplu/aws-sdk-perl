@@ -39,9 +39,19 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetBranch', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCommit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetCommit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetRepository', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRepositoryTriggers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetRepositoryTriggers', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListBranches {
@@ -52,6 +62,16 @@ package Paws::CodeCommit;
   sub ListRepositories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::ListRepositories', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutRepositoryTriggers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::PutRepositoryTriggers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TestRepositoryTriggers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::TestRepositoryTriggers', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDefaultBranch {
@@ -70,7 +90,7 @@ package Paws::CodeCommit;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteRepository GetBranch GetRepository ListBranches ListRepositories UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }
+  sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteRepository GetBranch GetCommit GetRepository GetRepositoryTriggers ListBranches ListRepositories PutRepositoryTriggers TestRepositoryTriggers UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }
 
 1;
 
@@ -101,22 +121,85 @@ Paws::CodeCommit - Perl Interface to AWS AWS CodeCommit
 AWS CodeCommit
 
 This is the I<AWS CodeCommit API Reference>. This reference provides
-descriptions of the AWS CodeCommit API.
+descriptions of the operations and data types for AWS CodeCommit API.
 
 You can use the AWS CodeCommit API to work with the following objects:
 
 =over
 
-=item * Repositories
+=item * Repositories, by calling the following:
 
-=item * Branches
+=over
 
-=item * Commits
+=item * BatchGetRepositories, which returns information about one or
+more repositories associated with your AWS account
+
+=item * CreateRepository, which creates an AWS CodeCommit repository
+
+=item * DeleteRepository, which deletes an AWS CodeCommit repository
+
+=item * GetRepository, which returns information about a specified
+repository
+
+=item * ListRepositories, which lists all AWS CodeCommit repositories
+associated with your AWS account
+
+=item * UpdateRepositoryDescription, which sets or updates the
+description of the repository
+
+=item * UpdateRepositoryName, which changes the name of the repository.
+If you change the name of a repository, no other users of that
+repository will be able to access it until you send them the new HTTPS
+or SSH URL to use.
 
 =back
 
-For information about how to use AWS CodeCommit, see the I<AWS
-CodeCommit User Guide>.
+=item * Branches, by calling the following:
+
+=over
+
+=item * CreateBranch, which creates a new branch in a specified
+repository
+
+=item * GetBranch, which returns information about a specified branch
+
+=item * ListBranches, which lists all branches for a specified
+repository
+
+=item * UpdateDefaultBranch, which changes the default branch for a
+repository
+
+=back
+
+=item * Information about committed code in a repository, by calling
+the following:
+
+=over
+
+=item * GetCommit, which returns information about a commit, including
+commit messages and committer information.
+
+=back
+
+=item * Triggers, by calling the following:
+
+=over
+
+=item * GetRepositoryTriggers, which returns information about triggers
+configured for a repository
+
+=item * PutRepositoryTriggers, which replaces all triggers for a
+repository and can be used to create or delete triggers
+
+=item * TestRepositoryTriggers, which tests the functionality of a
+repository trigger by sending data to the trigger target
+
+=back
+
+=back
+
+For information about how to use AWS CodeCommit, see the AWS CodeCommit
+User Guide.
 
 =head1 METHODS
 
@@ -126,7 +209,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::BatchGetRepositorie
 
 Returns: a L<Paws::CodeCommit::BatchGetRepositoriesOutput> instance
 
-  Gets information about one or more repositories.
+  Returns information about one or more repositories.
 
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
@@ -177,8 +260,18 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetBranch>
 
 Returns: a L<Paws::CodeCommit::GetBranchOutput> instance
 
-  Retrieves information about a repository branch, including its name and
+  Returns information about a repository branch, including its name and
 the last commit ID.
+
+
+=head2 GetCommit(CommitId => Str, RepositoryName => Str)
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetCommit>
+
+Returns: a L<Paws::CodeCommit::GetCommitOutput> instance
+
+  Returns information about a commit, including commit message and
+committer information.
 
 
 =head2 GetRepository(RepositoryName => Str)
@@ -187,7 +280,7 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetRepository>
 
 Returns: a L<Paws::CodeCommit::GetRepositoryOutput> instance
 
-  Gets information about a repository.
+  Returns information about a repository.
 
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
@@ -195,6 +288,15 @@ description and display it in a web page could expose users to
 potentially malicious code. Make sure that you HTML-encode the
 description field in any application that uses this API to display the
 repository description on a web page.
+
+
+=head2 GetRepositoryTriggers([RepositoryName => Str])
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetRepositoryTriggers>
+
+Returns: a L<Paws::CodeCommit::GetRepositoryTriggersOutput> instance
+
+  Gets information about triggers configured for a repository.
 
 
 =head2 ListBranches(RepositoryName => Str, [NextToken => Str])
@@ -213,6 +315,28 @@ Each argument is described in detail in: L<Paws::CodeCommit::ListRepositories>
 Returns: a L<Paws::CodeCommit::ListRepositoriesOutput> instance
 
   Gets information about one or more repositories.
+
+
+=head2 PutRepositoryTriggers([RepositoryName => Str, Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]])
+
+Each argument is described in detail in: L<Paws::CodeCommit::PutRepositoryTriggers>
+
+Returns: a L<Paws::CodeCommit::PutRepositoryTriggersOutput> instance
+
+  Replaces all triggers for a repository. This can be used to create or
+delete triggers.
+
+
+=head2 TestRepositoryTriggers([RepositoryName => Str, Triggers => ArrayRef[L<Paws::CodeCommit::RepositoryTrigger>]])
+
+Each argument is described in detail in: L<Paws::CodeCommit::TestRepositoryTriggers>
+
+Returns: a L<Paws::CodeCommit::TestRepositoryTriggersOutput> instance
+
+  Tests the functionality of repository triggers by sending information
+to the trigger target. If real data is available in the repository, the
+test will send data from the last commit. If no data is available,
+sample data will be generated.
 
 
 =head2 UpdateDefaultBranch(DefaultBranchName => Str, RepositoryName => Str)
@@ -250,7 +374,12 @@ Each argument is described in detail in: L<Paws::CodeCommit::UpdateRepositoryNam
 
 Returns: nothing
 
-  Renames a repository.
+  Renames a repository. The repository name must be unique across the
+calling AWS account. In addition, repository names are limited to 100
+alphanumeric, dash, and underscore characters, and cannot include
+certain characters. The suffix ".git" is prohibited. For a full
+description of the limits on repository names, see Limits in the AWS
+CodeCommit User Guide.
 
 
 =head1 SEE ALSO

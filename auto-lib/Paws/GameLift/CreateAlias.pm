@@ -3,7 +3,7 @@ package Paws::GameLift::CreateAlias;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RoutingStrategy => (is => 'ro', isa => 'Paws::GameLift::RoutingStrategy');
+  has RoutingStrategy => (is => 'ro', isa => 'Paws::GameLift::RoutingStrategy', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -48,7 +48,7 @@ to be unique.
 
 
 
-=head2 RoutingStrategy => L<Paws::GameLift::RoutingStrategy>
+=head2 B<REQUIRED> RoutingStrategy => L<Paws::GameLift::RoutingStrategy>
 
 Object specifying the fleet and routing type to use for the alias.
 

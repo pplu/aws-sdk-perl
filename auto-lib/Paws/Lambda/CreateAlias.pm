@@ -58,7 +58,7 @@ Lambda function version for which you are creating the alias.
 
 =head2 B<REQUIRED> Name => Str
 
-Name for the alias your creating.
+Name for the alias you are creating.
 
 
 

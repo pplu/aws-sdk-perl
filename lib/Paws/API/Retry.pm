@@ -4,8 +4,6 @@ package Paws::API::Retry;
   
   has max_tries => (is => 'ro', required => 1);
   has type => (is => 'ro', required => 1);
-  has base => (is => 'ro', required => 1, isa => 'Num');
-  has growth_factor => (is => 'ro', isa => 'Int');
 
   has tries => (is => 'rw', default => 0);
 
@@ -19,15 +17,10 @@ package Paws::API::Retry;
   around BUILDARGS => sub {
     my ($orig, $class, %args) = @_;
 
-    my $base = $args{ base };
-    $base = rand() if ($args{ base } eq 'rand');
-    $base = 0.01 if ($base == 0);
-    $args{ base } = $base;
-
     if ($args{ type } eq 'exponential') {
       $args{ generator } = sub {
         my $self = shift;
-        $self->base * ($self->growth_factor * ($self->tries - 1))
+        (2 ** ($self->tries - 2)) + (rand(1) / 2);
       };
     } else {
       die "Don't know how to make a retry type of $args{ type }";

@@ -65,6 +65,11 @@ Constraints:
 
 The DB subnet group name to use for the new DB cluster.
 
+Constraints: Must contain no more than 255 alphanumeric characters,
+periods, underscores, spaces, or hyphens. Must not be default.
+
+Example: C<mySubnetgroup>
+
 
 
 =head2 KmsKeyId => Str

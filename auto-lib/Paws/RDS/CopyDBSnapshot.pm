@@ -2,6 +2,7 @@
 package Paws::RDS::CopyDBSnapshot;
   use Moose;
   has CopyTags => (is => 'ro', isa => 'Bool');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has SourceDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has TargetDBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -40,6 +41,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 True to copy all tags from the source DB snapshot to the target DB
 snapshot; otherwise false. The default is false.
+
+
+
+=head2 KmsKeyId => Str
+
+The AWS Key Management Service (AWS KMS) key identifier for an
+encrypted DB snapshot. The KMS key identifier is the Amazon Resource
+Name (ARN) or the KMS key alias for the KMS encryption key.
+
+If you copy an unencrypted DB snapshot and specify a value for the
+C<KmsKeyId> parameter, Amazon RDS encrypts the target DB snapshot using
+the specified KMS encryption key.
+
+If you copy an encrypted DB snapshot from your AWS account, you can
+specify a value for C<KmsKeyId> to encrypt the copy with a new KMS
+encryption key. If you don't specify a value for C<KmsKeyId> then the
+copy of the DB snapshot is encrypted with the same KMS key as the
+source DB snapshot.
+
+If you copy an encrypted DB snapshot that is shared from another AWS
+account, then you must specify a value for C<KmsKeyId>.
 
 
 

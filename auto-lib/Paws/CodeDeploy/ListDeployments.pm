@@ -39,15 +39,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ApplicationName => Str
 
-The name of an existing AWS CodeDeploy application associated with the
+The name of an AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
 
 
 
 =head2 CreateTimeRange => L<Paws::CodeDeploy::TimeRange>
 
-A deployment creation start- and end-time range for returning a subset
-of the list of deployments.
+A time range (start and end) for returning a subset of the list of
+deployments.
 
 
 
@@ -59,22 +59,23 @@ The name of an existing deployment group for the specified application.
 
 =head2 IncludeOnlyStatuses => ArrayRef[Str]
 
-A subset of deployments to list, by status:
+A subset of deployments to list by status:
 
 =over
 
-=item * Created: Include in the resulting list created deployments.
+=item * Created: Include created deployments in the resulting list.
 
-=item * Queued: Include in the resulting list queued deployments.
+=item * Queued: Include queued deployments in the resulting list.
 
-=item * In Progress: Include in the resulting list in-progress
-deployments.
+=item * In Progress: Include in-progress deployments in the resulting
+list.
 
-=item * Succeeded: Include in the resulting list succeeded deployments.
+=item * Succeeded: Include successful deployments in the resulting
+list.
 
-=item * Failed: Include in the resulting list failed deployments.
+=item * Failed: Include failed deployments in the resulting list.
 
-=item * Aborted: Include in the resulting list aborted deployments.
+=item * Stopped: Include stopped deployments in the resulting list.
 
 =back
 
@@ -83,9 +84,8 @@ deployments.
 
 =head2 NextToken => Str
 
-An identifier that was returned from the previous list deployments
-call, which can be used to return the next set of deployments in the
-list.
+An identifier returned from the previous list deployments call. It can
+be used to return the next set of deployments in the list.
 
 
 

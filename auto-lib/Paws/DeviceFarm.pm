@@ -74,6 +74,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetOfferingStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetOfferingStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetProject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetProject', @_);
@@ -119,6 +124,16 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListOfferings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListOfferingTransactions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListOfferingTransactions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListProjects {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListProjects', @_);
@@ -154,9 +169,24 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListUploads', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PurchaseOffering {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::PurchaseOffering', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RenewOffering {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::RenewOffering', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ScheduleRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ScheduleRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::StopRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDevicePool {
@@ -170,7 +200,7 @@ package Paws::DeviceFarm;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CreateDevicePool CreateProject CreateUpload DeleteDevicePool DeleteProject DeleteRun DeleteUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetProject GetRun GetSuite GetTest GetUpload ListArtifacts ListDevicePools ListDevices ListJobs ListProjects ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads ScheduleRun UpdateDevicePool UpdateProject / }
+  sub operations { qw/CreateDevicePool CreateProject CreateUpload DeleteDevicePool DeleteProject DeleteRun DeleteUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetOfferingStatus GetProject GetRun GetSuite GetTest GetUpload ListArtifacts ListDevicePools ListDevices ListJobs ListOfferings ListOfferingTransactions ListProjects ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads PurchaseOffering RenewOffering ScheduleRun StopRun UpdateDevicePool UpdateProject / }
 
 1;
 
@@ -318,6 +348,20 @@ Returns: a L<Paws::DeviceFarm::GetJobResult> instance
   Gets information about a job.
 
 
+=head2 GetOfferingStatus([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::GetOfferingStatus>
+
+Returns: a L<Paws::DeviceFarm::GetOfferingStatusResult> instance
+
+  Gets the current status and future status of all offerings purchased by
+an AWS account. The response indicates how many offerings are currently
+available and the offerings that will be available in the next period.
+The API returns a C<NotEligible> error if the user is not permitted to
+invoke the operation. Please contact aws-devicefarm-support@amazon.com
+if you believe that you should be able to invoke this operation.
+
+
 =head2 GetProject(Arn => Str)
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetProject>
@@ -399,6 +443,34 @@ Returns: a L<Paws::DeviceFarm::ListJobsResult> instance
   Gets information about jobs.
 
 
+=head2 ListOfferings([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListOfferings>
+
+Returns: a L<Paws::DeviceFarm::ListOfferingsResult> instance
+
+  Returns a list of products or offerings that the user can manage
+through the API. Each offering record indicates the recurring price per
+unit and the frequency for that offering. The API returns a
+C<NotEligible> error if the user is not permitted to invoke the
+operation. Please contact aws-devicefarm-support@amazon.com if you
+believe that you should be able to invoke this operation.
+
+
+=head2 ListOfferingTransactions([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListOfferingTransactions>
+
+Returns: a L<Paws::DeviceFarm::ListOfferingTransactionsResult> instance
+
+  Returns a list of all historical purchases, renewals, and system
+renewal transactions for an AWS account. The list is paginated and
+ordered by a descending timestamp (most recent transactions are first).
+The API returns a C<NotEligible> error if the user is not permitted to
+invoke the operation. Please contact aws-devicefarm-support@amazon.com
+if you believe that you should be able to invoke this operation.
+
+
 =head2 ListProjects([Arn => Str, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListProjects>
@@ -462,6 +534,33 @@ Returns: a L<Paws::DeviceFarm::ListUploadsResult> instance
   Gets information about uploads.
 
 
+=head2 PurchaseOffering([OfferingId => Str, Quantity => Int])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::PurchaseOffering>
+
+Returns: a L<Paws::DeviceFarm::PurchaseOfferingResult> instance
+
+  Immediately purchases offerings for an AWS account. Offerings renew
+with the latest total purchased quantity for an offering, unless the
+renewal was overridden. The API returns a C<NotEligible> error if the
+user is not permitted to invoke the operation. Please contact
+aws-devicefarm-support@amazon.com if you believe that you should be
+able to invoke this operation.
+
+
+=head2 RenewOffering([OfferingId => Str, Quantity => Int])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::RenewOffering>
+
+Returns: a L<Paws::DeviceFarm::RenewOfferingResult> instance
+
+  Explicitly sets the quantity of devices to renew for an offering,
+starting from the C<effectiveDate> of the next period. The API returns
+a C<NotEligible> error if the user is not permitted to invoke the
+operation. Please contact aws-devicefarm-support@amazon.com if you
+believe that you should be able to invoke this operation.
+
+
 =head2 ScheduleRun(DevicePoolArn => Str, ProjectArn => Str, Test => L<Paws::DeviceFarm::ScheduleRunTest>, [AppArn => Str, Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>, Name => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ScheduleRun>
@@ -469,6 +568,21 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ScheduleRun>
 Returns: a L<Paws::DeviceFarm::ScheduleRunResult> instance
 
   Schedules a run.
+
+
+=head2 StopRun(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::StopRun>
+
+Returns: a L<Paws::DeviceFarm::StopRunResult> instance
+
+  Initiates a stop request for the current test run. AWS Device Farm will
+immediately stop the run on devices where tests have not started
+executing, and you will not be billed for these devices. On devices
+where tests have started executing, Setup Suite and Teardown Suite
+tests will run to completion before stopping execution on those
+devices. You will be billed for Setup, Teardown, and any tests that
+were in progress or already completed.
 
 
 =head2 UpdateDevicePool(Arn => Str, [Description => Str, Name => Str, Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]])

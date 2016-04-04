@@ -23,8 +23,7 @@ The name of the application that corresponds to the revision.
 
 =head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
 
-Additional information about the revision, including the revision's
-type and its location.
+Additional information about the revision, including type and location.
 
 
 

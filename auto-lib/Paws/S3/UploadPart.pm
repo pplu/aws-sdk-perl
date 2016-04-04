@@ -34,13 +34,13 @@ Paws::S3::UploadPartOutput
 
 =head2 Body => Str
 
-
+Object data.
 
 
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+Name of the bucket to which the multipart upload was initiated.
 
 
 
@@ -53,13 +53,13 @@ the body cannot be determined automatically.
 
 =head2 ContentMD5 => Str
 
-
+The base64-encoded 128-bit MD5 digest of the part data.
 
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+Object key for which the multipart upload was initiated.
 
 
 

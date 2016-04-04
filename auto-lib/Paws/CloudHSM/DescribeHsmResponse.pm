@@ -84,7 +84,7 @@ The serial number of the HSM.
 
 =head2 ServerCertLastUpdated => Str
 
-The date and time the server certificate was last updated.
+The date and time that the server certificate was last updated.
 
 
 
@@ -102,7 +102,7 @@ The HSM software version.
 
 =head2 SshKeyLastUpdated => Str
 
-The date and time the SSH key was last updated.
+The date and time that the SSH key was last updated.
 
 
 
@@ -126,7 +126,7 @@ Contains additional information about the status of the HSM.
 
 =head2 SubnetId => Str
 
-The identifier of the subnet the HSM is in.
+The identifier of the subnet that the HSM is in.
 
 
 
@@ -144,7 +144,7 @@ The subscription start date.
 
 =head2 SubscriptionType => Str
 
-The subscription type.
+
 
 Valid values are: C<"PRODUCTION">
 
