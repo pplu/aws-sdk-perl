@@ -1,17 +1,23 @@
 package Paws::Inspector::Finding;
   use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest']);
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
-  has AutoScalingGroup => (is => 'ro', isa => 'Str', xmlname => 'autoScalingGroup', request_name => 'autoScalingGroup', traits => ['Unwrapped','NameInRequest']);
-  has Description => (is => 'ro', isa => 'Paws::Inspector::LocalizedText', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has Finding => (is => 'ro', isa => 'Paws::Inspector::LocalizedText', xmlname => 'finding', request_name => 'finding', traits => ['Unwrapped','NameInRequest']);
-  has FindingArn => (is => 'ro', isa => 'Str', xmlname => 'findingArn', request_name => 'findingArn', traits => ['Unwrapped','NameInRequest']);
-  has Recommendation => (is => 'ro', isa => 'Paws::Inspector::LocalizedText', xmlname => 'recommendation', request_name => 'recommendation', traits => ['Unwrapped','NameInRequest']);
-  has RuleName => (is => 'ro', isa => 'Str', xmlname => 'ruleName', request_name => 'ruleName', traits => ['Unwrapped','NameInRequest']);
-  has RulesPackageArn => (is => 'ro', isa => 'Str', xmlname => 'rulesPackageArn', request_name => 'rulesPackageArn', traits => ['Unwrapped','NameInRequest']);
-  has RunArn => (is => 'ro', isa => 'Str', xmlname => 'runArn', request_name => 'runArn', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has AssetAttributes => (is => 'ro', isa => 'Paws::Inspector::AssetAttributes', xmlname => 'assetAttributes', request_name => 'assetAttributes', traits => ['Unwrapped','NameInRequest']);
+  has AssetType => (is => 'ro', isa => 'Str', xmlname => 'assetType', request_name => 'assetType', traits => ['Unwrapped','NameInRequest']);
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Confidence => (is => 'ro', isa => 'Int', xmlname => 'confidence', request_name => 'confidence', traits => ['Unwrapped','NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
+  has Id => (is => 'ro', isa => 'Str', xmlname => 'id', request_name => 'id', traits => ['Unwrapped','NameInRequest']);
+  has IndicatorOfCompromise => (is => 'ro', isa => 'Bool', xmlname => 'indicatorOfCompromise', request_name => 'indicatorOfCompromise', traits => ['Unwrapped','NameInRequest']);
+  has NumericSeverity => (is => 'ro', isa => 'Num', xmlname => 'numericSeverity', request_name => 'numericSeverity', traits => ['Unwrapped','NameInRequest']);
+  has Recommendation => (is => 'ro', isa => 'Str', xmlname => 'recommendation', request_name => 'recommendation', traits => ['Unwrapped','NameInRequest']);
+  has SchemaVersion => (is => 'ro', isa => 'Int', xmlname => 'schemaVersion', request_name => 'schemaVersion', traits => ['Unwrapped','NameInRequest']);
+  has Service => (is => 'ro', isa => 'Str', xmlname => 'service', request_name => 'service', traits => ['Unwrapped','NameInRequest']);
+  has ServiceAttributes => (is => 'ro', isa => 'Paws::Inspector::InspectorServiceAttributes', xmlname => 'serviceAttributes', request_name => 'serviceAttributes', traits => ['Unwrapped','NameInRequest']);
   has Severity => (is => 'ro', isa => 'Str', xmlname => 'severity', request_name => 'severity', traits => ['Unwrapped','NameInRequest']);
-  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'userAttributes', request_name => 'userAttributes', traits => ['Unwrapped','NameInRequest']);
+  has Title => (is => 'ro', isa => 'Str', xmlname => 'title', request_name => 'title', traits => ['Unwrapped','NameInRequest']);
+  has UpdatedAt => (is => 'ro', isa => 'Str', xmlname => 'updatedAt', request_name => 'updatedAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has UserAttributes => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Attribute]', xmlname => 'userAttributes', request_name => 'userAttributes', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -31,84 +37,111 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::Finding object:
 
-  $service_obj->Method(Att1 => { AgentId => $value, ..., UserAttributes => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., UserAttributes => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::Finding object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AgentId
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
-Contains information about an Inspector finding.
-
-This data type is used as the response element in the DescribeFinding
-action.
+Contains information about an Inspector finding. This data type is used
+as the response element in the DescribeFindings action.
 
 =head1 ATTRIBUTES
 
 
-=head2 AgentId => Str
-
-  The EC2 instance ID where the agent is installed that is used during
-the assessment that generates the finding.
-
-
-=head2 Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
-
-  The system-defined attributes for the finding.
-
-
-=head2 AutoScalingGroup => Str
-
-  The autoscaling group of the EC2 instance where the agent is installed
-that is used during the assessment that generates the finding.
-
-
-=head2 Description => L<Paws::Inspector::LocalizedText>
-
-  The description of the finding.
-
-
-=head2 Finding => L<Paws::Inspector::LocalizedText>
-
-  A short description that identifies the finding.
-
-
-=head2 FindingArn => Str
+=head2 B<REQUIRED> Arn => Str
 
   The ARN specifying the finding.
 
 
-=head2 Recommendation => L<Paws::Inspector::LocalizedText>
+=head2 AssetAttributes => L<Paws::Inspector::AssetAttributes>
+
+  A collection of attributes of the host from which the finding is
+generated.
+
+
+=head2 AssetType => Str
+
+  The type of the host from which the finding is generated.
+
+
+=head2 B<REQUIRED> Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
+
+  The system-defined attributes for the finding.
+
+
+=head2 Confidence => Int
+
+  This data element is currently not used.
+
+
+=head2 B<REQUIRED> CreatedAt => Str
+
+  The time when the finding was generated.
+
+
+=head2 Description => Str
+
+  The description of the finding.
+
+
+=head2 Id => Str
+
+  The ID of the finding.
+
+
+=head2 IndicatorOfCompromise => Bool
+
+  This data element is currently not used.
+
+
+=head2 NumericSeverity => Num
+
+  The numeric value of the finding severity.
+
+
+=head2 Recommendation => Str
 
   The recommendation for the finding.
 
 
-=head2 RuleName => Str
+=head2 SchemaVersion => Int
 
-  The rule name that is used to generate the finding.
-
-
-=head2 RulesPackageArn => Str
-
-  The ARN of the rules package that is used to generate the finding.
+  The schema version of this data type.
 
 
-=head2 RunArn => Str
+=head2 Service => Str
 
-  The ARN of the assessment run that generated the finding.
+  The data element is set to "Inspector".
+
+
+=head2 ServiceAttributes => L<Paws::Inspector::InspectorServiceAttributes>
+
+  
 
 
 =head2 Severity => Str
 
-  The finding severity. Values can be set to I<High>, I<Medium>, I<Low>,
-and I<Informational>.
+  The finding severity. Values can be set to High, Medium, Low, and
+Informational.
 
 
-=head2 UserAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
+=head2 Title => Str
+
+  The name of the finding.
+
+
+=head2 B<REQUIRED> UpdatedAt => Str
+
+  The time when AddAttributesToFindings API is called.
+
+
+=head2 B<REQUIRED> UserAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
   The user-defined attributes that are assigned to the finding.
 

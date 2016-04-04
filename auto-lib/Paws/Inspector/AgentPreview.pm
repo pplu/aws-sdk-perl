@@ -1,6 +1,6 @@
 package Paws::Inspector::AgentPreview;
   use Moose;
-  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest']);
+  has AgentId => (is => 'ro', isa => 'Str', xmlname => 'agentId', request_name => 'agentId', traits => ['Unwrapped','NameInRequest'], required => 1);
   has AutoScalingGroup => (is => 'ro', isa => 'Str', xmlname => 'autoScalingGroup', request_name => 'autoScalingGroup', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -32,13 +32,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-This data type is used as a response element in the
-PreviewAgentsForResourceGroup action.
+This data type is used as a response element in the PreviewAgents
+action.
 
 =head1 ATTRIBUTES
 
 
-=head2 AgentId => Str
+=head2 B<REQUIRED> AgentId => Str
 
   The id of the EC2 instance where the agent is intalled.
 

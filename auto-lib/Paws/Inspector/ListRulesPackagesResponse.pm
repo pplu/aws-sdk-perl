@@ -2,7 +2,7 @@
 package Paws::Inspector::ListRulesPackagesResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
-  has RulesPackageArnList => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'rulesPackageArnList' );
+  has RulesPackageArns => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['Unwrapped'], xmlname => 'rulesPackageArns' , required => 1);
 
 
 ### main pod documentation begin ###
@@ -23,7 +23,7 @@ is no more data to be listed, this parameter is set to 'null'.
 
 
 
-=head2 RulesPackageArnList => ArrayRef[Str]
+=head2 B<REQUIRED> RulesPackageArns => ArrayRef[Str]
 
 The list of ARNs specifying the rules packages returned by the action.
 
