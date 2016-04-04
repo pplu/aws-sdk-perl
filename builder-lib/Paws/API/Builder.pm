@@ -620,8 +620,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
       my $inner_type = $self->get_caller_class_type($param_props->{member}->{shape});
       $type = "ArrayRef[$inner_type]";
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'timestamp') {
-      # TODO: Paws::API::TimeStamp
-      $type = 'Str';
+      $type = 'Paws::API::TimeStamp';
     } elsif (exists $param_props->{ type } and $param_props->{ type } eq 'long') {
       #TODO: Check
       $type = 'Int';

@@ -155,7 +155,6 @@ package Paws::API::Caller;
   sub new_from_struct {
     my ($self, $class, $result) = @_;
     my %args;
- 
     foreach my $att ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($att));
 
@@ -172,6 +171,9 @@ package Paws::API::Caller;
         my $value_ref = ref($value);
 
         if ($att_type =~ m/\:\:/) {
+          if ($att_type eq 'Paws::API::TimeStamp'){
+            $args{ $att } = $value;
+          }
           # Make the att_type stringify for module loading
           Paws->load_class("$att_type");
           if (defined $value) {

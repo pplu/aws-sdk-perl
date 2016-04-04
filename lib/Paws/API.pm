@@ -1,3 +1,8 @@
+use Moose::Util::TypeConstraints;
+
+subtype 'Paws::API::TimeStamp',
+     as 'Str';
+
 package Paws::API::Attribute::Trait::Unwrapped;
   use Moose::Role;
   use Moose::Util;
