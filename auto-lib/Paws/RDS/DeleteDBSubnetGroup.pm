@@ -39,6 +39,8 @@ The name of the database subnet group to delete.
 
 You cannot delete the default subnet group.
 
+Constraints:
+
 Constraints: Must contain no more than 255 alphanumeric characters,
 periods, underscores, spaces, or hyphens. Must not be default.
 

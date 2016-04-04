@@ -17,6 +17,7 @@ package Paws::RDS::DBInstance;
   has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBParameterGroupStatus]');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroupMembership]');
   has DBSubnetGroup => (is => 'ro', isa => 'Paws::RDS::DBSubnetGroup');
+  has DomainMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DomainMembership]');
   has Endpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -34,6 +35,7 @@ package Paws::RDS::DBInstance;
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RDS::PendingModifiedValues');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str]');
   has ReadReplicaSourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
@@ -208,6 +210,12 @@ instance, including the name, description, and subnets in the subnet
 group.
 
 
+=head2 DomainMemberships => ArrayRef[L<Paws::RDS::DomainMembership>]
+
+  The Active Directory Domain membership records associated with the DB
+instance.
+
+
 =head2 Endpoint => L<Paws::RDS::Endpoint>
 
   Specifies the connection endpoint.
@@ -302,6 +310,14 @@ C<BackupRetentionPeriod>.
 
   Specifies the weekly time range during which system maintenance can
 occur, in Universal Coordinated Time (UTC).
+
+
+=head2 PromotionTier => Int
+
+  A value that specifies the order in which an Aurora Replica is promoted
+to the primary instance after a failure of the existing primary
+instance. For more information, see Fault Tolerance for an Aurora DB
+Cluster.
 
 
 =head2 PubliclyAccessible => Bool

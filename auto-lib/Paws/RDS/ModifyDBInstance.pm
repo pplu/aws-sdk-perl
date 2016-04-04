@@ -13,6 +13,8 @@ package Paws::RDS::ModifyDBInstance;
   has DBParameterGroupName => (is => 'ro', isa => 'Str');
   has DBPortNumber => (is => 'ro', isa => 'Int');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str]');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
@@ -23,6 +25,7 @@ package Paws::RDS::ModifyDBInstance;
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
@@ -317,6 +320,8 @@ Default: C<5432>
 
 Valid Values: C<1150-65535>
 
+Type: Integer
+
 B<Oracle>
 
 Default: C<1521>
@@ -356,6 +361,23 @@ Constraints:
 
 =back
 
+
+
+
+=head2 Domain => Str
+
+Specify the Active Directory Domain to move the instance to.
+
+The specified Active Directory Domain must be created prior to this
+operation. Currently only a SQL Server instance can be created in a
+Active Directory Domain.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
 
 
 
@@ -564,6 +586,19 @@ Format: ddd:hh24:mi-ddd:hh24:mi
 Valid Days: Mon | Tue | Wed | Thu | Fri | Sat | Sun
 
 Constraints: Must be at least 30 minutes
+
+
+
+=head2 PromotionTier => Int
+
+A value that specifies the order in which an Aurora Replica is promoted
+to the primary instance after a failure of the existing primary
+instance. For more information, see Fault Tolerance for an Aurora DB
+Cluster.
+
+Default: 1
+
+Valid Values: 0 - 15
 
 
 
