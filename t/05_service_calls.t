@@ -243,6 +243,21 @@ $test_params = {
 
 request_has_params($test_params, $request);
 
+my $s3 = $aws->service('S3');
+
+$request = $s3->ListObjects(
+  Bucket => 'test_bucket',
+  Prefix => 'A/Prefix',
+  MaxKeys => 5
+);
+
+$test_params = {
+  prefix => 'A/Prefix',
+ 'max-keys' => 5,
+};
+
+request_has_params($test_params, $request);
+
 my $cognito = $aws->service('CognitoIdentity');
 
 $request = $cognito->GetOpenIdTokenForDeveloperIdentity(
@@ -279,7 +294,80 @@ $test_params = {
 
 request_contentjson($test_params, $request);
 
+$request = $dynamo->PutItem(
+  TableName => 'my-test',
+  Item => {
+    'email' => { 'S' => 'e1@test.com' },
+    'count' => { 'N' => 33 },
+    'things' => {
+      'M' => {
+        'those' => {
+          'L' => [
+            {
+              'N' => 1
+            },
+            {
+              'N' => 2
+            },
+            {
+              'N' => 3
+            }
+          ]
+        },
+        'foo' => {
+          'S' => 'bar'
+        }
+      }
+    }
+  }
+);
 
+$test_params = decode_json('{"Item":{"count":{"N":33},"things":{"M":{"foo":{"S":"bar"},"those":{"L":[{"N":1},{"N":2},{"N":3}]}}},"email":{"S":"e1@test.com"}},"TableName":"my-test"}');
 
+request_contentjson($test_params, $request);
+
+$request = $dynamo->BatchWriteItem(
+  RequestItems=>{
+    Table => [ 
+      { PutRequest => {
+          Item => {
+            pagekey => { S => 'ho' },
+            job_count => { N => '123' },
+            drilldown => { S => 'hello' }
+          }
+        }
+      }
+    ]
+  }
+);
+
+$test_params = decode_json('{"RequestItems":{"Table":[{"PutRequest":{"Item":{"pagekey":{"S":"ho"},"job_count":{"N":"123"},"drilldown":{"S":"hello"}}}}]}}');
+
+request_contentjson($test_params, $request);
+
+my $ssm = $aws->service('SSM');
+
+$request = $ssm->SendCommand(
+  DocumentName => 'mydoc',
+  InstanceIds => [ 'i-12345678' ],
+  Parameters => {
+    Param1 => [ 'Value1', 'Value2' ],
+  }
+);
+
+$test_params = decode_json('{"DocumentName":"mydoc","InstanceIds":["i-12345678"],"Parameters":{"Param1":["Value1","Value2"]}}');
+
+request_contentjson($test_params, $request);
+
+$request = $dynamo->BatchGetItem(
+  RequestItems => {
+    table => { Keys => [ { email => { S => 'e1@test.com' } } , { email => { S => 'e2@test.com' } } ] },
+  },
+  ReturnConsumedCapacity => 'TOTAL'
+);
+
+$test_params = decode_json('{"RequestItems":{"table":{"Keys":[{"email":{"S":"e1@test.com"}},{"email":{"S":"e2@test.com"}}]}},"ReturnConsumedCapacity":"TOTAL"}');
+
+request_contentjson($test_params, $request);
 
 done_testing;

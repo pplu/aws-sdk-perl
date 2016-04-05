@@ -17,12 +17,16 @@ Paws::ElastiCache::CacheSubnetGroupMessage
 
 =head2 CacheSubnetGroups => ArrayRef[L<Paws::ElastiCache::CacheSubnetGroup>]
 
-  A list of cache subnet groups. Each element in the list contains
+A list of cache subnet groups. Each element in the list contains
 detailed information about one group.
+
+
 
 =head2 Marker => Str
 
-  Provides an identifier to allow retrieval of paginated results.
+Provides an identifier to allow retrieval of paginated results.
+
+
 
 
 =cut

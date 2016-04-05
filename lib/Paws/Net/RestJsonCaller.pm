@@ -1,4 +1,4 @@
-package Paws::Net::RestJsonCaller {
+package Paws::Net::RestJsonCaller;
   use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
@@ -20,6 +20,8 @@ package Paws::Net::RestJsonCaller {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
         if ($att_type eq 'Bool') {
           $p{ $key } = ($params->$att)?\1:\0;
+        } elsif ($att_type eq 'Int') {
+          $p{ $key } = int($params->$att);
         } elsif ($self->_is_internal_type($att_type)) {
           $p{ $key } = $params->$att;
         } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
@@ -32,6 +34,13 @@ package Paws::Net::RestJsonCaller {
           $p{ $key } = $params->$att;
         } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){ 
           $p{ $key } = { %{ $params->$att->Map }  };
+        } elsif ($params->$att->does('Paws::API::StrToObjMapParser')){
+          my $type = $params->$att->meta->get_attribute('Map')->type_constraint;
+          if (my ($inner) = ("$type" =~ m/^HashRef\[ArrayRef\[(.*?)\]/)) {
+            $p{ $key } = { map { my $k = $_; ( $k => [ map { $self->_to_jsoncaller_params($_) } @{$params->$att->Map->{$_} } ] ) } keys %{ $params->$att->Map } };
+          } else {
+            $p{ $key } = { map { $_ => $self->_to_jsoncaller_params($params->$att->Map->{$_}) } keys %{ $params->$att->Map } };
+          }
         } else {
           $p{ $key } = $self->_to_jsoncaller_params($params->$att);
         }
@@ -71,7 +80,7 @@ package Paws::Net::RestJsonCaller {
     my $uri = $self->_call_uri($call);
     $request->uri($uri);
 
-    my $url = $self->_api_endpoint($call) . $uri;
+    my $url = $self->_api_endpoint . $uri;
     $request->url($url);
     
     my $data = $self->_to_jsoncaller_params($call);
@@ -83,6 +92,4 @@ package Paws::Net::RestJsonCaller {
 
     return $request;
   }
-}
-
 1;

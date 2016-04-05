@@ -19,19 +19,27 @@ Paws::IoT::CreatePolicyResponse
 
 =head2 PolicyArn => Str
 
-  The policy ARN.
+The policy ARN.
+
+
 
 =head2 PolicyDocument => Str
 
-  The JSON document that describes the policy.
+The JSON document that describes the policy.
+
+
 
 =head2 PolicyName => Str
 
-  The policy name.
+The policy name.
+
+
 
 =head2 PolicyVersionId => Str
 
-  The policy version ID.
+The policy version ID.
+
+
 
 
 =cut

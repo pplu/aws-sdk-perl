@@ -3,6 +3,13 @@ package Paws::SQS;
   sub service { 'sqs' }
   sub version { '2012-11-05' }
   sub flattened_arrays { 1 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+       sub { defined $_[0]->http_status and $_[0]->http_status == 403 and $_[0]->code eq 'RequestThrottled' },
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -130,6 +137,8 @@ package Paws::SQS;
     my $call_object = $self->new_with_coercions('Paws::SQS::SetQueueAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AddPermission ChangeMessageVisibility ChangeMessageVisibilityBatch CreateQueue DeleteMessage DeleteMessageBatch DeleteQueue GetQueueAttributes GetQueueUrl ListDeadLetterSourceQueues ListQueues PurgeQueue ReceiveMessage RemovePermission SendMessage SendMessageBatch SetQueueAttributes / }
 

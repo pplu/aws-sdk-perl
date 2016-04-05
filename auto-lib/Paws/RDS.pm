@@ -3,6 +3,12 @@ package Paws::RDS;
   sub service { 'rds' }
   sub version { '2014-10-31' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -230,6 +236,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBSecurityGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDBSnapshotAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBSnapshotAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDBSnapshots {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBSnapshots', @_);
@@ -330,6 +341,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBParameterGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyDBSnapshotAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBSnapshotAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyDBSubnetGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBSubnetGroup', @_);
@@ -405,246 +421,316 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::RevokeDBSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllDBEngineVersions {
     my $self = shift;
 
     my $result = $self->DescribeDBEngineVersions(@_);
-    my $array = [];
-    push @$array, @{ $result->DBEngineVersions };
+    my $params = {};
+    
+    $params->{ DBEngineVersions } = $result->DBEngineVersions;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
-      push @$array, @{ $result->DBEngineVersions };
+      
+      push @{ $params->{ DBEngineVersions } }, @{ $result->DBEngineVersions };
+      
     }
 
-    return 'Paws::RDS::DescribeDBEngineVersions'->_returns->new(DBEngineVersions => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeDBEngineVersions->_returns, %$params);
   }
   sub DescribeAllDBInstances {
     my $self = shift;
 
     my $result = $self->DescribeDBInstances(@_);
-    my $array = [];
-    push @$array, @{ $result->DBInstances };
+    my $params = {};
+    
+    $params->{ DBInstances } = $result->DBInstances;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
-      push @$array, @{ $result->DBInstances };
+      
+      push @{ $params->{ DBInstances } }, @{ $result->DBInstances };
+      
     }
 
-    return 'Paws::RDS::DescribeDBInstances'->_returns->new(DBInstances => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeDBInstances->_returns, %$params);
   }
   sub DescribeAllDBLogFiles {
     my $self = shift;
 
     my $result = $self->DescribeDBLogFiles(@_);
-    my $array = [];
-    push @$array, @{ $result->DescribeDBLogFiles };
+    my $params = {};
+    
+    $params->{ DescribeDBLogFiles } = $result->DescribeDBLogFiles;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
-      push @$array, @{ $result->DescribeDBLogFiles };
+      
+      push @{ $params->{ DescribeDBLogFiles } }, @{ $result->DescribeDBLogFiles };
+      
     }
 
-    return 'Paws::RDS::DescribeDBLogFiles'->_returns->new(DescribeDBLogFiles => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeDBLogFiles->_returns, %$params);
   }
   sub DescribeAllDBParameterGroups {
     my $self = shift;
 
     my $result = $self->DescribeDBParameterGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->DBParameterGroups };
+    my $params = {};
+    
+    $params->{ DBParameterGroups } = $result->DBParameterGroups;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->DBParameterGroups };
+      
+      push @{ $params->{ DBParameterGroups } }, @{ $result->DBParameterGroups };
+      
     }
 
-    return 'Paws::RDS::DescribeDBParameterGroups'->_returns->new(DBParameterGroups => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeDBParameterGroups->_returns, %$params);
   }
   sub DescribeAllDBParameters {
     my $self = shift;
 
     my $result = $self->DescribeDBParameters(@_);
-    my $array = [];
-    push @$array, @{ $result->Parameters };
+    my $params = {};
+    
+    $params->{ Parameters } = $result->Parameters;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Parameters };
+      
+      push @{ $params->{ Parameters } }, @{ $result->Parameters };
+      
     }
 
-    return 'Paws::RDS::DescribeDBParameters'->_returns->new(Parameters => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeDBParameters->_returns, %$params);
   }
   sub DescribeAllDBSecurityGroups {
     my $self = shift;
 
     my $result = $self->DescribeDBSecurityGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->DBSecurityGroups };
+    my $params = {};
+    
+    $params->{ DBSecurityGroups } = $result->DBSecurityGroups;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->DBSecurityGroups };
+      
+      push @{ $params->{ DBSecurityGroups } }, @{ $result->DBSecurityGroups };
+      
     }
 
-    return 'Paws::RDS::DescribeDBSecurityGroups'->_returns->new(DBSecurityGroups => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeDBSecurityGroups->_returns, %$params);
   }
   sub DescribeAllDBSnapshots {
     my $self = shift;
 
     my $result = $self->DescribeDBSnapshots(@_);
-    my $array = [];
-    push @$array, @{ $result->DBSnapshots };
+    my $params = {};
+    
+    $params->{ DBSnapshots } = $result->DBSnapshots;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
-      push @$array, @{ $result->DBSnapshots };
+      
+      push @{ $params->{ DBSnapshots } }, @{ $result->DBSnapshots };
+      
     }
 
-    return 'Paws::RDS::DescribeDBSnapshots'->_returns->new(DBSnapshots => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeDBSnapshots->_returns, %$params);
   }
   sub DescribeAllDBSubnetGroups {
     my $self = shift;
 
     my $result = $self->DescribeDBSubnetGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->DBSubnetGroups };
+    my $params = {};
+    
+    $params->{ DBSubnetGroups } = $result->DBSubnetGroups;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->DBSubnetGroups };
+      
+      push @{ $params->{ DBSubnetGroups } }, @{ $result->DBSubnetGroups };
+      
     }
 
-    return 'Paws::RDS::DescribeDBSubnetGroups'->_returns->new(DBSubnetGroups => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeDBSubnetGroups->_returns, %$params);
   }
   sub DescribeAllEngineDefaultParameters {
     my $self = shift;
 
     my $result = $self->DescribeEngineDefaultParameters(@_);
-    my $array = [];
-    push @$array, @{ $result->EngineDefaults.Parameters };
+    my $params = {};
+    
+    $params->{ EngineDefaults.Parameters } = $result->EngineDefaults->Parameters;
+    
 
-    while ($result->EngineDefaults.Marker) {
-      $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults.Marker);
-      push @$array, @{ $result->EngineDefaults.Parameters };
+    while ($result->) {
+      $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
+      
+      push @{ $params->{ EngineDefaults.Parameters } }, @{ $result->EngineDefaults->Parameters };
+      
     }
 
-    return 'Paws::RDS::DescribeEngineDefaultParameters'->_returns->new(EngineDefaults.Parameters => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeEngineDefaultParameters->_returns, %$params);
   }
   sub DescribeAllEvents {
     my $self = shift;
 
     my $result = $self->DescribeEvents(@_);
-    my $array = [];
-    push @$array, @{ $result->Events };
+    my $params = {};
+    
+    $params->{ Events } = $result->Events;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeEvents(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Events };
+      
+      push @{ $params->{ Events } }, @{ $result->Events };
+      
     }
 
-    return 'Paws::RDS::DescribeEvents'->_returns->new(Events => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeEvents->_returns, %$params);
   }
   sub DescribeAllEventSubscriptions {
     my $self = shift;
 
     my $result = $self->DescribeEventSubscriptions(@_);
-    my $array = [];
-    push @$array, @{ $result->EventSubscriptionsList };
+    my $params = {};
+    
+    $params->{ EventSubscriptionsList } = $result->EventSubscriptionsList;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
-      push @$array, @{ $result->EventSubscriptionsList };
+      
+      push @{ $params->{ EventSubscriptionsList } }, @{ $result->EventSubscriptionsList };
+      
     }
 
-    return 'Paws::RDS::DescribeEventSubscriptions'->_returns->new(EventSubscriptionsList => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeEventSubscriptions->_returns, %$params);
   }
   sub DescribeAllOptionGroupOptions {
     my $self = shift;
 
     my $result = $self->DescribeOptionGroupOptions(@_);
-    my $array = [];
-    push @$array, @{ $result->OptionGroupOptions };
+    my $params = {};
+    
+    $params->{ OptionGroupOptions } = $result->OptionGroupOptions;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
-      push @$array, @{ $result->OptionGroupOptions };
+      
+      push @{ $params->{ OptionGroupOptions } }, @{ $result->OptionGroupOptions };
+      
     }
 
-    return 'Paws::RDS::DescribeOptionGroupOptions'->_returns->new(OptionGroupOptions => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeOptionGroupOptions->_returns, %$params);
   }
   sub DescribeAllOptionGroups {
     my $self = shift;
 
     my $result = $self->DescribeOptionGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->OptionGroupsList };
+    my $params = {};
+    
+    $params->{ OptionGroupsList } = $result->OptionGroupsList;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->OptionGroupsList };
+      
+      push @{ $params->{ OptionGroupsList } }, @{ $result->OptionGroupsList };
+      
     }
 
-    return 'Paws::RDS::DescribeOptionGroups'->_returns->new(OptionGroupsList => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeOptionGroups->_returns, %$params);
   }
   sub DescribeAllOrderableDBInstanceOptions {
     my $self = shift;
 
     my $result = $self->DescribeOrderableDBInstanceOptions(@_);
-    my $array = [];
-    push @$array, @{ $result->OrderableDBInstanceOptions };
+    my $params = {};
+    
+    $params->{ OrderableDBInstanceOptions } = $result->OrderableDBInstanceOptions;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
-      push @$array, @{ $result->OrderableDBInstanceOptions };
+      
+      push @{ $params->{ OrderableDBInstanceOptions } }, @{ $result->OrderableDBInstanceOptions };
+      
     }
 
-    return 'Paws::RDS::DescribeOrderableDBInstanceOptions'->_returns->new(OrderableDBInstanceOptions => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeOrderableDBInstanceOptions->_returns, %$params);
   }
   sub DescribeAllReservedDBInstances {
     my $self = shift;
 
     my $result = $self->DescribeReservedDBInstances(@_);
-    my $array = [];
-    push @$array, @{ $result->ReservedDBInstances };
+    my $params = {};
+    
+    $params->{ ReservedDBInstances } = $result->ReservedDBInstances;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ReservedDBInstances };
+      
+      push @{ $params->{ ReservedDBInstances } }, @{ $result->ReservedDBInstances };
+      
     }
 
-    return 'Paws::RDS::DescribeReservedDBInstances'->_returns->new(ReservedDBInstances => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeReservedDBInstances->_returns, %$params);
   }
   sub DescribeAllReservedDBInstancesOfferings {
     my $self = shift;
 
     my $result = $self->DescribeReservedDBInstancesOfferings(@_);
-    my $array = [];
-    push @$array, @{ $result->ReservedDBInstancesOfferings };
+    my $params = {};
+    
+    $params->{ ReservedDBInstancesOfferings } = $result->ReservedDBInstancesOfferings;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ReservedDBInstancesOfferings };
+      
+      push @{ $params->{ ReservedDBInstancesOfferings } }, @{ $result->ReservedDBInstancesOfferings };
+      
     }
 
-    return 'Paws::RDS::DescribeReservedDBInstancesOfferings'->_returns->new(ReservedDBInstancesOfferings => $array);
+    return $self->new_with_coercions(Paws::RDS::DescribeReservedDBInstancesOfferings->_returns, %$params);
   }
   sub DownloadAllDBLogFilePortions {
     my $self = shift;
 
     my $result = $self->DownloadDBLogFilePortion(@_);
-    my $array = [];
-    push @$array, @{ $result->LogFileData };
+    my $params = {};
+    
+    $params->{ LogFileData } = $result->LogFileData;
+    
 
-    while ($result->Marker) {
+    while ($result->AdditionalDataPending) {
       $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
-      push @$array, @{ $result->LogFileData };
+      
+      push @{ $params->{ LogFileData } }, @{ $result->LogFileData };
+      
     }
 
-    return 'Paws::RDS::DownloadDBLogFilePortion'->_returns->new(LogFileData => $array);
+    return $self->new_with_coercions(Paws::RDS::DownloadDBLogFilePortion->_returns, %$params);
   }
 
-  sub operations { qw/AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBInstance ModifyDBParameterGroup ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PurchaseReservedDBInstancesOffering RebootDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress / }
+
+  sub operations { qw/AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PurchaseReservedDBInstancesOffering RebootDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress / }
 
 1;
 
@@ -681,26 +767,65 @@ industry-standard relational database and manages common database
 administration tasks, freeing up developers to focus on what makes
 their applications and businesses unique.
 
-Amazon RDS gives you access to the capabilities of a MySQL, PostgreSQL,
-Microsoft SQL Server, Oracle, or Aurora database server. This means the
-code, applications, and tools you already use today with your existing
-databases work with Amazon RDS without modification. Amazon RDS
-automatically backs up your database and maintains the database
-software that powers your DB instance. Amazon RDS is flexible: you can
-scale your database instance's compute resources and storage capacity
-to meet your application's demand. As with all Amazon Web Services,
-there are no up-front investments, and you pay only for the resources
-you use.
+Amazon RDS gives you access to the capabilities of a MySQL, MariaDB,
+PostgreSQL, Microsoft SQL Server, Oracle, or Amazon Aurora database
+server. These capabilities mean that the code, applications, and tools
+you already use today with your existing databases work with Amazon RDS
+without modification. Amazon RDS automatically backs up your database
+and maintains the database software that powers your DB instance.
+Amazon RDS is flexible: you can scale your database instance's compute
+resources and storage capacity to meet your application's demand. As
+with all Amazon Web Services, there are no up-front investments, and
+you pay only for the resources you use.
 
-This is an interface reference for Amazon RDS. It contains
-documentation for a programming or command line interface you can use
-to manage Amazon RDS. Note that Amazon RDS is asynchronous, which means
-that some interfaces might require techniques such as polling or
-callback functions to determine when a command has been applied. In
-this reference, the parameter descriptions indicate whether a command
-is applied immediately, on the next instance reboot, or during the
-maintenance window. For a summary of the Amazon RDS interfaces, go to
-Available RDS Interfaces.
+This interface reference for Amazon RDS contains documentation for a
+programming or command line interface you can use to manage Amazon RDS.
+Note that Amazon RDS is asynchronous, which means that some interfaces
+might require techniques such as polling or callback functions to
+determine when a command has been applied. In this reference, the
+parameter descriptions indicate whether a command is applied
+immediately, on the next instance reboot, or during the maintenance
+window. The reference structure is as follows, and we list following
+some related topics from the user guide.
+
+B<Amazon RDS API Reference>
+
+=over
+
+=item *
+
+For the alphabetical list of API actions, see API Actions.
+
+=item *
+
+For the alphabetical list of data types, see Data Types.
+
+=item *
+
+For a list of common query parameters, see Common Parameters.
+
+=item *
+
+For descriptions of the error codes, see Common Errors.
+
+=back
+
+B<Amazon RDS User Guide>
+
+=over
+
+=item *
+
+For a summary of the Amazon RDS interfaces, see Available RDS
+Interfaces.
+
+=item *
+
+For more information about how to use the Query API, see Using the
+Query API.
+
+=back
+
 
 =head1 METHODS
 
@@ -781,14 +906,18 @@ Returns: a L<Paws::RDS::CopyDBParameterGroupResult> instance
   Copies the specified DB parameter group.
 
 
-=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CopyDBSnapshot(SourceDBSnapshotIdentifier => Str, TargetDBSnapshotIdentifier => Str, [CopyTags => Bool, KmsKeyId => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyDBSnapshot>
 
 Returns: a L<Paws::RDS::CopyDBSnapshotResult> instance
 
-  Copies the specified DBSnapshot. The source DBSnapshot must be in the
+  Copies the specified DB snapshot. The source DB snapshot must be in the
 "available" state.
+
+If you are copying from a shared manual DB snapshot, the
+C<SourceDBSnapshotIdentifier> must be the ARN of the shared DB
+snapshot.
 
 
 =head2 CopyOptionGroup(SourceOptionGroupIdentifier => Str, TargetOptionGroupDescription => Str, TargetOptionGroupIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -800,7 +929,7 @@ Returns: a L<Paws::RDS::CopyOptionGroupResult> instance
   Copies the specified option group.
 
 
-=head2 CreateDBCluster(DBClusterIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, [AvailabilityZones => ArrayRef[Str], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EngineVersion => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateDBCluster(DBClusterIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, [AvailabilityZones => ArrayRef[Str], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBCluster>
 
@@ -857,7 +986,7 @@ Returns: a L<Paws::RDS::CreateDBClusterSnapshotResult> instance
 Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
 
 
-=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateDBInstance(DBInstanceClass => Str, DBInstanceIdentifier => Str, Engine => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, BackupRetentionPeriod => Int, CharacterSetName => Str, CopyTagsToSnapshot => Bool, DBClusterIdentifier => Str, DBName => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, EngineVersion => Str, Iops => Int, KmsKeyId => Str, LicenseModel => Str, MasterUsername => Str, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageEncrypted => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstance>
 
@@ -866,14 +995,14 @@ Returns: a L<Paws::RDS::CreateDBInstanceResult> instance
   Creates a new DB instance.
 
 
-=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, Iops => Int, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
+=head2 CreateDBInstanceReadReplica(DBInstanceIdentifier => Str, SourceDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBSubnetGroupName => Str, Iops => Int, MonitoringInterval => Int, MonitoringRoleArn => Str, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBInstanceReadReplica>
 
 Returns: a L<Paws::RDS::CreateDBInstanceReadReplicaResult> instance
 
-  Creates a DB instance for a DB instance running MySQL or PostgreSQL
-that acts as a Read Replica of a source DB instance.
+  Creates a DB instance for a DB instance running MySQL, MariaDB, or
+PostgreSQL that acts as a Read Replica of a source DB instance.
 
 All Read Replica DB instances are created as Single-AZ deployments with
 backups disabled. All other DB instance attributes (including DB
@@ -1253,7 +1382,28 @@ C<DBSecurityGroupName> is specified, the list will contain only the
 descriptions of the specified DB security group.
 
 
-=head2 DescribeDBSnapshots([DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeDBSnapshotAttributes([DBSnapshotIdentifier => Str])
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBSnapshotAttributes>
+
+Returns: a L<Paws::RDS::DescribeDBSnapshotAttributesResult> instance
+
+  Returns a list of DB snapshot attribute names and values for a manual
+DB snapshot.
+
+When sharing snapshots with other AWS accounts,
+C<DescribeDBSnapshotAttributes> returns the C<restore> attribute and a
+list of the AWS account ids that are authorized to copy or restore the
+manual DB snapshot. If C<all> is included in the list of values for the
+C<restore> attribute, then the manual DB snapshot is public and can be
+copied or restored by all AWS accounts.
+
+To add or remove access for an AWS account to copy or restore a manual
+DB snapshot, or to make the manual DB snapshot public or private, use
+the ModifyDBSnapshotAttribute API.
+
+
+=head2 DescribeDBSnapshots([DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBSnapshots>
 
@@ -1482,7 +1632,7 @@ DescribeDBClusterParameters command to verify that your DB cluster
 parameter group has been created or modified.
 
 
-=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBSecurityGroups => ArrayRef[Str], EngineVersion => Str, Iops => Int, MasterUserPassword => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str], Domain => Str, DomainIAMRoleName => Str, EngineVersion => Str, Iops => Int, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBInstance>
 
@@ -1519,6 +1669,31 @@ by the C<character_set_database> parameter. You can use the I<Parameter
 Groups> option of the Amazon RDS console or the I<DescribeDBParameters>
 command to verify that your DB parameter group has been created or
 modified.
+
+
+=head2 ModifyDBSnapshotAttribute(DBSnapshotIdentifier => Str, [AttributeName => Str, ValuesToAdd => ArrayRef[Str], ValuesToRemove => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBSnapshotAttribute>
+
+Returns: a L<Paws::RDS::ModifyDBSnapshotAttributeResult> instance
+
+  Adds an attribute and values to, or removes an attribute and values
+from a manual DB snapshot.
+
+To share a manual DB snapshot with other AWS accounts, specify
+C<restore> as the C<AttributeName> and use the C<ValuesToAdd> parameter
+to add a list of the AWS account ids that are authorized to restore the
+manual DB snapshot. Uses the value C<all> to make the manual DB
+snapshot public and can by copied or restored by all AWS accounts. Do
+not add the C<all> value for any manual DB snapshots that contain
+private information that you do not want to be available to all AWS
+accounts.
+
+To view which AWS accounts have access to copy or restore a manual DB
+snapshot, or whether a manual DB snapshot public or private, use the
+DescribeDBSnapshotAttributes API.
+
+If the manual DB snapshot is encrypted, it cannot be shared.
 
 
 =head2 ModifyDBSubnetGroup(DBSubnetGroupName => Str, SubnetIds => ArrayRef[Str], [DBSubnetGroupDescription => Str])
@@ -1667,7 +1842,7 @@ set to C<pending-reboot> to take effect on the next DB instance restart
 or C<RebootDBInstance> request.
 
 
-=head2 RestoreDBClusterFromSnapshot(DBClusterIdentifier => Str, Engine => Str, SnapshotIdentifier => Str, [AvailabilityZones => ArrayRef[Str], DatabaseName => Str, DBSubnetGroupName => Str, EngineVersion => Str, OptionGroupName => Str, Port => Int, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 RestoreDBClusterFromSnapshot(DBClusterIdentifier => Str, Engine => Str, SnapshotIdentifier => Str, [AvailabilityZones => ArrayRef[Str], DatabaseName => Str, DBSubnetGroupName => Str, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterFromSnapshot>
 
@@ -1682,7 +1857,7 @@ For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
 
 
-=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 RestoreDBClusterToPointInTime(DBClusterIdentifier => Str, SourceDBClusterIdentifier => Str, [DBSubnetGroupName => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, RestoreToTime => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], UseLatestRestorableTime => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBClusterToPointInTime>
 
@@ -1699,7 +1874,7 @@ For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
 
 
-=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str])
+=head2 RestoreDBInstanceFromDBSnapshot(DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceFromDBSnapshot>
 
@@ -1707,8 +1882,7 @@ Returns: a L<Paws::RDS::RestoreDBInstanceFromDBSnapshotResult> instance
 
   Creates a new DB instance from a DB snapshot. The target database is
 created from the source database restore point with the most of
-original configuration, but in a system chosen availability zone with
-the default security group, the default subnet group, and the default
+original configuration with the default security group and the default
 DB parameter group. By default, the new DB instance is created as a
 single-AZ deployment except when the instance is a SQL Server instance
 that has an option group that is associated with mirroring; in this
@@ -1725,23 +1899,28 @@ RestoreDBInstanceFromDBSnapshot action. The result is that you will
 replace the original DB instance with the DB instance created from the
 snapshot.
 
+If you are restoring from a shared manual DB snapshot, the
+C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
 
-=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
+
+=head2 RestoreDBInstanceToPointInTime(SourceDBInstanceIdentifier => Str, TargetDBInstanceIdentifier => Str, [AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBName => Str, DBSubnetGroupName => Str, Domain => Str, DomainIAMRoleName => Str, Engine => Str, Iops => Int, LicenseModel => Str, MultiAZ => Bool, OptionGroupName => Str, Port => Int, PubliclyAccessible => Bool, RestoreTime => Str, StorageType => Str, Tags => ArrayRef[L<Paws::RDS::Tag>], TdeCredentialArn => Str, TdeCredentialPassword => Str, UseLatestRestorableTime => Bool])
 
 Each argument is described in detail in: L<Paws::RDS::RestoreDBInstanceToPointInTime>
 
 Returns: a L<Paws::RDS::RestoreDBInstanceToPointInTimeResult> instance
 
-  Restores a DB instance to an arbitrary point-in-time. Users can restore
-to any point in time before the LatestRestorableTime for up to
-BackupRetentionPeriod days. The target database is created with the
-most of original configuration, but in a system chosen availability
-zone with the default security group, the default subnet group, and the
-default DB parameter group. By default, the new DB instance is created
-as a single-AZ deployment except when the instance is a SQL Server
-instance that has an option group that is associated with mirroring; in
-this case, the instance becomes a mirrored deployment and not a
-single-AZ deployment.
+  Restores a DB instance to an arbitrary point in time. You can restore
+to any point in time before the time identified by the
+LatestRestorableTime property. You can restore to a point up to the
+number of days specified by the BackupRetentionPeriod property.
+
+The target database is created with most of the original configuration,
+but in a system-selected availability zone, with the default security
+group, the default subnet group, and the default DB parameter group. By
+default, the new DB instance is created as a single-AZ deployment
+except when the instance is a SQL Server instance that has an option
+group that is associated with mirroring; in this case, the instance
+becomes a mirrored deployment and not a single-AZ deployment.
 
 
 =head2 RevokeDBSecurityGroupIngress(DBSecurityGroupName => Str, [CIDRIP => Str, EC2SecurityGroupId => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str])

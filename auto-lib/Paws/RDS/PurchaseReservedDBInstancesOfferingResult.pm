@@ -16,7 +16,9 @@ Paws::RDS::PurchaseReservedDBInstancesOfferingResult
 
 =head2 ReservedDBInstance => L<Paws::RDS::ReservedDBInstance>
 
-  
+
+
+
 
 
 =cut

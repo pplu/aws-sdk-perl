@@ -32,19 +32,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Fireho
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes an action that writes data to an Amazon Kinesis Firehose
+stream.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DeliveryStreamName => Str
 
-  
+  The delivery stream name.
 
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  
+  The IAM role that grants access to the Amazon Kinesis Firehost stream.
 
 
 

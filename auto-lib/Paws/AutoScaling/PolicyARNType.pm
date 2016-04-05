@@ -16,7 +16,9 @@ Paws::AutoScaling::PolicyARNType
 
 =head2 PolicyARN => Str
 
-  The Amazon Resource Name (ARN) of the policy.
+The Amazon Resource Name (ARN) of the policy.
+
+
 
 
 =cut

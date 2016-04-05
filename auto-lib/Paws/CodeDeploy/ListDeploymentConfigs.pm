@@ -35,9 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NextToken => Str
 
-  An identifier that was returned from the previous list deployment
-configurations call, which can be used to return the next set of
-deployment configurations in the list.
+An identifier returned from the previous list deployment configurations
+call. It can be used to return the next set of deployment
+configurations in the list.
+
 
 
 

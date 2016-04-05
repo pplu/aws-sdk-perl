@@ -4,6 +4,12 @@ package Paws::MarketplaceCommerceAnalytics;
   sub version { '2015-07-01' }
   sub target_prefix { 'MarketplaceCommerceAnalytics20150701' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -13,6 +19,8 @@ package Paws::MarketplaceCommerceAnalytics;
     my $call_object = $self->new_with_coercions('Paws::MarketplaceCommerceAnalytics::GenerateDataSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/GenerateDataSet / }
 
@@ -46,7 +54,7 @@ Provides AWS Marketplace business intelligence data on-demand.
 
 =head1 METHODS
 
-=head2 GenerateDataSet(DataSetPublicationDate => Str, DataSetType => Str, DestinationS3BucketName => Str, RoleNameArn => Str, SnsTopicArn => Str, [DestinationS3Prefix => Str])
+=head2 GenerateDataSet(DataSetPublicationDate => Str, DataSetType => Str, DestinationS3BucketName => Str, RoleNameArn => Str, SnsTopicArn => Str, [CustomerDefinedValues => L<Paws::MarketplaceCommerceAnalytics::CustomerDefinedValues>, DestinationS3Prefix => Str])
 
 Each argument is described in detail in: L<Paws::MarketplaceCommerceAnalytics::GenerateDataSet>
 
@@ -62,8 +70,8 @@ comma-separated values (CSV) format with the file name
 exists (e.g. if the same data set is requested twice), the original
 file will be overwritten by the new file. Requires a Role with an
 attached permissions policy providing Allow permissions for the
-following actions: s3:PutObject, s3:getBucketLocation, sns:SetRegion,
-sns:ListTopics, sns:Publish, iam:GetRolePolicy.
+following actions: s3:PutObject, s3:GetBucketLocation,
+sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 
 
 =head1 SEE ALSO

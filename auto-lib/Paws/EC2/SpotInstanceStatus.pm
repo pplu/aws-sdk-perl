@@ -40,7 +40,8 @@ This class has no description
 
 =head2 Code => Str
 
-  The status code.
+  The status code. For a list of status codes, see Spot Bid Status Codes
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 Message => Str

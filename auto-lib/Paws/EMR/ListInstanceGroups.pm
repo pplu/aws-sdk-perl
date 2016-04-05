@@ -36,13 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClusterId => Str
 
-  The identifier of the cluster for which to list the instance groups.
+The identifier of the cluster for which to list the instance groups.
+
 
 
 =head2 Marker => Str
 
-  The pagination token that indicates the next set of results to
+The pagination token that indicates the next set of results to
 retrieve.
+
 
 
 

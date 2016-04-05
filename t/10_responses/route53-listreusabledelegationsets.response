@@ -1,2 +1,6 @@
-<?xml version="1.0"?>
-<ListReusableDelegationSetsResponse xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><DelegationSets/><IsTruncated>false</IsTruncated><MaxItems>100</MaxItems></ListReusableDelegationSetsResponse>
+---
+content: |-
+  <?xml version="1.0"?>
+  <ListReusableDelegationSetsResponse xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><DelegationSets/><IsTruncated>false</IsTruncated><MaxItems>100</MaxItems></ListReusableDelegationSetsResponse>
+headers: []
+status: 200

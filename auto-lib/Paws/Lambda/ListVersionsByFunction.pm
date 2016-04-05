@@ -11,7 +11,7 @@ package Paws::Lambda::ListVersionsByFunction;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/versions');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::ListVersionsByFunctionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListVersionsByFunctionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,28 +39,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  Function name whose versions to list. You can specify an unqualified
-function name (for example, "Thumbnail") or you can specify Amazon
-Resource Name (ARN) of the function (for example,
-"arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS Lambda
-also allows you to specify only the account ID qualifier (for example,
-"account-id:Thumbnail"). Note that the length constraint applies only
+Function name whose versions to list. You can specify a function name
+(for example, C<Thumbnail>) or you can specify Amazon Resource Name
+(ARN) of the function (for example,
+C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
+also allows you to specify a partial ARN (for example,
+C<account-id:Thumbnail>). Note that the length constraint applies only
 to the ARN. If you specify only the function name, it is limited to 64
 character in length.
 
 
+
 =head2 Marker => Str
 
-  Optional string. An opaque pagination token returned from a previous
+Optional string. An opaque pagination token returned from a previous
 C<ListVersionsByFunction> operation. If present, indicates where to
 continue the listing.
 
 
+
 =head2 MaxItems => Int
 
-  Optional integer. Specifies the maximum number of AWS Lambda function
+Optional integer. Specifies the maximum number of AWS Lambda function
 versions to return in response. This parameter value must be greater
 than 0.
+
 
 
 

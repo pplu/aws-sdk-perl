@@ -14,7 +14,7 @@ package Paws::ElasticTranscoder::CreatePreset;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/presets');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::CreatePresetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreatePresetResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -42,36 +42,42 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Audio => L<Paws::ElasticTranscoder::AudioParameters>
 
-  A section of the request body that specifies the audio parameters.
+A section of the request body that specifies the audio parameters.
+
 
 
 =head2 B<REQUIRED> Container => Str
 
-  The container type for the output file. Valid values include C<flac>,
+The container type for the output file. Valid values include C<flac>,
 C<flv>, C<fmp4>, C<gif>, C<mp3>, C<mp4>, C<mpg>, C<mxf>, C<oga>,
 C<ogg>, C<ts>, and C<webm>.
 
 
+
 =head2 Description => Str
 
-  A description of the preset.
+A description of the preset.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the preset. We recommend that the name be unique within the
+The name of the preset. We recommend that the name be unique within the
 AWS account, but uniqueness is not enforced.
+
 
 
 =head2 Thumbnails => L<Paws::ElasticTranscoder::Thumbnails>
 
-  A section of the request body that specifies the thumbnail parameters,
+A section of the request body that specifies the thumbnail parameters,
 if any.
+
 
 
 =head2 Video => L<Paws::ElasticTranscoder::VideoParameters>
 
-  A section of the request body that specifies the video parameters.
+A section of the request body that specifies the video parameters.
+
 
 
 

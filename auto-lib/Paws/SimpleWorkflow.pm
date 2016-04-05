@@ -4,6 +4,12 @@ package Paws::SimpleWorkflow;
   sub version { '2012-01-25' }
   sub target_prefix { 'SimpleWorkflowService' }
   sub json_version { "1.0" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -163,104 +169,134 @@ package Paws::SimpleWorkflow;
     my $call_object = $self->new_with_coercions('Paws::SimpleWorkflow::TerminateWorkflowExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetAllWorkflowExecutionHistories {
+  
+  sub GetAllWorkflowExecutionHistory {
     my $self = shift;
 
     my $result = $self->GetWorkflowExecutionHistory(@_);
-    my $array = [];
-    push @$array, @{ $result->events };
+    my $params = {};
+    
+    $params->{ events } = $result->events;
+    
 
-    while ($result->nextPageToken) {
+    while ($result->) {
       $result = $self->GetWorkflowExecutionHistory(@_, nextPageToken => $result->nextPageToken);
-      push @$array, @{ $result->events };
+      
+      push @{ $params->{ events } }, @{ $result->events };
+      
     }
 
-    return 'Paws::SimpleWorkflow::GetWorkflowExecutionHistory'->_returns->new(events => $array);
+    return $self->new_with_coercions(Paws::SimpleWorkflow::GetWorkflowExecutionHistory->_returns, %$params);
   }
   sub ListAllActivityTypes {
     my $self = shift;
 
     my $result = $self->ListActivityTypes(@_);
-    my $array = [];
-    push @$array, @{ $result->typeInfos };
+    my $params = {};
+    
+    $params->{ typeInfos } = $result->typeInfos;
+    
 
-    while ($result->nextPageToken) {
+    while ($result->) {
       $result = $self->ListActivityTypes(@_, nextPageToken => $result->nextPageToken);
-      push @$array, @{ $result->typeInfos };
+      
+      push @{ $params->{ typeInfos } }, @{ $result->typeInfos };
+      
     }
 
-    return 'Paws::SimpleWorkflow::ListActivityTypes'->_returns->new(typeInfos => $array);
+    return $self->new_with_coercions(Paws::SimpleWorkflow::ListActivityTypes->_returns, %$params);
   }
   sub ListAllClosedWorkflowExecutions {
     my $self = shift;
 
     my $result = $self->ListClosedWorkflowExecutions(@_);
-    my $array = [];
-    push @$array, @{ $result->executionInfos };
+    my $params = {};
+    
+    $params->{ executionInfos } = $result->executionInfos;
+    
 
-    while ($result->nextPageToken) {
+    while ($result->) {
       $result = $self->ListClosedWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
-      push @$array, @{ $result->executionInfos };
+      
+      push @{ $params->{ executionInfos } }, @{ $result->executionInfos };
+      
     }
 
-    return 'Paws::SimpleWorkflow::ListClosedWorkflowExecutions'->_returns->new(executionInfos => $array);
+    return $self->new_with_coercions(Paws::SimpleWorkflow::ListClosedWorkflowExecutions->_returns, %$params);
   }
   sub ListAllDomains {
     my $self = shift;
 
     my $result = $self->ListDomains(@_);
-    my $array = [];
-    push @$array, @{ $result->domainInfos };
+    my $params = {};
+    
+    $params->{ domainInfos } = $result->domainInfos;
+    
 
-    while ($result->nextPageToken) {
+    while ($result->) {
       $result = $self->ListDomains(@_, nextPageToken => $result->nextPageToken);
-      push @$array, @{ $result->domainInfos };
+      
+      push @{ $params->{ domainInfos } }, @{ $result->domainInfos };
+      
     }
 
-    return 'Paws::SimpleWorkflow::ListDomains'->_returns->new(domainInfos => $array);
+    return $self->new_with_coercions(Paws::SimpleWorkflow::ListDomains->_returns, %$params);
   }
   sub ListAllOpenWorkflowExecutions {
     my $self = shift;
 
     my $result = $self->ListOpenWorkflowExecutions(@_);
-    my $array = [];
-    push @$array, @{ $result->executionInfos };
+    my $params = {};
+    
+    $params->{ executionInfos } = $result->executionInfos;
+    
 
-    while ($result->nextPageToken) {
+    while ($result->) {
       $result = $self->ListOpenWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
-      push @$array, @{ $result->executionInfos };
+      
+      push @{ $params->{ executionInfos } }, @{ $result->executionInfos };
+      
     }
 
-    return 'Paws::SimpleWorkflow::ListOpenWorkflowExecutions'->_returns->new(executionInfos => $array);
+    return $self->new_with_coercions(Paws::SimpleWorkflow::ListOpenWorkflowExecutions->_returns, %$params);
   }
   sub ListAllWorkflowTypes {
     my $self = shift;
 
     my $result = $self->ListWorkflowTypes(@_);
-    my $array = [];
-    push @$array, @{ $result->typeInfos };
+    my $params = {};
+    
+    $params->{ typeInfos } = $result->typeInfos;
+    
 
-    while ($result->nextPageToken) {
+    while ($result->) {
       $result = $self->ListWorkflowTypes(@_, nextPageToken => $result->nextPageToken);
-      push @$array, @{ $result->typeInfos };
+      
+      push @{ $params->{ typeInfos } }, @{ $result->typeInfos };
+      
     }
 
-    return 'Paws::SimpleWorkflow::ListWorkflowTypes'->_returns->new(typeInfos => $array);
+    return $self->new_with_coercions(Paws::SimpleWorkflow::ListWorkflowTypes->_returns, %$params);
   }
   sub PollForAllDecisionTasks {
     my $self = shift;
 
     my $result = $self->PollForDecisionTask(@_);
-    my $array = [];
-    push @$array, @{ $result->events };
+    my $params = {};
+    
+    $params->{ events } = $result->events;
+    
 
-    while ($result->nextPageToken) {
+    while ($result->) {
       $result = $self->PollForDecisionTask(@_, nextPageToken => $result->nextPageToken);
-      push @$array, @{ $result->events };
+      
+      push @{ $params->{ events } }, @{ $result->events };
+      
     }
 
-    return 'Paws::SimpleWorkflow::PollForDecisionTask'->_returns->new(events => $array);
+    return $self->new_with_coercions(Paws::SimpleWorkflow::PollForDecisionTask->_returns, %$params);
   }
+
 
   sub operations { qw/CountClosedWorkflowExecutions CountOpenWorkflowExecutions CountPendingActivityTasks CountPendingDecisionTasks DeprecateActivityType DeprecateDomain DeprecateWorkflowType DescribeActivityType DescribeDomain DescribeWorkflowExecution DescribeWorkflowType GetWorkflowExecutionHistory ListActivityTypes ListClosedWorkflowExecutions ListDomains ListOpenWorkflowExecutions ListWorkflowTypes PollForActivityTask PollForDecisionTask RecordActivityTaskHeartbeat RegisterActivityType RegisterDomain RegisterWorkflowType RequestCancelWorkflowExecution RespondActivityTaskCanceled RespondActivityTaskCompleted RespondActivityTaskFailed RespondDecisionTaskCompleted SignalWorkflowExecution StartWorkflowExecution TerminateWorkflowExecution / }
 

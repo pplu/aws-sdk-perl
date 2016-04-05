@@ -3,6 +3,12 @@ package Paws::ELB;
   sub service { 'elasticloadbalancing' }
   sub version { '2012-06-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -147,20 +153,26 @@ package Paws::ELB;
     my $call_object = $self->new_with_coercions('Paws::ELB::SetLoadBalancerPoliciesOfListener', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllLoadBalancers {
     my $self = shift;
 
     my $result = $self->DescribeLoadBalancers(@_);
-    my $array = [];
-    push @$array, @{ $result->LoadBalancerDescriptions };
+    my $params = {};
+    
+    $params->{ LoadBalancerDescriptions } = $result->LoadBalancerDescriptions;
+    
 
-    while ($result->NextMarker) {
+    while ($result->) {
       $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
-      push @$array, @{ $result->LoadBalancerDescriptions };
+      
+      push @{ $params->{ LoadBalancerDescriptions } }, @{ $result->LoadBalancerDescriptions };
+      
     }
 
-    return 'Paws::ELB::DescribeLoadBalancers'->_returns->new(LoadBalancerDescriptions => $array);
+    return $self->new_with_coercions(Paws::ELB::DescribeLoadBalancers->_returns, %$params);
   }
+
 
   sub operations { qw/AddTags ApplySecurityGroupsToLoadBalancer AttachLoadBalancerToSubnets ConfigureHealthCheck CreateAppCookieStickinessPolicy CreateLBCookieStickinessPolicy CreateLoadBalancer CreateLoadBalancerListeners CreateLoadBalancerPolicy DeleteLoadBalancer DeleteLoadBalancerListeners DeleteLoadBalancerPolicy DeregisterInstancesFromLoadBalancer DescribeInstanceHealth DescribeLoadBalancerAttributes DescribeLoadBalancerPolicies DescribeLoadBalancerPolicyTypes DescribeLoadBalancers DescribeTags DetachLoadBalancerFromSubnets DisableAvailabilityZonesForLoadBalancer EnableAvailabilityZonesForLoadBalancer ModifyLoadBalancerAttributes RegisterInstancesWithLoadBalancer RemoveTags SetLoadBalancerListenerSSLCertificate SetLoadBalancerPoliciesForBackendServer SetLoadBalancerPoliciesOfListener / }
 

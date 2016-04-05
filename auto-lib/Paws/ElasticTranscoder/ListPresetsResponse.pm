@@ -17,14 +17,18 @@ Paws::ElasticTranscoder::ListPresetsResponse
 
 =head2 NextPageToken => Str
 
-  A value that you use to access the second and subsequent pages of
+A value that you use to access the second and subsequent pages of
 results, if any. When the presets fit on one page or when you've
 reached the last page of results, the value of C<NextPageToken> is
 C<null>.
 
+
+
 =head2 Presets => ArrayRef[L<Paws::ElasticTranscoder::Preset>]
 
-  An array of C<Preset> objects.
+An array of C<Preset> objects.
+
+
 
 
 =cut

@@ -1,6 +1,6 @@
 package Paws::DynamoDB::ItemCollectionMetricsPerTable;
   use Moose;
-  with 'Paws::API::StrToNativeMapParser';
+  with 'Paws::API::StrToObjMapParser';
 
   has Map => (is => 'ro', isa => 'HashRef[ArrayRef[Paws::DynamoDB::ItemCollectionMetrics]]');
 1;

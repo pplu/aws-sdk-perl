@@ -16,7 +16,9 @@ Paws::CloudSearch::DescribeDomainsResponse
 
 =head2 B<REQUIRED> DomainStatusList => ArrayRef[L<Paws::CloudSearch::DomainStatus>]
 
-  
+
+
+
 
 
 =cut

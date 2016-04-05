@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Attributes => L<Paws::SQS::QueueAttributeMap>
 
-  A map of attributes to set.
+A map of attributes to set.
 
 The following lists the names, descriptions, and values of the special
 request parameters the C<SetQueueAttributes> action uses:
@@ -78,9 +78,11 @@ Queues in the I<Amazon SQS Developer Guide>.
 
 
 
+
 =head2 B<REQUIRED> QueueUrl => Str
 
-  The URL of the Amazon SQS queue to take action on.
+The URL of the Amazon SQS queue to take action on.
+
 
 
 

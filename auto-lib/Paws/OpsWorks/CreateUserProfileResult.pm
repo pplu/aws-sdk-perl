@@ -15,7 +15,9 @@ Paws::OpsWorks::CreateUserProfileResult
 
 =head2 IamUserArn => Str
 
-  The user's IAM ARN.
+The user's IAM ARN.
+
+
 
 
 =cut

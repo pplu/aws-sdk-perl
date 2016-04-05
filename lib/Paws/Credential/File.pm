@@ -1,4 +1,4 @@
-package Paws::Credential::File {
+package Paws::Credential::File;
   use Moose;
   use Config::INI::Reader;
   use File::HomeDir;
@@ -15,7 +15,9 @@ package Paws::Credential::File {
   });
 
   has file_name => (is => 'ro', default => sub { 'credentials' });
-  has path => (is => 'ro', default => sub { return File::HomeDir->my_home . '/.aws/' });
+  has path => (is => 'ro', default => sub {
+		  return (File::HomeDir->my_home || '') . '/.aws/';
+	  });
 
   has _ini_contents => (is => 'ro', isa => 'HashRef', lazy => 1, default => sub {
     my $self = shift;
@@ -47,9 +49,4 @@ package Paws::Credential::File {
   with 'Paws::Credential';
 
   no Moose;
-}
-
 1;
-
-
-

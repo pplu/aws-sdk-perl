@@ -12,7 +12,7 @@ package Paws::ApiGateway::UpdateIntegration;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PATCH');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Integration');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateIntegrationResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -40,23 +40,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-  Represents an update integration request's HTTP method.
+Represents an update integration request's HTTP method.
+
 
 
 =head2 PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]
 
-  A list of operations describing the updates to apply to the specified
+A list of operations describing the updates to apply to the specified
 resource. The patches are applied in the order specified in the list.
+
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  Represents an update integration request's resource identifier.
+Represents an update integration request's resource identifier.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  Represents an update integration request's API identifier.
+Represents an update integration request's API identifier.
+
 
 
 

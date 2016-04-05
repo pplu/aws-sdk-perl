@@ -1,4 +1,4 @@
-package Paws::Credential::ProviderChain {
+package Paws::Credential::ProviderChain;
   use Moose;
 
   has providers => (
@@ -30,6 +30,4 @@ package Paws::Credential::ProviderChain {
   }
 
   with 'Paws::Credential';
-}
-
 1;

@@ -54,6 +54,11 @@ compliance.
   Indicates whether the AWS resource complies with the AWS Config rule
 that evaluated it.
 
+For the C<EvaluationResult> data type, AWS Config supports only the
+C<COMPLIANT>, C<NON_COMPLIANT>, and C<NOT_APPLICABLE> values. AWS
+Config does not support the C<INSUFFICIENT_DATA> value for the
+C<EvaluationResult> data type.
+
 
 =head2 ConfigRuleInvokedTime => Str
 

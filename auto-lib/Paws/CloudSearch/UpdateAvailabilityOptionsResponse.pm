@@ -16,8 +16,10 @@ Paws::CloudSearch::UpdateAvailabilityOptionsResponse
 
 =head2 AvailabilityOptions => L<Paws::CloudSearch::AvailabilityOptionsStatus>
 
-  The newly-configured availability options. Indicates whether Multi-AZ
+The newly-configured availability options. Indicates whether Multi-AZ
 is enabled for the domain.
+
+
 
 
 =cut

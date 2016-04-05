@@ -16,11 +16,15 @@ Paws::StorageGateway::UpdateGatewayInformationOutput
 
 =head2 GatewayARN => Str
 
-  
+
+
+
 
 =head2 GatewayName => Str
 
-  
+
+
+
 
 
 =cut

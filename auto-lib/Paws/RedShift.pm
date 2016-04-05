@@ -3,6 +3,12 @@ package Paws::RedShift;
   sub service { 'redshift' }
   sub version { '2012-12-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -217,6 +223,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeSnapshotCopyGrants', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTableRestoreStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeTableRestoreStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeTags', @_);
@@ -245,6 +256,11 @@ package Paws::RedShift;
   sub ModifyCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyClusterIamRoles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterIamRoles', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyClusterParameterGroup {
@@ -287,6 +303,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::RestoreFromClusterSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RestoreTableFromClusterSnapshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::RestoreTableFromClusterSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RevokeClusterSecurityGroupIngress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::RevokeClusterSecurityGroupIngress', @_);
@@ -302,218 +323,280 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::RotateEncryptionKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllClusterParameterGroups {
     my $self = shift;
 
     my $result = $self->DescribeClusterParameterGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->ParameterGroups };
+    my $params = {};
+    
+    $params->{ ParameterGroups } = $result->ParameterGroups;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeClusterParameterGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ParameterGroups };
+      
+      push @{ $params->{ ParameterGroups } }, @{ $result->ParameterGroups };
+      
     }
 
-    return 'Paws::RedShift::DescribeClusterParameterGroups'->_returns->new(ParameterGroups => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeClusterParameterGroups->_returns, %$params);
   }
   sub DescribeAllClusterParameters {
     my $self = shift;
 
     my $result = $self->DescribeClusterParameters(@_);
-    my $array = [];
-    push @$array, @{ $result->Parameters };
+    my $params = {};
+    
+    $params->{ Parameters } = $result->Parameters;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeClusterParameters(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Parameters };
+      
+      push @{ $params->{ Parameters } }, @{ $result->Parameters };
+      
     }
 
-    return 'Paws::RedShift::DescribeClusterParameters'->_returns->new(Parameters => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeClusterParameters->_returns, %$params);
   }
   sub DescribeAllClusters {
     my $self = shift;
 
     my $result = $self->DescribeClusters(@_);
-    my $array = [];
-    push @$array, @{ $result->Clusters };
+    my $params = {};
+    
+    $params->{ Clusters } = $result->Clusters;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeClusters(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Clusters };
+      
+      push @{ $params->{ Clusters } }, @{ $result->Clusters };
+      
     }
 
-    return 'Paws::RedShift::DescribeClusters'->_returns->new(Clusters => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeClusters->_returns, %$params);
   }
   sub DescribeAllClusterSecurityGroups {
     my $self = shift;
 
     my $result = $self->DescribeClusterSecurityGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->ClusterSecurityGroups };
+    my $params = {};
+    
+    $params->{ ClusterSecurityGroups } = $result->ClusterSecurityGroups;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeClusterSecurityGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ClusterSecurityGroups };
+      
+      push @{ $params->{ ClusterSecurityGroups } }, @{ $result->ClusterSecurityGroups };
+      
     }
 
-    return 'Paws::RedShift::DescribeClusterSecurityGroups'->_returns->new(ClusterSecurityGroups => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeClusterSecurityGroups->_returns, %$params);
   }
   sub DescribeAllClusterSnapshots {
     my $self = shift;
 
     my $result = $self->DescribeClusterSnapshots(@_);
-    my $array = [];
-    push @$array, @{ $result->Snapshots };
+    my $params = {};
+    
+    $params->{ Snapshots } = $result->Snapshots;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeClusterSnapshots(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Snapshots };
+      
+      push @{ $params->{ Snapshots } }, @{ $result->Snapshots };
+      
     }
 
-    return 'Paws::RedShift::DescribeClusterSnapshots'->_returns->new(Snapshots => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeClusterSnapshots->_returns, %$params);
   }
   sub DescribeAllClusterSubnetGroups {
     my $self = shift;
 
     my $result = $self->DescribeClusterSubnetGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->ClusterSubnetGroups };
+    my $params = {};
+    
+    $params->{ ClusterSubnetGroups } = $result->ClusterSubnetGroups;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeClusterSubnetGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ClusterSubnetGroups };
+      
+      push @{ $params->{ ClusterSubnetGroups } }, @{ $result->ClusterSubnetGroups };
+      
     }
 
-    return 'Paws::RedShift::DescribeClusterSubnetGroups'->_returns->new(ClusterSubnetGroups => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeClusterSubnetGroups->_returns, %$params);
   }
   sub DescribeAllClusterVersions {
     my $self = shift;
 
     my $result = $self->DescribeClusterVersions(@_);
-    my $array = [];
-    push @$array, @{ $result->ClusterVersions };
+    my $params = {};
+    
+    $params->{ ClusterVersions } = $result->ClusterVersions;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeClusterVersions(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ClusterVersions };
+      
+      push @{ $params->{ ClusterVersions } }, @{ $result->ClusterVersions };
+      
     }
 
-    return 'Paws::RedShift::DescribeClusterVersions'->_returns->new(ClusterVersions => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeClusterVersions->_returns, %$params);
   }
   sub DescribeAllDefaultClusterParameters {
     my $self = shift;
 
     my $result = $self->DescribeDefaultClusterParameters(@_);
-    my $array = [];
-    push @$array, @{ $result->DefaultClusterParameters.Parameters };
+    my $params = {};
+    
+    $params->{ DefaultClusterParameters.Parameters } = $result->DefaultClusterParameters->Parameters;
+    
 
-    while ($result->DefaultClusterParameters.Marker) {
-      $result = $self->DescribeDefaultClusterParameters(@_, Marker => $result->DefaultClusterParameters.Marker);
-      push @$array, @{ $result->DefaultClusterParameters.Parameters };
+    while ($result->) {
+      $result = $self->DescribeDefaultClusterParameters(@_, Marker => $result->DefaultClusterParameters->Marker);
+      
+      push @{ $params->{ DefaultClusterParameters.Parameters } }, @{ $result->DefaultClusterParameters->Parameters };
+      
     }
 
-    return 'Paws::RedShift::DescribeDefaultClusterParameters'->_returns->new(DefaultClusterParameters.Parameters => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeDefaultClusterParameters->_returns, %$params);
   }
   sub DescribeAllEvents {
     my $self = shift;
 
     my $result = $self->DescribeEvents(@_);
-    my $array = [];
-    push @$array, @{ $result->Events };
+    my $params = {};
+    
+    $params->{ Events } = $result->Events;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeEvents(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Events };
+      
+      push @{ $params->{ Events } }, @{ $result->Events };
+      
     }
 
-    return 'Paws::RedShift::DescribeEvents'->_returns->new(Events => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeEvents->_returns, %$params);
   }
   sub DescribeAllEventSubscriptions {
     my $self = shift;
 
     my $result = $self->DescribeEventSubscriptions(@_);
-    my $array = [];
-    push @$array, @{ $result->EventSubscriptionsList };
+    my $params = {};
+    
+    $params->{ EventSubscriptionsList } = $result->EventSubscriptionsList;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
-      push @$array, @{ $result->EventSubscriptionsList };
+      
+      push @{ $params->{ EventSubscriptionsList } }, @{ $result->EventSubscriptionsList };
+      
     }
 
-    return 'Paws::RedShift::DescribeEventSubscriptions'->_returns->new(EventSubscriptionsList => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeEventSubscriptions->_returns, %$params);
   }
   sub DescribeAllHsmClientCertificates {
     my $self = shift;
 
     my $result = $self->DescribeHsmClientCertificates(@_);
-    my $array = [];
-    push @$array, @{ $result->HsmClientCertificates };
+    my $params = {};
+    
+    $params->{ HsmClientCertificates } = $result->HsmClientCertificates;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeHsmClientCertificates(@_, Marker => $result->Marker);
-      push @$array, @{ $result->HsmClientCertificates };
+      
+      push @{ $params->{ HsmClientCertificates } }, @{ $result->HsmClientCertificates };
+      
     }
 
-    return 'Paws::RedShift::DescribeHsmClientCertificates'->_returns->new(HsmClientCertificates => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeHsmClientCertificates->_returns, %$params);
   }
   sub DescribeAllHsmConfigurations {
     my $self = shift;
 
     my $result = $self->DescribeHsmConfigurations(@_);
-    my $array = [];
-    push @$array, @{ $result->HsmConfigurations };
+    my $params = {};
+    
+    $params->{ HsmConfigurations } = $result->HsmConfigurations;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeHsmConfigurations(@_, Marker => $result->Marker);
-      push @$array, @{ $result->HsmConfigurations };
+      
+      push @{ $params->{ HsmConfigurations } }, @{ $result->HsmConfigurations };
+      
     }
 
-    return 'Paws::RedShift::DescribeHsmConfigurations'->_returns->new(HsmConfigurations => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeHsmConfigurations->_returns, %$params);
   }
   sub DescribeAllOrderableClusterOptions {
     my $self = shift;
 
     my $result = $self->DescribeOrderableClusterOptions(@_);
-    my $array = [];
-    push @$array, @{ $result->OrderableClusterOptions };
+    my $params = {};
+    
+    $params->{ OrderableClusterOptions } = $result->OrderableClusterOptions;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeOrderableClusterOptions(@_, Marker => $result->Marker);
-      push @$array, @{ $result->OrderableClusterOptions };
+      
+      push @{ $params->{ OrderableClusterOptions } }, @{ $result->OrderableClusterOptions };
+      
     }
 
-    return 'Paws::RedShift::DescribeOrderableClusterOptions'->_returns->new(OrderableClusterOptions => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeOrderableClusterOptions->_returns, %$params);
   }
   sub DescribeAllReservedNodeOfferings {
     my $self = shift;
 
     my $result = $self->DescribeReservedNodeOfferings(@_);
-    my $array = [];
-    push @$array, @{ $result->ReservedNodeOfferings };
+    my $params = {};
+    
+    $params->{ ReservedNodeOfferings } = $result->ReservedNodeOfferings;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeReservedNodeOfferings(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ReservedNodeOfferings };
+      
+      push @{ $params->{ ReservedNodeOfferings } }, @{ $result->ReservedNodeOfferings };
+      
     }
 
-    return 'Paws::RedShift::DescribeReservedNodeOfferings'->_returns->new(ReservedNodeOfferings => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeReservedNodeOfferings->_returns, %$params);
   }
   sub DescribeAllReservedNodes {
     my $self = shift;
 
     my $result = $self->DescribeReservedNodes(@_);
-    my $array = [];
-    push @$array, @{ $result->ReservedNodes };
+    my $params = {};
+    
+    $params->{ ReservedNodes } = $result->ReservedNodes;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeReservedNodes(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ReservedNodes };
+      
+      push @{ $params->{ ReservedNodes } }, @{ $result->ReservedNodes };
+      
     }
 
-    return 'Paws::RedShift::DescribeReservedNodes'->_returns->new(ReservedNodes => $array);
+    return $self->new_with_coercions(Paws::RedShift::DescribeReservedNodes->_returns, %$params);
   }
 
-  sub operations { qw/AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy ModifyCluster ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup RestoreFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
+
+  sub operations { qw/AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateSnapshotCopyGrant CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteSnapshotCopyGrant DeleteTags DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeSnapshotCopyGrants DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy ModifyCluster ModifyClusterIamRoles ModifyClusterParameterGroup ModifyClusterSubnetGroup ModifyEventSubscription ModifySnapshotCopyRetentionPeriod PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
 
 1;
 
@@ -578,14 +661,17 @@ Returns: a L<Paws::RedShift::AuthorizeClusterSecurityGroupIngressResult> instanc
 
   Adds an inbound (ingress) rule to an Amazon Redshift security group.
 Depending on whether the application accessing your cluster is running
-on the Internet or an EC2 instance, you can authorize inbound access to
-either a Classless Interdomain Routing (CIDR) IP address range or an
-EC2 security group. You can add as many as 20 ingress rules to an
-Amazon Redshift security group.
+on the Internet or an Amazon EC2 instance, you can authorize inbound
+access to either a Classless Interdomain Routing (CIDR)/Internet
+Protocol (IP) range or to an Amazon EC2 security group. You can add as
+many as 20 ingress rules to an Amazon Redshift security group.
 
-The EC2 security group must be defined in the AWS region where the
-cluster resides.
+If you authorize access to an Amazon EC2 security group, specify
+I<EC2SecurityGroupName> and I<EC2SecurityGroupOwnerId>. The Amazon EC2
+security group and Amazon Redshift cluster must be in the same AWS
+region.
 
+If you authorize access to a CIDR/IP address range, specify I<CIDRIP>.
 For an overview of CIDR blocks, see the Wikipedia article on Classless
 Inter-Domain Routing.
 
@@ -630,7 +716,7 @@ For more information about working with snapshots, go to Amazon
 Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
 
 
-=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[L<Paws::RedShift::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateCluster(ClusterIdentifier => Str, MasterUsername => Str, MasterUserPassword => Str, NodeType => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ClusterType => Str, ClusterVersion => Str, DBName => Str, ElasticIp => Str, Encrypted => Bool, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str], KmsKeyId => Str, NumberOfNodes => Int, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, Tags => ArrayRef[L<Paws::RedShift::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::CreateCluster>
 
@@ -1264,6 +1350,21 @@ Redshift Database Encryption in the I<Amazon Redshift Cluster
 Management Guide>.
 
 
+=head2 DescribeTableRestoreStatus([ClusterIdentifier => Str, Marker => Str, MaxRecords => Int, TableRestoreRequestId => Str])
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeTableRestoreStatus>
+
+Returns: a L<Paws::RedShift::TableRestoreStatusMessage> instance
+
+  Lists the status of one or more table restore requests made using the
+RestoreTableFromClusterSnapshot API action. If you don't specify a
+value for the C<TableRestoreRequestId> parameter, then
+C<DescribeTableRestoreStatus> returns the status of all table restore
+requests ordered by the date and time of the request in ascending
+order. Otherwise C<DescribeTableRestoreStatus> returns the status of
+the table specified by C<TableRestoreRequestId>.
+
+
 =head2 DescribeTags([Marker => Str, MaxRecords => Int, ResourceName => Str, ResourceType => Str, TagKeys => ArrayRef[Str], TagValues => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::DescribeTags>
@@ -1345,7 +1446,7 @@ Returns: a L<Paws::RedShift::EnableSnapshotCopyResult> instance
 region for a specified cluster.
 
 
-=head2 ModifyCluster(ClusterIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterType => Str, ClusterVersion => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, MasterUserPassword => Str, NewClusterIdentifier => Str, NodeType => Str, NumberOfNodes => Int, PreferredMaintenanceWindow => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 ModifyCluster(ClusterIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterType => Str, ClusterVersion => Str, ElasticIp => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, MasterUserPassword => Str, NewClusterIdentifier => Str, NodeType => Str, NumberOfNodes => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::ModifyCluster>
 
@@ -1364,6 +1465,18 @@ You can also change node type and the number of nodes to scale up or
 down the cluster. When resizing a cluster, you must specify both the
 number of nodes and the node type even if one of the parameters does
 not change.
+
+
+=head2 ModifyClusterIamRoles(ClusterIdentifier => Str, [AddIamRoles => ArrayRef[Str], RemoveIamRoles => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::RedShift::ModifyClusterIamRoles>
+
+Returns: a L<Paws::RedShift::ModifyClusterIamRolesResult> instance
+
+  Modifies the list of AWS Identity and Access Management (IAM) roles
+that can be used by the cluster to access other AWS services.
+
+A cluster can have up to 10 IAM roles associated at any time.
 
 
 =head2 ModifyClusterParameterGroup(ParameterGroupName => Str, Parameters => ArrayRef[L<Paws::RedShift::Parameter>])
@@ -1454,7 +1567,7 @@ I<ResetAllParameters> parameter. For parameter changes to take effect
 you must reboot any associated clusters.
 
 
-=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ElasticIp => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, KmsKeyId => Str, NodeType => Str, OwnerAccount => Str, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, SnapshotClusterIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 RestoreFromClusterSnapshot(ClusterIdentifier => Str, SnapshotIdentifier => Str, [AdditionalInfo => Str, AllowVersionUpgrade => Bool, AutomatedSnapshotRetentionPeriod => Int, AvailabilityZone => Str, ClusterParameterGroupName => Str, ClusterSecurityGroups => ArrayRef[Str], ClusterSubnetGroupName => Str, ElasticIp => Str, HsmClientCertificateIdentifier => Str, HsmConfigurationIdentifier => Str, IamRoles => ArrayRef[Str], KmsKeyId => Str, NodeType => Str, OwnerAccount => Str, Port => Int, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, SnapshotClusterIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RedShift::RestoreFromClusterSnapshot>
 
@@ -1475,6 +1588,28 @@ group where you want the cluster restored.
 
 For more information about working with snapshots, go to Amazon
 Redshift Snapshots in the I<Amazon Redshift Cluster Management Guide>.
+
+
+=head2 RestoreTableFromClusterSnapshot(ClusterIdentifier => Str, NewTableName => Str, SnapshotIdentifier => Str, SourceDatabaseName => Str, SourceTableName => Str, [SourceSchemaName => Str, TargetDatabaseName => Str, TargetSchemaName => Str])
+
+Each argument is described in detail in: L<Paws::RedShift::RestoreTableFromClusterSnapshot>
+
+Returns: a L<Paws::RedShift::RestoreTableFromClusterSnapshotResult> instance
+
+  Creates a new table from a table in an Amazon Redshift cluster
+snapshot. You must create the new table within the Amazon Redshift
+cluster that the snapshot was taken from.
+
+You cannot use C<RestoreTableFromClusterSnapshot> to restore a table
+with the same name as an existing table in an Amazon Redshift cluster.
+That is, you cannot overwrite an existing table in a cluster with a
+restored table. If you want to replace your original table with a new,
+restored table, then rename or drop your original table before you call
+C<RestoreTableFromClusterSnapshot>. When you have renamed your original
+table, then you can pass the original name of the table as the
+C<NewTableName> parameter value in the call to
+C<RestoreTableFromClusterSnapshot>. This way, you can replace the
+original table with the table created from the snapshot.
 
 
 =head2 RevokeClusterSecurityGroupIngress(ClusterSecurityGroupName => Str, [CIDRIP => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str])

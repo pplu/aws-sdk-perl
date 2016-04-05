@@ -39,12 +39,12 @@ Information about a repository name and ID.
 
 =head2 RepositoryId => Str
 
-  The ID associated with the repository name.
+  The ID associated with the repository.
 
 
 =head2 RepositoryName => Str
 
-  
+  The name associated with the repository.
 
 
 

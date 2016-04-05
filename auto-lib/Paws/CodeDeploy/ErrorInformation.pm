@@ -43,20 +43,20 @@ Information about a deployment error.
 
 =over
 
-=item * APPLICATION_MISSING: The application was missing. Note that
-this error code will most likely be raised if the application is
-deleted after the deployment is created but before it starts.
+=item * APPLICATION_MISSING: The application was missing. This error
+code will most likely be raised if the application is deleted after the
+deployment is created but before it is started.
 
 =item * DEPLOYMENT_GROUP_MISSING: The deployment group was missing.
-Note that this error code will most likely be raised if the deployment
-group is deleted after the deployment is created but before it starts.
+This error code will most likely be raised if the deployment group is
+deleted after the deployment is created but before it is started.
 
 =item * HEALTH_CONSTRAINTS: The deployment failed on too many instances
-to be able to successfully deploy within the specified instance health
-constraints.
+to be successfully deployed within the instance health constraints
+specified.
 
-=item * HEALTH_CONSTRAINTS_INVALID: The revision can never successfully
-deploy within the instance health constraints as specified.
+=item * HEALTH_CONSTRAINTS_INVALID: The revision cannot be successfully
+deployed within the instance health constraints specified.
 
 =item * IAM_ROLE_MISSING: The service role cannot be accessed.
 
@@ -68,10 +68,10 @@ correct permissions.
 =item * NO_EC2_SUBSCRIPTION: The calling account is not subscribed to
 the Amazon EC2 service.
 
-=item * NO_INSTANCES: No instances were specified, or no instances can
-be found.
+=item * NO_INSTANCES: No instance were specified, or no instance can be
+found.
 
-=item * OVER_MAX_INSTANCES: The maximum number of instances was
+=item * OVER_MAX_INSTANCES: The maximum number of instance was
 exceeded.
 
 =item * THROTTLED: The operation was throttled because the calling
@@ -79,9 +79,9 @@ account exceeded the throttling limits of one or more AWS services.
 
 =item * TIMEOUT: The deployment has timed out.
 
-=item * REVISION_MISSING: The revision ID was missing. Note that this
-error code will most likely be raised if the revision is deleted after
-the deployment is created but before it starts.
+=item * REVISION_MISSING: The revision ID was missing. This error code
+will most likely be raised if the revision is deleted after the
+deployment is created but before it is started.
 
 =back
 

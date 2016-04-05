@@ -47,10 +47,10 @@ The C<Id> and C<Name> of a C<SqlInjectionMatchSet>.
   A unique identifier for a C<SqlInjectionMatchSet>. You use
 C<SqlInjectionMatchSetId> to get information about a
 C<SqlInjectionMatchSet> (see GetSqlInjectionMatchSet), update a
-C<SqlInjectionMatchSet> (see UpdateSqlInjectionMatchSet, insert a
+C<SqlInjectionMatchSet> (see UpdateSqlInjectionMatchSet), insert a
 C<SqlInjectionMatchSet> into a C<Rule> or delete one from a C<Rule>
 (see UpdateRule), and delete a C<SqlInjectionMatchSet> from AWS WAF
-(see DeleteByteMatchSet).
+(see DeleteSqlInjectionMatchSet).
 
 C<SqlInjectionMatchSetId> is returned by CreateSqlInjectionMatchSet and
 by ListSqlInjectionMatchSets.

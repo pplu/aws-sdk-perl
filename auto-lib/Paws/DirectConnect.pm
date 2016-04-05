@@ -4,6 +4,12 @@ package Paws::DirectConnect;
   sub version { '2012-10-25' }
   sub target_prefix { 'OvertureService' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -103,6 +109,8 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeVirtualInterfaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AllocateConnectionOnInterconnect AllocatePrivateVirtualInterface AllocatePublicVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateConnection CreateInterconnect CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteConnection DeleteInterconnect DeleteVirtualInterface DescribeConnections DescribeConnectionsOnInterconnect DescribeInterconnects DescribeLocations DescribeVirtualGateways DescribeVirtualInterfaces / }
 
@@ -132,35 +140,19 @@ Paws::DirectConnect - Perl Interface to AWS AWS Direct Connect
 
 =head1 DESCRIPTION
 
-AWS Direct Connect makes it easy to establish a dedicated network
-connection from your premises to Amazon Web Services (AWS). Using AWS
-Direct Connect, you can establish private connectivity between AWS and
-your data center, office, or colocation environment, which in many
-cases can reduce your network costs, increase bandwidth throughput, and
-provide a more consistent network experience than Internet-based
-connections.
-
-The AWS Direct Connect API Reference provides descriptions, syntax, and
-usage examples for each of the actions and data types for AWS Direct
-Connect. Use the following links to get started using the I<AWS Direct
-Connect API Reference>:
-
-=over
-
-=item * Actions: An alphabetical list of all AWS Direct Connect
-actions.
-
-=item * Data Types: An alphabetical list of all AWS Direct Connect data
-types.
-
-=item * Common Query Parameters: Parameters that all Query actions can
-use.
-
-=item * Common Errors: Client and server errors that all actions can
-return.
-
-=back
-
+AWS Direct Connect links your internal network to an AWS Direct Connect
+location over a standard 1 gigabit or 10 gigabit Ethernet fiber-optic
+cable. One end of the cable is connected to your router, the other to
+an AWS Direct Connect router. With this connection in place, you can
+create virtual interfaces directly to the AWS cloud (for example, to
+Amazon Elastic Compute Cloud (Amazon EC2) and Amazon Simple Storage
+Service (Amazon S3)) and to Amazon Virtual Private Cloud (Amazon VPC),
+bypassing Internet service providers in your network path. An AWS
+Direct Connect location provides access to AWS in the region it is
+associated with, as well as access to other US regions. For example,
+you can provision a single connection to any AWS Direct Connect
+location in the US and use it to access public AWS services in all US
+Regions and AWS GovCloud (US).
 
 =head1 METHODS
 

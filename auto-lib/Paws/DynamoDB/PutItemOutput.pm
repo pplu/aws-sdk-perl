@@ -17,17 +17,21 @@ Paws::DynamoDB::PutItemOutput
 
 =head2 Attributes => L<Paws::DynamoDB::AttributeMap>
 
-  The attribute values as they appeared before the I<PutItem> operation,
+The attribute values as they appeared before the I<PutItem> operation,
 but only if I<ReturnValues> is specified as C<ALL_OLD> in the request.
 Each element consists of an attribute name and an attribute value.
 
+
+
 =head2 ConsumedCapacity => L<Paws::DynamoDB::ConsumedCapacity>
 
-  
+
+
+
 
 =head2 ItemCollectionMetrics => L<Paws::DynamoDB::ItemCollectionMetrics>
 
-  Information about item collections, if any, that were affected by the
+Information about item collections, if any, that were affected by the
 operation. I<ItemCollectionMetrics> is only returned if the request
 asked for it. If the table does not have any local secondary indexes,
 this information is not returned in the response.
@@ -38,8 +42,8 @@ Each I<ItemCollectionMetrics> element consists of:
 
 =item *
 
-I<ItemCollectionKey> - The hash key value of the item collection. This
-is the same as the hash key of the item.
+I<ItemCollectionKey> - The partition key value of the item collection.
+This is the same as the partition key value of the item itself.
 
 =item *
 
@@ -55,6 +59,8 @@ The estimate is subject to change over time; therefore, do not rely on
 the precision or accuracy of the estimate.
 
 =back
+
+
 
 
 

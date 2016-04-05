@@ -43,7 +43,8 @@ This class has no description
 
 =head2 AvailabilityZone => Str
 
-  The Availability Zone where the virtual private gateway was created.
+  The Availability Zone where the virtual private gateway was created, if
+applicable. This field may be empty or not returned.
 
 
 =head2 State => Str

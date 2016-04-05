@@ -48,8 +48,7 @@ elements from the XML document.
 
 =head2 PrivateZone => Bool
 
-  A value that indicates whether this is a private hosted zone. The value
-is returned in the response; do not specify it in the request.
+  
 
 
 

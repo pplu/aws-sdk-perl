@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::C
 
 =head1 DESCRIPTION
 
-Describes a security group.
+Describes a cluster security group.
 
 =head1 ATTRIBUTES
 

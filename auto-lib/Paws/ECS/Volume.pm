@@ -39,15 +39,19 @@ A data volume used in a task definition.
 
 =head2 Host => L<Paws::ECS::HostVolumeProperties>
 
-  The path on the host container instance that is presented to the
-containers which access the volume. If this parameter is empty, then
-the Docker daemon assigns a host path for you.
+  The contents of the C<host> parameter determine whether your data
+volume persists on the host container instance and where it is stored.
+If the host parameter is empty, then the Docker daemon assigns a host
+path for your data volume, but the data is not guaranteed to persist
+after the containers associated with it stop running.
 
 
 =head2 Name => Str
 
-  The name of the volume. This name is referenced in the C<sourceVolume>
-parameter of container definition C<mountPoints>.
+  The name of the volume. Up to 255 letters (uppercase and lowercase),
+numbers, hyphens, and underscores are allowed. This name is referenced
+in the C<sourceVolume> parameter of container definition
+C<mountPoints>.
 
 
 

@@ -3,6 +3,7 @@ package Paws::CloudSearchDomain::SearchResponse;
   use Moose;
   has Facets => (is => 'ro', isa => 'Paws::CloudSearchDomain::Facets');
   has Hits => (is => 'ro', isa => 'Paws::CloudSearchDomain::Hits');
+  has Stats => (is => 'ro', isa => 'Paws::CloudSearchDomain::Stats');
   has Status => (is => 'ro', isa => 'Paws::CloudSearchDomain::SearchStatus');
 
 1;
@@ -18,15 +19,27 @@ Paws::CloudSearchDomain::SearchResponse
 
 =head2 Facets => L<Paws::CloudSearchDomain::Facets>
 
-  The requested facet information.
+The requested facet information.
+
+
 
 =head2 Hits => L<Paws::CloudSearchDomain::Hits>
 
-  The documents that match the search criteria.
+The documents that match the search criteria.
+
+
+
+=head2 Stats => L<Paws::CloudSearchDomain::Stats>
+
+The requested field statistics information.
+
+
 
 =head2 Status => L<Paws::CloudSearchDomain::SearchStatus>
 
-  The status information returned for the search request.
+The status information returned for the search request.
+
+
 
 
 =cut

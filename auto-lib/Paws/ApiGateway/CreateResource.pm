@@ -11,7 +11,7 @@ package Paws::ApiGateway::CreateResource;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources/{parent_id}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Resource');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateResourceResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,17 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ParentId => Str
 
-  The parent resource's identifier.
+The parent resource's identifier.
+
 
 
 =head2 B<REQUIRED> PathPart => Str
 
-  The last path segment for this resource.
+The last path segment for this resource.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The identifier of the RestApi for the resource.
+The identifier of the RestApi for the resource.
+
 
 
 

@@ -17,11 +17,15 @@ Paws::IoT::GetLoggingOptionsResponse
 
 =head2 LogLevel => Str
 
-  The logging level.
+The logging level.
+
+Valid values are: C<"DEBUG">, C<"INFO">, C<"ERROR">, C<"WARN">, C<"DISABLED">
 
 =head2 RoleArn => Str
 
-  The ARN of the IAM role that grants access.
+The ARN of the IAM role that grants access.
+
+
 
 
 =cut

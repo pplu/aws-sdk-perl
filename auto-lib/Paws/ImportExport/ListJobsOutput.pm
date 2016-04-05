@@ -17,11 +17,15 @@ Paws::ImportExport::ListJobsOutput
 
 =head2 IsTruncated => Bool
 
-  
+
+
+
 
 =head2 Jobs => ArrayRef[L<Paws::ImportExport::Job>]
 
-  
+
+
+
 
 
 =cut

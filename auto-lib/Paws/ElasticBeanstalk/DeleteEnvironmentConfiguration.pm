@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The name of the application the environment is associated with.
+The name of the application the environment is associated with.
+
 
 
 =head2 B<REQUIRED> EnvironmentName => Str
 
-  The name of the environment to delete the draft configuration from.
+The name of the environment to delete the draft configuration from.
+
 
 
 

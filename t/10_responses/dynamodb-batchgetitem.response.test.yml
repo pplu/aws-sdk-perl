@@ -1,0 +1,19 @@
+---
+call: BatchGetItem
+service: DynamoDB
+tests:
+  - expected: 1
+    op: ==
+    path: ConsumedCapacity.0.CapacityUnits
+  - expected: Emails
+    op: eq
+    path: ConsumedCapacity.0.TableName
+  - expected: e2@test.com
+    op: eq
+    path: Responses.Map.Emails.0.Map.email.S
+  - expected: 33
+    op: ==
+    path: Responses.Map.Emails.1.Map.count.N
+  - expected: e1@test.com
+    op: eq
+    path: Responses.Map.Emails.1.Map.email.S

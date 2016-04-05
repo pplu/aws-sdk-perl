@@ -4,6 +4,12 @@ package Paws::IoT;
   sub service { 'iot' }
   sub version { '2015-05-28' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
@@ -108,6 +114,16 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DetachThingPrincipal', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableTopicRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DisableTopicRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableTopicRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::EnableTopicRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetLoggingOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetLoggingOptions', @_);
@@ -203,8 +219,10 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateThing', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
 
-  sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateTopicRule DeleteCertificate DeletePolicy DeletePolicyVersion DeleteThing DeleteTopicRule DescribeCertificate DescribeEndpoint DescribeThing DetachPrincipalPolicy DetachThingPrincipal GetLoggingOptions GetPolicy GetPolicyVersion GetTopicRule ListCertificates ListPolicies ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListTopicRules RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCertificate UpdateThing / }
+
+  sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateTopicRule DeleteCertificate DeletePolicy DeletePolicyVersion DeleteThing DeleteTopicRule DescribeCertificate DescribeEndpoint DescribeThing DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetLoggingOptions GetPolicy GetPolicyVersion GetTopicRule ListCertificates ListPolicies ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListTopicRules RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCertificate UpdateThing / }
 
 1;
 
@@ -232,9 +250,7 @@ Paws::IoT - Perl Interface to AWS AWS IoT
 
 =head1 DESCRIPTION
 
-AWS IoT (Beta)
-
-B<AWS IoT is in beta and is subject to change>
+AWS IoT
 
 AWS IoT provides secure, bi-directional communication between
 Internet-connected things (such as sensors, actuators, embedded
@@ -289,11 +305,11 @@ Returns: nothing
   Cancels a pending transfer for the specified certificate.
 
 B<Note> Only the transfer source account can use this operation to
-cancel a transfer (transfer destinations can use
-RejectCertificateTransfer instead). After transfer, AWS IoT returns the
-certificate to the source account in the INACTIVE state. Once the
-destination account has accepted the transfer, the transfer may no
-longer be cancelled.
+cancel a transfer. (Transfer destinations can use
+RejectCertificateTransfer instead.) After transfer, AWS IoT returns the
+certificate to the source account in the INACTIVE state. After the
+destination account has accepted the transfer, the transfer cannot be
+cancelled.
 
 After a certificate transfer is cancelled, the status of the
 certificate changes from PENDING_TRANSFER to INACTIVE.
@@ -311,6 +327,45 @@ request.
 B<Note> Reusing the same certificate signing request (CSR) results in a
 distinct certificate.
 
+You can create multiple certificates in a batch by creating a
+directory, copying multiple .csr files into that directory, and then
+specifying that directory on the command line. The following commands
+show how to create a batch of certificates given a batch of CSRs.
+
+Assuming a set of CSRs are located inside of the directory
+my-csr-directory:
+
+E<gt>
+
+On Linux and OS X, the command is:
+
+$ ls my-csr-directory/ | xargs -I {} aws iot
+create-certificate-from-csr --certificate-signing-request
+file://my-csr-directory/{}
+
+This command lists all of the CSRs in my-csr-directory and pipes each
+CSR file name to the aws iot create-certificate-from-csr AWS CLI
+command to create a certificate for the corresponding CSR.
+
+The aws iot create-certificate-from-csr part of the command can also be
+run in parallel to speed up the certificate creation process:
+
+$ ls my-csr-directory/ | xargs -P 10 -I {} aws iot
+create-certificate-from-csr --certificate-signing-request
+file://my-csr-directory/{}
+
+On Windows PowerShell, the command to create certificates for all CSRs
+in my-csr-directory is:
+
+E<gt> ls -Name my-csr-directory | %{aws iot create-certificate-from-csr
+--certificate-signing-request file://my-csr-directory/$_}
+
+On a Windows command prompt, the command to create certificates for all
+CSRs in my-csr-directory is:
+
+E<gt> forfiles /p my-csr-directory /c "cmd /c aws iot
+create-certificate-from-csr --certificate-signing-request file://@path"
+
 
 =head2 CreateKeysAndCertificate([SetAsActive => Bool])
 
@@ -318,11 +373,11 @@ Each argument is described in detail in: L<Paws::IoT::CreateKeysAndCertificate>
 
 Returns: a L<Paws::IoT::CreateKeysAndCertificateResponse> instance
 
-  Creates a 2048 bit RSA key pair and issues an X.509 certificate using
+  Creates a 2048-bit RSA key pair and issues an X.509 certificate using
 the issued public key.
 
 B<Note> This is the only time AWS IoT issues the private key for this
-certificate. It is important to keep track of the private key.
+certificate, so it is important to keep it in a secure location.
 
 
 =head2 CreatePolicy(PolicyDocument => Str, PolicyName => Str)
@@ -344,7 +399,16 @@ Each argument is described in detail in: L<Paws::IoT::CreatePolicyVersion>
 
 Returns: a L<Paws::IoT::CreatePolicyVersionResponse> instance
 
-  Creates a new version of the specified AWS IoT policy.
+  Creates a new version of the specified AWS IoT policy. To update a
+policy, create a new policy version. A managed policy can have up to
+five versions. If the policy has five versions, you must use
+DeletePolicyVersion to delete an existing version before you create a
+new one.
+
+Optionally, you can set the new version as the policy's default
+version. The default version is the operative version (that is, the
+version that is in effect for the certificates to which the policy is
+attached).
 
 
 =head2 CreateThing(ThingName => Str, [AttributePayload => L<Paws::IoT::AttributePayload>])
@@ -353,7 +417,7 @@ Each argument is described in detail in: L<Paws::IoT::CreateThing>
 
 Returns: a L<Paws::IoT::CreateThingResponse> instance
 
-  Creates a thing in the thing registry.
+  Creates a thing in the Thing Registry.
 
 
 =head2 CreateTopicRule(RuleName => Str, TopicRulePayload => L<Paws::IoT::TopicRulePayload>)
@@ -362,7 +426,9 @@ Each argument is described in detail in: L<Paws::IoT::CreateTopicRule>
 
 Returns: nothing
 
-  Creates a rule.
+  Creates a rule. Creating rules is an administrator-level action. Any
+user who has permission to create rules will be able to access data
+processed by the rule.
 
 
 =head2 DeleteCertificate(CertificateId => Str)
@@ -373,13 +439,10 @@ Returns: nothing
 
   Deletes the specified certificate.
 
-A certificate cannot be deleted if it has a policy attached to it. To
-delete a certificate, first detach all policies using the
-DetachPrincipalPolicy operation.
-
-In addition, a certificate cannot be deleted if it is in ACTIVE status.
-To delete a certificate, first change the status to INACTIVE using the
-UpdateCertificate operation.
+A certificate cannot be deleted if it has a policy attached to it or if
+its status is set to ACTIVE. To delete a certificate, first use the
+DetachPrincipalPolicy API to detach all policies. Next, use the
+UpdateCertificate API to set the certificate to the INACTIVE status.
 
 
 =head2 DeletePolicy(PolicyName => Str)
@@ -390,20 +453,16 @@ Returns: nothing
 
   Deletes the specified policy.
 
-A policy cannot be deleted if:
+A policy cannot be deleted if it has non-default versions or it is
+attached to any certificate.
 
-- it has non-default versions
+To delete a policy, use the DeletePolicyVersion API to delete all
+non-default versions of the policy; use the DetachPrincipalPolicy API
+to detach the policy from any certificate; and then use the
+DeletePolicy API to delete the policy.
 
-- it is attached to any certificate
-
-To delete a policy:
-
-- First delete all the non-default versions of the policy using the
-DeletePolicyVersion API.
-
-- Detach it from any certificate using the DetachPrincipalPolicy API.
-
-When a policy is deleted, its default version is deleted with it.
+When a policy is deleted using DeletePolicy, its default version is
+deleted with it.
 
 
 =head2 DeletePolicyVersion(PolicyName => Str, PolicyVersionId => Str)
@@ -412,11 +471,11 @@ Each argument is described in detail in: L<Paws::IoT::DeletePolicyVersion>
 
 Returns: nothing
 
-  Deletes the specified version of the specified policy. The default
-version of the policy cannot be deleted.
-
-To delete the default version use the DeletePolicy API or mark the
-policy as non-default and then delete it.
+  Deletes the specified version of the specified policy. You cannot
+delete the default version of a policy using this API. To delete the
+default version of a policy, use DeletePolicy. To find out which
+version of a policy is marked as the default version, use
+ListPolicyVersions.
 
 
 =head2 DeleteThing(ThingName => Str)
@@ -452,9 +511,9 @@ Each argument is described in detail in: L<Paws::IoT::DescribeEndpoint>
 
 Returns: a L<Paws::IoT::DescribeEndpointResponse> instance
 
-  Returns a unique URL specific to the AWS account making the call. The
-URL points to the AWS IoT data plane endpoint. The customer-specific
-endpoint should be provided to all data plane operations.
+  Returns a unique endpoint specific to the AWS account making the call.
+You specify the following URI when updating state information for your
+thing: https://I<endpoint>/things/I<thingName>/shadow.
 
 
 =head2 DescribeThing(ThingName => Str)
@@ -482,6 +541,24 @@ Each argument is described in detail in: L<Paws::IoT::DetachThingPrincipal>
 Returns: a L<Paws::IoT::DetachThingPrincipalResponse> instance
 
   Detaches the specified principal from the specified thing.
+
+
+=head2 DisableTopicRule(RuleName => Str)
+
+Each argument is described in detail in: L<Paws::IoT::DisableTopicRule>
+
+Returns: nothing
+
+  Disables the specified rule.
+
+
+=head2 EnableTopicRule(RuleName => Str)
+
+Each argument is described in detail in: L<Paws::IoT::EnableTopicRule>
+
+Returns: nothing
+
+  Enables the specified rule.
 
 
 =head2 GetLoggingOptions()
@@ -529,8 +606,8 @@ Returns: a L<Paws::IoT::ListCertificatesResponse> instance
 
   Lists your certificates.
 
-The results are paginated with a default page size of 25. You can
-retrieve additional results using the returned marker.
+The results are paginated with a default page size of 25. You can use
+the returned marker to retrieve additional results.
 
 
 =head2 ListPolicies([AscendingOrder => Bool, Marker => Str, PageSize => Int])
@@ -559,8 +636,7 @@ Each argument is described in detail in: L<Paws::IoT::ListPrincipalPolicies>
 Returns: a L<Paws::IoT::ListPrincipalPoliciesResponse> instance
 
   Lists the policies attached to the specified principal. If you use an
-Amazon Cognito identity, the ID needs to be in Amazon Cognito Identity
-format.
+Cognito identity, the ID must be in AmazonCognito Identity format.
 
 
 =head2 ListPrincipalThings(Principal => Str, [MaxResults => Int, NextToken => Str])
@@ -587,9 +663,9 @@ Each argument is described in detail in: L<Paws::IoT::ListThings>
 
 Returns: a L<Paws::IoT::ListThingsResponse> instance
 
-  Lists your things. You can pass an AttributeName and/or AttributeValue
-to filter your things. For example: "ListThings where
-AttributeName=Color and AttributeValue=Red"
+  Lists your things. You can pass an AttributeName or AttributeValue to
+filter your things (for example, "ListThings where AttributeName=Color
+and AttributeValue=Red").
 
 
 =head2 ListTopicRules([MaxResults => Int, NextToken => Str, RuleDisabled => Bool, Topic => Str])
@@ -614,9 +690,9 @@ B<PENDING_TRANFER> to B<INACTIVE>.
 To check for pending certificate transfers, call ListCertificates to
 enumerate your certificates.
 
-This operation can only be called by the transfer destination. Once
-called, the certificate will be returned to the source's account in the
-INACTIVE state.
+This operation can only be called by the transfer destination. After it
+is called, the certificate will be returned to the source's account in
+the INACTIVE state.
 
 
 =head2 ReplaceTopicRule(RuleName => Str, TopicRulePayload => L<Paws::IoT::TopicRulePayload>)
@@ -626,7 +702,9 @@ Each argument is described in detail in: L<Paws::IoT::ReplaceTopicRule>
 Returns: nothing
 
   Replaces the specified rule. You must specify all parameters for the
-new rule.
+new rule. Creating rules is an administrator-level action. Any user who
+has permission to create rules will be able to access data processed by
+the rule.
 
 
 =head2 SetDefaultPolicyVersion(PolicyName => Str, PolicyVersionId => Str)
@@ -635,11 +713,13 @@ Each argument is described in detail in: L<Paws::IoT::SetDefaultPolicyVersion>
 
 Returns: nothing
 
-  Sets the specified policy version as the default for the specified
-policy.
+  Sets the specified version of the specified policy as the policy's
+default (operative) version. This action affects all certificates to
+which the policy is attached. To list the principals the policy is
+attached to, use the ListPrincipalPolicy API.
 
 
-=head2 SetLoggingOptions([LoggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>])
+=head2 SetLoggingOptions(LoggingOptionsPayload => L<Paws::IoT::LoggingOptionsPayload>)
 
 Each argument is described in detail in: L<Paws::IoT::SetLoggingOptions>
 
@@ -658,14 +738,14 @@ Returns: a L<Paws::IoT::TransferCertificateResponse> instance
 
 You can cancel the transfer until it is acknowledged by the recipient.
 
-No notification is sent to the transfer destination's account, it is up
+No notification is sent to the transfer destination's account. It is up
 to the caller to notify the transfer target.
 
-The certificate being transferred must not be in the ACTIVE state. It
-can be deactivated using the UpdateCertificate API.
+The certificate being transferred must not be in the ACTIVE state. You
+can use the UpdateCertificate API to deactivate it.
 
-The certificate must not have any policies attached to it. These can be
-detached using the DetachPrincipalPolicy API.
+The certificate must not have any policies attached to it. You can use
+the DetachPrincipalPolicy API to detach them.
 
 
 =head2 UpdateCertificate(CertificateId => Str, NewStatus => Str)
@@ -677,8 +757,8 @@ Returns: nothing
   Updates the status of the specified certificate. This operation is
 idempotent.
 
-Moving a cert from the ACTIVE state (including REVOKED) will NOT
-disconnect currently-connected devices, although these devices will be
+Moving a certificate from the ACTIVE state (including REVOKED) will not
+disconnect currently connected devices, but these devices will be
 unable to reconnect.
 
 The ACTIVE state is required to authenticate devices connecting to AWS

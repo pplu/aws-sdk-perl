@@ -1,4 +1,4 @@
-package Paws::Credential::AssumeRole {
+package Paws::Credential::AssumeRole;
   use Moose;
   use DateTime;
   use DateTime::Format::ISO8601;
@@ -65,6 +65,4 @@ package Paws::Credential::AssumeRole {
   }
 
   no Moose;
-}
-
 1;

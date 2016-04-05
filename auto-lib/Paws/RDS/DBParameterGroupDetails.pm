@@ -17,13 +17,17 @@ Paws::RDS::DBParameterGroupDetails
 
 =head2 Marker => Str
 
-  An optional pagination token provided by a previous request. If this
+An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by C<MaxRecords>.
 
+
+
 =head2 Parameters => ArrayRef[L<Paws::RDS::Parameter>]
 
-  A list of Parameter values.
+A list of Parameter values.
+
+
 
 
 =cut

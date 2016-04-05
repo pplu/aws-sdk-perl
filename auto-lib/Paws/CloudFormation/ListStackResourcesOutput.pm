@@ -17,12 +17,16 @@ Paws::CloudFormation::ListStackResourcesOutput
 
 =head2 NextToken => Str
 
-  String that identifies the start of the next list of stack resources,
-if there is one.
+If the output exceeds 1 MB, a string that identifies the next page of
+stack resources. If no additional page exists, this value is null.
+
+
 
 =head2 StackResourceSummaries => ArrayRef[L<Paws::CloudFormation::StackResourceSummary>]
 
-  A list of C<StackResourceSummary> structures.
+A list of C<StackResourceSummary> structures.
+
+
 
 
 =cut

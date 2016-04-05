@@ -1,13 +1,13 @@
 
 package Paws::Inspector::SetTagsForResource;
   use Moose;
-  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn' );
+  has ResourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceArn' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'SetTagsForResource');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Inspector::SetTagsForResourceResponse');
+  class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -34,15 +34,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 ResourceArn => Str
+=head2 B<REQUIRED> ResourceArn => Str
 
-  The ARN of the assessment that you want to set tags to.
+The ARN of the assessment template that you want to set tags to.
+
 
 
 =head2 Tags => ArrayRef[L<Paws::Inspector::Tag>]
 
-  A collection of key and value pairs that you want to set to an
-assessment.
+A collection of key and value pairs that you want to set to the
+assessment template.
+
 
 
 

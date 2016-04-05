@@ -4,6 +4,12 @@ package Paws::StorageGateway;
   sub version { '2013-06-30' }
   sub target_prefix { 'StorageGateway_20130630' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -66,6 +72,11 @@ package Paws::StorageGateway;
   sub CreateTapes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateTapes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTapeWithBarcode {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::CreateTapeWithBarcode', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteBandwidthRateLimit {
@@ -228,6 +239,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::RetrieveTapeRecoveryPoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SetLocalConsolePassword {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::SetLocalConsolePassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ShutdownGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::ShutdownGateway', @_);
@@ -273,92 +289,118 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::UpdateVTLDeviceType', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllTapeArchives {
     my $self = shift;
 
     my $result = $self->DescribeTapeArchives(@_);
-    my $array = [];
-    push @$array, @{ $result->TapeArchives };
+    my $params = {};
+    
+    $params->{ TapeArchives } = $result->TapeArchives;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeTapeArchives(@_, Marker => $result->Marker);
-      push @$array, @{ $result->TapeArchives };
+      
+      push @{ $params->{ TapeArchives } }, @{ $result->TapeArchives };
+      
     }
 
-    return 'Paws::StorageGateway::DescribeTapeArchives'->_returns->new(TapeArchives => $array);
+    return $self->new_with_coercions(Paws::StorageGateway::DescribeTapeArchives->_returns, %$params);
   }
   sub DescribeAllTapeRecoveryPoints {
     my $self = shift;
 
     my $result = $self->DescribeTapeRecoveryPoints(@_);
-    my $array = [];
-    push @$array, @{ $result->TapeRecoveryPointInfos };
+    my $params = {};
+    
+    $params->{ TapeRecoveryPointInfos } = $result->TapeRecoveryPointInfos;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeTapeRecoveryPoints(@_, Marker => $result->Marker);
-      push @$array, @{ $result->TapeRecoveryPointInfos };
+      
+      push @{ $params->{ TapeRecoveryPointInfos } }, @{ $result->TapeRecoveryPointInfos };
+      
     }
 
-    return 'Paws::StorageGateway::DescribeTapeRecoveryPoints'->_returns->new(TapeRecoveryPointInfos => $array);
+    return $self->new_with_coercions(Paws::StorageGateway::DescribeTapeRecoveryPoints->_returns, %$params);
   }
   sub DescribeAllTapes {
     my $self = shift;
 
     my $result = $self->DescribeTapes(@_);
-    my $array = [];
-    push @$array, @{ $result->Tapes };
+    my $params = {};
+    
+    $params->{ Tapes } = $result->Tapes;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeTapes(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Tapes };
+      
+      push @{ $params->{ Tapes } }, @{ $result->Tapes };
+      
     }
 
-    return 'Paws::StorageGateway::DescribeTapes'->_returns->new(Tapes => $array);
+    return $self->new_with_coercions(Paws::StorageGateway::DescribeTapes->_returns, %$params);
   }
   sub DescribeAllVTLDevices {
     my $self = shift;
 
     my $result = $self->DescribeVTLDevices(@_);
-    my $array = [];
-    push @$array, @{ $result->VTLDevices };
+    my $params = {};
+    
+    $params->{ VTLDevices } = $result->VTLDevices;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeVTLDevices(@_, Marker => $result->Marker);
-      push @$array, @{ $result->VTLDevices };
+      
+      push @{ $params->{ VTLDevices } }, @{ $result->VTLDevices };
+      
     }
 
-    return 'Paws::StorageGateway::DescribeVTLDevices'->_returns->new(VTLDevices => $array);
+    return $self->new_with_coercions(Paws::StorageGateway::DescribeVTLDevices->_returns, %$params);
   }
   sub ListAllGateways {
     my $self = shift;
 
     my $result = $self->ListGateways(@_);
-    my $array = [];
-    push @$array, @{ $result->Gateways };
+    my $params = {};
+    
+    $params->{ Gateways } = $result->Gateways;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->ListGateways(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Gateways };
+      
+      push @{ $params->{ Gateways } }, @{ $result->Gateways };
+      
     }
 
-    return 'Paws::StorageGateway::ListGateways'->_returns->new(Gateways => $array);
+    return $self->new_with_coercions(Paws::StorageGateway::ListGateways->_returns, %$params);
   }
   sub ListAllVolumes {
     my $self = shift;
 
     my $result = $self->ListVolumes(@_);
-    my $array = [];
-    push @$array, @{ $result->VolumeInfos };
+    my $params = {};
+    
+    $params->{ VolumeInfos } = $result->VolumeInfos;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->ListVolumes(@_, Marker => $result->Marker);
-      push @$array, @{ $result->VolumeInfos };
+      
+      push @{ $params->{ VolumeInfos } }, @{ $result->VolumeInfos };
+      
     }
 
-    return 'Paws::StorageGateway::ListVolumes'->_returns->new(VolumeInfos => $array);
+    return $self->new_with_coercions(Paws::StorageGateway::ListVolumes->_returns, %$params);
   }
 
-  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes DeleteBandwidthRateLimit DeleteChapCredentials DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListGateways ListLocalDisks ListTagsForResource ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateSnapshotSchedule UpdateVTLDeviceType / }
+
+  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListGateways ListLocalDisks ListTagsForResource ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateSnapshotSchedule UpdateVTLDeviceType / }
 
 1;
 
@@ -417,11 +459,17 @@ parameters, response elements, possible errors, and examples of
 requests and responses.
 
 =item * AWS Storage Gateway Regions and Endpoints: Provides a list of
-each of the regions and endpoints available for use with AWS Storage
-Gateway.
+each of the s and endpoints available for use with AWS Storage Gateway.
 
 =back
 
+AWS Storage Gateway resource IDs are in uppercase. When you use these
+resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
+lowercase. You must change your resource ID to lowercase to use it with
+the EC2 API. For example, in Storage Gateway the ID for a volume might
+be vol-1122AABB. When you use this ID with the EC2 API, you must change
+it to vol-1122aabb. Otherwise, the EC2 API might not behave as
+expected.
 
 =head1 METHODS
 
@@ -431,14 +479,13 @@ Each argument is described in detail in: L<Paws::StorageGateway::ActivateGateway
 
 Returns: a L<Paws::StorageGateway::ActivateGatewayOutput> instance
 
-  This operation activates the gateway you previously deployed on your
-host. For more information, see Activate the AWS Storage Gateway. In
-the activation process, you specify information such as the region you
-want to use for storing snapshots, the time zone for scheduled
-snapshots the gateway snapshot schedule window, an activation key, and
-a name for your gateway. The activation process also associates your
-gateway with your account; for more information, see
-UpdateGatewayInformation.
+  Activates the gateway you previously deployed on your host. For more
+information, see Activate the AWS Storage Gateway. In the activation
+process, you specify information such as the you want to use for
+storing snapshots, the time zone for scheduled snapshots the gateway
+snapshot schedule window, an activation key, and a name for your
+gateway. The activation process also associates your gateway with your
+account; for more information, see UpdateGatewayInformation.
 
 You must turn on the gateway VM before you can activate your gateway.
 
@@ -449,9 +496,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::AddCache>
 
 Returns: a L<Paws::StorageGateway::AddCacheOutput> instance
 
-  This operation configures one or more gateway local disks as cache for
-a cached-volume gateway. This operation is supported only for the
-gateway-cached volume architecture (see Storage Gateway Concepts).
+  Configures one or more gateway local disks as cache for a cached-volume
+gateway. This operation is supported only for the gateway-cached volume
+architecture (see Storage Gateway Concepts).
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add cache, and one or more disk IDs that you want to
@@ -464,11 +511,11 @@ Each argument is described in detail in: L<Paws::StorageGateway::AddTagsToResour
 
 Returns: a L<Paws::StorageGateway::AddTagsToResourceOutput> instance
 
-  This operation adds one or more tags to the specified resource. You use
-tags to add metadata to resources, which you can use to categorize
-these resources. For example, you can categorize resources by purpose,
-owner, environment, or team. Each tag consists of a key and a value,
-which you define. You can add tags to the following AWS Storage Gateway
+  Adds one or more tags to the specified resource. You use tags to add
+metadata to resources, which you can use to categorize these resources.
+For example, you can categorize resources by purpose, owner,
+environment, or team. Each tag consists of a key and a value, which you
+define. You can add tags to the following AWS Storage Gateway
 resources:
 
 =over
@@ -506,9 +553,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::AddUploadBuffer
 
 Returns: a L<Paws::StorageGateway::AddUploadBufferOutput> instance
 
-  This operation configures one or more gateway local disks as upload
-buffer for a specified gateway. This operation is supported for both
-the gateway-stored and gateway-cached volume architectures.
+  Configures one or more gateway local disks as upload buffer for a
+specified gateway. This operation is supported for both the
+gateway-stored and gateway-cached volume architectures.
 
 In the request, you specify the gateway Amazon Resource Name (ARN) to
 which you want to add upload buffer, and one or more disk IDs that you
@@ -521,10 +568,10 @@ Each argument is described in detail in: L<Paws::StorageGateway::AddWorkingStora
 
 Returns: a L<Paws::StorageGateway::AddWorkingStorageOutput> instance
 
-  This operation configures one or more gateway local disks as working
-storage for a gateway. This operation is supported only for the
-gateway-stored volume architecture. This operation is deprecated method
-in cached-volumes API version (20120630). Use AddUploadBuffer instead.
+  Configures one or more gateway local disks as working storage for a
+gateway. This operation is supported only for the gateway-stored volume
+architecture. This operation is deprecated in cached-volumes API
+version 20120630. Use AddUploadBuffer instead.
 
 Working storage is also referred to as upload buffer. You can also use
 the AddUploadBuffer operation to add upload buffer to a stored-volume
@@ -562,9 +609,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::CreateCachediSC
 
 Returns: a L<Paws::StorageGateway::CreateCachediSCSIVolumeOutput> instance
 
-  This operation creates a cached volume on a specified cached gateway.
-This operation is supported only for the gateway-cached volume
-architecture.
+  Creates a cached volume on a specified cached gateway. This operation
+is supported only for the gateway-cached volume architecture.
 
 Cache storage must be allocated to the gateway before you can create a
 cached volume. Use the AddCache operation to add cache storage to a
@@ -584,7 +630,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::CreateSnapshot>
 
 Returns: a L<Paws::StorageGateway::CreateSnapshotOutput> instance
 
-  This operation initiates a snapshot of a volume.
+  Initiates a snapshot of a volume.
 
 AWS Storage Gateway provides the ability to back up point-in-time
 snapshots of your data to Amazon Simple Storage (S3) for durable
@@ -613,9 +659,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::CreateSnapshotF
 
 Returns: a L<Paws::StorageGateway::CreateSnapshotFromVolumeRecoveryPointOutput> instance
 
-  This operation initiates a snapshot of a gateway from a volume recovery
-point. This operation is supported only for the gateway-cached volume
-architecture (see ).
+  Initiates a snapshot of a gateway from a volume recovery point. This
+operation is supported only for the gateway-cached volume architecture.
 
 A volume recovery point is a point in time at which all data of the
 volume is consistent and from which you can create a snapshot. To get a
@@ -641,8 +686,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::CreateStorediSC
 
 Returns: a L<Paws::StorageGateway::CreateStorediSCSIVolumeOutput> instance
 
-  This operation creates a volume on a specified gateway. This operation
-is supported only for the gateway-stored volume architecture.
+  Creates a volume on a specified gateway. This operation is supported
+only for the gateway-stored volume architecture.
 
 The size of the volume to create is inferred from the disk size. You
 can choose to preserve existing data on the disk, create volume from an
@@ -670,17 +715,31 @@ virtual tapes. Use the AddCache operation to add cache storage to a
 gateway.
 
 
+=head2 CreateTapeWithBarcode(GatewayARN => Str, TapeBarcode => Str, TapeSizeInBytes => Int)
+
+Each argument is described in detail in: L<Paws::StorageGateway::CreateTapeWithBarcode>
+
+Returns: a L<Paws::StorageGateway::CreateTapeWithBarcodeOutput> instance
+
+  Creates a virtual tape by using your own barcode. You write data to the
+virtual tape and then archive the tape.
+
+Cache storage must be allocated to the gateway before you can create a
+virtual tape. Use the AddCache operation to add cache storage to a
+gateway.
+
+
 =head2 DeleteBandwidthRateLimit(BandwidthType => Str, GatewayARN => Str)
 
 Each argument is described in detail in: L<Paws::StorageGateway::DeleteBandwidthRateLimit>
 
 Returns: a L<Paws::StorageGateway::DeleteBandwidthRateLimitOutput> instance
 
-  This operation deletes the bandwidth rate limits of a gateway. You can
-delete either the upload and download bandwidth rate limit, or you can
-delete both. If you delete only one of the limits, the other limit
-remains unchanged. To specify which gateway to work with, use the
-Amazon Resource Name (ARN) of the gateway in your request.
+  Deletes the bandwidth rate limits of a gateway. You can delete either
+the upload and download bandwidth rate limit, or you can delete both.
+If you delete only one of the limits, the other limit remains
+unchanged. To specify which gateway to work with, use the Amazon
+Resource Name (ARN) of the gateway in your request.
 
 
 =head2 DeleteChapCredentials(InitiatorName => Str, TargetARN => Str)
@@ -689,8 +748,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::DeleteChapCrede
 
 Returns: a L<Paws::StorageGateway::DeleteChapCredentialsOutput> instance
 
-  This operation deletes Challenge-Handshake Authentication Protocol
-(CHAP) credentials for a specified iSCSI target and initiator pair.
+  Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
+for a specified iSCSI target and initiator pair.
 
 
 =head2 DeleteGateway(GatewayARN => Str)
@@ -699,10 +758,10 @@ Each argument is described in detail in: L<Paws::StorageGateway::DeleteGateway>
 
 Returns: a L<Paws::StorageGateway::DeleteGatewayOutput> instance
 
-  This operation deletes a gateway. To specify which gateway to delete,
-use the Amazon Resource Name (ARN) of the gateway in your request. The
-operation deletes the gateway; however, it does not delete the gateway
-virtual machine (VM) from your host computer.
+  Deletes a gateway. To specify which gateway to delete, use the Amazon
+Resource Name (ARN) of the gateway in your request. The operation
+deletes the gateway; however, it does not delete the gateway virtual
+machine (VM) from your host computer.
 
 After you delete a gateway, you cannot reactivate it. Completed
 snapshots of the gateway volumes are not deleted upon deleting the
@@ -724,11 +783,11 @@ Each argument is described in detail in: L<Paws::StorageGateway::DeleteSnapshotS
 
 Returns: a L<Paws::StorageGateway::DeleteSnapshotScheduleOutput> instance
 
-  This operation deletes a snapshot of a volume.
+  Deletes a snapshot of a volume.
 
-You can take snapshots of your gateway volumes on a scheduled or ad-hoc
-basis. This API enables you to delete a snapshot schedule for a volume.
-For more information, see Working with Snapshots. In the
+You can take snapshots of your gateway volumes on a scheduled or ad hoc
+basis. This API action enables you to delete a snapshot schedule for a
+volume. For more information, see Working with Snapshots. In the
 C<DeleteSnapshotSchedule> request, you identify the volume by providing
 its Amazon Resource Name (ARN).
 
@@ -760,11 +819,11 @@ Each argument is described in detail in: L<Paws::StorageGateway::DeleteVolume>
 
 Returns: a L<Paws::StorageGateway::DeleteVolumeOutput> instance
 
-  This operation deletes the specified gateway volume that you previously
-created using the CreateCachediSCSIVolume or CreateStorediSCSIVolume
-API. For gateway-stored volumes, the local disk that was configured as
-the storage volume is not deleted. You can reuse the local disk to
-create another storage volume.
+  Deletes the specified gateway volume that you previously created using
+the CreateCachediSCSIVolume or CreateStorediSCSIVolume API. For
+gateway-stored volumes, the local disk that was configured as the
+storage volume is not deleted. You can reuse the local disk to create
+another storage volume.
 
 Before you delete a gateway volume, make sure there are no iSCSI
 connections to the volume you are deleting. You should also make sure
@@ -783,9 +842,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeBandwid
 
 Returns: a L<Paws::StorageGateway::DescribeBandwidthRateLimitOutput> instance
 
-  This operation returns the bandwidth rate limits of a gateway. By
-default, these limits are not set, which means no bandwidth rate
-limiting is in effect.
+  Returns the bandwidth rate limits of a gateway. By default, these
+limits are not set, which means no bandwidth rate limiting is in
+effect.
 
 This operation only returns a value for a bandwidth rate limit only if
 the limit is set. If no limits are set for the gateway, then this
@@ -800,8 +859,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeCache>
 
 Returns: a L<Paws::StorageGateway::DescribeCacheOutput> instance
 
-  This operation returns information about the cache of a gateway. This
-operation is supported only for the gateway-cached volume architecture.
+  Returns information about the cache of a gateway. This operation is
+supported only for the gateway-cached volume architecture.
 
 The response includes disk IDs that are configured as cache, and it
 includes the amount of cache allocated and used.
@@ -813,9 +872,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeCachedi
 
 Returns: a L<Paws::StorageGateway::DescribeCachediSCSIVolumesOutput> instance
 
-  This operation returns a description of the gateway volumes specified
-in the request. This operation is supported only for the gateway-cached
-volume architecture.
+  Returns a description of the gateway volumes specified in the request.
+This operation is supported only for the gateway-cached volume
+architecture.
 
 The list of gateway volumes in the request must be from one gateway. In
 the response Amazon Storage Gateway returns volume information sorted
@@ -828,9 +887,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeChapCre
 
 Returns: a L<Paws::StorageGateway::DescribeChapCredentialsOutput> instance
 
-  This operation returns an array of Challenge-Handshake Authentication
-Protocol (CHAP) credentials information for a specified iSCSI target,
-one for each target-initiator pair.
+  Returns an array of Challenge-Handshake Authentication Protocol (CHAP)
+credentials information for a specified iSCSI target, one for each
+target-initiator pair.
 
 
 =head2 DescribeGatewayInformation(GatewayARN => Str)
@@ -839,10 +898,10 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeGateway
 
 Returns: a L<Paws::StorageGateway::DescribeGatewayInformationOutput> instance
 
-  This operation returns metadata about a gateway such as its name,
-network interfaces, configured time zone, and the state (whether the
-gateway is running or not). To specify which gateway to describe, use
-the Amazon Resource Name (ARN) of the gateway in your request.
+  Returns metadata about a gateway such as its name, network interfaces,
+configured time zone, and the state (whether the gateway is running or
+not). To specify which gateway to describe, use the Amazon Resource
+Name (ARN) of the gateway in your request.
 
 
 =head2 DescribeMaintenanceStartTime(GatewayARN => Str)
@@ -851,9 +910,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeMainten
 
 Returns: a L<Paws::StorageGateway::DescribeMaintenanceStartTimeOutput> instance
 
-  This operation returns your gateway's weekly maintenance start time
-including the day and time of the week. Note that values are in terms
-of the gateway's time zone.
+  Returns your gateway's weekly maintenance start time including the day
+and time of the week. Note that values are in terms of the gateway's
+time zone.
 
 
 =head2 DescribeSnapshotSchedule(VolumeARN => Str)
@@ -862,9 +921,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeSnapsho
 
 Returns: a L<Paws::StorageGateway::DescribeSnapshotScheduleOutput> instance
 
-  This operation describes the snapshot schedule for the specified
-gateway volume. The snapshot schedule information includes intervals at
-which snapshots are automatically initiated on the volume.
+  Describes the snapshot schedule for the specified gateway volume. The
+snapshot schedule information includes intervals at which snapshots are
+automatically initiated on the volume.
 
 
 =head2 DescribeStorediSCSIVolumes(VolumeARNs => ArrayRef[Str])
@@ -873,9 +932,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeStoredi
 
 Returns: a L<Paws::StorageGateway::DescribeStorediSCSIVolumesOutput> instance
 
-  This operation returns the description of the gateway volumes specified
-in the request. The list of gateway volumes in the request must be from
-one gateway. In the response Amazon Storage Gateway returns volume
+  Returns the description of the gateway volumes specified in the
+request. The list of gateway volumes in the request must be from one
+gateway. In the response Amazon Storage Gateway returns volume
 information sorted by volume ARNs.
 
 
@@ -902,7 +961,7 @@ Returns: a L<Paws::StorageGateway::DescribeTapeRecoveryPointsOutput> instance
   Returns a list of virtual tape recovery points that are available for
 the specified gateway-VTL.
 
-A recovery point is a point in time view of a virtual tape at which all
+A recovery point is a point-in-time view of a virtual tape at which all
 the data on the virtual tape is consistent. If your gateway crashes,
 virtual tapes that have recovery points can be recovered to a new
 gateway.
@@ -925,9 +984,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeUploadB
 
 Returns: a L<Paws::StorageGateway::DescribeUploadBufferOutput> instance
 
-  This operation returns information about the upload buffer of a
-gateway. This operation is supported for both the gateway-stored and
-gateway-cached volume architectures.
+  Returns information about the upload buffer of a gateway. This
+operation is supported for both the gateway-stored and gateway-cached
+volume architectures.
 
 The response includes disk IDs that are configured as upload buffer
 space, and it includes the amount of upload buffer space allocated and
@@ -953,10 +1012,10 @@ Each argument is described in detail in: L<Paws::StorageGateway::DescribeWorking
 
 Returns: a L<Paws::StorageGateway::DescribeWorkingStorageOutput> instance
 
-  This operation returns information about the working storage of a
-gateway. This operation is supported only for the gateway-stored volume
-architecture. This operation is deprecated in cached-volumes API
-version (20120630). Use DescribeUploadBuffer instead.
+  Returns information about the working storage of a gateway. This
+operation is supported only for the gateway-stored volume architecture.
+This operation is deprecated in cached-volumes API version (20120630).
+Use DescribeUploadBuffer instead.
 
 Working storage is also referred to as upload buffer. You can also use
 the DescribeUploadBuffer operation to add upload buffer to a
@@ -988,16 +1047,16 @@ Each argument is described in detail in: L<Paws::StorageGateway::ListGateways>
 
 Returns: a L<Paws::StorageGateway::ListGatewaysOutput> instance
 
-  This operation lists gateways owned by an AWS account in a region
-specified in the request. The returned list is ordered by gateway
-Amazon Resource Name (ARN).
+  Lists gateways owned by an AWS account in a region specified in the
+request. The returned list is ordered by gateway Amazon Resource Name
+(ARN).
 
 By default, the operation returns a maximum of 100 gateways. This
 operation supports pagination that allows you to optionally reduce the
 number of gateways returned in a response.
 
-If you have more gateways than are returned in a response-that is, the
-response returns only a truncated list of your gateways-the response
+If you have more gateways than are returned in a response (that is, the
+response returns only a truncated list of your gateways), the response
 contains a marker that you can specify in your next request to fetch
 the next page of gateways.
 
@@ -1008,9 +1067,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::ListLocalDisks>
 
 Returns: a L<Paws::StorageGateway::ListLocalDisksOutput> instance
 
-  This operation returns a list of the gateway's local disks. To specify
-which gateway to describe, you use the Amazon Resource Name (ARN) of
-the gateway in the body of the request.
+  Returns a list of the gateway's local disks. To specify which gateway
+to describe, you use the Amazon Resource Name (ARN) of the gateway in
+the body of the request.
 
 The request returns a list of all disks, specifying which are
 configured as working storage, cache storage, or stored volume or not
@@ -1021,14 +1080,13 @@ missing (the disk is no longer connected to the gateway), or mismatch
 disk content is corrupted).
 
 
-=head2 ListTagsForResource([Limit => Int, Marker => Str, ResourceARN => Str])
+=head2 ListTagsForResource(ResourceARN => Str, [Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListTagsForResource>
 
 Returns: a L<Paws::StorageGateway::ListTagsForResourceOutput> instance
 
-  This operation lists the tags that have been added to the specified
-resource.
+  Lists the tags that have been added to the specified resource.
 
 
 =head2 ListVolumeInitiators(VolumeARN => Str)
@@ -1037,9 +1095,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::ListVolumeIniti
 
 Returns: a L<Paws::StorageGateway::ListVolumeInitiatorsOutput> instance
 
-  This operation lists iSCSI initiators that are connected to a volume.
-You can use this operation to determine whether a volume is being used
-or not.
+  Lists iSCSI initiators that are connected to a volume. You can use this
+operation to determine whether a volume is being used or not.
 
 
 =head2 ListVolumeRecoveryPoints(GatewayARN => Str)
@@ -1048,8 +1105,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::ListVolumeRecov
 
 Returns: a L<Paws::StorageGateway::ListVolumeRecoveryPointsOutput> instance
 
-  This operation lists the recovery points for a specified gateway. This
-operation is supported only for the gateway-cached volume architecture.
+  Lists the recovery points for a specified gateway. This operation is
+supported only for the gateway-cached volume architecture.
 
 Each gateway-cached volume has one recovery point. A volume recovery
 point is a point in time at which all data of the volume is consistent
@@ -1064,10 +1121,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::ListVolumes>
 
 Returns: a L<Paws::StorageGateway::ListVolumesOutput> instance
 
-  This operation lists the iSCSI stored volumes of a gateway. Results are
-sorted by volume ARN. The response includes only the volume ARNs. If
-you want additional volume information, use the
-DescribeStorediSCSIVolumes API.
+  Lists the iSCSI stored volumes of a gateway. Results are sorted by
+volume ARN. The response includes only the volume ARNs. If you want
+additional volume information, use the DescribeStorediSCSIVolumes API.
 
 The operation supports pagination. By default, the operation returns a
 maximum of up to 100 volumes. You can optionally specify the C<Limit>
@@ -1077,13 +1133,13 @@ response includes a Marker field. You can use this Marker value in your
 subsequent request to retrieve the next set of volumes.
 
 
-=head2 RemoveTagsFromResource([ResourceARN => Str, TagKeys => ArrayRef[Str]])
+=head2 RemoveTagsFromResource(ResourceARN => Str, TagKeys => ArrayRef[Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::RemoveTagsFromResource>
 
 Returns: a L<Paws::StorageGateway::RemoveTagsFromResourceOutput> instance
 
-  This operation removes one or more tags from the specified resource.
+  Removes one or more tags from the specified resource.
 
 
 =head2 ResetCache(GatewayARN => Str)
@@ -1092,13 +1148,13 @@ Each argument is described in detail in: L<Paws::StorageGateway::ResetCache>
 
 Returns: a L<Paws::StorageGateway::ResetCacheOutput> instance
 
-  This operation resets all cache disks that have encountered a error and
-makes the disks available for reconfiguration as cache storage. If your
-cache disk encounters a error, the gateway prevents read and write
-operations on virtual tapes in the gateway. For example, an error can
-occur when a disk is corrupted or removed from the gateway. When a
-cache is reset, the gateway loses its cache storage. At this point you
-can reconfigure the disks as cache disks.
+  Resets all cache disks that have encountered a error and makes the
+disks available for reconfiguration as cache storage. If your cache
+disk encounters a error, the gateway prevents read and write operations
+on virtual tapes in the gateway. For example, an error can occur when a
+disk is corrupted or removed from the gateway. When a cache is reset,
+the gateway loses its cache storage. At this point you can reconfigure
+the disks as cache disks.
 
 If the cache disk you are resetting contains data that has not been
 uploaded to Amazon S3 yet, that data can be lost. After you reset cache
@@ -1140,15 +1196,26 @@ tape is read-only. The virtual tape can be retrieved to only a
 gateway-VTL. There is no charge for retrieving recovery points.
 
 
+=head2 SetLocalConsolePassword(GatewayARN => Str, LocalConsolePassword => Str)
+
+Each argument is described in detail in: L<Paws::StorageGateway::SetLocalConsolePassword>
+
+Returns: a L<Paws::StorageGateway::SetLocalConsolePasswordOutput> instance
+
+  Sets the password for your VM local console. When you log in to the
+local console for the first time, you log in to the VM with the default
+credentials. We recommend that you set a new password. You don't need
+to know the default password to set a new password.
+
+
 =head2 ShutdownGateway(GatewayARN => Str)
 
 Each argument is described in detail in: L<Paws::StorageGateway::ShutdownGateway>
 
 Returns: a L<Paws::StorageGateway::ShutdownGatewayOutput> instance
 
-  This operation shuts down a gateway. To specify which gateway to shut
-down, use the Amazon Resource Name (ARN) of the gateway in the body of
-your request.
+  Shuts down a gateway. To specify which gateway to shut down, use the
+Amazon Resource Name (ARN) of the gateway in the body of your request.
 
 The operation shuts down the gateway service component running in the
 storage gateway's virtual machine (VM) and not the VM.
@@ -1178,10 +1245,10 @@ Each argument is described in detail in: L<Paws::StorageGateway::StartGateway>
 
 Returns: a L<Paws::StorageGateway::StartGatewayOutput> instance
 
-  This operation starts a gateway that you previously shut down (see
-ShutdownGateway). After the gateway starts, you can then make other API
-calls, your applications can read from or write to the gateway's
-storage volumes and you will be able to take snapshot backups.
+  Starts a gateway that you previously shut down (see ShutdownGateway).
+After the gateway starts, you can then make other API calls, your
+applications can read from or write to the gateway's storage volumes
+and you will be able to take snapshot backups.
 
 When you make a request, you will get a 200 OK success response
 immediately. However, it might take some time for the gateway to be
@@ -1199,10 +1266,10 @@ Each argument is described in detail in: L<Paws::StorageGateway::UpdateBandwidth
 
 Returns: a L<Paws::StorageGateway::UpdateBandwidthRateLimitOutput> instance
 
-  This operation updates the bandwidth rate limits of a gateway. You can
-update both the upload and download bandwidth rate limit or specify
-only one of the two. If you don't set a bandwidth rate limit, the
-existing rate limit remains.
+  Updates the bandwidth rate limits of a gateway. You can update both the
+upload and download bandwidth rate limit or specify only one of the
+two. If you don't set a bandwidth rate limit, the existing rate limit
+remains.
 
 By default, a gateway's bandwidth rate limits are not set. If you don't
 set any limit, the gateway does not have any limitations on its
@@ -1219,10 +1286,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::UpdateChapCrede
 
 Returns: a L<Paws::StorageGateway::UpdateChapCredentialsOutput> instance
 
-  This operation updates the Challenge-Handshake Authentication Protocol
-(CHAP) credentials for a specified iSCSI target. By default, a gateway
-does not have CHAP enabled; however, for added security, you might use
-it.
+  Updates the Challenge-Handshake Authentication Protocol (CHAP)
+credentials for a specified iSCSI target. By default, a gateway does
+not have CHAP enabled; however, for added security, you might use it.
 
 When you update CHAP credentials, all existing connections on the
 target are closed and initiators must reconnect with the new
@@ -1235,9 +1301,13 @@ Each argument is described in detail in: L<Paws::StorageGateway::UpdateGatewayIn
 
 Returns: a L<Paws::StorageGateway::UpdateGatewayInformationOutput> instance
 
-  This operation updates a gateway's metadata, which includes the
-gateway's name and time zone. To specify which gateway to update, use
-the Amazon Resource Name (ARN) of the gateway in your request.
+  Updates a gateway's metadata, which includes the gateway's name and
+time zone. To specify which gateway to update, use the Amazon Resource
+Name (ARN) of the gateway in your request.
+
+For Gateways activated after September 2, 2015, the gateway's ARN
+contains the gateway ID rather than the gateway name. However, changing
+the name of the gateway has no effect on the gateway's ARN.
 
 
 =head2 UpdateGatewaySoftwareNow(GatewayARN => Str)
@@ -1246,8 +1316,8 @@ Each argument is described in detail in: L<Paws::StorageGateway::UpdateGatewaySo
 
 Returns: a L<Paws::StorageGateway::UpdateGatewaySoftwareNowOutput> instance
 
-  This operation updates the gateway virtual machine (VM) software. The
-request immediately triggers the software update.
+  Updates the gateway virtual machine (VM) software. The request
+immediately triggers the software update.
 
 When you make this request, you get a C<200 OK> success response
 immediately. However, it might take some time for the update to
@@ -1266,9 +1336,9 @@ Each argument is described in detail in: L<Paws::StorageGateway::UpdateMaintenan
 
 Returns: a L<Paws::StorageGateway::UpdateMaintenanceStartTimeOutput> instance
 
-  This operation updates a gateway's weekly maintenance start time
-information, including day and time of the week. The maintenance time
-is the time in your gateway's time zone.
+  Updates a gateway's weekly maintenance start time information,
+including day and time of the week. The maintenance time is the time in
+your gateway's time zone.
 
 
 =head2 UpdateSnapshotSchedule(RecurrenceInHours => Int, StartAt => Int, VolumeARN => Str, [Description => Str])
@@ -1277,8 +1347,7 @@ Each argument is described in detail in: L<Paws::StorageGateway::UpdateSnapshotS
 
 Returns: a L<Paws::StorageGateway::UpdateSnapshotScheduleOutput> instance
 
-  This operation updates a snapshot schedule configured for a gateway
-volume.
+  Updates a snapshot schedule configured for a gateway volume.
 
 The default snapshot schedule for volume is once every 24 hours,
 starting at the creation time of the volume. You can use this API to
@@ -1296,10 +1365,10 @@ Each argument is described in detail in: L<Paws::StorageGateway::UpdateVTLDevice
 
 Returns: a L<Paws::StorageGateway::UpdateVTLDeviceTypeOutput> instance
 
-  This operation updates the type of medium changer in a gateway-VTL.
-When you activate a gateway-VTL, you select a medium changer type for
-the gateway-VTL. This operation enables you to select a different type
-of medium changer after a gateway-VTL is activated.
+  Updates the type of medium changer in a gateway-VTL. When you activate
+a gateway-VTL, you select a medium changer type for the gateway-VTL.
+This operation enables you to select a different type of medium changer
+after a gateway-VTL is activated.
 
 
 =head1 SEE ALSO

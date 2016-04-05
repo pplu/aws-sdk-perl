@@ -11,6 +11,7 @@ package Paws::Route53::CreateReusableDelegationSet;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::CreateReusableDelegationSetResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -24,7 +25,7 @@ Paws::Route53::CreateReusableDelegationSetResponse
 
 =head2 B<REQUIRED> CallerReference => Str
 
-  A unique string that identifies the request and that allows failed
+A unique string that identifies the request and that allows failed
 C<CreateReusableDelegationSet> requests to be retried without the risk
 of executing the operation twice. You must use a unique
 C<CallerReference> string every time you create a reusable delegation
@@ -35,10 +36,14 @@ Valid characters are any Unicode code points that are legal in an XML
 1.0 document. The UTF-8 encoding of the value must be less than 128
 bytes.
 
+
+
 =head2 HostedZoneId => Str
 
-  The ID of the hosted zone whose delegation set you want to mark as
+The ID of the hosted zone whose delegation set you want to mark as
 reusable. It is an optional parameter.
+
+
 
 
 =cut

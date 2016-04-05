@@ -3,6 +3,12 @@ package Paws::STS;
   sub service { 'sts' }
   sub version { '2011-06-15' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -83,6 +89,8 @@ package Paws::STS;
     my $call_object = $self->new_with_coercions('Paws::STS::GetSessionToken', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AssumeRole AssumeRoleWithSAML AssumeRoleWithWebIdentity DecodeAuthorizationMessage GetFederationToken GetSessionToken / }
 

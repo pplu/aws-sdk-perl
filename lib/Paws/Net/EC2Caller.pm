@@ -1,4 +1,4 @@
-package Paws::Net::EC2Caller {
+package Paws::Net::EC2Caller;
   use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
@@ -91,6 +91,4 @@ package Paws::Net::EC2Caller {
 
     return $request;
   }
-}
-
 1;

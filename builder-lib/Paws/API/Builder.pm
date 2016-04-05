@@ -31,6 +31,33 @@ package Paws::API::Builder {
     return $self->_load_json_file($self->api_file);
   });
 
+  has retry_file => (is => 'ro', lazy => 1, default => sub {
+    my $file = shift->api_file;
+    $file =~ s|/[^/]*?/[^/]*?/service-2\.|/_retry.|;
+    return $file;
+  });
+  has retry_struct => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return $self->_load_json_file($self->retry_file)->{ retry };
+  });
+  has default_retry => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    $self->retry_struct->{ __default__ };
+  });
+  has retry => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    $self->retry_struct->{ $self->service }->{ __default__ };
+  });
+  has service_max_attempts => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return (defined $self->retry and defined $self->retry->{ max_attempts }) ? $self->retry->{ max_attempts } : $self->default_retry->{ max_attempts };
+  });
+  has service_retry => (is => 'ro', lazy => 1, default => sub {
+    my $self = shift;
+    return (defined $self->retry and defined $self->retry->{ delay }) ? $self->retry->{ delay } : $self->default_retry->{ delay };
+  });
+
+
   has waiters_file => (is => 'ro', lazy => 1, default => sub {
     my $file = shift->api_file;
     $file =~ s/\/service-2\./\/waiters-2./;
@@ -289,7 +316,10 @@ package Paws::API::Builder {
   [%- member = c.shape(shape.members.$param_name.shape) %]
 =head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
-  [% c.doc_for_param_name_in_shape(shape, param_name) %]
+[% c.doc_for_param_name_in_shape(shape, param_name) %]
+
+[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%]
+
 [% END %]
 
 =cut
@@ -322,7 +352,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
   [%- member = c.shape(shape.members.$param_name.shape) %]
 =head2 [%- IF (c.required_in_shape(shape,param_name)) %]B<REQUIRED> [% END %][% param_name %] => [% c.perl_type_to_pod(member.perl_type) %]
 
-  [% c.doc_for_param_name_in_shape(shape, param_name) %]
+[% c.doc_for_param_name_in_shape(shape, param_name) %]
+
+[% IF member.enum %]Valid values are: [% FOR value=member.enum %]C<"[% value %]">[% IF NOT loop.last %], [% END %][% END %][% END -%]
 
 [% END %]
 
@@ -368,7 +400,7 @@ Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
 
 =head1 METHODS
 [% FOR op IN c.api_struct.operations.keys.sort %]
-  [%- op_name = c.api_struct.operations.$op.name %]
+  [%- op_name = op %]
 =head2 [% op_name %](
 [%- out_shape = c.input_for_operation(op_name) %]
 [%- req_list = out_shape.required.sort %]
@@ -1010,7 +1042,15 @@ package [% inner_class %];
         $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Num]' });
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'list') {
         my $type = $self->get_caller_class_type($iclass->{value}->{shape});
-        $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+        
+        #Sometimes it's a list of objects, and sometimes it's a list of native things
+        my $inner_shape = $self->shape($values_shape->{member}->{shape});
+
+        if ($inner_shape->{type} eq 'structure'){
+          $self->process_template($self->map_str_to_obj_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+        } else {
+          $self->process_template($self->map_str_to_native_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });
+        }
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'structure') {
         my $type = $self->get_caller_class_type($iclass->{value}->{shape});
         $self->process_template($self->map_str_to_obj_template, { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => "HashRef[$type]" });

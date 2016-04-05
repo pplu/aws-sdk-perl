@@ -1,7 +1,7 @@
 
 package Paws::Inspector::ListTagsForResourceResponse;
   use Moose;
-  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]', traits => ['Unwrapped'], xmlname => 'tagList' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::Tag]', traits => ['Unwrapped'], xmlname => 'tags' , required => 1);
 
 
 ### main pod documentation begin ###
@@ -13,9 +13,11 @@ Paws::Inspector::ListTagsForResourceResponse
 =head1 ATTRIBUTES
 
 
-=head2 TagList => ArrayRef[L<Paws::Inspector::Tag>]
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Inspector::Tag>]
 
-  A collection of key and value pairs.
+A collection of key and value pairs.
+
+
 
 
 =cut

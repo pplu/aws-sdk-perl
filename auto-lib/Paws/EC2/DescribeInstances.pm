@@ -39,17 +39,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-  One or more filters.
+One or more filters.
 
 =over
+
+=item *
+
+C<affinity> - The affinity setting for an instance running on a
+Dedicated host (C<default> | C<host>).
 
 =item *
 
@@ -104,6 +110,11 @@ EC2-Classic only.
 
 =item *
 
+C<host-Id> - The ID of the Dedicated host on which the instance is
+running, if applicable.
+
+=item *
+
 C<hypervisor> - The hypervisor type of the instance (C<ovm> | C<xen>).
 
 =item *
@@ -121,8 +132,8 @@ C<instance-id> - The ID of the instance.
 
 =item *
 
-C<instance-lifecycle> - Indicates whether this is a Spot Instance
-(C<spot>).
+C<instance-lifecycle> - Indicates whether this is a Spot Instance or a
+Scheduled Instance (C<spot> | C<scheduled>).
 
 =item *
 
@@ -256,7 +267,7 @@ in your VPC.
 
 =item *
 
-C<spot-instance-request-id> - The ID of the Spot Instance request.
+C<spot-instance-request-id> - The ID of the Spot instance request.
 
 =item *
 
@@ -292,7 +303,8 @@ is independent of the C<tag-key> filter.
 
 =item *
 
-C<tenancy> - The tenancy of an instance (C<dedicated> | C<default>).
+C<tenancy> - The tenancy of an instance (C<dedicated> | C<default> |
+C<host>).
 
 =item *
 
@@ -320,7 +332,7 @@ interface.
 
 =item *
 
-C<network-interface.network-interface.id> - The ID of the network
+C<network-interface.network-interface-id> - The ID of the network
 interface.
 
 =item *
@@ -355,7 +367,7 @@ interface.
 
 =item *
 
-C<network-interface-private-dns-name> - The private DNS name of the
+C<network-interface.private-dns-name> - The private DNS name of the
 network interface.
 
 =item *
@@ -455,16 +467,18 @@ network interface was associated with an IP address.
 
 
 
+
 =head2 InstanceIds => ArrayRef[Str]
 
-  One or more instance IDs.
+One or more instance IDs.
 
 Default: Describes all your instances.
 
 
+
 =head2 MaxResults => Int
 
-  The maximum number of results to return for the request in a single
+The maximum number of results to return for the request in a single
 page. The remaining results of the initial request can be seen by
 sending another request with the returned C<NextToken> value. This
 value can be between 5 and 1000; if C<MaxResults> is given a value
@@ -472,9 +486,11 @@ larger than 1000, only 1000 results are returned. You cannot specify
 this parameter and the instance IDs parameter in the same request.
 
 
+
 =head2 NextToken => Str
 
-  The token to request the next page of results.
+The token to request the next page of results.
+
 
 
 

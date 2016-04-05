@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 LoadBalancerName => Str
 
-  The name of the load balancer.
+The name of the load balancer.
+
 
 
 =head2 PolicyNames => ArrayRef[Str]
 
-  The names of the policies.
+The names of the policies.
+
 
 
 

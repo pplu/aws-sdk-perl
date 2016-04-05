@@ -46,39 +46,45 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AppSource => L<Paws::OpsWorks::Source>
 
-  A C<Source> object that specifies the app repository.
+A C<Source> object that specifies the app repository.
+
 
 
 =head2 Attributes => L<Paws::OpsWorks::AppAttributes>
 
-  One or more user-defined key/value pairs to be added to the stack
+One or more user-defined key/value pairs to be added to the stack
 attributes.
+
 
 
 =head2 DataSources => ArrayRef[L<Paws::OpsWorks::DataSource>]
 
-  The app's data source.
+The app's data source.
+
 
 
 =head2 Description => Str
 
-  A description of the app.
+A description of the app.
+
 
 
 =head2 Domains => ArrayRef[Str]
 
-  The app virtual host settings, with multiple domains separated by
+The app virtual host settings, with multiple domains separated by
 commas. For example: C<'www.example.com, example.com'>
+
 
 
 =head2 EnableSsl => Bool
 
-  Whether to enable SSL for the app.
+Whether to enable SSL for the app.
+
 
 
 =head2 Environment => ArrayRef[L<Paws::OpsWorks::EnvironmentVariable>]
 
-  An array of C<EnvironmentVariable> objects that specify environment
+An array of C<EnvironmentVariable> objects that specify environment
 variables to be associated with the app. After you deploy the app,
 these variables are defined on the associated app server instance. For
 more information, see Environment Variables.
@@ -95,35 +101,41 @@ specified one or more environment variables, you cannot modify the
 stack's Chef version.
 
 
+
 =head2 B<REQUIRED> Name => Str
 
-  The app name.
+The app name.
+
 
 
 =head2 Shortname => Str
 
-  The app's short name.
+The app's short name.
+
 
 
 =head2 SslConfiguration => L<Paws::OpsWorks::SslConfiguration>
 
-  An C<SslConfiguration> object with the SSL configuration.
+An C<SslConfiguration> object with the SSL configuration.
+
 
 
 =head2 B<REQUIRED> StackId => Str
 
-  The stack ID.
+The stack ID.
+
 
 
 =head2 B<REQUIRED> Type => Str
 
-  The app type. Each supported type is associated with a particular
+The app type. Each supported type is associated with a particular
 layer. For example, PHP applications are associated with a PHP layer.
 AWS OpsWorks deploys an application to those instances that are members
 of the corresponding layer. If your app isn't one of the standard
 types, or you prefer to implement your own Deploy recipes, specify
 C<other>.
 
+Valid values are: C<"aws-flow-ruby">, C<"java">, C<"rails">, C<"php">, C<"nodejs">, C<"static">, C<"other">
 
 
 =head1 SEE ALSO

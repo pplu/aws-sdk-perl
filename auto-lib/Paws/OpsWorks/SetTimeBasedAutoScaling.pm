@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AutoScalingSchedule => L<Paws::OpsWorks::WeeklyAutoScalingSchedule>
 
-  An C<AutoScalingSchedule> with the instance schedule.
+An C<AutoScalingSchedule> with the instance schedule.
+
 
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  The instance ID.
+The instance ID.
+
 
 
 

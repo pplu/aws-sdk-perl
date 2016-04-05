@@ -4,6 +4,12 @@ package Paws::CodeDeploy;
   sub version { '2014-10-06' }
   sub target_prefix { 'CodeDeploy_20141006' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -13,9 +19,24 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::AddTagsToOnPremisesInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchGetApplicationRevisions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetApplicationRevisions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetApplications {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetApplications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchGetDeploymentGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetDeploymentGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchGetDeploymentInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::BatchGetDeploymentInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub BatchGetDeployments {
@@ -168,8 +189,10 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::UpdateDeploymentGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
 
-  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplications BatchGetDeployments BatchGetOnPremisesInstances CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances StopDeployment UpdateApplication UpdateDeploymentGroup / }
+
+  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetOnPremisesInstances CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListOnPremisesInstances RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances StopDeployment UpdateApplication UpdateDeploymentGroup / }
 
 1;
 
@@ -199,30 +222,29 @@ Paws::CodeDeploy - Perl Interface to AWS AWS CodeDeploy
 
 AWS CodeDeploy B<Overview>
 
-This is the AWS CodeDeploy API Reference. This guide provides
-descriptions of the AWS CodeDeploy APIs. For additional information,
-see the AWS CodeDeploy User Guide.
+This reference guide provides descriptions of the AWS CodeDeploy APIs.
+For more information about AWS CodeDeploy, see the AWS CodeDeploy User
+Guide.
 
 B<Using the APIs>
 
-You can use the AWS CodeDeploy APIs to work with the following items:
+You can use the AWS CodeDeploy APIs to work with the following:
 
 =over
 
 =item *
 
-Applications are unique identifiers that AWS CodeDeploy uses to ensure
-that the correct combinations of revisions, deployment configurations,
-and deployment groups are being referenced during deployments.
+Applications are unique identifiers used by AWS CodeDeploy to ensure
+the correct combinations of revisions, deployment configurations, and
+deployment groups are being referenced during deployments.
 
 You can use the AWS CodeDeploy APIs to create, delete, get, list, and
 update applications.
 
 =item *
 
-Deployment configurations are sets of deployment rules and deployment
-success and failure conditions that AWS CodeDeploy uses during
-deployments.
+Deployment configurations are sets of deployment rules and success and
+failure conditions used by AWS CodeDeploy during deployments.
 
 You can use the AWS CodeDeploy APIs to create, delete, get, and list
 deployment configurations.
@@ -241,7 +263,7 @@ Instances represent Amazon EC2 instances to which application revisions
 are deployed. Instances are identified by their Amazon EC2 tags or Auto
 Scaling group names. Instances belong to deployment groups.
 
-You can use the AWS CodeDeploy APIs to get and list instances.
+You can use the AWS CodeDeploy APIs to get and list instance.
 
 =item *
 
@@ -252,18 +274,17 @@ deployments.
 
 =item *
 
-Application revisions are archive files that are stored in Amazon S3
-buckets or GitHub repositories. These revisions contain source content
-(such as source code, web pages, executable files, any deployment
-scripts, and similar) along with an Application Specification file
-(AppSpec file). (The AppSpec file is unique to AWS CodeDeploy; it
-defines a series of deployment actions that you want AWS CodeDeploy to
-execute.) An application revision is uniquely identified by its Amazon
-S3 object key and its ETag, version, or both (for application revisions
-that are stored in Amazon S3 buckets) or by its repository name and
-commit ID (for applications revisions that are stored in GitHub
-repositories). Application revisions are deployed through deployment
-groups.
+Application revisions are archive files stored in Amazon S3 buckets or
+GitHub repositories. These revisions contain source content (such as
+source code, web pages, executable files, and deployment scripts) along
+with an application specification (AppSpec) file. (The AppSpec file is
+unique to AWS CodeDeploy; it defines the deployment actions you want
+AWS CodeDeploy to execute.) Ffor application revisions stored in Amazon
+S3 buckets, an application revision is uniquely identified by its
+Amazon S3 object key and its ETag, version, or both. For application
+revisions stored in GitHub repositories, an application revision is
+uniquely identified by its repository name and commit ID. Application
+revisions are deployed through deployment groups.
 
 You can use the AWS CodeDeploy APIs to get, list, and register
 application revisions.
@@ -282,6 +303,15 @@ Returns: nothing
   Adds tags to on-premises instances.
 
 
+=head2 BatchGetApplicationRevisions(ApplicationName => Str, Revisions => ArrayRef[L<Paws::CodeDeploy::RevisionLocation>])
+
+Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplicationRevisions>
+
+Returns: a L<Paws::CodeDeploy::BatchGetApplicationRevisionsOutput> instance
+
+  Gets information about one or more application revisions.
+
+
 =head2 BatchGetApplications([ApplicationNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplications>
@@ -289,6 +319,25 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplication
 Returns: a L<Paws::CodeDeploy::BatchGetApplicationsOutput> instance
 
   Gets information about one or more applications.
+
+
+=head2 BatchGetDeploymentGroups(ApplicationName => Str, DeploymentGroupNames => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentGroups>
+
+Returns: a L<Paws::CodeDeploy::BatchGetDeploymentGroupsOutput> instance
+
+  Get information about one or more deployment groups.
+
+
+=head2 BatchGetDeploymentInstances(DeploymentId => Str, InstanceIds => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetDeploymentInstances>
+
+Returns: a L<Paws::CodeDeploy::BatchGetDeploymentInstancesOutput> instance
+
+  Gets information about one or more instance that are part of a
+deployment group.
 
 
 =head2 BatchGetDeployments([DeploymentIds => ArrayRef[Str]])
@@ -315,7 +364,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::CreateApplication>
 
 Returns: a L<Paws::CodeDeploy::CreateApplicationOutput> instance
 
-  Creates a new application.
+  Creates an application.
 
 
 =head2 CreateDeployment(ApplicationName => Str, [DeploymentConfigName => Str, DeploymentGroupName => Str, Description => Str, IgnoreApplicationStopFailures => Bool, Revision => L<Paws::CodeDeploy::RevisionLocation>])
@@ -333,17 +382,17 @@ Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentCon
 
 Returns: a L<Paws::CodeDeploy::CreateDeploymentConfigOutput> instance
 
-  Creates a new deployment configuration.
+  Creates a deployment configuration.
 
 
-=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]])
+=head2 CreateDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str, ServiceRoleArn => Str, [AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::CreateDeploymentGroup>
 
 Returns: a L<Paws::CodeDeploy::CreateDeploymentGroupOutput> instance
 
-  Creates a new deployment group for application revisions to be deployed
-to.
+  Creates a deployment group to which application revisions will be
+deployed.
 
 
 =head2 DeleteApplication(ApplicationName => Str)
@@ -364,7 +413,7 @@ Returns: nothing
   Deletes a deployment configuration.
 
 A deployment configuration cannot be deleted if it is currently in use.
-Also, predefined configurations cannot be deleted.
+Predefined configurations cannot be deleted.
 
 
 =head2 DeleteDeploymentGroup(ApplicationName => Str, DeploymentGroupName => Str)
@@ -493,7 +542,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentInsta
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentInstancesOutput> instance
 
-  Lists the instances for a deployment associated with the applicable IAM
+  Lists the instance for a deployment associated with the applicable IAM
 user or AWS account.
 
 
@@ -503,7 +552,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeployments>
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentsOutput> instance
 
-  Lists the deployments within a deployment group for an application
+  Lists the deployments in a deployment group for an application
 registered with the applicable IAM user or AWS account.
 
 
@@ -513,7 +562,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListOnPremisesInsta
 
 Returns: a L<Paws::CodeDeploy::ListOnPremisesInstancesOutput> instance
 
-  Gets a list of one or more on-premises instance names.
+  Gets a list of names for one or more on-premises instances.
 
 Unless otherwise specified, both registered and deregistered
 on-premises instance names will be listed. To list only registered or
@@ -563,16 +612,16 @@ Each argument is described in detail in: L<Paws::CodeDeploy::UpdateApplication>
 
 Returns: nothing
 
-  Changes an existing application's name.
+  Changes the name of an application.
 
 
-=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], ServiceRoleArn => Str])
+=head2 UpdateDeploymentGroup(ApplicationName => Str, CurrentDeploymentGroupName => Str, [AutoScalingGroups => ArrayRef[Str], DeploymentConfigName => Str, Ec2TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>], NewDeploymentGroupName => Str, OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>], ServiceRoleArn => Str, TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]])
 
 Each argument is described in detail in: L<Paws::CodeDeploy::UpdateDeploymentGroup>
 
 Returns: a L<Paws::CodeDeploy::UpdateDeploymentGroupOutput> instance
 
-  Changes information about an existing deployment group.
+  Changes information about a deployment group.
 
 
 =head1 SEE ALSO

@@ -10,7 +10,7 @@ package Paws::Lambda::GetAlias;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/aliases/{Name}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::AliasConfiguration');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetAliasResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,14 +38,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  Function name for which the alias is created. An alias is a subresource
-that exists only in the context of an existing Lambda function. So you
+Function name for which the alias is created. An alias is a subresource
+that exists only in the context of an existing Lambda function so you
 must specify the function name.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  Name of the alias for which you want to retrieve information.
+Name of the alias for which you want to retrieve information.
+
 
 
 

@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PipelineId => Str
 
-  The ID of the pipeline.
+The ID of the pipeline.
+
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
-  The keys of the tags to remove.
+The keys of the tags to remove.
+
 
 
 

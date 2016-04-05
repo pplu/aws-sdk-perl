@@ -10,7 +10,7 @@ package Paws::ApiGateway::GetDomainNames;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::DomainNames');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetDomainNamesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,14 +38,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  The maximum number of DomainName resources in the collection to get
+The maximum number of DomainName resources in the collection to get
 information about. The default limit is 25. It should be an integer
 between 1 - 500.
 
 
+
 =head2 Position => Str
 
-  The position of the current domain names to get information about.
+The position of the current domain names to get information about.
+
 
 
 

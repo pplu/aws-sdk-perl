@@ -2,6 +2,8 @@ package Paws::EMR::InstanceGroup;
   use Moose;
   has BidPrice => (is => 'ro', isa => 'Str');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
+  has EbsBlockDevices => (is => 'ro', isa => 'ArrayRef[Paws::EMR::EbsBlockDevice]');
+  has EbsOptimized => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has InstanceGroupType => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
@@ -60,6 +62,18 @@ launching nodes as Spot Instances, expressed in USD.
 The list of configurations supplied for an EMR cluster instance group.
 You can specify a separate configuration for each instance group
 (master, core, and task).
+
+
+=head2 EbsBlockDevices => ArrayRef[L<Paws::EMR::EbsBlockDevice>]
+
+  The EBS block devices that are mapped to this instance group.
+
+
+=head2 EbsOptimized => Bool
+
+  If the instance group is EBS-optimized. An Amazon EBSE<ndash>optimized
+instance uses an optimized configuration stack and provides additional,
+dedicated capacity for Amazon EBS I/O.
 
 
 =head2 Id => Str

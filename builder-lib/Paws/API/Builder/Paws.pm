@@ -9,7 +9,7 @@ package Paws::API::Builder::Paws {
   use Moose;
 
   sub version {
-    '0.19';
+    '0.23';
   }
 
   sub services {
@@ -167,7 +167,7 @@ sub available_services {
   $self = $self->get_self;
 
   my $skip_list = {
-    API => 1, Credential => 1, Exception => 1
+    API => 1, Credential => 1, Exception => 1, RegionInfo => 1,
   };
   require Module::Find;
   my $class_prefix = $self->_class_prefix;

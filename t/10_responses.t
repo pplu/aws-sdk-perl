@@ -5,12 +5,11 @@ use lib 't/lib';
 use strict;
 use warnings;
 
+use v5.10;
 use Test::More;
 use Test::Exception;
-use YAML qw/DumpFile LoadFile/;
-use XML::Simple;
-use File::Slurper 'read_text';
-use Module::Runtime;
+use FileCaller;
+use YAML qw/LoadFile/;
 
 use Paws;
 
@@ -36,6 +35,53 @@ foreach my $file (@files) {
 
 done_testing;
 
+sub is_native {
+  my $native = { Bool => 1, Str => 1, Num => 1, Int => 1 }->{ $_[0] };
+  return defined $native;
+}
+
+sub get_value_for_type {
+  my $type = shift;
+  return { Bool => 0, Str => 'Str', Num => 0.01, Int => 1 }->{ $type };
+}
+
+# Just make a valid structure of arguments with values for the required fields
+# for a call. The test doesn't do anything with the parameters, but we need this
+# so that "FileCaller" is happy with the parameters passed in
+sub get_stub_call_args {
+  my $call_class = shift;
+
+  Paws->load_class($call_class);
+  my %args = ();
+
+  foreach my $attribute ($call_class->meta->get_all_attributes) {
+    next if (not $attribute->is_required);
+
+    my $att_type = $attribute->type_constraint->name;
+    if ($att_type =~ m/ArrayRef\[(.*)\]/){
+      my $inner_class = $1;
+      if (is_native($inner_class)){
+        $args{ $attribute->name } = [ get_value_for_type($inner_class) ];
+      } else {
+        $args{ $attribute->name } = [ get_stub_call_args($inner_class) ];
+      }          
+    } elsif ($att_type =~ m/HashRef\[(.*)\]/){
+      my $inner_class = $1;
+      if (is_native($inner_class)){
+        $args{ $attribute->name } = { 'k1' => get_value_for_type($inner_class) };
+      } else {
+        $args{ $attribute->name } = { 'k1' => get_stub_call_args($inner_class) };
+      }          
+    } elsif (is_native($att_type)){
+      $args{ $attribute->name } = get_value_for_type($att_type);
+    } else {
+      $args{ $attribute->name } = get_stub_call_args($att_type);
+    }
+  }
+
+  return \%args;
+}
+
 sub test_file {
   my ($file) = @_;
 
@@ -50,22 +96,20 @@ sub test_file {
 
     my $service = $aws->service($test->{service},
       region => 'fake_region',
+      caller => FileCaller->new(
+        response_file => $file,
+      )
     );
 
-    my $call_class = $service->meta->name . '::' . $test->{ call };
-    Paws->load_class($call_class);
+    my $call_method = $test->{ call };
+    my $call_class = $service->meta->name . '::' . $call_method;
+    my $call_object = get_stub_call_args($call_class);
 
     my $res;
     my $passed = lives_ok {
-      my $content = read_text($file);
-      my $unserialized_struct = $service->unserialize_response( $content );
+      my $response = LoadFile($file);
 
-      if ($debug){
-        diag("DATASTRUCUTRE FROM RESPONSE");
-        diag(Dumper($unserialized_struct));
-      }
-
-      $res = $service->response_to_object($unserialized_struct, $call_class);
+      $res = $service->$call_method(%$call_object)
     } "Call $test->{service}\-\>$test->{ call } from $file";
 
     diag(Dumper($res)) if ($debug);
@@ -106,36 +150,23 @@ sub resolve_path {
   my ($path, $res) = @_;
 
   my ($call, $rest);
-  if ($path =~ m/^\{(.*?)\}\.(.*)$/) {
+  if ($path =~ m/^\{(.*?)\}(?:\.(.*))?$/) {
     ($call, $rest) = ($1, $2);
-  } elsif ($path =~ m/^([^.]+?)\.(.*)$/) {
+  } elsif ($path =~ m/^([^.]+?)(?:\.(.*))?$/) {
     ($call, $rest) = ($1, $2);
   }
 
-  if (defined $call and defined $rest) {
-    if ($call =~ m/^\d+$/){
-      die "Can't access index $call\n" if (not defined $res->[$call]);
-      return resolve_path($rest, $res->[$call]);
-    } else {
-      die "Can't call method $call on an undefined value\n" if (not defined $res);
-      if (blessed($res)){
-        die "Doesn't have accessor $call on path $path\n" if (not $res->can($call));
-        return resolve_path($rest, $res->$call);
-      } else {
-        return resolve_path($rest, $res->{$call});
-      }
-    }
+  if ($call =~ m/^\d+$/){
+    $res = $res->[$call];
+  } elsif (blessed($res)) {
+    $res = $res->$call;
   } else {
-    die "Can't access $path on an undefined value\n" if (not defined $res); 
-    if ($path =~ m/^\d+$/){
-      return $res->[$path];
-    } else {
-      if (blessed($res)){
-        die "Doesn't have accessor $path\n" if (not $res->can($path));
-        return $res->$path;
-      } else {
-        return $res->{$path};
-      }
-    }
+    $res = $res->{$call};
+  }
+
+  if (not defined $rest) {
+    return $res;
+  } else {
+    return resolve_path($rest, $res);
   }
 }

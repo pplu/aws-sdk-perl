@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CommandId => Str
 
-  The ID of the command you want to cancel.
+The ID of the command you want to cancel.
+
 
 
 =head2 InstanceIds => ArrayRef[Str]
 
-  (Optional) A list of instance IDs on which you want to cancel the
+(Optional) A list of instance IDs on which you want to cancel the
 command. If not provided, the command is canceled on every instance on
 which it was requested.
+
 
 
 

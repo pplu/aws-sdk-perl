@@ -3,7 +3,8 @@ package Paws::S3::GetObjectTorrentOutput;
   use Moose;
   has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
   has RequestCharged => (is => 'ro', isa => 'Str');
-
+  use MooseX::ClassAttribute;
+  class_has _stream_param => (is => 'ro', default => 'Body');
 1;
 
 ### main pod documentation begin ###
@@ -31,13 +32,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Body => Str
 
-  
+
+
 
 
 =head2 RequestCharged => Str
 
-  
 
+
+Valid values are: C<"requester">
 
 
 =head1 SEE ALSO

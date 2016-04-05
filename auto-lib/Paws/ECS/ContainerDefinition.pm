@@ -182,6 +182,9 @@ see https://docs.docker.com/reference/builder/
 to C<Env> in the Create a container section of the Docker Remote API
 and the C<--env> option to docker run.
 
+We do not recommend using plain text environment variables for
+sensitive information, such as credential data.
+
 
 =head2 Essential => Bool
 
@@ -219,6 +222,20 @@ lowercase), numbers, hyphens, underscores, colons, periods, forward
 slashes, and number signs are allowed. This parameter maps to C<Image>
 in the Create a container section of the Docker Remote API and the
 C<IMAGE> parameter of docker run.
+
+=over
+
+=item * Images in official repositories on Docker Hub use a single name
+(for example, C<ubuntu> or C<mongo>).
+
+=item * Images in other repositories on Docker Hub are qualified with
+an organization name (for example, C<amazon/amazon-ecs-agent>).
+
+=item * Images in other online repositories are qualified further by a
+domain name (for example, C<quay.io/assemblyline/ubuntu>).
+
+=back
+
 
 
 =head2 Links => ArrayRef[Str]
@@ -260,7 +277,10 @@ I<Amazon EC2 Container Service Developer Guide>.
 
 =head2 Memory => Int
 
-  The number of MiB of memory reserved for the container. If your
+  The number of MiB of memory to reserve for the container. You must
+specify a non-zero integer for this parameter; the Docker daemon
+reserves a minimum of 4 MiB of memory for a container, so you should
+not specify fewer than 4 MiB of memory for your containers. If your
 container attempts to exceed the memory allocated here, the container
 is killed. This parameter maps to C<Memory> in the Create a container
 section of the Docker Remote API and the C<--memory> option to docker
@@ -292,6 +312,11 @@ containers to access ports on the host container instance to send or
 receive traffic. This parameter maps to C<PortBindings> in the Create a
 container section of the Docker Remote API and the C<--publish> option
 to docker run.
+
+After a task reaches the C<RUNNING> status, manual and automatic host
+and container port assignments are visible in the B<Network Bindings>
+section of a container description of a selected task in the Amazon ECS
+console, or the C<networkBindings> section DescribeTasks responses.
 
 
 =head2 Privileged => Bool

@@ -1,0 +1,10 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <DomainMetadataResponse xmlns="http://sdb.amazonaws.com/doc/2009-04-15/"><DomainMetadataResult><ItemCount>4</ItemCount><ItemNamesSizeBytes>16</ItemNamesSizeBytes><AttributeNameCount>2</AttributeNameCount><AttributeNamesSizeBytes>8</AttributeNamesSizeBytes><AttributeValueCount>8</AttributeValueCount><AttributeValuesSizeBytes>32</AttributeValuesSizeBytes><Timestamp>1454626194</Timestamp></DomainMetadataResult><ResponseMetadata><RequestId>fe513452-a47f-2be7-9636-1ed0097d9977</RequestId><BoxUsage>0.0000071759</BoxUsage></ResponseMetadata></DomainMetadataResponse>
+headers:
+  content-type: text/xml
+  date: 'Thu, 04 Feb 2016 22:49:54 GMT'
+  server: Amazon SimpleDB
+  transfer-encoding: chunked
+status: 200

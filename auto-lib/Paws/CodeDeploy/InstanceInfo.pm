@@ -43,7 +43,7 @@ Information about an on-premises instance.
 
 =head2 DeregisterTime => Str
 
-  If the on-premises instance was deregistered, the time that the
+  If the on-premises instance was deregistered, the time at which the
 on-premises instance was deregistered.
 
 
@@ -64,12 +64,12 @@ on-premises instance was deregistered.
 
 =head2 RegisterTime => Str
 
-  The time that the on-premises instance was registered.
+  The time at which the on-premises instance was registered.
 
 
 =head2 Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]
 
-  The tags that are currently associated with the on-premises instance.
+  The tags currently associated with the on-premises instance.
 
 
 

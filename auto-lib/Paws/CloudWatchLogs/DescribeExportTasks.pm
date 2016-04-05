@@ -38,27 +38,31 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  The maximum number of items returned in the response. If you don't
+The maximum number of items returned in the response. If you don't
 specify a value, the request would return up to 50 items.
+
 
 
 =head2 NextToken => Str
 
-  A string token used for pagination that points to the next page of
+A string token used for pagination that points to the next page of
 results. It must be a value obtained from the response of the previous
 C<DescribeExportTasks> request.
 
 
+
 =head2 StatusCode => Str
 
-  All export tasks that matches the specified status code will be
+All export tasks that matches the specified status code will be
 returned. This can return zero or more export tasks.
 
+Valid values are: C<"CANCELLED">, C<"COMPLETED">, C<"FAILED">, C<"PENDING">, C<"PENDING_CANCEL">, C<"RUNNING">
 
 =head2 TaskId => Str
 
-  Export task that matches the specified task Id will be returned. This
+Export task that matches the specified task Id will be returned. This
 can result in zero or one export task.
+
 
 
 

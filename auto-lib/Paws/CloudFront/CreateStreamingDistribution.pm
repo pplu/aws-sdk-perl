@@ -6,10 +6,11 @@ package Paws::CloudFront::CreateStreamingDistribution;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateStreamingDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-07-27/streaming-distribution');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-01-28/streaming-distribution');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateStreamingDistributionResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,9 @@ Paws::CloudFront::CreateStreamingDistributionResult
 
 =head2 B<REQUIRED> StreamingDistributionConfig => L<Paws::CloudFront::StreamingDistributionConfig>
 
-  The streaming distribution's configuration information.
+The streaming distribution's configuration information.
+
+
 
 
 =cut

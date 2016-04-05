@@ -72,7 +72,7 @@ only supported currency is C<USD>.
 
 =head2 InstanceTenancy => Str
 
-  The tenancy of the reserved instance.
+  The tenancy of the instance.
 
 
 =head2 InstanceType => Str

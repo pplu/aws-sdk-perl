@@ -38,13 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CertificateId => Str
 
-  The ID of the certificate.
+The ID of the certificate.
+
 
 
 =head2 B<REQUIRED> NewStatus => Str
 
-  The new status.
+The new status.
 
+B<Note:> Setting the status to PENDING_TRANSFER will result in an
+exception being thrown. PENDING_TRANSFER is a status used internally by
+AWS IoT. It is not intended for developer use.
+
+Valid values are: C<"ACTIVE">, C<"INACTIVE">, C<"REVOKED">, C<"PENDING_TRANSFER">
 
 
 =head1 SEE ALSO

@@ -1,6 +1,7 @@
 package Paws::Route53::HealthCheckConfig;
   use Moose;
   has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
   has HealthThreshold => (is => 'ro', isa => 'Int');
@@ -53,11 +54,21 @@ A complex type that contains the health check configuration.
 for the associated child health checks.
 
 
+=head2 EnableSNI => Bool
+
+  Specify whether you want Amazon Route 53 to send the value of
+C<FullyQualifiedDomainName> to the endpoint in the C<client_hello>
+message during TLS negotiation. If you don't specify a value for
+C<EnableSNI>, Amazon Route 53 defaults to C<true> when C<Type> is
+C<HTTPS> or C<HTTPS_STR_MATCH> and defaults to C<false> when C<Type> is
+any other value.
+
+
 =head2 FailureThreshold => Int
 
   The number of consecutive health checks that an endpoint must pass or
-fail for Route 53 to change the current status of the endpoint from
-unhealthy to healthy or vice versa.
+fail for Amazon Route 53 to change the current status of the endpoint
+from unhealthy to healthy or vice versa.
 
 Valid values are integers between 1 and 10. For more information, see
 "How Amazon Route 53 Determines Whether an Endpoint Is Healthy" in the
@@ -72,16 +83,16 @@ Amazon Route 53 Developer Guide.
 =head2 HealthThreshold => Int
 
   The minimum number of child health checks that must be healthy for
-Route 53 to consider the parent health check to be healthy. Valid
-values are integers between 0 and 256, inclusive.
+Amazon Route 53 to consider the parent health check to be healthy.
+Valid values are integers between 0 and 256, inclusive.
 
 
 =head2 Inverted => Bool
 
   A boolean value that indicates whether the status of health check
 should be inverted. For example, if a health check is healthy but
-C<Inverted> is C<True>, then Route 53 considers the health check to be
-unhealthy.
+C<Inverted> is C<True>, then Amazon Route 53 considers the health check
+to be unhealthy.
 
 
 =head2 IPAddress => Str
@@ -91,10 +102,10 @@ unhealthy.
 
 =head2 MeasureLatency => Bool
 
-  A Boolean value that indicates whether you want Route 53 to measure the
-latency between health checkers in multiple AWS regions and your
-endpoint and to display CloudWatch latency graphs in the Route 53
-console.
+  A Boolean value that indicates whether you want Amazon Route 53 to
+measure the latency between health checkers in multiple AWS regions and
+your endpoint and to display CloudWatch latency graphs in the Amazon
+Route 53 console.
 
 
 =head2 Port => Int
@@ -107,25 +118,26 @@ the port is not specified.
 
 =head2 RequestInterval => Int
 
-  The number of seconds between the time that Route 53 gets a response
-from your endpoint and the time that it sends the next health-check
-request.
+  The number of seconds between the time that Amazon Route 53 gets a
+response from your endpoint and the time that it sends the next
+health-check request.
 
-Each Route 53 health checker makes requests at this interval. Valid
-values are 10 and 30. The default value is 30.
+Each Amazon Route 53 health checker makes requests at this interval.
+Valid values are 10 and 30. The default value is 30.
 
 
 =head2 ResourcePath => Str
 
   Path to ping on the instance to check the health. Required for HTTP,
-HTTPS, HTTP_STR_MATCH, and HTTPS_STR_MATCH health checks, HTTP request
-is issued to the instance on the given port and path.
+HTTPS, HTTP_STR_MATCH, and HTTPS_STR_MATCH health checks. The HTTP
+request is issued to the instance on the given port and path.
 
 
 =head2 SearchString => Str
 
   A string to search for in the body of a health check response. Required
-for HTTP_STR_MATCH and HTTPS_STR_MATCH health checks.
+for HTTP_STR_MATCH and HTTPS_STR_MATCH health checks. Amazon Route 53
+considers case when searching for C<SearchString> in the response body.
 
 
 =head2 B<REQUIRED> Type => Str

@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributesToGet => ArrayRef[Str]
 
-  This is a legacy parameter, for backward compatibility. New
+This is a legacy parameter, for backward compatibility. New
 applications should use I<ProjectionExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -58,16 +58,18 @@ consumption. DynamoDB determines capacity units consumed based on item
 size, not on the amount of data that is returned to an application.
 
 
+
 =head2 ConsistentRead => Bool
 
-  Determines the read consistency model: If set to C<true>, then the
+Determines the read consistency model: If set to C<true>, then the
 operation uses strongly consistent reads; otherwise, the operation uses
 eventually consistent reads.
 
 
+
 =head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
-  One or more substitution tokens for attribute names in an expression.
+One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
@@ -132,20 +134,22 @@ For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
+
 =head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
 
-  A map of attribute names to I<AttributeValue> objects, representing the
+A map of attribute names to I<AttributeValue> objects, representing the
 primary key of the item to retrieve.
 
 For the primary key, you must provide all of the attributes. For
-example, with a hash type primary key, you only need to provide the
-hash attribute. For a hash-and-range type primary key, you must provide
-both the hash attribute and the range attribute.
+example, with a simple primary key, you only need to provide a value
+for the partition key. For a composite primary key, you must provide
+values for both the partition key and the sort key.
+
 
 
 =head2 ProjectionExpression => Str
 
-  A string that identifies one or more attributes to retrieve from the
+A string that identifies one or more attributes to retrieve from the
 table. These attributes can include scalars, sets, or elements of a
 JSON document. The attributes in the expression must be separated by
 commas.
@@ -161,14 +165,17 @@ I<ProjectionExpression> replaces the legacy I<AttributesToGet>
 parameter.
 
 
+
 =head2 ReturnConsumedCapacity => Str
 
-  
 
+
+Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
 =head2 B<REQUIRED> TableName => Str
 
-  The name of the table containing the requested item.
+The name of the table containing the requested item.
+
 
 
 

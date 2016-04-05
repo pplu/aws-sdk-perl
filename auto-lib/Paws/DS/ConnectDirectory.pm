@@ -40,35 +40,41 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ConnectSettings => L<Paws::DS::DirectoryConnectSettings>
 
-  A DirectoryConnectSettings object that contains additional information
+A DirectoryConnectSettings object that contains additional information
 for the operation.
+
 
 
 =head2 Description => Str
 
-  A textual description for the directory.
+A textual description for the directory.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The fully-qualified name of the on-premises directory, such as
+The fully-qualified name of the on-premises directory, such as
 C<corp.example.com>.
+
 
 
 =head2 B<REQUIRED> Password => Str
 
-  The password for the on-premises user account.
+The password for the on-premises user account.
+
 
 
 =head2 ShortName => Str
 
-  The NetBIOS name of the on-premises directory, such as C<CORP>.
+The NetBIOS name of the on-premises directory, such as C<CORP>.
+
 
 
 =head2 B<REQUIRED> Size => Str
 
-  The size of the directory.
+The size of the directory.
 
+Valid values are: C<"Small">, C<"Large">
 
 
 =head1 SEE ALSO

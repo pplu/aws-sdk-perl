@@ -16,12 +16,16 @@ Paws::SSM::ListCommandInvocationsResult
 
 =head2 CommandInvocations => ArrayRef[L<Paws::SSM::CommandInvocation>]
 
-  (Optional) A list of all invocations.
+(Optional) A list of all invocations.
+
+
 
 =head2 NextToken => Str
 
-  (Optional) The token for the next set of items to return. (You received
+(Optional) The token for the next set of items to return. (You received
 this token from a previous call.)
+
+
 
 
 =cut

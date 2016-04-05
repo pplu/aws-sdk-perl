@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Arn => Str
 
-  Represents the Amazon Resource Name (ARN) of the Device Farm upload you
+Represents the Amazon Resource Name (ARN) of the Device Farm upload you
 wish to delete.
+
 
 
 

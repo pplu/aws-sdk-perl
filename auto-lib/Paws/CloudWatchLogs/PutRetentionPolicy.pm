@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> LogGroupName => Str
 
-  The name of the log group to associate the retention policy with.
+The name of the log group to associate the retention policy with.
+
 
 
 =head2 B<REQUIRED> RetentionInDays => Int
 
-  
+
+
 
 
 

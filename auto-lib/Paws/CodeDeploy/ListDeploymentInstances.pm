@@ -37,42 +37,41 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DeploymentId => Str
 
-  The unique ID of a deployment.
+The unique ID of a deployment.
+
 
 
 =head2 InstanceStatusFilter => ArrayRef[Str]
 
-  A subset of instances to list, by status:
+A subset of instances to list by status:
 
 =over
 
-=item * Pending: Include in the resulting list those instances with
-pending deployments.
+=item * Pending: Include those instance with pending deployments.
 
-=item * InProgress: Include in the resulting list those instances with
-in-progress deployments.
+=item * InProgress: Include those instance where deployments are still
+in progress.
 
-=item * Succeeded: Include in the resulting list those instances with
-succeeded deployments.
+=item * Succeeded: Include those instances with successful deployments.
 
-=item * Failed: Include in the resulting list those instances with
-failed deployments.
+=item * Failed: Include those instance with failed deployments.
 
-=item * Skipped: Include in the resulting list those instances with
-skipped deployments.
+=item * Skipped: Include those instance with skipped deployments.
 
-=item * Unknown: Include in the resulting list those instances with
-deployments in an unknown state.
+=item * Unknown: Include those instance with deployments in an unknown
+state.
 
 =back
 
 
 
+
 =head2 NextToken => Str
 
-  An identifier that was returned from the previous list deployment
-instances call, which can be used to return the next set of deployment
-instances in the list.
+An identifier returned from the previous list deployment instances
+call. It can be used to return the next set of deployment instances in
+the list.
+
 
 
 

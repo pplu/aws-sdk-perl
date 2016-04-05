@@ -15,7 +15,7 @@ package Paws::Lambda::AddPermission;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/policy');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::AddPermissionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'AddPermissionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -43,49 +43,52 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Action => Str
 
-  The AWS Lambda action you want to allow in this statement. Each Lambda
-action is a string starting with "lambda:" followed by the API name
-(see Operations). For example, "lambda:CreateFunction". You can use
-wildcard ("lambda:*") to grant permission for all AWS Lambda actions.
+The AWS Lambda action you want to allow in this statement. Each Lambda
+action is a string starting with C<lambda:> followed by the API name
+(see Operations). For example, C<lambda:CreateFunction>. You can use
+wildcard (C<lambda:*>) to grant permission for all AWS Lambda actions.
+
 
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  Name of the Lambda function whose resource policy you are updating by
+Name of the Lambda function whose resource policy you are updating by
 adding a new permission.
 
-You can specify an unqualified function name (for example, "Thumbnail")
-or you can specify Amazon Resource Name (ARN) of the function (for
-example, "arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS
-Lambda also allows you to specify only the account ID qualifier (for
-example, "account-id:Thumbnail"). Note that the length constraint
-applies only to the ARN. If you specify only the function name, it is
-limited to 64 character in length.
+You can specify a function name (for example, C<Thumbnail>) or you can
+specify Amazon Resource Name (ARN) of the function (for example,
+C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
+also allows you to specify partial ARN (for example,
+C<account-id:Thumbnail>). Note that the length constraint applies only
+to the ARN. If you specify only the function name, it is limited to 64
+character in length.
+
 
 
 =head2 B<REQUIRED> Principal => Str
 
-  The principal who is getting this permission. It can be Amazon S3
-service Principal ("s3.amazonaws.com") if you want Amazon S3 to invoke
+The principal who is getting this permission. It can be Amazon S3
+service Principal (C<s3.amazonaws.com>) if you want Amazon S3 to invoke
 the function, an AWS account ID if you are granting cross-account
 permission, or any valid AWS service principal such as
-"sns.amazonaws.com". For example, you might want to allow a custom
+C<sns.amazonaws.com>. For example, you might want to allow a custom
 application in another AWS account to push events to AWS Lambda by
 invoking your function.
 
 
+
 =head2 Qualifier => Str
 
-  You can specify this optional query parameter to specify function
-version or alias name. The permission will then apply to the specific
-qualified ARN. For example, if you specify function version 2 as the
-qualifier, then permission applies only when request is made using
-qualified function ARN:
+You can use this optional query parameter to describe a qualified ARN
+using a function version or an alias name. The permission will then
+apply to the specific qualified ARN. For example, if you specify
+function version 2 as the qualifier, then permission applies only when
+request is made using qualified function ARN:
 
 C<arn:aws:lambda:aws-region:acct-id:function:function-name:2>
 
-If you specify alias name, for example "PROD", then the permission is
-valid only for requests made using the alias ARN:
+If you specify an alias name, for example C<PROD>, then the permission
+is valid only for requests made using the alias ARN:
 
 C<arn:aws:lambda:aws-region:acct-id:function:function-name:PROD>
 
@@ -95,9 +98,10 @@ requests is made using unqualified function ARN.
 C<arn:aws:lambda:aws-region:acct-id:function:function-name>
 
 
+
 =head2 SourceAccount => Str
 
-  The AWS account ID (without a hyphen) of the source owner. For example,
+The AWS account ID (without a hyphen) of the source owner. For example,
 if the C<SourceArn> identifies a bucket, then this is the bucket
 owner's account ID. You can use this additional condition to ensure the
 bucket you specify is owned by a specific account (it is possible the
@@ -106,9 +110,10 @@ bucket). You can also use this condition to specify all sources (that
 is, you don't specify the C<SourceArn>) owned by a specific account.
 
 
+
 =head2 SourceArn => Str
 
-  This is optional; however, when granting Amazon S3 permission to invoke
+This is optional; however, when granting Amazon S3 permission to invoke
 your function, you should specify this field with the bucket Amazon
 Resource Name (ARN) as its value. This ensures that only events
 generated from the specified bucket can invoke the function.
@@ -118,9 +123,11 @@ the source ARN, any AWS account that creates a mapping to your function
 ARN can send events to invoke your Lambda function from Amazon S3.
 
 
+
 =head2 B<REQUIRED> StatementId => Str
 
-  A unique statement identifier.
+A unique statement identifier.
+
 
 
 

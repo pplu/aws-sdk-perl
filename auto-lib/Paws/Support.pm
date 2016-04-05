@@ -4,6 +4,12 @@ package Paws::Support;
   sub version { '2013-04-15' }
   sub target_prefix { 'AWSSupport_20130415' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -78,34 +84,44 @@ package Paws::Support;
     my $call_object = $self->new_with_coercions('Paws::Support::ResolveCase', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllCases {
     my $self = shift;
 
     my $result = $self->DescribeCases(@_);
-    my $array = [];
-    push @$array, @{ $result->cases };
+    my $params = {};
+    
+    $params->{ cases } = $result->cases;
+    
 
-    while ($result->nextToken) {
+    while ($result->) {
       $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
-      push @$array, @{ $result->cases };
+      
+      push @{ $params->{ cases } }, @{ $result->cases };
+      
     }
 
-    return 'Paws::Support::DescribeCases'->_returns->new(cases => $array);
+    return $self->new_with_coercions(Paws::Support::DescribeCases->_returns, %$params);
   }
   sub DescribeAllCommunications {
     my $self = shift;
 
     my $result = $self->DescribeCommunications(@_);
-    my $array = [];
-    push @$array, @{ $result->communications };
+    my $params = {};
+    
+    $params->{ communications } = $result->communications;
+    
 
-    while ($result->nextToken) {
+    while ($result->) {
       $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
-      push @$array, @{ $result->communications };
+      
+      push @{ $params->{ communications } }, @{ $result->communications };
+      
     }
 
-    return 'Paws::Support::DescribeCommunications'->_returns->new(communications => $array);
+    return $self->new_with_coercions(Paws::Support::DescribeCommunications->_returns, %$params);
   }
+
 
   sub operations { qw/AddAttachmentsToSet AddCommunicationToCase CreateCase DescribeAttachment DescribeCases DescribeCommunications DescribeServices DescribeSeverityLevels DescribeTrustedAdvisorCheckRefreshStatuses DescribeTrustedAdvisorCheckResult DescribeTrustedAdvisorChecks DescribeTrustedAdvisorCheckSummaries RefreshTrustedAdvisorCheck ResolveCase / }
 

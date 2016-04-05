@@ -12,7 +12,7 @@ package Paws::Lambda::ListAliases;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}/aliases');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::ListAliasesResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListAliasesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -40,27 +40,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  Lambda function name for which the alias is created.
+Lambda function name for which the alias is created.
+
 
 
 =head2 FunctionVersion => Str
 
-  If you specify this optional parameter, the API returns only the
-aliases pointing to the specific Lambda function version, otherwise
-returns all aliases created for the Lambda function.
+If you specify this optional parameter, the API returns only the
+aliases that are pointing to the specific Lambda function version,
+otherwise the API returns all of the aliases created for the Lambda
+function.
+
 
 
 =head2 Marker => Str
 
-  Optional string. An opaque pagination token returned from a previous
-ListAliases operation. If present, indicates where to continue the
+Optional string. An opaque pagination token returned from a previous
+C<ListAliases> operation. If present, indicates where to continue the
 listing.
+
 
 
 =head2 MaxItems => Int
 
-  Optional integer. Specifies the maximum number of aliases to return in
+Optional integer. Specifies the maximum number of aliases to return in
 response. This parameter value must be greater than 0.
+
 
 
 

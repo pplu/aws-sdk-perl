@@ -1,5 +1,6 @@
 package Paws::CloudFront::Origin;
   use Moose;
+  has CustomHeaders => (is => 'ro', isa => 'Paws::CloudFront::CustomHeaders');
   has CustomOriginConfig => (is => 'ro', isa => 'Paws::CloudFront::CustomOriginConfig');
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
@@ -24,14 +25,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudFront::Origin object:
 
-  $service_obj->Method(Att1 => { CustomOriginConfig => $value, ..., S3OriginConfig => $value  });
+  $service_obj->Method(Att1 => { CustomHeaders => $value, ..., S3OriginConfig => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront::Origin object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CustomOriginConfig
+  $result->Att1->CustomHeaders
 
 =head1 DESCRIPTION
 
@@ -40,6 +41,12 @@ A complex type that describes the Amazon S3 bucket or the HTTP server
 must create at least one origin.
 
 =head1 ATTRIBUTES
+
+
+=head2 CustomHeaders => L<Paws::CloudFront::CustomHeaders>
+
+  A complex type that contains information about the custom headers
+associated with this Origin.
 
 
 =head2 CustomOriginConfig => L<Paws::CloudFront::CustomOriginConfig>

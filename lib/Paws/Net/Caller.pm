@@ -1,7 +1,6 @@
-package Paws::Net::Caller {
+package Paws::Net::Caller;
   use Moose;
-  use Carp qw(croak);
-  with 'Paws::Net::CallerRole';
+  with 'Paws::Net::RetryCallerRole', 'Paws::Net::CallerRole';
 
   has debug              => ( is => 'rw', required => 0, default => sub { 0 } );
   has ua => (is => 'rw', required => 1, lazy => 1,
@@ -14,48 +13,31 @@ package Paws::Net::Caller {
     }
   );
 
-  sub is_retriable {
-    my ($self, $exception) = @_;
-    1;
+  sub send_request {
+    my ($self, $service, $call_object) = @_;
+    my $requestObj = $service->prepare_request_for_call($call_object); 
+    my $headers    = $requestObj->header_hash;
+
+    # HTTP::Tiny derives the Host header from the URL. It's an error to set it.
+    delete $headers->{Host}; 
+
+    my $response = $self->ua->request(
+      $requestObj->method,
+      $requestObj->url,
+      {
+        headers => $headers,
+        (defined $requestObj->content)?(content => $requestObj->content):(),
+      }
+    );
+    $self->caller_to_response($service, $call_object, $response->{status}, $response->{content}, $response->{headers});
   }
 
-  sub do_call {
-    my ($self, $service, $call_object) = @_;
-
-    my $requestObj = $service->prepare_request_for_call($call_object); 
-
-    my $headers = $requestObj->header_hash;
-    # HTTP::Tiny derives the Host header from the URL. It's an error to set it.
-    delete $headers->{Host};
-
-    my $tries = 0;
-    my $max_tries = 1;
-
-    while ($tries < $max_tries) {
-      my $response = $self->ua->request(
-        $requestObj->method,
-        $requestObj->url,
-        {
-          headers => $headers,
-          (defined $requestObj->content)?(content => $requestObj->content):(),
-        }
-      );
-
-      if ($response->{status} == 599){
-        Paws::Exception->throw(message => $response->{content}, code => 'ConnectionError', request_id => '');
-        # Connection error. Retry
-      } else {
-        my $res = $service->handle_response($call_object, $response->{status}, $response->{content}, $response->{headers});
-        if (not ref($res)){
-          return $res;
-        } elsif ($res->isa('Paws::Exception')) {
-          $res->throw;
-        } else {
-          return $res;
-        }
-      }
+  sub caller_to_response {
+    my ($self, $service, $call_object, $status, $content, $headers) = @_;
+    if ($status == 599){
+      return Paws::Exception->new(message => $content, code => 'ConnectionError', request_id => '');
+    } else {
+      return $service->handle_response($call_object, $status, $content, $headers);
     }
   }
-}
-
 1;

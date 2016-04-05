@@ -12,6 +12,7 @@ package Paws::S3::PutObjectAcl;
   has GrantWriteACP => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-grant-write-acp' );
   has Key => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Key' , required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'x-amz-request-payer' );
+  has VersionId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'versionId' );
 
   use MooseX::ClassAttribute;
 
@@ -20,6 +21,7 @@ package Paws::S3::PutObjectAcl;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::PutObjectAclOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -33,49 +35,77 @@ Paws::S3::PutObjectAclOutput
 
 =head2 AccessControlPolicy => L<Paws::S3::AccessControlPolicy>
 
-  
+
+
+
 
 =head2 ACL => Str
 
-  The canned ACL to apply to the object.
+The canned ACL to apply to the object.
+
+Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"authenticated-read">, C<"aws-exec-read">, C<"bucket-owner-read">, C<"bucket-owner-full-control">
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
+
+
+
 
 =head2 ContentMD5 => Str
 
-  
+
+
+
 
 =head2 GrantFullControl => Str
 
-  Allows grantee the read, write, read ACP, and write ACP permissions on
+Allows grantee the read, write, read ACP, and write ACP permissions on
 the bucket.
+
+
 
 =head2 GrantRead => Str
 
-  Allows grantee to list the objects in the bucket.
+Allows grantee to list the objects in the bucket.
+
+
 
 =head2 GrantReadACP => Str
 
-  Allows grantee to read the bucket ACL.
+Allows grantee to read the bucket ACL.
+
+
 
 =head2 GrantWrite => Str
 
-  Allows grantee to create, overwrite, and delete any object in the
+Allows grantee to create, overwrite, and delete any object in the
 bucket.
+
+
 
 =head2 GrantWriteACP => Str
 
-  Allows grantee to write the ACL for the applicable bucket.
+Allows grantee to write the ACL for the applicable bucket.
+
+
 
 =head2 B<REQUIRED> Key => Str
 
-  
+
+
+
 
 =head2 RequestPayer => Str
 
-  
+
+
+Valid values are: C<"requester">
+
+=head2 VersionId => Str
+
+VersionId used to reference a specific version of the object.
+
+
 
 
 =cut

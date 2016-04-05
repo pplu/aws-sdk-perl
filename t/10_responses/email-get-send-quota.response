@@ -1,10 +1,14 @@
-<GetSendQuotaResponse xmlns="http://ses.amazonaws.com/doc/2010-12-01/">
-  <GetSendQuotaResult>
-    <SentLast24Hours>0.0</SentLast24Hours>
-    <Max24HourSend>200.0</Max24HourSend>
-    <MaxSendRate>1.0</MaxSendRate>
-  </GetSendQuotaResult>
-  <ResponseMetadata>
-    <RequestId>00000000-0000-0000-0000-000000000000</RequestId>
-  </ResponseMetadata>
-</GetSendQuotaResponse>
+---
+content: |
+  <GetSendQuotaResponse xmlns="http://ses.amazonaws.com/doc/2010-12-01/">
+    <GetSendQuotaResult>
+      <SentLast24Hours>0.0</SentLast24Hours>
+      <Max24HourSend>200.0</Max24HourSend>
+      <MaxSendRate>1.0</MaxSendRate>
+    </GetSendQuotaResult>
+    <ResponseMetadata>
+      <RequestId>00000000-0000-0000-0000-000000000000</RequestId>
+    </ResponseMetadata>
+  </GetSendQuotaResponse>
+headers: []
+status: 200

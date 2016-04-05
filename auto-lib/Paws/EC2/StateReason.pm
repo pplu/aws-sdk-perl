@@ -50,7 +50,7 @@ This class has no description
 
 =item *
 
-C<Server.SpotInstanceTermination>: A Spot Instance was terminated due
+C<Server.SpotInstanceTermination>: A Spot instance was terminated due
 to an increase in the market price.
 
 =item *
@@ -80,7 +80,9 @@ Amazon EC2 API.
 
 =item *
 
-C<Client.VolumeLimitExceeded>: The volume limit was exceeded.
+C<Client.VolumeLimitExceeded>: The limit on the number of EBS volumes
+or total storage was exceeded. Decrease usage or request an increase in
+your limits.
 
 =item *
 

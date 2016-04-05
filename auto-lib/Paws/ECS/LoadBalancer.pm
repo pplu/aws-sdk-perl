@@ -40,7 +40,8 @@ Details on a load balancer that is used with a service.
 
 =head2 ContainerName => Str
 
-  The name of the container to associate with the load balancer.
+  The name of the container (as it appears in a container definition) to
+associate with the load balancer.
 
 
 =head2 ContainerPort => Int

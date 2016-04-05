@@ -5,6 +5,7 @@ package Paws::ElasticBeanstalk::ApplicationVersionDescription;
   has DateUpdated => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has SourceBundle => (is => 'ro', isa => 'Paws::ElasticBeanstalk::S3Location');
+  has Status => (is => 'ro', isa => 'Str');
   has VersionLabel => (is => 'ro', isa => 'Str');
 1;
 
@@ -64,6 +65,11 @@ Describes the properties of an application version.
 =head2 SourceBundle => L<Paws::ElasticBeanstalk::S3Location>
 
   The location where the source bundle is located for this version.
+
+
+=head2 Status => Str
+
+  The processing status of the application version.
 
 
 =head2 VersionLabel => Str

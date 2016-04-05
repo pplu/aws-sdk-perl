@@ -4,6 +4,12 @@ package Paws::EMR;
   sub version { '2009-03-31' }
   sub target_prefix { 'ElasticMapReduce' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -141,76 +147,98 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::TerminateJobFlows', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllBootstrapActions {
     my $self = shift;
 
     my $result = $self->ListBootstrapActions(@_);
-    my $array = [];
-    push @$array, @{ $result->BootstrapActions };
+    my $params = {};
+    
+    $params->{ BootstrapActions } = $result->BootstrapActions;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
-      push @$array, @{ $result->BootstrapActions };
+      
+      push @{ $params->{ BootstrapActions } }, @{ $result->BootstrapActions };
+      
     }
 
-    return 'Paws::EMR::ListBootstrapActions'->_returns->new(BootstrapActions => $array);
+    return $self->new_with_coercions(Paws::EMR::ListBootstrapActions->_returns, %$params);
   }
   sub ListAllClusters {
     my $self = shift;
 
     my $result = $self->ListClusters(@_);
-    my $array = [];
-    push @$array, @{ $result->Clusters };
+    my $params = {};
+    
+    $params->{ Clusters } = $result->Clusters;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->ListClusters(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Clusters };
+      
+      push @{ $params->{ Clusters } }, @{ $result->Clusters };
+      
     }
 
-    return 'Paws::EMR::ListClusters'->_returns->new(Clusters => $array);
+    return $self->new_with_coercions(Paws::EMR::ListClusters->_returns, %$params);
   }
   sub ListAllInstanceGroups {
     my $self = shift;
 
     my $result = $self->ListInstanceGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->InstanceGroups };
+    my $params = {};
+    
+    $params->{ InstanceGroups } = $result->InstanceGroups;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->InstanceGroups };
+      
+      push @{ $params->{ InstanceGroups } }, @{ $result->InstanceGroups };
+      
     }
 
-    return 'Paws::EMR::ListInstanceGroups'->_returns->new(InstanceGroups => $array);
+    return $self->new_with_coercions(Paws::EMR::ListInstanceGroups->_returns, %$params);
   }
   sub ListAllInstances {
     my $self = shift;
 
     my $result = $self->ListInstances(@_);
-    my $array = [];
-    push @$array, @{ $result->Instances };
+    my $params = {};
+    
+    $params->{ Instances } = $result->Instances;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->ListInstances(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Instances };
+      
+      push @{ $params->{ Instances } }, @{ $result->Instances };
+      
     }
 
-    return 'Paws::EMR::ListInstances'->_returns->new(Instances => $array);
+    return $self->new_with_coercions(Paws::EMR::ListInstances->_returns, %$params);
   }
   sub ListAllSteps {
     my $self = shift;
 
     my $result = $self->ListSteps(@_);
-    my $array = [];
-    push @$array, @{ $result->Steps };
+    my $params = {};
+    
+    $params->{ Steps } = $result->Steps;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->ListSteps(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Steps };
+      
+      push @{ $params->{ Steps } }, @{ $result->Steps };
+      
     }
 
-    return 'Paws::EMR::ListSteps'->_returns->new(Steps => $array);
+    return $self->new_with_coercions(Paws::EMR::ListSteps->_returns, %$params);
   }
+
 
   sub operations { qw/AddInstanceGroups AddJobFlowSteps AddTags DescribeCluster DescribeJobFlows DescribeStep ListBootstrapActions ListClusters ListInstanceGroups ListInstances ListSteps ModifyInstanceGroups RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
 

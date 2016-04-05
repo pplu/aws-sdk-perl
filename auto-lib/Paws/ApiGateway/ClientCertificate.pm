@@ -20,23 +20,33 @@ Paws::ApiGateway::ClientCertificate
 
 =head2 ClientCertificateId => Str
 
-  
+
+
+
 
 =head2 CreatedDate => Str
 
-  
+
+
+
 
 =head2 Description => Str
 
-  
+
+
+
 
 =head2 ExpirationDate => Str
 
-  
+
+
+
 
 =head2 PemEncodedCertificate => Str
 
-  
+
+
+
 
 
 =cut

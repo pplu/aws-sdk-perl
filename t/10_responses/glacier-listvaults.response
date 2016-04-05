@@ -1,0 +1,8 @@
+---
+content: '{"Marker":null,"VaultList":[{"CreationDate":"2016-01-28T23:39:16.532Z","LastInventoryDate":null,"NumberOfArchives":0,"SizeInBytes":0,"VaultARN":"arn:aws:glacier:eu-west-1:000000000000:vaults/test_vault","VaultName":"test_vault"}]}'
+headers:
+  content-length: 230
+  content-type: application/json
+  date: 'Thu, 28 Jan 2016 23:40:05 GMT'
+  x-amzn-requestid: KxLfiTUAoOt2tEDYCyqOruon2Vx7giQhrb7XyslSsd-bEK0
+status: 200

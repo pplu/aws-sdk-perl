@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DS::Directo
 
 =head1 DESCRIPTION
 
-Contains information about a Simple AD directory.
+Contains information about the directory.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +46,10 @@ Contains information about a Simple AD directory.
 
 =head2 SecurityGroupId => Str
 
-  The security group identifier for the directory.
+  The security group identifier for the directory. If the directory was
+created before 8/1/2014, this is the identifier of the directory
+members security group that was created when the directory was created.
+If the directory was created after this date, this value is null.
 
 
 =head2 SubnetIds => ArrayRef[Str]

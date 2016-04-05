@@ -5,6 +5,7 @@ package Paws::CloudTrail::UpdateTrail;
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
   has EnableLogFileValidation => (is => 'ro', isa => 'Bool');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
+  has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has S3BucketName => (is => 'ro', isa => 'Str');
@@ -43,21 +44,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CloudWatchLogsLogGroupArn => Str
 
-  Specifies a log group name using an Amazon Resource Name (ARN), a
+Specifies a log group name using an Amazon Resource Name (ARN), a
 unique identifier that represents the log group to which CloudTrail
 logs will be delivered. Not required unless you specify
 CloudWatchLogsRoleArn.
 
 
+
 =head2 CloudWatchLogsRoleArn => Str
 
-  Specifies the role for the CloudWatch Logs endpoint to assume to write
+Specifies the role for the CloudWatch Logs endpoint to assume to write
 to a user's log group.
+
 
 
 =head2 EnableLogFileValidation => Bool
 
-  Specifies whether log file validation is enabled. The default is false.
+Specifies whether log file validation is enabled. The default is false.
 
 When you disable log file integrity validation, the chain of digest
 files is broken after one hour. CloudTrail will not create digest files
@@ -70,15 +73,29 @@ noon on January 10. The same applies whenever you stop CloudTrail
 logging or delete a trail.
 
 
+
 =head2 IncludeGlobalServiceEvents => Bool
 
-  Specifies whether the trail is publishing events from global services
+Specifies whether the trail is publishing events from global services
 such as IAM to the log files.
+
+
+
+=head2 IsMultiRegionTrail => Bool
+
+Specifies whether the trail applies only to the current region or to
+all regions. The default is false. If the trail exists only in the
+current region and this value is set to true, shadow trails
+(replications of the trail) will be created in the other regions. If
+the trail exists in all regions and this value is set to false, the
+trail will remain in the region where it was created, and its shadow
+trails in other regions will be deleted.
+
 
 
 =head2 KmsKeyId => Str
 
-  Specifies the KMS key ID to use to encrypt the logs delivered by
+Specifies the KMS key ID to use to encrypt the logs delivered by
 CloudTrail. The value can be a an alias name prefixed by "alias/", a
 fully specified ARN to an alias, a fully specified ARN to a key, or a
 globally unique identifier.
@@ -100,9 +117,10 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 
 
+
 =head2 B<REQUIRED> Name => Str
 
-  Specifies the name of the trail or trail ARN. If C<Name> is a trail
+Specifies the name of the trail or trail ARN. If C<Name> is a trail
 name, the string must meet the following requirements:
 
 =over
@@ -125,24 +143,28 @@ If C<Name> is a trail ARN, it must be in the format
 C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
 
 
+
 =head2 S3BucketName => Str
 
-  Specifies the name of the Amazon S3 bucket designated for publishing
+Specifies the name of the Amazon S3 bucket designated for publishing
 log files. See Amazon S3 Bucket Naming Requirements.
+
 
 
 =head2 S3KeyPrefix => Str
 
-  Specifies the Amazon S3 key prefix that comes after the name of the
+Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
 see Finding Your CloudTrail Log Files. The maximum length is 200
 characters.
 
 
+
 =head2 SnsTopicName => Str
 
-  Specifies the name of the Amazon SNS topic defined for notification of
+Specifies the name of the Amazon SNS topic defined for notification of
 log file delivery. The maximum length is 256 characters.
+
 
 
 

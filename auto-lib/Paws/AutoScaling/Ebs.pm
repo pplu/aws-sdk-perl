@@ -43,7 +43,7 @@ Describes an Amazon EBS volume.
 
 =head2 DeleteOnTermination => Bool
 
-  Indicates whether to delete the volume on instance termination.
+  Indicates whether the volume is deleted on instance termination.
 
 Default: C<true>
 
@@ -61,10 +61,10 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 Iops => Int
 
-  For Provisioned IOPS (SSD) volumes only. The number of I/O operations
-per second (IOPS) to provision for the volume.
+  The number of I/O operations per second (IOPS) to provision for the
+volume.
 
-Default: None
+Constraint: Required when the volume type is C<io1>.
 
 
 =head2 SnapshotId => Str
@@ -74,23 +74,22 @@ Default: None
 
 =head2 VolumeSize => Int
 
-  The volume size, in gigabytes.
-
-Valid values: If the volume type is C<io1>, the minimum size of the
-volume is 10 GiB. If you specify C<SnapshotId> and C<VolumeSize>,
-C<VolumeSize> must be equal to or larger than the size of the snapshot.
+  The volume size, in GiB. For C<standard> volumes, specify a value from
+1 to 1,024. For C<io1> volumes, specify a value from 4 to 16,384. For
+C<gp2> volumes, specify a value from 1 to 16,384. If you specify a
+snapshot, the volume size must be equal to or larger than the snapshot
+size.
 
 Default: If you create a volume from a snapshot and you don't specify a
-volume size, the default is the size of the snapshot.
-
-Required: Required when the volume type is C<io1>.
+volume size, the default is the snapshot size.
 
 
 =head2 VolumeType => Str
 
-  The volume type.
+  The volume type. For more information, see Amazon EBS Volume Types in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
-Valid values: C<standard | io1 | gp2>
+Valid values: C<standard> | C<io1> | C<gp2>
 
 Default: C<standard>
 

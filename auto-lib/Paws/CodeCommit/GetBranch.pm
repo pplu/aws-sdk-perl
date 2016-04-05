@@ -36,12 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 BranchName => Str
 
-  The name of the branch for which you want to retrieve information.
+The name of the branch for which you want to retrieve information.
+
 
 
 =head2 RepositoryName => Str
 
-  
+The name of the repository that contains the branch for which you want
+to retrieve information.
+
 
 
 

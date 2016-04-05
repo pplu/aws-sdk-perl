@@ -36,13 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GroupName => Str
 
-  The name (friendly name, not ARN) of the group to detach the policy
+The name (friendly name, not ARN) of the group to detach the policy
 from.
+
 
 
 =head2 B<REQUIRED> PolicyArn => Str
 
-  
+
+
 
 
 

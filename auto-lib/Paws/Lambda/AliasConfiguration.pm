@@ -19,22 +19,30 @@ Paws::Lambda::AliasConfiguration
 
 =head2 AliasArn => Str
 
-  Lambda function ARN that is qualified using alias name as the suffix.
-For example, if you create an alias "BETA" pointing to a helloworld
-function version, the ARN is
+Lambda function ARN that is qualified using the alias name as the
+suffix. For example, if you create an alias called C<BETA> that points
+to a helloworld function version, the ARN is
 C<arn:aws:lambda:aws-regions:acct-id:function:helloworld:BETA>.
+
+
 
 =head2 Description => Str
 
-  Alias description.
+Alias description.
+
+
 
 =head2 FunctionVersion => Str
 
-  Function version to which the alias points.
+Function version to which the alias points.
+
+
 
 =head2 Name => Str
 
-  Alias name.
+Alias name.
+
+
 
 
 =cut

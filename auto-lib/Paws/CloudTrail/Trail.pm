@@ -2,7 +2,9 @@ package Paws::CloudTrail::Trail;
   use Moose;
   has CloudWatchLogsLogGroupArn => (is => 'ro', isa => 'Str');
   has CloudWatchLogsRoleArn => (is => 'ro', isa => 'Str');
+  has HomeRegion => (is => 'ro', isa => 'Str');
   has IncludeGlobalServiceEvents => (is => 'ro', isa => 'Bool');
+  has IsMultiRegionTrail => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LogFileValidationEnabled => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
@@ -57,10 +59,21 @@ represents the log group to which CloudTrail logs will be delivered.
 to a user's log group.
 
 
+=head2 HomeRegion => Str
+
+  The region in which the trail was created.
+
+
 =head2 IncludeGlobalServiceEvents => Bool
 
   Set to B<True> to include AWS API calls from AWS global services such
 as IAM. Otherwise, B<False>.
+
+
+=head2 IsMultiRegionTrail => Bool
+
+  Specifies whether the trail belongs only to one region or exists in all
+regions.
 
 
 =head2 KmsKeyId => Str

@@ -136,7 +136,9 @@ bid price by the value of C<WeightedCapacity>.
 
 =head2 SubnetId => Str
 
-  The ID of the subnet in which to launch the instances.
+  The ID of the subnet in which to launch the instances. To specify
+multiple subnets, separate them using commas; for example,
+"subnet-a61dafcf, subnet-65ea5f08".
 
 
 =head2 UserData => Str

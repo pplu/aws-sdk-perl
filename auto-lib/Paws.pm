@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.19';
+our $VERSION = '0.23';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -99,7 +99,7 @@ sub available_services {
   $self = $self->get_self;
 
   my $skip_list = {
-    API => 1, Credential => 1, Exception => 1
+    API => 1, Credential => 1, Exception => 1, RegionInfo => 1,
   };
   require Module::Find;
   my $class_prefix = $self->_class_prefix;
@@ -234,6 +234,8 @@ kept stable, and changes to it should be notified via ChangeLog
 =head1 SUPPORTED SERVICES
 
 
+L<Paws::ACM>
+
 L<Paws::ApiGateway>
 
 L<Paws::AutoScaling>
@@ -253,6 +255,8 @@ L<Paws::CloudTrail>
 L<Paws::CloudWatch>
 
 L<Paws::CloudWatch>
+
+L<Paws::CloudWatchEvents>
 
 L<Paws::CloudWatchLogs>
 
@@ -274,6 +278,8 @@ L<Paws::DeviceFarm>
 
 L<Paws::DirectConnect>
 
+L<Paws::DMS>
+
 L<Paws::DS>
 
 L<Paws::DynamoDB>
@@ -281,6 +287,8 @@ L<Paws::DynamoDB>
 L<Paws::DynamoDBStreams>
 
 L<Paws::EC2>
+
+L<Paws::ECR>
 
 L<Paws::ECS>
 
@@ -304,6 +312,8 @@ L<Paws::ES>
 
 L<Paws::Firehose>
 
+L<Paws::GameLift>
+
 L<Paws::Glacier>
 
 L<Paws::IAM>
@@ -325,6 +335,8 @@ L<Paws::Lambda>
 L<Paws::MachineLearning>
 
 L<Paws::MarketplaceCommerceAnalytics>
+
+L<Paws::MarketplaceMetering>
 
 L<Paws::OpsWorks>
 
@@ -563,6 +575,8 @@ This code is distributed under the Apache 2 License. The full text of the licens
 Luis Alberto Gimenez (@agimenez) for 
  - The git-fu cleaning up the "pull other sdks" code
  - Credential Providers code
+ - Fixes for users that have no HOME env variable
+ - FileCaller to fully mock responses
 
 Srinvas (@kidambisrinivas) for testing, bug reporting and fixing
 
@@ -588,7 +602,8 @@ karenetheridge for bug reporting, pull requests and help
 
 ioanrogers for fixing unicode issues in tests
 
-ilmari for fixing issues with timestamps in Date and X-Amz-Date headers
+ilmari for fixing issues with timestamps in Date and X-Amz-Date headers,
+test fixes and 5.10 support fixes
 
 stevecaldwell77 for contributing support for temporary credentials in S3
 
@@ -599,6 +614,16 @@ Roger Pettett for testing and contributing fixes for tests on MacOSX
 Henri Yandell for help with licensing issues
 
 Oriol Soriano (@ureesoriano) for contribution to API builders
+
+H. Daniel Cesario (@maneta) for devel setup instructions on RH and MacOSX
+
+Glen van Ginkel for contributions to get S3 working
+
+Javier Arellano for discovering Tagging bug
+
+Ioan Rogers for contributing AssumeRoleWithSAML with ADFS auth example
+
+Miquel Soriano for reporting a bug with DescribeAutoScalingGroups
 
 
 =cut

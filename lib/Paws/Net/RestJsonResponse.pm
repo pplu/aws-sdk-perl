@@ -1,4 +1,4 @@
-package Paws::Net::RestJsonResponse {
+package Paws::Net::RestJsonResponse;
   use Moose::Role;
   use JSON::MaybeXS;
   use Carp qw(croak);
@@ -6,6 +6,9 @@ package Paws::Net::RestJsonResponse {
   
   sub unserialize_response {
     my ($self, $data) = @_;
+
+    return {} if (not defined $data or $data eq '');
+
     my $json = decode_json( $data );
     return $json;
   }
@@ -20,7 +23,12 @@ package Paws::Net::RestJsonResponse {
     } elsif (exists $struct->{Message}){
       $message = $struct->{Message};
     } else {
-      die "Unrecognized error message format";
+      # Rationale for this condition is in Issue #82 
+      if ($struct->{__type} eq 'InternalError'){
+        $message = '';
+      } else {
+        die "Unrecognized error message format";
+      }
     }
 
     if (exists $headers->{'x-amzn-errortype'}){
@@ -33,7 +41,8 @@ package Paws::Net::RestJsonResponse {
     Paws::Exception->new(
       message => $message,
       code => $code,
-      request_id => $request_id
+      request_id => $request_id,
+      http_status => $http_status,
     );
   }
 
@@ -62,7 +71,4 @@ package Paws::Net::RestJsonResponse {
       });
     }
   }
-
-}
-
 1;

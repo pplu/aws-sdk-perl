@@ -39,31 +39,36 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientToken => Str
 
-  The clientToken portion of the clientId and clientToken pair used to
+The clientToken portion of the clientId and clientToken pair used to
 verify that the calling entity is allowed access to the job and its
 details.
 
 
+
 =head2 ContinuationToken => Str
 
-  A system-generated token, such as a AWS CodeDeploy deployment ID, that
+A system-generated token, such as a AWS CodeDeploy deployment ID, that
 a job uses in order to continue the job asynchronously.
+
 
 
 =head2 CurrentRevision => L<Paws::CodePipeline::CurrentRevision>
 
-  
+
+
 
 
 =head2 ExecutionDetails => L<Paws::CodePipeline::ExecutionDetails>
 
-  
+
+
 
 
 =head2 B<REQUIRED> JobId => Str
 
-  The ID of the job that successfully completed. This is the same ID
+The ID of the job that successfully completed. This is the same ID
 returned from PollForThirdPartyJobs.
+
 
 
 

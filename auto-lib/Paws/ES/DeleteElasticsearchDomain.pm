@@ -9,7 +9,7 @@ package Paws::ES::DeleteElasticsearchDomain;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/es/domain/{DomainName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ES::DeleteElasticsearchDomainResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DeleteElasticsearchDomainResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -37,8 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The name of the Elasticsearch domain that you want to permanently
+The name of the Elasticsearch domain that you want to permanently
 delete.
+
 
 
 

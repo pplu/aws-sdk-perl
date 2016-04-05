@@ -1,8 +1,6 @@
-package Paws::Net::NoSignature {
+package Paws::Net::NoSignature;
   use Moose::Role;
 
   sub sign {
   }
-}
-
 1;

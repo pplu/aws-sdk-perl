@@ -17,12 +17,16 @@ Paws::IoT::ListCertificatesResponse
 
 =head2 Certificates => ArrayRef[L<Paws::IoT::Certificate>]
 
-  The descriptions of the certificates.
+The descriptions of the certificates.
+
+
 
 =head2 NextMarker => Str
 
-  The marker for the next set of results, or null if there are no
+The marker for the next set of results, or null if there are no
 additional results.
+
+
 
 
 =cut

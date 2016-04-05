@@ -17,14 +17,18 @@ Paws::RDS::PendingMaintenanceActionsMessage
 
 =head2 Marker => Str
 
-  An optional pagination token provided by a previous
+An optional pagination token provided by a previous
 C<DescribePendingMaintenanceActions> request. If this parameter is
 specified, the response includes only records beyond the marker, up to
 a number of records specified by C<MaxRecords>.
 
+
+
 =head2 PendingMaintenanceActions => ArrayRef[L<Paws::RDS::ResourcePendingMaintenanceActions>]
 
-  A list of the pending maintenance actions for the resource.
+A list of the pending maintenance actions for the resource.
+
+
 
 
 =cut

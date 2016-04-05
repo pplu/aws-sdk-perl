@@ -16,7 +16,9 @@ Paws::EC2::TerminateInstancesResult
 
 =head2 TerminatingInstances => ArrayRef[L<Paws::EC2::InstanceStateChange>]
 
-  Information about one or more terminated instances.
+Information about one or more terminated instances.
+
+
 
 
 =cut

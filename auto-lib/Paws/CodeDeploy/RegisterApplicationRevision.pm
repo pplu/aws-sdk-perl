@@ -37,19 +37,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The name of an existing AWS CodeDeploy application associated with the
+The name of an AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
+
 
 
 =head2 Description => Str
 
-  A comment about the revision.
+A comment about the revision.
+
 
 
 =head2 B<REQUIRED> Revision => L<Paws::CodeDeploy::RevisionLocation>
 
-  Information about the application revision to register, including the
-revision's type and its location.
+Information about the application revision to register, including type
+and location.
+
 
 
 

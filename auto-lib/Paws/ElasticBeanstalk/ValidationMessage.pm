@@ -58,19 +58,13 @@ An error or warning for a desired configuration option value.
 
   An indication of the severity of this message:
 
-error: This message indicates that this is not a valid setting for an
-option.
-
-warning: This message is providing information you should take into
-account.
-
 =over
 
-=item * error: This message indicates that this is not a valid setting
-for an option.
+=item * C<error>: This message indicates that this is not a valid
+setting for an option.
 
-=item * warning: This message is providing information you should take
-into account.
+=item * C<warning>: This message is providing information you should
+take into account.
 
 =back
 

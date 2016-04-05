@@ -55,9 +55,9 @@ This class has no description
 
 =head2 ActualBlockHourlyPrice => Str
 
-  If you specified a required duration and your request was fulfilled,
-this is the fixed hourly price in effect for the Spot instance while it
-runs.
+  If you specified a duration and your Spot instance request was
+fulfilled, this is the fixed hourly price in effect for the Spot
+instance while it runs.
 
 
 =head2 AvailabilityZoneGroup => Str
@@ -69,7 +69,7 @@ in the same Availability Zone.
 
 =head2 BlockDurationMinutes => Int
 
-  The required duration for the Spot instance, in minutes.
+  The duration for the Spot instance, in minutes.
 
 
 =head2 CreateTime => Str

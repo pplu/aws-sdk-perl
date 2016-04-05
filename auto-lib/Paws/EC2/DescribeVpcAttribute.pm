@@ -1,7 +1,7 @@
 
 package Paws::EC2::DescribeVpcAttribute;
   use Moose;
-  has Attribute => (is => 'ro', isa => 'Str');
+  has Attribute => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -35,22 +35,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Attribute => Str
+=head2 B<REQUIRED> Attribute => Str
 
-  The VPC attribute.
+The VPC attribute.
 
+Valid values are: C<"enableDnsSupport">, C<"enableDnsHostnames">
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 B<REQUIRED> VpcId => Str
 
-  The ID of the VPC.
+The ID of the VPC.
+
 
 
 

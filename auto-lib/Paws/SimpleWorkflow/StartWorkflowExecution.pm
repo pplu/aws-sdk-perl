@@ -45,7 +45,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ChildPolicy => Str
 
-  If set, specifies the policy to use for the child workflow executions
+If set, specifies the policy to use for the child workflow executions
 of this workflow execution if it is terminated, by calling the
 TerminateWorkflowExecution action explicitly or due to an expired
 timeout. This policy overrides the default child policy specified when
@@ -72,15 +72,17 @@ a default for the workflow type or through this parameter. If neither
 this parameter is set nor a default child policy was specified at
 registration time then a fault will be returned.
 
+Valid values are: C<"TERMINATE">, C<"REQUEST_CANCEL">, C<"ABANDON">
 
 =head2 B<REQUIRED> Domain => Str
 
-  The name of the domain in which the workflow execution is created.
+The name of the domain in which the workflow execution is created.
+
 
 
 =head2 ExecutionStartToCloseTimeout => Str
 
-  The total duration for this workflow execution. This overrides the
+The total duration for this workflow execution. This overrides the
 defaultExecutionStartToCloseTimeout specified when registering the
 workflow type.
 
@@ -96,17 +98,19 @@ neither this parameter nor a default execution start-to-close timeout
 is specified, a fault is returned.
 
 
+
 =head2 Input => Str
 
-  The input for the workflow execution. This is a free form string which
+The input for the workflow execution. This is a free form string which
 should be meaningful to the workflow you are starting. This C<input> is
 made available to the new workflow execution in the
 C<WorkflowExecutionStarted> history event.
 
 
+
 =head2 LambdaRole => Str
 
-  The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda
+The ARN of an IAM role that authorizes Amazon SWF to invoke AWS Lambda
 functions.
 
 In order for this workflow execution to invoke AWS Lambda functions, an
@@ -114,17 +118,19 @@ appropriate IAM role must be specified either as a default for the
 workflow type or through this field.
 
 
+
 =head2 TagList => ArrayRef[Str]
 
-  The list of tags to associate with the workflow execution. You can
+The list of tags to associate with the workflow execution. You can
 specify a maximum of 5 tags. You can list workflow executions with a
 specific tag by calling ListOpenWorkflowExecutions or
 ListClosedWorkflowExecutions and specifying a TagFilter.
 
 
+
 =head2 TaskList => L<Paws::SimpleWorkflow::TaskList>
 
-  The task list to use for the decision tasks generated for this workflow
+The task list to use for the decision tasks generated for this workflow
 execution. This overrides the C<defaultTaskList> specified when
 registering the workflow type.
 
@@ -139,9 +145,10 @@ control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
 
+
 =head2 TaskPriority => Str
 
-  The task priority to use for this workflow execution. This will
+The task priority to use for this workflow execution. This will
 override any default priority that was assigned when the workflow type
 was registered. If not set, then the default task priority for the
 workflow type will be used. Valid values are integers that range from
@@ -152,9 +159,10 @@ For more information about setting task priority, see Setting Task
 Priority in the I<Amazon Simple Workflow Developer Guide>.
 
 
+
 =head2 TaskStartToCloseTimeout => Str
 
-  Specifies the maximum duration of decision tasks for this workflow
+Specifies the maximum duration of decision tasks for this workflow
 execution. This parameter overrides the
 C<defaultTaskStartToCloseTimout> specified when registering the
 workflow type using RegisterWorkflowType.
@@ -169,9 +177,10 @@ start-to-close timeout was specified at registration time then a fault
 will be returned.
 
 
+
 =head2 B<REQUIRED> WorkflowId => Str
 
-  The user defined identifier associated with the workflow execution. You
+The user defined identifier associated with the workflow execution. You
 can use this to associate a custom identifier with the workflow
 execution. You may specify the same identifier if a workflow execution
 is logically a I<restart> of a previous execution. You cannot have two
@@ -183,9 +192,11 @@ control characters (\u0000-\u001f | \u007f - \u009f). Also, it must not
 contain the literal string quotarnquot.
 
 
+
 =head2 B<REQUIRED> WorkflowType => L<Paws::SimpleWorkflow::WorkflowType>
 
-  The type of the workflow to start.
+The type of the workflow to start.
+
 
 
 

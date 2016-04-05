@@ -32,19 +32,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DeleteMarker => Bool
 
-  Specifies whether the versioned object that was permanently deleted was
+Specifies whether the versioned object that was permanently deleted was
 (true) or was not (false) a delete marker.
+
 
 
 =head2 RequestCharged => Str
 
-  
 
+
+Valid values are: C<"requester">
 
 =head2 VersionId => Str
 
-  Returns the version ID of the delete marker created as a result of the
+Returns the version ID of the delete marker created as a result of the
 DELETE operation.
+
 
 
 

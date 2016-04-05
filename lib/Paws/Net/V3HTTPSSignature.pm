@@ -1,4 +1,4 @@
-package Paws::Net::V3HTTPSSignature {
+package Paws::Net::V3HTTPSSignature;
   use Moose::Role;
   use Net::Amazon::Signature::V3;
   #requires 'region';
@@ -21,6 +21,4 @@ package Paws::Net::V3HTTPSSignature {
       $request->header($header, $headers{ $header });
     }
   }
-}
-
 1;

@@ -17,11 +17,15 @@ Paws::Lambda::ListAliasesResponse
 
 =head2 Aliases => ArrayRef[L<Paws::Lambda::AliasConfiguration>]
 
-  An list of alises.
+A list of aliases.
+
+
 
 =head2 NextMarker => Str
 
-  A string, present if there are more aliases.
+A string, present if there are more aliases.
+
+
 
 
 =cut

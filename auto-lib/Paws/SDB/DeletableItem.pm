@@ -1,6 +1,6 @@
 package Paws::SDB::DeletableItem;
   use Moose;
-  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::Attribute]');
+  has Attributes => (is => 'ro', isa => 'ArrayRef[Paws::SDB::DeletableAttribute]');
   has Name => (is => 'ro', isa => 'Str', xmlname => 'ItemName', request_name => 'ItemName', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
@@ -37,7 +37,7 @@ This class has no description
 =head1 ATTRIBUTES
 
 
-=head2 Attributes => ArrayRef[L<Paws::SDB::Attribute>]
+=head2 Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>]
 
   
 

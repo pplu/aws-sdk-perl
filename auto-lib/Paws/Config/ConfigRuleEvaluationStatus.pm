@@ -4,9 +4,12 @@ package Paws::Config::ConfigRuleEvaluationStatus;
   has ConfigRuleId => (is => 'ro', isa => 'Str');
   has ConfigRuleName => (is => 'ro', isa => 'Str');
   has FirstActivatedTime => (is => 'ro', isa => 'Str');
+  has FirstEvaluationStarted => (is => 'ro', isa => 'Bool');
   has LastErrorCode => (is => 'ro', isa => 'Str');
   has LastErrorMessage => (is => 'ro', isa => 'Str');
+  has LastFailedEvaluationTime => (is => 'ro', isa => 'Str');
   has LastFailedInvocationTime => (is => 'ro', isa => 'Str');
+  has LastSuccessfulEvaluationTime => (is => 'ro', isa => 'Str');
   has LastSuccessfulInvocationTime => (is => 'ro', isa => 'Str');
 1;
 
@@ -68,6 +71,23 @@ Config rules.
   The time that you first activated the AWS Config rule.
 
 
+=head2 FirstEvaluationStarted => Bool
+
+  Indicates whether AWS Config has evaluated your resources against the
+rule at least once.
+
+=over
+
+=item * C<true> - AWS Config has evaluated your AWS resources against
+the rule at least once.
+
+=item * C<false> - AWS Config has not once finished evaluating your AWS
+resources against the rule.
+
+=back
+
+
+
 =head2 LastErrorCode => Str
 
   The error code that AWS Config returned when the rule last failed.
@@ -78,10 +98,22 @@ Config rules.
   The error message that AWS Config returned when the rule last failed.
 
 
+=head2 LastFailedEvaluationTime => Str
+
+  The time that AWS Config last failed to evaluate your AWS resources
+against the rule.
+
+
 =head2 LastFailedInvocationTime => Str
 
   The time that AWS Config last failed to invoke the AWS Config rule to
 evaluate your AWS resources.
+
+
+=head2 LastSuccessfulEvaluationTime => Str
+
+  The time that AWS Config last successfully evaluated your AWS resources
+against the rule.
 
 
 =head2 LastSuccessfulInvocationTime => Str

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::H
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes the status of changes to HSM settings.
 
 =head1 ATTRIBUTES
 

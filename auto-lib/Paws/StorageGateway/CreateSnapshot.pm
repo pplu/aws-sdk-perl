@@ -36,16 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SnapshotDescription => Str
 
-  Textual description of the snapshot that appears in the Amazon EC2
+Textual description of the snapshot that appears in the Amazon EC2
 console, Elastic Block Store snapshots panel in the B<Description>
 field, and in the AWS Storage Gateway snapshot B<Details> pane,
 B<Description> field
 
 
+
 =head2 B<REQUIRED> VolumeARN => Str
 
-  The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
+The Amazon Resource Name (ARN) of the volume. Use the ListVolumes
 operation to return a list of gateway volumes.
+
 
 
 

@@ -42,53 +42,70 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
-  A list of dimensions describing qualities of the metric.
+A list of dimensions describing qualities of the metric.
+
 
 
 =head2 B<REQUIRED> EndTime => Str
 
-  The time stamp to use for determining the last datapoint to return. The
+The time stamp to use for determining the last datapoint to return. The
 value specified is exclusive; results will include datapoints up to the
-time stamp specified.
+time stamp specified. The time stamp must be in ISO 8601 UTC format
+(e.g., 2014-09-03T23:00:00Z).
+
 
 
 =head2 B<REQUIRED> MetricName => Str
 
-  The name of the metric, with or without spaces.
+The name of the metric, with or without spaces.
+
 
 
 =head2 B<REQUIRED> Namespace => Str
 
-  The namespace of the metric, with or without spaces.
+The namespace of the metric, with or without spaces.
+
 
 
 =head2 B<REQUIRED> Period => Int
 
-  The granularity, in seconds, of the returned datapoints. C<Period> must
+The granularity, in seconds, of the returned datapoints. C<Period> must
 be at least 60 seconds and must be a multiple of 60. The default value
 is 60.
 
 
+
 =head2 B<REQUIRED> StartTime => Str
 
-  The time stamp to use for determining the first datapoint to return.
+The time stamp to use for determining the first datapoint to return.
 The value specified is inclusive; results include datapoints with the
-time stamp specified.
+time stamp specified. The time stamp must be in ISO 8601 UTC format
+(e.g., 2014-09-03T23:00:00Z).
+
+The specified start time is rounded down to the nearest value.
+Datapoints are returned for start times up to two weeks in the past.
+Specified start times that are more than two weeks in the past will not
+return datapoints for metrics that are older than two weeks.
+
+Data that is timestamped 24 hours or more in the past may take in
+excess of 48 hours to become available from submission time using
+C<GetMetricStatistics>.
+
 
 
 =head2 B<REQUIRED> Statistics => ArrayRef[Str]
 
-  The metric statistics to return. For information about specific
-statistics returned by GetMetricStatistics, go to Statistics in the
+The metric statistics to return. For information about specific
+statistics returned by GetMetricStatistics, see Statistics in the
 I<Amazon CloudWatch Developer Guide>.
 
-Valid Values: C<Average | Sum | SampleCount | Maximum | Minimum>
 
 
 =head2 Unit => Str
 
-  The unit for the metric.
+The unit for the metric.
 
+Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
 
 
 =head1 SEE ALSO

@@ -90,7 +90,8 @@ launch group.
 
 =head2 ClientToken => Str
 
-  The idempotency token you provided when you launched the instance.
+  The idempotency token you provided when you launched the instance, if
+applicable.
 
 
 =head2 EbsOptimized => Bool
@@ -109,7 +110,7 @@ charges apply when using an EBS Optimized instance.
 
 =head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfile>
 
-  The IAM instance profile associated with the instance.
+  The IAM instance profile associated with the instance, if applicable.
 
 
 =head2 ImageId => Str
@@ -124,7 +125,7 @@ charges apply when using an EBS Optimized instance.
 
 =head2 InstanceLifecycle => Str
 
-  Indicates whether this is a Spot Instance.
+  Indicates whether this is a Spot instance or a Scheduled Instance.
 
 
 =head2 InstanceType => Str
@@ -134,7 +135,7 @@ charges apply when using an EBS Optimized instance.
 
 =head2 KernelId => Str
 
-  The kernel associated with this instance.
+  The kernel associated with this instance, if applicable.
 
 
 =head2 KeyName => Str
@@ -160,7 +161,7 @@ associated key pair.
 
 =head2 Placement => L<Paws::EC2::Placement>
 
-  The location where the instance launched.
+  The location where the instance launched, if applicable.
 
 
 =head2 Platform => Str
@@ -172,7 +173,8 @@ associated key pair.
 
   The private DNS name assigned to the instance. This DNS name can only
 be used inside the Amazon EC2 network. This name is not available until
-the instance enters the C<running> state.
+the instance enters the C<running> state. For EC2-VPC, this name is
+only available if you've enabled DNS hostnames for your VPC.
 
 
 =head2 PrivateIpAddress => Str
@@ -182,23 +184,25 @@ the instance enters the C<running> state.
 
 =head2 ProductCodes => ArrayRef[L<Paws::EC2::ProductCode>]
 
-  The product codes attached to this instance.
+  The product codes attached to this instance, if applicable.
 
 
 =head2 PublicDnsName => Str
 
   The public DNS name assigned to the instance. This name is not
-available until the instance enters the C<running> state.
+available until the instance enters the C<running> state. For EC2-VPC,
+this name is only available if you've enabled DNS hostnames for your
+VPC.
 
 
 =head2 PublicIpAddress => Str
 
-  The public IP address assigned to the instance.
+  The public IP address assigned to the instance, if applicable.
 
 
 =head2 RamdiskId => Str
 
-  The RAM disk associated with this instance.
+  The RAM disk associated with this instance, if applicable.
 
 
 =head2 RootDeviceName => Str
@@ -229,7 +233,7 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 =head2 SpotInstanceRequestId => Str
 
-  The ID of the Spot Instance request.
+  If the request is a Spot instance request, the ID of the request.
 
 
 =head2 SriovNetSupport => Str
@@ -255,7 +259,7 @@ string.
 
 =head2 SubnetId => Str
 
-  The ID of the subnet in which the instance is running.
+  [EC2-VPC] The ID of the subnet in which the instance is running.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
@@ -270,7 +274,7 @@ string.
 
 =head2 VpcId => Str
 
-  The ID of the VPC in which the instance is running.
+  [EC2-VPC] The ID of the VPC in which the instance is running.
 
 
 

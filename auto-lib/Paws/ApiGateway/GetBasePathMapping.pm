@@ -10,7 +10,7 @@ package Paws::ApiGateway::GetBasePathMapping;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/domainnames/{domain_name}/basepathmappings/{base_path}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::BasePathMapping');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetBasePathMappingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,15 +38,17 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BasePath => Str
 
-  The base path name that callers of the API must provide as part of the
+The base path name that callers of the API must provide as part of the
 URL after the domain name. This value must be unique for all of the
 mappings across a single API. Leave this blank if you do not want
 callers to specify any base path name after the domain name.
 
 
+
 =head2 B<REQUIRED> DomainName => Str
 
-  The domain name of the BasePathMapping resource to be described.
+The domain name of the BasePathMapping resource to be described.
+
 
 
 

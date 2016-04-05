@@ -4,6 +4,12 @@ package Paws::DeviceFarm;
   sub version { '2015-06-23' }
   sub target_prefix { 'DeviceFarm_20150623' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -68,6 +74,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetOfferingStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetOfferingStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetProject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetProject', @_);
@@ -113,6 +124,16 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListOfferings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListOfferingTransactions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListOfferingTransactions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListProjects {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListProjects', @_);
@@ -148,9 +169,24 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListUploads', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PurchaseOffering {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::PurchaseOffering', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RenewOffering {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::RenewOffering', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ScheduleRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ScheduleRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::StopRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDevicePool {
@@ -163,8 +199,208 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::UpdateProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllArtifacts {
+    my $self = shift;
 
-  sub operations { qw/CreateDevicePool CreateProject CreateUpload DeleteDevicePool DeleteProject DeleteRun DeleteUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetProject GetRun GetSuite GetTest GetUpload ListArtifacts ListDevicePools ListDevices ListJobs ListProjects ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads ScheduleRun UpdateDevicePool UpdateProject / }
+    my $result = $self->ListArtifacts(@_);
+    my $params = {};
+    
+    $params->{ artifacts } = $result->artifacts;
+    
+
+    while ($result->) {
+      $result = $self->ListArtifacts(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ artifacts } }, @{ $result->artifacts };
+      
+    }
+
+    return $self->new_with_coercions(Paws::DeviceFarm::ListArtifacts->_returns, %$params);
+  }
+  sub ListAllDevicePools {
+    my $self = shift;
+
+    my $result = $self->ListDevicePools(@_);
+    my $params = {};
+    
+    $params->{ devicePools } = $result->devicePools;
+    
+
+    while ($result->) {
+      $result = $self->ListDevicePools(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ devicePools } }, @{ $result->devicePools };
+      
+    }
+
+    return $self->new_with_coercions(Paws::DeviceFarm::ListDevicePools->_returns, %$params);
+  }
+  sub ListAllDevices {
+    my $self = shift;
+
+    my $result = $self->ListDevices(@_);
+    my $params = {};
+    
+    $params->{ devices } = $result->devices;
+    
+
+    while ($result->) {
+      $result = $self->ListDevices(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ devices } }, @{ $result->devices };
+      
+    }
+
+    return $self->new_with_coercions(Paws::DeviceFarm::ListDevices->_returns, %$params);
+  }
+  sub ListAllJobs {
+    my $self = shift;
+
+    my $result = $self->ListJobs(@_);
+    my $params = {};
+    
+    $params->{ jobs } = $result->jobs;
+    
+
+    while ($result->) {
+      $result = $self->ListJobs(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ jobs } }, @{ $result->jobs };
+      
+    }
+
+    return $self->new_with_coercions(Paws::DeviceFarm::ListJobs->_returns, %$params);
+  }
+  sub ListAllProjects {
+    my $self = shift;
+
+    my $result = $self->ListProjects(@_);
+    my $params = {};
+    
+    $params->{ projects } = $result->projects;
+    
+
+    while ($result->) {
+      $result = $self->ListProjects(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ projects } }, @{ $result->projects };
+      
+    }
+
+    return $self->new_with_coercions(Paws::DeviceFarm::ListProjects->_returns, %$params);
+  }
+  sub ListAllRuns {
+    my $self = shift;
+
+    my $result = $self->ListRuns(@_);
+    my $params = {};
+    
+    $params->{ runs } = $result->runs;
+    
+
+    while ($result->) {
+      $result = $self->ListRuns(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ runs } }, @{ $result->runs };
+      
+    }
+
+    return $self->new_with_coercions(Paws::DeviceFarm::ListRuns->_returns, %$params);
+  }
+  sub ListAllSamples {
+    my $self = shift;
+
+    my $result = $self->ListSamples(@_);
+    my $params = {};
+    
+    $params->{ samples } = $result->samples;
+    
+
+    while ($result->) {
+      $result = $self->ListSamples(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ samples } }, @{ $result->samples };
+      
+    }
+
+    return $self->new_with_coercions(Paws::DeviceFarm::ListSamples->_returns, %$params);
+  }
+  sub ListAllSuites {
+    my $self = shift;
+
+    my $result = $self->ListSuites(@_);
+    my $params = {};
+    
+    $params->{ suites } = $result->suites;
+    
+
+    while ($result->) {
+      $result = $self->ListSuites(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ suites } }, @{ $result->suites };
+      
+    }
+
+    return $self->new_with_coercions(Paws::DeviceFarm::ListSuites->_returns, %$params);
+  }
+  sub ListAllTests {
+    my $self = shift;
+
+    my $result = $self->ListTests(@_);
+    my $params = {};
+    
+    $params->{ tests } = $result->tests;
+    
+
+    while ($result->) {
+      $result = $self->ListTests(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ tests } }, @{ $result->tests };
+      
+    }
+
+    return $self->new_with_coercions(Paws::DeviceFarm::ListTests->_returns, %$params);
+  }
+  sub ListAllUniqueProblems {
+    my $self = shift;
+
+    my $result = $self->ListUniqueProblems(@_);
+    my $params = {};
+    
+    $params->{ uniqueProblems } = $result->uniqueProblems;
+    
+
+    while ($result->) {
+      $result = $self->ListUniqueProblems(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ uniqueProblems } }, @{ $result->uniqueProblems };
+      
+    }
+
+    return $self->new_with_coercions(Paws::DeviceFarm::ListUniqueProblems->_returns, %$params);
+  }
+  sub ListAllUploads {
+    my $self = shift;
+
+    my $result = $self->ListUploads(@_);
+    my $params = {};
+    
+    $params->{ uploads } = $result->uploads;
+    
+
+    while ($result->) {
+      $result = $self->ListUploads(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ uploads } }, @{ $result->uploads };
+      
+    }
+
+    return $self->new_with_coercions(Paws::DeviceFarm::ListUploads->_returns, %$params);
+  }
+
+
+  sub operations { qw/CreateDevicePool CreateProject CreateUpload DeleteDevicePool DeleteProject DeleteRun DeleteUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetOfferingStatus GetProject GetRun GetSuite GetTest GetUpload ListArtifacts ListDevicePools ListDevices ListJobs ListOfferings ListOfferingTransactions ListProjects ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads PurchaseOffering RenewOffering ScheduleRun StopRun UpdateDevicePool UpdateProject / }
 
 1;
 
@@ -294,7 +530,7 @@ Returns: a L<Paws::DeviceFarm::GetDevicePoolResult> instance
   Gets information about a device pool.
 
 
-=head2 GetDevicePoolCompatibility(AppArn => Str, DevicePoolArn => Str, [TestType => Str])
+=head2 GetDevicePoolCompatibility(DevicePoolArn => Str, [AppArn => Str, TestType => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetDevicePoolCompatibility>
 
@@ -310,6 +546,20 @@ Each argument is described in detail in: L<Paws::DeviceFarm::GetJob>
 Returns: a L<Paws::DeviceFarm::GetJobResult> instance
 
   Gets information about a job.
+
+
+=head2 GetOfferingStatus([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::GetOfferingStatus>
+
+Returns: a L<Paws::DeviceFarm::GetOfferingStatusResult> instance
+
+  Gets the current status and future status of all offerings purchased by
+an AWS account. The response indicates how many offerings are currently
+available and the offerings that will be available in the next period.
+The API returns a C<NotEligible> error if the user is not permitted to
+invoke the operation. Please contact aws-devicefarm-support@amazon.com
+if you believe that you should be able to invoke this operation.
 
 
 =head2 GetProject(Arn => Str)
@@ -393,6 +643,34 @@ Returns: a L<Paws::DeviceFarm::ListJobsResult> instance
   Gets information about jobs.
 
 
+=head2 ListOfferings([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListOfferings>
+
+Returns: a L<Paws::DeviceFarm::ListOfferingsResult> instance
+
+  Returns a list of products or offerings that the user can manage
+through the API. Each offering record indicates the recurring price per
+unit and the frequency for that offering. The API returns a
+C<NotEligible> error if the user is not permitted to invoke the
+operation. Please contact aws-devicefarm-support@amazon.com if you
+believe that you should be able to invoke this operation.
+
+
+=head2 ListOfferingTransactions([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListOfferingTransactions>
+
+Returns: a L<Paws::DeviceFarm::ListOfferingTransactionsResult> instance
+
+  Returns a list of all historical purchases, renewals, and system
+renewal transactions for an AWS account. The list is paginated and
+ordered by a descending timestamp (most recent transactions are first).
+The API returns a C<NotEligible> error if the user is not permitted to
+invoke the operation. Please contact aws-devicefarm-support@amazon.com
+if you believe that you should be able to invoke this operation.
+
+
 =head2 ListProjects([Arn => Str, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ListProjects>
@@ -456,13 +734,55 @@ Returns: a L<Paws::DeviceFarm::ListUploadsResult> instance
   Gets information about uploads.
 
 
-=head2 ScheduleRun(AppArn => Str, DevicePoolArn => Str, ProjectArn => Str, Test => L<Paws::DeviceFarm::ScheduleRunTest>, [Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>, Name => Str])
+=head2 PurchaseOffering([OfferingId => Str, Quantity => Int])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::PurchaseOffering>
+
+Returns: a L<Paws::DeviceFarm::PurchaseOfferingResult> instance
+
+  Immediately purchases offerings for an AWS account. Offerings renew
+with the latest total purchased quantity for an offering, unless the
+renewal was overridden. The API returns a C<NotEligible> error if the
+user is not permitted to invoke the operation. Please contact
+aws-devicefarm-support@amazon.com if you believe that you should be
+able to invoke this operation.
+
+
+=head2 RenewOffering([OfferingId => Str, Quantity => Int])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::RenewOffering>
+
+Returns: a L<Paws::DeviceFarm::RenewOfferingResult> instance
+
+  Explicitly sets the quantity of devices to renew for an offering,
+starting from the C<effectiveDate> of the next period. The API returns
+a C<NotEligible> error if the user is not permitted to invoke the
+operation. Please contact aws-devicefarm-support@amazon.com if you
+believe that you should be able to invoke this operation.
+
+
+=head2 ScheduleRun(DevicePoolArn => Str, ProjectArn => Str, Test => L<Paws::DeviceFarm::ScheduleRunTest>, [AppArn => Str, Configuration => L<Paws::DeviceFarm::ScheduleRunConfiguration>, Name => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::ScheduleRun>
 
 Returns: a L<Paws::DeviceFarm::ScheduleRunResult> instance
 
   Schedules a run.
+
+
+=head2 StopRun(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::StopRun>
+
+Returns: a L<Paws::DeviceFarm::StopRunResult> instance
+
+  Initiates a stop request for the current test run. AWS Device Farm will
+immediately stop the run on devices where tests have not started
+executing, and you will not be billed for these devices. On devices
+where tests have started executing, Setup Suite and Teardown Suite
+tests will run to completion before stopping execution on those
+devices. You will be billed for Setup, Teardown, and any tests that
+were in progress or already completed.
 
 
 =head2 UpdateDevicePool(Arn => Str, [Description => Str, Name => Str, Rules => ArrayRef[L<Paws::DeviceFarm::Rule>]])

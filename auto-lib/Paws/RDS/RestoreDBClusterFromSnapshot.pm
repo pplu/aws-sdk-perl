@@ -7,6 +7,7 @@ package Paws::RDS::RestoreDBClusterFromSnapshot;
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
@@ -45,18 +46,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-  Provides the list of EC2 Availability Zones that instances in the
+Provides the list of EC2 Availability Zones that instances in the
 restored DB cluster can be created in.
+
 
 
 =head2 DatabaseName => Str
 
-  The database name for the restored DB cluster.
+The database name for the restored DB cluster.
+
 
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-  The name of the DB cluster to create from the DB cluster snapshot. This
+The name of the DB cluster to create from the DB cluster snapshot. This
 parameter isn't case-sensitive.
 
 Constraints:
@@ -74,42 +77,84 @@ Constraints:
 Example: C<my-snapshot-id>
 
 
+
 =head2 DBSubnetGroupName => Str
 
-  The name of the DB subnet group to use for the new DB cluster.
+The name of the DB subnet group to use for the new DB cluster.
+
+Constraints: Must contain no more than 255 alphanumeric characters,
+periods, underscores, spaces, or hyphens. Must not be default.
+
+Example: C<mySubnetgroup>
+
 
 
 =head2 B<REQUIRED> Engine => Str
 
-  The database engine to use for the new DB cluster.
+The database engine to use for the new DB cluster.
 
 Default: The same as source
 
 Constraint: Must be compatible with the engine of the source
 
 
+
 =head2 EngineVersion => Str
 
-  The version of the database engine to use for the new DB cluster.
+The version of the database engine to use for the new DB cluster.
+
+
+
+=head2 KmsKeyId => Str
+
+The KMS key identifier to use when restoring an encrypted DB cluster
+from an encrypted DB cluster snapshot.
+
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are restoring a DB cluster with the same AWS
+account that owns the KMS encryption key used to encrypt the new DB
+cluster, then you can use the KMS key alias instead of the ARN for the
+KMS encryption key.
+
+If you do not specify a value for the C<KmsKeyId> parameter, then the
+following will occur:
+
+=over
+
+=item * If the DB cluster snapshot is encrypted, then the restored DB
+cluster is encrypted using the KMS key that was used to encrypt the DB
+cluster snapshot.
+
+=item * If the DB cluster snapshot is not encrypted, then the restored
+DB cluster is not encrypted.
+
+=back
+
+If C<SnapshotIdentifier> refers to a DB cluster snapshot that is not
+encrypted, and you specify a value for the C<KmsKeyId> parameter, then
+the restore request is rejected.
+
 
 
 =head2 OptionGroupName => Str
 
-  The name of the option group to use for the restored DB cluster.
+The name of the option group to use for the restored DB cluster.
+
 
 
 =head2 Port => Int
 
-  The port number on which the new DB cluster accepts connections.
+The port number on which the new DB cluster accepts connections.
 
 Constraints: Value must be C<1150-65535>
 
 Default: The same port as the original DB cluster.
 
 
+
 =head2 B<REQUIRED> SnapshotIdentifier => Str
 
-  The identifier for the DB cluster snapshot to restore from.
+The identifier for the DB cluster snapshot to restore from.
 
 Constraints:
 
@@ -125,14 +170,17 @@ Constraints:
 
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-  The tags to be assigned to the restored DB cluster.
+The tags to be assigned to the restored DB cluster.
+
 
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  A list of VPC security groups that the new DB cluster will belong to.
+A list of VPC security groups that the new DB cluster will belong to.
+
 
 
 

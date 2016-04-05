@@ -15,7 +15,9 @@ Paws::WAF::GetChangeTokenStatusResponse
 
 =head2 ChangeTokenStatus => Str
 
-  The status of the change token.
+The status of the change token.
+
+Valid values are: C<"PROVISIONED">, C<"PENDING">, C<"INSYNC">
 
 
 =cut

@@ -3,6 +3,12 @@ package Paws::CloudWatch;
   sub service { 'monitoring' }
   sub version { '2010-08-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -62,48 +68,62 @@ package Paws::CloudWatch;
     my $call_object = $self->new_with_coercions('Paws::CloudWatch::SetAlarmState', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllAlarmHistory {
     my $self = shift;
 
     my $result = $self->DescribeAlarmHistory(@_);
-    my $array = [];
-    push @$array, @{ $result->AlarmHistoryItems };
+    my $params = {};
+    
+    $params->{ AlarmHistoryItems } = $result->AlarmHistoryItems;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->AlarmHistoryItems };
+      
+      push @{ $params->{ AlarmHistoryItems } }, @{ $result->AlarmHistoryItems };
+      
     }
 
-    return 'Paws::CloudWatch::DescribeAlarmHistory'->_returns->new(AlarmHistoryItems => $array);
+    return $self->new_with_coercions(Paws::CloudWatch::DescribeAlarmHistory->_returns, %$params);
   }
   sub DescribeAllAlarms {
     my $self = shift;
 
     my $result = $self->DescribeAlarms(@_);
-    my $array = [];
-    push @$array, @{ $result->MetricAlarms };
+    my $params = {};
+    
+    $params->{ MetricAlarms } = $result->MetricAlarms;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->MetricAlarms };
+      
+      push @{ $params->{ MetricAlarms } }, @{ $result->MetricAlarms };
+      
     }
 
-    return 'Paws::CloudWatch::DescribeAlarms'->_returns->new(MetricAlarms => $array);
+    return $self->new_with_coercions(Paws::CloudWatch::DescribeAlarms->_returns, %$params);
   }
   sub ListAllMetrics {
     my $self = shift;
 
     my $result = $self->ListMetrics(@_);
-    my $array = [];
-    push @$array, @{ $result->Metrics };
+    my $params = {};
+    
+    $params->{ Metrics } = $result->Metrics;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Metrics };
+      
+      push @{ $params->{ Metrics } }, @{ $result->Metrics };
+      
     }
 
-    return 'Paws::CloudWatch::ListMetrics'->_returns->new(Metrics => $array);
+    return $self->new_with_coercions(Paws::CloudWatch::ListMetrics->_returns, %$params);
   }
+
 
   sub operations { qw/DeleteAlarms DescribeAlarmHistory DescribeAlarms DescribeAlarmsForMetric DisableAlarmActions EnableAlarmActions GetMetricStatistics ListMetrics PutMetricAlarm PutMetricData SetAlarmState / }
 
@@ -133,78 +153,23 @@ Paws::CloudWatch - Perl Interface to AWS Amazon CloudWatch
 
 =head1 DESCRIPTION
 
-This is the I<Amazon CloudWatch API Reference>. This guide provides
-detailed information about Amazon CloudWatch actions, data types,
-parameters, and errors. For detailed information about Amazon
-CloudWatch features and their associated API calls, go to the Amazon
-CloudWatch Developer Guide.
+Amazon CloudWatch monitors your Amazon Web Services (AWS) resources and
+the applications you run on AWS in real-time. You can use CloudWatch to
+collect and track metrics, which are the variables you want to measure
+for your resources and applications.
 
-Amazon CloudWatch is a web service that enables you to publish,
-monitor, and manage various metrics, as well as configure alarm actions
-based on data from metrics. For more information about this product go
-to http://aws.amazon.com/cloudwatch.
+CloudWatch alarms send notifications or automatically make changes to
+the resources you are monitoring based on rules that you define. For
+example, you can monitor the CPU usage and disk reads and writes of
+your Amazon Elastic Compute Cloud (Amazon EC2) instances and then use
+this data to determine whether you should launch additional instances
+to handle increased load. You can also use this data to stop under-used
+instances to save money.
 
-For information about the namespace, metric names, and dimensions that
-other Amazon Web Services products use to send metrics to Cloudwatch,
-go to Amazon CloudWatch Metrics, Namespaces, and Dimensions Reference
-in the I<Amazon CloudWatch Developer Guide>.
-
-Use the following links to get started using the I<Amazon CloudWatch
-API Reference>:
-
-=over
-
-=item * Actions: An alphabetical list of all Amazon CloudWatch actions.
-
-=item * Data Types: An alphabetical list of all Amazon CloudWatch data
-types.
-
-=item * Common Parameters: Parameters that all Query actions can use.
-
-=item * Common Errors: Client and server errors that all actions can
-return.
-
-=item * Regions and Endpoints: Itemized regions and endpoints for all
-AWS products.
-
-=item * WSDL Location:
-http://monitoring.amazonaws.com/doc/2010-08-01/CloudWatch.wsdl
-
-=back
-
-In addition to using the Amazon CloudWatch API, you can also use the
-following SDKs and third-party libraries to access Amazon CloudWatch
-programmatically.
-
-=over
-
-=item * AWS SDK for Java Documentation
-
-=item * AWS SDK for .NET Documentation
-
-=item * AWS SDK for PHP Documentation
-
-=item * AWS SDK for Ruby Documentation
-
-=back
-
-Developers in the AWS developer community also provide their own
-libraries, which you can find at the following AWS developer centers:
-
-=over
-
-=item * AWS Java Developer Center
-
-=item * AWS PHP Developer Center
-
-=item * AWS Python Developer Center
-
-=item * AWS Ruby Developer Center
-
-=item * AWS Windows and .NET Developer Center
-
-=back
-
+In addition to monitoring the built-in metrics that come with AWS, you
+can monitor your own custom metrics. With CloudWatch, you gain
+system-wide visibility into resource utilization, application
+performance, and operational health.
 
 =head1 METHODS
 
@@ -227,6 +192,9 @@ Returns: a L<Paws::CloudWatch::DescribeAlarmHistoryOutput> instance
   Retrieves history for the specified alarm. Filter alarms by date range
 or item type. If an alarm name is not specified, Amazon CloudWatch
 returns histories for all of the owner's alarms.
+
+Amazon CloudWatch retains the history of an alarm for two weeks,
+whether or not you delete the alarm.
 
 
 =head2 DescribeAlarms([ActionPrefix => Str, AlarmNamePrefix => Str, AlarmNames => ArrayRef[Str], MaxRecords => Int, NextToken => Str, StateValue => Str])
@@ -279,13 +247,14 @@ Returns: a L<Paws::CloudWatch::GetMetricStatisticsOutput> instance
 
   Gets statistics for the specified metric.
 
-The maximum number of data points returned from a single
-C<GetMetricStatistics> request is 1,440, wereas the maximum number of
-data points that can be queried is 50,850. If you make a request that
+The maximum number of data points that can be queried is 50,850,
+whereas the maximum number of data points returned from a single
+C<GetMetricStatistics> request is 1,440. If you make a request that
 generates more than 1,440 data points, Amazon CloudWatch returns an
 error. In such a case, you can alter the request by narrowing the
 specified time range or increasing the specified period. Alternatively,
 you can make multiple requests across adjacent time ranges.
+C<GetMetricStatistics> does not return the data in chronological order.
 
 Amazon CloudWatch aggregates data points based on the length of the
 C<period> that you specify. For example, if you request statistics with
@@ -309,7 +278,7 @@ Amazon EC2 instances with detailed (one-minute) monitoring enabled:
 =back
 
 For information about the namespace, metric names, and dimensions that
-other Amazon Web Services products use to send metrics to Cloudwatch,
+other Amazon Web Services products use to send metrics to CloudWatch,
 go to Amazon CloudWatch Metrics, Namespaces, and Dimensions Reference
 in the I<Amazon CloudWatch Developer Guide>.
 
@@ -323,6 +292,13 @@ Returns: a L<Paws::CloudWatch::ListMetricsOutput> instance
   Returns a list of valid metrics stored for the AWS account owner.
 Returned metrics can be used with GetMetricStatistics to obtain
 statistical data for a given metric.
+
+Up to 500 results are returned for any one call. To retrieve further
+results, use returned C<NextToken> values with subsequent
+C<ListMetrics> operations. If you create a metric with the
+PutMetricData action, allow up to fifteen minutes for the metric to
+appear in calls to the C<ListMetrics> action. Statistics about the
+metric, however, are available sooner using GetMetricStatistics.
 
 
 =head2 PutMetricAlarm(AlarmName => Str, ComparisonOperator => Str, EvaluationPeriods => Int, MetricName => Str, Namespace => Str, Period => Int, Statistic => Str, Threshold => Num, [ActionsEnabled => Bool, AlarmActions => ArrayRef[Str], AlarmDescription => Str, Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>], InsufficientDataActions => ArrayRef[Str], OKActions => ArrayRef[Str], Unit => Str])
@@ -340,6 +316,42 @@ set to C<INSUFFICIENT_DATA>. The alarm is evaluated and its
 C<StateValue> is set appropriately. Any actions associated with the
 C<StateValue> is then executed.
 
+When updating an existing alarm, its C<StateValue> is left unchanged.
+If you are using an AWS Identity and Access Management (IAM) account to
+create or modify an alarm, you must have the following Amazon EC2
+permissions:
+
+=over
+
+=item * C<ec2:DescribeInstanceStatus> and C<ec2:DescribeInstances> for
+all alarms on Amazon EC2 instance status metrics.
+
+=item * C<ec2:StopInstances> for alarms with stop actions.
+
+=item * C<ec2:TerminateInstances> for alarms with terminate actions.
+
+=item * C<ec2:DescribeInstanceRecoveryAttribute>, and
+C<ec2:RecoverInstances> for alarms with recover actions.
+
+=back
+
+If you have read/write permissions for Amazon CloudWatch but not for
+Amazon EC2, you can still create an alarm but the stop or terminate
+actions won't be performed on the Amazon EC2 instance. However, if you
+are later granted permission to use the associated Amazon EC2 APIs, the
+alarm actions you created earlier will be performed. For more
+information about IAM permissions, see Permissions and Policies in
+I<Using IAM>.
+
+If you are using an IAM role (e.g., an Amazon EC2 instance profile),
+you cannot stop or terminate the instance using alarm actions. However,
+you can still see the alarm state and perform any other actions such as
+Amazon SNS notifications or Auto Scaling policies.
+
+If you are using temporary security credentials granted using the AWS
+Security Token Service (AWS STS), you cannot stop or terminate an
+Amazon EC2 instance using alarm actions.
+
 
 =head2 PutMetricData(MetricData => ArrayRef[L<Paws::CloudWatch::MetricDatum>], Namespace => Str)
 
@@ -347,20 +359,20 @@ Each argument is described in detail in: L<Paws::CloudWatch::PutMetricData>
 
 Returns: nothing
 
-  Publishes metric data points to Amazon CloudWatch. Amazon Cloudwatch
+  Publishes metric data points to Amazon CloudWatch. Amazon CloudWatch
 associates the data points with the specified metric. If the specified
-metric does not exist, Amazon CloudWatch creates the metric. It can
-take up to fifteen minutes for a new metric to appear in calls to the
-ListMetrics action.
+metric does not exist, Amazon CloudWatch creates the metric. When
+Amazon CloudWatch creates a metric, it can take up to fifteen minutes
+for the metric to appear in calls to the ListMetrics action.
 
-The size of a PutMetricData request is limited to 8 KB for HTTP GET
-requests and 40 KB for HTTP POST requests.
+Each C<PutMetricData> request is limited to 8 KB in size for HTTP GET
+requests and is limited to 40 KB in size for HTTP POST requests.
 
 Although the C<Value> parameter accepts numbers of type C<Double>,
-Amazon CloudWatch truncates values with very large exponents. Values
-with base-10 exponents greater than 126 (1 x 10^126) are truncated.
-Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
-are also truncated.
+Amazon CloudWatch rejects values that are either too small or too
+large. Values must be in the range of 8.515920e-109 to 1.174271e+108
+(Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values
+(e.g., NaN, +Infinity, -Infinity) are not supported.
 
 Data that is timestamped 24 hours or more in the past may take in
 excess of 48 hours to become available from submission time using
@@ -375,9 +387,14 @@ Returns: nothing
 
   Temporarily sets the state of an alarm. When the updated C<StateValue>
 differs from the previous value, the action configured for the
-appropriate state is invoked. This is not a permanent change. The next
-periodic alarm check (in about a minute) will set the alarm to its
-actual state.
+appropriate state is invoked. For example, if your alarm is configured
+to send an Amazon SNS message when an alarm is triggered, temporarily
+changing the alarm's state to B<ALARM> will send an Amazon SNS message.
+This is not a permanent change. The next periodic alarm check (in about
+a minute) will set the alarm to its actual state. Because the alarm
+state change happens very quickly, it is typically only visibile in the
+alarm's B<History> tab in the Amazon CloudWatch console or through
+C<DescribeAlarmHistory>.
 
 
 =head1 SEE ALSO

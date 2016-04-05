@@ -11,7 +11,7 @@ package Paws::CloudSearchDomain::Suggest;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-01-01/suggest?format=sdk&pretty=true');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearchDomain::SuggestResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'SuggestResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,17 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Query => Str
 
-  Specifies the string for which you want to get suggestions.
+Specifies the string for which you want to get suggestions.
+
 
 
 =head2 Size => Int
 
-  Specifies the maximum number of suggestions to return.
+Specifies the maximum number of suggestions to return.
+
 
 
 =head2 B<REQUIRED> Suggester => Str
 
-  Specifies the name of the suggester to use to find suggested matches.
+Specifies the name of the suggester to use to find suggested matches.
+
 
 
 

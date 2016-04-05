@@ -4,6 +4,12 @@ package Paws::OpsWorks;
   sub version { '2013-02-18' }
   sub target_prefix { 'OpsWorks_20130218' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -358,6 +364,8 @@ package Paws::OpsWorks;
     my $call_object = $self->new_with_coercions('Paws::OpsWorks::UpdateVolume', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AssignInstance AssignVolume AssociateElasticIp AttachElasticLoadBalancer CloneStack CreateApp CreateDeployment CreateInstance CreateLayer CreateStack CreateUserProfile DeleteApp DeleteInstance DeleteLayer DeleteStack DeleteUserProfile DeregisterEcsCluster DeregisterElasticIp DeregisterInstance DeregisterRdsDbInstance DeregisterVolume DescribeAgentVersions DescribeApps DescribeCommands DescribeDeployments DescribeEcsClusters DescribeElasticIps DescribeElasticLoadBalancers DescribeInstances DescribeLayers DescribeLoadBasedAutoScaling DescribeMyUserProfile DescribePermissions DescribeRaidArrays DescribeRdsDbInstances DescribeServiceErrors DescribeStackProvisioningParameters DescribeStacks DescribeStackSummary DescribeTimeBasedAutoScaling DescribeUserProfiles DescribeVolumes DetachElasticLoadBalancer DisassociateElasticIp GetHostnameSuggestion GrantAccess RebootInstance RegisterEcsCluster RegisterElasticIp RegisterInstance RegisterRdsDbInstance RegisterVolume SetLoadBasedAutoScaling SetPermission SetTimeBasedAutoScaling StartInstance StartStack StopInstance StopStack UnassignInstance UnassignVolume UpdateApp UpdateElasticIp UpdateInstance UpdateLayer UpdateMyUserProfile UpdateRdsDbInstance UpdateStack UpdateUserProfile UpdateVolume / }
 
@@ -434,14 +442,13 @@ B<Chef Versions>
 
 When you call CreateStack, CloneStack, or UpdateStack we recommend you
 use the C<ConfigurationManager> parameter to specify the Chef version.
-The recommended value for Linux stacks, which is also the default
-value, is currently 11.10. Windows stacks use Chef 12.2. For more
-information, see Chef Versions.
+The recommended value for Linux stacks is currently 12 (the default is
+11.4). Windows stacks use Chef 12.2. For more information, see Chef
+Versions.
 
-You can also specify Chef 11.4 or Chef 0.9 for your Linux stack.
-However, Chef 0.9 has been deprecated. We do not recommend using Chef
-0.9 for new stacks, and we recommend migrating your existing Chef 0.9
-stacks to Chef 11.10 as soon as possible.
+You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
+recommend migrating your existing Linux stacks to Chef 12 as soon as
+possible.
 
 =head1 METHODS
 

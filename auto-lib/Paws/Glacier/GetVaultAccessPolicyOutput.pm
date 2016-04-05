@@ -16,7 +16,9 @@ Paws::Glacier::GetVaultAccessPolicyOutput
 
 =head2 Policy => L<Paws::Glacier::VaultAccessPolicy>
 
-  Contains the returned vault access policy as a JSON string.
+Contains the returned vault access policy as a JSON string.
+
+
 
 
 =cut

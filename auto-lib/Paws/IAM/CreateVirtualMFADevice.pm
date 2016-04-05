@@ -36,17 +36,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Path => Str
 
-  The path for the virtual MFA device. For more information about paths,
+The path for the virtual MFA device. For more information about paths,
 see IAM Identifiers in the I<Using IAM> guide.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
 
+
 =head2 B<REQUIRED> VirtualMFADeviceName => Str
 
-  The name of the virtual MFA device. Use with path to uniquely identify
+The name of the virtual MFA device. Use with path to uniquely identify
 a virtual MFA device.
+
 
 
 

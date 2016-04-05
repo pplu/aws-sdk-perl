@@ -1,4 +1,4 @@
-package Paws::Net::QueryCaller {
+package Paws::Net::QueryCaller;
   use Moose::Role;
   use HTTP::Request::Common;
   use POSIX qw(strftime); 
@@ -89,12 +89,12 @@ package Paws::Net::QueryCaller {
                            $self->_to_querycaller_params($call) 
     });
 
-    $request->content($self->generate_content_from_parameters($request));
+    if (not $self->does('Paws::Net::V2Signature')){
+      $request->content($self->generate_content_from_parameters($request));
+    }
 
     $self->sign($request);
 
     return $request;
   }
-}
-
 1;

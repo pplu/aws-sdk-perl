@@ -10,6 +10,7 @@ package Paws::S3::GetBucketNotificationConfiguration;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::NotificationConfiguration');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +24,9 @@ Paws::S3::NotificationConfiguration
 
 =head2 B<REQUIRED> Bucket => Str
 
-  Name of the buket to get the notification configuration for.
+Name of the bucket to get the notification configuration for.
+
+
 
 
 =cut

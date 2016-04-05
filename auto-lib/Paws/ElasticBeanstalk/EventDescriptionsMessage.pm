@@ -17,13 +17,17 @@ Paws::ElasticBeanstalk::EventDescriptionsMessage
 
 =head2 Events => ArrayRef[L<Paws::ElasticBeanstalk::EventDescription>]
 
-  A list of EventDescription.
+A list of EventDescription.
+
+
 
 =head2 NextToken => Str
 
-  If returned, this indicates that there are more results to obtain. Use
+If returned, this indicates that there are more results to obtain. Use
 this token in the next DescribeEvents call to get the next batch of
 events.
+
+
 
 
 =cut

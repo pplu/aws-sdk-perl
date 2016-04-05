@@ -1,5 +1,8 @@
 package Paws::CloudFront::ViewerCertificate;
   use Moose;
+  has ACMCertificateArn => (is => 'ro', isa => 'Str');
+  has Certificate => (is => 'ro', isa => 'Str');
+  has CertificateSource => (is => 'ro', isa => 'Str');
   has CloudFrontDefaultCertificate => (is => 'ro', isa => 'Bool');
   has IAMCertificateId => (is => 'ro', isa => 'Str');
   has MinimumProtocolVersion => (is => 'ro', isa => 'Str');
@@ -23,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudFront::ViewerCertificate object:
 
-  $service_obj->Method(Att1 => { CloudFrontDefaultCertificate => $value, ..., SSLSupportMethod => $value  });
+  $service_obj->Method(Att1 => { ACMCertificateArn => $value, ..., SSLSupportMethod => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront::ViewerCertificate object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CloudFrontDefaultCertificate
+  $result->Att1->ACMCertificateArn
 
 =head1 DESCRIPTION
 
@@ -40,12 +43,34 @@ this distribution.
 =head1 ATTRIBUTES
 
 
+=head2 ACMCertificateArn => Str
+
+  If you want viewers to use HTTPS to request your objects and you're
+using an alternate domain name in your object URLs (for example,
+https://example.com/logo.jpg), specify the ACM certificate ARN of the
+custom viewer certificate for this distribution. Specify either this
+value, IAMCertificateId, or CloudFrontDefaultCertificate.
+
+
+=head2 Certificate => Str
+
+  Note: this field is deprecated. Please use one of [ACMCertificateArn,
+IAMCertificateId, CloudFrontDefaultCertificate].
+
+
+=head2 CertificateSource => Str
+
+  Note: this field is deprecated. Please use one of [ACMCertificateArn,
+IAMCertificateId, CloudFrontDefaultCertificate].
+
+
 =head2 CloudFrontDefaultCertificate => Bool
 
   If you want viewers to use HTTPS to request your objects and you're
 using the CloudFront domain name of your distribution in your object
 URLs (for example, https://d111111abcdef8.cloudfront.net/logo.jpg), set
-to true. Omit this value if you are setting an IAMCertificateId.
+to true. Omit this value if you are setting an ACMCertificateArn or
+IAMCertificateId.
 
 
 =head2 IAMCertificateId => Str
@@ -54,7 +79,7 @@ to true. Omit this value if you are setting an IAMCertificateId.
 using an alternate domain name in your object URLs (for example,
 https://example.com/logo.jpg), specify the IAM certificate identifier
 of the custom viewer certificate for this distribution. Specify either
-this value or CloudFrontDefaultCertificate.
+this value, ACMCertificateArn, or CloudFrontDefaultCertificate.
 
 
 =head2 MinimumProtocolVersion => Str

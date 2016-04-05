@@ -37,15 +37,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-  One or more filters.
+One or more filters.
 
 =over
 
@@ -100,6 +101,21 @@ C<attachment.attachment-id> - The ID of the interface attachment.
 
 =item *
 
+C<attachment.attach.time> - The time that the network interface was
+attached to an instance.
+
+=item *
+
+C<attachment.delete-on-termination> - Indicates whether the attachment
+is deleted when an instance is terminated.
+
+=item *
+
+C<attachment.device-index> - The device index to which the network
+interface is attached.
+
+=item *
+
 C<attachment.instance-id> - The ID of the instance to which the network
 interface is attached.
 
@@ -110,23 +126,13 @@ the network interface is attached.
 
 =item *
 
-C<attachment.device-index> - The device index to which the network
-interface is attached.
+C<attachment.nat-gateway-id> - The ID of the NAT gateway to which the
+network interface is attached.
 
 =item *
 
 C<attachment.status> - The status of the attachment (C<attaching> |
 C<attached> | C<detaching> | C<detached>).
-
-=item *
-
-C<attachment.attach.time> - The time that the network interface was
-attached to an instance.
-
-=item *
-
-C<attachment.delete-on-termination> - Indicates whether the attachment
-is deleted when an instance is terminated.
 
 =item *
 
@@ -184,8 +190,8 @@ Scaling, and so on).
 C<source-desk-check> - Indicates whether the network interface performs
 source/destination checking. A value of C<true> means checking is
 enabled, and C<false> means checking is disabled. The value must be
-C<false> for the network interface to perform Network Address
-Translation (NAT) in your VPC.
+C<false> for the network interface to perform network address
+translation (NAT) in your VPC.
 
 =item *
 
@@ -226,11 +232,13 @@ C<vpc-id> - The ID of the VPC for the network interface.
 
 
 
+
 =head2 NetworkInterfaceIds => ArrayRef[Str]
 
-  One or more network interface IDs.
+One or more network interface IDs.
 
 Default: Describes all your network interfaces.
+
 
 
 

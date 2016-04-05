@@ -16,12 +16,16 @@ Paws::CloudHSM::ListHapgsResponse
 
 =head2 B<REQUIRED> HapgList => ArrayRef[Str]
 
-  The list of high-availability partition groups.
+The list of high-availability partition groups.
+
+
 
 =head2 NextToken => Str
 
-  If not null, more results are available. Pass this value to ListHapgs
+If not null, more results are available. Pass this value to ListHapgs
 to retrieve the next set of items.
+
+
 
 
 =cut

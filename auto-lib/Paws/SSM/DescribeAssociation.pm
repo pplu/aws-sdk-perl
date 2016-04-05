@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  The ID of the instance.
+The Windows Server instance ID.
+
 
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the SSM document.
+The name of the SSM document.
+
 
 
 

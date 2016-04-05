@@ -39,30 +39,32 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  Lambda function whose resource policy you want to remove a permission
+Lambda function whose resource policy you want to remove a permission
 from.
 
-You can specify an unqualified function name (for example, "Thumbnail")
-or you can specify Amazon Resource Name (ARN) of the function (for
-example, "arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS
-Lambda also allows you to specify only the account ID qualifier (for
-example, "account-id:Thumbnail"). Note that the length constraint
-applies only to the ARN. If you specify only the function name, it is
-limited to 64 character in length.
+You can specify a function name (for example, C<Thumbnail>) or you can
+specify Amazon Resource Name (ARN) of the function (for example,
+C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
+also allows you to specify a partial ARN (for example,
+C<account-id:Thumbnail>). Note that the length constraint applies only
+to the ARN. If you specify only the function name, it is limited to 64
+character in length.
+
 
 
 =head2 Qualifier => Str
 
-  You can specify this optional parameter to remove permission associated
-with a specific function version or function alias. The value of this
-paramter is the function version or alias name. If you don't specify
-this parameter, the API removes permission associated with the
+You can specify this optional parameter to remove permission associated
+with a specific function version or function alias. If you don't
+specify this parameter, the API removes permission associated with the
 unqualified function ARN.
+
 
 
 =head2 B<REQUIRED> StatementId => Str
 
-  Statement ID of the permission to remove.
+Statement ID of the permission to remove.
+
 
 
 

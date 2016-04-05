@@ -39,7 +39,14 @@ current resource record set.
 
 =head2 B<REQUIRED> Value => Str
 
-  The value of the C<Value> element for the current resource record set.
+  The current or new DNS record value, not to exceed 4,000 characters. In
+the case of a C<DELETE> action, if the current value does not match the
+actual value, an error is returned. For descriptions about how to
+format C<Value> for different record types, see Supported DNS Resource
+Record Types in the I<Amazon Route 53 Developer Guide>.
+
+You can specify more than one value for all record types except
+C<CNAME> and C<SOA>.
 
 
 

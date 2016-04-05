@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> GroupName => Str
 
-  The name of the group to update.
+The name of the group to update.
+
 
 
 =head2 B<REQUIRED> UserName => Str
 
-  The name of the user to remove.
+The name of the user to remove.
+
 
 
 

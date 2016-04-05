@@ -16,7 +16,9 @@ Paws::RedShift::CopyClusterSnapshotResult
 
 =head2 Snapshot => L<Paws::RedShift::Snapshot>
 
-  
+
+
+
 
 
 =cut

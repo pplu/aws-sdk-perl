@@ -41,42 +41,49 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Category => Str
 
-  The category of the custom action, such as a source action or a build
+The category of the custom action, such as a source action or a build
 action.
 
+Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">
 
 =head2 ConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]
 
-  The configuration properties for the custom action.
+The configuration properties for the custom action.
+
 
 
 =head2 B<REQUIRED> InputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
-  
+
+
 
 
 =head2 B<REQUIRED> OutputArtifactDetails => L<Paws::CodePipeline::ArtifactDetails>
 
-  
+
+
 
 
 =head2 B<REQUIRED> Provider => Str
 
-  The provider of the service used in the custom action, such as AWS
+The provider of the service used in the custom action, such as AWS
 CodeDeploy.
+
 
 
 =head2 Settings => L<Paws::CodePipeline::ActionTypeSettings>
 
-  
+
+
 
 
 =head2 B<REQUIRED> Version => Str
 
-  The version number of the custom action.
+The version number of the custom action.
 
 A newly-created custom action is always assigned a version number of
 C<1>. This is required.
+
 
 
 

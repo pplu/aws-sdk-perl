@@ -16,11 +16,15 @@ Paws::CloudWatchLogs::DescribeDestinationsResponse
 
 =head2 Destinations => ArrayRef[L<Paws::CloudWatchLogs::Destination>]
 
-  
+
+
+
 
 =head2 NextToken => Str
 
-  
+
+
+
 
 
 =cut

@@ -41,7 +41,7 @@ Information about a deployment configuration.
 
 =head2 CreateTime => Str
 
-  The time that the deployment configuration was created.
+  The time at which the deployment configuration was created.
 
 
 =head2 DeploymentConfigId => Str
@@ -56,8 +56,7 @@ Information about a deployment configuration.
 
 =head2 MinimumHealthyHosts => L<Paws::CodeDeploy::MinimumHealthyHosts>
 
-  Information about the number or percentage of minimum healthy
-instances.
+  Information about the number or percentage of minimum healthy instance.
 
 
 

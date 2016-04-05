@@ -15,8 +15,10 @@ Paws::CognitoIdentity::DeleteIdentitiesResponse
 
 =head2 UnprocessedIdentityIds => ArrayRef[L<Paws::CognitoIdentity::UnprocessedIdentityId>]
 
-  An array of UnprocessedIdentityId objects, each of which contains an
+An array of UnprocessedIdentityId objects, each of which contains an
 ErrorCode and IdentityId.
+
+
 
 
 =cut

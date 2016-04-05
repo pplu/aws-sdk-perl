@@ -67,6 +67,22 @@ package [% c.api %];
   sub service { '[% c.service %]' }
   sub version { '[% c.version %]' }
   sub flattened_arrays { [% c.flattened_arrays %] }
+  has max_attempts => (is => 'ro', isa => 'Int', default => [% c.service_max_attempts %]);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => '[% c.service_retry.base %]', type => '[% c.service_retry.type %]', growth_factor => [% c.service_retry.growth_factor %] }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  [%- FOREACH key IN c.retry.policies.keys %]
+     [%- policy = c.retry.policies.$key.applies_when.response %]
+     [%- IF (policy.service_error_code) %]
+       sub { defined $_[0]->http_status and $_[0]->http_status == [% policy.http_status_code %] and $_[0]->code eq '[% policy.service_error_code %]' },
+     [%- ELSIF (policy.crc32body) %]
+       sub { $_[0]->code eq 'Crc32Error' },
+     [%- ELSE %]
+       [% THROW 'Unknown retry type' %]
+     [%- END %]
+  [%- END %]
+  ] });
 
   with 'Paws::API::Caller', '[% c.endpoint_role %]', '[% c.signature_role %]', '[% c.parameter_role %]', '[% c.response_role %]';
 

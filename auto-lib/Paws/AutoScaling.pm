@@ -3,6 +3,12 @@ package Paws::AutoScaling;
   sub service { 'autoscaling' }
   sub version { '2011-01-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -232,6 +238,11 @@ package Paws::AutoScaling;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::SetInstanceHealth', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SetInstanceProtection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::SetInstanceProtection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SuspendProcesses {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::SuspendProcesses', @_);
@@ -247,120 +258,154 @@ package Paws::AutoScaling;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::UpdateAutoScalingGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllAutoScalingGroups {
     my $self = shift;
 
     my $result = $self->DescribeAutoScalingGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->AutoScalingGroups };
+    my $params = {};
+    
+    $params->{ AutoScalingGroups } = $result->AutoScalingGroups;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->AutoScalingGroups };
+      
+      push @{ $params->{ AutoScalingGroups } }, @{ $result->AutoScalingGroups };
+      
     }
 
-    return 'Paws::AutoScaling::DescribeAutoScalingGroups'->_returns->new(AutoScalingGroups => $array);
+    return $self->new_with_coercions(Paws::AutoScaling::DescribeAutoScalingGroups->_returns, %$params);
   }
   sub DescribeAllAutoScalingInstances {
     my $self = shift;
 
     my $result = $self->DescribeAutoScalingInstances(@_);
-    my $array = [];
-    push @$array, @{ $result->AutoScalingInstances };
+    my $params = {};
+    
+    $params->{ AutoScalingInstances } = $result->AutoScalingInstances;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->AutoScalingInstances };
+      
+      push @{ $params->{ AutoScalingInstances } }, @{ $result->AutoScalingInstances };
+      
     }
 
-    return 'Paws::AutoScaling::DescribeAutoScalingInstances'->_returns->new(AutoScalingInstances => $array);
+    return $self->new_with_coercions(Paws::AutoScaling::DescribeAutoScalingInstances->_returns, %$params);
   }
   sub DescribeAllLaunchConfigurations {
     my $self = shift;
 
     my $result = $self->DescribeLaunchConfigurations(@_);
-    my $array = [];
-    push @$array, @{ $result->LaunchConfigurations };
+    my $params = {};
+    
+    $params->{ LaunchConfigurations } = $result->LaunchConfigurations;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->LaunchConfigurations };
+      
+      push @{ $params->{ LaunchConfigurations } }, @{ $result->LaunchConfigurations };
+      
     }
 
-    return 'Paws::AutoScaling::DescribeLaunchConfigurations'->_returns->new(LaunchConfigurations => $array);
+    return $self->new_with_coercions(Paws::AutoScaling::DescribeLaunchConfigurations->_returns, %$params);
   }
   sub DescribeAllNotificationConfigurations {
     my $self = shift;
 
     my $result = $self->DescribeNotificationConfigurations(@_);
-    my $array = [];
-    push @$array, @{ $result->NotificationConfigurations };
+    my $params = {};
+    
+    $params->{ NotificationConfigurations } = $result->NotificationConfigurations;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->NotificationConfigurations };
+      
+      push @{ $params->{ NotificationConfigurations } }, @{ $result->NotificationConfigurations };
+      
     }
 
-    return 'Paws::AutoScaling::DescribeNotificationConfigurations'->_returns->new(NotificationConfigurations => $array);
+    return $self->new_with_coercions(Paws::AutoScaling::DescribeNotificationConfigurations->_returns, %$params);
   }
   sub DescribeAllPolicies {
     my $self = shift;
 
     my $result = $self->DescribePolicies(@_);
-    my $array = [];
-    push @$array, @{ $result->ScalingPolicies };
+    my $params = {};
+    
+    $params->{ ScalingPolicies } = $result->ScalingPolicies;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->ScalingPolicies };
+      
+      push @{ $params->{ ScalingPolicies } }, @{ $result->ScalingPolicies };
+      
     }
 
-    return 'Paws::AutoScaling::DescribePolicies'->_returns->new(ScalingPolicies => $array);
+    return $self->new_with_coercions(Paws::AutoScaling::DescribePolicies->_returns, %$params);
   }
   sub DescribeAllScalingActivities {
     my $self = shift;
 
     my $result = $self->DescribeScalingActivities(@_);
-    my $array = [];
-    push @$array, @{ $result->Activities };
+    my $params = {};
+    
+    $params->{ Activities } = $result->Activities;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Activities };
+      
+      push @{ $params->{ Activities } }, @{ $result->Activities };
+      
     }
 
-    return 'Paws::AutoScaling::DescribeScalingActivities'->_returns->new(Activities => $array);
+    return $self->new_with_coercions(Paws::AutoScaling::DescribeScalingActivities->_returns, %$params);
   }
   sub DescribeAllScheduledActions {
     my $self = shift;
 
     my $result = $self->DescribeScheduledActions(@_);
-    my $array = [];
-    push @$array, @{ $result->ScheduledUpdateGroupActions };
+    my $params = {};
+    
+    $params->{ ScheduledUpdateGroupActions } = $result->ScheduledUpdateGroupActions;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->ScheduledUpdateGroupActions };
+      
+      push @{ $params->{ ScheduledUpdateGroupActions } }, @{ $result->ScheduledUpdateGroupActions };
+      
     }
 
-    return 'Paws::AutoScaling::DescribeScheduledActions'->_returns->new(ScheduledUpdateGroupActions => $array);
+    return $self->new_with_coercions(Paws::AutoScaling::DescribeScheduledActions->_returns, %$params);
   }
   sub DescribeAllTags {
     my $self = shift;
 
     my $result = $self->DescribeTags(@_);
-    my $array = [];
-    push @$array, @{ $result->Tags };
+    my $params = {};
+    
+    $params->{ Tags } = $result->Tags;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Tags };
+      
+      push @{ $params->{ Tags } }, @{ $result->Tags };
+      
     }
 
-    return 'Paws::AutoScaling::DescribeTags'->_returns->new(Tags => $array);
+    return $self->new_with_coercions(Paws::AutoScaling::DescribeTags->_returns, %$params);
   }
 
-  sub operations { qw/AttachInstances AttachLoadBalancers CompleteLifecycleAction CreateAutoScalingGroup CreateLaunchConfiguration CreateOrUpdateTags DeleteAutoScalingGroup DeleteLaunchConfiguration DeleteLifecycleHook DeleteNotificationConfiguration DeletePolicy DeleteScheduledAction DeleteTags DescribeAccountLimits DescribeAdjustmentTypes DescribeAutoScalingGroups DescribeAutoScalingInstances DescribeAutoScalingNotificationTypes DescribeLaunchConfigurations DescribeLifecycleHooks DescribeLifecycleHookTypes DescribeLoadBalancers DescribeMetricCollectionTypes DescribeNotificationConfigurations DescribePolicies DescribeScalingActivities DescribeScalingProcessTypes DescribeScheduledActions DescribeTags DescribeTerminationPolicyTypes DetachInstances DetachLoadBalancers DisableMetricsCollection EnableMetricsCollection EnterStandby ExecutePolicy ExitStandby PutLifecycleHook PutNotificationConfiguration PutScalingPolicy PutScheduledUpdateGroupAction RecordLifecycleActionHeartbeat ResumeProcesses SetDesiredCapacity SetInstanceHealth SuspendProcesses TerminateInstanceInAutoScalingGroup UpdateAutoScalingGroup / }
+
+  sub operations { qw/AttachInstances AttachLoadBalancers CompleteLifecycleAction CreateAutoScalingGroup CreateLaunchConfiguration CreateOrUpdateTags DeleteAutoScalingGroup DeleteLaunchConfiguration DeleteLifecycleHook DeleteNotificationConfiguration DeletePolicy DeleteScheduledAction DeleteTags DescribeAccountLimits DescribeAdjustmentTypes DescribeAutoScalingGroups DescribeAutoScalingInstances DescribeAutoScalingNotificationTypes DescribeLaunchConfigurations DescribeLifecycleHooks DescribeLifecycleHookTypes DescribeLoadBalancers DescribeMetricCollectionTypes DescribeNotificationConfigurations DescribePolicies DescribeScalingActivities DescribeScalingProcessTypes DescribeScheduledActions DescribeTags DescribeTerminationPolicyTypes DetachInstances DetachLoadBalancers DisableMetricsCollection EnableMetricsCollection EnterStandby ExecutePolicy ExitStandby PutLifecycleHook PutNotificationConfiguration PutScalingPolicy PutScheduledUpdateGroupAction RecordLifecycleActionHeartbeat ResumeProcesses SetDesiredCapacity SetInstanceHealth SetInstanceProtection SuspendProcesses TerminateInstanceInAutoScalingGroup UpdateAutoScalingGroup / }
 
 1;
 
@@ -405,6 +450,11 @@ Returns: nothing
 
   Attaches one or more EC2 instances to the specified Auto Scaling group.
 
+When you attach instances, Auto Scaling increases the desired capacity
+of the group by the number of instances being attached. If the number
+of instances being attached plus the desired capacity of the group
+exceeds the maximum size of the group, the operation fails.
+
 For more information, see Attach EC2 Instances to Your Auto Scaling
 Group in the I<Auto Scaling Developer Guide>.
 
@@ -426,41 +476,45 @@ For more information, see Attach a Load Balancer to Your Auto Scaling
 Group in the I<Auto Scaling Developer Guide>.
 
 
-=head2 CompleteLifecycleAction(AutoScalingGroupName => Str, LifecycleActionResult => Str, LifecycleActionToken => Str, LifecycleHookName => Str)
+=head2 CompleteLifecycleAction(AutoScalingGroupName => Str, LifecycleActionResult => Str, LifecycleHookName => Str, [InstanceId => Str, LifecycleActionToken => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CompleteLifecycleAction>
 
 Returns: a L<Paws::AutoScaling::CompleteLifecycleActionAnswer> instance
 
-  Completes the lifecycle action for the associated token initiated under
-the given lifecycle hook with the specified result.
+  Completes the lifecycle action for the specified token or instance with
+the specified result.
 
-This operation is a part of the basic sequence for adding a lifecycle
-hook to an Auto Scaling group:
+This step is a part of the procedure for adding a lifecycle hook to an
+Auto Scaling group:
 
 =over
 
-=item 1. Create a notification target. A target can be either an Amazon
-SQS queue or an Amazon SNS topic.
+=item 1. (Optional) Create a Lambda function and a rule that allows
+CloudWatch Events to invoke your Lambda function when Auto Scaling
+launches or terminates instances.
 
-=item 2. Create an IAM role. This role allows Auto Scaling to publish
-lifecycle notifications to the designated SQS queue or SNS topic.
+=item 2. (Optional) Create a notification target and an IAM role. The
+target can be either an Amazon SQS queue or an Amazon SNS topic. The
+role allows Auto Scaling to publish lifecycle notifications to the
+target.
 
-=item 3. Create the lifecycle hook. You can create a hook that acts
-when instances launch or when instances terminate.
+=item 3. Create the lifecycle hook. Specify whether the hook is used
+when the instances launch or terminate.
 
-=item 4. If necessary, record the lifecycle action heartbeat to keep
-the instance in a pending state.
+=item 4. If you need more time, record the lifecycle action heartbeat
+to keep the instance in a pending state.
 
-=item 5. B<Complete the lifecycle action>.
+=item 5. B<If you finish before the timeout period ends, complete the
+lifecycle action.>
 
 =back
 
-For more information, see Auto Scaling Pending State and Auto Scaling
-Terminating State in the I<Auto Scaling Developer Guide>.
+For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
+Developer Guide>.
 
 
-=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LoadBalancerNames => ArrayRef[Str], PlacementGroup => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
+=head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LoadBalancerNames => ArrayRef[Str], NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CreateAutoScalingGroup>
 
@@ -500,13 +554,6 @@ Returns: nothing
 
   Creates or updates tags for the specified Auto Scaling group.
 
-A tag is defined by its resource ID, resource type, key, value, and
-propagate flag. The value and the propagate flag are optional
-parameters. The only supported resource type is C<auto-scaling-group>,
-and the resource ID must be the name of the group. The
-C<PropagateAtLaunch> flag determines whether the tag is added to
-instances launched in the group. Valid values are C<true> or C<false>.
-
 When you specify a tag with a key that already exists, the operation
 overwrites the previous tag definition, and you do not get an error
 message.
@@ -523,11 +570,21 @@ Returns: nothing
 
   Deletes the specified Auto Scaling group.
 
-The group must have no instances and no scaling activities in progress.
+If the group has instances or scaling activities in progress, you must
+specify the option to force the deletion in order for it to succeed.
 
-To remove all instances before calling C<DeleteAutoScalingGroup>, call
-UpdateAutoScalingGroup to set the minimum and maximum size of the Auto
-Scaling group to zero.
+If the group has policies, deleting the group deletes the policies, the
+underlying alarm actions, and any alarm that no longer has an
+associated action.
+
+To remove instances from the Auto Scaling group before deleting it,
+call DetachInstances with the list of instances and the option to
+decrement the desired capacity so that Auto Scaling does not launch
+replacement instances.
+
+To terminate all instances before deleting the Auto Scaling group, call
+UpdateAutoScalingGroup and set the minimum size and desired capacity of
+the Auto Scaling group to zero.
 
 
 =head2 DeleteLaunchConfiguration(LaunchConfigurationName => Str)
@@ -572,6 +629,9 @@ Each argument is described in detail in: L<Paws::AutoScaling::DeletePolicy>
 Returns: nothing
 
   Deletes the specified Auto Scaling policy.
+
+Deleting a policy deletes the underlying alarm action, but does not
+delete the alarm, even if it no longer has an associated action.
 
 
 =head2 DeleteScheduledAction(ScheduledActionName => Str, [AutoScalingGroupName => Str])
@@ -779,8 +839,12 @@ Each argument is described in detail in: L<Paws::AutoScaling::DetachInstances>
 Returns: a L<Paws::AutoScaling::DetachInstancesAnswer> instance
 
   Removes one or more instances from the specified Auto Scaling group.
+
 After the instances are detached, you can manage them independently
 from the rest of the Auto Scaling group.
+
+If you do not specify the option to decrement the desired capacity,
+Auto Scaling launches instances to replace the ones that are detached.
 
 For more information, see Detach EC2 Instances from Your Auto Scaling
 Group in the I<Auto Scaling Developer Guide>.
@@ -832,8 +896,8 @@ Returns: a L<Paws::AutoScaling::EnterStandbyAnswer> instance
 
   Moves the specified instances into C<Standby> mode.
 
-For more information, see Auto Scaling InService State in the I<Auto
-Scaling Developer Guide>.
+For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
+Developer Guide>.
 
 
 =head2 ExecutePolicy(PolicyName => Str, [AutoScalingGroupName => Str, BreachThreshold => Num, HonorCooldown => Bool, MetricValue => Num])
@@ -853,8 +917,8 @@ Returns: a L<Paws::AutoScaling::ExitStandbyAnswer> instance
 
   Moves the specified instances out of C<Standby> mode.
 
-For more information, see Auto Scaling InService State in the I<Auto
-Scaling Developer Guide>.
+For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
+Developer Guide>.
 
 
 =head2 PutLifecycleHook(AutoScalingGroupName => Str, LifecycleHookName => Str, [DefaultResult => Str, HeartbeatTimeout => Int, LifecycleTransition => Str, NotificationMetadata => Str, NotificationTargetARN => Str, RoleARN => Str])
@@ -870,29 +934,33 @@ A lifecycle hook tells Auto Scaling that you want to perform an action
 on an instance that is not actively in service; for example, either
 when the instance launches or before the instance terminates.
 
-This operation is a part of the basic sequence for adding a lifecycle
-hook to an Auto Scaling group:
+This step is a part of the procedure for adding a lifecycle hook to an
+Auto Scaling group:
 
 =over
 
-=item 1. Create a notification target. A target can be either an Amazon
-SQS queue or an Amazon SNS topic.
+=item 1. (Optional) Create a Lambda function and a rule that allows
+CloudWatch Events to invoke your Lambda function when Auto Scaling
+launches or terminates instances.
 
-=item 2. Create an IAM role. This role allows Auto Scaling to publish
-lifecycle notifications to the designated SQS queue or SNS topic.
+=item 2. (Optional) Create a notification target and an IAM role. The
+target can be either an Amazon SQS queue or an Amazon SNS topic. The
+role allows Auto Scaling to publish lifecycle notifications to the
+target.
 
-=item 3. B<Create the lifecycle hook. You can create a hook that acts
-when instances launch or when instances terminate.>
+=item 3. B<Create the lifecycle hook. Specify whether the hook is used
+when the instances launch or terminate.>
 
-=item 4. If necessary, record the lifecycle action heartbeat to keep
-the instance in a pending state.
+=item 4. If you need more time, record the lifecycle action heartbeat
+to keep the instance in a pending state.
 
-=item 5. Complete the lifecycle action.
+=item 5. If you finish before the timeout period ends, complete the
+lifecycle action.
 
 =back
 
-For more information, see Auto Scaling Pending State and Auto Scaling
-Terminating State in the I<Auto Scaling Developer Guide>.
+For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
+Developer Guide>.
 
 If you exceed your maximum limit of lifecycle hooks, which by default
 is 50 per region, the call fails. For information about updating this
@@ -948,39 +1016,43 @@ For more information, see Scheduled Scaling in the I<Auto Scaling
 Developer Guide>.
 
 
-=head2 RecordLifecycleActionHeartbeat(AutoScalingGroupName => Str, LifecycleActionToken => Str, LifecycleHookName => Str)
+=head2 RecordLifecycleActionHeartbeat(AutoScalingGroupName => Str, LifecycleHookName => Str, [InstanceId => Str, LifecycleActionToken => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::RecordLifecycleActionHeartbeat>
 
 Returns: a L<Paws::AutoScaling::RecordLifecycleActionHeartbeatAnswer> instance
 
-  Records a heartbeat for the lifecycle action associated with a specific
-token. This extends the timeout by the length of time defined by the
-C<HeartbeatTimeout> parameter of PutLifecycleHook.
+  Records a heartbeat for the lifecycle action associated with the
+specified token or instance. This extends the timeout by the length of
+time defined using PutLifecycleHook.
 
-This operation is a part of the basic sequence for adding a lifecycle
-hook to an Auto Scaling group:
+This step is a part of the procedure for adding a lifecycle hook to an
+Auto Scaling group:
 
 =over
 
-=item 1. Create a notification target. A target can be either an Amazon
-SQS queue or an Amazon SNS topic.
+=item 1. (Optional) Create a Lambda function and a rule that allows
+CloudWatch Events to invoke your Lambda function when Auto Scaling
+launches or terminates instances.
 
-=item 2. Create an IAM role. This role allows Auto Scaling to publish
-lifecycle notifications to the designated SQS queue or SNS topic.
+=item 2. (Optional) Create a notification target and an IAM role. The
+target can be either an Amazon SQS queue or an Amazon SNS topic. The
+role allows Auto Scaling to publish lifecycle notifications to the
+target.
 
-=item 3. Create the lifecycle hook. You can create a hook that acts
-when instances launch or when instances terminate.
+=item 3. Create the lifecycle hook. Specify whether the hook is used
+when the instances launch or terminate.
 
-=item 4. B<If necessary, record the lifecycle action heartbeat to keep
-the instance in a pending state.>
+=item 4. B<If you need more time, record the lifecycle action heartbeat
+to keep the instance in a pending state.>
 
-=item 5. Complete the lifecycle action.
+=item 5. If you finish before the timeout period ends, complete the
+lifecycle action.
 
 =back
 
-For more information, see Auto Scaling Pending State and Auto Scaling
-Terminating State in the I<Auto Scaling Developer Guide>.
+For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
+Developer Guide>.
 
 
 =head2 ResumeProcesses(AutoScalingGroupName => Str, [ScalingProcesses => ArrayRef[Str]])
@@ -989,11 +1061,11 @@ Each argument is described in detail in: L<Paws::AutoScaling::ResumeProcesses>
 
 Returns: nothing
 
-  Resumes the specified suspended Auto Scaling processes for the
-specified Auto Scaling group. To resume specific processes, use the
-C<ScalingProcesses> parameter. To resume all processes, omit the
-C<ScalingProcesses> parameter. For more information, see Suspend and
-Resume Auto Scaling Processes in the I<Auto Scaling Developer Guide>.
+  Resumes the specified suspended Auto Scaling processes, or all
+suspended process, for the specified Auto Scaling group.
+
+For more information, see Suspending and Resuming Auto Scaling
+Processes in the I<Auto Scaling Developer Guide>.
 
 
 =head2 SetDesiredCapacity(AutoScalingGroupName => Str, DesiredCapacity => Int, [HonorCooldown => Bool])
@@ -1020,24 +1092,34 @@ For more information, see Health Checks in the I<Auto Scaling Developer
 Guide>.
 
 
+=head2 SetInstanceProtection(AutoScalingGroupName => Str, InstanceIds => ArrayRef[Str], ProtectedFromScaleIn => Bool)
+
+Each argument is described in detail in: L<Paws::AutoScaling::SetInstanceProtection>
+
+Returns: a L<Paws::AutoScaling::SetInstanceProtectionAnswer> instance
+
+  Updates the instance protection settings of the specified instances.
+
+For more information, see Instance Protection in the I<Auto Scaling
+Developer Guide>.
+
+
 =head2 SuspendProcesses(AutoScalingGroupName => Str, [ScalingProcesses => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::AutoScaling::SuspendProcesses>
 
 Returns: nothing
 
-  Suspends the specified Auto Scaling processes for the specified Auto
-Scaling group. To suspend specific processes, use the
-C<ScalingProcesses> parameter. To suspend all processes, omit the
-C<ScalingProcesses> parameter.
+  Suspends the specified Auto Scaling processes, or all processes, for
+the specified Auto Scaling group.
 
 Note that if you suspend either the C<Launch> or C<Terminate> process
 types, it can prevent other process types from functioning properly.
 
 To resume processes that have been suspended, use ResumeProcesses.
 
-For more information, see Suspend and Resume Auto Scaling Processes in
-the I<Auto Scaling Developer Guide>.
+For more information, see Suspending and Resuming Auto Scaling
+Processes in the I<Auto Scaling Developer Guide>.
 
 
 =head2 TerminateInstanceInAutoScalingGroup(InstanceId => Str, ShouldDecrementDesiredCapacity => Bool)
@@ -1053,7 +1135,7 @@ This call simply makes a termination request. The instance is not
 terminated immediately.
 
 
-=head2 UpdateAutoScalingGroup(AutoScalingGroupName => Str, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, LaunchConfigurationName => Str, MaxSize => Int, MinSize => Int, PlacementGroup => Str, TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
+=head2 UpdateAutoScalingGroup(AutoScalingGroupName => Str, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, LaunchConfigurationName => Str, MaxSize => Int, MinSize => Int, NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::UpdateAutoScalingGroup>
 

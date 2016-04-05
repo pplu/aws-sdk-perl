@@ -10,7 +10,7 @@ package Paws::Lambda::GetFunction;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/functions/{FunctionName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::GetFunctionResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetFunctionResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,27 +38,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FunctionName => Str
 
-  The Lambda function name.
+The Lambda function name.
 
-You can specify an unqualified function name (for example, "Thumbnail")
-or you can specify Amazon Resource Name (ARN) of the function (for
-example, "arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS
-Lambda also allows you to specify only the account ID qualifier (for
-example, "account-id:Thumbnail"). Note that the length constraint
-applies only to the ARN. If you specify only the function name, it is
-limited to 64 character in length.
+You can specify a function name (for example, C<Thumbnail>) or you can
+specify Amazon Resource Name (ARN) of the function (for example,
+C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
+also allows you to specify a partial ARN (for example,
+C<account-id:Thumbnail>). Note that the length constraint applies only
+to the ARN. If you specify only the function name, it is limited to 64
+character in length.
+
 
 
 =head2 Qualifier => Str
 
-  Using this optional parameter to specify a function version or alias
+Using this optional parameter to specify a function version or an alias
 name. If you specify function version, the API uses qualified function
 ARN for the request and returns information about the specific Lambda
-function version. If you specify alias name, the API uses alias ARN and
-returns information about the function version to which the alias
-points. If you don't provide this parameter, the API uses unqualified
-function ARN and returns information about the $LATEST version of the
-Lambda function.
+function version. If you specify an alias name, the API uses the alias
+ARN and returns information about the function version to which the
+alias points. If you don't provide this parameter, the API uses
+unqualified function ARN and returns information about the C<$LATEST>
+version of the Lambda function.
+
 
 
 

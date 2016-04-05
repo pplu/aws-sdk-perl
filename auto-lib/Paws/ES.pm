@@ -4,6 +4,12 @@ package Paws::ES;
   sub service { 'es' }
   sub version { '2015-01-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
@@ -58,6 +64,8 @@ package Paws::ES;
     my $call_object = $self->new_with_coercions('Paws::ES::UpdateElasticsearchDomainConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/AddTags CreateElasticsearchDomain DeleteElasticsearchDomain DescribeElasticsearchDomain DescribeElasticsearchDomainConfig DescribeElasticsearchDomains ListDomainNames ListTags RemoveTags UpdateElasticsearchDomainConfig / }
 

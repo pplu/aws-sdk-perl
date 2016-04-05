@@ -1,8 +1,10 @@
-package Paws::Net::RestXmlCaller {
+package Paws::Net::RestXmlCaller;
   use Moose::Role;
   use HTTP::Request::Common;
-  use POSIX qw(strftime); 
+  use POSIX qw(strftime);
   use URI::Template;
+  use URI::Escape;
+  use Moose::Util;
 
   sub array_flatten_string {
     my $self = shift;
@@ -19,7 +21,7 @@ package Paws::Net::RestXmlCaller {
     my ($self, $params) = @_;
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-      my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
+      my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInQuery')?$params->meta->get_attribute($att)->query_name:$att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
 
@@ -51,25 +53,36 @@ package Paws::Net::RestXmlCaller {
 
   sub _call_uri {
     my ($self, $call) = @_;
-    my $uri_template = $call->meta->name->_api_uri;
-    my $t = URI::Template->new( $uri_template );
+    my $uri_template = $call->meta->name->_api_uri; # in auto-lib/<service>/<method>.pm
 
+    my @attribs = $uri_template =~ /{(.+?)}/g;
     my $vars = {};
-    my $qparams = {};
 
-    foreach my $attribute ($call->meta->get_all_attributes) {
-      my $att_name = $attribute->name;
+    foreach my $attrib (@attribs)
+    {
+      my ($att_name, $greedy) = $attrib =~ /(\w+)(\+?)/;
+      my $attribute = $call->meta->get_attribute($att_name);
       if ($attribute->does('Paws::API::Attribute::Trait::ParamInURI')) {
-        $vars->{ $attribute->uri_name } = $call->$att_name
-      }
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
-        $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
+          if ($greedy) {
+              $vars->{ $att_name } =  uri_escape_utf8($call->$att_name, q[^A-Za-z0-9\-\._~/]);
+              $uri_template =~ s{$att_name\+}{$greedy$att_name}g;
+          } else {
+              $vars->{ $att_name } = $call->$att_name;
+          }
       }
     }
-
+    my $t = URI::Template->new( $uri_template );
     my $uri = $t->process($vars);
-    $uri->query_form(%$qparams);
-    return $uri->as_string;
+    return $uri;
+  }
+
+  sub _to_header_params {
+    my ($self, $request, $call) = @_;
+    foreach my $attribute ($call->meta->get_all_attributes) {
+      if ($attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and $attribute->has_value($call)) {
+        $request->headers->header( $attribute->header_name => $attribute->get_value($call) );
+      }
+    }
   }
 
   # URI escaping adapted from URI::Escape
@@ -86,6 +99,41 @@ package Paws::Net::RestXmlCaller {
     return $str;
   }
 
+  sub _to_xml {
+    my ($self, $value) = @_;
+
+    my $xml = '';
+    foreach my $attribute ($value->meta->get_all_attributes) {
+      my $att_name = $attribute->name;
+      if (Moose::Util::find_meta($attribute->type_constraint->name)) { 
+        $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($value)), $att_name;
+      } else {
+        $xml .= sprintf '<%s>%s</%s>', $att_name, $attribute->get_value($value), $att_name;
+      }
+    }
+    return $xml; 
+  }
+
+  sub _to_xml_body {
+    my ($self, $call) = @_;
+
+    my $xml = '';
+    foreach my $attribute ($call->meta->get_all_attributes) {
+      if ($attribute->has_value($call) and 
+          not $attribute->does('Paws::API::Attribute::Trait::ParamInHeader') and
+          not $attribute->does('Paws::API::Attribute::Trait::ParamInQuery') and
+          not $attribute->does('Paws::API::Attribute::Trait::ParamInURI') and
+          not $attribute->does('Paws::API::Attribute::Trait::ParamInBody')
+         ) {
+        my $att_name = $attribute->name;
+        $xml .= sprintf '<%s>%s</%s>', $att_name, $self->_to_xml($attribute->get_value($call)), $att_name;
+      }
+    }
+
+    return undef if (not $xml);
+    return $xml;
+  }
+
   sub prepare_request_for_call {
     my ($self, $call) = @_;
 
@@ -97,23 +145,42 @@ package Paws::Net::RestXmlCaller {
       $request = Paws::Net::APIRequest->new();
     }
 
-    my $uri = $self->_call_uri($call);
-    $request->uri($uri);
+    my $uri = $self->_call_uri($call); #in RestXmlCaller
 
-    my $url = $self->_api_endpoint . $uri;
+    my $qparams = {};
+    foreach my $attribute ($call->meta->get_all_attributes) {
+      my $att_name = $attribute->name;
+      if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
+        $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
+      }
+    }
+    $uri->query_form(%$qparams);
+
+    $request->uri($uri->as_string);
+
+    my $url = $self->_api_endpoint . $uri; #in Paws::API::EndPointResolver
+
+    #TODO: I'm not sure if any of the REST style APIs want things as query parameters
     $request->parameters({ $self->_to_querycaller_params($call) });
-    $request->url($url);
 
+    $request->url($url);
     $request->method($call->_api_method);
 
-    #$request->headers->header( 'content-length' => $self->content_length ) if $content;
-    #$request->headers->header( 'content-type'   => $self->content_type ) if $content;
-    #$request->content();
+    if (my $xml_body = $self->_to_xml_body($call)){
+      $request->content($xml_body);
+    }
+
+    $self->_to_header_params($request, $call);
+
+    if ($call->can('_stream_param')) {
+      my $param_name = $call->_stream_param;
+      $request->content($call->$param_name);
+      $request->headers->header( 'content-length' => $request->content_length );
+      #$request->headers->header( 'content-type'   => $self->content_type );
+    }
 
     $self->sign($request);
 
     return $request;
   }
-}
-
 1;

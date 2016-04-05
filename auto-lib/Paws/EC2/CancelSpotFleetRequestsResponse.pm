@@ -17,13 +17,17 @@ Paws::EC2::CancelSpotFleetRequestsResponse
 
 =head2 SuccessfulFleetRequests => ArrayRef[L<Paws::EC2::CancelSpotFleetRequestsSuccessItem>]
 
-  Information about the Spot fleet requests that are successfully
+Information about the Spot fleet requests that are successfully
 canceled.
+
+
 
 =head2 UnsuccessfulFleetRequests => ArrayRef[L<Paws::EC2::CancelSpotFleetRequestsErrorItem>]
 
-  Information about the Spot fleet requests that are not successfully
+Information about the Spot fleet requests that are not successfully
 canceled.
+
+
 
 
 =cut

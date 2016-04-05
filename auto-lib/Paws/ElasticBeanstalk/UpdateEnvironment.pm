@@ -1,9 +1,11 @@
 
 package Paws::ElasticBeanstalk::UpdateEnvironment;
   use Moose;
+  has ApplicationName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
+  has GroupName => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]');
   has SolutionStackName => (is => 'ro', isa => 'Str');
@@ -41,15 +43,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 ApplicationName => Str
+
+The name of the application with which the environment is associated.
+
+
+
 =head2 Description => Str
 
-  If this parameter is specified, AWS Elastic Beanstalk updates the
+If this parameter is specified, AWS Elastic Beanstalk updates the
 description of this environment.
+
 
 
 =head2 EnvironmentId => Str
 
-  The ID of the environment to update.
+The ID of the environment to update.
 
 If no environment with this ID exists, AWS Elastic Beanstalk returns an
 C<InvalidParameterValue> error.
@@ -59,9 +68,10 @@ If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
 
+
 =head2 EnvironmentName => Str
 
-  The name of the environment to update. If no environment with this name
+The name of the environment to update. If no environment with this name
 exists, AWS Elastic Beanstalk returns an C<InvalidParameterValue>
 error.
 
@@ -70,46 +80,62 @@ If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
 
+
+=head2 GroupName => Str
+
+The name of the group to which the target environment belongs. Specify
+a group name only if the environment's name is specified in an
+environment manifest and not with the environment name or environment
+ID parameters. See Environment Manifest (env.yaml) for details.
+
+
+
 =head2 OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
-  If specified, AWS Elastic Beanstalk updates the configuration set
+If specified, AWS Elastic Beanstalk updates the configuration set
 associated with the running environment and sets the specified
 configuration options to the requested value.
 
 
+
 =head2 OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>]
 
-  A list of custom user-defined configuration options to remove from the
+A list of custom user-defined configuration options to remove from the
 configuration set for this environment.
+
 
 
 =head2 SolutionStackName => Str
 
-  This specifies the platform version that the environment will run after
+This specifies the platform version that the environment will run after
 the environment is updated.
+
 
 
 =head2 TemplateName => Str
 
-  If this parameter is specified, AWS Elastic Beanstalk deploys this
+If this parameter is specified, AWS Elastic Beanstalk deploys this
 configuration template to the environment. If no such configuration
 template is found, AWS Elastic Beanstalk returns an
 C<InvalidParameterValue> error.
 
 
+
 =head2 Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>
 
-  This specifies the tier to use to update the environment.
+This specifies the tier to use to update the environment.
 
 Condition: At this time, if you change the tier version, name, or type,
 AWS Elastic Beanstalk returns C<InvalidParameterValue> error.
 
 
+
 =head2 VersionLabel => Str
 
-  If this parameter is specified, AWS Elastic Beanstalk deploys the named
+If this parameter is specified, AWS Elastic Beanstalk deploys the named
 application version to the environment. If no such application version
 is found, returns an C<InvalidParameterValue> error.
+
 
 
 

@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> NewName => Str
 
-  
+The new name for the repository.
+
 
 
 =head2 B<REQUIRED> OldName => Str
 
-  
+The existing name of the repository.
+
 
 
 

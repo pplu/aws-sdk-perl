@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ActivityType => L<Paws::SimpleWorkflow::ActivityType>
 
-  The activity type to deprecate.
+The activity type to deprecate.
+
 
 
 =head2 B<REQUIRED> Domain => Str
 
-  The name of the domain in which the activity type is registered.
+The name of the domain in which the activity type is registered.
+
 
 
 

@@ -12,7 +12,7 @@ package Paws::ApiGateway::CreateApiKey;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/apikeys');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::ApiKey');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateApiKeyResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -40,22 +40,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  The description of the ApiKey.
+The description of the ApiKey.
+
 
 
 =head2 Enabled => Bool
 
-  Specifies whether the ApiKey can be used by callers.
+Specifies whether the ApiKey can be used by callers.
+
 
 
 =head2 Name => Str
 
-  The name of the ApiKey.
+The name of the ApiKey.
+
 
 
 =head2 StageKeys => ArrayRef[L<Paws::ApiGateway::StageKey>]
 
-  Specifies whether the ApiKey can be used by callers.
+Specifies whether the ApiKey can be used by callers.
+
 
 
 

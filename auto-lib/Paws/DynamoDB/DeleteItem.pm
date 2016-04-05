@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ConditionalOperator => Str
 
-  This is a legacy parameter, for backward compatibility. New
+This is a legacy parameter, for backward compatibility. New
 applications should use I<ConditionExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -71,10 +71,11 @@ The operation will succeed only if the entire map evaluates to true.
 
 This parameter does not support attributes of type List or Map.
 
+Valid values are: C<"AND">, C<"OR">
 
 =head2 ConditionExpression => Str
 
-  A condition that must be satisfied in order for a conditional
+A condition that must be satisfied in order for a conditional
 I<DeleteItem> to succeed.
 
 An expression can contain any of the following:
@@ -90,8 +91,7 @@ These function names are case-sensitive.
 
 =item *
 
-Comparison operators: C< = | E<lt>E<gt> | E<lt> | E<gt> | E<lt>= |
-E<gt>= | BETWEEN | IN>
+Comparison operators: C< = | | | | = | = | BETWEEN | IN>
 
 =item *
 
@@ -106,9 +106,10 @@ I<ConditionExpression> replaces the legacy I<ConditionalOperator> and
 I<Expected> parameters.
 
 
+
 =head2 Expected => L<Paws::DynamoDB::ExpectedAttributeMap>
 
-  This is a legacy parameter, for backward compatibility. New
+This is a legacy parameter, for backward compatibility. New
 applications should use I<ConditionExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -379,9 +380,10 @@ I<ValidationException> exception.
 This parameter does not support attributes of type List or Map.
 
 
+
 =head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
-  One or more substitution tokens for attribute names in an expression.
+One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
@@ -446,9 +448,10 @@ For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
+
 =head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
 
-  One or more values that can be substituted in an expression.
+One or more values that can be substituted in an expression.
 
 Use the B<:> (colon) character in an expression to dereference an
 attribute value. For example, suppose that you wanted to check whether
@@ -470,33 +473,37 @@ For more information on expression attribute values, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
 
 
+
 =head2 B<REQUIRED> Key => L<Paws::DynamoDB::Key>
 
-  A map of attribute names to I<AttributeValue> objects, representing the
+A map of attribute names to I<AttributeValue> objects, representing the
 primary key of the item to delete.
 
 For the primary key, you must provide all of the attributes. For
-example, with a hash type primary key, you only need to provide the
-hash attribute. For a hash-and-range type primary key, you must provide
-both the hash attribute and the range attribute.
+example, with a simple primary key, you only need to provide a value
+for the partition key. For a composite primary key, you must provide
+values for both the partition key and the sort key.
+
 
 
 =head2 ReturnConsumedCapacity => Str
 
-  
 
+
+Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
 =head2 ReturnItemCollectionMetrics => Str
 
-  Determines whether item collection metrics are returned. If set to
+Determines whether item collection metrics are returned. If set to
 C<SIZE>, the response includes statistics about item collections, if
 any, that were modified during the operation are returned in the
 response. If set to C<NONE> (the default), no statistics are returned.
 
+Valid values are: C<"SIZE">, C<"NONE">
 
 =head2 ReturnValues => Str
 
-  Use I<ReturnValues> if you want to get the item attributes as they
+Use I<ReturnValues> if you want to get the item attributes as they
 appeared before they were deleted. For I<DeleteItem>, the valid values
 are:
 
@@ -515,10 +522,12 @@ C<ALL_OLD> - The content of the old item is returned.
 =back
 
 
+Valid values are: C<"NONE">, C<"ALL_OLD">, C<"UPDATED_OLD">, C<"ALL_NEW">, C<"UPDATED_NEW">
 
 =head2 B<REQUIRED> TableName => Str
 
-  The name of the table from which to delete the item.
+The name of the table from which to delete the item.
+
 
 
 

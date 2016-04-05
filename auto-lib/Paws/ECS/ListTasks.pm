@@ -42,38 +42,42 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Cluster => Str
 
-  The short name or full Amazon Resource Name (ARN) of the cluster that
+The short name or full Amazon Resource Name (ARN) of the cluster that
 hosts the tasks to list. If you do not specify a cluster, the default
 cluster is assumed..
 
 
+
 =head2 ContainerInstance => Str
 
-  The container instance ID or full Amazon Resource Name (ARN) of the
+The container instance ID or full Amazon Resource Name (ARN) of the
 container instance with which to filter the C<ListTasks> results.
 Specifying a C<containerInstance> limits the results to tasks that
 belong to that container instance.
 
 
+
 =head2 DesiredStatus => Str
 
-  The task status with which to filter the C<ListTasks> results.
+The task status with which to filter the C<ListTasks> results.
 Specifying a C<desiredStatus> of C<STOPPED> limits the results to tasks
 that are in the C<STOPPED> status, which can be useful for debugging
 tasks that are not starting properly or have died or finished. The
 default status filter is C<RUNNING>.
 
+Valid values are: C<"RUNNING">, C<"PENDING">, C<"STOPPED">
 
 =head2 Family => Str
 
-  The name of the family with which to filter the C<ListTasks> results.
+The name of the family with which to filter the C<ListTasks> results.
 Specifying a C<family> limits the results to tasks that belong to that
 family.
 
 
+
 =head2 MaxResults => Int
 
-  The maximum number of task results returned by C<ListTasks> in
+The maximum number of task results returned by C<ListTasks> in
 paginated output. When this parameter is used, C<ListTasks> only
 returns C<maxResults> results in a single page along with a
 C<nextToken> response element. The remaining results of the initial
@@ -83,27 +87,31 @@ this parameter is not used, then C<ListTasks> returns up to 100 results
 and a C<nextToken> value if applicable.
 
 
+
 =head2 NextToken => Str
 
-  The C<nextToken> value returned from a previous paginated C<ListTasks>
+The C<nextToken> value returned from a previous paginated C<ListTasks>
 request where C<maxResults> was used and the results exceeded the value
 of that parameter. Pagination continues from the end of the previous
 results that returned the C<nextToken> value. This value is C<null>
 when there are no more results to return.
 
 
+
 =head2 ServiceName => Str
 
-  The name of the service with which to filter the C<ListTasks> results.
+The name of the service with which to filter the C<ListTasks> results.
 Specifying a C<serviceName> limits the results to tasks that belong to
 that service.
 
 
+
 =head2 StartedBy => Str
 
-  The C<startedBy> value with which to filter the task results.
+The C<startedBy> value with which to filter the task results.
 Specifying a C<startedBy> value limits the results to tasks that were
 started with that value.
+
 
 
 

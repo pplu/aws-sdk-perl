@@ -1,4 +1,4 @@
-package Paws::API::Caller {
+package Paws::API::Caller;
   use Moose::Role;
   use Carp;
   use Paws::Net::APIRequest;
@@ -19,19 +19,23 @@ package Paws::API::Caller {
 
     Paws->load_class($class);
     my %p;
-    foreach my $att (keys %params){
-      my $att_meta = $class->meta->find_attribute_by_name($att);
 
-      if ($class->does('Paws::API::StrToObjMapParser')) {
-        my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
-        Paws->load_class($subtype);
-        $p{ Map }->{ $att } = $subtype->new(%{ $params{ $att } });
-      } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
-        $p{ Map }->{ $att } = $params{ $att };
+    if ($class->does('Paws::API::StrToObjMapParser')) {
+      my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
+      if (my ($array_of) = ($subtype =~ m/^ArrayRef\[(.*?)\]$/)){
+        $p{ Map } = { map { $_ => [ map { $self->new_with_coercions("$array_of", %$_) } @{ $params{ $_ } } ] } keys %params };
       } else {
+        $p{ Map } = { map { $_ => $self->new_with_coercions("$subtype", %{ $params{ $_ } }) } keys %params };
+      }
+    } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
+      $p{ Map } = { %params };
+    } else {
+      foreach my $att (keys %params){
+        my $att_meta = $class->meta->find_attribute_by_name($att);
+  
         croak "$class doesn't have an $att" if (not defined $att_meta);
         my $type = $att_meta->type_constraint;
-
+  
         if ($type eq 'Bool') {
           $p{ $att } = ($params{ $att } == 1)?1:0;
         } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
@@ -90,14 +94,43 @@ package Paws::API::Caller {
   sub handle_response {
     my ($self, $call_object, $http_status, $content, $headers) = @_;
 
+    my $ret_class = $call_object->meta->name->_returns;
+    my $has_streaming = 0;
+    if (defined $ret_class){
+      Paws->load_class($ret_class);
+      $has_streaming = $ret_class->can('_stream_param');
+    }
+
     my $unserialized_struct;
-    $unserialized_struct = $self->unserialize_response( $content );
+    if ($has_streaming) {
+      $unserialized_struct = $self->unserialize_body_response($ret_class, $http_status, $content, $headers);
+    } else {
+      $unserialized_struct = $self->unserialize_response( $content );
+    }
+
+    if (defined $headers->{ 'x-amz-crc32' }) {
+      require String::CRC32;
+      my $crc = String::CRC32::crc32($content);
+      return Paws::Exception->new(
+        code => 'Crc32Error',
+        message => 'Content CRC32 mismatch',
+        request_id => $headers->{ 'x-amzn-requestid' }
+      ) if ($crc != $headers->{ 'x-amz-crc32' });
+    }
 
     if ( $http_status >= 300 ) {
         return $self->error_to_exception($unserialized_struct, $call_object, $http_status, $content, $headers);
     } else {
         return $self->response_to_object($unserialized_struct, $call_object, $http_status, $content, $headers);
     }
+  }
+
+  sub unserialize_body_response { 
+    my ($self, $ret_class, $http_status, $content, $headers) = @_;
+    my $unserialized_struct = {
+        $ret_class->_stream_param => $content, 
+    };
+    return $unserialized_struct;
   }
 
   sub response_to_object {
@@ -122,6 +155,11 @@ package Paws::API::Caller {
     my ($self, $class, $result) = @_;
     my %args;
  
+    if ($class->does('Paws::API::StrToObjMapParser')) {
+      return $self->handle_response_strtoobjmap($class, $result);
+    } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
+      return $self->handle_response_strtonativemap($class, $result);
+    } else {
     foreach my $att ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($att));
 
@@ -243,6 +281,6 @@ package Paws::API::Caller {
       }
     }
     $class->new(%args);
+    }
   }
-}
 1;

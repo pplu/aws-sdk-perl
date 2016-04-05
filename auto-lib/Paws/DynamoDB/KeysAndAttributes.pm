@@ -39,9 +39,9 @@ Represents a set of primary keys and, for each key, the attributes to
 retrieve from the table.
 
 For each primary key, you must provide I<all> of the key attributes.
-For example, with a hash type primary key, you only need to provide the
-hash attribute. For a hash-and-range type primary key, you must provide
-I<both> the hash attribute and the range attribute.
+For example, with a simple primary key, you only need to provide the
+partition key. For a composite primary key, you must provide I<both>
+the partition key and the sort key.
 
 =head1 ATTRIBUTES
 

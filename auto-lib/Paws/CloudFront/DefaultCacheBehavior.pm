@@ -1,6 +1,7 @@
 package Paws::CloudFront::DefaultCacheBehavior;
   use Moose;
   has AllowedMethods => (is => 'ro', isa => 'Paws::CloudFront::AllowedMethods');
+  has Compress => (is => 'ro', isa => 'Bool');
   has DefaultTTL => (is => 'ro', isa => 'Int');
   has ForwardedValues => (is => 'ro', isa => 'Paws::CloudFront::ForwardedValues', required => 1);
   has MaxTTL => (is => 'ro', isa => 'Int');
@@ -50,6 +51,26 @@ one default cache behavior.
 =head2 AllowedMethods => L<Paws::CloudFront::AllowedMethods>
 
   
+
+
+=head2 Compress => Bool
+
+  Whether you want CloudFront to automatically compress content for web
+requests that include Accept-Encoding: gzip in the request header. If
+so, specify true; if not, specify false. CloudFront compresses files
+larger than 1000 bytes and less than 1 megabyte for both Amazon S3 and
+custom origins. When a CloudFront edge location is unusually busy, some
+files might not be compressed. The value of the Content-Type header
+must be on the list of file types that CloudFront will compress. For
+the current list, see Serving Compressed Content in the Amazon
+CloudFront Developer Guide. If you configure CloudFront to compress
+content, CloudFront removes the ETag response header from the objects
+that it compresses. The ETag header indicates that the version in a
+CloudFront edge cache is identical to the version on the origin server,
+but after compression the two versions are no longer identical. As a
+result, for compressed objects, CloudFront can't use the ETag header to
+determine whether an expired object in the CloudFront edge cache is
+still the latest version.
 
 
 =head2 DefaultTTL => Int

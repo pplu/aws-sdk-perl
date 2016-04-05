@@ -8,10 +8,11 @@ package Paws::CloudFront::UpdateDistribution;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-07-27/distribution/{Id}/config');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2016-01-28/distribution/{Id}/config');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::UpdateDistributionResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -25,16 +26,22 @@ Paws::CloudFront::UpdateDistributionResult
 
 =head2 B<REQUIRED> DistributionConfig => L<Paws::CloudFront::DistributionConfig>
 
-  The distribution's configuration information.
+The distribution's configuration information.
+
+
 
 =head2 B<REQUIRED> Id => Str
 
-  The distribution's id.
+The distribution's id.
+
+
 
 =head2 IfMatch => Str
 
-  The value of the ETag header you received when retrieving the
+The value of the ETag header you received when retrieving the
 distribution's configuration. For example: E2QWRUHAPOMQZL.
+
+
 
 
 =cut

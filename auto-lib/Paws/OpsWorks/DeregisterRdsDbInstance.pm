@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RdsDbInstanceArn => Str
 
-  The Amazon RDS instance's ARN.
+The Amazon RDS instance's ARN.
+
 
 
 

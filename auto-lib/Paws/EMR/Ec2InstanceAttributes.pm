@@ -8,6 +8,7 @@ package Paws::EMR::Ec2InstanceAttributes;
   has EmrManagedMasterSecurityGroup => (is => 'ro', isa => 'Str');
   has EmrManagedSlaveSecurityGroup => (is => 'ro', isa => 'Str');
   has IamInstanceProfile => (is => 'ro', isa => 'Str');
+  has ServiceAccessSecurityGroup => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EMR::Ec2InstanceAttributes object:
 
-  $service_obj->Method(Att1 => { AdditionalMasterSecurityGroups => $value, ..., IamInstanceProfile => $value  });
+  $service_obj->Method(Att1 => { AdditionalMasterSecurityGroups => $value, ..., ServiceAccessSecurityGroup => $value  });
 
 =head3 Results returned from an API call
 
@@ -80,20 +81,24 @@ instance type for nodes of a job flow launched in a VPC.
 
 =head2 EmrManagedMasterSecurityGroup => Str
 
-  The identifier of the Amazon EC2 security group (managed by Amazon
-Elastic MapReduce) for the master node.
+  The identifier of the Amazon EC2 security group for the master node.
 
 
 =head2 EmrManagedSlaveSecurityGroup => Str
 
-  The identifier of the Amazon EC2 security group (managed by Amazon
-Elastic MapReduce) for the slave nodes.
+  The identifier of the Amazon EC2 security group for the slave nodes.
 
 
 =head2 IamInstanceProfile => Str
 
   The IAM role that was specified when the job flow was launched. The EC2
 instances of the job flow assume this role.
+
+
+=head2 ServiceAccessSecurityGroup => Str
+
+  The identifier of the Amazon EC2 security group for the Amazon EMR
+service to access clusters in VPC private subnets.
 
 
 

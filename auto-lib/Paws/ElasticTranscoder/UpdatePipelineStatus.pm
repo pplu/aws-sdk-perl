@@ -10,7 +10,7 @@ package Paws::ElasticTranscoder::UpdatePipelineStatus;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/pipelines/{Id}/status');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineStatusResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdatePipelineStatusResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,12 +38,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-  The identifier of the pipeline to update.
+The identifier of the pipeline to update.
+
 
 
 =head2 B<REQUIRED> Status => Str
 
-  The desired status of the pipeline:
+The desired status of the pipeline:
 
 =over
 
@@ -52,6 +53,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =item * C<Paused>: The pipeline is not currently processing jobs.
 
 =back
+
 
 
 

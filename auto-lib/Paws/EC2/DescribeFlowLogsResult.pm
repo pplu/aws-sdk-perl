@@ -17,12 +17,16 @@ Paws::EC2::DescribeFlowLogsResult
 
 =head2 FlowLogs => ArrayRef[L<Paws::EC2::FlowLog>]
 
-  Information about the flow logs.
+Information about the flow logs.
+
+
 
 =head2 NextToken => Str
 
-  The token to use to retrieve the next page of results. This value is
+The token to use to retrieve the next page of results. This value is
 C<null> when there are no more results to return.
+
+
 
 
 =cut

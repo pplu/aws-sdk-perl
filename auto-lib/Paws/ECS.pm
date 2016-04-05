@@ -4,6 +4,12 @@ package Paws::ECS;
   sub version { '2014-11-13' }
   sub target_prefix { 'AmazonEC2ContainerServiceV20141113' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -143,90 +149,116 @@ package Paws::ECS;
     my $call_object = $self->new_with_coercions('Paws::ECS::UpdateService', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllClusters {
     my $self = shift;
 
     my $result = $self->ListClusters(@_);
-    my $array = [];
-    push @$array, @{ $result->clusterArns };
+    my $params = {};
+    
+    $params->{ clusterArns } = $result->clusterArns;
+    
 
-    while ($result->nextToken) {
+    while ($result->) {
       $result = $self->ListClusters(@_, nextToken => $result->nextToken);
-      push @$array, @{ $result->clusterArns };
+      
+      push @{ $params->{ clusterArns } }, @{ $result->clusterArns };
+      
     }
 
-    return 'Paws::ECS::ListClusters'->_returns->new(clusterArns => $array);
+    return $self->new_with_coercions(Paws::ECS::ListClusters->_returns, %$params);
   }
   sub ListAllContainerInstances {
     my $self = shift;
 
     my $result = $self->ListContainerInstances(@_);
-    my $array = [];
-    push @$array, @{ $result->containerInstanceArns };
+    my $params = {};
+    
+    $params->{ containerInstanceArns } = $result->containerInstanceArns;
+    
 
-    while ($result->nextToken) {
+    while ($result->) {
       $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
-      push @$array, @{ $result->containerInstanceArns };
+      
+      push @{ $params->{ containerInstanceArns } }, @{ $result->containerInstanceArns };
+      
     }
 
-    return 'Paws::ECS::ListContainerInstances'->_returns->new(containerInstanceArns => $array);
+    return $self->new_with_coercions(Paws::ECS::ListContainerInstances->_returns, %$params);
   }
   sub ListAllServices {
     my $self = shift;
 
     my $result = $self->ListServices(@_);
-    my $array = [];
-    push @$array, @{ $result->serviceArns };
+    my $params = {};
+    
+    $params->{ serviceArns } = $result->serviceArns;
+    
 
-    while ($result->nextToken) {
+    while ($result->) {
       $result = $self->ListServices(@_, nextToken => $result->nextToken);
-      push @$array, @{ $result->serviceArns };
+      
+      push @{ $params->{ serviceArns } }, @{ $result->serviceArns };
+      
     }
 
-    return 'Paws::ECS::ListServices'->_returns->new(serviceArns => $array);
+    return $self->new_with_coercions(Paws::ECS::ListServices->_returns, %$params);
   }
   sub ListAllTaskDefinitionFamilies {
     my $self = shift;
 
     my $result = $self->ListTaskDefinitionFamilies(@_);
-    my $array = [];
-    push @$array, @{ $result->families };
+    my $params = {};
+    
+    $params->{ families } = $result->families;
+    
 
-    while ($result->nextToken) {
+    while ($result->) {
       $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
-      push @$array, @{ $result->families };
+      
+      push @{ $params->{ families } }, @{ $result->families };
+      
     }
 
-    return 'Paws::ECS::ListTaskDefinitionFamilies'->_returns->new(families => $array);
+    return $self->new_with_coercions(Paws::ECS::ListTaskDefinitionFamilies->_returns, %$params);
   }
   sub ListAllTaskDefinitions {
     my $self = shift;
 
     my $result = $self->ListTaskDefinitions(@_);
-    my $array = [];
-    push @$array, @{ $result->taskDefinitionArns };
+    my $params = {};
+    
+    $params->{ taskDefinitionArns } = $result->taskDefinitionArns;
+    
 
-    while ($result->nextToken) {
+    while ($result->) {
       $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
-      push @$array, @{ $result->taskDefinitionArns };
+      
+      push @{ $params->{ taskDefinitionArns } }, @{ $result->taskDefinitionArns };
+      
     }
 
-    return 'Paws::ECS::ListTaskDefinitions'->_returns->new(taskDefinitionArns => $array);
+    return $self->new_with_coercions(Paws::ECS::ListTaskDefinitions->_returns, %$params);
   }
   sub ListAllTasks {
     my $self = shift;
 
     my $result = $self->ListTasks(@_);
-    my $array = [];
-    push @$array, @{ $result->taskArns };
+    my $params = {};
+    
+    $params->{ taskArns } = $result->taskArns;
+    
 
-    while ($result->nextToken) {
+    while ($result->) {
       $result = $self->ListTasks(@_, nextToken => $result->nextToken);
-      push @$array, @{ $result->taskArns };
+      
+      push @{ $params->{ taskArns } }, @{ $result->taskArns };
+      
     }
 
-    return 'Paws::ECS::ListTasks'->_returns->new(taskArns => $array);
+    return $self->new_with_coercions(Paws::ECS::ListTasks->_returns, %$params);
   }
+
 
   sub operations { qw/CreateCluster CreateService DeleteCluster DeleteService DeregisterContainerInstance DeregisterTaskDefinition DescribeClusters DescribeContainerInstances DescribeServices DescribeTaskDefinition DescribeTasks DiscoverPollEndpoint ListClusters ListContainerInstances ListServices ListTaskDefinitionFamilies ListTaskDefinitions ListTasks RegisterContainerInstance RegisterTaskDefinition RunTask StartTask StopTask SubmitContainerStateChange SubmitTaskStateChange UpdateContainerAgent UpdateService / }
 
@@ -285,7 +317,7 @@ However, you can create your own cluster with a unique name with the
 C<CreateCluster> action.
 
 
-=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], Role => Str])
+=head2 CreateService(DesiredCount => Int, ServiceName => Str, TaskDefinition => Str, [ClientToken => Str, Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>], Role => Str])
 
 Each argument is described in detail in: L<Paws::ECS::CreateService>
 
@@ -294,7 +326,63 @@ Returns: a L<Paws::ECS::CreateServiceResponse> instance
   Runs and maintains a desired number of tasks from a specified task
 definition. If the number of tasks running in a service drops below
 C<desiredCount>, Amazon ECS spawns another instantiation of the task in
-the specified cluster.
+the specified cluster. To update an existing service, see
+UpdateService.
+
+You can optionally specify a deployment configuration for your service.
+During a deployment (which is triggered by changing the task definition
+of a service with an UpdateService operation), the service scheduler
+uses the C<minimumHealthyPercent> and C<maximumPercent> parameters to
+determine the deployment strategy.
+
+If the C<minimumHealthyPercent> is below 100%, the scheduler can ignore
+the C<desiredCount> temporarily during a deployment. For example, if
+your service has a C<desiredCount> of four tasks, a
+C<minimumHealthyPercent> of 50% allows the scheduler to stop two
+existing tasks before starting two new tasks. Tasks for services that
+I<do not> use a load balancer are considered healthy if they are in the
+C<RUNNING> state; tasks for services that I<do> use a load balancer are
+considered healthy if they are in the C<RUNNING> state and the
+container instance it is hosted on is reported as healthy by the load
+balancer. The default value for C<minimumHealthyPercent> is 50% in the
+console and 100% for the AWS CLI, the AWS SDKs, and the APIs.
+
+The C<maximumPercent> parameter represents an upper limit on the number
+of running tasks during a deployment, which enables you to define the
+deployment batch size. For example, if your service has a
+C<desiredCount> of four tasks, a C<maximumPercent> value of 200% starts
+four new tasks before stopping the four older tasks (provided that the
+cluster resources required to do this are available). The default value
+for C<maximumPercent> is 200%.
+
+When the service scheduler launches new tasks, it attempts to balance
+them across the Availability Zones in your cluster with the following
+logic:
+
+=over
+
+=item *
+
+Determine which of the container instances in your cluster can support
+your service's task definition (for example, they have the required
+CPU, memory, ports, and container instance attributes).
+
+=item *
+
+Sort the valid container instances by the fewest number of running
+tasks for this service in the same Availability Zone as the instance.
+For example, if zone A has one running service task and zones B and C
+each have zero, valid container instances in either zone B or C are
+considered optimal for placement.
+
+=item *
+
+Place the new service task on a valid container instance in an optimal
+Availability Zone (based on the previous steps), favoring container
+instances with the fewest number of running tasks for this service.
+
+=back
+
 
 
 =head2 DeleteCluster(Cluster => Str)
@@ -315,7 +403,22 @@ Each argument is described in detail in: L<Paws::ECS::DeleteService>
 
 Returns: a L<Paws::ECS::DeleteServiceResponse> instance
 
-  Deletes a specified service within a cluster.
+  Deletes a specified service within a cluster. You can delete a service
+if you have no running tasks in it and the desired task count is zero.
+If the service is actively maintaining tasks, you cannot delete it, and
+you must update the service to a desired task count of zero. For more
+information, see UpdateService.
+
+When you delete a service, if there are still running tasks that
+require cleanup, the service status moves from C<ACTIVE> to
+C<DRAINING>, and the service is no longer visible in the console or in
+ListServices API operations. After the tasks have stopped, then the
+service status moves from C<DRAINING> to C<INACTIVE>. Services in the
+C<DRAINING> or C<INACTIVE> status can still be viewed with
+DescribeServices API operations; however, in the future, C<INACTIVE>
+services may be cleaned up and purged from Amazon ECS record keeping,
+and DescribeServices API operations on those services will return a
+C<ServiceNotFoundException> error.
 
 
 =head2 DeregisterContainerInstance(ContainerInstance => Str, [Cluster => Str, Force => Bool])
@@ -541,7 +644,7 @@ scheduler to place your task, use C<RunTask> instead.
 The list of container instances to start tasks on is limited to 10.
 
 
-=head2 StopTask(Task => Str, [Cluster => Str])
+=head2 StopTask(Task => Str, [Cluster => Str, Reason => Str])
 
 Each argument is described in detail in: L<Paws::ECS::StopTask>
 
@@ -601,36 +704,81 @@ Manually Updating the Amazon ECS Container Agent in the I<Amazon EC2
 Container Service Developer Guide>.
 
 
-=head2 UpdateService(Service => Str, [Cluster => Str, DesiredCount => Int, TaskDefinition => Str])
+=head2 UpdateService(Service => Str, [Cluster => Str, DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>, DesiredCount => Int, TaskDefinition => Str])
 
 Each argument is described in detail in: L<Paws::ECS::UpdateService>
 
 Returns: a L<Paws::ECS::UpdateServiceResponse> instance
 
-  Modify the desired count or task definition used in a service.
+  Modifies the desired count, deployment configuration, or task
+definition used in a service.
 
 You can add to or subtract from the number of instantiations of a task
 definition in a service by specifying the cluster that the service is
 running in and a new C<desiredCount> parameter.
 
-You can use C<UpdateService> to modify your task definition and deploy
-a new version of your service, one task at a time. If you modify the
-task definition with C<UpdateService>, Amazon ECS spawns a task with
-the new version of the task definition and then stops an old task after
-the new version is running. Because C<UpdateService> starts a new
-version of the task before stopping an old version, your cluster must
-have capacity to support one more instantiation of the task when
-C<UpdateService> is run. If your cluster cannot support another
-instantiation of the task used in your service, you can reduce the
-desired count of your service by one before modifying the task
-definition.
+You can use UpdateService to modify your task definition and deploy a
+new version of your service.
 
-When UpdateService replaces a task during an update, the equivalent of
+You can also update the deployment configuration of a service. When a
+deployment is triggered by updating the task definition of a service,
+the service scheduler uses the deployment configuration parameters,
+C<minimumHealthyPercent> and C<maximumPercent>, to determine the
+deployment strategy.
+
+If the C<minimumHealthyPercent> is below 100%, the scheduler can ignore
+the C<desiredCount> temporarily during a deployment. For example, if
+your service has a C<desiredCount> of four tasks, a
+C<minimumHealthyPercent> of 50% allows the scheduler to stop two
+existing tasks before starting two new tasks. Tasks for services that
+I<do not> use a load balancer are considered healthy if they are in the
+C<RUNNING> state; tasks for services that I<do> use a load balancer are
+considered healthy if they are in the C<RUNNING> state and the
+container instance it is hosted on is reported as healthy by the load
+balancer.
+
+The C<maximumPercent> parameter represents an upper limit on the number
+of running tasks during a deployment, which enables you to define the
+deployment batch size. For example, if your service has a
+C<desiredCount> of four tasks, a C<maximumPercent> value of 200% starts
+four new tasks before stopping the four older tasks (provided that the
+cluster resources required to do this are available).
+
+When UpdateService stops a task during a deployment, the equivalent of
 C<docker stop> is issued to the containers running in the task. This
 results in a C<SIGTERM> and a 30-second timeout, after which C<SIGKILL>
 is sent and the containers are forcibly stopped. If the container
 handles the C<SIGTERM> gracefully and exits within 30 seconds from
 receiving it, no C<SIGKILL> is sent.
+
+When the service scheduler launches new tasks, it attempts to balance
+them across the Availability Zones in your cluster with the following
+logic:
+
+=over
+
+=item *
+
+Determine which of the container instances in your cluster can support
+your service's task definition (for example, they have the required
+CPU, memory, ports, and container instance attributes).
+
+=item *
+
+Sort the valid container instances by the fewest number of running
+tasks for this service in the same Availability Zone as the instance.
+For example, if zone A has one running service task and zones B and C
+each have zero, valid container instances in either zone B or C are
+considered optimal for placement.
+
+=item *
+
+Place the new service task on a valid container instance in an optimal
+Availability Zone (based on the previous steps), favoring container
+instances with the fewest number of running tasks for this service.
+
+=back
+
 
 
 =head1 SEE ALSO

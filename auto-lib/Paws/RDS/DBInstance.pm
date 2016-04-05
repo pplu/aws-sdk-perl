@@ -17,20 +17,25 @@ package Paws::RDS::DBInstance;
   has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBParameterGroupStatus]');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroupMembership]');
   has DBSubnetGroup => (is => 'ro', isa => 'Paws::RDS::DBSubnetGroup');
+  has DomainMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DomainMembership]');
   has Endpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has EnhancedMonitoringResourceArn => (is => 'ro', isa => 'Str');
   has InstanceCreateTime => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
+  has MonitoringInterval => (is => 'ro', isa => 'Int');
+  has MonitoringRoleArn => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has OptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroupMembership]');
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RDS::PendingModifiedValues');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str]');
   has ReadReplicaSourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
@@ -160,20 +165,19 @@ cluster port.
 
 =head2 DbiResourceId => Str
 
-  If C<StorageEncrypted> is true, the region-unique, immutable identifier
-for the encrypted DB instance. This identifier is found in AWS
-CloudTrail log entries whenever the KMS key for the DB instance is
-accessed.
+  The region-unique, immutable identifier for the DB instance. This
+identifier is found in AWS CloudTrail log entries whenever the KMS key
+for the DB instance is accessed.
 
 
 =head2 DBName => Str
 
   The meaning of this parameter differs according to the database engine
-you use. For example, this value returns either MySQL or PostgreSQL
+you use. For example, this value returns MySQL, MariaDB, or PostgreSQL
 information when returning values from CreateDBInstanceReadReplica
-since Read Replicas are only supported for MySQL and PostgreSQL.
+since Read Replicas are only supported for these engines.
 
-B<MySQL, SQL Server, PostgreSQL, Amazon Aurora>
+B<MySQL, MariaDB, SQL Server, PostgreSQL, Amazon Aurora>
 
 Contains the name of the initial database of this instance that was
 provided at create time, if one was specified when the DB instance was
@@ -206,6 +210,12 @@ instance, including the name, description, and subnets in the subnet
 group.
 
 
+=head2 DomainMemberships => ArrayRef[L<Paws::RDS::DomainMembership>]
+
+  The Active Directory Domain membership records associated with the DB
+instance.
+
+
 =head2 Endpoint => L<Paws::RDS::Endpoint>
 
   Specifies the connection endpoint.
@@ -220,6 +230,12 @@ instance.
 =head2 EngineVersion => Str
 
   Indicates the database engine version.
+
+
+=head2 EnhancedMonitoringResourceArn => Str
+
+  The Amazon Resource Name (ARN) of the Amazon CloudWatch Logs log stream
+that receives the Enhanced Monitoring metrics data for the DB instance.
 
 
 =head2 InstanceCreateTime => Str
@@ -254,6 +270,18 @@ point-in-time restore.
   Contains the master username for the DB instance.
 
 
+=head2 MonitoringInterval => Int
+
+  The interval, in seconds, between points when Enhanced Monitoring
+metrics are collected for the DB instance.
+
+
+=head2 MonitoringRoleArn => Str
+
+  The ARN for the IAM role that permits RDS to send Enhanced Monitoring
+metrics to CloudWatch Logs.
+
+
 =head2 MultiAZ => Bool
 
   Specifies if the DB instance is a Multi-AZ deployment.
@@ -282,6 +310,14 @@ C<BackupRetentionPeriod>.
 
   Specifies the weekly time range during which system maintenance can
 occur, in Universal Coordinated Time (UTC).
+
+
+=head2 PromotionTier => Int
+
+  A value that specifies the order in which an Aurora Replica is promoted
+to the primary instance after a failure of the existing primary
+instance. For more information, see Fault Tolerance for an Aurora DB
+Cluster.
 
 
 =head2 PubliclyAccessible => Bool

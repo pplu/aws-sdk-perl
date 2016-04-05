@@ -11,7 +11,7 @@ package Paws::ApiGateway::GetResources;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/resources');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Resources');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetResourcesResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,20 +39,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-  The maximum number of Resource resources in the collection to get
+The maximum number of Resource resources in the collection to get
 information about. The default limit is 25. It should be an integer
 between 1 - 500.
 
 
+
 =head2 Position => Str
 
-  The position of the next set of results in the current Resources
+The position of the next set of results in the current Resources
 resource to get information about.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The RestApi identifier for the Resource.
+The RestApi identifier for the Resource.
+
 
 
 

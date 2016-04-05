@@ -44,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AdminContact => L<Paws::Route53Domains::ContactDetail>
 
-  Provides detailed contact information.
+Provides detailed contact information.
 
 Type: Complex
 
@@ -56,9 +56,10 @@ C<ExtraParams>
 Required: Yes
 
 
+
 =head2 AutoRenew => Bool
 
-  Indicates whether the domain will be automatically renewed (C<true>) or
+Indicates whether the domain will be automatically renewed (C<true>) or
 not (C<false>). Autorenewal only takes effect after the account is
 charged.
 
@@ -71,9 +72,10 @@ Default: C<true>
 Required: No
 
 
+
 =head2 B<REQUIRED> DomainName => Str
 
-  The name of a domain.
+The name of a domain.
 
 Type: String
 
@@ -86,9 +88,10 @@ are not supported.
 Required: Yes
 
 
+
 =head2 B<REQUIRED> DurationInYears => Int
 
-  The number of years the domain will be registered. Domains are
+The number of years the domain will be registered. Domains are
 registered for a minimum of one year. The maximum period depends on the
 top-level domain.
 
@@ -101,14 +104,16 @@ Valid values: Integer from 1 to 10
 Required: Yes
 
 
+
 =head2 IdnLangCode => Str
 
-  Reserved for future use.
+Reserved for future use.
+
 
 
 =head2 PrivacyProtectAdminContact => Bool
 
-  Whether you want to conceal contact information from WHOIS queries. If
+Whether you want to conceal contact information from WHOIS queries. If
 you specify true, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
@@ -120,11 +125,12 @@ Default: C<true>
 Valid values: C<true> | C<false>
 
 Required: No
+
 
 
 =head2 PrivacyProtectRegistrantContact => Bool
 
-  Whether you want to conceal contact information from WHOIS queries. If
+Whether you want to conceal contact information from WHOIS queries. If
 you specify true, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
@@ -136,11 +142,12 @@ Default: C<true>
 Valid values: C<true> | C<false>
 
 Required: No
+
 
 
 =head2 PrivacyProtectTechContact => Bool
 
-  Whether you want to conceal contact information from WHOIS queries. If
+Whether you want to conceal contact information from WHOIS queries. If
 you specify true, WHOIS ("who is") queries will return contact
 information for our registrar partner, Gandi, instead of the contact
 information that you enter.
@@ -154,9 +161,10 @@ Valid values: C<true> | C<false>
 Required: No
 
 
+
 =head2 B<REQUIRED> RegistrantContact => L<Paws::Route53Domains::ContactDetail>
 
-  Provides detailed contact information.
+Provides detailed contact information.
 
 Type: Complex
 
@@ -166,11 +174,12 @@ C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
 C<ExtraParams>
 
 Required: Yes
+
 
 
 =head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>
 
-  Provides detailed contact information.
+Provides detailed contact information.
 
 Type: Complex
 
@@ -180,6 +189,7 @@ C<State>, C<CountryCode>, C<ZipCode>, C<PhoneNumber>, C<Email>, C<Fax>,
 C<ExtraParams>
 
 Required: Yes
+
 
 
 

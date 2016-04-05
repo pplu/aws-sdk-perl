@@ -3,6 +3,7 @@ package Paws::ElasticBeanstalk::TerminateEnvironment;
   use Moose;
   has EnvironmentId => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
+  has ForceTerminate => (is => 'ro', isa => 'Bool');
   has TerminateResources => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
@@ -37,33 +38,35 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EnvironmentId => Str
 
-  The ID of the environment to terminate.
+The ID of the environment to terminate.
 
 Condition: You must specify either this or an EnvironmentName, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
 
+
 =head2 EnvironmentName => Str
 
-  The name of the environment to terminate.
+The name of the environment to terminate.
 
 Condition: You must specify either this or an EnvironmentId, or both.
 If you do not specify either, AWS Elastic Beanstalk returns
 C<MissingRequiredParameter> error.
 
 
+
+=head2 ForceTerminate => Bool
+
+Terminates the target environment even if another environment in the
+same group is dependent on it.
+
+
+
 =head2 TerminateResources => Bool
 
-  Indicates whether the associated AWS resources should shut down when
+Indicates whether the associated AWS resources should shut down when
 the environment is terminated:
-
-C<true>: (default) The user AWS resources (for example, the Auto
-Scaling group, LoadBalancer, etc.) are terminated along with the
-environment.
-
-C<false>: The environment is removed from the AWS Elastic Beanstalk but
-the AWS resources continue to operate.
 
 =over
 
@@ -81,6 +84,7 @@ For more information, see the AWS Elastic Beanstalk User Guide.
 Default: C<true>
 
 Valid Values: C<true> | C<false>
+
 
 
 

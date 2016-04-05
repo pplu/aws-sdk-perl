@@ -12,7 +12,7 @@ package Paws::Lambda::UpdateEventSourceMapping;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-03-31/event-source-mappings/{UUID}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Lambda::EventSourceMappingConfiguration');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdateEventSourceMappingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -40,32 +40,42 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 BatchSize => Int
 
-  The maximum number of stream records that can be sent to your Lambda
+The maximum number of stream records that can be sent to your Lambda
 function for a single invocation.
+
 
 
 =head2 Enabled => Bool
 
-  Specifies whether AWS Lambda should actively poll the stream or not. If
+Specifies whether AWS Lambda should actively poll the stream or not. If
 disabled, AWS Lambda will not poll the stream.
+
 
 
 =head2 FunctionName => Str
 
-  The Lambda function to which you want the stream records sent.
+The Lambda function to which you want the stream records sent.
 
-You can specify an unqualified function name (for example, "Thumbnail")
-or you can specify Amazon Resource Name (ARN) of the function (for
-example, "arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS
-Lambda also allows you to specify only the account ID qualifier (for
-example, "account-id:Thumbnail"). Note that the length constraint
-applies only to the ARN. If you specify only the function name, it is
-limited to 64 character in length.
+You can specify a function name (for example, C<Thumbnail>) or you can
+specify Amazon Resource Name (ARN) of the function (for example,
+C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
+also allows you to specify a partial ARN (for example,
+C<account-id:Thumbnail>).
+
+If you are using versioning, you can also provide a qualified function
+ARN (ARN that is qualified with function version or alias name as
+suffix). For more information about versioning, see AWS Lambda Function
+Versioning and Aliases
+
+Note that the length constraint applies only to the ARN. If you specify
+only the function name, it is limited to 64 character in length.
+
 
 
 =head2 B<REQUIRED> UUID => Str
 
-  The event source mapping identifier.
+The event source mapping identifier.
+
 
 
 

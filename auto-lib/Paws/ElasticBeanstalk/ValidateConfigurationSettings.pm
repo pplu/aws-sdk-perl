@@ -38,29 +38,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The name of the application that the configuration template or
+The name of the application that the configuration template or
 environment belongs to.
+
 
 
 =head2 EnvironmentName => Str
 
-  The name of the environment to validate the settings against.
+The name of the environment to validate the settings against.
 
 Condition: You cannot specify both this and a configuration template
 name.
 
 
+
 =head2 B<REQUIRED> OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>]
 
-  A list of the options and desired values to evaluate.
+A list of the options and desired values to evaluate.
+
 
 
 =head2 TemplateName => Str
 
-  The name of the configuration template to validate the settings
+The name of the configuration template to validate the settings
 against.
 
 Condition: You cannot specify both this and an environment name.
+
 
 
 

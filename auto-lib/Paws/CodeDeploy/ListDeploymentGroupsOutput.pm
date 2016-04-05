@@ -17,18 +17,23 @@ Paws::CodeDeploy::ListDeploymentGroupsOutput
 
 =head2 ApplicationName => Str
 
-  The application name.
+The application name.
+
+
 
 =head2 DeploymentGroups => ArrayRef[Str]
 
-  A list of corresponding deployment group names.
+A list of corresponding deployment group names.
+
+
 
 =head2 NextToken => Str
 
-  If the amount of information that is returned is significantly large,
-an identifier will also be returned, which can be used in a subsequent
-list deployment groups call to return the next set of deployment groups
-in the list.
+If a large amount of information is returned, an identifier is also
+returned. It can be used in a subsequent list deployment groups call to
+return the next set of deployment groups in the list.
+
+
 
 
 =cut

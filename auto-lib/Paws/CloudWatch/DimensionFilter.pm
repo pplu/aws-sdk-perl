@@ -46,6 +46,9 @@ The C<DimensionFilter> data type is used to filter ListMetrics results.
 
   The value of the dimension to be matched.
 
+Specifying a C<Name> without specifying a C<Value> returns all values
+associated with that C<Name>.
+
 
 
 =head1 SEE ALSO

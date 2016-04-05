@@ -4,6 +4,12 @@ package Paws::WAF;
   sub version { '2015-08-24' }
   sub target_prefix { 'AWSWAF_20150824' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -46,6 +52,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::CreateRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateSizeConstraintSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::CreateSizeConstraintSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSqlInjectionMatchSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::CreateSqlInjectionMatchSet', @_);
@@ -54,6 +65,11 @@ package Paws::WAF;
   sub CreateWebACL {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::CreateWebACL', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateXssMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::CreateXssMatchSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteByteMatchSet {
@@ -71,6 +87,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::DeleteRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteSizeConstraintSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::DeleteSizeConstraintSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteSqlInjectionMatchSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::DeleteSqlInjectionMatchSet', @_);
@@ -79,6 +100,11 @@ package Paws::WAF;
   sub DeleteWebACL {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::DeleteWebACL', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteXssMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::DeleteXssMatchSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetByteMatchSet {
@@ -111,6 +137,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::GetSampledRequests', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSizeConstraintSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::GetSizeConstraintSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetSqlInjectionMatchSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::GetSqlInjectionMatchSet', @_);
@@ -119,6 +150,11 @@ package Paws::WAF;
   sub GetWebACL {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::GetWebACL', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetXssMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::GetXssMatchSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListByteMatchSets {
@@ -136,6 +172,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListSizeConstraintSets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::ListSizeConstraintSets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSqlInjectionMatchSets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListSqlInjectionMatchSets', @_);
@@ -144,6 +185,11 @@ package Paws::WAF;
   sub ListWebACLs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::ListWebACLs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListXssMatchSets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::ListXssMatchSets', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateByteMatchSet {
@@ -161,6 +207,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::UpdateRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateSizeConstraintSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::UpdateSizeConstraintSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateSqlInjectionMatchSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::UpdateSqlInjectionMatchSet', @_);
@@ -171,8 +222,15 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::UpdateWebACL', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateXssMatchSet {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::UpdateXssMatchSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  
 
-  sub operations { qw/CreateByteMatchSet CreateIPSet CreateRule CreateSqlInjectionMatchSet CreateWebACL DeleteByteMatchSet DeleteIPSet DeleteRule DeleteSqlInjectionMatchSet DeleteWebACL GetByteMatchSet GetChangeToken GetChangeTokenStatus GetIPSet GetRule GetSampledRequests GetSqlInjectionMatchSet GetWebACL ListByteMatchSets ListIPSets ListRules ListSqlInjectionMatchSets ListWebACLs UpdateByteMatchSet UpdateIPSet UpdateRule UpdateSqlInjectionMatchSet UpdateWebACL / }
+
+  sub operations { qw/CreateByteMatchSet CreateIPSet CreateRule CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteIPSet DeleteRule DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetIPSet GetRule GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListByteMatchSets ListIPSets ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListWebACLs ListXssMatchSets UpdateByteMatchSet UpdateIPSet UpdateRule UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
 
 1;
 
@@ -332,6 +390,43 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
 
 
+=head2 CreateSizeConstraintSet(ChangeToken => Str, Name => Str)
+
+Each argument is described in detail in: L<Paws::WAF::CreateSizeConstraintSet>
+
+Returns: a L<Paws::WAF::CreateSizeConstraintSetResponse> instance
+
+  Creates a C<SizeConstraintSet>. You then use UpdateSizeConstraintSet to
+identify the part of a web request that you want AWS WAF to check for
+length, such as the length of the C<User-Agent> header or the length of
+the query string. For example, you can create a C<SizeConstraintSet>
+that matches any requests that have a query string that is longer than
+100 bytes. You can then configure AWS WAF to reject those requests.
+
+To create and configure a C<SizeConstraintSet>, perform the following
+steps:
+
+=over
+
+=item 1. Use GetChangeToken to get the change token that you provide in
+the C<ChangeToken> parameter of a C<CreateSizeConstraintSet> request.
+
+=item 2. Submit a C<CreateSizeConstraintSet> request.
+
+=item 3. Use C<GetChangeToken> to get the change token that you provide
+in the C<ChangeToken> parameter of an C<UpdateSizeConstraintSet>
+request.
+
+=item 4. Submit an UpdateSizeConstraintSet request to specify the part
+of the request that you want AWS WAF to inspect (for example, the
+header or the URI) and the value that you want AWS WAF to watch for.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide.
+
+
 =head2 CreateSqlInjectionMatchSet(ChangeToken => Str, Name => Str)
 
 Each argument is described in detail in: L<Paws::WAF::CreateSqlInjectionMatchSet>
@@ -411,6 +506,39 @@ and to associate the C<WebACL> with a CloudFront distribution.
 
 For more information about how to use the AWS WAF API, see the AWS WAF
 Developer Guide.
+
+
+=head2 CreateXssMatchSet(ChangeToken => Str, Name => Str)
+
+Each argument is described in detail in: L<Paws::WAF::CreateXssMatchSet>
+
+Returns: a L<Paws::WAF::CreateXssMatchSetResponse> instance
+
+  Creates an XssMatchSet, which you use to allow, block, or count
+requests that contain cross-site scripting attacks in the specified
+part of web requests. AWS WAF searches for character sequences that are
+likely to be malicious strings.
+
+To create and configure an C<XssMatchSet>, perform the following steps:
+
+=over
+
+=item 1. Use GetChangeToken to get the change token that you provide in
+the C<ChangeToken> parameter of a C<CreateXssMatchSet> request.
+
+=item 2. Submit a C<CreateXssMatchSet> request.
+
+=item 3. Use C<GetChangeToken> to get the change token that you provide
+in the C<ChangeToken> parameter of an UpdateXssMatchSet request.
+
+=item 4. Submit an UpdateXssMatchSet request to specify the parts of
+web requests in which you want to allow, block, or count cross-site
+scripting attacks.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide.
 
 
 =head2 DeleteByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str)
@@ -500,6 +628,36 @@ the C<ChangeToken> parameter of a C<DeleteRule> request.
 
 
 
+=head2 DeleteSizeConstraintSet(ChangeToken => Str, SizeConstraintSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAF::DeleteSizeConstraintSet>
+
+Returns: a L<Paws::WAF::DeleteSizeConstraintSetResponse> instance
+
+  Permanently deletes a SizeConstraintSet. You can't delete a
+C<SizeConstraintSet> if it's still used in any C<Rules> or if it still
+includes any SizeConstraint objects (any filters).
+
+If you just want to remove a C<SizeConstraintSet> from a C<Rule>, use
+UpdateRule.
+
+To permanently delete a C<SizeConstraintSet>, perform the following
+steps:
+
+=over
+
+=item 1. Update the C<SizeConstraintSet> to remove filters, if any. For
+more information, see UpdateSizeConstraintSet.
+
+=item 2. Use GetChangeToken to get the change token that you provide in
+the C<ChangeToken> parameter of a C<DeleteSizeConstraintSet> request.
+
+=item 3. Submit a C<DeleteSizeConstraintSet> request.
+
+=back
+
+
+
 =head2 DeleteSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::DeleteSqlInjectionMatchSet>
@@ -551,6 +709,36 @@ information, see UpdateWebACL.
 the C<ChangeToken> parameter of a C<DeleteWebACL> request.
 
 =item 3. Submit a C<DeleteWebACL> request.
+
+=back
+
+
+
+=head2 DeleteXssMatchSet(ChangeToken => Str, XssMatchSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAF::DeleteXssMatchSet>
+
+Returns: a L<Paws::WAF::DeleteXssMatchSetResponse> instance
+
+  Permanently deletes an XssMatchSet. You can't delete an C<XssMatchSet>
+if it's still used in any C<Rules> or if it still contains any
+XssMatchTuple objects.
+
+If you just want to remove an C<XssMatchSet> from a C<Rule>, use
+UpdateRule.
+
+To permanently delete an C<XssMatchSet> from AWS WAF, perform the
+following steps:
+
+=over
+
+=item 1. Update the C<XssMatchSet> to remove filters, if any. For more
+information, see UpdateXssMatchSet.
+
+=item 2. Use GetChangeToken to get the change token that you provide in
+the C<ChangeToken> parameter of a C<DeleteXssMatchSet> request.
+
+=item 3. Submit a C<DeleteXssMatchSet> request.
 
 =back
 
@@ -651,6 +839,15 @@ range. This new time range indicates the actual period during which AWS
 WAF selected the requests in the sample.
 
 
+=head2 GetSizeConstraintSet(SizeConstraintSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAF::GetSizeConstraintSet>
+
+Returns: a L<Paws::WAF::GetSizeConstraintSetResponse> instance
+
+  Returns the SizeConstraintSet specified by C<SizeConstraintSetId>.
+
+
 =head2 GetSqlInjectionMatchSet(SqlInjectionMatchSetId => Str)
 
 Each argument is described in detail in: L<Paws::WAF::GetSqlInjectionMatchSet>
@@ -668,6 +865,15 @@ Each argument is described in detail in: L<Paws::WAF::GetWebACL>
 Returns: a L<Paws::WAF::GetWebACLResponse> instance
 
   Returns the WebACL that is specified by C<WebACLId>.
+
+
+=head2 GetXssMatchSet(XssMatchSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAF::GetXssMatchSet>
+
+Returns: a L<Paws::WAF::GetXssMatchSetResponse> instance
+
+  Returns the XssMatchSet that is specified by C<XssMatchSetId>.
 
 
 =head2 ListByteMatchSets(Limit => Int, [NextMarker => Str])
@@ -697,6 +903,15 @@ Returns: a L<Paws::WAF::ListRulesResponse> instance
   Returns an array of RuleSummary objects.
 
 
+=head2 ListSizeConstraintSets(Limit => Int, [NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAF::ListSizeConstraintSets>
+
+Returns: a L<Paws::WAF::ListSizeConstraintSetsResponse> instance
+
+  Returns an array of SizeConstraintSetSummary objects.
+
+
 =head2 ListSqlInjectionMatchSets(Limit => Int, [NextMarker => Str])
 
 Each argument is described in detail in: L<Paws::WAF::ListSqlInjectionMatchSets>
@@ -713,6 +928,15 @@ Each argument is described in detail in: L<Paws::WAF::ListWebACLs>
 Returns: a L<Paws::WAF::ListWebACLsResponse> instance
 
   Returns an array of WebACLSummary objects in the response.
+
+
+=head2 ListXssMatchSets(Limit => Int, [NextMarker => Str])
+
+Each argument is described in detail in: L<Paws::WAF::ListXssMatchSets>
+
+Returns: a L<Paws::WAF::ListXssMatchSetsResponse> instance
+
+  Returns an array of XssMatchSet objects.
 
 
 =head2 UpdateByteMatchSet(ByteMatchSetId => Str, ChangeToken => Str, Updates => ArrayRef[L<Paws::WAF::ByteMatchSetUpdate>])
@@ -883,6 +1107,68 @@ For more information about how to use the AWS WAF API to allow or block
 HTTP requests, see the AWS WAF Developer Guide.
 
 
+=head2 UpdateSizeConstraintSet(ChangeToken => Str, SizeConstraintSetId => Str, Updates => ArrayRef[L<Paws::WAF::SizeConstraintSetUpdate>])
+
+Each argument is described in detail in: L<Paws::WAF::UpdateSizeConstraintSet>
+
+Returns: a L<Paws::WAF::UpdateSizeConstraintSetResponse> instance
+
+  Inserts or deletes SizeConstraint objects (filters) in a
+SizeConstraintSet. For each C<SizeConstraint> object, you specify the
+following values:
+
+=over
+
+=item * Whether to insert or delete the object from the array. If you
+want to change a C<SizeConstraintSetUpdate> object, you delete the
+existing object and add a new one.
+
+=item * The part of a web request that you want AWS WAF to evaluate,
+such as the length of a query string or the length of the C<User-Agent>
+header.
+
+=item * Whether to perform any transformations on the request, such as
+converting it to lowercase, before checking its length. Note that
+transformations of the request body are not supported because the AWS
+resource forwards only the first C<8192> bytes of your request to AWS
+WAF.
+
+=item * A C<ComparisonOperator> used for evaluating the selected part
+of the request against the specified C<Size>, such as equals, greater
+than, less than, and so on.
+
+=item * The length, in bytes, that you want AWS WAF to watch for in
+selected part of the request. The length is computed after applying the
+transformation.
+
+=back
+
+For example, you can add a C<SizeConstraintSetUpdate> object that
+matches web requests in which the length of the C<User-Agent> header is
+greater than 100 bytes. You can then configure AWS WAF to block those
+requests.
+
+To create and configure a C<SizeConstraintSet>, perform the following
+steps:
+
+=over
+
+=item 1. Create a C<SizeConstraintSet.> For more information, see
+CreateSizeConstraintSet.
+
+=item 2. Use GetChangeToken to get the change token that you provide in
+the C<ChangeToken> parameter of an C<UpdateSizeConstraintSet> request.
+
+=item 3. Submit an C<UpdateSizeConstraintSet> request to specify the
+part of the request that you want AWS WAF to inspect (for example, the
+header or the URI) and the value that you want AWS WAF to watch for.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide.
+
+
 =head2 UpdateSqlInjectionMatchSet(ChangeToken => Str, SqlInjectionMatchSetId => Str, Updates => ArrayRef[L<Paws::WAF::SqlInjectionMatchSetUpdate>])
 
 Each argument is described in detail in: L<Paws::WAF::UpdateSqlInjectionMatchSet>
@@ -995,6 +1281,57 @@ in the C<ChangeToken> parameter of an UpdateWebACL request.
 =item 5. Submit an C<UpdateWebACL> request to specify the C<Rules> that
 you want to include in the C<WebACL>, to specify the default action,
 and to associate the C<WebACL> with a CloudFront distribution.
+
+=back
+
+For more information about how to use the AWS WAF API to allow or block
+HTTP requests, see the AWS WAF Developer Guide.
+
+
+=head2 UpdateXssMatchSet(ChangeToken => Str, Updates => ArrayRef[L<Paws::WAF::XssMatchSetUpdate>], XssMatchSetId => Str)
+
+Each argument is described in detail in: L<Paws::WAF::UpdateXssMatchSet>
+
+Returns: a L<Paws::WAF::UpdateXssMatchSetResponse> instance
+
+  Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet.
+For each C<XssMatchTuple> object, you specify the following values:
+
+=over
+
+=item * C<Action>: Whether to insert the object into or delete the
+object from the array. To change a C<XssMatchTuple>, you delete the
+existing object and add a new one.
+
+=item * C<FieldToMatch>: The part of web requests that you want AWS WAF
+to inspect and, if you want AWS WAF to inspect a header, the name of
+the header.
+
+=item * C<TextTransformation>: Which text transformation, if any, to
+perform on the web request before inspecting the request for cross-site
+scripting attacks.
+
+=back
+
+You use C<XssMatchSet> objects to specify which CloudFront requests you
+want to allow, block, or count. For example, if you're receiving
+requests that contain cross-site scripting attacks in the request body
+and you want to block the requests, you can create an C<XssMatchSet>
+with the applicable settings, and then configure AWS WAF to block the
+requests.
+
+To create and configure an C<XssMatchSet>, perform the following steps:
+
+=over
+
+=item 1. Submit a CreateXssMatchSet request.
+
+=item 2. Use GetChangeToken to get the change token that you provide in
+the C<ChangeToken> parameter of an UpdateIPSet request.
+
+=item 3. Submit an C<UpdateXssMatchSet> request to specify the parts of
+web requests that you want AWS WAF to inspect for cross-site scripting
+attacks.
 
 =back
 

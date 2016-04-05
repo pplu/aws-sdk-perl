@@ -12,7 +12,7 @@ package Paws::ApiGateway::GetSdk;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::SdkResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'GetSdkResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -40,22 +40,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Parameters => L<Paws::ApiGateway::MapOfStringToString>
 
-  
+
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> SdkType => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> StageName => Str
 
-  
+
+
 
 
 

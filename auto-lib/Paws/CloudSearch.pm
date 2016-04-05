@@ -3,6 +3,13 @@ package Paws::CloudSearch;
   sub service { 'cloudsearch' }
   sub version { '2013-01-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+       sub { defined $_[0]->http_status and $_[0]->http_status == 509 and $_[0]->code eq 'BandwidthLimitExceeded' },
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -127,6 +134,8 @@ package Paws::CloudSearch;
     my $call_object = $self->new_with_coercions('Paws::CloudSearch::UpdateServiceAccessPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/BuildSuggesters CreateDomain DefineAnalysisScheme DefineExpression DefineIndexField DefineSuggester DeleteAnalysisScheme DeleteDomain DeleteExpression DeleteIndexField DeleteSuggester DescribeAnalysisSchemes DescribeAvailabilityOptions DescribeDomains DescribeExpressions DescribeIndexFields DescribeScalingParameters DescribeServiceAccessPolicies DescribeSuggesters IndexDocuments ListDomainNames UpdateAvailabilityOptions UpdateScalingParameters UpdateServiceAccessPolicies / }
 

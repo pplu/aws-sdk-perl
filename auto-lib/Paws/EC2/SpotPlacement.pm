@@ -41,6 +41,9 @@ This class has no description
 
   The Availability Zone.
 
+[Spot fleet only] To specify multiple Availability Zones, separate them
+using commas; for example, "us-west-2a, us-west-2b".
+
 
 =head2 GroupName => Str
 

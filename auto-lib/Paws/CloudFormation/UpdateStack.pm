@@ -10,6 +10,7 @@ package Paws::CloudFormation::UpdateStack;
   has StackPolicyDuringUpdateBody => (is => 'ro', isa => 'Str');
   has StackPolicyDuringUpdateURL => (is => 'ro', isa => 'Str');
   has StackPolicyURL => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Tag]');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateURL => (is => 'ro', isa => 'Str');
   has UsePreviousTemplate => (is => 'ro', isa => 'Bool');
@@ -46,35 +47,43 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Capabilities => ArrayRef[Str]
 
-  A list of capabilities that you must specify before AWS CloudFormation
-can create or update certain stacks. Some stack templates might include
-resources that can affect permissions in your AWS account. For those
+A list of capabilities that you must specify before AWS CloudFormation
+can update certain stacks. Some stack templates might include resources
+that can affect permissions in your AWS account, for example, by
+creating new AWS Identity and Access Management (IAM) users. For those
 stacks, you must explicitly acknowledge their capabilities by
-specifying this parameter. Currently, the only valid value is
-C<CAPABILITY_IAM>, which is required for the following resources:
-AWS::IAM::AccessKey, AWS::IAM::Group, AWS::IAM::InstanceProfile,
-AWS::IAM::Policy, AWS::IAM::Role, AWS::IAM::User, and
-AWS::IAM::UserToGroupAddition. If your stack template contains these
-resources, we recommend that you review any permissions associated with
-them. If you don't specify this parameter, this action returns an
-InsufficientCapabilities error.
+specifying this parameter.
+
+Currently, the only valid value is C<CAPABILITY_IAM>, which is required
+for the following resources: AWS::IAM::AccessKey, AWS::IAM::Group,
+AWS::IAM::InstanceProfile, AWS::IAM::Policy, AWS::IAM::Role,
+AWS::IAM::User, and AWS::IAM::UserToGroupAddition. If your stack
+template contains these resources, we recommend that you review all
+permissions associated with them and edit their permissions if
+necessary. If your template contains any of the listed resources and
+you don't specify this parameter, this action returns an
+C<InsufficientCapabilities> error.
+
 
 
 =head2 NotificationARNs => ArrayRef[Str]
 
-  Update the ARNs for the Amazon SNS topics that are associated with the
-stack.
+Amazon Simple Notification Service topic Amazon Resource Names (ARNs)
+that AWS CloudFormation associates with the stack. Specify an empty
+list to remove all notification topics.
+
 
 
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]
 
-  A list of C<Parameter> structures that specify input parameters for the
+A list of C<Parameter> structures that specify input parameters for the
 stack. For more information, see the Parameter data type.
+
 
 
 =head2 ResourceTypes => ArrayRef[Str]
 
-  The template resource types that you have permissions to work with for
+The template resource types that you have permissions to work with for
 this update stack action, such as C<AWS::EC2::Instance>,
 C<AWS::EC2::*>, or C<Custom::MyCustomInstance>.
 
@@ -83,17 +92,19 @@ updating, the stack update fails. By default, AWS CloudFormation grants
 permissions to all resource types. AWS Identity and Access Management
 (IAM) uses this parameter for AWS CloudFormation-specific condition
 keys in IAM policies. For more information, see Controlling Access with
-AWS Identity and Access Management
+AWS Identity and Access Management.
+
 
 
 =head2 B<REQUIRED> StackName => Str
 
-  The name or unique stack ID of the stack to update.
+The name or unique stack ID of the stack to update.
+
 
 
 =head2 StackPolicyBody => Str
 
-  Structure containing a new stack policy body. You can specify either
+Structure containing a new stack policy body. You can specify either
 the C<StackPolicyBody> or the C<StackPolicyURL> parameter, but not
 both.
 
@@ -103,9 +114,10 @@ specify a stack policy, the current policy that is associated with the
 stack is unchanged.
 
 
+
 =head2 StackPolicyDuringUpdateBody => Str
 
-  Structure containing the temporary overriding stack policy body. You
+Structure containing the temporary overriding stack policy body. You
 can specify either the C<StackPolicyDuringUpdateBody> or the
 C<StackPolicyDuringUpdateURL> parameter, but not both.
 
@@ -115,9 +127,10 @@ stack policy, the current policy that is associated with the stack will
 be used.
 
 
+
 =head2 StackPolicyDuringUpdateURL => Str
 
-  Location of a file containing the temporary overriding stack policy.
+Location of a file containing the temporary overriding stack policy.
 The URL must point to a policy (max size: 16KB) located in an S3 bucket
 in the same region as the stack. You can specify either the
 C<StackPolicyDuringUpdateBody> or the C<StackPolicyDuringUpdateURL>
@@ -129,9 +142,10 @@ stack policy, the current policy that is associated with the stack will
 be used.
 
 
+
 =head2 StackPolicyURL => Str
 
-  Location of a file containing the updated stack policy. The URL must
+Location of a file containing the updated stack policy. The URL must
 point to a policy (max size: 16KB) located in an S3 bucket in the same
 region as the stack. You can specify either the C<StackPolicyBody> or
 the C<StackPolicyURL> parameter, but not both.
@@ -142,9 +156,22 @@ specify a stack policy, the current policy that is associated with the
 stack is unchanged.
 
 
+
+=head2 Tags => ArrayRef[L<Paws::CloudFormation::Tag>]
+
+Key-value pairs to associate with this stack. AWS CloudFormation also
+propagates these tags to supported resources in the stack. You can
+specify a maximum number of 10 tags.
+
+If you don't specify this parameter, AWS CloudFormation doesn't modify
+the stack's tags. If you specify an empty value, AWS CloudFormation
+removes all associated tags.
+
+
+
 =head2 TemplateBody => Str
 
-  Structure containing the template body with a minimum length of 1 byte
+Structure containing the template body with a minimum length of 1 byte
 and a maximum length of 51,200 bytes. (For more information, go to
 Template Anatomy in the AWS CloudFormation User Guide.)
 
@@ -152,9 +179,10 @@ Conditional: You must specify either the C<TemplateBody> or the
 C<TemplateURL> parameter, but not both.
 
 
+
 =head2 TemplateURL => Str
 
-  Location of file containing the template body. The URL must point to a
+Location of file containing the template body. The URL must point to a
 template that is located in an Amazon S3 bucket. For more information,
 go to Template Anatomy in the AWS CloudFormation User Guide.
 
@@ -162,10 +190,12 @@ Conditional: You must specify either the C<TemplateBody> or the
 C<TemplateURL> parameter, but not both.
 
 
+
 =head2 UsePreviousTemplate => Bool
 
-  Reuse the existing template that is associated with the stack that you
+Reuse the existing template that is associated with the stack that you
 are updating.
+
 
 
 

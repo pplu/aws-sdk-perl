@@ -12,7 +12,7 @@ package Paws::CognitoSync::UnsubscribeFromDataset;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CognitoSync::UnsubscribeFromDatasetResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UnsubscribeFromDatasetResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -40,24 +40,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DatasetName => Str
 
-  The name of the dataset from which to unsubcribe.
+The name of the dataset from which to unsubcribe.
+
 
 
 =head2 B<REQUIRED> DeviceId => Str
 
-  The unique ID generated for this device by Cognito.
+The unique ID generated for this device by Cognito.
+
 
 
 =head2 B<REQUIRED> IdentityId => Str
 
-  Unique ID for this identity.
+Unique ID for this identity.
+
 
 
 =head2 B<REQUIRED> IdentityPoolId => Str
 
-  A name-spaced GUID (for example,
+A name-spaced GUID (for example,
 us-east-1:23EC4050-6AEA-7089-A2DD-08002EXAMPLE) created by Amazon
 Cognito. The ID of the pool to which this identity belongs.
+
 
 
 

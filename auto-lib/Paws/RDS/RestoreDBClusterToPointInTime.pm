@@ -3,6 +3,7 @@ package Paws::RDS::RestoreDBClusterToPointInTime;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has RestoreToTime => (is => 'ro', isa => 'Str');
@@ -43,7 +44,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-  The name of the new DB cluster to be created.
+The name of the new DB cluster to be created.
 
 Constraints:
 
@@ -59,28 +60,77 @@ Constraints:
 
 
 
+
 =head2 DBSubnetGroupName => Str
 
-  The DB subnet group name to use for the new DB cluster.
+The DB subnet group name to use for the new DB cluster.
+
+Constraints: Must contain no more than 255 alphanumeric characters,
+periods, underscores, spaces, or hyphens. Must not be default.
+
+Example: C<mySubnetgroup>
+
+
+
+=head2 KmsKeyId => Str
+
+The KMS key identifier to use when restoring an encrypted DB cluster
+from an encrypted DB cluster.
+
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are restoring a DB cluster with the same AWS
+account that owns the KMS encryption key used to encrypt the new DB
+cluster, then you can use the KMS key alias instead of the ARN for the
+KMS encryption key.
+
+You can restore to a new DB cluster and encrypt the new DB cluster with
+a KMS key that is different than the KMS key used to encrypt the source
+DB cluster. The new DB cluster will be encrypted with the KMS key
+identified by the C<KmsKeyId> parameter.
+
+If you do not specify a value for the C<KmsKeyId> parameter, then the
+following will occur:
+
+=over
+
+=item * If the DB cluster is encrypted, then the restored DB cluster is
+encrypted using the KMS key that was used to encrypt the source DB
+cluster.
+
+=back
+
+=over
+
+=item * If the DB cluster is not encrypted, then the restored DB
+cluster is not encrypted.
+
+If C<DBClusterIdentifier> refers to a DB cluster that is note
+encrypted, then the restore request is rejected.
+
+=back
+
+
 
 
 =head2 OptionGroupName => Str
 
-  The name of the option group for the new DB cluster.
+The name of the option group for the new DB cluster.
+
 
 
 =head2 Port => Int
 
-  The port number on which the new DB cluster accepts connections.
+The port number on which the new DB cluster accepts connections.
 
 Constraints: Value must be C<1150-65535>
 
 Default: The same port as the original DB cluster.
 
 
+
 =head2 RestoreToTime => Str
 
-  The date and time to restore the DB cluster to.
+The date and time to restore the DB cluster to.
 
 Valid Values: Value must be a time in Universal Coordinated Time (UTC)
 format
@@ -99,9 +149,10 @@ true
 Example: C<2015-03-07T23:45:00Z>
 
 
+
 =head2 B<REQUIRED> SourceDBClusterIdentifier => Str
 
-  The identifier of the source DB cluster from which to restore.
+The identifier of the source DB cluster from which to restore.
 
 Constraints:
 
@@ -119,14 +170,16 @@ Constraints:
 
 
 
+
 =head2 Tags => ArrayRef[L<Paws::RDS::Tag>]
 
-  
+
+
 
 
 =head2 UseLatestRestorableTime => Bool
 
-  A value that is set to C<true> to restore the DB cluster to the latest
+A value that is set to C<true> to restore the DB cluster to the latest
 restorable backup time, and C<false> otherwise.
 
 Default: C<false>
@@ -135,9 +188,11 @@ Constraints: Cannot be specified if C<RestoreToTime> parameter is
 provided.
 
 
+
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-  A lst of VPC security groups that the new DB cluster belongs to.
+A lst of VPC security groups that the new DB cluster belongs to.
+
 
 
 

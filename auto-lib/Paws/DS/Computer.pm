@@ -40,7 +40,7 @@ Contains information about a computer account in a directory.
 
 =head2 ComputerAttributes => ArrayRef[L<Paws::DS::Attribute>]
 
-  An array of Attribute objects that contain the LDAP attributes that
+  An array of Attribute objects containing the LDAP attributes that
 belong to the computer account.
 
 

@@ -16,7 +16,9 @@ Paws::ELB::ConfigureHealthCheckOutput
 
 =head2 HealthCheck => L<Paws::ELB::HealthCheck>
 
-  The updated health check.
+The updated health check.
+
+
 
 
 =cut

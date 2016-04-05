@@ -16,7 +16,9 @@ Paws::CloudSearch::CreateDomainResponse
 
 =head2 DomainStatus => L<Paws::CloudSearch::DomainStatus>
 
-  
+
+
+
 
 
 =cut

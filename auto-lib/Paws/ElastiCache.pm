@@ -3,6 +3,12 @@ package Paws::ElastiCache;
   sub service { 'elasticache' }
   sub version { '2015-02-02' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -142,6 +148,11 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeSnapshots', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAllowedNodeTypeModifications {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::ListAllowedNodeTypeModifications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::ListTagsForResource', @_);
@@ -192,176 +203,226 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::RevokeCacheSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllCacheClusters {
     my $self = shift;
 
     my $result = $self->DescribeCacheClusters(@_);
-    my $array = [];
-    push @$array, @{ $result->CacheClusters };
+    my $params = {};
+    
+    $params->{ CacheClusters } = $result->CacheClusters;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeCacheClusters(@_, Marker => $result->Marker);
-      push @$array, @{ $result->CacheClusters };
+      
+      push @{ $params->{ CacheClusters } }, @{ $result->CacheClusters };
+      
     }
 
-    return 'Paws::ElastiCache::DescribeCacheClusters'->_returns->new(CacheClusters => $array);
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheClusters->_returns, %$params);
   }
   sub DescribeAllCacheEngineVersions {
     my $self = shift;
 
     my $result = $self->DescribeCacheEngineVersions(@_);
-    my $array = [];
-    push @$array, @{ $result->CacheEngineVersions };
+    my $params = {};
+    
+    $params->{ CacheEngineVersions } = $result->CacheEngineVersions;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeCacheEngineVersions(@_, Marker => $result->Marker);
-      push @$array, @{ $result->CacheEngineVersions };
+      
+      push @{ $params->{ CacheEngineVersions } }, @{ $result->CacheEngineVersions };
+      
     }
 
-    return 'Paws::ElastiCache::DescribeCacheEngineVersions'->_returns->new(CacheEngineVersions => $array);
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheEngineVersions->_returns, %$params);
   }
   sub DescribeAllCacheParameterGroups {
     my $self = shift;
 
     my $result = $self->DescribeCacheParameterGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->CacheParameterGroups };
+    my $params = {};
+    
+    $params->{ CacheParameterGroups } = $result->CacheParameterGroups;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeCacheParameterGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->CacheParameterGroups };
+      
+      push @{ $params->{ CacheParameterGroups } }, @{ $result->CacheParameterGroups };
+      
     }
 
-    return 'Paws::ElastiCache::DescribeCacheParameterGroups'->_returns->new(CacheParameterGroups => $array);
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheParameterGroups->_returns, %$params);
   }
   sub DescribeAllCacheParameters {
     my $self = shift;
 
     my $result = $self->DescribeCacheParameters(@_);
-    my $array = [];
-    push @$array, @{ $result->Parameters };
+    my $params = {};
+    
+    $params->{ Parameters } = $result->Parameters;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeCacheParameters(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Parameters };
+      
+      push @{ $params->{ Parameters } }, @{ $result->Parameters };
+      
     }
 
-    return 'Paws::ElastiCache::DescribeCacheParameters'->_returns->new(Parameters => $array);
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheParameters->_returns, %$params);
   }
   sub DescribeAllCacheSecurityGroups {
     my $self = shift;
 
     my $result = $self->DescribeCacheSecurityGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->CacheSecurityGroups };
+    my $params = {};
+    
+    $params->{ CacheSecurityGroups } = $result->CacheSecurityGroups;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeCacheSecurityGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->CacheSecurityGroups };
+      
+      push @{ $params->{ CacheSecurityGroups } }, @{ $result->CacheSecurityGroups };
+      
     }
 
-    return 'Paws::ElastiCache::DescribeCacheSecurityGroups'->_returns->new(CacheSecurityGroups => $array);
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheSecurityGroups->_returns, %$params);
   }
   sub DescribeAllCacheSubnetGroups {
     my $self = shift;
 
     my $result = $self->DescribeCacheSubnetGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->CacheSubnetGroups };
+    my $params = {};
+    
+    $params->{ CacheSubnetGroups } = $result->CacheSubnetGroups;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeCacheSubnetGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->CacheSubnetGroups };
+      
+      push @{ $params->{ CacheSubnetGroups } }, @{ $result->CacheSubnetGroups };
+      
     }
 
-    return 'Paws::ElastiCache::DescribeCacheSubnetGroups'->_returns->new(CacheSubnetGroups => $array);
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheSubnetGroups->_returns, %$params);
   }
   sub DescribeAllEngineDefaultParameters {
     my $self = shift;
 
     my $result = $self->DescribeEngineDefaultParameters(@_);
-    my $array = [];
-    push @$array, @{ $result->EngineDefaults->Parameters };
+    my $params = {};
+    
+    $params->{ EngineDefaults.Parameters } = $result->EngineDefaults->Parameters;
+    
 
-    while ($result->EngineDefaults->Marker) {
+    while ($result->) {
       $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
-      push @$array, @{ $result->EngineDefaults->Parameters };
+      
+      push @{ $params->{ EngineDefaults.Parameters } }, @{ $result->EngineDefaults->Parameters };
+      
     }
 
-    return $self->new_with_coercions('Paws::ElastiCache::DescribeEngineDefaultParameters'->_returns, EngineDefaults => { Parameters => $array });
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeEngineDefaultParameters->_returns, %$params);
   }
   sub DescribeAllEvents {
     my $self = shift;
 
     my $result = $self->DescribeEvents(@_);
-    my $array = [];
-    push @$array, @{ $result->Events };
+    my $params = {};
+    
+    $params->{ Events } = $result->Events;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeEvents(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Events };
+      
+      push @{ $params->{ Events } }, @{ $result->Events };
+      
     }
 
-    return 'Paws::ElastiCache::DescribeEvents'->_returns->new(Events => $array);
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeEvents->_returns, %$params);
   }
   sub DescribeAllReplicationGroups {
     my $self = shift;
 
     my $result = $self->DescribeReplicationGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->ReplicationGroups };
+    my $params = {};
+    
+    $params->{ ReplicationGroups } = $result->ReplicationGroups;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeReplicationGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ReplicationGroups };
+      
+      push @{ $params->{ ReplicationGroups } }, @{ $result->ReplicationGroups };
+      
     }
 
-    return 'Paws::ElastiCache::DescribeReplicationGroups'->_returns->new(ReplicationGroups => $array);
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeReplicationGroups->_returns, %$params);
   }
   sub DescribeAllReservedCacheNodes {
     my $self = shift;
 
     my $result = $self->DescribeReservedCacheNodes(@_);
-    my $array = [];
-    push @$array, @{ $result->ReservedCacheNodes };
+    my $params = {};
+    
+    $params->{ ReservedCacheNodes } = $result->ReservedCacheNodes;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeReservedCacheNodes(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ReservedCacheNodes };
+      
+      push @{ $params->{ ReservedCacheNodes } }, @{ $result->ReservedCacheNodes };
+      
     }
 
-    return 'Paws::ElastiCache::DescribeReservedCacheNodes'->_returns->new(ReservedCacheNodes => $array);
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeReservedCacheNodes->_returns, %$params);
   }
   sub DescribeAllReservedCacheNodesOfferings {
     my $self = shift;
 
     my $result = $self->DescribeReservedCacheNodesOfferings(@_);
-    my $array = [];
-    push @$array, @{ $result->ReservedCacheNodesOfferings };
+    my $params = {};
+    
+    $params->{ ReservedCacheNodesOfferings } = $result->ReservedCacheNodesOfferings;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeReservedCacheNodesOfferings(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ReservedCacheNodesOfferings };
+      
+      push @{ $params->{ ReservedCacheNodesOfferings } }, @{ $result->ReservedCacheNodesOfferings };
+      
     }
 
-    return 'Paws::ElastiCache::DescribeReservedCacheNodesOfferings'->_returns->new(ReservedCacheNodesOfferings => $array);
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeReservedCacheNodesOfferings->_returns, %$params);
   }
   sub DescribeAllSnapshots {
     my $self = shift;
 
     my $result = $self->DescribeSnapshots(@_);
-    my $array = [];
-    push @$array, @{ $result->Snapshots };
+    my $params = {};
+    
+    $params->{ Snapshots } = $result->Snapshots;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->DescribeSnapshots(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Snapshots };
+      
+      push @{ $params->{ Snapshots } }, @{ $result->Snapshots };
+      
     }
 
-    return 'Paws::ElastiCache::DescribeSnapshots'->_returns->new(Snapshots => $array);
+    return $self->new_with_coercions(Paws::ElastiCache::DescribeSnapshots->_returns, %$params);
   }
 
-  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress / }
+
+  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeSnapshots ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress / }
 
 1;
 
@@ -764,6 +825,22 @@ snapshots; it can optionally describe a single snapshot, or just the
 snapshots associated with a particular cache cluster.
 
 
+=head2 ListAllowedNodeTypeModifications([CacheClusterId => Str, ReplicationGroupId => Str])
+
+Each argument is described in detail in: L<Paws::ElastiCache::ListAllowedNodeTypeModifications>
+
+Returns: a L<Paws::ElastiCache::AllowedNodeTypeModificationsMessage> instance
+
+  The C<ListAllowedNodeTypeModifications> action lists all available node
+types that you can scale your Redis cluster's or replication group's
+current node type up to.
+
+When you use the C<ModifyCacheCluster> or C<ModifyReplicationGroup>
+APIs to scale up your cluster or replication group, the value of the
+I<CacheNodeType> parameter must be one of the node types returned by
+this action.
+
+
 =head2 ListTagsForResource(ResourceName => Str)
 
 Each argument is described in detail in: L<Paws::ElastiCache::ListTagsForResource>
@@ -781,7 +858,7 @@ resource. For more information, see Using Cost Allocation Tags in
 Amazon ElastiCache.
 
 
-=head2 ModifyCacheCluster(CacheClusterId => Str, [ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeIdsToRemove => ArrayRef[Str], CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], EngineVersion => Str, NewAvailabilityZones => ArrayRef[Str], NotificationTopicArn => Str, NotificationTopicStatus => Str, NumCacheNodes => Int, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str], SnapshotRetentionLimit => Int, SnapshotWindow => Str])
+=head2 ModifyCacheCluster(CacheClusterId => Str, [ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeIdsToRemove => ArrayRef[Str], CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], EngineVersion => Str, NewAvailabilityZones => ArrayRef[Str], NotificationTopicArn => Str, NotificationTopicStatus => Str, NumCacheNodes => Int, PreferredMaintenanceWindow => Str, SecurityGroupIds => ArrayRef[Str], SnapshotRetentionLimit => Int, SnapshotWindow => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyCacheCluster>
 
@@ -814,7 +891,7 @@ Returns: a L<Paws::ElastiCache::ModifyCacheSubnetGroupResult> instance
 group.
 
 
-=head2 ModifyReplicationGroup(ReplicationGroupId => Str, [ApplyImmediately => Bool, AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], EngineVersion => Str, NotificationTopicArn => Str, NotificationTopicStatus => Str, PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, ReplicationGroupDescription => Str, SecurityGroupIds => ArrayRef[Str], SnapshotRetentionLimit => Int, SnapshottingClusterId => Str, SnapshotWindow => Str])
+=head2 ModifyReplicationGroup(ReplicationGroupId => Str, [ApplyImmediately => Bool, AutomaticFailoverEnabled => Bool, AutoMinorVersionUpgrade => Bool, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], EngineVersion => Str, NotificationTopicArn => Str, NotificationTopicStatus => Str, PreferredMaintenanceWindow => Str, PrimaryClusterId => Str, ReplicationGroupDescription => Str, SecurityGroupIds => ArrayRef[Str], SnapshotRetentionLimit => Int, SnapshottingClusterId => Str, SnapshotWindow => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::ModifyReplicationGroup>
 

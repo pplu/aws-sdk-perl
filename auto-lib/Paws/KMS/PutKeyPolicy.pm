@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> KeyId => Str
 
-  A unique identifier for the customer master key. This value can be a
+A unique identifier for the customer master key. This value can be a
 globally unique identifier or the fully specified ARN to a key.
 
 =over
@@ -52,17 +52,20 @@ arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
 
 
+
 =head2 B<REQUIRED> Policy => Str
 
-  The policy to attach to the key. This is required and delegates back to
+The policy to attach to the key. This is required and delegates back to
 the account. The key is the root of trust. The policy size limit is 32
 KiB (32768 bytes).
 
 
+
 =head2 B<REQUIRED> PolicyName => Str
 
-  Name of the policy to be attached. Currently, the only supported name
+Name of the policy to be attached. Currently, the only supported name
 is "default".
+
 
 
 

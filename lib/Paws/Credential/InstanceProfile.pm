@@ -1,4 +1,4 @@
-package Paws::Credential::InstanceProfile {
+package Paws::Credential::InstanceProfile;
   use JSON::MaybeXS;
   use Moose;
   use DateTime;
@@ -76,6 +76,4 @@ package Paws::Credential::InstanceProfile {
   }
 
   no Moose;
-}
-
 1;

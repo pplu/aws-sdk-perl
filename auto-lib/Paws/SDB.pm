@@ -3,6 +3,12 @@ package Paws::SDB;
   sub service { 'sdb' }
   sub version { '2009-04-15' }
   sub flattened_arrays { 1 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -75,34 +81,44 @@ package Paws::SDB;
     my $call_object = $self->new_with_coercions('Paws::SDB::Select', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllDomains {
     my $self = shift;
 
     my $result = $self->ListDomains(@_);
-    my $array = [];
-    push @$array, @{ $result->DomainNames };
+    my $params = {};
+    
+    $params->{ DomainNames } = $result->DomainNames;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->ListDomains(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->DomainNames };
+      
+      push @{ $params->{ DomainNames } }, @{ $result->DomainNames };
+      
     }
 
-    return 'Paws::SDB::ListDomains'->_returns->new(DomainNames => $array);
+    return $self->new_with_coercions(Paws::SDB::ListDomains->_returns, %$params);
   }
   sub SelectAll {
     my $self = shift;
 
     my $result = $self->Select(@_);
-    my $array = [];
-    push @$array, @{ $result->Items };
+    my $params = {};
+    
+    $params->{ Items } = $result->Items;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->Select(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Items };
+      
+      push @{ $params->{ Items } }, @{ $result->Items };
+      
     }
 
-    return 'Paws::SDB::Select'->_returns->new(Items => $array);
+    return $self->new_with_coercions(Paws::SDB::Select->_returns, %$params);
   }
+
 
   sub operations { qw/BatchDeleteAttributes BatchPutAttributes CreateDomain DeleteAttributes DeleteDomain DomainMetadata GetAttributes ListDomains PutAttributes Select / }
 
@@ -256,7 +272,7 @@ If the client requires additional domains, go to
 http://aws.amazon.com/contact-us/simpledb-limit-request/.
 
 
-=head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[L<Paws::SDB::Attribute>], Expected => L<Paws::SDB::UpdateCondition>])
+=head2 DeleteAttributes(DomainName => Str, ItemName => Str, [Attributes => ArrayRef[L<Paws::SDB::DeletableAttribute>], Expected => L<Paws::SDB::UpdateCondition>])
 
 Each argument is described in detail in: L<Paws::SDB::DeleteAttributes>
 
@@ -297,7 +313,7 @@ created, the number of items and attributes in the domain, and the size
 of the attribute names and values.
 
 
-=head2 GetAttributes(DomainName => Str, ItemName => Str, [AttributeNames => ArrayRef[Str], ConsistentRead => Bool])
+=head2 GetAttributes(DomainName => Str, ItemName => Str, [AttributeName => Str, ConsistentRead => Bool])
 
 Each argument is described in detail in: L<Paws::SDB::GetAttributes>
 

@@ -40,14 +40,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-  The name of an existing AWS CodeDeploy application associated with the
+The name of an AWS CodeDeploy application associated with the
 applicable IAM user or AWS account.
+
 
 
 =head2 DeploymentConfigName => Str
 
-  The name of an existing deployment configuration associated with the
-applicable IAM user or AWS account.
+The name of a deployment configuration associated with the applicable
+IAM user or AWS account.
 
 If not specified, the value configured in the deployment group will be
 used as the default. If the deployment group does not have a deployment
@@ -55,34 +56,37 @@ configuration associated with it, then CodeDeployDefault.OneAtATime
 will be used by default.
 
 
+
 =head2 DeploymentGroupName => Str
 
-  The deployment group's name.
+The name of the deployment group.
+
 
 
 =head2 Description => Str
 
-  A comment about the deployment.
+A comment about the deployment.
+
 
 
 =head2 IgnoreApplicationStopFailures => Bool
 
-  If set to true, then if the deployment causes the ApplicationStop
-deployment lifecycle event to fail to a specific instance, the
-deployment will not be considered to have failed to that instance at
-that point and will continue on to the BeforeInstall deployment
-lifecycle event.
+If set to true, then if the deployment causes the ApplicationStop
+deployment lifecycle event to an instance to fail, the deployment to
+that instance will not be considered to have failed at that point and
+will continue on to the BeforeInstall deployment lifecycle event.
 
 If set to false or not specified, then if the deployment causes the
-ApplicationStop deployment lifecycle event to fail to a specific
-instance, the deployment will stop to that instance, and the deployment
-to that instance will be considered to have failed.
+ApplicationStop deployment lifecycle event to fail to an instance, the
+deployment to that instance will stop, and the deployment to that
+instance will be considered to have failed.
+
 
 
 =head2 Revision => L<Paws::CodeDeploy::RevisionLocation>
 
-  The type of revision to deploy, along with information about the
-revision's location.
+The type and location of the revision to deploy.
+
 
 
 

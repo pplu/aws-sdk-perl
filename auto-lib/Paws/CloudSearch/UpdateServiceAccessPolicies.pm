@@ -36,13 +36,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AccessPolicies => Str
 
-  The access rules you want to configure. These rules replace any
+The access rules you want to configure. These rules replace any
 existing rules.
+
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
+
+
 
 
 

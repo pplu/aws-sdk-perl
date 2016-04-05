@@ -15,7 +15,9 @@ Paws::Firehose::PutRecordOutput
 
 =head2 B<REQUIRED> RecordId => Str
 
-  The ID of the record.
+The ID of the record.
+
+
 
 
 =cut

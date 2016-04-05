@@ -15,7 +15,9 @@ Paws::DirectConnect::DeleteInterconnectResponse
 
 =head2 InterconnectState => Str
 
-  
+
+
+Valid values are: C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">
 
 
 =cut

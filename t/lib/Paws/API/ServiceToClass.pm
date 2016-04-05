@@ -1,8 +1,9 @@
-package Paws::API::ServiceToClass {
+package Paws::API::ServiceToClass;
   use strict;
   use warnings;
 
   our $services_to_classes = {
+    acm => 'ACM',
     apigateway => 'ApiGateway',
     autoscaling => 'AutoScaling',
     cloudformation => 'CloudFormation',
@@ -21,10 +22,12 @@ package Paws::API::ServiceToClass {
     datapipeline => 'DataPipeline',
     devicefarm => 'DeviceFarm',
     directconnect => 'DirectConnect',
+    dms => 'DMS',
     ds => 'DS',
     dynamodb => 'DynamoDB',
     dynamodbstreams => 'DynamoDBStreams',
     ec2 => 'EC2',
+    ecr => 'ECR',
     efs => 'EFS',
     elasticache => 'ElastiCache',
     elasticbeanstalk => 'ElasticBeanstalk',
@@ -36,7 +39,9 @@ package Paws::API::ServiceToClass {
     emr => 'EMR',
     es => 'ES',
     email => undef,
+    events => 'CloudWatchEvents',
     firehose => 'Firehose',
+    gamelift => 'GameLift',
     glacier => 'Glacier',
     iam => 'IAM',
     iot => 'IoT',
@@ -49,6 +54,7 @@ package Paws::API::ServiceToClass {
     logs => 'CloudWatchLogs',
     machinelearning => 'MachineLearning',
     marketplacecommerceanalytics => 'MarketplaceCommerceAnalytics',
+    meteringmarketplace => 'MarketplaceMetering',
     monitoring => 'CloudWatch',
     opsworks => 'OpsWorks',
     rds => 'RDS',
@@ -85,5 +91,4 @@ package Paws::API::ServiceToClass {
   sub classes {
     grep { defined $_ } values %$services_to_classes;
   }
-}
 1;

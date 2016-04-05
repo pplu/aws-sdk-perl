@@ -41,13 +41,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AttributeDefinitions => ArrayRef[L<Paws::DynamoDB::AttributeDefinition>]
 
-  An array of attributes that describe the key schema for the table and
+An array of attributes that describe the key schema for the table and
 indexes.
+
 
 
 =head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndex>]
 
-  One or more global secondary indexes (the maximum is five) to be
+One or more global secondary indexes (the maximum is five) to be
 created on the table. Each global secondary index in the array includes
 the following:
 
@@ -113,9 +114,10 @@ global secondary index, consisting of read and write capacity units.
 
 
 
+
 =head2 B<REQUIRED> KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
-  Specifies the attributes that make up the primary key for a table or an
+Specifies the attributes that make up the primary key for a table or an
 index. The attributes in I<KeySchema> must also be defined in the
 I<AttributeDefinitions> array. For more information, see Data Model in
 the I<Amazon DynamoDB Developer Guide>.
@@ -130,15 +132,36 @@ I<AttributeName> - The name of this key attribute.
 
 =item *
 
-I<KeyType> - Determines whether the key attribute is C<HASH> or
-C<RANGE>.
+I<KeyType> - The role that the key attribute will assume:
+
+=over
+
+=item *
+
+C<HASH> - partition key
+
+=item *
+
+C<RANGE> - sort key
 
 =back
 
-For a primary key that consists of a hash attribute, you must provide
-exactly one element with a I<KeyType> of C<HASH>.
+=back
 
-For a primary key that consists of hash and range attributes, you must
+The partition key of an item is also known as its I<hash attribute>.
+The term "hash attribute" derives from DynamoDB' usage of an internal
+hash function to evenly distribute data items across partitions, based
+on their partition key values.
+
+The sort key of an item is also known as its I<range attribute>. The
+term "range attribute" derives from the way DynamoDB stores items with
+the same partition key physically close together, in sorted order by
+the sort key value.
+
+For a simple primary key (partition key), you must provide exactly one
+element with a I<KeyType> of C<HASH>.
+
+For a composite primary key (partition key and sort key), you must
 provide exactly two elements, in this order: The first element must
 have a I<KeyType> of C<HASH>, and the second element must have a
 I<KeyType> of C<RANGE>.
@@ -147,12 +170,13 @@ For more information, see Specifying the Primary Key in the I<Amazon
 DynamoDB Developer Guide>.
 
 
+
 =head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]
 
-  One or more local secondary indexes (the maximum is five) to be created
-on the table. Each index is scoped to a given hash key value. There is
-a 10 GB size limit per hash key; otherwise, the size of a local
-secondary index is unconstrained.
+One or more local secondary indexes (the maximum is five) to be created
+on the table. Each index is scoped to a given partition key value.
+There is a 10 GB size limit per partition key value; otherwise, the
+size of a local secondary index is unconstrained.
 
 Each local secondary index in the array includes the following:
 
@@ -166,8 +190,7 @@ only for this table.
 =item *
 
 I<KeySchema> - Specifies the key schema for the local secondary index.
-The key schema must begin with the same hash key attribute as the
-table.
+The key schema must begin with the same partition key as the table.
 
 =item *
 
@@ -215,14 +238,16 @@ attributes when determining the total.
 
 
 
+
 =head2 B<REQUIRED> ProvisionedThroughput => L<Paws::DynamoDB::ProvisionedThroughput>
 
-  
+
+
 
 
 =head2 StreamSpecification => L<Paws::DynamoDB::StreamSpecification>
 
-  The settings for DynamoDB Streams on the table. These settings consist
+The settings for DynamoDB Streams on the table. These settings consist
 of:
 
 =over
@@ -266,9 +291,11 @@ item are written to the stream.
 
 
 
+
 =head2 B<REQUIRED> TableName => Str
 
-  The name of the table to create.
+The name of the table to create.
+
 
 
 

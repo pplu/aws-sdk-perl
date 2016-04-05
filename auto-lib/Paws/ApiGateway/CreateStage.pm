@@ -15,7 +15,7 @@ package Paws::ApiGateway::CreateStage;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/restapis/{restapi_id}/stages');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ApiGateway::Stage');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateStageResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -43,40 +43,47 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CacheClusterEnabled => Bool
 
-  Whether cache clustering is enabled for the stage.
+Whether cache clustering is enabled for the stage.
+
 
 
 =head2 CacheClusterSize => Str
 
-  The stage's cache cluster size.
+The stage's cache cluster size.
 
+Valid values are: C<"0.5">, C<"1.6">, C<"6.1">, C<"13.5">, C<"28.4">, C<"58.2">, C<"118">, C<"237">
 
 =head2 B<REQUIRED> DeploymentId => Str
 
-  The identifier of the Deployment resource for the Stage resource.
+The identifier of the Deployment resource for the Stage resource.
+
 
 
 =head2 Description => Str
 
-  The description of the Stage resource.
+The description of the Stage resource.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  The identifier of the RestApi resource for the Stage resource to
+The identifier of the RestApi resource for the Stage resource to
 create.
+
 
 
 =head2 B<REQUIRED> StageName => Str
 
-  The name for the Stage resource.
+The name for the Stage resource.
+
 
 
 =head2 Variables => L<Paws::ApiGateway::MapOfStringToString>
 
-  A map that defines the stage variables for the new Stage resource.
-Variable names can have alphabetic characters, and the values must
-match [A-Za-z0-9-._~:/?
+A map that defines the stage variables for the new Stage resource.
+Variable names can have alphanumeric characters, and the values must
+match C<[A-Za-z0-9-._~:/?&num;&=,]+>.
+
 
 
 

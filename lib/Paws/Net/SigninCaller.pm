@@ -1,4 +1,4 @@
-package Paws::Net::SigninCaller {
+package Paws::Net::SigninCaller;
   use Moose::Role;
   use JSON::MaybeXS;
   use URI::Template;
@@ -50,6 +50,4 @@ package Paws::Net::SigninCaller {
 
     return $request;
   }
-}
-
 1;

@@ -1,0 +1,8 @@
+---
+content: '{"DomainStatus":{"ARN":"arn:aws:es:eu-west-1:384647462792:domain/esdomain1","AccessPolicies":"","AdvancedOptions":{"indices.fielddata.cache.size":"","rest.action.multi.allow_explicit_index":"true"},"Created":true,"Deleted":false,"DomainId":"384647462792/esdomain1","DomainName":"esdomain1","EBSOptions":{"EBSEnabled":true,"Iops":0,"VolumeSize":10,"VolumeType":"standard"},"ElasticsearchClusterConfig":{"DedicatedMasterCount":null,"DedicatedMasterEnabled":false,"DedicatedMasterType":null,"InstanceCount":1,"InstanceType":"t2.micro.elasticsearch","ZoneAwarenessEnabled":false},"Endpoint":"search-esdomain1-q34bly73ntvrr3264n2o5tnyfa.eu-west-1.es.amazonaws.com","Processing":false,"SnapshotOptions":{"AutomatedSnapshotStartHour":0}}}'
+headers:
+  content-length: 731
+  content-type: application/json
+  date: 'Thu, 28 Jan 2016 22:00:36 GMT'
+  x-amzn-requestid: 8f5b0ecb-c60a-11e5-8a85-0739ace8f698
+status: 200

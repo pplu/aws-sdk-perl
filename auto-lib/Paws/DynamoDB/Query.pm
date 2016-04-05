@@ -51,7 +51,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributesToGet => ArrayRef[Str]
 
-  This is a legacy parameter, for backward compatibility. New
+This is a legacy parameter, for backward compatibility. New
 applications should use I<ProjectionExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -84,9 +84,10 @@ that are projected into the index. Global secondary index queries
 cannot fetch attributes from the parent table.
 
 
+
 =head2 ConditionalOperator => Str
 
-  This is a legacy parameter, for backward compatibility. New
+This is a legacy parameter, for backward compatibility. New
 applications should use I<FilterExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -113,10 +114,11 @@ The operation will succeed only if the entire map evaluates to true.
 
 This parameter does not support attributes of type List or Map.
 
+Valid values are: C<"AND">, C<"OR">
 
 =head2 ConsistentRead => Bool
 
-  Determines the read consistency model: If set to C<true>, then the
+Determines the read consistency model: If set to C<true>, then the
 operation uses strongly consistent reads; otherwise, the operation uses
 eventually consistent reads.
 
@@ -125,9 +127,10 @@ indexes. If you query a global secondary index with I<ConsistentRead>
 set to C<true>, you will receive a I<ValidationException>.
 
 
+
 =head2 ExclusiveStartKey => L<Paws::DynamoDB::Key>
 
-  The primary key of the first item that this operation will evaluate.
+The primary key of the first item that this operation will evaluate.
 Use the value that was returned for I<LastEvaluatedKey> in the previous
 operation.
 
@@ -135,9 +138,10 @@ The data type for I<ExclusiveStartKey> must be String, Number or
 Binary. No set data types are allowed.
 
 
+
 =head2 ExpressionAttributeNames => L<Paws::DynamoDB::ExpressionAttributeNameMap>
 
-  One or more substitution tokens for attribute names in an expression.
+One or more substitution tokens for attribute names in an expression.
 The following are some use cases for using I<ExpressionAttributeNames>:
 
 =over
@@ -202,9 +206,10 @@ For more information on expression attribute names, see Accessing Item
 Attributes in the I<Amazon DynamoDB Developer Guide>.
 
 
+
 =head2 ExpressionAttributeValues => L<Paws::DynamoDB::ExpressionAttributeValueMap>
 
-  One or more values that can be substituted in an expression.
+One or more values that can be substituted in an expression.
 
 Use the B<:> (colon) character in an expression to dereference an
 attribute value. For example, suppose that you wanted to check whether
@@ -226,9 +231,10 @@ For more information on expression attribute values, see Specifying
 Conditions in the I<Amazon DynamoDB Developer Guide>.
 
 
+
 =head2 FilterExpression => Str
 
-  A string that contains conditions that DynamoDB applies after the
+A string that contains conditions that DynamoDB applies after the
 I<Query> operation, but before the data is returned to you. Items that
 do not satisfy the I<FilterExpression> criteria are not returned.
 
@@ -243,85 +249,88 @@ I<FilterExpression> replaces the legacy I<QueryFilter> and
 I<ConditionalOperator> parameters.
 
 
+
 =head2 IndexName => Str
 
-  The name of an index to query. This index can be any local secondary
+The name of an index to query. This index can be any local secondary
 index or global secondary index on the table. Note that if you use the
 I<IndexName> parameter, you must also provide I<TableName.>
 
 
+
 =head2 KeyConditionExpression => Str
 
-  The condition that specifies the key value(s) for items to be retrieved
+The condition that specifies the key value(s) for items to be retrieved
 by the I<Query> action.
 
-The condition must perform an equality test on a single hash key value.
-The condition can also perform one of several comparison tests on a
-single range key value. I<Query> can use I<KeyConditionExpression> to
-retrieve one item with a given hash and range key value, or several
-items that have the same hash key value but different range key values.
+The condition must perform an equality test on a single partition key
+value. The condition can also perform one of several comparison tests
+on a single sort key value. I<Query> can use I<KeyConditionExpression>
+to retrieve one item with a given partition key value and sort key
+value, or several items that have the same partition key value but
+different sort key values.
 
-The hash key equality test is required, and must be specified in the
-following format:
+The partition key equality test is required, and must be specified in
+the following format:
 
-C<hashAttributeName> I<=> C<:hashval>
+C<partitionKeyName> I<=> C<:partitionkeyval>
 
-If you also want to provide a range key condition, it must be combined
-using I<AND> with the hash key condition. Following is an example,
-using the B<=> comparison operator for the range key:
+If you also want to provide a condition for the sort key, it must be
+combined using I<AND> with the condition for the sort key. Following is
+an example, using the B<=> comparison operator for the sort key:
 
-C<hashAttributeName> I<=> C<:hashval> I<AND> C<rangeAttributeName> I<=>
-C<:rangeval>
+C<partitionKeyName> I<=> C<:partitionkeyval> I<AND> C<sortKeyName> I<=>
+C<:sortkeyval>
 
-Valid comparisons for the range key condition are as follows:
+Valid comparisons for the sort key condition are as follows:
 
 =over
 
 =item *
 
-C<rangeAttributeName> I<=> C<:rangeval> - true if the range key is
-equal to C<:rangeval>.
+C<sortKeyName> I<=> C<:sortkeyval> - true if the sort key value is
+equal to C<:sortkeyval>.
 
 =item *
 
-C<rangeAttributeName> I<E<lt>> C<:rangeval> - true if the range key is
-less than C<:rangeval>.
+C<sortKeyName> I<> C<:sortkeyval> - true if the sort key value is less
+than C<:sortkeyval>.
 
 =item *
 
-C<rangeAttributeName> I<E<lt>=> C<:rangeval> - true if the range key is
-less than or equal to C<:rangeval>.
+C<sortKeyName> I<=> C<:sortkeyval> - true if the sort key value is less
+than or equal to C<:sortkeyval>.
 
 =item *
 
-C<rangeAttributeName> I<E<gt>> C<:rangeval> - true if the range key is
-greater than C<:rangeval>.
+C<sortKeyName> I<> C<:sortkeyval> - true if the sort key value is
+greater than C<:sortkeyval>.
 
 =item *
 
-C<rangeAttributeName> I<E<gt>= >C<:rangeval> - true if the range key is
-greater than or equal to C<:rangeval>.
+C<sortKeyName> I<= >C<:sortkeyval> - true if the sort key value is
+greater than or equal to C<:sortkeyval>.
 
 =item *
 
-C<rangeAttributeName> I<BETWEEN> C<:rangeval1> I<AND> C<:rangeval2> -
-true if the range key is greater than or equal to C<:rangeval1>, and
-less than or equal to C<:rangeval2>.
+C<sortKeyName> I<BETWEEN> C<:sortkeyval1> I<AND> C<:sortkeyval2> - true
+if the sort key value is greater than or equal to C<:sortkeyval1>, and
+less than or equal to C<:sortkeyval2>.
 
 =item *
 
-I<begins_with (>C<rangeAttributeName>, C<:rangeval>I<)> - true if the
-range key begins with a particular operand. (You cannot use this
-function with a range key that is of type Number.) Note that the
+I<begins_with (>C<sortKeyName>, C<:sortkeyval>I<)> - true if the sort
+key value begins with a particular operand. (You cannot use this
+function with a sort key that is of type Number.) Note that the
 function name C<begins_with> is case-sensitive.
 
 =back
 
 Use the I<ExpressionAttributeValues> parameter to replace tokens such
-as C<:hashval> and C<:rangeval> with actual values at runtime.
+as C<:partitionval> and C<:sortval> with actual values at runtime.
 
 You can optionally use the I<ExpressionAttributeNames> parameter to
-replace the names of the hash and range attributes with placeholder
+replace the names of the partition key and sort key with placeholder
 tokens. This option might be necessary if an attribute name conflicts
 with a DynamoDB reserved word. For example, the following
 I<KeyConditionExpression> parameter causes an error because I<Size> is
@@ -333,13 +342,13 @@ a reserved word:
 
 =back
 
-To work around this, define a placeholder (such a C<S>) to represent
-the attribute name I<Size>. I<KeyConditionExpression> then is as
-follows:
+To work around this, define a placeholder (such a C<&num;S>) to
+represent the attribute name I<Size>. I<KeyConditionExpression> then is
+as follows:
 
 =over
 
-=item * C<S = :myval>
+=item * C<&num;S = :myval>
 
 =back
 
@@ -354,9 +363,10 @@ I<KeyConditionExpression> replaces the legacy I<KeyConditions>
 parameter.
 
 
+
 =head2 KeyConditions => L<Paws::DynamoDB::KeyConditions>
 
-  This is a legacy parameter, for backward compatibility. New
+This is a legacy parameter, for backward compatibility. New
 applications should use I<KeyConditionExpression> instead. Do not
 combine legacy parameters and expression parameters in a single API
 call; otherwise, DynamoDB will return a I<ValidationException>
@@ -364,19 +374,18 @@ exception.
 
 The selection criteria for the query. For a query on a table, you can
 have conditions only on the table primary key attributes. You must
-provide the hash key attribute name and value as an C<EQ> condition.
-You can optionally provide a second condition, referring to the range
-key attribute.
+provide the partition key name and value as an C<EQ> condition. You can
+optionally provide a second condition, referring to the sort key.
 
-If you don't provide a range key condition, all of the items that match
-the hash key will be retrieved. If a I<FilterExpression> or
+If you don't provide a sort key condition, all of the items that match
+the partition key will be retrieved. If a I<FilterExpression> or
 I<QueryFilter> is present, it will be applied after the items are
 retrieved.
 
 For a query on an index, you can have conditions only on the index key
-attributes. You must provide the index hash attribute name and value as
+attributes. You must provide the index partition key name and value as
 an C<EQ> condition. You can optionally provide a second condition,
-referring to the index key range attribute.
+referring to the index sort key.
 
 Each I<KeyConditions> element consists of an attribute name to compare,
 along with the following:
@@ -500,9 +509,10 @@ see Legacy Conditional Parameters in the I<Amazon DynamoDB Developer
 Guide>.
 
 
+
 =head2 Limit => Int
 
-  The maximum number of items to evaluate (not necessarily the number of
+The maximum number of items to evaluate (not necessarily the number of
 matching items). If DynamoDB processes the number of items up to the
 limit while processing the results, it stops the operation and returns
 the matching values up to that point, and a key in I<LastEvaluatedKey>
@@ -515,9 +525,10 @@ information, see Query and Scan in the I<Amazon DynamoDB Developer
 Guide>.
 
 
+
 =head2 ProjectionExpression => Str
 
-  A string that identifies one or more attributes to retrieve from the
+A string that identifies one or more attributes to retrieve from the
 table. These attributes can include scalars, sets, or elements of a
 JSON document. The attributes in the expression must be separated by
 commas.
@@ -533,9 +544,10 @@ I<ProjectionExpression> replaces the legacy I<AttributesToGet>
 parameter.
 
 
+
 =head2 QueryFilter => L<Paws::DynamoDB::FilterConditionMap>
 
-  This is a legacy parameter, for backward compatibility. New
+This is a legacy parameter, for backward compatibility. New
 applications should use I<FilterExpression> instead. Do not combine
 legacy parameters and expression parameters in a single API call;
 otherwise, DynamoDB will return a I<ValidationException> exception.
@@ -557,7 +569,7 @@ do this, then at least one of the conditions must evaluate to true,
 rather than all of them.)
 
 Note that I<QueryFilter> does not allow key attributes. You cannot
-define a filter condition on a hash key or range key.
+define a filter condition on a partition key or a sort key.
 
 Each I<QueryFilter> element consists of an attribute name to compare,
 along with the following:
@@ -600,33 +612,36 @@ Condition data type.
 
 
 
+
 =head2 ReturnConsumedCapacity => Str
 
-  
 
+
+Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
 =head2 ScanIndexForward => Bool
 
-  Specifies the order in which to return the query results - either
-ascending (C<true>) or descending (C<false>).
+Specifies the order for index traversal: If C<true> (default), the
+traversal is performed in ascending order; if C<false>, the traversal
+is performed in descending order.
 
-Items with the same hash key are stored in sorted order by range key
-.If the range key data type is Number, the results are stored in
-numeric order. For type String, the results are returned in order of
+Items with the same partition key value are stored in sorted order by
+sort key. If the sort key data type is Number, the results are stored
+in numeric order. For type String, the results are stored in order of
 ASCII character code values. For type Binary, DynamoDB treats each byte
 of the binary data as unsigned.
 
-If I<ScanIndexForward> is C<true>, DynamoDB returns the results in
-order, by range key. This is the default behavior.
+If I<ScanIndexForward> is C<true>, DynamoDB returns the results in the
+order in which they are stored (by sort key value). This is the default
+behavior. If I<ScanIndexForward> is C<false>, DynamoDB reads the
+results in reverse order by sort key value, and then returns the
+results to the client.
 
-If I<ScanIndexForward> is C<false>, DynamoDB sorts the results in
-descending order by range key, and then returns the results to the
-client.
 
 
 =head2 Select => Str
 
-  The attributes to be returned in the result. You can retrieve all item
+The attributes to be returned in the result. You can retrieve all item
 attributes, specific item attributes, the count of matching items, or
 in the case of an index, some or all of the attributes projected into
 the index.
@@ -685,10 +700,12 @@ If you use the I<ProjectionExpression> parameter, then the value for
 I<Select> can only be C<SPECIFIC_ATTRIBUTES>. Any other value for
 I<Select> will return an error.
 
+Valid values are: C<"ALL_ATTRIBUTES">, C<"ALL_PROJECTED_ATTRIBUTES">, C<"SPECIFIC_ATTRIBUTES">, C<"COUNT">
 
 =head2 B<REQUIRED> TableName => Str
 
-  The name of the table containing the requested items.
+The name of the table containing the requested items.
+
 
 
 

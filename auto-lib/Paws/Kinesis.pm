@@ -4,6 +4,12 @@ package Paws::Kinesis;
   sub version { '2013-12-02' }
   sub target_prefix { 'Kinesis_20131202' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -83,34 +89,44 @@ package Paws::Kinesis;
     my $call_object = $self->new_with_coercions('Paws::Kinesis::SplitShard', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllStream {
     my $self = shift;
 
     my $result = $self->DescribeStream(@_);
-    my $array = [];
-    push @$array, @{ $result->StreamDescription.Shards };
+    my $params = {};
+    
+    $params->{ StreamDescription.Shards } = $result->StreamDescription->Shards;
+    
 
-    while ($result->StreamDescription.Shards[-1].ShardId) {
-      $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription.Shards[-1].ShardId);
-      push @$array, @{ $result->StreamDescription.Shards };
+    while ($result->StreamDescription.HasMoreShards) {
+      $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards[-1]->ShardId);
+      
+      push @{ $params->{ StreamDescription.Shards } }, @{ $result->StreamDescription->Shards };
+      
     }
 
-    return 'Paws::Kinesis::DescribeStream'->_returns->new(StreamDescription.Shards => $array);
+    return $self->new_with_coercions(Paws::Kinesis::DescribeStream->_returns, %$params);
   }
   sub ListAllStreams {
     my $self = shift;
 
     my $result = $self->ListStreams(@_);
-    my $array = [];
-    push @$array, @{ $result->StreamNames };
+    my $params = {};
+    
+    $params->{ StreamNames } = $result->StreamNames;
+    
 
-    while ($result->StreamNames[-1]) {
+    while ($result->HasMoreStreams) {
       $result = $self->ListStreams(@_, ExclusiveStartStreamName => $result->StreamNames[-1]);
-      push @$array, @{ $result->StreamNames };
+      
+      push @{ $params->{ StreamNames } }, @{ $result->StreamNames };
+      
     }
 
-    return 'Paws::Kinesis::ListStreams'->_returns->new(StreamNames => $array);
+    return $self->new_with_coercions(Paws::Kinesis::ListStreams->_returns, %$params);
   }
+
 
   sub operations { qw/AddTagsToStream CreateStream DecreaseStreamRetentionPeriod DeleteStream DescribeStream GetRecords GetShardIterator IncreaseStreamRetentionPeriod ListStreams ListTagsForStream MergeShards PutRecord PutRecords RemoveTagsFromStream SplitShard / }
 

@@ -40,9 +40,28 @@ change batch request.
 
 =head2 B<REQUIRED> Action => Str
 
-  The action to perform.
+  The action to perform:
 
-Valid values: C<CREATE> | C<DELETE> | C<UPSERT>
+=over
+
+=item * C<CREATE>: Creates a resource record set that has the specified
+values.
+
+=item * C<DELETE>: Deletes a existing resource record set that has the
+specified values for C<Name>, C<Type>, C<SetIdentifier> (for latency,
+weighted, geolocation, and failover resource record sets), and C<TTL>
+(except alias resource record sets, for which the TTL is determined by
+the AWS resource that you're routing DNS queries to).
+
+=item * C<UPSERT>: If a resource record set does not already exist,
+Amazon Route 53 creates it. If a resource record set does exist, Amazon
+Route 53 updates it with the values in the request. Amazon Route 53 can
+update an existing resource record set only when all of the following
+values match: C<Name>, C<Type>, and C<SetIdentifier> (for weighted,
+latency, geolocation, and failover resource record sets).
+
+=back
+
 
 
 =head2 B<REQUIRED> ResourceRecordSet => L<Paws::Route53::ResourceRecordSet>

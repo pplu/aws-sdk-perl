@@ -1,2 +1,6 @@
-<?xml version="1.0"?>
-<ErrorResponse xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><Error><Type>Receiver</Type><Code>InternalFailure</Code></Error><RequestId>a1656bcd-de3c-11e4-a073-fb2d1053e0a0</RequestId></ErrorResponse>
+---
+content: |-
+  <?xml version="1.0"?>
+  <ErrorResponse xmlns="https://route53.amazonaws.com/doc/2013-04-01/"><Error><Type>Receiver</Type><Code>InternalFailure</Code></Error><RequestId>a1656bcd-de3c-11e4-a073-fb2d1053e0a0</RequestId></ErrorResponse>
+headers: []
+status: 200

@@ -1,0 +1,4 @@
+---
+call: PutAttributes
+service: SDB
+tests: []

@@ -37,18 +37,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DestinationName => Str
 
-  A name for the destination.
+A name for the destination.
+
 
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  The ARN of an IAM role that grants Amazon CloudWatch Logs permissions
-to do Amazon Kinesis PutRecord requests on the desitnation stream.
+The ARN of an IAM role that grants CloudWatch Logs permissions to do
+Amazon Kinesis PutRecord requests on the desitnation stream.
+
 
 
 =head2 B<REQUIRED> TargetArn => Str
 
-  The ARN of an Amazon Kinesis stream to deliver matching log events to.
+The ARN of an Amazon Kinesis stream to deliver matching log events to.
+
 
 
 

@@ -10,7 +10,7 @@ package Paws::ElasticTranscoder::UpdatePipelineNotifications;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2012-09-25/pipelines/{Id}/notifications');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ElasticTranscoder::UpdatePipelineNotificationsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UpdatePipelineNotificationsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,13 +38,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Id => Str
 
-  The identifier of the pipeline for which you want to change
+The identifier of the pipeline for which you want to change
 notification settings.
+
 
 
 =head2 B<REQUIRED> Notifications => L<Paws::ElasticTranscoder::Notifications>
 
-  The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
+The topic ARN for the Amazon Simple Notification Service (Amazon SNS)
 topic that you want to notify to report job status.
 
 To receive notifications, you must also subscribe to the new topic in
@@ -71,6 +72,7 @@ to notify when Elastic Transcoder encounters an error condition. This
 is the ARN that Amazon SNS returned when you created the topic.
 
 =back
+
 
 
 

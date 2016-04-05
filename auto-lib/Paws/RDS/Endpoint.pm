@@ -1,6 +1,7 @@
 package Paws::RDS::Endpoint;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
+  has HostedZoneId => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
 1;
 
@@ -51,6 +52,12 @@ This data type is used as a response element in the following actions:
 =head2 Address => Str
 
   Specifies the DNS address of the DB instance.
+
+
+=head2 HostedZoneId => Str
+
+  Specifies the ID that Amazon Route 53 assigns when you create a hosted
+zone.
 
 
 =head2 Port => Int

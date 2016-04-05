@@ -49,7 +49,7 @@ a header, the name of the header.
   Text transformations eliminate some of the unusual formatting that
 attackers use in web requests in an effort to bypass AWS WAF. If you
 specify a transformation, AWS WAF performs the transformation on
-C<TargetString> before inspecting a request for a match.
+C<FieldToMatch> before inspecting a request for a match.
 
 B<CMD_LINE>
 

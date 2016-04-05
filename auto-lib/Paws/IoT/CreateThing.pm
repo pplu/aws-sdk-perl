@@ -10,7 +10,7 @@ package Paws::IoT::CreateThing;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/things/{thingName}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateThingResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateThingResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,14 +38,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AttributePayload => L<Paws::IoT::AttributePayload>
 
-  The attribute payload. Which consists of up to 3 name/value pairs in a
-JSON document. For example:
-{\"attributes\":{\"string1\":\"string2\E<rdquo>}}
+The attribute payload, which consists of up to 3 name/value pairs in a
+JSON document (for example,
+{\"attributes\":{\"string1\":\"string2\"}}).
+
 
 
 =head2 B<REQUIRED> ThingName => Str
 
-  The name of the thing.
+The name of the thing.
+
 
 
 

@@ -15,7 +15,9 @@ Paws::CloudHSM::CreateHapgResponse
 
 =head2 HapgArn => Str
 
-  The ARN of the high-availability partition group.
+The ARN of the high-availability partition group.
+
+
 
 
 =cut

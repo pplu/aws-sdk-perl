@@ -35,9 +35,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ByteMatchSetId => Str
 
-  The C<ByteMatchSetId> of the ByteMatchSet that you want to get.
+The C<ByteMatchSetId> of the ByteMatchSet that you want to get.
 C<ByteMatchSetId> is returned by CreateByteMatchSet and by
 ListByteMatchSets.
+
 
 
 

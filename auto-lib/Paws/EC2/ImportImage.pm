@@ -44,49 +44,56 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Architecture => Str
 
-  The architecture of the virtual machine.
+The architecture of the virtual machine.
 
 Valid values: C<i386> | C<x86_64>
 
 
+
 =head2 ClientData => L<Paws::EC2::ClientData>
 
-  The client-specific data.
+The client-specific data.
+
 
 
 =head2 ClientToken => Str
 
-  The token to enable idempotency for VM import requests.
+The token to enable idempotency for VM import requests.
+
 
 
 =head2 Description => Str
 
-  A description string for the import image task.
+A description string for the import image task.
+
 
 
 =head2 DiskContainers => ArrayRef[L<Paws::EC2::ImageDiskContainer>]
 
-  Information about the disk containers.
+Information about the disk containers.
+
 
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 Hypervisor => Str
 
-  The target hypervisor platform.
+The target hypervisor platform.
 
 Valid values: C<xen>
 
 
+
 =head2 LicenseType => Str
 
-  The license type to be used for the Amazon Machine Image (AMI) after
+The license type to be used for the Amazon Machine Image (AMI) after
 importing.
 
 B<Note:> You may only use BYOL if you have existing licenses with
@@ -97,17 +104,20 @@ Compute Cloud User Guide>.
 Valid values: C<AWS> | C<BYOL>
 
 
+
 =head2 Platform => Str
 
-  The operating system of the virtual machine.
+The operating system of the virtual machine.
 
 Valid values: C<Windows> | C<Linux>
 
 
+
 =head2 RoleName => Str
 
-  The name of the role to use when not using the default role,
+The name of the role to use when not using the default role,
 'vmimport'.
+
 
 
 

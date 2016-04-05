@@ -9,7 +9,7 @@ package Paws::IoT::CreateKeysAndCertificate;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/keys-and-certificate');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::CreateKeysAndCertificateResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateKeysAndCertificateResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 SetAsActive => Bool
 
-  Specifies whether the certificate is active.
+Specifies whether the certificate is active.
+
 
 
 

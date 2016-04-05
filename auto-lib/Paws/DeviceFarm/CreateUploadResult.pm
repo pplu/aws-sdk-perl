@@ -15,7 +15,9 @@ Paws::DeviceFarm::CreateUploadResult
 
 =head2 Upload => L<Paws::DeviceFarm::Upload>
 
-  The newly created upload.
+The newly created upload.
+
+
 
 
 =cut

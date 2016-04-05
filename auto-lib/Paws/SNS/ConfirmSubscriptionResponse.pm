@@ -16,7 +16,9 @@ Paws::SNS::ConfirmSubscriptionResponse
 
 =head2 SubscriptionArn => Str
 
-  The ARN of the created subscription.
+The ARN of the created subscription.
+
+
 
 
 =cut

@@ -37,15 +37,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DryRun => Bool
 
-  Checks whether you have the required permissions for the action,
+Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
+
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-  One or more filters.
+One or more filters.
 
 =over
 
@@ -110,7 +111,7 @@ C<launch.image-id> - The ID of the AMI.
 =item *
 
 C<launch.instance-type> - The type of instance (for example,
-C<m1.small>).
+C<m3.medium>).
 
 =item *
 
@@ -248,9 +249,11 @@ C<valid-until> - The end date of the request.
 
 
 
+
 =head2 SpotInstanceRequestIds => ArrayRef[Str]
 
-  One or more Spot instance request IDs.
+One or more Spot instance request IDs.
+
 
 
 

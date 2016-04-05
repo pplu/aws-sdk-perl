@@ -31,12 +31,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 ETag => Str
 
-  The current version of the configuration. For example: E2QWRUHAPOMQZL.
+The current version of the configuration. For example: E2QWRUHAPOMQZL.
+
 
 
 =head2 StreamingDistribution => L<Paws::CloudFront::StreamingDistribution>
 
-  The streaming distribution's information.
+The streaming distribution's information.
+
 
 
 

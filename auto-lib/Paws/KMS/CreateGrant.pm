@@ -41,7 +41,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Constraints => L<Paws::KMS::GrantConstraints>
 
-  The conditions under which the operations permitted by the grant are
+The conditions under which the operations permitted by the grant are
 allowed.
 
 You can use this value to allow the operations permitted by the grant
@@ -50,9 +50,10 @@ information, see Encryption Context in the I<AWS Key Management Service
 Developer Guide>.
 
 
+
 =head2 B<REQUIRED> GranteePrincipal => Str
 
-  The principal that is given permission to perform the operations that
+The principal that is given permission to perform the operations that
 the grant permits.
 
 To specify the principal, use the Amazon Resource Name (ARN) of an AWS
@@ -63,17 +64,19 @@ Management (IAM) in the Example ARNs section of the I<AWS General
 Reference>.
 
 
+
 =head2 GrantTokens => ArrayRef[Str]
 
-  A list of grant tokens.
+A list of grant tokens.
 
 For more information, go to Grant Tokens in the I<AWS Key Management
 Service Developer Guide>.
 
 
+
 =head2 B<REQUIRED> KeyId => Str
 
-  The unique identifier for the customer master key (CMK) that the grant
+The unique identifier for the customer master key (CMK) that the grant
 applies to.
 
 To specify this value, use the globally unique key ID or the Amazon
@@ -90,9 +93,10 @@ arn:aws:kms:us-west-2:123456789012:key/12345678-1234-1234-1234-123456789012
 
 
 
+
 =head2 Name => Str
 
-  A friendly name for identifying the grant. Use this value to prevent
+A friendly name for identifying the grant. Use this value to prevent
 unintended creation of duplicate grants when retrying this request.
 
 When this value is absent, all C<CreateGrant> requests result in a new
@@ -108,9 +112,10 @@ when a duplicate C<GrantId> is returned. All grant tokens obtained in
 this way can be used interchangeably.
 
 
+
 =head2 Operations => ArrayRef[Str]
 
-  A list of operations that the grant permits. The list can contain any
+A list of operations that the grant permits. The list can contain any
 combination of one or more of the following values:
 
 =over
@@ -135,9 +140,10 @@ combination of one or more of the following values:
 
 
 
+
 =head2 RetiringPrincipal => Str
 
-  The principal that is given permission to retire the grant by using
+The principal that is given permission to retire the grant by using
 RetireGrant operation.
 
 To specify the principal, use the Amazon Resource Name (ARN) of an AWS
@@ -146,6 +152,7 @@ federated users, and assumed role users. For examples of the ARN syntax
 to use for specifying a principal, see AWS Identity and Access
 Management (IAM) in the Example ARNs section of the I<AWS General
 Reference>.
+
 
 
 

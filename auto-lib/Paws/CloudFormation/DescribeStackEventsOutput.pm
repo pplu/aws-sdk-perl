@@ -17,12 +17,16 @@ Paws::CloudFormation::DescribeStackEventsOutput
 
 =head2 NextToken => Str
 
-  String that identifies the start of the next list of events, if there
-is one.
+If the output exceeds 1 MB in size, a string that identifies the next
+page of events. If no additional page exists, this value is null.
+
+
 
 =head2 StackEvents => ArrayRef[L<Paws::CloudFormation::StackEvent>]
 
-  A list of C<StackEvents> structures.
+A list of C<StackEvents> structures.
+
+
 
 
 =cut

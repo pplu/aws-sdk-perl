@@ -11,7 +11,7 @@ package Paws::IoT::ListPrincipalThings;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/principals/things');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::ListPrincipalThingsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'ListPrincipalThingsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -39,17 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-  
+The maximum number of principals to return.
+
 
 
 =head2 NextToken => Str
 
-  
+A token used to retrieve the next value.
+
 
 
 =head2 B<REQUIRED> Principal => Str
 
-  The principal.
+The principal.
+
 
 
 

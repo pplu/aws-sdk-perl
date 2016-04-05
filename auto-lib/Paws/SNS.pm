@@ -3,6 +3,12 @@ package Paws::SNS;
   sub service { 'sns' }
   sub version { '2010-03-31' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -132,76 +138,98 @@ package Paws::SNS;
     my $call_object = $self->new_with_coercions('Paws::SNS::Unsubscribe', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllEndpointsByPlatformApplication {
     my $self = shift;
 
     my $result = $self->ListEndpointsByPlatformApplication(@_);
-    my $array = [];
-    push @$array, @{ $result->Endpoints };
+    my $params = {};
+    
+    $params->{ Endpoints } = $result->Endpoints;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Endpoints };
+      
+      push @{ $params->{ Endpoints } }, @{ $result->Endpoints };
+      
     }
 
-    return 'Paws::SNS::ListEndpointsByPlatformApplication'->_returns->new(Endpoints => $array);
+    return $self->new_with_coercions(Paws::SNS::ListEndpointsByPlatformApplication->_returns, %$params);
   }
   sub ListAllPlatformApplications {
     my $self = shift;
 
     my $result = $self->ListPlatformApplications(@_);
-    my $array = [];
-    push @$array, @{ $result->PlatformApplications };
+    my $params = {};
+    
+    $params->{ PlatformApplications } = $result->PlatformApplications;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->PlatformApplications };
+      
+      push @{ $params->{ PlatformApplications } }, @{ $result->PlatformApplications };
+      
     }
 
-    return 'Paws::SNS::ListPlatformApplications'->_returns->new(PlatformApplications => $array);
+    return $self->new_with_coercions(Paws::SNS::ListPlatformApplications->_returns, %$params);
   }
   sub ListAllSubscriptions {
     my $self = shift;
 
     my $result = $self->ListSubscriptions(@_);
-    my $array = [];
-    push @$array, @{ $result->Subscriptions };
+    my $params = {};
+    
+    $params->{ Subscriptions } = $result->Subscriptions;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Subscriptions };
+      
+      push @{ $params->{ Subscriptions } }, @{ $result->Subscriptions };
+      
     }
 
-    return 'Paws::SNS::ListSubscriptions'->_returns->new(Subscriptions => $array);
+    return $self->new_with_coercions(Paws::SNS::ListSubscriptions->_returns, %$params);
   }
   sub ListAllSubscriptionsByTopic {
     my $self = shift;
 
     my $result = $self->ListSubscriptionsByTopic(@_);
-    my $array = [];
-    push @$array, @{ $result->Subscriptions };
+    my $params = {};
+    
+    $params->{ Subscriptions } = $result->Subscriptions;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Subscriptions };
+      
+      push @{ $params->{ Subscriptions } }, @{ $result->Subscriptions };
+      
     }
 
-    return 'Paws::SNS::ListSubscriptionsByTopic'->_returns->new(Subscriptions => $array);
+    return $self->new_with_coercions(Paws::SNS::ListSubscriptionsByTopic->_returns, %$params);
   }
   sub ListAllTopics {
     my $self = shift;
 
     my $result = $self->ListTopics(@_);
-    my $array = [];
-    push @$array, @{ $result->Topics };
+    my $params = {};
+    
+    $params->{ Topics } = $result->Topics;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->ListTopics(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Topics };
+      
+      push @{ $params->{ Topics } }, @{ $result->Topics };
+      
     }
 
-    return 'Paws::SNS::ListTopics'->_returns->new(Topics => $array);
+    return $self->new_with_coercions(Paws::SNS::ListTopics->_returns, %$params);
   }
+
 
   sub operations { qw/AddPermission ConfirmSubscription CreatePlatformApplication CreatePlatformEndpoint CreateTopic DeleteEndpoint DeletePlatformApplication DeleteTopic GetEndpointAttributes GetPlatformApplicationAttributes GetSubscriptionAttributes GetTopicAttributes ListEndpointsByPlatformApplication ListPlatformApplications ListSubscriptions ListSubscriptionsByTopic ListTopics Publish RemovePermission SetEndpointAttributes SetPlatformApplicationAttributes SetSubscriptionAttributes SetTopicAttributes Subscribe Unsubscribe / }
 

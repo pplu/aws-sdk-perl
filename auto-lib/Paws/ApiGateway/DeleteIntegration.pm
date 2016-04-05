@@ -39,17 +39,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-  Specifies a delete integration request's HTTP method.
+Specifies a delete integration request's HTTP method.
+
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  Specifies a delete integration request's resource identifier.
+Specifies a delete integration request's resource identifier.
+
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-  Specifies a delete integration request's API identifier.
+Specifies a delete integration request's API identifier.
+
 
 
 

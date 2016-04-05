@@ -1,1 +1,4 @@
-{"TableDescription":{"ItemCount":0,"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":1,"WriteCapacityUnits":1},"TableArn":"arn:aws:dynamodb:eu-west-1:000000000000:table/Emails","TableName":"Emails","TableSizeBytes":0,"TableStatus":"DELETING"}}
+---
+content: '{"TableDescription":{"ItemCount":0,"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":1,"WriteCapacityUnits":1},"TableArn":"arn:aws:dynamodb:eu-west-1:000000000000:table/Emails","TableName":"Emails","TableSizeBytes":0,"TableStatus":"DELETING"}}'
+headers: []
+status: 200

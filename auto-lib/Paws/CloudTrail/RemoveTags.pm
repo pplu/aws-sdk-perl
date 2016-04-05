@@ -36,14 +36,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  Specifies the ARN of the trail from which tags should be removed. The
+Specifies the ARN of the trail from which tags should be removed. The
 format of a trail ARN is
 C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
 
 
+
 =head2 TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]
 
-  Specifies a list of tags to be removed.
+Specifies a list of tags to be removed.
+
 
 
 

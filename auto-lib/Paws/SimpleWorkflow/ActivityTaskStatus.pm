@@ -15,7 +15,9 @@ Paws::SimpleWorkflow::ActivityTaskStatus
 
 =head2 B<REQUIRED> CancelRequested => Bool
 
-  Set to C<true> if cancellation of the task is requested.
+Set to C<true> if cancellation of the task is requested.
+
+
 
 
 =cut

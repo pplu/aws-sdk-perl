@@ -15,7 +15,9 @@ Paws::Support::DescribeTrustedAdvisorCheckResultResponse
 
 =head2 Result => L<Paws::Support::TrustedAdvisorCheckResult>
 
-  The detailed results of the Trusted Advisor check.
+The detailed results of the Trusted Advisor check.
+
+
 
 
 =cut

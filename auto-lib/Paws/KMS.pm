@@ -4,6 +4,12 @@ package Paws::KMS;
   sub version { '2014-11-01' }
   sub target_prefix { 'TrentService' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -153,6 +159,80 @@ package Paws::KMS;
     my $call_object = $self->new_with_coercions('Paws::KMS::UpdateKeyDescription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+  sub ListAllAliases {
+    my $self = shift;
+
+    my $result = $self->ListAliases(@_);
+    my $params = {};
+    
+    $params->{ Aliases } = $result->Aliases;
+    
+
+    while ($result->Truncated) {
+      $result = $self->ListAliases(@_, Marker => $result->NextMarker);
+      
+      push @{ $params->{ Aliases } }, @{ $result->Aliases };
+      
+    }
+
+    return $self->new_with_coercions(Paws::KMS::ListAliases->_returns, %$params);
+  }
+  sub ListAllGrants {
+    my $self = shift;
+
+    my $result = $self->ListGrants(@_);
+    my $params = {};
+    
+    $params->{ Grants } = $result->Grants;
+    
+
+    while ($result->Truncated) {
+      $result = $self->ListGrants(@_, Marker => $result->NextMarker);
+      
+      push @{ $params->{ Grants } }, @{ $result->Grants };
+      
+    }
+
+    return $self->new_with_coercions(Paws::KMS::ListGrants->_returns, %$params);
+  }
+  sub ListAllKeyPolicies {
+    my $self = shift;
+
+    my $result = $self->ListKeyPolicies(@_);
+    my $params = {};
+    
+    $params->{ PolicyNames } = $result->PolicyNames;
+    
+
+    while ($result->Truncated) {
+      $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
+      
+      push @{ $params->{ PolicyNames } }, @{ $result->PolicyNames };
+      
+    }
+
+    return $self->new_with_coercions(Paws::KMS::ListKeyPolicies->_returns, %$params);
+  }
+  sub ListAllKeys {
+    my $self = shift;
+
+    my $result = $self->ListKeys(@_);
+    my $params = {};
+    
+    $params->{ Keys } = $result->Keys;
+    
+
+    while ($result->Truncated) {
+      $result = $self->ListKeys(@_, Marker => $result->NextMarker);
+      
+      push @{ $params->{ Keys } }, @{ $result->Keys };
+      
+    }
+
+    return $self->new_with_coercions(Paws::KMS::ListKeys->_returns, %$params);
+  }
+
 
   sub operations { qw/CancelKeyDeletion CreateAlias CreateGrant CreateKey Decrypt DeleteAlias DescribeKey DisableKey DisableKeyRotation EnableKey EnableKeyRotation Encrypt GenerateDataKey GenerateDataKeyWithoutPlaintext GenerateRandom GetKeyPolicy GetKeyRotationStatus ListAliases ListGrants ListKeyPolicies ListKeys ListRetirableGrants PutKeyPolicy ReEncrypt RetireGrant RevokeGrant ScheduleKeyDeletion UpdateAlias UpdateKeyDescription / }
 

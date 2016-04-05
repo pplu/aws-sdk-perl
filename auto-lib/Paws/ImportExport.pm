@@ -3,6 +3,12 @@ package Paws::ImportExport;
   sub service { 'importexport' }
   sub version { '2010-06-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V2Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -55,20 +61,26 @@ package Paws::ImportExport;
     my $call_object = $self->new_with_coercions('Paws::ImportExport::UpdateJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllJobs {
     my $self = shift;
 
     my $result = $self->ListJobs(@_);
-    my $array = [];
-    push @$array, @{ $result->Jobs };
+    my $params = {};
+    
+    $params->{ Jobs } = $result->Jobs;
+    
 
-    while ($result->Jobs[-1].JobId) {
-      $result = $self->ListJobs(@_, Marker => $result->Jobs[-1].JobId);
-      push @$array, @{ $result->Jobs };
+    while ($result->IsTruncated) {
+      $result = $self->ListJobs(@_, Marker => $result->Jobs[-1]->JobId);
+      
+      push @{ $params->{ Jobs } }, @{ $result->Jobs };
+      
     }
 
-    return 'Paws::ImportExport::ListJobs'->_returns->new(Jobs => $array);
+    return $self->new_with_coercions(Paws::ImportExport::ListJobs->_returns, %$params);
   }
+
 
   sub operations { qw/CancelJob CreateJob GetShippingLabel GetStatus ListJobs UpdateJob / }
 

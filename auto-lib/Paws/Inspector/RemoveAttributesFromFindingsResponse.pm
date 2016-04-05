@@ -1,7 +1,7 @@
 
 package Paws::Inspector::RemoveAttributesFromFindingsResponse;
   use Moose;
-  has Message => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'message' );
+  has FailedItems => (is => 'ro', isa => 'Paws::Inspector::FailedItems', traits => ['Unwrapped'], xmlname => 'failedItems' , required => 1);
 
 
 ### main pod documentation begin ###
@@ -13,9 +13,12 @@ Paws::Inspector::RemoveAttributesFromFindingsResponse
 =head1 ATTRIBUTES
 
 
-=head2 Message => Str
+=head2 B<REQUIRED> FailedItems => L<Paws::Inspector::FailedItems>
 
-  Confirmation details of the action performed.
+Attributes details that cannot be described. An error code is provided
+for each failed item.
+
+
 
 
 =cut

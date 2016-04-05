@@ -16,7 +16,9 @@ Paws::ElasticBeanstalk::ApplicationDescriptionsMessage
 
 =head2 Applications => ArrayRef[L<Paws::ElasticBeanstalk::ApplicationDescription>]
 
-  This parameter contains a list of ApplicationDescription.
+This parameter contains a list of ApplicationDescription.
+
+
 
 
 =cut

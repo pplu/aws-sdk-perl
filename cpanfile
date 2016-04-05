@@ -1,5 +1,6 @@
 requires 'Moose';
 requires 'MooseX::ClassAttribute';
+requires 'HTTP::Tiny';
 requires 'Throwable::Error';
 requires 'Data::Compare';
 requires 'URI';
@@ -16,6 +17,7 @@ requires 'URL::Encode::XS';
 requires 'URI::Template';
 requires 'Digest::HMAC';
 requires 'Config::INI';
+requires 'Crypt::Digest::SHA256';
 # For the paws CLI
 requires 'Hash::Flatten';
 requires 'MooseX::Getopt';
@@ -24,6 +26,7 @@ requires 'Module::Find';
 requires 'Getopt::Long';
 recommends 'Browser::Open';
 requires 'File::HomeDir';
+requires 'String::CRC32';
 
 on 'develop' => sub {
   requires 'Template';
@@ -42,7 +45,8 @@ on 'develop' => sub {
   requires 'Test::Pod';
   # For developing / testing the pluggable callers
   requires 'Mojolicious';
-  requires 'MojoX::IOLoop::Future';
+  requires 'Future::Mojo', '>= 0.003';
+  requires 'EV';
   requires 'LWP::UserAgent';
   requires 'Furl';
 };
@@ -52,4 +56,6 @@ on 'test' => sub {
   requires 'Test::More';
   requires 'Test::Timer';
   requires 'Test::Exception';
+  requires 'Test::Warnings';
+  requires 'Class::Unload';
 };

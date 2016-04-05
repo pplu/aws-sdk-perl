@@ -51,17 +51,6 @@ Describes the possible values for a configuration option.
   An indication of which action is required if the value for this
 configuration option changes:
 
-NoInterruption - There is no interruption to the environment or
-application availability.
-
-RestartEnvironment - The environment is restarted, all AWS resources
-are deleted and recreated, and the environment is unavailable during
-the process.
-
-RestartApplicationServer - The environment is available the entire
-time. However, a short application outage occurs when the application
-servers on the running Amazon EC2 instances are restarted.
-
 =over
 
 =item * C<NoInterruption> : There is no interruption to the environment
@@ -122,12 +111,6 @@ satisfies this regular expression.
 
   An indication of whether the user defined this configuration option:
 
-C<true> : This configuration option was defined by the user. It is a
-valid choice for specifying this as an Option to Remove when updating
-configuration settings.
-
-C<false> : This configuration was not defined by the user.
-
 =over
 
 =item *
@@ -156,18 +139,6 @@ this list.
 
   An indication of which type of values this option has and whether it is
 allowable to select one or more than one of the possible values:
-
-C<Scalar> : Values for this option are a single selection from the
-possible values, or a unformatted string or numeric value governed by
-the MIN/MAX/Regex constraints:
-
-C<List> : Values for this option are multiple selections of the
-possible values.
-
-C<Boolean> : Values for this option are either C<true> or C<false> .
-
-C<Json> : Values for this option are a JSON representation of a
-C<ConfigDocument>.
 
 =over
 

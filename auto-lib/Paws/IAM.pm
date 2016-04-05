@@ -3,6 +3,12 @@ package Paws::IAM;
   sub service { 'iam' }
   sub version { '2010-05-08' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -608,314 +614,412 @@ package Paws::IAM;
     my $call_object = $self->new_with_coercions('Paws::IAM::UploadSSHPublicKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetAllGroups {
+  
+  sub GetAllGroup {
     my $self = shift;
 
     my $result = $self->GetGroup(@_);
-    my $array = [];
-    push @$array, @{ $result->Users };
+    my $params = {};
+    
+    $params->{ Users } = $result->Users;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->GetGroup(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Users };
+      
+      push @{ $params->{ Users } }, @{ $result->Users };
+      
     }
 
-    return 'Paws::IAM::GetGroup'->_returns->new(Users => $array);
+    return $self->new_with_coercions(Paws::IAM::GetGroup->_returns, %$params);
   }
   sub ListAllAccessKeys {
     my $self = shift;
 
     my $result = $self->ListAccessKeys(@_);
-    my $array = [];
-    push @$array, @{ $result->AccessKeyMetadata };
+    my $params = {};
+    
+    $params->{ AccessKeyMetadata } = $result->AccessKeyMetadata;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListAccessKeys(@_, Marker => $result->Marker);
-      push @$array, @{ $result->AccessKeyMetadata };
+      
+      push @{ $params->{ AccessKeyMetadata } }, @{ $result->AccessKeyMetadata };
+      
     }
 
-    return 'Paws::IAM::ListAccessKeys'->_returns->new(AccessKeyMetadata => $array);
+    return $self->new_with_coercions(Paws::IAM::ListAccessKeys->_returns, %$params);
   }
   sub ListAllAccountAliases {
     my $self = shift;
 
     my $result = $self->ListAccountAliases(@_);
-    my $array = [];
-    push @$array, @{ $result->AccountAliases };
+    my $params = {};
+    
+    $params->{ AccountAliases } = $result->AccountAliases;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListAccountAliases(@_, Marker => $result->Marker);
-      push @$array, @{ $result->AccountAliases };
+      
+      push @{ $params->{ AccountAliases } }, @{ $result->AccountAliases };
+      
     }
 
-    return 'Paws::IAM::ListAccountAliases'->_returns->new(AccountAliases => $array);
+    return $self->new_with_coercions(Paws::IAM::ListAccountAliases->_returns, %$params);
   }
   sub ListAllAttachedGroupPolicies {
     my $self = shift;
 
     my $result = $self->ListAttachedGroupPolicies(@_);
-    my $array = [];
-    push @$array, @{ $result->AttachedPolicies };
+    my $params = {};
+    
+    $params->{ AttachedPolicies } = $result->AttachedPolicies;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListAttachedGroupPolicies(@_, Marker => $result->Marker);
-      push @$array, @{ $result->AttachedPolicies };
+      
+      push @{ $params->{ AttachedPolicies } }, @{ $result->AttachedPolicies };
+      
     }
 
-    return 'Paws::IAM::ListAttachedGroupPolicies'->_returns->new(AttachedPolicies => $array);
+    return $self->new_with_coercions(Paws::IAM::ListAttachedGroupPolicies->_returns, %$params);
   }
   sub ListAllAttachedRolePolicies {
     my $self = shift;
 
     my $result = $self->ListAttachedRolePolicies(@_);
-    my $array = [];
-    push @$array, @{ $result->AttachedPolicies };
+    my $params = {};
+    
+    $params->{ AttachedPolicies } = $result->AttachedPolicies;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListAttachedRolePolicies(@_, Marker => $result->Marker);
-      push @$array, @{ $result->AttachedPolicies };
+      
+      push @{ $params->{ AttachedPolicies } }, @{ $result->AttachedPolicies };
+      
     }
 
-    return 'Paws::IAM::ListAttachedRolePolicies'->_returns->new(AttachedPolicies => $array);
+    return $self->new_with_coercions(Paws::IAM::ListAttachedRolePolicies->_returns, %$params);
   }
   sub ListAllAttachedUserPolicies {
     my $self = shift;
 
     my $result = $self->ListAttachedUserPolicies(@_);
-    my $array = [];
-    push @$array, @{ $result->AttachedPolicies };
+    my $params = {};
+    
+    $params->{ AttachedPolicies } = $result->AttachedPolicies;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListAttachedUserPolicies(@_, Marker => $result->Marker);
-      push @$array, @{ $result->AttachedPolicies };
+      
+      push @{ $params->{ AttachedPolicies } }, @{ $result->AttachedPolicies };
+      
     }
 
-    return 'Paws::IAM::ListAttachedUserPolicies'->_returns->new(AttachedPolicies => $array);
+    return $self->new_with_coercions(Paws::IAM::ListAttachedUserPolicies->_returns, %$params);
   }
   sub ListAllEntitiesForPolicy {
     my $self = shift;
 
     my $result = $self->ListEntitiesForPolicy(@_);
-    my $array = [];
-    push @$array, @{ $result->ARRAY(0x4065b60) };
+    my $params = {};
+    
+    $params->{ PolicyGroups } = $result->PolicyGroups;
+    
+    $params->{ PolicyUsers } = $result->PolicyUsers;
+    
+    $params->{ PolicyRoles } = $result->PolicyRoles;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListEntitiesForPolicy(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ARRAY(0x4065b60) };
+      
+      push @{ $params->{ PolicyGroups } }, @{ $result->PolicyGroups };
+      
+      push @{ $params->{ PolicyUsers } }, @{ $result->PolicyUsers };
+      
+      push @{ $params->{ PolicyRoles } }, @{ $result->PolicyRoles };
+      
     }
 
-    return 'Paws::IAM::ListEntitiesForPolicy'->_returns->new(ARRAY(0x4065b60) => $array);
+    return $self->new_with_coercions(Paws::IAM::ListEntitiesForPolicy->_returns, %$params);
   }
   sub ListAllGroupPolicies {
     my $self = shift;
 
     my $result = $self->ListGroupPolicies(@_);
-    my $array = [];
-    push @$array, @{ $result->PolicyNames };
+    my $params = {};
+    
+    $params->{ PolicyNames } = $result->PolicyNames;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListGroupPolicies(@_, Marker => $result->Marker);
-      push @$array, @{ $result->PolicyNames };
+      
+      push @{ $params->{ PolicyNames } }, @{ $result->PolicyNames };
+      
     }
 
-    return 'Paws::IAM::ListGroupPolicies'->_returns->new(PolicyNames => $array);
+    return $self->new_with_coercions(Paws::IAM::ListGroupPolicies->_returns, %$params);
   }
   sub ListAllGroups {
     my $self = shift;
 
     my $result = $self->ListGroups(@_);
-    my $array = [];
-    push @$array, @{ $result->Groups };
+    my $params = {};
+    
+    $params->{ Groups } = $result->Groups;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListGroups(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Groups };
+      
+      push @{ $params->{ Groups } }, @{ $result->Groups };
+      
     }
 
-    return 'Paws::IAM::ListGroups'->_returns->new(Groups => $array);
+    return $self->new_with_coercions(Paws::IAM::ListGroups->_returns, %$params);
   }
   sub ListAllGroupsForUser {
     my $self = shift;
 
     my $result = $self->ListGroupsForUser(@_);
-    my $array = [];
-    push @$array, @{ $result->Groups };
+    my $params = {};
+    
+    $params->{ Groups } = $result->Groups;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListGroupsForUser(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Groups };
+      
+      push @{ $params->{ Groups } }, @{ $result->Groups };
+      
     }
 
-    return 'Paws::IAM::ListGroupsForUser'->_returns->new(Groups => $array);
+    return $self->new_with_coercions(Paws::IAM::ListGroupsForUser->_returns, %$params);
   }
   sub ListAllInstanceProfiles {
     my $self = shift;
 
     my $result = $self->ListInstanceProfiles(@_);
-    my $array = [];
-    push @$array, @{ $result->InstanceProfiles };
+    my $params = {};
+    
+    $params->{ InstanceProfiles } = $result->InstanceProfiles;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListInstanceProfiles(@_, Marker => $result->Marker);
-      push @$array, @{ $result->InstanceProfiles };
+      
+      push @{ $params->{ InstanceProfiles } }, @{ $result->InstanceProfiles };
+      
     }
 
-    return 'Paws::IAM::ListInstanceProfiles'->_returns->new(InstanceProfiles => $array);
+    return $self->new_with_coercions(Paws::IAM::ListInstanceProfiles->_returns, %$params);
   }
   sub ListAllInstanceProfilesForRole {
     my $self = shift;
 
     my $result = $self->ListInstanceProfilesForRole(@_);
-    my $array = [];
-    push @$array, @{ $result->InstanceProfiles };
+    my $params = {};
+    
+    $params->{ InstanceProfiles } = $result->InstanceProfiles;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListInstanceProfilesForRole(@_, Marker => $result->Marker);
-      push @$array, @{ $result->InstanceProfiles };
+      
+      push @{ $params->{ InstanceProfiles } }, @{ $result->InstanceProfiles };
+      
     }
 
-    return 'Paws::IAM::ListInstanceProfilesForRole'->_returns->new(InstanceProfiles => $array);
+    return $self->new_with_coercions(Paws::IAM::ListInstanceProfilesForRole->_returns, %$params);
   }
   sub ListAllMFADevices {
     my $self = shift;
 
     my $result = $self->ListMFADevices(@_);
-    my $array = [];
-    push @$array, @{ $result->MFADevices };
+    my $params = {};
+    
+    $params->{ MFADevices } = $result->MFADevices;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListMFADevices(@_, Marker => $result->Marker);
-      push @$array, @{ $result->MFADevices };
+      
+      push @{ $params->{ MFADevices } }, @{ $result->MFADevices };
+      
     }
 
-    return 'Paws::IAM::ListMFADevices'->_returns->new(MFADevices => $array);
+    return $self->new_with_coercions(Paws::IAM::ListMFADevices->_returns, %$params);
   }
   sub ListAllPolicies {
     my $self = shift;
 
     my $result = $self->ListPolicies(@_);
-    my $array = [];
-    push @$array, @{ $result->Policies };
+    my $params = {};
+    
+    $params->{ Policies } = $result->Policies;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListPolicies(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Policies };
+      
+      push @{ $params->{ Policies } }, @{ $result->Policies };
+      
     }
 
-    return 'Paws::IAM::ListPolicies'->_returns->new(Policies => $array);
+    return $self->new_with_coercions(Paws::IAM::ListPolicies->_returns, %$params);
   }
   sub ListAllPolicyVersions {
     my $self = shift;
 
     my $result = $self->ListPolicyVersions(@_);
-    my $array = [];
-    push @$array, @{ $result->Versions };
+    my $params = {};
+    
+    $params->{ Versions } = $result->Versions;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListPolicyVersions(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Versions };
+      
+      push @{ $params->{ Versions } }, @{ $result->Versions };
+      
     }
 
-    return 'Paws::IAM::ListPolicyVersions'->_returns->new(Versions => $array);
+    return $self->new_with_coercions(Paws::IAM::ListPolicyVersions->_returns, %$params);
   }
   sub ListAllRolePolicies {
     my $self = shift;
 
     my $result = $self->ListRolePolicies(@_);
-    my $array = [];
-    push @$array, @{ $result->PolicyNames };
+    my $params = {};
+    
+    $params->{ PolicyNames } = $result->PolicyNames;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListRolePolicies(@_, Marker => $result->Marker);
-      push @$array, @{ $result->PolicyNames };
+      
+      push @{ $params->{ PolicyNames } }, @{ $result->PolicyNames };
+      
     }
 
-    return 'Paws::IAM::ListRolePolicies'->_returns->new(PolicyNames => $array);
+    return $self->new_with_coercions(Paws::IAM::ListRolePolicies->_returns, %$params);
   }
   sub ListAllRoles {
     my $self = shift;
 
     my $result = $self->ListRoles(@_);
-    my $array = [];
-    push @$array, @{ $result->Roles };
+    my $params = {};
+    
+    $params->{ Roles } = $result->Roles;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListRoles(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Roles };
+      
+      push @{ $params->{ Roles } }, @{ $result->Roles };
+      
     }
 
-    return 'Paws::IAM::ListRoles'->_returns->new(Roles => $array);
+    return $self->new_with_coercions(Paws::IAM::ListRoles->_returns, %$params);
   }
   sub ListAllServerCertificates {
     my $self = shift;
 
     my $result = $self->ListServerCertificates(@_);
-    my $array = [];
-    push @$array, @{ $result->ServerCertificateMetadataList };
+    my $params = {};
+    
+    $params->{ ServerCertificateMetadataList } = $result->ServerCertificateMetadataList;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListServerCertificates(@_, Marker => $result->Marker);
-      push @$array, @{ $result->ServerCertificateMetadataList };
+      
+      push @{ $params->{ ServerCertificateMetadataList } }, @{ $result->ServerCertificateMetadataList };
+      
     }
 
-    return 'Paws::IAM::ListServerCertificates'->_returns->new(ServerCertificateMetadataList => $array);
+    return $self->new_with_coercions(Paws::IAM::ListServerCertificates->_returns, %$params);
   }
   sub ListAllSigningCertificates {
     my $self = shift;
 
     my $result = $self->ListSigningCertificates(@_);
-    my $array = [];
-    push @$array, @{ $result->Certificates };
+    my $params = {};
+    
+    $params->{ Certificates } = $result->Certificates;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListSigningCertificates(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Certificates };
+      
+      push @{ $params->{ Certificates } }, @{ $result->Certificates };
+      
     }
 
-    return 'Paws::IAM::ListSigningCertificates'->_returns->new(Certificates => $array);
+    return $self->new_with_coercions(Paws::IAM::ListSigningCertificates->_returns, %$params);
   }
   sub ListAllUserPolicies {
     my $self = shift;
 
     my $result = $self->ListUserPolicies(@_);
-    my $array = [];
-    push @$array, @{ $result->PolicyNames };
+    my $params = {};
+    
+    $params->{ PolicyNames } = $result->PolicyNames;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListUserPolicies(@_, Marker => $result->Marker);
-      push @$array, @{ $result->PolicyNames };
+      
+      push @{ $params->{ PolicyNames } }, @{ $result->PolicyNames };
+      
     }
 
-    return 'Paws::IAM::ListUserPolicies'->_returns->new(PolicyNames => $array);
+    return $self->new_with_coercions(Paws::IAM::ListUserPolicies->_returns, %$params);
   }
   sub ListAllUsers {
     my $self = shift;
 
     my $result = $self->ListUsers(@_);
-    my $array = [];
-    push @$array, @{ $result->Users };
+    my $params = {};
+    
+    $params->{ Users } = $result->Users;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListUsers(@_, Marker => $result->Marker);
-      push @$array, @{ $result->Users };
+      
+      push @{ $params->{ Users } }, @{ $result->Users };
+      
     }
 
-    return 'Paws::IAM::ListUsers'->_returns->new(Users => $array);
+    return $self->new_with_coercions(Paws::IAM::ListUsers->_returns, %$params);
   }
   sub ListAllVirtualMFADevices {
     my $self = shift;
 
     my $result = $self->ListVirtualMFADevices(@_);
-    my $array = [];
-    push @$array, @{ $result->VirtualMFADevices };
+    my $params = {};
+    
+    $params->{ VirtualMFADevices } = $result->VirtualMFADevices;
+    
 
-    while ($result->Marker) {
+    while ($result->IsTruncated) {
       $result = $self->ListVirtualMFADevices(@_, Marker => $result->Marker);
-      push @$array, @{ $result->VirtualMFADevices };
+      
+      push @{ $params->{ VirtualMFADevices } }, @{ $result->VirtualMFADevices };
+      
     }
 
-    return 'Paws::IAM::ListVirtualMFADevices'->_returns->new(VirtualMFADevices => $array);
+    return $self->new_with_coercions(Paws::IAM::ListVirtualMFADevices->_returns, %$params);
   }
+
 
   sub operations { qw/AddClientIDToOpenIDConnectProvider AddRoleToInstanceProfile AddUserToGroup AttachGroupPolicy AttachRolePolicy AttachUserPolicy ChangePassword CreateAccessKey CreateAccountAlias CreateGroup CreateInstanceProfile CreateLoginProfile CreateOpenIDConnectProvider CreatePolicy CreatePolicyVersion CreateRole CreateSAMLProvider CreateUser CreateVirtualMFADevice DeactivateMFADevice DeleteAccessKey DeleteAccountAlias DeleteAccountPasswordPolicy DeleteGroup DeleteGroupPolicy DeleteInstanceProfile DeleteLoginProfile DeleteOpenIDConnectProvider DeletePolicy DeletePolicyVersion DeleteRole DeleteRolePolicy DeleteSAMLProvider DeleteServerCertificate DeleteSigningCertificate DeleteSSHPublicKey DeleteUser DeleteUserPolicy DeleteVirtualMFADevice DetachGroupPolicy DetachRolePolicy DetachUserPolicy EnableMFADevice GenerateCredentialReport GetAccessKeyLastUsed GetAccountAuthorizationDetails GetAccountPasswordPolicy GetAccountSummary GetContextKeysForCustomPolicy GetContextKeysForPrincipalPolicy GetCredentialReport GetGroup GetGroupPolicy GetInstanceProfile GetLoginProfile GetOpenIDConnectProvider GetPolicy GetPolicyVersion GetRole GetRolePolicy GetSAMLProvider GetServerCertificate GetSSHPublicKey GetUser GetUserPolicy ListAccessKeys ListAccountAliases ListAttachedGroupPolicies ListAttachedRolePolicies ListAttachedUserPolicies ListEntitiesForPolicy ListGroupPolicies ListGroups ListGroupsForUser ListInstanceProfiles ListInstanceProfilesForRole ListMFADevices ListOpenIDConnectProviders ListPolicies ListPolicyVersions ListRolePolicies ListRoles ListSAMLProviders ListServerCertificates ListSigningCertificates ListSSHPublicKeys ListUserPolicies ListUsers ListVirtualMFADevices PutGroupPolicy PutRolePolicy PutUserPolicy RemoveClientIDFromOpenIDConnectProvider RemoveRoleFromInstanceProfile RemoveUserFromGroup ResyncMFADevice SetDefaultPolicyVersion SimulateCustomPolicy SimulatePrincipalPolicy UpdateAccessKey UpdateAccountPasswordPolicy UpdateAssumeRolePolicy UpdateGroup UpdateLoginProfile UpdateOpenIDConnectProviderThumbprint UpdateSAMLProvider UpdateServerCertificate UpdateSigningCertificate UpdateSSHPublicKey UpdateUser UploadServerCertificate UploadSigningCertificate UploadSSHPublicKey / }
 
@@ -1253,9 +1357,6 @@ roles, go to Working with Roles. For information about limitations on
 role names and the number of roles you can create, go to Limitations on
 IAM Entities in the I<IAM User Guide>.
 
-The policy in the following example grants permission to an EC2
-instance to assume the role.
-
 
 =head2 CreateSAMLProvider(Name => Str, SAMLMetadataDocument => Str)
 
@@ -1547,6 +1648,11 @@ Each argument is described in detail in: L<Paws::IAM::DeleteServerCertificate>
 Returns: nothing
 
   Deletes the specified server certificate.
+
+For more information about working with server certificates, including
+a list of AWS services that can use the server certificates that you
+manage with IAM, go to Working with Server Certificates in the I<IAM
+User Guide>.
 
 If you are using a server certificate with Elastic Load Balancing,
 deleting the certificate could have implications for your application.
@@ -1956,6 +2062,11 @@ Returns: a L<Paws::IAM::GetServerCertificateResponse> instance
 
   Retrieves information about the specified server certificate.
 
+For more information about working with server certificates, including
+a list of AWS services that can use the server certificates that you
+manage with IAM, go to Working with Server Certificates in the I<IAM
+User Guide>.
+
 
 =head2 GetSSHPublicKey(Encoding => Str, SSHPublicKeyId => Str, UserName => Str)
 
@@ -2302,6 +2413,11 @@ none exist, the action returns an empty list.
 
 You can paginate the results using the C<MaxItems> and C<Marker>
 parameters.
+
+For more information about working with server certificates, including
+a list of AWS services that can use the server certificates that you
+manage with IAM, go to Working with Server Certificates in the I<IAM
+User Guide>.
 
 
 =head2 ListSigningCertificates([Marker => Str, MaxItems => Int, UserName => Str])
@@ -2728,15 +2844,20 @@ Returns: nothing
 
   Updates the name and/or the path of the specified server certificate.
 
+For more information about working with server certificates, including
+a list of AWS services that can use the server certificates that you
+manage with IAM, go to Working with Server Certificates in the I<IAM
+User Guide>.
+
 You should understand the implications of changing a server
-certificate's path or name. For more information, see Managing Server
-Certificates in the I<IAM User Guide>. To change a server certificate
+certificate's path or name. For more information, see Renaming a Server
+Certificate in the I<IAM User Guide>. To change a server certificate
 name the requester must have appropriate permissions on both the source
 object and the target object. For example, to change the name from
 ProductionCert to ProdCert, the entity making the request must have
 permission on ProductionCert and ProdCert, or must have permission on
-all (*). For more information about permissions, see Permissions and
-Policies.
+all (*). For more information about permissions, see Access Management
+in the I<IAM User Guide>.
 
 
 =head2 UpdateSigningCertificate(CertificateId => Str, Status => Str, [UserName => Str])
@@ -2783,12 +2904,13 @@ Returns: nothing
   Updates the name and/or the path of the specified user.
 
 You should understand the implications of changing a user's path or
-name. For more information, see Renaming Users and Groups in the I<IAM
-User Guide>. To change a user name the requester must have appropriate
-permissions on both the source object and the target object. For
-example, to change Bob to Robert, the entity making the request must
-have permission on Bob and Robert, or must have permission on all (*).
-For more information about permissions, see Permissions and Policies.
+name. For more information, see Renaming an IAM User and Renaming an
+IAM Group in the I<IAM User Guide>. To change a user name the requester
+must have appropriate permissions on both the source object and the
+target object. For example, to change Bob to Robert, the entity making
+the request must have permission on Bob and Robert, or must have
+permission on all (*). For more information about permissions, see
+Permissions and Policies.
 
 
 =head2 UploadServerCertificate(CertificateBody => Str, PrivateKey => Str, ServerCertificateName => Str, [CertificateChain => Str, Path => Str])
@@ -2801,16 +2923,21 @@ Returns: a L<Paws::IAM::UploadServerCertificateResponse> instance
 certificate entity includes a public key certificate, a private key,
 and an optional certificate chain, which should all be PEM-encoded.
 
+For more information about working with server certificates, including
+a list of AWS services that can use the server certificates that you
+manage with IAM, go to Working with Server Certificates in the I<IAM
+User Guide>.
+
 For information about the number of server certificates you can upload,
-see Limitations on IAM Entities in the I<IAM User Guide>.
+see Limitations on IAM Entities and Objects in the I<IAM User Guide>.
 
 Because the body of the public key certificate, private key, and the
 certificate chain can be large, you should use POST rather than GET
 when calling C<UploadServerCertificate>. For information about setting
 up signatures and authorization through the API, go to Signing AWS API
 Requests in the I<AWS General Reference>. For general information about
-using the Query API with IAM, go to Making Query Requests in the I<IAM
-User Guide>.
+using the Query API with IAM, go to Calling the API by Making HTTP
+Query Requests in the I<IAM User Guide>.
 
 
 =head2 UploadSigningCertificate(CertificateBody => Str, [UserName => Str])

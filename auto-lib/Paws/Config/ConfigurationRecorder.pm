@@ -48,10 +48,8 @@ change the assigned name.
 
 =head2 RecordingGroup => L<Paws::Config::RecordingGroup>
 
-  The recording group specifies either to record configurations for all
-supported resources or to provide a list of resource types to record.
-The list of resource types must be a subset of supported resource
-types.
+  Specifies the types of AWS resource for which AWS Config records
+configuration changes.
 
 
 =head2 RoleARN => Str

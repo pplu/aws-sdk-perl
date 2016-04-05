@@ -20,27 +20,39 @@ Paws::DirectConnect::Interconnect
 
 =head2 Bandwidth => Str
 
-  
+
+
+
 
 =head2 InterconnectId => Str
 
-  
+
+
+
 
 =head2 InterconnectName => Str
 
-  
+
+
+
 
 =head2 InterconnectState => Str
 
-  
+
+
+Valid values are: C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">
 
 =head2 Location => Str
 
-  
+
+
+
 
 =head2 Region => Str
 
-  
+
+
+
 
 
 =cut

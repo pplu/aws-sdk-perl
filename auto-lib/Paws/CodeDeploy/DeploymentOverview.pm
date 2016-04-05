@@ -43,27 +43,28 @@ deployment.
 
 =head2 Failed => Int
 
-  The number of instances that have failed in the deployment.
+  The number of instances in the deployment in a failed state.
 
 
 =head2 InProgress => Int
 
-  The number of instances that are in progress in the deployment.
+  The number of instances in which the deployment is in progress.
 
 
 =head2 Pending => Int
 
-  The number of instances that are pending in the deployment.
+  The number of instances in the deployment in a pending state.
 
 
 =head2 Skipped => Int
 
-  The number of instances that have been skipped in the deployment.
+  The number of instances in the deployment in a skipped state.
 
 
 =head2 Succeeded => Int
 
-  The number of instances that have succeeded in the deployment.
+  The number of instances in the deployment to which revisions have been
+successfully deployed.
 
 
 

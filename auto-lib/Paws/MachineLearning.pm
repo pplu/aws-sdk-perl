@@ -4,6 +4,12 @@ package Paws::MachineLearning;
   sub version { '2014-12-12' }
   sub target_prefix { 'AmazonML_20141212' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -133,62 +139,80 @@ package Paws::MachineLearning;
     my $call_object = $self->new_with_coercions('Paws::MachineLearning::UpdateMLModel', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllBatchPredictions {
     my $self = shift;
 
     my $result = $self->DescribeBatchPredictions(@_);
-    my $array = [];
-    push @$array, @{ $result->Results };
+    my $params = {};
+    
+    $params->{ Results } = $result->Results;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Results };
+      
+      push @{ $params->{ Results } }, @{ $result->Results };
+      
     }
 
-    return 'Paws::MachineLearning::DescribeBatchPredictions'->_returns->new(Results => $array);
+    return $self->new_with_coercions(Paws::MachineLearning::DescribeBatchPredictions->_returns, %$params);
   }
   sub DescribeAllDataSources {
     my $self = shift;
 
     my $result = $self->DescribeDataSources(@_);
-    my $array = [];
-    push @$array, @{ $result->Results };
+    my $params = {};
+    
+    $params->{ Results } = $result->Results;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Results };
+      
+      push @{ $params->{ Results } }, @{ $result->Results };
+      
     }
 
-    return 'Paws::MachineLearning::DescribeDataSources'->_returns->new(Results => $array);
+    return $self->new_with_coercions(Paws::MachineLearning::DescribeDataSources->_returns, %$params);
   }
   sub DescribeAllEvaluations {
     my $self = shift;
 
     my $result = $self->DescribeEvaluations(@_);
-    my $array = [];
-    push @$array, @{ $result->Results };
+    my $params = {};
+    
+    $params->{ Results } = $result->Results;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Results };
+      
+      push @{ $params->{ Results } }, @{ $result->Results };
+      
     }
 
-    return 'Paws::MachineLearning::DescribeEvaluations'->_returns->new(Results => $array);
+    return $self->new_with_coercions(Paws::MachineLearning::DescribeEvaluations->_returns, %$params);
   }
   sub DescribeAllMLModels {
     my $self = shift;
 
     my $result = $self->DescribeMLModels(@_);
-    my $array = [];
-    push @$array, @{ $result->Results };
+    my $params = {};
+    
+    $params->{ Results } = $result->Results;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Results };
+      
+      push @{ $params->{ Results } }, @{ $result->Results };
+      
     }
 
-    return 'Paws::MachineLearning::DescribeMLModels'->_returns->new(Results => $array);
+    return $self->new_with_coercions(Paws::MachineLearning::DescribeMLModels->_returns, %$params);
   }
+
 
   sub operations { qw/CreateBatchPrediction CreateDataSourceFromRDS CreateDataSourceFromRedshift CreateDataSourceFromS3 CreateEvaluation CreateMLModel CreateRealtimeEndpoint DeleteBatchPrediction DeleteDataSource DeleteEvaluation DeleteMLModel DeleteRealtimeEndpoint DescribeBatchPredictions DescribeDataSources DescribeEvaluations DescribeMLModels GetBatchPrediction GetDataSource GetEvaluation GetMLModel Predict UpdateBatchPrediction UpdateDataSource UpdateEvaluation UpdateMLModel / }
 

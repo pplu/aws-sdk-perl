@@ -1,4 +1,4 @@
-package Test04::StubUANoMetadata {
+package Test04::StubUANoMetadata;
   use Moose;
 
   sub get {
@@ -8,6 +8,4 @@ package Test04::StubUANoMetadata {
       return { success => 1, content => "" };
     }
   }
-}
-
 1;

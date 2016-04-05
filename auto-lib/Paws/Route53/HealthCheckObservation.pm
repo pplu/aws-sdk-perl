@@ -32,7 +32,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::He
 
 =head1 DESCRIPTION
 
-A complex type that contains the IP address of a Route 53 health
+A complex type that contains the IP address of a Amazon Route 53 health
 checker and the reason for the health check status.
 
 =head1 ATTRIBUTES
@@ -40,8 +40,8 @@ checker and the reason for the health check status.
 
 =head2 IPAddress => Str
 
-  The IP address of the Route 53 health checker that performed the health
-check.
+  The IP address of the Amazon Route 53 health checker that performed the
+health check.
 
 
 =head2 StatusReport => L<Paws::Route53::StatusReport>

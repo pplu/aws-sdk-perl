@@ -4,6 +4,14 @@ package Paws::S3;
   sub service { 's3' }
   sub version { '2006-03-01' }
   sub flattened_arrays { 1 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'BadDigest' },
+       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'RequestTimeout' },
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::S3Signature', 'Paws::Net::RestXmlCaller', 'Paws::Net::RestXMLResponse';
 
@@ -361,62 +369,96 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::UploadPartCopy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllMultipartUploads {
     my $self = shift;
 
     my $result = $self->ListMultipartUploads(@_);
-    my $array = [];
-    push @$array, @{ $result->ARRAY(0x3d5bc18) };
+    my $params = {};
+    
+    $params->{ Uploads } = $result->Uploads;
+    
+    $params->{ CommonPrefixes } = $result->CommonPrefixes;
+    
 
-    while ($result->ARRAY(0x3d41890)) {
-      $result = $self->ListMultipartUploads(@_, ARRAY(0x3c408d0) => $result->ARRAY(0x3d41890));
-      push @$array, @{ $result->ARRAY(0x3d5bc18) };
+    while ($result->IsTruncated) {
+      $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
+      
+      push @{ $params->{ Uploads } }, @{ $result->Uploads };
+      
+      push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
+      
     }
 
-    return 'Paws::S3::ListMultipartUploads'->_returns->new(ARRAY(0x3d5bc18) => $array);
+    return $self->new_with_coercions(Paws::S3::ListMultipartUploads->_returns, %$params);
   }
   sub ListAllObjects {
     my $self = shift;
 
     my $result = $self->ListObjects(@_);
-    my $array = [];
-    push @$array, @{ $result->ARRAY(0x3b5c720) };
+    my $params = {};
+    
+    $params->{ Contents } = $result->Contents;
+    
+    $params->{ CommonPrefixes } = $result->CommonPrefixes;
+    
 
-    while ($result->NextMarker || Contents[-1].Key) {
-      $result = $self->ListObjects(@_, Marker => $result->NextMarker || Contents[-1].Key);
-      push @$array, @{ $result->ARRAY(0x3b5c720) };
+    while ($result->IsTruncated) {
+      $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
+      
+      push @{ $params->{ Contents } }, @{ $result->Contents };
+      
+      push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
+      
     }
 
-    return 'Paws::S3::ListObjects'->_returns->new(ARRAY(0x3b5c720) => $array);
+    return $self->new_with_coercions(Paws::S3::ListObjects->_returns, %$params);
   }
   sub ListAllObjectVersions {
     my $self = shift;
 
     my $result = $self->ListObjectVersions(@_);
-    my $array = [];
-    push @$array, @{ $result->ARRAY(0x4054808) };
+    my $params = {};
+    
+    $params->{ Versions } = $result->Versions;
+    
+    $params->{ DeleteMarkers } = $result->DeleteMarkers;
+    
+    $params->{ CommonPrefixes } = $result->CommonPrefixes;
+    
 
-    while ($result->ARRAY(0x38cff08)) {
-      $result = $self->ListObjectVersions(@_, ARRAY(0x3d55ad0) => $result->ARRAY(0x38cff08));
-      push @$array, @{ $result->ARRAY(0x4054808) };
+    while ($result->IsTruncated) {
+      $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
+      
+      push @{ $params->{ Versions } }, @{ $result->Versions };
+      
+      push @{ $params->{ DeleteMarkers } }, @{ $result->DeleteMarkers };
+      
+      push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
+      
     }
 
-    return 'Paws::S3::ListObjectVersions'->_returns->new(ARRAY(0x4054808) => $array);
+    return $self->new_with_coercions(Paws::S3::ListObjectVersions->_returns, %$params);
   }
   sub ListAllParts {
     my $self = shift;
 
     my $result = $self->ListParts(@_);
-    my $array = [];
-    push @$array, @{ $result->Parts };
+    my $params = {};
+    
+    $params->{ Parts } = $result->Parts;
+    
 
-    while ($result->NextPartNumberMarker) {
+    while ($result->IsTruncated) {
       $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
-      push @$array, @{ $result->Parts };
+      
+      push @{ $params->{ Parts } }, @{ $result->Parts };
+      
     }
 
-    return 'Paws::S3::ListParts'->_returns->new(Parts => $array);
+    return $self->new_with_coercions(Paws::S3::ListParts->_returns, %$params);
   }
+
 
   sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketCors DeleteBucketLifecycle DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects GetBucketAcl GetBucketCors GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTorrent HeadBucket HeadObject ListBuckets ListMultipartUploads ListObjects ListObjectVersions ListParts PutBucketAcl PutBucketCors PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl RestoreObject UploadPart UploadPartCopy / }
 
@@ -559,7 +601,7 @@ Each argument is described in detail in: L<Paws::S3::DeleteBucketReplication>
 
 Returns: nothing
 
-  
+  Deletes the replication configuration from the bucket.
 
 
 =head2 DeleteBucketTagging(Bucket => Str)
@@ -690,7 +732,7 @@ Each argument is described in detail in: L<Paws::S3::GetBucketReplication>
 
 Returns: a L<Paws::S3::GetBucketReplicationOutput> instance
 
-  
+  Deprecated, see the GetBucketReplicationConfiguration operation.
 
 
 =head2 GetBucketRequestPayment(Bucket => Str)
@@ -964,7 +1006,7 @@ Returns: a L<Paws::S3::PutObjectOutput> instance
   Adds an object to a bucket.
 
 
-=head2 PutObjectAcl(Bucket => Str, Key => Str, [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str, RequestPayer => Str])
+=head2 PutObjectAcl(Bucket => Str, Key => Str, [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str, RequestPayer => Str, VersionId => Str])
 
 Each argument is described in detail in: L<Paws::S3::PutObjectAcl>
 

@@ -4,6 +4,12 @@ package Paws::ElasticTranscoder;
   sub service { 'elastictranscoder' }
   sub version { '2012-09-25' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
@@ -93,62 +99,80 @@ package Paws::ElasticTranscoder;
     my $call_object = $self->new_with_coercions('Paws::ElasticTranscoder::UpdatePipelineStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllJobsByPipeline {
     my $self = shift;
 
     my $result = $self->ListJobsByPipeline(@_);
-    my $array = [];
-    push @$array, @{ $result->Jobs };
+    my $params = {};
+    
+    $params->{ Jobs } = $result->Jobs;
+    
 
-    while ($result->NextPageToken) {
+    while ($result->) {
       $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
-      push @$array, @{ $result->Jobs };
+      
+      push @{ $params->{ Jobs } }, @{ $result->Jobs };
+      
     }
 
-    return 'Paws::ElasticTranscoder::ListJobsByPipeline'->_returns->new(Jobs => $array);
+    return $self->new_with_coercions(Paws::ElasticTranscoder::ListJobsByPipeline->_returns, %$params);
   }
   sub ListAllJobsByStatus {
     my $self = shift;
 
     my $result = $self->ListJobsByStatus(@_);
-    my $array = [];
-    push @$array, @{ $result->Jobs };
+    my $params = {};
+    
+    $params->{ Jobs } = $result->Jobs;
+    
 
-    while ($result->NextPageToken) {
+    while ($result->) {
       $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
-      push @$array, @{ $result->Jobs };
+      
+      push @{ $params->{ Jobs } }, @{ $result->Jobs };
+      
     }
 
-    return 'Paws::ElasticTranscoder::ListJobsByStatus'->_returns->new(Jobs => $array);
+    return $self->new_with_coercions(Paws::ElasticTranscoder::ListJobsByStatus->_returns, %$params);
   }
   sub ListAllPipelines {
     my $self = shift;
 
     my $result = $self->ListPipelines(@_);
-    my $array = [];
-    push @$array, @{ $result->Pipelines };
+    my $params = {};
+    
+    $params->{ Pipelines } = $result->Pipelines;
+    
 
-    while ($result->NextPageToken) {
+    while ($result->) {
       $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
-      push @$array, @{ $result->Pipelines };
+      
+      push @{ $params->{ Pipelines } }, @{ $result->Pipelines };
+      
     }
 
-    return 'Paws::ElasticTranscoder::ListPipelines'->_returns->new(Pipelines => $array);
+    return $self->new_with_coercions(Paws::ElasticTranscoder::ListPipelines->_returns, %$params);
   }
   sub ListAllPresets {
     my $self = shift;
 
     my $result = $self->ListPresets(@_);
-    my $array = [];
-    push @$array, @{ $result->Presets };
+    my $params = {};
+    
+    $params->{ Presets } = $result->Presets;
+    
 
-    while ($result->NextPageToken) {
+    while ($result->) {
       $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
-      push @$array, @{ $result->Presets };
+      
+      push @{ $params->{ Presets } }, @{ $result->Presets };
+      
     }
 
-    return 'Paws::ElasticTranscoder::ListPresets'->_returns->new(Presets => $array);
+    return $self->new_with_coercions(Paws::ElasticTranscoder::ListPresets->_returns, %$params);
   }
+
 
   sub operations { qw/CancelJob CreateJob CreatePipeline CreatePreset DeletePipeline DeletePreset ListJobsByPipeline ListJobsByStatus ListPipelines ListPresets ReadJob ReadPipeline ReadPreset TestRole UpdatePipeline UpdatePipelineNotifications UpdatePipelineStatus / }
 

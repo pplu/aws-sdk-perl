@@ -69,6 +69,14 @@ that appears after a C<?> character, if any.
 =item * C<URI>: The part of a web request that identifies a resource,
 for example, C</images/daily-ad.jpg>.
 
+=item * C<BODY>: The part of a request that contains any additional
+data that you want to send to your web server as the HTTP request body,
+such as data from a form. The request body immediately follows the
+request headers. Note that only the first C<8192> bytes of the request
+body are forwarded to AWS WAF for inspection. To allow or block
+requests based on the length of the body, you can create a size
+constraint set. For more information, see CreateSizeConstraintSet.
+
 =back
 
 

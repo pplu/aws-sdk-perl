@@ -1,1 +1,4 @@
-{"TableDescription":{"AttributeDefinitions":[{"AttributeName":"Int1","AttributeType":"N"},{"AttributeName":"Str1","AttributeType":"S"}],"CreationDateTime":1.438426023977E9,"ItemCount":0,"KeySchema":[{"AttributeName":"Str1","KeyType":"HASH"},{"AttributeName":"Int1","KeyType":"RANGE"}],"ProvisionedThroughput":{"NumberOfDecreasesToday":0,"ReadCapacityUnits":1,"WriteCapacityUnits":1},"TableArn":"arn:aws:dynamodb:us-east-1:000000000000:table/Table1","TableName":"Table1","TableSizeBytes":0,"TableStatus":"CREATING"}}
+---
+content: "{\"TableDescription\":{\"AttributeDefinitions\":[{\"AttributeName\":\"Int1\",\"AttributeType\":\"N\"},{\"AttributeName\":\"Str1\",\"AttributeType\":\"S\"}],\"CreationDateTime\":1.438426023977E9,\"ItemCount\":0,\"KeySchema\":[{\"AttributeName\":\"Str1\",\"KeyType\":\"HASH\"},{\"AttributeName\":\"Int1\",\"KeyType\":\"RANGE\"}],\"ProvisionedThroughput\":{\"NumberOfDecreasesToday\":0,\"ReadCapacityUnits\":1,\"WriteCapacityUnits\":1},\"TableArn\":\"arn:aws:dynamodb:us-east-1:000000000000:table/Table1\",\"TableName\":\"Table1\",\"TableSizeBytes\":0,\"TableStatus\":\"CREATING\"}}\n"
+headers: []
+status: 200

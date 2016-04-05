@@ -4,6 +4,12 @@ package Paws::CloudSearchDomain;
   sub service { 'cloudsearchdomain' }
   sub version { '2013-01-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
@@ -23,6 +29,8 @@ package Paws::CloudSearchDomain;
     my $call_object = $self->new_with_coercions('Paws::CloudSearchDomain::UploadDocuments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/Search Suggest UploadDocuments / }
 
@@ -66,7 +74,7 @@ For more information, see the Amazon CloudSearch Developer Guide.
 
 =head1 METHODS
 
-=head2 Search(Query => Str, [Cursor => Str, Expr => Str, Facet => Str, FilterQuery => Str, Highlight => Str, Partial => Bool, QueryOptions => Str, QueryParser => Str, Return => Str, Size => Int, Sort => Str, Start => Int])
+=head2 Search(Query => Str, [Cursor => Str, Expr => Str, Facet => Str, FilterQuery => Str, Highlight => Str, Partial => Bool, QueryOptions => Str, QueryParser => Str, Return => Str, Size => Int, Sort => Str, Start => Int, Stats => Str])
 
 Each argument is described in detail in: L<Paws::CloudSearchDomain::Search>
 

@@ -15,6 +15,7 @@ package Paws::S3::ListObjects;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::S3::ListObjectsOutput');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -28,28 +29,40 @@ Paws::S3::ListObjectsOutput
 
 =head2 B<REQUIRED> Bucket => Str
 
-  
+
+
+
 
 =head2 Delimiter => Str
 
-  A delimiter is a character you use to group keys.
+A delimiter is a character you use to group keys.
+
+
 
 =head2 EncodingType => Str
 
-  
+
+
+Valid values are: C<"url">
 
 =head2 Marker => Str
 
-  Specifies the key to start with when listing objects in a bucket.
+Specifies the key to start with when listing objects in a bucket.
+
+
 
 =head2 MaxKeys => Int
 
-  Sets the maximum number of keys returned in the response. The response
+Sets the maximum number of keys returned in the response. The response
 might contain fewer keys but will never contain more.
+
+
 
 =head2 Prefix => Str
 
-  Limits the response to keys that begin with the specified prefix.
+Limits the response to keys that begin with the specified prefix.
+
+
 
 
 =cut

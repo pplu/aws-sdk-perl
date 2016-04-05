@@ -40,33 +40,41 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::Dimension>]
 
-  The list of dimensions associated with the metric.
+The list of dimensions associated with the metric. If the metric has
+any associated dimensions, you must specify them in order for the
+DescribeAlarmsForMetric to succeed.
+
 
 
 =head2 B<REQUIRED> MetricName => Str
 
-  The name of the metric.
+The name of the metric.
+
 
 
 =head2 B<REQUIRED> Namespace => Str
 
-  The namespace of the metric.
+The namespace of the metric.
+
 
 
 =head2 Period => Int
 
-  The period in seconds over which the statistic is applied.
+The period in seconds over which the statistic is applied.
+
 
 
 =head2 Statistic => Str
 
-  The statistic for the metric.
+The statistic for the metric.
 
+Valid values are: C<"SampleCount">, C<"Average">, C<"Sum">, C<"Minimum">, C<"Maximum">
 
 =head2 Unit => Str
 
-  The unit for the metric.
+The unit for the metric.
 
+Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
 
 
 =head1 SEE ALSO

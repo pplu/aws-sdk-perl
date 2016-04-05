@@ -37,23 +37,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> StackName => Str
 
-  The name or unique stack ID that you want to associate a policy with.
+The name or unique stack ID that you want to associate a policy with.
+
 
 
 =head2 StackPolicyBody => Str
 
-  Structure containing the stack policy body. For more information, go to
+Structure containing the stack policy body. For more information, go to
 Prevent Updates to Stack Resources in the AWS CloudFormation User
 Guide. You can specify either the C<StackPolicyBody> or the
 C<StackPolicyURL> parameter, but not both.
 
 
+
 =head2 StackPolicyURL => Str
 
-  Location of a file containing the stack policy. The URL must point to a
-policy (max size: 16KB) located in an S3 bucket in the same region as
-the stack. You can specify either the C<StackPolicyBody> or the
+Location of a file containing the stack policy. The URL must point to a
+policy (maximum size: 16 KB) located in an S3 bucket in the same region
+as the stack. You can specify either the C<StackPolicyBody> or the
 C<StackPolicyURL> parameter, but not both.
+
 
 
 

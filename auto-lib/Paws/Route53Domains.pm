@@ -4,6 +4,12 @@ package Paws::Route53Domains;
   sub version { '2014-05-15' }
   sub target_prefix { 'Route53Domains_v20140515' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -98,34 +104,44 @@ package Paws::Route53Domains;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateTagsForDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllDomains {
     my $self = shift;
 
     my $result = $self->ListDomains(@_);
-    my $array = [];
-    push @$array, @{ $result->Domains };
+    my $params = {};
+    
+    $params->{ Domains } = $result->Domains;
+    
 
-    while ($result->NextPageMarker) {
+    while ($result->) {
       $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
-      push @$array, @{ $result->Domains };
+      
+      push @{ $params->{ Domains } }, @{ $result->Domains };
+      
     }
 
-    return 'Paws::Route53Domains::ListDomains'->_returns->new(Domains => $array);
+    return $self->new_with_coercions(Paws::Route53Domains::ListDomains->_returns, %$params);
   }
   sub ListAllOperations {
     my $self = shift;
 
     my $result = $self->ListOperations(@_);
-    my $array = [];
-    push @$array, @{ $result->Operations };
+    my $params = {};
+    
+    $params->{ Operations } = $result->Operations;
+    
 
-    while ($result->NextPageMarker) {
+    while ($result->) {
       $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
-      push @$array, @{ $result->Operations };
+      
+      push @{ $params->{ Operations } }, @{ $result->Operations };
+      
     }
 
-    return 'Paws::Route53Domains::ListOperations'->_returns->new(Operations => $array);
+    return $self->new_with_coercions(Paws::Route53Domains::ListOperations->_returns, %$params);
   }
+
 
   sub operations { qw/CheckDomainAvailability DeleteTagsForDomain DisableDomainAutoRenew DisableDomainTransferLock EnableDomainAutoRenew EnableDomainTransferLock GetDomainDetail GetOperationDetail ListDomains ListOperations ListTagsForDomain RegisterDomain RetrieveDomainAuthCode TransferDomain UpdateDomainContact UpdateDomainContactPrivacy UpdateDomainNameservers UpdateTagsForDomain / }
 

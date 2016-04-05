@@ -3,6 +3,12 @@ package Paws::ElasticBeanstalk;
   sub service { 'elasticbeanstalk' }
   sub version { '2010-12-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller', 'Paws::Net::XMLResponse';
 
@@ -15,6 +21,11 @@ package Paws::ElasticBeanstalk;
   sub CheckDNSAvailability {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CheckDNSAvailability', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ComposeEnvironments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ComposeEnvironments', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateApplication {
@@ -167,22 +178,28 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ValidateConfigurationSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllEvents {
     my $self = shift;
 
     my $result = $self->DescribeEvents(@_);
-    my $array = [];
-    push @$array, @{ $result->Events };
+    my $params = {};
+    
+    $params->{ Events } = $result->Events;
+    
 
-    while ($result->NextToken) {
+    while ($result->) {
       $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
-      push @$array, @{ $result->Events };
+      
+      push @{ $params->{ Events } }, @{ $result->Events };
+      
     }
 
-    return 'Paws::ElasticBeanstalk::DescribeEvents'->_returns->new(Events => $array);
+    return $self->new_with_coercions(Paws::ElasticBeanstalk::DescribeEvents->_returns, %$params);
   }
 
-  sub operations { qw/AbortEnvironmentUpdate CheckDNSAvailability CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth ListAvailableSolutionStacks RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
+
+  sub operations { qw/AbortEnvironmentUpdate CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth ListAvailableSolutionStacks RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
 
 1;
 
@@ -255,6 +272,20 @@ Returns: a L<Paws::ElasticBeanstalk::CheckDNSAvailabilityResultMessage> instance
   Checks if the specified CNAME is available.
 
 
+=head2 ComposeEnvironments([ApplicationName => Str, GroupName => Str, VersionLabels => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::ComposeEnvironments>
+
+Returns: a L<Paws::ElasticBeanstalk::EnvironmentDescriptionsMessage> instance
+
+  Create or update a group of environments that each run a separate
+component of a single application. Takes a list of version labels that
+specify application source bundles for each of the environments to
+create or update. The name of each environment and other required
+information must be included in the source bundles in an environment
+manifest named C<env.yaml>. See Compose Environments for details.
+
+
 =head2 CreateApplication(ApplicationName => Str, [Description => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplication>
@@ -265,7 +296,7 @@ Returns: a L<Paws::ElasticBeanstalk::ApplicationDescriptionMessage> instance
 C<default> and no application versions.
 
 
-=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, Description => Str, SourceBundle => L<Paws::ElasticBeanstalk::S3Location>])
+=head2 CreateApplicationVersion(ApplicationName => Str, VersionLabel => Str, [AutoCreateApplication => Bool, Description => Str, Process => Bool, SourceBundle => L<Paws::ElasticBeanstalk::S3Location>])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateApplicationVersion>
 
@@ -303,7 +334,7 @@ Related Topics
 
 
 
-=head2 CreateEnvironment(ApplicationName => Str, EnvironmentName => Str, [CNAMEPrefix => Str, Description => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>], TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])
+=head2 CreateEnvironment(ApplicationName => Str, [CNAMEPrefix => Str, Description => Str, EnvironmentName => Str, GroupName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, Tags => ArrayRef[L<Paws::ElasticBeanstalk::Tag>], TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::CreateEnvironment>
 
@@ -396,7 +427,8 @@ Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeAppli
 
 Returns: a L<Paws::ElasticBeanstalk::ApplicationVersionDescriptionsMessage> instance
 
-  Returns descriptions for existing application versions.
+  Retrieve a list of application versions stored in your AWS Elastic
+Beanstalk storage bucket.
 
 
 =head2 DescribeConfigurationOptions([ApplicationName => Str, EnvironmentName => Str, Options => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, TemplateName => Str])
@@ -579,7 +611,7 @@ Returns: nothing
   Swaps the CNAMEs of two environments.
 
 
-=head2 TerminateEnvironment([EnvironmentId => Str, EnvironmentName => Str, TerminateResources => Bool])
+=head2 TerminateEnvironment([EnvironmentId => Str, EnvironmentName => Str, ForceTerminate => Bool, TerminateResources => Bool])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::TerminateEnvironment>
 
@@ -636,7 +668,7 @@ Related Topics
 
 
 
-=head2 UpdateEnvironment([Description => Str, EnvironmentId => Str, EnvironmentName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])
+=head2 UpdateEnvironment([ApplicationName => Str, Description => Str, EnvironmentId => Str, EnvironmentName => Str, GroupName => Str, OptionSettings => ArrayRef[L<Paws::ElasticBeanstalk::ConfigurationOptionSetting>], OptionsToRemove => ArrayRef[L<Paws::ElasticBeanstalk::OptionSpecification>], SolutionStackName => Str, TemplateName => Str, Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>, VersionLabel => Str])
 
 Each argument is described in detail in: L<Paws::ElasticBeanstalk::UpdateEnvironment>
 

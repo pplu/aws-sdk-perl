@@ -12,7 +12,7 @@ package Paws::EFS::DescribeMountTargets;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-02-01/mount-targets');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EFS::DescribeMountTargetsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeMountTargetsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -40,29 +40,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 FileSystemId => Str
 
-  Optional. String. The ID of the file system whose mount targets you
+Optional. String. The ID of the file system whose mount targets you
 want to list. It must be included in your request if C<MountTargetId>
 is not included.
 
 
+
 =head2 Marker => Str
 
-  Optional. String. Opaque pagination token returned from a previous
+Optional. String. Opaque pagination token returned from a previous
 C<DescribeMountTargets> operation. If present, it specifies to continue
 the list from where the previous returning call left off.
 
 
+
 =head2 MaxItems => Int
 
-  Optional. Maximum number of mount targets to return in the response. It
+Optional. Maximum number of mount targets to return in the response. It
 must be an integer with a value greater than zero.
+
 
 
 =head2 MountTargetId => Str
 
-  Optional. String. The ID of the mount target that you want to have
+Optional. String. The ID of the mount target that you want to have
 described. It must be included in your request if C<FileSystemId> is
 not included.
+
 
 
 

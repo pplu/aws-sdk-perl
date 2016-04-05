@@ -9,7 +9,7 @@ package Paws::ES::DescribeElasticsearchDomainConfig;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2015-01-01/es/domain/{DomainName}/config');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ES::DescribeElasticsearchDomainConfigResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'DescribeElasticsearchDomainConfigResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -37,7 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  The Elasticsearch domain that you want to get information about.
+The Elasticsearch domain that you want to get information about.
+
 
 
 

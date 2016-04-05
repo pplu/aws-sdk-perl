@@ -38,24 +38,28 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-  A description for the conversion task or the resource being exported.
+A description for the conversion task or the resource being exported.
 The maximum length is 255 bytes.
+
 
 
 =head2 ExportToS3Task => L<Paws::EC2::ExportToS3TaskSpecification>
 
-  The format and location for an instance export task.
+The format and location for an instance export task.
+
 
 
 =head2 B<REQUIRED> InstanceId => Str
 
-  The ID of the instance.
+The ID of the instance.
+
 
 
 =head2 TargetEnvironment => Str
 
-  The target virtualization environment.
+The target virtualization environment.
 
+Valid values are: C<"citrix">, C<"vmware">, C<"microsoft">
 
 
 =head1 SEE ALSO

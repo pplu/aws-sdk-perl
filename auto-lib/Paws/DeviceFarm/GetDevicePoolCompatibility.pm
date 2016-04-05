@@ -1,7 +1,7 @@
 
 package Paws::DeviceFarm::GetDevicePoolCompatibility;
   use Moose;
-  has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' , required => 1);
+  has AppArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appArn' );
   has DevicePoolArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'devicePoolArn' , required => 1);
   has TestType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'testType' );
 
@@ -35,19 +35,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AppArn => Str
+=head2 AppArn => Str
 
-  The ARN of the app that is associated with the specified device pool.
+The ARN of the app that is associated with the specified device pool.
+
 
 
 =head2 B<REQUIRED> DevicePoolArn => Str
 
-  The device pool's ARN.
+The device pool's ARN.
+
 
 
 =head2 TestType => Str
 
-  The test type for the specified device pool.
+The test type for the specified device pool.
 
 Allowed values include the following:
 
@@ -73,6 +75,22 @@ APPIUM_JAVA_TESTNG: The Appium Java TestNG type.
 
 =item *
 
+APPIUM_PYTHON: The Appium Python type.
+
+=item *
+
+APPIUM_WEB_JAVA_JUNIT: The Appium Java JUnit type for Web apps.
+
+=item *
+
+APPIUM_WEB_JAVA_TESTNG: The Appium Java TestNG type for Web apps.
+
+=item *
+
+APPIUM_WEB_PYTHON: The Appium Python type for Web apps.
+
+=item *
+
 CALABASH: The Calabash type.
 
 =item *
@@ -91,9 +109,14 @@ UIAUTOMATOR: The uiautomator type.
 
 XCTEST: The XCode test type.
 
+=item *
+
+XCTEST_UI: The XCode UI test type.
+
 =back
 
 
+Valid values are: C<"BUILTIN_FUZZ">, C<"BUILTIN_EXPLORER">, C<"APPIUM_JAVA_JUNIT">, C<"APPIUM_JAVA_TESTNG">, C<"APPIUM_PYTHON">, C<"APPIUM_WEB_JAVA_JUNIT">, C<"APPIUM_WEB_JAVA_TESTNG">, C<"APPIUM_WEB_PYTHON">, C<"CALABASH">, C<"INSTRUMENTATION">, C<"UIAUTOMATION">, C<"UIAUTOMATOR">, C<"XCTEST">, C<"XCTEST_UI">
 
 
 =head1 SEE ALSO

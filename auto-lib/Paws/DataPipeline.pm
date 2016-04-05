@@ -4,6 +4,12 @@ package Paws::DataPipeline;
   sub version { '2012-10-29' }
   sub target_prefix { 'DataPipeline' }
   sub json_version { "1.1" }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
@@ -103,48 +109,62 @@ package Paws::DataPipeline;
     my $call_object = $self->new_with_coercions('Paws::DataPipeline::ValidatePipelineDefinition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub DescribeAllObjects {
     my $self = shift;
 
     my $result = $self->DescribeObjects(@_);
-    my $array = [];
-    push @$array, @{ $result->pipelineObjects };
+    my $params = {};
+    
+    $params->{ pipelineObjects } = $result->pipelineObjects;
+    
 
-    while ($result->marker) {
+    while ($result->hasMoreResults) {
       $result = $self->DescribeObjects(@_, marker => $result->marker);
-      push @$array, @{ $result->pipelineObjects };
+      
+      push @{ $params->{ pipelineObjects } }, @{ $result->pipelineObjects };
+      
     }
 
-    return 'Paws::DataPipeline::DescribeObjects'->_returns->new(pipelineObjects => $array);
+    return $self->new_with_coercions(Paws::DataPipeline::DescribeObjects->_returns, %$params);
   }
   sub ListAllPipelines {
     my $self = shift;
 
     my $result = $self->ListPipelines(@_);
-    my $array = [];
-    push @$array, @{ $result->pipelineIdList };
+    my $params = {};
+    
+    $params->{ pipelineIdList } = $result->pipelineIdList;
+    
 
-    while ($result->marker) {
+    while ($result->hasMoreResults) {
       $result = $self->ListPipelines(@_, marker => $result->marker);
-      push @$array, @{ $result->pipelineIdList };
+      
+      push @{ $params->{ pipelineIdList } }, @{ $result->pipelineIdList };
+      
     }
 
-    return 'Paws::DataPipeline::ListPipelines'->_returns->new(pipelineIdList => $array);
+    return $self->new_with_coercions(Paws::DataPipeline::ListPipelines->_returns, %$params);
   }
   sub QueryAllObjects {
     my $self = shift;
 
     my $result = $self->QueryObjects(@_);
-    my $array = [];
-    push @$array, @{ $result->ids };
+    my $params = {};
+    
+    $params->{ ids } = $result->ids;
+    
 
-    while ($result->marker) {
+    while ($result->hasMoreResults) {
       $result = $self->QueryObjects(@_, marker => $result->marker);
-      push @$array, @{ $result->ids };
+      
+      push @{ $params->{ ids } }, @{ $result->ids };
+      
     }
 
-    return 'Paws::DataPipeline::QueryObjects'->_returns->new(ids => $array);
+    return $self->new_with_coercions(Paws::DataPipeline::QueryObjects->_returns, %$params);
   }
+
 
   sub operations { qw/ActivatePipeline AddTags CreatePipeline DeactivatePipeline DeletePipeline DescribeObjects DescribePipelines EvaluateExpression GetPipelineDefinition ListPipelines PollForTask PutPipelineDefinition QueryObjects RemoveTags ReportTaskProgress ReportTaskRunnerHeartbeat SetStatus SetTaskStatus ValidatePipelineDefinition / }
 

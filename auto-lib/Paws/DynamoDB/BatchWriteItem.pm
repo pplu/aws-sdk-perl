@@ -37,7 +37,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> RequestItems => L<Paws::DynamoDB::BatchWriteItemRequestMap>
 
-  A map of one or more table names and, for each table, a list of
+A map of one or more table names and, for each table, a list of
 operations to be performed (I<DeleteRequest> or I<PutRequest>). Each
 element in the map consists of the following:
 
@@ -55,10 +55,9 @@ item. The item to be deleted is identified by a I<Key> subelement:
 I<Key> - A map of primary key attribute values that uniquely identify
 the ! item. Each entry in this map consists of an attribute name and an
 attribute value. For each primary key, you must provide I<all> of the
-key attributes. For example, with a hash type primary key, you only
-need to provide the hash attribute. For a hash-and-range type primary
-key, you must provide I<both> the hash attribute and the range
-attribute.
+key attributes. For example, with a simple primary key, you only need
+to provide a value for the partition key. For a composite primary key,
+you must provide values for I<both> the partition key and the sort key.
 
 =back
 
@@ -88,18 +87,21 @@ table's attribute definition.
 
 
 
+
 =head2 ReturnConsumedCapacity => Str
 
-  
 
+
+Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
 =head2 ReturnItemCollectionMetrics => Str
 
-  Determines whether item collection metrics are returned. If set to
+Determines whether item collection metrics are returned. If set to
 C<SIZE>, the response includes statistics about item collections, if
 any, that were modified during the operation are returned in the
 response. If set to C<NONE> (the default), no statistics are returned.
 
+Valid values are: C<"SIZE">, C<"NONE">
 
 
 =head1 SEE ALSO

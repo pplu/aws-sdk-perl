@@ -37,24 +37,27 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DirectoryIds => ArrayRef[Str]
 
-  A list of identifiers of the directories to obtain the information for.
-If this member is null, all directories that belong to the current
-account are returned.
+A list of identifiers of the directories for which to obtain the
+information. If this member is null, all directories that belong to the
+current account are returned.
 
 An empty list results in an C<InvalidParameterException> being thrown.
 
 
+
 =head2 Limit => Int
 
-  The maximum number of items to return. If this value is zero, the
+The maximum number of items to return. If this value is zero, the
 maximum number of items is specified by the limitations of the
 operation.
 
 
+
 =head2 NextToken => Str
 
-  The I<DescribeDirectoriesResult.NextToken> value from a previous call
+The I<DescribeDirectoriesResult.NextToken> value from a previous call
 to DescribeDirectories. Pass null if this is the first call.
+
 
 
 

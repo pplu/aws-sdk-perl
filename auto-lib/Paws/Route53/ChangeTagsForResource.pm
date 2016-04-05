@@ -13,6 +13,7 @@ package Paws::Route53::ChangeTagsForResource;
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Route53::ChangeTagsForResourceResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
+  
 1;
 
 ### main pod documentation begin ###
@@ -26,27 +27,35 @@ Paws::Route53::ChangeTagsForResourceResponse
 
 =head2 AddTags => ArrayRef[L<Paws::Route53::Tag>]
 
-  A complex type that contains a list of C<Tag> elements. Each C<Tag>
+A complex type that contains a list of C<Tag> elements. Each C<Tag>
 element identifies a tag that you want to add or update for the
 specified resource.
 
+
+
 =head2 RemoveTagKeys => ArrayRef[Str]
 
-  A list of C<Tag> keys that you want to remove from the specified
+A list of C<Tag> keys that you want to remove from the specified
 resource.
+
+
 
 =head2 B<REQUIRED> ResourceId => Str
 
-  The ID of the resource for which you want to add, change, or delete
+The ID of the resource for which you want to add, change, or delete
 tags.
+
+
 
 =head2 B<REQUIRED> ResourceType => Str
 
-  The type of the resource.
+The type of the resource.
 
 - The resource type for health checks is C<healthcheck>.
 
 - The resource type for hosted zones is C<hostedzone>.
+
+Valid values are: C<"healthcheck">, C<"hostedzone">
 
 
 =cut

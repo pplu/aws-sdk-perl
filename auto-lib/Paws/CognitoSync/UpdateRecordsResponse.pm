@@ -16,7 +16,9 @@ Paws::CognitoSync::UpdateRecordsResponse
 
 =head2 Records => ArrayRef[L<Paws::CognitoSync::Record>]
 
-  A list of records that have been updated.
+A list of records that have been updated.
+
+
 
 
 =cut

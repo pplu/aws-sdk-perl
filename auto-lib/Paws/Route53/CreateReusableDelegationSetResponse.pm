@@ -31,12 +31,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DelegationSet => L<Paws::Route53::DelegationSet>
 
-  A complex type that contains name server information.
+A complex type that contains name server information.
+
 
 
 =head2 B<REQUIRED> Location => Str
 
-  The unique URL representing the new reusbale delegation set.
+The unique URL representing the new reusbale delegation set.
+
 
 
 

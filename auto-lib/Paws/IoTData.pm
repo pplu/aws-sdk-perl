@@ -4,6 +4,12 @@ package Paws::IoTData;
   sub service { 'data.iot' }
   sub version { '2015-05-28' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
@@ -28,6 +34,8 @@ package Paws::IoTData;
     my $call_object = $self->new_with_coercions('Paws::IoTData::UpdateThingShadow', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/DeleteThingShadow GetThingShadow Publish UpdateThingShadow / }
 
@@ -57,9 +65,7 @@ Paws::IoTData - Perl Interface to AWS AWS IoT Data Plane
 
 =head1 DESCRIPTION
 
-AWS IoT (Beta)
-
-B<AWS IoT is considered a beta service as defined in the Service Terms>
+AWS IoT
 
 AWS IoT-Data enables secure, bi-directional communication between
 Internet-connected things (such as sensors, actuators, embedded

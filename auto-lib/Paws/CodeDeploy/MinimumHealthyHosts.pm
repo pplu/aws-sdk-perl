@@ -32,42 +32,48 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 =head1 DESCRIPTION
 
-Information about minimum healthy instances.
+Information about minimum healthy instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 Type => Str
 
-  The minimum healthy instances type:
+  The minimum healthy instance type:
 
 =over
 
-=item * HOST_COUNT: The minimum number of healthy instances, as an
+=item * HOST_COUNT: The minimum number of healthy instance as an
 absolute value.
 
-=item * FLEET_PERCENT: The minimum number of healthy instances, as a
-percentage of the total number of instances in the deployment.
+=item * FLEET_PERCENT: The minimum number of healthy instance as a
+percentage of the total number of instance in the deployment.
 
 =back
 
-For example, for 9 instances, if a HOST_COUNT of 6 is specified, deploy
-to up to 3 instances at a time. The deployment succeeds if 6 or more
-instances are successfully deployed to; otherwise, the deployment
-fails. If a FLEET_PERCENT of 40 is specified, deploy to up to 5
-instances at a time. The deployment succeeds if 4 or more instances are
-successfully deployed to; otherwise, the deployment fails.
+In an example of nine instance, if a HOST_COUNT of six is specified,
+deploy to up to three instances at a time. The deployment will be
+successful if six or more instances are deployed to successfully;
+otherwise, the deployment fails. If a FLEET_PERCENT of 40 is specified,
+deploy to up to five instance at a time. The deployment will be
+successful if four or more instance are deployed to successfully;
+otherwise, the deployment fails.
 
 In a call to the get deployment configuration operation,
-CodeDeployDefault.OneAtATime will return a minimum healthy instances
+CodeDeployDefault.OneAtATime will return a minimum healthy instance
 type of MOST_CONCURRENCY and a value of 1. This means a deployment to
-only one instances at a time. (You cannot set the type to
-MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.)
+only one instance at a time. (You cannot set the type to
+MOST_CONCURRENCY, only to HOST_COUNT or FLEET_PERCENT.) In addition,
+with CodeDeployDefault.OneAtATime, AWS CodeDeploy will try to ensure
+that all instances but one are kept in a healthy state during the
+deployment. Although this allows one instance at a time to be taken
+offline for a new deployment, it also means that if the deployment to
+the last instance fails, the overall deployment still succeeds.
 
 
 =head2 Value => Int
 
-  The minimum healthy instances value.
+  The minimum healthy instance value.
 
 
 

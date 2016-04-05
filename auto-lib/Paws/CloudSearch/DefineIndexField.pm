@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DomainName => Str
 
-  
+
+
 
 
 =head2 B<REQUIRED> IndexField => L<Paws::CloudSearch::IndexField>
 
-  The index field and field options you want to configure.
+The index field and field options you want to configure.
+
 
 
 

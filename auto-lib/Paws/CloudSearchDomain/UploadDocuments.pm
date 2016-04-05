@@ -10,7 +10,7 @@ package Paws::CloudSearchDomain::UploadDocuments;
   class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2013-01-01/documents/batch?format=sdk');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudSearchDomain::UploadDocumentsResponse');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'UploadDocumentsResult');
+  class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
 ### main pod documentation begin ###
@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ContentType => Str
 
-  The format of the batch you are uploading. Amazon CloudSearch supports
+The format of the batch you are uploading. Amazon CloudSearch supports
 two document batch formats:
 
 =over
@@ -50,10 +50,12 @@ two document batch formats:
 =back
 
 
+Valid values are: C<"application/json">, C<"application/xml">
 
 =head2 B<REQUIRED> Documents => Str
 
-  A batch of documents formatted in JSON or HTML.
+A batch of documents formatted in JSON or HTML.
+
 
 
 

@@ -4,6 +4,12 @@ package Paws::Glacier;
   sub service { 'glacier' }
   sub version { '2012-06-01' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
@@ -163,62 +169,80 @@ package Paws::Glacier;
     my $call_object = $self->new_with_coercions('Paws::Glacier::UploadMultipartPart', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
   sub ListAllJobs {
     my $self = shift;
 
     my $result = $self->ListJobs(@_);
-    my $array = [];
-    push @$array, @{ $result->JobList };
+    my $params = {};
+    
+    $params->{ JobList } = $result->JobList;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->ListJobs(@_, marker => $result->Marker);
-      push @$array, @{ $result->JobList };
+      
+      push @{ $params->{ JobList } }, @{ $result->JobList };
+      
     }
 
-    return 'Paws::Glacier::ListJobs'->_returns->new(JobList => $array);
+    return $self->new_with_coercions(Paws::Glacier::ListJobs->_returns, %$params);
   }
   sub ListAllMultipartUploads {
     my $self = shift;
 
     my $result = $self->ListMultipartUploads(@_);
-    my $array = [];
-    push @$array, @{ $result->UploadsList };
+    my $params = {};
+    
+    $params->{ UploadsList } = $result->UploadsList;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
-      push @$array, @{ $result->UploadsList };
+      
+      push @{ $params->{ UploadsList } }, @{ $result->UploadsList };
+      
     }
 
-    return 'Paws::Glacier::ListMultipartUploads'->_returns->new(UploadsList => $array);
+    return $self->new_with_coercions(Paws::Glacier::ListMultipartUploads->_returns, %$params);
   }
   sub ListAllParts {
     my $self = shift;
 
     my $result = $self->ListParts(@_);
-    my $array = [];
-    push @$array, @{ $result->Parts };
+    my $params = {};
+    
+    $params->{ Parts } = $result->Parts;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->ListParts(@_, marker => $result->Marker);
-      push @$array, @{ $result->Parts };
+      
+      push @{ $params->{ Parts } }, @{ $result->Parts };
+      
     }
 
-    return 'Paws::Glacier::ListParts'->_returns->new(Parts => $array);
+    return $self->new_with_coercions(Paws::Glacier::ListParts->_returns, %$params);
   }
   sub ListAllVaults {
     my $self = shift;
 
     my $result = $self->ListVaults(@_);
-    my $array = [];
-    push @$array, @{ $result->VaultList };
+    my $params = {};
+    
+    $params->{ VaultList } = $result->VaultList;
+    
 
-    while ($result->Marker) {
+    while ($result->) {
       $result = $self->ListVaults(@_, marker => $result->Marker);
-      push @$array, @{ $result->VaultList };
+      
+      push @{ $params->{ VaultList } }, @{ $result->VaultList };
+      
     }
 
-    return 'Paws::Glacier::ListVaults'->_returns->new(VaultList => $array);
+    return $self->new_with_coercions(Paws::Glacier::ListVaults->_returns, %$params);
   }
+
 
   sub operations { qw/AbortMultipartUpload AbortVaultLock AddTagsToVault CompleteMultipartUpload CompleteVaultLock CreateVault DeleteArchive DeleteVault DeleteVaultAccessPolicy DeleteVaultNotifications DescribeJob DescribeVault GetDataRetrievalPolicy GetJobOutput GetVaultAccessPolicy GetVaultLock GetVaultNotifications InitiateJob InitiateMultipartUpload InitiateVaultLock ListJobs ListMultipartUploads ListParts ListTagsForVault ListVaults RemoveTagsFromVault SetDataRetrievalPolicy SetVaultAccessPolicy SetVaultNotifications UploadArchive UploadMultipartPart / }
 

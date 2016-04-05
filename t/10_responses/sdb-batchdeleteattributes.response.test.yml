@@ -1,0 +1,4 @@
+---
+call: BatchDeleteAttributes
+service: SDB
+tests: []

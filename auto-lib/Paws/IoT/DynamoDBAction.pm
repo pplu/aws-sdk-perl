@@ -46,10 +46,9 @@ The C<hashKeyValue> and C<rangeKeyvalue> fields use a substitution
 template syntax. These templates provide data at runtime. The syntax is
 as follows: ${I<sql-expression>}.
 
-You can specify any expression that's valid in a WHERE or SELECT
-clause, including JSON properties, comparisons, calculations, and
-functions. For example, the following field uses the third level of the
-topic:
+You can specify any valid expression in a WHERE or SELECT clause,
+including JSON properties, comparisons, calculations, and functions.
+For example, the following field uses the third level of the topic:
 
 C<"hashKeyValue": "${topic(3)}">
 
@@ -72,7 +71,7 @@ C<"rangeKeyValue": "${timestamp()}">
 
 =head2 PayloadField => Str
 
-  The action payload.
+  The action payload. This name can be customized.
 
 
 =head2 B<REQUIRED> RangeKeyField => Str
@@ -87,7 +86,7 @@ C<"rangeKeyValue": "${timestamp()}">
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  The ARN of the IAM role that grants access.
+  The ARN of the IAM role that grants access to the DynamoDB table.
 
 
 =head2 B<REQUIRED> TableName => Str

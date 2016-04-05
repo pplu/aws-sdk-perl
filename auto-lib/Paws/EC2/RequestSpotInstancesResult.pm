@@ -16,7 +16,9 @@ Paws::EC2::RequestSpotInstancesResult
 
 =head2 SpotInstanceRequests => ArrayRef[L<Paws::EC2::SpotInstanceRequest>]
 
-  One or more Spot instance requests.
+One or more Spot instance requests.
+
+
 
 
 =cut

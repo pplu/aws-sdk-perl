@@ -4,6 +4,12 @@ package Paws::CognitoSync;
   sub service { 'cognito-sync' }
   sub version { '2014-06-30' }
   sub flattened_arrays { 0 }
+  has max_attempts => (is => 'ro', isa => 'Int', default => 5);
+  has retry => (is => 'ro', isa => 'HashRef', default => sub {
+    { base => 'rand', type => 'exponential', growth_factor => 2 }
+  });
+  has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
+  ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller', 'Paws::Net::RestJsonResponse';
 
@@ -93,6 +99,8 @@ package Paws::CognitoSync;
     my $call_object = $self->new_with_coercions('Paws::CognitoSync::UpdateRecords', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  
+
 
   sub operations { qw/BulkPublish DeleteDataset DescribeDataset DescribeIdentityPoolUsage DescribeIdentityUsage GetBulkPublishDetails GetCognitoEvents GetIdentityPoolConfiguration ListDatasets ListIdentityPoolUsage ListRecords RegisterDevice SetCognitoEvents SetIdentityPoolConfiguration SubscribeToDataset UnsubscribeFromDataset UpdateRecords / }
 

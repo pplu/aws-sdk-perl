@@ -35,10 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DBSnapshotIdentifier => Str
 
-  The DBSnapshot identifier.
+The DBSnapshot identifier.
 
 Constraints: Must be the name of an existing DB snapshot in the
 C<available> state.
+
 
 
 

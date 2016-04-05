@@ -1,5 +1,6 @@
 package Paws::IAM::PolicyUser;
   use Moose;
+  has UserId => (is => 'ro', isa => 'Str');
   has UserName => (is => 'ro', isa => 'Str');
 1;
 
@@ -20,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IAM::PolicyUser object:
 
-  $service_obj->Method(Att1 => { UserName => $value, ..., UserName => $value  });
+  $service_obj->Method(Att1 => { UserId => $value, ..., UserName => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::PolicyUser object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->UserName
+  $result->Att1->UserId
 
 =head1 DESCRIPTION
 
@@ -40,6 +41,12 @@ For more information about managed policies, refer to Managed Policies
 and Inline Policies in the I<Using IAM> guide.
 
 =head1 ATTRIBUTES
+
+
+=head2 UserId => Str
+
+  The stable and unique string identifying the user. For more information
+about IDs, see IAM Identifiers in the I<IAM User Guide>.
 
 
 =head2 UserName => Str

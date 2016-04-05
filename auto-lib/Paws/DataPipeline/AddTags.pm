@@ -36,12 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PipelineId => Str
 
-  The ID of the pipeline.
+The ID of the pipeline.
+
 
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::DataPipeline::Tag>]
 
-  The tags to add, as key/value pairs.
+The tags to add, as key/value pairs.
+
 
 
 

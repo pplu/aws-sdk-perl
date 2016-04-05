@@ -35,8 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ExportTaskId => Str
 
-  The ID of the export task. This is the ID returned by
+The ID of the export task. This is the ID returned by
 C<CreateInstanceExportTask>.
+
 
 
 

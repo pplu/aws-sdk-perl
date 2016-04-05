@@ -62,8 +62,9 @@ exported.
 
 =head2 From => Int
 
-  A unix timestamp indicating the start time of the range for the
-request. Events with a timestamp prior to this time were not exported.
+  A point in time expressed as the number of milliseconds since Jan 1,
+1970 00:00:00 UTC. Events with a timestamp prior to this time are not
+exported.
 
 
 =head2 LogGroupName => Str
@@ -88,8 +89,9 @@ request. Events with a timestamp prior to this time were not exported.
 
 =head2 To => Int
 
-  A unix timestamp indicating the end time of the range for the request.
-Events with a timestamp later than this time were not exported.
+  A point in time expressed as the number of milliseconds since Jan 1,
+1970 00:00:00 UTC. Events with a timestamp later than this time are not
+exported.
 
 
 

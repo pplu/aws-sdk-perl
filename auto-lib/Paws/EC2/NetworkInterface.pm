@@ -5,6 +5,7 @@ package Paws::EC2::NetworkInterface;
   has AvailabilityZone => (is => 'ro', isa => 'Str', xmlname => 'availabilityZone', traits => ['Unwrapped']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', xmlname => 'groupSet', traits => ['Unwrapped']);
+  has InterfaceType => (is => 'ro', isa => 'Str', xmlname => 'interfaceType', traits => ['Unwrapped']);
   has MacAddress => (is => 'ro', isa => 'Str', xmlname => 'macAddress', traits => ['Unwrapped']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', xmlname => 'networkInterfaceId', traits => ['Unwrapped']);
   has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped']);
@@ -77,6 +78,11 @@ network interface.
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]
 
   Any security groups for the network interface.
+
+
+=head2 InterfaceType => Str
+
+  The type of interface.
 
 
 =head2 MacAddress => Str
