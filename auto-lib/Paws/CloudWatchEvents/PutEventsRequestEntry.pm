@@ -35,8 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 
 =head1 DESCRIPTION
 
-Contains information about the event to be used in the PutEvents
-action.
+Contains information about the event to be used in PutEvents.
 
 =head1 ATTRIBUTES
 

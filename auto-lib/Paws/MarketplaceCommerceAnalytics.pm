@@ -52,7 +52,7 @@ Provides AWS Marketplace business intelligence data on-demand.
 
 =head1 METHODS
 
-=head2 GenerateDataSet(DataSetPublicationDate => Str, DataSetType => Str, DestinationS3BucketName => Str, RoleNameArn => Str, SnsTopicArn => Str, [DestinationS3Prefix => Str])
+=head2 GenerateDataSet(DataSetPublicationDate => Str, DataSetType => Str, DestinationS3BucketName => Str, RoleNameArn => Str, SnsTopicArn => Str, [CustomerDefinedValues => HashRef[Str], DestinationS3Prefix => Str])
 
 Each argument is described in detail in: L<Paws::MarketplaceCommerceAnalytics::GenerateDataSet>
 
@@ -68,8 +68,8 @@ comma-separated values (CSV) format with the file name
 exists (e.g. if the same data set is requested twice), the original
 file will be overwritten by the new file. Requires a Role with an
 attached permissions policy providing Allow permissions for the
-following actions: s3:PutObject, s3:getBucketLocation, sns:SetRegion,
-sns:ListTopics, sns:Publish, iam:GetRolePolicy.
+following actions: s3:PutObject, s3:GetBucketLocation,
+sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 
 
 =head1 SEE ALSO

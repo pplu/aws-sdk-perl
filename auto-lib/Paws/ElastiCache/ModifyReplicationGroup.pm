@@ -4,6 +4,7 @@ package Paws::ElastiCache::ModifyReplicationGroup;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has AutomaticFailoverEnabled => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has CacheNodeType => (is => 'ro', isa => 'Str');
   has CacheParameterGroupName => (is => 'ro', isa => 'Str');
   has CacheSecurityGroupNames => (is => 'ro', isa => 'ArrayRef[Str]');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -91,6 +92,15 @@ This parameter is currently disabled.
 
 
 
+=head2 CacheNodeType => Str
+
+A valid cache node type that you want to scale this replication group
+to. The value of this parameter must be one of the
+I<ScaleUpModifications> values returned by the
+C<ListAllowedCacheNodeTypeModification> action.
+
+
+
 =head2 CacheParameterGroupName => Str
 
 The name of the cache parameter group to apply to all of the clusters
@@ -118,6 +128,12 @@ Must not be "Default".
 
 The upgraded version of the cache engine to be run on the cache
 clusters in the replication group.
+
+B<Important:> You can upgrade to a newer engine version (see Selecting
+a Cache Engine and Version), but you cannot downgrade to an earlier
+engine version. If you want to use an earlier engine version, you must
+delete the existing replication group and create it anew with the
+earlier engine version.
 
 
 
@@ -170,10 +186,10 @@ Example: C<sun:05:00-sun:09:00>
 
 =head2 PrimaryClusterId => Str
 
-If this parameter is specified, ElastiCache will promote each of the
-cache clusters in the specified replication group to the primary role.
-The nodes of all other cache clusters in the replication group will be
-read replicas.
+If this parameter is specified, ElastiCache will promote the specified
+cluster in the specified replication group to the primary role. The
+nodes of all other clusters in the replication group will be read
+replicas.
 
 
 

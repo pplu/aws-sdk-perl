@@ -3,6 +3,7 @@ package Paws::ApiGateway::Method;
   use Moose;
   has ApiKeyRequired => (is => 'ro', isa => 'Bool');
   has AuthorizationType => (is => 'ro', isa => 'Str');
+  has AuthorizerId => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str');
   has MethodIntegration => (is => 'ro', isa => 'Paws::ApiGateway::Integration');
   has MethodResponses => (is => 'ro', isa => 'HashRef[Paws::ApiGateway::MethodResponse]');
@@ -29,6 +30,13 @@ Specifies whether the method requires a valid ApiKey.
 =head2 AuthorizationType => Str
 
 The method's authorization type.
+
+
+
+=head2 AuthorizerId => Str
+
+Specifies the identifier of an Authorizer to use on this Method. The
+authorizationType must be CUSTOM.
 
 
 

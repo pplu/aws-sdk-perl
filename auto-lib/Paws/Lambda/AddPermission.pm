@@ -44,9 +44,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> Action => Str
 
 The AWS Lambda action you want to allow in this statement. Each Lambda
-action is a string starting with "lambda:" followed by the API name
-(see Operations). For example, "lambda:CreateFunction". You can use
-wildcard ("lambda:*") to grant permission for all AWS Lambda actions.
+action is a string starting with C<lambda:> followed by the API name
+(see Operations). For example, C<lambda:CreateFunction>. You can use
+wildcard (C<lambda:*>) to grant permission for all AWS Lambda actions.
 
 
 
@@ -55,23 +55,23 @@ wildcard ("lambda:*") to grant permission for all AWS Lambda actions.
 Name of the Lambda function whose resource policy you are updating by
 adding a new permission.
 
-You can specify an unqualified function name (for example, "Thumbnail")
-or you can specify Amazon Resource Name (ARN) of the function (for
-example, "arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS
-Lambda also allows you to specify only the account ID qualifier (for
-example, "account-id:Thumbnail"). Note that the length constraint
-applies only to the ARN. If you specify only the function name, it is
-limited to 64 character in length.
+You can specify a function name (for example, C<Thumbnail>) or you can
+specify Amazon Resource Name (ARN) of the function (for example,
+C<arn:aws:lambda:us-west-2:account-id:function:ThumbNail>). AWS Lambda
+also allows you to specify partial ARN (for example,
+C<account-id:Thumbnail>). Note that the length constraint applies only
+to the ARN. If you specify only the function name, it is limited to 64
+character in length.
 
 
 
 =head2 B<REQUIRED> Principal => Str
 
 The principal who is getting this permission. It can be Amazon S3
-service Principal ("s3.amazonaws.com") if you want Amazon S3 to invoke
+service Principal (C<s3.amazonaws.com>) if you want Amazon S3 to invoke
 the function, an AWS account ID if you are granting cross-account
 permission, or any valid AWS service principal such as
-"sns.amazonaws.com". For example, you might want to allow a custom
+C<sns.amazonaws.com>. For example, you might want to allow a custom
 application in another AWS account to push events to AWS Lambda by
 invoking your function.
 
@@ -79,16 +79,16 @@ invoking your function.
 
 =head2 Qualifier => Str
 
-You can specify this optional query parameter to specify function
-version or alias name. The permission will then apply to the specific
-qualified ARN. For example, if you specify function version 2 as the
-qualifier, then permission applies only when request is made using
-qualified function ARN:
+You can use this optional query parameter to describe a qualified ARN
+using a function version or an alias name. The permission will then
+apply to the specific qualified ARN. For example, if you specify
+function version 2 as the qualifier, then permission applies only when
+request is made using qualified function ARN:
 
 C<arn:aws:lambda:aws-region:acct-id:function:function-name:2>
 
-If you specify alias name, for example "PROD", then the permission is
-valid only for requests made using the alias ARN:
+If you specify an alias name, for example C<PROD>, then the permission
+is valid only for requests made using the alias ARN:
 
 C<arn:aws:lambda:aws-region:acct-id:function:function-name:PROD>
 

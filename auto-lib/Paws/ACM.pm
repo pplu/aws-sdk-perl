@@ -75,9 +75,9 @@ Paws::ACM - Perl Interface to AWS AWS Certificate Manager
 
 AWS Certificate Manager
 
-Welcome to the AWS Certificate Manager (ACM) CLI Command Reference.
-This guide provides descriptions, syntax, and usage examples for each
-ACM CLI command. You can use AWS Certificate Manager to request ACM
+Welcome to the AWS Certificate Manager (ACM) Command Reference. This
+guide provides descriptions, syntax, and usage examples for each ACM
+command. You can use AWS Certificate Manager to request ACM
 Certificates for your AWS-based websites and applications. For general
 information about using ACM and for more information about using the
 console, see the AWS Certificate Manager User Guide. For more

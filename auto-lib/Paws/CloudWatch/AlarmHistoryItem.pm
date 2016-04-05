@@ -65,11 +65,7 @@ of the DescribeAlarmHistoryResult data type.
 
 =head2 Timestamp => Str
 
-  The time stamp for the alarm history item. Amazon CloudWatch uses
-Coordinated Universal Time (UTC) when returning time stamps, which do
-not accommodate seasonal adjustments such as daylight savings time. For
-more information, see Time stamps in the I<Amazon CloudWatch Developer
-Guide>.
+  The time stamp for the alarm history item.
 
 
 

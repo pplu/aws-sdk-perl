@@ -3,6 +3,7 @@ package Paws::ApiGateway::PutMethod;
   use Moose;
   has ApiKeyRequired => (is => 'ro', isa => 'Bool');
   has AuthorizationType => (is => 'ro', isa => 'Str', required => 1);
+  has AuthorizerId => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
   has RequestModels => (is => 'ro', isa => 'HashRef[Str]');
   has RequestParameters => (is => 'ro', isa => 'HashRef[Bool]');
@@ -50,6 +51,13 @@ Specifies whether the method required a valid ApiKey.
 =head2 B<REQUIRED> AuthorizationType => Str
 
 Specifies the type of authorization used for the method.
+
+
+
+=head2 AuthorizerId => Str
+
+Specifies the identifier of an Authorizer to use on this Method, if the
+type is CUSTOM.
 
 
 

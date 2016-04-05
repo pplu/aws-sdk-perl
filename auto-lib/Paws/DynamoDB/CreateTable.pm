@@ -132,15 +132,36 @@ I<AttributeName> - The name of this key attribute.
 
 =item *
 
-I<KeyType> - Determines whether the key attribute is C<HASH> or
-C<RANGE>.
+I<KeyType> - The role that the key attribute will assume:
+
+=over
+
+=item *
+
+C<HASH> - partition key
+
+=item *
+
+C<RANGE> - sort key
 
 =back
 
-For a primary key that consists of a hash attribute, you must provide
-exactly one element with a I<KeyType> of C<HASH>.
+=back
 
-For a primary key that consists of hash and range attributes, you must
+The partition key of an item is also known as its I<hash attribute>.
+The term "hash attribute" derives from DynamoDB' usage of an internal
+hash function to evenly distribute data items across partitions, based
+on their partition key values.
+
+The sort key of an item is also known as its I<range attribute>. The
+term "range attribute" derives from the way DynamoDB stores items with
+the same partition key physically close together, in sorted order by
+the sort key value.
+
+For a simple primary key (partition key), you must provide exactly one
+element with a I<KeyType> of C<HASH>.
+
+For a composite primary key (partition key and sort key), you must
 provide exactly two elements, in this order: The first element must
 have a I<KeyType> of C<HASH>, and the second element must have a
 I<KeyType> of C<RANGE>.
@@ -153,9 +174,9 @@ DynamoDB Developer Guide>.
 =head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndex>]
 
 One or more local secondary indexes (the maximum is five) to be created
-on the table. Each index is scoped to a given hash key value. There is
-a 10 GB size limit per hash key; otherwise, the size of a local
-secondary index is unconstrained.
+on the table. Each index is scoped to a given partition key value.
+There is a 10 GB size limit per partition key value; otherwise, the
+size of a local secondary index is unconstrained.
 
 Each local secondary index in the array includes the following:
 
@@ -169,8 +190,7 @@ only for this table.
 =item *
 
 I<KeySchema> - Specifies the key schema for the local secondary index.
-The key schema must begin with the same hash key attribute as the
-table.
+The key schema must begin with the same partition key as the table.
 
 =item *
 

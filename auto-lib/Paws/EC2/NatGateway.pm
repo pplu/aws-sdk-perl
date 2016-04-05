@@ -59,7 +59,8 @@ This class has no description
   If the NAT gateway could not be created, specifies the error code for
 the failure. (C<InsufficientFreeAddressesInSubnet> |
 C<Gateway.NotAttached> | C<InvalidAllocationID.NotFound> |
-C<Resource.AlreadyAssociated> | C<InternalError>)
+C<Resource.AlreadyAssociated> | C<InternalError> |
+C<InvalidSubnetID.NotFound>)
 
 
 =head2 FailureMessage => Str
@@ -84,6 +85,9 @@ eipalloc-xxxxxxxx is already associated>
 =item * For InternalError: C<Network interface eni-xxxxxxxx, created
 and used internally by this NAT gateway is in an invalid state. Please
 try again.>
+
+=item * For InvalidSubnetID.NotFound: C<The specified subnet
+subnet-xxxxxxxx does not exist or could not be found.>
 
 =back
 

@@ -39,6 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The pending maintenance action to apply to this resource.
 
+Valid values: C<system-update>, C<db-upgrade>
+
 
 
 =head2 B<REQUIRED> OptInType => Str

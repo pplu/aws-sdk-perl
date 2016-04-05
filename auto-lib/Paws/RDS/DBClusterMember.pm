@@ -3,6 +3,7 @@ package Paws::RDS::DBClusterMember;
   has DBClusterParameterGroupStatus => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has IsClusterWriter => (is => 'ro', isa => 'Bool');
+  has PromotionTier => (is => 'ro', isa => 'Int');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RDS::DBClusterMember object:
 
-  $service_obj->Method(Att1 => { DBClusterParameterGroupStatus => $value, ..., IsClusterWriter => $value  });
+  $service_obj->Method(Att1 => { DBClusterParameterGroupStatus => $value, ..., PromotionTier => $value  });
 
 =head3 Results returned from an API call
 
@@ -53,6 +54,14 @@ of the DB cluster.
 
   Value that is C<true> if the cluster member is the primary instance for
 the DB cluster and C<false> otherwise.
+
+
+=head2 PromotionTier => Int
+
+  A value that specifies the order in which an Aurora Replica is promoted
+to the primary instance after a failure of the existing primary
+instance. For more information, see Fault Tolerance for an Aurora DB
+Cluster.
 
 
 

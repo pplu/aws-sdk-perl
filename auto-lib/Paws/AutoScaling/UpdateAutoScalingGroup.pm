@@ -62,8 +62,8 @@ One or more Availability Zones for the group.
 The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default is 300.
 
-For more information, see Understanding Auto Scaling Cooldowns in the
-I<Auto Scaling Developer Guide>.
+For more information, see Auto Scaling Cooldowns in the I<Auto Scaling
+Developer Guide>.
 
 
 
@@ -81,8 +81,8 @@ The amount of time, in seconds, that Auto Scaling waits before checking
 the health status of an EC2 instance that has come into service. The
 default is 300.
 
-For more information, see Health Checks For Auto Scaling Instances in
-the I<Auto Scaling Developer Guide>.
+For more information, see Health Checks in the I<Auto Scaling Developer
+Guide>.
 
 
 
@@ -132,8 +132,8 @@ A standalone termination policy or a list of termination policies used
 to select the instance to terminate. The policies are executed in the
 order that they are listed.
 
-For more information, see Choosing a Termination Policy for Your Auto
-Scaling Group in the I<Auto Scaling Developer Guide>.
+For more information, see Controlling Which Instances Auto Scaling
+Terminates During Scale In in the I<Auto Scaling Developer Guide>.
 
 
 
@@ -146,8 +146,8 @@ When you specify C<VPCZoneIdentifier> with C<AvailabilityZones>, ensure
 that the subnets' Availability Zones match the values you specify for
 C<AvailabilityZones>.
 
-For more information, see Auto Scaling and Amazon Virtual Private Cloud
-in the I<Auto Scaling Developer Guide>.
+For more information, see Launching Auto Scaling Instances in a VPC in
+the I<Auto Scaling Developer Guide>.
 
 
 

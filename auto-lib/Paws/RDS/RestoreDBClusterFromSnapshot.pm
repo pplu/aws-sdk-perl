@@ -82,6 +82,11 @@ Example: C<my-snapshot-id>
 
 The name of the DB subnet group to use for the new DB cluster.
 
+Constraints: Must contain no more than 255 alphanumeric characters,
+periods, underscores, spaces, or hyphens. Must not be default.
+
+Example: C<mySubnetgroup>
+
 
 
 =head2 B<REQUIRED> Engine => Str

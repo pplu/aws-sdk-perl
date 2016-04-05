@@ -178,6 +178,12 @@ The version number of the cache engine to be used for the cache
 clusters in this replication group. To view the supported cache engine
 versions, use the I<DescribeCacheEngineVersions> action.
 
+B<Important:> You can upgrade to a newer engine version (see Selecting
+a Cache Engine and Version), but you cannot downgrade to an earlier
+engine version. If you want to use an earlier engine version, you must
+delete the existing cache cluster or replication group and create it
+anew with the earlier engine version.
+
 
 
 =head2 NotificationTopicArn => Str
@@ -227,9 +233,6 @@ I<NumCacheClusters>.
 Default: system chosen availability zones.
 
 Example: One Redis cache cluster in each of three availability zones.
-PreferredAvailabilityZones.member.1=us-west-2a
-PreferredAvailabilityZones.member.2=us-west-2c
-PreferredAvailabilityZones.member.3=us-west-2c
 
 
 

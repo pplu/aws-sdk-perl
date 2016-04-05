@@ -12,35 +12,47 @@ package Paws::Net::JsonCaller;
   # converts the objects that represent the call into parameters that the API can understand
   sub _to_jsoncaller_params {
     my ($self, $params) = @_;
-    my %p;
-    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-      my $key = $params->meta->get_attribute($att)->does('Paws::Net::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
-      if (defined $params->$att) {
-        my $att_type = $params->meta->get_attribute($att)->type_constraint;
-        if ($att_type eq 'Bool') {
-          $p{ $key } = ($params->$att)?\1:\0;
-        } elsif ($att_type eq 'Int') {
-          $p{ $key } = int($params->$att);
-        } elsif ($self->_is_internal_type($att_type)) {
-          $p{ $key } = $params->$att;
-        } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
-          if ($self->_is_internal_type("$1")){
+
+    if ($params->does('Paws::API::StrToNativeMapParser')){
+      return { %{ $params->Map }  };
+    } elsif ($params->does('Paws::API::StrToObjMapParser')){
+      my $type = $params->meta->get_attribute('Map')->type_constraint;
+      if (my ($inner) = ("$type" =~ m/^HashRef\[ArrayRef\[(.*?)\]/)) {
+        return { map { my $k = $_; ( $k => [ map { $self->_to_jsoncaller_params($_) } @{$params->Map->{$_} } ] ) } keys %{ $params->Map } };
+      } else {
+        return { map { $_ => $self->_to_jsoncaller_params($params->Map->{$_}) } keys %{ $params->Map } };
+      }
+    } else {
+      my %p;
+      foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+        my $key = $params->meta->get_attribute($att)->does('Paws::Net::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
+        if (defined $params->$att) {
+          my $att_type = $params->meta->get_attribute($att)->type_constraint;
+          if ($att_type eq 'Bool') {
+            $p{ $key } = ($params->$att)?\1:\0;
+          } elsif ($att_type eq 'Int') {
+            $p{ $key } = int($params->$att);
+          } elsif ($self->_is_internal_type($att_type)) {
             $p{ $key } = $params->$att;
+          } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
+            if ($self->_is_internal_type("$1")){
+              $p{ $key } = $params->$att;
+            } else {
+              $p{ $key } = [ map { $self->_to_jsoncaller_params($_) } @{ $params->$att } ];
+            }
+          } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
+            $p{ $key } = $params->$att;
+          } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){ 
+            $p{ $key } = $self->_to_jsoncaller_params($params->$att);
+          } elsif ($params->$att->does('Paws::API::StrToObjMapParser')){
+            $p{ $key } = $self->_to_jsoncaller_params($params->$att);
           } else {
-            $p{ $key } = [ map { $self->_to_jsoncaller_params($_) } @{ $params->$att } ];
+            $p{ $key } = $self->_to_jsoncaller_params($params->$att);
           }
-        } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
-          $p{ $key } = $params->$att;
-        } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){ 
-          $p{ $key } = { %{ $params->$att->Map }  };
-        } elsif ($params->$att->does('Paws::API::StrToObjMapParser')){ 
-          $p{ $key } = { map { $_ => $self->_to_jsoncaller_params($params->$att->Map->{$_}) } keys %{ $params->$att->Map } };
-        } else {
-          $p{ $key } = $self->_to_jsoncaller_params($params->$att);
         }
       }
+      return \%p;
     }
-    return \%p;
   }
 
   sub prepare_request_for_call {

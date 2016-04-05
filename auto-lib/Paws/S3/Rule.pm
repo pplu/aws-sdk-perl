@@ -1,5 +1,6 @@
 package Paws::S3::Rule;
   use Moose;
+  has AbortIncompleteMultipartUpload => (is => 'ro', isa => 'Paws::S3::AbortIncompleteMultipartUpload');
   has Expiration => (is => 'ro', isa => 'Paws::S3::LifecycleExpiration');
   has ID => (is => 'ro', isa => 'Str');
   has NoncurrentVersionExpiration => (is => 'ro', isa => 'Paws::S3::NoncurrentVersionExpiration');
@@ -26,20 +27,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::S3::Rule object:
 
-  $service_obj->Method(Att1 => { Expiration => $value, ..., Transition => $value  });
+  $service_obj->Method(Att1 => { AbortIncompleteMultipartUpload => $value, ..., Transition => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Rule object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Expiration
+  $result->Att1->AbortIncompleteMultipartUpload
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 AbortIncompleteMultipartUpload => L<Paws::S3::AbortIncompleteMultipartUpload>
+
+  
 
 
 =head2 Expiration => L<Paws::S3::LifecycleExpiration>

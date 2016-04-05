@@ -57,4 +57,5 @@ on 'test' => sub {
   requires 'Test::Timer';
   requires 'Test::Exception';
   requires 'Test::Warnings';
+  requires 'Class::Unload';
 };

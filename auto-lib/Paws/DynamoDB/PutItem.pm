@@ -91,8 +91,7 @@ These function names are case-sensitive.
 
 =item *
 
-Comparison operators: C< = | E<lt>E<gt> | E<lt> | E<gt> | E<lt>= |
-E<gt>= | BETWEEN | IN>
+Comparison operators: C< = | | | | = | = | BETWEEN | IN>
 
 =item *
 
@@ -482,9 +481,9 @@ primary key attributes are required; you can optionally provide other
 attribute name-value pairs for the item.
 
 You must provide all of the attributes for the primary key. For
-example, with a hash type primary key, you only need to provide the
-hash attribute. For a hash-and-range type primary key, you must provide
-both the hash attribute and the range attribute.
+example, with a simple primary key, you only need to provide a value
+for the partition key. For a composite primary key, you must provide
+both values for both the partition key and the sort key.
 
 If you specify any attributes that are part of an index key, then the
 data types for those attributes must match those of the schema in the
@@ -533,7 +532,6 @@ the content of the old item is returned.
 
 =back
 
-Other "Valid Values" are not relevant to PutItem.
 
 Valid values are: C<"NONE">, C<"ALL_OLD">, C<"UPDATED_OLD">, C<"ALL_NEW">, C<"UPDATED_NEW">
 

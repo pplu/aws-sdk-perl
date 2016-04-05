@@ -1,5 +1,6 @@
 package Paws::SES::SNSAction;
   use Moose;
+  has Encoding => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str', required => 1);
 1;
 
@@ -20,14 +21,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SES::SNSAction object:
 
-  $service_obj->Method(Att1 => { TopicArn => $value, ..., TopicArn => $value  });
+  $service_obj->Method(Att1 => { Encoding => $value, ..., TopicArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SES::SNSAction object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->TopicArn
+  $result->Att1->Encoding
 
 =head1 DESCRIPTION
 
@@ -52,6 +53,14 @@ For information about using a receipt rule to publish an Amazon SNS
 notification, see the Amazon SES Developer Guide.
 
 =head1 ATTRIBUTES
+
+
+=head2 Encoding => Str
+
+  The encoding to use for the email within the Amazon SNS notification.
+UTF-8 is easier to use, but may not preserve all special characters
+when a message was encoded with a different encoding format. Base64
+preserves all special characters. The default value is UTF-8.
 
 
 =head2 B<REQUIRED> TopicArn => Str

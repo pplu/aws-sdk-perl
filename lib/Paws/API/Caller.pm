@@ -19,24 +19,23 @@ package Paws::API::Caller;
 
     Paws->load_class($class);
     my %p;
-    foreach my $att (keys %params){
-      my $att_meta = $class->meta->find_attribute_by_name($att);
 
-      if ($class->does('Paws::API::StrToObjMapParser')) {
-        my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
-        Paws->load_class($subtype);
-        if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
-          $p{ Map }->{ $att } = $subtype->new(%{ $params{ $att } });
-        } else {
-          $p{ Map }->{ $att } = $self->new_with_coercions("$subtype", %{ $params{ $att } });
-        }
-
-      } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
-        $p{ Map }->{ $att } = $params{ $att };
+    if ($class->does('Paws::API::StrToObjMapParser')) {
+      my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
+      if (my ($array_of) = ($subtype =~ m/^ArrayRef\[(.*?)\]$/)){
+        $p{ Map } = { map { $_ => [ map { $self->new_with_coercions("$array_of", %$_) } @{ $params{ $_ } } ] } keys %params };
       } else {
+        $p{ Map } = { map { $_ => $self->new_with_coercions("$subtype", %{ $params{ $_ } }) } keys %params };
+      }
+    } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
+      $p{ Map } = { %params };
+    } else {
+      foreach my $att (keys %params){
+        my $att_meta = $class->meta->find_attribute_by_name($att);
+  
         croak "$class doesn't have an $att" if (not defined $att_meta);
         my $type = $att_meta->type_constraint;
-
+  
         if ($type eq 'Bool') {
           $p{ $att } = ($params{ $att } == 1)?1:0;
         } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
@@ -156,6 +155,11 @@ package Paws::API::Caller;
     my ($self, $class, $result) = @_;
     my %args;
  
+    if ($class->does('Paws::API::StrToObjMapParser')) {
+      return $self->handle_response_strtoobjmap($class, $result);
+    } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
+      return $self->handle_response_strtonativemap($class, $result);
+    } else {
     foreach my $att ($class->meta->get_attribute_list) {
       next if (not my $meta = $class->meta->get_attribute($att));
 
@@ -277,5 +281,6 @@ package Paws::API::Caller;
       }
     }
     $class->new(%args);
+    }
   }
 1;

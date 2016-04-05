@@ -170,65 +170,47 @@ Paws::CloudWatchLogs - Perl Interface to AWS Amazon CloudWatch Logs
 
 Amazon CloudWatch Logs API Reference
 
-This is the I<Amazon CloudWatch Logs API Reference>. Amazon CloudWatch
-Logs enables you to monitor, store, and access your system,
-application, and custom log files. This guide provides detailed
-information about Amazon CloudWatch Logs actions, data types,
-parameters, and errors. For detailed information about Amazon
-CloudWatch Logs features and their associated API calls, go to the
-Amazon CloudWatch Developer Guide.
+You can use Amazon CloudWatch Logs to monitor, store, and access your
+log files from Amazon Elastic Compute Cloud (Amazon EC2) instances,
+Amazon CloudTrail, or other sources. You can then retrieve the
+associated log data from CloudWatch Logs using the Amazon CloudWatch
+console, the CloudWatch Logs commands in the AWS CLI, the CloudWatch
+Logs API, or the CloudWatch Logs SDK.
 
-Use the following links to get started using the I<Amazon CloudWatch
-Logs API Reference>:
+You can use CloudWatch Logs to:
 
 =over
 
-=item * Actions: An alphabetical list of all Amazon CloudWatch Logs
-actions.
+=item *
 
-=item * Data Types: An alphabetical list of all Amazon CloudWatch Logs
-data types.
+B<Monitor Logs from Amazon EC2 Instances in Real-time>: You can use
+CloudWatch Logs to monitor applications and systems using log data. For
+example, CloudWatch Logs can track the number of errors that occur in
+your application logs and send you a notification whenever the rate of
+errors exceeds a threshold you specify. CloudWatch Logs uses your log
+data for monitoring; so, no code changes are required. For example, you
+can monitor application logs for specific literal terms (such as
+"NullReferenceException") or count the number of occurrences of a
+literal term at a particular position in log data (such as "404" status
+codes in an Apache access log). When the term you are searching for is
+found, CloudWatch Logs reports the data to a Amazon CloudWatch metric
+that you specify.
 
-=item * Common Parameters: Parameters that all Query actions can use.
+=item *
 
-=item * Common Errors: Client and server errors that all actions can
-return.
+B<Monitor Amazon CloudTrail Logged Events>: You can create alarms in
+Amazon CloudWatch and receive notifications of particular API activity
+as captured by CloudTrail and use the notification to perform
+troubleshooting.
 
-=item * Regions and Endpoints: Itemized regions and endpoints for all
-AWS products.
+=item *
 
-=back
-
-In addition to using the Amazon CloudWatch Logs API, you can also use
-the following SDKs and third-party libraries to access Amazon
-CloudWatch Logs programmatically.
-
-=over
-
-=item * AWS SDK for Java Documentation
-
-=item * AWS SDK for .NET Documentation
-
-=item * AWS SDK for PHP Documentation
-
-=item * AWS SDK for Ruby Documentation
-
-=back
-
-Developers in the AWS developer community also provide their own
-libraries, which you can find at the following AWS developer centers:
-
-=over
-
-=item * AWS Java Developer Center
-
-=item * AWS PHP Developer Center
-
-=item * AWS Python Developer Center
-
-=item * AWS Ruby Developer Center
-
-=item * AWS Windows and .NET Developer Center
+B<Archive Log Data>: You can use CloudWatch Logs to store your log data
+in highly durable storage. You can change the log retention setting so
+that any log events older than this setting are automatically deleted.
+The CloudWatch Logs agent makes it easy to quickly send both rotated
+and non-rotated log data off of a host and into the log service. You
+can then access the raw log data when you need it.
 
 =back
 
@@ -256,7 +238,8 @@ from a Log Group to your Amazon S3 bucket.
 This is an asynchronous call. If all the required information is
 provided, this API will initiate an export task and respond with the
 task Id. Once started, C<DescribeExportTasks> can be used to get the
-status of an export task.
+status of an export task. You can only have one active (C<RUNNING> or
+C<PENDING>) export task at a time, per account.
 
 You can export logs from multiple log groups or multiple time ranges to
 the same Amazon S3 bucket. To separate out log data for each export
@@ -578,6 +561,10 @@ their C<timestamp>.
 
 =item * The maximum number of log events in a batch is 10,000.
 
+=item * A batch of log events in a single PutLogEvents request cannot
+span more than 24 hours. Otherwise, the PutLogEvents operation will
+fail.
+
 =back
 
 
@@ -621,11 +608,17 @@ the supported destinations are:
 
 =over
 
-=item * A Amazon Kinesis stream belonging to the same account as the
+=item * An Amazon Kinesis stream belonging to the same account as the
 subscription filter, for same-account delivery.
 
 =item * A logical destination (used via an ARN of C<Destination>)
 belonging to a different account, for cross-account delivery.
+
+=item * An Amazon Kinesis Firehose stream belonging to the same account
+as the subscription filter, for same-account delivery.
+
+=item * An AWS Lambda function belonging to the same account as the
+subscription filter, for same-account delivery.
 
 =back
 

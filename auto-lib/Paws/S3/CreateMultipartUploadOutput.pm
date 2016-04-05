@@ -1,6 +1,8 @@
 
 package Paws::S3::CreateMultipartUploadOutput;
   use Moose;
+  has AbortDate => (is => 'ro', isa => 'Str');
+  has AbortRuleId => (is => 'ro', isa => 'Str');
   has Bucket => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
   has RequestCharged => (is => 'ro', isa => 'Str');
@@ -33,6 +35,20 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AbortDate => Str
+
+Date when multipart upload will become eligible for abort operation by
+lifecycle.
+
+
+
+=head2 AbortRuleId => Str
+
+Id of the lifecycle rule that makes a multipart upload eligible for
+abort operation.
+
 
 
 =head2 Bucket => Str

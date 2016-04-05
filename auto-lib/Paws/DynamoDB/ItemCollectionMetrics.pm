@@ -42,8 +42,8 @@ this information is not returned in the response.
 
 =head2 ItemCollectionKey => HashRef[L<Paws::DynamoDB::AttributeValue>]
 
-  The hash key value of the item collection. This value is the same as
-the hash key of the item.
+  The partition key value of the item collection. This value is the same
+as the partition key value of the item.
 
 
 =head2 SizeEstimateRangeGB => ArrayRef[Num]

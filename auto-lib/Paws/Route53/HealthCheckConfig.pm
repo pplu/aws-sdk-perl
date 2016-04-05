@@ -1,6 +1,7 @@
 package Paws::Route53::HealthCheckConfig;
   use Moose;
   has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
   has HealthThreshold => (is => 'ro', isa => 'Int');
@@ -51,6 +52,16 @@ A complex type that contains the health check configuration.
 
   For a specified parent health check, a list of C<HealthCheckId> values
 for the associated child health checks.
+
+
+=head2 EnableSNI => Bool
+
+  Specify whether you want Amazon Route 53 to send the value of
+C<FullyQualifiedDomainName> to the endpoint in the C<client_hello>
+message during TLS negotiation. If you don't specify a value for
+C<EnableSNI>, Amazon Route 53 defaults to C<true> when C<Type> is
+C<HTTPS> or C<HTTPS_STR_MATCH> and defaults to C<false> when C<Type> is
+any other value.
 
 
 =head2 FailureThreshold => Int
@@ -125,7 +136,8 @@ request is issued to the instance on the given port and path.
 =head2 SearchString => Str
 
   A string to search for in the body of a health check response. Required
-for HTTP_STR_MATCH and HTTPS_STR_MATCH health checks.
+for HTTP_STR_MATCH and HTTPS_STR_MATCH health checks. Amazon Route 53
+considers case when searching for C<SearchString> in the response body.
 
 
 =head2 B<REQUIRED> Type => Str

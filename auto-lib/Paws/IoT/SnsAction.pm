@@ -1,5 +1,6 @@
 package Paws::IoT::SnsAction;
   use Moose;
+  has MessageFormat => (is => 'ro', isa => 'Str', xmlname => 'messageFormat', request_name => 'messageFormat', traits => ['Unwrapped','NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
   has TargetArn => (is => 'ro', isa => 'Str', xmlname => 'targetArn', request_name => 'targetArn', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
@@ -21,20 +22,30 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::SnsAction object:
 
-  $service_obj->Method(Att1 => { RoleArn => $value, ..., TargetArn => $value  });
+  $service_obj->Method(Att1 => { MessageFormat => $value, ..., TargetArn => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::SnsAction object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->RoleArn
+  $result->Att1->MessageFormat
 
 =head1 DESCRIPTION
 
 Describes an action to publish to an Amazon SNS topic.
 
 =head1 ATTRIBUTES
+
+
+=head2 MessageFormat => Str
+
+  The message format of the message to publish. Optional. Accepted values
+are "JSON" and "RAW". The default value of the attribute is "RAW". SNS
+uses this setting to determine if the payload should be parsed and
+relevant platform-specific bits of the payload should be extracted. To
+read more about SNS message formats, see refer to their official
+documentation.
 
 
 =head2 B<REQUIRED> RoleArn => Str

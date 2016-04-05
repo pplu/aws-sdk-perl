@@ -41,7 +41,7 @@ provides the number of contributors that affect the compliance.
 =head2 ComplianceContributorCount => L<Paws::Config::ComplianceContributorCount>
 
   The number of AWS resources or AWS Config rules that cause a result of
-C<NON_COMPLIANT>, up to a maximum of 25.
+C<NON_COMPLIANT>, up to a maximum number.
 
 
 =head2 ComplianceType => Str
@@ -55,6 +55,13 @@ or more of these rules.
 A rule is compliant if all of the resources that the rule evaluates
 comply with it, and it is noncompliant if any of these resources do not
 comply.
+
+AWS Config returns the C<INSUFFICIENT_DATA> value when no evaluation
+results are available for the AWS resource or Config rule.
+
+For the C<Compliance> data type, AWS Config supports only C<COMPLIANT>,
+C<NON_COMPLIANT>, and C<INSUFFICIENT_DATA> values. AWS Config does not
+support the C<NOT_APPLICABLE> value for the C<Compliance> data type.
 
 
 

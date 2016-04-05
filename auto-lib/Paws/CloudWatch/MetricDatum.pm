@@ -62,12 +62,9 @@ Dimensions.member.N).
 
 =head2 Timestamp => Str
 
-  The time stamp used for the metric. If not specified, the default value
-is set to the time the metric data was received. Amazon CloudWatch uses
-Coordinated Universal Time (UTC) when returning time stamps, which do
-not accommodate seasonal adjustments such as daylight savings time. For
-more information, see Time stamps in the I<Amazon CloudWatch Developer
-Guide>.
+  The time stamp used for the metric in ISO 8601 Universal Coordinated
+Time (UTC) format. If not specified, the default value is set to the
+time the metric data was received.
 
 
 =head2 Unit => Str
@@ -80,10 +77,10 @@ Guide>.
   The value for the metric.
 
 Although the C<Value> parameter accepts numbers of type C<Double>,
-Amazon CloudWatch truncates values with very large exponents. Values
-with base-10 exponents greater than 126 (1 x 10^126) are truncated.
-Likewise, values with base-10 exponents less than -130 (1 x 10^-130)
-are also truncated.
+Amazon CloudWatch rejects values that are either too small or too
+large. Values must be in the range of 8.515920e-109 to 1.174271e+108
+(Base 10) or 2e-360 to 2e360 (Base 2). In addition, special values
+(e.g., NaN, +Infinity, -Infinity) are not supported.
 
 
 

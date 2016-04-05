@@ -32,9 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head1 DESCRIPTION
 
-The Tag type is used by C<CreateStack> in the C<Tags> parameter. It
-allows you to specify a key-value pair that can be used to store
-information related to cost allocation for an AWS CloudFormation stack.
+The Tag type enables you to specify a key-value pair that can be used
+to store information about an AWS CloudFormation stack.
 
 =head1 ATTRIBUTES
 

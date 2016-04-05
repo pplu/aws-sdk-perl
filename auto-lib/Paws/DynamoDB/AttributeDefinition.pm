@@ -45,7 +45,18 @@ indexes.
 
 =head2 B<REQUIRED> AttributeType => Str
 
-  The data type for the attribute.
+  The data type for the attribute, where:
+
+=over
+
+=item * C<S> - the attribute is of type String
+
+=item * C<N> - the attribute is of type Number
+
+=item * C<B> - the attribute is of type Binary
+
+=back
+
 
 
 

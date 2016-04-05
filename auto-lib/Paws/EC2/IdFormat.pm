@@ -41,7 +41,8 @@ This class has no description
 =head2 Deadline => Str
 
   The date in UTC at which you are permanently switched over to using
-longer IDs.
+longer IDs. If a deadline is not yet available for this resource type,
+this field is not returned.
 
 
 =head2 Resource => Str

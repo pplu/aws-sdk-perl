@@ -1,10 +1,10 @@
 package Paws::Inspector::RulesPackage;
   use Moose;
-  has Description => (is => 'ro', isa => 'Paws::Inspector::LocalizedText', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
-  has Provider => (is => 'ro', isa => 'Str', xmlname => 'provider', request_name => 'provider', traits => ['Unwrapped','NameInRequest']);
-  has RulesPackageArn => (is => 'ro', isa => 'Str', xmlname => 'rulesPackageArn', request_name => 'rulesPackageArn', traits => ['Unwrapped','NameInRequest']);
-  has RulesPackageName => (is => 'ro', isa => 'Str', xmlname => 'rulesPackageName', request_name => 'rulesPackageName', traits => ['Unwrapped','NameInRequest']);
-  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Provider => (is => 'ro', isa => 'Str', xmlname => 'provider', request_name => 'provider', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -24,46 +24,44 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::RulesPackage object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., Version => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::RulesPackage object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Description
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
-Contains information about an Inspector rules package.
-
-This data type is used as the response element in the
-DescribeRulesPackage action.
+Contains information about an Inspector rules package. This data type
+is used as the response element in the DescribeRulesPackages action.
 
 =head1 ATTRIBUTES
 
 
-=head2 Description => L<Paws::Inspector::LocalizedText>
-
-  The description of the rules package.
-
-
-=head2 Provider => Str
-
-  The provider of the rules package.
-
-
-=head2 RulesPackageArn => Str
+=head2 B<REQUIRED> Arn => Str
 
   The ARN of the rules package.
 
 
-=head2 RulesPackageName => Str
+=head2 Description => Str
+
+  The description of the rules package.
+
+
+=head2 B<REQUIRED> Name => Str
 
   The name of the rules package.
 
 
-=head2 Version => Str
+=head2 B<REQUIRED> Provider => Str
+
+  The provider of the rules package.
+
+
+=head2 B<REQUIRED> Version => Str
 
   The version id of the rules package.
 

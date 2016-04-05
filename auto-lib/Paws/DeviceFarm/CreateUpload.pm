@@ -72,6 +72,10 @@ IOS_APP: An iOS upload.
 
 =item *
 
+WEB_APP: A web appliction upload.
+
+=item *
+
 EXTERNAL_DATA: An external data upload.
 
 =item *
@@ -90,22 +94,6 @@ APPIUM_PYTHON_TEST_PACKAGE: An Appium Python test package upload.
 
 =item *
 
-CALABASH_TEST_PACKAGE: A Calabash test package upload.
-
-=item *
-
-INSTRUMENTATION_TEST_PACKAGE: An instrumentation upload.
-
-=item *
-
-UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
-
-=item *
-
-XCTEST_TEST_PACKAGE: An XCode test package upload.
-
-=item *
-
 APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE: An Appium Java JUnit test package
 upload.
 
@@ -118,12 +106,36 @@ upload.
 
 APPIUM_WEB_PYTHON_TEST_PACKAGE: An Appium Python test package upload.
 
+=item *
+
+CALABASH_TEST_PACKAGE: A Calabash test package upload.
+
+=item *
+
+INSTRUMENTATION_TEST_PACKAGE: An instrumentation upload.
+
+=item *
+
+UIAUTOMATION_TEST_PACKAGE: A uiautomation test package upload.
+
+=item *
+
+UIAUTOMATOR_TEST_PACKAGE: A uiautomator test package upload.
+
+=item *
+
+XCTEST_TEST_PACKAGE: An XCode test package upload.
+
+=item *
+
+XCTEST_UI_TEST_PACKAGE: An XCode UI test package upload.
+
 =back
 
 B<Note> If you call C<CreateUpload> with C<WEB_APP> specified, AWS
 Device Farm throws an C<ArgumentException> error.
 
-Valid values are: C<"ANDROID_APP">, C<"IOS_APP">, C<"WEB_APP">, C<"EXTERNAL_DATA">, C<"APPIUM_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_PYTHON_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_WEB_PYTHON_TEST_PACKAGE">, C<"CALABASH_TEST_PACKAGE">, C<"INSTRUMENTATION_TEST_PACKAGE">, C<"UIAUTOMATION_TEST_PACKAGE">, C<"UIAUTOMATOR_TEST_PACKAGE">, C<"XCTEST_TEST_PACKAGE">
+Valid values are: C<"ANDROID_APP">, C<"IOS_APP">, C<"WEB_APP">, C<"EXTERNAL_DATA">, C<"APPIUM_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_PYTHON_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_JUNIT_TEST_PACKAGE">, C<"APPIUM_WEB_JAVA_TESTNG_TEST_PACKAGE">, C<"APPIUM_WEB_PYTHON_TEST_PACKAGE">, C<"CALABASH_TEST_PACKAGE">, C<"INSTRUMENTATION_TEST_PACKAGE">, C<"UIAUTOMATION_TEST_PACKAGE">, C<"UIAUTOMATOR_TEST_PACKAGE">, C<"XCTEST_TEST_PACKAGE">, C<"XCTEST_UI_TEST_PACKAGE">
 
 
 =head1 SEE ALSO

@@ -40,7 +40,8 @@ Represents a condition for a device pool.
 
 =head2 Attribute => Str
 
-  The rule's attribute.
+  The rule's stringified attribute. For example, specify the value as
+C<"\"abc\"">.
 
 Allowed values include:
 

@@ -141,9 +141,9 @@ A map of attribute names to I<AttributeValue> objects, representing the
 primary key of the item to retrieve.
 
 For the primary key, you must provide all of the attributes. For
-example, with a hash type primary key, you only need to provide the
-hash attribute. For a hash-and-range type primary key, you must provide
-both the hash attribute and the range attribute.
+example, with a simple primary key, you only need to provide a value
+for the partition key. For a composite primary key, you must provide
+values for both the partition key and the sort key.
 
 
 

@@ -18,10 +18,9 @@ Paws::IoT::DescribeThingResponse
 
 =head2 Attributes => HashRef[Str]
 
-The attributes which are name/value pairs in JSON format. For example:
-
+The attributes, which are name/value pairs in JSON format (for example:
 {\"attributes\":{\"some-name1\":\"some-value1\"},
-{\"some-name2\":\"some-value2\"}, {\"some-name3\":\"some-value3\"}}
+{\"some-name2\":\"some-value2\"}, {\"some-name3\":\"some-value3\"}})
 
 
 

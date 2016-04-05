@@ -22,10 +22,11 @@ Paws::ApiGateway::IntegrationResponse
 Represents response parameters that can be read from the backend
 response. Response parameters are represented as a key/value map, with
 a destination as the key and a source as the value. A destination must
-match an existing response parameter in the Method. The source can be a
-header from the backend response, or a static value. Static values are
-specified using enclosing single quotes, and backend response headers
-can be read using the pattern C<integration.response.header.{name}>.
+match an existing response parameter in the MethodResponse. The source
+can be a header from the backend response, or a static value. Static
+values are specified using enclosing single quotes, and backend
+response headers can be read using the pattern
+C<integration.response.header.{name}>.
 
 
 

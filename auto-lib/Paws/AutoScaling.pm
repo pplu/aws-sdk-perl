@@ -330,38 +330,42 @@ For more information, see Attach a Load Balancer to Your Auto Scaling
 Group in the I<Auto Scaling Developer Guide>.
 
 
-=head2 CompleteLifecycleAction(AutoScalingGroupName => Str, LifecycleActionResult => Str, LifecycleActionToken => Str, LifecycleHookName => Str)
+=head2 CompleteLifecycleAction(AutoScalingGroupName => Str, LifecycleActionResult => Str, LifecycleHookName => Str, [InstanceId => Str, LifecycleActionToken => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::CompleteLifecycleAction>
 
 Returns: a L<Paws::AutoScaling::CompleteLifecycleActionAnswer> instance
 
-  Completes the lifecycle action for the associated token initiated under
-the given lifecycle hook with the specified result.
+  Completes the lifecycle action for the specified token or instance with
+the specified result.
 
-This operation is a part of the basic sequence for adding a lifecycle
-hook to an Auto Scaling group:
+This step is a part of the procedure for adding a lifecycle hook to an
+Auto Scaling group:
 
 =over
 
-=item 1. Create a notification target. A target can be either an Amazon
-SQS queue or an Amazon SNS topic.
+=item 1. (Optional) Create a Lambda function and a rule that allows
+CloudWatch Events to invoke your Lambda function when Auto Scaling
+launches or terminates instances.
 
-=item 2. Create an IAM role. This role allows Auto Scaling to publish
-lifecycle notifications to the designated SQS queue or SNS topic.
+=item 2. (Optional) Create a notification target and an IAM role. The
+target can be either an Amazon SQS queue or an Amazon SNS topic. The
+role allows Auto Scaling to publish lifecycle notifications to the
+target.
 
-=item 3. Create the lifecycle hook. You can create a hook that acts
-when instances launch or when instances terminate.
+=item 3. Create the lifecycle hook. Specify whether the hook is used
+when the instances launch or terminate.
 
-=item 4. If necessary, record the lifecycle action heartbeat to keep
-the instance in a pending state.
+=item 4. If you need more time, record the lifecycle action heartbeat
+to keep the instance in a pending state.
 
-=item 5. B<Complete the lifecycle action>.
+=item 5. B<If you finish before the timeout period ends, complete the
+lifecycle action.>
 
 =back
 
-For more information, see Auto Scaling Pending State and Auto Scaling
-Terminating State in the I<Auto Scaling Developer Guide>.
+For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
+Developer Guide>.
 
 
 =head2 CreateAutoScalingGroup(AutoScalingGroupName => Str, MaxSize => Int, MinSize => Int, [AvailabilityZones => ArrayRef[Str], DefaultCooldown => Int, DesiredCapacity => Int, HealthCheckGracePeriod => Int, HealthCheckType => Str, InstanceId => Str, LaunchConfigurationName => Str, LoadBalancerNames => ArrayRef[Str], NewInstancesProtectedFromScaleIn => Bool, PlacementGroup => Str, Tags => ArrayRef[L<Paws::AutoScaling::Tag>], TerminationPolicies => ArrayRef[Str], VPCZoneIdentifier => Str])
@@ -403,13 +407,6 @@ Each argument is described in detail in: L<Paws::AutoScaling::CreateOrUpdateTags
 Returns: nothing
 
   Creates or updates tags for the specified Auto Scaling group.
-
-A tag is defined by its resource ID, resource type, key, value, and
-propagate flag. The value and the propagate flag are optional
-parameters. The only supported resource type is C<auto-scaling-group>,
-and the resource ID must be the name of the group. The
-C<PropagateAtLaunch> flag determines whether the tag is added to
-instances launched in the group. Valid values are C<true> or C<false>.
 
 When you specify a tag with a key that already exists, the operation
 overwrites the previous tag definition, and you do not get an error
@@ -753,8 +750,8 @@ Returns: a L<Paws::AutoScaling::EnterStandbyAnswer> instance
 
   Moves the specified instances into C<Standby> mode.
 
-For more information, see Auto Scaling InService State in the I<Auto
-Scaling Developer Guide>.
+For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
+Developer Guide>.
 
 
 =head2 ExecutePolicy(PolicyName => Str, [AutoScalingGroupName => Str, BreachThreshold => Num, HonorCooldown => Bool, MetricValue => Num])
@@ -774,8 +771,8 @@ Returns: a L<Paws::AutoScaling::ExitStandbyAnswer> instance
 
   Moves the specified instances out of C<Standby> mode.
 
-For more information, see Auto Scaling InService State in the I<Auto
-Scaling Developer Guide>.
+For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
+Developer Guide>.
 
 
 =head2 PutLifecycleHook(AutoScalingGroupName => Str, LifecycleHookName => Str, [DefaultResult => Str, HeartbeatTimeout => Int, LifecycleTransition => Str, NotificationMetadata => Str, NotificationTargetARN => Str, RoleARN => Str])
@@ -791,29 +788,33 @@ A lifecycle hook tells Auto Scaling that you want to perform an action
 on an instance that is not actively in service; for example, either
 when the instance launches or before the instance terminates.
 
-This operation is a part of the basic sequence for adding a lifecycle
-hook to an Auto Scaling group:
+This step is a part of the procedure for adding a lifecycle hook to an
+Auto Scaling group:
 
 =over
 
-=item 1. Create a notification target. A target can be either an Amazon
-SQS queue or an Amazon SNS topic.
+=item 1. (Optional) Create a Lambda function and a rule that allows
+CloudWatch Events to invoke your Lambda function when Auto Scaling
+launches or terminates instances.
 
-=item 2. Create an IAM role. This role allows Auto Scaling to publish
-lifecycle notifications to the designated SQS queue or SNS topic.
+=item 2. (Optional) Create a notification target and an IAM role. The
+target can be either an Amazon SQS queue or an Amazon SNS topic. The
+role allows Auto Scaling to publish lifecycle notifications to the
+target.
 
-=item 3. B<Create the lifecycle hook. You can create a hook that acts
-when instances launch or when instances terminate.>
+=item 3. B<Create the lifecycle hook. Specify whether the hook is used
+when the instances launch or terminate.>
 
-=item 4. If necessary, record the lifecycle action heartbeat to keep
-the instance in a pending state.
+=item 4. If you need more time, record the lifecycle action heartbeat
+to keep the instance in a pending state.
 
-=item 5. Complete the lifecycle action.
+=item 5. If you finish before the timeout period ends, complete the
+lifecycle action.
 
 =back
 
-For more information, see Auto Scaling Pending State and Auto Scaling
-Terminating State in the I<Auto Scaling Developer Guide>.
+For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
+Developer Guide>.
 
 If you exceed your maximum limit of lifecycle hooks, which by default
 is 50 per region, the call fails. For information about updating this
@@ -869,39 +870,43 @@ For more information, see Scheduled Scaling in the I<Auto Scaling
 Developer Guide>.
 
 
-=head2 RecordLifecycleActionHeartbeat(AutoScalingGroupName => Str, LifecycleActionToken => Str, LifecycleHookName => Str)
+=head2 RecordLifecycleActionHeartbeat(AutoScalingGroupName => Str, LifecycleHookName => Str, [InstanceId => Str, LifecycleActionToken => Str])
 
 Each argument is described in detail in: L<Paws::AutoScaling::RecordLifecycleActionHeartbeat>
 
 Returns: a L<Paws::AutoScaling::RecordLifecycleActionHeartbeatAnswer> instance
 
-  Records a heartbeat for the lifecycle action associated with a specific
-token. This extends the timeout by the length of time defined by the
-C<HeartbeatTimeout> parameter of PutLifecycleHook.
+  Records a heartbeat for the lifecycle action associated with the
+specified token or instance. This extends the timeout by the length of
+time defined using PutLifecycleHook.
 
-This operation is a part of the basic sequence for adding a lifecycle
-hook to an Auto Scaling group:
+This step is a part of the procedure for adding a lifecycle hook to an
+Auto Scaling group:
 
 =over
 
-=item 1. Create a notification target. A target can be either an Amazon
-SQS queue or an Amazon SNS topic.
+=item 1. (Optional) Create a Lambda function and a rule that allows
+CloudWatch Events to invoke your Lambda function when Auto Scaling
+launches or terminates instances.
 
-=item 2. Create an IAM role. This role allows Auto Scaling to publish
-lifecycle notifications to the designated SQS queue or SNS topic.
+=item 2. (Optional) Create a notification target and an IAM role. The
+target can be either an Amazon SQS queue or an Amazon SNS topic. The
+role allows Auto Scaling to publish lifecycle notifications to the
+target.
 
-=item 3. Create the lifecycle hook. You can create a hook that acts
-when instances launch or when instances terminate.
+=item 3. Create the lifecycle hook. Specify whether the hook is used
+when the instances launch or terminate.
 
-=item 4. B<If necessary, record the lifecycle action heartbeat to keep
-the instance in a pending state.>
+=item 4. B<If you need more time, record the lifecycle action heartbeat
+to keep the instance in a pending state.>
 
-=item 5. Complete the lifecycle action.
+=item 5. If you finish before the timeout period ends, complete the
+lifecycle action.
 
 =back
 
-For more information, see Auto Scaling Pending State and Auto Scaling
-Terminating State in the I<Auto Scaling Developer Guide>.
+For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
+Developer Guide>.
 
 
 =head2 ResumeProcesses(AutoScalingGroupName => Str, [ScalingProcesses => ArrayRef[Str]])
@@ -910,11 +915,11 @@ Each argument is described in detail in: L<Paws::AutoScaling::ResumeProcesses>
 
 Returns: nothing
 
-  Resumes the specified suspended Auto Scaling processes for the
-specified Auto Scaling group. To resume specific processes, use the
-C<ScalingProcesses> parameter. To resume all processes, omit the
-C<ScalingProcesses> parameter. For more information, see Suspend and
-Resume Auto Scaling Processes in the I<Auto Scaling Developer Guide>.
+  Resumes the specified suspended Auto Scaling processes, or all
+suspended process, for the specified Auto Scaling group.
+
+For more information, see Suspending and Resuming Auto Scaling
+Processes in the I<Auto Scaling Developer Guide>.
 
 
 =head2 SetDesiredCapacity(AutoScalingGroupName => Str, DesiredCapacity => Int, [HonorCooldown => Bool])
@@ -959,18 +964,16 @@ Each argument is described in detail in: L<Paws::AutoScaling::SuspendProcesses>
 
 Returns: nothing
 
-  Suspends the specified Auto Scaling processes for the specified Auto
-Scaling group. To suspend specific processes, use the
-C<ScalingProcesses> parameter. To suspend all processes, omit the
-C<ScalingProcesses> parameter.
+  Suspends the specified Auto Scaling processes, or all processes, for
+the specified Auto Scaling group.
 
 Note that if you suspend either the C<Launch> or C<Terminate> process
 types, it can prevent other process types from functioning properly.
 
 To resume processes that have been suspended, use ResumeProcesses.
 
-For more information, see Suspend and Resume Auto Scaling Processes in
-the I<Auto Scaling Developer Guide>.
+For more information, see Suspending and Resuming Auto Scaling
+Processes in the I<Auto Scaling Developer Guide>.
 
 
 =head2 TerminateInstanceInAutoScalingGroup(InstanceId => Str, ShouldDecrementDesiredCapacity => Bool)

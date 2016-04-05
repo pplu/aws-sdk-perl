@@ -17,6 +17,7 @@ package Paws::RDS::DBInstance;
   has DBParameterGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBParameterGroupStatus]');
   has DBSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBSecurityGroupMembership]');
   has DBSubnetGroup => (is => 'ro', isa => 'Paws::RDS::DBSubnetGroup');
+  has DomainMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DomainMembership]');
   has Endpoint => (is => 'ro', isa => 'Paws::RDS::Endpoint');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -34,6 +35,7 @@ package Paws::RDS::DBInstance;
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::RDS::PendingModifiedValues');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has ReadReplicaDBInstanceIdentifiers => (is => 'ro', isa => 'ArrayRef[Str]');
   has ReadReplicaSourceDBInstanceIdentifier => (is => 'ro', isa => 'Str');
@@ -163,10 +165,9 @@ cluster port.
 
 =head2 DbiResourceId => Str
 
-  If C<StorageEncrypted> is true, the region-unique, immutable identifier
-for the encrypted DB instance. This identifier is found in AWS
-CloudTrail log entries whenever the KMS key for the DB instance is
-accessed.
+  The region-unique, immutable identifier for the DB instance. This
+identifier is found in AWS CloudTrail log entries whenever the KMS key
+for the DB instance is accessed.
 
 
 =head2 DBName => Str
@@ -207,6 +208,12 @@ C<DBSecurityGroup.Name> and C<DBSecurityGroup.Status> subelements.
   Specifies information on the subnet group associated with the DB
 instance, including the name, description, and subnets in the subnet
 group.
+
+
+=head2 DomainMemberships => ArrayRef[L<Paws::RDS::DomainMembership>]
+
+  The Active Directory Domain membership records associated with the DB
+instance.
 
 
 =head2 Endpoint => L<Paws::RDS::Endpoint>
@@ -303,6 +310,14 @@ C<BackupRetentionPeriod>.
 
   Specifies the weekly time range during which system maintenance can
 occur, in Universal Coordinated Time (UTC).
+
+
+=head2 PromotionTier => Int
+
+  A value that specifies the order in which an Aurora Replica is promoted
+to the primary instance after a failure of the existing primary
+instance. For more information, see Fault Tolerance for an Aurora DB
+Cluster.
 
 
 =head2 PubliclyAccessible => Bool

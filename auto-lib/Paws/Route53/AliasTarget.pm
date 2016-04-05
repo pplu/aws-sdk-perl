@@ -82,6 +82,10 @@ for C<HostedZoneId> and C<DNSName>. If you get one value from the
 console and the other value from the API or the CLI, creating the
 resource record set will fail.
 
+=item * B<An Elastic Beanstalk environment:> Specify the CNAME
+attribute for the environment. (The environment must have a
+regionalized domain name.)
+
 =item * B<An Amazon S3 bucket that is configured as a static website:>
 Specify the domain name of the Amazon S3 website endpoint in which you
 created the bucket; for example, C<s3-website-us-east-1.amazonaws.com>.
@@ -91,7 +95,9 @@ General Reference>. For more information about using Amazon S3 buckets
 for websites, see Hosting a Static Website on Amazon S3 in the I<Amazon
 Simple Storage Service Developer Guide>.
 
-=item *
+=item * B<Another Amazon Route 53 resource record set:> Specify the
+value of the C<Name> element for a resource record set in the current
+hosted zone.
 
 =back
 
@@ -142,7 +148,7 @@ Note the following:
 
 =over
 
-=item * You cannot set EvaluateTargetHealth to true when the alias
+=item * You cannot set C<EvaluateTargetHealth> to true when the alias
 target is a CloudFront distribution.
 
 =item * If the AWS resource that you specify in C<AliasTarget> is a

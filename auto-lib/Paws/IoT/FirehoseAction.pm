@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Fireho
 
 =head1 DESCRIPTION
 
-Describes an action that writes data to a Kinesis Firehose stream.
+Describes an action that writes data to an Amazon Kinesis Firehose
+stream.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +45,7 @@ Describes an action that writes data to a Kinesis Firehose stream.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-  The IAM role that grants access to the firehose stream.
+  The IAM role that grants access to the Amazon Kinesis Firehost stream.
 
 
 

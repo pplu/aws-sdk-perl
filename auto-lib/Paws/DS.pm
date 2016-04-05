@@ -64,9 +64,19 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::DeleteTrust', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeregisterEventTopic {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DeregisterEventTopic', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDirectories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DescribeDirectories', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEventTopics {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DescribeEventTopics', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSnapshots {
@@ -109,6 +119,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::GetSnapshotLimits', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RegisterEventTopic {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::RegisterEventTopic', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreFromSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::RestoreFromSnapshot', @_);
@@ -125,7 +140,7 @@ package Paws::DS;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/ConnectDirectory CreateAlias CreateComputer CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteDirectory DeleteSnapshot DeleteTrust DescribeDirectories DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits RestoreFromSnapshot UpdateRadius VerifyTrust / }
+  sub operations { qw/ConnectDirectory CreateAlias CreateComputer CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits RegisterEventTopic RestoreFromSnapshot UpdateRadius VerifyTrust / }
 
 1;
 
@@ -218,7 +233,8 @@ Each argument is described in detail in: L<Paws::DS::CreateSnapshot>
 
 Returns: a L<Paws::DS::CreateSnapshotResult> instance
 
-  Creates a snapshot of a Simple AD directory.
+  Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS
+cloud.
 
 You cannot take snapshots of AD Connector directories.
 
@@ -269,6 +285,16 @@ Returns: a L<Paws::DS::DeleteTrustResult> instance
 AWS cloud and an external domain.
 
 
+=head2 DeregisterEventTopic(DirectoryId => Str, TopicName => Str)
+
+Each argument is described in detail in: L<Paws::DS::DeregisterEventTopic>
+
+Returns: a L<Paws::DS::DeregisterEventTopicResult> instance
+
+  Removes the specified directory as a publisher to the specified SNS
+topic.
+
+
 =head2 DescribeDirectories([DirectoryIds => ArrayRef[Str], Limit => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::DS::DescribeDirectories>
@@ -289,6 +315,19 @@ of items.
 
 You can also specify a maximum number of return results with the
 I<Limit> parameter.
+
+
+=head2 DescribeEventTopics([DirectoryId => Str, TopicNames => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::DS::DescribeEventTopics>
+
+Returns: a L<Paws::DS::DescribeEventTopicsResult> instance
+
+  Obtains information about which SNS topics receive status messages from
+the specified directory.
+
+If no input parameters are provided, such as DirectoryId or TopicName,
+this request describes all of the associations in the account.
 
 
 =head2 DescribeSnapshots([DirectoryId => Str, Limit => Int, NextToken => Str, SnapshotIds => ArrayRef[Str]])
@@ -378,6 +417,20 @@ Each argument is described in detail in: L<Paws::DS::GetSnapshotLimits>
 Returns: a L<Paws::DS::GetSnapshotLimitsResult> instance
 
   Obtains the manual snapshot limits for a directory.
+
+
+=head2 RegisterEventTopic(DirectoryId => Str, TopicName => Str)
+
+Each argument is described in detail in: L<Paws::DS::RegisterEventTopic>
+
+Returns: a L<Paws::DS::RegisterEventTopicResult> instance
+
+  Associates a directory with an SNS topic. This establishes the
+directory as a publisher to the specified SNS topic. You can then
+receive email or text (SMS) messages when the status of your directory
+changes. You get notified if your directory goes from an Active status
+to an Impaired or Inoperable status. You also receive a notification
+when the directory returns to an Active status.
 
 
 =head2 RestoreFromSnapshot(SnapshotId => Str)

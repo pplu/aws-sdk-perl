@@ -60,7 +60,7 @@ Object data.
 
 =head2 B<REQUIRED> Bucket => Str
 
-
+Name of the bucket to which the PUT operation was initiated.
 
 
 
@@ -99,7 +99,7 @@ the body cannot be determined automatically.
 
 =head2 ContentMD5 => Str
 
-
+The base64-encoded 128-bit MD5 digest of the part data.
 
 
 
@@ -142,7 +142,7 @@ Allows grantee to write the ACL for the applicable object.
 
 =head2 B<REQUIRED> Key => Str
 
-
+Object key for which the PUT operation was initiated.
 
 
 

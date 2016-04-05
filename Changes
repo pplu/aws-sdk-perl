@@ -1,10 +1,26 @@
-0.22
+0.23 04 Apr 2016
+ - t/11_client_exceptions was failing if Furl wasn't installed (andk)
+   We skip the test if the required recorder doesn't load, as this
+   Is causing cpantesters failures and installation failures
+ - t/01-load.t will try to unload classes after using them
+ - Inspector API update: New API published
+ - DeviceFarm API update: Offerings
+ - ElastiCache API update: Modify EC cluster types
+ - RDS API update: SQL Server AD Auth
+ - Redshift API update: ModifyClusterIamRoles
+ - StorageGateway API update: SetLocalConsolePassword
+ - WAF API Update: XssMatchSets
+ - S3 API update: PutObject now returns VersionId
+ - CloudFormation API update: Changesets
+
+0.22 21 Mar 2016
  - New: Paws::Credential::AssumeRoleWithSAML for using Paws through STS AssumeRoleWithSAML
         examples/sts-saml has an example of how to retrieve credentials through an ADFS
  - New: perls 5.10 and 5.12 are working after changing package syntax. They've been setup for
         travis testing. This should not be thought of as long term commitment to supporting such
         old perl versions, but at least it can be viewed as we'll know exactly when we stop
-        supporting them (and that will be announced in the changelog)
+        supporting them (and that will be announced in the changelog). Thanks to ilmari for
+        a 5.10 support PR)
  - New: Paws::Net::Caller, LWPCaller  and FurlCaller now implement retry logic in case APIs
         return a retriable HTTP error
  - New: DynamoDB now benefits from crc-32 errors, and being able to retry the call
@@ -17,16 +33,42 @@
  - New Service: ECR (EC2 Container Registry)
  - New Service: CloudWatch Events
  - New Service: ACM (AWS Certificate Manager)
+ - New service: GameLift
+ - New service: DMS (Database Migration Service)
+ - New service: Marketplace Metering
  - EC2 API update: support for NatGateways, VpcClassicLinkDnsSupport, and ScheduledInstances
  - RDS API update: support for enhanced monitoring, and more new features
  - CloudFront API update: support for compressing and SSL to origin
+ - CloudFront API update: support for ACM certificates
  - CloudTrail API update: support for multiregion trails
  - Config API update
  - EMR API update: support for VPC EMR
  - ECS API update: deployment options
  - IoT API update: Topic rules 
  - CloudFormation API update: ContinueUpdateRollback method
+ - MarketplaceCommerceAnalytics API update: support for CustomerDefinedValues
  - WAF API update
+ - Autoscaling API update: lifecycle improvements
+ - CodeDeploy API update: more Batch operations
+ - ApiGateway API update: Authorizers operations
+ - EMR API update: support for EBS volumes
+ - Route53 API update (SNI support) + docu updates
+ - SES API update: support for different encodings
+ - Storagegateway API update: create tapes with barcodes
+ - RDS API update: KMS keys
+ - Lambda update: support for VPC
+ - CloudFormation API update: tagging support + RetainResources on delete
+ - CloudFront ACM cert support
+ - CloudSearch API update: stats
+ - DS API update: support for event topics
+ - DynamoDB API update: DescribeLimits
+ - Redshift API update: DescribeTableRestoreStatus and Restore tables from snapshot
+ - CodeCommit API update: support for triggers
+ - IAM API update: some operations now require stable Ids, instead of names
+ - S3 API update: Incomplete mulitpart upload handling
+ - IoT API update: integrate with CloudWatch and Elasticsearch
+ - CloudHSM API update: support for tags
+ - SES API update: IdentityMailFromDomainAttributes operations
 
 0.21 16 Dec 2015
  - Bug fix: calls supposed to not return any object were failing since 0.21 (jare)

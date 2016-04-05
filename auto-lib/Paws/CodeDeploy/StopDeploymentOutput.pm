@@ -22,7 +22,7 @@ The status of the stop deployment operation:
 
 =item * Pending: The stop operation is pending.
 
-=item * Succeeded: The stop operation succeeded.
+=item * Succeeded: The stop operation was successful.
 
 =back
 

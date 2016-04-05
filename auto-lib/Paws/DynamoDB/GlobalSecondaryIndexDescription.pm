@@ -49,7 +49,7 @@ Represents the properties of a global secondary index.
   Indicates whether the index is currently backfilling. I<Backfilling> is
 the process of reading items from the table and determining whether
 they can be added to the index. (Not all items will qualify: For
-example, a hash key attribute cannot have any duplicates.) If an item
+example, a partition key cannot have any duplicate values.) If an item
 can be added to the index, DynamoDB will do so. After all items have
 been processed, the backfilling operation is complete and
 I<Backfilling> is false.
@@ -111,9 +111,30 @@ this value.
 
 =head2 KeySchema => ArrayRef[L<Paws::DynamoDB::KeySchemaElement>]
 
-  The complete key schema for the global secondary index, consisting of
-one or more pairs of attribute names and key types (C<HASH> or
-C<RANGE>).
+  The complete key schema for a global secondary index, which consists of
+one or more pairs of attribute names and key types:
+
+=over
+
+=item *
+
+C<HASH> - partition key
+
+=item *
+
+C<RANGE> - sort key
+
+=back
+
+The partition key of an item is also known as its I<hash attribute>.
+The term "hash attribute" derives from DynamoDB' usage of an internal
+hash function to evenly distribute data items across partitions, based
+on their partition key values.
+
+The sort key of an item is also known as its I<range attribute>. The
+term "range attribute" derives from the way DynamoDB stores items with
+the same partition key physically close together, in sorted order by
+the sort key value.
 
 
 =head2 Projection => L<Paws::DynamoDB::Projection>

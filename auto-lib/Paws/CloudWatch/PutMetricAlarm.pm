@@ -58,8 +58,24 @@ to the alarm's state.
 
 The list of actions to execute when this alarm transitions into an
 C<ALARM> state from any other state. Each action is specified as an
-Amazon Resource Number (ARN). Currently the only action supported is
-publishing to an Amazon SNS topic or an Amazon Auto Scaling policy.
+Amazon Resource Name (ARN).
+
+Valid Values: arn:aws:automate:I<region (e.g., us-east-1)>:ec2:stop |
+arn:aws:automate:I<region (e.g., us-east-1)>:ec2:terminate |
+arn:aws:automate:I<region (e.g., us-east-1)>:ec2:recover
+
+Valid Values (for use with IAM roles):
+arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+|
+arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+|
+arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+
+B<Note:> You must create at least one stop, terminate, or reboot alarm
+using the Amazon EC2 or CloudWatch console to create the
+B<EC2ActionsAccess> IAM role for the first time. After this IAM role is
+created, you can create stop, terminate, or reboot alarms using the
+CLI.
 
 
 
@@ -101,9 +117,24 @@ threshold.
 
 The list of actions to execute when this alarm transitions into an
 C<INSUFFICIENT_DATA> state from any other state. Each action is
-specified as an Amazon Resource Number (ARN). Currently the only action
-supported is publishing to an Amazon SNS topic or an Amazon Auto
-Scaling policy.
+specified as an Amazon Resource Name (ARN).
+
+Valid Values: arn:aws:automate:I<region (e.g., us-east-1)>:ec2:stop |
+arn:aws:automate:I<region (e.g., us-east-1)>:ec2:terminate |
+arn:aws:automate:I<region (e.g., us-east-1)>:ec2:recover
+
+Valid Values (for use with IAM roles):
+arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+|
+arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+|
+arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+
+B<Note:> You must create at least one stop, terminate, or reboot alarm
+using the Amazon EC2 or CloudWatch console to create the
+B<EC2ActionsAccess> IAM role for the first time. After this IAM role is
+created, you can create stop, terminate, or reboot alarms using the
+CLI.
 
 
 
@@ -123,8 +154,24 @@ The namespace for the alarm's associated metric.
 
 The list of actions to execute when this alarm transitions into an
 C<OK> state from any other state. Each action is specified as an Amazon
-Resource Number (ARN). Currently the only action supported is
-publishing to an Amazon SNS topic or an Amazon Auto Scaling policy.
+Resource Name (ARN).
+
+Valid Values: arn:aws:automate:I<region (e.g., us-east-1)>:ec2:stop |
+arn:aws:automate:I<region (e.g., us-east-1)>:ec2:terminate |
+arn:aws:automate:I<region (e.g., us-east-1)>:ec2:recover
+
+Valid Values (for use with IAM roles):
+arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Stop/1.0
+|
+arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Terminate/1.0
+|
+arn:aws:swf:us-east-1:{I<customer-account>}:action/actions/AWS_EC2.InstanceId.Reboot/1.0
+
+B<Note:> You must create at least one stop, terminate, or reboot alarm
+using the Amazon EC2 or CloudWatch console to create the
+B<EC2ActionsAccess> IAM role for the first time. After this IAM role is
+created, you can create stop, terminate, or reboot alarms using the
+CLI.
 
 
 
@@ -148,7 +195,16 @@ The value against which the specified statistic is compared.
 
 =head2 Unit => Str
 
-The unit for the alarm's associated metric.
+The statistic's unit of measure. For example, the units for the Amazon
+EC2 NetworkIn metric are Bytes because NetworkIn tracks the number of
+bytes that an instance receives on all network interfaces. You can also
+specify a unit when you create a custom metric. Units help provide
+conceptual meaning to your data. Metric data points that specify a unit
+of measure, such as Percent, are aggregated separately.
+
+B<Note:> If you specify a unit, you must use a unit that is appropriate
+for the metric. Otherwise, this can cause an Amazon CloudWatch alarm to
+get stuck in the INSUFFICIENT DATA state.
 
 Valid values are: C<"Seconds">, C<"Microseconds">, C<"Milliseconds">, C<"Bytes">, C<"Kilobytes">, C<"Megabytes">, C<"Gigabytes">, C<"Terabytes">, C<"Bits">, C<"Kilobits">, C<"Megabits">, C<"Gigabits">, C<"Terabits">, C<"Percent">, C<"Count">, C<"Bytes/Second">, C<"Kilobytes/Second">, C<"Megabytes/Second">, C<"Gigabytes/Second">, C<"Terabytes/Second">, C<"Bits/Second">, C<"Kilobits/Second">, C<"Megabits/Second">, C<"Gigabits/Second">, C<"Terabits/Second">, C<"Count/Second">, C<"None">
 

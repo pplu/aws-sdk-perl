@@ -21,7 +21,7 @@ package Paws::Net::RestXmlCaller;
     my ($self, $params) = @_;
     my %p;
     foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-      my $key = $params->meta->get_attribute($att)->does('Net::AWS::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
+      my $key = $params->meta->get_attribute($att)->does('Paws::API::Attribute::Trait::ParamInQuery')?$params->meta->get_attribute($att)->query_name:$att;
       if (defined $params->$att) {
         my $att_type = $params->meta->get_attribute($att)->type_constraint;
 
@@ -57,7 +57,6 @@ package Paws::Net::RestXmlCaller;
 
     my @attribs = $uri_template =~ /{(.+?)}/g;
     my $vars = {};
-    my $qparams = {};
 
     foreach my $attrib (@attribs)
     {
@@ -71,14 +70,10 @@ package Paws::Net::RestXmlCaller;
               $vars->{ $att_name } = $call->$att_name;
           }
       }
-      if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
-        $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
-      }
     }
     my $t = URI::Template->new( $uri_template );
     my $uri = $t->process($vars);
-    $uri->query_form(%$qparams);
-    return $uri->as_string;
+    return $uri;
   }
 
   sub _to_header_params {
@@ -151,7 +146,17 @@ package Paws::Net::RestXmlCaller;
     }
 
     my $uri = $self->_call_uri($call); #in RestXmlCaller
-    $request->uri($uri);
+
+    my $qparams = {};
+    foreach my $attribute ($call->meta->get_all_attributes) {
+      my $att_name = $attribute->name;
+      if ($attribute->does('Paws::API::Attribute::Trait::ParamInQuery')) {
+        $qparams->{ $attribute->query_name } = $call->$att_name if (defined $call->$att_name);
+      }
+    }
+    $uri->query_form(%$qparams);
+
+    $request->uri($uri->as_string);
 
     my $url = $self->_api_endpoint . $uri; #in Paws::API::EndPointResolver
 

@@ -1,7 +1,9 @@
 package Paws::EMR::Instance;
   use Moose;
+  has EbsVolumes => (is => 'ro', isa => 'ArrayRef[Paws::EMR::EbsVolume]');
   has Ec2InstanceId => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
+  has InstanceGroupId => (is => 'ro', isa => 'Str');
   has PrivateDnsName => (is => 'ro', isa => 'Str');
   has PrivateIpAddress => (is => 'ro', isa => 'Str');
   has PublicDnsName => (is => 'ro', isa => 'Str');
@@ -26,20 +28,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EMR::Instance object:
 
-  $service_obj->Method(Att1 => { Ec2InstanceId => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { EbsVolumes => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instance object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Ec2InstanceId
+  $result->Att1->EbsVolumes
 
 =head1 DESCRIPTION
 
 Represents an EC2 instance provisioned as part of cluster.
 
 =head1 ATTRIBUTES
+
+
+=head2 EbsVolumes => ArrayRef[L<Paws::EMR::EbsVolume>]
+
+  The list of EBS volumes that are attached to this instance.
 
 
 =head2 Ec2InstanceId => Str
@@ -50,6 +57,11 @@ Represents an EC2 instance provisioned as part of cluster.
 =head2 Id => Str
 
   The unique identifier for the instance in Amazon EMR.
+
+
+=head2 InstanceGroupId => Str
+
+  The identifier of the instance group to which this instance belongs.
 
 
 =head2 PrivateDnsName => Str

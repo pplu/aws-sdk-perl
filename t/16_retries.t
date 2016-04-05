@@ -17,30 +17,48 @@ use Paws::Exception;
   );
 
   $retry->operation_result(Paws::Exception->new(code => 'X', message => 'X', request_id => ''));
+
+  #DDB: [ 0, 0.050, 0.100, 0.200, 0.400, 0.800, 1.600, 3.200, 6.400, 12.800 ]
+
   $retry->one_more_try;
 
-  cmp_ok($retry->sleep_time, '==', 0, 'Sleep of 0 secs');
+  {
+  my $s = $retry->sleep_time;
+  ok($s >= 0 && $s <= 1, "Sleep of 0-1 secs ($s)");
   ok($retry->should_retry, 'This should be retriable');
+  }
 
   $retry->one_more_try;
 
-  cmp_ok($retry->sleep_time, '==', 6, 'Sleep of 6 secs');
+  {
+  my $s = $retry->sleep_time;
+  ok($s >= 1 && $s <= 2, "Sleep of 1-2 secs ($s)");
   ok($retry->should_retry, 'This should be retriable');
+  }
 
   $retry->one_more_try;
 
-  cmp_ok($retry->sleep_time, '==', 12, 'Sleep of 12 secs');
+  {
+  my $s = $retry->sleep_time;
+  ok($s >= 2 && $s <= 3, "Sleep of 2-3 secs ($s)");
   ok($retry->should_retry, 'This should be retriable');
+  }
 
   $retry->one_more_try;
 
-  cmp_ok($retry->sleep_time, '==', 18, 'Sleep of 18 secs');
+  {
+  my $s = $retry->sleep_time;
+  ok($s >= 4 && $s <= 5, "Sleep of 4-5 secs ($s)");
   ok($retry->should_retry, 'This should be retriable');
+  }
 
   $retry->one_more_try;
 
-  cmp_ok($retry->sleep_time, '==', 24, 'Sleep of 24 secs');
+  {
+  my $s = $retry->sleep_time;
+  ok($s >= 8 && $s <= 9, "Sleep of 8-9 secs ($s)");
   ok(not($retry->should_retry), 'Last attempt should not be retriable');
+  }
 
 }
 

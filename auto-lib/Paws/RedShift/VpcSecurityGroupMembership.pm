@@ -39,12 +39,12 @@ Describes the members of a VPC security group.
 
 =head2 Status => Str
 
-  
+  The status of the VPC security group.
 
 
 =head2 VpcSecurityGroupId => Str
 
-  
+  The identifier of the VPC security group.
 
 
 

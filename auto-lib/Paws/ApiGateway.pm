@@ -19,6 +19,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateApiKey', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateAuthorizer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateAuthorizer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateBasePathMapping {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::CreateBasePathMapping', @_);
@@ -57,6 +62,11 @@ package Paws::ApiGateway;
   sub DeleteApiKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteApiKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAuthorizer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteAuthorizer', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteBasePathMapping {
@@ -119,6 +129,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::DeleteStage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub FlushStageAuthorizersCache {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::FlushStageAuthorizersCache', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub FlushStageCache {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::FlushStageCache', @_);
@@ -142,6 +157,16 @@ package Paws::ApiGateway;
   sub GetApiKeys {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetApiKeys', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAuthorizer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetAuthorizer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAuthorizers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetAuthorizers', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetBasePathMapping {
@@ -182,6 +207,11 @@ package Paws::ApiGateway;
   sub GetDomainNames {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetDomainNames', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetExport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetExport', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetIntegration {
@@ -274,6 +304,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::PutMethodResponse', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TestInvokeAuthorizer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::TestInvokeAuthorizer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TestInvokeMethod {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::TestInvokeMethod', @_);
@@ -287,6 +322,11 @@ package Paws::ApiGateway;
   sub UpdateApiKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateApiKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAuthorizer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::UpdateAuthorizer', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateBasePathMapping {
@@ -462,7 +502,7 @@ package Paws::ApiGateway;
     return 'Paws::ApiGateway::GetRestApis'->_returns->new(items => $array);
   }
 
-  sub operations { qw/CreateApiKey CreateBasePathMapping CreateDeployment CreateDomainName CreateModel CreateResource CreateRestApi CreateStage DeleteApiKey DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDomainName GetDomainNames GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages PutIntegration PutIntegrationResponse PutMethod PutMethodResponse TestInvokeMethod UpdateAccount UpdateApiKey UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage / }
+  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDomainName CreateModel CreateResource CreateRestApi CreateStage DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages PutIntegration PutIntegrationResponse PutMethod PutMethodResponse TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage / }
 
 1;
 
@@ -505,6 +545,15 @@ services that are hosted outside of AWS.
 Each argument is described in detail in: L<Paws::ApiGateway::CreateApiKey>
 
 Returns: a L<Paws::ApiGateway::ApiKey> instance
+
+  
+
+
+=head2 CreateAuthorizer(AuthorizerUri => Str, IdentitySource => Str, Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, IdentityValidationExpression => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::CreateAuthorizer>
+
+Returns: a L<Paws::ApiGateway::Authorizer> instance
 
   
 
@@ -570,7 +619,8 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateStage>
 
 Returns: a L<Paws::ApiGateway::Stage> instance
 
-  Creates a Stage resource.
+  Creates a new Stage resource that references a pre-existing Deployment
+for the API.
 
 
 =head2 DeleteApiKey(ApiKey => Str)
@@ -580,6 +630,15 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteApiKey>
 Returns: nothing
 
   Deletes the ApiKey resource.
+
+
+=head2 DeleteAuthorizer(AuthorizerId => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::DeleteAuthorizer>
+
+Returns: nothing
+
+  Deletes an existing Authorizer resource.
 
 
 =head2 DeleteBasePathMapping(BasePath => Str, DomainName => Str)
@@ -691,6 +750,15 @@ Returns: nothing
   Deletes a Stage resource.
 
 
+=head2 FlushStageAuthorizersCache(RestApiId => Str, StageName => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::FlushStageAuthorizersCache>
+
+Returns: nothing
+
+  Flushes all authorizer cache entries on a stage.
+
+
 =head2 FlushStageCache(RestApiId => Str, StageName => Str)
 
 Each argument is described in detail in: L<Paws::ApiGateway::FlushStageCache>
@@ -734,6 +802,24 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetApiKeys>
 Returns: a L<Paws::ApiGateway::ApiKeys> instance
 
   Gets information about the current ApiKeys resource.
+
+
+=head2 GetAuthorizer(AuthorizerId => Str, RestApiId => Str)
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetAuthorizer>
+
+Returns: a L<Paws::ApiGateway::Authorizer> instance
+
+  Describe an existing Authorizer resource.
+
+
+=head2 GetAuthorizers(RestApiId => Str, [Limit => Int, Position => Str])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetAuthorizers>
+
+Returns: a L<Paws::ApiGateway::Authorizers> instance
+
+  Describe an existing Authorizers resource.
 
 
 =head2 GetBasePathMapping(BasePath => Str, DomainName => Str)
@@ -807,6 +893,15 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetDomainNames>
 Returns: a L<Paws::ApiGateway::DomainNames> instance
 
   Represents a collection of DomainName resources.
+
+
+=head2 GetExport(ExportType => Str, RestApiId => Str, StageName => Str, [Accepts => Str, Parameters => HashRef[Str]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::GetExport>
+
+Returns: a L<Paws::ApiGateway::ExportResponse> instance
+
+  
 
 
 =head2 GetIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str)
@@ -954,7 +1049,7 @@ Returns: a L<Paws::ApiGateway::IntegrationResponse> instance
   Represents a put integration.
 
 
-=head2 PutMethod(AuthorizationType => Str, HttpMethod => Str, ResourceId => Str, RestApiId => Str, [ApiKeyRequired => Bool, RequestModels => HashRef[Str], RequestParameters => HashRef[Bool]])
+=head2 PutMethod(AuthorizationType => Str, HttpMethod => Str, ResourceId => Str, RestApiId => Str, [ApiKeyRequired => Bool, AuthorizerId => Str, RequestModels => HashRef[Str], RequestParameters => HashRef[Bool]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutMethod>
 
@@ -970,6 +1065,15 @@ Each argument is described in detail in: L<Paws::ApiGateway::PutMethodResponse>
 Returns: a L<Paws::ApiGateway::MethodResponse> instance
 
   Adds a MethodResponse to an existing Method resource.
+
+
+=head2 TestInvokeAuthorizer(AuthorizerId => Str, RestApiId => Str, [AdditionalContext => HashRef[Str], Body => Str, Headers => HashRef[Str], PathWithQueryString => Str, StageVariables => HashRef[Str]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::TestInvokeAuthorizer>
+
+Returns: a L<Paws::ApiGateway::TestInvokeAuthorizerResponse> instance
+
+  
 
 
 =head2 TestInvokeMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [Body => Str, ClientCertificateId => Str, Headers => HashRef[Str], PathWithQueryString => Str, StageVariables => HashRef[Str]])
@@ -997,6 +1101,15 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateApiKey>
 Returns: a L<Paws::ApiGateway::ApiKey> instance
 
   Changes information about an ApiKey resource.
+
+
+=head2 UpdateAuthorizer(AuthorizerId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
+
+Each argument is described in detail in: L<Paws::ApiGateway::UpdateAuthorizer>
+
+Returns: a L<Paws::ApiGateway::Authorizer> instance
+
+  Updates an existing Authorizer resource.
 
 
 =head2 UpdateBasePathMapping(BasePath => Str, DomainName => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])

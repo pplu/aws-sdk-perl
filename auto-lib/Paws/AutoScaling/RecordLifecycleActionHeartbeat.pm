@@ -2,7 +2,8 @@
 package Paws::AutoScaling::RecordLifecycleActionHeartbeat;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has LifecycleActionToken => (is => 'ro', isa => 'Str', required => 1);
+  has InstanceId => (is => 'ro', isa => 'Str');
+  has LifecycleActionToken => (is => 'ro', isa => 'Str');
   has LifecycleHookName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -41,7 +42,13 @@ The name of the Auto Scaling group for the hook.
 
 
 
-=head2 B<REQUIRED> LifecycleActionToken => Str
+=head2 InstanceId => Str
+
+The ID of the instance.
+
+
+
+=head2 LifecycleActionToken => Str
 
 A token that uniquely identifies a specific lifecycle action associated
 with an instance. Auto Scaling sends this token to the notification

@@ -1,7 +1,7 @@
 
 package Paws::Inspector::CreateResourceGroupResponse;
   use Moose;
-  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'resourceGroupArn' );
+  has ResourceGroupArn => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'resourceGroupArn' , required => 1);
 
 
 ### main pod documentation begin ###
@@ -13,7 +13,7 @@ Paws::Inspector::CreateResourceGroupResponse
 =head1 ATTRIBUTES
 
 
-=head2 ResourceGroupArn => Str
+=head2 B<REQUIRED> ResourceGroupArn => Str
 
 The ARN specifying the resource group that is created.
 

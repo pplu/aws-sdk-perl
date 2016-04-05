@@ -45,9 +45,6 @@ The name of the new branch to create.
 
 The ID of the commit to point the new branch to.
 
-If this commit ID is not specified, the new branch will point to the
-commit that is pointed to by the repository's default branch.
-
 
 
 =head2 B<REQUIRED> RepositoryName => Str

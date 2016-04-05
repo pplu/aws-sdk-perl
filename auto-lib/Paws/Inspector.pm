@@ -1,7 +1,7 @@
 package Paws::Inspector;
   use Moose;
   sub service { 'inspector' }
-  sub version { '2015-08-18' }
+  sub version { '2016-02-16' }
   sub target_prefix { 'InspectorService' }
   sub json_version { "1.1" }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
@@ -19,19 +19,14 @@ package Paws::Inspector;
     my $call_object = $self->new_with_coercions('Paws::Inspector::AddAttributesToFindings', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub AttachAssessmentAndRulesPackage {
+  sub CreateAssessmentTarget {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::AttachAssessmentAndRulesPackage', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::CreateAssessmentTarget', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub CreateApplication {
+  sub CreateAssessmentTemplate {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::CreateApplication', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub CreateAssessment {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::CreateAssessment', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::CreateAssessmentTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateResourceGroup {
@@ -39,29 +34,34 @@ package Paws::Inspector;
     my $call_object = $self->new_with_coercions('Paws::Inspector::CreateResourceGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteApplication {
+  sub DeleteAssessmentRun {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::DeleteApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::DeleteAssessmentRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteAssessment {
+  sub DeleteAssessmentTarget {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::DeleteAssessment', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::DeleteAssessmentTarget', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DeleteRun {
+  sub DeleteAssessmentTemplate {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::DeleteRun', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::DeleteAssessmentTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeApplication {
+  sub DescribeAssessmentRuns {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeAssessmentRuns', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeAssessment {
+  sub DescribeAssessmentTargets {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeAssessment', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeAssessmentTargets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAssessmentTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeAssessmentTemplates', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCrossAccountAccessRole {
@@ -69,59 +69,49 @@ package Paws::Inspector;
     my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeCrossAccountAccessRole', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeFinding {
+  sub DescribeFindings {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeFinding', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeFindings', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeResourceGroup {
+  sub DescribeResourceGroups {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeResourceGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeResourceGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeRulesPackage {
+  sub DescribeRulesPackages {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeRulesPackage', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeRulesPackages', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DescribeRun {
+  sub GetTelemetryMetadata {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::DescribeRun', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::GetTelemetryMetadata', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub DetachAssessmentAndRulesPackage {
+  sub ListAssessmentRunAgents {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::DetachAssessmentAndRulesPackage', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::ListAssessmentRunAgents', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub GetAssessmentTelemetry {
+  sub ListAssessmentRuns {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::GetAssessmentTelemetry', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::ListAssessmentRuns', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListApplications {
+  sub ListAssessmentTargets {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::ListApplications', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::ListAssessmentTargets', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListAssessmentAgents {
+  sub ListAssessmentTemplates {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::ListAssessmentAgents', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::ListAssessmentTemplates', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListAssessments {
+  sub ListEventSubscriptions {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::ListAssessments', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListAttachedAssessments {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::ListAttachedAssessments', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub ListAttachedRulesPackages {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::ListAttachedRulesPackages', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::ListEventSubscriptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListFindings {
@@ -134,24 +124,14 @@ package Paws::Inspector;
     my $call_object = $self->new_with_coercions('Paws::Inspector::ListRulesPackages', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub ListRuns {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::ListRuns', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Inspector::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub LocalizeText {
+  sub PreviewAgents {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::LocalizeText', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub PreviewAgentsForResourceGroup {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::PreviewAgentsForResourceGroup', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::PreviewAgents', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegisterCrossAccountAccessRole {
@@ -164,38 +144,38 @@ package Paws::Inspector;
     my $call_object = $self->new_with_coercions('Paws::Inspector::RemoveAttributesFromFindings', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub RunAssessment {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::RunAssessment', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub SetTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Inspector::SetTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub StartDataCollection {
+  sub StartAssessmentRun {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::StartDataCollection', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::StartAssessmentRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub StopDataCollection {
+  sub StopAssessmentRun {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::StopDataCollection', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::StopAssessmentRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub UpdateApplication {
+  sub SubscribeToEvent {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::UpdateApplication', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::SubscribeToEvent', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub UpdateAssessment {
+  sub UnsubscribeFromEvent {
     my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Inspector::UpdateAssessment', @_);
+    my $call_object = $self->new_with_coercions('Paws::Inspector::UnsubscribeFromEvent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAssessmentTarget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Inspector::UpdateAssessmentTarget', @_);
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AddAttributesToFindings AttachAssessmentAndRulesPackage CreateApplication CreateAssessment CreateResourceGroup DeleteApplication DeleteAssessment DeleteRun DescribeApplication DescribeAssessment DescribeCrossAccountAccessRole DescribeFinding DescribeResourceGroup DescribeRulesPackage DescribeRun DetachAssessmentAndRulesPackage GetAssessmentTelemetry ListApplications ListAssessmentAgents ListAssessments ListAttachedAssessments ListAttachedRulesPackages ListFindings ListRulesPackages ListRuns ListTagsForResource LocalizeText PreviewAgentsForResourceGroup RegisterCrossAccountAccessRole RemoveAttributesFromFindings RunAssessment SetTagsForResource StartDataCollection StopDataCollection UpdateApplication UpdateAssessment / }
+  sub operations { qw/AddAttributesToFindings CreateAssessmentTarget CreateAssessmentTemplate CreateResourceGroup DeleteAssessmentRun DeleteAssessmentTarget DeleteAssessmentTemplate DescribeAssessmentRuns DescribeAssessmentTargets DescribeAssessmentTemplates DescribeCrossAccountAccessRole DescribeFindings DescribeResourceGroups DescribeRulesPackages GetTelemetryMetadata ListAssessmentRunAgents ListAssessmentRuns ListAssessmentTargets ListAssessmentTemplates ListEventSubscriptions ListFindings ListRulesPackages ListTagsForResource PreviewAgents RegisterCrossAccountAccessRole RemoveAttributesFromFindings SetTagsForResource StartAssessmentRun StopAssessmentRun SubscribeToEvent UnsubscribeFromEvent UpdateAssessmentTarget / }
 
 1;
 
@@ -225,9 +205,9 @@ Paws::Inspector - Perl Interface to AWS Amazon Inspector
 
 Amazon Inspector
 
-Amazon Inspector enables you to analyze the behavior of the
-applications you run in AWS and to identify potential security issues.
-For more information, see Amazon Inspector User Guide.
+Amazon Inspector enables you to analyze the behavior of your AWS
+resources and to identify potential security issues. For more
+information, see Amazon Inspector User Guide.
 
 =head1 METHODS
 
@@ -241,39 +221,29 @@ Returns: a L<Paws::Inspector::AddAttributesToFindingsResponse> instance
 the findings' ARNs.
 
 
-=head2 AttachAssessmentAndRulesPackage(AssessmentArn => Str, RulesPackageArn => Str)
+=head2 CreateAssessmentTarget(AssessmentTargetName => Str, ResourceGroupArn => Str)
 
-Each argument is described in detail in: L<Paws::Inspector::AttachAssessmentAndRulesPackage>
+Each argument is described in detail in: L<Paws::Inspector::CreateAssessmentTarget>
 
-Returns: a L<Paws::Inspector::AttachAssessmentAndRulesPackageResponse> instance
+Returns: a L<Paws::Inspector::CreateAssessmentTargetResponse> instance
 
-  Attaches the rules package specified by the rules package ARN to the
-assessment specified by the assessment ARN.
-
-
-=head2 CreateApplication(ApplicationName => Str, ResourceGroupArn => Str)
-
-Each argument is described in detail in: L<Paws::Inspector::CreateApplication>
-
-Returns: a L<Paws::Inspector::CreateApplicationResponse> instance
-
-  Creates a new application using the resource group ARN generated by
-CreateResourceGroup. You can create up to 50 applications per AWS
-account. You can run up to 500 concurrent agents per AWS account. For
-more information, see Inspector Applications.
+  Creates a new assessment target using the resource group ARN generated
+by CreateResourceGroup. You can create up to 50 assessment targets per
+AWS account. You can run up to 500 concurrent agents per AWS account.
+For more information, see Amazon Inspector Assessment Targets.
 
 
-=head2 CreateAssessment(ApplicationArn => Str, AssessmentName => Str, DurationInSeconds => Int, [UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]])
+=head2 CreateAssessmentTemplate(AssessmentTargetArn => Str, AssessmentTemplateName => Str, DurationInSeconds => Int, RulesPackageArns => ArrayRef[Str], [UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]])
 
-Each argument is described in detail in: L<Paws::Inspector::CreateAssessment>
+Each argument is described in detail in: L<Paws::Inspector::CreateAssessmentTemplate>
 
-Returns: a L<Paws::Inspector::CreateAssessmentResponse> instance
+Returns: a L<Paws::Inspector::CreateAssessmentTemplateResponse> instance
 
-  Creates an assessment for the application specified by the application
-ARN. You can create up to 500 assessments per AWS account.
+  Creates an assessment template for the assessment target specified by
+the assessment target ARN.
 
 
-=head2 CreateResourceGroup(ResourceGroupTags => Str)
+=head2 CreateResourceGroup(ResourceGroupTags => ArrayRef[L<Paws::Inspector::ResourceGroupTag>])
 
 Each argument is described in detail in: L<Paws::Inspector::CreateResourceGroup>
 
@@ -281,53 +251,65 @@ Returns: a L<Paws::Inspector::CreateResourceGroupResponse> instance
 
   Creates a resource group using the specified set of tags (key and value
 pairs) that are used to select the EC2 instances to be included in an
-Inspector application. The created resource group is then used to
-create an Inspector application.
+Inspector assessment target. The created resource group is then used to
+create an Inspector assessment target.
 
 
-=head2 DeleteApplication(ApplicationArn => Str)
+=head2 DeleteAssessmentRun(AssessmentRunArn => Str)
 
-Each argument is described in detail in: L<Paws::Inspector::DeleteApplication>
+Each argument is described in detail in: L<Paws::Inspector::DeleteAssessmentRun>
 
-Returns: a L<Paws::Inspector::DeleteApplicationResponse> instance
+Returns: nothing
 
-  Deletes the application specified by the application ARN.
-
-
-=head2 DeleteAssessment(AssessmentArn => Str)
-
-Each argument is described in detail in: L<Paws::Inspector::DeleteAssessment>
-
-Returns: a L<Paws::Inspector::DeleteAssessmentResponse> instance
-
-  Deletes the assessment specified by the assessment ARN.
+  Deletes the assessment run specified by the assessment run ARN.
 
 
-=head2 DeleteRun(RunArn => Str)
+=head2 DeleteAssessmentTarget(AssessmentTargetArn => Str)
 
-Each argument is described in detail in: L<Paws::Inspector::DeleteRun>
+Each argument is described in detail in: L<Paws::Inspector::DeleteAssessmentTarget>
 
-Returns: a L<Paws::Inspector::DeleteRunResponse> instance
+Returns: nothing
 
-  Deletes the assessment run specified by the run ARN.
-
-
-=head2 DescribeApplication(ApplicationArn => Str)
-
-Each argument is described in detail in: L<Paws::Inspector::DescribeApplication>
-
-Returns: a L<Paws::Inspector::DescribeApplicationResponse> instance
-
-  Describes the application specified by the application ARN.
+  Deletes the assessment target specified by the assessment target ARN.
 
 
-=head2 DescribeAssessment(AssessmentArn => Str)
+=head2 DeleteAssessmentTemplate(AssessmentTemplateArn => Str)
 
-Each argument is described in detail in: L<Paws::Inspector::DescribeAssessment>
+Each argument is described in detail in: L<Paws::Inspector::DeleteAssessmentTemplate>
 
-Returns: a L<Paws::Inspector::DescribeAssessmentResponse> instance
+Returns: nothing
 
-  Describes the assessment specified by the assessment ARN.
+  Deletes the assessment template specified by the assessment template
+ARN.
+
+
+=head2 DescribeAssessmentRuns(AssessmentRunArns => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentRuns>
+
+Returns: a L<Paws::Inspector::DescribeAssessmentRunsResponse> instance
+
+  Describes the assessment run(s) specified by the assessment run ARN(s).
+
+
+=head2 DescribeAssessmentTargets(AssessmentTargetArns => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentTargets>
+
+Returns: a L<Paws::Inspector::DescribeAssessmentTargetsResponse> instance
+
+  Describes the assessment target(s) specified by the assessment target
+ARN(s).
+
+
+=head2 DescribeAssessmentTemplates(AssessmentTemplateArns => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::Inspector::DescribeAssessmentTemplates>
+
+Returns: a L<Paws::Inspector::DescribeAssessmentTemplatesResponse> instance
+
+  Describes the assessment template(s) specified by the assessment
+template(s) ARN(s).
 
 
 =head2 DescribeCrossAccountAccessRole( => )
@@ -340,119 +322,102 @@ Returns: a L<Paws::Inspector::DescribeCrossAccountAccessRoleResponse> instance
 account.
 
 
-=head2 DescribeFinding(FindingArn => Str)
+=head2 DescribeFindings(FindingArns => ArrayRef[Str], [Locale => Str])
 
-Each argument is described in detail in: L<Paws::Inspector::DescribeFinding>
+Each argument is described in detail in: L<Paws::Inspector::DescribeFindings>
 
-Returns: a L<Paws::Inspector::DescribeFindingResponse> instance
+Returns: a L<Paws::Inspector::DescribeFindingsResponse> instance
 
-  Describes the finding specified by the finding ARN.
-
-
-=head2 DescribeResourceGroup(ResourceGroupArn => Str)
-
-Each argument is described in detail in: L<Paws::Inspector::DescribeResourceGroup>
-
-Returns: a L<Paws::Inspector::DescribeResourceGroupResponse> instance
-
-  Describes the resource group specified by the resource group ARN.
+  Describes the finding(s) specified by the finding ARN(s).
 
 
-=head2 DescribeRulesPackage(RulesPackageArn => Str)
+=head2 DescribeResourceGroups(ResourceGroupArns => ArrayRef[Str])
 
-Each argument is described in detail in: L<Paws::Inspector::DescribeRulesPackage>
+Each argument is described in detail in: L<Paws::Inspector::DescribeResourceGroups>
 
-Returns: a L<Paws::Inspector::DescribeRulesPackageResponse> instance
+Returns: a L<Paws::Inspector::DescribeResourceGroupsResponse> instance
 
-  Describes the rules package specified by the rules package ARN.
-
-
-=head2 DescribeRun(RunArn => Str)
-
-Each argument is described in detail in: L<Paws::Inspector::DescribeRun>
-
-Returns: a L<Paws::Inspector::DescribeRunResponse> instance
-
-  Describes the assessment run specified by the run ARN.
+  Describes resource group(s) specified by the resource group ARN(s).
 
 
-=head2 DetachAssessmentAndRulesPackage(AssessmentArn => Str, RulesPackageArn => Str)
+=head2 DescribeRulesPackages(RulesPackageArns => ArrayRef[Str], [Locale => Str])
 
-Each argument is described in detail in: L<Paws::Inspector::DetachAssessmentAndRulesPackage>
+Each argument is described in detail in: L<Paws::Inspector::DescribeRulesPackages>
 
-Returns: a L<Paws::Inspector::DetachAssessmentAndRulesPackageResponse> instance
+Returns: a L<Paws::Inspector::DescribeRulesPackagesResponse> instance
 
-  Detaches the rules package specified by the rules package ARN from the
-assessment specified by the assessment ARN.
-
-
-=head2 GetAssessmentTelemetry(AssessmentArn => Str)
-
-Each argument is described in detail in: L<Paws::Inspector::GetAssessmentTelemetry>
-
-Returns: a L<Paws::Inspector::GetAssessmentTelemetryResponse> instance
-
-  Returns the metadata about the telemetry (application behavioral data)
-for the assessment specified by the assessment ARN.
+  Describes the rules package(s) specified by the rules package ARN(s).
 
 
-=head2 ListApplications([Filter => L<Paws::Inspector::ApplicationsFilter>, MaxResults => Int, NextToken => Str])
+=head2 GetTelemetryMetadata(AssessmentRunArn => Str)
 
-Each argument is described in detail in: L<Paws::Inspector::ListApplications>
+Each argument is described in detail in: L<Paws::Inspector::GetTelemetryMetadata>
 
-Returns: a L<Paws::Inspector::ListApplicationsResponse> instance
+Returns: a L<Paws::Inspector::GetTelemetryMetadataResponse> instance
 
-  Lists the ARNs of the applications within this AWS account. For more
-information about applications, see Inspector Applications.
-
-
-=head2 ListAssessmentAgents(AssessmentArn => Str, [Filter => L<Paws::Inspector::AgentsFilter>, MaxResults => Int, NextToken => Str])
-
-Each argument is described in detail in: L<Paws::Inspector::ListAssessmentAgents>
-
-Returns: a L<Paws::Inspector::ListAssessmentAgentsResponse> instance
-
-  Lists the agents of the assessment specified by the assessment ARN.
+  Information about the data collected for the specified assessment run.
 
 
-=head2 ListAssessments([ApplicationArns => ArrayRef[Str], Filter => L<Paws::Inspector::AssessmentsFilter>, MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentRunAgents(AssessmentRunArn => Str, [Filter => L<Paws::Inspector::AgentFilter>, MaxResults => Int, NextToken => Str])
 
-Each argument is described in detail in: L<Paws::Inspector::ListAssessments>
+Each argument is described in detail in: L<Paws::Inspector::ListAssessmentRunAgents>
 
-Returns: a L<Paws::Inspector::ListAssessmentsResponse> instance
+Returns: a L<Paws::Inspector::ListAssessmentRunAgentsResponse> instance
 
-  Lists the assessments corresponding to applications specified by the
-applications' ARNs.
-
-
-=head2 ListAttachedAssessments(RulesPackageArn => Str, [Filter => L<Paws::Inspector::AssessmentsFilter>, MaxResults => Int, NextToken => Str])
-
-Each argument is described in detail in: L<Paws::Inspector::ListAttachedAssessments>
-
-Returns: a L<Paws::Inspector::ListAttachedAssessmentsResponse> instance
-
-  Lists the assessments attached to the rules package specified by the
-rules package ARN.
+  Lists the agents of the assessment run specified by the assessment run
+ARN.
 
 
-=head2 ListAttachedRulesPackages(AssessmentArn => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAssessmentRuns([AssessmentTemplateArns => ArrayRef[Str], Filter => L<Paws::Inspector::AssessmentRunFilter>, MaxResults => Int, NextToken => Str])
 
-Each argument is described in detail in: L<Paws::Inspector::ListAttachedRulesPackages>
+Each argument is described in detail in: L<Paws::Inspector::ListAssessmentRuns>
 
-Returns: a L<Paws::Inspector::ListAttachedRulesPackagesResponse> instance
+Returns: a L<Paws::Inspector::ListAssessmentRunsResponse> instance
 
-  Lists the rules packages attached to the assessment specified by the
-assessment ARN.
+  Lists the assessments run corresponding to assessment template(s)
+specified by the assessment template(s)' ARN(s).
 
 
-=head2 ListFindings([Filter => L<Paws::Inspector::FindingsFilter>, MaxResults => Int, NextToken => Str, RunArns => ArrayRef[Str]])
+=head2 ListAssessmentTargets([Filter => L<Paws::Inspector::AssessmentTargetFilter>, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Inspector::ListAssessmentTargets>
+
+Returns: a L<Paws::Inspector::ListAssessmentTargetsResponse> instance
+
+  Lists the ARN(s) of the assessment target(s) within this AWS account.
+For more information about assessment targets, see Amazon Inspector
+Assessment Targets.
+
+
+=head2 ListAssessmentTemplates([AssessmentTargetArns => ArrayRef[Str], Filter => L<Paws::Inspector::AssessmentTemplateFilter>, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::Inspector::ListAssessmentTemplates>
+
+Returns: a L<Paws::Inspector::ListAssessmentTemplatesResponse> instance
+
+  Lists the assessment template(s) corresponding to the assessment
+target(s) specified by the assessment targets' ARN(s).
+
+
+=head2 ListEventSubscriptions([MaxResults => Int, NextToken => Str, ResourceArn => Str])
+
+Each argument is described in detail in: L<Paws::Inspector::ListEventSubscriptions>
+
+Returns: a L<Paws::Inspector::ListEventSubscriptionsResponse> instance
+
+  Lists all the event subscriptions for the assessment template specified
+by the assessment template ARN. For more information, see
+SubscribeToEvent and UnsubscribeFromEvent.
+
+
+=head2 ListFindings([AssessmentRunArns => ArrayRef[Str], Filter => L<Paws::Inspector::FindingFilter>, MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::Inspector::ListFindings>
 
 Returns: a L<Paws::Inspector::ListFindingsResponse> instance
 
-  Lists findings generated by the assessment run specified by the run
-ARNs.
+  Lists findings generated by the assessment run(s) specified by the
+assessment run ARN(s).
 
 
 =head2 ListRulesPackages([MaxResults => Int, NextToken => Str])
@@ -464,53 +429,34 @@ Returns: a L<Paws::Inspector::ListRulesPackagesResponse> instance
   Lists all available Inspector rules packages.
 
 
-=head2 ListRuns([AssessmentArns => ArrayRef[Str], Filter => L<Paws::Inspector::RunsFilter>, MaxResults => Int, NextToken => Str])
-
-Each argument is described in detail in: L<Paws::Inspector::ListRuns>
-
-Returns: a L<Paws::Inspector::ListRunsResponse> instance
-
-  Lists the assessment runs associated with the assessments specified by
-the assessment ARNs.
-
-
 =head2 ListTagsForResource(ResourceArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::ListTagsForResource>
 
 Returns: a L<Paws::Inspector::ListTagsForResourceResponse> instance
 
-  Lists all tags associated with a resource.
+  Lists all tags associated with an assessment template.
 
 
-=head2 LocalizeText(Locale => Str, LocalizedTexts => ArrayRef[L<Paws::Inspector::LocalizedText>])
+=head2 PreviewAgents(PreviewAgentsArn => Str, [MaxResults => Int, NextToken => Str])
 
-Each argument is described in detail in: L<Paws::Inspector::LocalizeText>
+Each argument is described in detail in: L<Paws::Inspector::PreviewAgents>
 
-Returns: a L<Paws::Inspector::LocalizeTextResponse> instance
+Returns: a L<Paws::Inspector::PreviewAgentsResponse> instance
 
-  Translates a textual identifier into a user-readable text in a
-specified locale.
-
-
-=head2 PreviewAgentsForResourceGroup(ResourceGroupArn => Str, [MaxResults => Int, NextToken => Str])
-
-Each argument is described in detail in: L<Paws::Inspector::PreviewAgentsForResourceGroup>
-
-Returns: a L<Paws::Inspector::PreviewAgentsForResourceGroupResponse> instance
-
-  Previews the agents installed on the EC2 instances that are included in
-the application created with the specified resource group.
+  Previews the agents installed on the EC2 instances that are part of the
+specified assessment target.
 
 
 =head2 RegisterCrossAccountAccessRole(RoleArn => Str)
 
 Each argument is described in detail in: L<Paws::Inspector::RegisterCrossAccountAccessRole>
 
-Returns: a L<Paws::Inspector::RegisterCrossAccountAccessRoleResponse> instance
+Returns: nothing
 
-  Register the role that Inspector uses to list your EC2 instances during
-the assessment.
+  Registers the IAM role that Inspector uses to list your EC2 instances
+at the start of the assessment run or when you call the PreviewAgents
+action.
 
 
 =head2 RemoveAttributesFromFindings(AttributeKeys => ArrayRef[Str], FindingArns => ArrayRef[Str])
@@ -519,69 +465,68 @@ Each argument is described in detail in: L<Paws::Inspector::RemoveAttributesFrom
 
 Returns: a L<Paws::Inspector::RemoveAttributesFromFindingsResponse> instance
 
-  Removes the entire attribute (key and value pair) from the findings
+  Removes entire attributes (key and value pairs) from the findings
 specified by the finding ARNs where an attribute with the specified key
 exists.
-
-
-=head2 RunAssessment(AssessmentArn => Str, RunName => Str)
-
-Each argument is described in detail in: L<Paws::Inspector::RunAssessment>
-
-Returns: a L<Paws::Inspector::RunAssessmentResponse> instance
-
-  Starts the analysis of the applicationE<rsquo>s behavior against
-selected rule packages for the assessment specified by the assessment
-ARN.
 
 
 =head2 SetTagsForResource(ResourceArn => Str, [Tags => ArrayRef[L<Paws::Inspector::Tag>]])
 
 Each argument is described in detail in: L<Paws::Inspector::SetTagsForResource>
 
-Returns: a L<Paws::Inspector::SetTagsForResourceResponse> instance
+Returns: nothing
 
-  Sets tags (key and value pairs) to the assessment specified by the
-assessment ARN.
-
-
-=head2 StartDataCollection(AssessmentArn => Str)
-
-Each argument is described in detail in: L<Paws::Inspector::StartDataCollection>
-
-Returns: a L<Paws::Inspector::StartDataCollectionResponse> instance
-
-  Starts data collection for the assessment specified by the assessment
-ARN. For this API to function properly, you must not exceed the limit
-of running up to 500 concurrent agents per AWS account.
+  Sets tags (key and value pairs) to the assessment template specified by
+the assessment template ARN.
 
 
-=head2 StopDataCollection(AssessmentArn => Str)
+=head2 StartAssessmentRun(AssessmentTemplateArn => Str, [AssessmentRunName => Str])
 
-Each argument is described in detail in: L<Paws::Inspector::StopDataCollection>
+Each argument is described in detail in: L<Paws::Inspector::StartAssessmentRun>
 
-Returns: a L<Paws::Inspector::StopDataCollectionResponse> instance
+Returns: a L<Paws::Inspector::StartAssessmentRunResponse> instance
 
-  Stop data collection for the assessment specified by the assessment
-ARN.
-
-
-=head2 UpdateApplication(ApplicationArn => Str, ApplicationName => Str, ResourceGroupArn => Str)
-
-Each argument is described in detail in: L<Paws::Inspector::UpdateApplication>
-
-Returns: a L<Paws::Inspector::UpdateApplicationResponse> instance
-
-  Updates application specified by the application ARN.
+  Starts the assessment run specified by the assessment template ARN. For
+this API to function properly, you must not exceed the limit of running
+up to 500 concurrent agents per AWS account.
 
 
-=head2 UpdateAssessment(AssessmentArn => Str, AssessmentName => Str, DurationInSeconds => Int)
+=head2 StopAssessmentRun(AssessmentRunArn => Str)
 
-Each argument is described in detail in: L<Paws::Inspector::UpdateAssessment>
+Each argument is described in detail in: L<Paws::Inspector::StopAssessmentRun>
 
-Returns: a L<Paws::Inspector::UpdateAssessmentResponse> instance
+Returns: nothing
 
-  Updates the assessment specified by the assessment ARN.
+  Stops the assessment run specified by the assessment run ARN.
+
+
+=head2 SubscribeToEvent(Event => Str, ResourceArn => Str, TopicArn => Str)
+
+Each argument is described in detail in: L<Paws::Inspector::SubscribeToEvent>
+
+Returns: nothing
+
+  Enables the process of sending Amazon Simple Notification Service (SNS)
+notifications about a specified event to a specified topic.
+
+
+=head2 UnsubscribeFromEvent(Event => Str, ResourceArn => Str, TopicArn => Str)
+
+Each argument is described in detail in: L<Paws::Inspector::UnsubscribeFromEvent>
+
+Returns: nothing
+
+  Disables the process of sending Amazon Simple Notification Service
+(SNS) notifications about a specified event to a specified topic.
+
+
+=head2 UpdateAssessmentTarget(AssessmentTargetArn => Str, AssessmentTargetName => Str, ResourceGroupArn => Str)
+
+Each argument is described in detail in: L<Paws::Inspector::UpdateAssessmentTarget>
+
+Returns: nothing
+
+  Updates the assessment target specified by the assessment target ARN.
 
 
 =head1 SEE ALSO

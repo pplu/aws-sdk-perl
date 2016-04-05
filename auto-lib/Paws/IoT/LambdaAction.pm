@@ -31,7 +31,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Lambda
 
 =head1 DESCRIPTION
 
-Describes an action to invoke a Lamdba function.
+Describes an action to invoke a Lambda function.
 
 =head1 ATTRIBUTES
 

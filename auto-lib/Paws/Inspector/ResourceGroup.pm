@@ -1,7 +1,8 @@
 package Paws::Inspector::ResourceGroup;
   use Moose;
-  has ResourceGroupArn => (is => 'ro', isa => 'Str', xmlname => 'resourceGroupArn', request_name => 'resourceGroupArn', traits => ['Unwrapped','NameInRequest']);
-  has ResourceGroupTags => (is => 'ro', isa => 'Str', xmlname => 'resourceGroupTags', request_name => 'resourceGroupTags', traits => ['Unwrapped','NameInRequest']);
+  has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Inspector::ResourceGroupTag]', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -21,41 +22,39 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Inspector::ResourceGroup object:
 
-  $service_obj->Method(Att1 => { ResourceGroupArn => $value, ..., ResourceGroupTags => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::ResourceGroup object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ResourceGroupArn
+  $result->Att1->Arn
 
 =head1 DESCRIPTION
 
 Contains information about a resource group. The resource group defines
 a set of tags that, when queried, identify the AWS resources that
-comprise the application.
-
-This data type is used as the response element in the
-DescribeResourceGroup action.
+comprise the assessment target. This data type is used as the response
+element in the DescribeResourceGroups action.
 
 =head1 ATTRIBUTES
 
 
-=head2 ResourceGroupArn => Str
+=head2 B<REQUIRED> Arn => Str
 
   The ARN of the resource group.
 
 
-=head2 ResourceGroupTags => Str
+=head2 B<REQUIRED> CreatedAt => Str
 
-  The tags (key and value pairs) of the resource group.
+  The time at which resource group is created.
 
-This data type property is used in the CreateResourceGroup action.
 
-A collection of keys and an array of possible values in JSON format.
+=head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Inspector::ResourceGroupTag>]
 
-For example, [{ "key1" : ["Value1","Value2"]},{"Key2": ["Value3"]}]
+  The tags (key and value pairs) of the resource group. This data type
+property is used in the CreateResourceGroup action.
 
 
 

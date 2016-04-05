@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> DirectoryId => Str
 
-The identifier of the directory to take a snapshot of.
+The identifier of the directory of which to take a snapshot.
 
 
 

@@ -41,10 +41,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 An AWS Lambda function that evaluates configuration items to assess
 whether your AWS resources comply with your desired configurations.
-This function can run when AWS Config detects a configuration change or
-delivers a configuration snapshot. This function can evaluate any
-resource in the recording group. To define which of these are
-evaluated, specify a value for the C<Scope> key.
+This function can run when AWS Config detects a configuration change to
+an AWS resource, or when it delivers a configuration snapshot of the
+resources in the account.
 
 For more information about developing and using AWS Config rules, see
 Evaluating AWS Resource Configurations with AWS Config in the I<AWS
@@ -111,12 +110,12 @@ action.
 
 =head2 Scope => L<Paws::Config::Scope>
 
-  Defines which resources the AWS Config rule evaluates. The scope can
-include one or more resource types, a combination of a tag key and
-value, or a combination of one resource type and one or more resource
-IDs. Specify a scope to constrain the resources that are evaluated. If
-you do not specify a scope, the AWS Config Rule evaluates all resources
-in the recording group.
+  Defines which resources can trigger an evaluation for the rule. The
+scope can include one or more resource types, a combination of one
+resource type and one resource ID, or a combination of a tag key and
+value. Specify a scope to constrain the resources that can trigger an
+evaluation for the rule. If you do not specify a scope, evaluations are
+triggered when any resource in the recording group changes.
 
 
 =head2 B<REQUIRED> Source => L<Paws::Config::Source>

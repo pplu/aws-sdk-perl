@@ -52,7 +52,7 @@ the C<DomainName> value. For example, if you requested a certificate
 for C<site.subdomain.example.com> and specify a B<ValidationDomain> of
 C<subdomain.example.com>, ACM sends email to the domain registrant,
 technical contact, and administrative contact in WHOIS for the base
-domain and the and the following five addresses:
+domain and the following five addresses:
 
 =over
 

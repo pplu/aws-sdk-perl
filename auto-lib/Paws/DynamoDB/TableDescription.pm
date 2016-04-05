@@ -79,7 +79,7 @@ format.
 =head2 GlobalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::GlobalSecondaryIndexDescription>]
 
   The global secondary indexes, if any, on the table. Each index is
-scoped to a given hash key value. Each element is composed of:
+scoped to a given partition key value. Each element is composed of:
 
 =over
 
@@ -136,8 +136,8 @@ changes might not be reflected in this value.
 
 I<KeySchema> - Specifies the complete index key schema. The attribute
 names in the key schema must be between 1 and 255 characters
-(inclusive). The key schema must begin with the same hash key attribute
-as the table.
+(inclusive). The key schema must begin with the same partition key as
+the table.
 
 =item *
 
@@ -213,8 +213,31 @@ I<AttributeName> - The name of the attribute.
 
 =item *
 
-I<KeyType> - The key type for the attribute. Can be either C<HASH> or
-C<RANGE>.
+I<KeyType> - The role of the attribute:
+
+.
+
+=over
+
+=item *
+
+C<HASH> - partition key
+
+=item *
+
+C<RANGE> - sort key
+
+=back
+
+The partition key of an item is also known as its I<hash attribute>.
+The term "hash attribute" derives from DynamoDB' usage of an internal
+hash function to evenly distribute data items across partitions, based
+on their partition key values.
+
+The sort key of an item is also known as its I<range attribute>. The
+term "range attribute" derives from the way DynamoDB stores items with
+the same partition key physically close together, in sorted order by
+the sort key value.
 
 =back
 
@@ -258,7 +281,7 @@ the I<StreamLabel>.
 =head2 LocalSecondaryIndexes => ArrayRef[L<Paws::DynamoDB::LocalSecondaryIndexDescription>]
 
   Represents one or more local secondary indexes on the table. Each index
-is scoped to a given hash key value. Tables with one or more local
+is scoped to a given partition key value. Tables with one or more local
 secondary indexes are subject to an item collection size limit, where
 the amount of data within a given item collection cannot exceed 10 GB.
 Each element is composed of:
@@ -273,8 +296,8 @@ I<IndexName> - The name of the local secondary index.
 
 I<KeySchema> - Specifies the complete index key schema. The attribute
 names in the key schema must be between 1 and 255 characters
-(inclusive). The key schema must begin with the same hash key attribute
-as the table.
+(inclusive). The key schema must begin with the same partition key as
+the table.
 
 =item *
 

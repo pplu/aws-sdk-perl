@@ -10,6 +10,7 @@ package Paws::Lambda::CreateFunction;
   has Role => (is => 'ro', isa => 'Str', required => 1);
   has Runtime => (is => 'ro', isa => 'Str', required => 1);
   has Timeout => (is => 'ro', isa => 'Int');
+  has VpcConfig => (is => 'ro', isa => 'Paws::Lambda::VpcConfig');
 
   use MooseX::ClassAttribute;
 
@@ -58,16 +59,10 @@ value. Assign a meaningful description as you see fit.
 
 =head2 B<REQUIRED> FunctionName => Str
 
-The name you want to assign to the function you are uploading. You can
-specify an unqualified function name (for example, "Thumbnail") or you
-can specify Amazon Resource Name (ARN) of the function (for example,
-"arn:aws:lambda:us-west-2:account-id:function:ThumbNail"). AWS Lambda
-also allows you to specify only the account ID qualifier (for example,
-"account-id:Thumbnail"). Note that the length constraint applies only
-to the ARN. If you specify only the function name, it is limited to 64
-character in length. The function names appear in the console and are
-returned in the ListFunctions API. Function names are used to specify
-functions to other AWS Lambda APIs, such as Invoke.
+The name you want to assign to the function you are uploading. The
+function names appear in the console and are returned in the
+ListFunctions API. Function names are used to specify functions to
+other AWS Lambda APIs, such as Invoke.
 
 
 
@@ -103,14 +98,13 @@ Lambda function and publish a version as an atomic operation.
 
 The Amazon Resource Name (ARN) of the IAM role that Lambda assumes when
 it executes your function to access any other Amazon Web Services (AWS)
-resources. For more information, see AWS Lambda: How it Works
+resources. For more information, see AWS Lambda: How it Works.
 
 
 
 =head2 B<REQUIRED> Runtime => Str
 
 The runtime environment for the Lambda function you are uploading.
-Currently, Lambda supports "java" and "nodejs" as the runtime.
 
 Valid values are: C<"nodejs">, C<"java8">, C<"python2.7">
 
@@ -120,6 +114,15 @@ The function execution time at which Lambda should terminate the
 function. Because the execution time has cost implications, we
 recommend you set this value based on your expected execution time. The
 default is 3 seconds.
+
+
+
+=head2 VpcConfig => L<Paws::Lambda::VpcConfig>
+
+If your Lambda function accesses resources in a VPC, you provide this
+parameter identifying the list of security group IDs and subnet IDs.
+These must belong to the same VPC. You must provide at least one
+security group and one subnet ID.
 
 
 

@@ -7,6 +7,7 @@ package Paws::RedShift::PendingModifiedValues;
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
   has NumberOfNodes => (is => 'ro', isa => 'Int');
+  has PubliclyAccessible => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::RedShift::PendingModifiedValues object:
 
-  $service_obj->Method(Att1 => { AutomatedSnapshotRetentionPeriod => $value, ..., NumberOfNodes => $value  });
+  $service_obj->Method(Att1 => { AutomatedSnapshotRetentionPeriod => $value, ..., PubliclyAccessible => $value  });
 
 =head3 Results returned from an API call
 
@@ -81,6 +82,12 @@ cluster.
 
   The pending or in-progress change of the number of nodes in the
 cluster.
+
+
+=head2 PubliclyAccessible => Bool
+
+  The pending or in-progress change of the ability to connect to the
+cluster from the public network.
 
 
 

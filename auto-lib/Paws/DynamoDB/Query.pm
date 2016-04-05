@@ -263,73 +263,74 @@ I<IndexName> parameter, you must also provide I<TableName.>
 The condition that specifies the key value(s) for items to be retrieved
 by the I<Query> action.
 
-The condition must perform an equality test on a single hash key value.
-The condition can also perform one of several comparison tests on a
-single range key value. I<Query> can use I<KeyConditionExpression> to
-retrieve one item with a given hash and range key value, or several
-items that have the same hash key value but different range key values.
+The condition must perform an equality test on a single partition key
+value. The condition can also perform one of several comparison tests
+on a single sort key value. I<Query> can use I<KeyConditionExpression>
+to retrieve one item with a given partition key value and sort key
+value, or several items that have the same partition key value but
+different sort key values.
 
-The hash key equality test is required, and must be specified in the
-following format:
+The partition key equality test is required, and must be specified in
+the following format:
 
-C<hashAttributeName> I<=> C<:hashval>
+C<partitionKeyName> I<=> C<:partitionkeyval>
 
-If you also want to provide a range key condition, it must be combined
-using I<AND> with the hash key condition. Following is an example,
-using the B<=> comparison operator for the range key:
+If you also want to provide a condition for the sort key, it must be
+combined using I<AND> with the condition for the sort key. Following is
+an example, using the B<=> comparison operator for the sort key:
 
-C<hashAttributeName> I<=> C<:hashval> I<AND> C<rangeAttributeName> I<=>
-C<:rangeval>
+C<partitionKeyName> I<=> C<:partitionkeyval> I<AND> C<sortKeyName> I<=>
+C<:sortkeyval>
 
-Valid comparisons for the range key condition are as follows:
+Valid comparisons for the sort key condition are as follows:
 
 =over
 
 =item *
 
-C<rangeAttributeName> I<=> C<:rangeval> - true if the range key is
-equal to C<:rangeval>.
+C<sortKeyName> I<=> C<:sortkeyval> - true if the sort key value is
+equal to C<:sortkeyval>.
 
 =item *
 
-C<rangeAttributeName> I<E<lt>> C<:rangeval> - true if the range key is
-less than C<:rangeval>.
+C<sortKeyName> I<> C<:sortkeyval> - true if the sort key value is less
+than C<:sortkeyval>.
 
 =item *
 
-C<rangeAttributeName> I<E<lt>=> C<:rangeval> - true if the range key is
-less than or equal to C<:rangeval>.
+C<sortKeyName> I<=> C<:sortkeyval> - true if the sort key value is less
+than or equal to C<:sortkeyval>.
 
 =item *
 
-C<rangeAttributeName> I<E<gt>> C<:rangeval> - true if the range key is
-greater than C<:rangeval>.
+C<sortKeyName> I<> C<:sortkeyval> - true if the sort key value is
+greater than C<:sortkeyval>.
 
 =item *
 
-C<rangeAttributeName> I<E<gt>= >C<:rangeval> - true if the range key is
-greater than or equal to C<:rangeval>.
+C<sortKeyName> I<= >C<:sortkeyval> - true if the sort key value is
+greater than or equal to C<:sortkeyval>.
 
 =item *
 
-C<rangeAttributeName> I<BETWEEN> C<:rangeval1> I<AND> C<:rangeval2> -
-true if the range key is greater than or equal to C<:rangeval1>, and
-less than or equal to C<:rangeval2>.
+C<sortKeyName> I<BETWEEN> C<:sortkeyval1> I<AND> C<:sortkeyval2> - true
+if the sort key value is greater than or equal to C<:sortkeyval1>, and
+less than or equal to C<:sortkeyval2>.
 
 =item *
 
-I<begins_with (>C<rangeAttributeName>, C<:rangeval>I<)> - true if the
-range key begins with a particular operand. (You cannot use this
-function with a range key that is of type Number.) Note that the
+I<begins_with (>C<sortKeyName>, C<:sortkeyval>I<)> - true if the sort
+key value begins with a particular operand. (You cannot use this
+function with a sort key that is of type Number.) Note that the
 function name C<begins_with> is case-sensitive.
 
 =back
 
 Use the I<ExpressionAttributeValues> parameter to replace tokens such
-as C<:hashval> and C<:rangeval> with actual values at runtime.
+as C<:partitionval> and C<:sortval> with actual values at runtime.
 
 You can optionally use the I<ExpressionAttributeNames> parameter to
-replace the names of the hash and range attributes with placeholder
+replace the names of the partition key and sort key with placeholder
 tokens. This option might be necessary if an attribute name conflicts
 with a DynamoDB reserved word. For example, the following
 I<KeyConditionExpression> parameter causes an error because I<Size> is
@@ -341,13 +342,13 @@ a reserved word:
 
 =back
 
-To work around this, define a placeholder (such a C<S>) to represent
-the attribute name I<Size>. I<KeyConditionExpression> then is as
-follows:
+To work around this, define a placeholder (such a C<&num;S>) to
+represent the attribute name I<Size>. I<KeyConditionExpression> then is
+as follows:
 
 =over
 
-=item * C<S = :myval>
+=item * C<&num;S = :myval>
 
 =back
 
@@ -373,19 +374,18 @@ exception.
 
 The selection criteria for the query. For a query on a table, you can
 have conditions only on the table primary key attributes. You must
-provide the hash key attribute name and value as an C<EQ> condition.
-You can optionally provide a second condition, referring to the range
-key attribute.
+provide the partition key name and value as an C<EQ> condition. You can
+optionally provide a second condition, referring to the sort key.
 
-If you don't provide a range key condition, all of the items that match
-the hash key will be retrieved. If a I<FilterExpression> or
+If you don't provide a sort key condition, all of the items that match
+the partition key will be retrieved. If a I<FilterExpression> or
 I<QueryFilter> is present, it will be applied after the items are
 retrieved.
 
 For a query on an index, you can have conditions only on the index key
-attributes. You must provide the index hash attribute name and value as
+attributes. You must provide the index partition key name and value as
 an C<EQ> condition. You can optionally provide a second condition,
-referring to the index key range attribute.
+referring to the index sort key.
 
 Each I<KeyConditions> element consists of an attribute name to compare,
 along with the following:
@@ -569,7 +569,7 @@ do this, then at least one of the conditions must evaluate to true,
 rather than all of them.)
 
 Note that I<QueryFilter> does not allow key attributes. You cannot
-define a filter condition on a hash key or range key.
+define a filter condition on a partition key or a sort key.
 
 Each I<QueryFilter> element consists of an attribute name to compare,
 along with the following:
@@ -621,21 +621,21 @@ Valid values are: C<"INDEXES">, C<"TOTAL">, C<"NONE">
 
 =head2 ScanIndexForward => Bool
 
-Specifies the order in which to return the query results - either
-ascending (C<true>) or descending (C<false>).
+Specifies the order for index traversal: If C<true> (default), the
+traversal is performed in ascending order; if C<false>, the traversal
+is performed in descending order.
 
-Items with the same hash key are stored in sorted order by range key
-.If the range key data type is Number, the results are stored in
-numeric order. For type String, the results are returned in order of
+Items with the same partition key value are stored in sorted order by
+sort key. If the sort key data type is Number, the results are stored
+in numeric order. For type String, the results are stored in order of
 ASCII character code values. For type Binary, DynamoDB treats each byte
 of the binary data as unsigned.
 
-If I<ScanIndexForward> is C<true>, DynamoDB returns the results in
-order, by range key. This is the default behavior.
-
-If I<ScanIndexForward> is C<false>, DynamoDB sorts the results in
-descending order by range key, and then returns the results to the
-client.
+If I<ScanIndexForward> is C<true>, DynamoDB returns the results in the
+order in which they are stored (by sort key value). This is the default
+behavior. If I<ScanIndexForward> is C<false>, DynamoDB reads the
+results in reverse order by sort key value, and then returns the
+results to the client.
 
 
 

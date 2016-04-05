@@ -48,10 +48,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A value that specifies whether the modifications in this request and
 any pending modifications are asynchronously applied as soon as
 possible, regardless of the C<PreferredMaintenanceWindow> setting for
-the DB cluster.
+the DB cluster. If this parameter is set to C<false>, changes to the DB
+cluster are applied during the next maintenance window.
 
-If this parameter is set to C<false>, changes to the DB cluster are
-applied during the next maintenance window.
+The C<ApplyImmediately> parameter only affects the
+C<NewDBClusterIdentifier> and C<MasterUserPassword> values. If you set
+the C<ApplyImmediately> parameter value to false, then changes to the
+C<NewDBClusterIdentifier> and C<MasterUserPassword> values are applied
+during the next maintenance window. All other changes are applied
+immediately, regardless of the value of the C<ApplyImmediately>
+parameter.
 
 Default: C<false>
 

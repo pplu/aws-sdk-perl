@@ -12,14 +12,13 @@ use Test::Warnings;
 use Test04::StubUAForMetadata;
 use Test04::StubUANoMetadata;
 
-sub reset_env_creds {
-  delete $ENV{'AWS_ACCESS_KEY_ID'};
-  delete $ENV{'AWS_SECRET_ACCESS_KEY'};
-  delete $ENV{'AWS_ACCESS_KEY'};
-  delete $ENV{'AWS_SECRET_KEY'};
-}
-
-reset_env_creds;
+delete @ENV{qw(
+  AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY
+  AWS_ACCESS_KEY
+  AWS_SECRET_KEY
+  AWS_DEFAULT_PROFILE
+)};
 
 {
   my $creds = Paws::Credential::Environment->new;
@@ -27,8 +26,8 @@ reset_env_creds;
 }
 
 {
-  $ENV{'AWS_ACCESS_KEY_ID'} = 'botoAK';
-  $ENV{'AWS_SECRET_ACCESS_KEY'} = 'botoSK';
+  local $ENV{'AWS_ACCESS_KEY_ID'} = 'botoAK';
+  local $ENV{'AWS_SECRET_ACCESS_KEY'} = 'botoSK';
 
   my $creds = Paws::Credential::Environment->new;
   ok($creds->are_set, 'Creds are set');
@@ -36,19 +35,15 @@ reset_env_creds;
   cmp_ok($creds->secret_key, 'eq', 'botoSK', 'Secret Key boto style');
 }
 
-reset_env_creds;
-
 {
-  $ENV{'AWS_ACCESS_KEY'} = 'AK';
-  $ENV{'AWS_SECRET_KEY'} = 'SK';
+  local $ENV{'AWS_ACCESS_KEY'} = 'AK';
+  local $ENV{'AWS_SECRET_KEY'} = 'SK';
 
   my $creds = Paws::Credential::Environment->new;
   ok($creds->are_set, 'Creds are set');
   cmp_ok($creds->access_key, 'eq', 'AK', 'Access Key short style');
   cmp_ok($creds->secret_key, 'eq', 'SK', 'Secret Key short style');
 }
-
-reset_env_creds;
 
 {
   my $creds = Paws::Credential::InstanceProfile->new(ua => Test04::StubUAForMetadata->new);
@@ -74,8 +69,6 @@ reset_env_creds;
 }
 
 
-reset_env_creds;
-
 {
   my $creds = Paws::Credential::ProviderChain->new(providers => [ 'Test::CustomCredentials', 'Paws::Credentail::Environment' ]);
   ok($creds->are_set, 'Creds are set');
@@ -85,7 +78,6 @@ reset_env_creds;
 }
 
 ## File provider testing
-reset_env_creds;
 
 {
   my $creds = Paws::Credential::File->new(
@@ -96,13 +88,12 @@ reset_env_creds;
 
 # Test for users not having HOME
 {
-  my $old_home = $ENV{'HOME'};
-  $ENV{'HOME'} = '';
+  local $ENV{'HOME'} = undef;
 
-  my $creds = Paws::Credential::File->new;
+  my $creds = Paws::Credential::File->new(
+    file_name => 'non_existant_file',
+  );
   ok(not($creds->are_set), 'File: no credentials if no $HOME');
-
-  $ENV{'HOME'} = $old_home;
 }
 
 {
@@ -144,8 +135,8 @@ reset_env_creds;
 }
 
 {
-	$ENV{AWS_DEFAULT_PROFILE} = 'alternate';
-	$ENV{AWS_CONFIG_FILE} = 't/04_credentials/credentials.alternate';
+	local $ENV{AWS_DEFAULT_PROFILE} = 'alternate';
+	local $ENV{AWS_CONFIG_FILE} = 't/04_credentials/credentials.alternate';
 	my $creds = Paws::Credential::File->new;
 
 	ok($creds->are_set, 'File: Attributes from environment variables');
@@ -154,9 +145,6 @@ reset_env_creds;
 
 	cmp_ok($creds->secret_key, 'eq', 'alternateprofileSK',
 		'File: alternate using ENV variables Secret Key loaded correctly');
-
-	delete $ENV{AWS_DEFAULT_PROFILE};
-	delete $ENV{AWS_CONFIG_FILE};
 }
 
 done_testing;

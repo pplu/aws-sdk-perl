@@ -85,7 +85,8 @@ depending on the value of the Marker parameter.
 =item *
 
 If neither Marker or NumberOfLines are specified, the entire log file
-is returned.
+is returned up to a maximum of 10000 lines, starting with the most
+recent log entries first.
 
 =item *
 

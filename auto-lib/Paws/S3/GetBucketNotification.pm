@@ -24,7 +24,7 @@ Paws::S3::NotificationConfigurationDeprecated
 
 =head2 B<REQUIRED> Bucket => Str
 
-Name of the buket to get the notification configuration for.
+Name of the bucket to get the notification configuration for.
 
 
 

@@ -7,6 +7,8 @@ package Paws::RDS::RestoreDBInstanceToPointInTime;
   has DBInstanceClass => (is => 'ro', isa => 'Str');
   has DBName => (is => 'ro', isa => 'Str');
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
@@ -108,6 +110,24 @@ This parameter is not used for the MySQL or MariaDB engines.
 
 The DB subnet group name to use for the new instance.
 
+Constraints: Must contain no more than 255 alphanumeric characters,
+periods, underscores, spaces, or hyphens. Must not be default.
+
+Example: C<mySubnetgroup>
+
+
+
+=head2 Domain => Str
+
+Specify the Active Directory Domain to restore the instance in.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
+
 
 
 =head2 Engine => Str
@@ -120,7 +140,7 @@ Constraint: Must be compatible with the engine of the source
 
 Valid Values: C<MySQL> | C<mariadb> | C<oracle-se1> | C<oracle-se> |
 C<oracle-ee> | C<sqlserver-ee> | C<sqlserver-se> | C<sqlserver-ex> |
-C<sqlserver-web> | C<postgres>| C<aurora>
+C<sqlserver-web> | C<postgres> | C<aurora>
 
 
 

@@ -195,6 +195,12 @@ The version number of the cache engine to be used for this cache
 cluster. To view the supported cache engine versions, use the
 I<DescribeCacheEngineVersions> action.
 
+B<Important:> You can upgrade to a newer engine version (see Selecting
+a Cache Engine and Version), but you cannot downgrade to an earlier
+engine version. If you want to use an earlier engine version, you must
+delete the existing cache cluster or replication group and create it
+anew with the earlier engine version.
+
 
 
 =head2 NotificationTopicArn => Str
@@ -259,11 +265,9 @@ multiple times in the list.
 Default: System chosen Availability Zones.
 
 Example: One Memcached node in each of three different Availability
-Zones:
-C<PreferredAvailabilityZones.member.1=us-west-2a&PreferredAvailabilityZones.member.2=us-west-2b&PreferredAvailabilityZones.member.3=us-west-2c>
+Zones: C<>
 
-Example: All three Memcached nodes in one Availability Zone:
-C<PreferredAvailabilityZones.member.1=us-west-2a&PreferredAvailabilityZones.member.2=us-west-2a&PreferredAvailabilityZones.member.3=us-west-2a>
+Example: All three Memcached nodes in one Availability Zone: C<>
 
 
 

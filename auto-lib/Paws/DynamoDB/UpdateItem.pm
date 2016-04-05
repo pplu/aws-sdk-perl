@@ -58,7 +58,7 @@ The names of attributes to be modified, the action to perform on each,
 and the new value for each. If you are updating an attribute that is an
 index key attribute for any indexes on that table, the attribute type
 must match the index key type defined in the I<AttributesDefinition> of
-the table description. You can use I<UpdateItem> to update any nonkey
+the table description. You can use I<UpdateItem> to update any non-key
 attributes.
 
 Attribute values cannot be null. String and Binary type attributes must
@@ -228,8 +228,7 @@ These function names are case-sensitive.
 
 =item *
 
-Comparison operators: C< = | E<lt>E<gt> | E<lt> | E<gt> | E<lt>= |
-E<gt>= | BETWEEN | IN>
+Comparison operators: C< = | | | | = | = | BETWEEN | IN>
 
 =item *
 
@@ -619,9 +618,9 @@ The primary key of the item to be updated. Each element consists of an
 attribute name and a value for that attribute.
 
 For the primary key, you must provide all of the attributes. For
-example, with a hash type primary key, you only need to provide the
-hash attribute. For a hash-and-range type primary key, you must provide
-both the hash attribute and the range attribute.
+example, with a simple primary key, you only need to provide a value
+for the partition key. For a composite primary key, you must provide
+values for both the partition key and the sort key.
 
 
 
@@ -676,6 +675,11 @@ returned.
 
 =back
 
+There is no additional cost associated with requesting a return value
+aside from the small network and processing overhead of receiving a
+larger response. No Read Capacity Units are consumed.
+
+Values returned are strongly consistent
 
 Valid values are: C<"NONE">, C<"ALL_OLD">, C<"UPDATED_OLD">, C<"ALL_NEW">, C<"UPDATED_NEW">
 

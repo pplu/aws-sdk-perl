@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> PolicyDocument => Str
 
 The JSON document that describes the policy. Minimum length of 1.
-Maximum length of 2048 excluding whitespaces
+Maximum length of 2048, excluding whitespaces
 
 
 
@@ -53,9 +53,9 @@ The policy name.
 =head2 SetAsDefault => Bool
 
 Specifies whether the policy version is set as the default. When this
-parameter is true, the new policy version becomes the operative
-version; that is, the version that is in effect for the certificates
-that the policy is attached to.
+parameter is true, the new policy version becomes the operative version
+(that is, the version that is in effect for the certificates to which
+the policy is attached).
 
 
 

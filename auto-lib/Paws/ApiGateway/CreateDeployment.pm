@@ -82,8 +82,9 @@ The name of the Stage resource for the Deployment resource to create.
 =head2 Variables => HashRef[Str]
 
 A map that defines the stage variables for the Stage resource that is
-associated with the new deployment. Variable names can have alphabetic
-characters, and the values must match [A-Za-z0-9-._~:/?
+associated with the new deployment. Variable names can have
+alphanumeric characters, and the values must match
+C<[A-Za-z0-9-._~:/?&num;&=,]+>.
 
 
 

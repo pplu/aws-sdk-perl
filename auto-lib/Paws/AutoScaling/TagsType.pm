@@ -24,7 +24,7 @@ additional items to return, the string is empty.
 
 =head2 Tags => ArrayRef[L<Paws::AutoScaling::TagDescription>]
 
-The tags.
+One or more tags.
 
 
 

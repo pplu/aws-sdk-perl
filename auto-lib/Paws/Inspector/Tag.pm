@@ -1,7 +1,7 @@
 package Paws::Inspector::Tag;
   use Moose;
-  has Key => (is => 'ro', isa => 'Str');
-  has Value => (is => 'ro', isa => 'Str');
+  has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -32,22 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-A key and value pair.
-
-This data type is used as a request parameter in the SetTagsForResource
-action and a response element in the ListTagsForResource action.
+A key and value pair. This data type is used as a request parameter in
+the SetTagsForResource action and a response element in the
+ListTagsForResource action.
 
 =head1 ATTRIBUTES
 
 
-=head2 Key => Str
+=head2 B<REQUIRED> Key => Str
 
-  The tag key.
+  A tag key.
 
 
 =head2 Value => Str
 
-  The value assigned to a tag key.
+  A value assigned to a tag key.
 
 
 

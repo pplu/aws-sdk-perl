@@ -22,9 +22,9 @@ A list of application names.
 
 =head2 NextToken => Str
 
-If the amount of information that is returned is significantly large,
-an identifier will also be returned, which can be used in a subsequent
-list applications call to return the next set of applications in the
+If a large amount of information is returned, an identifier is also
+returned. It can be used in a subsequent list applications call to
+return the next set of applications, will also be returned. in the
 list.
 
 

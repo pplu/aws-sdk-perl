@@ -9,6 +9,8 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
   has DBName => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has DBSubnetGroupName => (is => 'ro', isa => 'Str');
+  has Domain => (is => 'ro', isa => 'Str');
+  has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
   has LicenseModel => (is => 'ro', isa => 'Str');
@@ -146,6 +148,24 @@ C<DBSnapshotIdentifier> must be the ARN of the shared DB snapshot.
 =head2 DBSubnetGroupName => Str
 
 The DB subnet group name to use for the new instance.
+
+Constraints: Must contain no more than 255 alphanumeric characters,
+periods, underscores, spaces, or hyphens. Must not be default.
+
+Example: C<mySubnetgroup>
+
+
+
+=head2 Domain => Str
+
+Specify the Active Directory Domain to restore the instance in.
+
+
+
+=head2 DomainIAMRoleName => Str
+
+Specify the name of the IAM role to be used when making API calls to
+the Directory Service.
 
 
 

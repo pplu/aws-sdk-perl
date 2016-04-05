@@ -2,6 +2,7 @@ package Paws::EMR::InstanceGroupConfig;
   use Moose;
   has BidPrice => (is => 'ro', isa => 'Str');
   has Configurations => (is => 'ro', isa => 'ArrayRef[Paws::EMR::Configuration]');
+  has EbsConfiguration => (is => 'ro', isa => 'Paws::EMR::EbsConfiguration');
   has InstanceCount => (is => 'ro', isa => 'Int', required => 1);
   has InstanceRole => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
@@ -55,6 +56,12 @@ launching nodes as Spot Instances, expressed in USD.
 The list of configurations supplied for an EMR cluster instance group.
 You can specify a separate configuration for each instance group
 (master, core, and task).
+
+
+=head2 EbsConfiguration => L<Paws::EMR::EbsConfiguration>
+
+  EBS configurations that will be attached to each Amazon EC2 instance in
+the instance group.
 
 
 =head2 B<REQUIRED> InstanceCount => Int

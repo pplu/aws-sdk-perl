@@ -39,7 +39,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> FunctionName => Str
 
 Function name for which the alias is created. An alias is a subresource
-that exists only in the context of an existing Lambda function. So you
+that exists only in the context of an existing Lambda function so you
 must specify the function name.
 
 

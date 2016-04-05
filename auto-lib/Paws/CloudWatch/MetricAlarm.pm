@@ -67,9 +67,7 @@ alarm's state.
 
   The list of actions to execute when this alarm transitions into an
 C<ALARM> state from any other state. Each action is specified as an
-Amazon Resource Number (ARN). Currently the only actions supported are
-publishing to an Amazon SNS topic and triggering an Auto Scaling
-policy.
+Amazon Resource Name (ARN).
 
 
 =head2 AlarmArn => Str
@@ -79,11 +77,7 @@ policy.
 
 =head2 AlarmConfigurationUpdatedTimestamp => Str
 
-  The time stamp of the last update to the alarm configuration. Amazon
-CloudWatch uses Coordinated Universal Time (UTC) when returning time
-stamps, which do not accommodate seasonal adjustments such as daylight
-savings time. For more information, see Time stamps in the I<Amazon
-CloudWatch Developer Guide>.
+  The time stamp of the last update to the alarm configuration.
 
 
 =head2 AlarmDescription => Str
@@ -118,9 +112,7 @@ threshold.
 
   The list of actions to execute when this alarm transitions into an
 C<INSUFFICIENT_DATA> state from any other state. Each action is
-specified as an Amazon Resource Number (ARN). Currently the only
-actions supported are publishing to an Amazon SNS topic or triggering
-an Auto Scaling policy.
+specified as an Amazon Resource Name (ARN).
 
 The current WSDL lists this attribute as C<UnknownActions>.
 
@@ -139,9 +131,7 @@ The current WSDL lists this attribute as C<UnknownActions>.
 
   The list of actions to execute when this alarm transitions into an
 C<OK> state from any other state. Each action is specified as an Amazon
-Resource Number (ARN). Currently the only actions supported are
-publishing to an Amazon SNS topic and triggering an Auto Scaling
-policy.
+Resource Name (ARN).
 
 
 =head2 Period => Int
@@ -161,11 +151,7 @@ policy.
 
 =head2 StateUpdatedTimestamp => Str
 
-  The time stamp of the last update to the alarm's state. Amazon
-CloudWatch uses Coordinated Universal Time (UTC) when returning time
-stamps, which do not accommodate seasonal adjustments such as daylight
-savings time. For more information, see Time stamps in the I<Amazon
-CloudWatch Developer Guide>.
+  The time stamp of the last update to the alarm's state.
 
 
 =head2 StateValue => Str

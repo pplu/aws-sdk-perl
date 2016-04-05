@@ -76,9 +76,14 @@ statement is the only entry included in the result.
 =head2 MissingContextValues => ArrayRef[Str]
 
   A list of context keys that are required by the included input policies
-but that were not provided by one of the input parameters. To discover
-the context keys used by a set of policies, you can call
-GetContextKeysForCustomPolicy or GetContextKeysForPrincipalPolicy.
+but that were not provided by one of the input parameters. This list is
+used when a list of ARNs is included in the C<ResourceArns> parameter
+instead of "*". If you do not specify individual resources, by setting
+C<ResourceArns> to "*" or by not including the C<ResourceArns>
+parameter, then any missing context values are instead included under
+the C<EvaluationResults> section. To discover the context keys used by
+a set of policies, you can call GetContextKeysForCustomPolicy or
+GetContextKeysForPrincipalPolicy.
 
 
 
