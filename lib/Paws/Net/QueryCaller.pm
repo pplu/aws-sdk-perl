@@ -39,20 +39,23 @@ package Paws::Net::QueryCaller;
               $i++
             }
           }
-        } elsif ($params->$att->does('Paws::API::StrToObjMapParser')) {
-          my $i = 1;
-          foreach my $map_key (keys %{ $params->$att->Map }){
-            $p{ "$key.$i.Name" } = $map_key;
-            my %complex_value = $self->_to_querycaller_params($params->$att->Map->{ $map_key });
-            map { $p{ "$key.$i.Value.$_" } = $complex_value{$_} } keys %complex_value;
-            $i++;
-          }
-        } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')) {
-          my $i = 1;
-          foreach my $map_key (keys %{ $params->$att->Map }){
-            $p{ "$key.entry.$i.key" }   = $map_key;
-            $p{ "$key.entry.$i.value" } = $params->$att->Map->{ $map_key };
-            $i++;
+        } elsif ($att_type =~ m/^HashRef\[(.*)\]/){
+          my $subtype = "$1";
+          if ($subtype =~ m/\:\:/){
+            my $i = 1;
+            foreach my $map_key (keys %{ $params->$att }){
+              $p{ "$key.$i.Name" } = $map_key;
+              my %complex_value = $self->_to_querycaller_params($params->$att->{ $map_key });
+              map { $p{ "$key.$i.Value.$_" } = $complex_value{$_} } keys %complex_value;
+              $i++;
+            }
+          } else {
+            my $i = 1;
+            foreach my $map_key (keys %{ $params->$att }){
+              $p{ "$key.entry.$i.key" }   = $map_key;
+              $p{ "$key.entry.$i.value" } = $params->$att->{ $map_key };
+              $i++;
+            }
           }
         } else {
           my %complex_value = $self->_to_querycaller_params($params->$att);

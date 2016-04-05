@@ -20,40 +20,41 @@ package Paws::API::Caller;
     Paws->load_class($class);
     my %p;
 
-    if ($class->does('Paws::API::StrToObjMapParser')) {
-      my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
-      if (my ($array_of) = ($subtype =~ m/^ArrayRef\[(.*?)\]$/)){
-        $p{ Map } = { map { $_ => [ map { $self->new_with_coercions("$array_of", %$_) } @{ $params{ $_ } } ] } keys %params };
-      } else {
-        $p{ Map } = { map { $_ => $self->new_with_coercions("$subtype", %{ $params{ $_ } }) } keys %params };
-      }
-    } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
-      $p{ Map } = { %params };
-    } else {
-      foreach my $att (keys %params){
-        my $att_meta = $class->meta->find_attribute_by_name($att);
-  
-        croak "$class doesn't have an $att" if (not defined $att_meta);
-        my $type = $att_meta->type_constraint;
-  
-        if ($type eq 'Bool') {
-          $p{ $att } = ($params{ $att } == 1)?1:0;
-        } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
-          $p{ $att } = $params{ $att };
-        } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
-          my $subtype = "$1";
-          if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
-            $p{ $att } = $params{ $att };
-          } else {
-            $p{ $att } = [ map { $self->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ];
-          }
-        } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
+    foreach my $att (keys %params){
+      my $att_meta = $class->meta->find_attribute_by_name($att);
+
+      croak "$class doesn't have an $att" if (not defined $att_meta);
+      my $type = $att_meta->type_constraint;
+
+      if ($type eq 'Bool') {
+        $p{ $att } = ($params{ $att } == 1)?1:0;
+      } elsif ($type eq 'Str' or $type eq 'Num' or $type eq 'Int') {
+        $p{ $att } = $params{ $att };
+      } elsif ($type =~ m/^ArrayRef\[(.*?)\]$/){
+        my $subtype = "$1";
+        if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
           $p{ $att } = $params{ $att };
         } else {
-          $p{ $att } = $self->new_with_coercions("$type", %{ $params{ $att } });
+          $p{ $att } = [ map { $self->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ];
         }
+      } elsif ($type->isa('Moose::Meta::TypeConstraint::Enum')){
+        $p{ $att } = $params{ $att };
+      } elsif ($type =~ m/^HashRef\[(.*?)\]$/){
+        my $subtype = "$1";
+        if (my ($array_of) = ($subtype =~ m/^ArrayRef\[(.*?)\]$/)){
+          die "Hashref of arrays needs implementation";
+        } else {
+          if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
+            $p{ $att } = { map { $_ => $params{ $_ } } keys %{ $params{$att} } };
+          } else {
+            $p{ $att } = { map { $_ => $self->new_with_coercions("$subtype", %{ $params{$att}{ $_ } }) } keys %{ $params{ $att } } };
+          }
+        }
+      } else {
+        $p{ $att } = $self->new_with_coercions("$type", %{ $params{ $att } });
       }
     }
+
     return $class->new(%p);
   }
 
