@@ -38,13 +38,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-
+The maximum number of ClientCertificate resources in the collection to
+get information about. The default limit is 25. It should be an integer
+between 1 - 500.
 
 
 
 =head2 Position => Str
 
-
+The position of the current ClientCertificate resource in the
+collection to get information about.
 
 
 

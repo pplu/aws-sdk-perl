@@ -44,8 +44,8 @@ The last path segment for this resource.
 
 =head2 ResourceMethods => L<Paws::ApiGateway::MapOfMethod>
 
-Map of methods for this resource, which is included only if requested
-using the B<embed> option.
+Map of methods for this resource, which is included only if the request
+uses the B<embed> query option.
 
 
 

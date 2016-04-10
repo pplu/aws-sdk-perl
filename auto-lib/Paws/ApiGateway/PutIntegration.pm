@@ -119,7 +119,10 @@ Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">
 =head2 Uri => Str
 
 Specifies a put integration input's Uniform Resource Identifier (URI).
-When the integration type is HTTP or AWS, this field is required.
+When the integration type is HTTP or AWS, this field is required. For
+integration with Lambda as an AWS service proxy, this value is of the
+'arn:aws:apigateway:E<lt>regionE<gt>:lambda:path/2015-03-31/functions/E<lt>functionArnE<gt>/invocations'
+format.
 
 
 

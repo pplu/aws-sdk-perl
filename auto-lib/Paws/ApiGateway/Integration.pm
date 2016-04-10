@@ -79,7 +79,8 @@ Specifies the integration's request templates.
 
 =head2 Type => Str
 
-Specifies the integration's type.
+Specifies the integration's type. The valid value is C<HTTP>, C<AWS>,
+or C<MOCK>.
 
 Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">
 

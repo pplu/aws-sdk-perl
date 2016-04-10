@@ -18,19 +18,19 @@ Paws::ApiGateway::SdkResponse
 
 =head2 Body => Str
 
-
+The binary blob response to GetSdk, which contains the generated SDK.
 
 
 
 =head2 ContentDisposition => Str
 
-
+The content-disposition header value in the HTTP reseponse.
 
 
 
 =head2 ContentType => Str
 
-
+The content-type header value in the HTTP response.
 
 
 

@@ -5,6 +5,7 @@ package Paws::ApiGateway::RestApi;
   has Description => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has Warnings => (is => 'ro', isa => 'ArrayRef[Str]');
 
 1;
 
@@ -39,6 +40,12 @@ in Amazon API Gateway.
 =head2 Name => Str
 
 The API's name.
+
+
+
+=head2 Warnings => ArrayRef[Str]
+
+
 
 
 
