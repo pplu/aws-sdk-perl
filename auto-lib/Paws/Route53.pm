@@ -1266,7 +1266,7 @@ request that produced the current response.
 
 
 
-=head2 UpdateHealthCheck(HealthCheckId => Str, [ChildHealthChecks => ArrayRef[Str], EnableSNI => Bool, FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Int, HealthThreshold => Int, Inverted => Bool, IPAddress => Str, Port => Int, ResourcePath => Str, SearchString => Str])
+=head2 UpdateHealthCheck(HealthCheckId => Str, [AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>, ChildHealthChecks => ArrayRef[Str], EnableSNI => Bool, FailureThreshold => Int, FullyQualifiedDomainName => Str, HealthCheckVersion => Int, HealthThreshold => Int, InsufficientDataHealthStatus => Str, Inverted => Bool, IPAddress => Str, Port => Int, Regions => ArrayRef[Str], ResourcePath => Str, SearchString => Str])
 
 Each argument is described in detail in: L<Paws::Route53::UpdateHealthCheck>
 

@@ -1,14 +1,17 @@
 package Paws::Route53::HealthCheckConfig;
   use Moose;
+  has AlarmIdentifier => (is => 'ro', isa => 'Paws::Route53::AlarmIdentifier');
   has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
   has FullyQualifiedDomainName => (is => 'ro', isa => 'Str');
   has HealthThreshold => (is => 'ro', isa => 'Int');
+  has InsufficientDataHealthStatus => (is => 'ro', isa => 'Str');
   has Inverted => (is => 'ro', isa => 'Bool');
   has IPAddress => (is => 'ro', isa => 'Str');
   has MeasureLatency => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
+  has Regions => (is => 'ro', isa => 'ArrayRef[Str]');
   has RequestInterval => (is => 'ro', isa => 'Int');
   has ResourcePath => (is => 'ro', isa => 'Str');
   has SearchString => (is => 'ro', isa => 'Str');
@@ -32,20 +35,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Route53::HealthCheckConfig object:
 
-  $service_obj->Method(Att1 => { ChildHealthChecks => $value, ..., Type => $value  });
+  $service_obj->Method(Att1 => { AlarmIdentifier => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Route53::HealthCheckConfig object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ChildHealthChecks
+  $result->Att1->AlarmIdentifier
 
 =head1 DESCRIPTION
 
 A complex type that contains the health check configuration.
 
 =head1 ATTRIBUTES
+
+
+=head2 AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>
+
+  A complex type that contains information to uniquely identify the
+CloudWatch alarm that you're associating with a Route 53 health check.
 
 
 =head2 ChildHealthChecks => ArrayRef[Str]
@@ -87,6 +96,13 @@ Amazon Route 53 to consider the parent health check to be healthy.
 Valid values are integers between 0 and 256, inclusive.
 
 
+=head2 InsufficientDataHealthStatus => Str
+
+  The status of the health check when CloudWatch has insufficient data
+about the state of associated alarm. Valid values are C<Healthy>,
+C<Unhealthy> and C<LastKnownStatus>.
+
+
 =head2 Inverted => Bool
 
   A boolean value that indicates whether the status of health check
@@ -116,6 +132,13 @@ not specified. For HTTPS and HTTPS_STR_MATCH this defaults to 443 if
 the port is not specified.
 
 
+=head2 Regions => ArrayRef[Str]
+
+  A list of C<HealthCheckRegion> values that you want Amazon Route 53 to
+use to perform health checks for the specified endpoint. You must
+specify at least three regions.
+
+
 =head2 RequestInterval => Int
 
   The number of seconds between the time that Amazon Route 53 gets a
@@ -143,7 +166,8 @@ considers case when searching for C<SearchString> in the response body.
 =head2 B<REQUIRED> Type => Str
 
   The type of health check to be performed. Currently supported types are
-TCP, HTTP, HTTPS, HTTP_STR_MATCH, and HTTPS_STR_MATCH.
+TCP, HTTP, HTTPS, HTTP_STR_MATCH, HTTPS_STR_MATCH, CALCULATED and
+CLOUDWATCH_METRIC.
 
 
 

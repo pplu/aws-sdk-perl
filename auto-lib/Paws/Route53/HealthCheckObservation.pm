@@ -1,6 +1,7 @@
 package Paws::Route53::HealthCheckObservation;
   use Moose;
   has IPAddress => (is => 'ro', isa => 'Str');
+  has Region => (is => 'ro', isa => 'Str');
   has StatusReport => (is => 'ro', isa => 'Paws::Route53::StatusReport');
 1;
 
@@ -40,8 +41,14 @@ checker and the reason for the health check status.
 
 =head2 IPAddress => Str
 
-  The IP address of the Amazon Route 53 health checker that performed the
-health check.
+  The IP address of the Amazon Route 53 health checker that performed
+this health check.
+
+
+=head2 Region => Str
+
+  The C<HealthCheckRegion> of the Amazon Route 53 health checker that
+performed this health check.
 
 
 =head2 StatusReport => L<Paws::Route53::StatusReport>
