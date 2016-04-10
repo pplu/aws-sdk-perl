@@ -29,6 +29,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::CreateComputer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateConditionalForwarder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::CreateConditionalForwarder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDirectory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::CreateDirectory', @_);
@@ -49,6 +54,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::CreateTrust', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteConditionalForwarder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DeleteConditionalForwarder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDirectory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DeleteDirectory', @_);
@@ -67,6 +77,11 @@ package Paws::DS;
   sub DeregisterEventTopic {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DeregisterEventTopic', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeConditionalForwarders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DescribeConditionalForwarders', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDirectories {
@@ -129,6 +144,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::RestoreFromSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateConditionalForwarder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::UpdateConditionalForwarder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateRadius {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::UpdateRadius', @_);
@@ -140,7 +160,7 @@ package Paws::DS;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/ConnectDirectory CreateAlias CreateComputer CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits RegisterEventTopic RestoreFromSnapshot UpdateRadius VerifyTrust / }
+  sub operations { qw/ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits RegisterEventTopic RestoreFromSnapshot UpdateConditionalForwarder UpdateRadius VerifyTrust / }
 
 1;
 
@@ -209,6 +229,18 @@ Returns: a L<Paws::DS::CreateComputerResult> instance
 computer to the directory.
 
 
+=head2 CreateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str], RemoteDomainName => Str)
+
+Each argument is described in detail in: L<Paws::DS::CreateConditionalForwarder>
+
+Returns: a L<Paws::DS::CreateConditionalForwarderResult> instance
+
+  Creates a conditional forwarder associated with your AWS directory.
+Conditional forwarders are required in order to set up a trust
+relationship with another domain. The conditional forwarder points to
+the trusted domain.
+
+
 =head2 CreateDirectory(Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str, VpcSettings => L<Paws::DS::DirectoryVpcSettings>])
 
 Each argument is described in detail in: L<Paws::DS::CreateDirectory>
@@ -239,7 +271,7 @@ cloud.
 You cannot take snapshots of AD Connector directories.
 
 
-=head2 CreateTrust(DirectoryId => Str, RemoteDomainName => Str, TrustDirection => Str, TrustPassword => Str, [TrustType => Str])
+=head2 CreateTrust(DirectoryId => Str, RemoteDomainName => Str, TrustDirection => Str, TrustPassword => Str, [ConditionalForwarderIpAddrs => ArrayRef[Str], TrustType => Str])
 
 Each argument is described in detail in: L<Paws::DS::CreateTrust>
 
@@ -255,6 +287,16 @@ set of credentials.
 This action initiates the creation of the AWS side of a trust
 relationship between a Microsoft AD in the AWS cloud and an external
 domain.
+
+
+=head2 DeleteConditionalForwarder(DirectoryId => Str, RemoteDomainName => Str)
+
+Each argument is described in detail in: L<Paws::DS::DeleteConditionalForwarder>
+
+Returns: a L<Paws::DS::DeleteConditionalForwarderResult> instance
+
+  Deletes a conditional forwarder that has been set up for your AWS
+directory.
 
 
 =head2 DeleteDirectory(DirectoryId => Str)
@@ -275,7 +317,7 @@ Returns: a L<Paws::DS::DeleteSnapshotResult> instance
   Deletes a directory snapshot.
 
 
-=head2 DeleteTrust(TrustId => Str)
+=head2 DeleteTrust(TrustId => Str, [DeleteAssociatedConditionalForwarder => Bool])
 
 Each argument is described in detail in: L<Paws::DS::DeleteTrust>
 
@@ -293,6 +335,18 @@ Returns: a L<Paws::DS::DeregisterEventTopicResult> instance
 
   Removes the specified directory as a publisher to the specified SNS
 topic.
+
+
+=head2 DescribeConditionalForwarders(DirectoryId => Str, [RemoteDomainNames => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::DS::DescribeConditionalForwarders>
+
+Returns: a L<Paws::DS::DescribeConditionalForwardersResult> instance
+
+  Obtains information about the conditional forwarders for this account.
+
+If no input parameters are provided for RemoteDomainNames, this request
+describes all conditional forwarders for the specified directory ID.
 
 
 =head2 DescribeDirectories([DirectoryIds => ArrayRef[Str], Limit => Int, NextToken => Str])
@@ -449,6 +503,16 @@ can monitor the progress of the restore operation by calling the
 DescribeDirectories operation with the directory identifier. When the
 B<DirectoryDescription.Stage> value changes to C<Active>, the restore
 operation is complete.
+
+
+=head2 UpdateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str], RemoteDomainName => Str)
+
+Each argument is described in detail in: L<Paws::DS::UpdateConditionalForwarder>
+
+Returns: a L<Paws::DS::UpdateConditionalForwarderResult> instance
+
+  Updates a conditional forwarder that has been set up for your AWS
+directory.
 
 
 =head2 UpdateRadius(DirectoryId => Str, RadiusSettings => L<Paws::DS::RadiusSettings>)
