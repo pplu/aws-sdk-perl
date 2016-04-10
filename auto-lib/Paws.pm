@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.23';
+our $VERSION = '0.24';
 
 use Moose;
 use MooseX::ClassAttribute;
