@@ -63,7 +63,7 @@ security credentials. You cannot use the passed policy to grant
 permissions that are in excess of those allowed by the access policy of
 the role that is being assumed. For more information, Permissions for
 AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity in the
-I<Using IAM>.
+I<IAM User Guide>.
 
 The policy plain text must be 2048 bytes or shorter. However, an
 internal conversion compresses it into a packed binary format with a
