@@ -64,6 +64,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateTopicRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteCACertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteCACertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteCertificate', @_);
@@ -79,6 +84,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeletePolicyVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteRegistrationCode {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteRegistrationCode', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteThing {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteThing', @_);
@@ -87,6 +97,11 @@ package Paws::IoT;
   sub DeleteTopicRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteTopicRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCACertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeCACertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCertificate {
@@ -139,14 +154,29 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetPolicyVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetRegistrationCode {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::GetRegistrationCode', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTopicRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::GetTopicRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListCACertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListCACertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListCertificates {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListCertificatesByCA {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListCertificatesByCA', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListPolicies {
@@ -184,6 +214,16 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListTopicRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RegisterCACertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::RegisterCACertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::RegisterCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RejectCertificateTransfer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::RejectCertificateTransfer', @_);
@@ -209,6 +249,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::TransferCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateCACertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateCACertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateCertificate', @_);
@@ -220,7 +265,7 @@ package Paws::IoT;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateTopicRule DeleteCertificate DeletePolicy DeletePolicyVersion DeleteThing DeleteTopicRule DescribeCertificate DescribeEndpoint DescribeThing DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetLoggingOptions GetPolicy GetPolicyVersion GetTopicRule ListCertificates ListPolicies ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListTopicRules RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCertificate UpdateThing / }
+  sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateTopicRule DeleteCACertificate DeleteCertificate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteThing DeleteTopicRule DescribeCACertificate DescribeCertificate DescribeEndpoint DescribeThing DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetLoggingOptions GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule ListCACertificates ListCertificates ListCertificatesByCA ListPolicies ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListTopicRules RegisterCACertificate RegisterCertificate RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCACertificate UpdateCertificate UpdateThing / }
 
 1;
 
@@ -429,6 +474,15 @@ user who has permission to create rules will be able to access data
 processed by the rule.
 
 
+=head2 DeleteCACertificate(CertificateId => Str)
+
+Each argument is described in detail in: L<Paws::IoT::DeleteCACertificate>
+
+Returns: a L<Paws::IoT::DeleteCACertificateResponse> instance
+
+  Deletes a registered CA certificate.
+
+
 =head2 DeleteCertificate(CertificateId => Str)
 
 Each argument is described in detail in: L<Paws::IoT::DeleteCertificate>
@@ -476,6 +530,15 @@ version of a policy is marked as the default version, use
 ListPolicyVersions.
 
 
+=head2 DeleteRegistrationCode()
+
+Each argument is described in detail in: L<Paws::IoT::DeleteRegistrationCode>
+
+Returns: a L<Paws::IoT::DeleteRegistrationCodeResponse> instance
+
+  Deletes a CA certificate registration code.
+
+
 =head2 DeleteThing(ThingName => Str)
 
 Each argument is described in detail in: L<Paws::IoT::DeleteThing>
@@ -492,6 +555,15 @@ Each argument is described in detail in: L<Paws::IoT::DeleteTopicRule>
 Returns: nothing
 
   Deletes the specified rule.
+
+
+=head2 DescribeCACertificate(CertificateId => Str)
+
+Each argument is described in detail in: L<Paws::IoT::DescribeCACertificate>
+
+Returns: a L<Paws::IoT::DescribeCACertificateResponse> instance
+
+  Describes a registered CA certificate.
 
 
 =head2 DescribeCertificate(CertificateId => Str)
@@ -587,6 +659,16 @@ Returns: a L<Paws::IoT::GetPolicyVersionResponse> instance
   Gets information about the specified policy version.
 
 
+=head2 GetRegistrationCode()
+
+Each argument is described in detail in: L<Paws::IoT::GetRegistrationCode>
+
+Returns: a L<Paws::IoT::GetRegistrationCodeResponse> instance
+
+  Gets a registration code used to register a CA certificate with AWS
+IoT.
+
+
 =head2 GetTopicRule(RuleName => Str)
 
 Each argument is described in detail in: L<Paws::IoT::GetTopicRule>
@@ -596,16 +678,37 @@ Returns: a L<Paws::IoT::GetTopicRuleResponse> instance
   Gets information about the specified rule.
 
 
+=head2 ListCACertificates([AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+Each argument is described in detail in: L<Paws::IoT::ListCACertificates>
+
+Returns: a L<Paws::IoT::ListCACertificatesResponse> instance
+
+  Lists the CA certificates registered for your AWS account.
+
+The results are paginated with a default page size of 25. You can use
+the returned marker to retrieve additional results.
+
+
 =head2 ListCertificates([AscendingOrder => Bool, Marker => Str, PageSize => Int])
 
 Each argument is described in detail in: L<Paws::IoT::ListCertificates>
 
 Returns: a L<Paws::IoT::ListCertificatesResponse> instance
 
-  Lists your certificates.
+  Lists the certificates registered in your AWS account.
 
 The results are paginated with a default page size of 25. You can use
 the returned marker to retrieve additional results.
+
+
+=head2 ListCertificatesByCA(CaCertificateId => Str, [AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+Each argument is described in detail in: L<Paws::IoT::ListCertificatesByCA>
+
+Returns: a L<Paws::IoT::ListCertificatesByCAResponse> instance
+
+  List the device certificates signed by the specified CA certificate.
 
 
 =head2 ListPolicies([AscendingOrder => Bool, Marker => Str, PageSize => Int])
@@ -675,7 +778,35 @@ Returns: a L<Paws::IoT::ListTopicRulesResponse> instance
   Lists the rules for the specific topic.
 
 
-=head2 RejectCertificateTransfer(CertificateId => Str)
+=head2 RegisterCACertificate(CaCertificate => Str, VerificationCertificate => Str, [SetAsActive => Bool])
+
+Each argument is described in detail in: L<Paws::IoT::RegisterCACertificate>
+
+Returns: a L<Paws::IoT::RegisterCACertificateResponse> instance
+
+  Registers a CA certificate with AWS IoT. This CA certificate can then
+be used to sign device certificates, which can be then registered with
+AWS IoT. You can register up to 10 CA certificates per AWS account that
+have the same subject field and public key. This enables you to have up
+to 10 certificate authorities sign your device certificates. If you
+have more than one CA certificate registered, make sure you pass the CA
+certificate when you register your device certificates with the
+RegisterCertificate API.
+
+
+=head2 RegisterCertificate(CertificatePem => Str, [CaCertificatePem => Str, SetAsActive => Bool])
+
+Each argument is described in detail in: L<Paws::IoT::RegisterCertificate>
+
+Returns: a L<Paws::IoT::RegisterCertificateResponse> instance
+
+  Registers a device certificate with AWS IoT. If you have more than one
+CA certificate that has the same subject field, you must specify the CA
+certificate that was used to sign the device certificate being
+registered.
+
+
+=head2 RejectCertificateTransfer(CertificateId => Str, [RejectReason => Str])
 
 Each argument is described in detail in: L<Paws::IoT::RejectCertificateTransfer>
 
@@ -683,7 +814,7 @@ Returns: nothing
 
   Rejects a pending certificate transfer. After AWS IoT rejects a
 certificate transfer, the certificate status changes from
-B<PENDING_TRANFER> to B<INACTIVE>.
+B<PENDING_TRANSFER> to B<INACTIVE>.
 
 To check for pending certificate transfers, call ListCertificates to
 enumerate your certificates.
@@ -726,7 +857,7 @@ Returns: nothing
   Sets the logging options.
 
 
-=head2 TransferCertificate(CertificateId => Str, TargetAwsAccount => Str)
+=head2 TransferCertificate(CertificateId => Str, TargetAwsAccount => Str, [TransferMessage => Str])
 
 Each argument is described in detail in: L<Paws::IoT::TransferCertificate>
 
@@ -744,6 +875,15 @@ can use the UpdateCertificate API to deactivate it.
 
 The certificate must not have any policies attached to it. You can use
 the DetachPrincipalPolicy API to detach them.
+
+
+=head2 UpdateCACertificate(CertificateId => Str, NewStatus => Str)
+
+Each argument is described in detail in: L<Paws::IoT::UpdateCACertificate>
+
+Returns: nothing
+
+  Updates a registered CA certificate.
 
 
 =head2 UpdateCertificate(CertificateId => Str, NewStatus => Str)

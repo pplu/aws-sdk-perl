@@ -1,22 +1,18 @@
-package Paws::IoT::CertificateDescription;
+package Paws::IoT::CACertificateDescription;
   use Moose;
-  has CaCertificateId => (is => 'ro', isa => 'Str', xmlname => 'caCertificateId', request_name => 'caCertificateId', traits => ['Unwrapped','NameInRequest']);
   has CertificateArn => (is => 'ro', isa => 'Str', xmlname => 'certificateArn', request_name => 'certificateArn', traits => ['Unwrapped','NameInRequest']);
   has CertificateId => (is => 'ro', isa => 'Str', xmlname => 'certificateId', request_name => 'certificateId', traits => ['Unwrapped','NameInRequest']);
   has CertificatePem => (is => 'ro', isa => 'Str', xmlname => 'certificatePem', request_name => 'certificatePem', traits => ['Unwrapped','NameInRequest']);
   has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', request_name => 'creationDate', traits => ['Unwrapped','NameInRequest']);
-  has LastModifiedDate => (is => 'ro', isa => 'Str', xmlname => 'lastModifiedDate', request_name => 'lastModifiedDate', traits => ['Unwrapped','NameInRequest']);
   has OwnedBy => (is => 'ro', isa => 'Str', xmlname => 'ownedBy', request_name => 'ownedBy', traits => ['Unwrapped','NameInRequest']);
-  has PreviousOwnedBy => (is => 'ro', isa => 'Str', xmlname => 'previousOwnedBy', request_name => 'previousOwnedBy', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
-  has TransferData => (is => 'ro', isa => 'Paws::IoT::TransferData', xmlname => 'transferData', request_name => 'transferData', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::IoT::CertificateDescription
+Paws::IoT::CACertificateDescription
 
 =head1 USAGE
 
@@ -27,72 +23,52 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::IoT::CertificateDescription object:
+As an example, if Att1 is expected to be a Paws::IoT::CACertificateDescription object:
 
-  $service_obj->Method(Att1 => { CaCertificateId => $value, ..., TransferData => $value  });
+  $service_obj->Method(Att1 => { CertificateArn => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::CertificateDescription object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::CACertificateDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CaCertificateId
+  $result->Att1->CertificateArn
 
 =head1 DESCRIPTION
 
-Describes a certificate.
+Describes a CA certificate.
 
 =head1 ATTRIBUTES
 
 
-=head2 CaCertificateId => Str
-
-  The certificate ID of the CA certificate used to sign this certificate.
-
-
 =head2 CertificateArn => Str
 
-  The ARN of the certificate.
+  The CA certificate ARN.
 
 
 =head2 CertificateId => Str
 
-  The ID of the certificate.
+  The CA certificate ID.
 
 
 =head2 CertificatePem => Str
 
-  The certificate data, in PEM format.
+  The CA certificate data, in PEM format.
 
 
 =head2 CreationDate => Str
 
-  The date and time the certificate was created.
-
-
-=head2 LastModifiedDate => Str
-
-  The date and time the certificate was last modified.
+  The date the CA certificate was created.
 
 
 =head2 OwnedBy => Str
 
-  The ID of the AWS account that owns the certificate.
-
-
-=head2 PreviousOwnedBy => Str
-
-  The ID of the AWS account of the previous owner of the certificate.
+  The owner of the CA certificate.
 
 
 =head2 Status => Str
 
-  The status of the certificate.
-
-
-=head2 TransferData => L<Paws::IoT::TransferData>
-
-  The transfer data.
+  The status of a CA certificate.
 
 
 
