@@ -2,6 +2,7 @@
 package Paws::CognitoIdentity::IdentityPool;
   use Moose;
   has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
+  has CognitoIdentityProviders => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::CognitoIdentityProvider]');
   has DeveloperProviderName => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
   has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
@@ -21,6 +22,12 @@ Paws::CognitoIdentity::IdentityPool
 =head2 B<REQUIRED> AllowUnauthenticatedIdentities => Bool
 
 TRUE if the identity pool supports unauthenticated logins.
+
+
+
+=head2 CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]
+
+A list representing a Cognito User Identity Pool and its client ID.
 
 
 
