@@ -1,5 +1,6 @@
 package Paws::Firehose::RedshiftDestinationUpdate;
   use Moose;
+  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
   has ClusterJDBCURL => (is => 'ro', isa => 'Str');
   has CopyCommand => (is => 'ro', isa => 'Paws::Firehose::CopyCommand');
   has Password => (is => 'ro', isa => 'Str');
@@ -25,20 +26,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Firehose::RedshiftDestinationUpdate object:
 
-  $service_obj->Method(Att1 => { ClusterJDBCURL => $value, ..., Username => $value  });
+  $service_obj->Method(Att1 => { CloudWatchLoggingOptions => $value, ..., Username => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::RedshiftDestinationUpdate object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ClusterJDBCURL
+  $result->Att1->CloudWatchLoggingOptions
 
 =head1 DESCRIPTION
 
 Describes an update for a destination in Amazon Redshift.
 
 =head1 ATTRIBUTES
+
+
+=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+
+  Describes CloudWatch logging options for your delivery stream.
 
 
 =head2 ClusterJDBCURL => Str
@@ -66,7 +72,7 @@ Describes an update for a destination in Amazon Redshift.
   The Amazon S3 destination.
 
 The compression formats C<SNAPPY> or C<ZIP> cannot be specified in
-C<RedshiftDestinationUpdate.S3Update> because the Amazon Redshift
+B<RedshiftDestinationUpdate.S3Update> because the Amazon Redshift
 C<COPY> operation that reads from the S3 bucket doesn't support these
 compression formats.
 

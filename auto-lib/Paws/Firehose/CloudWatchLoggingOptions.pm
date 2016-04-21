@@ -1,0 +1,70 @@
+package Paws::Firehose::CloudWatchLoggingOptions;
+  use Moose;
+  has Enabled => (is => 'ro', isa => 'Bool');
+  has LogGroupName => (is => 'ro', isa => 'Str');
+  has LogStreamName => (is => 'ro', isa => 'Str');
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Firehose::CloudWatchLoggingOptions
+
+=head1 USAGE
+
+This class represents one of two things:
+
+=head3 Arguments in a call to a service
+
+Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
+Each attribute should be used as a named argument in the calls that expect this type of object.
+
+As an example, if Att1 is expected to be a Paws::Firehose::CloudWatchLoggingOptions object:
+
+  $service_obj->Method(Att1 => { Enabled => $value, ..., LogStreamName => $value  });
+
+=head3 Results returned from an API call
+
+Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::CloudWatchLoggingOptions object:
+
+  $result = $service_obj->Method(...);
+  $result->Att1->Enabled
+
+=head1 DESCRIPTION
+
+Describes CloudWatch logging options for your delivery stream.
+
+=head1 ATTRIBUTES
+
+
+=head2 Enabled => Bool
+
+  Enables or disables CloudWatch logging.
+
+
+=head2 LogGroupName => Str
+
+  The CloudWatch group name for logging. This value is required if
+Enabled is true.
+
+
+=head2 LogStreamName => Str
+
+  The CloudWatch log stream name for logging. This value is required if
+Enabled is true.
+
+
+
+=head1 SEE ALSO
+
+This class forms part of L<Paws>, describing an object used in L<Paws::Firehose>
+
+=head1 BUGS and CONTRIBUTIONS
+
+The source code is located here: https://github.com/pplu/aws-sdk-perl
+
+Please report bugs to: https://github.com/pplu/aws-sdk-perl/issues
+
+=cut
+

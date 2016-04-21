@@ -1,5 +1,6 @@
 package Paws::Firehose::RedshiftDestinationDescription;
   use Moose;
+  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
   has ClusterJDBCURL => (is => 'ro', isa => 'Str', required => 1);
   has CopyCommand => (is => 'ro', isa => 'Paws::Firehose::CopyCommand', required => 1);
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
@@ -24,20 +25,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Firehose::RedshiftDestinationDescription object:
 
-  $service_obj->Method(Att1 => { ClusterJDBCURL => $value, ..., Username => $value  });
+  $service_obj->Method(Att1 => { CloudWatchLoggingOptions => $value, ..., Username => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::RedshiftDestinationDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ClusterJDBCURL
+  $result->Att1->CloudWatchLoggingOptions
 
 =head1 DESCRIPTION
 
 Describes a destination in Amazon Redshift.
 
 =head1 ATTRIBUTES
+
+
+=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+
+  Describes CloudWatch logging options for your delivery stream.
 
 
 =head2 B<REQUIRED> ClusterJDBCURL => Str

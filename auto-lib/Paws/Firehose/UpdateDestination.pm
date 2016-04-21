@@ -4,6 +4,7 @@ package Paws::Firehose::UpdateDestination;
   has CurrentDeliveryStreamVersionId => (is => 'ro', isa => 'Str', required => 1);
   has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
   has DestinationId => (is => 'ro', isa => 'Str', required => 1);
+  has ElasticsearchDestinationUpdate => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchDestinationUpdate');
   has RedshiftDestinationUpdate => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationUpdate');
   has S3DestinationUpdate => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
 
@@ -39,11 +40,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> CurrentDeliveryStreamVersionId => Str
 
-Obtain this value from the C<VersionId> result of the
+Obtain this value from the B<VersionId> result of the
 DeliveryStreamDescription operation. This value is required, and helps
 the service to perform conditional operations. For example, if there is
 a interleaving update and this value is null, then the update
-destination fails. After the update is successful, the C<VersionId>
+destination fails. After the update is successful, the B<VersionId>
 value is updated. The service then performs a merge of the old
 configuration with the new configuration.
 
@@ -58,6 +59,12 @@ The name of the delivery stream.
 =head2 B<REQUIRED> DestinationId => Str
 
 The ID of the destination.
+
+
+
+=head2 ElasticsearchDestinationUpdate => L<Paws::Firehose::ElasticsearchDestinationUpdate>
+
+Describes an update for a destination in Amazon ES.
 
 
 

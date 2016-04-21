@@ -1,6 +1,7 @@
 package Paws::Firehose::DestinationDescription;
   use Moose;
   has DestinationId => (is => 'ro', isa => 'Str', required => 1);
+  has ElasticsearchDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchDestinationDescription');
   has RedshiftDestinationDescription => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationDescription');
   has S3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription');
 1;
@@ -41,6 +42,11 @@ Describes the destination for a delivery stream.
 =head2 B<REQUIRED> DestinationId => Str
 
   The ID of the destination.
+
+
+=head2 ElasticsearchDestinationDescription => L<Paws::Firehose::ElasticsearchDestinationDescription>
+
+  The destination in Amazon ES.
 
 
 =head2 RedshiftDestinationDescription => L<Paws::Firehose::RedshiftDestinationDescription>

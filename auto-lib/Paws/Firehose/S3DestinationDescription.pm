@@ -2,6 +2,7 @@ package Paws::Firehose::S3DestinationDescription;
   use Moose;
   has BucketARN => (is => 'ro', isa => 'Str', required => 1);
   has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::BufferingHints', required => 1);
+  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
   has CompressionFormat => (is => 'ro', isa => 'Str', required => 1);
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::EncryptionConfiguration', required => 1);
   has Prefix => (is => 'ro', isa => 'Str');
@@ -48,8 +49,13 @@ Describes a destination in Amazon S3.
 
 =head2 B<REQUIRED> BufferingHints => L<Paws::Firehose::BufferingHints>
 
-  The buffering option. If no value is specified, C<BufferingHints>
+  The buffering option. If no value is specified, B<BufferingHints>
 object default values are used.
+
+
+=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+
+  Describes CloudWatch logging options for your delivery stream.
 
 
 =head2 B<REQUIRED> CompressionFormat => Str

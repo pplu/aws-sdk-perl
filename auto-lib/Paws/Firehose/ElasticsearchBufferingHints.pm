@@ -1,4 +1,4 @@
-package Paws::Firehose::BufferingHints;
+package Paws::Firehose::ElasticsearchBufferingHints;
   use Moose;
   has IntervalInSeconds => (is => 'ro', isa => 'Int');
   has SizeInMBs => (is => 'ro', isa => 'Int');
@@ -8,7 +8,7 @@ package Paws::Firehose::BufferingHints;
 
 =head1 NAME
 
-Paws::Firehose::BufferingHints
+Paws::Firehose::ElasticsearchBufferingHints
 
 =head1 USAGE
 
@@ -19,23 +19,21 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Firehose::BufferingHints object:
+As an example, if Att1 is expected to be a Paws::Firehose::ElasticsearchBufferingHints object:
 
   $service_obj->Method(Att1 => { IntervalInSeconds => $value, ..., SizeInMBs => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::BufferingHints object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::ElasticsearchBufferingHints object:
 
   $result = $service_obj->Method(...);
   $result->Att1->IntervalInSeconds
 
 =head1 DESCRIPTION
 
-Describes hints for the buffering to perform before delivering data to
-the destination. Please note that these options are treated as hints,
-and therefore Firehose may choose to use different values when it is
-optimal.
+Describes the buffering to perform before delivering data to the Amazon
+ES destination.
 
 =head1 ATTRIBUTES
 
@@ -43,7 +41,8 @@ optimal.
 =head2 IntervalInSeconds => Int
 
   Buffer incoming data for the specified period of time, in seconds,
-before delivering it to the destination. The default value is 300.
+before delivering it to the destination. The default value is 300 (5
+minutes).
 
 
 =head2 SizeInMBs => Int
@@ -51,10 +50,10 @@ before delivering it to the destination. The default value is 300.
   Buffer incoming data to the specified size, in MBs, before delivering
 it to the destination. The default value is 5.
 
-We recommend setting SizeInMBs to a value greater than the amount of
+We recommend setting B<SizeInMBs> to a value greater than the amount of
 data you typically ingest into the delivery stream in 10 seconds. For
-example, if you typically ingest data at 1 MB/sec set SizeInMBs to be
-10 MB or higher.
+example, if you typically ingest data at 1 MB/sec, set B<SizeInMBs> to
+be 10 MB or higher.
 
 
 
