@@ -1,5 +1,6 @@
 package Paws::Kinesis::StreamDescription;
   use Moose;
+  has EnhancedMonitoring => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::EnhancedMetrics]', required => 1);
   has HasMoreShards => (is => 'ro', isa => 'Bool', required => 1);
   has RetentionPeriodHours => (is => 'ro', isa => 'Int', required => 1);
   has Shards => (is => 'ro', isa => 'ArrayRef[Paws::Kinesis::Shard]', required => 1);
@@ -25,20 +26,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kinesis::StreamDescription object:
 
-  $service_obj->Method(Att1 => { HasMoreShards => $value, ..., StreamStatus => $value  });
+  $service_obj->Method(Att1 => { EnhancedMonitoring => $value, ..., StreamStatus => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::StreamDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->HasMoreShards
+  $result->Att1->EnhancedMonitoring
 
 =head1 DESCRIPTION
 
 Represents the output for DescribeStream.
 
 =head1 ATTRIBUTES
+
+
+=head2 B<REQUIRED> EnhancedMonitoring => ArrayRef[L<Paws::Kinesis::EnhancedMetrics>]
+
+  Represents the current enhanced monitoring settings of the stream.
 
 
 =head2 B<REQUIRED> HasMoreShards => Bool
@@ -68,9 +74,8 @@ Represents the output for DescribeStream.
 
 =head2 B<REQUIRED> StreamStatus => Str
 
-  The current status of the stream being described.
-
-The stream status is one of the following states:
+  The current status of the stream being described. The stream status is
+one of the following states:
 
 =over
 

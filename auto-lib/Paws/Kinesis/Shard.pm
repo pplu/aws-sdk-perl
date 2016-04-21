@@ -43,7 +43,7 @@ stream.
 
 =head2 AdjacentParentShardId => Str
 
-  The shard Id of the shard adjacent to the shard's parent.
+  The shard ID of the shard adjacent to the shard's parent.
 
 
 =head2 B<REQUIRED> HashKeyRange => L<Paws::Kinesis::HashKeyRange>
@@ -54,7 +54,7 @@ ordered contiguous positive integers.
 
 =head2 ParentShardId => Str
 
-  The shard Id of the shard's parent.
+  The shard ID of the shard's parent.
 
 
 =head2 B<REQUIRED> SequenceNumberRange => L<Paws::Kinesis::SequenceNumberRange>
@@ -64,7 +64,7 @@ ordered contiguous positive integers.
 
 =head2 B<REQUIRED> ShardId => Str
 
-  The unique identifier of the shard within the Amazon Kinesis stream.
+  The unique identifier of the shard within the stream.
 
 
 
