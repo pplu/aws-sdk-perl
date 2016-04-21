@@ -18,6 +18,11 @@ package Paws::ElasticBeanstalk;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::AbortEnvironmentUpdate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ApplyEnvironmentManagedAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::ApplyEnvironmentManagedAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CheckDNSAvailability {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::CheckDNSAvailability', @_);
@@ -96,6 +101,16 @@ package Paws::ElasticBeanstalk;
   sub DescribeEnvironmentHealth {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeEnvironmentHealth', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEnvironmentManagedActionHistory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEnvironmentManagedActions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElasticBeanstalk::DescribeEnvironmentManagedActions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEnvironmentResources {
@@ -179,7 +194,7 @@ package Paws::ElasticBeanstalk;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AbortEnvironmentUpdate CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth ListAvailableSolutionStacks RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
+  sub operations { qw/AbortEnvironmentUpdate ApplyEnvironmentManagedAction CheckDNSAvailability ComposeEnvironments CreateApplication CreateApplicationVersion CreateConfigurationTemplate CreateEnvironment CreateStorageLocation DeleteApplication DeleteApplicationVersion DeleteConfigurationTemplate DeleteEnvironmentConfiguration DescribeApplications DescribeApplicationVersions DescribeConfigurationOptions DescribeConfigurationSettings DescribeEnvironmentHealth DescribeEnvironmentManagedActionHistory DescribeEnvironmentManagedActions DescribeEnvironmentResources DescribeEnvironments DescribeEvents DescribeInstancesHealth ListAvailableSolutionStacks RebuildEnvironment RequestEnvironmentInfo RestartAppServer RetrieveEnvironmentInfo SwapEnvironmentCNAMEs TerminateEnvironment UpdateApplication UpdateApplicationVersion UpdateConfigurationTemplate UpdateEnvironment ValidateConfigurationSettings / }
 
 1;
 
@@ -209,13 +224,9 @@ Paws::ElasticBeanstalk - Perl Interface to AWS AWS Elastic Beanstalk
 
 AWS Elastic Beanstalk
 
-This is the AWS Elastic Beanstalk API Reference. This guide provides
-detailed information about AWS Elastic Beanstalk actions, data types,
-parameters, and errors.
-
-AWS Elastic Beanstalk is a tool that makes it easy for you to create,
-deploy, and manage scalable, fault-tolerant applications running on
-Amazon Web Services cloud resources.
+AWS Elastic Beanstalk makes it easy for you to create, deploy, and
+manage scalable, fault-tolerant applications running on the Amazon Web
+Services cloud.
 
 For more information about this product, go to the AWS Elastic
 Beanstalk details page. The location of the latest AWS Elastic
@@ -241,6 +252,17 @@ Returns: nothing
 
   Cancels in-progress environment configuration update or application
 version deployment.
+
+
+=head2 ApplyEnvironmentManagedAction(ActionId => Str, [EnvironmentId => Str, EnvironmentName => Str])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::ApplyEnvironmentManagedAction>
+
+Returns: a L<Paws::ElasticBeanstalk::ApplyEnvironmentManagedActionResult> instance
+
+  Applies a scheduled managed action immediately. A managed action can be
+applied only if its status is C<Scheduled>. Get the status and action
+ID of a managed action with DescribeEnvironmentManagedActions.
 
 
 =head2 CheckDNSAvailability(CNAMEPrefix => Str)
@@ -459,6 +481,24 @@ Returns: a L<Paws::ElasticBeanstalk::DescribeEnvironmentHealthResult> instance
   Returns information about the overall health of the specified
 environment. The B<DescribeEnvironmentHealth> operation is only
 available with AWS Elastic Beanstalk Enhanced Health.
+
+
+=head2 DescribeEnvironmentManagedActionHistory([EnvironmentId => Str, EnvironmentName => Str, MaxItems => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionHistory>
+
+Returns: a L<Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionHistoryResult> instance
+
+  Lists an environment's completed and failed managed actions.
+
+
+=head2 DescribeEnvironmentManagedActions([EnvironmentId => Str, EnvironmentName => Str, Status => Str])
+
+Each argument is described in detail in: L<Paws::ElasticBeanstalk::DescribeEnvironmentManagedActions>
+
+Returns: a L<Paws::ElasticBeanstalk::DescribeEnvironmentManagedActionsResult> instance
+
+  Lists an environment's upcoming and in-progress managed actions.
 
 
 =head2 DescribeEnvironmentResources([EnvironmentId => Str, EnvironmentName => Str])
