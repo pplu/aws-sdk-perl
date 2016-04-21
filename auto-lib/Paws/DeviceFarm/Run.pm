@@ -124,7 +124,15 @@ Allowed values include:
 
 =item *
 
-ERRORED: An error condition.
+PENDING: A pending condition.
+
+=item *
+
+PASSED: A passing condition.
+
+=item *
+
+WARNED: A warning condition.
 
 =item *
 
@@ -136,19 +144,11 @@ SKIPPED: A skipped condition.
 
 =item *
 
+ERRORED: An error condition.
+
+=item *
+
 STOPPED: A stopped condition.
-
-=item *
-
-PASSED: A passing condition.
-
-=item *
-
-PENDING: A pending condition.
-
-=item *
-
-WARNED: A warning condition.
 
 =back
 
@@ -169,11 +169,15 @@ Allowed values include:
 
 =item *
 
-COMPLETED: A completed status.
+PENDING: A pending status.
 
 =item *
 
-PENDING: A pending status.
+PENDING_CONCURRENCY: A pending concurrency status.
+
+=item *
+
+PENDING_DEVICE: A pending device status.
 
 =item *
 
@@ -181,11 +185,23 @@ PROCESSING: A processing status.
 
 =item *
 
+SCHEDULING: A scheduling status.
+
+=item *
+
+PREPARING: A preparing status.
+
+=item *
+
 RUNNING: A running status.
 
 =item *
 
-SCHEDULING: A scheduling status.
+COMPLETED: A completed status.
+
+=item *
+
+STOPPING: A stopping status.
 
 =back
 
