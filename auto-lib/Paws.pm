@@ -268,6 +268,8 @@ L<Paws::CodePipeline>
 
 L<Paws::CognitoIdentity>
 
+L<Paws::CognitoIdp>
+
 L<Paws::CognitoSync>
 
 L<Paws::Config>

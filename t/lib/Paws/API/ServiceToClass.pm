@@ -17,6 +17,7 @@ package Paws::API::ServiceToClass;
     codedeploy => 'CodeDeploy',
     codepipeline => 'CodePipeline',
    'cognito-identity' => 'CognitoIdentity',
+   'cognito-idp' => 'CognitoIdp',
    'cognito-sync' => 'CognitoSync',
     config => 'Config',
     datapipeline => 'DataPipeline',

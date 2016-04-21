@@ -1,5 +1,12 @@
 0.25 
+ - New service: Cognito SignUp/Login (CognitoIdp)
+ - Cognito Identity API update: add Cognito Idp support
  - IoT API update: Delete certificates and registrations
+ - S3 API Update: Bucket Acceleration enabling methods
+ - Kinesis API update: Get iterator from a timestamp and enable/disable enhanced monitoring
+ - ElasticBeanstalk API update: Apply and Describe Managed Actions
+ - Kinesis Firehose API update: ElasticSearch destination support
+ - DeviceFarm API update: support for UnmeteredRemoteAccessDevices
 
 0.24 10 Apr 2016 
  - t/01-load fails because Class::Unload is not declared for test Issue #95 (eserte)
