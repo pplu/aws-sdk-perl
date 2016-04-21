@@ -52,20 +52,20 @@ Indicates whether the volume will be encrypted.
 =head2 Iops => Int
 
 The number of I/O operations per second (IOPS) that the volume
-supports. For Provisioned IOPS (SSD) volumes, this represents the
-number of IOPS that are provisioned for the volume. For General Purpose
-(SSD) volumes, this represents the baseline performance of the volume
-and the rate at which the volume accumulates I/O credits for bursting.
-For more information on General Purpose (SSD) baseline performance, I/O
-credits, and bursting, see Amazon EBS Volume Types in the I<Amazon
-Elastic Compute Cloud User Guide>.
+supports. For Provisioned IOPS SSD volumes, this represents the number
+of IOPS that are provisioned for the volume. For General Purpose SSD
+volumes, this represents the baseline performance of the volume and the
+rate at which the volume accumulates I/O credits for bursting. For more
+information on General Purpose SSD baseline performance, I/O credits,
+and bursting, see Amazon EBS Volume Types in the I<Amazon Elastic
+Compute Cloud User Guide>.
 
-Constraint: Range is 100 to 20000 for Provisioned IOPS (SSD) volumes
-and 3 to 10000 for General Purpose (SSD) volumes.
+Constraint: Range is 100-20000 IOPS for io1 volumes and 100-10000 IOPS
+for C<gp2> volumes.
 
 Condition: This parameter is required for requests to create C<io1>
-volumes; it is not used in requests to create C<standard> or C<gp2>
-volumes.
+volumes; it is not used in requests to create C<gp2>, C<st1>, C<sc1>,
+or C<standard> volumes.
 
 
 
@@ -109,11 +109,11 @@ The ID of the volume.
 
 =head2 VolumeType => Str
 
-The volume type. This can be C<gp2> for General Purpose (SSD) volumes,
-C<io1> for Provisioned IOPS (SSD) volumes, or C<standard> for Magnetic
-volumes.
+The volume type. This can be C<gp2> for General Purpose SSD, C<io1> for
+Provisioned IOPS SSD, C<st1> for Throughput Optimized HDD, C<sc1> for
+Cold HDD, or C<standard> for Magnetic volumes.
 
-Valid values are: C<"standard">, C<"io1">, C<"gp2">
+Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">
 
 
 =cut

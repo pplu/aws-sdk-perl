@@ -163,7 +163,8 @@ with a PV instance can make it unreachable.
 
 =head2 UserData => L<Paws::EC2::BlobAttributeValue>
 
-Changes the instance's user data to the specified value.
+Changes the instance's user data to the specified base64-encoded value.
+For command line tools, base64 encoding is performed for you.
 
 
 

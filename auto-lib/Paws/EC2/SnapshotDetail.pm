@@ -92,7 +92,7 @@ This class has no description
 
 =head2 UserBucket => L<Paws::EC2::UserBucketDetails>
 
-  
+  The S3 bucket for the disk image.
 
 
 

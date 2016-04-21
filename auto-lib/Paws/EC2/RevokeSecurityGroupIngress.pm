@@ -98,19 +98,19 @@ Numbers). Use C<-1> to specify all.
 can't specify this parameter in combination with the following
 parameters: the CIDR IP address range, the start of the port range, the
 IP protocol, and the end of the port range. For EC2-VPC, the source
-security group must be in the same VPC.
+security group must be in the same VPC. To revoke a specific rule for
+an IP protocol and port range, use a set of IP permissions instead.
 
 
 
 =head2 SourceSecurityGroupOwnerId => Str
 
-[EC2-Classic, default VPC] The AWS account ID of the source security
-group. For EC2-VPC, the source security group must be in the same VPC.
-You can't specify this parameter in combination with the following
-parameters: the CIDR IP address range, the IP protocol, the start of
-the port range, and the end of the port range. To revoke a specific
-rule for an IP protocol and port range, use a set of IP permissions
-instead.
+[EC2-Classic] The AWS account ID of the source security group, if the
+source security group is in a different account. You can't specify this
+parameter in combination with the following parameters: the CIDR IP
+address range, the IP protocol, the start of the port range, and the
+end of the port range. To revoke a specific rule for an IP protocol and
+port range, use a set of IP permissions instead.
 
 
 

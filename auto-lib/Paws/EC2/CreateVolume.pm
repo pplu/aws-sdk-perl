@@ -72,11 +72,11 @@ Cloud User Guide>.
 
 =head2 Iops => Int
 
-Only valid for Provisioned IOPS (SSD) volumes. The number of I/O
+Only valid for Provisioned IOPS SSD volumes. The number of I/O
 operations per second (IOPS) to provision for the volume, with a
 maximum ratio of 30 IOPS/GiB.
 
-Constraint: Range is 100 to 20000 for Provisioned IOPS (SSD) volumes
+Constraint: Range is 100 to 20000 for Provisioned IOPS SSD volumes
 
 
 
@@ -98,9 +98,10 @@ If a C<KmsKeyId> is specified, the C<Encrypted> flag must also be set.
 
 The size of the volume, in GiBs.
 
-Constraints: C<1-1024> for C<standard> volumes, C<1-16384> for C<gp2>
-volumes, and C<4-16384> for C<io1> volumes. If you specify a snapshot,
-the volume size must be equal to or larger than the snapshot size.
+Constraints: 1-16384 for C<gp2>, 4-16384 for C<io1>, 500-16384 for
+C<st1>, 500-16384 for C<sc1>, and 1-1024 for C<standard>. If you
+specify a snapshot, the volume size must be equal to or larger than the
+snapshot size.
 
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
@@ -115,13 +116,13 @@ The snapshot from which to create the volume.
 
 =head2 VolumeType => Str
 
-The volume type. This can be C<gp2> for General Purpose (SSD) volumes,
-C<io1> for Provisioned IOPS (SSD) volumes, or C<standard> for Magnetic
-volumes.
+The volume type. This can be C<gp2> for General Purpose SSD, C<io1> for
+Provisioned IOPS SSD, C<st1> for Throughput Optimized HDD, C<sc1> for
+Cold HDD, or C<standard> for Magnetic volumes.
 
-Default: C<standard>
+Default: standard
 
-Valid values are: C<"standard">, C<"io1">, C<"gp2">
+Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">
 
 
 =head1 SEE ALSO

@@ -1361,16 +1361,24 @@ If a volume has an AWS Marketplace product code:
 
 =over
 
-=item * The volume can be attached only to a stopped instance.
+=item *
 
-=item * AWS Marketplace product codes are copied from the volume to the
+The volume can be attached only to a stopped instance.
+
+=item *
+
+AWS Marketplace product codes are copied from the volume to the
 instance.
 
-=item * You must be subscribed to the product.
+=item *
 
-=item * The instance type and operating system of the instance must
-support the product. For example, you can't detach a volume from a
-Windows instance and attach it to a Linux instance.
+You must be subscribed to the product.
+
+=item *
+
+The instance type and operating system of the instance must support the
+product. For example, you can't detach a volume from a Windows instance
+and attach it to a Linux instance.
 
 =back
 
@@ -1659,33 +1667,41 @@ information about the options, see RFC 2132.
 
 =over
 
-=item * C<domain-name-servers> - The IP addresses of up to four domain
-name servers, or C<AmazonProvidedDNS>. The default DHCP option set
-specifies C<AmazonProvidedDNS>. If specifying more than one domain name
-server, specify the IP addresses in a single parameter, separated by
-commas.
+=item *
 
-=item * C<domain-name> - If you're using AmazonProvidedDNS in
-C<us-east-1>, specify C<ec2.internal>. If you're using
-AmazonProvidedDNS in another region, specify C<region.compute.internal>
-(for example, C<ap-northeast-1.compute.internal>). Otherwise, specify a
-domain name (for example, C<MyCompany.com>). B<Important>: Some Linux
-operating systems accept multiple domain names separated by spaces.
-However, Windows and other Linux operating systems treat the value as a
-single domain, which results in unexpected behavior. If your DHCP
-options set is associated with a VPC that has instances with multiple
-operating systems, specify only one domain name.
+C<domain-name-servers> - The IP addresses of up to four domain name
+servers, or AmazonProvidedDNS. The default DHCP option set specifies
+AmazonProvidedDNS. If specifying more than one domain name server,
+specify the IP addresses in a single parameter, separated by commas.
 
-=item * C<ntp-servers> - The IP addresses of up to four Network Time
-Protocol (NTP) servers.
+=item *
 
-=item * C<netbios-name-servers> - The IP addresses of up to four
-NetBIOS name servers.
+C<domain-name> - If you're using AmazonProvidedDNS in "us-east-1",
+specify "ec2.internal". If you're using AmazonProvidedDNS in another
+region, specify "region.compute.internal" (for example,
+"ap-northeast-1.compute.internal"). Otherwise, specify a domain name
+(for example, "MyCompany.com"). B<Important>: Some Linux operating
+systems accept multiple domain names separated by spaces. However,
+Windows and other Linux operating systems treat the value as a single
+domain, which results in unexpected behavior. If your DHCP options set
+is associated with a VPC that has instances with multiple operating
+systems, specify only one domain name.
 
-=item * C<netbios-node-type> - The NetBIOS node type (1, 2, 4, or 8).
-We recommend that you specify 2 (broadcast and multicast are not
-currently supported). For more information about these node types, see
-RFC 2132.
+=item *
+
+C<ntp-servers> - The IP addresses of up to four Network Time Protocol
+(NTP) servers.
+
+=item *
+
+C<netbios-name-servers> - The IP addresses of up to four NetBIOS name
+servers.
+
+=item *
+
+C<netbios-node-type> - The NetBIOS node type (1, 2, 4, or 8). We
+recommend that you specify 2 (broadcast and multicast are not currently
+supported). For more information about these node types, see RFC 2132.
 
 =back
 
@@ -3105,15 +3121,21 @@ The create volume permissions fall into the following categories:
 
 =over
 
-=item * I<public>: The owner of the snapshot granted create volume
-permissions for the snapshot to the C<all> group. All AWS accounts have
-create volume permissions for these snapshots.
+=item *
 
-=item * I<explicit>: The owner of the snapshot granted create volume
+I<public>: The owner of the snapshot granted create volume permissions
+for the snapshot to the C<all> group. All AWS accounts have create
+volume permissions for these snapshots.
+
+=item *
+
+I<explicit>: The owner of the snapshot granted create volume
 permissions to a specific AWS account.
 
-=item * I<implicit>: An AWS account has implicit create volume
-permissions for all snapshots it owns.
+=item *
+
+I<implicit>: An AWS account has implicit create volume permissions for
+all snapshots it owns.
 
 =back
 
@@ -3984,10 +4006,10 @@ account for more than 24 hours, and it must not be associated with an
 instance. After the Elastic IP address is moved, it is no longer
 available for use in the EC2-Classic platform, unless you move it back
 using the RestoreAddressToClassic request. You cannot move an Elastic
-IP address that's allocated for use in the EC2-VPC platform to the
-EC2-Classic platform. You cannot migrate an Elastic IP address that's
-associated with a reverse DNS record. Contact AWS account and billing
-support to remove the reverse DNS record.
+IP address that was originally allocated for use in the EC2-VPC
+platform to the EC2-Classic platform. You cannot migrate an Elastic IP
+address that's associated with a reverse DNS record. Contact AWS
+account and billing support to remove the reverse DNS record.
 
 
 =head2 PurchaseReservedInstancesOffering(InstanceCount => Int, ReservedInstancesOfferingId => Str, [DryRun => Bool, LimitPrice => L<Paws::EC2::ReservedInstanceLimitPrice>])

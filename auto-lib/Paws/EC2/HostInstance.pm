@@ -44,7 +44,8 @@ This class has no description
 
 =head2 InstanceType => Str
 
-  The instance type size (e.g., m3.medium) of the running instance.
+  The instance type size (for example, m3.medium) of the running
+instance.
 
 
 

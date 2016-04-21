@@ -50,7 +50,7 @@ This class has no description
 
   The name of the security group. In a request, use this parameter for a
 security group in EC2-Classic or a default VPC only. For a security
-group in a nondefault VPC, use C<GroupId>.
+group in a nondefault VPC, use the security group ID.
 
 
 =head2 PeeringStatus => Str
@@ -61,6 +61,9 @@ group in a nondefault VPC, use C<GroupId>.
 =head2 UserId => Str
 
   The ID of an AWS account.
+
+[EC2-Classic] Required when adding or removing rules that reference a
+security group in another AWS account.
 
 
 =head2 VpcId => Str

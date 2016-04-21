@@ -88,7 +88,7 @@ volume, in GiB.
 =item *
 
 C<block-device-mapping.volume-type> - The volume type of the EBS volume
-(C<gp2> | C<standard> | C<io1>).
+(gp2 | io1 | st1 | sc1 | standard).
 
 =item *
 

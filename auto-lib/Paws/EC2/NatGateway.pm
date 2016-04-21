@@ -70,24 +70,36 @@ for the failure, that corresponds to the error code.
 
 =over
 
-=item * For InsufficientFreeAddressesInSubnet: C<Subnet has
-insufficient free addresses to create this NAT gateway>
+=item *
 
-=item * For Gateway.NotAttached: C<Network vpc-xxxxxxxx has no Internet
-gateway attached>
+For InsufficientFreeAddressesInSubnet: "Subnet has insufficient free
+addresses to create this NAT gateway"
 
-=item * For InvalidAllocationID.NotFound: C<Elastic IP address
-eipalloc-xxxxxxxx could not be associated with this NAT gateway>
+=item *
 
-=item * For Resource.AlreadyAssociated: C<Elastic IP address
-eipalloc-xxxxxxxx is already associated>
+For Gateway.NotAttached: "Network vpc-xxxxxxxx has no Internet gateway
+attached"
 
-=item * For InternalError: C<Network interface eni-xxxxxxxx, created
-and used internally by this NAT gateway is in an invalid state. Please
-try again.>
+=item *
 
-=item * For InvalidSubnetID.NotFound: C<The specified subnet
-subnet-xxxxxxxx does not exist or could not be found.>
+For InvalidAllocationID.NotFound: "Elastic IP address eipalloc-xxxxxxxx
+could not be associated with this NAT gateway"
+
+=item *
+
+For Resource.AlreadyAssociated: "Elastic IP address eipalloc-xxxxxxxx
+is already associated"
+
+=item *
+
+For InternalError: "Network interface eni-xxxxxxxx, created and used
+internally by this NAT gateway is in an invalid state. Please try
+again."
+
+=item *
+
+For InvalidSubnetID.NotFound: "The specified subnet subnet-xxxxxxxx
+does not exist or could not be found."
 
 =back
 
