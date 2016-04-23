@@ -49,9 +49,9 @@ and 100, inclusive. If you do not include a value, it defaults to 50.
 =head2 Marker => Str
 
 Use this parameter only when paginating results and only in a
-subsequent request after you've received a response with truncated
-results. Set it to the value of C<NextMarker> from the response you
-just received.
+subsequent request after you receive a response with truncated results.
+Set it to the value of C<NextMarker> from the response you just
+received.
 
 
 
