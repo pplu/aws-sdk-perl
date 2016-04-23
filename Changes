@@ -7,6 +7,9 @@
  - ElasticBeanstalk API update: Apply and Describe Managed Actions
  - Kinesis Firehose API update: ElasticSearch destination support
  - DeviceFarm API update: support for UnmeteredRemoteAccessDevices
+ - ACM API update: Tagging for certificates
+ - EMR API update: shrink policies
+ - IoT API update: select SQL engine
 
 0.24 10 Apr 2016 
  - t/01-load fails because Class::Unload is not declared for test Issue #95 (eserte)
