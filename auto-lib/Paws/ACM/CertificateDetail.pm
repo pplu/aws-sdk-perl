@@ -122,25 +122,45 @@ been revoked. This can be one of the following vales:
 
 =over
 
-=item * UNSPECIFIED
+=item *
 
-=item * KEY_COMPROMISE
+UNSPECIFIED
 
-=item * CA_COMPROMISE
+=item *
 
-=item * AFFILIATION_CHANGED
+KEY_COMPROMISE
 
-=item * SUPERCEDED
+=item *
 
-=item * CESSATION_OF_OPERATION
+CA_COMPROMISE
 
-=item * CERTIFICATE_HOLD
+=item *
 
-=item * REMOVE_FROM_CRL
+AFFILIATION_CHANGED
 
-=item * PRIVILEGE_WITHDRAWN
+=item *
 
-=item * A_A_COMPROMISE
+SUPERCEDED
+
+=item *
+
+CESSATION_OF_OPERATION
+
+=item *
+
+CERTIFICATE_HOLD
+
+=item *
+
+REMOVE_FROM_CRL
+
+=item *
+
+PRIVILEGE_WITHDRAWN
+
+=item *
+
+A_A_COMPROMISE
 
 =back
 
@@ -170,19 +190,33 @@ following:
 
 =over
 
-=item * PENDING_VALIDATION
+=item *
 
-=item * ISSUED
+PENDING_VALIDATION
 
-=item * INACTIVE
+=item *
 
-=item * EXPIRED
+ISSUED
 
-=item * REVOKED
+=item *
 
-=item * FAILED
+INACTIVE
 
-=item * VALIDATION_TIMED_OUT
+=item *
+
+EXPIRED
+
+=item *
+
+REVOKED
+
+=item *
+
+FAILED
+
+=item *
+
+VALIDATION_TIMED_OUT
 
 =back
 

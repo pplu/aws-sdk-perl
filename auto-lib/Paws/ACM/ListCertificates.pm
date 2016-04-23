@@ -42,19 +42,33 @@ retrieve the ARNs. This can be one or more of the following values:
 
 =over
 
-=item * C<PENDING_VALIDATION>
+=item *
 
-=item * C<ISSUED>
+C<PENDING_VALIDATION>
 
-=item * C<INACTIVE>
+=item *
 
-=item * C<EXPIRED>
+C<ISSUED>
 
-=item * C<VALIDATION_TIMED_OUT>
+=item *
 
-=item * C<REVOKED>
+C<INACTIVE>
 
-=item * C<FAILED>
+=item *
+
+C<EXPIRED>
+
+=item *
+
+C<VALIDATION_TIMED_OUT>
+
+=item *
+
+C<REVOKED>
+
+=item *
+
+C<FAILED>
 
 =back
 

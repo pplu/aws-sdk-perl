@@ -58,15 +58,25 @@ in WHOIS and the following five addresses:
 
 =over
 
-=item * admin@example.com
+=item *
 
-=item * administrator@example.com
+admin@example.com
 
-=item * hostmaster@example.com
+=item *
 
-=item * postmaster@example.com
+administrator@example.com
 
-=item * webmaster@example.com
+=item *
+
+hostmaster@example.com
+
+=item *
+
+postmaster@example.com
+
+=item *
+
+webmaster@example.com
 
 =back
 

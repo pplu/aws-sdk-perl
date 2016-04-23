@@ -38,10 +38,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 B<REQUIRED> CertificateArn => Str
 
 String that contains the ARN of the requested certificate. The
-certificate ARN is generated and returned by RequestCertificate as soon
-as the request is made. By default, using this parameter causes email
-to be sent to all top-level domains you specified in the certificate
-request.
+certificate ARN is generated and returned by the RequestCertificate
+action as soon as the request is made. By default, using this parameter
+causes email to be sent to all top-level domains you specified in the
+certificate request.
 
 The ARN must be of the form:
 
@@ -69,15 +69,25 @@ following five addresses:
 
 =over
 
-=item * admin@subdomain.example.com
+=item *
 
-=item * administrator@subdomain.example.com
+admin@subdomain.example.com
 
-=item * hostmaster@subdomain.example.com
+=item *
 
-=item * postmaster@subdomain.example.com
+administrator@subdomain.example.com
 
-=item * webmaster@subdomain.example.com
+=item *
+
+hostmaster@subdomain.example.com
+
+=item *
+
+postmaster@subdomain.example.com
+
+=item *
+
+webmaster@subdomain.example.com
 
 =back
 
