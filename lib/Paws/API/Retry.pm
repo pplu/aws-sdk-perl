@@ -1,7 +1,25 @@
 package Paws::API::Retry;
   use Moose;
+  use MooseX::ClassAttribute;
   use Paws::Exception;  
-  
+
+  class_has default_rules => (is => 'ro', isa => 'ArrayRef', default => sub { [
+    #general_socket_errors
+    sub { $_[0]->code eq 'ConnectionError' },
+    #general_server_error
+    sub { defined $_[0]->http_status and $_[0]->http_status == 500 },
+    #service_unavailable
+    sub { defined $_[0]->http_status and $_[0]->http_status == 503 },
+    #limit_exceeded"
+    sub { defined $_[0]->http_status and $_[0]->http_status == 509 },
+    #throttling_exception
+    sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ThrottlingException' },
+    #throttling
+    sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'Throttling' },
+    #too_many_requests
+    sub { defined $_[0]->http_status and $_[0]->http_status == 429 },
+  ] });
+
   has max_tries => (is => 'ro', required => 1);
   has type => (is => 'ro', required => 1);
 
@@ -41,31 +59,14 @@ package Paws::API::Retry;
 
   sub exception_is_retriable {
     my $self = shift;
-    my @default_rules = sub { [
-      #general_server_error
-      sub { defined $_[0]->http_status and $_[0]->http_status == 500 },
-      #service_unavailable
-      sub { defined $_[0]->http_status and $_[0]->http_status == 503 },
-      #limit_exceeded"
-      sub { defined $_[0]->http_status and $_[0]->http_status == 509 },
-      #throttling_exception
-      sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ThrottlingException' },
-      #throttling
-      sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'Throttling' },
-      #too_many_requests
-      sub { defined $_[0]->http_status and $_[0]->http_status == 429 },
-    ] };
 
-    #general_socket_errors
-    return 1 if ($self->operation_result->code eq 'ConnectionError');
-
-	#First we try the Service's retriables
+    #First we try the Service's retriables
     foreach my $rule (@{ $self->retry_rules }){
       return 1 if ($rule->($self->operation_result));
-	}
+    }
 
     #Next we try the default retriables
-    foreach my $rule (@default_rules){
+    foreach my $rule (@{ Paws::API::Retry->default_rules }){
       return 1 if ($rule->($self->operation_result));
     }
   }
