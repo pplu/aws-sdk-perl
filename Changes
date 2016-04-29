@@ -10,6 +10,9 @@
  - ACM API update: Tagging for certificates
  - EMR API update: shrink policies
  - IoT API update: select SQL engine
+ - Route53Domains API update: ReachabilityEmail operations
+ - EC2 API update: ModifyVpcPeeringConnectionOptions and docu
+ - OpsWorks API update: support for instance tenancy
 
 0.24 10 Apr 2016 
  - t/01-load fails because Class::Unload is not declared for test Issue #95 (eserte)
