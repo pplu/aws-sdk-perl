@@ -120,7 +120,7 @@ The volume type. This can be C<gp2> for General Purpose SSD, C<io1> for
 Provisioned IOPS SSD, C<st1> for Throughput Optimized HDD, C<sc1> for
 Cold HDD, or C<standard> for Magnetic volumes.
 
-Default: standard
+Default: C<standard>
 
 Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">
 

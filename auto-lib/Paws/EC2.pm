@@ -864,6 +864,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyVpcPeeringConnectionOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcPeeringConnectionOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub MonitorInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::MonitorInstances', @_);
@@ -1141,7 +1146,7 @@ package Paws::EC2;
     return 'Paws::EC2::DescribeVolumeStatus'->_returns->new(VolumeStatuses => $array);
   }
 
-  sub operations { qw/AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHosts DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetPasswordData ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint MonitorInstances MoveAddressToVpc PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
+  sub operations { qw/AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHosts DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetPasswordData ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
 
 1;
 
@@ -2138,6 +2143,11 @@ options, which includes only a default DNS server that we provide
 (AmazonProvidedDNS). For more information about DHCP options, see DHCP
 Options Sets in the I<Amazon Virtual Private Cloud User Guide>.
 
+You can specify the instance tenancy value for the VPC when you create
+it. You can't change this value for the VPC after you create it. For
+more information, see Dedicated Instances in the I<Amazon Virtual
+Private Cloud User Guide>.
+
 
 =head2 CreateVpcEndpoint(ServiceName => Str, VpcId => Str, [ClientToken => Str, DryRun => Bool, PolicyDocument => Str, RouteTableIds => ArrayRef[Str]])
 
@@ -2194,6 +2204,9 @@ configuring your customer gateway.
 If you decide to shut down your VPN connection for any reason and later
 create a new VPN connection, you must reconfigure your customer gateway
 with the new information returned from this call.
+
+This is an idempotent operation. If you perform the operation more than
+once, Amazon EC2 doesn't return an error.
 
 For more information about VPN connections, see Adding a Hardware
 Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
@@ -2719,7 +2732,7 @@ ID formats can be modified; it does not return information about other
 resource types.
 
 The following resource types support longer IDs: C<instance> |
-C<reservation>.
+C<reservation> | C<snapshot> | C<volume>.
 
 These settings apply to the IAM user who makes the request; they do not
 apply to the entire AWS account. By default, an IAM user defaults to
@@ -2813,7 +2826,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstanceStatus>
 
 Returns: a L<Paws::EC2::DescribeInstanceStatusResult> instance
 
-  Describes the status of one or more instances.
+  Describes the status of one or more instances. By default, only running
+instances are described, unless specified otherwise.
 
 Instance status includes the following components:
 
@@ -3790,7 +3804,8 @@ Returns: nothing
   Modifies the ID format for the specified resource on a per-region
 basis. You can specify that resources should receive longer IDs
 (17-character IDs) when they are created. The following resource types
-support longer IDs: C<instance> | C<reservation>.
+support longer IDs: C<instance> | C<reservation> | C<snapshot> |
+C<volume>.
 
 This setting applies to the IAM user who makes the request; it does not
 apply to the entire AWS account. By default, an IAM user defaults to
@@ -3983,6 +3998,40 @@ policy associated with the endpoint, and you can add and remove route
 tables associated with the endpoint.
 
 
+=head2 ModifyVpcPeeringConnectionOptions(VpcPeeringConnectionId => Str, [AccepterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>, DryRun => Bool, RequesterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>])
+
+Each argument is described in detail in: L<Paws::EC2::ModifyVpcPeeringConnectionOptions>
+
+Returns: a L<Paws::EC2::ModifyVpcPeeringConnectionOptionsResult> instance
+
+  Modifies the VPC peering connection options on one side of a VPC
+peering connection. You can do the following:
+
+=over
+
+=item *
+
+Enable/disable communication over the peering connection between an
+EC2-Classic instance that's linked to your VPC (using ClassicLink) and
+instances in the peer VPC.
+
+=item *
+
+Enable/disable communication over the peering connection between
+instances in your VPC and an EC2-Classic instance that's linked to the
+peer VPC.
+
+=back
+
+If the peered VPCs are in different accounts, each owner must initiate
+a separate request to enable or disable communication in either
+direction, depending on whether their VPC was the requester or accepter
+for the VPC peering connection. If the peered VPCs are in the same
+account, you can modify the requester and accepter options in the same
+request. To confirm which VPC is the accepter and requester for a VPC
+peering connection, use the DescribeVpcPeeringConnections command.
+
+
 =head2 MonitorInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::MonitorInstances>
@@ -4043,7 +4092,12 @@ Returns: a L<Paws::EC2::PurchaseScheduledInstancesResult> instance
 Scheduled Instances enable you to purchase Amazon EC2 compute capacity
 by the hour for a one-year term. Before you can purchase a Scheduled
 Instance, you must call DescribeScheduledInstanceAvailability to check
-for available schedules and obtain a purchase token.
+for available schedules and obtain a purchase token. After you purchase
+a Scheduled Instance, you must call RunScheduledInstances during each
+scheduled time period.
+
+After you purchase a Scheduled Instance, you can't cancel, modify, or
+resell your purchase.
 
 
 =head2 RebootInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])
@@ -4057,8 +4111,8 @@ asynchronous; it only queues a request to reboot the specified
 instances. The operation succeeds if the instances are valid and belong
 to you. Requests to reboot terminated instances are ignored.
 
-If a Linux/Unix instance does not cleanly shut down within four
-minutes, Amazon EC2 performs a hard reboot.
+If an instance does not cleanly shut down within four minutes, Amazon
+EC2 performs a hard reboot.
 
 For more information about troubleshooting, see Getting Console Output
 and Rebooting Instances in the I<Amazon Elastic Compute Cloud User
@@ -4450,7 +4504,8 @@ You must launch a Scheduled Instance during its scheduled time period.
 You can't stop or reboot a Scheduled Instance, but you can terminate it
 as needed. If you terminate a Scheduled Instance before the current
 scheduled time period ends, you can launch it again after a few
-minutes.
+minutes. For more information, see Scheduled Instances in the I<Amazon
+Elastic Compute Cloud User Guide>.
 
 
 =head2 StartInstances(InstanceIds => ArrayRef[Str], [AdditionalInfo => Str, DryRun => Bool])
@@ -4488,35 +4543,31 @@ Each argument is described in detail in: L<Paws::EC2::StopInstances>
 
 Returns: a L<Paws::EC2::StopInstancesResult> instance
 
-  Stops an Amazon EBS-backed instance. Each time you transition an
-instance from stopped to started, Amazon EC2 charges a full instance
-hour, even if transitions happen multiple times within a single hour.
+  Stops an Amazon EBS-backed instance.
 
-You can't start or stop Spot instances.
+We don't charge hourly usage for a stopped instance, or data transfer
+fees; however, your root partition Amazon EBS volume remains, continues
+to persist your data, and you are charged for Amazon EBS volume usage.
+Each time you transition an instance from stopped to started, Amazon
+EC2 charges a full instance hour, even if transitions happen multiple
+times within a single hour.
 
-Instances that use Amazon EBS volumes as their root devices can be
-quickly stopped and started. When an instance is stopped, the compute
-resources are released and you are not billed for hourly instance
-usage. However, your root partition Amazon EBS volume remains,
-continues to persist your data, and you are charged for Amazon EBS
-volume usage. You can restart your instance at any time.
+You can't start or stop Spot instances, and you can't stop instance
+store-backed instances.
 
-Before stopping an instance, make sure it is in a state from which it
-can be restarted. Stopping an instance does not preserve data stored in
-RAM.
+When you stop an instance, we shut it down. You can restart your
+instance at any time. Before stopping an instance, make sure it is in a
+state from which it can be restarted. Stopping an instance does not
+preserve data stored in RAM.
 
-Performing this operation on an instance that uses an instance store as
-its root device returns an error.
-
-You can stop, start, and terminate EBS-backed instances. You can only
-terminate instance store-backed instances. What happens to an instance
-differs if you stop it or terminate it. For example, when you stop an
-instance, the root device and any other devices attached to the
-instance persist. When you terminate an instance, the root device and
-any other devices attached during the instance launch are automatically
-deleted. For more information about the differences between stopping
-and terminating instances, see Instance Lifecycle in the I<Amazon
-Elastic Compute Cloud User Guide>.
+Stopping an instance is different to rebooting or terminating it. For
+example, when you stop an instance, the root device and any other
+devices attached to the instance persist. When you terminate an
+instance, the root device and any other devices attached during the
+instance launch are automatically deleted. For more information about
+the differences between rebooting, stopping, and terminating instances,
+see Instance Lifecycle in the I<Amazon Elastic Compute Cloud User
+Guide>.
 
 For more information about troubleshooting, see Troubleshooting
 Stopping Your Instance in the I<Amazon Elastic Compute Cloud User
