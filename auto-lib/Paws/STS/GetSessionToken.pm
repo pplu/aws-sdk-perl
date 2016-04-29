@@ -57,6 +57,11 @@ C<GAHT12345678>) or an Amazon Resource Name (ARN) for a virtual device
 device for an IAM user by going to the AWS Management Console and
 viewing the user's security credentials.
 
+The format for this parameter, as described by its regex pattern, is a
+string of characters consisting of upper- and lower-case alphanumeric
+characters with no spaces. You can also include any of the following
+characters: =,.@-
+
 
 
 =head2 TokenCode => Str
@@ -67,6 +72,9 @@ authentication is required, and the user does not provide a code when
 requesting a set of temporary security credentials, the user will
 receive an "access denied" response when requesting resources that
 require MFA authentication.
+
+The format for this parameter, as described by its regex pattern, is a
+sequence of six numeric digits.
 
 
 

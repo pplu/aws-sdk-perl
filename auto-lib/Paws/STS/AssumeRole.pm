@@ -59,6 +59,11 @@ bind a role to the customer who created it. For more information about
 the external ID, see How to Use an External ID When Granting Access to
 Your AWS Resources to a Third Party in the I<IAM User Guide>.
 
+The format for this parameter, as described by its regex pattern, is a
+string of characters consisting of upper- and lower-case alphanumeric
+characters with no spaces. You can also include any of the following
+characters: =,.@:\/-
+
 
 
 =head2 Policy => Str
@@ -75,6 +80,12 @@ policy to grant permissions that are in excess of those allowed by the
 access policy of the role that is being assumed. For more information,
 see Permissions for AssumeRole, AssumeRoleWithSAML, and
 AssumeRoleWithWebIdentity in the I<IAM User Guide>.
+
+The format for this parameter, as described by its regex pattern, is a
+string of characters up to 2048 characters in length. The characters
+can be any ASCII character from the space character to the end of the
+valid character list (\u0020-\u00FF). It can also include the tab
+(\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
 The policy plain text must be 2048 bytes or shorter. However, an
 internal conversion compresses it into a packed binary format with a
@@ -103,6 +114,11 @@ subsequent cross-account API requests using the temporary security
 credentials will expose the role session name to the external account
 in their CloudTrail logs.
 
+The format for this parameter, as described by its regex pattern, is a
+string of characters consisting of upper- and lower-case alphanumeric
+characters with no spaces. You can also include any of the following
+characters: =,.@-
+
 
 
 =head2 SerialNumber => Str
@@ -115,6 +131,11 @@ a hardware device (such as C<GAHT12345678>) or an Amazon Resource Name
 (ARN) for a virtual device (such as
 C<arn:aws:iam::123456789012:mfa/user>).
 
+The format for this parameter, as described by its regex pattern, is a
+string of characters consisting of upper- and lower-case alphanumeric
+characters with no spaces. You can also include any of the following
+characters: =,.@-
+
 
 
 =head2 TokenCode => Str
@@ -124,6 +145,9 @@ being assumed requires MFA (that is, if the policy includes a condition
 that tests for MFA). If the role being assumed requires MFA and if the
 C<TokenCode> value is missing or expired, the C<AssumeRole> call
 returns an "access denied" error.
+
+The format for this parameter, as described by its regex pattern, is a
+sequence of six numeric digits.
 
 
 

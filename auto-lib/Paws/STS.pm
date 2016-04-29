@@ -228,7 +228,7 @@ are returned by the operation have the permissions that are defined in
 the access policy of the role that is being assumed. If you pass a
 policy to this operation, the temporary security credentials that are
 returned by the operation have the permissions that are allowed by both
-the access policy of the role that is being assumed, I<B<and>> the
+the access policy of the role that is being assumed, I< B<and> > the
 policy that you pass. This gives you a way to further restrict the
 permissions for the resulting temporary security credentials. You
 cannot use the passed policy to grant permissions that are in excess of
@@ -311,7 +311,7 @@ are returned by the operation have the permissions that are defined in
 the access policy of the role that is being assumed. If you pass a
 policy to this operation, the temporary security credentials that are
 returned by the operation have the permissions that are allowed by both
-the access policy of the role that is being assumed, I<B<and>> the
+the access policy of the role that is being assumed, I< B<and> > the
 policy that you pass. This gives you a way to further restrict the
 permissions for the resulting temporary security credentials. You
 cannot use the passed policy to grant permissions that are in excess of
@@ -332,19 +332,32 @@ credentials. The identity of the caller is validated by using keys in
 the metadata document that is uploaded for the SAML provider entity for
 your identity provider.
 
+Calling C<AssumeRoleWithSAML> can result in an entry in your AWS
+CloudTrail logs. The entry includes the value in the C<NameID> element
+of the SAML assertion. We recommend that you use a NameIDType that is
+not associated with any personally identifiable information (PII). For
+example, you could instead use the Persistent Identifier
+(C<urn:oasis:names:tc:SAML:2.0:nameid-format:persistent>).
+
 For more information, see the following resources:
 
 =over
 
-=item * About SAML 2.0-based Federation in the I<IAM User Guide>.
+=item *
 
-=item * Creating SAML Identity Providers in the I<IAM User Guide>.
+About SAML 2.0-based Federation in the I<IAM User Guide>.
 
-=item * Configuring a Relying Party and Claims in the I<IAM User
-Guide>.
+=item *
 
-=item * Creating a Role for SAML 2.0 Federation in the I<IAM User
-Guide>.
+Creating SAML Identity Providers in the I<IAM User Guide>.
+
+=item *
+
+Configuring a Relying Party and Claims in the I<IAM User Guide>.
+
+=item *
+
+Creating a Role for SAML 2.0 Federation in the I<IAM User Guide>.
 
 =back
 
@@ -401,7 +414,7 @@ are returned by the operation have the permissions that are defined in
 the access policy of the role that is being assumed. If you pass a
 policy to this operation, the temporary security credentials that are
 returned by the operation have the permissions that are allowed by both
-the access policy of the role that is being assumed, I<B<and>> the
+the access policy of the role that is being assumed, I< B<and> > the
 policy that you pass. This gives you a way to further restrict the
 permissions for the resulting temporary security credentials. You
 cannot use the passed policy to grant permissions that are in excess of
@@ -417,25 +430,40 @@ assumes must trust the identity provider that is associated with the
 identity token. In other words, the identity provider must be specified
 in the role's trust policy.
 
+Calling C<AssumeRoleWithWebIdentity> can result in an entry in your AWS
+CloudTrail logs. The entry includes the Subject of the provided Web
+Identity Token. We recommend that you avoid using any personally
+identifiable information (PII) in this field. For example, you could
+instead use a GUID or a pairwise identifier, as suggested in the OIDC
+specification.
+
 For more information about how to use web identity federation and the
 C<AssumeRoleWithWebIdentity> API, see the following resources:
 
 =over
 
-=item * Using Web Identity Federation APIs for Mobile Apps and
-Federation Through a Web-based Identity Provider.
+=item *
 
-=item * Web Identity Federation Playground. This interactive website
-lets you walk through the process of authenticating via Login with
-Amazon, Facebook, or Google, getting temporary security credentials,
-and then using those credentials to make a request to AWS.
+Using Web Identity Federation APIs for Mobile Apps and Federation
+Through a Web-based Identity Provider.
 
-=item * AWS SDK for iOS and AWS SDK for Android. These toolkits contain
-sample apps that show how to invoke the identity providers, and then
-how to use the information from these providers to get and use
-temporary security credentials.
+=item *
 
-=item * Web Identity Federation with Mobile Applications. This article
+Web Identity Federation Playground. This interactive website lets you
+walk through the process of authenticating via Login with Amazon,
+Facebook, or Google, getting temporary security credentials, and then
+using those credentials to make a request to AWS.
+
+=item *
+
+AWS SDK for iOS and AWS SDK for Android. These toolkits contain sample
+apps that show how to invoke the identity providers, and then how to
+use the information from these providers to get and use temporary
+security credentials.
+
+=item *
+
+Web Identity Federation with Mobile Applications. This article
 discusses web identity federation and shows an example of how to use
 web identity federation to get access to content in Amazon S3.
 
@@ -473,19 +501,27 @@ The decoded message includes the following type of information:
 
 =over
 
-=item * Whether the request was denied due to an explicit deny or due
-to the absence of an explicit allow. For more information, see
-Determining Whether a Request is Allowed or Denied in the I<IAM User
-Guide>.
+=item *
 
-=item * The principal who made the request.
+Whether the request was denied due to an explicit deny or due to the
+absence of an explicit allow. For more information, see Determining
+Whether a Request is Allowed or Denied in the I<IAM User Guide>.
 
-=item * The requested action.
+=item *
 
-=item * The requested resource.
+The principal who made the request.
 
-=item * The values of condition keys in the context of the user's
-request.
+=item *
+
+The requested action.
+
+=item *
+
+The requested resource.
+
+=item *
+
+The values of condition keys in the context of the user's request.
 
 =back
 
@@ -566,10 +602,14 @@ C<GetFederationToken> are determined by a combination of the following:
 
 =over
 
-=item * The policy or policies that are attached to the IAM user whose
+=item *
+
+The policy or policies that are attached to the IAM user whose
 credentials are used to call C<GetFederationToken>.
 
-=item * The policy that is passed as a parameter in the call.
+=item *
+
+The policy that is passed as a parameter in the call.
 
 =back
 
@@ -579,7 +619,7 @@ I<federated user>. When the federated user makes an AWS request, AWS
 evaluates the policy attached to the federated user in combination with
 the policy or policies attached to the IAM user whose credentials were
 used to call C<GetFederationToken>. AWS allows the federated user's
-request only when both the federated user I<B<and>> the IAM user are
+request only when both the federated user I< B<and> > the IAM user are
 explicitly allowed to perform the requested action. The passed policy
 cannot grant more permissions than those that are defined in the IAM
 user policy.
