@@ -561,7 +561,7 @@ explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 CreateDeployment(Command => L<Paws::OpsWorks::DeploymentCommand>, StackId => Str, [AppId => Str, Comment => Str, CustomJson => Str, InstanceIds => ArrayRef[Str]])
+=head2 CreateDeployment(Command => L<Paws::OpsWorks::DeploymentCommand>, StackId => Str, [AppId => Str, Comment => Str, CustomJson => Str, InstanceIds => ArrayRef[Str], LayerIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateDeployment>
 
@@ -576,7 +576,7 @@ that explicitly grants permissions. For more information on user
 permissions, see Managing User Permissions.
 
 
-=head2 CreateInstance(InstanceType => Str, LayerIds => ArrayRef[Str], StackId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, AvailabilityZone => Str, BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>], EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, Os => Str, RootDeviceType => Str, SshKeyName => Str, SubnetId => Str, VirtualizationType => Str])
+=head2 CreateInstance(InstanceType => Str, LayerIds => ArrayRef[Str], StackId => Str, [AgentVersion => Str, AmiId => Str, Architecture => Str, AutoScalingType => Str, AvailabilityZone => Str, BlockDeviceMappings => ArrayRef[L<Paws::OpsWorks::BlockDeviceMapping>], EbsOptimized => Bool, Hostname => Str, InstallUpdatesOnBoot => Bool, Os => Str, RootDeviceType => Str, SshKeyName => Str, SubnetId => Str, Tenancy => Str, VirtualizationType => Str])
 
 Each argument is described in detail in: L<Paws::OpsWorks::CreateInstance>
 

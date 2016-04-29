@@ -38,6 +38,7 @@ package Paws::OpsWorks::Instance;
   has StackId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
+  has Tenancy => (is => 'ro', isa => 'Str');
   has VirtualizationType => (is => 'ro', isa => 'Str');
 1;
 
@@ -313,6 +314,11 @@ the Root Device.
 
   The instance's subnet ID; applicable only if the stack is running in a
 VPC.
+
+
+=head2 Tenancy => Str
+
+  The instance's tenancy option, such as C<dedicated> or C<host>.
 
 
 =head2 VirtualizationType => Str

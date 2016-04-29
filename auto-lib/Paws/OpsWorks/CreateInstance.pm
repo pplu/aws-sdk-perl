@@ -17,6 +17,7 @@ package Paws::OpsWorks::CreateInstance;
   has SshKeyName => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str', required => 1);
   has SubnetId => (is => 'ro', isa => 'Str');
+  has Tenancy => (is => 'ro', isa => 'Str');
   has VirtualizationType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -209,6 +210,20 @@ The stack ID.
 The ID of the instance's subnet. If the stack is running in a VPC, you
 can use this parameter to override the stack's default subnet ID value
 and direct AWS OpsWorks to launch the instance in a different subnet.
+
+
+
+=head2 Tenancy => Str
+
+The instance's tenancy option. The default option is no tenancy, or if
+the instance is running in a VPC, inherit tenancy settings from the
+VPC. The following are valid values for this parameter: C<dedicated>,
+C<default>, or C<host>. Because there are costs associated with changes
+in tenancy options, we recommend that you research tenancy options
+before choosing them for your instances. For more information about
+dedicated hosts, see Dedicated Hosts Overview and Amazon EC2 Dedicated
+Hosts. For more information about dedicated instances, see Dedicated
+Instances and Amazon EC2 Dedicated Instances.
 
 
 
