@@ -37,9 +37,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-Contains information about an Inspector assessment template. This data
-type is used as the response element in the DescribeAssessmentTemplates
-action.
+Contains information about an Amazon Inspector assessment template.
+This data type is used as the response element in the
+DescribeAssessmentTemplates action.
 
 =head1 ATTRIBUTES
 
@@ -74,7 +74,7 @@ seconds (one day).
 
 =head2 B<REQUIRED> RulesPackageArns => ArrayRef[Str]
 
-  Rules packages specified for this assessment template.
+  The rules packages that are specified for this assessment template.
 
 
 =head2 B<REQUIRED> UserAttributesForFindings => ArrayRef[L<Paws::Inspector::Attribute>]

@@ -31,17 +31,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-This data type is used as the request parameter in the
-ListAssessmentTargets action.
+Used as the request parameter in the ListAssessmentTargets action.
 
 =head1 ATTRIBUTES
 
 
 =head2 AssessmentTargetNamePattern => Str
 
-  For a record to match a filter, an explicit value or a string
-containing a wildcard specified for this data type property must match
-the value of the B<assessmentTargetName> property of the
+  For a record to match a filter, an explicit value or a string that
+contains a wildcard that is specified for this data type property must
+match the value of the B<assessmentTargetName> property of the
 AssessmentTarget data type.
 
 

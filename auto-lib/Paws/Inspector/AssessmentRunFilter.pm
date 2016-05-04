@@ -37,56 +37,55 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-This data type is used as the request parameter in the
-ListAssessmentRuns action.
+Used as the request parameter in the ListAssessmentRuns action.
 
 =head1 ATTRIBUTES
 
 
 =head2 CompletionTimeRange => L<Paws::Inspector::TimestampRange>
 
-  For a record to match a filter, the value specified for this data type
-property must inclusively match any value between the specified minimum
-and maximum values of the B<completedAt> property of the AssessmentRun
-data type.
+  For a record to match a filter, the value that is specified for this
+data type property must inclusively match any value between the
+specified minimum and maximum values of the B<completedAt> property of
+the AssessmentRun data type.
 
 
 =head2 DurationRange => L<Paws::Inspector::DurationRange>
 
-  For a record to match a filter, the value specified for this data type
-property must inclusively match any value between the specified minimum
-and maximum values of the B<durationInSeconds> property of the
-AssessmentRun data type.
+  For a record to match a filter, the value that is specified for this
+data type property must inclusively match any value between the
+specified minimum and maximum values of the B<durationInSeconds>
+property of the AssessmentRun data type.
 
 
 =head2 NamePattern => Str
 
   For a record to match a filter, an explicit value or a string
-containing a wildcard specified for this data type property must match
-the value of the B<assessmentRunName> property of the AssessmentRun
-data type.
+containing a wildcard that is specified for this data type property
+must match the value of the B<assessmentRunName> property of the
+AssessmentRun data type.
 
 
 =head2 RulesPackageArns => ArrayRef[Str]
 
-  For a record to match a filter, the value specified for this data type
-property must be contained in the list of values of the
+  For a record to match a filter, the value that is specified for this
+data type property must be contained in the list of values of the
 B<rulesPackages> property of the AssessmentRun data type.
 
 
 =head2 StartTimeRange => L<Paws::Inspector::TimestampRange>
 
-  For a record to match a filter, the value specified for this data type
-property must inclusively match any value between the specified minimum
-and maximum values of the B<startTime> property of the AssessmentRun
-data type.
+  For a record to match a filter, the value that is specified for this
+data type property must inclusively match any value between the
+specified minimum and maximum values of the B<startTime> property of
+the AssessmentRun data type.
 
 
 =head2 StateChangeTimeRange => L<Paws::Inspector::TimestampRange>
 
-  For a record to match a filter, the value specified for this data type
-property must match the B<stateChangedAt> property of the AssessmentRun
-data type.
+  For a record to match a filter, the value that is specified for this
+data type property must match the B<stateChangedAt> property of the
+AssessmentRun data type.
 
 
 =head2 States => ArrayRef[Str]

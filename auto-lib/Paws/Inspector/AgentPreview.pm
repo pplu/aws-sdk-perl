@@ -32,20 +32,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-This data type is used as a response element in the PreviewAgents
-action.
+Used as a response element in the PreviewAgents action.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AgentId => Str
 
-  The id of the EC2 instance where the agent is intalled.
+  The ID of the EC2 instance where the agent is installed.
 
 
 =head2 AutoScalingGroup => Str
 
-  The autoscaling group for the EC2 instance where the agent is
+  The Auto Scaling group for the EC2 instance where the agent is
 installed.
 
 

@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssessmentTargetArns => ArrayRef[Str]
 
-The ARN(s) specifying the assessment target(s) that you want to
+The ARNs that specifies the assessment targets that you want to
 describe.
 
 

@@ -33,8 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-This data type is used as the request parameter in the
-ListAssessmentTemplates action.
+Used as the request parameter in the ListAssessmentTemplates action.
 
 =head1 ATTRIBUTES
 
@@ -49,16 +48,16 @@ AssessmentTemplate data type.
 
 =head2 NamePattern => Str
 
-  For a record to match a filter, an explicit value or a string
-containing a wildcard specified for this data type property must match
-the value of the B<assessmentTemplateName> property of the
+  For a record to match a filter, an explicit value or a string that
+contains a wildcard that is specified for this data type property must
+match the value of the B<assessmentTemplateName> property of the
 AssessmentTemplate data type.
 
 
 =head2 RulesPackageArns => ArrayRef[Str]
 
-  For a record to match a filter, the value(s) specified for this data
-type property must be contained in the list of values of the
+  For a record to match a filter, the values that are specified for this
+data type property must be contained in the list of values of the
 B<rulesPackageArns> property of the AssessmentTemplate data type.
 
 

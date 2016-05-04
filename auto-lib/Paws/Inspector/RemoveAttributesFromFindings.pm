@@ -43,7 +43,7 @@ findings.
 
 =head2 B<REQUIRED> FindingArns => ArrayRef[Str]
 
-The ARNs specifying the findings that you want to remove attributes
+The ARNs that specify the findings that you want to remove attributes
 from.
 
 

@@ -35,8 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-Contains information about an Inspector rules package. This data type
-is used as the response element in the DescribeRulesPackages action.
+Contains information about an Amazon Inspector rules package. This data
+type is used as the response element in the DescribeRulesPackages
+action.
 
 =head1 ATTRIBUTES
 
@@ -63,7 +64,7 @@ is used as the response element in the DescribeRulesPackages action.
 
 =head2 B<REQUIRED> Version => Str
 
-  The version id of the rules package.
+  The version ID of the rules package.
 
 
 

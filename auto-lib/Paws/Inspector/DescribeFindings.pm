@@ -36,15 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FindingArns => ArrayRef[Str]
 
-The ARN(s) specifying the finding(s) that you want to describe.
+The ARN that specifies the finding that you want to describe.
 
 
 
 =head2 Locale => Str
 
-The locale that you want to translate a finding description(s),
-recommendation(s), and the short description(s) that identify the
-finding(s) into.
+The locale into which you want to translate a finding description,
+recommendation, and the short description that identifies the finding.
 
 Valid values are: C<"EN_US">
 

@@ -16,8 +16,8 @@ Paws::Inspector::ListAssessmentTargetsResponse
 
 =head2 B<REQUIRED> AssessmentTargetArns => ArrayRef[Str]
 
-A list of ARNs specifying the assessment targets returned by the
-action.
+A list of ARNs that specifies the assessment targets that are returned
+by the action.
 
 
 
@@ -26,7 +26,7 @@ action.
 When a response is generated, if there is more data to be listed, this
 parameter is present in the response and contains the value to use for
 the B<nextToken> parameter in a subsequent pagination request. If there
-is no more data to be listed, this parameter is set to 'null'.
+is no more data to be listed, this parameter is set to null.
 
 
 

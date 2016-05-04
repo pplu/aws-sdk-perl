@@ -16,7 +16,7 @@ Paws::Inspector::ListFindingsResponse
 
 =head2 B<REQUIRED> FindingArns => ArrayRef[Str]
 
-A list of ARN(s) specifying the finding(s) returned by the action.
+A list of ARNs that specifies the findings returned by the action.
 
 
 
@@ -25,7 +25,7 @@ A list of ARN(s) specifying the finding(s) returned by the action.
 When a response is generated, if there is more data to be listed, this
 parameter is present in the response and contains the value to use for
 the B<nextToken> parameter in a subsequent pagination request. If there
-is no more data to be listed, this parameter is set to 'null'.
+is no more data to be listed, this parameter is set to null.
 
 
 

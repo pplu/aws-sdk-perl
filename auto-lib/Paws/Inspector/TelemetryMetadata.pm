@@ -33,21 +33,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-The metadata about the Inspector application data metrics collected by
-the agent. This data type is used as the response element in the
-GetTelemetryMetadata action.
+The metadata about the Amazon Inspector application data metrics
+collected by the agent. This data type is used as the response element
+in the GetTelemetryMetadata action.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Count => Int
 
-  The count of messages that the agent sends to the Inspector service.
+  The count of messages that the agent sends to the Amazon Inspector
+service.
 
 
 =head2 DataSize => Int
 
-  The data size of messages that the agent sends to the Inspector
+  The data size of messages that the agent sends to the Amazon Inspector
 service.
 
 

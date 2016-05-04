@@ -37,8 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-Contains information about an Inspector agent. This data type is used
-as a response element in the ListAssessmentRunAgents action.
+Contains information about an Amazon Inspector agent. This data type is
+used as a response element in the ListAssessmentRunAgents action.
 
 =head1 ATTRIBUTES
 
@@ -60,7 +60,7 @@ as a response element in the ListAssessmentRunAgents action.
 
 =head2 B<REQUIRED> AgentId => Str
 
-  AWS account of the EC2 instance where the agent is installed.
+  The AWS account of the EC2 instance where the agent is installed.
 
 
 =head2 B<REQUIRED> AssessmentRunArn => Str
@@ -70,12 +70,14 @@ as a response element in the ListAssessmentRunAgents action.
 
 =head2 AutoScalingGroup => Str
 
-  The auto-scaling group of the EC2 instance specified by the agent ID.
+  The Auto Scaling group of the EC2 instance that is specified by the
+agent ID.
 
 
 =head2 B<REQUIRED> TelemetryMetadata => ArrayRef[L<Paws::Inspector::TelemetryMetadata>]
 
-  The Inspector application data metrics collected by the agent.
+  The Amazon Inspector application data metrics that are collected by the
+agent.
 
 
 
