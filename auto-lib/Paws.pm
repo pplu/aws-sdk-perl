@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.24';
+our $VERSION = '0.25';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -626,6 +626,8 @@ Javier Arellano for discovering Tagging bug
 Ioan Rogers for contributing AssumeRoleWithSAML with ADFS auth example
 
 Miquel Soriano for reporting a bug with DescribeAutoScalingGroups
+
+Albert Bendicho (wiof) for contributing better retry logic
 
 
 =cut

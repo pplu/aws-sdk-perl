@@ -301,3 +301,5 @@ Javier Arellano for discovering Tagging bug
 Ioan Rogers for contributing AssumeRoleWithSAML with ADFS auth example
 
 Miquel Soriano for reporting a bug with DescribeAutoScalingGroups
+
+Albert Bendicho (wiof) for contributing better retry logic

@@ -1,4 +1,5 @@
-0.25 
+0.25 05 May 2016
+ - Call retries are now done in more cases (Thottling errors, 500, 503, 509). PR #96 (wiof)
  - New service: Cognito SignUp/Login (CognitoIdp)
  - Cognito Identity API update: add Cognito Idp support
  - IoT API update: Delete certificates and registrations
