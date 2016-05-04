@@ -60,13 +60,8 @@ package Paws::API::Retry;
   sub exception_is_retriable {
     my $self = shift;
 
-    #First we try the Service's retriables
-    foreach my $rule (@{ $self->retry_rules }){
-      return 1 if ($rule->($self->operation_result));
-    }
-
-    #Next we try the default retriables
-    foreach my $rule (@{ Paws::API::Retry->default_rules }){
+    #Try default_rules, and then the Service's retriables
+    foreach my $rule (@{ Paws::API::Retry->default_rules }, @{ $self->retry_rules }){
       return 1 if ($rule->($self->operation_result));
     }
   }
