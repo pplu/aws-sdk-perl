@@ -43,9 +43,9 @@ Concepts.
 
 =head2 EncryptionKey => L<Paws::CodePipeline::EncryptionKey>
 
-  The AWS Key Management Service (AWS KMS) key used to encrypt the data
-in the artifact store. If this is undefined, the default key for Amazon
-S3 is used.
+  The encryption key used to encrypt the data in the artifact store, such
+as an AWS Key Management Service (AWS KMS) key. If this is undefined,
+the default key for Amazon S3 is used.
 
 
 =head2 B<REQUIRED> Location => Str

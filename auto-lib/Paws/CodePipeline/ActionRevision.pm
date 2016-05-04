@@ -1,7 +1,7 @@
 package Paws::CodePipeline::ActionRevision;
   use Moose;
   has Created => (is => 'ro', isa => 'Str', xmlname => 'created', request_name => 'created', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RevisionChangeId => (is => 'ro', isa => 'Str', xmlname => 'revisionChangeId', request_name => 'revisionChangeId', traits => ['Unwrapped','NameInRequest']);
+  has RevisionChangeId => (is => 'ro', isa => 'Str', xmlname => 'revisionChangeId', request_name => 'revisionChangeId', traits => ['Unwrapped','NameInRequest'], required => 1);
   has RevisionId => (is => 'ro', isa => 'Str', xmlname => 'revisionId', request_name => 'revisionId', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
@@ -44,7 +44,7 @@ Represents information about the version (or revision) of an action.
 created, in timestamp format.
 
 
-=head2 RevisionChangeId => Str
+=head2 B<REQUIRED> RevisionChangeId => Str
 
   The unique identifier of the change that set the state to this
 revision, for example a deployment ID or timestamp.

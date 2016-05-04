@@ -45,7 +45,7 @@ Represents information about a stage and its definition.
 
 =head2 Blockers => ArrayRef[L<Paws::CodePipeline::BlockerDeclaration>]
 
-  The gates included in a stage.
+  Reserved for future use.
 
 
 =head2 B<REQUIRED> Name => Str
