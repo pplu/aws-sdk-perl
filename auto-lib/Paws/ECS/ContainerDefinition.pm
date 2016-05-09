@@ -104,13 +104,17 @@ container agent version:
 
 =over
 
-=item * B<Agent versions less than or equal to 1.1.0:> Null and zero
-CPU values are passed to Docker as 0, which Docker then converts to
-1,024 CPU shares. CPU values of 1 are passed to Docker as 1, which the
-Linux kernel converts to 2 CPU shares.
+=item *
 
-=item * B<Agent versions greater than or equal to 1.2.0:> Null, zero,
-and CPU values of 1 are passed to Docker as 2.
+B<Agent versions less than or equal to 1.1.0:> Null and zero CPU values
+are passed to Docker as 0, which Docker then converts to 1,024 CPU
+shares. CPU values of 1 are passed to Docker as 1, which the Linux
+kernel converts to 2 CPU shares.
+
+=item *
+
+B<Agent versions greater than or equal to 1.2.0:> Null, zero, and CPU
+values of 1 are passed to Docker as 2.
 
 =back
 
@@ -188,13 +192,19 @@ sensitive information, such as credential data.
 
 =head2 Essential => Bool
 
-  If the C<essential> parameter of a container is marked as C<true>, the
-failure of that container stops the task. If the C<essential> parameter
-of a container is marked as C<false>, then its failure does not affect
-the rest of the containers in a task. If this parameter is omitted, a
+  If the C<essential> parameter of a container is marked as C<true>, and
+that container fails or stops for any reason, all other containers that
+are part of the task are stopped. If the C<essential> parameter of a
+container is marked as C<false>, then its failure does not affect the
+rest of the containers in a task. If this parameter is omitted, a
 container is assumed to be essential.
 
-All tasks must have at least one essential container.
+All tasks must have at least one essential container. If you have an
+application that is composed of multiple containers, you should group
+containers that are used for a common purpose into components, and
+separate the different components into multiple task definitions. For
+more information, see Application Architecture in the I<Amazon EC2
+Container Service Developer Guide>.
 
 
 =head2 ExtraHosts => ArrayRef[L<Paws::ECS::HostEntry>]
@@ -216,8 +226,8 @@ and the C<--hostname> option to docker run.
 
   The image used to start a container. This string is passed directly to
 the Docker daemon. Images in the Docker Hub registry are available by
-default. Other repositories are specified with
-C<I<repository-url>/I<image>:I<tag>>. Up to 255 letters (uppercase and
+default. Other repositories are specified with C<
+I<repository-url>/I<image>:I<tag> >. Up to 255 letters (uppercase and
 lowercase), numbers, hyphens, underscores, colons, periods, forward
 slashes, and number signs are allowed. This parameter maps to C<Image>
 in the Create a container section of the Docker Remote API and the
@@ -225,14 +235,20 @@ C<IMAGE> parameter of docker run.
 
 =over
 
-=item * Images in official repositories on Docker Hub use a single name
-(for example, C<ubuntu> or C<mongo>).
+=item *
 
-=item * Images in other repositories on Docker Hub are qualified with
-an organization name (for example, C<amazon/amazon-ecs-agent>).
+Images in official repositories on Docker Hub use a single name (for
+example, C<ubuntu> or C<mongo>).
 
-=item * Images in other online repositories are qualified further by a
-domain name (for example, C<quay.io/assemblyline/ubuntu>).
+=item *
+
+Images in other repositories on Docker Hub are qualified with an
+organization name (for example, C<amazon/amazon-ecs-agent>).
+
+=item *
+
+Images in other online repositories are qualified further by a domain
+name (for example, C<quay.io/assemblyline/ubuntu>).
 
 =back
 
@@ -248,7 +264,7 @@ lowercase), numbers, hyphens, and underscores are allowed for each
 C<name> and C<alias>. For more information on linking Docker
 containers, see https://docs.docker.com/userguide/dockerlinks/. This
 parameter maps to C<Links> in the Create a container section of the
-Docker Remote API and the C<--link> option to C<docker run>.
+Docker Remote API and the C<--link> option to C<docker run> .
 
 Containers that are collocated on a single container instance may be
 able to communicate with each other without requiring links or host
@@ -260,12 +276,26 @@ using security groups and VPC settings.
 
   The log configuration specification for the container. This parameter
 maps to C<LogConfig> in the Create a container section of the Docker
-Remote API and the C<--log-driver> option to docker run. Valid log
-drivers are displayed in the LogConfiguration data type. This parameter
-requires version 1.18 of the Docker Remote API or greater on your
-container instance. To check the Docker Remote API version on your
-container instance, log into your container instance and run the
-following command: C<sudo docker version | grep "Server API version">
+Remote API and the C<--log-driver> option to docker run. By default,
+containers use the same logging driver that the Docker daemon uses;
+however the container may use a different logging driver than the
+Docker daemon by specifying a log driver with this parameter in the
+container definition. To use a different logging driver for a
+container, the log system must be configured properly on the container
+instance (or on a different log server for remote logging options). For
+more information on the options for different supported log drivers,
+see Configure logging drivers in the Docker documentation.
+
+Amazon ECS currently supports a subset of the logging drivers available
+to the Docker daemon (shown in the LogConfiguration data type).
+Currently unsupported log drivers may be available in future releases
+of the Amazon ECS container agent.
+
+This parameter requires version 1.18 of the Docker Remote API or
+greater on your container instance. To check the Docker Remote API
+version on your container instance, log into your container instance
+and run the following command: C<sudo docker version | grep "Server API
+version">
 
 The Amazon ECS container agent running on a container instance must
 register the logging drivers available on that instance with the

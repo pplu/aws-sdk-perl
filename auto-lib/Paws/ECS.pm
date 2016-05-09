@@ -219,6 +219,11 @@ C<desiredCount>, Amazon ECS spawns another instantiation of the task in
 the specified cluster. To update an existing service, see
 UpdateService.
 
+In addition to maintaining the desired count of tasks in your service,
+you can optionally run your service behind a load balancer. The load
+balancer distributes traffic across the tasks that are associated with
+the service.
+
 You can optionally specify a deployment configuration for your service.
 During a deployment (which is triggered by changing the task definition
 of a service with an UpdateService operation), the service scheduler
@@ -330,8 +335,11 @@ but it does not terminate the EC2 instance; if you are finished using
 the instance, be sure to terminate it in the Amazon EC2 console to stop
 billing.
 
-When you terminate a container instance, it is automatically
-deregistered from your cluster.
+If you terminate a running container instance with a connected Amazon
+ECS container agent, the agent automatically deregisters the instance
+from your cluster (stopped container instances or instances with
+disconnected agents are not automatically deregistered when
+terminated).
 
 
 =head2 DeregisterTaskDefinition(TaskDefinition => Str)

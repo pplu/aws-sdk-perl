@@ -74,7 +74,8 @@ contains the C<arn:aws:ecs> namespace, followed by the region of the
 container instance, the AWS account ID of the container instance owner,
 the C<container-instance> namespace, and then the container instance
 ID. For example,
-arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>.
+C<arn:aws:ecs:I<region>:I<aws_account_id>:container-instance/I<container_instance_ID>
+>.
 
 
 =head2 Ec2InstanceId => Str

@@ -77,7 +77,7 @@ previous revisions in this family).
 
 =head2 TaskDefinitionArn => Str
 
-  The full Amazon Resource Name (ARN) of the of the task definition.
+  The full Amazon Resource Name (ARN) of the task definition.
 
 
 =head2 Volumes => ArrayRef[L<Paws::ECS::Volume>]

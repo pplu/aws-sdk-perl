@@ -71,9 +71,22 @@ and keep running on your cluster.
 
 =head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
-A list of load balancer objects, containing the load balancer name, the
-container name (as it appears in a container definition), and the
-container port to access from the load balancer.
+A load balancer object representing the load balancer to use with your
+service.
+
+For Elastic Load Balancing standard load balancers, this object must
+contain the load balancer name, the container name (as it appears in a
+container definition), and the container port to access from the load
+balancer. When a task from this service is placed on a container
+instance, the container instance is registered with the load balancer
+specified here.
+
+For Elastic Load Balancing application load balancers, this object must
+contain the load balancer target group ARN, the container name (as it
+appears in a container definition), and the container port to access
+from the load balancer. When a task from this service is placed on a
+container instance, the container instance and port combination is
+registered as a target in the target group specified here.
 
 
 

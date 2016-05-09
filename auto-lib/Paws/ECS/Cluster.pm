@@ -58,7 +58,7 @@ state. You can view these services with ListServices.
 contains the C<arn:aws:ecs> namespace, followed by the region of the
 cluster, the AWS account ID of the cluster owner, the C<cluster>
 namespace, and then the cluster name. For example,
-arn:aws:ecs:I<region>:I<012345678910>:cluster/I<test>.
+C<arn:aws:ecs:I<region>:I<012345678910>:cluster/I<test> >..
 
 
 =head2 ClusterName => Str
