@@ -1,3 +1,10 @@
+0.26
+ - KMS API update
+ - ECS API update
+ - CloudTrail API update
+ - S3 API update: new ListObjectsV2 method
+ - ApiGateway API update: Passthrough behaviour
+
 0.25 05 May 2016
  - Call retries are now done in more cases (Thottling errors, 500, 503, 509). PR #96 (wiof)
  - New service: Cognito SignUp/Login (CognitoIdp)
