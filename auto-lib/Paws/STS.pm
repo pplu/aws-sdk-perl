@@ -189,8 +189,8 @@ produce temporary credentials, see Requesting Temporary Security
 Credentials and Comparing the AWS STS APIs in the I<IAM User Guide>.
 
 B<Important:> You cannot call C<AssumeRole> by using AWS root account
-credentials; access is denied. You must use IAM user credentials or
-temporary security credentials to call C<AssumeRole>.
+credentials; access is denied. You must use credentials for an IAM user
+or an IAM role to call C<AssumeRole>.
 
 For cross-account access, imagine that you own multiple accounts and
 need to access resources in each account. You could create long-term
