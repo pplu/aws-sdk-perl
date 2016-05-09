@@ -91,9 +91,9 @@ this value is true, otherwise it is false.
 
   The state of the customer master key (CMK).
 
-For more information about how key state affects the use of a CMK, go
-to How Key State Affects the Use of a Customer Master Key in the I<AWS
-Key Management Service Developer Guide>.
+For more information about how key state affects the use of a CMK, see
+How Key State Affects the Use of a Customer Master Key in the I<AWS Key
+Management Service Developer Guide>.
 
 
 =head2 KeyUsage => Str

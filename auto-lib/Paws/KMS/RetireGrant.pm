@@ -42,7 +42,9 @@ by the C<CreateGrant> function.
 
 =over
 
-=item * Grant ID Example -
+=item *
+
+Grant ID Example -
 0123456789012345678901234567890123456789012345678901234567890123
 
 =back
@@ -64,11 +66,14 @@ specified ARN of the key.
 
 =over
 
-=item * Key ARN Example -
+=item *
+
+Key ARN Example -
 arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
-=item * Globally Unique Key ID Example -
-12345678-1234-1234-1234-123456789012
+=item *
+
+Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012
 
 =back
 

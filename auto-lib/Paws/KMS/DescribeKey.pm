@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A list of grant tokens.
 
-For more information, go to Grant Tokens in the I<AWS Key Management
+For more information, see Grant Tokens in the I<AWS Key Management
 Service Developer Guide>.
 
 
@@ -51,16 +51,23 @@ a key, or an alias name prefixed by "alias/".
 
 =over
 
-=item * Key ARN Example -
+=item *
+
+Key ARN Example -
 arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
-=item * Alias ARN Example -
+=item *
+
+Alias ARN Example -
 arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 
-=item * Globally Unique Key ID Example -
-12345678-1234-1234-1234-123456789012
+=item *
 
-=item * Alias Name Example - alias/MyAliasName
+Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012
+
+=item *
+
+Alias Name Example - alias/MyAliasName
 
 =back
 

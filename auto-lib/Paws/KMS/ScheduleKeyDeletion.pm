@@ -43,9 +43,13 @@ Name (ARN) of the CMK. Examples:
 
 =over
 
-=item * Unique key ID: 1234abcd-12ab-34cd-56ef-1234567890ab
+=item *
 
-=item * Key ARN:
+Unique key ID: 1234abcd-12ab-34cd-56ef-1234567890ab
+
+=item *
+
+Key ARN:
 arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab
 
 =back
