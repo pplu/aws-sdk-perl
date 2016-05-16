@@ -59,28 +59,37 @@ entity groups:
 
 =over
 
-=item * C<ResourceReference> entities are C<Ref> intrinsic functions
-that refer to resources in the template, such as C<{ "Ref" :
+=item *
+
+C<ResourceReference> entities are C<Ref> intrinsic functions that refer
+to resources in the template, such as C<{ "Ref" :
 "MyEC2InstanceResource" }>.
 
-=item * C<ParameterReference> entities are C<Ref> intrinsic functions
-that get template parameter values, such as C<{ "Ref" :
-"MyPasswordParameter" }>.
+=item *
 
-=item * C<ResourceAttribute> entities are C<Fn::GetAtt> intrinsic
-functions that get resource attribute values, such as C<{ "Fn::GetAtt"
-: [ "MyEC2InstanceResource", "PublicDnsName" ] }>.
+C<ParameterReference> entities are C<Ref> intrinsic functions that get
+template parameter values, such as C<{ "Ref" : "MyPasswordParameter"
+}>.
 
-=item * C<DirectModification> entities are changes that are made
-directly to the template.
+=item *
 
-=item * C<Automatic> entities are C<AWS::CloudFormation::Stack>
-resource types, which are also known as nested stacks. If you made no
-changes to the C<AWS::CloudFormation::Stack> resource, AWS
-CloudFormation sets the C<ChangeSource> to C<Automatic> because the
-nested stack's template might have changed. Changes to a nested stack's
-template aren't visible to AWS CloudFormation until you run an update
-on the parent stack.
+C<ResourceAttribute> entities are C<Fn::GetAtt> intrinsic functions
+that get resource attribute values, such as C<{ "Fn::GetAtt" : [
+"MyEC2InstanceResource", "PublicDnsName" ] }>.
+
+=item *
+
+C<DirectModification> entities are changes that are made directly to
+the template.
+
+=item *
+
+C<Automatic> entities are C<AWS::CloudFormation::Stack> resource types,
+which are also known as nested stacks. If you made no changes to the
+C<AWS::CloudFormation::Stack> resource, AWS CloudFormation sets the
+C<ChangeSource> to C<Automatic> because the nested stack's template
+might have changed. Changes to a nested stack's template aren't visible
+to AWS CloudFormation until you run an update on the parent stack.
 
 =back
 

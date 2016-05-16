@@ -108,9 +108,9 @@ this create stack action, such as C<AWS::EC2::Instance>,
 C<AWS::EC2::*>, or C<Custom::MyCustomInstance>. Use the following
 syntax to describe template resource types: C<AWS::*> (for all AWS
 resource), C<Custom::*> (for all custom resources),
-C<Custom::I<logical_ID>> (for a specific custom resource),
+C<Custom::I<logical_ID> > (for a specific custom resource),
 C<AWS::I<service_name>::*> (for all resources of a particular AWS
-service), and C<AWS::I<service_name>::I<resource_logical_ID>> (for a
+service), and C<AWS::I<service_name>::I<resource_logical_ID> > (for a
 specific AWS resource).
 
 If the list of resource types doesn't include a resource that you're

@@ -48,10 +48,14 @@ which are not always interchangeable:
 
 =over
 
-=item * Running stacks: You can specify either the stack's name or its
-unique stack ID.
+=item *
 
-=item * Deleted stacks: You must specify the unique stack ID.
+Running stacks: You can specify either the stack's name or its unique
+stack ID.
+
+=item *
+
+Deleted stacks: You must specify the unique stack ID.
 
 =back
 
