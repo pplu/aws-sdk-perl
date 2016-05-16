@@ -1,9 +1,15 @@
 0.26
+ - New Service: Discovery
  - KMS API update
  - ECS API update
  - CloudTrail API update
  - S3 API update: new ListObjectsV2 method
  - ApiGateway API update: Passthrough behaviour
+ - SSM API update: Modify and Describe DocumentPermission
+ - StorageGateway API update: ListTapes
+ - EC2 API update: DescribeSecurityGroupReferences and DescribeStaleSecurityGroups
+ - CloudFormation API update
+ - EMR API update: ListInstances can filter
 
 0.25 05 May 2016
  - Call retries are now done in more cases (Thottling errors, 500, 503, 509). PR #96 (wiof)
