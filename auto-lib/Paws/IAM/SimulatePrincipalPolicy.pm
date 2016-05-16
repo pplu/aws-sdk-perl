@@ -53,13 +53,14 @@ service identifier, such as C<iam:CreateUser>.
 
 =head2 CallerArn => Str
 
-The ARN of the user that you want to specify as the simulated caller of
-the APIs. If you do not specify a C<CallerArn>, it defaults to the ARN
-of the user that you specify in C<PolicySourceArn>, if you specified a
-user. If you include both a C<PolicySourceArn> (for example,
-C<arn:aws:iam::123456789012:user/David>) and a C<CallerArn> (for
-example, C<arn:aws:iam::123456789012:user/Bob>), the result is that you
-simulate calling the APIs as Bob, as if Bob had David's policies.
+The ARN of the IAM user that you want to specify as the simulated
+caller of the APIs. If you do not specify a C<CallerArn>, it defaults
+to the ARN of the user that you specify in C<PolicySourceArn>, if you
+specified a user. If you include both a C<PolicySourceArn> (for
+example, C<arn:aws:iam::123456789012:user/David>) and a C<CallerArn>
+(for example, C<arn:aws:iam::123456789012:user/Bob>), the result is
+that you simulate calling the APIs as Bob, as if Bob had David's
+policies.
 
 You can specify only the ARN of an IAM user. You cannot specify the ARN
 of an assumed role, federated user, or a service principal.
@@ -69,13 +70,16 @@ C<PolicySourceArn> is not the ARN for an IAM user. This is required so
 that the resource-based policy's C<Principal> element has a value to
 use in evaluating the policy.
 
+For more information about ARNs, see Amazon Resource Names (ARNs) and
+AWS Service Namespaces in the I<AWS General Reference>.
+
 
 
 =head2 ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]
 
 A list of context keys and corresponding values for the simulation to
-use. Whenever a context key is evaluated by a C<Condition> element in
-one of the simulated policies, the corresponding value is supplied.
+use. Whenever a context key is evaluated in one of the simulated IAM
+permission policies, the corresponding value is supplied.
 
 
 
@@ -108,6 +112,12 @@ An optional list of additional policy documents to include in the
 simulation. Each document is specified as a string containing the
 complete, valid JSON text of an IAM policy.
 
+The regex pattern for this parameter is a string of characters
+consisting of any printable ASCII character ranging from the space
+character (\u0020) through end of the ASCII character range (\u00FF).
+It also includes the special characters tab (\u0009), line feed
+(\u000A), and carriage return (\u000D).
+
 
 
 =head2 B<REQUIRED> PolicySourceArn => Str
@@ -117,6 +127,9 @@ you want to include in the simulation. If you specify a user, group, or
 role, the simulation includes all policies that are associated with
 that entity. If you specify a user, the simulation also includes all
 policies that are attached to any groups the user belongs to.
+
+For more information about ARNs, see Amazon Resource Names (ARNs) and
+AWS Service Namespaces in the I<AWS General Reference>.
 
 
 
@@ -132,6 +145,9 @@ The simulation does not automatically retrieve policies for the
 specified resources. If you want to include a resource policy in the
 simulation, then you must include the policy as a string in the
 C<ResourcePolicy> parameter.
+
+For more information about ARNs, see Amazon Resource Names (ARNs) and
+AWS Service Namespaces in the I<AWS General Reference>.
 
 
 
@@ -218,6 +234,12 @@ A resource-based policy to include in the simulation provided as a
 string. Each resource in the simulation is treated as if it had this
 policy attached. You can include only one resource-based policy in a
 simulation.
+
+The regex pattern for this parameter is a string of characters
+consisting of any printable ASCII character ranging from the space
+character (\u0020) through end of the ASCII character range (\u00FF).
+It also includes the special characters tab (\u0009), line feed
+(\u000A), and carriage return (\u000D).
 
 
 

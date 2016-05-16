@@ -40,11 +40,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 An authentication code emitted by the device.
 
+The format for this parameter is a sequence of six digits.
+
 
 
 =head2 B<REQUIRED> AuthenticationCode2 => Str
 
 A subsequent authentication code emitted by the device.
+
+The format for this parameter is a sequence of six digits.
 
 
 
@@ -52,11 +56,19 @@ A subsequent authentication code emitted by the device.
 
 Serial number that uniquely identifies the MFA device.
 
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
+
 
 
 =head2 B<REQUIRED> UserName => Str
 
 The name of the user whose MFA device you want to resynchronize.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

@@ -36,13 +36,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PolicyArn => Str
 
+The Amazon Resource Name (ARN) of the IAM policy you want to attach.
 
+For more information about ARNs, see Amazon Resource Names (ARNs) and
+AWS Service Namespaces in the I<AWS General Reference>.
 
 
 
 =head2 B<REQUIRED> UserName => Str
 
-The name (friendly name, not ARN) of the user to attach the policy to.
+The name (friendly name, not ARN) of the IAM user to attach the policy
+to.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

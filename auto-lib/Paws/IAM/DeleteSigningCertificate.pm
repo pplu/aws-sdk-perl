@@ -38,11 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The ID of the signing certificate to delete.
 
+The format of this parameter, as described by its regex pattern, is a
+string of characters that can be upper- or lower-cased letters or
+digits.
+
 
 
 =head2 UserName => Str
 
 The name of the user the signing certificate belongs to.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

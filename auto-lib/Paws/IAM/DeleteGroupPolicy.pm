@@ -39,11 +39,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The name (friendly name, not ARN) identifying the group that the policy
 is embedded in.
 
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
+
 
 
 =head2 B<REQUIRED> PolicyName => Str
 
 The name identifying the policy document to delete.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

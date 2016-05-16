@@ -37,19 +37,33 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Password => Str
 
-The new password for the specified user.
+The new password for the specified IAM user.
+
+The regex pattern for this parameter is a string of characters
+consisting of any printable ASCII character ranging from the space
+character (\u0020) through end of the ASCII character range (\u00FF).
+It also includes the special characters tab (\u0009), line feed
+(\u000A), and carriage return (\u000D). However, the format can be
+further restricted by the account administrator by setting a password
+policy on the AWS account. For more information, see
+UpdateAccountPasswordPolicy.
 
 
 
 =head2 PasswordResetRequired => Bool
 
-Require the specified user to set a new password on next sign-in.
+Allows this new password to be used only once by requiring the
+specified IAM user to set a new password on next sign-in.
 
 
 
 =head2 B<REQUIRED> UserName => Str
 
 The name of the user whose password you want to update.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

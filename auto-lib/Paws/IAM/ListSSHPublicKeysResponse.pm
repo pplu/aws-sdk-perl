@@ -38,7 +38,7 @@ request.
 
 =head2 SSHPublicKeys => ArrayRef[L<Paws::IAM::SSHPublicKeyMetadata>]
 
-A list of SSH public keys.
+A list of the SSH public keys assigned to IAM user.
 
 
 

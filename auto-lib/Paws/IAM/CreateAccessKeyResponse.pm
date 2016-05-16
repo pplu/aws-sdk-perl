@@ -16,7 +16,7 @@ Paws::IAM::CreateAccessKeyResponse
 
 =head2 B<REQUIRED> AccessKey => L<Paws::IAM::AccessKey>
 
-Information about the access key.
+A structure with details about the access key.
 
 
 

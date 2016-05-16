@@ -35,9 +35,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> OpenIDConnectProviderArn => Str
 
-The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC)
-provider to get information for. You can get a list of OIDC provider
-ARNs by using the ListOpenIDConnectProviders action.
+The Amazon Resource Name (ARN) of the OIDC provider resource object in
+IAM to get information for. You can get a list of OIDC provider
+resource ARNs by using the ListOpenIDConnectProviders action.
+
+For more information about ARNs, see Amazon Resource Names (ARNs) and
+AWS Service Namespaces in the I<AWS General Reference>.
 
 
 

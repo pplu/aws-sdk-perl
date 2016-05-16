@@ -35,9 +35,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PolicyInputList => ArrayRef[Str]
 
-A list of policies for which you want list of context keys used in
-C<Condition> elements. Each document is specified as a string
+A list of policies for which you want the list of context keys
+referenced in those policies. Each document is specified as a string
 containing the complete, valid JSON text of an IAM policy.
+
+The regex pattern for this parameter is a string of characters
+consisting of any printable ASCII character ranging from the space
+character (\u0020) through end of the ASCII character range (\u00FF).
+It also includes the special characters tab (\u0009), line feed
+(\u000A), and carriage return (\u000D).
 
 
 

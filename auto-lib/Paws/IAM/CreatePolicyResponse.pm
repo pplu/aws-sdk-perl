@@ -16,7 +16,7 @@ Paws::IAM::CreatePolicyResponse
 
 =head2 Policy => L<Paws::IAM::Policy>
 
-Information about the policy.
+A structure containing details about the new policy.
 
 
 

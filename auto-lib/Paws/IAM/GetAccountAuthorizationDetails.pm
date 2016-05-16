@@ -40,6 +40,10 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A list of entity types (user, group, role, local managed policy, or AWS
 managed policy) for filtering the results.
 
+The format for this parameter is a comma-separated (if more than one)
+list of strings. Each string value in the list must be one of the valid
+values listed below.
+
 
 
 =head2 Marker => Str

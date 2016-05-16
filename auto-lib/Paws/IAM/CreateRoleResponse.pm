@@ -16,7 +16,7 @@ Paws::IAM::CreateRoleResponse
 
 =head2 B<REQUIRED> Role => L<Paws::IAM::Role>
 
-Information about the role.
+A structure containing details about the new role.
 
 
 

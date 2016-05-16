@@ -38,7 +38,8 @@ name of the key and specifies the value (or values, if the context key
 supports multiple values) to use in the simulation. This information is
 used when evaluating the C<Condition> elements of the input policies.
 
-This data type is used as an input parameter to C<SimulatePolicy>.
+This data type is used as an input parameter to C< SimulateCustomPolicy
+> and C< SimulateCustomPolicy >.
 
 =head1 ATTRIBUTES
 

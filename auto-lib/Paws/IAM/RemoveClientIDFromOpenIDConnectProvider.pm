@@ -36,17 +36,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ClientID => Str
 
-The client ID (also known as audience) to remove from the IAM OpenID
-Connect provider. For more information about client IDs, see
+The client ID (also known as audience) to remove from the IAM OIDC
+provider resource. For more information about client IDs, see
 CreateOpenIDConnectProvider.
 
 
 
 =head2 B<REQUIRED> OpenIDConnectProviderArn => Str
 
-The Amazon Resource Name (ARN) of the IAM OpenID Connect (OIDC)
-provider to remove the client ID from. You can get a list of OIDC
-provider ARNs by using the ListOpenIDConnectProviders action.
+The Amazon Resource Name (ARN) of the IAM OIDC provider resource to
+remove the client ID from. You can get a list of OIDC provider ARNs by
+using the ListOpenIDConnectProviders action.
+
+For more information about ARNs, see Amazon Resource Names (ARNs) and
+AWS Service Namespaces in the I<AWS General Reference>.
 
 
 
