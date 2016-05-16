@@ -39,6 +39,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The name of the queue whose URL must be fetched. Maximum 80 characters;
 alphanumeric characters, hyphens (-), and underscores (_) are allowed.
 
+Queue names are case-sensitive.
+
 
 
 =head2 QueueOwnerAWSAccountId => Str

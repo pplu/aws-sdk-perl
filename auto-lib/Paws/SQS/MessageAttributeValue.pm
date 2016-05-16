@@ -61,8 +61,10 @@ compressed data, encrypted data, or images.
 =head2 B<REQUIRED> DataType => Str
 
   Amazon SQS supports the following logical data types: String, Number,
-and Binary. In addition, you can append your own custom labels. For
-more information, see Message Attribute Data Types.
+and Binary. For the Number data type, you must use StringValue.
+
+You can also append custom labels. For more information, see Message
+Attribute Data Types.
 
 
 =head2 StringListValues => ArrayRef[Str]
