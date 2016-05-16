@@ -45,6 +45,8 @@ Example: "I<500Mbps>"
 
 Default: None
 
+Values: 50M, 100M, 200M, 300M, 400M, or 500M
+
 
 
 =head2 B<REQUIRED> ConnectionName => Str

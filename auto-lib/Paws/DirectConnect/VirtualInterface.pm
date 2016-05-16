@@ -71,7 +71,7 @@ Information for generating the customer router configuration.
 
 =head2 OwnerAccount => Str
 
-
+The AWS account that will own the new virtual interface.
 
 
 

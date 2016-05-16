@@ -165,6 +165,8 @@ Returns: a L<Paws::DirectConnect::Connection> instance
 Allocates a VLAN number and a specified amount of bandwidth for use by
 a hosted connection on the given interconnect.
 
+This is intended for use by AWS Direct Connect partners only.
+
 
 =head2 AllocatePrivateVirtualInterface(ConnectionId => Str, NewPrivateVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation>, OwnerAccount => Str)
 
@@ -286,6 +288,8 @@ AllocateConnectionOnInterconnect. The end customer can then connect to
 AWS resources by creating a virtual interface on their connection,
 using the VLAN assigned to them by the AWS Direct Connect partner.
 
+This is intended for use by AWS Direct Connect partners only.
+
 
 =head2 CreatePrivateVirtualInterface(ConnectionId => Str, NewPrivateVirtualInterface => L<Paws::DirectConnect::NewPrivateVirtualInterface>)
 
@@ -333,6 +337,8 @@ Returns: a L<Paws::DirectConnect::DeleteInterconnectResponse> instance
 
   Deletes the specified interconnect.
 
+This is intended for use by AWS Direct Connect partners only.
+
 
 =head2 DeleteVirtualInterface(VirtualInterfaceId => Str)
 
@@ -363,6 +369,8 @@ Returns: a L<Paws::DirectConnect::Connections> instance
 
   Return a list of connections that have been provisioned on the given
 interconnect.
+
+This is intended for use by AWS Direct Connect partners only.
 
 
 =head2 DescribeInterconnects([InterconnectId => Str])

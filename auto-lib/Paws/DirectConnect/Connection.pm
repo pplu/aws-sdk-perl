@@ -58,13 +58,14 @@ Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C
 
 =head2 OwnerAccount => Str
 
-
+The AWS account that will own the new connection.
 
 
 
 =head2 PartnerName => Str
 
-
+The name of the AWS Direct Connect service provider associated with the
+connection.
 
 
 
