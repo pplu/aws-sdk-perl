@@ -22,6 +22,7 @@ package Paws::API::ServiceToClass;
     config => 'Config',
     datapipeline => 'DataPipeline',
     devicefarm => 'DeviceFarm',
+    discovery => 'Discovery',
     directconnect => 'DirectConnect',
     dms => 'DMS',
     ds => 'DS',

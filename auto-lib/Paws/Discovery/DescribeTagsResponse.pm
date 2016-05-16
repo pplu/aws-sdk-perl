@@ -1,0 +1,34 @@
+
+package Paws::Discovery::DescribeTagsResponse;
+  use Moose;
+  has NextToken => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'nextToken' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::ConfigurationTag]', traits => ['Unwrapped'], xmlname => 'tags' );
+
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::Discovery::DescribeTagsResponse
+
+=head1 ATTRIBUTES
+
+
+=head2 NextToken => Str
+
+The call returns a token. Use this token to get the next set of
+results.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Discovery::ConfigurationTag>]
+
+Depending on the input, a list of configuration items tagged with a
+specific tag, or a list of tags for a specific configuration item.
+
+
+
+
+=cut
+
+1;

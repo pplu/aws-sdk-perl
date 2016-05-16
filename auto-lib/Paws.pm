@@ -280,6 +280,8 @@ L<Paws::DeviceFarm>
 
 L<Paws::DirectConnect>
 
+L<Paws::Discovery>
+
 L<Paws::DMS>
 
 L<Paws::DS>
