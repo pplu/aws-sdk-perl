@@ -60,7 +60,8 @@ group in a nondefault VPC, use the security group ID.
 
 =head2 UserId => Str
 
-  The ID of an AWS account.
+  The ID of an AWS account. For a referenced security group in another
+VPC, the account ID of the referenced security group is returned.
 
 [EC2-Classic] Required when adding or removing rules that reference a
 security group in another AWS account.

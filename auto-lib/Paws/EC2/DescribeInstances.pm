@@ -481,7 +481,8 @@ Default: Describes all your instances.
 The maximum number of results to return in a single call. To retrieve
 the remaining results, make another call with the returned C<NextToken>
 value. This value can be between 5 and 1000. You cannot specify this
-parameter and the instance IDs parameter in the same call.
+parameter and the instance IDs parameter or tag filters in the same
+call.
 
 
 

@@ -120,6 +120,37 @@ with the NAT gateway.
 
   The state of the NAT gateway.
 
+=over
+
+=item *
+
+C<pending>: The NAT gateway is being created and is not ready to
+process traffic.
+
+=item *
+
+C<failed>: The NAT gateway could not be created. Check the
+C<failureCode> and C<failureMessage> fields for the reason.
+
+=item *
+
+C<available>: The NAT gateway is able to process traffic. This status
+remains until you delete the NAT gateway, and does not indicate the
+health of the NAT gateway.
+
+=item *
+
+C<deleting>: The NAT gateway is in the process of being terminated and
+may still be processing traffic.
+
+=item *
+
+C<deleted>: The NAT gateway has been terminated and is no longer
+processing traffic.
+
+=back
+
+
 
 =head2 SubnetId => Str
 
