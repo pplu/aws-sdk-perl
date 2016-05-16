@@ -66,9 +66,9 @@ region in your C<Host> header in the request. For more information
 about available regions and endpoints for AWS Storage Gateway, see
 Regions and Endpoints in the I<Amazon Web Services Glossary>.
 
-I<Valid Values>: "us-east-1", "us-west-1", "us-west-2", "eu-west-1",
-"eu-central-1", "ap-northeast-1", "ap-southeast-1", "ap-southeast-2",
-"sa-east-1"
+Valid Values: "us-east-1", "us-west-1", "us-west-2", "eu-west-1",
+"eu-central-1", "ap-northeast-1", "ap-northeast-2", "ap-southeast-1",
+"ap-southeast-2", "sa-east-1"
 
 
 
@@ -93,7 +93,7 @@ be changed after activation. The default value is C<STORED>.
 The value that indicates the type of medium changer to use for
 gateway-VTL. This field is optional.
 
-I<Valid Values>: "STK-L700", "AWS-Gateway-VTL"
+Valid Values: "STK-L700", "AWS-Gateway-VTL"
 
 
 
@@ -102,7 +102,7 @@ I<Valid Values>: "STK-L700", "AWS-Gateway-VTL"
 The value that indicates the type of tape drive to use for gateway-VTL.
 This field is optional.
 
-I<Valid Values>: "IBM-ULT3580-TD5"
+Valid Values: "IBM-ULT3580-TD5"
 
 
 

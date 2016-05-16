@@ -1,6 +1,10 @@
 package Paws::StorageGateway::VolumeInfo;
   use Moose;
+  has GatewayARN => (is => 'ro', isa => 'Str');
+  has GatewayId => (is => 'ro', isa => 'Str');
   has VolumeARN => (is => 'ro', isa => 'Str');
+  has VolumeId => (is => 'ro', isa => 'Str');
+  has VolumeSizeInBytes => (is => 'ro', isa => 'Int');
   has VolumeType => (is => 'ro', isa => 'Str');
 1;
 
@@ -21,25 +25,64 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::VolumeInfo object:
 
-  $service_obj->Method(Att1 => { VolumeARN => $value, ..., VolumeType => $value  });
+  $service_obj->Method(Att1 => { GatewayARN => $value, ..., VolumeType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGateway::VolumeInfo object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->VolumeARN
+  $result->Att1->GatewayARN
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes a storage volume object.
 
 =head1 ATTRIBUTES
 
 
-=head2 VolumeARN => Str
+=head2 GatewayARN => Str
 
   
+
+
+=head2 GatewayId => Str
+
+  The unique identifier assigned to your gateway during activation. This
+ID becomes part of the gateway Amazon Resource Name (ARN), which you
+use as input for other operations.
+
+Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and
+hyphens (-).
+
+
+=head2 VolumeARN => Str
+
+  The Amazon Resource Name (ARN) for the storage volume. For example, the
+following is a valid ARN:
+
+C<arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABB>
+
+Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and
+hyphens (-).
+
+
+=head2 VolumeId => Str
+
+  The unique identifier assigned to the volume. This ID becomes part of
+the volume Amazon Resource Name (ARN), which you use as input for other
+operations.
+
+Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and
+hyphens (-).
+
+
+=head2 VolumeSizeInBytes => Int
+
+  The size, in bytes, of the volume.
+
+Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and
+hyphens (-).
 
 
 =head2 VolumeType => Str

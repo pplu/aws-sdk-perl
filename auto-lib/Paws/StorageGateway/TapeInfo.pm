@@ -1,17 +1,17 @@
-package Paws::StorageGateway::GatewayInfo;
+package Paws::StorageGateway::TapeInfo;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
-  has GatewayId => (is => 'ro', isa => 'Str');
-  has GatewayName => (is => 'ro', isa => 'Str');
-  has GatewayOperationalState => (is => 'ro', isa => 'Str');
-  has GatewayType => (is => 'ro', isa => 'Str');
+  has TapeARN => (is => 'ro', isa => 'Str');
+  has TapeBarcode => (is => 'ro', isa => 'Str');
+  has TapeSizeInBytes => (is => 'ro', isa => 'Int');
+  has TapeStatus => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::StorageGateway::GatewayInfo
+Paws::StorageGateway::TapeInfo
 
 =head1 USAGE
 
@@ -22,20 +22,20 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::StorageGateway::GatewayInfo object:
+As an example, if Att1 is expected to be a Paws::StorageGateway::TapeInfo object:
 
-  $service_obj->Method(Att1 => { GatewayARN => $value, ..., GatewayType => $value  });
+  $service_obj->Method(Att1 => { GatewayARN => $value, ..., TapeStatus => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGateway::GatewayInfo object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGateway::TapeInfo object:
 
   $result = $service_obj->Method(...);
   $result->Att1->GatewayARN
 
 =head1 DESCRIPTION
 
-Describes a gateway object.
+Describes a virtual tape.
 
 =head1 ATTRIBUTES
 
@@ -46,28 +46,24 @@ Describes a gateway object.
 operation to return a list of gateways for your account and region.
 
 
-=head2 GatewayId => Str
+=head2 TapeARN => Str
 
-  The unique identifier assigned to your gateway during activation. This
-ID becomes part of the gateway Amazon Resource Name (ARN), which you
-use as input for other operations.
+  The Amazon Resource Name (ARN) of a virtual tape.
 
 
-=head2 GatewayName => Str
+=head2 TapeBarcode => Str
 
-  The name of the gateway.
-
-
-=head2 GatewayOperationalState => Str
-
-  The state of the gateway.
-
-Valid Values: DISABLED or ACTIVE
+  The barcode that identifies a specific virtual tape.
 
 
-=head2 GatewayType => Str
+=head2 TapeSizeInBytes => Int
 
-  The type of the gateway.
+  The size, in bytes, of a virtual tape.
+
+
+=head2 TapeStatus => Str
+
+  The status of the tape.
 
 
 

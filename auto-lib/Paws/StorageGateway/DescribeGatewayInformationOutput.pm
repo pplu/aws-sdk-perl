@@ -30,7 +30,7 @@ Paws::StorageGateway::DescribeGatewayInformationOutput
 =head2 GatewayId => Str
 
 The unique identifier assigned to your gateway during activation. This
-id becomes part of the gateway Amazon Resources Name (ARN) which you
+ID becomes part of the gateway Amazon Resource Name (ARN), which you
 use as input for other operations.
 
 

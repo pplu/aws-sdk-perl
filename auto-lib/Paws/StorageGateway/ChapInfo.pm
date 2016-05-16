@@ -62,7 +62,7 @@ CHAP with the initiator (e.g. Windows client).
 
   The Amazon Resource Name (ARN) of the volume.
 
-I<Valid Values>: 50 to 500 lowercase letters, numbers, periods (.), and
+Valid Values: 50 to 500 lowercase letters, numbers, periods (.), and
 hyphens (-).
 
 
