@@ -2,6 +2,8 @@
 package Paws::SSM::SendCommand;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str');
+  has DocumentHash => (is => 'ro', isa => 'Str');
+  has DocumentHashType => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
@@ -45,6 +47,23 @@ User-specified information about the command, such as a brief
 description of what the command should do.
 
 
+
+=head2 DocumentHash => Str
+
+The Sha256 or Sha1 hash created by the system when the document was
+created.
+
+Sha1 hashes have been deprecated.
+
+
+
+=head2 DocumentHashType => Str
+
+Sha256 or Sha1.
+
+Sha1 hashes have been deprecated.
+
+Valid values are: C<"Sha256">, C<"Sha1">
 
 =head2 B<REQUIRED> DocumentName => Str
 

@@ -54,6 +54,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeDocument', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDocumentPermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeDocumentPermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeInstanceInformation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DescribeInstanceInformation', @_);
@@ -84,6 +89,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListDocuments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyDocumentPermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ModifyDocumentPermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendCommand {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::SendCommand', @_);
@@ -95,7 +105,7 @@ package Paws::SSM;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CancelCommand CreateAssociation CreateAssociationBatch CreateDocument DeleteAssociation DeleteDocument DescribeAssociation DescribeDocument DescribeInstanceInformation GetDocument ListAssociations ListCommandInvocations ListCommands ListDocuments SendCommand UpdateAssociationStatus / }
+  sub operations { qw/CancelCommand CreateAssociation CreateAssociationBatch CreateDocument DeleteAssociation DeleteDocument DescribeAssociation DescribeDocument DescribeDocumentPermission DescribeInstanceInformation GetDocument ListAssociations ListCommandInvocations ListCommands ListDocuments ModifyDocumentPermission SendCommand UpdateAssociationStatus / }
 
 1;
 
@@ -123,10 +133,14 @@ Paws::SSM - Perl Interface to AWS Amazon Simple Systems Management Service
 
 =head1 DESCRIPTION
 
-Simple Systems Manager (SSM) enables you to remotely manage the
-configuration of your Amazon EC2 instance. Using SSM, you can run
-scripts or commands using either EC2 Run Command or SSM Config. (SSM
-Config is currently available only for Windows instances.)
+This is the Amazon Simple Systems Manager (SSM) API Reference. SSM
+enables you to remotely manage the configuration of your Amazon EC2
+instance using scripts or commands with either an on-demand solution
+called I<SSM Run Command> or a lightweight instance configuration
+solution called I<SSM Config>.
+
+This references is intended to be used with the SSM User Guide for
+Linux or Windows.
 
 B<Run Command>
 
@@ -135,7 +149,7 @@ You can use pre-defined Amazon SSM documents to perform the actions
 listed later in this section, or you can create your own documents.
 With these documents, you can remotely configure your instances by
 sending commands using the B<Commands> page in the Amazon EC2 console,
-AWS Tools for Windows PowerShell, or the AWS CLI.
+AWS Tools for Windows PowerShell, the AWS CLI, or AWS SDKs.
 
 Run Command reports the status of the command execution for each
 instance targeted by a command. You can also audit the command
@@ -166,63 +180,78 @@ your instances. SSM Config is available using the AWS CLI or the AWS
 Tools for Windows PowerShell. For more information, see Managing
 Windows Instance Configuration.
 
-SSM Config and Run Command include the following pre-defined documents.
+SSM Config and SSM Run Command include the following pre-defined
+documents.
 
-Name Description Platform
+B<Linux>
 
-AWS-RunShellScript
+=over
 
-Run shell scripts
+=item *
 
-Linux
+B<AWS-RunShellScript> to run shell scripts
 
-AWS-UpdateSSMAgent
+=item *
 
-Update the Amazon SSM agent
+B<AWS-UpdateSSMAgent> to update the Amazon SSM agent
 
-Linux
+=back
 
-AWS-JoinDirectoryServiceDomain
+B<Windows>
 
-Join an AWS Directory
+=over
 
-Windows
+=item *
 
-AWS-RunPowerShellScript
+B<AWS-JoinDirectoryServiceDomain> to join an AWS Directory
 
-Run PowerShell commands or scripts
+=item *
 
-Windows
+B<AWS-RunPowerShellScript> to run PowerShell commands or scripts
 
-AWS-UpdateEC2Config
+=item *
 
-Update the EC2Config service
+B<AWS-UpdateEC2Config> to update the EC2Config service
 
-Windows
+=item *
 
-AWS-ConfigureWindowsUpdate
+B<AWS-ConfigureWindowsUpdate> to configure Windows Update settings
 
-Configure Windows Update settings
+=item *
 
-Windows
+B<AWS-InstallApplication> to install, repair, or uninstall software
+using an MSI package
 
-AWS-InstallApplication
+=item *
 
-Install, repair, or uninstall software using an MSI package
+B<AWS-InstallPowerShellModule> to install PowerShell modules
 
-Windows
+=item *
 
-AWS-InstallPowerShellModule
+B<AWS-ConfigureCloudWatch> to configure Amazon CloudWatch Logs to
+monitor applications and systems
 
-Install PowerShell modules
+=item *
 
-Windows
+B<AWS-ListWindowsInventory> to collect information about an EC2
+instance running in Windows.
 
-AWS-ConfigureCloudWatch
+=item *
 
-Configure Amazon CloudWatch Logs to monitor applications and systems
+B<AWS-FindWindowsUpdates> to scan an instance and determines which
+updates are missing.
 
-Windows
+=item *
+
+B<AWS-InstallMissingWindowsUpdates> to install missing updates on your
+EC2 instance.
+
+=item *
+
+B<AWS-InstallSpecificWindowsUpdates> to install one or more specific
+updates.
+
+=back
 
 The commands or scripts specified in SSM documents run with
 administrative privilege on your instances because the Amazon SSM agent
@@ -239,6 +268,22 @@ to "AWS-*" documents, especially the AWS-RunShellScript document on
 Linux and the AWS-RunPowerShellScript document on Windows, to trusted
 administrators only. You can create SSM documents for specific tasks
 and delegate access to non-administrators.
+
+For information about creating and sharing SSM documents, see the
+following topics in the SSM User Guide:
+
+=over
+
+=item *
+
+Creating SSM Documents and Sharing SSM Documents (Linux)
+
+=item *
+
+Creating SSM Documents and Sharing SSM Documents (Windows)
+
+=back
+
 
 =head1 METHODS
 
@@ -345,6 +390,18 @@ Returns: a L<Paws::SSM::DescribeDocumentResult> instance
   Describes the specified SSM document.
 
 
+=head2 DescribeDocumentPermission(Name => Str, PermissionType => Str)
+
+Each argument is described in detail in: L<Paws::SSM::DescribeDocumentPermission>
+
+Returns: a L<Paws::SSM::DescribeDocumentPermissionResponse> instance
+
+  Describes the permissions for an SSM document. If you created the
+document, you are the owner. If a document is shared, it can either be
+shared privately (by specifying a userE<rsquo>s AWS account ID) or
+publicly (I<All>).
+
+
 =head2 DescribeInstanceInformation([InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>], MaxResults => Int, NextToken => Str])
 
 Each argument is described in detail in: L<Paws::SSM::DescribeInstanceInformation>
@@ -410,7 +467,19 @@ Returns: a L<Paws::SSM::ListDocumentsResult> instance
   Describes one or more of your SSM documents.
 
 
-=head2 SendCommand(DocumentName => Str, InstanceIds => ArrayRef[Str], [Comment => Str, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, Parameters => L<Paws::SSM::Parameters>, TimeoutSeconds => Int])
+=head2 ModifyDocumentPermission(Name => Str, PermissionType => Str, [AccountIdsToAdd => ArrayRef[Str], AccountIdsToRemove => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::SSM::ModifyDocumentPermission>
+
+Returns: a L<Paws::SSM::ModifyDocumentPermissionResponse> instance
+
+  Share a document publicly or privately. If you share a document
+privately, you must specify the AWS user account IDs for those people
+who can use the document. If you share a document publicly, you must
+specify I<All> as the account ID.
+
+
+=head2 SendCommand(DocumentName => Str, InstanceIds => ArrayRef[Str], [Comment => Str, DocumentHash => Str, DocumentHashType => Str, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, Parameters => L<Paws::SSM::Parameters>, TimeoutSeconds => Int])
 
 Each argument is described in detail in: L<Paws::SSM::SendCommand>
 
