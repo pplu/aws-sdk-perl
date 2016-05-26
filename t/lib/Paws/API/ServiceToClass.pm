@@ -6,6 +6,7 @@ package Paws::API::ServiceToClass;
     acm => 'ACM',
     apigateway => 'ApiGateway',
     autoscaling => 'AutoScaling',
+   'application-autoscaling' => 'ApplicationAutoScaling',
     cloudformation => 'CloudFormation',
     cloudfront => 'CloudFront',
     cloudhsm => 'CloudHSM',

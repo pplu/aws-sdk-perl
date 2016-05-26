@@ -1,5 +1,6 @@
 0.26
  - New Service: Discovery
+ - New Service: ApplicationAutoScaling
  - KMS API update
  - ECS API update
  - CloudTrail API update
@@ -10,6 +11,11 @@
  - EC2 API update: DescribeSecurityGroupReferences and DescribeStaleSecurityGroups
  - CloudFormation API update
  - EMR API update: ListInstances can filter
+ - Workspaces API update: Tagging operations
+ - EC2 API update: GetConsoleScreenshot and ProvisionedBandwidth
+ - Firehose API update: RetryOptions
+ - RDS API update: Describe and Modify DBClusterSnapshotAttributes
+ - ECS API update: filter by task status
 
 0.25 05 May 2016
  - Call retries are now done in more cases (Thottling errors, 500, 503, 509). PR #96 (wiof)

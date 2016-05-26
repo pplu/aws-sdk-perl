@@ -238,6 +238,8 @@ L<Paws::ACM>
 
 L<Paws::ApiGateway>
 
+L<Paws::ApplicationAutoScaling>
+
 L<Paws::AutoScaling>
 
 L<Paws::CloudFormation>
