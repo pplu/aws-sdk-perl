@@ -70,13 +70,13 @@ Describes an update for a destination in Amazon ES.
 
 =head2 RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>
 
-
+Describes an update for a destination in Amazon Redshift.
 
 
 
 =head2 S3DestinationUpdate => L<Paws::Firehose::S3DestinationUpdate>
 
-
+Describes an update for a destination in Amazon S3.
 
 
 

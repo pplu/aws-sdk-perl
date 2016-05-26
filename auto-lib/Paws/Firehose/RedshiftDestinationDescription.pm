@@ -3,6 +3,7 @@ package Paws::Firehose::RedshiftDestinationDescription;
   has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
   has ClusterJDBCURL => (is => 'ro', isa => 'Str', required => 1);
   has CopyCommand => (is => 'ro', isa => 'Paws::Firehose::CopyCommand', required => 1);
+  has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::RedshiftRetryOptions');
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
   has S3DestinationDescription => (is => 'ro', isa => 'Paws::Firehose::S3DestinationDescription', required => 1);
   has Username => (is => 'ro', isa => 'Str', required => 1);
@@ -54,6 +55,13 @@ Describes a destination in Amazon Redshift.
 =head2 B<REQUIRED> CopyCommand => L<Paws::Firehose::CopyCommand>
 
   The C<COPY> command.
+
+
+=head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
+
+  Configures retry behavior in the event that Firehose is unable to
+deliver documents to Amazon Redshift. Default value is 3600 (60
+minutes).
 
 
 =head2 B<REQUIRED> RoleARN => Str

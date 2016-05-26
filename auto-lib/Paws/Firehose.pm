@@ -110,10 +110,12 @@ account can have the same name.
 By default, you can create up to 20 delivery streams per region.
 
 A delivery stream can only be configured with a single destination,
-Amazon S3 or Amazon Redshift. For correct CreateDeliveryStream request
-syntax, specify only one destination configuration parameter: either
-B<ElasticsearchDestinationConfiguration>,
-B<RedshiftDestinationConfiguration> or B<S3DestinationConfiguration>
+Amazon S3, Amazon Elasticsearch Service, or Amazon Redshift. For
+correct CreateDeliveryStream request syntax, specify only one
+destination configuration parameter: either
+B<S3DestinationConfiguration>,
+B<ElasticsearchDestinationConfiguration>, or
+B<RedshiftDestinationConfiguration>.
 
 As part of B<S3DestinationConfiguration>, optional values
 B<BufferingHints>, B<EncryptionConfiguration>, and B<CompressionFormat>
@@ -130,20 +132,26 @@ A few notes about B<RedshiftDestinationConfiguration>:
 
 =over
 
-=item * An Amazon Redshift destination requires an S3 bucket as
-intermediate location, as Firehose first delivers data to S3 and then
-uses C<COPY> syntax to load data into an Amazon Redshift table. This is
-specified in the B<RedshiftDestinationConfiguration.S3Configuration>
-parameter element.
+=item *
 
-=item * The compression formats C<SNAPPY> or C<ZIP> cannot be specified
-in B<RedshiftDestinationConfiguration.S3Configuration> because the
-Amazon Redshift C<COPY> operation that reads from the S3 bucket doesn't
+An Amazon Redshift destination requires an S3 bucket as intermediate
+location, as Firehose first delivers data to S3 and then uses C<COPY>
+syntax to load data into an Amazon Redshift table. This is specified in
+the B<RedshiftDestinationConfiguration.S3Configuration> parameter
+element.
+
+=item *
+
+The compression formats C<SNAPPY> or C<ZIP> cannot be specified in
+B<RedshiftDestinationConfiguration.S3Configuration> because the Amazon
+Redshift C<COPY> operation that reads from the S3 bucket doesn't
 support these compression formats.
 
-=item * We strongly recommend that the username and password provided
-is used exclusively for Firehose purposes, and that the permissions for
-the account are restricted for Amazon Redshift C<INSERT> permissions.
+=item *
+
+We strongly recommend that the username and password provided is used
+exclusively for Firehose purposes, and that the permissions for the
+account are restricted for Amazon Redshift C<INSERT> permissions.
 
 =back
 

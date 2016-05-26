@@ -4,6 +4,7 @@ package Paws::Firehose::RedshiftDestinationUpdate;
   has ClusterJDBCURL => (is => 'ro', isa => 'Str');
   has CopyCommand => (is => 'ro', isa => 'Paws::Firehose::CopyCommand');
   has Password => (is => 'ro', isa => 'Str');
+  has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::RedshiftRetryOptions');
   has RoleARN => (is => 'ro', isa => 'Str');
   has S3Update => (is => 'ro', isa => 'Paws::Firehose::S3DestinationUpdate');
   has Username => (is => 'ro', isa => 'Str');
@@ -60,6 +61,13 @@ Describes an update for a destination in Amazon Redshift.
 =head2 Password => Str
 
   The user password.
+
+
+=head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
+
+  Configures retry behavior in the event that Firehose is unable to
+deliver documents to Amazon Redshift. Default value is 3600 (60
+minutes).
 
 
 =head2 RoleARN => Str

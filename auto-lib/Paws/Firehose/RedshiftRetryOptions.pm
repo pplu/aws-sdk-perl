@@ -1,4 +1,4 @@
-package Paws::Firehose::ElasticsearchRetryOptions;
+package Paws::Firehose::RedshiftRetryOptions;
   use Moose;
   has DurationInSeconds => (is => 'ro', isa => 'Int');
 1;
@@ -7,7 +7,7 @@ package Paws::Firehose::ElasticsearchRetryOptions;
 
 =head1 NAME
 
-Paws::Firehose::ElasticsearchRetryOptions
+Paws::Firehose::RedshiftRetryOptions
 
 =head1 USAGE
 
@@ -18,13 +18,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Firehose::ElasticsearchRetryOptions object:
+As an example, if Att1 is expected to be a Paws::Firehose::RedshiftRetryOptions object:
 
   $service_obj->Method(Att1 => { DurationInSeconds => $value, ..., DurationInSeconds => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::ElasticsearchRetryOptions object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::RedshiftRetryOptions object:
 
   $result = $service_obj->Method(...);
   $result->Att1->DurationInSeconds
@@ -32,18 +32,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::E
 =head1 DESCRIPTION
 
 Configures retry behavior in the event that Firehose is unable to
-deliver documents to Amazon ES.
+deliver documents to Amazon Redshift.
 
 =head1 ATTRIBUTES
 
 
 =head2 DurationInSeconds => Int
 
-  After an initial failure to deliver to Amazon ES, the total amount of
-time during which Firehose re-attempts delivery (including the first
-attempt). After this time has elapsed, the failed documents are written
-to Amazon S3. Default value is 300 seconds (5 minutes). A value of 0
-(zero) results in no retries.
+  The length of time during which Firehose retries delivery after a
+failure, starting from the initial request and including the first
+attempt. The default value is 3600 seconds (60 minutes). Firehose does
+not retry if the value of C<DurationInSeconds> is 0 (zero) or if the
+first delivery attempt takes longer than the current value.
 
 
 
