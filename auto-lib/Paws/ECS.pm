@@ -455,7 +455,7 @@ Returns: a L<Paws::ECS::ListServicesResponse> instance
   Lists the services that are running in a specified cluster.
 
 
-=head2 ListTaskDefinitionFamilies([FamilyPrefix => Str, MaxResults => Int, NextToken => Str])
+=head2 ListTaskDefinitionFamilies([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Status => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitionFamilies>
 
@@ -463,8 +463,12 @@ Returns: a L<Paws::ECS::ListTaskDefinitionFamiliesResponse> instance
 
   Returns a list of task definition families that are registered to your
 account (which may include task definition families that no longer have
-any C<ACTIVE> task definitions). You can filter the results with the
-C<familyPrefix> parameter.
+any C<ACTIVE> task definition revisions).
+
+You can filter out task definition families that do not contain any
+C<ACTIVE> task definition revisions by setting the C<status> parameter
+to C<ACTIVE>. You can also filter the results with the C<familyPrefix>
+parameter.
 
 
 =head2 ListTaskDefinitions([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Sort => Str, Status => Str])

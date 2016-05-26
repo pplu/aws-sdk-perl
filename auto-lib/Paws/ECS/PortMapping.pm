@@ -50,7 +50,7 @@ automatically assigned host port. If you specify a container port and
 not a host port, your container automatically receives a host port in
 the ephemeral port range (for more information, see C<hostPort>). Port
 mappings that are automatically assigned in this way do not count
-toward the 50 reserved ports limit of a container instance.
+toward the 100 reserved ports limit of a container instance.
 
 
 =head2 HostPort => Int
@@ -77,9 +77,9 @@ was previously specified in a running task is also reserved while the
 task is running (after a task stops, the host port is released).The
 current reserved ports are displayed in the C<remainingResources> of
 DescribeContainerInstances output, and a container instance may have up
-to 50 reserved ports at a time, including the default reserved ports
-(automatically assigned ports do not count toward the 50 reserved ports
-limit).
+to 100 reserved ports at a time, including the default reserved ports
+(automatically assigned ports do not count toward the 100 reserved
+ports limit).
 
 
 =head2 Protocol => Str
