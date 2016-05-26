@@ -578,6 +578,10 @@ This code is distributed under the Apache 2 License. The full text of the licens
 
 =head1 CONTRIBUITIONS
 
+
+CAPSiDE (http://www.capside.com) for letting Paws be contributed in an open source model 
+and giving me time to build and maintain it regularly
+
 Luis Alberto Gimenez (@agimenez) for 
  - The git-fu cleaning up the "pull other sdks" code
  - Credential Providers code
