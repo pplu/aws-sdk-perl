@@ -23,8 +23,9 @@ results.
 
 =head2 Tags => ArrayRef[L<Paws::Discovery::ConfigurationTag>]
 
-Depending on the input, a list of configuration items tagged with a
-specific tag, or a list of tags for a specific configuration item.
+Depending on the input, this is a list of configuration items tagged
+with a specific tag, or a list of tags for a specific configuration
+item.
 
 
 

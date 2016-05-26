@@ -1,4 +1,4 @@
-package Paws::Discovery::ExportStatusMap;
+package Paws::Discovery::DescribeConfigurationsAttribute;
   use Moose;
   with 'Paws::API::StrToNativeMapParser';
 
@@ -9,7 +9,7 @@ package Paws::Discovery::ExportStatusMap;
 
 =head1 NAME
 
-Paws::Discovery::ExportStatusMap
+Paws::Discovery::DescribeConfigurationsAttribute
 
 =head1 USAGE
 
@@ -20,13 +20,13 @@ This class represents one of two things:
 Use the attributes of this class as arguments to methods. You shouldn't make instances of this class. 
 Each attribute should be used as a named argument in the calls that expect this type of object.
 
-As an example, if Att1 is expected to be a Paws::Discovery::ExportStatusMap object:
+As an example, if Att1 is expected to be a Paws::Discovery::DescribeConfigurationsAttribute object:
 
   $service_obj->Method(Att1 => { key1 => $value, ..., keyN => $value  });
 
 =head3 Results returned from an API call
 
-Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::ExportStatusMap object:
+Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::DescribeConfigurationsAttribute object:
 
   $result = $service_obj->Method(...);
   $result->Att1->Map->{ key1 }

@@ -37,9 +37,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 =head1 DESCRIPTION
 
 Information about agents associated with the userE<rsquo>s AWS account.
-Information includes agent IDs, IP addresses, MAC addresses, agent
-health, hostname where the agent resides, and agent version for each
-agent.
+Information includes agent IDs, IP addresses, media access control
+(MAC) addresses, agent health, hostname where the agent resides, and
+agent version for each agent.
 
 =head1 ATTRIBUTES
 
@@ -56,7 +56,7 @@ agent.
 
 =head2 ConnectorId => Str
 
-  
+  This data type is currently not valid.
 
 
 =head2 Health => Str
@@ -66,13 +66,13 @@ agent.
 
 =head2 HostName => Str
 
-  The name of the host where the agent resides. The host can be a server,
-virtual machine, or an AWS EC2 instance.
+  The name of the host where the agent resides. The host can be a server
+or virtual machine.
 
 
 =head2 Version => Str
 
-  The agent version
+  The agent version.
 
 
 

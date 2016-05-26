@@ -45,7 +45,7 @@ AWS user account.
 
 =head2 MaxResults => Int
 
-The total number of items to return. The maximum value is 100.
+The total number of agents to return. The maximum value is 100.
 
 
 

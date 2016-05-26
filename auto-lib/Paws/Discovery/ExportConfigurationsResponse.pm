@@ -15,7 +15,7 @@ Paws::Discovery::ExportConfigurationsResponse
 
 =head2 ExportId => Str
 
-A unique identifier which you can use to query the export status.
+A unique identifier that you can use to query the export status.
 
 
 

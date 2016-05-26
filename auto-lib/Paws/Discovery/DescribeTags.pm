@@ -1,7 +1,7 @@
 
 package Paws::Discovery::DescribeTags;
   use Moose;
-  has Filter => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::TagFilter]', traits => ['NameInRequest'], request_name => 'filter' );
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::TagFilter]', traits => ['NameInRequest'], request_name => 'filters' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
 
@@ -35,14 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 Filter => ArrayRef[L<Paws::Discovery::TagFilter>]
+=head2 Filters => ArrayRef[L<Paws::Discovery::TagFilter>]
 
-You can filter the list using a key, value format. For example:
-
-C<{"key": "serverType", "value": "webServer"}>
-
-You can separate these items by using logical operators. Allowed
-filters include tagkey, tagValue, and configid.
+You can filter the list using a I<key>-I<value> format. You can
+separate these items by using logical operators. Allowed filters
+include C<tagKey>, C<tagValue>, and C<configurationId>.
 
 
 

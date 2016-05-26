@@ -16,7 +16,8 @@ Paws::Discovery::ListConfigurationsResponse
 
 =head2 Configurations => ArrayRef[L<Paws::Discovery::Configuration>]
 
-Returns a list of configuration item IDs.
+Returns configuration details, including the configuration ID,
+attribute names, and attribute values.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::Discovery::StopDataCollectionByAgentIdsResponse;
   use Moose;
-  has AgentsConfigStatus => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentConfigStatus]', traits => ['Unwrapped'], xmlname => 'agentsConfigStatus' );
+  has AgentsConfigurationStatus => (is => 'ro', isa => 'ArrayRef[Paws::Discovery::AgentConfigurationStatus]', traits => ['Unwrapped'], xmlname => 'agentsConfigurationStatus' );
 
 
 ### main pod documentation begin ###
@@ -13,7 +13,7 @@ Paws::Discovery::StopDataCollectionByAgentIdsResponse
 =head1 ATTRIBUTES
 
 
-=head2 AgentsConfigStatus => ArrayRef[L<Paws::Discovery::AgentConfigStatus>]
+=head2 AgentsConfigurationStatus => ArrayRef[L<Paws::Discovery::AgentConfigurationStatus>]
 
 Information about agents that were instructed to stop collecting data.
 Information includes the agent ID, a description of the operation

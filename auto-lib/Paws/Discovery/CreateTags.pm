@@ -43,7 +43,7 @@ A list of configuration items that you want to tag.
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Discovery::Tag>]
 
 Tags that you want to associate with one or more configuration items.
-Specify the tags that you want to create in a I<key>,I<value> format.
+Specify the tags that you want to create in a I<key>-I<value> format.
 For example:
 
 C<{"key": "serverType", "value": "webServer"}>

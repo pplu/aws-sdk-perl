@@ -18,8 +18,9 @@ Paws::Discovery::DescribeAgentsResponse
 
 Lists AWS agents by ID or lists all agents associated with your user
 account if you did not specify an agent ID. The output includes agent
-IDs, IP addresses, MAC addresses, agent health, host name where the
-agent resides, and the version number of each agent.
+IDs, IP addresses, media access control (MAC) addresses, agent health,
+host name where the agent resides, and the version number of each
+agent.
 
 
 

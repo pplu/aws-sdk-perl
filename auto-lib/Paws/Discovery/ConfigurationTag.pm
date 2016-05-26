@@ -3,6 +3,7 @@ package Paws::Discovery::ConfigurationTag;
   has ConfigurationId => (is => 'ro', isa => 'Str', xmlname => 'configurationId', request_name => 'configurationId', traits => ['Unwrapped','NameInRequest']);
   has ConfigurationType => (is => 'ro', isa => 'Str', xmlname => 'configurationType', request_name => 'configurationType', traits => ['Unwrapped','NameInRequest']);
   has Key => (is => 'ro', isa => 'Str', xmlname => 'key', request_name => 'key', traits => ['Unwrapped','NameInRequest']);
+  has TimeOfCreation => (is => 'ro', isa => 'Str', xmlname => 'timeOfCreation', request_name => 'timeOfCreation', traits => ['Unwrapped','NameInRequest']);
   has Value => (is => 'ro', isa => 'Str', xmlname => 'value', request_name => 'value', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -48,12 +49,18 @@ list of keys and values.
 
 =head2 ConfigurationType => Str
 
-  A descriptor. For example, I<serverType>.
+  A type of IT asset that you want to tag.
 
 
 =head2 Key => Str
 
-  A type of tag to filter on. For example I<serverType>.
+  A type of tag to filter on. For example, I<serverType>.
+
+
+=head2 TimeOfCreation => Str
+
+  The time the configuration tag was created in Coordinated Universal
+Time (UTC).
 
 
 =head2 Value => Str

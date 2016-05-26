@@ -43,7 +43,7 @@ A list of configuration items with tags that you want to delete.
 =head2 Tags => ArrayRef[L<Paws::Discovery::Tag>]
 
 Tags that you want to delete from one or more configuration items.
-Specify the tags that you want to delete in a I<key>, I<value> format.
+Specify the tags that you want to delete in a I<key>-I<value> format.
 For example:
 
 C<{"key": "serverType", "value": "webServer"}>

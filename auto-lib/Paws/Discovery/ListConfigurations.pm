@@ -44,9 +44,11 @@ Valid values are: C<"SERVER">, C<"PROCESS">, C<"CONNECTION">
 
 =head2 Filters => ArrayRef[L<Paws::Discovery::Filter>]
 
-You can filter the list using a key, value format. For example:
+You can filter the list using a I<key>-I<value> format. For example:
 
 C<{"key": "serverType", "value": "webServer"}>
+
+You can separate these items by using logical operators.
 
 
 

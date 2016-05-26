@@ -1,7 +1,7 @@
 package Paws::Discovery::TagFilter;
   use Moose;
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Values => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Values => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'values', request_name => 'values', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
 
 ### main pod documentation begin ###
@@ -32,7 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Discovery::
 
 =head1 DESCRIPTION
 
-A means of limiting responses when searching for tags.
+The name of a tag filter. Valid names are: C<tagKey>, C<tagValue>,
+C<configurationId>.
 
 =head1 ATTRIBUTES
 
