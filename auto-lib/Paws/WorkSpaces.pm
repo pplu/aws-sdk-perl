@@ -14,9 +14,24 @@ package Paws::WorkSpaces;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub CreateTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::CreateTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateWorkspaces {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkSpaces::CreateWorkspaces', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DeleteTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkSpaces::DescribeTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeWorkspaceBundles {
@@ -50,7 +65,7 @@ package Paws::WorkSpaces;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CreateWorkspaces DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaces RebootWorkspaces RebuildWorkspaces TerminateWorkspaces / }
+  sub operations { qw/CreateTags CreateWorkspaces DeleteTags DescribeTags DescribeWorkspaceBundles DescribeWorkspaceDirectories DescribeWorkspaces RebootWorkspaces RebuildWorkspaces TerminateWorkspaces / }
 
 1;
 
@@ -86,6 +101,15 @@ parameters, and errors.
 
 =head1 METHODS
 
+=head2 CreateTags(ResourceId => Str, Tags => ArrayRef[L<Paws::WorkSpaces::Tag>])
+
+Each argument is described in detail in: L<Paws::WorkSpaces::CreateTags>
+
+Returns: a L<Paws::WorkSpaces::CreateTagsResult> instance
+
+  Creates tags for a WorkSpace.
+
+
 =head2 CreateWorkspaces(Workspaces => ArrayRef[L<Paws::WorkSpaces::WorkspaceRequest>])
 
 Each argument is described in detail in: L<Paws::WorkSpaces::CreateWorkspaces>
@@ -96,6 +120,24 @@ Returns: a L<Paws::WorkSpaces::CreateWorkspacesResult> instance
 
 This operation is asynchronous and returns before the WorkSpaces are
 created.
+
+
+=head2 DeleteTags(ResourceId => Str, TagKeys => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DeleteTags>
+
+Returns: a L<Paws::WorkSpaces::DeleteTagsResult> instance
+
+  Deletes tags from a WorkSpace.
+
+
+=head2 DescribeTags(ResourceId => Str)
+
+Each argument is described in detail in: L<Paws::WorkSpaces::DescribeTags>
+
+Returns: a L<Paws::WorkSpaces::DescribeTagsResult> instance
+
+  Describes tags for a WorkSpace.
 
 
 =head2 DescribeWorkspaceBundles([BundleIds => ArrayRef[Str], NextToken => Str, Owner => Str])
