@@ -6,6 +6,7 @@ package Paws::EC2::NatGateway;
   has FailureMessage => (is => 'ro', isa => 'Str', xmlname => 'failureMessage', traits => ['Unwrapped']);
   has NatGatewayAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::NatGatewayAddress]', xmlname => 'natGatewayAddressSet', traits => ['Unwrapped']);
   has NatGatewayId => (is => 'ro', isa => 'Str', xmlname => 'natGatewayId', traits => ['Unwrapped']);
+  has ProvisionedBandwidth => (is => 'ro', isa => 'Paws::EC2::ProvisionedBandwidth', xmlname => 'provisionedBandwidth', traits => ['Unwrapped']);
   has State => (is => 'ro', isa => 'Str', xmlname => 'state', traits => ['Unwrapped']);
   has SubnetId => (is => 'ro', isa => 'Str', xmlname => 'subnetId', traits => ['Unwrapped']);
   has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
@@ -114,6 +115,12 @@ with the NAT gateway.
 =head2 NatGatewayId => Str
 
   The ID of the NAT gateway.
+
+
+=head2 ProvisionedBandwidth => L<Paws::EC2::ProvisionedBandwidth>
+
+  Reserved. If you need to sustain traffic greater than the documented
+limits, contact us through the Support Center.
 
 
 =head2 State => Str

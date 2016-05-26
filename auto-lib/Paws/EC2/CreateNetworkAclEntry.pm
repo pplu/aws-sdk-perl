@@ -100,7 +100,8 @@ Valid values are: C<"allow">, C<"deny">
 The rule number for the entry (for example, 100). ACL entries are
 processed in ascending order by rule number.
 
-Constraints: Positive integer from 1 to 32766
+Constraints: Positive integer from 1 to 32766. The range 32767 to 65535
+is reserved for internal use.
 
 
 
