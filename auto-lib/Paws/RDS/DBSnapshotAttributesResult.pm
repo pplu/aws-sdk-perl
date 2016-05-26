@@ -33,11 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSnap
 =head1 DESCRIPTION
 
 Contains the results of a successful call to the
-DescribeDBSnapshotAttributes API.
+DescribeDBSnapshotAttributes API action.
 
 Manual DB snapshot attributes are used to authorize other AWS accounts
 to copy or restore a manual DB snapshot. For more information, see the
-ModifyDBSnapshotAttribute API.
+ModifyDBSnapshotAttribute API action.
 
 =head1 ATTRIBUTES
 

@@ -42,19 +42,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DBInstanceIdentifier => Str
 
-A DB instance identifier to retrieve the list of DB snapshots for. This
-parameter cannot be used in conjunction with C<DBSnapshotIdentifier>.
-This parameter is not case-sensitive.
+The ID of the DB instance to retrieve the list of DB snapshots for.
+This parameter cannot be used in conjunction with
+C<DBSnapshotIdentifier>. This parameter is not case-sensitive.
 
 Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter
+Must contain from 1 to 63 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -71,14 +77,22 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters.
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 255 alphanumeric characters.
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
 
-=item * If this is the identifier of an automated snapshot, the
-C<SnapshotType> parameter must also be specified.
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
+
+=item *
+
+If this identifier is for an automated snapshot, the C<SnapshotType>
+parameter must also be specified.
 
 =back
 
@@ -93,22 +107,25 @@ This parameter is not currently supported.
 
 =head2 IncludePublic => Bool
 
-True to include manual DB snapshots that are public and can be copied
-or restored by any AWS account; otherwise false. The default is false.
+Set this value to C<true> to include manual DB snapshots that are
+public and can be copied or restored by any AWS account, otherwise set
+this value to C<false>. The default is C<false>.
 
-An manual DB snapshot is shared as public by the
+You can share a manual DB snapshot as public by using the
 ModifyDBSnapshotAttribute API.
 
 
 
 =head2 IncludeShared => Bool
 
-True to include shared manual DB snapshots from other AWS accounts that
-this AWS account has been given permission to copy or restore;
-otherwise false. The default is false.
+Set this value to C<true> to include shared manual DB snapshots from
+other AWS accounts that this AWS account has been given permission to
+copy or restore, otherwise set this value to C<false>. The default is
+C<false>.
 
-An AWS account is given permission to restore a manual DB snapshot from
-another AWS account by the ModifyDBSnapshotAttribute API.
+You can give an AWS account permission to restore a manual DB snapshot
+from another AWS account by using the ModifyDBSnapshotAttribute API
+action.
 
 
 
@@ -136,35 +153,42 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 SnapshotType => Str
 
-The type of snapshots that will be returned. You can specify one of the
+The type of snapshots to be returned. You can specify one of the
 following values:
 
 =over
 
-=item * C<automated> - Return all DB snapshots that have been
-automatically taken by Amazon RDS for my AWS account.
+=item *
 
-=item * C<manual> - Return all DB snapshots that have been taken by my
+C<automated> - Return all DB snapshots that have been automatically
+taken by Amazon RDS for my AWS account.
+
+=item *
+
+C<manual> - Return all DB snapshots that have been taken by my AWS
+account.
+
+=item *
+
+C<shared> - Return all manual DB snapshots that have been shared to my
 AWS account.
 
-=item * C<shared> - Return all manual DB snapshots that have been
-shared to my AWS account.
+=item *
 
-=item * C<public> - Return all DB snapshots that have been marked as
-public.
+C<public> - Return all DB snapshots that have been marked as public.
 
 =back
 
-If you do not specify a C<SnapshotType>, then both automated and manual
-snapshots are returned. You can include shared snapshots with these
-results by setting the C<IncludeShared> parameter to C<true>. You can
-include public snapshots with these results by setting the
+If you don't specify a C<SnapshotType> value, then both automated and
+manual snapshots are returned. You can include shared snapshots with
+these results by setting the C<IncludeShared> parameter to C<true>. You
+can include public snapshots with these results by setting the
 C<IncludePublic> parameter to C<true>.
 
-The C<IncludeShared> and C<IncludePublic> parameters do not apply for
+The C<IncludeShared> and C<IncludePublic> parameters don't apply for
 C<SnapshotType> values of C<manual> or C<automated>. The
-C<IncludePublic> parameter does not apply when C<SnapshotType> is set
-to C<shared>. the C<IncludeShared> parameter does not apply when
+C<IncludePublic> parameter doesn't apply when C<SnapshotType> is set to
+C<shared>. The C<IncludeShared> parameter doesn't apply when
 C<SnapshotType> is set to C<public>.
 
 

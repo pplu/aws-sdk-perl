@@ -4,6 +4,8 @@ package Paws::RDS::DescribeDBClusterSnapshots;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
+  has IncludePublic => (is => 'ro', isa => 'Bool');
+  has IncludeShared => (is => 'ro', isa => 'Bool');
   has Marker => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has SnapshotType => (is => 'ro', isa => 'Str');
@@ -40,7 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DBClusterIdentifier => Str
 
-A DB cluster identifier to retrieve the list of DB cluster snapshots
+The ID of the DB cluster to retrieve the list of DB cluster snapshots
 for. This parameter cannot be used in conjunction with the
 C<DBClusterSnapshotIdentifier> parameter. This parameter is not
 case-sensitive.
@@ -49,11 +51,17 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter
+Must contain from 1 to 63 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -70,14 +78,22 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters
+=item *
 
-=item * First character must be a letter
+Must be 1 to 255 alphanumeric characters
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
 
-=item * If this is the identifier of an automated snapshot, the
-C<SnapshotType> parameter must also be specified.
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
+
+=item *
+
+If this identifier is for an automated snapshot, the C<SnapshotType>
+parameter must also be specified.
 
 =back
 
@@ -87,6 +103,31 @@ C<SnapshotType> parameter must also be specified.
 =head2 Filters => ArrayRef[L<Paws::RDS::Filter>]
 
 This parameter is not currently supported.
+
+
+
+=head2 IncludePublic => Bool
+
+Set this value to C<true> to include manual DB cluster snapshots that
+are public and can be copied or restored by any AWS account, otherwise
+set this value to C<false>. The default is C<false>. The default is
+false.
+
+You can share a manual DB cluster snapshot as public by using the
+ModifyDBClusterSnapshotAttribute API action.
+
+
+
+=head2 IncludeShared => Bool
+
+Set this value to C<true> to include shared manual DB cluster snapshots
+from other AWS accounts that this AWS account has been given permission
+to copy or restore, otherwise set this value to C<false>. The default
+is C<false>.
+
+You can give an AWS account permission to restore a manual DB cluster
+snapshot from another AWS account by the
+ModifyDBClusterSnapshotAttribute API action.
 
 
 
@@ -114,9 +155,44 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 SnapshotType => Str
 
-The type of DB cluster snapshots that will be returned. Values can be
-C<automated> or C<manual>. If this parameter is not specified, the
-returned results will include all snapshot types.
+The type of DB cluster snapshots to be returned. You can specify one of
+the following values:
+
+=over
+
+=item *
+
+C<automated> - Return all DB cluster snapshots that have been
+automatically taken by Amazon RDS for my AWS account.
+
+=item *
+
+C<manual> - Return all DB cluster snapshots that have been taken by my
+AWS account.
+
+=item *
+
+C<shared> - Return all manual DB cluster snapshots that have been
+shared to my AWS account.
+
+=item *
+
+C<public> - Return all DB cluster snapshots that have been marked as
+public.
+
+=back
+
+If you don't specify a C<SnapshotType> value, then both automated and
+manual DB cluster snapshots are returned. You can include shared DB
+cluster snapshots with these results by setting the C<IncludeShared>
+parameter to C<true>. You can include public DB cluster snapshots with
+these results by setting the C<IncludePublic> parameter to C<true>.
+
+The C<IncludeShared> and C<IncludePublic> parameters don't apply for
+C<SnapshotType> values of C<manual> or C<automated>. The
+C<IncludePublic> parameter doesn't apply when C<SnapshotType> is set to
+C<shared>. The C<IncludeShared> parameter doesn't apply when
+C<SnapshotType> is set to C<public>.
 
 
 

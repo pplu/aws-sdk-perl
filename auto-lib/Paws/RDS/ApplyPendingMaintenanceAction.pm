@@ -52,12 +52,18 @@ Valid values:
 
 =over
 
-=item * C<immediate> - Apply the maintenance action immediately.
+=item *
 
-=item * C<next-maintenance> - Apply the maintenance action during the
-next maintenance window for the resource.
+C<immediate> - Apply the maintenance action immediately.
 
-=item * C<undo-opt-in> - Cancel any existing C<next-maintenance> opt-in
+=item *
+
+C<next-maintenance> - Apply the maintenance action during the next
+maintenance window for the resource.
+
+=item *
+
+C<undo-opt-in> - Cancel any existing C<next-maintenance> opt-in
 requests.
 
 =back

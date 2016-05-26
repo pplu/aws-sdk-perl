@@ -42,13 +42,21 @@ Constraints:
 
 =over
 
-=item * Must be the name of an existing DB parameter group
+=item *
 
-=item * Must be 1 to 255 alphanumeric characters
+Must be the name of an existing DB parameter group
 
-=item * First character must be a letter
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+Must be 1 to 255 alphanumeric characters
+
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 

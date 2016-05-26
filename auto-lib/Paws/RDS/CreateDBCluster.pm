@@ -17,6 +17,7 @@ package Paws::RDS::CreateDBCluster;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -70,7 +71,9 @@ Constraints:
 
 =over
 
-=item * Must be a value from 1 to 35
+=item *
+
+Must be a value from 1 to 35
 
 =back
 
@@ -101,11 +104,17 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens.
+=item *
 
-=item * First character must be a letter.
+Must contain from 1 to 63 alphanumeric characters or hyphens.
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -123,11 +132,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters
+=item *
 
-=item * First character must be a letter
+Must be 1 to 255 alphanumeric characters
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -189,11 +204,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 16 alphanumeric characters.
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 16 alphanumeric characters.
 
-=item * Cannot be a reserved word for the chosen database engine.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot be a reserved word for the chosen database engine.
 
 =back
 
@@ -243,13 +264,21 @@ Constraints:
 
 =over
 
-=item * Must be in the format C<hh24:mi-hh24:mi>.
+=item *
 
-=item * Times should be in Universal Coordinated Time (UTC).
+Must be in the format C<hh24:mi-hh24:mi>.
 
-=item * Must not conflict with the preferred maintenance window.
+=item *
 
-=item * Must be at least 30 minutes.
+Times should be in Universal Coordinated Time (UTC).
+
+=item *
+
+Must not conflict with the preferred maintenance window.
+
+=item *
+
+Must be at least 30 minutes.
 
 =back
 
@@ -271,6 +300,13 @@ I<Amazon RDS User Guide.>
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Constraints: Minimum 30-minute window.
+
+
+
+=head2 ReplicationSourceIdentifier => Str
+
+The Amazon Resource Name (ARN) of the source DB cluster if this DB
+cluster is created as a Read Replica.
 
 
 

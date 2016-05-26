@@ -66,11 +66,17 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 255 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter
+Must contain from 1 to 255 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -121,12 +127,16 @@ following will occur:
 
 =over
 
-=item * If the DB cluster snapshot is encrypted, then the restored DB
-cluster is encrypted using the KMS key that was used to encrypt the DB
-cluster snapshot.
+=item *
 
-=item * If the DB cluster snapshot is not encrypted, then the restored
-DB cluster is not encrypted.
+If the DB cluster snapshot is encrypted, then the restored DB cluster
+is encrypted using the KMS key that was used to encrypt the DB cluster
+snapshot.
+
+=item *
+
+If the DB cluster snapshot is not encrypted, then the restored DB
+cluster is not encrypted.
 
 =back
 
@@ -160,11 +170,17 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter
+Must contain from 1 to 63 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 

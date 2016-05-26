@@ -40,13 +40,21 @@ actions:
 
 =over
 
-=item * CreateDBSubnetGroup
+=item *
 
-=item * ModifyDBSubnetGroup
+CreateDBSubnetGroup
 
-=item * DescribeDBSubnetGroups
+=item *
 
-=item * DeleteDBSubnetGroup
+ModifyDBSubnetGroup
+
+=item *
+
+DescribeDBSubnetGroups
+
+=item *
+
+DeleteDBSubnetGroup
 
 =back
 

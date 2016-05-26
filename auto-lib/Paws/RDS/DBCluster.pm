@@ -61,15 +61,29 @@ actions:
 
 =over
 
-=item * CreateDBCluster
+=item *
 
-=item * DeleteDBCluster
+CreateDBCluster
 
-=item * FailoverDBCluster
+=item *
 
-=item * ModifyDBCluster
+DeleteDBCluster
 
-=item * RestoreDBClusterFromSnapshot
+=item *
+
+FailoverDBCluster
+
+=item *
+
+ModifyDBCluster
+
+=item *
+
+RestoreDBClusterFromSnapshot
+
+=item *
+
+RestoreDBClusterToPointInTime
 
 =back
 

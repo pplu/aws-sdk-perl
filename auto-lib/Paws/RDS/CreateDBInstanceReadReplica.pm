@@ -109,22 +109,32 @@ Constraints:
 
 =over
 
-=item * Can only be specified if the source DB instance identifier
-specifies a DB instance in another region.
+=item *
 
-=item * The specified DB subnet group must be in the same region in
-which the operation is running.
+Can only be specified if the source DB instance identifier specifies a
+DB instance in another region.
 
-=item * All Read Replicas in one region that are created from the same
-source DB instance must either:
+=item *
+
+The specified DB subnet group must be in the same region in which the
+operation is running.
+
+=item *
+
+All Read Replicas in one region that are created from the same source
+DB instance must either:E<gt>
 
 =over
 
-=item * Specify DB subnet groups from the same VPC. All these Read
-Replicas will be created in the same VPC.
+=item *
 
-=item * Not specify a DB subnet group. All these Read Replicas will be
-created outside of any VPC.
+Specify DB subnet groups from the same VPC. All these Read Replicas
+will be created in the same VPC.
+
+=item *
+
+Not specify a DB subnet group. All these Read Replicas will be created
+outside of any VPC.
 
 =back
 
@@ -148,7 +158,7 @@ be initially allocated for the DB instance.
 
 The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the Read Replica. To disable collecting
-Enhanced Monitoring metrics, specify 0. The default is 60.
+Enhanced Monitoring metrics, specify 0. The default is 0.
 
 If C<MonitoringRoleArn> is specified, then you must also set
 C<MonitoringInterval> to a value other than 0.
@@ -201,9 +211,13 @@ each case.
 
 =over
 
-=item * B<Default VPC:>true
+=item *
 
-=item * B<VPC:>false
+B<Default VPC:>true
+
+=item *
+
+B<VPC:>false
 
 =back
 
@@ -224,24 +238,36 @@ Constraints:
 
 =over
 
-=item * Must be the identifier of an existing MySQL, MariaDB, or
-PostgreSQL DB instance.
+=item *
 
-=item * Can specify a DB instance that is a MySQL Read Replica only if
-the source is running MySQL 5.6.
+Must be the identifier of an existing MySQL, MariaDB, or PostgreSQL DB
+instance.
 
-=item * Can specify a DB instance that is a PostgreSQL Read Replica
-only if the source is running PostgreSQL 9.3.5.
+=item *
 
-=item * The specified DB instance must have automatic backups enabled,
-its backup retention period must be greater than 0.
+Can specify a DB instance that is a MySQL Read Replica only if the
+source is running MySQL 5.6.
 
-=item * If the source DB instance is in the same region as the Read
-Replica, specify a valid DB instance identifier.
+=item *
 
-=item * If the source DB instance is in a different region than the
-Read Replica, specify a valid DB instance ARN. For more information, go
-to Constructing a Amazon RDS Amazon Resource Name (ARN).
+Can specify a DB instance that is a PostgreSQL Read Replica only if the
+source is running PostgreSQL 9.3.5.
+
+=item *
+
+The specified DB instance must have automatic backups enabled, its
+backup retention period must be greater than 0.
+
+=item *
+
+If the source DB instance is in the same region as the Read Replica,
+specify a valid DB instance identifier.
+
+=item *
+
+If the source DB instance is in a different region than the Read
+Replica, specify a valid DB instance ARN. For more information, go to
+Constructing a Amazon RDS Amazon Resource Name (ARN).
 
 =back
 

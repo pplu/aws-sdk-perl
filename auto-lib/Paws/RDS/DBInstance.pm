@@ -80,11 +80,17 @@ actions:
 
 =over
 
-=item * CreateDBInstance
+=item *
 
-=item * DeleteDBInstance
+CreateDBInstance
 
-=item * ModifyDBInstance
+=item *
+
+DeleteDBInstance
+
+=item *
+
+ModifyDBInstance
 
 =back
 
@@ -334,9 +340,13 @@ each case.
 
 =over
 
-=item * B<Default VPC:>true
+=item *
 
-=item * B<VPC:>false
+B<Default VPC:>true
+
+=item *
+
+B<VPC:>false
 
 =back
 
