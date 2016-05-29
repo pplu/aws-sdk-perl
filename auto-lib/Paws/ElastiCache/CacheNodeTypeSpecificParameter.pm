@@ -2,6 +2,7 @@ package Paws::ElastiCache::CacheNodeTypeSpecificParameter;
   use Moose;
   has AllowedValues => (is => 'ro', isa => 'Str');
   has CacheNodeTypeSpecificValues => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::CacheNodeTypeSpecificValue]');
+  has ChangeType => (is => 'ro', isa => 'Str');
   has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has IsModifiable => (is => 'ro', isa => 'Bool');
@@ -55,6 +56,14 @@ I<cache.m1.small> type.
 
   A list of cache node types and their corresponding values for this
 parameter.
+
+
+=head2 ChangeType => Str
+
+  ChangeType indicates whether a change to the parameter will be applied
+immediately or requires a reboot for the change to be applied. You can
+force a reboot or wait until the next maintenance window's reboot. For
+more information, see Rebooting a Cluster.
 
 
 =head2 DataType => Str

@@ -38,9 +38,13 @@ Represents the output of one of the following actions:
 
 =over
 
-=item * I<CreateCacheSubnetGroup>
+=item *
 
-=item * I<ModifyCacheSubnetGroup>
+I<CreateCacheSubnetGroup>
+
+=item *
+
+I<ModifyCacheSubnetGroup>
 
 =back
 

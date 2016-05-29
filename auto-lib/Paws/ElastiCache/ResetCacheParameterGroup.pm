@@ -2,7 +2,7 @@
 package Paws::ElastiCache::ResetCacheParameterGroup;
   use Moose;
   has CacheParameterGroupName => (is => 'ro', isa => 'Str', required => 1);
-  has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ParameterNameValue]', required => 1);
+  has ParameterNameValues => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::ParameterNameValue]');
   has ResetAllParameters => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
@@ -41,18 +41,19 @@ The name of the cache parameter group to reset.
 
 
 
-=head2 B<REQUIRED> ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>]
+=head2 ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>]
 
-An array of parameter names to be reset. If you are not resetting the
-entire cache parameter group, you must specify at least one parameter
-name.
+An array of parameter names to reset to their default values. If
+I<ResetAllParameters> is I<false>, you must specify the name of at
+least one parameter to reset.
 
 
 
 =head2 ResetAllParameters => Bool
 
 If I<true>, all parameters in the cache parameter group will be reset
-to default values. If I<false>, no such action occurs.
+to their default values. If I<false>, only the parameters listed by
+I<ParameterNameValues> are reset to their default values.
 
 Valid values: C<true> | C<false>
 

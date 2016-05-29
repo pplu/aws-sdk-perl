@@ -77,9 +77,13 @@ ElastiCache Multi-AZ replication groups are not supported on:
 
 =over
 
-=item * Redis versions earlier than 2.8.6.
+=item *
 
-=item * T1 and T2 cache node types.
+Redis versions earlier than 2.8.6.
+
+=item *
+
+T1 and T2 cache node types.
 
 =back
 
@@ -164,19 +168,33 @@ is a 60 minute period. Valid values for C<ddd> are:
 
 =over
 
-=item * C<sun>
+=item *
 
-=item * C<mon>
+C<sun>
 
-=item * C<tue>
+=item *
 
-=item * C<wed>
+C<mon>
 
-=item * C<thu>
+=item *
 
-=item * C<fri>
+C<tue>
 
-=item * C<sat>
+=item *
+
+C<wed>
+
+=item *
+
+C<thu>
+
+=item *
+
+C<fri>
+
+=item *
+
+C<sat>
 
 =back
 
@@ -223,10 +241,8 @@ group snapshots before deleting them. For example, if you set
 I<SnapshotRetentionLimit> to 5, then a snapshot that was taken today
 will be retained for 5 days before being deleted.
 
-B<Important>
-
-If the value of SnapshotRetentionLimit is set to zero (0), backups are
-turned off.
+B<Important> If the value of SnapshotRetentionLimit is set to zero (0),
+backups are turned off.
 
 
 

@@ -46,9 +46,13 @@ ElastiCache Multi-AZ replication groups are not supported on:
 
 =over
 
-=item * Redis versions earlier than 2.8.6.
+=item *
 
-=item * T1 and T2 cache node types.
+Redis versions earlier than 2.8.6.
+
+=item *
+
+T1 and T2 cache node types.
 
 =back
 
