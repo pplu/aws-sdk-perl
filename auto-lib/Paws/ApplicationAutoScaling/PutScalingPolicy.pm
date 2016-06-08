@@ -82,8 +82,7 @@ Valid values are: C<"ecs">
 
 The configuration for the step scaling policy. This parameter is
 required if you are creating a new policy. For more information, see
-StepScalingPolicyConfiguration and StepAdjustment in the I<Application
-Auto Scaling API Reference>.
+StepScalingPolicyConfiguration and StepAdjustment.
 
 
 

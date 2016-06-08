@@ -106,6 +106,24 @@ View history of your scaling events
 
 =back
 
+Application Auto Scaling is available in the following regions:
+
+=over
+
+=item *
+
+C<us-east-1>
+
+=item *
+
+C<us-west-2>
+
+=item *
+
+C<eu-west-1>
+
+=back
+
 
 =head1 METHODS
 
