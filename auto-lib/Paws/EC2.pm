@@ -1104,6 +1104,20 @@ package Paws::EC2;
 
     return 'Paws::EC2::DescribeSnapshots'->_returns->new(Snapshots => $array);
   }
+  sub DescribeAllSpotFleetRequests {
+    my $self = shift;
+
+    my $result = $self->DescribeSpotFleetRequests(@_);
+    my $array = [];
+    push @$array, @{ $result->SpotFleetRequestConfigs };
+
+    while ($result->NextToken) {
+      $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
+      push @$array, @{ $result->SpotFleetRequestConfigs };
+    }
+
+    return 'Paws::EC2::DescribeSpotFleetRequests'->_returns->new(SpotFleetRequestConfigs => $array);
+  }
   sub DescribeAllSpotPriceHistory {
     my $self = shift;
 
@@ -3729,11 +3743,10 @@ Each argument is described in detail in: L<Paws::EC2::GetConsoleScreenshot>
 
 Returns: a L<Paws::EC2::GetConsoleScreenshotResult> instance
 
-  Retrieve a JPG-format screenshot of an instance to help with
+  Retrieve a JPG-format screenshot of a running instance to help with
 troubleshooting.
 
-For API calls, the returned content is base64-encoded. For command line
-tools, the decoding is performed for you.
+The returned content is base64-encoded.
 
 
 =head2 GetPasswordData(InstanceId => Str, [DryRun => Bool])

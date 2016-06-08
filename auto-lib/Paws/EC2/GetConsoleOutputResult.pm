@@ -24,7 +24,7 @@ The ID of the instance.
 
 =head2 Output => Str
 
-The console output, Base64 encoded. If using a command line tool, the
+The console output, base64-encoded. If using a command line tool, the
 tools decode the output for you.
 
 
