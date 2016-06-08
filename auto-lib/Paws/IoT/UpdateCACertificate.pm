@@ -7,7 +7,7 @@ package Paws::IoT::UpdateCACertificate;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateCACertificate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/cacertificate/{certificateId}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/cacertificate/{caCertificateId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'PUT');
   class_has _returns => (isa => 'Str', is => 'ro');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -45,6 +45,9 @@ The CA certificate identifier.
 =head2 B<REQUIRED> NewStatus => Str
 
 The updated status of the CA certificate.
+
+B<Note:> The status value REGISTER_INACTIVE is deprecated and should
+not be used.
 
 Valid values are: C<"ACTIVE">, C<"INACTIVE">
 

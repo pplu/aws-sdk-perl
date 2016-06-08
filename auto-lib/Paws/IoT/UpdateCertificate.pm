@@ -50,6 +50,9 @@ B<Note:> Setting the status to PENDING_TRANSFER will result in an
 exception being thrown. PENDING_TRANSFER is a status used internally by
 AWS IoT. It is not intended for developer use.
 
+B<Note:> The status value REGISTER_INACTIVE is deprecated and should
+not be used.
+
 Valid values are: C<"ACTIVE">, C<"INACTIVE">, C<"REVOKED">, C<"PENDING_TRANSFER">, C<"REGISTER_INACTIVE">
 
 

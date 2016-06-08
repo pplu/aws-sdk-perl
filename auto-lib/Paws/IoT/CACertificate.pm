@@ -58,6 +58,9 @@ A CA certificate.
 
   The status of the CA certificate.
 
+The status value REGISTER_INACTIVE is deprecated and should not be
+used.
+
 
 
 =head1 SEE ALSO

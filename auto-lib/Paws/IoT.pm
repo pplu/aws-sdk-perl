@@ -184,6 +184,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListPolicyPrincipals {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListPolicyPrincipals', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListPolicyVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListPolicyVersions', @_);
@@ -265,7 +270,7 @@ package Paws::IoT;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateTopicRule DeleteCACertificate DeleteCertificate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteThing DeleteTopicRule DescribeCACertificate DescribeCertificate DescribeEndpoint DescribeThing DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetLoggingOptions GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule ListCACertificates ListCertificates ListCertificatesByCA ListPolicies ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListTopicRules RegisterCACertificate RegisterCertificate RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCACertificate UpdateCertificate UpdateThing / }
+  sub operations { qw/AcceptCertificateTransfer AttachPrincipalPolicy AttachThingPrincipal CancelCertificateTransfer CreateCertificateFromCsr CreateKeysAndCertificate CreatePolicy CreatePolicyVersion CreateThing CreateTopicRule DeleteCACertificate DeleteCertificate DeletePolicy DeletePolicyVersion DeleteRegistrationCode DeleteThing DeleteTopicRule DescribeCACertificate DescribeCertificate DescribeEndpoint DescribeThing DetachPrincipalPolicy DetachThingPrincipal DisableTopicRule EnableTopicRule GetLoggingOptions GetPolicy GetPolicyVersion GetRegistrationCode GetTopicRule ListCACertificates ListCertificates ListCertificatesByCA ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListThingPrincipals ListThings ListTopicRules RegisterCACertificate RegisterCertificate RejectCertificateTransfer ReplaceTopicRule SetDefaultPolicyVersion SetLoggingOptions TransferCertificate UpdateCACertificate UpdateCertificate UpdateThing / }
 
 1;
 
@@ -377,8 +382,6 @@ show how to create a batch of certificates given a batch of CSRs.
 
 Assuming a set of CSRs are located inside of the directory
 my-csr-directory:
-
-E<gt>
 
 On Linux and OS X, the command is:
 
@@ -582,8 +585,6 @@ Each argument is described in detail in: L<Paws::IoT::DescribeEndpoint>
 Returns: a L<Paws::IoT::DescribeEndpointResponse> instance
 
   Returns a unique endpoint specific to the AWS account making the call.
-You specify the following URI when updating state information for your
-thing: https://I<endpoint>/things/I<thingName>/shadow.
 
 
 =head2 DescribeThing(ThingName => Str)
@@ -720,13 +721,22 @@ Returns: a L<Paws::IoT::ListPoliciesResponse> instance
   Lists your policies.
 
 
+=head2 ListPolicyPrincipals(PolicyName => Str, [AscendingOrder => Bool, Marker => Str, PageSize => Int])
+
+Each argument is described in detail in: L<Paws::IoT::ListPolicyPrincipals>
+
+Returns: a L<Paws::IoT::ListPolicyPrincipalsResponse> instance
+
+  Lists the principals associated with the specified policy.
+
+
 =head2 ListPolicyVersions(PolicyName => Str)
 
 Each argument is described in detail in: L<Paws::IoT::ListPolicyVersions>
 
 Returns: a L<Paws::IoT::ListPolicyVersionsResponse> instance
 
-  Lists the versions of the specified policy, and identifies the default
+  Lists the versions of the specified policy and identifies the default
 version.
 
 

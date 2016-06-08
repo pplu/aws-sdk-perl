@@ -6,7 +6,7 @@ package Paws::IoT::DeleteCACertificate;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteCACertificate');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/cacertificate/{certificateId}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/cacertificate/{caCertificateId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::IoT::DeleteCACertificateResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
