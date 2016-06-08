@@ -60,8 +60,8 @@ Service (Amazon S3).
 
 =head2 DataRearrangement => Str
 
-A JSON string that captures the splitting rearrangement requirement of
-the C<DataSource>.
+A JSON string that represents the splitting and rearrangement
+requirement used when this C<DataSource> was created.
 
 
 
@@ -95,15 +95,15 @@ expressed in epoch time.
 
 =head2 LogUri => Str
 
-A link to the file containining logs of either create C<DataSource>
-operation.
+A link to the file containing logs of C<CreateDataSourceFrom*>
+operations.
 
 
 
 =head2 Message => Str
 
-The description of the most recent details about creating the
-C<DataSource>.
+The user-supplied description of the most recent details about creating
+the C<DataSource>.
 
 
 
@@ -144,8 +144,8 @@ the following values:
 
 =over
 
-=item * C<PENDING> - Amazon Machine Language (Amazon ML) submitted a
-request to create a C<DataSource>.
+=item * C<PENDING> - Amazon ML submitted a request to create a
+C<DataSource>.
 
 =item * C<INPROGRESS> - The creation process is underway.
 

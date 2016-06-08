@@ -68,7 +68,7 @@ of observations.
 
 The location of an Amazon Simple Storage Service (Amazon S3) bucket or
 directory to store the batch prediction results. The following
-substrings are not allowed in the s3 key portion of the "outputURI"
+substrings are not allowed in the C<s3 key> portion of the C<outputURI>
 field: ':', '//', '/./', '/../'.
 
 Amazon ML needs permissions to store and retrieve the logs on your

@@ -23,7 +23,7 @@ least one more page follows.
 
 =head2 Results => ArrayRef[L<Paws::MachineLearning::Evaluation>]
 
-A list of Evaluation that meet the search criteria.
+A list of C<Evaluation> that meet the search criteria.
 
 
 

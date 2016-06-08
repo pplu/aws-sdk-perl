@@ -23,7 +23,7 @@ least one more page follows.
 
 =head2 Results => ArrayRef[L<Paws::MachineLearning::MLModel>]
 
-A list of MLModel that meet the search criteria.
+A list of C<MLModel> that meet the search criteria.
 
 
 

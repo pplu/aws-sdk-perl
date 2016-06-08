@@ -15,8 +15,9 @@ Paws::MachineLearning::CreateDataSourceFromS3Output
 
 =head2 DataSourceId => Str
 
-A user-supplied ID that uniquely identifies the datasource. This value
-should be identical to the value of the C<DataSourceID> in the request.
+A user-supplied ID that uniquely identifies the C<DataSource>. This
+value should be identical to the value of the C<DataSourceID> in the
+request.
 
 
 
