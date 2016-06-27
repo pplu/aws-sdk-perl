@@ -128,8 +128,13 @@ package Paws::API::Caller;
   sub unserialize_body_response { 
     my ($self, $ret_class, $http_status, $content, $headers) = @_;
     my $unserialized_struct = {
-        $ret_class->_stream_param => $content, 
+        $ret_class->_stream_param => $content
     };
+    # Set respones headers attributes
+    foreach my $key (keys %$headers){
+      my $object_attribute = join('', map{ ucfirst $_ } split(/-/, $key));
+      $unserialized_struct->{$object_attribute} = $headers->{$key};
+    }
     return $unserialized_struct;
   }
 
