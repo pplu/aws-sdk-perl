@@ -14,9 +14,19 @@ package Paws::SSM;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub AddTagsToResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::AddTagsToResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelCommand {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::CancelCommand', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateActivation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::CreateActivation', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateAssociation {
@@ -34,6 +44,11 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::CreateDocument', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteActivation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DeleteActivation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteAssociation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeleteAssociation', @_);
@@ -42,6 +57,16 @@ package Paws::SSM;
   sub DeleteDocument {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::DeleteDocument', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeregisterManagedInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DeregisterManagedInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeActivations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::DescribeActivations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAssociation {
@@ -89,9 +114,19 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::ListDocuments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyDocumentPermission {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SSM::ModifyDocumentPermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveTagsFromResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::RemoveTagsFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SendCommand {
@@ -104,8 +139,13 @@ package Paws::SSM;
     my $call_object = $self->new_with_coercions('Paws::SSM::UpdateAssociationStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateManagedInstanceRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SSM::UpdateManagedInstanceRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
 
-  sub operations { qw/CancelCommand CreateAssociation CreateAssociationBatch CreateDocument DeleteAssociation DeleteDocument DescribeAssociation DescribeDocument DescribeDocumentPermission DescribeInstanceInformation GetDocument ListAssociations ListCommandInvocations ListCommands ListDocuments ModifyDocumentPermission SendCommand UpdateAssociationStatus / }
+  sub operations { qw/AddTagsToResource CancelCommand CreateActivation CreateAssociation CreateAssociationBatch CreateDocument DeleteActivation DeleteAssociation DeleteDocument DeregisterManagedInstance DescribeActivations DescribeAssociation DescribeDocument DescribeDocumentPermission DescribeInstanceInformation GetDocument ListAssociations ListCommandInvocations ListCommands ListDocuments ListTagsForResource ModifyDocumentPermission RemoveTagsFromResource SendCommand UpdateAssociationStatus UpdateManagedInstanceRole / }
 
 1;
 
@@ -134,22 +174,30 @@ Paws::SSM - Perl Interface to AWS Amazon Simple Systems Management Service
 =head1 DESCRIPTION
 
 This is the Amazon Simple Systems Manager (SSM) API Reference. SSM
-enables you to remotely manage the configuration of your Amazon EC2
-instance using scripts or commands with either an on-demand solution
-called I<SSM Run Command> or a lightweight instance configuration
-solution called I<SSM Config>.
+enables you to remotely manage the configuration of your on-premises
+servers and virtual machines (VMs) and your Amazon EC2 instances using
+scripts, commands, or the Amazon EC2 console. SSM includes an on-demand
+solution called I<Amazon EC2 Run Command> and a lightweight instance
+configuration solution called I<SSM Config>.
 
-This references is intended to be used with the SSM User Guide for
-Linux or Windows.
+This references is intended to be used with the EC2 Run Command User
+Guide for Linux or Windows.
+
+You must register your on-premises servers and VMs through an
+activation process before you can configure them using Run Command.
+Registered servers and VMs are called I<managed instances>. For more
+information, see Setting Up Run Command On Managed Instances
+(On-Premises Servers and VMs) on Linux or Setting Up Run Command On
+Managed Instances (On-Premises Servers and VMs) on Windows.
 
 B<Run Command>
 
 Run Command provides an on-demand experience for executing commands.
-You can use pre-defined Amazon SSM documents to perform the actions
-listed later in this section, or you can create your own documents.
-With these documents, you can remotely configure your instances by
-sending commands using the B<Commands> page in the Amazon EC2 console,
-AWS Tools for Windows PowerShell, the AWS CLI, or AWS SDKs.
+You can use pre-defined SSM documents to perform the actions listed
+later in this section, or you can create your own documents. With these
+documents, you can remotely configure your instances by sending
+commands using the B<Commands> page in the Amazon EC2 console, AWS
+Tools for Windows PowerShell, the AWS CLI, or AWS SDKs.
 
 Run Command reports the status of the command execution for each
 instance targeted by a command. You can also audit the command
@@ -180,8 +228,7 @@ your instances. SSM Config is available using the AWS CLI or the AWS
 Tools for Windows PowerShell. For more information, see Managing
 Windows Instance Configuration.
 
-SSM Config and SSM Run Command include the following pre-defined
-documents.
+SSM Config and Run Command include the following pre-defined documents.
 
 B<Linux>
 
@@ -259,15 +306,15 @@ runs as root on Linux and the EC2Config service runs in the Local
 System account on Windows. If a user has permission to execute any of
 the pre-defined SSM documents (any document that begins with AWS-*)
 then that user also has administrator access to the instance. Delegate
-access to SSM and Run Command judiciously. This becomes extremely
-important if you create your own SSM documents. Amazon Web Services
-does not provide guidance about how to create secure SSM documents. You
-create SSM documents and delegate access to Run Command at your own
-risk. As a security best practice, we recommend that you assign access
-to "AWS-*" documents, especially the AWS-RunShellScript document on
-Linux and the AWS-RunPowerShellScript document on Windows, to trusted
-administrators only. You can create SSM documents for specific tasks
-and delegate access to non-administrators.
+access to Run Command and SSM Config judiciously. This becomes
+extremely important if you create your own SSM documents. Amazon Web
+Services does not provide guidance about how to create secure SSM
+documents. You create SSM documents and delegate access to Run Command
+at your own risk. As a security best practice, we recommend that you
+assign access to "AWS-*" documents, especially the AWS-RunShellScript
+document on Linux and the AWS-RunPowerShellScript document on Windows,
+to trusted administrators only. You can create SSM documents for
+specific tasks and delegate access to non-administrators.
 
 For information about creating and sharing SSM documents, see the
 following topics in the SSM User Guide:
@@ -287,6 +334,33 @@ Creating SSM Documents and Sharing SSM Documents (Windows)
 
 =head1 METHODS
 
+=head2 AddTagsToResource(ResourceId => Str, ResourceType => Str, Tags => ArrayRef[L<Paws::SSM::Tag>])
+
+Each argument is described in detail in: L<Paws::SSM::AddTagsToResource>
+
+Returns: a L<Paws::SSM::AddTagsToResourceResult> instance
+
+  Adds or overwrites one or more tags for the specified resource. Tags
+are metadata that you assign to your managed instances. Tags enable you
+to categorize your managed instances in different ways, for example, by
+purpose, owner, or environment. Each tag consists of a key and an
+optional value, both of which you define. For example, you could define
+a set of tags for your account's managed instances that helps you track
+each instance's owner and stack level. For example: Key=Owner and
+Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production,
+Pre-Production, or Test. Each resource can have a maximum of 10 tags.
+
+We recommend that you devise a set of tag keys that meets your needs
+for each resource type. Using a consistent set of tag keys makes it
+easier for you to manage your resources. You can search and filter the
+resources based on the tags you add. Tags don't have any semantic
+meaning to Amazon EC2 and are interpreted strictly as a string of
+characters.
+
+For more information about tags, see Tagging Your Amazon EC2 Resources
+in the Amazon EC2 User Guide.
+
+
 =head2 CancelCommand(CommandId => Str, [InstanceIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::SSM::CancelCommand>
@@ -296,6 +370,20 @@ Returns: a L<Paws::SSM::CancelCommandResult> instance
   Attempts to cancel the command specified by the Command ID. There is no
 guarantee that the command will be terminated and the underlying
 process stopped.
+
+
+=head2 CreateActivation(IamRole => Str, [DefaultInstanceName => Str, Description => Str, ExpirationDate => Str, RegistrationLimit => Int])
+
+Each argument is described in detail in: L<Paws::SSM::CreateActivation>
+
+Returns: a L<Paws::SSM::CreateActivationResult> instance
+
+  Registers your on-premises server or virtual machine with Amazon EC2 so
+that you can manage these resources using Run Command. An on-premises
+server or virtual machine that has been registered with EC2 is called a
+managed instance. For more information about activations, see Setting
+Up Managed Instances (Linux) or Setting Up Managed Instances (Windows)
+in the Amazon EC2 User Guide.
 
 
 =head2 CreateAssociation(InstanceId => Str, Name => Str, [Parameters => L<Paws::SSM::Parameters>])
@@ -344,6 +432,19 @@ After you create an SSM document, you can use CreateAssociation to
 associate it with one or more running instances.
 
 
+=head2 DeleteActivation(ActivationId => Str)
+
+Each argument is described in detail in: L<Paws::SSM::DeleteActivation>
+
+Returns: a L<Paws::SSM::DeleteActivationResult> instance
+
+  Deletes an activation. You are not required to delete an activation. If
+you delete an activation, you can no longer use it to register
+additional managed instances. Deleting an activation does not
+de-register managed instances. You must manually de-register managed
+instances.
+
+
 =head2 DeleteAssociation(InstanceId => Str, Name => Str)
 
 Each argument is described in detail in: L<Paws::SSM::DeleteAssociation>
@@ -370,6 +471,30 @@ Returns: a L<Paws::SSM::DeleteDocumentResult> instance
 Before you delete the SSM document, we recommend that you use
 DeleteAssociation to disassociate all instances that are associated
 with the document.
+
+
+=head2 DeregisterManagedInstance(InstanceId => Str)
+
+Each argument is described in detail in: L<Paws::SSM::DeregisterManagedInstance>
+
+Returns: a L<Paws::SSM::DeregisterManagedInstanceResult> instance
+
+  Removes the server or virtual machine from the list of registered
+servers. You can reregister the instance again at any time. If you
+donE<rsquo>t plan to use Run Command on the server, we suggest
+uninstalling the SSM agent first.
+
+
+=head2 DescribeActivations([Filters => ArrayRef[L<Paws::SSM::DescribeActivationsFilter>], MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SSM::DescribeActivations>
+
+Returns: a L<Paws::SSM::DescribeActivationsResult> instance
+
+  Details about the activation, including: the date and time the
+activation was created, the expiration date, the IAM role assigned to
+the instances in the activation, and the number of instances activated
+by this registration.
 
 
 =head2 DescribeAssociation(InstanceId => Str, Name => Str)
@@ -467,6 +592,15 @@ Returns: a L<Paws::SSM::ListDocumentsResult> instance
   Describes one or more of your SSM documents.
 
 
+=head2 ListTagsForResource(ResourceId => Str, ResourceType => Str)
+
+Each argument is described in detail in: L<Paws::SSM::ListTagsForResource>
+
+Returns: a L<Paws::SSM::ListTagsForResourceResult> instance
+
+  Returns a list of the tags assigned to the specified resource.
+
+
 =head2 ModifyDocumentPermission(Name => Str, PermissionType => Str, [AccountIdsToAdd => ArrayRef[Str], AccountIdsToRemove => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::SSM::ModifyDocumentPermission>
@@ -477,6 +611,15 @@ Returns: a L<Paws::SSM::ModifyDocumentPermissionResponse> instance
 privately, you must specify the AWS user account IDs for those people
 who can use the document. If you share a document publicly, you must
 specify I<All> as the account ID.
+
+
+=head2 RemoveTagsFromResource(ResourceId => Str, ResourceType => Str, TagKeys => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::SSM::RemoveTagsFromResource>
+
+Returns: a L<Paws::SSM::RemoveTagsFromResourceResult> instance
+
+  Removes all tags from the specified resource.
 
 
 =head2 SendCommand(DocumentName => Str, InstanceIds => ArrayRef[Str], [Comment => Str, DocumentHash => Str, DocumentHashType => Str, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, Parameters => L<Paws::SSM::Parameters>, TimeoutSeconds => Int])
@@ -496,6 +639,16 @@ Returns: a L<Paws::SSM::UpdateAssociationStatusResult> instance
 
   Updates the status of the SSM document associated with the specified
 instance.
+
+
+=head2 UpdateManagedInstanceRole(IamRole => Str, InstanceId => Str)
+
+Each argument is described in detail in: L<Paws::SSM::UpdateManagedInstanceRole>
+
+Returns: a L<Paws::SSM::UpdateManagedInstanceRoleResult> instance
+
+  Assigns or changes an Amazon Identity and Access Management (IAM) role
+to the managed instance.
 
 
 =head1 SEE ALSO

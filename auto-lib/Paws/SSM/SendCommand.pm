@@ -74,7 +74,8 @@ public document or a custom document.
 
 =head2 B<REQUIRED> InstanceIds => ArrayRef[Str]
 
-Required. The instance IDs where the command should execute.
+Required. The instance IDs where the command should execute. You can
+specify a maximum of 50 IDs.
 
 
 
