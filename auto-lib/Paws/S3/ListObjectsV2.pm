@@ -8,7 +8,7 @@ package Paws::S3::ListObjectsV2;
   has FetchOwner => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'fetch-owner' );
   has MaxKeys => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-keys' );
   has Prefix => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'prefix' );
-  has StartAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'start-key' );
+  has StartAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'start-after' );
 
   use MooseX::ClassAttribute;
 
