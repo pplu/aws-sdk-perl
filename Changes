@@ -7,6 +7,7 @@
  - SNS API update: sending SMSs' to international phones
  - SES API update: SetIdentityHeadersInNotificationsEnabled added
  - S3 API update: ListObjectsV2 StartAfter attribute fix
+ - DirectConnect API update: DescribeConnectionLoa and DescribeInterconnectLoa operations
 
 0.26 29 May 2016
  - New Service: Discovery

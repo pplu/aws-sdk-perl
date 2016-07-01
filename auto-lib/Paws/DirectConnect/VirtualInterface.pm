@@ -103,7 +103,7 @@ The AWS account that will own the new virtual interface.
 
 
 
-Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"deleting">, C<"deleted">, C<"rejected">
+Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
 
 =head2 VirtualInterfaceType => Str
 

@@ -5,6 +5,7 @@ package Paws::DirectConnect::Connection;
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionId' );
   has ConnectionName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionName' );
   has ConnectionState => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'connectionState' );
+  has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'loaIssueTime' );
   has Location => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'location' );
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'ownerAccount' );
   has PartnerName => (is => 'ro', isa => 'Str', traits => ['Unwrapped'], xmlname => 'partnerName' );
@@ -49,6 +50,13 @@ Default: None
 
 
 Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
+
+=head2 LoaIssueTime => Str
+
+The time of the most recent call to DescribeConnectionLoa for this
+Connection.
+
+
 
 =head2 Location => Str
 

@@ -17,7 +17,7 @@ Paws::DirectConnect::ConfirmPrivateVirtualInterfaceResponse
 
 
 
-Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"deleting">, C<"deleted">, C<"rejected">
+Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
 
 
 =cut
