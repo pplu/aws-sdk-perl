@@ -4,6 +4,9 @@ package Paws::SES::IdentityNotificationAttributes;
   has ComplaintTopic => (is => 'ro', isa => 'Str');
   has DeliveryTopic => (is => 'ro', isa => 'Str');
   has ForwardingEnabled => (is => 'ro', isa => 'Bool', required => 1);
+  has HeadersInBounceNotificationsEnabled => (is => 'ro', isa => 'Bool');
+  has HeadersInComplaintNotificationsEnabled => (is => 'ro', isa => 'Bool');
+  has HeadersInDeliveryNotificationsEnabled => (is => 'ro', isa => 'Bool');
 1;
 
 ### main pod documentation begin ###
@@ -23,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SES::IdentityNotificationAttributes object:
 
-  $service_obj->Method(Att1 => { BounceTopic => $value, ..., ForwardingEnabled => $value  });
+  $service_obj->Method(Att1 => { BounceTopic => $value, ..., HeadersInDeliveryNotificationsEnabled => $value  });
 
 =head3 Results returned from an API call
 
@@ -68,6 +71,33 @@ notifications as email. C<true> indicates that Amazon SES will forward
 bounce and complaint notifications as email, while C<false> indicates
 that bounce and complaint notifications will be published only to the
 specified bounce and complaint Amazon SNS topics.
+
+
+=head2 HeadersInBounceNotificationsEnabled => Bool
+
+  Describes whether Amazon SES includes the original email headers in
+Amazon SNS notifications of type C<Bounce>. A value of C<true>
+specifies that Amazon SES will include headers in bounce notifications,
+and a value of C<false> specifies that Amazon SES will not include
+headers in bounce notifications.
+
+
+=head2 HeadersInComplaintNotificationsEnabled => Bool
+
+  Describes whether Amazon SES includes the original email headers in
+Amazon SNS notifications of type C<Complaint>. A value of C<true>
+specifies that Amazon SES will include headers in complaint
+notifications, and a value of C<false> specifies that Amazon SES will
+not include headers in complaint notifications.
+
+
+=head2 HeadersInDeliveryNotificationsEnabled => Bool
+
+  Describes whether Amazon SES includes the original email headers in
+Amazon SNS notifications of type C<Delivery>. A value of C<true>
+specifies that Amazon SES will include headers in delivery
+notifications, and a value of C<false> specifies that Amazon SES will
+not include headers in delivery notifications.
 
 
 

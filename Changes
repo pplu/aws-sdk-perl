@@ -5,6 +5,7 @@
  - EC2 API update: GetConsoleOutput, DescribeAllSpotFleetRequests 
  - SSM API update: Tagging
  - SNS API update: sending SMSs' to international phones
+ - SES API update: SetIdentityHeadersInNotificationsEnabled added
 
 0.26 29 May 2016
  - New Service: Discovery
