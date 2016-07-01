@@ -32,7 +32,7 @@ have a continent code.
 Valid values: C<AF> | C<AN> | C<AS> | C<EU> | C<OC> | C<NA> | C<SA>
 
 Constraint: Specifying C<ContinentCode> with either C<CountryCode> or
-C<SubdivisionCode> returns an InvalidInput error.
+C<SubdivisionCode> returns an C<InvalidInput> error.
 
 
 
@@ -53,7 +53,7 @@ The code for a country's subdivision (e.g., a province of Canada). A
 subdivision code is only valid with the appropriate country code.
 
 Constraint: Specifying C<SubdivisionCode> without C<CountryCode>
-returns an InvalidInput error.
+returns an C<InvalidInput> error.
 
 
 
