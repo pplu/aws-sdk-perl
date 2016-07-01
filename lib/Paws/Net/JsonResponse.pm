@@ -3,7 +3,29 @@ package Paws::Net::JsonResponse;
   use JSON::MaybeXS;
   use Carp qw(croak);
   use Paws::Exception;
-  
+ 
+  sub handle_response {
+    my ($self, $call_object, $http_status, $content, $headers) = @_;
+
+    my $unserialized_struct = $self->unserialize_response( $content );
+
+    if (defined $headers->{ 'x-amz-crc32' }) {
+      require String::CRC32;
+      my $crc = String::CRC32::crc32($content);
+      return Paws::Exception->new(
+        code => 'Crc32Error',
+        message => 'Content CRC32 mismatch',
+        request_id => $headers->{ 'x-amzn-requestid' }
+      ) if ($crc != $headers->{ 'x-amz-crc32' });
+    }
+
+    if ( $http_status >= 300 ) {
+        return $self->error_to_exception($unserialized_struct, $call_object, $http_status, $content, $headers);
+    } else {
+        return $self->response_to_object($unserialized_struct, $call_object, $http_status, $content, $headers);
+    }
+  }
+ 
   sub unserialize_response {
     my ($self, $data) = @_;
 
