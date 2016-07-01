@@ -37,62 +37,26 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 CertificateStatuses => ArrayRef[Str]
 
-Identifies the statuses of the ACM Certificates for which you want to
-retrieve the ARNs. This can be one or more of the following values:
-
-=over
-
-=item *
-
-C<PENDING_VALIDATION>
-
-=item *
-
-C<ISSUED>
-
-=item *
-
-C<INACTIVE>
-
-=item *
-
-C<EXPIRED>
-
-=item *
-
-C<VALIDATION_TIMED_OUT>
-
-=item *
-
-C<REVOKED>
-
-=item *
-
-C<FAILED>
-
-=back
-
+The status or statuses on which to filter the list of ACM Certificates.
 
 
 
 =head2 MaxItems => Int
 
-Specify this parameter when paginating results to indicate the maximum
-number of ACM Certificates that you want to display for each response.
-If there are additional certificates beyond the maximum you specify,
-use the C<NextToken> value in your next call to the C<ListCertificates>
-action.
+Use this parameter when paginating results to specify the maximum
+number of items to return in the response. If additional items exist
+beyond the number you specify, the C<NextToken> element is sent in the
+response. Use this C<NextToken> value in a subsequent request to
+retrieve additional items.
 
 
 
 =head2 NextToken => Str
 
-String that contains an opaque marker of the next ACM Certificate ARN
-to be displayed. Use this parameter when paginating results, and only
-in a subsequent request after you've received a response where the
-results have been truncated. Set it to an empty string the first time
-you call this action, and set it to the value of the C<NextToken>
-element you receive in the response object for subsequent calls.
+Use this parameter only when paginating results and only in a
+subsequent request after you receive a response with truncated results.
+Set it to the value of C<NextToken> from the response you just
+received.
 
 
 

@@ -182,13 +182,9 @@ Each argument is described in detail in: L<Paws::ACM::ListCertificates>
 
 Returns: a L<Paws::ACM::ListCertificatesResponse> instance
 
-  Retrieves a list of the ACM Certificate ARNs, and the domain name for
-each ARN, owned by the calling account. You can filter the list based
-on the C<CertificateStatuses> parameter, and you can display up to
-C<MaxItems> certificates at one time. If you have more than C<MaxItems>
-certificates, use the C<NextToken> marker from the response object in
-your next call to the C<ListCertificates> action to retrieve the next
-set of certificate ARNs.
+  Retrieves a list of ACM Certificates and the domain name for each. You
+can optionally filter the list to return only the certificates that
+match the specified status.
 
 
 =head2 ListTagsForCertificate(CertificateArn => Str)
