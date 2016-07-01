@@ -4,6 +4,7 @@ package Paws::SNS::Publish;
   has Message => (is => 'ro', isa => 'Str', required => 1);
   has MessageAttributes => (is => 'ro', isa => 'Paws::SNS::MessageAttributeMap');
   has MessageStructure => (is => 'ro', isa => 'Str');
+  has PhoneNumber => (is => 'ro', isa => 'Str');
   has Subject => (is => 'ro', isa => 'Str');
   has TargetArn => (is => 'ro', isa => 'Str');
   has TopicArn => (is => 'ro', isa => 'Str');
@@ -57,31 +58,47 @@ JSON-specific constraints:
 
 =over
 
-=item * Keys in the JSON object that correspond to supported transport
+=item *
+
+Keys in the JSON object that correspond to supported transport
 protocols must have simple JSON string values.
 
-=item * The values will be parsed (unescaped) before they are used in
-outgoing messages.
+=item *
 
-=item * Outbound notifications are JSON encoded (meaning that the
-characters will be reescaped for sending).
+The values will be parsed (unescaped) before they are used in outgoing
+messages.
 
-=item * Values have a minimum length of 0 (the empty string, "", is
-allowed).
+=item *
 
-=item * Values have a maximum length bounded by the overall message
-size (so, including multiple protocols may limit message sizes).
+Outbound notifications are JSON encoded (meaning that the characters
+will be reescaped for sending).
 
-=item * Non-string values will cause the key to be ignored.
+=item *
 
-=item * Keys that do not correspond to supported transport protocols
-are ignored.
+Values have a minimum length of 0 (the empty string, "", is allowed).
 
-=item * Duplicate keys are not allowed.
+=item *
 
-=item * Failure to parse or validate any key or value in the message
-will cause the C<Publish> call to return an error (no partial
-delivery).
+Values have a maximum length bounded by the overall message size (so,
+including multiple protocols may limit message sizes).
+
+=item *
+
+Non-string values will cause the key to be ignored.
+
+=item *
+
+Keys that do not correspond to supported transport protocols are
+ignored.
+
+=item *
+
+Duplicate keys are not allowed.
+
+=item *
+
+Failure to parse or validate any key or value in the message will cause
+the C<Publish> call to return an error (no partial delivery).
 
 =back
 
@@ -104,10 +121,14 @@ the value of the C<Message> parameter must:
 
 =over
 
-=item * be a syntactically valid JSON object; and
+=item *
 
-=item * contain at least a top-level JSON key of "default" with a value
-that is a string.
+be a syntactically valid JSON object; and
+
+=item *
+
+contain at least a top-level JSON key of "default" with a value that is
+a string.
 
 =back
 
@@ -120,6 +141,16 @@ Each Protocol in the I<Amazon Simple Notification Service Getting
 Started Guide>.
 
 Valid value: C<json>
+
+
+
+=head2 PhoneNumber => Str
+
+The phone number to which you want to deliver an SMS message. Use E.164
+format.
+
+If you don't specify a value for the C<PhoneNumber> parameter, you must
+specify a value for the C<TargetArn> or C<TopicArn> parameters.
 
 
 
@@ -139,11 +170,17 @@ characters; and must be less than 100 characters long.
 
 Either TopicArn or EndpointArn, but not both.
 
+If you don't specify a value for the C<TargetArn> parameter, you must
+specify a value for the C<PhoneNumber> or C<TopicArn> parameters.
+
 
 
 =head2 TopicArn => Str
 
 The topic you want to publish to.
+
+If you don't specify a value for the C<TopicArn> parameter, you must
+specify a value for the C<PhoneNumber> or C<TargetArn> parameters.
 
 
 

@@ -4,6 +4,7 @@
  - IoT API update: ListPolicyPrincipals
  - EC2 API update: GetConsoleOutput, DescribeAllSpotFleetRequests 
  - SSM API update: Tagging
+ - SNS API update: sending SMSs' to international phones
 
 0.26 29 May 2016
  - New Service: Discovery
