@@ -62,14 +62,13 @@ an error.
 
 =head2 UploadPolicy => Str
 
-  A base64-encoded Amazon S3 upload policy that gives Amazon EC2
-permission to upload items into Amazon S3 on your behalf. For command
-line tools, base64 encoding is performed for you.
+  An Amazon S3 upload policy that gives Amazon EC2 permission to upload
+items into Amazon S3 on your behalf.
 
 
 =head2 UploadPolicySignature => Str
 
-  The signature of the Base64 encoded JSON document.
+  The signature of the JSON document.
 
 
 

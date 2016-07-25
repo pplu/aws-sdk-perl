@@ -71,9 +71,9 @@ One or more route table IDs.
 
 =head2 B<REQUIRED> ServiceName => Str
 
-The AWS service name, in the form
-C<com.amazonaws.I<region>.I<service>>. To get a list of available
-services, use the DescribeVpcEndpointServices request.
+The AWS service name, in the form C<com.amazonaws.I<region>.I<service>
+>. To get a list of available services, use the
+DescribeVpcEndpointServices request.
 
 
 

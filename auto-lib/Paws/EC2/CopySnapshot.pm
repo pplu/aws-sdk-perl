@@ -71,12 +71,12 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Encrypted => Bool
 
-Specifies whether the destination snapshot should be encrypted. There
-is no way to create an unencrypted snapshot copy from an encrypted
-snapshot; however, you can encrypt a copy of an unencrypted snapshot
-with this flag. The default CMK for EBS is used unless a non-default
-AWS Key Management Service (AWS KMS) CMK is specified with C<KmsKeyId>.
-For more information, see Amazon EBS Encryption in the I<Amazon Elastic
+Specifies whether the destination snapshot should be encrypted. You can
+encrypt a copy of an unencrypted snapshot using this flag, but you
+cannot use it to create an unencrypted copy from an encrypted snapshot.
+Your default CMK for EBS is used unless a non-default AWS Key
+Management Service (AWS KMS) CMK is specified with C<KmsKeyId>. For
+more information, see Amazon EBS Encryption in the I<Amazon Elastic
 Compute Cloud User Guide>.
 
 

@@ -103,7 +103,10 @@ subnet.
 
 =head2 UserData => L<Paws::EC2::UserData>
 
-  The Base64-encoded MIME user data to be made available to the instance.
+  The user data to make available to the instance. If you are using an
+AWS SDK or command line tool, Base64-encoding is performed for you, and
+you can load the text from a file. Otherwise, you must provide
+Base64-encoded text.
 
 
 

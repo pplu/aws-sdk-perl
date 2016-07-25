@@ -4,6 +4,7 @@ package Paws::EC2::Image;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', xmlname => 'blockDeviceMapping', traits => ['Unwrapped']);
   has CreationDate => (is => 'ro', isa => 'Str', xmlname => 'creationDate', traits => ['Unwrapped']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', traits => ['Unwrapped']);
+  has EnaSupport => (is => 'ro', isa => 'Bool', xmlname => 'enaSupport', traits => ['Unwrapped']);
   has Hypervisor => (is => 'ro', isa => 'Str', xmlname => 'hypervisor', traits => ['Unwrapped']);
   has ImageId => (is => 'ro', isa => 'Str', xmlname => 'imageId', traits => ['Unwrapped']);
   has ImageLocation => (is => 'ro', isa => 'Str', xmlname => 'imageLocation', traits => ['Unwrapped']);
@@ -76,6 +77,11 @@ This class has no description
 =head2 Description => Str
 
   The description of the AMI that was provided during image creation.
+
+
+=head2 EnaSupport => Bool
+
+  Specifies whether enhanced networking with ENA is enabled.
 
 
 =head2 Hypervisor => Str
@@ -157,7 +163,8 @@ or an instance store volume.
 
 =head2 SriovNetSupport => Str
 
-  Specifies whether enhanced networking is enabled.
+  Specifies whether enhanced networking with the Intel 82599 Virtual
+Function interface is enabled.
 
 
 =head2 State => Str

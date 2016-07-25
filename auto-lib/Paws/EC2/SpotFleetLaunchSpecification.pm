@@ -143,7 +143,10 @@ multiple subnets, separate them using commas; for example,
 
 =head2 UserData => Str
 
-  The Base64-encoded MIME user data to make available to the instances.
+  The user data to make available to the instances. If you are using an
+AWS SDK or command line tool, Base64-encoding is performed for you, and
+you can load the text from a file. Otherwise, you must provide
+Base64-encoded text.
 
 
 =head2 WeightedCapacity => Num
