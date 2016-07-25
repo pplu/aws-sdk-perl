@@ -37,8 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Filter => ArrayRef[Str]
 
-A list of entity types (user, group, role, local managed policy, or AWS
-managed policy) for filtering the results.
+A list of entity types used to filter the results. Only the entities
+that match the types you specify are included in the output. Use the
+value C<LocalManagedPolicy> to include customer managed policies.
 
 The format for this parameter is a comma-separated (if more than one)
 list of strings. Each string value in the list must be one of the valid

@@ -1540,6 +1540,12 @@ Returns: a L<Paws::IAM::GetGroupPolicyResponse> instance
   Retrieves the specified inline policy document that is embedded in the
 specified IAM group.
 
+Policies returned by this API are URL-encoded compliant with RFC 3986.
+You can use a URL decoding method to convert the policy back to plain
+JSON text. For example, if you use Java, you can use the C<decode>
+method of the C<java.net.URLDecoder> utility class in the Java SDK.
+Other languages and SDKs provide similar functionality.
+
 An IAM group can also have managed policies attached to it. To retrieve
 a managed policy document that is attached to a group, use GetPolicy to
 determine the policy's default version, then use GetPolicyVersion to
@@ -1614,6 +1620,12 @@ Returns: a L<Paws::IAM::GetPolicyVersionResponse> instance
   Retrieves information about the specified version of the specified
 managed policy, including the policy document.
 
+Policies returned by this API are URL-encoded compliant with RFC 3986.
+You can use a URL decoding method to convert the policy back to plain
+JSON text. For example, if you use Java, you can use the C<decode>
+method of the C<java.net.URLDecoder> utility class in the Java SDK.
+Other languages and SDKs provide similar functionality.
+
 To list the available versions for a policy, use ListPolicyVersions.
 
 This API retrieves information about managed policies. To retrieve
@@ -1638,6 +1650,12 @@ path, GUID, ARN, and the role's trust policy that grants permission to
 assume the role. For more information about roles, see Working with
 Roles.
 
+Policies returned by this API are URL-encoded compliant with RFC 3986.
+You can use a URL decoding method to convert the policy back to plain
+JSON text. For example, if you use Java, you can use the C<decode>
+method of the C<java.net.URLDecoder> utility class in the Java SDK.
+Other languages and SDKs provide similar functionality.
+
 
 =head2 GetRolePolicy(PolicyName => Str, RoleName => Str)
 
@@ -1647,6 +1665,12 @@ Returns: a L<Paws::IAM::GetRolePolicyResponse> instance
 
   Retrieves the specified inline policy document that is embedded with
 the specified IAM role.
+
+Policies returned by this API are URL-encoded compliant with RFC 3986.
+You can use a URL decoding method to convert the policy back to plain
+JSON text. For example, if you use Java, you can use the C<decode>
+method of the C<java.net.URLDecoder> utility class in the Java SDK.
+Other languages and SDKs provide similar functionality.
 
 An IAM role can also have managed policies attached to it. To retrieve
 a managed policy document that is attached to a role, use GetPolicy to
@@ -1725,6 +1749,12 @@ Returns: a L<Paws::IAM::GetUserPolicyResponse> instance
 
   Retrieves the specified inline policy document that is embedded in the
 specified IAM user.
+
+Policies returned by this API are URL-encoded compliant with RFC 3986.
+You can use a URL decoding method to convert the policy back to plain
+JSON text. For example, if you use Java, you can use the C<decode>
+method of the C<java.net.URLDecoder> utility class in the Java SDK.
+Other languages and SDKs provide similar functionality.
 
 An IAM user can also have managed policies attached to it. To retrieve
 a managed policy document that is attached to a user, use GetPolicy to
