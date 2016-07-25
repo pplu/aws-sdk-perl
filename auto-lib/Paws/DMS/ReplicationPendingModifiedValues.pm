@@ -2,6 +2,7 @@ package Paws::DMS::ReplicationPendingModifiedValues;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
 1;
 
@@ -47,6 +48,13 @@ replication instance.
 =head2 EngineVersion => Str
 
   The engine version number of the replication instance.
+
+
+=head2 MultiAZ => Bool
+
+  Specifies if the replication instance is a Multi-AZ deployment. You
+cannot set the C<AvailabilityZone> parameter if the Multi-AZ parameter
+is set to C<true>.
 
 
 =head2 ReplicationInstanceClass => Str

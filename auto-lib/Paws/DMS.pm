@@ -39,6 +39,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::CreateReplicationTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DeleteCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::DeleteEndpoint', @_);
@@ -62,6 +67,11 @@ package Paws::DMS;
   sub DescribeAccountAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeAccountAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DescribeCertificates', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeConnections {
@@ -114,6 +124,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeTableStatistics', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ImportCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::ImportCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::ListTagsForResource', @_);
@@ -160,7 +175,7 @@ package Paws::DMS;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AddTagsToResource CreateEndpoint CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteEndpoint DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationSubnetGroups DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ListTagsForResource ModifyEndpoint ModifyReplicationInstance ModifyReplicationSubnetGroup RefreshSchemas RemoveTagsFromResource StartReplicationTask StopReplicationTask TestConnection / }
+  sub operations { qw/AddTagsToResource CreateEndpoint CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteEndpoint DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeOrderableReplicationInstances DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationSubnetGroups DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyReplicationInstance ModifyReplicationSubnetGroup RefreshSchemas RemoveTagsFromResource StartReplicationTask StopReplicationTask TestConnection / }
 
 1;
 
@@ -192,10 +207,11 @@ AWS Database Migration Service
 
 AWS Database Migration Service (AWS DMS) can migrate your data to and
 from the most widely used commercial and open-source databases such as
-Oracle, PostgreSQL, Microsoft SQL Server, MariaDB, Amazon Aurora, and
-MySQL. The service supports homogeneous migrations such as Oracle to
-Oracle, as well as heterogeneous migrations between different database
-platforms, such as Oracle to MySQL or SQL Server to PostgreSQL.
+Oracle, PostgreSQL, Microsoft SQL Server, Amazon Redshift, MariaDB,
+Amazon Aurora, and MySQL. The service supports homogeneous migrations
+such as Oracle to Oracle, as well as heterogeneous migrations between
+different database platforms, such as Oracle to MySQL or SQL Server to
+PostgreSQL.
 
 =head1 METHODS
 
@@ -211,7 +227,7 @@ used with cost allocation reporting to track cost associated with DMS
 resources, or used in a Condition statement in an IAM policy for DMS.
 
 
-=head2 CreateEndpoint(EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, Password => Str, Port => Int, ServerName => Str, Username => Str, [DatabaseName => Str, ExtraConnectionAttributes => Str, KmsKeyId => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
+=head2 CreateEndpoint(EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, Password => Str, Port => Int, ServerName => Str, Username => Str, [CertificateArn => Str, DatabaseName => Str, ExtraConnectionAttributes => Str, KmsKeyId => Str, SslMode => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
 
 Each argument is described in detail in: L<Paws::DMS::CreateEndpoint>
 
@@ -220,7 +236,7 @@ Returns: a L<Paws::DMS::CreateEndpointResponse> instance
   Creates an endpoint using the provided settings.
 
 
-=head2 CreateReplicationInstance(ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, EngineVersion => Str, KmsKeyId => Str, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, ReplicationSubnetGroupIdentifier => Str, Tags => ArrayRef[L<Paws::DMS::Tag>]])
+=head2 CreateReplicationInstance(ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, [AllocatedStorage => Int, AutoMinorVersionUpgrade => Bool, AvailabilityZone => Str, EngineVersion => Str, KmsKeyId => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, PubliclyAccessible => Bool, ReplicationSubnetGroupIdentifier => Str, Tags => ArrayRef[L<Paws::DMS::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::DMS::CreateReplicationInstance>
 
@@ -246,6 +262,15 @@ Each argument is described in detail in: L<Paws::DMS::CreateReplicationTask>
 Returns: a L<Paws::DMS::CreateReplicationTaskResponse> instance
 
   Creates a replication task using the specified parameters.
+
+
+=head2 DeleteCertificate(CertificateArn => Str)
+
+Each argument is described in detail in: L<Paws::DMS::DeleteCertificate>
+
+Returns: a L<Paws::DMS::DeleteCertificateResponse> instance
+
+  Deletes the specified certificate.
 
 
 =head2 DeleteEndpoint(EndpointArn => Str)
@@ -303,6 +328,15 @@ the quota name, current usage toward that quota, and the quota's
 maximum value.
 
 This command does not take any parameters.
+
+
+=head2 DescribeCertificates([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
+
+Each argument is described in detail in: L<Paws::DMS::DescribeCertificates>
+
+Returns: a L<Paws::DMS::DescribeCertificatesResponse> instance
+
+  Provides a description of the certificate.
 
 
 =head2 DescribeConnections([Filters => ArrayRef[L<Paws::DMS::Filter>], Marker => Str, MaxRecords => Int])
@@ -402,6 +436,15 @@ Returns: a L<Paws::DMS::DescribeTableStatisticsResponse> instance
 table name, rows inserted, rows updated, and rows deleted.
 
 
+=head2 ImportCertificate(CertificateIdentifier => Str, [CertificatePem => Str])
+
+Each argument is described in detail in: L<Paws::DMS::ImportCertificate>
+
+Returns: a L<Paws::DMS::ImportCertificateResponse> instance
+
+  Uploads the specified certificate.
+
+
 =head2 ListTagsForResource(ResourceArn => Str)
 
 Each argument is described in detail in: L<Paws::DMS::ListTagsForResource>
@@ -411,7 +454,7 @@ Returns: a L<Paws::DMS::ListTagsForResourceResponse> instance
   Lists all tags for an AWS DMS resource.
 
 
-=head2 ModifyEndpoint(EndpointArn => Str, [DatabaseName => Str, EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, ExtraConnectionAttributes => Str, Password => Str, Port => Int, ServerName => Str, Username => Str])
+=head2 ModifyEndpoint(EndpointArn => Str, [CertificateArn => Str, DatabaseName => Str, EndpointIdentifier => Str, EndpointType => Str, EngineName => Str, ExtraConnectionAttributes => Str, Password => Str, Port => Int, ServerName => Str, SslMode => Str, Username => Str])
 
 Each argument is described in detail in: L<Paws::DMS::ModifyEndpoint>
 
@@ -420,7 +463,7 @@ Returns: a L<Paws::DMS::ModifyEndpointResponse> instance
   Modifies the specified endpoint.
 
 
-=head2 ModifyReplicationInstance(ReplicationInstanceArn => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, EngineVersion => Str, PreferredMaintenanceWindow => Str, ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str])
+=head2 ModifyReplicationInstance(ReplicationInstanceArn => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, EngineVersion => Str, MultiAZ => Bool, PreferredMaintenanceWindow => Str, ReplicationInstanceClass => Str, ReplicationInstanceIdentifier => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::DMS::ModifyReplicationInstance>
 
