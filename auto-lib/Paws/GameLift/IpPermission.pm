@@ -34,10 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::I
 
 =head1 DESCRIPTION
 
-IP addresses and port settings used to limit access by incoming traffic
-(players) to a fleet. Permissions specify a range of IP addresses and
-port settings that must be used to gain access to a game server on a
-fleet machine.
+A range of IP addresses and port settings that allow inbound traffic to
+connect to server processes on GameLift. Each game session hosted on a
+fleet is assigned a unique combination of IP address and port number,
+which must fall into the fleet's allowed ranges. This combination is
+included in the GameSession object.
 
 =head1 ATTRIBUTES
 
@@ -62,7 +63,7 @@ shortened version "C<0.0.0.0/[subnet mask]>".
 =head2 B<REQUIRED> ToPort => Int
 
   Ending value for a range of allowed port numbers. Port numbers are
-end-inclusive. This value must be higher than I<FromPort>.
+end-inclusive. This value must be higher than C<FromPort>.
 
 
 

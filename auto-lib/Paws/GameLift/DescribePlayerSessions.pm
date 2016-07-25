@@ -46,8 +46,8 @@ Unique identifier for a game session.
 
 =head2 Limit => Int
 
-Maximum number of results to return. You can use this parameter with
-I<NextToken> to get results as a set of sequential pages. If a player
+Maximum number of results to return. Use this parameter with
+C<NextToken> to get results as a set of sequential pages. If a player
 session ID is specified, this parameter is ignored.
 
 
@@ -76,21 +76,22 @@ Unique identifier for a player session.
 =head2 PlayerSessionStatusFilter => Str
 
 Player session status to filter results on. Possible player session
-states include:
+states include the following:
 
 =over
 
-=item * RESERVED: The player session request has been received, but the
-player has not yet connected to the game server and/or been validated.
+=item * B<RESERVED> E<ndash> The player session request has been
+received, but the player has not yet connected to the server process
+and/or been validated.
 
-=item * ACTIVE: The player has been validated by the game server and is
-currently connected.
+=item * B<ACTIVE> E<ndash> The player has been validated by the server
+process and is currently connected.
 
-=item * COMPLETED: The player connection has been dropped.
+=item * B<COMPLETED> E<ndash> The player connection has been dropped.
 
-=item * TIMEDOUT: A player session request was received, but the player
-did not connect and/or was not validated within the time-out limit (60
-seconds).
+=item * B<TIMEDOUT> E<ndash> A player session request was received, but
+the player did not connect and/or was not validated within the time-out
+limit (60 seconds).
 
 =back
 

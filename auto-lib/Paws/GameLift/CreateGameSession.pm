@@ -54,7 +54,7 @@ fleet ID or alias ID, but not both.
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
 Set of properties used to administer a game session. These properties
-are passed to your game server.
+are passed to the server process hosting it.
 
 
 
@@ -67,8 +67,8 @@ game session.
 
 =head2 Name => Str
 
-Descriptive label associated with this game session. Session names do
-not need to be unique.
+Descriptive label associated with a game session. Session names do not
+need to be unique.
 
 
 

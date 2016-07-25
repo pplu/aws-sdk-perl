@@ -53,7 +53,8 @@ to create the build. For more details see the Amazon S3 documentation.
 
 =head2 RoleArn => Str
 
-  
+  Amazon resource number for the cross-account access role that allows
+GameLift access to the S3 bucket.
 
 
 

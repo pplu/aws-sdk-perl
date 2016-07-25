@@ -42,8 +42,8 @@ Unique identifier for a fleet.
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label associated with this scaling policy. Policy names do
-not need to be unique.
+Descriptive label associated with a scaling policy. Policy names do not
+need to be unique.
 
 
 
