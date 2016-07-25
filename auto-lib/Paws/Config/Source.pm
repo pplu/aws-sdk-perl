@@ -57,8 +57,8 @@ evaluate your AWS resources.
   For AWS managed Config rules, a pre-defined identifier from a list. To
 reference the list, see Using AWS Managed Config Rules.
 
-For customer managed Config rules, the identifier is the Amazon
-Resource Name (ARN) of the rule's AWS Lambda function.
+For custom Config rules, the identifier is the Amazon Resource Name
+(ARN) of the rule's AWS Lambda function.
 
 
 

@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Del
 
 =head1 DESCRIPTION
 
-A logical container used for storing the configuration changes of an
-AWS resource.
+The channel through which AWS Config delivers notifications and updated
+configuration states.
 
 =head1 ATTRIBUTES
 
@@ -48,15 +48,23 @@ AWS resource.
 
 =head2 Name => Str
 
-  The name of the delivery channel. By default, AWS Config automatically
-assigns the name "default" when creating the delivery channel. You
-cannot change the assigned name.
+  The name of the delivery channel. By default, AWS Config assigns the
+name "default" when creating the delivery channel. To change the
+delivery channel name, you must use the DeleteDeliveryChannel action to
+delete your current delivery channel, and then you must use the
+PutDeliveryChannel command to create a delivery channel that has the
+desired name.
 
 
 =head2 S3BucketName => Str
 
-  The name of the Amazon S3 bucket used to store configuration history
-for the delivery channel.
+  The name of the Amazon S3 bucket to which AWS Config delivers
+configuration snapshots and configuration history files.
+
+If you specify a bucket that belongs to another AWS account, that
+bucket must have policies that grant access permissions to AWS Config.
+For more information, see Permissions for the Amazon S3 Bucket in the
+AWS Config Developer Guide.
 
 
 =head2 S3KeyPrefix => Str
@@ -66,8 +74,13 @@ for the delivery channel.
 
 =head2 SnsTopicARN => Str
 
-  The Amazon Resource Name (ARN) of the SNS topic that AWS Config
-delivers notifications to.
+  The Amazon Resource Name (ARN) of the Amazon SNS topic to which AWS
+Config sends notifications about configuration changes.
+
+If you choose a topic from another account, the topic must have
+policies that grant access permissions to AWS Config. For more
+information, see Permissions for the Amazon SNS Topic in the AWS Config
+Developer Guide.
 
 
 

@@ -19,9 +19,19 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteConfigRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteConfigurationRecorder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteConfigurationRecorder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDeliveryChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::DeleteDeliveryChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteEvaluationResults {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::DeleteEvaluationResults', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeliverConfigSnapshot {
@@ -119,6 +129,11 @@ package Paws::Config;
     my $call_object = $self->new_with_coercions('Paws::Config::PutEvaluations', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartConfigRulesEvaluation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Config::StartConfigRulesEvaluation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartConfigurationRecorder {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Config::StartConfigurationRecorder', @_);
@@ -130,7 +145,7 @@ package Paws::Config;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/DeleteConfigRule DeleteDeliveryChannel DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigurationRecorder StopConfigurationRecorder / }
+  sub operations { qw/DeleteConfigRule DeleteConfigurationRecorder DeleteDeliveryChannel DeleteEvaluationResults DeliverConfigSnapshot DescribeComplianceByConfigRule DescribeComplianceByResource DescribeConfigRuleEvaluationStatus DescribeConfigRules DescribeConfigurationRecorders DescribeConfigurationRecorderStatus DescribeDeliveryChannels DescribeDeliveryChannelStatus GetComplianceDetailsByConfigRule GetComplianceDetailsByResource GetComplianceSummaryByConfigRule GetComplianceSummaryByResourceType GetResourceConfigHistory ListDiscoveredResources PutConfigRule PutConfigurationRecorder PutDeliveryChannel PutEvaluations StartConfigRulesEvaluation StartConfigurationRecorder StopConfigurationRecorder / }
 
 1;
 
@@ -204,18 +219,47 @@ You can check the state of a rule by using the C<DescribeConfigRules>
 request.
 
 
+=head2 DeleteConfigurationRecorder(ConfigurationRecorderName => Str)
+
+Each argument is described in detail in: L<Paws::Config::DeleteConfigurationRecorder>
+
+Returns: nothing
+
+  Deletes the configuration recorder.
+
+After the configuration recorder is deleted, AWS Config will not record
+resource configuration changes until you create a new configuration
+recorder.
+
+This action does not delete the configuration information that was
+previously recorded. You will be able to access the previously recorded
+information by using the C<GetResourceConfigHistory> action, but you
+will not be able to access this information in the AWS Config console
+until you create a new configuration recorder.
+
+
 =head2 DeleteDeliveryChannel(DeliveryChannelName => Str)
 
 Each argument is described in detail in: L<Paws::Config::DeleteDeliveryChannel>
 
 Returns: nothing
 
-  Deletes the specified delivery channel.
+  Deletes the delivery channel.
 
-The delivery channel cannot be deleted if it is the only delivery
-channel and the configuration recorder is still running. To delete the
-delivery channel, stop the running configuration recorder using the
-StopConfigurationRecorder action.
+Before you can delete the delivery channel, you must stop the
+configuration recorder by using the StopConfigurationRecorder action.
+
+
+=head2 DeleteEvaluationResults(ConfigRuleName => Str)
+
+Each argument is described in detail in: L<Paws::Config::DeleteEvaluationResults>
+
+Returns: a L<Paws::Config::DeleteEvaluationResultsResponse> instance
+
+  Deletes the evaluation results for the specified Config rule. You can
+specify one Config rule per request. After you delete the evaluation
+results, you can call the StartConfigRulesEvaluation API to start
+evaluating your AWS resources against the rule.
 
 
 =head2 DeliverConfigSnapshot(DeliveryChannelName => Str)
@@ -270,8 +314,8 @@ C<LastFailedInvocationTime>.
 =item * The rule's AWS Lambda function is failing to send evaluation
 results to AWS Config. Verify that the role that you assigned to your
 configuration recorder includes the C<config:PutEvaluations>
-permission. If the rule is a customer managed rule, verify that the AWS
-Lambda execution role includes the C<config:PutEvaluations> permission.
+permission. If the rule is a custom rule, verify that the AWS Lambda
+execution role includes the C<config:PutEvaluations> permission.
 
 =item * The rule's AWS Lambda function has returned C<NOT_APPLICABLE>
 for all evaluation results. This can occur if the resources were
@@ -309,8 +353,8 @@ C<LastFailedInvocationTime>.
 =item * The rule's AWS Lambda function is failing to send evaluation
 results to AWS Config. Verify that the role that you assigned to your
 configuration recorder includes the C<config:PutEvaluations>
-permission. If the rule is a customer managed rule, verify that the AWS
-Lambda execution role includes the C<config:PutEvaluations> permission.
+permission. If the rule is a custom rule, verify that the AWS Lambda
+execution role includes the C<config:PutEvaluations> permission.
 
 =item * The rule's AWS Lambda function has returned C<NOT_APPLICABLE>
 for all evaluation results. This can occur if the resources were
@@ -494,18 +538,18 @@ Returns: nothing
   Adds or updates an AWS Config rule for evaluating whether your AWS
 resources comply with your desired configurations.
 
-You can use this action for customer managed Config rules and AWS
-managed Config rules. A customer managed Config rule is a custom rule
-that you develop and maintain. An AWS managed Config rule is a
-customizable, predefined rule that is provided by AWS Config.
+You can use this action for custom Config rules and AWS managed Config
+rules. A custom Config rule is a rule that you develop and maintain. An
+AWS managed Config rule is a customizable, predefined rule that AWS
+Config provides.
 
-If you are adding a new customer managed Config rule, you must first
-create the AWS Lambda function that the rule invokes to evaluate your
-resources. When you use the C<PutConfigRule> action to add the rule to
-AWS Config, you must specify the Amazon Resource Name (ARN) that AWS
-Lambda assigns to the function. Specify the ARN for the
-C<SourceIdentifier> key. This key is part of the C<Source> object,
-which is part of the C<ConfigRule> object.
+If you are adding a new custom Config rule, you must first create the
+AWS Lambda function that the rule invokes to evaluate your resources.
+When you use the C<PutConfigRule> action to add the rule to AWS Config,
+you must specify the Amazon Resource Name (ARN) that AWS Lambda assigns
+to the function. Specify the ARN for the C<SourceIdentifier> key. This
+key is part of the C<Source> object, which is part of the C<ConfigRule>
+object.
 
 If you are adding a new AWS managed Config rule, specify the rule's
 identifier for the C<SourceIdentifier> key. To reference AWS managed
@@ -553,8 +597,11 @@ Each argument is described in detail in: L<Paws::Config::PutDeliveryChannel>
 
 Returns: nothing
 
-  Creates a new delivery channel object to deliver the configuration
-information to an Amazon S3 bucket, and to an Amazon SNS topic.
+  Creates a delivery channel object to deliver configuration information
+to an Amazon S3 bucket and Amazon SNS topic.
+
+Before you can create a delivery channel, you must create a
+configuration recorder.
 
 You can use this action to change the Amazon S3 bucket or an Amazon SNS
 topic of the existing delivery channel. To change the Amazon S3 bucket
@@ -563,7 +610,7 @@ for the S3 bucket and the SNS topic. If you specify a different value
 for either the S3 bucket or the SNS topic, this action will keep the
 existing value for the parameter that is not changed.
 
-Currently, you can specify only one delivery channel per account.
+You can have only one delivery channel per AWS account.
 
 
 =head2 PutEvaluations(ResultToken => Str, [Evaluations => ArrayRef[L<Paws::Config::Evaluation>]])
@@ -575,6 +622,21 @@ Returns: a L<Paws::Config::PutEvaluationsResponse> instance
   Used by an AWS Lambda function to deliver evaluation results to AWS
 Config. This action is required in every AWS Lambda function that is
 invoked by an AWS Config rule.
+
+
+=head2 StartConfigRulesEvaluation([ConfigRuleNames => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::Config::StartConfigRulesEvaluation>
+
+Returns: a L<Paws::Config::StartConfigRulesEvaluationResponse> instance
+
+  Evaluates your resources against the specified Config rules. You can
+specify up to 25 Config rules per request.
+
+An existing StartConfigRulesEvaluation call must complete for the rules
+that you specified before you can call the API again. If you chose to
+have AWS Config stream to an Amazon SNS topic, you will receive a
+notification when the evaluation starts.
 
 
 =head2 StartConfigurationRecorder(ConfigurationRecorderName => Str)
