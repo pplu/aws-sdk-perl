@@ -493,6 +493,9 @@ results by family name, by a particular container instance, or by the
 desired status of the task with the C<family>, C<containerInstance>,
 and C<desiredStatus> parameters.
 
+Recently-stopped tasks might appear in the returned results. Currently,
+stopped tasks appear in the returned results for at least one hour.
+
 
 =head2 RegisterContainerInstance([Attributes => ArrayRef[L<Paws::ECS::Attribute>], Cluster => Str, ContainerInstanceArn => Str, InstanceIdentityDocument => Str, InstanceIdentityDocumentSignature => Str, TotalResources => ArrayRef[L<Paws::ECS::Resource>], VersionInfo => L<Paws::ECS::VersionInfo>])
 
@@ -507,7 +510,7 @@ Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
 
 
-=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [Volumes => ArrayRef[L<Paws::ECS::Volume>]])
+=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [TaskRoleArn => Str, Volumes => ArrayRef[L<Paws::ECS::Volume>]])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterTaskDefinition>
 
@@ -518,6 +521,13 @@ C<containerDefinitions>. Optionally, you can add data volumes to your
 containers with the C<volumes> parameter. For more information about
 task definition parameters and defaults, see Amazon ECS Task
 Definitions in the I<Amazon EC2 Container Service Developer Guide>.
+
+You may also specify an IAM role for your task with the C<taskRoleArn>
+parameter. When you specify an IAM role for a task, its containers can
+then use the latest versions of the AWS CLI or SDKs to make API
+requests to the AWS services that are specified in the IAM policy
+associated with the role. For more information, see IAM Roles for Tasks
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])

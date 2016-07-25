@@ -6,6 +6,7 @@ package Paws::ECS::TaskDefinition;
   has Revision => (is => 'ro', isa => 'Int', xmlname => 'revision', request_name => 'revision', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
   has TaskDefinitionArn => (is => 'ro', isa => 'Str', xmlname => 'taskDefinitionArn', request_name => 'taskDefinitionArn', traits => ['Unwrapped','NameInRequest']);
+  has TaskRoleArn => (is => 'ro', isa => 'Str', xmlname => 'taskRoleArn', request_name => 'taskRoleArn', traits => ['Unwrapped','NameInRequest']);
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', xmlname => 'volumes', request_name => 'volumes', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -78,6 +79,13 @@ previous revisions in this family).
 =head2 TaskDefinitionArn => Str
 
   The full Amazon Resource Name (ARN) of the task definition.
+
+
+=head2 TaskRoleArn => Str
+
+  The Amazon Resource Name (ARN) of the IAM role that containers in this
+task can assume. All containers in this task are granted the
+permissions that are specified in this role.
 
 
 =head2 Volumes => ArrayRef[L<Paws::ECS::Volume>]

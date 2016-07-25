@@ -3,6 +3,7 @@ package Paws::ECS::RegisterTaskDefinition;
   use Moose;
   has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', traits => ['NameInRequest'], request_name => 'containerDefinitions' , required => 1);
   has Family => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'family' , required => 1);
+  has TaskRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskRoleArn' );
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', traits => ['NameInRequest'], request_name => 'volumes' );
 
   use MooseX::ClassAttribute;
@@ -48,6 +49,14 @@ You must specify a C<family> for a task definition, which allows you to
 track multiple versions of the same task definition. The C<family> is
 used as a name for your task definition. Up to 255 letters (uppercase
 and lowercase), numbers, hyphens, and underscores are allowed.
+
+
+
+=head2 TaskRoleArn => Str
+
+The Amazon Resource Name (ARN) of the IAM role that containers in this
+task can assume. All containers in this task are granted the
+permissions that are specified in this role.
 
 
 

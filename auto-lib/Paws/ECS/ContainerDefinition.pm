@@ -264,7 +264,7 @@ lowercase), numbers, hyphens, and underscores are allowed for each
 C<name> and C<alias>. For more information on linking Docker
 containers, see https://docs.docker.com/userguide/dockerlinks/. This
 parameter maps to C<Links> in the Create a container section of the
-Docker Remote API and the C<--link> option to C<docker run> .
+Docker Remote API and the C<--link> option to docker run .
 
 Containers that are collocated on a single container instance may be
 able to communicate with each other without requiring links or host

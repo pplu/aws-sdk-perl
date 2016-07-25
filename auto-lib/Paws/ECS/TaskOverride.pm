@@ -1,6 +1,7 @@
 package Paws::ECS::TaskOverride;
   use Moose;
   has ContainerOverrides => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerOverride]', xmlname => 'containerOverrides', request_name => 'containerOverrides', traits => ['Unwrapped','NameInRequest']);
+  has TaskRoleArn => (is => 'ro', isa => 'Str', xmlname => 'taskRoleArn', request_name => 'taskRoleArn', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::TaskOverride object:
 
-  $service_obj->Method(Att1 => { ContainerOverrides => $value, ..., ContainerOverrides => $value  });
+  $service_obj->Method(Att1 => { ContainerOverrides => $value, ..., TaskRoleArn => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,13 @@ The overrides associated with a task.
 =head2 ContainerOverrides => ArrayRef[L<Paws::ECS::ContainerOverride>]
 
   One or more container overrides sent to a task.
+
+
+=head2 TaskRoleArn => Str
+
+  The Amazon Resource Name (ARN) of the IAM role that containers in this
+task can assume. All containers in this task are granted the
+permissions that are specified in this role.
 
 
 
