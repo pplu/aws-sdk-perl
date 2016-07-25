@@ -2,6 +2,7 @@
 package Paws::EFS::CreateFileSystem;
   use Moose;
   has CreationToken => (is => 'ro', isa => 'Str', required => 1);
+  has PerformanceMode => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -41,6 +42,17 @@ String of up to 64 ASCII characters. Amazon EFS uses this to ensure
 idempotent creation.
 
 
+
+=head2 PerformanceMode => Str
+
+The C<PerformanceMode> of the file system. We recommend
+C<generalPurpose> performance mode for most file systems. File systems
+using the C<maxIO> performance mode can scale to higher levels of
+aggregate throughput and operations per second with a tradeoff of
+slightly higher latencies for most file operations. This can't be
+changed after the file system has been created.
+
+Valid values are: C<"generalPurpose">, C<"maxIO">
 
 
 =head1 SEE ALSO

@@ -39,22 +39,22 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-The ID of the file system whose tag set you want to retrieve.
+ID of the file system whose tag set you want to retrieve.
 
 
 
 =head2 Marker => Str
 
-Optional. String. Opaque pagination token returned from a previous
-C<DescribeTags> operation. If present, it specifies to continue the
-list from where the previous call left off.
+(Optional) Opaque pagination token returned from a previous
+C<DescribeTags> operation (String). If present, it specifies to
+continue the list from where the previous call left off.
 
 
 
 =head2 MaxItems => Int
 
-Optional. Maximum number of file system tags to return in the response.
-It must be an integer with a value greater than zero.
+(Optional) Maximum number of file system tags to return in the
+response. It must be an integer with a value greater than zero.
 
 
 
