@@ -3,6 +3,7 @@ package Paws::IoT::DynamoDBAction;
   has HashKeyField => (is => 'ro', isa => 'Str', xmlname => 'hashKeyField', request_name => 'hashKeyField', traits => ['Unwrapped','NameInRequest'], required => 1);
   has HashKeyType => (is => 'ro', isa => 'Str', xmlname => 'hashKeyType', request_name => 'hashKeyType', traits => ['Unwrapped','NameInRequest']);
   has HashKeyValue => (is => 'ro', isa => 'Str', xmlname => 'hashKeyValue', request_name => 'hashKeyValue', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Operation => (is => 'ro', isa => 'Str', xmlname => 'operation', request_name => 'operation', traits => ['Unwrapped','NameInRequest']);
   has PayloadField => (is => 'ro', isa => 'Str', xmlname => 'payloadField', request_name => 'payloadField', traits => ['Unwrapped','NameInRequest']);
   has RangeKeyField => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyField', request_name => 'rangeKeyField', traits => ['Unwrapped','NameInRequest']);
   has RangeKeyType => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyType', request_name => 'rangeKeyType', traits => ['Unwrapped','NameInRequest']);
@@ -74,6 +75,13 @@ C<"rangeKeyValue": "${timestamp()}">
 =head2 B<REQUIRED> HashKeyValue => Str
 
   The hash key value.
+
+
+=head2 Operation => Str
+
+  The type of operation to be performed. This follows the substitution
+template, so it can be C<${operation}>, but the substitution must
+result in one of the following: C<INSERT>, C<UPDATE>, or C<DELETE>.
 
 
 =head2 PayloadField => Str
