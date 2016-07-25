@@ -1,5 +1,6 @@
 0.27 
  - RestXml (S3, f.ex) services now complete responses from headers (shardiwal)
+ - New API: ServiceCatalog
  - MachineLearning API update: Tagging API
  - IoT API update: ListPolicyPrincipals
  - EC2 API update: GetConsoleOutput, DescribeAllSpotFleetRequests 
@@ -8,6 +9,22 @@
  - SES API update: SetIdentityHeadersInNotificationsEnabled added
  - S3 API update: ListObjectsV2 StartAfter attribute fix
  - DirectConnect API update: DescribeConnectionLoa and DescribeInterconnectLoa operations
+ - DeviceFarm: remote session operations
+ - DS: tagging operations
+ - DMS: certificate operations
+ - CodePipeline: API update
+ - EC2: ID format operations
+ - Config: API update
+ - GameLift: Runtime configuration operations
+ - RDS: API update
+ - SSM: Notification options
+ - EFS: definitive API (Performance parameters added)
+ - ECS: task roles
+ - CloudFormation: docu for new capability CAPABILITY_NAMED_IAM
+ - CognitoIdentity: API update
+ - DynamoDBStreams: API update
+ - ACM: FailureReason added
+ - IoT: DynamoDBAction Operation can be specified
 
 0.26 29 May 2016
  - New Service: Discovery
