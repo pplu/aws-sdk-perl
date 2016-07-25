@@ -358,6 +358,8 @@ L<Paws::S3>
 
 L<Paws::SDB>
 
+L<Paws::ServiceCatalog>
+
 L<Paws::SES>
 
 L<Paws::Signin>
