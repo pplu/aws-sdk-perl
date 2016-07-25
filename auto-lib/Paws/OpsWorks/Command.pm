@@ -91,13 +91,21 @@ Describes a command.
 
 =over
 
-=item * failed
+=item *
 
-=item * successful
+failed
 
-=item * skipped
+=item *
 
-=item * pending
+successful
+
+=item *
+
+skipped
+
+=item *
+
+pending
 
 =back
 
@@ -109,25 +117,45 @@ Describes a command.
 
 =over
 
-=item * C<deploy>
+=item *
 
-=item * C<rollback>
+C<deploy>
 
-=item * C<start>
+=item *
 
-=item * C<stop>
+C<rollback>
 
-=item * C<restart>
+=item *
 
-=item * C<undeploy>
+C<start>
 
-=item * C<update_dependencies>
+=item *
 
-=item * C<install_dependencies>
+C<stop>
 
-=item * C<update_custom_cookbooks>
+=item *
 
-=item * C<execute_recipes>
+C<restart>
+
+=item *
+
+C<undeploy>
+
+=item *
+
+C<update_dependencies>
+
+=item *
+
+C<install_dependencies>
+
+=item *
+
+C<update_custom_cookbooks>
+
+=item *
+
+C<execute_recipes>
 
 =back
 

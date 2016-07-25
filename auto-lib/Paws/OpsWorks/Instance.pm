@@ -278,33 +278,65 @@ the Root Device.
 
 =over
 
-=item * C<booting>
+=item *
 
-=item * C<connection_lost>
+C<booting>
 
-=item * C<online>
+=item *
 
-=item * C<pending>
+C<connection_lost>
 
-=item * C<rebooting>
+=item *
 
-=item * C<requested>
+C<online>
 
-=item * C<running_setup>
+=item *
 
-=item * C<setup_failed>
+C<pending>
 
-=item * C<shutting_down>
+=item *
 
-=item * C<start_failed>
+C<rebooting>
 
-=item * C<stopped>
+=item *
 
-=item * C<stopping>
+C<requested>
 
-=item * C<terminated>
+=item *
 
-=item * C<terminating>
+C<running_setup>
+
+=item *
+
+C<setup_failed>
+
+=item *
+
+C<shutting_down>
+
+=item *
+
+C<start_failed>
+
+=item *
+
+C<stop_failed>
+
+=item *
+
+C<stopped>
+
+=item *
+
+C<stopping>
+
+=item *
+
+C<terminated>
+
+=item *
+
+C<terminating>
 
 =back
 

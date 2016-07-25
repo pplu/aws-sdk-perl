@@ -62,15 +62,25 @@ strings. You cannot set your own permissions level.
 
 =over
 
-=item * C<deny>
+=item *
 
-=item * C<show>
+C<deny>
 
-=item * C<deploy>
+=item *
 
-=item * C<manage>
+C<show>
 
-=item * C<iam_only>
+=item *
+
+C<deploy>
+
+=item *
+
+C<manage>
+
+=item *
+
+C<iam_only>
 
 =back
 

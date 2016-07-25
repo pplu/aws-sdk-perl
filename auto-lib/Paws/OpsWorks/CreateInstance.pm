@@ -56,9 +56,13 @@ The default AWS OpsWorks agent version. You have the following options:
 
 =over
 
-=item * C<INHERIT> - Use the stack's default agent version setting.
+=item *
 
-=item * I<version_number> - Use the specified agent version. This value
+C<INHERIT> - Use the stack's default agent version setting.
+
+=item *
+
+I<version_number> - Use the specified agent version. This value
 overrides the stack's default setting. To update the agent version,
 edit the instance configuration and specify a new version. AWS OpsWorks
 then automatically installs that version on the instance.
@@ -163,13 +167,35 @@ following.
 
 =over
 
-=item * A supported Linux operating system: An Amazon Linux version,
-such as C<Amazon Linux 2015.03>, C<Red Hat Enterprise Linux 7>,
-C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04 LTS>.
+=item *
 
-=item * C<Microsoft Windows Server 2012 R2 Base>.
+A supported Linux operating system: An Amazon Linux version, such as
+C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon Linux
+2015.03>.
 
-=item * A custom AMI: C<Custom>.
+=item *
+
+A supported Ubuntu operating system, such as C<Ubuntu 16.04 LTS>,
+C<Ubuntu 14.04 LTS>, or C<Ubuntu 12.04 LTS>.
+
+=item *
+
+C<CentOS 7>
+
+=item *
+
+C<Red Hat Enterprise Linux 7>
+
+=item *
+
+A supported Windows operating system, such as C<Microsoft Windows
+Server 2012 R2 Base>, C<Microsoft Windows Server 2012 R2 with SQL
+Server Express>, C<Microsoft Windows Server 2012 R2 with SQL Server
+Standard>, or C<Microsoft Windows Server 2012 R2 with SQL Server Web>.
+
+=item *
+
+A custom AMI: C<Custom>.
 
 =back
 

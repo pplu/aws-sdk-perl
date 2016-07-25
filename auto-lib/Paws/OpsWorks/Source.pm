@@ -50,15 +50,20 @@ type.
 
 =over
 
-=item * For Amazon S3 bundles, set C<Password> to the appropriate IAM
-secret access key.
+=item *
 
-=item * For HTTP bundles and Subversion repositories, set C<Password>
-to the password.
+For Amazon S3 bundles, set C<Password> to the appropriate IAM secret
+access key.
+
+=item *
+
+For HTTP bundles and Subversion repositories, set C<Password> to the
+password.
 
 =back
 
-For more information on how to safely handle IAM credentials, see .
+For more information on how to safely handle IAM credentials, see
+http://docs.aws.amazon.com/general/latest/gr/aws-access-keys-best-practices.html.
 
 In responses, AWS OpsWorks returns C<*****FILTERED*****> instead of the
 actual value.
@@ -96,11 +101,15 @@ actual value.
 
 =over
 
-=item * For Amazon S3 bundles, set C<Username> to the appropriate IAM
-access key ID.
+=item *
 
-=item * For HTTP bundles, Git repositories, and Subversion
-repositories, set C<Username> to the user name.
+For Amazon S3 bundles, set C<Username> to the appropriate IAM access
+key ID.
+
+=item *
+
+For HTTP bundles, Git repositories, and Subversion repositories, set
+C<Username> to the user name.
 
 =back
 

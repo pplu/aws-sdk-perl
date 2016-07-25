@@ -56,14 +56,18 @@ The default AWS OpsWorks agent version. You have the following options:
 
 =over
 
-=item * Auto-update - Set this parameter to C<LATEST>. AWS OpsWorks
+=item *
+
+Auto-update - Set this parameter to C<LATEST>. AWS OpsWorks
 automatically installs new agent versions on the stack's instances as
 soon as they are available.
 
-=item * Fixed version - Set this parameter to your preferred agent
-version. To update the agent version, you must edit the stack
-configuration and specify a new version. AWS OpsWorks then
-automatically installs that version on the stack's instances.
+=item *
+
+Fixed version - Set this parameter to your preferred agent version. To
+update the agent version, you must edit the stack configuration and
+specify a new version. AWS OpsWorks then automatically installs that
+version on the stack's instances.
 
 =back
 
@@ -145,15 +149,37 @@ following:
 
 =over
 
-=item * A supported Linux operating system: An Amazon Linux version,
-such as C<Amazon Linux 2015.03>, C<Red Hat Enterprise Linux 7>,
-C<Ubuntu 12.04 LTS>, or C<Ubuntu 14.04 LTS>.
+=item *
 
-=item * C<Microsoft Windows Server 2012 R2 Base>.
+A supported Linux operating system: An Amazon Linux version, such as
+C<Amazon Linux 2016.03>, C<Amazon Linux 2015.09>, or C<Amazon Linux
+2015.03>.
 
-=item * A custom AMI: C<Custom>. You specify the custom AMI you want to
-use when you create instances. For more information on how to use
-custom AMIs with OpsWorks, see Using Custom AMIs.
+=item *
+
+A supported Ubuntu operating system, such as C<Ubuntu 16.04 LTS>,
+C<Ubuntu 14.04 LTS>, or C<Ubuntu 12.04 LTS>.
+
+=item *
+
+C<CentOS 7>
+
+=item *
+
+C<Red Hat Enterprise Linux 7>
+
+=item *
+
+A supported Windows operating system, such as C<Microsoft Windows
+Server 2012 R2 Base>, C<Microsoft Windows Server 2012 R2 with SQL
+Server Express>, C<Microsoft Windows Server 2012 R2 with SQL Server
+Standard>, or C<Microsoft Windows Server 2012 R2 with SQL Server Web>.
+
+=item *
+
+A custom AMI: C<Custom>. You specify the custom AMI you want to use
+when you create instances. For more information on how to use custom
+AMIs with OpsWorks, see Using Custom AMIs.
 
 =back
 
@@ -205,27 +231,49 @@ themes are:
 
 =over
 
-=item * C<Baked_Goods>
+=item *
 
-=item * C<Clouds>
+C<Baked_Goods>
 
-=item * C<Europe_Cities>
+=item *
 
-=item * C<Fruits>
+C<Clouds>
 
-=item * C<Greek_Deities>
+=item *
 
-=item * C<Legendary_creatures_from_Japan>
+C<Europe_Cities>
 
-=item * C<Planets_and_Moons>
+=item *
 
-=item * C<Roman_Deities>
+C<Fruits>
 
-=item * C<Scottish_Islands>
+=item *
 
-=item * C<US_Cities>
+C<Greek_Deities>
 
-=item * C<Wild_Cats>
+=item *
+
+C<Legendary_creatures_from_Japan>
+
+=item *
+
+C<Planets_and_Moons>
+
+=item *
+
+C<Roman_Deities>
+
+=item *
+
+C<Scottish_Islands>
+
+=item *
+
+C<US_Cities>
+
+=item *
+
+C<Wild_Cats>
 
 =back
 
@@ -271,17 +319,21 @@ C<UseOpsworksSecurityGroups> has the following settings:
 
 =over
 
-=item * True - AWS OpsWorks automatically associates the appropriate
-built-in security group with each layer (default setting). You can
-associate additional security groups with a layer after you create it,
-but you cannot delete the built-in security group.
+=item *
 
-=item * False - AWS OpsWorks does not associate built-in security
-groups with layers. You must create appropriate EC2 security groups and
-associate a security group with each layer that you create. However,
-you can still manually associate a built-in security group with a layer
-on. Custom security groups are required only for those layers that need
-custom settings.
+True - AWS OpsWorks automatically associates the appropriate built-in
+security group with each layer (default setting). You can associate
+additional security groups with a layer after you create it, but you
+cannot delete the built-in security group.
+
+=item *
+
+False - AWS OpsWorks does not associate built-in security groups with
+layers. You must create appropriate EC2 security groups and associate a
+security group with each layer that you create. However, you can still
+manually associate a built-in security group with a layer on. Custom
+security groups are required only for those layers that need custom
+settings.
 
 =back
 
