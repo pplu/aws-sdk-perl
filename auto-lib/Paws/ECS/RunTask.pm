@@ -76,7 +76,8 @@ automatically trigger a task to run a batch process job, you could
 apply a unique identifier for that job to your task with the
 C<startedBy> parameter. You can then identify which tasks belong to
 that job by filtering the results of a ListTasks call with the
-C<startedBy> value.
+C<startedBy> value. Up to 36 letters (uppercase and lowercase),
+numbers, hyphens, and underscores are allowed.
 
 If a task is started by an Amazon ECS service, then the C<startedBy>
 parameter contains the deployment ID of the service that starts it.

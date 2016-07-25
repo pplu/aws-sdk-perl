@@ -1,3 +1,76 @@
+0.27 
+ - RestXml (S3, f.ex) services now complete responses from headers (shardiwal)
+ - New API: ServiceCatalog
+ - MachineLearning API update: Tagging API
+ - IoT API update: ListPolicyPrincipals
+ - EC2 API update: GetConsoleOutput, DescribeAllSpotFleetRequests 
+ - SSM API update: Tagging
+ - SNS API update: sending SMSs' to international phones
+ - SES API update: SetIdentityHeadersInNotificationsEnabled added
+ - S3 API update: ListObjectsV2 StartAfter attribute fix
+ - DirectConnect API update: DescribeConnectionLoa and DescribeInterconnectLoa operations
+ - DeviceFarm: remote session operations
+ - DS: tagging operations
+ - DMS: certificate operations
+ - CodePipeline: API update
+ - EC2: ID format operations
+ - Config: API update
+ - GameLift: Runtime configuration operations
+ - RDS: API update
+ - SSM: Notification options
+ - EFS: definitive API (Performance parameters added)
+ - ECS: task roles
+ - CloudFormation: docu for new capability CAPABILITY_NAMED_IAM
+ - CognitoIdentity: API update
+ - DynamoDBStreams: API update
+ - ACM: FailureReason added
+ - IoT: DynamoDBAction Operation can be specified
+
+0.26 29 May 2016
+ - New Service: Discovery
+ - New Service: ApplicationAutoScaling
+ - KMS API update
+ - ECS API update
+ - CloudTrail API update
+ - S3 API update: new ListObjectsV2 method
+ - ApiGateway API update: Passthrough behaviour
+ - SSM API update: Modify and Describe DocumentPermission
+ - StorageGateway API update: ListTapes
+ - EC2 API update: DescribeSecurityGroupReferences and DescribeStaleSecurityGroups
+ - CloudFormation API update
+ - EMR API update: ListInstances can filter
+ - Workspaces API update: Tagging operations
+ - EC2 API update: GetConsoleScreenshot and ProvisionedBandwidth
+ - Firehose API update: RetryOptions
+ - RDS API update: Describe and Modify DBClusterSnapshotAttributes
+ - ECS API update: filter by task status
+
+0.25 05 May 2016
+ - Call retries are now done in more cases (Thottling errors, 500, 503, 509). PR #96 (wiof)
+ - New service: Cognito SignUp/Login (CognitoIdp)
+ - Cognito Identity API update: add Cognito Idp support
+ - IoT API update: Delete certificates and registrations
+ - S3 API Update: Bucket Acceleration enabling methods
+ - Kinesis API update: Get iterator from a timestamp and enable/disable enhanced monitoring
+ - ElasticBeanstalk API update: Apply and Describe Managed Actions
+ - Kinesis Firehose API update: ElasticSearch destination support
+ - DeviceFarm API update: support for UnmeteredRemoteAccessDevices
+ - ACM API update: Tagging for certificates
+ - EMR API update: shrink policies
+ - IoT API update: select SQL engine
+ - Route53Domains API update: ReachabilityEmail operations
+ - EC2 API update: ModifyVpcPeeringConnectionOptions and docu
+ - OpsWorks API update: support for instance tenancy
+
+0.24 10 Apr 2016 
+ - t/01-load fails because Class::Unload is not declared for test Issue #95 (eserte)
+ - ApiGateway API update: ImportRestApi and PutRestApi operations
+ - Route53 API Update: Metric Based Health Checks, DNS Failover for Private Hosted Zones, and Configurable Health Check Locations
+ - Lambda API update
+ - Directory Service API update: Simplified Trust Configuration
+ - Elastic Beanstalk API update: deployment options
+ - STS API update: GetCallerIdentity
+
 0.23 04 Apr 2016
  - t/11_client_exceptions was failing if Furl wasn't installed (andk)
    We skip the test if the required recorder doesn't load, as this

@@ -38,7 +38,7 @@ This class has no description
 
 =head2 Value => Str
 
-  Valid values are case-sensitive and vary by action.
+  The attribute value. Note that the value is case-sensitive.
 
 
 

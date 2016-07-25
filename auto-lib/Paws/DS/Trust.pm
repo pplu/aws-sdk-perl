@@ -8,6 +8,7 @@ package Paws::DS::Trust;
   has TrustDirection => (is => 'ro', isa => 'Str');
   has TrustId => (is => 'ro', isa => 'Str');
   has TrustState => (is => 'ro', isa => 'Str');
+  has TrustStateReason => (is => 'ro', isa => 'Str');
   has TrustType => (is => 'ro', isa => 'Str');
 1;
 
@@ -85,6 +86,11 @@ in the trust relationship.
 =head2 TrustState => Str
 
   The trust relationship state.
+
+
+=head2 TrustStateReason => Str
+
+  The reason for the TrustState.
 
 
 =head2 TrustType => Str

@@ -2,6 +2,7 @@ package Paws::EC2::VpcPeeringConnectionVpcInfo;
   use Moose;
   has CidrBlock => (is => 'ro', isa => 'Str', xmlname => 'cidrBlock', traits => ['Unwrapped']);
   has OwnerId => (is => 'ro', isa => 'Str', xmlname => 'ownerId', traits => ['Unwrapped']);
+  has PeeringOptions => (is => 'ro', isa => 'Paws::EC2::VpcPeeringConnectionOptionsDescription', xmlname => 'peeringOptions', traits => ['Unwrapped']);
   has VpcId => (is => 'ro', isa => 'Str', xmlname => 'vpcId', traits => ['Unwrapped']);
 1;
 
@@ -46,6 +47,12 @@ This class has no description
 =head2 OwnerId => Str
 
   The AWS account ID of the VPC owner.
+
+
+=head2 PeeringOptions => L<Paws::EC2::VpcPeeringConnectionOptionsDescription>
+
+  Information about the VPC peering connection options for the accepter
+or requester VPC.
 
 
 =head2 VpcId => Str

@@ -47,7 +47,9 @@ Constraints:
 
 =over
 
-=item * Must be a value from 0 to 8
+=item *
+
+Must be a value from 0 to 8
 
 =back
 
@@ -62,13 +64,21 @@ Constraints:
 
 =over
 
-=item * Must be the identifier for an existing Read Replica DB instance
+=item *
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens
+Must be the identifier for an existing Read Replica DB instance
 
-=item * First character must be a letter
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+Must contain from 1 to 63 alphanumeric characters or hyphens
+
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -90,13 +100,21 @@ Constraints:
 
 =over
 
-=item * Must be in the format C<hh24:mi-hh24:mi>.
+=item *
 
-=item * Times should be in Universal Coordinated Time (UTC).
+Must be in the format C<hh24:mi-hh24:mi>.
 
-=item * Must not conflict with the preferred maintenance window.
+=item *
 
-=item * Must be at least 30 minutes.
+Times should be in Universal Coordinated Time (UTC).
+
+=item *
+
+Must not conflict with the preferred maintenance window.
+
+=item *
+
+Must be at least 30 minutes.
 
 =back
 

@@ -39,11 +39,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The SSH public key. The public key must be encoded in ssh-rsa format or
 PEM format.
 
+The regex pattern for this parameter is a string of characters
+consisting of any printable ASCII character ranging from the space
+character (\u0020) through end of the ASCII character range (\u00FF).
+It also includes the special characters tab (\u0009), line feed
+(\u000A), and carriage return (\u000D).
+
 
 
 =head2 B<REQUIRED> UserName => Str
 
 The name of the IAM user to associate the SSH public key with.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

@@ -2,11 +2,15 @@
 package Paws::SSM::SendCommand;
   use Moose;
   has Comment => (is => 'ro', isa => 'Str');
+  has DocumentHash => (is => 'ro', isa => 'Str');
+  has DocumentHashType => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
   has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]');
+  has ServiceRoleArn => (is => 'ro', isa => 'Str');
   has TimeoutSeconds => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -46,6 +50,23 @@ description of what the command should do.
 
 
 
+=head2 DocumentHash => Str
+
+The Sha256 or Sha1 hash created by the system when the document was
+created.
+
+Sha1 hashes have been deprecated.
+
+
+
+=head2 DocumentHashType => Str
+
+Sha256 or Sha1.
+
+Sha1 hashes have been deprecated.
+
+Valid values are: C<"Sha256">, C<"Sha1">
+
 =head2 B<REQUIRED> DocumentName => Str
 
 Required. The name of the SSM document to execute. This can be an SSM
@@ -55,7 +76,14 @@ public document or a custom document.
 
 =head2 B<REQUIRED> InstanceIds => ArrayRef[Str]
 
-Required. The instance IDs where the command should execute.
+Required. The instance IDs where the command should execute. You can
+specify a maximum of 50 IDs.
+
+
+
+=head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
+
+Configurations for sending notifications.
 
 
 
@@ -77,6 +105,12 @@ be stored.
 
 The required and optional parameters specified in the SSM document
 being executed.
+
+
+
+=head2 ServiceRoleArn => Str
+
+The IAM role that SSM uses to send notifications.
 
 
 

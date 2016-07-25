@@ -2,6 +2,7 @@ package Paws::Firehose::S3DestinationConfiguration;
   use Moose;
   has BucketARN => (is => 'ro', isa => 'Str', required => 1);
   has BufferingHints => (is => 'ro', isa => 'Paws::Firehose::BufferingHints');
+  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
   has CompressionFormat => (is => 'ro', isa => 'Str');
   has EncryptionConfiguration => (is => 'ro', isa => 'Paws::Firehose::EncryptionConfiguration');
   has Prefix => (is => 'ro', isa => 'Str');
@@ -48,8 +49,13 @@ Describes the configuration of a destination in Amazon S3.
 
 =head2 BufferingHints => L<Paws::Firehose::BufferingHints>
 
-  The buffering option. If no value is specified, C<BufferingHints>
+  The buffering option. If no value is specified, B<BufferingHints>
 object default values are used.
+
+
+=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+
+  Describes CloudWatch logging options for your delivery stream.
 
 
 =head2 CompressionFormat => Str
@@ -74,7 +80,8 @@ no encryption.
 delivered S3 files. You can specify an extra prefix to be added in
 front of the time format prefix. Note that if the prefix ends with a
 slash, it appears as a folder in the S3 bucket. For more information,
-see Amazon S3 Object Name Format in the guide-fh-dev.
+see Amazon S3 Object Name Format in the Amazon Kinesis Firehose
+Developer Guide.
 
 
 =head2 B<REQUIRED> RoleARN => Str

@@ -69,7 +69,7 @@ expressed in epoch time.
 
 =head2 LogUri => Str
 
-A link to the file that contains logs of the CreateBatchPrediction
+A link to the file that contains logs of the C<CreateBatchPrediction>
 operation.
 
 

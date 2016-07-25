@@ -38,15 +38,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Limit => Int
 
-Maximum number of results to return. You can use this parameter with
-I<NextToken> to get results as a set of sequential pages.
+Maximum number of results to return. Use this parameter with
+C<NextToken> to get results as a set of sequential pages.
 
 
 
 =head2 Name => Str
 
-Descriptive label associated with this alias. Alias names do not need
-to be unique.
+Descriptive label associated with an alias. Alias names do not need to
+be unique.
 
 
 
@@ -62,17 +62,17 @@ specify the start of the result set, do not specify a value.
 
 Type of routing to filter results on. Use this parameter to retrieve
 only aliases of a certain type. To retrieve all aliases, leave this
-parameter empty. Possible routing types include:
+parameter empty. Possible routing types include the following:
 
 =over
 
-=item * SIMPLE: The alias resolves to one specific fleet. Use this type
-when routing to active fleets.
+=item * B<SIMPLE> E<ndash> The alias resolves to one specific fleet.
+Use this type when routing to active fleets.
 
-=item * TERMINAL: The alias does not resolve to a fleet but instead can
-be used to display a message to the user. A terminal alias throws a
-TerminalRoutingStrategyException with the RoutingStrategy message
-embedded.
+=item * B<TERMINAL> E<ndash> The alias does not resolve to a fleet but
+instead can be used to display a message to the user. A terminal alias
+throws a TerminalRoutingStrategyException with the RoutingStrategy
+message embedded.
 
 =back
 

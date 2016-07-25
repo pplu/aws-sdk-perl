@@ -1,6 +1,7 @@
 package Paws::Config::SourceDetail;
   use Moose;
   has EventSource => (is => 'ro', isa => 'Str');
+  has MaximumExecutionFrequency => (is => 'ro', isa => 'Str');
   has MessageType => (is => 'ro', isa => 'Str');
 1;
 
@@ -32,8 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Sou
 
 =head1 DESCRIPTION
 
-Provides the source and type of the event that triggers AWS Config to
-evaluate your AWS resources against a rule.
+Provides the source and the message type that trigger AWS Config to
+evaluate your AWS resources against a rule. It also provides the
+frequency with which you want AWS Config to run evaluations for the
+rule if the trigger type is periodic.
 
 =head1 ATTRIBUTES
 
@@ -44,14 +47,28 @@ evaluate your AWS resources against a rule.
 Config to evaluate your AWS resources.
 
 
+=head2 MaximumExecutionFrequency => Str
+
+  If the trigger type for your rule includes periodic, AWS Config runs
+evaluations for the rule at a frequency that you choose. If you specify
+a value for C<MaximumExecutionFrequency>, then C<MessageType> must use
+the C<ScheduledNotification> value.
+
+
 =head2 MessageType => Str
 
   The type of SNS message that triggers AWS Config to run an evaluation.
+
 For evaluations that are initiated when AWS Config delivers a
 configuration item change notification, you must use
-C<ConfigurationItemChangeNotification>. For evaluations that are
-initiated when AWS Config delivers a configuration snapshot, you must
-use C<ConfigurationSnapshotDeliveryCompleted>.
+C<ConfigurationItemChangeNotification>.
+
+For evaluations that are initiated at a frequency that you choose (for
+example, every 24 hours), you must use C<ScheduledNotification>.
+
+For evaluations that are initiated when AWS Config delivers a
+configuration snapshot, you must use
+C<ConfigurationSnapshotDeliveryCompleted>.
 
 
 

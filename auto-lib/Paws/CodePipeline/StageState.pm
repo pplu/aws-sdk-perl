@@ -2,6 +2,7 @@ package Paws::CodePipeline::StageState;
   use Moose;
   has ActionStates => (is => 'ro', isa => 'ArrayRef[Paws::CodePipeline::ActionState]', xmlname => 'actionStates', request_name => 'actionStates', traits => ['Unwrapped','NameInRequest']);
   has InboundTransitionState => (is => 'ro', isa => 'Paws::CodePipeline::TransitionState', xmlname => 'inboundTransitionState', request_name => 'inboundTransitionState', traits => ['Unwrapped','NameInRequest']);
+  has LatestExecution => (is => 'ro', isa => 'Paws::CodePipeline::StageExecution', xmlname => 'latestExecution', request_name => 'latestExecution', traits => ['Unwrapped','NameInRequest']);
   has StageName => (is => 'ro', isa => 'Str', xmlname => 'stageName', request_name => 'stageName', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -47,6 +48,12 @@ Represents information about the state of the stage.
 
   The state of the inbound transition, which is either enabled or
 disabled.
+
+
+=head2 LatestExecution => L<Paws::CodePipeline::StageExecution>
+
+  Information about the latest execution in the stage, including its ID
+and status.
 
 
 =head2 StageName => Str

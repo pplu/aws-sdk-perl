@@ -32,23 +32,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-This data type is used in the exception error that is thrown if you
-start an assessment run for an assessment target that includes an EC2
-instance that is already participating in another started assessment
-run.
+Used in the exception error that is thrown if you start an assessment
+run for an assessment target that includes an EC2 instance that is
+already participating in another started assessment run.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AgentId => Str
 
-  ID of the agent that is running on an EC2 isntance that is already
-particiapting in another started assessment run.
+  ID of the agent that is running on an EC2 instance that is already
+participating in another started assessment run.
 
 
 =head2 B<REQUIRED> AssessmentRunArn => Str
 
-  The ARN of the assessment that has already been started.
+  The ARN of the assessment run that has already been started.
 
 
 

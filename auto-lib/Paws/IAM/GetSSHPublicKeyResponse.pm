@@ -16,7 +16,7 @@ Paws::IAM::GetSSHPublicKeyResponse
 
 =head2 SSHPublicKey => L<Paws::IAM::SSHPublicKey>
 
-Information about the SSH public key.
+A structure containing details about the SSH public key.
 
 
 

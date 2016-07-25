@@ -1,10 +1,13 @@
 package Paws::ElasticBeanstalk::SingleInstanceHealth;
   use Moose;
   has ApplicationMetrics => (is => 'ro', isa => 'Paws::ElasticBeanstalk::ApplicationMetrics');
+  has AvailabilityZone => (is => 'ro', isa => 'Str');
   has Causes => (is => 'ro', isa => 'ArrayRef[Str]');
   has Color => (is => 'ro', isa => 'Str');
+  has Deployment => (is => 'ro', isa => 'Paws::ElasticBeanstalk::Deployment');
   has HealthStatus => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
+  has InstanceType => (is => 'ro', isa => 'Str');
   has LaunchedAt => (is => 'ro', isa => 'Str');
   has System => (is => 'ro', isa => 'Paws::ElasticBeanstalk::SystemStatus');
 1;
@@ -50,6 +53,11 @@ return data.
   
 
 
+=head2 AvailabilityZone => Str
+
+  The availability zone in which the instance runs.
+
+
 =head2 Causes => ArrayRef[Str]
 
   Represents the causes, which provide more information about the current
@@ -63,6 +71,11 @@ health of the EC2 instance. For more information, see Health Colors and
 Statuses.
 
 
+=head2 Deployment => L<Paws::ElasticBeanstalk::Deployment>
+
+  Information about the most recent deployment to an instance.
+
+
 =head2 HealthStatus => Str
 
   Returns the health status of the specified instance. For more
@@ -72,6 +85,11 @@ information, see Health Colors and Statuses.
 =head2 InstanceId => Str
 
   The ID of the Amazon EC2 instance.
+
+
+=head2 InstanceType => Str
+
+  The instance's type.
 
 
 =head2 LaunchedAt => Str

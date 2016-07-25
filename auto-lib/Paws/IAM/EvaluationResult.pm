@@ -39,7 +39,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Evalua
 
 Contains the results of a simulation.
 
-This data type is used by the return parameter of C<SimulatePolicy>.
+This data type is used by the return parameter of C<
+SimulateCustomPolicy > and C< SimulatePrincipalPolicy >.
 
 =head1 ATTRIBUTES
 
@@ -88,11 +89,6 @@ resources, then any missing context values are instead included under
 the C<ResourceSpecificResults> section. To discover the context keys
 used by a set of policies, you can call GetContextKeysForCustomPolicy
 or GetContextKeysForPrincipalPolicy.
-
-If the response includes any keys in this list, then the reported
-results might be untrustworthy because the simulation could not
-completely evaluate all of the conditions specified in the policies
-that would occur in a real world request.
 
 
 =head2 ResourceSpecificResults => ArrayRef[L<Paws::IAM::ResourceSpecificResult>]

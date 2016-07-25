@@ -6,12 +6,14 @@ package Paws::DMS::CreateReplicationInstance;
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
   has ReplicationInstanceClass => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationSubnetGroupIdentifier => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -87,6 +89,14 @@ account has a different default encryption key for each AWS region.
 
 
 
+=head2 MultiAZ => Bool
+
+Specifies if the replication instance is a Multi-AZ deployment. You
+cannot set the C<AvailabilityZone> parameter if the Multi-AZ parameter
+is set to C<true>.
+
+
+
 =head2 PreferredMaintenanceWindow => Str
 
 The weekly time range during which system maintenance can occur, in
@@ -132,11 +142,17 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens.
+=item *
 
-=item * First character must be a letter.
+Must contain from 1 to 63 alphanumeric characters or hyphens.
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -153,6 +169,14 @@ A subnet group to associate with the replication instance.
 =head2 Tags => ArrayRef[L<Paws::DMS::Tag>]
 
 Tags to be associated with the replication instance.
+
+
+
+=head2 VpcSecurityGroupIds => ArrayRef[Str]
+
+Specifies the VPC security group to be used with the replication
+instance. The VPC security group must work with the VPC containing the
+replication instance.
 
 
 

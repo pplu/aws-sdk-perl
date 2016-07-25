@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 =head1 DESCRIPTION
 
 Contains information about a resource group. The resource group defines
-a set of tags that, when queried, identify the AWS resources that
-comprise the assessment target. This data type is used as the response
+a set of tags that, when queried, identify the AWS resources that make
+up the assessment target. This data type is used as the response
 element in the DescribeResourceGroups action.
 
 =head1 ATTRIBUTES

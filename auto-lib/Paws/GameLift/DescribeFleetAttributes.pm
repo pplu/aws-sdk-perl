@@ -38,15 +38,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 FleetIds => ArrayRef[Str]
 
 Unique identifiers for the fleet(s) that you want to retrieve
-attributes for. Leave this parameter empty to retrieve attributes for
-all fleets.
+attributes for. To request attributes for all fleets, leave this
+parameter empty.
 
 
 
 =head2 Limit => Int
 
-Maximum number of results to return. You can use this parameter with
-I<NextToken> to get results as a set of sequential pages. This
+Maximum number of results to return. Use this parameter with
+C<NextToken> to get results as a set of sequential pages. This
 parameter is ignored when the request specifies one or a list of fleet
 IDs.
 

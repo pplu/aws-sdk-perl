@@ -36,14 +36,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssessmentTargetName => Str
 
-The user-defined name identifying the assessment target that you want
-to create. The name must be unique within the AWS account.
+The user-defined name that identifies the assessment target that you
+want to create. The name must be unique within the AWS account.
 
 
 
 =head2 B<REQUIRED> ResourceGroupArn => Str
 
-The ARN specifying the resource group that is used to create the
+The ARN that specifies the resource group that is used to create the
 assessment target.
 
 

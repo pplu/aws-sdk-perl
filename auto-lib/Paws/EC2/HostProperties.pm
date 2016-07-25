@@ -46,7 +46,7 @@ This class has no description
 
 =head2 InstanceType => Str
 
-  The instance type size that the Dedicated host supports (e.g.,
+  The instance type size that the Dedicated host supports (for example,
 m3.medium).
 
 

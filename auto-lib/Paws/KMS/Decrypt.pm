@@ -53,7 +53,7 @@ more information, see Encryption Context.
 
 A list of grant tokens.
 
-For more information, go to Grant Tokens in the I<AWS Key Management
+For more information, see Grant Tokens in the I<AWS Key Management
 Service Developer Guide>.
 
 

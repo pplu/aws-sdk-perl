@@ -44,11 +44,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The category of the custom action, such as a source action or a build
 action.
 
-Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">
+Although Source is listed as a valid value, it is not currently
+functional. This value is reserved for future use.
+
+Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">, C<"Approval">
 
 =head2 ConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]
 
 The configuration properties for the custom action.
+
+You can refer to a name in the configuration properties of the custom
+action within the URL templates by following the format of
+{Config:name}, as long as the configuration property is both required
+and not secret. For more information, see Create a Custom Action for a
+Pipeline.
 
 
 
@@ -80,9 +89,6 @@ CodeDeploy.
 =head2 B<REQUIRED> Version => Str
 
 The version number of the custom action.
-
-A newly-created custom action is always assigned a version number of
-C<1>. This is required.
 
 
 

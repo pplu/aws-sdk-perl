@@ -183,7 +183,7 @@ Product Page.
 Amazon CloudFormation makes use of other AWS products. If you need
 additional technical information about a specific AWS product, you can
 find the product's technical documentation at
-http://docs.aws.amazon.com/documentation/.
+http://docs.aws.amazon.com/.
 
 =head1 METHODS
 
@@ -307,9 +307,9 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackEv
 
 Returns: a L<Paws::CloudFormation::DescribeStackEventsOutput> instance
 
-  Returns all stack related events for a specified stack. For more
-information about a stack's event history, go to Stacks in the AWS
-CloudFormation User Guide.
+  Returns all stack related events for a specified stack in reverse
+chronological order. For more information about a stack's event
+history, go to Stacks in the AWS CloudFormation User Guide.
 
 You can list events for stacks that have failed to create or have been
 deleted by specifying the unique stack identifier (stack ID).

@@ -103,12 +103,18 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens (1
-to 15 for SQL Server)
+=item *
 
-=item * First character must be a letter
+Must contain from 1 to 63 alphanumeric characters or hyphens (1 to 15
+for SQL Server)
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -132,11 +138,17 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 255 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter
+Must contain from 1 to 255 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -256,9 +268,13 @@ each case.
 
 =over
 
-=item * B<Default VPC:> true
+=item *
 
-=item * B<VPC:> false
+B<Default VPC:> true
+
+=item *
+
+B<VPC:> false
 
 =back
 

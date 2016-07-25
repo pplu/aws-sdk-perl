@@ -70,18 +70,26 @@ following:
 
 =over
 
-=item * Message must contain a header and a body, separated by a blank
-line.
+=item *
 
-=item * All required header fields must be present.
+Message must contain a header and a body, separated by a blank line.
 
-=item * Each part of a multipart MIME message must be formatted
-properly.
+=item *
 
-=item * MIME content types must be among those supported by Amazon SES.
-For more information, go to the Amazon SES Developer Guide.
+All required header fields must be present.
 
-=item * Content must be base64-encoded, if MIME requires it.
+=item *
+
+Each part of a multipart MIME message must be formatted properly.
+
+=item *
+
+MIME content types must be among those supported by Amazon SES. For
+more information, go to the Amazon SES Developer Guide.
+
+=item *
+
+Content must be base64-encoded, if MIME requires it.
 
 =back
 

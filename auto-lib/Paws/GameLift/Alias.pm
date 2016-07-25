@@ -55,7 +55,7 @@ time).
 
 =head2 Description => Str
 
-  Human-readable description of the alias.
+  Human-readable description of an alias.
 
 
 =head2 LastUpdatedTime => Str
@@ -67,8 +67,8 @@ time).
 
 =head2 Name => Str
 
-  Descriptive label associated with this alias. Alias names do not need
-to be unique.
+  Descriptive label associated with an alias. Alias names do not need to
+be unique.
 
 
 =head2 RoutingStrategy => L<Paws::GameLift::RoutingStrategy>

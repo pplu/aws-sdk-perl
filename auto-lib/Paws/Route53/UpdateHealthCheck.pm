@@ -1,6 +1,7 @@
 
 package Paws::Route53::UpdateHealthCheck;
   use Moose;
+  has AlarmIdentifier => (is => 'ro', isa => 'Paws::Route53::AlarmIdentifier');
   has ChildHealthChecks => (is => 'ro', isa => 'ArrayRef[Str]');
   has EnableSNI => (is => 'ro', isa => 'Bool');
   has FailureThreshold => (is => 'ro', isa => 'Int');
@@ -8,9 +9,11 @@ package Paws::Route53::UpdateHealthCheck;
   has HealthCheckId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'HealthCheckId' , required => 1);
   has HealthCheckVersion => (is => 'ro', isa => 'Int');
   has HealthThreshold => (is => 'ro', isa => 'Int');
+  has InsufficientDataHealthStatus => (is => 'ro', isa => 'Str');
   has Inverted => (is => 'ro', isa => 'Bool');
   has IPAddress => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has Regions => (is => 'ro', isa => 'ArrayRef[Str]');
   has ResourcePath => (is => 'ro', isa => 'Str');
   has SearchString => (is => 'ro', isa => 'Str');
 
@@ -31,6 +34,12 @@ package Paws::Route53::UpdateHealthCheck;
 Paws::Route53::UpdateHealthCheckResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 AlarmIdentifier => L<Paws::Route53::AlarmIdentifier>
+
+
+
 
 
 =head2 ChildHealthChecks => ArrayRef[Str]
@@ -103,6 +112,12 @@ Specify this value only if you want to change it.
 
 
 
+=head2 InsufficientDataHealthStatus => Str
+
+
+
+Valid values are: C<"Healthy">, C<"Unhealthy">, C<"LastKnownStatus">
+
 =head2 Inverted => Bool
 
 A boolean value that indicates whether the status of health check
@@ -126,6 +141,19 @@ Specify this value only if you want to change it.
 
 The port on which you want Amazon Route 53 to open a connection to
 perform health checks.
+
+Specify this value only if you want to change it.
+
+
+
+=head2 Regions => ArrayRef[Str]
+
+A list of C<HealthCheckRegion> values that specify the Amazon EC2
+regions that you want Amazon Route 53 to use to perform health checks.
+You must specify at least three regions.
+
+When you remove a region from the list, Amazon Route 53 will briefly
+continue to check your endpoint from that region.
 
 Specify this value only if you want to change it.
 

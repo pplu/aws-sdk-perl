@@ -64,6 +64,10 @@ The name of the IAM user to list SSH public keys for. If none is
 specified, the UserName field is determined implicitly based on the AWS
 access key used to sign the request.
 
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
+
 
 
 

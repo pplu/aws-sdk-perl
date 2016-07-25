@@ -43,43 +43,49 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AdditionalContext => HashRef[Str]
 
-
+[Optional] A key-value map of additional context variables.
 
 
 
 =head2 B<REQUIRED> AuthorizerId => Str
 
-
+Specifies a test invoke authorizer request's Authorizer ID.
 
 
 
 =head2 Body => Str
 
-
+[Optional] The simulated request body of an incoming invocation
+request.
 
 
 
 =head2 Headers => HashRef[Str]
 
-
+[Required] A key-value map of headers to simulate an incoming
+invocation request. This is where the incoming authorization token, or
+identity source, should be specified.
 
 
 
 =head2 PathWithQueryString => Str
 
-
+[Optional] The URI path, including query string, of the simulated
+invocation request. Use this to specify path parameters and query
+string parameters.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-
+Specifies a test invoke authorizer request's RestApi identifier.
 
 
 
 =head2 StageVariables => HashRef[Str]
 
-
+A key-value map of stage variables to simulate an invocation on a
+deployed Stage.
 
 
 

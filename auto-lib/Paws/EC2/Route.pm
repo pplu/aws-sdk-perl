@@ -86,14 +86,19 @@ This class has no description
 
 =over
 
-=item * C<CreateRouteTable> indicates that route was automatically
-created when the route table was created.
+=item *
 
-=item * C<CreateRoute> indicates that the route was manually added to
-the route table.
+C<CreateRouteTable> - The route was automatically created when the
+route table was created.
 
-=item * C<EnableVgwRoutePropagation> indicates that the route was
-propagated by route propagation.
+=item *
+
+C<CreateRoute> - The route was manually added to the route table.
+
+=item *
+
+C<EnableVgwRoutePropagation> - The route was propagated by route
+propagation.
 
 =back
 

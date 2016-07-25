@@ -38,6 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 A string to use for filtering the list results. Only those queues whose
 name begins with the specified string are returned.
 
+Queue names are case-sensitive.
+
 
 
 

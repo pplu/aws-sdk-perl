@@ -41,13 +41,21 @@ actions:
 
 =over
 
-=item * DescribeDBSecurityGroups
+=item *
 
-=item * AuthorizeDBSecurityGroupIngress
+DescribeDBSecurityGroups
 
-=item * CreateDBSecurityGroup
+=item *
 
-=item * RevokeDBSecurityGroupIngress
+AuthorizeDBSecurityGroupIngress
+
+=item *
+
+CreateDBSecurityGroup
+
+=item *
+
+RevokeDBSecurityGroupIngress
 
 =back
 

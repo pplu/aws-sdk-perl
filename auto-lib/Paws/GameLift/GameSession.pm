@@ -9,6 +9,7 @@ package Paws::GameLift::GameSession;
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
   has PlayerSessionCreationPolicy => (is => 'ro', isa => 'Str');
+  has Port => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has TerminationTime => (is => 'ro', isa => 'Str');
 1;
@@ -75,7 +76,8 @@ time).
 
 =head2 IpAddress => Str
 
-  IP address of the game session.
+  IP address of the game session. To connect to a GameLift server
+process, an app needs both the IP address and port number.
 
 
 =head2 MaximumPlayerSessionCount => Int
@@ -85,8 +87,8 @@ time).
 
 =head2 Name => Str
 
-  Descriptive label associated with this game session. Session names do
-not need to be unique.
+  Descriptive label associated with a game session. Session names do not
+need to be unique.
 
 
 =head2 PlayerSessionCreationPolicy => Str
@@ -94,10 +96,16 @@ not need to be unique.
   Indicates whether or not the game session is accepting new players.
 
 
+=head2 Port => Int
+
+  Port number for the game session. To connect to a GameLift server
+process, an app needs both the IP address and port number.
+
+
 =head2 Status => Str
 
-  Current status of the game session. A game session must be in an ACTIVE
-state to have player sessions.
+  Current status of the game session. A game session must be in an
+C<ACTIVE> state to have player sessions.
 
 
 =head2 TerminationTime => Str

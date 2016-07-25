@@ -4,6 +4,7 @@ package Paws::ApiGateway::Authorizer;
   has AuthorizerCredentials => (is => 'ro', isa => 'Str');
   has AuthorizerResultTtlInSeconds => (is => 'ro', isa => 'Int');
   has AuthorizerUri => (is => 'ro', isa => 'Str');
+  has AuthType => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has IdentitySource => (is => 'ro', isa => 'Str');
   has IdentityValidationExpression => (is => 'ro', isa => 'Str');
@@ -49,6 +50,13 @@ indicate that the remaining substring in the URI should be treated as
 the path to the resource, including the initial C</>. For Lambda
 functions, this is usually of the form
 /2015-03-31/functions/[FunctionARN]/invocations
+
+
+
+=head2 AuthType => Str
+
+Optional customer-defined field, used in Swagger imports/exports. Has
+no functional impact.
 
 
 

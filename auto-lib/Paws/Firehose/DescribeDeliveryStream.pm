@@ -44,8 +44,8 @@ The name of the delivery stream.
 =head2 ExclusiveStartDestinationId => Str
 
 Specifies the destination ID to start returning the destination
-information. Currently Amazon Kinesis Firehose supports one destination
-per delivery stream.
+information. Currently Firehose supports one destination per delivery
+stream.
 
 
 

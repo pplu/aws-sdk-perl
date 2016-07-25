@@ -1,6 +1,7 @@
 package Paws::GameLift::FleetUtilization;
   use Moose;
   has ActiveGameSessionCount => (is => 'ro', isa => 'Int');
+  has ActiveServerProcessCount => (is => 'ro', isa => 'Int');
   has CurrentPlayerSessionCount => (is => 'ro', isa => 'Int');
   has FleetId => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
@@ -42,14 +43,20 @@ player sessions being hosted.
 
 =head2 ActiveGameSessionCount => Int
 
-  Number of active game sessions currently being hosted on fleet game
-servers.
+  Number of active game sessions currently being hosted on all instances
+in the fleet.
+
+
+=head2 ActiveServerProcessCount => Int
+
+  Number of server processes in an C<ACTIVE> state currently running
+across all instances in the fleet
 
 
 =head2 CurrentPlayerSessionCount => Int
 
-  Number of active player sessions currently being hosted on fleet game
-servers.
+  Number of active player sessions currently being hosted on all
+instances in the fleet.
 
 
 =head2 FleetId => Str
@@ -59,8 +66,8 @@ servers.
 
 =head2 MaximumPlayerSessionCount => Int
 
-  Maximum players allowed across all game sessions currently hosted in
-the fleet.
+  Maximum players allowed across all game sessions currently being hosted
+on all instances in the fleet.
 
 
 

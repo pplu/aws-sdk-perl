@@ -15,7 +15,7 @@ Paws::Inspector::CreateAssessmentTargetResponse
 
 =head2 B<REQUIRED> AssessmentTargetArn => Str
 
-The ARN specifying the assessment target that is created.
+The ARN that specifies the assessment target that is created.
 
 
 

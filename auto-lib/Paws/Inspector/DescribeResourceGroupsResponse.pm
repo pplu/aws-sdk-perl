@@ -23,7 +23,7 @@ provided for each failed item.
 
 =head2 B<REQUIRED> ResourceGroups => ArrayRef[L<Paws::Inspector::ResourceGroup>]
 
-Information about the resource group(s).
+Information about a resource group.
 
 
 

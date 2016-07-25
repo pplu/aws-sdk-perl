@@ -55,12 +55,18 @@ Developer Guide.
 
 =over
 
-=item * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods
-(.), underscores (_), or dashes (-).
+=item *
 
-=item * Start and end with a letter or number.
+Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
+underscores (_), or dashes (-).
 
-=item * Contain less than 64 characters.
+=item *
+
+Start and end with a letter or number.
+
+=item *
+
+Contain less than 64 characters.
 
 =back
 

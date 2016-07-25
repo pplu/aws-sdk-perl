@@ -18,20 +18,20 @@ Paws::EFS::DescribeFileSystemsResponse
 
 =head2 FileSystems => ArrayRef[L<Paws::EFS::FileSystemDescription>]
 
-An array of file system descriptions.
+Array of file system descriptions.
 
 
 
 =head2 Marker => Str
 
-A string, present if provided by caller in the request.
+Present if provided by caller in the request (String).
 
 
 
 =head2 NextMarker => Str
 
-A string, present if there are more file systems than returned in the
-response. You can use the C<NextMarker> in the subsequent request to
+Present if there are more file systems than returned in the response
+(String). You can use the C<NextMarker> in the subsequent request to
 fetch the descriptions.
 
 

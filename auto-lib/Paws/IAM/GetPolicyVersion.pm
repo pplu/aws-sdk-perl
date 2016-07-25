@@ -36,13 +36,21 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> PolicyArn => Str
 
+The Amazon Resource Name (ARN) of the managed policy that you want
+information about.
 
+For more information about ARNs, see Amazon Resource Names (ARNs) and
+AWS Service Namespaces in the I<AWS General Reference>.
 
 
 
 =head2 B<REQUIRED> VersionId => Str
 
 Identifies the policy version to retrieve.
+
+The regex pattern for this parameter is a string of characters that
+consists of the lowercase letter 'v' followed by one or two digits, and
+optionally followed by a period '.' and a string of letters and digits.
 
 
 

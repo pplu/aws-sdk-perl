@@ -57,7 +57,7 @@ expires. Authorization tokens are valid for 12 hours.
   The registry URL to use for this authorization token in a C<docker
 login> command. The Amazon ECR registry URL format is
 C<https://aws_account_id.dkr.ecr.region.amazonaws.com>. For example,
-C<https://012345678910.dkr.ecr.us-east-1.amazonaws.com>.
+C<https://012345678910.dkr.ecr.us-east-1.amazonaws.com>..
 
 
 

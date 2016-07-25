@@ -1,5 +1,6 @@
 package Paws::DynamoDBStreams::StreamRecord;
   use Moose;
+  has ApproximateCreationDateTime => (is => 'ro', isa => 'Str');
   has Keys => (is => 'ro', isa => 'HashRef[Paws::DynamoDBStreams::AttributeValue]');
   has NewImage => (is => 'ro', isa => 'HashRef[Paws::DynamoDBStreams::AttributeValue]');
   has OldImage => (is => 'ro', isa => 'HashRef[Paws::DynamoDBStreams::AttributeValue]');
@@ -25,14 +26,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DynamoDBStreams::StreamRecord object:
 
-  $service_obj->Method(Att1 => { Keys => $value, ..., StreamViewType => $value  });
+  $service_obj->Method(Att1 => { ApproximateCreationDateTime => $value, ..., StreamViewType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDBStreams::StreamRecord object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->Keys
+  $result->Att1->ApproximateCreationDateTime
 
 =head1 DESCRIPTION
 
@@ -40,6 +41,12 @@ A description of a single data modification that was performed on an
 item in a DynamoDB table.
 
 =head1 ATTRIBUTES
+
+
+=head2 ApproximateCreationDateTime => Str
+
+  The approximate date and time when the stream record was created, in
+UNIX epoch time format.
 
 
 =head2 Keys => HashRef[L<Paws::DynamoDBStreams::AttributeValue>]
@@ -80,7 +87,7 @@ C<KEYS_ONLY> - only the key attributes of the modified item.
 
 =item *
 
-C<NEW_IMAGE> - the entire item, as it appears after it was modified.
+C<NEW_IMAGE> - the entire item, as it appeared after it was modified.
 
 =item *
 
@@ -88,8 +95,8 @@ C<OLD_IMAGE> - the entire item, as it appeared before it was modified.
 
 =item *
 
-C<NEW_AND_OLD_IMAGES> E<mdash> both the new and the old item images of
-the item.
+C<NEW_AND_OLD_IMAGES> - both the new and the old item images of the
+item.
 
 =back
 

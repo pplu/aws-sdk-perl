@@ -45,19 +45,24 @@ different region. The default is true.
 =head2 TrailNameList => ArrayRef[Str]
 
 Specifies a list of trail names, trail ARNs, or both, of the trails to
-describe. The format of a trail ARN is
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>. If an empty
-list is specified, information for the trail in the current region is
-returned.
+describe. The format of a trail ARN is:
+
+C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
+
+If an empty list is specified, information for the trail in the current
+region is returned.
 
 =over
 
-=item * If an empty list is specified and C<IncludeShadowTrails> is
-false, then information for all trails in the current region is
-returned.
+=item *
 
-=item * If an empty list is specified and IncludeShadowTrails is null
-or true, then information for all trails in the current region and any
+If an empty list is specified and C<IncludeShadowTrails> is false, then
+information for all trails in the current region is returned.
+
+=item *
+
+If an empty list is specified and IncludeShadowTrails is null or true,
+then information for all trails in the current region and any
 associated shadow trails in other regions is returned.
 
 =back

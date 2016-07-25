@@ -3,6 +3,7 @@ package Paws::EMR::InstanceGroupModifyConfig;
   has EC2InstanceIdsToTerminate => (is => 'ro', isa => 'ArrayRef[Str]');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has InstanceGroupId => (is => 'ro', isa => 'Str', required => 1);
+  has ShrinkPolicy => (is => 'ro', isa => 'Paws::EMR::ShrinkPolicy');
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EMR::InstanceGroupModifyConfig object:
 
-  $service_obj->Method(Att1 => { EC2InstanceIdsToTerminate => $value, ..., InstanceGroupId => $value  });
+  $service_obj->Method(Att1 => { EC2InstanceIdsToTerminate => $value, ..., ShrinkPolicy => $value  });
 
 =head3 Results returned from an API call
 
@@ -40,9 +41,8 @@ Modify an instance group size.
 
 =head2 EC2InstanceIdsToTerminate => ArrayRef[Str]
 
-  The EC2 InstanceIds to terminate. For advanced users only. Once you
-terminate the instances, the instance group will not return to its
-original requested size.
+  The EC2 InstanceIds to terminate. Once you terminate the instances, the
+instance group will not return to its original requested size.
 
 
 =head2 InstanceCount => Int
@@ -53,6 +53,11 @@ original requested size.
 =head2 B<REQUIRED> InstanceGroupId => Str
 
   Unique ID of the instance group to expand or shrink.
+
+
+=head2 ShrinkPolicy => L<Paws::EMR::ShrinkPolicy>
+
+  Policy for customizing shrink operations.
 
 
 

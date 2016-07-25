@@ -16,7 +16,7 @@ Paws::IAM::GetServerCertificateResponse
 
 =head2 B<REQUIRED> ServerCertificate => L<Paws::IAM::ServerCertificate>
 
-Information about the server certificate.
+A structure containing details about the server certificate.
 
 
 

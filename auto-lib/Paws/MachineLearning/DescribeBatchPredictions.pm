@@ -112,7 +112,8 @@ specified with C<LE>.
 =head2 Limit => Int
 
 The number of pages of information to include in the result. The range
-of acceptable values is 1 through 100. The default value is 100.
+of acceptable values is C<1> through C<100>. The default value is
+C<100>.
 
 
 

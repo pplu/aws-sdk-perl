@@ -41,11 +41,17 @@ Constraints:
 
 =over
 
-=item * Must be the name of an existing DB cluster parameter group.
+=item *
 
-=item * You cannot delete a default DB cluster parameter group.
+Must be the name of an existing DB cluster parameter group.
 
-=item * Cannot be associated with any DB clusters.
+=item *
+
+You cannot delete a default DB cluster parameter group.
+
+=item *
+
+Cannot be associated with any DB clusters.
 
 =back
 

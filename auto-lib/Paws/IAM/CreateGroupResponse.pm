@@ -16,7 +16,7 @@ Paws::IAM::CreateGroupResponse
 
 =head2 B<REQUIRED> Group => L<Paws::IAM::Group>
 
-Information about the group.
+A structure containing details about the new group.
 
 
 

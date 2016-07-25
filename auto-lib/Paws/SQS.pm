@@ -181,17 +181,29 @@ Helpful Links:
 
 =over
 
-=item * Current WSDL (2012-11-05)
+=item *
 
-=item * Making API Requests
+Current WSDL (2012-11-05)
 
-=item * Amazon SQS product page
+=item *
 
-=item * Using Amazon SQS Message Attributes
+Making API Requests
 
-=item * Using Amazon SQS Dead Letter Queues
+=item *
 
-=item * Regions and Endpoints
+Amazon SQS product page
+
+=item *
+
+Using Amazon SQS Message Attributes
+
+=item *
+
+Using Amazon SQS Dead Letter Queues
+
+=item *
+
+Regions and Endpoints
 
 =back
 
@@ -201,11 +213,17 @@ automatically takes care of tasks such as:
 
 =over
 
-=item * Cryptographically signing your service requests
+=item *
 
-=item * Retrying requests
+Cryptographically signing your service requests
 
-=item * Handling error responses
+=item *
+
+Retrying requests
+
+=item *
+
+Handling error responses
 
 =back
 
@@ -237,9 +255,9 @@ using the C<param.n> notation. Values of C<n> are integers starting
 from 1. For example, a parameter list with two elements looks like
 this:
 
-C<&Attribute.1=this>
+C<>
 
-C<&Attribute.2=that>
+C<>
 
 
 =head2 ChangeMessageVisibility(QueueUrl => Str, ReceiptHandle => Str, VisibilityTimeout => Int)
@@ -276,12 +294,14 @@ can also increase the number of queues you use to process the messages.
 If you attempt to set the C<VisibilityTimeout> to an amount more than
 the maximum time left, Amazon SQS returns an error. It will not
 automatically recalculate and increase the timeout to the maximum time
-remaining. Unlike with a queue, when you change the visibility timeout
-for a specific message, that timeout value is applied immediately but
-is not saved in memory for that message. If you don't delete a message
-after it is received, the visibility timeout for the message the next
-time it is received reverts to the original timeout value, not the
-value you set with the C<ChangeMessageVisibility> action.
+remaining.
+
+Unlike with a queue, when you change the visibility timeout for a
+specific message, that timeout value is applied immediately but is not
+saved in memory for that message. If you don't delete a message after
+it is received, the visibility timeout for the message the next time it
+is received reverts to the original timeout value, not the value you
+set with the C<ChangeMessageVisibility> action.
 
 
 =head2 ChangeMessageVisibilityBatch(Entries => ArrayRef[L<Paws::SQS::ChangeMessageVisibilityBatchRequestEntry>], QueueUrl => Str)
@@ -298,14 +318,16 @@ C<ChangeMessageVisibilityBatch> action.
 
 Because the batch request can result in a combination of successful and
 unsuccessful actions, you should check for batch errors even when the
-call returns an HTTP status code of 200. Some API actions take lists of
-parameters. These lists are specified using the C<param.n> notation.
-Values of C<n> are integers starting from 1. For example, a parameter
-list with two elements looks like this:
+call returns an HTTP status code of 200.
 
-C<&Attribute.1=this>
+Some API actions take lists of parameters. These lists are specified
+using the C<param.n> notation. Values of C<n> are integers starting
+from 1. For example, a parameter list with two elements looks like
+this:
 
-C<&Attribute.2=that>
+C<>
+
+C<>
 
 
 =head2 CreateQueue(QueueName => Str, [Attributes => L<Paws::SQS::QueueAttributeMap>])
@@ -324,8 +346,7 @@ creating a queue with the same name.
 
 You may pass one or more attributes in the request. If you do not
 provide a value for any attribute, the queue will have the default
-value for that attribute. Permitted attributes are the same that can be
-set using SetQueueAttributes.
+value for that attribute.
 
 Use GetQueueUrl to get a queue's URL. GetQueueUrl requires only the
 C<QueueName> parameter.
@@ -341,9 +362,9 @@ using the C<param.n> notation. Values of C<n> are integers starting
 from 1. For example, a parameter list with two elements looks like
 this:
 
-C<&Attribute.1=this>
+C<>
 
-C<&Attribute.2=that>
+C<>
 
 
 =head2 DeleteMessage(QueueUrl => Str, ReceiptHandle => Str)
@@ -395,9 +416,9 @@ using the C<param.n> notation. Values of C<n> are integers starting
 from 1. For example, a parameter list with two elements looks like
 this:
 
-C<&Attribute.1=this>
+C<>
 
-C<&Attribute.2=that>
+C<>
 
 
 =head2 DeleteQueue(QueueUrl => Str)
@@ -431,68 +452,16 @@ Each argument is described in detail in: L<Paws::SQS::GetQueueAttributes>
 
 Returns: a L<Paws::SQS::GetQueueAttributesResult> instance
 
-  Gets attributes for the specified queue. The following attributes are
-supported:
+  Gets attributes for the specified queue.
 
-=over
+Some API actions take lists of parameters. These lists are specified
+using the C<param.n> notation. Values of C<n> are integers starting
+from 1. For example, a parameter list with two elements looks like
+this:
 
-=item * C<All> - returns all values.
+C<>
 
-=item * C<ApproximateNumberOfMessages> - returns the approximate number
-of visible messages in a queue. For more information, see Resources
-Required to Process Messages in the I<Amazon SQS Developer Guide>.
-
-=item * C<ApproximateNumberOfMessagesNotVisible> - returns the
-approximate number of messages that are not timed-out and not deleted.
-For more information, see Resources Required to Process Messages in the
-I<Amazon SQS Developer Guide>.
-
-=item * C<VisibilityTimeout> - returns the visibility timeout for the
-queue. For more information about visibility timeout, see Visibility
-Timeout in the I<Amazon SQS Developer Guide>.
-
-=item * C<CreatedTimestamp> - returns the time when the queue was
-created (epoch time in seconds).
-
-=item * C<LastModifiedTimestamp> - returns the time when the queue was
-last changed (epoch time in seconds).
-
-=item * C<Policy> - returns the queue's policy.
-
-=item * C<MaximumMessageSize> - returns the limit of how many bytes a
-message can contain before Amazon SQS rejects it.
-
-=item * C<MessageRetentionPeriod> - returns the number of seconds
-Amazon SQS retains a message.
-
-=item * C<QueueArn> - returns the queue's Amazon resource name (ARN).
-
-=item * C<ApproximateNumberOfMessagesDelayed> - returns the approximate
-number of messages that are pending to be added to the queue.
-
-=item * C<DelaySeconds> - returns the default delay on the queue in
-seconds.
-
-=item * C<ReceiveMessageWaitTimeSeconds> - returns the time for which a
-ReceiveMessage call will wait for a message to arrive.
-
-=item * C<RedrivePolicy> - returns the parameters for dead letter queue
-functionality of the source queue. For more information about
-RedrivePolicy and dead letter queues, see Using Amazon SQS Dead Letter
-Queues in the I<Amazon SQS Developer Guide>.
-
-=back
-
-Going forward, new attributes might be added. If you are writing code
-that calls this action, we recommend that you structure your code so
-that it can handle new attributes gracefully. Some API actions take
-lists of parameters. These lists are specified using the C<param.n>
-notation. Values of C<n> are integers starting from 1. For example, a
-parameter list with two elements looks like this:
-
-C<&Attribute.1=this>
-
-C<&Attribute.2=that>
+C<>
 
 
 =head2 GetQueueUrl(QueueName => Str, [QueueOwnerAWSAccountId => Str])
@@ -679,14 +648,16 @@ rejected.
 
 Because the batch request can result in a combination of successful and
 unsuccessful actions, you should check for batch errors even when the
-call returns an HTTP status code of 200. Some API actions take lists of
-parameters. These lists are specified using the C<param.n> notation.
-Values of C<n> are integers starting from 1. For example, a parameter
-list with two elements looks like this:
+call returns an HTTP status code of 200.
 
-C<&Attribute.1=this>
+Some API actions take lists of parameters. These lists are specified
+using the C<param.n> notation. Values of C<n> are integers starting
+from 1. For example, a parameter list with two elements looks like
+this:
 
-C<&Attribute.2=that>
+C<>
+
+C<>
 
 
 =head2 SetQueueAttributes(Attributes => L<Paws::SQS::QueueAttributeMap>, QueueUrl => Str)

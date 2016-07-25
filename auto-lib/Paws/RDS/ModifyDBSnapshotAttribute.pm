@@ -1,7 +1,7 @@
 
 package Paws::RDS::ModifyDBSnapshotAttribute;
   use Moose;
-  has AttributeName => (is => 'ro', isa => 'Str');
+  has AttributeName => (is => 'ro', isa => 'Str', required => 1);
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ValuesToAdd => (is => 'ro', isa => 'ArrayRef[Str]');
   has ValuesToRemove => (is => 'ro', isa => 'ArrayRef[Str]');
@@ -36,12 +36,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AttributeName => Str
+=head2 B<REQUIRED> AttributeName => Str
 
 The name of the DB snapshot attribute to modify.
 
 To manage authorization for other AWS accounts to copy or restore a
-manual DB snapshot, this value is C<restore>.
+manual DB snapshot, set this value to C<restore>.
 
 
 
@@ -56,11 +56,11 @@ The identifier for the DB snapshot to modify the attributes for.
 A list of DB snapshot attributes to add to the attribute specified by
 C<AttributeName>.
 
-To authorize other AWS Accounts to copy or restore a manual snapshot,
-this is one or more AWS account identifiers, or C<all> to make the
-manual DB snapshot restorable by any AWS account. Do not add the C<all>
-value for any manual DB snapshots that contain private information that
-you do not want to be available to all AWS accounts.
+To authorize other AWS accounts to copy or restore a manual snapshot,
+set this list to include one or more AWS account IDs, or C<all> to make
+the manual DB snapshot restorable by any AWS account. Do not add the
+C<all> value for any manual DB snapshots that contain private
+information that you don't want available to all AWS accounts.
 
 
 
@@ -69,12 +69,12 @@ you do not want to be available to all AWS accounts.
 A list of DB snapshot attributes to remove from the attribute specified
 by C<AttributeName>.
 
-To remove authorization for other AWS Accounts to copy or restore a
-manual snapshot, this is one or more AWS account identifiers, or C<all>
-to remove authorization for any AWS account to copy or restore the DB
-snapshot. If you specify C<all>, AWS accounts that have their account
-identifier explicitly added to the C<restore> attribute can still copy
-or restore the manual DB snapshot.
+To remove authorization for other AWS accounts to copy or restore a
+manual snapshot, set this list to include one or more AWS account
+identifiers, or C<all> to remove authorization for any AWS account to
+copy or restore the DB snapshot. If you specify C<all>, an AWS account
+whose account ID is explicitly added to the C<restore> attribute can
+still copy or restore the manual DB snapshot.
 
 
 

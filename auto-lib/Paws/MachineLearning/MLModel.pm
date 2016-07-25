@@ -46,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head1 DESCRIPTION
 
-Represents the output of a GetMLModel operation.
+Represents the output of a C<GetMLModel> operation.
 
 The content consists of the detailed metadata and the current status of
 the C<MLModel>.
@@ -61,7 +61,7 @@ supported:
 
 =over
 
-=item * SGD -- Stochastic gradient descent. The goal of SGD is to
+=item * C<SGD> -- Stochastic gradient descent. The goal of C<SGD> is to
 minimize the gradient of the loss function.
 
 =back
@@ -116,14 +116,14 @@ types:
 
 =over
 
-=item * REGRESSION - Produces a numeric result. For example, "What
-listing price should a house have?".
+=item * C<REGRESSION> - Produces a numeric result. For example, "What
+price should a house be listed at?"
 
-=item * BINARY - Produces one of two possible results. For example, "Is
-this a child-friendly web site?".
+=item * C<BINARY> - Produces one of two possible results. For example,
+"Is this a child-friendly web site?".
 
-=item * MULTICLASS - Produces more than two possible results. For
-example, "Is this a HIGH, LOW or MEDIUM risk trade?".
+=item * C<MULTICLASS> - Produces one of several possible results. For
+example, "Is this a HIGH-, LOW-, or MEDIUM-risk trade?".
 
 =back
 
@@ -157,17 +157,17 @@ following values:
 
 =over
 
-=item * PENDING - Amazon Machine Learning (Amazon ML) submitted a
+=item * C<PENDING> - Amazon Machine Learning (Amazon ML) submitted a
 request to create an C<MLModel>.
 
-=item * INPROGRESS - The creation process is underway.
+=item * C<INPROGRESS> - The creation process is underway.
 
-=item * FAILED - The request to create an C<MLModel> did not run to
-completion. It is not usable.
+=item * C<FAILED> - The request to create an C<MLModel> didn't run to
+completion. The model isn't usable.
 
-=item * COMPLETED - The creation process completed successfully.
+=item * C<COMPLETED> - The creation process completed successfully.
 
-=item * DELETED - The C<MLModel> is marked as deleted. It is not
+=item * C<DELETED> - The C<MLModel> is marked as deleted. It isn't
 usable.
 
 =back
@@ -176,14 +176,14 @@ usable.
 
 =head2 TrainingDataSourceId => Str
 
-  The ID of the training C<DataSource>. The CreateMLModel operation uses
-the C<TrainingDataSourceId>.
+  The ID of the training C<DataSource>. The C<CreateMLModel> operation
+uses the C<TrainingDataSourceId>.
 
 
 =head2 TrainingParameters => HashRef[Str]
 
   A list of the training parameters in the C<MLModel>. The list is
-implemented as a map of key/value pairs.
+implemented as a map of key-value pairs.
 
 The following is the current set of training parameters:
 
@@ -191,40 +191,48 @@ The following is the current set of training parameters:
 
 =item *
 
-C<sgd.l1RegularizationAmount> - Coefficient regularization L1 norm. It
-controls overfitting the data by penalizing large coefficients. This
-tends to drive coefficients to zero, resulting in a sparse feature set.
-If you use this parameter, specify a small value, such as 1.0E-04 or
-1.0E-08.
+C<sgd.maxMLModelSizeInBytes> - The maximum allowed size of the model.
+Depending on the input data, the size of the model might affect its
+performance.
 
-The value is a double that ranges from 0 to MAX_DOUBLE. The default is
-not to use L1 normalization. The parameter cannot be used when C<L2> is
-specified. Use this parameter sparingly.
+The value is an integer that ranges from C<100000> to C<2147483648>.
+The default value is C<33554432>.
 
 =item *
 
-C<sgd.l2RegularizationAmount> - Coefficient regularization L2 norm. It
-controls overfitting the data by penalizing large coefficients. This
-tends to drive coefficients to small, nonzero values. If you use this
-parameter, specify a small value, such as 1.0E-04 or 1.0E-08.
-
-The valus is a double that ranges from 0 to MAX_DOUBLE. The default is
-not to use L2 normalization. This cannot be used when C<L1> is
-specified. Use this parameter sparingly.
+C<sgd.maxPasses> - The number of times that the training process
+traverses the observations to build the C<MLModel>. The value is an
+integer that ranges from C<1> to C<10000>. The default value is C<10>.
 
 =item *
 
-C<sgd.maxPasses> - Number of times that the training process traverses
-the observations to build the C<MLModel>. The value is an integer that
-ranges from 1 to 10000. The default value is 10.
+C<sgd.shuffleType> - Whether Amazon ML shuffles the training data.
+Shuffling the data improves a model's ability to find the optimal
+solution for a variety of data types. The valid values are C<auto> and
+C<none>. The default value is C<none>.
 
 =item *
 
-C<sgd.maxMLModelSizeInBytes> - Maximum allowed size of the model.
-Depending on the input data, the model size might affect performance.
+C<sgd.l1RegularizationAmount> - The coefficient regularization L1 norm,
+which controls overfitting the data by penalizing large coefficients.
+This parameter tends to drive coefficients to zero, resulting in sparse
+feature set. If you use this parameter, start by specifying a small
+value, such as C<1.0E-08>.
 
-The value is an integer that ranges from 100000 to 2147483648. The
-default value is 33554432.
+The value is a double that ranges from C<0> to C<MAX_DOUBLE>. The
+default is to not use L1 normalization. This parameter can't be used
+when C<L2> is specified. Use this parameter sparingly.
+
+=item *
+
+C<sgd.l2RegularizationAmount> - The coefficient regularization L2 norm,
+which controls overfitting the data by penalizing large coefficients.
+This tends to drive coefficients to small, nonzero values. If you use
+this parameter, start by specifying a small value, such as C<1.0E-08>.
+
+The value is a double that ranges from C<0> to C<MAX_DOUBLE>. The
+default is to not use L2 normalization. This parameter can't be used
+when C<L1> is specified. Use this parameter sparingly.
 
 =back
 

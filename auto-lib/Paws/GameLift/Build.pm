@@ -55,32 +55,33 @@ time).
 
 =head2 Name => Str
 
-  Descriptive label associated with this build. Build names do not need
-to be unique. It can be set using CreateBuild or UpdateBuild.
+  Descriptive label associated with a build. Build names do not need to
+be unique. It can be set using CreateBuild or UpdateBuild.
 
 
 =head2 SizeOnDisk => Int
 
   File size of the uploaded game build, expressed in bytes. When the
-build state is INITIALIZED, this value is 0.
+build state is C<INITIALIZED>, this value is 0.
 
 
 =head2 Status => Str
 
-  Current status of the build. Possible build states include:
+  Current status of the build. Possible build states include the
+following:
 
 =over
 
-=item * INITIALIZED: A new build has been defined, but no files have
-been uploaded. You cannot create fleets for builds that are in this
-state. When a build is successfully created, the build state is set to
-this value.
+=item * B<INITIALIZED> E<ndash> A new build has been defined, but no
+files have been uploaded. You cannot create fleets for builds that are
+in this state. When a build is successfully created, the build state is
+set to this value.
 
-=item * READY: The game build has been successfully uploaded. You can
-now create new fleets for this build.
+=item * B<READY> E<ndash> The game build has been successfully
+uploaded. You can now create new fleets for this build.
 
-=item * FAILED: The game build upload failed. You cannot create new
-fleets for this build.
+=item * B<FAILED> E<ndash> The game build upload failed. You cannot
+create new fleets for this build.
 
 =back
 

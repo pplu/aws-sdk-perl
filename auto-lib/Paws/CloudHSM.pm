@@ -153,9 +153,10 @@ Each argument is described in detail in: L<Paws::CloudHSM::AddTagsToResource>
 
 Returns: a L<Paws::CloudHSM::AddTagsToResourceResponse> instance
 
-  Adds or overwrites one or more tags for the specified resource.
+  Adds or overwrites one or more tags for the specified AWS CloudHSM
+resource.
 
-Each tag consists of a key and a value. Tag keys must be unique per
+Each tag consists of a key and a value. Tag keys must be unique to each
 resource.
 
 
@@ -322,7 +323,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::ListTagsForResource>
 
 Returns: a L<Paws::CloudHSM::ListTagsForResourceResponse> instance
 
-  Returns a list of all tags for the specified resource.
+  Returns a list of all tags for the specified AWS CloudHSM resource.
 
 
 =head2 ModifyHapg(HapgArn => Str, [Label => Str, PartitionSerialList => ArrayRef[Str]])
@@ -367,7 +368,7 @@ Each argument is described in detail in: L<Paws::CloudHSM::RemoveTagsFromResourc
 
 Returns: a L<Paws::CloudHSM::RemoveTagsFromResourceResponse> instance
 
-  Removes one or more tags from the specified resource.
+  Removes one or more tags from the specified AWS CloudHSM resource.
 
 To remove a tag, specify only the tag key to remove (not the value). To
 overwrite the value for an existing tag, use AddTagsToResource.

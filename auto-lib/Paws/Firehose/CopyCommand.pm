@@ -43,7 +43,7 @@ Describes a C<COPY> command for Amazon Redshift.
   Optional parameters to use with the Amazon Redshift C<COPY> command.
 For more information, see the "Optional Parameters" section of Amazon
 Redshift COPY command. Some possible examples that would apply to
-Amazon Kinesis Firehose are as follows.
+Firehose are as follows.
 
 C<delimiter '\t' lzop;> - fields are delimited with "\t" (TAB
 character) and compressed using lzop.
@@ -61,7 +61,7 @@ every column in the table.
 C<JSON 's3://mybucket/jsonpaths.txt'> - data is in JSON format, and the
 path specified is the format of the data.
 
-For more examples, see and Amazon Redshift COPY command exmaples.
+For more examples, see Amazon Redshift COPY command examples.
 
 
 =head2 DataTableColumns => Str

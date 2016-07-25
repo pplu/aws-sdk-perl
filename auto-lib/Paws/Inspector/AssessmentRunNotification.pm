@@ -36,8 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-This data type is used as one of the elements of the AssessmentRun data
-type.
+Used as one of the elements of the AssessmentRun data type.
 
 =head1 ATTRIBUTES
 

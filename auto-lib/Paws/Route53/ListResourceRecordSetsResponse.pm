@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A flag that indicates whether there are more resource record sets to be
 listed. If your results were truncated, you can make a follow-up
-request for the next page of results by using the
-ListResourceRecordSetsResponse$NextRecordName element.
+request for the next page of results by using the C<NextRecordName>
+element.
 
 Valid Values: C<true> | C<false>
 
@@ -62,16 +62,14 @@ resource record set that has the current DNS name and type.
 =head2 NextRecordName => Str
 
 If the results were truncated, the name of the next record in the list.
-This element is present only if
-ListResourceRecordSetsResponse$IsTruncated is true.
+This element is present only if C<IsTruncated> is true.
 
 
 
 =head2 NextRecordType => Str
 
 If the results were truncated, the type of the next record in the list.
-This element is present only if
-ListResourceRecordSetsResponse$IsTruncated is true.
+This element is present only if C<IsTruncated> is true.
 
 Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">
 

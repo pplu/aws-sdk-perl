@@ -14,6 +14,11 @@ package Paws::DS;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub AddTagsToResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::AddTagsToResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ConnectDirectory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::ConnectDirectory', @_);
@@ -27,6 +32,11 @@ package Paws::DS;
   sub CreateComputer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::CreateComputer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateConditionalForwarder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::CreateConditionalForwarder', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateDirectory {
@@ -49,6 +59,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::CreateTrust', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteConditionalForwarder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DeleteConditionalForwarder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDirectory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DeleteDirectory', @_);
@@ -67,6 +82,11 @@ package Paws::DS;
   sub DeregisterEventTopic {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DeregisterEventTopic', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeConditionalForwarders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DescribeConditionalForwarders', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDirectories {
@@ -119,14 +139,29 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::GetSnapshotLimits', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterEventTopic {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::RegisterEventTopic', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RemoveTagsFromResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::RemoveTagsFromResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreFromSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::RestoreFromSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateConditionalForwarder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::UpdateConditionalForwarder', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateRadius {
@@ -140,7 +175,7 @@ package Paws::DS;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/ConnectDirectory CreateAlias CreateComputer CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits RegisterEventTopic RestoreFromSnapshot UpdateRadius VerifyTrust / }
+  sub operations { qw/AddTagsToResource ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListTagsForResource RegisterEventTopic RemoveTagsFromResource RestoreFromSnapshot UpdateConditionalForwarder UpdateRadius VerifyTrust / }
 
 1;
 
@@ -176,6 +211,18 @@ types, parameters, and errors.
 
 =head1 METHODS
 
+=head2 AddTagsToResource(ResourceId => Str, Tags => ArrayRef[L<Paws::DS::Tag>])
+
+Each argument is described in detail in: L<Paws::DS::AddTagsToResource>
+
+Returns: a L<Paws::DS::AddTagsToResourceResult> instance
+
+  Adds or overwrites one or more tags for the specified Amazon Directory
+Services directory. Each directory can have a maximum of 10 tags. Each
+tag consists of a key and optional value. Tag keys must be unique per
+resource.
+
+
 =head2 ConnectDirectory(ConnectSettings => L<Paws::DS::DirectoryConnectSettings>, Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str])
 
 Each argument is described in detail in: L<Paws::DS::ConnectDirectory>
@@ -193,7 +240,7 @@ Returns: a L<Paws::DS::CreateAliasResult> instance
 
   Creates an alias for a directory and assigns the alias to the
 directory. The alias is used to construct the access URL for the
-directory, such as C<http://alias.awsapps.com>.
+directory, such as C<http://E<lt>aliasE<gt>.awsapps.com>.
 
 After an alias has been created, it cannot be deleted or reused, so
 this operation should only be used when absolutely necessary.
@@ -207,6 +254,18 @@ Returns: a L<Paws::DS::CreateComputerResult> instance
 
   Creates a computer account in the specified directory, and joins the
 computer to the directory.
+
+
+=head2 CreateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str], RemoteDomainName => Str)
+
+Each argument is described in detail in: L<Paws::DS::CreateConditionalForwarder>
+
+Returns: a L<Paws::DS::CreateConditionalForwarderResult> instance
+
+  Creates a conditional forwarder associated with your AWS directory.
+Conditional forwarders are required in order to set up a trust
+relationship with another domain. The conditional forwarder points to
+the trusted domain.
 
 
 =head2 CreateDirectory(Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str, VpcSettings => L<Paws::DS::DirectoryVpcSettings>])
@@ -239,7 +298,7 @@ cloud.
 You cannot take snapshots of AD Connector directories.
 
 
-=head2 CreateTrust(DirectoryId => Str, RemoteDomainName => Str, TrustDirection => Str, TrustPassword => Str, [TrustType => Str])
+=head2 CreateTrust(DirectoryId => Str, RemoteDomainName => Str, TrustDirection => Str, TrustPassword => Str, [ConditionalForwarderIpAddrs => ArrayRef[Str], TrustType => Str])
 
 Each argument is described in detail in: L<Paws::DS::CreateTrust>
 
@@ -255,6 +314,16 @@ set of credentials.
 This action initiates the creation of the AWS side of a trust
 relationship between a Microsoft AD in the AWS cloud and an external
 domain.
+
+
+=head2 DeleteConditionalForwarder(DirectoryId => Str, RemoteDomainName => Str)
+
+Each argument is described in detail in: L<Paws::DS::DeleteConditionalForwarder>
+
+Returns: a L<Paws::DS::DeleteConditionalForwarderResult> instance
+
+  Deletes a conditional forwarder that has been set up for your AWS
+directory.
 
 
 =head2 DeleteDirectory(DirectoryId => Str)
@@ -275,7 +344,7 @@ Returns: a L<Paws::DS::DeleteSnapshotResult> instance
   Deletes a directory snapshot.
 
 
-=head2 DeleteTrust(TrustId => Str)
+=head2 DeleteTrust(TrustId => Str, [DeleteAssociatedConditionalForwarder => Bool])
 
 Each argument is described in detail in: L<Paws::DS::DeleteTrust>
 
@@ -293,6 +362,18 @@ Returns: a L<Paws::DS::DeregisterEventTopicResult> instance
 
   Removes the specified directory as a publisher to the specified SNS
 topic.
+
+
+=head2 DescribeConditionalForwarders(DirectoryId => Str, [RemoteDomainNames => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::DS::DescribeConditionalForwarders>
+
+Returns: a L<Paws::DS::DescribeConditionalForwardersResult> instance
+
+  Obtains information about the conditional forwarders for this account.
+
+If no input parameters are provided for RemoteDomainNames, this request
+describes all conditional forwarders for the specified directory ID.
 
 
 =head2 DescribeDirectories([DirectoryIds => ArrayRef[Str], Limit => Int, NextToken => Str])
@@ -419,6 +500,15 @@ Returns: a L<Paws::DS::GetSnapshotLimitsResult> instance
   Obtains the manual snapshot limits for a directory.
 
 
+=head2 ListTagsForResource(ResourceId => Str, [Limit => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DS::ListTagsForResource>
+
+Returns: a L<Paws::DS::ListTagsForResourceResult> instance
+
+  Lists all tags on an Amazon Directory Services directory.
+
+
 =head2 RegisterEventTopic(DirectoryId => Str, TopicName => Str)
 
 Each argument is described in detail in: L<Paws::DS::RegisterEventTopic>
@@ -431,6 +521,15 @@ receive email or text (SMS) messages when the status of your directory
 changes. You get notified if your directory goes from an Active status
 to an Impaired or Inoperable status. You also receive a notification
 when the directory returns to an Active status.
+
+
+=head2 RemoveTagsFromResource(ResourceId => Str, TagKeys => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::DS::RemoveTagsFromResource>
+
+Returns: a L<Paws::DS::RemoveTagsFromResourceResult> instance
+
+  Removes tags from an Amazon Directory Services directory.
 
 
 =head2 RestoreFromSnapshot(SnapshotId => Str)
@@ -449,6 +548,16 @@ can monitor the progress of the restore operation by calling the
 DescribeDirectories operation with the directory identifier. When the
 B<DirectoryDescription.Stage> value changes to C<Active>, the restore
 operation is complete.
+
+
+=head2 UpdateConditionalForwarder(DirectoryId => Str, DnsIpAddrs => ArrayRef[Str], RemoteDomainName => Str)
+
+Each argument is described in detail in: L<Paws::DS::UpdateConditionalForwarder>
+
+Returns: a L<Paws::DS::UpdateConditionalForwarderResult> instance
+
+  Updates a conditional forwarder that has been set up for your AWS
+directory.
 
 
 =head2 UpdateRadius(DirectoryId => Str, RadiusSettings => L<Paws::DS::RadiusSettings>)

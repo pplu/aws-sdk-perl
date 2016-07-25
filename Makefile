@@ -24,3 +24,15 @@ copy-tests:
 	cp botocore/tests/unit/response_parsing/xml/responses/* t/10_responses/
 	rm t/10_responses/cloudfront-* t/10_responses/s3-*
 	rm t/10_responses/*.json
+
+numbers:
+	echo "Number of services" ; ls auto-lib/Paws/*.pm | wc -l
+	echo "Number of methods" ; grep "sub [A-Z]" auto-lib/Paws/*.pm | wc -l
+	echo "Number of IN/OUT objects" ; ls auto-lib/Paws/*/*.pm | wc -l
+	echo "Number of attributes" ; grep "has [A-Z]" auto-lib/Paws/*/*.pm  | wc -l
+	echo "-----------"
+	echo "JSON" ; grep "::JsonCaller" auto-lib/Paws/*.pm | wc -l
+	echo "REST-JSON" ; grep "::RestJsonCaller" auto-lib/Paws/*.pm | wc -l
+	echo "Query" ; grep "::QueryCaller" auto-lib/Paws/*.pm | wc -l
+	echo "REST-XML" ; grep "::RestXML" auto-lib/Paws/*.pm | wc -l
+	echo "EC2Caller" ; grep "::EC2Caller" auto-lib/Paws/*.pm | wc -l

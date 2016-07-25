@@ -44,6 +44,11 @@ package Paws::Route53Domains;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::EnableDomainTransferLock', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetContactReachabilityStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::GetContactReachabilityStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDomainDetail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::GetDomainDetail', @_);
@@ -72,6 +77,11 @@ package Paws::Route53Domains;
   sub RegisterDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::RegisterDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ResendContactReachabilityEmail {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::ResendContactReachabilityEmail', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RetrieveDomainAuthCode {
@@ -105,7 +115,7 @@ package Paws::Route53Domains;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CheckDomainAvailability DeleteTagsForDomain DisableDomainAutoRenew DisableDomainTransferLock EnableDomainAutoRenew EnableDomainTransferLock GetDomainDetail GetOperationDetail ListDomains ListOperations ListTagsForDomain RegisterDomain RetrieveDomainAuthCode TransferDomain UpdateDomainContact UpdateDomainContactPrivacy UpdateDomainNameservers UpdateTagsForDomain / }
+  sub operations { qw/CheckDomainAvailability DeleteTagsForDomain DisableDomainAutoRenew DisableDomainTransferLock EnableDomainAutoRenew EnableDomainTransferLock GetContactReachabilityStatus GetDomainDetail GetOperationDetail ListDomains ListOperations ListTagsForDomain RegisterDomain ResendContactReachabilityEmail RetrieveDomainAuthCode TransferDomain UpdateDomainContact UpdateDomainContactPrivacy UpdateDomainNameservers UpdateTagsForDomain / }
 
 1;
 
@@ -146,10 +156,9 @@ Each argument is described in detail in: L<Paws::Route53Domains::CheckDomainAvai
 
 Returns: a L<Paws::Route53Domains::CheckDomainAvailabilityResponse> instance
 
-  This operation checks the availability of one domain name. You can
-access this API without authenticating. Note that if the availability
-status of a domain is pending, you must submit another request to
-determine the availability of the domain name.
+  This operation checks the availability of one domain name. Note that if
+the availability status of a domain is pending, you must submit another
+request to determine the availability of the domain name.
 
 
 =head2 DeleteTagsForDomain(DomainName => Str, TagsToDelete => ArrayRef[Str])
@@ -224,6 +233,21 @@ Successful submission returns an operation ID that you can use to track
 the progress and completion of the action. If the request is not
 completed successfully, the domain registrant will be notified by
 email.
+
+
+=head2 GetContactReachabilityStatus([DomainName => Str])
+
+Each argument is described in detail in: L<Paws::Route53Domains::GetContactReachabilityStatus>
+
+Returns: a L<Paws::Route53Domains::GetContactReachabilityStatusResponse> instance
+
+  For operations that require confirmation that the email address for the
+registrant contact is valid, such as registering a new domain, this
+operation returns information about whether the registrant contact has
+responded.
+
+If you want us to resend the email, use the
+C<ResendContactReachabilityEmail> operation.
 
 
 =head2 GetDomainDetail(DomainName => Str)
@@ -316,6 +340,18 @@ domain. For more information, see Amazon Route 53 Pricing.
 
 =back
 
+
+
+=head2 ResendContactReachabilityEmail([DomainName => Str])
+
+Each argument is described in detail in: L<Paws::Route53Domains::ResendContactReachabilityEmail>
+
+Returns: a L<Paws::Route53Domains::ResendContactReachabilityEmailResponse> instance
+
+  For operations that require confirmation that the email address for the
+registrant contact is valid, such as registering a new domain, this
+operation resends the confirmation email to the current email address
+for the registrant contact.
 
 
 =head2 RetrieveDomainAuthCode(DomainName => Str)

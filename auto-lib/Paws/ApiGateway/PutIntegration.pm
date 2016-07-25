@@ -6,6 +6,7 @@ package Paws::ApiGateway::PutIntegration;
   has Credentials => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'httpMethod' , required => 1);
   has IntegrationHttpMethod => (is => 'ro', isa => 'Str');
+  has PassthroughBehavior => (is => 'ro', isa => 'Str');
   has RequestParameters => (is => 'ro', isa => 'HashRef[Str]');
   has RequestTemplates => (is => 'ro', isa => 'HashRef[Str]');
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'resourceId' , required => 1);
@@ -76,6 +77,26 @@ HTTP or AWS, this field is required.
 
 
 
+=head2 PassthroughBehavior => Str
+
+Specifies the pass-through behavior for incoming requests based on the
+Content-Type header in the request, and the available requestTemplates
+defined on the Integration. There are three valid values:
+C<WHEN_NO_MATCH>, C<WHEN_NO_TEMPLATES>, and C<NEVER>.
+
+C<WHEN_NO_MATCH> passes the request body for unmapped content types
+through to the Integration backend without transformation.
+
+C<NEVER> rejects unmapped content types with an HTTP 415 'Unsupported
+Media Type' response.
+
+C<WHEN_NO_TEMPLATES> will allow pass-through when the Integration has
+NO content types mapped to templates. However if there is at least one
+content type defined, unmapped content types will be rejected with the
+same 415 response.
+
+
+
 =head2 RequestParameters => HashRef[Str]
 
 Represents request parameters that are sent with the backend request.
@@ -92,9 +113,10 @@ name.
 
 =head2 RequestTemplates => HashRef[Str]
 
-Specifies the templates used to transform the method request body.
-Request templates are represented as a key/value map, with a
-content-type as the key and a template as the value.
+Represents a map of Velocity templates that are applied on the request
+payload based on the value of the Content-Type header sent by the
+client. The content type value is the key in this map, and the template
+(as a String) is the value.
 
 
 
@@ -119,7 +141,10 @@ Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">
 =head2 Uri => Str
 
 Specifies a put integration input's Uniform Resource Identifier (URI).
-When the integration type is HTTP or AWS, this field is required.
+When the integration type is HTTP or AWS, this field is required. For
+integration with Lambda as an AWS service proxy, this value is of the
+'arn:aws:apigateway:E<lt>regionE<gt>:lambda:path/2015-03-31/functions/E<lt>functionArnE<gt>/invocations'
+format.
 
 
 

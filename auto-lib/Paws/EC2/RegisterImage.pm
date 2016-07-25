@@ -5,6 +5,7 @@ package Paws::EC2::RegisterImage;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'BlockDeviceMapping' );
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has EnaSupport => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enaSupport' );
   has ImageLocation => (is => 'ro', isa => 'Str');
   has KernelId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kernelId' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
@@ -73,6 +74,16 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
+=head2 EnaSupport => Bool
+
+Set to C<true> to enable enhanced networking with ENA for the AMI and
+any instances that you launch from the AMI.
+
+This option is supported only for HVM AMIs. Specifying this option with
+a PV AMI can make instances launched from the AMI unreachable.
+
+
+
 =head2 ImageLocation => Str
 
 The full path to your AMI manifest in Amazon S3 storage.
@@ -110,10 +121,11 @@ C</dev/xvda>).
 
 =head2 SriovNetSupport => Str
 
-Set to C<simple> to enable enhanced networking for the AMI and any
-instances that you launch from the AMI.
+Set to C<simple> to enable enhanced networking with the Intel 82599
+Virtual Function interface for the AMI and any instances that you
+launch from the AMI.
 
-There is no way to disable enhanced networking at this time.
+There is no way to disable C<sriovNetSupport> at this time.
 
 This option is supported only for HVM AMIs. Specifying this option with
 a PV AMI can make instances launched from the AMI unreachable.

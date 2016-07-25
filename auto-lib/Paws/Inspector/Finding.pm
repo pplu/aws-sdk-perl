@@ -48,15 +48,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-Contains information about an Inspector finding. This data type is used
-as the response element in the DescribeFindings action.
+Contains information about an Amazon Inspector finding. This data type
+is used as the response element in the DescribeFindings action.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Arn => Str
 
-  The ARN specifying the finding.
+  The ARN that specifies the finding.
 
 
 =head2 AssetAttributes => L<Paws::Inspector::AssetAttributes>
@@ -138,7 +138,7 @@ Informational.
 
 =head2 B<REQUIRED> UpdatedAt => Str
 
-  The time when AddAttributesToFindings API is called.
+  The time when AddAttributesToFindings is called.
 
 
 =head2 B<REQUIRED> UserAttributes => ArrayRef[L<Paws::Inspector::Attribute>]

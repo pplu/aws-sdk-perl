@@ -49,14 +49,17 @@ The C<update_dependencies> command takes two arguments:
 
 =over
 
-=item * C<upgrade_os_to> - Specifies the desired Amazon Linux version
-for instances whose OS you want to upgrade, such as C<Amazon Linux
+=item *
+
+C<upgrade_os_to> - Specifies the desired Amazon Linux version for
+instances whose OS you want to upgrade, such as C<Amazon Linux
 2014.09>. You must also set the C<allow_reboot> argument to true.
 
-=item * C<allow_reboot> - Specifies whether to allow AWS OpsWorks to
-reboot the instances if necessary, after installing the updates. This
-argument can be set to either C<true> or C<false>. The default value is
-C<false>.
+=item *
+
+C<allow_reboot> - Specifies whether to allow AWS OpsWorks to reboot the
+instances if necessary, after installing the updates. This argument can
+be set to either C<true> or C<false>. The default value is C<false>.
 
 =back
 
@@ -75,17 +78,24 @@ For stacks, the following commands are available:
 
 =over
 
-=item * C<execute_recipes>: Execute one or more recipes. To specify the
+=item *
+
+C<execute_recipes>: Execute one or more recipes. To specify the
 recipes, set an C<Args> parameter named C<recipes> to the list of
 recipes to be executed. For example, to execute C<phpapp::appsetup>,
 set C<Args> to C<{"recipes":["phpapp::appsetup"]}>.
 
-=item * C<install_dependencies>: Install the stack's dependencies.
+=item *
 
-=item * C<update_custom_cookbooks>: Update the stack's custom
-cookbooks.
+C<install_dependencies>: Install the stack's dependencies.
 
-=item * C<update_dependencies>: Update the stack's dependencies.
+=item *
+
+C<update_custom_cookbooks>: Update the stack's custom cookbooks.
+
+=item *
+
+C<update_dependencies>: Update the stack's dependencies.
 
 =back
 
@@ -97,22 +107,34 @@ For apps, the following commands are available:
 
 =over
 
-=item * C<deploy>: Deploy an app. Ruby on Rails apps have an optional
-C<Args> parameter named C<migrate>. Set C<Args> to {"migrate":["true"]}
-to migrate the database. The default setting is {"migrate":["false"]}.
+=item *
 
-=item * C<rollback> Roll the app back to the previous version. When you
-update an app, AWS OpsWorks stores the previous version, up to a
-maximum of five versions. You can use this command to roll an app back
-as many as four versions.
+C<deploy>: Deploy an app. Ruby on Rails apps have an optional C<Args>
+parameter named C<migrate>. Set C<Args> to {"migrate":["true"]} to
+migrate the database. The default setting is {"migrate":["false"]}.
 
-=item * C<start>: Start the app's web or application server.
+=item *
 
-=item * C<stop>: Stop the app's web or application server.
+C<rollback> Roll the app back to the previous version. When you update
+an app, AWS OpsWorks stores the previous version, up to a maximum of
+five versions. You can use this command to roll an app back as many as
+four versions.
 
-=item * C<restart>: Restart the app's web or application server.
+=item *
 
-=item * C<undeploy>: Undeploy the app.
+C<start>: Start the app's web or application server.
+
+=item *
+
+C<stop>: Stop the app's web or application server.
+
+=item *
+
+C<restart>: Restart the app's web or application server.
+
+=item *
+
+C<undeploy>: Undeploy the app.
 
 =back
 

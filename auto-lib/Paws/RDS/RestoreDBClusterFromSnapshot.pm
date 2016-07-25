@@ -66,11 +66,17 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 255 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter
+Must contain from 1 to 255 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -108,7 +114,7 @@ The version of the database engine to use for the new DB cluster.
 =head2 KmsKeyId => Str
 
 The KMS key identifier to use when restoring an encrypted DB cluster
-from an encrypted DB cluster snapshot.
+from a DB cluster snapshot.
 
 The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
 encryption key. If you are restoring a DB cluster with the same AWS
@@ -121,18 +127,19 @@ following will occur:
 
 =over
 
-=item * If the DB cluster snapshot is encrypted, then the restored DB
-cluster is encrypted using the KMS key that was used to encrypt the DB
-cluster snapshot.
+=item *
 
-=item * If the DB cluster snapshot is not encrypted, then the restored
-DB cluster is not encrypted.
+If the DB cluster snapshot is encrypted, then the restored DB cluster
+is encrypted using the KMS key that was used to encrypt the DB cluster
+snapshot.
+
+=item *
+
+If the DB cluster snapshot is not encrypted, then the restored DB
+cluster is encrypted using the specified encryption key.
 
 =back
 
-If C<SnapshotIdentifier> refers to a DB cluster snapshot that is not
-encrypted, and you specify a value for the C<KmsKeyId> parameter, then
-the restore request is rejected.
 
 
 
@@ -160,11 +167,17 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter
+Must contain from 1 to 63 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 

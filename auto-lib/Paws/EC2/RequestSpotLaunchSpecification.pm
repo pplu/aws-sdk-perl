@@ -60,6 +60,9 @@ This class has no description
 
   One or more block device mapping entries.
 
+Although you can specify encrypted EBS volumes in this block device
+mapping for your Spot Instances, these volumes are not encrypted.
+
 
 =head2 EbsOptimized => Bool
 
@@ -134,7 +137,10 @@ Default: C<false>
 
 =head2 UserData => Str
 
-  The Base64-encoded MIME user data to make available to the instances.
+  The user data to make available to the instances. If you are using an
+AWS SDK or command line tool, Base64-encoding is performed for you, and
+you can load the text from a file. Otherwise, you must provide
+Base64-encoded text.
 
 
 

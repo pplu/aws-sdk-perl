@@ -1,6 +1,7 @@
 
 package Paws::KMS::CreateKey;
   use Moose;
+  has BypassPolicyLockoutSafetyCheck => (is => 'ro', isa => 'Bool');
   has Description => (is => 'ro', isa => 'Str');
   has KeyUsage => (is => 'ro', isa => 'Str');
   has Policy => (is => 'ro', isa => 'Str');
@@ -35,26 +36,75 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 BypassPolicyLockoutSafetyCheck => Bool
+
+A flag to indicate whether to bypass the key policy lockout safety
+check.
+
+Setting this value to true increases the likelihood that the CMK
+becomes unmanageable. Do not set this value to true indiscriminately.
+
+For more information, refer to the scenario in the Default Key Policy
+section in the I<AWS Key Management Service Developer Guide>.
+
+Use this parameter only when you include a policy in the request and
+you intend to prevent the principal making the request from making a
+subsequent PutKeyPolicy request on the CMK.
+
+The default value is false.
+
+
+
 =head2 Description => Str
 
-Description of the key. We recommend that you choose a description that
-helps your customer decide whether the key is appropriate for a task.
+A description of the CMK.
+
+Use a description that helps you decide whether the CMK is appropriate
+for a task.
 
 
 
 =head2 KeyUsage => Str
 
-Specifies the intended use of the key. Currently this defaults to
-ENCRYPT/DECRYPT, and only symmetric encryption and decryption are
-supported.
+The intended use of the CMK.
+
+You can use CMKs only for symmetric encryption and decryption.
 
 Valid values are: C<"ENCRYPT_DECRYPT">
 
 =head2 Policy => Str
 
-Policy to attach to the key. This is required and delegates back to the
-account. The key is the root of trust. The policy size limit is 32 KiB
-(32768 bytes).
+The key policy to attach to the CMK.
+
+If you specify a key policy, it must meet the following criteria:
+
+=over
+
+=item *
+
+It must allow the principal making the C<CreateKey> request to make a
+subsequent PutKeyPolicy request on the CMK. This reduces the likelihood
+that the CMK becomes unmanageable. For more information, refer to the
+scenario in the Default Key Policy section in the I<AWS Key Management
+Service Developer Guide>.
+
+=item *
+
+The principal(s) specified in the key policy must exist and be visible
+to AWS KMS. When you create a new AWS principal (for example, an IAM
+user or role), you might need to enforce a delay before specifying the
+new principal in a key policy because the new principal might not
+immediately be visible to AWS KMS. For more information, see Changes
+that I make are not always immediately visible in the I<IAM User
+Guide>.
+
+=back
+
+If you do not specify a policy, AWS KMS attaches a default key policy
+to the CMK. For more information, see Default Key Policy in the I<AWS
+Key Management Service Developer Guide>.
+
+The policy size limit is 32 KiB (32768 bytes).
 
 
 

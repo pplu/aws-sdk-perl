@@ -15,7 +15,7 @@ Paws::Inspector::CreateResourceGroupResponse
 
 =head2 B<REQUIRED> ResourceGroupArn => Str
 
-The ARN specifying the resource group that is created.
+The ARN that specifies the resource group that is created.
 
 
 

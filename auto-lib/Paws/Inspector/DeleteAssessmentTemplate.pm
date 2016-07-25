@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssessmentTemplateArn => Str
 
-The ARN specifying the assessment template that you want to delete.
+The ARN that specifies the assessment template that you want to delete.
 
 
 

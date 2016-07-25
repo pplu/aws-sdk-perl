@@ -252,6 +252,9 @@ following:
 
 =over
 
+=item * If you're creating a non-alias resource record set, C<TTL> is
+required.
+
 =item * If you're creating an alias resource record set, omit C<TTL>.
 Amazon Route 53 uses the value of C<TTL> for the alias target.
 

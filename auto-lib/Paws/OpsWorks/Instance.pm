@@ -38,6 +38,7 @@ package Paws::OpsWorks::Instance;
   has StackId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
+  has Tenancy => (is => 'ro', isa => 'Str');
   has VirtualizationType => (is => 'ro', isa => 'Str');
 1;
 
@@ -277,33 +278,65 @@ the Root Device.
 
 =over
 
-=item * C<booting>
+=item *
 
-=item * C<connection_lost>
+C<booting>
 
-=item * C<online>
+=item *
 
-=item * C<pending>
+C<connection_lost>
 
-=item * C<rebooting>
+=item *
 
-=item * C<requested>
+C<online>
 
-=item * C<running_setup>
+=item *
 
-=item * C<setup_failed>
+C<pending>
 
-=item * C<shutting_down>
+=item *
 
-=item * C<start_failed>
+C<rebooting>
 
-=item * C<stopped>
+=item *
 
-=item * C<stopping>
+C<requested>
 
-=item * C<terminated>
+=item *
 
-=item * C<terminating>
+C<running_setup>
+
+=item *
+
+C<setup_failed>
+
+=item *
+
+C<shutting_down>
+
+=item *
+
+C<start_failed>
+
+=item *
+
+C<stop_failed>
+
+=item *
+
+C<stopped>
+
+=item *
+
+C<stopping>
+
+=item *
+
+C<terminated>
+
+=item *
+
+C<terminating>
 
 =back
 
@@ -313,6 +346,11 @@ the Root Device.
 
   The instance's subnet ID; applicable only if the stack is running in a
 VPC.
+
+
+=head2 Tenancy => Str
+
+  The instance's tenancy option, such as C<dedicated> or C<host>.
 
 
 =head2 VirtualizationType => Str

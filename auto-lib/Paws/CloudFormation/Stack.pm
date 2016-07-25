@@ -70,9 +70,13 @@ The Stack data type.
 
 =over
 
-=item * C<true>: disable rollback
+=item *
 
-=item * C<false>: enable rollback
+C<true>: disable rollback
+
+=item *
+
+C<false>: enable rollback
 
 =back
 

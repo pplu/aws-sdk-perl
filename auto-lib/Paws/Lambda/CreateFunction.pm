@@ -106,7 +106,7 @@ resources. For more information, see AWS Lambda: How it Works.
 
 The runtime environment for the Lambda function you are uploading.
 
-Valid values are: C<"nodejs">, C<"java8">, C<"python2.7">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">
 
 =head2 Timeout => Int
 

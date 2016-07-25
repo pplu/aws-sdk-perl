@@ -159,6 +159,11 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::DeleteObjects', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetBucketAccelerateConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::GetBucketAccelerateConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetBucketAcl {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::GetBucketAcl', @_);
@@ -269,6 +274,11 @@ package Paws::S3;
     my $call_object = $self->new_with_coercions('Paws::S3::ListObjects', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListObjectsV2 {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::ListObjectsV2', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListObjectVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::ListObjectVersions', @_);
@@ -277,6 +287,11 @@ package Paws::S3;
   sub ListParts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::S3::ListParts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutBucketAccelerateConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::S3::PutBucketAccelerateConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutBucketAcl {
@@ -370,7 +385,7 @@ package Paws::S3;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketCors DeleteBucketLifecycle DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects GetBucketAcl GetBucketCors GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTorrent HeadBucket HeadObject ListBuckets ListMultipartUploads ListObjects ListObjectVersions ListParts PutBucketAcl PutBucketCors PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl RestoreObject UploadPart UploadPartCopy / }
+  sub operations { qw/AbortMultipartUpload CompleteMultipartUpload CopyObject CreateBucket CreateMultipartUpload DeleteBucket DeleteBucketCors DeleteBucketLifecycle DeleteBucketPolicy DeleteBucketReplication DeleteBucketTagging DeleteBucketWebsite DeleteObject DeleteObjects GetBucketAccelerateConfiguration GetBucketAcl GetBucketCors GetBucketLifecycle GetBucketLifecycleConfiguration GetBucketLocation GetBucketLogging GetBucketNotification GetBucketNotificationConfiguration GetBucketPolicy GetBucketReplication GetBucketRequestPayment GetBucketTagging GetBucketVersioning GetBucketWebsite GetObject GetObjectAcl GetObjectTorrent HeadBucket HeadObject ListBuckets ListMultipartUploads ListObjects ListObjectsV2 ListObjectVersions ListParts PutBucketAccelerateConfiguration PutBucketAcl PutBucketCors PutBucketLifecycle PutBucketLifecycleConfiguration PutBucketLogging PutBucketNotification PutBucketNotificationConfiguration PutBucketPolicy PutBucketReplication PutBucketRequestPayment PutBucketTagging PutBucketVersioning PutBucketWebsite PutObject PutObjectAcl RestoreObject UploadPart UploadPartCopy / }
 
 1;
 
@@ -551,6 +566,15 @@ Returns: a L<Paws::S3::DeleteObjectsOutput> instance
 
   This operation enables you to delete multiple objects from a bucket
 using a single HTTP request. You may specify up to 1000 keys.
+
+
+=head2 GetBucketAccelerateConfiguration(Bucket => Str)
+
+Each argument is described in detail in: L<Paws::S3::GetBucketAccelerateConfiguration>
+
+Returns: a L<Paws::S3::GetBucketAccelerateConfigurationOutput> instance
+
+  Returns the accelerate configuration of a bucket.
 
 
 =head2 GetBucketAcl(Bucket => Str)
@@ -760,6 +784,19 @@ use the request parameters as selection criteria to return a subset of
 the objects in a bucket.
 
 
+=head2 ListObjectsV2(Bucket => Str, [ContinuationToken => Str, Delimiter => Str, EncodingType => Str, FetchOwner => Bool, MaxKeys => Int, Prefix => Str, StartAfter => Str])
+
+Each argument is described in detail in: L<Paws::S3::ListObjectsV2>
+
+Returns: a L<Paws::S3::ListObjectsV2Output> instance
+
+  Returns some or all (up to 1000) of the objects in a bucket. You can
+use the request parameters as selection criteria to return a subset of
+the objects in a bucket. Note: ListObjectsV2 is the revised List
+Objects API and we recommend you use this revised API for new
+application development.
+
+
 =head2 ListObjectVersions(Bucket => Str, [Delimiter => Str, EncodingType => Str, KeyMarker => Str, MaxKeys => Int, Prefix => Str, VersionIdMarker => Str])
 
 Each argument is described in detail in: L<Paws::S3::ListObjectVersions>
@@ -777,6 +814,15 @@ Returns: a L<Paws::S3::ListPartsOutput> instance
 
   Lists the parts that have been uploaded for a specific multipart
 upload.
+
+
+=head2 PutBucketAccelerateConfiguration(AccelerateConfiguration => L<Paws::S3::AccelerateConfiguration>, Bucket => Str)
+
+Each argument is described in detail in: L<Paws::S3::PutBucketAccelerateConfiguration>
+
+Returns: nothing
+
+  Sets the accelerate configuration of an existing bucket.
 
 
 =head2 PutBucketAcl(Bucket => Str, [AccessControlPolicy => L<Paws::S3::AccessControlPolicy>, ACL => Str, ContentMD5 => Str, GrantFullControl => Str, GrantRead => Str, GrantReadACP => Str, GrantWrite => Str, GrantWriteACP => Str])

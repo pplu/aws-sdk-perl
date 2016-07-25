@@ -324,7 +324,7 @@ Returns: a L<Paws::EMR::ListInstanceGroupsOutput> instance
   Provides all available details about the instance groups in a cluster.
 
 
-=head2 ListInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str], Marker => Str])
+=head2 ListInstances(ClusterId => Str, [InstanceGroupId => Str, InstanceGroupTypes => ArrayRef[Str], InstanceStates => ArrayRef[Str], Marker => Str])
 
 Each argument is described in detail in: L<Paws::EMR::ListInstances>
 

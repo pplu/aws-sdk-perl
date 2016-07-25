@@ -37,8 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Name => Str
 
-Descriptive label associated with this build. Build names do not need
-to be unique. A build name can be changed later using UpdateBuild.
+Descriptive label associated with a build. Build names do not need to
+be unique. A build name can be changed later using C<UpdateBuild>.
 
 
 
@@ -52,7 +52,7 @@ to be unique. A build name can be changed later using UpdateBuild.
 
 Version associated with this build. Version strings do not need to be
 unique to a build. A build version can be changed later using
-UpdateBuild.
+C<UpdateBuild>.
 
 
 

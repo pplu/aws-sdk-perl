@@ -40,9 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The compute statistics for a C<DataSource>. The statistics are
 generated from the observation data referenced by a C<DataSource>.
-Amazon ML uses the statistics internally during an C<MLModel> training.
+Amazon ML uses the statistics internally during C<MLModel> training.
 This parameter must be set to C<true> if the C<>DataSourceC<> needs to
-be used for C<MLModel> training
+be used for C<MLModel> training.
 
 
 
@@ -66,12 +66,11 @@ The data specification of a C<DataSource>:
 
 =item *
 
-DataLocationS3 - Amazon Simple Storage Service (Amazon S3) location of
-the observation data.
+DataLocationS3 - The Amazon S3 location of the observation data.
 
 =item *
 
-DataSchemaLocationS3 - Amazon S3 location of the C<DataSchema>.
+DataSchemaLocationS3 - The Amazon S3 location of the C<DataSchema>.
 
 =item *
 
@@ -80,8 +79,8 @@ required if C<DataSchemaUri> is specified.
 
 =item *
 
-DataRearrangement - A JSON string representing the splitting
-requirement of a C<Datasource>.
+DataRearrangement - A JSON string that represents the splitting and
+rearrangement requirements for the C<Datasource>.
 
 Sample - C< "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}">
 

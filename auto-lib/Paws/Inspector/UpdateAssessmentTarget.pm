@@ -49,8 +49,8 @@ The name of the assessment target that you want to update.
 
 =head2 B<REQUIRED> ResourceGroupArn => Str
 
-The resource group ARN that is used to specify the new resource group
-to associate with the assessment target.
+The ARN of the resource group that is used to specify the new resource
+group to associate with the assessment target.
 
 
 

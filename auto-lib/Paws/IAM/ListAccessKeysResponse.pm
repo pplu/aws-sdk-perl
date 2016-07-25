@@ -18,7 +18,7 @@ Paws::IAM::ListAccessKeysResponse
 
 =head2 B<REQUIRED> AccessKeyMetadata => ArrayRef[L<Paws::IAM::AccessKeyMetadata>]
 
-A list of access key metadata.
+A list of objects containing metadata about the access keys.
 
 
 

@@ -22,45 +22,44 @@ Paws::EFS::MountTargetDescription
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-The ID of the file system for which the mount target is intended.
+ID of the file system for which the mount target is intended.
 
 
 
 =head2 IpAddress => Str
 
-The address at which the file system may be mounted via the mount
-target.
+Address at which the file system may be mounted via the mount target.
 
 
 
 =head2 B<REQUIRED> LifeCycleState => Str
 
-The lifecycle state the mount target is in.
+Lifecycle state of the mount target.
 
 Valid values are: C<"creating">, C<"available">, C<"deleting">, C<"deleted">
 
 =head2 B<REQUIRED> MountTargetId => Str
 
-The system-assigned mount target ID.
+System-assigned mount target ID.
 
 
 
 =head2 NetworkInterfaceId => Str
 
-The ID of the network interface that Amazon EFS created when it created
-the mount target.
+ID of the network interface that Amazon EFS created when it created the
+mount target.
 
 
 
 =head2 OwnerId => Str
 
-The AWS account ID that owns the resource.
+AWS account ID that owns the resource.
 
 
 
 =head2 B<REQUIRED> SubnetId => Str
 
-The ID of the subnet that the mount target is in.
+ID of the mount target's subnet.
 
 
 

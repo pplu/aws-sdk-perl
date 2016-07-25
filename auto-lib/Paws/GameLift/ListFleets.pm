@@ -45,8 +45,8 @@ fleets, leave this parameter empty.
 
 =head2 Limit => Int
 
-Maximum number of results to return. You can use this parameter with
-I<NextToken> to get results as a set of sequential pages.
+Maximum number of results to return. Use this parameter with
+C<NextToken> to get results as a set of sequential pages.
 
 
 

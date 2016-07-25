@@ -213,9 +213,13 @@ each case.
 
 =over
 
-=item * B<Default VPC:>true
+=item *
 
-=item * B<VPC:>false
+B<Default VPC:>true
+
+=item *
+
+B<VPC:>false
 
 =back
 
@@ -238,10 +242,13 @@ Constraints:
 
 =over
 
-=item * Must be before the latest restorable time for the DB instance
+=item *
 
-=item * Cannot be specified if UseLatestRestorableTime parameter is
-true
+Must be before the latest restorable time for the DB instance
+
+=item *
+
+Cannot be specified if UseLatestRestorableTime parameter is true
 
 =back
 
@@ -257,13 +264,21 @@ Constraints:
 
 =over
 
-=item * Must be the identifier of an existing database instance
+=item *
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens
+Must be the identifier of an existing database instance
 
-=item * First character must be a letter
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+Must contain from 1 to 63 alphanumeric characters or hyphens
+
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -298,11 +313,17 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter
+Must contain from 1 to 63 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 

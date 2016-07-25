@@ -80,9 +80,17 @@ container port to access from the load balancer.
 =head2 Role => Str
 
 The name or full Amazon Resource Name (ARN) of the IAM role that allows
-your Amazon ECS container agent to make calls to your load balancer on
-your behalf. This parameter is only required if you are using a load
-balancer with your service.
+Amazon ECS to make calls to your load balancer on your behalf. This
+parameter is required if you are using a load balancer with your
+service. If you specify the C<role> parameter, you must also specify a
+load balancer object with the C<loadBalancers> parameter.
+
+If your specified role has a path other than C</>, then you must either
+specify the full role ARN (this is recommended) or prefix the role name
+with the path. For example, if a role with the name C<bar> has a path
+of C</foo/> then you would specify C</foo/bar> as the role name. For
+more information, see Friendly Names and Paths in the I<IAM User
+Guide>.
 
 
 

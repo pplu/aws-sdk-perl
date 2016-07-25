@@ -48,7 +48,12 @@ elements from the XML document.
 
 =head2 PrivateZone => Bool
 
-  
+  C<GetHostedZone> and C<ListHostedZone> responses: A Boolean value that
+indicates whether a hosted zone is private.
+
+C<CreateHostedZone> requests: When you're creating a private hosted
+zone (when you specify values for VPCId and VPCRegion), you can
+optionally specify true for PrivateZone.
 
 
 

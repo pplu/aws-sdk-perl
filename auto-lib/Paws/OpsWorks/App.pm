@@ -99,10 +99,10 @@ more information, see Environment Variables.
 
 There is no specific limit on the number of environment variables.
 However, the size of the associated data structure - which includes the
-variables' names, values, and protected flag values - cannot exceed 10
-KB (10240 Bytes). This limit should accommodate most if not all use
-cases, but if you do exceed it, you will cause an exception (API) with
-an "Environment: is too large (maximum is 10KB)" message.
+variable names, values, and protected flag values - cannot exceed 10 KB
+(10240 Bytes). This limit should accommodate most if not all use cases,
+but if you do exceed it, you will cause an exception (API) with an
+"Environment: is too large (maximum is 10KB)" message.
 
 
 =head2 Name => Str

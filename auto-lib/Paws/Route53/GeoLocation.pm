@@ -46,7 +46,7 @@ have a continent code.
 Valid values: C<AF> | C<AN> | C<AS> | C<EU> | C<OC> | C<NA> | C<SA>
 
 Constraint: Specifying C<ContinentCode> with either C<CountryCode> or
-C<SubdivisionCode> returns an InvalidInput error.
+C<SubdivisionCode> returns an C<InvalidInput> error.
 
 
 =head2 CountryCode => Str
@@ -65,7 +65,7 @@ country codes follow the ISO 3166 two-character code.
 subdivision code is only valid with the appropriate country code.
 
 Constraint: Specifying C<SubdivisionCode> without C<CountryCode>
-returns an InvalidInput error.
+returns an C<InvalidInput> error.
 
 
 

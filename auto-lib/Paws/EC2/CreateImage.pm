@@ -77,10 +77,9 @@ quotes ('), at-signs (@), or underscores(_)
 
 =head2 NoReboot => Bool
 
-By default, this parameter is set to C<false>, which means Amazon EC2
-attempts to shut down the instance cleanly before image creation and
-then reboots the instance. When the parameter is set to C<true>, Amazon
-EC2 doesn't shut down the instance before creating the image. When this
+By default, Amazon EC2 attempts to shut down and reboot the instance
+before creating the image. If the 'No Reboot' option is set, Amazon EC2
+doesn't shut down the instance before creating the image. When this
 option is used, file system integrity on the created image can't be
 guaranteed.
 

@@ -1,6 +1,7 @@
 package Paws::ECS::Service;
   use Moose;
   has ClusterArn => (is => 'ro', isa => 'Str', xmlname => 'clusterArn', request_name => 'clusterArn', traits => ['Unwrapped','NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', xmlname => 'deploymentConfiguration', request_name => 'deploymentConfiguration', traits => ['Unwrapped','NameInRequest']);
   has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Deployment]', xmlname => 'deployments', request_name => 'deployments', traits => ['Unwrapped','NameInRequest']);
   has DesiredCount => (is => 'ro', isa => 'Int', xmlname => 'desiredCount', request_name => 'desiredCount', traits => ['Unwrapped','NameInRequest']);
@@ -50,8 +51,12 @@ Details on a service within a cluster
 
 =head2 ClusterArn => Str
 
-  The Amazon Resource Name (ARN) of the of the cluster that hosts the
-service.
+  The Amazon Resource Name (ARN) of the cluster that hosts the service.
+
+
+=head2 CreatedAt => Str
+
+  The Unix time in seconds and milliseconds when the service was created.
 
 
 =head2 DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>
@@ -108,7 +113,7 @@ container instances with a load balancer.
 contains the C<arn:aws:ecs> namespace, followed by the region of the
 service, the AWS account ID of the service owner, the C<service>
 namespace, and then the service name. For example,
-arn:aws:ecs:I<region>:I<012345678910>:service/I<my-service>.
+C<arn:aws:ecs:I<region>:I<012345678910>:service/I<my-service> >.
 
 
 =head2 ServiceName => Str

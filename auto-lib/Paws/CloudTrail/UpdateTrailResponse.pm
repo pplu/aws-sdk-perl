@@ -10,6 +10,7 @@ package Paws::CloudTrail::UpdateTrailResponse;
   has Name => (is => 'ro', isa => 'Str');
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
+  has SnsTopicARN => (is => 'ro', isa => 'Str');
   has SnsTopicName => (is => 'ro', isa => 'Str');
   has TrailARN => (is => 'ro', isa => 'Str');
 
@@ -87,16 +88,28 @@ see Finding Your CloudTrail Log Files.
 
 
 
+=head2 SnsTopicARN => Str
+
+Specifies the ARN of the Amazon SNS topic that CloudTrail uses to send
+notifications when log files are delivered. The format of a topic ARN
+is:
+
+C<arn:aws:sns:us-east-1:123456789012:MyTopic>
+
+
+
 =head2 SnsTopicName => Str
 
-Specifies the name of the Amazon SNS topic defined for notification of
-log file delivery.
+This field is deprecated. Use SnsTopicARN.
 
 
 
 =head2 TrailARN => Str
 
-Specifies the ARN of the trail that was updated.
+Specifies the ARN of the trail that was updated. The format of a trail
+ARN is:
+
+C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
 
 
 

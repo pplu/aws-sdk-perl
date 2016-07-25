@@ -16,7 +16,7 @@ Paws::IAM::CreatePolicyVersionResponse
 
 =head2 PolicyVersion => L<Paws::IAM::PolicyVersion>
 
-Information about the policy version.
+A structure containing details about the new policy version.
 
 
 

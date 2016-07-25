@@ -179,21 +179,23 @@ Scenarios:
 
 =over
 
-=item * B<Scenario 1:> You have 3 active nodes and wish to add 2 nodes.
+=item *
 
-Specify C<NumCacheNodes=5> (3 + 2) and optionally specify two
-Availability Zones for the two new nodes.
+B<Scenario 1:> You have 3 active nodes and wish to add 2 nodes. Specify
+C<NumCacheNodes=5> (3 + 2) and optionally specify two Availability
+Zones for the two new nodes.
 
-=item * B<Scenario 2:> You have 3 active nodes and 2 nodes pending
-creation (from the scenario 1 call) and want to add 1 more node.
+=item *
 
-Specify C<NumCacheNodes=6> ((3 + 2) + 1)
+B<Scenario 2:> You have 3 active nodes and 2 nodes pending creation
+(from the scenario 1 call) and want to add 1 more node. Specify
+C<NumCacheNodes=6> ((3 + 2) + 1) and optionally specify an Availability
+Zone for the new node.
 
-and optionally specify an Availability Zone for the new node.
+=item *
 
-=item * B<Scenario 3:> You want to cancel all pending actions.
-
-Specify C<NumCacheNodes=3> to cancel all pending actions.
+B<Scenario 3:> You want to cancel all pending actions. Specify
+C<NumCacheNodes=3> to cancel all pending actions.
 
 =back
 
@@ -212,67 +214,98 @@ B<Impact of new add/remove requests upon pending requests>
 
 =over
 
-=item * Scenario-1
+=item *
+
+Scenario-1
 
 =over
 
-=item * Pending Action: Delete
+=item *
 
-=item * New Request: Delete
+Pending Action: Delete
 
-=item * Result: The new delete, pending or immediate, replaces the
-pending delete.
+=item *
+
+New Request: Delete
+
+=item *
+
+Result: The new delete, pending or immediate, replaces the pending
+delete.
 
 =back
 
-=item * Scenario-2
+=item *
+
+Scenario-2
 
 =over
 
-=item * Pending Action: Delete
+=item *
 
-=item * New Request: Create
+Pending Action: Delete
 
-=item * Result: The new create, pending or immediate, replaces the
-pending delete.
+=item *
+
+New Request: Create
+
+=item *
+
+Result: The new create, pending or immediate, replaces the pending
+delete.
 
 =back
 
-=item * Scenario-3
+=item *
+
+Scenario-3
 
 =over
 
-=item * Pending Action: Create
+=item *
 
-=item * New Request: Delete
+Pending Action: Create
 
-=item * Result: The new delete, pending or immediate, replaces the
-pending create.
+=item *
+
+New Request: Delete
+
+=item *
+
+Result: The new delete, pending or immediate, replaces the pending
+create.
 
 =back
 
-=item * Scenario-4
+=item *
+
+Scenario-4
 
 =over
 
-=item * Pending Action: Create
+=item *
 
-=item * New Request: Create
+Pending Action: Create
 
-=item * Result: The new create is added to the pending create.
-B<Important:>
+=item *
 
-If the new create request is B<Apply Immediately - Yes>, all creates
-are performed immediately.
+New Request: Create
 
-If the new create request is B<Apply Immediately - No>, all creates are
-pending.
+=item *
+
+Result: The new create is added to the pending create.
+
+B<Important:> If the new create request is B<Apply Immediately - Yes>,
+all creates are performed immediately. If the new create request is
+B<Apply Immediately - No>, all creates are pending.
 
 =back
 
 =back
 
-Example: C<>
+Example:
+
+C<NewAvailabilityZones.member.1=us-west-2a&amp;NewAvailabilityZones.member.2=us-west-2b&amp;NewAvailabilityZones.member.3=us-west-2c>
 
 
 
@@ -311,8 +344,6 @@ cache nodes to remove.
 For clusters running Redis, this value must be 1. For clusters running
 Memcached, this value must be between 1 and 20.
 
-B<Note:>
-
 Adding or removing Memcached cache nodes can be applied immediately or
 as a pending action. See C<ApplyImmediately>.
 
@@ -345,19 +376,33 @@ is a 60 minute period. Valid values for C<ddd> are:
 
 =over
 
-=item * C<sun>
+=item *
 
-=item * C<mon>
+C<sun>
 
-=item * C<tue>
+=item *
 
-=item * C<wed>
+C<mon>
 
-=item * C<thu>
+=item *
 
-=item * C<fri>
+C<tue>
 
-=item * C<sat>
+=item *
+
+C<wed>
+
+=item *
+
+C<thu>
+
+=item *
+
+C<fri>
+
+=item *
+
+C<sat>
 
 =back
 
@@ -380,8 +425,6 @@ The number of days for which ElastiCache will retain automatic cache
 cluster snapshots before deleting them. For example, if you set
 I<SnapshotRetentionLimit> to 5, then a snapshot that was taken today
 will be retained for 5 days before being deleted.
-
-B<Important>
 
 If the value of SnapshotRetentionLimit is set to zero (0), backups are
 turned off.

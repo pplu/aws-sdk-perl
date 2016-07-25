@@ -33,7 +33,7 @@ stored.
 AWS credentials required when uploading a game build to the storage
 location. These credentials have a limited lifespan and are valid only
 for the build they were issued for. If you need to get fresh
-credentials, call RequestUploadCredentials.
+credentials, call C<RequestUploadCredentials>.
 
 
 

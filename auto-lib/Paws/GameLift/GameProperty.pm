@@ -32,10 +32,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 
 =head1 DESCRIPTION
 
-Set of key-value pairs containing information your game server requires
-to set up sessions. This object allows you to pass in any set of data
-needed for your game. For more information, see the Amazon GameLift
-Developer Guide.
+Set of key-value pairs containing information a server process requires
+to set up a game session. This object allows you to pass in any set of
+data needed for your game. For more information, see the Amazon
+GameLift Developer Guide.
 
 =head1 ATTRIBUTES
 

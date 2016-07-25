@@ -1,6 +1,7 @@
 
 package Paws::CognitoIdentity::GetCredentialsForIdentity;
   use Moose;
+  has CustomRoleArn => (is => 'ro', isa => 'Str');
   has IdentityId => (is => 'ro', isa => 'Str', required => 1);
   has Logins => (is => 'ro', isa => 'HashRef[Str]');
 
@@ -32,6 +33,15 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 CustomRoleArn => Str
+
+The Amazon Resource Name (ARN) of the role to be assumed when multiple
+roles were received in the token from the identity provider. For
+example, a SAML-based identity provider. This parameter is optional for
+identity providers that do not support role customization.
+
 
 
 =head2 B<REQUIRED> IdentityId => Str

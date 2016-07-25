@@ -38,8 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AssessmentTargetArns => ArrayRef[Str]
 
-A list of ARN(s) specifying the assessment target(s) whose assessment
-template(s) you want to list.
+A list of ARNs that specifies the assessment targets whose assessment
+templates you want to list.
 
 
 
@@ -65,9 +65,9 @@ want in the response. The default value is 10. The maximum value is
 =head2 NextToken => Str
 
 You can use this parameter when paginating results. Set the value of
-this parameter to 'null' on your first call to the
+this parameter to null on your first call to the
 B<ListAssessmentTemplates> action. Subsequent calls to the action fill
-B<nextToken> in the request with the value of B<NextToken> from
+B<nextToken> in the request with the value of B<NextToken> from the
 previous response to continue listing data.
 
 

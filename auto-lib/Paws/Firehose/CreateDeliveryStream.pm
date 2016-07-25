@@ -2,6 +2,7 @@
 package Paws::Firehose::CreateDeliveryStream;
   use Moose;
   has DeliveryStreamName => (is => 'ro', isa => 'Str', required => 1);
+  has ElasticsearchDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::ElasticsearchDestinationConfiguration');
   has RedshiftDestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::RedshiftDestinationConfiguration');
   has S3DestinationConfiguration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration');
 
@@ -41,17 +42,27 @@ The name of the delivery stream.
 
 
 
+=head2 ElasticsearchDestinationConfiguration => L<Paws::Firehose::ElasticsearchDestinationConfiguration>
+
+The destination in Amazon ES. This value cannot be specified if Amazon
+S3 or Amazon Redshift is the desired destination (see restrictions
+listed above).
+
+
+
 =head2 RedshiftDestinationConfiguration => L<Paws::Firehose::RedshiftDestinationConfiguration>
 
 The destination in Amazon Redshift. This value cannot be specified if
-Amazon S3 is the desired destination (see restrictions listed above).
+Amazon S3 or Amazon Elasticsearch is the desired destination (see
+restrictions listed above).
 
 
 
 =head2 S3DestinationConfiguration => L<Paws::Firehose::S3DestinationConfiguration>
 
 The destination in Amazon S3. This value must be specified if
-C<RedshiftDestinationConfiguration> is specified (see restrictions
+B<ElasticsearchDestinationConfiguration> or
+B<RedshiftDestinationConfiguration> is specified (see restrictions
 listed above).
 
 

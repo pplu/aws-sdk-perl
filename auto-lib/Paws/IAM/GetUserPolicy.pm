@@ -38,11 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the policy document to get.
 
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
+
 
 
 =head2 B<REQUIRED> UserName => Str
 
 The name of the user who the policy is associated with.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

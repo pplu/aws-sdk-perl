@@ -16,7 +16,7 @@ Paws::IAM::CreateInstanceProfileResponse
 
 =head2 B<REQUIRED> InstanceProfile => L<Paws::IAM::InstanceProfile>
 
-Information about the instance profile.
+A structure containing details about the new instance profile.
 
 
 

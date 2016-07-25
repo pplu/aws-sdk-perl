@@ -38,6 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The queue URL of the queue to delete the messages from when using the
 C<PurgeQueue> API.
 
+Queue URLs are case-sensitive.
+
 
 
 

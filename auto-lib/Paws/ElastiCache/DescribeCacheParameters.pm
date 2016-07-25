@@ -53,7 +53,7 @@ specified by I<MaxRecords>.
 
 =head2 MaxRecords => Int
 
-The maximum number of records to include in the response. If more
+The maximum number of brecords to include in the response. If more
 records exist than the specified C<MaxRecords> value, a marker is
 included in the response so that the remaining results can be
 retrieved.

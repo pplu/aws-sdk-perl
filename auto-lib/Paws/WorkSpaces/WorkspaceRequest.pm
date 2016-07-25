@@ -3,6 +3,7 @@ package Paws::WorkSpaces::WorkspaceRequest;
   has BundleId => (is => 'ro', isa => 'Str', required => 1);
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
   has RootVolumeEncryptionEnabled => (is => 'ro', isa => 'Bool');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::Tag]');
   has UserName => (is => 'ro', isa => 'Str', required => 1);
   has UserVolumeEncryptionEnabled => (is => 'ro', isa => 'Bool');
   has VolumeEncryptionKey => (is => 'ro', isa => 'Str');
@@ -59,6 +60,11 @@ obtain a list of the directories that are available.
 
   Specifies whether the data stored on the root volume, or C: drive, is
 encrypted.
+
+
+=head2 Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
+
+  The tags of the WorkSpace request.
 
 
 =head2 B<REQUIRED> UserName => Str

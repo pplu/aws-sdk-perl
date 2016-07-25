@@ -16,7 +16,7 @@ Paws::Inspector::DescribeAssessmentRunsResponse
 
 =head2 B<REQUIRED> AssessmentRuns => ArrayRef[L<Paws::Inspector::AssessmentRun>]
 
-Information about the assessment run(s).
+Information about the assessment run.
 
 
 

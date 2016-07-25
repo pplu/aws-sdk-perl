@@ -63,7 +63,13 @@ The task status with which to filter the C<ListTasks> results.
 Specifying a C<desiredStatus> of C<STOPPED> limits the results to tasks
 that are in the C<STOPPED> status, which can be useful for debugging
 tasks that are not starting properly or have died or finished. The
-default status filter is C<RUNNING>.
+default status filter is status filter is C<RUNNING>, which shows tasks
+that ECS has set the desired status to C<RUNNING>.
+
+Although you can filter results based on a desired status of
+C<PENDING>, this will not return any results because ECS never sets the
+desired status of a task to that value (only a task's C<lastStatus> may
+have a value of C<PENDING>).
 
 Valid values are: C<"RUNNING">, C<"PENDING">, C<"STOPPED">
 
@@ -95,6 +101,10 @@ request where C<maxResults> was used and the results exceeded the value
 of that parameter. Pagination continues from the end of the previous
 results that returned the C<nextToken> value. This value is C<null>
 when there are no more results to return.
+
+This token should be treated as an opaque identifier that is only used
+to retrieve the next items in a list and not for other programmatic
+purposes.
 
 
 

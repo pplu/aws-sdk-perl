@@ -60,7 +60,9 @@ A list of import snapshot task IDs.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return in a single request.
+The maximum number of results to return in a single call. To retrieve
+the remaining results, make another call with the returned C<NextToken>
+value.
 
 
 

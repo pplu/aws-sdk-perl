@@ -46,14 +46,20 @@ Constraints:
 
 =over
 
-=item * Must specify a valid option group.
+=item *
 
-=item * If the source option group is in the same region as the copy,
-specify a valid option group identifier, for example
-C<my-option-group>, or a valid ARN.
+Must specify a valid option group.
 
-=item * If the source option group is in a different region than the
-copy, specify a valid option group ARN, for example
+=item *
+
+If the source option group is in the same region as the copy, specify a
+valid option group identifier, for example C<my-option-group>, or a
+valid ARN.
+
+=item *
+
+If the source option group is in a different region than the copy,
+specify a valid option group ARN, for example
 C<arn:aws:rds:us-west-2:123456789012:og:special-options>.
 
 =back
@@ -81,13 +87,21 @@ Constraints:
 
 =over
 
-=item * Cannot be null, empty, or blank
+=item *
 
-=item * Must contain from 1 to 255 alphanumeric characters or hyphens
+Cannot be null, empty, or blank
 
-=item * First character must be a letter
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+Must contain from 1 to 255 alphanumeric characters or hyphens
+
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 

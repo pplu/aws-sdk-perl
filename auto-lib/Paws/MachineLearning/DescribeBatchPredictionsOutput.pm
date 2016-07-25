@@ -23,7 +23,7 @@ least one more page follows.
 
 =head2 Results => ArrayRef[L<Paws::MachineLearning::BatchPrediction>]
 
-A list of BatchPrediction objects that meet the search criteria.
+A list of C<BatchPrediction> objects that meet the search criteria.
 
 
 

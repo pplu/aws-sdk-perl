@@ -15,7 +15,7 @@ Paws::Inspector::CreateAssessmentTemplateResponse
 
 =head2 B<REQUIRED> AssessmentTemplateArn => Str
 
-The ARN specifying the assessment template that is created.
+The ARN that specifies the assessment template that is created.
 
 
 

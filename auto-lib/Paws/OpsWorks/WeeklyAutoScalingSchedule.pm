@@ -42,11 +42,15 @@ consists of a set of key-value pairs.
 
 =over
 
-=item * The key is the time period (a UTC hour) and must be an integer
-from 0 - 23.
+=item *
 
-=item * The value indicates whether the instance should be online or
-offline for the specified period, and must be set to "on" or "off"
+The key is the time period (a UTC hour) and must be an integer from 0 -
+23.
+
+=item *
+
+The value indicates whether the instance should be online or offline
+for the specified period, and must be set to "on" or "off"
 
 =back
 

@@ -32,16 +32,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EFS::Tag ob
 
 =head1 DESCRIPTION
 
-A tag is a pair of key and value. The allowed characters in keys and
-values are letters, whitespace, and numbers, representable in UTF-8,
-and the characters '+', '-', '=', '.', '_', ':', and '/'.
+A tag is a key-value pair. Allowed characters: letters, whitespace, and
+numbers, representable in UTF-8, and the following characters:C< + - =
+. _ : />
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Key => Str
 
-  Tag key, a string. The key must not start with "aws:".
+  Tag key (String). The key can't start with C<aws:>.
 
 
 =head2 B<REQUIRED> Value => Str

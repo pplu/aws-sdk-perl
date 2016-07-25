@@ -23,7 +23,7 @@ each failed item.
 
 =head2 B<REQUIRED> Findings => ArrayRef[L<Paws::Inspector::Finding>]
 
-Information about the finding(s).
+Information about the finding.
 
 
 

@@ -3,11 +3,13 @@ package Paws::EC2::SpotFleetRequestConfigData;
   has AllocationStrategy => (is => 'ro', isa => 'Str', xmlname => 'allocationStrategy', traits => ['Unwrapped']);
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped']);
   has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', xmlname => 'excessCapacityTerminationPolicy', traits => ['Unwrapped']);
+  has FulfilledCapacity => (is => 'ro', isa => 'Num', xmlname => 'fulfilledCapacity', traits => ['Unwrapped']);
   has IamFleetRole => (is => 'ro', isa => 'Str', xmlname => 'iamFleetRole', traits => ['Unwrapped'], required => 1);
   has LaunchSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::SpotFleetLaunchSpecification]', xmlname => 'launchSpecifications', traits => ['Unwrapped'], required => 1);
   has SpotPrice => (is => 'ro', isa => 'Str', xmlname => 'spotPrice', traits => ['Unwrapped'], required => 1);
   has TargetCapacity => (is => 'ro', isa => 'Int', xmlname => 'targetCapacity', traits => ['Unwrapped'], required => 1);
   has TerminateInstancesWithExpiration => (is => 'ro', isa => 'Bool', xmlname => 'terminateInstancesWithExpiration', traits => ['Unwrapped']);
+  has Type => (is => 'ro', isa => 'Str', xmlname => 'type', traits => ['Unwrapped']);
   has ValidFrom => (is => 'ro', isa => 'Str', xmlname => 'validFrom', traits => ['Unwrapped']);
   has ValidUntil => (is => 'ro', isa => 'Str', xmlname => 'validUntil', traits => ['Unwrapped']);
 1;
@@ -65,6 +67,12 @@ target capacity of the Spot fleet request is decreased below the
 current size of the Spot fleet.
 
 
+=head2 FulfilledCapacity => Num
+
+  The number of units fulfilled by this request compared to the set
+target capacity.
+
+
 =head2 B<REQUIRED> IamFleetRole => Str
 
   Grants the Spot fleet permission to terminate Spot instances on your
@@ -94,6 +102,19 @@ important to your application workload, such as vCPUs, memory, or I/O.
 
   Indicates whether running Spot instances should be terminated when the
 Spot fleet request expires.
+
+
+=head2 Type => Str
+
+  The type of request. Indicates whether the fleet will only C<request>
+the target capacity or also attempt to C<maintain> it. When you
+C<request> a certain target capacity, the fleet will only place the
+required bids. It will not attempt to replenish Spot instances if
+capacity is diminished, nor will it submit bids in alternative Spot
+pools if capacity is not available. When you want to C<maintain> a
+certain target capacity, fleet will place the required bids to meet
+this target capacity. It will also automatically replenish any
+interrupted instances. Default: C<maintain>.
 
 
 =head2 ValidFrom => Str

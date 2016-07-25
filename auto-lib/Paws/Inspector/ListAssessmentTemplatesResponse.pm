@@ -16,7 +16,7 @@ Paws::Inspector::ListAssessmentTemplatesResponse
 
 =head2 B<REQUIRED> AssessmentTemplateArns => ArrayRef[Str]
 
-A list of ARN(s) specifying the assessment template(s) returned by the
+A list of ARNs that specifies the assessment templates returned by the
 action.
 
 
@@ -26,7 +26,7 @@ action.
 When a response is generated, if there is more data to be listed, this
 parameter is present in the response and contains the value to use for
 the B<nextToken> parameter in a subsequent pagination request. If there
-is no more data to be listed, this parameter is set to 'null'.
+is no more data to be listed, this parameter is set to null.
 
 
 

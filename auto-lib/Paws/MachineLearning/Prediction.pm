@@ -41,12 +41,12 @@ The output from a C<Predict> operation:
 =item *
 
 C<Details> - Contains the following attributes:
-DetailsAttributes.PREDICTIVE_MODEL_TYPE - REGRESSION | BINARY |
-MULTICLASS DetailsAttributes.ALGORITHM - SGD
+C<DetailsAttributes.PREDICTIVE_MODEL_TYPE - REGRESSION | BINARY |
+MULTICLASS> C<DetailsAttributes.ALGORITHM - SGD>
 
 =item *
 
-C<PredictedLabel> - Present for either a BINARY or MULTICLASS
+C<PredictedLabel> - Present for either a C<BINARY> or C<MULTICLASS>
 C<MLModel> request.
 
 =item *
@@ -56,7 +56,7 @@ corresponding to each label.
 
 =item *
 
-C<PredictedValue> - Present for a REGRESSION C<MLModel> request.
+C<PredictedValue> - Present for a C<REGRESSION> C<MLModel> request.
 
 =back
 
@@ -71,7 +71,8 @@ C<PredictedValue> - Present for a REGRESSION C<MLModel> request.
 
 =head2 PredictedLabel => Str
 
-  The prediction label for either a BINARY or MULTICLASS C<MLModel>.
+  The prediction label for either a C<BINARY> or C<MULTICLASS>
+C<MLModel>.
 
 
 =head2 PredictedScores => HashRef[Num]
@@ -81,7 +82,7 @@ C<PredictedValue> - Present for a REGRESSION C<MLModel> request.
 
 =head2 PredictedValue => Num
 
-  The prediction value for REGRESSION C<MLModel>.
+  The prediction value for C<REGRESSION> C<MLModel>.
 
 
 

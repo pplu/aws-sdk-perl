@@ -37,7 +37,9 @@ This data type is used as an element in the following data type:
 
 =over
 
-=item * OrderableDBInstanceOption
+=item *
+
+OrderableDBInstanceOption
 
 =back
 

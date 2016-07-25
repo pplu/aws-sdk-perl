@@ -39,6 +39,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The access key ID of the secret access key you want to update.
 
+The regex pattern for this parameter is a string of characters that can
+consist of any upper or lowercased letter or digit.
+
 
 
 =head2 B<REQUIRED> Status => Str
@@ -52,6 +55,10 @@ Valid values are: C<"Active">, C<"Inactive">
 =head2 UserName => Str
 
 The name of the user whose key you want to update.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

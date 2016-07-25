@@ -2,6 +2,7 @@
 package Paws::Lambda::AddPermission;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', required => 1);
+  has EventSourceToken => (is => 'ro', isa => 'Str');
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName' , required => 1);
   has Principal => (is => 'ro', isa => 'Str', required => 1);
   has Qualifier => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'Qualifier' );
@@ -47,6 +48,12 @@ The AWS Lambda action you want to allow in this statement. Each Lambda
 action is a string starting with C<lambda:> followed by the API name
 (see Operations). For example, C<lambda:CreateFunction>. You can use
 wildcard (C<lambda:*>) to grant permission for all AWS Lambda actions.
+
+
+
+=head2 EventSourceToken => Str
+
+
 
 
 

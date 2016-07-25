@@ -44,49 +44,54 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Body => Str
 
-
+The simulated request body of an incoming invocation request.
 
 
 
 =head2 ClientCertificateId => Str
 
-
+A ClientCertificate identifier to use in the test invocation. API
+Gateway will use use the certificate when making the HTTPS request to
+the defined backend endpoint.
 
 
 
 =head2 Headers => HashRef[Str]
 
-
+A key-value map of headers to simulate an incoming invocation request.
 
 
 
 =head2 B<REQUIRED> HttpMethod => Str
 
-
+Specifies a test invoke method request's HTTP method.
 
 
 
 =head2 PathWithQueryString => Str
 
-
+The URI path, including query string, of the simulated invocation
+request. Use this to specify path parameters and query string
+parameters.
 
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-
+Specifies a test invoke method request's resource ID.
 
 
 
 =head2 B<REQUIRED> RestApiId => Str
 
-
+Specifies a test invoke method request's API identifier.
 
 
 
 =head2 StageVariables => HashRef[Str]
 
-
+A key-value map of stage variables to simulate an invocation on a
+deployed Stage.
 
 
 

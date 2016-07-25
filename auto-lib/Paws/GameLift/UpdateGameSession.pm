@@ -53,8 +53,8 @@ game session.
 
 =head2 Name => Str
 
-Descriptive label associated with this game session. Session names do
-not need to be unique.
+Descriptive label associated with a game session. Session names do not
+need to be unique.
 
 
 
@@ -70,11 +70,11 @@ Game session protection policy to apply to this game session only.
 
 =over
 
-=item * NoProtection: The game session can be terminated during a
-scale-down event.
+=item * B<NoProtection> E<ndash> The game session can be terminated
+during a scale-down event.
 
-=item * FullProtection: If the game session is in an ACTIVE status, it
-cannot be terminated during a scale-down event.
+=item * B<FullProtection> E<ndash> If the game session is in an
+C<ACTIVE> status, it cannot be terminated during a scale-down event.
 
 =back
 

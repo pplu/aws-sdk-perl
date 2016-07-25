@@ -35,15 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-Contains information about an Inspector application. This data type is
-used as the response element in the DescribeAssessmentTargets action.
+Contains information about an Amazon Inspector application. This data
+type is used as the response element in the DescribeAssessmentTargets
+action.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Arn => Str
 
-  The ARN specifying the Inspector assessment target.
+  The ARN that specifies the Amazon Inspector assessment target.
 
 
 =head2 B<REQUIRED> CreatedAt => Str
@@ -53,18 +54,18 @@ used as the response element in the DescribeAssessmentTargets action.
 
 =head2 B<REQUIRED> Name => Str
 
-  The name of the Inspector assessment target.
+  The name of the Amazon Inspector assessment target.
 
 
 =head2 B<REQUIRED> ResourceGroupArn => Str
 
-  The ARN specifying the resource group that is associated with the
+  The ARN that specifies the resource group that is associated with the
 assessment target.
 
 
 =head2 B<REQUIRED> UpdatedAt => Str
 
-  The time at which UpdateAssessmentTarget API is called.
+  The time at which UpdateAssessmentTarget is called.
 
 
 

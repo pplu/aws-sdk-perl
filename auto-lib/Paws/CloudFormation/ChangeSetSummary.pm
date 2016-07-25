@@ -4,6 +4,7 @@ package Paws::CloudFormation::ChangeSetSummary;
   has ChangeSetName => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has ExecutionStatus => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -62,6 +63,15 @@ and the stack with which it's associated.
 =head2 Description => Str
 
   Descriptive information about the change set.
+
+
+=head2 ExecutionStatus => Str
+
+  If the change set execution status is C<AVAILABLE>, you can execute the
+change set. If you canE<rsquo>t execute the change set, the status
+indicates why. For example, a change set might be in an C<UNAVAILABLE>
+state because AWS CloudFormation is still creating it or in an
+C<OBSOLETE> state because the stack was already updated.
 
 
 =head2 StackId => Str

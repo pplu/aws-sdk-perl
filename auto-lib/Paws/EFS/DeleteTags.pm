@@ -38,13 +38,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-String. The ID of the file system whose tags you want to delete.
+ID of the file system whose tags you want to delete (String).
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str]
 
-A list of tag keys to delete.
+List of tag keys to delete.
 
 
 

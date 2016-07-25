@@ -44,6 +44,8 @@ A list of receipt handles for the messages to be deleted.
 
 The URL of the Amazon SQS queue to take action on.
 
+Queue URLs are case-sensitive.
+
 
 
 

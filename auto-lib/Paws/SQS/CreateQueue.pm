@@ -43,40 +43,65 @@ request parameters the C<CreateQueue> action uses:
 
 =over
 
-=item * C<DelaySeconds> - The time in seconds that the delivery of all
-messages in the queue will be delayed. An integer from 0 to 900 (15
-minutes). The default for this attribute is 0 (zero).
+=item *
 
-=item * C<MaximumMessageSize> - The limit of how many bytes a message
-can contain before Amazon SQS rejects it. An integer from 1024 bytes (1
+C<DelaySeconds> - The time in seconds that the delivery of all messages
+in the queue will be delayed. An integer from 0 to 900 (15 minutes).
+The default for this attribute is 0 (zero).
+
+=item *
+
+C<MaximumMessageSize> - The limit of how many bytes a message can
+contain before Amazon SQS rejects it. An integer from 1024 bytes (1
 KiB) up to 262144 bytes (256 KiB). The default for this attribute is
 262144 (256 KiB).
 
-=item * C<MessageRetentionPeriod> - The number of seconds Amazon SQS
-retains a message. Integer representing seconds, from 60 (1 minute) to
-1209600 (14 days). The default for this attribute is 345600 (4 days).
+=item *
 
-=item * C<Policy> - The queue's policy. A valid AWS policy. For more
+C<MessageRetentionPeriod> - The number of seconds Amazon SQS retains a
+message. Integer representing seconds, from 60 (1 minute) to 1209600
+(14 days). The default for this attribute is 345600 (4 days).
+
+=item *
+
+C<Policy> - The queue's policy. A valid AWS policy. For more
 information about policy structure, see Overview of AWS IAM Policies in
 the I<Amazon IAM User Guide>.
 
-=item * C<ReceiveMessageWaitTimeSeconds> - The time for which a
-ReceiveMessage call will wait for a message to arrive. An integer from
-0 to 20 (seconds). The default for this attribute is 0.
+=item *
 
-=item * C<VisibilityTimeout> - The visibility timeout for the queue. An
-integer from 0 to 43200 (12 hours). The default for this attribute is
-30. For more information about visibility timeout, see Visibility
-Timeout in the I<Amazon SQS Developer Guide>.
+C<ReceiveMessageWaitTimeSeconds> - The time for which a ReceiveMessage
+call will wait for a message to arrive. An integer from 0 to 20
+(seconds). The default for this attribute is 0.
+
+=item *
+
+C<RedrivePolicy> - The parameters for dead letter queue functionality
+of the source queue. For more information about RedrivePolicy and dead
+letter queues, see Using Amazon SQS Dead Letter Queues in the I<Amazon
+SQS Developer Guide>.
+
+=item *
+
+C<VisibilityTimeout> - The visibility timeout for the queue. An integer
+from 0 to 43200 (12 hours). The default for this attribute is 30. For
+more information about visibility timeout, see Visibility Timeout in
+the I<Amazon SQS Developer Guide>.
 
 =back
 
+Any other valid special request parameters that are specified (such as
+C<ApproximateNumberOfMessages>, C<ApproximateNumberOfMessagesDelayed>,
+C<ApproximateNumberOfMessagesNotVisible>, C<CreatedTimestamp>,
+C<LastModifiedTimestamp>, and C<QueueArn>) will be ignored.
 
 
 
 =head2 B<REQUIRED> QueueName => Str
 
 The name for the queue to be created.
+
+Queue names are case-sensitive.
 
 
 

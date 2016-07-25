@@ -72,11 +72,17 @@ Describes an Amazon EBS volume configuration.
 
 =over
 
-=item * C<standard> - Magnetic
+=item *
 
-=item * C<io1> - Provisioned IOPS (SSD)
+C<standard> - Magnetic
 
-=item * C<gp2> - General Purpose (SSD)
+=item *
+
+C<io1> - Provisioned IOPS (SSD)
+
+=item *
+
+C<gp2> - General Purpose (SSD)
 
 =back
 

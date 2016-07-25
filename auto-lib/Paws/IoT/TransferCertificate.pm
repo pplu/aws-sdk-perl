@@ -3,6 +3,7 @@ package Paws::IoT::TransferCertificate;
   use Moose;
   has CertificateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'certificateId' , required => 1);
   has TargetAwsAccount => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'targetAwsAccount' , required => 1);
+  has TransferMessage => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -45,6 +46,12 @@ The ID of the certificate.
 =head2 B<REQUIRED> TargetAwsAccount => Str
 
 The AWS account.
+
+
+
+=head2 TransferMessage => Str
+
+The transfer message.
 
 
 

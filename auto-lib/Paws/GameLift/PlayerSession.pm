@@ -6,6 +6,7 @@ package Paws::GameLift::PlayerSession;
   has IpAddress => (is => 'ro', isa => 'Str');
   has PlayerId => (is => 'ro', isa => 'Str');
   has PlayerSessionId => (is => 'ro', isa => 'Str');
+  has Port => (is => 'ro', isa => 'Int');
   has Status => (is => 'ro', isa => 'Str');
   has TerminationTime => (is => 'ro', isa => 'Str');
 1;
@@ -76,24 +77,31 @@ location.
   Unique identifier for a player session.
 
 
+=head2 Port => Int
+
+  Port number for the game session. To connect to a GameLift server
+process, an app needs both the IP address and port number.
+
+
 =head2 Status => Str
 
   Current status of the player session. Possible player session states
-include:
+include the following:
 
 =over
 
-=item * RESERVED: The player session request has been received, but the
-player has not yet connected to the game server and/or been validated.
+=item * B<RESERVED> E<ndash> The player session request has been
+received, but the player has not yet connected to the server process
+and/or been validated.
 
-=item * ACTIVE: The player has been validated by the game server and is
-currently connected.
+=item * B<ACTIVE> E<ndash> The player has been validated by the server
+process and is currently connected.
 
-=item * COMPLETED: The player connection has been dropped.
+=item * B<COMPLETED> E<ndash> The player connection has been dropped.
 
-=item * TIMEDOUT: A player session request was received, but the player
-did not connect and/or was not validated within the time-out limit (60
-seconds).
+=item * B<TIMEDOUT> E<ndash> A player session request was received, but
+the player did not connect and/or was not validated within the time-out
+limit (60 seconds).
 
 =back
 

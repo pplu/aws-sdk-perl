@@ -36,14 +36,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Locale => Str
 
-The locale that you want to translate a rules package description(s)
-into.
+The locale that you want to translate a rules package description into.
 
 Valid values are: C<"EN_US">
 
 =head2 B<REQUIRED> RulesPackageArns => ArrayRef[Str]
 
-The ARN(s) specifying the rules package(s) that you want to describe.
+The ARN that specifies the rules package that you want to describe.
 
 
 

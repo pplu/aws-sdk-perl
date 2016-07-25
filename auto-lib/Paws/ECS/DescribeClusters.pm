@@ -35,9 +35,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Clusters => ArrayRef[Str]
 
-A space-separated list of cluster names or full cluster Amazon Resource
-Name (ARN) entries. If you do not specify a cluster, the default
-cluster is assumed.
+A space-separated list of up to 100 cluster names or full cluster
+Amazon Resource Name (ARN) entries. If you do not specify a cluster,
+the default cluster is assumed.
 
 
 

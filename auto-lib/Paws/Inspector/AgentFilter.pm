@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-Contains information about an Inspector agent. This data type is used
-as a request parameter in the ListAssessmentRunAgents action.
+Contains information about an Amazon Inspector agent. This data type is
+used as a request parameter in the ListAssessmentRunAgents action.
 
 =head1 ATTRIBUTES
 

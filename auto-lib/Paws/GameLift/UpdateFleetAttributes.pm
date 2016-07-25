@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Description => Str
 
-Human-readable description of the fleet.
+Human-readable description of a fleet.
 
 
 
@@ -51,24 +51,24 @@ for.
 
 =head2 Name => Str
 
-Descriptive label associated with this fleet. Fleet names do not need
-to be unique.
+Descriptive label associated with a fleet. Fleet names do not need to
+be unique.
 
 
 
 =head2 NewGameSessionProtectionPolicy => Str
 
 Game session protection policy to apply to all new instances created in
-this fleet. Instances that already exist will not be affected. You can
-set protection for individual instances using UpdateGameSession.
+this fleet. Instances that already exist are not affected. You can set
+protection for individual instances using UpdateGameSession.
 
 =over
 
-=item * NoProtection: The game session can be terminated during a
-scale-down event.
+=item * B<NoProtection> E<ndash> The game session can be terminated
+during a scale-down event.
 
-=item * FullProtection: If the game session is in an ACTIVE status, it
-cannot be terminated during a scale-down event.
+=item * B<FullProtection> E<ndash> If the game session is in an
+C<ACTIVE> status, it cannot be terminated during a scale-down event.
 
 =back
 

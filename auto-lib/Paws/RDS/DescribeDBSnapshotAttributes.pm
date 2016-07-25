@@ -1,7 +1,7 @@
 
 package Paws::RDS::DescribeDBSnapshotAttributes;
   use Moose;
-  has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
+  has DBSnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -33,9 +33,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 DBSnapshotIdentifier => Str
+=head2 B<REQUIRED> DBSnapshotIdentifier => Str
 
-The identifier for the DB snapshot to modify the attributes for.
+The identifier for the DB snapshot to describe the attributes for.
 
 
 

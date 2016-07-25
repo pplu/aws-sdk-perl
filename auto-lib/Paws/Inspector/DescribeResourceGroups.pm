@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceGroupArns => ArrayRef[Str]
 
-The ARN(s) specifying the resource group(s) that you want to describe.
+The ARN that specifies the resource group that you want to describe.
 
 
 

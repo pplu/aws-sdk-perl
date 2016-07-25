@@ -1,6 +1,7 @@
 package Paws::Route53::HealthCheck;
   use Moose;
   has CallerReference => (is => 'ro', isa => 'Str', required => 1);
+  has CloudWatchAlarmConfiguration => (is => 'ro', isa => 'Paws::Route53::CloudWatchAlarmConfiguration');
   has HealthCheckConfig => (is => 'ro', isa => 'Paws::Route53::HealthCheckConfig', required => 1);
   has HealthCheckVersion => (is => 'ro', isa => 'Int', required => 1);
   has Id => (is => 'ro', isa => 'Str', required => 1);
@@ -43,6 +44,13 @@ check.
 =head2 B<REQUIRED> CallerReference => Str
 
   A unique string that identifies the request to create the health check.
+
+
+=head2 CloudWatchAlarmConfiguration => L<Paws::Route53::CloudWatchAlarmConfiguration>
+
+  For CLOUDWATCH_METRIC health checks, a complex type that contains
+information about the CloudWatch alarm that you're associating with the
+health check.
 
 
 =head2 B<REQUIRED> HealthCheckConfig => L<Paws::Route53::HealthCheckConfig>

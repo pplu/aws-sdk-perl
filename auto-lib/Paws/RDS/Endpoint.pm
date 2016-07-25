@@ -37,11 +37,17 @@ This data type is used as a response element in the following actions:
 
 =over
 
-=item * CreateDBInstance
+=item *
 
-=item * DescribeDBInstances
+CreateDBInstance
 
-=item * DeleteDBInstance
+=item *
+
+DescribeDBInstances
+
+=item *
+
+DeleteDBInstance
 
 =back
 

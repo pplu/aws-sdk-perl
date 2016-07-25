@@ -71,7 +71,7 @@ Information for generating the customer router configuration.
 
 =head2 OwnerAccount => Str
 
-
+The AWS account that will own the new virtual interface.
 
 
 
@@ -103,7 +103,7 @@ Information for generating the customer router configuration.
 
 
 
-Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"deleting">, C<"deleted">, C<"rejected">
+Valid values are: C<"confirming">, C<"verifying">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">
 
 =head2 VirtualInterfaceType => Str
 

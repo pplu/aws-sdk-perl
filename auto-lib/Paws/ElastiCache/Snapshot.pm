@@ -80,29 +80,43 @@ Valid node types are as follows:
 
 =over
 
-=item * General purpose:
+=item *
+
+General purpose:
 
 =over
 
-=item * Current generation: C<cache.t2.micro>, C<cache.t2.small>,
+=item *
+
+Current generation: C<cache.t2.micro>, C<cache.t2.small>,
 C<cache.t2.medium>, C<cache.m3.medium>, C<cache.m3.large>,
 C<cache.m3.xlarge>, C<cache.m3.2xlarge>
 
-=item * Previous generation: C<cache.t1.micro>, C<cache.m1.small>,
+=item *
+
+Previous generation: C<cache.t1.micro>, C<cache.m1.small>,
 C<cache.m1.medium>, C<cache.m1.large>, C<cache.m1.xlarge>
 
 =back
 
-=item * Compute optimized: C<cache.c1.xlarge>
+=item *
 
-=item * Memory optimized
+Compute optimized: C<cache.c1.xlarge>
+
+=item *
+
+Memory optimized:
 
 =over
 
-=item * Current generation: C<cache.r3.large>, C<cache.r3.xlarge>,
+=item *
+
+Current generation: C<cache.r3.large>, C<cache.r3.xlarge>,
 C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
-=item * Previous generation: C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
+=item *
+
+Previous generation: C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
 C<cache.m2.4xlarge>
 
 =back
@@ -113,13 +127,18 @@ B<Notes:>
 
 =over
 
-=item * All t2 instances are created in an Amazon Virtual Private Cloud
-(VPC).
+=item *
 
-=item * Redis backup/restore is not supported for t2 instances.
+All t2 instances are created in an Amazon Virtual Private Cloud (VPC).
 
-=item * Redis Append-only files (AOF) functionality is not supported
-for t1 or t2 instances.
+=item *
+
+Redis backup/restore is not supported for t2 instances.
+
+=item *
+
+Redis Append-only files (AOF) functionality is not supported for t1 or
+t2 instances.
 
 =back
 
@@ -186,19 +205,33 @@ is a 60 minute period. Valid values for C<ddd> are:
 
 =over
 
-=item * C<sun>
+=item *
 
-=item * C<mon>
+C<sun>
 
-=item * C<tue>
+=item *
 
-=item * C<wed>
+C<mon>
 
-=item * C<thu>
+=item *
 
-=item * C<fri>
+C<tue>
 
-=item * C<sat>
+=item *
+
+C<wed>
+
+=item *
+
+C<thu>
+
+=item *
+
+C<fri>
+
+=item *
+
+C<sat>
 
 =back
 
@@ -222,10 +255,8 @@ for the source cache cluster when the snapshot was created. This field
 is otherwise ignored: Manual snapshots do not expire, and can only be
 deleted using the I<DeleteSnapshot> action.
 
-B<Important>
-
-If the value of SnapshotRetentionLimit is set to zero (0), backups are
-turned off.
+B<Important> If the value of SnapshotRetentionLimit is set to zero (0),
+backups are turned off.
 
 
 =head2 SnapshotSource => Str

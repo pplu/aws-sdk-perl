@@ -50,8 +50,7 @@ Details on a task in a cluster.
 
 =head2 ClusterArn => Str
 
-  The Amazon Resource Name (ARN) of the of the cluster that hosts the
-task.
+  The Amazon Resource Name (ARN) of the cluster that hosts the task.
 
 
 =head2 ContainerInstanceArn => Str
@@ -119,8 +118,8 @@ state).
 
 =head2 TaskDefinitionArn => Str
 
-  The Amazon Resource Name (ARN) of the of the task definition that
-creates the task.
+  The Amazon Resource Name (ARN) of the task definition that creates the
+task.
 
 
 

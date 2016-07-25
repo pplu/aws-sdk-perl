@@ -37,8 +37,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 NewPath => Str
 
-New path for the user. Include this parameter only if you're changing
-the user's path.
+New path for the IAM user. Include this parameter only if you're
+changing the user's path.
+
+The regex pattern for this parameter is a string of characters
+consisting of either a forward slash (/) by itself or a string that
+must begin and end with forward slashes, containing any ASCII character
+from the ! (\u0021) thru the DEL character (\u007F), including most
+punctuation characters, digits, and upper and lowercased letters.
 
 
 
@@ -47,12 +53,20 @@ the user's path.
 New name for the user. Include this parameter only if you're changing
 the user's name.
 
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
+
 
 
 =head2 B<REQUIRED> UserName => Str
 
 Name of the user to update. If you're changing the name of the user,
 this is the original user name.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

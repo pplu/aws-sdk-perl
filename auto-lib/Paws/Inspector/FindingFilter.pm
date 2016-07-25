@@ -46,22 +46,22 @@ action.
 
 =head2 AgentIds => ArrayRef[Str]
 
-  For a record to match a filter, one of the values specified for this
-data type property must be the exact match of the value of the
+  For a record to match a filter, one of the values that is specified for
+this data type property must be the exact match of the value of the
 B<agentId> property of the Finding data type.
 
 
 =head2 Attributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
-  For a record to match a filter, the list of values specified for this
-data type property must be contained in the list of values of the
-B<attributes> property of the Finding data type.
+  For a record to match a filter, the list of values that are specified
+for this data type property must be contained in the list of values of
+the B<attributes> property of the Finding data type.
 
 
 =head2 AutoScalingGroups => ArrayRef[Str]
 
-  For a record to match a filter, one of the values specified for this
-data type property must be the exact match of the value of the
+  For a record to match a filter, one of the values that is specified for
+this data type property must be the exact match of the value of the
 B<autoScalingGroup> property of the Finding data type.
 
 
@@ -72,29 +72,29 @@ B<autoScalingGroup> property of the Finding data type.
 
 =head2 RuleNames => ArrayRef[Str]
 
-  For a record to match a filter, one of the values specified for this
-data type property must be the exact match of the value of the
+  For a record to match a filter, one of the values that is specified for
+this data type property must be the exact match of the value of the
 B<ruleName> property of the Finding data type.
 
 
 =head2 RulesPackageArns => ArrayRef[Str]
 
-  For a record to match a filter, one of the values specified for this
-data type property must be the exact match of the value of the
+  For a record to match a filter, one of the values that is specified for
+this data type property must be the exact match of the value of the
 B<rulesPackageArn> property of the Finding data type.
 
 
 =head2 Severities => ArrayRef[Str]
 
-  For a record to match a filter, one of the values specified for this
-data type property must be the exact match of the value of the
+  For a record to match a filter, one of the values that is specified for
+this data type property must be the exact match of the value of the
 B<severity> property of the Finding data type.
 
 
 =head2 UserAttributes => ArrayRef[L<Paws::Inspector::Attribute>]
 
-  For a record to match a filter, the value specified for this data type
-property must be contained in the list of values of the
+  For a record to match a filter, the value that is specified for this
+data type property must be contained in the list of values of the
 B<userAttributes> property of the Finding data type.
 
 

@@ -4,6 +4,7 @@ package Paws::ECS::ListTaskDefinitionFamilies;
   has FamilyPrefix => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'familyPrefix' );
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
 
   use MooseX::ClassAttribute;
 
@@ -66,7 +67,25 @@ the results exceeded the value of that parameter. Pagination continues
 from the end of the previous results that returned the C<nextToken>
 value. This value is C<null> when there are no more results to return.
 
+This token should be treated as an opaque identifier that is only used
+to retrieve the next items in a list and not for other programmatic
+purposes.
 
+
+
+=head2 Status => Str
+
+The task definition family status with which to filter the
+C<ListTaskDefinitionFamilies> results. By default, both C<ACTIVE> and
+C<INACTIVE> task definition families are listed. If this parameter is
+set to C<ACTIVE>, only task definition families that have an C<ACTIVE>
+task definition revision are returned. If this parameter is set to
+C<INACTIVE>, only task definition families that do not have any
+C<ACTIVE> task definition revisions are returned. If you paginate the
+resulting output, be sure to keep the C<status> value constant in each
+subsequent request.
+
+Valid values are: C<"ACTIVE">, C<"INACTIVE">, C<"ALL">
 
 
 =head1 SEE ALSO

@@ -1,8 +1,10 @@
 package Paws::Firehose::RedshiftDestinationConfiguration;
   use Moose;
+  has CloudWatchLoggingOptions => (is => 'ro', isa => 'Paws::Firehose::CloudWatchLoggingOptions');
   has ClusterJDBCURL => (is => 'ro', isa => 'Str', required => 1);
   has CopyCommand => (is => 'ro', isa => 'Paws::Firehose::CopyCommand', required => 1);
   has Password => (is => 'ro', isa => 'Str', required => 1);
+  has RetryOptions => (is => 'ro', isa => 'Paws::Firehose::RedshiftRetryOptions');
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
   has S3Configuration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration', required => 1);
   has Username => (is => 'ro', isa => 'Str', required => 1);
@@ -25,20 +27,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Firehose::RedshiftDestinationConfiguration object:
 
-  $service_obj->Method(Att1 => { ClusterJDBCURL => $value, ..., Username => $value  });
+  $service_obj->Method(Att1 => { CloudWatchLoggingOptions => $value, ..., Username => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::RedshiftDestinationConfiguration object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->ClusterJDBCURL
+  $result->Att1->CloudWatchLoggingOptions
 
 =head1 DESCRIPTION
 
 Describes the configuration of a destination in Amazon Redshift.
 
 =head1 ATTRIBUTES
+
+
+=head2 CloudWatchLoggingOptions => L<Paws::Firehose::CloudWatchLoggingOptions>
+
+  Describes CloudWatch logging options for your delivery stream.
 
 
 =head2 B<REQUIRED> ClusterJDBCURL => Str
@@ -56,6 +63,13 @@ Describes the configuration of a destination in Amazon Redshift.
   The user password.
 
 
+=head2 RetryOptions => L<Paws::Firehose::RedshiftRetryOptions>
+
+  Configures retry behavior in the event that Firehose is unable to
+deliver documents to Amazon Redshift. Default value is 3600 (60
+minutes).
+
+
 =head2 B<REQUIRED> RoleARN => Str
 
   The ARN of the AWS credentials.
@@ -68,7 +82,7 @@ Redshift obtains data. Restrictions are described in the topic for
 CreateDeliveryStream.
 
 The compression formats C<SNAPPY> or C<ZIP> cannot be specified in
-C<RedshiftDestinationConfiguration.S3Configuration> because the Amazon
+B<RedshiftDestinationConfiguration.S3Configuration> because the Amazon
 Redshift C<COPY> operation that reads from the S3 bucket doesn't
 support these compression formats.
 
