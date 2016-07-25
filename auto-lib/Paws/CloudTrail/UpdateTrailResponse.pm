@@ -100,8 +100,7 @@ C<arn:aws:sns:us-east-1:123456789012:MyTopic>
 
 =head2 SnsTopicName => Str
 
-Specifies the name of the Amazon SNS topic that CloudTrail uses to send
-notifications when log files are delivered.
+This field is deprecated. Use SnsTopicARN.
 
 
 
