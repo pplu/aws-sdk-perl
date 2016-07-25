@@ -54,11 +54,17 @@ privileges:
 
 =over
 
-=item * Read users and groups
+=item *
 
-=item * Create computer objects
+Read users and groups
 
-=item * Join computers to the domain
+=item *
+
+Create computer objects
+
+=item *
+
+Join computers to the domain
 
 =back
 

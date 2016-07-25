@@ -14,6 +14,11 @@ package Paws::DS;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub AddTagsToResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::AddTagsToResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ConnectDirectory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::ConnectDirectory', @_);
@@ -134,9 +139,19 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::GetSnapshotLimits', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterEventTopic {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::RegisterEventTopic', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveTagsFromResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::RemoveTagsFromResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RestoreFromSnapshot {
@@ -160,7 +175,7 @@ package Paws::DS;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits RegisterEventTopic RestoreFromSnapshot UpdateConditionalForwarder UpdateRadius VerifyTrust / }
+  sub operations { qw/AddTagsToResource ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteSnapshot DeleteTrust DeregisterEventTopic DescribeConditionalForwarders DescribeDirectories DescribeEventTopics DescribeSnapshots DescribeTrusts DisableRadius DisableSso EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListTagsForResource RegisterEventTopic RemoveTagsFromResource RestoreFromSnapshot UpdateConditionalForwarder UpdateRadius VerifyTrust / }
 
 1;
 
@@ -196,6 +211,18 @@ types, parameters, and errors.
 
 =head1 METHODS
 
+=head2 AddTagsToResource(ResourceId => Str, Tags => ArrayRef[L<Paws::DS::Tag>])
+
+Each argument is described in detail in: L<Paws::DS::AddTagsToResource>
+
+Returns: a L<Paws::DS::AddTagsToResourceResult> instance
+
+  Adds or overwrites one or more tags for the specified Amazon Directory
+Services directory. Each directory can have a maximum of 10 tags. Each
+tag consists of a key and optional value. Tag keys must be unique per
+resource.
+
+
 =head2 ConnectDirectory(ConnectSettings => L<Paws::DS::DirectoryConnectSettings>, Name => Str, Password => Str, Size => Str, [Description => Str, ShortName => Str])
 
 Each argument is described in detail in: L<Paws::DS::ConnectDirectory>
@@ -213,7 +240,7 @@ Returns: a L<Paws::DS::CreateAliasResult> instance
 
   Creates an alias for a directory and assigns the alias to the
 directory. The alias is used to construct the access URL for the
-directory, such as C<http://alias.awsapps.com>.
+directory, such as C<http://E<lt>aliasE<gt>.awsapps.com>.
 
 After an alias has been created, it cannot be deleted or reused, so
 this operation should only be used when absolutely necessary.
@@ -473,6 +500,15 @@ Returns: a L<Paws::DS::GetSnapshotLimitsResult> instance
   Obtains the manual snapshot limits for a directory.
 
 
+=head2 ListTagsForResource(ResourceId => Str, [Limit => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DS::ListTagsForResource>
+
+Returns: a L<Paws::DS::ListTagsForResourceResult> instance
+
+  Lists all tags on an Amazon Directory Services directory.
+
+
 =head2 RegisterEventTopic(DirectoryId => Str, TopicName => Str)
 
 Each argument is described in detail in: L<Paws::DS::RegisterEventTopic>
@@ -485,6 +521,15 @@ receive email or text (SMS) messages when the status of your directory
 changes. You get notified if your directory goes from an Active status
 to an Impaired or Inoperable status. You also receive a notification
 when the directory returns to an Active status.
+
+
+=head2 RemoveTagsFromResource(ResourceId => Str, TagKeys => ArrayRef[Str])
+
+Each argument is described in detail in: L<Paws::DS::RemoveTagsFromResource>
+
+Returns: a L<Paws::DS::RemoveTagsFromResourceResult> instance
+
+  Removes tags from an Amazon Directory Services directory.
 
 
 =head2 RestoreFromSnapshot(SnapshotId => Str)

@@ -55,9 +55,10 @@ Contains information about an AWS Directory Service directory.
 
 =head2 AccessUrl => Str
 
-  The access URL for the directory, such as C<http://alias.awsapps.com>.
-If no alias has been created for the directory, C<alias> is the
-directory identifier, such as C<d-XXXXXXXXXX>.
+  The access URL for the directory, such as
+C<http://E<lt>aliasE<gt>.awsapps.com>. If no alias has been created for
+the directory, C<E<lt>aliasE<gt>> is the directory identifier, such as
+C<d-XXXXXXXXXX>.
 
 
 =head2 Alias => Str

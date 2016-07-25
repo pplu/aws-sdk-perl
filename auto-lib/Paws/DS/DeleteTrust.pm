@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 DeleteAssociatedConditionalForwarder => Bool
 
-
+Delete a conditional forwarder as part of a DeleteTrustRequest.
 
 
 
