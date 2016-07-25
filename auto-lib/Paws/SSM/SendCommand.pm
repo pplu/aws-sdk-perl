@@ -6,9 +6,11 @@ package Paws::SSM::SendCommand;
   has DocumentHashType => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str', required => 1);
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
+  has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
   has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
+  has ServiceRoleArn => (is => 'ro', isa => 'Str');
   has TimeoutSeconds => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -79,6 +81,12 @@ specify a maximum of 50 IDs.
 
 
 
+=head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
+
+Configurations for sending notifications.
+
+
+
 =head2 OutputS3BucketName => Str
 
 The name of the S3 bucket where command execution responses should be
@@ -97,6 +105,12 @@ be stored.
 
 The required and optional parameters specified in the SSM document
 being executed.
+
+
+
+=head2 ServiceRoleArn => Str
+
+The IAM role that SSM uses to send notifications.
 
 
 

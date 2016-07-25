@@ -5,7 +5,9 @@ package Paws::SSM::CommandInvocation;
   has Comment => (is => 'ro', isa => 'Str');
   has DocumentName => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
+  has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
   has RequestedDateTime => (is => 'ro', isa => 'Str');
+  has ServiceRole => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TraceOutput => (is => 'ro', isa => 'Str');
 1;
@@ -74,9 +76,21 @@ description of what the command should do.
   The instance ID in which this invocation was requested.
 
 
+=head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
+
+  Configurations for sending notifications about command status changes
+on a per instance basis.
+
+
 =head2 RequestedDateTime => Str
 
   The time and date the request was sent to this instance.
+
+
+=head2 ServiceRole => Str
+
+  The IAM service role that SSM uses to act on your behalf when sending
+notifications about command status changes on a per instance basis.
 
 
 =head2 Status => Str

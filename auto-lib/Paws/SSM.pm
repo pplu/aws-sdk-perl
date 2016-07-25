@@ -173,12 +173,13 @@ Paws::SSM - Perl Interface to AWS Amazon Simple Systems Management Service
 
 =head1 DESCRIPTION
 
-This is the Amazon Simple Systems Manager (SSM) API Reference. SSM
-enables you to remotely manage the configuration of your on-premises
-servers and virtual machines (VMs) and your Amazon EC2 instances using
-scripts, commands, or the Amazon EC2 console. SSM includes an on-demand
-solution called I<Amazon EC2 Run Command> and a lightweight instance
-configuration solution called I<SSM Config>.
+This is the Amazon EC2 Simple Systems Manager (SSM) API Reference. SSM
+enables you to remotely manage the configuration of your Amazon EC2
+instances, virtual machines (VMs), or servers in your on-premises
+environment or in an environment provided by other cloud providers
+using scripts, commands, or the Amazon EC2 console. SSM includes an
+on-demand solution called I<Amazon EC2 Run Command> and a lightweight
+instance configuration solution called I<SSM Config>.
 
 This references is intended to be used with the EC2 Run Command User
 Guide for Linux or Windows.
@@ -622,7 +623,7 @@ Returns: a L<Paws::SSM::RemoveTagsFromResourceResult> instance
   Removes all tags from the specified resource.
 
 
-=head2 SendCommand(DocumentName => Str, InstanceIds => ArrayRef[Str], [Comment => Str, DocumentHash => Str, DocumentHashType => Str, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, Parameters => L<Paws::SSM::Parameters>, TimeoutSeconds => Int])
+=head2 SendCommand(DocumentName => Str, InstanceIds => ArrayRef[Str], [Comment => Str, DocumentHash => Str, DocumentHashType => Str, NotificationConfig => L<Paws::SSM::NotificationConfig>, OutputS3BucketName => Str, OutputS3KeyPrefix => Str, Parameters => L<Paws::SSM::Parameters>, ServiceRoleArn => Str, TimeoutSeconds => Int])
 
 Each argument is described in detail in: L<Paws::SSM::SendCommand>
 
