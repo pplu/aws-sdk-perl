@@ -11,8 +11,8 @@ package Paws::RDS::CreateDBCluster;
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
-  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
+  has MasterUsername => (is => 'ro', isa => 'Str');
+  has MasterUserPassword => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
@@ -196,7 +196,7 @@ key for each AWS region.
 
 
 
-=head2 B<REQUIRED> MasterUsername => Str
+=head2 MasterUsername => Str
 
 The name of the master user for the client DB cluster.
 
@@ -221,7 +221,7 @@ Cannot be a reserved word for the chosen database engine.
 
 
 
-=head2 B<REQUIRED> MasterUserPassword => Str
+=head2 MasterUserPassword => Str
 
 The password for the master database user. This password can contain
 any printable ASCII character except "/", """, or "@".

@@ -2,6 +2,7 @@
 package Paws::RDS::FailoverDBCluster;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
+  has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -56,6 +57,15 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
+
+
+
+=head2 TargetDBInstanceIdentifier => Str
+
+The name of the instance to promote to the primary instance.
+
+You must specify the instance identifier for an Aurora Replica in the
+DB cluster. For example, C<mydbcluster-replica1>.
 
 
 

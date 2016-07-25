@@ -516,9 +516,6 @@ the next maintenance window unless the C<ApplyImmediately> parameter is
 set to C<true> for this request.
 
 Constraints: Cannot be specified if the DB instance is a Read Replica.
-This parameter cannot be used with SQL Server DB instances. Multi-AZ
-for SQL Server DB instances is set using the Mirroring option in an
-option group associated with the DB instance.
 
 
 
