@@ -58,9 +58,6 @@ The available provider names for C<Logins> are as follows:
 
 =item * Facebook: C<graph.facebook.com>
 
-=item * Amazon Cognito Identity Provider:
-C<cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789>
-
 =item * Google: C<accounts.google.com>
 
 =item * Amazon: C<www.amazon.com>

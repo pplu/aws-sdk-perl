@@ -32,20 +32,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CognitoIden
 
 =head1 DESCRIPTION
 
-A provider representing a Cognito User Identity Pool and its client ID.
+A provider representing an Amazon Cognito Identity User Pool and its
+client ID.
 
 =head1 ATTRIBUTES
 
 
 =head2 ClientId => Str
 
-  The client ID for the Cognito User Identity Pool.
+  The client ID for the Amazon Cognito Identity User Pool.
 
 
 =head2 ProviderName => Str
 
-  The provider name for a Cognito User Identity Pool. For example,
-C<cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789>.
+  The provider name for an Amazon Cognito Identity User Pool. For
+example, C<cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789>.
 
 
 

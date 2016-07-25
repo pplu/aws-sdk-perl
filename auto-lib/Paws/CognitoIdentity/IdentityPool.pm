@@ -7,6 +7,7 @@ package Paws::CognitoIdentity::IdentityPool;
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
   has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
   has OpenIdConnectProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SamlProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has SupportedLoginProviders => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityProviders');
 
 
@@ -27,7 +28,8 @@ TRUE if the identity pool supports unauthenticated logins.
 
 =head2 CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]
 
-A list representing a Cognito User Identity Pool and its client ID.
+A list representing an Amazon Cognito Identity User Pool and its client
+ID.
 
 
 
@@ -52,6 +54,13 @@ A string that you provide.
 =head2 OpenIdConnectProviderARNs => ArrayRef[Str]
 
 A list of OpendID Connect provider ARNs.
+
+
+
+=head2 SamlProviderARNs => ArrayRef[Str]
+
+An array of Amazon Resource Names (ARNs) of the SAML provider for your
+identity pool.
 
 
 
