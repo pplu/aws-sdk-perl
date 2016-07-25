@@ -4,6 +4,7 @@ package Paws::ACM::CertificateDetail;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]');
+  has FailureReason => (is => 'ro', isa => 'Str');
   has InUseBy => (is => 'ro', isa => 'ArrayRef[Str]');
   has IssuedAt => (is => 'ro', isa => 'Str');
   has Issuer => (is => 'ro', isa => 'Str');
@@ -75,6 +76,14 @@ www.example.com or example.com.
 
   Contains information about the email address or addresses used for
 domain validation.
+
+
+=head2 FailureReason => Str
+
+  The reason the certificate request failed. This value exists only when
+the structure's C<Status> is C<FAILED>. For more information, see
+Certificate Request Failed in the I<AWS Certificate Manager User
+Guide>.
 
 
 =head2 InUseBy => ArrayRef[Str]
