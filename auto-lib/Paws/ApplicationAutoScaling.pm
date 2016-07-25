@@ -116,7 +116,27 @@ C<us-east-1>
 
 =item *
 
+C<us-west-1>
+
+=item *
+
 C<us-west-2>
+
+=item *
+
+C<ap-southeast-1>
+
+=item *
+
+C<ap-southeast-2>
+
+=item *
+
+C<ap-northeast-1>
+
+=item *
+
+C<eu-central-1>
 
 =item *
 
@@ -184,7 +204,7 @@ Each argument is described in detail in: L<Paws::ApplicationAutoScaling::Describ
 Returns: a L<Paws::ApplicationAutoScaling::DescribeScalingActivitiesResponse> instance
 
   Provides descriptive information for scaling activities with a
-specified service namespace.
+specified service namespace for the previous six weeks.
 
 You can filter the results in a service namespace with the
 C<ResourceId> and C<ScalableDimension> parameters.

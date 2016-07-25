@@ -46,8 +46,9 @@ The name of the scaling policy.
 
 =head2 PolicyType => Str
 
-The policy type. This parameter is required if you are creating a new
-policy.
+The policy type. If you are creating a new policy, this parameter is
+required. If you are updating an existing policy, this parameter is not
+required.
 
 Valid values are: C<"StepScaling">
 
@@ -80,8 +81,9 @@ Valid values are: C<"ecs">
 
 =head2 StepScalingPolicyConfiguration => L<Paws::ApplicationAutoScaling::StepScalingPolicyConfiguration>
 
-The configuration for the step scaling policy. This parameter is
-required if you are creating a new policy. For more information, see
+The configuration for the step scaling policy. If you are creating a
+new policy, this parameter is required. If you are updating an existing
+policy, this parameter is not required. For more information, see
 StepScalingPolicyConfiguration and StepAdjustment.
 
 
