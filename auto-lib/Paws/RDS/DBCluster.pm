@@ -23,6 +23,8 @@ package Paws::RDS::DBCluster;
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]');
@@ -61,15 +63,29 @@ actions:
 
 =over
 
-=item * CreateDBCluster
+=item *
 
-=item * DeleteDBCluster
+CreateDBCluster
 
-=item * FailoverDBCluster
+=item *
 
-=item * ModifyDBCluster
+DeleteDBCluster
 
-=item * RestoreDBClusterFromSnapshot
+=item *
+
+FailoverDBCluster
+
+=item *
+
+ModifyDBCluster
+
+=item *
+
+RestoreDBClusterFromSnapshot
+
+=item *
+
+RestoreDBClusterToPointInTime
 
 =back
 
@@ -212,6 +228,18 @@ C<BackupRetentionPeriod>.
 
   Specifies the weekly time range during which system maintenance can
 occur, in Universal Coordinated Time (UTC).
+
+
+=head2 ReadReplicaIdentifiers => ArrayRef[Str]
+
+  Contains one or more identifiers of the Read Replicas associated with
+this DB cluster.
+
+
+=head2 ReplicationSourceIdentifier => Str
+
+  Contains the identifier of the source DB cluster if this DB cluster is
+a Read Replica.
 
 
 =head2 Status => Str

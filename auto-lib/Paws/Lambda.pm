@@ -212,7 +212,7 @@ AWS Lambda: How it Works in the I<AWS Lambda Developer Guide>.
 
 =head1 METHODS
 
-=head2 AddPermission(Action => Str, FunctionName => Str, Principal => Str, StatementId => Str, [Qualifier => Str, SourceAccount => Str, SourceArn => Str])
+=head2 AddPermission(Action => Str, FunctionName => Str, Principal => Str, StatementId => Str, [EventSourceToken => Str, Qualifier => Str, SourceAccount => Str, SourceArn => Str])
 
 Each argument is described in detail in: L<Paws::Lambda::AddPermission>
 
@@ -637,7 +637,7 @@ This operation requires permission for the C<lambda:UpdateFunctionCode>
 action.
 
 
-=head2 UpdateFunctionConfiguration(FunctionName => Str, [Description => Str, Handler => Str, MemorySize => Int, Role => Str, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
+=head2 UpdateFunctionConfiguration(FunctionName => Str, [Description => Str, Handler => Str, MemorySize => Int, Role => Str, Runtime => Str, Timeout => Int, VpcConfig => L<Paws::Lambda::VpcConfig>])
 
 Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionConfiguration>
 

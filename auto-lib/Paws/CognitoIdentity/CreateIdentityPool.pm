@@ -2,9 +2,11 @@
 package Paws::CognitoIdentity::CreateIdentityPool;
   use Moose;
   has AllowUnauthenticatedIdentities => (is => 'ro', isa => 'Bool', required => 1);
+  has CognitoIdentityProviders => (is => 'ro', isa => 'ArrayRef[Paws::CognitoIdentity::CognitoIdentityProvider]');
   has DeveloperProviderName => (is => 'ro', isa => 'Str');
   has IdentityPoolName => (is => 'ro', isa => 'Str', required => 1);
   has OpenIdConnectProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
+  has SamlProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has SupportedLoginProviders => (is => 'ro', isa => 'Paws::CognitoIdentity::IdentityProviders');
 
   use MooseX::ClassAttribute;
@@ -43,6 +45,12 @@ TRUE if the identity pool supports unauthenticated logins.
 
 
 
+=head2 CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>]
+
+An array of Amazon Cognito Identity user pools.
+
+
+
 =head2 DeveloperProviderName => Str
 
 The "domain" by which Cognito will refer to your users. This name acts
@@ -65,6 +73,13 @@ A string that you provide.
 =head2 OpenIdConnectProviderARNs => ArrayRef[Str]
 
 A list of OpendID Connect provider ARNs.
+
+
+
+=head2 SamlProviderARNs => ArrayRef[Str]
+
+An array of Amazon Resource Names (ARNs) of the SAML provider for your
+identity pool.
 
 
 

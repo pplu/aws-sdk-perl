@@ -52,8 +52,6 @@ geolocation, or latency resource record sets in a private hosted zone.
 
 =back
 
-For more information and an example, see Example: Creating Alias
-Resource Record Sets in the I<Amazon Route 53 API Reference>.
 
 =head1 ATTRIBUTES
 
@@ -101,8 +99,6 @@ hosted zone.
 
 =back
 
-For more information and an example, see Example: Creating Alias
-Resource Record Sets in the I<Amazon Route 53 API Reference>.
 
 
 =head2 B<REQUIRED> EvaluateTargetHealth => Bool
@@ -155,9 +151,7 @@ target is a CloudFront distribution.
 resource record set or a group of resource record sets (for example, a
 group of weighted resource record sets), but it is not another alias
 resource record set, we recommend that you associate a health check
-with all of the resource record sets in the alias target. For more
-information, see What Happens When You Omit Health Checks? in the
-I<Amazon Route 53 Developer Guide>.
+with all of the resource record sets in the alias target.
 
 =item * If you specify an ELB load balancer in C<AliasTarget>, Elastic
 Load Balancing routes queries only to the healthy Amazon EC2 instances
@@ -213,8 +207,6 @@ different hosted zone.)
 
 =back
 
-For more information and an example, see Example: Creating Alias
-Resource Record Sets in the I<Amazon Route 53 API Reference>.
 
 
 

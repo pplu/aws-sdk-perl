@@ -61,8 +61,8 @@ retrieve information on.
 
 =head2 Limit => Int
 
-Maximum number of results to return. You can use this parameter with
-I<NextToken> to get results as a set of sequential pages.
+Maximum number of results to return. Use this parameter with
+C<NextToken> to get results as a set of sequential pages.
 
 
 
@@ -77,8 +77,8 @@ specify the start of the result set, do not specify a value.
 =head2 StatusFilter => Str
 
 Game session status to filter results on. Possible game session states
-include ACTIVE, TERMINATED, ACTIVATING and TERMINATING (the last two
-are transitory).
+include C<ACTIVE>, C<TERMINATED>, C<ACTIVATING>, and C<TERMINATING>
+(the last two are transitory).
 
 
 

@@ -291,10 +291,10 @@ B<Signing Requests>
 
 Requests must be signed by using an access key ID and a secret access
 key. We strongly recommend that you I<do not> use your AWS account
-access key ID and secret key for everyday work with AWS KMS. Instead,
-use the access key ID and secret access key for an IAM user, or you can
-use the AWS Security Token Service to generate temporary security
-credentials that you can use to sign requests.
+(root) access key ID and secret key for everyday work with AWS KMS.
+Instead, use the access key ID and secret access key for an IAM user,
+or you can use the AWS Security Token Service to generate temporary
+security credentials that you can use to sign requests.
 
 All AWS KMS operations require Signature Version 4.
 
@@ -315,15 +315,21 @@ following:
 
 =over
 
-=item * AWS Security Credentials - This topic provides general
-information about the types of credentials used for accessing AWS.
+=item *
 
-=item * AWS Security Token Service - This guide describes how to create
-and use temporary security credentials.
+AWS Security Credentials - This topic provides general information
+about the types of credentials used for accessing AWS.
 
-=item * Signing AWS API Requests - This set of topics walks you through
-the process of signing a request using an access key ID and a secret
-access key.
+=item *
+
+Temporary Security Credentials - This section of the I<IAM User Guide>
+describes how to create and use temporary security credentials.
+
+=item *
+
+Signature Version 4 Signing Process - This set of topics walks you
+through the process of signing a request using an access key ID and a
+secret access key.
 
 =back
 
@@ -336,13 +342,21 @@ console.
 
 =over
 
-=item * Encrypt
+=item *
 
-=item * Decrypt
+Encrypt
 
-=item * GenerateDataKey
+=item *
 
-=item * GenerateDataKeyWithoutPlaintext
+Decrypt
+
+=item *
+
+GenerateDataKey
+
+=item *
+
+GenerateDataKeyWithoutPlaintext
 
 =back
 
@@ -360,7 +374,7 @@ operation is successful, the CMK is set to the C<Disabled> state. To
 enable a CMK, use EnableKey.
 
 For more information about scheduling and canceling deletion of a CMK,
-go to Deleting Customer Master Keys in the I<AWS Key Management Service
+see Deleting Customer Master Keys in the I<AWS Key Management Service
 Developer Guide>.
 
 
@@ -397,17 +411,32 @@ For more information about grants, see Grants in the I<AWS Key
 Management Service Developer Guide>.
 
 
-=head2 CreateKey([Description => Str, KeyUsage => Str, Policy => Str])
+=head2 CreateKey([BypassPolicyLockoutSafetyCheck => Bool, Description => Str, KeyUsage => Str, Policy => Str])
 
 Each argument is described in detail in: L<Paws::KMS::CreateKey>
 
 Returns: a L<Paws::KMS::CreateKeyResponse> instance
 
-  Creates a customer master key. Customer master keys can be used to
-encrypt small amounts of data (less than 4K) directly, but they are
-most commonly used to encrypt or envelope data keys that are then used
-to encrypt customer data. For more information about data keys, see
-GenerateDataKey and GenerateDataKeyWithoutPlaintext.
+  Creates a customer master key (CMK).
+
+You can use a CMK to encrypt small amounts of data (4 KiB or less)
+directly, but CMKs are more commonly used to encrypt data encryption
+keys (DEKs), which are used to encrypt raw data. For more information
+about DEKs and the difference between CMKs and DEKs, see the following:
+
+=over
+
+=item *
+
+The GenerateDataKey operation
+
+=item *
+
+AWS Key Management Service Concepts in the I<AWS Key Management Service
+Developer Guide>
+
+=back
+
 
 
 =head2 Decrypt(CiphertextBlob => Str, [EncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str]])
@@ -421,11 +450,17 @@ encrypted by using any of the following functions:
 
 =over
 
-=item * GenerateDataKey
+=item *
 
-=item * GenerateDataKeyWithoutPlaintext
+GenerateDataKey
 
-=item * Encrypt
+=item *
+
+GenerateDataKeyWithoutPlaintext
+
+=item *
+
+Encrypt
 
 =back
 
@@ -465,11 +500,11 @@ Each argument is described in detail in: L<Paws::KMS::DisableKey>
 
 Returns: nothing
 
-  Sets the state of a master key to disabled, thereby preventing its use
-for cryptographic operations. For more information about how key state
-affects the use of a master key, go to How Key State Affects the Use of
-a Customer Master Key in the I<AWS Key Management Service Developer
-Guide>.
+  Sets the state of a customer master key (CMK) to disabled, thereby
+preventing its use for cryptographic operations. For more information
+about how key state affects the use of a CMK, see How Key State Affects
+the Use of a Customer Master Key in the I<AWS Key Management Service
+Developer Guide>.
 
 
 =head2 DisableKeyRotation(KeyId => Str)
@@ -510,15 +545,18 @@ C<Encrypt> function has two primary use cases:
 
 =over
 
-=item * You can encrypt up to 4 KB of arbitrary data such as an RSA
-key, a database password, or other sensitive customer information.
+=item *
 
-=item * If you are moving encrypted data from one region to another,
-you can use this API to encrypt in the new region the plaintext data
-key that was used to encrypt the data in the original region. This
-provides you with an encrypted copy of the data key that can be
-decrypted in the new region and used there to decrypt the encrypted
-data.
+You can encrypt up to 4 KB of arbitrary data such as an RSA key, a
+database password, or other sensitive customer information.
+
+=item *
+
+If you are moving encrypted data from one region to another, you can
+use this API to encrypt in the new region the plaintext data key that
+was used to encrypt the data in the original region. This provides you
+with an encrypted copy of the data key that can be decrypted in the new
+region and used there to decrypt the encrypted data.
 
 =back
 
@@ -666,13 +704,16 @@ A typical use is to list all grants that you are able to retire. To
 retire a grant, use RetireGrant.
 
 
-=head2 PutKeyPolicy(KeyId => Str, Policy => Str, PolicyName => Str)
+=head2 PutKeyPolicy(KeyId => Str, Policy => Str, PolicyName => Str, [BypassPolicyLockoutSafetyCheck => Bool])
 
 Each argument is described in detail in: L<Paws::KMS::PutKeyPolicy>
 
 Returns: nothing
 
-  Attaches a policy to the specified key.
+  Attaches a key policy to the specified customer master key (CMK).
+
+For more information about key policies, see Key Policies in the I<AWS
+Key Management Service Developer Guide>.
 
 
 =head2 ReEncrypt(CiphertextBlob => Str, DestinationKeyId => Str, [DestinationEncryptionContext => L<Paws::KMS::EncryptionContextType>, GrantTokens => ArrayRef[Str], SourceEncryptionContext => L<Paws::KMS::EncryptionContextType>])
@@ -709,12 +750,17 @@ API:
 
 =over
 
-=item * The account that created the grant
+=item *
 
-=item * The C<RetiringPrincipal>, if present
+The account that created the grant
 
-=item * The C<GranteePrincipal>, if C<RetireGrant> is a grantee
-operation
+=item *
+
+The C<RetiringPrincipal>, if present
+
+=item *
+
+The C<GranteePrincipal>, if C<RetireGrant> is a grantee operation
 
 =back
 
@@ -755,9 +801,9 @@ When a CMK is deleted, all data that was encrypted under the CMK is
 rendered unrecoverable. To restrict the use of a CMK without deleting
 it, use DisableKey.
 
-For more information about scheduling a CMK for deletion, go to
-Deleting Customer Master Keys in the I<AWS Key Management Service
-Developer Guide>.
+For more information about scheduling a CMK for deletion, see Deleting
+Customer Master Keys in the I<AWS Key Management Service Developer
+Guide>.
 
 
 =head2 UpdateAlias(AliasName => Str, TargetKeyId => Str)

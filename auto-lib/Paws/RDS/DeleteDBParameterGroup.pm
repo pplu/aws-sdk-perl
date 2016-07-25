@@ -41,11 +41,17 @@ Constraints:
 
 =over
 
-=item * Must be the name of an existing DB parameter group
+=item *
 
-=item * You cannot delete a default DB parameter group
+Must be the name of an existing DB parameter group
 
-=item * Cannot be associated with any DB instances
+=item *
+
+You cannot delete a default DB parameter group
+
+=item *
+
+Cannot be associated with any DB instances
 
 =back
 

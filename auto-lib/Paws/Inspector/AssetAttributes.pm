@@ -44,19 +44,19 @@ generated.
 
 =head2 AgentId => Str
 
-  The id of the agent that is installed on the EC2 instance where the
+  The ID of the agent that is installed on the EC2 instance where the
 finding is generated.
 
 
 =head2 AmiId => Str
 
-  Amazon Machine Image(AMI) ID installed on the EC2 instance where the
-finding is generated.
+  The ID of the Amazon Machine Image (AMI) that is installed on the EC2
+instance where the finding is generated.
 
 
 =head2 AutoScalingGroup => Str
 
-  The auto-scaling group of the EC2 instance where the finding is
+  The Auto Scaling group of the EC2 instance where the finding is
 generated.
 
 

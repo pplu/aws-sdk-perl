@@ -6,6 +6,7 @@ package Paws::ApiGateway::Integration;
   has Credentials => (is => 'ro', isa => 'Str');
   has HttpMethod => (is => 'ro', isa => 'Str');
   has IntegrationResponses => (is => 'ro', isa => 'Paws::ApiGateway::MapOfIntegrationResponse');
+  has PassthroughBehavior => (is => 'ro', isa => 'Str');
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
   has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGateway::MapOfStringToString');
   has Type => (is => 'ro', isa => 'Str');
@@ -57,6 +58,26 @@ Specifies the integration's responses.
 
 
 
+=head2 PassthroughBehavior => Str
+
+Specifies the pass-through behavior for incoming requests based on the
+Content-Type header in the request, and the available requestTemplates
+defined on the Integration. There are three valid values:
+C<WHEN_NO_MATCH>, C<WHEN_NO_TEMPLATES>, and C<NEVER>.
+
+C<WHEN_NO_MATCH> passes the request body for unmapped content types
+through to the Integration backend without transformation.
+
+C<NEVER> rejects unmapped content types with an HTTP 415 'Unsupported
+Media Type' response.
+
+C<WHEN_NO_TEMPLATES> will allow pass-through when the Integration has
+NO content types mapped to templates. However if there is at least one
+content type defined, unmapped content types will be rejected with the
+same 415 response.
+
+
+
 =head2 RequestParameters => L<Paws::ApiGateway::MapOfStringToString>
 
 Represents requests parameters that are sent with the backend request.
@@ -73,13 +94,17 @@ name.
 
 =head2 RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>
 
-Specifies the integration's request templates.
+Represents a map of Velocity templates that are applied on the request
+payload based on the value of the Content-Type header sent by the
+client. The content type value is the key in this map, and the template
+(as a String) is the value.
 
 
 
 =head2 Type => Str
 
-Specifies the integration's type.
+Specifies the integration's type. The valid value is C<HTTP>, C<AWS>,
+or C<MOCK>.
 
 Valid values are: C<"HTTP">, C<"AWS">, C<"MOCK">
 

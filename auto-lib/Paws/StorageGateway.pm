@@ -204,6 +204,11 @@ package Paws::StorageGateway;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTapes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListTapes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListVolumeInitiators {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::StorageGateway::ListVolumeInitiators', @_);
@@ -400,7 +405,7 @@ package Paws::StorageGateway;
   }
 
 
-  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListGateways ListLocalDisks ListTagsForResource ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateSnapshotSchedule UpdateVTLDeviceType / }
+  sub operations { qw/ActivateGateway AddCache AddTagsToResource AddUploadBuffer AddWorkingStorage CancelArchival CancelRetrieval CreateCachediSCSIVolume CreateSnapshot CreateSnapshotFromVolumeRecoveryPoint CreateStorediSCSIVolume CreateTapes CreateTapeWithBarcode DeleteBandwidthRateLimit DeleteChapCredentials DeleteGateway DeleteSnapshotSchedule DeleteTape DeleteTapeArchive DeleteVolume DescribeBandwidthRateLimit DescribeCache DescribeCachediSCSIVolumes DescribeChapCredentials DescribeGatewayInformation DescribeMaintenanceStartTime DescribeSnapshotSchedule DescribeStorediSCSIVolumes DescribeTapeArchives DescribeTapeRecoveryPoints DescribeTapes DescribeUploadBuffer DescribeVTLDevices DescribeWorkingStorage DisableGateway ListGateways ListLocalDisks ListTagsForResource ListTapes ListVolumeInitiators ListVolumeRecoveryPoints ListVolumes RemoveTagsFromResource ResetCache RetrieveTapeArchive RetrieveTapeRecoveryPoint SetLocalConsolePassword ShutdownGateway StartGateway UpdateBandwidthRateLimit UpdateChapCredentials UpdateGatewayInformation UpdateGatewaySoftwareNow UpdateMaintenanceStartTime UpdateSnapshotSchedule UpdateVTLDeviceType / }
 
 1;
 
@@ -442,24 +447,32 @@ Service API Reference>:
 
 =over
 
-=item * AWS Storage Gateway Required Request Headers: Describes the
-required headers that you must send with every POST request to AWS
-Storage Gateway.
+=item *
 
-=item * Signing Requests: AWS Storage Gateway requires that you
-authenticate every request you send; this topic describes how sign such
-a request.
+AWS Storage Gateway Required Request Headers: Describes the required
+headers that you must send with every POST request to AWS Storage
+Gateway.
 
-=item * Error Responses: Provides reference information about AWS
-Storage Gateway errors.
+=item *
 
-=item * Operations in AWS Storage Gateway: Contains detailed
-descriptions of all AWS Storage Gateway operations, their request
-parameters, response elements, possible errors, and examples of
-requests and responses.
+Signing Requests: AWS Storage Gateway requires that you authenticate
+every request you send; this topic describes how sign such a request.
 
-=item * AWS Storage Gateway Regions and Endpoints: Provides a list of
-each of the s and endpoints available for use with AWS Storage Gateway.
+=item *
+
+Error Responses: Provides reference information about AWS Storage
+Gateway errors.
+
+=item *
+
+Operations in AWS Storage Gateway: Contains detailed descriptions of
+all AWS Storage Gateway operations, their request parameters, response
+elements, possible errors, and examples of requests and responses.
+
+=item *
+
+AWS Storage Gateway Regions and Endpoints: Provides a list of each of
+the s and endpoints available for use with AWS Storage Gateway.
 
 =back
 
@@ -467,9 +480,27 @@ AWS Storage Gateway resource IDs are in uppercase. When you use these
 resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
 lowercase. You must change your resource ID to lowercase to use it with
 the EC2 API. For example, in Storage Gateway the ID for a volume might
-be vol-1122AABB. When you use this ID with the EC2 API, you must change
-it to vol-1122aabb. Otherwise, the EC2 API might not behave as
-expected.
+be C<vol-1122AABB>. When you use this ID with the EC2 API, you must
+change it to C<vol-1122aabb>. Otherwise, the EC2 API might not behave
+as expected.
+
+IDs for Storage Gateway volumes and Amazon EBS snapshots created from
+gateway volumes are changing to a longer format. Starting in December
+2016, all new volumes and snapshots will be created with a 17-character
+string. Starting in April 2016, you will be able to use these longer
+IDs so you can test your systems with the new format. For more
+information, see Longer EC2 and EBS Resource IDs.
+
+For example, a volume ARN with the longer volume ID format will look
+like this:
+
+C<arn:aws:storagegateway:us-west-2:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABBCCDDEEFFG>.
+
+A snapshot ID with the longer ID format will look like this:
+C<snap-78e226633445566ee>.
+
+For more information, see Announcement: Heads-up E<ndash> Longer AWS
+Storage Gateway volume and snapshot IDs coming in 2016.
 
 =head1 METHODS
 
@@ -651,6 +682,9 @@ use it when you want to create a volume from a snapshot.
 To list or delete a snapshot, you must use the Amazon EC2 API. For more
 information, see DescribeSnapshots or DeleteSnapshot in the EC2 API
 reference.
+
+Volume and snapshot IDs are changing to a longer length ID format. For
+more information, see the important note on the Welcome page.
 
 
 =head2 CreateSnapshotFromVolumeRecoveryPoint(SnapshotDescription => Str, VolumeARN => Str)
@@ -1089,6 +1123,25 @@ Returns: a L<Paws::StorageGateway::ListTagsForResourceOutput> instance
   Lists the tags that have been added to the specified resource.
 
 
+=head2 ListTapes([Limit => Int, Marker => Str, TapeARNs => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::StorageGateway::ListTapes>
+
+Returns: a L<Paws::StorageGateway::ListTapesOutput> instance
+
+  Lists virtual tapes in your virtual tape library (VTL) and your virtual
+tape shelf (VTS). You specify the tapes to list by specifying one or
+more tape Amazon Resource Names (ARNs). If you don't specify a tape
+ARN, the operation lists all virtual tapes in both your VTL and VTS.
+
+This operation supports pagination. By default, the operation returns a
+maximum of up to 100 tapes. You can optionally specify the C<Limit>
+parameter in the body to limit the number of tapes in the response. If
+the number of tapes returned in the response is truncated, the response
+includes a C<Marker> element that you can use in your subsequent
+request to retrieve the next set of tapes.
+
+
 =head2 ListVolumeInitiators(VolumeARN => Str)
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListVolumeInitiators>
@@ -1115,7 +1168,7 @@ volume recovery point use the CreateSnapshotFromVolumeRecoveryPoint
 operation.
 
 
-=head2 ListVolumes(GatewayARN => Str, [Limit => Int, Marker => Str])
+=head2 ListVolumes([GatewayARN => Str, Limit => Int, Marker => Str])
 
 Each argument is described in detail in: L<Paws::StorageGateway::ListVolumes>
 
@@ -1322,12 +1375,14 @@ immediately triggers the software update.
 When you make this request, you get a C<200 OK> success response
 immediately. However, it might take some time for the update to
 complete. You can call DescribeGatewayInformation to verify the gateway
-is in the C<STATE_RUNNING> state. A software update forces a system
-restart of your gateway. You can minimize the chance of any disruption
-to your applications by increasing your iSCSI Initiators' timeouts. For
-more information about increasing iSCSI Initiator timeouts for Windows
-and Linux, see Customizing Your Windows iSCSI Settings and Customizing
-Your Linux iSCSI Settings, respectively.
+is in the C<STATE_RUNNING> state.
+
+A software update forces a system restart of your gateway. You can
+minimize the chance of any disruption to your applications by
+increasing your iSCSI Initiators' timeouts. For more information about
+increasing iSCSI Initiator timeouts for Windows and Linux, see
+Customizing Your Windows iSCSI Settings and Customizing Your Linux
+iSCSI Settings, respectively.
 
 
 =head2 UpdateMaintenanceStartTime(DayOfWeek => Int, GatewayARN => Str, HourOfDay => Int, MinuteOfHour => Int)

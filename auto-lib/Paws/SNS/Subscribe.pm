@@ -42,25 +42,42 @@ protocol:
 
 =over
 
-=item * For the C<http> protocol, the endpoint is an URL beginning with
+=item *
+
+For the C<http> protocol, the endpoint is an URL beginning with
 "http://"
 
-=item * For the C<https> protocol, the endpoint is a URL beginning with
+=item *
+
+For the C<https> protocol, the endpoint is a URL beginning with
 "https://"
 
-=item * For the C<email> protocol, the endpoint is an email address
+=item *
 
-=item * For the C<email-json> protocol, the endpoint is an email
-address
+For the C<email> protocol, the endpoint is an email address
 
-=item * For the C<sms> protocol, the endpoint is a phone number of an
+=item *
+
+For the C<email-json> protocol, the endpoint is an email address
+
+=item *
+
+For the C<sms> protocol, the endpoint is a phone number of an
 SMS-enabled device
 
-=item * For the C<sqs> protocol, the endpoint is the ARN of an Amazon
-SQS queue
+=item *
 
-=item * For the C<application> protocol, the endpoint is the
-EndpointArn of a mobile app and device.
+For the C<sqs> protocol, the endpoint is the ARN of an Amazon SQS queue
+
+=item *
+
+For the C<application> protocol, the endpoint is the EndpointArn of a
+mobile app and device.
+
+=item *
+
+For the C<lambda> protocol, the endpoint is the ARN of an AWS Lambda
+function.
 
 =back
 
@@ -73,21 +90,39 @@ The protocol you want to use. Supported protocols include:
 
 =over
 
-=item * C<http> -- delivery of JSON-encoded message via HTTP POST
+=item *
 
-=item * C<https> -- delivery of JSON-encoded message via HTTPS POST
+C<http> -- delivery of JSON-encoded message via HTTP POST
 
-=item * C<email> -- delivery of message via SMTP
+=item *
 
-=item * C<email-json> -- delivery of JSON-encoded message via SMTP
+C<https> -- delivery of JSON-encoded message via HTTPS POST
 
-=item * C<sms> -- delivery of message via SMS
+=item *
 
-=item * C<sqs> -- delivery of JSON-encoded message to an Amazon SQS
-queue
+C<email> -- delivery of message via SMTP
 
-=item * C<application> -- delivery of JSON-encoded message to an
-EndpointArn for a mobile app and device.
+=item *
+
+C<email-json> -- delivery of JSON-encoded message via SMTP
+
+=item *
+
+C<sms> -- delivery of message via SMS
+
+=item *
+
+C<sqs> -- delivery of JSON-encoded message to an Amazon SQS queue
+
+=item *
+
+C<application> -- delivery of JSON-encoded message to an EndpointArn
+for a mobile app and device.
+
+=item *
+
+C<lambda> -- delivery of JSON-encoded message to an AWS Lambda
+function.
 
 =back
 

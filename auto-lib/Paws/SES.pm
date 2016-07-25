@@ -178,6 +178,11 @@ package Paws::SES;
     my $call_object = $self->new_with_coercions('Paws::SES::SetIdentityFeedbackForwardingEnabled', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SetIdentityHeadersInNotificationsEnabled {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SES::SetIdentityHeadersInNotificationsEnabled', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SetIdentityMailFromDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SES::SetIdentityMailFromDomain', @_);
@@ -239,7 +244,7 @@ package Paws::SES;
   }
 
 
-  sub operations { qw/CloneReceiptRuleSet CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendEmail SendRawEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition UpdateReceiptRule VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
+  sub operations { qw/CloneReceiptRuleSet CreateReceiptFilter CreateReceiptRule CreateReceiptRuleSet DeleteIdentity DeleteIdentityPolicy DeleteReceiptFilter DeleteReceiptRule DeleteReceiptRuleSet DeleteVerifiedEmailAddress DescribeActiveReceiptRuleSet DescribeReceiptRule DescribeReceiptRuleSet GetIdentityDkimAttributes GetIdentityMailFromDomainAttributes GetIdentityNotificationAttributes GetIdentityPolicies GetIdentityVerificationAttributes GetSendQuota GetSendStatistics ListIdentities ListIdentityPolicies ListReceiptFilters ListReceiptRuleSets ListVerifiedEmailAddresses PutIdentityPolicy ReorderReceiptRuleSet SendBounce SendEmail SendRawEmail SetActiveReceiptRuleSet SetIdentityDkimEnabled SetIdentityFeedbackForwardingEnabled SetIdentityHeadersInNotificationsEnabled SetIdentityMailFromDomain SetIdentityNotificationTopic SetReceiptRulePosition UpdateReceiptRule VerifyDomainDkim VerifyDomainIdentity VerifyEmailAddress VerifyEmailIdentity / }
 
 1;
 
@@ -342,8 +347,8 @@ Each argument is described in detail in: L<Paws::SES::DeleteIdentity>
 
 Returns: a L<Paws::SES::DeleteIdentityResponse> instance
 
-  Deletes the specified identity (email address or domain) from the list
-of verified identities.
+  Deletes the specified identity (an email address or a domain) from the
+list of verified identities.
 
 This action is throttled at one request per second.
 
@@ -355,8 +360,8 @@ Each argument is described in detail in: L<Paws::SES::DeleteIdentityPolicy>
 Returns: a L<Paws::SES::DeleteIdentityPolicyResponse> instance
 
   Deletes the specified sending authorization policy for the given
-identity (email address or domain). This API returns successfully even
-if a policy with the specified name does not exist.
+identity (an email address or a domain). This API returns successfully
+even if a policy with the specified name does not exist.
 
 This API is for the identity owner only. If you have not verified the
 identity, this API will return an error.
@@ -488,15 +493,20 @@ following information for each:
 
 =over
 
-=item * Whether Easy DKIM signing is enabled or disabled.
+=item *
 
-=item * A set of DKIM tokens that represent the identity. If the
-identity is an email address, the tokens represent the domain of that
-address.
+Whether Easy DKIM signing is enabled or disabled.
 
-=item * Whether Amazon SES has successfully verified the DKIM tokens
-published in the domain's DNS. This information is only returned for
-domain name identities, not for email addresses.
+=item *
+
+A set of DKIM tokens that represent the identity. If the identity is an
+email address, the tokens represent the domain of that address.
+
+=item *
+
+Whether Amazon SES has successfully verified the DKIM tokens published
+in the domain's DNS. This information is only returned for domain name
+identities, not for email addresses.
 
 =back
 
@@ -543,9 +553,9 @@ Each argument is described in detail in: L<Paws::SES::GetIdentityPolicies>
 Returns: a L<Paws::SES::GetIdentityPoliciesResponse> instance
 
   Returns the requested sending authorization policies for the given
-identity (email address or domain). The policies are returned as a map
-of policy names to policy contents. You can retrieve a maximum of 20
-policies at a time.
+identity (an email address or a domain). The policies are returned as a
+map of policy names to policy contents. You can retrieve a maximum of
+20 policies at a time.
 
 This API is for the identity owner only. If you have not verified the
 identity, this API will return an error.
@@ -604,7 +614,7 @@ Each argument is described in detail in: L<Paws::SES::ListIdentities>
 Returns: a L<Paws::SES::ListIdentitiesResponse> instance
 
   Returns a list containing all of the identities (email addresses and
-domains) for a specific AWS Account, regardless of verification status.
+domains) for your AWS account, regardless of verification status.
 
 This action is throttled at one request per second.
 
@@ -616,8 +626,8 @@ Each argument is described in detail in: L<Paws::SES::ListIdentityPolicies>
 Returns: a L<Paws::SES::ListIdentityPoliciesResponse> instance
 
   Returns a list of sending authorization policies that are attached to
-the given identity (email address or domain). This API returns only a
-list. If you want the actual policy content, you can use
+the given identity (an email address or a domain). This API returns
+only a list. If you want the actual policy content, you can use
 C<GetIdentityPolicies>.
 
 This API is for the identity owner only. If you have not verified the
@@ -636,7 +646,7 @@ Each argument is described in detail in: L<Paws::SES::ListReceiptFilters>
 
 Returns: a L<Paws::SES::ListReceiptFiltersResponse> instance
 
-  Lists the IP address filters associated with your account.
+  Lists the IP address filters associated with your AWS account.
 
 For information about managing IP address filters, see the Amazon SES
 Developer Guide.
@@ -684,7 +694,7 @@ Each argument is described in detail in: L<Paws::SES::PutIdentityPolicy>
 Returns: a L<Paws::SES::PutIdentityPolicyResponse> instance
 
   Adds or updates a sending authorization policy for the specified
-identity (email address or domain).
+identity (an email address or a domain).
 
 This API is for the identity owner only. If you have not verified the
 identity, this API will return an error.
@@ -746,25 +756,32 @@ There are several important points to know about C<SendEmail>:
 
 =over
 
-=item * You can only send email from verified email addresses and
-domains; otherwise, you will get an "Email address not verified" error.
-If your account is still in the Amazon SES sandbox, you must also
-verify every recipient email address except for the recipients provided
-by the Amazon SES mailbox simulator. For more information, go to the
-Amazon SES Developer Guide.
+=item *
 
-=item * The total size of the message cannot exceed 10 MB. This
-includes any attachments that are part of the message.
+You can only send email from verified email addresses and domains;
+otherwise, you will get an "Email address not verified" error. If your
+account is still in the Amazon SES sandbox, you must also verify every
+recipient email address except for the recipients provided by the
+Amazon SES mailbox simulator. For more information, go to the Amazon
+SES Developer Guide.
 
-=item * Amazon SES has a limit on the total number of recipients per
-message. The combined number of To:, CC: and BCC: email addresses
-cannot exceed 50. If you need to send an email message to a larger
-audience, you can divide your recipient list into groups of 50 or
-fewer, and then call Amazon SES repeatedly to send the message to each
-group.
+=item *
 
-=item * For every message that you send, the total number of recipients
-(To:, CC: and BCC:) is counted against your sending quota - the maximum
+The total size of the message cannot exceed 10 MB. This includes any
+attachments that are part of the message.
+
+=item *
+
+Amazon SES has a limit on the total number of recipients per message.
+The combined number of To:, CC: and BCC: email addresses cannot exceed
+50. If you need to send an email message to a larger audience, you can
+divide your recipient list into groups of 50 or fewer, and then call
+Amazon SES repeatedly to send the message to each group.
+
+=item *
+
+For every message that you send, the total number of recipients (To:,
+CC: and BCC:) is counted against your sending quota - the maximum
 number of emails you can send in a 24-hour period. For information
 about your sending quota, go to the Amazon SES Developer Guide.
 
@@ -787,59 +804,77 @@ There are several important points to know about C<SendRawEmail>:
 
 =over
 
-=item * You can only send email from verified email addresses and
-domains; otherwise, you will get an "Email address not verified" error.
-If your account is still in the Amazon SES sandbox, you must also
-verify every recipient email address except for the recipients provided
-by the Amazon SES mailbox simulator. For more information, go to the
-Amazon SES Developer Guide.
+=item *
 
-=item * The total size of the message cannot exceed 10 MB. This
-includes any attachments that are part of the message.
+You can only send email from verified email addresses and domains;
+otherwise, you will get an "Email address not verified" error. If your
+account is still in the Amazon SES sandbox, you must also verify every
+recipient email address except for the recipients provided by the
+Amazon SES mailbox simulator. For more information, go to the Amazon
+SES Developer Guide.
 
-=item * Amazon SES has a limit on the total number of recipients per
-message. The combined number of To:, CC: and BCC: email addresses
-cannot exceed 50. If you need to send an email message to a larger
-audience, you can divide your recipient list into groups of 50 or
-fewer, and then call Amazon SES repeatedly to send the message to each
-group.
+=item *
 
-=item * The To:, CC:, and BCC: headers in the raw message can contain a
-group list. Note that each recipient in a group list counts towards the
+The total size of the message cannot exceed 10 MB. This includes any
+attachments that are part of the message.
+
+=item *
+
+Amazon SES has a limit on the total number of recipients per message.
+The combined number of To:, CC: and BCC: email addresses cannot exceed
+50. If you need to send an email message to a larger audience, you can
+divide your recipient list into groups of 50 or fewer, and then call
+Amazon SES repeatedly to send the message to each group.
+
+=item *
+
+The To:, CC:, and BCC: headers in the raw message can contain a group
+list. Note that each recipient in a group list counts towards the
 50-recipient limit.
 
-=item * For every message that you send, the total number of recipients
-(To:, CC: and BCC:) is counted against your sending quota - the maximum
+=item *
+
+For every message that you send, the total number of recipients (To:,
+CC: and BCC:) is counted against your sending quota - the maximum
 number of emails you can send in a 24-hour period. For information
 about your sending quota, go to the Amazon SES Developer Guide.
 
-=item * If you are using sending authorization to send on behalf of
-another user, C<SendRawEmail> enables you to specify the cross-account
-identity for the email's "Source," "From," and "Return-Path" parameters
-in one of two ways: you can pass optional parameters C<SourceArn>,
-C<FromArn>, and/or C<ReturnPathArn> to the API, or you can include the
-following X-headers in the header of your raw email:
+=item *
+
+If you are using sending authorization to send on behalf of another
+user, C<SendRawEmail> enables you to specify the cross-account identity
+for the email's "Source," "From," and "Return-Path" parameters in one
+of two ways: you can pass optional parameters C<SourceArn>, C<FromArn>,
+and/or C<ReturnPathArn> to the API, or you can include the following
+X-headers in the header of your raw email:
 
 =over
 
-=item * C<X-SES-SOURCE-ARN>
+=item *
 
-=item * C<X-SES-FROM-ARN>
+C<X-SES-SOURCE-ARN>
 
-=item * C<X-SES-RETURN-PATH-ARN>
+=item *
+
+C<X-SES-FROM-ARN>
+
+=item *
+
+C<X-SES-RETURN-PATH-ARN>
 
 =back
 
 Do not include these X-headers in the DKIM signature, because they are
-removed by Amazon SES before sending the email. For the most common
-sending authorization use case, we recommend that you specify the
-C<SourceIdentityArn> and do not specify either the C<FromIdentityArn>
-or C<ReturnPathIdentityArn>. (The same note applies to the
-corresponding X-headers.) If you only specify the C<SourceIdentityArn>,
-Amazon SES will simply set the "From" address and the "Return Path"
-address to the identity specified in C<SourceIdentityArn>. For more
-information about sending authorization, see the Amazon SES Developer
-Guide.
+removed by Amazon SES before sending the email.
+
+For the most common sending authorization use case, we recommend that
+you specify the C<SourceIdentityArn> and do not specify either the
+C<FromIdentityArn> or C<ReturnPathIdentityArn>. (The same note applies
+to the corresponding X-headers.) If you only specify the
+C<SourceIdentityArn>, Amazon SES will simply set the "From" address and
+the "Return Path" address to the identity specified in
+C<SourceIdentityArn>. For more information about sending authorization,
+see the Amazon SES Developer Guide.
 
 =back
 
@@ -872,12 +907,16 @@ Returns: a L<Paws::SES::SetIdentityDkimEnabledResponse> instance
 
 =over
 
-=item * If Easy DKIM signing is enabled for a domain name identity
-(e.g., C<example.com>), then Amazon SES will DKIM-sign all email sent
-by addresses under that domain name (e.g., C<user@example.com>).
+=item *
 
-=item * If Easy DKIM signing is enabled for an email address, then
-Amazon SES will DKIM-sign all email sent by that email address.
+If Easy DKIM signing is enabled for a domain name identity (e.g.,
+C<example.com>), then Amazon SES will DKIM-sign all email sent by
+addresses under that domain name (e.g., C<user@example.com>).
+
+=item *
+
+If Easy DKIM signing is enabled for an email address, then Amazon SES
+will DKIM-sign all email sent by that email address.
 
 =back
 
@@ -898,7 +937,7 @@ Each argument is described in detail in: L<Paws::SES::SetIdentityFeedbackForward
 
 Returns: a L<Paws::SES::SetIdentityFeedbackForwardingEnabledResponse> instance
 
-  Given an identity (email address or domain), enables or disables
+  Given an identity (an email address or a domain), enables or disables
 whether Amazon SES forwards bounce and complaint notifications as
 email. Feedback forwarding can only be disabled when Amazon Simple
 Notification Service (Amazon SNS) topics are specified for both bounces
@@ -913,6 +952,22 @@ For more information about using notifications with Amazon SES, see the
 Amazon SES Developer Guide.
 
 
+=head2 SetIdentityHeadersInNotificationsEnabled(Enabled => Bool, Identity => Str, NotificationType => Str)
+
+Each argument is described in detail in: L<Paws::SES::SetIdentityHeadersInNotificationsEnabled>
+
+Returns: a L<Paws::SES::SetIdentityHeadersInNotificationsEnabledResponse> instance
+
+  Given an identity (an email address or a domain), sets whether Amazon
+SES includes the original email headers in the Amazon Simple
+Notification Service (Amazon SNS) notifications of a specified type.
+
+This action is throttled at one request per second.
+
+For more information about using notifications with Amazon SES, see the
+Amazon SES Developer Guide.
+
+
 =head2 SetIdentityMailFromDomain(Identity => Str, [BehaviorOnMXFailure => Str, MailFromDomain => Str])
 
 Each argument is described in detail in: L<Paws::SES::SetIdentityMailFromDomain>
@@ -920,7 +975,7 @@ Each argument is described in detail in: L<Paws::SES::SetIdentityMailFromDomain>
 Returns: a L<Paws::SES::SetIdentityMailFromDomainResponse> instance
 
   Enables or disables the custom MAIL FROM domain setup for a verified
-identity (email address or domain).
+identity (an email address or a domain).
 
 To send emails using the specified MAIL FROM domain, you must add an MX
 record to your MAIL FROM domain's DNS settings. If you want your emails
@@ -937,8 +992,8 @@ Each argument is described in detail in: L<Paws::SES::SetIdentityNotificationTop
 
 Returns: a L<Paws::SES::SetIdentityNotificationTopicResponse> instance
 
-  Given an identity (email address or domain), sets the Amazon Simple
-Notification Service (Amazon SNS) topic to which Amazon SES will
+  Given an identity (an email address or a domain), sets the Amazon
+Simple Notification Service (Amazon SNS) topic to which Amazon SES will
 publish bounce, complaint, and/or delivery notifications for emails
 sent with that identity as the C<Source>.
 

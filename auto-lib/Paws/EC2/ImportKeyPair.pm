@@ -52,8 +52,8 @@ A unique name for the key pair.
 
 =head2 B<REQUIRED> PublicKeyMaterial => Str
 
-The public key. You must base64 encode the public key material before
-sending it to AWS.
+The public key. For API calls, the text must be base64-encoded. For
+command line tools, base64 encoding is performed for you.
 
 
 

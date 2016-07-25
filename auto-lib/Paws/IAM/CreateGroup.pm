@@ -38,15 +38,25 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the group to create. Do not include the path in this value.
 
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
+
 
 
 =head2 Path => Str
 
 The path to the group. For more information about paths, see IAM
-Identifiers in the I<Using IAM> guide.
+Identifiers in the I<IAM User Guide>.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
+
+The regex pattern for this parameter is a string of characters
+consisting of either a forward slash (/) by itself or a string that
+must begin and end with forward slashes, containing any ASCII character
+from the ! (\u0021) thru the DEL character (\u007F), including most
+punctuation characters, digits, and upper and lowercased letters.
 
 
 

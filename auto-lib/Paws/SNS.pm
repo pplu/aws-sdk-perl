@@ -18,6 +18,11 @@ package Paws::SNS;
     my $call_object = $self->new_with_coercions('Paws::SNS::AddPermission', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CheckIfPhoneNumberIsOptedOut {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SNS::CheckIfPhoneNumberIsOptedOut', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ConfirmSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SNS::ConfirmSubscription', @_);
@@ -63,6 +68,11 @@ package Paws::SNS;
     my $call_object = $self->new_with_coercions('Paws::SNS::GetPlatformApplicationAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSMSAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SNS::GetSMSAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetSubscriptionAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SNS::GetSubscriptionAttributes', @_);
@@ -76,6 +86,11 @@ package Paws::SNS;
   sub ListEndpointsByPlatformApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SNS::ListEndpointsByPlatformApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListPhoneNumbersOptedOut {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SNS::ListPhoneNumbersOptedOut', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListPlatformApplications {
@@ -98,6 +113,11 @@ package Paws::SNS;
     my $call_object = $self->new_with_coercions('Paws::SNS::ListTopics', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub OptInPhoneNumber {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SNS::OptInPhoneNumber', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub Publish {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SNS::Publish', @_);
@@ -116,6 +136,11 @@ package Paws::SNS;
   sub SetPlatformApplicationAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SNS::SetPlatformApplicationAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SetSMSAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SNS::SetSMSAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SetSubscriptionAttributes {
@@ -231,7 +256,7 @@ package Paws::SNS;
   }
 
 
-  sub operations { qw/AddPermission ConfirmSubscription CreatePlatformApplication CreatePlatformEndpoint CreateTopic DeleteEndpoint DeletePlatformApplication DeleteTopic GetEndpointAttributes GetPlatformApplicationAttributes GetSubscriptionAttributes GetTopicAttributes ListEndpointsByPlatformApplication ListPlatformApplications ListSubscriptions ListSubscriptionsByTopic ListTopics Publish RemovePermission SetEndpointAttributes SetPlatformApplicationAttributes SetSubscriptionAttributes SetTopicAttributes Subscribe Unsubscribe / }
+  sub operations { qw/AddPermission CheckIfPhoneNumberIsOptedOut ConfirmSubscription CreatePlatformApplication CreatePlatformEndpoint CreateTopic DeleteEndpoint DeletePlatformApplication DeleteTopic GetEndpointAttributes GetPlatformApplicationAttributes GetSMSAttributes GetSubscriptionAttributes GetTopicAttributes ListEndpointsByPlatformApplication ListPhoneNumbersOptedOut ListPlatformApplications ListSubscriptions ListSubscriptionsByTopic ListTopics OptInPhoneNumber Publish RemovePermission SetEndpointAttributes SetPlatformApplicationAttributes SetSMSAttributes SetSubscriptionAttributes SetTopicAttributes Subscribe Unsubscribe / }
 
 1;
 
@@ -287,6 +312,20 @@ Returns: nothing
 for the specified AWS accounts to the specified actions.
 
 
+=head2 CheckIfPhoneNumberIsOptedOut(PhoneNumber => Str)
+
+Each argument is described in detail in: L<Paws::SNS::CheckIfPhoneNumberIsOptedOut>
+
+Returns: a L<Paws::SNS::CheckIfPhoneNumberIsOptedOutResponse> instance
+
+  Accepts a phone number and indicates whether the phone holder has opted
+out of receiving SMS messages from your account. You cannot send SMS
+messages to a number that is opted out.
+
+To resume sending messages, you can opt in the number by using the
+C<OptInPhoneNumber> action.
+
+
 =head2 ConfirmSubscription(Token => Str, TopicArn => Str, [AuthenticateOnUnsubscribe => Str])
 
 Each argument is described in detail in: L<Paws::SNS::ConfirmSubscription>
@@ -314,13 +353,24 @@ C<CreatePlatformApplication> action. The PlatformPrincipal is received
 from the notification service. For APNS/APNS_SANDBOX, PlatformPrincipal
 is "SSL certificate". For GCM, PlatformPrincipal is not applicable. For
 ADM, PlatformPrincipal is "client id". The PlatformCredential is also
-received from the notification service. For APNS/APNS_SANDBOX,
-PlatformCredential is "private key". For GCM, PlatformCredential is
-"API key". For ADM, PlatformCredential is "client secret". The
-PlatformApplicationArn that is returned when using
+received from the notification service. For WNS, PlatformPrincipal is
+"Package Security Identifier". For MPNS, PlatformPrincipal is "TLS
+certificate". For Baidu, PlatformPrincipal is "API key".
+
+For APNS/APNS_SANDBOX, PlatformCredential is "private key". For GCM,
+PlatformCredential is "API key". For ADM, PlatformCredential is "client
+secret". For WNS, PlatformCredential is "secret key". For MPNS,
+PlatformCredential is "private key". For Baidu, PlatformCredential is
+"secret key". The PlatformApplicationArn that is returned when using
 C<CreatePlatformApplication> is then used as an attribute for the
 C<CreatePlatformEndpoint> action. For more information, see Using
-Amazon SNS Mobile Push Notifications.
+Amazon SNS Mobile Push Notifications. For more information about
+obtaining the PlatformPrincipal and PlatformCredential for each of the
+supported push notification services, see Getting Started with Apple
+Push Notification Service, Getting Started with Amazon Device
+Messaging, Getting Started with Baidu Cloud Push, Getting Started with
+Google Cloud Messaging for Android, Getting Started with MPNS, or
+Getting Started with WNS.
 
 
 =head2 CreatePlatformEndpoint(PlatformApplicationArn => Str, Token => Str, [Attributes => L<Paws::SNS::MapStringToString>, CustomUserData => Str])
@@ -354,7 +404,7 @@ Each argument is described in detail in: L<Paws::SNS::CreateTopic>
 Returns: a L<Paws::SNS::CreateTopicResponse> instance
 
   Creates a topic to which notifications can be published. Users can
-create at most 3000 topics. For more information, see
+create at most 100,000 topics. For more information, see
 http://aws.amazon.com/sns. This action is idempotent, so if the
 requester already owns a topic with the specified name, that topic's
 ARN is returned without creating a new topic.
@@ -366,8 +416,12 @@ Each argument is described in detail in: L<Paws::SNS::DeleteEndpoint>
 
 Returns: nothing
 
-  Deletes the endpoint from Amazon SNS. This action is idempotent. For
-more information, see Using Amazon SNS Mobile Push Notifications.
+  Deletes the endpoint for a device and mobile app from Amazon SNS. This
+action is idempotent. For more information, see Using Amazon SNS Mobile
+Push Notifications.
+
+When you delete an endpoint that is also subscribed to a topic, then
+you must also unsubscribe the endpoint from the topic.
 
 
 =head2 DeletePlatformApplication(PlatformApplicationArn => Str)
@@ -415,6 +469,17 @@ supported push notification services, such as APNS and GCM. For more
 information, see Using Amazon SNS Mobile Push Notifications.
 
 
+=head2 GetSMSAttributes([Attributes => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::SNS::GetSMSAttributes>
+
+Returns: a L<Paws::SNS::GetSMSAttributesResponse> instance
+
+  Returns the settings for sending SMS messages from your account.
+
+These settings are set with the C<SetSMSAttributes> action.
+
+
 =head2 GetSubscriptionAttributes(SubscriptionArn => Str)
 
 Each argument is described in detail in: L<Paws::SNS::GetSubscriptionAttributes>
@@ -450,6 +515,24 @@ C<ListEndpointsByPlatformApplication> again using the NextToken string
 received from the previous call. When there are no more records to
 return, NextToken will be null. For more information, see Using Amazon
 SNS Mobile Push Notifications.
+
+
+=head2 ListPhoneNumbersOptedOut([NextToken => Str])
+
+Each argument is described in detail in: L<Paws::SNS::ListPhoneNumbersOptedOut>
+
+Returns: a L<Paws::SNS::ListPhoneNumbersOptedOutResponse> instance
+
+  Returns a list of phone numbers that are opted out, meaning you cannot
+send SMS messages to them.
+
+The results for C<ListPhoneNumbersOptedOut> are paginated, and each
+page returns up to 100 phone numbers. If additional phone numbers are
+available after the first page of results, then a C<NextToken> string
+will be returned. To receive the next page, you call
+C<ListPhoneNumbersOptedOut> again using the C<NextToken> string
+received from the previous call. When there are no more records to
+return, C<NextToken> will be null.
 
 
 =head2 ListPlatformApplications([NextToken => Str])
@@ -506,7 +589,19 @@ also returned. Use the C<NextToken> parameter in a new C<ListTopics>
 call to get further results.
 
 
-=head2 Publish(Message => Str, [MessageAttributes => L<Paws::SNS::MessageAttributeMap>, MessageStructure => Str, Subject => Str, TargetArn => Str, TopicArn => Str])
+=head2 OptInPhoneNumber(PhoneNumber => Str)
+
+Each argument is described in detail in: L<Paws::SNS::OptInPhoneNumber>
+
+Returns: a L<Paws::SNS::OptInPhoneNumberResponse> instance
+
+  Use this request to opt in a phone number that is opted out, which
+enables you to resume sending SMS messages to the number.
+
+You can opt in a phone number only once every 30 days.
+
+
+=head2 Publish(Message => Str, [MessageAttributes => L<Paws::SNS::MessageAttributeMap>, MessageStructure => Str, PhoneNumber => Str, Subject => Str, TargetArn => Str, TopicArn => Str])
 
 Each argument is described in detail in: L<Paws::SNS::Publish>
 
@@ -516,13 +611,17 @@ Returns: a L<Paws::SNS::PublishResponse> instance
 C<messageId> is returned, the message has been saved and Amazon SNS
 will attempt to deliver it to the topic's subscribers shortly. The
 format of the outgoing message to each subscribed endpoint depends on
-the notification protocol selected.
+the notification protocol.
 
 To use the C<Publish> action for sending a message to a mobile
 endpoint, such as an app on a Kindle device or mobile phone, you must
-specify the EndpointArn. The EndpointArn is returned when making a call
-with the C<CreatePlatformEndpoint> action. The second example below
-shows a request and response for publishing to a mobile endpoint.
+specify the EndpointArn for the TargetArn parameter. The EndpointArn is
+returned when making a call with the C<CreatePlatformEndpoint> action.
+The second example below shows a request and response for publishing to
+a mobile endpoint.
+
+For more information about formatting messages, see Send Custom
+Platform-Specific Payloads in Messages to Mobile Devices.
 
 
 =head2 RemovePermission(Label => Str, TopicArn => Str)
@@ -553,7 +652,24 @@ Returns: nothing
 
   Sets the attributes of the platform application object for the
 supported push notification services, such as APNS and GCM. For more
-information, see Using Amazon SNS Mobile Push Notifications.
+information, see Using Amazon SNS Mobile Push Notifications. For
+information on configuring attributes for message delivery status, see
+Using Amazon SNS Application Attributes for Message Delivery Status.
+
+
+=head2 SetSMSAttributes(Attributes => L<Paws::SNS::MapStringToString>)
+
+Each argument is described in detail in: L<Paws::SNS::SetSMSAttributes>
+
+Returns: a L<Paws::SNS::SetSMSAttributesResponse> instance
+
+  Use this request to set the default settings for sending SMS messages
+and receiving daily SMS usage reports.
+
+You can override some of these settings for a single message when you
+use the C<Publish> action with the C<MessageAttributes.entry.N>
+parameter. For more information, see Sending an SMS Message in the
+I<Amazon SNS Developer Guide>.
 
 
 =head2 SetSubscriptionAttributes(AttributeName => Str, SubscriptionArn => Str, [AttributeValue => Str])

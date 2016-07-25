@@ -117,14 +117,14 @@ information includes the identity of the user, the start time of the
 AWS API call, the source IP address, the request parameters, and the
 response elements returned by the service.
 
-As an alternative to using the API, you can use one of the AWS SDKs,
-which consist of libraries and sample code for various programming
-languages and platforms (Java, Ruby, .NET, iOS, Android, etc.). The
-SDKs provide a convenient way to create programmatic access to
-AWSCloudTrail. For example, the SDKs take care of cryptographically
-signing requests, managing errors, and retrying requests automatically.
-For information about the AWS SDKs, including how to download and
-install them, see the Tools for Amazon Web Services page.
+As an alternative to the API, you can use one of the AWS SDKs, which
+consist of libraries and sample code for various programming languages
+and platforms (Java, Ruby, .NET, iOS, Android, etc.). The SDKs provide
+a convenient way to create programmatic access to AWSCloudTrail. For
+example, the SDKs take care of cryptographically signing requests,
+managing errors, and retrying requests automatically. For information
+about the AWS SDKs, including how to download and install them, see the
+Tools for Amazon Web Services page.
 
 See the CloudTrail User Guide for information about the data that is
 included with each AWS API call listed in the log files.
@@ -214,9 +214,7 @@ Each argument is described in detail in: L<Paws::CloudTrail::ListTags>
 
 Returns: a L<Paws::CloudTrail::ListTagsResponse> instance
 
-  Lists the tags for the specified trail or trails in the current region.
-
-Lists the tags for the trail in the current region.
+  Lists the tags for the trail in the current region.
 
 
 =head2 LookupEvents([EndTime => Str, LookupAttributes => ArrayRef[L<Paws::CloudTrail::LookupAttribute>], MaxResults => Int, NextToken => Str, StartTime => Str])
@@ -238,9 +236,11 @@ response includes a token that you can use to get the next page of
 results.
 
 The rate of lookup requests is limited to one per second per account.
-If this limit is exceeded, a throttling error occurs. Events that
-occurred during the selected time range will not be available for
-lookup if CloudTrail logging was not enabled when the events occurred.
+If this limit is exceeded, a throttling error occurs.
+
+Events that occurred during the selected time range will not be
+available for lookup if CloudTrail logging was not enabled when the
+events occurred.
 
 
 =head2 RemoveTags(ResourceId => Str, [TagsList => ArrayRef[L<Paws::CloudTrail::Tag>]])

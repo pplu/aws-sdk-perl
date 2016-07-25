@@ -69,7 +69,7 @@ Reference>.
 
 A list of grant tokens.
 
-For more information, go to Grant Tokens in the I<AWS Key Management
+For more information, see Grant Tokens in the I<AWS Key Management
 Service Developer Guide>.
 
 
@@ -84,9 +84,13 @@ Resource Name (ARN) of the key. Examples:
 
 =over
 
-=item * Globally unique key ID: 12345678-1234-1234-1234-123456789012
+=item *
 
-=item * Key ARN:
+Globally unique key ID: 12345678-1234-1234-1234-123456789012
+
+=item *
+
+Key ARN:
 arn:aws:kms:us-west-2:123456789012:key/12345678-1234-1234-1234-123456789012
 
 =back
@@ -120,21 +124,41 @@ combination of one or more of the following values:
 
 =over
 
-=item * Decrypt
+=item *
 
-=item * Encrypt
+Decrypt
 
-=item * GenerateDataKey
+=item *
 
-=item * GenerateDataKeyWithoutPlaintext
+Encrypt
 
-=item * ReEncryptFrom
+=item *
 
-=item * ReEncryptTo
+GenerateDataKey
 
-=item * CreateGrant
+=item *
 
-=item * RetireGrant
+GenerateDataKeyWithoutPlaintext
+
+=item *
+
+ReEncryptFrom
+
+=item *
+
+ReEncryptTo
+
+=item *
+
+CreateGrant
+
+=item *
+
+RetireGrant
+
+=item *
+
+DescribeKey
 
 =back
 

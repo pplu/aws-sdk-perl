@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 A complex type that contains information about the request to create a
 hosted zone. This includes an ID that you use when you call the
-GetChange action to get the current status of the change request.
+C<GetChange> action to get the current status of the change request.
 
 
 

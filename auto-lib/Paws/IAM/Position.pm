@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IAM::Positi
 Contains the row and column of a location of a C<Statement> element in
 a policy document.
 
-This data type is used as a member of the C<Statement> type.
+This data type is used as a member of the C< Statement > type.
 
 =head1 ATTRIBUTES
 

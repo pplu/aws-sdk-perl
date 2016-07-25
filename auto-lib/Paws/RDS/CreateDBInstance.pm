@@ -138,10 +138,13 @@ Constraints:
 
 =over
 
-=item * Must be a value from 0 to 35
+=item *
 
-=item * Cannot be set to 0 if the DB instance is a source to Read
-Replicas
+Must be a value from 0 to 35
+
+=item *
+
+Cannot be set to 0 if the DB instance is a source to Read Replicas
 
 =back
 
@@ -194,12 +197,18 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens (1
-to 15 for SQL Server).
+=item *
 
-=item * First character must be a letter.
+Must contain from 1 to 63 alphanumeric characters or hyphens (1 to 15
+for SQL Server).
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -224,9 +233,13 @@ Constraints:
 
 =over
 
-=item * Must contain 1 to 64 alphanumeric characters
+=item *
 
-=item * Cannot be a word reserved by the specified database engine
+Must contain 1 to 64 alphanumeric characters
+
+=item *
+
+Cannot be a word reserved by the specified database engine
 
 =back
 
@@ -240,9 +253,13 @@ Constraints:
 
 =over
 
-=item * Must contain 1 to 64 alphanumeric characters
+=item *
 
-=item * Cannot be a word reserved by the specified database engine
+Must contain 1 to 64 alphanumeric characters
+
+=item *
+
+Cannot be a word reserved by the specified database engine
 
 =back
 
@@ -256,12 +273,18 @@ Constraints:
 
 =over
 
-=item * Must contain 1 to 63 alphanumeric characters
+=item *
 
-=item * Must begin with a letter or an underscore. Subsequent
-characters can be letters, underscores, or digits (0-9).
+Must contain 1 to 63 alphanumeric characters
 
-=item * Cannot be a word reserved by the specified database engine
+=item *
+
+Must begin with a letter or an underscore. Subsequent characters can be
+letters, underscores, or digits (0-9).
+
+=item *
+
+Cannot be a word reserved by the specified database engine
 
 =back
 
@@ -275,7 +298,9 @@ Constraints:
 
 =over
 
-=item * Cannot be longer than 8 characters
+=item *
+
+Cannot be longer than 8 characters
 
 =back
 
@@ -293,9 +318,13 @@ Constraints:
 
 =over
 
-=item * Must contain 1 to 64 alphanumeric characters
+=item *
 
-=item * Cannot be a word reserved by the specified database engine
+Must contain 1 to 64 alphanumeric characters
+
+=item *
+
+Cannot be a word reserved by the specified database engine
 
 =back
 
@@ -312,11 +341,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters
+=item *
 
-=item * First character must be a letter
+Must be 1 to 255 alphanumeric characters
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -372,25 +407,15 @@ The following are the database engines and major and minor versions
 that are available with Amazon RDS. Not every database engine is
 available for every AWS region.
 
-B<MySQL>
+B<Amazon Aurora>
 
 =over
 
-=item * B<Version 5.1 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
+=item *
 
-=item * B<Version 5.5 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
-
-=item * B<Version 5.5 (Available in all regions):> C< 5.5.40b | 5.5.41
-| 5.5.42>
-
-=item * B<Version 5.6 (Available in all regions):> C< 5.6.19a | 5.6.19b
-| 5.6.21 | 5.6.21b | 5.6.22 | 5.6.23 | 5.6.27>
-
-=item * B<Version 5.7 (Available in all regions):> C< 5.7.10>
+B<Version 5.6 (only available in AWS regions ap-northeast-1,
+ap-northeast-2, ap-south-1, ap-southeast-2, eu-west-1, us-east-1,
+us-west-2):> C< 5.6.10a>
 
 =back
 
@@ -398,75 +423,14 @@ B<MariaDB>
 
 =over
 
-=item * B<Version 10.0 (Available in all regions except AWS GovCloud
-(US) Region (us-gov-west-1)):> C< 10.0.17>
+=item *
 
-=back
+B<Version 10.1 (available in all AWS regions except us-gov-west-1):> C<
+10.1.14>
 
-B<Oracle Database Enterprise Edition (oracle-ee)>
+=item *
 
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 |
-11.2.0.2.v6 | 11.2.0.2.v7>
-
-=item * B<Version 11.2 (Available in all regions):> C< 11.2.0.3.v1 |
-11.2.0.3.v2 | 11.2.0.3.v3 | 11.2.0.4.v1 | 11.2.0.4.v3 | 11.2.0.4.v4>
-
-=item * B<Version 12.1 (Available in all regions):> C<12.1.0.1.v1 |
-12.1.0.1.v2 | 12.1.0.2.v1>
-
-=back
-
-B<Oracle Database Standard Edition (oracle-se)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
-11.2.0.2.v7>
-
-=item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3 |
-11.2.0.4.v1 | 11.2.0.4.v3 | 11.2.0.4.v4>
-
-=item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C<12.1.0.1.v1 | 12.1.0.1.v2>
-
-=back
-
-B<Oracle Database Standard Edition One (oracle-se1)>
-
-=over
-
-=item * B<Version 11.2 (Only available in the following regions:
-us-west-1):> C< 11.2.0.2.v3 | 11.2.0.2.v4 | 11.2.0.2.v5 | 11.2.0.2.v6 |
-11.2.0.2.v7>
-
-=item * B<Version 11.2 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3 |
-11.2.0.4.v1 | 11.2.0.4.v3 | 11.2.0.4.v4>
-
-=item * B<Version 12.1 (Only available in the following regions:
-eu-central-1, us-west-1):> C< 12.1.0.1.v1 | 12.1.0.1.v2>
-
-=back
-
-B<PostgreSQL>
-
-=over
-
-=item * B<Version 9.3 (Only available in the following regions:
-ap-northeast-1, ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1,
-us-west-1, us-west-2):> C< 9.3.1 | 9.3.2>
-
-=item * B<Version 9.3 (Available in all regions):> C< 9.3.3 | 9.3.5 |
-9.3.6 | 9.3.9 | 9.3.10>
-
-=item * B<Version 9.4 (Available in all regions):> C< 9.4.1 | 9.4.4 |
-9.4.5>
+B<Version 10.0 (available in all AWS regions):> C< 10.0.17 | 10.0.24>
 
 =back
 
@@ -474,17 +438,15 @@ B<Microsoft SQL Server Enterprise Edition (sqlserver-ee)>
 
 =over
 
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.2789.0.v1>
+=item *
 
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.6000.34.v1>
+B<Version 11.00 (available in all AWS regions):> C< 11.00.2100.60.v1 |
+11.00.5058.0.v1 | 11.00.6020.0.v1>
 
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.2100.60.v1>
+=item *
 
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.5058.0.v1>
+B<Version 10.50 (available in all AWS regions):> C< 10.50.2789.0.v1 |
+10.50.6000.34.v1 | 10.50.6529.0.v1>
 
 =back
 
@@ -492,20 +454,19 @@ B<Microsoft SQL Server Express Edition (sqlserver-ex)>
 
 =over
 
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.2789.0.v1>
+=item *
 
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.6000.34.v1>
+B<Version 12.00 (available in all AWS regions):> C< 12.00.4422.0.v1>
 
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.2100.60.v1>
+=item *
 
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.5058.0.v1>
+B<Version 11.00 (available in all AWS regions):> C< 11.00.2100.60.v1 |
+11.00.5058.0.v1 | 11.00.6020.0.v1>
 
-=item * B<Version 12.00 (Available in all regions):> C<
-12.00.4422.0.v1>
+=item *
+
+B<Version 10.50 (available in all AWS regions):> C< 10.50.2789.0.v1 |
+10.50.6000.34.v1 | 10.50.6529.0.v1>
 
 =back
 
@@ -513,20 +474,19 @@ B<Microsoft SQL Server Standard Edition (sqlserver-se)>
 
 =over
 
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.2789.0.v1>
+=item *
 
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.6000.34.v1>
+B<Version 12.00 (available in all AWS regions):> C< 12.00.4422.0.v1>
 
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.2100.60.v1>
+=item *
 
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.5058.0.v1>
+B<Version 11.00 (available in all AWS regions):> C< 11.00.2100.60.v1 |
+11.00.5058.0.v1 | 11.00.6020.0.v1>
 
-=item * B<Version 12.00 (Available in all regions):> C<
-12.00.4422.0.v1>
+=item *
+
+B<Version 10.50 (available in all AWS regions):> C< 10.50.2789.0.v1 |
+10.50.6000.34.v1 | 10.50.6529.0.v1>
 
 =back
 
@@ -534,20 +494,269 @@ B<Microsoft SQL Server Web Edition (sqlserver-web)>
 
 =over
 
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.2789.0.v1>
+=item *
 
-=item * B<Version 10.50 (Available in all regions):> C<
-10.50.6000.34.v1>
+B<Version 12.00 (available in all AWS regions):> C< 12.00.4422.0.v1>
 
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.2100.60.v1>
+=item *
 
-=item * B<Version 11.00 (Available in all regions):> C<
-11.00.5058.0.v1>
+B<Version 11.00 (available in all AWS regions):> C< 11.00.2100.60.v1 |
+11.00.5058.0.v1 | 11.00.6020.0.v1>
 
-=item * B<Version 12.00 (Available in all regions):> C<
-12.00.4422.0.v1>
+=item *
+
+B<Version 10.50 (available in all AWS regions):> C< 10.50.2789.0.v1 |
+10.50.6000.34.v1 | 10.50.6529.0.v1>
+
+=back
+
+B<MySQL>
+
+=over
+
+=item *
+
+B<Version 5.7 (available in all AWS regions):> C< 5.7.10 | 5.7.11>
+
+=item *
+
+B<Version 5.6 (available in all AWS regions except ap-south-1,
+ap-northeast-2):> C< 5.6.19a | 5.6.19b | 5.6.21 | 5.6.21b | 5.6.22>
+
+=item *
+
+B<Version 5.6 (available in all AWS regions except ap-south-1):> C<
+5.6.23>
+
+=item *
+
+B<Version 5.6 (available in all AWS regions):> C< 5.6.27 | 5.6.29>
+
+=item *
+
+B<Version 5.5 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
+us-gov-west-1, us-west-1, us-west-2):> C< 5.5.40 | 5.5.40a>
+
+=item *
+
+B<Version 5.5 (available in all AWS regions except ap-south-1,
+ap-northeast-2):> C< 5.5.40b | 5.5.41>
+
+=item *
+
+B<Version 5.5 (available in all AWS regions except ap-south-1):> C<
+5.5.42>
+
+=item *
+
+B<Version 5.5 (available in all AWS regions):> C< 5.5.46>
+
+=item *
+
+B<Version 5.1 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
+us-gov-west-1, us-west-1, us-west-2):> C< 5.1.73a | 5.1.73b>
+
+=back
+
+B<Oracle Database Enterprise Edition (oracle-ee)>
+
+=over
+
+=item *
+
+B<Version 12.1 (available in all AWS regions except ap-south-1,
+ap-northeast-2):> C< 12.1.0.1.v1 | 12.1.0.1.v2>
+
+=item *
+
+B<Version 12.1 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
+us-east-1, us-west-1, us-west-2):> C< 12.1.0.1.v3 | 12.1.0.1.v4 |
+12.1.0.1.v5>
+
+=item *
+
+B<Version 12.1 (available in all AWS regions):> C< 12.1.0.2.v1>
+
+=item *
+
+B<Version 12.1 (available in all AWS regions except us-gov-west-1):> C<
+12.1.0.2.v2 | 12.1.0.2.v3 | 12.1.0.2.v4>
+
+=item *
+
+B<Version 11.2 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
+us-gov-west-1, us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 |
+11.2.0.2.v5 | 11.2.0.2.v6 | 11.2.0.2.v7>
+
+=item *
+
+B<Version 11.2 (available in all AWS regions except ap-south-1,
+ap-northeast-2):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3>
+
+=item *
+
+B<Version 11.2 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
+us-east-1, us-west-1, us-west-2):> C< 11.2.0.3.v4>
+
+=item *
+
+B<Version 11.2 (available in all AWS regions):> C< 11.2.0.4.v1 |
+11.2.0.4.v3 | 11.2.0.4.v4>
+
+=item *
+
+B<Version 11.2 (available in all AWS regions except us-gov-west-1):> C<
+11.2.0.4.v5 | 11.2.0.4.v6 | 11.2.0.4.v7 | 11.2.0.4.v8>
+
+=back
+
+B<Oracle Database Standard Edition (oracle-se)>
+
+=over
+
+=item *
+
+B<Version 12.1 (available in all AWS regions except ap-south-1,
+ap-northeast-2):> C< 12.1.0.1.v1 | 12.1.0.1.v2>
+
+=item *
+
+B<Version 12.1 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
+us-east-1, us-west-1, us-west-2):> C< 12.1.0.1.v3 | 12.1.0.1.v4 |
+12.1.0.1.v5>
+
+=item *
+
+B<Version 11.2 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
+us-gov-west-1, us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 |
+11.2.0.2.v5 | 11.2.0.2.v6 | 11.2.0.2.v7>
+
+=item *
+
+B<Version 11.2 (available in all AWS regions except ap-south-1,
+ap-northeast-2):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3>
+
+=item *
+
+B<Version 11.2 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
+us-east-1, us-west-1, us-west-2):> C< 11.2.0.3.v4>
+
+=item *
+
+B<Version 11.2 (available in all AWS regions):> C< 11.2.0.4.v1 |
+11.2.0.4.v3 | 11.2.0.4.v4>
+
+=item *
+
+B<Version 11.2 (available in all AWS regions except us-gov-west-1):> C<
+11.2.0.4.v5 | 11.2.0.4.v6 | 11.2.0.4.v7 | 11.2.0.4.v8>
+
+=back
+
+B<Oracle Database Standard Edition One (oracle-se1)>
+
+=over
+
+=item *
+
+B<Version 12.1 (available in all AWS regions except ap-south-1,
+ap-northeast-2):> C< 12.1.0.1.v1 | 12.1.0.1.v2>
+
+=item *
+
+B<Version 12.1 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
+us-east-1, us-west-1, us-west-2):> C< 12.1.0.1.v3 | 12.1.0.1.v4 |
+12.1.0.1.v5>
+
+=item *
+
+B<Version 11.2 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
+us-gov-west-1, us-west-1, us-west-2):> C< 11.2.0.2.v3 | 11.2.0.2.v4 |
+11.2.0.2.v5 | 11.2.0.2.v6 | 11.2.0.2.v7>
+
+=item *
+
+B<Version 11.2 (available in all AWS regions except ap-south-1,
+ap-northeast-2):> C< 11.2.0.3.v1 | 11.2.0.3.v2 | 11.2.0.3.v3>
+
+=item *
+
+B<Version 11.2 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
+us-east-1, us-west-1, us-west-2):> C< 11.2.0.3.v4>
+
+=item *
+
+B<Version 11.2 (available in all AWS regions):> C< 11.2.0.4.v1 |
+11.2.0.4.v3 | 11.2.0.4.v4>
+
+=item *
+
+B<Version 11.2 (available in all AWS regions except us-gov-west-1):> C<
+11.2.0.4.v5 | 11.2.0.4.v6 | 11.2.0.4.v7 | 11.2.0.4.v8>
+
+=back
+
+B<Oracle Database Standard Edition Two (oracle-se2)>
+
+=over
+
+=item *
+
+B<Version 12.1 (available in all AWS regions except us-gov-west-1):> C<
+12.1.0.2.v2 | 12.1.0.2.v3 | 12.1.0.2.v4>
+
+=back
+
+B<PostgreSQL>
+
+=over
+
+=item *
+
+B<Version 9.5 (available in all AWS regions except us-gov-west-1):> C<
+9.5.2>
+
+=item *
+
+B<Version 9.4 (available in all AWS regions except ap-south-1):> C<
+9.4.1 | 9.4.4>
+
+=item *
+
+B<Version 9.4 (available in all AWS regions):> C< 9.4.5>
+
+=item *
+
+B<Version 9.4 (available in all AWS regions except us-gov-west-1):> C<
+9.4.7>
+
+=item *
+
+B<Version 9.3 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-west-1, sa-east-1, us-east-1,
+us-gov-west-1, us-west-1, us-west-2):> C< 9.3.1 | 9.3.2>
+
+=item *
+
+B<Version 9.3 (available in all AWS regions except ap-south-1,
+ap-northeast-2):> C< 9.3.10 | 9.3.3 | 9.3.5 | 9.3.6 | 9.3.9>
+
+=item *
+
+B<Version 9.3 (only available in AWS regions ap-northeast-1,
+ap-southeast-1, ap-southeast-2, eu-central-1, eu-west-1, sa-east-1,
+us-east-1, us-west-1, us-west-2):> C< 9.3.12>
 
 =back
 
@@ -603,11 +812,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 16 alphanumeric characters.
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 16 alphanumeric characters.
 
-=item * Cannot be a reserved word for the chosen database engine.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot be a reserved word for the chosen database engine.
 
 =back
 
@@ -617,9 +832,13 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 16 alphanumeric characters.
+=item *
 
-=item * Cannot be a reserved word for the chosen database engine.
+Must be 1 to 16 alphanumeric characters.
+
+=item *
+
+Cannot be a reserved word for the chosen database engine.
 
 =back
 
@@ -631,11 +850,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 30 alphanumeric characters.
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 30 alphanumeric characters.
 
-=item * Cannot be a reserved word for the chosen database engine.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot be a reserved word for the chosen database engine.
 
 =back
 
@@ -645,11 +870,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 128 alphanumeric characters.
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 128 alphanumeric characters.
 
-=item * Cannot be a reserved word for the chosen database engine.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot be a reserved word for the chosen database engine.
 
 =back
 
@@ -659,11 +890,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 63 alphanumeric characters.
+=item *
 
-=item * First character must be a letter.
+Must be 1 to 63 alphanumeric characters.
 
-=item * Cannot be a reserved word for the chosen database engine.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot be a reserved word for the chosen database engine.
 
 =back
 
@@ -707,7 +944,7 @@ Constraints: Must contain from 8 to 41 characters.
 
 The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB instance. To disable collecting
-Enhanced Monitoring metrics, specify 0. The default is 60.
+Enhanced Monitoring metrics, specify 0. The default is 0.
 
 If C<MonitoringRoleArn> is specified, then you must also set
 C<MonitoringInterval> to a value other than 0.
@@ -733,9 +970,6 @@ supply a C<MonitoringRoleArn> value.
 
 Specifies if the DB instance is a Multi-AZ deployment. You cannot set
 the AvailabilityZone parameter if the MultiAZ parameter is set to true.
-Do not set this value if you want a Multi-AZ deployment for a SQL
-Server DB instance. Multi-AZ for SQL Server is set using the Mirroring
-option in an option group.
 
 
 
@@ -816,13 +1050,21 @@ Constraints:
 
 =over
 
-=item * Must be in the format C<hh24:mi-hh24:mi>.
+=item *
 
-=item * Times should be in Universal Coordinated Time (UTC).
+Must be in the format C<hh24:mi-hh24:mi>.
 
-=item * Must not conflict with the preferred maintenance window.
+=item *
 
-=item * Must be at least 30 minutes.
+Times should be in Universal Coordinated Time (UTC).
+
+=item *
+
+Must not conflict with the preferred maintenance window.
+
+=item *
+
+Must be at least 30 minutes.
 
 =back
 
@@ -875,9 +1117,13 @@ each case.
 
 =over
 
-=item * B<Default VPC:> true
+=item *
 
-=item * B<VPC:> false
+B<Default VPC:> true
+
+=item *
+
+B<VPC:> false
 
 =back
 

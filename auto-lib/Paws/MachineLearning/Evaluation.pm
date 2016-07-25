@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head1 DESCRIPTION
 
-Represents the output of GetEvaluation operation.
+Represents the output of C<GetEvaluation> operation.
 
 The content consists of the detailed metadata and data file information
 and the current status of the C<Evaluation>.
@@ -104,7 +104,7 @@ C<MLModel>.
 
   Measurements of how well the C<MLModel> performed, using observations
 referenced by the C<DataSource>. One of the following metrics is
-returned, based on the type of the MLModel:
+returned, based on the type of the C<MLModel>:
 
 =over
 

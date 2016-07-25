@@ -6,6 +6,7 @@ package Paws::EC2::ModifyInstanceAttribute;
   has DisableApiTermination => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', traits => ['NameInRequest'], request_name => 'disableApiTermination' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has EbsOptimized => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', traits => ['NameInRequest'], request_name => 'ebsOptimized' );
+  has EnaSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', traits => ['NameInRequest'], request_name => 'enaSupport' );
   has Groups => (is => 'ro', isa => 'ArrayRef[Str]', traits => ['NameInRequest'], request_name => 'GroupId' );
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Paws::EC2::AttributeValue', traits => ['NameInRequest'], request_name => 'instanceInitiatedShutdownBehavior' );
@@ -51,7 +52,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the attribute.
 
-Valid values are: C<"instanceType">, C<"kernel">, C<"ramdisk">, C<"userData">, C<"disableApiTermination">, C<"instanceInitiatedShutdownBehavior">, C<"rootDeviceName">, C<"blockDeviceMapping">, C<"productCodes">, C<"sourceDestCheck">, C<"groupSet">, C<"ebsOptimized">, C<"sriovNetSupport">
+Valid values are: C<"instanceType">, C<"kernel">, C<"ramdisk">, C<"userData">, C<"disableApiTermination">, C<"instanceInitiatedShutdownBehavior">, C<"rootDeviceName">, C<"blockDeviceMapping">, C<"productCodes">, C<"sourceDestCheck">, C<"groupSet">, C<"ebsOptimized">, C<"sriovNetSupport">, C<"enaSupport">
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>]
 
@@ -91,6 +92,15 @@ optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal EBS I/O performance.
 This optimization isn't available with all instance types. Additional
 usage charges apply when using an EBS Optimized instance.
+
+
+
+=head2 EnaSupport => L<Paws::EC2::AttributeBooleanValue>
+
+Set to C<true> to enable enhanced networking with ENA for the instance.
+
+This option is supported only for HVM instances. Specifying this option
+with a PV instance can make it unreachable.
 
 
 
@@ -152,9 +162,11 @@ NAT.
 
 =head2 SriovNetSupport => L<Paws::EC2::AttributeValue>
 
-Set to C<simple> to enable enhanced networking for the instance.
+Set to C<simple> to enable enhanced networking with the Intel 82599
+Virtual Function interface for the instance.
 
-There is no way to disable enhanced networking at this time.
+There is no way to disable enhanced networking with the Intel 82599
+Virtual Function interface at this time.
 
 This option is supported only for HVM instances. Specifying this option
 with a PV instance can make it unreachable.
@@ -163,7 +175,10 @@ with a PV instance can make it unreachable.
 
 =head2 UserData => L<Paws::EC2::BlobAttributeValue>
 
-Changes the instance's user data to the specified value.
+Changes the instance's user data to the specified value. If you are
+using an AWS SDK or command line tool, Base64-encoding is performed for
+you, and you can load the text from a file. Otherwise, you must provide
+Base64-encoded text.
 
 
 

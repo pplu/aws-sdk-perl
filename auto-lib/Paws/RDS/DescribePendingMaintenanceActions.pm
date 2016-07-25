@@ -45,10 +45,12 @@ Supported filters:
 
 =over
 
-=item * C<db-instance-id> - Accepts DB instance identifiers and DB
-instance Amazon Resource Names (ARNs). The results list will only
-include pending maintenance actions for the DB instances identified by
-these ARNs.
+=item *
+
+C<db-instance-id> - Accepts DB instance identifiers and DB instance
+Amazon Resource Names (ARNs). The results list will only include
+pending maintenance actions for the DB instances identified by these
+ARNs.
 
 =back
 

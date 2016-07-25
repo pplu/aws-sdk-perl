@@ -2,7 +2,10 @@ package Paws::SSM::DocumentDescription;
   use Moose;
   has CreatedDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has Hash => (is => 'ro', isa => 'Str');
+  has HashType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has Owner => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::SSM::DocumentParameter]');
   has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str]');
   has Sha1 => (is => 'ro', isa => 'Str');
@@ -52,9 +55,29 @@ Describes an SSM document.
   A description of the document.
 
 
+=head2 Hash => Str
+
+  The Sha256 or Sha1 hash created by the system when the document was
+created.
+
+Sha1 hashes have been deprecated.
+
+
+=head2 HashType => Str
+
+  Sha256 or Sha1.
+
+Sha1 hashes have been deprecated.
+
+
 =head2 Name => Str
 
   The name of the SSM document.
+
+
+=head2 Owner => Str
+
+  The AWS user account of the person who created the document.
 
 
 =head2 Parameters => ArrayRef[L<Paws::SSM::DocumentParameter>]

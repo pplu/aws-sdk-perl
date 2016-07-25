@@ -58,6 +58,9 @@ Information about a certificate.
 
   The status of the certificate.
 
+The status value REGISTER_INACTIVE is deprecated and should not be
+used.
+
 
 
 =head1 SEE ALSO

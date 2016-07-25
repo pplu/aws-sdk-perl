@@ -4,6 +4,7 @@ package Paws::ApiGateway::CreateAuthorizer;
   has AuthorizerCredentials => (is => 'ro', isa => 'Str');
   has AuthorizerResultTtlInSeconds => (is => 'ro', isa => 'Int');
   has AuthorizerUri => (is => 'ro', isa => 'Str', required => 1);
+  has AuthType => (is => 'ro', isa => 'Str');
   has IdentitySource => (is => 'ro', isa => 'Str', required => 1);
   has IdentityValidationExpression => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -61,6 +62,13 @@ The TTL of cached authorizer results.
 
 
 
+=head2 AuthType => Str
+
+Optional customer-defined field, used in Swagger imports/exports. Has
+no functional impact.
+
+
+
 =head2 B<REQUIRED> IdentitySource => Str
 
 [Required] The source of the identity in an incoming request.
@@ -81,7 +89,7 @@ A validation expression for the incoming identity.
 
 =head2 B<REQUIRED> RestApiId => Str
 
-
+The RestApi identifier under which the Authorizer will be created.
 
 
 

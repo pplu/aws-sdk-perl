@@ -62,32 +62,32 @@ Unique identity for the fleet to scale with this policy.
 
 =head2 B<REQUIRED> MetricName => Str
 
-Name of the Service-defined metric that is used to trigger an
+Name of the Amazon GameLift-defined metric that is used to trigger an
 adjustment.
 
 =over
 
-=item * ActivatingGameSessions: number of game sessions in the process
-of being created (game session status = ACTIVATING).
+=item * B<ActivatingGameSessions> E<ndash> number of game sessions in
+the process of being created (game session status = C<ACTIVATING>).
 
-=item * ActiveGameSessions: number of game sessions currently running
-(game session status = ACTIVE).
+=item * B<ActiveGameSessions> E<ndash> number of game sessions
+currently running (game session status = C<ACTIVE>).
 
-=item * CurrentPlayerSessions: number of active or reserved player
-sessions (player session status = ACTIVE or RESERVED).
+=item * B<CurrentPlayerSessions> E<ndash> number of active or reserved
+player sessions (player session status = C<ACTIVE> or C<RESERVED>).
 
-=item * AvailablePlayerSessions: number of player session slots
-currently available in active game sessions across the fleet,
+=item * B<AvailablePlayerSessions> E<ndash> number of player session
+slots currently available in active game sessions across the fleet,
 calculated by subtracting a game session's current player session count
 from its maximum player session count. This number includes game
 sessions that are not currently accepting players (game session
-PlayerSessionCreationPolicy = DENY_ALL).
+C<PlayerSessionCreationPolicy> = C<DENY_ALL>).
 
-=item * ActiveInstances: number of instances currently running a game
-session.
+=item * B<ActiveInstances> E<ndash> number of instances currently
+running a game session.
 
-=item * IdleInstances: number of instances not currently running a game
-session.
+=item * B<IdleInstances> E<ndash> number of instances not currently
+running a game session.
 
 =back
 
@@ -96,9 +96,9 @@ Valid values are: C<"ActivatingGameSessions">, C<"ActiveGameSessions">, C<"Activ
 
 =head2 B<REQUIRED> Name => Str
 
-Descriptive label associated with this scaling policy. Policy names do
-not need to be unique. A fleet can have only one scaling policy with
-the same name.
+Descriptive label associated with a scaling policy. Policy names do not
+need to be unique. A fleet can have only one scaling policy with the
+same name.
 
 
 
@@ -115,15 +115,15 @@ FleetCapacity):
 
 =over
 
-=item * ChangeInCapacity: add (or subtract) the scaling adjustment
-value from the current instance count. Positive values scale up while
-negative values scale down.
+=item * B<ChangeInCapacity> E<ndash> add (or subtract) the scaling
+adjustment value from the current instance count. Positive values scale
+up while negative values scale down.
 
-=item * ExactCapacity: set the instance count to the scaling adjustment
-value.
+=item * B<ExactCapacity> E<ndash> set the instance count to the scaling
+adjustment value.
 
-=item * PercentChangeInCapacity: increase or reduce the current
-instance count by the scaling adjustment, read as a percentage.
+=item * B<PercentChangeInCapacity> E<ndash> increase or reduce the
+current instance count by the scaling adjustment, read as a percentage.
 Positive values scale up while negative values scale down; for example,
 a value of "-10" scales the fleet down by 10%.
 

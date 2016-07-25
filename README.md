@@ -249,6 +249,10 @@ This code is distributed under the Apache v2 License
 
 Thanks
 ================
+
+CAPSiDE (http://www.capside.com) for letting Paws be contributed in an open source model 
+and giving me time to build and maintain it regularly
+
 Luis Alberto Gimenez (@agimenez) for 
  - The git-fu cleaning up the "pull other sdks" code
  - Credential Providers code
@@ -301,3 +305,5 @@ Javier Arellano for discovering Tagging bug
 Ioan Rogers for contributing AssumeRoleWithSAML with ADFS auth example
 
 Miquel Soriano for reporting a bug with DescribeAutoScalingGroups
+
+Albert Bendicho (wiof) for contributing better retry logic

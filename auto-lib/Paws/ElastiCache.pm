@@ -483,7 +483,8 @@ allocation report as a comma-separated value (CSV) file with your usage
 and costs aggregated by your tags. You can apply tags that represent
 business categories (such as cost centers, application names, or
 owners) to organize your costs across multiple services. For more
-information, see Using Cost Allocation Tags in Amazon ElastiCache.
+information, see Using Cost Allocation Tags in Amazon ElastiCache in
+the I<ElastiCache User Guide>.
 
 
 =head2 AuthorizeCacheSecurityGroupIngress(CacheSecurityGroupName => Str, EC2SecurityGroupName => Str, EC2SecurityGroupOwnerId => Str)
@@ -501,13 +502,35 @@ You cannot authorize ingress from an Amazon EC2 security group in one
 region to an ElastiCache cluster in another region.
 
 
-=head2 CopySnapshot(SourceSnapshotName => Str, TargetSnapshotName => Str)
+=head2 CopySnapshot(SourceSnapshotName => Str, TargetSnapshotName => Str, [TargetBucket => Str])
 
 Each argument is described in detail in: L<Paws::ElastiCache::CopySnapshot>
 
 Returns: a L<Paws::ElastiCache::CopySnapshotResult> instance
 
   The I<CopySnapshot> action makes a copy of an existing snapshot.
+
+Users or groups that have permissions to use the I<CopySnapshot> API
+can create their own Amazon S3 buckets and copy snapshots to it. To
+control access to your snapshots, use an IAM policy to control who has
+the ability to use the I<CopySnapshot> API. For more information about
+using IAM to control the use of ElastiCache APIs, see Exporting
+Snapshots and Authentication & Access Control.
+
+B<Erorr Message:>
+
+=over
+
+=item *
+
+B<Error Message:> The authenticated user does not have sufficient
+permissions to perform the desired activity.
+
+B<Solution:> Contact your system administrator to get the needed
+permissions.
+
+=back
+
 
 
 =head2 CreateCacheCluster(CacheClusterId => Str, [AutoMinorVersionUpgrade => Bool, AZMode => Str, CacheNodeType => Str, CacheParameterGroupName => Str, CacheSecurityGroupNames => ArrayRef[Str], CacheSubnetGroupName => Str, Engine => Str, EngineVersion => Str, NotificationTopicArn => Str, NumCacheNodes => Int, Port => Int, PreferredAvailabilityZone => Str, PreferredAvailabilityZones => ArrayRef[Str], PreferredMaintenanceWindow => Str, ReplicationGroupId => Str, SecurityGroupIds => ArrayRef[Str], SnapshotArns => ArrayRef[Str], SnapshotName => Str, SnapshotRetentionLimit => Int, SnapshotWindow => Str, Tags => ArrayRef[L<Paws::ElastiCache::Tag>]])
@@ -577,7 +600,7 @@ cluster that is in the primary role. When the replication group has
 been successfully created, you can add one or more read replica
 replicas to it, up to a total of five read replicas.
 
-B<Note:> This action is valid only for Redis.
+This action is valid only for Redis.
 
 
 =head2 CreateSnapshot(CacheClusterId => Str, SnapshotName => Str)
@@ -940,7 +963,7 @@ Returns: a L<Paws::ElastiCache::TagListMessage> instance
 C<TagKeys> list from the named resource.
 
 
-=head2 ResetCacheParameterGroup(CacheParameterGroupName => Str, ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>], [ResetAllParameters => Bool])
+=head2 ResetCacheParameterGroup(CacheParameterGroupName => Str, [ParameterNameValues => ArrayRef[L<Paws::ElastiCache::ParameterNameValue>], ResetAllParameters => Bool])
 
 Each argument is described in detail in: L<Paws::ElastiCache::ResetCacheParameterGroup>
 

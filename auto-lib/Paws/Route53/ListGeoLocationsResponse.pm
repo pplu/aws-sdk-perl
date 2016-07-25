@@ -45,9 +45,8 @@ are returned by the request.
 A flag that indicates whether there are more geo locations to be
 listed. If your results were truncated, you can make a follow-up
 request for the next page of results by using the values included in
-the ListGeoLocationsResponse$NextContinentCode,
-ListGeoLocationsResponse$NextCountryCode and
-ListGeoLocationsResponse$NextSubdivisionCode elements.
+the C<NextContinentCode>, C<NextCountryCode>, and
+C<NextSubdivisionCode> elements.
 
 Valid Values: C<true> | C<false>
 
@@ -63,27 +62,24 @@ C<MaxItems> is 100.
 =head2 NextContinentCode => Str
 
 If the results were truncated, the continent code of the next geo
-location in the list. This element is present only if
-ListGeoLocationsResponse$IsTruncated is true and the next geo location
-to list is a continent location.
+location in the list. This element is present only if C<IsTruncated> is
+true and the next geo location to list is a continent location.
 
 
 
 =head2 NextCountryCode => Str
 
 If the results were truncated, the country code of the next geo
-location in the list. This element is present only if
-ListGeoLocationsResponse$IsTruncated is true and the next geo location
-to list is not a continent location.
+location in the list. This element is present only if C<IsTruncated> is
+true and the next geo location to list is not a continent location.
 
 
 
 =head2 NextSubdivisionCode => Str
 
 If the results were truncated, the subdivision code of the next geo
-location in the list. This element is present only if
-ListGeoLocationsResponse$IsTruncated is true and the next geo location
-has a subdivision.
+location in the list. This element is present only if C<IsTruncated> is
+true and the next geo location has a subdivision.
 
 
 

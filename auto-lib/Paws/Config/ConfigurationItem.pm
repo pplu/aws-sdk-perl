@@ -15,6 +15,7 @@ package Paws::Config::ConfigurationItem;
   has ResourceId => (is => 'ro', isa => 'Str', xmlname => 'resourceId', request_name => 'resourceId', traits => ['Unwrapped','NameInRequest']);
   has ResourceName => (is => 'ro', isa => 'Str', xmlname => 'resourceName', request_name => 'resourceName', traits => ['Unwrapped','NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', xmlname => 'resourceType', request_name => 'resourceType', traits => ['Unwrapped','NameInRequest']);
+  has SupplementaryConfiguration => (is => 'ro', isa => 'Paws::Config::SupplementaryConfiguration', xmlname => 'supplementaryConfiguration', request_name => 'supplementaryConfiguration', traits => ['Unwrapped','NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::Config::Tags', xmlname => 'tags', request_name => 'tags', traits => ['Unwrapped','NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
 1;
@@ -139,6 +140,13 @@ initiated by any event.
 =head2 ResourceType => Str
 
   The type of AWS resource.
+
+
+=head2 SupplementaryConfiguration => L<Paws::Config::SupplementaryConfiguration>
+
+  Configuration attributes that AWS Config returns for certain resource
+types to supplement the information returned for the C<configuration>
+parameter.
 
 
 =head2 Tags => L<Paws::Config::Tags>

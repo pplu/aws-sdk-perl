@@ -51,6 +51,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::AuthorizeDBSecurityGroupIngress', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CopyDBClusterParameterGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::CopyDBClusterParameterGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CopyDBClusterSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::CopyDBClusterSnapshot', @_);
@@ -201,6 +206,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusters', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeDBClusterSnapshotAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusterSnapshotAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDBClusterSnapshots {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::DescribeDBClusterSnapshots', @_);
@@ -331,6 +341,11 @@ package Paws::RDS;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBClusterParameterGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyDBClusterSnapshotAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBClusterSnapshotAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyDBInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::ModifyDBInstance', @_);
@@ -364,6 +379,11 @@ package Paws::RDS;
   sub PromoteReadReplica {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RDS::PromoteReadReplica', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PromoteReadReplicaDBCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RDS::PromoteReadReplicaDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PurchaseReservedDBInstancesOffering {
@@ -730,7 +750,7 @@ package Paws::RDS;
   }
 
 
-  sub operations { qw/AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PurchaseReservedDBInstancesOffering RebootDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress / }
+  sub operations { qw/AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction AuthorizeDBSecurityGroupIngress CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CopyDBSnapshot CopyOptionGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBInstanceReadReplica CreateDBParameterGroup CreateDBSecurityGroup CreateDBSnapshot CreateDBSubnetGroup CreateEventSubscription CreateOptionGroup DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSecurityGroup DeleteDBSnapshot DeleteDBSubnetGroup DeleteEventSubscription DeleteOptionGroup DescribeAccountAttributes DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBLogFiles DescribeDBParameterGroups DescribeDBParameters DescribeDBSecurityGroups DescribeDBSnapshotAttributes DescribeDBSnapshots DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOptionGroupOptions DescribeOptionGroups DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeReservedDBInstances DescribeReservedDBInstancesOfferings DownloadDBLogFilePortion FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSnapshotAttribute ModifyDBSubnetGroup ModifyEventSubscription ModifyOptionGroup PromoteReadReplica PromoteReadReplicaDBCluster PurchaseReservedDBInstancesOffering RebootDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime RestoreDBInstanceFromDBSnapshot RestoreDBInstanceToPointInTime RevokeDBSecurityGroupIngress / }
 
 1;
 
@@ -887,6 +907,15 @@ another.
 For an overview of CIDR ranges, go to the Wikipedia Tutorial.
 
 
+=head2 CopyDBClusterParameterGroup(SourceDBClusterParameterGroupIdentifier => Str, TargetDBClusterParameterGroupDescription => Str, TargetDBClusterParameterGroupIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
+
+Each argument is described in detail in: L<Paws::RDS::CopyDBClusterParameterGroup>
+
+Returns: a L<Paws::RDS::CopyDBClusterParameterGroupResult> instance
+
+  Copies the specified DB cluster parameter group.
+
+
 =head2 CopyDBClusterSnapshot(SourceDBClusterSnapshotIdentifier => Str, TargetDBClusterSnapshotIdentifier => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
 
 Each argument is described in detail in: L<Paws::RDS::CopyDBClusterSnapshot>
@@ -929,14 +958,19 @@ Returns: a L<Paws::RDS::CopyOptionGroupResult> instance
   Copies the specified option group.
 
 
-=head2 CreateDBCluster(DBClusterIdentifier => Str, Engine => Str, MasterUsername => Str, MasterUserPassword => Str, [AvailabilityZones => ArrayRef[Str], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EngineVersion => Str, KmsKeyId => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
+=head2 CreateDBCluster(DBClusterIdentifier => Str, Engine => Str, [AvailabilityZones => ArrayRef[Str], BackupRetentionPeriod => Int, CharacterSetName => Str, DatabaseName => Str, DBClusterParameterGroupName => Str, DBSubnetGroupName => Str, EngineVersion => Str, KmsKeyId => Str, MasterUsername => Str, MasterUserPassword => Str, OptionGroupName => Str, Port => Int, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, ReplicationSourceIdentifier => Str, StorageEncrypted => Bool, Tags => ArrayRef[L<Paws::RDS::Tag>], VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::CreateDBCluster>
 
 Returns: a L<Paws::RDS::CreateDBClusterResult> instance
 
-  Creates a new Amazon Aurora DB cluster. For more information on Amazon
-Aurora, see Aurora on Amazon RDS in the I<Amazon RDS User Guide.>
+  Creates a new Amazon Aurora DB cluster.
+
+You can use the C<ReplicationSourceIdentifier> parameter to create the
+DB cluster as a Read Replica of another DB cluster.
+
+For more information on Amazon Aurora, see Aurora on Amazon RDS in the
+I<Amazon RDS User Guide.>
 
 
 =head2 CreateDBClusterParameterGroup(DBClusterParameterGroupName => Str, DBParameterGroupFamily => Str, Description => Str, [Tags => ArrayRef[L<Paws::RDS::Tag>]])
@@ -1118,10 +1152,9 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBCluster>
 Returns: a L<Paws::RDS::DeleteDBClusterResult> instance
 
   The DeleteDBCluster action deletes a previously provisioned DB cluster.
-A successful response from the web service indicates the request was
-received correctly. When you delete a DB cluster, all automated backups
-for that DB cluster are deleted and cannot be recovered. Manual DB
-cluster snapshots of the DB cluster to be deleted are not deleted.
+When you delete a DB cluster, all automated backups for that DB cluster
+are deleted and cannot be recovered. Manual DB cluster snapshots of the
+specified DB cluster are not deleted.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
@@ -1164,20 +1197,40 @@ Each argument is described in detail in: L<Paws::RDS::DeleteDBInstance>
 Returns: a L<Paws::RDS::DeleteDBInstanceResult> instance
 
   The DeleteDBInstance action deletes a previously provisioned DB
-instance. A successful response from the web service indicates the
-request was received correctly. When you delete a DB instance, all
-automated backups for that instance are deleted and cannot be
-recovered. Manual DB snapshots of the DB instance to be deleted are not
-deleted.
+instance. When you delete a DB instance, all automated backups for that
+instance are deleted and cannot be recovered. Manual DB snapshots of
+the DB instance to be deleted by C<DeleteDBInstance> are not deleted.
 
-If a final DB snapshot is requested the status of the RDS instance will
-be "deleting" until the DB snapshot is created. The API action
-C<DescribeDBInstance> is used to monitor the status of this operation.
-The action cannot be canceled or reverted once submitted.
+If you request a final DB snapshot the status of the Amazon RDS DB
+instance is C<deleting> until the DB snapshot is created. The API
+action C<DescribeDBInstance> is used to monitor the status of this
+operation. The action cannot be canceled or reverted once submitted.
 
 Note that when a DB instance is in a failure state and has a status of
-'failed', 'incompatible-restore', or 'incompatible-network', it can
-only be deleted when the SkipFinalSnapshot parameter is set to "true".
+C<failed>, C<incompatible-restore>, or C<incompatible-network>, you can
+only delete it when the C<SkipFinalSnapshot> parameter is set to
+C<true>.
+
+If the specified DB instance is part of an Amazon Aurora DB cluster,
+you cannot delete the DB instance if the following are true:
+
+=over
+
+=item *
+
+The DB cluster is a Read Replica of another Amazon Aurora DB cluster.
+
+=item *
+
+The DB instance is the only instance in the DB cluster.
+
+=back
+
+To delete a DB instance in this case, first call the
+PromoteReadReplicaDBCluster API action to promote the DB cluster so
+it's no longer a Read Replica. After the promotion completes, then call
+the C<DeleteDBInstance> API action to delete the final instance in the
+DB cluster.
 
 
 =head2 DeleteDBParameterGroup(DBParameterGroupName => Str)
@@ -1309,14 +1362,35 @@ For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
 
 
-=head2 DescribeDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int, SnapshotType => Str])
+=head2 DescribeDBClusterSnapshotAttributes(DBClusterSnapshotIdentifier => Str)
+
+Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterSnapshotAttributes>
+
+Returns: a L<Paws::RDS::DescribeDBClusterSnapshotAttributesResult> instance
+
+  Returns a list of DB cluster snapshot attribute names and values for a
+manual DB cluster snapshot.
+
+When sharing snapshots with other AWS accounts,
+C<DescribeDBClusterSnapshotAttributes> returns the C<restore> attribute
+and a list of IDs for the AWS accounts that are authorized to copy or
+restore the manual DB cluster snapshot. If C<all> is included in the
+list of values for the C<restore> attribute, then the manual DB cluster
+snapshot is public and can be copied or restored by all AWS accounts.
+
+To add or remove access for an AWS account to copy or restore a manual
+DB cluster snapshot, or to make the manual DB cluster snapshot public
+or private, use the ModifyDBClusterSnapshotAttribute API action.
+
+
+=head2 DescribeDBClusterSnapshots([DBClusterIdentifier => Str, DBClusterSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBClusterSnapshots>
 
 Returns: a L<Paws::RDS::DBClusterSnapshotMessage> instance
 
-  Returns information about DB cluster snapshots. This API supports
-pagination.
+  Returns information about DB cluster snapshots. This API action
+supports pagination.
 
 For more information on Amazon Aurora, see Aurora on Amazon RDS in the
 I<Amazon RDS User Guide.>
@@ -1382,7 +1456,7 @@ C<DBSecurityGroupName> is specified, the list will contain only the
 descriptions of the specified DB security group.
 
 
-=head2 DescribeDBSnapshotAttributes([DBSnapshotIdentifier => Str])
+=head2 DescribeDBSnapshotAttributes(DBSnapshotIdentifier => Str)
 
 Each argument is described in detail in: L<Paws::RDS::DescribeDBSnapshotAttributes>
 
@@ -1393,14 +1467,14 @@ DB snapshot.
 
 When sharing snapshots with other AWS accounts,
 C<DescribeDBSnapshotAttributes> returns the C<restore> attribute and a
-list of the AWS account ids that are authorized to copy or restore the
-manual DB snapshot. If C<all> is included in the list of values for the
-C<restore> attribute, then the manual DB snapshot is public and can be
-copied or restored by all AWS accounts.
+list of IDs for the AWS accounts that are authorized to copy or restore
+the manual DB snapshot. If C<all> is included in the list of values for
+the C<restore> attribute, then the manual DB snapshot is public and can
+be copied or restored by all AWS accounts.
 
 To add or remove access for an AWS account to copy or restore a manual
 DB snapshot, or to make the manual DB snapshot public or private, use
-the ModifyDBSnapshotAttribute API.
+the ModifyDBSnapshotAttribute API action.
 
 
 =head2 DescribeDBSnapshots([DBInstanceIdentifier => Str, DBSnapshotIdentifier => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], IncludePublic => Bool, IncludeShared => Bool, Marker => Str, MaxRecords => Int, SnapshotType => Str])
@@ -1409,7 +1483,8 @@ Each argument is described in detail in: L<Paws::RDS::DescribeDBSnapshots>
 
 Returns: a L<Paws::RDS::DBSnapshotMessage> instance
 
-  Returns information about DB snapshots. This API supports pagination.
+  Returns information about DB snapshots. This API action supports
+pagination.
 
 
 =head2 DescribeDBSubnetGroups([DBSubnetGroupName => Str, Filters => ArrayRef[L<Paws::RDS::Filter>], Marker => Str, MaxRecords => Int])
@@ -1554,7 +1629,7 @@ Returns: a L<Paws::RDS::DownloadDBLogFilePortionDetails> instance
 size.
 
 
-=head2 FailoverDBCluster([DBClusterIdentifier => Str])
+=head2 FailoverDBCluster([DBClusterIdentifier => Str, TargetDBInstanceIdentifier => Str])
 
 Each argument is described in detail in: L<Paws::RDS::FailoverDBCluster>
 
@@ -1632,6 +1707,31 @@ DescribeDBClusterParameters command to verify that your DB cluster
 parameter group has been created or modified.
 
 
+=head2 ModifyDBClusterSnapshotAttribute(AttributeName => Str, DBClusterSnapshotIdentifier => Str, [ValuesToAdd => ArrayRef[Str], ValuesToRemove => ArrayRef[Str]])
+
+Each argument is described in detail in: L<Paws::RDS::ModifyDBClusterSnapshotAttribute>
+
+Returns: a L<Paws::RDS::ModifyDBClusterSnapshotAttributeResult> instance
+
+  Adds an attribute and values to, or removes an attribute and values
+from, a manual DB cluster snapshot.
+
+To share a manual DB cluster snapshot with other AWS accounts, specify
+C<restore> as the C<AttributeName> and use the C<ValuesToAdd> parameter
+to add a list of IDs of the AWS accounts that are authorized to restore
+the manual DB cluster snapshot. Use the value C<all> to make the manual
+DB cluster snapshot public, which means that it can be copied or
+restored by all AWS accounts. Do not add the C<all> value for any
+manual DB cluster snapshots that contain private information that you
+don't want available to all AWS accounts.
+
+To view which AWS accounts have access to copy or restore a manual DB
+cluster snapshot, or whether a manual DB cluster snapshot public or
+private, use the DescribeDBClusterSnapshotAttributes API action.
+
+If a manual DB cluster snapshot is encrypted, it cannot be shared.
+
+
 =head2 ModifyDBInstance(DBInstanceIdentifier => Str, [AllocatedStorage => Int, AllowMajorVersionUpgrade => Bool, ApplyImmediately => Bool, AutoMinorVersionUpgrade => Bool, BackupRetentionPeriod => Int, CACertificateIdentifier => Str, CopyTagsToSnapshot => Bool, DBInstanceClass => Str, DBParameterGroupName => Str, DBPortNumber => Int, DBSecurityGroups => ArrayRef[Str], Domain => Str, DomainIAMRoleName => Str, EngineVersion => Str, Iops => Int, MasterUserPassword => Str, MonitoringInterval => Int, MonitoringRoleArn => Str, MultiAZ => Bool, NewDBInstanceIdentifier => Str, OptionGroupName => Str, PreferredBackupWindow => Str, PreferredMaintenanceWindow => Str, PromotionTier => Int, PubliclyAccessible => Bool, StorageType => Str, TdeCredentialArn => Str, TdeCredentialPassword => Str, VpcSecurityGroupIds => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBInstance>
@@ -1671,27 +1771,27 @@ command to verify that your DB parameter group has been created or
 modified.
 
 
-=head2 ModifyDBSnapshotAttribute(DBSnapshotIdentifier => Str, [AttributeName => Str, ValuesToAdd => ArrayRef[Str], ValuesToRemove => ArrayRef[Str]])
+=head2 ModifyDBSnapshotAttribute(AttributeName => Str, DBSnapshotIdentifier => Str, [ValuesToAdd => ArrayRef[Str], ValuesToRemove => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::RDS::ModifyDBSnapshotAttribute>
 
 Returns: a L<Paws::RDS::ModifyDBSnapshotAttributeResult> instance
 
   Adds an attribute and values to, or removes an attribute and values
-from a manual DB snapshot.
+from, a manual DB snapshot.
 
 To share a manual DB snapshot with other AWS accounts, specify
 C<restore> as the C<AttributeName> and use the C<ValuesToAdd> parameter
-to add a list of the AWS account ids that are authorized to restore the
-manual DB snapshot. Uses the value C<all> to make the manual DB
-snapshot public and can by copied or restored by all AWS accounts. Do
-not add the C<all> value for any manual DB snapshots that contain
-private information that you do not want to be available to all AWS
+to add a list of IDs of the AWS accounts that are authorized to restore
+the manual DB snapshot. Uses the value C<all> to make the manual DB
+snapshot public, which means it can be copied or restored by all AWS
+accounts. Do not add the C<all> value for any manual DB snapshots that
+contain private information that you don't want available to all AWS
 accounts.
 
 To view which AWS accounts have access to copy or restore a manual DB
 snapshot, or whether a manual DB snapshot public or private, use the
-DescribeDBSnapshotAttributes API.
+DescribeDBSnapshotAttributes API action.
 
 If the manual DB snapshot is encrypted, it cannot be shared.
 
@@ -1744,6 +1844,15 @@ We recommend that you enable automated backups on your Read Replica
 before promoting the Read Replica. This ensures that no backup is taken
 during the promotion process. Once the instance is promoted to a
 primary instance, backups are taken based on your backup settings.
+
+
+=head2 PromoteReadReplicaDBCluster(DBClusterIdentifier => Str)
+
+Each argument is described in detail in: L<Paws::RDS::PromoteReadReplicaDBCluster>
+
+Returns: a L<Paws::RDS::PromoteReadReplicaDBClusterResult> instance
+
+  Promotes a Read Replica DB cluster to a standalone DB cluster.
 
 
 =head2 PurchaseReservedDBInstancesOffering(ReservedDBInstancesOfferingId => Str, [DBInstanceCount => Int, ReservedDBInstanceId => Str, Tags => ArrayRef[L<Paws::RDS::Tag>]])

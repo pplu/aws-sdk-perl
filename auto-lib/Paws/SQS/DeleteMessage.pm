@@ -38,6 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The URL of the Amazon SQS queue to take action on.
 
+Queue URLs are case-sensitive.
+
 
 
 =head2 B<REQUIRED> ReceiptHandle => Str

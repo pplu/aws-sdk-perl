@@ -79,6 +79,11 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DeleteVirtualInterface', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeConnectionLoa {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeConnectionLoa', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeConnections {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeConnections', @_);
@@ -87,6 +92,11 @@ package Paws::DirectConnect;
   sub DescribeConnectionsOnInterconnect {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeConnectionsOnInterconnect', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeInterconnectLoa {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DescribeInterconnectLoa', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeInterconnects {
@@ -112,7 +122,7 @@ package Paws::DirectConnect;
   
 
 
-  sub operations { qw/AllocateConnectionOnInterconnect AllocatePrivateVirtualInterface AllocatePublicVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateConnection CreateInterconnect CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteConnection DeleteInterconnect DeleteVirtualInterface DescribeConnections DescribeConnectionsOnInterconnect DescribeInterconnects DescribeLocations DescribeVirtualGateways DescribeVirtualInterfaces / }
+  sub operations { qw/AllocateConnectionOnInterconnect AllocatePrivateVirtualInterface AllocatePublicVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface CreateConnection CreateInterconnect CreatePrivateVirtualInterface CreatePublicVirtualInterface DeleteConnection DeleteInterconnect DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeInterconnectLoa DescribeInterconnects DescribeLocations DescribeVirtualGateways DescribeVirtualInterfaces / }
 
 1;
 
@@ -166,6 +176,8 @@ Returns: a L<Paws::DirectConnect::Connection> instance
 
 Allocates a VLAN number and a specified amount of bandwidth for use by
 a hosted connection on the given interconnect.
+
+This is intended for use by AWS Direct Connect partners only.
 
 
 =head2 AllocatePrivateVirtualInterface(ConnectionId => Str, NewPrivateVirtualInterfaceAllocation => L<Paws::DirectConnect::NewPrivateVirtualInterfaceAllocation>, OwnerAccount => Str)
@@ -288,6 +300,8 @@ AllocateConnectionOnInterconnect. The end customer can then connect to
 AWS resources by creating a virtual interface on their connection,
 using the VLAN assigned to them by the AWS Direct Connect partner.
 
+This is intended for use by AWS Direct Connect partners only.
+
 
 =head2 CreatePrivateVirtualInterface(ConnectionId => Str, NewPrivateVirtualInterface => L<Paws::DirectConnect::NewPrivateVirtualInterface>)
 
@@ -335,6 +349,8 @@ Returns: a L<Paws::DirectConnect::DeleteInterconnectResponse> instance
 
   Deletes the specified interconnect.
 
+This is intended for use by AWS Direct Connect partners only.
+
 
 =head2 DeleteVirtualInterface(VirtualInterfaceId => Str)
 
@@ -343,6 +359,21 @@ Each argument is described in detail in: L<Paws::DirectConnect::DeleteVirtualInt
 Returns: a L<Paws::DirectConnect::DeleteVirtualInterfaceResponse> instance
 
   Deletes a virtual interface.
+
+
+=head2 DescribeConnectionLoa(ConnectionId => Str, [LoaContentType => Str, ProviderName => Str])
+
+Each argument is described in detail in: L<Paws::DirectConnect::DescribeConnectionLoa>
+
+Returns: a L<Paws::DirectConnect::DescribeConnectionLoaResponse> instance
+
+  Returns the LOA-CFA for a Connection.
+
+The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
+is a document that your APN partner or service provider uses when
+establishing your cross connect to AWS at the colocation facility. For
+more information, see Requesting Cross Connects at AWS Direct Connect
+Locations in the AWS Direct Connect user guide.
 
 
 =head2 DescribeConnections([ConnectionId => Str])
@@ -365,6 +396,23 @@ Returns: a L<Paws::DirectConnect::Connections> instance
 
   Return a list of connections that have been provisioned on the given
 interconnect.
+
+This is intended for use by AWS Direct Connect partners only.
+
+
+=head2 DescribeInterconnectLoa(InterconnectId => Str, [LoaContentType => Str, ProviderName => Str])
+
+Each argument is described in detail in: L<Paws::DirectConnect::DescribeInterconnectLoa>
+
+Returns: a L<Paws::DirectConnect::DescribeInterconnectLoaResponse> instance
+
+  Returns the LOA-CFA for an Interconnect.
+
+The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
+is a document that is used when establishing your cross connect to AWS
+at the colocation facility. For more information, see Requesting Cross
+Connects at AWS Direct Connect Locations in the AWS Direct Connect user
+guide.
 
 
 =head2 DescribeInterconnects([InterconnectId => Str])

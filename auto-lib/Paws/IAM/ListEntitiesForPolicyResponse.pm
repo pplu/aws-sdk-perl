@@ -40,19 +40,19 @@ request.
 
 =head2 PolicyGroups => ArrayRef[L<Paws::IAM::PolicyGroup>]
 
-A list of groups that the policy is attached to.
+A list of IAM groups that the policy is attached to.
 
 
 
 =head2 PolicyRoles => ArrayRef[L<Paws::IAM::PolicyRole>]
 
-A list of roles that the policy is attached to.
+A list of IAM roles that the policy is attached to.
 
 
 
 =head2 PolicyUsers => ArrayRef[L<Paws::IAM::PolicyUser>]
 
-A list of users that the policy is attached to.
+A list of IAM users that the policy is attached to.
 
 
 

@@ -42,8 +42,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 An AWS Lambda function that evaluates configuration items to assess
 whether your AWS resources comply with your desired configurations.
 This function can run when AWS Config detects a configuration change to
-an AWS resource, or when it delivers a configuration snapshot of the
-resources in the account.
+an AWS resource and at a periodic frequency that you choose (for
+example, every 24 hours).
+
+You can use the AWS CLI and AWS SDKs if you want to create a rule that
+triggers evaluations for your resources when AWS Config delivers the
+configuration snapshot. For more information, see
+ConfigSnapshotDeliveryProperties.
 
 For more information about developing and using AWS Config rules, see
 Evaluating AWS Resource Configurations with AWS Config in the I<AWS
@@ -70,17 +75,22 @@ if you are adding a new rule.
 
 =head2 ConfigRuleState => Str
 
-  Indicates whether the AWS Config rule is active or currently being
-deleted by AWS Config.
+  Indicates whether the AWS Config rule is active or is currently being
+deleted by AWS Config. It can also indicate the evaluation status for
+the Config rule.
+
+AWS Config sets the state of the rule to C<EVALUATING> temporarily
+after you use the C<StartConfigRulesEvaluation> request to evaluate
+your resources against the Config rule.
+
+AWS Config sets the state of the rule to C<DELETING_RESULTS>
+temporarily after you use the C<DeleteEvaluationResults> request to
+delete the current evaluation results for the Config rule.
 
 AWS Config sets the state of a rule to C<DELETING> temporarily after
 you use the C<DeleteConfigRule> request to delete the rule. After AWS
-Config finishes deleting a rule, the rule and all of its evaluations
-are erased and no longer available.
-
-You cannot add a rule to AWS Config that has the state set to
-C<DELETING>. If you want to delete a rule, you must use the
-C<DeleteConfigRule> request.
+Config deletes the rule, the rule and all of its evaluations are erased
+and are no longer available.
 
 
 =head2 Description => Str
@@ -96,16 +106,22 @@ function.
 
 =head2 MaximumExecutionFrequency => Str
 
-  The maximum frequency at which the AWS Config rule runs evaluations.
+  If you want to create a rule that evaluates at a frequency that is
+independent of the configuration snapshot delivery, use the
+C<MaximumExecutionFrequency> parameter in the SourceDetail object.
 
-If your rule is periodic, meaning it runs an evaluation when AWS Config
-delivers a configuration snapshot, then it cannot run evaluations more
-frequently than AWS Config delivers the snapshots. For periodic rules,
-set the value of the C<MaximumExecutionFrequency> key to be equal to or
-greater than the value of the C<deliveryFrequency> key, which is part
-of C<ConfigSnapshotDeliveryProperties>. To update the frequency with
-which AWS Config delivers your snapshots, use the C<PutDeliveryChannel>
-action.
+If you want to create a rule that triggers evaluations for your
+resources when AWS Config delivers the configuration snapshot, see the
+following:
+
+A rule that runs an evaluation when AWS Config delivers a configuration
+snapshot cannot run evaluations more frequently than AWS Config
+delivers the snapshots. Set the value of the
+C<MaximumExecutionFrequency> to be equal to or greater than the value
+of the C<deliveryFrequency> key, which is part of
+C<ConfigSnapshotDeliveryProperties>.
+
+For more information, see ConfigSnapshotDeliveryProperties.
 
 
 =head2 Scope => L<Paws::Config::Scope>
@@ -121,7 +137,7 @@ triggered when any resource in the recording group changes.
 =head2 B<REQUIRED> Source => L<Paws::Config::Source>
 
   Provides the rule owner (AWS or customer), the rule identifier, and the
-events that cause the function to evaluate your AWS resources.
+notifications that cause the function to evaluate your AWS resources.
 
 
 

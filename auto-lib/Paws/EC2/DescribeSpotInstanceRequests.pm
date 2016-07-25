@@ -98,7 +98,9 @@ volume, in GiB.
 =item *
 
 C<launch.block-device-mapping.volume-type> - The type of the Amazon EBS
-volume (C<gp2> | C<standard> | C<io1>).
+volume: C<gp2> for General Purpose SSD, C<io1> for Provisioned IOPS
+SSD, C<st1> for Throughput Optimized HDD, C<sc1>for Cold HDD, or
+C<standard> for Magnetic.
 
 =item *
 

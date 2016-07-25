@@ -19,7 +19,7 @@ Paws::IAM::GetGroupResponse
 
 =head2 B<REQUIRED> Group => L<Paws::IAM::Group>
 
-Information about the group.
+A structure that contains details about the group.
 
 
 

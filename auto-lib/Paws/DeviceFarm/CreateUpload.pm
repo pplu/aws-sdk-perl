@@ -44,7 +44,7 @@ The upload's content type (for example, "application/octet-stream").
 
 =head2 B<REQUIRED> Name => Str
 
-The upload's file name.
+The upload's file name. The name should not contain the '/' character.
 
 
 

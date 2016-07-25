@@ -42,11 +42,14 @@ globally unique identifier or the fully specified ARN to a key.
 
 =over
 
-=item * Key ARN Example -
+=item *
+
+Key ARN Example -
 arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
-=item * Globally Unique Key ID Example -
-12345678-1234-1234-1234-123456789012
+=item *
+
+Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012
 
 =back
 
@@ -67,9 +70,9 @@ and 100, inclusive. If you do not include a value, it defaults to 50.
 =head2 Marker => Str
 
 Use this parameter only when paginating results and only in a
-subsequent request after you've received a response with truncated
-results. Set it to the value of C<NextMarker> from the response you
-just received.
+subsequent request after you receive a response with truncated results.
+Set it to the value of C<NextMarker> from the response you just
+received.
 
 
 

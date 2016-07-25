@@ -39,7 +39,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The attribute to reset.
 
-Valid values are: C<"instanceType">, C<"kernel">, C<"ramdisk">, C<"userData">, C<"disableApiTermination">, C<"instanceInitiatedShutdownBehavior">, C<"rootDeviceName">, C<"blockDeviceMapping">, C<"productCodes">, C<"sourceDestCheck">, C<"groupSet">, C<"ebsOptimized">, C<"sriovNetSupport">
+You can only reset the following attributes: C<kernel> | C<ramdisk> |
+C<sourceDestCheck>. To change an instance attribute, use
+ModifyInstanceAttribute.
+
+Valid values are: C<"instanceType">, C<"kernel">, C<"ramdisk">, C<"userData">, C<"disableApiTermination">, C<"instanceInitiatedShutdownBehavior">, C<"rootDeviceName">, C<"blockDeviceMapping">, C<"productCodes">, C<"sourceDestCheck">, C<"groupSet">, C<"ebsOptimized">, C<"sriovNetSupport">, C<"enaSupport">
 
 =head2 DryRun => Bool
 

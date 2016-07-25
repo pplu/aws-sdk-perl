@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Docume
 
 =head1 DESCRIPTION
 
-This class has no description
+Parameters specified in the SSM document that execute on the server
+when the command is run.
 
 =head1 ATTRIBUTES
 

@@ -45,7 +45,7 @@ notifications are sent.
 
 =head2 B<REQUIRED> SubscribedAt => Str
 
-  The time at which the SubscribeToEvent API is called.
+  The time at which SubscribeToEvent is called.
 
 
 

@@ -40,6 +40,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The principal.
 
+If the principal is a certificate, specify the certificate ARN. If the
+principal is an Amazon Cognito identity, specify the identity ID.
+
 
 
 =head2 B<REQUIRED> ThingName => Str

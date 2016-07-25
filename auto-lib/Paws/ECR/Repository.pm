@@ -3,6 +3,7 @@ package Paws::ECR::Repository;
   has RegistryId => (is => 'ro', isa => 'Str', xmlname => 'registryId', request_name => 'registryId', traits => ['Unwrapped','NameInRequest']);
   has RepositoryArn => (is => 'ro', isa => 'Str', xmlname => 'repositoryArn', request_name => 'repositoryArn', traits => ['Unwrapped','NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', xmlname => 'repositoryName', request_name => 'repositoryName', traits => ['Unwrapped','NameInRequest']);
+  has RepositoryUri => (is => 'ro', isa => 'Str', xmlname => 'repositoryUri', request_name => 'repositoryUri', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECR::Repository object:
 
-  $service_obj->Method(Att1 => { RegistryId => $value, ..., RepositoryName => $value  });
+  $service_obj->Method(Att1 => { RegistryId => $value, ..., RepositoryUri => $value  });
 
 =head3 Results returned from an API call
 
@@ -56,6 +57,12 @@ C<arn:aws:ecr:region:012345678910:repository/test>.
 =head2 RepositoryName => Str
 
   The name of the repository.
+
+
+=head2 RepositoryUri => Str
+
+  The URI for the repository. You can use this URI for Docker C<push> and
+C<pull> operations.
 
 
 

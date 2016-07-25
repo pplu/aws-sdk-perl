@@ -43,8 +43,9 @@ Reserved for future use.
 =head2 B<REQUIRED> ResourceIdList => ArrayRef[Str]
 
 Specifies a list of trail ARNs whose tags will be listed. The list has
-a limit of 20 ARNs. The format of a trail ARN is
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
+a limit of 20 ARNs. The format of a trail ARN is:
+
+C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
 
 
 

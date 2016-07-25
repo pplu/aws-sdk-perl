@@ -1,6 +1,7 @@
 
 package Paws::DMS::CreateEndpoint;
   use Moose;
+  has CertificateArn => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has EndpointIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has EndpointType => (is => 'ro', isa => 'Str', required => 1);
@@ -10,6 +11,7 @@ package Paws::DMS::CreateEndpoint;
   has Password => (is => 'ro', isa => 'Str', required => 1);
   has Port => (is => 'ro', isa => 'Int', required => 1);
   has ServerName => (is => 'ro', isa => 'Str', required => 1);
+  has SslMode => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
   has Username => (is => 'ro', isa => 'Str', required => 1);
 
@@ -43,6 +45,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 CertificateArn => Str
+
+The Amazon Resource Number (ARN) for the certificate.
+
+
+
 =head2 DatabaseName => Str
 
 The name of the endpoint database.
@@ -66,7 +74,7 @@ Valid values are: C<"source">, C<"target">
 =head2 B<REQUIRED> EngineName => Str
 
 The type of engine for the endpoint. Valid values include MYSQL,
-ORACLE, POSTGRES, MARIADB, AURORA, SQLSERVER.
+ORACLE, POSTGRES, MARIADB, AURORA, REDSHIFT, and SQLSERVER.
 
 
 
@@ -103,6 +111,17 @@ The port used by the endpoint database.
 The name of the server where the endpoint database resides.
 
 
+
+=head2 SslMode => Str
+
+The SSL mode to use for the SSL connection.
+
+SSL mode can be one of four values: none, require, verify-ca,
+verify-full.
+
+The default value is none.
+
+Valid values are: C<"none">, C<"require">, C<"verify-ca">, C<"verify-full">
 
 =head2 Tags => ArrayRef[L<Paws::DMS::Tag>]
 

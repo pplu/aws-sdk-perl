@@ -36,13 +36,21 @@ This data type is used as a response element in the following actions:
 
 =over
 
-=item * ModifyDBInstance
+=item *
 
-=item * RebootDBInstance
+ModifyDBInstance
 
-=item * RestoreDBInstanceFromDBSnapshot
+=item *
 
-=item * RestoreDBInstanceToPointInTime
+RebootDBInstance
+
+=item *
+
+RestoreDBInstanceFromDBSnapshot
+
+=item *
+
+RestoreDBInstanceToPointInTime
 
 =back
 

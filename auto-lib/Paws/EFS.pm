@@ -104,7 +104,7 @@ Amazon Elastic File System
 
 =head1 METHODS
 
-=head2 CreateFileSystem(CreationToken => Str)
+=head2 CreateFileSystem(CreationToken => Str, [PerformanceMode => Str])
 
 Each argument is described in detail in: L<Paws::EFS::CreateFileSystem>
 
@@ -119,10 +119,14 @@ following:
 
 =over
 
-=item * Creates a new, empty file system. The file system will have an
-Amazon EFS assigned ID, and an initial lifecycle state "creating".
+=item *
 
-=item * Returns with the description of the created file system.
+Creates a new, empty file system. The file system will have an Amazon
+EFS assigned ID, and an initial lifecycle state C<creating>.
+
+=item *
+
+Returns with the description of the created file system.
 
 =back
 
@@ -142,17 +146,27 @@ a file system, the client can learn of its existence from the
 C<FileSystemAlreadyExists> error.
 
 The C<CreateFileSystem> call returns while the file system's lifecycle
-state is still "creating". You can check the file system creation
-status by calling the DescribeFileSystems API, which among other things
-returns the file system state.
+state is still C<creating>. You can check the file system creation
+status by calling the DescribeFileSystems operation, which among other
+things returns the file system state.
+
+This operation also takes an optional C<PerformanceMode> parameter that
+you choose for your file system. We recommend C<generalPurpose>
+performance mode for most file systems. File systems using the C<maxIO>
+performance mode can scale to higher levels of aggregate throughput and
+operations per second with a tradeoff of slightly higher latencies for
+most file operations. The performance mode can't be changed after the
+file system has been created. For more information, see Amazon EFS:
+Performance Modes.
 
 After the file system is fully created, Amazon EFS sets its lifecycle
-state to "available", at which point you can create one or more mount
-targets for the file system (CreateMountTarget) in your VPC. You mount
-your Amazon EFS file system on an EC2 instances in your VPC via the
-mount target. For more information, see Amazon EFS: How it Works
+state to C<available>, at which point you can create one or more mount
+targets for the file system in your VPC. For more information, see
+CreateMountTarget. You mount your Amazon EFS file system on an EC2
+instances in your VPC via the mount target. For more information, see
+Amazon EFS: How it Works.
 
-This operation requires permission for the
+This operation requires permissions for the
 C<elasticfilesystem:CreateFileSystem> action.
 
 
@@ -175,22 +189,25 @@ information, see Amazon EFS: How it Works.
 
 In the request, you also specify a file system ID for which you are
 creating the mount target and the file system's lifecycle state must be
-"available" (see DescribeFileSystems).
+C<available>. For more information, see DescribeFileSystems.
 
-In the request, you also provide a subnet ID, which serves several
-purposes:
+In the request, you also provide a subnet ID, which determines the
+following:
 
 =over
 
-=item * It determines the VPC in which Amazon EFS creates the mount
-target.
+=item *
 
-=item * It determines the Availability Zone in which Amazon EFS creates
-the mount target.
+VPC in which Amazon EFS creates the mount target
 
-=item * It determines the IP address range from which Amazon EFS
-selects the IP address of the mount target if you don't specify an IP
-address in the request.
+=item *
+
+Availability Zone in which Amazon EFS creates the mount target
+
+=item *
+
+IP address range from which Amazon EFS selects the IP address of the
+mount target (if you don't specify an IP address in the request)
 
 =back
 
@@ -205,18 +222,20 @@ information, see How it Works: Implementation Overview.
 Note that you can create mount targets for a file system in only one
 VPC, and there can be only one mount target per Availability Zone. That
 is, if the file system already has one or more mount targets created
-for it, the request to add another mount target must meet the following
-requirements:
+for it, the subnet specified in the request to add another mount target
+must meet the following requirements:
 
 =over
 
 =item *
 
-The subnet specified in the request must belong to the same VPC as the
-subnets of the existing mount targets.
+Must belong to the same VPC as the subnets of the existing mount
+targets
 
-=item * The subnet specified in the request must not be in the same
-Availability Zone as any of the subnets of the existing mount targets.
+=item *
+
+Must not be in the same Availability Zone as any of the subnets of the
+existing mount targets
 
 =back
 
@@ -225,28 +244,40 @@ following:
 
 =over
 
-=item * Creates a new mount target in the specified subnet.
+=item *
 
-=item * Also creates a new network interface in the subnet as follows:
+Creates a new mount target in the specified subnet.
+
+=item *
+
+Also creates a new network interface in the subnet as follows:
 
 =over
 
-=item * If the request provides an C<IpAddress>, Amazon EFS assigns
-that IP address to the network interface. Otherwise, Amazon EFS assigns
-a free address in the subnet (in the same way that the Amazon EC2
+=item *
+
+If the request provides an C<IpAddress>, Amazon EFS assigns that IP
+address to the network interface. Otherwise, Amazon EFS assigns a free
+address in the subnet (in the same way that the Amazon EC2
 C<CreateNetworkInterface> call does when a request does not specify a
 primary private IP address).
 
-=item * If the request provides C<SecurityGroups>, this network
-interface is associated with those security groups. Otherwise, it
-belongs to the default security group for the subnet's VPC.
+=item *
 
-=item * Assigns the description C<"Mount target I<fsmt-id> for file
-system I<fs-id>"> where C<I<fsmt-id>> is the mount target ID, and
-C<I<fs-id>> is the C<FileSystemId>.
+If the request provides C<SecurityGroups>, this network interface is
+associated with those security groups. Otherwise, it belongs to the
+default security group for the subnet's VPC.
 
-=item * Sets the C<requesterManaged> property of the network interface
-to "true", and the C<requesterId> value to "EFS".
+=item *
+
+Assigns the description C<Mount target I<fsmt-id> for file system
+I<fs-id> > where C< I<fsmt-id> > is the mount target ID, and C<
+I<fs-id> > is the C<FileSystemId>.
+
+=item *
+
+Sets the C<requesterManaged> property of the network interface to
+C<true>, and the C<requesterId> value to C<EFS>.
 
 =back
 
@@ -260,40 +291,47 @@ C<CreateMountTarget> operation fails.
 =back
 
 The C<CreateMountTarget> call returns only after creating the network
-interface, but while the mount target state is still "creating". You
+interface, but while the mount target state is still C<creating>. You
 can check the mount target creation status by calling the
-DescribeFileSystems API, which among other things returns the mount
-target state.
+DescribeFileSystems operation, which among other things returns the
+mount target state.
 
 We recommend you create a mount target in each of the Availability
 Zones. There are cost considerations for using a file system in an
 Availability Zone through a mount target created in another
-Availability Zone. For more information, go to Amazon EFS product
-detail page. In addition, by always using a mount target local to the
-instance's Availability Zone, you eliminate a partial failure scenario;
-if the Availability Zone in which your mount target is created goes
-down, then you won't be able to access your file system through that
-mount target.
+Availability Zone. For more information, see Amazon EFS. In addition,
+by always using a mount target local to the instance's Availability
+Zone, you eliminate a partial failure scenario. If the Availability
+Zone in which your mount target is created goes down, then you won't be
+able to access your file system through that mount target.
 
-This operation requires permission for the following action on the file
-system:
+This operation requires permissions for the following action on the
+file system:
 
 =over
 
-=item * C<elasticfilesystem:CreateMountTarget>
+=item *
+
+C<elasticfilesystem:CreateMountTarget>
 
 =back
 
-This operation also requires permission for the following Amazon EC2
+This operation also requires permissions for the following Amazon EC2
 actions:
 
 =over
 
-=item * C<ec2:DescribeSubnets>
+=item *
 
-=item * C<ec2:DescribeNetworkInterfaces>
+C<ec2:DescribeSubnets>
 
-=item * C<ec2:CreateNetworkInterface>
+=item *
+
+C<ec2:DescribeNetworkInterfaces>
+
+=item *
+
+C<ec2:CreateNetworkInterface>
 
 =back
 
@@ -308,8 +346,9 @@ Returns: nothing
   Creates or overwrites tags associated with a file system. Each tag is a
 key-value pair. If a tag key specified in the request already exists on
 the file system, this operation overwrites its value with the value
-provided in the request. If you add the "Name" tag to your file system,
-Amazon EFS returns it in the response to the DescribeFileSystems API.
+provided in the request. If you add the C<Name> tag to your file
+system, Amazon EFS returns it in the response to the
+DescribeFileSystems operation.
 
 This operation requires permission for the
 C<elasticfilesystem:CreateTags> action.
@@ -322,21 +361,21 @@ Each argument is described in detail in: L<Paws::EFS::DeleteFileSystem>
 Returns: nothing
 
   Deletes a file system, permanently severing access to its contents.
-Upon return, the file system no longer exists and you will not be able
-to access any contents of the deleted file system.
+Upon return, the file system no longer exists and you can't access any
+contents of the deleted file system.
 
-You cannot delete a file system that is in use. That is, if the file
+You can't delete a file system that is in use. That is, if the file
 system has any mount targets, you must first delete them. For more
 information, see DescribeMountTargets and DeleteMountTarget.
 
 The C<DeleteFileSystem> call returns while the file system state is
-still "deleting". You can check the file system deletion status by
-calling the DescribeFileSystems API, which returns a list of file
+still C<deleting>. You can check the file system deletion status by
+calling the DescribeFileSystems operation, which returns a list of file
 systems in your account. If you pass file system ID or creation token
-for the deleted file system, the DescribeFileSystems will return a 404
-"FileSystemNotFound" error.
+for the deleted file system, the DescribeFileSystems returns a C<404
+FileSystemNotFound> error.
 
-This operation requires permission for the
+This operation requires permissions for the
 C<elasticfilesystem:DeleteFileSystem> action.
 
 
@@ -349,35 +388,39 @@ Returns: nothing
   Deletes the specified mount target.
 
 This operation forcibly breaks any mounts of the file system via the
-mount target being deleted, which might disrupt instances or
+mount target that is being deleted, which might disrupt instances or
 applications using those mounts. To avoid applications getting cut off
 abruptly, you might consider unmounting any mounts of the mount target,
 if feasible. The operation also deletes the associated network
 interface. Uncommitted writes may be lost, but breaking a mount target
 using this operation does not corrupt the file system itself. The file
 system you created remains. You can mount an EC2 instance in your VPC
-using another mount target.
+via another mount target.
 
-This operation requires permission for the following action on the file
-system:
+This operation requires permissions for the following action on the
+file system:
 
 =over
 
-=item * C<elasticfilesystem:DeleteMountTarget>
+=item *
+
+C<elasticfilesystem:DeleteMountTarget>
 
 =back
 
 The C<DeleteMountTarget> call returns while the mount target state is
-still "deleting". You can check the mount target deletion by calling
-the DescribeMountTargets API, which returns a list of mount target
-descriptions for the given file system.
+still C<deleting>. You can check the mount target deletion by calling
+the DescribeMountTargets operation, which returns a list of mount
+target descriptions for the given file system.
 
-The operation also requires permission for the following Amazon EC2
+The operation also requires permissions for the following Amazon EC2
 action on the mount target's network interface:
 
 =over
 
-=item * C<ec2:DeleteNetworkInterface>
+=item *
+
+C<ec2:DeleteNetworkInterface>
 
 =back
 
@@ -390,12 +433,12 @@ Each argument is described in detail in: L<Paws::EFS::DeleteTags>
 Returns: nothing
 
   Deletes the specified tags from a file system. If the C<DeleteTags>
-request includes a tag key that does not exist, Amazon EFS ignores it;
-it is not an error. For more information about tags and related
-restrictions, go to Tag Restrictions in the I<AWS Billing and Cost
+request includes a tag key that does not exist, Amazon EFS ignores it
+and doesn't cause an error. For more information about tags and related
+restrictions, see Tag Restrictions in the I<AWS Billing and Cost
 Management User Guide>.
 
-This operation requires permission for the
+This operation requires permissions for the
 C<elasticfilesystem:DeleteTags> action.
 
 
@@ -406,9 +449,9 @@ Each argument is described in detail in: L<Paws::EFS::DescribeFileSystems>
 Returns: a L<Paws::EFS::DescribeFileSystemsResponse> instance
 
   Returns the description of a specific Amazon EFS file system if either
-the file system C<CreationToken> or the C<FileSystemId> is provided;
-otherwise, returns descriptions of all file systems owned by the
-caller's AWS account in the AWS region of the endpoint that you're
+the file system C<CreationToken> or the C<FileSystemId> is provided.
+Otherwise, it returns descriptions of all file systems owned by the
+caller's AWS account in the AWS Region of the endpoint that you're
 calling.
 
 When retrieving all file system descriptions, you can optionally
@@ -418,21 +461,20 @@ returns a C<NextMarker>, an opaque token, in the response. In this
 case, you should send a subsequent request with the C<Marker> request
 parameter set to the value of C<NextMarker>.
 
-So to retrieve a list of your file system descriptions, the expected
-usage of this API is an iterative process of first calling
-C<DescribeFileSystems> without the C<Marker> and then continuing to
-call it with the C<Marker> parameter set to the value of the
-C<NextMarker> from the previous response until the response has no
-C<NextMarker>.
+To retrieve a list of your file system descriptions, this operation is
+used in an iterative process, where C<DescribeFileSystems> is called
+first without the C<Marker> and then the operation continues to call it
+with the C<Marker> parameter set to the value of the C<NextMarker> from
+the previous response until the response has no C<NextMarker>.
 
-Note that the implementation may return fewer than C<MaxItems> file
-system descriptions while still including a C<NextMarker> value.
+The implementation may return fewer than C<MaxItems> file system
+descriptions while still including a C<NextMarker> value.
 
 The order of file systems returned in the response of one
-C<DescribeFileSystems> call, and the order of file systems returned
-across the responses of a multi-call iteration, is unspecified.
+C<DescribeFileSystems> call and the order of file systems returned
+across the responses of a multi-call iteration is unspecified.
 
-This operation requires permission for the
+This operation requires permissions for the
 C<elasticfilesystem:DescribeFileSystems> action.
 
 
@@ -447,9 +489,9 @@ specific mount target, for a file system. When requesting all of the
 current mount targets, the order of mount targets returned in the
 response is unspecified.
 
-This operation requires permission for the
+This operation requires permissions for the
 C<elasticfilesystem:DescribeMountTargets> action, on either the file
-system id that you specify in C<FileSystemId>, or on the file system of
+system ID that you specify in C<FileSystemId>, or on the file system of
 the mount target that you specify in C<MountTargetId>.
 
 
@@ -461,18 +503,22 @@ Returns: a L<Paws::EFS::DescribeMountTargetSecurityGroupsResponse> instance
 
   Returns the security groups currently in effect for a mount target.
 This operation requires that the network interface of the mount target
-has been created and the life cycle state of the mount target is not
-"deleted".
+has been created and the lifecycle state of the mount target is not
+C<deleted>.
 
 This operation requires permissions for the following actions:
 
 =over
 
-=item * C<elasticfilesystem:DescribeMountTargetSecurityGroups> action
-on the mount target's file system.
+=item *
 
-=item * C<ec2:DescribeNetworkInterfaceAttribute> action on the mount
-target's network interface.
+C<elasticfilesystem:DescribeMountTargetSecurityGroups> action on the
+mount target's file system.
+
+=item *
+
+C<ec2:DescribeNetworkInterfaceAttribute> action on the mount target's
+network interface.
 
 =back
 
@@ -485,11 +531,11 @@ Each argument is described in detail in: L<Paws::EFS::DescribeTags>
 Returns: a L<Paws::EFS::DescribeTagsResponse> instance
 
   Returns the tags associated with a file system. The order of tags
-returned in the response of one C<DescribeTags> call, and the order of
+returned in the response of one C<DescribeTags> call and the order of
 tags returned across the responses of a multi-call iteration (when
-using pagination), is unspecified.
+using pagination) is unspecified.
 
-This operation requires permission for the
+This operation requires permissions for the
 C<elasticfilesystem:DescribeTags> action.
 
 
@@ -502,22 +548,26 @@ Returns: nothing
   Modifies the set of security groups in effect for a mount target.
 
 When you create a mount target, Amazon EFS also creates a new network
-interface (see CreateMountTarget). This operation replaces the security
-groups in effect for the network interface associated with a mount
-target, with the C<SecurityGroups> provided in the request. This
-operation requires that the network interface of the mount target has
-been created and the life cycle state of the mount target is not
-"deleted".
+interface. For more information, see CreateMountTarget. This operation
+replaces the security groups in effect for the network interface
+associated with a mount target, with the C<SecurityGroups> provided in
+the request. This operation requires that the network interface of the
+mount target has been created and the lifecycle state of the mount
+target is not C<deleted>.
 
 The operation requires permissions for the following actions:
 
 =over
 
-=item * C<elasticfilesystem:ModifyMountTargetSecurityGroups> action on
-the mount target's file system.
+=item *
 
-=item * C<ec2:ModifyNetworkInterfaceAttribute> action on the mount
-target's network interface.
+C<elasticfilesystem:ModifyMountTargetSecurityGroups> action on the
+mount target's file system.
+
+=item *
+
+C<ec2:ModifyNetworkInterfaceAttribute> action on the mount target's
+network interface.
 
 =back
 

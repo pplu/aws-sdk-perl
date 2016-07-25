@@ -68,7 +68,9 @@ follows:
 
 =over
 
-=item * To use the default master key, provide an ARN in the form of
+=item *
+
+To use the default master key, provide an ARN in the form of
 C<arn:aws:kms:REGION:ACCOUNT-ID-WITHOUT-HYPHENS:alias/aws/ses>. For
 example, if your AWS account ID is 123456789012 and you want to use the
 default master key in the US West (Oregon) region, the ARN of the
@@ -77,10 +79,12 @@ C<arn:aws:kms:us-west-2:123456789012:alias/aws/ses>. If you use the
 default master key, you don't need to perform any extra steps to give
 Amazon SES permission to use the key.
 
-=item * To use a custom master key you created in AWS KMS, provide the
-ARN of the master key and ensure that you add a statement to your key's
-policy to give Amazon SES permission to use it. For more information
-about giving permissions, see the Amazon SES Developer Guide.
+=item *
+
+To use a custom master key you created in AWS KMS, provide the ARN of
+the master key and ensure that you add a statement to your key's policy
+to give Amazon SES permission to use it. For more information about
+giving permissions, see the Amazon SES Developer Guide.
 
 =back
 

@@ -1,13 +1,20 @@
 package Paws::SSM::InstanceInformation;
   use Moose;
+  has ActivationId => (is => 'ro', isa => 'Str');
   has AgentVersion => (is => 'ro', isa => 'Str');
+  has ComputerName => (is => 'ro', isa => 'Str');
+  has IamRole => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
+  has IPAddress => (is => 'ro', isa => 'Str');
   has IsLatestVersion => (is => 'ro', isa => 'Bool');
   has LastPingDateTime => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
   has PingStatus => (is => 'ro', isa => 'Str');
   has PlatformName => (is => 'ro', isa => 'Str');
   has PlatformType => (is => 'ro', isa => 'Str');
   has PlatformVersion => (is => 'ro', isa => 'Str');
+  has RegistrationDate => (is => 'ro', isa => 'Str');
+  has ResourceType => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -27,14 +34,14 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::InstanceInformation object:
 
-  $service_obj->Method(Att1 => { AgentVersion => $value, ..., PlatformVersion => $value  });
+  $service_obj->Method(Att1 => { ActivationId => $value, ..., ResourceType => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::InstanceInformation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AgentVersion
+  $result->Att1->ActivationId
 
 =head1 DESCRIPTION
 
@@ -43,14 +50,35 @@ Describes a filter for a specific list of instances.
 =head1 ATTRIBUTES
 
 
+=head2 ActivationId => Str
+
+  The activation ID created by SSM when the server or VM was registered.
+
+
 =head2 AgentVersion => Str
 
   The version of the SSM agent running on your instance.
 
 
+=head2 ComputerName => Str
+
+  The fully qualified host name of the managed instance.
+
+
+=head2 IamRole => Str
+
+  The Amazon Identity and Access Management (IAM) role assigned to EC2
+instances or managed instances.
+
+
 =head2 InstanceId => Str
 
   The instance ID.
+
+
+=head2 IPAddress => Str
+
+  The IP address of the managed instance.
 
 
 =head2 IsLatestVersion => Bool
@@ -62,6 +90,11 @@ instance.
 =head2 LastPingDateTime => Str
 
   The date and time when agent last pinged SSM service.
+
+
+=head2 Name => Str
+
+  The name of the managed instance.
 
 
 =head2 PingStatus => Str
@@ -82,6 +115,18 @@ instance.
 =head2 PlatformVersion => Str
 
   The version of the OS platform running on your instance.
+
+
+=head2 RegistrationDate => Str
+
+  The date the server or VM was registered with AWS as a managed
+instance.
+
+
+=head2 ResourceType => Str
+
+  The type of instance. Instances are either EC2 instances or managed
+instances.
 
 
 

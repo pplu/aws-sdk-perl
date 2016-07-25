@@ -1,6 +1,7 @@
 package Paws::IoT::TopicRule;
   use Moose;
   has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Action]', xmlname => 'actions', request_name => 'actions', traits => ['Unwrapped','NameInRequest']);
+  has AwsIotSqlVersion => (is => 'ro', isa => 'Str', xmlname => 'awsIotSqlVersion', request_name => 'awsIotSqlVersion', traits => ['Unwrapped','NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', xmlname => 'createdAt', request_name => 'createdAt', traits => ['Unwrapped','NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', xmlname => 'description', request_name => 'description', traits => ['Unwrapped','NameInRequest']);
   has RuleDisabled => (is => 'ro', isa => 'Bool', xmlname => 'ruleDisabled', request_name => 'ruleDisabled', traits => ['Unwrapped','NameInRequest']);
@@ -44,6 +45,11 @@ Describes a rule.
 =head2 Actions => ArrayRef[L<Paws::IoT::Action>]
 
   The actions associated with the rule.
+
+
+=head2 AwsIotSqlVersion => Str
+
+  The version of the SQL rules engine to use when evaluating the rule.
 
 
 =head2 CreatedAt => Str

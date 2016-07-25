@@ -24,6 +24,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateRemoteAccessSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateRemoteAccessSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateUpload {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::CreateUpload', @_);
@@ -37,6 +42,11 @@ package Paws::DeviceFarm;
   sub DeleteProject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteProject', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRemoteAccessSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::DeleteRemoteAccessSession', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteRun {
@@ -84,6 +94,11 @@ package Paws::DeviceFarm;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetRemoteAccessSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetRemoteAccessSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetRun', @_);
@@ -102,6 +117,11 @@ package Paws::DeviceFarm;
   sub GetUpload {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::GetUpload', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub InstallToRemoteAccessSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::InstallToRemoteAccessSession', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListArtifacts {
@@ -137,6 +157,11 @@ package Paws::DeviceFarm;
   sub ListProjects {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListProjects', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListRemoteAccessSessions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ListRemoteAccessSessions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListRuns {
@@ -182,6 +207,11 @@ package Paws::DeviceFarm;
   sub ScheduleRun {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DeviceFarm::ScheduleRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopRemoteAccessSession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DeviceFarm::StopRemoteAccessSession', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopRun {
@@ -400,7 +430,7 @@ package Paws::DeviceFarm;
   }
 
 
-  sub operations { qw/CreateDevicePool CreateProject CreateUpload DeleteDevicePool DeleteProject DeleteRun DeleteUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetOfferingStatus GetProject GetRun GetSuite GetTest GetUpload ListArtifacts ListDevicePools ListDevices ListJobs ListOfferings ListOfferingTransactions ListProjects ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads PurchaseOffering RenewOffering ScheduleRun StopRun UpdateDevicePool UpdateProject / }
+  sub operations { qw/CreateDevicePool CreateProject CreateRemoteAccessSession CreateUpload DeleteDevicePool DeleteProject DeleteRemoteAccessSession DeleteRun DeleteUpload GetAccountSettings GetDevice GetDevicePool GetDevicePoolCompatibility GetJob GetOfferingStatus GetProject GetRemoteAccessSession GetRun GetSuite GetTest GetUpload InstallToRemoteAccessSession ListArtifacts ListDevicePools ListDevices ListJobs ListOfferings ListOfferingTransactions ListProjects ListRemoteAccessSessions ListRuns ListSamples ListSuites ListTests ListUniqueProblems ListUploads PurchaseOffering RenewOffering ScheduleRun StopRemoteAccessSession StopRun UpdateDevicePool UpdateProject / }
 
 1;
 
@@ -452,6 +482,15 @@ Returns: a L<Paws::DeviceFarm::CreateProjectResult> instance
   Creates a new project.
 
 
+=head2 CreateRemoteAccessSession(DeviceArn => Str, ProjectArn => Str, [Configuration => L<Paws::DeviceFarm::CreateRemoteAccessSessionConfiguration>, Name => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::CreateRemoteAccessSession>
+
+Returns: a L<Paws::DeviceFarm::CreateRemoteAccessSessionResult> instance
+
+  Specifies and starts a remote access session.
+
+
 =head2 CreateUpload(Name => Str, ProjectArn => Str, Type => Str, [ContentType => Str])
 
 Each argument is described in detail in: L<Paws::DeviceFarm::CreateUpload>
@@ -480,6 +519,15 @@ Returns: a L<Paws::DeviceFarm::DeleteProjectResult> instance
   Deletes an AWS Device Farm project, given the project ARN.
 
 B<Note> Deleting this resource does not stop an in-progress run.
+
+
+=head2 DeleteRemoteAccessSession(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::DeleteRemoteAccessSession>
+
+Returns: a L<Paws::DeviceFarm::DeleteRemoteAccessSessionResult> instance
+
+  Deletes a completed remote access session and its results.
 
 
 =head2 DeleteRun(Arn => Str)
@@ -571,6 +619,15 @@ Returns: a L<Paws::DeviceFarm::GetProjectResult> instance
   Gets information about a project.
 
 
+=head2 GetRemoteAccessSession(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::GetRemoteAccessSession>
+
+Returns: a L<Paws::DeviceFarm::GetRemoteAccessSessionResult> instance
+
+  Returns a link to a currently running remote access session.
+
+
 =head2 GetRun(Arn => Str)
 
 Each argument is described in detail in: L<Paws::DeviceFarm::GetRun>
@@ -605,6 +662,17 @@ Each argument is described in detail in: L<Paws::DeviceFarm::GetUpload>
 Returns: a L<Paws::DeviceFarm::GetUploadResult> instance
 
   Gets information about an upload.
+
+
+=head2 InstallToRemoteAccessSession(AppArn => Str, RemoteAccessSessionArn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::InstallToRemoteAccessSession>
+
+Returns: a L<Paws::DeviceFarm::InstallToRemoteAccessSessionResult> instance
+
+  Installs an application to the device in a remote access session. For
+Android applications, the file must be in .apk format. For iOS
+applications, the file must be in .ipa format.
 
 
 =head2 ListArtifacts(Arn => Str, Type => Str, [NextToken => Str])
@@ -678,6 +746,15 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ListProjects>
 Returns: a L<Paws::DeviceFarm::ListProjectsResult> instance
 
   Gets information about projects.
+
+
+=head2 ListRemoteAccessSessions(Arn => Str, [NextToken => Str])
+
+Each argument is described in detail in: L<Paws::DeviceFarm::ListRemoteAccessSessions>
+
+Returns: a L<Paws::DeviceFarm::ListRemoteAccessSessionsResult> instance
+
+  Returns a list of all currently running remote access sessions.
 
 
 =head2 ListRuns(Arn => Str, [NextToken => Str])
@@ -768,6 +845,15 @@ Each argument is described in detail in: L<Paws::DeviceFarm::ScheduleRun>
 Returns: a L<Paws::DeviceFarm::ScheduleRunResult> instance
 
   Schedules a run.
+
+
+=head2 StopRemoteAccessSession(Arn => Str)
+
+Each argument is described in detail in: L<Paws::DeviceFarm::StopRemoteAccessSession>
+
+Returns: a L<Paws::DeviceFarm::StopRemoteAccessSessionResult> instance
+
+  Ends a specified remote access session.
 
 
 =head2 StopRun(Arn => Str)

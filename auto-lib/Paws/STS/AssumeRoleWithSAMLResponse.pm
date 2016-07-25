@@ -23,7 +23,8 @@ Paws::STS::AssumeRoleWithSAMLResponse
 
 =head2 AssumedRoleUser => L<Paws::STS::AssumedRoleUser>
 
-
+The identifiers for the temporary security credentials that the
+operation returns.
 
 
 

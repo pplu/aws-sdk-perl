@@ -68,35 +68,33 @@ Valid Values: C<true> | C<false>
 
 The maximum number of hosted zones to be included in the response body.
 If the number of hosted zones associated with this AWS account exceeds
-C<MaxItems>, the value of ListHostedZonesByNameResponse$IsTruncated in
-the response is C<true>. Call C<ListHostedZonesByName> again and
-specify the value of ListHostedZonesByNameResponse$NextDNSName and
-ListHostedZonesByNameResponse$NextHostedZoneId elements respectively to
-get the next page of results.
+C<MaxItems>, the value of C<IsTruncated> in the
+C<ListHostedZonesByNameResponse> is C<true>. Call
+C<ListHostedZonesByName> again and specify the value of C<NextDNSName>
+and C<NextHostedZoneId> elements from the previous response to get the
+next page of results.
 
 
 
 =head2 NextDNSName => Str
 
-If ListHostedZonesByNameResponse$IsTruncated is C<true>, there are more
-hosted zones associated with the current AWS account. To get the next
-page of results, make another request to C<ListHostedZonesByName>.
-Specify the value of ListHostedZonesByNameResponse$NextDNSName in the
-ListHostedZonesByNameRequest$DNSName element and
-ListHostedZonesByNameResponse$NextHostedZoneId in the
-ListHostedZonesByNameRequest$HostedZoneId element.
+If the value of C<IsTruncated> in the C<ListHostedZonesByNameResponse>
+is C<true>, there are more hosted zones associated with the current AWS
+account. To get the next page of results, make another request to
+C<ListHostedZonesByName>. Specify the value of C<NextDNSName> in the
+C<DNSName> parameter. Specify C<NextHostedZoneId> in the
+C<HostedZoneId> parameter.
 
 
 
 =head2 NextHostedZoneId => Str
 
-If ListHostedZonesByNameResponse$IsTruncated is C<true>, there are more
-hosted zones associated with the current AWS account. To get the next
-page of results, make another request to C<ListHostedZonesByName>.
-Specify the value of ListHostedZonesByNameResponse$NextDNSName in the
-ListHostedZonesByNameRequest$DNSName element and
-ListHostedZonesByNameResponse$NextHostedZoneId in the
-ListHostedZonesByNameRequest$HostedZoneId element.
+If the value of C<IsTruncated> in the C<ListHostedZonesByNameResponse>
+is C<true>, there are more hosted zones associated with the current AWS
+account. To get the next page of results, make another request to
+C<ListHostedZonesByName>. Specify the value of C<NextDNSName> in the
+C<DNSName> parameter. Specify C<NextHostedZoneId> in the
+C<HostedZoneId> parameter.
 
 
 

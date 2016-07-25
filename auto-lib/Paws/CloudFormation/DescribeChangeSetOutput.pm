@@ -7,6 +7,7 @@ package Paws::CloudFormation::DescribeChangeSetOutput;
   has ChangeSetName => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has ExecutionStatus => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
@@ -64,6 +65,16 @@ The start time when the change set was created, in UTC.
 Information about the change set.
 
 
+
+=head2 ExecutionStatus => Str
+
+If the change set execution status is C<AVAILABLE>, you can execute the
+change set. If you canE<rsquo>t execute the change set, the status
+indicates why. For example, a change set might be in an C<UNAVAILABLE>
+state because AWS CloudFormation is still creating it or in an
+C<OBSOLETE> state because the stack was already updated.
+
+Valid values are: C<"UNAVAILABLE">, C<"AVAILABLE">, C<"EXECUTE_IN_PROGRESS">, C<"EXECUTE_COMPLETE">, C<"EXECUTE_FAILED">, C<"OBSOLETE">
 
 =head2 NextToken => Str
 

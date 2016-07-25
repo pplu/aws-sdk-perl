@@ -40,7 +40,7 @@ non-continent geo locations, this should be null.
 Valid values: C<AF> | C<AN> | C<AS> | C<EU> | C<OC> | C<NA> | C<SA>
 
 Constraint: Specifying C<ContinentCode> with either C<CountryCode> or
-C<SubdivisionCode> returns an InvalidInput error.
+C<SubdivisionCode> returns an C<InvalidInput> error.
 
 
 
@@ -60,7 +60,7 @@ The first subdivision code in the lexicographic ordering of geo
 locations that you want the C<ListGeoLocations> request to list.
 
 Constraint: Specifying C<SubdivisionCode> without C<CountryCode>
-returns an InvalidInput error.
+returns an C<InvalidInput> error.
 
 
 

@@ -6,6 +6,7 @@ package Paws::DMS::ReplicationInstance;
   has EngineVersion => (is => 'ro', isa => 'Str');
   has InstanceCreateTime => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has PendingModifiedValues => (is => 'ro', isa => 'Paws::DMS::ReplicationPendingModifiedValues');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
@@ -13,9 +14,12 @@ package Paws::DMS::ReplicationInstance;
   has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
   has ReplicationInstanceIdentifier => (is => 'ro', isa => 'Str');
   has ReplicationInstancePrivateIpAddress => (is => 'ro', isa => 'Str');
+  has ReplicationInstancePrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
   has ReplicationInstancePublicIpAddress => (is => 'ro', isa => 'Str');
+  has ReplicationInstancePublicIpAddresses => (is => 'ro', isa => 'ArrayRef[Str]');
   has ReplicationInstanceStatus => (is => 'ro', isa => 'Str');
   has ReplicationSubnetGroup => (is => 'ro', isa => 'Paws::DMS::ReplicationSubnetGroup');
+  has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DMS::VpcSecurityGroupMembership]');
 1;
 
 ### main pod documentation begin ###
@@ -35,7 +39,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DMS::ReplicationInstance object:
 
-  $service_obj->Method(Att1 => { AllocatedStorage => $value, ..., ReplicationSubnetGroup => $value  });
+  $service_obj->Method(Att1 => { AllocatedStorage => $value, ..., VpcSecurityGroups => $value  });
 
 =head3 Results returned from an API call
 
@@ -87,6 +91,13 @@ creates the default encryption key for your AWS account. Your AWS
 account has a different default encryption key for each AWS region.
 
 
+=head2 MultiAZ => Bool
+
+  Specifies if the replication instance is a Multi-AZ deployment. You
+cannot set the C<AvailabilityZone> parameter if the Multi-AZ parameter
+is set to C<true>.
+
+
 =head2 PendingModifiedValues => L<Paws::DMS::ReplicationPendingModifiedValues>
 
   The pending modification values.
@@ -128,11 +139,17 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens.
+=item *
 
-=item * First character must be a letter.
+Must contain from 1 to 63 alphanumeric characters or hyphens.
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
+
+First character must be a letter.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -144,7 +161,17 @@ Example: C<myrepinstance>
   The private IP address of the replication instance.
 
 
+=head2 ReplicationInstancePrivateIpAddresses => ArrayRef[Str]
+
+  The private IP address of the replication instance.
+
+
 =head2 ReplicationInstancePublicIpAddress => Str
+
+  The public IP address of the replication instance.
+
+
+=head2 ReplicationInstancePublicIpAddresses => ArrayRef[Str]
 
   The public IP address of the replication instance.
 
@@ -157,6 +184,11 @@ Example: C<myrepinstance>
 =head2 ReplicationSubnetGroup => L<Paws::DMS::ReplicationSubnetGroup>
 
   The subnet group for the replication instance.
+
+
+=head2 VpcSecurityGroups => ArrayRef[L<Paws::DMS::VpcSecurityGroupMembership>]
+
+  The VPC security group for the instance.
 
 
 

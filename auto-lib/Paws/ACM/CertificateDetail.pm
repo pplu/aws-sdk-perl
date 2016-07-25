@@ -4,6 +4,7 @@ package Paws::ACM::CertificateDetail;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
   has DomainValidationOptions => (is => 'ro', isa => 'ArrayRef[Paws::ACM::DomainValidation]');
+  has FailureReason => (is => 'ro', isa => 'Str');
   has InUseBy => (is => 'ro', isa => 'ArrayRef[Str]');
   has IssuedAt => (is => 'ro', isa => 'Str');
   has Issuer => (is => 'ro', isa => 'Str');
@@ -47,49 +48,53 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACM::Certif
 
 =head1 DESCRIPTION
 
-This structure is returned in the response object of the
-DescribeCertificate action.
+Contains detailed metadata about an ACM Certificate. This structure is
+returned in the response to a DescribeCertificate request.
 
 =head1 ATTRIBUTES
 
 
 =head2 CertificateArn => Str
 
-  Amazon Resource Name (ARN) of the certificate. This is of the form:
-
-C<arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012>
-
-For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces.
+  The Amazon Resource Name (ARN) of the certificate. For more information
+about ARNs, see Amazon Resource Names (ARNs) and AWS Service
+Namespaces.
 
 
 =head2 CreatedAt => Str
 
-  Time at which the certificate was requested.
+  The time at which the certificate was requested.
 
 
 =head2 DomainName => Str
 
-  Fully qualified domain name (FQDN), such as www.example.com or
-example.com, for the certificate.
+  The fully qualified domain name (FQDN) for the certificate, such as
+www.example.com or example.com.
 
 
 =head2 DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidation>]
 
-  References a DomainValidation structure that contains the domain name
-in the certificate and the email address that can be used for
-validation.
+  Contains information about the email address or addresses used for
+domain validation.
+
+
+=head2 FailureReason => Str
+
+  The reason the certificate request failed. This value exists only when
+the structure's C<Status> is C<FAILED>. For more information, see
+Certificate Request Failed in the I<AWS Certificate Manager User
+Guide>.
 
 
 =head2 InUseBy => ArrayRef[Str]
 
-  List that identifies ARNs that are using the certificate. A single ACM
+  A list of ARNs for the resources that are using the certificate. An ACM
 Certificate can be used by multiple AWS resources.
 
 
 =head2 IssuedAt => Str
 
-  Time at which the certificate was issued.
+  The time at which the certificate was issued.
 
 
 =head2 Issuer => Str
@@ -100,92 +105,46 @@ certificate.
 
 =head2 KeyAlgorithm => Str
 
-  Asymmetric algorithm used to generate the public and private key pair.
-Currently the only supported value is C<RSA_2048>.
+  The algorithm used to generate the key pair (the public and private
+key). Currently the only supported value is C<RSA_2048>.
 
 
 =head2 NotAfter => Str
 
-  Time after which the certificate is not valid.
+  The time after which the certificate is not valid.
 
 
 =head2 NotBefore => Str
 
-  Time before which the certificate is not valid.
+  The time before which the certificate is not valid.
 
 
 =head2 RevocationReason => Str
 
-  A C<RevocationReason> enumeration value that indicates why the
-certificate was revoked. This value exists only if the certificate has
-been revoked. This can be one of the following vales:
-
-=over
-
-=item * UNSPECIFIED
-
-=item * KEY_COMPROMISE
-
-=item * CA_COMPROMISE
-
-=item * AFFILIATION_CHANGED
-
-=item * SUPERCEDED
-
-=item * CESSATION_OF_OPERATION
-
-=item * CERTIFICATE_HOLD
-
-=item * REMOVE_FROM_CRL
-
-=item * PRIVILEGE_WITHDRAWN
-
-=item * A_A_COMPROMISE
-
-=back
-
+  The reason the certificate was revoked. This value exists only when the
+certificate status is C<REVOKED>.
 
 
 =head2 RevokedAt => Str
 
-  The time, if any, at which the certificate was revoked. This value
-exists only if the certificate has been revoked.
+  The time at which the certificate was revoked. This value exists only
+when the certificate status is C<REVOKED>.
 
 
 =head2 Serial => Str
 
-  String that contains the serial number of the certificate.
+  The serial number of the certificate.
 
 
 =head2 SignatureAlgorithm => Str
 
-  Algorithm used to generate a signature. Currently the only supported
-value is C<SHA256WITHRSA>.
+  The algorithm used to generate a signature. Currently the only
+supported value is C<SHA256WITHRSA>.
 
 
 =head2 Status => Str
 
-  A C<CertificateStatus> enumeration value that can contain one of the
-following:
-
-=over
-
-=item * PENDING_VALIDATION
-
-=item * ISSUED
-
-=item * INACTIVE
-
-=item * EXPIRED
-
-=item * REVOKED
-
-=item * FAILED
-
-=item * VALIDATION_TIMED_OUT
-
-=back
-
+  The status of the certificate.
 
 
 =head2 Subject => Str

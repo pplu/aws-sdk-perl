@@ -104,14 +104,21 @@ Examples:
 
 =over
 
-=item * alias/MyAliasName
+=item *
 
-=item * arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
+alias/MyAliasName
 
 =item *
+
+arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
+
+=item *
+
 arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
-=item * 12345678-1234-1234-1234-123456789012
+=item *
+
+12345678-1234-1234-1234-123456789012
 
 =back
 
@@ -125,22 +132,33 @@ name, the string must meet the following requirements:
 
 =over
 
-=item * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods
-(.), underscores (_), or dashes (-)
+=item *
 
-=item * Start with a letter or number, and end with a letter or number
+Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
+underscores (_), or dashes (-)
 
-=item * Be between 3 and 128 characters
+=item *
 
-=item * Have no adjacent periods, underscores or dashes. Names like
+Start with a letter or number, and end with a letter or number
+
+=item *
+
+Be between 3 and 128 characters
+
+=item *
+
+Have no adjacent periods, underscores or dashes. Names like
 C<my-_namespace> and C<my--namespace> are invalid.
 
-=item * Not be in IP address format (for example, 192.168.5.4)
+=item *
+
+Not be in IP address format (for example, 192.168.5.4)
 
 =back
 
-If C<Name> is a trail ARN, it must be in the format
-C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>.
+If C<Name> is a trail ARN, it must be in the format:
+
+C<arn:aws:cloudtrail:us-east-1:123456789012:trail/MyTrail>
 
 
 

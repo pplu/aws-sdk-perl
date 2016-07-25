@@ -47,22 +47,29 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 Capabilities => ArrayRef[Str]
 
-A list of capabilities that you must specify before AWS CloudFormation
-can create certain stacks. Some stack templates might include resources
+A list of values that you must specify before AWS CloudFormation can
+create certain stacks. Some stack templates might include resources
 that can affect permissions in your AWS account, for example, by
 creating new AWS Identity and Access Management (IAM) users. For those
 stacks, you must explicitly acknowledge their capabilities by
 specifying this parameter.
 
-Currently, the only valid value is C<CAPABILITY_IAM>, which is required
-for the following resources: AWS::IAM::AccessKey, AWS::IAM::Group,
+The only valid values are C<CAPABILITY_IAM> and
+C<CAPABILITY_NAMED_IAM>. The following resources require you to specify
+this parameter: AWS::IAM::AccessKey, AWS::IAM::Group,
 AWS::IAM::InstanceProfile, AWS::IAM::Policy, AWS::IAM::Role,
 AWS::IAM::User, and AWS::IAM::UserToGroupAddition. If your stack
 template contains these resources, we recommend that you review all
 permissions associated with them and edit their permissions if
-necessary. If your template contains any of the listed resources and
-you don't specify this parameter, this action returns an
-C<InsufficientCapabilities> error.
+necessary.
+
+If you have IAM resources, you can specify either capability. If you
+have IAM resources with custom names, you must specify
+C<CAPABILITY_NAMED_IAM>. If you don't specify this parameter, this
+action returns an C<InsufficientCapabilities> error.
+
+For more information, see Acknowledging IAM Resources in AWS
+CloudFormation Templates.
 
 
 
@@ -108,9 +115,9 @@ this create stack action, such as C<AWS::EC2::Instance>,
 C<AWS::EC2::*>, or C<Custom::MyCustomInstance>. Use the following
 syntax to describe template resource types: C<AWS::*> (for all AWS
 resource), C<Custom::*> (for all custom resources),
-C<Custom::I<logical_ID>> (for a specific custom resource),
+C<Custom::I<logical_ID> > (for a specific custom resource),
 C<AWS::I<service_name>::*> (for all resources of a particular AWS
-service), and C<AWS::I<service_name>::I<resource_logical_ID>> (for a
+service), and C<AWS::I<service_name>::I<resource_logical_ID> > (for a
 specific AWS resource).
 
 If the list of resource types doesn't include a resource that you're

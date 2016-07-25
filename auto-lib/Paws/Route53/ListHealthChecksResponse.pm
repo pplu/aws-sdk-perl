@@ -61,19 +61,19 @@ in the C<marker> parameter to get the next page of results.
 
 The maximum number of health checks to be included in the response
 body. If the number of health checks associated with this AWS account
-exceeds C<MaxItems>, the value of ListHealthChecksResponse$IsTruncated
-in the response is C<true>. Call C<ListHealthChecks> again and specify
-the value of ListHealthChecksResponse$NextMarker in the
-ListHostedZonesRequest$Marker element to get the next page of results.
+exceeds C<MaxItems>, the value of C<IsTruncated> in the response is
+C<true>. Call C<ListHealthChecks> again and specify the value of
+C<NextMarker> from the last response in the C<Marker> element of the
+next request to get the next page of results.
 
 
 
 =head2 NextMarker => Str
 
-Indicates where to continue listing health checks. If
-ListHealthChecksResponse$IsTruncated is C<true>, make another request
-to C<ListHealthChecks> and include the value of the C<NextMarker>
-element in the C<Marker> element to get the next page of results.
+Indicates where to continue listing health checks. If C<IsTruncated> is
+C<true>, make another request to C<ListHealthChecks> and include the
+value of the C<NextMarker> element in the C<Marker> element to get the
+next page of results.
 
 
 

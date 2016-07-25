@@ -52,11 +52,12 @@ element can have one of the following values:
 
 =over
 
-=item * NONE - Endpoint does not exist or was previously deleted.
+=item * C<NONE> - Endpoint does not exist or was previously deleted.
 
-=item * READY - Endpoint is ready to be used for real-time predictions.
+=item * C<READY> - Endpoint is ready to be used for real-time
+predictions.
 
-=item * UPDATING - Updating/creating the endpoint.
+=item * C<UPDATING> - Updating/creating the endpoint.
 
 =back
 

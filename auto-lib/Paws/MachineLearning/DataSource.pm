@@ -45,7 +45,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head1 DESCRIPTION
 
-Represents the output of the GetDataSource operation.
+Represents the output of the C<GetDataSource> operation.
 
 The content consists of the detailed metadata and data file information
 and the current status of the C<DataSource>.
@@ -80,8 +80,8 @@ Access Management (IAM) user account.
 
 =head2 DataRearrangement => Str
 
-  A JSON string that represents the splitting requirement of a
-C<Datasource>.
+  A JSON string that represents the splitting and rearrangement
+requirement used when this C<DataSource> was created.
 
 
 =head2 DataSizeInBytes => Int

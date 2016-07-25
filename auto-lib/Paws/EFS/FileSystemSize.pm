@@ -32,30 +32,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EFS::FileSy
 
 =head1 DESCRIPTION
 
-This object provides the latest known metered size, in bytes, of data
-stored in the file system, in its C<Value> field, and the time at which
-that size was determined in its C<Timestamp> field. Note that the value
-does not represent the size of a consistent snapshot of the file
-system, but it is eventually consistent when there are no writes to the
-file system. That is, the value will represent the actual size only if
-the file system is not modified for a period longer than a couple of
-hours. Otherwise, the value is not necessarily the exact size the file
-system was at any instant in time.
+Latest known metered size (in bytes) of data stored in the file system,
+in its C<Value> field, and the time at which that size was determined
+in its C<Timestamp> field. Note that the value does not represent the
+size of a consistent snapshot of the file system, but it is eventually
+consistent when there are no writes to the file system. That is, the
+value will represent the actual size only if the file system is not
+modified for a period longer than a couple of hours. Otherwise, the
+value is not necessarily the exact size the file system was at any
+instant in time.
 
 =head1 ATTRIBUTES
 
 
 =head2 Timestamp => Str
 
-  The time at which the size of data, returned in the C<Value> field, was
+  Time at which the size of data, returned in the C<Value> field, was
 determined. The value is the integer number of seconds since
 1970-01-01T00:00:00Z.
 
 
 =head2 B<REQUIRED> Value => Int
 
-  The latest known metered size, in bytes, of data stored in the file
-system.
+  Latest known metered size (in bytes) of data stored in the file system.
 
 
 

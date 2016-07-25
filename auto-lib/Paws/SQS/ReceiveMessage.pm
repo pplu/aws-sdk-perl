@@ -41,28 +41,43 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AttributeNames => ArrayRef[Str]
 
 A list of attributes that need to be returned along with each message.
-
-The following lists the names and descriptions of the attributes that
-can be returned:
+These attributes include:
 
 =over
 
-=item * C<All> - returns all values.
+=item *
 
-=item * C<ApproximateFirstReceiveTimestamp> - returns the time when the
-message was first received from the queue (epoch time in milliseconds).
+C<All> - returns all values.
 
-=item * C<ApproximateReceiveCount> - returns the number of times a
-message has been received from the queue but not deleted.
+=item *
 
-=item * C<SenderId> - returns the AWS account number (or the IP
-address, if anonymous access is allowed) of the sender.
+C<ApproximateFirstReceiveTimestamp> - returns the time when the message
+was first received from the queue (epoch time in milliseconds).
 
-=item * C<SentTimestamp> - returns the time when the message was sent
-to the queue (epoch time in milliseconds).
+=item *
+
+C<ApproximateReceiveCount> - returns the number of times a message has
+been received from the queue but not deleted.
+
+=item *
+
+C<SenderId> - returns the AWS account number (or the IP address, if
+anonymous access is allowed) of the sender.
+
+=item *
+
+C<SentTimestamp> - returns the time when the message was sent to the
+queue (epoch time in milliseconds).
 
 =back
 
+Any other valid special request parameters that are specified (such as
+C<ApproximateNumberOfMessages>, C<ApproximateNumberOfMessagesDelayed>,
+C<ApproximateNumberOfMessagesNotVisible>, C<CreatedTimestamp>,
+C<DelaySeconds>, C<LastModifiedTimestamp>, C<MaximumMessageSize>,
+C<MessageRetentionPeriod>, C<Policy>, C<QueueArn>,
+C<ReceiveMessageWaitTimeSeconds>, C<RedrivePolicy>, and
+C<VisibilityTimeout>) will be ignored.
 
 
 
@@ -89,14 +104,16 @@ these prefixes are reserved for use by Amazon Web Services.
 
 When using C<ReceiveMessage>, you can send a list of attribute names to
 receive, or you can return all of the attributes by specifying "All" or
-".*" in your request. You can also use "foo.*" to return all message
-attributes starting with the "foo" prefix.
+".*" in your request. You can also use "bar.*" to return all message
+attributes starting with the "bar" prefix.
 
 
 
 =head2 B<REQUIRED> QueueUrl => Str
 
 The URL of the Amazon SQS queue to take action on.
+
+Queue URLs are case-sensitive.
 
 
 

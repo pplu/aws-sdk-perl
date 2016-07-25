@@ -58,17 +58,34 @@ Guide>.
 This parameter is optional. If it is not included, it defaults to a
 slash (/).
 
+The regex pattern for this parameter is a string of characters
+consisting of either a forward slash (/) by itself or a string that
+must begin and end with forward slashes, containing any ASCII character
+from the ! (\u0021) thru the DEL character (\u007F), including most
+punctuation characters, digits, and upper and lowercased letters.
+
 
 
 =head2 B<REQUIRED> PolicyDocument => Str
 
-The policy document.
+The JSON policy document that you want to use as the content for the
+new policy.
+
+The regex pattern for this parameter is a string of characters
+consisting of any printable ASCII character ranging from the space
+character (\u0020) through end of the ASCII character range (\u00FF).
+It also includes the special characters tab (\u0009), line feed
+(\u000A), and carriage return (\u000D).
 
 
 
 =head2 B<REQUIRED> PolicyName => Str
 
-The name of the policy document.
+The friendly name of the policy.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

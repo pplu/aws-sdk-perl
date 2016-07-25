@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The type of medium changer you want to select.
 
-I<Valid Values>: "STK-L700", "AWS-Gateway-VTL"
+Valid Values: "STK-L700", "AWS-Gateway-VTL"
 
 
 

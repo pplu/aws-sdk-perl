@@ -14,6 +14,11 @@ package Paws::ACM;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
 
   
+  sub AddTagsToCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACM::AddTagsToCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ACM::DeleteCertificate', @_);
@@ -34,6 +39,16 @@ package Paws::ACM;
     my $call_object = $self->new_with_coercions('Paws::ACM::ListCertificates', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACM::ListTagsForCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveTagsFromCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACM::RemoveTagsFromCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RequestCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ACM::RequestCertificate', @_);
@@ -47,7 +62,7 @@ package Paws::ACM;
   
 
 
-  sub operations { qw/DeleteCertificate DescribeCertificate GetCertificate ListCertificates RequestCertificate ResendValidationEmail / }
+  sub operations { qw/AddTagsToCertificate DeleteCertificate DescribeCertificate GetCertificate ListCertificates ListTagsForCertificate RemoveTagsFromCertificate RequestCertificate ResendValidationEmail / }
 
 1;
 
@@ -88,6 +103,33 @@ API Reference.
 
 =head1 METHODS
 
+=head2 AddTagsToCertificate(CertificateArn => Str, Tags => ArrayRef[L<Paws::ACM::Tag>])
+
+Each argument is described in detail in: L<Paws::ACM::AddTagsToCertificate>
+
+Returns: nothing
+
+  Adds one or more tags to an ACM Certificate. Tags are labels that you
+can use to identify and organize your AWS resources. Each tag consists
+of a C<key> and an optional C<value>. You specify the certificate on
+input by its Amazon Resource Name (ARN). You specify the tag by using a
+key-value pair.
+
+You can apply a tag to just one certificate if you want to identify a
+specific characteristic of that certificate, or you can apply the same
+tag to multiple certificates if you want to filter for a common
+relationship among those certificates. Similarly, you can apply the
+same tag to multiple resources if you want to specify a relationship
+among those resources. For example, you can add the same tag to an ACM
+Certificate and an Elastic Load Balancing load balancer to indicate
+that they are both used by the same website. For more information, see
+Tagging ACM Certificates.
+
+To remove one or more tags, use the RemoveTagsFromCertificate action.
+To view all of the tags that have been applied to the certificate, use
+the ListTagsForCertificate action.
+
+
 =head2 DeleteCertificate(CertificateArn => Str)
 
 Each argument is described in detail in: L<Paws::ACM::DeleteCertificate>
@@ -115,7 +157,7 @@ Returns: a L<Paws::ACM::DescribeCertificateResponse> instance
 Certificate. For example, this action returns the certificate status, a
 flag that indicates whether the certificate is associated with any
 other AWS service, and the date at which the certificate request was
-created. The ACM Certificate is specified on input by its Amazon
+created. You specify the ACM Certificate on input by its Amazon
 Resource Name (ARN).
 
 
@@ -142,13 +184,38 @@ Each argument is described in detail in: L<Paws::ACM::ListCertificates>
 
 Returns: a L<Paws::ACM::ListCertificatesResponse> instance
 
-  Retrieves a list of the ACM Certificate ARNs, and the domain name for
-each ARN, owned by the calling account. You can filter the list based
-on the C<CertificateStatuses> parameter, and you can display up to
-C<MaxItems> certificates at one time. If you have more than C<MaxItems>
-certificates, use the C<NextToken> marker from the response object in
-your next call to the C<ListCertificates> action to retrieve the next
-set of certificate ARNs.
+  Retrieves a list of ACM Certificates and the domain name for each. You
+can optionally filter the list to return only the certificates that
+match the specified status.
+
+
+=head2 ListTagsForCertificate(CertificateArn => Str)
+
+Each argument is described in detail in: L<Paws::ACM::ListTagsForCertificate>
+
+Returns: a L<Paws::ACM::ListTagsForCertificateResponse> instance
+
+  Lists the tags that have been applied to the ACM Certificate. Use the
+certificate ARN to specify the certificate. To add a tag to an ACM
+Certificate, use the AddTagsToCertificate action. To delete a tag, use
+the RemoveTagsFromCertificate action.
+
+
+=head2 RemoveTagsFromCertificate(CertificateArn => Str, Tags => ArrayRef[L<Paws::ACM::Tag>])
+
+Each argument is described in detail in: L<Paws::ACM::RemoveTagsFromCertificate>
+
+Returns: nothing
+
+  Remove one or more tags from an ACM Certificate. A tag consists of a
+key-value pair. If you do not specify the value portion of the tag when
+calling this function, the tag will be removed regardless of value. If
+you specify a value, the tag is removed only if it is associated with
+the specified value.
+
+To add tags to a certificate, use the AddTagsToCertificate action. To
+view all of the tags that have been applied to a specific ACM
+Certificate, use the ListTagsForCertificate action.
 
 
 =head2 RequestCertificate(DomainName => Str, [DomainValidationOptions => ArrayRef[L<Paws::ACM::DomainValidationOption>], IdempotencyToken => Str, SubjectAlternativeNames => ArrayRef[Str]])

@@ -44,7 +44,8 @@ The entity type to use for filtering the results.
 For example, when C<EntityFilter> is C<Role>, only the roles that are
 attached to the specified policy are returned. This parameter is
 optional. If it is not included, all attached entities (users, groups,
-and roles) are returned.
+and roles) are returned. The argument for this parameter must be one of
+the valid values listed below.
 
 Valid values are: C<"User">, C<"Role">, C<"Group">, C<"LocalManagedPolicy">, C<"AWSManagedPolicy">
 
@@ -77,11 +78,21 @@ The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all
 entities.
 
+The regex pattern for this parameter is a string of characters
+consisting of either a forward slash (/) by itself or a string that
+must begin and end with forward slashes, containing any ASCII character
+from the ! (\u0021) thru the DEL character (\u007F), including most
+punctuation characters, digits, and upper and lowercased letters.
+
 
 
 =head2 B<REQUIRED> PolicyArn => Str
 
+The Amazon Resource Name (ARN) of the IAM policy for which you want the
+versions.
 
+For more information about ARNs, see Amazon Resource Names (ARNs) and
+AWS Service Namespaces in the I<AWS General Reference>.
 
 
 

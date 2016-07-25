@@ -62,6 +62,10 @@ subsequent call that tells the service where to continue from.
 
 The name of the role to list policies for.
 
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
+
 
 
 

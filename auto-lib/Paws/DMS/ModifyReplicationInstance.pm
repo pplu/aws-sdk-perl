@@ -6,10 +6,12 @@ package Paws::DMS::ModifyReplicationInstance;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has MultiAZ => (is => 'ro', isa => 'Bool');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ReplicationInstanceArn => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationInstanceClass => (is => 'ro', isa => 'Str');
   has ReplicationInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -85,6 +87,14 @@ The engine version number of the replication instance.
 
 
 
+=head2 MultiAZ => Bool
+
+Specifies if the replication instance is a Multi-AZ deployment. You
+cannot set the C<AvailabilityZone> parameter if the Multi-AZ parameter
+is set to C<true>.
+
+
+
 =head2 PreferredMaintenanceWindow => Str
 
 The weekly time range (in UTC) during which system maintenance can
@@ -125,6 +135,14 @@ dms.c4.4xlarge>
 
 The replication instance identifier. This parameter is stored as a
 lowercase string.
+
+
+
+=head2 VpcSecurityGroupIds => ArrayRef[Str]
+
+Specifies the VPC security group to be used with the replication
+instance. The VPC security group must work with the VPC containing the
+replication instance.
 
 
 

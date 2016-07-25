@@ -39,11 +39,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The serial number that uniquely identifies the MFA device. For virtual
 MFA devices, the serial number is the device ARN.
 
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =/:,.@-
+
 
 
 =head2 B<REQUIRED> UserName => Str
 
 The name of the user whose MFA device you want to deactivate.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

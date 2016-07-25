@@ -62,6 +62,8 @@ The name of the CloudWatch log group.
 
 One or more subnet, network interface, or VPC IDs.
 
+Constraints: Maximum of 1000 resources
+
 
 
 =head2 B<REQUIRED> ResourceType => Str

@@ -1,7 +1,7 @@
 package Paws::EC2;
   use Moose;
   sub service { 'ec2' }
-  sub version { '2015-10-01' }
+  sub version { '2016-04-01' }
   sub flattened_arrays { 1 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -454,6 +454,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeHosts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeIdentityIdFormat {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeIdentityIdFormat', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeIdFormat {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeIdFormat', @_);
@@ -579,6 +584,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeScheduledInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeSecurityGroupReferences {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSecurityGroupReferences', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSecurityGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSecurityGroups', @_);
@@ -622,6 +632,11 @@ package Paws::EC2;
   sub DescribeSpotPriceHistory {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSpotPriceHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeStaleSecurityGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeStaleSecurityGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSubnets {
@@ -769,6 +784,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetConsoleOutput', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetConsoleScreenshot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetConsoleScreenshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetPasswordData {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetPasswordData', @_);
@@ -802,6 +822,11 @@ package Paws::EC2;
   sub ModifyHosts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyHosts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyIdentityIdFormat {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyIdentityIdFormat', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyIdFormat {
@@ -862,6 +887,11 @@ package Paws::EC2;
   sub ModifyVpcEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyVpcPeeringConnectionOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpcPeeringConnectionOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub MonitorInstances {
@@ -1104,6 +1134,24 @@ package Paws::EC2;
 
     return $self->new_with_coercions(Paws::EC2::DescribeSnapshots->_returns, %$params);
   }
+  sub DescribeAllSpotFleetRequests {
+    my $self = shift;
+
+    my $result = $self->DescribeSpotFleetRequests(@_);
+    my $params = {};
+    
+    $params->{ SpotFleetRequestConfigs } = $result->SpotFleetRequestConfigs;
+    
+
+    while ($result->) {
+      $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
+      
+      push @{ $params->{ SpotFleetRequestConfigs } }, @{ $result->SpotFleetRequestConfigs };
+      
+    }
+
+    return $self->new_with_coercions(Paws::EC2::DescribeSpotFleetRequests->_returns, %$params);
+  }
   sub DescribeAllSpotPriceHistory {
     my $self = shift;
 
@@ -1178,7 +1226,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHosts DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetPasswordData ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint MonitorInstances MoveAddressToVpc PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
+  sub operations { qw/AcceptVpcPeeringConnection AllocateAddress AllocateHosts AssignPrivateIpAddresses AssociateAddress AssociateDhcpOptions AssociateRouteTable AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyImage CopySnapshot CreateCustomerGateway CreateDhcpOptions CreateFlowLogs CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateVolume CreateVpc CreateVpcEndpoint CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCustomerGateway DeleteDhcpOptions DeleteFlowLogs DeleteInternetGateway DeleteKeyPair DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeletePlacementGroup DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteVolume DeleteVpc DeleteVpcEndpoints DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeregisterImage DescribeAccountAttributes DescribeAddresses DescribeAvailabilityZones DescribeBundleTasks DescribeClassicLinkInstances DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeExportTasks DescribeFlowLogs DescribeHosts DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstances DescribeInstanceStatus DescribeInternetGateways DescribeKeyPairs DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeVolumeAttribute DescribeVolumes DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpoints DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateRouteTable EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport GetConsoleOutput GetConsoleScreenshot GetPasswordData ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstancePlacement ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcPeeringConnectionOptions MonitorInstances MoveAddressToVpc PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances StartInstances StopInstances TerminateInstances UnassignPrivateIpAddresses UnmonitorInstances / }
 
 1;
 
@@ -1398,16 +1446,24 @@ If a volume has an AWS Marketplace product code:
 
 =over
 
-=item * The volume can be attached only to a stopped instance.
+=item *
 
-=item * AWS Marketplace product codes are copied from the volume to the
+The volume can be attached only to a stopped instance.
+
+=item *
+
+AWS Marketplace product codes are copied from the volume to the
 instance.
 
-=item * You must be subscribed to the product.
+=item *
 
-=item * The instance type and operating system of the instance must
-support the product. For example, you can't detach a volume from a
-Windows instance and attach it to a Linux instance.
+You must be subscribed to the product.
+
+=item *
+
+The instance type and operating system of the instance must support the
+product. For example, you can't detach a volume from a Windows instance
+and attach it to a Linux instance.
 
 =back
 
@@ -1643,6 +1699,10 @@ snapshot copies use the default AWS Key Management Service (AWS KMS)
 customer master key (CMK); however, you can specify a non-default CMK
 with the C<KmsKeyId> parameter.
 
+To copy an encrypted snapshot that has been shared from another
+account, you must have permissions for the CMK used to encrypt the
+snapshot.
+
 For more information, see Copying an Amazon EBS Snapshot in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -1696,33 +1756,41 @@ information about the options, see RFC 2132.
 
 =over
 
-=item * C<domain-name-servers> - The IP addresses of up to four domain
-name servers, or C<AmazonProvidedDNS>. The default DHCP option set
-specifies C<AmazonProvidedDNS>. If specifying more than one domain name
-server, specify the IP addresses in a single parameter, separated by
-commas.
+=item *
 
-=item * C<domain-name> - If you're using AmazonProvidedDNS in
-C<us-east-1>, specify C<ec2.internal>. If you're using
-AmazonProvidedDNS in another region, specify C<region.compute.internal>
-(for example, C<ap-northeast-1.compute.internal>). Otherwise, specify a
-domain name (for example, C<MyCompany.com>). B<Important>: Some Linux
-operating systems accept multiple domain names separated by spaces.
-However, Windows and other Linux operating systems treat the value as a
-single domain, which results in unexpected behavior. If your DHCP
-options set is associated with a VPC that has instances with multiple
-operating systems, specify only one domain name.
+C<domain-name-servers> - The IP addresses of up to four domain name
+servers, or AmazonProvidedDNS. The default DHCP option set specifies
+AmazonProvidedDNS. If specifying more than one domain name server,
+specify the IP addresses in a single parameter, separated by commas.
 
-=item * C<ntp-servers> - The IP addresses of up to four Network Time
-Protocol (NTP) servers.
+=item *
 
-=item * C<netbios-name-servers> - The IP addresses of up to four
-NetBIOS name servers.
+C<domain-name> - If you're using AmazonProvidedDNS in "us-east-1",
+specify "ec2.internal". If you're using AmazonProvidedDNS in another
+region, specify "region.compute.internal" (for example,
+"ap-northeast-1.compute.internal"). Otherwise, specify a domain name
+(for example, "MyCompany.com"). B<Important>: Some Linux operating
+systems accept multiple domain names separated by spaces. However,
+Windows and other Linux operating systems treat the value as a single
+domain, which results in unexpected behavior. If your DHCP options set
+is associated with a VPC that has instances with multiple operating
+systems, specify only one domain name.
 
-=item * C<netbios-node-type> - The NetBIOS node type (1, 2, 4, or 8).
-We recommend that you specify 2 (broadcast and multicast are not
-currently supported). For more information about these node types, see
-RFC 2132.
+=item *
+
+C<ntp-servers> - The IP addresses of up to four Network Time Protocol
+(NTP) servers.
+
+=item *
+
+C<netbios-name-servers> - The IP addresses of up to four NetBIOS name
+servers.
+
+=item *
+
+C<netbios-node-type> - The NetBIOS node type (1, 2, 4, or 8). We
+recommend that you specify 2 (broadcast and multicast are not currently
+supported). For more information about these node types, see RFC 2132.
 
 =back
 
@@ -2159,6 +2227,11 @@ options, which includes only a default DNS server that we provide
 (AmazonProvidedDNS). For more information about DHCP options, see DHCP
 Options Sets in the I<Amazon Virtual Private Cloud User Guide>.
 
+You can specify the instance tenancy value for the VPC when you create
+it. You can't change this value for the VPC after you create it. For
+more information, see Dedicated Instances in the I<Amazon Virtual
+Private Cloud User Guide>.
+
 
 =head2 CreateVpcEndpoint(ServiceName => Str, VpcId => Str, [ClientToken => Str, DryRun => Bool, PolicyDocument => Str, RouteTableIds => ArrayRef[Str]])
 
@@ -2215,6 +2288,9 @@ configuring your customer gateway.
 If you decide to shut down your VPN connection for any reason and later
 create a new VPN connection, you must reconfigure your customer gateway
 with the new information returned from this call.
+
+This is an idempotent operation. If you perform the operation more than
+once, Amazon EC2 doesn't return an error.
 
 For more information about VPN connections, see Adding a Hardware
 Virtual Private Gateway to Your VPC in the I<Amazon Virtual Private
@@ -2727,6 +2803,27 @@ Dedicated host. Dedicated hosts that have recently been released will
 be listed with the state C<released>.
 
 
+=head2 DescribeIdentityIdFormat(PrincipalArn => Str, [Resource => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeIdentityIdFormat>
+
+Returns: a L<Paws::EC2::DescribeIdentityIdFormatResult> instance
+
+  Describes the ID format settings for resources for the specified IAM
+user, IAM role, or root user. For example, you can view the resource
+types that are enabled for longer IDs. This request only returns
+information about resource types whose ID formats can be modified; it
+does not return information about other resource types. For more
+information, see Resource IDs in the I<Amazon Elastic Compute Cloud
+User Guide>.
+
+The following resource types support longer IDs: C<instance> |
+C<reservation> | C<snapshot> | C<volume>.
+
+These settings apply to the principal specified in the request. They do
+not apply to the principal that makes the request.
+
+
 =head2 DescribeIdFormat([Resource => Str])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeIdFormat>
@@ -2740,7 +2837,7 @@ ID formats can be modified; it does not return information about other
 resource types.
 
 The following resource types support longer IDs: C<instance> |
-C<reservation>.
+C<reservation> | C<snapshot> | C<volume>.
 
 These settings apply to the IAM user who makes the request; they do not
 apply to the entire AWS account. By default, an IAM user defaults to
@@ -2827,6 +2924,12 @@ results.
 Recently terminated instances might appear in the returned results.
 This interval is usually less than one hour.
 
+If you describe instances in the rare case where an Availability Zone
+is experiencing a service disruption and you specify instance IDs that
+are in the affected zone, or do not specify any instance IDs at all,
+the call fails. If you describe instances and specify only instance IDs
+that are in an unaffected zone, the call works normally.
+
 
 =head2 DescribeInstanceStatus([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], IncludeAllInstances => Bool, InstanceIds => ArrayRef[Str], MaxResults => Int, NextToken => Str])
 
@@ -2834,7 +2937,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstanceStatus>
 
 Returns: a L<Paws::EC2::DescribeInstanceStatusResult> instance
 
-  Describes the status of one or more instances.
+  Describes the status of one or more instances. By default, only running
+instances are described, unless specified otherwise.
 
 Instance status includes the following components:
 
@@ -3098,6 +3202,17 @@ Returns: a L<Paws::EC2::DescribeScheduledInstancesResult> instance
   Describes one or more of your Scheduled Instances.
 
 
+=head2 DescribeSecurityGroupReferences(GroupId => ArrayRef[Str], [DryRun => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeSecurityGroupReferences>
+
+Returns: a L<Paws::EC2::DescribeSecurityGroupReferencesResult> instance
+
+  [EC2-VPC only] Describes the VPCs on the other side of a VPC peering
+connection that are referencing the security groups you've specified in
+this request.
+
+
 =head2 DescribeSecurityGroups([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], GroupIds => ArrayRef[Str], GroupNames => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::EC2::DescribeSecurityGroups>
@@ -3142,15 +3257,21 @@ The create volume permissions fall into the following categories:
 
 =over
 
-=item * I<public>: The owner of the snapshot granted create volume
-permissions for the snapshot to the C<all> group. All AWS accounts have
-create volume permissions for these snapshots.
+=item *
 
-=item * I<explicit>: The owner of the snapshot granted create volume
+I<public>: The owner of the snapshot granted create volume permissions
+for the snapshot to the C<all> group. All AWS accounts have create
+volume permissions for these snapshots.
+
+=item *
+
+I<explicit>: The owner of the snapshot granted create volume
 permissions to a specific AWS account.
 
-=item * I<implicit>: An AWS account has implicit create volume
-permissions for all snapshots it owns.
+=item *
+
+I<implicit>: An AWS account has implicit create volume permissions for
+all snapshots it owns.
 
 =back
 
@@ -3164,11 +3285,11 @@ specified IDs are returned. If you specify an invalid snapshot ID, an
 error is returned. If you specify a snapshot ID for which you do not
 have access, it is not included in the returned results.
 
-If you specify one or more snapshot owners, only snapshots from the
-specified owners and for which you have access are returned. The
-results can include the AWS account IDs of the specified owners,
-C<amazon> for snapshots owned by Amazon, or C<self> for snapshots that
-you own.
+If you specify one or more snapshot owners using the C<OwnerIds>
+option, only snapshots from the specified owners and for which you have
+access are returned. The results can include the AWS account IDs of the
+specified owners, C<amazon> for snapshots owned by Amazon, or C<self>
+for snapshots that you own.
 
 If you specify a list of restorable users, only snapshots with create
 snapshot permissions for those users are returned. You can specify AWS
@@ -3268,6 +3389,18 @@ prices of the instance types within the time range that you specified
 and the time when the price changed. The price is valid within the time
 period that you specified; the response merely indicates the last time
 that the price changed.
+
+
+=head2 DescribeStaleSecurityGroups(VpcId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+Each argument is described in detail in: L<Paws::EC2::DescribeStaleSecurityGroups>
+
+Returns: a L<Paws::EC2::DescribeStaleSecurityGroupsResult> instance
+
+  [EC2-VPC only] Describes the stale security group rules for security
+groups in a specified VPC. Rules are stale when they reference a
+deleted security group in a peer VPC, or a security group in a peer VPC
+for which the VPC peering connection has been deleted.
 
 
 =head2 DescribeSubnets([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], SubnetIds => ArrayRef[Str]])
@@ -3686,6 +3819,18 @@ For Windows instances, the instance console output includes output from
 the EC2Config service.
 
 
+=head2 GetConsoleScreenshot(InstanceId => Str, [DryRun => Bool, WakeUp => Bool])
+
+Each argument is described in detail in: L<Paws::EC2::GetConsoleScreenshot>
+
+Returns: a L<Paws::EC2::GetConsoleScreenshotResult> instance
+
+  Retrieve a JPG-format screenshot of a running instance to help with
+troubleshooting.
+
+The returned content is Base64-encoded.
+
+
 =head2 GetPasswordData(InstanceId => Str, [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::GetPasswordData>
@@ -3796,6 +3941,28 @@ host. If no host ID is provided, the instance will be launched onto a
 suitable host which has auto-placement enabled.
 
 
+=head2 ModifyIdentityIdFormat(PrincipalArn => Str, Resource => Str, UseLongIds => Bool)
+
+Each argument is described in detail in: L<Paws::EC2::ModifyIdentityIdFormat>
+
+Returns: nothing
+
+  Modifies the ID format of a resource for the specified IAM user, IAM
+role, or root user. You can specify that resources should receive
+longer IDs (17-character IDs) when they are created. The following
+resource types support longer IDs: C<instance> | C<reservation> |
+C<snapshot> | C<volume>. For more information, see Resource IDs in the
+I<Amazon Elastic Compute Cloud User Guide>.
+
+This setting applies to the principal specified in the request; it does
+not apply to the principal that makes the request.
+
+Resources created with longer IDs are visible to all IAM roles and
+users, regardless of these settings and provided that they have
+permission to use the relevant C<Describe> command for the resource
+type.
+
+
 =head2 ModifyIdFormat(Resource => Str, UseLongIds => Bool)
 
 Each argument is described in detail in: L<Paws::EC2::ModifyIdFormat>
@@ -3805,20 +3972,21 @@ Returns: nothing
   Modifies the ID format for the specified resource on a per-region
 basis. You can specify that resources should receive longer IDs
 (17-character IDs) when they are created. The following resource types
-support longer IDs: C<instance> | C<reservation>.
+support longer IDs: C<instance> | C<reservation> | C<snapshot> |
+C<volume>.
 
 This setting applies to the IAM user who makes the request; it does not
 apply to the entire AWS account. By default, an IAM user defaults to
 the same settings as the root user. If you're using this action as the
-root user or as an IAM role that has permission to use this action,
-then these settings apply to the entire account, unless an IAM user
-explicitly overrides these settings for themselves. For more
-information, see Controlling Access to Longer ID Settings in the
-I<Amazon Elastic Compute Cloud User Guide>.
+root user, then these settings apply to the entire account, unless an
+IAM user explicitly overrides these settings for themselves. For more
+information, see Resource IDs in the I<Amazon Elastic Compute Cloud
+User Guide>.
 
-Resources created with longer IDs are visible to all IAM users,
-regardless of these settings and provided that they have permission to
-use the relevant C<Describe> command for the resource type.
+Resources created with longer IDs are visible to all IAM roles and
+users, regardless of these settings and provided that they have
+permission to use the relevant C<Describe> command for the resource
+type.
 
 
 =head2 ModifyImageAttribute(ImageId => Str, [Attribute => Str, Description => L<Paws::EC2::AttributeValue>, DryRun => Bool, LaunchPermission => L<Paws::EC2::LaunchPermissionModifications>, OperationType => Str, ProductCodes => ArrayRef[Str], UserGroups => ArrayRef[Str], UserIds => ArrayRef[Str], Value => Str])
@@ -3834,7 +4002,7 @@ AWS Marketplace product codes cannot be modified. Images with an AWS
 Marketplace product code cannot be made public.
 
 
-=head2 ModifyInstanceAttribute(InstanceId => Str, [Attribute => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>], DisableApiTermination => L<Paws::EC2::AttributeBooleanValue>, DryRun => Bool, EbsOptimized => L<Paws::EC2::AttributeBooleanValue>, Groups => ArrayRef[Str], InstanceInitiatedShutdownBehavior => L<Paws::EC2::AttributeValue>, InstanceType => L<Paws::EC2::AttributeValue>, Kernel => L<Paws::EC2::AttributeValue>, Ramdisk => L<Paws::EC2::AttributeValue>, SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>, SriovNetSupport => L<Paws::EC2::AttributeValue>, UserData => L<Paws::EC2::BlobAttributeValue>, Value => Str])
+=head2 ModifyInstanceAttribute(InstanceId => Str, [Attribute => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>], DisableApiTermination => L<Paws::EC2::AttributeBooleanValue>, DryRun => Bool, EbsOptimized => L<Paws::EC2::AttributeBooleanValue>, EnaSupport => L<Paws::EC2::AttributeBooleanValue>, Groups => ArrayRef[Str], InstanceInitiatedShutdownBehavior => L<Paws::EC2::AttributeValue>, InstanceType => L<Paws::EC2::AttributeValue>, Kernel => L<Paws::EC2::AttributeValue>, Ramdisk => L<Paws::EC2::AttributeValue>, SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>, SriovNetSupport => L<Paws::EC2::AttributeValue>, UserData => L<Paws::EC2::BlobAttributeValue>, Value => Str])
 
 Each argument is described in detail in: L<Paws::EC2::ModifyInstanceAttribute>
 
@@ -3913,10 +4081,12 @@ create volume permissions, but you cannot do both in a single API call.
 If you need to both add and remove account IDs for a snapshot, you must
 use multiple API calls.
 
+Encrypted snapshots and snapshots with AWS Marketplace product codes
+cannot be made public. Snapshots encrypted with your default CMK cannot
+be shared with other accounts.
+
 For more information on modifying snapshot permissions, see Sharing
 Snapshots in the I<Amazon Elastic Compute Cloud User Guide>.
-
-Snapshots with AWS Marketplace product codes cannot be made public.
 
 
 =head2 ModifySpotFleetRequest(SpotFleetRequestId => Str, [ExcessCapacityTerminationPolicy => Str, TargetCapacity => Int])
@@ -3998,6 +4168,40 @@ policy associated with the endpoint, and you can add and remove route
 tables associated with the endpoint.
 
 
+=head2 ModifyVpcPeeringConnectionOptions(VpcPeeringConnectionId => Str, [AccepterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>, DryRun => Bool, RequesterPeeringConnectionOptions => L<Paws::EC2::PeeringConnectionOptionsRequest>])
+
+Each argument is described in detail in: L<Paws::EC2::ModifyVpcPeeringConnectionOptions>
+
+Returns: a L<Paws::EC2::ModifyVpcPeeringConnectionOptionsResult> instance
+
+  Modifies the VPC peering connection options on one side of a VPC
+peering connection. You can do the following:
+
+=over
+
+=item *
+
+Enable/disable communication over the peering connection between an
+EC2-Classic instance that's linked to your VPC (using ClassicLink) and
+instances in the peer VPC.
+
+=item *
+
+Enable/disable communication over the peering connection between
+instances in your VPC and an EC2-Classic instance that's linked to the
+peer VPC.
+
+=back
+
+If the peered VPCs are in different accounts, each owner must initiate
+a separate request to enable or disable communication in either
+direction, depending on whether their VPC was the requester or accepter
+for the VPC peering connection. If the peered VPCs are in the same
+account, you can modify the requester and accepter options in the same
+request. To confirm which VPC is the accepter and requester for a VPC
+peering connection, use the DescribeVpcPeeringConnections command.
+
+
 =head2 MonitorInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])
 
 Each argument is described in detail in: L<Paws::EC2::MonitorInstances>
@@ -4021,10 +4225,8 @@ account for more than 24 hours, and it must not be associated with an
 instance. After the Elastic IP address is moved, it is no longer
 available for use in the EC2-Classic platform, unless you move it back
 using the RestoreAddressToClassic request. You cannot move an Elastic
-IP address that's allocated for use in the EC2-VPC platform to the
-EC2-Classic platform. You cannot migrate an Elastic IP address that's
-associated with a reverse DNS record. Contact AWS account and billing
-support to remove the reverse DNS record.
+IP address that was originally allocated for use in the EC2-VPC
+platform to the EC2-Classic platform.
 
 
 =head2 PurchaseReservedInstancesOffering(InstanceCount => Int, ReservedInstancesOfferingId => Str, [DryRun => Bool, LimitPrice => L<Paws::EC2::ReservedInstanceLimitPrice>])
@@ -4058,7 +4260,12 @@ Returns: a L<Paws::EC2::PurchaseScheduledInstancesResult> instance
 Scheduled Instances enable you to purchase Amazon EC2 compute capacity
 by the hour for a one-year term. Before you can purchase a Scheduled
 Instance, you must call DescribeScheduledInstanceAvailability to check
-for available schedules and obtain a purchase token.
+for available schedules and obtain a purchase token. After you purchase
+a Scheduled Instance, you must call RunScheduledInstances during each
+scheduled time period.
+
+After you purchase a Scheduled Instance, you can't cancel, modify, or
+resell your purchase.
 
 
 =head2 RebootInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])
@@ -4072,15 +4279,15 @@ asynchronous; it only queues a request to reboot the specified
 instances. The operation succeeds if the instances are valid and belong
 to you. Requests to reboot terminated instances are ignored.
 
-If a Linux/Unix instance does not cleanly shut down within four
-minutes, Amazon EC2 performs a hard reboot.
+If an instance does not cleanly shut down within four minutes, Amazon
+EC2 performs a hard reboot.
 
 For more information about troubleshooting, see Getting Console Output
 and Rebooting Instances in the I<Amazon Elastic Compute Cloud User
 Guide>.
 
 
-=head2 RegisterImage(Name => Str, [Architecture => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], Description => Str, DryRun => Bool, ImageLocation => Str, KernelId => Str, RamdiskId => Str, RootDeviceName => Str, SriovNetSupport => Str, VirtualizationType => Str])
+=head2 RegisterImage(Name => Str, [Architecture => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>], Description => Str, DryRun => Bool, EnaSupport => Bool, ImageLocation => Str, KernelId => Str, RamdiskId => Str, RootDeviceName => Str, SriovNetSupport => Str, VirtualizationType => Str])
 
 Each argument is described in detail in: L<Paws::EC2::RegisterImage>
 
@@ -4313,10 +4520,10 @@ Returns: nothing
 
   Resets an attribute of an instance to its default value. To reset the
 C<kernel> or C<ramdisk>, the instance must be in a stopped state. To
-reset the C<SourceDestCheck>, the instance can be either running or
+reset the C<sourceDestCheck>, the instance can be either running or
 stopped.
 
-The C<SourceDestCheck> attribute controls whether source/destination
+The C<sourceDestCheck> attribute controls whether source/destination
 checking is enabled. The default value is C<true>, which means checking
 is enabled. This value must be C<false> for a NAT instance to perform
 NAT. For more information, see NAT Instances in the I<Amazon Virtual
@@ -4355,9 +4562,7 @@ Returns: a L<Paws::EC2::RestoreAddressToClassicResult> instance
 platform back to the EC2-Classic platform. You cannot move an Elastic
 IP address that was originally allocated for use in EC2-VPC. The
 Elastic IP address must not be associated with an instance or network
-interface. You cannot restore an Elastic IP address that's associated
-with a reverse DNS record. Contact AWS account and billing support to
-remove the reverse DNS record.
+interface.
 
 
 =head2 RevokeSecurityGroupEgress(GroupId => Str, [CidrIp => Str, DryRun => Bool, FromPort => Int, IpPermissions => ArrayRef[L<Paws::EC2::IpPermission>], IpProtocol => Str, SourceSecurityGroupName => Str, SourceSecurityGroupOwnerId => Str, ToPort => Int])
@@ -4417,6 +4622,10 @@ To ensure faster instance launches, break up large requests into
 smaller batches. For example, create five separate launch requests for
 100 instances each instead of one launch request for 500 instances.
 
+To tag your instance, ensure that it is C<running> as CreateTags
+requires a resource ID. For more information about tagging, see Tagging
+Your Amazon EC2 Resources.
+
 If you don't specify a security group when launching an instance,
 Amazon EC2 uses the default security group. For more information, see
 Security Groups in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -4465,7 +4674,8 @@ You must launch a Scheduled Instance during its scheduled time period.
 You can't stop or reboot a Scheduled Instance, but you can terminate it
 as needed. If you terminate a Scheduled Instance before the current
 scheduled time period ends, you can launch it again after a few
-minutes.
+minutes. For more information, see Scheduled Instances in the I<Amazon
+Elastic Compute Cloud User Guide>.
 
 
 =head2 StartInstances(InstanceIds => ArrayRef[Str], [AdditionalInfo => Str, DryRun => Bool])
@@ -4503,39 +4713,37 @@ Each argument is described in detail in: L<Paws::EC2::StopInstances>
 
 Returns: a L<Paws::EC2::StopInstancesResult> instance
 
-  Stops an Amazon EBS-backed instance. Each time you transition an
-instance from stopped to started, Amazon EC2 charges a full instance
-hour, even if transitions happen multiple times within a single hour.
+  Stops an Amazon EBS-backed instance.
 
-You can't start or stop Spot instances.
+We don't charge hourly usage for a stopped instance, or data transfer
+fees; however, your root partition Amazon EBS volume remains, continues
+to persist your data, and you are charged for Amazon EBS volume usage.
+Each time you transition an instance from stopped to started, Amazon
+EC2 charges a full instance hour, even if transitions happen multiple
+times within a single hour.
 
-Instances that use Amazon EBS volumes as their root devices can be
-quickly stopped and started. When an instance is stopped, the compute
-resources are released and you are not billed for hourly instance
-usage. However, your root partition Amazon EBS volume remains,
-continues to persist your data, and you are charged for Amazon EBS
-volume usage. You can restart your instance at any time.
+You can't start or stop Spot instances, and you can't stop instance
+store-backed instances.
 
-Before stopping an instance, make sure it is in a state from which it
-can be restarted. Stopping an instance does not preserve data stored in
-RAM.
+When you stop an instance, we shut it down. You can restart your
+instance at any time. Before stopping an instance, make sure it is in a
+state from which it can be restarted. Stopping an instance does not
+preserve data stored in RAM.
 
-Performing this operation on an instance that uses an instance store as
-its root device returns an error.
-
-You can stop, start, and terminate EBS-backed instances. You can only
-terminate instance store-backed instances. What happens to an instance
-differs if you stop it or terminate it. For example, when you stop an
-instance, the root device and any other devices attached to the
-instance persist. When you terminate an instance, the root device and
-any other devices attached during the instance launch are automatically
-deleted. For more information about the differences between stopping
-and terminating instances, see Instance Lifecycle in the I<Amazon
-Elastic Compute Cloud User Guide>.
-
-For more information about troubleshooting, see Troubleshooting
-Stopping Your Instance in the I<Amazon Elastic Compute Cloud User
+Stopping an instance is different to rebooting or terminating it. For
+example, when you stop an instance, the root device and any other
+devices attached to the instance persist. When you terminate an
+instance, the root device and any other devices attached during the
+instance launch are automatically deleted. For more information about
+the differences between rebooting, stopping, and terminating instances,
+see Instance Lifecycle in the I<Amazon Elastic Compute Cloud User
 Guide>.
+
+When you stop an instance, we attempt to shut it down forcibly after a
+short while. If your instance appears stuck in the stopping state after
+a period of time, there may be an issue with the underlying host
+computer. For more information, see Troubleshooting Stopping Your
+Instance in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 TerminateInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])

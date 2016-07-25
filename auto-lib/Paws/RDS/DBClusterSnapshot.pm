@@ -52,9 +52,13 @@ actions:
 
 =over
 
-=item * CreateDBClusterSnapshot
+=item *
 
-=item * DeleteDBClusterSnapshot
+CreateDBClusterSnapshot
+
+=item *
+
+DeleteDBClusterSnapshot
 
 =back
 

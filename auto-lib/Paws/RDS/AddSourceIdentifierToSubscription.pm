@@ -45,17 +45,25 @@ Constraints:
 
 =over
 
-=item * If the source type is a DB instance, then a
-C<DBInstanceIdentifier> must be supplied.
+=item *
 
-=item * If the source type is a DB security group, a
-C<DBSecurityGroupName> must be supplied.
-
-=item * If the source type is a DB parameter group, a
-C<DBParameterGroupName> must be supplied.
-
-=item * If the source type is a DB snapshot, a C<DBSnapshotIdentifier>
+If the source type is a DB instance, then a C<DBInstanceIdentifier>
 must be supplied.
+
+=item *
+
+If the source type is a DB security group, a C<DBSecurityGroupName>
+must be supplied.
+
+=item *
+
+If the source type is a DB parameter group, a C<DBParameterGroupName>
+must be supplied.
+
+=item *
+
+If the source type is a DB snapshot, a C<DBSnapshotIdentifier> must be
+supplied.
 
 =back
 

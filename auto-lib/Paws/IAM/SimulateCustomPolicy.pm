@@ -52,10 +52,10 @@ service identifier, such as C<iam:CreateUser>.
 
 =head2 CallerArn => Str
 
-The ARN of the user that you want to use as the simulated caller of the
-APIs. C<CallerArn> is required if you include a C<ResourcePolicy> so
-that the policy's C<Principal> element has a value to use in evaluating
-the policy.
+The ARN of the IAM user that you want to use as the simulated caller of
+the APIs. C<CallerArn> is required if you include a C<ResourcePolicy>
+so that the policy's C<Principal> element has a value to use in
+evaluating the policy.
 
 You can specify only the ARN of an IAM user. You cannot specify the ARN
 of an assumed role, federated user, or a service principal.
@@ -65,9 +65,8 @@ of an assumed role, federated user, or a service principal.
 =head2 ContextEntries => ArrayRef[L<Paws::IAM::ContextEntry>]
 
 A list of context keys and corresponding values for the simulation to
-use. Whenever a context key is evaluated by a C<Condition> element in
-one of the simulated IAM permission policies, the corresponding value
-is supplied.
+use. Whenever a context key is evaluated in one of the simulated IAM
+permission policies, the corresponding value is supplied.
 
 
 
@@ -105,6 +104,12 @@ policies, such as you could include in a call to GetFederationToken or
 one of the AssumeRole APIs to restrict what a user can do while using
 the temporary credentials.
 
+The regex pattern for this parameter is a string of characters
+consisting of any printable ASCII character ranging from the space
+character (\u0020) through end of the ASCII character range (\u00FF).
+It also includes the special characters tab (\u0009), line feed
+(\u000A), and carriage return (\u000D).
+
 
 
 =head2 ResourceArns => ArrayRef[Str]
@@ -123,6 +128,9 @@ C<ResourcePolicy> parameter.
 If you include a C<ResourcePolicy>, then it must be applicable to all
 of the resources included in the simulation or you receive an invalid
 input error.
+
+For more information about ARNs, see Amazon Resource Names (ARNs) and
+AWS Service Namespaces in the I<AWS General Reference>.
 
 
 
@@ -209,6 +217,12 @@ A resource-based policy to include in the simulation provided as a
 string. Each resource in the simulation is treated as if it had this
 policy attached. You can include only one resource-based policy in a
 simulation.
+
+The regex pattern for this parameter is a string of characters
+consisting of any printable ASCII character ranging from the space
+character (\u0020) through end of the ASCII character range (\u00FF).
+It also includes the special characters tab (\u0009), line feed
+(\u000A), and carriage return (\u000D).
 
 
 

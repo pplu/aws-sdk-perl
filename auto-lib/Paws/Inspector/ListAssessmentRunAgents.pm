@@ -38,7 +38,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssessmentRunArn => Str
 
-The ARN specifying the assessment run whose agents you want to list.
+The ARN that specifies the assessment run whose agents you want to
+list.
 
 
 
@@ -55,8 +56,8 @@ of the values can match.
 
 =head2 MaxResults => Int
 
-You can use this parameter to indicate the maximum number of items you
-want in the response. The default value is 10. The maximum value is
+You can use this parameter to indicate the maximum number of items that
+you want in the response. The default value is 10. The maximum value is
 500.
 
 
@@ -64,9 +65,9 @@ want in the response. The default value is 10. The maximum value is
 =head2 NextToken => Str
 
 You can use this parameter when paginating results. Set the value of
-this parameter to 'null' on your first call to the
+this parameter to null on your first call to the
 B<ListAssessmentRunAgents> action. Subsequent calls to the action fill
-B<nextToken> in the request with the value of B<NextToken> from
+B<nextToken> in the request with the value of B<NextToken> from the
 previous response to continue listing data.
 
 

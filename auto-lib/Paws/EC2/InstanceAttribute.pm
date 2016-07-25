@@ -4,6 +4,7 @@ package Paws::EC2::InstanceAttribute;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', xmlname => 'blockDeviceMapping', traits => ['Unwrapped',]);
   has DisableApiTermination => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'disableApiTermination', traits => ['Unwrapped',]);
   has EbsOptimized => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'ebsOptimized', traits => ['Unwrapped',]);
+  has EnaSupport => (is => 'ro', isa => 'Paws::EC2::AttributeBooleanValue', xmlname => 'enaSupport', traits => ['Unwrapped',]);
   has Groups => (is => 'ro', isa => 'ArrayRef[Paws::EC2::GroupIdentifier]', xmlname => 'groupSet', traits => ['Unwrapped',]);
   has InstanceId => (is => 'ro', isa => 'Str', xmlname => 'instanceId', traits => ['Unwrapped',]);
   has InstanceInitiatedShutdownBehavior => (is => 'ro', isa => 'Paws::EC2::AttributeValue', xmlname => 'instanceInitiatedShutdownBehavior', traits => ['Unwrapped',]);
@@ -43,6 +44,12 @@ Amazon EC2 console, CLI, or API; otherwise, you can.
 =head2 EbsOptimized => L<Paws::EC2::AttributeBooleanValue>
 
 Indicates whether the instance is optimized for EBS I/O.
+
+
+
+=head2 EnaSupport => L<Paws::EC2::AttributeBooleanValue>
+
+Indicates whether enhanced networking with ENA is enabled.
 
 
 
@@ -108,13 +115,14 @@ NAT.
 
 =head2 SriovNetSupport => L<Paws::EC2::AttributeValue>
 
-
+Indicates whether enhanced networking with the Intel 82599 Virtual
+Function interface is enabled.
 
 
 
 =head2 UserData => L<Paws::EC2::AttributeValue>
 
-The Base64-encoded MIME user data.
+The user data.
 
 
 

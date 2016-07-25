@@ -1,6 +1,7 @@
 package Paws::SSM::DocumentIdentifier;
   use Moose;
   has Name => (is => 'ro', isa => 'Str');
+  has Owner => (is => 'ro', isa => 'Str');
   has PlatformTypes => (is => 'ro', isa => 'ArrayRef[Str]');
 1;
 
@@ -40,6 +41,11 @@ Describes the name of an SSM document.
 =head2 Name => Str
 
   The name of the SSM document.
+
+
+=head2 Owner => Str
+
+  The AWS user account of the person who created the document.
 
 
 =head2 PlatformTypes => ArrayRef[Str]

@@ -43,16 +43,23 @@ a key, or an alias name prefixed by "alias/".
 
 =over
 
-=item * Key ARN Example -
+=item *
+
+Key ARN Example -
 arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012
 
-=item * Alias ARN Example -
+=item *
+
+Alias ARN Example -
 arn:aws:kms:us-east-1:123456789012:alias/MyAliasName
 
-=item * Globally Unique Key ID Example -
-12345678-1234-1234-1234-123456789012
+=item *
 
-=item * Alias Name Example - alias/MyAliasName
+Globally Unique Key ID Example - 12345678-1234-1234-1234-123456789012
+
+=item *
+
+Alias Name Example - alias/MyAliasName
 
 =back
 
@@ -75,9 +82,9 @@ Currently only 1 policy can be attached to a key.
 =head2 Marker => Str
 
 Use this parameter only when paginating results and only in a
-subsequent request after you've received a response with truncated
-results. Set it to the value of C<NextMarker> from the response you
-just received.
+subsequent request after you receive a response with truncated results.
+Set it to the value of C<NextMarker> from the response you just
+received.
 
 
 

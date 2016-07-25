@@ -1,7 +1,7 @@
 
 package Paws::StorageGateway::ListVolumes;
   use Moose;
-  has GatewayARN => (is => 'ro', isa => 'Str', required => 1);
+  has GatewayARN => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
   has Marker => (is => 'ro', isa => 'Str');
 
@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> GatewayARN => Str
+=head2 GatewayARN => Str
 
 
 

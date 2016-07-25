@@ -54,6 +54,11 @@ the temporary security credentials (such as C<Bob>). For example, you
 can reference the federated user name in a resource-based policy, such
 as in an Amazon S3 bucket policy.
 
+The format for this parameter, as described by its regex pattern, is a
+string of characters consisting of upper- and lower-case alphanumeric
+characters with no spaces. You can also include any of the following
+characters: =,.@-
+
 
 
 =head2 Policy => Str
@@ -74,6 +79,12 @@ credentials have no effective permissions. The only exception is when
 the temporary security credentials are used to access a resource that
 has a resource-based policy that specifically allows the federated user
 to access the resource.
+
+The format for this parameter, as described by its regex pattern, is a
+string of characters up to 2048 characters in length. The characters
+can be any ASCII character from the space character to the end of the
+valid character list (\u0020-\u00FF). It can also include the tab
+(\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
 The policy plain text must be 2048 bytes or shorter. However, an
 internal conversion compresses it into a packed binary format with a

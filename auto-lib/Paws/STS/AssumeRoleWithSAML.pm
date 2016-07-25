@@ -57,13 +57,19 @@ An IAM policy in JSON format.
 The policy parameter is optional. If you pass a policy, the temporary
 security credentials that are returned by the operation have the
 permissions that are allowed by both the access policy of the role that
-is being assumed, I<B<and>> the policy that you pass. This gives you a
-way to further restrict the permissions for the resulting temporary
+is being assumed, I< B<and> > the policy that you pass. This gives you
+a way to further restrict the permissions for the resulting temporary
 security credentials. You cannot use the passed policy to grant
 permissions that are in excess of those allowed by the access policy of
 the role that is being assumed. For more information, Permissions for
 AssumeRole, AssumeRoleWithSAML, and AssumeRoleWithWebIdentity in the
-I<Using IAM>.
+I<IAM User Guide>.
+
+The format for this parameter, as described by its regex pattern, is a
+string of characters up to 2048 characters in length. The characters
+can be any ASCII character from the space character to the end of the
+valid character list (\u0020-\u00FF). It can also include the tab
+(\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
 The policy plain text must be 2048 bytes or shorter. However, an
 internal conversion compresses it into a packed binary format with a

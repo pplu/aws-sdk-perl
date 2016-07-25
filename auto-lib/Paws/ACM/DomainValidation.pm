@@ -42,8 +42,8 @@ validate the domain identity.
 
 =head2 B<REQUIRED> DomainName => Str
 
-  Fully Qualified Domain Name (FQDN) of the form C<www.example.com or
->C<example.com>
+  Fully Qualified Domain Name (FQDN) of the form C<www.example.com or >
+C<example.com>.
 
 
 =head2 ValidationDomain => Str

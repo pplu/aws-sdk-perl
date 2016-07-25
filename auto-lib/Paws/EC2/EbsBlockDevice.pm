@@ -56,20 +56,19 @@ encryption.
 =head2 Iops => Int
 
   The number of I/O operations per second (IOPS) that the volume
-supports. For Provisioned IOPS (SSD) volumes, this represents the
-number of IOPS that are provisioned for the volume. For General Purpose
-(SSD) volumes, this represents the baseline performance of the volume
-and the rate at which the volume accumulates I/O credits for bursting.
-For more information on General Purpose (SSD) baseline performance, I/O
-credits, and bursting, see Amazon EBS Volume Types in the I<Amazon
-Elastic Compute Cloud User Guide>.
+supports. For C<io1>, this represents the number of IOPS that are
+provisioned for the volume. For C<gp2>, this represents the baseline
+performance of the volume and the rate at which the volume accumulates
+I/O credits for bursting. For more information about General Purpose
+SSD baseline performance, I/O credits, and bursting, see Amazon EBS
+Volume Types in the I<Amazon Elastic Compute Cloud User Guide>.
 
-Constraint: Range is 100 to 20000 for Provisioned IOPS (SSD) volumes
-and 3 to 10000 for General Purpose (SSD) volumes.
+Constraint: Range is 100-20000 IOPS for C<io1> volumes and 100-10000
+IOPS for C<gp2> volumes.
 
 Condition: This parameter is required for requests to create C<io1>
-volumes; it is not used in requests to create C<standard> or C<gp2>
-volumes.
+volumes; it is not used in requests to create C<gp2>, C<st1>, C<sc1>,
+or C<standard> volumes.
 
 
 =head2 SnapshotId => Str
@@ -81,9 +80,11 @@ volumes.
 
   The size of the volume, in GiB.
 
-Constraints: C<1-1024> for C<standard> volumes, C<1-16384> for C<gp2>
-volumes, and C<4-16384> for C<io1> volumes. If you specify a snapshot,
-the volume size must be equal to or larger than the snapshot size.
+Constraints: 1-16384 for General Purpose SSD (C<gp2>), 4-16384 for
+Provisioned IOPS SSD (C<io1>), 500-16384 for Throughput Optimized HDD
+(C<st1>), 500-16384 for Cold HDD (C<sc1>), and 1-1024 for Magnetic
+(C<standard>) volumes. If you specify a snapshot, the volume size must
+be equal to or larger than the snapshot size.
 
 Default: If you're creating the volume from a snapshot and don't
 specify a volume size, the default is the snapshot size.
@@ -91,8 +92,7 @@ specify a volume size, the default is the snapshot size.
 
 =head2 VolumeType => Str
 
-  The volume type. C<gp2> for General Purpose (SSD) volumes, C<io1> for
-Provisioned IOPS (SSD) volumes, and C<standard> for Magnetic volumes.
+  The volume type: C<gp2>, C<io1>, C<st1>, C<sc1>, or C<standard>.
 
 Default: C<standard>
 

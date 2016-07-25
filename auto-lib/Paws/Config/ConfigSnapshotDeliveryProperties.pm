@@ -31,16 +31,72 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Config::Con
 
 =head1 DESCRIPTION
 
-Options for how AWS Config delivers configuration snapshots to the
-Amazon S3 bucket in your delivery channel.
+Shows the options for how often AWS Config delivers configuration
+snapshots to the Amazon S3 bucket in your delivery channel.
+
+If you want to create a rule that triggers evaluations for your
+resources when AWS Config delivers the configuration snapshot, see the
+following:
+
+The frequency for a rule that triggers evaluations for your resources
+when AWS Config delivers the configuration snapshot is set by one of
+two values, depending on which is less frequent:
+
+=over
+
+=item *
+
+The value for the C<deliveryFrequency> parameter within the delivery
+channel configuration, which sets how often AWS Config delivers
+configuration snapshots. This value also sets how often AWS Config
+invokes evaluations for Config rules.
+
+=item *
+
+The value for the C<MaximumExecutionFrequency> parameter, which sets
+the maximum frequency with which AWS Config invokes evaluations for the
+rule. For more information, see ConfigRule.
+
+=back
+
+If the C<deliveryFrequency> value is less frequent than the
+C<MaximumExecutionFrequency> value for a rule, AWS Config invokes the
+rule only as often as the C<deliveryFrequency> value.
+
+=over
+
+=item 1.
+
+For example, you have a rule and you specify the
+C<MaximumExecutionFrequency> value to be C<Six_Hours>.
+
+=item 2.
+
+You then specify the delivery channel C<deliveryFrequency> value to
+C<TwentyFour_Hours>.
+
+=item 3.
+
+Because the value for C<deliveryFrequency> is less frequent than
+C<MaximumExecutionFrequency>, AWS Config invokes evaluations for the
+rule every 24 hours.
+
+=back
+
+You should set the C<MaximumExecutionFrequency> value to be at least as
+frequent as the C<deliveryFrequency> value. You can view the
+C<deliveryFrequency> value by using the C<DescribeDeliveryChannnels>
+action.
+
+To update the frequency with which AWS Config delivers your
+configuration snapshots, use the C<PutDeliveryChannel> action.
 
 =head1 ATTRIBUTES
 
 
 =head2 DeliveryFrequency => Str
 
-  The frequency with which a AWS Config recurringly delivers
-configuration snapshots.
+  The frequency with which AWS Config delivers configuration snapshots.
 
 
 

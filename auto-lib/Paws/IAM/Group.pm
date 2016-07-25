@@ -41,11 +41,17 @@ This data type is used as a response element in the following actions:
 
 =over
 
-=item * CreateGroup
+=item *
 
-=item * GetGroup
+CreateGroup
 
-=item * ListGroups
+=item *
+
+GetGroup
+
+=item *
+
+ListGroups
 
 =back
 

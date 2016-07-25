@@ -5,10 +5,12 @@ package Paws::SSM::Command;
   has DocumentName => (is => 'ro', isa => 'Str');
   has ExpiresAfter => (is => 'ro', isa => 'Str');
   has InstanceIds => (is => 'ro', isa => 'ArrayRef[Str]');
+  has NotificationConfig => (is => 'ro', isa => 'Paws::SSM::NotificationConfig');
   has OutputS3BucketName => (is => 'ro', isa => 'Str');
   has OutputS3KeyPrefix => (is => 'ro', isa => 'Str');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
   has RequestedDateTime => (is => 'ro', isa => 'Str');
+  has ServiceRole => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 1;
 
@@ -73,6 +75,11 @@ user input provided as part of the SendCommand API.
   The instance IDs against which this command was requested.
 
 
+=head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
+
+  Configurations for sending notifications about command status changes.
+
+
 =head2 OutputS3BucketName => Str
 
   The S3 bucket where the responses to the command executions should be
@@ -95,6 +102,12 @@ the command.
 =head2 RequestedDateTime => Str
 
   The date and time the command was requested.
+
+
+=head2 ServiceRole => Str
+
+  The IAM service role that SSM uses to act on your behalf when sending
+notifications about command status changes.
 
 
 =head2 Status => Str

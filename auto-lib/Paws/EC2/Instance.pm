@@ -5,6 +5,7 @@ package Paws::EC2::Instance;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceBlockDeviceMapping]', xmlname => 'blockDeviceMapping', traits => ['Unwrapped']);
   has ClientToken => (is => 'ro', isa => 'Str', xmlname => 'clientToken', traits => ['Unwrapped']);
   has EbsOptimized => (is => 'ro', isa => 'Bool', xmlname => 'ebsOptimized', traits => ['Unwrapped']);
+  has EnaSupport => (is => 'ro', isa => 'Bool', xmlname => 'enaSupport', traits => ['Unwrapped']);
   has Hypervisor => (is => 'ro', isa => 'Str', xmlname => 'hypervisor', traits => ['Unwrapped']);
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfile', xmlname => 'iamInstanceProfile', traits => ['Unwrapped']);
   has ImageId => (is => 'ro', isa => 'Str', xmlname => 'imageId', traits => ['Unwrapped']);
@@ -101,6 +102,11 @@ optimization provides dedicated throughput to Amazon EBS and an
 optimized configuration stack to provide optimal I/O performance. This
 optimization isn't available with all instance types. Additional usage
 charges apply when using an EBS Optimized instance.
+
+
+=head2 EnaSupport => Bool
+
+  Specifies whether enhanced networking with ENA is enabled.
 
 
 =head2 Hypervisor => Str
@@ -238,7 +244,8 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 =head2 SriovNetSupport => Str
 
-  Specifies whether enhanced networking is enabled.
+  Specifies whether enhanced networking with the Intel 82599 Virtual
+Function interface is enabled.
 
 
 =head2 State => L<Paws::EC2::InstanceState>

@@ -41,10 +41,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MachineLear
 
 =head1 DESCRIPTION
 
-Represents the output of GetBatchPrediction operation.
+Represents the output of a C<GetBatchPrediction> operation.
 
 The content consists of the detailed metadata, the status, and the data
-file information of a I<Batch Prediction>.
+file information of a C<Batch Prediction>.
 
 =head1 ATTRIBUTES
 
@@ -107,8 +107,8 @@ C<BatchPrediction> request.
 =head2 OutputUri => Str
 
   The location of an Amazon S3 bucket or directory to receive the
-operation results. The following substrings are not allowed in the s3
-key portion of the "outputURI" field: ':', '//', '/./', '/../'.
+operation results. The following substrings are not allowed in the C<s3
+key> portion of the C<outputURI> field: ':', '//', '/./', '/../'.
 
 
 =head2 Status => Str
@@ -123,7 +123,7 @@ request to generate predictions for a batch of observations.
 
 =item * C<INPROGRESS> - The process is underway.
 
-=item * C<FAILED> - The request to peform a batch prediction did not
+=item * C<FAILED> - The request to perform a batch prediction did not
 run to completion. It is not usable.
 
 =item * C<COMPLETED> - The batch prediction process completed

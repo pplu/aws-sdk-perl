@@ -76,7 +76,7 @@ Endpoints.
 
 =head2 MountPoint => Str
 
-  The volume mount point. For example "/dev/sdh".
+  The volume mount point. For example, "/mnt/disk1".
 
 
 =head2 Name => Str

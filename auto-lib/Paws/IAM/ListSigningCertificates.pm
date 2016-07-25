@@ -60,7 +60,12 @@ subsequent call that tells the service where to continue from.
 
 =head2 UserName => Str
 
-The name of the user.
+The name of the IAM user whose signing certificates you want to
+examine.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

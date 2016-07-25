@@ -203,16 +203,23 @@ Constraints:
 
 =over
 
-=item * Must be a value from 0 to 35
+=item *
 
-=item * Can be specified for a MySQL Read Replica only if the source is
-running MySQL 5.6
+Must be a value from 0 to 35
 
-=item * Can be specified for a PostgreSQL Read Replica only if the
-source is running PostgreSQL 9.3.5
+=item *
 
-=item * Cannot be set to 0 if the DB instance is a source to Read
-Replicas
+Can be specified for a MySQL Read Replica only if the source is running
+MySQL 5.6
+
+=item *
+
+Can be specified for a PostgreSQL Read Replica only if the source is
+running PostgreSQL 9.3.5
+
+=item *
+
+Cannot be set to 0 if the DB instance is a source to Read Replicas
 
 =back
 
@@ -262,13 +269,21 @@ Constraints:
 
 =over
 
-=item * Must be the identifier for an existing DB instance
+=item *
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens
+Must be the identifier for an existing DB instance
 
-=item * First character must be a letter
+=item *
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+Must contain from 1 to 63 alphanumeric characters or hyphens
+
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -353,11 +368,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters
+=item *
 
-=item * First character must be a letter
+Must be 1 to 255 alphanumeric characters
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -465,7 +486,7 @@ been accidentally revoked.
 
 The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB instance. To disable collecting
-Enhanced Monitoring metrics, specify 0. The default is 60.
+Enhanced Monitoring metrics, specify 0. The default is 0.
 
 If C<MonitoringRoleArn> is specified, then you must also set
 C<MonitoringInterval> to a value other than 0.
@@ -495,9 +516,6 @@ the next maintenance window unless the C<ApplyImmediately> parameter is
 set to C<true> for this request.
 
 Constraints: Cannot be specified if the DB instance is a Read Replica.
-This parameter cannot be used with SQL Server DB instances. Multi-AZ
-for SQL Server DB instances is set using the Mirroring option in an
-option group associated with the DB instance.
 
 
 
@@ -513,11 +531,17 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter
+Must contain from 1 to 63 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
@@ -554,13 +578,21 @@ Constraints:
 
 =over
 
-=item * Must be in the format hh24:mi-hh24:mi
+=item *
 
-=item * Times should be in Universal Time Coordinated (UTC)
+Must be in the format hh24:mi-hh24:mi
 
-=item * Must not conflict with the preferred maintenance window
+=item *
 
-=item * Must be at least 30 minutes
+Times should be in Universal Time Coordinated (UTC)
+
+=item *
+
+Must not conflict with the preferred maintenance window
+
+=item *
+
+Must be at least 30 minutes
 
 =back
 
@@ -658,11 +690,17 @@ Constraints:
 
 =over
 
-=item * Must be 1 to 255 alphanumeric characters
+=item *
 
-=item * First character must be a letter
+Must be 1 to 255 alphanumeric characters
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 

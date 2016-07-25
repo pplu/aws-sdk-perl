@@ -35,8 +35,11 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> SAMLProviderArn => Str
 
-The Amazon Resource Name (ARN) of the SAML provider to get information
-about.
+The Amazon Resource Name (ARN) of the SAML provider resource object in
+IAM to get information about.
+
+For more information about ARNs, see Amazon Resource Names (ARNs) and
+AWS Service Namespaces in the I<AWS General Reference>.
 
 
 

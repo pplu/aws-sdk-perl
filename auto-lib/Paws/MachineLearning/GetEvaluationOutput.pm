@@ -67,7 +67,7 @@ expressed in epoch time.
 
 =head2 LogUri => Str
 
-A link to the file that contains logs of the CreateEvaluation
+A link to the file that contains logs of the C<CreateEvaluation>
 operation.
 
 

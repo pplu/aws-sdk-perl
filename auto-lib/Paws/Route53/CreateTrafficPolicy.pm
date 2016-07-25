@@ -32,7 +32,9 @@ Any comments that you want to include about the traffic policy.
 
 =head2 B<REQUIRED> Document => Str
 
-The definition of this traffic policy in JSON format.
+The definition of this traffic policy in JSON format. For more
+information, see Traffic Policy Document Format in the I<Amazon Route
+53 API Reference>.
 
 
 

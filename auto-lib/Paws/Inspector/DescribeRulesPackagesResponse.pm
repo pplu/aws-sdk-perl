@@ -23,7 +23,7 @@ provided for each failed item.
 
 =head2 B<REQUIRED> RulesPackages => ArrayRef[L<Paws::Inspector::RulesPackage>]
 
-Information about the rules package(s).
+Information about the rules package.
 
 
 

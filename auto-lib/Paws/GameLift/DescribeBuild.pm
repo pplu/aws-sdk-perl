@@ -35,7 +35,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> BuildId => Str
 
-Unique identifier for the build you want to retrieve properties for.
+Unique identifier of the build that you want to retrieve properties
+for.
 
 
 

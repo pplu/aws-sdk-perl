@@ -42,7 +42,8 @@ The array of attributes that you want to assign to specified findings.
 
 =head2 B<REQUIRED> FindingArns => ArrayRef[Str]
 
-The ARNs specifying the findings that you want to assign attributes to.
+The ARNs that specify the findings that you want to assign attributes
+to.
 
 
 

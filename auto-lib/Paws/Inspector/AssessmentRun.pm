@@ -44,11 +44,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Inspector::
 
 =head1 DESCRIPTION
 
-A snapshot of an Inspector assessment run that contains the assessment
-run's findings.
+A snapshot of an Amazon Inspector assessment run that contains the
+findings of the assessment run .
 
-This data type is used as the response element in the
-DescribeAssessmentRuns action.
+Used as the response element in the DescribeAssessmentRuns action.
 
 =head1 ATTRIBUTES
 
@@ -66,18 +65,18 @@ assessment run.
 
 =head2 CompletedAt => Str
 
-  Assessment run completion time that corresponds to the rules packages
-evaluation completion time or failure.
+  The assessment run completion time that corresponds to the rules
+packages evaluation completion time or failure.
 
 
 =head2 B<REQUIRED> CreatedAt => Str
 
-  The time when StartAssessmentRun API was called.
+  The time when StartAssessmentRun was called.
 
 
 =head2 B<REQUIRED> DataCollected => Bool
 
-  Boolean value (true or false) specifying whether the process of
+  A Boolean value (true or false) that specifies whether the process of
 collecting data from the agents is completed.
 
 
@@ -94,17 +93,17 @@ collecting data from the agents is completed.
 =head2 B<REQUIRED> Notifications => ArrayRef[L<Paws::Inspector::AssessmentRunNotification>]
 
   A list of notifications for the event subscriptions. A notification
-about a particular generated finding is only added to this list once.
+about a particular generated finding is added to this list only once.
 
 
 =head2 B<REQUIRED> RulesPackageArns => ArrayRef[Str]
 
-  Rules packages selected for the assessment run.
+  The rules packages selected for the assessment run.
 
 
 =head2 StartedAt => Str
 
-  The time when StartAssessmentRun API was called.
+  The time when StartAssessmentRun was called.
 
 
 =head2 B<REQUIRED> State => Str

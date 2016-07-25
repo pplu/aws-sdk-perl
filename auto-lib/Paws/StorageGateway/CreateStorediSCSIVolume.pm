@@ -58,7 +58,7 @@ target. Only IPv4 addresses are accepted. Use
 DescribeGatewayInformation to get a list of the network interfaces
 available on a gateway.
 
-I<Valid Values>: A valid IP address.
+Valid Values: A valid IP address.
 
 
 
@@ -68,7 +68,7 @@ Specify this field as true if you want to preserve the data on the
 local disk. Otherwise, specifying this field as false creates an empty
 volume.
 
-I<Valid Values>: true, false
+Valid Values: true, false
 
 
 

@@ -102,22 +102,33 @@ Constraints:
 
 =over
 
-=item * If SourceIdentifier is supplied, SourceType must also be
-provided.
+=item *
 
-=item * If the source type is C<DBInstance>, then a
-C<DBInstanceIdentifier> must be supplied.
+If SourceIdentifier is supplied, SourceType must also be provided.
 
-=item * If the source type is C<DBSecurityGroup>, a
-C<DBSecurityGroupName> must be supplied.
+=item *
 
-=item * If the source type is C<DBParameterGroup>, a
-C<DBParameterGroupName> must be supplied.
-
-=item * If the source type is C<DBSnapshot>, a C<DBSnapshotIdentifier>
+If the source type is C<DBInstance>, then a C<DBInstanceIdentifier>
 must be supplied.
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens.
+=item *
+
+If the source type is C<DBSecurityGroup>, a C<DBSecurityGroupName> must
+be supplied.
+
+=item *
+
+If the source type is C<DBParameterGroup>, a C<DBParameterGroupName>
+must be supplied.
+
+=item *
+
+If the source type is C<DBSnapshot>, a C<DBSnapshotIdentifier> must be
+supplied.
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 

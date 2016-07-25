@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.23';
+our $VERSION = '0.26';
 
 use Moose;
 use MooseX::ClassAttribute;
@@ -238,6 +238,8 @@ L<Paws::ACM>
 
 L<Paws::ApiGateway>
 
+L<Paws::ApplicationAutoScaling>
+
 L<Paws::AutoScaling>
 
 L<Paws::CloudFormation>
@@ -268,6 +270,8 @@ L<Paws::CodePipeline>
 
 L<Paws::CognitoIdentity>
 
+L<Paws::CognitoIdp>
+
 L<Paws::CognitoSync>
 
 L<Paws::Config>
@@ -277,6 +281,8 @@ L<Paws::DataPipeline>
 L<Paws::DeviceFarm>
 
 L<Paws::DirectConnect>
+
+L<Paws::Discovery>
 
 L<Paws::DMS>
 
@@ -351,6 +357,8 @@ L<Paws::Route53Domains>
 L<Paws::S3>
 
 L<Paws::SDB>
+
+L<Paws::ServiceCatalog>
 
 L<Paws::SES>
 
@@ -572,6 +580,10 @@ This code is distributed under the Apache 2 License. The full text of the licens
 
 =head1 CONTRIBUITIONS
 
+
+CAPSiDE (http://www.capside.com) for letting Paws be contributed in an open source model 
+and giving me time to build and maintain it regularly
+
 Luis Alberto Gimenez (@agimenez) for 
  - The git-fu cleaning up the "pull other sdks" code
  - Credential Providers code
@@ -624,6 +636,8 @@ Javier Arellano for discovering Tagging bug
 Ioan Rogers for contributing AssumeRoleWithSAML with ADFS auth example
 
 Miquel Soriano for reporting a bug with DescribeAutoScalingGroups
+
+Albert Bendicho (wiof) for contributing better retry logic
 
 
 =cut

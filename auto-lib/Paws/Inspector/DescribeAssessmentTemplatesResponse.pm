@@ -16,7 +16,7 @@ Paws::Inspector::DescribeAssessmentTemplatesResponse
 
 =head2 B<REQUIRED> AssessmentTemplates => ArrayRef[L<Paws::Inspector::AssessmentTemplate>]
 
-Information about the assessment template(s).
+Information about the assessment templates.
 
 
 

@@ -174,7 +174,7 @@ Mobile SDK. To learn more, see the AWS Mobile SDK Developer Guide.
 
 =head1 METHODS
 
-=head2 CreateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolName => Str, [DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str], SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>])
+=head2 CreateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolName => Str, [CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>], DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str], SamlProviderARNs => ArrayRef[Str], SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::CreateIdentityPool>
 
@@ -250,7 +250,7 @@ ID description, creation date, and current number of users.
 You must use AWS Developer credentials to call this API.
 
 
-=head2 GetCredentialsForIdentity(IdentityId => Str, [Logins => L<Paws::CognitoIdentity::LoginsMap>])
+=head2 GetCredentialsForIdentity(IdentityId => Str, [CustomRoleArn => Str, Logins => L<Paws::CognitoIdentity::LoginsMap>])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::GetCredentialsForIdentity>
 
@@ -428,7 +428,7 @@ last linked login will make this identity inaccessible.
 This is a public API. You do not need any credentials to call this API.
 
 
-=head2 UpdateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolId => Str, IdentityPoolName => Str, [DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str], SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>])
+=head2 UpdateIdentityPool(AllowUnauthenticatedIdentities => Bool, IdentityPoolId => Str, IdentityPoolName => Str, [CognitoIdentityProviders => ArrayRef[L<Paws::CognitoIdentity::CognitoIdentityProvider>], DeveloperProviderName => Str, OpenIdConnectProviderARNs => ArrayRef[Str], SamlProviderARNs => ArrayRef[Str], SupportedLoginProviders => L<Paws::CognitoIdentity::IdentityProviders>])
 
 Each argument is described in detail in: L<Paws::CognitoIdentity::UpdateIdentityPool>
 

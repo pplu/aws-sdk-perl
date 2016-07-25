@@ -40,12 +40,12 @@ This data type is used in the Finding data type.
 
 =head2 AssessmentRunArn => Str
 
-  The ARN of the assessment run during which the fidning is generated.
+  The ARN of the assessment run during which the finding is generated.
 
 
 =head2 RulesPackageArn => Str
 
-  The ARN of the rules package used to generate the finding.
+  The ARN of the rules package that is used to generate the finding.
 
 
 =head2 B<REQUIRED> SchemaVersion => Int

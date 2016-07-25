@@ -53,12 +53,12 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 InstanceTenancy => Str
 
-The supported tenancy options for instances launched into the VPC. A
-value of C<default> means that instances can be launched with any
-tenancy; a value of C<dedicated> means all instances launched into the
-VPC are launched as dedicated tenancy instances regardless of the
-tenancy assigned to the instance at launch. Dedicated tenancy instances
-run on single-tenant hardware.
+The tenancy options for instances launched into the VPC. For
+C<default>, instances are launched with shared tenancy by default. You
+can launch instances with any tenancy into a shared tenancy VPC. For
+C<dedicated>, instances are launched as dedicated tenancy instances by
+default. You can only launch instances with a tenancy of C<dedicated>
+or C<host> into a dedicated tenancy VPC.
 
 B<Important:> The C<host> value cannot be used with this parameter. Use
 the C<default> or C<dedicated> values only.

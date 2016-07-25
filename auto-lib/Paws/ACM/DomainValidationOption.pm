@@ -56,15 +56,25 @@ domain and the following five addresses:
 
 =over
 
-=item * admin@subdomain.example.com
+=item *
 
-=item * administrator@subdomain.example.com
+admin@subdomain.example.com
 
-=item * hostmaster@subdomain.example.com
+=item *
 
-=item * postmaster@subdomain.example.com
+administrator@subdomain.example.com
 
-=item * webmaster@subdomain.example.com
+=item *
+
+hostmaster@subdomain.example.com
+
+=item *
+
+postmaster@subdomain.example.com
+
+=item *
+
+webmaster@subdomain.example.com
 
 =back
 

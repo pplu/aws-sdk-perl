@@ -38,11 +38,19 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The name of the instance profile to update.
 
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
+
 
 
 =head2 B<REQUIRED> RoleName => Str
 
 The name of the role to remove.
+
+The regex pattern for this parameter is a string of characters
+consisting of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-
 
 
 

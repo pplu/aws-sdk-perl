@@ -52,7 +52,7 @@ ChangeBatch.
   A complex type that describes change information about changes made to
 your hosted zone.
 
-This element contains an ID that you use when performing a GetChange
+This element contains an ID that you use when performing a C<GetChange>
 action to get detailed information about the change.
 
 

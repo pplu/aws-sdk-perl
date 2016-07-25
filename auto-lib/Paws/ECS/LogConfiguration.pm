@@ -40,11 +40,23 @@ container.
 
 =head2 B<REQUIRED> LogDriver => Str
 
-  The log driver to use for the container. This parameter requires
-version 1.18 of the Docker Remote API or greater on your container
-instance. To check the Docker Remote API version on your container
-instance, log into your container instance and run the following
-command: C<sudo docker version | grep "Server API version">
+  The log driver to use for the container. The valid values listed for
+this parameter are log drivers that the Amazon ECS container agent can
+communicate with by default.
+
+If you have a custom driver that is not listed above that you would
+like to work with the Amazon ECS container agent, you can fork the
+Amazon ECS container agent project that is available on GitHub and
+customize it to work with that driver. We encourage you to submit pull
+requests for changes that you would like to have included. However,
+Amazon Web Services does not currently provide support for running
+modified copies of this software.
+
+This parameter requires version 1.18 of the Docker Remote API or
+greater on your container instance. To check the Docker Remote API
+version on your container instance, log into your container instance
+and run the following command: C<sudo docker version | grep "Server API
+version">
 
 
 =head2 Options => L<Paws::ECS::LogConfigurationOptionsMap>

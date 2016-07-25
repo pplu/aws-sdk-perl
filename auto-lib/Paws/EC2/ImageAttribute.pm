@@ -65,7 +65,8 @@ The RAM disk ID.
 
 =head2 SriovNetSupport => L<Paws::EC2::AttributeValue>
 
-
+Indicates whether enhanced networking with the Intel 82599 Virtual
+Function interface is enabled.
 
 
 

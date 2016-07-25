@@ -33,7 +33,15 @@ Allowed values include:
 
 =item *
 
-ERRORED: An error condition.
+PENDING: A pending condition.
+
+=item *
+
+PASSED: A passing condition.
+
+=item *
+
+WARNED: A warning condition.
 
 =item *
 
@@ -45,19 +53,11 @@ SKIPPED: A skipped condition.
 
 =item *
 
+ERRORED: An error condition.
+
+=item *
+
 STOPPED: A stopped condition.
-
-=item *
-
-PASSED: A passing condition.
-
-=item *
-
-PENDING: A pending condition.
-
-=item *
-
-WARNED: A warning condition.
 
 =back
 

@@ -45,8 +45,8 @@ policies for.
 
 =head2 Limit => Int
 
-Maximum number of results to return. You can use this parameter with
-I<NextToken> to get results as a set of sequential pages.
+Maximum number of results to return. Use this parameter with
+C<NextToken> to get results as a set of sequential pages.
 
 
 
@@ -65,22 +65,23 @@ force when in an Active state.
 
 =over
 
-=item * ACTIVE: The scaling policy is currently in force.
+=item * B<ACTIVE> E<ndash> The scaling policy is currently in force.
 
-=item * UPDATEREQUESTED: A request to update the scaling policy has
-been received.
+=item * B<UPDATEREQUESTED> E<ndash> A request to update the scaling
+policy has been received.
 
-=item * UPDATING: A change is being made to the scaling policy.
+=item * B<UPDATING> E<ndash> A change is being made to the scaling
+policy.
 
-=item * DELETEREQUESTED: A request to delete the scaling policy has
-been received.
+=item * B<DELETEREQUESTED> E<ndash> A request to delete the scaling
+policy has been received.
 
-=item * DELETING: The scaling policy is being deleted.
+=item * B<DELETING> E<ndash> The scaling policy is being deleted.
 
-=item * DELETED: The scaling policy has been deleted.
+=item * B<DELETED> E<ndash> The scaling policy has been deleted.
 
-=item * ERROR: An error occurred in creating the policy. It should be
-removed and recreated.
+=item * B<ERROR> E<ndash> An error occurred in creating the policy. It
+should be removed and recreated.
 
 =back
 

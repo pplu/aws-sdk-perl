@@ -329,6 +329,11 @@ C<desiredCount>, Amazon ECS spawns another instantiation of the task in
 the specified cluster. To update an existing service, see
 UpdateService.
 
+In addition to maintaining the desired count of tasks in your service,
+you can optionally run your service behind a load balancer. The load
+balancer distributes traffic across the tasks that are associated with
+the service.
+
 You can optionally specify a deployment configuration for your service.
 During a deployment (which is triggered by changing the task definition
 of a service with an UpdateService operation), the service scheduler
@@ -440,8 +445,11 @@ but it does not terminate the EC2 instance; if you are finished using
 the instance, be sure to terminate it in the Amazon EC2 console to stop
 billing.
 
-When you terminate a container instance, it is automatically
-deregistered from your cluster.
+If you terminate a running container instance with a connected Amazon
+ECS container agent, the agent automatically deregisters the instance
+from your cluster (stopped container instances or instances with
+disconnected agents are not automatically deregistered when
+terminated).
 
 
 =head2 DeregisterTaskDefinition(TaskDefinition => Str)
@@ -557,7 +565,7 @@ Returns: a L<Paws::ECS::ListServicesResponse> instance
   Lists the services that are running in a specified cluster.
 
 
-=head2 ListTaskDefinitionFamilies([FamilyPrefix => Str, MaxResults => Int, NextToken => Str])
+=head2 ListTaskDefinitionFamilies([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Status => Str])
 
 Each argument is described in detail in: L<Paws::ECS::ListTaskDefinitionFamilies>
 
@@ -565,8 +573,12 @@ Returns: a L<Paws::ECS::ListTaskDefinitionFamiliesResponse> instance
 
   Returns a list of task definition families that are registered to your
 account (which may include task definition families that no longer have
-any C<ACTIVE> task definitions). You can filter the results with the
-C<familyPrefix> parameter.
+any C<ACTIVE> task definition revisions).
+
+You can filter out task definition families that do not contain any
+C<ACTIVE> task definition revisions by setting the C<status> parameter
+to C<ACTIVE>. You can also filter the results with the C<familyPrefix>
+parameter.
 
 
 =head2 ListTaskDefinitions([FamilyPrefix => Str, MaxResults => Int, NextToken => Str, Sort => Str, Status => Str])
@@ -591,6 +603,9 @@ results by family name, by a particular container instance, or by the
 desired status of the task with the C<family>, C<containerInstance>,
 and C<desiredStatus> parameters.
 
+Recently-stopped tasks might appear in the returned results. Currently,
+stopped tasks appear in the returned results for at least one hour.
+
 
 =head2 RegisterContainerInstance([Attributes => ArrayRef[L<Paws::ECS::Attribute>], Cluster => Str, ContainerInstanceArn => Str, InstanceIdentityDocument => Str, InstanceIdentityDocumentSignature => Str, TotalResources => ArrayRef[L<Paws::ECS::Resource>], VersionInfo => L<Paws::ECS::VersionInfo>])
 
@@ -605,7 +620,7 @@ Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
 
 
-=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [Volumes => ArrayRef[L<Paws::ECS::Volume>]])
+=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [TaskRoleArn => Str, Volumes => ArrayRef[L<Paws::ECS::Volume>]])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterTaskDefinition>
 
@@ -616,6 +631,13 @@ C<containerDefinitions>. Optionally, you can add data volumes to your
 containers with the C<volumes> parameter. For more information about
 task definition parameters and defaults, see Amazon ECS Task
 Definitions in the I<Amazon EC2 Container Service Developer Guide>.
+
+You may also specify an IAM role for your task with the C<taskRoleArn>
+parameter. When you specify an IAM role for a task, its containers can
+then use the latest versions of the AWS CLI or SDKs to make API
+requests to the AWS services that are specified in the IAM policy
+associated with the role. For more information, see IAM Roles for Tasks
+in the I<Amazon EC2 Container Service Developer Guide>.
 
 
 =head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])

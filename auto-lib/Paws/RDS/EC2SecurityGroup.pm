@@ -38,11 +38,17 @@ This data type is used as a response element in the following actions:
 
 =over
 
-=item * AuthorizeDBSecurityGroupIngress
+=item *
 
-=item * DescribeDBSecurityGroups
+AuthorizeDBSecurityGroupIngress
 
-=item * RevokeDBSecurityGroupIngress
+=item *
+
+DescribeDBSecurityGroups
+
+=item *
+
+RevokeDBSecurityGroupIngress
 
 =back
 

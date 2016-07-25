@@ -43,7 +43,7 @@ endpoint.
 
 =head2 B<REQUIRED> ReplicationInstanceArn => Str
 
-The Amazon Resource Number (ARN) of the replication instance.
+The Amazon Resource Name (ARN) of the replication instance.
 
 
 

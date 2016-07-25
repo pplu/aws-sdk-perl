@@ -16,7 +16,7 @@ Paws::Inspector::DescribeAssessmentTargetsResponse
 
 =head2 B<REQUIRED> AssessmentTargets => ArrayRef[L<Paws::Inspector::AssessmentTarget>]
 
-Information about the assessment target(s).
+Information about the assessment targets.
 
 
 

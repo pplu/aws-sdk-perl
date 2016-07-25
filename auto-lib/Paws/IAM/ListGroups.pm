@@ -65,7 +65,12 @@ C</division_abc/subdivision_xyz/> gets all groups whose path starts
 with C</division_abc/subdivision_xyz/>.
 
 This parameter is optional. If it is not included, it defaults to a
-slash (/), listing all groups.
+slash (/), listing all groups. The regex pattern for this parameter is
+a string of characters consisting of either a forward slash (/) by
+itself or a string that must begin and end with forward slashes,
+containing any ASCII character from the ! (\u0021) thru the DEL
+character (\u007F), including most punctuation characters, digits, and
+upper and lowercased letters.
 
 
 

@@ -63,6 +63,8 @@ allowed characters, see the preceding important note.
 
 The URL of the Amazon SQS queue to take action on.
 
+Queue URLs are case-sensitive.
+
 
 
 

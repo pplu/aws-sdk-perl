@@ -1,6 +1,7 @@
 package Paws::StorageGateway::GatewayInfo;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
+  has GatewayId => (is => 'ro', isa => 'Str');
   has GatewayName => (is => 'ro', isa => 'Str');
   has GatewayOperationalState => (is => 'ro', isa => 'Str');
   has GatewayType => (is => 'ro', isa => 'Str');
@@ -34,29 +35,39 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StorageGate
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes a gateway object.
 
 =head1 ATTRIBUTES
 
 
 =head2 GatewayARN => Str
 
-  
+  The Amazon Resource Name (ARN) of the gateway. Use the ListGateways
+operation to return a list of gateways for your account and region.
+
+
+=head2 GatewayId => Str
+
+  The unique identifier assigned to your gateway during activation. This
+ID becomes part of the gateway Amazon Resource Name (ARN), which you
+use as input for other operations.
 
 
 =head2 GatewayName => Str
 
-  
+  The name of the gateway.
 
 
 =head2 GatewayOperationalState => Str
 
-  
+  The state of the gateway.
+
+Valid Values: DISABLED or ACTIVE
 
 
 =head2 GatewayType => Str
 
-  
+  The type of the gateway.
 
 
 

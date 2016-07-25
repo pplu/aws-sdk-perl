@@ -2,6 +2,7 @@
 package Paws::RDS::FailoverDBCluster;
   use Moose;
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
+  has TargetDBInstanceIdentifier => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -42,14 +43,29 @@ Constraints:
 
 =over
 
-=item * Must contain from 1 to 63 alphanumeric characters or hyphens
+=item *
 
-=item * First character must be a letter
+Must contain from 1 to 63 alphanumeric characters or hyphens
 
-=item * Cannot end with a hyphen or contain two consecutive hyphens
+=item *
+
+First character must be a letter
+
+=item *
+
+Cannot end with a hyphen or contain two consecutive hyphens
 
 =back
 
+
+
+
+=head2 TargetDBInstanceIdentifier => Str
+
+The name of the instance to promote to the primary instance.
+
+You must specify the instance identifier for an Aurora Replica in the
+DB cluster. For example, C<mydbcluster-replica1>.
 
 
 

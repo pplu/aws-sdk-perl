@@ -1,10 +1,13 @@
 package Paws::IoT::DynamoDBAction;
   use Moose;
   has HashKeyField => (is => 'ro', isa => 'Str', xmlname => 'hashKeyField', request_name => 'hashKeyField', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has HashKeyType => (is => 'ro', isa => 'Str', xmlname => 'hashKeyType', request_name => 'hashKeyType', traits => ['Unwrapped','NameInRequest']);
   has HashKeyValue => (is => 'ro', isa => 'Str', xmlname => 'hashKeyValue', request_name => 'hashKeyValue', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has Operation => (is => 'ro', isa => 'Str', xmlname => 'operation', request_name => 'operation', traits => ['Unwrapped','NameInRequest']);
   has PayloadField => (is => 'ro', isa => 'Str', xmlname => 'payloadField', request_name => 'payloadField', traits => ['Unwrapped','NameInRequest']);
-  has RangeKeyField => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyField', request_name => 'rangeKeyField', traits => ['Unwrapped','NameInRequest'], required => 1);
-  has RangeKeyValue => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyValue', request_name => 'rangeKeyValue', traits => ['Unwrapped','NameInRequest'], required => 1);
+  has RangeKeyField => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyField', request_name => 'rangeKeyField', traits => ['Unwrapped','NameInRequest']);
+  has RangeKeyType => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyType', request_name => 'rangeKeyType', traits => ['Unwrapped','NameInRequest']);
+  has RangeKeyValue => (is => 'ro', isa => 'Str', xmlname => 'rangeKeyValue', request_name => 'rangeKeyValue', traits => ['Unwrapped','NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', xmlname => 'roleArn', request_name => 'roleArn', traits => ['Unwrapped','NameInRequest'], required => 1);
   has TableName => (is => 'ro', isa => 'Str', xmlname => 'tableName', request_name => 'tableName', traits => ['Unwrapped','NameInRequest'], required => 1);
 1;
@@ -64,9 +67,21 @@ C<"rangeKeyValue": "${timestamp()}">
   The hash key name.
 
 
+=head2 HashKeyType => Str
+
+  The hash key type. Valid values are "STRING" or "NUMBER"
+
+
 =head2 B<REQUIRED> HashKeyValue => Str
 
   The hash key value.
+
+
+=head2 Operation => Str
+
+  The type of operation to be performed. This follows the substitution
+template, so it can be C<${operation}>, but the substitution must
+result in one of the following: C<INSERT>, C<UPDATE>, or C<DELETE>.
 
 
 =head2 PayloadField => Str
@@ -74,12 +89,17 @@ C<"rangeKeyValue": "${timestamp()}">
   The action payload. This name can be customized.
 
 
-=head2 B<REQUIRED> RangeKeyField => Str
+=head2 RangeKeyField => Str
 
   The range key name.
 
 
-=head2 B<REQUIRED> RangeKeyValue => Str
+=head2 RangeKeyType => Str
+
+  The range key type. Valid values are "STRING" or "NUMBER"
+
+
+=head2 RangeKeyValue => Str
 
   The range key value.
 

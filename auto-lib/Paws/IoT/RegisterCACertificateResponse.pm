@@ -1,0 +1,32 @@
+
+package Paws::IoT::RegisterCACertificateResponse;
+  use Moose;
+  has CertificateArn => (is => 'ro', isa => 'Str');
+  has CertificateId => (is => 'ro', isa => 'Str');
+
+1;
+
+### main pod documentation begin ###
+
+=head1 NAME
+
+Paws::IoT::RegisterCACertificateResponse
+
+=head1 ATTRIBUTES
+
+
+=head2 CertificateArn => Str
+
+The CA certificate ARN.
+
+
+
+=head2 CertificateId => Str
+
+The CA certificate identifier.
+
+
+
+
+=cut
+

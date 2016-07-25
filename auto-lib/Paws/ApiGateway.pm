@@ -284,6 +284,11 @@ package Paws::ApiGateway;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::GetStages', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ImportRestApi {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::ImportRestApi', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutIntegration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::PutIntegration', @_);
@@ -302,6 +307,11 @@ package Paws::ApiGateway;
   sub PutMethodResponse {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ApiGateway::PutMethodResponse', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutRestApi {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ApiGateway::PutRestApi', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TestInvokeAuthorizer {
@@ -536,7 +546,7 @@ package Paws::ApiGateway;
   }
 
 
-  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDomainName CreateModel CreateResource CreateRestApi CreateStage DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages PutIntegration PutIntegrationResponse PutMethod PutMethodResponse TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage / }
+  sub operations { qw/CreateApiKey CreateAuthorizer CreateBasePathMapping CreateDeployment CreateDomainName CreateModel CreateResource CreateRestApi CreateStage DeleteApiKey DeleteAuthorizer DeleteBasePathMapping DeleteClientCertificate DeleteDeployment DeleteDomainName DeleteIntegration DeleteIntegrationResponse DeleteMethod DeleteMethodResponse DeleteModel DeleteResource DeleteRestApi DeleteStage FlushStageAuthorizersCache FlushStageCache GenerateClientCertificate GetAccount GetApiKey GetApiKeys GetAuthorizer GetAuthorizers GetBasePathMapping GetBasePathMappings GetClientCertificate GetClientCertificates GetDeployment GetDeployments GetDomainName GetDomainNames GetExport GetIntegration GetIntegrationResponse GetMethod GetMethodResponse GetModel GetModels GetModelTemplate GetResource GetResources GetRestApi GetRestApis GetSdk GetStage GetStages ImportRestApi PutIntegration PutIntegrationResponse PutMethod PutMethodResponse PutRestApi TestInvokeAuthorizer TestInvokeMethod UpdateAccount UpdateApiKey UpdateAuthorizer UpdateBasePathMapping UpdateClientCertificate UpdateDeployment UpdateDomainName UpdateIntegration UpdateIntegrationResponse UpdateMethod UpdateMethodResponse UpdateModel UpdateResource UpdateRestApi UpdateStage / }
 
 1;
 
@@ -580,16 +590,16 @@ Each argument is described in detail in: L<Paws::ApiGateway::CreateApiKey>
 
 Returns: a L<Paws::ApiGateway::ApiKey> instance
 
-  
+  Create an ApiKey resource.
 
 
-=head2 CreateAuthorizer(AuthorizerUri => Str, IdentitySource => Str, Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, IdentityValidationExpression => Str])
+=head2 CreateAuthorizer(AuthorizerUri => Str, IdentitySource => Str, Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, AuthType => Str, IdentityValidationExpression => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateAuthorizer>
 
 Returns: a L<Paws::ApiGateway::Authorizer> instance
 
-  
+  Adds a new Authorizer resource to an existing RestApi resource.
 
 
 =head2 CreateBasePathMapping(DomainName => Str, RestApiId => Str, [BasePath => Str, Stage => Str])
@@ -690,7 +700,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::DeleteClientCertifi
 
 Returns: nothing
 
-  
+  Deletes the ClientCertificate resource.
 
 
 =head2 DeleteDeployment(DeploymentId => Str, RestApiId => Str)
@@ -808,7 +818,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GenerateClientCerti
 
 Returns: a L<Paws::ApiGateway::ClientCertificate> instance
 
-  
+  Generates a ClientCertificate resource.
 
 
 =head2 GetAccount()
@@ -880,7 +890,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetClientCertificat
 
 Returns: a L<Paws::ApiGateway::ClientCertificate> instance
 
-  
+  Gets information about the current ClientCertificate resource.
 
 
 =head2 GetClientCertificates([Limit => Int, Position => Str])
@@ -889,7 +899,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetClientCertificat
 
 Returns: a L<Paws::ApiGateway::ClientCertificates> instance
 
-  
+  Gets a collection of ClientCertificate resources.
 
 
 =head2 GetDeployment(DeploymentId => Str, RestApiId => Str)
@@ -935,7 +945,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetExport>
 
 Returns: a L<Paws::ApiGateway::ExportResponse> instance
 
-  
+  Exports a deployed version of a RestApi in a specified format.
 
 
 =head2 GetIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str)
@@ -1044,7 +1054,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::GetSdk>
 
 Returns: a L<Paws::ApiGateway::SdkResponse> instance
 
-  
+  Generates a client SDK for a RestApi and Stage.
 
 
 =head2 GetStage(RestApiId => Str, StageName => Str)
@@ -1065,7 +1075,17 @@ Returns: a L<Paws::ApiGateway::Stages> instance
   Gets information about one or more Stage resources.
 
 
-=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str], CacheNamespace => Str, Credentials => Str, IntegrationHttpMethod => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, Uri => Str])
+=head2 ImportRestApi(Body => Str, [FailOnWarnings => Bool, Parameters => L<Paws::ApiGateway::MapOfStringToString>])
+
+Each argument is described in detail in: L<Paws::ApiGateway::ImportRestApi>
+
+Returns: a L<Paws::ApiGateway::RestApi> instance
+
+  A feature of the Amazon API Gateway control service for creating a new
+API from an external API definition file.
+
+
+=head2 PutIntegration(HttpMethod => Str, ResourceId => Str, RestApiId => Str, Type => Str, [CacheKeyParameters => ArrayRef[Str], CacheNamespace => Str, Credentials => Str, IntegrationHttpMethod => Str, PassthroughBehavior => Str, RequestParameters => L<Paws::ApiGateway::MapOfStringToString>, RequestTemplates => L<Paws::ApiGateway::MapOfStringToString>, Uri => Str])
 
 Each argument is described in detail in: L<Paws::ApiGateway::PutIntegration>
 
@@ -1101,13 +1121,26 @@ Returns: a L<Paws::ApiGateway::MethodResponse> instance
   Adds a MethodResponse to an existing Method resource.
 
 
+=head2 PutRestApi(Body => Str, RestApiId => Str, [FailOnWarnings => Bool, Mode => Str, Parameters => L<Paws::ApiGateway::MapOfStringToString>])
+
+Each argument is described in detail in: L<Paws::ApiGateway::PutRestApi>
+
+Returns: a L<Paws::ApiGateway::RestApi> instance
+
+  A feature of the Amazon API Gateway control service for updating an
+existing API with an input of external API definitions. The update can
+take the form of merging the supplied definition into the existing API
+or overwriting the existing API.
+
+
 =head2 TestInvokeAuthorizer(AuthorizerId => Str, RestApiId => Str, [AdditionalContext => L<Paws::ApiGateway::MapOfStringToString>, Body => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
 
 Each argument is described in detail in: L<Paws::ApiGateway::TestInvokeAuthorizer>
 
 Returns: a L<Paws::ApiGateway::TestInvokeAuthorizerResponse> instance
 
-  
+  Simulate the execution of an Authorizer in your RestApi with headers,
+parameters, and an incoming request body.
 
 
 =head2 TestInvokeMethod(HttpMethod => Str, ResourceId => Str, RestApiId => Str, [Body => Str, ClientCertificateId => Str, Headers => L<Paws::ApiGateway::MapOfHeaderValues>, PathWithQueryString => Str, StageVariables => L<Paws::ApiGateway::MapOfStringToString>])
@@ -1116,7 +1149,8 @@ Each argument is described in detail in: L<Paws::ApiGateway::TestInvokeMethod>
 
 Returns: a L<Paws::ApiGateway::TestInvokeMethodResponse> instance
 
-  
+  Simulate the execution of a Method in your RestApi with headers,
+parameters, and an incoming request body.
 
 
 =head2 UpdateAccount([PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])
@@ -1161,7 +1195,7 @@ Each argument is described in detail in: L<Paws::ApiGateway::UpdateClientCertifi
 
 Returns: a L<Paws::ApiGateway::ClientCertificate> instance
 
-  
+  Changes information about an ClientCertificate resource.
 
 
 =head2 UpdateDeployment(DeploymentId => Str, RestApiId => Str, [PatchOperations => ArrayRef[L<Paws::ApiGateway::PatchOperation>]])

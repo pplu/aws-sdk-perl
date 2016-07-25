@@ -35,10 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Pu
 =head1 DESCRIPTION
 
 Represents the result of an individual record from a C<PutRecords>
-request. A record that is successfully added to your Amazon Kinesis
-stream includes SequenceNumber and ShardId in the result. A record that
-fails to be added to your Amazon Kinesis stream includes ErrorCode and
-ErrorMessage in the result.
+request. A record that is successfully added to a stream includes
+C<SequenceNumber> and C<ShardId> in the result. A record that fails to
+be added to the stream includes C<ErrorCode> and C<ErrorMessage> in the
+result.
 
 =head1 ATTRIBUTES
 

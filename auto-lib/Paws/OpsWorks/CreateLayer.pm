@@ -164,7 +164,8 @@ The layer stack ID.
 =head2 B<REQUIRED> Type => Str
 
 The layer type. A stack cannot have more than one built-in layer of the
-same type. It can have any number of custom layers.
+same type. It can have any number of custom layers. Built-in layers are
+not available in Chef 12 stacks.
 
 Valid values are: C<"aws-flow-ruby">, C<"ecs-cluster">, C<"java-app">, C<"lb">, C<"web">, C<"php-app">, C<"rails-app">, C<"nodejs-app">, C<"memcached">, C<"db-master">, C<"monitoring-master">, C<"custom">
 

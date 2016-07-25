@@ -43,8 +43,8 @@ Valid values are: C<"ASSESSMENT_RUN_STARTED">, C<"ASSESSMENT_RUN_COMPLETED">, C<
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The ARN of the assessment template used during the event for which you
-want to stop recieving SNS notifications.
+The ARN of the assessment template that is used during the event for
+which you want to stop receiving SNS notifications.
 
 
 

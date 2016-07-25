@@ -37,9 +37,9 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AssignmentStatus => Str
 
-The status (unassigned or assigned) of the devices to list. If you do
-not specify an C<AssignmentStatus>, the action defaults to C<Any> which
-lists both assigned and unassigned virtual MFA devices.
+The status (C<Unassigned> or C<Assigned>) of the devices to list. If
+you do not specify an C<AssignmentStatus>, the action defaults to
+C<Any> which lists both assigned and unassigned virtual MFA devices.
 
 Valid values are: C<"Assigned">, C<"Unassigned">, C<"Any">
 

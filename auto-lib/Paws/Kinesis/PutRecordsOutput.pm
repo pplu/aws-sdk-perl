@@ -25,10 +25,9 @@ request.
 
 An array of successfully and unsuccessfully processed record results,
 correlated with the request by natural ordering. A record that is
-successfully added to your Amazon Kinesis stream includes
-C<SequenceNumber> and C<ShardId> in the result. A record that fails to
-be added to your Amazon Kinesis stream includes C<ErrorCode> and
-C<ErrorMessage> in the result.
+successfully added to a stream includes C<SequenceNumber> and
+C<ShardId> in the result. A record that fails to be added to a stream
+includes C<ErrorCode> and C<ErrorMessage> in the result.
 
 
 

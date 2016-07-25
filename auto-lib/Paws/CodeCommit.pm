@@ -90,6 +90,42 @@ package Paws::CodeCommit;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllBranches {
+    my $self = shift;
+
+    my $result = $self->ListBranches(@_);
+    my $params = {};
+    
+    $params->{ branches } = $result->branches;
+    
+
+    while ($result->) {
+      $result = $self->ListBranches(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ branches } }, @{ $result->branches };
+      
+    }
+
+    return $self->new_with_coercions(Paws::CodeCommit::ListBranches->_returns, %$params);
+  }
+  sub ListAllRepositories {
+    my $self = shift;
+
+    my $result = $self->ListRepositories(@_);
+    my $params = {};
+    
+    $params->{ repositories } = $result->repositories;
+    
+
+    while ($result->) {
+      $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
+      
+      push @{ $params->{ repositories } }, @{ $result->repositories };
+      
+    }
+
+    return $self->new_with_coercions(Paws::CodeCommit::ListRepositories->_returns, %$params);
+  }
 
 
   sub operations { qw/BatchGetRepositories CreateBranch CreateRepository DeleteRepository GetBranch GetCommit GetRepository GetRepositoryTriggers ListBranches ListRepositories PutRepositoryTriggers TestRepositoryTriggers UpdateDefaultBranch UpdateRepositoryDescription UpdateRepositoryName / }

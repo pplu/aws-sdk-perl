@@ -59,7 +59,7 @@ be a https URL (https://..) or an Amazon S3 URL (s3://..).
 
 =head2 UserBucket => L<Paws::EC2::UserBucket>
 
-  
+  The S3 bucket for the disk image.
 
 
 

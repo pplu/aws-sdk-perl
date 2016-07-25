@@ -79,11 +79,9 @@ C<value> - The tag value.
 
 =head2 MaxResults => Int
 
-The maximum number of results to return for the request in a single
-page. The remaining results of the initial request can be seen by
-sending another request with the returned C<NextToken> value. This
-value can be between 5 and 1000; if C<MaxResults> is given a value
-larger than 1000, only 1000 results are returned.
+The maximum number of results to return in a single call. This value
+can be between 5 and 1000. To retrieve the remaining results, make
+another call with the returned C<NextToken> value.
 
 
 

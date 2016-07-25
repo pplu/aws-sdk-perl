@@ -61,19 +61,18 @@ in the C<marker> parameter to get the next page of results.
 
 The maximum number of hosted zones to be included in the response body.
 If the number of hosted zones associated with this AWS account exceeds
-C<MaxItems>, the value of ListHostedZonesResponse$IsTruncated in the
-response is C<true>. Call C<ListHostedZones> again and specify the
-value of ListHostedZonesResponse$NextMarker in the
-ListHostedZonesRequest$Marker element to get the next page of results.
+C<MaxItems>, the value of C<IsTruncated> in the response is C<true>.
+Call C<ListHostedZones> again and specify the value of C<NextMarker> in
+the C<Marker> parameter to get the next page of results.
 
 
 
 =head2 NextMarker => Str
 
-Indicates where to continue listing hosted zones. If
-ListHostedZonesResponse$IsTruncated is C<true>, make another request to
-C<ListHostedZones> and include the value of the C<NextMarker> element
-in the C<Marker> element to get the next page of results.
+Indicates where to continue listing hosted zones. If C<IsTruncated> is
+C<true>, make another request to C<ListHostedZones> and include the
+value of the C<NextMarker> element in the C<Marker> element to get the
+next page of results.
 
 
 

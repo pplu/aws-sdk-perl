@@ -116,11 +116,17 @@ Stack Configuration Attributes.
 
 =over
 
-=item * running
+=item *
 
-=item * successful
+running
 
-=item * failed
+=item *
+
+successful
+
+=item *
+
+failed
 
 =back
 

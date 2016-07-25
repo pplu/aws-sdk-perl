@@ -32,8 +32,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudHSM::T
 
 =head1 DESCRIPTION
 
-A key-value pair that identifies or specifies metadata about a
-resource.
+A key-value pair that identifies or specifies metadata about an AWS
+CloudHSM resource.
 
 =head1 ATTRIBUTES
 

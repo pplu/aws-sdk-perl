@@ -6,6 +6,7 @@ package Paws::Lambda::UpdateFunctionConfiguration;
   has Handler => (is => 'ro', isa => 'Str');
   has MemorySize => (is => 'ro', isa => 'Int');
   has Role => (is => 'ro', isa => 'Str');
+  has Runtime => (is => 'ro', isa => 'Str');
   has Timeout => (is => 'ro', isa => 'Int');
   has VpcConfig => (is => 'ro', isa => 'Paws::Lambda::VpcConfig');
 
@@ -86,6 +87,12 @@ The Amazon Resource Name (ARN) of the IAM role that Lambda will assume
 when it executes your function.
 
 
+
+=head2 Runtime => Str
+
+
+
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">
 
 =head2 Timeout => Int
 

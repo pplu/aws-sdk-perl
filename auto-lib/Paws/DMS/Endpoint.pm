@@ -1,5 +1,6 @@
 package Paws::DMS::Endpoint;
   use Moose;
+  has CertificateArn => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has EndpointArn => (is => 'ro', isa => 'Str');
   has EndpointIdentifier => (is => 'ro', isa => 'Str');
@@ -9,6 +10,7 @@ package Paws::DMS::Endpoint;
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has ServerName => (is => 'ro', isa => 'Str');
+  has SslMode => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
 1;
@@ -30,20 +32,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DMS::Endpoint object:
 
-  $service_obj->Method(Att1 => { DatabaseName => $value, ..., Username => $value  });
+  $service_obj->Method(Att1 => { CertificateArn => $value, ..., Username => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Endpoint object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DatabaseName
+  $result->Att1->CertificateArn
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 CertificateArn => Str
+
+  The Amazon Resource Name (ARN) used for SSL connection to the endpoint.
 
 
 =head2 DatabaseName => Str
@@ -96,6 +103,16 @@ different default encryption key for each AWS region.
 =head2 ServerName => Str
 
   The name of the server at the endpoint.
+
+
+=head2 SslMode => Str
+
+  The SSL mode used to connect to the endpoint.
+
+SSL mode can be one of four values: none, require, verify-ca,
+verify-full.
+
+The default value is none.
 
 
 =head2 Status => Str

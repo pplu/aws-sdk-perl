@@ -58,9 +58,13 @@ actions:
 
 =over
 
-=item * CreateDBSnapshot
+=item *
 
-=item * DeleteDBSnapshot
+CreateDBSnapshot
+
+=item *
+
+DeleteDBSnapshot
 
 =back
 

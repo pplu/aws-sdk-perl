@@ -16,7 +16,7 @@ Paws::IAM::CreateUserResponse
 
 =head2 User => L<Paws::IAM::User>
 
-Information about the user.
+A structure with details about the new IAM user.
 
 
 

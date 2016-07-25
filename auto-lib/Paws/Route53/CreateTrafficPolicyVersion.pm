@@ -36,7 +36,8 @@ version.
 The definition of a new traffic policy version, in JSON format. You
 must specify the full definition of the new traffic policy. You cannot
 specify just the differences between the new version and a previous
-version.
+version. For more information, see Traffic Policy Document Format in
+the I<Amazon Route 53 API Reference>.
 
 
 

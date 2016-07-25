@@ -78,17 +78,21 @@ Valid values are: C<"single-az">, C<"cross-az">
 The node group identifier. This parameter is stored as a lowercase
 string.
 
-Constraints:
+B<Constraints:>
 
 =over
 
-=item * A name must contain from 1 to 20 alphanumeric characters or
-hyphens.
+=item *
 
-=item * The first character must be a letter.
+A name must contain from 1 to 20 alphanumeric characters or hyphens.
 
-=item * A name cannot end with a hyphen or contain two consecutive
-hyphens.
+=item *
+
+The first character must be a letter.
+
+=item *
+
+A name cannot end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -103,29 +107,43 @@ Valid node types are as follows:
 
 =over
 
-=item * General purpose:
+=item *
+
+General purpose:
 
 =over
 
-=item * Current generation: C<cache.t2.micro>, C<cache.t2.small>,
+=item *
+
+Current generation: C<cache.t2.micro>, C<cache.t2.small>,
 C<cache.t2.medium>, C<cache.m3.medium>, C<cache.m3.large>,
 C<cache.m3.xlarge>, C<cache.m3.2xlarge>
 
-=item * Previous generation: C<cache.t1.micro>, C<cache.m1.small>,
+=item *
+
+Previous generation: C<cache.t1.micro>, C<cache.m1.small>,
 C<cache.m1.medium>, C<cache.m1.large>, C<cache.m1.xlarge>
 
 =back
 
-=item * Compute optimized: C<cache.c1.xlarge>
+=item *
 
-=item * Memory optimized
+Compute optimized: C<cache.c1.xlarge>
+
+=item *
+
+Memory optimized:
 
 =over
 
-=item * Current generation: C<cache.r3.large>, C<cache.r3.xlarge>,
+=item *
+
+Current generation: C<cache.r3.large>, C<cache.r3.xlarge>,
 C<cache.r3.2xlarge>, C<cache.r3.4xlarge>, C<cache.r3.8xlarge>
 
-=item * Previous generation: C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
+=item *
+
+Previous generation: C<cache.m2.xlarge>, C<cache.m2.2xlarge>,
 C<cache.m2.4xlarge>
 
 =back
@@ -136,13 +154,18 @@ B<Notes:>
 
 =over
 
-=item * All t2 instances are created in an Amazon Virtual Private Cloud
-(VPC).
+=item *
 
-=item * Redis backup/restore is not supported for t2 instances.
+All t2 instances are created in an Amazon Virtual Private Cloud (VPC).
 
-=item * Redis Append-only files (AOF) functionality is not supported
-for t1 or t2 instances.
+=item *
+
+Redis backup/restore is not supported for t2 instances.
+
+=item *
+
+Redis Append-only files (AOF) functionality is not supported for t1 or
+t2 instances.
 
 =back
 
@@ -265,9 +288,11 @@ multiple times in the list.
 Default: System chosen Availability Zones.
 
 Example: One Memcached node in each of three different Availability
-Zones: C<>
+Zones:
+C<PreferredAvailabilityZones.member.1=us-west-2a&amp;PreferredAvailabilityZones.member.2=us-west-2b&amp;PreferredAvailabilityZones.member.3=us-west-2c>
 
-Example: All three Memcached nodes in one Availability Zone: C<>
+Example: All three Memcached nodes in one Availability Zone:
+C<PreferredAvailabilityZones.member.1=us-west-2a&amp;PreferredAvailabilityZones.member.2=us-west-2a&amp;PreferredAvailabilityZones.member.3=us-west-2a>
 
 
 
@@ -280,19 +305,33 @@ is a 60 minute period. Valid values for C<ddd> are:
 
 =over
 
-=item * C<sun>
+=item *
 
-=item * C<mon>
+C<sun>
 
-=item * C<tue>
+=item *
 
-=item * C<wed>
+C<mon>
 
-=item * C<thu>
+=item *
 
-=item * C<fri>
+C<tue>
 
-=item * C<sat>
+=item *
+
+C<wed>
+
+=item *
+
+C<thu>
+
+=item *
+
+C<fri>
+
+=item *
+
+C<sat>
 
 =back
 
@@ -313,8 +352,7 @@ availability zone is not specified, the cache cluster will be created
 in availability zones that provide the best spread of read replicas
 across availability zones.
 
-B<Note:> This parameter is only valid if the C<Engine> parameter is
-C<redis>.
+This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 
 
@@ -334,8 +372,7 @@ that uniquely identifies a Redis RDB snapshot file stored in Amazon S3.
 The snapshot file will be used to populate the node group. The Amazon
 S3 object name in the ARN cannot contain any commas.
 
-B<Note:> This parameter is only valid if the C<Engine> parameter is
-C<redis>.
+This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 Example of an Amazon S3 ARN: C<arn:aws:s3:::my_bucket/snapshot1.rdb>
 
@@ -347,8 +384,7 @@ The name of a snapshot from which to restore data into the new node
 group. The snapshot status changes to C<restoring> while the new node
 group is being created.
 
-B<Note:> This parameter is only valid if the C<Engine> parameter is
-C<redis>.
+This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 
 
@@ -359,8 +395,7 @@ snapshots before deleting them. For example, if you set
 C<SnapshotRetentionLimit> to 5, then a snapshot that was taken today
 will be retained for 5 days before being deleted.
 
-B<Note:> This parameter is only valid if the C<Engine> parameter is
-C<redis>.
+This parameter is only valid if the C<Engine> parameter is C<redis>.
 
 Default: 0 (i.e., automatic backups are disabled for this cache
 cluster).

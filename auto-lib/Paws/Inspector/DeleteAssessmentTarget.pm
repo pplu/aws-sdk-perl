@@ -35,7 +35,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> AssessmentTargetArn => Str
 
-The ARN specifying the assessment target that you want to delete.
+The ARN that specifies the assessment target that you want to delete.
 
 
 

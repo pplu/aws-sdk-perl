@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBClus
 =head1 DESCRIPTION
 
 Contains the result of a successful invocation of the
-CreateDBClusterParameterGroup action.
+CreateDBClusterParameterGroup or CopyDBClusterParameterGroup action.
 
 This data type is used as a request parameter in the
 DeleteDBClusterParameterGroup action, and as a response element in the

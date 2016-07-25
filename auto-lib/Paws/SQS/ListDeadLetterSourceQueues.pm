@@ -37,6 +37,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 The queue URL of a dead letter queue.
 
+Queue URLs are case-sensitive.
+
 
 
 

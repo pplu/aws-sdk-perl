@@ -38,11 +38,17 @@ Represents the output of one of the following actions:
 
 =over
 
-=item * I<AuthorizeCacheSecurityGroupIngress>
+=item *
 
-=item * I<CreateCacheSecurityGroup>
+I<AuthorizeCacheSecurityGroupIngress>
 
-=item * I<RevokeCacheSecurityGroupIngress>
+=item *
+
+I<CreateCacheSecurityGroup>
+
+=item *
+
+I<RevokeCacheSecurityGroupIngress>
 
 =back
 
