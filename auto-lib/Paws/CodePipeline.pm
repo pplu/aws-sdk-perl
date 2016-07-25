@@ -99,6 +99,11 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::PutActionRevision', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutApprovalResult {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::PutApprovalResult', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutJobFailureResult {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::PutJobFailureResult', @_);
@@ -119,6 +124,11 @@ package Paws::CodePipeline;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::PutThirdPartyJobSuccessResult', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RetryStageExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodePipeline::RetryStageExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartPipelineExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodePipeline::StartPipelineExecution', @_);
@@ -130,7 +140,7 @@ package Paws::CodePipeline;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelines PollForJobs PollForThirdPartyJobs PutActionRevision PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult StartPipelineExecution UpdatePipeline / }
+  sub operations { qw/AcknowledgeJob AcknowledgeThirdPartyJob CreateCustomActionType CreatePipeline DeleteCustomActionType DeletePipeline DisableStageTransition EnableStageTransition GetJobDetails GetPipeline GetPipelineState GetThirdPartyJobDetails ListActionTypes ListPipelines PollForJobs PollForThirdPartyJobs PutActionRevision PutApprovalResult PutJobFailureResult PutJobSuccessResult PutThirdPartyJobFailureResult PutThirdPartyJobSuccessResult RetryStageExecution StartPipelineExecution UpdatePipeline / }
 
 1;
 
@@ -158,7 +168,9 @@ Paws::CodePipeline - Perl Interface to AWS AWS CodePipeline
 
 =head1 DESCRIPTION
 
-AWS CodePipeline B<Overview>
+AWS CodePipeline
+
+B<Overview>
 
 This is the AWS CodePipeline API Reference. This guide provides
 descriptions of the actions and data types for AWS CodePipeline. Some
@@ -175,24 +187,37 @@ You can work with pipelines by calling:
 
 =over
 
-=item * CreatePipeline, which creates a uniquely-named pipeline.
+=item *
 
-=item * DeletePipeline, which deletes the specified pipeline.
+CreatePipeline, which creates a uniquely-named pipeline.
 
-=item * GetPipeline, which returns information about a pipeline
-structure.
+=item *
 
-=item * GetPipelineState, which returns information about the current
-state of the stages and actions of a pipeline.
+DeletePipeline, which deletes the specified pipeline.
 
-=item * ListPipelines, which gets a summary of all of the pipelines
-associated with your account.
+=item *
 
-=item * StartPipelineExecution, which runs the the most recent revision
-of an artifact through the pipeline.
+GetPipeline, which returns information about a pipeline structure.
 
-=item * UpdatePipeline, which updates a pipeline with edits or changes
-to the structure of the pipeline.
+=item *
+
+GetPipelineState, which returns information about the current state of
+the stages and actions of a pipeline.
+
+=item *
+
+ListPipelines, which gets a summary of all of the pipelines associated
+with your account.
+
+=item *
+
+StartPipelineExecution, which runs the the most recent revision of an
+artifact through the pipeline.
+
+=item *
+
+UpdatePipeline, which updates a pipeline with edits or changes to the
+structure of the pipeline.
 
 =back
 
@@ -225,11 +250,15 @@ You can work with transitions by calling:
 
 =over
 
-=item * DisableStageTransition, which prevents artifacts from
-transitioning to the next stage in a pipeline.
+=item *
 
-=item * EnableStageTransition, which enables transition of artifacts
-between stages in a pipeline.
+DisableStageTransition, which prevents artifacts from transitioning to
+the next stage in a pipeline.
+
+=item *
+
+EnableStageTransition, which enables transition of artifacts between
+stages in a pipeline.
 
 =back
 
@@ -240,31 +269,37 @@ integrations with AWS CodePipeline, the expected sequence varies from
 the standard API user. In order to integrate with AWS CodePipeline,
 developers will need to work with the following items:
 
-=over
-
-=item * Jobs, which are instances of an action. For example, a job for
-a source action might import a revision of an artifact from a source.
+B<Jobs>, which are instances of an action. For example, a job for a
+source action might import a revision of an artifact from a source.
 
 You can work with jobs by calling:
 
 =over
 
-=item * AcknowledgeJob, which confirms whether a job worker has
-received the specified job,
+=item *
 
-=item * GetJobDetails, which returns the details of a job,
+AcknowledgeJob, which confirms whether a job worker has received the
+specified job,
 
-=item * PollForJobs, which determines whether there are any jobs to act
-upon,
+=item *
 
-=item * PutJobFailureResult, which provides details of a job failure,
-and
+GetJobDetails, which returns the details of a job,
 
-=item * PutJobSuccessResult, which provides details of a job success.
+=item *
+
+PollForJobs, which determines whether there are any jobs to act upon,
+
+=item *
+
+PutJobFailureResult, which provides details of a job failure, and
+
+=item *
+
+PutJobSuccessResult, which provides details of a job success.
 
 =back
 
-=item * Third party jobs, which are instances of an action created by a
+B<Third party jobs>, which are instances of an action created by a
 partner action and integrated into AWS CodePipeline. Partner actions
 are created by members of the AWS Partner Network.
 
@@ -272,22 +307,29 @@ You can work with third party jobs by calling:
 
 =over
 
-=item * AcknowledgeThirdPartyJob, which confirms whether a job worker
-has received the specified job,
+=item *
 
-=item * GetThirdPartyJobDetails, which requests the details of a job
-for a partner action,
+AcknowledgeThirdPartyJob, which confirms whether a job worker has
+received the specified job,
 
-=item * PollForThirdPartyJobs, which determines whether there are any
-jobs to act upon,
+=item *
 
-=item * PutThirdPartyJobFailureResult, which provides details of a job
-failure, and
+GetThirdPartyJobDetails, which requests the details of a job for a
+partner action,
 
-=item * PutThirdPartyJobSuccessResult, which provides details of a job
-success.
+=item *
 
-=back
+PollForThirdPartyJobs, which determines whether there are any jobs to
+act upon,
+
+=item *
+
+PutThirdPartyJobFailureResult, which provides details of a job failure,
+and
+
+=item *
+
+PutThirdPartyJobSuccessResult, which provides details of a job success.
 
 =back
 
@@ -408,8 +450,8 @@ Each argument is described in detail in: L<Paws::CodePipeline::GetPipelineState>
 
 Returns: a L<Paws::CodePipeline::GetPipelineStateOutput> instance
 
-  Returns information about the state of a pipeline, including the
-stages, actions, and details about the last run of the pipeline.
+  Returns information about the state of a pipeline, including the stages
+and actions.
 
 
 =head2 GetThirdPartyJobDetails(ClientToken => Str, JobId => Str)
@@ -487,6 +529,16 @@ Returns: a L<Paws::CodePipeline::PutActionRevisionOutput> instance
 source.
 
 
+=head2 PutApprovalResult(ActionName => Str, PipelineName => Str, Result => L<Paws::CodePipeline::ApprovalResult>, StageName => Str, [Token => Str])
+
+Each argument is described in detail in: L<Paws::CodePipeline::PutApprovalResult>
+
+Returns: a L<Paws::CodePipeline::PutApprovalResultOutput> instance
+
+  Provides the response to a manual approval request to AWS CodePipeline.
+Valid responses include Approved and Rejected.
+
+
 =head2 PutJobFailureResult(FailureDetails => L<Paws::CodePipeline::FailureDetails>, JobId => Str)
 
 Each argument is described in detail in: L<Paws::CodePipeline::PutJobFailureResult>
@@ -525,6 +577,16 @@ Returns: nothing
 
   Represents the success of a third party job as returned to the pipeline
 by a job worker. Only used for partner actions.
+
+
+=head2 RetryStageExecution(PipelineExecutionId => Str, PipelineName => Str, RetryMode => Str, StageName => Str)
+
+Each argument is described in detail in: L<Paws::CodePipeline::RetryStageExecution>
+
+Returns: a L<Paws::CodePipeline::RetryStageExecutionOutput> instance
+
+  Resumes the pipeline execution by retrying the last failed actions in a
+stage.
 
 
 =head2 StartPipelineExecution(Name => Str)

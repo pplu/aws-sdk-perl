@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 The category of the custom action that you want to delete, such as
 source or deploy.
 
-Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">
+Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">, C<"Approval">
 
 =head2 B<REQUIRED> Provider => Str
 

@@ -47,7 +47,7 @@ action.
 Although Source is listed as a valid value, it is not currently
 functional. This value is reserved for future use.
 
-Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">
+Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">, C<"Approval">
 
 =head2 ConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]
 
@@ -55,9 +55,9 @@ The configuration properties for the custom action.
 
 You can refer to a name in the configuration properties of the custom
 action within the URL templates by following the format of
-{Config:I<name>}, as long as the configuration property is both
-required and not secret. For more information, see Create a Custom
-Action for a Pipeline.
+{Config:name}, as long as the configuration property is both required
+and not secret. For more information, see Create a Custom Action for a
+Pipeline.
 
 
 

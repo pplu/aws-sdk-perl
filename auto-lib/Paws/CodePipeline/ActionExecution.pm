@@ -4,9 +4,11 @@ package Paws::CodePipeline::ActionExecution;
   has ExternalExecutionId => (is => 'ro', isa => 'Str', xmlname => 'externalExecutionId', request_name => 'externalExecutionId', traits => ['Unwrapped','NameInRequest']);
   has ExternalExecutionUrl => (is => 'ro', isa => 'Str', xmlname => 'externalExecutionUrl', request_name => 'externalExecutionUrl', traits => ['Unwrapped','NameInRequest']);
   has LastStatusChange => (is => 'ro', isa => 'Str', xmlname => 'lastStatusChange', request_name => 'lastStatusChange', traits => ['Unwrapped','NameInRequest']);
+  has LastUpdatedBy => (is => 'ro', isa => 'Str', xmlname => 'lastUpdatedBy', request_name => 'lastUpdatedBy', traits => ['Unwrapped','NameInRequest']);
   has PercentComplete => (is => 'ro', isa => 'Int', xmlname => 'percentComplete', request_name => 'percentComplete', traits => ['Unwrapped','NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', xmlname => 'status', request_name => 'status', traits => ['Unwrapped','NameInRequest']);
   has Summary => (is => 'ro', isa => 'Str', xmlname => 'summary', request_name => 'summary', traits => ['Unwrapped','NameInRequest']);
+  has Token => (is => 'ro', isa => 'Str', xmlname => 'token', request_name => 'token', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::ActionExecution object:
 
-  $service_obj->Method(Att1 => { ErrorDetails => $value, ..., Summary => $value  });
+  $service_obj->Method(Att1 => { ErrorDetails => $value, ..., Token => $value  });
 
 =head3 Results returned from an API call
 
@@ -37,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodePipelin
 
 =head1 DESCRIPTION
 
-Represents information about how an action runs.
+Represents information about the run of an action.
 
 =head1 ATTRIBUTES
 
@@ -63,6 +65,11 @@ the action, for example an external repository URL.
   The last status change of the action.
 
 
+=head2 LastUpdatedBy => Str
+
+  The ARN of the user who last changed the pipeline.
+
+
 =head2 PercentComplete => Int
 
   A percentage of completeness of the action as it runs.
@@ -77,6 +84,14 @@ the action.
 =head2 Summary => Str
 
   A summary of the run of the action.
+
+
+=head2 Token => Str
+
+  The system-generated token used to identify a unique approval request.
+The token for each open approval request can be obtained using the
+GetPipelineState command and is used to validate that the approval
+request corresponding to this token is still valid.
 
 
 
