@@ -3,6 +3,8 @@ package Paws::DeviceFarm::Device;
   has Arn => (is => 'ro', isa => 'Str', xmlname => 'arn', request_name => 'arn', traits => ['Unwrapped','NameInRequest']);
   has Carrier => (is => 'ro', isa => 'Str', xmlname => 'carrier', request_name => 'carrier', traits => ['Unwrapped','NameInRequest']);
   has Cpu => (is => 'ro', isa => 'Paws::DeviceFarm::CPU', xmlname => 'cpu', request_name => 'cpu', traits => ['Unwrapped','NameInRequest']);
+  has FleetName => (is => 'ro', isa => 'Str', xmlname => 'fleetName', request_name => 'fleetName', traits => ['Unwrapped','NameInRequest']);
+  has FleetType => (is => 'ro', isa => 'Str', xmlname => 'fleetType', request_name => 'fleetType', traits => ['Unwrapped','NameInRequest']);
   has FormFactor => (is => 'ro', isa => 'Str', xmlname => 'formFactor', request_name => 'formFactor', traits => ['Unwrapped','NameInRequest']);
   has HeapSize => (is => 'ro', isa => 'Int', xmlname => 'heapSize', request_name => 'heapSize', traits => ['Unwrapped','NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', xmlname => 'image', request_name => 'image', traits => ['Unwrapped','NameInRequest']);
@@ -13,6 +15,7 @@ package Paws::DeviceFarm::Device;
   has Os => (is => 'ro', isa => 'Str', xmlname => 'os', request_name => 'os', traits => ['Unwrapped','NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', xmlname => 'platform', request_name => 'platform', traits => ['Unwrapped','NameInRequest']);
   has Radio => (is => 'ro', isa => 'Str', xmlname => 'radio', request_name => 'radio', traits => ['Unwrapped','NameInRequest']);
+  has RemoteAccessEnabled => (is => 'ro', isa => 'Bool', xmlname => 'remoteAccessEnabled', request_name => 'remoteAccessEnabled', traits => ['Unwrapped','NameInRequest']);
   has Resolution => (is => 'ro', isa => 'Paws::DeviceFarm::Resolution', xmlname => 'resolution', request_name => 'resolution', traits => ['Unwrapped','NameInRequest']);
 1;
 
@@ -62,6 +65,17 @@ Represents a device type that an app is tested against.
 =head2 Cpu => L<Paws::DeviceFarm::CPU>
 
   Information about the device's CPU.
+
+
+=head2 FleetName => Str
+
+  The name of the fleet to which this device belongs.
+
+
+=head2 FleetType => Str
+
+  The type of fleet to which this device belongs. Possible values for
+fleet type are PRIVATE and PUBLIC.
 
 
 =head2 FormFactor => Str
@@ -142,6 +156,12 @@ IOS: The iOS platform.
 =head2 Radio => Str
 
   The device's radio.
+
+
+=head2 RemoteAccessEnabled => Bool
+
+  Specifies whether remote access has been enabled for the specified
+device.
 
 
 =head2 Resolution => L<Paws::DeviceFarm::Resolution>
