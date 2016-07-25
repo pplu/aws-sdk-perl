@@ -70,7 +70,7 @@ C<INSERT> - a new item was added to the table.
 
 =item *
 
-C<MODIFY> - one or more of the item's attributes were updated.
+C<MODIFY> - one or more of an existing item's attributes were modified.
 
 =item *
 
@@ -88,8 +88,13 @@ Streams, this is I<aws:dynamodb>.
 
 =head2 EventVersion => Str
 
-  The version number of the stream record format. Currently, this is
-I<1.0>.
+  The version number of the stream record format. This number is updated
+whenever the structure of I<Record> is modified.
+
+Client applications must not assume that I<eventVersion> will remain at
+a particular value, as this number is subject to change at any time. In
+general, I<eventVersion> will only increase as the low-level DynamoDB
+Streams API evolves.
 
 
 

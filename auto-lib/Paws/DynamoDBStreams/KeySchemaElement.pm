@@ -37,10 +37,20 @@ the attributes that make up the primary key of a table, or the key
 attributes of an index.
 
 A I<KeySchemaElement> represents exactly one attribute of the primary
-key. For example, a hash type primary key would be represented by one
-I<KeySchemaElement>. A hash-and-range type primary key would require
-one I<KeySchemaElement> for the hash attribute, and another
-I<KeySchemaElement> for the range attribute.
+key. For example, a simple primary key (partition key) would be
+represented by one I<KeySchemaElement>. A composite primary key
+(partition key and sort key) would require one I<KeySchemaElement> for
+the partition key, and another I<KeySchemaElement> for the sort key.
+
+The partition key of an item is also known as its I<hash attribute>.
+The term "hash attribute" derives from DynamoDB's usage of an internal
+hash function to evenly distribute data items across partitions, based
+on their partition key values.
+
+The sort key of an item is also known as its I<range attribute>. The
+term "range attribute" derives from the way DynamoDB stores items with
+the same partition key physically close together, in sorted order by
+the sort key value.
 
 =head1 ATTRIBUTES
 

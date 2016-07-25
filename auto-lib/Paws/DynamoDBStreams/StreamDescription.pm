@@ -118,7 +118,7 @@ C<ENABLING> - Streams is currently being enabled on the DynamoDB table.
 
 =item *
 
-C<ENABLING> - the stream is enabled.
+C<ENABLED> - the stream is enabled.
 
 =item *
 
@@ -146,13 +146,13 @@ the DynamoDB table.
 
 =item *
 
-C<NEW_IMAGE> - entire item from the table, as it appeared after they
+C<NEW_IMAGE> - entire items from the table, as they appeared after they
 were modified.
 
 =item *
 
-C<OLD_IMAGE> - entire item from the table, as it appeared before they
-were modified.
+C<OLD_IMAGE> - entire items from the table, as they appeared before
+they were modified.
 
 =item *
 

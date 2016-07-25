@@ -63,30 +63,15 @@ Paws::DynamoDBStreams - Perl Interface to AWS Amazon DynamoDB Streams
 
 =head1 DESCRIPTION
 
-Amazon DynamoDB Streams
+Amazon DynamoDB
 
-This is the Amazon DynamoDB Streams API Reference. This guide describes
-the low-level API actions for accessing streams and processing stream
-records. For information about application development with DynamoDB
-Streams, see the Amazon DynamoDB Developer Guide.
-
-Note that this document is intended for use with the following DynamoDB
-documentation:
-
-=over
-
-=item *
-
-Amazon DynamoDB Developer Guide
-
-=item *
-
-Amazon DynamoDB API Reference
-
-=back
+Amazon DynamoDB Streams provides API actions for accessing streams and
+processing stream records. To learn more about application development
+with Streams, see Capturing Table Activity with DynamoDB Streams in the
+Amazon DynamoDB Developer Guide.
 
 The following are short descriptions of each low-level DynamoDB Streams
-API action, organized by function.
+action:
 
 =over
 
@@ -131,7 +116,7 @@ Each shard in the stream has a C<SequenceNumberRange> associated with
 it. If the C<SequenceNumberRange> has a C<StartingSequenceNumber> but
 no C<EndingSequenceNumber>, then the shard is still open (able to
 receive more stream records). If both C<StartingSequenceNumber> and
-C<EndingSequenceNumber> are present, the that shared is closed and can
+C<EndingSequenceNumber> are present, then that shard is closed and can
 no longer receive more data.
 
 
@@ -151,7 +136,7 @@ to, C<GetRecords> returns an empty list. Note that it might take
 multiple calls to get to a portion of the shard that contains stream
 records.
 
-GetRecords can retrieve a maximum of 1 MB of data or 2000 stream
+C<GetRecords> can retrieve a maximum of 1 MB of data or 1000 stream
 records, whichever comes first.
 
 
