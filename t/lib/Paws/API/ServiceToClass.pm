@@ -66,6 +66,7 @@ package Paws::API::ServiceToClass;
     route53domains => 'Route53Domains',
     s3 => 'S3',
     ses => 'SES',
+    servicecatalog => 'ServiceCatalog',
     signin => 'Signin',
     simpledb => 'SimpleDB',
     swf => 'SimpleWorkflow',
