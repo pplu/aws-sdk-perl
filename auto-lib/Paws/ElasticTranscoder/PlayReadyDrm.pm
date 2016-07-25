@@ -100,7 +100,7 @@ must be an absolute path, and is referenced by the PlayReady header.
 The PlayReady header is referenced in the protection header of the
 client manifest for Smooth Streaming outputs, and in the EXT-X-DXDRM
 and EXT-XDXDRMINFO metadata tags for HLS playlist outputs. An example
-URL looks like this: https://www.example.com/exampleKey/
+URL looks like this: C<https://www.example.com/exampleKey/>
 
 
 
