@@ -3,7 +3,11 @@ package Paws::CognitoIdp::UpdateUserPoolClient;
   use Moose;
   has ClientId => (is => 'ro', isa => 'Str', required => 1);
   has ClientName => (is => 'ro', isa => 'Str');
+  has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ReadAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
+  has RefreshTokenValidity => (is => 'ro', isa => 'Int');
   has UserPoolId => (is => 'ro', isa => 'Str', required => 1);
+  has WriteAttributes => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 
@@ -47,10 +51,34 @@ The client name from the update user pool client request.
 
 
 
+=head2 ExplicitAuthFlows => ArrayRef[Str]
+
+Explicit authentication flows.
+
+
+
+=head2 ReadAttributes => ArrayRef[Str]
+
+The read-only attributes of the user pool.
+
+
+
+=head2 RefreshTokenValidity => Int
+
+The validity of the refresh token.
+
+
+
 =head2 B<REQUIRED> UserPoolId => Str
 
 The user pool ID for the user pool where you want to update the user
 pool client.
+
+
+
+=head2 WriteAttributes => ArrayRef[Str]
+
+The writeable attributes of the user pool.
 
 
 
