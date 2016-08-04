@@ -1,3 +1,16 @@
+0.28
+ - Route53Domains API update: GetDomainSuggestions, RenewDomain, ViewBilling 
+ - DS API update: AddIpRoutes, DeleteIpRoutes, ListIpRoutes
+ - CognitoIdp API update: Admin operations. Logout
+ - ES API update: user can now specify ElasticSearch version
+ - IOT: API update
+ - MachineLearning: API update
+ - EC2: name resolution from VPC Peering options
+ - ApiGateway: API update
+ - EMR: FailureReason added
+ - CloudwatchLogs: API update
+ - RDS: API update
+
 0.27 
  - RestXml (S3, f.ex) services now complete responses from headers (shardiwal)
  - New API: ServiceCatalog
