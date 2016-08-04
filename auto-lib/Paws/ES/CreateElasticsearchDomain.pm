@@ -6,6 +6,7 @@ package Paws::ES::CreateElasticsearchDomain;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig');
+  has ElasticsearchVersion => (is => 'ro', isa => 'Str');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
 
   use MooseX::ClassAttribute;
@@ -75,6 +76,14 @@ volumes.
 
 Configuration options for an Elasticsearch domain. Specifies the
 instance type and number of instances in the domain cluster.
+
+
+
+=head2 ElasticsearchVersion => Str
+
+String of format X.Y to specify version for the Elasticsearch domain
+eg. "1.5" or "2.3". For more information, see Creating Elasticsearch
+Domains in the I<Amazon Elasticsearch Service Developer Guide>.
 
 
 

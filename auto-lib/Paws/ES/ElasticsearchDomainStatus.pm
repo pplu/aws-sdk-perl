@@ -9,6 +9,7 @@ package Paws::ES::ElasticsearchDomainStatus;
   has DomainName => (is => 'ro', isa => 'Str', required => 1);
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig', required => 1);
+  has ElasticsearchVersion => (is => 'ro', isa => 'Str');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Processing => (is => 'ro', isa => 'Bool');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
@@ -100,6 +101,11 @@ Storage for more information.
 =head2 B<REQUIRED> ElasticsearchClusterConfig => L<Paws::ES::ElasticsearchClusterConfig>
 
   The type and number of instances in the domain cluster.
+
+
+=head2 ElasticsearchVersion => Str
+
+  
 
 
 =head2 Endpoint => Str
