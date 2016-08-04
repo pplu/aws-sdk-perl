@@ -40,19 +40,18 @@ of a key-value pair.
 
 =head2 B<REQUIRED> Key => Str
 
-  A key is the required name of the tag. The string value can be from 1
-to 128 Unicode characters in length and cannot be prefixed with "aws:".
-The string can only contain only the set of Unicode letters, digits,
-white-space, '_', '.', '/', '=', '+', '-' (Java regex:
-"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+  Required name of the tag. The string value can be Unicode characters
+and cannot be prefixed with "aws:". The string can contain only the set
+of Unicode letters, digits, white-space, '_', '.', '/', '=', '+', '-'
+(Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
 
 =head2 B<REQUIRED> Value => Str
 
-  A value is the optional value of the tag. The string value can be from
-1 to 256 Unicode characters in length. The string can only contain only
-the set of Unicode letters, digits, white-space, '_', '.', '/', '=',
-'+', '-' (Java regex: "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
+  The optional value of the tag. The string value can be Unicode
+characters. The string can contain only the set of Unicode letters,
+digits, white-space, '_', '.', '/', '=', '+', '-' (Java regex:
+"^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
 
 
