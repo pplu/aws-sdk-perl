@@ -1662,6 +1662,9 @@ To copy an encrypted snapshot that has been shared from another
 account, you must have permissions for the CMK used to encrypt the
 snapshot.
 
+Snapshots created by the CopySnapshot action have an arbitrary volume
+ID that should not be used for any purpose.
+
 For more information, see Copying an Amazon EBS Snapshot in the
 I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -1720,7 +1723,10 @@ information about the options, see RFC 2132.
 C<domain-name-servers> - The IP addresses of up to four domain name
 servers, or AmazonProvidedDNS. The default DHCP option set specifies
 AmazonProvidedDNS. If specifying more than one domain name server,
-specify the IP addresses in a single parameter, separated by commas.
+specify the IP addresses in a single parameter, separated by commas. If
+you want your instance to receive a custom DNS hostname as specified in
+C<domain-name>, you must set C<domain-name-servers> to a custom DNS
+server.
 
 =item *
 
@@ -1728,12 +1734,13 @@ C<domain-name> - If you're using AmazonProvidedDNS in "us-east-1",
 specify "ec2.internal". If you're using AmazonProvidedDNS in another
 region, specify "region.compute.internal" (for example,
 "ap-northeast-1.compute.internal"). Otherwise, specify a domain name
-(for example, "MyCompany.com"). B<Important>: Some Linux operating
-systems accept multiple domain names separated by spaces. However,
-Windows and other Linux operating systems treat the value as a single
-domain, which results in unexpected behavior. If your DHCP options set
-is associated with a VPC that has instances with multiple operating
-systems, specify only one domain name.
+(for example, "MyCompany.com"). This value is used to complete
+unqualified DNS hostnames. B<Important>: Some Linux operating systems
+accept multiple domain names separated by spaces. However, Windows and
+other Linux operating systems treat the value as a single domain, which
+results in unexpected behavior. If your DHCP options set is associated
+with a VPC that has instances with multiple operating systems, specify
+only one domain name.
 
 =item *
 
@@ -3960,6 +3967,11 @@ only one attribute at a time.
 AWS Marketplace product codes cannot be modified. Images with an AWS
 Marketplace product code cannot be made public.
 
+The SriovNetSupport enhanced networking attribute cannot be changed
+using this command. Instead, enable SriovNetSupport on an instance and
+create an AMI from the instance. This will result in an image with
+SriovNetSupport enabled.
+
 
 =head2 ModifyInstanceAttribute(InstanceId => Str, [Attribute => Str, BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>], DisableApiTermination => L<Paws::EC2::AttributeBooleanValue>, DryRun => Bool, EbsOptimized => L<Paws::EC2::AttributeBooleanValue>, EnaSupport => L<Paws::EC2::AttributeBooleanValue>, Groups => ArrayRef[Str], InstanceInitiatedShutdownBehavior => L<Paws::EC2::AttributeValue>, InstanceType => L<Paws::EC2::AttributeValue>, Kernel => L<Paws::EC2::AttributeValue>, Ramdisk => L<Paws::EC2::AttributeValue>, SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>, SriovNetSupport => L<Paws::EC2::AttributeValue>, UserData => L<Paws::EC2::BlobAttributeValue>, Value => Str])
 
@@ -4150,15 +4162,20 @@ Enable/disable communication over the peering connection between
 instances in your VPC and an EC2-Classic instance that's linked to the
 peer VPC.
 
+=item *
+
+Enable/disable a local VPC to resolve public DNS hostnames to private
+IP addresses when queried from instances in the peer VPC.
+
 =back
 
 If the peered VPCs are in different accounts, each owner must initiate
-a separate request to enable or disable communication in either
-direction, depending on whether their VPC was the requester or accepter
-for the VPC peering connection. If the peered VPCs are in the same
-account, you can modify the requester and accepter options in the same
-request. To confirm which VPC is the accepter and requester for a VPC
-peering connection, use the DescribeVpcPeeringConnections command.
+a separate request to modify the peering connection options, depending
+on whether their VPC was the requester or accepter for the VPC peering
+connection. If the peered VPCs are in the same account, you can modify
+the requester and accepter options in the same request. To confirm
+which VPC is the accepter and requester for a VPC peering connection,
+use the DescribeVpcPeeringConnections command.
 
 
 =head2 MonitorInstances(InstanceIds => ArrayRef[Str], [DryRun => Bool])

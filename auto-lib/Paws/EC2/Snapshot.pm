@@ -115,7 +115,9 @@ Any tags assigned to the snapshot.
 
 =head2 VolumeId => Str
 
-The ID of the volume that was used to create the snapshot.
+The ID of the volume that was used to create the snapshot. Snapshots
+created by the CopySnapshot action have an arbitrary volume ID that
+should not be used for any purpose.
 
 
 
