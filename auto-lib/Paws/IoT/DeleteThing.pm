@@ -1,6 +1,7 @@
 
 package Paws::IoT::DeleteThing;
   use Moose;
+  has ExpectedVersion => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'expectedVersion' );
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -35,9 +36,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
+=head2 ExpectedVersion => Int
+
+The expected version of the thing record in the registry. If the
+version of the record in the registry does not match the expected
+version specified in the request, the C<DeleteThing> request is
+rejected with a C<VersionConflictException>.
+
+
+
 =head2 B<REQUIRED> ThingName => Str
 
-The thing name.
+The name of the thing to delete.
 
 
 

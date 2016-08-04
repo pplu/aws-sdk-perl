@@ -1,6 +1,7 @@
 package Paws::IoT::AttributePayload;
   use Moose;
   has Attributes => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
+  has Merge => (is => 'ro', isa => 'Bool', xmlname => 'merge', request_name => 'merge', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::AttributePayload object:
 
-  $service_obj->Method(Att1 => { Attributes => $value, ..., Attributes => $value  });
+  $service_obj->Method(Att1 => { Attributes => $value, ..., Merge => $value  });
 
 =head3 Results returned from an API call
 
@@ -31,16 +32,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::Attrib
 
 =head1 DESCRIPTION
 
-The attribute payload, a JSON string containing up to three key-value
-pairs (for example, {\"attributes\":{\"string1\":\"string2\"}}).
+The attribute payload.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attributes => HashRef[Str]
 
-  A JSON string containing up to three key-value pair in JSON format (for
-example, {\"attributes\":{\"string1\":\"string2\"}}).
+  A JSON string containing up to three key-value pair in JSON format. For
+example:
+
+C<{\"attributes\":{\"string1\":\"string2\"}})>
+
+
+=head2 Merge => Bool
+
+  Specifies whether the list of attributes provided in the
+C<AttributePayload> is merged with the attributes stored in the
+registry, instead of overwriting them.
+
+To remove an attribute, call C<UpdateThing> with an empty attribute
+value.
+
+The C<merge> attribute is only valid when calling C<UpdateThing>.
 
 
 

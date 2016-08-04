@@ -2,6 +2,8 @@ package Paws::IoT::ThingAttribute;
   use Moose;
   has Attributes => (is => 'ro', isa => 'HashRef[Str]', xmlname => 'attributes', request_name => 'attributes', traits => ['Unwrapped','NameInRequest']);
   has ThingName => (is => 'ro', isa => 'Str', xmlname => 'thingName', request_name => 'thingName', traits => ['Unwrapped','NameInRequest']);
+  has ThingTypeName => (is => 'ro', isa => 'Str', xmlname => 'thingTypeName', request_name => 'thingTypeName', traits => ['Unwrapped','NameInRequest']);
+  has Version => (is => 'ro', isa => 'Int', xmlname => 'version', request_name => 'version', traits => ['Unwrapped','NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -21,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::ThingAttribute object:
 
-  $service_obj->Method(Att1 => { Attributes => $value, ..., ThingName => $value  });
+  $service_obj->Method(Att1 => { Attributes => $value, ..., Version => $value  });
 
 =head3 Results returned from an API call
 
@@ -32,19 +34,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::ThingA
 
 =head1 DESCRIPTION
 
-Describes a thing attribute.
+The properties of the thing, including thing name, thing type name, and
+a list of thing attributes.
 
 =head1 ATTRIBUTES
 
 
 =head2 Attributes => HashRef[Str]
 
-  The attributes.
+  A list of thing attributes which are name-value pairs.
 
 
 =head2 ThingName => Str
 
   The name of the thing.
+
+
+=head2 ThingTypeName => Str
+
+  The name of the thing type, if the thing has been associated with a
+type.
+
+
+=head2 Version => Int
+
+  The version of the thing record in the registry.
 
 
 

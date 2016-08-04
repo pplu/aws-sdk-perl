@@ -39,13 +39,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 MaxResults => Int
 
-The maximum number of principals to return.
+The maximum number of results to return in this operation.
 
 
 
 =head2 NextToken => Str
 
-A token used to retrieve the next value.
+The token for the next set of results, or B<null> if there are no
+additional results.
 
 
 

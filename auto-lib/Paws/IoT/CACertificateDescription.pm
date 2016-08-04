@@ -1,5 +1,6 @@
 package Paws::IoT::CACertificateDescription;
   use Moose;
+  has AutoRegistrationStatus => (is => 'ro', isa => 'Str', xmlname => 'autoRegistrationStatus', request_name => 'autoRegistrationStatus', traits => ['Unwrapped','NameInRequest']);
   has CertificateArn => (is => 'ro', isa => 'Str', xmlname => 'certificateArn', request_name => 'certificateArn', traits => ['Unwrapped','NameInRequest']);
   has CertificateId => (is => 'ro', isa => 'Str', xmlname => 'certificateId', request_name => 'certificateId', traits => ['Unwrapped','NameInRequest']);
   has CertificatePem => (is => 'ro', isa => 'Str', xmlname => 'certificatePem', request_name => 'certificatePem', traits => ['Unwrapped','NameInRequest']);
@@ -25,20 +26,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::CACertificateDescription object:
 
-  $service_obj->Method(Att1 => { CertificateArn => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { AutoRegistrationStatus => $value, ..., Status => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::IoT::CACertificateDescription object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CertificateArn
+  $result->Att1->AutoRegistrationStatus
 
 =head1 DESCRIPTION
 
 Describes a CA certificate.
 
 =head1 ATTRIBUTES
+
+
+=head2 AutoRegistrationStatus => Str
+
+  Whether the CA certificate configured for auto registration of device
+certificates. Valid values are "ENABLE" and "DISABLE"
 
 
 =head2 CertificateArn => Str
