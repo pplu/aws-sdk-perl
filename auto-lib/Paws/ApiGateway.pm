@@ -559,7 +559,7 @@ Returns: a L<Paws::ApiGateway::ApiKey> instance
   Create an ApiKey resource.
 
 
-=head2 CreateAuthorizer(AuthorizerUri => Str, IdentitySource => Str, Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, AuthType => Str, IdentityValidationExpression => Str])
+=head2 CreateAuthorizer(IdentitySource => Str, Name => Str, RestApiId => Str, Type => Str, [AuthorizerCredentials => Str, AuthorizerResultTtlInSeconds => Int, AuthorizerUri => Str, AuthType => Str, IdentityValidationExpression => Str, ProviderARNs => ArrayRef[Str]])
 
 Each argument is described in detail in: L<Paws::ApiGateway::CreateAuthorizer>
 

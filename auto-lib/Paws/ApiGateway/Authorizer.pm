@@ -9,6 +9,7 @@ package Paws::ApiGateway::Authorizer;
   has IdentitySource => (is => 'ro', isa => 'Str');
   has IdentityValidationExpression => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has Type => (is => 'ro', isa => 'Str');
 
 1;
@@ -93,12 +94,18 @@ receives a 401 Unauthorized response.
 
 
 
+=head2 ProviderARNs => ArrayRef[Str]
+
+
+
+
+
 =head2 Type => Str
 
 [Required] The type of the authorizer. Currently, the only valid type
 is TOKEN.
 
-Valid values are: C<"TOKEN">
+Valid values are: C<"TOKEN">, C<"COGNITO_USER_POOLS">
 
 
 =cut

@@ -2,6 +2,7 @@
 package Paws::ApiGateway::TestInvokeAuthorizerResponse;
   use Moose;
   has Authorization => (is => 'ro', isa => 'HashRef[ArrayRef[Str]]');
+  has Claims => (is => 'ro', isa => 'HashRef[Str]');
   has ClientStatus => (is => 'ro', isa => 'Int');
   has Latency => (is => 'ro', isa => 'Int');
   has Log => (is => 'ro', isa => 'Str');
@@ -20,6 +21,12 @@ Paws::ApiGateway::TestInvokeAuthorizerResponse
 
 
 =head2 Authorization => HashRef[ArrayRef[Str]]
+
+
+
+
+
+=head2 Claims => HashRef[Str]
 
 
 

@@ -3,11 +3,12 @@ package Paws::ApiGateway::CreateAuthorizer;
   use Moose;
   has AuthorizerCredentials => (is => 'ro', isa => 'Str');
   has AuthorizerResultTtlInSeconds => (is => 'ro', isa => 'Int');
-  has AuthorizerUri => (is => 'ro', isa => 'Str', required => 1);
+  has AuthorizerUri => (is => 'ro', isa => 'Str');
   has AuthType => (is => 'ro', isa => 'Str');
   has IdentitySource => (is => 'ro', isa => 'Str', required => 1);
   has IdentityValidationExpression => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has ProviderARNs => (is => 'ro', isa => 'ArrayRef[Str]');
   has RestApiId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'restApiId' , required => 1);
   has Type => (is => 'ro', isa => 'Str', required => 1);
 
@@ -55,7 +56,7 @@ The TTL of cached authorizer results.
 
 
 
-=head2 B<REQUIRED> AuthorizerUri => Str
+=head2 AuthorizerUri => Str
 
 [Required] Specifies the authorizer's Uniform Resource Identifier
 (URI).
@@ -87,6 +88,12 @@ A validation expression for the incoming identity.
 
 
 
+=head2 ProviderARNs => ArrayRef[Str]
+
+
+
+
+
 =head2 B<REQUIRED> RestApiId => Str
 
 The RestApi identifier under which the Authorizer will be created.
@@ -97,7 +104,7 @@ The RestApi identifier under which the Authorizer will be created.
 
 [Required] The type of the authorizer.
 
-Valid values are: C<"TOKEN">
+Valid values are: C<"TOKEN">, C<"COGNITO_USER_POOLS">
 
 
 =head1 SEE ALSO
