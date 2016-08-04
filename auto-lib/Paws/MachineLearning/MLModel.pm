@@ -1,9 +1,11 @@
 package Paws::MachineLearning::MLModel;
   use Moose;
   has Algorithm => (is => 'ro', isa => 'Str');
+  has ComputeTime => (is => 'ro', isa => 'Int');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
   has EndpointInfo => (is => 'ro', isa => 'Paws::MachineLearning::RealtimeEndpointInfo');
+  has FinishedAt => (is => 'ro', isa => 'Str');
   has InputDataLocationS3 => (is => 'ro', isa => 'Str');
   has LastUpdatedAt => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
@@ -13,6 +15,7 @@ package Paws::MachineLearning::MLModel;
   has ScoreThreshold => (is => 'ro', isa => 'Num');
   has ScoreThresholdLastUpdatedAt => (is => 'ro', isa => 'Str');
   has SizeInBytes => (is => 'ro', isa => 'Int');
+  has StartedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TrainingDataSourceId => (is => 'ro', isa => 'Str');
   has TrainingParameters => (is => 'ro', isa => 'HashRef[Str]');
@@ -68,6 +71,11 @@ minimize the gradient of the loss function.
 
 
 
+=head2 ComputeTime => Int
+
+  
+
+
 =head2 CreatedAt => Str
 
   The time that the C<MLModel> was created. The time is expressed in
@@ -84,6 +92,11 @@ Management (IAM) user account.
 =head2 EndpointInfo => L<Paws::MachineLearning::RealtimeEndpointInfo>
 
   The current endpoint of the C<MLModel>.
+
+
+=head2 FinishedAt => Str
+
+  
 
 
 =head2 InputDataLocationS3 => Str
@@ -146,6 +159,11 @@ expressed in epoch time.
 
 
 =head2 SizeInBytes => Int
+
+  
+
+
+=head2 StartedAt => Str
 
   
 
