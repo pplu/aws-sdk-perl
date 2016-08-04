@@ -44,16 +44,24 @@ Currently, the supported destinations are:
 
 =over
 
-=item * An Amazon Kinesis stream belonging to the same account as the
+=item *
+
+An Amazon Kinesis stream belonging to the same account as the
 subscription filter, for same-account delivery.
 
-=item * A logical destination (used via an ARN of C<Destination>)
-belonging to a different account, for cross-account delivery.
+=item *
 
-=item * An Amazon Kinesis Firehose stream belonging to the same account
-as the subscription filter, for same-account delivery.
+A logical destination (used via an ARN of C<Destination>) belonging to
+a different account, for cross-account delivery.
 
-=item * An AWS Lambda function belonging to the same account as the
+=item *
+
+An Amazon Kinesis Firehose stream belonging to the same account as the
+subscription filter, for same-account delivery.
+
+=item *
+
+An AWS Lambda function belonging to the same account as the
 subscription filter, for same-account delivery.
 
 =back
