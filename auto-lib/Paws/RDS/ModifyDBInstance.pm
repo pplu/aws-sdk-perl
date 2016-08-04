@@ -17,6 +17,7 @@ package Paws::RDS::ModifyDBInstance;
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
+  has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has MonitoringInterval => (is => 'ro', isa => 'Int');
   has MonitoringRoleArn => (is => 'ro', isa => 'Str');
@@ -455,6 +456,15 @@ instance will be suspended. No other Amazon RDS operations can take
 place for the instance, including modifying the instance, rebooting the
 instance, deleting the instance, creating a Read Replica for the
 instance, and creating a DB snapshot of the instance.
+
+
+
+=head2 LicenseModel => Str
+
+The license model for the DB instance.
+
+Valid values: C<license-included> | C<bring-your-own-license> |
+C<general-public-license>
 
 
 

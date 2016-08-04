@@ -7,6 +7,7 @@ package Paws::RDS::OptionGroupOption;
   has MinimumRequiredMinorEngineVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OptionGroupOptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionGroupOptionSetting]');
+  has OptionGroupOptionVersions => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionVersion]');
   has OptionsDependedOn => (is => 'ro', isa => 'ArrayRef[Str]');
   has Permanent => (is => 'ro', isa => 'Bool');
   has Persistent => (is => 'ro', isa => 'Bool');
@@ -81,6 +82,11 @@ option.
 
   Specifies the option settings that are available (and the default
 value) for each option in an option group.
+
+
+=head2 OptionGroupOptionVersions => ArrayRef[L<Paws::RDS::OptionVersion>]
+
+  Specifies the versions that are available for the option.
 
 
 =head2 OptionsDependedOn => ArrayRef[Str]

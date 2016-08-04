@@ -126,7 +126,8 @@ Example: C<my-snapshot-id>
 
 The database name for the restored DB instance.
 
-This parameter doesn't apply to the MySQL or MariaDB engines.
+This parameter doesn't apply to the MySQL, PostgreSQL, or MariaDB
+engines.
 
 
 

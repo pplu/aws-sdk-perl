@@ -3,6 +3,7 @@ package Paws::RDS::OptionConfiguration;
   has DBSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
   has OptionName => (is => 'ro', isa => 'Str', required => 1);
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::RDS::OptionSetting]');
+  has OptionVersion => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has VpcSecurityGroupMemberships => (is => 'ro', isa => 'ArrayRef[Str]');
 1;
@@ -53,6 +54,11 @@ A list of all available options
 =head2 OptionSettings => ArrayRef[L<Paws::RDS::OptionSetting>]
 
   The option settings to include in an option group.
+
+
+=head2 OptionVersion => Str
+
+  The version for the option.
 
 
 =head2 Port => Int

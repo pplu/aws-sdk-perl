@@ -7,6 +7,7 @@ package Paws::RDS::PendingModifiedValues;
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
+  has LicenseModel => (is => 'ro', isa => 'Str');
   has MasterUserPassword => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
   has Port => (is => 'ro', isa => 'Int');
@@ -85,6 +86,14 @@ be applied or is in progress.
 
   Specifies the new Provisioned IOPS value for the DB instance that will
 be applied or is being applied.
+
+
+=head2 LicenseModel => Str
+
+  The license model for the DB instance.
+
+Valid values: C<license-included> | C<bring-your-own-license> |
+C<general-public-license>
 
 
 =head2 MasterUserPassword => Str
