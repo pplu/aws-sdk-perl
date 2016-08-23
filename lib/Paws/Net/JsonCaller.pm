@@ -13,50 +13,55 @@ package Paws::Net::JsonCaller;
   sub _to_jsoncaller_params {
     my ($self, $params) = @_;
 
-    if ($params->does('Paws::API::StrToNativeMapParser')){
-      return { %{ $params->Map }  };
-    } elsif ($params->does('Paws::API::StrToObjMapParser')){
-      my $type = $params->meta->get_attribute('Map')->type_constraint;
-      if (my ($inner) = ("$type" =~ m/^HashRef\[ArrayRef\[(.*?)\]/)) {
-        return { map { my $k = $_; ( $k => [ map { $self->_to_jsoncaller_params($_) } @{$params->Map->{$_} } ] ) } keys %{ $params->Map } };
-      } else {
-        return { map { $_ => $self->_to_jsoncaller_params($params->Map->{$_}) } keys %{ $params->Map } };
-      }
-    } else {
-      my %p;
-      foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
-        my $key = $params->meta->get_attribute($att)->does('Paws::Net::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
-        if (defined $params->$att) {
-          my $att_type = $params->meta->get_attribute($att)->type_constraint;
-          if ($att_type eq 'Bool') {
-            $p{ $key } = ($params->$att)?\1:\0;
-          } elsif ($att_type eq 'Int') {
-            $p{ $key } = int($params->$att);
-          } elsif ($self->_is_internal_type($att_type)) {
+    my %p;
+    foreach my $att (grep { $_ !~ m/^_/ } $params->meta->get_attribute_list) {
+      my $key = $params->meta->get_attribute($att)->does('Paws::Net::Caller::Attribute::Trait::NameInRequest')?$params->meta->get_attribute($att)->request_name:$att;
+      if (defined $params->$att) {
+        my $att_type = $params->meta->get_attribute($att)->type_constraint;
+        if ($att_type eq 'Bool') {
+          $p{ $key } = ($params->$att)?\1:\0;
+        } elsif ($att_type eq 'Int') {
+          $p{ $key } = int($params->$att);
+        } elsif ($self->_is_internal_type($att_type)) {
+          $p{ $key } = $params->$att;
+        } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
+          my $inner_type = "$1";
+          if ($self->_is_internal_type($inner_type)){
             $p{ $key } = $params->$att;
-          } elsif ($att_type =~ m/^ArrayRef\[(.*)\]/) {
-            if ($self->_is_internal_type("$1")){
+#          } elsif ($inner_type =~ m/^HashRef\[(.*)\]/) {
+#            $p{ $key } = [ map { my $el = $_; my $x = { map { $_ => $self->_to_jsoncaller_params($el->{ $_ }) } keys %$_ }; $x } @{ $params->$att } ];
+#            use Data::Dumper;
+#            print "JUST GENERATED $key WITH " . Dumper($p{ $key });
+          } else {
+            print "DEFAULT ARRAYREF BEHAVE\n";
+            $p{ $key } = [ map { $self->_to_jsoncaller_params($_) } @{ $params->$att } ];
+          }
+        } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
+          $p{ $key } = $params->$att;
+        } elsif ($att_type =~ m/^HashRef\[(.*)\]/){
+          if ($self->_is_internal_type("$1")) {
+            $p{ $key } = $params->$att;
+          } elsif (my ($inner) = ($att_type =~ m/^HashRef\[ArrayRef\[(.*?)\]/)) {
+            if ($self->_is_internal_type($inner)) {
               $p{ $key } = $params->$att;
             } else {
-              $p{ $key } = [ map { $self->_to_jsoncaller_params($_) } @{ $params->$att } ];
+              $p{ $key } = { map { my $k = $_; ( $k => [ map { $self->_to_jsoncaller_params($_) } @{ $params->$att->{$k} } ] ) } keys %{ $params->$att } };
             }
-          } elsif ($att_type->isa('Moose::Meta::TypeConstraint::Enum')) {
-            $p{ $key } = $params->$att;
-          } elsif ($params->$att->does('Paws::API::StrToNativeMapParser')){ 
-            $p{ $key } = $self->_to_jsoncaller_params($params->$att);
-          } elsif ($params->$att->does('Paws::API::StrToObjMapParser')){
-            $p{ $key } = $self->_to_jsoncaller_params($params->$att);
           } else {
-            $p{ $key } = $self->_to_jsoncaller_params($params->$att);
+            $p{ $key } = { map { $_ => $self->_to_jsoncaller_params($params->$att->{$_}) } keys %{ $params->$att } };
           }
         }
       }
-      return \%p;
     }
+
+    return \%p;
   }
 
   sub prepare_request_for_call {
     my ($self, $call) = @_;
+
+use Data::Dumper;
+print Dumper('CALL', $call);
 
     my $request = Paws::Net::APIRequest->new();
 

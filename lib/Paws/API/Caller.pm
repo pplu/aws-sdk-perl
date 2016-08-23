@@ -34,6 +34,9 @@ package Paws::API::Caller;
         my $subtype = "$1";
         if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
           $p{ $att } = $params{ $att };
+        } elsif ($subtype =~ m/^HashRef\[(.*)\]/) {
+          my $inner_type = "$1";
+          $p{ $att } = [ map { my $el = $_; my $x = { map { ($_ => $self->new_with_coercions($inner_type, %{ $el->{ $_ } }) ) } keys %$_ }; $x } @{ $params{ $att } } ];
         } else {
           $p{ $att } = [ map { $self->new_with_coercions("$subtype", %{ $_ }) } @{ $params{ $att } } ];
         }
@@ -42,18 +45,26 @@ package Paws::API::Caller;
       } elsif ($type =~ m/^HashRef\[(.*?)\]$/){
         my $subtype = "$1";
         if (my ($array_of) = ($subtype =~ m/^ArrayRef\[(.*?)\]$/)){
-          die "Hashref of arrays needs implementation";
+          warn "Hashref of arrays needs implementation on $class $att";
+          if ($array_of eq 'Str' or $array_of eq 'Num' or $array_of eq 'Int' or $array_of eq 'Bool') {
+            $p{ $att } = { map { $_ => $params{ $att }{ $_ } } keys %{ $params{ $att } } };
+          } else {
+            $p{ $att } = { map { my $k = $_; ($k => [ map { $self->new_with_coercions("$array_of", %$_) } @{ $params{ $att }{ $k } } ] ) } keys %{ $params{ $att } } };
+          }
         } else {
           if ($subtype eq 'Str' or $subtype eq 'Num' or $subtype eq 'Int' or $subtype eq 'Bool') {
-            $p{ $att } = { map { $_ => $params{ $_ } } keys %{ $params{$att} } };
+            $p{ $att } = { map { $_ => $params{ $att }{ $_ } } keys %{ $params{ $att } } };
           } else {
-            $p{ $att } = { map { $_ => $self->new_with_coercions("$subtype", %{ $params{$att}{ $_ } }) } keys %{ $params{ $att } } };
+            $p{ $att } = { map { $_ => $self->new_with_coercions("$subtype", %{ $params{ $att }{ $_ } }) } keys %{ $params{ $att } } };
           }
         }
       } else {
         $p{ $att } = $self->new_with_coercions("$type", %{ $params{ $att } });
       }
     }
+
+use Data::Dumper;
+print Dumper('CALLING ', $class, 'WITH', \%p);
 
     return $class->new(%p);
   }
