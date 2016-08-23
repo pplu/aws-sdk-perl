@@ -1,36 +1,52 @@
 package TestResponseRecorder;
   use Moose::Role;
 
-  use Digest::MD5 qw(md5_hex);
   use File::Slurper qw(read_text write_text);
   use JSON::MaybeXS;
 
-  has replay_calls => (is => 'ro', isa => 'Bool', required => 1, default => sub { not defined $ENV{PAWS_CONVERSATION_DIR} });
-  has conversation_dir => (is => 'ro', isa => 'Str', required => 1, default => sub { $ENV{PAWS_CONVERSATION_DIR} });
-  has _request_nums => (is => 'ro', isa => 'HashRef[Int]', default => sub { {} });
+  has record_mode => (is => 'ro', isa => 'Str', required => 1, default => sub { $ENV{PAWS_RECORDER_MODE} });
+  has recorder_dir => (is => 'ro', isa => 'Str', required => 1, default => sub { $ENV{PAWS_RECORDER_DIR} });
+
+  has _request_num => (
+    is => 'ro',
+    isa => 'Int',
+    default => 1,
+    traits => [ 'Counter' ],
+    handles => {
+      _next_request => 'inc'
+    }
+  );
 
   has _test_file => (is => 'rw', isa => 'Str');
 
   around send_request => sub {
     my ($orig, $self, $service, $call_object) = @_;
 
-    my $h = $service->to_hash($call_object);
-    $h->{ _service } = $service->service;
-    $h->{ _call } = $call_object->_api_call;
+    $self->_test_file(sprintf("%s/%04d.test", $self->recorder_dir, $self->_request_num));
+    $self->_next_request;
 
-    my $sig = md5_hex(JSON::MaybeXS->new(canonical => 1)->encode($h));
-    my $req_num = $self->_request_nums->{ $sig } ++;
-    my $req_id = $service->service . '.' . $call_object->_api_call . ".$sig.$req_num";
-    my $test_file = $self->conversation_dir . '/' . $req_id;
-
-    $self->_test_file($test_file);
-
-    if ($self->replay_calls) {
+    if ($self->record_mode eq 'REPLAY') {
       #LOAD HTTP request from file
-      my $response = decode_json(read_text($test_file));
-      return $self->caller_to_response($service, $call_object, $response->{status}, $response->{content}, $response->{headers});  
-    } else {
+      my $response = decode_json(read_text($self->_test_file));
+
+      my $actual_call = JSON::MaybeXS->new(canonical => 1)->encode($service->to_hash($call_object));
+      my $recorded_call = JSON::MaybeXS->new(canonical => 1)->encode($response->{request}{params});
+      if ($actual_call ne $recorded_call) {
+        warn "CALL: $actual_call";
+        warn "RECORDED: $recorded_call";
+
+        Paws::Exception->throw(
+          request_id => '',
+          code => 'ReplayInvalid',
+          message => 'The calling parameters and the parameters used to generate the call are not equal'
+        )
+      }
+ 
+      return $self->caller_to_response($service, $call_object, $response->{response}{status}, $response->{response}{content}, $response->{response}{headers});
+    } elsif ($self->record_mode eq 'RECORD') {
       return $self->$orig($service, $call_object);
+    } else {
+      die "Unsupported record mode " . $self->record_mode;
     }
   };
 
@@ -48,11 +64,18 @@ package TestResponseRecorder;
       $headers->{ "x-amz-request-id" }  = '000000000000000000000000000000000000' 
     }
 
-    if (not $self->replay_calls){
-      write_text($self->_test_file, encode_json({ 
-        content => $content, 
-        headers => $headers,
-        status  => $status, 
+    if ($self->record_mode eq 'RECORD') {
+      write_text($self->_test_file, encode_json({
+        request => {
+          params => $service->to_hash($call_object),
+          service => $service->service,
+          call => $call_object->_api_call,
+        },
+        response => { 
+          content => $content, 
+          headers => $headers,
+          status  => $status
+        }
       }));
     }
 
