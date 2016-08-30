@@ -310,6 +310,8 @@ L<Paws::ELB>
 
 L<Paws::ELB>
 
+L<Paws::ELBv2>
+
 L<Paws::EMR>
 
 L<Paws::EMR>
@@ -333,6 +335,8 @@ L<Paws::IoT>
 L<Paws::IoTData>
 
 L<Paws::Kinesis>
+
+L<Paws::KinesisAnalytics>
 
 L<Paws::KMS>
 
@@ -367,6 +371,8 @@ L<Paws::Signin>
 L<Paws::SimpleDB>
 
 L<Paws::SimpleWorkflow>
+
+L<Paws::Snowball>
 
 L<Paws::SNS>
 
