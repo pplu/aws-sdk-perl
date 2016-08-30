@@ -45,16 +45,18 @@ have a lifecycle hook in place, the Auto Scaling group will either:
 
 =over
 
-=item * Pause the instance after it launches, but before it is put into
-service
+=item *
 
-=item * Pause the instance as it terminates, but before it is fully
-terminated
+Pause the instance after it launches, but before it is put into service
+
+=item *
+
+Pause the instance as it terminates, but before it is fully terminated
 
 =back
 
 For more information, see Auto Scaling Lifecycle in the I<Auto Scaling
-Developer Guide>.
+User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -115,19 +117,33 @@ notification message sent to the target includes the following:
 
 =over
 
-=item * Lifecycle action token
+=item *
 
-=item * User account ID
+Lifecycle action token
 
-=item * Name of the Auto Scaling group
+=item *
 
-=item * Lifecycle hook name
+User account ID
 
-=item * EC2 instance ID
+=item *
 
-=item * Lifecycle transition
+Name of the Auto Scaling group
 
-=item * Notification metadata
+=item *
+
+Lifecycle hook name
+
+=item *
+
+EC2 instance ID
+
+=item *
+
+Lifecycle transition
+
+=item *
+
+Notification metadata
 
 =back
 

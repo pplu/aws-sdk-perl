@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 Describes a process type.
 
 For more information, see Auto Scaling Processes in the I<Auto Scaling
-Developer Guide>.
+User Guide>.
 
 =head1 ATTRIBUTES
 

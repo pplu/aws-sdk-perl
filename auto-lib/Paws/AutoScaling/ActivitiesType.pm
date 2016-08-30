@@ -17,7 +17,8 @@ Paws::AutoScaling::ActivitiesType
 
 =head2 B<REQUIRED> Activities => ArrayRef[L<Paws::AutoScaling::Activity>]
 
-The scaling activities.
+The scaling activities. Activities are sorted by start time. Activities
+still in progress are described first.
 
 
 

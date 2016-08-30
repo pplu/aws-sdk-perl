@@ -66,9 +66,9 @@ from a previous call.)
 
 =head2 ScheduledActionNames => ArrayRef[Str]
 
-Describes one or more scheduled actions. If you omit this list, the
-call describes all scheduled actions. If you specify an unknown
-scheduled action it is ignored with no error.
+Describes one or more scheduled actions. If you omit this parameter,
+all scheduled actions are described. If you specify an unknown
+scheduled action, it is ignored with no error.
 
 You can describe up to a maximum of 50 instances with a single call. If
 there are more items to return, the call returns a token. To get the

@@ -1,8 +1,8 @@
 
 package Paws::AutoScaling::AttachLoadBalancers;
   use Moose;
-  has AutoScalingGroupName => (is => 'ro', isa => 'Str');
-  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]');
+  has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
+  has LoadBalancerNames => (is => 'ro', isa => 'ArrayRef[Str]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -34,13 +34,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head1 ATTRIBUTES
 
 
-=head2 AutoScalingGroupName => Str
+=head2 B<REQUIRED> AutoScalingGroupName => Str
 
 The name of the group.
 
 
 
-=head2 LoadBalancerNames => ArrayRef[Str]
+=head2 B<REQUIRED> LoadBalancerNames => ArrayRef[Str]
 
 One or more load balancer names.
 
