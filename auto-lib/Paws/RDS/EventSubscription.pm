@@ -4,6 +4,7 @@ package Paws::RDS::EventSubscription;
   has CustSubscriptionId => (is => 'ro', isa => 'Str');
   has Enabled => (is => 'ro', isa => 'Bool');
   has EventCategoriesList => (is => 'ro', isa => 'ArrayRef[Str]');
+  has EventSubscriptionArn => (is => 'ro', isa => 'Str');
   has SnsTopicArn => (is => 'ro', isa => 'Str');
   has SourceIdsList => (is => 'ro', isa => 'ArrayRef[Str]');
   has SourceType => (is => 'ro', isa => 'Str');
@@ -65,6 +66,11 @@ indicates the subscription is enabled.
 =head2 EventCategoriesList => ArrayRef[Str]
 
   A list of event categories for the RDS event notification subscription.
+
+
+=head2 EventSubscriptionArn => Str
+
+  
 
 
 =head2 SnsTopicArn => Str

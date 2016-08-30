@@ -3,6 +3,7 @@ package Paws::RDS::DBSnapshot;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
+  has DBSnapshotArn => (is => 'ro', isa => 'Str');
   has DBSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str');
@@ -89,6 +90,11 @@ in at the time of the DB snapshot.
 
   Specifies the DB instance identifier of the DB instance this DB
 snapshot was created from.
+
+
+=head2 DBSnapshotArn => Str
+
+  
 
 
 =head2 DBSnapshotIdentifier => Str

@@ -5,6 +5,7 @@ package Paws::RDS::DBCluster;
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CharacterSetName => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
+  has DBClusterArn => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
   has DBClusterMembers => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterMember]');
   has DBClusterOptionGroupMemberships => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBClusterOptionGroupStatus]');
@@ -123,6 +124,11 @@ is associated with.
   Contains the name of the initial database of this DB cluster that was
 provided at create time, if one was specified when the DB cluster was
 created. This same name is returned for the life of the DB cluster.
+
+
+=head2 DBClusterArn => Str
+
+  
 
 
 =head2 DBClusterIdentifier => Str

@@ -4,6 +4,7 @@ package Paws::RDS::DBClusterSnapshot;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has ClusterCreateTime => (is => 'ro', isa => 'Str');
   has DBClusterIdentifier => (is => 'ro', isa => 'Str');
+  has DBClusterSnapshotArn => (is => 'ro', isa => 'Str');
   has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -89,6 +90,11 @@ Coordinated Time (UTC).
 
   Specifies the DB cluster identifier of the DB cluster that this DB
 cluster snapshot was created from.
+
+
+=head2 DBClusterSnapshotArn => Str
+
+  
 
 
 =head2 DBClusterSnapshotIdentifier => Str

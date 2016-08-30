@@ -1,5 +1,5 @@
 
-package Paws::RDS::CreateDBCluster;
+package Paws::RDS::RestoreDBClusterFromS3;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str]');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
@@ -11,41 +11,45 @@ package Paws::RDS::CreateDBCluster;
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str');
-  has MasterUserPassword => (is => 'ro', isa => 'Str');
+  has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
+  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
-  has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
+  has S3BucketName => (is => 'ro', isa => 'Str', required => 1);
+  has S3IngestionRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has S3Prefix => (is => 'ro', isa => 'Str');
+  has SourceEngine => (is => 'ro', isa => 'Str', required => 1);
+  has SourceEngineVersion => (is => 'ro', isa => 'Str', required => 1);
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str]');
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDBCluster');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::CreateDBClusterResult');
-  class_has _result_key => (isa => 'Str', is => 'ro', default => 'CreateDBClusterResult');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromS3');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::RDS::RestoreDBClusterFromS3Result');
+  class_has _result_key => (isa => 'Str', is => 'ro', default => 'RestoreDBClusterFromS3Result');
 1;
 
 ### main pod documentation begin ###
 
 =head1 NAME
 
-Paws::RDS::CreateDBCluster - Arguments for method CreateDBCluster on Paws::RDS
+Paws::RDS::RestoreDBClusterFromS3 - Arguments for method RestoreDBClusterFromS3 on Paws::RDS
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDBCluster on the 
+This class represents the parameters used for calling the method RestoreDBClusterFromS3 on the 
 Amazon Relational Database Service service. Use the attributes of this class
-as arguments to method CreateDBCluster.
+as arguments to method RestoreDBClusterFromS3.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDBCluster.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to RestoreDBClusterFromS3.
 
 As an example:
 
-  $service_obj->CreateDBCluster(Att1 => $value1, Att2 => $value2, ...);
+  $service_obj->RestoreDBClusterFromS3(Att1 => $value1, Att2 => $value2, ...);
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
@@ -54,16 +58,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 AvailabilityZones => ArrayRef[Str]
 
-A list of EC2 Availability Zones that instances in the DB cluster can
-be created in. For information on regions and Availability Zones, see
-Regions and Availability Zones.
+A list of EC2 Availability Zones that instances in the restored DB
+cluster can be created in.
 
 
 
 =head2 BackupRetentionPeriod => Int
 
-The number of days for which automated backups are retained. You must
-specify a minimum value of 1.
+The number of days for which automated backups of the restored DB
+cluster are retained. You must specify a minimum value of 1.
 
 Default: 1
 
@@ -82,23 +85,21 @@ Must be a value from 1 to 35
 
 =head2 CharacterSetName => Str
 
-A value that indicates that the DB cluster should be associated with
-the specified CharacterSet.
+A value that indicates that the restored DB cluster should be
+associated with the specified CharacterSet.
 
 
 
 =head2 DatabaseName => Str
 
-The name for your database of up to 8 alpha-numeric characters. If you
-do not provide a name, Amazon RDS will not create a database in the DB
-cluster you are creating.
+The database name for the restored DB cluster.
 
 
 
 =head2 B<REQUIRED> DBClusterIdentifier => Str
 
-The DB cluster identifier. This parameter is stored as a lowercase
-string.
+The name of the DB cluster to create from the source data in the S3
+bucket. This parameter is isn't case-sensitive.
 
 Constraints:
 
@@ -124,9 +125,9 @@ Example: C<my-cluster1>
 
 =head2 DBClusterParameterGroupName => Str
 
-The name of the DB cluster parameter group to associate with this DB
-cluster. If this argument is omitted, C<default.aurora5.6> will be
-used.
+The name of the DB cluster parameter group to associate with the
+restored DB cluster. If this argument is omitted, C<default.aurora5.6>
+will be used.
 
 Constraints:
 
@@ -151,7 +152,7 @@ Cannot end with a hyphen or contain two consecutive hyphens
 
 =head2 DBSubnetGroupName => Str
 
-A DB subnet group to associate with this DB cluster.
+A DB subnet group to associate with the restored DB cluster.
 
 Constraints: Must contain no more than 255 alphanumeric characters,
 periods, underscores, spaces, or hyphens. Must not be default.
@@ -162,7 +163,7 @@ Example: C<mySubnetgroup>
 
 =head2 B<REQUIRED> Engine => Str
 
-The name of the database engine to be used for this DB cluster.
+The name of the database engine to be used for the restored DB cluster.
 
 Valid Values: C<aurora>
 
@@ -196,9 +197,9 @@ key for each AWS region.
 
 
 
-=head2 MasterUsername => Str
+=head2 B<REQUIRED> MasterUsername => Str
 
-The name of the master user for the DB cluster.
+The name of the master user for the restored DB cluster.
 
 Constraints:
 
@@ -221,7 +222,7 @@ Cannot be a reserved word for the chosen database engine.
 
 
 
-=head2 MasterUserPassword => Str
+=head2 B<REQUIRED> MasterUserPassword => Str
 
 The password for the master database user. This password can contain
 any printable ASCII character except "/", """, or "@".
@@ -232,10 +233,10 @@ Constraints: Must contain from 8 to 41 characters.
 
 =head2 OptionGroupName => Str
 
-A value that indicates that the DB cluster should be associated with
-the specified option group.
+A value that indicates that the restored DB cluster should be
+associated with the specified option group.
 
-Permanent options cannot be removed from an option group. The option
+Permanent options cannot be removed from an option group. An option
 group cannot be removed from a DB cluster once it is associated with a
 DB cluster.
 
@@ -243,8 +244,8 @@ DB cluster.
 
 =head2 Port => Int
 
-The port number on which the instances in the DB cluster accept
-connections.
+The port number on which the instances in the restored DB cluster
+accept connections.
 
 Default: C<3306>
 
@@ -303,16 +304,52 @@ Constraints: Minimum 30-minute window.
 
 
 
-=head2 ReplicationSourceIdentifier => Str
+=head2 B<REQUIRED> S3BucketName => Str
 
-The Amazon Resource Name (ARN) of the source DB cluster if this DB
-cluster is created as a Read Replica.
+The name of the Amazon S3 bucket that contains the data used to create
+the Amazon Aurora DB cluster.
+
+
+
+=head2 B<REQUIRED> S3IngestionRoleArn => Str
+
+The Amazon Resource Name (ARN) of the AWS Identity and Access
+Management (IAM) role that authorizes Amazon RDS to access the Amazon
+S3 bucket on your behalf.
+
+
+
+=head2 S3Prefix => Str
+
+The prefix for all of the file names that contain the data used to
+create the Amazon Aurora DB cluster. If you do not specify a
+B<SourceS3Prefix> value, then the Amazon Aurora DB cluster is created
+by using all of the files in the Amazon S3 bucket.
+
+
+
+=head2 B<REQUIRED> SourceEngine => Str
+
+The identifier for the database engine that was backed up to create the
+files stored in the Amazon S3 bucket.
+
+Valid values: C<mysql>
+
+
+
+=head2 B<REQUIRED> SourceEngineVersion => Str
+
+The version of the database that the backup files were created from.
+
+MySQL version 5.5 and 5.6 are supported.
+
+Example: C<5.6.22>
 
 
 
 =head2 StorageEncrypted => Bool
 
-Specifies whether the DB cluster is encrypted.
+Specifies whether the restored DB cluster is encrypted.
 
 
 
@@ -324,14 +361,15 @@ Specifies whether the DB cluster is encrypted.
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str]
 
-A list of EC2 VPC security groups to associate with this DB cluster.
+A list of EC2 VPC security groups to associate with the restored DB
+cluster.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateDBCluster in L<Paws::RDS>
+This class forms part of L<Paws>, documenting arguments for method RestoreDBClusterFromS3 in L<Paws::RDS>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -180,10 +180,11 @@ C<public> - Return all DB snapshots that have been marked as public.
 =back
 
 If you don't specify a C<SnapshotType> value, then both automated and
-manual snapshots are returned. You can include shared snapshots with
-these results by setting the C<IncludeShared> parameter to C<true>. You
-can include public snapshots with these results by setting the
-C<IncludePublic> parameter to C<true>.
+manual snapshots are returned. Shared and public DB snapshots are not
+included in the returned results by default. You can include shared
+snapshots with these results by setting the C<IncludeShared> parameter
+to C<true>. You can include public snapshots with these results by
+setting the C<IncludePublic> parameter to C<true>.
 
 The C<IncludeShared> and C<IncludePublic> parameters don't apply for
 C<SnapshotType> values of C<manual> or C<automated>. The

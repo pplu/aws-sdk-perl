@@ -3,6 +3,7 @@ package Paws::RDS::Event;
   has Date => (is => 'ro', isa => 'Str');
   has EventCategories => (is => 'ro', isa => 'ArrayRef[Str]');
   has Message => (is => 'ro', isa => 'Str');
+  has SourceArn => (is => 'ro', isa => 'Str');
   has SourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceType => (is => 'ro', isa => 'Str');
 1;
@@ -54,6 +55,11 @@ action.
 =head2 Message => Str
 
   Provides the text of this event.
+
+
+=head2 SourceArn => Str
+
+  
 
 
 =head2 SourceIdentifier => Str
