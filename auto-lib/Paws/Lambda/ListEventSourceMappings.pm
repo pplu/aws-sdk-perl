@@ -40,7 +40,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 EventSourceArn => Str
 
-The Amazon Resource Name (ARN) of the Amazon Kinesis stream.
+The Amazon Resource Name (ARN) of the Amazon Kinesis stream. (This
+parameter is optional.)
 
 
 

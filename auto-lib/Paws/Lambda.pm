@@ -236,9 +236,8 @@ Returns: a L<Paws::Lambda::AliasConfiguration> instance
   Creates an alias that points to the specified Lambda function version.
 For more information, see Introduction to AWS Lambda Aliases.
 
-Alias names are unique for a given function.
-
-This requires permission for the lambda:CreateAlias action.
+Alias names are unique for a given function. This requires permission
+for the lambda:CreateAlias action.
 
 
 =head2 CreateEventSourceMapping(EventSourceArn => Str, FunctionName => Str, StartingPosition => Str, [BatchSize => Int, Enabled => Bool])
@@ -444,9 +443,10 @@ If you are using the versioning feature, you can invoke the specific
 function version by providing function version or alias name that is
 pointing to the function version using the C<Qualifier> parameter in
 the request. If you don't provide the C<Qualifier> parameter, the
-C<$LATEST> version of the Lambda function is invoked. For information
-about the versioning feature, see AWS Lambda Function Versioning and
-Aliases.
+C<$LATEST> version of the Lambda function is invoked. Invocations occur
+at least once in response to an event and functions must be idempotent
+to handle this. For information about the versioning feature, see AWS
+Lambda Function Versioning and Aliases.
 
 This operation requires permission for the C<lambda:InvokeFunction>
 action.

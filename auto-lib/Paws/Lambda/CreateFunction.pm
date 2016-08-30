@@ -106,6 +106,9 @@ resources. For more information, see AWS Lambda: How it Works.
 
 The runtime environment for the Lambda function you are uploading.
 
+To use the Node.js runtime v4.3, set the value to "nodejs4.3". To use
+earlier runtime (v0.10.42), set the value to "nodejs".
+
 Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"java8">, C<"python2.7">
 
 =head2 Timeout => Int
