@@ -75,8 +75,9 @@ Unique identifier for a player session.
 
 =head2 PlayerSessionStatusFilter => Str
 
-Player session status to filter results on. Possible player session
-states include the following:
+Player session status to filter results on.
+
+Possible player session statuses include the following:
 
 =over
 

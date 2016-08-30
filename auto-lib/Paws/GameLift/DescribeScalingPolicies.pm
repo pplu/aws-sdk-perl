@@ -60,8 +60,8 @@ specify the start of the result set, do not specify a value.
 
 =head2 StatusFilter => Str
 
-Game session status to filter results on. A scaling policy is only in
-force when in an Active state.
+Scaling policy status to filter results on. A scaling policy is only in
+force when in an C<ACTIVE> status.
 
 =over
 

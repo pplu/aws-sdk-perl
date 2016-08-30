@@ -46,7 +46,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Unique identifier of the build to be deployed on the new fleet. The
 build must have been successfully uploaded to GameLift and be in a
-C<READY> state. This fleet setting cannot be changed once the fleet is
+C<READY> status. This fleet setting cannot be changed once the fleet is
 created.
 
 

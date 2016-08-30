@@ -48,9 +48,8 @@ Properties describing a fleet alias.
 
 =head2 CreationTime => Str
 
-  Time stamp indicating when this object was created. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was created. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 =head2 Description => Str
@@ -60,9 +59,9 @@ time).
 
 =head2 LastUpdatedTime => Str
 
-  Time stamp indicating when this object was last modified. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was last modified. Format
+is a number expressed in Unix time as milliseconds (ex:
+"1469498468.057".
 
 
 =head2 Name => Str

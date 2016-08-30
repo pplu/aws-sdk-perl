@@ -76,9 +76,9 @@ specify the start of the result set, do not specify a value.
 
 =head2 StatusFilter => Str
 
-Game session status to filter results on. Possible game session states
-include ACTIVE, C<TERMINATED>, C<ACTIVATING> and C<TERMINATING> (the
-last two are transitory).
+Game session status to filter results on. Possible game session
+statuses include ACTIVE, C<TERMINATED>, C<ACTIVATING> and
+C<TERMINATING> (the last two are transitory).
 
 
 

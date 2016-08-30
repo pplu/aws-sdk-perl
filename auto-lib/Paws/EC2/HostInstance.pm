@@ -39,12 +39,12 @@ This class has no description
 
 =head2 InstanceId => Str
 
-  the IDs of instances that are running on the Dedicated host.
+  the IDs of instances that are running on the Dedicated Host.
 
 
 =head2 InstanceType => Str
 
-  The instance type size (for example, m3.medium) of the running
+  The instance type size (for example, C<m3.medium>) of the running
 instance.
 
 

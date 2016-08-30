@@ -37,14 +37,14 @@ launch and maintain multiple server processes based on the runtime
 configuration; it regularly checks for an updated runtime configuration
 and starts new server processes to match the latest version.
 
-The key purpose of a a runtime configuration with multiple server
-process configurations is to be able to run more than one kind of game
-server in a single fleet. You can include configurations for more than
-one server executable in order to run two or more different programs to
-run on the same instance. This option might be useful, for example, to
-run more than one version of your game server on the same fleet.
-Another option is to specify configurations for the same server
-executable but with different launch parameters.
+The key purpose of a runtime configuration with multiple server process
+configurations is to be able to run more than one kind of game server
+in a single fleet. You can include configurations for more than one
+server executable in order to run two or more different programs to run
+on the same instance. This option might be useful, for example, to run
+more than one version of your game server on the same fleet. Another
+option is to specify configurations for the same server executable but
+with different launch parameters.
 
 A GameLift instance is limited to 50 processes running simultaneously.
 To calculate the total number of processes specified in a runtime

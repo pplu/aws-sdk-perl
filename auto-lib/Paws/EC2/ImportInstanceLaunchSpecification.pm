@@ -76,8 +76,7 @@ system shutdown).
 =head2 InstanceType => Str
 
   The instance type. For more information about the instance types that
-you can import, see Before You Get Started in the Amazon Elastic
-Compute Cloud User Guide.
+you can import, see Instance Types in the VM Import/Export User Guide.
 
 
 =head2 Monitoring => Bool

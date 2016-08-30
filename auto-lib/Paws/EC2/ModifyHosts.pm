@@ -42,7 +42,7 @@ Valid values are: C<"on">, C<"off">
 
 =head2 B<REQUIRED> HostIds => ArrayRef[Str]
 
-The host IDs of the Dedicated hosts you want to modify.
+The host IDs of the Dedicated Hosts you want to modify.
 
 
 

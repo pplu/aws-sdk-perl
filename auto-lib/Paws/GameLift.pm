@@ -164,6 +164,11 @@ package Paws::GameLift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::ResolveAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SearchGameSessions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GameLift::SearchGameSessions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GameLift::UpdateAlias', @_);
@@ -200,7 +205,7 @@ package Paws::GameLift;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CreateAlias CreateBuild CreateFleet CreateGameSession CreatePlayerSession CreatePlayerSessions DeleteAlias DeleteBuild DeleteFleet DeleteScalingPolicy DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessions DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies GetGameSessionLogUrl ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateRuntimeConfiguration / }
+  sub operations { qw/CreateAlias CreateBuild CreateFleet CreateGameSession CreatePlayerSession CreatePlayerSessions DeleteAlias DeleteBuild DeleteFleet DeleteScalingPolicy DescribeAlias DescribeBuild DescribeEC2InstanceLimits DescribeFleetAttributes DescribeFleetCapacity DescribeFleetEvents DescribeFleetPortSettings DescribeFleetUtilization DescribeGameSessionDetails DescribeGameSessions DescribePlayerSessions DescribeRuntimeConfiguration DescribeScalingPolicies GetGameSessionLogUrl ListAliases ListBuilds ListFleets PutScalingPolicy RequestUploadCredentials ResolveAlias SearchGameSessions UpdateAlias UpdateBuild UpdateFleetAttributes UpdateFleetCapacity UpdateFleetPortSettings UpdateGameSession UpdateRuntimeConfiguration / }
 
 1;
 
@@ -278,6 +283,8 @@ manage multiplayer game sessions and player sessions.
 =item * DescribeGameSessionDetails
 
 =item * UpdateGameSession
+
+=item * SearchGameSessions
 
 =back
 
@@ -443,7 +450,7 @@ Returns: a L<Paws::GameLift::CreateBuildOutput> instance
 
   Initializes a new build record and generates information required to
 upload a game build to Amazon GameLift. Once the build record has been
-created and is in an C<INITIALIZED> state, you can upload your game
+created and its status is C<INITIALIZED>, you can upload your game
 build.
 
 Do not use this API action unless you are using your own Amazon Simple
@@ -473,7 +480,7 @@ run multiple server processes to host game sessions. You configure a
 fleet to create instances with certain hardware specifications (see
 Amazon EC2 Instance Types for more information), and deploy a specified
 game build to each instance. A newly created fleet passes through
-several states; once it reaches the C<ACTIVE> state, it can begin
+several statuses; once it reaches the C<ACTIVE> status, it can begin
 hosting game sessions.
 
 To create a new fleet, provide a fleet name, an EC2 instance type, and
@@ -489,8 +496,8 @@ following tasks:
 
 =over
 
-=item * Creates a fleet record and sets the state to C<NEW> (followed
-by other states as the fleet is activated).
+=item * Creates a fleet record and sets the status to C<NEW> (followed
+by other statuses as the fleet is activated).
 
 =item * Sets the fleet's capacity to 1 "desired", which causes GameLift
 to start one new EC2 instance.
@@ -538,7 +545,7 @@ Returns: a L<Paws::GameLift::CreateGameSessionOutput> instance
   Creates a multiplayer game session for players. This action creates a
 game session record and assigns the new session to an instance in the
 specified fleet, which initializes a new server process to host the
-game session. A fleet must be in an C<ACTIVE> state before a game
+game session. A fleet must be in an C<ACTIVE> status before a game
 session can be created in it.
 
 To create a game session, specify either a fleet ID or an alias ID and
@@ -557,7 +564,7 @@ Each argument is described in detail in: L<Paws::GameLift::CreatePlayerSession>
 Returns: a L<Paws::GameLift::CreatePlayerSessionOutput> instance
 
   Adds a player to a game session and creates a player session record. A
-game session must be in an C<ACTIVE> state, have a creation policy of
+game session must be in an C<ACTIVE> status, have a creation policy of
 C<ALLOW_ALL>, and have an open player slot before players can be added
 to the session.
 
@@ -575,7 +582,7 @@ Returns: a L<Paws::GameLift::CreatePlayerSessionsOutput> instance
   Adds a group of players to a game session. Similar to
 CreatePlayerSession, this action allows you to add multiple players in
 a single call, which is useful for games that provide party and/or
-matchmaking features. A game session must be in an C<ACTIVE> state,
+matchmaking features. A game session must be in an C<ACTIVE> status,
 have a creation policy of C<ALLOW_ALL>, and have an open player slot
 before players can be added to the session.
 
@@ -886,9 +893,9 @@ Each argument is described in detail in: L<Paws::GameLift::ListBuilds>
 Returns: a L<Paws::GameLift::ListBuildsOutput> instance
 
   Retrieves build records for all builds associated with the AWS account
-in use. You can limit results to builds in a specific state using the
-C<Status> parameter. Use the pagination parameters to retrieve results
-in a set of sequential pages.
+in use. You can limit results to builds that are in a specific status
+by using the C<Status> parameter. Use the pagination parameters to
+retrieve results in a set of sequential pages.
 
 Build records are not listed in any particular order.
 
@@ -955,8 +962,8 @@ record and also uploads build files.
 
 Upload credentials are returned when you create the build, but they
 have a limited lifespan. You can get fresh credentials and use them to
-re-upload game files until the state of that build changes to C<READY>.
-Once this happens, you must create a brand new build.
+re-upload game files until the status of that build changes to
+C<READY>. Once this happens, you must create a brand new build.
 
 
 =head2 ResolveAlias(AliasId => Str)
@@ -966,6 +973,63 @@ Each argument is described in detail in: L<Paws::GameLift::ResolveAlias>
 Returns: a L<Paws::GameLift::ResolveAliasOutput> instance
 
   Retrieves the fleet ID that a specified alias is currently pointing to.
+
+
+=head2 SearchGameSessions([AliasId => Str, FilterExpression => Str, FleetId => Str, Limit => Int, NextToken => Str, SortExpression => Str])
+
+Each argument is described in detail in: L<Paws::GameLift::SearchGameSessions>
+
+Returns: a L<Paws::GameLift::SearchGameSessionsOutput> instance
+
+  Retrieves a list of game sessions in a fleet that match a set of search
+criteria and sorts them in a specified order. Currently game session
+searches are limited to a single fleet. Search results include only
+game sessions that are in ACTIVE status.
+
+You can search or sort by the following game session attributes:
+
+=over
+
+=item * B<gameSessionId> -- ID value assigned to a game session. This
+unique value is returned in a GameSession object when a new game
+session is created.
+
+=item * B<gameSessionName> -- Name assigned to a game session. This
+value is set when requesting a new game session with CreateGameSession
+or updating with UpdateGameSession. Game session names do not need to
+be unique to a game session.
+
+=item * B<creationTimeMillis> -- Value indicating when a game session
+was created. It is expressed in Unix time as milliseconds.
+
+=item * B<playerSessionCount> -- Number of players currently connected
+to a game session. This value changes rapidly as players join the
+session or drop out.
+
+=item * B<maximumSessions> -- Maximum number of player sessions allowed
+for a game session. This value is set when requesting a new game
+session with CreateGameSession or updating with UpdateGameSession.
+
+=item * B<hasAvailablePlayerSessions> -- Boolean value indicating
+whether or not a game session has reached its maximum number of
+players. When searching with this attribute, the search value must be
+C<true> or C<false>. It is highly recommended that all search requests
+include this filter attribute to optimize search performance and return
+only sessions that players can join.
+
+=back
+
+To search or sort, specify either a fleet ID or an alias ID, and
+provide a search filter expression, a sort expression, or both. Use the
+pagination parameters to retrieve results as a set of sequential pages.
+If successful, a collection of GameSession objects matching the request
+is returned.
+
+Returned values for C<playerSessionCount> and
+C<hasAvailablePlayerSessions> change quickly as players join sessions
+and others drop out. Results should be considered a snapshot in time.
+Be sure to refresh search results often, and handle sessions that fill
+up before a player can join.
 
 
 =head2 UpdateAlias(AliasId => Str, [Description => Str, Name => Str, RoutingStrategy => L<Paws::GameLift::RoutingStrategy>])
@@ -1069,7 +1133,7 @@ Returns: a L<Paws::GameLift::UpdateRuntimeConfigurationOutput> instance
   Updates the current runtime configuration for the specified fleet,
 which tells GameLift how to launch server processes on instances in the
 fleet. You can update a fleet's runtime configuration at any time after
-the fleet is created; it does not need to be in an C<ACTIVE> state.
+the fleet is created; it does not need to be in an C<ACTIVE> status.
 
 To update runtime configuration, specify the fleet ID and provide a
 C<RuntimeConfiguration> object with the updated collection of server

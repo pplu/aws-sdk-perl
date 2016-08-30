@@ -40,7 +40,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AutoPlacement => Str
 
 This is enabled by default. This property allows instances to be
-automatically placed onto available Dedicated hosts, when you are
+automatically placed onto available Dedicated Hosts, when you are
 launching instances without specifying a host ID.
 
 Default: Enabled
@@ -49,7 +49,7 @@ Valid values are: C<"on">, C<"off">
 
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-The Availability Zone for the Dedicated hosts.
+The Availability Zone for the Dedicated Hosts.
 
 
 
@@ -63,7 +63,7 @@ I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 B<REQUIRED> InstanceType => Str
 
-Specify the instance type that you want your Dedicated hosts to be
+Specify the instance type that you want your Dedicated Hosts to be
 configured for. When you specify the instance type, that is the only
 instance type that you can launch onto that host.
 
@@ -71,7 +71,7 @@ instance type that you can launch onto that host.
 
 =head2 B<REQUIRED> Quantity => Int
 
-The number of Dedicated hosts you want to allocate to your account with
+The number of Dedicated Hosts you want to allocate to your account with
 these parameters.
 
 

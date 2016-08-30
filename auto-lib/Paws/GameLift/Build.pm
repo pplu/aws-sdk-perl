@@ -48,9 +48,8 @@ Properties describing a game build.
 
 =head2 CreationTime => Str
 
-  Time stamp indicating when this object was created. Format is an
-integer representing the number of seconds since the Unix epoch (Unix
-time).
+  Time stamp indicating when this data object was created. Format is a
+number expressed in Unix time as milliseconds (ex: "1469498468.057".
 
 
 =head2 Name => Str
@@ -62,20 +61,21 @@ be unique. It can be set using CreateBuild or UpdateBuild.
 =head2 SizeOnDisk => Int
 
   File size of the uploaded game build, expressed in bytes. When the
-build state is C<INITIALIZED>, this value is 0.
+build status is C<INITIALIZED>, this value is 0.
 
 
 =head2 Status => Str
 
-  Current status of the build. Possible build states include the
-following:
+  Current status of the build.
+
+Possible build statuses include the following:
 
 =over
 
 =item * B<INITIALIZED> E<ndash> A new build has been defined, but no
 files have been uploaded. You cannot create fleets for builds that are
-in this state. When a build is successfully created, the build state is
-set to this value.
+in this status. When a build is successfully created, the build status
+is set to this value.
 
 =item * B<READY> E<ndash> The game build has been successfully
 uploaded. You can now create new fleets for this build.

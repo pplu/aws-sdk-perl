@@ -41,8 +41,8 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 Most recent date to retrieve event logs for. If no end time is
 specified, this call returns entries from the specified start time up
-to the present. Format is an integer representing the number of seconds
-since the Unix epoch (Unix time).
+to the present. Format is a number expressed in Unix time as
+milliseconds (ex: "1469498468.057".
 
 
 
@@ -71,8 +71,8 @@ specify the start of the result set, do not specify a value.
 
 Earliest date to retrieve event logs for. If no start time is
 specified, this call returns entries starting from when the fleet was
-created to the specified end time. Format is an integer representing
-the number of seconds since the Unix epoch (Unix time).
+created to the specified end time. Format is a number expressed in Unix
+time as milliseconds (ex: "1469498468.057".
 
 
 

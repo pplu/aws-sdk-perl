@@ -1,5 +1,6 @@
 package Paws::EC2::PeeringConnectionOptions;
   use Moose;
+  has AllowDnsResolutionFromRemoteVpc => (is => 'ro', isa => 'Bool', xmlname => 'allowDnsResolutionFromRemoteVpc', traits => ['Unwrapped']);
   has AllowEgressFromLocalClassicLinkToRemoteVpc => (is => 'ro', isa => 'Bool', xmlname => 'allowEgressFromLocalClassicLinkToRemoteVpc', traits => ['Unwrapped']);
   has AllowEgressFromLocalVpcToRemoteClassicLink => (is => 'ro', isa => 'Bool', xmlname => 'allowEgressFromLocalVpcToRemoteClassicLink', traits => ['Unwrapped']);
 1;
@@ -21,20 +22,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::PeeringConnectionOptions object:
 
-  $service_obj->Method(Att1 => { AllowEgressFromLocalClassicLinkToRemoteVpc => $value, ..., AllowEgressFromLocalVpcToRemoteClassicLink => $value  });
+  $service_obj->Method(Att1 => { AllowDnsResolutionFromRemoteVpc => $value, ..., AllowEgressFromLocalVpcToRemoteClassicLink => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::PeeringConnectionOptions object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AllowEgressFromLocalClassicLinkToRemoteVpc
+  $result->Att1->AllowDnsResolutionFromRemoteVpc
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 AllowDnsResolutionFromRemoteVpc => Bool
+
+  If true, enables a local VPC to resolve public DNS hostnames to private
+IP addresses when queried from instances in the peer VPC.
 
 
 =head2 AllowEgressFromLocalClassicLinkToRemoteVpc => Bool

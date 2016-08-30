@@ -55,7 +55,7 @@ One or more filters.
 =item *
 
 C<affinity> - The affinity setting for an instance running on a
-Dedicated host (C<default> | C<host>).
+Dedicated Host (C<default> | C<host>).
 
 =item *
 
@@ -110,7 +110,7 @@ EC2-Classic only.
 
 =item *
 
-C<host-Id> - The ID of the Dedicated host on which the instance is
+C<host-id> - The ID of the Dedicated Host on which the instance is
 running, if applicable.
 
 =item *
