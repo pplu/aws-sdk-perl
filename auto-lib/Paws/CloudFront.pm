@@ -2,7 +2,7 @@ package Paws::CloudFront;
   warn "Paws::CloudFront is not stable / supported / entirely developed";
   use Moose;
   sub service { 'cloudfront' }
-  sub version { '2016-01-28' }
+  sub version { '2016-08-01' }
   sub flattened_arrays { 0 }
   has max_attempts => (is => 'ro', isa => 'Int', default => 5);
   has retry => (is => 'ro', isa => 'HashRef', default => sub {
@@ -47,6 +47,11 @@ package Paws::CloudFront;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDistributionWithTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateDistributionWithTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateInvalidation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateInvalidation', @_);
@@ -55,6 +60,11 @@ package Paws::CloudFront;
   sub CreateStreamingDistribution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateStreamingDistribution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateStreamingDistributionWithTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::CreateStreamingDistributionWithTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCloudFrontOriginAccessIdentity {
@@ -132,6 +142,21 @@ package Paws::CloudFront;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::ListStreamingDistributions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFront::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateCloudFrontOriginAccessIdentity {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFront::UpdateCloudFrontOriginAccessIdentity', @_);
@@ -148,7 +173,7 @@ package Paws::CloudFront;
     return $self->caller->do_call($self, $call_object);
   }
 
-  sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateInvalidation CreateStreamingDistribution DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetInvalidation GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListInvalidations ListStreamingDistributions UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateStreamingDistribution / }
+  sub operations { qw/CreateCloudFrontOriginAccessIdentity CreateDistribution CreateDistributionWithTags CreateInvalidation CreateStreamingDistribution CreateStreamingDistributionWithTags DeleteCloudFrontOriginAccessIdentity DeleteDistribution DeleteStreamingDistribution GetCloudFrontOriginAccessIdentity GetCloudFrontOriginAccessIdentityConfig GetDistribution GetDistributionConfig GetInvalidation GetStreamingDistribution GetStreamingDistributionConfig ListCloudFrontOriginAccessIdentities ListDistributions ListDistributionsByWebACLId ListInvalidations ListStreamingDistributions ListTagsForResource TagResource UntagResource UpdateCloudFrontOriginAccessIdentity UpdateDistribution UpdateStreamingDistribution / }
 
 1;
 
@@ -176,7 +201,13 @@ Paws::CloudFront - Perl Interface to AWS Amazon CloudFront
 
 =head1 DESCRIPTION
 
+Amazon CloudFront
 
+Amazon CloudFront is a global content delivery network (CDN) service
+that accelerates delivery of your websites, APIs, video content or
+other web assets. It integrates with other Amazon Web Services products
+to give developers and businesses an easy way to accelerate content to
+end users with no minimum usage commitments.
 
 =head1 METHODS
 
@@ -198,6 +229,15 @@ Returns: a L<Paws::CloudFront::CreateDistributionResult> instance
   Create a new distribution.
 
 
+=head2 CreateDistributionWithTags(DistributionConfigWithTags => L<Paws::CloudFront::DistributionConfigWithTags>)
+
+Each argument is described in detail in: L<Paws::CloudFront::CreateDistributionWithTags>
+
+Returns: a L<Paws::CloudFront::CreateDistributionWithTagsResult> instance
+
+  Create a new distribution with tags.
+
+
 =head2 CreateInvalidation(DistributionId => Str, InvalidationBatch => L<Paws::CloudFront::InvalidationBatch>)
 
 Each argument is described in detail in: L<Paws::CloudFront::CreateInvalidation>
@@ -214,6 +254,15 @@ Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDist
 Returns: a L<Paws::CloudFront::CreateStreamingDistributionResult> instance
 
   Create a new streaming distribution.
+
+
+=head2 CreateStreamingDistributionWithTags(StreamingDistributionConfigWithTags => L<Paws::CloudFront::StreamingDistributionConfigWithTags>)
+
+Each argument is described in detail in: L<Paws::CloudFront::CreateStreamingDistributionWithTags>
+
+Returns: a L<Paws::CloudFront::CreateStreamingDistributionWithTagsResult> instance
+
+  Create a new streaming distribution with tags.
 
 
 =head2 DeleteCloudFrontOriginAccessIdentity(Id => Str, [IfMatch => Str])
@@ -350,6 +399,33 @@ Each argument is described in detail in: L<Paws::CloudFront::ListStreamingDistri
 Returns: a L<Paws::CloudFront::ListStreamingDistributionsResult> instance
 
   List streaming distributions.
+
+
+=head2 ListTagsForResource(Resource => Str)
+
+Each argument is described in detail in: L<Paws::CloudFront::ListTagsForResource>
+
+Returns: a L<Paws::CloudFront::ListTagsForResourceResult> instance
+
+  List tags for a CloudFront resource.
+
+
+=head2 TagResource(Resource => Str, Tags => L<Paws::CloudFront::Tags>)
+
+Each argument is described in detail in: L<Paws::CloudFront::TagResource>
+
+Returns: nothing
+
+  Add tags to a CloudFront resource.
+
+
+=head2 UntagResource(Resource => Str, TagKeys => L<Paws::CloudFront::TagKeys>)
+
+Each argument is described in detail in: L<Paws::CloudFront::UntagResource>
+
+Returns: nothing
+
+  Remove tags from a CloudFront resource.
 
 
 =head2 UpdateCloudFrontOriginAccessIdentity(CloudFrontOriginAccessIdentityConfig => L<Paws::CloudFront::CloudFrontOriginAccessIdentityConfig>, Id => Str, [IfMatch => Str])

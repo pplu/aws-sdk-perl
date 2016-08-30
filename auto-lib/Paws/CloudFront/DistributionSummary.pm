@@ -1,6 +1,7 @@
 package Paws::CloudFront::DistributionSummary;
   use Moose;
   has Aliases => (is => 'ro', isa => 'Paws::CloudFront::Aliases', required => 1);
+  has ARN => (is => 'ro', isa => 'Str', required => 1);
   has CacheBehaviors => (is => 'ro', isa => 'Paws::CloudFront::CacheBehaviors', required => 1);
   has Comment => (is => 'ro', isa => 'Str', required => 1);
   has CustomErrorResponses => (is => 'ro', isa => 'Paws::CloudFront::CustomErrorResponses', required => 1);
@@ -54,6 +55,13 @@ A summary of the information for an Amazon CloudFront distribution.
 
   A complex type that contains information about CNAMEs (alternate domain
 names), if any, for this distribution.
+
+
+=head2 B<REQUIRED> ARN => Str
+
+  The ARN (Amazon Resource Name) for the distribution. For example:
+arn:aws:cloudfront::123456789012:distribution/EDFDVBD632BHDS5, where
+123456789012 is your AWS account Id.
 
 
 =head2 B<REQUIRED> CacheBehaviors => L<Paws::CloudFront::CacheBehaviors>
