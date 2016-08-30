@@ -1,6 +1,7 @@
 0.28 30 Aug 2015
  - On errors 503 XMLResponse would not process the error correctly (returning
    a non-Paws exception, so the error couldn't be retried. (brianhartsock)
+ - New API: Snowball
  
 0.27 25 Jun 2016 
  - RestXml (S3, f.ex) services now complete responses from headers (shardiwal)
