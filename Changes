@@ -6,6 +6,7 @@
  - New API: ELBv2 (Application Load Balancer)
  - Route53: API update: GetDomainSuggestions, RenewDomain, ViewBilling
  - RDS: API update: RestoreDBClusterFromS3
+ - KMS: API update: DeleteImportedKeyMaterial, GetParametersForImport, ImportKeyMaterial
 
 0.27 25 Jun 2016 
  - RestXml (S3, f.ex) services now complete responses from headers (shardiwal)
