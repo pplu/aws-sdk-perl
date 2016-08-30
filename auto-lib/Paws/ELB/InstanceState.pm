@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Instan
 
 =head1 DESCRIPTION
 
-Information about the state of a back-end instance.
+Information about the state of an EC2 instance.
 
 =head1 ATTRIBUTES
 

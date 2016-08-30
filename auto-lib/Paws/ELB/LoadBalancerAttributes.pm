@@ -46,8 +46,8 @@ The attributes for a load balancer.
 requests and delivers the information to the Amazon S3 bucket that you
 specify.
 
-For more information, see Enable Access Logs in the I<Elastic Load
-Balancing Developer Guide>.
+For more information, see Enable Access Logs in the I<Classic Load
+Balancers Guide>.
 
 
 =head2 AdditionalAttributes => ArrayRef[L<Paws::ELB::AdditionalAttribute>]
@@ -59,10 +59,10 @@ Balancing Developer Guide>.
 
   If enabled, the load balancer allows existing requests to complete
 before the load balancer shifts traffic away from a deregistered or
-unhealthy back-end instance.
+unhealthy instance.
 
-For more information, see Enable Connection Draining in the I<Elastic
-Load Balancing Developer Guide>.
+For more information, see Configure Connection Draining in the
+I<Classic Load Balancers Guide>.
 
 
 =head2 ConnectionSettings => L<Paws::ELB::ConnectionSettings>
@@ -73,16 +73,16 @@ data is sent over the connection) for the specified duration.
 By default, Elastic Load Balancing maintains a 60-second idle
 connection timeout for both front-end and back-end connections of your
 load balancer. For more information, see Configure Idle Connection
-Timeout in the I<Elastic Load Balancing Developer Guide>.
+Timeout in the I<Classic Load Balancers Guide>.
 
 
 =head2 CrossZoneLoadBalancing => L<Paws::ELB::CrossZoneLoadBalancing>
 
   If enabled, the load balancer routes the request traffic evenly across
-all back-end instances regardless of the Availability Zones.
+all instances regardless of the Availability Zones.
 
-For more information, see Enable Cross-Zone Load Balancing in the
-I<Elastic Load Balancing Developer Guide>.
+For more information, see Configure Cross-Zone Load Balancing in the
+I<Classic Load Balancers Guide>.
 
 
 

@@ -38,8 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Listen
 Information about a listener.
 
 For information about the protocols and the ports supported by Elastic
-Load Balancing, see Listener Configurations for Elastic Load Balancing
-in the I<Elastic Load Balancing Developer Guide>.
+Load Balancing, see Listeners for Your Classic Load Balancer in the
+I<Classic Load Balancers Guide>.
 
 =head1 ATTRIBUTES
 
@@ -51,8 +51,8 @@ in the I<Elastic Load Balancing Developer Guide>.
 
 =head2 InstanceProtocol => Str
 
-  The protocol to use for routing traffic to back-end instances: HTTP,
-HTTPS, TCP, or SSL.
+  The protocol to use for routing traffic to instances: HTTP, HTTPS, TCP,
+or SSL.
 
 If the front-end protocol is HTTP, HTTPS, TCP, or SSL,
 C<InstanceProtocol> must be at the same protocol.

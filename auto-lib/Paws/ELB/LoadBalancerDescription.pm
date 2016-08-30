@@ -58,21 +58,20 @@ Information about a load balancer.
 
 =head2 BackendServerDescriptions => ArrayRef[L<Paws::ELB::BackendServerDescription>]
 
-  Information about the back-end servers.
+  Information about your EC2 instances.
 
 
 =head2 CanonicalHostedZoneName => Str
 
-  The Amazon Route 53 hosted zone associated with the load balancer.
+  The DNS name of the load balancer.
 
-For more information, see Using Domain Names With Elastic Load
-Balancing in the I<Elastic Load Balancing Developer Guide>.
+For more information, see Configure a Custom Domain Name in the
+I<Classic Load Balancers Guide>.
 
 
 =head2 CanonicalHostedZoneNameID => Str
 
-  The ID of the Amazon Route 53 hosted zone name associated with the load
-balancer.
+  The ID of the Amazon Route 53 hosted zone for the load balancer.
 
 
 =head2 CreatedTime => Str
@@ -82,7 +81,7 @@ balancer.
 
 =head2 DNSName => Str
 
-  The external DNS name of the load balancer.
+  The DNS name of the load balancer.
 
 
 =head2 HealthCheck => L<Paws::ELB::HealthCheck>
@@ -129,11 +128,10 @@ balancers in a VPC.
 
 =head2 SourceSecurityGroup => L<Paws::ELB::SourceSecurityGroup>
 
-  The security group that you can use as part of your inbound rules for
-your load balancer's back-end application instances. To only allow
-traffic from load balancers, add a security group rule to your back end
-instance that specifies this source security group as the inbound
-source.
+  The security group for the load balancer, which you can use as part of
+your inbound rules for your registered instances. To only allow traffic
+from load balancers, add a security group rule that specifies this
+source security group as the inbound source.
 
 
 =head2 Subnets => ArrayRef[Str]

@@ -42,8 +42,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 =head2 AvailabilityZones => ArrayRef[Str]
 
 One or more Availability Zones from the same region as the load
-balancer. Traffic is equally distributed across all specified
-Availability Zones.
+balancer.
 
 You must specify at least one Availability Zone.
 
@@ -56,8 +55,8 @@ using EnableAvailabilityZonesForLoadBalancer.
 
 The listeners.
 
-For more information, see Listeners for Your Load Balancer in the
-I<Elastic Load Balancing Developer Guide>.
+For more information, see Listeners for Your Classic Load Balancer in
+the I<Classic Load Balancers Guide>.
 
 
 
@@ -77,13 +76,12 @@ hyphen.
 The type of a load balancer. Valid only for load balancers in a VPC.
 
 By default, Elastic Load Balancing creates an Internet-facing load
-balancer with a publicly resolvable DNS name, which resolves to public
-IP addresses. For more information about Internet-facing and Internal
-load balancers, see Internet-facing and Internal Load Balancers in the
-I<Elastic Load Balancing Developer Guide>.
+balancer with a DNS name that resolves to public IP addresses. For more
+information about Internet-facing and Internal load balancers, see Load
+Balancer Scheme in the I<Elastic Load Balancing User Guide>.
 
-Specify C<internal> to create an internal load balancer with a DNS name
-that resolves to private IP addresses.
+Specify C<internal> to create a load balancer with a DNS name that
+resolves to private IP addresses.
 
 
 
@@ -105,8 +103,8 @@ C<AvailabilityZones>.
 
 A list of tags to assign to the load balancer.
 
-For more information about tagging your load balancer, see Tagging in
-the I<Elastic Load Balancing Developer Guide>.
+For more information about tagging your load balancer, see Tag Your
+Classic Load Balancer in the I<Classic Load Balancers Guide>.
 
 
 

@@ -42,8 +42,8 @@ The name of the load balancer.
 
 =head2 B<REQUIRED> Subnets => ArrayRef[Str]
 
-The IDs of the subnets to add for the load balancer. You can add only
-one subnet per Availability Zone.
+The IDs of the subnets to add. You can add only one subnet per
+Availability Zone.
 
 
 

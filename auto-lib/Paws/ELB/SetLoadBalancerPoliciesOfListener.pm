@@ -43,14 +43,15 @@ The name of the load balancer.
 
 =head2 B<REQUIRED> LoadBalancerPort => Int
 
-The external port of the load balancer for the policy.
+The external port of the load balancer.
 
 
 
 =head2 B<REQUIRED> PolicyNames => ArrayRef[Str]
 
-The names of the policies. If the list is empty, the current policy is
-removed from the listener.
+The names of the policies. This list must include all policies to be
+enabled. If you omit a policy that is currently enabled, it is
+disabled. If the list is empty, all current policies are disabled.
 
 
 
