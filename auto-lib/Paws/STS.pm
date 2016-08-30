@@ -310,15 +310,16 @@ choose not to pass a policy, the temporary security credentials that
 are returned by the operation have the permissions that are defined in
 the access policy of the role that is being assumed. If you pass a
 policy to this operation, the temporary security credentials that are
-returned by the operation have the permissions that are allowed by both
-the access policy of the role that is being assumed, I< B<and> > the
-policy that you pass. This gives you a way to further restrict the
-permissions for the resulting temporary security credentials. You
-cannot use the passed policy to grant permissions that are in excess of
-those allowed by the access policy of the role that is being assumed.
-For more information, see Permissions for AssumeRole,
-AssumeRoleWithSAML, and AssumeRoleWithWebIdentity in the I<IAM User
-Guide>.
+returned by the operation have the permissions that are allowed by the
+intersection of both the access policy of the role that is being
+assumed, I< B<and> > the policy that you pass. This means that both
+policies must grant the permission for the action to be allowed. This
+gives you a way to further restrict the permissions for the resulting
+temporary security credentials. You cannot use the passed policy to
+grant permissions that are in excess of those allowed by the access
+policy of the role that is being assumed. For more information, see
+Permissions for AssumeRole, AssumeRoleWithSAML, and
+AssumeRoleWithWebIdentity in the I<IAM User Guide>.
 
 Before your application can call C<AssumeRoleWithSAML>, you must
 configure your SAML identity provider (IdP) to issue the claims

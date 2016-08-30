@@ -45,6 +45,14 @@ The duration, in seconds, of the role session. The value can range from
 900 seconds (15 minutes) to 3600 seconds (1 hour). By default, the
 value is set to 3600 seconds.
 
+This is separate from the duration of a console session that you might
+request using the returned credentials. The request to the federation
+endpoint for a console sign-in token takes a C<SessionDuration>
+parameter that specifies the maximum length of the console session,
+separately from the C<DurationSeconds> parameter on this API. For more
+information, see Creating a URL that Enables Federated Users to Access
+the AWS Management Console in the I<IAM User Guide>.
+
 
 
 =head2 ExternalId => Str
@@ -61,8 +69,8 @@ Your AWS Resources to a Third Party in the I<IAM User Guide>.
 
 The format for this parameter, as described by its regex pattern, is a
 string of characters consisting of upper- and lower-case alphanumeric
-characters with no spaces. You can also include any of the following
-characters: =,.@:\/-
+characters with no spaces. You can also include underscores or any of
+the following characters: =,.@:\/-
 
 
 
@@ -116,8 +124,8 @@ in their CloudTrail logs.
 
 The format for this parameter, as described by its regex pattern, is a
 string of characters consisting of upper- and lower-case alphanumeric
-characters with no spaces. You can also include any of the following
-characters: =,.@-
+characters with no spaces. You can also include underscores or any of
+the following characters: =,.@-
 
 
 
@@ -133,8 +141,8 @@ C<arn:aws:iam::123456789012:mfa/user>).
 
 The format for this parameter, as described by its regex pattern, is a
 string of characters consisting of upper- and lower-case alphanumeric
-characters with no spaces. You can also include any of the following
-characters: =,.@-
+characters with no spaces. You can also include underscores or any of
+the following characters: =,.@-
 
 
 
