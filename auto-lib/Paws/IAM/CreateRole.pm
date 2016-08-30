@@ -70,7 +70,9 @@ The name of the role to create.
 
 The regex pattern for this parameter is a string of characters
 consisting of upper and lowercase alphanumeric characters with no
-spaces. You can also include any of the following characters: =,.@-
+spaces. You can also include any of the following characters: =,.@-.
+Role names are not distinguished by case. For example, you cannot
+create roles named both "PRODROLE" and "prodrole".
 
 
 
