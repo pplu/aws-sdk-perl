@@ -54,6 +54,11 @@ package Paws::Route53Domains;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::GetDomainDetail', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDomainSuggestions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::GetDomainSuggestions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetOperationDetail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::GetOperationDetail', @_);
@@ -77,6 +82,11 @@ package Paws::Route53Domains;
   sub RegisterDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::RegisterDomain', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RenewDomain {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::RenewDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ResendContactReachabilityEmail {
@@ -114,8 +124,13 @@ package Paws::Route53Domains;
     my $call_object = $self->new_with_coercions('Paws::Route53Domains::UpdateTagsForDomain', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ViewBilling {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Route53Domains::ViewBilling', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
 
-  sub operations { qw/CheckDomainAvailability DeleteTagsForDomain DisableDomainAutoRenew DisableDomainTransferLock EnableDomainAutoRenew EnableDomainTransferLock GetContactReachabilityStatus GetDomainDetail GetOperationDetail ListDomains ListOperations ListTagsForDomain RegisterDomain ResendContactReachabilityEmail RetrieveDomainAuthCode TransferDomain UpdateDomainContact UpdateDomainContactPrivacy UpdateDomainNameservers UpdateTagsForDomain / }
+  sub operations { qw/CheckDomainAvailability DeleteTagsForDomain DisableDomainAutoRenew DisableDomainTransferLock EnableDomainAutoRenew EnableDomainTransferLock GetContactReachabilityStatus GetDomainDetail GetDomainSuggestions GetOperationDetail ListDomains ListOperations ListTagsForDomain RegisterDomain RenewDomain ResendContactReachabilityEmail RetrieveDomainAuthCode TransferDomain UpdateDomainContact UpdateDomainContactPrivacy UpdateDomainNameservers UpdateTagsForDomain ViewBilling / }
 
 1;
 
@@ -181,11 +196,6 @@ Returns: a L<Paws::Route53Domains::DisableDomainAutoRenewResponse> instance
 
   This operation disables automatic renewal of domain registration for
 the specified domain.
-
-Caution! Amazon Route 53 doesn't have a manual renewal process, so if
-you disable automatic renewal, registration for the domain will not be
-renewed when the expiration date passes, and you will lose control of
-the domain name.
 
 
 =head2 DisableDomainTransferLock(DomainName => Str)
@@ -258,6 +268,37 @@ Returns: a L<Paws::Route53Domains::GetDomainDetailResponse> instance
 
   This operation returns detailed information about the domain. The
 domain's contact information is also returned as part of the output.
+
+
+=head2 GetDomainSuggestions(DomainName => Str, OnlyAvailable => Bool, SuggestionCount => Int)
+
+Each argument is described in detail in: L<Paws::Route53Domains::GetDomainSuggestions>
+
+Returns: a L<Paws::Route53Domains::GetDomainSuggestionsResponse> instance
+
+  The GetDomainSuggestions operation returns a list of suggested domain
+names given a string, which can either be a domain name or simply a
+word or phrase (without spaces).
+
+Parameters:
+
+=over
+
+=item * DomainName (string): The basis for your domain suggestion
+search, a string with (or without) top-level domain specified.
+
+=item * SuggestionCount (int): The number of domain suggestions to be
+returned, maximum 50, minimum 1.
+
+=item * OnlyAvailable (bool): If true, availability check will be
+performed on suggestion results, and only available domains will be
+returned. If false, suggestions will be returned without checking
+whether the domain is actually available, and caller will have to call
+checkDomainAvailability for each suggestion to determine availability
+for registration.
+
+=back
+
 
 
 =head2 GetOperationDetail(OperationId => Str)
@@ -340,6 +381,22 @@ domain. For more information, see Amazon Route 53 Pricing.
 
 =back
 
+
+
+=head2 RenewDomain(CurrentExpiryYear => Int, DomainName => Str, [DurationInYears => Int])
+
+Each argument is described in detail in: L<Paws::Route53Domains::RenewDomain>
+
+Returns: a L<Paws::Route53Domains::RenewDomainResponse> instance
+
+  This operation renews a domain for the specified number of years. The
+cost of renewing your domain is billed to your AWS account.
+
+We recommend that you renew your domain several weeks before the
+expiration date. Some TLD registries delete domains before the
+expiration date if you haven't renewed far enough in advance. For more
+information about renewing domain registration, see Renewing
+Registration for a Domain in the Amazon Route 53 documentation.
 
 
 =head2 ResendContactReachabilityEmail([DomainName => Str])
@@ -460,6 +517,16 @@ Returns: a L<Paws::Route53Domains::UpdateTagsForDomainResponse> instance
 
 All tag operations are eventually consistent; subsequent operations may
 not immediately represent all issued operations.
+
+
+=head2 ViewBilling([End => Str, Marker => Str, MaxItems => Int, Start => Str])
+
+Each argument is described in detail in: L<Paws::Route53Domains::ViewBilling>
+
+Returns: a L<Paws::Route53Domains::ViewBillingResponse> instance
+
+  This operation returns all the domain-related billing records for the
+current AWS account for a specified period
 
 
 =head1 SEE ALSO
