@@ -154,12 +154,14 @@ package Paws::SSM;
     $params->{ Associations } = $result->Associations;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListAssociations(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Associations } }, @{ $result->Associations };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SSM::ListAssociations->_returns, %$params);
   }
@@ -172,12 +174,14 @@ package Paws::SSM;
     $params->{ CommandInvocations } = $result->CommandInvocations;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListCommandInvocations(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ CommandInvocations } }, @{ $result->CommandInvocations };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SSM::ListCommandInvocations->_returns, %$params);
   }
@@ -190,12 +194,14 @@ package Paws::SSM;
     $params->{ Commands } = $result->Commands;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListCommands(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Commands } }, @{ $result->Commands };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SSM::ListCommands->_returns, %$params);
   }
@@ -208,12 +214,14 @@ package Paws::SSM;
     $params->{ DocumentIdentifiers } = $result->DocumentIdentifiers;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListDocuments(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ DocumentIdentifiers } }, @{ $result->DocumentIdentifiers };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SSM::ListDocuments->_returns, %$params);
   }

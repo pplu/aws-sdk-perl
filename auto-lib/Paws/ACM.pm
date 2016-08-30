@@ -69,12 +69,14 @@ package Paws::ACM;
     $params->{ CertificateSummaryList } = $result->CertificateSummaryList;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListCertificates(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ CertificateSummaryList } }, @{ $result->CertificateSummaryList };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ACM::ListCertificates->_returns, %$params);
   }

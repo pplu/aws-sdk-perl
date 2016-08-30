@@ -203,12 +203,14 @@ package Paws::ElasticBeanstalk;
     $params->{ Events } = $result->Events;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeEvents(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Events } }, @{ $result->Events };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElasticBeanstalk::DescribeEvents->_returns, %$params);
   }

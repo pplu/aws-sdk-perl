@@ -173,12 +173,14 @@ package Paws::SNS;
     $params->{ Endpoints } = $result->Endpoints;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Endpoints } }, @{ $result->Endpoints };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SNS::ListEndpointsByPlatformApplication->_returns, %$params);
   }
@@ -191,12 +193,14 @@ package Paws::SNS;
     $params->{ PlatformApplications } = $result->PlatformApplications;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ PlatformApplications } }, @{ $result->PlatformApplications };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SNS::ListPlatformApplications->_returns, %$params);
   }
@@ -209,12 +213,14 @@ package Paws::SNS;
     $params->{ Subscriptions } = $result->Subscriptions;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListSubscriptions(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Subscriptions } }, @{ $result->Subscriptions };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SNS::ListSubscriptions->_returns, %$params);
   }
@@ -227,12 +233,14 @@ package Paws::SNS;
     $params->{ Subscriptions } = $result->Subscriptions;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListSubscriptionsByTopic(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Subscriptions } }, @{ $result->Subscriptions };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SNS::ListSubscriptionsByTopic->_returns, %$params);
   }
@@ -245,12 +253,14 @@ package Paws::SNS;
     $params->{ Topics } = $result->Topics;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListTopics(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Topics } }, @{ $result->Topics };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SNS::ListTopics->_returns, %$params);
   }

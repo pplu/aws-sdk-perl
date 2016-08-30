@@ -239,12 +239,14 @@ package Paws::DeviceFarm;
     $params->{ artifacts } = $result->artifacts;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListArtifacts(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ artifacts } }, @{ $result->artifacts };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DeviceFarm::ListArtifacts->_returns, %$params);
   }
@@ -257,12 +259,14 @@ package Paws::DeviceFarm;
     $params->{ devicePools } = $result->devicePools;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListDevicePools(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ devicePools } }, @{ $result->devicePools };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DeviceFarm::ListDevicePools->_returns, %$params);
   }
@@ -275,12 +279,14 @@ package Paws::DeviceFarm;
     $params->{ devices } = $result->devices;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListDevices(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ devices } }, @{ $result->devices };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DeviceFarm::ListDevices->_returns, %$params);
   }
@@ -293,12 +299,14 @@ package Paws::DeviceFarm;
     $params->{ jobs } = $result->jobs;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListJobs(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ jobs } }, @{ $result->jobs };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DeviceFarm::ListJobs->_returns, %$params);
   }
@@ -311,12 +319,14 @@ package Paws::DeviceFarm;
     $params->{ projects } = $result->projects;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListProjects(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ projects } }, @{ $result->projects };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DeviceFarm::ListProjects->_returns, %$params);
   }
@@ -329,12 +339,14 @@ package Paws::DeviceFarm;
     $params->{ runs } = $result->runs;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListRuns(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ runs } }, @{ $result->runs };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DeviceFarm::ListRuns->_returns, %$params);
   }
@@ -347,12 +359,14 @@ package Paws::DeviceFarm;
     $params->{ samples } = $result->samples;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListSamples(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ samples } }, @{ $result->samples };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DeviceFarm::ListSamples->_returns, %$params);
   }
@@ -365,12 +379,14 @@ package Paws::DeviceFarm;
     $params->{ suites } = $result->suites;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListSuites(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ suites } }, @{ $result->suites };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DeviceFarm::ListSuites->_returns, %$params);
   }
@@ -383,12 +399,14 @@ package Paws::DeviceFarm;
     $params->{ tests } = $result->tests;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListTests(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ tests } }, @{ $result->tests };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DeviceFarm::ListTests->_returns, %$params);
   }
@@ -401,12 +419,14 @@ package Paws::DeviceFarm;
     $params->{ uniqueProblems } = $result->uniqueProblems;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListUniqueProblems(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ uniqueProblems } }, @{ $result->uniqueProblems };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DeviceFarm::ListUniqueProblems->_returns, %$params);
   }
@@ -419,12 +439,14 @@ package Paws::DeviceFarm;
     $params->{ uploads } = $result->uploads;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListUploads(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ uploads } }, @{ $result->uploads };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DeviceFarm::ListUploads->_returns, %$params);
   }

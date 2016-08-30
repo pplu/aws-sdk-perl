@@ -143,12 +143,14 @@ package Paws::CloudFormation;
     $params->{ StackEvents } = $result->StackEvents;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeStackEvents(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ StackEvents } }, @{ $result->StackEvents };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudFormation::DescribeStackEvents->_returns, %$params);
   }
@@ -161,12 +163,14 @@ package Paws::CloudFormation;
     $params->{ Stacks } = $result->Stacks;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeStacks(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Stacks } }, @{ $result->Stacks };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudFormation::DescribeStacks->_returns, %$params);
   }
@@ -179,12 +183,14 @@ package Paws::CloudFormation;
     $params->{ StackResourceSummaries } = $result->StackResourceSummaries;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListStackResources(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ StackResourceSummaries } }, @{ $result->StackResourceSummaries };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudFormation::ListStackResources->_returns, %$params);
   }
@@ -197,12 +203,14 @@ package Paws::CloudFormation;
     $params->{ StackSummaries } = $result->StackSummaries;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListStacks(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ StackSummaries } }, @{ $result->StackSummaries };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudFormation::ListStacks->_returns, %$params);
   }

@@ -283,12 +283,14 @@ package Paws::AutoScaling;
     $params->{ AutoScalingGroups } = $result->AutoScalingGroups;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeAutoScalingGroups(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ AutoScalingGroups } }, @{ $result->AutoScalingGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::AutoScaling::DescribeAutoScalingGroups->_returns, %$params);
   }
@@ -301,12 +303,14 @@ package Paws::AutoScaling;
     $params->{ AutoScalingInstances } = $result->AutoScalingInstances;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeAutoScalingInstances(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ AutoScalingInstances } }, @{ $result->AutoScalingInstances };
       
     }
+    
 
     return $self->new_with_coercions(Paws::AutoScaling::DescribeAutoScalingInstances->_returns, %$params);
   }
@@ -319,12 +323,14 @@ package Paws::AutoScaling;
     $params->{ LaunchConfigurations } = $result->LaunchConfigurations;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeLaunchConfigurations(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ LaunchConfigurations } }, @{ $result->LaunchConfigurations };
       
     }
+    
 
     return $self->new_with_coercions(Paws::AutoScaling::DescribeLaunchConfigurations->_returns, %$params);
   }
@@ -337,12 +343,14 @@ package Paws::AutoScaling;
     $params->{ NotificationConfigurations } = $result->NotificationConfigurations;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeNotificationConfigurations(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ NotificationConfigurations } }, @{ $result->NotificationConfigurations };
       
     }
+    
 
     return $self->new_with_coercions(Paws::AutoScaling::DescribeNotificationConfigurations->_returns, %$params);
   }
@@ -355,12 +363,14 @@ package Paws::AutoScaling;
     $params->{ ScalingPolicies } = $result->ScalingPolicies;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribePolicies(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ ScalingPolicies } }, @{ $result->ScalingPolicies };
       
     }
+    
 
     return $self->new_with_coercions(Paws::AutoScaling::DescribePolicies->_returns, %$params);
   }
@@ -373,12 +383,14 @@ package Paws::AutoScaling;
     $params->{ Activities } = $result->Activities;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeScalingActivities(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Activities } }, @{ $result->Activities };
       
     }
+    
 
     return $self->new_with_coercions(Paws::AutoScaling::DescribeScalingActivities->_returns, %$params);
   }
@@ -391,12 +403,14 @@ package Paws::AutoScaling;
     $params->{ ScheduledUpdateGroupActions } = $result->ScheduledUpdateGroupActions;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeScheduledActions(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ ScheduledUpdateGroupActions } }, @{ $result->ScheduledUpdateGroupActions };
       
     }
+    
 
     return $self->new_with_coercions(Paws::AutoScaling::DescribeScheduledActions->_returns, %$params);
   }
@@ -409,12 +423,14 @@ package Paws::AutoScaling;
     $params->{ Tags } = $result->Tags;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Tags } }, @{ $result->Tags };
       
     }
+    
 
     return $self->new_with_coercions(Paws::AutoScaling::DescribeTags->_returns, %$params);
   }

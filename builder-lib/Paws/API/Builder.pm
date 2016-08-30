@@ -1008,12 +1008,21 @@ package [% inner_class %];
     $params->{ [% param %] } = [% c.paginator_accessor(param) %];
     [% END %]
 
+    [% IF (paginator.more_results.defined) %]
     while ($result->[% paginator.more_results %]) {
       $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
       [% FOREACH param = c.paginator_result_key(paginator) %]
       push @{ $params->{ [% param %] } }, @{ [% c.paginator_accessor(param) %] };
       [% END %]
     }
+    [% ELSE %]
+    while ($result->[% paginator.input_token %]) {
+      $result = $self->[% op %](@_, [% c.paginator_pass_params(paginator) %]);
+      [% FOREACH param = c.paginator_result_key(paginator) %]
+      push @{ $params->{ [% param %] } }, @{ [% c.paginator_accessor(param) %] };
+      [% END %]
+    }
+    [% END %]
 
     return $self->new_with_coercions([% c.api %]::[% op %]->_returns, %$params);
   }

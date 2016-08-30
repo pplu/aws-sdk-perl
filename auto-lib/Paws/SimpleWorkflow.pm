@@ -179,12 +179,14 @@ package Paws::SimpleWorkflow;
     $params->{ events } = $result->events;
     
 
-    while ($result->) {
+    
+    while ($result->nextPageToken) {
       $result = $self->GetWorkflowExecutionHistory(@_, nextPageToken => $result->nextPageToken);
       
       push @{ $params->{ events } }, @{ $result->events };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SimpleWorkflow::GetWorkflowExecutionHistory->_returns, %$params);
   }
@@ -197,12 +199,14 @@ package Paws::SimpleWorkflow;
     $params->{ typeInfos } = $result->typeInfos;
     
 
-    while ($result->) {
+    
+    while ($result->nextPageToken) {
       $result = $self->ListActivityTypes(@_, nextPageToken => $result->nextPageToken);
       
       push @{ $params->{ typeInfos } }, @{ $result->typeInfos };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SimpleWorkflow::ListActivityTypes->_returns, %$params);
   }
@@ -215,12 +219,14 @@ package Paws::SimpleWorkflow;
     $params->{ executionInfos } = $result->executionInfos;
     
 
-    while ($result->) {
+    
+    while ($result->nextPageToken) {
       $result = $self->ListClosedWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
       
       push @{ $params->{ executionInfos } }, @{ $result->executionInfos };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SimpleWorkflow::ListClosedWorkflowExecutions->_returns, %$params);
   }
@@ -233,12 +239,14 @@ package Paws::SimpleWorkflow;
     $params->{ domainInfos } = $result->domainInfos;
     
 
-    while ($result->) {
+    
+    while ($result->nextPageToken) {
       $result = $self->ListDomains(@_, nextPageToken => $result->nextPageToken);
       
       push @{ $params->{ domainInfos } }, @{ $result->domainInfos };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SimpleWorkflow::ListDomains->_returns, %$params);
   }
@@ -251,12 +259,14 @@ package Paws::SimpleWorkflow;
     $params->{ executionInfos } = $result->executionInfos;
     
 
-    while ($result->) {
+    
+    while ($result->nextPageToken) {
       $result = $self->ListOpenWorkflowExecutions(@_, nextPageToken => $result->nextPageToken);
       
       push @{ $params->{ executionInfos } }, @{ $result->executionInfos };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SimpleWorkflow::ListOpenWorkflowExecutions->_returns, %$params);
   }
@@ -269,12 +279,14 @@ package Paws::SimpleWorkflow;
     $params->{ typeInfos } = $result->typeInfos;
     
 
-    while ($result->) {
+    
+    while ($result->nextPageToken) {
       $result = $self->ListWorkflowTypes(@_, nextPageToken => $result->nextPageToken);
       
       push @{ $params->{ typeInfos } }, @{ $result->typeInfos };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SimpleWorkflow::ListWorkflowTypes->_returns, %$params);
   }
@@ -287,12 +299,14 @@ package Paws::SimpleWorkflow;
     $params->{ events } = $result->events;
     
 
-    while ($result->) {
+    
+    while ($result->nextPageToken) {
       $result = $self->PollForDecisionTask(@_, nextPageToken => $result->nextPageToken);
       
       push @{ $params->{ events } }, @{ $result->events };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SimpleWorkflow::PollForDecisionTask->_returns, %$params);
   }

@@ -182,12 +182,14 @@ package Paws::CloudFront;
     $params->{ CloudFrontOriginAccessIdentityList.Items } = $result->CloudFrontOriginAccessIdentityList->Items;
     
 
+    
     while ($result->CloudFrontOriginAccessIdentityList.IsTruncated) {
       $result = $self->ListCloudFrontOriginAccessIdentities(@_, Marker => $result->CloudFrontOriginAccessIdentityList->NextMarker);
       
       push @{ $params->{ CloudFrontOriginAccessIdentityList.Items } }, @{ $result->CloudFrontOriginAccessIdentityList->Items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudFront::ListCloudFrontOriginAccessIdentities->_returns, %$params);
   }
@@ -200,12 +202,14 @@ package Paws::CloudFront;
     $params->{ DistributionList.Items } = $result->DistributionList->Items;
     
 
+    
     while ($result->DistributionList.IsTruncated) {
       $result = $self->ListDistributions(@_, Marker => $result->DistributionList->NextMarker);
       
       push @{ $params->{ DistributionList.Items } }, @{ $result->DistributionList->Items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudFront::ListDistributions->_returns, %$params);
   }
@@ -218,12 +222,14 @@ package Paws::CloudFront;
     $params->{ InvalidationList.Items } = $result->InvalidationList->Items;
     
 
+    
     while ($result->InvalidationList.IsTruncated) {
       $result = $self->ListInvalidations(@_, Marker => $result->InvalidationList->NextMarker);
       
       push @{ $params->{ InvalidationList.Items } }, @{ $result->InvalidationList->Items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudFront::ListInvalidations->_returns, %$params);
   }
@@ -236,12 +242,14 @@ package Paws::CloudFront;
     $params->{ StreamingDistributionList.Items } = $result->StreamingDistributionList->Items;
     
 
+    
     while ($result->StreamingDistributionList.IsTruncated) {
       $result = $self->ListStreamingDistributions(@_, Marker => $result->StreamingDistributionList->NextMarker);
       
       push @{ $params->{ StreamingDistributionList.Items } }, @{ $result->StreamingDistributionList->Items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudFront::ListStreamingDistributions->_returns, %$params);
   }

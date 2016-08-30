@@ -1073,12 +1073,14 @@ package Paws::EC2;
     $params->{ Reservations } = $result->Reservations;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeInstances(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Reservations } }, @{ $result->Reservations };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EC2::DescribeInstances->_returns, %$params);
   }
@@ -1091,12 +1093,14 @@ package Paws::EC2;
     $params->{ InstanceStatuses } = $result->InstanceStatuses;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeInstanceStatus(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ InstanceStatuses } }, @{ $result->InstanceStatuses };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EC2::DescribeInstanceStatus->_returns, %$params);
   }
@@ -1109,12 +1113,14 @@ package Paws::EC2;
     $params->{ ReservedInstancesModifications } = $result->ReservedInstancesModifications;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeReservedInstancesModifications(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ ReservedInstancesModifications } }, @{ $result->ReservedInstancesModifications };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EC2::DescribeReservedInstancesModifications->_returns, %$params);
   }
@@ -1127,12 +1133,14 @@ package Paws::EC2;
     $params->{ ReservedInstancesOfferings } = $result->ReservedInstancesOfferings;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeReservedInstancesOfferings(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ ReservedInstancesOfferings } }, @{ $result->ReservedInstancesOfferings };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EC2::DescribeReservedInstancesOfferings->_returns, %$params);
   }
@@ -1145,12 +1153,14 @@ package Paws::EC2;
     $params->{ Snapshots } = $result->Snapshots;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeSnapshots(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Snapshots } }, @{ $result->Snapshots };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EC2::DescribeSnapshots->_returns, %$params);
   }
@@ -1163,12 +1173,14 @@ package Paws::EC2;
     $params->{ SpotFleetRequestConfigs } = $result->SpotFleetRequestConfigs;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeSpotFleetRequests(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ SpotFleetRequestConfigs } }, @{ $result->SpotFleetRequestConfigs };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EC2::DescribeSpotFleetRequests->_returns, %$params);
   }
@@ -1181,12 +1193,14 @@ package Paws::EC2;
     $params->{ SpotPriceHistory } = $result->SpotPriceHistory;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeSpotPriceHistory(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ SpotPriceHistory } }, @{ $result->SpotPriceHistory };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EC2::DescribeSpotPriceHistory->_returns, %$params);
   }
@@ -1199,12 +1213,14 @@ package Paws::EC2;
     $params->{ Tags } = $result->Tags;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeTags(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Tags } }, @{ $result->Tags };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EC2::DescribeTags->_returns, %$params);
   }
@@ -1217,12 +1233,14 @@ package Paws::EC2;
     $params->{ Volumes } = $result->Volumes;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeVolumes(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Volumes } }, @{ $result->Volumes };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EC2::DescribeVolumes->_returns, %$params);
   }
@@ -1235,12 +1253,14 @@ package Paws::EC2;
     $params->{ VolumeStatuses } = $result->VolumeStatuses;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeVolumeStatus(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ VolumeStatuses } }, @{ $result->VolumeStatuses };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EC2::DescribeVolumeStatus->_returns, %$params);
   }

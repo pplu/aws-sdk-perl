@@ -91,12 +91,14 @@ package Paws::SDB;
     $params->{ DomainNames } = $result->DomainNames;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListDomains(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ DomainNames } }, @{ $result->DomainNames };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SDB::ListDomains->_returns, %$params);
   }
@@ -109,12 +111,14 @@ package Paws::SDB;
     $params->{ Items } = $result->Items;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->Select(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Items } }, @{ $result->Items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SDB::Select->_returns, %$params);
   }

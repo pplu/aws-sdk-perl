@@ -149,12 +149,14 @@ package Paws::CloudWatchLogs;
     $params->{ destinations } = $result->destinations;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->DescribeDestinations(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ destinations } }, @{ $result->destinations };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudWatchLogs::DescribeDestinations->_returns, %$params);
   }
@@ -167,12 +169,14 @@ package Paws::CloudWatchLogs;
     $params->{ logGroups } = $result->logGroups;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->DescribeLogGroups(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ logGroups } }, @{ $result->logGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudWatchLogs::DescribeLogGroups->_returns, %$params);
   }
@@ -185,12 +189,14 @@ package Paws::CloudWatchLogs;
     $params->{ logStreams } = $result->logStreams;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->DescribeLogStreams(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ logStreams } }, @{ $result->logStreams };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudWatchLogs::DescribeLogStreams->_returns, %$params);
   }
@@ -203,12 +209,14 @@ package Paws::CloudWatchLogs;
     $params->{ metricFilters } = $result->metricFilters;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->DescribeMetricFilters(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ metricFilters } }, @{ $result->metricFilters };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudWatchLogs::DescribeMetricFilters->_returns, %$params);
   }
@@ -221,12 +229,14 @@ package Paws::CloudWatchLogs;
     $params->{ subscriptionFilters } = $result->subscriptionFilters;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->DescribeSubscriptionFilters(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ subscriptionFilters } }, @{ $result->subscriptionFilters };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudWatchLogs::DescribeSubscriptionFilters->_returns, %$params);
   }
@@ -241,7 +251,8 @@ package Paws::CloudWatchLogs;
     $params->{ searchedLogStreams } = $result->searchedLogStreams;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->FilterLogEvents(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ events } }, @{ $result->events };
@@ -249,6 +260,7 @@ package Paws::CloudWatchLogs;
       push @{ $params->{ searchedLogStreams } }, @{ $result->searchedLogStreams };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudWatchLogs::FilterLogEvents->_returns, %$params);
   }

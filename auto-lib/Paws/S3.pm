@@ -396,6 +396,7 @@ package Paws::S3;
     $params->{ CommonPrefixes } = $result->CommonPrefixes;
     
 
+    
     while ($result->IsTruncated) {
       $result = $self->ListMultipartUploads(@_, KeyMarker => $result->NextKeyMarker, UploadIdMarker => $result->NextUploadIdMarker);
       
@@ -404,6 +405,7 @@ package Paws::S3;
       push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
       
     }
+    
 
     return $self->new_with_coercions(Paws::S3::ListMultipartUploads->_returns, %$params);
   }
@@ -418,6 +420,7 @@ package Paws::S3;
     $params->{ CommonPrefixes } = $result->CommonPrefixes;
     
 
+    
     while ($result->IsTruncated) {
       $result = $self->ListObjects(@_, Marker => $result->NextMarker || ( (defined $result->Contents->[-1]) ? $result->Contents->[-1]->Key : undef ));
       
@@ -426,6 +429,7 @@ package Paws::S3;
       push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
       
     }
+    
 
     return $self->new_with_coercions(Paws::S3::ListObjects->_returns, %$params);
   }
@@ -440,6 +444,7 @@ package Paws::S3;
     $params->{ CommonPrefixes } = $result->CommonPrefixes;
     
 
+    
     while ($result->IsTruncated) {
       $result = $self->ListObjectsV2(@_, ContinuationToken => $result->NextContinuationToken);
       
@@ -448,6 +453,7 @@ package Paws::S3;
       push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
       
     }
+    
 
     return $self->new_with_coercions(Paws::S3::ListObjectsV2->_returns, %$params);
   }
@@ -464,6 +470,7 @@ package Paws::S3;
     $params->{ CommonPrefixes } = $result->CommonPrefixes;
     
 
+    
     while ($result->IsTruncated) {
       $result = $self->ListObjectVersions(@_, KeyMarker => $result->NextKeyMarker, VersionIdMarker => $result->NextVersionIdMarker);
       
@@ -474,6 +481,7 @@ package Paws::S3;
       push @{ $params->{ CommonPrefixes } }, @{ $result->CommonPrefixes };
       
     }
+    
 
     return $self->new_with_coercions(Paws::S3::ListObjectVersions->_returns, %$params);
   }
@@ -486,12 +494,14 @@ package Paws::S3;
     $params->{ Parts } = $result->Parts;
     
 
+    
     while ($result->IsTruncated) {
       $result = $self->ListParts(@_, PartNumberMarker => $result->NextPartNumberMarker);
       
       push @{ $params->{ Parts } }, @{ $result->Parts };
       
     }
+    
 
     return $self->new_with_coercions(Paws::S3::ListParts->_returns, %$params);
   }

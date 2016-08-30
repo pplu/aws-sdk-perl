@@ -9,8 +9,8 @@ package Paws::DynamoDB;
     { base => '0.05', type => 'exponential', growth_factor => 2 }
   });
   has retriables => (is => 'ro', isa => 'ArrayRef', default => sub { [
-       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
        sub { $_[0]->code eq 'Crc32Error' },
+       sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ProvisionedThroughputExceededException' },
   ] });
 
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller', 'Paws::Net::JsonResponse';
@@ -120,12 +120,14 @@ package Paws::DynamoDB;
     $params->{ TableNames } = $result->TableNames;
     
 
-    while ($result->) {
+    
+    while ($result->ExclusiveStartTableName) {
       $result = $self->ListTables(@_, ExclusiveStartTableName => $result->LastEvaluatedTableName);
       
       push @{ $params->{ TableNames } }, @{ $result->TableNames };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DynamoDB::ListTables->_returns, %$params);
   }
@@ -142,7 +144,8 @@ package Paws::DynamoDB;
     $params->{ ScannedCount } = $result->ScannedCount;
     
 
-    while ($result->) {
+    
+    while ($result->ExclusiveStartKey) {
       $result = $self->Query(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
       
       push @{ $params->{ Items } }, @{ $result->Items };
@@ -152,6 +155,7 @@ package Paws::DynamoDB;
       push @{ $params->{ ScannedCount } }, @{ $result->ScannedCount };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DynamoDB::Query->_returns, %$params);
   }
@@ -168,7 +172,8 @@ package Paws::DynamoDB;
     $params->{ ScannedCount } = $result->ScannedCount;
     
 
-    while ($result->) {
+    
+    while ($result->ExclusiveStartKey) {
       $result = $self->Scan(@_, ExclusiveStartKey => $result->LastEvaluatedKey);
       
       push @{ $params->{ Items } }, @{ $result->Items };
@@ -178,6 +183,7 @@ package Paws::DynamoDB;
       push @{ $params->{ ScannedCount } }, @{ $result->ScannedCount };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DynamoDB::Scan->_returns, %$params);
   }

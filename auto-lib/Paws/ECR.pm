@@ -104,12 +104,14 @@ package Paws::ECR;
     $params->{ imageIds } = $result->imageIds;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListImages(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ imageIds } }, @{ $result->imageIds };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ECR::ListImages->_returns, %$params);
   }

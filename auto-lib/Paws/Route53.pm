@@ -289,12 +289,14 @@ package Paws::Route53;
     $params->{ HealthChecks } = $result->HealthChecks;
     
 
+    
     while ($result->IsTruncated) {
       $result = $self->ListHealthChecks(@_, Marker => $result->NextMarker);
       
       push @{ $params->{ HealthChecks } }, @{ $result->HealthChecks };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Route53::ListHealthChecks->_returns, %$params);
   }
@@ -307,12 +309,14 @@ package Paws::Route53;
     $params->{ HostedZones } = $result->HostedZones;
     
 
+    
     while ($result->IsTruncated) {
       $result = $self->ListHostedZones(@_, Marker => $result->NextMarker);
       
       push @{ $params->{ HostedZones } }, @{ $result->HostedZones };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Route53::ListHostedZones->_returns, %$params);
   }
@@ -325,12 +329,14 @@ package Paws::Route53;
     $params->{ ResourceRecordSets } = $result->ResourceRecordSets;
     
 
+    
     while ($result->IsTruncated) {
       $result = $self->ListResourceRecordSets(@_, StartRecordName => $result->NextRecordName, StartRecordType => $result->NextRecordType, StartRecordIdentifier => $result->NextRecordIdentifier);
       
       push @{ $params->{ ResourceRecordSets } }, @{ $result->ResourceRecordSets };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Route53::ListResourceRecordSets->_returns, %$params);
   }

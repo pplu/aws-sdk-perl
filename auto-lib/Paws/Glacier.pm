@@ -179,12 +179,14 @@ package Paws::Glacier;
     $params->{ JobList } = $result->JobList;
     
 
-    while ($result->) {
+    
+    while ($result->marker) {
       $result = $self->ListJobs(@_, marker => $result->Marker);
       
       push @{ $params->{ JobList } }, @{ $result->JobList };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Glacier::ListJobs->_returns, %$params);
   }
@@ -197,12 +199,14 @@ package Paws::Glacier;
     $params->{ UploadsList } = $result->UploadsList;
     
 
-    while ($result->) {
+    
+    while ($result->marker) {
       $result = $self->ListMultipartUploads(@_, marker => $result->Marker);
       
       push @{ $params->{ UploadsList } }, @{ $result->UploadsList };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Glacier::ListMultipartUploads->_returns, %$params);
   }
@@ -215,12 +219,14 @@ package Paws::Glacier;
     $params->{ Parts } = $result->Parts;
     
 
-    while ($result->) {
+    
+    while ($result->marker) {
       $result = $self->ListParts(@_, marker => $result->Marker);
       
       push @{ $params->{ Parts } }, @{ $result->Parts };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Glacier::ListParts->_returns, %$params);
   }
@@ -233,12 +239,14 @@ package Paws::Glacier;
     $params->{ VaultList } = $result->VaultList;
     
 
-    while ($result->) {
+    
+    while ($result->marker) {
       $result = $self->ListVaults(@_, marker => $result->Marker);
       
       push @{ $params->{ VaultList } }, @{ $result->VaultList };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Glacier::ListVaults->_returns, %$params);
   }

@@ -157,12 +157,14 @@ package Paws::EMR;
     $params->{ BootstrapActions } = $result->BootstrapActions;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->ListBootstrapActions(@_, Marker => $result->Marker);
       
       push @{ $params->{ BootstrapActions } }, @{ $result->BootstrapActions };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EMR::ListBootstrapActions->_returns, %$params);
   }
@@ -175,12 +177,14 @@ package Paws::EMR;
     $params->{ Clusters } = $result->Clusters;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->ListClusters(@_, Marker => $result->Marker);
       
       push @{ $params->{ Clusters } }, @{ $result->Clusters };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EMR::ListClusters->_returns, %$params);
   }
@@ -193,12 +197,14 @@ package Paws::EMR;
     $params->{ InstanceGroups } = $result->InstanceGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->ListInstanceGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ InstanceGroups } }, @{ $result->InstanceGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EMR::ListInstanceGroups->_returns, %$params);
   }
@@ -211,12 +217,14 @@ package Paws::EMR;
     $params->{ Instances } = $result->Instances;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->ListInstances(@_, Marker => $result->Marker);
       
       push @{ $params->{ Instances } }, @{ $result->Instances };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EMR::ListInstances->_returns, %$params);
   }
@@ -229,12 +237,14 @@ package Paws::EMR;
     $params->{ Steps } = $result->Steps;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->ListSteps(@_, Marker => $result->Marker);
       
       push @{ $params->{ Steps } }, @{ $result->Steps };
       
     }
+    
 
     return $self->new_with_coercions(Paws::EMR::ListSteps->_returns, %$params);
   }

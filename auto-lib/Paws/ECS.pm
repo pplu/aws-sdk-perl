@@ -159,12 +159,14 @@ package Paws::ECS;
     $params->{ clusterArns } = $result->clusterArns;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListClusters(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ clusterArns } }, @{ $result->clusterArns };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ECS::ListClusters->_returns, %$params);
   }
@@ -177,12 +179,14 @@ package Paws::ECS;
     $params->{ containerInstanceArns } = $result->containerInstanceArns;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListContainerInstances(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ containerInstanceArns } }, @{ $result->containerInstanceArns };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ECS::ListContainerInstances->_returns, %$params);
   }
@@ -195,12 +199,14 @@ package Paws::ECS;
     $params->{ serviceArns } = $result->serviceArns;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListServices(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ serviceArns } }, @{ $result->serviceArns };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ECS::ListServices->_returns, %$params);
   }
@@ -213,12 +219,14 @@ package Paws::ECS;
     $params->{ families } = $result->families;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListTaskDefinitionFamilies(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ families } }, @{ $result->families };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ECS::ListTaskDefinitionFamilies->_returns, %$params);
   }
@@ -231,12 +239,14 @@ package Paws::ECS;
     $params->{ taskDefinitionArns } = $result->taskDefinitionArns;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListTaskDefinitions(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ taskDefinitionArns } }, @{ $result->taskDefinitionArns };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ECS::ListTaskDefinitions->_returns, %$params);
   }
@@ -249,12 +259,14 @@ package Paws::ECS;
     $params->{ taskArns } = $result->taskArns;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListTasks(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ taskArns } }, @{ $result->taskArns };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ECS::ListTasks->_returns, %$params);
   }

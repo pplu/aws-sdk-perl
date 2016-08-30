@@ -163,12 +163,14 @@ package Paws::ELB;
     $params->{ LoadBalancerDescriptions } = $result->LoadBalancerDescriptions;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
       
       push @{ $params->{ LoadBalancerDescriptions } }, @{ $result->LoadBalancerDescriptions };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ELB::DescribeLoadBalancers->_returns, %$params);
   }

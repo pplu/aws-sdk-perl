@@ -304,12 +304,14 @@ package Paws::StorageGateway;
     $params->{ TapeArchives } = $result->TapeArchives;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeTapeArchives(@_, Marker => $result->Marker);
       
       push @{ $params->{ TapeArchives } }, @{ $result->TapeArchives };
       
     }
+    
 
     return $self->new_with_coercions(Paws::StorageGateway::DescribeTapeArchives->_returns, %$params);
   }
@@ -322,12 +324,14 @@ package Paws::StorageGateway;
     $params->{ TapeRecoveryPointInfos } = $result->TapeRecoveryPointInfos;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeTapeRecoveryPoints(@_, Marker => $result->Marker);
       
       push @{ $params->{ TapeRecoveryPointInfos } }, @{ $result->TapeRecoveryPointInfos };
       
     }
+    
 
     return $self->new_with_coercions(Paws::StorageGateway::DescribeTapeRecoveryPoints->_returns, %$params);
   }
@@ -340,12 +344,14 @@ package Paws::StorageGateway;
     $params->{ Tapes } = $result->Tapes;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeTapes(@_, Marker => $result->Marker);
       
       push @{ $params->{ Tapes } }, @{ $result->Tapes };
       
     }
+    
 
     return $self->new_with_coercions(Paws::StorageGateway::DescribeTapes->_returns, %$params);
   }
@@ -358,12 +364,14 @@ package Paws::StorageGateway;
     $params->{ VTLDevices } = $result->VTLDevices;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeVTLDevices(@_, Marker => $result->Marker);
       
       push @{ $params->{ VTLDevices } }, @{ $result->VTLDevices };
       
     }
+    
 
     return $self->new_with_coercions(Paws::StorageGateway::DescribeVTLDevices->_returns, %$params);
   }
@@ -376,12 +384,14 @@ package Paws::StorageGateway;
     $params->{ Gateways } = $result->Gateways;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->ListGateways(@_, Marker => $result->Marker);
       
       push @{ $params->{ Gateways } }, @{ $result->Gateways };
       
     }
+    
 
     return $self->new_with_coercions(Paws::StorageGateway::ListGateways->_returns, %$params);
   }
@@ -394,12 +404,14 @@ package Paws::StorageGateway;
     $params->{ VolumeInfos } = $result->VolumeInfos;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->ListVolumes(@_, Marker => $result->Marker);
       
       push @{ $params->{ VolumeInfos } }, @{ $result->VolumeInfos };
       
     }
+    
 
     return $self->new_with_coercions(Paws::StorageGateway::ListVolumes->_returns, %$params);
   }

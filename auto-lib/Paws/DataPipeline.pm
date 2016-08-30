@@ -119,12 +119,14 @@ package Paws::DataPipeline;
     $params->{ pipelineObjects } = $result->pipelineObjects;
     
 
+    
     while ($result->hasMoreResults) {
       $result = $self->DescribeObjects(@_, marker => $result->marker);
       
       push @{ $params->{ pipelineObjects } }, @{ $result->pipelineObjects };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DataPipeline::DescribeObjects->_returns, %$params);
   }
@@ -137,12 +139,14 @@ package Paws::DataPipeline;
     $params->{ pipelineIdList } = $result->pipelineIdList;
     
 
+    
     while ($result->hasMoreResults) {
       $result = $self->ListPipelines(@_, marker => $result->marker);
       
       push @{ $params->{ pipelineIdList } }, @{ $result->pipelineIdList };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DataPipeline::ListPipelines->_returns, %$params);
   }
@@ -155,12 +159,14 @@ package Paws::DataPipeline;
     $params->{ ids } = $result->ids;
     
 
+    
     while ($result->hasMoreResults) {
       $result = $self->QueryObjects(@_, marker => $result->marker);
       
       push @{ $params->{ ids } }, @{ $result->ids };
       
     }
+    
 
     return $self->new_with_coercions(Paws::DataPipeline::QueryObjects->_returns, %$params);
   }

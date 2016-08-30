@@ -469,12 +469,14 @@ package Paws::ApiGateway;
     $params->{ items } = $result->items;
     
 
-    while ($result->) {
+    
+    while ($result->position) {
       $result = $self->GetApiKeys(@_, position => $result->position);
       
       push @{ $params->{ items } }, @{ $result->items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ApiGateway::GetApiKeys->_returns, %$params);
   }
@@ -487,12 +489,14 @@ package Paws::ApiGateway;
     $params->{ items } = $result->items;
     
 
-    while ($result->) {
+    
+    while ($result->position) {
       $result = $self->GetBasePathMappings(@_, position => $result->position);
       
       push @{ $params->{ items } }, @{ $result->items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ApiGateway::GetBasePathMappings->_returns, %$params);
   }
@@ -505,12 +509,14 @@ package Paws::ApiGateway;
     $params->{ items } = $result->items;
     
 
-    while ($result->) {
+    
+    while ($result->position) {
       $result = $self->GetClientCertificates(@_, position => $result->position);
       
       push @{ $params->{ items } }, @{ $result->items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ApiGateway::GetClientCertificates->_returns, %$params);
   }
@@ -523,12 +529,14 @@ package Paws::ApiGateway;
     $params->{ items } = $result->items;
     
 
-    while ($result->) {
+    
+    while ($result->position) {
       $result = $self->GetDeployments(@_, position => $result->position);
       
       push @{ $params->{ items } }, @{ $result->items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ApiGateway::GetDeployments->_returns, %$params);
   }
@@ -541,12 +549,14 @@ package Paws::ApiGateway;
     $params->{ items } = $result->items;
     
 
-    while ($result->) {
+    
+    while ($result->position) {
       $result = $self->GetDomainNames(@_, position => $result->position);
       
       push @{ $params->{ items } }, @{ $result->items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ApiGateway::GetDomainNames->_returns, %$params);
   }
@@ -559,12 +569,14 @@ package Paws::ApiGateway;
     $params->{ items } = $result->items;
     
 
-    while ($result->) {
+    
+    while ($result->position) {
       $result = $self->GetModels(@_, position => $result->position);
       
       push @{ $params->{ items } }, @{ $result->items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ApiGateway::GetModels->_returns, %$params);
   }
@@ -577,12 +589,14 @@ package Paws::ApiGateway;
     $params->{ items } = $result->items;
     
 
-    while ($result->) {
+    
+    while ($result->position) {
       $result = $self->GetResources(@_, position => $result->position);
       
       push @{ $params->{ items } }, @{ $result->items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ApiGateway::GetResources->_returns, %$params);
   }
@@ -595,12 +609,14 @@ package Paws::ApiGateway;
     $params->{ items } = $result->items;
     
 
-    while ($result->) {
+    
+    while ($result->position) {
       $result = $self->GetRestApis(@_, position => $result->position);
       
       push @{ $params->{ items } }, @{ $result->items };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ApiGateway::GetRestApis->_returns, %$params);
   }

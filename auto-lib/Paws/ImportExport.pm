@@ -71,12 +71,14 @@ package Paws::ImportExport;
     $params->{ Jobs } = $result->Jobs;
     
 
+    
     while ($result->IsTruncated) {
       $result = $self->ListJobs(@_, Marker => $result->Jobs[-1]->JobId);
       
       push @{ $params->{ Jobs } }, @{ $result->Jobs };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ImportExport::ListJobs->_returns, %$params);
   }

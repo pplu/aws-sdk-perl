@@ -213,12 +213,14 @@ package Paws::ElastiCache;
     $params->{ CacheClusters } = $result->CacheClusters;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeCacheClusters(@_, Marker => $result->Marker);
       
       push @{ $params->{ CacheClusters } }, @{ $result->CacheClusters };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheClusters->_returns, %$params);
   }
@@ -231,12 +233,14 @@ package Paws::ElastiCache;
     $params->{ CacheEngineVersions } = $result->CacheEngineVersions;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeCacheEngineVersions(@_, Marker => $result->Marker);
       
       push @{ $params->{ CacheEngineVersions } }, @{ $result->CacheEngineVersions };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheEngineVersions->_returns, %$params);
   }
@@ -249,12 +253,14 @@ package Paws::ElastiCache;
     $params->{ CacheParameterGroups } = $result->CacheParameterGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeCacheParameterGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ CacheParameterGroups } }, @{ $result->CacheParameterGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheParameterGroups->_returns, %$params);
   }
@@ -267,12 +273,14 @@ package Paws::ElastiCache;
     $params->{ Parameters } = $result->Parameters;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeCacheParameters(@_, Marker => $result->Marker);
       
       push @{ $params->{ Parameters } }, @{ $result->Parameters };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheParameters->_returns, %$params);
   }
@@ -285,12 +293,14 @@ package Paws::ElastiCache;
     $params->{ CacheSecurityGroups } = $result->CacheSecurityGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeCacheSecurityGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ CacheSecurityGroups } }, @{ $result->CacheSecurityGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheSecurityGroups->_returns, %$params);
   }
@@ -303,12 +313,14 @@ package Paws::ElastiCache;
     $params->{ CacheSubnetGroups } = $result->CacheSubnetGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeCacheSubnetGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ CacheSubnetGroups } }, @{ $result->CacheSubnetGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeCacheSubnetGroups->_returns, %$params);
   }
@@ -321,12 +333,14 @@ package Paws::ElastiCache;
     $params->{ EngineDefaults.Parameters } = $result->EngineDefaults->Parameters;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
       
       push @{ $params->{ EngineDefaults.Parameters } }, @{ $result->EngineDefaults->Parameters };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeEngineDefaultParameters->_returns, %$params);
   }
@@ -339,12 +353,14 @@ package Paws::ElastiCache;
     $params->{ Events } = $result->Events;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeEvents(@_, Marker => $result->Marker);
       
       push @{ $params->{ Events } }, @{ $result->Events };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeEvents->_returns, %$params);
   }
@@ -357,12 +373,14 @@ package Paws::ElastiCache;
     $params->{ ReplicationGroups } = $result->ReplicationGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeReplicationGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ ReplicationGroups } }, @{ $result->ReplicationGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeReplicationGroups->_returns, %$params);
   }
@@ -375,12 +393,14 @@ package Paws::ElastiCache;
     $params->{ ReservedCacheNodes } = $result->ReservedCacheNodes;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeReservedCacheNodes(@_, Marker => $result->Marker);
       
       push @{ $params->{ ReservedCacheNodes } }, @{ $result->ReservedCacheNodes };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeReservedCacheNodes->_returns, %$params);
   }
@@ -393,12 +413,14 @@ package Paws::ElastiCache;
     $params->{ ReservedCacheNodesOfferings } = $result->ReservedCacheNodesOfferings;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeReservedCacheNodesOfferings(@_, Marker => $result->Marker);
       
       push @{ $params->{ ReservedCacheNodesOfferings } }, @{ $result->ReservedCacheNodesOfferings };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeReservedCacheNodesOfferings->_returns, %$params);
   }
@@ -411,12 +433,14 @@ package Paws::ElastiCache;
     $params->{ Snapshots } = $result->Snapshots;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeSnapshots(@_, Marker => $result->Marker);
       
       push @{ $params->{ Snapshots } }, @{ $result->Snapshots };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElastiCache::DescribeSnapshots->_returns, %$params);
   }

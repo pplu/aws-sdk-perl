@@ -94,12 +94,14 @@ package Paws::Support;
     $params->{ cases } = $result->cases;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->DescribeCases(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ cases } }, @{ $result->cases };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Support::DescribeCases->_returns, %$params);
   }
@@ -112,12 +114,14 @@ package Paws::Support;
     $params->{ communications } = $result->communications;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->DescribeCommunications(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ communications } }, @{ $result->communications };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Support::DescribeCommunications->_returns, %$params);
   }

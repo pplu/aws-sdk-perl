@@ -164,12 +164,14 @@ package Paws::MachineLearning;
     $params->{ Results } = $result->Results;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeBatchPredictions(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Results } }, @{ $result->Results };
       
     }
+    
 
     return $self->new_with_coercions(Paws::MachineLearning::DescribeBatchPredictions->_returns, %$params);
   }
@@ -182,12 +184,14 @@ package Paws::MachineLearning;
     $params->{ Results } = $result->Results;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeDataSources(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Results } }, @{ $result->Results };
       
     }
+    
 
     return $self->new_with_coercions(Paws::MachineLearning::DescribeDataSources->_returns, %$params);
   }
@@ -200,12 +204,14 @@ package Paws::MachineLearning;
     $params->{ Results } = $result->Results;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeEvaluations(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Results } }, @{ $result->Results };
       
     }
+    
 
     return $self->new_with_coercions(Paws::MachineLearning::DescribeEvaluations->_returns, %$params);
   }
@@ -218,12 +224,14 @@ package Paws::MachineLearning;
     $params->{ Results } = $result->Results;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeMLModels(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Results } }, @{ $result->Results };
       
     }
+    
 
     return $self->new_with_coercions(Paws::MachineLearning::DescribeMLModels->_returns, %$params);
   }

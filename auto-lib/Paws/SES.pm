@@ -233,12 +233,14 @@ package Paws::SES;
     $params->{ Identities } = $result->Identities;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListIdentities(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Identities } }, @{ $result->Identities };
       
     }
+    
 
     return $self->new_with_coercions(Paws::SES::ListIdentities->_returns, %$params);
   }

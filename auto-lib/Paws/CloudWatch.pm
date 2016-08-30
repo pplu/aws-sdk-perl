@@ -78,12 +78,14 @@ package Paws::CloudWatch;
     $params->{ AlarmHistoryItems } = $result->AlarmHistoryItems;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeAlarmHistory(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ AlarmHistoryItems } }, @{ $result->AlarmHistoryItems };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudWatch::DescribeAlarmHistory->_returns, %$params);
   }
@@ -96,12 +98,14 @@ package Paws::CloudWatch;
     $params->{ MetricAlarms } = $result->MetricAlarms;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->DescribeAlarms(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ MetricAlarms } }, @{ $result->MetricAlarms };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudWatch::DescribeAlarms->_returns, %$params);
   }
@@ -114,12 +118,14 @@ package Paws::CloudWatch;
     $params->{ Metrics } = $result->Metrics;
     
 
-    while ($result->) {
+    
+    while ($result->NextToken) {
       $result = $self->ListMetrics(@_, NextToken => $result->NextToken);
       
       push @{ $params->{ Metrics } }, @{ $result->Metrics };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CloudWatch::ListMetrics->_returns, %$params);
   }

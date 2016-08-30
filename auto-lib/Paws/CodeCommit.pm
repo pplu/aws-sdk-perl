@@ -99,12 +99,14 @@ package Paws::CodeCommit;
     $params->{ branches } = $result->branches;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListBranches(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ branches } }, @{ $result->branches };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CodeCommit::ListBranches->_returns, %$params);
   }
@@ -117,12 +119,14 @@ package Paws::CodeCommit;
     $params->{ repositories } = $result->repositories;
     
 
-    while ($result->) {
+    
+    while ($result->nextToken) {
       $result = $self->ListRepositories(@_, nextToken => $result->nextToken);
       
       push @{ $params->{ repositories } }, @{ $result->repositories };
       
     }
+    
 
     return $self->new_with_coercions(Paws::CodeCommit::ListRepositories->_returns, %$params);
   }

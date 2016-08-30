@@ -109,12 +109,14 @@ package Paws::Kinesis;
     $params->{ StreamDescription.Shards } = $result->StreamDescription->Shards;
     
 
+    
     while ($result->StreamDescription.HasMoreShards) {
       $result = $self->DescribeStream(@_, ExclusiveStartShardId => $result->StreamDescription->Shards[-1]->ShardId);
       
       push @{ $params->{ StreamDescription.Shards } }, @{ $result->StreamDescription->Shards };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Kinesis::DescribeStream->_returns, %$params);
   }
@@ -127,12 +129,14 @@ package Paws::Kinesis;
     $params->{ StreamNames } = $result->StreamNames;
     
 
+    
     while ($result->HasMoreStreams) {
       $result = $self->ListStreams(@_, ExclusiveStartStreamName => $result->StreamNames[-1]);
       
       push @{ $params->{ StreamNames } }, @{ $result->StreamNames };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Kinesis::ListStreams->_returns, %$params);
   }

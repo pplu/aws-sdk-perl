@@ -456,12 +456,14 @@ package Paws::RDS;
     $params->{ DBClusterSnapshots } = $result->DBClusterSnapshots;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeDBClusterSnapshots(@_, Marker => $result->Marker);
       
       push @{ $params->{ DBClusterSnapshots } }, @{ $result->DBClusterSnapshots };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeDBClusterSnapshots->_returns, %$params);
   }
@@ -474,12 +476,14 @@ package Paws::RDS;
     $params->{ DBEngineVersions } = $result->DBEngineVersions;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeDBEngineVersions(@_, Marker => $result->Marker);
       
       push @{ $params->{ DBEngineVersions } }, @{ $result->DBEngineVersions };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeDBEngineVersions->_returns, %$params);
   }
@@ -492,12 +496,14 @@ package Paws::RDS;
     $params->{ DBInstances } = $result->DBInstances;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeDBInstances(@_, Marker => $result->Marker);
       
       push @{ $params->{ DBInstances } }, @{ $result->DBInstances };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeDBInstances->_returns, %$params);
   }
@@ -510,12 +516,14 @@ package Paws::RDS;
     $params->{ DescribeDBLogFiles } = $result->DescribeDBLogFiles;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeDBLogFiles(@_, Marker => $result->Marker);
       
       push @{ $params->{ DescribeDBLogFiles } }, @{ $result->DescribeDBLogFiles };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeDBLogFiles->_returns, %$params);
   }
@@ -528,12 +536,14 @@ package Paws::RDS;
     $params->{ DBParameterGroups } = $result->DBParameterGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeDBParameterGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ DBParameterGroups } }, @{ $result->DBParameterGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeDBParameterGroups->_returns, %$params);
   }
@@ -546,12 +556,14 @@ package Paws::RDS;
     $params->{ Parameters } = $result->Parameters;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeDBParameters(@_, Marker => $result->Marker);
       
       push @{ $params->{ Parameters } }, @{ $result->Parameters };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeDBParameters->_returns, %$params);
   }
@@ -564,12 +576,14 @@ package Paws::RDS;
     $params->{ DBSecurityGroups } = $result->DBSecurityGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeDBSecurityGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ DBSecurityGroups } }, @{ $result->DBSecurityGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeDBSecurityGroups->_returns, %$params);
   }
@@ -582,12 +596,14 @@ package Paws::RDS;
     $params->{ DBSnapshots } = $result->DBSnapshots;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeDBSnapshots(@_, Marker => $result->Marker);
       
       push @{ $params->{ DBSnapshots } }, @{ $result->DBSnapshots };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeDBSnapshots->_returns, %$params);
   }
@@ -600,12 +616,14 @@ package Paws::RDS;
     $params->{ DBSubnetGroups } = $result->DBSubnetGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeDBSubnetGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ DBSubnetGroups } }, @{ $result->DBSubnetGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeDBSubnetGroups->_returns, %$params);
   }
@@ -618,12 +636,14 @@ package Paws::RDS;
     $params->{ EngineDefaults.Parameters } = $result->EngineDefaults->Parameters;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeEngineDefaultParameters(@_, Marker => $result->EngineDefaults->Marker);
       
       push @{ $params->{ EngineDefaults.Parameters } }, @{ $result->EngineDefaults->Parameters };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeEngineDefaultParameters->_returns, %$params);
   }
@@ -636,12 +656,14 @@ package Paws::RDS;
     $params->{ Events } = $result->Events;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeEvents(@_, Marker => $result->Marker);
       
       push @{ $params->{ Events } }, @{ $result->Events };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeEvents->_returns, %$params);
   }
@@ -654,12 +676,14 @@ package Paws::RDS;
     $params->{ EventSubscriptionsList } = $result->EventSubscriptionsList;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
       
       push @{ $params->{ EventSubscriptionsList } }, @{ $result->EventSubscriptionsList };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeEventSubscriptions->_returns, %$params);
   }
@@ -672,12 +696,14 @@ package Paws::RDS;
     $params->{ OptionGroupOptions } = $result->OptionGroupOptions;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeOptionGroupOptions(@_, Marker => $result->Marker);
       
       push @{ $params->{ OptionGroupOptions } }, @{ $result->OptionGroupOptions };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeOptionGroupOptions->_returns, %$params);
   }
@@ -690,12 +716,14 @@ package Paws::RDS;
     $params->{ OptionGroupsList } = $result->OptionGroupsList;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeOptionGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ OptionGroupsList } }, @{ $result->OptionGroupsList };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeOptionGroups->_returns, %$params);
   }
@@ -708,12 +736,14 @@ package Paws::RDS;
     $params->{ OrderableDBInstanceOptions } = $result->OrderableDBInstanceOptions;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeOrderableDBInstanceOptions(@_, Marker => $result->Marker);
       
       push @{ $params->{ OrderableDBInstanceOptions } }, @{ $result->OrderableDBInstanceOptions };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeOrderableDBInstanceOptions->_returns, %$params);
   }
@@ -726,12 +756,14 @@ package Paws::RDS;
     $params->{ ReservedDBInstances } = $result->ReservedDBInstances;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeReservedDBInstances(@_, Marker => $result->Marker);
       
       push @{ $params->{ ReservedDBInstances } }, @{ $result->ReservedDBInstances };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeReservedDBInstances->_returns, %$params);
   }
@@ -744,12 +776,14 @@ package Paws::RDS;
     $params->{ ReservedDBInstancesOfferings } = $result->ReservedDBInstancesOfferings;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeReservedDBInstancesOfferings(@_, Marker => $result->Marker);
       
       push @{ $params->{ ReservedDBInstancesOfferings } }, @{ $result->ReservedDBInstancesOfferings };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DescribeReservedDBInstancesOfferings->_returns, %$params);
   }
@@ -762,12 +796,14 @@ package Paws::RDS;
     $params->{ LogFileData } = $result->LogFileData;
     
 
+    
     while ($result->AdditionalDataPending) {
       $result = $self->DownloadDBLogFilePortion(@_, Marker => $result->Marker);
       
       push @{ $params->{ LogFileData } }, @{ $result->LogFileData };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RDS::DownloadDBLogFilePortion->_returns, %$params);
   }

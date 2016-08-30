@@ -139,12 +139,14 @@ package Paws::Route53Domains;
     $params->{ Domains } = $result->Domains;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->ListDomains(@_, Marker => $result->NextPageMarker);
       
       push @{ $params->{ Domains } }, @{ $result->Domains };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Route53Domains::ListDomains->_returns, %$params);
   }
@@ -157,12 +159,14 @@ package Paws::Route53Domains;
     $params->{ Operations } = $result->Operations;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->ListOperations(@_, Marker => $result->NextPageMarker);
       
       push @{ $params->{ Operations } }, @{ $result->Operations };
       
     }
+    
 
     return $self->new_with_coercions(Paws::Route53Domains::ListOperations->_returns, %$params);
   }

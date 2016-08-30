@@ -109,12 +109,14 @@ package Paws::ElasticTranscoder;
     $params->{ Jobs } = $result->Jobs;
     
 
-    while ($result->) {
+    
+    while ($result->PageToken) {
       $result = $self->ListJobsByPipeline(@_, PageToken => $result->NextPageToken);
       
       push @{ $params->{ Jobs } }, @{ $result->Jobs };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElasticTranscoder::ListJobsByPipeline->_returns, %$params);
   }
@@ -127,12 +129,14 @@ package Paws::ElasticTranscoder;
     $params->{ Jobs } = $result->Jobs;
     
 
-    while ($result->) {
+    
+    while ($result->PageToken) {
       $result = $self->ListJobsByStatus(@_, PageToken => $result->NextPageToken);
       
       push @{ $params->{ Jobs } }, @{ $result->Jobs };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElasticTranscoder::ListJobsByStatus->_returns, %$params);
   }
@@ -145,12 +149,14 @@ package Paws::ElasticTranscoder;
     $params->{ Pipelines } = $result->Pipelines;
     
 
-    while ($result->) {
+    
+    while ($result->PageToken) {
       $result = $self->ListPipelines(@_, PageToken => $result->NextPageToken);
       
       push @{ $params->{ Pipelines } }, @{ $result->Pipelines };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElasticTranscoder::ListPipelines->_returns, %$params);
   }
@@ -163,12 +169,14 @@ package Paws::ElasticTranscoder;
     $params->{ Presets } = $result->Presets;
     
 
-    while ($result->) {
+    
+    while ($result->PageToken) {
       $result = $self->ListPresets(@_, PageToken => $result->NextPageToken);
       
       push @{ $params->{ Presets } }, @{ $result->Presets };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ElasticTranscoder::ListPresets->_returns, %$params);
   }

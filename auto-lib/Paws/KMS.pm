@@ -184,12 +184,14 @@ package Paws::KMS;
     $params->{ Aliases } = $result->Aliases;
     
 
+    
     while ($result->Truncated) {
       $result = $self->ListAliases(@_, Marker => $result->NextMarker);
       
       push @{ $params->{ Aliases } }, @{ $result->Aliases };
       
     }
+    
 
     return $self->new_with_coercions(Paws::KMS::ListAliases->_returns, %$params);
   }
@@ -202,12 +204,14 @@ package Paws::KMS;
     $params->{ Grants } = $result->Grants;
     
 
+    
     while ($result->Truncated) {
       $result = $self->ListGrants(@_, Marker => $result->NextMarker);
       
       push @{ $params->{ Grants } }, @{ $result->Grants };
       
     }
+    
 
     return $self->new_with_coercions(Paws::KMS::ListGrants->_returns, %$params);
   }
@@ -220,12 +224,14 @@ package Paws::KMS;
     $params->{ PolicyNames } = $result->PolicyNames;
     
 
+    
     while ($result->Truncated) {
       $result = $self->ListKeyPolicies(@_, Marker => $result->NextMarker);
       
       push @{ $params->{ PolicyNames } }, @{ $result->PolicyNames };
       
     }
+    
 
     return $self->new_with_coercions(Paws::KMS::ListKeyPolicies->_returns, %$params);
   }
@@ -238,12 +244,14 @@ package Paws::KMS;
     $params->{ Keys } = $result->Keys;
     
 
+    
     while ($result->Truncated) {
       $result = $self->ListKeys(@_, Marker => $result->NextMarker);
       
       push @{ $params->{ Keys } }, @{ $result->Keys };
       
     }
+    
 
     return $self->new_with_coercions(Paws::KMS::ListKeys->_returns, %$params);
   }

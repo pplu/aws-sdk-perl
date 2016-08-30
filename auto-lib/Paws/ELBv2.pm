@@ -168,12 +168,14 @@ package Paws::ELBv2;
     $params->{ Listeners } = $result->Listeners;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeListeners(@_, Marker => $result->NextMarker);
       
       push @{ $params->{ Listeners } }, @{ $result->Listeners };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ELBv2::DescribeListeners->_returns, %$params);
   }
@@ -186,12 +188,14 @@ package Paws::ELBv2;
     $params->{ LoadBalancers } = $result->LoadBalancers;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeLoadBalancers(@_, Marker => $result->NextMarker);
       
       push @{ $params->{ LoadBalancers } }, @{ $result->LoadBalancers };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ELBv2::DescribeLoadBalancers->_returns, %$params);
   }
@@ -204,12 +208,14 @@ package Paws::ELBv2;
     $params->{ TargetGroups } = $result->TargetGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeTargetGroups(@_, Marker => $result->NextMarker);
       
       push @{ $params->{ TargetGroups } }, @{ $result->TargetGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::ELBv2::DescribeTargetGroups->_returns, %$params);
   }

@@ -333,12 +333,14 @@ package Paws::RedShift;
     $params->{ ParameterGroups } = $result->ParameterGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeClusterParameterGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ ParameterGroups } }, @{ $result->ParameterGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeClusterParameterGroups->_returns, %$params);
   }
@@ -351,12 +353,14 @@ package Paws::RedShift;
     $params->{ Parameters } = $result->Parameters;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeClusterParameters(@_, Marker => $result->Marker);
       
       push @{ $params->{ Parameters } }, @{ $result->Parameters };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeClusterParameters->_returns, %$params);
   }
@@ -369,12 +373,14 @@ package Paws::RedShift;
     $params->{ Clusters } = $result->Clusters;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeClusters(@_, Marker => $result->Marker);
       
       push @{ $params->{ Clusters } }, @{ $result->Clusters };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeClusters->_returns, %$params);
   }
@@ -387,12 +393,14 @@ package Paws::RedShift;
     $params->{ ClusterSecurityGroups } = $result->ClusterSecurityGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeClusterSecurityGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ ClusterSecurityGroups } }, @{ $result->ClusterSecurityGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeClusterSecurityGroups->_returns, %$params);
   }
@@ -405,12 +413,14 @@ package Paws::RedShift;
     $params->{ Snapshots } = $result->Snapshots;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeClusterSnapshots(@_, Marker => $result->Marker);
       
       push @{ $params->{ Snapshots } }, @{ $result->Snapshots };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeClusterSnapshots->_returns, %$params);
   }
@@ -423,12 +433,14 @@ package Paws::RedShift;
     $params->{ ClusterSubnetGroups } = $result->ClusterSubnetGroups;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeClusterSubnetGroups(@_, Marker => $result->Marker);
       
       push @{ $params->{ ClusterSubnetGroups } }, @{ $result->ClusterSubnetGroups };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeClusterSubnetGroups->_returns, %$params);
   }
@@ -441,12 +453,14 @@ package Paws::RedShift;
     $params->{ ClusterVersions } = $result->ClusterVersions;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeClusterVersions(@_, Marker => $result->Marker);
       
       push @{ $params->{ ClusterVersions } }, @{ $result->ClusterVersions };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeClusterVersions->_returns, %$params);
   }
@@ -459,12 +473,14 @@ package Paws::RedShift;
     $params->{ DefaultClusterParameters.Parameters } = $result->DefaultClusterParameters->Parameters;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeDefaultClusterParameters(@_, Marker => $result->DefaultClusterParameters->Marker);
       
       push @{ $params->{ DefaultClusterParameters.Parameters } }, @{ $result->DefaultClusterParameters->Parameters };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeDefaultClusterParameters->_returns, %$params);
   }
@@ -477,12 +493,14 @@ package Paws::RedShift;
     $params->{ Events } = $result->Events;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeEvents(@_, Marker => $result->Marker);
       
       push @{ $params->{ Events } }, @{ $result->Events };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeEvents->_returns, %$params);
   }
@@ -495,12 +513,14 @@ package Paws::RedShift;
     $params->{ EventSubscriptionsList } = $result->EventSubscriptionsList;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeEventSubscriptions(@_, Marker => $result->Marker);
       
       push @{ $params->{ EventSubscriptionsList } }, @{ $result->EventSubscriptionsList };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeEventSubscriptions->_returns, %$params);
   }
@@ -513,12 +533,14 @@ package Paws::RedShift;
     $params->{ HsmClientCertificates } = $result->HsmClientCertificates;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeHsmClientCertificates(@_, Marker => $result->Marker);
       
       push @{ $params->{ HsmClientCertificates } }, @{ $result->HsmClientCertificates };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeHsmClientCertificates->_returns, %$params);
   }
@@ -531,12 +553,14 @@ package Paws::RedShift;
     $params->{ HsmConfigurations } = $result->HsmConfigurations;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeHsmConfigurations(@_, Marker => $result->Marker);
       
       push @{ $params->{ HsmConfigurations } }, @{ $result->HsmConfigurations };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeHsmConfigurations->_returns, %$params);
   }
@@ -549,12 +573,14 @@ package Paws::RedShift;
     $params->{ OrderableClusterOptions } = $result->OrderableClusterOptions;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeOrderableClusterOptions(@_, Marker => $result->Marker);
       
       push @{ $params->{ OrderableClusterOptions } }, @{ $result->OrderableClusterOptions };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeOrderableClusterOptions->_returns, %$params);
   }
@@ -567,12 +593,14 @@ package Paws::RedShift;
     $params->{ ReservedNodeOfferings } = $result->ReservedNodeOfferings;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeReservedNodeOfferings(@_, Marker => $result->Marker);
       
       push @{ $params->{ ReservedNodeOfferings } }, @{ $result->ReservedNodeOfferings };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeReservedNodeOfferings->_returns, %$params);
   }
@@ -585,12 +613,14 @@ package Paws::RedShift;
     $params->{ ReservedNodes } = $result->ReservedNodes;
     
 
-    while ($result->) {
+    
+    while ($result->Marker) {
       $result = $self->DescribeReservedNodes(@_, Marker => $result->Marker);
       
       push @{ $params->{ ReservedNodes } }, @{ $result->ReservedNodes };
       
     }
+    
 
     return $self->new_with_coercions(Paws::RedShift::DescribeReservedNodes->_returns, %$params);
   }
