@@ -82,7 +82,7 @@ The name for the Stage resource.
 
 A map that defines the stage variables for the new Stage resource.
 Variable names can have alphanumeric and underscore characters, and the
-values must match C<[A-Za-z0-9-._~:/?
+values must match C<[A-Za-z0-9-._~:/?&num;&=,]+>.
 
 
 

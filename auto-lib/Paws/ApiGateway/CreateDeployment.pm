@@ -84,7 +84,7 @@ The name of the Stage resource for the Deployment resource to create.
 A map that defines the stage variables for the Stage resource that is
 associated with the new deployment. Variable names can have
 alphanumeric and underscore characters, and the values must match
-C<[A-Za-z0-9-._~:/?
+C<[A-Za-z0-9-._~:/?&num;&=,]+>.
 
 
 
