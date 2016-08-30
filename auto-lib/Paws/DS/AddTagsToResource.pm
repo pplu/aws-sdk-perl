@@ -36,7 +36,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the directory to which to add the tag.
+Identifier (ID) for the directory to which to add the tag.
 
 
 

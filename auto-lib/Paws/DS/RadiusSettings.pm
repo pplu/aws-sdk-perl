@@ -81,8 +81,7 @@ respond.
 
 =head2 SharedSecret => Str
 
-  The shared secret code that was specified when your RADIUS endpoints
-were created.
+  Not currently used.
 
 
 =head2 UseSameUsername => Bool

@@ -12,6 +12,7 @@
  - MarketplaceCommerceAnalytics API update: StartSupportDataExport
  - GameLift API update: SearchGameSessions
  - EC2 API update: DescribeHostReservationOfferings DescribeHostReservations GetHostReservationPurchasePreview PurchaseHostReservation
+ - DS API update: AddIpRoutes ListIpRoutes
 
 0.27 25 Jun 2016 
  - RestXml (S3, f.ex) services now complete responses from headers (shardiwal)
