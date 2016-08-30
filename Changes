@@ -21,6 +21,7 @@
  - EMR API update: FailureDetails on StepStatus object
  - ECS API update: MemoryReservation and NetworkMode
  - ECR API update: Filter on ListImages
+ - ES API update: ElasticsearchVersion support
 
 0.27 25 Jun 2016 
  - RestXml (S3, f.ex) services now complete responses from headers (shardiwal)
