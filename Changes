@@ -7,6 +7,9 @@
  - Route53: API update: GetDomainSuggestions, RenewDomain, ViewBilling
  - RDS: API update: RestoreDBClusterFromS3
  - KMS: API update: DeleteImportedKeyMaterial, GetParametersForImport, ImportKeyMaterial
+ - WorkSpaces API update: DescribeWorkspacesConnectionStatus ModifyWorkspaceProperties StartWorkspaces StopWorkspaces
+ - IoT API update: ThingTypes operations, ListOutgoingCertificates
+ - MarketplaceCommerceAnalytics API update: StartSupportDataExport
 
 0.27 25 Jun 2016 
  - RestXml (S3, f.ex) services now complete responses from headers (shardiwal)
