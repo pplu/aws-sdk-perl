@@ -3,16 +3,21 @@ package Paws::MachineLearning::GetBatchPredictionOutput;
   use Moose;
   has BatchPredictionDataSourceId => (is => 'ro', isa => 'Str');
   has BatchPredictionId => (is => 'ro', isa => 'Str');
+  has ComputeTime => (is => 'ro', isa => 'Int');
   has CreatedAt => (is => 'ro', isa => 'Str');
   has CreatedByIamUser => (is => 'ro', isa => 'Str');
+  has FinishedAt => (is => 'ro', isa => 'Str');
   has InputDataLocationS3 => (is => 'ro', isa => 'Str');
+  has InvalidRecordCount => (is => 'ro', isa => 'Int');
   has LastUpdatedAt => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has MLModelId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has OutputUri => (is => 'ro', isa => 'Str');
+  has StartedAt => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has TotalRecordCount => (is => 'ro', isa => 'Int');
 
 
 ### main pod documentation begin ###
@@ -38,6 +43,15 @@ be identical to the value of the C<BatchPredictionID> in the request.
 
 
 
+=head2 ComputeTime => Int
+
+The approximate CPU time in milliseconds that Amazon Machine Learning
+spent processing the C<BatchPrediction>, normalized and scaled on
+computation resources. C<ComputeTime> is only available if the
+C<BatchPrediction> is in the C<COMPLETED> state.
+
+
+
 =head2 CreatedAt => Str
 
 The time when the C<BatchPrediction> was created. The time is expressed
@@ -53,10 +67,26 @@ Management (IAM) user account.
 
 
 
+=head2 FinishedAt => Str
+
+The epoch time when Amazon Machine Learning marked the
+C<BatchPrediction> as C<COMPLETED> or C<FAILED>. C<FinishedAt> is only
+available when the C<BatchPrediction> is in the C<COMPLETED> or
+C<FAILED> state.
+
+
+
 =head2 InputDataLocationS3 => Str
 
 The location of the data file or directory in Amazon Simple Storage
 Service (Amazon S3).
+
+
+
+=head2 InvalidRecordCount => Int
+
+The number of invalid records that Amazon Machine Learning saw while
+processing the C<BatchPrediction>.
 
 
 
@@ -101,6 +131,14 @@ operation results.
 
 
 
+=head2 StartedAt => Str
+
+The epoch time when Amazon Machine Learning marked the
+C<BatchPrediction> as C<INPROGRESS>. C<StartedAt> isn't available if
+the C<BatchPrediction> is in the C<PENDING> state.
+
+
+
 =head2 Status => Str
 
 The status of the C<BatchPrediction>, which can be one of the following
@@ -126,6 +164,13 @@ not usable.
 
 
 Valid values are: C<"PENDING">, C<"INPROGRESS">, C<"FAILED">, C<"COMPLETED">, C<"DELETED">
+
+=head2 TotalRecordCount => Int
+
+The number of total records that Amazon Machine Learning saw while
+processing the C<BatchPrediction>.
+
+
 
 
 =cut

@@ -387,7 +387,7 @@ C<MLModel> during the creation operation.
 
 C<CreateMLModel> requires a C<DataSource> with computed statistics,
 which can be created by setting C<ComputeStatistics> to C<true> in
-C<CreateDataSourcceFromRDS>, C<CreateDataSourceFromS3>, or
+C<CreateDataSourceFromRDS>, C<CreateDataSourceFromS3>, or
 C<CreateDataSourceFromRedshift> operations.
 
 

@@ -55,7 +55,7 @@ connect to the Amazon RDS database.
 
 =head2 B<REQUIRED> DatabaseInformation => L<Paws::MachineLearning::RDSDatabase>
 
-  Describes the C<DatabaseName> and C<InstanceIdentifier> of an an Amazon
+  Describes the C<DatabaseName> and C<InstanceIdentifier> of an Amazon
 RDS database.
 
 
