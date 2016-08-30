@@ -1,6 +1,7 @@
 
 package Paws::IoT::RegisterCACertificate;
   use Moose;
+  has AllowAutoRegistration => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'allowAutoRegistration' );
   has CaCertificate => (is => 'ro', isa => 'Str', required => 1);
   has SetAsActive => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'setAsActive' );
   has VerificationCertificate => (is => 'ro', isa => 'Str', required => 1);
@@ -35,6 +36,13 @@ As an example:
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 
 =head1 ATTRIBUTES
+
+
+=head2 AllowAutoRegistration => Bool
+
+Allows this CA certificate to be used for auto registration of device
+certificates.
+
 
 
 =head2 B<REQUIRED> CaCertificate => Str

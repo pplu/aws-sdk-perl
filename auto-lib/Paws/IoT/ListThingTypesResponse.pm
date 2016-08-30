@@ -1,8 +1,8 @@
 
-package Paws::IoT::ListPrincipalThingsResponse;
+package Paws::IoT::ListThingTypesResponse;
   use Moose;
   has NextToken => (is => 'ro', isa => 'Str');
-  has Things => (is => 'ro', isa => 'ArrayRef[Str]');
+  has ThingTypes => (is => 'ro', isa => 'ArrayRef[Paws::IoT::ThingTypeDefinition]');
 
 1;
 
@@ -10,7 +10,7 @@ package Paws::IoT::ListPrincipalThingsResponse;
 
 =head1 NAME
 
-Paws::IoT::ListPrincipalThingsResponse
+Paws::IoT::ListThingTypesResponse
 
 =head1 ATTRIBUTES
 
@@ -22,9 +22,9 @@ additional results.
 
 
 
-=head2 Things => ArrayRef[Str]
+=head2 ThingTypes => ArrayRef[L<Paws::IoT::ThingTypeDefinition>]
 
-The things.
+The thing types.
 
 
 

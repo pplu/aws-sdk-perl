@@ -38,7 +38,7 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 
 =head2 B<REQUIRED> Principal => Str
 
-The principal (certificate or other credential).
+The principal, such as a certificate or other credential.
 
 
 
