@@ -89,7 +89,7 @@ more information, go to the Amazon SES Developer Guide.
 
 =item *
 
-Content must be base64-encoded, if MIME requires it.
+Must be base64-encoded.
 
 =back
 
