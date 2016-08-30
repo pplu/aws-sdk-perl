@@ -20,6 +20,7 @@
  - MachineLearning API update: extra informational attributes on returned objects
  - EMR API update: FailureDetails on StepStatus object
  - ECS API update: MemoryReservation and NetworkMode
+ - ECR API update: Filter on ListImages
 
 0.27 25 Jun 2016 
  - RestXml (S3, f.ex) services now complete responses from headers (shardiwal)

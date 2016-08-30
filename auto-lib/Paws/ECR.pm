@@ -275,7 +275,7 @@ for general use by customers. Use the C<docker> CLI to pull, tag, and
 push images.
 
 
-=head2 ListImages(RepositoryName => Str, [MaxResults => Int, NextToken => Str, RegistryId => Str])
+=head2 ListImages(RepositoryName => Str, [Filter => L<Paws::ECR::ListImagesFilter>, MaxResults => Int, NextToken => Str, RegistryId => Str])
 
 Each argument is described in detail in: L<Paws::ECR::ListImages>
 

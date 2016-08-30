@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECR::Reposi
 
 =head1 DESCRIPTION
 
-Object representing a repository.
+An object representing a repository.
 
 =head1 ATTRIBUTES
 
