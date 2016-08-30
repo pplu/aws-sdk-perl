@@ -40,7 +40,7 @@ Details on an event associated with a service.
 
 =head2 CreatedAt => Str
 
-  The Unix time in seconds and milliseconds when the event was triggered.
+  The Unix timestamp for when the event was triggered.
 
 
 =head2 Id => Str

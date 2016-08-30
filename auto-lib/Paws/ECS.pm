@@ -222,7 +222,8 @@ UpdateService.
 In addition to maintaining the desired count of tasks in your service,
 you can optionally run your service behind a load balancer. The load
 balancer distributes traffic across the tasks that are associated with
-the service.
+the service. For more information, see Service Load Balancing in the
+I<Amazon EC2 Container Service Developer Guide>.
 
 You can optionally specify a deployment configuration for your service.
 During a deployment (which is triggered by changing the task definition
@@ -510,7 +511,7 @@ Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
 
 
-=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [TaskRoleArn => Str, Volumes => ArrayRef[L<Paws::ECS::Volume>]])
+=head2 RegisterTaskDefinition(ContainerDefinitions => ArrayRef[L<Paws::ECS::ContainerDefinition>], Family => Str, [NetworkMode => Str, TaskRoleArn => Str, Volumes => ArrayRef[L<Paws::ECS::Volume>]])
 
 Each argument is described in detail in: L<Paws::ECS::RegisterTaskDefinition>
 
@@ -522,12 +523,17 @@ containers with the C<volumes> parameter. For more information about
 task definition parameters and defaults, see Amazon ECS Task
 Definitions in the I<Amazon EC2 Container Service Developer Guide>.
 
-You may also specify an IAM role for your task with the C<taskRoleArn>
+You can specify an IAM role for your task with the C<taskRoleArn>
 parameter. When you specify an IAM role for a task, its containers can
 then use the latest versions of the AWS CLI or SDKs to make API
 requests to the AWS services that are specified in the IAM policy
 associated with the role. For more information, see IAM Roles for Tasks
 in the I<Amazon EC2 Container Service Developer Guide>.
+
+You can specify a Docker networking mode for the containers in your
+task definition with the C<networkMode> parameter. The available
+network modes correspond to those described in Network settings in the
+Docker run reference.
 
 
 =head2 RunTask(TaskDefinition => Str, [Cluster => Str, Count => Int, Overrides => L<Paws::ECS::TaskOverride>, StartedBy => Str])

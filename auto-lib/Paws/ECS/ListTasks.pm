@@ -59,11 +59,11 @@ belong to that container instance.
 
 =head2 DesiredStatus => Str
 
-The task status with which to filter the C<ListTasks> results.
+The task desired status with which to filter the C<ListTasks> results.
 Specifying a C<desiredStatus> of C<STOPPED> limits the results to tasks
-that are in the C<STOPPED> status, which can be useful for debugging
-tasks that are not starting properly or have died or finished. The
-default status filter is status filter is C<RUNNING>, which shows tasks
+that ECS has set the desired status to C<STOPPED>, which can be useful
+for debugging tasks that are not starting properly or have died or
+finished. The default status filter is C<RUNNING>, which shows tasks
 that ECS has set the desired status to C<RUNNING>.
 
 Although you can filter results based on a desired status of

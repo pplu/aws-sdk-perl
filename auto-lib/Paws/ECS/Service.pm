@@ -56,7 +56,7 @@ Details on a service within a cluster
 
 =head2 CreatedAt => Str
 
-  The Unix time in seconds and milliseconds when the service was created.
+  The Unix timestamp for when the service was created.
 
 
 =head2 DeploymentConfiguration => L<Paws::ECS::DeploymentConfiguration>
@@ -85,9 +85,9 @@ events are displayed.
 
 =head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
-  A list of load balancer objects, containing the load balancer name, the
-container name (as it appears in a container definition), and the
-container port to access from the load balancer.
+  A list of Elastic Load Balancing load balancer objects, containing the
+load balancer name, the container name (as it appears in a container
+definition), and the container port to access from the load balancer.
 
 
 =head2 PendingCount => Int
@@ -99,7 +99,7 @@ container port to access from the load balancer.
 
   The Amazon Resource Name (ARN) of the IAM role associated with the
 service that allows the Amazon ECS container agent to register
-container instances with a load balancer.
+container instances with an Elastic Load Balancing load balancer.
 
 
 =head2 RunningCount => Int

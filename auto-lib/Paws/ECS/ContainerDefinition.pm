@@ -16,6 +16,7 @@ package Paws::ECS::ContainerDefinition;
   has Links => (is => 'ro', isa => 'ArrayRef[Str]', xmlname => 'links', request_name => 'links', traits => ['Unwrapped','NameInRequest']);
   has LogConfiguration => (is => 'ro', isa => 'Paws::ECS::LogConfiguration', xmlname => 'logConfiguration', request_name => 'logConfiguration', traits => ['Unwrapped','NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', xmlname => 'memory', request_name => 'memory', traits => ['Unwrapped','NameInRequest']);
+  has MemoryReservation => (is => 'ro', isa => 'Int', xmlname => 'memoryReservation', request_name => 'memoryReservation', traits => ['Unwrapped','NameInRequest']);
   has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::MountPoint]', xmlname => 'mountPoints', request_name => 'mountPoints', traits => ['Unwrapped','NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', xmlname => 'name', request_name => 'name', traits => ['Unwrapped','NameInRequest']);
   has PortMappings => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PortMapping]', xmlname => 'portMappings', request_name => 'portMappings', traits => ['Unwrapped','NameInRequest']);
@@ -264,7 +265,7 @@ lowercase), numbers, hyphens, and underscores are allowed for each
 C<name> and C<alias>. For more information on linking Docker
 containers, see https://docs.docker.com/userguide/dockerlinks/. This
 parameter maps to C<Links> in the Create a container section of the
-Docker Remote API and the C<--link> option to docker run .
+Docker Remote API and the C<--link> option to docker run.
 
 Containers that are collocated on a single container instance may be
 able to communicate with each other without requiring links or host
@@ -307,14 +308,50 @@ I<Amazon EC2 Container Service Developer Guide>.
 
 =head2 Memory => Int
 
-  The number of MiB of memory to reserve for the container. You must
-specify a non-zero integer for this parameter; the Docker daemon
-reserves a minimum of 4 MiB of memory for a container, so you should
-not specify fewer than 4 MiB of memory for your containers. If your
-container attempts to exceed the memory allocated here, the container
+  The hard limit (in MiB) of memory to present to the container. If your
+container attempts to exceed the memory specified here, the container
 is killed. This parameter maps to C<Memory> in the Create a container
 section of the Docker Remote API and the C<--memory> option to docker
 run.
+
+You must specify a non-zero integer for one or both of C<memory> or
+C<memoryReservation> in container definitions. If you specify both,
+C<memory> must be greater than C<memoryReservation>. If you specify
+C<memoryReservation>, then that value is subtracted from the available
+memory resources for the container instance on which the container is
+placed; otherwise, the value of C<memory> is used.
+
+The Docker daemon reserves a minimum of 4 MiB of memory for a
+container, so you should not specify fewer than 4 MiB of memory for
+your containers.
+
+
+=head2 MemoryReservation => Int
+
+  The soft limit (in MiB) of memory to reserve for the container. When
+system memory is under heavy contention, Docker attempts to keep the
+container memory to this soft limit; however, your container can
+consume more memory when it needs to, up to either the hard limit
+specified with the C<memory> parameter (if applicable), or all of the
+available memory on the container instance, whichever comes first. This
+parameter maps to C<MemoryReservation> in the Create a container
+section of the Docker Remote API and the C<--memory-reservation> option
+to docker run.
+
+You must specify a non-zero integer for one or both of C<memory> or
+C<memoryReservation> in container definitions. If you specify both,
+C<memory> must be greater than C<memoryReservation>. If you specify
+C<memoryReservation>, then that value is subtracted from the available
+memory resources for the container instance on which the container is
+placed; otherwise, the value of C<memory> is used.
+
+For example, if your container normally uses 128 MiB of memory, but
+occasionally bursts to 256 MiB of memory for short periods of time, you
+can set a C<memoryReservation> of 128 MiB, and a C<memory> hard limit
+of 300 MiB. This configuration would allow the container to only
+reserve 128 MiB of memory from the remaining resources on the container
+instance, but also allow the container to consume more memory resources
+when needed.
 
 
 =head2 MountPoints => ArrayRef[L<Paws::ECS::MountPoint>]
@@ -341,7 +378,10 @@ docker run.
 containers to access ports on the host container instance to send or
 receive traffic. This parameter maps to C<PortBindings> in the Create a
 container section of the Docker Remote API and the C<--publish> option
-to docker run.
+to docker run. If the network mode of a task definition is set to
+C<none>, then you cannot specify port mappings. If the network mode of
+a task definition is set to C<host>, then host ports must either be
+undefined or they must match the container port in the port mapping.
 
 After a task reaches the C<RUNNING> status, manual and automatic host
 and container port assignments are visible in the B<Network Bindings>

@@ -3,6 +3,7 @@ package Paws::ECS::RegisterTaskDefinition;
   use Moose;
   has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', traits => ['NameInRequest'], request_name => 'containerDefinitions' , required => 1);
   has Family => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'family' , required => 1);
+  has NetworkMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkMode' );
   has TaskRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskRoleArn' );
   has Volumes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Volume]', traits => ['NameInRequest'], request_name => 'volumes' );
 
@@ -51,6 +52,27 @@ used as a name for your task definition. Up to 255 letters (uppercase
 and lowercase), numbers, hyphens, and underscores are allowed.
 
 
+
+=head2 NetworkMode => Str
+
+The Docker networking mode to use for the containers in the task. The
+valid values are C<none>, C<bridge>, and C<host>.
+
+The default Docker network mode is C<bridge>. If the network mode is
+set to C<none>, you cannot specify port mappings in your container
+definitions, and the task's containers do not have external
+connectivity. The C<host> network mode offers the highest networking
+performance for containers because they use the host network stack
+instead of the virtualized network stack provided by the C<bridge>
+mode; however, exposed container ports are mapped directly to the
+corresponding host port, so you cannot take advantage of dynamic host
+port mappings or run multiple instantiations of the same task on a
+single container instance if port mappings are used.
+
+For more information, see Network settings in the I<Docker run
+reference>.
+
+Valid values are: C<"bridge">, C<"host">, C<"none">
 
 =head2 TaskRoleArn => Str
 

@@ -66,8 +66,8 @@ task.
 
 =head2 CreatedAt => Str
 
-  The Unix time in seconds and milliseconds when the task was created
-(the task entered the C<PENDING> state).
+  The Unix timestamp for when the task was created (the task entered the
+C<PENDING> state).
 
 
 =head2 DesiredStatus => Str
@@ -87,9 +87,8 @@ task.
 
 =head2 StartedAt => Str
 
-  The Unix time in seconds and milliseconds when the task was started
-(the task transitioned from the C<PENDING> state to the C<RUNNING>
-state).
+  The Unix timestamp for when the task was started (the task transitioned
+from the C<PENDING> state to the C<RUNNING> state).
 
 
 =head2 StartedBy => Str
@@ -101,9 +100,8 @@ deployment ID of the service that starts it.
 
 =head2 StoppedAt => Str
 
-  The Unix time in seconds and milliseconds when the task was stopped
-(the task transitioned from the C<RUNNING> state to the C<STOPPED>
-state).
+  The Unix timestamp for when the task was stopped (the task transitioned
+from the C<RUNNING> state to the C<STOPPED> state).
 
 
 =head2 StoppedReason => Str
