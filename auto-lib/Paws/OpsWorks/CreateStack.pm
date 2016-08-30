@@ -292,8 +292,8 @@ The stack name.
 
 =head2 B<REQUIRED> Region => Str
 
-The stack's AWS region, such as "us-east-1". For more information about
-Amazon regions, see Regions and Endpoints.
+The stack's AWS region, such as "ap-south-1". For more information
+about Amazon regions, see Regions and Endpoints.
 
 
 

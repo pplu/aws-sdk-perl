@@ -158,8 +158,8 @@ VPC.
 
 =head2 Region => Str
 
-  The stack AWS region, such as "us-east-1". For more information about
-AWS regions, see Regions and Endpoints.
+  The stack AWS region, such as "ap-northeast-2". For more information
+about AWS regions, see Regions and Endpoints.
 
 
 =head2 ServiceRoleArn => Str

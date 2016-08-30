@@ -310,8 +310,8 @@ The cloned stack name.
 
 =head2 Region => Str
 
-The cloned stack AWS region, such as "us-east-1". For more information
-about AWS regions, see Regions and Endpoints.
+The cloned stack AWS region, such as "ap-northeast-2". For more
+information about AWS regions, see Regions and Endpoints.
 
 
 
