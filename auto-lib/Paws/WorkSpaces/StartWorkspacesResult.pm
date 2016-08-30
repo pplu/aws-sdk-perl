@@ -1,5 +1,5 @@
 
-package Paws::WorkSpaces::RebuildWorkspacesResult;
+package Paws::WorkSpaces::StartWorkspacesResult;
   use Moose;
   has FailedRequests => (is => 'ro', isa => 'ArrayRef[Paws::WorkSpaces::FailedWorkspaceChangeRequest]');
 
@@ -8,15 +8,14 @@ package Paws::WorkSpaces::RebuildWorkspacesResult;
 
 =head1 NAME
 
-Paws::WorkSpaces::RebuildWorkspacesResult
+Paws::WorkSpaces::StartWorkspacesResult
 
 =head1 ATTRIBUTES
 
 
 =head2 FailedRequests => ArrayRef[L<Paws::WorkSpaces::FailedWorkspaceChangeRequest>]
 
-An array of structures representing any WorkSpaces that could not be
-rebuilt.
+The failed requests.
 
 
 

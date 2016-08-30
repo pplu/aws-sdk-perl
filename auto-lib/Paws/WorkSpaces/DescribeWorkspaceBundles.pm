@@ -59,10 +59,13 @@ This contains one of the following values:
 
 =over
 
-=item * null - Retrieves the bundles that belong to the account making
-the call.
+=item *
 
-=item * C<AMAZON> - Retrieves the bundles that are provided by AWS.
+null- Retrieves the bundles that belong to the account making the call.
+
+=item *
+
+C<AMAZON>- Retrieves the bundles that are provided by AWS.
 
 =back
 
